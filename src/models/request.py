@@ -128,3 +128,9 @@ class IngestRequest(BaseModel):
         if index_overlap:
             raise ValueError("pages_to_remove intersects index_range")
         return self
+
+
+class EnrichedIngestRequest(BaseModel):
+    request: IngestRequest
+    source_sha256: str
+    source_pdf_path: str
