@@ -163,6 +163,39 @@ Per T2 è disponibile anche `validate_and_enrich_request(payload)` in `src/inges
 - Il file `source_pdf_path` deve esistere ed essere leggibile.
 - La `sha256` viene calcolata immediatamente dopo la validazione del file, prima della decisione di hash-gate.
 
+## SourceHashGate (T5)
+
+Il gate hash sorgente è implementato in `src/ingestion/request_validation.py` con `source_hash_gate(source_sha256, sqlite_path)`.
+
+- Input: digest SHA-256 (`source_sha256`) e path del DB SQLite (`sqlite_path`).
+- Output: `SourceHashGateResult` con `status`, `source_sha256` e `should_skip_pipeline`.
+- Stati supportati:
+  - `new_hash`: hash mai visto, pipeline da eseguire.
+  - `duplicate_source_hash`: hash già noto, pipeline da saltare.
+
+Il gate legge la tabella `books` nello SQLite. Se non trova la hash, restituisce `new_hash`; se la trova, restituisce `duplicate_source_hash`.
+
+## Schema SQLite minimo (T6)
+
+Lo schema minimo è inizializzato da `init_books_schema(sqlite_path)` nello stesso modulo `src/ingestion/request_validation.py`.
+
+La tabella `books` usa direttamente `source_sha256` come identificativo:
+
+- `source_sha256 TEXT PRIMARY KEY`
+- `schema_version TEXT NOT NULL`
+- `title TEXT NOT NULL`
+- `subtitle TEXT`
+- `authors_json TEXT NOT NULL`
+- `publisher TEXT`
+- `publication_year INTEGER`
+- `isbn TEXT`
+- `created_at TEXT NOT NULL`
+- `updated_at TEXT NOT NULL`
+- `last_seen_at TEXT NOT NULL`
+- `last_error TEXT`
+
+Per i test e per l'inserimento minimo è disponibile `insert_book_minimal(...)`, che fallisce in modo esplicito su hash duplicata.
+
 ### Esempio payload valido
 
 ```json

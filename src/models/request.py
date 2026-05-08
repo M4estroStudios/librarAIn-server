@@ -16,6 +16,12 @@ class IngestInputErrorCode(str, Enum):
     REICAT_MISSING_REQUIRED_FIELDS = "REICAT_MISSING_REQUIRED_FIELDS"
 
 
+class SourceHashGateStatus(str, Enum):
+    NEW_HASH = "new_hash"
+    DUPLICATE_SOURCE_HASH = "duplicate_source_hash"
+    ALREADY_PROCESSED = "already_processed"
+
+
 class IngestInputValidationError(BaseModel):
     code: IngestInputErrorCode
     message: str
@@ -134,3 +140,9 @@ class EnrichedIngestRequest(BaseModel):
     request: IngestRequest
     source_sha256: str
     source_pdf_path: str
+
+
+class SourceHashGateResult(BaseModel):
+    status: SourceHashGateStatus
+    source_sha256: str
+    should_skip_pipeline: bool

@@ -165,8 +165,8 @@ Legenda: `[x]` completata, `[ ]` da fare.
 - [x] **T2 — Validazione input**: controlli sintattici/semantici (range validi, pagine non negative, file PDF presente).
 - [x] **T3 — Loader configurazione `.env`**: lettura variabili obbligatorie + errore esplicito se mancanti, con riferimento a `example.env`.
 - [x] **T4 — Calcolo `sha256` sorgente**: funzione su PDF originale.
-- [ ] **T5 — SourceHashGate**: verifica hash già noto e ritorno stato (`new_hash` vs `already_processed`/`duplicate_source_hash`).
-- [ ] **T6 — Schema SQLite minimo**: tabella libro + campi REICAT + audit metadata update + chiave univoca `source_sha256`.
+- [x] **T5 — SourceHashGate**: verifica hash già noto e ritorno stato (`new_hash` vs `already_processed`/`duplicate_source_hash`).
+- [x] **T6 — Schema SQLite minimo**: tabella libro + campi REICAT + audit metadata update + chiave univoca `source_sha256`.
 - [ ] **T7 — Upsert REICAT per hash**: inserimento/aggiornamento metadata senza duplicati.
 - [ ] **T8 — Skip path completo**: se hash duplicato, niente OCR/LLM, solo audit + update metadata.
 - [ ] **T9 — PdfAlignment deterministico**: applicazione ordinata di `pages_to_remove` e generazione PDF allineato.

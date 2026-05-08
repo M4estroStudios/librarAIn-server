@@ -2,13 +2,20 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sqlite3
 import tempfile
 import unittest
 from copy import deepcopy
 from pathlib import Path
 
-from src.ingestion.request_validation import _compute_file_sha256, validate_and_enrich_request
-from src.models.request import IngestInputErrorCode
+from src.ingestion.request_validation import (
+    _compute_file_sha256,
+    init_books_schema,
+    insert_book_minimal,
+    source_hash_gate,
+    validate_and_enrich_request,
+)
+from src.models.request import IngestInputErrorCode, SourceHashGateStatus
 
 
 def _valid_payload(source_pdf_path: str) -> dict:
@@ -133,6 +140,96 @@ class RequestValidationTests(unittest.TestCase):
             result = validate_and_enrich_request(_valid_payload(str(file_path)))
             self.assertEqual(result.source_pdf_path, str(file_path))
             self.assertEqual(result.source_sha256, hashlib.sha256(b"space-path").hexdigest())
+
+    def test_source_hash_gate_returns_new_hash_when_digest_is_unknown(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            sqlite_path = Path(tmp_dir) / "library.db"
+            init_books_schema(str(sqlite_path))
+            digest = hashlib.sha256(b"new-book").hexdigest()
+            result = source_hash_gate(digest, str(sqlite_path))
+        self.assertEqual(result.status, SourceHashGateStatus.NEW_HASH)
+        self.assertFalse(result.should_skip_pipeline)
+        self.assertEqual(result.source_sha256, digest)
+
+    def test_source_hash_gate_returns_duplicate_when_digest_already_seen(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            sqlite_path = Path(tmp_dir) / "library.db"
+            init_books_schema(str(sqlite_path))
+            digest = hashlib.sha256(b"duplicate-book").hexdigest()
+            insert_book_minimal(
+                sqlite_path=str(sqlite_path),
+                source_sha256=digest,
+                schema_version="1.0",
+                title="Book",
+                authors_json='["Author"]',
+            )
+            result = source_hash_gate(digest, str(sqlite_path))
+        self.assertEqual(result.status, SourceHashGateStatus.DUPLICATE_SOURCE_HASH)
+        self.assertTrue(result.should_skip_pipeline)
+
+    def test_source_hash_gate_rejects_invalid_hash_input(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            sqlite_path = Path(tmp_dir) / "library.db"
+            init_books_schema(str(sqlite_path))
+            with self.assertRaises(ValueError):
+                source_hash_gate("not-a-sha", str(sqlite_path))
+
+    def test_init_books_schema_creates_books_table_with_primary_key(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            sqlite_path = Path(tmp_dir) / "library.db"
+            init_books_schema(str(sqlite_path))
+            with sqlite3.connect(sqlite_path) as conn:
+                row = conn.execute(
+                    "SELECT name FROM sqlite_master WHERE type='table' AND name='books'"
+                ).fetchone()
+            self.assertIsNotNone(row)
+
+    def test_insert_book_minimal_rejects_duplicate_source_sha256(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            sqlite_path = Path(tmp_dir) / "library.db"
+            digest = hashlib.sha256(b"duplicate-book").hexdigest()
+            init_books_schema(str(sqlite_path))
+            insert_book_minimal(
+                sqlite_path=str(sqlite_path),
+                source_sha256=digest,
+                schema_version="1.0",
+                title="Book",
+                authors_json='["Author"]',
+            )
+            with self.assertRaises(RuntimeError):
+                insert_book_minimal(
+                    sqlite_path=str(sqlite_path),
+                    source_sha256=digest,
+                    schema_version="1.0",
+                    title="Book",
+                    authors_json='["Author"]',
+                )
+
+    def test_insert_book_minimal_sets_audit_fields(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            sqlite_path = Path(tmp_dir) / "library.db"
+            digest = hashlib.sha256(b"audit-book").hexdigest()
+            init_books_schema(str(sqlite_path))
+            insert_book_minimal(
+                sqlite_path=str(sqlite_path),
+                source_sha256=digest,
+                schema_version="1.0",
+                title="Book",
+                authors_json='["Author"]',
+            )
+            with sqlite3.connect(sqlite_path) as conn:
+                row = conn.execute(
+                    """
+                    SELECT created_at, updated_at, last_seen_at
+                    FROM books
+                    WHERE source_sha256 = ?
+                    """,
+                    (digest,),
+                ).fetchone()
+            self.assertIsNotNone(row)
+            self.assertTrue(bool(row[0]))
+            self.assertTrue(bool(row[1]))
+            self.assertTrue(bool(row[2]))
 
 
 if __name__ == "__main__":
