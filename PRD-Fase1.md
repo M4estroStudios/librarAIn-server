@@ -161,37 +161,23 @@ La struttura delle cartelle del progetto (albero, principi e linee guida) è doc
 
 Legenda: `[x]` completata, `[ ]` da fare.
 
-### Fondazione input e validazione
-
-- [x] **T1 — Contratto input ingestione**: modello Pydantic canonico (`IngestRequest`) con normalizzazione e vincoli base.
-- [x] **T2 — Validate + Enrich Source Hash**: validazione payload, verifica PDF esistente/leggibile e calcolo immediato `source_sha256`.
-- [ ] **T3 — SourceHashGate**: decisione `new_hash` vs `already_processed` con skip deterministico.
-
-### Persistenza metadati e idempotenza hash
-
-- [ ] **T4 — Schema SQLite minimo**: tabella libro + campi REICAT + audit aggiornamenti.
-- [ ] **T5 — Upsert REICAT su `source_sha256`**: update metadata senza duplicati libro.
-- [ ] **T6 — Skip path completo**: evento auditabile su duplicato hash senza riesecuzione OCR/LLM.
-
-### Trasformazione PDF e pipeline OCR/LLM
-
-- [ ] **T7 — PdfAlignment deterministico**: applicazione ordinata `pages_to_remove`.
-- [ ] **T8 — OCR stage locale**: estrazione testo per pagina.
-- [ ] **T9 — Vision refine stage**: raffinamento su endpoint OpenAI-compatible.
-- [ ] **T10 — Editor markdown stage**: rifinitura markdown finale.
-- [ ] **T11 — Concorrenza configurabile**: parallelismo/retry/timeout/rate-limit via config.
-
-### Artefatti libro e artefatti globali
-
-- [ ] **T12 — Output pagine `.md`**: persistenza per singola pagina utile.
-- [ ] **T13 — Generazione `TOC.md`**: concatenazione ordinata range TOC.
-- [ ] **T14 — Generazione `INDEX.md`**: concatenazione ordinata range INDEX.
-- [ ] **T15 — Aggiornamento `TOC.json` idempotente**.
-- [ ] **T16 — Aggiornamento `INDEX.json` idempotente + riconciliazione soggetti**.
-
-### Operatività, test e tooling
-
-- [x] **T17 — Test T2 (bad input + edge case)**: suite `tests/test_request_validation.py`.
-- [x] **T18 — Automazione test**: target `make test` con cleanup `__pycache__`.
-- [x] **T19 — Bootstrap environment**: target `make setup-env` con check Python 3.12 e ricreazione `venv`.
-- [ ] **T20 — Smoke end-to-end ingestione**: run controllato su libro campione con verifica artefatti output.
+- [x] **T1 — Definire contratto input ingestione**: schema unico con campi obbligatori (`pdf`, `reicat`, `pages_to_remove`, `toc_start/end`, `index_start/end`).
+- [x] **T2 — Validazione input**: controlli sintattici/semantici (range validi, pagine non negative, file PDF presente).
+- [ ] **T3 — Loader configurazione `.env`**: lettura variabili obbligatorie + errore esplicito se mancanti, con riferimento a `example.env`.
+- [x] **T4 — Calcolo `sha256` sorgente**: funzione su PDF originale.
+- [ ] **T5 — SourceHashGate**: verifica hash già noto e ritorno stato (`new_hash` vs `already_processed`/`duplicate_source_hash`).
+- [ ] **T6 — Schema SQLite minimo**: tabella libro + campi REICAT + audit metadata update + chiave univoca `source_sha256`.
+- [ ] **T7 — Upsert REICAT per hash**: inserimento/aggiornamento metadata senza duplicati.
+- [ ] **T8 — Skip path completo**: se hash duplicato, niente OCR/LLM, solo audit + update metadata.
+- [ ] **T9 — PdfAlignment deterministico**: applicazione ordinata di `pages_to_remove` e generazione PDF allineato.
+- [ ] **T10 — Enumerazione pagine utili**: mappatura robusta pagina originale -> pagina allineata.
+- [ ] **T11 — Stage OCR base**: estrazione testo pagina per pagina.
+- [ ] **T12 — Stage Vision refine**: raffinamento su endpoint OpenAI-compatible (locale/esterno configurabile).
+- [ ] **T13 — Stage Editor markdown refine**: normalizzazione finale markdown.
+- [ ] **T14 — Orchestrazione concorrente**: coda job con `max_parallel`, retry, timeout e rate-limit da config.
+- [ ] **T15 — Persistenza pagine `.md`**: una pagina markdown per ogni pagina utile.
+- [ ] **T16 — Builder `TOC.md`**: concatenazione ordinata del range TOC.
+- [ ] **T17 — Builder `INDEX.md`**: concatenazione ordinata del range INDEX.
+- [ ] **T18 — Logging/audit minimo**: timestamp, hash, versione pipeline, esito.
+- [x] **T19 — Smoke test end-to-end (nuovo hash)**: copertura parziale con test automatici su validazione ed edge case.
+- [x] **T20 — Smoke test duplicate hash**: copertura preliminare lato hash calculation; scenario hash-gate completo ancora da implementare.
