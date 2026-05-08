@@ -83,6 +83,42 @@ librarAIn-server/ # radice repository
 - `data/` non contiene codice, solo artefatti runtime.
 - `web/index.html` (o nome equivalente) resta il punto unico di input coerente per l’operatore.
 
+## Configurazione runtime `.env` (T3)
+
+La configurazione runtime centralizzata è gestita da:
+
+- `src/models/settings.py`: modello Pydantic `Settings`.
+- `src/core/config.py`: loader `load_settings(env_file=".env")`.
+- `example.env`: template di riferimento per le variabili.
+
+`load_settings` carica prima il file `.env`, poi applica override da variabili d’ambiente già presenti nel processo.
+
+### Variabili obbligatorie
+
+- `DATA_ROOT` (root runtime dati, es. `data`)
+- `OPENAI_PROVIDER` (`local` oppure `remote`)
+
+### Variabili opzionali (con default)
+
+- `MAX_PARALLEL` (default `2`)
+- `TIMEOUT_SECONDS` (default `120`)
+- `RETRY_ATTEMPTS` (default `2`)
+- `RATE_LIMIT_PER_MINUTE` (default `60`)
+- `VISION_MODEL` (default `None`)
+- `EDITOR_MODEL` (default `None`)
+
+### Vincoli semantici
+
+- Se `OPENAI_PROVIDER=remote`, diventano obbligatorie:
+  - `OPENAI_BASE_URL`
+  - `OPENAI_API_KEY`
+
+### Errore di configurazione
+
+In caso di variabili mancanti o invalide, il loader fallisce in modo esplicito con messaggio aggregato e riferimento a `example.env`.
+
+`sqlite_path` viene derivato automaticamente come `<DATA_ROOT>/db/library.db`.
+
 ## Schema richiesta ingestione (MVP v1.0)
 
 Il contratto canonico dell'input ingestione è definito nel modello Pydantic `IngestRequest` in `src/models/request.py`.
