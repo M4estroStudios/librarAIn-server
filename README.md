@@ -28,11 +28,47 @@ librarAIn-server/ # radice repository
 │   ├── persistence/ # SQLite, JSON biblioteca, hash/stato run
 │   └── search/ # Fase 2: ricerca e generazione articoli (stub o futuro)
 ├── data/ # solo dati su disco, mai codice
-│   ├── db/ # file SQLite del progetto
+│   ├── db/ # database principale e snapshot checkpoint
+│   │   ├── checkpoints/ # snapshot/versioni storiche del db
+│   │   │   ├── library.<yyyy>.<mm>.<dd>.db # checkpoint giornaliero
+│   │   │   └── ... # altri checkpoint (es. più date/versioni)
+│   │   └── library.db # database SQLite corrente
 │   ├── input/ # PDF sorgente in ingresso
-│   ├── library/ # artefatti globali (es. TOC.json, INDEX.json)
-│   ├── output/ # output per libro (MD pagine, aggregati)
+│   │   ├── raw/ # file originali caricati dall'operatore
+│   │   │   ├── <libro>.pdf # nome file originale
+│   │   │   └── ... # altri PDF originali
+│   │   └── processed/ # PDF normalizzati/allineati dopo preprocessing
+│   │       ├── <hash libro>.pdf # nome basato su hash SHA-256 del libro
+│   │       └── ... # altri PDF processati
+│   ├── polyndex/ # artefatti globali correnti e snapshot storici
+│   │   ├── checkpoints/ # snapshot giornalieri di TOC/INDEX
+│   │   │   ├── <yyyy>.<mm>.<dd>.INDEX.json # snapshot INDEX del giorno
+│   │   │   ├── <yyyy>.<mm>.<dd>.TOC.json # snapshot TOC del giorno
+│   │   │   └── ... # altri snapshot storici
+│   │   ├── INDEX.json # indice globale corrente
+│   │   └── TOC.json # toc globale corrente
+│   ├── output/ # output organizzati per libro processato
+│   │   ├── <hash libro>/ # artefatti del singolo libro
+│   │   │   ├── pages/ # pagine markdown singole del libro
+│   │   │   │   ├── p.<NNNN>.<libro>.md # singola pagina (numero pagina zero-padded)
+│   │   │   │   └── ... # altre pagine markdown
+│   │   │   ├── <libro>.md # file markdown unificato del libro
+│   │   │   ├── INDEX.md # indice del libro aggregato
+│   │   │   └── TOC.md # table of contents aggregata del libro
+│   │   └── ... # altri libri processati
 │   └── tmp/ # temporanei, cache, lavorazioni intermedie
+│       ├── <hash libro>/ # temporanei relativi al singolo libro
+│       │   ├── stage1OCR/ # output testuale raw OCR
+│       │   │   ├── p.<NNNN>.<libro>.txt # pagina OCR raw
+│       │   │   └── ... # altre pagine OCR raw
+│       │   ├── stage2Vision/ # output markdown dopo refinement vision
+│       │   │   ├── p.<NNNN>.<libro>.md # pagina dopo stage vision
+│       │   │   └── ... # altre pagine stage vision
+│       │   ├── stage3Editor/ # output markdown finale dopo editor
+│       │   │   ├── p.<NNNN>.<libro>.md # pagina dopo stage editor
+│       │   │   └── ... # altre pagine stage editor
+│       │   └── ... # altri temporanei del libro
+│       └── ... # altri temporanei
 ├── scripts/ # script operativi, bootstrap, utility
 ├── tests/ # test e smoke (POI, quando introdotti)
 └── web/ # pagina HTML punto unico di input operatore
