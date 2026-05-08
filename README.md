@@ -87,6 +87,7 @@ librarAIn-server/ # radice repository
 
 Il contratto canonico dell'input ingestione è definito nel modello Pydantic `IngestRequest` in `src/models/request.py`.
 Qualunque entrypoint (CLI/API/UI) deve validare e normalizzare i dati in questo schema prima di avviare la pipeline.
+Per T2 è disponibile anche `validate_and_enrich_request(payload)` in `src/ingestion/request_validation.py`, che valida il payload, verifica il file PDF e calcola subito `source_sha256`.
 
 ### Campi principali
 
@@ -123,6 +124,8 @@ Qualunque entrypoint (CLI/API/UI) deve validare e normalizzare i dati in questo 
 - `pages_to_remove` accetta solo interi positivi.
 - Le pagine rimosse non possono sovrapporsi a `toc_range` o `index_range`.
 - Il campo `reicat` richiede almeno `titolo` e almeno un elemento in `autore`.
+- Il file `source_pdf_path` deve esistere ed essere leggibile.
+- La `sha256` viene calcolata immediatamente dopo la validazione del file, prima della decisione di hash-gate.
 
 ### Esempio payload valido
 
