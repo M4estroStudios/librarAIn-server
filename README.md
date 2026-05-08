@@ -83,3 +83,76 @@ librarAIn-server/ # radice repository
 - `data/` non contiene codice, solo artefatti runtime.
 - `web/index.html` (o nome equivalente) resta il punto unico di input coerente per l’operatore.
 
+## Schema richiesta ingestione (MVP v1.0)
+
+Il contratto canonico dell'input ingestione è definito nel modello Pydantic `IngestRequest` in `src/models/request.py`.
+Qualunque entrypoint (CLI/API/UI) deve validare e normalizzare i dati in questo schema prima di avviare la pipeline.
+
+### Campi principali
+
+- `schema_version`: versione contratto, bloccata a `1.0`.
+- `source_pdf_path`: path del PDF sorgente.
+- `pages_to_remove`: pagine 1-based da eliminare, normalizzate (ordinate + deduplicate).
+- `toc_range`: intervallo pagine TOC (`start`, `end`).
+- `index_range`: intervallo pagine INDEX (`start`, `end`).
+- `reicat`: metadati bibliografici REICAT.
+- `options`: opzioni runtime facoltative.
+
+#### Campi `reicat`
+
+- `titolo`
+- `sottotitolo`
+- `complementi_del_titolo`
+- `autore`
+- `curatore`
+- `traduttore`
+- `numero_edizione`
+- `anno_di_pubblicazione`
+- `tipo_di_pubblicazione`
+- `luogo_di_pubblicazione`
+- `editore`
+- `numero_pagine`
+- `titolo_collana`
+- `numero_nella_collana`
+- `isbn`
+
+### Regole di validazione
+
+- Le pagine sono sempre 1-based.
+- Ogni range richiede `start <= end`.
+- `pages_to_remove` accetta solo interi positivi.
+- Le pagine rimosse non possono sovrapporsi a `toc_range` o `index_range`.
+- Il campo `reicat` richiede almeno `titolo` e almeno un elemento in `autore`.
+
+### Esempio payload valido
+
+```json
+{
+  "schema_version": "1.0",
+  "source_pdf_path": "data/input/raw/libro.pdf",
+  "pages_to_remove": [1, 2, 5],
+  "toc_range": { "start": 11, "end": 18 },
+  "index_range": { "start": 301, "end": 324 },
+  "reicat": {
+    "titolo": "Titolo libro",
+    "sottotitolo": "Sottotitolo",
+    "complementi_del_titolo": "Complementi",
+    "autore": ["Nome Cognome"],
+    "curatore": ["Curatore Nome"],
+    "traduttore": ["Traduttore Nome"],
+    "numero_edizione": "2",
+    "anno_di_pubblicazione": 2024,
+    "tipo_di_pubblicazione": "Monografia",
+    "luogo_di_pubblicazione": "Milano",
+    "editore": "Editore",
+    "numero_pagine": 350,
+    "titolo_collana": "Nome Collana",
+    "numero_nella_collana": "12",
+    "isbn": "9780000000000"
+  },
+  "options": {
+    "force_metadata_update_on_duplicate_hash": true
+  }
+}
+```
+
