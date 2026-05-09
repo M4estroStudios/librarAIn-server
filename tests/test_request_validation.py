@@ -6,7 +6,10 @@ import sqlite3
 import tempfile
 import unittest
 from copy import deepcopy
+from io import BytesIO
 from pathlib import Path
+
+from pypdf import PdfWriter
 
 from src.ingestion.request_validation import (
     _compute_file_sha256,
@@ -18,13 +21,28 @@ from src.ingestion.request_validation import (
 from src.models.request import IngestInputErrorCode, SourceHashGateStatus
 
 
-def _valid_payload(source_pdf_path: str) -> dict:
+def _minimal_pdf_bytes(num_pages: int) -> bytes:
+    writer = PdfWriter()
+    for _ in range(num_pages):
+        writer.add_blank_page(width=612, height=792)
+    buffer = BytesIO()
+    writer.write(buffer)
+    return buffer.getvalue()
+
+
+def _valid_payload(source_pdf_path: str, *, pdf_pages: int) -> dict:
+    toc_end = min(20, pdf_pages)
+    toc_start = min(10, toc_end)
+    index_end = pdf_pages
+    index_start = max(toc_end + 1, pdf_pages - 20)
+    if index_start > index_end:
+        index_start = max(1, index_end - 5)
     return {
         "schema_version": "1.0",
         "source_pdf_path": source_pdf_path,
         "pages_to_remove": [1, 2],
-        "toc_range": {"start": 10, "end": 20},
-        "index_range": {"start": 100, "end": 120},
+        "toc_range": {"start": toc_start, "end": toc_end},
+        "index_range": {"start": index_start, "end": index_end},
         "reicat": {
             "titolo": "Test Book",
             "autore": ["Author Name"],
@@ -45,19 +63,22 @@ class RequestValidationTests(unittest.TestCase):
             tmp_path.unlink(missing_ok=True)
 
     def test_validate_and_enrich_request_success(self) -> None:
+        pdf_body = _minimal_pdf_bytes(130)
         with tempfile.NamedTemporaryFile("wb", delete=False) as tmp_file:
-            tmp_file.write(b"pdf-content")
+            tmp_file.write(pdf_body)
             tmp_path = Path(tmp_file.name)
         try:
-            result = validate_and_enrich_request(_valid_payload(str(tmp_path)))
+            result = validate_and_enrich_request(
+                _valid_payload(str(tmp_path), pdf_pages=130)
+            )
             self.assertEqual(result.request.source_pdf_path, str(tmp_path))
             self.assertEqual(result.source_pdf_path, str(tmp_path))
-            self.assertEqual(result.source_sha256, hashlib.sha256(b"pdf-content").hexdigest())
+            self.assertEqual(result.source_sha256, hashlib.sha256(pdf_body).hexdigest())
         finally:
             tmp_path.unlink(missing_ok=True)
 
     def test_validate_and_enrich_request_invalid_payload(self) -> None:
-        payload = _valid_payload("dummy.pdf")
+        payload = _valid_payload("dummy.pdf", pdf_pages=130)
         payload["toc_range"] = {"start": 20, "end": 10}
         with self.assertRaises(ValueError) as ctx:
             validate_and_enrich_request(payload)
@@ -66,7 +87,7 @@ class RequestValidationTests(unittest.TestCase):
         self.assertEqual(error_payload["field"], "payload")
 
     def test_validate_and_enrich_request_missing_pdf(self) -> None:
-        payload = _valid_payload("/tmp/this-file-does-not-exist.pdf")
+        payload = _valid_payload("/tmp/this-file-does-not-exist.pdf", pdf_pages=130)
         with self.assertRaises(ValueError) as ctx:
             validate_and_enrich_request(payload)
         error_payload = json.loads(str(ctx.exception))
@@ -74,7 +95,7 @@ class RequestValidationTests(unittest.TestCase):
         self.assertEqual(error_payload["field"], "source_pdf_path")
 
     def test_validate_and_enrich_request_empty_title_is_bad_input(self) -> None:
-        payload = _valid_payload("dummy.pdf")
+        payload = _valid_payload("dummy.pdf", pdf_pages=130)
         payload["reicat"]["titolo"] = "   "
         with self.assertRaises(ValueError) as ctx:
             validate_and_enrich_request(payload)
@@ -82,7 +103,7 @@ class RequestValidationTests(unittest.TestCase):
         self.assertEqual(error_payload["code"], IngestInputErrorCode.INPUT_SCHEMA_INVALID.value)
 
     def test_validate_and_enrich_request_empty_authors_is_bad_input(self) -> None:
-        payload = _valid_payload("dummy.pdf")
+        payload = _valid_payload("dummy.pdf", pdf_pages=130)
         payload["reicat"]["autore"] = []
         with self.assertRaises(ValueError) as ctx:
             validate_and_enrich_request(payload)
@@ -90,7 +111,7 @@ class RequestValidationTests(unittest.TestCase):
         self.assertEqual(error_payload["code"], IngestInputErrorCode.INPUT_SCHEMA_INVALID.value)
 
     def test_validate_and_enrich_request_overlap_removed_pages_is_bad_input(self) -> None:
-        payload = _valid_payload("dummy.pdf")
+        payload = _valid_payload("dummy.pdf", pdf_pages=130)
         payload["pages_to_remove"] = [12]
         with self.assertRaises(ValueError) as ctx:
             validate_and_enrich_request(payload)
@@ -98,7 +119,7 @@ class RequestValidationTests(unittest.TestCase):
         self.assertEqual(error_payload["code"], IngestInputErrorCode.INPUT_SCHEMA_INVALID.value)
 
     def test_validate_and_enrich_request_zero_page_is_bad_input(self) -> None:
-        payload = _valid_payload("dummy.pdf")
+        payload = _valid_payload("dummy.pdf", pdf_pages=130)
         payload["pages_to_remove"] = [0, 2]
         with self.assertRaises(ValueError) as ctx:
             validate_and_enrich_request(payload)
@@ -106,11 +127,12 @@ class RequestValidationTests(unittest.TestCase):
         self.assertEqual(error_payload["code"], IngestInputErrorCode.INPUT_SCHEMA_INVALID.value)
 
     def test_validate_and_enrich_request_normalizes_pages_and_whitespace(self) -> None:
+        pdf_body = _minimal_pdf_bytes(40)
         with tempfile.NamedTemporaryFile("wb", delete=False) as tmp_file:
-            tmp_file.write(b"x")
+            tmp_file.write(pdf_body)
             tmp_path = Path(tmp_file.name)
         try:
-            payload = _valid_payload(str(tmp_path))
+            payload = _valid_payload(str(tmp_path), pdf_pages=40)
             payload["pages_to_remove"] = [5, 2, 5, 3]
             payload["book_id_hint"] = "  test-book  "
             payload["reicat"] = deepcopy(payload["reicat"])
@@ -124,22 +146,53 @@ class RequestValidationTests(unittest.TestCase):
         finally:
             tmp_path.unlink(missing_ok=True)
 
-    def test_validate_and_enrich_request_empty_file_edge_case(self) -> None:
+    def test_validate_and_enrich_request_empty_file_is_unreadable_pdf(self) -> None:
         with tempfile.NamedTemporaryFile("wb", delete=False) as tmp_file:
             tmp_path = Path(tmp_file.name)
         try:
-            result = validate_and_enrich_request(_valid_payload(str(tmp_path)))
-            self.assertEqual(result.source_sha256, hashlib.sha256(b"").hexdigest())
+            payload = {
+                "schema_version": "1.0",
+                "source_pdf_path": str(tmp_path),
+                "pages_to_remove": [],
+                "toc_range": {"start": 1, "end": 1},
+                "index_range": {"start": 1, "end": 1},
+                "reicat": {"titolo": "T", "autore": ["A"]},
+                "options": {"force_metadata_update_on_duplicate_hash": True},
+            }
+            with self.assertRaises(ValueError) as ctx:
+                validate_and_enrich_request(payload)
         finally:
             tmp_path.unlink(missing_ok=True)
+        error_payload = json.loads(str(ctx.exception))
+        self.assertEqual(error_payload["code"], IngestInputErrorCode.PDF_NOT_FOUND.value)
+        self.assertEqual(error_payload["field"], "source_pdf_path")
 
     def test_validate_and_enrich_request_path_with_spaces_edge_case(self) -> None:
+        pdf_body = _minimal_pdf_bytes(60)
         with tempfile.TemporaryDirectory() as tmp_dir:
             file_path = Path(tmp_dir) / "my sample pdf.pdf"
-            file_path.write_bytes(b"space-path")
-            result = validate_and_enrich_request(_valid_payload(str(file_path)))
+            file_path.write_bytes(pdf_body)
+            result = validate_and_enrich_request(
+                _valid_payload(str(file_path), pdf_pages=60)
+            )
             self.assertEqual(result.source_pdf_path, str(file_path))
-            self.assertEqual(result.source_sha256, hashlib.sha256(b"space-path").hexdigest())
+            self.assertEqual(result.source_sha256, hashlib.sha256(pdf_body).hexdigest())
+
+    def test_validate_and_enrich_request_rejects_page_above_pdf_length(self) -> None:
+        pdf_body = _minimal_pdf_bytes(36)
+        with tempfile.NamedTemporaryFile("wb", delete=False) as tmp_file:
+            tmp_file.write(pdf_body)
+            tmp_path = Path(tmp_file.name)
+        try:
+            payload = _valid_payload(str(tmp_path), pdf_pages=36)
+            payload["toc_range"] = {"start": 35, "end": 37}
+            with self.assertRaises(ValueError) as ctx:
+                validate_and_enrich_request(payload)
+        finally:
+            tmp_path.unlink(missing_ok=True)
+        error_payload = json.loads(str(ctx.exception))
+        self.assertEqual(error_payload["code"], IngestInputErrorCode.PAGES_INVALID.value)
+        self.assertEqual(error_payload["field"], "toc_range")
 
     def test_source_hash_gate_returns_new_hash_when_digest_is_unknown(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

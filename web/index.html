@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ingestione libro — librarAIn</title>
+<style>
+:root { font-family: system-ui, sans-serif; line-height: 1.45; color: #0f172a; background: #f8fafc; }
+body { margin: 0 auto; max-width: 52rem; padding: 1.5rem 1rem 3rem; }
+h1 { font-size: 1.35rem; margin: 0 0 0.25rem; }
+p.lead { margin: 0 0 1.25rem; color: #334155; font-size: 0.95rem; }
+form { display: grid; gap: 1.1rem; }
+fieldset { border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.9rem 1rem 1rem; background: #fff; }
+legend { padding: 0 0.35rem; font-weight: 600; font-size: 0.95rem; }
+label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #334155; }
+input, textarea { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #cbd5e1; background: #fff; }
+textarea { min-height: 4.5rem; resize: vertical; }
+.grid-2 { display: grid; gap: 0.75rem; }
+@media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+button { font: inherit; padding: 0.55rem 1rem; border-radius: 8px; border: 0; background: #0f172a; color: #fff; cursor: pointer; }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+.hint { font-size: 0.8rem; color: #64748b; }
+#out { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #0f172a; color: #e2e8f0; font-size: 0.8rem; white-space: pre-wrap; word-break: break-word; min-height: 3rem; display: none; }
+#out.show { display: block; }
+#out.err { background: #7f1d1d; }
+small.req { color: #b91c1c; }
+</style>
+</head>
+<body>
+<h1>Ingestione libro</h1>
+<p class="lead">Carica il PDF e indica quali pagine del file escludere e dove si trovano, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT. Prima dell’invio il browser tenta una verifica delle pagine rispetto al PDF (servono rete per caricare pdf.js).</p>
+
+<form id="ingest-form">
+  <fieldset>
+    <legend>File PDF, nome interno e pagine da escludere</legend>
+    <p class="hint">Il documento si invia solo tramite upload. L’etichetta interna è facoltativa e non sostituisce i metadati REICAT. Le pagine da escludere usano la numerazione del PDF.</p>
+    <label>PDF da elaborare <small class="req">obbligatorio</small>
+      <input type="file" name="pdf_file" accept="application/pdf,.pdf" required>
+    </label>
+    <label>Codice o etichetta opzionale del libro
+      <input type="text" name="book_id_hint" placeholder="es. collana-2024-verdi" autocomplete="off">
+    </label>
+    <p class="hint" style="margin:0.25rem 0 0;">Per l’etichetta: slug, sigla o codice da catalogo utile in log o integrazioni.</p>
+    <label>Pagine da escludere dall’elaborazione
+      <input type="text" name="pages_to_remove" placeholder="1, 2, 10-15, 22">
+    </label>
+    <p class="hint" style="margin:0.25rem 0 0;">Elenco separato da virgole; intervalli inclusi con <code>prima-ultima</code> (es. <code>3-7</code> = pagine 3 … 7).</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Table of Content</legend>
+    <p class="hint">Stessa sintassi delle pagine da escludere: virgole e intervalli <code>prima-ultima</code> inclusivi. Deve corrispondere a <strong>un solo blocco contiguo</strong> di pagine (es. <code>11-18</code> oppure <code>11,12,13,14,15,16,17,18</code>) dove compare il sommario / le rubriche dei capitoli.</p>
+    <label>Pagine del Table of Content <small class="req">obbligatorio</small>
+      <input type="text" name="toc_range" placeholder="11-18" required autocomplete="off">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Indice analitico</legend>
+    <p class="hint">Stessa sintassi: un solo intervallo contiguo (es. <code>301-324</code>) per l’indice dei nomi o soggetti.</p>
+    <label>Pagine dell’indice analitico <small class="req">obbligatorio</small>
+      <input type="text" name="index_range" placeholder="301-324" required autocomplete="off">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Metadati bibliografici (REICAT)</legend>
+    <label>Titolo <small class="req">obbligatorio</small>
+      <input type="text" name="titolo" required>
+    </label>
+    <div class="grid-2">
+      <label>Sottotitolo
+        <input type="text" name="sottotitolo">
+      </label>
+      <label>Complementi del titolo
+        <input type="text" name="complementi_del_titolo">
+      </label>
+    </div>
+    <label>Autori (separati da virgola) <small class="req">obbligatorio</small>
+      <input type="text" name="autore" placeholder="Nome Cognome, Altro Autore" required>
+    </label>
+    <div class="grid-2">
+      <label>Curatori (virgola)
+        <input type="text" name="curatore">
+      </label>
+      <label>Traduttori (virgola)
+        <input type="text" name="traduttore">
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Numero edizione
+        <input type="text" name="numero_edizione">
+      </label>
+      <label>Anno di pubblicazione
+        <input type="number" name="anno_di_pubblicazione" min="0">
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Tipo di pubblicazione
+        <input type="text" name="tipo_di_pubblicazione">
+      </label>
+      <label>Luogo di pubblicazione
+        <input type="text" name="luogo_di_pubblicazione">
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Editore
+        <input type="text" name="editore">
+      </label>
+      <label>Numero pagine
+        <input type="number" name="numero_pagine" min="1">
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Titolo collana
+        <input type="text" name="titolo_collana">
+      </label>
+      <label>Numero nella collana
+        <input type="text" name="numero_nella_collana">
+      </label>
+    </div>
+    <label>ISBN
+      <input type="text" name="isbn">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Opzioni</legend>
+    <label class="hint" style="display:flex; gap:0.45rem; align-items:center;">
+      <input type="hidden" name="force_metadata_update_on_duplicate_hash" value="false">
+      <input type="checkbox" name="force_metadata_update_on_duplicate_hash" value="true" checked>
+      Se il file PDF è già stato elaborato in passato (stesso contenuto), aggiorna comunque i metadati inviati ora senza rifare l’OCR
+    </label>
+  </fieldset>
+
+  <div class="actions">
+    <button type="submit" id="submit-btn">Invia validazione</button>
+    <span class="hint">POST <code>/api/ingest/submit</code></span>
+  </div>
+</form>
+
+<pre id="out" aria-live="polite"></pre>
+
+<script type="module">
+(function () {
+  const PDFJS_ESM =
+    "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs";
+  const PDFJS_WORKER =
+    "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs";
+
+  let pdfJsModulePromise = null;
+  async function pdfJs() {
+    if (!pdfJsModulePromise)
+      pdfJsModulePromise = import(PDFJS_ESM).then((mod) => {
+        mod.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
+        return mod;
+      });
+    return pdfJsModulePromise;
+  }
+
+  function parsePagesSpec(raw) {
+    var s = String(raw || "").trim();
+    if (!s) return [];
+    var pieces = s.replace(/;/g, ",").split(",");
+    var set = {};
+    function add(page) {
+      set[page] = true;
+    }
+    for (var i = 0; i < pieces.length; i++) {
+      var piece = pieces[i].trim();
+      if (!piece) continue;
+      if (piece.indexOf("-") >= 0) {
+        var sep = piece.indexOf("-");
+        var left = piece.slice(0, sep).trim();
+        var right = piece.slice(sep + 1).trim();
+        var start = parseInt(left, 10);
+        var end = parseInt(right, 10);
+        if (isNaN(start) || isNaN(end))
+          throw new Error(
+            'numero non valido in "' + piece + '" nel campo delle pagine'
+          );
+        if (start < 1 || end < 1) throw new Error("le pagine devono essere >= 1");
+        if (start > end)
+          throw new Error("nell'intervallo x-y deve essere x <= y");
+        for (var p = start; p <= end; p++) add(p);
+      } else {
+        var n = parseInt(piece, 10);
+        if (isNaN(n)) throw new Error('numero pagina non valido: "' + piece + '"');
+        if (n < 1) throw new Error("le pagine devono essere >= 1");
+        add(n);
+      }
+    }
+    return Object.keys(set)
+      .map(function (k) {
+        return parseInt(k, 10);
+      })
+      .sort(function (a, b) {
+        return a - b;
+      });
+  }
+
+  function contiguousBounds(sortedUnique) {
+    if (sortedUnique.length === 0) throw new Error("valore obbligatorio");
+    var lo = sortedUnique[0];
+    var hi = sortedUnique[sortedUnique.length - 1];
+    if (hi - lo + 1 !== sortedUnique.length)
+      throw new Error("deve essere un solo intervallo contiguo di pagine");
+    return { start: lo, end: hi };
+  }
+
+  function overlapsRange(removedSorted, rs, re) {
+    var j = 0;
+    for (var p = rs; p <= re; p++) {
+      while (j < removedSorted.length && removedSorted[j] < p) j++;
+      if (j < removedSorted.length && removedSorted[j] === p) return true;
+    }
+    return false;
+  }
+
+  function assertPagesWithin(total, sortedList, ctx) {
+    for (var i = 0; i < sortedList.length; i++) {
+      var p = sortedList[i];
+      if (p > total)
+        throw new Error(
+          ctx + ": pagina " + p + " oltre la fine del PDF (" + total + ")."
+        );
+    }
+  }
+
+  function validateClientPdfPages(refs) {
+    var removedExpanded = refs.removedExpanded;
+    var toc = contiguousBounds(parsePagesSpec(refs.tocRaw));
+    var idx = contiguousBounds(parsePagesSpec(refs.indexRaw));
+    assertPagesWithin(
+      refs.numPages,
+      removedExpanded,
+      "Pagine da escludere"
+    );
+    assertPagesWithin(
+      refs.numPages,
+      [toc.start, toc.end],
+      "Table of Content"
+    );
+    assertPagesWithin(
+      refs.numPages,
+      [idx.start, idx.end],
+      "Indice analitico"
+    );
+    if (overlapsRange(removedExpanded, toc.start, toc.end))
+      throw new Error(
+        "le pagine da escludere non possono ricadere nell'intervallo del Table of Content"
+      );
+    if (overlapsRange(removedExpanded, idx.start, idx.end))
+      throw new Error(
+        "le pagine da escludere non possono ricadere nell'indice analitico"
+      );
+    return null;
+  }
+
+  var form = document.getElementById("ingest-form");
+  var out = document.getElementById("out");
+  var btn = document.getElementById("submit-btn");
+
+  function show(kind, payload) {
+    out.textContent = typeof payload === "string"
+      ? payload
+      : JSON.stringify(payload, null, 2);
+    out.classList.add("show");
+    out.classList.toggle("err", kind === "err");
+  }
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    btn.disabled = true;
+    out.classList.remove("show", "err");
+    try {
+      var fileInput = form.querySelector('[name="pdf_file"]');
+      var file =
+        fileInput && fileInput.files && fileInput.files.length
+          ? fileInput.files[0]
+          : null;
+      if (!file || !file.size) throw new Error("Seleziona un file PDF.");
+
+      var pagesRemoveRaw =
+        form.querySelector('[name="pages_to_remove"]') &&
+        form.querySelector('[name="pages_to_remove"]').value;
+      var tocRaw =
+        form.querySelector('[name="toc_range"]').value.trim();
+      var indexRaw =
+        form.querySelector('[name="index_range"]').value.trim();
+
+      var removedExpanded = parsePagesSpec(pagesRemoveRaw);
+
+      try {
+        var mod = await pdfJs();
+        var buf = await file.arrayBuffer();
+        var pdf = await mod.getDocument({ data: buf }).promise;
+        var numPages = pdf.numPages;
+        validateClientPdfPages({
+          numPages: numPages,
+          removedExpanded: removedExpanded,
+          tocRaw: tocRaw,
+          indexRaw: indexRaw,
+        });
+      } catch (preErr) {
+        throw new Error(
+          "Verifica sul PDF prima dell'invio:\n\n" +
+            String(preErr && preErr.message ? preErr.message : preErr) +
+            "\n\n(Invio al server annullato.)"
+        );
+      }
+
+      var fd = new FormData(form);
+      var res = await fetch("/api/ingest/submit", { method: "POST", body: fd });
+      var text = await res.text();
+      var data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        data = text;
+      }
+      if (!res.ok) show("err", data);
+      else show("ok", data);
+    } catch (err) {
+      show("err", String(err.message || err));
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
