@@ -1,31 +1,27 @@
 from __future__ import annotations
 
-import hashlib
-import sqlite3
-from datetime import datetime, timezone
 from pathlib import Path
 
 from pydantic import ValidationError
 
+from src.core.hashing import compute_file_sha256
 from src.models.request import (
     EnrichedIngestRequest,
     IngestInputErrorCode,
     IngestInputValidationError,
     IngestRequest,
-    SourceHashGateResult,
-    SourceHashGateStatus,
+)
+from src.persistence.book_sqlite import (
+    init_books_schema,
+    insert_book_minimal,
+    run_ingest_gate_phase,
+    source_hash_gate,
+    upsert_book_reicat,
+    verify_source_pdf_digest_matches,
 )
 
 
-def _compute_file_sha256(file_path: Path, chunk_size: int = 1024 * 1024) -> str:
-    hasher = hashlib.sha256()
-    with file_path.open("rb") as source_file:
-        while True:
-            chunk = source_file.read(chunk_size)
-            if not chunk:
-                break
-            hasher.update(chunk)
-    return hasher.hexdigest()
+_compute_file_sha256 = compute_file_sha256
 
 
 def _count_pdf_pages(file_path: Path) -> int:
@@ -135,7 +131,7 @@ def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
         )
 
     try:
-        source_sha256 = _compute_file_sha256(source_path)
+        source_sha256 = compute_file_sha256(source_path)
     except OSError as exc:
         raise ValueError(
             IngestInputValidationError(
@@ -152,123 +148,4 @@ def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
         request=request,
         source_sha256=source_sha256,
         source_pdf_path=str(source_path),
-    )
-
-
-def _validate_source_sha256(source_sha256: str) -> str:
-    normalized = source_sha256.strip().lower()
-    if len(normalized) != 64:
-        raise ValueError("source_sha256 must be a 64-char hex digest")
-    hex_chars = set("0123456789abcdef")
-    if any(char not in hex_chars for char in normalized):
-        raise ValueError("source_sha256 must be a valid hex digest")
-    return normalized
-
-
-def _utc_now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
-
-
-def init_books_schema(sqlite_path: str) -> None:
-    db_path = Path(sqlite_path)
-    db_path.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        with sqlite3.connect(db_path) as conn:
-            conn.execute(
-                """
-                CREATE TABLE IF NOT EXISTS books (
-                    source_sha256 TEXT PRIMARY KEY,
-                    schema_version TEXT NOT NULL,
-                    title TEXT NOT NULL,
-                    subtitle TEXT,
-                    authors_json TEXT NOT NULL,
-                    publisher TEXT,
-                    publication_year INTEGER,
-                    isbn TEXT,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL,
-                    last_seen_at TEXT NOT NULL,
-                    last_error TEXT
-                )
-                """
-            )
-    except sqlite3.Error as exc:
-        raise RuntimeError("unable to initialize books schema") from exc
-
-
-def insert_book_minimal(
-    sqlite_path: str,
-    source_sha256: str,
-    schema_version: str,
-    title: str,
-    authors_json: str,
-    subtitle: str | None = None,
-    publisher: str | None = None,
-    publication_year: int | None = None,
-    isbn: str | None = None,
-    last_error: str | None = None,
-) -> None:
-    digest = _validate_source_sha256(source_sha256)
-    now_iso = _utc_now_iso()
-    try:
-        with sqlite3.connect(sqlite_path) as conn:
-            conn.execute(
-                """
-                INSERT INTO books (
-                    source_sha256,
-                    schema_version,
-                    title,
-                    subtitle,
-                    authors_json,
-                    publisher,
-                    publication_year,
-                    isbn,
-                    created_at,
-                    updated_at,
-                    last_seen_at,
-                    last_error
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """,
-                (
-                    digest,
-                    schema_version,
-                    title,
-                    subtitle,
-                    authors_json,
-                    publisher,
-                    publication_year,
-                    isbn,
-                    now_iso,
-                    now_iso,
-                    now_iso,
-                    last_error,
-                ),
-            )
-    except sqlite3.IntegrityError as exc:
-        raise RuntimeError("book with source_sha256 already exists") from exc
-    except sqlite3.Error as exc:
-        raise RuntimeError("unable to insert minimal book row") from exc
-
-
-def source_hash_gate(source_sha256: str, sqlite_path: str) -> SourceHashGateResult:
-    digest = _validate_source_sha256(source_sha256)
-    try:
-        with sqlite3.connect(sqlite_path) as conn:
-            row = conn.execute(
-                "SELECT source_sha256 FROM books WHERE source_sha256 = ?",
-                (digest,),
-            ).fetchone()
-    except sqlite3.Error as exc:
-        raise RuntimeError("unable to read source hash from sqlite") from exc
-
-    if row is not None:
-        return SourceHashGateResult(
-            status=SourceHashGateStatus.DUPLICATE_SOURCE_HASH,
-            source_sha256=digest,
-            should_skip_pipeline=True,
-        )
-    return SourceHashGateResult(
-        status=SourceHashGateStatus.NEW_HASH,
-        source_sha256=digest,
-        should_skip_pipeline=False,
     )

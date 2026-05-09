@@ -167,8 +167,8 @@ Legenda: `[x]` completata, `[ ]` da fare.
 - [x] **T4 — Calcolo `sha256` sorgente**: funzione su PDF originale.
 - [x] **T5 — SourceHashGate**: verifica hash già noto e ritorno stato (`new_hash` vs `already_processed`/`duplicate_source_hash`).
 - [x] **T6 — Schema SQLite minimo**: tabella libro + campi REICAT + audit metadata update + chiave univoca `source_sha256`.
-- [ ] **T7 — Upsert REICAT per hash**: inserimento/aggiornamento metadata senza duplicati.
-- [ ] **T8 — Skip path completo**: se hash duplicato, niente OCR/LLM, solo audit + update metadata.
+- [x] **T7 — Upsert REICAT per hash**: inserimento/aggiornamento metadata senza duplicati.
+- [x] **T8 — Skip path completo**: se hash duplicato, niente OCR/LLM, solo audit + update metadata.
 - [ ] **T9 — PdfAlignment deterministico**: applicazione ordinata di `pages_to_remove` e generazione PDF allineato.
 - [ ] **T10 — Enumerazione pagine utili**: mappatura robusta pagina originale -> pagina allineata.
 - [ ] **T11 — Stage OCR base**: estrazione testo pagina per pagina.
@@ -180,4 +180,4 @@ Legenda: `[x]` completata, `[ ]` da fare.
 - [ ] **T17 — Builder `INDEX.md`**: concatenazione ordinata del range INDEX.
 - [ ] **T18 — Logging/audit minimo**: timestamp, hash, versione pipeline, esito.
 - [x] **T19 — Smoke test end-to-end (nuovo hash)**: copertura parziale con test automatici su validazione ed edge case.
-- [x] **T20 — Smoke test duplicate hash**: copertura preliminare lato hash calculation; scenario hash-gate completo ancora da implementare.
+- [x] **T20 — Smoke test duplicate hash**: calcolo hash, gate e `run_ingest_gate_phase` coperti da test automatici (`duplicate_source_hash`, skip metadata opzionale, upsert forzato su duplicato).

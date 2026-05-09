@@ -10,7 +10,10 @@ from pathlib import Path
 from typing import Any
 
 from src.core.config import ConfigurationError, load_settings
-from src.ingestion.request_validation import validate_and_enrich_request
+from src.ingestion.request_validation import (
+    run_ingest_gate_phase,
+    validate_and_enrich_request,
+)
 from src.models.request import IngestInputErrorCode, IngestInputValidationError
 
 
@@ -399,12 +402,17 @@ def run_ingest_http_server() -> None:
                     )
                 return
 
+            ingest_gate_phase = run_ingest_gate_phase(enriched, settings.sqlite_path)
+
             _send_json(
                 self,
                 200,
                 {
                     "ok": True,
                     "enriched": enriched.model_dump(mode="json", by_alias=True),
+                    "ingest_gate_phase": ingest_gate_phase.model_dump(
+                        mode="json", by_alias=True
+                    ),
                 },
             )
 

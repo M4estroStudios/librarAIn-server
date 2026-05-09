@@ -10,6 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 class IngestInputErrorCode(str, Enum):
     INPUT_SCHEMA_INVALID = "INPUT_SCHEMA_INVALID"
     PDF_NOT_FOUND = "PDF_NOT_FOUND"
+    SOURCE_DIGEST_MISMATCH = "SOURCE_DIGEST_MISMATCH"
     RANGE_INVALID = "RANGE_INVALID"
     PAGES_INVALID = "PAGES_INVALID"
     RANGE_INTERSECTS_REMOVED_PAGES = "RANGE_INTERSECTS_REMOVED_PAGES"
@@ -146,3 +147,16 @@ class SourceHashGateResult(BaseModel):
     status: SourceHashGateStatus
     source_sha256: str
     should_skip_pipeline: bool
+
+
+class BookUpsertResult(BaseModel):
+    source_sha256: str
+    was_inserted: bool
+    metadata_audit_row_id: int
+
+
+class IngestGatePhaseResult(BaseModel):
+    gate: SourceHashGateResult
+    pipeline_skipped: bool
+    book_upsert: BookUpsertResult | None = None
+    duplicate_skip_audit_row_id: int | None = None

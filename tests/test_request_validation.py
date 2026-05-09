@@ -15,7 +15,9 @@ from src.ingestion.request_validation import (
     _compute_file_sha256,
     init_books_schema,
     insert_book_minimal,
+    run_ingest_gate_phase,
     source_hash_gate,
+    upsert_book_reicat,
     validate_and_enrich_request,
 )
 from src.models.request import IngestInputErrorCode, SourceHashGateStatus
@@ -283,6 +285,170 @@ class RequestValidationTests(unittest.TestCase):
             self.assertTrue(bool(row[0]))
             self.assertTrue(bool(row[1]))
             self.assertTrue(bool(row[2]))
+
+    def test_upsert_book_reicat_inserts_updates_and_audits(self) -> None:
+        pdf_body = _minimal_pdf_bytes(130)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            pdf_path = Path(tmp_dir) / "book.pdf"
+            pdf_path.write_bytes(pdf_body)
+            sqlite_path = Path(tmp_dir) / "library.db"
+            payload_a = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
+            payload_a["reicat"]["titolo"] = "First Title"
+            payload_a["reicat"]["sottotitolo"] = "Sub A"
+            payload_a["reicat"]["editore"] = "Publisher A"
+            payload_a["reicat"]["curatore"] = ["Curator A"]
+            enriched_a = validate_and_enrich_request(payload_a)
+            r1 = upsert_book_reicat(enriched_a, str(sqlite_path))
+            self.assertTrue(r1.was_inserted)
+            digest = enriched_a.source_sha256
+            with sqlite3.connect(sqlite_path) as conn:
+                row = conn.execute(
+                    """
+                    SELECT title, subtitle, publisher, editors_json
+                    FROM books
+                    WHERE source_sha256 = ?
+                    """,
+                    (digest,),
+                ).fetchone()
+            self.assertIsNotNone(row)
+            assert row is not None
+            self.assertEqual(row[0], "First Title")
+            self.assertEqual(row[1], "Sub A")
+            self.assertEqual(row[2], "Publisher A")
+            self.assertIn("Curator A", json.loads(row[3] or "[]"))
+            payload_b = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
+            payload_b["reicat"]["titolo"] = "Second Title"
+            payload_b["reicat"]["sottotitolo"] = None
+            payload_b["reicat"]["editore"] = None
+            enriched_b = validate_and_enrich_request(payload_b)
+            self.assertFalse(enriched_b.request.reicat.editors)
+            r2 = upsert_book_reicat(enriched_b, str(sqlite_path))
+            self.assertFalse(r2.was_inserted)
+            with sqlite3.connect(sqlite_path) as conn:
+                events = conn.execute(
+                    """
+                    SELECT operation, prior_snapshot_json
+                    FROM book_metadata_audit ORDER BY id
+                    """
+                ).fetchall()
+                row_after = conn.execute(
+                    """
+                    SELECT title, subtitle FROM books WHERE source_sha256 = ?
+                    """,
+                    (digest,),
+                ).fetchone()
+            self.assertEqual(len(events), 2)
+            self.assertEqual(events[0][0], "insert")
+            self.assertIsNone(events[0][1])
+            self.assertEqual(events[1][0], "update")
+            self.assertIsNotNone(events[1][1])
+            prior = json.loads(str(events[1][1]))
+            self.assertEqual(prior.get("titolo"), "First Title")
+            assert row_after is not None
+            self.assertEqual(row_after[0], "Second Title")
+
+    def test_upsert_rejects_pdf_changed_after_validate(self) -> None:
+        pdf_body = _minimal_pdf_bytes(80)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            pdf_path = Path(tmp_dir) / "book.pdf"
+            pdf_path.write_bytes(pdf_body)
+            sqlite_path = Path(tmp_dir) / "library.db"
+            enriched = validate_and_enrich_request(
+                _valid_payload(str(pdf_path), pdf_pages=80)
+            )
+            pdf_path.write_bytes(_minimal_pdf_bytes(40))
+            with self.assertRaises(ValueError) as ctx:
+                upsert_book_reicat(enriched, str(sqlite_path))
+            err_payload = json.loads(str(ctx.exception))
+            self.assertEqual(
+                err_payload["code"], IngestInputErrorCode.SOURCE_DIGEST_MISMATCH.value
+            )
+
+    def test_run_ingest_gate_phase_new_hash_does_not_skip(self) -> None:
+        pdf_body = _minimal_pdf_bytes(130)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            pdf_path = Path(tmp_dir) / "book.pdf"
+            pdf_path.write_bytes(pdf_body)
+            sqlite_path = Path(tmp_dir) / "library.db"
+            enriched = validate_and_enrich_request(
+                _valid_payload(str(pdf_path), pdf_pages=130)
+            )
+            phase = run_ingest_gate_phase(enriched, str(sqlite_path))
+        self.assertEqual(phase.gate.status, SourceHashGateStatus.NEW_HASH)
+        self.assertFalse(phase.pipeline_skipped)
+        self.assertIsNone(phase.book_upsert)
+        self.assertIsNone(phase.duplicate_skip_audit_row_id)
+
+    def test_run_ingest_gate_phase_duplicate_updates_metadata_when_forced(self) -> None:
+        pdf_body = _minimal_pdf_bytes(130)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            pdf_path = Path(tmp_dir) / "book.pdf"
+            pdf_path.write_bytes(pdf_body)
+            sqlite_path = Path(tmp_dir) / "library.db"
+            payload_first = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
+            payload_first["reicat"]["titolo"] = "First Title"
+            enriched_first = validate_and_enrich_request(payload_first)
+            self.assertEqual(
+                run_ingest_gate_phase(enriched_first, str(sqlite_path)).gate.status,
+                SourceHashGateStatus.NEW_HASH,
+            )
+            upsert_book_reicat(enriched_first, str(sqlite_path))
+            digest = enriched_first.source_sha256
+            payload_second = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
+            payload_second["reicat"]["titolo"] = "Second Title"
+            enriched_second = validate_and_enrich_request(payload_second)
+            self.assertEqual(enriched_second.source_sha256, digest)
+            phase = run_ingest_gate_phase(enriched_second, str(sqlite_path))
+            self.assertEqual(phase.gate.status, SourceHashGateStatus.DUPLICATE_SOURCE_HASH)
+            self.assertTrue(phase.pipeline_skipped)
+            assert phase.book_upsert is not None
+            self.assertFalse(phase.book_upsert.was_inserted)
+            self.assertIsNone(phase.duplicate_skip_audit_row_id)
+            with sqlite3.connect(sqlite_path) as conn:
+                row = conn.execute(
+                    "SELECT title FROM books WHERE source_sha256 = ?", (digest,)
+                ).fetchone()
+            self.assertIsNotNone(row)
+            assert row is not None
+            self.assertEqual(row[0], "Second Title")
+
+    def test_run_ingest_gate_phase_duplicate_without_metadata_touch_only(self) -> None:
+        pdf_body = _minimal_pdf_bytes(130)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            pdf_path = Path(tmp_dir) / "book.pdf"
+            pdf_path.write_bytes(pdf_body)
+            sqlite_path = Path(tmp_dir) / "library.db"
+            payload_first = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
+            payload_first["reicat"]["titolo"] = "Stable Title"
+            enriched_first = validate_and_enrich_request(payload_first)
+            run_ingest_gate_phase(enriched_first, str(sqlite_path))
+            upsert_book_reicat(enriched_first, str(sqlite_path))
+            digest = enriched_first.source_sha256
+            payload_second = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
+            payload_second["reicat"]["titolo"] = "Ignored Title"
+            payload_second["options"] = {"force_metadata_update_on_duplicate_hash": False}
+            phase = run_ingest_gate_phase(
+                validate_and_enrich_request(payload_second), str(sqlite_path)
+            )
+            self.assertTrue(phase.pipeline_skipped)
+            self.assertIsNone(phase.book_upsert)
+            assert phase.duplicate_skip_audit_row_id is not None
+            with sqlite3.connect(sqlite_path) as conn:
+                row = conn.execute(
+                    "SELECT title FROM books WHERE source_sha256 = ?", (digest,)
+                ).fetchone()
+                evt = conn.execute(
+                    """
+                    SELECT operation FROM book_metadata_audit
+                    WHERE id = ?
+                    """,
+                    (phase.duplicate_skip_audit_row_id,),
+                ).fetchone()
+            self.assertIsNotNone(row)
+            assert row is not None
+            assert evt is not None
+            self.assertEqual(row[0], "Stable Title")
+            self.assertEqual(evt[0], "duplicate_skip_no_metadata")
 
 
 if __name__ == "__main__":
