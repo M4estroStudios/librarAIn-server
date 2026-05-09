@@ -1,4 +1,6 @@
-.PHONY: check-python312 setup-env test clean-pycache
+.PHONY: check-python312 setup-env test clean-pycache run-server
+
+PYTHON ?= $(shell test -x ./venv/bin/python && echo ./venv/bin/python || echo python3)
 
 check-python312:
 	python3.12 -c "import sys; raise SystemExit(0 if sys.version_info[:2] == (3, 12) else 'Python 3.12 is required')"
@@ -12,6 +14,9 @@ setup-env: check-python312
 test:
 	python3 -m unittest discover -s tests -p "test_*.py"
 	$(MAKE) clean-pycache
+
+run-server:
+	$(PYTHON) -m src.api.ingest_http_server
 
 clean-pycache:
 	python3 -c "import pathlib, shutil; [shutil.rmtree(path, ignore_errors=True) for path in pathlib.Path('.').rglob('__pycache__')]"
