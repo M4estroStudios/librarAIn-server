@@ -148,4 +148,5 @@ def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
         request=request,
         source_sha256=source_sha256,
         source_pdf_path=str(source_path),
+        source_pdf_page_count=pdf_page_count,
     )

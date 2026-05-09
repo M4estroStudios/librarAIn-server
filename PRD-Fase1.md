@@ -169,12 +169,12 @@ Legenda: `[x]` completata, `[ ]` da fare.
 - [x] **T6 — Schema SQLite minimo**: tabella libro + campi REICAT + audit metadata update + chiave univoca `source_sha256`.
 - [x] **T7 — Upsert REICAT per hash**: inserimento/aggiornamento metadata senza duplicati.
 - [x] **T8 — Skip path completo**: se hash duplicato, niente OCR/LLM, solo audit + update metadata.
-- [ ] **T9 — PdfAlignment deterministico**: applicazione ordinata di `pages_to_remove` e generazione PDF allineato.
-- [ ] **T10 — Enumerazione pagine utili**: mappatura robusta pagina originale -> pagina allineata.
+- [x] **T9 — PdfAlignment deterministico**: applicazione ordinata di `pages_to_remove` e generazione PDF allineato.
+- [x] **T10 — Enumerazione pagine utili**: mappatura robusta pagina originale -> pagina allineata.
 - [ ] **T11 — Stage OCR base**: estrazione testo pagina per pagina.
 - [ ] **T12 — Stage Vision refine**: raffinamento su endpoint OpenAI-compatible (locale/esterno configurabile).
 - [ ] **T13 — Stage Editor markdown refine**: normalizzazione finale markdown.
-- [ ] **T14 — Orchestrazione concorrente**: coda job con `max_parallel`, retry, timeout e rate-limit da config.
+- [ ] **T14 — Orchestrazione concorrente**: coda job con `MAX_PARALLEL_REQUEST`, retry, timeout e rate-limit da config.
 - [ ] **T15 — Persistenza pagine `.md`**: una pagina markdown per ogni pagina utile.
 - [ ] **T16 — Builder `TOC.md`**: concatenazione ordinata del range TOC.
 - [ ] **T17 — Builder `INDEX.md`**: concatenazione ordinata del range INDEX.

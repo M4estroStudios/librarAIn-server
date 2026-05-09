@@ -15,6 +15,8 @@ class IngestInputErrorCode(str, Enum):
     PAGES_INVALID = "PAGES_INVALID"
     RANGE_INTERSECTS_REMOVED_PAGES = "RANGE_INTERSECTS_REMOVED_PAGES"
     REICAT_MISSING_REQUIRED_FIELDS = "REICAT_MISSING_REQUIRED_FIELDS"
+    PDF_ALIGNMENT_FAILED = "PDF_ALIGNMENT_FAILED"
+    PAGE_ENUMERATION_MISMATCH = "PAGE_ENUMERATION_MISMATCH"
 
 
 class SourceHashGateStatus(str, Enum):
@@ -141,6 +143,7 @@ class EnrichedIngestRequest(BaseModel):
     request: IngestRequest
     source_sha256: str
     source_pdf_path: str
+    source_pdf_page_count: int
 
 
 class SourceHashGateResult(BaseModel):
@@ -160,3 +163,23 @@ class IngestGatePhaseResult(BaseModel):
     pipeline_skipped: bool
     book_upsert: BookUpsertResult | None = None
     duplicate_skip_audit_row_id: int | None = None
+
+
+class PdfAlignmentResult(BaseModel):
+    aligned_pdf_path: str
+    source_sha256: str
+    original_page_count: int
+    aligned_page_count: int
+    original_page_to_aligned_page: dict[int, int]
+    aligned_page_to_original_page: dict[int, int]
+
+
+class UsefulPagesEnumeration(BaseModel):
+    source_sha256: str
+    original_page_count: int
+    aligned_page_count: int
+    useful_original_pages: list[int]
+    original_page_to_aligned_page: dict[int, int]
+    aligned_page_to_original_page: dict[int, int]
+    toc_range_aligned: PageRange
+    index_range_aligned: PageRange

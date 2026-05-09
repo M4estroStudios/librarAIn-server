@@ -10,6 +10,8 @@ from pathlib import Path
 from typing import Any
 
 from src.core.config import ConfigurationError, load_settings
+from src.ingestion.page_enumeration import build_useful_pages_enumeration
+from src.ingestion.pdf_alignment import maybe_run_pdf_alignment
 from src.ingestion.request_validation import (
     run_ingest_gate_phase,
     validate_and_enrich_request,
@@ -404,17 +406,74 @@ def run_ingest_http_server() -> None:
 
             ingest_gate_phase = run_ingest_gate_phase(enriched, settings.sqlite_path)
 
-            _send_json(
-                self,
-                200,
-                {
-                    "ok": True,
-                    "enriched": enriched.model_dump(mode="json", by_alias=True),
-                    "ingest_gate_phase": ingest_gate_phase.model_dump(
-                        mode="json", by_alias=True
-                    ),
-                },
-            )
+            try:
+                pdf_alignment = maybe_run_pdf_alignment(
+                    enriched,
+                    ingest_gate_phase,
+                    settings.processed_pdf_input_dir,
+                    page_range_per_thread=settings.page_range_per_thread,
+                )
+            except ValueError as exc:
+                try:
+                    err_model = IngestInputValidationError.model_validate_json(str(exc))
+                    _send_json(
+                        self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
+                    )
+                except ValueError:
+                    _send_json(
+                        self,
+                        400,
+                        {
+                            "ok": False,
+                            "errors": {
+                                "code": "PDF_ALIGNMENT_FAILED",
+                                "message": str(exc),
+                                "field": None,
+                            },
+                        },
+                    )
+                return
+
+            try:
+                useful_pages_enumeration = build_useful_pages_enumeration(
+                    enriched, pdf_alignment
+                )
+            except ValueError as exc:
+                try:
+                    err_model = IngestInputValidationError.model_validate_json(str(exc))
+                    _send_json(
+                        self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
+                    )
+                except ValueError:
+                    _send_json(
+                        self,
+                        400,
+                        {
+                            "ok": False,
+                            "errors": {
+                                "code": "PAGE_ENUMERATION_FAILED",
+                                "message": str(exc),
+                                "field": None,
+                            },
+                        },
+                    )
+                return
+
+            payload_out: dict[str, Any] = {
+                "ok": True,
+                "enriched": enriched.model_dump(mode="json", by_alias=True),
+                "ingest_gate_phase": ingest_gate_phase.model_dump(mode="json", by_alias=True),
+                "pdf_alignment": (
+                    pdf_alignment.model_dump(mode="json", by_alias=True)
+                    if pdf_alignment is not None
+                    else None
+                ),
+                "useful_pages_enumeration": useful_pages_enumeration.model_dump(
+                    mode="json", by_alias=True
+                ),
+            }
+
+            _send_json(self, 200, payload_out)
 
     httpd = HTTPServer((host, port), IngestHandler)
     print(f"ingest http server listening on http://{host}:{port}")

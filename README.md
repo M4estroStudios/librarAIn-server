@@ -100,7 +100,8 @@ La configurazione runtime centralizzata è gestita da:
 
 ### Variabili opzionali (con default)
 
-- `MAX_PARALLEL` (default `2`)
+- `MAX_PARALLEL_REQUEST` (default `2`)
+- `PAGE_RANGE_PER_THREAD` (default `10`, pagine PDF sorgenti per lettore nel parallelismo di allineamento)
 - `TIMEOUT_SECONDS` (default `120`)
 - `RETRY_ATTEMPTS` (default `2`)
 - `RATE_LIMIT_PER_MINUTE` (default `60`)
@@ -118,6 +119,8 @@ La configurazione runtime centralizzata è gestita da:
 In caso di variabili mancanti o invalide, il loader fallisce in modo esplicito con messaggio aggregato e riferimento a `example.env`.
 
 `sqlite_path` viene derivato automaticamente come `<DATA_ROOT>/db/library.db`.
+
+I PDF sorgente con le pagine indicate in `pages_to_remove` già rimosse (PDF allineato / normalizzati) devono essere scritti sotto `<DATA_ROOT>/input/processed` (di default `data/input/processed`); nel codice questo path è disponibile come `Settings.processed_pdf_input_dir`.
 
 ## Schema richiesta ingestione (MVP v1.0)
 
@@ -227,4 +230,10 @@ Per i test e per l'inserimento minimo è disponibile `insert_book_minimal(...)`,
   }
 }
 ```
+
+### Risposta `POST /api/ingest/submit`
+
+In caso di successo include `ingest_gate_phase` come prima e, se la pipeline non è stata saltata per hash duplicato, `pdf_alignment` con il path assoluto del PDF allineato sotto `<DATA_ROOT>/input/processed` (`<source_sha256>.pdf`) e le mappe `original_page_to_aligned_page` / `aligned_page_to_original_page` (pagine 1-based). Se l’hash è duplicato e il percorso di skip è attivo, `pdf_alignment` è `null`.
+
+È sempre presente `useful_pages_enumeration` (T10): elenco ordinato delle pagine originali utili, mappe bidirezionali allineamento 1-based, e `toc_range_aligned` / `index_range_aligned` (range TOC/INDEX proiettati sul PDF allineato). Con `pdf_alignment` valorizzato, le mappe sono incrociate con l’artifact prodotto in T9; con skip duplicati restano ricavate deterministicamente dall’input e da `source_pdf_page_count`.
 

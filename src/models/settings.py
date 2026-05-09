@@ -13,14 +13,21 @@ class Settings(BaseModel):
     openai_api_key: str | None = Field(default=None, alias="OPENAI_API_KEY")
     vision_model: str | None = Field(default=None, alias="VISION_MODEL")
     editor_model: str | None = Field(default=None, alias="EDITOR_MODEL")
-    max_parallel: int = Field(default=2, gt=0, alias="MAX_PARALLEL")
+    max_parallel_request: int = Field(default=2, gt=0, alias="MAX_PARALLEL_REQUEST")
     timeout_seconds: int = Field(default=120, gt=0, alias="TIMEOUT_SECONDS")
     retry_attempts: int = Field(default=2, ge=0, alias="RETRY_ATTEMPTS")
     rate_limit_per_minute: int = Field(default=60, gt=0, alias="RATE_LIMIT_PER_MINUTE")
+    page_range_per_thread: int = Field(
+        default=10, ge=1, alias="PAGE_RANGE_PER_THREAD"
+    )
 
     @property
     def sqlite_path(self) -> str:
         return str(Path(self.data_root) / "db" / "library.db")
+
+    @property
+    def processed_pdf_input_dir(self) -> str:
+        return str(Path(self.data_root) / "input" / "processed")
 
     @model_validator(mode="after")
     def validate_provider_requirements(self) -> "Settings":

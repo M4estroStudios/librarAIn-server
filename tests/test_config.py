@@ -17,7 +17,7 @@ class ConfigLoaderTests(unittest.TestCase):
                     [
                         "DATA_ROOT=data",
                         "OPENAI_PROVIDER=local",
-                        "MAX_PARALLEL=4",
+                        "MAX_PARALLEL_REQUEST=4",
                     ]
                 ),
                 encoding="utf-8",
@@ -27,8 +27,9 @@ class ConfigLoaderTests(unittest.TestCase):
 
         self.assertEqual(settings.data_root, "data")
         self.assertEqual(settings.sqlite_path, "data/db/library.db")
+        self.assertEqual(settings.processed_pdf_input_dir, "data/input/processed")
         self.assertEqual(settings.openai_provider, "local")
-        self.assertEqual(settings.max_parallel, 4)
+        self.assertEqual(settings.max_parallel_request, 4)
         self.assertEqual(settings.timeout_seconds, 120)
 
     def test_load_settings_missing_required_vars(self) -> None:
@@ -52,7 +53,7 @@ class ConfigLoaderTests(unittest.TestCase):
                     [
                         "DATA_ROOT=data",
                         "OPENAI_PROVIDER=local",
-                        "MAX_PARALLEL=zero",
+                        "MAX_PARALLEL_REQUEST=zero",
                     ]
                 ),
                 encoding="utf-8",
@@ -63,7 +64,7 @@ class ConfigLoaderTests(unittest.TestCase):
 
         message = str(ctx.exception)
         self.assertIn("Invalid env vars", message)
-        self.assertIn("MAX_PARALLEL", message)
+        self.assertIn("MAX_PARALLEL_REQUEST", message)
 
     def test_load_settings_remote_without_credentials(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -103,6 +104,7 @@ class ConfigLoaderTests(unittest.TestCase):
 
         self.assertEqual(settings.retry_attempts, 2)
         self.assertEqual(settings.rate_limit_per_minute, 60)
+        self.assertEqual(settings.page_range_per_thread, 10)
 
 
 if __name__ == "__main__":

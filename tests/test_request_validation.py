@@ -75,6 +75,7 @@ class RequestValidationTests(unittest.TestCase):
             )
             self.assertEqual(result.request.source_pdf_path, str(tmp_path))
             self.assertEqual(result.source_pdf_path, str(tmp_path))
+            self.assertEqual(result.source_pdf_page_count, 130)
             self.assertEqual(result.source_sha256, hashlib.sha256(pdf_body).hexdigest())
         finally:
             tmp_path.unlink(missing_ok=True)
