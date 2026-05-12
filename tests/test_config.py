@@ -26,7 +26,7 @@ class ConfigLoaderTests(unittest.TestCase):
                 settings = load_settings(str(env_path))
 
         self.assertEqual(settings.data_root, "data")
-        self.assertEqual(settings.sqlite_path, "data/db/library.db")
+        self.assertEqual(settings.sqlite_path, "data/db/biblioteca.db")
         self.assertEqual(settings.processed_pdf_input_dir, "data/input/processed")
         self.assertEqual(settings.openai_provider, "local")
         self.assertEqual(settings.max_parallel_request, 4)

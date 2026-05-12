@@ -199,7 +199,7 @@ class RequestValidationTests(unittest.TestCase):
 
     def test_source_hash_gate_returns_new_hash_when_digest_is_unknown(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             init_books_schema(str(sqlite_path))
             digest = hashlib.sha256(b"new-book").hexdigest()
             result = source_hash_gate(digest, str(sqlite_path))
@@ -209,7 +209,7 @@ class RequestValidationTests(unittest.TestCase):
 
     def test_source_hash_gate_returns_duplicate_when_digest_already_seen(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             init_books_schema(str(sqlite_path))
             digest = hashlib.sha256(b"duplicate-book").hexdigest()
             insert_book_minimal(
@@ -225,14 +225,14 @@ class RequestValidationTests(unittest.TestCase):
 
     def test_source_hash_gate_rejects_invalid_hash_input(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             init_books_schema(str(sqlite_path))
             with self.assertRaises(ValueError):
                 source_hash_gate("not-a-sha", str(sqlite_path))
 
     def test_init_books_schema_creates_books_table_with_primary_key(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             init_books_schema(str(sqlite_path))
             with sqlite3.connect(sqlite_path) as conn:
                 row = conn.execute(
@@ -242,7 +242,7 @@ class RequestValidationTests(unittest.TestCase):
 
     def test_insert_book_minimal_rejects_duplicate_source_sha256(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             digest = hashlib.sha256(b"duplicate-book").hexdigest()
             init_books_schema(str(sqlite_path))
             insert_book_minimal(
@@ -263,7 +263,7 @@ class RequestValidationTests(unittest.TestCase):
 
     def test_insert_book_minimal_sets_audit_fields(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             digest = hashlib.sha256(b"audit-book").hexdigest()
             init_books_schema(str(sqlite_path))
             insert_book_minimal(
@@ -292,7 +292,7 @@ class RequestValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             pdf_path = Path(tmp_dir) / "book.pdf"
             pdf_path.write_bytes(pdf_body)
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             payload_a = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
             payload_a["reicat"]["titolo"] = "First Title"
             payload_a["reicat"]["sottotitolo"] = "Sub A"
@@ -353,7 +353,7 @@ class RequestValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             pdf_path = Path(tmp_dir) / "book.pdf"
             pdf_path.write_bytes(pdf_body)
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             enriched = validate_and_enrich_request(
                 _valid_payload(str(pdf_path), pdf_pages=80)
             )
@@ -370,7 +370,7 @@ class RequestValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             pdf_path = Path(tmp_dir) / "book.pdf"
             pdf_path.write_bytes(pdf_body)
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             enriched = validate_and_enrich_request(
                 _valid_payload(str(pdf_path), pdf_pages=130)
             )
@@ -385,7 +385,7 @@ class RequestValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             pdf_path = Path(tmp_dir) / "book.pdf"
             pdf_path.write_bytes(pdf_body)
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             payload_first = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
             payload_first["reicat"]["titolo"] = "First Title"
             enriched_first = validate_and_enrich_request(payload_first)
@@ -418,7 +418,7 @@ class RequestValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             pdf_path = Path(tmp_dir) / "book.pdf"
             pdf_path.write_bytes(pdf_body)
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             payload_first = deepcopy(_valid_payload(str(pdf_path), pdf_pages=130))
             payload_first["reicat"]["titolo"] = "Stable Title"
             enriched_first = validate_and_enrich_request(payload_first)

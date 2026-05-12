@@ -231,7 +231,7 @@ class PdfAlignmentTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             raw_path = Path(tmp_dir) / "book.pdf"
             raw_path.write_bytes(pdf_body)
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             payload = deepcopy(_valid_payload(str(raw_path), pdf_pages=20))
             enriched_once = validate_and_enrich_request(payload)
             phase_first = run_ingest_gate_phase(enriched_once, str(sqlite_path))

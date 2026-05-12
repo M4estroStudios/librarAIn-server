@@ -63,7 +63,7 @@ class PageEnumerationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             raw_path = Path(tmp_dir) / "book.pdf"
             raw_path.write_bytes(pdf_body)
-            sqlite_path = Path(tmp_dir) / "library.db"
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
             payload = {
                 "schema_version": "1.0",
                 "source_pdf_path": str(raw_path),

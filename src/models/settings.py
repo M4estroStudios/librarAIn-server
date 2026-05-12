@@ -23,7 +23,7 @@ class Settings(BaseModel):
 
     @property
     def sqlite_path(self) -> str:
-        return str(Path(self.data_root) / "db" / "library.db")
+        return str(Path(self.data_root) / "db" / "biblioteca.db")
 
     @property
     def processed_pdf_input_dir(self) -> str:
