@@ -13,7 +13,7 @@ Obiettivo: **tre pilastri** chiari (ingestione, ricerca, dati) senza minimalismo
 - **`persistence/`** (o `data_layer/`): accesso a SQLite, file JSON di biblioteca, registro hash — “dove stanno i dati” lato codice, separato dalla pipeline.
 - **`core/`**: configurazione `.env`, logging, costanti condivise — sottile, non una copia del progetto.
 - **`api/`**: HTTP/CLI che smista verso `ingestion` e (poi) `search`, senza logica di dominio pesante.
-- **`data/` (root)**: solo file su disco (input PDF, output libri, `library.db`, `TOC.json` / `INDEX.json`) — non confonderla con `src/...`.
+- **`data/` (root)**: solo file su disco (input PDF, output libri, `biblioteca.csv`, `TOC.json` / `INDEX.json`) — non confonderla con `src/...`.
 
 ### Albero indicativo (solo cartelle, con commenti)
 
@@ -30,9 +30,9 @@ librarAIn-server/ # radice repository
 ├── data/ # solo dati su disco, mai codice
 │   ├── db/ # database principale e snapshot checkpoint
 │   │   ├── checkpoints/ # snapshot/versioni storiche del db
-│   │   │   ├── library.<yyyy>.<mm>.<dd>.db # checkpoint giornaliero
+│   │   │   ├── biblioteca.<yyyy>.<mm>.<dd>.csv # checkpoint giornaliero (copia di biblioteca.csv)
 │   │   │   └── ... # altri checkpoint (es. più date/versioni)
-│   │   └── library.db # database SQLite corrente
+│   │   └── biblioteca.csv # database SQLite corrente (nome file convenzionale)
 │   ├── input/ # PDF sorgente in ingresso
 │   │   ├── raw/ # file originali caricati dall'operatore
 │   │   │   ├── <libro>.pdf # nome file originale
@@ -118,7 +118,7 @@ La configurazione runtime centralizzata è gestita da:
 
 In caso di variabili mancanti o invalide, il loader fallisce in modo esplicito con messaggio aggregato e riferimento a `example.env`.
 
-`sqlite_path` viene derivato automaticamente come `<DATA_ROOT>/db/library.db`.
+`sqlite_path` viene derivato automaticamente come `<DATA_ROOT>/db/biblioteca.csv` (file binario SQLite; l’estensione `.csv` è solo convenzione di naming richiesta dal prodotto, non un export CSV).
 
 I PDF sorgente con le pagine indicate in `pages_to_remove` già rimosse (PDF allineato / normalizzati) devono essere scritti sotto `<DATA_ROOT>/input/processed` (di default `data/input/processed`); nel codice questo path è disponibile come `Settings.processed_pdf_input_dir`.
 

@@ -393,8 +393,269 @@ OK
 
 ---
 
-## Sintesi finale
+## Estensione MVP — completamento della Fase 1 Upload
 
-Il prodotto **è solido sul completato** (T1–T10 + T20). **Non rilavorerei** il PRD ma applicherei tre *patch chirurgiche* (PRE-D) per rimuovere la dipendenza dangling, esplicitare il modello async e sancire la telemetria minima nel MVP. **Prima di T11**, eseguirei i tre tasks PRE-A/B/C (ottimizzazioni mirate sul codice già scritto) e **T18.5** (refactor HTTP), perché altrimenti T11–T17 si arrampicano su un trasporto inadeguato.
+> Allineata al PRD `PRD-Fase1.md` rev. corrente. Prompt auto-contenuti, con modello consigliato (Opus = ragionamento complesso/architettura; Sonnet = codice deterministico + test; Composer 2 = scaffolding e IO).
 
-Se vuoi procedere, posso aprire subito **PRE-D** (patch del PRD) e farti revisionare la diff.
+### T22 — Composer 2 — Builder `<slug>.md` (Σ pages per libro)
+```text
+Repo: librarAIn-server. Crea src/ingestion/book_md_builder.py.
+- Funzione build_book_md(book_output: BookOutput, useful_pages_enumeration) -> Path:
+  - Concatena, in ordine ascendente di aligned_page, TUTTI i file data/output/<sha>/pages/p.NNNN.<slug>.md presenti nel manifest.
+  - Scrive data/output/<sha>/<slug>.md con header "# <reicat.titolo>\n\n_<reicat.autore[0]> — <reicat.anno_di_pubblicazione>_\n\n" + body concatenato (separa pagine con "\n\n---\n\n<!-- p.<aligned> (orig. p.<original>) -->\n\n").
+  - Idempotente (rewrite atomico via tempfile + os.replace; no-op se byte hash identico).
+- Integra T22 nell'orchestratore: viene eseguito DOPO T15 e PRIMA di T16/T17.
+- Test tests/test_book_md_builder.py con 3 pagine mock: file presente, ordine deterministico, byte-equality alla seconda invocazione.
+DoD: il file <slug>.md esiste, contiene tutte le pagine in ordine, è rigenerabile in modo idempotente.
+```
+
+### T23 — Sonnet — Polyindex TOC.json updater
+```text
+Repo: librarAIn-server. Crea src/ingestion/polyindex/__init__.py e src/ingestion/polyindex/toc_json.py.
+- Definisci la struttura canonica:
+    {
+      "schema_version": "1.0",
+      "books": {
+        "<source_sha256>": {
+          "title": "...",
+          "slug": "...",
+          "chapters": [{"label": str, "aligned_page_start": int, "aligned_page_end": int, "original_page_start": int, "original_page_end": int}]
+        }
+      }
+    }
+- Funzione parse_chapters_from_toc_md(toc_md_path: Path, useful_pages_enumeration) -> list[ChapterEntry]:
+  - Parsing deterministico delle righe del TOC: riconosce pattern "Capitolo <N>", "Cap. <N>", "<titolo capitolo> ... <numero pagina>" (regex configurabili in chapter_patterns.py).
+  - Le pagine nel TOC sono ORIGINAL; converti in aligned via useful_pages_enumeration.
+  - Heuristic: pagine non presenti nel mapping (es. fuori range stampato) -> log warning + skip riga.
+- Funzione update_polyindex_toc(polyindex_dir: Path, source_sha256: str, book_entry: dict) -> Path:
+  - Acquisisce file lock su polyindex_dir/.toc.lock (fcntl.LOCK_EX su Unix; fallback noop su Windows con TODO).
+  - Carica polyindex/TOC.json se esiste, altrimenti dict iniziale; merge per source_sha256 (sovrascrive l'entry esistente, mai duplica).
+  - Scrive atomicamente: scrittura su polyindex/TOC.json.tmp + os.replace.
+  - Bumpa "schema_version" se necessario (per ora 1.0 fisso).
+- Test tests/test_polyindex_toc.py:
+  1) parser su TOC.md mock con 5 capitoli -> entries attese.
+  2) update_polyindex_toc su file vuoto -> 1 libro, struttura corretta.
+  3) update_polyindex_toc su file esistente con stesso sha -> sostituzione idempotente (no crescita).
+  4) due chiamate concorrenti (thread) -> nessuna corruzione (semplice mock di scrittura serializzata).
+DoD: TOC.json prodotto e aggiornato, niente duplicati, scrittura atomica, parser tollerante a righe sporche.
+```
+
+### T24 — Sonnet — Parser deterministico `INDEX.md` → soggetti grezzi
+```text
+Repo: librarAIn-server. Crea src/ingestion/polyindex/index_md_parser.py.
+- Funzione parse_index_md(index_md_path: Path, useful_pages_enumeration) -> list[RawSubject]:
+  - RawSubject = {"raw_label": str, "original_pages": list[int], "aligned_pages": list[int]}
+  - Riconosce pattern tipici degli INDEX analitici italiani:
+    - "Lemma, 12, 45, 88"
+    - "Lemma — 12-15, 22"
+    - "Lemma vedi Altro Lemma" (cross-reference: registra come alias del target)
+  - Normalizzazione leggera: trim, collapse spazi multipli, gestione delle virgole vs punti come separatori di pagina.
+  - Espansione range "12-15" -> [12,13,14,15].
+  - Conversione pagine ORIGINAL -> ALIGNED via useful_pages_enumeration; pagine fuori mapping -> log warning + skip.
+- Funzione normalize_label(raw: str) -> str: lowercase NFKD senza accenti, collapse spazi, strip punteggiatura terminale; usata come chiave di confronto deterministico nel matcher (T25).
+- Test tests/test_index_md_parser.py: 6 casi tra cui range, virgole, "vedi", caratteri accentati.
+DoD: parser robusto a 6+ varianti di formattazione, output sempre con aligned_pages valido o riga scartata con motivo.
+```
+
+### T25 — Opus — AI Subject Matcher (normalization + embeddings + LLM dirimitore)
+```text
+Repo: librarAIn-server. Crea src/ingestion/polyindex/subject_matcher.py e src/ingestion/polyindex/prompts/subject_matcher/v1.md.
+Obiettivo: dato un RawSubject (T24) e lo stato corrente di polyindex/INDEX.json, decidere se è (a) match con un canonical esistente, (b) nuovo canonical, (c) alias di un canonical esistente.
+
+Pipeline a 2 stadi:
+1) DETERMINISTIC FIRST PASS
+   - normalize_label() identico tra raw e canonical -> hit secco -> canonical match.
+   - normalize_label() del raw matcha uno qualsiasi degli aliases di un canonical -> alias hit -> canonical match.
+   - Altrimenti -> candidate set via similarità lessicale (rapidfuzz token_sort_ratio >= 90) tra normalized -> "borderline".
+   - Se nessun candidate e MATCHER_USE_AI=false -> registra come nuovo canonical.
+
+2) AI SECOND PASS (eseguito solo su borderline OPPURE quando MATCHER_USE_AI=true e nessun hit del primo stadio)
+   - Embedding del raw_label via openai.embeddings(model=settings.matcher_embedding_model).
+   - Per ciascun canonical candidato (top-K=10 dei più simili lessicalmente o dei più recenti se K corti): embedding cache-ato in tabella SQLite subject_embeddings (vedi sotto). Distanza coseno.
+   - Se max_sim >= settings.matcher_similarity_threshold (default 0.86) -> proponi merge.
+   - LLM dirimitore (solo se 0.82 <= max_sim < 0.92): chat completion con prompt v1 vincolante in italiano: "decidi se due lemmi indicano la stessa entità storica/concettuale. Rispondi SOLO con JSON {\"same\": bool, \"reason\": str}". temperature=0.1.
+   - Se dirimitore "same" -> canonical match + aggiungi raw_label originale agli aliases.
+   - Altrimenti -> nuovo canonical (id = uuid stabile da label normalizzata + timestamp, oppure slug; opta per slug + counter su collisione).
+
+Persistence:
+- Aggiungi migration 4 in src/persistence/book_sqlite.py: tabella subject_embeddings(canonical_id TEXT PRIMARY KEY, label TEXT, embedding BLOB, model TEXT, created_at TEXT).
+- Funzioni get/set embedding (BLOB = np.array float32 -> bytes; se non vuoi numpy, usa struct.pack).
+- Audit: tabella subject_match_audit(id INTEGER PK, request_id TEXT, raw_label TEXT, normalized TEXT, decision TEXT, canonical_id TEXT, similarity REAL, ai_used INTEGER, ai_reason TEXT, created_at TEXT).
+
+API funzionale:
+- match_subject(raw_subject: RawSubject, polyindex_state: dict, client, sqlite_path, settings, request_id) -> MatchDecision:
+    {action: "match" | "new" | "alias", canonical_id: str, similarity?: float, ai_used: bool}
+
+Test tests/test_subject_matcher.py:
+- Fake openai client deterministico: ritorna embedding fisso per label specifiche; ritorna {"same": true|false} su input fissi.
+- Casi: hit secco normalizzazione, alias hit, borderline lessicale risolto deterministicamente, borderline risolto da LLM "same", borderline risolto da LLM "different".
+- Idempotenza: due chiamate consecutive sullo stesso raw_subject ritornano la stessa decision (cache embedding usata).
+
+DoD: matcher con 5 casi testati green; audit log popolato; embedding cache funziona; prompt v1 versionato in repo; mai chiamate di rete reali nei test.
+```
+
+### T26 — Opus — Polyindex INDEX.json updater (merge atomico cross-book)
+```text
+Repo: librarAIn-server. Crea src/ingestion/polyindex/index_json.py.
+- Struttura canonica di polyindex/INDEX.json:
+    {
+      "schema_version": "1.0",
+      "subjects": {
+        "<canonical_id>": {
+          "canonical_label": str,
+          "aliases": [str, ...],
+          "books": {
+            "<source_sha256>": {"aligned_pages": [int, ...], "original_pages": [int, ...]}
+          }
+        }
+      }
+    }
+- Funzione update_polyindex_index(polyindex_dir, source_sha256, raw_subjects, client, sqlite_path, settings, request_id) -> Path:
+  1) Acquisisce file lock su polyindex_dir/.index.lock (vedi T23).
+  2) Carica INDEX.json corrente (o struttura iniziale).
+  3) Per ogni RawSubject (T24): chiama match_subject (T25) passando lo stato corrente.
+  4) Applica la decisione:
+     - "match": aggiunge {source_sha256: {aligned_pages, original_pages}} al canonical (merge ordinato e deduplicato).
+     - "alias": aggiunge raw_label agli aliases del canonical + merge pagine come "match".
+     - "new": crea nuovo canonical_id; aggiunge il primo book entry.
+  5) Per ogni book entry esistente con stesso source_sha256 ma soggetto NON più presente nel nuovo INDEX.md: NON rimuovere (preserva storico cross-run). Documentalo nel docstring come scelta esplicita.
+  6) Scrive atomicamente (tempfile + os.replace).
+  7) Ritorna il path scritto e statistiche {n_new, n_match, n_alias}.
+- Integra T26 nell'orchestratore DOPO T17 (INDEX.md prodotto) e DOPO T23 (TOC.json), prima dello snapshot (T27).
+- Test tests/test_polyindex_index.py:
+  - 2 libri sintetici con 4 soggetti ciascuno, di cui 2 sovrapposti (stesso canonical).
+  - Dopo run su libro A: 4 canonical, 4 entry libro A.
+  - Dopo run su libro B: 4 canonical (2 condivisi + 2 nuovi), libro B presente nei condivisi.
+  - Idempotenza: re-run libro A senza modifiche -> file byte-identico.
+DoD: INDEX.json cross-book corretto su 2 libri, idempotenza confermata, lock-protected.
+```
+
+### T27 — Composer 2 — Checkpoint daily + on-demand (DB + polyindex)
+```text
+Repo: librarAIn-server. Crea src/core/checkpoints.py.
+- Funzione snapshot_now(reason: Literal["daily","on_demand","manual"], settings) -> SnapshotResult:
+  - Acquisisce lock di scrittura su polyindex (stessi file lock di T23/T26, accodandosi) per garantire coerenza.
+  - Copia data/db/biblioteca.csv -> data/db/checkpoints/biblioteca.<YYYY-MM-DD>.csv (overwrite consentito; se reason="on_demand" e file del giorno esiste, suffisso .HHMMSS).
+  - Copia polyindex/TOC.json -> polyindex/checkpoints/<YYYY-MM-DD>.TOC.json (stessa policy).
+  - Copia polyindex/INDEX.json -> polyindex/checkpoints/<YYYY-MM-DD>.INDEX.json.
+  - Pulisce file più vecchi di settings.checkpoint_retention_days (default 30); skip se 0.
+  - Ritorna SnapshotResult: {db_path, toc_path, index_path, retained_count, deleted_count, took_ms}.
+- Scheduler MVP: asyncio task in src/api/app.py che ogni `settings.checkpoint_period_seconds` (default 86400) chiama snapshot_now("daily"). Disabilitato se CHECKPOINT_DAILY_ENABLED=false.
+- Endpoint POST /api/admin/checkpoint -> 202 + risultato sincrono in body (il job è breve).
+- Test tests/test_checkpoints.py:
+  - Cartelle vuote -> snapshot crea i file attesi.
+  - Retention: crea 35 file fittizi, dopo snapshot ne restano 30.
+  - Lock: snapshot durante un mock di scrittura polyindex aspetta correttamente (semplice asserto sull'ordine di acquisizione).
+DoD: checkpoint giornaliero e on-demand funzionanti, retention rispettata, integrato con il lock polyindex.
+```
+
+### T28 — Composer 2 — Cleanup `data/tmp/<sha>/` policy
+```text
+Repo: librarAIn-server. Crea src/ingestion/tmp_cleanup.py.
+- Funzione cleanup_tmp_after_success(source_sha256: str, settings) -> CleanupResult:
+  - Se settings.tmp_keep_after_success=true (default true in MVP), no-op + return.
+  - Altrimenti, rimuove ricorsivamente data/tmp/<sha>/ se esiste; log strutturato del numero di file rimossi e bytes liberati.
+  - Mai rimuove se ci sono file in scrittura (controllo file lock semplice: se file *.tmp aperti, skip + warning).
+- Aggiungi settings TMP_KEEP_AFTER_SUCCESS (bool, default true).
+- Integra T28 nell'orchestratore come ULTIMO step prima della chiusura del job (dopo T26 e snapshot opportunistico).
+- Test tests/test_tmp_cleanup.py:
+  - Con flag=true -> tmp resta.
+  - Con flag=false -> tmp viene rimossa; verifica bytes_freed > 0 e log evento.
+  - Con file .tmp aperto simulato -> cleanup salta e logga warning.
+DoD: opt-in/out via .env; nessuna perdita di artefatti finali in data/output/.
+```
+
+### T29 — Composer 2 — `web/index.html` form unico operatore
+```text
+Repo: librarAIn-server. Crea/aggiorna web/index.html (oggi probabilmente segnaposto).
+- Form POST multipart verso /api/ingest/submit con i campi:
+  - file: input type="file" accept="application/pdf" required.
+  - reicat.titolo, reicat.sottotitolo, reicat.complementi_del_titolo (text).
+  - reicat.autore (text area: 1 autore per riga, lato client split su \n).
+  - reicat.curatore, reicat.traduttore (idem).
+  - reicat.numero_edizione, reicat.anno_di_pubblicazione (number), reicat.tipo_di_pubblicazione (select), reicat.luogo_di_pubblicazione, reicat.editore, reicat.numero_pagine (number), reicat.titolo_collana, reicat.numero_nella_collana, reicat.isbn.
+  - pages_to_remove (text, sintassi "1,3,5-7").
+  - toc_start, toc_end, index_start, index_end (number).
+  - options.force_metadata_update_on_duplicate_hash (checkbox).
+- Dopo submit:
+  - mostra request_id e link "GET /api/ingest/<id>".
+  - polling JS ogni 3s su /api/ingest/<id> finché status in {succeeded, failed, skipped_duplicate}.
+  - mostra in coda l'elenco file da /api/ingest/<id>/artifacts.
+- UI minimale, vanilla HTML/CSS/JS, no framework, no build step.
+- Servire `/` come questa pagina (già coperto da T18.5a) con StaticFiles o FileResponse.
+- Test tests/test_web_index_static.py: GET / ritorna 200 e content-type text/html; presenza dei field name attesi nel body.
+DoD: pagina funzionante in locale, niente dipendenze JS esterne.
+```
+
+### T30 — Opus — Orchestratore end-to-end Upload (cablaggio finale)
+```text
+Repo: librarAIn-server. Modifica src/ingestion/orchestrator.py (creato in T14a) per cablare l'intero Upload.
+Sequenza definitiva di run_pipeline(enriched, alignment, useful_pages, settings, sqlite_path, registry, request_id):
+  1) create_pipeline_run (T14d).
+  2) Render PNG di tutte le pagine aligned (T11b) — concurrency = max_parallel_request.
+  3) PageJob list (T14a).
+  4) Stage1 OCR per pagina, idempotente (T11c).
+  5) Stage2 Vision per pagina (T12c), concurrent + rate-limited (T12a).
+  6) Stage3 Editor per pagina (T13b), concurrent + rate-limited.
+  7) Output writer per libro (T15) -> data/output/<sha>/pages/* + manifest.json.
+  8) Builder <slug>.md (T22).
+  9) Builder TOC.md (T16).
+  10) Builder INDEX.md (T17).
+  11) Polyindex TOC.json updater (T23) -- richiede file lock.
+  12) Index.md parser (T24) -> raw_subjects.
+  13) Subject matcher + INDEX.json updater (T25 + T26) -- richiede file lock; condivide lock con T23 quando necessario.
+  14) Cleanup tmp (T28).
+  15) mark_pipeline_run_finished("succeeded", counters).
+  16) Pubblica evento finale al job registry (T18.5c) con stato "succeeded".
+
+Vincoli:
+- Ogni transizione di stage publica un IngestJobEvent al registry.
+- Failure di un singolo step "soft" (es. parser INDEX trova 0 soggetti) NON fallisce la run; viene loggato e marcato in counters.
+- Failure "hard" (es. OCR > 50% pagine fallite) fa fallire la run con last_error preservato.
+- Pipeline_version: lettura da pyproject.toml o da costante src/api/__init__.py; deve cambiare ogni volta che si modifica un prompt versione.
+
+Test tests/test_orchestrator_e2e_mocked.py:
+- Mocka client OpenAI, easyocr engine, pypdfium2.
+- 4 pagine, 2 soggetti.
+- Verifica che a fine run tutti i file attesi esistano e che il registry mostri stato succeeded + N eventi attesi (>=12).
+
+DoD: la run finale produce per-book artifacts + aggiorna polyindex; rieseguita con stesso PDF, skip duplicate hash; tutto loggato e auditabile.
+```
+
+### T31 — Sonnet — E2E cross-book polyindex
+```text
+Repo: librarAIn-server. Crea tests/e2e/test_polyindex_crossbook.py.
+- Genera 2 PDF reali (pypdf + Pillow), ciascuno con:
+  - 1 pagina TOC ("Capitolo 1 .... 3") e 1 pagina INDEX (lemmi mockati con 2 soggetti condivisi tra i due libri, es. "Marco Polo, 2", "Venezia, 3").
+  - 2 pagine di contenuto mock.
+- Mocka client OpenAI per stage2/stage3 (markdown deterministico) e per subject_matcher (LLM ritorna {"same": true} su pair specifico).
+- Esegui orchestrator.run_pipeline per libro A; poi per libro B.
+- Asserzioni:
+  - data/polyindex/TOC.json contiene 2 books con i loro chapters.
+  - data/polyindex/INDEX.json contiene N canonical, di cui 2 con entrambi i books.
+  - subject_match_audit ha righe per ciascuna decisione.
+  - pipeline_runs ha 2 righe succeeded.
+DoD: smoke E2E cross-book green in <60s senza rete e senza GPU.
+```
+
+---
+
+## Roadmap successiva (Fase 2 Ricerca)
+
+Dettaglio task e numerazione: `PRD-Fase1.md` §7 (**F2-T1..F2-T10**). I prompt operativi per F2 verranno aggiunti in questo file quando l'Upload è chiuso.
+
+### Ricerca MVP — convenzioni Markdown (implementazione)
+
+Fonte normativa: `PRD-Fase1.md` §2.5.1. In sintesi per chi scrive prompt/parser:
+
+- **Fonti**: `[testo](source:<sha256>:aligned:<p>)` — validare contro `manifest.json`; niente `<a href>`.
+- **POH**: `[etichetta](poh:<poh_id>)` oppure `poh:unknown-<slug>` + sezione `## Annotazioni` con TODO.
+- **Cronologia (vertical time bar in file)**: blocco finale `## Cronologia` + tabella GFM esattamente `| Periodo | Evento | Fonti |`, righe ordinate dal più antico al più recente; ogni riga datata con almeno un `source:` valido (eccezione massimo 1 riga `—` come da PRD).
+- **CommonMark**: link inline standard; niente spazi raw dentro `(...)`; escape `_` `*` se necessario nel testo delle celle.
+
+## Sintesi finale aggiornata
+
+- **Completati (12)**: T1–T10 + T19 + T20.
+- **In coda priorità alta (sblocco MVP Upload)**: PRE-A → PRE-B → PRE-C → T11(a..c) → T12(a..c) → T13(a..b) → T14(a..d) → T18.5(a..d) → T15 → T22 → T16 → T17 → T23 → T24 → T25 → T26 → T27 → T28 → T29 → T30 → T19' → T21(a) → T21(b) → T31.
+- **Stima parallelizzabili**: T11(a), T11(b), T12(a) in parallelo; T22/T16/T17 in parallelo dopo T15; T23/T24 in parallelo dopo T22; T25 prima di T26; T27/T28/T29 in parallelo dopo T26.
+- **Modello consigliato per quota Opus**: PRE-D (skip se inutile), T14(a), T18.5(c), T25, T26, T30. Tutti gli altri delegabili a Sonnet/Composer 2.

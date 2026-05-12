@@ -1,183 +1,448 @@
-# PRD — Fase 1 Ingestione Libri
+# PRD — librarAIn (Fasi 1 Ingestione e 2 Ricerca)
+
+> Documento unico di prodotto. Sostituisce la precedente versione limitata alla sola Fase 1.
+> Allineato al manoscritto in `trascrizione-fogli-manoscritti.md` e alla struttura repo in `README.md`.
+
+## 0. Assunzioni di scoping (da confermare in PR review)
+
+Queste assunzioni sono frutto di discovery non completata. Vanno confermate o ribaltate prima di chiudere l'MVP. Sono evidenziate qui in apertura per essere trovate subito.
+
+- **A1 — Definizione di POH**: entità generica del dominio (persona, luogo, evento o concetto storico), con `time_range` opzionale, `id` stabile e `aliases[]`. Non si forza una tassonomia rigida in MVP.
+- **A2 — Search MVP**: in MVP la Fase 2 implementa **tutti** i passi del manoscritto: `a` articolo, `b` citazioni alle fonti, `c` hyperlink agli altri POH menzionati, `d` vertical time bar (in file Markdown = sezione cronologica strutturata; il renderer UI può poi mapparla su una barra laterale). Dettaglio formattazione in §2.5.1.
+- **A3 — Stack ricerca**: nessun Milvus, nessun RAG vettoriale dedicato. La ricerca usa **polyindex** (`TOC.json` + `INDEX.json`) + LLM per generazione articolo. Eventuali embeddings sono interni al subject matcher di `INDEX.json`, non un secondo backbone di retrieval.
+- **A4 — AI Subject Matcher**: pipeline 2-stadi: normalizzazione deterministica (lowercase, accenti, lemmatizzazione minimale) → AI matching (embeddings + LLM dirimitore) solo sui residui ambigui.
+- **A5 — Checkpoints**: snapshot giornaliero schedulato + on-demand; retention configurabile (default 30 giorni).
+- **A6 — UI**: in MVP solo pagina HTML singola per l'upload operatore. UI di ricerca (`web/search.html`) è v1.1.
+- **A7 — Filename DB**: `data/db/biblioteca.csv` — **file binario SQLite**; l’estensione `.csv` è convenzione di naming del prodotto, **non** un export tabulare. Snapshot in `data/db/checkpoints/biblioteca.YYYY-MM-DD.csv` (stessa natura). Codice e path canonico: vedere `Settings.sqlite_path`.
+- **A8 — Provider AI**: unico modello configurabile via `.env` (OpenAI-compatible) per Vision, Editor, Subject Matcher e Research; ogni stage può avere model id override.
 
 ## 1. Executive Summary
 
-- **Problem Statement**: L’ingestione dei libri è oggi parziale e non standardizzata rispetto agli obiettivi di biblioteca semantica; serve una pipeline affidabile che trasformi PDF in asset strutturati e aggiornabili nel tempo.
-- **Proposed Solution**: Implementare una pipeline di ingestione end-to-end che parte da PDF + metadati REICAT, produce pagine Markdown allineate, aggrega TOC/INDEX, aggiorna SQLite e mantiene file globali `TOC.json`/`INDEX.json` con riconciliazione AI dei soggetti.
-- **Success Criteria**:
-  - 100% dei libri ingestiti produce cartella output con pagine `.md` per tutte le pagine utili del PDF allineato.
-  - 100% dei libri con range TOC/INDEX valido produce rispettivamente `TOC.md` e `INDEX.md` non vuoti.
-  - 100% degli inserimenti REICAT crea/aggiorna una riga in SQLite senza duplicati di libro.
-  - Se il PDF in input ha lo stesso `sha256` di un libro già processato, il sistema non riesegue OCR/processing e restituisce stato `already_processed`.
-  - 100% delle esecuzioni aggiorna `TOC.json` e `INDEX.json` in modo idempotente (riesecuzione senza duplicazioni).
-  - Matching AI dei soggetti INDEX disponibile su endpoint OpenAI-compatible sia locale sia esterno.
+- **Problem Statement**: oggi i libri scansionati non si trasformano in conoscenza interrogabile in modo coerente: l'ingestione è parziale, la catalogazione bibliografica vive separata dal contenuto, e non esiste una "biblioteca semantica" navigabile cross-book.
+- **Proposed Solution**: pipeline end-to-end deterministica che (1) ingesce PDF + REICAT in pagine Markdown allineate, (2) costruisce per ogni libro `TOC.md`/`INDEX.md`/`<NomeLibro>.md`, (3) aggrega cross-book in `polyindex/TOC.json` e `polyindex/INDEX.json` con riconciliazione AI dei soggetti, (4) espone una API di **Ricerca** che, data una query (eventualmente collegata a un POH), produce un **unico file Markdown** in stile Wikipedia con citazioni come link MD alle fonti (passi `a`–`b`), hyperlink agli altri POH in sintassi CommonMark (passo `c`) e sezione `## Cronologia` tabellare verticale per la linea temporale (passo `d`).
+- **Success Criteria (cross-fase)**:
+  - 100% dei libri ingestiti produce: cartella `data/output/<sha256>/` con `pages/`, `<slug>.md`, `TOC.md`, `INDEX.md`, `manifest.json`.
+  - 100% delle ingestioni con esito `succeeded` aggiorna `polyindex/TOC.json` e `polyindex/INDEX.json` in modo idempotente (riesecuzione → zero duplicati).
+  - Per la ricerca: ≥80% di una gold set di 20 query produce un **Markdown** che soddisfa **tutti** i passi a–d (articolo, link fonti, link POH, sezione Cronologia); almeno 1 fonte valida per articolo; precisione citazioni (pagine esistenti) ≥95%; ogni link `poh:` punta a un `poh_id` noto nel registro POH o è marcato esplicitamente come `poh:unknown-<slug>` con TODO in coda documento.
+  - Tempo medio end-to-end Upload (PDF 200 pagine, 1 vCPU + endpoint AI raggiungibile) < 30 min con `MAX_PARALLEL_REQUEST=4`.
+  - 100% delle esecuzioni produce una riga in `pipeline_runs` con stato finale e contatori.
+  - 0 chiavi API stampate nei log; 0 file `.env` committati.
 
 ## 2. User Experience & Functionality
 
-- **User Personas**:
-  - Operatore di ingestione (fornisce input iniziale: PDF, REICAT, range e pagine da eliminare).
-  - Pipeline Orchestrator (servizio automatico che esegue l’intero flusso senza intervento umano).
+### 2.1 Personas
 
-- **User Stories**:
-  - Come operatore, voglio fornire PDF, metadati REICAT e range pagine speciali, così da ottenere un libro ingestito e allineato.
-  - Come orchestratore automatico, voglio eseguire la pipeline in modo deterministico, così che lo stesso input produca lo stesso output nel 99,99% dei casi.
-  - Come orchestratore automatico, voglio bloccare la rielaborazione quando il `sha256` del PDF è già noto, così da evitare computazione duplicata anche con REICAT leggermente diverso.
-  - Come orchestratore automatico, voglio aggiornare la tabella REICAT con operazione di upsert usando come ID univoco lo `sha256` del PDF, così da mantenere un record consistente per ogni file sorgente.
-  - Come sistema biblioteca, voglio aggiornare `TOC.json` e `INDEX.json` con deduplica semantica dei soggetti, così da mantenere una base cumulativa coerente tra libri.
-  - Come team tecnico, voglio poter usare endpoint AI locale o esterno con API OpenAI-compatible, così da mantenere flessibilità operativa.
+- **Operatore di ingestione**: bibliotecario/operatore che carica un PDF e compila REICAT. Vuole un singolo punto di input, errori chiari, idempotenza.
+- **Storico/Ricercatore**: utente finale che pone domande di dominio (eventualmente legate a un POH) e si aspetta un articolo coerente con citazioni puntuali.
+- **Pipeline Orchestrator**: servizio automatico che esegue Upload e Ricerca senza intervento umano (per batch e test).
 
-- **Acceptance Criteria**:
-  - Input ingestione obbligatorio: file PDF, dati REICAT, pagine da eliminare, range TOC (start/end), range INDEX (start/end).
-  - Calcolo obbligatorio `sha256` del PDF originale prima di ogni processing.
-  - Se `sha256` già presente nello storico ingestione: nessuna riesecuzione OCR/LLM; viene registrato solo evento di skip con motivo `duplicate_source_hash`.
-  - Tabella REICAT aggiornata con semantica upsert su chiave primaria `source_sha256` (hex digest SHA-256 del PDF originale).
-  - Il PDF allineato è generato applicando in ordine deterministico le pagine da eliminare.
-  - La pipeline OCR 3-stadi viene reimplementata localmente mantenendo comportamento base di `/Users/oni/Desktop/RagAIO.py`:
-    - OCR testo (`ocrWithEasyOCR`)
-    - Refinement vision (`refineWithVision`)
-    - Refinement editor markdown (`refineWithEditor`)
-  - L’esecuzione non è strettamente sequenziale pagina-per-pagina: il sistema usa parallelizzazione configurabile su più pagine e richieste LLM concorrenti.
-  - Il numero massimo di job paralleli, retry, timeout e rate-limit è configurabile senza modificare codice.
-  - Output per libro in cartella dedicata con pagine markdown singole.
-  - `TOC.md` contiene la concatenazione ordinata delle pagine TOC del range fornito.
-  - `INDEX.md` contiene la concatenazione ordinata delle pagine INDEX del range fornito.
-  - SQLite aggiornato/creato con record libro e campi REICAT.
-  - `TOC.json` aggiornato con struttura `{libro: {capitolo: [pagina_inizio, pagina_fine]}}`.
-  - `INDEX.json` aggiornato con struttura `{soggetto: {libro: [pagine]}}`, con riconciliazione AI tra soggetti equivalenti.
-  - Il processo supporta ingestione incrementale di nuovi libri in esecuzioni successive.
-  - In caso di `sha256` già noto ma REICAT differente, i metadati vengono gestiti come aggiornamento metadati (auditabile) senza rifare la trasformazione PDF→MD.
+### 2.2 User Stories — Fase 1 Upload
 
-- **Non-Goals**:
-  - Non include la Fase 2 di ricerca/generazione articoli.
-  - Non include una UI avanzata/multi-pagina con funzionalità editoriali complesse.
-  - Non include inserimento dati frammentato su fonti multiple o procedure manuali incoerenti.
-  - Non include migrazione a DB diversi da SQLite in questa fase.
+- Come operatore, voglio caricare PDF + REICAT + range TOC/INDEX in un unico form HTTP, così da avviare l'ingestione senza più canali sincronizzati a mano.
+- Come orchestratore, voglio che lo stesso PDF (stesso `sha256`) non venga rielaborato OCR/LLM, così da evitare costi e tempi inutili.
+- Come orchestratore, voglio che ogni stage (OCR, Vision, Editor) sia idempotente per pagina, così da poter riprendere senza ripartire da zero.
+- Come sistema biblioteca, voglio che ogni libro processato aggiorni `polyindex/TOC.json` e `polyindex/INDEX.json` in modo atomico, così da mantenere coerenza cross-book.
+- Come team, voglio snapshot giornalieri di `biblioteca.csv` e `polyindex/*.json`, così da poter rollback a uno stato noto.
 
-- **Chiarimento UX input (in scope)**:
-  - È in scope un punto unico di inserimento dati consistente per l’avvio ingestione (preferibilmente pagina HTML singola; alternativa script CLI guidato).
-  - L’interfaccia deve raccogliere in un unico flusso: PDF, REICAT, pagine da eliminare, range TOC e range INDEX.
-  - L’obiettivo è eliminare input distribuiti su più canali/file non sincronizzati.
+### 2.3 User Stories — Fase 2 Ricerca
+
+- Come ricercatore, voglio inviare una query in linguaggio naturale (con riferimento opzionale a un POH), così da ricevere un articolo che sintetizzi le informazioni rilevanti tratte dai libri indicizzati.
+- Come ricercatore, voglio che ogni affermazione non triviale dell'articolo riporti una citazione verificabile tramite **link Markdown** `source:` verso la pagina libro, così da aprire la fonte senza HTML.
+- Come sistema, voglio individuare deterministicamente i capitoli e le pagine candidate via `polyindex/INDEX.json` (lookup per soggetto) e `polyindex/TOC.json` (struttura capitoli), così da limitare il contesto del LLM e ridurre allucinazioni.
+- Come orchestratore, voglio che la ricerca sia asincrona (job model identico all'ingest), così da gestire query lunghe senza bloccare il client.
+- Come ricercatore, voglio che i POH menzionati nel testo diversi dal soggetto principale siano **hyperlink in Markdown**, così da navigare verso altri articoli o risolvere da tooling.
+- Come ricercatore, voglio una **cronologia verticale** (linea temporale) nel documento, così da vedere subito l’ordine degli eventi citati.
+
+### 2.4 Acceptance Criteria — Fase 1 Upload
+
+Conservati e raffinati rispetto alla versione precedente del PRD; di seguito solo le **modifiche/aggiunte sostanziali** rispetto al passato.
+
+- Output per libro includono ora anche `<slug>.md` (Σ pages, concatenazione ordinata di `pages/p.NNNN.<slug>.md` con separatore `\n\n---\n\n`).
+- `polyindex/TOC.json` aggiornato al completamento di ogni ingest con struttura:
+  ```json
+  {
+    "<source_sha256>": {
+      "title": "...",
+      "slug": "...",
+      "chapters": [
+        {"label": "Capitolo I", "aligned_page_start": 12, "aligned_page_end": 34, "original_page_start": 14, "original_page_end": 36}
+      ]
+    }
+  }
+  ```
+- `polyindex/INDEX.json` aggiornato con struttura:
+  ```json
+  {
+    "<canonical_subject_id>": {
+      "canonical_label": "Marco Polo",
+      "aliases": ["M. Polo", "Polo, Marco"],
+      "books": {
+        "<source_sha256>": {"aligned_pages": [12, 18, 22], "original_pages": [14, 20, 24]}
+      }
+    }
+  }
+  ```
+- Aggiornamento di `polyindex/*.json` è **atomico**: scrittura su file temporaneo + `os.replace`; lettura→merge→scrittura protetta da lock (file lock o asyncio.Lock).
+- AI subject matcher è in MVP: usato in T26 per associare un soggetto nuovo a un canonical esistente; sempre fallback deterministico se endpoint AI non risponde.
+- Snapshot giornaliero (cron interno via APScheduler stdlib-friendly o task asyncio) salva copia di `biblioteca.csv` in `data/db/checkpoints/biblioteca.YYYY-MM-DD.csv` e copie di `polyindex/*.json` in `data/polyindex/checkpoints/YYYY-MM-DD.*.json`. Endpoint `POST /api/admin/checkpoint` per snapshot on-demand.
+- Telemetria minima: tabella `pipeline_runs` con `request_id`, `source_sha256`, stato finale, contatori, `pipeline_version`.
+
+### 2.5 Acceptance Criteria — Fase 2 Ricerca (MVP: passi **a, b, c, d** del manoscritto)
+
+- Endpoint `POST /api/research/submit` accetta body JSON `{query: str, poh?: {id, label, time_range?}, options?: {max_books?, max_pages_per_book?}}`. Ritorna 202 con `{request_id, status: "accepted"}`.
+- Endpoint `GET /api/research/{request_id}` ritorna stato job (`accepted|running|succeeded|failed`) + `pipeline_version` + `last_error?` + ultimi N eventi.
+- Endpoint `GET /api/research/{request_id}/article` ritorna il prodotto finale: `{markdown, citations: [...], pohs_referenced: [{poh_id, label, linked_from_count}], timeline_rows: [{period, event, source_links[]}]}`. I campi strutturati duplicano ciò che è già nel Markdown per consumo programmatico.
+- Pipeline di ricerca deterministica nel pre-filtro:
+  1. Lookup in `polyindex/INDEX.json`: estrazione candidati `{libro_sha256: [pagine]}` dai soggetti rilevanti per la query (normalizzazione + AI matching dei soggetti della query con i `canonical_label`/`aliases`).
+  2. Espansione capitoli via `polyindex/TOC.json`: per ogni pagina candidata, recupero del capitolo che la contiene; aggiunta delle pagine vicine se il capitolo è < 6 pagine.
+  3. Caricamento contenuti: lettura dei `pages/p.NNNN.<slug>.md` corrispondenti da `data/output/<sha>/`.
+  4. **Passo `a`–`b`**: generazione bozza articolo (1+ chiamate LLM) con `src/search/prompts/article/v1.md`: stile Wikipedia; **solo** link Markdown alle fonti (CommonMark), niente `<a href>`.
+  5. **Passo `c`**: pass successivo dedicato (`src/search/prompts/poh_links/v1.md`) **oppure** stesso turno se il prompt unico include istruzioni esplicite: ogni menzione di un POH (identificato da elenco `poh_candidates` derivato da INDEX + query) diventa `[etichetta visibile](poh:<poh_id>)`. Il POH principale della request **non** va linkato a se stesso nel primo paragrafo di lead; ripetizioni successive sì. Regole complete in §2.5.1.
+  6. **Passo `d`**: generazione o validazione blocco `## Cronologia` (vedi §2.5.1) con LLM + vincolo strutturale (tabella GFM) e validazione post-hoc (date non inventate senza fonte linkata nella stessa riga).
+  7. Post-processing: parsing di tutti i link `(...)` nel Markdown, validazione URL `source:` e `poh:`, allineamento con `citations` JSON.
+- L'articolo è prodotto in **italiano**. Output principale = stringa Markdown UTF-8; niente HTML come formato primario (eccezione: entità già presenti nelle fonti restano escaped come nel sorgente).
+- Costi predicibili: pre-filtro deterministico produce un budget di contesto bounded (`max_books`, `max_pages_per_book`, default 5 libri × 8 pagine).
+- Idempotenza: stessa query + stesso stato polyindex → stesso `request_id` se ripetuta entro 1h (hash query+poh+polyindex_version come dedup key), opzionale via flag.
+
+#### 2.5.1 Formattazione Markdown (fonti, POH, cronologia)
+
+Convenzione **CommonMark** + **GitHub Flavored Markdown** per tabelle. Tutti i link usano la forma `[testo destinazione](URL)` dove `URL` è uno dei seguenti schemi (nessuno spazio non encoded dentro le parentesi).
+
+**B — Link alle fonti (pagine libro)**  
+- Forma canonica consigliata per il file su disco e per tooling interno:
+  `source:<source_sha256>:aligned:<p>` dove `<p>` è la **pagina allineata** 1-based (coerente con i file `p.NNNN.<slug>.md`).
+  Esempio nel Markdown: `[Battaglia di Curzola, pp. 112–114](source:a1b2…f00:aligned:112)`.
+- **Descrizione umana** dentro `[]`: titolo breve del fatto + riferimento pagina; ripetere il link a ogni paragrafo che dipende da quella pagina **oppure** usare riferimenti a nota a piè con secondo round di post-processing (v1.1 se non in MVP: in MVP basta link inline ripetuto o frase “Vedi fonti in Cronologia”).
+- Il post-processore **deve** risolvere ogni `source:` contro `manifest.json` del libro; link con sha o pagina invalida → rimossi e sostituiti con `*[[fonte non verificabile]]*` + log.
+
+**C — Link ad altri POH**  
+- Forma: `[Nome leggibile](poh:<poh_id>)` dove `<poh_id>` è stabile (es. `subj_marco_polo` allineato al `canonical_subject_id` in `INDEX.json`, oppure `poh.uuid…` se generato).  
+- Non usare URL `http(s):` verso articoli POH in MVP (non esistono ancora host stabili); lo schema `poh:` è un **placeholder risolvibile** da viewer/CLI (`research open poh:…`).  
+- Se l’entità non è nel registro: `[Nome](poh:unknown-<slug-normalizzato>)` e in coda al documento una sezione `## Annotazioni` con bullet `TODO: risolvere poh:unknown-…`.
+
+**D — Vertical time bar come Markdown**  
+Nel file, la “barra” è la **lista verticale** ordinata dal più antico al più recente. Obbligo di sezione:
+
+```markdown
+## Cronologia
+
+| Periodo | Evento | Fonti |
+|---------|--------|-------|
+| 1271–1295 | Marco Polo intraprende il viaggio verso la Cina. | [Sintesi dalle fonti](source:…:aligned:…) |
+```
+
+Regole:
+- Titolo sezione esattamente `## Cronologia` (H2, UTF-8).
+- Tabella con **esattamente** tre colonne nell’ordine indicato; intestazioni fisse (`Periodo`, `Evento`, `Fonti`).
+- Ogni riga della colonna **Fonti** contiene almeno un link `source:` valido **oppure** `—` se l’evento è solo contesto temporale desunto da una fonte già citata nella riga precedente (massimo 1 riga consecutiva così; altrimenti Ogni evento ha fonte).
+- Ordine righe: cronologico crescente (evento più vecchio in alto). Questo ordine verticale è ciò che la UI può proiettare su una time bar laterale senza cambiare il sorgente.
+- Vietato Mermaid o HTML per la tabella in MVP (solo pipe table GFM).
+
+### 2.6 Non-Goals
+
+- Nessun Milvus, FAISS o backbone di retrieval vettoriale dedicato (eliminato dalla visione di prodotto).
+- Nessuna UI di ricerca avanzata in MVP (solo API).
+- Nessuna multi-tenancy.
+- Nessuna autenticazione utente (deployment è interno/single-user in MVP).
+- Nessuna migrazione di DB diversi da SQLite in MVP.
+- Nessun fine-tuning di modelli; usiamo modelli generalisti via endpoint OpenAI-compatible.
 
 ## 3. AI System Requirements
 
-- **Tool Requirements**:
-  - Client OpenAI Python (`openai`) con configurazione endpoint OpenAI-compatible.
-  - Modalità duale endpoint:
-    - Locale (es. Ollama/OpenAI-compatible).
-    - Esterno (provider API compatibile).
-  - Reuso logico della pipeline OCR presente in `/Users/oni/Desktop/RagAIO.py` per i tre stadi.
+### 3.1 Modelli e usi
 
-- **Evaluation Strategy**:
-  - Fase attuale: la pipeline e gli artefatti devono esistere ed essere esercitabili; la verifica può essere manuale o smoke su alcuni libri (presenza file, range TOC/INDEX, skip su `sha256`, merge `INDEX.json`).
-  - POI: introdurre gradualmente benchmark ripetibili, gold set per matching soggetti e/o unit test automatizzati; non sono vincoli di uscita per la prima messa in strada.
+| Stage | Tipo | Modello (config) | Output atteso |
+|---|---|---|---|
+| OCR (Stage 1) | OCR locale (no LLM) | `easyocr` | Testo grezzo per pagina |
+| Vision refine (Stage 2) | LLM multimodale | `VISION_MODEL` | Markdown fedele alla pagina |
+| Editor refine (Stage 3) | LLM testuale | `EDITOR_MODEL` | Markdown normalizzato |
+| Subject Matcher | Embeddings + LLM dirimitore | `MATCHER_EMBEDDING_MODEL` + `MATCHER_LLM_MODEL` | `canonical_subject_id` |
+| Research Article | LLM testuale (long context utile) | `RESEARCH_MODEL` | Markdown completo (a–d): corpo + link `source:` + link `poh:` + `## Cronologia` |
+
+Tutti i modelli sono raggiungibili via client OpenAI-compatible. Stessa istanza centralizzata in `src/core/openai_client.py` (T12a).
+
+### 3.2 Prompt versionati in repo
+
+- `src/ingestion/ocr/prompts/vision/v1.md`
+- `src/ingestion/ocr/prompts/editor/v1.md`
+- `src/ingestion/polyindex/prompts/subject_matcher/v1.md`
+- `src/search/prompts/article/v1.md`
+- `src/search/prompts/poh_links/v1.md` (turno dedicato al passo `c`; opzionalmente fuso in `article/v1.md` se una sola chiamata)
+- `src/search/prompts/timeline/v1.md` (passo `d`: redazione o revisione della sezione `## Cronologia`)
+
+Mai prompt hardcoded in Python. Cambio di `prompt_version` o `model` invalida le cache di stage.
+
+### 3.3 Evaluation Strategy
+
+- **MVP**: smoke E2E con 1 libro reale ridotto (4–6 pagine) + 5 query mock; verifica passi **a–d**: presenza `## Cronologia` con tabella valida, almeno un `source:` per riga datata, almeno un `poh:` se il testo menziona un secondo soggetto noto in INDEX.
+- **v1.1**: gold set di 20 query con expected_books/expected_subjects; metriche: subject recall (matcher), citation precision (research), article informativeness (rating umano 1–5).
+- **POI**: benchmark periodico (mensile) sulla gold set + regression test.
+
+### 3.4 Safety/Guardrail
+
+- System prompt vincolante in stile "rispondi solo se sostenuto dalle pagine fornite, altrimenti dichiara l'incertezza".
+- `temperature` default 0.1 per Vision/Editor, 0.3 per Research (più libertà narrativa ma stesso vincolo di fonti).
+- Mai loggare testo OCR > 200 caratteri, mai loggare chiavi API.
 
 ## 4. Technical Specifications
 
-- **Architecture Overview**:
+### 4.1 Architettura — Fase 1 Upload
 
 ```mermaid
 flowchart TD
-  ingestInput[IngestInput] --> alignPdf[PdfAlignment]
-  ingestInput --> hashGate[SourceHashGate]
-  hashGate -->|"new_hash"| alignPdf
-  hashGate -->|"existing_hash"| skipProcess[SkipProcessingAndAudit]
-  alignPdf --> ocrStage[OCRStage]
-  ocrStage --> visionStage[VisionRefineStage]
-  visionStage --> editorStage[EditorMarkdownStage]
-  editorStage --> pageFiles[BookPageMarkdownFiles]
-  pageFiles --> tocBuilder[TocBuilder]
-  pageFiles --> indexBuilder[IndexBuilder]
-  tocBuilder --> tocMd[TOC.md]
-  indexBuilder --> indexMd[INDEX.md]
-  ingestInput --> reicatStore[ReicatSQLiteStore]
-  skipProcess --> reicatStore
-  tocMd --> tocJsonUpdater[TOCJsonUpdater]
-  indexMd --> aiSubjectMatcher[AISubjectMatcher]
-  aiSubjectMatcher --> indexJsonUpdater[INDEXJsonUpdater]
-  tocJsonUpdater --> libraryArtifacts[LibraryArtifacts]
-  indexJsonUpdater --> libraryArtifacts
+  form[Form HTTP / API] --> validate[validate_and_enrich_request]
+  validate --> hashGate[SourceHashGate]
+  hashGate -->|new_hash| align[PdfAlignment]
+  hashGate -->|duplicate| auditOnly[AuditMetadataOnly]
+  align --> render[RenderPagesPNG]
+  render --> stage1[Stage1 OCR easyocr]
+  stage1 --> stage2[Stage2 Vision LLM]
+  stage2 --> stage3[Stage3 Editor LLM]
+  stage3 --> writer[OutputWriter pages/ + slug.md]
+  writer --> tocMd[TOC.md]
+  writer --> indexMd[INDEX.md]
+  tocMd --> polyTocUpdater[Polyindex TOC.json Updater]
+  indexMd --> indexParser[INDEX.md Parser]
+  indexParser --> subjectMatcher[AI Subject Matcher]
+  subjectMatcher --> polyIndexUpdater[Polyindex INDEX.json Updater]
+  polyTocUpdater --> snapshot[Daily Snapshot]
+  polyIndexUpdater --> snapshot
+  writer --> reicatStore[SQLite books + pipeline_runs]
+  auditOnly --> reicatStore
 ```
 
-- **Integration Points**:
-  - OCR/LLM pipeline reference: `/Users/oni/Desktop/RagAIO.py`
-  - API AI: endpoint OpenAI-compatible con `base_url` e `api_key` configurabili runtime.
-  - Metadata store: SQLite (tabella libri + campi REICAT + registro hash sorgente + audit aggiornamenti metadati).
-  - Artefatti globali biblioteca: `TOC.json`, `INDEX.json`.
+### 4.2 Architettura — Fase 2 Ricerca
 
-- **Configurazione Runtime**:
-  - Il sistema usa un unico file `.env` come fonte di configurazione runtime.
-  - Ogni macchina parte da configurazione standard e la personalizza in base alle risorse disponibili.
-  - Il file `.env` viene creato derivandolo da `example.env` con valori dummy/documentativi.
-  - Parametri minimi configurabili:
-    - endpoint e chiavi locali/esterne OpenAI-compatible
-    - model id Vision/Editor
-    - parallelismo OCR/LLM
-    - timeout e retry
-    - path I/O e path SQLite
-  - In assenza di variabili obbligatorie, il sistema fallisce con errore esplicito e riferimento a `example.env`.
+```mermaid
+flowchart TD
+  q[POST /api/research/submit] --> qval[ResearchInputValidation]
+  qval --> qreg[ResearchJobRegistry]
+  qreg --> lookup[INDEX.json Subject Lookup]
+  lookup --> expand[TOC.json Chapter Expansion]
+  expand --> loader[Pages Markdown Loader]
+  loader --> llm1[LLM Article a+b]
+  llm1 --> llm2[LLM POH links c]
+  llm2 --> llm3[LLM Timeline d]
+  llm3 --> postproc[Link Parser + Validator]
+  postproc --> response[GET /api/research/id/article]
+```
 
-- **Security & Privacy**:
-  - Nessuna chiave hardcoded nel codice di produzione.
-  - Anche le chiavi di contesto (non di processo) devono essere definite in `.env` e referenziate solo tramite variabili d’ambiente.
-  - Logging senza esporre dati sensibili o credenziali.
-  - Tracciabilità minima per libro ingestito (timestamp, input hash, versione pipeline).
+Nota: i tre passi LLM possono essere **fusi** in una o due chiamate se i prompt lo consentono; il diagramma descrive la **responsabilità logica** richiesta in output.
+
+### 4.3 Modello di esecuzione HTTP
+
+- **Upload**: `POST /api/ingest/submit` (multipart streaming) → 202 con `request_id`. `GET /api/ingest/{id}` ritorna stato. `GET /api/ingest/{id}/artifacts` elenca file in `data/output/<sha256>/`.
+- **Research**: `POST /api/research/submit` (JSON) → 202 con `request_id`. `GET /api/research/{id}` stato. `GET /api/research/{id}/article` prodotto finale.
+- **Admin**: `POST /api/admin/checkpoint` → 202; `GET /health`.
+- Backend job in-process via asyncio TaskGroup; nessun broker esterno. Job registry separati per `ingest` e `research`, stessa struttura base (`request_id`, `status`, `events`, `pipeline_version`).
+
+### 4.4 Integration Points
+
+- **OCR/LLM**: `src/core/openai_client.py` come unica fabbrica di client (T12a). Endpoint configurato via `.env`.
+- **Persistence**: `data/db/biblioteca.csv` (SQLite binario; estensione `.csv` = naming prodotto). Tabelle: `books`, `book_metadata_audit`, `pipeline_runs`, `_schema_migrations`, (future) `research_runs`, `subject_embeddings`. Schema versioning esplicito (PRE-B).
+- **Artifacts cross-book**: `data/polyindex/TOC.json`, `data/polyindex/INDEX.json`, con `checkpoints/` giornalieri.
+- **Per-book artifacts**: `data/output/<sha256>/{pages/, <slug>.md, TOC.md, INDEX.md, manifest.json}`.
+
+### 4.5 Runtime configuration (`.env` esteso)
+
+Nuove variabili rispetto all'attuale `example.env`:
+
+```
+# --- Polyindex / Subject matcher ---
+MATCHER_EMBEDDING_MODEL=text-embedding-3-small
+MATCHER_LLM_MODEL=gpt-4.1-mini
+MATCHER_SIMILARITY_THRESHOLD=0.86
+MATCHER_USE_AI=true
+
+# --- Research ---
+RESEARCH_MODEL=gpt-4.1-mini
+RESEARCH_MAX_BOOKS=5
+RESEARCH_MAX_PAGES_PER_BOOK=8
+RESEARCH_TEMPERATURE=0.3
+
+# --- Checkpoints ---
+CHECKPOINT_DAILY_ENABLED=true
+CHECKPOINT_RETENTION_DAYS=30
+
+# --- Prompt versions ---
+VISION_PROMPT_VERSION=v1
+EDITOR_PROMPT_VERSION=v1
+MATCHER_PROMPT_VERSION=v1
+RESEARCH_PROMPT_VERSION=v1
+POH_LINK_PROMPT_VERSION=v1
+TIMELINE_PROMPT_VERSION=v1
+```
+
+### 4.6 Security & Privacy
+
+- Chiavi/API key esclusivamente in `.env`, mai loggate, mai stampate.
+- Log strutturato (lib di logging interna a Jonathan; il PRD non impone JSON specifico).
+- Path assoluti contenenti utente di sistema mai esposti via API; sempre relativi a `DATA_ROOT`.
+- Tracciabilità per libro: `pipeline_runs.request_id`, `source_sha256`, `pipeline_version`, timestamp.
+- Tracciabilità per ricerca: `research_runs.request_id`, hash query, libri/pagine usati come contesto (audit).
+- Nessun PII di default (i libri sono pubblicazioni); se in futuro si trattano contenuti personali, va aggiunta sezione GDPR.
+
+### 4.7 Open Questions tecniche
+
+- **OQ1**: thread-safety di scrittura `polyindex/*.json` quando 2 ingest finiscono contemporaneamente → adottato file lock (`fcntl` su Unix) + atomic replace; sufficiente per single-process FastAPI ma da rivedere se passiamo a multi-worker.
+- **OQ2**: dimensione massima di `INDEX.json` prima di sharding (es. per soggetto inizia con A, B, ...) → posticipato a v2.0.
+- **OQ3**: cache embeddings dei soggetti canonici → serve persistenza? Probabilmente sì in SQLite (`subject_embeddings`) per evitare rigenerazioni; vedi T24.
 
 ## 5. Risks & Roadmap
 
-- **Phased Rollout**:
-  - **MVP**:
-    - Input validato (PDF + REICAT + ranges + pagine da eliminare).
-    - Source hash gate (`sha256`) con skip su duplicati.
-    - PDF allineato.
-    - Reimplementazione OCR 3-stadi locale.
-    - Parallelizzazione configurabile della pipeline con controllo concorrenza.
-    - File di configurazione runtime con endpoint/modelli/timeout/retry/parallelismo.
-    - Output pagine `.md`, `TOC.md`, `INDEX.md`.
-    - SQLite aggiornato.
-  - **v1.1**:
-    - Aggiornamento robusto di `TOC.json` e `INDEX.json` con deduplica idempotente.
-    - Matching AI soggetti con fallback deterministico (normalizzazione lessicale).
-  - **v2.0**:
-    - Hardening ingestione incrementale multi-libro (recovery, atomicità aggiornamenti artefatti globali, log/audit).
-  - **POI**:
-    - Benchmark qualità/performance/affidabilità e/o unit test formali quando necessari.
+### 5.1 Phased Rollout
 
-- **Technical Risks**:
-  - Divergenza output tra endpoint AI locale ed esterno sul matching soggetti.
-  - Errori di allineamento pagina se input pagine da eliminare incompleto.
-  - OCR su PDF rumorosi con possibile degradazione di TOC/INDEX parsing.
-  - Crescita `INDEX.json` con conflitti semantici tra soggetti simili.
+**MVP (sblocca prodotto)**:
+- T1–T10 (✅ già completati).
+- T11–T13: OCR pipeline 3 stadi.
+- T14: orchestrazione concorrente.
+- T15–T17: writer pagine, TOC.md, INDEX.md.
+- T18.5(a–d): refactor HTTP async + job model.
+- **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
+- **T23 (NUOVO)**: builder `polyindex/TOC.json` (deterministico, idempotente).
+- **T24 (NUOVO)**: parser `INDEX.md` → struttura `{subject_raw: [pages]}`.
+- **T25 (NUOVO)**: AI Subject Matcher (normalizzazione + embeddings + LLM dirimitore + persistence dei canonical).
+- **T26 (NUOVO)**: builder `polyindex/INDEX.json` con merge atomico + AI matching cross-book.
+- **T27 (NUOVO)**: checkpoint daily/on-demand DB + polyindex.
+- **T28 (NUOVO)**: cleanup `data/tmp/<sha>/` su successo (configurabile, default keep).
+- **T29 (NUOVO)**: web UI singola pagina di upload (`web/index.html`) collegata al `POST /api/ingest/submit`.
+- T30 (NUOVO): orchestrazione end-to-end Upload con tutti gli stadi cablati nel job registry.
+- **F2 — Ricerca (passi manoscritto a–d)**: **F2-T1..F2-T10** come da §7 (schema, lookup, loader, LLM article/POH/timeline, HTTP, `research_runs`, E2E).
 
-- **Mitigazioni operative concordate**:
-  - Usare `temperature` bassa come default nei passaggi Vision/Editor.
-  - Usare `system prompt` vincolante e stabile, orientato alla fedeltà del testo.
-  - Versionare i prompt in configurazione per tracciare differenze di comportamento.
+**v1.1**:
+- UI ricerca (`web/search.html`).
+- Gold set ampliata (20 query) + eval automatizzata + metriche formalizzate.
+
+**Nota**: i passi Manoscritto `c` e `d` sono **in MVP**; ciò che qui restava come “v1.1 sul manoscritto” è stato assorbito sopra.
+
+**v2.0**:
+- Sharding `INDEX.json`.
+- Multi-worker FastAPI con lock distribuito (Redis o equivalente leggero).
+- Recovery di ingest interrotti senza riavvio manuale.
+
+### 5.2 Technical Risks
+
+- **R1**: matcher AI genera falsi merge di soggetti distinti (es. due "Marco Polo" diversi). Mitigazione: soglia conservativa, audit log dei merge, comando di rollback per soggetto.
+- **R2**: articolo di ricerca cita pagine inventate. Mitigazione: post-validatore deterministico (citazione → pagina esistente o citazione scartata + warning nel log).
+- **R3**: crescita lineare di `INDEX.json` rallenta lookup. Mitigazione: caricamento in memoria con cache LRU; sharding rimandato a v2.0.
+- **R4**: divergenza endpoint locale vs remoto su Vision/Editor. Mitigazione: prompt versionati + temperature bassa + smoke test che gira con entrambi.
+- **R5**: snapshot giornaliero rompe atomicità durante un ingest in corso. Mitigazione: snapshot acquisisce lo stesso lock di scrittura del polyindex.
 
 ## 6. Struttura del repository
 
-La struttura delle cartelle del progetto (albero, principi e linee guida) è documentata in [`README.md`](README.md) così il PRD resta focalizzato su requisiti e comportamento, mentre il layout evolve con il codice.
+La struttura cartelle (albero, principi, linee guida) è documentata in [`README.md`](README.md). Questo PRD non duplica il layout.
 
-## 7. Backlog task atomiche (derivate) e stato
+Differenze chiave rispetto al README attuale (richieste da questo PRD):
 
-Legenda: `[x]` completata, `[ ]` da fare.
+- Rinominare `data/polyndex/` → `data/polyindex/` (fix typo, allineato al manoscritto).
+- Aggiungere `src/ingestion/polyindex/` (T23–T26).
+- Aggiungere `src/search/` con `prompts/article/v1.md`, `prompts/poh_links/v1.md`, `prompts/timeline/v1.md`, `lookup.py`, `article.py`, `api.py` (F2-T1+).
+- Nome file DB runtime: `data/db/biblioteca.csv` (SQLite; vedi glossario e `Settings.sqlite_path`).
+- Aggiungere `src/core/checkpoints.py` (T27).
+- Aggiungere `web/index.html` con form di submit.
 
-- [x] **T1 — Definire contratto input ingestione**: schema unico con campi obbligatori (`pdf`, `reicat`, `pages_to_remove`, `toc_start/end`, `index_start/end`).
-- [x] **T2 — Validazione input**: controlli sintattici/semantici (range validi, pagine non negative, file PDF presente).
-- [x] **T3 — Loader configurazione `.env`**: lettura variabili obbligatorie + errore esplicito se mancanti, con riferimento a `example.env`.
-- [x] **T4 — Calcolo `sha256` sorgente**: funzione su PDF originale.
-- [x] **T5 — SourceHashGate**: verifica hash già noto e ritorno stato (`new_hash` vs `already_processed`/`duplicate_source_hash`).
-- [x] **T6 — Schema SQLite minimo**: tabella libro + campi REICAT + audit metadata update + chiave univoca `source_sha256`.
-- [x] **T7 — Upsert REICAT per hash**: inserimento/aggiornamento metadata senza duplicati.
-- [x] **T8 — Skip path completo**: se hash duplicato, niente OCR/LLM, solo audit + update metadata.
-- [x] **T9 — PdfAlignment deterministico**: applicazione ordinata di `pages_to_remove` e generazione PDF allineato.
-- [x] **T10 — Enumerazione pagine utili**: mappatura robusta pagina originale -> pagina allineata.
-- [ ] **T11 — Stage OCR base**: estrazione testo pagina per pagina.
-- [ ] **T12 — Stage Vision refine**: raffinamento su endpoint OpenAI-compatible (locale/esterno configurabile).
-- [ ] **T13 — Stage Editor markdown refine**: normalizzazione finale markdown.
-- [ ] **T14 — Orchestrazione concorrente**: coda job con `MAX_PARALLEL_REQUEST`, retry, timeout e rate-limit da config.
-- [ ] **T15 — Persistenza pagine `.md`**: una pagina markdown per ogni pagina utile.
-- [ ] **T16 — Builder `TOC.md`**: concatenazione ordinata del range TOC.
-- [ ] **T17 — Builder `INDEX.md`**: concatenazione ordinata del range INDEX.
-- [ ] **T18 — Logging/audit minimo**: timestamp, hash, versione pipeline, esito.
-- [x] **T19 — Smoke test end-to-end (nuovo hash)**: copertura parziale con test automatici su validazione ed edge case.
-- [x] **T20 — Smoke test duplicate hash**: calcolo hash, gate e `run_ingest_gate_phase` coperti da test automatici (`duplicate_source_hash`, skip metadata opzionale, upsert forzato su duplicato).
+## 7. Backlog task atomiche e stato
+
+Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato indicato per ogni task: **Opus** (logica complessa, prompt engineering, architettura cross-modulo), **Sonnet** (codice deterministico, stato, test), **Composer 2** (scaffolding, IO file, boilerplate).
+
+### Fase 1 — Upload (completate)
+
+- [x] **T1** — Definire contratto input ingestione.
+- [x] **T2** — Validazione input.
+- [x] **T3** — Loader configurazione `.env`.
+- [x] **T4** — Calcolo `sha256` sorgente.
+- [x] **T5** — SourceHashGate.
+- [x] **T6** — Schema SQLite minimo.
+- [x] **T7** — Upsert REICAT per hash.
+- [x] **T8** — Skip path completo.
+- [x] **T9** — PdfAlignment deterministico.
+- [x] **T10** — Enumerazione pagine utili.
+- [x] **T19** — Smoke test end-to-end (validazione/edge case).
+- [x] **T20** — Smoke test duplicate hash.
+
+### Fase 1 — Upload (pre-requisiti tecnici, già pianificati)
+
+- [ ] **PRE-A** — `ProcessPoolExecutor` in `pdf_alignment.py`. *(Sonnet)*
+- [ ] **PRE-B** — `_schema_version` + migrations in `book_sqlite.py`. *(Sonnet)*
+- [ ] **PRE-C** — `pyproject.toml` + dipendenze runtime complete. *(Composer 2)*
+
+### Fase 1 — Upload (OCR + orchestrazione)
+
+- [ ] **T11(a)** — Wrapper OCR Protocol + EasyOCRPageEngine. *(Sonnet)*
+- [ ] **T11(b)** — PDF page renderer con pypdfium2. *(Sonnet)*
+- [ ] **T11(c)** — Persistenza Stage 1 + cache idempotente. *(Sonnet)*
+- [ ] **T12(a)** — Client OpenAI-compatible centralizzato. *(Sonnet)*
+- [ ] **T12(b)** — refine_with_vision + prompt v1. *(Sonnet)*
+- [ ] **T12(c)** — Persistenza Stage 2 + audit prompt. *(Sonnet)*
+- [ ] **T13(a)** — refine_with_editor + prompt v1. *(Sonnet)*
+- [ ] **T13(b)** — Persistenza Stage 3 + diff per pagina. *(Sonnet)*
+- [ ] **T14(a)** — Coda di job per pagina + asyncio.Semaphore. *(Opus)*
+- [ ] **T14(b)** — Retry + classificazione errori. *(Sonnet)*
+- [ ] **T14(c)** — Token-bucket rate-limit. *(Sonnet)*
+- [ ] **T14(d)** — `pipeline_runs` + propagazione `request_id`. *(Sonnet)*
+
+### Fase 1 — Upload (HTTP refactor)
+
+- [ ] **T18.5(a)** — Bootstrap FastAPI. *(Sonnet)*
+- [ ] **T18.5(b)** — Submit con upload streaming. *(Sonnet)*
+- [ ] **T18.5(c)** — Job model in-process. *(Opus)*
+- [ ] **T18.5(d)** — Status + artifacts endpoints. *(Sonnet)*
+
+### Fase 1 — Upload (writer per libro)
+
+- [ ] **T15** — Persistenza pagine `.md` + `manifest.json`. *(Composer 2)*
+- [ ] **T16** — Builder `TOC.md`. *(Composer 2)*
+- [ ] **T17** — Builder `INDEX.md`. *(Composer 2)*
+- [ ] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages). *(Composer 2)*
+
+### Fase 1 — Upload (polyindex e biblioteca cross-book)
+
+- [ ] **T23 (NUOVO)** — Polyindex TOC.json updater (deterministico, atomic + lock). *(Sonnet)*
+- [ ] **T24 (NUOVO)** — Parser deterministico `INDEX.md` → soggetti grezzi + pagine. *(Sonnet)*
+- [ ] **T25 (NUOVO)** — AI Subject Matcher (2-stadi: normalizzazione + embeddings + LLM dirimitore). *(Opus)*
+- [ ] **T26 (NUOVO)** — Polyindex INDEX.json updater con merge atomico. *(Opus)*
+- [ ] **T27 (NUOVO)** — Checkpoint daily + on-demand DB e polyindex. *(Composer 2)*
+- [ ] **T28 (NUOVO)** — Cleanup `data/tmp/<sha>/` policy. *(Composer 2)*
+
+### Fase 1 — Upload (UX e cablaggio finale)
+
+- [ ] **T29 (NUOVO)** — `web/index.html` form unico di upload operatore. *(Composer 2)*
+- [ ] **T30 (NUOVO)** — Orchestratore end-to-end Upload cablato (gate→align→render→OCR×3→writer×4→polyindex×2→snapshot). *(Opus)*
+
+### Fase 1 — Test E2E
+
+- [ ] **T19'** — Smoke E2E nuovo hash (reale, no rete). *(Sonnet)*
+- [ ] **T21(a)** — Test form mapping HTTP. *(Sonnet)*
+- [ ] **T21(b)** — E2E HTTP submit→poll→artifacts. *(Sonnet)*
+- [ ] **T31 (NUOVO)** — E2E cross-book: 2 libri ingestiti → `polyindex/*.json` aggregato correttamente. *(Sonnet)*
+
+### Fase 2 — Ricerca (MVP: passi **a–d** del manoscritto)
+
+- [ ] **F2-T1 (NUOVO)** — Schema input ricerca (`ResearchRequest` Pydantic) + validazione. *(Sonnet)*
+- [ ] **F2-T2 (NUOVO)** — Subject Lookup deterministico su `polyindex/INDEX.json` (normalizzazione + match) + AI fallback su soggetti residui. *(Opus)*
+- [ ] **F2-T3 (NUOVO)** — Chapter Expansion su `polyindex/TOC.json` (pagine candidate → capitolo → pagine vicine, con budget). *(Sonnet)*
+- [ ] **F2-T4 (NUOVO)** — Pages Markdown Loader (carica `pages/p.NNNN.<slug>.md` per pagine candidate, taglia/normalizza). *(Composer 2)*
+- [ ] **F2-T5 (NUOVO)** — Article Generation LLM (`src/search/prompts/article/v1.md`): passi `a` + `b` con link `source:` come da §2.5.1. *(Opus)*
+- [ ] **F2-T6 (NUOVO)** — POH link pass LLM (`poh_links/v1.md`) o fusione in F2-T5: passo `c`. *(Opus)*
+- [ ] **F2-T7 (NUOVO)** — Timeline pass LLM (`timeline/v1.md`): passo `d`, sezione `## Cronologia` tabella GFM. *(Opus)*
+- [ ] **F2-T8 (NUOVO)** — Aggregatore Markdown finale + post-validatore link/tabellare + endpoint HTTP (`POST /api/research/submit`, `GET /{id}`, `GET /{id}/article`) + job registry `research`. *(Sonnet)*
+- [ ] **F2-T9 (NUOVO)** — Tabella `research_runs` + audit pagine/soggetti usati; propagazione `request_id` nei log. *(Sonnet)*
+- [ ] **F2-T10 (NUOVO)** — E2E ricerca: 2 libri ingestiti + query che richiede POH secondario + verifica `poh:` + `## Cronologia` + `source:`. *(Sonnet)*
+
+### Fase 2 — Ricerca (v1.1 e oltre)
+
+- [ ] **F2-T11** — UI ricerca (`web/search.html`). *(Composer 2)*
+- [ ] **F2-T12** — Gold set 20+ query + metriche automatiche (recall/precision). *(Sonnet)*
+
+## 8. Glossario
+
+- **POH**: entità di dominio (persona, luogo, evento, concetto storico), id stabile + label + time_range opzionale.
+- **Polyindex**: insieme dei due file globali `polyindex/TOC.json` (struttura capitoli cross-book) e `polyindex/INDEX.json` (soggetti canonici cross-book).
+- **REICAT**: standard di catalogazione bibliografica italiano usato per i metadati libro.
+- **Slug libro**: forma normalizzata del titolo (max 32 char, `[a-z0-9-]`); usato nei nomi file delle pagine.
+- **Pagina allineata**: numerazione 1-based del PDF dopo applicazione di `pages_to_remove`. Corrisponde a "pp.libro" del manoscritto.
+- **Source SHA-256**: digest del PDF originale; chiave universale del libro nel sistema.
+- **Subject canonical**: forma canonica di un soggetto INDEX dopo deduplica AI (es. "Marco Polo" canonical, "M. Polo" alias).
+- **Link `source:`**: schema URI interno per citare una pagina libro, formato `source:<source_sha256>:aligned:<p>` (vedi §2.5.1); va validato contro `manifest.json`.
+- **Link `poh:`**: schema URI interno per riferire un POH, formato `poh:<poh_id>`; risoluzione lato viewer/CLI; fallback `poh:unknown-<slug>` quando l’id non è noto.
+- **`biblioteca.csv`**: file SQLite principale sotto `data/db/`; estensione richiesta dal prodotto, contenuto binario SQLite (non CSV testuale).
