@@ -293,7 +293,7 @@ TIMELINE_PROMPT_VERSION=v1
 ### 5.1 Phased Rollout
 
 **MVP (sblocca prodotto)**:
-- PRE-A–PRE-C: prerequisiti tecnici (parallelismo PDF, migrations SQLite, `pyproject.toml`).
+- PRE-A–PRE-C (✅): prerequisiti tecnici (parallelismo PDF, migrations SQLite, `pyproject.toml`).
 - T1–T10 (✅ già completati).
 - T11–T13: OCR pipeline 3 stadi.
 - T14: orchestrazione concorrente.
@@ -359,12 +359,9 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [x] **T8** — Skip path completo.
 - [x] **T9** — PdfAlignment deterministico.
 - [x] **T10** — Enumerazione pagine utili.
-
-### Fase 1 — Upload (pre-requisiti tecnici, già pianificati)
-
-- [ ] **PRE-A** — `ProcessPoolExecutor` in `pdf_alignment.py`. *(Sonnet)*
-- [ ] **PRE-B** — `_schema_version` + migrations in `book_sqlite.py`. *(Sonnet)*
-- [ ] **PRE-C** — `pyproject.toml` + dipendenze runtime complete. *(Composer 2)*
+- [x] **PRE-A** — `ProcessPoolExecutor` in `pdf_alignment.py`. *(Sonnet)*
+- [x] **PRE-B** — `_schema_migrations` + migrations in `book_sqlite.py`. *(Sonnet)*
+- [x] **PRE-C** — `pyproject.toml` + dipendenze runtime complete. *(Composer 2)*
 
 ### Fase 1 — Upload (OCR + orchestrazione)
 
