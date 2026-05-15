@@ -5,26 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ingestione libro — librarAIn</title>
 <style>
-:root { font-family: system-ui, sans-serif; line-height: 1.45; color: #0f172a; background: #f8fafc; }
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.45;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
 body { margin: 0 auto; max-width: 52rem; padding: 1.5rem 1rem 3rem; }
-h1 { font-size: 1.35rem; margin: 0 0 0.25rem; }
-p.lead { margin: 0 0 1.25rem; color: #334155; font-size: 0.95rem; }
+h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
+p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
 form { display: grid; gap: 1.1rem; }
-fieldset { border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.9rem 1rem 1rem; background: #fff; }
-legend { padding: 0 0.35rem; font-weight: 600; font-size: 0.95rem; }
-label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #334155; }
-input, textarea { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #cbd5e1; background: #fff; }
+fieldset { border: 1px solid #3e3e3e; border-radius: 10px; padding: 0.9rem 1rem 1rem; background: #252526; }
+legend { padding: 0 0.35rem; font-weight: 600; font-size: 0.95rem; color: #e8e8e8; }
+label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #cccccc; }
+input, textarea { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
+input::placeholder, textarea::placeholder { color: #848484; }
 textarea { min-height: 4.5rem; resize: vertical; }
 .grid-2 { display: grid; gap: 0.75rem; }
 @media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
-button { font: inherit; padding: 0.55rem 1rem; border-radius: 8px; border: 0; background: #0f172a; color: #fff; cursor: pointer; }
+button { font: inherit; padding: 0.55rem 1rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
+button:hover:not(:disabled) { background: #ffffff; }
 button:disabled { opacity: 0.55; cursor: not-allowed; }
-.hint { font-size: 0.8rem; color: #64748b; }
-#out { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #0f172a; color: #e2e8f0; font-size: 0.8rem; white-space: pre-wrap; word-break: break-word; min-height: 3rem; display: none; }
+.hint { font-size: 0.8rem; color: #9d9d9d; }
+code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0.4em; border-radius: 6px; }
+#out { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #2d2d2d; color: #d4d4d4; border: 1px solid #454545; font-size: 0.8rem; white-space: pre-wrap; word-break: break-word; min-height: 3rem; display: none; }
 #out.show { display: block; }
-#out.err { background: #7f1d1d; }
-small.req { color: #b91c1c; }
+#out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
+small.req { color: #f08080; }
+strong { color: #e8e8e8; }
 </style>
 </head>
 <body>
