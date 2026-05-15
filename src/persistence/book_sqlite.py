@@ -18,6 +18,8 @@ from src.models.request import (
     SourceHashGateStatus,
 )
 
+_MIGRATIONS: list[tuple[str, str]] = [("001", "initial schema baseline")]
+
 _BOOK_OPTIONAL_DDL: list[tuple[str, str]] = [
     ("title_complements", "TEXT"),
     ("editors_json", "TEXT"),
@@ -50,6 +52,16 @@ def _existing_table_columns(conn: sqlite3.Connection, table_name: str) -> set[st
     return {str(row[1]) for row in rows}
 
 
+def _apply_pending_migrations(conn: sqlite3.Connection) -> None:
+    applied = {row[0] for row in conn.execute("SELECT id FROM _schema_migrations").fetchall()}
+    for mid, desc in _MIGRATIONS:
+        if mid not in applied:
+            conn.execute(
+                "INSERT INTO _schema_migrations (id, applied_at, description) VALUES (?, ?, ?)",
+                (mid, _utc_now_iso(), desc),
+            )
+
+
 def _ensure_books_legacy_columns(conn: sqlite3.Connection) -> None:
     present = _existing_table_columns(conn, "books")
     for column_name, column_type in _BOOK_OPTIONAL_DDL:
@@ -62,6 +74,15 @@ def init_books_schema(sqlite_path: str) -> None:
     db_path.parent.mkdir(parents=True, exist_ok=True)
     try:
         with sqlite3.connect(db_path) as conn:
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS _schema_migrations (
+                    id TEXT PRIMARY KEY,
+                    applied_at TEXT NOT NULL,
+                    description TEXT NOT NULL
+                )
+                """
+            )
             conn.execute(
                 """
                 CREATE TABLE IF NOT EXISTS books (
@@ -102,6 +123,7 @@ def init_books_schema(sqlite_path: str) -> None:
                 )
                 """
             )
+            _apply_pending_migrations(conn)
     except sqlite3.Error as exc:
         raise RuntimeError("unable to initialize books schema") from exc
 

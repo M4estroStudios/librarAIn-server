@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -220,7 +220,7 @@ def build_aligned_pdf(
             ]
 
             try:
-                with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                with ProcessPoolExecutor(max_workers=max_workers) as executor:
                     chunk_results = list(executor.map(_write_aligned_pdf_chunk, args_list))
             except Exception as exc:
                 raise ValueError(

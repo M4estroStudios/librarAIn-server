@@ -293,12 +293,14 @@ TIMELINE_PROMPT_VERSION=v1
 ### 5.1 Phased Rollout
 
 **MVP (sblocca prodotto)**:
+- PRE-A–PRE-C: prerequisiti tecnici (parallelismo PDF, migrations SQLite, `pyproject.toml`).
 - T1–T10 (✅ già completati).
 - T11–T13: OCR pipeline 3 stadi.
 - T14: orchestrazione concorrente.
 - T15–T17: writer pagine, TOC.md, INDEX.md.
-- T18.5(a–d): refactor HTTP async + job model.
 - **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
+- T18.5(a–d): refactor HTTP async + job model.
+- T19–T21: smoke/E2E e test HTTP.
 - **T23 (NUOVO)**: builder `polyindex/TOC.json` (deterministico, idempotente).
 - **T24 (NUOVO)**: parser `INDEX.md` → struttura `{subject_raw: [pages]}`.
 - **T25 (NUOVO)**: AI Subject Matcher (normalizzazione + embeddings + LLM dirimitore + persistence dei canonical).
@@ -357,8 +359,6 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [x] **T8** — Skip path completo.
 - [x] **T9** — PdfAlignment deterministico.
 - [x] **T10** — Enumerazione pagine utili.
-- [x] **T19** — Smoke test end-to-end (validazione/edge case).
-- [x] **T20** — Smoke test duplicate hash.
 
 ### Fase 1 — Upload (pre-requisiti tecnici, già pianificati)
 
@@ -381,6 +381,13 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [ ] **T14(c)** — Token-bucket rate-limit. *(Sonnet)*
 - [ ] **T14(d)** — `pipeline_runs` + propagazione `request_id`. *(Sonnet)*
 
+### Fase 1 — Upload (writer per libro)
+
+- [ ] **T15** — Persistenza pagine `.md` + `manifest.json`. *(Composer 2)*
+- [ ] **T16** — Builder `TOC.md`. *(Composer 2)*
+- [ ] **T17** — Builder `INDEX.md`. *(Composer 2)*
+- [ ] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages). *(Composer 2)*
+
 ### Fase 1 — Upload (HTTP refactor)
 
 - [ ] **T18.5(a)** — Bootstrap FastAPI. *(Sonnet)*
@@ -388,12 +395,13 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [ ] **T18.5(c)** — Job model in-process. *(Opus)*
 - [ ] **T18.5(d)** — Status + artifacts endpoints. *(Sonnet)*
 
-### Fase 1 — Upload (writer per libro)
+### Fase 1 — Test E2E e HTTP
 
-- [ ] **T15** — Persistenza pagine `.md` + `manifest.json`. *(Composer 2)*
-- [ ] **T16** — Builder `TOC.md`. *(Composer 2)*
-- [ ] **T17** — Builder `INDEX.md`. *(Composer 2)*
-- [ ] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages). *(Composer 2)*
+- [x] **T19** — Smoke test end-to-end (validazione/edge case).
+- [x] **T20** — Smoke test duplicate hash.
+- [ ] **T19'** — Smoke E2E nuovo hash (reale, no rete). *(Sonnet)*
+- [ ] **T21(a)** — Test form mapping HTTP. *(Sonnet)*
+- [ ] **T21(b)** — E2E HTTP submit→poll→artifacts. *(Sonnet)*
 
 ### Fase 1 — Upload (polyindex e biblioteca cross-book)
 
@@ -409,11 +417,8 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [ ] **T29 (NUOVO)** — `web/index.html` form unico di upload operatore. *(Composer 2)*
 - [ ] **T30 (NUOVO)** — Orchestratore end-to-end Upload cablato (gate→align→render→OCR×3→writer×4→polyindex×2→snapshot). *(Opus)*
 
-### Fase 1 — Test E2E
+### Fase 1 — Test E2E cross-book
 
-- [ ] **T19'** — Smoke E2E nuovo hash (reale, no rete). *(Sonnet)*
-- [ ] **T21(a)** — Test form mapping HTTP. *(Sonnet)*
-- [ ] **T21(b)** — E2E HTTP submit→poll→artifacts. *(Sonnet)*
 - [ ] **T31 (NUOVO)** — E2E cross-book: 2 libri ingestiti → `polyindex/*.json` aggregato correttamente. *(Sonnet)*
 
 ### Fase 2 — Ricerca (MVP: passi **a–d** del manoscritto)
