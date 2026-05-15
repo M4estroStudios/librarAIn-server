@@ -295,7 +295,7 @@ TIMELINE_PROMPT_VERSION=v1
 **MVP (sblocca prodotto)**:
 - PRE-A–PRE-C (✅): prerequisiti tecnici (parallelismo PDF, migrations SQLite, `pyproject.toml`).
 - T1–T10 (✅ già completati).
-- T11–T13: OCR pipeline 3 stadi.
+- T11(a–b) (✅): `OCRPageEngine`/`EasyOCRPageEngine` + renderer pagine PNG (`pypdfium2`); T11(c)–T13: persistenza/cache Stage 1 e stadi Vision/Editor.
 - T14: orchestrazione concorrente.
 - T15–T17: writer pagine, TOC.md, INDEX.md.
 - **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
@@ -337,6 +337,7 @@ La struttura cartelle (albero, principi, linee guida) è documentata in [`README
 Differenze chiave rispetto al README attuale (richieste da questo PRD):
 
 - Rinominare `data/polyndex/` → `data/polyindex/` (fix typo, allineato al manoscritto).
+- Modulo `src/ingestion/ocr/` con `engine.py` (EasyOCR, T11a) e `render.py` (PNG via pypdfium2, T11b); i prompt Vision/Editor restano pianificati in `src/ingestion/ocr/prompts/`.
 - Aggiungere `src/ingestion/polyindex/` (T23–T26).
 - Aggiungere `src/search/` con `prompts/article/v1.md`, `prompts/poh_links/v1.md`, `prompts/timeline/v1.md`, `lookup.py`, `article.py`, `api.py` (F2-T1+).
 - Nome file DB runtime: `data/db/biblioteca.csv` (SQLite; vedi glossario e `Settings.sqlite_path`).
@@ -362,11 +363,11 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [x] **PRE-A** — `ProcessPoolExecutor` in `pdf_alignment.py`. *(Sonnet)*
 - [x] **PRE-B** — `_schema_migrations` + migrations in `book_sqlite.py`. *(Sonnet)*
 - [x] **PRE-C** — `pyproject.toml` + dipendenze runtime complete. *(Composer 2)*
+- [x] **T11(a)** — Wrapper OCR Protocol + EasyOCRPageEngine. *(Sonnet)*
+- [x] **T11(b)** — PDF page renderer con pypdfium2. *(Sonnet)*
 
 ### Fase 1 — Upload (OCR + orchestrazione)
 
-- [ ] **T11(a)** — Wrapper OCR Protocol + EasyOCRPageEngine. *(Sonnet)*
-- [ ] **T11(b)** — PDF page renderer con pypdfium2. *(Sonnet)*
 - [ ] **T11(c)** — Persistenza Stage 1 + cache idempotente. *(Sonnet)*
 - [ ] **T12(a)** — Client OpenAI-compatible centralizzato. *(Sonnet)*
 - [ ] **T12(b)** — refine_with_vision + prompt v1. *(Sonnet)*
