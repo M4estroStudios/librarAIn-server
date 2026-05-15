@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 class Settings(BaseModel):
@@ -20,6 +20,17 @@ class Settings(BaseModel):
     page_range_per_thread: int = Field(
         default=10, ge=1, alias="PAGE_RANGE_PER_THREAD"
     )
+    ocr_languages: list[str] = Field(default_factory=lambda: ["it", "en"], alias="OCR_LANGUAGES")
+    ocr_use_gpu: bool = Field(default=False, alias="OCR_USE_GPU")
+
+    @field_validator("ocr_languages", mode="before")
+    @classmethod
+    def parse_ocr_languages(cls, v: object) -> list[str]:
+        if isinstance(v, list):
+            return [str(lang).strip().lower() for lang in v if str(lang).strip()]
+        if isinstance(v, str):
+            return [lang.strip().lower() for lang in v.split(",") if lang.strip()]
+        return v
 
     @property
     def sqlite_path(self) -> str:
