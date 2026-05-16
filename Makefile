@@ -1,22 +1,26 @@
-.PHONY: check-python312 setup-env test clean-pycache run-server
+# Interprete usato per creare il venv (override: make PY=python3.11 setup-env).
+PY ?= python3
 
-PYTHON ?= $(shell test -x ./venv/bin/python && echo ./venv/bin/python || echo python3)
+# Preferisce ./venv se presente (dopo setup-env).
+PYTHON ?= $(shell test -x ./venv/bin/python && echo ./venv/bin/python || echo $(PY))
 
-check-python312:
-	python3.12 -c "import sys; raise SystemExit(0 if sys.version_info[:2] == (3, 12) else 'Python 3.12 is required')"
+.PHONY: check-python setup-env test clean-pycache run-server
 
-setup-env: check-python312
+check-python:
+	$(PY) -c "import sys; sys.exit('Python 3.11+ required (see pyproject.toml requires-python)' if sys.version_info < (3, 11) else 0)"
+
+setup-env: check-python
 	rm -rf venv
-	python3.12 -m venv venv
+	$(PY) -m venv venv
 	./venv/bin/python -m pip install --upgrade pip
-	./venv/bin/pip install -r requirements.txt
+	./venv/bin/pip install -e ".[dev]"
 
 test:
-	python3 -m unittest discover -s tests -p "test_*.py"
+	$(PYTHON) -m unittest discover -s tests -p "test_*.py"
 	$(MAKE) clean-pycache
 
 run-server:
 	$(PYTHON) -m src.api.ingest_http_server
 
 clean-pycache:
-	python3 -c "import pathlib, shutil; [shutil.rmtree(path, ignore_errors=True) for path in pathlib.Path('.').rglob('__pycache__')]"
+	$(PYTHON) -c "import pathlib, shutil; [shutil.rmtree(path, ignore_errors=True) for path in pathlib.Path('.').rglob('__pycache__')]"

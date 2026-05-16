@@ -35,10 +35,17 @@ code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0
 #out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
 small.req { color: #f08080; }
 strong { color: #e8e8e8; }
+.dev-banner { margin: 0 0 1rem; padding: 0.7rem 0.9rem; border-radius: 10px; background: #3a2f12; color: #f5d98a; border: 1px solid #6b5524; font-size: 0.85rem; line-height: 1.4; }
+.dev-banner strong { color: #ffe9a8; }
 </style>
 </head>
 <body>
 <h1>Ingestione libro</h1>
+<div class="dev-banner" role="note">
+  <strong>Pipeline in sviluppo — versione temporanea e parziale.</strong>
+  Attualmente l’ingestione esegue solo lo <strong>Stage 1 OCR</strong> (output testuale grezzo per pagina in <code>data/tmp/&lt;sha&gt;/stage1OCR/</code>) e si considera completa a fine OCR.
+  Non sono ancora attivi: Stage 2 Vision, Stage 3 Editor, writer pagine, <code>TOC.md</code>, <code>INDEX.md</code>, file aggregato <code>&lt;libro&gt;.md</code> e polyindex globale.
+</div>
 <p class="lead">Carica il PDF e indica quali pagine del file escludere e dove si trovano, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT. Prima dell’invio il browser tenta una verifica delle pagine rispetto al PDF (servono rete per caricare pdf.js).</p>
 
 <form id="ingest-form">

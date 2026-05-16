@@ -2,6 +2,9 @@
 
 Server e pipeline per ingestione libri, persistenza metadati e (fase successiva) ricerca. Requisiti di prodotto della Fase 1: `[PRD-Fase1.md](PRD-Fase1.md)`.
 
+> ⚠️ **Stato attuale: pipeline temporanea, parziale e incompleta (solo sviluppo).**
+> L’ingestione esposta da `POST /api/ingest/submit` (e dalla web UI `web/index.html`) oggi esegue **solo lo Stage 1 OCR** e si considera completata a fine OCR (T11.5). Stage 2 Vision, Stage 3 Editor, writer pagine per libro, `TOC.md`, `INDEX.md`, file aggregato `<libro>.md` e polyindex globale **non sono ancora attivi**. La risposta dell’endpoint include solo i risultati fino allo Stage 1 (`stage1`). Le cartelle `data/tmp/<sha>/stage2Vision/` e `stage3Editor/` mostrate nell’albero sotto si materializzeranno solo con le task future T12.5+/T13+.
+
 ## Struttura del repository (bilanciata)
 
 Obiettivo: **tre pilastri** chiari (ingestione, ricerca, dati) senza minimalismo sterile e senza labirinti di sottocartelle. Poche cartelle di primo livello sotto `src/`, massimo **un livello** di annidamento oltre quello.
@@ -233,7 +236,11 @@ Per i test e per l'inserimento minimo è disponibile `insert_book_minimal(...)`,
 
 ### Risposta `POST /api/ingest/submit`
 
+> Nota stato attuale (dev-only, T11.5): l’ingest sincrono **termina al completamento dello Stage 1 OCR**. Stage 2 Vision (T12.5) ed Editor (T13) non sono ancora cablati: la risposta non include `stage2`/`stage3` e i file finali per libro (`<libro>.md`, `TOC.md`, `INDEX.md`, polyindex) non vengono prodotti.
+
 In caso di successo include `ingest_gate_phase` come prima e, se la pipeline non è stata saltata per hash duplicato, `pdf_alignment` con il path assoluto del PDF allineato sotto `<DATA_ROOT>/input/processed` (`<source_sha256>.pdf`) e le mappe `original_page_to_aligned_page` / `aligned_page_to_original_page` (pagine 1-based). Se l’hash è duplicato e il percorso di skip è attivo, `pdf_alignment` è `null`.
 
 È sempre presente `useful_pages_enumeration` (T10): elenco ordinato delle pagine originali utili, mappe bidirezionali allineamento 1-based, e `toc_range_aligned` / `index_range_aligned` (range TOC/INDEX proiettati sul PDF allineato). Con `pdf_alignment` valorizzato, le mappe sono incrociate con l’artifact prodotto in T9; con skip duplicati restano ricavate deterministicamente dall’input e da `source_pdf_page_count`.
+
+È presente anche `stage1` (T11.5): risultato dello Stage 1 OCR per le pagine utili enumerate. I file di testo grezzi vengono scritti in `data/tmp/<source_sha256>/stage1OCR/p.<NNNN>.<slug>.txt` (uno per pagina), con `<NNNN>` zero-padded sul numero pagina allineata e `<slug>` derivato dal titolo REICAT.
 

@@ -15,6 +15,7 @@ from src.ingestion.pdf_alignment import (
     build_aligned_pdf,
     build_page_removal_mapping,
     maybe_run_pdf_alignment,
+    resolve_aligned_pdf_path_for_stage1,
 )
 from src.ingestion.request_validation import run_ingest_gate_phase, validate_and_enrich_request
 from src.models.request import (
@@ -250,6 +251,46 @@ class PdfAlignmentTests(unittest.TestCase):
 
             aligned_second = maybe_run_pdf_alignment(enriched_dup, phase_dup, str(processed_dir))
             self.assertIsNone(aligned_second)
+
+            resolved = resolve_aligned_pdf_path_for_stage1(
+                enriched_dup,
+                None,
+                str(processed_dir),
+                page_range_per_thread=DEFAULT_PAGE_RANGE_PER_THREAD,
+            )
+            self.assertTrue(resolved.is_file())
+            self.assertEqual(
+                resolved.resolve(), Path(aligned_first.aligned_pdf_path).resolve()
+            )
+
+    def test_resolve_aligned_pdf_rebuilds_when_skipped_and_missing(
+        self,
+    ) -> None:
+        pdf_body = _minimal_pdf_bytes(20)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            raw_path = Path(tmp_dir) / "book.pdf"
+            raw_path.write_bytes(pdf_body)
+            sqlite_path = Path(tmp_dir) / "biblioteca.db"
+            payload = deepcopy(_valid_payload(str(raw_path), pdf_pages=20))
+            enriched_once = validate_and_enrich_request(payload)
+            phase_first = run_ingest_gate_phase(enriched_once, str(sqlite_path))
+            upsert_book_reicat(enriched_once, str(sqlite_path))
+            enriched_dup = validate_and_enrich_request(deepcopy(payload))
+            phase_dup = run_ingest_gate_phase(enriched_dup, str(sqlite_path))
+            processed_dir = Path(tmp_dir) / "processed"
+            aligned_first = maybe_run_pdf_alignment(
+                enriched_once, phase_first, str(processed_dir)
+            )
+            assert aligned_first is not None
+            maybe_run_pdf_alignment(enriched_dup, phase_dup, str(processed_dir))
+            Path(aligned_first.aligned_pdf_path).unlink()
+            resolved = resolve_aligned_pdf_path_for_stage1(
+                enriched_dup,
+                None,
+                str(processed_dir),
+                page_range_per_thread=DEFAULT_PAGE_RANGE_PER_THREAD,
+            )
+            self.assertTrue(resolved.is_file())
 
 
 if __name__ == "__main__":

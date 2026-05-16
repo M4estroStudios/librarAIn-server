@@ -293,3 +293,24 @@ def maybe_run_pdf_alignment(
         processed_pdf_dir,
         page_range_per_thread=page_range_per_thread,
     )
+
+
+def resolve_aligned_pdf_path_for_stage1(
+    enriched: EnrichedIngestRequest,
+    pdf_alignment: PdfAlignmentResult | None,
+    processed_pdf_dir: str,
+    *,
+    page_range_per_thread: int = DEFAULT_PAGE_RANGE_PER_THREAD,
+) -> Path:
+    if pdf_alignment is not None:
+        return Path(pdf_alignment.aligned_pdf_path)
+    digest = enriched.source_sha256.strip().lower()
+    candidate = Path(processed_pdf_dir) / f"{digest}.pdf"
+    if candidate.is_file():
+        return candidate
+    built = build_aligned_pdf(
+        enriched,
+        processed_pdf_dir,
+        page_range_per_thread=page_range_per_thread,
+    )
+    return Path(built.aligned_pdf_path)

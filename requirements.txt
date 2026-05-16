@@ -5,3 +5,5 @@ pydantic==2.13.4
 pydantic_core==2.46.4
 typing-inspection==0.4.2
 typing_extensions==4.15.0
+easyocr>=1.7,<2
+Pillow>=10,<12

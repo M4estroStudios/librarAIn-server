@@ -296,6 +296,7 @@ TIMELINE_PROMPT_VERSION=v1
 - PRE-A–PRE-C (✅): prerequisiti tecnici (parallelismo PDF, migrations SQLite, `pyproject.toml`).
 - T1–T10 (✅ già completati).
 - T11(a–b) (✅): `OCRPageEngine`/`EasyOCRPageEngine` + renderer pagine PNG (`pypdfium2`); T11(c)–T13: persistenza/cache Stage 1 e stadi Vision/Editor.
+- **T11.5 (✅, stato dev-only)**: cablaggio Stage 1 su `POST /api/ingest/submit` (HTTP sincrono): dopo enumerazione esegue `run_stage1_ingest_step`; risposta include `stage1`. **Questa è una pipeline temporanea, parziale e incompleta**: per lo sviluppo l’ingest sincrono si considera completato a fine Stage 1; gli stadi Vision/Editor, i writer per libro (`<libro>.md`, `TOC.md`, `INDEX.md`), il file aggregato e il polyindex globale non sono ancora cablati nell’ingest e verranno attivati con T12.5+, T13+, T15–T17, T22, T23–T26.
 - T14: orchestrazione concorrente.
 - T15–T17: writer pagine, TOC.md, INDEX.md.
 - **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
@@ -337,7 +338,8 @@ La struttura cartelle (albero, principi, linee guida) è documentata in [`README
 Differenze chiave rispetto al README attuale (richieste da questo PRD):
 
 - Rinominare `data/polyndex/` → `data/polyindex/` (fix typo, allineato al manoscritto).
-- Modulo `src/ingestion/ocr/` con `engine.py` (EasyOCR, T11a) e `render.py` (PNG via pypdfium2, T11b); i prompt Vision/Editor restano pianificati in `src/ingestion/ocr/prompts/`.
+- Modulo `src/ingestion/ocr/` con `engine.py` (EasyOCR, T11a), `render.py` (T11b), `stage1.py` (T11c); i prompt Vision/Editor restano pianificati in `src/ingestion/ocr/prompts/`.
+- **T11.5**: ingest HTTP — `src/api/ingest_http_server.py` invoca lo Stage 1 dopo l’enumerazione; `src/api/ingest_form.py` per parsing multipart/payload form; `resolve_aligned_pdf_path_for_stage1` in `pdf_alignment.py` quando `pdf_alignment` è assente (es. skip per hash duplicato) ma serve il PDF allineato su disco.
 - Aggiungere `src/ingestion/polyindex/` (T23–T26).
 - Aggiungere `src/search/` con `prompts/article/v1.md`, `prompts/poh_links/v1.md`, `prompts/timeline/v1.md`, `lookup.py`, `article.py`, `api.py` (F2-T1+).
 - Nome file DB runtime: `data/db/biblioteca.csv` (SQLite; vedi glossario e `Settings.sqlite_path`).
@@ -369,9 +371,11 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 ### Fase 1 — Upload (OCR + orchestrazione)
 
 - [ ] **T11(c)** — Persistenza Stage 1 + cache idempotente. *(Sonnet)*
+- [x] **T11.5** — Cablaggio Stage 1 in `POST /api/ingest/submit`: dopo gate/allineamento/enumerazione esegue OCR su pagine utili, risponde con `stage1`; risoluzione path PDF allineato se lo skip duplicato non popola `pdf_alignment`. *(Sonnet)*
 - [ ] **T12(a)** — Client OpenAI-compatible centralizzato. *(Sonnet)*
 - [ ] **T12(b)** — refine_with_vision + prompt v1. *(Sonnet)*
 - [ ] **T12(c)** — Persistenza Stage 2 + audit prompt. *(Sonnet)*
+- [ ] **T12.5** — Cablaggio Stage 2 Vision in `POST /api/ingest/submit` dopo il completamento dello Stage 1; task futura, da implementare solo quando autorizzata. *(Sonnet)*
 - [ ] **T13(a)** — refine_with_editor + prompt v1. *(Sonnet)*
 - [ ] **T13(b)** — Persistenza Stage 3 + diff per pagina. *(Sonnet)*
 - [ ] **T14(a)** — Coda di job per pagina + asyncio.Semaphore. *(Opus)*
