@@ -6,13 +6,14 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from src.ingestion.ocr.engine import EasyOCRPageEngine, OCRPageEngine
-from src.ingestion.ocr.render import render_pdf_page_to_png
 from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
+from src.ingestion.pipeline.engine import EasyOCRPageEngine, OCRPageEngine
+from src.ingestion.pipeline.render import render_pdf_page_to_png
 from src.models.request import (
     EnrichedIngestRequest,
     IngestInputErrorCode,
     IngestInputValidationError,
+    IngestInputValidationException,
     PdfAlignmentResult,
     ReicatMetadata,
     UsefulPagesEnumeration,
@@ -142,11 +143,11 @@ def run_stage1_ocr(
         )
 
     if total_attempted > 0 and failed_count / total_attempted >= 0.5:
-        raise ValueError(
+        raise IngestInputValidationException(
             IngestInputValidationError(
                 code=IngestInputErrorCode.OCR_STAGE_FAILED,
                 message=f"OCR stage failed on {failed_count}/{total_attempted} pages",
-            ).model_dump_json()
+            )
         )
 
     return Stage1Result(

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 import tempfile
 import unittest
 from io import BytesIO
@@ -9,7 +8,7 @@ from unittest.mock import MagicMock
 
 from pypdf import PdfWriter
 
-from src.ingestion.ocr.stage1 import (
+from src.ingestion.pipeline.stage1 import (
     Stage1Result,
     _slugify,
     run_stage1_ingest_step,
@@ -22,7 +21,13 @@ from src.ingestion.request_validation import (
     run_ingest_gate_phase,
     validate_and_enrich_request,
 )
-from src.models.request import PageRange, ReicatMetadata, UsefulPagesEnumeration
+from src.models.request import (
+    IngestInputErrorCode,
+    IngestInputValidationException,
+    PageRange,
+    ReicatMetadata,
+    UsefulPagesEnumeration,
+)
 
 
 def _pdf_bytes(num_pages: int) -> bytes:
@@ -213,12 +218,11 @@ class Stage1OcrTests(unittest.TestCase):
             enum = _enumeration([1, 2, 3, 4], {1: 1, 2: 2, 3: 3, 4: 4})
             engine = FailEngine(fail_on={1, 2})
 
-            with self.assertRaises(ValueError) as ctx:
+            with self.assertRaises(IngestInputValidationException) as ctx:
                 run_stage1_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Fail Book"))
 
-            payload = json.loads(str(ctx.exception))
-            self.assertEqual(payload["code"], "OCR_STAGE_FAILED")
-            self.assertIn("2/4", payload["message"])
+            self.assertEqual(ctx.exception.detail.code, IngestInputErrorCode.OCR_STAGE_FAILED)
+            self.assertIn("2/4", ctx.exception.detail.message)
 
     def test_below_threshold_does_not_raise(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

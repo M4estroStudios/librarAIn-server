@@ -63,7 +63,7 @@ OK
 ```text
 Repo: librarAIn-server. Aggiorna PRD-Fase1.md preservando struttura ed executive summary.
 Modifiche puntuali richieste:
-1) §3 e §4: sostituisci ogni riferimento a `/Users/oni/Desktop/RagAIO.py` con riferimenti in-repo. Introduci come fonte di verità il modulo `src/ingestion/ocr/` e il documento `docs/reference_ocr_pipeline.md` (da creare con uno scheletro a parte).
+1) §3 e §4: sostituisci ogni riferimento a `/Users/oni/Desktop/RagAIO.py` con riferimenti in-repo. Introduci come fonte di verità il modulo `src/ingestion/pipeline/` e il documento `docs/reference_ocr_pipeline.md` (da creare con uno scheletro a parte).
 2) §4 Architecture: aggiungi un sotto-paragrafo "Modello di esecuzione" che fissa:
    - POST /api/ingest/submit ritorna immediatamente {request_id, status:"accepted", source_sha256?}.
    - GET /api/ingest/{id} ritorna stato pipeline (accepted|running|succeeded|failed|skipped_duplicate) + pipeline_version + ultimi N eventi.
@@ -145,7 +145,7 @@ OK** (non veramente necessario ma comodo)
 
 **T11(a) — Scelta motore + wrapper**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/ocr/__init__.py e src/ingestion/ocr/engine.py.
+Repo: librarAIn-server. Crea src/ingestion/pipeline/__init__.py e src/ingestion/pipeline/engine.py.
 - Definisci Protocol OCRPageEngine: ocr_page(image_path: Path, *, lang: list[str]) -> str (testo grezzo).
 - Implementazione di default EasyOCRPageEngine (lazy import easyocr; cache reader per (lang_tuple, gpu)).
 - Configurazione lingua via settings: aggiungi a src/models/settings.py il campo OCR_LANGUAGES (default "it,en", normalizzato in list[str]) e OCR_USE_GPU (bool, default False).
@@ -156,7 +156,7 @@ OK
 
 **T11(b) — PDF page renderer**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/ocr/render.py.
+Repo: librarAIn-server. Crea src/ingestion/pipeline/render.py.
 - Funzione render_pdf_page_to_png(pdf_path: Path, page_index_zero: int, target_path: Path, *, dpi: int = 200) -> Path usando pypdfium2 (preferito: stdlib-friendly, niente Poppler).
 - Funzione render_aligned_pdf_pages(aligned_pdf_path, target_dir, dpi) -> list[(aligned_page_1based, png_path)] che produce data/tmp/<sha>/render/p.NNNN.png.
 - Idempotente: se PNG esiste con stesso DPI marker (sidecar JSON), skip.
@@ -167,7 +167,7 @@ OK
 
 **T11(c) — Persistenza Stage 1 OCR + cache**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/ocr/stage1.py.
+Repo: librarAIn-server. Crea src/ingestion/pipeline/stage1.py.
 - Funzione run_stage1_ocr(aligned_pdf_path, source_sha256, useful_pages_enumeration, settings, engine: OCRPageEngine) -> Stage1Result.
 - Per ogni pagina ALIGNED 1-based: render PNG (T11b), chiama engine.ocr_page, scrive testo in data/tmp/<sha>/stage1OCR/p.NNNN.<libro_slug>.txt.
 - "libro_slug" ricavato da reicat.title via slugify deterministico (max 32 char, [a-z0-9-]).
@@ -198,25 +198,24 @@ OK
 
 **T12(b) — refine_with_vision**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/ocr/stage2_vision.py.
-- Funzione refine_with_vision(client, *, model, page_image_path: Path, raw_ocr_text: str, prompt_version: str, request_id, page) -> str.
-- Costruisce un messaggio multimodale: [system con prompt versionato, user con image_url base64 della PNG + raw_ocr_text].
+Repo: librarAIn-server. In `src/ingestion/pipeline/stage2.py` definisci `refine_with_vision` (T12b; non file separato).
+- Funzione refine_with_vision(client, *, model, page_image_path: Path, raw_ocr_text: str, request_id, page) -> str.
+- Costruisce un messaggio multimodale: [system con testo letto da `src/ingestion/pipeline/prompts/vision_prompt.md`, user con image_url base64 della PNG + raw_ocr_text].
 - temperature default 0.1 (fissa nel codice ma sovrascrivibile via parametro).
-- Lookup del system prompt: src/ingestion/ocr/prompts/vision/<prompt_version>.md (committato in repo). Crea il file `v1.md` con un prompt vincolante in italiano: "Rifinisci il testo OCR rispettando il layout, non inventare testo, mantieni la formattazione markdown minima, non tradurre".
-- Test tests/test_stage2_vision.py con un fake client che ritorna stringa fissa; verifica che image+text siano correttamente passati e che il prompt versione v1 sia caricato.
-DoD: prompt versionato in repo, niente prompt hardcoded nel codice Python.
+- Un **solo** file Vision in `pipeline/prompts/`; aggiornamenti = commit Git, niente numerazione dei prompt.
+- Test tests/test_stage2.py (`TestRefineWithVision`) con un fake client che ritorna stringa fissa; verifica che image+text siano correttamente passati e che il system prompt coincida col file.
+DoD: niente prompt hardcoded nel codice Python.
 ```
 OK
 
 **T12(c) — Persistenza Stage 2 + audit prompt**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/ocr/stage2.py.
-- Funzione run_stage2_vision(stage1_result, source_sha256, settings, client, prompt_version="v1") -> Stage2Result.
+Repo: librarAIn-server. Nello stesso `src/ingestion/pipeline/stage2.py` aggiungi `run_stage2_vision`, `Stage2Result`, ecc. (T12c).
+- Funzione run_stage2_vision(stage1_result, source_sha256, settings, client) -> Stage2Result.
 - Per ogni pagina di stage1: chiama refine_with_vision; scrive markdown in data/tmp/<sha>/stage2Vision/p.NNNN.<slug>.md.
-- Cache idempotente come stage1 + sidecar JSON {"prompt_version": "...", "model": "...", "completed_at": "..."}; se sidecar combacia con run corrente, skip.
-- Aggiungi a settings VISION_PROMPT_VERSION (default "v1").
-- Test tests/test_stage2.py con fake client; verifica idempotenza con stessa version, ricomputo se version cambia.
-DoD: cambio di prompt_version o model invalida correttamente la cache.
+- Cache idempotente come stage1 + sidecar JSON {"model": "...", "completed_at": "..."}; se stesso modello, skip.
+- Test tests/test_stage2.py con fake client; verifica idempotenza con stesso model, ricomputo se model cambia.
+DoD: cambio di model invalida correttamente la cache; per rigenerare dopo modifiche a `prompts/vision_prompt.md` usare force_recompute o cancellare gli artefatti Stage 2.
 ```
 OK
 
@@ -224,22 +223,22 @@ OK
 
 **T13(a) — refine_with_editor**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/ocr/stage3_editor.py.
-- Funzione refine_with_editor(client, *, model, stage2_md: str, prompt_version: str, request_id, page) -> str: chat-completions text-only.
-- Prompt versionato: src/ingestion/ocr/prompts/editor/v1.md ("normalizza markdown, fix spaziature, NON cambiare semantica, NON aggiungere contenuto").
+Repo: librarAIn-server. Crea src/ingestion/pipeline/stage3_editor.py.
+- Funzione refine_with_editor(client, *, model, stage2_md: str, request_id, page) -> str: chat-completions text-only.
+- System prompt letto da `src/ingestion/pipeline/prompts/editor_prompt.md` ("normalizza markdown, fix spaziature, NON cambiare semantica, NON aggiungere contenuto").
 - Stessa policy di temperature 0.1, retry/rate-limit del client centralizzato.
 - Test tests/test_stage3_editor.py con fake client.
-DoD: prompt versionato, contratto deterministico testato.
+DoD: testo di sistema solo da file in repo (Git), niente stringhe prompt nel Python.
 ```
 OK
 
 **T13(b) — Persistenza Stage 3 + diff per pagina**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/ocr/stage3.py.
-- Funzione run_stage3_editor(stage2_result, source_sha256, settings, client, prompt_version="v1") -> Stage3Result.
+Repo: librarAIn-server. Crea src/ingestion/pipeline/stage3.py.
+- Funzione run_stage3_editor(stage2_result, source_sha256, settings, client) -> Stage3Result.
 - Per ogni pagina di stage2: refine_with_editor, scrive in data/tmp/<sha>/stage3Editor/p.NNNN.<slug>.md.
-- Sidecar JSON: prompt_version, model, completed_at, stage2_char_count, stage3_char_count, char_delta.
-- Cache idempotente identica a stage2.
+- Sidecar JSON: model, completed_at, stage2_char_count, stage3_char_count, char_delta.
+- Cache idempotente identica a stage2 (stesso modello).
 - Test tests/test_stage3.py: idempotenza, sidecar coerente, char_delta calcolato.
 DoD: il pipeline è ora rieseguibile a stage in modo idempotente.
 ```
@@ -268,7 +267,7 @@ Repo: librarAIn-server. Crea src/core/retry.py:
 - Funzione async retry_async(coro_factory, *, max_attempts, base_delay=0.5, max_delay=10, jitter=True, retry_on=(TransientError,), giveup_on=(PermanentError,)).
 - Definisci esczioni TransientError / PermanentError in src/core/errors.py e mappa le eccezioni openai in queste classi via classify_openai_exception(exc) -> type.
 - Refactor src/core/openai_client.py per usare retry_async.
-- Refactor src/ingestion/ocr/stage1.py per usare retry_async sulle chiamate al engine OCR (max_attempts=settings.retry_attempts).
+- Refactor src/ingestion/pipeline/stage1.py per usare retry_async sulle chiamate al engine OCR (max_attempts=settings.retry_attempts).
 - Test tests/test_retry.py: TransientError causa retry, PermanentError no-retry, max_attempts rispettato, backoff cresce.
 DoD: nessun retry ad-hoc disperso, una sola implementazione.
 ```
@@ -459,7 +458,7 @@ DoD: parser robusto a 6+ varianti di formattazione, output sempre con aligned_pa
 
 ### T25 — Opus — AI Subject Matcher (normalization + embeddings + LLM dirimitore)
 ```text
-Repo: librarAIn-server. Crea src/ingestion/polyindex/subject_matcher.py e src/ingestion/polyindex/prompts/subject_matcher/v1.md.
+Repo: librarAIn-server. Crea src/ingestion/polyindex/subject_matcher.py e src/ingestion/polyindex/prompts/subject_matcher_prompt.md.
 Obiettivo: dato un RawSubject (T24) e lo stato corrente di polyindex/INDEX.json, decidere se è (a) match con un canonical esistente, (b) nuovo canonical, (c) alias di un canonical esistente.
 
 Pipeline a 2 stadi:
@@ -473,7 +472,7 @@ Pipeline a 2 stadi:
    - Embedding del raw_label via openai.embeddings(model=settings.matcher_embedding_model).
    - Per ciascun canonical candidato (top-K=10 dei più simili lessicalmente o dei più recenti se K corti): embedding cache-ato in tabella SQLite subject_embeddings (vedi sotto). Distanza coseno.
    - Se max_sim >= settings.matcher_similarity_threshold (default 0.86) -> proponi merge.
-   - LLM dirimitore (solo se 0.82 <= max_sim < 0.92): chat completion con prompt v1 vincolante in italiano: "decidi se due lemmi indicano la stessa entità storica/concettuale. Rispondi SOLO con JSON {\"same\": bool, \"reason\": str}". temperature=0.1.
+   - LLM dirimitore (solo se 0.82 <= max_sim < 0.92): chat completion con testo di sistema da `subject_matcher_prompt.md` (italiano, vincolante): "decidi se due lemmi indicano la stessa entità storica/concettuale. Rispondi SOLO con JSON {\"same\": bool, \"reason\": str}". temperature=0.1.
    - Se dirimitore "same" -> canonical match + aggiungi raw_label originale agli aliases.
    - Altrimenti -> nuovo canonical (id = uuid stabile da label normalizzata + timestamp, oppure slug; opta per slug + counter su collisione).
 
@@ -491,7 +490,7 @@ Test tests/test_subject_matcher.py:
 - Casi: hit secco normalizzazione, alias hit, borderline lessicale risolto deterministicamente, borderline risolto da LLM "same", borderline risolto da LLM "different".
 - Idempotenza: due chiamate consecutive sullo stesso raw_subject ritornano la stessa decision (cache embedding usata).
 
-DoD: matcher con 5 casi testati green; audit log popolato; embedding cache funziona; prompt v1 versionato in repo; mai chiamate di rete reali nei test.
+DoD: matcher con 5 casi testati green; audit log popolato; embedding cache funziona; istruzioni LLM solo nel file prompt in repo; mai chiamate di rete reali nei test.
 ```
 
 ### T26 — Opus — Polyindex INDEX.json updater (merge atomico cross-book)
@@ -612,7 +611,7 @@ Vincoli:
 - Ogni transizione di stage publica un IngestJobEvent al registry.
 - Failure di un singolo step "soft" (es. parser INDEX trova 0 soggetti) NON fallisce la run; viene loggato e marcato in counters.
 - Failure "hard" (es. OCR > 50% pagine fallite) fa fallire la run con last_error preservato.
-- Pipeline_version: lettura da pyproject.toml o da costante src/api/__init__.py; deve cambiare ogni volta che si modifica un prompt versione.
+- Pipeline_version: lettura da pyproject.toml o da costante in `src/api/`; riflette **versione del software della pipeline**, non dei file prompt (quelli sono già tracciati da Git).
 
 Test tests/test_orchestrator_e2e_mocked.py:
 - Mocka client OpenAI, easyocr engine, pypdfium2.

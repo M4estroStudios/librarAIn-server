@@ -26,7 +26,7 @@ librarAIn-server/ # radice repository
 │   ├── api/ # entrypoint HTTP/CLI verso ingestione e ricerca
 │   ├── core/ # configurazione .env, logging, shared di base
 │   ├── ingestion/ # pipeline Fase 1: PDF → MD, TOC/INDEX, merge artefatti
-│   │   └── ocr/ # stadi OCR, Vision, Editor e run per pagina
+│   │   └── pipeline/ # OCR, Vision, Editor; `prompts/` contiene i .md di sistema (Vision/Editor)
 │   ├── models/ # tipi e contratti condivisi tra moduli
 │   ├── persistence/ # SQLite, JSON biblioteca, hash/stato run
 │   └── search/ # Fase 2: ricerca e generazione articoli (stub o futuro)

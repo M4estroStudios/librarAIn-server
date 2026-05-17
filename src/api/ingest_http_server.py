@@ -15,7 +15,7 @@ from src.api.ingest_form import (
     parse_multipart_form,
 )
 from src.core.config import ConfigurationError, load_settings
-from src.ingestion.ocr import run_stage1_ingest_step
+from src.ingestion.pipeline import run_stage1_ingest_step
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pdf_alignment import maybe_run_pdf_alignment
 from src.ingestion.request_validation import (

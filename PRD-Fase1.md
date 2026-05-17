@@ -96,8 +96,8 @@ Conservati e raffinati rispetto alla versione precedente del PRD; di seguito sol
   1. Lookup in `polyindex/INDEX.json`: estrazione candidati `{libro_sha256: [pagine]}` dai soggetti rilevanti per la query (normalizzazione + AI matching dei soggetti della query con i `canonical_label`/`aliases`).
   2. Espansione capitoli via `polyindex/TOC.json`: per ogni pagina candidata, recupero del capitolo che la contiene; aggiunta delle pagine vicine se il capitolo è < 6 pagine.
   3. Caricamento contenuti: lettura dei `pages/p.NNNN.<slug>.md` corrispondenti da `data/output/<sha>/`.
-  4. **Passo `a`–`b`**: generazione bozza articolo (1+ chiamate LLM) con `src/search/prompts/article/v1.md`: stile Wikipedia; **solo** link Markdown alle fonti (CommonMark), niente `<a href>`.
-  5. **Passo `c`**: pass successivo dedicato (`src/search/prompts/poh_links/v1.md`) **oppure** stesso turno se il prompt unico include istruzioni esplicite: ogni menzione di un POH (identificato da elenco `poh_candidates` derivato da INDEX + query) diventa `[etichetta visibile](poh:<poh_id>)`. Il POH principale della request **non** va linkato a se stesso nel primo paragrafo di lead; ripetizioni successive sì. Regole complete in §2.5.1.
+  4. **Passo `a`–`b`**: generazione bozza articolo (1+ chiamate LLM) con `src/search/prompts/article_prompt.md`: stile Wikipedia; **solo** link Markdown alle fonti (CommonMark), niente `<a href>`.
+  5. **Passo `c`**: pass successivo dedicato (`src/search/prompts/poh_links_prompt.md`) **oppure** stesso turno se il prompt unico include istruzioni esplicite: ogni menzione di un POH (identificato da elenco `poh_candidates` derivato da INDEX + query) diventa `[etichetta visibile](poh:<poh_id>)`. Il POH principale della request **non** va linkato a se stesso nel primo paragrafo di lead; ripetizioni successive sì. Regole complete in §2.5.1.
   6. **Passo `d`**: generazione o validazione blocco `## Cronologia` (vedi §2.5.1) con LLM + vincolo strutturale (tabella GFM) e validazione post-hoc (date non inventate senza fonte linkata nella stessa riga).
   7. Post-processing: parsing di tutti i link `(...)` nel Markdown, validazione URL `source:` e `poh:`, allineamento con `citations` JSON.
 - L'articolo è prodotto in **italiano**. Output principale = stringa Markdown UTF-8; niente HTML come formato primario (eccezione: entità già presenti nelle fonti restano escaped come nel sorgente).
@@ -161,16 +161,18 @@ Regole:
 
 Tutti i modelli sono raggiungibili via client OpenAI-compatible. Stessa istanza centralizzata in `src/core/openai_client.py` (T12a).
 
-### 3.2 Prompt versionati in repo
+### 3.2 Prompt di sistema (file in repository)
 
-- `src/ingestion/ocr/prompts/vision/v1.md`
-- `src/ingestion/ocr/prompts/editor/v1.md`
-- `src/ingestion/polyindex/prompts/subject_matcher/v1.md`
-- `src/search/prompts/article/v1.md`
-- `src/search/prompts/poh_links/v1.md` (turno dedicato al passo `c`; opzionalmente fuso in `article/v1.md` se una sola chiamata)
-- `src/search/prompts/timeline/v1.md` (passo `d`: redazione o revisione della sezione `## Cronologia`)
+I testi di sistema per gli LLM sono **file Markdown nel repo**; la cronologia delle modifiche è quella di **Git**, non suffissi tipo `v1`/`v2` né variabili d’ambiente `*_PROMPT_VERSION`.
 
-Mai prompt hardcoded in Python. Cambio di `prompt_version` o `model` invalida le cache di stage.
+- `src/ingestion/pipeline/prompts/vision_prompt.md` — Stage 2 Vision
+- `src/ingestion/pipeline/prompts/editor_prompt.md` — Stage 3 Editor (T13)
+- `src/ingestion/polyindex/prompts/subject_matcher_prompt.md` — Subject matcher (T25)
+- `src/search/prompts/article_prompt.md` — ricerca: articolo (`a`–`b`)
+- `src/search/prompts/poh_links_prompt.md` — ricerca: link POH (`c`); opzionalmente fuso nello stesso turno di `article_prompt.md`
+- `src/search/prompts/timeline_prompt.md` — ricerca: sezione `## Cronologia` (`d`)
+
+Mai prompt hardcoded in Python. La cache Stage 2 è legata al modello Vision; dopo modifiche a `prompts/vision_prompt.md` usa `force_recompute` o cancella `stage2Vision/` sotto `tmp` se serve rigenerare tutto.
 
 ### 3.3 Evaluation Strategy
 
@@ -264,13 +266,7 @@ RESEARCH_TEMPERATURE=0.3
 CHECKPOINT_DAILY_ENABLED=true
 CHECKPOINT_RETENTION_DAYS=30
 
-# --- Prompt versions ---
-VISION_PROMPT_VERSION=v1
-EDITOR_PROMPT_VERSION=v1
-MATCHER_PROMPT_VERSION=v1
-RESEARCH_PROMPT_VERSION=v1
-POH_LINK_PROMPT_VERSION=v1
-TIMELINE_PROMPT_VERSION=v1
+# Prompt: file .md nel repository (vedi §3.2); nessuna variabile *_PROMPT_VERSION.
 ```
 
 ### 4.6 Security & Privacy
@@ -364,7 +360,7 @@ Log(DEBUG_LOG_LEVEL, "solo per questa riga", override=True)
 - **R1**: matcher AI genera falsi merge di soggetti distinti (es. due "Marco Polo" diversi). Mitigazione: soglia conservativa, audit log dei merge, comando di rollback per soggetto.
 - **R2**: articolo di ricerca cita pagine inventate. Mitigazione: post-validatore deterministico (citazione → pagina esistente o citazione scartata + warning nel log).
 - **R3**: crescita lineare di `INDEX.json` rallenta lookup. Mitigazione: caricamento in memoria con cache LRU; sharding rimandato a v2.0.
-- **R4**: divergenza endpoint locale vs remoto su Vision/Editor. Mitigazione: prompt versionati + temperature bassa + smoke test che gira con entrambi.
+- **R4**: divergenza endpoint locale vs remoto su Vision/Editor. Mitigazione: prompt in `src/ingestion/pipeline/prompts/`; temperature bassa; smoke test che gira con entrambi.
 - **R5**: snapshot giornaliero rompe atomicità durante un ingest in corso. Mitigazione: snapshot acquisisce lo stesso lock di scrittura del polyindex.
 
 ## 6. Struttura del repository
@@ -374,10 +370,10 @@ La struttura cartelle (albero, principi, linee guida) è documentata in [`README
 Differenze chiave rispetto al README attuale (richieste da questo PRD):
 
 - Rinominare `data/polyndex/` → `data/polyindex/` (fix typo, allineato al manoscritto).
-- Modulo `src/ingestion/ocr/` con `engine.py` (EasyOCR, T11a), `render.py` (T11b), `stage1.py` (T11c); i prompt Vision/Editor restano pianificati in `src/ingestion/ocr/prompts/`.
+- Modulo `src/ingestion/pipeline/` con `engine.py`, `render.py`, `stage1.py`, `stage2.py` (Vision), cartella **`prompts/`** (`vision_prompt.md`, futuro `editor_prompt.md`); prompt ricerca e matcher come da §3.2.
 - **T11.5**: ingest HTTP — `src/api/ingest_http_server.py` invoca lo Stage 1 dopo l’enumerazione; `src/api/ingest_form.py` per parsing multipart/payload form; `resolve_aligned_pdf_path_for_stage1` in `pdf_alignment.py` quando `pdf_alignment` è assente (es. skip per hash duplicato) ma serve il PDF allineato su disco.
 - Aggiungere `src/ingestion/polyindex/` (T23–T26).
-- Aggiungere `src/search/` con `prompts/article/v1.md`, `prompts/poh_links/v1.md`, `prompts/timeline/v1.md`, `lookup.py`, `article.py`, `api.py` (F2-T1+).
+- Aggiungere `src/search/` con i prompt in §3.2, `lookup.py`, `article.py`, `api.py` (F2-T1+).
 - Nome file DB runtime: `data/db/biblioteca.csv` (SQLite; vedi glossario e `Settings.sqlite_path`).
 - Aggiungere `src/core/checkpoints.py` (T27).
 - Aggiungere `web/index.html` con form di submit.
@@ -408,11 +404,11 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 
 ### Fase 1 — Upload (OCR + orchestrazione)
 
-- [ ] **T12(a)** — Client OpenAI-compatible centralizzato. *(Sonnet)*
-- [ ] **T12(b)** — refine_with_vision + prompt v1. *(Sonnet)*
-- [ ] **T12(c)** — Persistenza Stage 2 + audit prompt. *(Sonnet)*
+- [x] **T12(a)** — Client OpenAI-compatible centralizzato. *(Sonnet)*
+- [x] **T12(b)** — refine_with_vision + `prompts/vision_prompt.md`. *(Sonnet)*
+- [x] **T12(c)** — Persistenza Stage 2 + audit prompt. *(Sonnet)*
 - [ ] **T12.5** — Cablaggio Stage 2 Vision in `POST /api/ingest/submit` dopo il completamento dello Stage 1; task futura, da implementare solo quando autorizzata. *(Sonnet)*
-- [ ] **T13(a)** — refine_with_editor + prompt v1. *(Sonnet)*
+- [ ] **T13(a)** — refine_with_editor + `prompts/editor_prompt.md`. *(Sonnet)*
 - [ ] **T13(b)** — Persistenza Stage 3 + diff per pagina. *(Sonnet)*
 - [ ] **T14(a)** — Coda di job per pagina + asyncio.Semaphore. *(Opus)*
 - [ ] **T14(b)** — Retry + classificazione errori. *(Sonnet)*
@@ -465,9 +461,9 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [ ] **F2-T2 (NUOVO)** — Subject Lookup deterministico su `polyindex/INDEX.json` (normalizzazione + match) + AI fallback su soggetti residui. *(Opus)*
 - [ ] **F2-T3 (NUOVO)** — Chapter Expansion su `polyindex/TOC.json` (pagine candidate → capitolo → pagine vicine, con budget). *(Sonnet)*
 - [ ] **F2-T4 (NUOVO)** — Pages Markdown Loader (carica `pages/p.NNNN.<slug>.md` per pagine candidate, taglia/normalizza). *(Composer 2)*
-- [ ] **F2-T5 (NUOVO)** — Article Generation LLM (`src/search/prompts/article/v1.md`): passi `a` + `b` con link `source:` come da §2.5.1. *(Opus)*
-- [ ] **F2-T6 (NUOVO)** — POH link pass LLM (`poh_links/v1.md`) o fusione in F2-T5: passo `c`. *(Opus)*
-- [ ] **F2-T7 (NUOVO)** — Timeline pass LLM (`timeline/v1.md`): passo `d`, sezione `## Cronologia` tabella GFM. *(Opus)*
+- [ ] **F2-T5 (NUOVO)** — Article Generation LLM (`article_prompt.md`): passi `a` + `b` con link `source:` come da §2.5.1. *(Opus)*
+- [ ] **F2-T6 (NUOVO)** — POH link pass LLM (`poh_links_prompt.md`) o fusione in F2-T5: passo `c`. *(Opus)*
+- [ ] **F2-T7 (NUOVO)** — Timeline pass LLM (`timeline_prompt.md`): passo `d`, sezione `## Cronologia` tabella GFM. *(Opus)*
 - [ ] **F2-T8 (NUOVO)** — Aggregatore Markdown finale + post-validatore link/tabellare + endpoint HTTP (`POST /api/research/submit`, `GET /{id}`, `GET /{id}/article`) + job registry `research`. *(Sonnet)*
 - [ ] **F2-T9 (NUOVO)** — Tabella `research_runs` + audit pagine/soggetti usati; propagazione `request_id` nei log. *(Sonnet)*
 - [ ] **F2-T10 (NUOVO)** — E2E ricerca: 2 libri ingestiti + query che richiede POH secondario + verifica `poh:` + `## Cronologia` + `source:`. *(Sonnet)*

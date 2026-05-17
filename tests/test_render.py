@@ -8,7 +8,7 @@ from pathlib import Path
 from pypdf import PdfWriter
 
 from src.core.hashing import compute_file_sha256
-from src.ingestion.ocr.render import render_aligned_pdf_pages, render_pdf_page_to_png
+from src.ingestion.pipeline.render import render_aligned_pdf_pages, render_pdf_page_to_png
 
 
 def _minimal_pdf_bytes(num_pages: int) -> bytes:

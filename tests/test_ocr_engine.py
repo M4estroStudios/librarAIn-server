@@ -12,7 +12,7 @@ class FakeOCRPageEngine:
 
 class OCRPageEngineProtocolTests(unittest.TestCase):
     def test_fake_engine_satisfies_protocol(self) -> None:
-        from src.ingestion.ocr.engine import OCRPageEngine
+        from src.ingestion.pipeline.engine import OCRPageEngine
 
         engine = FakeOCRPageEngine()
         self.assertIsInstance(engine, OCRPageEngine)
@@ -32,7 +32,7 @@ class OCRPageEngineProtocolTests(unittest.TestCase):
         self.assertNotIn("easyocr", sys.modules)
 
     def test_easyocr_engine_satisfies_protocol(self) -> None:
-        from src.ingestion.ocr.engine import EasyOCRPageEngine, OCRPageEngine
+        from src.ingestion.pipeline.engine import EasyOCRPageEngine, OCRPageEngine
 
         self.assertTrue(issubclass(EasyOCRPageEngine, OCRPageEngine))
 

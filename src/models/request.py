@@ -32,6 +32,12 @@ class IngestInputValidationError(BaseModel):
     field: str | None = None
 
 
+class IngestInputValidationException(ValueError):
+    def __init__(self, detail: IngestInputValidationError) -> None:
+        self.detail = detail
+        super().__init__(detail.model_dump_json())
+
+
 class PageRange(BaseModel):
     start: int = Field(ge=1)
     end: int = Field(ge=1)
