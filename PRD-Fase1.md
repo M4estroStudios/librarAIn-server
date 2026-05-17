@@ -276,7 +276,7 @@ TIMELINE_PROMPT_VERSION=v1
 ### 4.6 Security & Privacy
 
 - Chiavi/API key esclusivamente in `.env`, mai loggate, mai stampate.
-- Log strutturato (lib di logging interna a Jonathan; il PRD non impone JSON specifico).
+- Log strutturato in produzione (opzionale; vedi backlog). Per **log console colorati in sviluppo** usare `src/core/log.py` come da §4.8.
 - Path assoluti contenenti utente di sistema mai esposti via API; sempre relativi a `DATA_ROOT`.
 - Tracciabilità per libro: `pipeline_runs.request_id`, `source_sha256`, `pipeline_version`, timestamp.
 - Tracciabilità per ricerca: `research_runs.request_id`, hash query, libri/pagine usati come contesto (audit).
@@ -287,6 +287,43 @@ TIMELINE_PROMPT_VERSION=v1
 - **OQ1**: thread-safety di scrittura `polyindex/*.json` quando 2 ingest finiscono contemporaneamente → adottato file lock (`fcntl` su Unix) + atomic replace; sufficiente per single-process FastAPI ma da rivedere se passiamo a multi-worker.
 - **OQ2**: dimensione massima di `INDEX.json` prima di sharding (es. per soggetto inizia con A, B, ...) → posticipato a v2.0.
 - **OQ3**: cache embeddings dei soggetti canonici → serve persistenza? Probabilmente sì in SQLite (`subject_embeddings`) per evitare rigenerazioni; vedi T24.
+
+### 4.8 Logging console (sviluppo)
+
+Durante lo sviluppo locale si usa il modulo **`src/core/log.py`**: log colorati su stdout, soglia globale di verbosità e opzioni per parametri strutturati e forzatura singola riga.
+
+**Flusso obbligatorio**
+
+1. All’avvio del processo (tipicamente nel `main`), chiamare **`logInit`** una sola volta con il livello massimo di verbosità desiderato (tutti i livelli numerici *non superiori* a questo verranno emessi; i più verbosi vengono soppressi).
+2. Da quel momento ogni chiamata a **`Log`** rispetta quella gerarchia, salvo uso di **`override`**.
+
+**Livelli** (costanti nel modulo): `ERROR_LOG_LEVEL`, `WARNING_LOG_LEVEL`, `INFO_LOG_LEVEL`, `DEBUG_LOG_LEVEL`, `RESULT_LOG_LEVEL` (da 0 a 4, dal meno al più verboso). Se si invoca `logInit()` senza argomenti, il default è **`INFO_LOG_LEVEL`**.
+
+**API (Python)**
+
+```text
+logInit({ERROR|WARNING|INFO|DEBUG|RESULT}_LOG_LEVEL)
+```
+
+```text
+Log({ERROR|WARNING|INFO|DEBUG|RESULT}_LOG_LEVEL, "message" [, params: dict] [, override: bool])
+```
+
+- **`params`**: opzionale, dizionario `{"chiave": valore, ...}`; se presente viene mostrato in console in evidenza grigia accanto al messaggio.
+- **`override`**: opzionale, default `False`; se `True`, quella chiamata **ignora** il filtro della soglia globale e stampa comunque (utile per debug puntuale senza alzare il livello globale).
+
+Esempi d’uso:
+
+```python
+from src.core.log import logInit, Log, INFO_LOG_LEVEL, DEBUG_LOG_LEVEL
+
+logInit(INFO_LOG_LEVEL)
+Log(INFO_LOG_LEVEL, "pipeline avviata")
+Log(DEBUG_LOG_LEVEL, "dettaglio pagina", {"page": 12, "sha": sha256_hex})
+Log(DEBUG_LOG_LEVEL, "solo per questa riga", override=True)
+```
+
+**Nota**: non sostituisce eventuale logging strutturato/JSON in produzione (vedi §4.6); è pensato per traccia leggibile in terminale durante implementazione e smoke test.
 
 ## 5. Risks & Roadmap
 
