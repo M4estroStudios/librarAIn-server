@@ -332,8 +332,7 @@ Log(DEBUG_LOG_LEVEL, "solo per questa riga", override=True)
 **MVP (sblocca prodotto)**:
 - PRE-A–PRE-C (✅): prerequisiti tecnici (parallelismo PDF, migrations SQLite, `pyproject.toml`).
 - T1–T10 (✅ già completati).
-- T11(a–b) (✅): `OCRPageEngine`/`EasyOCRPageEngine` + renderer pagine PNG (`pypdfium2`); T11(c)–T13: persistenza/cache Stage 1 e stadi Vision/Editor.
-- **T11.5 (✅, stato dev-only)**: cablaggio Stage 1 su `POST /api/ingest/submit` (HTTP sincrono): dopo enumerazione esegue `run_stage1_ingest_step`; risposta include `stage1`. **Questa è una pipeline temporanea, parziale e incompleta**: per lo sviluppo l’ingest sincrono si considera completato a fine Stage 1; gli stadi Vision/Editor, i writer per libro (`<libro>.md`, `TOC.md`, `INDEX.md`), il file aggregato e il polyindex globale non sono ancora cablati nell’ingest e verranno attivati con T12.5+, T13+, T15–T17, T22, T23–T26.
+- **T11 — OCR + ingest Stage 1 (✅ completato)**: T11(a–c) — `OCRPageEngine`/`EasyOCRPageEngine`, renderer PNG (`pypdfium2`), persistenza/cache Stage 1 (`stage1OCR`); **T11.5** — cablaggio HTTP sincrono su `POST /api/ingest/submit` fino a fine Stage 1 (`stage1` in risposta). Vision/Editor e writer libro restano in T12+.
 - T14: orchestrazione concorrente.
 - T15–T17: writer pagine, TOC.md, INDEX.md.
 - **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
@@ -404,11 +403,11 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [x] **PRE-C** — `pyproject.toml` + dipendenze runtime complete. *(Composer 2)*
 - [x] **T11(a)** — Wrapper OCR Protocol + EasyOCRPageEngine. *(Sonnet)*
 - [x] **T11(b)** — PDF page renderer con pypdfium2. *(Sonnet)*
+- [x] **T11(c)** — Persistenza Stage 1 + cache idempotente. *(Sonnet)*
+- [x] **T11.5** — Cablaggio Stage 1 in `POST /api/ingest/submit`: dopo gate/allineamento/enumerazione esegue OCR su pagine utili, risponde con `stage1`; risoluzione path PDF allineato se lo skip duplicato non popola `pdf_alignment`. *(Sonnet)*
 
 ### Fase 1 — Upload (OCR + orchestrazione)
 
-- [ ] **T11(c)** — Persistenza Stage 1 + cache idempotente. *(Sonnet)*
-- [x] **T11.5** — Cablaggio Stage 1 in `POST /api/ingest/submit`: dopo gate/allineamento/enumerazione esegue OCR su pagine utili, risponde con `stage1`; risoluzione path PDF allineato se lo skip duplicato non popola `pdf_alignment`. *(Sonnet)*
 - [ ] **T12(a)** — Client OpenAI-compatible centralizzato. *(Sonnet)*
 - [ ] **T12(b)** — refine_with_vision + prompt v1. *(Sonnet)*
 - [ ] **T12(c)** — Persistenza Stage 2 + audit prompt. *(Sonnet)*
