@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import logging
 import random
 import time
 from dataclasses import dataclass
@@ -17,9 +16,8 @@ from openai import (
     RateLimitError,
 )
 
+from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.models.settings import Settings
-
-_log = logging.getLogger(__name__)
 
 _BACKOFF_BASE: float = 1.0
 _BACKOFF_JITTER: float = 1.0
@@ -64,6 +62,11 @@ _client_states: WeakKeyDictionary[openai.OpenAI, _ClientState] = WeakKeyDictiona
 def build_openai_client(settings: Settings) -> openai.OpenAI:
     key = (settings.openai_base_url, settings.openai_api_key)
     if key not in _cached_clients:
+        Log(
+            INFO_LOG_LEVEL,
+            "OpenAI client instantiated",
+            {"base_url": settings.openai_base_url or ""},
+        )
         client = openai.OpenAI(
             base_url=settings.openai_base_url,
             api_key=settings.openai_api_key or "dummy",
@@ -107,9 +110,10 @@ async def chat_completion_with_retry(
             content = response.choices[0].message.content
             if not content:
                 raise ValueError("Empty response from model")
-            _log.info(
+            Log(
+                INFO_LOG_LEVEL,
                 "chat_completion success",
-                extra={
+                {
                     "request_id": request_id,
                     "stage": stage,
                     "page": page,
@@ -119,30 +123,34 @@ async def chat_completion_with_retry(
                 },
             )
             return content
-        except _PERMANENT_ERRORS:
-            _log.error(
+        except _PERMANENT_ERRORS as exc:
+            Log(
+                ERROR_LOG_LEVEL,
                 "chat_completion permanent error",
-                extra={
+                {
                     "request_id": request_id,
                     "stage": stage,
                     "page": page,
                     "model": model,
                     "attempt": attempt,
                     "outcome": "permanent_error",
+                    "error": repr(exc),
                 },
             )
             raise
         except _TRANSIENT_ERRORS as exc:
             last_exc = exc
-            _log.warning(
+            Log(
+                WARNING_LOG_LEVEL,
                 "chat_completion transient error",
-                extra={
+                {
                     "request_id": request_id,
                     "stage": stage,
                     "page": page,
                     "model": model,
                     "attempt": attempt,
                     "outcome": "transient_error",
+                    "error": repr(exc),
                 },
             )
             if attempt < max_attempts - 1:

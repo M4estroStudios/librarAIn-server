@@ -15,6 +15,7 @@ from src.api.ingest_form import (
     parse_multipart_form,
 )
 from src.core.config import ConfigurationError, load_settings
+from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.ingestion.pipeline import run_stage1_ingest_step
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pdf_alignment import maybe_run_pdf_alignment
@@ -81,9 +82,11 @@ def _send_bytes(
 
 
 def run_ingest_http_server() -> None:
+    logInit(INFO_LOG_LEVEL)
     try:
         settings = load_settings()
     except ConfigurationError as exc:
+        Log(ERROR_LOG_LEVEL, "ingest server configuration failed", {"error": str(exc)})
         raise SystemExit(str(exc)) from exc
 
     host = os.environ.get("INGEST_HTTP_HOST", "127.0.0.1")
@@ -105,6 +108,7 @@ def run_ingest_http_server() -> None:
             if parsed.path in ("/", "/index.html"):
                 index_file = web_dir / "index.html"
                 if not index_file.exists():
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing", {"path": str(index_file)})
                     _send_json(self, 500, {"ok": False, "error": "web/index.html missing"})
                     return
                 _send_bytes(self, 200, index_file.read_bytes(), "text/html; charset=utf-8")
@@ -123,7 +127,8 @@ def run_ingest_http_server() -> None:
             try:
                 body = _read_body(self, max_upload)
                 text_fields, files = parse_multipart_form(body, content_type)
-            except (ValueError, OSError):
+            except (ValueError, OSError) as exc:
+                Log(WARNING_LOG_LEVEL, "ingest multipart parse failed", {"error": str(exc)})
                 form_error = IngestInputValidationError(
                     code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
                     message="multipart form could not be parsed",
@@ -135,6 +140,7 @@ def run_ingest_http_server() -> None:
             try:
                 ingest_payload = build_ingest_payload_from_form(text_fields)
             except InvalidPagesSpec as exc:
+                Log(WARNING_LOG_LEVEL, "ingest form pages spec invalid", {"error": str(exc)})
                 page_err = IngestInputValidationError(
                     code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
                     message=str(exc),
@@ -143,6 +149,11 @@ def run_ingest_http_server() -> None:
                 _send_json(self, 400, {"ok": False, "errors": page_err.model_dump(mode="json")})
                 return
             except InvalidRangeField as exc:
+                Log(
+                    WARNING_LOG_LEVEL,
+                    "ingest form range field invalid",
+                    {"field": exc.field, "error": exc.message_text},
+                )
                 range_err = IngestInputValidationError(
                     code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
                     message=exc.message_text,
@@ -151,6 +162,7 @@ def run_ingest_http_server() -> None:
                 _send_json(self, 400, {"ok": False, "errors": range_err.model_dump(mode="json")})
                 return
             except ValueError as exc:
+                Log(WARNING_LOG_LEVEL, "ingest form payload invalid", {"error": str(exc)})
                 form_err = IngestInputValidationError(
                     code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
                     message=str(exc),
@@ -161,6 +173,7 @@ def run_ingest_http_server() -> None:
 
             uploaded = files.get("pdf_file")
             if uploaded is None:
+                Log(WARNING_LOG_LEVEL, "ingest submit rejected: pdf_file missing")
                 err = IngestInputValidationError(
                     code=IngestInputErrorCode.PDF_NOT_FOUND,
                     message="PDF file upload is required",
@@ -170,6 +183,7 @@ def run_ingest_http_server() -> None:
                 return
             filename, file_bytes = uploaded
             if not file_bytes:
+                Log(WARNING_LOG_LEVEL, "ingest submit rejected: empty PDF upload")
                 err = IngestInputValidationError(
                     code=IngestInputErrorCode.PDF_NOT_FOUND,
                     message="empty PDF upload",
@@ -185,10 +199,16 @@ def run_ingest_http_server() -> None:
             except ValueError as exc:
                 try:
                     err_model = IngestInputValidationError.model_validate_json(str(exc))
+                    Log(
+                        WARNING_LOG_LEVEL,
+                        "ingest validation failed",
+                        {"errors": err_model.model_dump(mode="json")},
+                    )
                     _send_json(
                         self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
                     )
                 except ValueError:
+                    Log(WARNING_LOG_LEVEL, "ingest validation failed", {"error": str(exc)})
                     _send_json(
                         self,
                         400,
@@ -204,6 +224,14 @@ def run_ingest_http_server() -> None:
                 return
 
             ingest_gate_phase = run_ingest_gate_phase(enriched, settings.sqlite_path)
+            Log(
+                INFO_LOG_LEVEL,
+                "ingest gate phase completed",
+                {
+                    "source_sha256": enriched.source_sha256[:16],
+                    "pipeline_skipped": ingest_gate_phase.pipeline_skipped,
+                },
+            )
 
             try:
                 pdf_alignment = maybe_run_pdf_alignment(
@@ -215,10 +243,16 @@ def run_ingest_http_server() -> None:
             except ValueError as exc:
                 try:
                     err_model = IngestInputValidationError.model_validate_json(str(exc))
+                    Log(
+                        WARNING_LOG_LEVEL,
+                        "ingest pdf alignment failed",
+                        {"errors": err_model.model_dump(mode="json")},
+                    )
                     _send_json(
                         self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
                     )
                 except ValueError:
+                    Log(WARNING_LOG_LEVEL, "ingest pdf alignment failed", {"error": str(exc)})
                     _send_json(
                         self,
                         400,
@@ -240,10 +274,16 @@ def run_ingest_http_server() -> None:
             except ValueError as exc:
                 try:
                     err_model = IngestInputValidationError.model_validate_json(str(exc))
+                    Log(
+                        WARNING_LOG_LEVEL,
+                        "ingest page enumeration failed",
+                        {"errors": err_model.model_dump(mode="json")},
+                    )
                     _send_json(
                         self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
                     )
                 except ValueError:
+                    Log(WARNING_LOG_LEVEL, "ingest page enumeration failed", {"error": str(exc)})
                     _send_json(
                         self,
                         400,
@@ -268,10 +308,16 @@ def run_ingest_http_server() -> None:
             except ValueError as exc:
                 try:
                     err_model = IngestInputValidationError.model_validate_json(str(exc))
+                    Log(
+                        WARNING_LOG_LEVEL,
+                        "ingest stage1 failed",
+                        {"errors": err_model.model_dump(mode="json")},
+                    )
                     _send_json(
                         self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
                     )
                 except ValueError:
+                    Log(WARNING_LOG_LEVEL, "ingest stage1 failed", {"error": str(exc)})
                     _send_json(
                         self,
                         400,
@@ -301,14 +347,23 @@ def run_ingest_http_server() -> None:
                 "stage1": stage1_result.model_dump(mode="json"),
             }
 
+            Log(
+                INFO_LOG_LEVEL,
+                "ingest submit completed",
+                {
+                    "source_sha256": enriched.source_sha256[:16],
+                    "stage1_pages": len(stage1_result.pages),
+                    "skipped_existing": stage1_result.skipped_existing,
+                },
+            )
             _send_json(self, 200, payload_out)
 
     httpd = HTTPServer((host, port), IngestHandler)
-    print(f"ingest http server listening on http://{host}:{port}")
+    Log(INFO_LOG_LEVEL, "ingest http server listening", {"url": f"http://{host}:{port}"})
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("shutdown requested")
+        Log(INFO_LOG_LEVEL, "ingest http server shutdown requested")
 
 
 if __name__ == "__main__":

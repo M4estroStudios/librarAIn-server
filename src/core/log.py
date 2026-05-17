@@ -66,10 +66,11 @@ def logInit(globalLogLevel: int = INFO_LOG_LEVEL) -> None:
 
 
 def Log(currentLogLevel: int, message: str, params: dict[str, Any] | None = None, override: bool = False) -> None:
-    global GLOBAL_LOG_LEVEL
+    global GLOBAL_LOG_LEVEL, _globalLogLevelInitialized
 
     if not _globalLogLevelInitialized:
-        raise RuntimeError("Global log level not initialized")
+        GLOBAL_LOG_LEVEL = INFO_LOG_LEVEL
+        _globalLogLevelInitialized = True
 
     if currentLogLevel not in logLevel:
         raise ValueError("Invalid log level")

@@ -5,6 +5,7 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from src.core.hashing import compute_file_sha256
+from src.core.log import INFO_LOG_LEVEL, Log
 from src.models.request import (
     EnrichedIngestRequest,
     IngestInputErrorCode,
@@ -109,6 +110,11 @@ def _validate_page_refs_within_pdf(request: IngestRequest, pdf_page_count: int) 
 
 
 def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
+    Log(
+        INFO_LOG_LEVEL,
+        "ingest request validation starting",
+        {"source_pdf_path": str(payload.get("source_pdf_path", ""))[:120]},
+    )
     try:
         request = IngestRequest.model_validate(payload)
     except ValidationError as exc:
@@ -143,6 +149,12 @@ def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
 
     pdf_page_count = _count_pdf_pages(source_path)
     _validate_page_refs_within_pdf(request, pdf_page_count)
+
+    Log(
+        INFO_LOG_LEVEL,
+        "ingest request validation completed",
+        {"source_sha256": source_sha256[:16], "pdf_pages": pdf_page_count},
+    )
 
     return EnrichedIngestRequest(
         request=request,

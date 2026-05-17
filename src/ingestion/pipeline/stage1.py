@@ -18,6 +18,7 @@ from src.models.request import (
     ReicatMetadata,
     UsefulPagesEnumeration,
 )
+from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.models.settings import Settings
 
 _SLUG_MAX = 32
@@ -96,9 +97,24 @@ def run_stage1_ocr(
     total_attempted = 0
     failed_count = 0
 
+    Log(
+        INFO_LOG_LEVEL,
+        "stage1 OCR starting",
+        {
+            "slug": slug,
+            "useful_pages": len(useful_pages_enumeration.useful_original_pages),
+            "aligned_pdf": str(aligned_pdf_path),
+        },
+    )
+
     for orig in sorted(useful_pages_enumeration.useful_original_pages):
         aligned = useful_pages_enumeration.original_page_to_aligned_page.get(orig)
         if aligned is None:
+            Log(
+                WARNING_LOG_LEVEL,
+                "stage1 missing aligned page mapping",
+                {"original_page": orig},
+            )
             missing.append(orig)
             continue
 
@@ -122,6 +138,11 @@ def run_stage1_ocr(
             render_pdf_page_to_png(aligned_pdf_path, aligned - 1, png_path)
         except Exception as exc:
             last_error = str(exc)
+            Log(
+                WARNING_LOG_LEVEL,
+                "stage1 render page failed",
+                {"aligned_page": aligned, "original_page": orig, "error": str(exc)},
+            )
             failed_count += 1
             continue
 
@@ -129,6 +150,11 @@ def run_stage1_ocr(
             text = engine.ocr_page(png_path, lang=settings.ocr_languages)
         except Exception as exc:
             last_error = str(exc)
+            Log(
+                WARNING_LOG_LEVEL,
+                "stage1 OCR page failed",
+                {"aligned_page": aligned, "original_page": orig, "error": str(exc)},
+            )
             failed_count += 1
             continue
 
@@ -143,12 +169,28 @@ def run_stage1_ocr(
         )
 
     if total_attempted > 0 and failed_count / total_attempted >= 0.5:
+        Log(
+            ERROR_LOG_LEVEL,
+            "stage1 OCR failure threshold exceeded",
+            {"failed": failed_count, "attempted": total_attempted, "last_error": last_error},
+        )
         raise IngestInputValidationException(
             IngestInputValidationError(
                 code=IngestInputErrorCode.OCR_STAGE_FAILED,
                 message=f"OCR stage failed on {failed_count}/{total_attempted} pages",
             )
         )
+
+    Log(
+        INFO_LOG_LEVEL,
+        "stage1 OCR finished",
+        {
+            "pages_written": len(pages),
+            "skipped_existing": skipped_existing,
+            "missing_mappings": len(missing),
+            "failed_count": failed_count,
+        },
+    )
 
     return Stage1Result(
         pages=pages,

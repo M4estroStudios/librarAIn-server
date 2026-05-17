@@ -9,6 +9,7 @@ from typing import Any
 import openai
 from pydantic import BaseModel
 
+from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import chat_completion_with_retry
 from src.ingestion.pipeline.stage1 import Stage1Result
 from src.models.settings import Settings
@@ -96,6 +97,12 @@ async def run_stage2_vision(
     missing: list[int] = []
     last_error: str | None = None
 
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 vision starting",
+        {"pages_from_stage1": len(stage1_result.pages), "model": model},
+    )
+
     for s1_page in stage1_result.pages:
         stem = Path(s1_page.txt_path).stem
         md_path = stage2_dir / f"{stem}.md"
@@ -117,7 +124,11 @@ async def run_stage2_vision(
                     )
                     continue
             except Exception:
-                pass
+                Log(
+                    WARNING_LOG_LEVEL,
+                    "stage2 sidecar read failed, will re-run vision",
+                    {"sidecar_path": str(sidecar_path)},
+                )
 
         png_path = render_dir / f"p.{s1_page.aligned_page:04d}.png"
         raw_ocr_text = Path(s1_page.txt_path).read_text(encoding="utf-8")
@@ -133,6 +144,15 @@ async def run_stage2_vision(
             )
         except Exception as exc:
             last_error = str(exc)
+            Log(
+                WARNING_LOG_LEVEL,
+                "stage2 vision page failed",
+                {
+                    "aligned_page": s1_page.aligned_page,
+                    "original_page": s1_page.original_page,
+                    "error": str(exc),
+                },
+            )
             continue
 
         md_path.write_text(refined, encoding="utf-8")
@@ -150,6 +170,16 @@ async def run_stage2_vision(
                 char_count=len(refined),
             )
         )
+
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 vision finished",
+        {
+            "pages_written": len(pages),
+            "skipped_existing": skipped_existing,
+            "missing": len(missing),
+        },
+    )
 
     return Stage2Result(
         pages=pages,

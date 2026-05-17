@@ -8,6 +8,7 @@ from tempfile import TemporaryDirectory
 from pypdf import PdfReader, PdfWriter
 
 from src.core.hashing import compute_file_sha256
+from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
 from src.models.request import (
     EnrichedIngestRequest,
     IngestGatePhaseResult,
@@ -115,6 +116,11 @@ def build_aligned_pdf(
 
     digest = enriched.source_sha256.strip().lower()
     source_path = Path(enriched.source_pdf_path)
+    Log(
+        INFO_LOG_LEVEL,
+        "pdf alignment build starting",
+        {"source_sha256": digest[:16], "path": str(source_path)},
+    )
     try:
         observed = compute_file_sha256(source_path)
     except OSError as exc:
@@ -223,6 +229,11 @@ def build_aligned_pdf(
                 with ProcessPoolExecutor(max_workers=max_workers) as executor:
                     chunk_results = list(executor.map(_write_aligned_pdf_chunk, args_list))
             except Exception as exc:
+                Log(
+                    ERROR_LOG_LEVEL,
+                    "pdf alignment chunk workers failed",
+                    {"error": str(exc)},
+                )
                 raise ValueError(
                     IngestInputValidationError(
                         code=IngestInputErrorCode.PDF_ALIGNMENT_FAILED,
@@ -269,6 +280,16 @@ def build_aligned_pdf(
             ).model_dump_json()
         )
 
+    Log(
+        INFO_LOG_LEVEL,
+        "pdf alignment build completed",
+        {
+            "source_sha256": digest[:16],
+            "aligned_pages": aligned_count,
+            "original_pages": original_page_count,
+        },
+    )
+
     return PdfAlignmentResult(
         aligned_pdf_path=str(target_path.resolve()),
         source_sha256=digest,
@@ -287,6 +308,7 @@ def maybe_run_pdf_alignment(
     page_range_per_thread: int = DEFAULT_PAGE_RANGE_PER_THREAD,
 ) -> PdfAlignmentResult | None:
     if gate_phase.pipeline_skipped:
+        Log(INFO_LOG_LEVEL, "pdf alignment skipped (ingest gate pipeline_skipped)")
         return None
     return build_aligned_pdf(
         enriched,

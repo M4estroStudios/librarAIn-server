@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from src.ingestion.pdf_alignment import build_page_removal_mapping
+from src.core.log import INFO_LOG_LEVEL, Log
 from src.models.request import (
     EnrichedIngestRequest,
     IngestInputErrorCode,
@@ -106,7 +107,7 @@ def build_useful_pages_enumeration(
 
     useful_original_sorted = sorted(analytic_o2a.keys())
 
-    return UsefulPagesEnumeration(
+    result = UsefulPagesEnumeration(
         source_sha256=normalized_digest,
         original_page_count=original_total,
         aligned_page_count=aligned_total,
@@ -116,3 +117,13 @@ def build_useful_pages_enumeration(
         toc_range_aligned=toc_aligned,
         index_range_aligned=index_aligned,
     )
+    Log(
+        INFO_LOG_LEVEL,
+        "useful pages enumeration built",
+        {
+            "source_sha256": normalized_digest[:16],
+            "useful_pages": len(useful_original_sorted),
+            "aligned_total": aligned_total,
+        },
+    )
+    return result

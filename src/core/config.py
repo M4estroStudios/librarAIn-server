@@ -5,6 +5,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
+from src.core.log import ERROR_LOG_LEVEL, Log
 from src.models.settings import Settings
 
 
@@ -73,4 +74,6 @@ def load_settings(env_file: str = ".env") -> Settings:
     try:
         return Settings.model_validate(merged_values)
     except ValidationError as exc:
-        raise ConfigurationError(_format_settings_validation_error(exc)) from exc
+        msg = _format_settings_validation_error(exc)
+        Log(ERROR_LOG_LEVEL, "settings validation failed", {"error": msg})
+        raise ConfigurationError(msg) from exc
