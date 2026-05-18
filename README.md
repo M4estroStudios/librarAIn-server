@@ -3,7 +3,7 @@
 Server e pipeline per ingestione libri, persistenza metadati e (fase successiva) ricerca. Requisiti di prodotto della Fase 1: `[PRD-Fase1.md](PRD-Fase1.md)`.
 
 > ⚠️ **Stato attuale: pipeline temporanea, parziale e incompleta (solo sviluppo).**
-> L’ingestione esposta da `POST /api/ingest/submit` (e dalla web UI `web/index.html`) oggi esegue **solo lo Stage 1 OCR** e si considera completata a fine OCR (T11.5). Stage 2 Vision, Stage 3 Editor, writer pagine per libro, `TOC.md`, `INDEX.md`, file aggregato `<libro>.md` e polyindex globale **non sono ancora attivi**. La risposta dell’endpoint include solo i risultati fino allo Stage 1 (`stage1`). Le cartelle `data/tmp/<sha>/stage2Vision/` e `stage3Editor/` mostrate nell’albero sotto si materializzeranno solo con le task future T12.5+/T13+.
+> L'ingestione esposta da `POST /api/ingest/submit` (e dalla web UI `web/index.html`) oggi esegue **solo lo Stage 1 OCR** e si considera completata a fine OCR (T11.5). Stage 2 Vision, Stage 3 Editor, writer pagine per libro, `TOC.md`, `INDEX.md`, file aggregato `<libro>.md` e polyindex globale **non sono ancora attivi**. La risposta dell'endpoint include solo i risultati fino allo Stage 1 (`stage1`). Le cartelle `data/tmp/<sha>/stage2Vision/` e `stage3Editor/` mostrate nell'albero sotto si materializzeranno solo con le task future T12.5+/T13+.
 
 ## Struttura del repository (bilanciata)
 
@@ -12,8 +12,8 @@ Obiettivo: **tre pilastri** chiari (ingestione, ricerca, dati) senza minimalismo
 ### Principi
 
 - **`ingestion/`**: tutta la Fase 1 (PDF → MD, TOC/INDEX, matching AI per `INDEX.json`).
-- **`search/`**: Fase 2 (ricerca e generazione articoli) — cartella dedicata fin da subito così il codice non si mescola con l’ingestione; all’inizio può contenere solo entrypoint/stub o essere vuota fino all’implementazione.
-- **`persistence/`** (o `data_layer/`): accesso a SQLite, file JSON di biblioteca, registro hash — “dove stanno i dati” lato codice, separato dalla pipeline.
+- **`search/`**: Fase 2 (ricerca e generazione articoli) — cartella dedicata fin da subito così il codice non si mescola con l'ingestione; all'inizio può contenere solo entrypoint/stub o essere vuota fino all'implementazione.
+- **`persistence/`** (o `data_layer/`): accesso a SQLite, file JSON di biblioteca, registro hash — "dove stanno i dati" lato codice, separato dalla pipeline.
 - **`core/`**: configurazione `.env`, logging, costanti condivise — sottile, non una copia del progetto.
 - **`api/`**: HTTP/CLI che smista verso `ingestion` e (poi) `search`, senza logica di dominio pesante.
 - **`data/` (root)**: solo file su disco (input PDF, output libri, `biblioteca.csv`, `TOC.json` / `INDEX.json`) — non confonderla con `src/...`.
@@ -81,10 +81,10 @@ librarAIn-server/ # radice repository
 
 - Non aggiungere sottocartelle finché un modulo non supera ~500 LOC o non serve davvero un boundary chiaro.
 - `src/search/` resta il posto naturale per la ricerca senza rompere `ingestion/` quando passerai alla Fase 2.
-- `src/persistence/` è l’unico posto in cui si concentra SQLite + JSON di biblioteca + (se serve) tracciamento run/hash.
+- `src/persistence/` è l'unico posto in cui si concentra SQLite + JSON di biblioteca + (se serve) tracciamento run/hash.
 - `src/core/config.py` legge solo `.env` / `example.env`.
 - `data/` non contiene codice, solo artefatti runtime.
-- `web/index.html` (o nome equivalente) resta il punto unico di input coerente per l’operatore.
+- `web/index.html` (o nome equivalente) resta il punto unico di input coerente per l'operatore.
 
 ## Configurazione runtime `.env` (T3)
 
@@ -94,7 +94,7 @@ La configurazione runtime centralizzata è gestita da:
 - `src/core/config.py`: loader `load_settings(env_file=".env")`.
 - `example.env`: template di riferimento per le variabili.
 
-`load_settings` carica prima il file `.env`, poi applica override da variabili d’ambiente già presenti nel processo.
+`load_settings` carica prima il file `.env`, poi applica override da variabili d'ambiente già presenti nel processo.
 
 ### Variabili obbligatorie
 
@@ -121,7 +121,7 @@ La configurazione runtime centralizzata è gestita da:
 
 In caso di variabili mancanti o invalide, il loader fallisce in modo esplicito con messaggio aggregato e riferimento a `example.env`.
 
-`sqlite_path` viene derivato automaticamente come `<DATA_ROOT>/db/biblioteca.csv` (file binario SQLite; l’estensione `.csv` è solo convenzione di naming richiesta dal prodotto, non un export CSV).
+`sqlite_path` viene derivato automaticamente come `<DATA_ROOT>/db/biblioteca.csv` (file binario SQLite; l'estensione `.csv` è solo convenzione di naming richiesta dal prodotto, non un export CSV).
 
 I PDF sorgente con le pagine indicate in `pages_to_remove` già rimosse (PDF allineato / normalizzati) devono essere scritti sotto `<DATA_ROOT>/input/processed` (di default `data/input/processed`); nel codice questo path è disponibile come `Settings.processed_pdf_input_dir`.
 
@@ -234,13 +234,74 @@ Per i test e per l'inserimento minimo è disponibile `insert_book_minimal(...)`,
 }
 ```
 
-### Risposta `POST /api/ingest/submit`
+## Flusso asincrono con progresso (job_id + SSE)
 
-> Nota stato attuale (dev-only, T11.5): l’ingest sincrono **termina al completamento dello Stage 1 OCR**. Stage 2 Vision (T12.5) ed Editor (T13) non sono ancora cablati: la risposta non include `stage2`/`stage3` e i file finali per libro (`<libro>.md`, `TOC.md`, `INDEX.md`, polyindex) non vengono prodotti.
+`POST /api/ingest/submit` **non aspetta il completamento** della pipeline. Risponde immediatamente `202` con:
 
-In caso di successo include `ingest_gate_phase` come prima e, se la pipeline non è stata saltata per hash duplicato, `pdf_alignment` con il path assoluto del PDF allineato sotto `<DATA_ROOT>/input/processed` (`<source_sha256>.pdf`) e le mappe `original_page_to_aligned_page` / `aligned_page_to_original_page` (pagine 1-based). Se l’hash è duplicato e il percorso di skip è attivo, `pdf_alignment` è `null`.
+```json
+{
+  "ok": true,
+  "job_id": "<hex-32-char>",
+  "events_url": "/api/ingest/<job_id>/events",
+  "status_url": "/api/ingest/<job_id>/status"
+}
+```
 
-È sempre presente `useful_pages_enumeration` (T10): elenco ordinato delle pagine originali utili, mappe bidirezionali allineamento 1-based, e `toc_range_aligned` / `index_range_aligned` (range TOC/INDEX proiettati sul PDF allineato). Con `pdf_alignment` valorizzato, le mappe sono incrociate con l’artifact prodotto in T9; con skip duplicati restano ricavate deterministicamente dall’input e da `source_pdf_page_count`.
+La pipeline gira in un thread di background. Lo stato è consultabile in due modi:
 
-È presente anche `stage1` (T11.5): risultato dello Stage 1 OCR per le pagine utili enumerate. I file di testo grezzi vengono scritti in `data/tmp/<source_sha256>/stage1OCR/p.<NNNN>.<slug>.txt` (uno per pagina), con `<NNNN>` zero-padded sul numero pagina allineata e `<slug>` derivato dal titolo REICAT.
+### Stream SSE — `GET /api/ingest/<job_id>/events`
 
+`Content-Type: text/event-stream`. Supporta l'header `Last-Event-ID` per replay parziale (valore = `seq` dell'ultimo evento ricevuto). Ogni frame ha `event: <status>` e `data: <json>`.
+
+Sequenza tipica degli eventi:
+
+| `phase` | `status` | `counts_as_step` | note |
+|---|---|---|---|
+| `pipeline` | `pipeline_total` | — | emesso dopo l'enumerazione pagine; porta `global_total` |
+| `validation` | `started` / `completed` / `error` | — | |
+| `gate_hash` | `started` / `completed` / `error` | — | `gate_status`, `pipeline_skipped` |
+| `pdf_alignment` | `started` / `completed` / `error` | `true` se ha girato | `skipped` |
+| `page_enumeration` | `started` / `completed` / `error` | — | `n_pages` |
+| `stage1_ocr` | `started` | — | `page_total` |
+| `stage1_ocr` | `page_progress` / `page_skipped` / `page_failed` | `true` | `page_index`, `page_total`, `aligned_page`, `original_page` |
+| `stage1_ocr` | `completed` / `failed` | — | |
+| `stage1_ocr` | `done` | — | **terminale**; porta `result` (payload completo) |
+| `pipeline` | `error` | — | **terminale**; porta `message` |
+
+Gli eventi con `counts_as_step: true` includono `global_step` e `global_total` per aggiornare la barra di avanzamento. Formula attuale: `global_total = 1 (alignment) + N (pagine Stage 1)`. Con Stage 2 e Stage 3 cablati diventerà `1 + 3N` senza alcuna modifica al client.
+
+### Snapshot JSON — `GET /api/ingest/<job_id>/status`
+
+```json
+{
+  "ok": true,
+  "job_id": "...",
+  "status": "running",
+  "global_step": 14,
+  "global_total": 34,
+  "events": [...],
+  "result": null,
+  "error": null,
+  "created_at": "...",
+  "updated_at": "..."
+}
+```
+
+### Consumo da CLI
+
+```bash
+curl -N http://127.0.0.1:8765/api/ingest/<job_id>/events
+curl -s http://127.0.0.1:8765/api/ingest/<job_id>/status | jq '{status,global_step,global_total}'
+```
+
+### Payload `result` (evento `done`)
+
+> Nota stato attuale (dev-only, T11.5): la pipeline termina al completamento dello Stage 1 OCR. Stage 2 Vision (T12.5) ed Editor (T13) non sono ancora cablati: il payload `result` non include `stage2`/`stage3` e i file finali per libro (`<libro>.md`, `TOC.md`, `INDEX.md`, polyindex) non vengono prodotti.
+
+Il campo `result` incluso nell'evento SSE terminale `done` ha la stessa struttura della precedente risposta sincrona: include `ingest_gate_phase`, `pdf_alignment` (o `null` su hash duplicato), `useful_pages_enumeration` e `stage1`.
+
+`pdf_alignment` include il path assoluto del PDF allineato sotto `<DATA_ROOT>/input/processed` (`<source_sha256>.pdf`) e le mappe `original_page_to_aligned_page` / `aligned_page_to_original_page` (pagine 1-based).
+
+`useful_pages_enumeration` (T10): elenco ordinato delle pagine originali utili, mappe bidirezionali allineamento 1-based, e `toc_range_aligned` / `index_range_aligned` (range TOC/INDEX proiettati sul PDF allineato).
+
+`stage1` (T11.5): risultato dello Stage 1 OCR per le pagine utili enumerate. I file di testo grezzi vengono scritti in `data/tmp/<source_sha256>/stage1OCR/p.<NNNN>.<slug>.txt` (uno per pagina), con `<NNNN>` zero-padded sul numero pagina allineata e `<slug>` derivato dal titolo REICAT.

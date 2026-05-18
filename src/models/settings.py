@@ -22,6 +22,17 @@ class Settings(BaseModel):
     )
     ocr_languages: list[str] = Field(default_factory=lambda: ["it", "en"], alias="OCR_LANGUAGES")
     ocr_use_gpu: bool = Field(default=False, alias="OCR_USE_GPU")
+    ocr_gpu_device: str = Field(default="all", alias="OCR_GPU_DEVICE")
+
+    @field_validator("ocr_gpu_device", mode="before")
+    @classmethod
+    def parse_ocr_gpu_device(cls, v: object) -> str:
+        s = str(v).strip().lower()
+        if s == "all":
+            return "all"
+        if s.isdigit():
+            return s
+        raise ValueError("OCR_GPU_DEVICE must be 'all' or a non-negative integer (e.g. 0, 1)")
 
     @field_validator("ocr_languages", mode="before")
     @classmethod

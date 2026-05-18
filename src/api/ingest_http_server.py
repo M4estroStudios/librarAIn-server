@@ -3,8 +3,10 @@ from __future__ import annotations
 import json
 import os
 import secrets
+import threading
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
@@ -14,15 +16,11 @@ from src.api.ingest_form import (
     build_ingest_payload_from_form,
     parse_multipart_form,
 )
+from src.api.ingest_pipeline_runner import run_full_pipeline
+from src.api.job_registry import JobRegistry
 from src.core.config import ConfigurationError, load_settings
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
-from src.ingestion.pipeline import run_stage1_ingest_step
-from src.ingestion.page_enumeration import build_useful_pages_enumeration
-from src.ingestion.pdf_alignment import maybe_run_pdf_alignment
-from src.ingestion.request_validation import (
-    run_ingest_gate_phase,
-    validate_and_enrich_request,
-)
+from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, make_event
 from src.models.request import IngestInputErrorCode, IngestInputValidationError
 
 
@@ -81,6 +79,27 @@ def _send_bytes(
     handler.wfile.write(content)
 
 
+def _send_validation_error(
+    handler: BaseHTTPRequestHandler,
+    code: IngestInputErrorCode,
+    message: str,
+    field: str | None = None,
+) -> None:
+    err = IngestInputValidationError(code=code, message=message, field=field)
+    _send_json(handler, 400, {"ok": False, "errors": err.model_dump(mode="json")})
+
+
+def _sse_write(handler: BaseHTTPRequestHandler, event_name: str, data: Any) -> bool:
+    """Write a single SSE frame.  Returns False if the connection was lost."""
+    try:
+        line = f"event: {event_name}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
+        handler.wfile.write(line.encode("utf-8"))
+        handler.wfile.flush()
+        return True
+    except (BrokenPipeError, ConnectionResetError, OSError):
+        return False
+
+
 def run_ingest_http_server() -> None:
     logInit(INFO_LOG_LEVEL)
     try:
@@ -97,6 +116,8 @@ def run_ingest_http_server() -> None:
     web_dir = repo_root / "web"
     data_root = Path(settings.data_root)
 
+    registry = JobRegistry()
+
     class IngestHandler(BaseHTTPRequestHandler):
         server_version = "librarAIn-ingest-http/1.0"
 
@@ -105,260 +126,174 @@ def run_ingest_http_server() -> None:
 
         def do_GET(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
-            if parsed.path in ("/", "/index.html"):
+            path = parsed.path
+
+            if path in ("/", "/index.html"):
                 index_file = web_dir / "index.html"
                 if not index_file.exists():
-                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing", {"path": str(index_file)})
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
+                        {"path": str(index_file)})
                     _send_json(self, 500, {"ok": False, "error": "web/index.html missing"})
                     return
                 _send_bytes(self, 200, index_file.read_bytes(), "text/html; charset=utf-8")
                 return
-            if parsed.path == "/health":
+
+            if path == "/health":
                 _send_json(self, 200, {"ok": True})
                 return
+
+            parts = path.split("/")
+            if len(parts) == 5 and parts[1] == "api" and parts[2] == "ingest" and parts[4] in ("events", "status"):
+                job_id = parts[3]
+                action = parts[4]
+                if action == "events":
+                    self._handle_events(job_id)
+                else:
+                    self._handle_status(job_id)
+                return
+
             self.send_error(404, "Not Found")
+
+        def _handle_status(self, job_id: str) -> None:
+            snapshot = registry.get_status(job_id)
+            if snapshot is None:
+                _send_json(self, 404, {"ok": False, "error": "job not found"})
+                return
+            _send_json(self, 200, {"ok": True, **snapshot})
+
+        def _handle_events(self, job_id: str) -> None:
+            snapshot = registry.get_status(job_id)
+            if snapshot is None:
+                _send_json(self, 404, {"ok": False, "error": "job not found"})
+                return
+
+            last_seq_raw = self.headers.get("Last-Event-ID", "-1")
+            try:
+                last_seq = int(last_seq_raw)
+            except ValueError:
+                last_seq = -1
+
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream; charset=utf-8")
+            self.send_header("Cache-Control", "no-cache")
+            self.send_header("Connection", "keep-alive")
+            self.send_header("X-Accel-Buffering", "no")
+            self.end_headers()
+
+            Log(INFO_LOG_LEVEL, "SSE subscriber connected", {"job_id": job_id, "last_seq": last_seq})
+            terminal_statuses = {STATUS_DONE, STATUS_ERROR}
+
+            for ev in registry.subscribe(job_id, last_seq=last_seq):
+                event_name = ev.get("status", "progress")
+                ok = _sse_write(self, event_name, ev)
+                if not ok:
+                    Log(INFO_LOG_LEVEL, "SSE client disconnected", {"job_id": job_id})
+                    break
+                if event_name in terminal_statuses:
+                    break
+
+            Log(INFO_LOG_LEVEL, "SSE subscriber done", {"job_id": job_id})
 
         def do_POST(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
             if parsed.path != "/api/ingest/submit":
                 self.send_error(404, "Not Found")
                 return
+
             content_type = self.headers.get("Content-Type") or ""
             try:
                 body = _read_body(self, max_upload)
+                Log(INFO_LOG_LEVEL, "ingest HTTP raw body read", {"bytes": len(body)})
                 text_fields, files = parse_multipart_form(body, content_type)
             except (ValueError, OSError) as exc:
                 Log(WARNING_LOG_LEVEL, "ingest multipart parse failed", {"error": str(exc)})
-                form_error = IngestInputValidationError(
-                    code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                    message="multipart form could not be parsed",
-                    field="form",
+                _send_validation_error(
+                    self,
+                    IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                    "multipart form could not be parsed",
+                    "form",
                 )
-                _send_json(self, 400, {"ok": False, "errors": form_error.model_dump(mode="json")})
                 return
 
             try:
                 ingest_payload = build_ingest_payload_from_form(text_fields)
             except InvalidPagesSpec as exc:
                 Log(WARNING_LOG_LEVEL, "ingest form pages spec invalid", {"error": str(exc)})
-                page_err = IngestInputValidationError(
-                    code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                    message=str(exc),
-                    field="pages_to_remove",
+                _send_validation_error(
+                    self, IngestInputErrorCode.INPUT_SCHEMA_INVALID, str(exc), "pages_to_remove"
                 )
-                _send_json(self, 400, {"ok": False, "errors": page_err.model_dump(mode="json")})
                 return
             except InvalidRangeField as exc:
-                Log(
-                    WARNING_LOG_LEVEL,
-                    "ingest form range field invalid",
-                    {"field": exc.field, "error": exc.message_text},
+                Log(WARNING_LOG_LEVEL, "ingest form range field invalid",
+                    {"field": exc.field, "error": exc.message_text})
+                _send_validation_error(
+                    self, IngestInputErrorCode.INPUT_SCHEMA_INVALID, exc.message_text, exc.field
                 )
-                range_err = IngestInputValidationError(
-                    code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                    message=exc.message_text,
-                    field=exc.field,
-                )
-                _send_json(self, 400, {"ok": False, "errors": range_err.model_dump(mode="json")})
                 return
             except ValueError as exc:
                 Log(WARNING_LOG_LEVEL, "ingest form payload invalid", {"error": str(exc)})
-                form_err = IngestInputValidationError(
-                    code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                    message=str(exc),
-                    field="payload",
+                _send_validation_error(
+                    self, IngestInputErrorCode.INPUT_SCHEMA_INVALID, str(exc), "payload"
                 )
-                _send_json(self, 400, {"ok": False, "errors": form_err.model_dump(mode="json")})
                 return
 
             uploaded = files.get("pdf_file")
             if uploaded is None:
                 Log(WARNING_LOG_LEVEL, "ingest submit rejected: pdf_file missing")
-                err = IngestInputValidationError(
-                    code=IngestInputErrorCode.PDF_NOT_FOUND,
-                    message="PDF file upload is required",
-                    field="pdf_file",
+                _send_validation_error(
+                    self, IngestInputErrorCode.PDF_NOT_FOUND, "PDF file upload is required", "pdf_file"
                 )
-                _send_json(self, 400, {"ok": False, "errors": err.model_dump(mode="json")})
                 return
             filename, file_bytes = uploaded
             if not file_bytes:
                 Log(WARNING_LOG_LEVEL, "ingest submit rejected: empty PDF upload")
-                err = IngestInputValidationError(
-                    code=IngestInputErrorCode.PDF_NOT_FOUND,
-                    message="empty PDF upload",
-                    field="pdf_file",
+                _send_validation_error(
+                    self, IngestInputErrorCode.PDF_NOT_FOUND, "empty PDF upload", "pdf_file"
                 )
-                _send_json(self, 400, {"ok": False, "errors": err.model_dump(mode="json")})
                 return
+
             saved_path = _save_uploaded_pdf(data_root, filename or "upload.pdf", file_bytes)
-            ingest_payload["source_pdf_path"] = str(saved_path)
+            Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
+                {"path": str(saved_path), "bytes": len(file_bytes)})
 
-            try:
-                enriched = validate_and_enrich_request(ingest_payload)
-            except ValueError as exc:
+            job_id = registry.create_job()
+            events_url = f"/api/ingest/{job_id}/events"
+            status_url = f"/api/ingest/{job_id}/status"
+
+            def _worker() -> None:
+                def reporter(ev: dict) -> None:
+                    registry.emit(job_id, ev)
+
                 try:
-                    err_model = IngestInputValidationError.model_validate_json(str(exc))
-                    Log(
-                        WARNING_LOG_LEVEL,
-                        "ingest validation failed",
-                        {"errors": err_model.model_dump(mode="json")},
+                    run_full_pipeline(
+                        ingest_payload,
+                        saved_path,
+                        settings,
+                        reporter=reporter,
+                        set_global_total=lambda total: registry.set_global_total(job_id, total),
                     )
-                    _send_json(
-                        self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
-                    )
-                except ValueError:
-                    Log(WARNING_LOG_LEVEL, "ingest validation failed", {"error": str(exc)})
-                    _send_json(
-                        self,
-                        400,
-                        {
-                            "ok": False,
-                            "errors": {
-                                "code": "VALIDATION_FAILED",
-                                "message": str(exc),
-                                "field": None,
-                            },
-                        },
-                    )
-                return
+                except Exception as exc:
+                    Log(ERROR_LOG_LEVEL, "ingest pipeline worker unhandled error",
+                        {"job_id": job_id, "error": str(exc)})
+                    registry.emit(job_id, make_event(
+                        "pipeline",
+                        STATUS_ERROR,
+                        message=str(exc),
+                    ))
 
-            ingest_gate_phase = run_ingest_gate_phase(enriched, settings.sqlite_path)
-            Log(
-                INFO_LOG_LEVEL,
-                "ingest gate phase completed",
-                {
-                    "source_sha256": enriched.source_sha256[:16],
-                    "pipeline_skipped": ingest_gate_phase.pipeline_skipped,
-                },
-            )
+            t = threading.Thread(target=_worker, daemon=True, name=f"ingest-{job_id[:8]}")
+            t.start()
 
-            try:
-                pdf_alignment = maybe_run_pdf_alignment(
-                    enriched,
-                    ingest_gate_phase,
-                    settings.processed_pdf_input_dir,
-                    page_range_per_thread=settings.page_range_per_thread,
-                )
-            except ValueError as exc:
-                try:
-                    err_model = IngestInputValidationError.model_validate_json(str(exc))
-                    Log(
-                        WARNING_LOG_LEVEL,
-                        "ingest pdf alignment failed",
-                        {"errors": err_model.model_dump(mode="json")},
-                    )
-                    _send_json(
-                        self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
-                    )
-                except ValueError:
-                    Log(WARNING_LOG_LEVEL, "ingest pdf alignment failed", {"error": str(exc)})
-                    _send_json(
-                        self,
-                        400,
-                        {
-                            "ok": False,
-                            "errors": {
-                                "code": "PDF_ALIGNMENT_FAILED",
-                                "message": str(exc),
-                                "field": None,
-                            },
-                        },
-                    )
-                return
-
-            try:
-                useful_pages_enumeration = build_useful_pages_enumeration(
-                    enriched, pdf_alignment
-                )
-            except ValueError as exc:
-                try:
-                    err_model = IngestInputValidationError.model_validate_json(str(exc))
-                    Log(
-                        WARNING_LOG_LEVEL,
-                        "ingest page enumeration failed",
-                        {"errors": err_model.model_dump(mode="json")},
-                    )
-                    _send_json(
-                        self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
-                    )
-                except ValueError:
-                    Log(WARNING_LOG_LEVEL, "ingest page enumeration failed", {"error": str(exc)})
-                    _send_json(
-                        self,
-                        400,
-                        {
-                            "ok": False,
-                            "errors": {
-                                "code": "PAGE_ENUMERATION_FAILED",
-                                "message": str(exc),
-                                "field": None,
-                            },
-                        },
-                    )
-                return
-
-            try:
-                stage1_result = run_stage1_ingest_step(
-                    enriched,
-                    pdf_alignment,
-                    useful_pages_enumeration,
-                    settings,
-                )
-            except ValueError as exc:
-                try:
-                    err_model = IngestInputValidationError.model_validate_json(str(exc))
-                    Log(
-                        WARNING_LOG_LEVEL,
-                        "ingest stage1 failed",
-                        {"errors": err_model.model_dump(mode="json")},
-                    )
-                    _send_json(
-                        self, 400, {"ok": False, "errors": err_model.model_dump(mode="json")}
-                    )
-                except ValueError:
-                    Log(WARNING_LOG_LEVEL, "ingest stage1 failed", {"error": str(exc)})
-                    _send_json(
-                        self,
-                        400,
-                        {
-                            "ok": False,
-                            "errors": {
-                                "code": "STAGE1_FAILED",
-                                "message": str(exc),
-                                "field": None,
-                            },
-                        },
-                    )
-                return
-
-            payload_out: dict[str, Any] = {
+            Log(INFO_LOG_LEVEL, "ingest job started",
+                {"job_id": job_id, "events_url": events_url})
+            _send_json(self, 202, {
                 "ok": True,
-                "enriched": enriched.model_dump(mode="json", by_alias=True),
-                "ingest_gate_phase": ingest_gate_phase.model_dump(mode="json", by_alias=True),
-                "pdf_alignment": (
-                    pdf_alignment.model_dump(mode="json", by_alias=True)
-                    if pdf_alignment is not None
-                    else None
-                ),
-                "useful_pages_enumeration": useful_pages_enumeration.model_dump(
-                    mode="json", by_alias=True
-                ),
-                "stage1": stage1_result.model_dump(mode="json"),
-            }
+                "job_id": job_id,
+                "events_url": events_url,
+                "status_url": status_url,
+            })
 
-            Log(
-                INFO_LOG_LEVEL,
-                "ingest submit completed",
-                {
-                    "source_sha256": enriched.source_sha256[:16],
-                    "stage1_pages": len(stage1_result.pages),
-                    "skipped_existing": stage1_result.skipped_existing,
-                },
-            )
-            _send_json(self, 200, payload_out)
-
-    httpd = HTTPServer((host, port), IngestHandler)
+    httpd = ThreadingHTTPServer((host, port), IngestHandler)
     Log(INFO_LOG_LEVEL, "ingest http server listening", {"url": f"http://{host}:{port}"})
     try:
         httpd.serve_forever()

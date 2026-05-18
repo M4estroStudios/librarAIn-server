@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from src.core.hashing import compute_file_sha256
-
+from src.core.log import INFO_LOG_LEVEL, Log
 
 PNG_RENDERER_MARKER_VERSION = 1
 
@@ -122,8 +122,25 @@ def _render_pdf_page_to_png(
     marker = _expected_marker(pdf_path, source_sha256, page_index_zero, dpi)
     sidecar_path = _sidecar_path(target_path)
     if target_path.is_file() and _marker_matches(sidecar_path, marker):
+        Log(
+            INFO_LOG_LEVEL,
+            "pdf render PNG cache hit",
+            {
+                "page_index_zero": page_index_zero,
+                "path": str(target_path),
+            },
+        )
         return target_path
 
+    Log(
+        INFO_LOG_LEVEL,
+        "pdf render PNG rasterize begin",
+        {
+            "page_index_zero": page_index_zero,
+            "dpi": dpi,
+            "path": str(target_path),
+        },
+    )
     target_path.parent.mkdir(parents=True, exist_ok=True)
     pdfium = _load_pdfium()
     pdf = pdfium.PdfDocument(str(pdf_path))
@@ -144,6 +161,11 @@ def _render_pdf_page_to_png(
         if page is not None:
             page.close()
         pdf.close()
+    Log(
+        INFO_LOG_LEVEL,
+        "pdf render PNG rasterize done",
+        {"page_index_zero": page_index_zero, "path": str(target_path)},
+    )
     return target_path
 
 
@@ -152,7 +174,17 @@ def render_pdf_page_to_png(
 ) -> Path:
     pdf_path = Path(pdf_path)
     target_path = Path(target_path)
+    Log(
+        INFO_LOG_LEVEL,
+        "render_pdf_page_to_png compute digest begin",
+        {"pdf": str(pdf_path)},
+    )
     source_sha256 = compute_file_sha256(pdf_path)
+    Log(
+        INFO_LOG_LEVEL,
+        "render_pdf_page_to_png compute digest done",
+        {"sha256_prefix": source_sha256[:16]},
+    )
     return _render_pdf_page_to_png(
         pdf_path,
         page_index_zero,
@@ -170,7 +202,17 @@ def render_aligned_pdf_pages(
     if dpi < 1:
         raise ValueError("dpi must be >= 1")
 
+    Log(
+        INFO_LOG_LEVEL,
+        "render_aligned_pdf_pages compute digest begin",
+        {"pdf": str(aligned_pdf_path)},
+    )
     source_sha256 = compute_file_sha256(aligned_pdf_path)
+    Log(
+        INFO_LOG_LEVEL,
+        "render_aligned_pdf_pages compute digest done",
+        {"sha256_prefix": source_sha256[:16]},
+    )
     render_dir = target_dir / source_sha256 / "render"
     pdfium = _load_pdfium()
     pdf = pdfium.PdfDocument(str(aligned_pdf_path))
@@ -182,6 +224,11 @@ def render_aligned_pdf_pages(
     rendered: list[tuple[int, Path]] = []
     for page_index_zero in range(page_count):
         aligned_page_1based = page_index_zero + 1
+        Log(
+            INFO_LOG_LEVEL,
+            "render aligned PDF batch page begin",
+            {"aligned_page_1based": aligned_page_1based, "page_count": page_count},
+        )
         png_path = render_dir / f"p.{aligned_page_1based:04d}.png"
         rendered_path = _render_pdf_page_to_png(
             aligned_pdf_path,
@@ -191,4 +238,9 @@ def render_aligned_pdf_pages(
             source_sha256=source_sha256,
         )
         rendered.append((aligned_page_1based, rendered_path))
+        Log(
+            INFO_LOG_LEVEL,
+            "render aligned PDF batch page done",
+            {"aligned_page_1based": aligned_page_1based, "path": str(rendered_path)},
+        )
     return rendered

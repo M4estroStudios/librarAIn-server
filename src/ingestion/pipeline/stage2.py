@@ -48,9 +48,32 @@ async def refine_with_vision(
     page: int,
     temperature: float = 0.1,
 ) -> str:
+    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision load prompt file begin")
     system_text = _load_vision_prompt()
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 refine_with_vision load prompt file done",
+        {"chars": len(system_text)},
+    )
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 refine_with_vision read image begin",
+        {"path": str(page_image_path)},
+    )
     image_bytes = Path(page_image_path).read_bytes()
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 refine_with_vision read image done",
+        {"bytes": len(image_bytes)},
+    )
+    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision encode image base64 begin")
     b64 = base64.b64encode(image_bytes).decode("ascii")
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 refine_with_vision encode image base64 done",
+        {"b64_chars": len(b64)},
+    )
+    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision build messages begin", {"page": page})
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": system_text},
         {
@@ -64,7 +87,13 @@ async def refine_with_vision(
             ],
         },
     ]
-    return await chat_completion_with_retry(
+    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision build messages done", {"page": page})
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 refine_with_vision chat completion begin",
+        {"page": page, "model": model, "request_id": request_id},
+    )
+    content = await chat_completion_with_retry(
         client,
         model=model,
         messages=messages,
@@ -74,6 +103,12 @@ async def refine_with_vision(
         stage="stage2_vision",
         page=page,
     )
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 refine_with_vision chat completion done",
+        {"page": page, "char_count": len(content)},
+    )
+    return content
 
 
 async def run_stage2_vision(
@@ -90,6 +125,12 @@ async def run_stage2_vision(
     render_dir = data_root / "tmp" / source_sha256 / "render"
     stage2_dir.mkdir(parents=True, exist_ok=True)
 
+    Log(
+        INFO_LOG_LEVEL,
+        "stage2 working dirs ready",
+        {"stage2_dir": str(stage2_dir), "render_dir": str(render_dir)},
+    )
+
     model: str = settings.vision_model or ""
 
     pages: list[Stage2PageResult] = []
@@ -104,6 +145,14 @@ async def run_stage2_vision(
     )
 
     for s1_page in stage1_result.pages:
+        Log(
+            INFO_LOG_LEVEL,
+            "stage2 page iteration begin",
+            {
+                "aligned_page": s1_page.aligned_page,
+                "original_page": s1_page.original_page,
+            },
+        )
         stem = Path(s1_page.txt_path).stem
         md_path = stage2_dir / f"{stem}.md"
         sidecar_path = stage2_dir / f"{stem}.json"
@@ -112,6 +161,17 @@ async def run_stage2_vision(
             try:
                 sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
                 if sidecar.get("model") == model:
+                    md_text = md_path.read_text(encoding="utf-8")
+                    Log(
+                        INFO_LOG_LEVEL,
+                        "stage2 page skip vision using existing md",
+                        {
+                            "aligned_page": s1_page.aligned_page,
+                            "original_page": s1_page.original_page,
+                            "md_path": str(md_path),
+                            "char_count": len(md_text),
+                        },
+                    )
                     skipped_existing += 1
                     pages.append(
                         Stage2PageResult(
@@ -119,8 +179,17 @@ async def run_stage2_vision(
                             original_page=s1_page.original_page,
                             md_path=str(md_path),
                             sidecar_path=str(sidecar_path),
-                            char_count=len(md_path.read_text(encoding="utf-8")),
+                            char_count=len(md_text),
                         )
+                    )
+                    Log(
+                        INFO_LOG_LEVEL,
+                        "stage2 page iteration complete",
+                        {
+                            "aligned_page": s1_page.aligned_page,
+                            "original_page": s1_page.original_page,
+                            "cache_hit": True,
+                        },
                     )
                     continue
             except Exception:
@@ -131,7 +200,17 @@ async def run_stage2_vision(
                 )
 
         png_path = render_dir / f"p.{s1_page.aligned_page:04d}.png"
+        Log(
+            INFO_LOG_LEVEL,
+            "stage2 page load OCR txt begin",
+            {"path": s1_page.txt_path},
+        )
         raw_ocr_text = Path(s1_page.txt_path).read_text(encoding="utf-8")
+        Log(
+            INFO_LOG_LEVEL,
+            "stage2 page load OCR txt done",
+            {"char_count": len(raw_ocr_text)},
+        )
 
         try:
             refined = await refine_with_vision(
@@ -153,14 +232,39 @@ async def run_stage2_vision(
                     "error": str(exc),
                 },
             )
+            Log(
+                INFO_LOG_LEVEL,
+                "stage2 page iteration end",
+                {
+                    "aligned_page": s1_page.aligned_page,
+                    "original_page": s1_page.original_page,
+                    "outcome": "vision_failed",
+                },
+            )
             continue
 
+        Log(
+            INFO_LOG_LEVEL,
+            "stage2 page write markdown begin",
+            {"path": str(md_path)},
+        )
         md_path.write_text(refined, encoding="utf-8")
+        Log(
+            INFO_LOG_LEVEL,
+            "stage2 page write markdown done",
+            {"char_count": len(refined)},
+        )
         sidecar_data = {
             "model": model,
             "completed_at": datetime.now(timezone.utc).isoformat(),
         }
+        Log(
+            INFO_LOG_LEVEL,
+            "stage2 page write sidecar begin",
+            {"path": str(sidecar_path)},
+        )
         sidecar_path.write_text(json.dumps(sidecar_data, ensure_ascii=False), encoding="utf-8")
+        Log(INFO_LOG_LEVEL, "stage2 page write sidecar done")
         pages.append(
             Stage2PageResult(
                 aligned_page=s1_page.aligned_page,
@@ -169,6 +273,14 @@ async def run_stage2_vision(
                 sidecar_path=str(sidecar_path),
                 char_count=len(refined),
             )
+        )
+        Log(
+            INFO_LOG_LEVEL,
+            "stage2 page iteration complete",
+            {
+                "aligned_page": s1_page.aligned_page,
+                "original_page": s1_page.original_page,
+            },
         )
 
     Log(

@@ -4,7 +4,7 @@ PY ?= python3.12
 else
 PY ?= python3
 endif
-VENV_PYTHON := $(firstword $(wildcard venv/Scripts/python.exe venv/bin/python.exe venv/bin/python))
+VENV_PYTHON = $(firstword $(wildcard venv/Scripts/python.exe venv/bin/python.exe venv/bin/python))
 
 # Preferisce il Python del venv se presente (dopo setup-env).
 PYTHON ?= $(if $(VENV_PYTHON),$(VENV_PYTHON),$(PY))

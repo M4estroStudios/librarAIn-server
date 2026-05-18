@@ -72,11 +72,18 @@ def build_useful_pages_enumeration(
     original_total = enriched.source_pdf_page_count
     removal_list = enriched.request.pages_to_remove
 
+    Log(INFO_LOG_LEVEL, "useful pages build_page_removal_mapping begin")
     aligned_total, analytic_o2a, analytic_a2o = build_page_removal_mapping(
         original_total, removal_list
     )
+    Log(
+        INFO_LOG_LEVEL,
+        "useful pages build_page_removal_mapping done",
+        {"aligned_total": aligned_total, "kept_original_pages": len(analytic_o2a)},
+    )
 
     if alignment is not None:
+        Log(INFO_LOG_LEVEL, "useful pages alignment checks begin")
         if normalized_digest != alignment.source_sha256.strip().lower():
             raise ValueError(
                 IngestInputValidationError(
@@ -97,13 +104,20 @@ def build_useful_pages_enumeration(
                 ).model_dump_json()
             )
         _enforce_alignment_maps_equal(analytic_o2a, analytic_a2o, alignment)
+        Log(INFO_LOG_LEVEL, "useful pages alignment checks done")
+    else:
+        Log(INFO_LOG_LEVEL, "useful pages no PdfAlignmentResult skip alignment checks")
 
+    Log(INFO_LOG_LEVEL, "useful pages project toc_range to aligned begin")
     toc_aligned = _project_interval_to_aligned(
         enriched.request.toc_range, analytic_o2a
     )
+    Log(INFO_LOG_LEVEL, "useful pages project toc_range to aligned done")
+    Log(INFO_LOG_LEVEL, "useful pages project index_range to aligned begin")
     index_aligned = _project_interval_to_aligned(
         enriched.request.index_range, analytic_o2a
     )
+    Log(INFO_LOG_LEVEL, "useful pages project index_range to aligned done")
 
     useful_original_sorted = sorted(analytic_o2a.keys())
 

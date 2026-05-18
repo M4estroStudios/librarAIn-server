@@ -97,15 +97,39 @@ async def chat_completion_with_retry(
 
     last_exc: Exception | None = None
     for attempt in range(max_attempts):
+        Log(
+            INFO_LOG_LEVEL,
+            "chat_completion retry loop iteration",
+            {
+                "attempt": attempt,
+                "max_attempts": max_attempts,
+                "stage": stage,
+                "page": page,
+                "model": model,
+                "request_id": request_id,
+            },
+        )
         if rate_limiter is not None:
+            Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait begin", {"attempt": attempt})
             await rate_limiter.acquire()
+            Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait done", {"attempt": attempt})
         try:
+            Log(
+                INFO_LOG_LEVEL,
+                "chat_completion API thread invoke begin",
+                {"attempt": attempt, "stage": stage, "page": page},
+            )
             response = await asyncio.to_thread(
                 client.chat.completions.create,
                 model=model,
                 messages=messages,
                 temperature=temperature,
                 max_tokens=max_tokens,
+            )
+            Log(
+                INFO_LOG_LEVEL,
+                "chat_completion API thread invoke done",
+                {"attempt": attempt, "stage": stage, "page": page},
             )
             content = response.choices[0].message.content
             if not content:

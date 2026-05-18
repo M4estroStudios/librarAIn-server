@@ -125,7 +125,9 @@ def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
                 field="payload",
             ).model_dump_json()
         ) from exc
+    Log(INFO_LOG_LEVEL, "ingest validation IngestRequest model_validate done")
 
+    Log(INFO_LOG_LEVEL, "ingest validation check source path exists begin")
     source_path = Path(request.source_pdf_path).expanduser()
     if not source_path.exists() or not source_path.is_file():
         raise ValueError(
@@ -136,6 +138,7 @@ def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
             ).model_dump_json()
         )
 
+    Log(INFO_LOG_LEVEL, "ingest validation source path exists")
     try:
         source_sha256 = compute_file_sha256(source_path)
     except OSError as exc:
@@ -147,8 +150,18 @@ def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
             ).model_dump_json()
         ) from exc
 
+    Log(INFO_LOG_LEVEL, "ingest validation source sha256 computed")
+
+    Log(INFO_LOG_LEVEL, "ingest validation count PDF pages begin")
     pdf_page_count = _count_pdf_pages(source_path)
+    Log(
+        INFO_LOG_LEVEL,
+        "ingest validation count PDF pages done",
+        {"pdf_pages": pdf_page_count},
+    )
+    Log(INFO_LOG_LEVEL, "ingest validation page refs within PDF begin")
     _validate_page_refs_within_pdf(request, pdf_page_count)
+    Log(INFO_LOG_LEVEL, "ingest validation page refs within PDF done")
 
     Log(
         INFO_LOG_LEVEL,

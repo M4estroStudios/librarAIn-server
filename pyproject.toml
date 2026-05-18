@@ -7,10 +7,10 @@ name = "librarain-server"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
-    "torch>=2.12,<3",
-    "torchvision>=0.27,<1",
+    "torch>=2.11,<3",
+    "torchvision>=0.26,<1",
     "easyocr>=1.7,<2",
-    "Pillow>=10,<12",
+    "Pillow>=10,<13",
     "pypdf>=6.10,<7",
     "pypdfium2>=5.8,<6",
     "pydantic>=2.13,<3",

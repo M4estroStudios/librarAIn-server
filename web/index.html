@@ -37,6 +37,19 @@ small.req { color: #f08080; }
 strong { color: #e8e8e8; }
 .dev-banner { margin: 0 0 1rem; padding: 0.7rem 0.9rem; border-radius: 10px; background: #3a2f12; color: #f5d98a; border: 1px solid #6b5524; font-size: 0.85rem; line-height: 1.4; }
 .dev-banner strong { color: #ffe9a8; }
+#progress { display: none; margin-top: 1rem; padding: 0.9rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
+#progress.show { display: block; }
+#progress-bar { width: 100%; height: 10px; border-radius: 5px; appearance: none; -webkit-appearance: none; background: #3c3c3c; border: none; display: block; margin: 0.6rem 0 0.4rem; }
+#progress-bar::-webkit-progress-bar { background: #3c3c3c; border-radius: 5px; }
+#progress-bar::-webkit-progress-value { background: #4ec9b0; border-radius: 5px; transition: width 0.25s ease; }
+#progress-bar::-moz-progress-bar { background: #4ec9b0; border-radius: 5px; }
+#progress-global { font-size: 0.8rem; color: #9d9d9d; }
+#progress-detail { font-size: 0.78rem; color: #7d7d7d; margin-top: 0.2rem; }
+.phase-list { list-style: none; padding: 0; margin: 0 0 0.5rem; display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; }
+.phase-list li { font-size: 0.8rem; color: #7d7d7d; }
+.phase-list li.active { color: #4ec9b0; font-weight: 600; }
+.phase-list li.done { color: #6a9955; }
+.phase-list li.failed { color: #f48771; }
 </style>
 </head>
 <body>
@@ -157,6 +170,18 @@ strong { color: #e8e8e8; }
   </div>
 </form>
 
+<div id="progress" role="status" aria-live="polite">
+  <ul class="phase-list">
+    <li id="ph-validation" data-phase="validation">Validazione</li>
+    <li id="ph-gate_hash" data-phase="gate_hash">Hash gate</li>
+    <li id="ph-pdf_alignment" data-phase="pdf_alignment">Allineamento PDF</li>
+    <li id="ph-page_enumeration" data-phase="page_enumeration">Enumerazione pagine</li>
+    <li id="ph-stage1_ocr" data-phase="stage1_ocr">Stage 1 OCR</li>
+  </ul>
+  <progress id="progress-bar" value="0" max="100"></progress>
+  <div id="progress-global">In attesa di aggiornamenti…</div>
+  <div id="progress-detail"></div>
+</div>
 <pre id="out" aria-live="polite"></pre>
 
 <script type="module">
@@ -181,9 +206,7 @@ strong { color: #e8e8e8; }
     if (!s) return [];
     var pieces = s.replace(/;/g, ",").split(",");
     var set = {};
-    function add(page) {
-      set[page] = true;
-    }
+    function add(page) { set[page] = true; }
     for (var i = 0; i < pieces.length; i++) {
       var piece = pieces[i].trim();
       if (!piece) continue;
@@ -194,12 +217,9 @@ strong { color: #e8e8e8; }
         var start = parseInt(left, 10);
         var end = parseInt(right, 10);
         if (isNaN(start) || isNaN(end))
-          throw new Error(
-            'numero non valido in "' + piece + '" nel campo delle pagine'
-          );
+          throw new Error('numero non valido in "' + piece + '" nel campo delle pagine');
         if (start < 1 || end < 1) throw new Error("le pagine devono essere >= 1");
-        if (start > end)
-          throw new Error("nell'intervallo x-y deve essere x <= y");
+        if (start > end) throw new Error("nell'intervallo x-y deve essere x <= y");
         for (var p = start; p <= end; p++) add(p);
       } else {
         var n = parseInt(piece, 10);
@@ -208,21 +228,14 @@ strong { color: #e8e8e8; }
         add(n);
       }
     }
-    return Object.keys(set)
-      .map(function (k) {
-        return parseInt(k, 10);
-      })
-      .sort(function (a, b) {
-        return a - b;
-      });
+    return Object.keys(set).map(function (k) { return parseInt(k, 10); }).sort(function (a, b) { return a - b; });
   }
 
   function contiguousBounds(sortedUnique) {
     if (sortedUnique.length === 0) throw new Error("valore obbligatorio");
     var lo = sortedUnique[0];
     var hi = sortedUnique[sortedUnique.length - 1];
-    if (hi - lo + 1 !== sortedUnique.length)
-      throw new Error("deve essere un solo intervallo contiguo di pagine");
+    if (hi - lo + 1 !== sortedUnique.length) throw new Error("deve essere un solo intervallo contiguo di pagine");
     return { start: lo, end: hi };
   }
 
@@ -239,9 +252,7 @@ strong { color: #e8e8e8; }
     for (var i = 0; i < sortedList.length; i++) {
       var p = sortedList[i];
       if (p > total)
-        throw new Error(
-          ctx + ": pagina " + p + " oltre la fine del PDF (" + total + ")."
-        );
+        throw new Error(ctx + ": pagina " + p + " oltre la fine del PDF (" + total + ").");
     }
   }
 
@@ -249,64 +260,160 @@ strong { color: #e8e8e8; }
     var removedExpanded = refs.removedExpanded;
     var toc = contiguousBounds(parsePagesSpec(refs.tocRaw));
     var idx = contiguousBounds(parsePagesSpec(refs.indexRaw));
-    assertPagesWithin(
-      refs.numPages,
-      removedExpanded,
-      "Pagine da escludere"
-    );
-    assertPagesWithin(
-      refs.numPages,
-      [toc.start, toc.end],
-      "Table of Content"
-    );
-    assertPagesWithin(
-      refs.numPages,
-      [idx.start, idx.end],
-      "Indice analitico"
-    );
+    assertPagesWithin(refs.numPages, removedExpanded, "Pagine da escludere");
+    assertPagesWithin(refs.numPages, [toc.start, toc.end], "Table of Content");
+    assertPagesWithin(refs.numPages, [idx.start, idx.end], "Indice analitico");
     if (overlapsRange(removedExpanded, toc.start, toc.end))
-      throw new Error(
-        "le pagine da escludere non possono ricadere nell'intervallo del Table of Content"
-      );
+      throw new Error("le pagine da escludere non possono ricadere nell'intervallo del Table of Content");
     if (overlapsRange(removedExpanded, idx.start, idx.end))
-      throw new Error(
-        "le pagine da escludere non possono ricadere nell'indice analitico"
-      );
+      throw new Error("le pagine da escludere non possono ricadere nell'indice analitico");
     return null;
   }
 
   var form = document.getElementById("ingest-form");
   var out = document.getElementById("out");
   var btn = document.getElementById("submit-btn");
+  var progressBox = document.getElementById("progress");
+  var progressBar = document.getElementById("progress-bar");
+  var progressGlobal = document.getElementById("progress-global");
+  var progressDetail = document.getElementById("progress-detail");
+
+  var PHASE_LABELS = {
+    validation: "Validazione",
+    gate_hash: "Hash gate",
+    pdf_alignment: "Allineamento PDF",
+    page_enumeration: "Enumerazione pagine",
+    stage1_ocr: "Stage 1 OCR",
+  };
+
+  function phaseEl(phase) {
+    return document.getElementById("ph-" + phase);
+  }
+
+  function setPhaseState(phase, state) {
+    var el = phaseEl(phase);
+    if (!el) return;
+    el.className = state;
+  }
+
+  function resetProgress() {
+    progressBox.classList.remove("show");
+    progressBar.value = 0;
+    progressBar.max = 100;
+    progressGlobal.textContent = "In attesa di aggiornamenti\u2026";
+    progressDetail.textContent = "";
+    Object.keys(PHASE_LABELS).forEach(function (ph) { setPhaseState(ph, ""); });
+  }
 
   function show(kind, payload) {
-    out.textContent = typeof payload === "string"
-      ? payload
-      : JSON.stringify(payload, null, 2);
+    out.textContent = typeof payload === "string" ? payload : JSON.stringify(payload, null, 2);
     out.classList.add("show");
     out.classList.toggle("err", kind === "err");
+  }
+
+  function startProgress() {
+    resetProgress();
+    progressBox.classList.add("show");
+    out.classList.remove("show", "err");
+  }
+
+  function handleEvent(ev) {
+    var phase = ev.phase;
+    var status = ev.status;
+
+    if (status === "pipeline_total") {
+      progressBar.max = ev.global_total || 100;
+      progressGlobal.textContent = "Step 0 / " + ev.global_total;
+      return;
+    }
+
+    if (ev.global_step != null && ev.global_total != null) {
+      progressBar.value = ev.global_step;
+      progressBar.max = ev.global_total;
+      progressGlobal.textContent = "Step " + ev.global_step + " / " + ev.global_total;
+    }
+
+    if (status === "started") {
+      setPhaseState(phase, "active");
+      if (phase === "stage1_ocr" && ev.page_total != null) {
+        progressDetail.textContent = "Stage 1 OCR — pagina 0 / " + ev.page_total;
+      }
+    }
+
+    if (status === "page_progress" || status === "page_skipped" || status === "page_failed") {
+      var label = PHASE_LABELS[phase] || phase;
+      var suffix = status === "page_failed" ? " (fallita)" : status === "page_skipped" ? " (cache)" : "";
+      progressDetail.textContent = label + " — pagina " + ev.page_index + " / " + ev.page_total + suffix;
+    }
+
+    if (status === "completed") {
+      setPhaseState(phase, "done");
+      if (phase === "stage1_ocr") progressDetail.textContent = "Stage 1 OCR completato";
+    }
+
+    if (status === "failed") {
+      setPhaseState(phase, "failed");
+      progressDetail.textContent = (PHASE_LABELS[phase] || phase) + " fallito: " + (ev.error || "");
+    }
+  }
+
+  function connectSSE(eventsUrl) {
+    var es = new EventSource(eventsUrl);
+    var TERMINAL = new Set(["done", "error"]);
+
+    function onMessage(e) {
+      var ev;
+      try { ev = JSON.parse(e.data); } catch (_) { return; }
+      handleEvent(ev);
+    }
+
+    function onDone(e) {
+      var ev;
+      try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+      var result = ev.result || ev;
+      show("ok", result);
+      progressGlobal.textContent = "Completato";
+      progressBar.value = progressBar.max;
+      es.close();
+      btn.disabled = false;
+    }
+
+    function onError(e) {
+      var ev;
+      try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+      show("err", ev.message || ev);
+      progressDetail.textContent = "Errore: " + (ev.message || "sconosciuto");
+      es.close();
+      btn.disabled = false;
+    }
+
+    function onSSEError() {
+      show("err", "Connessione SSE interrotta inaspettatamente.");
+      es.close();
+      btn.disabled = false;
+    }
+
+    var eventTypes = ["started", "progress", "page_progress", "page_skipped",
+                      "page_failed", "completed", "failed", "pipeline_total"];
+    eventTypes.forEach(function (t) { es.addEventListener(t, onMessage); });
+    es.addEventListener("done", onDone);
+    es.addEventListener("error", onError);
+    es.onerror = onSSEError;
   }
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
     btn.disabled = true;
-    out.classList.remove("show", "err");
+    startProgress();
+
     try {
       var fileInput = form.querySelector('[name="pdf_file"]');
-      var file =
-        fileInput && fileInput.files && fileInput.files.length
-          ? fileInput.files[0]
-          : null;
+      var file = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0] : null;
       if (!file || !file.size) throw new Error("Seleziona un file PDF.");
 
-      var pagesRemoveRaw =
-        form.querySelector('[name="pages_to_remove"]') &&
-        form.querySelector('[name="pages_to_remove"]').value;
-      var tocRaw =
-        form.querySelector('[name="toc_range"]').value.trim();
-      var indexRaw =
-        form.querySelector('[name="index_range"]').value.trim();
-
+      var pagesRemoveRaw = form.querySelector('[name="pages_to_remove"]') && form.querySelector('[name="pages_to_remove"]').value;
+      var tocRaw = form.querySelector('[name="toc_range"]').value.trim();
+      var indexRaw = form.querySelector('[name="index_range"]').value.trim();
       var removedExpanded = parsePagesSpec(pagesRemoveRaw);
 
       try {
@@ -314,34 +421,26 @@ strong { color: #e8e8e8; }
         var buf = await file.arrayBuffer();
         var pdf = await mod.getDocument({ data: buf }).promise;
         var numPages = pdf.numPages;
-        validateClientPdfPages({
-          numPages: numPages,
-          removedExpanded: removedExpanded,
-          tocRaw: tocRaw,
-          indexRaw: indexRaw,
-        });
+        validateClientPdfPages({ numPages: numPages, removedExpanded: removedExpanded, tocRaw: tocRaw, indexRaw: indexRaw });
       } catch (preErr) {
-        throw new Error(
-          "Verifica sul PDF prima dell'invio:\n\n" +
-            String(preErr && preErr.message ? preErr.message : preErr) +
-            "\n\n(Invio al server annullato.)"
-        );
+        throw new Error("Verifica sul PDF prima dell'invio:\n\n" + String(preErr && preErr.message ? preErr.message : preErr) + "\n\n(Invio al server annullato.)");
       }
 
       var fd = new FormData(form);
       var res = await fetch("/api/ingest/submit", { method: "POST", body: fd });
-      var text = await res.text();
       var data;
-      try {
-        data = JSON.parse(text);
-      } catch (e) {
-        data = text;
+      try { data = await res.json(); } catch (_) { data = { ok: false, error: "risposta non JSON" }; }
+
+      if (!res.ok) {
+        show("err", data);
+        btn.disabled = false;
+        return;
       }
-      if (!res.ok) show("err", data);
-      else show("ok", data);
+
+      progressGlobal.textContent = "Job avviato — ID: " + data.job_id;
+      connectSSE(data.events_url);
     } catch (err) {
       show("err", String(err.message || err));
-    } finally {
       btn.disabled = false;
     }
   });
