@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import tempfile
+import threading
+import time
 import unittest
 from io import BytesIO
 from pathlib import Path
@@ -43,6 +45,7 @@ def _settings(data_root: str) -> object:
     s = MagicMock()
     s.data_root = data_root
     s.ocr_languages = ["it", "en"]
+    s.max_parallel_request = 2
     return s
 
 
@@ -253,6 +256,37 @@ class Stage1OcrTests(unittest.TestCase):
 
             self.assertEqual(result.skipped_existing, 2)
             self.assertEqual(len(result.pages), 2)
+
+    def test_parallel_respects_max_in_flight(self) -> None:
+        class SlowEngine(FakeEngine):
+            def __init__(self, page_texts: dict[int, str]) -> None:
+                super().__init__(page_texts)
+                self._lock = threading.Lock()
+                self.in_flight = 0
+                self.max_seen = 0
+
+            def ocr_page(self, image_path: Path, *, lang: list[str]) -> str:
+                with self._lock:
+                    self.in_flight += 1
+                    self.max_seen = max(self.max_seen, self.in_flight)
+                try:
+                    time.sleep(0.05)
+                    return super().ocr_page(image_path, lang=lang)
+                finally:
+                    with self._lock:
+                        self.in_flight -= 1
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pdf = root / "aligned.pdf"
+            pdf.write_bytes(_pdf_bytes(4))
+            settings = _settings(str(root / "data"))
+            settings.max_parallel_request = 2
+            enum = _enumeration([1, 2, 3, 4], {1: 1, 2: 2, 3: 3, 4: 4})
+            engine = SlowEngine({i: f"t{i}" for i in range(1, 5)})
+            run_stage1_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Parallel Book"))
+            self.assertLessEqual(engine.max_seen, 2)
+            self.assertGreater(engine.max_seen, 0)
 
 
 class RunStage1IngestStepTests(unittest.TestCase):

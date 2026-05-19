@@ -153,12 +153,23 @@ class TestChatCompletionWithRetry(unittest.TestCase):
             result = self._call(client, mock_create)
         self.assertEqual(result, "ok")
 
-    def test_empty_content_raises_value_error(self) -> None:
-        client = self._build_client()
+    def test_empty_content_retries_then_raises(self) -> None:
+        client = self._build_client(retry=1)
         mock_create = MagicMock(return_value=_make_response(""))
         with patch("asyncio.sleep", new=AsyncMock()):
             with self.assertRaises(ValueError):
                 self._call(client, mock_create)
+        self.assertEqual(mock_create.call_count, 2)
+
+    def test_empty_content_retries_until_success(self) -> None:
+        client = self._build_client(retry=2)
+        mock_create = MagicMock(
+            side_effect=[_make_response(""), _make_response(""), _make_response("ok")]
+        )
+        with patch("asyncio.sleep", new=AsyncMock()):
+            result = self._call(client, mock_create)
+        self.assertEqual(result, "ok")
+        self.assertEqual(mock_create.call_count, 3)
 
 
 if __name__ == "__main__":

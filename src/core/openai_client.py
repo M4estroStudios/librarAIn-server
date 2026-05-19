@@ -132,7 +132,7 @@ async def chat_completion_with_retry(
                 {"attempt": attempt, "stage": stage, "page": page},
             )
             content = response.choices[0].message.content
-            if not content:
+            if not content or not str(content).strip():
                 raise ValueError("Empty response from model")
             Log(
                 INFO_LOG_LEVEL,
@@ -147,6 +147,27 @@ async def chat_completion_with_retry(
                 },
             )
             return content
+        except ValueError as exc:
+            if "Empty response from model" not in str(exc):
+                raise
+            last_exc = exc
+            Log(
+                WARNING_LOG_LEVEL,
+                "chat_completion empty response",
+                {
+                    "request_id": request_id,
+                    "stage": stage,
+                    "page": page,
+                    "model": model,
+                    "attempt": attempt,
+                    "outcome": "empty_response",
+                },
+            )
+            if attempt < max_attempts - 1:
+                backoff = _BACKOFF_BASE * (2 ** attempt) + random.uniform(0, _BACKOFF_JITTER)
+                await asyncio.sleep(backoff)
+                continue
+            raise
         except _PERMANENT_ERRORS as exc:
             Log(
                 ERROR_LOG_LEVEL,

@@ -1,8 +1,7 @@
 from __future__ import annotations
 
+import asyncio
 import base64
-import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -12,11 +11,55 @@ from pydantic import BaseModel
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import chat_completion_with_retry
 from src.ingestion.pipeline.stage1 import Stage1Result
+from src.ingestion.progress import (
+    PHASE_STAGE2_VISION,
+    STATUS_COMPLETED,
+    STATUS_PAGE_FAILED,
+    STATUS_PAGE_PROGRESS,
+    STATUS_PAGE_SKIPPED,
+    STATUS_STARTED,
+    ProgressReporter,
+    make_event,
+)
 from src.models.settings import Settings
 
 _PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 VISION_PROMPT_FILE = _PROMPTS_DIR / "vision_prompt.md"
 _MAX_COMPLETION_TOKENS = 4096
+_MARKER_PREFIX = "<!-- librarain:model="
+
+
+def _stage_md_marker_line(model: str) -> str:
+    return f"{_MARKER_PREFIX}{model} -->\n"
+
+
+def _stage_md_cached_model(first_line: str) -> str | None:
+    line = first_line.strip()
+    if not line.startswith(_MARKER_PREFIX) or not line.endswith(" -->"):
+        return None
+    return line[len(_MARKER_PREFIX) : -4]
+
+
+def _read_stage_md(md_path: Path, model: str) -> str | None:
+    if not md_path.is_file():
+        return None
+    raw = md_path.read_text(encoding="utf-8")
+    if not raw.strip():
+        return None
+    if "\n" in raw:
+        first, body = raw.split("\n", 1)
+    else:
+        first, body = raw, ""
+    cached = _stage_md_cached_model(first)
+    if cached is None:
+        return raw
+    if cached != model:
+        return None
+    return body
+
+
+def _write_stage_md(md_path: Path, model: str, body: str) -> None:
+    md_path.write_text(_stage_md_marker_line(model) + body, encoding="utf-8")
 
 
 def _load_vision_prompt() -> str:
@@ -27,7 +70,6 @@ class Stage2PageResult(BaseModel):
     aligned_page: int
     original_page: int
     md_path: str
-    sidecar_path: str
     char_count: int
 
 
@@ -119,6 +161,7 @@ async def run_stage2_vision(
     *,
     request_id: str = "",
     force_recompute: bool = False,
+    progress: ProgressReporter | None = None,
 ) -> Stage2Result:
     data_root = Path(settings.data_root)
     stage2_dir = data_root / "tmp" / source_sha256 / "stage2Vision"
@@ -132,36 +175,36 @@ async def run_stage2_vision(
     )
 
     model: str = settings.vision_model or ""
-
-    pages: list[Stage2PageResult] = []
-    skipped_existing = 0
-    missing: list[int] = []
+    page_total = len(stage1_result.pages)
+    sem = asyncio.Semaphore(settings.max_parallel_request)
     last_error: str | None = None
 
     Log(
         INFO_LOG_LEVEL,
         "stage2 vision starting",
-        {"pages_from_stage1": len(stage1_result.pages), "model": model},
+        {"pages_from_stage1": page_total, "model": model, "max_parallel": settings.max_parallel_request},
     )
 
-    for s1_page in stage1_result.pages:
-        Log(
-            INFO_LOG_LEVEL,
-            "stage2 page iteration begin",
-            {
-                "aligned_page": s1_page.aligned_page,
-                "original_page": s1_page.original_page,
-            },
-        )
-        stem = Path(s1_page.txt_path).stem
-        md_path = stage2_dir / f"{stem}.md"
-        sidecar_path = stage2_dir / f"{stem}.json"
+    if progress is not None:
+        progress(make_event(PHASE_STAGE2_VISION, STATUS_STARTED, page_total=page_total))
 
-        if not force_recompute and md_path.is_file() and sidecar_path.is_file():
-            try:
-                sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
-                if sidecar.get("model") == model:
-                    md_text = md_path.read_text(encoding="utf-8")
+    async def _process_page(page_index: int, s1_page: Stage1PageResult) -> tuple[Stage2PageResult | None, bool]:
+        nonlocal last_error
+        async with sem:
+            Log(
+                INFO_LOG_LEVEL,
+                "stage2 page iteration begin",
+                {
+                    "aligned_page": s1_page.aligned_page,
+                    "original_page": s1_page.original_page,
+                },
+            )
+            stem = Path(s1_page.txt_path).stem
+            md_path = stage2_dir / f"{stem}.md"
+
+            if not force_recompute:
+                cached = _read_stage_md(md_path, model)
+                if cached is not None:
                     Log(
                         INFO_LOG_LEVEL,
                         "stage2 page skip vision using existing md",
@@ -169,119 +212,104 @@ async def run_stage2_vision(
                             "aligned_page": s1_page.aligned_page,
                             "original_page": s1_page.original_page,
                             "md_path": str(md_path),
-                            "char_count": len(md_text),
+                            "char_count": len(cached),
                         },
                     )
-                    skipped_existing += 1
-                    pages.append(
+                    if progress is not None:
+                        progress(make_event(
+                            PHASE_STAGE2_VISION,
+                            STATUS_PAGE_SKIPPED,
+                            counts_as_step=True,
+                            page_index=page_index,
+                            page_total=page_total,
+                            aligned_page=s1_page.aligned_page,
+                            original_page=s1_page.original_page,
+                            char_count=len(cached),
+                        ))
+                    return (
                         Stage2PageResult(
                             aligned_page=s1_page.aligned_page,
                             original_page=s1_page.original_page,
                             md_path=str(md_path),
-                            sidecar_path=str(sidecar_path),
-                            char_count=len(md_text),
-                        )
+                            char_count=len(cached),
+                        ),
+                        True,
                     )
-                    Log(
-                        INFO_LOG_LEVEL,
-                        "stage2 page iteration complete",
-                        {
-                            "aligned_page": s1_page.aligned_page,
-                            "original_page": s1_page.original_page,
-                            "cache_hit": True,
-                        },
-                    )
-                    continue
-            except Exception:
+
+            png_path = render_dir / f"p.{s1_page.aligned_page:04d}.png"
+            raw_ocr_text = Path(s1_page.txt_path).read_text(encoding="utf-8")
+
+            try:
+                refined = await refine_with_vision(
+                    client,
+                    model=model,
+                    page_image_path=png_path,
+                    raw_ocr_text=raw_ocr_text,
+                    request_id=request_id,
+                    page=s1_page.aligned_page,
+                )
+            except Exception as exc:
+                last_error = str(exc)
                 Log(
                     WARNING_LOG_LEVEL,
-                    "stage2 sidecar read failed, will re-run vision",
-                    {"sidecar_path": str(sidecar_path)},
+                    "stage2 vision page failed",
+                    {
+                        "aligned_page": s1_page.aligned_page,
+                        "original_page": s1_page.original_page,
+                        "error": str(exc),
+                    },
                 )
+                if progress is not None:
+                    progress(make_event(
+                        PHASE_STAGE2_VISION,
+                        STATUS_PAGE_FAILED,
+                        counts_as_step=True,
+                        page_index=page_index,
+                        page_total=page_total,
+                        aligned_page=s1_page.aligned_page,
+                        original_page=s1_page.original_page,
+                        error=str(exc),
+                    ))
+                return None, False
 
-        png_path = render_dir / f"p.{s1_page.aligned_page:04d}.png"
-        Log(
-            INFO_LOG_LEVEL,
-            "stage2 page load OCR txt begin",
-            {"path": s1_page.txt_path},
-        )
-        raw_ocr_text = Path(s1_page.txt_path).read_text(encoding="utf-8")
-        Log(
-            INFO_LOG_LEVEL,
-            "stage2 page load OCR txt done",
-            {"char_count": len(raw_ocr_text)},
-        )
+            _write_stage_md(md_path, model, refined)
+            if progress is not None:
+                progress(make_event(
+                    PHASE_STAGE2_VISION,
+                    STATUS_PAGE_PROGRESS,
+                    counts_as_step=True,
+                    page_index=page_index,
+                    page_total=page_total,
+                    aligned_page=s1_page.aligned_page,
+                    original_page=s1_page.original_page,
+                    char_count=len(refined),
+                ))
+            return (
+                Stage2PageResult(
+                    aligned_page=s1_page.aligned_page,
+                    original_page=s1_page.original_page,
+                    md_path=str(md_path),
+                    char_count=len(refined),
+                ),
+                False,
+            )
 
-        try:
-            refined = await refine_with_vision(
-                client,
-                model=model,
-                page_image_path=png_path,
-                raw_ocr_text=raw_ocr_text,
-                request_id=request_id,
-                page=s1_page.aligned_page,
-            )
-        except Exception as exc:
-            last_error = str(exc)
-            Log(
-                WARNING_LOG_LEVEL,
-                "stage2 vision page failed",
-                {
-                    "aligned_page": s1_page.aligned_page,
-                    "original_page": s1_page.original_page,
-                    "error": str(exc),
-                },
-            )
-            Log(
-                INFO_LOG_LEVEL,
-                "stage2 page iteration end",
-                {
-                    "aligned_page": s1_page.aligned_page,
-                    "original_page": s1_page.original_page,
-                    "outcome": "vision_failed",
-                },
-            )
-            continue
+    outcomes = await asyncio.gather(
+        *(
+            _process_page(page_index, s1_page)
+            for page_index, s1_page in enumerate(stage1_result.pages, start=1)
+        )
+    )
 
-        Log(
-            INFO_LOG_LEVEL,
-            "stage2 page write markdown begin",
-            {"path": str(md_path)},
-        )
-        md_path.write_text(refined, encoding="utf-8")
-        Log(
-            INFO_LOG_LEVEL,
-            "stage2 page write markdown done",
-            {"char_count": len(refined)},
-        )
-        sidecar_data = {
-            "model": model,
-            "completed_at": datetime.now(timezone.utc).isoformat(),
-        }
-        Log(
-            INFO_LOG_LEVEL,
-            "stage2 page write sidecar begin",
-            {"path": str(sidecar_path)},
-        )
-        sidecar_path.write_text(json.dumps(sidecar_data, ensure_ascii=False), encoding="utf-8")
-        Log(INFO_LOG_LEVEL, "stage2 page write sidecar done")
-        pages.append(
-            Stage2PageResult(
-                aligned_page=s1_page.aligned_page,
-                original_page=s1_page.original_page,
-                md_path=str(md_path),
-                sidecar_path=str(sidecar_path),
-                char_count=len(refined),
-            )
-        )
-        Log(
-            INFO_LOG_LEVEL,
-            "stage2 page iteration complete",
-            {
-                "aligned_page": s1_page.aligned_page,
-                "original_page": s1_page.original_page,
-            },
-        )
+    pages: list[Stage2PageResult] = []
+    skipped_existing = 0
+    for result, skipped in outcomes:
+        if result is not None:
+            pages.append(result)
+            if skipped:
+                skipped_existing += 1
+
+    pages.sort(key=lambda p: p.aligned_page)
 
     Log(
         INFO_LOG_LEVEL,
@@ -289,13 +317,20 @@ async def run_stage2_vision(
         {
             "pages_written": len(pages),
             "skipped_existing": skipped_existing,
-            "missing": len(missing),
         },
     )
+
+    if progress is not None:
+        progress(make_event(
+            PHASE_STAGE2_VISION,
+            STATUS_COMPLETED,
+            pages_written=len(pages),
+            skipped_existing=skipped_existing,
+        ))
 
     return Stage2Result(
         pages=pages,
         skipped_existing=skipped_existing,
-        missing=missing,
+        missing=[],
         last_error=last_error,
     )

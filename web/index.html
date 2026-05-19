@@ -45,6 +45,7 @@ strong { color: #e8e8e8; }
 #progress-bar::-moz-progress-bar { background: #4ec9b0; border-radius: 5px; }
 #progress-global { font-size: 0.8rem; color: #9d9d9d; }
 #progress-detail { font-size: 0.78rem; color: #7d7d7d; margin-top: 0.2rem; }
+#progress-timing { font-size: 0.76rem; color: #9d9d9d; margin-top: 0.35rem; line-height: 1.45; }
 .phase-list { list-style: none; padding: 0; margin: 0 0 0.5rem; display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; }
 .phase-list li { font-size: 0.8rem; color: #7d7d7d; }
 .phase-list li.active { color: #4ec9b0; font-weight: 600; }
@@ -56,8 +57,8 @@ strong { color: #e8e8e8; }
 <h1>Ingestione libro</h1>
 <div class="dev-banner" role="note">
   <strong>Pipeline in sviluppo — versione temporanea e parziale.</strong>
-  Attualmente l’ingestione esegue solo lo <strong>Stage 1 OCR</strong> (output testuale grezzo per pagina in <code>data/tmp/&lt;sha&gt;/stage1OCR/</code>) e si considera completa a fine OCR.
-  Non sono ancora attivi: Stage 2 Vision, Stage 3 Editor, writer pagine, <code>TOC.md</code>, <code>INDEX.md</code>, file aggregato <code>&lt;libro&gt;.md</code> e polyindex globale.
+  Attualmente l’ingestione esegue <strong>Stage 1 OCR</strong> (testo grezzo per pagina in <code>stage1OCR/</code>), <strong>Stage 2 Vision</strong> (raffinamento multimodale in <code>stage2Vision/</code>) e <strong>Stage 3 Editor</strong> (normalizzazione testuale in <code>stage3Editor/</code>).
+  Non sono ancora attivi: writer pagine, <code>TOC.md</code>, <code>INDEX.md</code>, file aggregato <code>&lt;libro&gt;.md</code> e polyindex globale.
 </div>
 <p class="lead">Carica il PDF e indica quali pagine del file escludere e dove si trovano, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT. Prima dell’invio il browser tenta una verifica delle pagine rispetto al PDF (servono rete per caricare pdf.js).</p>
 
@@ -177,10 +178,13 @@ strong { color: #e8e8e8; }
     <li id="ph-pdf_alignment" data-phase="pdf_alignment">Allineamento PDF</li>
     <li id="ph-page_enumeration" data-phase="page_enumeration">Enumerazione pagine</li>
     <li id="ph-stage1_ocr" data-phase="stage1_ocr">Stage 1 OCR</li>
+    <li id="ph-stage2_vision" data-phase="stage2_vision">Stage 2 Vision</li>
+    <li id="ph-stage3_editor" data-phase="stage3_editor">Stage 3 Editor</li>
   </ul>
   <progress id="progress-bar" value="0" max="100"></progress>
   <div id="progress-global">In attesa di aggiornamenti…</div>
   <div id="progress-detail"></div>
+  <div id="progress-timing"></div>
 </div>
 <pre id="out" aria-live="polite"></pre>
 
@@ -277,6 +281,11 @@ strong { color: #e8e8e8; }
   var progressBar = document.getElementById("progress-bar");
   var progressGlobal = document.getElementById("progress-global");
   var progressDetail = document.getElementById("progress-detail");
+  var progressTiming = document.getElementById("progress-timing");
+
+  var elapsedSeconds = 0;
+  var phaseDurations = {};
+  var lastGlobalStepText = "In attesa di aggiornamenti\u2026";
 
   var PHASE_LABELS = {
     validation: "Validazione",
@@ -284,6 +293,8 @@ strong { color: #e8e8e8; }
     pdf_alignment: "Allineamento PDF",
     page_enumeration: "Enumerazione pagine",
     stage1_ocr: "Stage 1 OCR",
+    stage2_vision: "Stage 2 Vision",
+    stage3_editor: "Stage 3 Editor",
   };
 
   function phaseEl(phase) {
@@ -296,13 +307,71 @@ strong { color: #e8e8e8; }
     el.className = state;
   }
 
+  function formatDuration(sec) {
+    var s = Math.max(0, Math.round(Number(sec) || 0));
+    if (s < 60) return s + " s";
+    var m = Math.floor(s / 60);
+    var r = s % 60;
+    return m + " min " + r + " s";
+  }
+
+  function setPhaseLabel(phase) {
+    var el = phaseEl(phase);
+    if (!el) return;
+    var base = PHASE_LABELS[phase] || phase;
+    var dur = phaseDurations[phase];
+    el.textContent = dur != null ? base + " (" + formatDuration(dur) + ")" : base;
+  }
+
+  function refreshGlobalLine() {
+    var extra = elapsedSeconds > 0 ? " \u00b7 " + formatDuration(elapsedSeconds) : "";
+    progressGlobal.textContent = lastGlobalStepText + extra;
+  }
+
+  function refreshTimingBlock() {
+    if (!progressTiming) return;
+    var parts = [];
+    if (elapsedSeconds > 0) parts.push("Totale: " + formatDuration(elapsedSeconds));
+    Object.keys(PHASE_LABELS).forEach(function (ph) {
+      if (phaseDurations[ph] != null) {
+        parts.push((PHASE_LABELS[ph] || ph) + ": " + formatDuration(phaseDurations[ph]));
+      }
+    });
+    progressTiming.textContent = parts.length ? parts.join(" \u00b7 ") : "";
+  }
+
+  function applyTimingFields(ev) {
+    if (ev.elapsed_seconds != null) elapsedSeconds = ev.elapsed_seconds;
+    var phase = ev.phase;
+    if (phase && ev.phase_duration_seconds != null) {
+      phaseDurations[phase] = ev.phase_duration_seconds;
+      setPhaseLabel(phase);
+    }
+    if (ev.timing && ev.timing.phases) {
+      Object.keys(ev.timing.phases).forEach(function (ph) {
+        phaseDurations[ph] = ev.timing.phases[ph];
+        setPhaseLabel(ph);
+      });
+      if (ev.timing.total_seconds != null) elapsedSeconds = ev.timing.total_seconds;
+    }
+    refreshGlobalLine();
+    refreshTimingBlock();
+  }
+
   function resetProgress() {
     progressBox.classList.remove("show");
     progressBar.value = 0;
     progressBar.max = 100;
-    progressGlobal.textContent = "In attesa di aggiornamenti\u2026";
+    elapsedSeconds = 0;
+    phaseDurations = {};
+    lastGlobalStepText = "In attesa di aggiornamenti\u2026";
+    progressGlobal.textContent = lastGlobalStepText;
     progressDetail.textContent = "";
-    Object.keys(PHASE_LABELS).forEach(function (ph) { setPhaseState(ph, ""); });
+    if (progressTiming) progressTiming.textContent = "";
+    Object.keys(PHASE_LABELS).forEach(function (ph) {
+      setPhaseState(ph, "");
+      setPhaseLabel(ph);
+    });
   }
 
   function show(kind, payload) {
@@ -320,23 +389,27 @@ strong { color: #e8e8e8; }
   function handleEvent(ev) {
     var phase = ev.phase;
     var status = ev.status;
+    applyTimingFields(ev);
 
     if (status === "pipeline_total") {
       progressBar.max = ev.global_total || 100;
-      progressGlobal.textContent = "Step 0 / " + ev.global_total;
+      lastGlobalStepText = "Step 0 / " + ev.global_total;
+      refreshGlobalLine();
       return;
     }
 
     if (ev.global_step != null && ev.global_total != null) {
       progressBar.value = ev.global_step;
       progressBar.max = ev.global_total;
-      progressGlobal.textContent = "Step " + ev.global_step + " / " + ev.global_total;
+      lastGlobalStepText = "Step " + ev.global_step + " / " + ev.global_total;
+      refreshGlobalLine();
     }
 
     if (status === "started") {
       setPhaseState(phase, "active");
-      if (phase === "stage1_ocr" && ev.page_total != null) {
-        progressDetail.textContent = "Stage 1 OCR — pagina 0 / " + ev.page_total;
+      if (ev.page_total != null) {
+        var phaseLabel = PHASE_LABELS[phase] || phase;
+        progressDetail.textContent = phaseLabel + " — pagina 0 / " + ev.page_total;
       }
     }
 
@@ -349,6 +422,8 @@ strong { color: #e8e8e8; }
     if (status === "completed") {
       setPhaseState(phase, "done");
       if (phase === "stage1_ocr") progressDetail.textContent = "Stage 1 OCR completato";
+      else if (phase === "stage2_vision") progressDetail.textContent = "Stage 2 Vision completato";
+      else if (phase === "stage3_editor") progressDetail.textContent = "Stage 3 Editor completato";
     }
 
     if (status === "failed") {
@@ -370,9 +445,13 @@ strong { color: #e8e8e8; }
     function onDone(e) {
       var ev;
       try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+      applyTimingFields(ev);
       var result = ev.result || ev;
+      if (result && result.timing) applyTimingFields({ timing: result.timing });
       show("ok", result);
-      progressGlobal.textContent = "Completato";
+      lastGlobalStepText = "Completato";
+      refreshGlobalLine();
+      refreshTimingBlock();
       progressBar.value = progressBar.max;
       es.close();
       btn.disabled = false;
@@ -437,7 +516,8 @@ strong { color: #e8e8e8; }
         return;
       }
 
-      progressGlobal.textContent = "Job avviato — ID: " + data.job_id;
+      lastGlobalStepText = "Job avviato \u2014 ID: " + data.job_id;
+      refreshGlobalLine();
       connectSSE(data.events_url);
     } catch (err) {
       show("err", String(err.message || err));

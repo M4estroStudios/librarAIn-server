@@ -1,14 +1,18 @@
 from __future__ import annotations
 
 import re
+import threading
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from dataclasses import dataclass
 from pathlib import Path
 
 from pydantic import BaseModel
 
 from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
 from src.ingestion.pipeline.engine import EasyOCRPageEngine, OCRPageEngine
-from src.ingestion.pipeline.render import render_pdf_page_to_png
+from src.core.hashing import compute_file_sha256
+from src.ingestion.pipeline.render import _render_pdf_page_to_png
 from src.ingestion.progress import (
     PHASE_STAGE1_OCR,
     STATUS_COMPLETED,
@@ -55,6 +59,16 @@ class Stage1Result(BaseModel):
     last_error: str | None = None
 
 
+@dataclass
+class _Stage1PageOutcome:
+    page_index: int
+    page: Stage1PageResult | None = None
+    skipped: bool = False
+    missing_original: int | None = None
+    failed: bool = False
+    error: str | None = None
+
+
 def run_stage1_ingest_step(
     enriched: EnrichedIngestRequest,
     pdf_alignment: PdfAlignmentResult | None,
@@ -79,17 +93,26 @@ def run_stage1_ingest_step(
     )
     Log(INFO_LOG_LEVEL, "stage1 ingest step acquire OCR engine")
     ocr_engine = engine or EasyOCRPageEngine(gpu=settings.ocr_use_gpu, gpu_device=settings.ocr_gpu_device)
+    if isinstance(ocr_engine, EasyOCRPageEngine):
+        ocr_engine.prepare_parallel_pool(
+            settings.ocr_languages,
+            pool_size=settings.max_parallel_request,
+        )
     Log(INFO_LOG_LEVEL, "stage1 ingest step OCR engine ready")
-    return run_stage1_ocr(
-        aligned_path,
-        enriched.source_sha256,
-        useful_pages_enumeration,
-        settings,
-        ocr_engine,
-        reicat=enriched.request.reicat,
-        force_recompute=force_recompute,
-        progress=progress,
-    )
+    try:
+        return run_stage1_ocr(
+            aligned_path,
+            enriched.source_sha256,
+            useful_pages_enumeration,
+            settings,
+            ocr_engine,
+            reicat=enriched.request.reicat,
+            force_recompute=force_recompute,
+            progress=progress,
+        )
+    finally:
+        if engine is None and isinstance(ocr_engine, EasyOCRPageEngine):
+            ocr_engine.release_parallel_pool()
 
 
 def run_stage1_ocr(
@@ -117,16 +140,14 @@ def run_stage1_ocr(
         {"render_dir": str(render_dir), "ocr_dir": str(ocr_dir)},
     )
 
-    pages: list[Stage1PageResult] = []
-    skipped_existing = 0
-    missing: list[int] = []
-    last_error: str | None = None
-    total_attempted = 0
-    failed_count = 0
-
     sorted_pages = sorted(useful_pages_enumeration.useful_original_pages)
     page_total = len(sorted_pages)
-    page_index = 0
+    progress_lock = threading.Lock()
+
+    def _emit_progress(event: dict) -> None:
+        if progress is not None:
+            with progress_lock:
+                progress(event)
 
     Log(
         INFO_LOG_LEVEL,
@@ -135,15 +156,17 @@ def run_stage1_ocr(
             "slug": slug,
             "useful_pages": page_total,
             "aligned_pdf": str(aligned_pdf_path),
+            "max_parallel": settings.max_parallel_request,
         },
     )
 
     if progress is not None:
         progress(make_event(PHASE_STAGE1_OCR, STATUS_STARTED, page_total=page_total))
 
-    for orig in sorted_pages:
+    render_source_sha256 = compute_file_sha256(aligned_pdf_path)
+
+    def _process_page(page_index: int, orig: int) -> _Stage1PageOutcome:
         aligned = useful_pages_enumeration.original_page_to_aligned_page.get(orig)
-        page_index += 1
         Log(
             INFO_LOG_LEVEL,
             "stage1 page iteration begin",
@@ -155,13 +178,7 @@ def run_stage1_ocr(
                 "stage1 missing aligned page mapping",
                 {"original_page": orig},
             )
-            missing.append(orig)
-            Log(
-                INFO_LOG_LEVEL,
-                "stage1 page iteration end",
-                {"original_page": orig, "outcome": "missing_aligned_mapping"},
-            )
-            continue
+            return _Stage1PageOutcome(page_index=page_index, missing_original=orig)
 
         txt_path = ocr_dir / f"p.{aligned:04d}.{slug}.txt"
 
@@ -177,166 +194,141 @@ def run_stage1_ocr(
                     "char_count": len(cached_text),
                 },
             )
-            pages.append(
-                Stage1PageResult(
-                    aligned_page=aligned,
-                    original_page=orig,
-                    txt_path=str(txt_path),
-                    char_count=len(cached_text),
-                )
-            )
-            skipped_existing += 1
-            if progress is not None:
-                progress(make_event(
-                    PHASE_STAGE1_OCR,
-                    STATUS_PAGE_SKIPPED,
-                    counts_as_step=True,
-                    page_index=page_index,
-                    page_total=page_total,
-                    aligned_page=aligned,
-                    original_page=orig,
-                    char_count=len(cached_text),
-                ))
-            Log(
-                INFO_LOG_LEVEL,
-                "stage1 page iteration complete",
-                {
-                    "original_page": orig,
-                    "aligned_page": aligned,
-                    "cache_hit": True,
-                },
-            )
-            continue
-        png_path = render_dir / f"p.{aligned:04d}.png"
-        Log(
-            INFO_LOG_LEVEL,
-            "stage1 page render PNG begin",
-            {
-                "original_page": orig,
-                "aligned_page": aligned,
-                "png_path": str(png_path),
-            },
-        )
-        try:
-            render_pdf_page_to_png(aligned_pdf_path, aligned - 1, png_path)
-        except Exception as exc:
-            last_error = str(exc)
-            Log(
-                WARNING_LOG_LEVEL,
-                "stage1 render page failed",
-                {"aligned_page": aligned, "original_page": orig, "error": str(exc)},
-            )
-            failed_count += 1
-            if progress is not None:
-                progress(make_event(
-                    PHASE_STAGE1_OCR,
-                    STATUS_PAGE_FAILED,
-                    counts_as_step=True,
-                    page_index=page_index,
-                    page_total=page_total,
-                    aligned_page=aligned,
-                    original_page=orig,
-                    error=str(exc),
-                    failure="render_failed",
-                ))
-            Log(
-                INFO_LOG_LEVEL,
-                "stage1 page iteration end",
-                {
-                    "original_page": orig,
-                    "aligned_page": aligned,
-                    "outcome": "render_failed",
-                },
-            )
-            continue
-
-        Log(
-            INFO_LOG_LEVEL,
-            "stage1 page render PNG done",
-            {"original_page": orig, "aligned_page": aligned},
-        )
-        Log(
-            INFO_LOG_LEVEL,
-            "stage1 page OCR begin",
-            {"original_page": orig, "aligned_page": aligned},
-        )
-        try:
-            text = engine.ocr_page(png_path, lang=settings.ocr_languages)
-        except Exception as exc:
-            last_error = str(exc)
-            Log(
-                WARNING_LOG_LEVEL,
-                "stage1 OCR page failed",
-                {"aligned_page": aligned, "original_page": orig, "error": str(exc)},
-            )
-            failed_count += 1
-            if progress is not None:
-                progress(make_event(
-                    PHASE_STAGE1_OCR,
-                    STATUS_PAGE_FAILED,
-                    counts_as_step=True,
-                    page_index=page_index,
-                    page_total=page_total,
-                    aligned_page=aligned,
-                    original_page=orig,
-                    error=str(exc),
-                    failure="ocr_failed",
-                ))
-            Log(
-                INFO_LOG_LEVEL,
-                "stage1 page iteration end",
-                {
-                    "original_page": orig,
-                    "aligned_page": aligned,
-                    "outcome": "ocr_failed",
-                },
-            )
-            continue
-
-        Log(
-            INFO_LOG_LEVEL,
-            "stage1 page OCR done",
-            {
-                "original_page": orig,
-                "aligned_page": aligned,
-                "char_count": len(text),
-            },
-        )
-        Log(
-            INFO_LOG_LEVEL,
-            "stage1 page write txt begin",
-            {"txt_path": str(txt_path)},
-        )
-        txt_path.write_text(text, encoding="utf-8")
-        Log(
-            INFO_LOG_LEVEL,
-            "stage1 page write txt done",
-            {"txt_path": str(txt_path), "char_count": len(text)},
-        )
-        pages.append(
-            Stage1PageResult(
-                aligned_page=aligned,
-                original_page=orig,
-                txt_path=str(txt_path),
-                char_count=len(text),
-            )
-        )
-        if progress is not None:
-            progress(make_event(
+            _emit_progress(make_event(
                 PHASE_STAGE1_OCR,
-                STATUS_PAGE_PROGRESS,
+                STATUS_PAGE_SKIPPED,
                 counts_as_step=True,
                 page_index=page_index,
                 page_total=page_total,
                 aligned_page=aligned,
                 original_page=orig,
-                char_count=len(text),
+                char_count=len(cached_text),
             ))
+            return _Stage1PageOutcome(
+                page_index=page_index,
+                page=Stage1PageResult(
+                    aligned_page=aligned,
+                    original_page=orig,
+                    txt_path=str(txt_path),
+                    char_count=len(cached_text),
+                ),
+                skipped=True,
+            )
+
+        png_path = render_dir / f"p.{aligned:04d}.png"
+        try:
+            _render_pdf_page_to_png(
+                aligned_pdf_path,
+                aligned - 1,
+                png_path,
+                dpi=200,
+                source_sha256=render_source_sha256,
+            )
+        except Exception as exc:
+            Log(
+                WARNING_LOG_LEVEL,
+                "stage1 render page failed",
+                {"aligned_page": aligned, "original_page": orig, "error": str(exc)},
+            )
+            _emit_progress(make_event(
+                PHASE_STAGE1_OCR,
+                STATUS_PAGE_FAILED,
+                counts_as_step=True,
+                page_index=page_index,
+                page_total=page_total,
+                aligned_page=aligned,
+                original_page=orig,
+                error=str(exc),
+                failure="render_failed",
+            ))
+            return _Stage1PageOutcome(
+                page_index=page_index,
+                failed=True,
+                error=str(exc),
+            )
+
+        try:
+            text = engine.ocr_page(png_path, lang=settings.ocr_languages)
+        except Exception as exc:
+            Log(
+                WARNING_LOG_LEVEL,
+                "stage1 OCR page failed",
+                {"aligned_page": aligned, "original_page": orig, "error": str(exc)},
+            )
+            _emit_progress(make_event(
+                PHASE_STAGE1_OCR,
+                STATUS_PAGE_FAILED,
+                counts_as_step=True,
+                page_index=page_index,
+                page_total=page_total,
+                aligned_page=aligned,
+                original_page=orig,
+                error=str(exc),
+                failure="ocr_failed",
+            ))
+            return _Stage1PageOutcome(
+                page_index=page_index,
+                failed=True,
+                error=str(exc),
+            )
+
+        txt_path.write_text(text, encoding="utf-8")
+        _emit_progress(make_event(
+            PHASE_STAGE1_OCR,
+            STATUS_PAGE_PROGRESS,
+            counts_as_step=True,
+            page_index=page_index,
+            page_total=page_total,
+            aligned_page=aligned,
+            original_page=orig,
+            char_count=len(text),
+        ))
         Log(
             INFO_LOG_LEVEL,
             "stage1 page iteration complete",
             {"original_page": orig, "aligned_page": aligned},
         )
+        return _Stage1PageOutcome(
+            page_index=page_index,
+            page=Stage1PageResult(
+                aligned_page=aligned,
+                original_page=orig,
+                txt_path=str(txt_path),
+                char_count=len(text),
+            ),
+        )
+
+    pages: list[Stage1PageResult] = []
+    skipped_existing = 0
+    missing: list[int] = []
+    last_error: str | None = None
+    total_attempted = 0
+    failed_count = 0
+
+    with ThreadPoolExecutor(max_workers=settings.max_parallel_request) as pool:
+        futures = [
+            pool.submit(_process_page, page_index, orig)
+            for page_index, orig in enumerate(sorted_pages, start=1)
+        ]
+        outcomes = [fut.result() for fut in as_completed(futures)]
+
+    for outcome in sorted(outcomes, key=lambda o: o.page_index):
+        if outcome.missing_original is not None:
+            missing.append(outcome.missing_original)
+            continue
+        if outcome.failed:
+            total_attempted += 1
+            failed_count += 1
+            last_error = outcome.error
+            continue
+        if outcome.page is not None:
+            pages.append(outcome.page)
+            if outcome.skipped:
+                skipped_existing += 1
+            else:
+                total_attempted += 1
+
+    pages.sort(key=lambda p: p.aligned_page)
 
     if total_attempted > 0 and failed_count / total_attempted >= 0.5:
         Log(

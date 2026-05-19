@@ -1,18 +1,26 @@
 from __future__ import annotations
 
+import asyncio
 from pathlib import Path
 from typing import Any, Callable
 
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
+from src.core.lmstudio_models import swap_lmstudio_vision_to_editor
+from src.core.openai_client import build_openai_client
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pdf_alignment import maybe_run_pdf_alignment
 from src.ingestion.pipeline import run_stage1_ingest_step
+from src.ingestion.pipeline.stage2 import run_stage2_vision
+from src.ingestion.pipeline.stage3 import run_stage3_editor
 from src.ingestion.progress import (
     PHASE_GATE_HASH,
     PHASE_PAGE_ENUMERATION,
     PHASE_PDF_ALIGNMENT,
     PHASE_STAGE1_OCR,
+    PHASE_STAGE2_VISION,
+    PHASE_STAGE3_EDITOR,
     PHASE_VALIDATION,
+    PipelineTiming,
     STATUS_COMPLETED,
     STATUS_DONE,
     STATUS_ERROR,
@@ -20,6 +28,7 @@ from src.ingestion.progress import (
     STATUS_STARTED,
     ProgressReporter,
     make_event,
+    timed_progress_reporter,
 )
 from src.ingestion.request_validation import (
     run_ingest_gate_phase,
@@ -28,7 +37,7 @@ from src.ingestion.request_validation import (
 from src.models.request import IngestInputValidationError, IngestInputValidationException
 from src.models.settings import Settings
 
-_ACTIVE_PAGE_STAGES = 1
+_ACTIVE_PAGE_STAGES = 3
 
 
 def _emit(reporter: ProgressReporter | None, event: dict[str, Any]) -> None:
@@ -77,6 +86,9 @@ def run_full_pipeline(
     """
     ingest_payload = dict(ingest_payload)
     ingest_payload["source_pdf_path"] = str(saved_pdf_path)
+
+    timing = PipelineTiming()
+    reporter = timed_progress_reporter(reporter, timing)
 
     _emit(reporter, make_event(PHASE_VALIDATION, STATUS_STARTED))
     Log(INFO_LOG_LEVEL, "pipeline validate_and_enrich_request begin")
@@ -168,27 +180,99 @@ def run_full_pipeline(
     Log(INFO_LOG_LEVEL, "pipeline run_stage1_ingest_step done",
         {"pages": len(stage1_result.pages)})
 
-    payload_out: dict[str, Any] = {
-        "ok": True,
-        "enriched": enriched.model_dump(mode="json", by_alias=True),
-        "ingest_gate_phase": ingest_gate_phase.model_dump(mode="json", by_alias=True),
-        "pdf_alignment": (
-            pdf_alignment.model_dump(mode="json", by_alias=True)
-            if pdf_alignment is not None
-            else None
-        ),
-        "useful_pages_enumeration": useful_pages_enumeration.model_dump(
-            mode="json", by_alias=True
-        ),
-        "stage1": stage1_result.model_dump(mode="json"),
-    }
+    def _build_payload(stage2_dump: dict[str, Any] | None, stage3_dump: dict[str, Any] | None) -> dict[str, Any]:
+        return {
+            "ok": True,
+            "enriched": enriched.model_dump(mode="json", by_alias=True),
+            "ingest_gate_phase": ingest_gate_phase.model_dump(mode="json", by_alias=True),
+            "pdf_alignment": (
+                pdf_alignment.model_dump(mode="json", by_alias=True)
+                if pdf_alignment is not None
+                else None
+            ),
+            "useful_pages_enumeration": useful_pages_enumeration.model_dump(
+                mode="json", by_alias=True
+            ),
+            "stage1": stage1_result.model_dump(mode="json"),
+            "stage2": stage2_dump,
+            "stage3": stage3_dump,
+            "timing": timing.summary(),
+        }
 
-    _emit(reporter, make_event(PHASE_STAGE1_OCR, STATUS_DONE,
-                               result=payload_out))
+    if ingest_gate_phase.pipeline_skipped:
+        payload_out = _build_payload(None, None)
+        _emit(reporter, make_event(
+            PHASE_STAGE1_OCR, STATUS_DONE, result=payload_out, timing=payload_out["timing"]
+        ))
+        Log(INFO_LOG_LEVEL, "pipeline completed (pipeline_skipped)",
+            {"source_sha256": enriched.source_sha256[:16],
+             "stage1_pages": len(stage1_result.pages)})
+        return payload_out
+
+    _emit(reporter, make_event(PHASE_STAGE1_OCR, STATUS_COMPLETED))
+
+    openai_client = build_openai_client(settings)
+    Log(INFO_LOG_LEVEL, "pipeline run_stage2_vision begin")
+    try:
+        stage2_result = asyncio.run(
+            run_stage2_vision(
+                stage1_result,
+                enriched.source_sha256,
+                settings,
+                openai_client,
+                request_id=enriched.request.request_id,
+                progress=reporter,
+            )
+        )
+    except Exception as exc:
+        err_detail = _extract_validation_error(exc)
+        Log(ERROR_LOG_LEVEL, "pipeline stage2 failed", {"error": str(exc)})
+        _emit_error(reporter, PHASE_STAGE2_VISION, err_detail["message"],
+                    code=err_detail.get("code"), field=err_detail.get("field"))
+        raise
+
+    Log(INFO_LOG_LEVEL, "pipeline run_stage2_vision done",
+        {"pages": len(stage2_result.pages),
+         "skipped_cached": stage2_result.skipped_existing,
+         "failed": len(stage2_result.missing)})
+
+    swap_lmstudio_vision_to_editor(settings)
+
+    Log(INFO_LOG_LEVEL, "pipeline run_stage3_editor begin")
+    try:
+        stage3_result = asyncio.run(
+            run_stage3_editor(
+                stage2_result,
+                enriched.source_sha256,
+                settings,
+                openai_client,
+                request_id=enriched.request.request_id,
+                progress=reporter,
+            )
+        )
+    except Exception as exc:
+        err_detail = _extract_validation_error(exc)
+        Log(ERROR_LOG_LEVEL, "pipeline stage3 failed", {"error": str(exc)})
+        _emit_error(reporter, PHASE_STAGE3_EDITOR, err_detail["message"],
+                    code=err_detail.get("code"), field=err_detail.get("field"))
+        raise
+
+    Log(INFO_LOG_LEVEL, "pipeline run_stage3_editor done",
+        {"pages": len(stage3_result.pages),
+         "skipped_cached": stage3_result.skipped_existing,
+         "failed": len(stage3_result.missing)})
+
+    payload_out = _build_payload(stage2_result.model_dump(mode="json"),
+                                 stage3_result.model_dump(mode="json"))
+    _emit(reporter, make_event(
+        PHASE_STAGE3_EDITOR, STATUS_DONE, result=payload_out, timing=payload_out["timing"]
+    ))
 
     Log(INFO_LOG_LEVEL, "pipeline completed",
         {"source_sha256": enriched.source_sha256[:16],
-         "stage1_pages": len(stage1_result.pages)})
+         "stage1_pages": len(stage1_result.pages),
+         "stage2_pages": len(stage2_result.pages),
+         "stage3_pages": len(stage3_result.pages)})
     return payload_out
 
 

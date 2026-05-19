@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import asyncio
 import base64
-import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -13,6 +12,7 @@ from src.ingestion.pipeline.stage1 import Stage1PageResult, Stage1Result
 from src.ingestion.pipeline.stage2 import (
     Stage2Result,
     _load_vision_prompt,
+    _read_stage_md,
     refine_with_vision,
     run_stage2_vision,
 )
@@ -36,6 +36,7 @@ def _settings(data_root: str, vision_model: str = "vision-model-v1") -> MagicMoc
     s = MagicMock()
     s.data_root = data_root
     s.vision_model = vision_model
+    s.max_parallel_request = 2
     return s
 
 
@@ -168,7 +169,7 @@ class TestRunStage2Vision(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
-    def test_first_run_creates_md_and_sidecar_files(self) -> None:
+    def test_first_run_creates_md_with_model_marker(self) -> None:
         client = _fake_client()
         settings = _settings(self.data_root)
         result = asyncio.run(
@@ -180,9 +181,9 @@ class TestRunStage2Vision(unittest.TestCase):
         self.assertIsNone(result.last_error)
         for page in result.pages:
             self.assertTrue(Path(page.md_path).is_file())
-            self.assertTrue(Path(page.sidecar_path).is_file())
-            sidecar = json.loads(Path(page.sidecar_path).read_text(encoding="utf-8"))
-            self.assertEqual(sidecar["model"], "vision-model-v1")
+            body = _read_stage_md(Path(page.md_path), "vision-model-v1")
+            self.assertEqual(body, "REFINED")
+            self.assertEqual(list(Path(page.md_path).parent.glob("*.json")), [])
 
     def test_second_run_same_model_skips(self) -> None:
         settings = _settings(self.data_root)
@@ -227,7 +228,10 @@ class TestRunStage2Vision(unittest.TestCase):
         self.assertEqual(result.skipped_existing, 0)
         self.assertEqual(client2.chat.completions.create.call_count, 2)
         for page in result.pages:
-            self.assertEqual(Path(page.md_path).read_text(encoding="utf-8"), "REFINED_AGAIN")
+            self.assertEqual(
+                _read_stage_md(Path(page.md_path), "vision-model-v1"),
+                "REFINED_AGAIN",
+            )
 
     def test_char_count_reflects_md_content(self) -> None:
         settings = _settings(self.data_root)
@@ -237,6 +241,30 @@ class TestRunStage2Vision(unittest.TestCase):
         )
         for page in result.pages:
             self.assertEqual(page.char_count, len("hello"))
+
+    def test_parallel_respects_max_in_flight(self) -> None:
+        settings = _settings(self.data_root)
+        settings.max_parallel_request = 2
+        client = _fake_client()
+        in_flight = 0
+        max_seen = 0
+        original_create = client.chat.completions.create
+
+        def tracked_create(*args: object, **kwargs: object) -> MagicMock:
+            nonlocal in_flight, max_seen
+            in_flight += 1
+            max_seen = max(max_seen, in_flight)
+            try:
+                import time
+                time.sleep(0.05)
+                return original_create(*args, **kwargs)
+            finally:
+                in_flight -= 1
+
+        client.chat.completions.create = MagicMock(side_effect=tracked_create)
+        asyncio.run(run_stage2_vision(self.stage1_result, SHA, settings, client))
+        self.assertLessEqual(max_seen, 2)
+        self.assertGreater(max_seen, 0)
 
 
 if __name__ == "__main__":

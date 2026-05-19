@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import queue
 import sys
 import unittest
 from pathlib import Path
@@ -35,6 +36,23 @@ class OCRPageEngineProtocolTests(unittest.TestCase):
         from src.ingestion.pipeline.engine import EasyOCRPageEngine, OCRPageEngine
 
         self.assertTrue(issubclass(EasyOCRPageEngine, OCRPageEngine))
+
+    def test_release_parallel_pool_clears_readers(self) -> None:
+        from src.ingestion.pipeline.engine import EasyOCRPageEngine
+
+        eng = EasyOCRPageEngine()
+        eng._pool_readers = [object(), object()]
+        eng._pool = queue.Queue()
+        eng.release_parallel_pool()
+        self.assertEqual(eng._pool_readers, [])
+        self.assertIsNone(eng._pool)
+
+    def test_ocr_page_requires_prepared_pool(self) -> None:
+        from src.ingestion.pipeline.engine import EasyOCRPageEngine
+
+        eng = EasyOCRPageEngine()
+        with self.assertRaises(RuntimeError):
+            eng.ocr_page(Path("x.png"), lang=["en"])
 
     def test_ocr_languages_default_in_settings(self) -> None:
         import tempfile

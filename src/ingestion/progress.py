@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import time
 from typing import Any, Callable
 
 ProgressReporter = Callable[[dict[str, Any]], None]
@@ -68,3 +69,52 @@ def make_event(
     }
     ev.update(fields)
     return ev
+
+
+_PHASE_TERMINAL_STATUSES = frozenset(
+    {STATUS_COMPLETED, STATUS_FAILED, STATUS_DONE, STATUS_ERROR}
+)
+
+
+class PipelineTiming:
+    def __init__(self) -> None:
+        self._pipeline_start = time.monotonic()
+        self._phase_started: dict[str, float] = {}
+        self.phase_seconds: dict[str, float] = {}
+
+    def elapsed_total(self) -> float:
+        return time.monotonic() - self._pipeline_start
+
+    def enrich(self, event: dict[str, Any]) -> dict[str, Any]:
+        ev = dict(event)
+        phase = ev.get("phase")
+        status = ev.get("status")
+        if phase and status == STATUS_STARTED and phase not in self._phase_started:
+            self._phase_started[phase] = time.monotonic()
+        elif phase and status in _PHASE_TERMINAL_STATUSES:
+            start = self._phase_started.pop(phase, None)
+            if start is not None:
+                duration = time.monotonic() - start
+                self.phase_seconds[phase] = duration
+                ev["phase_duration_seconds"] = round(duration, 2)
+        ev["elapsed_seconds"] = round(self.elapsed_total(), 2)
+        return ev
+
+    def summary(self) -> dict[str, Any]:
+        return {
+            "total_seconds": round(self.elapsed_total(), 2),
+            "phases": {phase: round(sec, 2) for phase, sec in self.phase_seconds.items()},
+        }
+
+
+def timed_progress_reporter(
+    reporter: ProgressReporter | None,
+    timing: PipelineTiming,
+) -> ProgressReporter | None:
+    if reporter is None:
+        return None
+
+    def _emit(event: dict[str, Any]) -> None:
+        reporter(timing.enrich(event))
+
+    return _emit

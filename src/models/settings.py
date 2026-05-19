@@ -23,6 +23,10 @@ class Settings(BaseModel):
     ocr_languages: list[str] = Field(default_factory=lambda: ["it", "en"], alias="OCR_LANGUAGES")
     ocr_use_gpu: bool = Field(default=False, alias="OCR_USE_GPU")
     ocr_gpu_device: str = Field(default="all", alias="OCR_GPU_DEVICE")
+    lm_studio_swap_models: bool = Field(default=True, alias="LM_STUDIO_SWAP_MODELS")
+    lm_studio_load_timeout_seconds: int = Field(
+        default=600, gt=0, alias="LM_STUDIO_LOAD_TIMEOUT_SECONDS"
+    )
 
     @field_validator("ocr_gpu_device", mode="before")
     @classmethod

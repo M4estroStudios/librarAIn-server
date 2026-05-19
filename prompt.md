@@ -223,18 +223,18 @@ OK
 
 **T13(a) — refine_with_editor**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/pipeline/stage3_editor.py.
+Repo: librarAIn-server. In `src/ingestion/pipeline/stage3.py` (stesso modulo di T13b) definisci `refine_with_editor`.
 - Funzione refine_with_editor(client, *, model, stage2_md: str, request_id, page) -> str: chat-completions text-only.
 - System prompt letto da `src/ingestion/pipeline/prompts/editor_prompt.md` ("normalizza markdown, fix spaziature, NON cambiare semantica, NON aggiungere contenuto").
 - Stessa policy di temperature 0.1, retry/rate-limit del client centralizzato.
-- Test tests/test_stage3_editor.py con fake client.
+- Test tests/test_stage3.py (classe TestRefineWithEditor) con fake client.
 DoD: testo di sistema solo da file in repo (Git), niente stringhe prompt nel Python.
 ```
 OK
 
 **T13(b) — Persistenza Stage 3 + diff per pagina**
 ```text
-Repo: librarAIn-server. Crea src/ingestion/pipeline/stage3.py.
+Repo: librarAIn-server. Nello stesso `src/ingestion/pipeline/stage3.py` aggiungi run_stage3_editor, Stage3Result, ecc.
 - Funzione run_stage3_editor(stage2_result, source_sha256, settings, client) -> Stage3Result.
 - Per ogni pagina di stage2: refine_with_editor, scrive in data/tmp/<sha>/stage3Editor/p.NNNN.<slug>.md.
 - Sidecar JSON: model, completed_at, stage2_char_count, stage3_char_count, char_delta.

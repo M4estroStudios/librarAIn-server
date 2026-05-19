@@ -328,7 +328,9 @@ Log(DEBUG_LOG_LEVEL, "solo per questa riga", override=True)
 **MVP (sblocca prodotto)**:
 - PRE-A–PRE-C (✅): prerequisiti tecnici (parallelismo PDF, migrations SQLite, `pyproject.toml`).
 - T1–T10 (✅ già completati).
-- **T11 — OCR + ingest Stage 1 (✅ completato)**: T11(a–c) — `OCRPageEngine`/`EasyOCRPageEngine`, renderer PNG (`pypdfium2`), persistenza/cache Stage 1 (`stage1OCR`); **T11.5** — cablaggio HTTP sincrono su `POST /api/ingest/submit` fino a fine Stage 1 (`stage1` in risposta). Vision/Editor e writer libro restano in T12+.
+- **T11 — OCR + ingest Stage 1 (✅ completato)**: T11(a–c) — `OCRPageEngine`/`EasyOCRPageEngine`, renderer PNG (`pypdfium2`), persistenza/cache Stage 1 (`stage1OCR`); **T11.5** — cablaggio HTTP sincrono su `POST /api/ingest/submit` fino a fine Stage 1 (`stage1` in risposta).
+- **T12 — Vision Stage 2 (✅ completato)**: T12(a–c) — client OpenAI centralizzato (`src/core/openai_client.py`), `refine_with_vision` + `prompts/vision_prompt.md`, persistenza/cache Stage 2 (`stage2Vision`); **T12.5** — cablaggio HTTP (`stage2` in risposta, `_ACTIVE_PAGE_STAGES = 2`).
+- **T13 — Editor Stage 3 (✅ completato)**: T13(a–b) — `refine_with_editor` + `prompts/editor_prompt.md`, persistenza/cache Stage 3 (`stage3Editor/`, sidecar idempotente); **T13.5** — cablaggio HTTP (`stage3` in risposta, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` su `PHASE_STAGE3_EDITOR`).
 - T14: orchestrazione concorrente.
 - T15–T17: writer pagine, TOC.md, INDEX.md.
 - **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
@@ -401,15 +403,16 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [x] **T11(b)** — PDF page renderer con pypdfium2. *(Sonnet)*
 - [x] **T11(c)** — Persistenza Stage 1 + cache idempotente. *(Sonnet)*
 - [x] **T11.5** — Cablaggio Stage 1 in `POST /api/ingest/submit`: dopo gate/allineamento/enumerazione esegue OCR su pagine utili, risponde con `stage1`; risoluzione path PDF allineato se lo skip duplicato non popola `pdf_alignment`. *(Sonnet)*
-
-### Fase 1 — Upload (OCR + orchestrazione)
-
 - [x] **T12(a)** — Client OpenAI-compatible centralizzato. *(Sonnet)*
 - [x] **T12(b)** — refine_with_vision + `prompts/vision_prompt.md`. *(Sonnet)*
-- [x] **T12(c)** — Persistenza Stage 2 + audit prompt. *(Sonnet)*
-- [ ] **T12.5** — Cablaggio Stage 2 Vision in `POST /api/ingest/submit` dopo il completamento dello Stage 1; task futura, da implementare solo quando autorizzata. *(Sonnet)*
-- [ ] **T13(a)** — refine_with_editor + `prompts/editor_prompt.md`. *(Sonnet)*
-- [ ] **T13(b)** — Persistenza Stage 3 + diff per pagina. *(Sonnet)*
+- [x] **T12(c)** — Persistenza Stage 2 + cache idempotente (`stage2Vision`). *(Sonnet)*
+- [x] **T12.5** — Cablaggio Stage 2 Vision in `POST /api/ingest/submit` dopo il completamento dello Stage 1; `stage2` nel payload; `_ACTIVE_PAGE_STAGES = 2`. *(Sonnet)*
+- [x] **T13(a)** — refine_with_editor + `prompts/editor_prompt.md`. *(Sonnet)*
+- [x] **T13(b)** — Persistenza Stage 3 + diff per pagina (`stage3Editor/`, sidecar JSON idempotente). *(Sonnet)*
+
+### Fase 1 — Upload (Vision/Editor + orchestrazione)
+
+- [x] **T13.5** — Cablaggio Stage 3 Editor in `POST /api/ingest/submit` dopo Stage 2 Vision: chiama `run_stage3_editor` con stesso client OpenAI, emette eventi `PHASE_STAGE3_EDITOR` (STARTED/COMPLETED/DONE), aggiunge `stage3` al payload, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` terminale su `PHASE_STAGE3_EDITOR`; skip se `pipeline_skipped`. *(Sonnet)*
 - [ ] **T14(a)** — Coda di job per pagina + asyncio.Semaphore. *(Opus)*
 - [ ] **T14(b)** — Retry + classificazione errori. *(Sonnet)*
 - [ ] **T14(c)** — Token-bucket rate-limit. *(Sonnet)*
