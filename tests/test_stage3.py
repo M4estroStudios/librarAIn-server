@@ -6,7 +6,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import MagicMock
 
-from src.core.openai_client import _ClientState, _RateLimiter, _client_states
+from src.core.rate_limit import AsyncTokenBucket
+from src.core.openai_client import _ClientState, _client_states
 from src.ingestion.pipeline.stage2 import Stage2PageResult, Stage2Result
 from src.ingestion.pipeline.stage2 import _read_stage_md
 from src.ingestion.pipeline.stage3 import (
@@ -25,7 +26,7 @@ def _fake_client(content: str = "EDITED") -> MagicMock:
     resp.choices[0].message.content = content
     client.chat.completions.create.return_value = resp
     _client_states[client] = _ClientState(
-        rate_limiter=_RateLimiter(60),
+        token_bucket=AsyncTokenBucket(60),
         retry_attempts=0,
     )
     return client

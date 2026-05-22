@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import random
-import time
 from dataclasses import dataclass
 from typing import Any
 from weakref import WeakKeyDictionary
@@ -16,18 +14,20 @@ from openai import (
     RateLimitError,
 )
 
+from src.core.errors import PermanentError, TransientError, classify_openai_exception
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
+from src.core.rate_limit import AsyncTokenBucket, get_token_bucket
+from src.core.retry import retry_async
 from src.models.settings import Settings
 
-_BACKOFF_BASE: float = 1.0
-_BACKOFF_JITTER: float = 1.0
-
 _TRANSIENT_ERRORS: tuple[type[Exception], ...] = (
+    TransientError,
     RateLimitError,
     APIConnectionError,
     APITimeoutError,
 )
 _PERMANENT_ERRORS: tuple[type[Exception], ...] = (
+    PermanentError,
     BadRequestError,
     AuthenticationError,
 )
@@ -35,24 +35,9 @@ _PERMANENT_ERRORS: tuple[type[Exception], ...] = (
 _cached_clients: dict[tuple[str | None, str | None], openai.OpenAI] = {}
 
 
-class _RateLimiter:
-    def __init__(self, rate_per_minute: int) -> None:
-        self._interval = 60.0 / max(rate_per_minute, 1)
-        self._lock = asyncio.Lock()
-        self._next_allowed: float = 0.0
-
-    async def acquire(self) -> None:
-        async with self._lock:
-            now = time.monotonic()
-            wait = max(0.0, self._next_allowed - now)
-            self._next_allowed = max(now, self._next_allowed) + self._interval
-        if wait > 0.0:
-            await asyncio.sleep(wait)
-
-
 @dataclass
 class _ClientState:
-    rate_limiter: _RateLimiter
+    token_bucket: AsyncTokenBucket
     retry_attempts: int
 
 
@@ -74,7 +59,7 @@ def build_openai_client(settings: Settings) -> openai.OpenAI:
         )
         _cached_clients[key] = client
         _client_states[client] = _ClientState(
-            rate_limiter=_RateLimiter(settings.rate_limit_per_minute),
+            token_bucket=get_token_bucket(id(client), settings.rate_limit_per_minute),
             retry_attempts=settings.retry_attempts,
         )
     return _cached_clients[key]
@@ -93,10 +78,13 @@ async def chat_completion_with_retry(
 ) -> str:
     state = _client_states.get(client)
     max_attempts = (state.retry_attempts + 1) if state is not None else 4
-    rate_limiter = state.rate_limiter if state is not None else None
+    token_bucket = state.token_bucket if state is not None else None
+    attempt_counter = 0
 
-    last_exc: Exception | None = None
-    for attempt in range(max_attempts):
+    async def _attempt() -> str:
+        nonlocal attempt_counter
+        attempt = attempt_counter
+        attempt_counter += 1
         Log(
             INFO_LOG_LEVEL,
             "chat_completion retry loop iteration",
@@ -109,9 +97,9 @@ async def chat_completion_with_retry(
                 "request_id": request_id,
             },
         )
-        if rate_limiter is not None:
+        if token_bucket is not None:
             Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait begin", {"attempt": attempt})
-            await rate_limiter.acquire()
+            await token_bucket.acquire()
             Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait done", {"attempt": attempt})
         try:
             Log(
@@ -133,7 +121,19 @@ async def chat_completion_with_retry(
             )
             content = response.choices[0].message.content
             if not content or not str(content).strip():
-                raise ValueError("Empty response from model")
+                Log(
+                    WARNING_LOG_LEVEL,
+                    "chat_completion empty response",
+                    {
+                        "request_id": request_id,
+                        "stage": stage,
+                        "page": page,
+                        "model": model,
+                        "attempt": attempt,
+                        "outcome": "empty_response",
+                    },
+                )
+                raise TransientError("Empty response from model")
             Log(
                 INFO_LOG_LEVEL,
                 "chat_completion success",
@@ -147,27 +147,6 @@ async def chat_completion_with_retry(
                 },
             )
             return content
-        except ValueError as exc:
-            if "Empty response from model" not in str(exc):
-                raise
-            last_exc = exc
-            Log(
-                WARNING_LOG_LEVEL,
-                "chat_completion empty response",
-                {
-                    "request_id": request_id,
-                    "stage": stage,
-                    "page": page,
-                    "model": model,
-                    "attempt": attempt,
-                    "outcome": "empty_response",
-                },
-            )
-            if attempt < max_attempts - 1:
-                backoff = _BACKOFF_BASE * (2 ** attempt) + random.uniform(0, _BACKOFF_JITTER)
-                await asyncio.sleep(backoff)
-                continue
-            raise
         except _PERMANENT_ERRORS as exc:
             Log(
                 ERROR_LOG_LEVEL,
@@ -184,7 +163,6 @@ async def chat_completion_with_retry(
             )
             raise
         except _TRANSIENT_ERRORS as exc:
-            last_exc = exc
             Log(
                 WARNING_LOG_LEVEL,
                 "chat_completion transient error",
@@ -198,9 +176,20 @@ async def chat_completion_with_retry(
                     "error": repr(exc),
                 },
             )
-            if attempt < max_attempts - 1:
-                backoff = _BACKOFF_BASE * (2 ** attempt) + random.uniform(0, _BACKOFF_JITTER)
-                await asyncio.sleep(backoff)
+            raise
+        except Exception as exc:
+            classify_openai_exception(exc)
+            raise
 
-    assert last_exc is not None
-    raise last_exc
+    try:
+        return await retry_async(
+            _attempt,
+            max_attempts=max_attempts,
+            base_delay=1.0,
+            retry_on=_TRANSIENT_ERRORS,
+            giveup_on=_PERMANENT_ERRORS,
+        )
+    except TransientError as exc:
+        if "Empty response from model" in str(exc):
+            raise ValueError(str(exc)) from exc
+        raise

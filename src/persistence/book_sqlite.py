@@ -7,18 +7,29 @@ from pathlib import Path
 from typing import Any
 
 from src.core.hashing import compute_file_sha256
+from src.persistence.pipeline_runs import (
+    _sqlite_connection,
+    create_pipeline_run,
+    ensure_pipeline_runs_table,
+    get_pipeline_run_by_request_id,
+    mark_pipeline_run_finished,
+    reicat_alias_snapshot,
+    reicat_alias_snapshot_from_row,
+)
 from src.models.request import (
     BookUpsertResult,
     EnrichedIngestRequest,
     IngestGatePhaseResult,
     IngestInputErrorCode,
     IngestInputValidationError,
-    ReicatMetadata,
     SourceHashGateResult,
     SourceHashGateStatus,
 )
 
-_MIGRATIONS: list[tuple[str, str]] = [("001", "initial schema baseline")]
+_MIGRATIONS: list[tuple[str, str]] = [
+    ("001", "initial schema baseline"),
+    ("003", "pipeline_runs table"),
+]
 
 _BOOK_OPTIONAL_DDL: list[tuple[str, str]] = [
     ("title_complements", "TEXT"),
@@ -72,118 +83,65 @@ def _ensure_books_legacy_columns(conn: sqlite3.Connection) -> None:
 def init_books_schema(sqlite_path: str) -> None:
     db_path = Path(sqlite_path)
     db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(str(db_path), timeout=30)
+    conn.execute("PRAGMA journal_mode=DELETE")
     try:
-        with sqlite3.connect(db_path) as conn:
-            conn.execute(
-                """
-                CREATE TABLE IF NOT EXISTS _schema_migrations (
-                    id TEXT PRIMARY KEY,
-                    applied_at TEXT NOT NULL,
-                    description TEXT NOT NULL
-                )
-                """
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS _schema_migrations (
+                id TEXT PRIMARY KEY,
+                applied_at TEXT NOT NULL,
+                description TEXT NOT NULL
             )
-            conn.execute(
-                """
-                CREATE TABLE IF NOT EXISTS books (
-                    source_sha256 TEXT PRIMARY KEY,
-                    schema_version TEXT NOT NULL,
-                    title TEXT NOT NULL,
-                    subtitle TEXT,
-                    title_complements TEXT,
-                    authors_json TEXT NOT NULL,
-                    editors_json TEXT,
-                    translators_json TEXT,
-                    edition_number TEXT,
-                    publication_year INTEGER,
-                    publication_type TEXT,
-                    publication_place TEXT,
-                    publisher TEXT,
-                    page_count INTEGER,
-                    series_title TEXT,
-                    series_number TEXT,
-                    isbn TEXT,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL,
-                    last_seen_at TEXT NOT NULL,
-                    last_error TEXT
-                )
-                """
+            """
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS books (
+                source_sha256 TEXT PRIMARY KEY,
+                schema_version TEXT NOT NULL,
+                title TEXT NOT NULL,
+                subtitle TEXT,
+                title_complements TEXT,
+                authors_json TEXT NOT NULL,
+                editors_json TEXT,
+                translators_json TEXT,
+                edition_number TEXT,
+                publication_year INTEGER,
+                publication_type TEXT,
+                publication_place TEXT,
+                publisher TEXT,
+                page_count INTEGER,
+                series_title TEXT,
+                series_number TEXT,
+                isbn TEXT,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL,
+                last_seen_at TEXT NOT NULL,
+                last_error TEXT
             )
-            _ensure_books_legacy_columns(conn)
-            conn.execute(
-                """
-                CREATE TABLE IF NOT EXISTS book_metadata_audit (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    source_sha256 TEXT NOT NULL,
-                    event_at TEXT NOT NULL,
-                    operation TEXT NOT NULL,
-                    prior_snapshot_json TEXT,
-                    snapshot_json TEXT NOT NULL
-                )
-                """
+            """
+        )
+        _ensure_books_legacy_columns(conn)
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS book_metadata_audit (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                source_sha256 TEXT NOT NULL,
+                event_at TEXT NOT NULL,
+                operation TEXT NOT NULL,
+                prior_snapshot_json TEXT,
+                snapshot_json TEXT NOT NULL
             )
-            _apply_pending_migrations(conn)
+            """
+        )
+        ensure_pipeline_runs_table(conn)
+        _apply_pending_migrations(conn)
+        conn.commit()
     except sqlite3.Error as exc:
         raise RuntimeError("unable to initialize books schema") from exc
-
-
-def _reicat_alias_snapshot(meta: ReicatMetadata) -> dict[str, Any]:
-    return meta.model_dump(mode="json", exclude_none=True, by_alias=True)
-
-
-def _reicat_alias_snapshot_from_row(row: sqlite3.Row) -> dict[str, Any]:
-    def _maybe_json_list(raw: str | None) -> list[str] | None:
-        if raw is None or raw == "":
-            return None
-        parsed = json.loads(raw)
-        if not isinstance(parsed, list):
-            return None
-        return [str(x) for x in parsed]
-
-    editors = _maybe_json_list(row["editors_json"])
-    translators = _maybe_json_list(row["translators_json"])
-    out: dict[str, Any] = {
-        "titolo": row["title"],
-        "autore": json.loads(row["authors_json"]),
-    }
-    subtitle = row["subtitle"]
-    if subtitle:
-        out["sottotitolo"] = subtitle
-    tcomp = row["title_complements"]
-    if tcomp:
-        out["complementi_del_titolo"] = tcomp
-    if editors:
-        out["curatore"] = editors
-    if translators:
-        out["traduttore"] = translators
-    en = row["edition_number"]
-    if en:
-        out["numero_edizione"] = en
-    pub_y = row["publication_year"]
-    if pub_y is not None:
-        out["anno_di_pubblicazione"] = pub_y
-    ptype = row["publication_type"]
-    if ptype:
-        out["tipo_di_pubblicazione"] = ptype
-    pplace = row["publication_place"]
-    if pplace:
-        out["luogo_di_pubblicazione"] = pplace
-    publisher = row["publisher"]
-    if publisher:
-        out["editore"] = publisher
-    pc = row["page_count"]
-    if pc is not None:
-        out["numero_pagine"] = pc
-    stitle = row["series_title"]
-    if stitle:
-        out["titolo_collana"] = stitle
-    snum = row["series_number"]
-    if snum:
-        out["numero_nella_collana"] = snum
-    if row["isbn"]:
-        out["isbn"] = row["isbn"]
-    return out
+    finally:
+        conn.close()
 
 
 def verify_source_pdf_digest_matches(enriched: EnrichedIngestRequest) -> None:
@@ -231,7 +189,7 @@ def upsert_book_reicat(
     translators_json = (
         json.dumps(meta.translators, ensure_ascii=False) if meta.translators else None
     )
-    new_snapshot = _reicat_alias_snapshot(meta)
+    new_snapshot = reicat_alias_snapshot(meta)
     new_snapshot_json = json.dumps(new_snapshot, ensure_ascii=False)
     insert_params = (
         digest,
@@ -312,7 +270,7 @@ def upsert_book_reicat(
     """
     try:
         db_path = Path(sqlite_path)
-        with sqlite3.connect(db_path) as conn:
+        with _sqlite_connection(str(db_path)) as conn:
             conn.row_factory = sqlite3.Row
             prior_row = conn.execute(
                 "SELECT * FROM books WHERE source_sha256 = ?", (digest,)
@@ -323,7 +281,7 @@ def upsert_book_reicat(
                 None
                 if prior_row is None
                 else json.dumps(
-                    _reicat_alias_snapshot_from_row(prior_row),
+                    reicat_alias_snapshot_from_row(prior_row),
                     ensure_ascii=False,
                 )
             )
@@ -358,7 +316,7 @@ def insert_book_minimal(
     digest = _validate_source_sha256(source_sha256)
     now_iso = _utc_now_iso()
     try:
-        with sqlite3.connect(sqlite_path) as conn:
+        with _sqlite_connection(sqlite_path) as conn:
             conn.execute(
                 """
                 INSERT INTO books (
@@ -400,7 +358,7 @@ def insert_book_minimal(
 def source_hash_gate(source_sha256: str, sqlite_path: str) -> SourceHashGateResult:
     digest = _validate_source_sha256(source_sha256)
     try:
-        with sqlite3.connect(sqlite_path) as conn:
+        with _sqlite_connection(sqlite_path) as conn:
             row = conn.execute(
                 "SELECT source_sha256 FROM books WHERE source_sha256 = ?",
                 (digest,),
@@ -443,7 +401,7 @@ def _duplicate_skip_no_metadata_audit(
         ensure_ascii=False,
     )
     try:
-        with sqlite3.connect(sqlite_path) as conn:
+        with _sqlite_connection(sqlite_path) as conn:
             row = conn.execute(
                 "SELECT source_sha256 FROM books WHERE source_sha256 = ?", (digest,)
             ).fetchone()

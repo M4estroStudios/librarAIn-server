@@ -5,13 +5,13 @@ from pathlib import Path
 from typing import Any, Callable
 
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
-from src.core.lmstudio_models import swap_lmstudio_vision_to_editor
-from src.core.openai_client import build_openai_client
+from src.ingestion.orchestrator import (
+    NullOrchestratorRegistry,
+    OrchestratorStageError,
+    run_pipeline,
+)
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pdf_alignment import maybe_run_pdf_alignment
-from src.ingestion.pipeline import run_stage1_ingest_step
-from src.ingestion.pipeline.stage2 import run_stage2_vision
-from src.ingestion.pipeline.stage3 import run_stage3_editor
 from src.ingestion.progress import (
     PHASE_GATE_HASH,
     PHASE_PAGE_ENUMERATION,
@@ -24,7 +24,6 @@ from src.ingestion.progress import (
     STATUS_COMPLETED,
     STATUS_DONE,
     STATUS_ERROR,
-    STATUS_FAILED,
     STATUS_STARTED,
     ProgressReporter,
     make_event,
@@ -160,24 +159,48 @@ def run_full_pipeline(
     if set_global_total is not None:
         set_global_total(total_steps)
 
-    _emit(reporter, make_event(PHASE_STAGE1_OCR, STATUS_STARTED))
-    Log(INFO_LOG_LEVEL, "pipeline run_stage1_ingest_step begin")
+    Log(INFO_LOG_LEVEL, "pipeline run_pipeline begin")
     try:
-        stage1_result = run_stage1_ingest_step(
-            enriched,
-            pdf_alignment,
-            useful_pages_enumeration,
-            settings,
-            progress=reporter,
+        orchestrator_result = asyncio.run(
+            run_pipeline(
+                enriched,
+                pdf_alignment,
+                useful_pages_enumeration,
+                settings,
+                settings.sqlite_path,
+                NullOrchestratorRegistry(),
+                enriched.request.request_id,
+                progress=reporter,
+                skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+            )
         )
+    except OrchestratorStageError as exc:
+        err_detail = _extract_validation_error(exc.cause)
+        phase = (
+            PHASE_STAGE2_VISION
+            if exc.stage == "stage2_vision"
+            else PHASE_STAGE3_EDITOR
+        )
+        Log(ERROR_LOG_LEVEL, "pipeline orchestrator stage failed",
+            {"error": str(exc.cause), "phase": phase})
+        _emit_error(reporter, phase, err_detail["message"],
+                    code=err_detail.get("code"), field=err_detail.get("field"))
+        raise exc.cause from exc
     except (ValueError, IngestInputValidationException) as exc:
         err_detail = _extract_validation_error(exc)
-        Log(WARNING_LOG_LEVEL, "pipeline stage1 failed", {"error": str(exc)})
+        Log(WARNING_LOG_LEVEL, "pipeline orchestrator failed", {"error": str(exc)})
+        _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
+                    code=err_detail.get("code"), field=err_detail.get("field"))
+        raise
+    except Exception as exc:
+        err_detail = _extract_validation_error(exc)
+        Log(ERROR_LOG_LEVEL, "pipeline orchestrator failed", {"error": str(exc)})
         _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
                     code=err_detail.get("code"), field=err_detail.get("field"))
         raise
 
-    Log(INFO_LOG_LEVEL, "pipeline run_stage1_ingest_step done",
+    stage1_result = orchestrator_result.stage1_result
+    Log(INFO_LOG_LEVEL, "pipeline run_pipeline done",
         {"pages": len(stage1_result.pages)})
 
     def _build_payload(stage2_dump: dict[str, Any] | None, stage3_dump: dict[str, Any] | None) -> dict[str, Any]:
@@ -209,61 +232,24 @@ def run_full_pipeline(
              "stage1_pages": len(stage1_result.pages)})
         return payload_out
 
-    _emit(reporter, make_event(PHASE_STAGE1_OCR, STATUS_COMPLETED))
+    stage2_result = orchestrator_result.stage2_result
+    stage3_result = orchestrator_result.stage3_result
+    if stage2_result is None or stage3_result is None:
+        raise RuntimeError("orchestrator returned incomplete stage results")
 
-    openai_client = build_openai_client(settings)
-    Log(INFO_LOG_LEVEL, "pipeline run_stage2_vision begin")
-    try:
-        stage2_result = asyncio.run(
-            run_stage2_vision(
-                stage1_result,
-                enriched.source_sha256,
-                settings,
-                openai_client,
-                request_id=enriched.request.request_id,
-                progress=reporter,
-            )
-        )
-    except Exception as exc:
-        err_detail = _extract_validation_error(exc)
-        Log(ERROR_LOG_LEVEL, "pipeline stage2 failed", {"error": str(exc)})
-        _emit_error(reporter, PHASE_STAGE2_VISION, err_detail["message"],
-                    code=err_detail.get("code"), field=err_detail.get("field"))
-        raise
-
-    Log(INFO_LOG_LEVEL, "pipeline run_stage2_vision done",
+    Log(INFO_LOG_LEVEL, "pipeline stage2 done",
         {"pages": len(stage2_result.pages),
          "skipped_cached": stage2_result.skipped_existing,
          "failed": len(stage2_result.missing)})
-
-    swap_lmstudio_vision_to_editor(settings)
-
-    Log(INFO_LOG_LEVEL, "pipeline run_stage3_editor begin")
-    try:
-        stage3_result = asyncio.run(
-            run_stage3_editor(
-                stage2_result,
-                enriched.source_sha256,
-                settings,
-                openai_client,
-                request_id=enriched.request.request_id,
-                progress=reporter,
-            )
-        )
-    except Exception as exc:
-        err_detail = _extract_validation_error(exc)
-        Log(ERROR_LOG_LEVEL, "pipeline stage3 failed", {"error": str(exc)})
-        _emit_error(reporter, PHASE_STAGE3_EDITOR, err_detail["message"],
-                    code=err_detail.get("code"), field=err_detail.get("field"))
-        raise
-
-    Log(INFO_LOG_LEVEL, "pipeline run_stage3_editor done",
+    Log(INFO_LOG_LEVEL, "pipeline stage3 done",
         {"pages": len(stage3_result.pages),
          "skipped_cached": stage3_result.skipped_existing,
          "failed": len(stage3_result.missing)})
 
-    payload_out = _build_payload(stage2_result.model_dump(mode="json"),
-                                 stage3_result.model_dump(mode="json"))
+    payload_out = _build_payload(
+        stage2_result.model_dump(mode="json"),
+        stage3_result.model_dump(mode="json"),
+    )
     _emit(reporter, make_event(
         PHASE_STAGE3_EDITOR, STATUS_DONE, result=payload_out, timing=payload_out["timing"]
     ))

@@ -51,19 +51,19 @@ async def refine_with_editor(
     page: int,
     temperature: float = 0.1,
 ) -> str:
-    Log(INFO_LOG_LEVEL, "stage3 refine_with_editor load prompt file begin")
+    Log(INFO_LOG_LEVEL, "stage3 refine_with_editor load prompt file begin", {"request_id": request_id})
     system_text = _load_editor_prompt()
     Log(
         INFO_LOG_LEVEL,
         "stage3 refine_with_editor load prompt file done",
-        {"chars": len(system_text)},
+        {"request_id": request_id, "chars": len(system_text)},
     )
-    Log(INFO_LOG_LEVEL, "stage3 refine_with_editor build messages begin", {"page": page})
+    Log(INFO_LOG_LEVEL, "stage3 refine_with_editor build messages begin", {"request_id": request_id, "page": page})
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": system_text},
         {"role": "user", "content": stage2_md},
     ]
-    Log(INFO_LOG_LEVEL, "stage3 refine_with_editor build messages done", {"page": page})
+    Log(INFO_LOG_LEVEL, "stage3 refine_with_editor build messages done", {"request_id": request_id, "page": page})
     Log(
         INFO_LOG_LEVEL,
         "stage3 refine_with_editor chat completion begin",
@@ -82,7 +82,7 @@ async def refine_with_editor(
     Log(
         INFO_LOG_LEVEL,
         "stage3 refine_with_editor chat completion done",
-        {"page": page, "char_count": len(content)},
+        {"request_id": request_id, "page": page, "char_count": len(content)},
     )
     return content
 
@@ -120,7 +120,7 @@ async def run_stage3_editor(
     Log(
         INFO_LOG_LEVEL,
         "stage3 working dirs ready",
-        {"stage3_dir": str(stage3_dir)},
+        {"request_id": request_id, "stage3_dir": str(stage3_dir)},
     )
 
     model: str = settings.editor_model or ""
@@ -132,6 +132,7 @@ async def run_stage3_editor(
         INFO_LOG_LEVEL,
         "stage3 editor starting",
         {
+            "request_id": request_id,
             "pages_from_stage2": page_total,
             "model": model,
             "max_parallel": settings.max_parallel_request,
@@ -148,6 +149,7 @@ async def run_stage3_editor(
                 INFO_LOG_LEVEL,
                 "stage3 page iteration begin",
                 {
+                    "request_id": request_id,
                     "aligned_page": s2_page.aligned_page,
                     "original_page": s2_page.original_page,
                 },
@@ -164,6 +166,7 @@ async def run_stage3_editor(
                         INFO_LOG_LEVEL,
                         "stage3 page skip editor using existing md",
                         {
+                            "request_id": request_id,
                             "aligned_page": s2_page.aligned_page,
                             "original_page": s2_page.original_page,
                             "md_path": str(md_path),
@@ -210,6 +213,7 @@ async def run_stage3_editor(
                     WARNING_LOG_LEVEL,
                     "stage3 editor page failed",
                     {
+                        "request_id": request_id,
                         "aligned_page": s2_page.aligned_page,
                         "original_page": s2_page.original_page,
                         "error": str(exc),
@@ -275,6 +279,7 @@ async def run_stage3_editor(
         INFO_LOG_LEVEL,
         "stage3 editor finished",
         {
+            "request_id": request_id,
             "pages_written": len(pages),
             "skipped_existing": skipped_existing,
         },

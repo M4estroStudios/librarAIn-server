@@ -1,0 +1,418 @@
+from __future__ import annotations
+
+import asyncio
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Protocol, runtime_checkable
+
+from src.core.log import INFO_LOG_LEVEL, Log
+from src.core.lmstudio_models import swap_lmstudio_vision_to_editor
+from src.core.openai_client import build_openai_client
+from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
+from src.ingestion.pipeline.render import render_aligned_pdf_pages
+from src.ingestion.pipeline.stage1 import Stage1Result, _slugify, run_stage1_ingest_step
+from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
+from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
+from src.ingestion.progress import ProgressReporter
+from src.models.request import (
+    EnrichedIngestRequest,
+    PdfAlignmentResult,
+    UsefulPagesEnumeration,
+)
+from src.models.settings import Settings
+from src.persistence.book_sqlite import create_pipeline_run, mark_pipeline_run_finished
+
+PAGE_STATUS_PENDING = "pending"
+PAGE_STATUS_STAGE1 = "stage1"
+PAGE_STATUS_STAGE2 = "stage2"
+PAGE_STATUS_STAGE3 = "stage3"
+PAGE_STATUS_COMPLETED = "completed"
+PAGE_STATUS_FAILED = "failed"
+
+_RENDER_DPI = 200
+
+
+class OrchestratorStageError(Exception):
+    def __init__(self, stage: str, cause: Exception) -> None:
+        self.stage = stage
+        self.cause = cause
+        super().__init__(str(cause))
+
+
+@dataclass
+class PageJob:
+    aligned_page: int
+    original_page: int
+    png_path: str
+    txt_path: str
+    stage2_md_path: str
+    stage3_md_path: str
+    status: str
+    last_error: str | None = None
+
+
+@dataclass
+class IngestJobEvent:
+    at: str
+    level: str
+    stage: str
+    message: str
+    request_id: str
+    payload: dict[str, Any] | None = None
+
+
+@runtime_checkable
+class OrchestratorRegistry(Protocol):
+    def append_event(self, request_id: str, event: IngestJobEvent) -> None: ...
+
+
+class NullOrchestratorRegistry:
+    def append_event(self, request_id: str, event: IngestJobEvent) -> None:
+        del request_id, event
+
+
+@dataclass
+class OrchestratorResult:
+    page_jobs: list[PageJob]
+    rendered_page_count: int
+    stage1_result: Stage1Result
+    stage2_result: Stage2Result | None = None
+    stage3_result: Stage3Result | None = None
+    completed_count: int = 0
+    failed_count: int = 0
+
+
+def _utc_now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _publish_event(
+    registry: OrchestratorRegistry,
+    request_id: str,
+    *,
+    stage: str,
+    message: str,
+    level: str = "info",
+    payload: dict[str, Any] | None = None,
+) -> None:
+    registry.append_event(
+        request_id,
+        IngestJobEvent(
+            at=_utc_now_iso(),
+            level=level,
+            stage=stage,
+            message=message,
+            request_id=request_id,
+            payload=payload,
+        ),
+    )
+
+
+def _build_page_jobs(
+    useful_pages: UsefulPagesEnumeration,
+    tmp_root: Path,
+    slug: str,
+    render_map: dict[int, Path],
+) -> list[PageJob]:
+    jobs: list[PageJob] = []
+    for original_page in sorted(useful_pages.useful_original_pages):
+        aligned_page = useful_pages.original_page_to_aligned_page.get(original_page)
+        if aligned_page is None:
+            continue
+        png_path = render_map.get(aligned_page)
+        if png_path is None:
+            png_path = tmp_root / "render" / f"p.{aligned_page:04d}.png"
+        jobs.append(
+            PageJob(
+                aligned_page=aligned_page,
+                original_page=original_page,
+                png_path=str(png_path),
+                txt_path=str(tmp_root / "stage1OCR" / f"p.{aligned_page:04d}.{slug}.txt"),
+                stage2_md_path=str(
+                    tmp_root / "stage2Vision" / f"p.{aligned_page:04d}.{slug}.md"
+                ),
+                stage3_md_path=str(
+                    tmp_root / "stage3Editor" / f"p.{aligned_page:04d}.{slug}.md"
+                ),
+                status=PAGE_STATUS_PENDING,
+            )
+        )
+    return jobs
+
+
+def _sync_page_jobs_from_stage1(
+    page_jobs: list[PageJob],
+    stage1_result: Stage1Result,
+) -> None:
+    succeeded = {p.aligned_page for p in stage1_result.pages}
+    for job in page_jobs:
+        if job.aligned_page in succeeded:
+            job.status = PAGE_STATUS_STAGE2
+            job.last_error = None
+        elif job.status != PAGE_STATUS_FAILED:
+            job.status = PAGE_STATUS_FAILED
+            job.last_error = stage1_result.last_error
+
+
+def _sync_page_jobs_from_stage3(
+    page_jobs: list[PageJob],
+    stage3_result: Stage3Result,
+) -> None:
+    completed_aligned = {p.aligned_page for p in stage3_result.pages}
+    for job in page_jobs:
+        if job.aligned_page in completed_aligned:
+            job.status = PAGE_STATUS_COMPLETED
+            job.last_error = None
+
+
+async def run_pipeline(
+    enriched: EnrichedIngestRequest,
+    alignment: PdfAlignmentResult | None,
+    useful_pages: UsefulPagesEnumeration,
+    settings: Settings,
+    sqlite_path: str | Path,
+    registry: OrchestratorRegistry,
+    request_id: str,
+    *,
+    progress: ProgressReporter | None = None,
+    skip_vision_editor: bool = False,
+) -> OrchestratorResult:
+    sqlite_path_str = str(sqlite_path)
+    source_sha256 = enriched.source_sha256
+    slug = _slugify(enriched.request.reicat.title)
+    data_root = Path(settings.data_root)
+    tmp_root = data_root / "tmp" / source_sha256
+    counters = {"completed": 0, "failed": 0}
+
+    create_pipeline_run(
+        sqlite_path_str,
+        request_id=request_id,
+        source_sha256=source_sha256,
+        pipeline_version=enriched.request.schema_version,
+        total_pages=len(useful_pages.useful_original_pages),
+    )
+
+    try:
+        result = await _run_pipeline_body(
+            enriched,
+            alignment,
+            useful_pages,
+            settings,
+            registry,
+            request_id,
+            slug=slug,
+            data_root=data_root,
+            tmp_root=tmp_root,
+            progress=progress,
+            skip_vision_editor=skip_vision_editor,
+            counters=counters,
+        )
+    except (OrchestratorStageError, Exception) as exc:
+        mark_pipeline_run_finished(
+            sqlite_path_str,
+            request_id=request_id,
+            status="failed",
+            succeeded_pages=counters["completed"],
+            failed_pages=counters["failed"],
+            last_error=str(exc),
+        )
+        raise
+
+    mark_pipeline_run_finished(
+        sqlite_path_str,
+        request_id=request_id,
+        status="succeeded",
+        succeeded_pages=result.completed_count,
+        failed_pages=result.failed_count,
+    )
+    return result
+
+
+async def _run_pipeline_body(
+    enriched: EnrichedIngestRequest,
+    alignment: PdfAlignmentResult | None,
+    useful_pages: UsefulPagesEnumeration,
+    settings: Settings,
+    registry: OrchestratorRegistry,
+    request_id: str,
+    *,
+    slug: str,
+    data_root: Path,
+    tmp_root: Path,
+    progress: ProgressReporter | None,
+    skip_vision_editor: bool,
+    counters: dict[str, int],
+) -> OrchestratorResult:
+    source_sha256 = enriched.source_sha256
+
+    Log(
+        INFO_LOG_LEVEL,
+        "orchestrator run_pipeline begin",
+        {
+            "request_id": request_id,
+            "source_sha256": source_sha256[:16],
+            "max_parallel": settings.max_parallel_request,
+            "skip_vision_editor": skip_vision_editor,
+        },
+    )
+
+    aligned_path = resolve_aligned_pdf_path_for_stage1(
+        enriched,
+        alignment,
+        settings.processed_pdf_input_dir,
+        page_range_per_thread=settings.page_range_per_thread,
+    )
+
+    _publish_event(
+        registry,
+        request_id,
+        stage="render",
+        message="render all pages started",
+    )
+    rendered = await asyncio.to_thread(
+        render_aligned_pdf_pages,
+        aligned_path,
+        data_root / "tmp",
+        _RENDER_DPI,
+    )
+    render_map = {aligned_page: png_path for aligned_page, png_path in rendered}
+    _publish_event(
+        registry,
+        request_id,
+        stage="render",
+        message="render all pages completed",
+        payload={"rendered_page_count": len(rendered)},
+    )
+
+    for subdir in ("stage1OCR", "stage2Vision", "stage3Editor"):
+        (tmp_root / subdir).mkdir(parents=True, exist_ok=True)
+
+    page_jobs = _build_page_jobs(useful_pages, tmp_root, slug, render_map)
+
+    _publish_event(
+        registry,
+        request_id,
+        stage="pipeline",
+        message="page pipeline started",
+        payload={"page_count": len(page_jobs), "max_parallel": settings.max_parallel_request},
+    )
+
+    _publish_event(
+        registry,
+        request_id,
+        stage="stage1",
+        message="stage1 batch started",
+        payload={"page_count": len(page_jobs)},
+    )
+    stage1_result = await run_stage1_ingest_step(
+        enriched,
+        alignment,
+        useful_pages,
+        settings,
+        request_id=request_id,
+        progress=progress,
+    )
+    _sync_page_jobs_from_stage1(page_jobs, stage1_result)
+    counters["completed"] = len(stage1_result.pages)
+    counters["failed"] = len(page_jobs) - counters["completed"]
+    _publish_event(
+        registry,
+        request_id,
+        stage="stage1",
+        message="stage1 batch completed",
+        payload={
+            "pages_written": len(stage1_result.pages),
+            "failed": len(page_jobs) - len(stage1_result.pages),
+        },
+    )
+
+    if skip_vision_editor:
+        completed_count = counters["completed"]
+        failed_count = counters["failed"]
+        _publish_event(
+            registry,
+            request_id,
+            stage="pipeline",
+            message="page pipeline completed (vision/editor skipped)",
+            payload={
+                "completed_count": completed_count,
+                "failed_count": failed_count,
+                "rendered_page_count": len(rendered),
+            },
+        )
+        return OrchestratorResult(
+            page_jobs=page_jobs,
+            rendered_page_count=len(rendered),
+            stage1_result=stage1_result,
+            completed_count=completed_count,
+            failed_count=failed_count,
+        )
+
+    openai_client = build_openai_client(settings)
+    try:
+        stage2_result = await run_stage2_vision(
+            stage1_result,
+            source_sha256,
+            settings,
+            openai_client,
+            request_id=request_id,
+            progress=progress,
+        )
+    except Exception as exc:
+        raise OrchestratorStageError("stage2_vision", exc) from exc
+    for job in page_jobs:
+        if job.status == PAGE_STATUS_STAGE2:
+            job.status = PAGE_STATUS_STAGE3
+
+    swap_lmstudio_vision_to_editor(settings)
+
+    try:
+        stage3_result = await run_stage3_editor(
+            stage2_result,
+            source_sha256,
+            settings,
+            openai_client,
+            request_id=request_id,
+            progress=progress,
+        )
+    except Exception as exc:
+        raise OrchestratorStageError("stage3_editor", exc) from exc
+    _sync_page_jobs_from_stage3(page_jobs, stage3_result)
+
+    completed_count = sum(1 for job in page_jobs if job.status == PAGE_STATUS_COMPLETED)
+    failed_count = sum(1 for job in page_jobs if job.status == PAGE_STATUS_FAILED)
+    counters["completed"] = completed_count
+    counters["failed"] = failed_count
+
+    _publish_event(
+        registry,
+        request_id,
+        stage="pipeline",
+        message="page pipeline completed",
+        payload={
+            "completed_count": completed_count,
+            "failed_count": failed_count,
+            "rendered_page_count": len(rendered),
+        },
+    )
+
+    Log(
+        INFO_LOG_LEVEL,
+        "orchestrator run_pipeline done",
+        {
+            "request_id": request_id,
+            "completed_count": completed_count,
+            "failed_count": failed_count,
+        },
+    )
+
+    return OrchestratorResult(
+        page_jobs=page_jobs,
+        rendered_page_count=len(rendered),
+        stage1_result=stage1_result,
+        stage2_result=stage2_result,
+        stage3_result=stage3_result,
+        completed_count=completed_count,
+        failed_count=failed_count,
+    )

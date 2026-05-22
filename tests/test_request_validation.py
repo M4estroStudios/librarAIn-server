@@ -5,6 +5,7 @@ import json
 import sqlite3
 import tempfile
 import unittest
+from contextlib import closing
 from copy import deepcopy
 from io import BytesIO
 from pathlib import Path
@@ -234,7 +235,7 @@ class RequestValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             sqlite_path = Path(tmp_dir) / "biblioteca.db"
             init_books_schema(str(sqlite_path))
-            with sqlite3.connect(sqlite_path) as conn:
+            with closing(sqlite3.connect(str(sqlite_path))) as conn:
                 row = conn.execute(
                     "SELECT name FROM sqlite_master WHERE type='table' AND name='books'"
                 ).fetchone()
@@ -273,7 +274,7 @@ class RequestValidationTests(unittest.TestCase):
                 title="Book",
                 authors_json='["Author"]',
             )
-            with sqlite3.connect(sqlite_path) as conn:
+            with closing(sqlite3.connect(str(sqlite_path))) as conn:
                 row = conn.execute(
                     """
                     SELECT created_at, updated_at, last_seen_at
@@ -302,7 +303,7 @@ class RequestValidationTests(unittest.TestCase):
             r1 = upsert_book_reicat(enriched_a, str(sqlite_path))
             self.assertTrue(r1.was_inserted)
             digest = enriched_a.source_sha256
-            with sqlite3.connect(sqlite_path) as conn:
+            with closing(sqlite3.connect(str(sqlite_path))) as conn:
                 row = conn.execute(
                     """
                     SELECT title, subtitle, publisher, editors_json
@@ -325,7 +326,7 @@ class RequestValidationTests(unittest.TestCase):
             self.assertFalse(enriched_b.request.reicat.editors)
             r2 = upsert_book_reicat(enriched_b, str(sqlite_path))
             self.assertFalse(r2.was_inserted)
-            with sqlite3.connect(sqlite_path) as conn:
+            with closing(sqlite3.connect(str(sqlite_path))) as conn:
                 events = conn.execute(
                     """
                     SELECT operation, prior_snapshot_json
@@ -405,7 +406,7 @@ class RequestValidationTests(unittest.TestCase):
             assert phase.book_upsert is not None
             self.assertFalse(phase.book_upsert.was_inserted)
             self.assertIsNone(phase.duplicate_skip_audit_row_id)
-            with sqlite3.connect(sqlite_path) as conn:
+            with closing(sqlite3.connect(str(sqlite_path))) as conn:
                 row = conn.execute(
                     "SELECT title FROM books WHERE source_sha256 = ?", (digest,)
                 ).fetchone()
@@ -434,7 +435,7 @@ class RequestValidationTests(unittest.TestCase):
             self.assertTrue(phase.pipeline_skipped)
             self.assertIsNone(phase.book_upsert)
             assert phase.duplicate_skip_audit_row_id is not None
-            with sqlite3.connect(sqlite_path) as conn:
+            with closing(sqlite3.connect(str(sqlite_path))) as conn:
                 row = conn.execute(
                     "SELECT title FROM books WHERE source_sha256 = ?", (digest,)
                 ).fetchone()

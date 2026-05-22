@@ -331,7 +331,7 @@ Log(DEBUG_LOG_LEVEL, "solo per questa riga", override=True)
 - **T11 — OCR + ingest Stage 1 (✅ completato)**: T11(a–c) — `OCRPageEngine`/`EasyOCRPageEngine`, renderer PNG (`pypdfium2`), persistenza/cache Stage 1 (`stage1OCR`); **T11.5** — cablaggio HTTP sincrono su `POST /api/ingest/submit` fino a fine Stage 1 (`stage1` in risposta).
 - **T12 — Vision Stage 2 (✅ completato)**: T12(a–c) — client OpenAI centralizzato (`src/core/openai_client.py`), `refine_with_vision` + `prompts/vision_prompt.md`, persistenza/cache Stage 2 (`stage2Vision`); **T12.5** — cablaggio HTTP (`stage2` in risposta, `_ACTIVE_PAGE_STAGES = 2`).
 - **T13 — Editor Stage 3 (✅ completato)**: T13(a–b) — `refine_with_editor` + `prompts/editor_prompt.md`, persistenza/cache Stage 3 (`stage3Editor/`, sidecar idempotente); **T13.5** — cablaggio HTTP (`stage3` in risposta, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` su `PHASE_STAGE3_EDITOR`).
-- T14: orchestrazione concorrente.
+- **T14 — Orchestrazione concorrente (✅ completato)**: T14(a) — `src/ingestion/orchestrator.py` con `PageJob`, `run_pipeline` batch-per-stage (render → stage1 → stage2 → stage3), `asyncio.Semaphore` per concorrenza intra-stage, swap Vision→Editor, eventi `IngestJobEvent`; T14(b) — `src/core/retry.py` + `src/core/errors.py` (`retry_async`, classificazione transient/permanent, integrazione in `openai_client.py` e OCR stage1); T14(c) — `src/core/rate_limit.py` (`AsyncTokenBucket`, singleton per client, integrato in `openai_client.py`); T14(d) — migration 003 `pipeline_runs` in `src/persistence/pipeline_runs.py`, create/update in orchestrator, propagazione `request_id` in eventi e log stage1/2/3.
 - T15–T17: writer pagine, TOC.md, INDEX.md.
 - **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
 - T18.5(a–d): refactor HTTP async + job model.
@@ -372,7 +372,8 @@ La struttura cartelle (albero, principi, linee guida) è documentata in [`README
 Differenze chiave rispetto al README attuale (richieste da questo PRD):
 
 - Rinominare `data/polyndex/` → `data/polyindex/` (fix typo, allineato al manoscritto).
-- Modulo `src/ingestion/pipeline/` con `engine.py`, `render.py`, `stage1.py`, `stage2.py` (Vision), cartella **`prompts/`** (`vision_prompt.md`, futuro `editor_prompt.md`); prompt ricerca e matcher come da §3.2.
+- Modulo `src/ingestion/pipeline/` con `engine.py`, `render.py`, `stage1.py`, `stage2.py` (Vision), `stage3.py` (Editor), cartella **`prompts/`** (`vision_prompt.md`, `editor_prompt.md`); prompt ricerca e matcher come da §3.2.
+- **T14**: `src/ingestion/orchestrator.py` (batch-per-stage); `src/core/retry.py`, `src/core/errors.py`, `src/core/rate_limit.py`; `src/persistence/pipeline_runs.py` (migration 003 `pipeline_runs`).
 - **T11.5**: ingest HTTP — `src/api/ingest_http_server.py` invoca lo Stage 1 dopo l’enumerazione; `src/api/ingest_form.py` per parsing multipart/payload form; `resolve_aligned_pdf_path_for_stage1` in `pdf_alignment.py` quando `pdf_alignment` è assente (es. skip per hash duplicato) ma serve il PDF allineato su disco.
 - Aggiungere `src/ingestion/polyindex/` (T23–T26).
 - Aggiungere `src/search/` con i prompt in §3.2, `lookup.py`, `article.py`, `api.py` (F2-T1+).
@@ -413,10 +414,10 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 
 ### Fase 1 — Upload (Vision/Editor + orchestrazione)
 
-- [ ] **T14(a)** — Coda di job per pagina + asyncio.Semaphore. *(Opus)*
-- [ ] **T14(b)** — Retry + classificazione errori. *(Sonnet)*
-- [ ] **T14(c)** — Token-bucket rate-limit. *(Sonnet)*
-- [ ] **T14(d)** — `pipeline_runs` + propagazione `request_id`. *(Sonnet)*
+- [x] **T14(a)** — Orchestrazione batch-per-stage in `src/ingestion/orchestrator.py`: `PageJob`, render di tutte le pagine, esecuzione sequenziale stage1 → stage2 → stage3 con concorrenza intra-stage via `asyncio.Semaphore` (`settings.max_parallel_request`), swap Vision→Editor, pubblicazione `IngestJobEvent` al registry; stage1 reso async (allineato a stage2/3). *(Opus)*
+- [x] **T14(b)** — Retry centralizzato: `src/core/retry.py` (`retry_async`), `src/core/errors.py` (`TransientError`/`PermanentError`, `classify_openai_exception`); refactor `openai_client.py` e retry OCR in `stage1.py`; test `tests/test_retry.py`. *(Sonnet)*
+- [x] **T14(c)** — Rate-limit token-bucket: `src/core/rate_limit.py` (`AsyncTokenBucket`, singleton lazy per client); sostituisce il limiter a intervallo fisso in `openai_client.py`; test `tests/test_rate_limit.py`. *(Sonnet)*
+- [x] **T14(d)** — Telemetria run: migration 003 tabella `pipeline_runs` (`src/persistence/pipeline_runs.py`: `create_pipeline_run`, `mark_pipeline_run_finished`, `get_pipeline_run_by_request_id`); integrazione in orchestrator (create al T0, update finale succeeded/failed con contatori); `request_id` in tutti gli `IngestJobEvent` e nei log strutturati stage1/2/3; test `tests/test_pipeline_runs.py`. *(Sonnet)*
 
 ### Fase 1 — Upload (writer per libro)
 

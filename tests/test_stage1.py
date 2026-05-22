@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import tempfile
 import threading
 import time
@@ -32,6 +33,14 @@ from src.models.request import (
 )
 
 
+def _run_ocr(*args, **kwargs) -> Stage1Result:
+    return asyncio.run(run_stage1_ocr(*args, **kwargs))
+
+
+def _run_ingest_step(*args, **kwargs) -> Stage1Result:
+    return asyncio.run(run_stage1_ingest_step(*args, **kwargs))
+
+
 def _pdf_bytes(num_pages: int) -> bytes:
     writer = PdfWriter()
     for _ in range(num_pages):
@@ -46,6 +55,7 @@ def _settings(data_root: str) -> object:
     s.data_root = data_root
     s.ocr_languages = ["it", "en"]
     s.max_parallel_request = 2
+    s.retry_attempts = 1
     return s
 
 
@@ -125,7 +135,7 @@ class Stage1OcrTests(unittest.TestCase):
             enum = _enumeration([1, 2, 3], {1: 1, 2: 2, 3: 3})
             engine = FakeEngine({1: "page one", 2: "page two", 3: "page three"})
 
-            result = run_stage1_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Test Book"))
+            result = _run_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Test Book"))
 
             self.assertIsInstance(result, Stage1Result)
             self.assertEqual(len(result.pages), 3)
@@ -147,7 +157,7 @@ class Stage1OcrTests(unittest.TestCase):
             enum = _enumeration([1], {1: 1})
             engine = FakeEngine({1: "content"})
 
-            result = run_stage1_ocr(
+            result = _run_ocr(
                 pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Très Spécial Livre")
             )
 
@@ -167,11 +177,11 @@ class Stage1OcrTests(unittest.TestCase):
             enum = _enumeration([1, 2], {1: 1, 2: 2})
             engine1 = FakeEngine({1: "first", 2: "second"})
 
-            result1 = run_stage1_ocr(pdf, "deadbeef", enum, settings, engine1, reicat=_reicat("Cache Book"))
+            result1 = _run_ocr(pdf, "deadbeef", enum, settings, engine1, reicat=_reicat("Cache Book"))
             self.assertEqual(len(engine1.calls), 2)
 
             engine2 = FakeEngine({1: "first", 2: "second"})
-            result2 = run_stage1_ocr(pdf, "deadbeef", enum, settings, engine2, reicat=_reicat("Cache Book"))
+            result2 = _run_ocr(pdf, "deadbeef", enum, settings, engine2, reicat=_reicat("Cache Book"))
 
             self.assertEqual(result2.skipped_existing, 2)
             self.assertEqual(engine2.calls, [])
@@ -186,10 +196,10 @@ class Stage1OcrTests(unittest.TestCase):
             settings = _settings(str(root / "data"))
             enum = _enumeration([1], {1: 1})
             engine1 = FakeEngine({1: "original"})
-            run_stage1_ocr(pdf, "deadbeef", enum, settings, engine1, reicat=_reicat("Recompute Book"))
+            _run_ocr(pdf, "deadbeef", enum, settings, engine1, reicat=_reicat("Recompute Book"))
 
             engine2 = FakeEngine({1: "updated"})
-            result = run_stage1_ocr(
+            result = _run_ocr(
                 pdf, "deadbeef", enum, settings, engine2, reicat=_reicat("Recompute Book"), force_recompute=True
             )
 
@@ -206,7 +216,7 @@ class Stage1OcrTests(unittest.TestCase):
             enum = _enumeration([1, 2, 3], {1: 1, 2: 2})
             engine = FakeEngine({1: "a", 2: "b"})
 
-            result = run_stage1_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Missing Book"))
+            result = _run_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Missing Book"))
 
             self.assertIn(3, result.missing)
             self.assertEqual(len(result.pages), 2)
@@ -222,7 +232,7 @@ class Stage1OcrTests(unittest.TestCase):
             engine = FailEngine(fail_on={1, 2})
 
             with self.assertRaises(IngestInputValidationException) as ctx:
-                run_stage1_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Fail Book"))
+                _run_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Fail Book"))
 
             self.assertEqual(ctx.exception.detail.code, IngestInputErrorCode.OCR_STAGE_FAILED)
             self.assertIn("2/4", ctx.exception.detail.message)
@@ -236,7 +246,7 @@ class Stage1OcrTests(unittest.TestCase):
             enum = _enumeration([1, 2, 3, 4], {1: 1, 2: 2, 3: 3, 4: 4})
             engine = FailEngine(fail_on={1})
 
-            result = run_stage1_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Partial Fail"))
+            result = _run_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Partial Fail"))
 
             self.assertIsNotNone(result.last_error)
             self.assertEqual(len(result.pages), 3)
@@ -249,10 +259,10 @@ class Stage1OcrTests(unittest.TestCase):
             settings = _settings(str(root / "data"))
             enum = _enumeration([1, 2], {1: 1, 2: 2})
             engine1 = FakeEngine({1: "x", 2: "y"})
-            run_stage1_ocr(pdf, "deadbeef", enum, settings, engine1, reicat=_reicat("Cached All"))
+            _run_ocr(pdf, "deadbeef", enum, settings, engine1, reicat=_reicat("Cached All"))
 
             fail_engine = FailEngine(fail_on={1, 2})
-            result = run_stage1_ocr(pdf, "deadbeef", enum, settings, fail_engine, reicat=_reicat("Cached All"))
+            result = _run_ocr(pdf, "deadbeef", enum, settings, fail_engine, reicat=_reicat("Cached All"))
 
             self.assertEqual(result.skipped_existing, 2)
             self.assertEqual(len(result.pages), 2)
@@ -284,7 +294,7 @@ class Stage1OcrTests(unittest.TestCase):
             settings.max_parallel_request = 2
             enum = _enumeration([1, 2, 3, 4], {1: 1, 2: 2, 3: 3, 4: 4})
             engine = SlowEngine({i: f"t{i}" for i in range(1, 5)})
-            run_stage1_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Parallel Book"))
+            _run_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Parallel Book"))
             self.assertLessEqual(engine.max_seen, 2)
             self.assertGreater(engine.max_seen, 0)
 
@@ -320,8 +330,9 @@ class RunStage1IngestStepTests(unittest.TestCase):
             settings.page_range_per_thread = 10
             settings.ocr_languages = ["en"]
             settings.ocr_use_gpu = False
+            settings.max_parallel_request = 2
             engine = FakeEngine({i: f"line-{i}" for i in range(1, 10)})
-            result = run_stage1_ingest_step(
+            result = _run_ingest_step(
                 enriched, alignment, enum, settings, engine=engine
             )
             self.assertEqual(len(result.pages), len(enum.useful_original_pages))

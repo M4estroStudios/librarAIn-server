@@ -4,23 +4,14 @@ import asyncio
 import unittest
 from unittest.mock import AsyncMock, MagicMock, patch
 
-import src.core.openai_client as openai_client
+from src.core.errors import PermanentError, TransientError
 from src.core.openai_client import (
     _ClientState,
-    _RateLimiter,
     _client_states,
     _cached_clients,
     build_openai_client,
     chat_completion_with_retry,
 )
-
-
-class FakeTransientError(Exception):
-    pass
-
-
-class FakePermanentError(Exception):
-    pass
 
 
 def _make_settings(
@@ -84,14 +75,8 @@ class TestBuildOpenAIClient(unittest.TestCase):
 class TestChatCompletionWithRetry(unittest.TestCase):
     def setUp(self) -> None:
         _cached_clients.clear()
-        self._orig_transient = openai_client._TRANSIENT_ERRORS
-        self._orig_permanent = openai_client._PERMANENT_ERRORS
-        openai_client._TRANSIENT_ERRORS = (FakeTransientError,)
-        openai_client._PERMANENT_ERRORS = (FakePermanentError,)
 
     def tearDown(self) -> None:
-        openai_client._TRANSIENT_ERRORS = self._orig_transient
-        openai_client._PERMANENT_ERRORS = self._orig_permanent
         _cached_clients.clear()
 
     def _build_client(self, retry: int = 2) -> object:
@@ -123,7 +108,7 @@ class TestChatCompletionWithRetry(unittest.TestCase):
     def test_transient_then_success(self) -> None:
         client = self._build_client(retry=2)
         mock_create = MagicMock(
-            side_effect=[FakeTransientError("rate limit"), _make_response("ok")]
+            side_effect=[TransientError("rate limit"), _make_response("ok")]
         )
         with patch("asyncio.sleep", new=AsyncMock()):
             result = self._call(client, mock_create)
@@ -132,17 +117,17 @@ class TestChatCompletionWithRetry(unittest.TestCase):
 
     def test_permanent_error_no_retry(self) -> None:
         client = self._build_client(retry=3)
-        mock_create = MagicMock(side_effect=FakePermanentError("auth failed"))
+        mock_create = MagicMock(side_effect=PermanentError("auth failed"))
         with patch("asyncio.sleep", new=AsyncMock()):
-            with self.assertRaises(FakePermanentError):
+            with self.assertRaises(PermanentError):
                 self._call(client, mock_create)
         mock_create.assert_called_once()
 
     def test_exhausted_retries_reraise_last_transient(self) -> None:
         client = self._build_client(retry=2)
-        mock_create = MagicMock(side_effect=FakeTransientError("timeout"))
+        mock_create = MagicMock(side_effect=TransientError("timeout"))
         with patch("asyncio.sleep", new=AsyncMock()):
-            with self.assertRaises(FakeTransientError):
+            with self.assertRaises(TransientError):
                 self._call(client, mock_create)
         self.assertEqual(mock_create.call_count, 3)
 

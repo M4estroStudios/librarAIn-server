@@ -90,32 +90,32 @@ async def refine_with_vision(
     page: int,
     temperature: float = 0.1,
 ) -> str:
-    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision load prompt file begin")
+    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision load prompt file begin", {"request_id": request_id})
     system_text = _load_vision_prompt()
     Log(
         INFO_LOG_LEVEL,
         "stage2 refine_with_vision load prompt file done",
-        {"chars": len(system_text)},
+        {"request_id": request_id, "chars": len(system_text)},
     )
     Log(
         INFO_LOG_LEVEL,
         "stage2 refine_with_vision read image begin",
-        {"path": str(page_image_path)},
+        {"request_id": request_id, "path": str(page_image_path)},
     )
     image_bytes = Path(page_image_path).read_bytes()
     Log(
         INFO_LOG_LEVEL,
         "stage2 refine_with_vision read image done",
-        {"bytes": len(image_bytes)},
+        {"request_id": request_id, "bytes": len(image_bytes)},
     )
-    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision encode image base64 begin")
+    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision encode image base64 begin", {"request_id": request_id})
     b64 = base64.b64encode(image_bytes).decode("ascii")
     Log(
         INFO_LOG_LEVEL,
         "stage2 refine_with_vision encode image base64 done",
-        {"b64_chars": len(b64)},
+        {"request_id": request_id, "b64_chars": len(b64)},
     )
-    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision build messages begin", {"page": page})
+    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision build messages begin", {"request_id": request_id, "page": page})
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": system_text},
         {
@@ -129,7 +129,7 @@ async def refine_with_vision(
             ],
         },
     ]
-    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision build messages done", {"page": page})
+    Log(INFO_LOG_LEVEL, "stage2 refine_with_vision build messages done", {"request_id": request_id, "page": page})
     Log(
         INFO_LOG_LEVEL,
         "stage2 refine_with_vision chat completion begin",
@@ -148,7 +148,7 @@ async def refine_with_vision(
     Log(
         INFO_LOG_LEVEL,
         "stage2 refine_with_vision chat completion done",
-        {"page": page, "char_count": len(content)},
+        {"request_id": request_id, "page": page, "char_count": len(content)},
     )
     return content
 
@@ -171,7 +171,7 @@ async def run_stage2_vision(
     Log(
         INFO_LOG_LEVEL,
         "stage2 working dirs ready",
-        {"stage2_dir": str(stage2_dir), "render_dir": str(render_dir)},
+        {"request_id": request_id, "stage2_dir": str(stage2_dir), "render_dir": str(render_dir)},
     )
 
     model: str = settings.vision_model or ""
@@ -182,7 +182,7 @@ async def run_stage2_vision(
     Log(
         INFO_LOG_LEVEL,
         "stage2 vision starting",
-        {"pages_from_stage1": page_total, "model": model, "max_parallel": settings.max_parallel_request},
+        {"request_id": request_id, "pages_from_stage1": page_total, "model": model, "max_parallel": settings.max_parallel_request},
     )
 
     if progress is not None:
@@ -195,6 +195,7 @@ async def run_stage2_vision(
                 INFO_LOG_LEVEL,
                 "stage2 page iteration begin",
                 {
+                    "request_id": request_id,
                     "aligned_page": s1_page.aligned_page,
                     "original_page": s1_page.original_page,
                 },
@@ -209,6 +210,7 @@ async def run_stage2_vision(
                         INFO_LOG_LEVEL,
                         "stage2 page skip vision using existing md",
                         {
+                            "request_id": request_id,
                             "aligned_page": s1_page.aligned_page,
                             "original_page": s1_page.original_page,
                             "md_path": str(md_path),
@@ -254,6 +256,7 @@ async def run_stage2_vision(
                     WARNING_LOG_LEVEL,
                     "stage2 vision page failed",
                     {
+                        "request_id": request_id,
                         "aligned_page": s1_page.aligned_page,
                         "original_page": s1_page.original_page,
                         "error": str(exc),
@@ -315,6 +318,7 @@ async def run_stage2_vision(
         INFO_LOG_LEVEL,
         "stage2 vision finished",
         {
+            "request_id": request_id,
             "pages_written": len(pages),
             "skipped_existing": skipped_existing,
         },
