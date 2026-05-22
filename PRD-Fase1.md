@@ -409,10 +409,10 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [x] **T12.5** — Cablaggio Stage 2 Vision in `POST /api/ingest/submit` dopo il completamento dello Stage 1; `stage2` nel payload; `_ACTIVE_PAGE_STAGES = 2`. *(Sonnet)*
 - [x] **T13(a)** — refine_with_editor + `prompts/editor_prompt.md`. *(Sonnet)*
 - [x] **T13(b)** — Persistenza Stage 3 + diff per pagina (`stage3Editor/`, sidecar JSON idempotente). *(Sonnet)*
+- [x] **T13.5** — Cablaggio Stage 3 Editor in `POST /api/ingest/submit` dopo Stage 2 Vision: chiama `run_stage3_editor` con stesso client OpenAI, emette eventi `PHASE_STAGE3_EDITOR` (STARTED/COMPLETED/DONE), aggiunge `stage3` al payload, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` terminale su `PHASE_STAGE3_EDITOR`; skip se `pipeline_skipped`. *(Sonnet)*
 
 ### Fase 1 — Upload (Vision/Editor + orchestrazione)
 
-- [x] **T13.5** — Cablaggio Stage 3 Editor in `POST /api/ingest/submit` dopo Stage 2 Vision: chiama `run_stage3_editor` con stesso client OpenAI, emette eventi `PHASE_STAGE3_EDITOR` (STARTED/COMPLETED/DONE), aggiunge `stage3` al payload, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` terminale su `PHASE_STAGE3_EDITOR`; skip se `pipeline_skipped`. *(Sonnet)*
 - [ ] **T14(a)** — Coda di job per pagina + asyncio.Semaphore. *(Opus)*
 - [ ] **T14(b)** — Retry + classificazione errori. *(Sonnet)*
 - [ ] **T14(c)** — Token-bucket rate-limit. *(Sonnet)*
