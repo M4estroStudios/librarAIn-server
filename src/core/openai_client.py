@@ -44,6 +44,19 @@ class _ClientState:
 _client_states: WeakKeyDictionary[openai.OpenAI, _ClientState] = WeakKeyDictionary()
 
 
+def build_chat_completion_extra_body(
+    *,
+    reasoning_effort: str | None = None,
+    reasoning_enable_thinking: bool | None = None,
+) -> dict[str, Any] | None:
+    extra: dict[str, Any] = {}
+    if reasoning_effort:
+        extra["reasoning"] = {"effort": reasoning_effort}
+    if reasoning_enable_thinking is not None:
+        extra["enable_thinking"] = reasoning_enable_thinking
+    return extra or None
+
+
 def build_openai_client(settings: Settings) -> openai.OpenAI:
     key = (settings.openai_base_url, settings.openai_api_key)
     if key not in _cached_clients:
@@ -75,11 +88,17 @@ async def chat_completion_with_retry(
     request_id: str,
     stage: str,
     page: int,
+    reasoning_effort: str | None = None,
+    reasoning_enable_thinking: bool | None = None,
 ) -> str:
     state = _client_states.get(client)
     max_attempts = (state.retry_attempts + 1) if state is not None else 4
     token_bucket = state.token_bucket if state is not None else None
     attempt_counter = 0
+    extra_body = build_chat_completion_extra_body(
+        reasoning_effort=reasoning_effort,
+        reasoning_enable_thinking=reasoning_enable_thinking,
+    )
 
     async def _attempt() -> str:
         nonlocal attempt_counter
@@ -95,6 +114,8 @@ async def chat_completion_with_retry(
                 "page": page,
                 "model": model,
                 "request_id": request_id,
+                "reasoning_effort": reasoning_effort or "",
+                "reasoning_enable_thinking": reasoning_enable_thinking,
             },
         )
         if token_bucket is not None:
@@ -107,12 +128,17 @@ async def chat_completion_with_retry(
                 "chat_completion API thread invoke begin",
                 {"attempt": attempt, "stage": stage, "page": page},
             )
+            create_kwargs: dict[str, Any] = {
+                "model": model,
+                "messages": messages,
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+            }
+            if extra_body is not None:
+                create_kwargs["extra_body"] = extra_body
             response = await asyncio.to_thread(
                 client.chat.completions.create,
-                model=model,
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens,
+                **create_kwargs,
             )
             Log(
                 INFO_LOG_LEVEL,

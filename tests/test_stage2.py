@@ -38,6 +38,19 @@ def _settings(data_root: str, vision_model: str = "vision-model-v1") -> MagicMoc
     s.data_root = data_root
     s.vision_model = vision_model
     s.max_parallel_request = 2
+    s.reasoning_effort_vision = None
+    s.reasoning_enable_thinking_vision = None
+    return s
+
+
+def _reasoning_settings(
+    *,
+    reasoning_effort_vision: str | None = None,
+    reasoning_enable_thinking_vision: bool | None = None,
+) -> MagicMock:
+    s = MagicMock()
+    s.reasoning_effort_vision = reasoning_effort_vision
+    s.reasoning_enable_thinking_vision = reasoning_enable_thinking_vision
     return s
 
 
@@ -65,6 +78,7 @@ class TestRefineWithVision(unittest.TestCase):
                 raw_ocr_text="raw text",
                 request_id="req-001",
                 page=1,
+                settings=_reasoning_settings(),
             )
         )
         self.assertEqual(result, "REFINED")
@@ -80,6 +94,7 @@ class TestRefineWithVision(unittest.TestCase):
                 raw_ocr_text="raw text",
                 request_id="req-001",
                 page=1,
+                settings=_reasoning_settings(),
             )
         )
         messages = client.chat.completions.create.call_args.kwargs["messages"]
@@ -98,6 +113,7 @@ class TestRefineWithVision(unittest.TestCase):
                 raw_ocr_text="raw text here",
                 request_id="req-001",
                 page=1,
+                settings=_reasoning_settings(),
             )
         )
         messages = client.chat.completions.create.call_args.kwargs["messages"]
@@ -121,6 +137,7 @@ class TestRefineWithVision(unittest.TestCase):
                 raw_ocr_text="x",
                 request_id="r",
                 page=1,
+                settings=_reasoning_settings(),
             )
         )
         messages = client.chat.completions.create.call_args.kwargs["messages"]

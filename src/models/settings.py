@@ -5,6 +5,44 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+ReasoningEffort = Literal["minimal", "low", "medium", "high"]
+
+_REASONING_EFFORT_OFF = {"none", "off", "false", "0", "no", "disabled"}
+_REASONING_EFFORT_ALLOWED: tuple[ReasoningEffort, ...] = (
+    "minimal",
+    "low",
+    "medium",
+    "high",
+)
+
+
+def _parse_reasoning_effort(v: object, env_name: str) -> ReasoningEffort | None:
+    if v is None:
+        return None
+    s = str(v).strip().lower()
+    if not s or s in _REASONING_EFFORT_OFF:
+        return None
+    if s not in _REASONING_EFFORT_ALLOWED:
+        raise ValueError(
+            f"{env_name} must be one of: minimal, low, medium, high, or empty/off"
+        )
+    return s  # type: ignore[return-value]
+
+
+def _parse_reasoning_enable_thinking(v: object, env_name: str) -> bool | None:
+    if v is None:
+        return None
+    if isinstance(v, bool):
+        return v
+    s = str(v).strip().lower()
+    if not s:
+        return None
+    if s in {"1", "true", "yes", "on"}:
+        return True
+    if s in {"0", "false", "no", "off"}:
+        return False
+    raise ValueError(f"{env_name} must be true/false or empty")
+
 
 class Settings(BaseModel):
     data_root: str = Field(min_length=1, alias="DATA_ROOT")
@@ -27,6 +65,38 @@ class Settings(BaseModel):
     lm_studio_load_timeout_seconds: int = Field(
         default=600, gt=0, alias="LM_STUDIO_LOAD_TIMEOUT_SECONDS"
     )
+    reasoning_effort_vision: ReasoningEffort | None = Field(
+        default=None, alias="REASONING_EFFORT_VISION"
+    )
+    reasoning_enable_thinking_vision: bool | None = Field(
+        default=None, alias="REASONING_ENABLE_THINKING_VISION"
+    )
+    reasoning_effort_editor: ReasoningEffort | None = Field(
+        default=None, alias="REASONING_EFFORT_EDITOR"
+    )
+    reasoning_enable_thinking_editor: bool | None = Field(
+        default=None, alias="REASONING_ENABLE_THINKING_EDITOR"
+    )
+
+    @field_validator("reasoning_effort_vision", mode="before")
+    @classmethod
+    def parse_reasoning_effort_vision(cls, v: object) -> ReasoningEffort | None:
+        return _parse_reasoning_effort(v, "REASONING_EFFORT_VISION")
+
+    @field_validator("reasoning_enable_thinking_vision", mode="before")
+    @classmethod
+    def parse_reasoning_enable_thinking_vision(cls, v: object) -> bool | None:
+        return _parse_reasoning_enable_thinking(v, "REASONING_ENABLE_THINKING_VISION")
+
+    @field_validator("reasoning_effort_editor", mode="before")
+    @classmethod
+    def parse_reasoning_effort_editor(cls, v: object) -> ReasoningEffort | None:
+        return _parse_reasoning_effort(v, "REASONING_EFFORT_EDITOR")
+
+    @field_validator("reasoning_enable_thinking_editor", mode="before")
+    @classmethod
+    def parse_reasoning_enable_thinking_editor(cls, v: object) -> bool | None:
+        return _parse_reasoning_enable_thinking(v, "REASONING_ENABLE_THINKING_EDITOR")
 
     @field_validator("ocr_gpu_device", mode="before")
     @classmethod

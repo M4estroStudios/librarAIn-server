@@ -38,6 +38,19 @@ def _settings(data_root: str, editor_model: str = "editor-model-v1") -> MagicMoc
     s.editor_model = editor_model
     s.vision_model = "vision-model-v1"
     s.max_parallel_request = 2
+    s.reasoning_effort_editor = None
+    s.reasoning_enable_thinking_editor = None
+    return s
+
+
+def _reasoning_settings(
+    *,
+    reasoning_effort_editor: str | None = None,
+    reasoning_enable_thinking_editor: bool | None = None,
+) -> MagicMock:
+    s = MagicMock()
+    s.reasoning_effort_editor = reasoning_effort_editor
+    s.reasoning_enable_thinking_editor = reasoning_enable_thinking_editor
     return s
 
 
@@ -58,6 +71,7 @@ class TestRefineWithEditor(unittest.TestCase):
                 stage2_md="# Title\n\nbody",
                 request_id="req-001",
                 page=1,
+                settings=_reasoning_settings(),
             )
         )
         self.assertEqual(result, "EDITED")
@@ -71,6 +85,7 @@ class TestRefineWithEditor(unittest.TestCase):
                 stage2_md="raw md",
                 request_id="req-001",
                 page=1,
+                settings=_reasoning_settings(),
             )
         )
         messages = client.chat.completions.create.call_args.kwargs["messages"]
@@ -86,6 +101,7 @@ class TestRefineWithEditor(unittest.TestCase):
                 stage2_md="stage two **markdown**",
                 request_id="req-001",
                 page=2,
+                settings=_reasoning_settings(),
             )
         )
         messages = client.chat.completions.create.call_args.kwargs["messages"]

@@ -88,6 +88,7 @@ async def refine_with_vision(
     raw_ocr_text: str,
     request_id: str,
     page: int,
+    settings: Settings,
     temperature: float = 0.1,
 ) -> str:
     Log(INFO_LOG_LEVEL, "stage2 refine_with_vision load prompt file begin", {"request_id": request_id})
@@ -144,6 +145,8 @@ async def refine_with_vision(
         request_id=request_id,
         stage="stage2_vision",
         page=page,
+        reasoning_effort=settings.reasoning_effort_vision,
+        reasoning_enable_thinking=settings.reasoning_enable_thinking_vision,
     )
     Log(
         INFO_LOG_LEVEL,
@@ -249,6 +252,7 @@ async def run_stage2_vision(
                     raw_ocr_text=raw_ocr_text,
                     request_id=request_id,
                     page=s1_page.aligned_page,
+                    settings=settings,
                 )
             except Exception as exc:
                 last_error = str(exc)

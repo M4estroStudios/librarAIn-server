@@ -411,9 +411,6 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [x] **T13(a)** — refine_with_editor + `prompts/editor_prompt.md`. *(Sonnet)*
 - [x] **T13(b)** — Persistenza Stage 3 + diff per pagina (`stage3Editor/`, sidecar JSON idempotente). *(Sonnet)*
 - [x] **T13.5** — Cablaggio Stage 3 Editor in `POST /api/ingest/submit` dopo Stage 2 Vision: chiama `run_stage3_editor` con stesso client OpenAI, emette eventi `PHASE_STAGE3_EDITOR` (STARTED/COMPLETED/DONE), aggiunge `stage3` al payload, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` terminale su `PHASE_STAGE3_EDITOR`; skip se `pipeline_skipped`. *(Sonnet)*
-
-### Fase 1 — Upload (Vision/Editor + orchestrazione)
-
 - [x] **T14(a)** — Orchestrazione batch-per-stage in `src/ingestion/orchestrator.py`: `PageJob`, render di tutte le pagine, esecuzione sequenziale stage1 → stage2 → stage3 con concorrenza intra-stage via `asyncio.Semaphore` (`settings.max_parallel_request`), swap Vision→Editor, pubblicazione `IngestJobEvent` al registry; stage1 reso async (allineato a stage2/3). *(Opus)*
 - [x] **T14(b)** — Retry centralizzato: `src/core/retry.py` (`retry_async`), `src/core/errors.py` (`TransientError`/`PermanentError`, `classify_openai_exception`); refactor `openai_client.py` e retry OCR in `stage1.py`; test `tests/test_retry.py`. *(Sonnet)*
 - [x] **T14(c)** — Rate-limit token-bucket: `src/core/rate_limit.py` (`AsyncTokenBucket`, singleton lazy per client); sostituisce il limiter a intervallo fisso in `openai_client.py`; test `tests/test_rate_limit.py`. *(Sonnet)*

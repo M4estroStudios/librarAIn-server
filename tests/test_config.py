@@ -106,6 +106,50 @@ class ConfigLoaderTests(unittest.TestCase):
         self.assertEqual(settings.rate_limit_per_minute, 60)
         self.assertEqual(settings.page_range_per_thread, 10)
 
+    def test_load_settings_reasoning_controls(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            env_path = Path(tmp_dir) / ".env"
+            env_path.write_text(
+                "\n".join(
+                    [
+                        "DATA_ROOT=data",
+                        "OPENAI_PROVIDER=local",
+                        "REASONING_EFFORT_VISION=medium",
+                        "REASONING_ENABLE_THINKING_VISION=true",
+                        "REASONING_EFFORT_EDITOR=low",
+                        "REASONING_ENABLE_THINKING_EDITOR=false",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            with patch.dict("os.environ", {}, clear=True):
+                settings = load_settings(str(env_path))
+
+        self.assertEqual(settings.reasoning_effort_vision, "medium")
+        self.assertTrue(settings.reasoning_enable_thinking_vision)
+        self.assertEqual(settings.reasoning_effort_editor, "low")
+        self.assertFalse(settings.reasoning_enable_thinking_editor)
+
+    def test_load_settings_reasoning_effort_off_is_none(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            env_path = Path(tmp_dir) / ".env"
+            env_path.write_text(
+                "\n".join(
+                    [
+                        "DATA_ROOT=data",
+                        "OPENAI_PROVIDER=local",
+                        "REASONING_EFFORT_VISION=off",
+                        "REASONING_EFFORT_EDITOR=off",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            with patch.dict("os.environ", {}, clear=True):
+                settings = load_settings(str(env_path))
+
+        self.assertIsNone(settings.reasoning_effort_vision)
+        self.assertIsNone(settings.reasoning_effort_editor)
+
 
 if __name__ == "__main__":
     unittest.main()

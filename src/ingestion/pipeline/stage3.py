@@ -49,6 +49,7 @@ async def refine_with_editor(
     stage2_md: str,
     request_id: str,
     page: int,
+    settings: Settings,
     temperature: float = 0.1,
 ) -> str:
     Log(INFO_LOG_LEVEL, "stage3 refine_with_editor load prompt file begin", {"request_id": request_id})
@@ -78,6 +79,8 @@ async def refine_with_editor(
         request_id=request_id,
         stage="stage3_editor",
         page=page,
+        reasoning_effort=settings.reasoning_effort_editor,
+        reasoning_enable_thinking=settings.reasoning_enable_thinking_editor,
     )
     Log(
         INFO_LOG_LEVEL,
@@ -206,6 +209,7 @@ async def run_stage3_editor(
                     stage2_md=stage2_md,
                     request_id=request_id,
                     page=s2_page.aligned_page,
+                    settings=settings,
                 )
             except Exception as exc:
                 last_error = str(exc)

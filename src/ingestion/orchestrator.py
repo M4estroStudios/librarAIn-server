@@ -13,6 +13,7 @@ from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
 from src.ingestion.pipeline.render import render_aligned_pdf_pages
 from src.ingestion.pipeline.stage1 import Stage1Result, _slugify, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
+from src.ingestion.output_writer import BookOutput, materialize_book_pages
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import ProgressReporter
 from src.models.request import (
@@ -79,6 +80,7 @@ class OrchestratorResult:
     stage1_result: Stage1Result
     stage2_result: Stage2Result | None = None
     stage3_result: Stage3Result | None = None
+    book_output: BookOutput | None = None
     completed_count: int = 0
     failed_count: int = 0
 
@@ -380,6 +382,25 @@ async def _run_pipeline_body(
         raise OrchestratorStageError("stage3_editor", exc) from exc
     _sync_page_jobs_from_stage3(page_jobs, stage3_result)
 
+    book_output = materialize_book_pages(
+        stage3_result,
+        enriched,
+        source_sha256,
+        useful_pages,
+        settings,
+        request_id=request_id,
+    )
+    _publish_event(
+        registry,
+        request_id,
+        stage="output_writer",
+        message="output_writer completed",
+        payload={
+            "page_count": len(book_output.pages),
+            "manifest_path": str(book_output.manifest_path),
+        },
+    )
+
     completed_count = sum(1 for job in page_jobs if job.status == PAGE_STATUS_COMPLETED)
     failed_count = sum(1 for job in page_jobs if job.status == PAGE_STATUS_FAILED)
     counters["completed"] = completed_count
@@ -413,6 +434,7 @@ async def _run_pipeline_body(
         stage1_result=stage1_result,
         stage2_result=stage2_result,
         stage3_result=stage3_result,
+        book_output=book_output,
         completed_count=completed_count,
         failed_count=failed_count,
     )

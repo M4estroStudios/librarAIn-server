@@ -9,6 +9,7 @@ from src.core.openai_client import (
     _ClientState,
     _client_states,
     _cached_clients,
+    build_chat_completion_extra_body,
     build_openai_client,
     chat_completion_with_retry,
 )
@@ -155,6 +156,60 @@ class TestChatCompletionWithRetry(unittest.TestCase):
             result = self._call(client, mock_create)
         self.assertEqual(result, "ok")
         self.assertEqual(mock_create.call_count, 3)
+
+
+class TestBuildChatCompletionExtraBody(unittest.TestCase):
+    def test_empty_when_reasoning_not_configured(self) -> None:
+        self.assertIsNone(build_chat_completion_extra_body())
+
+    def test_includes_reasoning_effort(self) -> None:
+        extra = build_chat_completion_extra_body(reasoning_effort="low")
+        self.assertEqual(extra, {"reasoning": {"effort": "low"}})
+
+    def test_includes_enable_thinking(self) -> None:
+        extra = build_chat_completion_extra_body(reasoning_enable_thinking=False)
+        self.assertEqual(extra, {"enable_thinking": False})
+
+    def test_includes_both_reasoning_controls(self) -> None:
+        extra = build_chat_completion_extra_body(
+            reasoning_effort="medium",
+            reasoning_enable_thinking=True,
+        )
+        self.assertEqual(
+            extra,
+            {"reasoning": {"effort": "medium"}, "enable_thinking": True},
+        )
+
+
+class TestChatCompletionReasoningParams(unittest.TestCase):
+    def setUp(self) -> None:
+        _cached_clients.clear()
+
+    def tearDown(self) -> None:
+        _cached_clients.clear()
+
+    def test_passes_extra_body_to_create(self) -> None:
+        client = build_openai_client(_make_settings())
+        mock_create = MagicMock(return_value=_make_response("ok"))
+        client.chat.completions.create = mock_create  # type: ignore[attr-defined]
+        _run(
+            chat_completion_with_retry(
+                client,  # type: ignore[arg-type]
+                model="gpt-4",
+                messages=[{"role": "user", "content": "hi"}],
+                max_tokens=100,
+                request_id="req-001",
+                stage="test",
+                page=1,
+                reasoning_effort="low",
+                reasoning_enable_thinking=False,
+            )
+        )
+        kwargs = mock_create.call_args.kwargs
+        self.assertEqual(
+            kwargs["extra_body"],
+            {"reasoning": {"effort": "low"}, "enable_thinking": False},
+        )
 
 
 if __name__ == "__main__":

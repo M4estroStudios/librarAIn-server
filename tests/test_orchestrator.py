@@ -23,6 +23,7 @@ _P_RESOLVE = "src.ingestion.orchestrator.resolve_aligned_pdf_path_for_stage1"
 _P_STAGE1 = "src.ingestion.orchestrator.run_stage1_ingest_step"
 _P_STAGE2 = "src.ingestion.orchestrator.run_stage2_vision"
 _P_STAGE3 = "src.ingestion.orchestrator.run_stage3_editor"
+_P_OUTPUT = "src.ingestion.orchestrator.materialize_book_pages"
 _P_CLIENT = "src.ingestion.orchestrator.build_openai_client"
 _P_SWAP = "src.ingestion.orchestrator.swap_lmstudio_vision_to_editor"
 
@@ -112,6 +113,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
 
     @patch(_P_CLIENT)
     @patch(_P_SWAP)
+    @patch(_P_OUTPUT)
     @patch(_P_STAGE3, new_callable=AsyncMock)
     @patch(_P_STAGE2, new_callable=AsyncMock)
     @patch(_P_STAGE1, new_callable=AsyncMock)
@@ -124,6 +126,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_stage1: AsyncMock,
         mock_stage2: AsyncMock,
         mock_stage3: AsyncMock,
+        mock_output: MagicMock,
         mock_swap: MagicMock,
         mock_client: MagicMock,
     ) -> None:
@@ -133,6 +136,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         stage3_pages = [MagicMock(aligned_page=i) for i in range(1, PAGE_COUNT + 1)]
         mock_stage2.return_value = MagicMock(pages=[])
         mock_stage3.return_value = MagicMock(pages=stage3_pages)
+        mock_output.return_value = MagicMock(pages=[MagicMock()] * PAGE_COUNT, manifest_path=Path("/tmp/manifest.json"))
         mock_client.return_value = MagicMock()
 
         result = asyncio.run(
@@ -150,6 +154,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_stage1.assert_awaited_once()
         mock_stage2.assert_awaited_once()
         mock_stage3.assert_awaited_once()
+        mock_output.assert_called_once()
         self.assertEqual(result.completed_count, PAGE_COUNT)
         self.assertTrue(all(job.status == PAGE_STATUS_COMPLETED for job in result.page_jobs))
         self.assertTrue(any(event.stage == "render" for event in self.registry.events))
@@ -195,6 +200,7 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
 
     @patch(_P_CLIENT)
     @patch(_P_SWAP)
+    @patch(_P_OUTPUT)
     @patch(_P_STAGE3, new_callable=AsyncMock)
     @patch(_P_STAGE2, new_callable=AsyncMock)
     @patch(_P_STAGE1, new_callable=AsyncMock)
@@ -207,6 +213,7 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_stage1: AsyncMock,
         mock_stage2: AsyncMock,
         mock_stage3: AsyncMock,
+        mock_output: MagicMock,
         mock_swap: MagicMock,
         mock_client: MagicMock,
     ) -> None:
@@ -215,6 +222,7 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_stage1.side_effect = self._stage1_side_effect
         mock_stage2.side_effect = self._stage2
         mock_stage3.side_effect = self._stage3
+        mock_output.return_value = MagicMock(pages=[MagicMock()], manifest_path=Path("/tmp/manifest.json"))
         mock_client.return_value = MagicMock()
 
         asyncio.run(
