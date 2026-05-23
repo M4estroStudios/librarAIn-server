@@ -411,6 +411,7 @@ Repo: librarAIn-server. Crea src/ingestion/book_md_builder.py.
 - Test tests/test_book_md_builder.py con 3 pagine mock: file presente, ordine deterministico, byte-equality alla seconda invocazione.
 DoD: il file <slug>.md esiste, contiene tutte le pagine in ordine, è rigenerabile in modo idempotente.
 ```
+OK
 
 ### T23 — Sonnet — Polyindex TOC.json updater
 ```text
@@ -659,7 +660,7 @@ Fonte normativa: `PRD-Fase1.md` §2.5.1. In sintesi per chi scrive prompt/parser
 ## Sintesi finale aggiornata
 
 - **Completati**: T1–T10, PRE-A–C, T11–T18 (vedi PRD §7).
-- **In coda priorità alta (sblocco MVP Upload, uso interno)**: T22 → T16/T17 (cablaggio orchestrator) → T23 → T24 → T25 → T26 → T27 → T28 → T29 → T30 → **T21(a)** → **T19'** → T31.
+- **In coda priorità alta (sblocco MVP Upload, uso interno)**: T16/T17 (cablaggio orchestrator) → T23 → T24 → T25 → T26 → T27 → T28 → T29 → T30 → **T21(a)** → **T19'** → T31.
 - **`[⏸]` Rimandate (v2.0 / on-demand)**: **T18.5(a–d)** → **T21(b)** (T21b richiede T18.5; T19' sostituisce T21b nel percorso MVP).
 - **Stima parallelizzabili**: T22/T16/T17 in parallelo dopo cablaggio T15; T23/T24 in parallelo dopo T22; T25 prima di T26; T27/T28/T29 in parallelo dopo T26.
 - **Modello consigliato per quota Opus**: T14(a) [fatto], T25, T26, T30. T18.5(c) rimandato. Tutti gli altri delegabili a Sonnet/Composer 2.

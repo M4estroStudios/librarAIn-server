@@ -356,7 +356,7 @@ Log(INFO_LOG_LEVEL, "dettaglio pagina", {"page": 12}, json=True, to_file=True)
 - **T14 — Orchestrazione concorrente (✅ completato)**: T14(a) — `src/ingestion/orchestrator.py` con `PageJob`, `run_pipeline` batch-per-stage (render → stage1 → stage2 → stage3), `asyncio.Semaphore` per concorrenza intra-stage, swap Vision→Editor, eventi `IngestJobEvent`; T14(b) — `src/core/retry.py` + `src/core/errors.py`; T14(c) — `src/core/rate_limit.py`; T14(d) — migration 003 `pipeline_runs`, create/update in orchestrator, propagazione `request_id` in eventi.
 - **T15–T17 (✅ completato)**: writer pagine + `manifest.json` (`output_writer.py`), builder `TOC.md` (`toc_builder.py`), builder `INDEX.md` (`index_builder.py`); integrati in orchestrator per T15, T16/T17 standalone (cablaggio orchestrator completo con T22/T30).
 - **T18 — Logging + audit (✅ completato)**: T18(a) — estensione `src/core/log.py` (`json`, `to_file`, `log_dir`, `safe_text`); T18(b) — `bind_log_context` + `log_stage_block_async` in `run_pipeline`, correlazione con `pipeline_runs`; test `tests/test_logging.py`, `tests/test_logging_propagation.py`.
-- **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
+- **T22 (✅ completato)**: builder `<slug>.md` aggregato (`book_md_builder.py`), integrato in orchestrator dopo T15.
 - **T19'**: smoke E2E pipeline (orchestrator, no HTTP) — sostituisce in MVP il test HTTP rimandato **T21(b)**.
 - ~~T18.5(a–d)~~ **rimandato** (v2.0 / on-demand): refactor HTTP FastAPI + upload streaming + `/artifacts`.
 - ~~T21(b)~~ **rimandato** con T18.5: E2E HTTP submit→poll→artifacts (FastAPI TestClient).
@@ -449,7 +449,7 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** 
 
 ### Fase 1 — Upload (writer per libro)
 
-- [ ] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages). *(Composer 2)*
+- [x] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages). *(Composer 2)*
 
 ### Fase 1 — Upload (HTTP refactor) — RIMANDATO `[⏸]`
 
