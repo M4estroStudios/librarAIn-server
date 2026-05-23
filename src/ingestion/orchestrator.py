@@ -20,6 +20,8 @@ from src.ingestion.pipeline.render import render_aligned_pdf_pages
 from src.ingestion.pipeline.stage1 import Stage1Result, _slugify, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
+from src.ingestion.index_builder import build_index_md
+from src.ingestion.toc_builder import build_toc_md
 from src.ingestion.output_writer import BookOutput, materialize_book_pages
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import ProgressReporter
@@ -432,6 +434,24 @@ async def _run_pipeline_body(
         stage="book_md_builder",
         message="book_md_builder completed",
         payload={"book_md_path": str(book_md_path)},
+    )
+
+    toc_md_path = build_toc_md(book_output, useful_pages)
+    _publish_event(
+        registry,
+        request_id,
+        stage="toc_builder",
+        message="toc_builder completed",
+        payload={"toc_md_path": str(toc_md_path)},
+    )
+
+    index_md_path = build_index_md(book_output, useful_pages)
+    _publish_event(
+        registry,
+        request_id,
+        stage="index_builder",
+        message="index_builder completed",
+        payload={"index_md_path": str(index_md_path)},
     )
 
     completed_count = sum(1 for job in page_jobs if job.status == PAGE_STATUS_COMPLETED)

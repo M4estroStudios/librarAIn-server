@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+import uuid
 from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -40,6 +41,7 @@ def _make_enriched(sha: str = SHA) -> MagicMock:
     m = MagicMock()
     m.source_sha256 = sha
     m.request.request_id = REQUEST_ID
+    m.request.schema_version = "1.0"
     m.request.reicat = ReicatMetadata.model_validate(
         {"titolo": "Book", "autore": ["Author One"]}
     )
@@ -433,9 +435,10 @@ class TestCacheHit(unittest.TestCase):
         return rendered
 
     def _run_pipeline(self, fake_openai_client: MagicMock) -> dict:
-        stage3_mock = AsyncMock(return_value=_make_stage3_result(n=2))
+        enriched = _make_enriched()
+        enriched.request.request_id = f"{REQUEST_ID}-{uuid.uuid4().hex[:8]}"
         with (
-            patch(_P_VALIDATE, return_value=_make_enriched()),
+            patch(_P_VALIDATE, return_value=enriched),
             patch(_P_GATE, return_value=_make_gate(pipeline_skipped=False)),
             patch(_P_ALIGN, return_value=None),
             patch(_P_ENUM, return_value=_make_pages_enum(n=2)),
@@ -447,7 +450,6 @@ class TestCacheHit(unittest.TestCase):
                 return_value=_make_stage1_result(self.data_root, n=2),
             ),
             patch(_P_CLIENT, return_value=fake_openai_client),
-            patch(_P_STAGE3, stage3_mock),
             patch("src.ingestion.orchestrator.swap_lmstudio_vision_to_editor"),
         ):
             return run_full_pipeline(

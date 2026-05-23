@@ -354,7 +354,7 @@ Log(INFO_LOG_LEVEL, "dettaglio pagina", {"page": 12}, json=True, to_file=True)
 - **T12 — Vision Stage 2 (✅ completato)**: T12(a–c) — client OpenAI centralizzato (`src/core/openai_client.py`), `refine_with_vision` + `prompts/vision_prompt.md`, persistenza/cache Stage 2 (`stage2Vision`); **T12.5** — cablaggio HTTP (`stage2` in risposta, `_ACTIVE_PAGE_STAGES = 2`).
 - **T13 — Editor Stage 3 (✅ completato)**: T13(a–b) — `refine_with_editor` + `prompts/editor_prompt.md`, persistenza/cache Stage 3 (`stage3Editor/`, sidecar idempotente); **T13.5** — cablaggio HTTP (`stage3` in risposta, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` su `PHASE_STAGE3_EDITOR`).
 - **T14 — Orchestrazione concorrente (✅ completato)**: T14(a) — `src/ingestion/orchestrator.py` con `PageJob`, `run_pipeline` batch-per-stage (render → stage1 → stage2 → stage3), `asyncio.Semaphore` per concorrenza intra-stage, swap Vision→Editor, eventi `IngestJobEvent`; T14(b) — `src/core/retry.py` + `src/core/errors.py`; T14(c) — `src/core/rate_limit.py`; T14(d) — migration 003 `pipeline_runs`, create/update in orchestrator, propagazione `request_id` in eventi.
-- **T15–T17 (✅ completato)**: writer pagine + `manifest.json` (`output_writer.py`), builder `TOC.md` (`toc_builder.py`), builder `INDEX.md` (`index_builder.py`); integrati in orchestrator per T15, T16/T17 standalone (cablaggio orchestrator completo con T22/T30).
+- **T15–T17 (✅ completato)**: writer pagine + `manifest.json` (`output_writer.py`), builder `TOC.md` (`toc_builder.py`), builder `INDEX.md` (`index_builder.py`); T15/T16/T17/T22 integrati in `orchestrator.py` (post-stage3: `materialize_book_pages` → `<slug>.md` → `TOC.md` → `INDEX.md`). Resta per **T30**: polyindex, snapshot, cablaggio job registry end-to-end Upload.
 - **T18 — Logging + audit (✅ completato)**: T18(a) — estensione `src/core/log.py` (`json`, `to_file`, `log_dir`, `safe_text`); T18(b) — `bind_log_context` + `log_stage_block_async` in `run_pipeline`, correlazione con `pipeline_runs`; test `tests/test_logging.py`, `tests/test_logging_propagation.py`.
 - **T22 (✅ completato)**: builder `<slug>.md` aggregato (`book_md_builder.py`), integrato in orchestrator dopo T15.
 - **T19'**: smoke E2E pipeline (orchestrator, no HTTP) — sostituisce in MVP il test HTTP rimandato **T21(b)**.
@@ -442,14 +442,14 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** 
 - [x] **T14(c)** — Rate-limit token-bucket: `src/core/rate_limit.py` (`AsyncTokenBucket`, singleton lazy per client); sostituisce il limiter a intervallo fisso in `openai_client.py`; test `tests/test_rate_limit.py`. *(Sonnet)*
 - [x] **T14(d)** — Telemetria run: migration 003 tabella `pipeline_runs` (`src/persistence/pipeline_runs.py`: `create_pipeline_run`, `mark_pipeline_run_finished`, `get_pipeline_run_by_request_id`); integrazione in orchestrator (create al T0, update finale succeeded/failed con contatori); `request_id` in tutti gli `IngestJobEvent` e nei log strutturati stage1/2/3; test `tests/test_pipeline_runs.py`. *(Sonnet)*
 - [x] **T15** — Persistenza pagine `.md` + `manifest.json` (`src/ingestion/output_writer.py`, `materialize_book_pages`); integrazione post-stage3 in orchestrator; test `tests/test_output_writer.py`. *(Composer 2)*
-- [x] **T16** — Builder `TOC.md` (`src/ingestion/toc_builder.py`, range `toc_range_aligned`); test `tests/test_toc_builder.py`. *(Composer 2)*
-- [x] **T17** — Builder `INDEX.md` (`src/ingestion/index_builder.py`, range `index_range_aligned`); test `tests/test_index_builder.py`. *(Composer 2)*
+- [x] **T16** — Builder `TOC.md` (`src/ingestion/toc_builder.py`, range `toc_range_aligned`); **cablaggio orchestrator** dopo T22 (`build_toc_md`, evento `toc_builder` / `toc_md_path`); test `tests/test_toc_builder.py`, `tests/test_orchestrator.py` (ordine `book_md` → `toc_md`). *(Composer 2)*
+- [x] **T17** — Builder `INDEX.md` (`src/ingestion/index_builder.py`, range `index_range_aligned`); **cablaggio orchestrator** dopo T16 (`build_index_md`, evento `index_builder` / `index_md_path`); test `tests/test_index_builder.py`, `tests/test_orchestrator.py` (ordine `toc_md` → `index_md`). *(Composer 2)*
 - [x] **T18(a)** — Logging esteso in `src/core/log.py`: `json`, `to_file`, `log_dir` in `logInit`, `safe_text`; console invariata; test `tests/test_logging.py`. *(Sonnet)*
 - [x] **T18(b)** — Propagazione audit: `bind_log_context` / `reset_log_context`, `log_stage_block_async` in `run_pipeline`, correlazione log ↔ `pipeline_runs`; test `tests/test_logging_propagation.py`. *(Sonnet)*
 
 ### Fase 1 — Upload (writer per libro)
 
-- [x] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages). *(Composer 2)*
+- [x] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages); integrazione in orchestrator dopo T15, prima di T16/T17. *(Composer 2)*
 
 ### Fase 1 — Upload (HTTP refactor) — RIMANDATO `[⏸]`
 
