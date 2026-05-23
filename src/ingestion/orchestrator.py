@@ -6,7 +6,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
 
-from src.core.log import INFO_LOG_LEVEL, Log
+from src.core.log import (
+    INFO_LOG_LEVEL,
+    Log,
+    bind_log_context,
+    log_stage_block_async,
+    reset_log_context,
+)
 from src.core.lmstudio_models import swap_lmstudio_vision_to_editor
 from src.core.openai_client import build_openai_client
 from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
@@ -186,6 +192,10 @@ async def run_pipeline(
     data_root = Path(settings.data_root)
     tmp_root = data_root / "tmp" / source_sha256
     counters = {"completed": 0, "failed": 0}
+    request_token, sha_token = bind_log_context(
+        request_id=request_id,
+        source_sha256=source_sha256,
+    )
 
     create_pipeline_run(
         sqlite_path_str,
@@ -196,39 +206,63 @@ async def run_pipeline(
     )
 
     try:
-        result = await _run_pipeline_body(
-            enriched,
-            alignment,
-            useful_pages,
-            settings,
-            registry,
-            request_id,
-            slug=slug,
-            data_root=data_root,
-            tmp_root=tmp_root,
-            progress=progress,
-            skip_vision_editor=skip_vision_editor,
-            counters=counters,
-        )
-    except (OrchestratorStageError, Exception) as exc:
-        mark_pipeline_run_finished(
-            sqlite_path_str,
-            request_id=request_id,
-            status="failed",
-            succeeded_pages=counters["completed"],
-            failed_pages=counters["failed"],
-            last_error=str(exc),
-        )
-        raise
+        async with log_stage_block_async("pipeline"):
+            Log(
+                INFO_LOG_LEVEL,
+                "orchestrator run_pipeline begin",
+                {
+                    "stage": "orchestrator",
+                    "event": "begin",
+                    "max_parallel": settings.max_parallel_request,
+                    "skip_vision_editor": skip_vision_editor,
+                },
+            )
+            try:
+                result = await _run_pipeline_body(
+                    enriched,
+                    alignment,
+                    useful_pages,
+                    settings,
+                    registry,
+                    request_id,
+                    slug=slug,
+                    data_root=data_root,
+                    tmp_root=tmp_root,
+                    progress=progress,
+                    skip_vision_editor=skip_vision_editor,
+                    counters=counters,
+                )
+            except (OrchestratorStageError, Exception) as exc:
+                mark_pipeline_run_finished(
+                    sqlite_path_str,
+                    request_id=request_id,
+                    status="failed",
+                    succeeded_pages=counters["completed"],
+                    failed_pages=counters["failed"],
+                    last_error=str(exc),
+                )
+                raise
 
-    mark_pipeline_run_finished(
-        sqlite_path_str,
-        request_id=request_id,
-        status="succeeded",
-        succeeded_pages=result.completed_count,
-        failed_pages=result.failed_count,
-    )
-    return result
+            mark_pipeline_run_finished(
+                sqlite_path_str,
+                request_id=request_id,
+                status="succeeded",
+                succeeded_pages=result.completed_count,
+                failed_pages=result.failed_count,
+            )
+            Log(
+                INFO_LOG_LEVEL,
+                "orchestrator run_pipeline done",
+                {
+                    "stage": "orchestrator",
+                    "event": "done",
+                    "completed_count": result.completed_count,
+                    "failed_count": result.failed_count,
+                },
+            )
+            return result
+    finally:
+        reset_log_context(request_token, sha_token)
 
 
 async def _run_pipeline_body(
@@ -247,17 +281,6 @@ async def _run_pipeline_body(
     counters: dict[str, int],
 ) -> OrchestratorResult:
     source_sha256 = enriched.source_sha256
-
-    Log(
-        INFO_LOG_LEVEL,
-        "orchestrator run_pipeline begin",
-        {
-            "request_id": request_id,
-            "source_sha256": source_sha256[:16],
-            "max_parallel": settings.max_parallel_request,
-            "skip_vision_editor": skip_vision_editor,
-        },
-    )
 
     aligned_path = resolve_aligned_pdf_path_for_stage1(
         enriched,
@@ -415,16 +438,6 @@ async def _run_pipeline_body(
             "completed_count": completed_count,
             "failed_count": failed_count,
             "rendered_page_count": len(rendered),
-        },
-    )
-
-    Log(
-        INFO_LOG_LEVEL,
-        "orchestrator run_pipeline done",
-        {
-            "request_id": request_id,
-            "completed_count": completed_count,
-            "failed_count": failed_count,
         },
     )
 

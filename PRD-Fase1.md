@@ -272,7 +272,7 @@ CHECKPOINT_RETENTION_DAYS=30
 ### 4.6 Security & Privacy
 
 - Chiavi/API key esclusivamente in `.env`, mai loggate, mai stampate.
-- Log strutturato in produzione (opzionale; vedi backlog). Per **log console colorati in sviluppo** usare `src/core/log.py` come da §4.8.
+- Log strutturato opzionale su file giornaliero via `Log(..., to_file=True)` in `src/core/log.py` (JSONL sotto `log_dir`, default `./log`); console resta colorata. Mai loggare chiavi API; testo OCR troncato con `safe_text`.
 - Path assoluti contenenti utente di sistema mai esposti via API; sempre relativi a `DATA_ROOT`.
 - Tracciabilità per libro: `pipeline_runs.request_id`, `source_sha256`, `pipeline_version`, timestamp.
 - Tracciabilità per ricerca: `research_runs.request_id`, hash query, libri/pagine usati come contesto (audit).
@@ -284,42 +284,60 @@ CHECKPOINT_RETENTION_DAYS=30
 - **OQ2**: dimensione massima di `INDEX.json` prima di sharding (es. per soggetto inizia con A, B, ...) → posticipato a v2.0.
 - **OQ3**: cache embeddings dei soggetti canonici → serve persistenza? Probabilmente sì in SQLite (`subject_embeddings`) per evitare rigenerazioni; vedi T24.
 
-### 4.8 Logging console (sviluppo)
+### 4.8 Logging (`src/core/log.py`)
 
-Durante lo sviluppo locale si usa il modulo **`src/core/log.py`**: log colorati su stdout, soglia globale di verbosità e opzioni per parametri strutturati e forzatura singola riga.
+Modulo unico di logging: **console colorata** (default) + opzioni audit su file/return JSON.
 
 **Flusso obbligatorio**
 
-1. All’avvio del processo (tipicamente nel `main`), chiamare **`logInit`** una sola volta con il livello massimo di verbosità desiderato (tutti i livelli numerici *non superiori* a questo verranno emessi; i più verbosi vengono soppressi).
-2. Da quel momento ogni chiamata a **`Log`** rispetta quella gerarchia, salvo uso di **`override`**.
+1. All’avvio del processo, chiamare **`logInit`** una sola volta (livello globale + cartella log opzionale).
+2. Ogni **`Log`** rispetta la gerarchia di livello, salvo **`override=True`**.
 
-**Livelli** (costanti nel modulo): `ERROR_LOG_LEVEL`, `WARNING_LOG_LEVEL`, `INFO_LOG_LEVEL`, `DEBUG_LOG_LEVEL`, `RESULT_LOG_LEVEL` (da 0 a 4, dal meno al più verboso). Se si invoca `logInit()` senza argomenti, il default è **`INFO_LOG_LEVEL`**.
-
-**API (Python)**
+**Inizializzazione**
 
 ```text
-logInit({ERROR|WARNING|INFO|DEBUG|RESULT}_LOG_LEVEL)
+logInit({ERROR|WARNING|INFO|DEBUG|RESULT}_LOG_LEVEL [, log_dir="./log"])
 ```
+
+- **`log_dir`**: directory per i file giornalieri `{YYYY-MM-DD}.log` (creata on demand). Default `./log`.
+
+**Chiamata**
 
 ```text
-Log({ERROR|WARNING|INFO|DEBUG|RESULT}_LOG_LEVEL, "message" [, params: dict] [, override: bool])
+Log(level, "message" [, params: dict] [, override: bool] [, json: bool] [, to_file: bool]) -> str | None
 ```
 
-- **`params`**: opzionale, dizionario `{"chiave": valore, ...}`; se presente viene mostrato in console in evidenza grigia accanto al messaggio.
-- **`override`**: opzionale, default `False`; se `True`, quella chiamata **ignora** il filtro della soglia globale e stampa comunque (utile per debug puntuale senza alzare il livello globale).
+- **`params`**: dizionario opzionale; in console appare in grigio accanto al messaggio. Con context attivo (vedi sotto) include automaticamente `request_id` e `source_sha256`.
+- **`override`**: stampa la riga ignorando il filtro globale.
+- **`json=True`**: restituisce una stringa JSON con gli stessi campi del record (`ts`, `level`, `file`, `line`, `caller`, `message`, + chiavi da `params`). La console resta **sempre** nel formato colorato attuale.
+- **`to_file=True`**: append di una riga JSON (JSONL) su `{log_dir}/{YYYY-MM-DD}.log`. Scrittura thread-safe.
 
-Esempi d’uso:
+**Context di run (T18b)**
 
 ```python
-from src.core.log import logInit, Log, INFO_LOG_LEVEL, DEBUG_LOG_LEVEL
-
-logInit(INFO_LOG_LEVEL)
-Log(INFO_LOG_LEVEL, "pipeline avviata")
-Log(DEBUG_LOG_LEVEL, "dettaglio pagina", {"page": 12, "sha": sha256_hex})
-Log(DEBUG_LOG_LEVEL, "solo per questa riga", override=True)
+bind_log_context(request_id=..., source_sha256=...)
+# ... Log(...) durante la run ...
+reset_log_context(request_token, sha_token)
 ```
 
-**Nota**: non sostituisce eventuale logging strutturato/JSON in produzione (vedi §4.6); è pensato per traccia leggibile in terminale durante implementazione e smoke test.
+- Invocato all’inizio di `run_pipeline`; ogni `Log` nella run eredita `request_id` / `source_sha256` senza ripassarli.
+- **`log_stage_block_async(stage_name)`**: log start/end con `duration_ms` (usato sullo stage `pipeline` nell’orchestrator).
+
+**Helper**
+
+- **`safe_text(s, max_len=200)`**: troncamento testo OCR (o altro) nei log.
+
+**Esempi**
+
+```python
+from src.core.log import logInit, Log, INFO_LOG_LEVEL, bind_log_context, reset_log_context
+
+logInit(INFO_LOG_LEVEL, log_dir="./log")
+Log(INFO_LOG_LEVEL, "pipeline avviata")
+Log(INFO_LOG_LEVEL, "dettaglio pagina", {"page": 12}, json=True, to_file=True)
+```
+
+**Correlazione audit**: log (console/file) + tabella `pipeline_runs` (T14d) ricostruiscono una run via `request_id`.
 
 ## 5. Risks & Roadmap
 
@@ -331,8 +349,9 @@ Log(DEBUG_LOG_LEVEL, "solo per questa riga", override=True)
 - **T11 — OCR + ingest Stage 1 (✅ completato)**: T11(a–c) — `OCRPageEngine`/`EasyOCRPageEngine`, renderer PNG (`pypdfium2`), persistenza/cache Stage 1 (`stage1OCR`); **T11.5** — cablaggio HTTP sincrono su `POST /api/ingest/submit` fino a fine Stage 1 (`stage1` in risposta).
 - **T12 — Vision Stage 2 (✅ completato)**: T12(a–c) — client OpenAI centralizzato (`src/core/openai_client.py`), `refine_with_vision` + `prompts/vision_prompt.md`, persistenza/cache Stage 2 (`stage2Vision`); **T12.5** — cablaggio HTTP (`stage2` in risposta, `_ACTIVE_PAGE_STAGES = 2`).
 - **T13 — Editor Stage 3 (✅ completato)**: T13(a–b) — `refine_with_editor` + `prompts/editor_prompt.md`, persistenza/cache Stage 3 (`stage3Editor/`, sidecar idempotente); **T13.5** — cablaggio HTTP (`stage3` in risposta, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` su `PHASE_STAGE3_EDITOR`).
-- **T14 — Orchestrazione concorrente (✅ completato)**: T14(a) — `src/ingestion/orchestrator.py` con `PageJob`, `run_pipeline` batch-per-stage (render → stage1 → stage2 → stage3), `asyncio.Semaphore` per concorrenza intra-stage, swap Vision→Editor, eventi `IngestJobEvent`; T14(b) — `src/core/retry.py` + `src/core/errors.py` (`retry_async`, classificazione transient/permanent, integrazione in `openai_client.py` e OCR stage1); T14(c) — `src/core/rate_limit.py` (`AsyncTokenBucket`, singleton per client, integrato in `openai_client.py`); T14(d) — migration 003 `pipeline_runs` in `src/persistence/pipeline_runs.py`, create/update in orchestrator, propagazione `request_id` in eventi e log stage1/2/3.
-- T15–T17: writer pagine, TOC.md, INDEX.md.
+- **T14 — Orchestrazione concorrente (✅ completato)**: T14(a) — `src/ingestion/orchestrator.py` con `PageJob`, `run_pipeline` batch-per-stage (render → stage1 → stage2 → stage3), `asyncio.Semaphore` per concorrenza intra-stage, swap Vision→Editor, eventi `IngestJobEvent`; T14(b) — `src/core/retry.py` + `src/core/errors.py`; T14(c) — `src/core/rate_limit.py`; T14(d) — migration 003 `pipeline_runs`, create/update in orchestrator, propagazione `request_id` in eventi.
+- **T15–T17 (✅ completato)**: writer pagine + `manifest.json` (`output_writer.py`), builder `TOC.md` (`toc_builder.py`), builder `INDEX.md` (`index_builder.py`); integrati in orchestrator per T15, T16/T17 standalone (cablaggio orchestrator completo con T22/T30).
+- **T18 — Logging + audit (✅ completato)**: T18(a) — estensione `src/core/log.py` (`json`, `to_file`, `log_dir`, `safe_text`); T18(b) — `bind_log_context` + `log_stage_block_async` in `run_pipeline`, correlazione con `pipeline_runs`; test `tests/test_logging.py`, `tests/test_logging_propagation.py`.
 - **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
 - T18.5(a–d): refactor HTTP async + job model.
 - T19–T21: smoke/E2E e test HTTP.
@@ -415,12 +434,14 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 - [x] **T14(b)** — Retry centralizzato: `src/core/retry.py` (`retry_async`), `src/core/errors.py` (`TransientError`/`PermanentError`, `classify_openai_exception`); refactor `openai_client.py` e retry OCR in `stage1.py`; test `tests/test_retry.py`. *(Sonnet)*
 - [x] **T14(c)** — Rate-limit token-bucket: `src/core/rate_limit.py` (`AsyncTokenBucket`, singleton lazy per client); sostituisce il limiter a intervallo fisso in `openai_client.py`; test `tests/test_rate_limit.py`. *(Sonnet)*
 - [x] **T14(d)** — Telemetria run: migration 003 tabella `pipeline_runs` (`src/persistence/pipeline_runs.py`: `create_pipeline_run`, `mark_pipeline_run_finished`, `get_pipeline_run_by_request_id`); integrazione in orchestrator (create al T0, update finale succeeded/failed con contatori); `request_id` in tutti gli `IngestJobEvent` e nei log strutturati stage1/2/3; test `tests/test_pipeline_runs.py`. *(Sonnet)*
+- [x] **T15** — Persistenza pagine `.md` + `manifest.json` (`src/ingestion/output_writer.py`, `materialize_book_pages`); integrazione post-stage3 in orchestrator; test `tests/test_output_writer.py`. *(Composer 2)*
+- [x] **T16** — Builder `TOC.md` (`src/ingestion/toc_builder.py`, range `toc_range_aligned`); test `tests/test_toc_builder.py`. *(Composer 2)*
+- [x] **T17** — Builder `INDEX.md` (`src/ingestion/index_builder.py`, range `index_range_aligned`); test `tests/test_index_builder.py`. *(Composer 2)*
+- [x] **T18(a)** — Logging esteso in `src/core/log.py`: `json`, `to_file`, `log_dir` in `logInit`, `safe_text`; console invariata; test `tests/test_logging.py`. *(Sonnet)*
+- [x] **T18(b)** — Propagazione audit: `bind_log_context` / `reset_log_context`, `log_stage_block_async` in `run_pipeline`, correlazione log ↔ `pipeline_runs`; test `tests/test_logging_propagation.py`. *(Sonnet)*
 
 ### Fase 1 — Upload (writer per libro)
 
-- [ ] **T15** — Persistenza pagine `.md` + `manifest.json`. *(Composer 2)*
-- [ ] **T16** — Builder `TOC.md`. *(Composer 2)*
-- [ ] **T17** — Builder `INDEX.md`. *(Composer 2)*
 - [ ] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages). *(Composer 2)*
 
 ### Fase 1 — Upload (HTTP refactor)
