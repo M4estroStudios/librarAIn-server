@@ -21,6 +21,7 @@ from src.ingestion.pipeline.stage1 import Stage1Result, _slugify, run_stage1_ing
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
+from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
 from src.ingestion.toc_builder import build_toc_md
 from src.ingestion.output_writer import BookOutput, materialize_book_pages
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
@@ -452,6 +453,22 @@ async def _run_pipeline_body(
         stage="index_builder",
         message="index_builder completed",
         payload={"index_md_path": str(index_md_path)},
+    )
+
+    polyindex_dir = data_root / "polyindex"
+    toc_json_path = sync_polyindex_toc_from_book(
+        polyindex_dir,
+        source_sha256,
+        book_output,
+        toc_md_path,
+        useful_pages,
+    )
+    _publish_event(
+        registry,
+        request_id,
+        stage="polyindex_toc",
+        message="polyindex_toc completed",
+        payload={"toc_json_path": str(toc_json_path)},
     )
 
     completed_count = sum(1 for job in page_jobs if job.status == PAGE_STATUS_COMPLETED)
