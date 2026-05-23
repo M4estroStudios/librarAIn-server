@@ -233,9 +233,13 @@ Nota: i tre passi LLM possono essere **fusi** in una o due chiamate se i prompt 
 
 ### 4.3 Modello di esecuzione HTTP
 
-- **Upload**: `POST /api/ingest/submit` (multipart streaming) → 202 con `request_id`. `GET /api/ingest/{id}` ritorna stato. `GET /api/ingest/{id}/artifacts` elenca file in `data/output/<sha256>/`.
-- **Research**: `POST /api/research/submit` (JSON) → 202 con `request_id`. `GET /api/research/{id}` stato. `GET /api/research/{id}/article` prodotto finale.
-- **Admin**: `POST /api/admin/checkpoint` → 202; `GET /health`.
+**Stato attuale (MVP, uso interno)**: `ThreadingHTTPServer` in `src/api/ingest_http_server.py` — `POST /api/ingest/submit` → 202 con `job_id`, worker in background (`threading` + `run_full_pipeline`), `GET /api/ingest/{job_id}/status`, SSE `GET /api/ingest/{job_id}/events`. Upload multipart in RAM fino a `INGEST_MAX_UPLOAD_BYTES`. Registry in-process: `src/api/job_registry.py`. Sufficiente per cura/gestione biblioteca a bassa concorrenza.
+
+**Modello target (rimandato — T18.5 + T21b)**: refactor FastAPI/async come sotto; non bloccante per il percorso MVP Upload descritto in §5.1.
+
+- **Upload (target)**: `POST /api/ingest/submit` (multipart **streaming**) → 202 con `request_id`. `GET /api/ingest/{id}` ritorna stato. `GET /api/ingest/{id}/artifacts` elenca file in `data/output/<sha256>/`.
+- **Research (target)**: `POST /api/research/submit` (JSON) → 202 con `request_id`. `GET /api/research/{id}` stato. `GET /api/research/{id}/article` prodotto finale.
+- **Admin (target)**: `POST /api/admin/checkpoint` → 202; `GET /health`.
 - Backend job in-process via asyncio TaskGroup; nessun broker esterno. Job registry separati per `ingest` e `research`, stessa struttura base (`request_id`, `status`, `events`, `pipeline_version`).
 
 ### 4.4 Integration Points
@@ -280,7 +284,7 @@ CHECKPOINT_RETENTION_DAYS=30
 
 ### 4.7 Open Questions tecniche
 
-- **OQ1**: thread-safety di scrittura `polyindex/*.json` quando 2 ingest finiscono contemporaneamente → adottato file lock (`fcntl` su Unix) + atomic replace; sufficiente per single-process FastAPI ma da rivedere se passiamo a multi-worker.
+- **OQ1**: thread-safety di scrittura `polyindex/*.json` quando 2 ingest finiscono contemporaneamente → adottato file lock (`fcntl` su Unix) + atomic replace; sufficiente per single-process (server HTTP attuale o futuro FastAPI) ma da rivedere se passiamo a multi-worker (v2.0).
 - **OQ2**: dimensione massima di `INDEX.json` prima di sharding (es. per soggetto inizia con A, B, ...) → posticipato a v2.0.
 - **OQ3**: cache embeddings dei soggetti canonici → serve persistenza? Probabilmente sì in SQLite (`subject_embeddings`) per evitare rigenerazioni; vedi T24.
 
@@ -353,8 +357,9 @@ Log(INFO_LOG_LEVEL, "dettaglio pagina", {"page": 12}, json=True, to_file=True)
 - **T15–T17 (✅ completato)**: writer pagine + `manifest.json` (`output_writer.py`), builder `TOC.md` (`toc_builder.py`), builder `INDEX.md` (`index_builder.py`); integrati in orchestrator per T15, T16/T17 standalone (cablaggio orchestrator completo con T22/T30).
 - **T18 — Logging + audit (✅ completato)**: T18(a) — estensione `src/core/log.py` (`json`, `to_file`, `log_dir`, `safe_text`); T18(b) — `bind_log_context` + `log_stage_block_async` in `run_pipeline`, correlazione con `pipeline_runs`; test `tests/test_logging.py`, `tests/test_logging_propagation.py`.
 - **T22 (NUOVO)**: builder `<NomeLibro>.md` aggregato.
-- T18.5(a–d): refactor HTTP async + job model.
-- T19–T21: smoke/E2E e test HTTP.
+- **T19'**: smoke E2E pipeline (orchestrator, no HTTP) — sostituisce in MVP il test HTTP rimandato **T21(b)**.
+- ~~T18.5(a–d)~~ **rimandato** (v2.0 / on-demand): refactor HTTP FastAPI + upload streaming + `/artifacts`.
+- ~~T21(b)~~ **rimandato** con T18.5: E2E HTTP submit→poll→artifacts (FastAPI TestClient).
 - **T23 (NUOVO)**: builder `polyindex/TOC.json` (deterministico, idempotente).
 - **T24 (NUOVO)**: parser `INDEX.md` → struttura `{subject_raw: [pages]}`.
 - **T25 (NUOVO)**: AI Subject Matcher (normalizzazione + embeddings + LLM dirimitore + persistence dei canonical).
@@ -371,7 +376,9 @@ Log(INFO_LOG_LEVEL, "dettaglio pagina", {"page": 12}, json=True, to_file=True)
 
 **Nota**: i passi Manoscritto `c` e `d` sono **in MVP**; ciò che qui restava come “v1.1 sul manoscritto” è stato assorbito sopra.
 
-**v2.0**:
+**v2.0** (o on-demand se serve scalare oltre l’uso interno):
+- **T18.5(a–d)**: migrazione HTTP a FastAPI (upload streaming, job model formale, `GET /api/ingest/{id}/artifacts`).
+- **T21(b)**: E2E HTTP submit→poll→artifacts; **dipende da T18.5** (T21a resta in MVP: test unitari form su `ingest_form.py`).
 - Sharding `INDEX.json`.
 - Multi-worker FastAPI con lock distribuito (Redis o equivalente leggero).
 - Recovery di ingest interrotti senza riavvio manuale.
@@ -402,7 +409,7 @@ Differenze chiave rispetto al README attuale (richieste da questo PRD):
 
 ## 7. Backlog task atomiche e stato
 
-Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato indicato per ogni task: **Opus** (logica complessa, prompt engineering, architettura cross-modulo), **Sonnet** (codice deterministico, stato, test), **Composer 2** (scaffolding, IO file, boilerplate).
+Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** (non in MVP; uso interno / dipendenze differite). Modello consigliato indicato per ogni task: **Opus** (logica complessa, prompt engineering, architettura cross-modulo), **Sonnet** (codice deterministico, stato, test), **Composer 2** (scaffolding, IO file, boilerplate).
 
 ### Fase 1 — Upload (completate)
 
@@ -444,20 +451,24 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 
 - [ ] **T22 (NUOVO)** — Builder `<slug>.md` (Σ pages). *(Composer 2)*
 
-### Fase 1 — Upload (HTTP refactor)
+### Fase 1 — Upload (HTTP refactor) — RIMANDATO `[⏸]`
 
-- [ ] **T18.5(a)** — Bootstrap FastAPI. *(Sonnet)*
-- [ ] **T18.5(b)** — Submit con upload streaming. *(Sonnet)*
-- [ ] **T18.5(c)** — Job model in-process. *(Opus)*
-- [ ] **T18.5(d)** — Status + artifacts endpoints. *(Sonnet)*
+> **Motivo**: applicazione a uso interno per cura/gestione biblioteca; il server attuale (`ingest_http_server.py` + `job_registry.py`) copre submit 202, status ed eventi SSE. Il refactor FastAPI (T18.5) e l’E2E HTTP formale (**T21b**) non sbloccano artefatti libro né polyindex. Ripianificare in **v2.0** o on-demand (es. PDF molto grandi, molti upload paralleli, CI E2E HTTP obbligatoria).
+>
+> **Sostituto MVP per T21(b)**: T19' (E2E su `orchestrator.run_pipeline`, senza HTTP). **T21(a)** non è rimandata (test form su `ingest_form.py`, senza FastAPI).
 
-### Fase 1 — Test E2E e HTTP
+- [⏸] **T18.5(a)** — Bootstrap FastAPI. *(Sonnet)* — **rimandato**
+- [⏸] **T18.5(b)** — Submit con upload streaming. *(Sonnet)* — **rimandato** (dipende da T18.5a)
+- [⏸] **T18.5(c)** — Job model in-process (Pydantic + `asyncio.create_task`). *(Opus)* — **rimandato** (parzialmente coperto da `job_registry.py` attuale; formalizzazione rimandata)
+- [⏸] **T18.5(d)** — Status + artifacts endpoints (`GET /api/ingest/{id}`, `/artifacts`). *(Sonnet)* — **rimandato** (oggi: `/status`, `/events`; no `/artifacts`)
+
+### Fase 1 — Test E2E
 
 - [x] **T19** — Smoke test end-to-end (validazione/edge case).
 - [x] **T20** — Smoke test duplicate hash.
-- [ ] **T19'** — Smoke E2E nuovo hash (reale, no rete). *(Sonnet)*
-- [ ] **T21(a)** — Test form mapping HTTP. *(Sonnet)*
-- [ ] **T21(b)** — E2E HTTP submit→poll→artifacts. *(Sonnet)*
+- [ ] **T19'** — Smoke E2E nuovo hash (reale, no rete, via orchestrator). *(Sonnet)* — **priorità MVP** al posto di T21(b)
+- [ ] **T21(a)** — Test form mapping HTTP (`build_ingest_payload_from_form` in `ingest_form.py`). *(Sonnet)* — **in MVP** (non dipende da T18.5)
+- [⏸] **T21(b)** — E2E HTTP submit→poll→artifacts (FastAPI TestClient). *(Sonnet)* — **rimandato**; **richiede T18.5(a–d)**
 
 ### Fase 1 — Upload (polyindex e biblioteca cross-book)
 
@@ -470,7 +481,7 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso. Modello consigliato in
 
 ### Fase 1 — Upload (UX e cablaggio finale)
 
-- [ ] **T29 (NUOVO)** — `web/index.html` form unico di upload operatore. *(Composer 2)*
+- [ ] **T29 (NUOVO)** — `web/index.html` form unico di upload operatore. *(Composer 2)* — polling su `/api/ingest/{job_id}/status` ed eventi SSE (server attuale); elenco artefatti da path noto o patch minima `/artifacts` (non dipende da T18.5 per MVP)
 - [ ] **T30 (NUOVO)** — Orchestratore end-to-end Upload cablato (gate→align→render→OCR×3→writer×4→polyindex×2→snapshot). *(Opus)*
 
 ### Fase 1 — Test E2E cross-book

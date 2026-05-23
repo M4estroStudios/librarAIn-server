@@ -71,21 +71,23 @@ Modifiche puntuali richieste:
    - Backend job MVP: in-process via asyncio TaskGroup; nessun broker esterno.
 3) §4 Security & Privacy: aggiungi vincolo "log strutturato JSON, nessuna chiave/api_key mai loggata, mai stampato il contenuto OCR oltre 200 caratteri".
 4) §5 MVP: aggiungi bullet "Telemetria minima: tabella pipeline_runs + logging strutturato per ogni stage/pagina".
-5) §7 Backlog: aggiungi
-   - [ ] T18.5 — Refactor HTTP a modello async + job_id (FastAPI/Starlette, upload streaming).
-   - [ ] T21 — Smoke E2E reale via HTTP (PDF 4-6 pagine, endpoint LLM mock locale, asserzioni su TOC.md/INDEX.md).
+5) §7 Backlog: T18.5 e **T21(b)** con stato **[⏸] rimandato**; T21(a) resta `[ ]` in MVP (vedi PRD §7).
 6) §6: nessuna modifica al rinvio al README.
 Vincoli:
 - Non introdurre nuove sezioni numerate diverse da quelle esistenti.
 - Italiano coerente con il resto del PRD.
 - Ogni nuovo bullet deve restare misurabile (acceptance criteria style).
-DoD: il PRD aggiornato è coerente, non contiene path utente assoluti, esplicita il modello async e include T18.5/T21 nel backlog con stato [ ].
+DoD: il PRD aggiornato è coerente, non contiene path utente assoluti, distingue modello HTTP attuale vs target FastAPI, marca T18.5 e T21(b) come rimandate; T21(a) resta attiva.
 ```
 MOT OK (ho una lib di logging già io)
 
-### T18.5 — Opus — HTTP async + job model (4 sub-prompt)
+### T18.5 — Opus — HTTP async + job model (4 sub-prompt) — `[⏸]` RIMANDATO
 
-**T18.5(a) — Bootstrap FastAPI**
+> **Non in MVP**. Uso interno: mantenere `src/api/ingest_http_server.py` + `job_registry.py`. Ripianificare in v2.0 o on-demand. **Solo T21(b) rimandato con T18.5** — T21(a) resta in MVP (test su `ingest_form.py`, senza FastAPI).
+>
+> Implementazione parziale già presente: submit 202, worker background, `/status`, SSE `/events`. Manca: FastAPI, upload streaming, `/artifacts`, modelli Pydantic formali.
+
+**T18.5(a) — Bootstrap FastAPI** — `[⏸]` RIMANDATO
 ```text
 Repo: librarAIn-server. Sostituisci src/api/ingest_http_server.py con un'app FastAPI in src/api/app.py + uno script src/api/main.py per uvicorn.
 - Endpoint health GET /health -> {ok: true, version}.
@@ -97,9 +99,9 @@ Repo: librarAIn-server. Sostituisci src/api/ingest_http_server.py con un'app Fas
 - Mantieni requirements.txt/pyproject coerenti (PRE-C).
 DoD: `make run-server` parte, GET / e GET /health rispondono, test passa.
 ```
-ON HOLD (non necessario adesso)
+RIMANDATO (non necessario per MVP uso interno)
 
-**T18.5(b) — Submit con upload streaming**
+**T18.5(b) — Submit con upload streaming** — `[⏸]` RIMANDATO
 ```text
 Repo: librarAIn-server. Implementa POST /api/ingest/submit in src/api/app.py usando UploadFile (python-multipart) STREAMING su disco.
 - Salva il PDF a chunk in <DATA_ROOT>/input/raw/<token>_<safe_name>.pdf, mai tutto in RAM.
@@ -110,9 +112,9 @@ Repo: librarAIn-server. Implementa POST /api/ingest/submit in src/api/app.py usa
 - Aggiungi test tests/test_submit_streaming.py con TestClient + UploadFile finto (PDF 1MB generato con pypdf).
 DoD: PDF da 50MB salvato senza esplodere la RAM; test passa.
 ```
-? (da approfondire)
+RIMANDATO (dipende da T18.5a)
 
-**T18.5(c) — Job model in-process**
+**T18.5(c) — Job model in-process** — `[⏸]` RIMANDATO
 ```text
 Repo: librarAIn-server. Crea src/api/job_registry.py con:
 - IngestJob(BaseModel): request_id, source_sha256?, status: Literal["accepted","running","succeeded","failed","skipped_duplicate"], created_at, updated_at, pipeline_version, last_error?, events: list[IngestJobEvent].
@@ -124,9 +126,9 @@ Aggiorna POST /api/ingest/submit:
 Test: tests/test_job_registry.py copre add/update/append/get; tests/test_submit_async.py: la POST ritorna in <200ms anche con un mock di pipeline che dorme 2s.
 DoD: la POST non blocca mai sul lavoro pesante; lo stato del job evolve.
 ```
-OK
+RIMANDATO — parzialmente coperto da `job_registry.py` + server attuale; formalizzazione Pydantic/async rimandata
 
-**T18.5(d) — Status + artifacts endpoints**
+**T18.5(d) — Status + artifacts endpoints** — `[⏸]` RIMANDATO
 ```text
 Repo: librarAIn-server. Aggiungi a src/api/app.py:
 - GET /api/ingest/{request_id} -> IngestJob completo (404 se non trovato).
@@ -139,7 +141,7 @@ Test:
 - tests/test_status_endpoints.py: dopo una submit, polling restituisce stato finale entro N secondi; il caso 404/409 è coperto.
 DoD: contratto del PRD §4 "Modello di esecuzione" rispettato.
 ```
-OK** (non veramente necessario ma comodo)
+RIMANDATO (comodo ma non necessario per MVP; oggi: `/status` + `/events`, no `/artifacts`)
 
 ### T11 — Sonnet — Stage OCR base (3 sub-prompt)
 
@@ -254,7 +256,7 @@ Repo: librarAIn-server. Crea src/ingestion/orchestrator.py.
   1) renderizza tutte le pagine (T11b),
   2) crea PageJob list,
   3) esegue stage1 → stage2 → stage3 con asyncio.gather + asyncio.Semaphore(settings.max_parallel_request).
-- Ogni transizione di pagina pubblica un IngestJobEvent al registry (T18.5c).
+- Ogni transizione di pagina pubblica un IngestJobEvent al registry (`OrchestratorRegistry` / reporter HTTP; formalizzazione T18.5c rimandata).
 - Niente retry qui dentro (responsabilità del client OpenAI per stage 2/3; per stage 1 implementa retry locale con max=settings.retry_attempts).
 - Test tests/test_orchestrator.py con stage1/2/3 mockati: 8 pagine, MAX_PARALLEL_REQUEST=3 -> assertare che la concorrenza non supera 3 (usando un asyncio.Semaphore di test che traccia max_in_flight).
 DoD: la concorrenza è osservabile e configurabile da .env senza modificare il codice.
@@ -368,19 +370,21 @@ OK
 
 ### T21 — Sonnet — Smoke E2E reale via HTTP (2 sub-prompt)
 
+> **T21(b) `[⏸]` rimandato** con T18.5. Per validazione pipeline end-to-end usare **T19'** (orchestrator, no HTTP). **T21(a) in MVP** — non dipende da FastAPI.
+
 **T21(a) — Test del form mapping HTTP**
 ```text
 Repo: librarAIn-server. Crea tests/test_form_mapping.py.
-- Importa build_ingest_payload_from_form da src.api.form_mapping.
+- Importa build_ingest_payload_from_form da src.api.ingest_form.
 - Casi: payload completo, ranges con sintassi virgole/intervalli, boolean truthy/falsy, autori multipli, error path (toc non contiguo, page invalid).
 DoD: 100% del path build_ingest_payload_from_form e dei suoi helper coperto.
 ```
 OK
 
-**T21(b) — E2E HTTP submit→poll→artifacts**
+**T21(b) — E2E HTTP submit→poll→artifacts** — `[⏸]` RIMANDATO — **richiede T18.5(a–d)**
 ```text
 Repo: librarAIn-server. Crea tests/e2e/test_http_e2e.py con fastapi.testclient.TestClient.
-- Avvia app FastAPI in-process (vedi T18.5).
+- Avvia app FastAPI in-process (vedi T18.5 — task rimandata).
 - Mocka client OpenAI a livello di src/core/openai_client.build_openai_client.
 - POST /api/ingest/submit multipart con un PDF generato a runtime (4 pagine), ottieni request_id.
 - Polling GET /api/ingest/{id} con timeout 30s fino a status=succeeded.
@@ -388,7 +392,7 @@ Repo: librarAIn-server. Crea tests/e2e/test_http_e2e.py con fastapi.testclient.T
 - Test secondo run con stesso PDF: GET dello stato deve indicare skipped_duplicate (pipeline non rieseguita); pipeline_runs ha 1 sola riga succeeded e una skipped (o equivalente come da T18.5d/T14d).
 DoD: smoke E2E reale verde in CI.
 ```
-OK
+RIMANDATO — sostituto MVP: T19' (orchestrator) + test manuali su server attuale
 
 ---
 
@@ -577,11 +581,11 @@ Repo: librarAIn-server. Crea/aggiorna web/index.html (oggi probabilmente segnapo
   - toc_start, toc_end, index_start, index_end (number).
   - options.force_metadata_update_on_duplicate_hash (checkbox).
 - Dopo submit:
-  - mostra request_id e link "GET /api/ingest/<id>".
-  - polling JS ogni 3s su /api/ingest/<id> finché status in {succeeded, failed, skipped_duplicate}.
-  - mostra in coda l'elenco file da /api/ingest/<id>/artifacts.
+  - mostra job_id e link "GET /api/ingest/<job_id>/status" (server attuale).
+  - polling JS ogni 3s su /api/ingest/<job_id>/status (o SSE /events) finché status terminale.
+  - elenco artefatti: path noto `data/output/<sha256>/` oppure endpoint `/artifacts` se aggiunto (T18.5d rimandato; patch minima opzionale).
 - UI minimale, vanilla HTML/CSS/JS, no framework, no build step.
-- Servire `/` come questa pagina (già coperto da T18.5a) con StaticFiles o FileResponse.
+- Servire `/` come questa pagina (già coperto da `ingest_http_server.py`; T18.5a rimandato).
 - Test tests/test_web_index_static.py: GET / ritorna 200 e content-type text/html; presenza dei field name attesi nel body.
 DoD: pagina funzionante in locale, niente dipendenze JS esterne.
 ```
@@ -605,7 +609,7 @@ Sequenza definitiva di run_pipeline(enriched, alignment, useful_pages, settings,
   13) Subject matcher + INDEX.json updater (T25 + T26) -- richiede file lock; condivide lock con T23 quando necessario.
   14) Cleanup tmp (T28).
   15) mark_pipeline_run_finished("succeeded", counters).
-  16) Pubblica evento finale al job registry (T18.5c) con stato "succeeded".
+  16) Pubblica evento finale al job registry (reporter/registry HTTP attuale; modello formale T18.5c rimandato) con stato "succeeded".
 
 Vincoli:
 - Ogni transizione di stage publica un IngestJobEvent al registry.
@@ -654,7 +658,8 @@ Fonte normativa: `PRD-Fase1.md` §2.5.1. In sintesi per chi scrive prompt/parser
 
 ## Sintesi finale aggiornata
 
-- **Completati (12)**: T1–T10 + T19 + T20.
-- **In coda priorità alta (sblocco MVP Upload)**: PRE-A → PRE-B → PRE-C → T11(a..c) → T12(a..c) → T13(a..b) → T14(a..d) → T18.5(a..d) → T15 → T22 → T16 → T17 → T23 → T24 → T25 → T26 → T27 → T28 → T29 → T30 → T19' → T21(a) → T21(b) → T31.
-- **Stima parallelizzabili**: T11(a), T11(b), T12(a) in parallelo; T22/T16/T17 in parallelo dopo T15; T23/T24 in parallelo dopo T22; T25 prima di T26; T27/T28/T29 in parallelo dopo T26.
-- **Modello consigliato per quota Opus**: PRE-D (skip se inutile), T14(a), T18.5(c), T25, T26, T30. Tutti gli altri delegabili a Sonnet/Composer 2.
+- **Completati**: T1–T10, PRE-A–C, T11–T18 (vedi PRD §7).
+- **In coda priorità alta (sblocco MVP Upload, uso interno)**: T22 → T16/T17 (cablaggio orchestrator) → T23 → T24 → T25 → T26 → T27 → T28 → T29 → T30 → **T21(a)** → **T19'** → T31.
+- **`[⏸]` Rimandate (v2.0 / on-demand)**: **T18.5(a–d)** → **T21(b)** (T21b richiede T18.5; T19' sostituisce T21b nel percorso MVP).
+- **Stima parallelizzabili**: T22/T16/T17 in parallelo dopo cablaggio T15; T23/T24 in parallelo dopo T22; T25 prima di T26; T27/T28/T29 in parallelo dopo T26.
+- **Modello consigliato per quota Opus**: T14(a) [fatto], T25, T26, T30. T18.5(c) rimandato. Tutti gli altri delegabili a Sonnet/Composer 2.
