@@ -33,7 +33,7 @@ code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0
 #out { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #2d2d2d; color: #d4d4d4; border: 1px solid #454545; font-size: 0.8rem; white-space: pre-wrap; word-break: break-word; min-height: 3rem; display: none; }
 #out.show { display: block; }
 #out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
-small.req { color: #f08080; }
+small.req { display: inline; color: #f08080; }
 strong { color: #e8e8e8; }
 .dev-banner { margin: 0 0 1rem; padding: 0.7rem 0.9rem; border-radius: 10px; background: #3a2f12; color: #f5d98a; border: 1px solid #6b5524; font-size: 0.85rem; line-height: 1.4; }
 .dev-banner strong { color: #ffe9a8; }
@@ -66,7 +66,7 @@ strong { color: #e8e8e8; }
   <fieldset>
     <legend>File PDF, nome interno e pagine da escludere</legend>
     <p class="hint">Il documento si invia solo tramite upload. L’etichetta interna è facoltativa e non sostituisce i metadati REICAT. Le pagine da escludere usano la numerazione del PDF.</p>
-    <label>PDF da elaborare <small class="req">obbligatorio</small>
+    <label><span>PDF da elaborare <small class="req">*</small></span>
       <input type="file" name="pdf_file" accept="application/pdf,.pdf" required>
     </label>
     <label>Codice o etichetta opzionale del libro
@@ -82,7 +82,7 @@ strong { color: #e8e8e8; }
   <fieldset>
     <legend>Table of Content</legend>
     <p class="hint">Stessa sintassi delle pagine da escludere: virgole e intervalli <code>prima-ultima</code> inclusivi. Deve corrispondere a <strong>un solo blocco contiguo</strong> di pagine (es. <code>11-18</code> oppure <code>11,12,13,14,15,16,17,18</code>) dove compare il sommario / le rubriche dei capitoli.</p>
-    <label>Pagine del Table of Content <small class="req">obbligatorio</small>
+    <label><span>Pagine del Table of Content <small class="req">*</small></span>
       <input type="text" name="toc_range" placeholder="11-18" required autocomplete="off">
     </label>
   </fieldset>
@@ -90,14 +90,14 @@ strong { color: #e8e8e8; }
   <fieldset>
     <legend>Indice analitico</legend>
     <p class="hint">Stessa sintassi: un solo intervallo contiguo (es. <code>301-324</code>) per l’indice dei nomi o soggetti.</p>
-    <label>Pagine dell’indice analitico <small class="req">obbligatorio</small>
+    <label><span>Pagine dell’indice analitico <small class="req">*</small></span>
       <input type="text" name="index_range" placeholder="301-324" required autocomplete="off">
     </label>
   </fieldset>
 
   <fieldset>
     <legend>Metadati bibliografici (REICAT)</legend>
-    <label>Titolo <small class="req">obbligatorio</small>
+    <label><span>Titolo <small class="req">*</small></span>
       <input type="text" name="titolo" required>
     </label>
     <div class="grid-2">
@@ -108,7 +108,7 @@ strong { color: #e8e8e8; }
         <input type="text" name="complementi_del_titolo">
       </label>
     </div>
-    <label>Autori (separati da virgola) <small class="req">obbligatorio</small>
+    <label><span>Autori (separati da virgola) <small class="req">*</small></span>
       <input type="text" name="autore" placeholder="Nome Cognome, Altro Autore" required>
     </label>
     <div class="grid-2">
@@ -177,6 +177,7 @@ strong { color: #e8e8e8; }
     <li id="ph-gate_hash" data-phase="gate_hash">Hash gate</li>
     <li id="ph-pdf_alignment" data-phase="pdf_alignment">Allineamento PDF</li>
     <li id="ph-page_enumeration" data-phase="page_enumeration">Enumerazione pagine</li>
+    <li id="ph-render" data-phase="render">Render PNG</li>
     <li id="ph-stage1_ocr" data-phase="stage1_ocr">Stage 1 OCR</li>
     <li id="ph-stage2_vision" data-phase="stage2_vision">Stage 2 Vision</li>
     <li id="ph-stage3_editor" data-phase="stage3_editor">Stage 3 Editor</li>
@@ -292,6 +293,7 @@ strong { color: #e8e8e8; }
     gate_hash: "Hash gate",
     pdf_alignment: "Allineamento PDF",
     page_enumeration: "Enumerazione pagine",
+    render: "Render PNG",
     stage1_ocr: "Stage 1 OCR",
     stage2_vision: "Stage 2 Vision",
     stage3_editor: "Stage 3 Editor",
@@ -421,7 +423,8 @@ strong { color: #e8e8e8; }
 
     if (status === "completed") {
       setPhaseState(phase, "done");
-      if (phase === "stage1_ocr") progressDetail.textContent = "Stage 1 OCR completato";
+      if (phase === "render") progressDetail.textContent = "Render PNG completato";
+      else if (phase === "stage1_ocr") progressDetail.textContent = "Stage 1 OCR completato";
       else if (phase === "stage2_vision") progressDetail.textContent = "Stage 2 Vision completato";
       else if (phase === "stage3_editor") progressDetail.textContent = "Stage 3 Editor completato";
     }
