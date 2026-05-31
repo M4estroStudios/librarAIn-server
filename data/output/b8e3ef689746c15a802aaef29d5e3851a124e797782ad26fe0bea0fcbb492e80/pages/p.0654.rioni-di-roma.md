@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>654
+RIONE X. CAMPITELLI
+
+Nel 1603 si diede inizio alla costruzione dell'ultima parte del progetto michelangiolesco; che comunque fu portata a termine sotto papa Innocenzo X; il quale addebitò le spese alla Camera capitolina che, sua volta, vi fece fronte tassando gli stipendi degli impiegati, diminuendo compensi ed elargizioni, licenziando molti funzionari, abolendo gli incarichi dei giudici, dei riformatori di studio, dei pacari e del maresciallo del popolo; diminuendo di 30 scudi annui lo stipendio dei maestri regionali. Nel 1654 il palazzo era completato. Fu utilizzato dalle Università delle arti e dei mestieri, dall'Accademia del disegno e anche per raccogliere le statue antiche in soprannumero nel palazzo dei Conservatori.
+
+Nel 1734 con l'acquisto della collezione Albani, Clemente XI Corsini lo dichiarò Museo e lo inaugurò come tale; Marforio intanto era stato sistemato; sempre come fontana, dal Barigioni nel piccolo cortile. Nell'atrio è notevole la statua colossale di «Marte» e alcuni pezzi egizi provenienti dall'area del tempio di Iside nel Campo Marzio: molto interessanti sono le testimonianze archeologiche dei culti orientali conservate in alcune stanze al piano terra; quindi, salito lo scalone, è da vedere la replica dell'«Eros» di Lisippo, il «mosaico delle colombe», le «tabulae bronzeae» provenienti dal Tabularium; la «Venere Capitolina», la dama Flavia, le statue di amazzoni: il «Galata morente» e le sale dei ritratti degli imperatori e dei filosofi.
+
+Tornati sulla piazza affacciamoci alla balaustra, terrazza panoramica sulla città, già ideata da Michelangelo e realizzata da Giacomo Della Porta. Alla sommità della cordonata si sistemarono i due gruppi dei «Dioscuri» provenienti, probabilmente, dal tempio loro dedicato nel Circo Flaminio; ove oggi è la chiesa di S. Tommaso a Monte Cenci. Già protettori della Roma antica; sembrano ritrovare qui la loro paterna funzione nei confronti della città che per tradizione è legata alle coppie di gemelli: Romolo e Remo, Castore e Polluce e, in un certo senso, S. Pietro e S. Paolo.
+
+Quindi troviamo i cosiddetti «trofei di Mario» che in realtà sono panoplie militari con la figura di una donna barbara prigioniera; provenienti, forse, da un arco trionfale e comunque prelevate dal grande ninfeo che Alessandro Severo fece erigere come castello monumentale dell'acqua Giulia sull'Esquilino e che è ancora visibile, come rudere, al centro di piazza Vittorio Emanuele II. La voce popolare credeva che raffigurassero le armi tolte ai Cimbri e ai Teutoni da Caio Mario: tanto perdurava la fama delle vittorie di questo romano.
+
+Accanto ai trofei sono la statua di «Costantino», sulla destra, e quella del suo figlio «Costantino II» a sinistra, rinvenute sul Quirinale dove sorgevano le terme appunto di Costantino. Infine alle estremità sono situate due colonne miliari provenienti dalla via Appia, volute da Vespasiano e rifatte da Nerva. Esse sostituirono due colonne di granito con sopra, rispettivamente, la sfera bronzea dell'obelisco valicano e della statua bronzea di Costantino.
+
+Scendiamo la cordonata disegnata da Michelangelo e realizzata

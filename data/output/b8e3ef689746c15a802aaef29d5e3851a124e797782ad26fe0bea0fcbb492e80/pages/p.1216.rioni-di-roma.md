@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>1216
+
+RIONE XXII PRATI
+
+Al numero civico 34, sta il Palazzo De Parente, eretto con nobili riferimenti classici, da Gaetano Koch. Sull'altro lato della piazza affaccia la fronte posteriore del palazzo di Giustizia con un gruppo bronzeo sul fastigio opera di P. Bartolini. Al centro della piazza è un bel giardino e in mezzo è situato il monumento eretto a Camillo Benso conte di Cavour. La statua bronzea dello statista, posto sull'alto basamento, l'artefice dell'unità d'Italia; mentre sembra considerare i suoi progetti: L'alto basamento è ornato da tre gruppi bronzei raffiguranti uno il «Pensiero» e l'altro l'«Azione», al centro è l'Italia seduta e, vicino a lei, Roma. Il monumento, che è opera di Stefano Galletti (1895), fu inaugurato in occasione del XXV anniversario di Roma capitale. Il giardino di piazza Cavour, infine, insieme a quello di piazza Vittorio, costituisce il primo esempio, realizzato a Roma, di grande piazza alberata di tipo europeo.
+
+Imbocchiamo quindi via Crescenzio, la bella strada alberata che ricorda nel nome il patrizio romano avversario di Ottone III. Qui nel 1900 fu costruito uno sferisterio per il gioco del pallone con il bracciale di legno; oggi scomparso.
+
+Al n. 14 vediamo un bel esempio di villino neo-rinascimentale, il Villino Robertini progettato da A. Pazzi intorno al 1915, con bifore e loggia centrale a tre arcate: Le fasce di marcapiano e quella del sottotetto sono ornate da affreschi con elementi a foglie e fiori e uguale decorazione presentano le lunette del loggiato; Sul villino poi un'elegante torretta ornata da ornamenti analoghi. Di fronte è il Palazzo dell'Istituto nazionale delle assicurazioni, costruito da A. Spaccarelli, dove ha oggi sede il liceo artistico Alessandro Carovillani. Proseguendo per questa strada, notiamo, al n. 38, un palazzo che presenta, all'angolo con la via Ovidio, una torretta conclusa da una cupola, ornata da una serie di occhi e di mensole neo-barocche, che ha il suo diretto confronto con quella dell'hotel Excelsior di via Veneto. Al n. 83 è poi un edificio che presenta sulla lunetta dell'ingresso una decorazione a mosaico con l'indicazione dell'anno di costruzione, 1910, entro un cartiglio.
+
+Al n. 87 è situata una palazzina neo-rinascimentale, ornata da due altane angolari, che presenta le valve del portone ornate da due splendidi mascheroni bronzei. Di fronte, al n. 86, stanno due fra le più moderne palazzine del rione. Si tratta di due piccoli edifici gemelli e affiancati, strutturati su travi di ferro e rivestiti di cotto rosso e che godono di ampie finestre. Sono opera dell'architetto G. Ciaramaglia.
+
+Via Crescenzio termina sulla destra con la Palazzina del Museo storico dell'arma dei carabinieri, la cui facciata principale è sulla piazza Risorgimento; L'edificio fu eretto da Scipione Tadolini nel 1937 e presenta un fregio marmoreo ornato da emblemi e insegne militari tra cui elmi, cappelli, tamburi, trombe e fucili. Al di sopra stanno teste marmoree elmate: Il museo raccoglie cimeli, documenti e anche opere d'arte ispirate alla storia dell'arma dalla sua fondazione, avvenuta nel 1814, ai giorni nostri. Il museo è corredato da un archivio storico e da una biblioteca specializzata.
+
+Da qui prendiamo per via Cola di Rienzo che è intitolata al tribu-

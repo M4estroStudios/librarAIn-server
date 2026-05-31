@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO
+705
+
+Possibilità di collegare lo stagno gelido del martirio con la de che abbiamo già trovato presente nella leggenda di papa Silvestro I, con la fontana di Campo Vaccino e con la vicina fonte di Giuturna; e si può dire che in questa zona il cristianesimo esorcizzò un antico culto pagano delle acque sublimandolo in una serie di eventi miracolosi e di martirio.
+
+Qui sorse anche un monastero di benedettini, passato alle benedettine e infine alle oblate di Tor de' Specchi. Così nel XIII secolo la chiesa di S. Maria fu ricostruita col titolo di S. Maria Liberatrice (liberatrice appunto dall'inferno raffigurato dal leggendario drago).
+
+Questa chiesa fu poi restaurata sotto papa Gregorio XIII e Sisto V, rifatta infine nel 1617 a spese del cardinale Marcello Lante, che ne incaricò l'architetto Onorio Longhi. Demolita per scavare i livelli archeologici più antichi, nel 1900 la chiesa ha passato il proprio titolo e la propria immagine principale relativa alla Madonna alla famosa chiesa del Testaccio; mentre alcune opere minori sono oggi conservate nel monastero delle oblate a Tor de' Specchi.
+
+Un'ultima memoria cristiana è quella della chiesa dedicata a papa S. Adriano I e ricavata nel VII secolo all'interno della Curia, dove il senato cittadino medievale continuò a riunirsi prima di passare nel 1143 sul Campidoglio.
+
+La chiesa ebbe tre navate, ricavate con colonne di risulta e capitelli di diversa foggia. Qui sostava la processione dell'Assunta che portava l'immagine della Madonna, ritenuta acherotipa dal Laterano a S. Maria Maggiore; e ai piedi della Madonna dipinta venivano lavati con acqua profumata di basilico (pianta questa che ricorre in altre processioni mariane del folclore italiano, per esempio a Scalea in Calabria). La chiesa fu quindi ricostruita nel XVII secolo con architettura di Marino Longhi il Giovane, che chiuse le colonne all'interno di pilastri per dare all'edificio maggiore solidità. In questa chiesa ebbero la loro sede le compagnie degli acquavitari (sia dei padroni che dei rivenditori), cui si unì, nel 1711, la compagnia dei tabaccai sorta dopo che l'uso del tabacco si era affermato anche a Roma. Oggi la chiesa di S. Adriano non c'è più perché demolita per riportare alla luce l'antica Curia. Restano alcuni frammenti delle pitture, databili al IX secolo e raffiguranti personaggi illustri della Roma di allora.
+
+Per accedere al colle Palatino, dove tra le tante rovine archeologiche ancora sopravvivono i resti dei giardini dei Farnese, possiamo salire dall'ingresso su via di S. Gregorio o dall'erta che parte dall'arco di Tito e ci porta a un bivio: proseguire passando accanto al muro di cinta dell'area del Foro o salire le scale sul fianco degli Orti Farnesiani. Noi preferiamo scendere per un tratto della via Nova, a destra dopo la seconda fontanella, e ascendere al colle Palatino (veramente colle fatale!) per le scale del monumentale ninfeo dei Farnese: architetture pseudonaturalistiche, loggiati tardorinascimentali, finte grotte, vasche, acqua scrosciante fragorosa, scale che s'aprono e si richiudono, statue nascoste nelle fresche penombre; anche se appare spenta l'impressione luminosa che doveva coinvolgere l'animo degli Arcadi accademici, può però qui...

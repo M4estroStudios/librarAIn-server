@@ -1,0 +1,20 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+1073
+
+**Le terme di Diocleziano**
+
+Se facciamo paragoni con i tempi attuali, non possiamo non avvertire un disagio profondo; 3 o 4 piscine su oltre 4 milioni di abitanti, do nel III secolo d.C. per sei-settecentomila, se ne contavano circa 956, delle dimensioni e del lusso magari di quelle costruite da Caracalla. Eppure per tempi, erano poche; e forte era il disagio dei residenti, specie quassù, nella VI regione dell'Alta Sèmitia. Infatti due vici di porta Viminale e porta Collina v'erano solo pochi bagnucchi scarsamente dotati. Fare il bagno per un romano d'allora non era solo una questione di divertimento e d'igiene; era soprattutto una questione di socializzazione nel senso più ampio del termine: E fu così che tra il 298 e il 306 si realizzarono senza badare a spese le Terme di Diocleziano. Tremila persone potevano contemporaneamente, e ad un prezzo irrisorio, godersi il lusso profuso in un complesso di oltre 13 ettari, avendo i lati rispettivamente di 376 per 361 metri, che occupavano un'area oggi contraddistinta dalla piazza dei Cinquecento; via Viminale, via Torino, via XX Settembre, via Volturno.
+
+L'anonimo di Einsiedeln disse: «I nostri Signori Diocleziano e Massimiano; Seniori Invitti Augusti, padri degli Imperatori e dei Cesari; e i nostri Signori Costanzo e Massimiano Invitti Augusti, e Severo e Massimiano nobili-ssimi Cesari dedicarono ai loro diletti Romani quelle Terme Felici Diocleziane che Massimiano Augusto tornando dall'Africa e con la maestà della sua presenza ordinò fossero costruite; consacrò dando loro il nome dell'augusto suo fratello Diocleziano, aver acquistato gli edifici necessari, in proporzione della grandiosità di un'opera tanto cospicua; averle rifinite con fastoso ornamento» (C. I L VI, I 30).
+
+Sarà una precisazione inutile, ma è giusto rammentare che le Terme di allora erano un qualcosa di ben più complesso d'una qualsivoglia piscina d'oggi. Allora infatti: oltreché nuotare, si poteva fare un bagno a temperatura graduata, tiepida, calda; essudativa; inoltre si poteva fare ginnastica; leggere sia in greco che in latino; passeggiare in giardini ameni ricchi d'opere d'arte; conversare, ascoltare musica, conferenze, starsene in santa pace.
+
+L'architetto Rabirio, seguendo il collaudato schema di Apollodoro, edificò tutto questo allacciandolo con un acquedotto. L'impianto rimase in funzione fino al marzo del 538, il che vuol dire 232 anni, al momento in cui Vitige distrusse gli acquedotti di Roma.
+
+Il calidarium occupava buona parte della piazza della Repubblica; qualche rimasuglio c'è ancora a ridosso della basilica di S. Maria degli Angeli. Quest'ultima occupa la sala del tepidarium; di 90,80 metri di lunghezza, 28 di altezza e 27 di larghezza. La navata era l'antico frigidario. La natatio, piscina, misurava 250 mq. Sul lato maggiore era allietata da un giardino; mentre sugli altri era fiancheggiata da portici. «La piscina», riporta l'Aurigemma; «appariva come un piccolo lago con le sponde e col fondo rivestiti di marmo, e vi si specchiava da sud una fronte architettonica imponentissima con grandiosi nicchioni alternativamente rettangolari ed incurvati; la cui solenne imponenza il Piranesi e il Rossini e altri incisori hanno eternato in disegni divenuti celebri».
+
+Ancora oggi otto colonne di granito rosa orientale, alte metri 13,80 e con una circonferenza di cinque, sostengono buona parte del tutto. Date le distruzioni e le vicende vissute da quest'importante complesso non è facile individuare l'ubicazione esatta delle sale di ritrovo, delle biblioteche, dei ninfei, degli spogliatoi, delle palestre, degli auditorii ecc...
+
+Tutto ciò, come detto, era a disposizione di chiunque frequentava una terma. Una cosa ben diversa dai cinque grandi dopo ogni...

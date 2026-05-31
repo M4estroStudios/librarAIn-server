@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO
+825
+
+**La Bocca della Verità**
+
+Si dice che un giovane patrizio accusasse la moglie di adulterio; consumato durante le sue assenze grazie alle visite furtive di un amante a lui sconosciuto. Il marito pretese dalla moglie, che si proclamava innocente, la prova del giuramento di tale affermazione alla Bocca della Verità. Nel giorno prestabilito, mentre tra due ali di folla la giovane donna veniva accompagnata alla chiesa, un uomo le si parò davanti e con prepotenza l'abbracciò e la baciò. Gli astanti fecero per linciarlo, ma la donna affermando che doveva trattarsi di un matto ottenne che lo si mandasse via incolume. Giunta davanti al mascherone, introdusse una mano nella bocca di marmo e disse ad alta voce: "Giuro che nessun uomo mi ha mai abbracciata e baciata tranne mio marito quel giovane pazzo!". Detto questo ritrasse la mano intatta e insieme al marito soddisfatto se ne tornò a casa tra la folla piangeante. Solo lei sapeva che il cosiddetto matto era l'amante.
+
+Nella navata sinistra l'abside è ornata da scene della Vita di Maria e dall'immagine della "Madonna con il Bambino". Vediamo quindi la cappella del Crocefisso, disegnata dal Giovanale; il cui tabernacolo fu donato nel 1727 dal cardinale Albani. Segue la cappella dedicata a S. Giovanni Battista De Rossi, protettore degli studenti alle prese con esami difficili; progettata da Carimini (1860). Sull'altare è l'immagine del Santo; mentre la balaustra bronzea è del XVIII secolo. Vediamo infine il battistero, voluto dal cardinale Albani, con il fonte ricavato in un frammento architettonico romano, dono di papa Benedetto XII. Alle pareti sono affreschi settecenteschi con il battesimo di Gesù.
+
+Ritornati nel portico si può accedere al piccolo Museo del piano superiore che conserva materiale archeologico vario; proveniente dagli scavi sotto la chiesa. Quindi entrare nella sala del capitolo e vedere un affresco del secolo XV già presente in una casa delle vicinanze (oggi scomparsa), raffigurante la "Madonna delle Grazie".
+
+Le stanze dove visse S. Giovanni Battista De Rossi sono visibili in quelle del palazzo diaconale superstite.
+
+Usciti dalla chiesa abbiamo di fronte la bella fontana dei tritoni ideata da CF. Bizzaccheri, realizzata da F. Moratti, nel 1717 e voluta da Clemente XI, Albani. Bizzaccheri diede alla vasca la forma di una stella ad otto punte perché questa era uno degli emblemi della famiglia Albani e quindi di Clemente XI. Lo stesso motivo era presente nel gradino di base, ma oggi è appena visibile dato che la fontana è racchiusa in un anello di colonnine marmoree. Al centro della vasca si erge un gruppo di possenti rocce ornate da erbe acquatiche scolpite da Filippo Bai. Sulle rocce stanno due forti tritoni le cui code si intrecciano, opera di Francesco Moratti. L'immagine dei due tritoni, come l'idea della roccia, documentata nei disegni del Bizzaccheri è ispirata ai modelli berniniani e c'è da dire che i commenti dei romani furono di ammirazione per l'opera e di meraviglia perché la fontana andava ad adornare una piazza periferica. Accanto alla fontana Bizzaccheri...

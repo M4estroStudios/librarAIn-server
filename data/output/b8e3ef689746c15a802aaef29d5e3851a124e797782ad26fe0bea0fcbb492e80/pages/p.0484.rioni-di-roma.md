@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>484
+
+RIONE VII. REGOLA
+
+Terno è a croce greca, con il quarto braccio che termina od inizia con l'ingresso; si completa con delle cappelle; mentre una cupola sormonta il tutto con bell'effetto. Sull'altare maggiore c'è ovviamente una riproduzione della «Madonna della Quercia» di Viterbo racchiusa in una cornice ornata dai simboli dell'università dei macellai. Dipinti della scuola romana del Rinascimento ornano la sacrestia. Tornati all'esterno, notiamo un bell'edificio settecentesco; ove tuttora ha sede la confraternita dei macellai, probabile opera anch'esso di Filippo Raguzzini.
+
+Una sorta di slargo della piazza della Quercia costituisce la piazza Capo di Ferro. All'angolo le due, v'è il Palazzo Missini-Ossoli ed ora Spada-Veralli-Potenziani. Venne costruito nel 1527, poco dopo il famoso sacco della città, da un mercante di Orvieto; Giordano Missini. Agli inizi del Seicento era dei Clementini, in seguito passò ai Caffarelli che nel 1674 lo cedettero agli Ossoli. Nella seconda metà del Settecento dagli Ossoli passò ai Soderini, per terminare agli Spada-Potenziani:
+
+La paternità è incerta; c'è chi vi vede la mano di Baldassarre Peruzzi; e chi quella di Antonio da Sangallo il Giovane; Caratteristico il piano terra con un bugnato ben marcato; ed il portone sormontato da un bel frammento architettonico antico.
+
+Proseguiamo per la via di Ferro. Le case fanno parte del complesso del palazzo Spada. Al numero civico 12, v'è una bella costruzione della fine del Quattrocento; purtroppo malridotta dal tempo e da certi discutibili ritocchi. Aveva un tempo tutta una decorazione graffita e dipinta a bugne regolari; e suddivisione dei piani a motivi vegetali geometrici: Anche le belle finestre hanno subito l'ingiuria di un certo cattivo gusto; che ne ha alterato l'antico disegno sacrificandole a nuove esigenze: Al n. 7 v'è il Palazzetto Spada, sobria e maestosa costruzione cinquecentesca; che molto fa tuttora discutere sull'autore. V'è infatti chi attribuisce a Baldassarre Peruzzi e chi al Vignola.
+
+Come il vicino palazzo che abbiamo parte considerato; anche questo edificio appartenne all'origine ai Capodiferro: Costruito attorno al 1540, nel 1566 subì ritocchi per volere di Tiberio e Domenico Capodiferro. Al piano terra aprono negozi cui ingressi adattano accessi ad arco; due per lato al portone d'ingresso, composto in architravato. A mo' di basi, di fronte ai pilastri; rocchi di colonne antiche in travertino. Si pensa possa essere opera del Mascherino (1524-1606). Al primo piano; cinque finestre intercalate da pilastri con capitello jonico; al secondo piano altrettante finestre con semplice incorniciatura:
+
+Torniamo indietro; ed a piazza della Quercia; prendiamo la via delle Grotte. Questa, detta anche «delle Cripte», è più volte citata negli atti processuali riguardanti Giuseppe Balsamo; meglio noto come conte di Cagliostro; che qui abitava presso un fonditore di nome Feliciani. Qui il noto personaggio conobbe Lorenza, la moglie che lo tradì: Una leggenda, riportata nel IV Rione, insiste sulla presenza del fantasma di quest'ultima, che, fra il rimorso, è ben lungi dall'avere pace, brancola pertanto nottetempo da questa via a piazza di Spagna ov'era la sede della polizia pontificia.

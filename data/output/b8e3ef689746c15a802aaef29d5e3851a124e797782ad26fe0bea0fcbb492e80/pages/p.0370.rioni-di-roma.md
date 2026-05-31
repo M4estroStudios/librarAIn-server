@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>370
+
+RIONE V. PONTE
+
+**Ponte dei Fiorentini**
+
+Poco distante dal ponte principe Amedeo di Savoia Aosta era il ponte dei Fiorentini o ponte di ferro, detto anche «ponte del soldino», che univa la via Giulia con l'opposto porto Leonino. Questo ponte attraversava il fiume con una sola arcata in ferro che aveva alle due estremità il luogo dove si doveva pagare il pedaggio, che era appunto di un soldo. Più tardi il pedaggio venne riscosso solo da un lato. Questo obolo veniva riscosso dalla famiglia Celani, che lo versava all'obolo di S. Pietro. Ne erano esenti soldati e frati che richiedevano elemosina. Il ponte, costruito dal Calvi, del genio pontificio su disegno dell'ingegnere Ondry nel 1861, fu demolito il 15 luglio 1941 e il ferro fu ceduto alla raccolta di tale materiale che veniva fatta per sopperire ai costi della guerra. Già da tempo era stato chiuso al traffico; prima a vetture ovviamente a cavalli e poi limitato a quello pedonale. La domenica di Pasqua il passaggio del ponte era gratuito.
+
+Una vecchia fotografia ce lo mostra con parapetti a forma di tralicci e sospeso con vistosi tiranti che si incrociavano nella parte centrale; certamente durante le piene del Tevere doveva offrire una ben scarsa sicurezza per la sua pavimentazione di tavole di legno! Si trattava di un'opera senz'altro ardimentosa e, prima della sua inaugurazione ufficiale, fu percorso da Pio IX, che ne apprezzò la costruzione.
+
+[Testo interrotto/mancante nel passaggio tra il ponte e la chiesa] ...essere portata a termine nel 1535, ma ad unica navata. Due secoli più tardi Clemente XI la fece demolire e ricostruire su progetto di Carlo De Dominicis, che condusse a termine l'opera in due anni. Nel 1868 la chiesa fu restaurata dall'architetto Andrea Busiri Vici.
+
+La facciata è scandita da lesene e da doppie colonne che sostengono capitelli in stile composito; decorati anche da rami di palma, corone e dal monogramma del Cristo. Superiormente la facciata, ornata da una grande finestra centinata, si conclude in un timpano mistilineo di derivazione borrominiana. Nella parte inferiore, accanto a due nicchie ornate da una conchiglia all'interno e sormontate da brevi cornici poste a somiglianza di piccoli timpani, è il portone centrale che ha sopra un'apertura ovale incorniciata da rami di palma e gigli resi in stucco. La parte interna è ellittica e in essa si aprono le cappelle, che conservano opere del Settecento. Uscendo dalla chiesa e di fronte al n. 52 vediamo una lapide che ricorda il sacrificio di Tommaso Abbate, fucilato nel 1944.
+
+Proseguendo su questo lato della strada arriviamo all'edificio posto ad angolo con via di Panico; già parte del nucleo edilizio che comprendeva anche la chiesa dei Ss. Celso e Giuliano e forse progettato dallo stesso architetto che ricostruì la chiesa, cioè dal De Dominicis: al piano terreno di questo edificio settecentesco si apre la chiesa cristiana evangelica metodista. Bella è la facciata settecentesca con le finestre che si aprono su uno dei più bei panorami di Roma. Dall'altra parte della strada è situata la casa Bonadies, illustre famiglia romana oggi estinta, di cui si ammira soprattutto l'ultimo piano per il bel loggiato. Interessante è anche il piano terreno con porticato realizzato con materiale di recupero, colonne con capitelli in stile ionico e una splendida...

@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>DALLE ORIGINI AD OGGI
+205
+
+Quella scoperta nel 1616 all'angolo tra la via di Porta Pinciana e la via Sistina; appartenente ad Octavia, figlia di M. Appius, e dal complesso dei grandi Horti Luculliani; la villa che il famoso L. Licinio Lucullo, generale e uomo politico, si era fatto costruire su una vasta area (tra via Due Macelli, via le Case e via di Porta Pinciana). Questo complesso, innalzato con le ricchezze accumulate durante la guerra contro Mitridate e la guerra sociale, fu abitato successivamente da Valerio Asiatico e da Messallina.
+
+Durante il medioevo la zona centrale del rione III che si raccoglieva attorno alla via del Corso continuò ad essere abitata anche se non intensamente. Modesti edifici erano stati costruiti lungo la via Flaminia; mentre numerose torri furono innalzate. Una di queste, che si trovava poco lontano dalla torre Tosetti, è stata recentemente rinvenuta durante i lavori di restauro di Palazzo Sciarra ed apparteneva ai Colonna di Palestrina.
+
+La denominazione «Capo le Case» (ad capita domorum) che ancora oggi è rimasta all'altura che sovrasta l'abitato a nord attesta appunto uno dei limiti dell'abitato attorno alla via del Corso. L'area, come si è detto, non dovette essere molto costruita se pensiamo ad alcune denominazioni come quella di S. Silvestro in Capite che si chiamava «inter duas lauros»; o di S. Andrea delle Fratte dal nome delle siepi che recingevano gli orti che qui si trovavano; o la piazza di Monte d'Oro che, per chiamarsi così dall'insegna di un'osteria che qui si era impiantata alla metà del XVI secolo, si chiamava «ortaccio».
+
+Durante il pontificato di Giulio III (1550-1555) si stanziarono alcune colonie di Schiavoni, di Maroniti, d'Avignonesi, di Lombardi che lasciarono il proprio nome ad alcune località. Sorsero anche numerose le chiese; molte delle quali oggi non più esistenti come la chiesa di S. Andrea de Columna, situata ai piedi della «Colonna» di Marco Aurelio e demolita durante il pontificato di Paolo III per rettificare la via Flaminia, o la chiesetta di S. Giovanni in Capite, cui resti si ritrovarono nel 1879 all'angolo tra la via del Trione e la via Due Macelli, quella di S. Francesca Romana entrambe demolite durante i lavori che interessarono l'ampliamento della strada.
+
+Nella vicina piazza di Pietra era invece la chiesa dedicata a S. Stefano del Trullo mentre la chiesa di S. Lucia de Columna si trovava sul lato destro del Corso e, ricostruita nel Cinquecento, fu dedicata a S. Maddalena delle Convertite. Oggi ancora esistente è invece l'antica chiesa di S. Silvestro in Capite annessa al grande monastero omonimo e costruita sulle rovine del Tempio del Sole.
+
+Un'altra chiesa di notevole interesse storico è quella dedicata a S. Lorenzo in Lucina; costruita nel IV-V secolo d.C., anch'essa su preesistenze antiche, accanto alla quale, nel 1260, venne costruito il Palazzo dei cardinali titolari della chiesa. Numerosi furono i conventi e le arciconfraternite che spesso vennero ospitati in queste chiese e numerosi furono anche i palazzi e le ville che furono costruiti come i famosi orti del monsignor Angelo Coloc...

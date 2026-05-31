@@ -1,0 +1,13 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>758
+
+RIONE XI S. ANGELO
+
+S. Maria in Campitelli e il convento dei Chierici regolari (G.B. Falda).
+
+[Immagine]
+
+L'immagine stessa in un ambiente ritenuto più confacente: la traslazione avvenne con gran pompa; il 14 gennaio del 1662. Da allora la chiesa, che era stata consacrata nel 1648 ed elevata a titolo cardinalizio, subì tutta una serie di lavori che occuparono lo spazio di ben 66 anni. Si iniziò con un progetto di Carlo Rainaldi, riguardante la ristrutturazione dell'intero complesso. La facciata venne eretta tra il 1665 ed il 1667; nonostante il proseguimento dei lavori anche all'interno che durarono fino al 1728, la chiesa era ugualmente aperta al pubblico. Bell'esempio di barocco romano, la facciata in travertino presenta la consueta suddivisione in due parti, con semicolonne e timpano sopra l'ingresso principale e parte superiore più stretta; collegata con volute all'inferiore; finestrone con doppio motivo ad arco. L'interno a croce latina ha la caratteristica di restringersi verso l'altare maggiore. Belle le ventiquattro colonne in stile corinzio, coeve della chiesa: racchiusa in una particolare struttura progettata dal Rainaldi, l'immagine miracolosa della «Vergine» si presenta nell'inconsueta forma conferitale dalla lamina d'argento dorato su cui è effigiata; con sfondo di smalto. Secondo alcuni ciò non farebbe escludere una origine franca, secondo altri invece saremmo di fronte ad opera di maestranze locali dell'XI secolo. Inoltre segnaliamo un bel «S. Michele Arcangelo» di Sebastiano Conca, collocato nella prima cappella di destra; portato via dalla chiesa di S. Eustachio; inoltre oggetti appartenuti a S. Gregorio Nazianzeno; santo d'origine orientale, venerato soprattutto nel rione Campo Marzio, fra cui un altare portatile incrostato di mosaico; con la scritta «Gregorius Aurifex Senator». Nella prima cappella: tombe della famiglia Paluzzi-Altieri; signori di Viano (nunc Veiano) Oriolo e Monterano. Il busto del principe Altieri è di Giacomo Antonio Lavaggi.
+
+Subito a destra della chiesa, v'è il convento dei Chierici regolari della Madre di Dio. Eretto nel 1622 dagli architetti Orazio Torriani e Vincenzo Della Greca, venne ampliato nel 1724 da Filippo Raguzzini e Carlo De Dominicis. Sulla sinistra della chiesa, al numero civico 9, edificio costruito nel 1619 da Leonardo e Giambattista Stati.

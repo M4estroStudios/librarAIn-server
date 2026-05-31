@@ -1,0 +1,12 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+239
+
+G. Vasi, la chiesa di S. Lorenzo in Lucina.
+
+Lucina e al n. 48 s'erge un bell'edificio settecentesco dall' elegante decorazione realizzata in stucco; con teste femminili ad ornare la parte superiore delle finestre ad eccezione di una che è invece ornata dalla testa di un moro con una stella cometa sulla fronte. Le altre finestre del secondo piano sono tutte ornate da stelle comete ad eccezione di una che è invece ornata da una cometa fiancheggiata da due stelle. L'edificio accanto (n. 46) è il Palazzo dei marchesi Magnani che erano anche proprietari oltre che del grazioso villino sul Palatino (il villino Mills) anche del cosiddetto tempio di Minerva Medica. Il palazzo è ornato, al centro, dall'imponente balcone al di sotto del quale si apre il portone d'accesso mentre una serie di balconi minori, con graziose balaustre in ferro battuto, si aprono in corrispondenza delle finestre del terzo piano; degli stucchi, in riquadri, ornano la facciata. Andando un poco più avanti vediamo ancora un altro palazzo settecentesco, ornato nella parte inferiore dal bugnato, che affianca anche il portone d'accesso oltre a due colonne con capitelli dorici. Eleganti finestre racchiuse da timpani ora curvi e ora triangolari si aprono al primo piano contro le altre dei piani superiori. All'interno è un piccolo cortile, dove nella vasca giunge l'acqua che esce dalle fauci di un'antica protome leonina.
+
+Girando a destra si giunge così nella piazza di S. Lorenzo in Lucina e il primo edificio che si incontra è dell' ex convento dei Caracciolini costruito su disegno del Rainaldi negli anni 1663-1665 ma che ebbe nel Settecento alcuni interventi da parte del Bizzaccheri: Il palazzo, che attualmente ospita la compagnia interna dei carabinieri, presenta all'angolo con la via di Campo Marzio lo stemma della famiglia Albani con tre monti.
+
+Si giunge quindi, poco più avanti sempre sul lato destro, alla chiesa di S. Lorenzo in Lucina. Si tratta di un antico titulus originatosi da una ecclesia domestica venutasi a creare, come già si è accennato, nell' ambito della casa della matrona Lucina. Le più antiche testimonianze relative a questa chiesa risalgono al IV se-

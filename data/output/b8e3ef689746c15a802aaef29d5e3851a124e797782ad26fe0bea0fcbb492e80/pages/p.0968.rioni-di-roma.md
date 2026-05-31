@@ -1,0 +1,13 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>Rione XV. Esquilino
+di Claudia Cerchiai
+Dalle origini ad oggi
+
+L'Esquilino che attualmente include un'area compresa fra il Laterano, S. Maria Maggiore e porta Maggiore comprendeva in antico una vasta zona movimentata dalla presenza delle tre cime del Fagutal ad ovest, del Cispius a nord e dell'Oppius a sud.
+
+Di quest'area verso la metà dell'VI secolo si cominciò ad abitare la zona che interessava le pendici sud-occidentali, l'area Esquilina e questa; alla metà del VII secolo a.C. insieme alla Palatina, alla Collina e alla Suburana fu definita una delle quattro regioni della Roma serviana (Servio Tullio per fortificare il lato ad est, meno protetto; vi avrebbe fatto costruire l'agger). In età augustea l'intera area non passò nella regio denominata Esquiliae ma parte del Fagutal fu inclusa nella II regio e parte del Cispius nella IV. La regio Esquiliae fu limitata così a nord dalla via Collatina; ad ovest dalla via Tuscolana e dalle mura c.d. serviane e ad est e a sud dalle mura aureliane, dopo la costruzione di queste nel 275 d.C.
+
+Era un'area molto abitata: alle pendici con case popolari e più modeste; con edifici più ricercati e lussuosi nelle zone più alte delle Carinae, del Cispius dove, ad esempio, Pompeo si era fatto costruire la propria abitazione; portico di Livia; e la villa di Mecenate divenuta successivamente proprietà dell'imperatore. Questo non avvenne invece per il campus Esquilinius; zona che, fuori dalla cinta muraria, era fin dall'età protostorica occupata da una vasta necropoli; scavata negli ultimi anni dell'Ottocento; essa ha restituito corredi della metà circa dell'VIII secolo a.C., ricchi di materiale ceramico e di armi, che attestano l'esistenza di una classe aristocratica e guerriera vicina a quella esistente lungo la costa dell'Etruria e della Campania. Questo sepolcreto; il più vasto di Roma fra quelli conosciuti, rimase in uso fino al I secolo a.C., attraversato da acquedotti, da strade di grande comunicazione e affiancato da impianti di fabbriche artigiane fra le quali si ricordano, in particolare, le botteghe dei vasai. L'opera di bonifica di questa vasta area, iniziata sotto Mecenate, terminò in età augustea e consistette nella costruzione di numerose ville di famiglie patrizie e di giardini, che finirono poi per essere incluse fra i possedimenti imperiali.
+
+Il clivus Suburanus percorreva questa regio dalla porta Esquilina alla porta Maggiore oltre, verso Labico; da cui prendeva il na, poi

@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>QUARTO ITINERARIO 489
+
+**Santa Lucia della Chiavica o del Gonfalone**
+
+Forse due sono i motivi della grande popolarità di questa santa: il fatto d'essere protettrice d'un senso tanto importante come la vista, ed il fatto di fare da anticamera al solstizio d'inverno e pertanto alle feste del Natale. A questo va aggiunto il potente contributo dato dai siciliani in genere e dai siracusani in particolare al culto di questa santa tutta loro.
+
+Per quanto riguarda la vista, sembra che l'origine non sia da attribuirsi alla santa siracusana, bensì, come riferito da una cronaca dello scorso secolo relativa alla arciconfraternita del Gonfalone, alla beata Lucia, terziaria di S. Domenico che, mossa da celeste impulso nella sua vita, con le proprie mani si accecò svellendosi gli occhi onde liberarsi dalla tentazione di un giovane procace.
+
+Lo scadere della ricorrenza relativa alla festa, oltre che far nascere la popolare credenza d'essere il giorno più corto dell'anno, anticipando così di otto giorni l'evento astronomico; e ciò forse, solo per l'appiccicosità della nota rima «baciata», è importante per essere una sorta d'anticamera delle feste del Natale. In varie regioni (Trentino, Mantovano, Tirolo, Boemia ecc.), tale anticipazione si concretizza facendo di S. Lucia un vero Babbo Natale o meglio «Mammav Natale», che porta i doni ai bambini buoni. Ed a proposito di bontà: è noto che in Svezia il 13 dicembre ogni città elegge la sua Santa Lucia. Si tratta di premiare nella sostanza la fanciulla che ha ostentato i costumi più irreprensibili. Questa, coronata da sette candeline, con una tunica bianca, va in giro a distribuire doni a bambini, ospedali ecc., concludendo con un viaggio premio ovviamente a Siracusa.
+
+Ma torniamo a Roma: probabilmente anche da noi l'origine del culto va legata alla presenza d'una comunità sicula, anche se non abbiamo che ipotesi in questo senso. La primitiva chiesa sorgeva sull'attuale via del Gonfalone, ov'era un «oratorium S. Luciae ponitur in Xenodochio» come ricordato dal Liber Pontificalis, il che vale a dire: v'era oratorio con ospizio. Questo complesso è ricordato come «Lucia Vecchia».
+
+Sul termine «chiavica» ci siamo già intrattenuti in precedenza: era termine ricorrente, e stava ad indicare degli idrici posti per forza di cose in prossimità del fiume entro il quale si immettevano. Il tutto assunse un nome meno rozzo, allorché nel XV secolo la confraternita del Gonfalone, lasciata la chiesa di S. Alberto ed annesso ospedale, che si trovava nei pressi di S. Maria Maggiore, si trasferì qui. In un certo senso, possiamo affermare che oltre al toponimo, la chiesa di S. Lucia assunse anche un più ampio significato. Infatti, pur continuando ad essere oggetto di feste e di venerazione a motivo della protezione agli occhi che la santa esercitava, essa era divenuta anche la protettrice della libertà. Fra i vari compiti della confraternita infatti v'era anche quello dell'affrancamento degli schiavi; in ausilio a quanto allora veniva praticato dall'ordine dei Trinitari.
+
+La comunanza d'intenti con questi ultimi è infatti ben messa in evidenza dall'affresco dell'abside, ove compaiono «S. Giovanni de Matha e S. Felice di Valois», fondatori appunto dei Trinitari; mentre sullo sfondo si delinea un assalto di cavalleria contro una città ornata di minareti. L'affresco di destra raffigura inoltre papa Sisto V che benedice un gruppo di personaggi appena liberati da quelli del Gonfalone.
+
+Ma la libertà assume quasi dei toni politici, con la raffigurazione dei «Profeti Geremia, Esra, Neemia e Zorobabele» che piangono sulla schiavitù degli ebrei, dando il loro sostegno per la loro libertà. A queste aggiungiamo nelle due mezze lunette sotto il cornicione le figure femminili di Giuditta e di Debora. La prima liberò la città israelita di Betulia, men...

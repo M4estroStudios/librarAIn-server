@@ -1,0 +1,11 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>514
+RIONE VIII. S. EUSTACHIO
+
+Palazzo Madama. In un'incisione secentesca di A. Specchi.
+Al primo piano vi sono finestre con timpani spezzati e arcate chiuse da vetrate rette da colonne con capitelli ionici. Nel centro del cortile vi è una fontana con figura femminile bronzea di Emilio Greco. Al piano nobile sono da vedersi la sala Cavour col dipinto di G.B. Pittoni, «Bacco e Arianna» (del Settecento), la sala Pannini con «Apollo in quadriga». Nella sala Maccari, decorata da Cesare Maccari dell'ultimo Ottocento, ci sono episodi della storia romana: «Appio Claudio Cieco condotto in Senato»; «Marco Papirio e i Galli»; «Cicerone che accusa in Senato Catilina»; «Attilio Regolo». Lungo il fregio si leggono frasi del Machiavelli e del Guicciardini. Colpisce il soffitto dorato a cassettoni della sala Mazzini, in un riquadro del quale vi è uno struzzo a cui è legato lo stemma dei Medici: si è data una spiegazione etimologica nel senso che Austria in francese si dice Autriche e struzzo autruche con l'evidente riferimento a madama Margarita d'Austria, sposata ad Alessandro de' Medici. L'aula del Senato occupa lo spazio del cortile delle poste pontificie ed ha il soffitto con tondi raffiguranti la «Giustizia», il «Diritto», la «Fortezza» e la «Concordia».
+
+Dal balcone della facciata su piazza Madama dal 1850 si effettuava l'estrazione del lotto, che prima aveva in quello di Montecitorio. Nel luglio 1871 Vittorio Ernanuele I assistette alla cerimonia ufficiale dell'insediamento del Senato la cui prima seduta si tenne il 28 novembre dello stesso anno.
+
+Costeggiamo il palazzo lungo la via del Salvatore, che deve il nome alla chiesetta di S. Salvatore in Thermis demolita per far posto ad una parte del Senato. Fu edificata sui ruderi delle terme Alessandrine donde l'aggiunta in Thermis; e quando fu dimessa alcune immagini sacre furono portate nel palazzo annesso alla chiesa di S. Luigi dei Francesi. In particolare il busto del «Cristo Salvatore», che è sistemato nell'atrio del palazzo, riproduce fedelmente, secondo quanto asserì il cardinale Angelo Mai, niente meno che le fattezze di Cesare Borgia; e la «Madonna del Salvatore», scultura della fine del Quattrocento, sistemata su una

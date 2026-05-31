@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>960
+
+RIONE XIV. BORGO
+
+40.000 una volta che i Lanzichenecchi tolsero le tende: Con Alessandro VII l'ospedale di S. Spirito si ampliò di parecchi locali divenendo anche una scuola di medicina; con gabinetto, teatro anatomico, una scuola di ostetricia e una di chirurgia. L'unità d'Italia fece dell'ospedale il più grande Istituto di S. Spirito, nell'ambito di un'amministrazione centrale che accorpava tutti gli ospedali romani, mentre l'attuale sanitaria vede l'ospedale allineato alla disciplina nazionale in fatto di assistenza pubblica. Venendo ora alla vista del complesso ospedaliero dopo averne tracciato in succinto la storia dal lungotevere osserviamo sulla sinistra l'ampliamento moderno, mentre l'edificio antico resta sulla destra dominato da un elegante tiburio ottagonale aperto da numerose bifore che recano al insieme una strana leggerezza.
+
+La facciata è stata ricostruita nei recenti anni 1923-26 avvalendosi per modello dell'affresco di Botticelli che si trova nella Cappella Sistina. La Sistina, quella sorretta dall'ottagono che abbiamo appena detto, fu eretta per volere di Sisto IV nel 1471. Si tratta di un rinascimento appesantito da uno stile tardo-gotico; sotto il portico della facciata spicca un bel portale riquadrato attribuito ad Andrea Bregno. Notevoli sono i cortili egregiamente conservati e di stile pontelliano; e dunque che risalgono agli inizi del Cinquecento. Forse solo l'Hôtel-Dieu di Beaune, in Borgogna, e l'Arciospedale di Siena sono altrettanto nobili e ben conservati del S. Spirito romano. Notevole il grande ciclo di affreschi che coprono le sale, dedicati alle imprese dei vari papi che si sono succeduti nella costruzione dell'opera.
+
+Sotto l'ottagono, e dunque visibile da tutte le corsie, sorge il baldacchino attribuito al Palladio, quale sua unica opera romana.
+
+Su Borgo S. Spirito è la parte antica del complesso ospedaliero; esistono addirittura delle curiose reminiscenze medievali; per esempio l'altissimo camino ben conservato con le sue fasce ed archetti gotici. Qui è anche il monumentale portone barocco e la famosa ruota degli esposti.
+
+Si giunge ora al Palazzo del Commendatore; ossia di quello che fino all'avvento dello Stato italiano era l'amministratore del complesso ospedaliero; è un palazzo abbastanza famoso per via dell'orologio bizzarro che segna le ore "alla romana". All'esterno così severo, all'interno il palazzo del Commendatore si presenta invece arioso, dato il bel cortile a logge, e dato lo slancio delle aeree colonne che sostengono amplissimi archi. È certo il capolavoro di Nanni di Baccio Bigio, un architetto di sicura sensibilità quanto trascurato dalla storia dell'architettura. L'opera è stata compiuta attorno al 1570.
+
+Per visitare l'ospedale e le sue dipendenze occorre un apposito permesso della direzione: così come per percorrere l'annesso museo dell'arte sanitaria fra i più curiosi e singolari del genere e tra i più importanti d'Europa. Il museo conserva tra l'altro la più antica lettiga e l'ambulanza più vetusta di cui si abbia notizia, inoltre degli antichissimi strumenti chirurgici; con la ricostruzione di una farmacia e di un laboratorio alchimistico del XVI secolo. All'interno del palazzo oltre alla sala del commendatore si potrà scorgere la finestrella più qui perto la cupola.

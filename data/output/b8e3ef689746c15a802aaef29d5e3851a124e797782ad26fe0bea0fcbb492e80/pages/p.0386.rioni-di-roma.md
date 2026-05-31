@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>386
+RIONE VI. PARIONE
+
+lizzare la quale gli artisti si servivano di terre particolari: Il Vasari scrive che Polidoro era «stato prodotto e creato dalla natura pittore» e che Maturino era «alle anticaglie tenuto bonissimo di disegnatore». Furono eseguite infatti scene classiche o prese dal Vecchio e Nuovo Testamento (come al Massimo). Ad essi possiamo affiancare Francesco dell'Padazzo, Vincenzo Tamagni, Daniele da Volterra; Pirro Ligorio e il Cavalier d'Arpino.
+
+L'importanza di Campo de' Fiori fu anche determinata fin dall'ultimo Quattrocento dal fatto che ambasciatori e cardinali abitavano nei palazzi di Parione e specialmente a palazzo Orsini; il che provocò anche il sorgere di alberghi prestigiosi per ospiti che dovevano entrare in rapporti con tali eminenti personalità; come l'albergo «del Sole», «della Campana», preferito come osserva il Burcardo dei Tedeschi, anche perché gestito dall'oste Giovanni Teufel il cui cognome significa «demonio» ma che ironicamente veniva chiamato «l'Angelo degli Italiani»; e alla fine del secolo assurge a notorietà l'albergo «della Vaccav» di proprietà di Vannozza dei Catanei, amante di Alessandro VI.
+
+Non dobbiamo dimenticare il fiorente mercato dei cavalli a Campo de' Fiori che si teneva il lunedì e il sabato. E poiché dove c'è la ricchezza c'è anche il vizio e la corruzione, ecco un esercito di meretrici professioniste d'alta classe insediarsi negli stessi alberghi o in altri più modesti. S'intende che, per venire incontro alle esigenze di tanti e illustri personaggi, si affrettarono a giungere e ad impiantare bottega i più quotati artigiani: dai giubbonari (già pelamantelli) ai cappellari, ai baullari, ai chiavari, ai sediari, ai canestrari, ai orafi e argentieri desiderati soprattutto dalle meretrici che avevano imparato a valorizzare la loro lucrosa professione. Tuttavia, accanto ai gaudenti v'erano anche individui che si dedicavano, ciascuno a suo modo, alle attività culturali, come librai, editori, scrittori e perché no? scrivani.
+
+Fiorì il commercio dei libri, manoscritti prima; e più tardi stampati dalla tipografia di Corrado Schweinheim e Arnoldo Pannartz; locatari del piano terreno di palazzo Massimo. Nei pressi lavorò anche il tipografo Antonio Blado. Come conseguenza logica sorsero librerie ben fornite, che crebbero di numero e d'importanza dopo l'invenzione della stampa a caratteri mobili: si citano anche «librerie o stamperie che si notavano in Parione da tempo antico: all'insegna della Nave, dell'Europa, della Palma; della Regina, di S. Giovanni di Dio; dell'Aurora, della Rota, di Parigi».
+
+Nel Cinquecento, questa intensa e varia attività commerciale si spostò in piazza Navona; nelle cui case vivevano notai, avvocati, artisti ed ebbe un notevole incremento anche perché già dal 1478 il grande mercato si era spostato dal Campidoglio verso tale zona. In seguito a tali circostanze Campo de' Fiori perse quella tinta culturale che l'aveva caratterizzato e la stessa vicina grande piazza sorta sullo stadio di Domiziano offrì la sua vasta area anche a commerci meno nobili, ma necessari, essendo i venditori agevolati dalla comoda pavimentazione e dall'assegnazione di sedi stabili da parte delle autorità.
+
+Invano il papa Innocenzo X tentò di farle assumere un ruolo più...

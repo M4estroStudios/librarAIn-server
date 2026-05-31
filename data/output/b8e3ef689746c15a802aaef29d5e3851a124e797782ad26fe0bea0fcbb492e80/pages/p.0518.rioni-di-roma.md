@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>518
+RIONE VIII. S. EUSTACHIO
+
+me notevoli per riparare la chiesa che aveva subito danni dall'inondazione del Tevere del 1495. Tuttavia il processo fu riaperto e il povero (ricco e potente) prelatò finì nel carcere di Castel S. Angelo dove morì per il crollo del tetto dell'alloggio. *Sic transit gloria mundi*.
+
+Tra via della Scrofa e via di S. Giovanna d'Arco si apre il largo Giuseppe Toniolo; che ricorda il sociologo e pensatore cattolico (1845-1918) ricercatore dei legami intercorrenti fra etica ed economia; quest'ultima considerata da subordinarsi alla prima. Questo largo immette nella via del Pozzo delle Cornacchie che deve il toponimo ad una "fontana a mo' di pozzo" costruita per incarico del cardinale Thomas Wolsey; che vi fece scolpire il suo stemma consistente in due cornacchie e una rosa.
+
+Il Rufini, invece, annota che la via era così chiamata da un'antica pittura sul muro di una casa, in cui si vedeva dipinto un pozzo attorno al quale si posavano delle cornacchie. Già nel 1847 la pittura non esisteva più, essendo stata riedificata la casa. Tuttavia, si notava tempo un albergo chiamato "delle cornacchie". È da notare che la località veniva talvolta indicata con "ad puteum corvorum". Per il Ravaglioli c'è il riferimento ad un magazzino di calzature detto "delle cornacchie", perché con tale nome si indicava una specie di scarpa e, a sostegno di ciò si citano le vie delle Coppelle, dei Pianellari ed altre i cui toponimi derivavano da fabbriche o commerci di specifici oggetti. C'è però, che, se così fosse, non era necessario intitolare la via "pozzo" ma semplicemente "delle Cornacchie".
+
+La piazza Rondanini; in cui sbocca la via suddetta; ebbe il nome di "Aquilio" o "Aquilini" dalla famiglia romana alla quale appartennero pittori Antoniazzo detto "Romanov" (1435-1508 circa) e Marcantonio, suo figlio; che avevano casa. Il Wolsey si fece costruire nella piazza un bel palazzo che, però, non abitò e che poi cedette al cardinale Rondanini, nel cui stemma figurano tre rondini e due crivelli e da cui la piazza prese il nome conservato fino ad oggi anche se ai Rondanini successivamente subentrarono gli Aldobrandini. I Rondanini sono diventati famosi per aver dato il nome alla celebre "Pietà" di Michelangelo da loro posseduta nell'altro palazzo al Corso; e che essendo stata venduta, si trova nel museo del Castello Sforzesco a Milano.
+
+Presso il n. 48 della piazza vi è una targa che ricorda Felice Cavallotti, grande oratore, uomo politico e drammaturgo che "qui preparò le sue battaglie per la democrazia, la libertà, la giustizia; attorno al cadavere dell'eroe il pianto d'Italia rivelò la sua vittoria". Sopra il civico n. 47 vi è un ovale in cornice che racchiude una "Madonna col Bambino"; nel cartiglio si legge "Ave Marias". Nel cortile del palazzo al n. 33 si vedono muri semicircolari avanzi di un emiciclo delle terme Alessandrine su cui è costruito: Le terme si estendevano "dall'attuale piazza della Rotonda, al corso del Rinascimento; la via del Pozzo delle Cornacchie (dov'era l'ingresso principale) e la salita de' Crescenzi" (RA. Staccioli).
+
+Dalle cornacchie e dalle rondini passiamo ad un animale meno nobile, anche se molto più gustoso: la scrofa, a cui è dedicata la via, quale oggi, ora, qui tra

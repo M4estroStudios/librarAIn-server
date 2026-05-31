@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>1204
+RIONE XXI PRATI
+
+La pianta del rione Prati.
+
+Giardino ricco di platani e di eucalipti, situata dove oggi sta il lungotevere Prati. Il quartiere si presentava ancora senza un volto pienamente definito; vi si alternavano grandi edifici, lembi di campagna e stradoni appena aperti. In quegli anni, per renderlo più attraente, vi si impiantò un teatro in legno, in stile moresco, chiamato Alhambra, in cui si diedero anche spettacoli lirici, mentre un'altra struttura lignea prospiciente il fiume (all'altezza dell'attuale via Marianna Dionigi) era detta il Ninfeo di Egeria; che aveva anch'essa uno stabilimento di bagni. In Prati si impiantò anche un anfiteatro, sempre ligneo, per corride di bufali e un circo detto «rea...». Dove oggi si ergono le caserme lungo il viale delle Milizie, nel 1891, si impianto un vero e proprio villaggio di beduini; detto «Esposizione Egiziana»; con possibilità di gustare il caffè alla turca e lasciarsi sedurre dalle danze del ventre.
+
+La violenta crisi economica edilizia che colpì l'Italia nell'ultimo decennio del XIX secolo gettò il nuovo quartiere in una situazione fallimentare. Chiuse le banche finanziatrici e con più edifici rispetto alla domanda, il nostro rione divenne una città morta. L'immagine di questo quartiere finito a metà e abitato solo da fantasmi costituisce alcune delle pagine più belle della «Roma» di Émile Zola; Ma anche questa crisi passò e il quartiere si avviò ad assumere il dignitoso, quieto e familiare aspetto che oggi si trova nelle mattine domenicali. Nel 1901 venne costruito ponte Cavour, demolito il ponte di ferro di Ripetta: Le prime linee tramviarie furono in servizio con l'anno 1900. Una, la linea rosa, veniva da ponte di Ripetta, andava a via Cola di Rienzo, passava per piazza Risorgimento e si dirigeva quindi a S. Pietro.

@@ -1,4 +1,6 @@
-data/
+data/input/
+data/tmp/
+data/polyindex/
 venv/
 __pycache__/
 *.egg-info/

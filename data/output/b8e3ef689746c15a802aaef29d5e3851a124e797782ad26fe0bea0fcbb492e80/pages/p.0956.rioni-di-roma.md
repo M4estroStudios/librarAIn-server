@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>956
+
+RIONE XIV. BORGO
+
+spondeva press' a poco a quella attuale. All'epoca costituiva l'inizio della «spina». A destra di questa piazza si apriva il Borgo Nuovo o Alessandrino; voluto da Alessandro VI Borgia; a sinistra era invece il Borgo Vecchio; entrambi diretti, con tracciato germente divergente, verso la piazza e la basilica di S. Pietro.
+
+Lungo la direttrice sorgevano verso l'inizio una serie di fabbricati d'uso comune e con la medesima ubicazione attuale la chiesa di S. Maria della Transpontina; successivamente era il Palazzo Spinedi, oggi sede di alcuni uffici della RA, e il palazzo Torlonia che abbiamo descritto. Anche sul primo tratto del Vecchio si riscontrava la stessa sistemazione edilizia; c'è da notare peraltro che all'epoca di Pio IX ed anche successivamente all'unità d'Italia gli edifici del rione erano stati sottoposti a consistenti lavori di restauro interni ed esterni, unificando unità edilizie ed ampliando luoghi già in uso. I due Borghi erano interrotti verso la metà della «spina» dalla piazza Scossacavalli; le cui quinte edilizie erano costituite dalla chiesa di S. Giacomo, detta appunto a Scossacavalli, poi demolita (conservandosene alcuni affreschi presso il museo di Roma di palazzo Braschi), e dal palazzo dei Convertendi.
+
+Nel mezzo della piazza ora scomparsa era la bella fontana barocca attribuita a Carlo Maderno, ora situata dinanzi alla chiesa di S. Andrea della Valle.
+
+Proseguendo verso il Borgo Vecchio nella stessa posizione attuale si trovavano, prima della demolizione fascista, il Palazzo Serristori e il Palazzo Cesi; si apriva la facciata della chiesa di S. Lorenzo in Piscibus; oggi inglobata in edifici nuovi che la rendono infelicemente stridente. Successivamente era la piazza Rusticucci che si apriva sulla piazza di S. Pietro e dinanzi alla basilica; con caratteristici negozi dalla stigliatura ottocentesca e le tende striate tirate giù durante le ore di sole. Sul Borgo Nuovo, tra le piazze Rusticucci e Scossacavalli, s'affacciavano il Palazzo di Giacomo di Bartolomeo da Brescia e quello di Febo Brigotti, che incontreremo; per quanto siano stati ricostruiti in tutt'altro condizione.
+
+Ultimata questa breve, quanto necessaria anticipazione del ricordo legato ai luoghi scomparsi del rione che sono davvero tanti, proseguiamo il nostro secondo itinerario portandoci sul sinistro di via della Conciliazione, fino alla via Pio IX, che sulla destra, in breve ascensione conduce al ponte Vittorio Emanuele. Sul lato sinistro, con la facciata rivolta verso il Tevere, sorge la piccola chiesa di S. Maria Annunziata, che ha una storia strettamente collegata all'adiacente e dirimpetteo ospedale di S. Spirito, del quale parleremo poi in dettaglio. Gestita dall'ordine che si occupa della pietas ospedaliera, la chiesa può essere datata nella seconda metà del XIII secolo.
+
+Dopo l'esilio papale avignonese che vide i luoghi e le associazioni del rione in pieno decadimento, la confraternita (come del resto l'ospedale) attorno all'anno 1446 ebbe nuovo impulso per volere di Eugenio IV. La sede della confraternita sul principio era nella chiesa di S. Maria in Saxia; successivamente i confratelli si riunirono nella chiesa oggi scomparsa di S. Lorenzo de Piscibus; fino a che reperiti...

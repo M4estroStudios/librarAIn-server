@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO 827
+
+L'immagine in uno scrigno; ma dopo alcuni giorni entrando nella sua camera vide che questa aveva trapassato lo scrigno risplendente come il sole.
+Tutta Roma accorse a vedere il prodigio e l'immagine fu chiamata la Vergine del Sole; fu concessa all'Arciconfraternita della Croce che la portò nella chiesa dei Savelli, poi denominata da questa immagine Maria del Sole.
+Si sa anche che prima di questo trasferimento nel 1570 l'immagine era stata collocata nel convento di S. Francesco Romana a Tor de' Specchi.
+
+La cella del tempio, trasformata in chiesa, è stata recentemente privata dalle sovrastrutture cristiane: resta un affresco del XV secolo raffigurante la «Madonna col Bambino» e alcuni Santi. Dal tempio di Ercole Vincitore passiamo all'altro; che è forse quello antico più integro di Roma insieme al Pantheon e che sta sulla destra.
+
+Dobbiamo girargli intorno per raggiungere la fronte; si tratta del tempio di Portunus e non del tempio della Fortuna Virile come è erroneamente chiamato: anche questo tempio, infatti, come quello precedente di Ercole, è vittima di un radicato equivoco di identificazione.
+Il tempio della Fortuna è invece quello che sta nell'area archeologica di S. Omobono; mentre questo, dopo gli studi di Marchetti Longhi, può essere ritenuto con certezza il tempio dedicato al dio Portunus, protettore del porto Tiberino e dei naviganti, trasformazione latina del mitico Palemone. Il tempio, secondo l'uso romano, sta su un alto podio rivestito di lastre di travertino. È uno pseudo-periptero tetrastilo; cioè presenta quattro colonne libere sulla fronte e semicolonne inserite nella muratura sugli altri tre lati. Le colonne scanalate sorreggono capitelli ionici e le semicolonne sono, come tutto l'edificio, in tufo dell'Aniene, che era stato rivestito di stucco per imitare il marmo delle colonne della fronte. Il fregio era ornato da candelabri uniti da festoni e sul cornicione i gocciolatoi erano a protomi leonine. Su tutto sta un elegante frontone a timpano.
+
+Presso l'angolo posteriore sinistro del tempio resta un frammento di muro, che è quanto rimane del recinto dell'area sacra.
+Durante il medioevo (872) il tempio ebbe chiuso lo spazio fra le colonne della fronte in cui si ricavò una porta d'accesso perché l'edificio fu trasformato in chiesa da papa Clemente VII che la dedicò a S. Maria Egiziaca, la santa anacoreta d'Egitto; già prostituta, che aveva attraversato il Giordano mentre questo si va miracolosamente aprendo per farla passare all'asciutto.
+È evidente il rapporto tra la Santa e il fiume, che nel nostro caso è il Tevere, e il richiamo che il culto della Santa nella zona portuale doveva esercitare per il riscatto delle donne di malaffare che vivevano nei pressi dello stesso porto; la chiesa fu quindi posta sotto la giurisdizione di Stefano Stefaneschi secundicerio di papa Giovanni VIII, cosicché la chiesa fu anche detta S. Maria in Secundicerio. Papa Pio V Ghislieri (1566-1572) la concesse agli Armeni perché la loro chiesa, in quanto inclusa nell'area del ghetto da poco istituito, avevano dovuto abbandonarla.
+Sotto papa Clemente XI fu annesso alla chiesa un ospizio per pellegrini, appunto armeni, e questa nazione tenne la chiesa fino al 1921. Nel però quello spazio apri...

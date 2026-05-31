@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>508
+
+RIONE VIII. S. EUSTACHIO
+
+Adottivo Andrea Giustiniani, che ne affidò al Borromini nel 1650 l'ampliamento. Ancora lavori furono effettuati nel 1677 da Sebastiano Ponte.
+La famiglia Giustiniani si distinse in vari rami e fu di origine veneta.
+Giuseppe venne a Roma nella metà del Cinquecento; ospite del fratello, il cardinale Vincenzo. Le sue tre figlie sposarono membri di nobili famiglie, e, dei due maschi, Benedetto divenne cardinale e Vincenzo adottò il suddetto Andrea; che sposò Maria Pamphilj, figlia di Olimpia Maidalchini. Da Vincenzo, figlio di Andrea, nacque Cecilia; che sposò il marchese Carlo Bandini.
+I Giustiniani affittarono nell' ultimo Ottocento parte del palazzo alla Massoneria; altra parte fu venduta. Nel 1938 l'edificio fu unito al Senato con un sottopassaggio. Attualmente nel palazzo risiede il presidente del Senato.
+La salita dei Crescenzi ci ricorda questa potente famiglia di cui parleremo e che insediò nel rione la sua roccaforte; attraversiamo la via di S. Eustachio che al n. 6 ospitava un famoso «Squajo» di cioccolato di Francesco De Stefani. Lo squaglio si chiamava anche «caracca» dal cacao proveniente da Caracas (Venezuela). Una caracca costava tre soldi anche con un pizzico di cannella.
+Ed ecco via della Palombella, dall'insegna di una locanda in cui si riunivano i bulli per battezzare il nuovo adepto che doveva misurarsi con un bullo anziano a coltellate. Solo una parte della via è compresa nel nostro rione; ma non possiamo ignorare, addossati alla parte posteriore del Pantheon; i ruderi della Basilica di Nettuno costruita da Agrippa e rifatta da Adriano con abside, colonne corinzie, architrave con delfini e con conchiglie.
+Fra nn. 34-35 una finestra incorniciata e con mensola è murata. Al n. 36 il grazioso portoncino con stipiti concavi e architrave con volute è alquanto ritoccato. Nel palazzo seguente (n. 39) scorgiamo una torre incorporata nell'edificio con evidente muro a scarpa. Potrebbe essere stata dei Ciancaleoni, perché nella cornice si intravedono; pur se a fatica (come annota Fabrizio Apolloni Ghetti) i simboli araldici di questa famiglia: un piede attaccato a una gamba, cianca, e una mezza luna con i corni insù che denota non la discendenza dai Crescenzi; ma l'appartenenza alla loro fazione.
+Parallela a questa via è quella di S. Chiara (da piazza dei Caprettari a piazza della Minerva) che prende il nome dalla chiesa delle suore Clarisse e dall'annesso monastero; già ricovero di donne di malaffare convertite, fondato da Pio IV nel 1562. La chiesa di S. Chiara, che si trova nel tratto di via che appartiene al rione IX Pigna fu costruita per volere di S. Carlo Borromeo nel 1565 su progetto di Francesco da Volterra; ma era intitolata a S. Pio IV. Quando passò alle clarisse nel Seicento; la facciata fu rifatta da Carlo Maderno. Poi passò al seminario francese e fu mutata da Luca Carimini.
+Al n. 14 di questa via vi è stata la dimora romana di S. Caterina da Siena, ma la stanza ove morì è stata ricostruita nella chiesa della Minerva.
+Dove è ora l'atrio dell' albergo di S. Chiara, scrive il Delli, nella gola

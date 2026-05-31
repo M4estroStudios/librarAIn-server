@@ -1,0 +1,13 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>Rione XVII. Sallustiano
+di Claudia Cerchiai
+Dalle origini ad oggi
+
+Il rione XVII, Sallustiano, si articola nella parte più a nord del colle Quirinale; il *collis* per eccellenza, che raggiungeva l'altezza massima di 57 metri nel punto più alto di via Quattro Fontane, là dove questa interseca la via del Quirinale. Questa strada, che nel tratto che interessa il nostro rione costituisce l'asse viario più importante, ricalca l'antica *Alta Sēmita* che era il naturale proseguimento del *vicus Portae Collinae*, che raggiungeva l'omonima porta che si apriva nella cinta muraria «serviana». Il colle era abitato già dall'età del ferro e sono infatti di questo periodo alcune tombe scavate sia nelle vicinanze della futura porta Collina sia in altre località; i primi abitanti sarebbero stati Sabini con il loro re Tito Tazio.
+
+Il Quirinale era strettamente connesso con l'altro colle, il Viminale, dal quale se ne distaccava soltanto per una profonda valle che oggi, interrata, corrisponde in parte al tracciato della via Nazionale; al Viminale era anche unito amministrativamente in età repubblicana, in quanto entrambi parte della regione Collina, e in età imperiale della *regio VI Alta Semita*. Il nome del colle era fatto derivare dagli antichi da quello della città sabina Cures, ma sembra più probabile che esso derivi invece da *Quirites* e *Quirinus*. In età repubblicana il colle Quirinale fu sempre abitato sia con abitazioni a carattere intensivo sia con ville; la più famosa delle quali, la villa di Sallustio, ha dato poi il nome all'attuale rione. Il colle era anche sede di antichi santuari e templi, fra cui quello di Venere Erycina e quello, costruito in età imperiale, della *gens Flavia*.
+
+Il tempio di Venere Erycina, anche se è stato localizzato oltre la via Boncompagni, confine del nostro rione, deve essere ugualmente preso in considerazione poiché è l'aureo specchio, simbolo di Venere, che in campo azzurro è presente nello stemma del rione Sallustiano.
+
+Il tempio, dedicato nel 215 a.C., era quindi fuori delle mura urbane, ed è riportata infatti nel calendario precesareo, al giorno 23 aprile, l'indicazione: *Venere Erycina*, alla voce Vinalia (feste), per indicare come in quel giorno venisse ricordata la dedica del tempio; ma altre feste avvenivano nel tempio anche il 25 dello stesso mese, come si legge nei fasti prenestini. Il tempio fu fatto costruire dopo la presa di Siracusa e fu portata a Roma per ot-

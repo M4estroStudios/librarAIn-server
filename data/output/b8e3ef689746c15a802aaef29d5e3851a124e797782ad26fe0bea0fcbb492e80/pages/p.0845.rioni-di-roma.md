@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+845
+
+Unito alla facciata vi è il campanile romanico (del XII secolo rimaneggiato nel Seicento) con un grande orologio al centro con un'edicoletta della «Madonna» al culmine. L'interno della basilica a tre navate si presenta imponente e maestoso con colonne di varia origine perché provenienti probabilmente dalle terme di Caracalla. Il colonnato, su fondo oro, emergono figure di Santi opera di artisti del secolo scorso. Il pavimento moderno è in stile cosmatesco e nel soffitto magnifico con intagli in legno dorato si vede una «Assunta» eseguita su disegno del Domenichino (1581-1641). Nel catino absidale, su fondo oro, lo smagliante mosaico (del 1140) del «Redentore e della Madonna seduti in trono con ai lati diversi santi e il papa Innocenzo II col modello della chiesa». Nei riquadri del tamburo, Pietro Cavallini nel 1291 ha raffigurato con grande efficacia espressiva episodi della «Vita della Vergine» e al centro si vede la «Madonna col Bambino tra S. Pietro e S. Paolo» dinanzi ai quali sta inginocchiato il donatore Bertoldo Stefaneschi. Sull'arcone dell'abside campeggia la «Croce tra i sette candelabri dell' calice» e i simboli degli Evangelisti; ai lati i profeti «Isaia e Geremia» con due scritte in cui si legge che il piccolo uccello in gabbia, raffigurato vicino, è il simbolo del mistero dell'«Incarnazione del Verbo».
+
+L'altare maggiore è sormontato dal tabernacolo di Virginio Vespiniani sorretto da quattro colonne di porfido: qui è posta la «Madonna della Clemenza», effigie dell' VII secolo (ma forse del XIII sec.). Ai lati dell'abside notiamo la cappella del «Coro d'inverno» costruita su disegno del Domenichino, sul cui altare è posta la cinquecentesca «Madonna di strada Cupa» (trovata nella trasteverina via Cupa scomparsa), e quella «Altemps», opera di Onorio Longhi del Cinquecento. A queste si aggiunge la cappella (dedicata a S. Girolamo) della famiglia Avila, rifatta nel 1680 da Antonio Gherardi a pianta mistilinea con notevoli effetti prospettici e pavimento cosmatesco.
+
+Ricordiamo anche la prima cappella a sinistra del fonte battesimale, luogo prima occupato come osserva Laura Gigli da una cappella dedicata all'Arcangelo Michele (o dell'Angelo) della famiglia Cinzi, dove S. Francesca Romana ebbe visioni divine da lei descritte al suo confessore Giovanni Mattiotti e da questi riportate nel suo diario.
+
+In sacrestia vi è una tavola «la Vergine con S. Sebastiano e S. Rocco», opera di un allievo del Perugino; e un piccolo bassorilievo in terracotta, «Il Giudizio Universale» di Gian Lorenzo Bernini.
+
+Lasciamo la basilica che tanto affascina coi dorati mosaici illuminati dai raggi del sole, il quale discretamente penetra nel sacro ambiente rendendolo simile un immenso scrigno prezioso misterioso.
+
+La piazza ha come indovinato complemento del suo scenario monumentale la fontana con la sua fresca armonia. Eretta da Nicolò V nel 1450, subì vari restauri per incarico di Alessandro VI, del cardinale Giovanni Lopez e di Giulio II.

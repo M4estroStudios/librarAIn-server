@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>692
+
+RIONE X. CAMPITELLI
+
+In rispetto della basilica Emilia, dell'Atrium Vestae e del tempio dei Castori, riorganizzava l'area centrale del Foro; si concluse nel Foro stesso con la costruzione di una seconda monumentale basilica: la basilica Iulia. Questa basilica fu iniziata da Cesare nel 54 a.C. e completata da Augusto nel 12 d.C. Anch'essa subì restauri, fino all'ultimo di Diocleziano. Cesare la aggiunse al Foro al fine di raddoppiare lo spazio ormai insufficiente e per visualizzare, agli occhi di tutti, il proprio impegno nel favorire la grande trasformazione di Roma.
+
+Con la costruzione della basilica Iulia, Cesare chiudeva l'area centrale del Foro sul lato occidentale; per costruirla demoliva quella precedente, la Sempronia, eretta nella stessa zona da Tiberio Sempronio Gracco, padre dei famosi tribuni, i fratelli Tiberio e Gaio. Sempronio Gracco, per costruire la sua basilica, aveva demolito la casa di Scipione l'Africano, mentre Cesare, costruendo la Giulia, occupò non solo tutta l'area della Sempronia ma anche quella che era occupata dalle tabernae che la stessa Sempronia aveva verso il Foro, analogamente all'Emilia. La scelta di Cesare di ricostruire una nuova basilica là dove sorgeva quella del padre dei tribuni non esclude che sia stata voluta dallo stesso Cesare per collegarsi idealmente ai due capi della plebe, cioè di quel partito popolare di cui lo stesso Cesare fu massimo rappresentante.
+
+La basilica Giulia o Iulia, che vediamo subito dietro la serie delle grandi basi delle colonne onorarie, risultò quindi fortemente monumentale; compresa fra il tempio dei Castori e quello di Saturno e fra il vicus Iugarius e il vicus Tuscus (il nome di quest'ultimo era forse una delle ultime memorie ufficiali dell'antica presenza degli etruschi a Roma). Il grande edificio era diviso in cinque navate, di cui quella centrale era un salone di metri 82x18. Le navate erano scandite da serie di grandi pilastri rivestiti di marmo che finivano per costituire portici concentrici su tutti e quattro i lati. Le navate minori erano a due piani, mentre l'aula centrale ne aveva due al di sopra e in totale ne faceva tre.
+
+Tramezzi di legno smontabili e modulari o più semplicemente tende scorrevoli su anelli potevano, a seconda delle esigenze, suddividere la sala centrale in spazi minori; anche se avvenimenti più importanti, come i più famosi processi che si tennero davanti al tribunale dei centumviri, la folla si accalcava anche nelle gallerie superiori.
+
+Usualmente questi luoghi, oggi ridotti ruderi inondati di sole, erano affollati e rumorosi, tanto che Quintiliano ricorda come era sufficiente la voce stentorea di un oratore per coprire tutto il vociare proveniente dalle salette ricavate dai tramezzi e rendere di difficile svolgimento gli altri dibattiti processuali.
+
+Di tutta questa basilica, lunga metri 101 e larga metri 49, resta il grande podio circondato da gradinate e monconi di alcuni pilastri. Sui gradini che circondano la basilica ci si diverte a cercare e a trovare alcune *tabulae lusoriae* incise sulla superficie degli stessi gradini e utilizzate soprattutto dai «vitelloni», dall'ora, da coloro che dovevano attendere per molto tempo d'essere chiamati in giudizio e dai ragazzi che, secondo il costume romano, erano costretti a seguire i padri nello svolgimento della loro professione.

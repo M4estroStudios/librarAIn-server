@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+299
+
+La memoria di questi importanti personaggi, per certi aspetti imbarazzante, venne dispersa col tempo; al punto che, come riportato dalla Squadrilli, la lapide funeraria venne ritrovata molto tempo dopo sotto il portico della basilica di S. Marco.
+
+Avremo modo comunque di risollevarci lo spirito ammirando la splendida cappella Della Rovere, la prima sulla destra entrando, opera del Pinturicchio e dei suoi allievi. La cappella successiva, dedicata ai Cybo, costruita fra il 1682 ed il 1687, è come una "chiesa nella chiesa", e ciò per le sue dimensioni, che fuoriescono di gran lunga dal modulo delle altre cappelle, per il barocchismo che la distacca dal vago sapore che questa chiesa tradisce qua e là, per l'uso di certi marmi ecc.: certo che l'architetto Carlo Fontana si sbizzarrì nel costruirla. Buono il quadro del Maratta che orna l'altare.
+
+Sulla sinistra si impongono all'attenzione due tombe poste tra una cappella e l'altra: semplice e piena ugualmente di significati come conviene ad un soldato della sua tempra, di Agostino Chigi, caduto nella battaglia di Adua *barbaris plagis*. Curiosa, rutilante di motivi, enormemente lodata appena fatta, ma subito dopo oggetto di aspre critiche, quella di Maria Flaminia Odescalchi, deceduta nel 1771. È comunque una tomba che merita la nostra attenzione: rocce, rami tormentati d'una grande quercia, aquila, leone ecc.: certo dire che non ce l'abbiamo messa tutta. Non sappiamo se con tanti simboli si volesse rammentare il carattere o qualche altra virtù della *de cujus*. Se così fosse donna Flaminia doveva essere una via di mezzo fra Giovanna d'Arco e la moglie di Stanley.
+
+Proseguiamo lungo questo lato e saremo facile predica del leitmotiv della intera chiesa. Nella cappella di destra a lato dell'altare maggiore infatti, vi sono due fra le più note opere di Michelangelo Merisi, meglio noto come il Caravaggio: la «Conversione di S. Paolo» e la «Crocefissione di S. Pietro». No comment. Si esce salutati dallo scheletro ghignante dietro una grata.
+
+Dall'altro lato di piazza del Popolo s'erge la caserma Giacomo Acqua. Iniziata tra il 1816 ed il 1820, rivela, per la sua posizione addossata alla porta, la sua lontana natura di corpo di guardia. Ora v'è una caserma dei carabinieri, ma una cupola lascerebbe intendere come la cappelletta della gendarmeria pontificia sia sopravvissuta a tante vicende, senza escludere un desiderio di simmetria con S. Maria del Popolo, voluta dal Valadier. Sulla facciata una lapide del 1907 ricorda il sacrificio dei carbonari Angelo Targhini e Leonida Montanari, ghigliottinati nel 1825. La cosa ci richiama alla mente un pregevole film a loro dedicato non molti anni fa.
+
+Sia la chiesa che la caserma presentano, sul lato che guarda la piazza, prospettive architettoniche movimentate da armi e trofei secondo il gusto neoclassico del Valadier: «...un avanzo di edifizio somigliante ad una meta circense e consistente in un grosso masso di selci, giacente innanzi alla chiesa di S. Maria dei Miracoli dava il nome alla piazza...», dicendosi del *Trullos*. Probabile avanzo del Sepolcro di Agrippa, il quale secondo Tacito può...

@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO
+607
+
+Lonne, su disegno del Bramante; ma con l'anno 1604 l'edificio fu acquistato dagli Aldobrandini che lo arricchirono di decorazioni e di ali immobiliari fino al 1647, ininterrottamente. Alcune decorazioni e stucchi, non più in loco, sono nella galleria Doria.
+
+Il palazzo ai Pamphilj per le nozze di uno di essi, il nipote di papa Innocenzo X, Camillo; con Olimpia Aldobrandini, che recò in dote il palazzo di via del Corso. Per questo matrimonio il palazzo ricevette ulteriori lavori d'ingrandimento; conglobando anche l'adiacente Palazzo Salviati (che si affacciava sulla piazza del Collegio Romano; come il fedele lettore ricorderà, togliendo luce al palazzo dei gesuiti). Questo palazzo infatti fu in parte demolito, creando la piazza del Collegio Romano; e in parte riattato come ala dei Pamphilj sulla nuova piazza.
+
+I lavori di abbellimento proseguirono anche dopo la morte di Camillo Pamphilj, e ben oltre l'avvenuto matrimonio della principessa Anna con Giovanni Andrea Doria, e comprenero l'allestimento della grande cappella di famiglia, sotto la guida dell'architetto Carlo Fontana, e l'anticamera del piano nobile. Infine su via del Corso, ad opera di Gabriele Valvassori, fu adeguata la facciata, fino ad allora rimasta grezza e priva di tinte architettoniche, saldandola ai corpi dell'edificio, così come si presenta a noi oggi. I contemporanei trovarono queste finiture «stravaganti e poco piacevoli».
+
+Nel 1739 dai Pamphilj vennero acquistate case e casette che si affacciavano su via del Plebiscito e sulle due strade adiacenti, piazza Grazioli e via della Gatta, e fattele demolire; venne costruito un grande edificio di appartamenti da locazione, che ebbe termine il 1744. Fu quindi la volta dell'architetto Francesco Nicoletti, che nel 1769, su ordine del principe Andrea Doria Pamphilj, trasformò il cortile che si apriva su via del Corso in una magnifica sala da ballo, per una sfarzosa festa organizzata in onore dell'arciduca d'Austria Leopoldo I, fratello dell'imperatore Giuseppe I.
+
+Da ultimo, a manipolare il mastodontico complesso, viene Andrea Busiri Vici, che nel 1848 trasformò uno dei cortili che si apriva su via del Plebiscito nell'elegante «cavallerizza»; utilizzata dalla famiglia fino quando non venne ceduta alla Banca Commerciale, che vi allestì la sua sede centrale. Fu lo stesso architetto che, successivamente, rinnovò la cappella e realizzò la facciata su via della Gatta e piazza Grazioli, legando l'edificio su piazza del Collegio Romano. Da ultimo costruì la scala minore di via del Corso e a copertura del salone Aldobrandini, che nel 1956 crollò sotto il peso di una tra le più ingenti nevicate romane.
+
+Sulla via del Corso il palazzo è tramato bugne regolari con tre portali fiancheggiati da colonne con capitelli a giglio, secondo lo stemma dei Pamphilj; le finestre sono di grande eleganza con inferriate ricchissime: bello il gioco delle finestrelle sovrapposte e dei balconi con marmi colorati; le terrazze recano aria alla prospettiva; oggi ospitando la galleria d'arte. Bellissimo il cortile che si apre al civico 304, quadrangolare a due ordini di arcate.
+
+Sulla piazza del Collegio Romano, il palazzo occupa due dei quattro lati, con finestre architravate e davanzali a mensola; la facciata ha una soluzione a pagoda; la quinta finestra è stata tra...

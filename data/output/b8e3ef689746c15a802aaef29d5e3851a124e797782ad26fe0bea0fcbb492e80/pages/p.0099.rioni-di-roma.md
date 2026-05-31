@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO
+99
+
+Navata destra: all'inizio è l'altare dedicato alla Madonna della Neve, vicino al quale è il monumento funebre di Costanzo Patrizii, opera di Alessandro Algardi (1595-1654). Segue il battistero con tazza di porfido rosso e il rilievo dell'«Assunta», opera scultorea di Pietro Bernini (1610).
+
+In questa cappella si segnala il monumento funebre di Edoardo Santarelli, altra opera dell'Algardi. Sulla sinistra quindi vediamo il busto di «Antonio Emanuele Ne Vundav», detto il Nigrita, che venne a Roma come ambasciatore del Congo. Nella seguente sacrestia dei canonici, splendidi sono mobili in noce recanti gli stemmi di Paolo V Borghese. Da qui si accede ad una graziosa cappellina dedicata alla Madonna dello Scapolare che conserva due splendidi inginocchiatoi con intarsi in madreperla.
+
+Segue l'aula capitolare dove sono murati rilievi quattrocenteschi di Mino del Reame appartenuti al demolito altare. Accedendo all'odierna sacrestia è possibile raggiungere, attraverso una scala, la loggia, passando davanti ad una statua di Paolo V, una delle rare statue in bronzo che raffigurano un pontefice.
+
+Dal battistero si passi alla cappella dei Ss. Michele e Pietro in Vincoli dove nella volta a crociera sono conservate parti di antichi affreschi (e di una sinopia) raffiguranti gli evangelisti, opera romana del grande Piero della Francesca; ancora una «Pietà» di Benozzo Gozzoli. Di notevole interesse è il pavimento cosmatesco privo di manomissioni posteriori. Da qui si può uscire nel cortile esterno dove si vede il campanile che, costruito nel 1375-1376, è il più alto di Roma con i suoi 75 metri, con le sue bifore, i marmi policromi e i dentelli incorniciati da smalti verdi. Da notare poi, il pozzo marmoreo con la bella grata antica in ferro e la colonna in forma di cannone, fatta erigere da Clemente VIII per ricordare l'abiura di Enrico di Navarra (Enrico IV re di Francia: «Parigi val bene una messa»). Prima di essere trasferita in questa parte del sagrato si trovava nell'odierna via Carlo Alberto, dinanzi all'ospedale di S. Antonio del Fuoco. Oggi, purtroppo la colonna appare priva della Croce e del capitello che la sosteneva.
+
+Si ritorni quindi nella basilica dove è possibile visitare la cappella del Crocefisso ornata da dieci colonne di rosso porfido dove, oltre al pregevole «Crocefisso» del Quattrocento, sono conservate, nelle pareti, molte reliquie. Segue la cappella Sistina ultimata nel 1589 per Sisto V da Domenico Fontana, Carlo Maderno e affrescata da Cesare Nebbia. I marmi policromi delle pareti e le colonne furono ricavati dal monumentale ninfeo che in parte ancora esisteva alle falde del Palatino chiamato il Settizodium; voluto da Settimio Severo quale quinta scenografica per coloro che dall'Appia entravano in Roma. Questa fu l'occasione per la completa demolizione del monumento romano. Al centro è situato un altare in marmi e pietre dure con quattro angeli dorati sostenenti il ciborio in bronzo dorato, in forma di chiesa a pianta centrale con cupola ornata da rilievi.
+
+Una doppia rampa scende all'oratorio del Presepe che con un'importante operazione di ingegneria fu da Domenico Fontana trasportato qui; qui può vedere il pontefice papale.

@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>QUARTO ITINERARIO
+115
+
+Tore e la sua cavalleria: questo fregio, diviso in quattro parti, fu tolto dalla sua sede originale e riadoperato per ornare l'arco di Costantino.
+
+In realtà tutta l'organizzazione urbanistica di questo foro era una metafora ideata da Apollodoro; dello schema dell'accampamento romano al fine di sottolineare di nuovo il ruolo primario delle legioni all'interno della struttura politica dell'impero: la piazza del Foro quindi corrispondeva allo spazio riservato all'accampamento dei soldati, mentre la basilica stava al posto del *quaestorium*, che delle legioni era l'amministrazione. Della basilica è visibile gran parte dell'aula con le colonne rialzate. Divisa in cinque navate da quattro file di colonne di granito e di cipollino, era preceduta, agli ingressi, da statue marmoree dell'imperatore. Al di là della basilica furono edificate due biblioteche parallele. Anche in questo caso c'era una corrispondenza fra le biblioteche e l'accampamento romano che nella stessa disposizione conservava gli archivi delle legioni nonché i diari di guerra che l'imperatore redigeva e che furono la traccia per il ciclo narrativo della Colonna Traiana.
+
+Gli ambienti delle biblioteche sono visibili sotto il piano stradale e conservano i vani dove si riponevano i volumi.
+
+Tra le due biblioteche sorgeva, e sta lì ancora maestosa, la colonna coclide istoriata di Traiano; alta con la base metri 39,83, in rocchi di marmo lunense con una base quadrata ornata da rilievi con le armi di daci vinti e con le figure agli angoli che reggono festoni. Sulla colonna, per duecento metri circa, si avvolge come su un nastro il rilievo narrante le campagne daciche che si combatterono dal 107 al 113 d.C. Ogni rocchetto scolpito, dopo la messa in opera dei rocchi, era dipinto realisticamente, come si faceva per tutta la scultura antica, e spesso i personaggi stringevano nelle mani armi o oggetti riprodotti in miniatura.
+
+A conclusione di tutta questa realizzazione urbanistica fu eretto, dopo la morte dello stesso Traiano, e dedicato a lui e alla moglie Plotina dal suo successore Adriano, un grandioso tempio che, posto oltre le biblioteche e la colonna, concludeva monumentalmente l'intero foro. Di questo tempio, con colonne di granito di circa 20 metri di altezza e 2 di diametro di cui resta visibile solo un grande frammento, si conserva nei Musei Vaticani l'iscrizione dedicatoria.
+
+Usciti dal foro di Traiano si prenda per via Magnanapoli salendo le scale, dopo essere passati accanto all'ottocentesco Palazzo del Gallo di Roccagiovine. Nel XIII secolo questa zona era detta *mons balneapolis*, da cui discende il nome attuale. Dopo la scalinata vediamo il Palazzo Ceva (ora scuola statale) su via IV Novembre, data che ricorda il famoso comunicato Diaz annunciante la vittoria di Vittorio Veneto e quindi la fine per l'Italia del primo conflitto mondiale. Più avanti è situato l'ingresso ai cosiddetti Mercati di Traiano, costruiti sempre da Apollodoro di Damasco, che li dispose lungo il taglio da lui compiuto del colle Quirinale. L'ingresso attuale per la visita non è quello antico che si trovava a livello di una delle esedre del foro.

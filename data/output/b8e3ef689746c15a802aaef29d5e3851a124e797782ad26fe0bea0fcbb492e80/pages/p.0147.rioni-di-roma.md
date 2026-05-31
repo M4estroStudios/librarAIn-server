@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+147
+
+portali ed altrettanti padiglioni; di notevole eleganza; con ariose logge, grandi finestre. Di ultimi, quello situato all'angolo con via Quattro Novembre è la «Coffee houses» che ospita all'interno una sala affrescata da Francesco Mancini con la favola di «Amore e Psiche».
+
+Al centro del cortile donore è stata collocata, in cima ad un elegante piedistallo, un'alta colonna ionica che fa riferimento allo stemma di famiglia.
+
+Dell'interno del palazzo, ancora di proprietà dei principi Colonna, si può visitare soltanto la galleria (aperta il sabato mattina) fondata da Girolamo I Colonna, costruita da Antonio Del Grande e Girolamo Fontana ed inaugurata nel 1703.
+
+I saloni, splendidamente arredati con mobili d'epoca, hanno i soffitti affrescati: particolarmente notevole è il salone dove sulla volta Giovanni Paolo Schor ha dipinto «La battaglia di Lepanto» ed il «Trionfo di Marcantonio I Colonna, comandante della flotta pontificia che ottenne la vittoria contro i turchi». Alle pareti, capolavori firmati Tintoretto, Veronese, Rubens, Bronzino ed altri famosi pittori.
+
+Un'ultima divertente annotazione sull'edificio: vuole la tradizione che alla vigilia della festa dei Ss. Pietro e Paolo il palazzo tremasse, nel momento in cui il papa scomunicava il re di Napoli: «Questa leggenda deriva in realtà da un fatto storico: nel 1788 il Regno di Napoli aveva interrotto l'antica usanza di donare al pontefice un cavallo bianco. Ciò aveva determinato una scomunica di brevissima durata, emessa con la formula «Ti maledico e ti benedico»; ma in seguito alla pronuncia della maledizione, il palazzo del principe Colonna, che godeva della carica di conestabile del regno di Napoli, tremava. Ricorda la tradizione anche un sonetto del Belli, che dice: «Scommunica, per Cristo e la Madonna, e tremeranno tutti, tale quale ch'è palazzo del principe Colonna»».
+
+Dalla parte opposta della piazza, altre due residenze gentilizie: al numero 73, piuttosto poco interessante Palazzo Guglielmi, di origini secentesche ma interamente rifatto nel secolo scorso. Assai più pregevole invece il maestoso Palazzo Odescalchi, situato di fronte alla basilica: esso occupa l'area in cui sorgeva il turrito edificio dei Benzoni, passato poi ad un ramo dei Colonna, quello dei principi di Gallicano; da questi venne venduto, nel 1622, ai Ludovisi, che chiamarono Carlo Maderno per ampliarlo. Nel 1661 passò al cardinale Flavio Chigi, che lo fece «sistemare» da Gian Lorenzo Bernini, il quale vi lavorò molto poco, di trasferirsi a Parigi, e lasciò fincombenza a suo fratello Luigi: alla fine del XVII secolo, edificio ormai compiuto, fu affittato agli Odescalchi, che vi ricevettero soltanto cinque anni dopo una visitatrice illustre, la regina Maria Casimira di Polonia, vedova del re Giovanni II, che vi rimase per qualche anno. Nel 1745 gli Odescalchi si decisero finalmente a comprarlo; per festeggiare l'acquisto, lo fecero subito ampliare da due illu-

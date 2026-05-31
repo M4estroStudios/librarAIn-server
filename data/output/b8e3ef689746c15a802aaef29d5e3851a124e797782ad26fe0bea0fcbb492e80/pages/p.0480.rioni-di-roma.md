@@ -1,0 +1,11 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>480
+
+RIONE VII. REGOLA
+
+G. Vasl, la chiesa di S. Maria in Monticelli — quale storpiatura di Montis Caeli. È una chiesa costruita ai tempi di papa Pasquale I (1099-1118), anche se alcuni la vogliono più antica. Si credeva conservasse resti o meglio una parte di essi, di S. Mamiliano, l'eremita dell'isola di Montecristo. Innocenzo I la riconsacrò il 6 maggio del 1143 come ricordato da un'iscrizione; in seguito a chissà eventi. Non è da escludere che nonostante fossero passati una sessantina d'anni, fossero solo allora riparate le distruzioni effettuate dai normanni.
+
+Tante vicende hanno fatto di quest'insieme una *summa* del gusto decorativo-architettonico nel tempo; ovvero un vivace palinsesto artistico-culturale. L'esterno infatti, campaniletto a parte, risale al 1716. Si tratta di un qualcosa fra barocco e rococò realizzato dall'architetto Giuseppe Sarti, mentre il campanile è un bell'esempio di romanico; molto in uso in tal genere di costruzioni in Roma. Risale ai tempi di Pasquale I. Un tempo era più alto; venne ridotto alle attuali dimensioni, forse per motivi di stabilità, al tempo di Paolo V (1566-1572). L'interno venne pesantemente rimaneggiato dal discontinuo Francesco Azzurri (1831-1901), che incontreremo nella chiesa di S. Lucia del Gonfalone e che tanto estro mise in mostra nella cancellata di palazzo Barberini. L'interno di S. Maria in Monticelli appare cupo e pesante; rivelando un'idea cupa e bacchettona della religione. Ma qua e là, grattando gl'intonaci si sono avute rilevanti sorprese. Nel catino absidale infatti è emersa una testa di Cristo che è quanto resta del mosaico del XII secolo; inoltre nella seconda cappella di destra è tornato alla luce un affresco raffigurante la «Flagellazione» d'Antonio Carracci (1583-1618). Il tutto è completato da un interessante «Crocifisso» ligneo del Trecento; ubicato nella seconda cappella di sinistra.
+
+Nei pressi dello slargo costituito dalla congiunzione della via della Seggiola con S. Maria in Monticelli, vera con molta probabilità, la casa dei Manetti. Un membro di questa famiglia lo troviamo fra i tredici campioni della disfida di Barletta, mentre un altro, Latino Giovenale Manetti che rico-

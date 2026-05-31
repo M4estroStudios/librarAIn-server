@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>DALLE ORIGINI AD OGGI
+1109
+
+La zona, a seguito di questa specializzazione, s'infittì di costruzioni signorili, preziose per mosaici e opere d'arte. Settimio Severo ripristinò l'acquedotto neroniano, che ancora oggi domina la zona, arricchendolo di archi e iscrizioni.
+
+Nel 271 Roma venne minacciata dall'invasione alemanna, e Aureliano pensò di cingere la città di nuove mura difensive, essendo cadute in disuso e in rovina quelle repubblicane. Il lavoro durò cinque anni e il manufatto presentava 8 metri d'altezza più un coronamento a parapetto con merlature; lo spessore era di dodici piedi romani, mentre ogni trenta metri l'opera difensiva presentava una torre quadrata adatta a ospitare le artiglierie, ossia le *ballistae*. Il Celio, a seguito di questa immane impresa, ospitò la porta Appia, che apparteneva alla prima classe dei varchi murari, data l'importanza della strada che serviva; ed era munita dunque di due fornici. La porta Latina, di minore importanza, aveva invece un solo fornice, mentre la porta Metronia, quale porta di terz'ordine e quasi *posterula*, non aveva torri proprie, ma un semplice arco in un tratto di cortina.
+
+L'edificazione delle mura aureliane comprese nel futuro rione anche vasti tratti di terreno ancora disabitato, ma già carico di storia, per la grande quantità di tombe illustri e data la presenza di consolari di primaria importanza, come la via Appia, già citata, e la via Latina.
+
+Ed eccoci giunti all'affermazione del cristianesimo come religione dello Stato, con l'afflusso e l'aggregazione di un clero sempre più vasto e articolato proprio nella zona del Celio; dove nella chiesa dei Ss. Giovanni e Paolo abbiamo un primo esempio del sistema edilizio adottato dalla religione emergente, che si avvarrà, nell'elevare le basiliche e le chiese per il nuovo culto, di edifici romani preesistenti.
+
+La casa sotto la chiesa appena citata infatti apparteneva a un certo Byzas, come attesta il *titulus* relativo, evidente sulla porta di accesso all'edificio.
+
+Sul Celio, e precisamente dove si trova oggi l'ospedale militare, venne mantenuta una sorta di opposizione da parte di senatori e patrizi timorosi dei loro diritti minacciati dalla nuova religione; ma questo solo fino al trionfo del credo cristiano, che non fu comunque più arginabile dopo la battaglia di Aquileia, avvenuta tra Teodosio ed Eugenio il 5 settembre dell'anno 394. Il Celio subì immensi danni, non più riparati, a seguito del saccheggio di Alarico, avvenuto dal 24 al 27 agosto dell'anno 410. Infatti qui erano presenti le ville più sontuose e ricche di Roma e la Chiesa seppe ben approfittare di questo sfacelo, acquisendo via via, per successive donazioni, beni e terreni, avendo buon gioco nel contrapporre un "al di là" compensativo a un "al di qua" così nero. In questo modo l'immane rovina della città ebbe una sorta di risorgimento ad opera della nuova classe sociale rappresentata dai sacerdoti e dai fedeli, operosi nella edificazione di templi, conventi ed ospizi, sfruttando le vestigia pagane: quelle inutilizzate venivano invece lasciate alla rovina e nell'incuria. È in forza di questo nuovo corso urbanistico-sociale che sul Celio, seconda regione di Roma, sorgerà il grande convento di S. Gregorio; dal quale...

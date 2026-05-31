@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>QUARTO ITINERARIO
+493
+
+Condo altri provenienti dalla cosiddetta tomba di Nerone.
+Costruita nel 1591, con una elegante vasca a quadrifoglio polilobato; ha ornato per tre secoli il centro della scomparsa piazza Giudia o Giudea, come evidenziato nelle mappe del XVI secolo. In seguito agli sventramenti del rione S. Angelo, venne, dopo mezzo secolo di magazzinaggio, qui ricostruita nel 1930, come evidenziato dall'iscrizione che, facendosi spazio fra le volute architettoniche della vasca e gli stemmi dei magistrati capitolini del 1593, e cioè Boccapaduli, Planca Incoronati, Iacovacci ed Altieri, recita: "Francesco Boncompagni Ludovisi Governatore di Roma questa fontana eretta nel sec XVI dai conservatori del Popolo di Roma venne ripristinata F'a.d. MCMXXXVIII ef.s".
+
+Alzando gli occhi, avremo di fronte la parte ottocentesca del Palazzo su cui spicca in grande evidenza il nome Cenci-Bolognetti. Sulla sinistra, iscrizione identica a quella riportata in merito alla proprietà dell'area.
+Tutto il lato sinistro della piazza delle Cinque Scole, guardando verso il fiume, non offre nulla di particolare, occupata com'è da un anonimo edificio scolastico e da un palazzotto un po' patetico, del 1925, che s'atteggia ad un rinascimento fasullo.
+Aggiriamo l'angolo del palazzo su cui campeggia la scritta Cenci-Bolognetti, ed eccoci, con la via Monte dei Cenci, a contatto con l'angolo della chiesa di S. Tommaso. È una autentica fortuna ch'essa sia arrivata fino a noi, perché ad essa abbiamo la possibilità di conoscere con buona approssimazione il luogo ove nacque Cola di Rienzo, descritto dall'anonima "Cronaca" del XIV secolo: "Fu nato nello rione della Revolav", riporta quest'ultima, "Sio habitatio (la sua abitazione) nella via che va alla Revola, dereto de Santo Tomao (dietro S. Tommaso), sotto lo tempio degli Judiei".
+
+A ribadire tutto ciò, all'inizio di via S. Bartolomeo ai Vaccinari venne posta la seguente iscrizione: "Qui presso nacque l'ultimo dei tribuni Cola di Rienzo SPQR 18725".
+Non inganni il nome di "vaccinari", questo infatti deriva da *vicinariis*; conciatori di pelle, che abitavano, dopo aver occupata la regione Scorticlaria, fra Ponte e S. Eustachio.
+Qui, all'inizio della strada, prima delle demolizioni, esisteva un Arco detto delle Vaccine ed una chiesa parrocchiale demolita agli inizi del secolo, ma di cui si conservarono le parti marmoree gli altari, per essere riutilizzati nientemeno che nel duomo dell'Asmara, capitale dell'Eritrea. Le cronache del tempo riportano un fatto curioso: scavando sotto le fondamenta della chiesa, vennero alla luce una grande quantità di corna, che testimonia l'antica presenza dei conciatori-vaccinari e del mattatoio da cui questi traevano la materia prima per il loro lavoro.
+Prima d'assumere il nome attuale, questa via era dedicata a S. Stefano; che venne ricordato dapprima col nome di S. Stefano de Benedictis (XIV secolo), poi in Silice ed infine de Arenula, prima di divenire definitivamente S. Bartolomeo de' Vaccinari.
+La strada, ridotta ormai a poca cosa, non presenta molto di particolare, chiusa com'è dal lato posteriore del palazzo dei giornalisti ora affittato alla II ripartizione del Comune. Di fronte notare, grazie...

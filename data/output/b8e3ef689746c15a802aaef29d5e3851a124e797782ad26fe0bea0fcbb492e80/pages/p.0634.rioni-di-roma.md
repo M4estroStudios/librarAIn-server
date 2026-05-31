@@ -1,0 +1,20 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>634
+
+RIONE X. CAMPITELLI
+S. Francesca Romana
+
+Francesca Bussa de Leoni, detta Ceccolella, nacque nel 1384. Fin da giovanissima aveva manifestato il desiderio di abbracciare la vita religiosa. Alle bambole preferiva le immagini dei Santi. A nove anni decise di portare il cilicio e a 11 aveva confidato ad un monaco olivetano di S. Maria Nova il suo proposito di chiudersi in convento. Ma il padre le combinò uno dei tanti matrimoni aristocratici che legavano tra loro le famiglie nobili di Roma. Così Francesca sposò Lorenzo de Ponziani. Nelle nuove case combatté l'uso di libri magici che si faceva da parte dai parenti dello sposo; ai cui desideri amorosi trovava tutte le scuse possibili per sottrarsi. Aveva ridotto una soffitta ed una parte dell'orto a romitori personali dove resisteva alle tentazioni diaboliche raccontando che, ad ogni mancanza da lei commessa, le appariva un angelo che la schiaffeggiava. Tuttavia ebbe tre figli, di cui due morirono ancora piccoli.
+
+Francesca visse la vita coniugale in pieno spirito di carità cristiana; accettandone tutti i doveri, dando esempio di umiltà e modestia e soccorrendo, come meglio poteva, con infinito amore il marito, i figli, i suoi servi e tutti quei poveri e quei malati che le chiedevano aiuto. Così le case dei Ponziani, a Trastevere, divennero un centro di carità in cui Francesca prodigava le ricchezze di famiglia. Nei giorni duri delle carestie, delle epidemie e delle guerre intestine di Roma, Francesca era l'immagine popolare dell'amore cristiano.
+
+Il Papa, in quegli anni, si trovava ad Avignone e Roma dovette subire per due volte l'occupazione del re di Napoli, Ladislao d'Angiò. In queste terribili vicende politiche dovevano combattere nei vicoli, nelle vie, nelle piazze di Roma i seguaci dell'una e dell'altra; Francesca andava dall'uno all'altro dei combattenti che avesse avuto bisogno di aiuto. In queste lotte il marito, dopo ventotto anni di matrimonio, rimase ferito e mutilato dai nemici di Gregorio XII, mentre il re Ladislao le prendeva in ostaggio l'ultimo dei figli rimastole.
+
+Intanto Francesca, sempre presente al capezzale del marito, aveva composto un balsamo con olio, ruta e maggiorana che, dandolo ai malati che si recavano da lei, procurava portentose guarigioni. La sua vita proseguiva nella pratica della più profonda penitenza: usava un teschio come bicchiere, mangiava solo verdure, vestiva un abito rozzo e dal colore cinereino. Sposatosi il figlio, tornato libero dalla prigionia e rimasto paralizzato il marito; Francesca, nel 1425, con un gruppo di tredici amiche pronunciò la formula di oblazione dei monaci di S. Maria Nova. Da allora ogni settimana poteva andare alle riunioni di istruzione religiosa, mentre le sue compagne affittavano il primo nucleo del futuro monastero ai piedi della rupe Tarpea.
+
+Nel 1436 morì il marito; Francesca finalmente riunirsi alle sue compagne nel monastero, che nel frattempo si era ingrandito con acquisti e donazioni, tra cui quello della torre in cui si lavorava alla pettinatura e alla filatura della canapa con uno strumento detto spiculo che, secondo il Perali, sarebbe il vero motivo del toponimo degli specchi. Francesca morì nel suo monastero nel 1440 e la sua salma fu sepolta accanto all'altare maggiore di S. Maria Nova.
+
+Più tardi vi eresse un monumento bronzeo il Bernini, che scomparve durante l'occupazione francese di Roma alla fine del Settecento. Le oblate salvarono parte dei resti del corpo di Francesca conservandoli nella cassa di rame che li conteneva fino al 1801 presso il proprio monastero e di nuovo dal 1866 al 1869, quando il Meli scolpì in S. Maria Nova un secondo monumento alla Santa.
+
+E per la presenza delle spoglie della Santa, che la chiesa di S. Maria Nova prese il nome di S. Francesca Romana, che fu canonizzata da Paolo V nel 1608 ed elevata a comprotettrice del popolo romano.

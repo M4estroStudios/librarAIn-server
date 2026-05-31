@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>**Il monumento funerario di Q. Sulpicio Massimo**
+
+Il monumento che vediamo oltre un alto muro con alto cancello è databile alla fine del secolo d.C. ed è costituito da un basamento in travertino su cui è poggiato un altare funerario con acroteri ornati da palmette e piccolo timpano con corona legata da nastri svolazzanti. Qui è stato sistemato un calco; l'originale viene conservato nei Musei capitolini.
+
+La fronte di questo cippo, racchiusa da una cornice, è separata in due settori da un listello su cui è incisa la scritta DEIS MANIBUS SACRUM. Nella parte superiore è stata ricavata una nicchia all'interno della quale è una figura maschile, stante, panneggiata di toga dall'ampio sinus. La mano destra ferma la toga sul petto e con la sinistra tiene un volumen, in parte svolto. La superficie ai lati della nicchia e nel settore inferiore del cippo è interamente occupata da una fitta iscrizione in greco e in latino; da cui si apprende che si tratta del monumento funerario di Quinto Sulpicio Massimo; eretto a sua memoria dai genitori Quinto Sulpicio Euganeo e Licinia Ianuaria. Sulpicio Massimo morì alla tenera età di undici anni.
+
+Il fanciullo aveva preso parte alla gara estemporanea di poesia greca nel terzo certame capitolino (94 d.C.) e pur non vincendo aveva destato lo stupore degli altri 52 partecipanti dell'auditorio stesso. E questo carme improvvisato dal giovane poeta lo leggiamo inciso appunto ai lati della nicchia. Nella parte inferiore del cippo, sempre in greco, ne v'è un altro composto invece dal padre, in cui ricorda la bravura poetica del giovane figlio e ne lamenta la morte dovuta alla eccessiva applicazione nello studio. In esso il padre degli dèi, Giove, rimprovera aspramente il dio Sole per aver permesso al giovane ed inesperto Fetonte di guidare il carro solare.
+
+[...] navate laterali, la quale nel 1950 sostituì quella originaria in legno. All'angolo sinistro della facciata esterna è resa, a mosaico, la raffigurazione dell'ostensorio con il «SS. Sacramento venerato dall'Associazione primaria delle adoratrici del SS. Sacramento» (come si legge all'ingresso a destra della chiesa). Subito a fianco della chiesa a sinistra è murata, sulla parete del palazzo a fianco, una piccola immagine mariana.
+
+Prendiamo adesso per via Flavia; dove si apre la Taverna Flavia, uno dei più noti ed eleganti ristoranti romani. All'angolo fra la via Quintino Sella e la via Flavia è posta una edicola mariana che raffigura, a mezzo busto, la «Madonna con il Bambino in braccio», sotto la è la scritta «Beata Mater».
+
+La via Flavia deriva il nome da quello della gens Flavia; cui appartennero gli imperatori Vespasiano, Tito e Domiziano. In questa zona, confinante con gli Horti Sallustiani, doveva essere la residenza di Vespasiano e di Domiziano, che vi nacque nel 51 d.C., il quale trasformò parte di questa in tempio dedicato appunto alla gens Flavia.
+
+Attraversiamo via Collina che, come dice il nome stesso, ricorda la antica porta della cinta muraria repubblicana; della quale alla fine dell'Ottocento sono stati visti i resti sotto il Ministero delle finanze e raggiungiamo piazza Sallustio dove al centro, protetti...

@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+781
+
+Costruito tra il 1936 e il 1937 su progetto dell'architetto Ignazio Guidi, con decorazioni pittoriche all'interno e sulla facciata principale, che venne chiamata allora via del Mare. E qui fu posta appunto una riproduzione marmorea della Lupa Capitolina.
+
+L'edificio sorge probabilmente sul luogo dell'antico porto Tiberino, che per primo collegò Roma con Ostia e che ebbe intensità di traffici fino a quando l'imperatore Claudio ricostruì il porto Ostiense, destinando quello Tiberino a zona di magazzini per lo stoccaggio delle merci. Resti delle murature di questi magazzini sono venuti alla luce durante le demolizioni delle case medievali di questa parte del rione e, durante i lavori, vennero rinvenuti alcuni ritratti romani, tra cui uno di «Augusto» e uno di «Agrippa».
+
+L'apertura della via del Mare, progettata per indirizzare lo sviluppo urbanistico di Roma verso ovest fino a far congiungere la futura città con Ostia stessa e dare quindi a Roma anche la qualità della città marittima, portò a vaste demolizioni che hanno radicalmente mutato il volto della zona. Andarono perdute alcune antiche chiese; innanzitutto era già stata distrutta nell'Ottocento quella di S. Gregorio de Gradellis, cosiddetta per gradini, che da essa scendevano al fiume o, secondo altri, perché era stata costruita sui gradini del Circo Massimo. Quindi si persero S. Maria in Curte Domnae Miccinae, cosiddetta per la vicinanza della casa di una celebre cortigiana soprannominata Micina; quindi la chiesa di S. Maria in Tofella, situata verso piazza Montanara; e ancora S. Caterina di Porta Leone, posta di fronte a S. Nicola in Carcere; e infine la chiesa di S. Lorenzo de Mondezzariis o dei Cavallucci, concessa da Pio IV agli Armeni, detta così per il primo titolo, per la vicinanza ad uno scarico di immondizie, e la chiesa di S. Tommaso d'Aquino, che si trovava sulla via che portava a piazza della Bocca della Verità.
+
+In realtà molte di queste chiese erano già in stato di abbandono da molto tempo; ma l'apertura di via del Mare — oggi frammentata nei nomi di via del Teatro di Marcello e di via Petroselli — portò alla soppressione di un luogo urbanistico fatto di vicoli dal forte sapore medievale. Fu demolita anche la chiesa di S. Galla, che sorgeva dove, secondo la tradizione, erano le case della Santa figlia di Simmaco, lodata da S. Gregorio Magno. La chiesa fu anche detta S. Maria in Portico, riedificata da Gregorio, ornata da iscrizioni e da un'abside con pitture di scuola giottesca. Essa si trovava vicino ad un tratto della Cloaca Massima e, siccome vi si venerava anche S. Giorgio di Cappadocia, il protettore dei crociati, la chiesa fu detta anche S. Giorgio alla fonte o della marrana di S. Giorgio.
+
+Papa Leone II le aggiunse il titolo di S. Sebastiano. La chiesa di S. Galla era famosa a Roma per l'annesso ospedale e per l'ospizio notturno riservato ai poveri. Qui aveva sede la Confraternita dei candelottari, fabbricanti e venditori di candele, che festeggiavano per tradizione la Purificazione di Maria con la solenne processione della Candelora che si teneva il 2 febbraio e cui fa riferimento il famoso proverbio romano:
+
+«tra quella lupa quello luppo»

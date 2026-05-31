@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO
+365
+
+Giriamo adesso per la stretta via dei Banchi Nuovi, cosiddetta per la presenza dei banchi dei cambiavalute e detta anche papale perché, come abbiamo già ricordato, veniva percorsa dal corteo papale che accompagnava il papa appena eletto che prendeva <possesso> del Laterano. Qui, subito a sinistra, ai nn. 35-36 è situata la casa che, come si legge sulla cornice che ne scandisce la facciata al primo piano, Francesco da Gallarate, milanese, si fece costruire. Questo cinquecentesco edificio entrò poi a far parte della proprietà dell'ospedale di S. Giacomo.
+
+Ai nn. 37-41 vediamo il Palazzo Aldobrandini abitato da Silvestro Aldobrandini, una volta giunto a Roma da Firenze, il quale fu padre del papa Clemente VIII. Questo edificio fu donato alla famiglia dallo stesso pontefice, nel 1601. Avendo sposato una Aldobrandini, Paolo Borghese e, alla morte di questi, Camillo Pamphilj; il palazzo, estinto il ramo Pamphilj, fu ripreso dai Borghese; ceduto ad Andrea Casini, nativo di Frascati, l'edificio passò infine ai Jannetti del Grande. Nulla ormai resta della originaria facciata e quello che vediamo oggi è un rifacimento ottocentesco. All'interno c'è un bel cortile con un lato porticato su due colonne con una targa marmorea alla parete che ricorda come il palazzo fosse stato frequentato da S. Filippo Neri e da Torquato Tasso.
+
+Percorrendo ancora via dei Banchi vediamo che a destra si apre lo stretto vicolo di S. Giuliano. Percorriamolo per vedere subito a sinistra una bella edicola sulla fronte di un palazzetto; ai nn. 46-47, con la raffigurazione in affresco della <Madonna>. Poco più avanti, in corrispondenza dei nn. 51 e 52, è murata una piccola targa marmorea con bella incisione della <Crocifissione>.
+
+Tornati su via dei Banchi vediamo subito lo stretto vicolo della Campanella: dove all'angolo è murata parte di una colonnetta in granito grigio. Il vicolo è così chiamato perché vi si affacciava un albergo con questo nome. Bisogna ricordare che qui, in una casa accanto alla bottega di Giacomo Mazzocchi, editore cinquecentesco, abitò l'umanista Palladio.
+
+Questo vicolo si snoda in due tratti e conserva un caratteristico susseguirsi di case con antiche facciate le cui forme architettoniche vanno dal Cinquecento all'Ottocento. All'angolo di una di queste, al n. 18, è posta un'edicola mariana in stucco. In corrispondenza del n. 23 è murata una targa indicante la proprietà monialium di S. Caterina da Siena. Tra i nn. 27 e 28 su un edificio secentesco è una bella edicola in stucco.
+
+Questo vicolo termina in quello di S. Celso e proprio all'angolo è situata la sede dell'arciconfraternita del SS. Sacramento e dei Ss. Celso e Giuliano, che fu istituita da papa Pio V nel 1560. Il nome venne, nel 1595, ampliato divenendo <del SS. Sacramento e del Nome di Dio>, quando ad essa venne unita una seconda confraternita detta <dell'Ineffabile Nome di Dio>. La facciata è movimentata da lesene con capitelli in stile ionico. La porta d'accesso è fiancheggiata da nicchie mentre la parte superiore ha al centro una finestra. All'interno, nella volta, è raffigurata l'<Assunzione della Vergine>, mentre sull'unico altare spicca l'opera di...

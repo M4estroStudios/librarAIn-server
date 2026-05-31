@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO
+93
+
+La facciata di S. Maria Maggiore. In una stampa di fine Ottocento identificabile. Interessante piuttosto è che sostituendo le tegole del tetto della basilica, se ne recuperarono molte di età romana imperiale: da Nerone ad Adriano, Marco Aurelio fino a Settimio Severo e Teodorico. Alcune con il monogramma di Cristo erano state fabbricate a Kaccioy in Siria. La basilica più antica, paleocristiana, a tre navate con abside è stata riconosciuta in scavi degli anni Trenta ed era ornata da colonne di reimpiego e da mosaici con «Storie della Bibbia». Ma dal XV secolo in poi la basilica ebbe numerosi rifacimenti e ampliamenti. Il soffitto a cassettoni è di Callisto I e Alessandro VI. Il portico di Gregorio XIII e l'aggiunta delle cappelle di Sisto V e di Paolo V. Clemente risistemò l'abside, Clemente XI costruì il palazzo a sinistra della facciata e finalmente sotto Benedetto XIV, architetto Ferdinando Fuga, la basilica prese la forma attuale:
+
+La facciata racchiusa tra due palazzi gemelli scanditi da piatte lesene, finestre incorniciate, edicole, stemmi sorretti da angeli e balaustre finali è costituita da una maestosa e, nello stesso tempo, elegante struttura: preceduta da un'ampia scalinata la facciata di Ferdinando Fuga è costituita da un portico a cinque luci con colonne sostenenti una trabeazione su cui stanno due timpani triangolari e uno curvilineo, a loro volta ornati da angioletti con al centro le statue della «Verginità» e dell'«Umiltà», riferite chiaramente alle virtù di Maria. Sul portico è impostata una grande loggia a tre arcate di cui la centrale maggiore con timpano triangolare, il tutto scandito anche qui da colonne e concluso da una balaustra sostenente statue di Santi e pontefici con al centro la statua della «Madonna con il piccolo Gesù». In basso sono le statue di «S. Carlo» e di «Nicolò V», più noto da giovane come maestro Tommaso, che disse poi di se stesso: un povero chierico è divenuto papa.
+
+Tutto l'esterno della basilica è ricco di statue di Santi. L'atrio della basilica reimpiega 8 antiche colonne e da esso si acce-

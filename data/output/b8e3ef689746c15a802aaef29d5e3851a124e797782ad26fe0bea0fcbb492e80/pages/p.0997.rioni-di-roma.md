@@ -1,0 +1,12 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+997
+
+La chiesa del Ss. Vito e Modesto con l'arco di Gallieno (incisione di G. Vasi)
+
+non gli angoli. Il semplice portale, con gli stipiti in marmo e con lo stemma abraso fra nastri svolazzanti posto al centro della cornice, reca la scritta: «Sixtus fundavit 1411». La chiesa, abbandonata nuovamente, fu restaurata da Pietro Camporese il Giovane nel 1834 e un'altra volta nel 1901 quando era cardinale Francesco di Paola Cassetta (la chiesa mantenne il titolo cardinalizio). Durante questo restauro condotto dall'architetto Attilio Ricci la chiesa ebbe un nuovo orientamento e in tale circostanza venne dotata di una nuova facciata; quella che si apre su un modesto slargo in via Carlo Alberto.
+
+Questa facciata è asimmetrica: il portale, rettangolare con stipiti in travertino dipinti in grigio nella parte inferiore, è affiancato da paraste al di sopra delle quali è un fregio di triglifi e metope con cornice aggettante. La superficie compresa fra la porta e il fregio è riempita da una finestra rettangolare e da un motivo ad arco in stucco, ornato alla sommità e agli angoli da rosette. Al di sotto del timpano è una finestra rettangolare con vetri policromi circondata da sottili elementi decorativi, da festoni con testa alata di putto e da specchiature appena aggettanti e dagli angoli smussati: una cornice molto aggettante con mensole orna il timpano.
+
+A sinistra è il campanile a pianta poligonale con aperture ad arco dalle quali si vedono le campane, un piccolo timpano e la cupoletta. Attualmente non si entra attraverso questo ingresso ma su quello situato in via di S. Vito in quanto la chiesa ha avuto un'altra volta l'orientamento cambiato. L'interno, molto semplice, è costituito da un'aula rettangolare dal pavimento in cotto e terminante in un'abside. Sulla navata di destra vediamo, dietro una grata, una pietra che proviene dal (vicolo Scellerato) dove, secondo la tradizione, due santi titolari della chiesa subirono il martirio durante la persecuzione di Diocleziano insieme a Crescenzia: di fronte, sul lato sinistro, è posta un'edicola con la raffigurazione della Vergine del Rosario. Sempre su questo lato, luogo

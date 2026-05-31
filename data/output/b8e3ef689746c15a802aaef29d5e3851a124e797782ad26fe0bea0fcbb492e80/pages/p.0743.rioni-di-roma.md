@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO 743
+
+Accanto vi è la scritta: "ANGELI IN FORO PISCIUM N II". Segno della presenza di un antico banco.
+
+Più avanti, di fronte al civico 20B, vi è una bella colonna in granito con capitello di uno ionico stilizzato. Secondo alcuni, la porta contrassegnata col numero civico 25 era l'ingresso alla bella torre-abitazione addossata al Portico d'Ottavia. Quest'ultima presenta comunque un altro accesso con resti di scala e della porta, esattamente dal lato opposto: appartenuta ai Grassi, ai Particappa ed in seguito all'ospedale della Consolazione; questa costituisce un luogo particolarmente suggestivo e di grande interesse sia documentativo che architettonico.
+
+Sarà pur stato questo mercato, come detto dall'Anonimo Romano, ma, contrariamente a quanto generalmente ritenuto, questo non era l'unico mercato del pesce. Un editto dei conservatori datato 14 aprile 1606, regolando il "cottio" ed l'esposizione della merce, chiama infatti in causa anche i mercati di "Sancta Maria Rotonda et Sancto Celso". Comunque era il mercato generale dove il prodotto ittico veniva convogliato e venduto; gli altri erano molto probabilmente semplici rivendite, seppur importanti. L'importanza del mercato ittico del Portico d'Ottavia durò fino a un centinaio d'anni fa, allorché venne sostituito da quello situato in un'altra importante area archeologica: via di S. Teodoro, attualmente adibito ad autoparco del Comune.
+
+La vicinanza del fiume fu sempre determinante fino al 1870, per questo come per tutti i mercati romani di una certa importanza. Nottetempo il pesce veniva scaricato alla Renella e portato; allora si effettuava il "cottio". Con questo termine impropriamente usato, s'intende oggigiorno la cottura del pesce effettuata ai mercati generali di via Ostiense per festeggiare la notte di S. Silvestro, facendo così derivare il termine "cottio" da *cuocere*.
+
+Nulla di inesatto. Con questa parola s'intende quotare il pesce, fissarne cioè il listino della giornata. Da qui si può capire l'importanza di quest'operazione e la massa di bandi emessi per regolarla.
+
+Proseguiamo per la via del Portico d'Ottavia: sulla sinistra, dopo un edificio per abitazioni eretto agli inizi del Novecento sul vuoto lasciato dalle cosiddette bonifiche urbanistiche, ve ne è un secondo adibito a scuola: entrambi gravano sullo spazio un tempo occupato dal Circo Flaminio.
+
+Questo era tanto importante da dare il nome ad una parte del Campo Marzio; da restare in funzione fino al tardo impero — il che vuol dire, visto che venne inaugurato il 221 a.C., una cosa come seicento anni circa — da lasciare un profondo ricordo anche nelle epoche successive, anche se confuso fino a non molto tempo fa col contiguo Teatro di Balbo e relativo portico o cripta; venne eretto da Caio Flaminio, lo stesso che oggi viene rammentato dalla statale n. 3, ed era soprattutto destinato ai ludi plebei (sorta di corse fra uomini e cavalli) e ai ludi taurii di origine remotissima, sembra addirittura del periodo regio. Confuso con i resti del Teatro di Balbo, durante il medioevo venne detto anche Castellum Aureum, mentre fabbricanti di corde s'erano installati nella pretesa arena.

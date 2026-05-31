@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO
+161
+
+periore di S. Nicola de Portiis (visibile sulla destra) e in un sotterraneo sotto ad un cortiletto attiguo; i resti di un sepolcro romano, dei Semproni, del secolo aC. Sempre su via della Dataria si affaccia il Palazzo Testa Piccolomini (n. 22), costruito intorno al 1719 da Filippo Barigioni per ordine di Giovanni Ferrante Testa Piccolomini, sui resti di una casa del Seicento.
+
+La facciata, con quattro ordini di finestre, è piuttosto semplice: belle le cornici in stucco delle finestre del piano nobile, dove sono ripresi gli elementi dello stemma della famiglia (la croce con le cinque mezzelune, l'aquila coronata ed il leone rampante). Grazioso il cortile, con una fontana a parete. Quasi in fondo alla via si apre, sulla sinistra, un altro vicoletto che conduce in uno slargo attraversato da via dei Lucchesi: questo spazio, che nel Cinquecento si chiamava «piazza delle Erbe», forse perché a tempi ospitava un mercato, è dominato dalla presenza di una interessantissima ma poco conosciuta chiesa, dedicata ai Ss. Croce e Bonaventura dei Lucchesi.
+
+Di fronte alla chiesa si trova il Palazzo Lazzaroni (n. 26), che apparteneva nella seconda metà del Seicento a Niccolò Grimaldi, creato cardinale da Clemente XI Albani nel 1706. All'inizio del secolo scorso l'edificio passò alla famiglia Lazzaroni, originaria di Bergamo, che lo fece rimaneggiare in maniera piuttosto pesante.
+
+Alla fine dell'Ottocento il palazzo fu al centro delle cronache mondane: vi abitava infatti il barone Michele Lazzaroni, amministratore delegato della Banca romana e di conseguenza implicato nel lungo scandalo che seguì al suo fallimento. Il nobiluomo era molto amante dell'arte, ed aveva raccolto nei saloni del palazzo una cospicua collezione di dipinti antichi, di cui una piccola parte venne donata dal barone all'Accademia di S. Luca.
+
+Il palazzo ha un aspetto piuttosto grandioso: la facciata presenta tre ordini di finestre, separate da una sopraelevazione del secolo scorso mediante un bel cornicione sostenuto da mensoloni su cui sono scolpiti fiori, conchiglie e rombi (questi ultimi appartengono allo stemma Grimaldi). Attraverso il grande portone, fiancheggiato da una coppia di lampioni di bronzo a forma di drago, aggiunti alla fine dell'Ottocento, si accede ai due cortiletti interni, colmi di fascino. Il primo, tenuto a giardino, è abbellito da due sarcofagi antichi, di cui uno riadattato a fontana; nel secondo invece le pareti sono tappezzate di frammenti antichi e stemmi. In linea con il portone d'ingresso è sistemata in fondo all'atrio una fontana a parete con un'alzata di pietre rustiche, quasi a simulare un piccolo ninfeo, da cui l'acqua zampilla e si raccoglie dentro un sarcofago strigilato.
+
+Usciti dal palazzo, procedendo verso la Dataria, si possono fare altre piacevoli scoperte, come la lapide murata nella facciata del palazzo a cui corrisponde il numero civico 9a. Si tratta di una targa di marmo collocata nel Settecento per impedire lo scarico dei rifiuti: «Per ordine di Monsig.re Ill.mo Presidente delle strade», ammonisce la lapide, «si proibisce a qualunque persona di quello...

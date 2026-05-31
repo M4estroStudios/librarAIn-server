@@ -1,0 +1,9 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO 1021
+
+[Planta degli orti di Lucullo (ricostruzione cinquecentesca di Pirro Ligorio).]
+
+[...] di piazza del Popolo; sembra che a lungo giacque a terra, finché qualche pontefice se ne interessò: da Clemente XII, che lo ebbe in dono dai Ludovisi, allora proprietari della zona, e non seppe utilizzarlo e lo lasciò presso la Scala Santa, a Pio VI che lo fece porre davanti alla chiesa di Trinità dei Monti. Ancora più fortunosa è la storia del basamento dell'obelisco pseudo-egiziano; un blocco di granito rosa, perché rimase staccato e fu donato dai Ludovisi al Comune di Roma quando, nel 1890, la loro villa fu lottizzata. Trentasei anni dopo fu collocato nel giardino a sinistra del palazzo Senatorio in Campidoglio. Adornato di simboli littori, divenne l'«Ara dei Martiri fascisti», finché, caduto il regime, tornò a giacere nell'oblio nei pressi «del luogo della sua momentanea gloria» come scrive Armando Ravaglioli in attesa di una «plausibile utilizzazione».
+
+Nella parallela di via Sicilia; in via Sardegna si può vedere al n. 49 la Biblioteca dell'Istituto Archeologico Germanico, derivato da un'istituzione del 1823, che si proponeva di studiare i reperti archeologici scoperti in Italia. Si è continuamente accresciuta con donazioni di nobili e di re e ha superato 120.000 volumi oltre a centinaia di periodici e di opuscoli. Ancora su via Sicilia (n. 59) mostra il suo impeccabile volto novecentesco il Teatro delle Arti, costruito da Carlo Broggi nel 1930. I marcapiani fanno da base alle finestre di quattro piani, la cui monotonia viene spezzata da una parte centrale a vetri: fu inaugurato da Benito Mussolini che proteggeva i teatri e gli attori se non facevano il «bastian contrario». L'interno è illuminato da ampie finestre ed...

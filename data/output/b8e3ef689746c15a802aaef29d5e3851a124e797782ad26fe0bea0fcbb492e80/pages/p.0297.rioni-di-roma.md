@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+297
+
+spontanea; infatti si trattava di liberare la zona da una autentica folla di streghe e demoni che rendevano durissima la vita a quanti dovevano passare la porta Flaminia o di S. Valentino. «Tanta retta di spiriti malvagi era appunto dovuta alla tomba di Nerone posta alle falde degli horti appartenenti alla sua famiglia... evidentemente l'autorità di S. Valentino non era sufficiente, e si era resa indispensabile l'intervento stesso della Madonna».
+
+La chiesa di S. Maria del Popolo; così come rifatta sotto Sisto IV, rappresenta una delle tappe obbligate del Rinascimento in Roma. Alla pari di varie chiese dello stesso periodo come S. Agostino, S. Pietro in Montorio ed altre, presenta una facciata di una austera semplicità; suddivisa in due ordini e sormontata dal timpano; volte come in questo caso; e negli altri portati, ad esempio, abbiamo anche una scalinata che dona all'accesso un'indubbia maestosità. Questa, al di là della chiesa di S. Agostino, presenta volute laterali.
+
+Questa chiesa sarebbe sorta al fine di esorcizzare gli Horti individuati dal Lanciani come Domitii e laddove secondo Svetonio Nerone vi sarebbe stato sepolto: «gentili Domitiorium monumentum... quod prospicitur et campo Martio; impositum colli hortulorum». Quinto ed ultimo imperatore della gens Giulio Claudia, alle note iniziative di Agrippina, Nerone non godette certo di una buona stampa, ma soprattutto ci si compiacque nel evidenzarne le negative, spesso interpretandole con faziosa mentalità.
+
+E ciò da Tacito. Sienkiewicz, ammesso che quest'ultimo meriti d'essere qualificato «storico», Ettore Paratore, che è di ben diverso avviso, e riferendosi al grande delitto di Nerone, la persecuzione contro i cristiani, eminente studioso affermò: «sappiamo che Tacito è il primo che dice che Nerone li accusò ingiustamente, ma nello stesso tempo non tralascia di dire che i cristiani erano delinquenti, per flagitia invisos, odiosi al popolo»; aggiungendo fra l'altro, il più famoso esegeta vivente di Tacito, E. Koestermann ha sostenuto che la persecuzione neroniana dei cristiani è una falsa notizia, derivante da un erroneo scambio di Tacito fra i seguaci della nuova fede e una setta ebraica di diverso carattere. Comunque le cose andarono nel modo che sappiamo e se i pagani in genere, secondo l'intransigente cristianesimo dei tempi, erano demoni, figuriamoci Nerone!
+
+Non è da escludere che nell'XI secolo esistesse una pieve, laddove la «plebs superstite si riuniva», secondo una dinamica riscontrabile in molte altre parti d'Italia. Il passo fra «plebs» e «populus» è brevissimo, ma comunque siamo sempre nel campo delle ipotesi. Parte la tassazione subita dai poveri romani superstiti dal massacro dei Normanni per costruire questa chiesa, donde il nome di «popolo».
+
+Eccetto un piccolo, modestissimo stemma sull'architrave della porta centrale, questa chiesa non presenta la solita tronfia decorazione di stemmi e triregni. Questa invece affida la sua storia a due iscrizioni fittissime, ben 28 righe per lapide; che dati i tempi, siamo certi che erano romani in grado di poter, non dico capire, ma leggere. Il che...

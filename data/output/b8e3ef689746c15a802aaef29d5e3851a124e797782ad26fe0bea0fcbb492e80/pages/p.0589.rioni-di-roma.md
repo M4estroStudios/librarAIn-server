@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO 589
+
+Si può salire anche nei locali dell' Arciconfraternita con banchi in noce e decorazioni settecentesche. Una storia particolare presenta il Palazzo Maffei-Marescotti, che si trova sulla via de' Cestari subito dopo la chiesa delle Ss. Stimmate.
+
+Eretto nel 1580 dal cardinal Marcantonio Maffei, nel luogo dove consistevano già antiche case di famiglia; non era ancora ultimato che fu messo in vendita per la sopravvenuta morte del proprietario. Restò incompiuto per anni, e nel 1601 viene descritto come segue: <Ha la facciata dinanzi di passi 50, con doi bei finestrati di otto finestre uno e sotto inginocchiate. La porta non è nel mezzo. Il fianco da man dritta è passi 30 con doi finestrati di finestre quattro et sotto inginocchiate. Ha la loggia come si entra di passi 62>.
+
+Venduto agli Estensi e quindi agli Acciajoli; passò alla famiglia Marescotti nel 1746. Ferdinando vi operò taluni adattamenti che l'edificio passasse alla Banca dello Stato pontificio; fu della Banca romana; quella del famoso scandalo. Dal 1906 è di proprietà della Santa Sede, che vi tenne il Vicariato; attualmente vi gestisce la giunta diocesana e taluni istituti turistici.
+
+L'ingresso principale è su via della Pigna, dinanzi all' ex palazzo Porcari. Ha un bel portone con architrave a festoni e decorazioni araldiche; posto fra due colonne raccolte in una nicchia. Le finestre sono a timpani alternati, curvi e rettangolari con inserite teste di cervo; un marcapiano ingraziosisce a motivo d'onda la massiccia mole dell' edificio. Ricchissimo è il cornicione dove perdura la cadenza delle teste di cervo coi festoni, e agli angoli consiste un bugnato. Nel lato di via de' Cestari invece la soluzione architettonica è più semplice con rifacimenti addirittura dell'Ottocento: Bello il cortile con loggiati cinquecenteschi interrotti da una soluzione settecentesca dovuta al Fuga, come è detto.
+
+Al numero 34 di via de' Cestari, dinnanzi all'appena ricordato palazzo Maffei è il Palazzo Muti-Sacchetti, iniziato dal Vespiggnani attorno al 1840 e terminato solo nel 1869, eliminando il palazzo del cardinal Paravicini che si trovava sul luogo.
+
+Nella zona sottostante la soluzione architettonica è a bugnato; con una loggia che al primo piano abbraccia l'angolo che da via de' Cestari confina con via dell' Arco della Ciambella. Il cortile presenta una suggestiva fontanina a finta grotta con sorgente freschissima a pozzetto; L'ampia scalea, abbellita da una figura femminile scultorea, all'attacco è stata recentemente scempiata dall'ingresso di un ascensore che stride con il rigore dei luoghi. Taluni soffitti del secondo piano sono decorati con affreschi ad arte povera: Mi si permetta il vezzo di ricordare che in questi locali, dove ho soggiornato per anni, sono stati concepiti parecchi dei miei romanzi. Mi auguro che una lapide commemorativa dell' avvenimento venga posta sulla facciata dell' edificio il più tardi possibile.
+
+Tornando verso piazza Argentina; eccoci al Palazzo Strozzi; successivamente Besso e sede dell' omonima fondazione. Della nobiltà e delle ricchezze degli Strozzi, è inutile dire. Il palazzo in precedenza; di molta minore importanza; era appartenuto agli Olgiati; al principio del Seicento fu ampliato e abbellito.

@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>208
+RIONE XXII. PRATI
+
+prospetto principale del palazzo di giustizia (stampa di fine Ottocento)
+
+Suffragio: Infine, al n. 29 di via Ulpiano è la Cappella dedicata a N.S. del Sacro Cuore di Gesù, tenuta dall'omonima Congregazione mariana maschile. Qui ha il proprio oratorio anche il Collegium Tarsicii, devoto a S. Tarcisio, protomartire dell'Eucarestia. Il Santo è raffigurato sulle pareti (opera di G.B. Conti) in atteggiamento orante tra simboli eucaristici. L'altare è poi ornato da un baldacchino in stile paleocristiano.
+
+Proseguendo sul lungotevere, oltrepassiamo il palazzo dove aveva sede il ministero per la protezione civile, attraversiamo via Ulpiano, intitolata al giureconsulto romano del III secolo d.C., la cui opera costituisce un terzo del «Digesto» giustinianeo; e raggiungiamo il grande e maestoso Palazzo di giustizia, la cui facciata principale è volta verso il Tevere, su quella che è chiamata piazza dei Tribunali. Il palazzo di giustizia, fin dagli anni della sua edificazione, ha subito ininterrotte critiche variamente motivate. È il caso invece di restituirgli la stima e l'apprezzamento che si merita perché negli ultimi decenni è stato svilito a causa della sua grandiosità e del suo monumentalismo da parte di chi frettolosamente dimenticava di considerare le ragioni storiche dell'origine dell'edificio, la sua fedeltà alle scuole architettoniche dell'epoca umbertina, ai fini simbolici che l'edificio stesso si proponeva e anche il grande lavoro di tanti artisti e artigiani che seppero coniugare insieme le proprie opere senza alcuna sbavatura.
+
+A volere il palazzo fu G. Zanardelli, primo ministro della giustizia e presidente del consiglio. Risultò vincitore del concorso Guglielmo Calderini, il quale si ispirò all'architettura neobarocca, anche settecentesca, con riferimenti al Tibaldi, ai Vitelli, ai Galli da Bibiena, operando un'ampia scenografia di masse e una orgogliosa esuberanza di decorazioni ornamentali.
+
+Purtroppo ci furono subito polemiche che portarono presto all'esonero del Calderini dalla direzione dei lavori. Questi durarono così ventidue anni e, mentre il Calderini moriva per il dolore di tanta aggressione, il palazzo veniva inaugurato solo nel 1910 e la grande quadriga bronzea dello Ximenes vi era collocata solo nel 1926. La facciata verso il Tevere è imperniata su un grande arco trionfale che ne costituisce il portale d'accesso, sormontato dal gruppo scultoreo della «Giustizia», raffigurata seduta e al centro delle classiche figure simboliche della «Legge» e della «Forza»; opera di E. Quattrini. Sempre all'esterno di questa facciata, mo-

@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>80
+
+RIONE I. MONTI
+
+che avviò lavori di scavo del Foro di Traiano e dell'emiciclo dei Mercati traianei e l'ideatore degli splendidi giardini sistemati all'inizio di via dei Fori Imperialis. Qui famosi sventramenti hanno portato all'isolamento della possente torre dei Conti appartenuta alla famiglia dei conti di Segni. Costruita al tempo di Innocenzo III (1198-1216), la torre inglobò una costruzione più antica; probabilmente una delle esedre rettangolari del *templum pacis* di Domiziano. La torre fu rivestita di marmi provenienti dai Fori e, fortificata, fu protagonista di violenti scontri armati. Il terremoto del 1328 la abbatté riducendola al solo corpo inferiore.
+
+Restaurata nel XV secolo subì altri due crolli improvvisi, di cui quello del 1644 fece rovinare le strutture ricostruite sulle case intorno. La torre presenta alla base una zoccolatura scarpata a pietre bianche e nere in cui leggesi un'iscrizione di Pietro di Nicola che vanta davanti ai romani la possanza della torre. Negli scavi del 1933 furono rinvenuti resti di una casetta medievale; ricostruita, ospita il circolo degli anziani del rione.
+
+Prendiamo adesso per via Tor de' Conti, passiamo accanto all'hotel Forum; già convento della chiesa di Ss. Quirico e Giulitta, dal cui roof garden si gode però uno dei più bei panorami della città. A seguire troviamo la chiesa dei Ss. Quirico e Giulitta, "unica a non essere coinvolta dalle demolizioni nell'area dei Pantani". S. Quirico era di Antiochia in Siria o di Tarso in Cilicia. La madre Giulitta, arrestata perché cristiana durante la persecuzione di Diocleziano, portò con sé il figlio in tribunale ove, sottoposta a tortura, ad alta voce gridava la sua fede. Il piccolo Quirico allora si mise a gridare anche lui le parole della madre. Afferrato dal governatore fu scaraventato sui gradini del tribunale, dove si fracassò il cranio e morì. La madre fu decapitata poco dopo. Entrambi furono dichiarati martiri.
+
+La chiesa romana nella sua primitiva costruzione era dedicata ai Ss. Stefano e Lorenzo. Scavi del 1930 individuarono la prima chiesa; si rinvenne una lapide con la dedica ai santi, fatta da papa Vigilio (537-555). Pasquale nel 1118 fece costruire il campanile, a trifore, mentre l'interno fu rifatto in forme gotiche con arcate ogivali, oggi visibili solo quando si possa salire oltre l'odierna volta a botte.
+
+Nel 1475 papa Sisto IV donò alla chiesa un portale nuovo; opera di Baccio Pontelli, ma i lavori successivi del 1584 mutarono l'orientamento della chiesa cosicché il portale del Quattrocento fu sistemato nella vecchia abside. Altri lavori si fecero durante il Seicento, ma un definitivo rifacimento ebbe luogo dal 1728 al 1734 e si concluse con la facciata settecentesca del Raguzzini, che è ornata da semplici cornici.
+
+L'interno della chiesa è ad unica navata: nella volta è raffigurata la «Gloria dei Ss. Quirico e Giulitta», dipinta da Pietro Gagliardi, ottimo pittore dell'Ottocento italiano. Bello è anche l'altare maggiore fortemente barocco; mentre è da non trascurare il monumento a «Gregorio Maria Terenzi» di scuola canoviana. Si può accedere ai resti della chiesa più antica e vedere gli affreschi delle piccole absidi con figure di santi dell'XI secolo e un lungo...

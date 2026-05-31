@@ -1,0 +1,6 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+73
+
+Mausoleo di Giulio in S. Pietro in Vincoli (stampa di fine Ottocento) — per raggiungerlo dovette scendere sotto terra per una scala di 365 gradini (il giro dell'anno), cosicché la vittoria sul drago avrebbe significato la chiusura dell'anno vecchio e il nuovo si sarebbe aperto nel segno del cristianesimo. S. Martino, invece, legato alla breve estate dell'11 novembre, è noto per avere diviso il proprio mantello con un povero tremante di freddo e dessere stato ringraziato in sogno da Gesù. Divenuto cristiano usava, per umiliarsi, pulire le scarpe del suo schiavo e uscito dall'esercito iniziò la predicazione prima in Pannonia dove era nato, in Liguria e infine in Francia. Nel 370 fu consacrato vescovo di Tour. Irriso dai ricchi e anche da una parte del clero egli resse con grande spirito cristiano la diocesi per 27 anni e al momento di morire si fece sdraiare sulla cenere vestito solo del cilicio.

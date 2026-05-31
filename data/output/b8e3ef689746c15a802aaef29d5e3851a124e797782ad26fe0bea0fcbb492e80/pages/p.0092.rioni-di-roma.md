@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>92
+
+RIONE / MONTI
+
+...zo il quale vi scolpì il «Ratto di Proserpina» e l'«Apollo e Dafne»; entrambi visibili alla galleria Borghese. Il palazzo Imperiali Borromeo; già appartenuto a monsignor Ciampini, studioso romano del Seicento, e quindi ai Rospigliosi che lo dotarono di un grande giardino dove famose erano le loro feste. Il marchese Francesco Maria Imperiali lo donò all'ordine dei missionari apostolici. Questo palazzo aggiunse il nome di Borromeo quando vi trovò ospitalità l'Istituto per gli esercizi spirituali fondato dal cardinal Vitaliano Borromeo.
+
+All'incrocio con via Paolina; dov'è una deliziosa fontanina, è il Palazzo Cassetta; già Ravenna; riservato da Paolo V a residenza dei canonici della basilica. Resti imponenti del patriarchìo; una volta collegati alla basilica con un cavalcavia, sono visibili all'interno. L'edificio porta il nome del cardinale Francesco di Paola Cassetta, nato a Roma nel 1845 e morto nel 1919, detto per la sua grande carità il «padre dei poveri». Partecipò a due conclavi: quello di Pio X e di Benedetto XIV dove fu camerlengo. Fra i suoi discendenti si ricorda Nicola Cassetta; protagonista di alcune importanti operazioni del controspionaggio italiano durante la prima guerra mondiale.
+
+Qui, nell'antico patriarchìo; iniziò il conclave che doveva poi portare all'elezione del famoso S. Celestino; il pontefice dimissionario. Prima di rivolgere la nostra attenzione alla piazza e alla basilica di S. Maria Maggiore consigliamo una capatina alla pasticceria Cottini all'inizio di via Merulana, dove servono bavaresi indimenticabili e dove si può ammirare, fatta in marzapane, la stessa basilica liberiana:
+
+Sulla piazza di S. Maria Maggiore; Carlo Maderno nel 1614, innalzò una «colonna» di marmo proconnesio, alta metri 14,50, che Paolo V fece togliere dalla navata centrale della basilica di Massenzio; dove restava unica di otto, per trasferirla sulla nostra piazza. Sul capitello corinzio fu posta una statua della «Vergine» in bronzo di Guglielmo Berthélot; dove la Madonna si innalza sulla falce lunare. Alla base della colonna in bronzo sono i draghi e le aquile dello stemma di Paolo V. Davanti alla colonna è situata una bella fontana a vasca oblonga ornata da coppie di aquile e di draghi, mentre al centro, su basso piedistallo; sta la coppa con lo zampillo.
+
+S. Maria Maggiore è stata fondata da Sisto III (432-446) in onore di Maria Madre di Dio secondo quanto aveva stabilito il concilio di Efeso del 431. Per celebrare meglio la Madonna vi si trasferirono reliquie della grotta di Betlemme e il resto della culla di Gesù, per cui la basilica veniva indicata anche con l'appellativo di S. Maria ad Praesepe.
+
+Scavi archeologici al di sotto della basilica hanno fornito importanti dati sulla topografia del colle. È stato rinvenuto un edificio con cortile porticato; che su una parete conserva in affresco un «calendario romano» di età tardoimperiale corredato da scene dei mesi e dei lavori agricoli. Questo edificio non è da identificare con il mercato monumentale che Tiberio costruì in onore della madre Livia (Macellum Liviae) ma semplicemente con una costruzione romana altri...

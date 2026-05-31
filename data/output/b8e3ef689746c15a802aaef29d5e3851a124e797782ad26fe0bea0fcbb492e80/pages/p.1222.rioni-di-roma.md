@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>1222
+RIONE XXII PRATI
+
+Fregio in ferro con gli emblemi dello stemma di Leone XIII: cipressi, stelle e gigli. La fronte della chiesa presenta un portico su sei colonne e due pilastri di granito rosso sorreggenti capitelli corinzi. Una scritta nella cornice ricorda la consacrazione del tempio in onore di S. Gioacchino e in onore del giubileo del papa. L'attico, modanato ad edicole e a un breve frontone, presenta un grande mosaico; opera del Monti, raffigurante «Leone XIII» alla destra di un altare su cui è esposto l'ostensorio. Al di sopra del frontone è posta poi una statua in bronzo alta 3 metri e raffigurante «S. Gioacchino con la piccola Maria», opera di A. Vermare. Più arretrata è la fronte della navata centrale anch'essa in stile neo-romanico; ornata da angeli in adorazione e da una Croce sulla sommità posta sul globo terracqueo.
+
+La chiesa, costruita su progetto di R. Inganni, è a tre navate cui si accede per tre porte realizzate con il cedro del Libano. La porta centrale è affiancata da due colonne donate dallo zar di Russia sopra cui è una lunetta raffigurante il «Salvatore», disegnato dal Galimberti che è autore anche dei simboli eucaristici delle lunette laterali. Le tre navate sono divise da 13 colonne di granito rosso poste davanti a pilastri della stessa pietra. Negli spazi fra gli archi stanno medaglioni con busti degli apostoli, scolpiti da M. Tripisciano, con accanto i nomi delle nazioni in direzione delle rispettive cappelle. La volta è opera di E. Cisterna, con gli stemmi di Leone XIII, S. Pio X e dei redentoristi. Le vetrate policrome, rotonde, raffigurano apostoli e santi o la «Pentecoste» (sulla parete di fondo).
+
+Nella navata di destra la prima cappella è quella del Brasile: il polittico è di O. Ampolsi ornato dalla «Madonna di Aparecida» e dai patroni del Brasile: «S. Paolo e S. Sebastiano». Sulle laterali sono affreschi raffiguranti la predicazione cattolica in Brasile e la celebrazione della prima messa brasiliana. Nella volta è raffigurata la «Madonna che stende il suo manto», opera di E. Cisterna. Seguono la cappella del Portogallo, della Baviera, della Polonia; del Canada, d'Inghilterra; degli Stati Uniti, della Spagna. L'altare maggiore è ornato da malachite, l'abside principale presenta il trono pontificio opera di A. Vermare; nella calotta «Trionfo della Trinità e dell'Eucarestia» di V. Monti. Seguono la cappella della Francia; d'Italia; del Belgio, dell'Olanda, dell'Irlanda e dell'Argentina. Nel battistero, rilievo con il «Battesimo di Gesù» del Tripisciano e pitture con angeli e simboli del battesimo di E. Cisterna.
+
+Si conclude così la nostra passeggiata nel rione Prati che, da qualche anno ospita le migrazioni degli storni, spesso inseguiti da una coppia di falchi, «prataroli», e una sempre più numerosa colonia di taccole.
+
+{PRATI

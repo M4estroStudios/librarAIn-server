@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>534
+RIONE VIII S. EUSTACHIO
+
+Loro membri Diego, conservatore di Roma nel 1743 e perfino la B. Chiara a cui si deve la fondazione nel 1641 dell'Ordine delle carmelitane calzate.
+
+Lo stemma è costituito da una croce bianca in campo rosso con cinque lupi nella croce. Si sa che negli stemmi dei nobili della Navarra i lupi erano frequenti.
+
+Non possiamo far altro che esprimere il nostro disappunto di fronte al cinquecentesco Palazzo Capranica del Grillo (nn. 76-76a), poiché era espressione di allievi di Antonio da Sangallo; ma nel tempo è stato alterato e rifatto al punto da perdere i caratteri originari. Le due porte a bugne sono architravate e nel secondo piano anche le finestre sono munite di architrave. Il cornicione su mensole. Nelle due porte ad arco che affacciano sulla via dei Redentoristi nn. 11 e 13 si legge ANNO MDCCCLXIV con allusione all'epoca dei restauri; poco oltre, ad un angolo del palazzo nella suddetta via dei Redentoristi, è incassata una colonna di granito con uno strano capitello che rappresenta una diabolica figura con ali di pipistrello: su questa via si aprono due portali (nn. 8 e 9) con roste artistiche, sovrastati da un balcone angolare su mensole, la cui decorazione richiama sotto l'architrave delle finestre. La scala è decorata con stucchi e reca in un ripiano l'arma dei Capranica. Al primo piano si ammira un affresco ottocentesco nel soffitto («Una donna in trono con scettro a cui si avvicina una giovane; vi è anche un angelo con cartiglio»).
+
+Il palazzo fu dei Vipereschi, famiglia oriunda da Corneto, giunta a Roma nella prima metà del Cinquecento. Vantò due conservatori di Roma nello stesso secolo: Valerio e Viperesco. La famiglia si estinse prima del 1746. Lo stemma era costituito da tre draghi d'argento su fondo rosso con banda azzurra.
+
+Quindi, l'edificio passò ai Capranica del Grillo: il nome di questa famiglia deriva da Capranica Prenestina. Nel Quattrocento Domenico e Angelo furono eletti cardinali; e al primo si deve la fondazione del Collegio Capranica. Ambedue sono sepolti nella chiesa di S. Maria sopra Minerva. Jacopo Capranica fu conte di Anguillara; Angelo, Paolo e Niccolò furono vescovi nel Quattrocento. Nei Capranica si estinsero marchesi, Cavalieri e del Grillo. A questi ultimi appartenne il famoso marchese del Grillo noto per le sue burle: Giuliano sposò la famosa attrice Adelaide Ristori, che morì nel 1906 ottantaquattrenne nel palazzo, in cui quattro anni prima, in occasione del suo ottantesimo anno, si era recato il re per esprimerle l'ammirazione sua degli italiani. La sera stessa al teatro Valle, alla presenza dell'attrice ed in suo onore, fu rappresentata l'«Esmeralda» di Giacinto Gallina, a cui seguì un atto della commedia «Goldoni e le sue sedici commedie nuove» di Paolo Ferrari.
+
+«Abitando in via dei Redentoristi (n. 9) da venti anni, scriveva Aldo Palazzeschi in una lettera del 20 agosto 1960, «conosco perfettamente il convento (dei padri Redentoristi annesso alla chiesa di S. Maria in Monterone), che ho seguito nelle sue ascensioni ultime, e coltivo anch'io fiori su una terrazza proprio di fronte a quella del convento stesso. E le campane dei Redentori-

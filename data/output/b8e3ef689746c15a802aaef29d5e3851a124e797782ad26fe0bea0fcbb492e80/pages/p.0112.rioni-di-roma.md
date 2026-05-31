@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>112
+
+RIONE MONTI
+
+**La colonna Traiana**
+
+La colonna Traiana servì da modello per la scultura storica quattrocentesca grazie a disegni delle sue scene che diversi artisti avevano fatto e diffuso in Italia e in Europa. I primi disegnatori non risalivano oltre il sesto giro dei rilievi che rappresentava il limite di ottima visibilità degli stessi da parte dell'occhio umano, ma fu Iacopo Ripanda a calarsi in una cesta lungo la colonna e pazientemente a riprodurla tutta. Il buon Iacopo salì sulla sommità della colonna attraverso la scala romana a chiocciola che la percorre all'interno. Già nel secolo XII la colonna Traiana fu tra i primissimi monumenti di Roma a godere dell'attenzione e della protezione da parte dei papi, il che la colloca come emblema di un primissimo passo della cultura occidentale verso la conservazione dell'antico.
+
+Sulla base della colonna è l'iscrizione che ricorda che essa è alta tanto quanto il monte fu tolto in occasione dello scavo per la sistemazione del Foro. All'interno della base, accanto ai primi gradini della scala a chiocciola, è una piccola camera funeraria che conteneva le ceneri di Traiano racchiuse in un'urna d'oro.
+
+Traiano riesumava così una tradizione antica di essere sepolto alla base della propria colonna onoraria: il rilievo infatti celebrava, come si è detto, le sue campagne daciche iniziando con la rappresentazione degli accampamenti e dell'esercito romano che passa il fiume Danubio su un ponte di barche; quindi le scene si susseguono con l'imperatore che alle truppe, la costruzione di accampamenti, sacrifici e le cerimonie religiose al fronte, i consigli di guerra, la cattura di spie nemiche, l'esercito in marcia, gli scontri con i Daci, le ambascerie, gli attacchi dei Daci ai campi romani, le cariche della cavalleria romana contro il nemico, la sottomissione dei vinti, feriti curati, la decapitazione dei prigionieri, romani catturati e torturati, le formazioni a testuggine dei romani, la prima sottomissione di Decebalo, re dei Daci, a Traiano, la vittoria che scrive su uno scudo la fine della prima campagna dacica, le scene della seconda campagna con le scene dell'esercito che passa su un ponte che Apollodoro ha costruito, l'assedio alla capitale nemica Sarmizegetusa, i Daci che la incendono per non consegnarla ai romani, quindi l'autoavvelenamento dei capi daci, la cattura del tesoro nemico, la fuga di Decebalo e il suo suicidio, la testa di Decebalo portata a Traiano e per ultimo, là dove, sotto l'ultimo giro del rilievo, appare una sezione della colonna scanalata, la deportazione dei prigionieri daci.
+
+In cima alla colonna era stata posta una statua di Traiano che, andata perduta nel medioevo, fu sostituita da un'altra bronzea di S. Pietro; opera di Tommaso della Porta e Leonardo Sormani. A volere la sostituzione fu Sisto V che, con una particolare cerimonia, esorcizzò la colonna stessa.
+
+Una lettura del fregio della colonna è possibile non girandole intorno, che stancherebbe chiunque, ma per assi verticali, dividendo il cilindro in quattro sezioni, sempre verticali. Appariranno allora le rispondenze tra le varie scene: di truppe in combattimento, dell'imperatore presente, della costruzione di fortezze, dell'imperatore sacrificante. Era così che l'antico progettista voleva che si osservasse la colonna.
+
+Questa piazza monumentale fu indubbiamente una delle più belle della Roma antica e la presenza dominante in essa del tempio dedicato alla Pace trasmise la stessa denominazione all'intero complesso architettonico chiamato quindi *Templum Pacis*, e solo quanto oggi abbiamo pochissimi avanzi.

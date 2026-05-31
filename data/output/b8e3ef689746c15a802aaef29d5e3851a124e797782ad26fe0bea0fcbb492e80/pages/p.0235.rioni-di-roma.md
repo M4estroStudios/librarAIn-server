@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+235
+
+**La Colonna di Antonino Pio**
+
+La colonna della quale si aveva notizia da tempo si trovava quasi interamente sepolta nel giardino di un tale Cecchini, ma non si conosceva affatto la base che venne alla luce soltanto nel 1703 quando, per volontà di papa Innocenzo XII che voleva collocare la colonna davanti alla Curia Innocenziana, furono condotti gli scavi. Problematico fu il lavoro di tirarla fuori dalla terra; vi tentò inutilmente il Fontana, incaricato dal papa nel 1704, ma vi riuscì soltanto l'anno dopo.
+
+Sembra che durante questi lavori e il successivo trasporto si manifestassero lungo il fusto della colonna due lesioni che indussero ignoti a scrivere, sul fusto stesso, la frase «Trinum et Unum». Non soddisfatti di questo, gli soliti ignoti scrissero ancora sull'ingabbiatura lignea che racchiudeva l'antico fusto la scritta firma di Pasquino: «Levatemi dal cul tanta canaglia / chi vuol ch'io vada al desiato luogo faccia venir da me mastro Zabaglia». Era costui il più bravo capomastro che si trovasse a Roma in quel momento, ma nonostante la sua bravura lo Zabaglia non ebbe l'incarico del trasporto della colonna e della base. Quest'ultima, dapprima collocata sulla piazza di Montecitorio, fu fatta spostare da Pio VI tra il 1789 e il 1792 in Vaticano dove è attualmente ammirata al centro del cortile delle Corazze.
+
+Più sofferte invece furono le vicende della colonna che, colpita da un incendio nel 1759, fu quasi dimenticata sul posto; e quando Pio VI, aver fatto spostare la base in Vaticano come abbiamo detto, volle erigere sulla piazza l'obelisco di Psammetico II che Augusto aveva utilizzato come gnomone del suo orologio solare, pensò bene di far segare in lastre i frammenti della colonna di Antonino Pio in modo da utilizzarne il materiale nel restauro dell'obelisco. Questo obelisco, sormontato da una bronzea sfera forata ornata dai motivi araldici dei Braschi, doveva servire a sua volta da gnomone in quanto un raggio di sole, passando attraverso il foro della sfera di bronzo, avrebbe indicato sul selciato, opportunamente predisposto, le ore del giorno. E così la colonna cessò la sua vita di colonna onoraria continuando a vivere di riflesso in un obelisco.
+
+La colonna, in granito, che era senza la base (metri 14,75), doveva essere sormontata da un capitello di stile tuscanico e aveva incisa, all'impostazione, un'iscrizione alla quale sappiamo che venne lavorata fra il 105 e il 106 d.C. mentre era prefetto d'Egitto Dioscuro e architetto Aristide.
+
+La base di metri 2,47 x 3,38 aveva sul lato principale una iscrizione dedicatoria posta da Marco Aurelio e Lucio (figli adottivi di Antonino Pio) in onore del padre divinizzato. Quindi sulla facciata opposta è la raffigurazione della dea Roma seduta che assiste all'apoteosi della coppia imperiale: Antonino Pio e Faustina Maggiore che vengono trasportati da un'aquila affiancata dal genio della Aeternitas. In basso, con l'obelisco-gnomone, è semiadagiata la personificazione del Campo Marzio che anch'egli assiste alla scena; le altre due facce sono ornate secondo uno stile curato dalla rappresentazione di una decursio funebre (cioè un carosello) di cavalieri con soldati al centro. [Il cortile] è costituito da tre entrate: quella centrale è più ampia delle laterali e tutte e tre sono affiancate da colonne con capitelli dorici.
+
+Dal balcone della Curia innocenziana, nel Settecento avveniva, come è anche ricordato da Giuseppe Gioachino Belli in un famoso sonetto, l'estrazione del gioco del lotto mediante le mani di un orfanello bendato preso fra quelli ospitati nella vicina chiesa di S. Maria in Aquiro.

@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+513
+
+cavalcavia al palazzo della Sapienza e vi fu collocata la facoltà di lettere dell'Università.
+Fu demolito e ricostruito nel 1935 pur conservando due soffitti a scomparti dipinti, la fontana del Pegaso e il rivestimento a bu-
+È stato congiunto con un porticato ionico al palazzo Ma-
+dama ed è ora sede degli uffici del Senato.
+Ed ora siamo giunti in piazza Madama, un tempo chiamata Lom-
+barda; di fronte ad uno dei più importanti palazzi del Po-
+Palazzo Madama, sede del Senato.
+La sua storia è veramente curiosa; poiché, a mano a mano che si ingrandiva, cambiava proprietario: Alla fine del Quattrocento Sinulfo di Castell' Ottieri, tesoriere di Sisto IV, acquistò un edificio nella piazza Lombarda (poi Madama) e la torre dei Crescenzi; e si fece un palazzetto incorporandola.
+I suoi eredi lo vendettero al cardinale Giovanni de' Medici (il futuro papa Leone X) che vi abitò un decennio, lo migliorò e lo cedette alla cognata Alfonsina Orsini, che lo ampliò. In seguito pervenne a Giulio de' Medici (futuro papa Clemente VII) e, dopo altre cessioni, arrivò nelle mani di madama Margarita d'Austria, vedova di Alessandro de' Medici, che vi apportò modifiche e vi creò uno <studiolo con vari ornamenti>. Lo possedettero i Lorenesi e, infine, da Benedetto XIV restò proprietà definitiva dei papi. Questi vi pose la sede del governatore, un carcere criminale e uno di polizia (1755).
+L'ultimo papa e proprietario fu Pio IX che incaricò il Servi di costruire nuovi piani e di chiudere il portico per ospitarvi il Ministero delle finanze e le diligenze pontificie. Siamo intorno al 1850. E dopo? Nel 1870 il palazzo fu scelto come sede del Senato del regno d'Italia e nella terza decade del Novecento fu unito al palazzo già degli Stabilimenti francesi, a una parte del palazzo Giustiniani per mezzo di un sottopassaggio; e al palazzo Carpegna, mediante un porticato; un loggiato. In quattro secoli si sono succeduti vari architetti tra i quali ricordiamo Paolo Maruccelli e Ludovico Cardi del Seicento; Pietro Hostini del Settecento, il Servi Luigi Gabet nell'Ottocento; Alberto Buonocore Caccialupi nel Novecento. Il palazzo, così come si presenta oggi, offre al nostro sguardo le più complesse sovrapposizioni di stili che denunciano le diverse epoche; e perciò si passa da una sala quattrocentesca ad una del tardo Cinquecento; da un ambiente seicentesco a tutti i rifacimenti e ai nuovi apporti dell'Ottocento e dei primi decenni del Novecento.
+La facciata barocca su piazza Madama, sfarzosamente decorata dal Cardi, è stata definita <pittoresca>, quasi realizzata da un pittore, per suo aspetto ricco di elementi pittorici e decorativi che di strutture architettoniche di un certo rilievo. Il cornicione è parso <sovraccaricato>, <bizzarro>; pregevole il disegno delle finestre, anche se i comignoli.
+L'altra facciata, dirimpetto al fianco della chiesa di S. Luigi dei Francesi, è di stile più sobrio. L'elegante cortile d'onore, cui si accede dal portale arricchito da due colonne corinzie e dall'architrave che reca una pelle leonina, ha sul lato d'ingresso cinque arcate su sei colonne con capitelli scanalati, con fogliette e piccole volute; di fronte, altrettante arcate occupate da finestre e [?]

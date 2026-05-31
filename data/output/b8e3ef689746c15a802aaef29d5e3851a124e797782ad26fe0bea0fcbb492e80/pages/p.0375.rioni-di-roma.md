@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>TERZO ITINERARIO
+375
+
+Vittorio portava via dei Banchi Vecchi; si possono trovare sulla sinistra i ricordi del vicolo dell'Oro.
+
+Nei pressi del corso, a cui via del Consolato si collega con una scala, è al n. 6 il Palazzo Malvezzi-Campeggi; De Rossi che, costruito nel Seicento, è ornato nella facciata da gigli e stelle araldiche. Segue, al n. 9, una casa con un bel portone bugnato con fila di onde correnti al primo piano e quindi, al n. 14, un'altra quattrocentesca con portale e finestre dalle cornici bugnate.
+
+Tornati in piazza dell'Oro vediamo, al n. 3, una casa stavolta cinquecentesca che nel piccolo cortile conserva un sarcofago strigilato ornato negli angoli da analoghi rilievi di un leone che aggredisce un daino e, nella mandorla, da un delfino: opera databile alla fine del I secolo. Si imbocca quindi via Giulia e, oltrepassato ladito a largo dei Fiorentini, vediamo sulla sinistra, al n. 82, un palazzetto sulla cui facciata restano scarse tracce dei graffiti e una piccola lapide marmorea con la raffigurazione della "Deposizione del Cristo".
+
+La prima traversa a sinistra è via dei Cimatori che costituisce un autentico pezzo di Cinquecento. Qui si stabilirono fiorentini esuli da Firenze dopo l'assedio del 1531, che esercitavano il mestiere della cimatura della lana. Equi ebbero la prima abitazione in Roma i Barberini, forse riconoscibile nel bell'edificio cinquecentesco al n. 19 che fu restaurato nel 1932-1933. Al n. 82 è situato un bell'edificio cinquecentesco che fu dato all'arciconfraternita dei Fiorentini in risarcimento dei beni espropriati quando papa Giulio II decise di fare aprire via Giulia: l'edificio, diviso in tre piani da cornici, ha il piccolo portone d'accesso (non originario) sottolineato da bugnato. Il portone originario della casa è quello che si apre su via del Consolato. Originariamente la facciata era ornata da un motivo di bugnato che ancora si intravede con gli ornamenti dei fregi che sottolineano i vari piani: eroti, leoni alati, recipienti con frutta e gli stemmi della famiglia fiorentina degli Alberti.
+
+Tornando in via Giulia vediamo, al n. 81, il Collegio Bandinelli che fu fondato da Bartolomeo Bandinelli: questo collegio ebbe vita fino al 1870 (era iniziato nel 1678) e da allora, lasciato in eredità all'arciconfraternita di S. Giovanni Decollato — santo che vediamo raffigurato nell'emblema marmoreo inserito al primo piano — vengono assegnate borse di studio in conformità a quanto voluto dal Bandinelli. Accanto, al n. 79, è l'edificio di Antonio da Sangiovanni il Giovane che fu costruito nel 1541. L'edificio passò di proprietà a Raffaello Sanzio; è la casa coronata dal ricco cornicione con elementi araldici che si apre al n. 85, rifatta nell'Ottocento e in tal senso indirizzano le scritte che si leggono al di sopra delle finestre del primo piano.
+
+Soffermiamoci un attimo ed entriamo nel vicolo delle Palle (originariamente al lare), cosiddetto per un episodio miracoloso che avvenne durante il gioco della palla nel 1614.

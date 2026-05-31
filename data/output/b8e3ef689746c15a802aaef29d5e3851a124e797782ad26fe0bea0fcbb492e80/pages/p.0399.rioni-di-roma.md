@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+399
+
+stra; sovrastata da terrazzo. Il portone è ora un negozio, perché è stata inglobata nell' edificio antico. Singolare è, di certo; la casa quattrocentesca rifatta nel Settecento al n. 104, perché, oltre i graffiti, ancora evidenti, del primo piano, mostra nella seconda finestra dell' ultimo piano un affresco che raffigura il padrone di casa affacciato ad una loggetta insieme col suo segretario; e nel vano di un' altra finestra un pappagallo. Il Settecento ha lasciato la sua brava impronta sulla facciata; attaccandole dei medaglioni con ritratti di giuristi, festoni e mascheroni. Un oculo circondato da festoni sovrasta il portone. Nell' architrave vi è una tabella dell' arciconfraternita delle Sacre Stimmate di Roma sovrapposta all'iscrizione che rimane parzialmente nascosta:
+
+D.
+BARTO..
+NV
+LIBER_
+
+Una teoria di testine; di conchiglie e di rosoni decora il cornicione. Al n. 96 un'icona di stucco in cornice ovale raffigura la Vergine contornata da un cielo azzurro e stelle dorate.
+
+Il Palazzo Romanini, già Floridi (nn. 71-73), del tardo Cinquecento, ha il cornicione che poggia su mensole; alcune decorate con teste leonine; sulle ultime finestre vi sono gigli di stucco. Il cortile ha subito rifacimenti dai quali si sono salvate alcune colonne di un porticato. Incontriamo il vicolo della Cancelleria; un tempo cieco; che va da via del Governo Vecchio a corso Vittorio Emanuele I. Nel Cinquecento fu chiamato delle Stalle; perché ivi erano quelle del cardinale Peretti. Infatti qui si affaccia l'imponente edificio (dal n. 7 al 9), che corrisponde a quello dei nn. 21 e 23 di via dei Leutari; egualmente proprietà del cardinale Peretti; parzialmente comprata da Orazio Ricci. Questi rinforzò lo stabile con degli speroni ben visibili su cui pose quattro iscrizioni contenenti il suo nome «Horatius Ricciv», gli anni dei lavori di rafforzamento e il motto «Hoc fac et vivess (fa' ciò e vivrai, se giusto). A suffragare questa sentenza, c'è anche graffita la bilancia della Giustizia. Il termine Cancelleria deriva dagli scrivani dei tribunali dell' antica Roma che erano sistemati «intra cancellos foris» cioè separati dalla restante parte dell' aula del tribunale; donde «cancellicris» e «cancelleria». Osserva il Blasi che il verbo «cancellares» deriva anch'esso da cancello; perché, cassando una scrittura; vi si tiravano sopra delle linee per lungo e per traverso in modo da disegnare un cancello. È evidente che in il vicolo assunse il nome della Cancelleria apostolica. Prima di uscire da questo vicolo; vediamo, quasi ad un angolo; una lapide col divieto di «gettare immondezzas».
+
+Anche la via dei Leutari era un vicolo cieco che deve il nome ad un'omonima famiglia ivi residente, mentre altri lo fanno derivare da fabbricanti di liuti che lì lavoravano. Infatti, Flaminio Vacca, scultore e architetto del Cinquecento; nel narrare del ritrovamento della statua di Pompeo, avvenuto nel 1553, indica il luogo come «la via ove abitano li liutari presso il palazzo della Cancelleria». Inoltre nelle Taxae viarums del 1541 figurano nel vicolo vari nomi di fabbricanti di liuto: Giovanni Antonio; Martino, Cristofano. Ai nostri tempi c'è stato un liutaio che, volendo fare cosa gradita a Mussolini, appassionato di violino e considerato quasi sei seguito nel

@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>400
+
+RIONE VI. PARIONE
+
+Un uomo straordinario; volle costruirgliene uno d'eccezione: un violino con cinque corde.
+
+Continuando la sua narrazione, riportata dal Blasi, il Vacca aggiunge che la statua di Pompeo, già menzionata, generò una lite in quanto era stata trovata col collo sotto una parete che divideva due ambienti di diversi proprietari, che se la contendevano. Un giudice sentenziò in modo salomonico che la statua doveva essere divisa in due parti. Tale sciocca decisione spinse il cardinale Capodiferro rivolgersi al papa Giulio II, che comprò la statua dai due contendenti e la regalò al cardinale il quale, soddisfatto, la pose nel suo palazzo: si crede che ai piedi di tale statua, alta tre metri, sia stato trafitto Giulio Cesare nel 44 a.C.
+
+Ai nn. 32-36 vi è una casa forse dei Mignanelli in cui vi era l'officina dei tipografi Pagliarini. Qui si rappresentarono nel Cinquecento opere di Plauto; in questa casa abitò Gioacchino Rossini e compose il «Barbiere di Siviglia», come attesta una lapide presso il n. 35.
+
+Ai nn. 21-23 un grande edificio; comprato dal cardinale Felice Peretti, detto il cardinale di Montalto (perché da lì proveniva la famiglia), e lasciato al pronipote Michele Peretti, ha un nobile aspetto reso ancor più evidente dai due bei portoni contornati in pietra; nei cui rispettivi archi sono scolpiti animali araldici. Al n. 21 si vedono due ricci agli estremi dell'arco del portone, perché l'edificio fu poi acquistato da Orazio Ricci di Voghera: sulla chiave dell'arco c'era uno stemma ora scomparso. Al n. 23 c'è un leone rampante dentro una corona di pere. In una strada dove abitò un futuro papa (Sisto V), non poteva mancare un'immagine sacra, anche se fu posta più di un secolo dopo: questa graziosa edicola settecentesca si trova al n. 30 ed è composta da una cornice di rose e gigli sotto un timpano inflesso: nell'ovale è incastonata l'effige di una «Madonna col Bambino» incoronati di diadema al di sopra di una targa: il sostegno di ferro del lampione ricorda stranamente la graffa di un violoncello (J. S. Grioni).
+
+Il solito editto col divieto di gettare per la strada rifiuti appare all'inizio della via in una lapide del monsignore Casoni del 1741.
+
+Nel rientrare in via del Governo Vecchio; la lunetta in ferro del portone al n. 84 con tre monti ci riporta al cardinale di Montalto Felice Peretti proprietario anche di questo edificio che fu venduto da Camilla Peretti, sorella del papa, ad Orazio Ricci nel 1601. Era stato riparato nel tardo Cinquecento da Domenico Fontana per Francesco Peretti, nipote del suddetto cardinale Felice futuro papa Sisto V, e marito di Vittoria Accoramboni. Costei a sedici anni sposò Francesco; ma, non resistendo alle profferte d'amore di Paolo Giordano Orsini, duca di Bracciano; lo clandestinamente: dopo che costui ebbe ucciso la propria moglie Isabella de' Medici e collaborato all'eliminazione dello sfortunato marito di Vittoria. Il cardinale, al papa Gregorio XIII che lo aveva convocato per chiedergli quali provvedimenti dovesse prendere per punire l'Orsini, rispose che il tempo avrebbe cancellato ogni cosa. Evidentemente, covava la vendetta, anche se la rinviava. Infatti, salito al soglio pontificio, fece capire ai due amanti che li sposò...

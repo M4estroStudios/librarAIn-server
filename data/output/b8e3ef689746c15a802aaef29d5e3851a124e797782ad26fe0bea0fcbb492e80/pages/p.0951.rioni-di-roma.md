@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+951
+
+1798. Ma la tradizione di festeggiare su quest'altare una volta all'anno, precisamente il 14 dicembre, il culto per il cannone è rimasta anche per gli artiglieri dell'esercito italiano; che qui convergono dunque annualmente quanto devotamente nel nome di quella S. Barbara, appunto; figlía di un ricco e potente Dioscuro di Nicomedia.
+
+Costei si convertì al cristianesimo rifiutando le nozze imposte dal padre, fino a ricevere il martirio; dopo avere subito la prigionia in una torre. Il martirio consistette, e di qui la destinazione dei suoi favori all'artiglieria, nel dover dovuto subire due torce accese sui fianchi, e nell'essere stata, quindi, trascinata ignuda per tutta la città; quindi le mutilarono i seni, infine; venne dipinta per mano dello stesso sciagurato padre; il però, e anche qui come si vede l'elemento igneo è presente, venne incenerito sul posto da un fulmine, benché il cielo fosse completamente sereno. Nella «Gloria» incastonata nell'altare maggiore tra stucchi e modanature auree, è una «Madonnina» recata dalla Terrasanta dai crociati. Nella cappella dei Ss. Pietro e Paolo sono presenti invece due colonne, alle quali sembra che i due martiri siano stati legati del martirio.
+
+Una piccola deviazione sulla destra della chiesa che abbiamo appena visitato ci recherà ora, imboccando il vicolo del Campanile, alla Casa graffiata, che s'apre al numero civico 18. L'uso di decorare coi graffiti le facciate delle chiese e degli edifici ebbe probabilmente origine da Venezia e da lì si diffuse per le regioni vicine. A Roma se ne ebbe una fioritura straordinaria durante il Rinascimento, e soltanto nel rione in esame se ne contarono più di venti. Le tecniche potevano essere diverse e tutte abbastanza semplici, e in caso tali da conferire resistenza sicura alle intemperie. Uno dei modi più in uso consisteva nel mescolare alla malta una certa quantità di ceneri di paglia bruciata; steso sulla parete da intonacare questo impasto scuro veniva quindi velato con un sottile strato di calce bianca. Tracciando su di essa il segno ornamentale risaltava il nero sottostante, che veniva poi rifinito col chiaroscuro.
+
+I graffiti di questa casa graffiata che andiamo visitando; detta anche «casa del boia»; spiegheremo perché, dal Vasari vennero attribuiti a Giulio Romano; altri pensano invece possano essere di scuola raffaellesca; così come pare che sia di scuola raffaellesca il prospetto architettonico della casa stessa. Cosa non del tutto da escludersi visto che Raffaello agì per anni all'interno dei sacri palazzi. La decorazione risale comunque al 1520.
+
+La casa è suddivisa in tre ordini: il piano terreno, con il portone, due finestre e una bottega; la parete è graffiata a finte bugne; il primo piano presenta invece quattro finestre ad arco, una delle quali più piccola; tra queste finestre sono scene di prigionia. Inoltre vi è il re dei Daci con un guardiano di vacche assalito da Mercurio; quindi, al piano superiore, è l'emblema mediceo due leoni. Nel terzo ordine sono figure femminili, e nell'arco ancora vacche, frutta; la decorazione all'ultimo piano finisce con delle semplici teste di leone.
+
+Si diceva del toponimo del boia; ed effettivamente in questo vicolo...

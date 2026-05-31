@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+775
+
+**La festa del cocomero**
+
+Molto nota è la tradizione della festa dei cocomeri che si celebrava tra il greto sinistro del Tevere e la corrispondente sponda dell'Isola Tiberina; quando le acque del fiume non erano tanto impetuose come lo sono ora dopo che i lavori fluviali ne hanno accelerato la corrente mettendo in opera salti artificiali. I venditori dei cocomeri, il 24 agosto di ogni anno, lanciavano in acqua alcuni frutti; i ragazzi del popolo, depositati gli indumenti, si tuffavano in acqua tra il divertimento degli spettatori, nuotando fino ad afferrare i suddetti cocomeri. Non sempre il divertimento si concludeva con la gioia degli spettatori e degli antagonisti, perché qualcuno dei giovani, trascinato dalla corrente, finiva tra le ruote dei mulini ad acqua, che in quell'ansa del fiume erano numerosi.
+
+Si chiudeva così una delle festività popolari più tipiche del rione Ripa legata alla data della festa di S. Bartolomeo la cui chiesa sull'isola era ovviamente il centro di tutti i festeggiamenti e delle relative cerimonie religiose. Soltanto nel 1870, con Roma capitale, la fine di questa sagra non fu sempre semplicemente paesana.
+
+Ma col medioevo o giù di lì l'obelisco rovinò a terra e si spezzò. I suoi frammenti furono ceduti, due a Parigi (uno dei quali è oggi a Monaco) e il terzo a Napoli. Al posto dell'obelisco fu collocata una colonna, che a causa del furto di un carro, nel 1867, si frantumò. A quella colonna, ad ogni 24 agosto, festa di S. Bartolomeo, venivano affissi, per il pubblico ludibrio, i nomi di cittadini romani che non avevano preso la santa Comunione nella Pasqua appena trascorsa (il Belli chiamava costoro "cristiani pasqualini" che ottemperavano al precetto solo in occasione). Nel 1834 ad essere esposto fu il nome dell'incisore Bartolomeo Pinelli, il quale se la prese e andò a reclamare vivacemente dal prete di S. Bartolomeo perché era stato indicato come miniatore.
+
+La colonna rotta fu sostituita da un monumento-edicola, sorreggente sulla guglia una Croce e ornato, nel dado di base, dalle statue dei Ss. Bartolomeo, Francesco d'Assisi, Paolino da Nola e Giovanni di Dio. Il tutto è opera di T. Jacometti e vuole ricordare il Concilio Vaticano; quello in cui Pio IX affermò l'infallibilità papale alla vigilia della presa di Roma. Sulla piazza, a sinistra, sorge la chiesa di S. Bartolomeo; che nel corso dei secoli ha subito numerosi interventi di restauro e di ristrutturazione. Tra tutti si ricorda il terribile crollo che la colpì nel 1557 per la suddetta piena del Tevere; in quell'occasione le acque del fiume trascinarono via anche il ciborio medievale. Allora il papa decise di trasferire in Vaticano le reliquie dei santi, fino ad allora conservate nella chiesa e lì finirono anche le quattro colonne di porfido del ciborio caduto (oggi sono nei Musei vaticani).
+
+La facciata della chiesa è un bell'esempio degli inizi del barocco romano, animata da arcate e nicchie, paraste e finestre nella parte superiore e volute che raccordano due ordini. Tradizionalmente Martino Longhi il Vecchio o suo figlio sono indicati come gli autori della facciata; che sulla sinistra mostra l'alta torre campanaria, eretta nel 1113, in cui si distinguono bifore e trifore.

@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>246
+
+RIONE III. COLONNA
+
+...stro in Capite (inter duos hortos, ad Katapauli), ma dedicata ai Ss. Silvestro e Stefano. Di questa chiesa costruita, come abbiamo già visto, in un'area occupata nell'antichità dal tempio dedicato al Sole, abbiamo sicure notizie a partire dal 761 quando si ricorda in una bolla pontificia come il papa Paolo I l'avesse fatta costruire sulle rovine dell'abitazione del proprio padre. Alcuni resti individuati durante saggi di scavo hanno potuto dimostrare come l'antica chiesa fosse divisa da colonne in tre navate e fosse di dimensioni per lo più analoghe a quelle attuali. La chiesa è ancora citata nel *Liber Pontificalis* che ricorda come nel 779 fosse avvenuta un'aggressione al papa mentre in processione si recava da S. Giovanni in Laterano a S. Lorenzo in Lucina e come il papa venisse ricoverato e tenuto prigioniero nel convento vicino alla chiesa.
+
+Fra la fine del 1100 e i primi anni del Duecento la chiesa fu interessata da un restauro che vide, tra l'altro, la costruzione dell'elegante campanile a sette piani con bifore, ornato da dischi di marmo e sormontato da un [?] ancora in situ nel secolo XII, insieme alla realizzazione del mosaico cosmatesco di cui ancora oggi esistono alcuni frammenti.
+
+Nel 1285 ai monaci benedettini, che avevano retto la chiesa, subentrarono le suore Clarisse, autorizzate da papa Onorio IV, che rimasero nella chiesa, proprietarie anche dei beni che erano tra l'altro cospicui non solo a Roma ma anche nel Lazio, fino al 1876. A partire dal 1588 si ebbe una serie di lavori che interessarono sia la chiesa sia il vicino monastero progettati prima dal Tarchitetto Capriani, dal Maderno e successivamente da numerosi altri finché, affrescata anche all'interno ed ornata di stucchi, la chiesa fu riaperta nel 1696. I lavori seguirono anche successivamente ma non furono di rilevante importanza. Nel corso dell'Ottocento il monastero fu spogliato dei suoi beni (si salvò soltanto il reliquiario di S. Giovanni Battista) e nel 1871 fu assegnato al Ministero dei lavori pubblici ad eccezione di una piccola parte lasciata alle suore che definitivamente uscirono dal convento come abbiamo visto nel 1876. Circa dieci anni più tardi la chiesa fu assegnata ai pallottini inglesi, divenendo così la chiesa nazionale inglese cattolica a Roma. La facciata, opera del De Rossi, è scandita da lesene e conserva l'iscrizione dedicatoria:
+
+DEO IN HON(OREM) BEAT(I) SILVESTRI ET STEPHANI P(A)P(AE) DIC(ATUM)
+
+Le statue dei Ss. Silvestro, Stefano, Francesco e Chiara ornano l'altico (opere rispettivamente dell'Ottoni, del Maille, del Felici e del Mazzuoli) insieme alla raffigurazione a rilievo della testa di S. Giovanni Battista, importante reliquia della chiesa. Sopra il grande portale d'ingresso del XIII secolo ornato da elementi vegetali (secondo alcuni si tratta di [?] dell'epoca di papa Paolo I) è un rilievo riproducente l'immagine «Edessena»: si tratta della copia in marmo della raffigurazione del volto di Cristo, dipinto su pergamena, di proprietà del re di Edessa, Abgar, che fu trasportata dai monaci greci e ora è conservata in Vaticano nella cappella di Matilde.
+
+Nella chiesa erano quindi raccolte numerose reliquie fra le quali...

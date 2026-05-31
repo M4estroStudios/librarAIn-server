@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+363
+
+gli affreschi con «Storie della vita di S. Barbara», opera dell' artista fiammingo Coxie (1534).
+
+Ripercorriamo via della Pace per intero e, attraversando piazza del Fico, imbocchiamo via del Corallo il cui nome deriva dal nome di Pietro Coralli, notaio della prima metà del Seicento che abitava appunto in questa strada e che alla morte lasciò la proprietà all' arciconfraternita della Trinità dei Pellegrini. Prima di questo periodo la strada si chiamava Saccalupo derivando il nome, alterandolo, da quello della famiglia Squarcialupi. In via del Corallo, al n. 9 vediamo un bel portale in bugnato ornato da uno stemma cardinalizio. All'uscita di via del Corallo si fronteggiano le targhe di confine dei rioni Ponte e Parione.
+
+Proseguendo adesso, a destra, in via del Governo Vecchio; si oltrepassa vicolo Cieco e dopo un'antica trattoria aperta dal 1936, incontriamo il vicolo dell' Ávila. Qui, all'angolo, sul palazzo resta la cornice in ferro battuto di un'immagine scomparsa. Questo edificio cinquecentesco è quattro piani sormontato dall' elegante altana ornata da gigli araldici resi in stucco. La facciata, in corrispondenza ai due piani, è ornata dal bugnato più rilevato quello del piano terra, mentre la facciata relativa agli ultimi due piani è sormontata da un ricco cornicione con rosette; Un grande portone arcuato si apre a sinistra affiancato a destra da tre aperture rettangolari. Al terzo piano è invece una successione di arcatelle separate da lesene con capitelli dorici in corrispondenza dei quali, al piano superiore, sono altre lesene sostenenti invece capitelli di stile corinzio. Quando, nel Seicento, venne unificato il corpo di fabbrica sul vicolo dell' Avila, venne anche costruita la bella altana. In questa casa, come è anche ricordato nella tabella di marmo apposta alla facciata nel 1882, nacque Pietro Cossa il 25 gennaio 1830, noto letterato dell'Ottocento.
+
+Avanziamo ancora per via del Governo Vecchio fino ad arrivare ai nn. 12-13 dove vediamo un grazioso edificio del Quattrocento con finestre incorniciate di travertino e piccolo portone arcuato. Proseguiamo per via del Governo Vecchio dove questa sfocia in piazza dell'Orologio e, all'angolo con via degli Orsini, vediamo il Palazzo Boncompagni Corcos. Questo bell' edificio secentesco fu fatto costruire dall'ebreo Solomon Corcos il quale, passato al cattolicesimo nel 1582, prese il cognome Boncompagni da quello del papa Gregorio XIII: Il palazzo, cui si accede attraverso un bel portone inquadrato da colonne che sostengono un balcone, ha le finestre del primo piano sormontate da un timpano curvo e ornate di teste faunesche. Quelle del secondo sono invece sormontate da medaglioni che incorniciano altrettante teste femminili.
+
+Al di sopra del portone d'ingresso è una grande conchiglia da cui pendono due festoni mentre il motivo del drago, che vediamo nello stemma dei Boncompagni che il Corcos aveva preso assieme al cognome, è presente sia sul cornicione che sui capitelli che sormontano le colonne ai lati del portone: Questo palazzo con il cortile porticato fu anche sede dell' Accademia degli Infecondi.
+
+Completiamo il nostro secondo itinerario con il Palazzo del Banposte

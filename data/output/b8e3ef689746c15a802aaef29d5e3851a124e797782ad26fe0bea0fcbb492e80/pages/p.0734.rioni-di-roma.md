@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>734
+
+RIONE XI. S. ANGELO
+Piazza Montanara
+
+Di forma bizzarra, stretta ed irregolare come un fiocco mal riuscito, senza chiese o palazzi particolari, eccetto le poderose strutture del Teatro di Marcello che compaiono in un lato ed un grazioso edificio settecentesco immortalato da svariati dagherrotipi. Questa era piazza Montanara sacrificata alle concezioni urbanistiche del ventennio fascista. Nel 1876 era stata allargata verso Monte Savello. Aveva un fianco quindi che da quest'ultimo arrivava al Teatro di Marcello e gli altri che occupavano lo spazio del Foro Olitorio e dell'attuale via del Teatro di Marcello: ad un livello più alto dell'attuale, visto che i due terzi delle arcate pianoterra del teatro stesso risultano, sempre dalle foto d'epoca, interrate per almeno due terzi, senza contare il rialzo comportato verso il Monte Savello dall'argine del Tevere, per il quale il suddetto "monte" non compare certo più come tale.
+
+Come scritto sul toponimo relativo; il nome deriva dalla proprietà della famiglia Montanari, non dai "montanari" che bivaccavano quotidianamente nella piazza in attesa dell'ingaggio per un lavoro: il termine "montanari" infatti non esiste nel dialetto romanesco in riferimento alla gente di montagna.
+
+...noto come Boario; posto al di là della via del Teatro di Marcello; attorno alla chiesa di S. Omobono; che tante piacevoli sorprese ha fornito nel corso di varie campagne di scavo.
+
+I tre templi affiancati di S. Nicola in Carcere rammentano un'impostazione simile a quella dell'area archeologica di piazza di Torre Argentina, anche se in quest'ultima i templi risultano più distanziati, sia come posizione che come cronologia. Quello che dava sull'attuale via del Foro Olitorio sorgeva su un alto podio; ed dalle sei colonne superstiti si deduce un'impostazione dorica; esse sono in travertino ed un tempo erano rivestite di stucco. Secondo il Lugli, questo tempio risalirebbe alla prima metà del I secolo a.C., con restauri del periodo augusteo: certi studiosi ipotizzano una dedica a Giano. Il tempio centrale, occupato per intero dalla chiesa, era il più grande dei tre (34 per 15 metri), si presentava in stile jonico ed era esastilo periptero, con sei colonne cioè di fronte, ed altre lungo il perimetro. Se ne conserva, nella fossa di fronte alla facciata di S. Nicola, parte della gradinata d'accesso e l'area esterna. La facciata stessa della chiesa ne ingloba tre colonne. Sempre secondo il Lugli, questo tempio risalirebbe al 90 a.C. e la sua cella sarebbe stata restaurata nel I secolo d.C. al tempo degli Antonini. Circa la sua dedica, si fa spazio l'ipotesi della Spes, la Speranza. Il terzo, anch'esso attribuibile al 90 a.C., doveva essere dedicato Giunone Sospita. Subito sulla destra della chiesa di S. Nicola, una breve scala ci condurrà al livello antico, risalente al secolo a.C. La pavimentazione, che venne rifatta ad imitazione del basolato romano delle strade, presente in originale solo in un angolo, ben s'incastona nell'insieme che abbiamo già ammirato dalla sommità del muraglione, che frena la spinta del terrapieno su cui trovasi la piazza di Monte Savello.
+
+Qui v'era quella piazza Montanara, rammentata da tante cronache, da tanti pittori, cara ai visitatori della Roma che fu.

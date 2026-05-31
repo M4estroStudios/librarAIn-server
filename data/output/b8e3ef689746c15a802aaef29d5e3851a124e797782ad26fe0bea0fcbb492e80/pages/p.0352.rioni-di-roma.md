@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>352
+
+RIONE V. PONTE
+
+riana, fu conservato lungo il famoso «Discobolo Lancellotti», replica romana dell'originale bronzeo mironiano. Il palazzo, all'angolo con la via dei Coronari, è ornato da un'edicola con immagine del «Salvatore» sostenuta da angeli in gloria, davanti alla quale è una bella lampada in ferro battuto. Il palazzo, recentemente ripulito, presenta un bel portale disegnato dal Domenichino, affiancato da colonne in travertino con decorazione a fregio e sull'architrave sormontato da un balcone pure in travertino. Il cornicione, che su via dei Coronari presenta le travi in legno, sulla piazza di S. Simeone è ornato da cornici e da un fregio a palmette.
+
+Altri due edifici abbastanza anonimi ma caratteristici si affacciano sulla piazza: qui, accanto al n. 29 dove è affissa un'insegna di barbiere dal nastro di carta colorata destinato a girare all'interno dell'involucro di vetro (ornamento ormai desueto quindi d'epoca), è una piccola finestra ad arco, murata.
+
+Di fronte, il vicolo di Montevecchio, è il Palazzo dell'Antico Monte di Pietà che s'apre sempre su via dei Coronari ai nn. 30-32. Lo stemma del Monte orna la facciata su cui è murata una lapide che ricorda come fosse stato Sisto V a fondarvi il suddetto monte nel 1585. Un'altra lapide ricorda che, fino al 1752, il Monte stesso operò in questa sede prima di essere trasferito in quella attuale da papa Clemente VIII Aldobrandini.
+
+Il palazzo conserva all'angolo un'edicola con la «Madonna in preghiera» raffigurata come se fosse sostenuta da un nastro. Al centro della piazza è stata sistemata una fontana la cui vasca inferiore è ornata di stemmi. L'acqua fuoriesce nella vasca dalle bocche di quattro mascheroni. In alto un modesto zampillo decade su di una vasca più piccola. Questa fontana è stata solo di recente sistemata su questa piazzetta; in precedenza infatti, ornava il bel giardino degli aranci annesso alla chiesa di S. Sabina sul Aventino e prima ancora allietava la famosa piazza Montanara, distrutta dai lavori condotti tra il 1926 e il 1934 per liberare le pendici capitoline e il teatro di Marcello dalle numerose casette che vi erano addossate.
+
+Ai nn. 33-34 è il Palazzo del Drago, altra famosa famiglia romana di origine viterbesca; il palazzo, cinquecentesco, ha il piano terra abbellito da lastre in travertino con gli angoli bugnati. Bello è il motivo delle finestre dove le piattabande che sormontano quelle al primo piano diventano arcatelle per quelle del secondo, ornate agli angoli con motivi dello stemma. Un ricco cornicione ornato da rosette nel cassettonato conclude l'edificio. Molto belli sono i portoni con pesante ghiera in bugnato che si aprono al n. 41 e al n. 44.
+
+Nel palazzo stesso fu inclusa la chiesa di S. Salvatore de Inversis. Sulla piazzetta che segue sulla sinistra, al n. 45 è il Palazzo Fioravanti, già Sala, che presenta uno dei più bei portali di Roma, ornato da lesene con capitelli compositi e, negli angoli, da due teste marmoree antiche, rispettivamente una replica romana dell'Eros di Fidia e un ritratto femminile del I secolo d.C. Riprendiamo la via dei Coronari e vediamo al n. 53 una piccola ca-

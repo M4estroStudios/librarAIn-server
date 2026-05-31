@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+1025
+
+**Un frate e la vincita al lotto**
+
+Nel convento dei cappuccini viveva, al tempo di papa Gregorio XV (1621–1623), un certo fra' Pacifico che aveva l'invidibile facoltà di indovinare i numeri della vincita nel gioco del lotto. Il popolo spesso lo consultava e sembrava con esito positivo; al punto che il papa, per evitare la remissione nel lotto, ordinò l'immediato trasferimento del frate. Immaginiamoci quanto ci rimasero male i suoi fedeli consultatori settimanali! Una gran folla accompagnò il frate che si avviava per la partenza; ma giunto a piazza del Popolo, questo volle lasciare un buon ricordo di sé e improvvisò una quartina che esprimeva un giudizio su Roma, città santa, eppure nei suoi confronti crudele; ma che, declamata in un certo modo, suggeriva una bella cinquina che pare sia uscita apportando un grave deficit al gestore del lotto pontificio. Ecco la diabolica quartina:
+
+«Roma, se sei santa sei perché crudel sei?
+Se dici che se' santa, certo bugiarda sei».
+
+Da questi versi si poterono dedurre i numeri 66, 70, 16, 60, 6.
+
+[...] giace polvere; cenere e nient'altro): Vi è anche presente Pietro da Cortona con «Anania che ridà la vista a S. Paolo» e un «S. Francesco orante» del Caravaggio. Sull'altare della prima cappella di destra ammiriamo il celebre quadro di Guido Reni raffigurante «Arcangelo Michele che abbatte il demonio». Si racconta a proposito di questo quadro che il Reni, sollecitato dalle parole del cardinale Antonio Barberini, dipinse il volto dell'arcangelo di una rara bellezza tanto da essere paragonato all'Apollo del Belvedere; e, di contro, quello del diavolo simile al volto del cardinale Giovanni Battista Pamphilj, che talvolta disprezzava l'artista ed era antipatico a molti, i quali subito lo riconobbero nel diavolo dipinto. Fu chiesto a Guido Reni di giustificare la somiglianza compromettente ed egli spiegò che aveva dipinto l'angelo con la fantasia, non avendolo mai visto; ma il demonio lo aveva più volte incontrato e l'aveva raffigurato nelle sembianze umane in cui gli era apparso. Nel 1644 il cardinale inviso all'artista veniva eletto papa col nome di Innocenzo X e forse si sarebbe vendicato dell'affronto; ma nulla poté, perché il Reni era già morto impunito due anni prima: non solo il diavolo ha assunto il volto del cardinale Giovanni Battista Pamphilj, ma anche alcuni santi riproducono i volti di personaggi allora esistenti.
+
+Infatti nell'«Assunzione della Vergine» di Terenzio Terenzi del Cinquecento, S. Francesco ha il volto di Francesco Peretti, futuro cardinale; S. Michele quello di Michele Peretti, e S. Margherita quella di Margherita Peretti: insomma, l'illustre famiglia Peretti di Montalto in questa chiesa è abbondantemente rappresentata. Se la chiesa è una vera propria galleria d'arte adatta a ricreare i fedeli, trasportandoli in un mondo paradisiaco dove domina la serenità e la luce della speranza in una vita migliore fra santi e beatifiche visioni, altrettanto lugubre, di gusto discutibile è il «Cimitero dei padri cappuccini», alla destra della chiesa; che invita imperiosamente i fedeli a pensare alla morte e al disfarsi del proprio corpo. Si tratta di una successione di cinque cripte disposte lungo un corridoio e decorate esclusivamente da ossa di ben 4000 frati cappuccini defunti nei vari secoli. In una [...]

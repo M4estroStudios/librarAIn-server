@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+665
+
+La via dei Fienili sulla sinistra è rione Campitelli, si apre via dei Foraggi dove è un'immagine mariana in ceramica policroma. Si riprenda il lato del colle Capitolino: sulla destra si aprono altre latomie capitoline, chiuse da cancellate e utilizzate come magazzini di materiale archeologico; mentre all'esterno, tra i fichi d'India, si aggirano sornioni.
+
+Proseguendo per via della Consolazione si deve ricordare che esisteva fino al 1941 la chiesetta di S. Lorenzo Nicolanaso e un piccolo teatro chiamato Nuovo. Si giunge così all'ospedale della Consolazione; e veniamo a sapere che nel *locus Iustitiae* sul monte Tarpeo, Giordanello Alberini lasciò in testamento nel 1385 che si dipingesse su un muro sotto al monte Capitolino un'immagine della «Madonna», prima di essere giustiziato. La volontà di Giordanello fu eseguita da suo figlio Giacomo; là dove erano granai dei Mattei.
+
+Qui sorse la chiesa di S. Maria in Cannapara; detta anche delle Grazie; dove teneva le proprie cerimonie liturgiche la Confraternita dell'università dei canapai, fabbricanti di corde. Accanto alla chiesa sorse presto un ospedale già documentato nel Quattrocento. La chiesa fu demolita nel 1876 e le sue memorie trasferite in una cappella di S. Maria della Consolazione. Intanto, nel Cinquecento, gli ospedali di S. Maria in Portico, di S. Maria delle Grazie e di S. Maria della Consolazione si fusero nell'Arciospedale di S. Maria de vita aeterna; che poi fu chiamato di S. Maria della Consolazione. Così in quegli anni le tre chiese e i tre ospedali confluirono con le stesse confraternite in una sola Arciconfraternita e in un solo arciospedale. Oggi l'edificio dell'Ospedale della Consolazione funge da caserma dei vigili urbani e nel cortile stanno due palme.
+
+L'ospedale, alla fine del Cinquecento, garantiva cinquanta posti letto per gli uomini e dieci per le donne. Nel Seicento vi si aggiunse una spezieria e una scuola sanitaria con teatro anatomico per le dissezioni sui cadaveri. Intanto, negli anni venivano progressivamente aumentati i posti letto, mentre la corsia delle donne spesso finiva per fungere da lazzaretto. Si ricorda come nel 1848 si distruggesse il vicino cimitero causa dei gas mefitici che esalava.
+
+L'ospedale era rinomato in città per la sua scuola di chirurgia ma, pur confluito nell'Ente pio istituto di S. Spirito e ospedali riuniti di Roma, fu chiuso nel 1936. Tra i personaggi che lo frequentarono, oltre ai più importanti nomi della medicina romana dei secoli passati, vi furono, per esercitare la carità nei confronti dei ricoverati, S. Ignazio di Loyola, S. Giuseppe Calasanzio, S. Vincenzo Pallotti e S. Camillo de Lellis.
+
+Si ricorda tra l'altro che veniva spesso Clemente XII Corsini, qui, a servire, di persona, i malati vestendo «uno zinale» e distribuendo agli infermi, dopo averli benedetti, biscotti e prugne. Sappiamo inoltre che l'Arciconfraternita della SS. Annunziata vi si recava tutte le domeniche distribuendo pan di Spagna, confetti, arance, prugne e mele cotte. Qui morì nel 1591, all'età di 23 anni, S. Luigi Gonzaga; colpito dalla peste dopo essersi prodigato qui per i malati e qui per gli ospedali.

@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>1002 RIONE XV. ESQUILINO
+
+**Villa Caserta**
+
+La zona che ora è dei padri Redenzionisti era occupata dalla seicentesca Villa Caserta, proprietà del cardinale Francesco Nerli, che nella villa ospitò papa Innocenzo XII e la regina di Polonia. Alla morte del cardinale la villa passò prima all'ospizio di S. Maria della Misericordia, al marchese di Peschici ed infine a Michelangelo Caetani, principe di Caserta.
+
+Un vastissimo giardino circondava la villa, che comprendeva altri edifici, sempre parte del complesso. Alla fine del Settecento il parco venne ulteriormente ampliato poiché vi fu inclusa anche l'area della demolita chiesa e convento di S. Matteo. Nel 1852 la villa e il parco furono acquistati da padre Douglas che negli ambienti della villa faceva adattare il convento per la congregazione di S. Alfonso e al posto delle stalle fece erigere la chiesa; il complesso fu definitivamente sistemato (1934) con la costruzione della via Merulana, ma già in precedenza nel 1871 il governo italiano aveva espropriato il parco con gli edifici sparsi ivi esistenti.
+
+Soli due piani con porte e finestre sottolineate da travertino. Un piccolo balcone si apre in corrispondenza del portone d'ingresso. Sotto il balcone è situata un'aquila in stucco, ad ali spiegate, che allude alla proprietà Giustiniani. Alla morte del marchese Vittorio Giustiniani la villa fu abbellita da una serie di profili di imperatori romani e di altro materiale antico — per lo più rilievi — provenienti dalla villa, che Giustiniani avevano fuori porta del Popolo. Sul lato dell'edificio è murata un'iscrizione in cui viene ricordato il trasporto nella villa, nel 1742, della statua raffigurante l'imperatore Giustiniano.
+
+L'interno presenta una ricca decorazione che vede nella volta del salone al piano terra, in monocromia, la raffigurazione di tre «Allegorie», forse opera di Domenico Del Frate (1765-1821), mentre le pareti sono movimentate da otto nicchie, all'interno delle quali sono sistemate altrettante statue antiche di imperatori o divinità. Vicino è un piccolo ambiente decorato in stile peiano: per ornare l'ambiente verso il giardino fu chiamato prima il Cornelius; che nella volta iniziò ad affrescare il «Paradiso» dantesco, poi portato a termine dal Koch e dal Veit, che completarono anche la decorazione delle pareti con soggetti tratti dalla «Divina Commedia».
+
+Vicino è la stanza con le raffigurazioni ispirate alle opere del Tasso e realizzate da Johann Overbeck nella prima metà dell'Ottocento. Dal 1827 al 1829 Joseph von Furic completava la decorazione dedicata alle opere del Tasso includendovi, nelle scene raffiguranti i «Crociati al Santo Sepolcro», alcuni ritratti della famiglia dei Massimo. La terza stanza è affrescata con episodi ispirati alle opere dell'Ariosto e realizzati da Schnorr von Carlesfeld.
+
+Scendiamo per via Matteo Boiardo che a sinistra presenta la struttura relativa al complesso della chiesa di S. Antonio e a destra la sede del centro universitario Marianum e del centro sportivo S. Maria. Giriamo attorno all'isolato, a destra, su viale Manzoni e vediamo che questo, fino a via Torquato Tasso, è occupato tutto dal nucleo relativo alla scuola del collegio S. Maria.

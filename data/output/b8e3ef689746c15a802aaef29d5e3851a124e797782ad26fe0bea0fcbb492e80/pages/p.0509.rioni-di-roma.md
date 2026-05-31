@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO
+509
+
+Seconda metà dell'Ottocento il Vespignani costruì un teatrino (il Rossini) di breve vita perché piccolo. Nel 1950 l'Ente comunale di assistenza cedette un locale all'attore romano Checco Durante, che riaprì il teatro Rossini, per rappresentarvi commedie romanesche.
+
+Abbiamo detto che la via comincia dalla piazza dei Caprettari (che occupa parte delle terme di Agrippa) che un tempo si chiamò piazzetta dei Lanti per il palazzo Medici acquistato dai Lante e quindi dai Grazioli: La piazza deve il suo nome ai mercanti di campagna più modesti, "moschettieri", che vendevano capretti e agnelli. Il presidente della Grascia stabiliva i prezzi per la vendita al pubblico in apposite tabelle all'angolo della piazza con la via Monterone. Erano editti di calmierare, allora l'abbacchio era il cibo dei poveri e doveva essere ceduto a minimi prezzi.
+
+Le trattative più importanti si effettuavano in un caffè nella piazza chiamata appunto "dei Caprettari" e che è una propaggine della piazza di S. Eustachio: In essa prospetta il sud detto palazzo Lante al n. 70, costruito da Jacopo Sansovino nel 1520 per ordine di papa Leone X (Giovanni de' Medici) per il fratello Giuliano e poi passato ai Lante nel 1533, ai Grazioli e ai Guglielmi. Ora appartiene agli Aldobrandini. È uno dei più bei palazzi del Cinquecento romano. La facciata è liscia ed ha i piani separati da cornici. Al piano terreno vi sono finestre architravate su mensole, alcune con apertura al di sotto; uno stemma dei Della Rovere su una porta; nella fascia fra le mensole notiamo elementi di emblema mediceo (piume di struzzo o testa di leone con un anello in bocca) e rosoni ai lati. Sul portale si legge la scritta LUDOVICUS LANTES.
+
+Il Sansovino espresse ottime qualità nel cortile a due ordini di arcate le cui colonne hanno capitelli dorici o con elementi dello stemma dei Medici. Portico e loggiato sono stati parzialmente murati, ma ancora rivelano grazia ed equilibrio: Tra le arcate, dentro dischi si rivedono le piume di struzzo ed aquile che sono l'elemento araldico dei Lante Della Rovere. Non dobbiamo dimenticare la fontana del cortile su cui era il gruppo di "Iuno che allatta Bacco". È stato osservato che alcune colonne provengono dal Colosseo; non so se per il grande amore degli architetti rinascimentali per il mondo antico o per mia fatica e spese.
+
+Nel soffitto delle sale del piano nobile vi sono pitture raffiguranti "Diana cacciatrice", "Angelica e Medoro", "Assunzione" e la "Trinitas", "Putti che giocano", "Giunone" infine "Mercurio". Altre divinità dell'Olimpo sono nella grande sala rettangolare affrescata da Giovan Francesco Romanelli nel Seicento; seguono storie di Roma e allegorie.
+
+Al centro della piazza di S. Eustachio (al n. 83) ci si offre alla vista un altro palazzo attaccato a quello Lante dalla parte di piazza dei Caprettari un palazzetto piccolo; armonioso, edificato nella metà del Cinquecento con i disegni di Giulio Pippi detto Giulio Romano, l'allievo di Raffaello; per incarico di Cristoforo Stati. In seguito appartenne ai Cenci e: dopo vari passaggi, divenne nel Settecento dei Maccarani e quindi dei conti di Brazzà. Vi dimorarono monsignor Ferrari, ministro delle finanze pontificie (1855), l'avvocato Giuseppe Lunati, ministro della Repubblica.

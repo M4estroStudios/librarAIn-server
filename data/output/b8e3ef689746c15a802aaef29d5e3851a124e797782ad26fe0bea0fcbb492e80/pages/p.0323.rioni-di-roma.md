@@ -1,0 +1,13 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>QUARTO ITINERARIO
+323
+
+[Immagine: incisione ottocentesca del porto di Ripetta]
+Il porto di Ripetta in un'incisione ottocentesca di P. Letarouilly.
+
+Di più strategicamente, sulla sponda del fiume. Ciò permise ai Colonna di farne una sorta di «testa di ponte» in un territorio tradizionalmente degli Orsini. Smantellata in seguito a secolari vicende la struttura militare, la costruzione venne, al pari di molti altri monumenti antichi, sfruttata nelle più disparate maniere: spogliata dei travertini e degli altri ornamenti come cava; utilizzata come vigna; come plaza de toros; come politeama, famoso e ricordato da molte cronache nonché da un vicolo dei paraggi, il teatro Corea, dal nome di uno dei gestori; infine auditorium. Arrivato alla soglia della bonifica finale: dal 1936, piaccia o no, il monumento ha riacquistato quella quiete e solennità che a nostro parere gli compete. Solo vorremmo che fosse visitabile senza dover ricorrere alle solite autorità.
+
+Prima di prendere via della Frezza, per dare un doveroso saluto al Canova, torniamo sui nostri passi, e consentitemi una brevissima puntata sulla passeggiata di Ripetta. Come molte altre zone di Roma ai lati del fiume, tipo Lungara, Orso, Tor di Nona ecc., è in una trincea, stretta fra case ed argine. Ma non è per questo che siamo qui. Ai lati della galleria del Ferro di Cavallo ci sono due ricordi, uno che sa di inutile e dimenticato. Su una piccola iscrizione a fatica si legge: «Candoni Albino; Grappa gennaio 1918». Un professore? Un pittore? Uno studente dell'istituto? Un ragazzo del '99 forse; che immagino morto in un giorno freddissimo, in un tanto lontano. L'altro ricordo, al di là della galleria, al contrario, fa bella la mostra di sé, al n. civico 25 e riguarda Leonida Bissolati.
+
+La via della Frezza deve il suo nome ad una famiglia non nobile, proveniente da Civita Lavinia. La fortuna dei Frezza è legata al successo ottenuto da un suo membro: Luigi, consultore della Propaganda Fide, nonché della S. Inquisizione; il quale operò così bene da farsi nominare cardinale da papa Pio VIII, Castiglioni. Il palazzo ove elesse la sua dimora, passato in un secondo tempo agli Orsini, rientrò nel quadro delle demolizioni previste dal piano regolatore del 1936, per il riassetto di piazza Augusto Imperatore. Nello «spiazzetto» che questa via forma con quella delle Colonnette, venivano dati i famosi «tratti di corda» tanto in uso nello Stato pontificio; e che erano, come noto, tanto dolorosi quanto in più...

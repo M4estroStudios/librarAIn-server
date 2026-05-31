@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>SECONDO ITINERARIO
+57
+
+Sione; appare non vestito più con il *colubium* bizantino ma con il perizoma derivato dall'iconografia artistica carolingia. Sulla sinistra è un altro affresco; sempre del IX secolo, con la «Storia di S. Alessio».
+
+Ancora in questa navata sono conservati altri affreschi dedicati a S. Clemente; dove si vede il «Santo inseguito dai soldati di Sisinnio», che, confusi da Dio, al suo posto legano una colonna e cercano di portarla via. Le scene sono accompagnate dai dialoghi scritti accanto ai personaggi. Dice Clemente: «Per la durezza del vostro cuore meritate di trarre una pietra». Sisinnio dice ai suoi: «Tirate, figli di puttane. Gosmario, Albertello; Tirate. Carvoncello; spingete da dietro con il palo».
+
+Si passi ora nella sezione della navata centrale sulla destra per vedere uno splendido affresco della «Madonna» del VI secolo; in piena iconografia imperiale bizantina. Interessanti ancora sono altri frammenti di affreschi, sia del «Giudizio universale» che del «Giudizio di Abramo» e un «sarcofago romano» della seconda metà del I secolo d.C. con il mito di Fedra. Nella navata sinistra è conservata una grande fossa circolare: il probabile luogo usato per il battesimo ad immersione.
+
+Si risalga finalmente alla basilica superiore la cui visita ci costringe ad uscire. La facciata, scandita da alte lesene con capitelli corinzi, accoglie un bel finestrone centrale ed è conclusa da un timpano. Accanto è il piccolo campanile e, al centro del quadriportico; un'elegante fontanina con vasca ottagonale.
+
+La basilica è divisa in tre navate terminanti in altrettante absidi e divise da antiche colonne, ora lisce e ora scanalate che il Fontana completò con capitelli ionici in stucco. Il pavimento è cosmatesco con intarsi marmorei formanti disegni geometrici ispirati a quelli di antichi tappeti; mentre splendidi sono i tre soffitti delle navate in legno a cassettoni dorati, ornati degli emblemi di papa Clemente XI e contenenti tre dipinti relativi all'«Incoronazione di Maria», alla «Gloria di S. Clemente» e alla «Gloria di S. Servolo», cui riferimenti leggendari hanno qualcosa a che vedere sia con S. Clemente che con S. Alessio. S. Servolo, infatti, vuole la tradizione; era rimasto paralitico fin da bambino e da grande si era ridotto a vivere per strada accolto sotto il portico dell'antica chiesa di S. Clemente; il suo corpo, dice la leggenda, pesava come una pietra ed egli riusciva a stento a trascinarsi. Era esempio per tutti perché distribuiva agli altri poveri ciò che riceveva in elemosina. Analfabeta; aveva imparato a memoria i quattro Vangeli: Al momento di morire gli Angeli, cantando, lo accolsero in cielo.
+
+Tra le finestre della navata maggiore si ammirano le figure dei «Profeti» dipinte nei primi anni del XVI secolo e «Scene della vita di S. Clemente», di S. Servolo, di S. Ignazio di Antiochia e di S. Policarpov, mentre, sulla controfacciata; stanno le raffigurazioni dei «Ss. Cirillo e Metodio». Nella navata di destra è importante la cappella di S. Domenico affrescata con «Storie della vita del Santo».

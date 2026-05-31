@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>266
+
+RIONE IV. CAMPO MARZIO
+
+Nel medioevo abbiamo una nuova ristrutturazione della città meglio di quello che ne resta. Nel XII secolo la nostra zona venne denominata Regio Posterule et Sancti Laurentii in Lucina. Ciò testimoniava come in quell'epoca il tratto delle mura aureliane tra la porta Flaminia e ponte S. Angelo, ora completamente scomparso, fosse ancora in piedi, donde l'importanza delle posterule.
+
+Sul finire del medioevo il rione assunse una spiccata caratteristica internazionale. Forse per l'accrescersi del movimento fluviale, concentrato a Ripetta, sorse infatti un agglomerato di case noto come «borgo Schiavonia», appunto perché prevalentemente abitato da gente dalmata ed illirica. In particolare l'area occupata in seguito dall'ospedale S. Giacomo era abitata da comaschi, varesotti, caravaggesi; riuniti in salde congregazioni.
+
+I Greci dettero il loro nome ad una precisa contrada ove Gregorio XIII fece fabbricare un seminario tutto per loro. I Bretoni, inoltre, presero ad abitare attorno alla chiesa di S. Ivo alla Scrofa. E tutto ciò senza parlare delle residenze di numerosi ambasciatori.
+
+Grandi famiglie romane avevano case in questo rione. Gli Orsini si arroccarono sul mausoleo d'Augusto; ed ancora troviamo i Colonna, gli Amati di origine partenopea, i Benzoni di provenienza lombarda ed ancora gli Astalli, Marescotti, imparentatisi coi Ruspoli e Tosti, i Vitelleschi, i Della Valle; gli Alberini ed i Capponi. Nonostante una così nutrita presenza, non abbiamo però notizie di torri fortificazioni particolari; eccezion fatta per degli Orsini all'Augusteo ed a villa Malta.
+
+Indubbiamente le cortine e le torri di Aureliano, ancora in piedi alla fine del medioevo, debbono aver svolto questa importante funzione appunto per essere questo uno dei pochi tratti del recinto di Aureliano rimasti in un'area urbanizzata.
+
+E così, mentre dalle altre parti, le mura imperiali, troppo distaccate dal contesto cittadino per un progressivo restringersi di questo, non potevano svolgere una funzione partigiana; in questa vennero direttamente coinvolte dalle vicende cittadine; al punto da scomparire del tutto fagogitale dal susseguirsi incalzante degli eventi. L'impostazione attuale del rione venne suggerita dalle necessità urbanistiche esistenti nella prima metà del Cinquecento. Con la decadenza del meridione, infatti, l'insicurezza delle coste dovuta all'espandersi dell'influenza turca e barbaresca; la malaria che rendeva impraticabili intere, vaste zone; il volume dei traffici proveniva prevalentemente dal settentrione. Arteria lungo la quale scorreva, era la Cassia. L'Aurelia infatti attraversava una di quelle lande malariche ed al tempo stesso era troppo vicina alla costa; la Flaminia aveva soprattutto importanza a livello locale, data la frequente impossibilità di attraversare il Tevere ad Orte e nelle stesse immediate vicinanze di Roma: Di qui l'importanza della porta del Popolo, autentico cardine dei pur scarsi traffici dell'Urbe. Inoltre, anche se dotati di rudimentali strutture, esistevano degli scali fluviali in corrispondenza delle scomparse posterule tiberine, a cui affluivano i prodotti dell'entroterra. Fiume quello poi però quella base...

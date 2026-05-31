@@ -1,0 +1,15 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>PRIMO ITINERARIO 645
+
+Il Tabularium, utilizzato nel medioevo come fortezza anche come magazzino del sale, è oggi la facciata posteriore del palazzo Senatorio. Sulla destra è la Torre di Martino Colonna, eretta intorno al 1427. Tra le torri, questo lato del palazzo Senatorio — che è la facciata di sinistra — ha una sopraelevazione di un piano, eseguita recentemente. La parte più antica dell'edificio è in corrispondenza di una finestrella medievale; dietro cui è un ambiente con affreschi del Duecento. Si nota anche la campanella che veniva fatta suonare quando il senato di Roma entrava e usciva dal palazzo.
+
+Sulla facciata sono murati stemmi, rilievi ed iscrizioni relative a senatori di Roma, per lo più del XVI secolo. Sono presenti una *imago clipeata* detta «di Scipione», accompagnata da una testa femminile con un profilo femminile egittizzante; che il popolo romano ha identificato con Cleopatra, da intendere come la personificazione dell'«Africa», quindi una «Diana» in stile arcaistico e un elmo di elefante a foggia di elmo.
+
+Sono murate lapidi che ricordano le giornate eroiche della Repubblica romana, l'unità d'Italia e Roma capitale. Le porte permettono di raggiungere l'interno del podio del Tabularium, ma l'ingresso al palazzo è quello di Sisto IV, con portale bugnato su cui stanno lo stemma del papa, del romano e del cardinale d'Estouteville. Accanto alla scala che conduce alla porta, una riproduzione della capitolina è posta su una colonna di granito.
+
+La facciata principale del palazzo Senatorio è quella che guarda la piazza del Campidoglio. Essa è il risultato della realizzazione, con varianti, dell'originario progetto michelangiolesco di cui resta l'elegante ed equilibrata scala a doppia rampa. La doppia scala al centro è ornata da una nicchia in cui è una statua di «Minerva» seduta di età domizianea, in porfido e marmo bianco; trasformata nella personificazione della dea Roma. Davanti è una fontana dalle due vasche sovrapposte in marmo greco, in cui scorre l'acqua Felice e che fu progettata da Matteo da Città di Castello nel 1588.
+
+Sulla fronte delle rampe della scala, Michelangelo pose due grandi statue di personificazioni di fiumi, provenienti dalle terme di Costantino sul Quirinale che, nel 1518, erano state sistemate accanto all'ingresso del palazzo dei Conservatori. Una rappresentava il «Nilo» ed è oggi quella di sinistra; l'altra era l'immagine del «Tigri», ma fu trasformata nella figura del «Tevere» ed è quella di destra.
+
+Il progetto michelangiolesco prevedeva poi una loggia colonnata che raccordasse il balcone centrale con l'ingresso principale del palazzo, ma non fu realizzata; e forse è stato meglio così perché il palazzo Senatorio non perde di luminosità. La facciata è scandita da alte paraste, comprensive di finestre con timpani triangolari e curvilinei e di finestre piccole riccamente incorniciate. Al di sotto del cornicione, il fregio presenta i simboli araldici di Clemente VII (1593-1605).

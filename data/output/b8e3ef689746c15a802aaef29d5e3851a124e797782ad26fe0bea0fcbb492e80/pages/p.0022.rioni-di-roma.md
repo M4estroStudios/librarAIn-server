@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+<|channel>thought
+<channel|>22
+
+# RIONI E I QUARTIERI NELLA STORIA DI ROMA
+
+tani o dei Fori: ottenuto rialzando il terreno e cancellato in epoca fascista.
+Sempre nella seconda metà del XVI secolo c'è la prima comparsa d'un ghetto romano (1555). Nel medioevo gli ebrei romani da Trastevere si erano spontaneamente trasferiti nei rioni sulla sinistra del fiume: Parione, Regola e specialmente S. Angelo.
+Paolo IV circonda con un muro parte del rione S. Angelo, che rimane amputato; vi rinchiude gli ebrei romani: un ettaro di abitazioni per 1500-2000 persone. Successivamente con piccoli ingrandimenti vi saranno rinchiusi molti ebrei dello Stato pontificio e il ghetto romano fino al 1870 avrà il triste privilegio d'essere un «modello» europeo.
+La novità del ghetto accompagna la lenta costruzione della Roma dei papi, nella quale perdono risalto i rioni, intesi come base territoriale della milizia cittadina; poiché ormai esiste soltanto l'esercito del sovrano pontefice.
+Non per nulla Gregorio XI (1572-1585) costruisce la reggia del Quirinale; che sarà ingrandita e diverrà la residenza definitiva del pontefice; quale detentore del potere temporale.
+Adesso l'antica bipolarità (Vaticano-Laterano) della Roma cristiana si sostituisce la nuova bipolarità (Vaticano-Quirinale) della Roma papale: il primo sempre centro della Cristianità cattolica; il secondo centro della capitale pontificia. Insieme alla reggia sul Quirinale crescono le ville urbane sulle zone collinari dei rioni Colonna, Trevi e Monti. Ma per il ripopolamento di questi rioni è importante l'intervento d'un altro papa, Sisto V (1585-1590): non tanto per le sue celebri costruzioni o per lo schema stellare costituito dai suoi altrettanto famosi obelischi, quanto per le sue vie.
+Lo stradone di S. Giovanni (collegato alla via Merulana di Gregorio XI), la via Felice (un rettifilo di 3300 metri corrispondente alle attuali vie Sistina, Quattro Fontane, De Pretis, Carlo Alberto, Conte Verde, S. Croce in Gerusalemme), la via Panisperna; la strada ora scomparsa verso S. Lorenzo, sono trampolini di lancio per il futuro allargamento delle zone costruite, specialmente nell'immenso rione Monti.
+E proprio Sisto nel 1586 rompe l'antica tradizione dei 13 rioni romani; riconoscendo una situazione di fatto, crea un quattordicesimo rione con Borgo; che fino ad allora era stato unito a Ponte.
+All'inizio del Seicento la città papale è unificata e normalizzata. Non esistono più pericoli interni delle insurrezioni municipalistiche o delle guerre «private» baronali. Il sovrano pontefice regna dal Quirinale e i cardinali vivono tranquillamente nei loro palazzi o nelle grandi ville collinari, perché le zone collinari sono più salubri dell'ansa del fiume, in tempi di malaria.
+Progressivamente gli interventi edilizi e viari dei papi facilitano l'espansione delle nuove zone abitate; inoltre l'urbanizzazione dei rioni alti è facilitata dal ripristino degli acquedotti. Esemplare in fatto di strade l'operato di Paolo V (1605-1621): Non si tratta di grandi rettifili e di arterie che collegano distanti parti della città, ma di strade concepite per riorganizzare la rete viaria d'un «quartiere», d'una zona ristretta all'interno dei più ampi rioni.
