@@ -7,7 +7,7 @@ import time
 import unittest
 from io import BytesIO
 from pathlib import Path
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 from pypdf import PdfWriter
 
@@ -297,6 +297,71 @@ class Stage1OcrTests(unittest.TestCase):
             _run_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Parallel Book"))
             self.assertLessEqual(engine.max_seen, 2)
             self.assertGreater(engine.max_seen, 0)
+
+    def test_render_runs_sequentially_before_parallel_ocr(self) -> None:
+        class SlowEngine(FakeEngine):
+            def __init__(self, page_texts: dict[int, str]) -> None:
+                super().__init__(page_texts)
+                self._lock = threading.Lock()
+                self.in_flight = 0
+                self.max_seen = 0
+
+            def ocr_page(self, image_path: Path, *, lang: list[str]) -> str:
+                with self._lock:
+                    self.in_flight += 1
+                    self.max_seen = max(self.max_seen, self.in_flight)
+                try:
+                    time.sleep(0.05)
+                    return super().ocr_page(image_path, lang=lang)
+                finally:
+                    with self._lock:
+                        self.in_flight -= 1
+
+        render_lock = threading.Lock()
+        render_in_flight = 0
+        render_max_seen = 0
+        render_order: list[int] = []
+
+        def tracking_render(pdf_path, page_index_zero, target_path, *, dpi, source_sha256):
+            nonlocal render_in_flight, render_max_seen
+            with render_lock:
+                render_in_flight += 1
+                render_max_seen = max(render_max_seen, render_in_flight)
+                render_order.append(page_index_zero)
+            try:
+                time.sleep(0.02)
+                from src.ingestion.pipeline.render import _render_pdf_page_to_png
+
+                return _render_pdf_page_to_png(
+                    pdf_path,
+                    page_index_zero,
+                    target_path,
+                    dpi=dpi,
+                    source_sha256=source_sha256,
+                )
+            finally:
+                with render_lock:
+                    render_in_flight -= 1
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pdf = root / "aligned.pdf"
+            pdf.write_bytes(_pdf_bytes(4))
+            settings = _settings(str(root / "data"))
+            settings.max_parallel_request = 4
+            enum = _enumeration([1, 2, 3, 4], {1: 1, 2: 2, 3: 3, 4: 4})
+            engine = SlowEngine({i: f"t{i}" for i in range(1, 5)})
+
+            with patch(
+                "src.ingestion.pipeline.stage1._render_pdf_page_to_png",
+                side_effect=tracking_render,
+            ):
+                _run_ocr(pdf, "deadbeef", enum, settings, engine, reicat=_reicat("Two Phase Book"))
+
+            self.assertLessEqual(render_max_seen, 1)
+            self.assertEqual(render_order, [0, 1, 2, 3])
+            self.assertLessEqual(engine.max_seen, 4)
+            self.assertGreater(engine.max_seen, 1)
 
 
 class RunStage1IngestStepTests(unittest.TestCase):

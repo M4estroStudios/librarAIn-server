@@ -3,6 +3,7 @@ from __future__ import annotations
 import binascii
 import json
 import struct
+import threading
 import zlib
 from pathlib import Path
 from typing import Any
@@ -11,6 +12,19 @@ from src.core.hashing import compute_file_sha256
 from src.core.log import INFO_LOG_LEVEL, Log
 
 PNG_RENDERER_MARKER_VERSION = 1
+
+_pdfium_lock_guard = threading.Lock()
+_pdfium_locks: dict[str, threading.Lock] = {}
+
+
+def _pdfium_lock_for(pdf_path: Path) -> threading.Lock:
+    key = str(pdf_path.resolve())
+    with _pdfium_lock_guard:
+        lock = _pdfium_locks.get(key)
+        if lock is None:
+            lock = threading.Lock()
+            _pdfium_locks[key] = lock
+        return lock
 
 
 def _sidecar_path(png_path: Path) -> Path:
@@ -143,24 +157,25 @@ def _render_pdf_page_to_png(
     )
     target_path.parent.mkdir(parents=True, exist_ok=True)
     pdfium = _load_pdfium()
-    pdf = pdfium.PdfDocument(str(pdf_path))
-    page = None
-    bitmap = None
-    try:
-        if page_index_zero >= len(pdf):
-            raise ValueError(
-                f"page_index_zero {page_index_zero} exceeds pdf page count {len(pdf)}"
-            )
-        page = pdf[page_index_zero]
-        bitmap = page.render(scale=dpi / 72)
-        _write_bitmap_png(bitmap, target_path)
-        _write_marker(sidecar_path, marker)
-    finally:
-        if bitmap is not None:
-            bitmap.close()
-        if page is not None:
-            page.close()
-        pdf.close()
+    with _pdfium_lock_for(pdf_path):
+        pdf = pdfium.PdfDocument(str(pdf_path))
+        page = None
+        bitmap = None
+        try:
+            if page_index_zero >= len(pdf):
+                raise ValueError(
+                    f"page_index_zero {page_index_zero} exceeds pdf page count {len(pdf)}"
+                )
+            page = pdf[page_index_zero]
+            bitmap = page.render(scale=dpi / 72)
+            _write_bitmap_png(bitmap, target_path)
+            _write_marker(sidecar_path, marker)
+        finally:
+            if bitmap is not None:
+                bitmap.close()
+            if page is not None:
+                page.close()
+            pdf.close()
     Log(
         INFO_LOG_LEVEL,
         "pdf render PNG rasterize done",

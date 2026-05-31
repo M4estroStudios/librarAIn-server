@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 from pathlib import Path
 
@@ -64,6 +65,34 @@ class PdfRenderTests(unittest.TestCase):
                 self.assertTrue(path.is_file())
                 self.assertTrue((path.parent / f"{path.name}.json").is_file())
             self.assertEqual([path.stat().st_mtime_ns for path in expected_paths], first_mtimes)
+
+    def test_concurrent_render_same_pdf_succeeds(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            pdf_path = root / "book.pdf"
+            pdf_path.write_bytes(_minimal_pdf_bytes(8))
+            errors: list[str] = []
+
+            def render_page(page_index_zero: int) -> None:
+                png_path = root / f"p.{page_index_zero:04d}.png"
+                try:
+                    render_pdf_page_to_png(
+                        pdf_path,
+                        page_index_zero,
+                        png_path,
+                        dpi=72,
+                    )
+                except Exception as exc:
+                    errors.append(str(exc))
+
+            with ThreadPoolExecutor(max_workers=8) as executor:
+                list(executor.map(render_page, range(8)))
+
+            self.assertEqual(errors, [])
+            for page_index_zero in range(8):
+                png_path = root / f"p.{page_index_zero:04d}.png"
+                self.assertTrue(png_path.is_file())
+                self.assertEqual(png_path.read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
 
 
 if __name__ == "__main__":
