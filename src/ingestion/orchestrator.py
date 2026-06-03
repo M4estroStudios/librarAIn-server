@@ -25,7 +25,13 @@ from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
 from src.ingestion.toc_builder import build_toc_md
 from src.ingestion.output_writer import BookOutput, materialize_book_pages
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
-from src.ingestion.progress import ProgressReporter
+from src.ingestion.progress import (
+    PHASE_RENDER,
+    STATUS_COMPLETED,
+    STATUS_STARTED,
+    ProgressReporter,
+    make_event,
+)
 from src.models.request import (
     EnrichedIngestRequest,
     PdfAlignmentResult,
@@ -293,6 +299,15 @@ async def _run_pipeline_body(
         page_range_per_thread=settings.page_range_per_thread,
     )
 
+    render_page_total = len(useful_pages.useful_original_pages)
+    if progress is not None:
+        progress(
+            make_event(
+                PHASE_RENDER,
+                STATUS_STARTED,
+                page_total=render_page_total,
+            )
+        )
     _publish_event(
         registry,
         request_id,
@@ -306,6 +321,14 @@ async def _run_pipeline_body(
         _RENDER_DPI,
     )
     render_map = {aligned_page: png_path for aligned_page, png_path in rendered}
+    if progress is not None:
+        progress(
+            make_event(
+                PHASE_RENDER,
+                STATUS_COMPLETED,
+                rendered_page_count=len(rendered),
+            )
+        )
     _publish_event(
         registry,
         request_id,
