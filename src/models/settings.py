@@ -77,6 +77,20 @@ class Settings(BaseModel):
     reasoning_enable_thinking_editor: bool | None = Field(
         default=None, alias="REASONING_ENABLE_THINKING_EDITOR"
     )
+    matcher_embedding_model: str = Field(
+        default="text-embedding-3-small", alias="MATCHER_EMBEDDING_MODEL"
+    )
+    matcher_llm_model: str | None = Field(default=None, alias="MATCHER_LLM_MODEL")
+    matcher_similarity_threshold: float = Field(
+        default=0.86, ge=0.0, le=1.0, alias="MATCHER_SIMILARITY_THRESHOLD"
+    )
+    matcher_use_ai: bool = Field(default=True, alias="MATCHER_USE_AI")
+
+    @field_validator("matcher_use_ai", mode="before")
+    @classmethod
+    def parse_matcher_use_ai(cls, v: object) -> bool:
+        parsed = _parse_reasoning_enable_thinking(v, "MATCHER_USE_AI")
+        return True if parsed is None else parsed
 
     @field_validator("reasoning_effort_vision", mode="before")
     @classmethod
@@ -139,6 +153,11 @@ class Settings(BaseModel):
             self.vision_model = self.vision_model.strip() or None
         if self.editor_model is not None:
             self.editor_model = self.editor_model.strip() or None
+        self.matcher_embedding_model = self.matcher_embedding_model.strip()
+        if not self.matcher_embedding_model:
+            raise ValueError("MATCHER_EMBEDDING_MODEL must be non-empty")
+        if self.matcher_llm_model is not None:
+            self.matcher_llm_model = self.matcher_llm_model.strip() or None
 
         if self.openai_provider == "remote":
             missing_fields: list[str] = []

@@ -30,6 +30,7 @@ _P_BUILD_BOOK = "src.ingestion.orchestrator.build_book_md"
 _P_BUILD_TOC = "src.ingestion.orchestrator.build_toc_md"
 _P_BUILD_INDEX = "src.ingestion.orchestrator.build_index_md"
 _P_SYNC_POLYINDEX_TOC = "src.ingestion.orchestrator.sync_polyindex_toc_from_book"
+_P_SYNC_POLYINDEX_INDEX = "src.ingestion.orchestrator.sync_polyindex_index_from_book"
 _P_REFINE_TOC = "src.ingestion.orchestrator.refine_toc_md"
 _P_REFINE_INDEX = "src.ingestion.orchestrator.refine_index_md"
 _P_CLIENT = "src.ingestion.orchestrator.build_openai_client"
@@ -71,6 +72,11 @@ def _settings(data_root: str, max_parallel: int = 3) -> MagicMock:
     settings.ocr_gpu_device = "all"
     settings.vision_model = "vision-model"
     settings.editor_model = "editor-model"
+    settings.sqlite_path = str(Path(data_root) / "db" / "biblioteca.db")
+    settings.matcher_embedding_model = "text-embedding-3-small"
+    settings.matcher_similarity_threshold = 0.86
+    settings.matcher_use_ai = True
+    settings.matcher_llm_model = None
     return settings
 
 
@@ -119,6 +125,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
             rendered.append((page, png_path))
         return rendered
 
+    @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -149,6 +156,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_refine_toc: AsyncMock,
         mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
+        mock_sync_polyindex_index: MagicMock,
     ) -> None:
         mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
         mock_render.side_effect = self._fake_render
@@ -162,6 +170,10 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_build_toc.return_value = self.tmp / "TOC.md"
         mock_build_index.return_value = self.tmp / "INDEX.md"
         mock_sync_polyindex_toc.return_value = Path(self.data_root) / "polyindex" / "TOC.json"
+        mock_sync_polyindex_index.return_value = (
+            Path(self.data_root) / "polyindex" / "INDEX.json",
+            {"n_new": 0, "n_match": 0, "n_alias": 0},
+        )
 
         async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
             del args, kwargs
@@ -186,6 +198,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_build_toc.assert_called_once()
         mock_build_index.assert_called_once()
         mock_sync_polyindex_toc.assert_called_once()
+        mock_sync_polyindex_index.assert_called_once()
         mock_stage1.assert_awaited_once()
         mock_stage2.assert_awaited_once()
         mock_stage3.assert_awaited_once()
@@ -233,6 +246,7 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         result.pages = [MagicMock(aligned_page=1)]
         return result
 
+    @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -263,6 +277,7 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_refine_toc: AsyncMock,
         mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
+        mock_sync_polyindex_index: MagicMock,
     ) -> None:
         mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
         mock_render.side_effect = self._fake_render
@@ -275,6 +290,10 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_build_toc.return_value = self.tmp / "TOC.md"
         mock_build_index.return_value = self.tmp / "INDEX.md"
         mock_sync_polyindex_toc.return_value = Path(self.data_root) / "polyindex" / "TOC.json"
+        mock_sync_polyindex_index.return_value = (
+            Path(self.data_root) / "polyindex" / "INDEX.json",
+            {"n_new": 0, "n_match": 0, "n_alias": 0},
+        )
 
         async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
             del args, kwargs
@@ -338,6 +357,15 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         self.builder_call_order.append("polyindex_toc")
         return Path(self.data_root) / "polyindex" / "TOC.json"
 
+    def _polyindex_index_side_effect(self, *args, **kwargs) -> tuple[Path, dict[str, int]]:
+        del args, kwargs
+        self.builder_call_order.append("polyindex_index")
+        return (
+            Path(self.data_root) / "polyindex" / "INDEX.json",
+            {"n_new": 0, "n_match": 0, "n_alias": 0},
+        )
+
+    @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -368,6 +396,7 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         mock_refine_toc: AsyncMock,
         mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
+        mock_sync_polyindex_index: MagicMock,
     ) -> None:
         mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
         mock_render.side_effect = self._fake_render
@@ -390,6 +419,7 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         mock_refine_toc.side_effect = _refine_passthrough
         mock_refine_index.side_effect = _refine_passthrough
         mock_sync_polyindex_toc.side_effect = self._polyindex_toc_side_effect
+        mock_sync_polyindex_index.side_effect = self._polyindex_index_side_effect
 
         useful_pages = _enumeration(page_count=1)
 
@@ -415,11 +445,12 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
             self.tmp / "TOC.md",
             useful_pages,
         )
+        mock_sync_polyindex_index.assert_called_once()
         mock_refine_toc.assert_awaited_once()
         mock_refine_index.assert_awaited_once()
         self.assertEqual(
             self.builder_call_order,
-            ["book_md", "toc_md", "index_md", "polyindex_toc"],
+            ["book_md", "toc_md", "index_md", "polyindex_toc", "polyindex_index"],
         )
         toc_events = [event for event in self.registry.events if event.stage == "toc_builder"]
         self.assertEqual(len(toc_events), 1)
@@ -427,13 +458,21 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         index_events = [event for event in self.registry.events if event.stage == "index_builder"]
         self.assertEqual(len(index_events), 1)
         self.assertEqual(index_events[0].payload, {"index_md_path": str(self.tmp / "INDEX.md")})
-        polyindex_events = [
+        polyindex_toc_events = [
             event for event in self.registry.events if event.stage == "polyindex_toc"
         ]
-        self.assertEqual(len(polyindex_events), 1)
+        self.assertEqual(len(polyindex_toc_events), 1)
         self.assertEqual(
-            polyindex_events[0].payload,
+            polyindex_toc_events[0].payload,
             {"toc_json_path": str(Path(self.data_root) / "polyindex" / "TOC.json")},
+        )
+        polyindex_index_events = [
+            event for event in self.registry.events if event.stage == "polyindex_index"
+        ]
+        self.assertEqual(len(polyindex_index_events), 1)
+        self.assertEqual(
+            polyindex_index_events[0].payload["index_json_path"],
+            str(Path(self.data_root) / "polyindex" / "INDEX.json"),
         )
 
 
@@ -491,6 +530,7 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         del book_output, useful_pages
         return self.toc_md_path
 
+    @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
     @patch(_P_BUILD_INDEX)
@@ -519,6 +559,7 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         mock_build_index: MagicMock,
         mock_refine_toc: AsyncMock,
         mock_refine_index: AsyncMock,
+        mock_sync_polyindex_index: MagicMock,
     ) -> None:
         mock_resolve.return_value = self.tmp / "aligned.pdf"
         mock_render.side_effect = self._fake_render
@@ -530,6 +571,10 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         mock_build_book.return_value = self.output_dir / "test-book.md"
         mock_build_toc.side_effect = self._toc_md_side_effect
         mock_build_index.return_value = self.output_dir / "INDEX.md"
+        mock_sync_polyindex_index.return_value = (
+            self.data_root / "polyindex" / "INDEX.json",
+            {"n_new": 0, "n_match": 0, "n_alias": 0},
+        )
 
         async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
             del args, kwargs
@@ -552,6 +597,7 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
             )
         )
 
+        mock_sync_polyindex_index.assert_called_once()
         toc_json_path = self.data_root / "polyindex" / "TOC.json"
         self.assertTrue(toc_json_path.is_file())
 

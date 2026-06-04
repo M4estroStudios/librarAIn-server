@@ -16,6 +16,7 @@ from src.persistence.pipeline_runs import (
     reicat_alias_snapshot,
     reicat_alias_snapshot_from_row,
 )
+from src.persistence.subject_matcher_sqlite import ensure_subject_matcher_tables
 from src.models.request import (
     BookUpsertResult,
     EnrichedIngestRequest,
@@ -29,6 +30,7 @@ from src.models.request import (
 _MIGRATIONS: list[tuple[str, str]] = [
     ("001", "initial schema baseline"),
     ("003", "pipeline_runs table"),
+    ("004", "subject_embeddings and subject_match_audit tables"),
 ]
 
 _BOOK_OPTIONAL_DDL: list[tuple[str, str]] = [
@@ -136,6 +138,7 @@ def init_books_schema(sqlite_path: str) -> None:
             """
         )
         ensure_pipeline_runs_table(conn)
+        ensure_subject_matcher_tables(conn)
         _apply_pending_migrations(conn)
         conn.commit()
     except sqlite3.Error as exc:
