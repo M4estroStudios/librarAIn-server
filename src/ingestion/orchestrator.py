@@ -28,6 +28,8 @@ from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
 from src.ingestion.output_writer import BookOutput, materialize_book_pages
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import (
+    PHASE_POLYINDEX_INDEX,
+    PHASE_POLYINDEX_TOC,
     PHASE_RENDER,
     STATUS_COMPLETED,
     STATUS_STARTED,
@@ -520,6 +522,8 @@ async def _run_pipeline_body(
     )
 
     polyindex_dir = data_root / "polyindex"
+    if progress is not None:
+        progress(make_event(PHASE_POLYINDEX_TOC, STATUS_STARTED))
     toc_json_path = sync_polyindex_toc_from_book(
         polyindex_dir,
         source_sha256,
@@ -527,6 +531,14 @@ async def _run_pipeline_body(
         toc_md_path,
         useful_pages,
     )
+    if progress is not None:
+        progress(
+            make_event(
+                PHASE_POLYINDEX_TOC,
+                STATUS_COMPLETED,
+                toc_json_path=str(toc_json_path),
+            )
+        )
     _publish_event(
         registry,
         request_id,
@@ -535,6 +547,8 @@ async def _run_pipeline_body(
         payload={"toc_json_path": str(toc_json_path)},
     )
 
+    if progress is not None:
+        progress(make_event(PHASE_POLYINDEX_INDEX, STATUS_STARTED))
     index_json_path, index_stats = sync_polyindex_index_from_book(
         polyindex_dir,
         source_sha256,
@@ -545,6 +559,17 @@ async def _run_pipeline_body(
         settings,
         request_id,
     )
+    if progress is not None:
+        progress(
+            make_event(
+                PHASE_POLYINDEX_INDEX,
+                STATUS_COMPLETED,
+                index_json_path=str(index_json_path),
+                n_new=index_stats["n_new"],
+                n_match=index_stats["n_match"],
+                n_alias=index_stats["n_alias"],
+            )
+        )
     _publish_event(
         registry,
         request_id,

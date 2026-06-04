@@ -56,9 +56,8 @@ strong { color: #e8e8e8; }
 <body>
 <h1>Ingestione libro</h1>
 <div class="dev-banner" role="note">
-  <strong>Pipeline in sviluppo — versione temporanea e parziale.</strong>
-  Attualmente l’ingestione esegue <strong>Stage 1 OCR</strong> (testo grezzo per pagina in <code>stage1OCR/</code>), <strong>Stage 2 Vision</strong> (raffinamento multimodale in <code>stage2Vision/</code>) e <strong>Stage 3 Editor</strong> (normalizzazione testuale in <code>stage3Editor/</code>).
-  Non sono ancora attivi: writer pagine, <code>TOC.md</code>, <code>INDEX.md</code>, file aggregato <code>&lt;libro&gt;.md</code> e polyindex globale.
+  <strong>Pipeline ingestione end-to-end.</strong>
+  Dopo OCR, Vision e Editor: pagine in <code>data/output/&lt;hash&gt;/</code>, <code>TOC.md</code>, <code>INDEX.md</code>, aggregato <code>&lt;libro&gt;.md</code> e aggiornamento <code>data/polyindex/TOC.json</code> e <code>INDEX.json</code> (fasi visibili in avanzamento sotto).
 </div>
 <p class="lead">Carica il PDF e indica quali pagine del file escludere e dove si trovano, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT. Prima dell’invio il browser tenta una verifica delle pagine rispetto al PDF (servono rete per caricare pdf.js).</p>
 
@@ -181,6 +180,8 @@ strong { color: #e8e8e8; }
     <li id="ph-stage1_ocr" data-phase="stage1_ocr">Stage 1 OCR</li>
     <li id="ph-stage2_vision" data-phase="stage2_vision">Stage 2 Vision</li>
     <li id="ph-stage3_editor" data-phase="stage3_editor">Stage 3 Editor</li>
+    <li id="ph-polyindex_toc" data-phase="polyindex_toc">Polyindex TOC.json</li>
+    <li id="ph-polyindex_index" data-phase="polyindex_index">Polyindex INDEX.json</li>
   </ul>
   <progress id="progress-bar" value="0" max="100"></progress>
   <div id="progress-global">In attesa di aggiornamenti…</div>
@@ -297,6 +298,8 @@ strong { color: #e8e8e8; }
     stage1_ocr: "Stage 1 OCR",
     stage2_vision: "Stage 2 Vision",
     stage3_editor: "Stage 3 Editor",
+    polyindex_toc: "Polyindex TOC.json",
+    polyindex_index: "Polyindex INDEX.json",
   };
 
   function phaseEl(phase) {
@@ -427,6 +430,21 @@ strong { color: #e8e8e8; }
       else if (phase === "stage1_ocr") progressDetail.textContent = "Stage 1 OCR completato";
       else if (phase === "stage2_vision") progressDetail.textContent = "Stage 2 Vision completato";
       else if (phase === "stage3_editor") progressDetail.textContent = "Stage 3 Editor completato";
+      else if (phase === "polyindex_toc") progressDetail.textContent = "TOC.json aggiornato in data/polyindex/";
+      else if (phase === "polyindex_index") {
+        var stats = "";
+        if (ev.n_new != null) {
+          stats = " — nuovi " + ev.n_new + ", match " + ev.n_match + ", alias " + ev.n_alias;
+        }
+        progressDetail.textContent = "INDEX.json aggiornato in data/polyindex/" + stats;
+      }
+    }
+
+    if (status === "started" && phase === "polyindex_toc") {
+      progressDetail.textContent = "Aggiornamento TOC.json (polyindex)…";
+    }
+    if (status === "started" && phase === "polyindex_index") {
+      progressDetail.textContent = "Aggiornamento INDEX.json (subject matcher)…";
     }
 
     if (status === "failed") {
