@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from src.ingestion.output_writer import BookOutput, _atomic_write_bytes
+from src.ingestion.markdown_artifacts import clean_markdown_channel_artifacts
 from src.models.request import UsefulPagesEnumeration
 
 
@@ -38,7 +39,9 @@ def build_toc_md(
 
     title = _resolve_title(book_output)
     body = "\n\n---\n\n".join(bodies)
-    content = f"# TOC — {title}\n\n{body}"
+    content = clean_markdown_channel_artifacts(f"# TOC — {title}\n\n{body}")
+    if content and not content.endswith("\n"):
+        content += "\n"
     dest = book_output.output_dir / "TOC.md"
     _atomic_write_bytes(dest, content.encode("utf-8"))
     return dest

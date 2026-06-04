@@ -24,6 +24,7 @@ from src.ingestion.progress import (
     ProgressReporter,
     make_event,
 )
+from src.ingestion.markdown_artifacts import clean_markdown_channel_artifacts
 from src.models.settings import Settings
 
 _PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
@@ -238,7 +239,7 @@ async def run_stage3_editor(
 
             stage3_char_count = len(refined)
             char_delta = stage3_char_count - stage2_char_count
-            _write_stage_md(md_path, model, refined)
+            _write_stage_md(md_path, model, clean_markdown_channel_artifacts(refined))
             if progress is not None:
                 progress(make_event(
                     PHASE_STAGE3_EDITOR,

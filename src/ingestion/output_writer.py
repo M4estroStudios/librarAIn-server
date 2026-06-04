@@ -10,6 +10,7 @@ from src.core.hashing import compute_file_sha256
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.ingestion.pipeline.stage1 import _slugify
 from src.ingestion.pipeline.stage3 import Stage3Result
+from src.ingestion.markdown_artifacts import clean_markdown_channel_artifacts
 from src.models.request import EnrichedIngestRequest, UsefulPagesEnumeration
 from src.models.settings import Settings
 
@@ -40,11 +41,14 @@ def _page_filename(aligned_page: int, slug: str) -> str:
 def _atomic_copy_or_skip(source: Path, dest: Path) -> bool:
     if not source.is_file():
         raise FileNotFoundError(f"stage3 md not found: {source}")
-    if dest.is_file():
-        if compute_file_sha256(dest) == compute_file_sha256(source):
-            return False
+    raw_text = source.read_text(encoding="utf-8")
+    cleaned_text = clean_markdown_channel_artifacts(raw_text)
+    if not cleaned_text.endswith("\n"):
+        cleaned_text += "\n"
+    content = cleaned_text.encode("utf-8")
+    if dest.is_file() and dest.read_bytes() == content:
+        return False
     dest.parent.mkdir(parents=True, exist_ok=True)
-    content = source.read_bytes()
     tmp_path = dest.with_name(dest.name + ".tmp")
     try:
         tmp_path.write_bytes(content)

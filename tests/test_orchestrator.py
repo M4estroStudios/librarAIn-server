@@ -30,6 +30,8 @@ _P_BUILD_BOOK = "src.ingestion.orchestrator.build_book_md"
 _P_BUILD_TOC = "src.ingestion.orchestrator.build_toc_md"
 _P_BUILD_INDEX = "src.ingestion.orchestrator.build_index_md"
 _P_SYNC_POLYINDEX_TOC = "src.ingestion.orchestrator.sync_polyindex_toc_from_book"
+_P_REFINE_TOC = "src.ingestion.orchestrator.refine_toc_md"
+_P_REFINE_INDEX = "src.ingestion.orchestrator.refine_index_md"
 _P_CLIENT = "src.ingestion.orchestrator.build_openai_client"
 _P_SWAP = "src.ingestion.orchestrator.swap_lmstudio_vision_to_editor"
 
@@ -118,6 +120,8 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         return rendered
 
     @patch(_P_SYNC_POLYINDEX_TOC)
+    @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
+    @patch(_P_REFINE_TOC, new_callable=AsyncMock)
     @patch(_P_BUILD_INDEX)
     @patch(_P_BUILD_TOC)
     @patch(_P_BUILD_BOOK)
@@ -142,6 +146,8 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_build_book: MagicMock,
         mock_build_toc: MagicMock,
         mock_build_index: MagicMock,
+        mock_refine_toc: AsyncMock,
+        mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
     ) -> None:
         mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
@@ -156,6 +162,13 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_build_toc.return_value = self.tmp / "TOC.md"
         mock_build_index.return_value = self.tmp / "INDEX.md"
         mock_sync_polyindex_toc.return_value = Path(self.data_root) / "polyindex" / "TOC.json"
+
+        async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
+            del args, kwargs
+            return path
+
+        mock_refine_toc.side_effect = _refine_passthrough
+        mock_refine_index.side_effect = _refine_passthrough
 
         result = asyncio.run(
             run_pipeline(
@@ -221,6 +234,8 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         return result
 
     @patch(_P_SYNC_POLYINDEX_TOC)
+    @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
+    @patch(_P_REFINE_TOC, new_callable=AsyncMock)
     @patch(_P_BUILD_INDEX)
     @patch(_P_BUILD_TOC)
     @patch(_P_BUILD_BOOK)
@@ -245,6 +260,8 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_build_book: MagicMock,
         mock_build_toc: MagicMock,
         mock_build_index: MagicMock,
+        mock_refine_toc: AsyncMock,
+        mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
     ) -> None:
         mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
@@ -258,6 +275,13 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_build_toc.return_value = self.tmp / "TOC.md"
         mock_build_index.return_value = self.tmp / "INDEX.md"
         mock_sync_polyindex_toc.return_value = Path(self.data_root) / "polyindex" / "TOC.json"
+
+        async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
+            del args, kwargs
+            return path
+
+        mock_refine_toc.side_effect = _refine_passthrough
+        mock_refine_index.side_effect = _refine_passthrough
 
         asyncio.run(
             run_pipeline(
@@ -315,6 +339,8 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         return Path(self.data_root) / "polyindex" / "TOC.json"
 
     @patch(_P_SYNC_POLYINDEX_TOC)
+    @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
+    @patch(_P_REFINE_TOC, new_callable=AsyncMock)
     @patch(_P_BUILD_INDEX)
     @patch(_P_BUILD_TOC)
     @patch(_P_BUILD_BOOK)
@@ -339,6 +365,8 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         mock_build_book: MagicMock,
         mock_build_toc: MagicMock,
         mock_build_index: MagicMock,
+        mock_refine_toc: AsyncMock,
+        mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
     ) -> None:
         mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
@@ -355,6 +383,12 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         mock_build_book.side_effect = self._book_md_side_effect
         mock_build_toc.side_effect = self._toc_md_side_effect
         mock_build_index.side_effect = self._index_md_side_effect
+        async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
+            del args, kwargs
+            return path
+
+        mock_refine_toc.side_effect = _refine_passthrough
+        mock_refine_index.side_effect = _refine_passthrough
         mock_sync_polyindex_toc.side_effect = self._polyindex_toc_side_effect
 
         useful_pages = _enumeration(page_count=1)
@@ -381,6 +415,8 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
             self.tmp / "TOC.md",
             useful_pages,
         )
+        mock_refine_toc.assert_awaited_once()
+        mock_refine_index.assert_awaited_once()
         self.assertEqual(
             self.builder_call_order,
             ["book_md", "toc_md", "index_md", "polyindex_toc"],
@@ -455,6 +491,8 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         del book_output, useful_pages
         return self.toc_md_path
 
+    @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
+    @patch(_P_REFINE_TOC, new_callable=AsyncMock)
     @patch(_P_BUILD_INDEX)
     @patch(_P_BUILD_TOC)
     @patch(_P_BUILD_BOOK)
@@ -479,6 +517,8 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         mock_build_book: MagicMock,
         mock_build_toc: MagicMock,
         mock_build_index: MagicMock,
+        mock_refine_toc: AsyncMock,
+        mock_refine_index: AsyncMock,
     ) -> None:
         mock_resolve.return_value = self.tmp / "aligned.pdf"
         mock_render.side_effect = self._fake_render
@@ -490,6 +530,13 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         mock_build_book.return_value = self.output_dir / "test-book.md"
         mock_build_toc.side_effect = self._toc_md_side_effect
         mock_build_index.return_value = self.output_dir / "INDEX.md"
+
+        async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
+            del args, kwargs
+            return path
+
+        mock_refine_toc.side_effect = _refine_passthrough
+        mock_refine_index.side_effect = _refine_passthrough
 
         useful_pages = _enumeration(page_count=100)
 

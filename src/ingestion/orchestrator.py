@@ -23,6 +23,7 @@ from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
 from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
 from src.ingestion.toc_builder import build_toc_md
+from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
 from src.ingestion.output_writer import BookOutput, materialize_book_pages
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import (
@@ -337,7 +338,7 @@ async def _run_pipeline_body(
         payload={"rendered_page_count": len(rendered)},
     )
 
-    for subdir in ("stage1OCR", "stage2Vision", "stage3Editor"):
+    for subdir in ("stage1OCR", "stage2Vision", "stage3Editor", "stage4TocIndexRefine"):
         (tmp_root / subdir).mkdir(parents=True, exist_ok=True)
 
     page_jobs = _build_page_jobs(useful_pages, tmp_root, slug, render_map)
@@ -469,12 +470,51 @@ async def _run_pipeline_body(
         payload={"toc_md_path": str(toc_md_path)},
     )
 
+    toc_refine_cache = tmp_root / "stage4TocIndexRefine"
+    try:
+        toc_md_path = await refine_toc_md(
+            toc_md_path,
+            openai_client,
+            settings,
+            source_sha256=source_sha256,
+            request_id=request_id,
+            cache_dir=toc_refine_cache,
+        )
+    except Exception as exc:
+        raise OrchestratorStageError("toc_refine", exc) from exc
+    _publish_event(
+        registry,
+        request_id,
+        stage="toc_refine",
+        message="toc_refine completed",
+        payload={"toc_md_path": str(toc_md_path)},
+    )
+
     index_md_path = build_index_md(book_output, useful_pages)
     _publish_event(
         registry,
         request_id,
         stage="index_builder",
         message="index_builder completed",
+        payload={"index_md_path": str(index_md_path)},
+    )
+
+    try:
+        index_md_path = await refine_index_md(
+            index_md_path,
+            openai_client,
+            settings,
+            source_sha256=source_sha256,
+            request_id=request_id,
+            cache_dir=toc_refine_cache,
+        )
+    except Exception as exc:
+        raise OrchestratorStageError("index_refine", exc) from exc
+    _publish_event(
+        registry,
+        request_id,
+        stage="index_refine",
+        message="index_refine completed",
         payload={"index_md_path": str(index_md_path)},
     )
 
