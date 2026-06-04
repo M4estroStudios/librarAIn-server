@@ -1,6 +1,7 @@
 data/input/
 data/tmp/
-data/polyindex/
+data/polyindex/.toc.lock
+data/polyindex/.index.lock
 tempdata/
 venv/
 __pycache__/

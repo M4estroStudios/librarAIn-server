@@ -1,0 +1,802 @@
+{
+  "schema_version": "1.0",
+  "books": {
+    "b8e3ef689746c15a802aaef29d5e3851a124e797782ad26fe0bea0fcbb492e80": {
+      "title": "Rioni di ROMA",
+      "slug": "rioni-di-roma",
+      "chapters": [
+        {
+          "label": "Presentazione, di Claudio Rendina",
+          "aligned_page_start": 6,
+          "aligned_page_end": 6,
+          "original_page_start": 6,
+          "original_page_end": 6
+        },
+        {
+          "label": "Dalla Roma augustea alla Città leonina",
+          "aligned_page_start": 7,
+          "aligned_page_end": 6,
+          "original_page_start": 7,
+          "original_page_end": 6
+        },
+        {
+          "label": "I rioni e i quartieri di Roma, di Mario Sanfilippo",
+          "aligned_page_start": 7,
+          "aligned_page_end": 11,
+          "original_page_start": 7,
+          "original_page_end": 11
+        },
+        {
+          "label": "Roma medievale",
+          "aligned_page_start": 12,
+          "aligned_page_end": 15,
+          "original_page_start": 12,
+          "original_page_end": 15
+        },
+        {
+          "label": "La città rinascimentale",
+          "aligned_page_start": 16,
+          "aligned_page_end": 19,
+          "original_page_start": 16,
+          "original_page_end": 19
+        },
+        {
+          "label": "Roma moderna",
+          "aligned_page_start": 20,
+          "aligned_page_end": 26,
+          "original_page_start": 20,
+          "original_page_end": 26
+        },
+        {
+          "label": "Roma capitale",
+          "aligned_page_start": 27,
+          "aligned_page_end": 35,
+          "original_page_start": 27,
+          "original_page_end": 35
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 36,
+          "aligned_page_end": 39,
+          "original_page_start": 36,
+          "original_page_end": 39
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 40,
+          "aligned_page_end": 53,
+          "original_page_start": 40,
+          "original_page_end": 53
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 54,
+          "aligned_page_end": 78,
+          "original_page_start": 54,
+          "original_page_end": 78
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 79,
+          "aligned_page_end": 101,
+          "original_page_start": 79,
+          "original_page_end": 101
+        },
+        {
+          "label": "Quarto itinerario",
+          "aligned_page_start": 102,
+          "aligned_page_end": 130,
+          "original_page_start": 102,
+          "original_page_end": 130
+        },
+        {
+          "label": "Le origini e l'evoluzione urbanistica",
+          "aligned_page_start": 131,
+          "aligned_page_end": 134,
+          "original_page_start": 131,
+          "original_page_end": 134
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 135,
+          "aligned_page_end": 142,
+          "original_page_start": 135,
+          "original_page_end": 142
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 143,
+          "aligned_page_end": 156,
+          "original_page_start": 143,
+          "original_page_end": 156
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 157,
+          "aligned_page_end": 164,
+          "original_page_start": 157,
+          "original_page_end": 164
+        },
+        {
+          "label": "Quarto itinerario",
+          "aligned_page_start": 165,
+          "aligned_page_end": 187,
+          "original_page_start": 165,
+          "original_page_end": 187
+        },
+        {
+          "label": "Quinto itinerario",
+          "aligned_page_start": 188,
+          "aligned_page_end": 193,
+          "original_page_start": 188,
+          "original_page_end": 193
+        },
+        {
+          "label": "Sesto itinerario",
+          "aligned_page_start": 194,
+          "aligned_page_end": 201,
+          "original_page_start": 194,
+          "original_page_end": 201
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 202,
+          "aligned_page_end": 206,
+          "original_page_start": 202,
+          "original_page_end": 206
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 207,
+          "aligned_page_end": 228,
+          "original_page_start": 207,
+          "original_page_end": 228
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 229,
+          "aligned_page_end": 242,
+          "original_page_start": 229,
+          "original_page_end": 242
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 243,
+          "aligned_page_end": 263,
+          "original_page_start": 243,
+          "original_page_end": 263
+        },
+        {
+          "label": "Dalle origini ai tempi moderni",
+          "aligned_page_start": 264,
+          "aligned_page_end": 269,
+          "original_page_start": 264,
+          "original_page_end": 269
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 270,
+          "aligned_page_end": 286,
+          "original_page_start": 270,
+          "original_page_end": 286
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 287,
+          "aligned_page_end": 301,
+          "original_page_start": 287,
+          "original_page_end": 301
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 302,
+          "aligned_page_end": 314,
+          "original_page_start": 302,
+          "original_page_end": 314
+        },
+        {
+          "label": "Quarto itinerario",
+          "aligned_page_start": 315,
+          "aligned_page_end": 325,
+          "original_page_start": 315,
+          "original_page_end": 325
+        },
+        {
+          "label": "Quinto itinerario",
+          "aligned_page_start": 326,
+          "aligned_page_end": 334,
+          "original_page_start": 326,
+          "original_page_end": 334
+        },
+        {
+          "label": "Le origini; la storia",
+          "aligned_page_start": 335,
+          "aligned_page_end": 338,
+          "original_page_start": 335,
+          "original_page_end": 338
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 339,
+          "aligned_page_end": 349,
+          "original_page_start": 339,
+          "original_page_end": 349
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 350,
+          "aligned_page_end": 363,
+          "original_page_start": 350,
+          "original_page_end": 363
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 364,
+          "aligned_page_end": 380,
+          "original_page_start": 364,
+          "original_page_end": 380
+        },
+        {
+          "label": "Ambienti spariti",
+          "aligned_page_start": 381,
+          "aligned_page_end": 382,
+          "original_page_start": 381,
+          "original_page_end": 382
+        },
+        {
+          "label": "Le origini, la storia",
+          "aligned_page_start": 383,
+          "aligned_page_end": 382,
+          "original_page_start": 383,
+          "original_page_end": 382
+        },
+        {
+          "label": "Rione VI: Parione; di Giorgio Carpaneto",
+          "aligned_page_start": 383,
+          "aligned_page_end": 392,
+          "original_page_start": 383,
+          "original_page_end": 392
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 393,
+          "aligned_page_end": 419,
+          "original_page_start": 393,
+          "original_page_end": 419
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 420,
+          "aligned_page_end": 427,
+          "original_page_start": 420,
+          "original_page_end": 427
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 428,
+          "aligned_page_end": 447,
+          "original_page_start": 428,
+          "original_page_end": 447
+        },
+        {
+          "label": "Le origini e la storia",
+          "aligned_page_start": 448,
+          "aligned_page_end": 447,
+          "original_page_start": 448,
+          "original_page_end": 447
+        },
+        {
+          "label": "Rione VII: Regola; di Mauro Quercioli",
+          "aligned_page_start": 448,
+          "aligned_page_end": 451,
+          "original_page_start": 448,
+          "original_page_end": 451
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 452,
+          "aligned_page_end": 467,
+          "original_page_start": 452,
+          "original_page_end": 467
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 468,
+          "aligned_page_end": 477,
+          "original_page_start": 468,
+          "original_page_end": 477
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 478,
+          "aligned_page_end": 487,
+          "original_page_start": 478,
+          "original_page_end": 487
+        },
+        {
+          "label": "Quarto itinerario",
+          "aligned_page_start": 488,
+          "aligned_page_end": 498,
+          "original_page_start": 488,
+          "original_page_end": 498
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 499,
+          "aligned_page_end": 498,
+          "original_page_start": 499,
+          "original_page_end": 498
+        },
+        {
+          "label": "Rione VIII: S. Eustachio; di Giorgio Carpaneto",
+          "aligned_page_start": 499,
+          "aligned_page_end": 501,
+          "original_page_start": 499,
+          "original_page_end": 501
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 502,
+          "aligned_page_end": 528,
+          "original_page_start": 502,
+          "original_page_end": 528
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 529,
+          "aligned_page_end": 541,
+          "original_page_start": 529,
+          "original_page_end": 541
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 542,
+          "aligned_page_end": 555,
+          "original_page_start": 542,
+          "original_page_end": 555
+        },
+        {
+          "label": "Dalle origini ai giorni odierni",
+          "aligned_page_start": 556,
+          "aligned_page_end": 555,
+          "original_page_start": 556,
+          "original_page_end": 555
+        },
+        {
+          "label": "Rione IX: Pigna, di Carlo Villa",
+          "aligned_page_start": 556,
+          "aligned_page_end": 559,
+          "original_page_start": 556,
+          "original_page_end": 559
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 560,
+          "aligned_page_end": 570,
+          "original_page_start": 560,
+          "original_page_end": 570
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 571,
+          "aligned_page_end": 597,
+          "original_page_start": 571,
+          "original_page_end": 597
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 598,
+          "aligned_page_end": 618,
+          "original_page_start": 598,
+          "original_page_end": 618
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 619,
+          "aligned_page_end": 618,
+          "original_page_start": 619,
+          "original_page_end": 618
+        },
+        {
+          "label": "Rione X: Campitelli, di Alberto Manodori",
+          "aligned_page_start": 619,
+          "aligned_page_end": 621,
+          "original_page_start": 619,
+          "original_page_end": 621
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 622,
+          "aligned_page_end": 668,
+          "original_page_start": 622,
+          "original_page_end": 668
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 669,
+          "aligned_page_end": 678,
+          "original_page_start": 669,
+          "original_page_end": 678
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 679,
+          "aligned_page_end": 725,
+          "original_page_start": 679,
+          "original_page_end": 725
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 726,
+          "aligned_page_end": 725,
+          "original_page_start": 726,
+          "original_page_end": 725
+        },
+        {
+          "label": "Rione XI: S. Angelo; di Mauro Quercioli",
+          "aligned_page_start": 726,
+          "aligned_page_end": 728,
+          "original_page_start": 726,
+          "original_page_end": 728
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 729,
+          "aligned_page_end": 745,
+          "original_page_start": 729,
+          "original_page_end": 745
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 746,
+          "aligned_page_end": 759,
+          "original_page_start": 746,
+          "original_page_end": 759
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 760,
+          "aligned_page_end": 766,
+          "original_page_start": 760,
+          "original_page_end": 766
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 767,
+          "aligned_page_end": 766,
+          "original_page_start": 767,
+          "original_page_end": 766
+        },
+        {
+          "label": "Rione XII: Ripa, di Alberto Manodori",
+          "aligned_page_start": 767,
+          "aligned_page_end": 767,
+          "original_page_start": 767,
+          "original_page_end": 767
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 768,
+          "aligned_page_end": 795,
+          "original_page_start": 768,
+          "original_page_end": 795
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 796,
+          "aligned_page_end": 819,
+          "original_page_start": 796,
+          "original_page_end": 819
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 820,
+          "aligned_page_end": 830,
+          "original_page_start": 820,
+          "original_page_end": 830
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 831,
+          "aligned_page_end": 830,
+          "original_page_start": 831,
+          "original_page_end": 830
+        },
+        {
+          "label": "Rione XIII: Trastevere; di Giorgio Carpaneto",
+          "aligned_page_start": 831,
+          "aligned_page_end": 838,
+          "original_page_start": 831,
+          "original_page_end": 838
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 839,
+          "aligned_page_end": 853,
+          "original_page_start": 839,
+          "original_page_end": 853
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 854,
+          "aligned_page_end": 875,
+          "original_page_start": 854,
+          "original_page_end": 875
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 876,
+          "aligned_page_end": 887,
+          "original_page_start": 876,
+          "original_page_end": 887
+        },
+        {
+          "label": "Quarto itinerario",
+          "aligned_page_start": 888,
+          "aligned_page_end": 901,
+          "original_page_start": 888,
+          "original_page_end": 901
+        },
+        {
+          "label": "Quinto itinerario",
+          "aligned_page_start": 902,
+          "aligned_page_end": 909,
+          "original_page_start": 902,
+          "original_page_end": 909
+        },
+        {
+          "label": "Sesto itinerario",
+          "aligned_page_start": 910,
+          "aligned_page_end": 923,
+          "original_page_start": 910,
+          "original_page_end": 923
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 924,
+          "aligned_page_end": 923,
+          "original_page_start": 924,
+          "original_page_end": 923
+        },
+        {
+          "label": "RIONE XIV. BORGO; DI CARLO VILLA",
+          "aligned_page_start": 924,
+          "aligned_page_end": 929,
+          "original_page_start": 924,
+          "original_page_end": 929
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 930,
+          "aligned_page_end": 953,
+          "original_page_start": 930,
+          "original_page_end": 953
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 954,
+          "aligned_page_end": 967,
+          "original_page_start": 954,
+          "original_page_end": 967
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 968,
+          "aligned_page_end": 967,
+          "original_page_start": 968,
+          "original_page_end": 967
+        },
+        {
+          "label": "RIONE XV. ESQUILINO; DI CLAUDIA CERCHIAI",
+          "aligned_page_start": 968,
+          "aligned_page_end": 970,
+          "original_page_start": 968,
+          "original_page_end": 970
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 971,
+          "aligned_page_end": 981,
+          "original_page_start": 971,
+          "original_page_end": 981
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 982,
+          "aligned_page_end": 999,
+          "original_page_start": 982,
+          "original_page_end": 999
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 1000,
+          "aligned_page_end": 1014,
+          "original_page_start": 1000,
+          "original_page_end": 1014
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 1015,
+          "aligned_page_end": 1014,
+          "original_page_start": 1015,
+          "original_page_end": 1014
+        },
+        {
+          "label": "RIONE XVI. LUDOVISI, DI GIORGIO CARPANETO",
+          "aligned_page_start": 1015,
+          "aligned_page_end": 1016,
+          "original_page_start": 1015,
+          "original_page_end": 1016
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 1017,
+          "aligned_page_end": 1031,
+          "original_page_start": 1017,
+          "original_page_end": 1031
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 1032,
+          "aligned_page_end": 1037,
+          "original_page_start": 1032,
+          "original_page_end": 1037
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 1038,
+          "aligned_page_end": 1037,
+          "original_page_start": 1038,
+          "original_page_end": 1037
+        },
+        {
+          "label": "RIONE XVII. SALLUSTIANO; DI CLAUDIA CERCHIAI",
+          "aligned_page_start": 1038,
+          "aligned_page_end": 1043,
+          "original_page_start": 1038,
+          "original_page_end": 1043
+        },
+        {
+          "label": "Unico itinerario",
+          "aligned_page_start": 1044,
+          "aligned_page_end": 1063,
+          "original_page_start": 1044,
+          "original_page_end": 1063
+        },
+        {
+          "label": "Dalle origini ai nostri giorni",
+          "aligned_page_start": 1064,
+          "aligned_page_end": 1063,
+          "original_page_start": 1064,
+          "original_page_end": 1063
+        },
+        {
+          "label": "RIONE XVIII. CASTRO PRETORIO, DI MAURO QUERCIOLI",
+          "aligned_page_start": 1064,
+          "aligned_page_end": 1065,
+          "original_page_start": 1064,
+          "original_page_end": 1065
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 1066,
+          "aligned_page_end": 1085,
+          "original_page_start": 1066,
+          "original_page_end": 1085
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 1086,
+          "aligned_page_end": 1096,
+          "original_page_start": 1086,
+          "original_page_end": 1096
+        },
+        {
+          "label": "Terzo itinerario",
+          "aligned_page_start": 1097,
+          "aligned_page_end": 1105,
+          "original_page_start": 1097,
+          "original_page_end": 1105
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 1106,
+          "aligned_page_end": 1105,
+          "original_page_start": 1106,
+          "original_page_end": 1105
+        },
+        {
+          "label": "RIONE XIX. CELIO; DI CARLO VILLA",
+          "aligned_page_start": 1106,
+          "aligned_page_end": 1111,
+          "original_page_start": 1106,
+          "original_page_end": 1111
+        },
+        {
+          "label": "Primo itinerario",
+          "aligned_page_start": 1112,
+          "aligned_page_end": 1132,
+          "original_page_start": 1112,
+          "original_page_end": 1132
+        },
+        {
+          "label": "Secondo itinerario",
+          "aligned_page_start": 1133,
+          "aligned_page_end": 1145,
+          "original_page_start": 1133,
+          "original_page_end": 1145
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 1146,
+          "aligned_page_end": 1145,
+          "original_page_start": 1146,
+          "original_page_end": 1145
+        },
+        {
+          "label": "RIONE XX. TESTACCIO; DI CLAUDIA CERCHIAI",
+          "aligned_page_start": 1146,
+          "aligned_page_end": 1150,
+          "original_page_start": 1146,
+          "original_page_end": 1150
+        },
+        {
+          "label": "Unico itinerario",
+          "aligned_page_start": 1151,
+          "aligned_page_end": 1172,
+          "original_page_start": 1151,
+          "original_page_end": 1172
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 1173,
+          "aligned_page_end": 1172,
+          "original_page_start": 1173,
+          "original_page_end": 1172
+        },
+        {
+          "label": "RIONE XXI. S. SABA, DI CLAUDIA CERCHIAI",
+          "aligned_page_start": 1173,
+          "aligned_page_end": 1174,
+          "original_page_start": 1173,
+          "original_page_end": 1174
+        },
+        {
+          "label": "Unico itinerario",
+          "aligned_page_start": 1175,
+          "aligned_page_end": 1197,
+          "original_page_start": 1175,
+          "original_page_end": 1197
+        },
+        {
+          "label": "Dalle origini ad oggi",
+          "aligned_page_start": 1198,
+          "aligned_page_end": 1197,
+          "original_page_start": 1198,
+          "original_page_end": 1197
+        },
+        {
+          "label": "RIONE XXII. PRATI, DI ALBERTO MANODORI",
+          "aligned_page_start": 1198,
+          "aligned_page_end": 1204,
+          "original_page_start": 1198,
+          "original_page_end": 1204
+        },
+        {
+          "label": "Unico itinerario",
+          "aligned_page_start": 1205,
+          "aligned_page_end": 1222,
+          "original_page_start": 1205,
+          "original_page_end": 1222
+        },
+        {
+          "label": "Indice dei luoghi",
+          "aligned_page_start": 1223,
+          "aligned_page_end": 1247,
+          "original_page_start": 1223,
+          "original_page_end": 1247
+        }
+      ]
+    }
+  }
+}
