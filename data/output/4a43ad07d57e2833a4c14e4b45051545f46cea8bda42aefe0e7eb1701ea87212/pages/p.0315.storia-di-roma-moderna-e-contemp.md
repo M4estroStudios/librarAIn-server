@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+ROMA GIOLITTIANA
+'515
+
+appare insomma un po' isolata dalla vita cittadina, che sembra vivere ancora e sempre di ricordi ed entusiasmi risorgimentali: dall'annuale celebrazione della breccia il 20 settembre all'appuntamento commemorativo di bersaglieri e garibaldini sul monumento a Garibaldi al Gianicolo; dal raduno dei reduci delle guerre d'indipendenza in Campidoglio alle inaugurazioni dei monumenti, come quello di Ciceruacchio a Ripetta.
+
+Riprende invece nella città la presenza del papato che, se con Leone XIII era riuscita a farsi sentire in campo internazionale nei problemi sociali, rivendicando la sua sovranità come un diritto universale, ora penetra nell'animo cattolico dei romani su nuove basi: infatti sono sorti circoli cattolici ricreativi e associazioni operaie, dalle quali si punta a contrastare la linea anticlericale dominante.
+
+Alla morte di Leone XIII nel 1903, l'elezione al pontificato del cardinale Giuseppe Sarto con il nome di Pio X costituisce un rinnovarsi delle organizzazioni cattoliche, dalle quali sarebbe sorto un impegno politico di grande significato; non solo nella vita della capitale, ma dell'intera nazione.
+
+Ma Roma comincia veramente ad assumere la funzione politica di capitale, segnata com'è con il nuovo secolo dalle visite di capi di Stato ai sovrani d'Italia; e il Quirinale diventa allora un punto di riferimento politico internazionale: nel 1902 arriva lo scià di Persia; nel 1903 Edoardo VII d'Inghilterra e Guglielmo II di Germania; nel 1904 il presidente della Repubblica francese Emile Loubet; nel 1906 la regina Alessandria d'Inghilterra e Giorgio I di Grecia. E ogni volta sono manifestazioni di benvenuto: cortei e serate di gala, che impegnano la città nelle strade più rappresentative, dalle piazze del
+
+LA FONTANA DELLE NAIADI
+
+L'origine della fontana risale al 1888, quando l'ingegner Alessandro Guerrieri costruì una grande vasca circolare con quattro leoni egizi, sculture che non piacevano.
+Così nel 1900 Mario Rutelli realizzò quattro nuove sculture raffiguranti quattro ninfe in pose diverse: la Ninfa dei laghi abbracciata a un cigno; la Ninfa dei fiumi poggiata su un mostro fluviale; la Ninfa degli oceani che doma il cavallo selvaggio e la Ninfa delle acque sotterranee sdraiata sul dorso di un drago. Fu subito polemica, ancor prima dell'inaugurazione, tra cattolici bigotti e libertari; tanto che la fontana fu recintata da un alto steccato per impedirne l'accesso e la vista. Il dibattito si accese in Comune dove un consigliere così tuonava contro l'opera scandalosa: «Il Rutelli ha escogitato quattro divani, che vanno dal cavallo al mostro marino; e su questi ha disteso le sue ninfe, non quelle ninfe di forme eleganti che abbondano nell'arte settecentesca; ma ninfe simili a robuste ed erculee donne; non ninfe inebriate dal piacere dell'acqua ma, mi si perdoni l'espressione, ciociare ubriache di cattivo vino che hanno assunto su divani le pose più dimostrative». Ma ai primi del 1901 l'inaugurazione avvenne a furor di popolo; perché di notte alcuni giovani abbatterono le transenne e il giorno la fontana poté essere ammirata e lo scandalo si sgonfiò.
+
+Tornò di attualità dieci anni dopo, quando si propose l'aggiunta di un altro gruppo scultoreo al centro della fontana; Rutelli realizzò un insieme di tre tritoni, un delfino e un grosso polipo; che fu oggetto di ironiche critiche, tanto da essere popolarmente soprannominato «fritto misto»; fu sostituito nel 1914 dal Glauco in lotta con un tritone; dalla cui bocca sprizza un grande zampillo, a simboleggiare il dominio dell'uomo sulla natura. E il «fritto misto» finì tra i giardini di piazza Vittorio Emanuele I.

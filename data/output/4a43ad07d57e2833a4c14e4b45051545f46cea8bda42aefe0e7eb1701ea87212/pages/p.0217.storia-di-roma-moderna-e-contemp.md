@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+LA FINE DI UN'EPOCA
+817
+
+Se i segni premonitori non furono eventi straordinari, quali fulmini sul Vaticano o il parto della mucca nel cortile della Cancelleria; ma gli inquietanti «miracoli» di immagini sacre che piangevano o muovevano gli occhi e la sequenza degli eventi fu la medesima: l'invasione dello Stato ecclesiastico da parte di uno spietato esercito straniero; la distruzione dell'ordinamento statale, un Sacco meno spettacolare ma enormemente più radicale di quello dei Lanzichenecchi, l'esilio del pontefice. Tuttavia, alla chiusura di questo ciclo della sua storia, al potere temporale della Chiesa fu inferita una ferita che nel secolo successivo si rivelerà mortale e sulla scena politica si affacciò, sia pure in misura minoritaria, la volontà popolare assente fin dal Medioevo che si ripresentò significativamente nelle forme di un classicismo demagogico e di maniera.
+
+Fino al 1790 le innovazioni della Rivoluzione avevano suscitato anche a Roma, dove il periodico «Notizie politiche» se ne fece per il paio d'anni della sua esistenza cauto portavoce, le simpatie di chi vi vedeva la difesa del popolo nelle sue ragionevoli aspirazioni per una limitazione dell'eccessivo potere dell'aristocrazia e del clero; per una onesta e competente amministrazione pubblica e per una più ampia considerazione degli interessi civili. Ma ben presto alla guardinga tolleranza subentrò una terroristica propaganda antigiacobina, condotta con ogni mezzo, che presentando un'interpretazione negativa della Rivoluzione in quanto originata da un complotto mirante alla distruzione della società civile e religiosa, raggiunse, con le sue semplicistiche argomentazioni, anche la massa della popolazione creando le premesse dei sentimenti antifrancesi del «triennio giacobino». Naturalmente furono presi provvedimenti precauzionali dalla polizia, che individuò anche una loggia massonica presso l'Accademia artistica francese; fu arrestato e condannato Paul Letorouilly.
+
+[Immagine]
+Paul Letorouilly: cortile del palazzo della Cancelleria.

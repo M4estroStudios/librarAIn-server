@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+LA FINE DI UN'EPOCA
+809
+
+degli studi, attivo e competente, il Braschi percorse rapidamente la carriera ecclesiastica ricoprendo con onore le cariche di referendario della Segnatura e di tesoriere generale della Camera apostolica. Nel 1773 Clemente XIV lo creò cardinale prete del titolo di Sant'Onofrio soprattutto in considerazione delle sue buone relazioni con la corte di Napoli ma, a causa delle critiche mosse dal Braschi alla condotta del governo e alle speculazioni dei favoriti e delle sue simpatie per i gesuiti, preferì tenerlo lontano da Roma nominandolo abate commendatario dell'abbazia di Subiaco e poi anche di quella di San Gregorio a Roma che furono rette con infaticabile zelo.
+
+IL GOVERNO DELLA CHIESA
+
+Il nuovo eletto, mirando a ridare alla Chiesa il suo antico prestigio e desideroso di conferire gloria e splendore al pontificato, si dedicò interamente al suo alto ufficio mettendo a servizio di esso anche la sua prestanza fisica e il suo personale fascino e a volte sconfinando in una vanità che le satire non mancarono di sottolineare indicandolo come il papa bello. Profondamente consapevole della difficile situazione della Chiesa e dello Stato, espose con una lucida analisi i pericoli incombenti già nell'enciclica del Natale del 1775 che si concludeva con il profetico invito ai vescovi e al clero di affrontarli senza timore con la preghiera e l'imitazione di Cristo fino al martirio.
+
+Fu impotente davanti alla crisi della spiritualità religiosa del suo tempo che a Roma stessa si esprimeva nel palese contrasto tra il carattere sacro della città, la religiosità spesso superstiziosa radicata nei romani e l'immoralità diffusa in certi ceti sociali della popolazione; che tuttavia non era sorda al richiamo alle più severe verità evangeliche del santo pezzente Benedetto Giuseppe Labre e dell'autoflagellante predicatore Paolo della Croce.
+
+Tentò di rinvigorire la Chiesa curando una migliore formazione del clero, l'organizzazione interna e l'efficienza degli ordini religiosi e promuovendo la devozione dei fedeli. Nei limiti delle sue possibilità si oppose all'intensa propaganda che attaccava i fondamenti stessi del cristianesimo e alimentava la lotta contro il papato in Francia, in Spagna, a Napoli, in Toscana e anche a Roma.
+
+Dichiarò molti beati, non proclamò alcun santo e in 23 promozioni creò 75 cardinali. Si impegnò per mitigare nello Stato le conseguenze della soppressione della Compagnia di Gesù ma non poté evitare le gravissime ripercussioni sull'opera missionaria nel mondo che fu continuata, benché in misura inadeguata e tuttavia con qualche successo, da altri ordini e specialmente dai francescani e dai lazzaristi.
+
+Purtroppo fu scandaloso il nepotismo di Pio VI. Pochi anni dopo la sua elezione il papa chiamò a Roma da Cesena Luigi e Romualdo Onesti, figli di una sorella, diede il proprio cognome ad entrambi, creò cardinale Romualdo e nominò segretario dei brevi e favorì con illimitata liberalità il mediocre meschino Luigi, che era destinato a continuare il casato. Celebrò le sue nozze con Costanza Falconieri nella cappella Sistina; per un canone irrisorio gli assegnò la rendita valutata in 85.000 scudi dei beni già posseduti dai gesuiti a Tivoli, lo mise in grado di acquistare per 94.000 scudi il ducato dei Frangipani di Nemi con il titolo ducale, lo fece nominare erede di metà dell'enorme patrimonio di Amanzio Lepri, professo dell'ordine dei Cavalieri di Malta.

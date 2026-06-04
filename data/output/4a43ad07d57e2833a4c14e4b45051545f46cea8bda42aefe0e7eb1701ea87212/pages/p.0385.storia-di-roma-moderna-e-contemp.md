@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+DALLA CONTESTAZIONE AL TERRORISMO
+
+**SANDRO PERTINI**
+
+Nato a Stella, presso Savona, nel 1896; laureato in Legge e Scienze politiche; combatté nella prima mondiale e nel dopoguerra si iscrisse al Psi. Nemico fermo del fascismo, fu condannato nel 1925 per aver redatto un opuscolo antifascista e fuggì in Francia, dove fu condannato due volte per propaganda politica. Rientrato in Italia nel 1936 con un passaporto falso, fu arrestato e condannato a 1 anno; liberato dopo la caduta di Mussolini, il 25 luglio 1943, costituì a Roma con Nenni e Saragat il primo comitato esecutivo del Psi. Di nuovo arrestato dai tedeschi e condannato a morte, fu liberato dai compagni e si trasferì a Milano e militò nel Cln del Nord Italia. Dopo la liberazione, fu segretario del Psi nel 1945 e direttore dell' «Avanti!»; senatore di diritto dal 1948, fu presidente della Camera dal 1968 al 1976, e il 18 luglio 1978 venne eletto presidente della Repubblica. Lo fu fino al 3 luglio 1985, essendo in grado di conquistare l'affetto degli italiani in un momento di grave crisi per il nostro paese, nel vivo del terrorismo. Emblematico resta il suo discorso d'insediamento nel quale sottolineò il nesso inscindibile tra giustizia e libertà, esortando ad un futuro di pace per l'Italia: «Si svuotino gli arsenali di guerra, sorgente di morte; si colmino i granai!».
+
+Almeno in quegli anni la sua esortazione non fu ascoltata:
+
+**GIOVANNI PAOLO I**
+
+Albino Luciani è nato a Forno di Canale d'Agordo, presso Belluno, nel 1912; di famiglia povera, era diventato vescovo di Vittorio Veneto; quindi cardinale e patriarca di Venezia nel 1969, entrando a far parte della commissione dottrinale della Conferenza Episcopale Italiana. La sua elezione al pontificato, alla morte di Paolo VI, in un conclave di soli due giorni fu accolta con grande meraviglia, proprio perché di modesta personalità; consacrato il 1 settembre 1978, si chiamò, primo nella storia, con un doppio nome, Giovanni Paolo I, che rinviava ai suoi due predecessori, Giovanni XXIII e Paolo VI, ai quali voleva modestamente ispirarsi.
+
+Fu un pontificato brevissimo, di soli 33 giorni, caratterizzato da pochi flash illuminanti della sua piccola grande anima, senza strategie politiche paragonando l'anima ad un'automobile, nel dire che «Dio è mamma» o nel citare Pinocchio; piuttosto «tutti segnali di un papa che è come un operaio di fabbrica; come un contadino dell'Abruzzo», osservò l'antropologo Alfonso Di Nola (1926-97). Avrebbe potuto «diventare un uomo come tutti gli altri, disposto, anche nella sua veste candida, ad abbandonare il Vaticano e ad andarsene ad abitare al Nomentano o in qualsiasi altro quartiere di Roma in un appartamento di tre camere»; queste parole del Di Nola rievocavano l'immagine, sognata anni prima da Pier Paolo Pasolini, di un papa che andasse «a sistemarsi in clergyman coi suoi collaboratori, in qualche scantinato di Tormarancio o del Tuscolano».
+
+Fu trovato morto, con il libro delle Imitazioni di Cristo in mano, la mattina del 29 settembre; i medici certificarono che era morto già dalle 23 del giorno prima, il 28 settembre per infarto. Qualche giornale riportò allusioni, destinate a restare gratuite, su una morte per avvelenamento; fu sepolto nella cripta della basilica Vaticana.
+
+Il sindaco Luigi Petroselli, eletto il 12 settembre 1979 e in carica fino al 17 settembre 1981, sarà rieletto il 27 settembre 1981 ma morirà dieci giorni dopo, il 7 ottobre, d'infarto: è stato uno dei sindaci più amati della città, per il carattere aperto e disponibile al rapporto con i cittadini, con i quali spesso ha improvvisato colloqui senza formalità; ascoltando richieste e cercando di [testo mancante]

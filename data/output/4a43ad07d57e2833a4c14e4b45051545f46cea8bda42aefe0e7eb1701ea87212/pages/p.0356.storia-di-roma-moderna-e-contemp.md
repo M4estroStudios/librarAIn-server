@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+356 STORIA DI ROMA MODERNA E CONTEMPORANEA
+
+Una pattuglia tedesca in piazza San Pietro.
+
+Gestapo; Herbert Kappler; nonché la tortura nel carcere di via Tasso e nelle prigioni Jaccarino e Oltremare; alle quali sovrintendeva la polizia di Gaetano Koch e la questura di Pietro Caruso. Il Vaticano prese l'iniziativa nel tentativo di spezzare l'egemonia tedesca e riuscì a far investire il generale Domenico Chirieleison di un comando che assicurasse viveri alla cittadinanza. Ci fu anche una manifestazione popolare antitedesca in piazza San Pietro il 12 marzo, durante un discorso di Pio XII che invocava incolumità di Roma; non si ebbero risultati concreti, anche perché il Vaticano più di tanto non poteva fare. Oltretutto nella Città del Vaticano trovò rifugio molta gente proveniente da Cassino e da paesi distrutti del sud d'Italia, nonché uomini politici democratici ricercati dalla polizia; e molti camion vaticani si avventuravano dall'Umbria e dalla Toscana per portare viveri a Roma, superando posti di blocco e mitragliamenti tedeschi.
+
+Il 23 marzo 1944 fu un giorno di fuoco per Roma: una colonna tedesca in via Rasella venne attaccata da un nucleo dei GAP; del quale facevano parte, tra gli altri, Rosario Bentivegna, Carla Capponi e Franco Calamandrei. Tra soldati si contarono 33 morti e alcune decine di feriti; scattò il disumano diritto di rappresaglia: per il quale il comando tedesco pretese l'eliminazione di dieci ostaggi italiani per ogni tedesco ucciso. E il giorno seguente il mandante della Gestapo condusse 335 detenuti in una cava sulla via Ardeatina e procedette alla loro esecuzione. La sera stessa un comunicato radiofonico tedesco diede la notizia dell'episodio, che restò nella memoria storica come l'eccidio delle Fosse ardeatine.
+
+La ferocia repressiva dei tedeschi non si fermò qui: si fece sempre più spietato il controllo dell'ordine pubblico; vigilando principalmente sui partigiani; il 3 aprile a Forte Bravetta venne fucilato don Giuseppe Morosini per aver fornito assistenza ai combattenti clandestini. Lo stato d'intimidazione però proseguì lungo tutto aprile.

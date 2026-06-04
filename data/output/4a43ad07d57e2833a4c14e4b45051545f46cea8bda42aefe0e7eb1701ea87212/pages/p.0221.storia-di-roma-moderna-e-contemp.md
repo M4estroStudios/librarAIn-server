@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+LA FINE DI UN'EPOCA
+881
+
+Piazza San Pietro con imponente colonnato di Bernini (incisione di G. Vasi).
+
+sidenza riorganizzando alcuni uffici della Curia, tra i quali la Dataria e la Penitenziaria, che gli consentirono di continuare ad adempiere in qualche modo ai doveri del suo ufficio.
+A Roma, secondo le istruzioni del direttorio, il generale André Massena, succeduto nel governo militare a Berthier, costituì il nuovo governo nominando a sua discrezione, tra candidati provenienti dalla borghesia intellettuale, dall'aristocrazia minore e anche dal clero, i cinque consoli, ai quali era delegato il potere esecutivo; e molti dei 72 tribuni e dei 32 senatori, ai quali competeva il potere legislativo. Questi organi, che non essendo stati eletti dal popolo solo formalmente ne rappresentavano la volontà, erano soggetti alla rigida tutela dei francesi. La città fu ripartita in sezioni, il territorio dello Stato fu diviso in dipartimenti e fu imposto il calendario repubblicano. Il nuovo ordinamento fu celebrato con l'erezione un po' dovunque di effimeri monumenti classicheggianti che furono al centro di festeggiamenti popolari culminati con una manifestazione di fraternizzazione in piazza San Pietro alla quale parteciparono i rappresentanti di tutti i dipartimenti.
+L'ordine pubblico fu mantenuto dai militari e dalla guardia nazionale di recente costituzione; conventi e case religiose e abitazioni private furono adattate a caserme e alloggiamenti ed ebbe inizio il nuovo Sacco di Roma che fu condotto sistematicamente in musei, chiese, palazzi e biblioteche. In un solo giorno anche cinquecento carri carichi di opere d'arte e di oggetti preziosi lasciavano Roma sotto forte scorta alla volta della Francia. Furono requisiti pure 1600 cavalli destinati all'esercito.
+Lo sdegno per le spoliazioni, gli abusi degli occupanti, l'insoddisfazione per l'operato del governo repubblicano incapace, incompetente e inetto e che comunque non avrebbe potuto risolvere in breve tempo i gravi problemi poli-

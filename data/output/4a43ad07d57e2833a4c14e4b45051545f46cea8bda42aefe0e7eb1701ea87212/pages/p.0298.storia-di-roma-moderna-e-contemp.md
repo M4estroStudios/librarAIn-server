@@ -1,0 +1,13 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+ROMA UMBERTINA
+MONUMENTI E SVENTRAMENTI
+
+Quello che distingue da subito la Roma umbertina rispetto a quella cristiana e pontificia è un'immagine all'insegna dell'italianità e del laicismo. A cominciare dai monumenti dedicati a patrioti e artisti che vengono eretti nei punti strategici della città; in una galleria di eroi del passato più o meno recente, come Giuditta Tavani Arquati a Trastevere, Cola di Rienzo sul Campidoglio; i fratelli Cairoli al Pincio; Pietro Metastasio a San Silvestro e Giordano Bruno a Campo de' Fiori; fino ai personaggi mitici di attualità come Giuseppe Garibaldi al Gianicolo; i 500 caduti di Dogali alla stazione Termini, Quintino Sella presso il ministero delle Finanze, Marco Minghetti a piazza San Pantaleo; Terenzio Mamiani presso San Giovanni dei Fiorentini.
+
+Con un preciso scopo, quello di incitare i cittadini ai pensieri più dignitosi sulla Patria, per il quale è anche sufficiente a volte una lapide commemorativa e la stessa toponomastica; attingendo al repertorio di date ed eventi del Risorgimento per intitolare strade che siano portavoce di quella «terza Roma» che sta formandosi.
+
+In questo contesto il culto del re unificatore d'Italia, Vittorio Emanuele II, attira a Roma una serie di pellegrinaggi in onore della religione della Patria, che si sostituisce a quella sacra di giubilei e festività cristiane. Arrivano a rendere omaggio al Pantheon i veterani delle battaglie risorgimentali e s'istituisce una guardia d'onore dei reduci alla sua tomba; un entusiasmo che, proin riferimento al re, determina il progetto della creazione di un monumento nazionale dedicato a Vittorio Emanuele II, che prende piede fin dal 1879.
+
+Nel frattempo il 19 giugno 1882 s'inaugura la piazza con il suo nome nel nuovo rione di Castro Pretorio e si progetta la realizzazione della grande arteria che collegherà il Tevere all'Argentina; i romani abbrevieranno il lungo toponimo in Vittorio, basta, nel segno di una spontanea familiarità.
+
+Nonostante tutto questo entusiasmo, la gestione della nuova città è quanto mai difficile, perché il cambiamento che essa deve inevitabilmente avere nelle sue strutture, per essere un'autentica capitale, contrasta nettamente con le risorse autonome di Roma che risultano completamente insufficienti. Oltretutto la città, a livello comunale, mostra due anime contrastanti: una conservatrice d'impronta cattolica e un'altra progressista e anticlericale. Anime che dilacerano l'amministrazione e ritardano l'attuazione delle opere, che dovrebbero essere frutto di un investimento dell'intero Paese, con un...
