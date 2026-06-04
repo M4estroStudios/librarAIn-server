@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 89
 
 su commissione del cardinale Caetani. Intorno al 1870 ci fu ad opera del cardinale Luciano Bonaparte il rifacimento della facciata su via Urbana. Si racconta che Francesco da Volterra, mentre gettava le fondazioni per impostare la cupola, rinvenisse un'altra statua del Laocoonte, ma gli operai in breve tempo la fecero sparire, vendendosene i pezzi.

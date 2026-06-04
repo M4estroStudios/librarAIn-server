@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1131
+PRIMO ITINERARIO 1131
 
 La chiesa di S. Gregorio al Cello. In un'incisione di G. Vasi.
 

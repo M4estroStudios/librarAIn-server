@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1043
 
 Criptoportico con pitture durante la costruzione di un garage-autorimessa in via Friuli.

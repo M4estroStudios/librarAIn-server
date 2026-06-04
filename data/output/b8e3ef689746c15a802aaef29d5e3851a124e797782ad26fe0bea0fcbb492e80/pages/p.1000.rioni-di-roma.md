@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1000
+1000
 RIONE XV. ESQUILINO
 
 aggettante mentre una cornice in stucco; ad ovoli; è al di sopra di quelle del terzo: Ancora una cornice policroma a girali è situata fra le finestre dell'ultimo piano che hanno subito al di sopra un cornicione concavo ornato da triglifi e rosoncini.

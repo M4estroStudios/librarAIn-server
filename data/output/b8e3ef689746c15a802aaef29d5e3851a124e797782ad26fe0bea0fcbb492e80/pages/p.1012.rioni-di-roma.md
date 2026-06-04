@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1012
+1012
 RIONE XV. ESQUILINO
 
 ritratti di monaci racchiusi da medaglioni e con la «Glorificazio-

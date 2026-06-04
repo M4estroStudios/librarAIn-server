@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>452
+452
 
 RIONE VII. REGOLA
 L'impresa o stemma del rione è un cervo rampante in campo tur-chino.

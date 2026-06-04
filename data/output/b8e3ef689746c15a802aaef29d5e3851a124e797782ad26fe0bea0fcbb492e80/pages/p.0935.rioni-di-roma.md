@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 935
 
 Il mausoleo è formato da uno zoccolo quadrato di 84 metri di lato, alto una decina, tutto rivestito di travertino; quindi è il grande tamburo cilindrico alto venti metri e un tempo ornato di marmi e pilastri: al di sopra era un coronamento di statue; sulla cima, tra alberi e giardini pensili, era inoltre un tempietto votivo tra colonne e una quadriga di bronzo con la statua dell'imperatore. La cella sepolcrale era al centro dell'edificio e ad essa si accedeva attraverso la rampa elicoidale ancora esistente e percorribile, pavimentata a mosaici, scomparsi quasi del tutto. Il mausoleo era recintato da una cancellata e munito di un grande portone di bronzo volto verso il ponte Elio.

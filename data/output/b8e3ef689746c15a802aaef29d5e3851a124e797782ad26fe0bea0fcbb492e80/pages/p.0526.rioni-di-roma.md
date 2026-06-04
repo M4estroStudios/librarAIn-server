@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>526
+526
 RIONE VIII. S. EUSTACHIO
 
 ...to; sono varie: Mattei, Ceva, Alberini, Caffarelli, Cardelli, Orsini eccetera. Di fronte al palazzo, al n. 11, c'è una bella finestra cen-tinata con grata e resti di un antico portale chiuso e successivamente aperto con arco ribassato; mentre al n. 9 si vede il pro-spetto posteriore del Palazzo Mazzetti la cui facciata principale è in piazza Rondanini, 33.

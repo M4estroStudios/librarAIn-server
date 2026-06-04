@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 741
 
 Abbiamo notizia di restauri effettuati sotto Pio IV (1559-1566); Paolo V Borghese, nel 1611; Benedetto XIV Lambertini, nel 1741, ed infine sotto Pio X fra il 1867 ed il '70.

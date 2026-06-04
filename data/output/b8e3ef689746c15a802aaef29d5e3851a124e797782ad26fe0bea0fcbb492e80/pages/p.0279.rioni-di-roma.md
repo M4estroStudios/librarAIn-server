@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 279
 
 Palazzo Zuccari, alla confluenza tra le vie Sistina e Gregoriana. In un'immagine di fine Ottocento

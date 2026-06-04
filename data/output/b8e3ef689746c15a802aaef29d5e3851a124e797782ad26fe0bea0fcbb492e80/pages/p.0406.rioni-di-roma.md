@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>406
+406
 RIONE VI. PARIONE
 
 «S. Giacomo» di Jacopo Sansovino (1486–1570), il cui originale è nella suddetta chiesa. Restano anche la volta della chiesa affrescata da Baldassarre Croce (1558–1628) e la marmorea cinquecentesca cantoria, nelle forme del Rinascimento toscano, attribuita a Pietro Torrigiani. Seguono case di proprietà degli Stabilimenti Spagnoli trasformate nel Settecento nell'Ottocento. Un unico cornicione le unisce, decorato dalle solite conchiglie. Segnaliamo molto vicino nella chiesa una finestra arcuata quattrocentesca; su mensole. Graziosi balconi, a mano a mano più corti, vivacizzano le facciate, come il portale al n. 93 con lunetta di ferro con lo stemma di Castiglia; che si ripete ai nn: 94 e 96, 103–105.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione IV. Campo Marzio
+Rione IV. Campo Marzio
 di Mauro Quercioli
 Dalle origini ai tempi moderni
 

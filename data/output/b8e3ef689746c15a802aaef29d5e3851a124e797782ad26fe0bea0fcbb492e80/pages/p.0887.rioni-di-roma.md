@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 887
 
 E in contrasto con tale degenerazione (= inesistenza?) di sentimenti, proprio la via dei Dandolo ci riporta ad una famiglia di Varese, i cui membri vissero e combatterono per l'alto ideale della patria: Emilio combatté con Garibaldi in difesa della Repubblica romana; Enrico, egualmente nel 1849, partecipò alla difesa di Roma e fu ucciso a tradimento dai soldati francesi.

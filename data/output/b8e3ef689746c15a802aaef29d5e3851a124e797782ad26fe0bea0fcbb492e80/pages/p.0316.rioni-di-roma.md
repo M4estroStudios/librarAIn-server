@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>316
+316
 RIONE IV. CAMPO MARZIO
 
 del porto di Ripetta nei primi anni del Settecento; e finché questo fu attivo; il Campo Marzio doveva effettivamente presentare una grande varietà socio-culturale: che andava dai fiumaroli alla *intellighentia* internazionale più evoluta, creando un connubio sempre fonte di indubbia crescita sociale. Non facciamoci quindi ingannare dall'attuale aspetto di questa strada; essa era il completamento d'un rione pieno di vita, che dalla sommità del colle di Lucullo e Messalina — sede di cardinali e di regnanti — passava per il vivace mondo degli artisti, per finire sempre in brevissimo spazio, sotto alle prese con un proletariato spesso infarcito di galeotti e di emarginati della più varia natura; il tutto in continuo rimescolamento, per il flusso costante di viaggiatori che qui arrivavano dalla Cassia-Flaminia o via fiume, scendendo dal ponte Felice posto ai confini dello Stato.

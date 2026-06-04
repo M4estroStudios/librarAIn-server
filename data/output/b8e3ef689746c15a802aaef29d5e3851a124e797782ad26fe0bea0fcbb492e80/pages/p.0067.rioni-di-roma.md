@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 
 Miglia Cardelli, si incontra la chiesa di S. Maria ad Nives; già dedicata a S. Andrea de Portugallo. La chiesa cambiò nome quando appunto fu affidata alla confraternita di S. Maria della Neve dopo che era stata officiata dall'Università dei Rigattieri. La chiesa dalla facciata appena convessa mostra un timpano interrotto e paraste angolari: si tratta pertanto di un bell'edificio di un tardo barocco non privo di originalità, attribuito da alcuni a Carlo Fontana e da altri a Giuseppe Sardi. L'interno è a navata unica ed è ornato di belle pitture dei secoli XVI e XVIII.
 

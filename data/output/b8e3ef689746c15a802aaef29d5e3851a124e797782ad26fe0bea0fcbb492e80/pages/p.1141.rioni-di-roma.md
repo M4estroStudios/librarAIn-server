@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1141
 
 Nenti e le liti per lesazione finì sempre per essere chiusa; è stata resa praticabile in via definitiva solo nel 1911.

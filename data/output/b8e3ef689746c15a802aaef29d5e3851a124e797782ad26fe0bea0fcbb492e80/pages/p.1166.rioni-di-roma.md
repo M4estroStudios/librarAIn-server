@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1166
+1166
 RIONE XX. TESTACCIO
 
 Trepassando ancora via Alessandro Volta notiamo, sempre sul lato sinistro, un'area con tendoni adibita a deposito di materiale vario. Arriviamo quindi a Piazza Giustiniani dove dal 1887 ha sede il noto ristorante romano «Checchino al Testaccio», dove si possono gustare, tra l'altro, i famosi piatti della cucina tradizionale romana.

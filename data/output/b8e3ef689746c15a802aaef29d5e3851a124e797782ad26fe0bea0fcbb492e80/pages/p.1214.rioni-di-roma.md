@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1214
+1214
 RIONE XXII. PRATI
 
 I principali monumenti di piazza Cavour e dintorni. Dall'alto, in senso orario: il teatro Adriano, la chiesa valdese; la chiesa del Sacro Cuore del Suffragio, palazzo di giustizia, la casa madre dei mutilati.

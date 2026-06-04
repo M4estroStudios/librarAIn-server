@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO | 25 |
+TERZO ITINERARIO | 25 |
 
 collegio Nazareno in un'incisione di G. Vasi
 

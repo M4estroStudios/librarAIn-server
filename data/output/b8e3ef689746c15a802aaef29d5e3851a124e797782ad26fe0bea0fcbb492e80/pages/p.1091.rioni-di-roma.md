@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1091
 
 All'interno; grazie a certe apparecchiature ottiche, ottenute dalla Germania in conto riparazioni di guerra, si potevano illustrare al pubblico il moto degli astri. La grande cupola apribile; come presso molti cinema romani, oltre che cambiare aria, svolgeva a volte, anche una funzione importante per il preciso scopo del locale. Declassato a cinema, imballate le apparecchiature; il Planetario ha cessato da tempo attività, per divenire oggetto un po' malinconico di interminabili restauri, che poco conclusi:

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 637
 
 Consiglio di una tomba dei Boccabella ornato da un affresco del Trecento rappresentante la «Deposizione del Cristo tra il compianto della Madonna e di S. Giovanni». Dopo la demolizione della chiesa sono riaffiorati i resti di un'insula romana, per almeno quattro piani, con parte della fronte, con le sue bolle e delle finestre con l'attacco dei balconi sulla strada: il piano terra dell'insula è a nove metri sotto l'attuale piano stradale. Tutto questo è oggi visibile al di là di un moderno transennamento.

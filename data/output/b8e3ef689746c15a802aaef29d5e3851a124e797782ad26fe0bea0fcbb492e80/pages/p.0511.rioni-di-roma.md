@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 511
 
 Il cortile del palazzo della Sapienza in un'incisione ottocentesca di P. Letarouilly: un agile porticato con loggiato terminante ad esedra dove è l'ingresso della chiesa seicentesca borrominiana di S. Ivo. In questo cortile vi sono finestre con tondi con teste di leone, aquile e drago (elementi dello stemma dei Borghese); con monti e stella (dei Chigi); con api (dei Barberini): alludono ai vari pontefici che fecero eseguire lavori nell'edificio.

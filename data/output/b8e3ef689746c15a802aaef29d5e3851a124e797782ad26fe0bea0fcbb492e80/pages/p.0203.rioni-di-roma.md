@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 203
 
 to che portava acqua alle terme e allo stagno di Agrippa. A poca distanza da questo arco se ne innalzava un secondo che serviva a sottolineare l'ingresso all'area porticata, con colonne in marmo giallo di Numidia, costruita attorno al tempio del divo Adriano di cui ammiriamo ancora oggi l'elegante colonnato laterale sinistro, inglobato nel Palazzo della Borsa, in piazza di Pietra.

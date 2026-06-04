@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITITERARIO 275
+PRIMO ITITERARIO 275
 
 Il disavanzo venne coperto da Luigi XV come compare sulle iscrizioni che avremo cura di riportare, relegando in un angolo il pur generosissimo Gueffier.
 

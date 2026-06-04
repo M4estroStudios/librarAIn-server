@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 929
 
 Il nucleo del nuovo rione per molti anni non subì modifiche sotto il profilo urbanistico; se si fanno salvi i lavori alla basilica di S. Pietro che si protrassero per decenni, e la continua manutenzione di Castel Sant'Angelo. Vennero inoltre costruite la chiesa della Traspontina, S. Anna dei Palafrenieri e abbellite le logge vaticane.

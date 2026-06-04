@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI, LA STORIA  
+LE ORIGINI, LA STORIA  
 387
 
 ![Immagine]

@@ -1,7 +1,6 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<|channel>thought
-<channel|>752
+752
 RIONE XI S. ANGELO
 
 vacante. Sommando i vari rami, diedero alla Chiesa almeno otto cardinali, e forse anche un papa, Innocenzo II, qualora si accettasse la loro derivazione dai Papareschi. Tutti questi rami, anche se a volte alquanto distanti sentivano il bisogno di non perdersi di vista, vivendo tutti il più possibile accanto. Tale esigenza finì col creare un edificio complesso quanto complesse sono le ramificazioni di questa famiglia. Il risultato fu di creare la cosiddetta «isola Mattei». Oltre al palazzetto esistente sulla piazza omonima, abbiamo quest'altro grande complesso edificio, circoscritto fra la via dei Funari, la via Caetani, via delle Botteghe Oscure e via Paganica. All'angolo fra la via dei Funari e via Caetani v'era la parte riservata ai Mattei di Giove; sul lato delle Botteghe Oscure quella dei Mattei, in seguito passata ai Caetani, e sulla via di Paganica, quella dei Mattei di Paganica. Cerchiamo di ricapitolare gli aspetti salienti di queste varie parti.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1165
 
 CINEMA VITTORIA TEATRO

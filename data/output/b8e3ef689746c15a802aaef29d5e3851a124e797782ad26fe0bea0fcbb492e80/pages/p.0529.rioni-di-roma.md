@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO | 529
+SECONDO ITINERARIO | 529
 
 Ai nn. 22-29A vi è il Palazzo dei Rita, passato ai Marescotti e ad altri. Il pianterreno è caratterizzato da arcate decorate da volute; il portone presenta ai lati due piccoli rosoni, e le finestre sono architravate o riquadrate. Della famiglia Rita viene ricordato Antonio, priore dei Caporini, che ottenne nel Settecento il patriziato romano per sé e per i suoi discendenti. Lo stemma si compone di un leone che regge nella zampa destra un compasso volto verso l'alto e che è attraversato da una banda.
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1070
+1070
 RIONE XVIII. CASTRO PRETORIO
 
 dai magazzini pontifici per le derrate, che arrivavano al limite della attuale via del Viminale; e dalla parte opposta dalla chiesa con annesso convento di S. Bernardo, sulla piazza omonima.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI. LA STORIA
+LE ORIGINI. LA STORIA
 337
 
 alle altre di Roma, tanto che sempre qui avevano sede le officine dei marmisti oltre allo sbarco dei marmi. Presso il porto dove venivano sbarcati i marmi destinati all'edilizia romana veniva sbarcato anche il vino. Era questo il porto vinario nei pressi della zona *ad ciconias*; in relazione ad un culto in cui le cicogne dovevano avere una parte mitologica. Da questa zona, il vino che era fiscale veniva portato nei magazzini del tempio del Sole; dove è oggi la chiesa di S. Silvestro, nella piazza omonima. Un'ultima tradizione della più antica è ricordata in questa zona che fa tornare alla memoria gli scontri tra monticiani e i trasteverini.

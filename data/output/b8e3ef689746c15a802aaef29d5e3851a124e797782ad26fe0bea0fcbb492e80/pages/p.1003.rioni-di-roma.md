@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 1003
 
 Saliamo per via Tasso; a destra; e, sempre a destra; al n: 145 è la sede del Museo storico della lotta di Liberazione di Roma, costituito nel 1957. Il settore a destra dell'edificio che in precedenza era sede dell'ufficio culturale dell'ambasciata Germanica venne adibito, nel 1944, a carcere per i detenuti politici; con il settore a sinistra adibito a caserma ed uffici. Qui, con ampia documentazione sono ricordati episodi avvenuti nel periodo compreso fra il 1943-44. Proseguiamo per via Tasso; oltrepassando via Francesco Berni, dove all'angolo vediamo un grazioso palazzetto con torre a destra e doppio portale ad ogiva sottolineato da nervature. Finestre anch'esse ad ogiva si aprono al piano rialzato; mentre sulla cornice aggettante è situato un balcone con ringhiera in ferro. Questo palazzetto, concluso da una merlatura in alto, è sede del convento delle carmelitane teresiane ed ospita una scuola elementare (una statua di «S. Teresa» è infatti posta sui portali d'ingresso).

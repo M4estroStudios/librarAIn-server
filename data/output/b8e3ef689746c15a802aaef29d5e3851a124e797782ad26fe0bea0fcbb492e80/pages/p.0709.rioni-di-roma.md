@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO                                                                    709
+TERZO ITINERARIO                                                                    709
 
 raccogliere l'acqua nei grandi recipienti, che venivano poi porta-
 ti nelle rustiche abitazioni.

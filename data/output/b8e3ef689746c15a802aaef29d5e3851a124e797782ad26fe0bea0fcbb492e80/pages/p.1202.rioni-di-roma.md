@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1202
+1202
 RIONE XXII. PRATI
 
 Stati campi di bocce oppure prendevano verso Porta Angelica e la valle dell'Inferno; mentre altri utilizzavano i Prati a ridosso di Castello; pareva corrispondente al palazzo di giustizia e Piazza Cavour dove, nei pressi di una vigna Gualdi, era un'osteria con cucina. Tre erano le osterie di Prati, almeno le più note; e venivano chiamate semplicemente: la Prima, la Seconda e la Terza.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 635
 
 Teatro di Marcello e per il recupero e l'isolamento dello stesso teatro non possiamo non ricordare la cappella di S. Maria del Sole, fondata da Gerolama de Lenzinis nel 1460, per venerarvi una miracolosa immagine mariana ripescata nel Tevere; quindi la chiesa di S. Andrea in Vincis, detta anche dei Funari o in Mentuccia. Si trovava quasi di rimetpetto all'odierna via Montanara e apparteneva alla Confraternita dei marmorari. Presentava una raccolta e graziosa facciata settecentesca con affresco al di sopra del portale. All'interno era ad unica navata con banchi dei confratelli appoggiati alle pareti. Da qui viene una tela raffigurante i <Ss. Quattro Coronati>, protettori di tutti i tagliatori di pietre e dei marmisti, conservata presso il museo di Roma a palazzo Braschi e che ora è attribuita ad un anonimo seguace del Caravaggio.

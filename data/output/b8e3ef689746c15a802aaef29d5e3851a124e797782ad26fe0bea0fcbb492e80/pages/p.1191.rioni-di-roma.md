@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 191
 
 Di provenienza eterogenea sono anche le due transenne del presbiterio. Usciamo quindi dalla chiesa e ci inoltriamo nella via di Porta S. Sebastiano, tratto urbano dopo la costruzione delle mura aureliane della via Appia, che esce dalla porta omonima.

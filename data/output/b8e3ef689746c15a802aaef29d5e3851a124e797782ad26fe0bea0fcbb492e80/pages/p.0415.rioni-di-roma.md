@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 415
+PRIMO ITINERARIO 415
 
 Il vicolo sfocia nella piazzetta dei Massimi (già della Posta Vecchia) che è un angolo segreto e un vero scrigno di tante memorie. Una colonna di cipollino, risulta degli scavi del 1838, è stata posta al centro per ricordarci che nei pressi era il portico dell' Odeon di Domiziano (vedi all'inizio la storia del rione e dei suoi antichi edifici); sulla destra notiamo il piccolo prospetto dell'abside di S. Pantaleo con campanile e icona.
 

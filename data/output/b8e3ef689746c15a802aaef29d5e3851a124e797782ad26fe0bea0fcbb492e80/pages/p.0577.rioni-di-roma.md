@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 577
 
 Al numero civico 18 si trova il Palazzo che secondo il Nolli e la sua celebre pianta fu degli Strozzi. La sua facciata poco vistosa è del tardo Seicento.

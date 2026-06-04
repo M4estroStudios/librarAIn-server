@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 423
 
 Il papa Pio VI aveva validi motivi per non far estinguere la sua famiglia; che sopravvisse fino al 1923; essa proveniva da Cesena, vantava illustri membri fra i Giambattista, vescovo di Sarsina nel Seicento; Marco Aurelio che da Teresa Bandi ebbe Giovan Angelo (il futuro papa Pio VI) e Giulia che il conte Girolamo Onesti, di nobile famiglia di Ravenna. Dei loro figli, Luigi ebbe il titolo di duca di Narni e fu creato grande di Spagna, oltre ad essere iscritto nel libro d'oro dei patrizi romani; e Romualdo fu eletto cardinale. Si ricorda anche il duca Pio, sposo della marchesa Anna Curti-Lepri, e un figlio Romualdo; menzionato dall' Amayden.

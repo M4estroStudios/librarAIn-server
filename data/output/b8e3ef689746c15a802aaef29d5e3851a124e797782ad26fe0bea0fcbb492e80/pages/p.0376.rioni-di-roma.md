@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>376
+376
 
 RIONE V. PONTI:
 Palazzo Sacchetti a via Giulia in un'incisione di G. Vasari

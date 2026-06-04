@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Indice dei luoghi
+Indice dei luoghi
 
 Acquario; 988, 989
 Argentari; 456, 788-790, 792

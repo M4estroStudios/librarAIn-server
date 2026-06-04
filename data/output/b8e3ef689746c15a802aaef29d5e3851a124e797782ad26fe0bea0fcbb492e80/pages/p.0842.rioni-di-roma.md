@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>842
+842
 RIONE XIII. TRASTEVERE
 
 Ramone la concessione delle terre percorse durante l'insolita caccia. La realtà è che gli Anguillara erano di origine normanna e perciò avevano il culto di S. Giorgio che uccise il drago. Quindi la famiglia mise nel suo stemma una o due serpentiformi anguille per significare la loro opera di purgazione della regione dai malandrini; e dal punto di vista igienico: l'anguilla; inoltre, è in riferimento al nome della famiglia e deriva dal lago Sabatino (presso Campagnano) <anticamente detto Angulario per un angolo sporco ne forma il promontorio che il volgo corruppe in Anguillara, possesso di un ramo dei normanni che dalla località prese il nome di Anguillara. Detta possessione occupava il posto della villa Angularia di Rutilia Pollav (Blasi).

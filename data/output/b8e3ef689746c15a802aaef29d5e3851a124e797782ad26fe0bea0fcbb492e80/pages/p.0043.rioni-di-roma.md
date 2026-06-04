@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 43
+PRIMO ITINERARIO 43
 
 In questa proprietà già da tempo si riunivano i cristiani per la celebrazione dell'Eucarestia. In esse, quindi, si trovava una *domus ecclesiae*, cioè una casa privata che all'occasione fungeva da luogo di culto. Queste abitazioni si trovavano dove ora è la Basilica Lateranense che quindi costituisce il segno della continuità storico-religiosa della zona a partire dalla *domus ecclesiae*: comunque sempre sotto la basilica sono stati identificati i resti di età romana; probabilmente severiani (193-211) destinati a caserma della guardia personale dell'Imperatore: gli *equites singulares*; che furono sciolti da Costantino che li sapeva fedeli a Massenzio e che destinò il luogo della caserma alla costruzione della originaria basilica Lateranense. Così la *domus ecclesiae*, sede del vescovo di Roma, e la basilica Lateranense si unirono per sempre in un rapporto di storica reciprocità.
 

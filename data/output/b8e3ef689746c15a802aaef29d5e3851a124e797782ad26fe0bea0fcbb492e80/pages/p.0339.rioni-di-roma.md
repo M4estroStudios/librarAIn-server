@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 339
 
 Prospicienti il fiume persero le loro belle quinte riccamente scenografiche di case che con finestre e balconi e bussolotti si affacciavano sull'acqua del fiume, interrotte da vie e viottoli che scendevano all'argine. Queste demolizioni portarono anche ad alcune interruzioni dei più antichi tessuti viarii come quelli della via Recta e della via Sistina a Ponte, che erano un tratto di percorso noto come "via papale" perché per quella transitava il pontefice; cavalcando una mula bianca; con la corte pontificia, cardinali, le guardie svizzere; una folla plaudente e salmodiante, per recarsi da S. Pietro a S. Giovanni in Laterano, dove sarebbe stato consacrato vescovo di Roma.

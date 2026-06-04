@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 
 Piazza S. Pietro in Vincoli nel suo aspetto tardo-ottocentesco, accantonato, ridimensionato e trasferito per la sua esecuzione a S. Pietro in Vincoli: così si compì quella che Leone X aveva definito «la tragedia della sepoltura».
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 759
 
 Accanto, all'angolo con la via Montanara, contraddistinto col numero 6, palazzotto recente; decorato con elementi recuperati dalla demolizione dell'edificio del primo Seicento in cui visse l'architetto Flaminio Ponzio (1559-1613), famoso per i lavori eseguiti per conto di papa Paolo V. Quest' edificio si trovava sulla via Alessandrina, distrutta in seguito alle demolizioni effettuate per l'isolamento del Campidoglio dalla fine degli anni Venti.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1199
 
 Lo scavo presentò una relazione a Papa Benedetto XIV. Labate penetrò in un lungo corridoio coperto a volta dove, in tre diversi punti, apparvero scale simili a quelle che negli anfiteatri e nei circhi conducevano dagli ambulacra di ingresso alle gradinate. Il De Revillas scavò allora dove suppose si dovesse trovare l'arena del Circo e rinvenne alcune rovine disposte lungo l'asse centrale di quello che a lui sembrava il circo di Adriano. Anche Giovanni Battista Nolli, nella sua pianta di Roma, raffigurò i resti di questo antico edificio, ma con la differenza dovuta al fatto che diversi furono i punti di riferimento presi dai due studiosi per tratteggiare la pianta; dopo il 1870, quando i Prati di Castello furono radicalmente interessati dai lavori di urbanizzazione e di edilizia residenziale intensiva; avvennero rispettivamente nel 1893, 1899, 1910 e nel 1924, scoperte archeologiche.

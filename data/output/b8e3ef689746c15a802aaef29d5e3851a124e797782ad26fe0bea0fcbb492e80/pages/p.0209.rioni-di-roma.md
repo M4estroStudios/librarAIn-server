@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 209
 
 Corso ed è ornato da maschere dalle diverse espressioni; venne innalzato nell'area che in precedenza era occupata dalle abitazioni dei del Bufalo, di cui resta tuttora, nel cortile, un portale della fine del Cinquecento, ancora con gli stemmi araldici della famiglia e che è stato qui riutilizzato.

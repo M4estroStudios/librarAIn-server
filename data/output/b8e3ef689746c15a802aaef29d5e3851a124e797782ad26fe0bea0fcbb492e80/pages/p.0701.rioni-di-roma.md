@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 701
 
 L'Arco di Settimio Severo in un'incisione tardo-ottocentesca

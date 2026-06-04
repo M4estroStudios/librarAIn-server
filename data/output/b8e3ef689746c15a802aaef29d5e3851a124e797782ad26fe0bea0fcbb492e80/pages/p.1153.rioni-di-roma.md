@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1153
 
 Piacentini nel 1914, si chiamava Aventino e fu inaugurato il 21 aprile 1919. Il ponte a tre arcate a sesto ribassato è in laterizio; mentre con il travertino sono sottolineate le ghiere delle arcate e le spallette.

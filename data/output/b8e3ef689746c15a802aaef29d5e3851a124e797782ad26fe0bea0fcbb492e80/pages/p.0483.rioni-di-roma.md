@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 483
 
 Barberini fino al 1734, allorché al principe Francesco subentrano i carmelitani scalzi di S. Teresa della Scala. Questi trasformarono l'atrio sotto l'Arco del Monte in una cappella dedicata ai Ss. Teresa e Giovanni della Croce. Nel 1759, dai carmelitani, il tutto passò al Monte. Per collegare questo palazzo con gli altri già di proprietà del Monte, venne costruito nel 1768 l'arco che caratterizza questa via.

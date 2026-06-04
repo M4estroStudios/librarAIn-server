@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1017
+PRIMO ITINERARIO 1017
 
 Le necessarie espropriazioni: è chiaro che dove erano state tracciate delle vie (alcune già esistenti entro la villa Ludovisi) si imponeva una sollecita costruzione di edifici che le fiancheggiasero, per non lasciare la desolante visione di zone inedificate nell'interno delle mura; perciò gli spazi liberi furono ben presto occupati dall'ingordigia delle ditte costruttrici. I confini in poco di anni furono così stabiliti: via Vittorio Veneto - via S. Isidoro - via degli Artisti - via Francesco Crispi - via di Porta Pinciana - via Pinciana - mura urbane - via Piave - via Calabria - via Boncompagni - via Lucullo - via di S. Basilio - via Vittorio Veneto. La superficie è di mq 325.150 e la popolazione residente ammonta a 27.619 unità. Lo stemma del rione Ludovisi è rosso a tre bande d'oro ritirate nel capo e un dragone d'oro reciso in punta.
 

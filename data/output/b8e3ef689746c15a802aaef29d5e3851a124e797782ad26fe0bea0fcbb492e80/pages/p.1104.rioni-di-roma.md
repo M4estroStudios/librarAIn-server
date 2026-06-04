@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1104
+1104
 RIONE XVIII. CASTRO PRETORIO
 
 Pubblico posteriore agli anni Cinquanta con la grande sede dei Consorzi agrari: la balconata che corre su tutta la facciata è decorata dal lungo fregio bronzeo di Pericle Fazzini, dedicato al «Lavoro dei campi». Ma di fronte, dopo via Goito da cui siamo venuti, resiste sia pure mal ridotta ed adibita a parcheggio: una villa il cui stile, per quanto è dato vedere, tradisce tempi migliori. Un tempo il grande bar all'angolo verso via Solferino, dedicato ad una nota cascata al confine fra USA e Canada, era uno dei punti di riferimento degli immigrati di colore. Allora non erano molli, ora si sono ampiamente moltiplicati risolvendo problemi di basso lavoro per privati, ma creando problemi esplosivi per la comunità. La parte del rione Castro Pretorio, un secolo fa destinata a perpetuare presso posteri i fasti delle lotte per l'Indipendenza, ora ha assunto uno spirito ed un significato decisamente diverso.

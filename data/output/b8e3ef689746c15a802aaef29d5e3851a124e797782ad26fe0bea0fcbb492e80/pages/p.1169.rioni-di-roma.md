@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1169
 
 sincagliò la nave che si era arenata; episodio anche raffigurato in un rilievo su un cippo ora conservato ai Musei Capitolini [episodio del serpente sacro ad Asclepio, che scese dalla nave che lo portava da Epidauro quando questa si trovava davanti all'isola].

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 683
 
 che esce, quindi dei passaggi, degli inizi e degli ingressi e capaci di vedere tanto nel passato quanto nel futuro.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 1233
 
 Parioli, 264, 448, 1043

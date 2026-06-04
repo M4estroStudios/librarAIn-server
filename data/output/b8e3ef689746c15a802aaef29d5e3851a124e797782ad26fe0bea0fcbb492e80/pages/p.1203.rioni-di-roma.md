@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1203
 
 della procura reale. Il principe Odescalchi, allora, sospese i lavo-

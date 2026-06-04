@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 161
 
 periore di S. Nicola de Portiis (visibile sulla destra) e in un sotterraneo sotto ad un cortiletto attiguo; i resti di un sepolcro romano, dei Semproni, del secolo aC. Sempre su via della Dataria si affaccia il Palazzo Testa Piccolomini (n. 22), costruito intorno al 1719 da Filippo Barigioni per ordine di Giovanni Ferrante Testa Piccolomini, sui resti di una casa del Seicento.

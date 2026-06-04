@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 769
 
 S. Gregoretto era detta anche S. Gregorio a Ponte Quattro Capi e così viene ricordata fin dal 1145. La chiesa, che presenta sulla facciata un'iscrizione bilingue, latino ed ebraico; che ripete il famoso passo di Isaia dove il popolo ebraico è accusato di incredulità di fronte all'Incarnazione, divenne famosa perché doveva ricordare agli ebrei; che vivevano nel prospiciente ghetto; il rifiuto da loro pronunciato del Cristo e, sempre in questa chiesa, anche se all'esterno, gli ebrei romani erano costretti ad ascoltare quelle prediche che avrebbero dovuto convertirli.

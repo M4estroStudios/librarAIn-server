@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 671
 
 Bre di Pietro da Cortona, quindi la cappella; disegnata dallo stesso in onore della Santa. Accanto a questa è un'altra cappella con un gruppo in terracotta con *Ss. Concordio; Epifanio Compagno*, opera dell' Algardi. Si risale al piano superiore della chiesa incontrando la lastra funeraria di Girolamo Rainaldi, il monumento funebre di Filippo Albacini e quello di Luigi Canina. Insomma, in armonia con l'Accademia di S. Luca, non mancano in questa chiesa le memorie degli artisti.

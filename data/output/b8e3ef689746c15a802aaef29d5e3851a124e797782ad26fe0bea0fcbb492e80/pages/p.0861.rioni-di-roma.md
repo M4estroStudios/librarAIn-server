@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 861
 
 quistare nobili feudi; il loro capostipite fu Pontianus Pelliparius e lo stemma della famiglia era costituito da un grifone e da una ruota.

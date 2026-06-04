@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1112
+1112
 RIONE XIX. CELIO
 
 La costruzione di un nuovo centro urbano nell'area in questione.

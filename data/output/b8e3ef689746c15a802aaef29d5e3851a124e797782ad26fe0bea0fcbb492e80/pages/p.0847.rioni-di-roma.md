@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 847
 
 Ci si presenta dopo l'ultimo restauro effettuato da Pio XI, in quanto fu riconsegnato alla S. Sede;

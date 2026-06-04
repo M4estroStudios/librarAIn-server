@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>510
+510
 
 RIONE VIII. S. EUSTACHIO
 

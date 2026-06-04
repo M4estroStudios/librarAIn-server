@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 681
 
 Quindi era un *templum*; cioè uno spazio diviso, traguardando sulla terra quanto veniva sezionato nel cielo. Qui l'araldo pubblico annunciava lo scandire del mezzogiorno e del tramonto.

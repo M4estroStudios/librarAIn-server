@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1215
 
 Sulla destra sorge la chiesa valdese costruita nel 1914, che presenta un'ampia facciata inscritta in due alti campanili le cui cupolette sono ispirate allo stile di quella del Sacro Cuore di Parigi. Questa chiesa presenta nella lunetta sopra il portale centrale la raffigurazione di un libro su cui è un candelabro con candela accesa che illumina una selva, come ricorda la scritta: «lux lucet in tenebris». La chiesa fu progettata in uno stile ispirato al romanico tedesco dall'architetto Bonci e fu eretta dall'Rudelli. Le vetrate sono di Picchiaroni su disegno di Paschetto.

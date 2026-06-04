@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO                                                                    1209
+UNICO ITINERARIO                                                                    1209
 
 Vimentata da un corpo mediano e due ali laterali, stanno su più livelli, statue colossali di giureconsulti scolpite da E. Maccagnani, E. Quattrini, M. Benini, M. Tripisciano; A. Dazzi, L. De Luca, E. Bianchi, A. Rivalta, S. Sbricioli e Gallori. Esse raffigurano, da destra verso sinistra: «Gaius», «Modestus» (seduti). Ai lati dell'ingresso (in piedi) sono le statue di «Cicero», «Papinianus», «De Luca» e «Vico», mentre a sinistra (seduti) sono «Licinio Crasso» e «Salvio Giuliano». Splendida impostazione animata da forte gestualità, che ha il suo riferimento nei valori del classicismo; soprattutto visibile nelle statue di Crasso e di Cicerone. Sul retro sono poste, ai lati dello scalone di accesso, due grandi fontane a vasca inserite in un prospetto architettonico neo-barocco, ornato da un frontone e contenente una vasca superiore, con conchiglia. Tra le colonne e le teste elmate di «Minerva» è collocata una serie di medaglioni a rilievo con profili di altri giureconsulti fra cui: Beccaria; Romagnosi, D'Andrea; Gentile, De Luca, Alciato, Taldo; Bortolo; Accursio, Graziano.
 

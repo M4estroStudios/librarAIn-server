@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>874
+874
 
 RIONE XIII. TRASTEVERE
 Quel che resta da vedere delle testimonianze dell'antica Roma

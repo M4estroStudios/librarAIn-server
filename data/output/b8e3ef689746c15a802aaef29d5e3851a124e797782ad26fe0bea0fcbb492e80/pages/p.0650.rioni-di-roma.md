@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>650 RIONE X. CAMPITELLI
+650 RIONE X. CAMPITELLI
 
 nese, a ridisegnare e riprogettare la piazza per restituirle tutta l'importanza politica dovuta e conferirle il ruolo di sede del potere laico-amministrativo; distinto da quello maggiore, religioso dei papi in S. Pietro, anche se la presenza della possente torre — oggi perduta — ricordava ai conservatori che piena doveva essere l'obbedienza al pontefice.
 

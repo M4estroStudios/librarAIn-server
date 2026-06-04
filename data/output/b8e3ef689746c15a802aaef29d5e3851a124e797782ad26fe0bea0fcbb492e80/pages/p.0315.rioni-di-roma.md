@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Villa Malta conquistò l'animo germanico in maniera quasi maniacale. Oltre che Goethe, che fra l'altro vi avrebbe piantato delle phenix dattilifere, la villa divenne infatti sede prediletta del re Luigi di Baviera, della duchessa Amalia di Braunschweig, di Giovanni Goffredo Herder, della poetessa Federica Brun, che vi scrisse il suo poema «Roemischen Leben» e tanti altri. Il segreto della villa Malta, per tanti potenti, era forse racchiuso in un distico del romantico re Luigi di Baviera: "Qui il re ritrova l'uomo che aveva perduto".
+Villa Malta conquistò l'animo germanico in maniera quasi maniacale. Oltre che Goethe, che fra l'altro vi avrebbe piantato delle phenix dattilifere, la villa divenne infatti sede prediletta del re Luigi di Baviera, della duchessa Amalia di Braunschweig, di Giovanni Goffredo Herder, della poetessa Federica Brun, che vi scrisse il suo poema «Roemischen Leben» e tanti altri. Il segreto della villa Malta, per tanti potenti, era forse racchiuso in un distico del romantico re Luigi di Baviera: "Qui il re ritrova l'uomo che aveva perduto".
 
 Abitata dalla famiglia Altemps attorno al 1873, vi vennero piantate quelle rose che dettero alla nostra villa il suo terzo nome: Villa delle Rose. Dopo quest'ultima guerra gesuiti sono riusciti laddove mancarono re, principi e uomini di cultura; divenire proprietari della villa: Qui essi collocarono la sede della nota rivista «Civiltà Cattolica».
 

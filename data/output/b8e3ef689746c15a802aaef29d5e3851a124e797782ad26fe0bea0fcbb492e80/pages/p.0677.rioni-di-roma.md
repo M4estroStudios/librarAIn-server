@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 677
 
 Grandi dischi e croci di porfido; serpentino verde ed altri marmi policromi e da grandi bacini in maiolica.

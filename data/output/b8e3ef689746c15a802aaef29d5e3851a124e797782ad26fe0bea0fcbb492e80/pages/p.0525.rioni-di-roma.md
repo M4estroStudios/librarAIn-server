@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 525
+PRIMO ITINERARIO 525
 
 Veranza autorità apostolica eretta a tenore dell'Em.mo Vicario emanato il dì XVII decembre MDCCXLIX.
 

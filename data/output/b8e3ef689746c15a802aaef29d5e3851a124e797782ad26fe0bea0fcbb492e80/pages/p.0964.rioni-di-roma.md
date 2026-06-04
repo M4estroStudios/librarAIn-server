@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>964
+964
 RIONE XIV. BORGO
 
 maggior sollecitudine e zelo il culto la devozione del Santissi-

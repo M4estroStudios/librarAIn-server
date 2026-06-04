@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 897
 
 La piazza de' Renzi ricorda la vecchia famiglia trasteverina che qui ebbe proprietà. Qui si lasciavano le «bussolette» (scatole chiuse e con fessura) per introdurvi le offerte per le sacre rappresentazioni allestite nell'area del cimitero di S. Maria in Trastevere.

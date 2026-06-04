@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1164
+1164
 RIONE XX. TESTACCIO
 
 Invece, al n. 43 la sede del Centro formazione professionale «Simonetta Tosi». Riprendiamo la via Zabaglia e in corrispondenza al n. 12 è posta la targa che indica la sede della sezione Testaccio, S. Saba e Aventino dell'Associazione nazionale combattenti e reduci. Vediamo quindi un compatto edificio annesso alla chiesa, dal rivestimento in laterizio e con ornamenti sempre in laterizio. Su di esso è un'edicola mariana con immagine, in mosaico, della «Madonna», entro una cornice marmorea. L'edicola è all'angolo dell'edificio dell'Istituto Figlie della Divina Provvidenza; la targa del circolo ACLI Lino Lana-Testaccio e subito dopo è la cancellata della chiesa di S. Maria Liberatrice, che si affaccia sulla piazza che le ha dato il nome: infatti prima era denominata Piazza dell'Industria.

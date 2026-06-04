@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 723
 
 Colo largo intitolato a Guglielmo Gatti, indimenticabile figura di archeologo; cui si deva la localizzazione del Circo Flaminio.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 375
 
 Vittorio portava via dei Banchi Vecchi; si possono trovare sulla sinistra i ricordi del vicolo dell'Oro.

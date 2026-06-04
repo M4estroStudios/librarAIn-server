@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 653
 
 Re sulla via Lata, oggi via del Corso: si tratta del cosiddetto «Arco di Portogallo». Nella Sala degli Orazi e Curiazi sono visibili la splendida statua bronzea di «Innocenzo X Pamphilj» dell'Algardi e quella più classica di Urbano VIII Barberini, opera del Bernini. Quest'ultima, a causa dell'opposizione popolare, fu trasferita in Campidoglio nella notte del 24 giugno 1640, alla luce delle torce, e fu introdotta nel palazzo dal finestrone sopra il portico. Nella Sala dei Trionfi c'è da vedere il ritratto detto di «Bruto Maggiore» di forte ed incisiva espressività; la statua effebica di un camillus in bronzo e tardo ellenistica del cosiddetto «Spinario». Questa statua, quando era in Laterano, era posta su una colonna che veniva indicata come la colonna della vergogna; sia perché dal basso si notava chiaramente il sesso del giovane, sia perché alla colonna venivano posti alla gogna i rei di delitti minori. Nella stessa sala è una vera rarità storico-archeologica: un «cratere di bronzo» che sull'orlo reca l'iscrizione postavi da Mitridate VI Eupatore, re del Ponto (120-63 a.C.). Si tratta pertanto di una preda di guerra romana portata in città, nel trionfo sul re orientale: o da Silla o da Pompeo.

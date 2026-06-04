@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>786
+786
 RIONE XIL RIPA
 
 con un'iconografia che ricorda quella di S. Martino; che sacrifica la metà della sua cappa. Usciti dalla chiesa andiamo per via di S. Giovanni Decollato e prendiamo le scale che conducono via Bucimazza dal nome di un'antica famiglia romana che nel medioevo aveva la sua dimora.

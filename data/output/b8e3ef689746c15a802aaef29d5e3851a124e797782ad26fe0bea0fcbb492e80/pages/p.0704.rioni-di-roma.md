@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>704
+704
 RIONE X. CAMPITELLI
 
 Così la storia edilizia del Foro; per quanto attiene alla vita politica e sociale della Roma pagana volge al termine. Costantino porta con sé Costantinopoli, nuova capitale e seconda Roma, il Palladio di Enea e gli altri oggetti sacri alla memoria delle origini della città: i suoi successori guardano a Roma come alla madre ideale dell'impero rinnovato.

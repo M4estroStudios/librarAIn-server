@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AL TEMPI MODERNI
+DALLE ORIGINI AL TEMPI MODERNI
 269
 
 Progetti e rilevanti realizzazioni, tracciando quella che dal suo nome Felice Peretti, verrà denominata la Via Felice.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>680
+680
 RIONE X. CAMPITELLI
 
 rum; il sacello dei Lari; quello di Aius Locutius; quello di Anghe-

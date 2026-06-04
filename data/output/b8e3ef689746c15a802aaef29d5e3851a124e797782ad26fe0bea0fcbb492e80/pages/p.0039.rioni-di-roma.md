@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 39
 
 Lo stesso Giulio Cesare era nato nella Subura e forse anche per questo si schierò con i democratici e la plebe. Così Giuseppe Gioachino Belli, altro grande romano, descrive il rione Monti: «Ggià cch'er Papa ha vvorsuto indeggnamen-te fà vvescovo er calonico Tizzani / senza senticce un ac-cidente li sù poveri fijji montisciani, / bbisiggnerà abbozzà, na-turamente, e ppe ffacce vedè bboni cristiani / sbiggnà vvia tra le scianche de la ggente / co 'orecchie alingiù ccomme, li cani. Questa perantro c'è arrivata all' ossa; e ccom'è vvero er foco de l'inferno / er Zanto padre sce ]ha ffatta grossa! E ppoteranno dì ssempr' ar Governo li Monti, che jj'è ttocca una sbiossa, e li Ternani, c'hanno vinto un ternov».

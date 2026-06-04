@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 401
 
 avrebbe perseguitati: Costoro fuggirono a Venezia, ma furono egualmente raggiunti e morirono, uno avvelenato o, secondo uno storico, per un'infezione alla gamba scampando all'autorità; l'altra uccisa a Padova dai sicari di Ludovico Orsini, che a sua volta venne giustiziato dalla Repubblica veneta.

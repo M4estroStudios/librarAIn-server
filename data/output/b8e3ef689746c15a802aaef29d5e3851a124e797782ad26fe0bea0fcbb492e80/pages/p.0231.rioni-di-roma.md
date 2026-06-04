@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 231
 
 Palazzo è un bel cortile con porticato ornato da un fregio con metope, nelle quali sono dei trofei d'armi e sormontato da un secondo, finto; con finestre. Una fontana, con acqua che defluisce dalla bocca di un mascherone dal volto incorniciato di quercia e sistemato entro una conchiglia, orna il cortile. L'ingresso di via del Corso invece, attraverso un atrio separato da pilastri, conduce allo scalone d'onore, opera del Della Greca e ornato di sculture antiche. Pregevoli opere della scuola del Maratta, dell' Allegrini, del Baciccia, accanto a numerosissime altre, ornano le sale del palazzo ricco anche di pregevoli stucchi, di marmi, di raffinate decorazioni metalliche; oltre ai due arazzi della serie di Alessandro Magno.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>872
+872
 RIONE XIII TRASTEVERE
 
 La fede di S. Cecilia portò al martirio marito e cognato.

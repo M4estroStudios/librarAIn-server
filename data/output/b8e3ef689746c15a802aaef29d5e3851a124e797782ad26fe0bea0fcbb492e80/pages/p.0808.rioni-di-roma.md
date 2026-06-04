@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>808
+808
 RIONE XII. RIPA
 
 delle raffigurazioni dei della gerarchia iniziatica mitriaca:

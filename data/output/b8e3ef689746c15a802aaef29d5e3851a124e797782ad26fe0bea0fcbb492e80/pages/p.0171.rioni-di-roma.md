@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 171
 
 Alcuni lavori eseguiti nell'Ottocento hanno purtroppo snaturato completamente l'originario aspetto dell'edificio: sono stati eliminati un grazioso portico angolare e la scalinata a doppia rampa posta al centro della facciata, dove ora si vede un'iscrizione che ricorda il completamento della costruzione, avvenuta nel 1730 sotto il pontificato di Clemente XII (lo stemma inserito nel prospetto è quello dei Corsini, la famiglia a cui apparteneva il pontefice). Sopra il portale d'accesso è collocato un secondo stemma: quello di Pio IX, in memoria della sistemazione ottocentesca dell'immobile. Negli ultimi anni le scuderie sono state restaurate a cura di Gae Aulenti e i loro ambienti sono stati destinati ad ospitare mostre ed esposizioni.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 219
 
 Costruire nel 1681 dal patriarca di Costantinopoli monsignor Stefano Ugolini, il quale volle: sempre di marmo, anche il rivestimento delle pareti dell'abside.

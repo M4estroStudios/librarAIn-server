@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>382
+382
 RIONE V. PONTE
 
 Costituita a Roma nel 1569 e sancita da Gregorio XIII circa dieci anni dopo: agli inizi del Settecento la chiesa ebbe un restauro e fu in occasione che venne eretta la facciata su disegno del Fontana.

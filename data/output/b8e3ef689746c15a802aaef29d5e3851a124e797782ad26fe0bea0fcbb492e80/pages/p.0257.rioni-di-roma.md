@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 257
+TERZO ITINERARIO 257
 
 La facciata borrominiana del palazzo di Propaganda Fide (G. Vasi)
 

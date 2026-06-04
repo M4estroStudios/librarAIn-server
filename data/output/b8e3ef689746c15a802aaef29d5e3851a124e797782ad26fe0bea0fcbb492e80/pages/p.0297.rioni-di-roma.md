@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 297
 
 spontanea; infatti si trattava di liberare la zona da una autentica folla di streghe e demoni che rendevano durissima la vita a quanti dovevano passare la porta Flaminia o di S. Valentino. «Tanta retta di spiriti malvagi era appunto dovuta alla tomba di Nerone posta alle falde degli horti appartenenti alla sua famiglia... evidentemente l'autorità di S. Valentino non era sufficiente, e si era resa indispensabile l'intervento stesso della Madonna».

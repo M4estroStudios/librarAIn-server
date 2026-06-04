@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 331
 
 **Il collegio Clementino**

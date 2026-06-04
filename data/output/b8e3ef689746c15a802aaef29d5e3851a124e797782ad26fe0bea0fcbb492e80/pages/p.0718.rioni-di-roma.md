@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>718
+718
 RIONE X. CAMPITELLI
 
 seguì le ricerche anche quando lo Stato italiano con il 1870 divenne il nuovo proprietario:

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 955
 
 Nel palazzo abitò anche il cardinal Francesco Alidosi; uomo tanto bello quanto torbido e incapace, a quanto è dato sapere attraverso le cronache e le testimonianze di costume. Costui fu il favorito; sembra a tutti gli effetti e necessità; di papa Giulio Della Rovere. Codesto cardinale, codardo oltreché chiacchierato; abbandonò vigliaccamente la fortezza di Imola, allora nello Stato della Chiesa, conquistata da poco dal papa alla testa del suo esercito in lotta contro gli Estensi di Ferrara. A seguito di questo suo comportamento venne trovato assassinato nelle vie di Ravenna nell'inverno del 1511. L'assassino sembra sia stato un Della Rovere, Francesco Maria; nipote di Giulio I, il grande protettore del meschino prelato. L'uccisione avvenne «coram populo», com'era usanza dei tempi quando la ragion di Stato e quella di famiglia si spingevano ben oltre le leggi anche naturali; e il giustificatorio d'ogni addebito pubblico e privato fu: «muori traditore». Recentemente il palazzo ha ospitato i penitenzieri, quei religiosi confessori della basilica, ai quali sono ancora oggi demandate piene facoltà assolutorie; che gestiscono attraverso l'uso d'una bacchetta lunga affusolata che al momento della remissione dei peccati viene manovrata dall'interno del confessionale sulle spalle del riappacificatosi con Cristo. Questo deve il suo nome attuale.

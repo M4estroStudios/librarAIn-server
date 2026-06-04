@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>578
+578
 RIONE IX. PIGNA
 
 qualche precisazione da fare (come vedremo una volta giunti ai piedi di quest'altro vetusto edificio; a differenza delle terme rimasto pressocché intatto nella sua struttura di base).

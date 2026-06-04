@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1130
+1130
 RIONE XIX. CELIO
 
 Apostoli di Cristo: sarebbero stati dei notabili dell'impero; convertitisi e martirizzati dall'imperatore Giuliano nel 361 d.C. Abbiamo le prime notizie catastali della chiesa da Leone nel 440; viene quindi menzionata come *Titulus Pammachii* e successivamente, alla fine del 500 d.C., appare la denominazione odierna. La chiesa originaria subì parecchi danni con il sacco di Roma; quindi subì svariate trasformazioni interne ed esterne. I lavori della metà del Novecento, voluti e finanziati dal cardinale Spellman, arcivescovo di New York, ripristinarono la facciata, il portico e il campanile paleocristiano. Sulla facciata è notevole la polifora a cinque luci e sui fianchi sono visibili le ravvicinate finestre paleocristiane. Il portale cosmatesco presenta due leoni del XII secolo, simbolo della Chiesa militante; esistono tracce di affreschi dello stesso secolo.

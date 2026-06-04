@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 12/7
 
 no romano ucciso nel 1354. Sulla sinistra si apre uno dei più antichi ristoranti della zona «Zì Gaetano», che occupa ampi locali del seminterrato ornati da caratteristici affreschi di ispirazione popolare: qui la signora sarà lieta di mostrare il libro con la firma dei clienti più noti e affezionati e in queste troveremo di un habitué, il grande Trilussa; che vi ha lasciato uno dei suoi versi, di Anna Magnani, Aldo Fabrizi e Josephine Baker. Vicino al ristorante esisteva ancora pochi anni fa il più antico negozio di cappelli di Prati di Enrico Chiapparicci, più conosciuto nel rione come «er muto» perché di poche parole. Vicino si apriva il bar Universal, ritrovo dei bulli della zona che negli anni Trenta andavano giocare a biliardo; dove oggi è la fabbrica di confetti Loreti (n. 242).

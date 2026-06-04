@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione IX. Pigna
+# Rione IX. Pigna
 di Carlo Villa
 *Dalle origini ai giorni odierni*
 

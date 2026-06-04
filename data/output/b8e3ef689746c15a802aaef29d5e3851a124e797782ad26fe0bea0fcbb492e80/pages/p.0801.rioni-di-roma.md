@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 801
 
 L'Aventino visto dal Campidoglio in un'incisione ottocentesca di B. Pinelli.

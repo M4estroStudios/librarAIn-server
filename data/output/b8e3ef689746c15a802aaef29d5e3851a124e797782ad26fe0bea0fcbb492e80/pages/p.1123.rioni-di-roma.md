@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1123
+PRIMO ITINERARIO 1123
 
 vivo di Foligno; che la mantennero fino al Quattrocento. Quindi con Martino divenne dimora episcopale; nel 1521 ai camaldolesi e nel 1560 alle suore agostiniane, che ancora ne mantengono la cura.
 

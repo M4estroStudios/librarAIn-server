@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO 921
+SESTO ITINERARIO 921
 
 sua «Guida rionale di Trastevere», compiendo lunghe ricerche e facendo anche lo spoglio degli Stati delle Anime della parrocchia di S. Spirito in Sassia. Il Palazzo Giori nel cornicione presenta gli elementi dello stemma della famiglia: i tre monti, il lauro, le api; In origine fu proprietà del cardinale Angelo Giori vissuto nel Seicento; il quale incaricò della costruzione l'architetto Camillo Arcucci.
 

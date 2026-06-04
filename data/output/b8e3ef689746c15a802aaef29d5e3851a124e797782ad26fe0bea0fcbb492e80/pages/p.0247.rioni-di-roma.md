@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 247
 
 5. S. Silvestro in Capite come appariva nel Settecento (incisione di G. Vasi).

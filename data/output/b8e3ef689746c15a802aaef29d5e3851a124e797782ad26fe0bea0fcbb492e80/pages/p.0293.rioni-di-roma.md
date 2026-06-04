@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 293
 
 «Pietà» ora a Milano detta appunto «Pietà Rondanini». Interessante altresì la targa che segna il livello che il Tevere raggiunse in questo punto nell'inondazione del 28 dicembre 1870. Il ramo romano dei Rondanini o Rondinini, originari di Faenza; ebbe, secondo l'Amayden, la cittadinanza capitolina il 13 marzo del 1572. Paolo Emilio Rondanini venne creato cardinale da Urbano VIII nel 1643 e fu vescovo d'Assisi.

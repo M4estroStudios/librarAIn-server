@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>664
+664
 RIONE X. CAMPITELLI
 
 De sotto un baldacchino, dipinta da Nicola Berrettoni subito dopo la terribile pestilenza del 1656.

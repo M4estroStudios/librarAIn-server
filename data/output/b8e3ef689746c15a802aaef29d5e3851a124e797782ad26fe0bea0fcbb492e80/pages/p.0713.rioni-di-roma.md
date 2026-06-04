@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 713
 
 Scavi e restauri sono stati condotti anche recentemente, ma l'intero complesso, per i diversi piani su cui è disposto e con la sua articolata composizione, non è stato ancora studiato e pubblicato in modo totale ed esauriente.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>614
+614
 RIONE IX. PIGNA
 
 rifatto nel 1523, mentre spese dell'ambasciatore veneto Nicolò Sagreto vengono poste in opera nuove vetrate; decorata più di una parte del tempio a stucchi e nelle varie cappelle con tele dell'epoca.

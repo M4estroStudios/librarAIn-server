@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 675
 
 13 e una larghezza di 18. Possediamo circa 1/10 delle lastre depositato nelle soffitte di palazzo Braschi.

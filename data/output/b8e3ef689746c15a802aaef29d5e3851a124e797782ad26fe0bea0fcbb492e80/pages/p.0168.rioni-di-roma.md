@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>168
+168
 RIONE II. TREVI
 
 Luca della Robbia per la pavimentazione delle logge vaticane.

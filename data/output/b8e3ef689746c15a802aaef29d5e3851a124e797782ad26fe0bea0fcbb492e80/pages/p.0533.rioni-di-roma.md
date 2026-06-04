@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SEC(NIJU ITINERARIO
+SEC(NIJU ITINERARIO
 533
 
 to; nel Cinquecento Francesco fu conservatore di Roma, Giam-

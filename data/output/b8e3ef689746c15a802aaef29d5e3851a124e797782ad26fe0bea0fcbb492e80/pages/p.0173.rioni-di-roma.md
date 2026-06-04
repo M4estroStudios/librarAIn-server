@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 173
 
 # Piazza del Quirinale con l'omonimo palazzo e il Palazzo della Consulta in un'incisione di G. Vasi.

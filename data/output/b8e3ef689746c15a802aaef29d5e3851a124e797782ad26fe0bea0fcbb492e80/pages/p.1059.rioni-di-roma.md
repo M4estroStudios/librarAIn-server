@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1059
 
 Edificio che ospita il liceo scientifico intitolato ad Augusto Righi e al n. 26 un edificio che ha davanti un giardino recintato da una moderna cancellata sostenuta da sottili colonnine con capitelli in stile ionico; anch'essi in ferro. L'edificio presenta la facciata sottolineata da paraste e colonne solo dove si apre un balcone.

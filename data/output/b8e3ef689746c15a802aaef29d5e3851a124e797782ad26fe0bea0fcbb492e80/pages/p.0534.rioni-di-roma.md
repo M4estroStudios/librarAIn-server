@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>534
+534
 RIONE VIII S. EUSTACHIO
 
 Loro membri Diego, conservatore di Roma nel 1743 e perfino la B. Chiara a cui si deve la fondazione nel 1641 dell'Ordine delle carmelitane calzate.

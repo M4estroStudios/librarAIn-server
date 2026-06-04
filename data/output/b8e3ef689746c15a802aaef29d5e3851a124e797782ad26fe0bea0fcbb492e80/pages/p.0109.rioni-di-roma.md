@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 109
 
 dei Summi Viri, che ornavano le esedre del foro stesso e alcuni frammenti delle sculture delle cariatidi e degli scudi con Giove Ammone e ancora di statue bronzee, tra cui un piede dorato e uno splendido capitello corinzio ornato da Pegasi (i cavalli alati del mito di Bellerofonte) e un plastico ricostruttivo del foro di Augusto: Vi sono un clipeo con volti di Dioniso e Arianna dal foro di Nerva e lastre provenienti dalle chiese di S. Nicola, S. Urbano e S. Basilio (d'età medievale).

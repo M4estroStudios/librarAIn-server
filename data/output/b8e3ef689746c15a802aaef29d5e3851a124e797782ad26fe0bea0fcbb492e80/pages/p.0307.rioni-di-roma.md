@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 307
+TERZO ITINERARIO 307
 
 fratelli Alinari che operarono qui, fino al momento in cui si trasferirono in via d'Alibert, con sede centrale a Firenze.
 Artisti, significava ritrovo; osteria, ed in effetti al n. 165 c'era l'Osteria del Babuino; al n. 175 c'è ancora la centenaria latteria Taddei; laddove dicono si potevano sfamare gli artisti in bolletta, ovviamente a credito. Al n. 120 c'è il Baretto; e nella sua sala interna, fra una mostra di pittura e l'altra, andarono a tessere le trame d'un noto scandalo dell'Italia doggi, quello scatenato da Anna Maria Moneta Caglio, nell' «affaire» Montesi.

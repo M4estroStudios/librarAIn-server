@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 153
 
 Quasi attaccata a S. Maria di Loreto si trova un'altra chiesa dalla struttura simile (tanto che vengono chiamate «le chiese gemelle»). Si tratta del SS. Nome di Maria, costruita tra il 1736 ed il 38 in sostituzione dell'antica S. Bernardo della Compagnia; edificata nel 1418 da un patrizio romano nel giardino della sua abitazione: Nel piccolo tempietto si era radunata appunto la compagnia S. Bernardo, che due secoli dopo era praticamente estinta. La sostituì quella legata al SS. Nome di Maria, che si era formata nel 1683 a seguito della vittoria dell'esercito cristiano contro i Turchi.

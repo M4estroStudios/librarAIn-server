@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 843
 
 # S. Maria in Trastevere nel suo aspetto secentesco (incisione di G.B. Falda).

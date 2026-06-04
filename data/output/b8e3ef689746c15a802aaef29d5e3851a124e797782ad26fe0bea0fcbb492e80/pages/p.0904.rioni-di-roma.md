@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>904
+904
 RIONE XIII TRASTEVERE
 
 Si mescolano con rifacimenti del secolo scorso, menomando l'armonia dell'insieme. Tuttavia segnaliamo il pavimento settecentesco, gli altari, la cantoria ed alcune pitture definite dai critici <indovinati esempi di arte minore del Settecento>.

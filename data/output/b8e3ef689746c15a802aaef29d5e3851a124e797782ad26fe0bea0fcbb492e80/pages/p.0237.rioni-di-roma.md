@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 237
 
 nal Braschi che lo arricchì di pregevoli opere d'arte; dal nipote di questi e dallo scrittore Vincenzo Monti che in questo palazzo scrisse lode «Al Signor di Montgolfier», il «Galeotto Manfredi», l'«Aristodemos» e il «Caio Gracco».

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 99
 
 Navata destra: all'inizio è l'altare dedicato alla Madonna della Neve, vicino al quale è il monumento funebre di Costanzo Patrizii, opera di Alessandro Algardi (1595-1654). Segue il battistero con tazza di porfido rosso e il rilievo dell'«Assunta», opera scultorea di Pietro Bernini (1610).

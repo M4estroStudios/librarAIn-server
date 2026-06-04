@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1061
 
 Segue il campanile; sempre in laterizio; come la chiesa; ed è contrassegnato come tutto il complesso da cornici ed elementi significanti in travertino. Termina a cuspide, rivestito da lastre bronzee, ed è ispirato a quello della basilica di S. Marco a Venezia.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>714
+714
 RIONE X. CAMPITELLI
 
 Ricostruzione assonometrica del settore settentrionale della domus Flavia (da Giullani).

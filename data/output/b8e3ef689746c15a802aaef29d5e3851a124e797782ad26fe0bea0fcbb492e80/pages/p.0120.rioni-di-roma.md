@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>120
+120
 RIONE L. MONTI
 
 papa che volle eretta questa chiesa. Al terzo altare di sinistra è un importantissimo affresco frammentario raffigurante la «Madonna con il Bambino e S. Paolo», opera di Benozzo Gozzoli (1460); al primo altare invece è un'interessante tela di G.F. Romanelli (1610-1662) con al centro la «Madonna del Rosario» e intorno tutti i singoli misteri dello stesso Rosario.

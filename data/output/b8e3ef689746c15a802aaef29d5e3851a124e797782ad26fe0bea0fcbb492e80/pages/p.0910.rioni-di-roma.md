@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>910
+910
 RIONE XIII. TRASTEVERE
 
 parte trasferiti a Villa Albani. Tutto prezioso materiale la cui visione è proibita al pubblico, in quanto si tratta di proprietà privata. Sulla facciata, tra il primo e il secondo piano, si vede un grande stemma dei Torlonia.

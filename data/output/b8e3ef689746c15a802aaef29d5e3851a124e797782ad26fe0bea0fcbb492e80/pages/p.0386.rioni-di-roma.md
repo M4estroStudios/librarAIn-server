@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>386
+386
 RIONE VI. PARIONE
 
 lizzare la quale gli artisti si servivano di terre particolari: Il Vasari scrive che Polidoro era «stato prodotto e creato dalla natura pittore» e che Maturino era «alle anticaglie tenuto bonissimo di disegnatore». Furono eseguite infatti scene classiche o prese dal Vecchio e Nuovo Testamento (come al Massimo). Ad essi possiamo affiancare Francesco dell'Padazzo, Vincenzo Tamagni, Daniele da Volterra; Pirro Ligorio e il Cavalier d'Arpino.

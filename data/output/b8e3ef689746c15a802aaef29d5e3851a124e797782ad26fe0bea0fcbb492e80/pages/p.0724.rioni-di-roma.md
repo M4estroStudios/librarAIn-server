@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>724
+724
 RIONE X. CAMPITELLI
 
 La parte scavata che ha riportato alla luce il portico occidentale della piazza e resti del podio e del tempio. Da questo stesso lato, su un livello maggiore, sta il Clivo Argentario con le sue taverne e da qui si può scendere con un'antica scala a livello della piazza. Appena entrati nel foro, sulla sinistra, al piano superiore posta una grande latrina di età traianea; in forma di aula semicircolare.

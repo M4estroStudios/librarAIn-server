@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 567
 
 Quest'ultimo si fermò pregando l'amico Vento di attenderlo; il tempo di sbrigare una commissione. Entrò quindi di filato nell'edificio; senza più uscirne però; e il Vento è ancora lì che aspetta, sempre più impaziente, imperversando intanto su tutta la piazza.

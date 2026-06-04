@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 481
 
 prì la carica di conservatore delle strade e commissario delle antichità; aveva raccolto una importante collezione di queste ultime; vogliamo sperare senza approfittare della carica ricoperta.

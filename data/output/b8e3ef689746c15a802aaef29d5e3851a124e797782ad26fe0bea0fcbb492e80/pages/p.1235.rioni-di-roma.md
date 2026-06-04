@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 1235
 
 Braschi, 17, 213, 401, 402, 404, 410, 414, 420-424, 573, 591, 623, 675

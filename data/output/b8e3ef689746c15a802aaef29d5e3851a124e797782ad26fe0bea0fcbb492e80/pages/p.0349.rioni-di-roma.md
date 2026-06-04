@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 349
 
 tore in Lauro. Qui al n: 10 è la scuola Angelo Braschi, istituita da Pio VI a beneficio degli abitanti del rione e tenuta dai Fratelli delle scuole cristiane. Il Comune di Roma vi ha apposto una lapide in ricordo del poeta romano Giulio Cesare Santini con la trascrizione di una sua poesia dialettale.

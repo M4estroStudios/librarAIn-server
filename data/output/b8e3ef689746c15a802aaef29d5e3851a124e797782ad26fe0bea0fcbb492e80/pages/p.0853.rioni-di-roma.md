@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 853
 
 properi alle zitelle bastarde. Allora, la direzione del S. Spirito concesse libera uscita alle ricoverate, dal mattino fino all'ora di pranzo, per dar loro modo di scegliersi il marito o di essere scelte.

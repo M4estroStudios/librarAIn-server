@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 345
 
 Passato ai gesuiti, nel 1574, fu abitato da costoro per circa duecento anni quindi le scuole dell'Accademia di S. Luca fino al 1825 e, successivamente, il seminario Pio. Durante i primi decenni del Novecento fu sede dei Signori della Missione finché, per volontà di papa Benedetto XV, divenne sede del pontificio istituto di S. Apollinare. All'interno, dove era la libreria del collegio germanico-ungarico dei gesuiti, è oggi la cappella con immagine della Vergine all'altare e con le raffigurazioni del fondatore dell'ordine, *S. Ignazio di Loyola*, e dell'altro grande santo missionario, *S. Francesco Saverio*, opere entrambe di Andrea Pozzo, come pure dello stesso artista è l'*Ascensione di Maria*, realizzata a tempera, che orna il soffitto. Il palazzo fu restaurato intorno alla metà del Settecento dal [nome mancante], ma quando questi mise mano alla chiesa contigua, lo ornò dello stemma di Gregorio XIII.

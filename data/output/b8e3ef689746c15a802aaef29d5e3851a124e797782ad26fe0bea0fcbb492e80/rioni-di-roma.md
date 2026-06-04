@@ -2,9 +2,7 @@
 
 _vari_
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ALBERTO MANODORI - LUDOVICO PRATESI
+ALBERTO MANODORI - LUDOVICO PRATESI
 CLAUDIA CERCHIAI - MAURO QUERCIOLI
 
 # I RIONI DI ROMA
@@ -16,11 +14,8 @@ NEWTON & COMPTON EDITORI - BIBLIOTECA DEL MESSAGGERO
 
 ---
 
-<!-- p.2 (orig. p.2) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ALBERTO MANODORI
+ALBERTO MANODORI
 LUDOVICO PRATESI
 CLAUDIA CERCHIAI
 MAURO QUERCIOLI
@@ -38,19 +33,13 @@ Newton & Compton Editori
 
 ---
 
-<!-- p.3 (orig. p.3) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>L'immagine fornita contiene esclusivamente un logo (un'icona di un orso all'interno di un ovale nero) e non presenta alcun testo leggibile da processare tramite OCR.
+L'immagine fornita contiene esclusivamente un logo (un'icona di un orso all'interno di un ovale nero) e non presenta alcun testo leggibile da processare tramite OCR.
 
 ---
 
-<!-- p.4 (orig. p.4) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Coordinamento di Claudio Rendina
+Coordinamento di Claudio Rendina
 Prima edizione in questa collana: marzo 2005
 © 2000 Newton & Compton editori s.r.l.
 Roma, Casella postale 6214
@@ -71,11 +60,8 @@ Stampato nel marzo 2005 dalla Legatoria del Sud s.r.l., Ariccia (Roma)
 
 ---
 
-<!-- p.5 (orig. p.5) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Alberto Manodori - Ludovico Pratesi
+Alberto Manodori - Ludovico Pratesi
 Claudia Cerchiai - Mauro Quercioli
 
 # I rioni di Roma
@@ -90,11 +76,8 @@ Newton & Compton editori
 
 ---
 
-<!-- p.6 (orig. p.6) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Presentazione
+Presentazione
 
 Dall' antico al contemporaneo: è l'immagine di Roma che si è venuta a costruire; alternativamente costruendo, distruggendo e ricostruendo attraverso 2753 anni in una serie di sovrapposizioni urbanistiche sopra i sette colli e all'interno delle mura; piazze su fori, vie su vicoli, palazzi su case, chiese su templi, ponti su monumenti, monumenti su monumenti. Si tratta del «cuore» della città, che è divenuta metropoli al di là delle mura nei quartieri, nei sobborghi, nelle zone dell'Agro nell'ultimo secolo; mentre al suo interno è rimasta circoscritta ai suoi millenni urbanistici, non ha superato il territorio originario della sua matrice, articolandosi dalle 4 regioni romulee alle 14 regioni augustee; per fissarsi poi dal 1921, tra sventramenti, rifondazioni, suddivisioni, nei 22 rioni.
 
@@ -106,11 +89,8 @@ Claudio Rendina
 
 ---
 
-<!-- p.7 (orig. p.7) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># I rioni e i quartieri nella storia di Roma
+# I rioni e i quartieri nella storia di Roma
 di Mario Sanfilippo
 
 ### Dalla Roma augustea alla Città leonina
@@ -125,11 +105,8 @@ Ma la continuità si attenua progressivamente tra l'antica città imperiale e la
 
 ---
 
-<!-- p.8 (orig. p.8) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>8
+8
 
 **I RIONI E I QUARTIERI NELLA STORIA DI ROMA**
 
@@ -143,11 +120,8 @@ Tra la fine del VII e l'inizio dell'VIII secolo gli oltre 18 chilometri della ci
 
 ---
 
-<!-- p.9 (orig. p.9) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLA ROMA AUGUSTEA ALLA CITTÀ LEONINA
+DALLA ROMA AUGUSTEA ALLA CITTÀ LEONINA
 
 Scala per l'effettivo ordine di grandezza della popolazione, crollata verticalmente a poche decine di migliaia di abitanti.
 
@@ -167,11 +141,8 @@ Il pontefice romano basa il suo primato occidentale sulla catte-
 
 ---
 
-<!-- p.10 (orig. p.10) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>10
+10
 
 # I RIONI E I QUARTIERI NELLA STORIA DI ROMA
 
@@ -198,11 +169,8 @@ Dopo la disastrosa incursione dei Saraceni dell'846, diventa indispensabile prov
 
 ---
 
-<!-- p.11 (orig. p.11) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLA ROMA AUGUSTEA ALLA CITTÀ LEONINA
+DALLA ROMA AUGUSTEA ALLA CITTÀ LEONINA
 
 **Ponti e rioni**
 
@@ -232,11 +200,8 @@ Nei secoli successivi la Città leonina e il Campidoglio s'imporranno come i due
 
 ---
 
-<!-- p.12 (orig. p.12) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>12
+12
 
 RIONI E I QUARTIERI NELLA STORIA DI ROMA
 
@@ -282,11 +247,8 @@ rione.
 
 ---
 
-<!-- p.13 (orig. p.13) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MEDIEVALE
+ROMA MEDIEVALE
 
 In2
 Roma nel suo aspetto turrito medievale in una stampa d'epoca
@@ -313,11 +275,8 @@ Roma nel suo aspetto turrito medievale in una stampa d'epoca
 
 ---
 
-<!-- p.14 (orig. p.14) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>14
+14
 
 **RIONI E I QUARTIERI NELLA STORIA DI ROMA**
 
@@ -337,11 +296,8 @@ In pratica dall'inizio del XI secolo alla metà del XIV c'è un periodo di asses
 
 ---
 
-<!-- p.15 (orig. p.15) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MEDIEVALE
+ROMA MEDIEVALE
 15
 
 Re evidentemente non conosce le vicende amministrative e politiche di Roma, per questo immagina che l'Isola Tiberina sia troppo importante per non essere un rione a sé stante; ugualmente immagina che la Città Leonina o Borgo sia un rione; mentre lo diventerà soltanto secoli dopo. Ma complessivamente individua con precisione l'esistenza di 12 rioni sulla riva sinistra del Tevere (citati nominando le due "contrade" del rione; d'altra parte questa citazione binaria è ripresa anche dal Cavallini de Cerroni e per lungo tempo rimane usuale) e di Trastevere sulla riva destra. Inoltre in questa compare il numero 26 (doppio di 13) che ricorre frequentemente nella storia di Roma del tempo. Sotto Brancaleone degli Andalò (senatore e capitano del popolo romano del 1252-55 e nel 1257-58) la rappresentanza del popolo è affidata a 26 "Buoni Uominis", due per ognuno dei 13 rioni; così come intorno al 1263 sono 26 "Buoni Uominis" eletti dal popolo romano per "riformare la città". In ogni caso all'inizio del XIV secolo, nel 1305, gli statuti dei Mercanti sono confermati dai rappresentanti (gli anziani) dei rioni urbani, il cui numero è consolidato in 13. Ma nei secoli tardo medievali e moderni gli stessi notai continuano ad essere imprecisi sui confini dei rioni e sono continui gli spostamenti erronei di chiese da un rione a quello confinante. Questa suddivisione della città in 13 rioni continuerà ad essere valida fino allo scorcio finale del XVI secolo.
@@ -354,11 +310,8 @@ Adesso l'identità cittadina è composita e vi si intrecciano la memoria dell'an
 
 ---
 
-<!-- p.16 (orig. p.16) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>16
+16
 
 RIONI E 1 QUARTIERI NELLA STORIA DI ROMA
 
@@ -382,11 +335,8 @@ La nuova importanza del Vaticano fa sì che le due cerchie murarie (collegate da
 
 ---
 
-<!-- p.17 (orig. p.17) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LA CITTÀ RINASCIMENTALE
+LA CITTÀ RINASCIMENTALE
 Palazzi e rioni
 
 Dalla fine del XV a tutto il XVII secolo, accanto alla Roma papale, prospera una Roma cardinalizia nepotista, che concorre a cancellare l'antica città medievale. Il vecchio tessuto urbano dei rioni è sconvolto dagli accorpamenti e sventramenti, dalla costruzione di edifici monumentali, molto più invadenti di quanto non fossero gli antichi complessi immobiliari dei gruppi familiari (nobili o borghesi).
@@ -403,11 +353,8 @@ Per Niccolò il Vaticano deve essere il luogo simbolico della res publica christ
 
 ---
 
-<!-- p.18 (orig. p.18) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>18
+18
 
 # I RIONI E I QUARTIERI NELLA STORIA DI ROMA
 
@@ -432,11 +379,8 @@ ni. Con Sisto IV (1471-1484) diventa obbligatorio abbattere i luoghi
 
 ---
 
-<!-- p.19 (orig. p.19) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LA CITTÀ RINASCIMENTALE:
+LA CITTÀ RINASCIMENTALE:
 19
 
 Intermedi tra pubblico e privato (non solo «portici», le logge, i poggioli, ma anche gli sporti, balconi, i «magnani»); diventano obbligatori anche il raddrizzamento e la pavimentazione delle strade; mentre si sposta il mercato urbano dal Campidoglio a piazza Navona; rendendo ancor più centrale il rione Parione.
@@ -457,11 +401,8 @@ Via della Lungara è un rettilino di un chilometro preciso, che collega porta S.
 
 ---
 
-<!-- p.20 (orig. p.20) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>20
+20
 
 RIONI E I QUARTIERI NELLA STORIA DI ROMA
 
@@ -477,11 +418,8 @@ Inoltre Paolo III rinnova con bastioni fortificati la vecchia cinta muraria e ce
 
 ---
 
-<!-- p.21 (orig. p.21) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MODERNA
+ROMA MODERNA
 2
 
 **Il primo censimento dei rioni romani**
@@ -504,11 +442,8 @@ Per ogni ponte amplia borgo...
 
 ---
 
-<!-- p.22 (orig. p.22) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>22
+22
 
 # RIONI E I QUARTIERI NELLA STORIA DI ROMA
 
@@ -525,11 +460,8 @@ Progressivamente gli interventi edilizi e viari dei papi facilitano l'espansione
 
 ---
 
-<!-- p.23 (orig. p.23) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MODERNA
+ROMA MODERNA
 23
 
 [Immagine]
@@ -548,11 +480,8 @@ In città per lungo tempo, a parte gli interventi edilizi, gli interventi urbani
 
 ---
 
-<!-- p.24 (orig. p.24) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>24
+24
 
 # I RIONI E I QUARTIERI NELLA STORIA DI ROMA
 
@@ -566,11 +495,8 @@ Ancora nella prima metà del XVIII secolo le incertezze sui confini dei rioni es
 
 ---
 
-<!-- p.25 (orig. p.25) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MODERNA
+ROMA MODERNA
 25
 
 dei rioni. E l'anno seguente questa decisione è ribadita sul campo; murando 220 lapidi ai confini dei rioni, col loro nome e stemma.
@@ -616,11 +542,8 @@ All'inizio del pontificato di Pio IX (1846–1878) Roma è ancora una città pie
 
 ---
 
-<!-- p.26 (orig. p.26) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>26
+26
 
 # I RIONI E I QUARTIERI NELLA STORIA DI ROMA
 
@@ -639,11 +562,8 @@ Il pontificato di Pio IX, con le sue tormentate vicende politiche, coincide con 
 
 ---
 
-<!-- p.27 (orig. p.27) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA CAPITALE
+ROMA CAPITALE
 27
 
 Vecchi e bassi edifici con nuove costruzioni più alte e predisposte per l'affitto. Si avviano le prime lottizzazioni intorno alle attuali Piazza Indipendenza e Via Nazionale. Imprese promosse da Monsignor Francesco Saverio de Merode, uno dei tanti putativi padri di Roma moderna. Prima e dopo il 1870, de Merode è alla testa di numerose imprese speculativo-fondiarie che continueranno a funzionare anche dopo la sua morte.
@@ -662,11 +582,8 @@ Nel primo trentennio, dopo la breccia di Porta Pia o "invasione buzzurra", all'i
 
 ---
 
-<!-- p.28 (orig. p.28) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>28
+28
 
 RIONI E I QUARTIERI NELLA STORIA DI ROMA
 
@@ -697,11 +614,8 @@ Ma l'enorme demanio statale non è sufficiente, tant'è vero che dopo il 1870 co
 
 ---
 
-<!-- p.29 (orig. p.29) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># ROMA CAPITALE
+# ROMA CAPITALE
 ## Rioni e quartieri nel XIX-XX secolo
 
 Nell'elencazione comunale del 1921 sono codificati i seguenti rioni:
@@ -753,11 +667,8 @@ Naturalmente la costruzione di un Ministero all'interno delle mura muta la topog
 
 ---
 
-<!-- p.30 (orig. p.30) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>30
+30
 
 # RIONI E QUARTIERI NELLA STORIA DI ROMA
 
@@ -785,11 +696,8 @@ Questa alluvione di immigrati spiega perché i quartieri non hanno una caratteri
 
 ---
 
-<!-- p.31 (orig. p.31) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA CAPITALE
+ROMA CAPITALE
 
 @
 
@@ -816,11 +724,8 @@ Dopo il 1870 e fino alla metà del nostro secolo, in campo urbanistico ha moltip
 
 ---
 
-<!-- p.32 (orig. p.32) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>32
+32
 
 [I RIONI E I QUARTIERI NELLA STORIA DI ROMA]
 
@@ -840,11 +745,8 @@ Anche dove c'è un minimo di omogeneità sociale ad esempio
 
 ---
 
-<!-- p.33 (orig. p.33) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA CAPITALE
+ROMA CAPITALE
 33
 
 Nel ben organizzato nucleo delle case Incis di piazza Verbano non nasce un vero spirito di corpo. E questo sarà ancor più vero per l'enorme espansione edilizia dall'ultimo decennio fascista fino a questi decenni repubblicani.
@@ -855,11 +757,8 @@ D'altra parte ancora oggi l'affermazione "So' romano" è degna di qualsiasi buri
 
 ---
 
-<!-- p.34 (orig. p.34) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>XXII
+XXII
 XI
 XIII
 XX
@@ -882,11 +781,8 @@ I 22 rioni di Roma nella pianta della città odierna (disegno di De Zio).
 
 ---
 
-<!-- p.35 (orig. p.35) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>XVI
+XVI
 XVII
 XVIII
 XIX
@@ -895,11 +791,8 @@ XXI
 
 ---
 
-<!-- p.36 (orig. p.36) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione I. Monti
+Rione I. Monti
 di Alberto Manodori
 Dalle origini ad oggi
 
@@ -917,11 +810,8 @@ Ma come Remo fu avversario di Romolo; così anche i monticiani...
 
 ---
 
-<!-- p.37 (orig. p.37) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AL OGGI
+DALLE ORIGINI AL OGGI
 37
 
 Ni ebbero trasteverini loro fieri fratelli rivali. Trastevere infatti costituiva il più vasto rione al di là del fiume sulla riva destra; separato pertanto, ad eccezione di Borgo, dal resto dei rioni cittadini. Così i trasteverini finivano per avere anch'essi, alla separazione operata dal fiume, una propria particolare identità che li portava a rifiutare d'istinto e di cuore la preminenza dei monticiani. Questa rivalità non si esauriva in una serie di rivendicazioni formali, bensì dava luogo, si ritiene fin dagli inizi del XIV secolo, a periodici scontri cruenti tra i monticiani, appunto, trasteverini. Il luogo privilegiato per queste battaglie di primogenitura era il Campo Vaccino ovvero l'area oggi corrispondente all'attuale Foro Romano ad un livello superiore. Lo scontro veniva detto "partita a roccie" dove i trasteverini e i monticiani si affrontavano investendosi con una fitta sassaiola e ricorrendo spesso all'uso del coltello rifilandosi "puncicate a l'inglese" (cioè coltellate date a modo).
@@ -938,11 +828,8 @@ Insomma nonostante tagli di via Labicana, via Nazionale o via... grazie oggi, qu
 
 ---
 
-<!-- p.38 (orig. p.38) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>38
+38
 
 **RIONE I. MONTI**
 
@@ -962,11 +849,8 @@ Nella Subura si recava Nerone travestito per sentire dalla viva voce del popolo 
 
 ---
 
-<!-- p.39 (orig. p.39) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 39
 
 Lo stesso Giulio Cesare era nato nella Subura e forse anche per questo si schierò con i democratici e la plebe. Così Giuseppe Gioachino Belli, altro grande romano, descrive il rione Monti: «Ggià cch'er Papa ha vvorsuto indeggnamen-te fà vvescovo er calonico Tizzani / senza senticce un ac-cidente li sù poveri fijji montisciani, / bbisiggnerà abbozzà, na-turamente, e ppe ffacce vedè bboni cristiani / sbiggnà vvia tra le scianche de la ggente / co 'orecchie alingiù ccomme, li cani. Questa perantro c'è arrivata all' ossa; e ccom'è vvero er foco de l'inferno / er Zanto padre sce ]ha ffatta grossa! E ppoteranno dì ssempr' ar Governo li Monti, che jj'è ttocca una sbiossa, e li Ternani, c'hanno vinto un ternov».
@@ -981,11 +865,8 @@ A segnare lo svuotamento del rione Monti concorsero le vicende del trono papale;
 
 ---
 
-<!-- p.40 (orig. p.40) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>40
+40
 
 RIONE 1. MONTI
 
@@ -1013,11 +894,8 @@ Le case dei Laterani di cui si pensa d'aver rinvenuto qualche resto tra la via d
 
 ---
 
-<!-- p.41 (orig. p.41) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 41
 
 Veduta assonometrica della Porta Asinaria (da Richmond)
@@ -1030,11 +908,8 @@ Odore di vecchio e di cantina; spesso fin troppo aspro; circonda l'improvvisato 
 
 ---
 
-<!-- p.42 (orig. p.42) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>42
+42
 RIONE I. MONTI
 
 Accanto alla porta Asinaria le mura aureliane riprendono il cammino; verso destra e verso sinistra. Sulla destra esse proteggono un altro mercato all'aperto caro ai romani, quello di via Sannio. Le mura aureliane che partono dalla porta Asinaria verso destra scendono a costeggiare via della Ferratella e si interrompono presso porta Metronia (in età antica porta Metrovia), un altro accesso principale alla città di Roma.
@@ -1057,11 +932,8 @@ Fausta allora viveva in case di proprietà imperiale pervenute in questa da dive
 
 ---
 
-<!-- p.43 (orig. p.43) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 43
+PRIMO ITINERARIO 43
 
 In questa proprietà già da tempo si riunivano i cristiani per la celebrazione dell'Eucarestia. In esse, quindi, si trovava una *domus ecclesiae*, cioè una casa privata che all'occasione fungeva da luogo di culto. Queste abitazioni si trovavano dove ora è la Basilica Lateranense che quindi costituisce il segno della continuità storico-religiosa della zona a partire dalla *domus ecclesiae*: comunque sempre sotto la basilica sono stati identificati i resti di età romana; probabilmente severiani (193-211) destinati a caserma della guardia personale dell'Imperatore: gli *equites singulares*; che furono sciolti da Costantino che li sapeva fedeli a Massenzio e che destinò il luogo della caserma alla costruzione della originaria basilica Lateranense. Così la *domus ecclesiae*, sede del vescovo di Roma, e la basilica Lateranense si unirono per sempre in un rapporto di storica reciprocità.
 
@@ -1079,12 +951,9 @@ Innocenzo X, Doria Pamphilj (1644-1655), protettore di Francesco Borromini, inca
 
 ---
 
-<!-- p.44 (orig. p.44) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<|channel>thought
-<channel|>44
+44
 
 **RIONE I MONTI**
 
@@ -1094,11 +963,8 @@ dell'antica basilica affinché assumesse un aspetto moderno e maestoso. Borromin
 
 ---
 
-<!-- p.45 (orig. p.45) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>**PRIMO ITINERARIO 45**
+**PRIMO ITINERARIO 45**
 
 **La notte delle streghe: il 23 giugno**
 
@@ -1118,11 +984,8 @@ Nella navata estrema di destra è visibile un affresco raffigurante la «Madonna
 
 ---
 
-<!-- p.46 (orig. p.46) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>46
+46
 RIONE L. MONTI
 
 tettura di Giacomo Della Porta (1570) con dipinti del Siciolante e del Cavalier d'Arpino; è un'altra delle cappelle che in Roma appartengono ai principi Massimo. All'esterno di quest'ultima cappella è una splendida statua quattrocentesca di S. Giacomo, opera di Andrea Bregno.
@@ -1139,11 +1002,8 @@ Nel braccio destro del transetto s'apre la cappella del Crocefisso dove si trova
 
 ---
 
-<!-- p.47 (orig. p.47) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 47
 
 liquie delle teste dei Ss. Pietro e Paolo; ma questi reliquiari sono moderni perché quelli originali, medievali, si dovettero fondere per pagare il tributo gravoso che Napoleone aveva imposto all'Italia e al papa con il trattato di Tolentino con la requisizione di numerosissimi capolavori d'arte. Come mai le teste dei due Apostoli si trovano qui in S. Giovanni in Laterano visto che gli altri resti terreni stanno nelle basiliche di S. Pietro e di S. Paolo fuori le mura? Accadde che durante le più terribili invasioni barbari la chiesa romana si preoccupasse di occultare le reliquie più preziose. Si racconta quindi che i resti dei due principi degli apostoli fossero stati trasferiti segretamente nella basilica di S. Sebastiano sulla via Appia. Passato il pericolo, ciascuno dei corpi fu traslato nella sua sede originaria; le teste andarono ad arricchire il tesoro di reliquie nella basilica del papa.
@@ -1158,11 +1018,8 @@ Tra i chiostri, non resta che visitare il chiostro che fu innalzato tra il 1225 
 
 ---
 
-<!-- p.48 (orig. p.48) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>48
+48
 RIONE
 MONTI
 
@@ -1192,11 +1049,8 @@ Sulla sommità fu collocato un globo d'oro che, colpito da un fulmine, fu sostit
 
 ---
 
-<!-- p.49 (orig. p.49) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 3
 
 L'obelisco lateranense in un'incisione del 1837 di D. Amici.
@@ -1224,11 +1078,8 @@ Sisto V approvò il progetto di ricerca e a sette metri di profondità l'obelisc
 
 ---
 
-<!-- p.50 (orig. p.50) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>50
+50
 RIONE L. MONTI
 
 Più tardi gli fu collocata accanto una fontana per maggior decoro della piazza e anche per una maggiore utilità pubblica.
@@ -1246,11 +1097,8 @@ Procedendo verso via Amba Aradam, che prende nome dalla battaglia vittoriosa che
 
 ---
 
-<!-- p.51 (orig. p.51) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 51
 
 Battesimo ad immersione, che recava al centro il simulacro dell'Agnello di Dio, d'oro; mentre un'ampolla d'oro e sette cervi d'argento versavano acqua nella vasca ai cui bordi erano le statue, sempre d'argento, di Gesù e del Battista. Nei secoli successivi avvennero altre modificazioni e nel 1540 la cupola, ormai precaria, fu sostituita da un tiburio.
@@ -1273,11 +1121,8 @@ Tradizionale rimase a lungo la processione del Corpus Domini...
 
 ---
 
-<!-- p.52 (orig. p.52) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>52
+52
 
 RIONE MONTI
 
@@ -1305,11 +1150,8 @@ Essa costituisce così la summa teologica del rapporto di evoluzione che lega la
 
 ---
 
-<!-- p.53 (orig. p.53) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 53
 
 La chiesa di S. Stefano Rotondo come appariva alla fine dell'Ottocento.
@@ -1324,11 +1166,8 @@ Gran parte delle pareti della chiesa sono affrescate con «scene di martirio», 
 
 ---
 
-<!-- p.54 (orig. p.54) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>54
+54
 
 RIONE: I MONTI
 
@@ -1370,11 +1209,8 @@ La Basilica di S. Clemente costituisce il miglior esempio di stra-
 
 ---
 
-<!-- p.55 (orig. p.55) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 55
 
 L'ingresso laterale di S. Clemente in un'incisione di fine Ottocento-
@@ -1426,11 +1262,8 @@ L'ingresso laterale di S. Clemente in un'incisione di fine Ottocento
 
 ---
 
-<!-- p.56 (orig. p.56) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>56
+56
 RIONE I. MONTI
 
 del livello inferiore in modo da poter seguire le successive fasi
@@ -1491,11 +1324,8 @@ del IX secolo con scene della *Vita di Gesù* che, nella Crocifis-
 
 ---
 
-<!-- p.57 (orig. p.57) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 57
 
 Sione; appare non vestito più con il *colubium* bizantino ma con il perizoma derivato dall'iconografia artistica carolingia. Sulla sinistra è un altro affresco; sempre del IX secolo, con la «Storia di S. Alessio».
@@ -1512,11 +1342,8 @@ Tra le finestre della navata maggiore si ammirano le figure dei «Profeti» dipi
 
 ---
 
-<!-- p.58 (orig. p.58) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>58
+58
 
 RIONE I. MONTI
 
@@ -1526,11 +1353,8 @@ Al centro della navata principale, con frammenti appartenenti alla prima basilic
 
 ---
 
-<!-- p.59 (orig. p.59) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 59)
 
 **Il miracolo di S. Clemente**
@@ -1553,11 +1377,8 @@ La parte inferiore del muro absidale reca un affresco del XIII secolo, molto res
 
 ---
 
-<!-- p.60 (orig. p.60) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>60
+60
 
 RIONE I. MONTI
 
@@ -1578,11 +1399,8 @@ Si perviene all'altezza di via dei Normanni davanti agli edifici dell'esattoria 
 
 ---
 
-<!-- p.61 (orig. p.61) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 61
 
 zioni sconvolsero anche il sottosuolo; eliminando così le tracce di altri edifici come le chiese di S. Maria fra le Due Vie, dei Ss. Quaranta, gli Oratori del Santo Pastore di S. Lorenzo. Ma durante i lavori di demolizione è stato rinvenuto il Ludus Magnus, individuato nel 1937, scavato per metà nel 1961 e che oggi è visibile nell'area recintata ad un livello inferiore a strada. Il Ludus Magnus fu la più importante caserma di gladiatori in Roma costruita durante l'impero di Domiziano e collegata al Colosseo: ha pianta rettangolare con al centro un cortile porticato. Tutt'intorno è una numerosa serie di piccole stanze destinate agli alloggi dei gladiatori e in mezzo al cortile l'arena ovale di un piccolo anfiteatro utilizzato dai gladiatori per allenarsi e dotato di una piccola cavea da dove atleti, amici e parenti potevano assistere agli allenamenti.
@@ -1597,11 +1415,8 @@ Poco prima dell'incrocio con via Merulana si incontra l'ex convento una volta ap
 
 ---
 
-<!-- p.62 (orig. p.62) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>62
+62
 
 RIONE MONTI
 
@@ -1623,11 +1438,8 @@ Il museo conserva ed espone oggetti delle culture preislamiche ed islamiche prov
 
 ---
 
-<!-- p.63 (orig. p.63) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 63
 
 Le tra il mondo greco-romano e le culture dell'Indo. Palazzo Brancaccio possedeva anche un grande giardino che occupava quasi il colle Oppio; oggi questo giardino è ridotto ad una piccola area folta di alberi ad alto fusto che sono quanto resta di un felice orto botanico.
@@ -1648,11 +1460,8 @@ Alle pareti apparvero quasi tutti graffiti di artisti diseredati, vagabondi e so
 
 ---
 
-<!-- p.64 (orig. p.64) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>RIONE I. MONTI
+RIONE I. MONTI
 
 **Nerone Claudio Cesare**
 
@@ -1674,11 +1483,8 @@ Di fronte alle Sette Sale si apre a veduta, inclusa nel parco del colle Oppio, d
 
 ---
 
-<!-- p.65 (orig. p.65) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 65
 
 L'imperatore Nerone effigiato in un monumento scultoreo.
@@ -1693,11 +1499,8 @@ Scendendo per i giardini del Colle Oppio si raggiunge l'ingresso ai resti della 
 
 ---
 
-<!-- p.66 (orig. p.66) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>66
+66
 
 RIONE I. MONTI
 
@@ -1715,11 +1518,8 @@ Appena entrati nei resti della Domus Aurea si notano le basi di due colonne di u
 
 ---
 
-<!-- p.67 (orig. p.67) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 
 Miglia Cardelli, si incontra la chiesa di S. Maria ad Nives; già dedicata a S. Andrea de Portugallo. La chiesa cambiò nome quando appunto fu affidata alla confraternita di S. Maria della Neve dopo che era stata officiata dall'Università dei Rigattieri. La chiesa dalla facciata appena convessa mostra un timpano interrotto e paraste angolari: si tratta pertanto di un bell'edificio di un tardo barocco non privo di originalità, attribuito da alcuni a Carlo Fontana e da altri a Giuseppe Sardi. L'interno è a navata unica ed è ornato di belle pitture dei secoli XVI e XVIII.
 
@@ -1733,11 +1533,8 @@ Ritornati su via del Buon Consiglio, si vada di nuovo sulla via del Colosseo dov
 
 ---
 
-<!-- p.68 (orig. p.68) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>68
+68
 RIONE I. MONTI
 
 L'osteria del Gatto Nero in via del Cardello.
@@ -1751,11 +1548,8 @@ ture a grottesche.
 
 ---
 
-<!-- p.69 (orig. p.69) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 69
 
 Si ritorna adesso per via dei Frangipane su via degli Annibaldi dove all'angolo con via Cavour sta la torre dei Margani. La si raggiunge prendendo sulla destra la rampa che porta alla Salita dei Borgia. Infatti questa torre erroneamente è detta anche dei Borgia, ma in realtà fu dei Montanari, poi dei Cesarini e quindi del Margani. Di forma possente con coronamento a beccatelli di travertino, la torre fu costruita nel secolo XII e risistemata nel XV. Gli era da presso la chiesa castello di S. Maria in Monasterio andata in rovina nel XVI secolo. Ora la torre, con l'aggiunta di una cella campanaria, fa da campanile alla vicina chiesa di S. Francesco di Paola.
@@ -1770,11 +1564,8 @@ L'interno della nostra chiesa ha una sola navata con decorazioni architettoniche
 
 ---
 
-<!-- p.70 (orig. p.70) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>70
+70
 
 RIONE L. MONTI
 
@@ -1794,11 +1585,8 @@ La sacrestia conserva un pavimento ad intarsi marmorei che si ritiene provenient
 
 ---
 
-<!-- p.71 (orig. p.71) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 
 Piazza S. Pietro in Vincoli nel suo aspetto tardo-ottocentesco, accantonato, ridimensionato e trasferito per la sua esecuzione a S. Pietro in Vincoli: così si compì quella che Leone X aveva definito «la tragedia della sepoltura».
 
@@ -1810,11 +1598,8 @@ Segue l'altare con la «Deposizione dalla Croce» attribuita al Pomarancio e, al
 
 ---
 
-<!-- p.72 (orig. p.72) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>72
+72
 
 RIONE I MONTI
 
@@ -1836,22 +1621,16 @@ Qui sorge la chiesa di S. Martino ai Monti dedicata in realtà a papa S. Silvest
 
 ---
 
-<!-- p.73 (orig. p.73) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 73
 
 Mausoleo di Giulio in S. Pietro in Vincoli (stampa di fine Ottocento) — per raggiungerlo dovette scendere sotto terra per una scala di 365 gradini (il giro dell'anno), cosicché la vittoria sul drago avrebbe significato la chiusura dell'anno vecchio e il nuovo si sarebbe aperto nel segno del cristianesimo. S. Martino, invece, legato alla breve estate dell'11 novembre, è noto per avere diviso il proprio mantello con un povero tremante di freddo e dessere stato ringraziato in sogno da Gesù. Divenuto cristiano usava, per umiliarsi, pulire le scarpe del suo schiavo e uscito dall'esercito iniziò la predicazione prima in Pannonia dove era nato, in Liguria e infine in Francia. Nel 370 fu consacrato vescovo di Tour. Irriso dai ricchi e anche da una parte del clero egli resse con grande spirito cristiano la diocesi per 27 anni e al momento di morire si fece sdraiare sulla cenere vestito solo del cilicio.
 
 ---
 
-<!-- p.74 (orig. p.74) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>74
+74
 
 RIONE L. MONTI
 
@@ -1867,11 +1646,8 @@ La chiesa di S. Martino ai Monti fu ampiamente ristrutturata sotto papa Sergio I
 
 ---
 
-<!-- p.75 (orig. p.75) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 75
 
 Tra le sono due bassorilievi con le figure dei **Ss. Silvestro e Martino**.
@@ -1890,11 +1666,8 @@ L'edificio del monastero chiuso oggi da una cancellata rococò presenta una maes
 
 ---
 
-<!-- p.76 (orig. p.76) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>76
+76
 
 **RIONE I. MONTI**
 
@@ -1914,11 +1687,8 @@ Il convento annesso alla basilica fu demolito dopo il 1870 e sostituito dall'edi
 
 ---
 
-<!-- p.77 (orig. p.77) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 77
 
 Conserva i resti di un colonnato con capitelli corinzi che forse appartiene alla basilica del V secolo. La facciata a capanna in laterizio ricorda quella della curia al Foro Romano. Un elegante portale la orna al centro. L'accesso alla basilica avviene lateralmente su via di Santa Prassede e accanto ad esso si nota il volume della cappella di S. Zenone eretta sempre da Pasquale I. L'interno della chiesa è a 4 navate, separate da colonne antiche con capitelli corinzi, su cui sta un architrave ottenuto con cornici romane riutilizzate.
@@ -1933,11 +1703,8 @@ Il ciborio è costituito da quattro colonne di porfido rosso, che Francesco Ferr
 
 ---
 
-<!-- p.78 (orig. p.78) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>78
+78
 
 RIONE L. MONTI
 
@@ -1992,11 +1759,8 @@ fosse di un fantastico re polacco alla vicina rampa di scale che...
 
 ---
 
-<!-- p.79 (orig. p.79) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 79
 
 La chiesa e il monastero di S. Lucia in Selci (incisione settecentesca di G. Vasi)
@@ -2030,11 +1794,8 @@ La passeggiata ha inizio da largo Corrado Ricci, l'archeologo...
 
 ---
 
-<!-- p.80 (orig. p.80) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>80
+80
 
 RIONE I. MONTI
 
@@ -2052,11 +1813,8 @@ L'interno della chiesa è ad unica navata: nella volta è raffigurata la «Glori
 
 ---
 
-<!-- p.81 (orig. p.81) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 81
 
 Pozzo
@@ -2084,11 +1842,8 @@ Segue il bell'edificio seicentesco del Collegio dei neofiti; destinato come si �
 
 ---
 
-<!-- p.82 (orig. p.82) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>82
+82
 
 RIONE I MONTI
 
@@ -2104,11 +1859,8 @@ Un certo Giampietro, fienarolo, entrato nel fienile si mise a saggiare le pareti
 
 ---
 
-<!-- p.83 (orig. p.83) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 83
 
 Ogni giorno una folla di infermi e bisognosi si accalcava davanti alla casa, tanto che papa Gregorio XIII (1572-1585) Boncompagni decretò che l'immagine fosse trasferita nella vicina chiesa di S. Salvatore ai Monti. Nella notte dell'otto maggio 1580 alcuni prelati accompagnati da muratori si avvicinarono alla casa per obbedire all'ordine; ma qualcuno vegliava e diede l'alarme a suon di campane affrontò con molti monticiani gli intrusi che, dopo una rissa violenta, furono messi in fuga.
@@ -2129,11 +1881,8 @@ Nella terza cappella è una "Pietà", di Antonio Viviani detto il...
 
 ---
 
-<!-- p.84 (orig. p.84) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>84
+84
 
 RIONE L. MONTI
 
@@ -2169,11 +1918,8 @@ Usava ripetere che bisognava avere tre cuori: uno per amare Dio, uno per amare i
 
 ---
 
-<!-- p.85 (orig. p.85) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 85
 
 La chiesa dei Ss. Sergio e Bacco, oggi Madonna del Pascolo (incisione di G. Vasi).
@@ -2190,11 +1936,8 @@ All'angolo tra via dei Serpenti e via degli Zingari s'erge la chiesa dei Ss. Ser
 
 ---
 
-<!-- p.86 (orig. p.86) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>86
+86
 
 RIONE L. MONTI
 
@@ -2214,11 +1957,8 @@ In questo angolo suggestivo della Suburra si possono ammirare numerose architett
 
 ---
 
-<!-- p.87 (orig. p.87) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 87
 
 Si gira sulla destra per via Urbana e si raggiunge piazza della Suburra dove un'edicola con diverse targhe ricorda la chiesa perduta di S. Salvatore ad Tres Imagines; detta S. Franceschino. Aveva avuto il primo nome da tre immagini del Cristo riprodotte sul portale e raffiguranti la Trinità.
@@ -2235,11 +1975,8 @@ Sulla sinistra scende la via dei Ciancaleoni, proveniente da via dei Capocci: qu
 
 ---
 
-<!-- p.88 (orig. p.88) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>88
+88
 
 RIONE I. MONTI
 
@@ -2263,11 +2000,8 @@ La chiesa, dedicata secondo la tradizione da papa Pio I, fu successivamente eret
 
 ---
 
-<!-- p.89 (orig. p.89) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 89
 
 su commissione del cardinale Caetani. Intorno al 1870 ci fu ad opera del cardinale Luciano Bonaparte il rifacimento della facciata su via Urbana. Si racconta che Francesco da Volterra, mentre gettava le fondazioni per impostare la cupola, rinvenisse un'altra statua del Laocoonte, ma gli operai in breve tempo la fecero sparire, vendendosene i pezzi.
@@ -2288,11 +2022,8 @@ Vi sono murati molti bolli di mattoni romani trovati nello scavo dell'edificio p
 
 ---
 
-<!-- p.90 (orig. p.90) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>90
+90
 
 RIONE MONTI
 
@@ -2314,11 +2045,8 @@ La facciata della chiesa è inquadrata da gruppi di lesene e da un alta trabeazi
 
 ---
 
-<!-- p.91 (orig. p.91) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 
 8
 9499
@@ -2338,11 +2066,8 @@ Gli edifici sulla destra di via Liberiana hanno storie interessanti: il seicente
 
 ---
 
-<!-- p.92 (orig. p.92) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>92
+92
 
 RIONE / MONTI
 
@@ -2360,11 +2085,8 @@ Scavi archeologici al di sotto della basilica hanno fornito importanti dati sull
 
 ---
 
-<!-- p.93 (orig. p.93) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 93
 
 La facciata di S. Maria Maggiore. In una stampa di fine Ottocento identificabile. Interessante piuttosto è che sostituendo le tegole del tetto della basilica, se ne recuperarono molte di età romana imperiale: da Nerone ad Adriano, Marco Aurelio fino a Settimio Severo e Teodorico. Alcune con il monogramma di Cristo erano state fabbricate a Kaccioy in Siria. La basilica più antica, paleocristiana, a tre navate con abside è stata riconosciuta in scavi degli anni Trenta ed era ornata da colonne di reimpiego e da mosaici con «Storie della Bibbia». Ma dal XV secolo in poi la basilica ebbe numerosi rifacimenti e ampliamenti. Il soffitto a cassettoni è di Callisto I e Alessandro VI. Il portico di Gregorio XIII e l'aggiunta delle cappelle di Sisto V e di Paolo V. Clemente risistemò l'abside, Clemente XI costruì il palazzo a sinistra della facciata e finalmente sotto Benedetto XIV, architetto Ferdinando Fuga, la basilica prese la forma attuale:
@@ -2375,11 +2097,8 @@ Tutto l'esterno della basilica è ricco di statue di Santi. L'atrio della basili
 
 ---
 
-<!-- p.94 (orig. p.94) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>94
+94
 
 RIONE L. MONTI
 
@@ -2407,11 +2126,8 @@ Anche il pavimento cosmatesco di Eugenio III (1145-1153) pagato dai nobili roman
 
 ---
 
-<!-- p.95 (orig. p.95) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 95
 
 **La Madonna della neve**
@@ -2438,11 +2154,8 @@ Vediamoli allora questi mosaici. Sulla parete sinistra:
 
 ---
 
-<!-- p.96 (orig. p.96) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>96
+96
 
 RIONE I
 MONTI
@@ -2459,11 +2172,8 @@ Mosè si volta turbato verso gli israeliti che si lamentano per la sete e immerg
 
 ---
 
-<!-- p.97 (orig. p.97) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 97
 
 – combattimento degli ebrei con gli Amaleciti a Rafidam. Mosè su un monte stende le braccia nel gesto dell'orante ottenendo da Dio così la vittoria dei suoi guidati da Giosuè;
@@ -2499,11 +2209,8 @@ A destra è la «Presentazione al tempio di Gesù» e quindi il «Soppio...»
 
 ---
 
-<!-- p.98 (orig. p.98) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>98
+98
 
 RIONE I. MONTI
 
@@ -2523,11 +2230,8 @@ Sempre nella navata centrale sotto il quinto disco di porfido del fantastico pav
 
 ---
 
-<!-- p.99 (orig. p.99) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 99
 
 Navata destra: all'inizio è l'altare dedicato alla Madonna della Neve, vicino al quale è il monumento funebre di Costanzo Patrizii, opera di Alessandro Algardi (1595-1654). Segue il battistero con tazza di porfido rosso e il rilievo dell'«Assunta», opera scultorea di Pietro Bernini (1610).
@@ -2544,11 +2248,8 @@ Una doppia rampa scende all'oratorio del Presepe che con un'importante operazion
 
 ---
 
-<!-- p.100 (orig. p.100) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>100
+100
 RIONE I MONTI
 
 rito dal fondo della navata in questa cappella; In una nicchia trova-
@@ -2606,11 +2307,8 @@ che sostituisce l'altare, erano conservate una volta le ceneri di Giovanni V;
 
 ---
 
-<!-- p.101 (orig. p.101) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 101
+TERZO ITINERARIO 101
 
 Patrizi e di sua moglie ed ora vi sono le reliquie di S. Mattia e altri martiri.
 
@@ -2636,11 +2334,8 @@ Usciamo adesso da una delle porte dell'abside di S. Maria Maggiore in piazza del
 
 ---
 
-<!-- p.102 (orig. p.102) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>102
+102
 
 RIONE L. MONTI
 
@@ -2671,11 +2366,8 @@ Iniziamo il nostro quarto itinerario lasciando piazza dell'Esquilino e, ripercor
 
 ---
 
-<!-- p.103 (orig. p.103) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 103
 
 **La chiesa di S. Lorenzo in Panisperna**
@@ -2715,11 +2407,8 @@ La chiesa di S. Lorenzo in Panisperna in un'incisione di G. Vascoli.
 
 ---
 
-<!-- p.104 (orig. p.104) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>104
+104
 
 RIONE L. MONTI
 
@@ -2790,11 +2479,8 @@ ra mosaici figurati. Più avanti si apre via di S. Agata dei Goti su...
 
 ---
 
-<!-- p.105 (orig. p.105) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 105
 
 cui si affacciano diverse case del Settecento; fra cui il seicento Collegio Fuccioli in cui trovavano ospitalità diciotto giovani di Città di Castello venuti a Roma per studiare teologia, filosofia o legge;
@@ -2819,11 +2505,8 @@ Fra due corpi di fabbrica dell'antico monastero si innalza la facciata barocca e
 
 ---
 
-<!-- p.106 (orig. p.106) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>106
+106
 
 RIONE MONTI
 
@@ -2849,11 +2532,8 @@ Costruita da Marchione d'Arezzo nel 1223, la torre fu sempre della fazione dei g
 
 ---
 
-<!-- p.107 (orig. p.107) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 107
 
 "Le Pigne in testa"
@@ -2872,11 +2552,8 @@ Su via di Campo Carleo si apre l'ingresso alla casa dei Cavalieri di Rodi, del p
 
 ---
 
-<!-- p.108 (orig. p.108) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>108
+108
 
 RIONE L. MONTI
 
@@ -2938,11 +2615,8 @@ sto, in cui è possibile vedere una serie di iscrizioni delle statue
 
 ---
 
-<!-- p.109 (orig. p.109) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 109
 
 dei Summi Viri, che ornavano le esedre del foro stesso e alcuni frammenti delle sculture delle cariatidi e degli scudi con Giove Ammone e ancora di statue bronzee, tra cui un piede dorato e uno splendido capitello corinzio ornato da Pegasi (i cavalli alati del mito di Bellerofonte) e un plastico ricostruttivo del foro di Augusto: Vi sono un clipeo con volti di Dioniso e Arianna dal foro di Nerva e lastre provenienti dalle chiese di S. Nicola, S. Urbano e S. Basilio (d'età medievale).
@@ -2963,11 +2637,8 @@ Insomma in questo tempio le origini leggendarie...
 
 ---
 
-<!-- p.110 (orig. p.110) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>10
+10
 
 RIONE I. MONTI
 
@@ -2989,11 +2660,8 @@ della città e il ruolo di giustiziere di Augusto trovavano la loro ufficiale sa
 
 ---
 
-<!-- p.111 (orig. p.111) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO                                           111
+QUARTO ITINERARIO                                           111
 
 **Papa Gregorio Magno e l'anima di Traiano**
 
@@ -3015,11 +2683,8 @@ Alla dinastia dei Giulio-Claudi chiusasi con la tragica morte di Nerone succedet
 
 ---
 
-<!-- p.112 (orig. p.112) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>112
+112
 
 RIONE MONTI
 
@@ -3039,11 +2704,8 @@ Questa piazza monumentale fu indubbiamente una delle più belle della Roma antic
 
 ---
 
-<!-- p.113 (orig. p.113) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 113
 
 nel tardo impero: Foro della Pace; Quel pochissimo che oggi è visibile di questo foro appartiene al rione Campitelli ma storicamente fa parte dei fori imperiali.
@@ -3055,11 +2717,8 @@ Si entrava nel foro: lungo m 300 e largo m 185, attraverso un grande arco onorar
 
 ---
 
-<!-- p.114 (orig. p.114) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>114
+114
 
 RIONE I
 MONTI
@@ -3072,11 +2731,8 @@ Al di sopra della basilica era un'altra quadriga monumentale con Traiano e, sull
 
 ---
 
-<!-- p.115 (orig. p.115) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 115
 
 Tore e la sua cavalleria: questo fregio, diviso in quattro parti, fu tolto dalla sua sede originale e riadoperato per ornare l'arco di Costantino.
@@ -3093,11 +2749,8 @@ Usciti dal foro di Traiano si prenda per via Magnanapoli salendo le scale, dopo 
 
 ---
 
-<!-- p.116 (orig. p.116) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>116
+116
 RIONE I. MONTI
 
 [Immagine: La colonna di Traiano]
@@ -3108,11 +2761,8 @@ Traiano. Qui era la fronte principale della complessa struttura architettonica, 
 
 ---
 
-<!-- p.117 (orig. p.117) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO                                                                    117
+QUARTO ITINERARIO                                                                    117
 
 ratica; corruzione di piperatica, in quanto qui i romani dell'età di mezzo tenevano probabilmente il mercato delle spezie: Una serie di ambienti dalla complessa disposizione sono appoggiati contro il colle mentre dalla via Biberatica una scala conduce ad una grande galleria a due piani sulla quale si affacciano altri ambienti. La presenza di tante taberne ha fatto credere che si trattasse di un articolato complesso commerciale; ma è piuttosto il caso di vedervi una struttura finanziaria e di rappresentanza commerciale, solo riservata alla vendita al minuto quanto agli uffici delle agenzie di commercio che erano state chiamate a Roma per trasferire il centro economico dell'impero fino ad allora operante nell'Oriente ellenistico.
 
@@ -3134,11 +2784,8 @@ Usciti di nuovo sul largo Magnanapoli si prenda a destra dove...
 
 ---
 
-<!-- p.118 (orig. p.118) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>118
+118
 RIONE L. MONTI
 
 Fatti pochi passi è la chiesa di S. Caterina. Una volta questa chiesa era annessa ad un monastero tenuto dalle suore domenicane e costruito alla munificenza di Porzia Massimi, che era entrata in ordine monacale con il nome di suor Maria Vittoria.
@@ -3165,11 +2812,8 @@ S. Domenico, grande nemico dell'eresia, come ricorda Dante, si batté a lungo co
 
 ---
 
-<!-- p.119 (orig. p.119) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 119
 
 4.@
@@ -3187,11 +2831,8 @@ Nel presbiterio affreschi seicenteschi mostrano «S. Domenico che assiste alla s
 
 ---
 
-<!-- p.120 (orig. p.120) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>120
+120
 RIONE L. MONTI
 
 papa che volle eretta questa chiesa. Al terzo altare di sinistra è un importantissimo affresco frammentario raffigurante la «Madonna con il Bambino e S. Paolo», opera di Benozzo Gozzoli (1460); al primo altare invece è un'interessante tela di G.F. Romanelli (1610-1662) con al centro la «Madonna del Rosario» e intorno tutti i singoli misteri dello stesso Rosario.
@@ -3210,11 +2851,8 @@ Il rione Monti include via Nazionale fino all'incrocio con via...
 
 ---
 
-<!-- p.121 (orig. p.121) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 121
 
 **Il baule misterioso a S. Croce**
@@ -3233,11 +2871,8 @@ Proseguendo si oltrepassa lo sbocco del Traforo: il tunnel; già rivestito di pi
 
 ---
 
-<!-- p.122 (orig. p.122) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>122
+122
 RIONE L. MONTI
 
 da alcuni rilievi come quello in cui è raffigurato il trasporto della statua del Laocoonte. In cima a tutto è il gruppo della «Gloria riservata agli artisti».
@@ -3256,11 +2891,8 @@ Attraversiamo la strada e prendiamo via Depretis; statista del...
 
 ---
 
-<!-- p.123 (orig. p.123) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 123
 
 Giovane stato italiano e, nel 1860, produttore in Sicilia: Dopo una palazzina in stile pseudo tardo-medievale resta la sconsacrata chiesa di S. Paolo Eremita, costruita intorno al 1785 su progetto di Clemente Orlandi. La facciata, concava, incorniciata da alte paraste e basso timpano, include un breve protiro convesso su cui stanno un leone e un corvo: simboli del Santo che una volta si affrontavano ai lati di una palma e oggi, davanti all'antico finestrone centrale, sorreggono lo stemma dei Savoia.
@@ -3273,11 +2905,8 @@ Si gira a sinistra per via del Quirinale. Il marciapiede di sinistra è rione Mo
 
 ---
 
-<!-- p.124 (orig. p.124) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>124
+124
 
 RIONE I. MONTI
 
@@ -3295,11 +2924,8 @@ Superiormente, ad un balconcino si affaccia un'edicola con cupolino oltre la qua
 
 ---
 
-<!-- p.125 (orig. p.125) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO 125
+QUARTO ITINERARIO 125
 
 le in cui una volta era ben visibile la «Trinitàs» in affresco: La cupola, a pianta ellittica, con ampi finestroni, sorregge una lanterna dove le colonne separano spicchi concavi. Su tutto sta una copertura a gradoni.
 
@@ -3313,11 +2939,8 @@ Si riprende via del Quirinale; sul marciapiede ora più ampio, si passa accanto 
 
 ---
 
-<!-- p.126 (orig. p.126) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>126
+126
 
 RIONE MONTI
 
@@ -3347,11 +2970,8 @@ Un'elegante scalinata curvilinea è alla base della facciata che, sostenuta da c
 
 ---
 
-<!-- p.127 (orig. p.127) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 127
 
 G. Vasi, la chiesa di S. Andrea al Quirinale
@@ -3366,11 +2986,8 @@ Il contiguo edificio del noviziato di S. Andrea è oggi sede della Direzione Gen
 
 ---
 
-<!-- p.128 (orig. p.128) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>128
+128
 
 RIONE L. MONTI
 
@@ -3384,11 +3001,8 @@ La facciata su piazza del Quirinale è contraddistinta da paraste e ornata da el
 
 ---
 
-<!-- p.129 (orig. p.129) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 129
 
 Palazzo Pallavicini-Rospigliosi in un'incisione di G. Vasi.
@@ -3401,11 +3015,8 @@ Il palazzo recintato da un alto muro apre il suo grande portale principale su vi
 
 ---
 
-<!-- p.130 (orig. p.130) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>130
+130
 
 RIONE L. MONTI
 
@@ -3419,11 +3030,8 @@ Usciti dal palazzo, che sulla destra presenta altri edifici settecenteschi, supe
 
 ---
 
-<!-- p.131 (orig. p.131) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione II. Trevi
+Rione II. Trevi
 di Ludovico Pratesi
 
 **Le origini e l'evoluzione urbanistica**
@@ -3444,11 +3052,8 @@ L'acqua Vergine ha inizio all'ottavo miglio sulla via Collatina in...
 
 ---
 
-<!-- p.132 (orig. p.132) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>132
+132
 
 RIONE II. TREVI
 
@@ -3470,11 +3075,8 @@ Dai decarconali si passò, nel 1141, ai tredici «banderis» e il secondo fu det
 
 ---
 
-<!-- p.133 (orig. p.133) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI E L'EVOLUZIONE URBANISTICA
+LE ORIGINI E L'EVOLUZIONE URBANISTICA
 133
 
 ...ora è situato l'ingresso) a quella di S. Salvatore de Camilliano (chiesa scomparsa che si trovava nei pressi di piazza del Collegio Romano), per salire per Santa Maria in via Lata fino alla chiesetta di S. Maria de Cannella, chiamata così per il fatto di appartenere al Collegio degli speziali i quali, nei giorni festivi, vi collocavano vasi pieni di essenze profumate; tra cui la cannella. Il Trejo proseguiva verso un altro tempio scomparso, quello di S. Nicola in Arcione (nei pressi dell'attuale Traforo), raggiungeva la chiesa di S. Anastasio e saliva sul Quirinale, dove confinava con il rione Monti.
@@ -3495,11 +3097,8 @@ Nel Seicento l'assetto di questa parte della città era già assai simile a quel
 
 ---
 
-<!-- p.134 (orig. p.134) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>134
+134
 
 RIONE TREVI
 
@@ -3517,11 +3116,8 @@ La via Pia venne quindi ribattezzata via del Quirinale e via XX Settembre; e div
 
 ---
 
-<!-- p.135 (orig. p.135) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 135
 
 Trasformata: scomparvero uno per uno i viottoli che si inerpica-
@@ -3591,11 +3187,8 @@ Dopo l'accaduto, Belisario si rese conto di aver fatto un grave
 
 ---
 
-<!-- p.136 (orig. p.136) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>136
+136
 
 RIONE II. TREVI
 
@@ -3621,11 +3214,8 @@ Per tutto il medioevo questo funzionò perfettamente: l'acqua di Trevi era tenut
 
 ---
 
-<!-- p.137 (orig. p.137) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 137
 
 Conservatori, che avevano il compito, una volta al mese, di ac-
@@ -3685,11 +3275,8 @@ rino».
 
 ---
 
-<!-- p.138 (orig. p.138) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>138
+138
 
 RIONE II. TREVI
 
@@ -3707,11 +3294,8 @@ Ma il problema sarebbe stato risolto soltanto 24 anni dopo con l'elezione di pap
 
 ---
 
-<!-- p.139 (orig. p.139) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 139
 
 **La fontana di Trevi**
@@ -3732,11 +3316,8 @@ Ma oltre a questa, esiste un'altra tradizione, meno nota ma più romantica; anco
 
 ---
 
-<!-- p.140 (orig. p.140) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>140
+140
 
 RIONE II. TREVI
 
@@ -3758,11 +3339,8 @@ L'edificio sulla sinistra (n. 96), nonostante le ripetute trasformazioni, ha man
 
 ---
 
-<!-- p.141 (orig. p.141) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 141
 
 La facciata dei Ss. Vincenzo e Anastasio (incisione di G. Vasi).
@@ -3783,11 +3361,8 @@ Osservando attentamente l'architettura, si notano alcuni particolari curiosi: in
 
 ---
 
-<!-- p.142 (orig. p.142) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>142
+142
 
 RIONE II. TREVI
 
@@ -3815,11 +3390,8 @@ Tra i negozi che occupano i diversi vani del pianterreno: spicca per la sua part
 
 ---
 
-<!-- p.143 (orig. p.143) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 143
 
 Secondo itinerario
@@ -3851,11 +3423,8 @@ Il piccolo interno a croce greca non possiede attrative particolari, a parte i p
 
 ---
 
-<!-- p.144 (orig. p.144) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>144
+144
 
 RIONE II. TREVI
 
@@ -3875,11 +3444,8 @@ L'interno merita una visita: l'ampia aula rettangolare ha le pareti interamente 
 
 ---
 
-<!-- p.145 (orig. p.145) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 145
 
 L'ultimo quarto del XV secolo; sono opera di pittori come il Pomarancio, Paris Nogari, Baldassarre Croce, Cesare Nebbia, Giovanni de Vecchi.
@@ -3896,11 +3462,8 @@ Via di S. Marcello sbuca in piazza dei Ss. Apostoli, sulla quale si affaccia la 
 
 ---
 
-<!-- p.146 (orig. p.146) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>146
+146
 
 RIONE II. TREVI
 
@@ -3957,11 +3520,8 @@ cui il pianterreno è occupato da negozi, fiancheggiato da due
 
 ---
 
-<!-- p.147 (orig. p.147) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 147
 
 portali ed altrettanti padiglioni; di notevole eleganza; con ariose logge, grandi finestre. Di ultimi, quello situato all'angolo con via Quattro Novembre è la «Coffee houses» che ospita all'interno una sala affrescata da Francesco Mancini con la favola di «Amore e Psiche».
@@ -3978,11 +3538,9 @@ Dalla parte opposta della piazza, altre due residenze gentilizie: al numero 73, 
 
 ---
 
-<!-- p.148 (orig. p.148) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<channel|>148
+148
 
 RIONE II. TREVI
 
@@ -4006,11 +3564,8 @@ Di fronte a palazzo Balestra, una volta attraversato l'ultimo tratto di via Quat
 
 ---
 
-<!-- p.149 (orig. p.149) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 149
 
 Niente edificio, che ospita oggi la sede della prefettura: il cinquecento-
@@ -4026,11 +3581,8 @@ I suoi discendenti non andarono ad abitare nella fastosa residenza; che venne du
 
 ---
 
-<!-- p.150 (orig. p.150) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>150
+150
 
 RIONE II. TREVI
 La basilica dei Ss. Apostoli
@@ -4057,11 +3609,8 @@ L'interno custodisce diversi tesori d'arte, a cominciare da un pregevole rilievo
 
 ---
 
-<!-- p.151 (orig. p.151) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 151
 
 Oltrepassato il portico; si accede alle tre grandi navate su pilastri a lesene corinzie abbinate, su cui si aprono tre cappelle per lato. La grandiosa ed aerea volta è interamente affrescata dal Baciccia nel 1707; raffigura «Il trionfo dell'ordine di S. Francesco», mentre un suo allievo, Giovanni Odazzi, ha eseguito l'affresco che orna la volta del presbiterio con una «Cacciata degli angeli ribelli», concepita in pieno settecentesco ed eseguita due anni dopo.
@@ -4086,11 +3635,8 @@ Questa strada si trova oggi stretta tra la mole cinquecentesca di Palazzo Valent
 
 ---
 
-<!-- p.152 (orig. p.152) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>152
+152
 
 RIONE II. TREVI
 
@@ -4150,11 +3696,8 @@ Essa può tra il popolo quei...
 
 ---
 
-<!-- p.153 (orig. p.153) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 153
 
 Quasi attaccata a S. Maria di Loreto si trova un'altra chiesa dalla struttura simile (tanto che vengono chiamate «le chiese gemelle»). Si tratta del SS. Nome di Maria, costruita tra il 1736 ed il 38 in sostituzione dell'antica S. Bernardo della Compagnia; edificata nel 1418 da un patrizio romano nel giardino della sua abitazione: Nel piccolo tempietto si era radunata appunto la compagnia S. Bernardo, che due secoli dopo era praticamente estinta. La sostituì quella legata al SS. Nome di Maria, che si era formata nel 1683 a seguito della vittoria dell'esercito cristiano contro i Turchi.
@@ -4175,11 +3718,8 @@ Arrivati in cima alla «cordonata», si volti a destra verso largo Magnanapoli: 
 
 ---
 
-<!-- p.154 (orig. p.154) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>154
+154
 
 RIONE I. TREVI
 
@@ -4201,11 +3741,8 @@ A sinistra si apre la stretta via del Carmine, che conduce in un piccolo slargo 
 
 ---
 
-<!-- p.155 (orig. p.155) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 155
 
 mellini; da «alcuni fienili di proprietà dell'abbazia di Grottaferrata, quali per decreto di Gregorio XV con breve spedito al 3 febbraio 1623, vennero smembrati dalla suddetta abbazia». I lavori, iniziati ufficialmente nel 1624 e «sponsorizzati» dal munifico cardinale Odoardo Farnese, furono molto lunghi e procedettero per fasi, fino al 1750, e furono diretti, nella fase maggiormente avanzata, dall'architetto Michelangelo Specchi. Nel 1772 un grave incendio distrusse completamente la chiesa; che venne ricostruita seduta stante per volontà di un papa, Clemente XVI Ganganelli, e di un altro cardinale, Domenico Orsini d'Aragona: i lavori terminarono tre anni dopo.
@@ -4224,11 +3761,8 @@ Sulla sinistra, al numero 17, c'è l'ingresso alla Galleria Colon-
 
 ---
 
-<!-- p.156 (orig. p.156) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>156
+156
 
 RIONE II. TREVI
 
@@ -4240,11 +3774,8 @@ La strada sfocia nell' omonima piazza, di cui il nome, attestato già all'inizio
 
 ---
 
-<!-- p.157 (orig. p.157) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 157
 
 La piazza, una delle più tranquille della città, è dominata dalla facciata del Palazzo della pontificia università Gregoriana; costruito nel 1927 da Giulio Barluzzi per volontà di papa Pio XI, per ospitare appunto l'istituzione ecclesiastica; fondata nel 1551 da S. Ignazio di Loyola con il preciso scopo di fornire al clero adeguati corsi di teologia e di altre discipline umanistiche.
@@ -4279,11 +3810,8 @@ Percorrendo questo ed altri vicoletti limitrofi, si possono fare
 
 ---
 
-<!-- p.158 (orig. p.158) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>158
+158
 
 RIONE II. TREVI
 
@@ -4309,11 +3837,8 @@ Degne di nota anche le altre costruzioni che circondano la piazza: il palazzetto
 
 ---
 
-<!-- p.159 (orig. p.159) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 159
 
 [Immagine: Ritratto di Giorgio Castriota Scanderbeg]
@@ -4335,11 +3860,8 @@ dici del Quirinale, stretto tra la parte inferiore del palazzo ponti-
 
 ---
 
-<!-- p.160 (orig. p.160) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>160
+160
 RIONE II. TREVI
 
 ficio ed il retro del Palazzo della Dataria, costruito da Andrea Busiri Vici nel 1860.
@@ -4362,11 +3884,8 @@ La strada ospita altri interessanti edifici, tra cui spicca il Palazzo di S. Fel
 
 ---
 
-<!-- p.161 (orig. p.161) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 161
 
 periore di S. Nicola de Portiis (visibile sulla destra) e in un sotterraneo sotto ad un cortiletto attiguo; i resti di un sepolcro romano, dei Semproni, del secolo aC. Sempre su via della Dataria si affaccia il Palazzo Testa Piccolomini (n. 22), costruito intorno al 1719 da Filippo Barigioni per ordine di Giovanni Ferrante Testa Piccolomini, sui resti di una casa del Seicento.
@@ -4383,11 +3902,8 @@ Usciti dal palazzo, procedendo verso la Dataria, si possono fare altre piacevoli
 
 ---
 
-<!-- p.162 (orig. p.162) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>162
+162
 
 RIONE II. TREVI
 S. Croce e S. Bonaventura dei Lucchesi
@@ -4414,11 +3930,8 @@ Come mai proprio i lucchesi? Bisogna ricordare, a questo proposito, che fin dall
 
 ---
 
-<!-- p.163 (orig. p.163) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 163
 
 Nella seconda metà del Seicento l'edificio venne completamente ristrutturato dall'architetto Mattia De Rossi, allievo del Bernini, ed assunse l'aspetto che ha ancora oggi.
@@ -4442,11 +3955,8 @@ Si imbocchi quindi via dell'Umiltà, che prende il nome dalla chiesina poco nota
 
 ---
 
-<!-- p.164 (orig. p.164) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>164
+164
 
 RIONE I. TREVI
 
@@ -4465,11 +3975,8 @@ Nei anni del secolo scorso l'edificio venne acquistato dal conte Ascanio Savorgn
 
 ---
 
-<!-- p.165 (orig. p.165) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO 165
+QUARTO ITINERARIO 165
 
 **Pietro Savorgnan di Brazzà**
 
@@ -4510,11 +4017,8 @@ Dopo aver percorso in lungo e in largo la parte bassa del rione Trevi, questo it
 
 ---
 
-<!-- p.166 (orig. p.166) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>166
+166
 
 RIONE II. TREVI
 
@@ -4536,11 +4040,8 @@ Nella chiesa, che doveva avere a quel tempo un aspetto piuttosto modesto, nel gi
 
 ---
 
-<!-- p.167 (orig. p.167) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 167
 
 Riforma interna della chiesa: l'organizzatore di questo singolare
@@ -4605,11 +4106,8 @@ na dei Medici: sembra si tratti degli avanzi di quelle realizzate da
 
 ---
 
-<!-- p.168 (orig. p.168) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>168
+168
 RIONE II. TREVI
 
 Luca della Robbia per la pavimentazione delle logge vaticane.
@@ -4629,11 +4127,8 @@ Restammo stupefatti dalla quantità de' morti:
 
 ---
 
-<!-- p.169 (orig. p.169) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 169
 
 alcuni dicevano che fosse qualche crudeltà di Nerone, per essere ivi appresso alcuni edifizi di esso Nerone, e che fossero martiri. Altri dissero qualche gran peste: io andai congetturando che per non essere sfondate di sopra dette volte, fossero stati messi per la bocca, e vanno di cinque dalla cima della volta fino all'ossa era il calo che aveva fatto mancando la carne: se vi fossero stati messi come ossa, avrebbero riempito fino alla sommità della volta e ossa si vedrebbero confusamente gittate; ma vediamo li corpi interi. Questo da notizia che vi fosseri messi con la carne, non significava altro, che a muratori pareva mille anni di fuggire da quelli cadaveri...
@@ -4656,11 +4151,8 @@ In fondo al cortile si vede la massiccia mole del palazzo, dalle linee semplici 
 
 ---
 
-<!-- p.170 (orig. p.170) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>170
+170
 
 RIONE II. TREVI
 
@@ -4678,11 +4170,8 @@ Il fabbricato, una volta terminato, era perfettamente funzionale e poteva accogl
 
 ---
 
-<!-- p.171 (orig. p.171) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 171
 
 Alcuni lavori eseguiti nell'Ottocento hanno purtroppo snaturato completamente l'originario aspetto dell'edificio: sono stati eliminati un grazioso portico angolare e la scalinata a doppia rampa posta al centro della facciata, dove ora si vede un'iscrizione che ricorda il completamento della costruzione, avvenuta nel 1730 sotto il pontificato di Clemente XII (lo stemma inserito nel prospetto è quello dei Corsini, la famiglia a cui apparteneva il pontefice). Sopra il portale d'accesso è collocato un secondo stemma: quello di Pio IX, in memoria della sistemazione ottocentesca dell'immobile. Negli ultimi anni le scuderie sono state restaurate a cura di Gae Aulenti e i loro ambienti sono stati destinati ad ospitare mostre ed esposizioni.
@@ -4703,11 +4192,8 @@ Per tutto il medioevo invece la sommità del Quirinale doveva avere un aspetto a
 
 ---
 
-<!-- p.172 (orig. p.172) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>172
+172
 
 RIONE II. TREVI
 
@@ -4721,11 +4207,8 @@ Ma è solo nel Settecento che la piazza del Quirinale raggiunge un assetto press
 
 ---
 
-<!-- p.173 (orig. p.173) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 173
 
 # Piazza del Quirinale con l'omonimo palazzo e il Palazzo della Consulta in un'incisione di G. Vasi.
@@ -4747,9 +4230,7 @@ Piazza del Quirinale con l'omonimo palazzo e il Palazzo della Consulta in un'inc
 
 ---
 
-<!-- p.174 (orig. p.174) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
 thought: []174
 RIONE II. TREVI
 
@@ -4773,11 +4254,216 @@ La prima parte del progetto, relativa all'inserimento dell'obelisco, venne attua
 
 ---
 
-<!-- p.183 (orig. p.183) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
+175
+
+alla base quattro che sorreggono festoni d'alloro; il metallo utilizzato venne ricavato dalla fusione di alcune armi provenienti da Castel Sant'Angelo.
+
+Sull'erezione dell'obelisco (che non fu molto semplice: dal momento che era rotto in tre pezzi) circolarono alcune divertenti facezie: una riguardava l'anagramma del nome dell'architetto Antinori, «non tirai», e l'altra sulla scritta che venne apposta una notte sul piedistallo della statua attribuita a Fidia: «opus Fidiae» divenne «opus perfidiae Pii Sextis».
+
+Fu soltanto alcuni anni dopo; sotto il pontificato di Pio VI, che si stabilì di mettere in pratica l'idea di collocare davanti alle statue la grande conca di granito del Campo Vaccino, come era stato suo tempo suggerito dall'Antinori. L'intervento fu affidato a Raffaele Stern, e venne eseguito sotto la direzione dell'abate Carlo Fea, che era commissario alle antichità di Roma.
+
+Davanti alla fontana s'erge il maestoso palazzo della Consulta, costruito dall'architetto Ferdinando Fuga per ordine di papa Clemente XII tra il 1732 ed il 1737, su un terreno che era occupato in precedenza da un edificio cinquecentesco; noto come il palazzo del Cardinale di Vercelli, al secolo Sebastiano Ferrero.
+
+I fondi necessari alla costruzione furono ricavati dal gettito del gioco del lotto; che era stato riattivato proprio da papa Clemente XII, dopo che Benedetto XII lo aveva proibito.
+
+L'edificio ospitava il tribunale della Sacra Consulta; che si occupava di cause civili, penali e miste; insieme alla Segnatura dei brevi (dove venivano redatte le lettere del papa) e ad alcune compagnie militari; di cui una di «corazzieri».
+
+Durante l'occupazione francese, nel 1798, divenne sede della prefettura di Roma, poi, alla fine della dominazione napoleonica, tornò alla sua funzione principale, che mantenne fino al 1870. Dopo quella data, cambiò destinazione diverse volte: prima fu adibito a residenza dei principi ereditari di Savoia; poi, nel 1874, divenne la sede del ministero degli esteri.
+
+Nel 1922 passò al ministero delle colonie, ed infine dal 1955 ospita la Corte costituzionale. Pur avendo un ruolo di rappresentanza, l'edificio è improntato a criteri architettonici di funzionalità; brillantemente concepiti dal Fuga: la facciata, a due piani, è scandita da alte paraste; vi si aprono tre portali, tutti sormontati da frontoni: su quelli laterali sono collocati due trofei di Filippo Della Valle (1735), mentre quello centrale è occupato da due statue di Francesco Maini, che raffigurano la «Giustizia» e la «Religione» (1739). Sulla sommità troneggia lo stemma del papa Corsini fiancheggiato da figure alate dello scultore Paolo Benaglia, sempre del 1735.
+
+Dal portone centrale si entra nel cortile d'onore, a forma di rettangolo leggermente irregolare; esso è dominato dal monumentale scalone della controfacciata a doppia rampa che si sviluppa ai lati di una sorta di asse portante costituito da tre aperture sovrapposte: che terminano con lo stemma del papa Corsini.
+
+Nei saloni interni esistono ancora i resti di una decorazione a fregi del Settecento; opera di pittori come Antonio Bicchierai, Giandomenico Pastrini e Bernardino Nocchi.
+
+---
+
+
+176
+
+**RIONE II. TREVI**
+
+**Il palazzo del Quirinale**
+
+L'area dove oggi sorge il palazzo del Quirinale era occupata, alla fine del Quattrocento, dalla villa del cardinale Oliviero Carafa, composta da un edificio circondato da una vigna e da un piccolo orto, dove il porporato aveva raccolto una grande quantità di epigrafi, frammenti antichi e statue. Uomo di grande cultura, aveva radunato intorno a sé diversi umanisti di grande valore; tra cui Ermolao Barbaro, un importante veneziano che si rifugiò nella villa del Carafa nel 1493, sperando così di scampare alla peste che infuriava nella città eterna, ma invano.
+
+Nel 1545 la villa era passata di proprietà ad un discendente del cardinale, Pirro Carafa: quest'ultimo decise di affittarla, forse per ragioni economiche, ad Orazio Farnese: che vi accolse con grandi onori papa Paolo III, suo parente.
+
+Cinque giorni dopo l'affittuario è invece Ippolito d'Este, un altro cardinale figlio di Alfonso I di Ferrara e di Lucrezia Borgia; sotto Ippolito comincia per la villa un periodo di grande splendore, che non si spegne neppure quando a lui succede il nipote Luigi. L'intero complesso ospita raccolte di antichità e raffinate collezioni d'arte, mentre vengono effettuati cospicui lavori di ampliamento e acquisti di altri terreni circostanti: ai due «casini» originari ne viene aggiunto un terzo per ospitare degnamente il papa Pio V Ghislieri, che vi rimase qualche tempo nel 1566, attratto dalla salubrità dell'aria e dall'amenità del luogo.
+
+Il parco divenne presto celebre in tutta Roma per la bellezza delle sue fontane, decorate da statue antiche, tra cui una Venere al bagno ed un «Ganimede che gioca con un ciagno».
+
+Alla realizzazione di questo complesso residenziale avevano concorso diversi artisti: il giardino era stato affidato a Girolamo da Carpi, architetto di fiducia del cardinale d'Este, che venne poi affiancato da Giovanni Galvano e Pirro Ligorio.
+
+La storia della villa cambiò all'ascesa al soglio pontificio di Gregorio XI Boncompagni; il quale, mentre vi trascorreva alcuni giorni durante l'estate del 1572, ospite degli Este, pensò di costruirvi sopra un edificio per farne la residenza estiva dei papi, che era in periodo il palazzo di S. Marco.
+
+Purtroppo il progetto era piuttosto dispendioso; e per qualche tempo non se ne fece nulla: dieci anni dopo Gregorio tornò alla carica; e chiese al suo architetto di fiducia, Ottaviano Nonni, detto il Mascherino, di seguire i lavori. Fu infatti Mascherino a dare corpo ai desideri dell'augusto pontefice.
+
+Si lavorò molto, e di buona lena, fatto sta che dopo un solo anno il palazzo era già a buon punto (anche se inabitabile), tanto che si cominciò a decorare l'interno di alcuni saloni: nel '84 era pronta anche la torre del belvedere. Insomma, nell' '85 l'edificio era praticamente finito; e già parzialmente decorato all'interno.
+
+Alla morte di papa Boncompagni, la villa, che non era stata mai acquistata dal pontefice, ritornò nelle mani di Luigi d'Este, a sua volta inquilino dei Carafa: convinto forse di mantenere lungo la superba residenza il cardinale decise di iniziare nuovi lavori di ampliamento; che si interruppero alla sua morte, avvenuta dopo un anno.
+
+A quel punto il successore di papa Boncompagni, Sisto V Peretti, ritornò alla carica; e decise di acquistare l'intero complesso dagli eredi Carafa, per trasformarlo in un vero e proprio palazzo degno del capo dello Stato pontificio.
+
+---
+
+
+QUARTO ITINERARIO
+177
+
+Nel 1589 il Peretti, coadiuvato dal suo architetto Domenico Fontana, procedette ad una radicale ristrutturazione del complesso: che doveva passare da villa suburbana a residenza pontificia. Si decise di costruire un nuovo edificio posto di fronte alla villa gregoriana, di collegarlo con quest'ultima mediante due lunghe ali porticate, con al piano superiore gallerie. Fontana costruì però soltanto una (quella verso la piazza), mentre sulla strada Pia venne mantenuto il prospetto della costruzione originaria, a cui fu aggiunto un fabbricato lungo e stretto per la guardia svizzera, primo nucleo di quello che diventerà poi la «Manica lunga».
+
+Il primo pontefice a risiedere in maniera stabile per lunghi periodi nel palazzo fu papa Clemente VIII Aldobrandini, nel 1595.
+
+I lavori di ampliamento furono ripresi in grande stile da Paolo V Borghese, che senza badare a spese fece realizzare da Flaminio Ponzio due ali verso il giardino; parallela a quella sulla piazza voluta da Sisto V, cui venne aggiunta un'ampia altana con sette finestre, inserita al centro della costruzione.
+
+All'interno del fabbricato, il papa fece realizzare due cappelle sovrapposte: quella del Presepio, al pianterreno, affrescata da Baldassarre Croce, e la cappella dell'Annunciazione, al piano nobile, decorata da Guido Reni.
+
+Alla scomparsa del Ponzio subentrò Carlo Maderno; che si occupò del rifacimento del lato sulla strada Pia, allungato per ricavare un grande vano dove collocare la cappella Paolina e la sala regia; sempre del Maderno è il grande portale sulla piazza, eseguito nel 1615 e decorato l'anno successivo con le statue dei Ss. Pietro e Paolo, di Stefano Maderno e Guglielmo Berthélot.
+
+Con l'inaugurazione della Cappella Paolina, avvenuta nel 1617, si concluse l'opera voluta da papa Borghese, che aveva fatto assumere al palazzo l'aspetto che ha ancora oggi.
+
+Nel Seicento vanno ricordate altre importanti aggiunte al complesso; prima tra tutte il potenziamento delle sue capacità difensive, attuato sempre dal Maderno per ordine di papa Urbano VIII Barberini.
+
+Una solida cinta di mura che circonda l'intero perimetro dei giardini, ampliati per l'occasione con una serie di acquisti di terreni circostanti, fu realizzata nel 1625; e l'anno successivo venne eretto sulla piazza del Quirinale il massiccio torrione circolare dove furono collocate le artiglierie necessarie a sorvegliare l'ingresso dell'edificio. Anche il quartiere delle guardie svizzere fu aumentato di un piano.
+
+Poco più di dieci anni dopo, nel 1638, il Bernini ricevette l'incarico di progettare la loggia delle Benedizioni aperta sulla fronte verso la piazza, mentre sotto il pontificato di Alessandro VII Chigi, si procedette alla decorazione di alcuni saloni interni affidata a Pietro da Cortona.
+
+Nel Settecento finalmente il palazzo diventa in tutto e per tutto la residenza pontificia, preferita da Clemente XI allo stesso Vaticano. In questo secolo non si registrano modifiche di particolare entità; a parte l'aggiunta, in fondo alla «Manica lunga», della palazzina del segretario della cifra (1730-1732) e la costruzione, nei giardini, della «Coffee House», voluta da Benedetto XIV.
+
+Una piccola parentesi sugli arredi interni dell'edificio, che mutavano a seconda dei gusti dei singoli papi: se ad esempio ad un papa amante del lusso ne succedeva uno austero; tra papi «austeri» si ricordano Benedetto XII, che donò il lussuoso arredo del suo predecessore Clemente XII Corsini alla moglie di Giacomo III d'Inghilterra, e Innocenzo...
+
+---
+
+
+178
+RIONE II. TREVI
+
+Pamphilj. Quando quest'ultimo morì, il cronista del tempo Giacinto Gigli racconta che «il palazzo era talmente vuoto che non vi era neanco una scodella, né un cocchiaro per dare un poco di brodo al papas». Mentre questa era la sorte degli appartamenti privati, quelli di rappresentanza erano arredati in maniera piuttosto fastosa ma non eccessiva, di particolare sfarzo: insomma, una sorta di «lussuoso convento».
+
+Tutti i tesori d'arte accumulati dai papi durante tre secoli fecero una brutta fine quando nel 1798, in seguito alla cattura di papa Pio VII da parte delle truppe francesi, il Quirinale fu travolto dall'ondata rivoluzionaria dei giacobini: l'edificio fu completamente saccheggiato dall'armata che, raccontano le cronache dell'epoca, «si portò via anche le porte».
+
+Dopo questa disastrosa parentesi, nel 1800 il Quirinale ospitò di nuovo un pontefice, Pio VII Chiaramonti, che non ebbe vita facile: avendo condannato il regime napoleonico, fu arrestato dalle milizie dell'imperatore la notte del 5 luglio 1809 e deportato.
+
+Due anni dopo, lo stesso Bonaparte dichiarava il palazzo «edificio imperiale» e affidava all'architetto Raffaele Stern il compito di compiere tutte le modifiche necessarie per adattarlo alla sua nuova funzione.
+
+Passata anche la breve stagione dell'imperialismo napoleonico che lasciò nel palazzo, come unico segno tangibile, alcuni fregi dipinti con emblemi e simboli imperiali, nel 1814 papa Pio VII rientrò trionfalmente al Quirinale. Dopo aver visto le nuove decorazioni, commentò lapidario: «Ognun secondo i suoi gusti faremo delle madonne dove loro hanno fatto degli idoli».
+
+Per tutto il successivo corso del XIX secolo il palazzo fu testimone di molti importanti avvenimenti storici, a cominciare dal conclave apertoto la morte di Pio VII nei suoi saloni, per la prima volta nella storia; da cui uscì papa Leone XII della Genga.
+
+La cosa fu ripetuta altre tre volte, fino all'elezione di Pio IX Mastai Ferretti, avvenuta nel 1846: fu proprio dalla loggia delle Benedizioni che il pontefice pronunciò la famosa benedizione all'Italia, accolta dai liberali come prova di simpatia. Nel 1848 il Quirinale venne precipitosamente abbandonato dal papa, e nel marzo dell'anno successivo, in piena Repubblica romana, il suo fu preso da Giuseppe Mazzini, che si insediò negli appartamenti papali.
+
+Ma la breve parentesi libertaria non durò molto: nell'aprile del 1850 Pio IX era di nuovo al Quirinale. E veniamo al 1870. Dopo la breccia di Porta Pia si dice che il papa si trovasse chiuso nei suoi appartamenti, mentre sulla torre sventolava la bandiera bianca: per Pasquino si dedicò al suo passatempo preferito; quello di scrivere sciarade. In quella circostanza, ne compose una sulla parola «tremare».
+
+Sempre al centro delle vicende politiche della città eterna; il Quirinale mantenne questa prerogativa anche dopo l'annessione di Roma al regno d'Italia.
+
+Dopo molte indecisioni relative alla scelta del palazzo che avrebbe dovuto ospitare il re nella nuova capitale; si scelse proprio per il Quirinale. La decisione definitiva fu sollecitata dallo stesso sovrano, come attesta un telegramma scritto da Firenze a firma dell'allora presidente del consiglio Giovanni Lanza: «Il re desidera Quirinale ovvero Consultas».
+
+L'insediamento ufficiale avvenne nel 1871, preceduto dall'arrivo dei principi Umberto e Margherita di Savoia. Per il palazzo cominciò allora un periodo aureo: la principessa era molto amante della vita mondana, però priva di grandi gusti: dopo l'insediamento optò...
+
+---
+
+
+QUARTO ITINERARIO
+179
+
+Dana, ed organizzava ogni mercoledì dei grandi balli, mentre il giorno seguente era dedicato alle riunioni letterarie; a cui partecipavano diversi importanti uomini di cultura.
+
+Coll'andare del tempo l'aspetto mondano della residenza regale, che era stata interamente riarredata con un mobilio più consono ai gusti della monarchia sabauda, andò lentamente scemando verso la fine degli anni Ottanta: nel decennio successivo le poche feste erano ad avvenimenti di grande importanza, come le nozze del principe di Napoli, il futuro re Vittorio Emanuele II, con Elena di Montenegro, avvenute nel 1896.
+
+Quando quest'ultimo divenne re, le luminarie dei balli si spensero per sempre: la famiglia reale si trasferì in una villa fuori porta Salaria e il palazzo venne utilizzato solo come sede ufficiale. Durante la prima guerra mondiale l'edificio fu adibito ad ospedale militare: nelle grandi sale affrescate, tolti mobili ed preziosi arredi, furono collocate file e file di brandine per feriti.
+
+Scarsi furono gli interventi realizzati negli anni successivi: per dovere di cronaca va citato l'allestimento di un appartamento nella palazzina gregoriana dove alloggiò Hitler nel 1938, durante la sua visita a Roma.
+
+Nel 1946 infine il Quirinale ospitò per alcuni mesi Umberto II di Savoia e la sua famiglia, prima dell'avvento della Repubblica: successivamente, il palazzo è diventato sede ufficiale dei presidenti della Repubblica italiana.
+
+Dell'interno verrà data soltanto una descrizione sommaria: dal grande portale del Maderno che si affaccia sulla piazza, sormontato dall'elegante loggia delle Benedizioni, di mano del Bernini, si accede al grande cortile rettangolare.
+
+Sulla sinistra, in fondo alle due lunghe ali porticate, si affaccia il palazzetto cinquecentesco del Mascherino, costruito per conto di papa Gregorio XIII, che si conclude con una elegante torretta decorata con un mosaico disegnato da Carlo Maratta, con la «Vergine e il Bambino».
+
+Le decine e decine di saloni custodiscono molti capolavori d'arte, tra cui vanno segnalati il «Cristo benedicente» di Melozzo da Forlì, collocato in cima allo scalone d'onore, il fregio della sala affrescato dal Tassi e dal Lanfranco, la cappella dell'Annunciata decorata da Guido Reni e tanti altri ancora.
+
+Quasi del tutto sconosciuti ai romani erano, prima di essere periodicamente aperti al pubblico, i giardini del Quirinale, che costituiscono i resti del grande parco della villa d'Este. Pur avendo perso molto del loro aspetto originale a seguito delle trasformazioni subite dall'intero complesso, mantengono ancora un notevole fascino.
+
+Tra le cose più interessanti va ricordata la «Coffee House», costruita da Ferdinando nel 1741 per papa Benedetto XIV, che contiene tre ambienti dalla struttura piuttosto semplice, con volte decorate a stucchi di mano del Cocciolini, in cui sono inserite alcune tele dipinte da Pompeo Batoni, van Bloemen e Masucci. Interessanti le due vedute di Roma del Pannini, collocate alle pareti della saletta di sinistra.
+
+Tra le aiuole ed i vialetti del giardino si possono ammirare alcune importanti fontane di cui la più interessante è senz'altro quella detta dell'organo, fatta costruire da papa Clemente VIII Aldobrandini nel 1596. Sorta sul luogo in cui si trovava il ninfeo della villa d'Este, la fontana è strutturata come una sorta di palcoscenico dove gli elementi naturalistici si combinano con quelli artistici per dare vita ad un vero e proprio spettacolo continuo.
+
+---
+
+
+180
+
+RIONE II. TREVI
+
+L'interno della monumentale nicchia è interamente tappezzato di stucchi policromi che raffigurano storie sacre alternate a figure mitologiche; altre nicchie più piccole, ora vuote, dovevano ospitare in origine le statue di Apollo e delle Muse, rappresentati mentre suonano degli strumenti musicali.
+
+Davanti alla cavità c'è una scalea a gradoni, dove l'acqua scendeva a cascata, a cui seguiva un'ampia peschiera ovale, oggi scomparsa.
+
+L'attrattiva maggiore della fontana era costituita dall'acqua che, scorrendo, azionava degli strumenti musicali in modo da dare l'impressione che a suonare fossero le stesse statue. Certo l'effetto doveva essere abbastanza strabiliante, se un cronista dell'inizio del XVII secolo lo descrive con queste parole: «Domenica mattina l'ambasciatore persiano fu dai ministri del papa splendidamente banchettato nel giardino di Montecavallo al luogo proprio dove sono gli organi che suonano a forza d'acqua, dove, finito il banchetto, furono girate le chiavi dell'acque che sorgiogendo bagnarono sì li Persiani come molti gentiluomini italiani che vi erano presenti, del qual scompiglio si presero moltissimo gusto».
+
+Nel 1833 il monumento venne restaurato da papa Gregorio XVI. Il pontefice decise per l'occasione di aggiornare anche il repertorio musicale dell'organo, che funzionava all'epoca con dei rulli simili a quelli dei «carillon», e fece preparare nuovi rulli con alcuni brani del «Nabucco» di Verdi e del «Mosè» di Rossini.
+
+Un intero lato della piazza è occupato dalla facciata del palazzo del Quirinale, l'attuale sede della presidenza della Repubblica.
+
+Concludiamo la descrizione della piazza del Quirinale con il Palazzo della Famiglia Pontificia, detto oggi della Panetteria, costruito da Paolo Borghese a ridosso della salita della Dataria. Esso si incrica verso la piazza e va a saldarsi con il palazzo pontificio accanto al torrione circolare di Urbano VIII:
+
+Completamente rinnovato sotto il pontificato di Clemente XIII Rezzonico nella seconda metà del Settecento, l'edificio si affaccia internamente sul cortile della Panetteria, a cui si accede anche attraverso il monumentale portale sull'omonima via.
+
+Si imbocchi ora via del Quirinale, di cui il lato sinistro è fiancheggiato dal lungo fabbricato chiamato «Manica lunga», che si conclude all'angolo con la via dei Giardini, di cui riassumiamo in breve la storia. Un primo tratto del fabbricato, che si affacciava in origine sulla strada Pia (oggi via del Quirinale), fu costruito da Sisto Peretti per essere destinato a caserma delle guardie svizzere.
+
+Dopo aver subito alcuni rimaneggiamenti nella prima metà del Seicento, tra il 1656 ed il 59, Alessandro VII Chigi incaricò Bernini di risistemare l'intera ala, che fu prolungata fino al portone su strada Pia. Il segmento conclusivo, che si sviluppa per una lunghezza di 9 finestre, venne aggiunto da Alessandro Specchi su incarico di Innocenzo XIII nel 1721.
+
+Un'ulteriore aggiunta venne fatta da Ferdinando tra il 1730 ed il 32, che costruì, nel tratto finale, la Palazzina del segretario della Cifra. Questa, situata all'angolo tra la via del Quirinale e via dei Giardini, conclude infatti il lungo prospetto della «Manica lunga», su quella lunga fuga.
+
+---
+
+
+QUARTO ITINERARIO 181
+
+Cui si apre una lunghissima teoria di finestre tutte uguali. La palazzina sorge sullo stesso luogo dove si trovava il palazzo del conte Francesco Maria Cantalmaggio di Gubbio, comprato dalla camera apostolica nel 1625 per essere usato come sede del comando delle guardie svizzere: in quel periodo esso era infatti detto «casa del Capitano degli Sguizzeri». È quindi probabile che l'edificio venne inglobato dal Fuga nella costruzione di quella che doveva essere la residenza dell'alto prelato addetto alla «cifratura» della corrispondenza segreta del papa (una carica soppressa da Leone X nel 1903). La facciata della palazzina, dall'aspetto semplice ma armonioso, appare distaccata dal corpo della Manica: vi sono evidenziate, secondo un'abitudine tipica del Fuga, le membrature architettoniche. Il fabbricato ha subito, nel 1870, una radicale trasformazione, dovuta al fatto di essere stato scelto da Vittorio Emanuele II come sua abitazione privata. In quella circostanza vennero distrutte le decorazioni settecentesche, la cappellina degli Svizzeri e la bella fontana disegnata dal Fuga che ornava il cortile. Tutto ciò venne sostituito da una camera da letto, un bagno ed un fumoir per il re, più tre sale decorate da mediocri pittori del tempo.
+
+Con l'avvento della Repubblica, la palazzina è destinata ad abitazione e studio del presidente della Repubblica ed è quindi visitabile.
+
+Di fronte all'imbocco di via della Consulta si apre l'ampio portale del palazzo pontificio; con ai lati due pilastri bugnati che sostengono un timpano triangolare e spezzato: sull'architrave, le aquile e i draghi sono gli emblemi della famiglia Borghese; quest' ala dell'edificio è stata infatti costruita appunto sotto il pontificato di papa Paolo V Borghese.
+
+Subito dopo la Consulta, un giardinetto pubblico, creato intorno agli ultimi anni del secolo scorso, occupa un'area dove sorgevano due chiese del Cinquecento, il Santissimo Sacramento e S. Maria Maddalena, demolite in occasione della visita a Roma dell'imperatore di Germania Guglielmo I, nel 1888.
+
+Il monumento equestre a Carlo Alberto, nel parco, è di Raffaele Romanelli (1900).
+
+Il palazzo d'angolo con via Ferrara non è altro che l'originario noviziato annesso alla chiesa di S. Andrea al Quirinale: rimangiato dopo il 1870, è stato sede, dalla fine del secolo scorso, del ministero della real casa, e dal 1948 è occupato dalla direzione generale del demanio.
+
+Si giunge quindi davanti alla facciata di S. Andrea al Quirinale, uno dei gioielli dell'architettura barocca romana, capolavoro del Bernini. Un secondo giardinetto separa S. Andrea da un altro capolavoro dell'architettura barocca romana: la chiesa di S. Carlino alle Quattro Fontane. Ma tra due monumenti ne esiste un terzo, molto meno conosciuto dei suoi illustri vicini: la chiesetta di Ss. Anna e Gioacchino alle Quattro Fontane, inserita nella facciata di un sobrio edificio del XVIII secolo.
+
+Il tempietto, sconosciuto ai più, fu consacrato una prima volta nel 1611; venne poi completamente rifatto a partire dal 1638 da due architetti, Paolo Maruscelli e Alessandro Sbrenchio.
+
+---
+
+
+182
+
+RIONE II. TREVI
+
+Fino al 1809 era di proprietà dell'ordine dei carmelitani scalzi spagnoli, poi papa Pio VII la diede alle suore adoratrici del SS. Sacramento, che l'abbandonarono dopo trent' anni per passare a S. Maria Maddalena. Nel 1846 fu concessa al collegio ecclesiastico belga.
+
+Il suo interno, piuttosto raccolto, venne descritto dal Titi nel 1763 con queste parole: «picciola, ma ridotta in buona forma». La pianta è a croce greca, con pilastri corinzi e piccola cupoletta.
+
+La chiesa custodisce le sepolture di zuavi belgi e quadri di scarso valore. Pochi metri avanti, in direzione delle Quattro Fontane, si trova l'ingresso al convento e alla chiesa di S. Carlino; una delle ultime opere realizzate da Francesco Borromini prima di suicidarsi nel 1667. Con la sua austera sobrietà, che rivela in pieno la genialità dell'architetto lombardo, S. Carlino costituisce l'altra faccia del barocco romano; contrapposta a quella teatrale magniloquente del fortunato rivale di Borromini, Gian Lorenzo Bernini.
+
+La chiesa di S. Carlino fa angolo con l'incrocio delle Quattro Fontane; dove si intersecano via del Quirinale e via delle Quattro Fontane; sulla sommità del Quirinale. La vista delle prospettive in fondo alle strade che compongono il quadrivio, frutto del piano urbanistico ideato da Sisto V, è davvero spettacolare: da una parte il prospetto michelangiolesco di porta Pia; dall'altra i due «Dioscuri», mentre alle altre due estremità l'obelisco di Trinità dei Monti e quello, innalzato di fronte all'abside di S. Maria Maggiore, da Domenico Fontana nel 1587.
+
+Fu proprio il Fontana a voler sottolineare l'importanza dell'incrocio; smussando gli angoli dei quattro palazzi d'angolo e collocandovi, all'interno di altrettante nicchie, delle statue giacenti, da cui uno zampillo d'acqua sgorga in una vasca sottostante. Le statue, eseguite in maniera piuttosto rozza, riprendono la tipologia classica delle divinità fluviali, e rappresentano la «Fortezza», il «Tevere», l'«Aniene» e la «Fedeltà»: ad ognuna è stata accoppiata una fontana, fatta costruire da alcuni proprietari di edifici esistenti nei pressi.
+
+Si imbocchi quindi il tratto di via delle Quattro Fontane che scende verso piazza Barberini. Sulla sinistra fa angolo il Palazzo Galloppi, Volpi di Misurata, di origini secentesche ma trasformato nel XVII secolo, quando era di proprietà di monsignor Angelo Galloppi, segretario di camera durante il pontificato di Clemente XI Albani: tratti dallo stemma della famiglia Galloppi sono il gallo e la stella, ripetuti sul cornicione e sulle finestre della facciata, mentre sul grande portale che dà su via del Quirinale è presente lo stemma dei Volpi di Misurata, che acquistarono l'edificio nel 1939.
+
+Proseguendo la discesa verso la piazza, si incontrano sul lato sinistro della strada alcuni edifici su cui vale la pena soffermarsi: al n. 143 corrisponde un palazzo costruito in stile neorinascimentale alla fine del XIX secolo, acquistato dal finanziere Giuseppe Volpi di Misurata: Pochi metri dopo, di fronte all'ingresso del giardino di palazzo Barberini, si trova una casa ottocentesca...
+
+---
+
+
+QUARTO ITINERARIO
 183
 
 **La chiesa di S. Carlino alle Quattro Fontane**
@@ -4798,11 +4484,8 @@ Nell'interno, a pianta ellittica, caratterizzato da un'evidente sobrietà, si ap
 
 ---
 
-<!-- p.184 (orig. p.184) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>184
+184
 
 RIONE II. TREVI
 
@@ -4829,11 +4512,8 @@ L'interno, a cui si accede dal collegio, è a navata unica con volta a botte, su
 
 ---
 
-<!-- p.185 (orig. p.185) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 185
 
 **Barberini: storia di una famiglia e di un palazzo**
@@ -4874,11 +4554,8 @@ Alla struttura aerea del corpo centrale, resa ancora più leggera dalla...
 
 ---
 
-<!-- p.186 (orig. p.186) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>186
+186
 
 RIONE II. TREVI
 
@@ -4897,11 +4574,8 @@ Tra questi figurano capolavori come un trittico di Beato Angelico; una «Madonna
 
 ---
 
-<!-- p.187 (orig. p.187) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 187
 
 «Fornarina» di Raffaello; il «Ritratto di Enrico VIII» di Hans Holbein il giovane e tanti altri ancora.
@@ -4920,27 +4594,18 @@ La strada, che scende fino a raggiungere via del Traforo, è costeggiata da alcu
 
 ---
 
-<!-- p.188 (orig. p.188) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>L'immagine fornita è completamente bianca e non contiene alcun testo o contenuto leggibile da elaborare tramite OCR.
+L'immagine fornita è completamente bianca e non contiene alcun testo o contenuto leggibile da elaborare tramite OCR.
 
 ---
 
-<!-- p.189 (orig. p.189) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>L'immagine fornita è completamente bianca e non contiene alcun testo o contenuto leggibile da processare tramite OCR.
+L'immagine fornita è completamente bianca e non contiene alcun testo o contenuto leggibile da processare tramite OCR.
 
 ---
 
-<!-- p.190 (orig. p.190) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>190
+190
 
 RIONE II. TREVI
 
@@ -4965,11 +4630,8 @@ Il palazzetto accanto (n. 6) costruito in stile neoclassico dall'architetto Gius
 
 ---
 
-<!-- p.191 (orig. p.191) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 191
 
 All'interno, in una sorta di sala-museo, sono esposti gli strumenti per la stampa: il patrimonio attuale dell'istituto comprende circa 2000 rami dei maggiori incisori italiani dal XV al XX secolo; oltre ad alcuni stranieri.
@@ -4998,11 +4660,8 @@ L'attuale stemma al centro della composizione è quello della fa-
 
 ---
 
-<!-- p.192 (orig. p.192) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>192
+192
 
 RIONE II. TREVI
 palazzo dell' Accademia di S. Luca
@@ -5027,11 +4686,8 @@ Dopo la morte di Tommaso, nel 1640, il palazzo passò a suo figlio Ambrogio. Que
 
 ---
 
-<!-- p.193 (orig. p.193) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 193
 
 Il braccio sud del palazzo fu definitivamente completato da Borromini nel 1660. L'estroso genio del grande architetto lombardo si manifesta in questo caso in alcune soluzioni decorative di notevole respiro, a cominciare dalla rampa ellittica continua, senza gradini, a cui si accede dal fondo dell'atrio.
@@ -5054,11 +4710,8 @@ In una saletta inoltre sono custodite alcune terrecotte presentate per concorsi 
 
 ---
 
-<!-- p.194 (orig. p.194) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>194
+194
 
 RIONE TREVI
 
@@ -5103,11 +4756,8 @@ Questa zona è tra quelle che più hanno sofferto delle trasformazioni a cui Rom
 
 ---
 
-<!-- p.195 (orig. p.195) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 195
 
 La fontana del Tritone in una veduta ottocentesca.
@@ -5128,11 +4778,8 @@ La figlia di quest'ultimo, Susanna, venne decapitata a seguito di [?]
 
 ---
 
-<!-- p.196 (orig. p.196) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>196
+196
 
 RIONE II. TREVI
 
@@ -5155,11 +4802,8 @@ Segue l'ordine superiore, raccordato al precedente mediante due snelle volute la
 
 ---
 
-<!-- p.197 (orig. p.197) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 197
 
 lare, che racchiude lo stemma del cardinale Rusticucci, <sponsor> della chiesa:
@@ -5179,11 +4823,8 @@ Questa storica istituzione, le cui origini risalgono addirittura al XVI secolo, 
 
 ---
 
-<!-- p.198 (orig. p.198) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>198
+198
 
 RIONE II. TREVI
 
@@ -5211,11 +4852,8 @@ Da segnalare l'affresco della cupola; dipinto dai pittori Coli e Gherardi nel 16
 
 ---
 
-<!-- p.199 (orig. p.199) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 199
 
 5. Nicola da Tolentino in un'incisione secentesca di G.B. Falda e Domenico Guidi: secondo la leggenda, S. Nicola, gravemente malato, avrebbe invocato la Madre di Cristo; che gli sarebbe apparsa insieme agli altri due santi per offrirgli del pane benedetto. In memoria di questo miracolo gli agostiniani distribuivano piccoli pani benedetti, chiamati dal popolo «panini di S. Nicola», che avevano il potere di guarire alcune malattie.
@@ -5234,11 +4872,8 @@ Via del Basilico sbuca su una strada parallela a via di S. Nicola, che prende il
 
 ---
 
-<!-- p.200 (orig. p.200) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>200
+200
 
 RIONE II TREVI
 monumenti scomparsi
@@ -5271,11 +4906,8 @@ I poveri monaci trovarono pace soltanto nel 1660, quando venne...
 
 ---
 
-<!-- p.201 (orig. p.201) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 201
 
 Deciso l'acquisto di alcuni locali situati nei pressi di Piazza Barberini, per costruirvi il convento.
@@ -5291,11 +4923,8 @@ T R E V I
 
 ---
 
-<!-- p.202 (orig. p.202) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione III. Colonna
+# Rione III. Colonna
 di Claudia Cerchiai
 
 **Dalle origini ad oggi**
@@ -5318,11 +4947,8 @@ Il primo settore del rione che, come abbiamo visto, inizia da piazza Sciarra e c
 
 ---
 
-<!-- p.203 (orig. p.203) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 203
 
 to che portava acqua alle terme e allo stagno di Agrippa. A poca distanza da questo arco se ne innalzava un secondo che serviva a sottolineare l'ingresso all'area porticata, con colonne in marmo giallo di Numidia, costruita attorno al tempio del divo Adriano di cui ammiriamo ancora oggi l'elegante colonnato laterale sinistro, inglobato nel Palazzo della Borsa, in piazza di Pietra.
@@ -5344,11 +4970,8 @@ Sull'altro lato della via del Corso (a sinistra venendo da piazza Venezia) era l
 
 ---
 
-<!-- p.204 (orig. p.204) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>204
+204
 
 RIONE III. COLONNA
 
@@ -5362,11 +4985,8 @@ L'altro settore del rione, alle pendici del *collis Hortulorum*; attraversato da
 
 ---
 
-<!-- p.205 (orig. p.205) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 205
 
 Quella scoperta nel 1616 all'angolo tra la via di Porta Pinciana e la via Sistina; appartenente ad Octavia, figlia di M. Appius, e dal complesso dei grandi Horti Luculliani; la villa che il famoso L. Licinio Lucullo, generale e uomo politico, si era fatto costruire su una vasta area (tra via Due Macelli, via le Case e via di Porta Pinciana). Questo complesso, innalzato con le ricchezze accumulate durante la guerra contro Mitridate e la guerra sociale, fu abitato successivamente da Valerio Asiatico e da Messallina.
@@ -5383,11 +5003,8 @@ Un'altra chiesa di notevole interesse storico è quella dedicata a S. Lorenzo in
 
 ---
 
-<!-- p.206 (orig. p.206) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>206
+206
 
 RIONE III. COLONNA
 
@@ -5407,11 +5024,8 @@ Sul lato destro del Corso, di fronte alla piazza Colonna; centro...
 
 ---
 
-<!-- p.207 (orig. p.207) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>importante della vita cittadina; il Comune; nel 1889, fece demolire il Palazzo Piombino per potervi edificare il grande Palazzo della Galleria per la Banca italiana di sconto; che fu ultimato nel 1914 ed infine nel 1915. Con la demolizione del Palazzo Lanci-Bonaccorsi e con la costruzione del nuovo palazzo, sede della Banca commerciale italiana, viene sistemato anche l'allineamento su questo lato della strada.
+importante della vita cittadina; il Comune; nel 1889, fece demolire il Palazzo Piombino per potervi edificare il grande Palazzo della Galleria per la Banca italiana di sconto; che fu ultimato nel 1914 ed infine nel 1915. Con la demolizione del Palazzo Lanci-Bonaccorsi e con la costruzione del nuovo palazzo, sede della Banca commerciale italiana, viene sistemato anche l'allineamento su questo lato della strada.
 
 La Galleria rispondeva, tra l'altro, alla funzione di luogo di passeggio coperto; punto di incontri e commerciale della nuova borghesia romana di recente immigrazione, la cui vita pubblica era scandita dalle chiacchiere al caffè, dagli acquisti, dal passeggiare familiare, dagli appuntamenti d'affari e politici.
 
@@ -5449,11 +5063,8 @@ Il palazzo, bugnato nella parte inferiore e con una serie di sei...
 
 ---
 
-<!-- p.208 (orig. p.208) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>208
+208
 
 RIONE III. COLONNA
 
@@ -5477,11 +5088,8 @@ Questo palazzo, dall'elegante portale che si apre sulla via del...
 
 ---
 
-<!-- p.209 (orig. p.209) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 209
 
 Corso ed è ornato da maschere dalle diverse espressioni; venne innalzato nell'area che in precedenza era occupata dalle abitazioni dei del Bufalo, di cui resta tuttora, nel cortile, un portale della fine del Cinquecento, ancora con gli stemmi araldici della famiglia e che è stato qui riutilizzato.
@@ -5496,11 +5104,8 @@ Proseguendo attorno all'isolato si giunge alla chiesa dedicata a S. Bartolomeo d
 
 ---
 
-<!-- p.210 (orig. p.210) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>210
+210
 
 RIONE III. COLONNA
 
@@ -5518,11 +5123,8 @@ Nel 1876 il banchiere Wedekind acquistò il palazzo che venne ristrutturato dal 
 
 ---
 
-<!-- p.211 (orig. p.211) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>**PRIMO ITINERARIO 21**
+**PRIMO ITINERARIO 21**
 
 **La Colonna di Marco Aurelio**
 
@@ -5548,11 +5150,8 @@ Mili Silla da Viggiù e Leonardo da Sarzana provvidero a restaurare i rilievi de
 
 ---
 
-<!-- p.212 (orig. p.212) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>212
+212
 
 RIONE III. COLONNA
 
@@ -5564,11 +5163,8 @@ La Colonna di Marco Aurelio in una stampa di fine Ottocento.
 
 ---
 
-<!-- p.213 (orig. p.213) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 213
 
 **Le chiese di S. Lucia, di S. Paolino e di S. Maria della Pietà dei Pazzarelli**
@@ -5588,11 +5184,8 @@ Più avanti, in corrispondenza del n. 43, è conservata una bella edicola sacra 
 
 ---
 
-<!-- p.214 (orig. p.214) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>214
+214
 
 RIONE III COLONNA
 
@@ -5614,11 +5207,8 @@ Il tempio occupato dall'attuale edificio della Camera di commercio e borsa prese
 
 ---
 
-<!-- p.215 (orig. p.215) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 215
 
 Piazza di Pietra con l'Hadrianeum in un'incisione di A. Specchi
@@ -5629,11 +5219,8 @@ Lasciata la piazza di Pietra si prosegue per la via de' Pastini che si chiama co
 
 ---
 
-<!-- p.216 (orig. p.216) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>216
+216
 
 RIONE III. COLONNA
 
@@ -5661,11 +5248,8 @@ All'angolo tra la via in Aquiro, via della Colonna Antonina e via [spada] oggi p
 
 ---
 
-<!-- p.217 (orig. p.217) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 217
+PRIMO ITINERARIO 217
 
 della Guglia che, ricordiamo, deve il suo nome all'obelisco di Montecitorio (gli obelischi infatti sono genericamente chiamati Guglie o Aguglie) è il Palazzo del [?] appartenente alla famiglia omonima che, conosciuta già a partire dal Quattrocento, aggiunse al proprio cognome anche [?] di Quintili perché il palazzo venne costruito su alcune proprietà dei Quintili: L'edificio con decorazione in stile barocco è della metà del Settecento ed è ornato alle finestre angolari del primo piano da busti di Eracle con la clava ad esclusione dell'ultima, su via della Guglia che, come le altre del primo piano, è ornata invece da protomi di teste leonine che si affacciano <curiose> sulla strada, forse alludenti allo stemma di famiglia: Quelle degli altri piani hanno invece ghirlande e teste femminili. Il portone, ornato dal motivo di una conchiglia e da rami di alloro; ha i battenti formati da una valva di conchiglia con coppie di sirene che battono su uno stemma con monogramma:
 
@@ -5681,11 +5265,8 @@ Nel 1504 l'officiatura della chiesa venne affidata da papa Giulio I alla Congreg
 
 ---
 
-<!-- p.218 (orig. p.218) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>218
+218
 
 RIONE III. COLONNA
 S. Stefano del Trullo
@@ -5710,11 +5291,8 @@ All'interno, l'altare maggiore, completamente in marmo, fu fatto...
 
 ---
 
-<!-- p.219 (orig. p.219) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 219
 
 Costruire nel 1681 dal patriarca di Costantinopoli monsignor Stefano Ugolini, il quale volle: sempre di marmo, anche il rivestimento delle pareti dell'abside.
@@ -5733,11 +5311,8 @@ Il Santo è raffigurato in una tela del pittore romano Pietro Gagliardi (1809-18
 
 ---
 
-<!-- p.220 (orig. p.220) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>220
+220
 
 RIONE III. COLONNA
 
@@ -5753,11 +5328,8 @@ Il collegio, a due piani e con cortile interno, è stato in gran parte ristruttu
 
 ---
 
-<!-- p.221 (orig. p.221) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 22
 
 La facciata di palazzo Capranica con la torre quadrangolare d'angolo.
@@ -5776,11 +5348,8 @@ Riaperto nel 1714, il teatro vide la rappresentazione della «Pamela» del Goldo
 
 ---
 
-<!-- p.222 (orig. p.222) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>222
+222
 
 RIONE III. COLONNA
 
@@ -5796,11 +5365,8 @@ Si giunge così alla piazza della Maddalena che è al confine con il rione VII (
 
 ---
 
-<!-- p.223 (orig. p.223) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 223
 
 La chiesa di S. Maria Maddalena in un'incisione di G. Vasari.
@@ -5827,11 +5393,8 @@ In questa chiesa è sepolta Teresa Benicelli: la fanciulla che si lasciò morire
 
 ---
 
-<!-- p.224 (orig. p.224) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>224
+224
 
 RIONE III. COLONNA
 
@@ -5846,11 +5409,8 @@ Camillo de Lellis, nonostante la sua gamba malata, viaggiò in tutta l'Italia pe
 
 ---
 
-<!-- p.225 (orig. p.225) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 225
 
 Questa parte dell'infermeria dove il Santo morì è tuttora al primo piano dell'edificio affiancato alla chiesa della Maddalena nella quale sono conservati i resti del Santo entro un'urna. Molti oggetti personali e reliquie del Santo sono ancora conservati oltre alla lettera da lui scritta giorni prima di morire e che costituisce il suo testamento spirituale.
@@ -5869,11 +5429,8 @@ La piazza fu pavimentata nel 1906 con il legno tratto dagli alberi delle foreste
 
 ---
 
-<!-- p.226 (orig. p.226) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>226
+226
 
 RIONE III. COLONNA
 
@@ -5893,11 +5450,8 @@ Ancora è un bel sarcofago con le personificazioni di due stagioni poste ai lati
 
 ---
 
-<!-- p.227 (orig. p.227) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 227
 
 di due cornucopie intrecciate (seconda metà del III secolo d.C.)
@@ -5911,11 +5465,8 @@ Nel 1930 l'Università Gregoriana fu trasferita a piazza della Pilotta e il pala
 
 ---
 
-<!-- p.228 (orig. p.228) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>228
+228
 
 **RIONE III. COLONNA**
 
@@ -5934,11 +5485,8 @@ Prima di lasciare la piazzetta di S. Macuto occorre ricordare che era innalzato 
 
 ---
 
-<!-- p.229 (orig. p.229) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 229
 
 Poco avanti sorge piazza di S. Ignazio; la cui sistemazione, imposta da Benedetto X, fu operata dai gesuiti: costoro la commissionarono al Raguzzini, che ideò una planimetria articolata da edifici disposti a scena teatrale; realizzati in laterizio secondo quanto imponevano i canoni dell'architettura in economia di quegli anni.
@@ -5971,11 +5519,8 @@ La morte del cardinale pose ancora un'interruzione a queste intenzioni fino al 1
 
 ---
 
-<!-- p.230 (orig. p.230) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>230
+230
 
 RIONE III. COLONNA
 
@@ -5991,11 +5536,8 @@ Le finestre del secondo piano, rettangolari, hanno alternativamente il timpano c
 
 ---
 
-<!-- p.231 (orig. p.231) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 231
 
 Palazzo è un bel cortile con porticato ornato da un fregio con metope, nelle quali sono dei trofei d'armi e sormontato da un secondo, finto; con finestre. Una fontana, con acqua che defluisce dalla bocca di un mascherone dal volto incorniciato di quercia e sistemato entro una conchiglia, orna il cortile. L'ingresso di via del Corso invece, attraverso un atrio separato da pilastri, conduce allo scalone d'onore, opera del Della Greca e ornato di sculture antiche. Pregevoli opere della scuola del Maratta, dell' Allegrini, del Baciccia, accanto a numerosissime altre, ornano le sale del palazzo ricco anche di pregevoli stucchi, di marmi, di raffinate decorazioni metalliche; oltre ai due arazzi della serie di Alessandro Magno.
@@ -6010,11 +5552,8 @@ Prima di lasciare piazza Colonna, con lo svettante e prestigioso monumento antic
 
 ---
 
-<!-- p.232 (orig. p.232) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>232
+232
 
 RIONE III. COLONNA
 
@@ -6039,11 +5578,8 @@ Vi era anche una fontana, nota da un'incisione del Falda, la quale era stata col
 
 ---
 
-<!-- p.233 (orig. p.233) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 233
 
 della futura piazza. Su questa si affacciano oltre al palazzo — oggi sede del quotidiano romano «Il Tempo» di cui abbiamo già parlato e sul quale una lapide, posta nel 1898 dal Comune, ricorda lo scrittore e uomo politico Cesare Correnti — anche il palazzo della Casa degli Orfani (al n. 12), oggi sede dell' albergo Milano; palazzi destinati ad uffici come la rivendita della carta bollata che, per disposizione di papa Benedetto XIV, doveva essere utilizzata negli atti pubblici. Alla fine del secolo scorso l'ufficio postale di Roma si trovava a palazzo Wedekind e sul lato di piazza Montecitorio s'apriva la stazione delle diligenze che si dirigevano nelle Marche, in Toscana e nelle Romagne. A questo ufficio si recò una mattina, puntuale con l'orario di apertura, le 9, Giuseppe.
@@ -6052,11 +5588,8 @@ della futura piazza. Su questa si affacciano oltre al palazzo — oggi sede del 
 
 ---
 
-<!-- p.234 (orig. p.234) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>234
+234
 
 RIONE III. COLONNA
 
@@ -6103,11 +5636,8 @@ Il palazzo è in laterizio ed è sormontato da un campanile a vela con orologio 
 
 ---
 
-<!-- p.235 (orig. p.235) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 235
 
 **La Colonna di Antonino Pio**
@@ -6126,11 +5656,8 @@ Dal balcone della Curia innocenziana, nel Settecento avveniva, come è anche ric
 
 ---
 
-<!-- p.236 (orig. p.236) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>236
+236
 
 RIONE III. COLONNA
 
@@ -6148,11 +5675,8 @@ All'angolo con la via della Guardiola è situato il palazzo Cecchini, Lavaggi e 
 
 ---
 
-<!-- p.237 (orig. p.237) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 237
 
 nal Braschi che lo arricchì di pregevoli opere d'arte; dal nipote di questi e dallo scrittore Vincenzo Monti che in questo palazzo scrisse lode «Al Signor di Montgolfier», il «Galeotto Manfredi», l'«Aristodemos» e il «Caio Gracco».
@@ -6177,11 +5701,8 @@ Il palazzo divenne quindi sede dell'impresa del lotto gestito dalla Camera apost
 
 ---
 
-<!-- p.238 (orig. p.238) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>238
+238
 
 RIONE III. COLONNA
 
@@ -6231,11 +5752,8 @@ Arrivati sulla piazza del Parlamento imbocchiamo a destra l'ultimo tratto di via
 
 ---
 
-<!-- p.239 (orig. p.239) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 239
 
 G. Vasi, la chiesa di S. Lorenzo in Lucina.
@@ -6248,11 +5766,8 @@ Si giunge quindi, poco più avanti sempre sul lato destro, alla chiesa di S. Lor
 
 ---
 
-<!-- p.240 (orig. p.240) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>240
+240
 
 RIONE III. COLONNA
 
@@ -6264,11 +5779,8 @@ Lasciamo la chiesa e prima di procedere sullo stesso marciapiede diamo un'occhia
 
 ---
 
-<!-- p.241 (orig. p.241) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 241
 
 Dere noto maggiormente quale castigo ultramondano (le fiamme dell'inferno) attendesse filosofi eretici condannati dalla Santa Inquisizione. Tempi duri per la libertà di parola!
@@ -6291,11 +5803,8 @@ Lasciamo il palazzo Peretti-Fiano-Almagià e, tralasciando l'altro lato della pi
 
 ---
 
-<!-- p.242 (orig. p.242) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>242
+242
 
 RIONE III. COLONNA
 
@@ -6309,11 +5818,8 @@ Ricordiamo infine che nel palazzo Theodoli abitò il poeta inglese Shelley, che 
 
 ---
 
-<!-- p.243 (orig. p.243) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 243
 
 tua marmorea raffigurante «Giove» (il cosiddetto Giove Verospi che è dal 1771 in Vaticano), i famosi affreschi dell' Albani raffiguranti «Apollo e le altre divinità dell' Olimpo»; di cui restano alcuni esemplari staccati e sistemati al secondo piano. Questi affreschi erano in una loggia; oggi chiusa, sorretta da capitelli ornati da elementi (stelle e teste di cane) derivati dallo stemma della famiglia.
@@ -6360,11 +5866,8 @@ Prima di proseguire dobbiamo ancora ricordare che l'area sulla quale insiste ogg
 
 ---
 
-<!-- p.244 (orig. p.244) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>244
+244
 
 RIONE III. COLONNA
 
@@ -6381,11 +5884,8 @@ In una stampa di fine Ottocento.
 
 ---
 
-<!-- p.245 (orig. p.245) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 245
 
 Lo scomparso arco di Portogallo in un'incisione secentesca di P. Schenck.
@@ -6411,11 +5911,8 @@ Provenendo dalla via del Gambero quindi e girando subito a sinistra, vediamo la 
 
 ---
 
-<!-- p.246 (orig. p.246) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>246
+246
 
 RIONE III. COLONNA
 
@@ -6433,11 +5930,8 @@ Nella chiesa erano quindi raccolte numerose reliquie fra le quali...
 
 ---
 
-<!-- p.247 (orig. p.247) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 247
 
 5. S. Silvestro in Capite come appariva nel Settecento (incisione di G. Vasi).
@@ -6454,11 +5948,8 @@ Davanti alla facciata della chiesa, sormontata da un alto...
 
 ---
 
-<!-- p.248 (orig. p.248) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>248
+248
 
 RIONE III. COLONNA
 
@@ -6474,11 +5965,8 @@ Nella Confessione sono visibili alcune antiche strutture appartenenti alla basil
 
 ---
 
-<!-- p.249 (orig. p.249) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 249
 
 Piazza S. Silvestro nel suo aspetto di fine Ottocento abbiamo la pianta disegnata dal Palladio. Sulla parete è murato un mosaico del I secolo d.C. dall'iconografia molto nota: le due colombe che si abbeverano ad un vaso. Molto bello è l'altare maggiore con arco trionfale ornato da due angeli che sorreggono l'immagine «Edessena». Si ritiene che al progetto di questo arco abbia contribuito lo stesso Michelangelo. L'altare invece è dei primi del Cinquecento e Carlo Rainaldi vi aggiunse il tabernacolo. Il catino absidale è ornato dalla scena del «Battesimo di Costantinovo» e la volta dalla raffigurazione del «Processo a S. Stefano», opera ancora del Gimignani. Nella navata di sinistra è importante, nella cappella, un affresco del Morazzone con scena della «Visitazione», che presenta sul panorama, in lontananza, la Colonna di Marco Aurelio. Segue la piccola cappella dell' Addolorata da cui si entra anche dalla via del Gambero. Qui è lo splendido reliquiario della testa del «Battista» in argento dorato e pietre dure opera di orafi del Trecento.
@@ -6489,11 +5977,8 @@ Nibby
 
 ---
 
-<!-- p.250 (orig. p.250) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>250
+250
 
 RIONE III. COLONNA
 
@@ -6507,11 +5992,8 @@ Qui sorge il Palazzo Tonti già Maureli dal nome del cardinale Michelangelo Tont
 
 ---
 
-<!-- p.251 (orig. p.251) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO | 25 |
+TERZO ITINERARIO | 25 |
 
 collegio Nazareno in un'incisione di G. Vasi
 
@@ -6563,11 +6045,8 @@ Il collegio Nazareno in un'incisione di G. Vasi
 
 ---
 
-<!-- p.252 (orig. p.252) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>252
+252
 
 RIONE III. COLONNA
 
@@ -6577,11 +6056,8 @@ Si lascia il collegio Nazareno e si prende per via di S. Andrea delle Fratte che
 
 ---
 
-<!-- p.253 (orig. p.253) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 253
 
 Navata centrale con cappelle laterali e un transetto disegnato dal Borromini: il pavimento fu fatto porre in opera nel 1828 da Giovanni Torlonia. Da non trascurare un monumento scultoreo di Livia del Grillo, a destra dell'ingresso; e, nella cappella battesimale, un tempietto ornato da pitture del Borgognone. Nella seconda cappella a destra, voluta da Francesco Cozza ex voto per la fine della peste nel 1656, è un «S. Michele Arcangelo», dipinto dal Gimignani e, dello stesso Cozza, un «S. Carlo Borromeo che soccorre gli appestati». Nella terza cappella è la splendida tomba settecentesca del cardinale Carafa. Qui sono anche sepolti Louis Veuillot (1813-1883), autore dei «Parfums de Rome», e il matematico Pessuti (1824). Più avanti è la porta di accesso al chiostro con la tomba dell'arabo convertito, Mulai Acmet, principe del Marocco; quindi la cappella di S. Francesco di Paola ornata da marmi e bronzi disegnata dal Barigioni. La cupola è ornata dalle figure dei dottori della chiesa greca e latina nella calotta, dalla «Redenzione» opera di Pasquale Marini (1650-1712), che ha dipinto anche la «Moltiplicazione dei pani e dei pesci nel catino» dell'abside. Nel presbiterio si apre la cappella di S. Anna, ideata da due dei maggiori artisti che hanno operato a Roma nel Settecento e negli inizi dell'Ottocento: Luigi Vanvitelli e Giuseppe Valadier. Sul fianco sinistro della navata è il monumento funebre della duchessa Caffarelli, moglie di Ottavio del Bufalo; quindi la cappella di S. Giuseppe opera di Virgini Vespignani (1883) e, finalmente, quella della Madonna del Miracolo ideata da Marcello Piacentini (1950). Qui è ricordata la miracolosa apparizione della Vergine all'ebreo israelita Alfonso Ratisbonne (30 gennaio 1842), che si convertì al cattolicesimo e divenne fervente devoto del culto di Maria. Ancora oggi quotidianamente novene vengono recitate da gruppi di pie donne davanti a questa cappella illuminata da decine di candele. Altrettanto interessante è la visita del convento il cui chiostro porticato conserva affreschi seicenteschi con storie della «Vita di S. Francesco di Paola» e la «Rappresentazione della battaglia di Otranto».
@@ -6592,11 +6068,8 @@ Su via Francesco Crispi si trova la chiesa di S. Giuseppe a Capo le Case, oggi s
 
 ---
 
-<!-- p.254 (orig. p.254) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>254
+254
 
 RIONE III. COLONNA
 
@@ -6616,11 +6089,8 @@ Segue ai nn. 147-151 una casa di buona architettura del secondo Ottocento con un
 
 ---
 
-<!-- p.255 (orig. p.255) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 255
 
 S. Francesca Romana
@@ -6639,11 +6109,8 @@ Si prende ora per via della Purificazione; cosiddetta dall'omonimo monastero ai 
 
 ---
 
-<!-- p.256 (orig. p.256) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>256
+256
 
 RIONE III. COLONNA
 
@@ -6665,11 +6132,8 @@ Segue, tra la via Capo le Case, via di Propaganda Fide, piazza di Spagna e via D
 
 ---
 
-<!-- p.257 (orig. p.257) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 257
+TERZO ITINERARIO 257
 
 La facciata borrominiana del palazzo di Propaganda Fide (G. Vasi)
 
@@ -6681,11 +6145,8 @@ Alcuni lavori di restauro condotti nel 1955, da Clemente Busiri Vici, riportaron
 
 ---
 
-<!-- p.258 (orig. p.258) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>258
+258
 
 RIONE III. COLONNA
 
@@ -6705,11 +6166,8 @@ Riportati su via della Vite ci si affaccia sulla via Mario de' Fiori che ricorda
 
 ---
 
-<!-- p.259 (orig. p.259) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 259
 
 La tradizione indica l'abitazione del pittore al n. 93 della via che all'epoca si chiamava vicolo del Bernino a causa del vicino palazzo Bernini. Al n. 93 tuttavia si ammira un'elegante edicola sacra raffigurante una Vergine Assunta. La cornice dell'edicola è ornata da ghirlande di rose in stucco. Si vuole che questo affresco sia opera del famoso Mario; ma non c'è alcuna credibilità storica e forse anche artistica. Al n. 95 è situato un bel palazzetto del Cinquecento congiunto al palazzo Bernini. I grandi archi del piano terra sono recenti mentre più interessanti sono invece le finestre con inferriate e mensole, che si aprono sui lati del palazzo; il quale conserva un'altra edicola sacra con la Madonna e il Bambino.
@@ -6726,11 +6184,8 @@ Sul lato di fronte a quello del palazzo berniniano, al n. 33, un'iscrizione rico
 
 ---
 
-<!-- p.260 (orig. p.260) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>260
+260
 
 **RIONE III. COLONNA**
 
@@ -6758,11 +6213,8 @@ I cavalli fremono, zampettano, si urtano, mordono il freno, sulla groppa hanno c
 
 ---
 
-<!-- p.261 (orig. p.261) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 261
 
 Il carnevale romano in un'incisione di B. Pinelli del 1834
@@ -6780,11 +6232,8 @@ Giunsero al regno d'Italia quelle antichissime di Napoli le funzioni pontificie 
 
 ---
 
-<!-- p.262 (orig. p.262) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>262
+262
 
 RIONE III. COLONNA
 
@@ -6798,11 +6247,8 @@ Offerte a questo monastero venivano raccolte un po' dovunque e si ricorda una ca
 
 ---
 
-<!-- p.263 (orig. p.263) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 263
 
 Ripresa la via del Gambero si esce su via della Vite. Qui, al n. 3, è situato un palazzo ristrutturato nell'Ottocento che conserva però l'originale bugnato seicentesco. Al n. 7 è il Palazzo Ottoboni anch'esso del Seicento che svolta anche su via del Corso. Alle finestre stanno gli emblemi araldici del drago dei Boncompagni, e le aquile bicipiti degli Ottoboni. Al n. 6 è situata una piccola restaurata fontanella.
@@ -6821,11 +6267,8 @@ COLONNA
 
 ---
 
-<!-- p.264 (orig. p.264) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione IV. Campo Marzio
+Rione IV. Campo Marzio
 di Mauro Quercioli
 Dalle origini ai tempi moderni
 
@@ -6841,11 +6284,8 @@ Ma il nome, oltre alle succitate funzioni, lascerebbe supporre una presenza mass
 
 ---
 
-<!-- p.265 (orig. p.265) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PANTHEON; nel quale non poteva non esservi incluso: questo ovviamente allo stato attuale delle nostre cognizioni. Svariate sono le ipotesi in proposito infatti. La più consistente fra queste sta cercando d'esaminare, per quanto possibile data l'ubicazione, un monumentale basamento che potrebbe rendere a Marte quanto di sua spettanza; ma si tratta nientemeno che frugare svariati metri sotto l'attuale via del Plebiscito!
+PANTHEON; nel quale non poteva non esservi incluso: questo ovviamente allo stato attuale delle nostre cognizioni. Svariate sono le ipotesi in proposito infatti. La più consistente fra queste sta cercando d'esaminare, per quanto possibile data l'ubicazione, un monumentale basamento che potrebbe rendere a Marte quanto di sua spettanza; ma si tratta nientemeno che frugare svariati metri sotto l'attuale via del Plebiscito!
 
 Se Marte, per il momento, è curiosamente latitante, non altretanto possiamo dire per altri culti. Il Campo infatti ne abbonda: fra questi, il più curioso è senza dubbio legato a certi fenomeni post-vulcanici che in epoca storica ancora si verificavano nella zona, grosso modo, occupata dalla chiesa dei Fiorentini. Il fenomeno, collegato con un culto ctonio sotterraneo, cioè aveva di per sé un qualcosa d'infame. Infatti sembra che c'entrasse in qualche modo Proserpina, conseguentemente Tartaro, sempre considerato suo involontario regno; donde il nome di Tarentum dato al luogo. Certo che il sottosuolo di Roma è ben lungi dall'esserci noto: qui esalazioni sulfuree; in Trastevere, addirittura petrolio!
 
@@ -6863,11 +6303,8 @@ Tutto questo vasto insieme venne già da Augusto suddiviso in più regioni, qual
 
 ---
 
-<!-- p.266 (orig. p.266) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>266
+266
 
 RIONE IV. CAMPO MARZIO
 
@@ -6885,11 +6322,8 @@ E così, mentre dalle altre parti, le mura imperiali, troppo distaccate dal cont
 
 ---
 
-<!-- p.267 (orig. p.267) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AI TEMPI MODERNI
+DALLE ORIGINI AI TEMPI MODERNI
 267
 
 Piazza del Popolo in una stampa di fine Ottocento
@@ -6898,11 +6332,8 @@ Quindi è Porta Flaminia o del Popolo; questi i punti strategici delle comunicaz
 
 ---
 
-<!-- p.268 (orig. p.268) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>268
+268
 RIONE IV. CAMPO MARZIO
 
 guendo per Monte Brianzo-Coronari si collegava con l'antichissima via Papalis all'altezza di Panico.
@@ -6918,11 +6349,8 @@ Ma il secolo non aveva ancora esaurito le sue spinte innovative. Nel 1574, infat
 
 ---
 
-<!-- p.269 (orig. p.269) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AL TEMPI MODERNI
+DALLE ORIGINI AL TEMPI MODERNI
 269
 
 Progetti e rilevanti realizzazioni, tracciando quella che dal suo nome Felice Peretti, verrà denominata la Via Felice.
@@ -6939,11 +6367,8 @@ In tempi più recenti, assecondando una retorica su una malintesa «romanità»,
 
 ---
 
-<!-- p.270 (orig. p.270) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>270
+270
 
 RIONE IV. CAMPO MARZIO
 
@@ -6970,11 +6395,8 @@ Soffermiamoci un attimo sull'angolo ad osservarla, con la sua forma di rettangol
 
 ---
 
-<!-- p.271 (orig. p.271) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 271
 
 che ispirò il pennello di Van Wittel; di Thomas Lawrence e di
@@ -7041,11 +6463,8 @@ i pittori del rione. In tempi più recenti, superato il turbine della
 
 ---
 
-<!-- p.272 (orig. p.272) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>272
+272
 
 **RIONE IV. CAMPO MARZIO**
 
@@ -7063,11 +6482,8 @@ Già dal 1660 il cardinal Mazarino aveva pensato di porre rimedio a quest'inconv
 
 ---
 
-<!-- p.273 (orig. p.273) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 273
 
 **La Colonna dell'Immacolata**
@@ -7088,11 +6504,8 @@ Compresa la statua della sommità, l'intero monumento è alto 29 metri 23 centim
 
 ---
 
-<!-- p.274 (orig. p.274) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>274
+274
 
 RIONE IV. CAMPO MARZIO
 
@@ -7104,11 +6517,8 @@ Il lavoro terminò nel 1726, accusando un disavanzo di ben 7162 scudi rispetto a
 
 ---
 
-<!-- p.275 (orig. p.275) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITITERARIO 275
+PRIMO ITITERARIO 275
 
 Il disavanzo venne coperto da Luigi XV come compare sulle iscrizioni che avremo cura di riportare, relegando in un angolo il pur generosissimo Gueffier.
 
@@ -7128,11 +6538,8 @@ Più o meno alla metà, c'è l'iscrizione di cui abbiamo riportato il brano che 
 
 ---
 
-<!-- p.276 (orig. p.276) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>276
+276
 
 RIONE IV. CAMPO MARZIO
 
@@ -7207,11 +6614,8 @@ Ed eccoci sulla piazza della Trinità dei Monti. Questa, stretta fra la balaustr
 
 ---
 
-<!-- p.277 (orig. p.277) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 277
 
 L'obelisco Sallustiano a metà dell'Ottocento (incisione di D. Amici)
@@ -7222,11 +6626,8 @@ L'obelisco proviene dagli Horti Sallustiani, precisamente da un ippodromo che do
 
 ---
 
-<!-- p.278 (orig. p.278) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>278
+278
 
 RIONE IV. CAMPO MARZIO
 
@@ -7244,11 +6645,8 @@ Il nome <dei Monti> dalla chiesa lascerebbe supporre un suo collocamento al di f
 
 ---
 
-<!-- p.279 (orig. p.279) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 279
 
 Palazzo Zuccari, alla confluenza tra le vie Sistina e Gregoriana. In un'immagine di fine Ottocento
@@ -7265,11 +6663,8 @@ Tolta di mezzo la «Sodalitas dei minimi e dei devoti» sia coprendo la scritta 
 
 ---
 
-<!-- p.280 (orig. p.280) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>280
+280
 
 RIONE IV. CAMPO MARZIO
 
@@ -7281,11 +6676,8 @@ L'interno è ad una sola navata con cappelle laterali. Purtroppo il visitatore t
 
 ---
 
-<!-- p.281 (orig. p.281) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 281
 
 Raggiunte le vie Sistina e Gregoriana, la strada che collega la zona antistante con la porta Pinciana va attribuita al presidente delle strade in carica nel 1564, che guarda caso era appunto il cardinale Ricci, proprietario della villa omonima. Come detto nella premessa, la via Sistina venne aperta col nome di via Felice nel 1585 da papa Sisto V; al secolo Felice Peretti. Rappresenta una sorla di cardo massimo che, superando Pincio, Quirinale, Viminale ed Esquilino — sia pur con diverse denominazioni — univa il "nuovo" rione, il vecchio Campo, con l'altro della Roma antica, Laterano che, superato ormai quale sede pontificia dal Vaticano per motivi militari e dal Quirinale per motivi igienici, costituiva pur sempre uno dei storici poli dell'Urbe.
@@ -7306,11 +6698,8 @@ Adiacente al palazzo esisteva la casa di Salvator Rosa, anch'essa estendendosi f
 
 ---
 
-<!-- p.282 (orig. p.282) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>282
+282
 
 RIONE IV. CAMPO MARZIO
 
@@ -7322,11 +6711,8 @@ Al termine della strada, un tempo finivano le case ed iniziavano gli orti. Il no
 
 ---
 
-<!-- p.283 (orig. p.283) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 283
 
 fossero frammiste come in ogni periferia estrema; ce ne fornisce una poco distante chiesa di S. Andrea detta appunto «delle Fratte», per questa semibucolica situazione. Un breve tratto vivacissimo per traffico e negozi sotto la protettrice immagine d'una Trinità ad imitazione robbiana. L'urbanizzazione di questa zona, un tempo compresa tra le proprietà degli Orsini fra cui v'era il palazzo, ormai scomparso; di Giovanni Giordano Orsini costruito sui resti d'una chiesa dedicata a S. Felice in Pincio, si ebbe con l'anno santo del 1600, riallacciandosi ad un progetto urbanistico sistino; realizzato, secondo l'opinione dei più, nientemeno che dal Maderno; allievo dell' architetto di Sisto V, Domenico Fontana.
@@ -7339,11 +6725,8 @@ In realtà le trasformazioni portate da questa donna all'intera costruzione auto
 
 ---
 
-<!-- p.284 (orig. p.284) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>284
+284
 
 RIONE IV. CAMPO MARZIO
 
@@ -7369,11 +6752,8 @@ L'Istituto della Propaganda Fide, proprietaria dell'edificio, lo cedette in loca
 
 ---
 
-<!-- p.285 (orig. p.285) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 285
 
 Piazza di Spagna verso Il palazzo di Propaganda Fide (G. Vasi).
@@ -7389,11 +6769,8 @@ All'angolo con via Due Macelli; dove un tempo era il locale «Rugantino» si apr
 
 ---
 
-<!-- p.286 (orig. p.286) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>286
+286
 
 RIONE IV. CAMPO MARZIO
 
@@ -7409,11 +6786,8 @@ Stretto fra tanta storia, forse in maniera un po' patetica, anche il McDonald's 
 
 ---
 
-<!-- p.287 (orig. p.287) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO | 287
+SECONDO ITINERARIO | 287
 
 Vero € proprio che dir si voglia; preceduto dalla ricostruzione del banchetto del cocomeraro, e con le finte finestre aperte su imitazioni dei più tradizionali scorci del paesaggio romano.
 
@@ -7436,11 +6810,8 @@ Quando queste chiese verranno erette, e pertanto quanto mai trionfante divenne l
 
 ---
 
-<!-- p.288 (orig. p.288) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>288
+288
 RIONE IV. CAMPO MARZIO
 
 di portarsela nei loro viaggi, in Francia il primo, a Nizza il secondo.
@@ -7458,11 +6829,8 @@ Di fronte al civico 11, c'era un tempo l'osteria della Lepre; frequentatissima d
 
 ---
 
-<!-- p.289 (orig. p.289) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 289
 
 Pare sullo sfondo dell'androne d'ingresso su una parete del cortile. Il palazzo che segue il caffè Greco reca una di quelle scritte molto diffuse nella Roma di un tempo; piene d'un perbenismo un tantino patetico; dato che il valore legale non poteva non essere che molto circoscritto: "Libera proprietà da ogni peso e canone di Tizio o di Caio". In questo caso la lapidina risale al 1836. Accanto, altra lapide posta nel 1879 relativa al soggiorno di Giacomo Leopardi.
@@ -7489,11 +6857,8 @@ La chiesa della SS. Trinità degli Spagnoli in un'incisione di G. Vasari.
 
 ---
 
-<!-- p.290 (orig. p.290) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>290
+290
 
 RIONE IV. CAMPO MARZIO
 
@@ -7513,11 +6878,8 @@ A lato della chiesa, all'altezza del numero civico 437, una iscrizione ricorda l
 
 ---
 
-<!-- p.291 (orig. p.291) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 291
 
 G. Vasi, la chiesa dei Ss Ambrogio e Carlo al Corso.
@@ -7537,11 +6899,8 @@ La chiesa di Gesù e Maria dei carmelitani scalzi si presenta con severa facciat
 
 ---
 
-<!-- p.292 (orig. p.292) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>292
+292
 
 RIONE IV. CAMPO MARZIO
 
@@ -7561,11 +6920,8 @@ Al n. 18 un'iscrizione ci rammenta il soggiomo di Wolfango Goethe. Sul lato oppo
 
 ---
 
-<!-- p.293 (orig. p.293) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 293
 
 «Pietà» ora a Milano detta appunto «Pietà Rondanini». Interessante altresì la targa che segna il livello che il Tevere raggiunse in questo punto nell'inondazione del 28 dicembre 1870. Il ramo romano dei Rondanini o Rondinini, originari di Faenza; ebbe, secondo l'Amayden, la cittadinanza capitolina il 13 marzo del 1572. Paolo Emilio Rondanini venne creato cardinale da Urbano VIII nel 1643 e fu vescovo d'Assisi.
@@ -7589,11 +6945,8 @@ E così, mentre il ricordo di S. Valentino restava appannaggio degli eruditi e s
 
 ---
 
-<!-- p.294 (orig. p.294) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>294
+294
 
 RIONE IV. CAMPO MARZIO
 
@@ -7607,11 +6960,8 @@ Da Sisto V lo fece erigere ov'è dal suo architetto Domenico Fontana, nel 1585. 
 
 ---
 
-<!-- p.295 (orig. p.295) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 295
 
 Tolineare forse, secondo il gusto egittizzante del tempo; l'imponente guglia di granito rosso: «Eine Welt zwar bist du, Rom!» (Tu sei un mondo, Roma!) il Goethe appena varcata la soglia di Porta del Popolo; trovandosi così, giorni e giorni di campagna desolata, immerso nella armonia di questa piazza.
@@ -7628,11 +6978,8 @@ Superata qualche incertezza; preferiremmo mostrarvi questa piazza, a cui è stat
 
 ---
 
-<!-- p.296 (orig. p.296) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>296
+296
 
 RIONE IV. CAMPO MARZIO
 
@@ -7647,11 +6994,8 @@ In coscienza, non possiamo con certezza dire da che derivi il nome di «Popolo»
 
 ---
 
-<!-- p.297 (orig. p.297) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 297
 
 spontanea; infatti si trattava di liberare la zona da una autentica folla di streghe e demoni che rendevano durissima la vita a quanti dovevano passare la porta Flaminia o di S. Valentino. «Tanta retta di spiriti malvagi era appunto dovuta alla tomba di Nerone posta alle falde degli horti appartenenti alla sua famiglia... evidentemente l'autorità di S. Valentino non era sufficiente, e si era resa indispensabile l'intervento stesso della Madonna».
@@ -7668,11 +7012,8 @@ Eccetto un piccolo, modestissimo stemma sull'architrave della porta centrale, qu
 
 ---
 
-<!-- p.298 (orig. p.298) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>298
+298
 
 RIONE IV. CAMPO MARZIO
 
@@ -7686,11 +7027,8 @@ non era certo un omaggio «al popolo» probabilmente tassato; sia pure quattro s
 
 ---
 
-<!-- p.299 (orig. p.299) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 299
 
 La memoria di questi importanti personaggi, per certi aspetti imbarazzante, venne dispersa col tempo; al punto che, come riportato dalla Squadrilli, la lapide funeraria venne ritrovata molto tempo dopo sotto il portico della basilica di S. Marco.
@@ -7707,11 +7045,8 @@ Sia la chiesa che la caserma presentano, sul lato che guarda la piazza, prospett
 
 ---
 
-<!-- p.300 (orig. p.300) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>300
+300
 
 RIONE IV. CAMPO MARZIO
 
@@ -7733,11 +7068,8 @@ L'autore di questo miracolo, secondo l'idea del momento s'in-
 
 ---
 
-<!-- p.301 (orig. p.301) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 301
 
 Tende, andava immortalato sulla sommità; ed in effetti la piazza del terrazzamento finale venne dedicata a Napoleone. Questo avvenne tardi nel 1920, ma questa è forse l'unica risposta al posto pressante quesito.
@@ -7758,11 +7090,8 @@ Usciti sul piazzale Flaminio; sfruttando la galleria al piano terra della caserm
 
 ---
 
-<!-- p.302 (orig. p.302) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>302
+302
 RIONE IV. CAMPO MARZIO
 
 ma torre dell' antico muro di Aureliano. Poco oltre; il fiume, e lì era la legnara, ossia il deposito di una delle materie del tempo; appunto la legna.
@@ -7790,11 +7119,8 @@ Da Clementizia o Clementina; dopo il determinante intervento del Farnese (1534-1
 
 ---
 
-<!-- p.303 (orig. p.303) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 303
 
 "Er Babbuino"
@@ -7813,11 +7139,8 @@ Qualcuno lo ha elencato fra le statue «parlanti», in compagnia quindi del famo
 
 ---
 
-<!-- p.304 (orig. p.304) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>304
+304
 
 RIONE IV. CAMPO MARZIO
 
@@ -7840,11 +7163,8 @@ Comunque, tornando a noi, Orti di Napoli, Clementina, Paolina; fra tanti nomi qu
 
 ---
 
-<!-- p.305 (orig. p.305) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 305
 
 La chiesa di S. Atanasio dei Greci (incisione secentesca di G.B. Falda).
@@ -7855,11 +7175,8 @@ L'albergo America; era al numero 79, nel Palazzo Lancellotti, e rispetto all'Hot
 
 ---
 
-<!-- p.306 (orig. p.306) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>306
+306
 
 RIONE IV. CAMPO MARZIO
 
@@ -7879,11 +7196,8 @@ Impossibile comunque elencare quanti qua vissero ed operarono; concludiamo solo 
 
 ---
 
-<!-- p.307 (orig. p.307) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 307
+TERZO ITINERARIO 307
 
 fratelli Alinari che operarono qui, fino al momento in cui si trasferirono in via d'Alibert, con sede centrale a Firenze.
 Artisti, significava ritrovo; osteria, ed in effetti al n. 165 c'era l'Osteria del Babuino; al n. 175 c'è ancora la centenaria latteria Taddei; laddove dicono si potevano sfamare gli artisti in bolletta, ovviamente a credito. Al n. 120 c'è il Baretto; e nella sua sala interna, fra una mostra di pittura e l'altra, andarono a tessere le trame d'un noto scandalo dell'Italia doggi, quello scatenato da Anna Maria Moneta Caglio, nell' «affaire» Montesi.
@@ -7900,11 +7214,8 @@ Combattuta fra tradizione e necessità moderne, stenta a trovare qui dopo quella
 
 ---
 
-<!-- p.308 (orig. p.308) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>308
+308
 RIONE IV. CAMPO MARZIO
 
 Una sua esatta collocazione ed immagine: certo che oggigiorno di artisti ve ne sono ben pochi, ma fortissimo ne è rimasto il ricordo; e ciò rappresenta l'entratura psicologica delle numerose gallerie presenti.
@@ -7923,11 +7234,8 @@ Dopo il numero 53 c'imbattiamo in una fontana; costruita dallo scultore Pietro L
 
 ---
 
-<!-- p.309 (orig. p.309) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 309
 
 marguttiana, attraverso una decorazione di cavalletti da pittore e relativi sgabelli, sormontati da una sorta di cesto con pennelli ed altro. Mascheroni da teatro antico; si ritanno forse alle tradizioni del vicino teatro di cui ci accingiamo a parlare.
@@ -7948,11 +7256,8 @@ Questo certamente non avvenne che tardi. Vista la lunga, dettagliata descrizione
 
 ---
 
-<!-- p.310 (orig. p.310) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>310
+310
 
 RIONE IV. CAMPO MARZIO
 
@@ -8018,11 +7323,8 @@ trice.
 
 ---
 
-<!-- p.311 (orig. p.311) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 311
 
 **Villa Medici**
@@ -8043,11 +7345,8 @@ Nel 1770, estinti i Medici, questa villa passò agli Asburgo-Lorena. Questi ulti
 
 ---
 
-<!-- p.312 (orig. p.312) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>312
+312
 RIONE IV. CAMPO MARZIO
 
 nome dei Medici. La cosa avvenne nel 1804, allorché la suddetta Scuola aveva cambiato nella sua secolare esistenza ben quattro sedi. Molti personaggi che furono ospiti della villa: dal citato Galileo Galilei, del granduca di Toscana (dopo esser stato prigioniero nella torre dell'osservatorio Vaticano nel convento di Santa Maria sopra Minerva), a Maria dei Medici, al Velázquez.
@@ -8062,11 +7361,8 @@ G. Vasi, Villa e Casino Medici sul Pincio
 
 ---
 
-<!-- p.313 (orig. p.313) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 313
 
 vertino.
@@ -8090,11 +7386,8 @@ Ne sopravvivono poche: la cosiddetta Polimnia, l'«Abbondanza», Cibele ed una s
 
 ---
 
-<!-- p.314 (orig. p.314) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>314
+314
 
 RIONE IV. CAMPO MARZIO
 
@@ -8108,11 +7401,8 @@ Rimodernata, ingentilita ha perso il suo originale aspetto grifagno, assumendone
 
 ---
 
-<!-- p.315 (orig. p.315) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Villa Malta conquistò l'animo germanico in maniera quasi maniacale. Oltre che Goethe, che fra l'altro vi avrebbe piantato delle phenix dattilifere, la villa divenne infatti sede prediletta del re Luigi di Baviera, della duchessa Amalia di Braunschweig, di Giovanni Goffredo Herder, della poetessa Federica Brun, che vi scrisse il suo poema «Roemischen Leben» e tanti altri. Il segreto della villa Malta, per tanti potenti, era forse racchiuso in un distico del romantico re Luigi di Baviera: "Qui il re ritrova l'uomo che aveva perduto".
+Villa Malta conquistò l'animo germanico in maniera quasi maniacale. Oltre che Goethe, che fra l'altro vi avrebbe piantato delle phenix dattilifere, la villa divenne infatti sede prediletta del re Luigi di Baviera, della duchessa Amalia di Braunschweig, di Giovanni Goffredo Herder, della poetessa Federica Brun, che vi scrisse il suo poema «Roemischen Leben» e tanti altri. Il segreto della villa Malta, per tanti potenti, era forse racchiuso in un distico del romantico re Luigi di Baviera: "Qui il re ritrova l'uomo che aveva perduto".
 
 Abitata dalla famiglia Altemps attorno al 1873, vi vennero piantate quelle rose che dettero alla nostra villa il suo terzo nome: Villa delle Rose. Dopo quest'ultima guerra gesuiti sono riusciti laddove mancarono re, principi e uomini di cultura; divenire proprietari della villa: Qui essi collocarono la sede della nota rivista «Civiltà Cattolica».
 
@@ -8139,11 +7429,8 @@ QUARTO ITINERARIO | 315
 
 ---
 
-<!-- p.316 (orig. p.316) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>316
+316
 RIONE IV. CAMPO MARZIO
 
 del porto di Ripetta nei primi anni del Settecento; e finché questo fu attivo; il Campo Marzio doveva effettivamente presentare una grande varietà socio-culturale: che andava dai fiumaroli alla *intellighentia* internazionale più evoluta, creando un connubio sempre fonte di indubbia crescita sociale. Non facciamoci quindi ingannare dall'attuale aspetto di questa strada; essa era il completamento d'un rione pieno di vita, che dalla sommità del colle di Lucullo e Messalina — sede di cardinali e di regnanti — passava per il vivace mondo degli artisti, per finire sempre in brevissimo spazio, sotto alle prese con un proletariato spesso infarcito di galeotti e di emarginati della più varia natura; il tutto in continuo rimescolamento, per il flusso costante di viaggiatori che qui arrivavano dalla Cassia-Flaminia o via fiume, scendendo dal ponte Felice posto ai confini dello Stato.
@@ -8156,11 +7443,8 @@ Quest'ospedale è praticamente collocato tra due chiese: quella sul Corso, dedic
 
 ---
 
-<!-- p.317 (orig. p.317) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO 317
+QUARTO ITINERARIO 317
 
 della strada. Quest'ultima venne eretta nel 1646 con la credità di un certo Matteo Caccia, medico, che viveva nella casa contigua da dove poteva sentir messa, senza muoversi, ad una finestrella serrata nella nuova fabbrica.
 
@@ -8180,11 +7464,8 @@ Quest'ultimo potrebbe essere il passaggio fra le chiese di S. Rocco e quella di 
 
 ---
 
-<!-- p.318 (orig. p.318) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>318
+318
 RIONE IV. CAMPO MARZIO
 
 Angelo Brunetti detto "Ciceruacchio"
@@ -8209,11 +7490,8 @@ Appare la visione patetica dei fasci con la scritta XIX EF, ma nel pilastro cent
 
 ---
 
-<!-- p.319 (orig. p.319) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 319
 
 Bella iscrizione: BENEFICENTIA CLEMENTIS XIIII PONT.MAX. AQUA VIRGO / ANNO 1774.
@@ -8228,11 +7506,8 @@ Noti i monumenti racchiusi in questa vasta area. Quelli che abbiamo scelto come 
 
 ---
 
-<!-- p.320 (orig. p.320) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>320
+320
 
 RIONE IV. CAMPO MARZIO
 
@@ -8252,11 +7527,8 @@ Accanto, nel vicolo Otto Cantoni, c'era l'«Aliciaros». Il nome non era casuale
 
 ---
 
-<!-- p.321 (orig. p.321) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>parete posteriore della chiesa; le mutandine della cuoca del parroco di S. Carlo oscillanti nell'aria; che naturalmente mettono una nota sentimentale nel nostro cuore ardente di desiderio...
+parete posteriore della chiesa; le mutandine della cuoca del parroco di S. Carlo oscillanti nell'aria; che naturalmente mettono una nota sentimentale nel nostro cuore ardente di desiderio...
 
 Avrà buttato vino?
 «La Botticella?» Il mio amico Rendina è per il sì, l'altro amico Enzo Micheli giura di no. Perché far concorrenza poi a tanti bei, perduti locali, tante pittoresche osterie?
@@ -8278,11 +7550,8 @@ Ma il vero «padrone» di questo luogo resta Cesare Ottaviano Augusto. Il suo ma
 
 ---
 
-<!-- p.322 (orig. p.322) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>322
+322
 
 RIONE IV. CAMPO MARZIO
 Il porto di Ripetta
@@ -8308,11 +7577,8 @@ ed i loro congiunti anche dopo che Adriano avrà costruito l'altro ben più impo
 
 ---
 
-<!-- p.323 (orig. p.323) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 323
 
 [Immagine: incisione ottocentesca del porto di Ripetta]
@@ -8326,11 +7592,8 @@ La via della Frezza deve il suo nome ad una famiglia non nobile, proveniente da 
 
 ---
 
-<!-- p.324 (orig. p.324) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>324
+324
 
 RIONE IV. CAMPO MARZIO
 L'Ara Pacis
@@ -8349,11 +7612,8 @@ Nel 1937 ci si aprì un varco; demolendo e ricostruendo muri fu possibile termin
 
 ---
 
-<!-- p.325 (orig. p.325) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 325
 
 Particolare del fregio con processione del lato sud dell' Ara Pacis.
@@ -8372,11 +7632,8 @@ Quasi di fronte all'ingresso dell' Ospedale, tutta una serie di iscrizioni conte
 
 ---
 
-<!-- p.326 (orig. p.326) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>326
+326
 
 RIONE IV. CAMPO MARZIO
 
@@ -8400,11 +7657,8 @@ Usciti dalla metropolitana; tagliata la folla che stanzia a tutte le ore piazza 
 
 ---
 
-<!-- p.327 (orig. p.327) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 327
 
 Volle che la via Borgognona mutasse nome con quella del noto politico risorgimentale, cosa che s'attuò; ma non ebbe fortuna. Accanto fontana con iscrizione latina che la definisce «fontis hilaritate», voluta da Marino Torlonia; che fece abbattere, non tanto per la fontana, quanto per dar sfogo alla piccola piazza; l'edificio ov'era il banco e l'ufficio cambia-valute della sua famiglia; avendo cura d'apporre una iscrizione che avverte: «L'area è di proprietà del duca Marino Torlonia: È di palmi 156 di lunghezza e 22 in larghezza».
@@ -8423,11 +7677,8 @@ Con la descrizione dello Stendhal abbiamo una valida idea di questo locale: «Gl
 
 ---
 
-<!-- p.328 (orig. p.328) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>328
+328
 RIONE IV. CAMPO MARZIO
 
 portone di Carbonianis, le quattro meraviglie della Roma moderna.
@@ -8452,11 +7703,8 @@ La breve strada che collega questa piazza con la via Ripetta; riprole.
 
 ---
 
-<!-- p.329 (orig. p.329) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 329
 
 Palazzo Borghese in un'incisione di A. Specchi
@@ -8473,11 +7721,8 @@ Della Genga, «erano fatto costruire, dopo la metà del Cinquecento, la loro dim
 
 ---
 
-<!-- p.330 (orig. p.330) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>330
+330
 
 RIONE IV. CAMPO MARZIO
 
@@ -8499,11 +7744,8 @@ Si trova qui solo dal 1950. Si tratta della prima fontana di Giacomo Della Porta
 
 ---
 
-<!-- p.331 (orig. p.331) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 331
 
 **Il collegio Clementino**
@@ -8528,11 +7770,8 @@ La parte centrale, i delfini, il catino e la parte terminale sono di restauro. L
 
 ---
 
-<!-- p.332 (orig. p.332) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>332
+332
 
 RIONE IV. CAMPO MARZIO
 
@@ -8550,11 +7789,8 @@ All'origine questo non era che il palazzo di rappresentanza, che il segretario a
 
 ---
 
-<!-- p.333 (orig. p.333) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 333
 
 Ticcio, al quale viene attribuita l'elegante decorazione che la caratterizza. Secondo altri quest'ultima sarebbe da attribuire a Prospero Fontana. Dubbi esistono anche sulla fronte prospiciente il giardino che qualcuno attribuisce all'Ammannati, altri al Vignola. Passato ai Medici, il palazzo divenne «il palazzo del Duca» subito dopo «del granduca», quando il signore di Firenze assunse quest'ultimo titolo.
@@ -8576,11 +7812,8 @@ Decaduto, nonostante la potenza un tempo raggiunta, il monastero di S. Maria in 
 
 ---
 
-<!-- p.334 (orig. p.334) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>334
+334
 
 RIONE IV. CAMPO MARZIO
 
@@ -8599,11 +7832,8 @@ MARZIO
 
 ---
 
-<!-- p.335 (orig. p.335) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione V. Ponte
+# Rione V. Ponte
 di Claudia Cerchiai
 
 ### Le origini, la storia
@@ -8620,11 +7850,8 @@ Questo rione da un lato segue il corso del Tevere e questa sponda, nell'antichit
 
 ---
 
-<!-- p.336 (orig. p.336) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>336
+336
 
 RIONE V. PONTE
 
@@ -8642,11 +7869,8 @@ L'uso del marmo non fu minore in questa zona quindi rispetto poi cui
 
 ---
 
-<!-- p.337 (orig. p.337) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI. LA STORIA
+LE ORIGINI. LA STORIA
 337
 
 alle altre di Roma, tanto che sempre qui avevano sede le officine dei marmisti oltre allo sbarco dei marmi. Presso il porto dove venivano sbarcati i marmi destinati all'edilizia romana veniva sbarcato anche il vino. Era questo il porto vinario nei pressi della zona *ad ciconias*; in relazione ad un culto in cui le cicogne dovevano avere una parte mitologica. Da questa zona, il vino che era fiscale veniva portato nei magazzini del tempio del Sole; dove è oggi la chiesa di S. Silvestro, nella piazza omonima. Un'ultima tradizione della più antica è ricordata in questa zona che fa tornare alla memoria gli scontri tra monticiani e i trasteverini.
@@ -8665,11 +7889,8 @@ Dopo il trasferimento della sede papale dal Laterano al Vaticano in particolare,
 
 ---
 
-<!-- p.338 (orig. p.338) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>338
+338
 
 RIONE V. PONTE
 
@@ -8732,11 +7953,8 @@ biarono comunque l'aspetto. Infatti il rione Ponte e gli altri rioni
 
 ---
 
-<!-- p.339 (orig. p.339) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 339
 
 Prospicienti il fiume persero le loro belle quinte riccamente scenografiche di case che con finestre e balconi e bussolotti si affacciavano sull'acqua del fiume, interrotte da vie e viottoli che scendevano all'argine. Queste demolizioni portarono anche ad alcune interruzioni dei più antichi tessuti viarii come quelli della via Recta e della via Sistina a Ponte, che erano un tratto di percorso noto come "via papale" perché per quella transitava il pontefice; cavalcando una mula bianca; con la corte pontificia, cardinali, le guardie svizzere; una folla plaudente e salmodiante, per recarsi da S. Pietro a S. Giovanni in Laterano, dove sarebbe stato consacrato vescovo di Roma.
@@ -8765,11 +7983,8 @@ La nostra visita al quartiere inizia da via dell'Orso; dove questa si biforca da
 
 ---
 
-<!-- p.340 (orig. p.340) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>340
+340
 RIONE V. PONTE
 
 Già ai Frangipane e ai monaci agostiniani: Il palazzo fu progettato da Giovanni Fontana e conserva un nobile portone su cui sono visibili le mezzelune e le stelle dello stemma degli Scapucci. La torre è anche nota a tutti i romani come Torre della Scimmia, la cui leggenda è narrata anche da Nathaniel Hawthorne. La locanda dell'Orso diede nome per l'insegna che mostrava, con due orsi affrontati, a tutta la via; sempre che tale immagine non sia da riferire, invece, allo stemma degli Orsini, presenti durante il medioevo in questo rione.
@@ -8790,11 +8005,8 @@ Via di Monte Brianzo fu, nell'età medievale e durante il Rinascimento...
 
 ---
 
-<!-- p.341 (orig. p.341) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO [ITINERARIO]
+PRIMO [ITINERARIO]
 34
 
 **Palazzo Scapucci**
@@ -8819,11 +8031,8 @@ Sulla fronte verso il Tevere fu allora impostata una facciata monumentale con co
 
 ---
 
-<!-- p.342 (orig. p.342) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>342
+342
 
 RIONE V. PONTE
 
@@ -8841,11 +8050,8 @@ Fu nel 1617 che nella cappella del palazzo, completamente ristrutturata ed ornat
 
 ---
 
-<!-- p.343 (orig. p.343) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 343
 
 **Il conte Primoli**
@@ -8876,11 +8082,8 @@ Ci troviamo quindi su piazza di S. Apollinare su cui si affaccia la Chiesa di S.
 
 ---
 
-<!-- p.344 (orig. p.344) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>344
+344
 RIONE V. PONTE
 
 Palazzo Altemps e la chiesa di S. Apollinare. In un'incisione di G. Vasi.
@@ -8897,11 +8100,8 @@ Accanto, rifatto dallo stesso Fuga, è il Palazzo di S. Apollinare. Di questo pa
 
 ---
 
-<!-- p.345 (orig. p.345) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 345
 
 Passato ai gesuiti, nel 1574, fu abitato da costoro per circa duecento anni quindi le scuole dell'Accademia di S. Luca fino al 1825 e, successivamente, il seminario Pio. Durante i primi decenni del Novecento fu sede dei Signori della Missione finché, per volontà di papa Benedetto XV, divenne sede del pontificio istituto di S. Apollinare. All'interno, dove era la libreria del collegio germanico-ungarico dei gesuiti, è oggi la cappella con immagine della Vergine all'altare e con le raffigurazioni del fondatore dell'ordine, *S. Ignazio di Loyola*, e dell'altro grande santo missionario, *S. Francesco Saverio*, opere entrambe di Andrea Pozzo, come pure dello stesso artista è l'*Ascensione di Maria*, realizzata a tempera, che orna il soffitto. Il palazzo fu restaurato intorno alla metà del Settecento dal [nome mancante], ma quando questi mise mano alla chiesa contigua, lo ornò dello stemma di Gregorio XIII.
@@ -8916,11 +8116,8 @@ Lasciato il palazzo Sampieri ci dirigiamo a destra dove si apre la via di Acquas
 
 ---
 
-<!-- p.346 (orig. p.346) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>346
+346
 RIONE V. PONTE
 
 Sulla sinistra è una palazzina quattrocentesca con un porticato antistante sorretto da colonne e da pilastri. L'edificio che fu restaurato, anzi «ricostruito» dai Bennicelli è conosciuto come Casa di Fiammetta; in quanto si ritiene che fosse l'abitazione della famosa cortigiana amante di Cesare Borgia detto il Valentino.
@@ -8943,11 +8140,8 @@ Arriviamo adesso in piazza Lancellotti, conosciuta anticamente come dei Matricia
 
 ---
 
-<!-- p.347 (orig. p.347) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 347
 
 Lauro che, passata ai Piceni, fu dedicata a S. Maria di Loreto. Infine la nostra piazza fu anche detta di S. Simeone perché una volta vi si affacciava; appunto l'omonima chiesa di cui oggi resta la sola facciata.
@@ -8966,11 +8160,8 @@ Il teatro, costruito in legno da Carlo Fontana, cominciò a funzionare nel 1670 
 
 ---
 
-<!-- p.348 (orig. p.348) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>348
+348
 
 RIONE V. PONTE
 
@@ -8988,11 +8179,8 @@ Ripreso il vicolo dei Marchigiani si esce sulla piazza di S. Salva-
 
 ---
 
-<!-- p.349 (orig. p.349) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 349
 
 tore in Lauro. Qui al n: 10 è la scuola Angelo Braschi, istituita da Pio VI a beneficio degli abitanti del rione e tenuta dai Fratelli delle scuole cristiane. Il Comune di Roma vi ha apposto una lapide in ricordo del poeta romano Giulio Cesare Santini con la trascrizione di una sua poesia dialettale.
@@ -9013,11 +8201,8 @@ Prendiamo adesso per via dei Vecchierelli il cui nome ricorda...
 
 ---
 
-<!-- p.350 (orig. p.350) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>350
+350
 
 RIONE V. PONTE
 
@@ -9055,11 +8240,8 @@ L'angolo dello stesso palazzo; in cui è posta l'edicola, è ornato da un bugnat
 
 ---
 
-<!-- p.351 (orig. p.351) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 35 |
 
 Proseguendo su via dei Coronari dopo un'antica bottega di fabbro (al n. 225) vediamo, sulla destra, il vicolo di S. Trifone. Questo vicolo, che si ritiene, come abbiamo detto, essere uno dei più stretti vicoli di Roma, è dedicato al santo, morto martire in Frigia protettore dei giardinieri. Vicolo di S. Trifone, all'incrocio con via dei Tre Archi, mostra un'edicola moderna nell'affresco che la orna e che raffigura la *Madonna con il Bambino e tre Santi*.
@@ -9077,11 +8259,8 @@ Il palazzo che racchiude un bel cortile coronato da portici ha alcune sale ornat
 
 ---
 
-<!-- p.352 (orig. p.352) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>352
+352
 
 RIONE V. PONTE
 
@@ -9099,11 +8278,8 @@ Nel palazzo stesso fu inclusa la chiesa di S. Salvatore de Inversis. Sulla piazz
 
 ---
 
-<!-- p.353 (orig. p.353) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 353
 
 [Immagine: Pianta del Maggi]
@@ -9117,11 +8293,8 @@ Ai nn. 184-186 è situato il Palazzo dell'Arciconfraternita dei Piceni, restaura
 
 ---
 
-<!-- p.354 (orig. p.354) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>354
+354
 
 RIONE V. PONTE
 
@@ -9135,11 +8308,8 @@ Di fronte, al n. 111, è murata un'epigrafe romana, già parte del coperchio di 
 
 ---
 
-<!-- p.355 (orig. p.355) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 355
 
 L'"Immagine di Ponte" di Antonio da Sangallo il Giovane; all'angolo tra via del Coronari e vicolo Domizio.
@@ -9154,11 +8324,8 @@ Riprendendo la via dei Coronari vediamo murata; in corrispon-
 
 ---
 
-<!-- p.356 (orig. p.356) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>356
+356
 
 RIONE V. PONTE
 
@@ -9178,11 +8345,8 @@ Siamo in via di Monte Giordano e sulla sinistra non possiamo non ammirare il cor
 
 ---
 
-<!-- p.357 (orig. p.357) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 357
 
 La fontana del cortile di palazzo Orsini a Monte Giordano in un'incisione di G.B. Falda.
@@ -9198,11 +8362,8 @@ Accanto, al n. 13 è messa in vista una cornice in finto bugnato di un antico po
 
 ---
 
-<!-- p.358 (orig. p.358) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>358
+358
 
 RIONE V. PONTE
 
@@ -9226,11 +8387,8 @@ Prendiamo ora il vicolo di Montevecchio il cui nome ricorda il primo monte di Pi
 
 ---
 
-<!-- p.359 (orig. p.359) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 359
 
 G.B. Falda, la chiesa di S. Maria della Pace.
@@ -9242,11 +8400,8 @@ Usciti dal convento passiamo sotto l'arco della Pace e come dall'interno di una 
 
 ---
 
-<!-- p.360 (orig. p.360) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>360
+360
 RIONE V. PONTE
 
 Ritrovare la pace: la chiesa odierna fu voluta da Sisto IV nel 1473 in sostituzione di una più antica conosciuta prima come S. Andrea e dedicata alla Madonna; ma sempre accompagnata dall'attributo *de aquarenaris*. Costoro erano rivenditori di acqua che qui si vendeva perché filtrata e quindi potabile.
@@ -9271,11 +8426,8 @@ Ritornati sulla piazzetta possiamo leggere l'iscrizione che corre sul portico e 
 
 ---
 
-<!-- p.361 (orig. p.361) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 361
+SECONDO ITINERARIO 361
 
 La facciata di S. Maria della Pace in un'incisione ottocentesca
 
@@ -9286,11 +8438,8 @@ La facciata di S. Maria della Pace in un'incisione ottocentesca
 
 ---
 
-<!-- p.362 (orig. p.362) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>362
+362
 
 RIONE V. PONTE
 
@@ -9307,11 +8456,8 @@ La volta della navata centrale è stata affrescata dal Seitz, autore anche della
 
 ---
 
-<!-- p.363 (orig. p.363) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 363
 
 gli affreschi con «Storie della vita di S. Barbara», opera dell' artista fiammingo Coxie (1534).
@@ -9328,11 +8474,8 @@ Completiamo il nostro secondo itinerario con il Palazzo del Banposte
 
 ---
 
-<!-- p.364 (orig. p.364) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>364
+364
 
 **RIONE V. PONTE**
 
@@ -9364,11 +8507,8 @@ Il palazzo, con una bella fontana a doppia vasca con aquila fra rami di quercia 
 
 ---
 
-<!-- p.365 (orig. p.365) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 365
 
 Giriamo adesso per la stretta via dei Banchi Nuovi, cosiddetta per la presenza dei banchi dei cambiavalute e detta anche papale perché, come abbiamo già ricordato, veniva percorsa dal corteo papale che accompagnava il papa appena eletto che prendeva <possesso> del Laterano. Qui, subito a sinistra, ai nn. 35-36 è situata la casa che, come si legge sulla cornice che ne scandisce la facciata al primo piano, Francesco da Gallarate, milanese, si fece costruire. Questo cinquecentesco edificio entrò poi a far parte della proprietà dell'ospedale di S. Giacomo.
@@ -9385,11 +8525,8 @@ Questo vicolo termina in quello di S. Celso e proprio all'angolo è situata la s
 
 ---
 
-<!-- p.366 (orig. p.366) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>366
+366
 
 RIONE V. PONTE
 
@@ -9409,11 +8546,8 @@ Al centro dell'arco è una bella protome leonina ispirata al leone mediceo di pa
 
 ---
 
-<!-- p.367 (orig. p.367) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 367
 
 L'apertura di corso Vittorio. In questo edificio abitò Cesare Sterbini, che fu uno dei librettisti di Gioacchino Rossini.
@@ -9430,11 +8564,8 @@ Giriamo adesso a destra attorno al palazzo Alberini e vediamo il...
 
 ---
 
-<!-- p.368 (orig. p.368) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>368
+368
 
 RIONE V. PONTE
 
@@ -9458,11 +8589,8 @@ Ritorniamo sui nostri passi e riprendiamo via del Banco di S. Spirito dove, di f
 
 ---
 
-<!-- p.369 (orig. p.369) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 369
 
 La chiesa dei Ss. Celso e Giuliano (incisione di G. Vasi).
@@ -9473,11 +8601,8 @@ Proseguendo nella via del Banco di S. Spirito, approssimandoci al ponte Elio (S.
 
 ---
 
-<!-- p.370 (orig. p.370) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>370
+370
 
 RIONE V. PONTE
 
@@ -9495,11 +8620,8 @@ Proseguendo su questo lato della strada arriviamo all'edificio posto ad angolo c
 
 ---
 
-<!-- p.371 (orig. p.371) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 371
 
 Cornice con palmette e protomi leonine. All'interno si apre un negozio di stampe e libri antichi. Questo palazzo cinquecentesco, che fu notevolmente ristrutturato intorno al 1940, aveva la facciata ornata da un motivo di bugnato dipinto:
@@ -9514,11 +8636,8 @@ La zona intorno alla piazza era poi ricca di locande, osterie, taverne, alberghi
 
 ---
 
-<!-- p.372 (orig. p.372) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>372
+372
 
 RIONE V. PONTE
 
@@ -9532,11 +8651,8 @@ Quando si tenevano le esecuzioni capitali una tradizione voleva che i padri acco
 
 ---
 
-<!-- p.373 (orig. p.373) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 373
 
 Dire che costituisca uno dei principali assi viarii del centro storico di Roma. Piazza Pasquale Paoli è costituita da una coppia di grandi edifici simmetrici all'angolo di uno dei quali trovasi un'edicola marinara.
@@ -9557,11 +8673,8 @@ Imbocchiamo Via degli Acciaioli e oltre la chiesa, al n. 2, è conservata una pi
 
 ---
 
-<!-- p.374 (orig. p.374) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>374
+374
 
 RIONE V. PONTE
 
@@ -9581,11 +8694,8 @@ Prendendo su via del Consolato che prima dell'apertura di corso...
 
 ---
 
-<!-- p.375 (orig. p.375) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 375
 
 Vittorio portava via dei Banchi Vecchi; si possono trovare sulla sinistra i ricordi del vicolo dell'Oro.
@@ -9602,11 +8712,8 @@ Soffermiamoci un attimo ed entriamo nel vicolo delle Palle (originariamente al l
 
 ---
 
-<!-- p.376 (orig. p.376) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>376
+376
 
 RIONE V. PONTI:
 Palazzo Sacchetti a via Giulia in un'incisione di G. Vasari
@@ -9621,11 +8728,8 @@ Attraverso il portone sottolineato da una cornice in marmo che si parti...
 
 ---
 
-<!-- p.377 (orig. p.377) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 377
 
 apre al di sotto dello stretto balcone e con bei lampioni in ferro; si entra nell'austero cortile porticato su pilastri, ornato da un fregio in cui nelle metope sono contenuti gli elementi araldici della famiglia Ceuli. Un interessante rilievo che si pensa rappresenti la presentazione al senato di Caracalla avvenuta nel 197 d.C. quando fu designato dal padre, Settimio Severo, *imperator designatus*.
@@ -9645,11 +8749,8 @@ La chiesa; di cui non sappiamo la data della costruzione ebbe un primo rifacimen
 
 ---
 
-<!-- p.378 (orig. p.378) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>378
+378
 RIONE V. PONTE
 
 La persecuzione di Licinio: il vescovo si fosse rifugiato sulle montagne continuando a seguire i suoi fedeli; scoperto e ricondotto in città, Biagio si rifiutò di sacrificare agli dèi e fu condotto quindi al martirio; mentre veniva condotto sul luogo del supplizio (che, secondo una versione, avvenne per decapitazione), venne fermato da una donna che recava fra le braccia il figlio moribondo per essergli conficcata una spina di pesce in gola. Biagio, avendo imposto le mani sulla gola del fanciullo, lo salvò dalla morte. Questo ha contribuito a fare del Santo il protettore contro tutte le malattie della gola. A maggior sostegno di ciò è anche conservata nella chiesa la reliquia della lingua del Santo.
@@ -9668,11 +8769,8 @@ Da notare il caratteristico «callarello» (caldaio) sulla facciata. Ritornati s
 
 ---
 
-<!-- p.379 (orig. p.379) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 379
+TERZO ITINERARIO 379
 
 Papa Clemente VIII ebbe come prima sede la vicina chiesa di S. Biagio. La chiesa venne iniziata nel 1662 e, nel 1669, su disegno del Rainaldi, fu costruita la facciata; interamente in travertino, scandita da quattro lesene nell'ordine inferiore sormontate da capitelli in stile composito analoghi a quelli della chiesa di S. Biagio della Pagnotta e quattro lesene anche nell'ordine superiore sormontate da capitelli di stile ionico.
 
@@ -9688,11 +8786,8 @@ Attraversiamo quindi via Giulia e, sempre seguendo i confini del rione, imbocchi
 
 ---
 
-<!-- p.380 (orig. p.380) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>380
+380
 RIONE V. PONTE
 
 Tava di gettare per la strada l'immondizia; tabella qui sistemata nel 1741, il Palazzo del Vescovo di Cervia. Di questo edificio, in quanto rimasto incompiuto, non vediamo che il settore in angolo con la via dei Banchi Vecchi, sottolineato da forte bugnato; con portoni quadrangolari delle botteghe sormontate da piccole finestre dal piano nobile con eleganti finestre.
@@ -9711,11 +8806,8 @@ A destra della piazza è situato il grande Palazzo Sforza Cesarini fatto costrui
 
 ---
 
-<!-- p.381 (orig. p.381) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>AMBIENTI SPARITI
+AMBIENTI SPARITI
 381
 
 **L'arciconfraternita dei Gonfaloni**
@@ -9734,11 +8826,8 @@ All'interno del grande Palazzo dei Tribunali, voluto da papa Giulio II, era situ
 
 ---
 
-<!-- p.382 (orig. p.382) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>382
+382
 RIONE V. PONTE
 
 Costituita a Roma nel 1569 e sancita da Gregorio XIII circa dieci anni dopo: agli inizi del Settecento la chiesa ebbe un restauro e fu in occasione che venne eretta la facciata su disegno del Fontana.
@@ -9757,11 +8846,8 @@ La scritta con il motto in latino che vediamo adesso sulla cornice al primo pian
 
 ---
 
-<!-- p.383 (orig. p.383) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione VI. Parione
+Rione VI. Parione
 di Giorgio Carpaneto
 
 **Le origini, la storia**
@@ -9804,11 +8890,8 @@ Nella zona erano lo stadio di Domiziano; l'Odeon, il teatro e la curia di Pompeo
 
 ---
 
-<!-- p.384 (orig. p.384) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>384
+384
 RIONE VI PARIONE
 C.co Agonale
 
@@ -9829,11 +8912,8 @@ piazza Navona, venne costruito da quell'imperatore intorno all'85 d.C. e fu nel 
 
 ---
 
-<!-- p.385 (orig. p.385) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI, LA STORIA
+LE ORIGINI, LA STORIA
 385
 
 una è quella di Pasquino; che è una copia di un gruppo ellenistico pergameno rappresentante Menelao che sorregge il corpo di Patroclo.
@@ -9846,11 +8926,8 @@ Contemporaneamente i costruttori del Cinquecento chiamarono artisti di fama, com
 
 ---
 
-<!-- p.386 (orig. p.386) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>386
+386
 RIONE VI. PARIONE
 
 lizzare la quale gli artisti si servivano di terre particolari: Il Vasari scrive che Polidoro era «stato prodotto e creato dalla natura pittore» e che Maturino era «alle anticaglie tenuto bonissimo di disegnatore». Furono eseguite infatti scene classiche o prese dal Vecchio e Nuovo Testamento (come al Massimo). Ad essi possiamo affiancare Francesco dell'Padazzo, Vincenzo Tamagni, Daniele da Volterra; Pirro Ligorio e il Cavalier d'Arpino.
@@ -9867,11 +8944,8 @@ Invano il papa Innocenzo X tentò di farle assumere un ruolo più...
 
 ---
 
-<!-- p.387 (orig. p.387) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI, LA STORIA  
+LE ORIGINI, LA STORIA  
 387
 
 ![Immagine]
@@ -9896,11 +8970,8 @@ no gli spazi scoperti nell'interno degli edifici, sì che questi respi-
 
 ---
 
-<!-- p.388 (orig. p.388) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>388
+388
 
 RIONE VI. PARIONE
 
@@ -9920,11 +8991,8 @@ Toccò a Sisto IV (1471-1484), il *restaurator Urbis*, dare alla città l'avvio,
 
 ---
 
-<!-- p.389 (orig. p.389) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI, LA STORIA
+LE ORIGINI, LA STORIA
 389
 
 centro della nuova Roma; e della chiesa di S. Maria della Pace, restaurata nel Seicento da Pietro da Cortona. Sotto Innocenzo VIII si rettificano e si rendono più ampie le vie dei Millini e dell'Anima e si inizia quel capolavoro dell'architettura del primo Rinascimento che è il palazzo sorto per incarico del cardinale Raffaele Riario, la futura Cancelleria, mentre Piazza Navona e Campo de' Fiori incrementano la loro importanza; perché ospitano le più varie attività commerciali; e il palazzo eretto già dal 1473 da Stefano Nardini, arcivescovo di Milano e governatore di Roma, conferisce dignità a quel tratto della via di Parione che si chiamerà del Governo Vecchio.
@@ -9941,11 +9009,8 @@ Il Settecento trasforma, restaura, ricostruisce chiese ed edifici, coprendo tutt
 
 ---
 
-<!-- p.390 (orig. p.390) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>390
+390
 
 RIONE VI. PARIONE
 
@@ -9973,11 +9038,8 @@ L'allagamento interessava solo la parte meridionale di piazza Navona che era pi�
 
 ---
 
-<!-- p.391 (orig. p.391) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI, LA STORIA
+LE ORIGINI, LA STORIA
 391
 
 ![Piazza Navona in un'incisione secentesca di Israel Sylvestre]
@@ -9997,11 +9059,8 @@ Qui sorse l'antico gymnasium costruito da Nerone per i ludi quinquennali e distr
 
 ---
 
-<!-- p.392 (orig. p.392) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>392
+392
 
 RIONE VI PARIONE
 
@@ -10067,11 +9126,8 @@ per motivi attinenti alla statica.
 
 ---
 
-<!-- p.393 (orig. p.393) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 393
 
 La chiesa di S. Tommaso in Parione in un'incisione di G. Vasi.
@@ -10116,11 +9172,8 @@ Qui Filippo Neri ricevette la tonsura ecclesiastica; si radunava la Congregazion
 
 ---
 
-<!-- p.394 (orig. p.394) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>394
+394
 
 RIONE VI. PARIONE
 S. Filippo Neri
@@ -10152,11 +9205,8 @@ L'interno, a tre navate, presenta pilastri con lesene ioniche. Nell'altare maggi
 
 ---
 
-<!-- p.395 (orig. p.395) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 395
 
 Il cardinale Gregorio Barbarigo (titolare della chiesa nel Seicento). In questa chiesa fu sepolto G.B. Gaulli; detto il Baciccia, morto nel 1709 e abitante nel palazzo attiguo dai caratteri barocchi.
@@ -10169,11 +9219,8 @@ Più avanti, al n. 7, c'è la casa di Sisto oggi conosciuta come Palazzetto del 
 
 ---
 
-<!-- p.396 (orig. p.396) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>396
+396
 RIONE VI PARIONE
 
 rati. Gli stemmi dei Peretti e degli Orsini occhieggiano da più parti. Vi sono quadri di Antoniazzo Romano (1435-1508 ca.), di Federico Barocci (1535-1612) e di Francesco Podesti (1800-1895). In realtà, non vi sono grandiosi saloni o maestosi cortili, ma piccoli spazi, graziosi ambienti e delizioso teatrino pensile, che è il cortiletto superiore; dall'aspetto squisitamente scenografico; destinato a sala per concerti o per rappresentazioni teatrali in famiglia. Lo spazio è circondato da volute e da decorazioni a stucco fra le quali spiccano figure di fanciulle caratterizzate da tre mammelle. Siamo nell'ambito stilistico di un tardo Rinascimento misto ad un ben pronunciato manierismo; nel quale l'elemento paganeggiante e fiabesco fa la parte del leone.
@@ -10194,11 +9241,8 @@ La via del Governo Vecchio va dalla piazza dell'Orologio a quella di Pasquino. E
 
 ---
 
-<!-- p.397 (orig. p.397) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 397
 
 Governo; e quando (nel Settecento) gli uffici furono trasferiti per ordine di Benedetto XIV (1740-1758) al palazzo Madama, la strada divenne via del Governo Vecchio ed oggi ci appare come un luogo rappresentativo di epoche passate, con quei suoi edifici che spesso ci mostrano il loro volto quattro-cinquecentesco.
@@ -10227,11 +9271,8 @@ Il vasto cortile rivela le fasi della costruzione con disuguaglianze e asimmetri
 
 ---
 
-<!-- p.398 (orig. p.398) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>398
+398
 
 RIONE VI. PARIONE
 
@@ -10251,11 +9292,8 @@ Una curiosità è costituita da quella che è considerata la casa più piccola d
 
 ---
 
-<!-- p.399 (orig. p.399) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 399
 
 stra; sovrastata da terrazzo. Il portone è ora un negozio, perché è stata inglobata nell' edificio antico. Singolare è, di certo; la casa quattrocentesca rifatta nel Settecento al n. 104, perché, oltre i graffiti, ancora evidenti, del primo piano, mostra nella seconda finestra dell' ultimo piano un affresco che raffigura il padrone di casa affacciato ad una loggetta insieme col suo segretario; e nel vano di un' altra finestra un pappagallo. Il Settecento ha lasciato la sua brava impronta sulla facciata; attaccandole dei medaglioni con ritratti di giuristi, festoni e mascheroni. Un oculo circondato da festoni sovrasta il portone. Nell' architrave vi è una tabella dell' arciconfraternita delle Sacre Stimmate di Roma sovrapposta all'iscrizione che rimane parzialmente nascosta:
@@ -10273,11 +9311,8 @@ Anche la via dei Leutari era un vicolo cieco che deve il nome ad un'omonima fami
 
 ---
 
-<!-- p.400 (orig. p.400) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>400
+400
 
 RIONE VI. PARIONE
 
@@ -10295,11 +9330,8 @@ Nel rientrare in via del Governo Vecchio; la lunetta in ferro del portone al n. 
 
 ---
 
-<!-- p.401 (orig. p.401) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 401
 
 avrebbe perseguitati: Costoro fuggirono a Venezia, ma furono egualmente raggiunti e morirono, uno avvelenato o, secondo uno storico, per un'infezione alla gamba scampando all'autorità; l'altra uccisa a Padova dai sicari di Ludovico Orsini, che a sua volta venne giustiziato dalla Repubblica veneta.
@@ -10318,11 +9350,8 @@ Entriamo nella via di Pasquino; costeggiando a destra il palazzo Braschi e avend
 
 ---
 
-<!-- p.402 (orig. p.402) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>402
+402
 RIONE VI. PARIONE
 
 1
@@ -10337,11 +9366,8 @@ Lo stesso Carafa indisse una cerimonia annuale, il 25 aprile, giorno dedicato a 
 
 ---
 
-<!-- p.403 (orig. p.403) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 403
 
 Dall'epoca di Leone X le pasquinate non diedero pace alle autorità, rappresentando, in un certo senso, la stampa di opposizione. Inoltre Pasquino firmava le anonime satire e aveva altre statue come interlocutori: Madama Lucrezia (un busto gigantesco venuto alla luce durante i lavori per il palazzo Venezia, ritenuto la dea Iside o la moglie di Collatino o Faustina; moglie di Antonino Pio, attualmente in piazza San Marco); Marforio (l'Oceano; collocato oggi nel Museo Capitolino); il Facchino (in via Lata); l'abate Luigi (una statua togata romana in piazza Vidoni); il Babuino (il sileno nella via omonima).
@@ -10375,11 +9401,8 @@ Vista panoramica rivela una grande armonia fra chiese, palazzi e fontane ed ha u
 
 ---
 
-<!-- p.404 (orig. p.404) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>404
+404
 
 RIONE VI PARIONE
 
@@ -10395,11 +9418,8 @@ Ludovico de Torres era di Malaga e venne a Roma dove rivestì anche la carica di
 
 ---
 
-<!-- p.405 (orig. p.405) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 405
 
 di principi. Con Ottavio si estinse la famiglia dei Massimo che mantennero, tuttavia, il cognome Lancellotti.
@@ -10419,11 +9439,8 @@ Le parti laterali hanno alla sommità delle lunette con tracce di affreschi. L'i
 
 ---
 
-<!-- p.406 (orig. p.406) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>406
+406
 RIONE VI. PARIONE
 
 «S. Giacomo» di Jacopo Sansovino (1486–1570), il cui originale è nella suddetta chiesa. Restano anche la volta della chiesa affrescata da Baldassarre Croce (1558–1628) e la marmorea cinquecentesca cantoria, nelle forme del Rinascimento toscano, attribuita a Pietro Torrigiani. Seguono case di proprietà degli Stabilimenti Spagnoli trasformate nel Settecento nell'Ottocento. Un unico cornicione le unisce, decorato dalle solite conchiglie. Segnaliamo molto vicino nella chiesa una finestra arcuata quattrocentesca; su mensole. Graziosi balconi, a mano a mano più corti, vivacizzano le facciate, come il portale al n. 93 con lunetta di ferro con lo stemma di Castiglia; che si ripete ai nn: 94 e 96, 103–105.
@@ -10440,11 +9457,8 @@ Superata la via di S. Agnese in Agone; ci appare la grande co-
 
 ---
 
-<!-- p.407 (orig. p.407) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 407
 
 struzione del Collegio innocenziano dei Pamphilj (alla destra
@@ -10500,11 +9514,8 @@ Farnese. L'interno, a croce greca, ha i quattro altari aperti nei piloni della
 
 ---
 
-<!-- p.408 (orig. p.408) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>408
+408
 
 **RIONE VI PARIONE:**
 
@@ -10514,11 +9525,8 @@ Sugli altari, al posto dei quadri furono preferite le sculture marmoree di autor
 
 ---
 
-<!-- p.409 (orig. p.409) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 409
+PRIMO ITINERARIO 409
 
 di Pier Paolo Campi (Carrara, 1702-1735); «S. Eustachio» di Melchiorre Cafà (Malta, 1635-1667); «Monumento di Innocenzo X» di G.B. Maini (Varese, 1690-1752); «Le quattro virtù cardinali» di G.B. Gaulli; «Gloria del Paradiso» di Ciro Ferri (Roma, 1634-1689); «Gloria di S. Agnese» di Paolo Gismondi (d. P. Perugino).
 Nel sotterraneo vi è «S. Agnese trascinata al martirio», di Alessandro Algardi (Bologna, 1595-1654).
@@ -10539,11 +9547,8 @@ Palazzo Pamphilj in un'incisione di A. Specchi
 
 ---
 
-<!-- p.410 (orig. p.410) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>410
+410
 
 RIONE VI PARIONE
 
@@ -10567,11 +9572,8 @@ Dal Palazzo Pamphilj si può contemplare la magnifica piazza con le tre caratter
 
 ---
 
-<!-- p.411 (orig. p.411) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 41
+PRIMO ITINERARIO 41
 
 sti gruppi erano stati destinati alla fontana di piazza del Popolo, ma poi furono impiegati per la suddetta fontana nel cui centro l'acqua sgorgava da alcuni scogli. Gli autori dei tritoni e delle maschere su disegno del Della Porta furono Simone Moschino, Taddeo Landini, Egidio della Riviera de Malines e Giacobbo Sil-la Longhi; purtroppo gli originali cinquecenteschi si trovano, senza una valida ragione, nel «Giardino del lago» a Villa Bor-ghese: e sulla fontana son poste delle brutte copie ottocentesche di Luigi Amici. Mancava, però, al centro qualcosa di rappresentativo; e il Bernini, dopo aver proposto dei delfini con le code in-trecciate per sorreggere una conchiglia, gruppo chiamato «la lu-macay», adornò la fontana; ma non incontrò il favorevole giu-dizio di Donna Olimpia Pamphilj e perciò dopo un anno la scul-tura disegnata dal Bernini ed eseguita da Angelo Vannelli, fu ri-mossa ed è tutt'ora nella villa Pamphilj. Il secondo tentativo berniniano ebbe, invece, un esito positivo: e l'etiope scolpito da Giovanni Antonio Mari in base al bozzetto del Bernini ancora troneggia fra i tritoni e le «maschere», mentre con evidente forza trattiene un delfino: Così, dopo quasi ottant'anni l'etiope, chia-mato «il Moro» chiuse il problema.
 
@@ -10581,11 +9583,8 @@ Ed ora è la volta della fontana centrale, il più splendido orna-mento della pi
 
 ---
 
-<!-- p.412 (orig. p.412) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>412
+412
 
 RIONE VI. PARIONE
 
@@ -10598,11 +9597,8 @@ Il Nilo ha la testa coperta forse per alludere alle sorgenti allora sconosciute,
 
 ---
 
-<!-- p.413 (orig. p.413) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 413
 
 **Olimpia Maidalchini**
@@ -10622,11 +9618,8 @@ simboleggianti la ricchezza della terra americana, alza il braccio verso la chie
 
 ---
 
-<!-- p.414 (orig. p.414) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>414
+414
 RIONE VI. PARIONE
 
 Donna Olimpia Maidalchini in una stampa d'epoca.
@@ -10658,11 +9651,8 @@ occupato dal ristorante «La cuccagna».
 
 ---
 
-<!-- p.415 (orig. p.415) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 415
+PRIMO ITINERARIO 415
 
 Il vicolo sfocia nella piazzetta dei Massimi (già della Posta Vecchia) che è un angolo segreto e un vero scrigno di tante memorie. Una colonna di cipollino, risulta degli scavi del 1838, è stata posta al centro per ricordarci che nei pressi era il portico dell' Odeon di Domiziano (vedi all'inizio la storia del rione e dei suoi antichi edifici); sulla destra notiamo il piccolo prospetto dell'abside di S. Pantaleo con campanile e icona.
 
@@ -10693,11 +9683,8 @@ Ora sbocchiamo nel corso del Rinascimento che è considerato uno sventramento il
 
 ---
 
-<!-- p.416 (orig. p.416) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>416
+416
 
 **RIONE VI PARIONE**
 
@@ -10733,11 +9720,8 @@ Questa lapide fu rinvenuta in locali di deposito della chiesa, mentre si eseguiv
 
 ---
 
-<!-- p.417 (orig. p.417) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 417
 
 Forse nessuna chiesa ha subito tanti cambiamenti come questa, che mutò più volte l'orientamento e l'ingresso. Infatti, a metà del Quattrocento, quando Piazza Navona era impraticabile e ridotta a zona fangosa, l'ingresso era unicamente su via di S. Giacomo (poi via della Sapienza, infine Corso del Rinascimento). Nella seconda metà dell'Ottocento il magnifico portale del 1463 fu spostato sulla piazza e al suo posto fu collocato [il portale] rinascimentale di Pietro Torrigiani che stava sul prospetto di Piazza Navona. Sia il primo che il secondo, però, non sono mai stati di accesso della piazza in quanto murati dall'interno, perché vi è addossato Palazzo: dopo varie ristrutturazioni, ora si entra dalle due facciate, ma l'ingresso principale è su Corso del Rinascimento. Una lapide del Comune ricorda che: «Cesare Fracassini pittore romano dei sommi artisti emulo passò da questa casa ove visse agli immortali MDCCCXXXVIII-MDCCCLXVIII».
@@ -10750,11 +9734,8 @@ La via era abitata da cortigiane d'alto bordo fra le quali, narra il Delli, la f
 
 ---
 
-<!-- p.418 (orig. p.418) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>418
+418
 
 RIONE VI PARIONE
 
@@ -10776,11 +9757,8 @@ Altro nome della via fu Mellina, per le proprietà dei Millini, e di S. Agnese; 
 
 ---
 
-<!-- p.419 (orig. p.419) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 419
 
 La torre Millina nel suo aspetto originario (disegno di G.B. Glovenale).
@@ -10798,11 +9776,8 @@ La torre Millina nel suo aspetto originario (disegno di G.B. Glovenale).
 
 ---
 
-<!-- p.420 (orig. p.420) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>420)
+420)
 RIONE VI PARIONE
 
 # ran battaja der gran Re
@@ -10834,11 +9809,8 @@ Riprendiamo la nostra passeggiata, fermandoci dinanzi al Palazzo Braschi. Eccone
 
 ---
 
-<!-- p.421 (orig. p.421) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 
 Chiamò Antonio da Sangallo il Giovane (Antonio Cordini da Firenze; 1483–1546) per eseguire il rinnovo dell'edificio e per la costruzione di una torre istoriata. Morto il cardinale, l'immobile fu ripreso dagli Orsini che lo arricchirono di tesori d'arte: basti pensare alla collezione di dipinti dei Carracci, di Tiziano; del Tintoretto che vi raccolse, nel Seicento, Flavio Orsini. Dagli Orsini il palazzo passò ai Colonna nel Settecento; e quindi ai Braschi; che lo cedettero nel 1790 al papa Pio VI Braschi; il quale lo demolì e affidò la costruzione del nuovo edificio all'architetto Cosimo Morelli (da Imola, 1732–1812) per i nipoti Luigi e Romualdo Onesti, i quali accanto al loro cognome misero quello dei Braschi. Così la famiglia del papa continuava a vivere secondo il suo desiderio. A tale notizia Pasquino fece questo commento: «Son tanti e rigogliosi di Santa Chiesa i paschi / e ci si può ingrassare anche la casa Braschi».
 
@@ -10852,11 +9824,8 @@ Una quarta facciata dà su via della Cuccagna. Un lungo balcone sovrasta il port
 
 ---
 
-<!-- p.422 (orig. p.422) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>422
+422
 
 **RIONE VI. PARIONE**
 
@@ -10868,11 +9837,8 @@ Il Museo di Roma raccoglie pitture, sculture, oggetti a ricordo della Roma dal m
 
 ---
 
-<!-- p.423 (orig. p.423) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 423
 
 Il papa Pio VI aveva validi motivi per non far estinguere la sua famiglia; che sopravvisse fino al 1923; essa proveniva da Cesena, vantava illustri membri fra i Giambattista, vescovo di Sarsina nel Seicento; Marco Aurelio che da Teresa Bandi ebbe Giovan Angelo (il futuro papa Pio VI) e Giulia che il conte Girolamo Onesti, di nobile famiglia di Ravenna. Dei loro figli, Luigi ebbe il titolo di duca di Narni e fu creato grande di Spagna, oltre ad essere iscritto nel libro d'oro dei patrizi romani; e Romualdo fu eletto cardinale. Si ricorda anche il duca Pio, sposo della marchesa Anna Curti-Lepri, e un figlio Romualdo; menzionato dall' Amayden.
@@ -10898,11 +9864,8 @@ R. S. MDCCCVI.
 
 ---
 
-<!-- p.424 (orig. p.424) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>424
+424
 RIONE VI PARIONE
 
 Nell'ordine superiore coronato da timpano con dentelli vi è un'arcata cieca con finestra rettangolare. La fascia che divide i due ordini è decorata con stucchi di Pietro Aureli. Due volute sul vertice del timpano sostengono una croce. L'interno, a navata unica con cappelle laterali, è privo di transetto. Il settecentesco altare maggiore è di Antonio Bracci su progetto di Carlo Murena, che disegnò anche l'urna di porfido contenente le reliquie di S. Giuseppe Calasanzio. La volta fu affrescata da Filippo Gherardi (da Lucca, 1643-1704) e rappresenta «Il trionfo del nome di Maria»; nella parete di fondo si può ammirare la composizione scultorea in stucco di Luigi Acquisti (da Forlì, 1745-1823).
@@ -10921,11 +9884,8 @@ Ma non abbiamo ancora terminato il giro di questa piazza di S. Pantaleo alquanto
 
 ---
 
-<!-- p.425 (orig. p.425) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 425
 
 ni, per cui il palazzetto fu indicato dal popolo con questo nome; pur non avendo nulla in comune con la Farnesina alla Lungara. Lo fece costruire un alto prelato bretone, Tommaso Le (nome latinizzato in Regis) che venne a Roma nel 1494 al seguito di Carlo VIII. Rivestì importanti cariche nella corte pontificia ed ebbe parte notevole nel concordato tra il papa Leone X e Francesco I, che, per ricompensarlo dei suoi utili servigi, lo fece nobile e gli concesse di fregiare il suo stemma con gigli di Francia.
@@ -10942,11 +9902,8 @@ Il lato del palazzo su corso Vittorio Emanuele fu restaurato dall'architetto Enr
 
 ---
 
-<!-- p.426 (orig. p.426) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>426
+426
 RIONE VII PARIONE
 
 che nella zona dovessero esservi gli *stabula factionum*; cioè le
@@ -10966,11 +9923,8 @@ Attraversò un brutto momento nel 1527 durante il sacco di Roma; perché i lanzi
 
 ---
 
-<!-- p.427 (orig. p.427) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 427
 
 ornamenti, di sapiente distribuzione delle masse; fu anche una prova di grande abilità, perché si trattava di costruire sulle fondazioni di una casa rovinata e incendiata. La denominazione «dalle Colonne» si deve al fatto che ve ne sono sei che formano il magnifico ingresso sul corso Vittorio. La facciata, rivestita di bugne, ha un andamento curvilineo che ricorda l'odeon romano ed è formata dal portico; da un piano terreno; da quello nobile con sette balconcini e da altri due con finestre rettangolari più piccole ma con originale cornice. Rosoni e mensole decorano il cornicione.
@@ -10991,11 +9945,8 @@ Alcune sale sono ricche di decorazioni e comunicano con quelle del palazzo «all
 
 ---
 
-<!-- p.428 (orig. p.428) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>428
+428
 
 RIONE VI. PARIONE
 
@@ -11047,11 +9998,8 @@ La piazza e la via della Chiesa Nuova erano comprese nella contrada di Pozzo Bia
 
 ---
 
-<!-- p.429 (orig. p.429) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 
 **L'oratorio filippini e la chiesa di S. Maria in Vallicella**
 In un'incisione secentesca.
@@ -11065,11 +10013,8 @@ La facciata fu compiuta nel 1605 da Fausto Rughesi. È a due ordini di lesene, c
 
 ---
 
-<!-- p.430 (orig. p.430) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>430
+430
 
 RIONE VI PARIONE
 
@@ -11084,11 +10029,8 @@ Sulla piazza vi è dal 1925 la fontana detta la Terrina che nel Cinquecento era 
 
 ---
 
-<!-- p.431 (orig. p.431) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 431
 
 torio Emanuele (aperto nel 1883-1887), imbocchiamo il vicolo Cellini, così detto perché si è ritenuta sua opera la decorazione con graffiti della casa al n. 31.
@@ -11112,11 +10054,8 @@ C. Pietrangeli ci dà la traduzione seguente:
 
 ---
 
-<!-- p.432 (orig. p.432) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>432
+432
 
 RIONE VI. PARIONE
 
@@ -11135,11 +10074,8 @@ Altra strada, interrotta quando fu costruito il corso Vittorio Emanuele, è il v
 
 ---
 
-<!-- p.433 (orig. p.433) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 433
 
 **Benvenuto Cellini**
@@ -11160,11 +10096,8 @@ Morì nel 1571. Il romanticismo lo esaltò per il suo sfrenato individualismo co
 
 ---
 
-<!-- p.434 (orig. p.434) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>434
+434
 
 RIONE VI PARIONE
 
@@ -11231,11 +10164,8 @@ Nell'ultimo tratto della via del Pellegrino, in angolo con Campo de' Fiori, vi
 
 ---
 
-<!-- p.435 (orig. p.435) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 435
 
 **Sisto IV**
@@ -11266,11 +10196,8 @@ Il palazzo fu eretto dal cardinale Raffaele Riario (1460-1521) dopo la demolizio
 
 ---
 
-<!-- p.436 (orig. p.436) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>436
+436
 
 **RIONE VI PARIONE**
 
@@ -11319,11 +10246,8 @@ ALEXANDRI VI P.M.
 
 ---
 
-<!-- p.437 (orig. p.437) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 437
+TERZO ITINERARIO 437
 
 Camerlengo di S. Romana Chiesa, colmato di onori e ricchezze da Sisto IV, costruì a proprie spese dalle fondamenta il tempio dedicato a S. Lorenzo martire e il palazzo nel 1495 sotto il pontificato di Alessandro VI. Il portale principale, <sguaiatamente> grandioso del 1589, è l'opera peggiore di Domenico Fontana; <che si fece promotore di velleità anticonformistiche>. L'arco d'ingresso è decorato da due leoni con (stemma del cardinale Alessandro Peretti, vicecancelliere che fece eseguire il portale). Sull'architrave retto dalle due colonne di granito si legge: AN. SALVT. / MD LXXXIX / SIXTU V / PONTIF. / ANN. (Nell'anno di redenzione 1589 quinto del pontificato di Sisto V). Sulla finestra del balcone: «Corte Imperiale». L'altro portone, opera del Vignola, si riannoda allo stile del palazzo e dà l'ingresso all'annessa basilica. Il cornicione è leggero e semplice.
 
@@ -11337,11 +10261,8 @@ Il cortile è un autentico capolavoro dell'architettura del Quattrocento.
 
 ---
 
-<!-- p.438 (orig. p.438) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>438
+438
 RIONE VI PARIONE
 
 Cento e ritenuto opera del Bramante (1444-1514). Consta di tre
@@ -11402,11 +10323,8 @@ Nel 1880 il Vespignani restaurò l'edificio che fu rinforzato nel...
 
 ---
 
-<!-- p.439 (orig. p.439) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 439
 
 1939. Ancora oggi è sede della cancelleria pontificia e gode del diritto dell'extraterritorialità.
@@ -11425,11 +10343,8 @@ Ora siamo nella piazza impropriamente detta del Teatro di Pompeo, perché questo
 
 ---
 
-<!-- p.440 (orig. p.440) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>440
+440
 RIONE VI PARIONE
 
 trovava sul culmine della cavea e che sporgeva verso l'esterno al centro dell'emiciclo. La via di Grottapinta, con andamento a semicerchio delle case, segue e conserva la curva interna della cavea del teatro. La pianta del complesso comprendeva, inoltre, un quadriportico di enormi dimensioni che, partendo dietro la scena lungo la via odierna dei Chiavari, giungeva fino all'Area Sacra dell'Argentina; dove, al centro del lato che rasentava la parte posteriore dei quattro templi era la grande aula della Curia pompeiana, in cui fu ucciso Caio Giulio Cesare il 15 marzo del 44 a.C.; ai piedi di quella sta la statua di Pompeo di cui abbiamo parlato nel nostro primo itinerario, proposito di via dei Leutari dove fu rinvenuta.
@@ -11448,11 +10363,8 @@ Attigua alla piazza Pollarola è la piazza del Paradiso che conti-
 
 ---
 
-<!-- p.441 (orig. p.441) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 441
 
 nua nella via omonima. Il toponimo deriva da due locande medievali l'una chiamata «Paradiso Grande» e l'altra «Paradiso Miccinello» (piccolo) nelle quali si mangiava bene e si stava «come in Paradiso». Tuttavia la piazza fu anche chiamata «della berlina», perché vi si esponevano i colpevoli di piccoli reati e le donne sfacciate. Questa forma di pena risaliva al medioevo e consisteva nell'esporre il condannato alla vista pubblica con una scritta che indicava il delitto: Spesso la berlina consisteva in un palo con catena e collare di ferro (gogna) a cui si attaccava il condannato; talvolta era composta di due assi girevoli o di una torricella con finestre tutt'intorno. Il reo vi era esposto due ore per tre giorni consecutivi. La piazza fu anche detta «dei muratori» che lì si radunavano; e al n. 64 vi è un'edicola del Settecento con la «Madonna e il Bambino».
@@ -11463,11 +10375,8 @@ Al n. 78 una casa del Cinquecento arricchisce la via che ai nn. 8-10 reca su un 
 
 ---
 
-<!-- p.442 (orig. p.442) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>442
+442
 
 **RIONE VI PARIONE**
 
@@ -11491,11 +10400,8 @@ La facciata, rifatta nel Settecento, è divisa in due ordini scanditi da lesene;
 
 ---
 
-<!-- p.443 (orig. p.443) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 443
 
 proprietari; Nell'architrave si legge <Virgini Deiparae Concepita> (Alla Vergine Madre di Dio concepita). Vi è pure un campaniletto. L'interno sconsacrato fu adibito magazzino; ora è un ritrovo pubblico. Alla sinistra della via di Grottapinta vi è il largo del Pallaro; armonioso e semplice spazio triangolare, signoreggiato dall'altissima cupola di S. Andrea, noto per un oste autonomo — <Er monnezzaro>. Il toponimo spiega dottamente Cecilia Pericoli Ridolfini deriva da un tenitore di giuoco che svolgeva la sua attività. Si trattava di una specie di estrazione del lotto. Il <pallarov> raccoglieva le puntate su novanta e estraeva le cinque vincitrici: Al n. 15 un affresco della <Vergine> rovinato. Dal largo del Pallaro si passa alla lunga via dei Chiavari che con un estremo sbocca nel largo omonimo e con l'altro in via dei Giubbonari.
@@ -11508,11 +10414,8 @@ Non potevamo terminare questo complesso, impegnativo ma pittoresco itinerario se
 
 ---
 
-<!-- p.444 (orig. p.444) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>444
+444
 RIONE VI: PARIONE
 
 **Giordano Bruno**
@@ -11525,11 +10428,8 @@ Solo il versante destro del tratto che va da via dei Chiavari a Campo de' Fiori 
 
 ---
 
-<!-- p.445 (orig. p.445) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 445
 
 Il monumento a Giordano Bruno a Campo de' Fiori.
@@ -11542,11 +10442,8 @@ Il monumento a Giordano Bruno a Campo de' Fiori.
 
 ---
 
-<!-- p.446 (orig. p.446) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>446
+446
 
 RIONE VI. PARINI:
 Campo de' Fiori come appariva nel Settecento (incisione di G. Vasi)
@@ -11559,11 +10456,8 @@ Antonio da Sangallo il Giovane nel 1541 demoliva alcune case dei Sanguigni, una 
 
 ---
 
-<!-- p.447 (orig. p.447) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>THRZ(>ITV:RAARIC)
+THRZ(>ITV:RAARIC)
 447
 M4
 1
@@ -11581,11 +10475,8 @@ TERZO ITINERARIO 447
 
 ---
 
-<!-- p.448 (orig. p.448) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione VII. Regola
+# Rione VII. Regola
 di Mauro Quercioli
 
 ### Le origini e la storia
@@ -11604,11 +10495,8 @@ Inclusa nella IX regione, nella suddivisione Augustea col nome di *Circus Flamin
 
 ---
 
-<!-- p.449 (orig. p.449) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI E LA STORIA
+LE ORIGINI E LA STORIA
 449
 
 Uno scorcio del rione Regola nella carta topografica del Maggi (1625)
@@ -11631,11 +10519,8 @@ Bonificato sul finire del medioevo dalle acque putride e paludose che infestavan
 
 ---
 
-<!-- p.450 (orig. p.450) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>450
+450
 RIONE VII REGOLA
 
 re, su cui torneremo; di lì a poco sempre in epoca umbertina; gli sventramenti effettuati per la costruzione di via Arenula; per collegare il nuovo ponte Garibaldi con piazza di Torre Argentina.
@@ -11654,11 +10539,8 @@ Il toponimo, attribuito in tempi remoti persino alla via del Montserrat, è stat
 
 ---
 
-<!-- p.451 (orig. p.451) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI E LA STORIA
+LE ORIGINI E LA STORIA
 451
 
 [Immagine: La cosiddetta «spiaggia della Regola» prima della costruzione del muraglione (G. Vasi).]
@@ -11676,11 +10558,8 @@ Per meglio comprendere le modifiche avvenute dal 1744 riportiamo anche i confini
 
 ---
 
-<!-- p.452 (orig. p.452) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>452
+452
 
 RIONE VII. REGOLA
 L'impresa o stemma del rione è un cervo rampante in campo tur-chino.
@@ -11701,11 +10580,8 @@ L'ingresso principale delle Carceri Nuove è al n. 52 della via Giulia. Targhe r
 
 ---
 
-<!-- p.453 (orig. p.453) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 
 453
 
@@ -11721,11 +10597,185 @@ Può sembrare incredibile tanto affollarsi di vie, stradette, vicoli.
 
 ---
 
-<!-- p.462 (orig. p.462) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>462
+454
+
+RIONE VII REGOLA
+
+In uno spazio tanto breve; ma non ci stancheremo mai di sottolineare che questa è la caratteristica del nostro rione.
+Il toponimo di Padella dovrebbe avere una spiegazione molto pittoresca. Infatti il Delli fa l'ipotesi per la quale: «la piazzetta circolare con la via tutta dritta, dava l'idea di una padella della quale appunto la via era il manico». Ma non possiamo escludere che il termine deriverebbe dall'insegna di una bettola.
+Comunque l'ombra delle carceri e della conseguente giustizia investe anche quest'angolo del rione; con tutto il peso possibile: infatti nella scomparsa piazza della Padella, sorgeva una chiesa dedicata a S. Nicola de Furca. Secondo svariati studiosi, infatti, sembra che le forche si conservassero direttamente nell'orto della chiesa medesima, mentre secondo un prete, rimasto anonimo, del 1566 le giustizie s'effettuavano dinanzi alla chiesa; direttamente sopra un pozzo nel quale cadeva il corpo del condannato; e per questo la chiesa, oltreché de Furca, aveva anche la graziosa variante di chiamarsi «delli Justitiatis». Passata, sul finire del XV secolo, sotto il controllo della famiglia Planca; chiesa e piazza; questa avrebbe assunto il nome di Incoronati.
+Torneremo parlare di quest'ultima famiglia, i Planca Incoronati, nel corso della passeggiata lungo la via del Monserrato, laddove esiste tuttora un palazzo con questo nome.
+Riprendiamo la via Giulia, che come noto appartiene alla Regola solo in parte; ciò non ci impedisce comunque di rammentare che essa, voluta da papa Giulio I (1503-1513), venne ottenuta raddrizzando l'antica via Magistralis, così detta per la presenza di numerosi studi notarili. Con il suo chilometro e passa di rettilineo fu la prima e più lunga strada di Roma.
+A parte questo, però, la zona poteva bene considerarsi una sorta di Margutta ante litteram, dato che ci abitavano numerosi artisti di primo piano. Al n. 85 v'era la casa di Raffaello Sanzio; nei paraggi v'era un'animatissima dimora di Benvenuto Cellini, sempre reccettacolo di artisti perditempo e cortigiane. Il Borromini anche aveva una abitazione, se non sulla via principale, nelle immediate vicinanze.
+La volontà pontificia di farne il nuovo asse urbanistico della città, oltreché attrarre gli artisti, attrasse anche dignitari della Santa Sede: famoso il protonotario Giovanni Borselli, non tanto per il suo lavoro, quanto per una sua mula che, contrariando le leggi della natura, avrebbe partorito. La cosa, interpretata come nefasta dal popolo, avrebbe dovuto indurre il Borselli a liberarsi dell'animale, cosa che egli non fece; e caso volle che la mula, indubbiamente infastidita dall'eccessiva curiosità della gente, disarcionò uccidendolo. Il pover'uomo.
+All'interno del n. 131 di via Giulia, una lapide rammenta il fatto con le parole: «Se conforme al costume antico, mi fossi sbarazzato della mia mula e del figlio della mia mula; forse non sarei sceso tanto nella tomba e non sarei oggi citato ad esempio di fatti nefasti».
+Centro di artisti, d'intrighi ed anche di eventi straordinari: questa era l'immagine della Roma del tempo in generale e di via Giulia, in particolare; visto che dell'Urbe era il centro. Non per nulla quella
+
+---
+
+
+PRIMO ITINERARIO
+455
+
+Émile Zola pose al n. 66 di questa via i protagonisti del suo romanzo «Roma».
+Il progetto pontificio andava ben più in là della costruzione di un rettifilo. Via Giulia infatti doveva terminare in Vaticano, superando il Tevere una volta riattato l'antico Trionfale.
+
+Nell'ambito del moderno liceo-ginnasio Virgilio; al civico 64, v'è ciò che resta del Palazzo Ghislieri; collegio in funzione fino al 1928 per ventitré giovani di famiglie nobili decadute; per il periodo di cinque anni, più un 24 nominato dal popolo: Si trattava all'origine, d'una istituzione voluta per l'appunto, da un medico romano, Giuseppe Ghislieri; destinata ad aiutare le vedove.
+L'iniziativa nei confronti dei nobili finiti in bolletta ebbe inizio allorché i Salviati presero le redini sia del collegio che dell'Arciconfraternita del Sancta Sanctorum; che nel frattempo aveva incorporato l'istituzione. Passato il tutto ai Carafa di Traetto, attuale Minturno, ed ancora al cardinale Fesch, ancora ai Borghese, per le crescenti difficoltà finanziarie l'istituzione chiuse, conservando, non sappiamo per quanto tempo, la possibilità d'erogare borse di studio annuali. Presso il museo del palazzo dei Conservatori in Campidoglio; è conservata una bella iscrizione atta a codificare la facoltà del popolo romano di designare uno dei convittori al collegio Ghislieri; rompendo così il rigido frontismo dei nobili decaduti:
+
+IOSEPH GHI-SLERIUS PRAESENTIBUS AEDIBVS PROPRIO AERE COEMPTIS COLLEGIUM FUNDAVIT DOTAVIT ET DE COGNOMINE COLLEGIUM GHISLERIUM NUNCUPARI VOLVIT AC PROTECTIONI DEIPARAE VIRGINIS MARIAE ET S. JOSEPHI COMMENDAVIT.
+
+Il che vale a dire che il Ghislieri, comprata questa casa, fondò il Collegio; volle che si chiamasse col suo nome e mise tutto sotto la protezione della Sacra Famiglia:
+Il portale risulta alquanto fuori quadro rispetto all'insieme della facciata. Sotto un rilievo raffigurante la «Sacra Famiglia», v'è lo stemma dei Ghislieri e l'iscrizione contenuta in uno svolazzante cartiglio.
+
+Appresso; al n. 65 v'è la Chiesa dello Spirito Santo dei Napoletani.
+La via Giulia, come noto, ha da sempre vantato la sua internazionalità; che assomma ricordi fiorentini, senesi, francesi anche se più recenti; non deve quindi stupire se a breve distanza dalla via del Monserrato, laddove gli spagnoli sono di casa; venissero collocati i napoletani; e lo fecero nel 1572 allorché, come noto, erano sudditi di Filippo II.
+Allora il cardinale Inigo d'Avalos fondò la confraternita dei Napoletani; e pensò bene di sloggiare la chiesa Aurea già sufficientemente onorata nel suo luogo d'origine ad Ostia dal Francese Estouteville; ricostruendo di bel nuovo la chiesa, riconsacrata in onore appunto dello Spirito Santo dei Napoletani. I lavori andarono un po' per le lunghe: si dovette attendere il 1619 perché i lavori di ristrutturazione iniziassero su disegni di Ottaviano Mascherino ed il 1650 perché Cosimo Fanzago costruisse la facciata.
+Insoddisfatti però dei lavori da poco compiuti; i membri della comunità rifecero praticamente tutto nei primi decenni del Settecento; adottando un disegno di Carlo Fontana. Ma la cosa non finì così...
+
+---
+
+
+456
+RIONE VII. REGOLA
+
+perché nel 1853 Borbone di Napoli, forse per sottolineare la parte avuta nella difesa di Pio IX contro la Repubblica romana di quattro anni prima, ributtarono giù quasi tutto, con un lavoro che finì; ironia della sorte, dieci anni più tardi quando il rapporto Borbone-Chiesa s'era totalmente rovesciato. Quello che vediamo in sostanza è opera dell'architetto Cipolla, e tutto sommato ammettiamolo; c'è parecchio di meglio. La facciata biancastra in maniera eccessiva rispetto al resto presenta due ordini: il superiore, con stemmi di Pio IX e del regno delle Due Sicilie e rosone al centro; l'inferiore con il portale; opera di Giuseppe Palombini, che ricordano la visita fatta da Ferdinando nel 1818, ed il secondo; anche intervento economico; o meglio la munificenza di Ferdinando II per restauri che come detto ebbero inizio nel 1853. Molte sono le memorie un tempo custodite all'interno andate perdute nel corso di tanti lavori.
+
+Così dicasi la tomba del noto Francesco Milizia, la tela relativa alle «Stimmate di S. Francesco» del Cavalier d'Arpino; vuota, ma per tutta una serie di situazioni che nulla hanno a vedere coi restauri, l'arca dell'ultimo re di Napoli Francesco I e della moglie Maria Sofia di Baviera, sorella della famosa Sissi.
+
+Credo che il ricordo più vivo di questa chiesa siano le preghiere e le promesse da marinaio; che generazioni di studenti hanno fatto dentro prima d'entrare nel contiguo ginnasio per sostenere gli esami. E questi aggiungo anche me stesso che sostenni l'esame d'ammissione alla scuola media, allora c'era, nel lontanissimo 1942.
+
+Proprio di fronte al successivo ingresso del «Virgilio», al civico 146, c'è la parte posteriore del Palazzo Ricci. Più che la facciata su questo lato; merita una occhiata il bellissimo cortile, comunicante con la piazza Ricci sul Monserrato. Il piano rivela grandi archi, decorati a pittura; ora in parte restaurati dai nuovi proprietari; che lottizzano il grande edificio. Interessante un bel cippo romano con iscrizione di due coniugi nell'atto di salutarsi, e la fontana sulla destra, ove un mascherone sormontato dallo stemma dei Ricci, costituito appunto da un riccio sotto un sole ricco di raggi, butta acqua dentro un'arca antica.
+
+¹ Ricci erano originari di Montepulciano e vennero a Roma, alloraché Giovanni Ricci sulla metà del Cinquecento divenne maestro di casa del cardinal Del Monte. Non appena quest'ultimo divenne pontefice col nome di Giulio II, si ricordò dei buoni servi-gi del suo maestro di casa e riconoscente lo nominò cardinale nel 1551. Divenuto arcivescovo di Pisa, sfiorò la tiara alla morte di Pio V. Altri due cardinali consolidarono la fortuna di questo casato.
+
+Se teniamo ben presente l'arco degli Argentari al Velabro, dobbiamo ammettere che questa categoria di persone ha sempre tenuto alla propria immagine. Se in antico infatti seppero erigere quel gioiello arrivato a noi per una autentica fortuna, in età moderna non vollero essere da meno dandosi da fare per costruire la Chiesa di S. Eligio; che si trova sulla destra dopo aver superato il palazzo Ricci. Secondo il Pietrangeli non si conosce la paternità della costruzione iniziata nel 1516. Il Baronio e altri attribuì...
+
+---
+
+
+PRIMO ITINERARIO
+457
+
+Sconno senza indugi al Bramante; altrettanto fa il Nibby, limitandosi a parlare di disegni del grande architetto. Il T.C.I. non ha dubbi nel fare il nome di Raffaello Sanzio. Un disegno conservato a Firenze conferma quest'ultima paternità; ma sempre a Firenze un altro disegno addita Aristotele da Sangallo; lasciando altri dettagli a Baldassarre Peruzzi. Forse il leggero imbarazzo, ed il palleggio della suddetta paternità sono da attribuirsi al fatto che, per quanto eretta da poco, la facciata della chiesa nel 1601 crollò miseramente. Facile quindi comprendere l'imbarazzo; visto che abbiamo elevato al livello di "mostri sacri" uomini validissimi ma sempre uomini.
+
+Flaminio Ponzio curò la ricostruzione; completata nel 1620 dal Bonazzini. Il nobile collegio degli orefici ed argentieri, tuttora esistente, ne ha curato gli ultimi restauri nel 1962. Preziosissimo, quanto inavvicinabile, l'archivio di quest'antica corporazione:
+
+La facciata presenta i due consueti ordini propri dell'architettonico del tempo. L'iscrizione riporta:
+
+SANCTO ELIGIO TEMPLUM
+PICTURIS SIGNIS VALVIS MARMORE
+ATQUE OMNI ORNAMENTO
+CORPUS AURIFICUM FECIT ET EXORNAVIT.
+
+Abbastanza facile per meritare una traduzione. L'interno è a croce greca sormontata da cupola. Un insieme di non grandi dimensioni, ma molto ben armonizzato; d'altro canto, come abbiamo visto, la valentia degli architetti era ed è ben nota; indipendentemente dall'infortunio succitato. Importanti, nell'ambito dell'abside, le figure dei "Profeti della Pentecoste" e la "Conversione degli Apostoli" di Taddeo Zuccari: In passato v'era una "Adorazione dei Magi" del fratello Federico Zuccari, sull'altare di destra entrando; purtroppo presente solo in copia.
+
+Interessante la casetta cinquecentesca del Collegio degli Orefici con tanto d'immagine di "S. Eligio", ma va vista da una angolatura che non è certamente quella originale; infatti è necessario salire sul lungotevere, viale ed argine del nostro fiume, che ha ridotto a trincea buona parte della via Giulia e zone limitrofe. Due alati reggono infatti lo stemma dei Borbone di Spagna, sotto cui, in un comprensibilissimo latino si legge:
+
+SEDENTE PIO IX
+PONT. MAX
+ELISABETH HISP. REGINA PAUPERIBUS
+PEREGRINIS INFIR-
+MIS
+ANNO DOMINI MDCCCLXII
+
+Siamo di fronte, o alle spalle, d'un complesso ospedaliero voluto dalla corona di quel paese per poveri pellegrini ispanici che cadevano malati nel corso dei loro pellegrinaggi. Interessante il cortile, ricco di frammenti provenienti per lo più da S. Giacomo degli Spagnoli.
+
+Subito dopo, con un contrasto nettissimo col colore delle costruzioni adiacenti, la chiesa di S. Caterina da Siena, resa ancor più...
+
+---
+
+
+458
+
+RIONE VII. REGOLA
+
+bianca da un recente restauro. Il tutto ci ricorda che siamo nella zona del «Castrum Senensis» dove appunto i cittadini della famosa repubblica avevano il loro punto di riferimento; e non solo commerciale, culturale e religioso, bensì anche militare vista la presenza del Torrigio, torre, cioè, posta a ridosso del fiume.
+
+Ed ecco la chiesa di S. Caterina «che fu un grand' ornamento non meno della sua Patria, che della Romana Chiesa. Vi si conserva, con la dovuta venerazione, un dito della Santa, al quale, sappiamo dalla di lei vita, che ricevesse l'anello del suo diletto Sposo Gesù; si porta questa reliquia in processione da medesimi fratelli, la seconda domenica di maggio, solendovi condurre ancora un prigione liberato dalla galera, per grazia speciale concessagli dal pontefice Alessandro VI [che era Fabio Chigi di Siena]. Vi si celebrano la festa della Santa con Ind. Plen. e distribuendo tre doti à povere zitelle, nazionali [vulgo: senesi] cioè una di scudi cento per monacarsi, una di cinquanta e l'altra di venticinque per maritarsi [evidentemente diventar monaca costava molto di...]. Il Pietrangeli asserisce che la chiesa venne eretta nel 1519. Il Baronio ed il Nibby precisano che in quella data venne fondata la compagnia dei senesi, la quale nel 1526 avrebbe eretto la chiesa.
+
+Né la cosa è di così poca importanza. Infatti in quell'anno avvenne la famosa battaglia di Porta Camollia; laddove mille pontifici fiorentini rimasero sul terreno dopo una memorabile battaglia che annientava le speranze di Clemente VII, fiorentino, di poter facilmente occupare la odiata repubblica senese, e non sapeva che ben altro s'accingeva a raccogliere la sua politica: solo un anno dopo infatti si verificherà il famoso sacco della Città Eterna.
+
+Non era certo facile essere senese in Roma in quel periodo, né il Torrigio poteva essere sufficiente a rintuzzare possibili rappresaglie. Si giocò anche l'arma della fede.
+
+Eretta su disegno di Baldassarre Peruzzi, decorata da Timoteo Della Vite, allievo di Raffaello, da Antiveduto Grammatica. Purtroppo un radicale restauro avvenuto tra il 1766 ed il 1768 cancellò cosa, rendendo alquanto anonimo il tutto:
+
+Ed eccoci di fronte al grande complesso del Palazzo Falconieri, che va da via dell'Armata alla chiesa di S. Maria dell'Orazione della confraternita della morte.
+
+Costruito nella metà del Cinquecento dagli Odescalchi, passò nel 1606 ai Farnese duchi di Latera, e solo nel 1638, dietro il versamento di 16.000 scudi, passò ai Falconieri. Illustre famiglia fiorentina questa, che vantava ben due santi, Alessio e Giuliana, fondatrice quest'ultima delle Mantellate; ben tre cardinali, nonché un Iungo redditizio appalto della gabella sul sale. La famiglia si estinse nel 1865 con i Gabrielli, i quali riuscirono a farsi riconoscere il titolo di Falconieri conti di Carpegna;
+
+Nel 1646, Orazio Falconieri ebbe il buon gusto di incaricare il Borromini nella ristrutturazione del suo palazzo. Lasciò il vecchio ingresso sormontato dal giglio dei Farnese e ne aggiunse un secondo mettendo la testa del falco sulla sommità. Ed il falco, meglio i falchi, molto usati per un certo tipo di caccia nei tempi più...
+
+---
+
+
+PRIMO ITINERARIO
+459
+
+Andati, hanno il loro maggior risalto nelle due grandi erme, collocate agli angoli dell'edificio fra il 1730 ed il 1735. Belle e fiere hanno una sola curiosità difficilmente spiegabile: il seno femminile. Chissà, forse venne adottato per un curioso ermafroditismo; o per far capire che tutto sommato erano fieri sì, ma non troppo!
+
+Non lasciatevi sfuggire Palazzo Falconieri sulla riva del fiume, consiglia Charles de 'Brosses: «A parte la padrona di casa che è carina, vi troverete quadri, non numerosi ma di buona scelta»; più celebri sono gli *Amori di Venere ed Adone* dell'Albani. E più avanti, tralasciando le grazie della Falconieri, ricorderà «I quattro elementi» dell'Albani, la «Allegoria della libertà» di Guido Reni ed «Un pentimento di S. Pietro» del Domenichino. La bellezza delle donne Falconieri riceverà un ulteriore riconoscimento mezzo secolo più tardi da Stendhal.
+
+Sul finire dell'Ottocento il palazzo passò ai marchesi Medici del Vascello; i quali lo alienarono nel 1927 al governo ungherese; ed da allora il Palazzo Falconieri è sede dell'Accademia d'Ungheria. Attaccata al Palazzo Falconieri v'è la chiesa di S. Maria dell'Orazione e della Compagnia della Buona Morte, ora semplificata come chiesa di S. Maria dell'Orazione e Morte. Ed in effetti osservata con un minimo d'attenzione nulla tralascia l'architettura per incutere un brivido di macabrismo nel visitatore: teschi ghignanti abbondano e così le clessidre; con ali e senza. Per buona misura una lastra scolpita sulla sinistra rammenta come l'abbandono delle campagne attorno Roma era tale, che chi ci crepava — e non erano certamente pochi — lì restava a completare il ciclo voluto dalla natura, fornendo pasto ai cani, ai lupi e naturalmente fertilizzando il terreno. La cosa non era tanto apprezzata, al punto che si dovette formare una compagnia col solo incarico di raccattare i cadaveri di quanti non ce l'avevano fatta a rientrare nel circuito della città. Un bello scheletro con tanto d'ali e ovviamente clessidra si china su un corpo seminudo e sotto, attorno alla feritoia per le elemosine, si legge appunto che queste ultime sono «per i poveri morti che si pigliano in campagna (MDCXCIV)».
+
+Ma la cosa non termina qui: dato che con quanto purtroppo distrutto dalla costruzione dei disgraziati muraglioni del Tevere, venne distrutto anche un piccolo cimitero dell'arciconfraternita; ma resta comunque un grosso vano decorato tutto graziosamente con ossa umane, più o meno sullo stile dei noti cappuccini di via Veneto. Il muraglione del fiume, dicevamo, ha messo fine agli Ottavari dei Defunti, che si tenevano nella stanza del suddetto cimitero detto di «Terra Santa».
+
+Dietro il versamento d'un'elemosina, si ricevevano delle stampe, con figure dipinte o incollate, o addirittura figurette in cera in cui si raffiguravano cadaveri o altre scene allegoriche.
+
+Il bell'arco dei Farnese con romantici rampicanti, riconciliano la vita ed il chiocciolare della vicina Fontana del Mascherone, sormontata dal giglio Farnese; completa l'idillicità di quest'angolo della via Giulia. Il mascherone come la vasca sono antichi, insieme venne sistemato nel 1626 da Carlo Rainaldi, ed il tutto era ubicato in una piccola ma quanto mai suggestiva piazzetta; da però
+
+---
+
+
+460
+RIONE VIL REGOLA
+
+cui si passava per prendere il traghetto; ovvero la scafo, per la porta Settimiana. Torniamo poco indietro per prendere la via del Mascherone: come ovvio la strada prende il nome della fontana sulla via Giulia che abbiamo in precedenza descritta, ma nel 1744, al tempo della formazione dei rioni, era strada della Catena, e come tale la elenca il conte Bernardini. Sia il Delli che il Blasi riportano che del 1744 si sarebbe chiamata *maso de Spanis* o *Ispanis*, dalla chiesa, che nel 1575, secondo il Nibby, per volere di papa Gregorio XIII, venne tolta agli spagnoli a vantaggio dei bolognesi, i quali in questo caso avrebbero tradito S. Petronio che, come è a tutti noto, è il santo protettore di Bologna e dei bolognesi. Il passaggio comunque dagli spagnoli ai bolognesi sarebbe stato effettuato non certo per capriccio; ma solo perché i bolognesi non si curavano molto della loro chiesa, e pertanto questa, secondo le cronache del tempo, "soleva stare generalmente serrata per negligenza."
+
+L'appellativo di "catena" sarebbe dovuto all'azione decisa di un tal Giovanni De Rubeis, proprietario di questa zona antecedentemente ai Farnese, il quale avrebbe chiuso il passaggio appunto con una catena. Questo passaggio secondo il Delli (ma non dobbiamo dimenticare che la vita sul fiume era in antico molto più intensa di quanto non capiti ai nostri giorni) immetteva al di là della piazzetta del Mascherone, ov'era un traghetto. Spesso quest'attività comportava l'uso appunto d'una catena che unendo le due rive facilitava di gran lunga il passaggio stesso; e tutto sommato saremmo più propensi vedervi l'origine dell'antico nome "della Catena".
+
+La chiesa conservava un autentico gioiello: *La Vergine fra i santi* di Domenico Zampieri da Bologna, detto il Domenichino, per la sua statura. Meglio di così i bolognesi non potevano avere quella che era divenuta la loro chiesa; ma essendo negligenti quanto gli spagnoli, attraverso chissà quali giri la tela finì alla pinacoteca di Brera a Milano.
+
+Accanto alla chiesa v'è il Palazzetto che appartenne all'abate Francesco Cancellieri. Passava per uno dei più grandi eruditi del suo tempo. Una semplice quanto interessante lapide lo ricorda nell'androne:
+
+APPARTENGO
+FRANCESCO
+CANCELLIERI
+POSSA
+IO
+COSÌ PICCOLA
+E
+NON IRRADIATA
+DA
+ALCUNA
+FAMA
+ACCOGLIERE
+SEMPRE AMICI FIDATI
+
+Comunque, per l'erudizione dell'autore merita pur sempre un certo riguardo; la versione fornita dal Cancellieri stesso in merito alla famosa "Catena" della strada. Secondo l'abate infatti il nome deriverebbe dall'abitudine di certi monaci di battersi, facendo uso di catene infuocate!
+
+Al n. 57 era il Palazzo dell'Ordine Teutonico; oggi destinato all'Istituto di Maria Immacolata. Il palazzo romano di quest'ordine non appare molto, sovrastato com'è, fra l'altro, dalla mole spettacolosa ed imponente del Palazzo Farnese, che domina l'intera zona; in buona parte schiacciando il resto. Poco gloriosa fu anche la sua fine: Leopoldo d'Austria lo vendette ai Sinibaldi e questi vi allestirono un lanificio. Al momento, come detto è sede dell'istituto ecclesiastico Maria Immacolata.
+
+---
+
+
+PRIMO ITINERARIO 461
+
+La facciata posteriore di palazzo Farnese in una stampa ottocentesca.
+
+Dopo gli spagnoli, i francesi, i senesi, i bolognesi, i teutonici, non potevano certo mancare gli svedesi. E questi secondo la loro migliore tradizione (non dimentichiamo l'importanza che Cristina avrà nel Seicento romano) non potevano non essere rappresentati che da una donna.
+
+Santa Brigida o Birgitta, nobilissima signora di Svezia; secondo il racconto del Ciaconio, venne in Roma nel 1362, data contrastata dal Vittorelli, per visitare luoghi santi della città, senz'escludere magari che cercasse Cristina sua figliola, «donna di sinbellezza», come riporta il citato Ciaconio; che già si trovava in Roma sempre per soddisfare le proprie esigenze spirituali. C'è chi riporta che fosse la figlia a cercar la madre, ma questo cambia poco.
+
+Il fatto è che ambedue si dettero da fare per allestire un ospizio per pellegrini della loro nazione. Non sappiamo quando il papa si decise di santificarle; ed in proposito è strano che il «Leggendario Francescano», in cui si elencano tutti i santi, beati e gli uomini comunque venerabili (Venezia 1689), non nomini affatto né madre né figlia. Può darsi che la bufera suscitata dal luteranesimo abbia suggerito ai papi un certo tipo di comportamento. Comunque la chiesa ebbe restauri altro nel 1513, prima pertanto di quel fatidico 31 ottobre 1517, data di partenza della riforma. Paolo III la concesse nel 1534 ad Olaus Magnus vescovo di Uppsala; Clemente XI la restaurò dandogli la forma attuale, servendosi dei disegni di Pietro Patriarca capomastro della basilica vaticana.
+
+La chiesa è officiata dalle suore svedesi dell'ordine del SS. Salvatore: interno ad una navata, decorato da Biagio Puccini con affreschi di maniera relativi alla gloria di S. Brigida. Nella cappella di sinistra, la santa appare appaiata a Caterina di Svezia, in un'opera alquanto arbitraria per accostamento di Eugenio Cistierna. La cosa che colpirà di più il visitatore sarà comunque il...
+
+---
+
+
+462
 RIONE VIL. REGOLA
 
 **Palazzo Farnese**
@@ -11744,11 +10794,8 @@ Recenti scavi negli scantinati hanno messo in luce vistose presenze romane sopra
 
 ---
 
-<!-- p.463 (orig. p.463) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 463
 
 Palazzo Farnese in un'incisione settecentesca di G.B. Piranesi.
@@ -11767,11 +10814,8 @@ I Pighini arrivarono più tardi, ma ebbero il tempo e l'attenzione di porre il l
 
 ---
 
-<!-- p.464 (orig. p.464) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>464
+464
 
 RIONE VII REGOLA
 
@@ -11824,11 +10868,8 @@ Ora avvenne che dal Quattrocento a buona parte del secolo suc-
 
 ---
 
-<!-- p.465 (orig. p.465) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 465
 
 **Imperia; la divina**
@@ -11845,11 +10886,8 @@ Mai nulla di volgare o di secondario per la bella Imperia: anche nei ritratti si
 
 ---
 
-<!-- p.466 (orig. p.466) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>466
+466
 
 RIONE VII. REGOLA
 
@@ -11861,11 +10899,8 @@ Al contempo pare che l'Imperia restasse irretita dal savoir-faire di un altro me
 
 ---
 
-<!-- p.467 (orig. p.467) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 467
 
 Soli 31 anni, nel fiore della bellezza dell'avvenenza fisica, per uno solo. Imperia venne sepolta, assecondando la sua volontà, in S. Gregorio al Celio, in una ricca tomba fatta fare dal solito Agostino Chigi. L'epitaffio che vi si appose riportava — dico riportava perché purtroppo è scomparso — alcune imprecisioni.
@@ -11890,11 +10925,8 @@ L'uscita del cardinal Pecci verso la carica papale dal palazzo Falconieri non ri
 
 ---
 
-<!-- p.468 (orig. p.468) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>468
+468
 
 RIONE VII. REGOLA
 
@@ -11932,11 +10964,8 @@ I pontefici non amavano ponti. In oltre mille anni di potere, hanno costruito pr
 
 ---
 
-<!-- p.469 (orig. p.469) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 469
 
 Ponte Sisto con Trastevere sullo sfondo in un'incisione di G. Vasi.
@@ -11953,11 +10982,8 @@ La chiesa di S. Salvatore in Onda, alquanto anonima all'esterno...
 
 ---
 
-<!-- p.470 (orig. p.470) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>470
+470
 
 **RIONE VII. REGOLA**
 
@@ -11975,11 +11001,8 @@ Già dal 1548, due anni prima dell'Anno Santo della metà del secolo; S. Filippo
 
 ---
 
-<!-- p.471 (orig. p.471) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 471
 
 Tempo s'erano; secondo gli usi, organizzati in confraternita detta della SS. Trinità; erano costretti a mettere un tantino da parte l'anima per rabberciare alla meglio i poveri corpi.
@@ -12000,11 +11023,8 @@ Una statistica relativa al famoso xenodochio. Su dieci anni giubilari dal 1575 a
 
 ---
 
-<!-- p.472 (orig. p.472) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>472
+472
 
 RIONE VII. REGOLA
 
@@ -12017,11 +11037,8 @@ La facciata posteriore del palazzo del famoso «Monte» chiude la piazza della T
 
 ---
 
-<!-- p.473 (orig. p.473) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 473
 
 due iscrizioni; poste per curiosa combinazione negli immediati
@@ -12083,11 +11100,8 @@ Sede dell'importante istituzione fu senz'altro un Palazzo di via...
 
 ---
 
-<!-- p.474 (orig. p.474) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>474
+474
 
 RIONE VII. REGOLA
 
@@ -12111,11 +11125,8 @@ Fatto sta, che le scuse ufficiali fatte a Parigi dai suoi cardinali Chigi ed Imp
 
 ---
 
-<!-- p.475 (orig. p.475) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 475
 
 dei Coronari, detto fino al XIX secolo Monte Vecchio. Il trasferimento nell'attuale sede avvenne nel 1603, sicché la antica piazza di S. Martinello alla Regola in breve divenne la piazza del Monte di Pietà. All'origine qui era un Palazzo appartenuto ai Santacroce sino al 1588, allorché passò ai Petrignani di Amelia: Importanti lavori vennero effettuati per adattare la fabbrica alle nuove esigenze. Fu il Maderno, con la collaborazione del giovane Borromini, a conferire all'edificio più antico l'aspetto attuale. Il campanile a vela, con il relativo orologio funzionante ed illuminato, risulta fuori centro rispetto al corpo della fabbrica, mentre considerato dalla piazza fa da sfondo superbo alla breve via dei Pompieri che unisce la piazza del Monte con la via dei Giubbonari, di cui consigliamo di non perdere il bello scorcio.
@@ -12132,11 +11143,8 @@ La via immersa nel passato ha un'aria tranquilla che tradisce. Qui iniziò la fu
 
 ---
 
-<!-- p.476 (orig. p.476) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>476
+476
 
 RIONE VII REGOLA
 
@@ -12148,11 +11156,8 @@ Il nostro monticello discende verso la piazza di S. Paolo alla Regola. Quest'ult
 
 ---
 
-<!-- p.477 (orig. p.477) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 477
 
 Sesso nel 1619, molto probabilmente in diretta conseguenza con la costituzione del Monte di Pietà. Si trattava di francescani provenienti dalla Sicilia; dato che, sotto la diretta protezione del re di Spagna, fondarono un *Collegium Siculum*, dotato non solo d'una reliquia consistente nientemeno che in una parte del braccio di S. Paolo, ma per buona misura anche d'una conspicua biblioteca, dotata di un notevole archivio. Purtroppo questi due ultimi andarono irrimediabilmente dispersi nei tumulti creatisi con la prima Repubblica Romana del 1799, anche se nulla in proposito risulta nei pur dettagliati *Diarii della Repubblica*.
@@ -12167,11 +11172,8 @@ Nel 1842 Roma contava ben diciotto di questi conservatori, sparsi per tutta la c
 
 ---
 
-<!-- p.478 (orig. p.478) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>478
+478
 
 RIONE VII. REGOLA
 
@@ -12218,11 +11220,8 @@ La via Arenula, se da un lato ha il merito di tramandare l'antico nome del rione
 
 ---
 
-<!-- p.479 (orig. p.479) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 479
 
 sulla piazza Ippolito Nievo, poco al di là delle mura di Urbano VIII. Superato il lungotevere dei Vallati, imbocchiamo via Arenula, tenendoci sulla sinistra. Un edificio fa da spartitraffico fra la via che stiamo percorrendo, via delle Zoccolette, e quella del Melangolo. Quest'ultima deve il suo nome alla presenza d'un albero, scomparso chissà da quanto. Si tratta del *malum assyrium*, sorta d'agrume simile all'arancio: secondo alcuni, andrebbe ubicata la torre Pertundata o Perforata, dei Manetti, su cui avremo modo di tornare più avanti.
@@ -12239,11 +11238,8 @@ La chiesa, un tempo detta S. Maria in Arenula, aveva assunto il nome attuale for
 
 ---
 
-<!-- p.480 (orig. p.480) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>480
+480
 
 RIONE VII. REGOLA
 
@@ -12255,11 +11251,8 @@ Nei pressi dello slargo costituito dalla congiunzione della via della Seggiola c
 
 ---
 
-<!-- p.481 (orig. p.481) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 481
 
 prì la carica di conservatore delle strade e commissario delle antichità; aveva raccolto una importante collezione di queste ultime; vogliamo sperare senza approfittare della carica ricoperta.
@@ -12274,11 +11267,8 @@ Ed eccoci a piazza Cairoli, ornata da un ampio spazio verde incorniciato in un g
 
 ---
 
-<!-- p.482 (orig. p.482) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>482
+482
 RIONE VII REGOLA
 
 dal tempio attribuito a Nettuno giacente sotto S. Maria in <Monticellis>, fra cui famosa lara di Domizio Enobarbo. Nell'interno, affreschi del G.B. Ruggeri detto il Battistino (1640) raffiguranti i <Trionfi dei Santacroce> e nel salone <Scene bibliche> all'angolo fra via degli Specchi e il vicolo dei Catinari. Ora l'edificio ospita uffici della facoltà di economia e commercio dell'Università di Roma, una casa di moda ed altri negozi prospicienti la chiesa di S. Carlo ai Catinari.
@@ -12295,11 +11285,8 @@ Acquistata nel 1581 dallo zio del futuro papa Urbano VIII, monsignor Francesco; 
 
 ---
 
-<!-- p.483 (orig. p.483) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 483
 
 Barberini fino al 1734, allorché al principe Francesco subentrano i carmelitani scalzi di S. Teresa della Scala. Questi trasformarono l'atrio sotto l'Arco del Monte in una cappella dedicata ai Ss. Teresa e Giovanni della Croce. Nel 1759, dai carmelitani, il tutto passò al Monte. Per collegare questo palazzo con gli altri già di proprietà del Monte, venne costruito nel 1768 l'arco che caratterizza questa via.
@@ -12325,11 +11312,8 @@ Non lasciamoci attrarre dalla colorita, movimentata piazza Campo de' Fiori, ma p
 
 ---
 
-<!-- p.484 (orig. p.484) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>484
+484
 
 RIONE VII. REGOLA
 
@@ -12347,11 +11331,8 @@ Torniamo indietro; ed a piazza della Quercia; prendiamo la via delle Grotte. Que
 
 ---
 
-<!-- p.485 (orig. p.485) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 485
 
 **Palazzo Spada** – In un'incisione secentesca di A. Specchl.
@@ -12369,11 +11350,8 @@ Il palazzo s'estese sul vicolo del Polverone e, per meglio collegare i piani di 
 
 ---
 
-<!-- p.486 (orig. p.486) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>486
+486
 
 RIONE VII. REGOLA
 
@@ -12405,11 +11383,8 @@ Al civico 19 Palazzo Rigacci della seconda metà del XIX secolo, come ricordato 
 
 ---
 
-<!-- p.487 (orig. p.487) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 487
 
 Un edificio malridotto; che sotto la mano di rifacimenti recenti, rivela la sua trama quattrocentesca. Il suo aspetto vagamente sinistro s'addice perfettamente all'origine dell'edificio: questa infatti era la Taverna della Vacca; acquistata tra il 1500 ed il 1513 della famigerata Vannozza Cattanei, nota ai più come la moglie morganatica di papa Alessandro VI, a cui dette due figli: Cesare Borgia e Lucrezia. Lo stemma sul vicolo del Gallo ricapitola in parte le vicende di questa virago del XV secolo. In esso infatti ci sono le armi o simboli dei Borgia (toro passante e strisce), lo stemma dei Cattanei e quello dei Canali di Modena, ai quali era legata per via del suo terzo marito. Ristrutturata nel 1514 ad opera di Sebastiano Pellegrini di Como; la taverna passò quella quale in parte all'ospedale della Consolazione; e di essa abbiamo tracce fin sul fine del secolo successivo.
@@ -12420,11 +11395,8 @@ Poco oltre ecco l'arco dei Cappellari, che fa parte d'una casa secentesca intere
 
 ---
 
-<!-- p.488 (orig. p.488) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>488
+488
 
 RIONE VII. REGOLA
 
@@ -12450,11 +11422,8 @@ Torniamo sulla via Arenula, percorrendola stavolta sul lato destro. Giunti all'a
 
 ---
 
-<!-- p.489 (orig. p.489) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO 489
+QUARTO ITINERARIO 489
 
 **Santa Lucia della Chiavica o del Gonfalone**
 
@@ -12474,11 +11443,8 @@ Ma la libertà assume quasi dei toni politici, con la raffigurazione dei «Profe
 
 ---
 
-<!-- p.490 (orig. p.490) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>490
+490
 
 RIONE VII REGOLA
 
@@ -12496,11 +11462,8 @@ In fondo alla strada, la chiesa incompiuta di S. Maria del Pianto. Qualcuno, err
 
 ---
 
-<!-- p.491 (orig. p.491) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 491
 
 zione del divino; ovviamente cristiano; alla vicinanza degli ebrei. Siamo infatti alla presenza di una delle numerose immagini della Madonna famosa per le sue lacrime. Stavolta queste ultime non sarebbero state strappate dalla caparbietà del popolo ebraico; bensì da un fattaccio di cronaca nera.
@@ -12517,11 +11480,8 @@ E siamo sulla piazza delle Cinque Scole; ottenuta con l'abbattimento d'una parte
 
 ---
 
-<!-- p.492 (orig. p.492) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>492
+492
 
 RIONE VII REGOLA
 
@@ -12550,11 +11510,8 @@ Inoltriamoci e notiamo; voltandoci dopo pochi passi, il curioso innesto delle st
 
 ---
 
-<!-- p.493 (orig. p.493) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 493
 
 Condo altri provenienti dalla cosiddetta tomba di Nerone.
@@ -12572,11 +11529,8 @@ La strada, ridotta ormai a poca cosa, non presenta molto di particolare, chiusa 
 
 ---
 
-<!-- p.494 (orig. p.494) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>494
+494
 RIONE VII REGOLA
 
 **Il rione scomparso: Il Ghetto**
@@ -12611,11 +11565,8 @@ Fra il 1810 ed il 1814, con l'occupazione francese, i portoni restavano aperti a
 
 ---
 
-<!-- p.495 (orig. p.495) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 495
 
 Pio VII, appena tornato, non solo fece richiudere i portoni, ma tanto per far capire chiaramente le sue intenzioni, istituì una nuova tassa, a carico ovviamente della comunità israelitica, sul portinariato. S'arrivò così al fatidico '48; i tempi subivano la svolta che ben sappiamo.
@@ -12632,11 +11583,8 @@ Giunti sulla piazzetta, la migliore aspettativa è confermata dall'armonia del l
 
 ---
 
-<!-- p.496 (orig. p.496) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>496
+496
 
 RIONE VII. REGOLA
 
@@ -12710,11 +11658,8 @@ Cenci ed Altieri.
 
 ---
 
-<!-- p.497 (orig. p.497) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 497
 
 Strascichi d'un processo celebre
@@ -12738,11 +11683,8 @@ Ad esecuzione avvenuta, inizia la battaglia per il patrimonio. La Ludovica Velli
 
 ---
 
-<!-- p.498 (orig. p.498) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>498
+498
 
 RIONE VII. REGOLA
 
@@ -12760,11 +11702,8 @@ R I O N E  VII  R E G O L A
 
 ---
 
-<!-- p.499 (orig. p.499) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione VIII. S. Eustachio
+Rione VIII. S. Eustachio
 di Giorgio Carpaneto
 Dalle origini ad oggi
 
@@ -12784,11 +11723,8 @@ Anche il piccone demolitore ha lasciato il segno indelebile della sua talvolta i
 
 ---
 
-<!-- p.500 (orig. p.500) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>500
+500
 
 RIONE VIII. S. EUSTACHIO
 
@@ -12825,11 +11761,8 @@ Anticamente l'area del rione era compresa nella IX regione augustea; poi divenne
 
 ---
 
-<!-- p.501 (orig. p.501) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 501
 
 cui si dice che «in Urbe sunt tredecim regiones quae corrupto et vulgari vocabulo dicuntur rioniz».
@@ -12851,11 +11784,8 @@ Vari sono gli itinerari o le passeggiate che gli autori delle guide di Roma cons
 
 ---
 
-<!-- p.502 (orig. p.502) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>502
+502
 
 RIONE VIII. S. EUSTACHIO
 
@@ -12910,11 +11840,8 @@ La piazza di S. Eustachio ha caratteri singolarissimi poiché ha un contorno str
 
 ---
 
-<!-- p.503 (orig. p.503) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 503
 
 **Feste del rione S. Eustachio**
@@ -12935,11 +11862,8 @@ In tale circostanza scomparve anche la famosa farmacia Corsi fondata nell'ultimo
 
 ---
 
-<!-- p.504 (orig. p.504) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>504
+504
 RIONE VII. S. EUSTACHIO
 
 [Immagine]
@@ -12962,11 +11886,8 @@ Nel 1196 il pontefice Celestino III (Giacomo Bobone Orsini), dopo vari rifacimen
 
 ---
 
-<!-- p.505 (orig. p.505) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 505
 
 tesco con la vasta terminazione spaziale del transetto.
@@ -12991,11 +11912,8 @@ L'interno della chiesa di S. Eustachio a croce latina consiste in una navata uni
 
 ---
 
-<!-- p.506 (orig. p.506) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>506
+506
 
 RIONE VIII. S. EUSTACHIO
 detto [Imperiali]; del Settecento. Questo altare disegnato da Nico-
@@ -13056,11 +11974,8 @@ fuga...
 
 ---
 
-<!-- p.507 (orig. p.507) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 507
 
 Palazzo Giustiniani in un'incisione secentesca di A. Specchi.
@@ -13075,11 +11990,8 @@ L'atrio con colonne doriche mostra sovrapposte con frontali di sarcofagi di età
 
 ---
 
-<!-- p.508 (orig. p.508) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>508
+508
 
 RIONE VIII. S. EUSTACHIO
 
@@ -13096,11 +12008,8 @@ Dove è ora l'atrio dell' albergo di S. Chiara, scrive il Delli, nella gola
 
 ---
 
-<!-- p.509 (orig. p.509) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 509
 
 Seconda metà dell'Ottocento il Vespignani costruì un teatrino (il Rossini) di breve vita perché piccolo. Nel 1950 l'Ente comunale di assistenza cedette un locale all'attore romano Checco Durante, che riaprì il teatro Rossini, per rappresentarvi commedie romanesche.
@@ -13117,11 +12026,8 @@ Al centro della piazza di S. Eustachio (al n. 83) ci si offre alla vista un altr
 
 ---
 
-<!-- p.510 (orig. p.510) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>510
+510
 
 RIONE VIII. S. EUSTACHIO
 
@@ -13142,11 +12048,8 @@ L'originalità dell'edificio si evidenzia nel cortile circondato da grotte.
 
 ---
 
-<!-- p.511 (orig. p.511) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 511
 
 Il cortile del palazzo della Sapienza in un'incisione ottocentesca di P. Letarouilly: un agile porticato con loggiato terminante ad esedra dove è l'ingresso della chiesa seicentesca borrominiana di S. Ivo. In questo cortile vi sono finestre con tondi con teste di leone, aquile e drago (elementi dello stemma dei Borghese); con monti e stella (dei Chigi); con api (dei Barberini): alludono ai vari pontefici che fecero eseguire lavori nell'edificio.
@@ -13164,11 +12067,8 @@ Il cortile del palazzo della Sapienza in un'incisione ottocentesca di P. Letarou
 
 ---
 
-<!-- p.512 (orig. p.512) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>512
+512
 RIONE VIII. S. EUSTACHIO
 
 La cupola di S. Ivo alla Sapienza in un'incisione dell'inizio del Settecento.
@@ -13179,11 +12079,8 @@ ricorda che nello spazio di 32 anni quattro fulmini scoppiarono con non piccolo 
 
 ---
 
-<!-- p.513 (orig. p.513) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 513
 
 cavalcavia al palazzo della Sapienza e vi fu collocata la facoltà di lettere dell'Università.
@@ -13201,11 +12098,8 @@ L'altra facciata, dirimpetto al fianco della chiesa di S. Luigi dei Francesi, è
 
 ---
 
-<!-- p.514 (orig. p.514) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>514
+514
 RIONE VIII. S. EUSTACHIO
 
 Palazzo Madama. In un'incisione secentesca di A. Specchi.
@@ -13217,11 +12111,8 @@ Costeggiamo il palazzo lungo la via del Salvatore, che deve il nome alla chieset
 
 ---
 
-<!-- p.515 (orig. p.515) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 515
 
 colonna nella chiesa di S. Luigi, è il ritratto della madre di Cesare Borgia, cioè Vannozza. La cosa è abbastanza credibile poiché la piissima Vannozza, moglie di Alessandro VI, elargì una lauta somma alla chiesa di S. Salvatore in Thermis e formulò il desiderio di essere ivi sepolta. Date queste relazioni fra i membri della potentissima famiglia Borgia e la chiesa in parola, è spiegabile che il Cristo e la Madonna si siano trovati appioppate le sembianze di Cesare e di Vannozza.
@@ -13232,11 +12123,8 @@ La facciata realizzata dal Fontana su disegno di Giacomo Della Porta, è divisa 
 
 ---
 
-<!-- p.516 (orig. p.516) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>516
+516
 
 RIONE VIII. S. EUSTACHIO
 
@@ -13254,11 +12142,8 @@ La facciata ha finestre architravate su mensole al piano terreno, sotto le quali
 
 ---
 
-<!-- p.517 (orig. p.517) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 517
+PRIMO ITINERARIO 517
 
 baldacchino con frange. Il lume è fissato al muro. Le illustrano ampiamente il vestibolo con lesene, doppie colonne; la piccola cappella con «l'Eterno Padre» ritratto sul soffitto (opera del Settecento) ed una sala con ritratti dei proprietari: Soffitti a cassettoni si vedono in alcune sale del piano nobile, delle quali citiamo quella «verde» con scene bibliche e quadri del Seicento-Settecento; «rossa» con dipinto di scuola caravaggesca; quella da pranzo con fregi e una con un solo gemello su una consolle; quella da ballo con le «Muse» di Francesco Solimena del Settecento e la sala dell'«Amazzone» con statua che è una copia romana di opera ellenistica.
 
@@ -13272,11 +12157,8 @@ Don Pedro de Aranda ebbe una vita fortunosa: Nativo di Burgos racconta C. Perico
 
 ---
 
-<!-- p.518 (orig. p.518) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>518
+518
 RIONE VIII. S. EUSTACHIO
 
 me notevoli per riparare la chiesa che aveva subito danni dall'inondazione del Tevere del 1495. Tuttavia il processo fu riaperto e il povero (ricco e potente) prelatò finì nel carcere di Castel S. Angelo dove morì per il crollo del tetto dell'alloggio. *Sic transit gloria mundi*.
@@ -13293,11 +12175,8 @@ Dalle cornacchie e dalle rondini passiamo ad un animale meno nobile, anche se mo
 
 ---
 
-<!-- p.519 (orig. p.519) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 519
 
 Lunga via omonima; è un bassorilievo marmoreo ora murato su un fianco dell'ex convento di S. Agostino; e che faceva parte di una fontana del tempo di Gregorio XIII (Ugo Boncompagni). Dalla bocca il pregiato animale gettava uno zampillo che cadeva in una vaschetta ora fissata all'angolo di via dei Portoghesi. Ritornando al largo Giuseppe Toniolo; si sbocca nella via della Scrofa; di cui una parte era piazza. Infatti, l'Ugonio parla di una *platea Scrofae* e in un bando del 1762 è citata la <piazzetta della Scrofa verso l'osteria della Campana>. Al n. 35 Tabate Coppi nel 1813 fondò l'Accademia Tiberina.
@@ -13314,11 +12193,8 @@ Il nome del Santo di Tagaste, Aurelio Agostino, vescovo di Ippona, illumina la p
 
 ---
 
-<!-- p.520 (orig. p.520) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>520
+520
 
 RIONE VIII $. EUSTACHIO
 
@@ -13338,11 +12214,8 @@ In via della Scrofa la facciata è molto estesa e vi sono due portoni con bugne 
 
 ---
 
-<!-- p.521 (orig. p.521) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 521
 
 Il convento degli agostiniani con la torre della Scimmia (incisione di G. Vasi)
@@ -13359,11 +12232,8 @@ Poiché ci troviamo in un rione diverso, tralasciamo le particolari descrizioni.
 
 ---
 
-<!-- p.522 (orig. p.522) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>522
+522
 
 RIONE VIII: S. EUSTACHIO
 
@@ -13376,11 +12246,8 @@ Dal profano balziamo al divino; poiché all'angolo di via della Scrofa con via d
 
 ---
 
-<!-- p.523 (orig. p.523) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 523
 
 Una targa con la scritta «Maria advocata nostra». È rimasto il braccio di ferro di un lanternino scomparso. Al n. 26 di via della Stelletta, una casa con tracce di pittura e finestre del tardo Quattrocento; nella chiave dell'arco del portone figura uno stemma abraso. Entriamo (al n. 23) nel Palazzo Casali, e attraversiamo il bell'atrio; completamente rifatto; che offre due vecchi ma ospitali sedili di pietra e reca murate delle conchiglie che racchiudono una colomba su torre. Vi sono anche lapidi con analogo stemma alludenti ai proprietari e alcuni busti di personaggi romani. Nel cortile il solito sarcofago fa da vasca ad una fontana presso la quale occhieggia tra il verde una piccola ara.
@@ -13393,11 +12260,8 @@ Una targa stradale che attribuisce il vicolo suddetto al rione IV (Campo Marzio)
 
 ---
 
-<!-- p.524 (orig. p.524) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>524
+524
 
 RIONE VIII. S. EUSTACHIO
 
@@ -13423,11 +12287,8 @@ La seconda lapide recita:
 
 ---
 
-<!-- p.525 (orig. p.525) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 525
+PRIMO ITINERARIO 525
 
 Veranza autorità apostolica eretta a tenore dell'Em.mo Vicario emanato il dì XVII decembre MDCCXLIX.
 
@@ -13451,11 +12312,8 @@ Le parentele di questa famiglia, estintasi nei primi dell'Ottocento...
 
 ---
 
-<!-- p.526 (orig. p.526) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>526
+526
 RIONE VIII. S. EUSTACHIO
 
 ...to; sono varie: Mattei, Ceva, Alberini, Caffarelli, Cardelli, Orsini eccetera. Di fronte al palazzo, al n. 11, c'è una bella finestra cen-tinata con grata e resti di un antico portale chiuso e successivamente aperto con arco ribassato; mentre al n. 9 si vede il pro-spetto posteriore del Palazzo Mazzetti la cui facciata principale è in piazza Rondanini, 33.
@@ -13469,11 +12327,8 @@ Passiamo nel cortile definito bellissi-mo, con tre arcate, nel lato d'ingresso c
 
 ---
 
-<!-- p.527 (orig. p.527) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 527
 
 tato in una comoda stalla. Si pensò un bel giorno di utilizzarlo per uno scherzo ad un presuntuoso abate di nome Baraballo che si riteneva il più grande poeta dei suoi tempi. Costui fu invitato a recarsi in trionfo sul Campidoglio; per essere incoronato poeta, come accadde al Petrarca; ma sarebbe dovuto andare in groppa all'elefante bardato per la memorabile occasione. Non sospettò nulla il povero abate e montò sull'elefante che, a un certo punto del percorso, si scrollò di dosso il nobile peso e se ne tornò nella stalla.
@@ -13488,11 +12343,8 @@ Oltrepassata la chiesa già illustrata, continua la via delle Coppelle (che term
 
 ---
 
-<!-- p.528 (orig. p.528) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>528
+528
 
 RIONE VIII S. EUSTACHIO
 
@@ -13504,11 +12356,8 @@ Torniamo indietro e riprendiamo via della Maddalena i cui numeri dall' 1 al 30 a
 
 ---
 
-<!-- p.529 (orig. p.529) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO | 529
+SECONDO ITINERARIO | 529
 
 Ai nn. 22-29A vi è il Palazzo dei Rita, passato ai Marescotti e ad altri. Il pianterreno è caratterizzato da arcate decorate da volute; il portone presenta ai lati due piccoli rosoni, e le finestre sono architravate o riquadrate. Della famiglia Rita viene ricordato Antonio, priore dei Caporini, che ottenne nel Settecento il patriziato romano per sé e per i suoi discendenti. Lo stemma si compone di un leone che regge nella zampa destra un compasso volto verso l'alto e che è attraversato da una banda.
 
@@ -13541,11 +12390,8 @@ Durante le nostre passeggiate tanto ci imbattiamo nei toponimi più strani e cos
 
 ---
 
-<!-- p.530 (orig. p.530) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>530
+530
 
 RIONE VIII. S. EUSTACHIO
 
@@ -13563,11 +12409,8 @@ Sul numero civico 57 sotto un balconcino, vi è uno dei più grandi ed important
 
 ---
 
-<!-- p.531 (orig. p.531) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 531
 
 Eleganti volute Ja Divina Colomba; in basso sotto una conchiglia fra volute e gigli vi è una elegante targa in cui si legge solo una parte di una invocazione: [;! AMICA MEA ET NON MACULA EST IN TE.
@@ -13594,11 +12437,8 @@ La via della Rotonda oggi va dalla piazza omonima a via di S. [...]
 
 ---
 
-<!-- p.532 (orig. p.532) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>532
+532
 
 RIONE VIII S. EUSTACHIO
 
@@ -13624,11 +12464,8 @@ Della famiglia Naro si hanno ricordi a Roma sin dal Quattrocento.
 
 ---
 
-<!-- p.533 (orig. p.533) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SEC(NIJU ITINERARIO
+SEC(NIJU ITINERARIO
 533
 
 to; nel Cinquecento Francesco fu conservatore di Roma, Giam-
@@ -13691,11 +12528,8 @@ Gli Andosilla si vantarono anche di avere avuto fra i priori
 
 ---
 
-<!-- p.534 (orig. p.534) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>534
+534
 RIONE VIII S. EUSTACHIO
 
 Loro membri Diego, conservatore di Roma nel 1743 e perfino la B. Chiara a cui si deve la fondazione nel 1641 dell'Ordine delle carmelitane calzate.
@@ -13712,11 +12546,8 @@ Quindi, l'edificio passò ai Capranica del Grillo: il nome di questa famiglia de
 
 ---
 
-<!-- p.535 (orig. p.535) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 535
 
 **Le Terme di Agrippa**
@@ -13732,11 +12563,8 @@ Si crede che il nome di S. Maria in Monterone sia derivato dalla famiglia Monter
 
 ---
 
-<!-- p.536 (orig. p.536) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>536
+536
 RIONE VIII S. EUSTACHIO
 
 Marco Vipsanio Agrippa
@@ -13773,11 +12601,8 @@ Fra le opere segnaliamo l'«Assunta» di Giovanni Gagliardi (1830), «S. Giusepp
 
 ---
 
-<!-- p.537 (orig. p.537) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 537
 
 1667). Anche Pietro Camporese il Giovane (1807-1873) è presente con la cappella di S. Alfonso Maria de' Liguori con cupoletta e stucchi. In contrasto con la semplicità della facciata della chiesa, le è affiancato uno squillante, capriccioso edificio d'angolo; tipica espressione dello spirito irrequieto del rococò romano, dovuto a Giuseppe Sardi (1680-1753). Questo sorse sul primitivo ospizio voluto dai Monteroni per pellegrini senesi e divenne il convento dei Mercedari, che dal papa Benedetto XII (1724-1730) ebbero in consegna la chiesa stessa. I redentoristi o liguorini nell'Ottocento, per volere di Pio VII, subentrarono ai Mercedari. S. Alfonso de' Liguori fondò nel 1732 la Congregazione dei Redentoristi col fine di evangelizzare il popolo abbandonato a se stesso. A tale congregazione si unirono i liguorini, per seguire e impartire i suoi insegnamenti, dato che S. Alfonso è stato uno fra i più grandi moralisti di tutti i tempi. Famosa è la sua opera *Theologia morali*; fu stimato troppo largo ai suoi tempi e fin troppo severo ai nostri. Oltre alle opere «Verità della Fede» e «Istruzioni al popolo», fu anche autore di dolcissimi versi sacri, inni e canzoni tuttora in voga (P. Francesco). È stato canonizzato nel 1839 ed è patrono dei confessori. La festa cade il 2 agosto. Il vicolo, ora via dei Redentoristi, da via del Teatro Valle a via Monterone, deve quindi il nome ai Redentoristi. S. Alfonso de' Liguori fondatore della Congregazione dei Redentoristi.
@@ -13792,11 +12617,8 @@ La facciata su via Monterone ha il portale non al centro e sovrastato da una tar
 
 ---
 
-<!-- p.538 (orig. p.538) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>538
+538
 
 RIONE VIII. S. EUSTACHIO
 
@@ -13816,11 +12638,8 @@ In questo cinquecentesco palazzo, appartenuto alla famiglia Pescatore e poi ai S
 
 ---
 
-<!-- p.539 (orig. p.539) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 539
 
 Merito di aver dato rilievo a Giosuè Carducci. Per la sua arguzia
@@ -13891,11 +12710,8 @@ figura maschile marmorea, evidente reperto di scavo e di epoca romana.
 
 ---
 
-<!-- p.540 (orig. p.540) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>540
+540
 RIONE VIII. S. EUSTACHIO
 
 L'androne del n° 4 è stato trasformato in magazzino; al di sopra si vede un rilievo funerario romano con tre busti femminili. Tale rilievo è molto simile a quello che si vede nel retro del palazzo della Valle.
@@ -13922,11 +12738,8 @@ Quando il vecchio amministratore di casa Capranica, accanito...
 
 ---
 
-<!-- p.541 (orig. p.541) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 541
 
 Monarchico, seppe che il presidente provvisorio della Repubblica, Enrico De Nicola, avrebbe usato l'ingresso reale per accedere al palco; lo fece murare, costringendolo a passare dall'ingresso principale.
@@ -13945,11 +12758,8 @@ Un altro lato dell'edificio è su via del Melone. Il cortile, che negli anni è 
 
 ---
 
-<!-- p.542 (orig. p.542) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>542
+542
 RIONE VIII. S. EUSTACHIO
 
 In una sala su un soffitto del Settecento trionfa la «Gloria» che reca lo stemma dei Capranica tra angeli con trombe; vi sono pure figure di guerrieri in ovati sorretti da angeli. In altra sala v'è un soffitto elegante a cassettoni.
@@ -13988,11 +12798,8 @@ Gli storici esprimono pareri opposti circa il nome della famiglia della Valle. I
 
 ---
 
-<!-- p.543 (orig. p.543) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 543
 
 S. Andrea della Valle nel Settecento (incisione di G. Vasi)
@@ -14007,11 +12814,8 @@ Al n. 101 vi è il portone con cornice marmorea e con la scritta *Andreas Card. 
 
 ---
 
-<!-- p.544 (orig. p.544) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>544
+544
 RIONE VIII. S. EUSTACHIO
 
 coni chiusi da vetrate. La pavimentazione è in selci con guide marmoree. Sotto il portico, a destra, vi sono due porte con cornici di marmo e con la scritta «A de Valle ep. Mileten», che ricorda la nomina di Andrea della Valle, a vescovo della diocesi di Crotone e Mileto; e su un pilastro campeggia lo stemma con la mitria episcopale.
@@ -14031,11 +12835,8 @@ L'ordine inferiore della facciata è diviso da coppie di colonne con capitelli c
 
 ---
 
-<!-- p.545 (orig. p.545) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 545
 
 Domenichino e il Lanfranco: due rivali
@@ -14056,11 +12857,8 @@ Sul fianco sinistro della chiesa, in piazza Vidoni, vi è una statua romana toga
 
 ---
 
-<!-- p.546 (orig. p.546) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>546
+546
 
 RIONE VIII. S. EUSTACHIO
 
@@ -14089,11 +12887,8 @@ Nell'interno otto sale presentano dipinti, affreschi, decorazioni e stemmi delle
 
 ---
 
-<!-- p.547 (orig. p.547) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 547
 
 Dai Caffarelli passò successivamente ai Colonna, al cardinale G. Francesco Stoppani; al cardinal Pietro Vidoni, al duca Carlo Giustiniani e in seguito allo Stato italiano.
@@ -14125,11 +12920,8 @@ La via del Sudario è anche meta di visitatori per accedere alla Casa del Burcar
 
 ---
 
-<!-- p.548 (orig. p.548) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>548
+548
 RIONE VIII. S. EUSTACHIO
 
 papa Alessandro VI; autore di una cronica dei suoi tempi, era di Strasburgo che in latino suona Argentoratum; ed *episcopus argentinus* amò nominarsi. E siccome la casa che nel 1503 si fece costruire incorporava una torre ed era alta e stretta; fu chiamata Torre Argentina derivato da Argentoratum. S'intende che Burkkardt divenne l'italianizzato Burcardo e si ebbe, quindi, la «casa del Burcardo». È un esempio di gotico nordico con le sottilissime colonnine ai lati delle finestre e la caratteristica ornamentazione del portale che ci trasportano idealmente alle costruzioni quattro-cinquecentesche della Renania e dell'Alsazia:
@@ -14152,11 +12944,8 @@ Occuparono la chiesa dei Filonardi (famiglia che aveva lì delle proprietà) e l
 
 ---
 
-<!-- p.549 (orig. p.549) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 549
 
 **teatro di Pompeo In rapporto alla topografia odierna.**
@@ -14173,11 +12962,8 @@ La facciata è limitata da lesene con capitelli corinzi; nella porta c'è l'iscr
 
 ---
 
-<!-- p.550 (orig. p.550) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>550
+550
 
 RIONE VIII. S. EUSTACHIO
 
@@ -14212,11 +12998,8 @@ Dai chiodi alle chiavi: talvolta la toponomastica è coerente. Infatti il vicolo
 
 ---
 
-<!-- p.551 (orig. p.551) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 551
 
 ebbe il nome di Latrio; corruzione delle parole Atrio o Teatro (di
@@ -14284,11 +13067,8 @@ una parte per le case di Isabella Orsini, signora di Tagliacozzo;
 
 ---
 
-<!-- p.552 (orig. p.552) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>552
+552
 
 RIONE VIII. S. EUSTACHIO
 
@@ -14304,11 +13084,8 @@ Nella fascia fra i due ordini si legge: S. BAPTISTA. S.RE. CARDINALIS LENIUS. AR
 
 ---
 
-<!-- p.553 (orig. p.553) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO                                                                    553
+TERZO ITINERARIO                                                                    553
 
 [Immagine: La chiesa di S. Carlo al Catinari in un'incisione di G. Vasi]
 
@@ -14324,11 +13101,8 @@ La via Arenula che prende nome dalla rena del Tevere ivi portata dalle inondazio
 
 ---
 
-<!-- p.554 (orig. p.554) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>554
+554
 
 RIONE VII S. EUSTACHIO
 
@@ -14384,11 +13158,8 @@ tro putti dopo putti.
 
 ---
 
-<!-- p.555 (orig. p.555) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 555
 
 tre spettacoli in prosa, concerti e opere liriche. Ora è sede del Teatro di Roma. Da anni in alcuni ambienti del palazzo è stato allestito un interessante museo del Teatro Argentina a cura di Cecilia Pericoli Ridolfini, in cui si conservano avanzi di affreschi staccati, libretti e manoscritti di opere; progetti dei vari architetti, quadri riguardanti l'attività del teatro; fotografie; manifesti, locandine; autografi e costumi.
@@ -14415,11 +13186,8 @@ S. EUSTACHIO
 
 ---
 
-<!-- p.556 (orig. p.556) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione IX. Pigna
+# Rione IX. Pigna
 di Carlo Villa
 *Dalle origini ai giorni odierni*
 
@@ -14439,11 +13207,8 @@ Il personaggio mitico di cui parla Dante è stato conficcato nel più profondo e
 
 ---
 
-<!-- p.557 (orig. p.557) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AI GIORNI ODIERNI
+DALLE ORIGINI AI GIORNI ODIERNI
 557
 
 Numerosissime vestigia e testimonianze della Roma imperiale e repubblicana:
@@ -14461,11 +13226,8 @@ Per soddisfare la curiosità dei lettori, ma anche a scopo dimo-
 
 ---
 
-<!-- p.558 (orig. p.558) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>558
+558
 
 RIONE IX. PIGNA
 
@@ -14487,11 +13249,8 @@ Nella parte del rione che si stende verso sud si trovava anticamente la notevole
 
 ---
 
-<!-- p.559 (orig. p.559) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AI GIORNI ODIERNI
+DALLE ORIGINI AI GIORNI ODIERNI
 559
 
 In parte e a cielo aperto nella piazza Argentina, mentre in via delle Botteghe Oscure era il grande portico «Minucia frumentaria», nonché la «Villa Publica».
@@ -14512,11 +13271,8 @@ Il rione Pigna oggi si presenta assai modificato per gl'ingenti la-
 
 ---
 
-<!-- p.560 (orig. p.560) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>560
+560
 
 RIONE IX. PIGNA
 
@@ -14538,11 +13294,8 @@ Il rione Pigna si presenta in pianta come un quadrilatero confinante coi rioni T
 
 ---
 
-<!-- p.561 (orig. p.561) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 561
 
 Planimetria dell'area sacra di largo Argentina.
@@ -14559,11 +13312,8 @@ Il tempio C è il più vetusto di tutti e quattro i templi presenti nell'area. M
 
 ---
 
-<!-- p.562 (orig. p.562) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>562
+562
 RIONE IX. PIGNA
 
 Il quarto e ultimo tempio presente nell'area, contrassegnato con la lettera D; è il più grande, e si fa risalire al I secolo a.C. Secondo uno studio e un'attribuzione di Coarelli, il tempio D potrebbe identificarsi con quello dei Lares Permarini, voluto nel 179 a.C. da Marco Emilio Lepido.
@@ -14582,11 +13332,8 @@ Al numero civico 6, proseguendo in via dell'Arco dei Ginnasi, è un palazzetto d
 
 ---
 
-<!-- p.563 (orig. p.563) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 563
 
 situato nella Villa Publica, nel quale aveva luogo l'archivio dei censori.
@@ -14608,11 +13355,8 @@ L'interno, su disegno del Vignola come si è detto; presenta un'unica, vasta nav
 
 ---
 
-<!-- p.564 (orig. p.564) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>564
+564
 
 RIONE IX. PIGNA
 
@@ -14628,11 +13372,8 @@ Al numero civico 49 di piazza del Gesù s'apre il gigantesco Palazzo Altieri, fa
 
 ---
 
-<!-- p.565 (orig. p.565) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 565
 
 Chi cardinali e un papa, Clemente X: fino alla metà del Cinquecento questa famiglia era proprietaria, si può dire, di tutti gli immobili che si aprivano sull'odierna Piazza del Gesù; la stessa Chiesa del Gesù si poté costruire nel luogo dove si trova per la vendita fatta dagli Altieri ai Gesuiti di un loro palazzo, demolito per permettere l'edificazione del tempio.
@@ -14655,11 +13396,8 @@ Notevole per la sua architettura esterna, in special modo della facciata che gua
 
 ---
 
-<!-- p.566 (orig. p.566) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>566
+566
 
 RIONE IX. PIGNA
 Leggende di piazza del Gesù
@@ -14682,11 +13420,8 @@ E concludiamo excursus riferito alle leggende fiorite attorno alla piazza genera
 
 ---
 
-<!-- p.567 (orig. p.567) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 567
 
 Quest'ultimo si fermò pregando l'amico Vento di attenderlo; il tempo di sbrigare una commissione. Entrò quindi di filato nell'edificio; senza più uscirne però; e il Vento è ancora lì che aspetta, sempre più impaziente, imperversando intanto su tutta la piazza.
@@ -14713,11 +13448,8 @@ La facciata è molto elegante con decorazioni del Baciccia, ma il complesso ebbe
 
 ---
 
-<!-- p.568 (orig. p.568) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>568
+568
 
 RIONE IX. PIGNA
 
@@ -14741,11 +13473,8 @@ Proseguendo per via S. Stefano del Cacco, leggermente in salita, sulla sinistra 
 
 ---
 
-<!-- p.569 (orig. p.569) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 569
 
 Sulla destra sono invece visibili costruzioni più antiche: al numero civico 19 è un grande portale in bugnato; quindi, dove s'apre il teatro intitolato allo scomparso scrittore Ennio Flaiano, locale gestito dal Teatro di Roma, è una casa del Cinquecento.
@@ -14774,11 +13503,8 @@ Chi abbia modo di penetrare all'interno di questo magnifico palazzo potrebbe god
 
 ---
 
-<!-- p.570 (orig. p.570) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>570
+570
 
 RIONE IX. PIGNA
 
@@ -14814,11 +13540,8 @@ Passata la via intitolata all'Arco dei Ginnasi, si stenterà a riconoscere nel v
 
 ---
 
-<!-- p.571 (orig. p.571) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 571
 
 All'interno un tempo era anche una cappella dipinta dal Monosilio.
@@ -14851,11 +13574,8 @@ La parte più vivace e popolosa di tutta la zona che stiamo percorrendo si strin
 
 ---
 
-<!-- p.572 (orig. p.572) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>572
+572
 
 **RIONE IX. PIGNA**
 
@@ -14875,11 +13595,8 @@ Venendo alla chiesa di S. Nicola de' Cesarini, questa ricordiamo che veniva chia
 
 ---
 
-<!-- p.573 (orig. p.573) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 573
 
 Tra la chiesa di S. Nicola dei Cesarini e la superstite torre del Papitto, di cui s'è già detto all'inizio dell'itinerario appena concluso; era la chiesa di S. Salvatore de Gallia; detta anche questa «de calcarario»; sulla via di Torre Argentina; angolo largo Arenula; era invece il Palazzo Baccelli-Arquati che s'affacciava sulla piazza dei Cavalieri, anch'essa scomparsa. Come del resto l'omonimo palazzo, che faceva parte del rione VIII.
@@ -14910,11 +13627,8 @@ Ma quali spazi oggi...
 
 ---
 
-<!-- p.574 (orig. p.574) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>574
+574
 
 RIONE IX. PIGNA
 
@@ -14938,11 +13652,8 @@ Fino a tutto il Cinquecento tracce di questa costruzione erano visibili all'inte
 
 ---
 
-<!-- p.575 (orig. p.575) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 575
 
 [Immagine: Il Pantheon nel suo aspetto settecentesco in un'incisione di G. Vasi]
@@ -14959,11 +13670,8 @@ Dinanzi al Pantheon nel Seicento avvenivano anche le esecuzioni capitali; e ques
 
 ---
 
-<!-- p.576 (orig. p.576) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>576
+576
 
 RIONE IX. PIGNA
 
@@ -14977,11 +13685,8 @@ Sull'angolo con il largo Argentina è invece il Palazzo Origo; rimasto miracolos
 
 ---
 
-<!-- p.577 (orig. p.577) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 577
 
 Al numero civico 18 si trova il Palazzo che secondo il Nolli e la sua celebre pianta fu degli Strozzi. La sua facciata poco vistosa è del tardo Seicento.
@@ -15002,11 +13707,8 @@ L'area di questi stabilimenti, davvero unici nell'antichità, si estendeva per c
 
 ---
 
-<!-- p.578 (orig. p.578) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>578
+578
 RIONE IX. PIGNA
 
 qualche precisazione da fare (come vedremo una volta giunti ai piedi di quest'altro vetusto edificio; a differenza delle terme rimasto pressocché intatto nella sua struttura di base).
@@ -15027,11 +13729,8 @@ Vogliamo anche ricordare che le pareti e il pavimento della stanza dove S. Cater
 
 ---
 
-<!-- p.579 (orig. p.579) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 579
 
 ![Piazza della Minerva nel Seicento in un'incisione di G.B. Falda]
@@ -15083,11 +13782,8 @@ per l'esilio papale di Avignone.
 
 ---
 
-<!-- p.580 (orig. p.580) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>580
+580
 
 RIONE IX. PIGNA
 
@@ -15115,11 +13811,8 @@ Il battistero che si trova nella prima cappella a destra di chi entra è stato t
 
 ---
 
-<!-- p.581 (orig. p.581) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 581
 
 1854. Tra la seconda e la terza cappella; sempre a destra, è il cenotafio di Umberto Strozzo, fondatore dell'accademia dei Vignaioli.
@@ -15146,11 +13839,8 @@ Il pulpito è in legno del Cinquecento, mentre alla quarta cappella, sempre dall
 
 ---
 
-<!-- p.582 (orig. p.582) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>582
+582
 
 RIONE IX. PIGNA
 
@@ -15178,11 +13868,8 @@ Ma la zona della Minerva era soggetta, fino al 1870, epoca in cui avvenne quella
 
 ---
 
-<!-- p.583 (orig. p.583) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 583
 
 Al Tevere, a un altro spettacolo; non meno pittoresco, anche se un tantino più scomodo di disagio per la cittadinanza: inondazione periodica del fiume. La piazza della Minerva infatti si trova nella zona più bassa dell'intera città, e il Tevere, abbastanza vicino ad essa, non appena veniva gonfiato dalle piene, scorreva limaccioso fino a ristagnare per giorni sul posto, data anche l'inefficienza fognaria.
@@ -15207,11 +13894,8 @@ un Arcipedagogo primi choris».
 
 ---
 
-<!-- p.584 (orig. p.584) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>584
+584
 
 RIONE IX. PIGNA
 
@@ -15223,11 +13907,8 @@ Alla base del «Pulcino» sono due lapidi: quella che guarda la piazza dice: «Q
 
 ---
 
-<!-- p.585 (orig. p.585) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 585
+SECONDO ITINERARIO 585
 
 Iscrizioni deplorevoli: Leonardo Ceruso, detto il letterato
 
@@ -15253,11 +13934,8 @@ Il Bernini, per sostenere l'obelisco egizio, aveva elaborato più d'una soluzion
 
 ---
 
-<!-- p.586 (orig. p.586) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>586
+586
 
 RIONE IX. PIGNA
 
@@ -15279,11 +13957,8 @@ L'affresco che doveva mostrarsi in un riquadro sagomato ancora esistente sul por
 
 ---
 
-<!-- p.587 (orig. p.587) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 587
 
 In via della Pigna, al 19, non è da trascurare ciò che un tempo fu la più vetusta delle case Porcari, famiglia che dette il nome alla piazza, come s'è già detto, prima del sopravvenuto toponimo «Pigna», in concomitanza con la scomparsa degli immobili di questa antica famiglia: si tratta di tracce architettoniche che si trovano soprattutto all'interno del palazzo, che ha finito per inglobarle; ma non vi è difficoltà ad accedervi, una volta dichiarato ai cortesi condomini interesse turistico.
@@ -15298,11 +13973,8 @@ Sulla facciata che versa su via del Gesù il portale d'accesso appare rimaneggia
 
 ---
 
-<!-- p.588 (orig. p.588) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>588
+588
 
 RIONE IX. PIGNA
 
@@ -15318,11 +13990,8 @@ Il suo interno presenta un'unica navata dopo un atrio difeso da robuste inferria
 
 ---
 
-<!-- p.589 (orig. p.589) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 589
+SECONDO ITINERARIO 589
 
 Si può salire anche nei locali dell' Arciconfraternita con banchi in noce e decorazioni settecentesche. Una storia particolare presenta il Palazzo Maffei-Marescotti, che si trova sulla via de' Cestari subito dopo la chiesa delle Ss. Stimmate.
 
@@ -15340,11 +14009,8 @@ Tornando verso piazza Argentina; eccoci al Palazzo Strozzi; successivamente Bess
 
 ---
 
-<!-- p.590 (orig. p.590) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>590
+590
 
 RIONE IX. PIGNA
 
@@ -15384,11 +14050,8 @@ Pantheon indica una costruzione dedicata a tutti gli dèi, dal greco antico «pa
 
 ---
 
-<!-- p.591 (orig. p.591) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 591
 
 mantenuta questa sua primitiva, per quanto non più officiata; funzione. Nell'anno che abbiamo citato invece questa cominciò ad essere stravolta. L'imperatore di Bisanzio Foca lo elargì graziosamente in dono a papa Bonifacio IV; e questo lo trasformò naturalmente in una chiesa cristiana, dedicata alla Vergine Maria, con il nome di *S. Maria ad Martyres*. L'imperatore Costante II, nonostante la cessione effettuata alla Chiesa da parte del suo predecessore nel 655, fece togliere dalla copertura della cupola tutte le tegole di bronzo dorato per specularvi in una gigantesca fusione a scopi statuari. Solo cento anni più tardi, ad opera del pontefice Gregorio III, la copertura fu ripristinata mediante ben più vili lamine di piombo che ancora attualmente la rivestono.
@@ -15403,11 +14066,8 @@ Sono rimaste famose le satire, talora feroci, dette appunto «pasquinate», affi
 
 ---
 
-<!-- p.592 (orig. p.592) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>592
+592
 
 RIONE IX. PIGNA
 Leggende al Pantheon
@@ -15422,11 +14082,8 @@ Ma nel tentativo, come s'è già detto, niente affatto felice di arginare l'inva
 
 ---
 
-<!-- p.593 (orig. p.593) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 593
 
 Il Pantheon in una stampa di fine Ottocento.
@@ -15438,11 +14095,8 @@ Si accede al tempio attraverso un solenne portico di otto colonne monolitiche di
 
 ---
 
-<!-- p.594 (orig. p.594) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>594
+594
 RIONE IX. PIGNA
 
 sole per la terza volta fece; mentre la seconda, più piccola, pure tradotta, commemora così il restauro severiano del 202 d.C. «L'imperatore Cesare Lucio Settimio Severo e l'imperatore Cesare Marco Aurelio Antonino il Pantheon, rovinato dalla vetustà, restaurarono con cura».
@@ -15457,11 +14111,8 @@ Il pavimento del tempio è a riquadri e a tondi di porfido, granito e marmi di v
 
 ---
 
-<!-- p.595 (orig. p.595) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 595
 
 La prima cappella sulla destra accoglie un'«Annunciazione» attribuita a Melozzo da Forlì; nella seconda cappella è la tomba di Vittorio Emanuele I; in alto sul coro immagine bizantina degli inizi del VII secolo rivestita con un manto argenteo del secolo XVIII.
@@ -15492,11 +14143,8 @@ Il corpo è settecentesco e all'interno è un notevole scalone disegnato da Carl
 
 ---
 
-<!-- p.596 (orig. p.596) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>596
+596
 
 RIONE IX. PIGNA
 
@@ -15518,11 +14166,8 @@ Percorrendo la via di S. Ignazio alla volta del Collegio Romano, si perviene all
 
 ---
 
-<!-- p.597 (orig. p.597) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 597
 
 **Edifici e ambienti scomparsi**
@@ -15545,11 +14190,8 @@ Accanto al Pantheon, fino al I secolo sorgeva un edificio altissimo in quei temp
 
 ---
 
-<!-- p.598 (orig. p.598) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>598
+598
 
 RIONE IX. PIGNA
 
@@ -15583,11 +14225,8 @@ Ma la Compagnia del Gesù in quegli anni ebbe un proselitismo davvero strepitoso
 
 ---
 
-<!-- p.599 (orig. p.599) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 599
 
 G. Vasi, prospetto principale del Collegio Romano.
@@ -15604,11 +14243,8 @@ L'interno dell'edificio, sede del più vetusto ed illustre liceo classico della 
 
 ---
 
-<!-- p.600 (orig. p.600) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>600
+600
 
 RIONE IX. PIGNA
 
@@ -15624,11 +14260,8 @@ Sulla destra del Collegio Romano inoltriamoci adesso per la via omonima, doppian
 
 ---
 
-<!-- p.601 (orig. p.601) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 60
 
 La chiesa di S. Ignazio nel Seicento in un'incisione di G.B. Falda proprio dinanzi alla massiccia facciata della Chiesa di S. Ignazio.
@@ -15645,11 +14278,8 @@ La falsa cupola originaria, per l'esplosione di un catafalco durante una messa s
 
 ---
 
-<!-- p.602 (orig. p.602) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>602
+602
 
 RIONE IX. PIGNA
 
@@ -15673,11 +14303,8 @@ La Congregazione della Comunione generale, o delle Cinque Piaghe, era composta d
 
 ---
 
-<!-- p.603 (orig. p.603) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 603
 
 Francesco Saverio, con la data di costruzione, già riportata prima.
@@ -15694,11 +14321,8 @@ Sui complessi lavori fatti eseguire sulla via del Corso, già via Lata, non poss
 
 ---
 
-<!-- p.604 (orig. p.604) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>604
+604
 
 RIONE IX. PIGNA
 
@@ -15716,11 +14340,8 @@ La chiesa consta di due ordini: il primo, terreno, con portico; il secondo con u
 
 ---
 
-<!-- p.605 (orig. p.605) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 605
 
 Il Facchino di via Lata
@@ -15742,11 +14363,8 @@ I Pamphilj si unirono ai Doria, famiglia genovese, nel 1671, tramite il matrimon
 
 ---
 
-<!-- p.606 (orig. p.606) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>606
+606
 
 RIONE IX. PIGNA
 
@@ -15758,11 +14376,8 @@ I della Rovere completarono il portico, che comprende sedici co-
 
 ---
 
-<!-- p.607 (orig. p.607) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 607
 
 Lonne, su disegno del Bramante; ma con l'anno 1604 l'edificio fu acquistato dagli Aldobrandini che lo arricchirono di decorazioni e di ali immobiliari fino al 1647, ininterrottamente. Alcune decorazioni e stucchi, non più in loco, sono nella galleria Doria.
@@ -15781,11 +14396,8 @@ Sulla piazza del Collegio Romano, il palazzo occupa due dei quattro lati, con fi
 
 ---
 
-<!-- p.608 (orig. p.608) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>608
+608
 
 RIONE IX. PIGNA
 
@@ -15801,11 +14413,8 @@ Intanto da osservare sono quasi tutte le decorazioni, pompeiane e tizianesche; m
 
 ---
 
-<!-- p.609 (orig. p.609) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 609
 
 Palazzo d'Aste-Rinuccini-Bonaparte; all'angolo tra piazza Venezia e via del Corso, in un'incisione di A. Specchi. Da ballo e da musica; che dona al visitatore l'idea d'una magnificenza nobiliare sposata al buon gusto e al caso felice di tanti artisti concorrenti a sfoggiarla.
@@ -15822,11 +14431,8 @@ La odierna piazza Venezia originariamente si chiamava Platea nova; si chiamò qu
 
 ---
 
-<!-- p.610 (orig. p.610) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>610
+610
 
 RIONE IX. PIGNA
 
@@ -15842,11 +14448,8 @@ Utilizzata anche come caccia ai tori e come luogo di consegna dei vari premi ai 
 
 ---
 
-<!-- p.611 (orig. p.611) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 61
 
 L'incoronazione del cardinal Barbo al soglio di Pietro; divenendo un palazzo in piena regola; il palazzo precedente copriva 700 metri quadrati, quello ultimato da papa Paolo II superava, con il giardino, 11.000 metri quadrati. La sala detta del Mappamondo fu costruita nel 1466, contemporaneamente all'allestimento della loggia e del portico nella chiesa adiacente.
@@ -15865,11 +14468,8 @@ Alla fine del Settecento per il trattato di Campoformio il palazzo passò all'im
 
 ---
 
-<!-- p.612 (orig. p.612) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>612
+612
 RIONE IX. PIGNA
 
 Ma lo spazio era più angusto e allora furono sacrificati due archi, uno per e snaturato il portico aperto. Sotto il palazzetto demolito furono scoperti resti della chiesetta di S. Nicola de Monte, o de Pinea.
@@ -15892,11 +14492,8 @@ La basilica di S. Marco trae origine da un disposto di papa Marco del 336, e par
 
 ---
 
-<!-- p.613 (orig. p.613) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 613
 
 La chiesa di S. Marco e palazzo Venezia in un'incisione del primo Ottocento.
@@ -15907,11 +14504,8 @@ Grandi modifiche alla chiesa avvengono con Paolo II, nel 1464. Intanto viene ric
 
 ---
 
-<!-- p.614 (orig. p.614) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>614
+614
 RIONE IX. PIGNA
 
 rifatto nel 1523, mentre spese dell'ambasciatore veneto Nicolò Sagreto vengono poste in opera nuove vetrate; decorata più di una parte del tempio a stucchi e nelle varie cappelle con tele dell'epoca.
@@ -15926,11 +14520,8 @@ Da visitare la sacrestia, che conserva resti del ciborio originario.
 
 ---
 
-<!-- p.615 (orig. p.615) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 615
 
 Busto di Madama Lucrezia in un disegno cinquecentesco di M. Van Heemskerck; preziosi arredi, un reliquiario in legno e avorio del XV secolo e un altro di arte islamica del XIV secolo; insieme a un frammento di «Crocefissione» del XIII secolo; e a un «S. Marco Evangelista» di Melozzo da Forlì.
@@ -15939,11 +14530,55 @@ Non ci resta ora, per ultimare il nostro ultimo itinerario, terzo del rione Pign
 
 ---
 
-<!-- p.618 (orig. p.618) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>618
+616
+
+RIONE IX. PIGNA
+Madama Lucrezia
+
+La cosiddetta Madama Lucrezia è un busto marmoreo gigantesco di donna ammantata che si può vedere ancora oggi imperterrito e immutabile nell'angolo formato dal palazzo e dal palazzetto Venezia, proprio sulla sinistra di chi guarda la basilica di S. Marco.
+
+Le proporzioni colossali; il volto sfigurato dal tempo e dagli scempi perpetrati sulle gentili fattezze da una pletora di eventi, tra quali il quasi certo suo dissotterramento (trattandosi di un'effigie proveniente con ogni probabilità dal tempio isideo), a quanto se ne sa rappresenterebbero l'imperatrice Faustina; anche se i romani ascrivono il reperto a Lucrezia d'Alagno, favorita di re Alfonso d'Aragona, o almeno il popolo più dotto; giacché, come s'è detto nell'itinerario che la riguarda, corrono in proposito anche altre voci. Una tradizione voleva che chiunque s'inchinasse dinanzi a questo imponente reperto avrebbe avuto fortuna; almeno durante la giornata, naturalmente non c'era romano o straniero venuto a conoscenza della cosa che non eseguisse dinanzi alla montagna di marmo una lieve genuflessione propiziatrice. Ma se qualcuno defletteva dal rito per ignoranza, sbadataggine, poca fiducia; ecco una banda di monelli ben organizzata subito provvedeva alla bisogna, avvalendosi d'una moneta appositamente collegata a uno spago e tenuta per l'altro capo dall'impudente proprietario. Lo sbadato, alla vista dell'imprevedibile regalo, si chinava ratto e il ragazzotto tirava lo spago lasciandolo con la schiena piegata ad onorare la statua; anche la furbizia della piccola banda, che se la rideva da matti.
+
+Altro accorgimento, un tantino più temerario, al fine di allineare tutti i passanti al medesimo ossequio, era quello di far volare via loro il cappello con un ben assestato colpo di fionda diretto sul feltro arrogante.
+
+Ma codesta ingente Madama aveva altri tributi ad onorarla; e se si lascia quello riferito all'essere la terza statua parlante di Roma, dopo quella di Pasquino e del Facchino che si trova in via Lata; ebbene ne esisteva un terzo di tributo, intitolato «il ballo dei guittoni», ossia degli spiantati, dei ridicoli e dei goffi, che si svolgeva ogni primo di maggio nella seconda metà del secolo scorso; al quale ballo era spettatrice imperterrita Madama Lucrezia, svolgendosi nella piazzetta di S. Marco.
+
+Vi partecipavano belle ragazze corredate da bulletti, gobbi, storpi, sciancati, vecchi; e Lucrezia si può immaginare in quale modo fungeva da giudice imparziale alle madomali scurrilità che ne derivavano, venendo inghirlandata di aglio, cipolle, carote e nastri multicolori: quando si dice l'impenitente, graffiante autoironia del popolo di Roma!
+
+Era stata edificata nel 1699 in un angolo della piazza S. Marco.
+Da osservare la volta a stucchi.
+Dal portone del palazzo Venezia che si trova su via del Plebiscito, accesso solito per le mostre periodiche che si tengono nel palazzo; si può anche prendere visione del giardino ricco di palme, e ammirare la fontana che personifica Venezia, con tanto di leone di S. Marco.
+Dal giardino si ha modo di ammirare il fianco della basilica di S. Marco con le finestre originarie del tempo di Paolo II e il campanile romanico su tre ordini di logge: bella anche la loggia adorna di bifore e decorata di maioliche eretta nel 1467.
+
+---
+
+
+TERZO ITINERARIO
+617
+
+Edifici e ambienti scomparsi
+
+Il monumento oggi scomparso più rilevante nel percorso appena ef-
+fettuato era l'Arcus Novus, che si trovava davanti S. Maria in via
+Lata. Presso la basilica di S. Marco era invece un altro arco romano
+che nel medioevo venne chiamato *manus carneae*, citato nei *Mirabilia*. Resti di un portico attribuito alla costruzione dei Saepta Julia sono visibili sotto il palazzo Doria; la profondità di questi reperti, come di quelli riferiti all'Arcus Novus misura oltre cinque metri sotto il livello stradale.
+
+Nel medioevo nella zona erano chiese oggi sparite come S. Nicola de
+forbitoribus, dove oggi è l'oratorio del Caravita. Dietro S. Maria in via
+Lata era invece il monastero dei Ss. Ciriaco e Nicola, mentre in via della Gatta era la chiesa di S. Salvatore de Camilliano. Gli edifici scomparsi della zona sono elencabili nel palazzo del cardinal Accia-pacci, presso S. Maria in via Lata e nelle case dei Capocci, in quelle dei Mancini e dei Benzoni. Montaigne ci descrive in vicolo Doria uno stabilimento di bagni pubblici fra i più attrezzati di Roma.
+
+Sulla piazza del Collegio Romano, prima dell'edificazione del complesso dei gesuiti, piccola e raccolta era la vetusta chiesa di S. Stefano, del 950 circa; nella chiesa venne trasportato il corpo di S. Ciriaco, rimuovendolo dal cimitero Ostiense; e la chiesa prese allora quest'altro toponimo. Anche il palazzo Salviati, costruito sulla chiesa appena citata, venne abbattuto per allargare la piazza e per erigere il palazzo Pam-phili. Dove sorge ora la chiesa di S. Ignazio era un tempo quella della SS. Annunziata, donata ai gesuiti dalla marchesa Frangipane sotto la condizione che costoro la completassero; i gesuiti la ultimarono come da la canonizzazione di S. Ignazio, avvenuta nel 1626, accorgendosi che il tempio, ad unica navata, era del tutto inadeguato alle nuove mire espansive dell'ordine e lo abbatterono senz'altro dando seguito alla costruzione della nuova chiesa e del vicino Collegio. Presso questa chiesa era un tempo anche la casa dei Clavari, costruita dall'architetto Bartolomeo Breccioli. Dove si trova ora la chiesa del Caravita sorgeva un tempo la già ricordata S. Nicola de forbitoribus databile nel 1192, utilizzata essenzialmente quale sepoltura per nobili della zona, così com'era costume nell'antichità. La chiesa, passata ai Camaldolesi, ebbe il campanile distrutto da un fulmine nel 1405. Restaurata nel 1566 fu demolita nel 1631 per edificare l'oratorio del Caravita. Al attuale civico 300 di via del Corso; un tempo era il palazzo Vitelleschi, costruito nel 1580 da questa famiglia: Ippolito Vitelleschi vi radunò alcune antichità di pregio, tra le quali il Bellori ricorda una «Minerva di alabastro restaurata con mani e testa di metallo ad opera di Francesco Fiammingo».
+Quest'originale reperto oggi si trova a Villa Albani.
+
+I Vitelleschi si estinsero nel 1775 e il palazzo passò alla famiglia Gavotti. Fu demolito e completamente ricostruito nel 1887 ad opera dell'architetto Luigi Tedeschi.
+
+Sempre da questo giardino si può raggiungere il cortile del palazzetto adiacente, e prendere visione del ricostruito viridario papale. Anche se fedelmente ricostruito pietra su pietra, l'edificio ha subito una profonda alterazione; dovuta alla soppressione delle due arcate esterne; ciò rende il giardino chiuso anziché arioso e comunicante con la città com'era una volta; inoltre in origine il giardino arrivava al piano ammezzato del palazzo che adornava.
+
+---
+
+
+618
 RIONE IX. PIGNA
 
 La fontana che si trova nel mezzo del giardino è il pozzo scolpito nel 1483 da Antonio da Brescia; con le armi del cardinal Barbo. Ma lasciamo il giardino e dirigiamoci, salendo la rampa monumentale; sulla destra entrando dalla via del Plebiscito; ai locali che ospitano il museo di palazzo Venezia; visitando il quale si concluderà la nostra terza e ultima passeggiata per il rione Pigna:
@@ -15962,11 +14597,213 @@ P I G N A
 
 ---
 
-<!-- p.625 (orig. p.625) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+Rione X. Campitelli
+di Alberto Manodori
+Dalle origini ad oggi
+
+Nello stemma del rione è la testa nera di un drago in campo bianco. È molto probabile che essa stia a ricordare la leggenda del drago che infestava nel medioevo l'area del Foro Romano e che fu vinto dall'intervento di papa Silvestro. Il nome di Campitelli al rione sembra derivare dal campo di terra in cui era ridotta l'area del Foro oppure dalla corruzione di Campidoglio. In questo rione è compresa tutta la storia di Roma: dalle capanne di Romolo al Foro Romano, dal Foro di Cesare alla casa di Augusto e ai ricordi di tutti gli imperatori fino a Costantino con il suo arco; quindi alle leggende dei Ss. Pietro e Paolo; alle chiese medievali; ai papi che abitarono sul Palatino; a Cola di Rienzo; a Petrarca e Michelangelo, che sistemò il Campidoglio.
+
+Ancora questo rione è segnato da palazzi aristocratici e da interventi papali e tutto ciò senza sosta fino alla Rivoluzione francese e ancora fino alla Repubblica romana; e quindi dopo l'annessione di Roma all'Italia è in questo rione che la città si trasforma nel suo luogo più monumentale: piazza Venezia con il suo Vittoriano.
+
+Qui si celebra l'unità della nazione, le memorie del Risorgimento, i caduti della Grande guerra, mentre insieme i veri romani rimpiangono le case e le chiese cadute sotto il piccone demolitore.
+
+Ma le generazioni passano e tra non molto il rimpianto si acquieterà perché nei più giovani non c'è già più memoria concreta di quanto una volta esisteva: l'apertura di via dei Fori Imperiali, di via del Teatro di Marcello segnò l'ulteriore trasformazione di Roma secondo il progetto fascista che la voleva un'altra volta monumentale contemporaneamente moderna, quasi futurista: attraversata da grandi vie percorse da intenso traffico, ritenuto allora simbolo di progresso.
+
+Questo rione è quello dei Padri della Patria: Romolo sul Palatino; Camillo sul Campidoglio; Augusto e gli altri imperatori nel Foro; fino a Cola di Rienzo e a Vittorio Emanuele II. Questo rione è anche quello delle leggendarie memorie dei Santi patroni di Roma: Ss. Pietro e Paolo, S. Francesca Romana e S. Sebastiano, protettore di Roma con l'arcangelo Michele.
+
+Di questo rione la storia e la descrizione di quanto è visibile e di quanto è scomparso è nelle pagine seguenti: certo è che esso ha conosciuto, dopo l'impero romano, tutte le vicissitudini della...
+
+---
+
+
+620
+
+**RIONE X. CAMPITELLI**
+
+**Il Campidoglio visto dal Tevere**
+*In un'incisione ottocentesca di B. Pinelli*
+
+[Immagine]
+
+Storia del papato: le fortezze delle grandi famiglie romane, rivali tra loro; e nel 1143 la *Renovatio Senatus* con il Campidoglio difeso dai senatori e dal popolo dall'assalto armato di papa Lucio II, che morì durante lo scontro colpito da un proiettile di fionda.
+
+Sul Campidoglio ascese il conte Carlo d'Angiò, re di Sicilia; dopo di lui, nel rione si affrontarono come in tutta la città guelfi e ghibellini e sarà papa Nicolò III, che fattosi eleggere senatore a vita, ridurrà alla pace le fazioni nel 1278.
+
+È il Campidoglio, infatti, nel medioevo il luogo del riferimento ideale del politico e di quanto del sacro si opponeva ad esso. Sul Campidoglio nel 1344 Cola di Rienzo si fa tribuno ed è ai piedi del colle che viene ucciso dieci anni dopo. Sul Campidoglio nel 1363 sono promulgati gli statuti della città comprensivi dei rioni con le loro bandiere. Nel 1538, con la collocazione al centro della piazza del Campidoglio della statua del Marco Aurelio; il colle pur essendo il luogo delle libertà cittadine si adegua alle solennità pontificie e nei secoli seguenti fa da scenografia alle visite romane dei sovrani stranieri o alle maggiori cerimonie papali.
+
+Ma è sul Campidoglio che il 15 febbraio 1798 si erge l'albero della libertà e si fonda la Repubblica romana. La Repubblica romana nasce di nuovo nel 1849 e qui il 2 ottobre 1870, Roma è ufficialmente ricongiunta all'Italia. Il 29 novembre dello stesso anno è eletto il primo sindaco di Roma moderna; che accoglierà sul colle capitolino il re Vittorio Emanuele in visita a Roma.
+
+Durante il fascismo vi stette il governatore di Roma e Mussolini ampliò a suo nome i musei. Con il ritorno della democrazia e la nascita della repubblica; sul Campidoglio nacque l'Europa unita, destinata a trasformare il futuro della storia dell'Occidente.
+
+Eppure questo colle è anche quello più presente; insieme a piazza S. Pietro, piazza Navona, piazza di Spagna, il Colosseo e il...
+
+---
+
+
+DALLE ORIGINI AD OGGI
+621
+
+Foro Romano negli itinerari turistici e canonica era l'escursione in automobile nelle sere d'estate per andare fumare l'ultimo mezzo toscano con gli amici a piazza del Campidoglio; accompagnandovi ospiti stranieri e illuminando con i fari la salita di via delle Tre Pile o quella di via di Monte Tarpeo. Sembrava di essere in un film di Fellini.
+
+Sulla piazza risuonava l'acqua delle fontane e si raccontava della «civetta» sul cavallo di Marco Aurelio. Poi si scendeva accanto al palazzo Senatorio per vedere sotto il cielo stellato la valle monumentale del Foro Romano con le colonne e i ruderi illuminati dalla luna.
+
+Avevamo cenato poco prima da Angelino a Tor Margana, in una piccola piazzetta che poteva sembrare un eremo di antica quiete. Da qui alla magnificenza dell'antico il contrasto era forte ed eccitante e Roma appariva anche a noi che ci siamo nati la più bella fra tutte le belle città del mondo.
+
+Il Foro Romano con le sue memorie archeologiche nasconde il perduto suo percorso attraverso il medioevo e i secoli successivi fino a quando gli scavi archeologici riportarono alla luce l'antico abolendo il moderno.
+
+È difficile perciò immaginare come era questa grande zona di Roma che, con le case che sorgevano ove ora è via dei Fori Imperiali, proseguiva senza soluzione di continuità nel rione Monti e con le case che stavano dalla parte di piazza Montanara nel rione Ripa: Nel medioevo il Foro Romano, ricco di ruderi a disposizione di impresa edilizia; era poco più di un campo, con vecchie chiese e torri fortificate: Alcune di queste chiese sono sopravvissute con trasformazioni successive, altre, come S. Maria del macello o S. Maria in Campo Carleo, sono invece scomparse.
+
+Nel Cinquecento lo spurgo della Cloaca Massima, che occlusa aveva formato il famoso «pantano», diede luogo all'apertura di nuove strade: via Alessandrina, dal nome del cardinale Alessandrino, nipote di Pio V, e via Bonella.
+
+Ma come tutti sappiamo a ritrasformare la zona non furono tanto gli scavi archeologici quanto l'apertura di via dell'Impero: via dei Fori Imperiali. Scomparvero la via di Marforio e di Testa Spaccata, cosiddetta da un antico ritratto di età romana. Cadde la chiesa di S. Lorenzo in Ascesa e via delle Chiavi d'Oro e ancora vicolo dei Carbonari, vicolo delle Marmorelle, via della Croce Bianca (detta di Malta), via del Sole, via in Miranda, via Cremona, via della Salara Vecchia; cosiddetta perché la percorrevano i carri che si recavano a caricare il sale nella salara capitolina.
+
+Fu tagliata la collina della Velia e scomparvero tracce di un villaggio preistorico; di case romane repubblicane; imperiali, forse anche testimonianze della Roma più antica mentre si rinvenne insieme ad alcune statue di età romana il teschio di *elephas antiquus* con una delle zanne lunga 3 metri.
+
+Il 28 ottobre 1932 si inaugurava via dell'Impero: in dieci mesi erano stati demoliti 4547 vani (1000 famiglie traslocate), scavati ogni poi quella poi
+
+---
+
+
+622
+
+RIONE X. CAMPITELLI
+
+248.000 mq di terra e 52.000 di roccia tufacea e antichi calcestruzzi. Furono costruiti 12.000 mq di sostegno. Nel primo anno di vita della nuova grande arteria vi transitarono 2.900.000 automobili, 700.000 autocarri, 270.000 vetture a cavalli e 6.000.000 pedoni. Il grande architetto Le Corbusier ne rimase ammirato noi restiamo combattuti tra il senso di una accettazione comunque avvenuta di ciò che appare moderno e una nostalgia forse anche un po' intellettuale per quello che leggiamo perduto e che non abbiamo conosciuto e ripensiamo ai secoli andati, a quando il colle capitolino era detto «colle di Fabatostas» perché la povera gente poteva comprare ogni giorno le fave che in aprile, maggio; secche erano uno dei piatti che poteva permettersi.
+
+Nel percorrere gli itinerari seguenti si consiglia di munirsi di binocolo e, eventualmente, di macchina fotografica.
+
+**Primo itinerario**
+
+Vicolo Astalli
+via Aracoeli
+piazza Aracoeli
+via della Tribuna di Torde' Specchi
+piazza Margana
+via dei Delfini
+via Cavalletti
+piazza Campitelli
+via Capizucchi
+piazza Capizucchi
+via Montanara
+via del Teatro di Marcello
+piazza Aracoeli
+il Vittoriano
+via di S. Pietro
+in Carcere
+clivo Argentario
+via del Tulliano
+piazza del Campidoglio
+piazzale Caffarelli
+via di Monte Tarpeo
+via della Consolazione
+piazza della Consolazione
+vico Jugario
+via dei Fienili
+via dei Foraggi
+via di S. Teodoro
+piazza S. Anastasia
+via dei Cerchi.
+
+Palazzo Astalli si erge tra via Aracoeli, via delle Botteghe Oscu- via di S. Marco e vicolo Astalli. Per chi venga a Roma per la prima volta, quest' edificio e il contesto urbanistico che gli sta intorno, non possono che apparire tanto definiti da sembrare quelli originari. Grande è quindi la sorpresa del turista quando l'amico romanista, che gli fa da cicerone, gli spiega che di palazzo tra il 1930 e il 1932, con regolare esproprio comunale, per allargare via di S. Marco fu demolita la facciata su vicolo Astalli, con il portone del Cinquecento; per la lunghezza di quattro finestre e, sul lato principale di via Aracoeli, il portone di ingresso per la lunghezza di due finestre, che l'altana stessa fu rifatta e il palazzo ebbe una nuova facciata su via di S. Marco e la sua larghezza ridotta dello spazio di tre finestre.
+
+Éppure basta provenire da via Margana, attraversare via Aracoeli ed imboccare vicolo Astalli per avere rinnovata la percezione di una Roma al limite delle grandi trasformazioni urbanistiche monumentali, che mutarono l'aspetto della città dal 1871 al 1950.
+
+Un percorso questo di piccole stradine quasi disturbate dal chiasso del traffico, che ha fine su via di S. Marco accanto ai giardini ornati di alti pini che costeggiano il fianco sinistro dell' Altare della Patria: lo spazio aperto, immenso, con prospettive sul filo dell'orizzonte si sostituisce di colpo alla penombra e alla stretta intimità di via Margana e vicolo Astalli. Palazzo Astalli appartenne all'omonima famiglia e fu eretto nei primi del Cin-
+
+---
+
+
+PRIMO ITINERARIO
+623
+
+quecento; ma terminato alla fine del Seicento, sotto la direzione di Giovanni Antonio De Rossi.
+Il palazzo presentava tre portoni, rispettivamente, su via di S. Marco, via di Aracoeli e vicolo Astalli. Un atrio a due bracci li collegava, costituendo un'intelligente sistemazione di raccordo per chi entrava e chi usciva dal palazzo.
+
+La famiglia Astalli diede alla Chiesa tre cardinali: Astaldo nel 1144, Camillo nel 1650 e Fulvio nel 1686. L'ultima degli Astalli, Laura, sposò un Piccolomini.
+La famiglia, distinta con il titolo di marchesi, ebbe la signoria del santuario di Vallepietra, monti Ernici, ancora oggi frequentato e noto per il culto della SS. Trinità che è raffigurata su un'antica pittura da tre figure, uguali, del "Cristo", secondo una iconografia espulsa dal corpo dottrinale della Chiesa con il Concilio di Trento.
+
+Il palazzo conservava preziosi affreschi, tra cui quello del salone, con scene sacre sullo sfondo di paesaggi di Roma e del Lazio; inserite fra giochi di fantastiche grottesche e al centro una toccante "Annunciazione".
+Quest'insieme di decorazioni, salvate dalle demolizioni sopportate dal palazzo, sono state ricomposte nel Museo di Roma a palazzo Braschi. Nel 1827 il palazzo fu ceduto alla reverenda fabbrica di S. Pietro, che vi fissò la propria segreteria e la residenza del monsignor economo; ancora oggi, sull'angolo tra via di S. Marco e via di Aracoeli, si può vedere lo stemma della reverenda fabbrica.
+
+Sulla destra del vicolo Astalli, di fronte allo stesso palazzo Astalli è quello Muti Bussi. Questa famiglia si è estinta recentemente con l'ultima sua rappresentante; la marchesa Olimpia; Aveva la cappella gentilizia nella vicina chiesa di S. Maria in Campitelli. I Muti duchi di Rignano mentre Bussi; che acquisirono il cognome dei Muti quando Giulio sposò Cecilia; provenivano da Viterbo ed ebbero tre cardinali tra il 1712 e il 1824. Le loro case furono sempre in questa zona e fu Giovanni della Porta ad erigere il palazzo nella seconda metà del Cinquecento. L'edificio fu completato con profonde ristrutturazioni, poi, da Giovanni Antonio De Rossi.
+
+Il palazzo presenta una forma pentagonale che, a causa dell'apice spuntato, viene classificato come esagonale. Così finisce per avere sei facciate: su via d'Aracoeli, piazza Aracoeli, via di S. Venanzio; via di S. Marco e vicolo Astalli. Proprio sulla più corta delle sei facciate tra vicolo Astalli e via Aracoeli è situato l'ingresso principale con un maestoso portone ornato dalle mazze decussate dello stemma dei Muti e da protomi leonine. Belle le finestre del piano terra, protette da antiche inferriate. Su piazza Aracoeli, al primo piano, si affaccia un balcone sorretto da mensole; destinato a far godere della vista della piazza d'Aracoeli con la prospettiva della monumentale scalinata e con la severa e maestosa facciata della basilica; cui oggi si aggiunge il panorama del Vittoriano.
+
+Al di sopra dei portali e al di sotto del cornicione, ricorre lo stemma dei Muti ma la maggior caratteristica architettonica è...
+
+---
+
+
+624
+
+RIONE X. CAMPITELLI
+
+Nella comunicazione diretta fra l'ingresso della facciata più corta
+e quello di via di S. Venanzio; ognuno dei due portoni di questi
+ingressi immette in due atrii che sfociano sullo stesso cortile:
+lo scalone principale del palazzo conserva statue antiche, reinte-
+grate nelle mancanti, secondo uno stile decorativo colto;
+caratteristico della Roma rinascimentale e barocca.
+
+All'interno del palazzo sono conservate pitture paesaggistiche di
+Gaspare Dughet (1615-1675) e scene mitologiche che decorano
+riccamente la galleria dipinta dal palermitano Giacinto Calan-
+drucci (1646-1707).
+
+Ricerche recentissime per la definizione della carta archeologica
+di Roma hanno portato all'individuazione di antiche murature di
+età romana nei sotterranei di palazzo Muti Bussi sul lato di via di
+S. Venanzio e via di S. Marco. Si tratta dei resti di un edificio per
+abitazioni che esisteva nell'antica regione VIII di Roma; ad est
+del teatro e della cripta di Balbo. Ci troviamo così su piazza Ara-
+coeli, che per chi si affacciava dal Campidoglio costituiva la
+fronte prospettica del panorama della città.
+
+Il lato destro della piazza non esiste più, sostituito dall'esedra or-
+nata da siepi e pini secondo il progetto di Corrado Ricci, che ri-
+servò ai giardini intorno all'altare della Patria e su via dei Fori
+Imperiali solo piante mediterranee.
+
+La piazza Aracoeli, ai piedi della scalinata, della cordonata capi-
+tolina e della via delle Tre Pile, fu in antico piazza di mercato e
+la chiesa, che vi si trovava accanto, di S. Rita, oggi ricostruita su
+quanto resta di via Montanara; sorgeva dove prima era la chiesa
+di S. Biagio de Mercatello. Questa piazza del Mercato era
+suddivisa in due parti: quella detta del Mercato e quella
+del piede di questo detta del Mercatello. Qui era la chiesa di S. Giovanni in Mercatello, dedi-
+cata più tardi anche a S. Venanzio; il solo ricordato
+sulla targa stradale. S. Giovanni; tanto caro ai romani era qui partico-
+larmente venerato con S. Biagio.
+
+Biagio, vescovo e martire del V secolo, fu medico ed è protettore
+dai mali della gola; la sua festa ricorreva il 3 febbraio ed era caro
+alla devozione popolare.
+
+Sempre sulla piazza, durante il medioevo, si trovavano due delle
+tante torri di Roma: una era la torre del mercato dove i consoli
+della mercanzia faticavano per fare giustizia nelle cause tra mer-
+canti o tra mercanti e clienti; l'altra torre era quella del cancellie-
+re, i cui resti sono ancora visibili in via della Tribuna di Tor de'
+Specchi.
+
+Il mercato, nell'Italia cristiana e cattolica, non era solo luogo di
+vendite e di acquisti ma luogo di dibattiti politici, spesso violen-
+ti, di risse e di scontri per faide familiari e tribuna dei predica-
+tori, che sempre più operavano per mantenere o riportare i costumi
+all'interno delle regole della morale cristiana.
+
+Migliaia di persone ascoltarono in piazza Aracoeli le parole in-
+fuocate e quindi infiammanti di S. Bernardino da Siena e, in una
+scenografia simile a quella del funerale di Cesare immaginato da
+Shakespeare, portarono dalle case, dalle locande, tutte le carte
+da gioco e tavoli e le carrattole e
+qualsiasi altro strumento di divertimento.
+
+---
+
+
+PRIMO ITINERARIO
 625
 
 gioco proibito
@@ -15987,11 +14824,8 @@ A ristrutturare il palazzo, Mario Fani chiamò Giacomo della Porta: l'edificio f
 
 ---
 
-<!-- p.626 (orig. p.626) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>626
+626
 
 RIONE X. CAMPITELLI
 
@@ -16018,11 +14852,8 @@ Nel cortile è murata un'interessante raccolta di iscrizioni antiche.
 
 ---
 
-<!-- p.627 (orig. p.627) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 627
 
 stemmi. Oggi nel palazzo ha anche sede l'ambasciata della Repubblica araba siriana che espone sul balcone la propria bandiera. All'angolo con via del Teatro di Marcello è ancora affissa la targa del posto di stazionamento delle carrozze.
@@ -16047,11 +14878,8 @@ Accanto al palazzo Santacroce si ergeva il Palazzo Silvestri, già...
 
 ---
 
-<!-- p.628 (orig. p.628) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>628
+628
 RIONE X. CAMPITELLI
 
 Fabi, anch'esso perduto nel 1929 e quindi, vicino alla chiesa di S. Venanzio; era Oratorio della Divina Pietà con annessa la casa per i catecumeni.
@@ -16072,11 +14900,8 @@ Al n. 8 della piazza è il Palazzo Cardelli, già Velli. Presenta por...
 
 ---
 
-<!-- p.629 (orig. p.629) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 629
 
 Tali ad arco bugnato e finestre incorniciate da peperino; su una di esse resta traccia del nome dell'antico proprietario Andreas Velius, morto nel 1603 quando aveva 82 anni.
@@ -16097,11 +14922,8 @@ Si volta quindi per via Cavalletti; dal nome di un'antica famiglia romana che di
 
 ---
 
-<!-- p.630 (orig. p.630) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>630
+630
 
 RIONE X. CAMPITELLI
 
@@ -16115,11 +14937,8 @@ Al n. 2 s'erge il Palazzo Albertoni, famiglia quest'ultima che oltre alla beata 
 
 ---
 
-<!-- p.631 (orig. p.631) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO                                                                    631
+PRIMO ITINERARIO                                                                    631
 
 [Immagine: incisione di G. Vasi]
 
@@ -16139,11 +14958,8 @@ Piazza Montanara andava da via della Bocca della Verità alla via Montanara e pr
 
 ---
 
-<!-- p.632 (orig. p.632) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>632
+632
 RIONE X. CAMPITELLI
 
 conosciuta con il nome di «ad elephantums», il che ha fatto pen-
@@ -16216,11 +15032,8 @@ popolare.
 
 ---
 
-<!-- p.633 (orig. p.633) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 633
 
 Il pittore è rimasto anonimo, ma si ritiene che doveva far parte della bottega di Antoniazzo Romano. Poco vi fu aggiunta la raffigurazione del «Giudizio Universale». Altre storie della Santa sono dipinte nel refettorio da cui si accede alla cella dove S. Francesca Romana trascorse gli ultimi anni. Questa è oggi trasformata in cappella ma conserva, in un armadio, ricordi personali della Santa. Bello è, all'interno, un cortile trecentesco con portico su due ordini.
@@ -16235,11 +15048,8 @@ Tra gli edifici perduti, civili e di culto per l'apertura di via del...
 
 ---
 
-<!-- p.634 (orig. p.634) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>634
+634
 
 RIONE X. CAMPITELLI
 S. Francesca Romana
@@ -16260,11 +15070,8 @@ E per la presenza delle spoglie della Santa, che la chiesa di S. Maria Nova pres
 
 ---
 
-<!-- p.635 (orig. p.635) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 635
 
 Teatro di Marcello e per il recupero e l'isolamento dello stesso teatro non possiamo non ricordare la cappella di S. Maria del Sole, fondata da Gerolama de Lenzinis nel 1460, per venerarvi una miracolosa immagine mariana ripescata nel Tevere; quindi la chiesa di S. Andrea in Vincis, detta anche dei Funari o in Mentuccia. Si trovava quasi di rimetpetto all'odierna via Montanara e apparteneva alla Confraternita dei marmorari. Presentava una raccolta e graziosa facciata settecentesca con affresco al di sopra del portale. All'interno era ad unica navata con banchi dei confratelli appoggiati alle pareti. Da qui viene una tela raffigurante i <Ss. Quattro Coronati>, protettori di tutti i tagliatori di pietre e dei marmisti, conservata presso il museo di Roma a palazzo Braschi e che ora è attribuita ad un anonimo seguace del Caravaggio.
@@ -16283,11 +15090,8 @@ Le terrazze del colle sono ornate da piante mediterranee come l'alloro, caro ad 
 
 ---
 
-<!-- p.636 (orig. p.636) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>6.36
+6.36
 
 **RIONE X. CAMPITELLI**
 
@@ -16309,11 +15113,8 @@ Apparve così un altro tratto della rupe capitolina, ma qui vennero in luce anch
 
 ---
 
-<!-- p.637 (orig. p.637) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 637
 
 Consiglio di una tomba dei Boccabella ornato da un affresco del Trecento rappresentante la «Deposizione del Cristo tra il compianto della Madonna e di S. Giovanni». Dopo la demolizione della chiesa sono riaffiorati i resti di un'insula romana, per almeno quattro piani, con parte della fronte, con le sue bolle e delle finestre con l'attacco dei balconi sulla strada: il piano terra dell'insula è a nove metri sotto l'attuale piano stradale. Tutto questo è oggi visibile al di là di un moderno transennamento.
@@ -16332,11 +15133,8 @@ Seguiva quindi, sulla sinistra del Vittoriano, la via di Marforio che in parte r
 
 ---
 
-<!-- p.638 (orig. p.638) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>638
+638
 RIONE X. CAMPITELLI
 
 La "statua parlante" di Marforio in un'incisione di G. Maggi del 1618 che rende onore a Caio e ai suoi discendenti (prima metà del secolo a.C.), quindi una fronte segnata da paraste sorreggenti il fregio in cui si apriva la nicchia che doveva contenere la statua del defunto. La via di Marforio prendeva nome da quello della grande statua di fiume che si trovava presso la chiesa di S. Giuseppe dei Falegnami e che oggi è nel cortile del palazzo dei Musei capitolini. Marforio insieme al famoso Pasquino, al Babuino, all'abate Luigi e alla vicina Madama Lucrezia fu una delle statue parlanti di Roma e il suo nome deriverebbe da *Martis Forum*. Fu
@@ -16348,11 +15146,8 @@ che rende onore a Caio e ai suoi discendenti (prima metà del secolo a.C.), quin
 
 ---
 
-<!-- p.639 (orig. p.639) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 639
+PRIMO ITINERARIO 639
 
 Successivamente portata in piazza S. Marco; quindi sulla piazza del Campidoglio e da dove è ora ad opera di Filippo Barigiani.
 
@@ -16370,11 +15165,8 @@ Al sommo della scalea è l'Altare della Patria ornato da una grande statua della
 
 ---
 
-<!-- p.640 (orig. p.640) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>640)
+640)
 RIONE X. CAMPITELLI
 
 ...ranti i cortei del «Lavoro» e dell'«Amor di Patria» che rendono la nazione operosa. All'interno di questo sacello è posta la tomba del milite ignoto che conserva i resti di un soldato non identificato caduto durante la prima guerra mondiale. A questo proposito, un aneddoto scherzoso ricorda come, durante gli imponenti funerali del soldato sconosciuto, una folla immensa si accalcasse intorno alle transenne. Oltre queste stavano i reparti militari schierati e le autorità. Molti chiedevano con insistenza alle guardie di permettere loro di oltrepassare le transenne per poter vedere da vicino, ma le guardie, severe, non facevano passare nessuno. S'avvicinò un furbo monticiano che chiese alla guardia di poter passare. Questa gli chiese: «Chi siete?». E quello, con la risposta pronta e con la faccia tosta: «So 'n parente!». Passò con il saluto militare.
@@ -16385,11 +15177,8 @@ Segue quindi il portico con due entrate propilei che ha al di sotto otto altari 
 
 ---
 
-<!-- p.641 (orig. p.641) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>BRONZO, a sinistra l'«Architettura» e la «Musica» di A. Garelli e a destra la «Pittura» e la «Scultura» di L. Gangeri. Nei timpani dei pronai stanno: a sinistra, l'«Unità» di E. Butti e a destra la «Libertà» di E. Gallori. Sulla sommità dei contigui propilei stanno due gruppi bronzei raffiguranti quadrighe condotte da vittorie alate; a sinistra, l'«Unità» di Carlo Fontana e l'altra, raffigurante la «Libertà», è opera di B. Bartolini.
+BRONZO, a sinistra l'«Architettura» e la «Musica» di A. Garelli e a destra la «Pittura» e la «Scultura» di L. Gangeri. Nei timpani dei pronai stanno: a sinistra, l'«Unità» di E. Butti e a destra la «Libertà» di E. Gallori. Sulla sommità dei contigui propilei stanno due gruppi bronzei raffiguranti quadrighe condotte da vittorie alate; a sinistra, l'«Unità» di Carlo Fontana e l'altra, raffigurante la «Libertà», è opera di B. Bartolini.
 
 Le sculture esterne, poste sui lati del monumento, presentano, a cominciare dal suo fianco destro: due «Vittorie» e un «Trofeo» di A. Cozza e quindi un «Trofeo» e due «Vittorie» di E. Maccagnani.
 
@@ -16405,11 +15194,8 @@ Salendo sulla sinistra del monumento si distinguono, inseriti nel...
 
 ---
 
-<!-- p.642 (orig. p.642) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>642
+642
 RIONE X. CAMPITELLI
 
 selciato moderno; quanto resta; in opera quadrata di tufo; di uno stipite della porta Fontinalis che si apriva nel giro delle mura repubblicane. Esse raggiungevano il Campidoglio in questo punto, provenendo dalla via Senqualis nell'odierno Magnana e percorrendo la sella che univa il Quirinale al Campidoglio. Questo tratto di mura fu abbattuto quando Traiano decise di asportare la cosiddetta sella per poter costruire il suo foro.
@@ -16432,11 +15218,8 @@ La facciata, in blocchi di travertino; conserva l'iscrizione dei consoli Vibio, 
 
 ---
 
-<!-- p.643 (orig. p.643) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 643
 
 Secondo la leggenda qui furono incarcerati i due apostoli Pietro e Paolo e, mentre venivano fatti scendere nell'ambiente inferiore, S. Pietro avrebbe battuto la testa contro la parete accanto alla scala e questa miracolosamente ne avrebbe conservato l'impronta. In realtà l'ingresso antico alla terribile segreta inferiore era attraverso un foro circolare aperto nel pavimento dell'ambiente superiore.
@@ -16461,11 +15244,8 @@ Al centro del soffitto, intagliato e dorato, è un rilievo seicentesco del Monta
 
 ---
 
-<!-- p.644 (orig. p.644) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>644
+644
 RIONE X. CAMPITELII
 
 giornate: «Il riposo in Egitto»; «Lo sposalizio della Vergine»; «Gesù fra i dottori»; «Storie della Sacra Famiglia» sono state affrescate dal Montagna sulle quattro pareti al di sopra degli stalli seicenteschi di noce.
@@ -16494,11 +15274,8 @@ Accanto e sul Tabularium stesso è eretta la Torre di Niccolò V Parentucelli (1
 
 ---
 
-<!-- p.645 (orig. p.645) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 645
+PRIMO ITINERARIO 645
 
 Il Tabularium, utilizzato nel medioevo come fortezza anche come magazzino del sale, è oggi la facciata posteriore del palazzo Senatorio. Sulla destra è la Torre di Martino Colonna, eretta intorno al 1427. Tra le torri, questo lato del palazzo Senatorio — che è la facciata di sinistra — ha una sopraelevazione di un piano, eseguita recentemente. La parte più antica dell'edificio è in corrispondenza di una finestrella medievale; dietro cui è un ambiente con affreschi del Duecento. Si nota anche la campanella che veniva fatta suonare quando il senato di Roma entrava e usciva dal palazzo.
 
@@ -16514,11 +15291,8 @@ Il progetto michelangiolesco prevedeva poi una loggia colonnata che raccordasse 
 
 ---
 
-<!-- p.646 (orig. p.646) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>646
+646
 
 RIONE X. CAMPITELLI
 
@@ -16540,11 +15314,8 @@ Nel 1924 fu collocata un'antica croce del IX secolo rivestita di una placcatura 
 
 ---
 
-<!-- p.647 (orig. p.647) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 647
 
 Andrea Casini, a sostituire quelle del Cinquecento che, a loro volta, avevano sostituito la più famosa Patarina.
@@ -16575,11 +15346,8 @@ L'interno del palazzo Senatorio, che nel medioevo ebbe ben cinque torri, ancora 
 
 ---
 
-<!-- p.648 (orig. p.648) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>648
+648
 RIONE X. CAMPITELLI
 
 Ma prima indicava il luogo dove venivano lette le sentenze di morte e dove i malfattori, nei giorni di mercato, erano messi alla gogna. Da qui il detto di «dare il culo al liones». Si possono vedere i resti del tempio di Veiove; di età repubblicana. Veiove; dio romano; aveva un santuario sul Campidoglio ed un altro sull'isola Tiberina. Legata ai culti degli inferi, questa divinità era in rapporto alle paludi e alle manifestazioni vulcaniche. È conservato soprattutto il podio che si inseriva nel Tabularium e la statua colossale del dio, senza testa; impostata secondo un'iconografia apollinea perché Veiove fu in epoca storica accostato all'Apollo greco. Da qui si può andare nella galleria del Tabularium per godere della splendida vista sul Foro Romano fino al monte Albano su cui, in età antica, sorgeva il santuario di Giove Laziale che dal Campidoglio era traguardato in omaggio al vincolo religioso e politico che univa Roma agli altri popoli latini; sul quale doveva ben presto emergere.
@@ -16594,11 +15362,8 @@ Tarpea, raffigurata emergente da un mucchio di armi, diede...
 
 ---
 
-<!-- p.649 (orig. p.649) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 649
 
 gine all'equivoca interpretazione della sua immagine e alla conseguente leggenda. Un'altra leggenda voleva che il nome Capitolium derivasse dal teschio, *caput*, di un guerriero etrusco di nome Olus, rinvenuto dai Tarquini quando furono scavate le fondazioni del tempio di Giove.
@@ -16617,11 +15382,8 @@ Sul Campidoglio, in età medievale, gli imperatori germanici vennero a raccoglie
 
 ---
 
-<!-- p.650 (orig. p.650) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>650 RIONE X. CAMPITELLI
+650 RIONE X. CAMPITELLI
 
 nese, a ridisegnare e riprogettare la piazza per restituirle tutta l'importanza politica dovuta e conferirle il ruolo di sede del potere laico-amministrativo; distinto da quello maggiore, religioso dei papi in S. Pietro, anche se la presenza della possente torre — oggi perduta — ricordava ai conservatori che piena doveva essere l'obbedienza al pontefice.
 
@@ -16647,11 +15409,8 @@ Un altro racconto popolare vede, invece, nel cavaliere, il consid-
 
 ---
 
-<!-- p.651 (orig. p.651) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 65
 
 Campidoglio nel Settecento in un'incisione di G. Vasl.
@@ -16666,11 +15425,8 @@ Sulla sinistra della statua di Marc' Aurelio è il Palazzo dei Conservatori; rie
 
 ---
 
-<!-- p.652 (orig. p.652) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>652
+652
 
 RIONE X. CAMPITELLI
 
@@ -16690,11 +15446,8 @@ Da non trascurare, nella visita al palazzo, i rilievi di Marco Aurelio (176 d.C.
 
 ---
 
-<!-- p.653 (orig. p.653) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 653
 
 Re sulla via Lata, oggi via del Corso: si tratta del cosiddetto «Arco di Portogallo». Nella Sala degli Orazi e Curiazi sono visibili la splendida statua bronzea di «Innocenzo X Pamphilj» dell'Algardi e quella più classica di Urbano VIII Barberini, opera del Bernini. Quest'ultima, a causa dell'opposizione popolare, fu trasferita in Campidoglio nella notte del 24 giugno 1640, alla luce delle torce, e fu introdotta nel palazzo dal finestrone sopra il portico. Nella Sala dei Trionfi c'è da vedere il ritratto detto di «Bruto Maggiore» di forte ed incisiva espressività; la statua effebica di un camillus in bronzo e tardo ellenistica del cosiddetto «Spinario». Questa statua, quando era in Laterano, era posta su una colonna che veniva indicata come la colonna della vergogna; sia perché dal basso si notava chiaramente il sesso del giovane, sia perché alla colonna venivano posti alla gogna i rei di delitti minori. Nella stessa sala è una vera rarità storico-archeologica: un «cratere di bronzo» che sull'orlo reca l'iscrizione postavi da Mitridate VI Eupatore, re del Ponto (120-63 a.C.). Si tratta pertanto di una preda di guerra romana portata in città, nel trionfo sul re orientale: o da Silla o da Pompeo.
@@ -16709,11 +15462,8 @@ Di fronte al palazzo dei Conservatori è il Palazzo Nuovo che Michelangelo aveva
 
 ---
 
-<!-- p.654 (orig. p.654) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>654
+654
 RIONE X. CAMPITELLI
 
 Nel 1603 si diede inizio alla costruzione dell'ultima parte del progetto michelangiolesco; che comunque fu portata a termine sotto papa Innocenzo X; il quale addebitò le spese alla Camera capitolina che, sua volta, vi fece fronte tassando gli stipendi degli impiegati, diminuendo compensi ed elargizioni, licenziando molti funzionari, abolendo gli incarichi dei giudici, dei riformatori di studio, dei pacari e del maresciallo del popolo; diminuendo di 30 scudi annui lo stipendio dei maestri regionali. Nel 1654 il palazzo era completato. Fu utilizzato dalle Università delle arti e dei mestieri, dall'Accademia del disegno e anche per raccogliere le statue antiche in soprannumero nel palazzo dei Conservatori.
@@ -16730,11 +15480,8 @@ Scendiamo la cordonata disegnata da Michelangelo e realizzata
 
 ---
 
-<!-- p.655 (orig. p.655) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 655
 
 da Giacomo Della Porta, tagliata di alcuni gradini alla base per l'apertura dell'attuale via Tor de' Specchi.
@@ -16759,11 +15506,8 @@ Questa leggenda, tesa a dimostrare come il potere politico potesse trovare la su
 
 ---
 
-<!-- p.656 (orig. p.656) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>656
+656
 RIONE X. CAMPITELLI
 
 cristiano; è collocata dai Mirabilia nella camera dell'imperatore che, però, noi sappiamo, aveva la sua dimora sul Palatino. Al tempo di Gregorio III sorse su questo luogo del Campidoglio il monastero di Maria Camellaria e dei Ss. Giovanni Battista e Evangelista. Nel 944 si parla di un monastero benedettino di Santa Maria in Capitolio.
@@ -16786,11 +15530,8 @@ Davanti alla chiesa è la pietra tombale del grande umanista Flavio Biondo. L'in
 
 ---
 
-<!-- p.657 (orig. p.657) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 657
+PRIMO ITINERARIO 657
 
 Altrettanto antichi e di risulta sono i capitelli e le basi delle colonne. Il pavimento è cosmatesco con fasce mosaicate e conserva numerose pietre tombali del Trecento e del Quattrocento. Importanti, soprattutto, sono: la prima cappella a destra, che è illustrata con le «Storie di S. Bernardino e S. Francesco» dipinte, nel 1486, dal Pinturicchio; la statua di «Gregorio XIII» di P.P. Olivieri del 1476; la «tomba di Cecchino Bracci (1544)» di F. Amadori, su disegno di Michelangelo; nella nona cappella la «tomba di fra' Ginepro, compagno di S. Francesco»; l'altare maggiore con paliotto settecentesco sul quale Cola di Rienzo, tornando vittorioso sui Colonna da porta S. Giovanni, poggiò la propria spada dicendo: «Hai mozzata recchia di tale capo che non la potevo tagliare né papa né imperatore».
 
@@ -16806,11 +15547,8 @@ Uscendo lateralmente dalla chiesa ci si trova dove stava l'obelisco di cui abbia
 
 ---
 
-<!-- p.658 (orig. p.658) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>658
+658
 
 RIONE X. CAMPITELLI
 
@@ -16826,11 +15564,8 @@ Arrivati di nuovo al limite della balaustra, sulla sinistra, sale al colle Capit
 
 ---
 
-<!-- p.659 (orig. p.659) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 659
 
 La strada prende nome dalle tre pignatte dello stemma della famiglia Pignatelli che è raffigurato sul piccolo monumento celebrante l'apertura di questa via sotto il papa di questa famiglia: Innocenzo XII (1692). Un'iscrizione, tra l'altro, dice: «O tu che passi, mira e rammori: che non vi sia sul Campidoglio la statua del pontefice; alla quale condurrebbero giustamente le benemerenze di lui, se non fosse statua lo stesso Campidoglio».
@@ -16849,11 +15584,8 @@ Nel 1921 le tele di Prell ebbero il permesso di ritornare a Berlino e, nel 1925,
 
 ---
 
-<!-- p.660 (orig. p.660) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>(66)
+(66)
 RIONE X. CAMPITELLI
 
 Fu ricostruito più volte e volta ridedicato. L'ultima ricostruzione fu portata a termine da Domiziano ed ha restituito alcuni frammenti delle colonne di marmo e quindi, presso il n: civico 3 di piazzale Caffarelli, parte del muro in blocchi di tufo e della platea che fu ricomposta con blocchi originali del tempio ma di diverse provenienze, recuperati in uno scavo del 1959. Accanto è una terrazza ornata da un giardino; appoggiata sopra sostruzioni in blocchi di tufo di età romana da cui si ammira un suggestivo panorama.
@@ -16872,11 +15604,8 @@ Fu questa la fondazione culturale che si trasformerà, nel 1886, nell'Istituto a
 
 ---
 
-<!-- p.661 (orig. p.661) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 66/
+PRIMO ITINERARIO 66/
 
 Fino all'Ottocento questo Monte fu anche detto Caprino perché pastori portavano le capre al pascolo, ma per tutto il Medioevo fino al Cinquecento fu detto anche *locus iustitiae* perché vi stavano innalzate le forche; le quali non spaventarono abbastanza i fabbricanti di canape che qui, come nel Campo Vaccino, venivano a torcere le loro corde.
 
@@ -16900,11 +15629,8 @@ Potrebbe infine trattarsi del Tensarium, la rimessa dove erano custodite le *ten
 
 ---
 
-<!-- p.662 (orig. p.662) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>662
+662
 
 RIONE X. CAMPITELLI
 
@@ -16932,11 +15658,8 @@ Sulle sommità della scala è il portico del Vignola; in forma di loggia a tre a
 
 ---
 
-<!-- p.663 (orig. p.663) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 663
 
 Lazzo dei Conservatori e Monte Caprino sono ritenute disegnate dal Vignola mentre la terza porta è moderna. Sugli archi della loggia stanno gli stemmi di papa Giulio III Ciocchi del Monte (1550-1555), che affidò la realizzazione dell'opera agli scalpellini Pietro da Meride e Benedetto da Firenze detto Schiena.
@@ -16953,11 +15676,8 @@ Si giunge così a piazza della Consolazione dove sta, monumentalmente, la chiesa
 
 ---
 
-<!-- p.664 (orig. p.664) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>664
+664
 RIONE X. CAMPITELLI
 
 De sotto un baldacchino, dipinta da Nicola Berrettoni subito dopo la terribile pestilenza del 1656.
@@ -16980,11 +15700,8 @@ All'angolo di piazza della Consolazione con via dei Fienili è posta un'edicola 
 
 ---
 
-<!-- p.665 (orig. p.665) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 665
 
 La via dei Fienili sulla sinistra è rione Campitelli, si apre via dei Foraggi dove è un'immagine mariana in ceramica policroma. Si riprenda il lato del colle Capitolino: sulla destra si aprono altre latomie capitoline, chiuse da cancellate e utilizzate come magazzini di materiale archeologico; mentre all'esterno, tra i fichi d'India, si aggirano sornioni.
@@ -17001,11 +15718,8 @@ Si ricorda tra l'altro che veniva spesso Clemente XII Corsini, qui, a servire, d
 
 ---
 
-<!-- p.666 (orig. p.666) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>666
+666
 RIONE X. CAMPITELLI
 
 to per gli appestati, tanto che una sera se ne era caricato uno sulle spalle per portarlo all'ospedale, «felice», diceva; «di aver incontrato così Gesù».
@@ -17024,11 +15738,8 @@ Usciti dalla chiesa e ripresa via di S. Teodoro, si passa accanto alla sede dell
 
 ---
 
-<!-- p.667 (orig. p.667) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 667
 
 Lachiesa di S. Anastasia nel Seicento in un'incisione di G.B. Falda.
@@ -17045,11 +15756,8 @@ Da ammirare, sotto l'altare maggiore, la statua di «S. Anastasia» giacente, sc
 
 ---
 
-<!-- p.668 (orig. p.668) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>668
+668
 RIONE X. CAMPITELLI
 
 dell' arte berniniana. Nell' abside sono da ammirare due colonne
@@ -17117,11 +15825,8 @@ Lucia in Septisolio.
 
 ---
 
-<!-- p.669 (orig. p.669) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>**SECONDO ITINERARIO**
+**SECONDO ITINERARIO**
 669
 
 **Secondo itinerario**
@@ -17144,11 +15849,8 @@ La chiesa fu da Sisto V concessa all'Accademia del disegno intitolata a S. Luca 
 
 ---
 
-<!-- p.670 (orig. p.670) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>670
+670
 
 RIONE X. CAMPITELLI
 
@@ -17170,11 +15872,8 @@ Se si scende nella chiesa inferiore si incontra il monumento funebre dell'archit
 
 ---
 
-<!-- p.671 (orig. p.671) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 671
 
 Bre di Pietro da Cortona, quindi la cappella; disegnata dallo stesso in onore della Santa. Accanto a questa è un'altra cappella con un gruppo in terracotta con *Ss. Concordio; Epifanio Compagno*, opera dell' Algardi. Si risale al piano superiore della chiesa incontrando la lastra funeraria di Girolamo Rainaldi, il monumento funebre di Filippo Albacini e quello di Luigi Canina. Insomma, in armonia con l'Accademia di S. Luca, non mancano in questa chiesa le memorie degli artisti.
@@ -17189,11 +15888,8 @@ La chiesa, sistemata intorno all'VII secolo e una volta collegata ad un convento
 
 ---
 
-<!-- p.672 (orig. p.672) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>672
+672
 
 RIONE X. CAMPITELLI
 
@@ -17203,11 +15899,8 @@ fantasia per evidente simbolismo di coniugazione tra l'antico e il moderno. L'in
 
 ---
 
-<!-- p.673 (orig. p.673) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 673
 
 dell'impero bizantino. Nei rapporti con i primi fu favorita l'improvvisa morte di Teodorico e rese omaggio all'impero d'Oriente consacrando in Roma la chiesa dei Ss. Cosma e Damiano. Amalasunta, figlia di Teodorico, aveva donato a Felice IV quei due ambienti prospicienti il Foro e la scelta dei due Santi fu dovuta al fatto che Cosma e Damiano erano molto venerati a Bisanzio.
@@ -17226,11 +15919,8 @@ L'altare del presbiterio è ornato da una «Madonna con Bambino» dipinta su tav
 
 ---
 
-<!-- p.674 (orig. p.674) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>674
+674
 RIONE X. CAMPITELLI
 
 «Betlemme e Gerusalemme», cioè le personificazioni dell'antica Sion e di Roma cattolica; e anche della chiesa fondata dal giudaismo cristiano e di quella aperta a tutti i gentili: Alla base del mosaico è «Gesù» come Agnello Mistico e i dodici agnelli converso di Lui a rappresentare i suoi discepoli e, metaforicamente, le dodici tribù d'Israele quali simboli di tutti i popoli del mondo.
@@ -17249,11 +15939,8 @@ La facciata del convento annesso alla chiesa era, una volta, la parete della Bib
 
 ---
 
-<!-- p.675 (orig. p.675) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 675
 
 13 e una larghezza di 18. Possediamo circa 1/10 delle lastre depositato nelle soffitte di palazzo Braschi.
@@ -17268,11 +15955,8 @@ All'interno della chiesa sono conservati i silices apostolici, cioè il basolo s
 
 ---
 
-<!-- p.676 (orig. p.676) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>676
+676
 
 RIONE X. CAMPITELLI
 
@@ -17286,11 +15970,8 @@ La facciata, in travertino, è opera di Carlo Lambardi (1615) ed è costituita d
 
 ---
 
-<!-- p.677 (orig. p.677) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 677
 
 Grandi dischi e croci di porfido; serpentino verde ed altri marmi policromi e da grandi bacini in maiolica.
@@ -17309,11 +15990,8 @@ La facciata della chiesa fu ideata da Luigi Arrigucci (1630) ed è costituita da
 
 ---
 
-<!-- p.678 (orig. p.678) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>678
+678
 RIONE X. CAMPITELLI
 
 L'interno è a navata unica con abside. L'altare è ornato da una coppia di colonne di breccia corallina. L'abside conserva affreschi del X secolo. 
@@ -17330,11 +16008,8 @@ La facciata, di semplicità francescana, a doppio spiovente, presenta accanto al
 
 ---
 
-<!-- p.679 (orig. p.679) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 679
 
 **Terzo itinerario**
@@ -17355,11 +16030,8 @@ La parte bassa di questa valle, all'incirca dell'area centrale verso la basilica
 
 ---
 
-<!-- p.680 (orig. p.680) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>680
+680
 RIONE X. CAMPITELLI
 
 rum; il sacello dei Lari; quello di Aius Locutius; quello di Anghe-
@@ -17417,11 +16089,8 @@ politico della città: Quest'area era stata consacrata dagli auguri e...
 
 ---
 
-<!-- p.681 (orig. p.681) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 681
 
 Quindi era un *templum*; cioè uno spazio diviso, traguardando sulla terra quanto veniva sezionato nel cielo. Qui l'araldo pubblico annunciava lo scandire del mezzogiorno e del tramonto.
@@ -17442,11 +16111,8 @@ Nella stanza del dio Marte erano conservati gli scudi sacri, ancilii, che i sace
 
 ---
 
-<!-- p.682 (orig. p.682) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>682
+682
 
 RJONE X. CAMPITELLI
 
@@ -17466,11 +16132,8 @@ Un altro tempio indissolubilmente legato alla storia di Roma fin dai tempi più 
 
 ---
 
-<!-- p.683 (orig. p.683) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 683
 
 che esce, quindi dei passaggi, degli inizi e degli ingressi e capaci di vedere tanto nel passato quanto nel futuro.
@@ -17487,11 +16150,8 @@ Anche altri monumenti appartengono alle fasi più arcaiche del foro, ma li visit
 
 ---
 
-<!-- p.684 (orig. p.684) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>684
+684
 
 RIONE X. CAMPITELLI
 
@@ -17513,11 +16173,8 @@ Alle falde del Campidoglio è visibile il resto di un portico posto davanti a ot
 
 ---
 
-<!-- p.685 (orig. p.685) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 685
 
 Il Foro Romano come appariva nel Settecento in un'incisione di G. Vasi.
@@ -17536,11 +16193,8 @@ L'introduzione a Roma di questo culto di tradizione greca dei due gemelli figli 
 
 ---
 
-<!-- p.686 (orig. p.686) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>686
+686
 RIONE X. CAMPITELLI
 
 È vero che Castori segnarono miracolosamente la vittoria al lago Regillo; ma è anche vero che qualificandosi come cavalieri si situavano divinità protettrici dei cavalieri di Roma; cioè degli aristocratici, i quali, con la vittoria del Regillo si proponevano quale oligarchica della città che poteva vantare dalla sua il favore degli dèi.
@@ -17565,11 +16219,8 @@ Sulla sinistra del tempio sono alcuni gradini grazie ai quali, pas...
 
 ---
 
-<!-- p.687 (orig. p.687) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 687
 
 Sando su una passerella; si accede all'interno della Casa delle Vestali.
@@ -17589,11 +16240,8 @@ All'angolo destro è una porta che immette in una sala absidata, identificata co
 
 ---
 
-<!-- p.688 (orig. p.688) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>688
+688
 RIONE X. CAMPITELLI
 
 Manesse inascoltato quando la sua voce annunziò ai romani l'ormai inevitabile assalto dei Galli alla città.
@@ -17610,11 +16258,8 @@ Sul lato verso la piazza del Foro la basilica si presentava con una facciata por
 
 ---
 
-<!-- p.689 (orig. p.689) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 689
 
 de interno diviso in quattro navate: una centrale, maggiore, e due laterali minori sul lato nord e una sola minore sul lato sud. Questa asimmetria fu dovuta all'esigenza di sfruttare tutto lo spazio possibile perché, dalla parte dove poi sorgerà il tempio della Pace e il Foro Transitorio, non furono collocate serie di tabernae, che invece si aprirono verso l'area centrale del Foro. Le navate erano separate tra loro da file di colonne del più pregiato marmo dell'antichità; quello detto africano, anche se estratto da cave nella città di Theos in Frigia, oggi non più accessibili perché già in età antica andarono irrimediabilmente sommerse.
@@ -17627,11 +16272,8 @@ La storia della repubblica romana può dividersi in due grandi fasi, di cui la p
 
 ---
 
-<!-- p.690 (orig. p.690) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>696)
+696)
 RIONE X. CAMPITELLI
 
 proposte politiche, ma serviva a lui per arringare la folla che diventava un altro dei suoi strumenti di potere politico. I rostri cesariani hanno la forma di una tribuna con gradinata; rivestita di marmo possiamo visitare accanto all'arco di Settimio Severi. Essi furono comunque sostituiti da rostri augustei che furono collocati davanti in blocchi di tufo dell'Aniene che conservano i fori nei quali venivano alloggiati i rostri bronzei tolti alle navi. Simbolicamente la tribuna dell'oratore si trasformava nella tolda di una nave rostrata, metaforicamente uno strumento di penetrazione persuasiva nel cuore della città.
@@ -17644,11 +16286,8 @@ Sulle pareti si aprono diverse nicchie ornate da colonnine su mensole ornate da 
 
 ---
 
-<!-- p.691 (orig. p.691) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 
 69)
 
@@ -17664,11 +16303,8 @@ I due plutei presentano sul retro gli animali che venivano offerti nel sacrifici
 
 ---
 
-<!-- p.692 (orig. p.692) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>692
+692
 
 RIONE X. CAMPITELLI
 
@@ -17686,11 +16322,8 @@ Di tutta questa basilica, lunga metri 101 e larga metri 49, resta il grande podi
 
 ---
 
-<!-- p.693 (orig. p.693) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 693
+TERZO ITINERARIO 693
 
 Si tratta di scacchere (i pezzi si portavano da casa) e del modulo di un filetto. Sono più difficilmente identificabili alcuni graffiti che riproducono le statue visibili della basilica stessa, mentre al centro della facciata le basi conservano le scritte *opus Polycliti* e *opus Tymarchi*, da riferire agli originali di due statue di questi famosissimi scultori che furono qui trasferite.
 
@@ -17704,11 +16337,8 @@ Il tempio era circondato, sui tre lati non principali, da un portico, la *portic
 
 ---
 
-<!-- p.694 (orig. p.694) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>694
+694
 
 RIONE X. CAMPITELLI
 
@@ -17722,11 +16352,8 @@ Restaurati i monumenti colpiti dalle fiamme, nel pavimento dell'area centrale fu
 
 ---
 
-<!-- p.695 (orig. p.695) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 695
 
 effetti degli spettacoli e fece erigere nel Campo Marzio il primo anfiteatro di Roma; oggi perduto, quello di Statilio Tauro. Quindi Augusto eresse sul fianco sinistro del tempio del Divo Giulio; nel 29 a.C. un arco ad un solo fornice, celebrativo della vittoria ad Azio ma dieci anni dopo; nel 19 a.C., questo stesso arco fu sostituito da un altro, più monumentale; a tre fornici in onore della politica di trattative avviata da Augusto con i Parti e che si era conclusa, tra l'altro, con la restituzione a Roma delle insegne catturate dai Parti alle legioni di Crasso nella battaglia di Carre (55 a.C.).
@@ -17741,11 +16368,8 @@ Il suo successore Caligola trasformò il tempio dei Castori in una sorta di gran
 
 ---
 
-<!-- p.696 (orig. p.696) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>696
+696
 
 RIONE X. CAMPITELLI
 
@@ -17754,11 +16378,8 @@ La Domus Aurea causò trasformazioni sulla propaggine della Velia là dove passa
 
 ---
 
-<!-- p.697 (orig. p.697) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 697
 
 L'Arco di Tito in una stampa di fine Ottocento
@@ -17767,11 +16388,8 @@ braccia e le trombe d'argento che furono fatte suonare da Giosuè per far crolla
 
 ---
 
-<!-- p.698 (orig. p.698) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>698
+698
 RIONE X. CAMPITELLI
 
 guono le personificazioni del Senato (in toga) e del popolo romano (un giovane a torso nudo). Ma l'apoteosi dell'imperatore divinizzato; la cui anima sale al cielo tra gli dèi, è visibile in un pannello più piccolo; sempre rilievo, collocato al centro della volta dove lo stesso Tito appare trasportato in cielo da un'aquila.
@@ -17786,11 +16404,8 @@ Terminata la dinastia dei Flavi, salì al trono Nerva (96-98 d.C.) il quale port
 
 ---
 
-<!-- p.699 (orig. p.699) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 699
 
 dedicati a Minerva, ma Nerva lo inaugurò con esso tutto il complesso dei Fori Imperiali; prima della costruzione di quello di Traiano, venne a congiungersi con il Foro Romano all'altezza dell'Argileto, dietro la Curia e la basilica Emilia. Si entra così nel II secolo d.C., che è considerato quello dell'età più felice per l'Impero di Roma: il secolo che vide Traiano, Adriano, Antonino Pio e Marco Aurelio, e ancora Settimio Severo dopo le parentesi, non felici, di Commodo, Elvio Pertinace e Didio Giuliano. Tutta l'attività edilizia di Traiano connessa agli impianti dei Fori si concentrò nella costruzione del suo Foro, della basilica Ulpia, della sua straordinaria colonna dei grandi Mercati e, nel Foro Romano, l'unica sua memoria visibile è costituita dai due plutei conservali all'interno della Curia.
@@ -17809,11 +16424,8 @@ Dopo Adriano, morto a Baia nel suo volontario esilio da Roma accompagnato dal do
 
 ---
 
-<!-- p.700 (orig. p.700) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>700
+700
 
 RIONE X. CAMPITELLI
 
@@ -17831,11 +16443,8 @@ Così questo generale africano, marito di una donna Giulia Domna, abile e ambizi
 
 ---
 
-<!-- p.701 (orig. p.701) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 701
 
 L'Arco di Settimio Severo in un'incisione tardo-ottocentesca
@@ -17850,11 +16459,8 @@ Dopo il ciclo narrativo del rilievo storico delle colonne coclidi di padre
 
 ---
 
-<!-- p.702 (orig. p.702) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>702
+702
 RIONE X. CAMPITELLI
 
 Traiano e di Marco Aurelio è questo un altro esempio dell'evo-
@@ -17918,11 +16524,8 @@ guida
 
 ---
 
-<!-- p.703 (orig. p.703) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 703
 
 Una breve scalinata: splendido doveva essere il grande pavimento ad intarsi di marmi policromi. Massenzio non vide mai la conclusione di tutta quest'opera che fu terminata dal suo vincitore Costantino; infatti, in scavi effettuati nel 1487 vi si rinvennero resti dell'acrolito dello stesso Costantino, cioè la testa e frammenti delle braccia e delle gambe in marmo, che costituivano le estremità scolpite di una statua colossale; per il resto fatta con grandi lastre lavorate di bronzo dorato.
@@ -17939,11 +16542,8 @@ Di fronte al Tempietto di Romolo stanno resti di alcune tabernae in cui avevano 
 
 ---
 
-<!-- p.704 (orig. p.704) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>704
+704
 RIONE X. CAMPITELLI
 
 Così la storia edilizia del Foro; per quanto attiene alla vita politica e sociale della Roma pagana volge al termine. Costantino porta con sé Costantinopoli, nuova capitale e seconda Roma, il Palladio di Enea e gli altri oggetti sacri alla memoria delle origini della città: i suoi successori guardano a Roma come alla madre ideale dell'impero rinnovato.
@@ -17960,11 +16560,8 @@ Accanto al tempio dei Castori era stata rinvenuta, nel XVI secolo, una grande va
 
 ---
 
-<!-- p.705 (orig. p.705) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 705
 
 Possibilità di collegare lo stagno gelido del martirio con la de che abbiamo già trovato presente nella leggenda di papa Silvestro I, con la fontana di Campo Vaccino e con la vicina fonte di Giuturna; e si può dire che in questa zona il cristianesimo esorcizzò un antico culto pagano delle acque sublimandolo in una serie di eventi miracolosi e di martirio.
@@ -17981,11 +16578,8 @@ Per accedere al colle Palatino, dove tra le tante rovine archeologiche ancora so
 
 ---
 
-<!-- p.706 (orig. p.706) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>706
+706
 RIONE X. CAMPITELLI
 
 che si riunirono per un certo periodo. Si comincia a salire per una stretta scaletta, accanto alla scorre un getto d'acqua che esce dalla parete a imitazione d'una sorgente improvvisa: Quindi s'accede a una rampa; che sale al primo dei livelli, ornato da una facciata a tre fornici ad arco e due intermedi a piattabanda, ripetuta nella disposizione dell'ambulacro interno. Da questo si entra in una grande sala voltata con, alle pareti, statue e nicchie oggi vuote e basi con gigli dei Farnese. Sulla parete di fondo un nicchione chiuso da un arco ogivale; e ricco di pseudostalattiti, da cui, fragorosamente l'acqua cade in una vasca trilobata: è detta «Fontana della pioggia».
@@ -17998,11 +16592,8 @@ Il colle Palatino raggiunge 51 metri di altezza sul livello del mare e in antico
 
 ---
 
-<!-- p.707 (orig. p.707) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 707
 
 Palazzi imperiali del Palatino in un'incisione ottocentesca di B. Pinelli.
@@ -18017,11 +16608,8 @@ Non a caso Romolo e Remo vengono trovati da un pastore, Faustolo; e nel fondare 
 
 ---
 
-<!-- p.708 (orig. p.708) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>708
+708
 RIONE X. CAMPITELLI
 
 Contrato: A queste frustate non si sottraevano le donne che chiedevano fecondità e future gravidanze.
@@ -18040,11 +16628,8 @@ Il nostro itinerario cronologico alla visita del Palatino prosegue proprio sulla
 
 ---
 
-<!-- p.709 (orig. p.709) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO                                                                    709
+TERZO ITINERARIO                                                                    709
 
 raccogliere l'acqua nei grandi recipienti, che venivano poi porta-
 ti nelle rustiche abitazioni.
@@ -18103,11 +16688,8 @@ Altre testimonianze dell'età repubblicana sul Palatino sono lega-
 
 ---
 
-<!-- p.710 (orig. p.710) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>710
+710
 RIONE X. CAMPITELLI
 
 te alle case aristocratiche che vi furono costruite prima della tra-
@@ -18138,11 +16720,8 @@ A sud della casa di Livia, scavi anche recenti hanno riportato alla luce una ser
 
 ---
 
-<!-- p.711 (orig. p.711) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 711
 
 Sappiamo infatti che la casa di Augusto era accanto al tempio di Apollo; vicina alle capanne di Romolo e alle scale di Caco. Questa abitazione, in fondo non eccessivamente lussuosa, era dotata di uno studiolo, senza finestre, posto in lato su una terrazza chiamata Siracusa, che permetteva all'imperatore, secondo l'uso antico, di chiudervisi per le proprie meditazioni o per lavorare senza essere disturbato. Resti di questo studio, che sarà imitato in età rinascimentale, sono stati ritrovati recentemente e ricostruiti in una mostra a palazzo Altemps.
@@ -18155,11 +16734,8 @@ Oltre la cosiddetta basilica della Casa dei Flavi, sono stati rinvenuti altri re
 
 ---
 
-<!-- p.712 (orig. p.712) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>712
+712
 RIONE X. CAMPITELLI
 
 sti di un grande peristilio al centro del complesso e una serie
@@ -18222,11 +16798,8 @@ sovrani d'Italia e d'Europa.
 
 ---
 
-<!-- p.713 (orig. p.713) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 713
 
 Scavi e restauri sono stati condotti anche recentemente, ma l'intero complesso, per i diversi piani su cui è disposto e con la sua articolata composizione, non è stato ancora studiato e pubblicato in modo totale ed esauriente.
@@ -18245,11 +16818,8 @@ Riattraversato il peristilio si entra in un'altra grande sala, anch'essa absidat
 
 ---
 
-<!-- p.714 (orig. p.714) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>714
+714
 RIONE X. CAMPITELLI
 
 Ricostruzione assonometrica del settore settentrionale della domus Flavia (da Giullani).
@@ -18264,11 +16834,8 @@ Al piano superiore dovevano essere gli ambienti della residenza...
 
 ---
 
-<!-- p.715 (orig. p.715) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 715
 
 Strettamente privata dell'imperatore; mentre il palazzo ad oriente si affaccia su un vasto edificio costruito in forma di circo minore (metri 160x50), ornato lungo i lati da un portico a due piani, in quello inferiore con pilastri in laterizio rivestito di marmo e, in quello superiore, con colonne marmoree.
@@ -18293,11 +16860,8 @@ Giunse al XII secolo diviso in due grandi parti, separate da precedenti crolli. 
 
 ---
 
-<!-- p.716 (orig. p.716) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>716
+716
 RIONE X. CAMPITELLI
 
 ...rono al restauro della base della colonna Antonina, degli obelischi di piazza del Popolo e vaticano; della base dei Dioscuri a Monte Cavallo e a costruire la cappella del Presepe in S. Maria Maggiore.
@@ -18312,11 +16876,8 @@ Torniamo indietro fino all'angolo orientale del Palatino che in parte è esterno
 
 ---
 
-<!-- p.717 (orig. p.717) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 717
 
 Se il martirio di S. Sebastiano è dove sorse poi la chiesa dedicata al martire; Eliogabalo aveva eretto qui un tempio al Sole nel quale si identificava perché anche i giardini di Adone, divinità solare orientale, favorivano il suddetto culto in questa zona.
@@ -18335,11 +16896,8 @@ Gli Orti Farnesiani nel 1731 passarono per via ereditaria ai Borbone di Napoli e
 
 ---
 
-<!-- p.718 (orig. p.718) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>718
+718
 RIONE X. CAMPITELLI
 
 seguì le ricerche anche quando lo Stato italiano con il 1870 divenne il nuovo proprietario:
@@ -18355,11 +16913,8 @@ L'acquedotto Claudio giunge a Roma a Porta Maggiore; prosegue per via Statilia e
 
 ---
 
-<!-- p.719 (orig. p.719) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 719
 
 I tratti urbani oggi mancanti dell'acquedotto furono demoliti tra il Cinquecento e il Seicento; mentre ai primi dell'Ottocento si cominciò a restaurarlo ricostruendo le cortine laterizie portate via dai «cavatori di tegolozze».
@@ -18377,11 +16932,8 @@ Al di sopra degli archi laterali corrono sezioni del fregio che narra la storia 
 
 ---
 
-<!-- p.720 (orig. p.720) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>720
+720
 
 RIONE X. CAMPITELLI
 
@@ -18397,11 +16949,8 @@ Giriamo ora sul lato settentrionale dell'arco; anche qui, sui plinti delle colon
 
 ---
 
-<!-- p.721 (orig. p.721) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 721
+TERZO ITINERARIO 721
 
 gli imperatori Adriano e Marco Aurelio. Sulla sinistra si distin-
 gono le arcate della basilica Giulia e l'arco di Tiberio; a destra
@@ -18464,11 +17013,8 @@ ovviamente, dalla tirannia di Massenzio. Costantino è il nuovo
 
 ---
 
-<!-- p.722 (orig. p.722) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>722
+722
 RIONE X. CAMPITELLI
 
 Sole di Roma ma, come enigmaticamente allude la scritta sull'attico; il nuovo sole sarà tra poco il Cristo.
@@ -18489,11 +17035,8 @@ Il Colosso, che teneva nelle mani un timone (perché guidava i destini dell'uomo
 
 ---
 
-<!-- p.723 (orig. p.723) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 723
 
 Colo largo intitolato a Guglielmo Gatti, indimenticabile figura di archeologo; cui si deva la localizzazione del Circo Flaminio.
@@ -18508,11 +17051,8 @@ Proseguiamo per via dei Fori Imperiali nei cui giardini stanno le moderne statue
 
 ---
 
-<!-- p.724 (orig. p.724) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>724
+724
 RIONE X. CAMPITELLI
 
 La parte scavata che ha riportato alla luce il portico occidentale della piazza e resti del podio e del tempio. Da questo stesso lato, su un livello maggiore, sta il Clivo Argentario con le sue taverne e da qui si può scendere con un'antica scala a livello della piazza. Appena entrati nel foro, sulla sinistra, al piano superiore posta una grande latrina di età traianea; in forma di aula semicircolare.
@@ -18531,11 +17071,8 @@ Cesare per costruire tutto questo dovette acquistare da privati il terreno e lo 
 
 ---
 
-<!-- p.725 (orig. p.725) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO                                                                    725
+TERZO ITINERARIO                                                                    725
 
 ni di sesterzi ma a portare a termine l'opera fu Augusto; anche se profondi restauri e rifacimenti furono operati da Traiano e Diocleziano. Traiano, anzi, nell'edificare la Basilica Ulpia, abolì, o meglio, ristrutturò il precedente Atrium Libertatis che sorgeva alle spalle del tempio di Venere Genitrice e dove aveva sede l'Archivio dei censori. Qui avveniva la cerimonia della manomissione degli schiavi che così diventavano liberti; Il Foro di Cesare fu riportato alla luce con l'apertura di via dei Fori Imperiali, con scavi eseguiti tra il 1930 e il 1932, demolendo il complesso di edifici compreso tra le vecchie via Marforio (perché qui si trovava la grande statua ora ai Musei capitolini), via Bonella (dal nome del cardinale M. Bonelli) e attraversato da via Cremona (dal nome della famiglia Cavalieri di Cremona) e via delle Marmorelle (per gli avanzi marmorei qui giacenti, detta anche per la sua sporcizia: Ghettarello) dove erano visibili alcune arcate delle tabernae.
 
@@ -18546,11 +17083,8 @@ ni di sesterzi ma a portare a termine l'opera fu Augusto; anche se profondi rest
 
 ---
 
-<!-- p.726 (orig. p.726) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XI. S. Angelo di Mauro Quercioli
+Rione XI. S. Angelo di Mauro Quercioli
 Dalle origini ad oggi
 
 Non certo alla sua estensione il rione S. Angelo va debitore della sua importanza; bensì alla rilevanza storica, ben documentata dai monumenti ch'esso racchiude.
@@ -18585,11 +17119,8 @@ Ed ecco come gli stessi confini risultavano essere al tempo del famoso riassetto
 
 ---
 
-<!-- p.727 (orig. p.727) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 727
 
 Teghe Oscure, passa innanzi la chiesa dei Ss. Salvatore e Stanislao dei Polacchi, e per tutta la strada dell'Olmo. Quindi volta a man sinistra, e per il vicolo de' S. Anna, entra a man destra nella via dei Falegnami. Volta a mano manca; e va per la strada di S. Maria in Publicolis.
@@ -18614,11 +17145,8 @@ Il nome di S. Angelo andò progressivamente affermandosi dopo quello della Pigna
 
 ---
 
-<!-- p.728 (orig. p.728) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>728
+728
 
 RIONE XI S. ANGELO
 
@@ -18636,11 +17164,8 @@ Resta esempio quasi unico di abitazione medievale, suggestivamente ricavata fra 
 
 ---
 
-<!-- p.729 (orig. p.729) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 729
 
 [Immagine: Il ponte Quattro Capi in un'incisione tardo-ottocentesca]
@@ -18671,11 +17196,8 @@ Sulla sinistra, in leggera discesa per via dell'argine del fiume; è la chiesa d
 
 ---
 
-<!-- p.730 (orig. p.730) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>730
+730
 RIONE XI
 S. ANGELO
 
@@ -18695,11 +17217,8 @@ L'interno, quadrangolare con tre cappelle che conferiscono un vago senso di croc
 
 ---
 
-<!-- p.731 (orig. p.731) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 731
 
 Cata. Spostandoci sulla destra, ci troveremo di fronte al complesso Orsini Savelli insediato con una monumentalità tutta particolare, fra i ruderi imponenti dell'antico Teatro di Marcello.
@@ -18722,11 +17241,8 @@ Si entra nell'edificio superando un cancello posto fra due orsi rampanti a mo' d
 
 ---
 
-<!-- p.732 (orig. p.732) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>732
+732
 
 RIONE XI. S. ANGELO
 
@@ -18752,11 +17268,8 @@ La chiesa occupa lo spazio di quello che fu il tempio centrale, nonché una picc
 
 ---
 
-<!-- p.733 (orig. p.733) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 733
 
 La chiesa di S. Nicola in Carcere in un'incisione di G. Vasi.
@@ -18767,11 +17280,8 @@ Come succintamente riportato da una lapide affissa sul lato sinistro della facci
 
 ---
 
-<!-- p.734 (orig. p.734) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>734
+734
 
 RIONE XI. S. ANGELO
 Piazza Montanara
@@ -18788,11 +17298,8 @@ Qui v'era quella piazza Montanara, rammentata da tante cronache, da tanti pittor
 
 ---
 
-<!-- p.735 (orig. p.735) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 735
 
 **Il teatro di Marcello**
@@ -18802,11 +17309,8 @@ Il Teatro di Marcello, scuro, massiccio, con enormi rughe scavate da mille vicis
 
 ---
 
-<!-- p.736 (orig. p.736) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>736
+736
 RIONE XI S. ANGELO
 
 morto undici anni prima:
@@ -18819,22 +17323,16 @@ Per raggiungerlo non è più possibile passare sotto le arcate del Teatro di Mar
 
 ---
 
-<!-- p.737 (orig. p.737) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 737
 
 Fra Valtro, avremo la non indifferente possibilità di osservare quest'intera area archeologica che stiamo descrivendo da una angolatura tanto nuova quanto suggestiva. Infatti, appena superato il succitato ingresso, ci troveremo sopra il basamento del tempio d'Apollo Sosiano, avendo in basso sulla sinistra la strada romana originale che collegava il retro dei due templi, passando fra due file di botteghe dell'epoca s'intende. Lo sfondo sempre superbamente chiuso dalle arcate del teatro di Marcello, che come detto ha subito un discutibile «sbiancamento» più che ripulitura. L'edificio moderno appartiene alla soprintendenza che vi tiene il magazzino archeologico del tempio d'Apollo. Sulla destra una breve scaletta seminascosta dalle piante vi condurrà all'ex albergo-osteria della Catena, così detto per la presenza d'una vera propria catena, che veniva tesa quando si chiudeva il mercato del pesce. L'edificio dell'antico albergo, profondamente restaurato, ospita la direzione dei musei, monumenti e scavi del comune. Saliamo comunque la scaletta d'accesso ed avremo la possibilità di sbirciare una bella sala ben restaurata, con l'antico laterizio del muro affiorante qua e là ed un bel soffitto cassettonato: locandine e poster relativi a varie manifestazioni culturali completano il sobrio arredamento fatto di bei tavoli in stile, anche se siamo in un ufficio pubblico. Usciamo e proseguiamo per lo stretto passaggio sulla destra che è quanto resta, almeno da questo lato, della via del Foro Piscario, interrotta poco oltre. Da qui possiamo completare le nostre cognizioni sul Teatro di Marcello, osservando la parte ricostruita di questo (quattro arcate del piano terra e tre del superiore). A questo punto, conviene tornare sulla piazza di Campitelli, girare a sinistra lungo il confine del nostro rione per la via della Tribuna di Campitelli, e raggiungere la via del Portico d'Ottavia passando per quest'ultimo. Prima di dedicarci a questo importantissimo monumento, percorriamo ancora qualche passo per completare la visita dei monumenti vicini al teatro. Ed ecco la ben restaurata Casa dei Vallati, con largo impiego di antichi frammenti architettonici, attuale sede della Ripartizione dei beni archeologici del Comune. Rifatta in linee trecentesche, ben completa l'insieme che stiamo visitando. Antica famiglia quella dei Vallati che, pur senz' avere posizioni di alto spicco, ben seppe inserirsi nella complessa vita cittadina, rivestendo cariche di giudice, medico o conservatore capitolino. Si conosce un unico canonico di questa famiglia, il che non è certo cosa da poco in uno stato teocratico. Ben s'addice quindi il loro ricordo, rinverdito anche dal toponimo di un tratto del lungotevere da ponte Garibaldi a ponte Sisto. In realtà, più che alla Regola, ove si trova questo lungotevere, Vallati erano di Sant'Angelo, come ben evidenziato dall'epitaffio della chiesa di Sant'Angelo in Pescheria, ove Magr. Laurentius de Vallatis, medico insigne deceduto nel 1407, è ricordato come «de regione S.ti Angelis».
 
 ---
 
-<!-- p.738 (orig. p.738) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>738
+738
 
 RIONE XI S. ANGELO
 
@@ -18865,11 +17363,8 @@ I propilei del Portico d'Ottavia, calamitano l'attenzione grazie...
 
 ---
 
-<!-- p.739 (orig. p.739) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 739
 
 alla bellezza che traspare dalle loro strutture, anche se profondamente incise dalle ingiurie del tempo. L'essere chiuse le abitazioni ed altre costruzioni tarde contribuisce; in un certo senso; dare risalto all'eleganza delle loro linee.
@@ -18911,11 +17406,8 @@ Questa infatti risale almeno all'VII secolo, come deducibile dall'iscrizione rel
 
 ---
 
-<!-- p.740 (orig. p.740) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>740
+740
 
 RIONE XI. S. ANGELO
 
@@ -18929,11 +17421,8 @@ Anche in questa chiesa, unitamente a quella di S. Gregorio della Divina Pietà e
 
 ---
 
-<!-- p.741 (orig. p.741) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 741
 
 Abbiamo notizia di restauri effettuati sotto Pio IV (1559-1566); Paolo V Borghese, nel 1611; Benedetto XIV Lambertini, nel 1741, ed infine sotto Pio X fra il 1867 ed il '70.
@@ -18955,11 +17444,8 @@ In sostanza si dispone che compete ai conservatori la testa fino alle prime pinn
 
 ---
 
-<!-- p.742 (orig. p.742) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>742
+742
 RIONE XI S. ANGELO
 
 La vecchia Pescheria, oggi scomparsa, in un'incisione tardo-ottocentesca.
@@ -18980,11 +17466,8 @@ Erano quattro belle colonne in marmo, alcune ancora con capitello corinzio. Al n
 
 ---
 
-<!-- p.743 (orig. p.743) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 743
+PRIMO ITINERARIO 743
 
 Accanto vi è la scritta: "ANGELI IN FORO PISCIUM N II". Segno della presenza di un antico banco.
 
@@ -19002,11 +17485,8 @@ Questo era tanto importante da dare il nome ad una parte del Campo Marzio; da re
 
 ---
 
-<!-- p.744 (orig. p.744) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>744
+744
 
 RIONE XI. S. ANGELO
 Le Cinque Scole
@@ -19023,11 +17503,8 @@ Di fronte a questi edifici, la via del Portico d'Ottavia presenta, tra i numeri 
 
 ---
 
-<!-- p.745 (orig. p.745) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 745
 
 Al l'incrocio con la via della Reginella, abbiamo la Casa di Lorenzo Manili. Evidentemente la passione per l'antichità, ridestato dallo spirito umanistico fu talmente intensa da coinvolgere se non tutti, molti strati sociali e la riprova di ciò l'abbiamo con questa dimora in cui il proprietario trasfuse, senza mezzi termini, l'ideale a cui si rifaceva. La grande iscrizione che in bei caratteri su due righe, percorre in ampia fascia, tutta la lunghezza dell'edificio al di sopra del piano terra; è quanto mai eloquente e ne riportiamo la traduzione:
@@ -19045,11 +17522,8 @@ Ed è verso quest'ultima che ci dirigiamo; percorriamo un breve tratto del lungo
 
 ---
 
-<!-- p.746 (orig. p.746) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>746
+746
 RIONE XL S.
 ANGELO
 
@@ -19084,11 +17558,8 @@ Secondo canoni meridionalistici o catalani, quest'edificio pre...
 
 ---
 
-<!-- p.747 (orig. p.747) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 747
 
 Senta alla base della torre delle fasce in travertino con un carattere bugnato a punta di diamante: al contrario del resto che è fasciato; sempre alla base, da lastre lisce.
@@ -19105,11 +17576,8 @@ Ma torniamo al nostro palazzo qui a S. Angelo. L'ingresso era all'origine sulla 
 
 ---
 
-<!-- p.748 (orig. p.748) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>748
+748
 RIONE XI. S. ANGELO
 
 Judei o in Albis, che sorgeva sull'area dell'attuale piazza Costa-
@@ -19175,11 +17643,8 @@ vendetta de lo padre, e ferì malannente nel volto Nardo Bucca-
 
 ---
 
-<!-- p.749 (orig. p.749) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 749
 
 Mazza e Hieronimo suo fratello Menico fu con quattro compagni; altri erano otto.
@@ -19200,11 +17665,8 @@ Ed ora lasciamoci coinvolgere dal fascino un tantino morboso della Fontana delle
 
 ---
 
-<!-- p.750 (orig. p.750) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>750
+750
 
 RIONE XI S. ANGELO
 
@@ -19227,11 +17689,8 @@ Landini (1550-1596) di ergere una mostra degna dell'avvenimento. Il Landini eseg
 
 ---
 
-<!-- p.751 (orig. p.751) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 751
 
 Sembra che, almeno nelle intenzioni, al posto delle tartarughe avrebbero dovuto esserci dei piccoli delfini. Comunque, più che con tutte queste simpatiche bestiole, la fontana andrebbe etichettata come «Fontana degli efebi»; questi infatti sono gli autentici protagonisti della movimentata mostra d'acqua. La mossa aggraziata, il modellato del corpo alla Antinoo, non so che di classico e di sensuale che emana dall'insieme avalla le illazioni sulla necessità di rileggere i monumenti costruiti in periodi integralisti e bacchettoni. Quattro efebi di bronzo; con un piede appoggiato su un delfino, per l'estensione della gamba, quasi piegata sul piano dell'elemento centrale, il braccio proteso in alto nell'atto di spingere delle tartarughe verso la vasca più alta; ottengono in uno spazio contenuto slancio, movimento ed armonia esaltanti la perfezione del corpo umano, con un effetto tutto particolare. Nella parte inferiore, grandi conchiglie accolgono l'acqua facendola ricadere nel catino inferiore.
@@ -19274,12 +17733,9 @@ Oltreché essere marchesi e poi duchi di Giove in Umbria, i Mattei, nelle loro s
 
 ---
 
-<!-- p.752 (orig. p.752) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<|channel>thought
-<channel|>752
+752
 RIONE XI S. ANGELO
 
 vacante. Sommando i vari rami, diedero alla Chiesa almeno otto cardinali, e forse anche un papa, Innocenzo II, qualora si accettasse la loro derivazione dai Papareschi. Tutti questi rami, anche se a volte alquanto distanti sentivano il bisogno di non perdersi di vista, vivendo tutti il più possibile accanto. Tale esigenza finì col creare un edificio complesso quanto complesse sono le ramificazioni di questa famiglia. Il risultato fu di creare la cosiddetta «isola Mattei». Oltre al palazzetto esistente sulla piazza omonima, abbiamo quest'altro grande complesso edificio, circoscritto fra la via dei Funari, la via Caetani, via delle Botteghe Oscure e via Paganica. All'angolo fra la via dei Funari e via Caetani v'era la parte riservata ai Mattei di Giove; sul lato delle Botteghe Oscure quella dei Mattei, in seguito passata ai Caetani, e sulla via di Paganica, quella dei Mattei di Paganica. Cerchiamo di ricapitolare gli aspetti salienti di queste varie parti.
@@ -19292,11 +17748,8 @@ Lucio Cornelio Balbo, spagnolo, proconsole d'Africa: trionfò nel 19 a.C. sui Ga
 
 ---
 
-<!-- p.753 (orig. p.753) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 753
 
 *Il cortile del palazzo Mattei di Giove in un'incisione ottocentesca di P. Letarouilly*
@@ -19307,11 +17760,8 @@ Ma le arcate cupe e decrepite, entro cui s'erano annidate nel medioevo le «Bott
 
 ---
 
-<!-- p.754 (orig. p.754) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>754
+754
 RIONE XI S. ANGELO
 
 po Marzio, ubicando il teatro sotto la «isola» Mattei e la via dei Funari, detta così come noto; per la presenza dei fabbricanti di corde, sistemati nell'ambito dell'antica scena, insieme ai cardatori e ai cimatori, attività riconducibile alla stessa categoria. Ora resti del teatro; e ve ne sono non pochi, costituiscono un discorso per gli addetti ai lavori; né è facile accedervi; ma se proprio qualcuno s'incaponisse di farlo; gli suggeriamo di passare dal n. 4 di via Paganica; ammesso che nulla sia capitato nel frattempo:
@@ -19328,11 +17778,8 @@ Forse per far tacere possibili polemiche ed indebite ingerenze, come quella del 
 
 ---
 
-<!-- p.755 (orig. p.755) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 755
 
 La chiesa di S. Caterina dei Funari in un'incisione di G.B. Falda
@@ -19351,11 +17798,8 @@ Una volta fuori dalla chiesa, notiamo sulla facciata della casa d'angolo con la 
 
 ---
 
-<!-- p.756 (orig. p.756) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>756
+756
 
 RIONE XI. S. ANGELO
 
@@ -19377,11 +17821,8 @@ Una breve variante la merita la suggestiva stradetta di S. Angelo in Pescheria, 
 
 ---
 
-<!-- p.757 (orig. p.757) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 757
 
 G. Vasi, la chiesa di S. Maria in Portico in Campitelli.
@@ -19396,11 +17837,8 @@ Relativamente a quest'ultimo: sappiamo che sul luogo dell'attuale anagrafe dovev
 
 ---
 
-<!-- p.758 (orig. p.758) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>758
+758
 
 RIONE XI S. ANGELO
 
@@ -19414,11 +17852,8 @@ Subito a destra della chiesa, v'è il convento dei Chierici regolari della Madre
 
 ---
 
-<!-- p.759 (orig. p.759) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 759
 
 Accanto, all'angolo con la via Montanara, contraddistinto col numero 6, palazzotto recente; decorato con elementi recuperati dalla demolizione dell'edificio del primo Seicento in cui visse l'architetto Flaminio Ponzio (1559-1613), famoso per i lavori eseguiti per conto di papa Paolo V. Quest' edificio si trovava sulla via Alessandrina, distrutta in seguito alle demolizioni effettuate per l'isolamento del Campidoglio dalla fine degli anni Venti.
@@ -19440,11 +17875,8 @@ ALLE FALDE DEL
 
 ---
 
-<!-- p.760 (orig. p.760) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>760
+760
 
 RIONE XI S. ANGELO
 CAMPIDOGLIO / PRESSO LA SCALA DI
@@ -19485,11 +17917,8 @@ Dopo aver ben guardato la facciata, lapidi e vistoso portone d'ingresso, incorni
 
 ---
 
-<!-- p.761 (orig. p.761) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 76
 
 Prendiamo quest'ultimo e notiamo il tono schiettamente popolare della casa che fa da sfondo al vicolo che stiamo percorrendo. Ciò non tanto per l'incuria che caratterizza l'intonaco del muro quanto per i panni stesi, per i sacchetti attaccati ai fermagli delle persiane; contenenti roba in eccesso rispetto alle dimensioni del frigorifero, nonché tutta una serie di secchi di plastica e cestelli che fanno altrettante macchie di colore sulla superficie grigia trasandata della parete.
@@ -19528,11 +17957,8 @@ Tornati nel vicolo dei Falegnami, dirigiamoci verso la sua parte coperta che ci 
 
 ---
 
-<!-- p.762 (orig. p.762) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>762
+762
 RIONE XI S. ANGELO
 
 nito grigio incastonata a rinforzo dell'angolo. Sopra il civico 29,
@@ -19611,11 +18037,8 @@ parti...
 
 ---
 
-<!-- p.763 (orig. p.763) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 763
 
 Cordo di questa chiesa risale al 1174. Allora si chiamava S. Sal-
@@ -19676,11 +18099,8 @@ legge, visto che nel 1365 Gregorio de Margani viene segnalato come
 
 ---
 
-<!-- p.764 (orig. p.764) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>764
+764
 
 RIONE XI S. ANGELO
 
@@ -19690,11 +18110,8 @@ L'abitazione dei Margani si presenta con due ingressi sulla via Margana; e più 
 
 ---
 
-<!-- p.765 (orig. p.765) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 765
 
 Pio Finestrone ad Arco. Questi, che dovevano essere più di uno,
@@ -19718,11 +18135,8 @@ S. A N G E L O
 
 ---
 
-<!-- p.766 (orig. p.766) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XII.
+Rione XII.
 di Alberto Manodori
 Dalle origini ad oggi
 
@@ -19740,11 +18154,8 @@ Il rione, nella sua passeggiata prospiciente il Circo Massimo, oppure a S. Maria
 
 ---
 
-<!-- p.767 (orig. p.767) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 767
 
 L'Aventino visto dal Tevere in una stampa di fine Ottocento.
@@ -19757,11 +18168,8 @@ L'Isola Tiberina vuole somigliare alla nave di pietra nata dal grano mentre il T
 
 ---
 
-<!-- p.768 (orig. p.768) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>768
+768
 RIONE XII. RIPA
 
 turista di Roma, appena sbarcato nella zona del futuro porto tibe-
@@ -19832,11 +18240,8 @@ quali si segnalava il nome delle persone bisognose.
 
 ---
 
-<!-- p.769 (orig. p.769) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 769
 
 S. Gregoretto era detta anche S. Gregorio a Ponte Quattro Capi e così viene ricordata fin dal 1145. La chiesa, che presenta sulla facciata un'iscrizione bilingue, latino ed ebraico; che ripete il famoso passo di Isaia dove il popolo ebraico è accusato di incredulità di fronte all'Incarnazione, divenne famosa perché doveva ricordare agli ebrei; che vivevano nel prospiciente ghetto; il rifiuto da loro pronunciato del Cristo e, sempre in questa chiesa, anche se all'esterno, gli ebrei romani erano costretti ad ascoltare quelle prediche che avrebbero dovuto convertirli.
@@ -19853,11 +18258,8 @@ Il ponte Fabricio, a causa della sua vicinanza al ghetto degli ebrei romani, pre
 
 ---
 
-<!-- p.770 (orig. p.770) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>770
+770
 
 RIONE XII. RIPA
 
@@ -19875,11 +18277,8 @@ Dove oggi noi vediamo elegante la chiesa di S. Bartolomeo stava in età antica i
 
 ---
 
-<!-- p.771 (orig. p.771) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 771
 
 No al tempio furono costruiti i portici destinati a offrire ricovero ai malati, che si sottoponevano alla pratica dell' *incubatio*: essa consisteva nel passare la notte dormendo sotto i portici dopo alcuni giorni di purificazione e di digiuno e quindi, al risveglio, nel raccontare ai sacerdoti i sogni avuti. L'interpretazione di questi sogni permetteva ai sacerdoti di operare una diagnosi del male, spesso di giungere ad una terapia consigliata e talvolta ad una premonizione dell'esito della malattia stessa. Certamente Sigmund Freud avrebbe visitato con molto interesse questo santuario! Sull'isola i romani costruirono altri templi minori: uno dedicato a Faunus, che proteggeva le partorienti; un altro a Veiove che garantiva i giuramenti. Esistevano piccoli sacelli dedicati a Semo Sancus, Iuppiter Iurarius e infine a Bellona insulensis e, ovviamente, al dio Tevere.
@@ -19894,11 +18293,8 @@ Questa chiesa Ottone III la dedicò ad un suo amico martirizzato a Danzica, S. A
 
 ---
 
-<!-- p.772 (orig. p.772) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>772
+772
 
 RIONE XII. RIPA
 
@@ -19918,11 +18314,8 @@ Quest'ultimo nome deriva dal grido di esortazione che i frati dell'Ordine, fonda
 
 ---
 
-<!-- p.773 (orig. p.773) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 773
 
 [Immagine]
@@ -19945,11 +18338,8 @@ Sulla sinistra della facciata si può notare un dipinto ad affresco, che è copi
 
 ---
 
-<!-- p.774 (orig. p.774) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>774
+774
 
 RIONE XII RIPA
 
@@ -19965,11 +18355,8 @@ Al centro della piazza, in età romana, stava un obelisco; a segnare il riferime
 
 ---
 
-<!-- p.775 (orig. p.775) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 775
 
 **La festa del cocomero**
@@ -19986,11 +18373,8 @@ La facciata della chiesa è un bell'esempio degli inizi del barocco romano, anim
 
 ---
 
-<!-- p.776 (orig. p.776) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>776
+776
 
 RIONE XII RIPA
 
@@ -20011,11 +18395,8 @@ Davanti ai gradini del transetto possiamo osservare un puteale che è una delle 
 
 ---
 
-<!-- p.777 (orig. p.777) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 777
 
 na allo scopo di affermare; pur riconoscendo la superiorità morale del papato; il ruolo specifico di signore degli affari terreni che gli veniva direttamente da Dio. Sulla pietra del puteale è possibile leggere l'antica iscrizione: «Lasciate venire alla fonte chi ha sete e trarvi un sorso di salute». Sulla bocca dello stesso puteale stanno i segni della catena che veniva adoperata per far scendere il secchio all'interno del pozzo per prendervi l'acqua. Si vuole addirittura che il puteale si trovi nel punto esatto dove, nel tempio di Esculapio, era la fonte sacra al dio, ricca anch'essa secondo gli antichi, di acqua miracolosa.
@@ -20030,11 +18411,8 @@ L'altare maggiore fu donato alla chiesa da Pio IX per sostituire il precedente d
 
 ---
 
-<!-- p.778 (orig. p.778) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>778
+778
 RIONE XII. RIPA
 
 predicando in Arabia, Armenia, India, Ponto, Licaonia e Frigia;
@@ -20051,11 +18429,8 @@ I mulini ad acqua utilizzavano per muovere la macina una grande ruota, in parte 
 
 ---
 
-<!-- p.779 (orig. p.779) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 779
 
 Te, erano equilibrati da un secondo galleggiante esterno e tenuti ancorati da catene fissate alla riva.
@@ -20078,11 +18453,8 @@ Per uscire dall'isola, dalla parte opposta a quella da cui siamo giunti, è nece
 
 ---
 
-<!-- p.780 (orig. p.780) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>78()
+78()
 RIONE XII. RIPA
 
 **Il ponte Cestio dopo il rifacimento di fine Ottocento.**
@@ -20103,11 +18475,8 @@ Si ritorni adesso indietro; si riattraversi il ponte Fabricio e, superato il For
 
 ---
 
-<!-- p.781 (orig. p.781) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 781
 
 Costruito tra il 1936 e il 1937 su progetto dell'architetto Ignazio Guidi, con decorazioni pittoriche all'interno e sulla facciata principale, che venne chiamata allora via del Mare. E qui fu posta appunto una riproduzione marmorea della Lupa Capitolina.
@@ -20124,11 +18493,8 @@ Papa Leone II le aggiunse il titolo di S. Sebastiano. La chiesa di S. Galla era 
 
 ---
 
-<!-- p.782 (orig. p.782) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>782
+782
 
 RIONE XII. RIPA
 
@@ -20163,11 +18529,8 @@ Alla dea qui venerata, Mater Matuta, venivano sacrificati animali appena nati op
 
 ---
 
-<!-- p.783 (orig. p.783) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 78
 
 minile. Mater Matuta aveva templi anche a Gabi, Satrico e Velletri, dove, come a Roma la fase più antica era costituita da una capanna sulla surra. Il mito racconta che Ino-Leucotea aveva curato il figlio della sorella Semele, Dioniso; suscitando l'ira di Hera. Per sfuggire alle vendette della dea, Ino con il proprio figlio Palemone, evitando la pazzia omicida del marito Atamante, aiutata dalle Naiadi, era giunta nuotando fino alle rive del Tevere. Qui aveva assunto il nome di Mater Matuta, mentre il piccolo Palemone veniva chiamato Portunus, dio del porto.
@@ -20192,11 +18555,8 @@ Carmenta fu una divinità di tipo oracolare ma anche protettrice delle nascite p
 
 ---
 
-<!-- p.784 (orig. p.784) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>784
+784
 
 RIONE XII. RIPA
 
@@ -20222,11 +18582,8 @@ Ai primi del Cinquecento la chiesa si trovava in stato di abbandono.
 
 ---
 
-<!-- p.785 (orig. p.785) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 785
 
 dono e di avanzato degrado; da cui ne uscì quando nel 1575 fu assegnata all'università dei sarti, giubbonari e calzettari che la dedicava al proprio patrono: S. Omobono e a S. Antonio.
@@ -20251,11 +18608,8 @@ Nella seconda arcata di sinistra è l'altare dedicato a S. Omobono con tela di G
 
 ---
 
-<!-- p.786 (orig. p.786) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>786
+786
 RIONE XIL RIPA
 
 con un'iconografia che ricorda quella di S. Martino; che sacrifica la metà della sua cappa. Usciti dalla chiesa andiamo per via di S. Giovanni Decollato e prendiamo le scale che conducono via Bucimazza dal nome di un'antica famiglia romana che nel medioevo aveva la sua dimora.
@@ -20280,11 +18634,8 @@ I papi Pio VII e Gregorio XVI diedero inizio alle prime ricerche sulle origini d
 
 ---
 
-<!-- p.787 (orig. p.787) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 787
 
 La chiesa di S. Giorgio in Velabro in una stampa di fine Ottocento.
@@ -20297,11 +18648,8 @@ Il portico; compreso tra due pilastri in laterizio; ornati superiormente da freg
 
 ---
 
-<!-- p.788 (orig. p.788) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>788
+788
 RIONE XII. RIPA
 
 stanno ai lati del Cristo. Sotto l'architrave corre un'iscrizione
@@ -20367,11 +18715,8 @@ l'arco detto degli Argentari che si trova sulla sinistra della fac-
 
 ---
 
-<!-- p.789 (orig. p.789) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 789
 
 L'arco degli Argentari in un'incisione tardo-ottocentesca.
@@ -20386,11 +18731,8 @@ Sul pilastro opposto sta Settimio Severo sacrificante insieme a Giulia Domna. In
 
 ---
 
-<!-- p.790 (orig. p.790) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>790
+790
 
 **RIONE XII RIPA**
 
@@ -20415,11 +18757,190 @@ L'arco venne nel medioevo trasformato in uno dei capisaldi delle fortezze dei Fr
 
 ---
 
-<!-- p.799 (orig. p.799) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+PRIMO ITINERARIO
+791
+
+molte perché, all'epoca, il medioevo, se non monumentale, non era considerato degno di tutela;
+Purtroppo nell'occasione andarono perdute anche le testimonianze in laterizio dell'antico attico; già rivestito di marmi, perché creduto medievale e che invece, in origine, aveva sostenuto il gruppo statuario di Costantino.
+
+Accanto all'arco, dove è un moderno villino, si può accedere (con relativa autorizzazione) alla Cloaca Massima, la più antica opera fognaria di Roma. Essa aveva inizio presso la chiesa dei Ss. Quirico e Giulitta, attraversava l'Argiletum, proseguiva nello spazio accanto al Quirinale, sorsero il foro di Augusto e quello di Nerva, passava sotto il Foro Romano (all'altezza della Basilica Emilia), scendeva nel Foro Boario nei pressi della chiesa di S. Giovanni Decollato; correva nei pressi del tempio rotondo di Ercole Vincitore e sboccava, come ancora si vede, presso il ponte Emilio; detto ponte Rotto.
+
+La Cloaca Massima fu costruita con copertura a volta in blocchi di tufo, secondo la tradizione, da Tarquinio Prisco; e gli archeologi la datano al VI secolo a.C.
+
+Possiamo ora raggiungere, prendendo sulla destra, la vicina chiesa di S. Eligio dei Ferrari, sorta dove stava quella più piccola di S. Martino in Monterone, congiunta successivamente all'ospedale di S. Giacomo di Altopascio e a quella di S. Giacomo. Più tardi, la chiesa prendeva il nome di S. Martino in Cortina Parva. Nel 1453, papa Nicolò V la affidava all'università dei Ferrari: arrotini, chiavari, calderai, fabbri e armaioli. Questa università la dedicò al suo Santo protettore, S. Eligio di Noyon, vissuto nel V secolo: S. Eligio fu artigiano orefice e proprio all'università degli orefici furono in antico legati i Ferrari. Così S. Eligio fu eletto a protettore dei primi dei secondi e anche dei sellai. La nostra chiesa fu costruita *ab novo* su quella demolita di S. Giacomo; mentre l'altra vicina, di S. Martino, venne trasformata in granaio; ma la dedica ricorda tutti e tre i Santi: Giacomo, Martino ed Eligio. Nel XVI secolo furono aggiunti un ospedale e un oratorio e, nel XVII, la chiesa subì restauri e ristrutturazioni. Nel XX secolo, all'università dei Ferrari furono associati i gasisti, gli elettricisti, meccanici e ferrovieri. La chiesa ha una facciata in laterizio scandita da coppie di lesene su basi di travertino e, al di sopra del portale, è inserito il busto di S. Eligio.
+
+L'ampio finestrone in origine era circolare e tutto è chiuso da un elegante timpano.
+L'interno è a navata unica ornata di stucchi e marmi. Nel soffitto secentesco, a cassettoni, è lo stemma dell'università dei Ferrari, mentre la cantoria risale al 1690. Il primo altare di destra è quello dei marescalchi, prestacavalli e veterinari. Vi stanno intorno pitture con scene della «Vita di S. Antonio e Gesù» (XVI secolo) mentre la tela sull'altare rappresenta la «Sacra Famiglia con il piccolo S. Giovanni». Vi è inoltre una statua lignea secentesca di «S. Antonio». Pitture secentesche decorano la parete intorno al terzo altare con scene della «Vita di S. Francesco», mentre sull'altare stesso è una tela raffigurante la «Morte di S. Francesco».
+
+---
+
+
+792
+
+RIONE XII. RIPA
+**Arco degli Argentari**
+
+Si racconta che l'imperatore Caracalla, passando sotto il cosiddetto arco e vedendo l'immagine di Geta, da lui fatto uccidere; ma non ancora colpito dalla *damnatio memoriae*, scoppiasse in un irrefrenabile pianto suscitato dal profondo rimorso.
+
+È certo che la porta degli Argentari, più nota come arco, divenne nel passato protagonista di altri aneddoti, forse frutto di episodi realmente accaduti. Flaminio Vacca, infatti, ricorda che durante il pontificato di Pio IV de' Medici (1559-1565), un tedesco venne a Roma munito di un antico libro nel quale si raccontava che un tesoro fosse nascosto in un monumento romano sotto ad un bassorilievo raffigurante una serpe e un giovane con cornucopia indicante la terra con l'indice della mano destra.
+
+Il tedesco individuò il monumento nell'arco degli Argentari e ottenne dal papa la licenza per condurre la ricerca. Staccò il bassorilievo dal monumento, fece un'apertura in esso ed entratovi dentro si calò in un pozzo tanto profondo che non ne uscì più.
+
+Nel medioevo, in verità, si credeva all'esistenza di numerosi tesori nascosti nei ruderi antichi e questo fatto è giustificato dall'abitudine degli uomini del passato di nascondere i propri risparmi murandoli in una parete o nel pavimento di casa. Lo sanno bene gli archeologi che spesso li rinvengono e li chiamano per convenzione *tesoretti*.
+
+Anche l'arco degli Argentari era quindi luogo di un tesoro supposto e tra gli animali raffigurati sull'arco (quelli destinati all'antico sacrificio) ci sono dei bovini; un detto popolare romano così recitava:
+*Tra la vacca e il toro troverai gran tesoro*.
+
+In realtà sull'arco sono visibili numerosi fori che vengono creduti tracce dei tentativi di scavo dei cercatori del tesoro nascosto, mentre non sono altro che la testimonianza dei danni procurati al monumento da coloro che nel medioevo ne estrassero le grappe metalliche.
+
+Ritornando al rilievo tolto dal ricercatore tedesco; tale mancanza fu notata nel piedritto destro dell'arco da Rodolfo Lanciani quando nel 1871 provvide a liberare l'arco da sovrastruttura per riportarlo all'autonomia architettonica più vicina all'originale.
+
+(XVI secolo) Le finestre dell'abside presentano, nei vetri, lo stemma dell'università, mentre sull'altare maggiore (1640) è una tela con «la Madonna e il piccolo Gesù incoronata da angeli e i Ss. Martino, Giacomo ed Eligio», opera di Girolamo Siciolante (1520-1580). Sulla sinistra, il terzo altare: è degli Spadari, rifatto su disegno del Valadier. Sulla parete vediamo «Storie della Croce» e sull'altare una tela con «Gesù Crocefisso tra la Madonna e S. Giovanni», replica di quella dipinta da S. Pulzone, che è conservata nella chiesa di S. Maria in Vallicella; segue l'altare dei Calderari con «Storie di S. Orsola» dipinte nel sottarco; mentre il «Martirio e la gloria della Santa» sono raffigurati sulla della altare, opera di A. Mattei (1764). Il primo altare dedicato a S. Ambrogio è quello dei Chiavari e nella sua (XVI secolo) si vede il «Santo curato da angeli».
+
+In sacrestia si conservano i frammenti della scatola che una volta contenne la «Veronica», ornata da smalti di Limoges con al centro la stessa Veronica; nell'oratorio si conserva poi lo stendardo dell'università del 1725 e una tela di Pompeo Batoni (1708-1787), raffigurante...
+
+---
+
+
+PRIMO ITINERARIO
+793
+
+figurante la «Madonna e il piccolo Gesù»; che appaiono a S. Eligio e a S. Amperio.
+Nella sala dei reliquiari è, di bella fattura; quello argenteo contenente la reliquia del braccio di S. Eligio; dono della cattedrale di Noyon.
+Usciti dalla chiesa, al vicino numero civico 9, si vede l'iscrizione dell'università dei Ferrari, accompagnata dal relativo stemma.
+Poco oltre è la chiesa di S. Giovanni Decollato; che fu costruita verso la fine del secolo XV insieme al chiostro, al convento e al oratorio dall'arciconfraternita della Misericordia di S. Giovanni Decollato.
+Questa arciconfraternita (di cui fece parte anche Michelangelo), fondata a Firenze, ricevette da papa Innocenzo VIII, nel 1490, l'autorizzazione a svolgere anche a Roma la propria opera di carità che, come si intende bene dal suo nome, consisteva nell'assistenza religiosa dei condannati a morte per decapitazione e nella cura della sepoltura dei cadaveri.
+I confratelli ritiravano le teste mozzate in canestri, i quali erano dati alle fiamme il 24 giugno di ogni anno, in occasione della festa di S. Giovanni Battista, morto appunto per taglio della testa.
+Ogni 29 agosto l'Arciconfraternita, per un privilegio ottenuto da papa Paolo III, poteva liberare un condannato a morte dato che, in quella data, si festeggiava il ritrovamento avvenuto nella lontana Siria della testa del Battista.
+Il condannato, graziato, tra ali di popolo in festa, diventava il protagonista di una processione di ringraziamento e, dal tipo di delitto che aveva commesso, dall'età che aveva e da altri fatti caratterizzanti la giornata, i romani ricavavano numeri da giocare al lotto.
+La chiesa ebbe restauri durante il secolo XVIII ed una seconda consacrazione ad opera di papa Benedetto XIII. La Confraternita, ancora esistente, assiste oggi le famiglie dei detenuti mentre la chiesa è officiata dai terziari francescani.
+La facciata in laterizio è percorsa da quattro paraste doriche sostenenti l'alto timpano tra le quali sta il portale cinquecentesco con sovrastante finestrone semicircolare e due semplici nicchie. La chiesa si trova ad un livello superiore a quello della strada attuale e la si raggiunge a due scale. Anche gli edifici annessi conservano l'architettura originaria.
+L'interno è ad unica navata, divisa idealmente da lesene doriche, ornate da grottesche e nicchie. Il presbiterio ne è separato da un arcone e il soffitto a cassettoni è ornato dalla «Croce» e dal giglio di Firenze mentre, al centro, è raffigurata la «Testa di S. Giovanni Battista». Sul primo altare di destra è posta una «Natività», opera di J. Zucchi (1585), mentre la parete è ornata dalle figure degli apostoli Filippo e Tommaso.
+Al secondo altare è una tela del Pomarancio raffigurante l'«Incredulità dell'apostolo Tommaso»; mentre sulla parete stanno le figure degli apostoli «Bartolomeo e Taddeo».
+Sul terzo altare è posta una tela di Giorgio Vasari (1580) con l'episodio dell'«Incredulità dell'apostolo Tommaso»; mentre sulla parete stanno le figure degli apostoli «Bartolomeo e Taddeo».
+Sul terzo altare è posta una tela del Pomarancio raffigurante la...
+
+---
+
+
+794
+
+RIONE XII. RIPA
+
+<Visitazione>, mentre le pareti sono affrescate dalle figure degli apostoli <Simone e Mattia>. L'arcone è ornato invece dalle figure dei <Dottori della Chiesa>; i Ss. Girolamo, Agostino e Tommaso d'Aquino, dipinte dal fiorentino G. Balducci. L'altare maggiore, consacrato da Benedetto XIII, è opera settecentesca in marmi policromi, mentre il ciborio in stile neorinascimentale fu disegnato da Antonio Munoz ed è quindi opera moderna. Sulla parete di fondo, a destra, è una tela michelangiolesca con la <Decollazione del Battista>; a sinistra la <Resurrezione di Lazzaro>, dipinta sempre dal Balducci e al centro un'altra <Decollazione del Battista>, di Giorgio Vasari (1553).
+
+Sulla parete di separazione del presbiterio stanno le figure dei <Ss. Bernardo, Atanasio e Gregorio>.
+
+Sul terzo altare di sinistra è un moderno <Crocifisso> ligneo avente ai lati la <Madonna e S. Giovanni>, mentre la corrispondente parete è ornata dalle figure degli apostoli <Giacomo Maggiore e Matteo>. Il primo altare conserva un affresco frammentario con la figura della <Madonna detta del Latte>. Questa stava una volta nella vicina chiesa di S. Maria della Fossa o de Fovea, demolita dall'arciconfraternita della Misericordia per completare propri edifici. Questa chiesa era anche detta S. Maria in Petrocia oppure in Petrochio e più tardi S. Biagio della Fossa.
+
+Questo primo altare è poi ornato, nella parete, da un affresco di J. Zucchi con l'<Assunta> e gli apostoli Giovanni e Giacomo minore, mentre la lunetta della prima campata fu affrescata dal Balducci con la figura di <Giovanni Battista Predicante>.
+
+La decorazione di questa chiesa costituisce una chiara visualizzazione del messaggio cristiano della misericordia celeste. Le figure degli apostoli alludono all'ecumenismo della Chiesa di Roma e sottolineano il fatto che questi furono tutti martiri. La predicazione del Battista richiama la salvezza annunciata dal Cristo; mentre la decollazione del Battista doveva agire sulla ultima conversione del condannato alla morte. Infine la resurrezione di Lazzaro e l'Assunta volevano significare il premio celeste e la resurrezione stessa che il giustiziato, affidato all'Arciconfraternita, avrebbe ottenuto con la morte, avendo riscattato la propria anima negli ultimi momenti della vita.
+
+L'oratorio, restaurato nel 1950 e dove si riunisce attualmente l'Arciconfraternita, presenta sulla porta d'ingresso una statua di <S. Giovanni Battista>, opera toscana del Cinquecento. All'interno, sull'altare è una tela di Del Conte raffigurante la <Deposizione> e ai lati <S. Bartolomeo e S. Andrea>, dipinti da F. Salviati.
+
+Sono poi visibili tele raffiguranti <La danza di Salomè> (Pirro Ligorio 1550), <La cattura del Battista> (B. Franco 1540), <Il primo...
+
+---
+
+
+PRIMO ITINERARIO 795
+
+«Battesimo del Cristo» (J. Del Conte 1541), «La predica del Battista» (J. Del Conte 1535), «La nascita del Battista annunciata a S. Gioachino» (J. Del Conte 1550), «La nascita del Battista» e «La Visitazione» (F. Salviati 1551). In quest'ultima tela, nel personaggio con la barba è stato identificato il ritratto di Michelangelo.
+
+In sacrestia è conservata, infine, una tela di Giovanni Lanfranco con la raffigurazione della «Salita di Gesù al Calvario». Uscendo ci si porti al numero civico 22 e si entri quindi al chiostro; costruito tra il 1535-1555 e ristrutturato sotto papa Clemente VII. Oggi sono visibili tre lati porticati sotto cui sono conservate lapidi sepolcrali, chiusini di accesso alle tombe dei giustiziati e ancora due leoni stilofori trecenteschi e due altari lignei del Cinquecento con statue di «S. Sebastiano».
+
+È da ricordare che le prime mostre d'arte, aperte al pubblico, che si tennero in Roma, ebbero luogo in questo chiostro; promosse dall'Arciconfraternita e fu in una di queste esposizioni che si conobbe a Roma il talento artistico di Salvator Rosa.
+
+Dal portico si può accedere alla famosa camera storica che costituisce un vero e proprio museo; anche se piccolo, della giustizia pontificia. Qui sono conservati il cesto in cui fu raccolta la testa della giovane Beatrice Cenci, il cappuccio di Giordano Bruno, le tavolette di legno con immagini sacre che i confratelli davano da baciare ai condannati prima dell'esecuzione; il saio rosso che veniva fatto indossare agli stessi condannati, le lanterne che davano luce all'ultima notte di questi, la carta, le penne e i calamai per quelli che volevano fare testamento.
+
+Nella stanza è un altare con tela cinquecentesca raffigurante «Gesù Crocefisso, la Madonna, S. Giovanni e la Maddalena» e è anche conservato un «Cristo» di bronzo, sempre del Cinquecento; che veniva portato in processione nelle feste dell'Arciconfraternita.
+
+Da ricordare che uno dei luoghi deputati alle esecuzioni capitali era molto vicino alla chiesa di S. Giovanni Decollato; precisamente nella vicina piazza dei Cerchi, dove s'apparecchio spesso (fino al 1870) la ghigliottina e dove un'antica leggenda romana vuole che ancora aleggi, nelle notti di temporale, lo spettro di Mastro Titta.
+
+Si ritorni su via dei Cerchi nella cui primo tratto si trovano tanti monumenti romani oggi perduti oppure identificati dagli archeologi in scavi sotto il livello stradale e attualmente ricoperti. Si tratta dell'Ara massima di Ercole; del tempio di Hercules Invictus, dell'Aedes Aemiliana Herculis, dell'Aedes Florae, dell'Aedes Cereris, della porta Trigemina, del vicus Consinius (dal nome del dio Consus) e della via Pubblica. In questa zona dal medioevo fino al secolo scorso famiglie romane, confraternite e ordini religiosi possedettero vigne; fienili (si veda la via omonima), granai e grottoni in cui conservare il vino: qui, fino ai primi del secolo, corse scoperta l'acqua mariana (l'antico euripus) che, dopo avere attraversato il Circo Massimo, sfociava nel Tevere.
+
+Un gruppo di edifici sorge adesso sul luogo di tanta storia, a ri-
+
+---
+
+
+796
+
+RIONE XII: RIPA
+
+Dosso della chiesa di S. Maria in Cosmedin: gli uffici dell'anno-na, anagrafe elettorale collocata nel già Museo di Roma e ma ancora nel pastificio Pantanella e il deposito dei costumi del teatro dell'Opera. Qui è stato rinvenuto un mitreo ricavato nel II secolo in alcuni ambienti di un edificio antico (cinque stanze due scale). Il mitreo era dedicato al culto del dio Mitra, divinità di origine persiana; simbolo della luce e della purificazione del peccato; via iniziatica alla perfezione morale e alla resurrezione dai morti, il cui giorno natale cadeva nel solstizio d'inverno, lo stesso che fu scelto dai cristiani per fissare l'anniversario della nascita del Cristo. È possibile la visita alla stanza degli arredi del culto e all'atrio, dove erano conservate le statue dei geni della luce (Cautes) e delle tenebre (Cautopates), e inoltre alla sala templare. Qui si riunivano gli adepti (le donne non erano ammesse al culto) e prendevano posto sui banchi laterali distribuiti secondo i sette di loro il della loro gerarchia. Sopra il soffitto era ornato di stelle e la stanza addobbata a pseudo-grotta. I confratelli pregavano, discutevano e consumavano insieme l'agape fraterna. La cerimonia dell'iniziazione vedeva l'iniziando steso sul pavimento, vestito di una candida veste, pronto a ricevere il bagno di sangue di un gallo sacrificato. Avrebbe poi indossato con orgoglio la stessa veste macchiata nei giorni di festa. Nella sala si conservano le basi di alcune statue e, in una nicchia, è ancora il rilievo originario raffigurante «Mitra» che, dato da un corvo, al cospetto dei suoi geni, del sole e della luna sacrifica il toro che a sua volta è attaccato da uno scorpione, il quale gli attanaglia i testicoli mentre un cane (l'amore) e un serpente (l'immortalità) bevono il sangue di vita, che sgorga dalla ferita mortale. Sul rilievo sta infine un'iscrizione con il nome dell'iniziato offerente: Clodio Hermes.
+
+Secondo itinerario
+* Circo Massimo
+* piazzale Ugo La Malfa
+* via della Valle Murcia
+* piazza del Tempio di Diana
+* via Marcella
+* piazza Albina
+* piazza Albania
+* via Icilio
+* piazza dei Servilii
+* piazza S. Anselmo
+* piazza dei Cavalieri di Malta
+* via S. Sabina
+* piazza S. Alessio
+* piazza di S. Pietro & Illiria
+* clivo di Rocca Savella
+* via della Greca.
+
+Iniziamo il secondo itinerario che ci porterà sul colle Aventino, passando per quel grande spazio erboso dalle pareti dolcemente declinanti tra il Palatino e l'Aventino che è il Circo Massimo. Qui, anche se sembra impossibile, stavano una volta le gradinate e i posti per almeno 150.000 spettatori. Qui sorgevano templi ed edicole sacre. Qui svettarono un tempo gli obelischi ora a piazza del Popolo e a piazza di S. Giovanni in Laterano. Qui sfilarono gli eserciti vincitori trascinando prigionieri in catene, corsero le bighe, le trighe e le quadrighe. Questo fu il centro della passione di Roma, il luogo del ratto delle Sabine; il monumento che lasciò ammirato Teodosio, imperatore costantinopolitano in visita a Roma. Scavi condotti negli anni Trenta e quelli degli anni Ottanta han...
+
+---
+
+
+SECONDO ITINERARIO
+797
+
+Sono portate in luce testimonianze archeologiche dei primi due ordini (media e ima cavea) del lato curvo orientale (dal lato del palazzo sede della FAO). Si tratta di una serie di muri radiali che sostenevano le gradinate. Gli ambienti coperti da volta appaiono uno transitabile e l'altro cieco, e uno ancora servito da una scala che raggiungeva i piani superiori. Sono anche apparse le fondazioni dell'arco trionfale eretto da Vespasiano e Tito per la loro vittoria in Giudea.
+
+L'arco costituiva, su questo lato del circo, un ingresso monumentale. A terra sono visibili frammenti marmorei, architettonici e di colonne; già parte della decorazione del Circo. Resta in piedi, invece, piccola ed elegante la torre dei Frangipane, in cui abitò la prima seguace romana di S. Francesco d'Assisi, Iacopa dei Settesoli.
+
+La torre fu eretta nei pressi del corso dell'acqua mariana di cui sono apparsi, tra l'altro, resti archeologici dell'antica canalizzazione. Proprio sfruttando il corso dell'acqua suddetta, la torre, smessa la funzione di fortilizio medievale in gran parte demolito, fu ridotta a mulino e prese quindi il nome di "torre della molettas".
+
+Erano stati i monaci camaldolesi del convento di S. Gregorio al Celio ad affittare a Cencio Frangipane; nel 1145, la piccola torre detta allora, *turris in capite circi* o *turris de arco*. Quando vi venne ad abitare Iacopa dei Normanni, la torre le prestò il suo più recente soprannome dei "settesoli", derivante dal fatto che si trovava di fronte ai resti dell'antico Settizonio. È in questa torre che Francesco d'Assisi fu ospitato da Iacopa, che lui chiamava frate Iacopa, durante il suo ultimo viaggio a Roma.
+
+Al tempo di Romolo, come s'è detto, era la selvaggia valle Murcia e qui la leggenda pone quella festa data dai primi romani con la segreta intenzione di rapire le donne dei Sabini; da loro invitati, mentre eseguivano giochi e volteggi a cavallo in onore del dio Consus. A Roma infatti c'era un'insostenibile penuria di donne, ascoltiamo il racconto in versi che ne ha fatto il grande poeta romano Cesare Pascarella: «Intanto le circostanze umane so' queste: qui ce mancheno le donne — Ch'è successo? Che stiamo lì a guardalli tutti quanti pacifichi e tranquilli; faceveno li giochi de cavalli, tutti a sbattè le mano p' applaudilli; quanno Madonna mia! Brulti vassalli, che ve potemo dì? Brutti mandrilli, co' mano! Si! che voi fermalli! Veste per aria, botte, pianti, strilli.»
+
+I giochi in onore del dio Consus, quelli durante i quali sarebbe avvenuto il ratto delle Sabine, facevano parte delle grandi feste collegate ai cicli agricoli delle antiche popolazioni agresti del Lazio. Il cavallo del carro vincitore, più esattamente quello esterno destro, veniva sacrificato al dio Consus e la coda insanguinata portata di corsa alla regia, nel Foro Romano. Era questo il rito dell' *equus october* che celebrava la conservazione delle messi, sotto la protezione di Consus, dal latino *condere*, il cui altare veniva tenuto sotterrato così come le granaglie erano racchiuse in contenitori, anch'essi interrati.
+
+L'altare veniva riportato alla luce solo in occasione delle feste del dio. Ma nel Circo Massimo altre feste si svolgevano e si svolsero per tutta la durata del...
+
+---
+
+
+798
+RIONE XII. RIPA
+
+1
+I giuochl circensi al Circo Massimo
+
+La giornata circense era aperta da una maestosa sfilata detta *pompa circensis*; in essa marciavano ordinatamente portatori delle immagini degli dei destinate al *pulvinar* per la cerimonia detta del *lectisternium*.
+
+Quindi, in pompa magna e in grande uniforme, sfilavano le fazioni (squadre) che avrebbero gareggiato fra loro. Esse erano quattro: la verde (*prasina*), la rossa (*russata*), l'azzurra (*veneta*) e la bianca (*albatta*).
+
+Questa pompa, che ricordava da vicino quella trionfale militare e che le era certamente collegata sotto il profilo culturale-religioso, aveva inizio dal Campidoglio; percorreva in senso inverso la via Sacra e un tratto della via *Triumphalis*, giungeva quindi alla porta omonima, cioè al circo. La parata circense compiva cioè il percorso esattamente contrario quello trionfale. In questa magniloquente scenografia aveva una gran parte la folla degli spettatori, che applaudiva il passaggio degli aurighi più famosi.
+
+Compiuti sacrifici agli dei, un magistrato o, nel caso specifico, l'imperatore, dava il segnale di partenza della prima corsa gettando il panno bianco (*mappa*).
+
+Nel compiere i sette giri i carri — cui erano aggiunti di solito quattro cavalli (talvolta da uno solo ad un massimo di dieci o dodici) — dovevano fare particolare attenzione alle curve, che andavano prese con coraggio e precisione perché tanto strette da far rischiare ai carri stessi, data la velocità della corsa, lo sbando e il capovolgimento. Per ovviare a questo, il cavallo esterno destro non era mai collegato alla coppia centrale del carro (per i carri a più di due cavalli), ma direttamente al timone del carro e all'auriga, cosicché, tendendosi più libero, avrebbe frenato d'istinto all'imbocco della curva e stretto la medesima, costringendo gli altri cavalli a rallentare quanto necessario a non allargarsi. L'auriga, per proteggersi, indossava un casco e un busto di cinghie di cuoio cui, per maggior protezione, appendeva numerosi amuleti. Per essere più libero nel controllo del carro passava le briglie intorno alla vita tenendole tutte nella mano sinistra. In caso di caduta o capovolgimento del carro, detto naufragio, l'auriga doveva avere la prontezza di estrarre un coltellino ricurvo che portava infilato nel busto e con il quale doveva riuscire a tagliare le briglie se non voleva essere trascinato dai cavalli in corsa.
+
+Accanto lui correvano giovani cavalieri con il compito di eccitare alla corsa i cavalli dei carri, mentre servitori a piedi spargevano acqua sulla pista per impedire alla rena — la sabbia che ricopriva il terreno — di sollevarsi in polverone.
+
+Proprio dall'uso di disporre rena sulla pista questa prese il nome ancora oggi attuale di arena: la pista del Circo Massimo misurava 621 metri di lunghezza per 8 di larghezza. Molti aurighi morivano in incidenti di gara ancora in giovane età, ma molti altri come Calpurniano, detto Goccia o Diocle, accumularono fama e ricchezze da veri militari, vincendo migliaia di corse dando anche vantaggio agli avversari. I nomi dei loro cavalli sono ancora ricordati negli scritti antichi della cultura pagana di Roma, per esempio i *ludi apollinari* o i *ludi magni circensi*.
+
+Il Circo Massimo fu edificato per la prima volta, secondo la tradizione, dai re etruschi, partecipando alla monumentalizzazione di quella che è stata chiamata la grande Roma dei Tarquini. Probabilmente il Circo Massimo fu costruito in legno. Suc...
+
+---
+
+
+SECONDO ITINERARIO
 796)
 
 23
@@ -20440,11 +18961,8 @@ Sul lato rettilineo trasverso aprivano, infatti, le gabbie di partenza dei carri
 
 ---
 
-<!-- p.800 (orig. p.800) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>RIONE XII: RIPA
+RIONE XII: RIPA
 
 Racconta infatti una leggenda che quest'uso, in realtà molto più antico, nacque quando un giorno l'imperatore Claudio tardava a dare inizio delle corse perché ancora sdraiato al triclinio e in banchettare insieme ai suoi ospiti. Il popolo intanto rumoreggiava; protestava; cominciava a tumultuare. Allora Claudio, seccato ma non volendo abbandonare il gustoso pranzo, si alzò da tavola, si affacciò alla loggia imperiale che dava sul circo e gettò verso la pista la propria salvietta dando inizio ai giochi.
 
@@ -20460,11 +18978,8 @@ Abbandonato nei secoli successivi, divenuto come gli altri ogni popolo quella...
 
 ---
 
-<!-- p.801 (orig. p.801) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 801
 
 L'Aventino visto dal Campidoglio in un'incisione ottocentesca di B. Pinelli.
@@ -20481,11 +18996,8 @@ Il grande piazzale era stato intitolato al momento della sua inaugurazione propr
 
 ---
 
-<!-- p.802 (orig. p.802) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>802
+802
 RIONE XIL. RIPA
 
 Ugo La Malfa; indubbiamente uno dei padri della Repubblica italiana, si è voluto dedicare a questi il piazzale stesso che non è più piazzale Romolo e Remo bensì piazzale Ugo La Malfa (con evidente perdita del più antico riferimento mitologico).
@@ -20506,11 +19018,8 @@ Sul retro del monumento sono collocati dei medaglioni con i ritratti di alcuni p
 
 ---
 
-<!-- p.803 (orig. p.803) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 803
 
 italiana dal 1904 al 1917 e un riferimento all'iconografia masso-
@@ -20576,11 +19085,8 @@ cole comunità.
 
 ---
 
-<!-- p.804 (orig. p.804) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>8644
+8644
 RIONE XII RIPA
 
 Le comunità fraterne Papa Silverio; nel 537, vi si rifugiò inseguito dai bizantini di Belisario il quale, per conto di Giustiniano, tentava di riportare Roma nell'orbita di Costantinopoli e per fare questo accusava il pontefice di avere chiesto l'aiuto dei Goti di Vitige.
@@ -20614,11 +19120,8 @@ RIONE XII RIPA
 
 ---
 
-<!-- p.805 (orig. p.805) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 805
 
 La chiesa di S. Prisca. In un'incisione di G. Vasi
@@ -20661,11 +19164,8 @@ ti e con capitelli ionici in travertino. Tra le lesene è l'elegante
 
 ---
 
-<!-- p.806 (orig. p.806) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>806
+806
 RIONE XIL RIPA
 
 Portale affiancato da due antiche colonne di granito e su cui s'apre lochio incorniciato da una cornice marmorea di bell' ornato. E su tutto sta un timpano triangolare. La facciata è opera di Carlo Lambardi e da notare, nei capitelli sulle colonne del portale, sono i volti di cherubini.
@@ -20687,11 +19187,8 @@ Altro rinvenimento è quello di un mitreo, subito stimato tra i più importanti 
 
 ---
 
-<!-- p.807 (orig. p.807) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 807
 
 struttito il *titulus* e quindi, forse ad opera degli stessi cristiani che in quei tempi si mostrarono tenacemente intolleranti verso i seguaci del dio Mitra. Un'altra tradizione vorrebbe che la chiesa fosse sorta sui resti del tempio di Diana costruito da Servio Tullio mentre un frammento della *Forma Urbis*, la pianta marmorea di Roma, eseguita in età severiana, ci indica che nei pressi dell'area di S. Prisca erano poste le terme Surane e un tempio; forse quello di Consus o di Vertumnus. Nel ninfeo è oggi sistemato il Museo dei materiali archeologici provenienti dagli scavi, tra cui una lamina di piombo traforata raffigurante il dio Sole; dietro la quale, durante le cerimonie mitriache veniva fatta brillare una luce; un'altra testa del dio Sole composta con vari pezzi di marmi policromi (*opus sectile*) è conservata al Museo nazionale romano.
@@ -20702,11 +19199,8 @@ Si possono anche individuare resti di muri di età medievale presso i quali sono
 
 ---
 
-<!-- p.808 (orig. p.808) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>808
+808
 RIONE XII. RIPA
 
 delle raffigurazioni dei della gerarchia iniziatica mitriaca:
@@ -20720,11 +19214,8 @@ Siamo in piazza del Tempio di Diana dove si presume fosse il tempio costruito su
 
 ---
 
-<!-- p.809 (orig. p.809) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 809
 
 Attraversiamo quindi piazza Albina che ricorda il nome di una matrona anch'essa famosa per le sue virtù cristiane.
@@ -20749,11 +19240,8 @@ S. Anselmo (1033-1109) entrò nell'ordine benedettino dopo essere fuggito di cas
 
 ---
 
-<!-- p.810 (orig. p.810) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>810
+810
 
 RIONE XII. RIPA
 
@@ -20771,11 +19259,8 @@ Giovanni Battista Piranesi, veneto ma autore delle più belle vedute romane, del
 
 ---
 
-<!-- p.811 (orig. p.811) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 811
 
 del Priorato; detta anche S. Maria Aventina, che in antico sembra essere stata dedicata anche a S. Giovanni e a S. Basilio. La facciata è percorsa da due lesene scanalate ornate da spade a rilievo e sostenenti capitelli figurati con al centro torri (stemma Rezzonico): Le spade alludono alle virtù militari e morali dei cavalieri di Malta. Il portale, classicheggiante, è chiuso sulla sommità da un timpano su cui sta un occhio incorniciato da una corona di quercia con motivi strigilati.
@@ -20794,11 +19279,8 @@ Accanto all'ingresso della sacrestia stanno alcune lastre tombali tra cui la cop
 
 ---
 
-<!-- p.812 (orig. p.812) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>812
+812
 RIONE XII. RIPA
 
 nel 1465, la cui effigie sta sul coperchio. Interessante è la visita
@@ -20853,11 +19335,8 @@ poi partì...
 
 ---
 
-<!-- p.813 (orig. p.813) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 813
 
 **S. Alessio**
@@ -20874,11 +19353,8 @@ L'interno della chiesa è a tre navate divise da pilastri, ornati da paraste sca
 
 ---
 
-<!-- p.814 (orig. p.814) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>814
+814
 RIONE XII RIPA
 
 Bello è il tabernacolo cinquecentesco di D. Ferrerio; detto il Baglione; con le figure dei santi vissuti nell'abbazia. Importante è anche il ciborio sotto la cupola sorretto da colonne di marmo greco, mentre nell'abside sono poste due colonnine che già si trovavano nella precedente chiesa di Onorio III: esse facevano parte di un gruppo di 19 e oggi incorniciano l'iscrizione che ricorda le reliquie dei Ss. Bonifacio e Alessio.
@@ -20897,11 +19373,8 @@ Riusciti fuori dalla chiesa si può entrare in un piccolo parco ornato sulla sin
 
 ---
 
-<!-- p.815 (orig. p.815) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO                                                                          815
+SECONDO ITINERARIO                                                                          815
 
 [Immagine: Il portico di S. Sabina in una stampa di fine Ottocento]
 
@@ -20917,11 +19390,8 @@ Nel secolo X la chiesa fu congiunta alla fortezza di Alberico II e divenne il pu
 
 ---
 
-<!-- p.816 (orig. p.816) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>816
+816
 RIONE XII. RIPA
 
 Ordine domenicano ricevette, come s'è detto, da papa Onorio III, la chiesa di S. Sabina. A S. Sabina si tenne, nel 1288, il conclave che elesse papa Niccolò IV. Durante questo conclave tutti i cardinali si ammalarono di malaria. Gli aspetti medievali della chiesa subirono radicali trasformazioni per volontà di papa Sisto V (i restauri furono condotti da Domenico Fontana): demolizione della schola cantorum, dell'iconostasi e del ciborio; nuovo altare maggiore con grande baldacchino; muratura di alcune finestre, asportazione dei marmi dell'abside e del soffitto a lacunari. Altre ristrutturazioni avvennero durante il Settecento e solo nel secolo scorso si diede inizio ai primi restauri, anche se, nel 1874, il convento fu trasformato in lazzaretto; cui seguì l'installazione della lavanderia a vapore di Roma.
@@ -20936,11 +19406,8 @@ Bisogna quindi portarsi sotto il portico a pilastri in laterizio dove sono conse
 
 ---
 
-<!-- p.817 (orig. p.817) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 817
 
 La basilica di S. Sabina in un'incisione di G. Vasi (1594). In fondo all'atrio si possono vedere una piccola statua di «S. Rosa da Lima» (1668) e moderne di un fanciullo nero di C. Rufini (1973) e una «Pietà».
@@ -20955,11 +19422,8 @@ Le pareti della chiesa erano in origine rivestite di tarsie marmoree di cui oggi
 
 ---
 
-<!-- p.818 (orig. p.818) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>818
+818
 
 RIONE XII. RIPA
 
@@ -20977,11 +19441,8 @@ Nell'orto del convento S. Domenico piantò il suo famoso arancio.
 
 ---
 
-<!-- p.819 (orig. p.819) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 819
 
 cio di cui aveva portato il pollone dalla sua Spagna. Si vuole che questo sia stato il primo arancio trapiantato in Italia. Certo è che l'albero antico, ormai seccato, dà frutti attraverso un altro che la tradizione vuole nato miracolosamente su di esso.
@@ -21000,11 +19461,8 @@ Si giunge così a via della Greca, che prende il nome dalla Schola Graeca fondat
 
 ---
 
-<!-- p.820 (orig. p.820) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>820
+820
 RIONE XII RIPA
 
 Terzo itinerario
@@ -21026,11 +19484,8 @@ Con la fine del medioevo il Foro Boario, ormai noto con il titolo di Bocca della
 
 ---
 
-<!-- p.821 (orig. p.821) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 821
 
 La chiesa di S. Maria in Cosmedin, ancora con la facciata barocca del Sardi in un'incisione di fine Ottocento.
@@ -21043,11 +19498,8 @@ Furono proprio questi bizantini a fondare la chiesa detta nel VI secolo S. Maria
 
 ---
 
-<!-- p.822 (orig. p.822) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>822
+822
 RIONE XIL RIPA
 
 questo scopo fece demolire i resti dell'Ara Maxima di Ercole. Il papa voleva così testimoniare la protezione che egli offriva ai greci che fuggivano dalle persecuzioni dell'imperatore di Bisanzio Costantino V Copronimo: Questi fuggiaschi, giunti a Roma, attribuirono alla chiesa il titolo di Kosmidion per ricordare l'edificio che avevano abbandonato nella nativa Bisanzio e i papi di nazionalità greca non disdegnarono di risiedervi, finché alla fine del primo millennio alla chiesa fu aggiunto il monastero.
@@ -21064,11 +19516,8 @@ Bello è il portale d'ingresso alla chiesa firmato da Johannes de Venetia. Nell'
 
 ---
 
-<!-- p.823 (orig. p.823) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 823
 
 L. Canina, il mascherone della Bocca della Verità; tratta quindi di una vera e propria ordalia, un giudizio di Dio, anche se la denominazione «Bocca della Verità» ci riporta invece alla comunità greca del VII-VIII secolo. Quei greci, infatti, indicavano così luoghi oracolari e certamente l'antico Foro Boario era pregno di atmosfere oracolari data la presenza di tanti culti; tra i non va dimenticato quello vicino della ninfa Carmenta. I monaci greci, quindi, è probabile, chiamarono così le sopravvivenze precristiane oracolari del luogo e identificarono nel mascherone l'immagine di tutta questa realtà.
@@ -21079,11 +19528,8 @@ Dalla navata sinistra e lungo la controfacciata della chiesa fino al lato del ca
 
 ---
 
-<!-- p.824 (orig. p.824) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>824
+824
 
 RIONE XII. RIPA
 
@@ -21105,11 +19551,8 @@ L'abside della navata destra è decorata da affreschi moderni, anch'essi in stil
 
 ---
 
-<!-- p.825 (orig. p.825) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 825
 
 **La Bocca della Verità**
@@ -21126,11 +19569,8 @@ Usciti dalla chiesa abbiamo di fronte la bella fontana dei tritoni ideata da CF.
 
 ---
 
-<!-- p.826 (orig. p.826) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>826
+826
 RIONE XII. RIPA
 
 cheri pose un grande fontanile dalla vasca oblunga con una pro-
@@ -21190,11 +19630,8 @@ un'immagine della Vergine dipinta su papiro. Geronima chiuse
 
 ---
 
-<!-- p.827 (orig. p.827) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 827
+TERZO ITINERARIO 827
 
 L'immagine in uno scrigno; ma dopo alcuni giorni entrando nella sua camera vide che questa aveva trapassato lo scrigno risplendente come il sole.
 Tutta Roma accorse a vedere il prodigio e l'immagine fu chiamata la Vergine del Sole; fu concessa all'Arciconfraternita della Croce che la portò nella chiesa dei Savelli, poi denominata da questa immagine Maria del Sole.
@@ -21212,11 +19649,8 @@ Sotto papa Clemente XI fu annesso alla chiesa un ospizio per pellegrini, appunto
 
 ---
 
-<!-- p.828 (orig. p.828) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>828
+828
 RIONE XII RIPA
 
 Il tempio di Portunus con la Casa del Crescenzi sullo sfondo (stampa di fine Ottocento)
@@ -21229,11 +19663,8 @@ Al di là della strada, di fronte al tempio di Portunus, è un edificio di rara 
 
 ---
 
-<!-- p.829 (orig. p.829) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 829
 
 Mente questa suole prendere chiunque voglia: Sorge verso gli altri la casa sublime; il cui culmine, prima fra i primi, Niccolò il grande eresse dalle fondamenta per rinnovare il decoro dei suoi sta il nome del padre Crescenzio e della madre Teodora.
@@ -21250,11 +19681,8 @@ Il ponte Palatino, poggiante su quattro piloni, fu ideato in forma di una sempli
 
 ---
 
-<!-- p.830 (orig. p.830) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>830
+830
 RIONE XII. RIPA
 
 dilettanti. Tuttavia le sottostanti intelaiature di ferro furono subito elevate; da ladri e rapinatori, a domicili e nascondigli di fortuna, oltre al fatto che il ponte divenne luogo di sassaiole tra trasteverini e abitanti di Testaccio. Al ponte è legato l'episodio di maestro Nicola, padre del più famoso bullo di Roma, «er Tineas». Maestro Nicola era un vero gigante e dal carattere «fumantino»; richiamato, alla voce, da una guardia municipale mentre passava sul ponte Palatino, afferrò il vigile che, secondo la moda, questi portava per i baffi lunghi e folti.
@@ -21263,11 +19691,8 @@ R I O N E XII. R I P A
 
 ---
 
-<!-- p.831 (orig. p.831) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione XIII. Trastevere
+# Rione XIII. Trastevere
 di Giorgio Carpaneto
 
 ### Dalle origini ad oggi
@@ -21284,11 +19709,8 @@ Per quanto attiene al vocabolo rione, nel Catalogo di Torino del 1330 circa è p
 
 ---
 
-<!-- p.832 (orig. p.832) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>832
+832
 
 RIONE XIII. TRASTEVERE
 
@@ -21308,11 +19730,8 @@ Trastevere crebbe all'ombra di chiese cristiane e di quali...
 
 ---
 
-<!-- p.833 (orig. p.833) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 833
 
 Mura merlate su una sponda macchiata dal sangue del primo degli apostoli.
@@ -21324,11 +19743,120 @@ Per quanto concerne l'illuminazione, fino a tutto il Settecento le strade ne fur
 
 ---
 
-<!-- p.836 (orig. p.836) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>836
+834
+
+RIONE XIII TRASTEVERE
+
+là. Le carrozze marciavano a passo d'uomo precedute da un va-
+llello che illuminava la strada con fiaccola. Le rive del Tevere
+erano rese praticabili dai fuochi dei navicellai e dalle lanterne
+delle barche. Affacciavano sul Tevere casupole e bei palazzi,
+giardini e terrazze «veri paradisi di verde col capo coronato d'o-
+livandri, di cedri, di aranci, di pampini e col piede proteso trasan-
+slatamente nell' acqua» (Baracconi).
+
+Il Tevere è stato nel passato croce e delizia di Roma, pure se non
+possiamo dissentire dal Le Gall che conclude: «Sans le Tibre;
+Rome n'aurait pas existé».
+
+I ponti che unirono la zona di Trastevere con l'opposta riva sono
+vari. Primo il ponte Sublicio, il più antico di Roma, costruito da
+Anco Marcio nel VII sec. a.C. e difeso eroicamente da Orazio Co-
+clite; ristrutturato in pietra verso il 732, scomparve nel sec. XI.
+
+Il ponte Palatino, già Emilio (il popolare Ponte Rotto), risale al
+179 a.C. per opera dei censori M. Emilio Lepido e M. Fulvio
+Nobiliore; più volte rovinato dalle acque e ricostruito, fu anche
+chiamato nel medioevo di S. Maria. Oggi ne restano due arcate.
+
+Il ponte Fabricio (detto Quattro Capi), eretto da L. Fabricio nel
+62 a.C., è giunto quasi intatto; il ponte Sisto fu ricostruito da Si-
+sto IV nel 1475 dove era il ponte romano eretto da Marco Aurelio
+(161-180); quello di Probo (dall'imperatore Probo) del II secolo
+d.C., era nei pressi del S. Michele.
+
+Attualmente ben otto ponti uniscono questo grande rione agli altri al di là del Tevere. Infatti, il ponte Principe Amedeo di Savoia-Aosta (1942) immette nel rione Ponte; i ponti Mazzini (1904), Sisto (1475) e Garibaldi (1888) collegano Trastevere con Regola; i ponti Cestio e Fabricio, attraverso l'isola Tiberina, portano nel rione S. Angelo; il nuovo ponte Palatino (1891) lo collega col rione Ripa; il ponte Subli-
+cio (1918) con Testaccio.
+
+È chiaro che il fiume attirava commercianti di vario genere e di
+varie nazionalità, fra le quali gli ebrei la cui comunità israelitica
+risale a tempi remoti, ma sappiamo da Filone che Augusto ne fa-
+vorì lo stanziamento in Trastevere; anzi incaricò Agrippa di fi-
+nanziare la costruzione di sinagoghe; fra le agrippenses ricordiamo quelle presso ponte Sisto e le augustenses in luogo a noi ignoto. Oltre ai loro templi, gli ebrei costruirono le scuole e un
+tribunale: il Beth Dim; molti abitarono presso la chiesa di S. Ce-
+cilia, vicino S. Francesco Ripa. Nell' alto medioevo vollero
+emigrare sulla riva sinistra del Tevere e furono chiusi per ordi-
+ne di Paolo IV Carafa, 1556 in un quartiere (il Ghetto) le cui
+porte, sorvegliate da guardie cristiane, ma pagate da loro stessi,
+venivano aperte all'alba e chiuse a un'ora o due di notte. Anche
+le spese per la costruzione della recinzione, che ammontavano a
+100 scudi, furono a carico dei rinchiusi obbligati inoltre, se uo-
+mini, a portare un cappello o, se donne, un velo, gialli; per essere
+subito riconosciuti. Pio IX nel 1848 finalmente abolì il Ghetto de-
+molendone i muri.
+
+Non solo gli ebrei vivevano in Trastevere del loro lavoro (e mol-
+ti traevano lauti guadagni rendendosi invisi ai poveri debitori;
+motivo non ultimo della creazione del Ghetto) ma anche i
+cristiani, che esercitavano mestieri quali i fabbri, fornaciai, i
+
+---
+
+
+DALLE ORIGINI AD OGGI
+835
+
+tavernieri, i conciatori, i venditori di agrumi, di legna, di olio; di stoffe oltre i già menzionati pescatori, barcaioli; scaricatori.
+Negli istituti di assistenza si produceva lana e si usavano filatoi.
+Due filande di seta nel rione occuparono ad un certo momento fino a 150 ragazze; l'istituto di S. Michele fino al 1860 produsse pregevoli arazzi (P: Romano).
+Fiorente era nel Cinquecento l'Università dei vasai; curata l'industria vetraria; fornaci attive erano ai piedi del Gianicolo; calcare a S. Onofrio. Vi erano altri mestieri relativi ai tempi passati, lupari (cacciatori di lupi che talvolta d'inverno facevano capolino sul Gianicolo), fabbricanti di corde; cercatori del fiume che ripescavano le barche affondate durante le alluvioni.
+Accanto agli umili artigiani vivevano i nobili; potenti baroni; porporati, gli artisti.
+S. Gregorio (715-731) nacque nel rione; e sulla sua casa fu eretta la chiesa di S. Agata; furono trasteverini (suggerisce P. Romano sulla base di assidue ricerche) S. Callisto († 222), Innocenzo I (Papareschi, 1130-1143), Benedetto I (Bonosi, 575-579), Dono I (Guidoni, 676-678). Giovanni XIX (1024-1032) abitò nel palazzo della Lungaretta; e nel palazzo dei titolari di S. Maria in Trastevere abitarono Urbano VI (Rignano, 1378-1389), Eugenio IV (Condulmer, 1431-1447) e vari cardinali.
+Nel Quattrocento Ladislao, re di Napoli, fu ospitato nel convento di S. Crisogono e Ferdinando d'Aragona, re di Napoli, nel palazzo degli Anguillara. Raffaello ebbe casa in piazza S. Apollonia o in via del Merangolo; nel rione abitarono nel Cinquecento Sebastiano del Piombo, il Barozzi, Pomponio Leto; Nella via de' Farinacci ebbe lo studio il giureconsulto difensore di Beatrice Cenci.
+Fra le potenti famiglie trasteverine dovremmo citare Papareschi (da cui si originarono i Mattei), gli Alberteschi, gli Anguillara, Ponziani, i Leni, i Cecchini, Pierleoni, Velli, i Maccarani, Maffei, i Frangipane, gli Annibaldi, i Theoli. Alcune stettero sempre nel rione, altre passarono altrove.
+Il rione era costellato di istituti di assistenza, di asili pubblici; di ospedali patrocinati da cardinali, da nobili o da confraternite.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già nel Cinquecento i trasteverini erano curati nell'istituto dei Fatebenefratelli nell'Isola Tiberina.
+Mariaduce Cicala nel Quattrocento fondò l'ospedale di S. Giovanni Battista dei Genovesi e poco più tardi la chiesa per barcaioli e marinai genovesi infermi; Benedetto XII volle l'ospedale di S. Gallicano nel Settecento; ma già
+
+---
+
+
+836
 
 RIONE XIII. TRASTEVERE
 
@@ -21340,11 +19868,8 @@ lanti. Ci vien voglia di domandarci se in appena un quarto di milione di abitant
 
 ---
 
-<!-- p.837 (orig. p.837) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 837
 
 **Fisionomia e psicologia di Trastevere**
@@ -21361,11 +19886,8 @@ S'è detto che v'era in Trastevere penuria di teatri, anche se va ricordato il t
 
 ---
 
-<!-- p.838 (orig. p.838) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>838
+838
 
 RIONE XIII. TRASTEVERE
 
@@ -21393,11 +19915,8 @@ I muraglioni creati dopo il 1870 freneranno le inondazioni, conterranno il lago,
 
 ---
 
-<!-- p.839 (orig. p.839) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 839
 
 Piazza S. Maria in Trastevere nel Settecento in un'incisione di G. Vasi
@@ -21427,11 +19946,8 @@ Lasciamoci alle spalle la spaziosa via Arenula; percorriamo il ponte Garibaldi e
 
 ---
 
-<!-- p.840 (orig. p.840) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>840
+840
 RIONE XIII TRASTEVERE
 
 Il ponte fu costruito dall'architetto Angelo Vescovali nel biennio 1887-1888. Originariamente era costruito su due arcate in ferro, che nel 1956 cedettero il posto all'invadente cemento armato. Nell'anno seguente si procedette a lavori di ampliamento del ponte che raggiunse così la larghezza di m 20,50 e la lunghezza di m 120,40.
@@ -21448,11 +19964,8 @@ Ricordiamo, tuttavia, che in Trastevere non solo al Belli è stata dedicata una 
 
 ---
 
-<!-- p.841 (orig. p.841) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 841
 
 **La famiglia degli Anguillara**
@@ -21477,11 +19990,8 @@ Narra la leggenda che quel grande serpente o dragone atterriva le genti della zo
 
 ---
 
-<!-- p.842 (orig. p.842) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>842
+842
 RIONE XIII. TRASTEVERE
 
 Ramone la concessione delle terre percorse durante l'insolita caccia. La realtà è che gli Anguillara erano di origine normanna e perciò avevano il culto di S. Giorgio che uccise il drago. Quindi la famiglia mise nel suo stemma una o due serpentiformi anguille per significare la loro opera di purgazione della regione dai malandrini; e dal punto di vista igienico: l'anguilla; inoltre, è in riferimento al nome della famiglia e deriva dal lago Sabatino (presso Campagnano) <anticamente detto Angulario per un angolo sporco ne forma il promontorio che il volgo corruppe in Anguillara, possesso di un ramo dei normanni che dalla località prese il nome di Anguillara. Detta possessione occupava il posto della villa Angularia di Rutilia Pollav (Blasi).
@@ -21504,11 +20014,8 @@ Ed ecco l'antichissima lunga arteria tracciata nel VI secolo, la via del Dragone
 
 ---
 
-<!-- p.843 (orig. p.843) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 843
 
 # S. Maria in Trastevere nel suo aspetto secentesco (incisione di G.B. Falda).
@@ -21525,11 +20032,8 @@ La facciata è grandiosa, ornata dai mosaici del XII-XIII secolo: Al centro è l
 
 ---
 
-<!-- p.844 (orig. p.844) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>844
+844
 RIONE XIII. TRASTEVERE
 
 25 ottobre 1867: la congiura del lanificio Ajani
@@ -21560,11 +20064,8 @@ Le tre porte d'ingresso sono arricchite di classiche ornamentazioni marmoree.
 
 ---
 
-<!-- p.845 (orig. p.845) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 845
 
 Unito alla facciata vi è il campanile romanico (del XII secolo rimaneggiato nel Seicento) con un grande orologio al centro con un'edicoletta della «Madonna» al culmine. L'interno della basilica a tre navate si presenta imponente e maestoso con colonne di varia origine perché provenienti probabilmente dalle terme di Caracalla. Il colonnato, su fondo oro, emergono figure di Santi opera di artisti del secolo scorso. Il pavimento moderno è in stile cosmatesco e nel soffitto magnifico con intagli in legno dorato si vede una «Assunta» eseguita su disegno del Domenichino (1581-1641). Nel catino absidale, su fondo oro, lo smagliante mosaico (del 1140) del «Redentore e della Madonna seduti in trono con ai lati diversi santi e il papa Innocenzo II col modello della chiesa». Nei riquadri del tamburo, Pietro Cavallini nel 1291 ha raffigurato con grande efficacia espressiva episodi della «Vita della Vergine» e al centro si vede la «Madonna col Bambino tra S. Pietro e S. Paolo» dinanzi ai quali sta inginocchiato il donatore Bertoldo Stefaneschi. Sull'arcone dell'abside campeggia la «Croce tra i sette candelabri dell' calice» e i simboli degli Evangelisti; ai lati i profeti «Isaia e Geremia» con due scritte in cui si legge che il piccolo uccello in gabbia, raffigurato vicino, è il simbolo del mistero dell'«Incarnazione del Verbo».
@@ -21581,11 +20082,8 @@ La piazza ha come indovinato complemento del suo scenario monumentale la fontana
 
 ---
 
-<!-- p.846 (orig. p.846) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>846
+846
 
 RIONE XIII. TRASTEVERE
 
@@ -21601,11 +20099,8 @@ Il palazzo fu sfortunato come il papa, perché fu saccheggiato dai romani di una
 
 ---
 
-<!-- p.847 (orig. p.847) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 847
 
 Ci si presenta dopo l'ultimo restauro effettuato da Pio XI, in quanto fu riconsegnato alla S. Sede;
@@ -21624,11 +20119,8 @@ L'interno ha una sola navata e tre cappelle laterali. Sull'altare maggiore vi è
 
 ---
 
-<!-- p.848 (orig. p.848) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>848
+848
 RIONE XIII TRASTEVERE
 
 La chiesa di S. Margherita in un'incisione di G. Vasi.
@@ -21644,11 +20136,8 @@ La vicina via del Moro (un tempo vicolo) ci offre un bel portone bugnato rinasci
 
 ---
 
-<!-- p.849 (orig. p.849) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 849
 
 Fra i nn. 45-46; al n. 22 il prof. Francesco Sabatini, che con Giggi Zanazzo nel 1887 ridiede vita al periodico «Rugantino» (dallo scrivente diretto dal 1980), fondò l'Istituto romano per l'istruzione popolare. In questa via del Moro (dall'insegna di un caffè) si trovava un teatro di burattini; ma ciò che più sorprende è la costante frequenza del barocco (ad esempio n. 11) in alternanza col rinascimento (ad es: n. 58). Varie sono le tabelle di proprietà sulle case e di tanto in tanto fa capolino il medioevo come nella casa al n. 50. Verso il n. 63 una tabella indica il livello raggiunto dal Tevere durante l'alluvione del dicembre del 1870 (l'ultima).
@@ -21663,11 +20152,8 @@ Non tralasciamo il portone del Cinquecento con paraste; al n. 105; al n. 106 la 
 
 ---
 
-<!-- p.850 (orig. p.850) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>85
+85
 
 RIONE XIII. TRASTEVERE
 
@@ -21683,11 +20169,8 @@ Via della Lungaretta termina nella piazza in Piscinula così chiamata dai resti 
 
 ---
 
-<!-- p.851 (orig. p.851) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 851
 
 **La Festa de Noantri**
@@ -21716,11 +20199,8 @@ Nei tempi passati la processione veniva chiamata dei Bucaletti perché curata da
 
 ---
 
-<!-- p.852 (orig. p.852) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>852
+852
 
 RIONE XIII. TRASTEVERE
 
@@ -21746,11 +20226,8 @@ Questo tipo di festa nuziale collettiva con processione, doni e banchetto ebbe s
 
 ---
 
-<!-- p.853 (orig. p.853) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 853
 
 properi alle zitelle bastarde. Allora, la direzione del S. Spirito concesse libera uscita alle ricoverate, dal mattino fino all'ora di pranzo, per dar loro modo di scegliersi il marito o di essere scelte.
@@ -21769,11 +20246,8 @@ A sud la piazza è limitata dal palazzo barocco dei Nunez (n. 12), sul cui muro 
 
 ---
 
-<!-- p.854 (orig. p.854) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>854
+854
 
 RIONE XIII. TRASTEVERE
 Mattei
@@ -21815,11 +20289,8 @@ Raggiungiamo la via di S. Bonosa, che va dalla via della Lungaretta a via dell'O
 
 ---
 
-<!-- p.855 (orig. p.855) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 855
 
 Bonosa furono traslate da ultimo nella chiesa dedicata a S. Maria della Mercede in via Regina Margherita: Nella via di S. Bonosa, nella casa al n. 22, vi è un resto murato di un portico medievale con quattro colonne (tre ioniche; una corinzia) e un portone barocco con la tabella di proprietà dell'arciconfraternita del Gonfalone. La via dell'Olmetto, che fa angolo, deriva chiaramente il nome da un olmo che vi si ergeva un tempo; anzi, era chiamata via dell'Olmo, fu sistemata e allargata nel 1941.
@@ -21838,11 +20309,8 @@ La facciata non fu completata per mancanza di mezzi e solo nel 1821 il prospetto
 
 ---
 
-<!-- p.856 (orig. p.856) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>856
+856
 
 RIONE XIII. TRASTEVERE
 
@@ -21869,11 +20337,8 @@ Passiamo sotto l'arco di origine medievale, ampliato nel 1938 come si deduce dal
 
 ---
 
-<!-- p.857 (orig. p.857) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 857
 
 con nastri laterali. La via dei Salumi deriva il nome dai magazzini di prodotti di carne suina sbarcati dal vicino porto di Ripa Grande. Un tempo, nel primo Settecento, fu chiamata via dei Salumieri (il produttore per il prodotto). La via era molto frequentata e ricca di case con depositi di carni; qualcuna era decorata con storie ebraiche a chiaroscuro; andate perdute. Ivi abitò Costantino Caetani che costruì un suo collegio.
@@ -21890,11 +20355,8 @@ La nuova facciata in piazza Castellani (opera dell'architetto Tullio Passarelli 
 
 ---
 
-<!-- p.858 (orig. p.858) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>858
+858
 RIONE XIII TRASTEVERE
 Castellani nobili guardiani
 
@@ -21935,22 +20397,16 @@ Dalla piazza Castellani, possiamo abbracciare con lo sguardo la grande ansa del 
 
 ---
 
-<!-- p.859 (orig. p.859) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 859
 
 ponte Rotto a metà Ottocento, con la passerella in ferro verso Ripa Lucio Sestio. Restaurato nel 370 con i marmi del Teatro di Marcello dagli imperatori Valentiniano, Valente e Graziano (*pontem felicis nominis Gratiani*) e nel secolo X da Benedetto Carissimi, senatore di Roma. Fu chiamato nel medioevo «ponte della Polcella», in ricordo di una fanciulla, *polcella* o *pulcella*; dal latino *puella*, probabilmente caduta dal ponte, o «Ponte Ferrato» (come si deduce da un documento della seconda metà del Quattrocento in cui si parla di una torre presso il ponte «ferratum») da alcuni cancelli o dalle catene che vi erano fissate per tener ferme le mole, poi più ing; poi più ing-ponte di S. Bartolomeo (con riferimento alla chiesa dell'Isola). L'ing. Paolo Emilio De Santis lo ricostruì nel 1892. Più oltre domina l'arcata superstite del ponte Rotto; la cui erezione fu iniziata dai censori Marco Emilio Lepido e Marco Fulvio Nobiliore nel 179 a.C., fu terminato nel 142 a.C. dai censori Publio Cornelio Scipione Emiliano, l'Africano minore, e da Lucio Memmio. Dapprima fu chiamato «ponte Lepido» (corrotto in «ponte di lapidi») Senatorio (nel secolo XII), indi «di S. Maria» da una pittura della Vergine in una cappellina costruita sul ponte, ed in seguito collocata nella chiesa di S. Cosimato (Adipolfi). È stato un ponte volte danneggiato gravemente dalle piene del fiume. Vi pose mano anche Michelangelo Nanni di Baccio Bigio che per brama di guadagni (illeciti) indebolì il ponte togliendo i travertini, di cui era lastricato e rinforzato; per venderseli. La conseguenza fu che il ponte crollò nel 1557 e solo venti anni dopo Gregorio XI incaricò della ricostruzione Matteo Bartolani da Città di Castello che scolpì nei mistilinei della ghie-ra delle arcate il drago, elemento araldico dei Boncompagni, famiglia a cui apparteneva il papa. Nel 1598 altra piena tiberina fece crollare tre archi. Così rimase il grande mutilato; impraticabile; fino al 1853 quando fu unito alla terraferma da una passerella in ferro. L'ultima demolizione fu ad opera di uomini e precisamente dell' Canevari che nel 1887 fece abbattere monumento disgraziato quanto bello; lasciando una sola arcata; per poter erigere il ponte Palatino. Anche nei pressi di questo ponte vi era una torre (quella degli Alberteschi) posta alla testata trasteverina.
 
 ---
 
-<!-- p.860 (orig. p.860) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>860
+860
 RIONE XIII. TRASTEVERE
 Ponte dell'Omicidio e del Miracolo
 
@@ -21977,11 +20433,8 @@ Infatti ella abitava nella zona precisamente nella casa del marito in via dei Va
 
 ---
 
-<!-- p.861 (orig. p.861) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 861
 
 quistare nobili feudi; il loro capostipite fu Pontianus Pelliparius e lo stemma della famiglia era costituito da un grifone e da una ruota.
@@ -22000,11 +20453,8 @@ Parallela alla via dei Vascellari è la via Pietro Peretti (che ricorda un celeb
 
 ---
 
-<!-- p.862 (orig. p.862) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>862
+862
 RIONE XIII TRASTEVERE
 S. Maria in Cappella
 
@@ -22070,11 +20520,8 @@ qui può dimostrare.
 
 ---
 
-<!-- p.863 (orig. p.863) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 863
 
 S. Giovanni Battista dei Genovesi nel suo aspetto settecentesco (G. Vasi).
@@ -22093,11 +20540,8 @@ L'interno a navata unica è alquanto modesto; ad eccezione della tomba quattroce
 
 ---
 
-<!-- p.864 (orig. p.864) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>864
+864
 
 RIONE XIII. TRASTEVERE
 
@@ -22117,11 +20561,8 @@ Il Medioevo si impone alla nostra attenzione con la superstite suggestiva casa i
 
 ---
 
-<!-- p.865 (orig. p.865) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 865
+SECONDO ITINERARIO 865
 
 Ha fatto ritenere l'edificio un'antica sinagoga fondata da Nathan ben Jechiel (1035-1106), insigne lessicografo. Nella seconda metà del Duecento un incendio distrusse la biblioteca e gli arredi sacri della sinagoga che ha alle sue spalle un'altra casa medievale sopraelevata; tanto per guastare.
 
@@ -22137,11 +20578,8 @@ Lasciamoci alle spalle il vicolo e la via dei Genovesi e, percorrendo la via Ani
 
 ---
 
-<!-- p.866 (orig. p.866) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>866
+866
 RIONE XIII TRASTEVERE
 
 Protesta circostanziata al papa per le sassaiole
@@ -22169,11 +20607,8 @@ L'interno a tre navate con cappelle laterali dovuto al Guidetti per la struttura
 
 ---
 
-<!-- p.867 (orig. p.867) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 867
 
 **Chi erano gli Anici?**
@@ -22210,11 +20645,8 @@ La via Anicia divide la manifattura dei tabacchi dal complesso guelfo.
 
 ---
 
-<!-- p.868 (orig. p.868) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>868
+868
 RIONE XIII. TRASTEVERE
 
 La basilica di S. Cecilia in Trastevere. In un'incisione di G. Vasi.
@@ -22229,11 +20661,8 @@ Il giardino è chiuso ai due lati: a destra dal monastero delle suore francescan
 
 ---
 
-<!-- p.869 (orig. p.869) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 869
+SECONDO ITINERARIO 869
 
 Da quello delle benedettine ricostruito nel Cinquecento. Un tempo il monastero era occupato dai frati umiliati, fra cui uno non troppo amante del prossimo; sparò un'archibugiata contro S. Carlo Borromeo in preghiera, fallendo il bersaglio per un miracolo. Il papa Clemente VII scacciò via tutti i frati così mal rappresentati!
 
@@ -22253,11 +20682,8 @@ Nella volta campeggia il grandioso affresco «Il trionfo di S. Cecilia».
 
 ---
 
-<!-- p.870 (orig. p.870) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>870
+870
 RIONE XII. TRASTEVERE
 
 cilia di Sebastiano Conca del 1293. Vi è anche la cappella della famiglia Ponziani, a cui appartenne S. Francesca Romana, sposa di Lorenzo. Nella parte centrale è rappresentata <S. Francesca Romana fra la Madonna e S. Lorenzo> e nelle pareti laterali vari santi, opera di un anonimo pittore seicentesco. Era stata attribuita in un primo tempo al quattrocentesco Antonio Massari detto il Pastura; ma una mano che affiora sul manto della Madonna ci fa pensare ad una sovrapposizione di pitture.
@@ -22274,11 +20700,8 @@ Da via del Porto a piazza di Porta Portese si estende la lunga facciata gotica.
 
 ---
 
-<!-- p.871 (orig. p.871) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 871
 
 **La dea Bona e S. Cecilia**
@@ -22308,11 +20731,8 @@ Clemente XI ne ordinò a Carlo Fontana l'ampliamento (1708) per quello.
 
 ---
 
-<!-- p.872 (orig. p.872) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>872
+872
 RIONE XIII TRASTEVERE
 
 La fede di S. Cecilia portò al martirio marito e cognato.
@@ -22331,11 +20751,8 @@ S'intende che tante persone di varie età potevano costituire fonte di produzion
 
 ---
 
-<!-- p.873 (orig. p.873) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 873
 
 Palazzo del S. Michele alla fine del Selcento (incisione di A. Specchi).
@@ -22352,11 +20769,8 @@ Attualmente il complesso accoglie il Ministero dei beni e delle attività cultur
 
 ---
 
-<!-- p.874 (orig. p.874) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>874
+874
 
 RIONE XIII. TRASTEVERE
 Quel che resta da vedere delle testimonianze dell'antica Roma
@@ -22379,11 +20793,8 @@ L'antica porta Portse, che collegava l'Urbe col porto di Claudio a Fiumicino, è
 
 ---
 
-<!-- p.875 (orig. p.875) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 875
 
 Edificio pubblico di Trastevere e solo la scoperta di un tratto dell'acquedotto dell'Aqua Alsietina permette di localizzarla nei pressi di S. Cosimato (Coarelli).
@@ -22420,11 +20831,8 @@ Qui termina il nostro secondo itinerario complesso e laborioso; ma tale che già
 
 ---
 
-<!-- p.876 (orig. p.876) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>876
+876
 RIONE XIII. TRASTEVERE
 Terzo itinerario
 
@@ -22459,11 +20867,8 @@ Vi sono stati alloggiati gli sfollati durante la seconda mondiale ed ora, Ravagl
 
 ---
 
-<!-- p.877 (orig. p.877) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 877
 
 **S. Francesco, la B. Albertoni e un reliquiario mobile**
@@ -22485,11 +20890,8 @@ La chiesa con la sua semplice ed armoniosa facciata non risente troppo del suo p
 
 ---
 
-<!-- p.878 (orig. p.878) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>878
+878
 RIONE XIII. TRASTEVERE
 
 P.L. Teutonico, prospetto di S. Francesco a Ripa
@@ -22504,11 +20906,8 @@ Torniamo indietro e, percorrendo il tratto della via di S. Francesco a Ripa, inc
 
 ---
 
-<!-- p.879 (orig. p.879) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 879
 
 Il toponimo è difficile a spiegarsi: per il Romano «mazzamurello» in romanesco significa spirito maligno e bizzarro; forse in riferimento a qualche tiro fatto da un presunto demonietto ad abitanti di qualche casa; il Rufini ritiene che un mago, ivi residente, spingesse gli spiriti o demoni (mazzamurelli) nella via impedendone il passaggio; potrebbe anche trattarsi di un gioco dazzardo che si faceva nel vicolo.
@@ -22529,11 +20928,8 @@ In un modesto ambiente, nella via, ha sede il Teatro dei pupi si può aprire...
 
 ---
 
-<!-- p.880 (orig. p.880) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>880
+880
 
 RIONE XIII. TRASTEVERE
 
@@ -22557,11 +20953,8 @@ Dalla via di S. Gallicano risaliamo verso via della Lungaretta; per poi sboccare
 
 ---
 
-<!-- p.881 (orig. p.881) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 881
 
 **La basilica di S. Crisogono nel Celento**
@@ -22577,11 +20970,8 @@ L'interno della basilica è a tre navate divise da 11 colonne per lato, di proba
 
 ---
 
-<!-- p.882 (orig. p.882) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>882
+882
 RIONE XIII. TRASTEVERE
 
 Nel transetto, invece, fa bella mostra di sé un tabernacolo medievale e l'altare maggiore risale in parte al XII secolo.
@@ -22603,11 +20993,8 @@ La via di S. Francesco a Ripa, di cui più volte abbiamo parlato, incontra via d
 
 ---
 
-<!-- p.883 (orig. p.883) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 883
 
 1
@@ -22627,11 +21014,8 @@ La facciata tuttora mostra la facies cinquecentesca; è divisa in due ordini: ne
 
 ---
 
-<!-- p.884 (orig. p.884) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>884
+884
 
 RIONE XIII. TRASTEVERE
 
@@ -22649,11 +21033,8 @@ Un protiro del secolo XII sostenuto da due colonne; una scanalata e una liscia; 
 
 ---
 
-<!-- p.885 (orig. p.885) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 885
 
 Il protiro romanico del complesso di S. Cosimato come appariva nel Settecento (incisione di G. Vasl).
@@ -22674,11 +21055,8 @@ Il protiro romanico del complesso di S. Cosimato appariva nel Settecento (incisi
 
 ---
 
-<!-- p.886 (orig. p.886) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>886
+886
 
 RIONE XIII. TRASTEVERE
 
@@ -22694,11 +21072,8 @@ Curioso è il fatto, estremamente significativo, che le parole sotto il cornicio
 
 ---
 
-<!-- p.887 (orig. p.887) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 887
 
 E in contrasto con tale degenerazione (= inesistenza?) di sentimenti, proprio la via dei Dandolo ci riporta ad una famiglia di Varese, i cui membri vissero e combatterono per l'alto ideale della patria: Emilio combatté con Garibaldi in difesa della Repubblica romana; Enrico, egualmente nel 1849, partecipò alla difesa di Roma e fu ucciso a tradimento dai soldati francesi.
@@ -22712,11 +21087,8 @@ Ma la via dei Dandolo ci riserva un'altra sorpresa: aprendoci l'ingresso alla Vi
 
 ---
 
-<!-- p.888 (orig. p.888) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>888
+888
 
 RIONE XIII. TRASTEVERE
 
@@ -22753,11 +21125,8 @@ La storia della chiesa di S. Egidio a Trastevere è alquanto fortunosa, poiché 
 
 ---
 
-<!-- p.889 (orig. p.889) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 889
 
 La chiesa di S. Egidio a Trastevere, in un'incisione di G. Vasari, è divenuta sede del Museo del folclore e dei romaneschi. Qui vi sono quadri riguardanti Roma nelle varie epoche; graziosissime scene pinelliane realizzate da Orazio Amato del Novecento: lo scrivano pubblico; il presepio; il saltarello; la farmacia; il carretto a vino, ecc. Vi è stato parzialmente ricostruito lo studio del poeta romanesco Trilussa.
@@ -22781,11 +21150,8 @@ QUARTO ITINERARIO
 
 ---
 
-<!-- p.890 (orig. p.890) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>890
+890
 
 RIONE XIII. TRASTEVERE
 
@@ -22797,11 +21163,8 @@ Dalla via della Paglia si accede all'oratorio dedicato a S. Giuseppe, a Maria Sa
 
 ---
 
-<!-- p.891 (orig. p.891) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 891
 
 **I guardiani del «Volto Santo»**
@@ -22832,11 +21195,8 @@ A metà del suo percorso via della Scala incontra la piazza e il vicolo omonimi.
 
 ---
 
-<!-- p.892 (orig. p.892) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>892
+892
 
 RIONE XIII TRASTEVERE
 
@@ -22858,11 +21218,8 @@ Ad Alessandro Algardi (bolognese, 1595-1654) si deve la...
 
 ---
 
-<!-- p.893 (orig. p.893) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 893
 
 G. Vasi, la chiesa di S. Maria dei Sette Dolori.
@@ -22885,11 +21242,8 @@ QUARTO ITINERARIO 893
 
 ---
 
-<!-- p.894 (orig. p.894) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>894
+894
 
 RIONE XIII: TRASTEVERE
 
@@ -22931,11 +21285,8 @@ la seconda tabella: D.M. VALERIAE PELORIDI HERMES CONIVGI MERENTI FECIT (Agli de
 
 ---
 
-<!-- p.895 (orig. p.895) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 895
 
 lorata in cornice di stucco e con la scritta: <Maria Mater gra-
@@ -23017,11 +21368,8 @@ proprietà più...
 
 ---
 
-<!-- p.896 (orig. p.896) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>896
+896
 
 RIONE XIII. TRASTEVERE
 
@@ -23037,11 +21385,8 @@ Il problema è relativo a «Pelliccia», che per alcuni è il cognome di una ant
 
 ---
 
-<!-- p.897 (orig. p.897) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 897
 
 La piazza de' Renzi ricorda la vecchia famiglia trasteverina che qui ebbe proprietà. Qui si lasciavano le «bussolette» (scatole chiuse e con fessura) per introdurvi le offerte per le sacre rappresentazioni allestite nell'area del cimitero di S. Maria in Trastevere.
@@ -23060,11 +21405,8 @@ Marco Aurelio o Caracalla lo costruirono e fu restaurato da Costantino e da Vale
 
 ---
 
-<!-- p.898 (orig. p.898) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>898
+898
 
 RIONE XIII TRASTEVERE
 
@@ -23086,11 +21428,8 @@ Nella vicina piazza di S. Giovanni della Malva sui nn. 5-6 vediamo un ovale inco
 
 ---
 
-<!-- p.899 (orig. p.899) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 899
 
 **La chiesa di S. Giovanni della Malva**
@@ -23112,11 +21451,8 @@ Al fianco sinistro dell'interno della porta si nota un grande affresco barocco; 
 
 ---
 
-<!-- p.900 (orig. p.900) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>900
+900
 
 **RIONE XIII. TRASTEVERE**
 
@@ -23129,11 +21465,8 @@ Si ha notizia della chiesa dal 1123 ed il suo nome era S. Silvestro ad portam Se
 
 ---
 
-<!-- p.901 (orig. p.901) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 901
 
 "La bella fra le belle" amata da Raffaello
@@ -23166,11 +21499,8 @@ Da via di Porta Settimiana a piazza Della Rovere si dilunga la via della Lungara
 
 ---
 
-<!-- p.902 (orig. p.902) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>902
+902
 
 RIONE XIII. TRASTEVERE
 
@@ -23204,11 +21534,8 @@ Nel 1520 la casa, con orto e vigna, era degli Adimari; dopo alcuni passaggi giun
 
 ---
 
-<!-- p.903 (orig. p.903) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 903
 
 [Immagine: Palazzo Salviati in un'incisione di fine Seicento di A. Specchi.]
@@ -23229,11 +21556,8 @@ La facciata della chiesa è a due ordini; l'inferiore è diviso in tre parti da 
 
 ---
 
-<!-- p.904 (orig. p.904) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>904
+904
 RIONE XIII TRASTEVERE
 
 Si mescolano con rifacimenti del secolo scorso, menomando l'armonia dell'insieme. Tuttavia segnaliamo il pavimento settecentesco, gli altari, la cantoria ed alcune pitture definite dai critici <indovinati esempi di arte minore del Settecento>.
@@ -23256,11 +21580,8 @@ Altra traversa della Lungara è la via di S. Francesco di Sales (1567-1622), che
 
 ---
 
-<!-- p.905 (orig. p.905) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 905
 
 Palazzo degli Spiriti: Qui vivevano le novizie e pregavano nella chiesa dedicata al Sacro Cuore; entro l'edificio. È una chiesa neogotica, ma risale alla prima metà dell'Ottocento ed ha opere di Pietro Gagliardi (Roma, 1809-1890).
@@ -23285,11 +21606,8 @@ I Riario divennero potenti quando il cardinale Francesco Della Rovere divenne pa
 
 ---
 
-<!-- p.906 (orig. p.906) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>906
+906
 
 RIONE XIII. TRASTEVERE
 
@@ -23307,11 +21625,8 @@ Infine Tommaso Corsini ha venduto allo Stato italiano il palazzo, che in seguito
 
 ---
 
-<!-- p.907 (orig. p.907) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO 907
+QUINTO ITINERARIO 907
 
 **Un cannone per Cristina**
 
@@ -23331,11 +21646,8 @@ Nella via Corsini, presso il n. 5, incontriamo un'edicola mariana secentesca e u
 
 ---
 
-<!-- p.908 (orig. p.908) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>908
+908
 RIONE XIII. TRASTEVERE
 
 944
@@ -23355,11 +21667,8 @@ Il culmine del Rinascimento è raggiunto in questa villa, che il Nibby definisce
 
 ---
 
-<!-- p.909 (orig. p.909) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 909
 
 **Le Danaidi del Seicento**
@@ -23382,11 +21691,8 @@ Non possiamo dimenticare il lungo edificio di due piani di via della Lungara —
 
 ---
 
-<!-- p.910 (orig. p.910) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>910
+910
 RIONE XIII. TRASTEVERE
 
 parte trasferiti a Villa Albani. Tutto prezioso materiale la cui visione è proibita al pubblico, in quanto si tratta di proprietà privata. Sulla facciata, tra il primo e il secondo piano, si vede un grande stemma dei Torlonia.
@@ -23429,11 +21735,8 @@ Vi è anche una cappella disegnata da Giorgio Vasari (Arezzo; 1511-1574) e una s
 
 ---
 
-<!-- p.911 (orig. p.911) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 91
 
 La chiesa di S. Pietro in Montorio nel Seicento in un'incisione di G.B. Falda
@@ -23452,12 +21755,9 @@ Nel chiostro si trova il tempietto del Bramante, a pianta circolare con colonne 
 
 ---
 
-<!-- p.912 (orig. p.912) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<|channel>thought
-<channel|>912
+912
 RIONE XIII. TRASTEVERE
 
 tempietto del Bramante a S. Pietro In Montorio (stampa dl fne Ottocento) 
@@ -23471,11 +21771,8 @@ giù per umiltà nei confronti di Cristo.
 
 ---
 
-<!-- p.913 (orig. p.913) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 913
 
 Giacobini giocarono col teschio di Beatrice.
@@ -23495,11 +21792,8 @@ Al di là di via Garibaldi si estende la villa Giraud poi Ruspoli, costruita dal
 
 ---
 
-<!-- p.914 (orig. p.914) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>914
+914
 
 RIONE XIII. TRASTEVERE
 
@@ -23520,11 +21814,8 @@ Lasciamo la frescura dell' acqua fine a se stessa in quanto non potabile, e, spi
 
 ---
 
-<!-- p.915 (orig. p.915) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 915
 
 **Tanta acqua non potabile**
@@ -23553,11 +21844,8 @@ DIAETA VECTIGALLIBVS EXIGENDIS AVXIT RESTITVIT
 
 ---
 
-<!-- p.916 (orig. p.916) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>916
+916
 
 RIONE XIII. TRASTEVERE
 
@@ -23577,11 +21865,8 @@ Ritornando accanto alla villa Aurelia, imbocchiamo la lunga via denominata Passe
 
 ---
 
-<!-- p.917 (orig. p.917) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 917
 
 «Arispara er cannone a mezzogiorno»
@@ -23603,11 +21888,8 @@ La Passeggiata del Gianicolo assume ora la forma di S, la cui parte iniziale toc
 
 ---
 
-<!-- p.918 (orig. p.918) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>918
+918
 
 RIONE XIII. TRASTEVERE
 
@@ -23629,11 +21911,8 @@ Nella tribuna, che contrasta con la nudità della volta, vi sono affreschi attri
 
 ---
 
-<!-- p.919 (orig. p.919) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 919
 
 Misteri tassiani
@@ -23672,11 +21951,8 @@ L'ospedale del Bambin Gesù creato nel 1869 dai duchi Salviati è vicino alla ch
 
 ---
 
-<!-- p.920 (orig. p.920) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>920
+920
 RIONE XIII TRASTEVERE
 
 Convento di S. Onofrio in una stampa tardo ottocentesca.
@@ -23694,11 +21970,8 @@ Un complesso di notevole importanza dal punto di vista storico, didattico e soci
 
 ---
 
-<!-- p.921 (orig. p.921) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO 921
+SESTO ITINERARIO 921
 
 sua «Guida rionale di Trastevere», compiendo lunghe ricerche e facendo anche lo spoglio degli Stati delle Anime della parrocchia di S. Spirito in Sassia. Il Palazzo Giori nel cornicione presenta gli elementi dello stemma della famiglia: i tre monti, il lauro, le api; In origine fu proprietà del cardinale Angelo Giori vissuto nel Seicento; il quale incaricò della costruzione l'architetto Camillo Arcucci.
 
@@ -23716,11 +21989,8 @@ Al n. 61 ancora un'edicola mariana entro pregevole cornice. Nel vicolo di S. Ono
 
 ---
 
-<!-- p.922 (orig. p.922) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>922
+922
 RIONE XIII. TRASTEVERE
 
 **Quel che è scomparso in Trastevere**
@@ -23737,11 +22007,8 @@ Molte torri erano in Trastevere, delle quali alcune inglobate in seguito nel pal
 
 ---
 
-<!-- p.923 (orig. p.923) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 923
 
 Erano nelle vicinanze della chiesa di S. Pasquale Baylon in via S. Francesco a Ripa: anche il palazzo Castellani del Quattrocento con torre è sparito nell'Ottocento. Donna Olimpia Maidalchini Pamphilj rimpiange ancora il suo secentesco Casino col bel portico a tre campate con vista sul fiume, assorbito dal Lungotevere, e il principe Gabrielli la sua villa divorata dal manicomio alla Lungara; anch'esso demolito; ma i matti di allora furono ospitati nel nuovo manicomio di Monte Mario, mentre quelli di oggi (e son tanti) passeggiano e reggiano negli ospedali per infemi sani di mente con grave rischio di questi ultimi, come dimostrano le notizie di cronaca.
@@ -23758,11 +22025,8 @@ TRASTEVERE
 
 ---
 
-<!-- p.924 (orig. p.924) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XIV. Borgo
+Rione XIV. Borgo
 di Carlo Villa
 Dalle origini ad oggi
 
@@ -23780,11 +22044,8 @@ Primi padroni dei luoghi furono gli Etruschi, e Plinio ricorda un elce del Vatic
 
 ---
 
-<!-- p.925 (orig. p.925) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 925
 
 Sillaba che suona appunto "va"; un vagito di Roma anelante ad estendersi su tutti i territori circostanti, massimamente su quelli subito al di là del Tevere. 
@@ -23803,11 +22064,8 @@ Ricostruzione secentesca del circo e della naumachia di Nerone in Vaticano oggi
 
 ---
 
-<!-- p.926 (orig. p.926) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>926
+926
 RIONE XIV. BORGO
 
 in eredità alla figlia; anch'essa chiamata Agrippina (Minore), che divenne madre di Nerone. Quest'ultimo fece erigere numerosi monumenti in questa zona, tra i quali citiamo ora la villa imperiale, e tutto il territorio ebbe così per un tempo la generica denominazione di "Giardini di Nerone".
@@ -23824,11 +22082,8 @@ Con la morte di Caracalla, avvenuta nel 217, il mausoleo di Adriano cessò d'ess
 
 ---
 
-<!-- p.927 (orig. p.927) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 927
 
 IE
@@ -23846,11 +22101,8 @@ Il giorno 9 dicembre dell'anno 1586, i conservatori, i senatori e il priore dei 
 
 ---
 
-<!-- p.928 (orig. p.928) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>928
+928
 
 RIONE XIV. BORGO
 
@@ -23867,11 +22119,8 @@ Il tesoro di Sisto V fu trovato al tempo di Clemente XII, un secolo e mezzo più
 
 ---
 
-<!-- p.929 (orig. p.929) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 929
 
 Il nucleo del nuovo rione per molti anni non subì modifiche sotto il profilo urbanistico; se si fanno salvi i lavori alla basilica di S. Pietro che si protrassero per decenni, e la continua manutenzione di Castel Sant'Angelo. Vennero inoltre costruite la chiesa della Traspontina, S. Anna dei Palafrenieri e abbellite le logge vaticane.
@@ -23894,11 +22143,8 @@ Nonostante questo nome e questo insieme fortificato e difensivo; il rione Borgo 
 
 ---
 
-<!-- p.930 (orig. p.930) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>930
+930
 
 RIONE XIV . BORGO
 
@@ -23930,11 +22176,8 @@ Il ponte Elio fu costruito nell'anno 136 d.C. in sostituzione del diruto ponte d
 
 ---
 
-<!-- p.931 (orig. p.931) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 931
 
 **L'incendio di Roma e la persecuzione dei cristiani**
@@ -23961,11 +22204,8 @@ Dal sacrificio dei primi assertori della fede in Cristo e dal martirio dell'apos
 
 ---
 
-<!-- p.932 (orig. p.932) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>932
+932
 
 RIONE XIV. BORGO
 
@@ -23983,11 +22223,8 @@ Bisogna dire ad onor del vero, che non era la prima volta che accadevano tali sc
 
 ---
 
-<!-- p.933 (orig. p.933) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 933
 
 zione e di protezione della città leonina e quelle di Castel S. An-
@@ -24052,11 +22289,8 @@ blioteca vaticana:
 
 ---
 
-<!-- p.934 (orig. p.934) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>934
+934
 
 RIONE XIV. BORGO
 
@@ -24077,11 +22311,8 @@ Ricordiamo che anche Augusto su queste stesse rive, a poche centinaia di metri e
 
 ---
 
-<!-- p.935 (orig. p.935) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 935
 
 Il mausoleo è formato da uno zoccolo quadrato di 84 metri di lato, alto una decina, tutto rivestito di travertino; quindi è il grande tamburo cilindrico alto venti metri e un tempo ornato di marmi e pilastri: al di sopra era un coronamento di statue; sulla cima, tra alberi e giardini pensili, era inoltre un tempietto votivo tra colonne e una quadriga di bronzo con la statua dell'imperatore. La cella sepolcrale era al centro dell'edificio e ad essa si accedeva attraverso la rampa elicoidale ancora esistente e percorribile, pavimentata a mosaici, scomparsi quasi del tutto. Il mausoleo era recintato da una cancellata e munito di un grande portone di bronzo volto verso il ponte Elio.
@@ -24102,11 +22333,8 @@ Le due torri di Niccolò V vennero inglobate nei manufatti difensivi; venne rica
 
 ---
 
-<!-- p.936 (orig. p.936) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>936
+936
 
 RIONE XIV. BORGO
 
@@ -24124,11 +22352,8 @@ Posto in pensione con una cifra altissima per i tempi, Mastro Titta cedette mano
 
 ---
 
-<!-- p.937 (orig. p.937) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 937
 
 CASTELLO ANGELO
@@ -24145,11 +22370,8 @@ Si devono ad Urbano VIII trasformazioni quanto distruzioni ingiustificate; è di
 
 ---
 
-<!-- p.938 (orig. p.938) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>938
+938
 
 RIONE XIV. BORGO
 Vicende; orrori, leggende e tradizioni del Castello
@@ -24169,11 +22391,8 @@ Ed eccoci al di sopra della cella sepolcrale: il ponte che sovrasta questa cella
 
 ---
 
-<!-- p.939 (orig. p.939) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 
 939
 
@@ -24195,11 +22414,8 @@ Tornati alla sala del consiglio un breve corridoio ci reca alla biblioteca; è l
 
 ---
 
-<!-- p.940 (orig. p.940) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>940
+940
 
 RIONE XIV. BORGO
 
@@ -24215,11 +22431,8 @@ Sotto la statua dell'angelo è una saletta a struttura romana cui si accede attr
 
 ---
 
-<!-- p.941 (orig. p.941) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 941
 
 **Il sacco di Roma**
@@ -24242,11 +22455,161 @@ Borgo, nel sacco dei Lanzichenecchi, subì i danni e le nefandezze peggiori; dat
 
 ---
 
-<!-- p.949 (orig. p.949) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+942
+
+RIONE XIV. BORGO
+
+Il precettore Cosimo Tornabuoni ebbe salva la vita perché il comandante della masnada che aveva invaso Santo Spirito aveva capito che poteva estorcere una cospicua [taglia] sulla sua testa, risparmiandola; ed esiste proposito un atto notarile che attesta come il 15 maggio 1527 il Tornabuoni fosse tenuto prigioniero da don Francisco Sarmiento, capitano dei cavalleggeri imperiali, al quale per ottenere libertà e vantaggio per l'ospedale sborsa tremila ducati.
+
+Vantaggi che dovettero rivelarsi del tutto effimeri, giacché una lettera spedita a Baldassarre Castiglione ci informa che le prodezze consummate dagli invasori nell'ambito dell'ospedale così possono riassumersi lapidariamente:
+"morti tutti innocenti di Santo Spirito; buttati gli infermi in Tevere, profanate et violate tutte le monache, amazzati ommini e frati"
+
+Clemente VI sorpreso dall'invasione; mentre era in preghiera sulla tomba di S. Pietro, ebbe appena il tempo di riparare al Castello sfruttando per la prima volta il "corridore" o "passetto" di sentiero pensile e munito che unisce come una sorta di cordone ombelicale i palazzi vaticani con la fortezza adrianea:
+
+Gli imperiali di conseguenza cinsero d'assedio la fortezza; dopo aver devastato, saccheggiato la basilica e i palazzi apostolici, acceso il fuoco nelle logge e nella cappella Sistina, manomesso archivi e sotterranei; e l'assedio durò ben sette mesi, durante i quali Borgo divenne un campo trincerato.
+
+[Almeno a sentire la leggenda gregoriana degli albori del cristianesimo:] La campana visibile dal lato della terrazza che guarda S. Pietro è detta della Misericordia; in quanto si metteva battere volta che avevano luogo le esecuzioni capitali; infatti il maniero ospitava, si fa per dire, rei a vario titolo meritevoli della corda o della mannaia. Il panorama che da si estende ai piedi del visitatore è celebre quanto perlomeno il Castello stesso.
+
+Altre vittime illustri della giustizia papale ospiti del Castello saranno il conte di Mortorio, duca di Paliano, il conte d'Aliffi, il già citato Cellini, che ne fuggì temerariamente, sia pur rompendosi una gamba nello scivolare dall'ultimo muraglione.
+
+A scusante dei carcerieri, per la verità piuttosto consenzienti nel [aiutarlo dato l'oro che circolava]; la cella dell'incisore papale era tra quelle privilegiate poste sul piano del cortile. Una fuga fortunata solo nella prima parte, giacché raggiunta la casa di certi suoi amici, il Cellini fu preso di nuovo e costretto stavolta in una cella tra le più tetre del maniero; sulla parete di questa sua seconda cella, secondo una leggenda, il Cellini avrebbe disegnato a carboncino un "Cristo risorto"; il visitatore ne può individuare ancora qualche traccia sbiadita:
+
+S'è detto di Marozia, la terribile tiranna di Roma; ebbene vale la pena dare qualche cenno biografico di questa donna barbarica quanto lucida nei suoi disegni egemonici. Già amante di papa Sergio III, al tempo delle invasioni saracene del Lazio, negli anni 904-911, poi moglie di Alberico I marchese di Spoleto e successivamente di Guido di Toscana; in Castel Borgo costei volle spiritosamente impalmarsi con un tan Ugo da [taglia] putti.
+
+---
+
+
+PRIMO ITINERARIO
+943
+
+Provenza, suo cognato: Ma proprio durante questo ostentato matrimonio, Alberico II, il figlio natole dal primo marito, si impadronì del potere e della città, ed entrato all'improvviso in Castel S. Angelo, costrinse Ugo alla fuga, mentre Marozia finì i suoi giorni ristretta in carcere.
+
+Circa il sacco di Roma, dal quale Clemente VII riuscì a salvarsi fuggendo nel Castello attraverso il corridoio di Borgo; degna di nota è la notizia che costui per cordoglio di quanto stava verificandosi, mantenne la barba in piena crescita fino all'avvenuta sua liberazione.
+
+Ma le cronache meno patriottiche segnalano come questo accorgimento fosse stato adottato dall'augusto prigioniero di Castello per meglio fuggire, irriconoscibile, dalle grinfie dei Lancenecchi, ove questo si fosse reso necessario.
+
+In Castello ai tempi di Michelangelo e del Bernini, che ne idearono e perfezionarono le macchine necessarie, si accendevano girandole e fantasmagorici fuochi d'artificio: Si trattava, come riporta la cronaca, di: «torrenti di luce bacinanti, fiammate, razzi, balenii, come fulmini che imitavano la tempesta, eruzioni di fontane dai larghi e continui getti, ceste di fiori e giganteschi grappoli da una miriade di stelle di fuoco di tutti i colori; enormi ruote che giravano vorticosamente spandendo zampilli, velocissimi razzi che solcavano il cielo; spegnendosi poi con fragore di scoppi e che si aprivano in alto assumendo l'aspetto di fantastiche piovre dai cento tentacoli». Un tale spettacolo pirotecnico a sostituzione dei circenses neroniani avveniva, come si capirà, con grande interesse e afflusso di popolazione, ed è stato spesso descritto da tutti gli artisti incisori amanti di Roma e del suo costume.
+
+Ma la trattazione dedicata questo tempio degli orrori potrebbe chiudersi senza attingere qualche verso del Belli, riferito al monumento? Pensiamo di no, e riportiamo alcuni tratti appunto dal primo dei due sonetti, datati 6 gennaio 1832, intitolati «Caster-Zant'-Angelow»:
+
+«dice che, a la Republica Romana; lassù, pe via de na frebbe c'era invece dell'angelo una pigna / e Castello era la gran 'Mola adriana"
+Accidenti che buggera de mola!
+Averanno impicciato tutt'er fiume co li rotoni de sta mola sola!
+Oh varda, cristo! come va er costume!
+Macinà prima er grano pe la eppoi 'occhi fà girelli e fume!».
+
+Evidente riferimento quest'ultimo verso ai fuochi d'artificio appena ricordati, che si facevano sopra il Castello per la delizia dei romani e buona politica pontificia; al fine di mantenere la popolazione soggetta e contenta, perloneno con le apparenze.
+
+Proseguiamo adesso questo itinerario lungo il rione Borgo, intrattenendoci con il cosiddetto «corridore di Borgo», da un lato attaccato al Castel S. Angelo, dall'altro ai palazzi apostolici del Vaticano.
+
+È un passaggio lungo 420 metri che corre su arcate, fatto costruire da Niccolò III e ristrutturato da Alessandro VI Borgia sul finire del Quattrocento. Sfrutta le mura erette da papa Leone IV attorno alla metà del...
+
+---
+
+
+944
+
+RIONE XIV. BORGO
+
+1'800, e poco più tardi, attorno al 1640, venne completamente coperto da un tetto di tegole ad opera del pontefice Urbano VIII. Il passaggio, noto anche come passetto di Borgo, venne spesso utilizzato per condurre nella prigione di Castello individui di cui non si doveva sapere né la permanenza né l'imprigionamento; come successe per il cardinal Carafa. Ma si rese soprattutto utile ai vari pontefici volta che pericoli o minacce alla loro incolumità li vedessero costretti a riparare in un sito meno precario ed esposto di quello del palazzo apostolico:
+
+Il più celebre dei servizi compiuti dal corridoio al papa e alla curia al completo si ricorda che è stato quello legato al sacco di Roma, allorché papa Clemente VII riuscì a porsi in salvo nell'ultimo istante possibile; quando le truppe imperiali erano già alle soglie di Castello.
+
+Con il suo andamento tortuoso che reca in chi lo guarda dal basso una curiosa sensazione di leggera fragilità, in antitesi con lo scopo difensivo, il lunghissimo «corridoio» si presenta ancora oggi come una delle opere più pittoresche delle mura della città leonina. Esce quasi di soppiatto dal Vaticano; sfiora il loggiato berniniano, si insinua tra le case superstiti del vecchio Borgo, ridotto all'ombra di se stesso dopo la distruzione della «Spina», scavalca le strade con stretti o più ampi fornici, a seconda dello scarico necessario ai edificatori, ma anche a seconda delle varie opere di adattamento sopravvenute per la viabilità moderna, supera i giardini dell'ager vaticanus, che ora fanno parte del parco del Castel S. Angelo; e salendo un poco, s'insinesta nella mole difensiva. Al suo interno il passaggio si presenta come un corridoio; e di qui il suo nome. Oggi non è visitabile.
+
+Sembra che nella fuga lungo il «passetto» papa Clemente VII abbia corso grave pericolo di vita ad opera del connestabile di Bourbon; un archibugiere imperiale, su istigazione di costui, infatti avrebbe senz'altro accoppato l'augusto personaggio se il cardinal Ciocchi-Dal Monte, al suo seguito, non si fosse gettato sul papa, evitandogli la pallottola micidiale; un cardinale che più tardi fu eletto papa a sua volta con il nome di Giulio III. Oggi il «passetto», già in uno stato di miserevole abbandono e le foto d'archivio ce lo mostrano all'interno gravato di erbacce e di detriti inestricabili, è stato ripristinato.
+
+Cosa dire ora di via della Conciliazione, spettrale spaccato materiale con la sua fila inespressiva di ceri in travertino sormontati da lampadari più idonei a una stazione e a un ufficio postale. E il rammarico è certo ancora più cocente per via di quanto in questa asettica strada, gelida e impersonale, era invece pulsante situazione urbanistica sia da bonificare, che ogni poche fuga di Borgo.
+
+Il più armonico e caratteristico rione di Roma, dallo sventramento della «Spina», della quale si è detto più dettagliatamente nella sezione apposita, ha subito un trauma irreparabile. Oramai Borgo è un quartiere inorganico e via della Conciliazione una strada monumentale dal tono pretenzioso e inerte; neppure di scorrimento, né tanto meno commerciale. Gli architetti Piacentini e Spaccarelli, in combutta con il fascio e il pontefice dell'epoca, hanno fatto sparire luoghi insostituibili dal punto di vista dell'e- [?]
+
+---
+
+
+PRIMO ITINERARIO
+945
+
+**Edifici e ambienti scomparsi del rione Borgo**
+
+La demolizione della cosiddetta «spina» di Borgo, cuneo di abitazioni ammassate tra due rettilinei che conducevano alla basilica vaticana, con partenza da piazza Castello, ha una storia lunga meno di seicento anni. Nello stringere all'essenziale la vicenda complessa del suo abbattimento e degli infiniti tentativi e progetti naufragati, riferiamo intanto quanto Carlo Fontana, architetto della Fabbrica di S. Pietro, pubblicò in un volume irto di dati e di disegni con il titolo «Tempio Vaticano» sul finire del Seicento. Il Fontana prevedeva la distruzione completa della «spina», non sapendo certo che la cosa sarebbe potuta succedere così tardi.
+
+Al tempo del Bernini era stata già abbattuta l'Isola del Priorato; ora Fontana propugnava il proseguimento delle demolizioni perché restasse distrutta «quella brutta veduta di casuccioli».
+
+Il fatto è che solo se si fosse potuto arrivare a un raso-suolo fino alla piazza Scossacavalli, dov'era il palazzo Torlonia, erigendo un colonnato a sua firma avrebbe avuto senso insieme a una egregia prospettiva per tutto il tempio del Maderno.
+
+Ma lasciamolo parlare direttamente: «quando si effettuasse la detta piazza fra i portici (una volta effettuata la demolizione) et il ponte, vi sarebbe giusto et adeguato loco per destinarvi quelle indecenti baracche et botteghe che in numero vicino al tempio si espongono per far quel mercato che tanto sconviene e perturba il culto divino e ne scema la venerazione e il decoro...» quindi, quasi a prevedere quanto si effettuerà trecento anni più tardi: «Gran soddisfazione apporterebbe il vedere una longa piazza con i lati pieni di botteghe et di merci, la qual più immune circondata da portici per la nobile maestà del santuario».
+
+Nel 1776, sotto il pontificato di Pio VI, l'architetto di Imola, Cosimo Morello, proponeva anch'egli la demolizione della «spina», e il progetto con tanto di disegni e lucidi suggeriva: «due facciate, o siano vestiboli della medesima architettura della piazza, una lunga strada pavimentata con una fontana all'inizio e un'altra nel mezzo, diversa da quella già esistente in piazza Scossacavalli; dinanzi a palazzo Torlonia». Per questo progetto l'amministrazione francese di Roma con il commissario del Tournon aveva stanziato addirittura la cifra di un milione di franchi, come ricorda Cesare D'Onofrio in un'opera basilare sull'argomento, «Roma dal cielo», della quale ci siamo avvalsi per qualche documentazione.
+
+È del 1812, poi, il progetto di demolizione e ricostruzione di Giuseppe Valadier, che prevedeva con la demolizione della «spina» la creazione di una grande strada ornata di colonne colossali et statue di S. Pietro e di S. Paolo. Un progetto questo che almeno negli ornamenti colonnari rinvia a quanto al riguardo aveva già ideato il Bramante secoli prima.
+
+Il progetto Valadier era naturalmente corredato da spese, rilevamenti, tempi e modi d'esproprio e dunque non può essere considerata mera esercitazione accademica.
+
+Ma solo trentacinque anni più tardi, con la Repubblica Romana del 1849 e con la fuga di Pio IX a Gaeta avvenne la prima demolizione della «spina», insieme alla fontana murale di Paolo V e al Mascherone di Borgo. Ma l'anno appresso, ripristinatasi l'amministrazione papale, anche i luoghi vennero ripristinati e l'edificio abbattuto fu ricostruito addirittura sopraelevato; quasi a dimostrazione arrogante di un potere che non ammetteva intromissioni. Nel 1850 Domenico Capranica nella rivista «Album» proponeva un abbattimento della «spina»...
+
+---
+
+
+946
+RIONE XIV. BORGO
+
+parziale: «cosicché non dovesse verificarsi una strada troppo ampia e di difficile utilizzazione urbanistica. Il progetto avrebbe previsto un lungo taglio del Borgo Vecchio; così da promuovere una duplice spina con due strade minori parallele ai margini e una più ampia nel centro».
+
+Ma anche questo progetto andò ad arricchire solo la letteratura scientifica sull'argomento. Siamo giunti così a Roma capitale e a un anno, il 1870, che favorì senz'altro il fiorire di progetti e di propositi al riguardo; dal momento che la pressione pontificia si riteneva ridimensionata.
+
+Il piano regolatore del 1873 prevedeva la demolizione della spina per dare slancio e visione al tempio; e affinché la cupola michelangiolesca potesse essere finalmente apprezzata nella giusta luce. L'architetto più famoso del tempo, Andrea Busiri Vici, nel 1886 aveva pubblicato un progetto di demolizione della spina per sostituirla con due tronchi di galleria: i lavori dovevano comprendere la demolizione totale degli isolati fra Borgo Vecchio e Borgo Nuovo; il taglio del lato sud del Borgo Vecchio, arretrandolo tanto da renderlo disposto rispetto all'asse di piazza S. Pietro, simmetricamente al lato nord di Borgo Nuovo. Ma concreti per la demolizione furono i passi compiuti solo dopo l'avvenuta firma del concordato tra il governo fascista e la Chiesa, nell'anno 1929, mese di febbraio; giorno undici. Senza l'assenso papale d'altra parte; una volta firmato il concordato; Mussolini anche volendolo; non avrebbe potuto decidere neppure riguardo a una sola pietra; infatti all'articolo il trattato così dispone: «Nel territorio attorno alla Città del Vaticano il governo italiano si impegna a non permettere nuove costruzioni che costituiscano introspetto ed provvedere per lo stesso fine alla demolizione di già esistenti in piazza Cavalleggeri. Nella piazza Rusticucci nelle zone adiacenti al colonnato; qualsiasi mutamento edilizio o stradale che possano interessare la Città del Vaticano inoltre si farà di comune accordo...».
+
+Il progetto della demolizione venne affidato agli architetti Attilio Spaccarelli e Marcello Piacentini, che si videro approvato a spron battuto ciò che avevano proposto; il governo passò l'incarico d'intraprendere e ottenere il gradimento dei lavori al governatore Bottai; il quale insieme alla commenda e alla Gran Croce dell'ordine di S. Giorgio: nel 1936 ottenne dal Vaticano: «A dare immediato attestato di soddisfazione e portare al capo del governo italiano lo speciale ringraziamento e augurio di un sollecito inizio e di un felice svolgimento degli importanti lavori».
+
+Anche perché l'ingente onere finanziario dei lavori era stato accollato completamente allo Stato italiano.
+
+Per la Chiesa questi lavori d'altra parte, ottenuti e portati a termine così a buon mercato, erano un vantaggio anche spirituale, e non solo urbanistico ed estetico; giacché permettevano all'angusta amministrazione, relegata in mura anacronistiche, d'uscire all'aperto, disponendo una strada di rappresentanza che la inseriva palesemente in una capitale che aveva irrimediabilmente perso. La demolizione della spina iniziò il 28 ottobre del 1936, e interrottisi i lavori a causa degli eventi bellici, questi ripresero e si conclusero, stavolta con un sostanziale finanziamento papale, nell'anno 1950, con l'inaugurazione finale della via della Conciliazione delle sue «candelev mortuarie». Nel corpo della trattazione riferita al rione Borgo; e in particolare durante i due itinerari che lo riguardano; abbiamo più volte citato luoghi e passi scomparsi e ricostruiti della «spina», e qui dunque, dopo aver tracciato la storia di questa famigerata vicenda, ci pare giusto ora dare un significativo cenno di ciò che rappresentava questa parte urbanistica del rione, oggi scomparsa:
+
+Intanto è da sottolineare che le due strade parallele che partivano dal Castello per affiancare la «spina»...
+
+---
+
+
+PRIMO ITINERARIO
+947
+
+Fino alla basilica, fino a tutto il Quattrocento erano considerate un tutt'uno viario, in quanto la prima, il Borgo Vecchio; o *carrera* o *carrieras*, era destinata al transito dei carri mentre la seconda, assai più nobile, il Borgo Nuovo via Alexandrina (avendola voluta papa Alessandro VI), era destinata al pedone per via del suo porticato; per questo motivo era chiamata anche Portica.
+
+All'estrema sinistra di queste due direttrici correva poi il Borgo S. Spirito, ancora esistente. Prima della demolizione era oppresso da una miriade di edifici oscuri tramati in vicoli spesso ciechi maleodoranti; oggi gli uni agli altri sono del tutto scomparsi, se si fa eccezione della già citata Scala Santa e della chiesa che la ospita, poste comunque a dislivello notevole rispetto all'attuale piano, dato appunto lo storico sbancamento. La costruzione della citata Portica deve ascriversi ai tempi di Caligola.
+
+Borgo Nuovo si rifaceva dunque a un tracciato di epoca romana; ne fa fede un accenno di Seneca nel *De Irae* (II, 18, 4), quando, a proposito dell'imperatore Nerone, costantemente assetato di sangue, scrive: «passeggiava nel giardino coperto di verde di proprietà di sua madre; che divide la riva del Tevere dal Portico...». La Portica aveva il fondo stradale in travertino, materiale che nel tempo, insieme a quello di risulta della gigantesca piramide (di cui diremo poi), fece comodo ai costruttori di S. Pietro, che se ne avvalsero per innalzare le scalinate basilicali. Adriano ampliò la Portica per renderla agevole ai nuovi condizionamenti del traffico sopravvenuti, dimostrandosi in qualche modo un antesignano circa gli interessi edificatori del Borgo.
+
+La Portica rovinò gradatamente anche a causa dell'esilio avignonese del papato, cosicché, più o meno riattata, vivacchiò ormai priva di quegli abbellimenti che la contraddistinguevano anticamente; finendo per essere, come s'è detto, solo una via di percorso pedonale ai margini della «spinaw». Attraversato il ponte Elio (oggi dell'Angelo), un tempo esisteva un muro di sbarramento difensivo che, come s'è già narrato, provocava continue vittime ai tempi dei giubilei a causa dell'angustia della strada. Quindi era la vecchia porta Aurelia o di S. Pietro Bronzo, a causa dei suoi battenti bronzei, probabilmente tolti alla Mole Adriana. Varcata questa porta era la chiesetta della Traspontina; che, ampliata di molto, sarà spostata su via della Conciliazione.
+
+A questo punto, prima di entrare nella Portica, sulla destra c'era un monumento, poi demolito, che il canonico Benedetto chiama stranamente «obelisco», attribuendolo a Nerone. Di questo «obelisco», probabilmente d'origine funeraria (i *Mirabilias* ci recano qualche cenno ulteriore dopo aver parlato dell'adiacente sepolcro di Romolo): «Presso tale sepolcro ci fu il monumento in travertino tiburtinum di Nerone; alto quanto Castel S. Angelo; ricoperto di bellissime lastre di marmo, le quali furono utilizzate per fare i gradini della basilica di S. Pietro e per fare il quadriportico del "paradiso" dinanzi alla basilica; questo edificio fu a pianta circolare con due cilindri sovrapposti come per Castel S. Angelo, le cui orlature erano coperte di lastre di marmo per lo scolo delle acque; presso questo monumento fu crocifisso l'apostolo Pietro».
+
+Ma anticamente esisteva un altro monumento eccezionale in Borgo, oggi irrimediabilmente scomparso: una gigantesca piramide, appena superato l'arco d'accesso alla Portica, percorsi alcune decine di metri sulla destra. Una piramide che aveva un lato sporto nella via Sancta a tal punto da impedirne la agevole percorrenza. Fu demolita nel 1499; per dare a chi legge qualche idea della sua mole inusuale, diremo che le sue dimensioni avevano in altezza 32 metri, mentre ogni lato della sua base ne misurava 28. Borgo però...
+
+---
+
+
+948
+RIONE XIV. BORGO
+
+Una piramide dunque assai più imponente di quella di Caio Cestio, ancora in piedi presso porta S. Paolo; che misura solo 27 metri d'altezza e 22 metri di lato alla base. Per dare al lettore un'idea di ciò che doveva essere il monumento — anch'esso probabilmente funerario — che era inferiore solo di sedici metri a Castel S. Angelo. Si favoleggiò che la piramide gigantesca fosse il sepolcro di Scipione, addirittura di Romolo, il fondatore mitico della città di Roma. Attribuzione suffragata quest'ultima da quanto scrive a riguardo Magister Gregorius, un prelato inglese che visitò Roma nel 1220: «La prima piramide che vidi fu di Romolo. Di questa che è situata dinanzi al Castello, presso la chiesa di S. Pietro; i pellegrini favoleggiano che fosse un grande mucchio di frumento dell'apostolo Pietro, tramutatosi in colle di pietra della medesima imponenza; che Nerone l'ebbe tolto all'apostolo. Ma è una storia che appartiene al genere di le del tutto inconsistenti delle quali i pellegrini sono molto ghiotti».
+
+Ma le leggende hanno sempre una radice di verità; e dal momento che la piramide aveva una cella funeraria spaziosissima a 7 metri per lato, per oltre dieci di altezza, e che apparteneva al capitolo di S. Pietro, non è inverosimile che fosse divenuta comodo silos per conservarvi il grano necessario alla basilica e alla sua comunità; di qui il favoleggiare di Pietro come garante proprietario della granaglia.
+
+Concluderemo l'excursus ai luoghi e ai palazzi scomparsi di Borgo e della «spina», enumerando quanto esisteva sulla destra del Borgo Vecchio, da piazza Pia a S. Pietro. Sulla piazza Pia era il Palazzo Poletti, un'edicola sacra, quindi una casupola di nessun valore, per finire con un palazzo cinquecentesco restaurato dal Valadier: Finiva il giro della piazza una successione di case sciolte fra loro. Sul vicolo dell'Ospedale, oggi scomparso, era il palazzo dei Penitenzieri, del quale abbiamo sufficientemente parlato nell'itinerario che lo comprende.
+
+Sulla piazza Pia, nel lato destro, oltre a case di nessun valore, era il fetido vicolo Cieco; al numero 36 una casa del Pio istituto di S. Spirito, una «Madonnella» posta in edicola muraria, pure scomparsa. Sul vicolo Dritto, angolo con il Borgo Vecchio, anch'esso scomparso, era una fontanella del 1929 che ha avuto davvero poco tempo per rifornire d'acqua un rione perennemente assetato e ammassato di case, tutte prive dei servizi più elementari. Quindi, sullo stesso vicolo Dritto esisteva una casa mediocrissima di quattro piani, l'oratorio di S. Sebastiano e una modesta casetta del Quattrocento di proprietà della Fabbrica di S. Pietro: quindi s'apriva il fianco dell' anch'essa demolita chiesa di S. Giacomo a Scossacavalli.
+
+Sulla scomparsa piazza Scossacavalli era il palazzo dei Convertendi, ricostruito dopo l'abbattimento della «spina», e del quale abbiamo già dato notizia; una casa con epigrafe del 1880, quindi un palazzetto pseudo-cinquecentesco con iscrizione «1650», di proprietà dell'ospedale di S. Spirito. Chiudeva la successione degli edifici che si affacciavano su questa piazza oggi scomparsa, la casa dell' archiatra pontificio Gaspare Torello e quella della famiglia Cybo.
+
+Sulla piazza Rusticucci, che guardava il colonnato, era un vecchio edificio nel quale era ospitata la Pubblica Sicurezza. Nel vicolo della Traspontina s'apriva invece il convento dei Carmelitani e recava refrigerio al viandante una fontana del Ricciotto eretta da Pio VI. Il convento ospitava una sezione del governatorato di Roma.
+
+Nel vicolo dell'Erba erano case di poco conto insieme all'ex palazzo Soderini. In vicolo della Purità gli edifici scomparsi risultano invece: una chiesetta di fregio, la casa di Febo Brigotti e il palazzo-abitazione del medico Giacomo da Brescia.
+
+---
+
+
+PRIMO ITINERARIO
 949
 
 La chiesa di S. Giacomo a Scossacavalli, oggi scomparsa, e palazzo Torlonia in un'incisione di G. Vasari.
@@ -24260,11 +22623,8 @@ Fin dal XII secolo esisteva accanto a Castel S. Angelo una primitiva chiesa chia
 
 ---
 
-<!-- p.950 (orig. p.950) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>950
+950
 
 RIONE XIV. BORGO
 
@@ -24280,11 +22640,8 @@ Più che descrivere tutte le cappelle e in dettaglio gli arredi e le cose più s
 
 ---
 
-<!-- p.951 (orig. p.951) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 951
 
 1798. Ma la tradizione di festeggiare su quest'altare una volta all'anno, precisamente il 14 dicembre, il culto per il cannone è rimasta anche per gli artiglieri dell'esercito italiano; che qui convergono dunque annualmente quanto devotamente nel nome di quella S. Barbara, appunto; figlía di un ricco e potente Dioscuro di Nicomedia.
@@ -24301,11 +22658,8 @@ Si diceva del toponimo del boia; ed effettivamente in questo vicolo...
 
 ---
 
-<!-- p.952 (orig. p.952) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>952
+952
 
 RIONE XIV. BORGO
 
@@ -24322,11 +22676,8 @@ A seguito dello scisma anglicano il palazzo venne confiscato dalla camera aposto
 
 ---
 
-<!-- p.953 (orig. p.953) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TESCO CON LA FACCIATA con due ordini di lesene accoppiate su alti plinti; il primo piano ha le finestre centinate e l'ultimo contiene due piani ribassati. Di grande interesse è l'armonioso cortile con portici ad arcate su pilastri quadrati, ornato con statue e busti antichi; sullo sfondo due fontane con rilievi marmorei quattrocenteschi.
+TESCO CON LA FACCIATA con due ordini di lesene accoppiate su alti plinti; il primo piano ha le finestre centinate e l'ultimo contiene due piani ribassati. Di grande interesse è l'armonioso cortile con portici ad arcate su pilastri quadrati, ornato con statue e busti antichi; sullo sfondo due fontane con rilievi marmorei quattrocenteschi.
 
 Oltrepassata, sempre percorrendo la via della Conciliazione, la traversa intitolata alla via dell'Erba, al numero civico 32-36 eccoci giunti dinanzi al Palazzo della Congregazione orientale dei Convertendi. Una volta si trovava a metà della «spina» di Borgo andata distrutta, come abbiamo già detto meglio nella sezione dedicata alle cose scomparse del rione, ed era con la facciata volta alla piazza Scossacavalli, anch'essa scomparsa. Dei convertendi era detto ad opera del cardinal Castaldi per essere stato dedicato a quegli eretici, che avessero chiesto il conforto della religione cattolica.
 
@@ -24342,11 +22693,8 @@ Proseguendo si giunge al Palazzo Serristori, il cui portone si apre sulla via de
 
 ---
 
-<!-- p.954 (orig. p.954) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>954
+954
 
 RIONE XIV. BORGO
 
@@ -24386,11 +22734,8 @@ Attribuito a Baccio Pontelli, venne fatto costruire dal cardinal Domenico della 
 
 ---
 
-<!-- p.955 (orig. p.955) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 955
 
 Nel palazzo abitò anche il cardinal Francesco Alidosi; uomo tanto bello quanto torbido e incapace, a quanto è dato sapere attraverso le cronache e le testimonianze di costume. Costui fu il favorito; sembra a tutti gli effetti e necessità; di papa Giulio Della Rovere. Codesto cardinale, codardo oltreché chiacchierato; abbandonò vigliaccamente la fortezza di Imola, allora nello Stato della Chiesa, conquistata da poco dal papa alla testa del suo esercito in lotta contro gli Estensi di Ferrara. A seguito di questo suo comportamento venne trovato assassinato nelle vie di Ravenna nell'inverno del 1511. L'assassino sembra sia stato un Della Rovere, Francesco Maria; nipote di Giulio I, il grande protettore del meschino prelato. L'uccisione avvenne «coram populo», com'era usanza dei tempi quando la ragion di Stato e quella di famiglia si spingevano ben oltre le leggi anche naturali; e il giustificatorio d'ogni addebito pubblico e privato fu: «muori traditore». Recentemente il palazzo ha ospitato i penitenzieri, quei religiosi confessori della basilica, ai quali sono ancora oggi demandate piene facoltà assolutorie; che gestiscono attraverso l'uso d'una bacchetta lunga affusolata che al momento della remissione dei peccati viene manovrata dall'interno del confessionale sulle spalle del riappacificatosi con Cristo. Questo deve il suo nome attuale.
@@ -24403,11 +22748,8 @@ Avviandoci per Borgo Sant'Angelo; con partenza dalla piazza Pia, i luoghi notevo
 
 ---
 
-<!-- p.956 (orig. p.956) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>956
+956
 
 RIONE XIV. BORGO
 
@@ -24425,11 +22767,8 @@ Dopo l'esilio papale avignonese che vide i luoghi e le associazioni del rione in
 
 ---
 
-<!-- p.957 (orig. p.957) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 957
 
 Fondi occorrenti, nel 1744 iniziò la costruzione dell'oratorio che stiamo descrivendo, affidandone l'esecuzione all'architetto Pietro Passalacqua.
@@ -24452,11 +22791,8 @@ Queste opere provengono dalla chiesa demolita di S. Angelo dei Corridori. Al cen
 
 ---
 
-<!-- p.958 (orig. p.958) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>958
+958
 
 RIONE XIV. BORGO
 
@@ -24485,11 +22821,8 @@ anonimamente per ottenere l'educazione e l'assistenza pubblica. Gli illegittimi 
 
 ---
 
-<!-- p.959 (orig. p.959) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>959
+959
 
 di S. Spirito; ebbe vita breve; già nell'827 aveva subìto danni assai vasti per via del famoso incendio di Roma che si sviluppò con particolare virulenza in tutto il rione. Quindi subì il saccheggio dei saraceni, fino a che nel XII secolo l'insieme della chiesa e degli edifici adibiti all'assistenza furono solo un diruto cumulo di laterizi: Nasce di qui il disegno d'un ospedale moderno, che fungesse da nosocomio e da pronto soccorso per bambini abbandonati. Secondo il Vasari; architetto del primitivo disegno e dell'esecuzione dell' Opera di S. Spirito; fu il Marchionni Arezzo; che a termine la costruzione nell'anno 1204. In stesso anno venne dettata la regola dellordine da papa Innocenzo III in persona; nella bolla Inter Operas Pias; successivamente integrata con normative che giunsero fino al 1250, trattando anche dí cospicui stanziamenti via via sempre più specifici a un diffondersi dell' ordine e dei compiti che questo era stato chiamato a svolgere dal pontefice che lo aveva istituito. Non per questo l'ospedale ebbe vita serena; durante primi decenni del Quattrocento ebbe in servizio per le sue molteplici funzioni solo un di frati; finché Eugenio IV rinnovò la confraternita versando lasciti abbondanti per il funzionamento della vasta organizzazione: Costui fu anche il papa che volle si dedicasse massima parte dell assistenza all'infanzia abbandonata, e accanto all'ingresso principale dell'edificio venne allestita la famigerata «ruota degli esposti». In essa, come in una sorta di portapranzi: senza essere visti, si collocava la creatura, poi, a un tratto di campana; la «vivanda» viva e umana veniva prelevata all'interno senza un motto. Il portatore del pietoso fardello doveva solo far conoscere se la creatura era stata o meno battezzata; la creatura quindi veniva lavata con vino caldo e affidata a una balia costantemente in attesa dei nuovi arrivi. Una giornata nefanda per l'ospedale; durante questa sciagura; oltreché per Roma tutta e per il nostro rione in particolare, fu quella del 6 maggio del 1527, quando i Lanzichenecchi di Carlo V invasero locali pii, depredando; uccidendo e violentando donne, vecchi e bambini, e gettandone i corpi nel Tevere: Basti pensare; riguardo questa sciagura; che al tempo dell'invasione imperiale Roma contava 85.000 abitanti, che si ridussero a
 
@@ -24497,11 +22830,8 @@ La facciata dell'ospedale di S. Spirito in un'incisione di G.B. Falda.
 
 ---
 
-<!-- p.960 (orig. p.960) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>960
+960
 
 RIONE XIV. BORGO
 
@@ -24519,11 +22849,8 @@ Per visitare l'ospedale e le sue dipendenze occorre un apposito permesso della d
 
 ---
 
-<!-- p.961 (orig. p.961) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 961
 
 La Chiesa di S. Spirito in Sassia e l'omonimo ospedale (G. Vasi).
@@ -24540,11 +22867,8 @@ La facciata è decorata da una scalinata scenografica che la fa risaltare nella 
 
 ---
 
-<!-- p.962 (orig. p.962) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>962
+962
 RIONE XIV. BORGO
 
 Niva esposto il velo della Veronica; nella prima domenica dopo l'Epifania: era appositamente recato in processione dalla vicina basilica di S. Pietro.
@@ -24565,11 +22889,8 @@ Dinanzi a questo vestigio, nobile quanto irriconoscibile, che del resto nell'int
 
 ---
 
-<!-- p.963 (orig. p.963) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 963
 
 **Un orologio alla romana**
@@ -24597,11 +22918,8 @@ Divenuto vescovo, si direbbe oggi, per acclamazione di popolo; si spense vittima
 
 ---
 
-<!-- p.964 (orig. p.964) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>964
+964
 RIONE XIV. BORGO
 
 maggior sollecitudine e zelo il culto la devozione del Santissi-
@@ -24623,11 +22941,8 @@ Lasciato il compito d'illustrare la Città del Vaticano a un capito-
 
 ---
 
-<!-- p.965 (orig. p.965) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 965
 
 Lo specifico sull'argomento, portiamoci ora sul lato destro del colonnato berniniano; e dunque del rione stesso, idealmente diviso in due dalla Via della Conciliazione. Qui s'apre un altro accesso allo Stato Vaticano: il cosiddetto Portone di Bronzo; dietro al quale inizia la famosa Scala Regia.
@@ -24642,11 +22957,8 @@ Percorrendo ora Borgo Pio, daremo notizia di talune situazioni suggestive e stor
 
 ---
 
-<!-- p.966 (orig. p.966) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>966
+966
 
 RIONE XIV. BORGO
 
@@ -24660,11 +22972,8 @@ Questa parte del rione, dato finesto con l'adiacente Prati, ha perso carattere a
 
 ---
 
-<!-- p.967 (orig. p.967) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 967
 
 Porta Angelica, oggi scomparsa, in un'incisione ottocentesca di L. Rossini insieme ai nomi antichi di sicuro fascino; anche perché restano assai popolati. Proseguendo si giunge ora in piazza delle Vaschette, che prende nome dalla fontana incassata che getta l'Acqua Angelica. Alle spalle della graziosa fontana è antica scuola pontificia; che occupa l'intero lato della piazza; ristrutturata ampliata nel 1891 ad opera dell'architetto Zama Nocelli. Sul lato sinistro si trova una lunga fila di edifici piuttosto rozzi, modesti con accesso su via degli Ombrellari; si tratta di vere case popolari disposte a schiera; una sorta di INA-Casa ante litteram; furono realizzate su progetto dell'architetto Andrea Busiri «per ordine e spese di Pio IX per la classe indigente». Questo lotto di case popolari fu terminato nell'anno 1860, dieci anni prima dunque della presa di Roma da parte dei piemontesi; a saperlo il papa, di lì a poco spodestato dalla sua stessa popolazione nel plebiscito del 2 ottobre 1870, non le avrebbe certo edificate. Borgo Vittorio termina con la fine stessa del rione, e giunti al termine anche della nostra fatica; consigliamo ai lettori un giro delle mura e dei camminamenti della Mole Adriana, ora ai nostri piedi nella sua parte posteriore, per avere un colpo d'occhio del vetusto maniero dovuto all'imperatore Adriano.
@@ -24673,11 +22982,8 @@ RIONE XIV. BORGO
 
 ---
 
-<!-- p.968 (orig. p.968) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XV. Esquilino
+Rione XV. Esquilino
 di Claudia Cerchiai
 Dalle origini ad oggi
 
@@ -24691,11 +22997,8 @@ Il clivus Suburanus percorreva questa regio dalla porta Esquilina alla porta Mag
 
 ---
 
-<!-- p.969 (orig. p.969) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 969
 
 L'Esquilino visto dal Colosseo. In un'incisione ottocentesca di B. Pinelli
@@ -24708,11 +23011,8 @@ Numerosi resti di edifici antichi di età imperiale si trovano soprattutto nell'
 
 ---
 
-<!-- p.970 (orig. p.970) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>970
+970
 RIONE XV. ESQUILINO
 
 sterna e l'iscrizione (ora ai Musei vaticani) che ricorda il restau-
@@ -24769,11 +23069,8 @@ no, S. Croce in Gerusalemme e la Scala Santa. Queste, utili
 
 ---
 
-<!-- p.971 (orig. p.971) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO) ITINERARIO
+PRIMO) ITINERARIO
 97
 
 Alla grande rappresentazione della Roma papale; alle processioni e ai cortei pontifici, segnarono il costituirsi di proprietà aristocratiche con la conseguente edificazione di ville da considerarsi extra-urbane: Altieri, Astalli, Caserta; Magnani, Gentili, Rondinini, De Vecchi, Sacripante e Conti, Giustiniani Massimo e Palombara.
@@ -24802,11 +23099,130 @@ L'area fu, dalla metà circa del Quattrocento, esente da imposte per facilitare 
 
 ---
 
-<!-- p.980 (orig. p.980) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>980
+972
+
+RIONE XV. ESQUILINO
+
+**Mura aureliane**
+
+Questo rione comprende ed è a sua volta limitato da un considerevole tratto delle mura aureliane che furono costruite nella seconda metà del III secolo d.C. dall'imperatore Aureliano quando si temeva sempre di più un'invasione di Roma da parte delle popolazioni nord-orientali. Le mura nel loro percorso di circa 19 km furono costruite in un tempo breve, dal 271 al 275, in opera cementizia con rivestimento in laterizio per uno spessore complessivo di metri 3,50 e per un'altezza compresa fra i 6 e gli 8 metri.
+
+Nella muratura, ad intervalli di 3 metri, si aprono delle feritoie. Torrioni quadrati, con camera posta all'interno e situati ad una distanza di circa 30 metri l'uno dall'altro ne rafforzano il tracciato. Il percorso di questa nuova cinta muraria (la precedente era in tufo di età repubblicana) non rispettò per intero il tracciato delle regioni augustee al punto che almeno cinque videro la loro estensione limitata o tagliata in due.
+
+Furono inclusi i famosi sette colli, il rione Trastevere, il Gianicolo e diversi edifici, la piramide Cestia; il Castro Pretorio, l'anfiteatro Castrense sicché ancora oggi li vediamo uscire dalla compatta muratura aureliana.
+
+Diversi cantieri lavorarono contemporaneamente per portare a compimento in breve tempo una così vasta impresa e numerose porte vennero aperte, per lo più in corrispondenza delle grandi vie di comunicazione, ad uno doppio fornice ma tutte protette da torrioni semicircolari merlati, all'interno dei quali erano situati gli ambienti per i macchinari di manovra. Porte più piccole, le posterule, si aprivano lungo il percorso e servivano per il più modesto traffico locale. Le mura, sotto Massenzio, furono restaurate e si iniziò in tale circostanza anche lo scavo di un vallum, che fu però interrotto ben presto. Sotto Onorio, fra il 401-402, e ad opera di Stilicone ci fu un'altra ristrutturazione questa volta più consistente: le mura furono innalzate e così pure le torri. Il camminamento fu coperto e al di sopra di questo ne fu creato un secondo.
+
+Le posterule furono tutte chiuse, le porte furono tutte ridotte ad un solo fornice; mentre venne ricavata una seconda porta più interna un'area fortificata fra le due porte. Un successivo restauro fu effettuato nel VI secolo ad opera di Belisario.
+
+Infatti vi si legge:
+
+> *Paulus Pont Max columnam veteris magnificentiae monumentum informi situ obductam neglectamque ex immanibus templi ruinis quod Vespasianus Augustus acto de ludaeis triumpho et reipub statu confirmato dicaverat in hanc splendidissimam sedem ad basilicae liberianae decorem augendum suo iussu exportatam et pristino nitori restitutam Beatissimae Virgini et cuius visceribus princeps verae pacis genitus est donum dedit aeneamque eiusdem Virginis statuam fastigio imposuit Anno sal MDCXIIII Pontif IX*
+
+La colonna fu fatta trasportare su questa piazza e fatta erigere da Paolo V, Borghese, tra il 1613 e il 1614. L'architetto fu Carlo Maderno in collaborazione con l'architetto De Vecchi. Essi posero all'estremità inferiore della colonna, alternati in bronzo, gli elementi araldici che compaiono nello stemma dei Borghese cioè l'aquila e il drago alato mentre festoni marmorei sono scolpiti sul basso plinto.
+
+---
+
+
+PRIMO ITINERARIO
+973
+
+E ancora draghi e le aquile; questa volta in travertino, ornavano la bella fontana, anch'essa del Maderno, sistemata davanti alla colonna, dal lato verso la facciata della chiesa di S. Maria Maggiore. Infatti la fontana in travertino, dalla vasca allungata mistilinea, presenta sui lati lunghi due piccole vaschette poste su mascheroni e ornate da aquile. I draghi che dovevano invece ornare l'interno della vasca verso i lati corti oggi non esistono più (forse tolti nell'Ottocento), ma li possiamo vedere in un'incisione del 1675. Al centro, su una doppia base ottagonale, è posta un'alta e semplice vaschetta e da sotto il bordo di questa scendono otto zampilli d'acqua vergine. Alla sommità della colonna fu posto il gruppo bronzeo raffigurante la *Madonna con il Bambino*, con su una falce di luna con il capo ornato da un'aureola di stelle: la statua è opera di Guglielmo Berthélot, mentre il fonditore fu il Ferreri. Per ottenere il bronzo necessario per il gruppo, furono fatti fondere da Paolo alcuni cannoni situati a Castel Sant'Angelo e la recinzione che era attorno all'antica Pigna di bronzo posta davanti alla basilica di S. Pietro.
+
+La piazza ha avuto negli ultimi anni un'accorta sistemazione: infatti l'area compresa fra la colonna e la gradinata della chiesa è stata isolata dal traffico mediante una sobria recinzione in ferro alternata a colonnotti in granito grigio, illuminata da sei lampioni. Subito dietro la colonna, sul lato opposto, un alto palazzo divide fra loro la via Merulana e la via Carlo Alberto. Il portone, che reca sull'architrave l'iscrizione *Coll. Ap. Poen. SMM. de Urbex*, ha la lunetta superiore ornata da un motivo vegetale a traforo in ferro, limitato da una greca. Al centro ugualmente in ferro è un tondo che reca, in bassorilievo, la raffigurazione della *Madonna con il Bambino*. Due semicolonne su dadi e con cornice superiore piuttosto aggettante affiancano l'ingresso:
+
+Prendiamo adesso per via Merulana, che segna il confine fra il rione Monti sul lato destro e il rione Esquilino sul sinistro; e qui subito all'angolo, a sinistra, vediamo il negozio di Papalini. Proseguiamo e al n. 13 è un monumentale edificio costruito nel 1932, come si legge anche sul portone, il quale presenta al di sopra, ai lati di una finestra quadrata, due cornucopie allusive ad una situazione di prosperità per gli inquilini: segue, ai nn. 19-24, un altro palazzo che reca sulle finte chiavi degli ingressi lo stemma dei tre monti sormontati da una stella.
+
+Arriviamo così ad un modesto slargo su cui si affaccia la chiesa di S. Alfonso de' Liguori, che dà il nome alla piazzetta. Questo Santo, fondatore dell'ordine dei Redenzionisti, è il protettore di S. Agata dei Goti in quanto fu vescovo di questo centro. Nativo di Marianella (Napoli) nel 1696, appartenente ad una nobile famiglia napoletana, si laureò giovanissimo in diritto civile e diritto canonico. Fondò l'istituto del SS. Redentore, detto anche dei Redenzionisti, che aveva come scopo, appunto, l'aiuto e insegnamento della dottrina a coloro che appartenevano al basso ceto e ai contadini. Questo Istituto, approvato dal papa quando il suo fondatore aveva cinquantatré anni, ebbe riconoscimento legale soltanto trentuno anni più tardi. Alfonso de' Liguori morì all'età di novantuno anni nel 1787. Aveva ricevuto il titolo
+
+---
+
+
+974
+
+RIONI: XV. ESQUILINO
+
+di dottore della Chiesa per le numerose epistole ai suoi missionari, ai sacerdoti e per le numerose opere scritte; soprattutto di morale, come la nota «Theologia moralis», nella quale, in opposizione al rigorismo dei giansenisti, viene evidenziata e sollecitata la misericordia.
+
+La chiesa è racchiusa all'interno di una recinzione, che si apre con un cancello principale in ferro battuto sostenuto da pilastri in travertino dal forte bugnato e con due ingressi minori ai lati del primo; ha davanti a sé un modesto slargo, come si è detto, ed è sopraelevata su una gradinata frontale. La facciata, ad eccezione dei tre portali che si aprono in avancorpo in travertino, è in laterizio. Il corpo centrale, nella parte superiore, è affiancato da due lesene da cui si origina il grande arco a sesto acuto con cordolo esterno in travertino inquadrato da un tetto a capanna. Ai lati, su due strette pareti, anch'esse affiancate da lesene, si aprono rosoncini con cornici in travertino e due strette e alte finestre a cuspide. La facciata, opera del Gérard, presenta inoltre, al centro, un grande rosone chiuso da una bella vetrata policroma. Al di sopra della porta centrale è posto un bassorilievo raffigurante la «Madonna del Perpetuo Soccorso», con ricco contorno di Angeli, mentre al di sopra di quelle laterali sono rispettivamente raffigurati, su fondo dorato: a sinistra «S. Alfonso de' Liguoris» e a destra «S. Clemente Hofbauer» dell'ordine dei Redentoristi. Sulla cuspide del portale d'ingresso vediamo collocata la statua del «Redentore».
+
+La chiesa, costruita nel 1855 su progetto del Wigley, fu consacrata quattro anni più tardi dal cardinale Patrizi. L'interno è a tre navate con matroneo sostenuto da coppie di colonnine sopra le navate laterali. Oltrepassata la porta è un nartece, separato dalle navate da una coppia di pilastri, mentre ai lati si aprono due nicchie che racchiudono due gruppi raffiguranti «Cristo coronato di spine» e la «Crocifissione con la Madonna e S. Giovanni».
+
+Tutta la chiesa, realizzata in neo-gotico, presenta una ricca decorazione di marmi e mosaico che si vede anche nelle cappelle laterali, comunicanti fra loro da passaggi ad arco a sesto acuto. All'interno viene venerata, situata sull'altare maggiore, l'immagine della «Madonna del Perpetuo Soccorso», dipinta su tavola e attribuita con probabilità al XIV secolo. Questa venerata immagine fu trasportata dall'isola di Creta intorno al 1495 e fu posta dapprima nella chiesa dedicata a S. Matteo Apostolo. Nel 1810, distrutta la chiesa, l'immagine fu dapprima trasferita nel monastero di S. Eusebio, poi nel convento di S. Maria in Posterula ed infine, nel 1866, nella nostra chiesa dove l'anno successivo fu ornata delle due corone.
+
+Usciti dalla chiesa proseguiamo per via Merulana dove al n. 31 vediamo un grande edificio in stile neo-barocco; qui ha sede la casa generalizia dei padri Redenzionisti. La fronte è ornata da una monumentale loggia sostenuta da quattro semicolonne. Qui, entro due nicchie, sono collocate le statue del «Redentore» e di «S. Alfonso». Ai lati dell'edificio sono invece due iscrizioni e gli stemmi cardinalizio e pontificio. Da notare è un bel Porologio d'epoca a doppio quadrante montato a bandiera.
+
+---
+
+
+PRIMO ITINERARIO
+975
+
+Incontriamo così via dello Statuto che conduce alla piazza Vittorio, ma noi proseguiamo ancora su via Merulana che da questo punto è ombreggiata da alti platani. Incontriamo una serie di palazzi dei primi anni di questo secolo che caratterizzano questa parte del rione e, all'angolo con largo Leopardi, uno dei famosi forni di Roma: «L'arte del pane» di Panella.
+
+Al centro di largo Leopardi, racchiuso da una recinzione e da alberi è il cosiddetto Auditorium di Mecenate, che fu scoperto nel 1874.
+Si tratta di un'aula rettangolare; seminterrata anche in antico; lungo metri 24,40 e larga metri 10,60, l'altezza fino all'imposta della volta è di metri 7,40. Sui due lati lunghi si aprono sei nicchie rettangolari. Uno dei lati minori si allarga in un'abside dove, al di sopra di una breve scalinata di sette gradini dall'andamento curvo, si dispongono cinque nicchie, anch'esse rettangolari. I gradini erano anticamente coperti da lastre di marmo cipollino. Alcuni tubi situati nel gradino più alto di questa piccola cavea, oggi richiusi e dai quali doveva defluire l'acqua che correva giù per la breve gradinata, consentono di individuare questo edificio come un ninfeo, appartenente ad un più vasto complesso; sicuramente una villa; della quale al momento del rinvenimento del ninfeo, si riconobbero alcuni ambienti (che si erano sovrapposti ad un tratto delle mura serviane che ancora si possono vedere all'esterno dal lato verso la via Leopardi): Questa villa, databile per il tipo delle murature alla fine dell'età repubblicana-inizio di quella imperiale; ebbe una seconda fase documentata da un pavimento in *opus sectile* posto al di sopra dell'originario pavimento a minute tessere bianche ravvivato da fasce rosse ad encausto. Seguì quindi una terza fase indicata dalla muratura in laterizio, visibile alla base della «cavea». Le pareti conservano ancora alcuni bellissimi affreschi che possono essere datati alla seconda fase di ristrutturazione della villa. Si vedono dei giardini con transenne, alberi ed uccelli in una raffigurazione molto simile a quella della villa di Livia a Prima Porta, visibile ora al Museo nazionale romano; ed una fascia monocroma con figure. È molto probabile che questo ninfeo facesse parte della villa che Mecenate si era fatto costruire intorno al 30 a.C. sull'Esquilino quando, abolita la necropoli, la zona venne «bonificata» come si è detto; con la costruzione di splendide ville residenziali. Alla morte di Mecenate la villa divenne proprietà imperiale, tanto che Tiberio, al suo ritorno dal volontario esilio nell'isola di Rodi, amò abitarvi ed è a questo periodo che possono essere attribuiti gli affreschi di splendida esecuzione.
+
+Riprendiamo via Merulana dove subito all'angolo è il grande edificio della direzione centrale del Catasto; che sull'angolo conserva lo stemma sabaudo in travertino. Proseguendo vediamo, al n. 82, una delle librerie antiquarie romane più note e ricche per argomenti magico-esoterici e più avanti, in corrispondenza del n. 105, è una lapide che ricorda l'eccidio alle Fosse Ardeatine:
+
+Arriviamo così ai nn. 120-121 dove vediamo quanto resta del vecchio edificio dell'ufficio d'igiene, in parte demolito e quindi sostituito da uno più moderno situato proprio all'angolo con via...
+
+---
+
+
+976
+
+RIONE XV. ESQUILINO
+
+le Manzoni. Lasciamo adesso via Merulana e, per completare la prima passeggiata in questo rione, inoltrandoci per viale Manzoni, anch'esso alberato e dove proseguono gli alti edifici del primo Novecento. A sinistra prendiamo per via Tasso che conduce a piazza Dante, dove è situato il monumentale edificio delle Casse di risparmio postali, racchiuso da un'alta recinzione in ferro battuto che reca agli angoli dei bei lampioni. L'edificio, ornato al centro della facciata principale da una doppia loggia con semicolonne, presenta sulla sommità lo stemma dei Savoia affiancato da grandi statue raffiguranti il «Lavoro» e il «Risparmio».
+
+Prendendo per via Ferruccio si giunge all'incrocio con via Machiavelli e qui, all'angolo (n. 50), è un edificio con ricca decorazione in stucco ed oro sotto il marcapiano, da medaglioni ad affresco con la raffigurazione dei grandi artisti italiani fra cui Michelangelo, Leopardi, Machiavelli e Dante.
+
+Proseguendo per via Ferruccio vediamo, in un moderno edificio (nn. 25-27), la sede della «Cucina economica del Circolo di S. Pietro» dedicata a Teresa e Matilde Sacchetti.
+
+Inoltriamoci adesso per via Buonarroti dove, sulla sinistra, è un edificio in laterizio ornato da alte finestre ogivali e che reca, all'angolo con via Giusti, una doppia edicola che racchiude le immagini della «Vergine» e di «S. Francesco», illuminata da una lampada a braccio in ferro battuto. Giriamo attorno all'edificio, piegando a sinistra per via Machiavelli ombreggiata da piante di ligustro; al n. 24 vediamo l'ingresso ad una cappella realizzata in stile neo-gotico dedicata a S. Elena, la cui immagine con la «Croce» è posta nell'abside. Al di sopra del portale d'ingresso è raffigurato, in mattonelle policrome, il «SS. Sacramento» circondato da Angeli. La stessa raffigurazione è anche su una piccola targa marmorea posta accanto alla porta. L'edificio ospita all'interno la casa generalizia delle suore francescane missionarie di Maria. Proseguendo per via Buonarroti raggiungiamo piazza Vittorio, una delle caratteristiche piazze romane che ha al centro un giardino, recintato da una cancellata in ferro e circondato a sua volta e nascosto dalle bancarelle del famoso mercato. Ma piazza Vittorio Emanuele I fu pensata porticata dall'architetto Paniconi nel 1871 e questo progetto venne poi ripreso e realizzato dal gruppo degli architetti Camporese, Cipolla e Viviani circa dieci anni più tardi. Il giardino e la sua originale cancellata furono ideati da Carlo Tenerani. La zona con i primi del secolo XX ospitò il grande mercato centrale composto di banchi. Questo mercato andava a completare la funzionalità dell'area legata allo sviluppo commerciale di Roma. Infatti sull'Esquilino erano stati aperti lo stabilimento del latte, il grande panificio, il mattatoio degli agnelli e dei volatili e la zecca monetale. Attorno agli anni Venti piazza Vittorio Emanuele II, dai romani chiamata semplicemente piazza Vittorio, ospitò una festa stagionale dell'uva.
+
+L'Esquilino e l'area di piazza Vittorio e dintorni è infine protagonista di uno dei capolavori della letteratura italiana del Novecento: il romanzo di Carlo Emilio Gadda «Quer pasticciaccio brutto de via Merulana»: in queste pagine il mercato è lo scenario dove si raccordano le più diverse realtà sociali di Roma: i venditori...
+
+---
+
+
+PRIMO ITINERARIO
+977
+
+tori del mercato di piazza Vittorio con i suoi colori e i suoi odori; piccoli borghesi di via Merulana fino ai baraccati di via Popolonia, ai questurini di S. Stefano del Cacco e ai confini del Torraccio.
+
+Una grande opera pubblica; costruita all'epoca dell'imperatore Alessandro Severo è la monumentale fontana denominata oggi «Trofei di Mario», che aveva anche la funzione di castello di distribuzione dell'acqua portata da due acquedotti: la Claudia e l'Anius Novus, cui sono ancora visibili al di sopra della porta Maggiore. Il nome di questa fontana; raffigurata sul «verso» delle monete di Alessandro Severo compare nei «Cataloghi regionali» (un elenco di costruzioni a carattere pubblico redatto in età costantiniana) e figura con il nome di *nympheum Alexandri*. Nel 1140 viene ricordato con il nome di «tempio di Mario» per il fatto che si erano attribuiti ai trofei portati da Caio Mario a seguito delle vittorie ottenute sui Cimbri e sui Teutoni le due sculture raffiguranti appunto dei trofei e originariamente non appartenenti al monumento: Questi due trofei di età domizianea; fatti a ricordo delle vittorie riportate da Domiziano sui Catti e sui Daci (89 d.C.); furono trasportati nel 1590 ad ornare la balaustra del Campidoglio, ma il nome della fontana non cambiò anche se si era a conoscenza della vera funzione del monumento. Nel 1925 venne addossata ad esso una fontana realizzata con finte rocce ed ornata da una iscrizione recante la commemorazione dei soldati che abitavano il quartiere; caduti durante la prima mondiale. La fontana fu rimossa in occasione dell'ultimo restauro avvenuto negli anni Ottanta. In una pianta datata al 1472 il monumento viene indicato con il nome di *Arcus Cimbricus*, sempre con riferimento alle vittorie riportate da Caio Mario sui Cimbri (101 a.C.) ma è stato denominato anche con il nome di «Le oche armate» all'inizio del Rinascimento. La fontana presenta una forma trapezoidale; dovuta con probabilità al fatto che venne costruita nello spazio risultante dalla confluenza della via Labicana che andava verso la porta Maggiore e la via Tiburtina diretta verso la porta Tiburtina. Fu costruita in opera laterizia e conserva sulla fronte un'ampia nicchia affiancata da due archi (uno è scomparso) all'interno dei quali erano i due trofei di Mario. Una vasca doveva raccogliere l'acqua che defluiva attraverso tre canali situati sulla fronte e due laterali. Con il taglio degli acquedotti avvenuto in conseguenza dell'invasione dei Goti iniziò la decadenza del monumento che fu spesso disegnato nel corso del Cinquecento dal Peruzzi e da Pirro Ligorio che ne tentò anche un ripristino grafico. Il Piranesi; nel 1761, gli dedicò una interessante opera. Gli scavi furono condotti solo nel 1821 ad opera degli allievi dell'accademia di Francia che illustrarono lo scavo con bellissimi acquerelli. Sempre nel giardino all'interno di piazza Vittorio vediamo il monumento che fu innalzato in memoria dei caduti dei rioni Esquilino; Viminale e Macao e che fu eseguito; nel 1925, dall'architetto Guido Carafa; Poco discosto è il gruppo che Mario Rutelli aveva ideato per collocarlo al centro della fontana delle Naiadi in piazza Esedra, ma che lì fu poi sostituito dal gruppo del Glauco. Questo originario gruppo costitui-
+
+---
+
+
+978
+RIONE XV. ESQUILINO
+
+sce oggi una fontana di minori dimensioni e vede un insieme di animali marini, polpi, tritoni e delfini che fu denominato con spirito salace dai romani, «fritto misto».
+
+Sempre vicino alla fontana di Alessandro Severo è la cosiddetta «porta Magica», che presenta sugli stipiti, sull'architrave e sulla soglia alcune incisioni che, secondo la leggenda, a bene interpretarli potrebbero svelare la formula per ricavare loro. Questa porta è quanto resta dell'ingresso secondario della villa sull'Esquilino, di proprietà del marchese Massimiliano Palombara di Pietraforte; che la acquistò nel 1620 da Alessandro Sforza.
+
+Nella seconda metà dell'Ottocento la villa era proprietà dei principi Massimo e fu demolita alla fine del secolo perché fossero realizzate alcune importanti costruzioni del rione come la stazione ferroviaria ed alcune piazze. La porta allora fu smontata e sistemata nei magazzini comunali e poi qui a piazza Vittorio; dove le furono affiancate due statue raffiguranti il dio egizio Bes. Alla villa si accedeva, come è riportato in una pianta settecentesca, dalla via Felice. Essa affacciava su un cortile di modeste dimensioni ed aveva nella parte posteriore un orto il cui muro di cinta era appunto aperto da questa porta che, a sua volta, affacciava su via di S. Croce in Gerusalemme a circa duecento metri dall'arco di Gallieno. Le formule alchemiste che vediamo incise sarebbero state lasciate al marchese da un negromante; questa sarebbe stata proprio la porta del laboratorio dell'alchimista. Il marchese Palombara era uno dei maggiori alchimisti del Seicento che lavorava spesso per il raggiungimento della pietra filosofale. Egli fece sistemare la porta nel suo giardino intorno al 1680, e compiva egli stesso esperimenti alchemici; in quest'area venne ritrovata la statua raffigurante il discobolo; copia di età romana dell'originale in bronzo di Mirone; copia che può definirsi la più fedele all'opera dell'artista greco del secolo a.C. (discobolo Lancellotti).
+
+Lasciata piazza Vittorio prendiamo per via Emanuele Filiberto; in discesa verso viale Manzoni. Qui subito all'angolo, a sinistra è conservata la testimonianza di uno degli sventramenti operati in Roma e rimasti incompiuti. Si scende quindi tra una doppia fila di alberi «di Giuda» e oltrepassata via Galilei vediamo, a sinistra, oggi chiuso, un grande edificio a carattere industriale e a destra l'isolato che racchiude il convento e la chiesa dedicata all'Immacolata.
+
+La facciata della chiesa, in cemento, in stile tardo neo-gotico, presenta sui fianchi due basse torri campanarie; sopra il portale è immagine, in mosaico, della «Madonna» avvolta in un manto stellato. L'edificio, all'angolo con viale Manzoni, conserva un'edicola con la statua dell'Immacolata. Prendiamo adesso a sinistra per viale Manzoni che, ombreggiata da olmi, sale verso un lato della stazione Termini. A sinistra, al n. 47 vediamo quanto resta della villa Altieri. Un portone sottolineato dal bugnato chiuso da un bel cancello in ferro battuto dava accesso, come si legge nella scritta sull'architrave, alla villa Altieri. La villa ora in condizioni di grande trascuratezza fu carcere femminile prima, conservatorio delle Dorotee poi e ancora sede dell'Istituto gotica qui può...
+
+---
+
+
+PRIMO ITINERARIO
+979
+
+Villa Altieri alla fine del Seicento in un'incisione di A. Specchi delle figlie di Nostra Signora di Monte Calvario. Oggi è occupata dalla scuola professionale «Pietro della Valle». La villa era situata lungo la via Felice; la strada voluta da papa Sisto V, Felice Peretti (e che da lui prese il nome) tra S. Croce in Gerusalemme e S. Maria Maggiore. Intorno a lei era un vasto terreno, oggi tra le via Statilia, Emanuele Filiberto e S. Quintino. Alcuni ritengono che sia stato il cardinale Giovanni Battista Altieri, camerlengo sotto papa Urbano VIII Barberini, a volere la costruzione della villa; ma con più verosimiglianza la villa fu dovuta alla volontà del cardinale Emilio Altieri, figlio di Lorenzo Emilio Altieri, che divenne papa con il nome di Clemente X (1670-1676), si era fatto costruire dall'architetto Antonio De Rossi il grande palazzo a lato di piazza del Gesù ed è probabile, quindi, che abbia commissionato allo stesso architetto anche la villa fuori dal centro di Roma. Della villa che era ornata da statue, frammenti antichi e che racchiudeva anche le pitture tratte dalla tomba dei Nasoni, scoperta sulla via Flaminia nel 1764 in occasione di lavori fatti compiere da Clemente X per il proprio giubileo e voluti nella propria villa; resta ben poco. Vi si accede mediante due rampe che, formando una curva, conducono al piano nobile. Gli altri piani sono scanditi da semplici cornici ed ornati da lesene. Le finestre sono sottolineate da cornici in stucco con leggeri ornamenti sempre in stucco. Alla sommità è un cornicione aggettante e una balaustra su cui erano sistemate delle statue; al centro si erge una bella altana con tre arcate sottolineate da lesene. Al centro della scala di accesso si apre, entro una superficie bugnata, un'arcata a creare un ninfeo, affiancata da altre quattro aperture con piattabande oblique a seguire l'andamento della scala soprastante. Nulla invece resta del grande giardino che la circondava. Il giardino doveva essere anche ornato dal «labirinto», creato mediante una siepe tagliata appositamente. Questa opera di giardinaggio viene ricordata ancora nel 1860 dal Moroni ed è raffi-
+
+---
+
+
+980
 RIONE XV. ESQUILINO
 
 **Il marchese Palombara Rosacroce**
@@ -24845,11 +23261,8 @@ La villa attribuibile alla seconda metà del Seicento si affacciava sul giardino
 
 ---
 
-<!-- p.981 (orig. p.981) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 981
 
 Non ancora vedere i busti maschili e femminili in stucco, entro ovali in stucco e analoghi a quelli che ornano una sala. Soltanto in tre sale di questa villa, che ha subito alcuni considerevoli interventi moderni come sopraelevazioni e laddossamento di una struttura recente a limitarne il cortile, sono conservati scarsi elementi dell'originaria decorazione pittorica e il soffitto a cassettoni. La villa, già residenza del cardinale Francesco di Paola Cassetta, è, come villa Altieri, proprietà della Congregazione delle figlie di N.S. del Calvario.
@@ -24864,11 +23277,8 @@ Usciti proseguiamo per viale Manzoni dove si affacciano edifici della fine dell'
 
 ---
 
-<!-- p.982 (orig. p.982) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>982
+982
 
 RIONE XV. ESQUILINO
 Secondo itinerario
@@ -24899,11 +23309,8 @@ Andiamo avanti per via Giolitti, percorsa dai binari del tram che conduce a piaz
 
 ---
 
-<!-- p.983 (orig. p.983) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 983
 
 Porta Maggiore in una stampa di fine Ottocento.
@@ -24918,11 +23325,8 @@ Questa porta divenne realmente tale quando fu inglobata nelle mura aureliane e f
 
 ---
 
-<!-- p.984 (orig. p.984) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>984
+984
 RIONE XV. ESQUILINO
 
 avanzato e, realizzata ad un solo fornice, fu affiancata da torri. Nella parte interna vi era una seconda porta a doppio passaggio: Tutto ciò fu demolito nel 1838 durante il pontificato di Gregorio XVI. Menzione di questo restauro è nell'iscrizione posta all'esterno della porta sul piazzale Labicano.
@@ -24933,11 +23337,8 @@ Altri restauri si ebbero durante il pontificato di Urbano VIII e in questo perio
 
 ---
 
-<!-- p.985 (orig. p.985) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 985
 
 La chiesa di S. Bibiana nel Seicento (incisione di G.B. Falda)
@@ -24958,11 +23359,8 @@ Entrambe le cappelle sono ornate da opere della scuola del Ciampanelli e di Piet
 
 ---
 
-<!-- p.986 (orig. p.986) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>986
+986
 
 RIONE XV. ESQUILINO
 
@@ -24978,11 +23376,8 @@ La villa appartenne alla famiglia Del Drago fino al 1861. Fu quindi della princi
 
 ---
 
-<!-- p.987 (orig. p.987) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 987
 
 miglia Dominici, che la detiene tuttora anche se l'area è stata ristretta a seguito di espropri dovuti alla sistemazione stradale:
@@ -24999,11 +23394,8 @@ Poco dopo, a sinistra, su via Guglielmo Pepe, vediamo l'edificio liberty; che è
 
 ---
 
-<!-- p.988 (orig. p.988) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>988
+988
 RIONE XV. ESQUILINO
 
 un braciere) A piazza Guglielmo Pepe c'era anche il teatro Mer-
@@ -25060,11 +23452,8 @@ L'ampia struttura ellittica, ornata all'esterno, da bugnato e da semicolonne nel
 
 ---
 
-<!-- p.989 (orig. p.989) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 989
 
 Ni. Nelle nicchie e nel frontone sono sistemate statue e gruppi scultorei, tutti a soggetto marino.
@@ -25079,11 +23468,8 @@ La chiesa ricevette un primo restauro durante il pontificato di papa Zaccaria, a
 
 ---
 
-<!-- p.990 (orig. p.990) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>990
+990
 
 RIONE XV. ESQUILINO
 
@@ -25095,11 +23481,8 @@ Nel portico, al centro del quale è situata su alto piedistallo la statua della 
 
 ---
 
-<!-- p.991 (orig. p.991) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 991
+SECONDO ITINERARIO 991
 
 La raffigurazione della «Consolatrice degli afflitti», opera della fine dell'Ottocento; sistemata al posto di un'altra del Croce (1558-1628). Di notevole interesse è il cinquecentesco coro.
 
@@ -25115,11 +23498,8 @@ Qui in antico correva obliquamente l'aggere, una opera di fortificazione che, pa
 
 ---
 
-<!-- p.992 (orig. p.992) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>992
+992
 
 RIONE XV. ESQUILINO
 
@@ -25131,11 +23511,8 @@ Un progetto del piano regolatore del 1931 prevedeva la costruzione di altre due 
 
 ---
 
-<!-- p.993 (orig. p.993) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 993
 
 La stazione Termini nel suo aspetto tardo-ottocentesco che del settore urbano circostante. La piazza dei Cinquecento venne ampliata fino a raggiungere la dimensione di m 250x250 e di conseguenza la fronte della stazione venne arretrata, mentre due fabbricati laterali su via Giolitti, previsto per le partenze e per gli arrivi; la sala imperiale (che non fu costruita) e i servizi su via Marsala furono iniziati, ma interrotti nel 1942. Non fu realizzato l'atrio di accesso alla stazione sulla piazza: Nel 1947 si propose di bandire un concorso che doveva prevedere, oltre alla costruzione dell'atrio; che doveva essere avanzato per consentire l'allungamento dei binari, anche la costruzione di servizi (ristorante, biglietteria, uffici ecc.). Il concorso fu vinto ex aequo da due gruppi formati da Montuori e Calini e da Vitellozzi, Castellazzi, Fadigati e Pintonello. Di questo progetto; oltre alla funzionalità (suddivisione dei servizi) si evidenzia il grande atrio; dove è sistemata la biglietteria; con le pareti esterne chiuse da vetrate e con il soffitto, anch'esso vetrato; con grandi nervature in cemento armato ad andamento mistilineo che si prolunga di ben 19 metri verso l'esterno. Sulla sinistra, dove l'atrio si interrompe per la presenza dei resti delle murature a blocchi di tufo della cinta muraria del IV secolo; è sistemato il ristorante. Gli uffici sono sistemati su una struttura a quattro piani, dalla facciata rivestita da lastre di travertino: che si interrompono in strette finestre orizzontali. Una galleria di collegamento e smistamento viene aperta su via Giolitti e via Marsala e il piano interrato, dove sono sistemati altri servizi e dove si ha il collegamento con la metropolitana. Per il Giubileo del 2000 la stazione è stata completamente ristrutturata e ampliata e si presenta ora in una veste inedita.
@@ -25151,11 +23528,8 @@ La stazione Termini nel suo aspetto tardo-ottocentesco.
 
 ---
 
-<!-- p.994 (orig. p.994) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>994
+994
 
 RIONE XV. ESQUILINO
 
@@ -25175,11 +23549,8 @@ Nella navata di destra, in cui vediamo alcuni stemmi affrescati,
 
 ---
 
-<!-- p.995 (orig. p.995) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 995
 
 [Immagine: incisione ottocentesca]
@@ -25193,11 +23564,8 @@ Inoltriamoci adesso per la via Carlo Alberto, ombreggiata a destra e a sinistra 
 
 ---
 
-<!-- p.996 (orig. p.996) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>996
+996
 RIUNE XV. ESQUILINO
 
 Piani superiori ornate alla sommità da stemmi lisci con teste femminili. Più lineare è la decorazione che orna le finestre e il portone dell'edificio successivo (n: 13), con girali in stucco per le finestre incominciate e con conchiglia centrale per il portone.
@@ -25216,11 +23584,8 @@ La chiesa, dopo essere stata chiusa durante il pontificato di papa Damaso, fu re
 
 ---
 
-<!-- p.997 (orig. p.997) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 997
 
 La chiesa del Ss. Vito e Modesto con l'arco di Gallieno (incisione di G. Vasi)
@@ -25233,11 +23598,8 @@ A sinistra è il campanile a pianta poligonale con aperture ad arco dalle quali 
 
 ---
 
-<!-- p.998 (orig. p.998) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>998
+998
 
 RIONE XV. ESQUILINO
 
@@ -25253,11 +23615,8 @@ Oltrepassato l'arco vediamo a sinistra una sobria costruzione a tre piani e sull
 
 ---
 
-<!-- p.999 (orig. p.999) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 999
 
 L'arco di Gallieno in una stampa di fine Ottocento.
@@ -25266,11 +23625,8 @@ Due piani, con bugnato al piano terra e con le finestre raccordate a tre a tre d
 
 ---
 
-<!-- p.1000 (orig. p.1000) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1000
+1000
 RIONE XV. ESQUILINO
 
 aggettante mentre una cornice in stucco; ad ovoli; è al di sopra di quelle del terzo: Ancora una cornice policroma a girali è situata fra le finestre dell'ultimo piano che hanno subito al di sopra un cornicione concavo ornato da triglifi e rosoncini.
@@ -25307,11 +23663,8 @@ Al di là di una cancellata in ferro battuto, presenta sulla fronte una doppia r
 
 ---
 
-<!-- p.1001 (orig. p.1001) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 100/
 
 colonne addossate. Un motivo a mensola orna le chiavi di volta degli archi, mentre negli estradossi sono delle borchie in stucco. Al di sopra corre un fregio con triglifi e metope ornate; queste ultime da simboli relativi all'ordine francescano. Al di sopra del porticato, la parete in laterizio si apre in cinque finestre ad arco, chiuse da vetrate policrome, opera del Giuliani: il corpo centrale è chiuso da un timpano con croce in marmo alla sommità e con tondo centrale affiancato da due finestre, anch'esse ad arco.
@@ -25328,11 +23681,8 @@ Usciamo dalla chiesa e prendiamo a sinistra per via Aleardo Aleardi. Fiancheggia
 
 ---
 
-<!-- p.1002 (orig. p.1002) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1002 RIONE XV. ESQUILINO
+1002 RIONE XV. ESQUILINO
 
 **Villa Caserta**
 
@@ -25350,11 +23700,8 @@ Scendiamo per via Matteo Boiardo che a sinistra presenta la struttura relativa a
 
 ---
 
-<!-- p.1003 (orig. p.1003) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 1003
 
 Saliamo per via Tasso; a destra; e, sempre a destra; al n: 145 è la sede del Museo storico della lotta di Liberazione di Roma, costituito nel 1957. Il settore a destra dell'edificio che in precedenza era sede dell'ufficio culturale dell'ambasciata Germanica venne adibito, nel 1944, a carcere per i detenuti politici; con il settore a sinistra adibito a caserma ed uffici. Qui, con ampia documentazione sono ricordati episodi avvenuti nel periodo compreso fra il 1943-44. Proseguiamo per via Tasso; oltrepassando via Francesco Berni, dove all'angolo vediamo un grazioso palazzetto con torre a destra e doppio portale ad ogiva sottolineato da nervature. Finestre anch'esse ad ogiva si aprono al piano rialzato; mentre sulla cornice aggettante è situato un balcone con ringhiera in ferro. Questo palazzetto, concluso da una merlatura in alto, è sede del convento delle carmelitane teresiane ed ospita una scuola elementare (una statua di «S. Teresa» è infatti posta sui portali d'ingresso).
@@ -25369,11 +23716,8 @@ Al centro è situata la Scala Santa formata da 29 gradini di marmo bianco fatti 
 
 ---
 
-<!-- p.1004 (orig. p.1004) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1004
+1004
 
 RIONE XV. ESQUILINO
 
@@ -25390,11 +23734,8 @@ Opere di un allievo del Perugino sono le raffigurazioni della «Vergine e dei Sa
 
 ---
 
-<!-- p.1005 (orig. p.1005) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO                                                                    1005
+TERZO ITINERARIO                                                                    1005
 
 zione, che si legge sopra l'altare; è detto: <non est in toto sanc-
 tior orbe locus>.
@@ -25448,11 +23789,8 @@ da Antonio Munoz. Adesso; addossato alle strutture dell'oratorio
 
 ---
 
-<!-- p.1006 (orig. p.1006) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1006
+1006
 
 RIONE XV. ESQUILINO
 
@@ -25470,11 +23808,8 @@ Prima della piazza S. Croce in Gerusalemme dove si affaccia l'omonima basilica, 
 
 ---
 
-<!-- p.1007 (orig. p.1007) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 1007
+TERZO ITINERARIO 1007
 
 Strense, che fu costruito in una zona acquistata dal fisco imperiale, fu un anfiteatro privato dell'imperatore e riservato quindi alla sua persona e ai suoi ospiti. La costruzione del palazzo Sessorio fu ultimata dall'imperatore Vario Avito, detto Elagabalo, che vi andò ad abitare; e non è improbabile ritenere, proprio per la passione con cui questo imperatore seguiva giochi gladiatori e circensi, nei quali talvolta egli stesso si cimentava, che sia stato proprio Elagabalo a volere, accanto alla sua residenza, un anfiteatro personale ed anche un circo personale: il circo Variano. Quando vennero costruite dall'imperatore Aureliano le mura (ancora oggi portano il suo nome) e che avrebbero dovuto proteggere la città dalle ormai possibili invasioni barbariche, l'anfiteatro Castrense, similmente ad altri monumenti romani come il Castro Pretorio, i giardini Aciliani al Pincio, le arcate dell'acqua Marcia, le arcate dell'acqua Claudia e la piramide Cestia, fu inserito nel percorso delle mura: una metà quindi dell'ellisse dell'anfiteatro fu inclusa nelle mura, furono chiuse le arcate del piano inferiore e fu fortificato il piano superiore con un attico merlato. Allo stesso tempo, perché questa struttura risultasse più alta, fu abbassato il livello esterno di circa 2 metri. All'interno delle mura e quindi ancora fruibili restarono il palazzo e le terme che, fino al IV secolo d.C., furono proprietà della famiglia imperiale e divennero residenza romana della madre di Costantino, Elena, che provvide anche a fare restaurare le terme.
 
@@ -25488,11 +23823,8 @@ Andiamo adesso in piazza S. Croce in Gerusalemme su cui si affaccia la basilica,
 
 ---
 
-<!-- p.1008 (orig. p.1008) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1008
+1008
 RIONE XV. ESQUILINO
 
 Compresa fra le sette basiliche romane, meta dei pellegrini, deriva il nome dal fatto che conserva alcuni frammenti della «Croce del Cristo» che Elena, madre dell'imperatore Costantino, aveva portato a Roma al ritorno dal suo viaggio a Gerusalemme nel 326. Secondo una tradizione la basilica fu invece fatta erigere da Costantino come ringraziamento per la vittoria da lui riportata al ponte Milvio su Massenzio e conseguita al simbolo della croce che gli era apparso e che aveva fatto collocare sui vessilli. È probabile invece che l'originario impianto della basilica sia da attribuire ai discendenti di Costantino e quindi da assegnare alla metà del IV secolo d.C.
@@ -25509,11 +23841,8 @@ L'atrio è ellittico con piccola cupola sostenuta da pilastri affiancati da colo
 
 ---
 
-<!-- p.1009 (orig. p.1009) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 1009
 
 [Immagine: La facciata di S. Croce In Gerusalemme In un'incisione di G.B. Piranesi]
@@ -25524,11 +23853,8 @@ più notevoli del complesso. Attraverso le porte quattrocentesche, in parte dann
 
 ---
 
-<!-- p.1010 (orig. p.1010) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1010
+1010
 RIONE XV. ESQUILINO
 
 del cardinale Carvajal. Opera del Giaquinto sono anche gli affreschi raffiguranti «Episodi dell' Antico Testamento».
@@ -25543,11 +23869,8 @@ Nel 1935, durante alcuni lavori di sistemazione, che videro la sostituzione dei 
 
 ---
 
-<!-- p.1011 (orig. p.1011) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 1011
 
 della seconda metà del Seicento. Altri due monumenti funerari del Souchier (1571) e del Cornazzano della metà del Seicento sono invece situati lungo la parete a destra. Nella volta è raffigurata la «Liberazione delle anime del Purgatorio» del Nanni (fine del Cinquecento-prima metà del Seicento). Un rilievo seicentesco in marmo raffigurante la «Pietà» vediamo situato sull'altare dedicato a S. Gregorio.
@@ -25562,11 +23885,8 @@ Accanto sorge il convento di S. Croce fondato da papa Benedetto VII (974-983), p
 
 ---
 
-<!-- p.1012 (orig. p.1012) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1012
+1012
 RIONE XV. ESQUILINO
 
 ritratti di monaci racchiusi da medaglioni e con la «Glorificazio-
@@ -25628,11 +23948,8 @@ oggi guerra ospita poi
 
 ---
 
-<!-- p.1013 (orig. p.1013) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 1013
 
 Piazza; procedendo per via Eleniana troviamo i resti della cisterna delle terme di Elena che, sempre parte della residenza imperiale del Sessorio, erano rispetto a questa disposte più a nord e separate da grandi giardini. Queste terme prendono il nome dalla madre di Costantino cui appartennero nel IV secolo. Elena, come si legge in un'iscrizione ora ai Musei Vaticani e proveniente dai pressi di S. Croce, intervenne con un restauro sulle strutture danneggiate da un incendio.
@@ -25649,11 +23966,8 @@ Il secondo presenta un doppio ambiente cui si accede mediante una doppia porta a
 
 ---
 
-<!-- p.1014 (orig. p.1014) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1014
+1014
 
 **RIONE XV. ESQUILINO**
 
@@ -25665,11 +23979,8 @@ bario di cui però resta ben poco ed un altare sepolcrale che fu ampliato in et�
 
 ---
 
-<!-- p.1015 (orig. p.1015) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XVI. Ludovisi
+Rione XVI. Ludovisi
 di Giorgio Carpaneto
 Dalle origini ad oggi
 
@@ -25683,11 +23994,8 @@ Vari scrittori hanno espresso la loro ammirazione per questa grande villa adorna
 
 ---
 
-<!-- p.1016 (orig. p.1016) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1016
+1016
 RIONE XVI: LUDOVISI
 
 La villa Ludovisi in un'incisione secentesca di G.B. Falda.
@@ -25698,11 +24006,8 @@ Altre vie furono intitolate alle regioni d'Italia disposte a scacchiera. Conness
 
 ---
 
-<!-- p.1017 (orig. p.1017) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1017
+PRIMO ITINERARIO 1017
 
 Le necessarie espropriazioni: è chiaro che dove erano state tracciate delle vie (alcune già esistenti entro la villa Ludovisi) si imponeva una sollecita costruzione di edifici che le fiancheggiasero, per non lasciare la desolante visione di zone inedificate nell'interno delle mura; perciò gli spazi liberi furono ben presto occupati dall'ingordigia delle ditte costruttrici. I confini in poco di anni furono così stabiliti: via Vittorio Veneto - via S. Isidoro - via degli Artisti - via Francesco Crispi - via di Porta Pinciana - via Pinciana - mura urbane - via Piave - via Calabria - via Boncompagni - via Lucullo - via di S. Basilio - via Vittorio Veneto. La superficie è di mq 325.150 e la popolazione residente ammonta a 27.619 unità. Lo stemma del rione Ludovisi è rosso a tre bande d'oro ritirate nel capo e un dragone d'oro reciso in punta.
 
@@ -25719,11 +24024,8 @@ Il nome le deriva dalla gens Pincia.
 
 ---
 
-<!-- p.1018 (orig. p.1018) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1018
+1018
 RIONE XVI. LUDOVISI
 
 che lì aveva una sontuosa villa nel IV secolo; ma fu anche chiamata *clausa*, perché nell' VII secolo fu chiusa; Belisaria dall'omonimo generale, e Porciniana a causa della deformazione che il popolino usava dare ai nomi. Una leggenda; peraltro avvalorata dal monaco Giovanni Tzetze, ci narra che Belisario, caduto in disgrazia alla corte bizantina; divenuto povero e cieco; chiedesse l'elemosina davanti a questa porta presso la quale era graffita la scritta, scomparsa: *Date obolum Belisario*; il quale, invece, morì nella ricchezza. Sul vicino tratto delle mura è stato posto il monumento ai caduti del rione nella mondiale. La via Campania, che in origine era dentro la villa Ludovisi, incontrava vie minori: viale del Satiro (attuale via Marche), viale dei Busti (tra via Marche e via Toscana), viale dei Cipressi (da via Friuli a via Campania) e viale del Tinello (via Liguria) (C. Pietrangeli). Le mura e una magnifica distesa di verde attraversata da questa via si presentarono agli occhi dei bersaglieri quali dilagarono da porta Pia; e seria e monumentale è rimasta la via; anche se sarebbe potuta diventare una suggestiva passeggiata archeologica; ma la speculazione edilizia l'ha resa una strada semplice; quella speculazione che di una città-giardino ha fatto un termitaio. Quando la via incontra via Marche in un'edicola con timpano spezzato, conchiglia e volute, si vede un busto marmoreo di «Alessandro Magno» del Seicento; più avanti, in angolo con via Abruzzi vi era il Villino Frankenstein opera di Carlo Busiri Vici; oggi demolito; e ancora proseguendo, all'angolo con via Piemonte, ecco al n. 129 un edificio con tetto e mansarde, con finestre ad arco incorniciate da pilastri con balconi. Il portone ha ornamenti con frutta e con i gigli di Francia; un cornicione decorato a girali completa la decorazione dell'edificio. Ma quello che più stupisce e che contrasta con lo stile dell'età umbertina che dovunque nel rione riecheggia, è l'edificio in angolo fra via Campania e via Romagna, polifunzionale su progetto di Vincenzo, Fausto e Lucio Passarelli, risalente al biennio 1963-1965 e proprietà dell'Istituto nazionale delle assicurazioni. Tre compongono questo complesso destinato a più usi: la parte commerciale al di sotto del livello stradale; quella degli uffici consistente in tre piani; quella residenziale di due piani. Un sistema di rampe carrabili, scale e ascensori collega le varie parti. Vi dominano il cemento nelle strutture portanti, il ferro e il vetro e si ha l'impressione di trovarsi di fronte ad un palazzo dell'era spaziale, dalle forme singolarissime e strane.
@@ -25732,11 +24034,8 @@ Dall'ultramoderno si passa all'antico; poiché, imboccando la via Lucania, quasi
 
 ---
 
-<!-- p.1019 (orig. p.1019) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1019
 
 Mulacro della dea con serti di mirto, di menta e di rose, per ottenere la bellezza e il favore degli uomini. Il tempio era interamente circondato da colonne con capitelli corinzi, le quali servirono per una cappella di S. Pietro in Montorio. Celebri statue lo adornavano come il gruppo dei «Niobidin» (a cui apparteneva la Niobide ora al Museo nazionale romano), il «Gallo che si uccide dopo aver ucciso la moglie» e il discusso «Trono Ludovisi», anch'essi nel suddetto museo. La villa, indicata come sede del tempio, era di proprietà dei Borioni-Santacroce, acquistata poi dai Ludovisi-Boncompagni.
@@ -25751,11 +24050,8 @@ Una bella chiesa in via Sicilia con un lato su via Puglia era la di S. Lorenzo d
 
 ---
 
-<!-- p.1020 (orig. p.1020) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1020
+1020
 RIONE XVI LUDOVISI
 
 L'incrocio con via Romagna; oggi sede della Cassa di risparmio della provincia di Macerata. Ha una struttura molto movimentata e la destra è costituita da un avancorpo a forma di torre con balconi; più oltre, con facciata su via Sardegna ma con un lato su via Romagna, c'è la chiesetta di S. Maria Regina dei Cuori con l'annesso convento dei montfortani (n. 44). Risale al 1912. Nella facciata il portone ha un arco sporgente retto da lesene e il cornicione è a dentelli. Le finestre sono bifore o monofore. Nella lunetta è raffigurata l'«Annunciazione». Nell'interno, a una navata, ha vetrate istoriate; e sull'altare un gruppo marmoreo della «Vergine col Bambino adorata da S. Luigi di Montfort e dall'angelo Gabriele» di Paolo Bartolini del Novecento. Anche Francesco Milizia vi è presente con il coro di legno intagliato; e vi sono figure di «Virtù» e plutei di Dell' Aquila. Su una lapide affissa sulla parete sinistra si legge: «Il papa Giovanni XXIII iniziando la stazione quaresimale del rione sostò per implorare la benedizione della Regina dei Cuori in questo santuario Lei dedicato 10 marzo 1962».
@@ -25768,11 +24064,8 @@ Al n. 66 di via Sicilia un'altra chiesa si impone al nostro sguardo, quasi a sug
 
 ---
 
-<!-- p.1021 (orig. p.1021) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1021
+PRIMO ITINERARIO 1021
 
 [Planta degli orti di Lucullo (ricostruzione cinquecentesca di Pirro Ligorio).]
 
@@ -25782,11 +24075,8 @@ Nella parallela di via Sicilia; in via Sardegna si può vedere al n. 49 la Bibli
 
 ---
 
-<!-- p.1022 (orig. p.1022) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1022
+1022
 RIONE XVI. LUDOVISI
 
 Lucullo
@@ -25803,11 +24093,8 @@ Va dalla piazza Barberini alla porta Pinciana, ma dobbiamo tenere presente che d
 
 ---
 
-<!-- p.1023 (orig. p.1023) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1023
 
 2
@@ -25822,11 +24109,8 @@ Quando fu aperta via Veneto (poi via Vittorio Veneto), il convento venne demolit
 
 ---
 
-<!-- p.1024 (orig. p.1024) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1024
+1024
 
 RIONE XVI. LUDOVISI
 
@@ -25842,11 +24126,8 @@ La chiesa presenta una doppia rampa di scale, è a due ordini e ha lesene di tra
 
 ---
 
-<!-- p.1025 (orig. p.1025) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1025
 
 **Un frate e la vincita al lotto**
@@ -25864,11 +24145,8 @@ Infatti nell'«Assunzione della Vergine» di Terenzio Terenzi del Cinquecento, S
 
 ---
 
-<!-- p.1026 (orig. p.1026) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1026
+1026
 
 RIONE XVI. LUDOVISI
 
@@ -25880,11 +24158,8 @@ Nell'interno una spoglia monumentalità dell'atrio valorizza la vetrata da Mario
 
 ---
 
-<!-- p.1027 (orig. p.1027) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1027
 
 zi e mobilia. Si trattava di realizzare architettonicamente ed artisticamente un programma preciso di politica culturale per valorizzare l'arte contemporanea ufficiale.
@@ -25899,11 +24174,8 @@ Palazzo Margherita, oggi sede dell'ambasciata USA, alla fine dell'Ottocento.
 
 ---
 
-<!-- p.1028 (orig. p.1028) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1028
+1028
 RIONE XVI LUDOVISI
 
 «Nazareni». La via fino al 1871 si chiamava via di S. Isidoro e immetteva nella scomparsa piazza dei Cappuccini; ha mutato il nome per non confondersi con l'attuale via di S. Isidoro, che va da via degli Artisti a via Veneto. La chiesa di S. Isidoro fu progettata da Antonio Casoni nel Seicento mentre il portico è di Domenico Castelli; la facciata, poi, di Carlo Francesco Bizzaccheri del 1704, restaurata quarant'anni dopo, è in stile rococò; è divisa in due ordini ed ha davanti una scala a doppia rampa. Nell'ordine inferiore il portico è diviso da tre ingressi, dei quali uno centrale ad arco, separati da paraste con capitelli ionici con festoncini. Sulle entrate minori vi sono due riquadri con simboli francescani.
@@ -25918,11 +24190,8 @@ A questo punto, ritornando in via Veneto, la via più importante del rione, dovr
 
 ---
 
-<!-- p.1029 (orig. p.1029) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1029
 
 **Gli olmi e d'Annunzio**
@@ -25941,11 +24210,8 @@ L'Hotel Palace (n. 62) del 1905 oggi appartiene al consolato degli Stati Uniti d
 
 ---
 
-<!-- p.1030 (orig. p.1030) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1030
+1030
 RIONE XVI. LUDOVISI
 
 Vici nel 1926 e proseguito da Marcello Piacentini e Giuseppe Vaccaro. La facciata curva è ricca di colonne tra le quali grandi nicchie ospitano figure muliebri bronzee in ginocchio con lampada, opera del Cloza. I portoni bugnati e con i soliti timpani spezzati richiamano le finestre del piano rialzato; sovrastate ugualmente da timpani spezzati le altre sono a bugne; al quinto piano un ampio loggiato a portici domina il tutto.
@@ -25960,11 +24226,8 @@ Vasto è stato anche l'impiego di marmi nell'interno per le colonne, le balaustr
 
 ---
 
-<!-- p.1031 (orig. p.1031) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1031
 
 **Gran baldoria all'Excelsior**
@@ -25993,11 +24256,8 @@ Resta, ora, una breve passeggiata; per osservare qualcosa di notevole nelle vie 
 
 ---
 
-<!-- p.1032 (orig. p.1032) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1032
+1032
 
 RIONE XVI. LUDOVISI
 
@@ -26015,11 +24275,8 @@ Via Lucania, via Piemonte e via Romagna comprendevano la zona della villa Bellon
 
 ---
 
-<!-- p.1033 (orig. p.1033) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1033
 
 Villa Ludovisi
@@ -26032,11 +24289,8 @@ rospi, che nel 1825 passarono ai Boncompagni-Ludovisi. Abbiamo lasciato intenzio
 
 ---
 
-<!-- p.1034 (orig. p.1034) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1034
+1034
 
 RIONE XVI: LUDOVISI
 
@@ -26058,11 +24312,8 @@ La sala dinanzi parla più di quella... [testo interrotto]
 
 ---
 
-<!-- p.1035 (orig. p.1035) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 1035
+SECONDO ITINERARIO 1035
 
 [Immagine]
 
@@ -26074,11 +24325,8 @@ Nelle lunette il Guercino ha dipinto le allegorie del «Giorno», figura alata c
 
 ---
 
-<!-- p.1036 (orig. p.1036) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1036
+1036
 RIONE XVI LUDOVISI
 
 Un'occasione mancata di conservare una bella parte di Roma! Nel rione Ludovisi, privilegiato dalla vasta e ricca villa omonima, vi sono anche dei caffè nei quali si son vissute le vicende di Roma dell'Ottocento; vere finestre aperte sulla città. Cento tavolini tra l'entrata dell'Excelsior e via Sicilia sono quelli del Caffè Doney da decine d'anni luogo di convegno per cineasti e letterati e, un tempo, passerella di gerarchi, come osserva acutamente Bruno Palma. Qualche cosa è cambiata, l'animazione d'allora si è spenta, ma «una certa noblesse turistica ad alto livello» fa ancora la sua esibizione scendendo dai lussuosi alberghi. Scrittori, poeti, letterati s'incontravano; ai tempi d'oro; da Rosati; da gente del cinema; Poi il Caffè de Paris offrì le sue sedie a gente che contava economicamente. Alti ufficiali americani si son seduti presso i tavolini; ma ben altri personaggi vi si sono avvicendati come Edward Kennedy, Elsa Martinelli, Maurice Chevalier, Jolanda Calvi di Bergolo; Giorgio De Chirico; Anita Eckberg; Richard Burton ecc. In seguito ecco elementi eterogenei che sostano nei moderni caffè della via che ha perso gran parte del suo livello di élite; Forse a questo calo di presenze di importanza internazionale è dovuta, a giudizio di intenditori, la decadenza della via fra le celebri del mondo.
@@ -26091,11 +24339,8 @@ Ma a tanto sfacelo intellettuale e morale ripara la movimentata, varia, serena, 
 
 ---
 
-<!-- p.1037 (orig. p.1037) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1037
 
 chetti nel centrale dei quali vi è l'effige di «S. Patrizio». Arioso e
@@ -26137,11 +24382,8 @@ LVDOVISIS
 
 ---
 
-<!-- p.1038 (orig. p.1038) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XVII. Sallustiano
+Rione XVII. Sallustiano
 di Claudia Cerchiai
 Dalle origini ad oggi
 
@@ -26155,11 +24397,8 @@ Il tempio, dedicato nel 215 a.C., era quindi fuori delle mura urbane, ed è ripo
 
 ---
 
-<!-- p.1039 (orig. p.1039) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1039
 
 La porta Salaria in un'incisione di G. Vasi.
@@ -26176,11 +24415,8 @@ Il *vinum*, infatti, in quanto tecnicamente considerato anche un *venenum* era r
 
 ---
 
-<!-- p.1040 (orig. p.1040) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1040
+1040
 RIONE XVII. SALLUSTIANO
 
 stato portato a Roma per ornare il tempio romano della dea. È da
@@ -26237,11 +24473,8 @@ struttura a due piani porticata con spine.
 
 ---
 
-<!-- p.1041 (orig. p.1041) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1041
 
 [Immagine della pianta]
@@ -26252,11 +24485,8 @@ dino e forse pertinente ad un ippodromo privato che l'imperatore Aureliano si er
 
 ---
 
-<!-- p.1042 (orig. p.1042) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1042
+1042
 RIONE XVII. SALLUSTIANO
 
 [Immagine: Particolare della pianta di Roma del Nolli (1748) con il Circo di Flora]
@@ -26267,11 +24497,8 @@ volta di una galleria di 8 metri di lunghezza per circa 4 di larghezza, sono inv
 
 ---
 
-<!-- p.1043 (orig. p.1043) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1043
 
 Criptoportico con pitture durante la costruzione di un garage-autorimessa in via Friuli.
@@ -26288,11 +24515,8 @@ Gli acquedotti che attraversavano i giardini sallustiani furono dai Visigoti di 
 
 ---
 
-<!-- p.1044 (orig. p.1044) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1044
+1044
 RIONE XVII. SALLUSTIANO
 
 Vano con il tempo i caratteri di giardini attorno ad alcune ville aristocratiche. Segue, ad opera di papa Pio IV Medici (1559-1565), la sistemazione della grande dorsale dell'Alta Sèmita; che da lui prende il nome di Pia (via del Quirinale e via XX Settembre); quindi, ad opera di papa Sisto Peretti (1585-1590), la costruzione della grande fontana del Mosè; che vide l'afflusso nella zona dell'acqua Felice. Alla fine dell'Ottocento la valle di origine alluvionale su cui si affacciava il complesso degli Orti Sallustiani fu colmata (ora è a 14 metri sotto il livello stradale) allorquando si iniziò la costruzione della zona Sallustiana-Ludovisi; interessata da un'urbanizzazione intensiva; come avvenne, del resto, in altre zone di Roma dopo il 1870. Vengono costruiti dapprima la sede del Ministero delle finanze, voluta da Quintino Sella, quindi il grande palazzo del Museo geologico ed altre sedi ministeriali che incrementarono le costruzioni di palazzi per abitazione, quali, mentre in un primo momento si dispongono principalmente lungo la via XX Settembre; intorno al 1891 occupano anche l'area attorno a piazza Sallustiana.
@@ -26318,11 +24542,8 @@ Prima della costruzione della chiesa esisteva in questo luogo una cappellina-rom
 
 ---
 
-<!-- p.1045 (orig. p.1045) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1045
 
 ![Immagine]
@@ -26333,11 +24554,8 @@ convento; che fu poi demolito quando fu allargata la stretta via di S. Susanna c
 
 ---
 
-<!-- p.1046 (orig. p.1046) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1046
+1046
 RIONE XVII. SALLUSTIANO
 
 nico di Gesù e Maria il quale riferì come il volto della Vergine avesse abbagliato l'esercito nemico mandando dagli occhi lampi di luce. L'immagine fu prima esposta nella chiesa di S. Maria Maggiore e quindi trasportata nella chiesa di S. Paolo; Il trasferimento di questa immagine miracolosa nella chiesa e la sua collocazione sull'altare maggiore fu la causa del cambiamento di dedica della chiesa stessa, che fu così intitolata a S. Maria della Vittoria. Fu durante la costruzione della chiesa che venne ritrovata la nota statua raffigurante l'Ermafrodito, che fu donata al cardinale Scipione Borghese. La statua, fatta trasferire in villa Borghese; fu restaurata dal Bernini e qui rimase fino all'Ottocento allorquando Camillo Borghese la vendette alla Francia unitamente ad altro materiale antico. Sempre in quest'area; durante i lavori di costruzione della chiesa, si rinvenne una stipe votiva contenente materiale databile al VII secolo a.C. attualmente conservato nell' Antiquarium comunale. La facciata della chiesa, che fu realizzata nel 1626 su progetto di Giovanni Battista Soria (1581-1651), fu finanziata dal cardinale Borghese; grato per il dono della statua antica: La facciata quasi in simmetria con quella della vicina chiesa di S. Susanna; opera del Maderno; è a due ordini e quello inferiore è scandito da lesene su alti plinti che incorniciano la porta d'accesso posta su breve gradinata; mentre le nicchie laterali sono sormontate da timpani. Un timpano curvilineo spezzato sormonta il portale ed è ornato da un bassorilievo marmoreo.
@@ -26352,11 +24570,8 @@ Nel 1801 la chiesa ricevette come titolare il cardinal Luchi anche se la sua nom
 
 ---
 
-<!-- p.1047 (orig. p.1047) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1047
 
 La chiesa di S. Maria della Vittoria
@@ -26374,11 +24589,8 @@ Arriviamo quindi all'altare maggiore dove era conservata l'immagine miracolosa d
 
 ---
 
-<!-- p.1048 (orig. p.1048) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1048 RIONE XVII. SALLUSTIANO
+1048 RIONE XVII. SALLUSTIANO
 
 Affacciano con scenografia teatrale otto personaggi appartenenti alla famiglia Cornaro; opera del Ferrata; fra cui un doge veneziano. Essi assistono, presi da devozione e da sorpresa, all'estasi della Santa; e noi spettatori veniamo quindi a trovarci nella terza possibile posizione di osservazione, quella frontale e inferiore (naturalmente) davanti alla Santa. Intanto un lucernario, non visibile agli astanti e posto al di sopra del gruppo scultoreo berniniano, illumina la statua della Santa e dell'angelo che la trafigge, venendo così soffusamente illuminati. In realtà questa luce che cade dall'alto è simbolo della Grazia divina che scende sulla Santa.
 
@@ -26394,11 +24606,8 @@ Usciti dalla chiesa proseguiamo per via XX Settembre e vediamo sempre a sinistra
 
 ---
 
-<!-- p.1049 (orig. p.1049) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1049
 
 cancellata; in lettere dorate; si legge la scritta: <Largius hinc
@@ -26421,11 +24630,8 @@ Usciti quindi dalla porta Pia, subito sulla sinistra, vediamo là, dove fu apert
 
 ---
 
-<!-- p.1050 (orig. p.1050) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1050
+1050
 
 RIONE XVII SALLUSTIANO
 
@@ -26439,11 +24645,8 @@ Arriviamo ad uno slargo dove si ergeva l'antica porta Salaria; la porta della ci
 
 ---
 
-<!-- p.1051 (orig. p.1051) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1051
 
 via XX Settembre e quindi attraversiamo via Belisario, che prende il nome dal condottiero bizantino (494-565), che nel 537 respinse validamente l'attacco mosso da capo dei Goti, alla città. L'attacco si incentrò soprattutto nel tratto delle mura compreso fra le porte Pinciana e Salaria; e così in questa strada, anche se un po' distante dalle mura, che Belisario viene ricordato.
@@ -26458,11 +24661,8 @@ Una lampada in ferro battuto pende dal soffitto del portico. Si accede quindi al
 
 ---
 
-<!-- p.1052 (orig. p.1052) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1052
+1052
 RIONE XVII SALLUSTIANO
 
 Montate da semplice architrave si aprono al primo piano, mentre tre porte-finestre sono in corrispondenza del balcone. Altrettante finestre si aprono al secondo piano. La copertura è a tetto. Nel piano interrato sono disposti i servizi. Un mascherone realizzato su progetto del Cipriani (1835) orna l'ingresso principale della villa. Alla morte del cardinale Valenti Gonzaga tutta questa proprietà venne venduta dal nipote ed erede Antonio al cardinale Prospero Colonna e alla morte di questi, avvenuta qui nel 1765, la proprietà rimase agli Sciarra; Nel 1816 fu acquistata dalla sorella di Napoleone, Paolina Borghese, che la abitò fino al 1824. Rimasta ancora per poco ai Bonaparte la villa fu venduta ai del Novecento dapprima a un commerciante e poi al prussiano Otto von Muhlberg, che ne curò il restauro: La scala immette nel vestibolo da cui si accede ad un ambiente dalla ricca decorazione della metà dell'Ottocento con scene e personaggi mitologici. Segue quindi l'altro da cui, mediante una elegante scala con ringhiera in ferro battuto, si sale al piano e si accede al salone anch'esso ornato da figure derivate dal mondo greco.
@@ -26473,11 +24673,8 @@ Lasciamo adesso la villa e proseguiamo per via Piave fino ad incontrare la chies
 
 ---
 
-<!-- p.1053 (orig. p.1053) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>**Il monumento funerario di Q. Sulpicio Massimo**
+**Il monumento funerario di Q. Sulpicio Massimo**
 
 Il monumento che vediamo oltre un alto muro con alto cancello è databile alla fine del secolo d.C. ed è costituito da un basamento in travertino su cui è poggiato un altare funerario con acroteri ornati da palmette e piccolo timpano con corona legata da nastri svolazzanti. Qui è stato sistemato un calco; l'originale viene conservato nei Musei capitolini.
 
@@ -26495,11 +24692,8 @@ Attraversiamo via Collina che, come dice il nome stesso, ricorda la antica porta
 
 ---
 
-<!-- p.1054 (orig. p.1054) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1054
+1054
 RIONE XVII. SALLUSTIANO
 
 da una recinzione; sono situati alcuni resti di quelli che erano fra i più famosi giardini di Roma, gli Horti Sallustiani. Questi giardini interessavano una vasta estensione di terreno compresa fra la via XX Settembre a sud, le mura aureliane a nord, Podierna via Veneto a ovest e la via Salaria a est. Furono costruiti nel 40 a.C. dall'illustre storico Sallustio su un terreno che era di proprietà di Giulio Cesare e che egli aveva acquistato alla morte del dittatore. Nel 20 d.C. gli Horti passarono a far parte del demanio imperiale; più volte abbelliti ed ampliati furono spesso residenza degli imperatori. Sappiamo infatti che dopo gli aspri combattimenti svoltisi proprio nella zona degli Horti Sallustiani salì al potere Vespasiano; questo imperatore amava soggiornare in questi luoghi. Ugualmente faceva l'imperatore Nerva; tanto sembra, la morte lo cogliesse mentre appunto si trovava nella villa. Lavori di abbellimento furono apportati alla villa da Adriano e più tardi da Aureliano; che vi fece costruire una *porticus miliarensis*, forse un complesso di portici con ippodromo e giardini come spesso venivano costruiti nelle ville lussuose. La villa fu quasi interamente distrutta ed incendiata da Alarico nel 410, allorché i Goti entrarono in Roma proprio attraverso la vicina porta Salaria. La villa conobbe così una lunga fase di abbandono; come ricorda anche lo storico Procopio, nel VI secolo; che ebbe modo di vederla.
@@ -26514,11 +24708,8 @@ A destra rispetto a questo nucleo sono altri ambienti, uno dei quali con volta a
 
 ---
 
-<!-- p.1055 (orig. p.1055) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1055
 
 # Horti di Salustio
@@ -26533,11 +24724,8 @@ Questo obelisco in granito d'Egitto è alto metri 14,17 senza base e doveva con 
 
 ---
 
-<!-- p.1056 (orig. p.1056) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1056
+1056
 RIONE XVII. SALLUSTIANO
 
 sto stesso. Altri ritengono ancora che il suo trasporto a Roma debba essere avvenuto nel II-III secolo d.C. L'obelisco, benché crollato, fu sempre ricordato tanto che papa Sisto V pensò di farlo recuperare e sistemare di fronte alla basilica di S. Maria degli Angeli. Ma non se ne fece nulla.
@@ -26556,11 +24744,8 @@ Al n. civico 15 è un'altra villetta, anch'essa a tre piani con un interrato, co
 
 ---
 
-<!-- p.1057 (orig. p.1057) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1057
 
 **Sallustio**
@@ -26577,11 +24762,8 @@ Lasciamo adesso piazza Sallustio ed imbocchiamo via Sallustiana e subito a sinis
 
 ---
 
-<!-- p.1058 (orig. p.1058) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1058
+1058
 
 RIONE XVII. SALLUSTIANO
 
@@ -26645,11 +24827,8 @@ una bella cancellata in ferro; è in stile liberty. Quindi al n. 22 è
 
 ---
 
-<!-- p.1059 (orig. p.1059) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1059
 
 Edificio che ospita il liceo scientifico intitolato ad Augusto Righi e al n. 26 un edificio che ha davanti un giardino recintato da una moderna cancellata sostenuta da sottili colonnine con capitelli in stile ionico; anch'essi in ferro. L'edificio presenta la facciata sottolineata da paraste e colonne solo dove si apre un balcone.
@@ -26664,22 +24843,16 @@ Oltrepassata via Sallustiana vediamo, subito all'angolo con via Piemonte; la chi
 
 ---
 
-<!-- p.1060 (orig. p.1060) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1060
+1060
 RIONE XVII. SALLUSTIANO
 
 rate da larghe fasce di marcapiano. La superficie di questa villa era notevole, circa 10 ettari di terreno, e fu utilizzata per costruirvi prima nel 1872 il Ministero delle finanze e poi la parte del quartiere ad esso adiacente. Pio X volle anche la costruzione di una chiesa in questo posto e indicò in Tullio Passarelli il progettista della nuova chiesa, ché era rimasto favorevolmente impressionato da quanto l'architetto aveva fatto nel suo progetto per la chiesa di S. Teresa al corso d'Italia. Ed è infatti allo stile romanico-lombardo di quella chiesa che il Passarelli si ispirò per realizzare nel 1910 questa nuova chiesa. La facciata è a due ordini con un corpo centrale fiancheggiato da larghe lesene che proseguono anche nel secondo ordine. Il grande portale con arcata a tutto sesto è sottolineato da ghiere concentriche ornate da fitta decorazione. Nella lunetta ricavata al di sopra della porta centrale è raffigurato «Gesù che istituisce l'ordine»; nella lunetta al di sopra della porta di sinistra è invece la «Maddalena» che asciuga con i capelli i piedi del Cristo dopo avervi profuso unguenti e su destra è raffigurato «Gesù fra i fanciulli». Al di sopra, separata da una serie di arcatelle è il grande tondo centrale iscritto in un elemento a croce greca chiuso da una copertura a doppio spiovente. I brevi settori laterali, che si aprono in corrispondenza delle porte di accesso; anch'esse arcate e sormontate da tondi, sono chiusi da un tetto inclinato ornato; nella parte sottostante, da arcatelle. L'interno è a tre navate con breve transetto; divise da pilastri. Nella navata a destra, oltrepassato il battistero, è l'altare dedicato al Cuore di Gesù, ornato dai rilievi del Tadolini (1908), mentre la pala d'altare è del Conti. Segue l'altare dedicato a S. Giuseppe con immagini relative alla «Vita di S. Giuseppe», opera del Gazzerri. A sinistra, nell'altare dedicato a S. Antonio sono alcuni rilievi, sempre del Gazzerri, ispirati ad episodi della «Vita di S. Antonio», quindi è l'altare del transetto su cui è una copia dell'opera raffigurante la «Madonna della Consolata» e l'altare del Crocefisso con il «Crocefisso» ligneo del Bini. Scene tratte dalla «Vita di S. Camillo» si trovano effigiate sulle colonne della navata centrale e ancora sull'altare maggiore e sul paliotto dell'altare stesso. Nel catino absidale si aprono cinque vetrate su cui sono raffigurati il «Cristo con i quattro Evangelisti», mentre al di sotto, all'interno di una nicchia è posta la statua del Santo, opera di Alberto Galli (1911). Le vetrate delle finestre danno luce al transetto. La lunetta della porta che conduce alla sacrestia, posta a sinistra appena entrati nella chiesa, è ornata da un bassorilievo raffigurante papa «Pio X», per volere del quale fu costruita la chiesa, che osserva il modello della chiesa stessa, opera del Galli (1911). L'entrata laterale della chiesa che si apre su via Sallustiana è ornata da due colonne e dalla raffigurazione del «Buon Pastore» sulla lunetta. Quindi sulla parete esterna del transetto sempre su via Sallustiana vediamo murato un rilievo in cui, entro arcatelle, dalle cornici ornate da una fitta decorazione e sostenute da colonnine sono raffigurati la «Madonna», S. Giuseppe e S. Camillo da Lellis. Al di sopra sono le belle vetrate policrome.
 
 ---
 
-<!-- p.1061 (orig. p.1061) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1061
 
 Segue il campanile; sempre in laterizio; come la chiesa; ed è contrassegnato come tutto il complesso da cornici ed elementi significanti in travertino. Termina a cuspide, rivestito da lastre bronzee, ed è ispirato a quello della basilica di S. Marco a Venezia.
@@ -26700,11 +24873,8 @@ Lasciamo l'INA e prendiamo per via Lucullo dove sono conservati, a sinistra, pro
 
 ---
 
-<!-- p.1062 (orig. p.1062) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1062
+1062
 RIONE XVII. SALLUSTIANO
 
 In via Friuli, ormai inserita nel Palazzo Boncompagni, si riconosce una struttura di epoca precedente che faceva parte della vigna Orsini (1581). Qui ancora, dove via Friuli incrocia via Lucullo; negli anni 1949-1950, durante alcuni lavori eseguiti per costruire un garage, fu rinvenuto un criptoportico in opera cementizia rivestito di intonaco dipinto a finte architetture e figure femminili che può essere datato fra gli ultimi anni dell'età degli Antonini e l'inizio di quella dei Severi (160-220 d.C.).
@@ -26719,11 +24889,8 @@ A ridosso della parete della chiesa di S. Maria della Vittoria, in corrispondenz
 
 ---
 
-<!-- p.1063 (orig. p.1063) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1063
 
 Costruito nel 1873 su progetto di Raffaele Canevari, il quale non realizzò la facciata principale che è volta verso lo stretto cortile del Ministero dell'Agricoltura. Il palazzo, su alto basamento aperto da piccole finestre quadrangolari, è a tre piani e su di essi le grandi finestre a vetrate; dodici per piano sono scandite da pilastri e le ultime tre per lato sono inferiormente chiuse da tramezzi. Questi tramezzi, sistemati nella parte inferiore, presentano la superficie ornata da motivi geometrici in stucco e così pure la fronte dei pilastri corrispondenti. All'interno del palazzo è situato il museo geologico con ricca collezione di marmi che è formata dalla collezione donata al museo nel 1870 dal generale Pescetto e da quella De Santis, che fu acquistata dal Ministero Agricoltura, Industria e Commercio per il museo.
@@ -26734,11 +24901,8 @@ Questa collezione comprende marmi di età greca, di età romana, materiale vulca
 
 ---
 
-<!-- p.1064 (orig. p.1064) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XVIII. Castro Pretorio
+Rione XVIII. Castro Pretorio
 di Mauro Quercioli
 Dalle origini ai nostri giorni
 
@@ -26750,11 +24914,8 @@ A Castro Pretorio si insediarono nel Seicento i gesuiti, reduci dalle missioni a
 
 ---
 
-<!-- p.1065 (orig. p.1065) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AI NOSTRI GIORNI
+DALLE ORIGINI AI NOSTRI GIORNI
 1065
 
 L'area del Castro Pretorio in un'incisione di G. Vasi.
@@ -26775,11 +24936,8 @@ Lo stemma è il labaro dei pretoriani in oro su sfondo rosso.
 
 ---
 
-<!-- p.1066 (orig. p.1066) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1066
+1066
 RIONE XVIII. CASTRO PRETORIO
 
 **Il Castro Pretorio**
@@ -26811,11 +24969,8 @@ In piazza della Repubblica, non si può non prendere spunto dalla fontana delle 
 
 ---
 
-<!-- p.1067 (orig. p.1067) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1067
+PRIMO ITINERARIO 1067
 
 La fontana di piazza della Repubblica, ancora senza le statue delle Naiadi, alla fine dell'Ottocento.
 
@@ -26827,11 +24982,8 @@ Ai giornalisti non parve vero dar spazio alla immane bagarre. Mentre l'«Avanti!
 
 ---
 
-<!-- p.1068 (orig. p.1068) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1068
+1068
 RIONE XVIII. CASTRO PRETORIO
 
 Ricostruzione ottocentesca di L. Canina delle Terme di Diocleziano.
@@ -26848,11 +25000,8 @@ Sediamoci anche noi sull'orlo della vasca; e se il vento non spinse gli spruzzi 
 
 ---
 
-<!-- p.1069 (orig. p.1069) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1069
 
 branchie, da consistenti edifici a loro volta ornati sulla sommità; secondo landazzo del momento; da ricche. Si otteneva così un connubio fra la romanità con il cerchio dell'esedra e con i colonnati, e al tempo stesso col gusto piemontese imperante; caro all'urbanistica umbertina; coi portici e con gli aquilotti varii posti a decoro degli acroteri. La via Nazionale condizionò tutti i progetti per la sistemazione della piazza semplicemente perché preesistente; perché necessaria all'impostazione urbanistica e non da ultimo perché costituì l'ampio sfruttamento di aree fabbricabili dell'Urbe, iniziato, già Pio IX regnante, dall'intraprendente ministro de Merode. Il crescente urbanistico imposto dalla stazione ferroviaria faceva della via Nazionale il nuovo punto di riferimento della città, vero ponte tra la Roma pontificia, tradizionale, con la nuova Roma moderna caratterizzata dal mezzo di trasporto più avanzato per quei tempi. Già nel quinquennio precedente alla caduta del papa si era andato formando l'impostazione viaria. Il de Merode era andato assicurandosi, con un fiuto degno del miglior manager, fin dal 1859 i terreni della villa Strozzi, il che vuol dire che Pastuto monsignore era proprietario dell'area dell'attuale piazza della Repubblica, via delle Quattro Fontane e di buona parte della via Nazionale compresa fra l'esedra delle Terme e la via del Boschetto; acquistandola da Ottavia Billingham Mourdant e rivendendoli a lotti, anche a politici emergenti, come Tonorevole Marco Calva.
@@ -26867,11 +25016,8 @@ In corrispondenza con la via Nazionale, v'era quanto restava della villa Strozzi
 
 ---
 
-<!-- p.1070 (orig. p.1070) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1070
+1070
 RIONE XVIII. CASTRO PRETORIO
 
 dai magazzini pontifici per le derrate, che arrivavano al limite della attuale via del Viminale; e dalla parte opposta dalla chiesa con annesso convento di S. Bernardo, sulla piazza omonima.
@@ -26892,11 +25038,8 @@ Al di sotto del...
 
 ---
 
-<!-- p.1071 (orig. p.1071) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1071
 
 **Gli angeli delle Terme e la loro chiesa**
@@ -26913,11 +25056,8 @@ Angelo incaricò stavolta nientemeno che Michelangelo ed affidò la chiesa ricon
 
 ---
 
-<!-- p.1072 (orig. p.1072) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1072
+1072
 RIONE XVIII. CASTRO PRETORIO
 
 na. Non sappiamo come la prese il buon Del Duca. Passò da questa vita nel 1574 e ora giace in un angolo della sua chiesa: fuori mano, senza epitaffio. Nessun architetto avrebbe meritato di lavorare nellambito delle Terme di Diocleziano se non Michelangelo Buonarroti. Era l'uomo giusto nell'epoca adatta. Pochi decenni prima e soprattutto dopo, avrebbero compromesso tutto.
@@ -26932,11 +25072,8 @@ Ed eccoci di fronte alla Stazione Termini. Cominciamo col precisare che anche in
 
 ---
 
-<!-- p.1073 (orig. p.1073) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO                                                                    1075
+PRIMO ITINERARIO                                                                    1075
 
 Cupato dalla rivoluzione romana fine '48, metà '49, le autorità cittadine non persero di vista il problema ferrovie; concedendo ad una società definita Imprese Industriali Italiana, in attesa di divenire S.A. Pia-Latina, in data 25 novembre 1848 la costruzione d'una linea Roma-Ceprano. Gli eventi aprirono una larga parentesi, che si chiuse nel 1853 allorché alla Roma-Frascati si aggiunsero la Roma-Civitavecchia e la Roma-Ceprano, che univano la capitale con i confini dello Stato sia a sud che dal lato opposto. La necessità di fornire un preciso punto di riferimento a queste tre linee, con biglietteria, arrivi, partenze, buffet, deposito bagagli, sale d'attesa, informazioni, nonché cappella ed altro; impose il moderno concetto di stazione: Il 4 febbraio 1860, giorno in cui si scelse definitivamente il luogo ove far nascere un complesso del genere, segna la nascita della Stazione Termini.
 
@@ -26948,11 +25085,8 @@ Passata dal cardinal Veralli ai Naro, e sul declinare del XVI secolo ai Ricci Mo
 
 ---
 
-<!-- p.1074 (orig. p.1074) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1076
+1076
 RIONE XVIII. CASTRO PRETORIO
 
 [Immagine]
@@ -26967,11 +25101,8 @@ L'inaugurazione avvenne il 20 aprile del 1873, e più o meno l'edificio restò i
 
 ---
 
-<!-- p.1075 (orig. p.1075) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1077
 
 d'epoca; si trattava di due corpi ben distinti: «Arrivi» e «Partenze», collegati da un'ampia tettoia sotto cui si svolgeva il movimento ferroviario vero e proprio.
@@ -26988,11 +25119,8 @@ Dopo la grande biglietteria, ecco un vasto ambiente di disimpegno antistante l'a
 
 ---
 
-<!-- p.1076 (orig. p.1076) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1078
+1078
 RIONE XVIII. CASTRO PRETORIO
 L'Aggere Serviano
 
@@ -27004,11 +25132,8 @@ Al di sotto una sorta di città underground, con altri bar, diurni, negozi, pres
 
 ---
 
-<!-- p.1077 (orig. p.1077) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1079
+PRIMO ITINERARIO 1079
 
 de della Stazione e delle proprietà dei Massimo: Questi erano divenuti nel 1789 proprietari della villa Montalto-Peretti, che da allora assume anche il nome degli ultimi proprietari. Investita la zona dal turbine edilizio della nuova stazione; della vasta proprietà; ai Massimo non restavano nel 1873 che 8000 m², oltre al palazzo ultimato nel 1886 come visto. Fu allora che il gesuita Massimiliano Massimo ritenne opportuno trasformarlo in istituto scolastico, ottenendo, dopo qualche difficoltà burocratica, d'ampliarlo con le spese del fatiscente edificio di Sisto V.
 
@@ -27024,11 +25149,8 @@ Di fronte al numero 1 v'è la ex Casa del Passeggero, edificata nel 1920 dall'ar
 
 ---
 
-<!-- p.1078 (orig. p.1078) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1080
+1080
 
 RIONE XVIII. CASTRO PRETORIO
 
@@ -27089,11 +25211,8 @@ Di fronte un bel leccio fa ombra su una fila bassa di conci in travertino ed alt
 
 ---
 
-<!-- p.1079 (orig. p.1079) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1081
 
 Attaccata alla Rotonda; lungo la via del Viminale, al numero 3/B, una bassa abitazione a due piani con tetto a coppi rivela la sua vecchia origine. All'angolo v'è l'ingresso d'un albergo sormontato da una minuscola loggetta: L'insieme della strada di sapore umbertino è rotto dalla modernità delle linee del palazzo ICCREA (Istituto di credito delle casse rurali ed artigiane), ubicato all'angolo con via Torino; opera dell'architetto Francesco Berarducci. Qui la via del Viminale presenta sulla destra un vasto slargo; è la piazza Beniamino Gigli, che fronteggia il Teatro dell'Opera, un tempo *reale* ancora semplicemente *Costanzi*.
@@ -27108,11 +25227,8 @@ Guerre, disavanzi, marce varie, trascinarono il problema fino al...
 
 ---
 
-<!-- p.1080 (orig. p.1080) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1082
+1082
 RIONE XVIII. CASTRO PRETORIO
 
 Le impalcature per il trasporto dell'obelisco vaticano in piazza S. Pietro, una delle maggiori opere realizzate da Sisto V.
@@ -27145,11 +25261,8 @@ Il largo, dedicato al famoso tenore Beniamino Gigli, è chiuso sulla sinistra da
 
 ---
 
-<!-- p.1081 (orig. p.1081) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1083
 
 **Sisto V: tra urbanesimo e brigantaggio**
@@ -27170,11 +25283,8 @@ Possiamo non notare la proiezione futuristica nel senso proprio della parola, de
 
 ---
 
-<!-- p.1082 (orig. p.1082) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1084
+1084
 
 RIONE XVIII. CASTRO PRETORIO
 
@@ -27190,11 +25300,8 @@ Questa piazza era delimitata dalla Stazione, dall'ex-istituto Massimo e dall'ini
 
 ---
 
-<!-- p.1083 (orig. p.1083) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1073
 
 **Le terme di Diocleziano**
@@ -27215,11 +25322,8 @@ Tutto ciò, come detto, era a disposizione di chiunque frequentava una terma. Un
 
 ---
 
-<!-- p.1084 (orig. p.1084) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1074
+1074
 RIONE XVIII. CASTRO PRETORIO
 
 KDH
@@ -27236,11 +25340,8 @@ Fra quelle vicende si prepararono per le Terme: una parte del Museo è rimasta n
 
 ---
 
-<!-- p.1085 (orig. p.1085) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1085
+PRIMO ITINERARIO 1085
 
 progettisti, costituendo a loro giudizio una nuova porta della città. Ciò infatti era esplicitamente affermato da chi approvò il progetto del 1871. «La loro giacitura», asserì il sindaco del tempo, Venturi, alludendo ai due edifici con portici; «è tale da far desiderare che gli edifici che vi sorgeranno abbiano carattere e decorazioni più nobili degli altri, dappoché il primo ingresso sia indispensabile accenno all'importanza dell'intera città». C'è chi in un assetto del genere vide, evidentemente esagerando, una nuova edizione del Tridente, delle vie del Babuino, del Corso e di Ripetta.
 
@@ -27254,11 +25355,8 @@ Come detto, la ferrovia non suddivise più chi arriva da chi parte, lato «Arriv
 
 ---
 
-<!-- p.1086 (orig. p.1086) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1086
+1086
 RIONE XVIII. CASTRO PRETORIO
 
 St'angolo estremo del rione ha di monumentale solo un indescrivibile movimento. La cosa comunque, nel bene e nel male, ha contribuito a conservare il compito riconosciuto nel 1871 al rione stesso di ricevere, ospitare e, nei limiti del possibile, ristorare i viaggiatori. Prima di lasciare questa parte del rione, soffermiamoci ad osservare l'edificio che fa angolo fra la via Cavour e via Torino; con ingresso al civico 163 di quest'ultima. È un imponente edificio costruito, come riportato dall'iscrizione sovrastante l'ingresso, da CAESAR JANZ ARCHITECTUS. MDCCCLXXXVIII. Un corpo centrale, composto da sei colonne ionizzanti alte due piani dell'edificio, grava su un piano con sette balconi con parapetti classicheggianti. Il tutto poggia su un piano terra con robusto bugnato. Ricca e movimentata dai balconi l'angolo che guarda piazza dell'Esquilino. Quest'edificio stabilì una moda, anche se dell'architetto Janz non troviamo che un'altra sola testimonianza, di grande rilievo comunque, sia per l'edificio in sé che per una delle persone che lo abitarono.
@@ -27291,11 +25389,8 @@ A rafforzare quanto sopra, una testa di leone stringe fra i denti due rami d'oli
 
 ---
 
-<!-- p.1087 (orig. p.1087) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1087
 
 Suo ricordo ad una splendida canzone: l'iscrizione — importante perché redatta da repubblicani nel 1929, in pieno periodo monarchico quindi, definisce il nostro uomo: MARTIRE, VINDICE, PRECURSORE.
@@ -27333,11 +25428,8 @@ Più avanti, a lato del n. 9, moderna edicola sacra incastonata a mo' di finestr
 
 ---
 
-<!-- p.1088 (orig. p.1088) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1088
+1088
 RIONE XVIII. CASTRO PRETORIO
 
 Grand Hotel
@@ -27350,11 +25442,8 @@ Certosa, al di sotto della strada. Queste che non hanno un'aria né modesta né 
 
 ---
 
-<!-- p.1089 (orig. p.1089) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1089
 
 concorrenza del secentesco Istituto romano di S. Michele. Basti
@@ -27416,11 +25505,8 @@ quelle però per fine.
 
 ---
 
-<!-- p.1090 (orig. p.1090) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1090
+1090
 RIONE XVIII. CASTRO PRETORIO
 
 C'è la caravella, ma c'è tutto il resto. Soprattutto il ribadimento del gemellaggio (*geminae sorori Lutetiae Parisiorum*). Forse non sarà del tutto inutile rammentare che *Lutetia Parisiorum* è il nome romano di Parigi. Ecco il testo:
@@ -27471,11 +25557,8 @@ Fra via Cernaia e via Parigi vi è, o meglio v'era, il Planetario. La sala che l
 
 ---
 
-<!-- p.1091 (orig. p.1091) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1091
 
 All'interno; grazie a certe apparecchiature ottiche, ottenute dalla Germania in conto riparazioni di guerra, si potevano illustrare al pubblico il moto degli astri. La grande cupola apribile; come presso molti cinema romani, oltre che cambiare aria, svolgeva a volte, anche una funzione importante per il preciso scopo del locale. Declassato a cinema, imballate le apparecchiature; il Planetario ha cessato da tempo attività, per divenire oggetto un po' malinconico di interminabili restauri, che poco conclusi:
@@ -27507,11 +25590,8 @@ Abbiamo già fatto cenno alla preferenza accordata da papa Sisto V a questa zona
 
 ---
 
-<!-- p.1092 (orig. p.1092) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1092
+1092
 RIONE XVIII. CASTRO PRETORIO
 
 ![Immagine della mostra dell'acqua Fellce]
@@ -27531,11 +25611,8 @@ Dedicata l'anno santo del 1600 da Caterina Sforza moglie del conte di Santa Fior
 
 ---
 
-<!-- p.1093 (orig. p.1093) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1093
 
 La chiesa di S. Bernardo
@@ -27547,11 +25624,8 @@ Al della Rotonda di via del Viminale, anche questa era un accesso alle terme. Da
 
 ---
 
-<!-- p.1094 (orig. p.1094) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1094
+1094
 RIONE XVIII CASTRO PRETORIO
 
 architetto-urbanista di papa Sisto V, e ad Alessandro Specchi, a cui andiamo debitori della scalinata di Trinità dei Monti. L'edificio fa perno sull'incrocio delle Quattro Fontane, lasciando un ruolo secondario alle altre due ali che s'affacciano su via XX Settembre e via delle Quattro Fontane. Questo, più che un lato, è un angolo smussato e, ciononostante, appare come la parte più importante, inserendosi autorevolmente al cospetto del lato Barberini, del palazzo del Quirinale e della famosa chiesa di S. Carlo (o S. Carlino) alle Quattro Fontane.
@@ -27564,11 +25638,109 @@ Prendiamo a sinistra e all'incrocio con via Napoli: ecco slanciata, nella sua im
 
 ---
 
-<!-- p.1099 (orig. p.1099) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+SECONDO ITINERARIO
+1095
+
+di via del Babuino: La prima pietra venne posta nel 1873 e nello spazio di tre anni s'eresse questa chiesa; radicalmente diversa come disegno e come impostazione; dall'altra dedicata a Tutti i Santi di via del Babuino. In stile strettamente vittoriano st'ultima; copia romanico-gotica quella di S. Paolo; che con alternarsi di fasce chiare e rossastre, si richiama ai monumenti senesi.
+
+Il portale è a due ingressi, su cui appare un mosaico del 1909 raffigurante «S. Paolo che predica», opera di George Breck (1863-1920). Rosone; con i simboli degli evangelisti ed iscrizione tratta dalla lettera di S. Paolo ai Filippesi.
+
+Ai lati dell'ingresso, una scritta bilingue rammenta che «Le porte di bronzo (oro) dedicate il 28 aprile 1977 in commemorazione dell'incontro del 2 dicembre 1960 nella città del Vaticano fra Giovanni XXIII e Geoffrey Fischer arcivescovo di Canterbury. Che noi si possa essere uniti».
+
+A lato, bell' giardinetto decorato con stemma moderno e due sarcofagi antichi.
+
+Di bell' effetto l'interno, a tre navate suddivise da fasce orizzontali bicolori, come l'esterno. La policromia dei mosaici e la ricchezza dell'insieme creano un'atmosfera di facile presa.
+
+A ben guardare però, dobbiamo ammettere che forse questa è fra le più significative testimonianze dell'arte musiva moderna. Nel catino absidale, i mosaici, effettuati su cartone di Burne Jones, raffigurano una scena tratta dall'Apocalisse di Giovanni (IV, 3), «Cristo in gloria con i fiumi che sorgono ai suoi piedi» con un seguito di cherubini e serafini, mentre ai lati gli arcangeli sostano di fronte alle porte del Paradiso.
+
+Scritte in ebraico e in greco completano la scena, sovrastata dal «The tree of forgiveness», l'albero della Remissione; come l'ebbe a definire lo stesso Burne Jones. Sempre nell'abside, vi sono gli «Asceti» sulla sinistra, i «Padri» al centro e i «Guerrieri» a destra; fra questi, la parte del leone la fanno ovviamente i santi più venerati in Gran Bretagna; come «S. Giorgio, S. Andrea e S. Patrizio».
+
+Particolare interessante, i volti di alcuni fra i Padri ed i Guerrieri raffigurano personaggi dell'Ottocento. S. Patrizio ha infatti il volto del noto generale USA Grant, protagonista della guerra di Secessione, nonché presidente nel 1873; S. Giacomo quello di Giuseppe Garibaldi; S. Andrea quello di Abraham Lincoln. Uno spazio, per giusta riconoscenza, ebbe anche JP. Morgan che profuse non poco denaro per la costruzione di questa chiesa, prestando il volto a S. Ambrogio; ed un angoletto se lo riservò anche il vescovo Tait, prestando le fattezze a S. Agostino. La parete di fronte, la parte interna della facciata, è movimentata da colonnine binate. In basso ricca scena della «Natività»; in alto, accanto al rosone, «Gerusalemme circondata da mura», e nella parte più alta «Sole, luna, comete e costellazioni».
+
+Poco v'è l'ultracentenario Quirinale, ove presero stanza personaggi illustri a cavallo del secolo; ricordati da visote lapidi.
+
+Poco oltre via Nazionale fa angolo con via Torino; giriamo di questo dopo, Albergo.
+
+---
+
+
+1096
+RIONE XVIII CASTRO PRETORIO
+Ernesto Nathan
+
+Ma chi era Ernesto Nathan di cui s'è più volte ripetuto il nome a causa di certe iniziative politiche? Qualcuno lo ipotizza addirittura figlio naturale di Giuseppe Mazzini. Sua madre la pesarese Sara Nathan, grande amica del politico genovese, lo aveva dato alla luce a Londra nel 1845. Ernesto Nathan arrivò a Roma la prima volta a quattordici anni, ma ancora era più londinese che romano. Fece varie spole fra le due città finché Mazzini lo chiamò ad amministrare la Società «Roma e Popolo».
+
+Il Nathan si distinse subito non tanto per il suo scontato mazzinianesimo, quanto per l'accentuato anticlericalismo. Ottenne la cittadinanza italiana nel 1888, ma non aveva certo perduto tempo; essendo al centro dell'attenzione, sia benevola che non, di molti circoli, correnti politiche e soprattutto della Massoneria. Non del tutto esplorata, invece, la sua simpatia nei confronti degli ambienti ebraici. Nel 1907 a capo della Concentrazione democratica, una formazione che oggi collocheremo più a sinistra che al centro, venne eletto sindaco di Roma.
+
+Non era certo un tipo tranquillo; nei sei anni in cui ricoprì la carica ingaggiò una serie di battaglie, ed ebbe soprattutto il torto di non vincerle tutte. Edilizia e scuole popolari costituirono la prima tappa del suo programma; per poi passare alla municipalizzazione dei principali servizi pubblici. Possiamo immaginare il mare di interessi che mise soqquadro. Lasciò la carica nel 1913. Gli eventi della Grande Guerra misero fine a un'epoca e in buona parte agli uomini che ne erano stati protagonisti. Ernesto Nathan morì a Roma, dimenticato dai più, nel 1921.
+
+[...] poco sulla sinistra e al numero civico 122, ecco la seconda fatica romana dell'architetto Cesare Janz, il cosiddetto Palazzo Nathan. Questo è un edificio dotato di non poca originalità; infatti anche se lo Janz si riferisce al palazzo costruito in fondo a via Torino, ben comprese come i volumi di cui poteva disporre erano ben diversi rispetto all'esperienza terminata solo un anno prima. Sicché le soluzioni neoclassiche, forti e imponenti, comparvero ma nient'affatto invadenti né tampoco dotate di quell'imponenza quasi aggressiva che caratterizza il palazzo di via Torino, n. 163. Qui siamo di fronte ad un edificio che si appoggia ad un altro prospiciente su via Nazionale; in pratica l'architetto doveva puntare sulla sua capacità di sfruttare gli angoli, ed in effetti questo diventa la facciata principale del palazzetto. Elevandosi sull'altro quattro balconcini si elevavano via via stringendosi, illeggiadriti da colonnine che conferiscono al movimento cilindrico degli stessi una leggerezza che è impossibile trovare nell'altro edificio dello Janz, che pure adotta la soluzione dei balconi sovrapposti nell'angolo con la via Cavour.
+
+Accanto, elemento di raccordo fra l'angolo ed il corpo dell'edificio, vi è una parte della facciata delimitata da due colonne ionizzanti, alte quanto due piani, che incominciano in modo tutto colorare le finestre che si affacciano su questo lato, fra cui spicca l'inferiore arricchita da un motivo a tempio greco con tanto di cariatidi. L'edificio ospita vari uffici, fra cui la commissione tributaria di II grado.
+
+---
+
+
+TERZO ITINERARIO
+1097
+
+**Terzo itinerario**
+
+Piazzale Sisto, viale Pretoriano, viale Castro Pretorio, via Montebello, via Palestro, via Cernaia, via Goito, piazza Indipendenza, via Marsala.
+
+Antico e moderno s'accozzano nel piazzale che ricorda il primo grande estimatore della zona di Termini, papa Sisto V; l'arco che lo rammenta quale autore di strade e d'acquedotti sembra prendere spallate all'edificio della stazione alquanto anonimo per il vero, almeno su questo lato; unendosi attraverso i fornici del suo acquedotto con quello che resta della possente muraglia dell'imperatore Aureliano.
+
+Nonostante tutto ciò questo piazzale conserva un non so che di periferico; sarà per la mancanza di negozi, per il traffico esclusivamente veicolare, forse per la presenza d'un edificio basso dall'aria quanto mai provvisoria dei magazzini militari, che con andamento triangolare si incuneano nel tessuto urbano della zona con strutture antiquate, che rammentano un esercito ipnotrainato; che un esercito dell'era spaziale.
+
+Il tufo grigio scuro ben risalta con le nervature in travertino che lo completano; ma ha il difetto d'essere quanto mai sensibile alle ingiurie meteorologiche e dello smog, sicché tende a consumarsi lasciando in fuori, come costole in un corpo consunto, le parti travertinose. Le erbacce coprono le iscrizioni superstiti e la fama di Sisto V appare sempre più sbiadita in un contesto cittadino soprattutto indifferente. Sul lato opposto al nostro piazzale, fuori quindi del rione Castro Pretorio, interpretando rigorosamente confini, una iscrizione posta sopra il fornice più alto cerca di ricordare ai viandanti quanto segue:
+
+SIXTVS
+PONT
+MAX
+VIAS
+VTRASQ. ET AD S. MARIAM
+MAIOREM ET A S.
+MARIAM
+ANGELORVM
+AD POPVLI
+COMMODITATEM ET DEVOTIONEM
+LONGAS LATASQUE.
+AVA... STRAVIT .
+
+Le lacune sono dovute al fiorire spontaneo ed indisturbato di frasche e ramaglie. L'arco presenta una bella testa leonina circondata da tre monti sovrapposti. L'architrave in tufo recava l'anno, ma più che tre lettere non è dato leggere ANN. Come detto; il tufo, caldo; arcaico nella sua sostanza, molto laziale come provenienza; non ha retto all'urto del tempo.
+
+Sopra due fornici piccoli si notano ornamenti vegetali e due grandi targhe in travertino, purtroppo mute. Su questo lato Sisto V rammenta ch' era stata sua idea e la relativa spesa di aprire o migliorare quella che al momento è via Marsala, atta per la comodità e la devozione dei viandanti che intendevano recarsi a S. Maria Maggiore; o più semplicemente a S. Maria degli Angeli.
+
+Ma rientriamo nell'ambito del nostro Rione: Qui, il buon papa Sisto V rammenta, a chi sta molto probabilmente per uscire da Roma attraverso la porta San Lorenzo, che se ha bevuto dell'acqua tanto buona quanto salubre, lo deve anche, se non soprattutto; alla sua saggia previdenza:
+
+SIXTVS
+V PONT
+MAX
+DVCTVM AQ-
+VAE FELICIS
+RIVVS SVBTERRANEO
+MILL. PASS
+XIII SVBSTRVCTIONI:
+ARCVATA VII
+SVO SVMPTV EXTRVXIT.
+
+---
+
+
+1098
+RIONE XVIII. CASTRO PRETORIO
+
+L'iscrizione è ovviamente posta sopra il fornice maggiore; che ripete la testa leonina, con ai lati stelle ad otto punte anziché i monti presenti sul lato opposto: tutti i simboli, come noto agli appassionati d'araldica, che richiamano gli elementi dello stemma pontificio a cui papa Sisto teneva quanto al ben augurante nome. Accanto ai fornici che aprono il piazzale verso via dei Ramni vi è la villa che Filippo Gentili e il fratello, cardinal Antonio Saverio, si fecero costruire nel 1739 molto probabilmente dall'architetto Filippo Raguzzini:
+
+L'edificio di questa a ridosso delle mura e dell'acquedotto appare come una sorta di triangolo rettangolo. Nonostante le difficoltà, l'architetto trovò, come ricordato dalla Belli Barsali, «precise rispondenze simmetriche nel corpo principale, a cui s'accede da due scale curvilinee, reca lo stemma con il cane in corsa; simbolo dei Gentili. I piani dell'edificio non sono uguali. Il primo risulta più elevato rispetto agli altri. Le finestre di questo hanno parapetti con specchi a doppia bugna e angoli smussati; elegante il ninfeo ricavato nelle mura aureliane, che è ornato da una statua di «Ercole» e da stucchi. L'interno conserva la decorazione settecentesca, fra cui notiamo quella delle stanze della torre con i tondi a figure simboliche nella camera da letto vedute di campagna con rovine e pitture d'ispirazione pompeiana in altre stanze. Passata a Costanza Sparagentili nel 1753, venne da questa donata al principe Urbano Del Drago di Biscia che aveva sposato una sua figlia adottiva. Nel 1861 dai Del Drago la villa venne venduta alla principessa russa Elisa Cherementeff. Quest'ultima, nel 1913 la vendette a Gustavo Dominici, il cui nome compare accanto al cancello d'ingresso.
+
+Il viale Pretoriano rimane un molto discusso corpo speciale dell'antichità. Certo, come spesso capita, la cattiva fama dei pretoriani è stata creata più dalla stampa che dai fatti. Buona colpa di ciò va attribuita soprattutto al Sienkiewicz che, nel suo famoso romanzo «Quo vadis?», ne fece non se non un corpo di alieni cattivi, un qualcosa del genere: La prefettura delle coorti pretorie costituì una delle innovazioni effettuate da Augusto; la cohors Praetoria repubblicana, guardia personale del comandante, aveva istituito questo corpo di soldati scelti. Si trattava di un corpo composto da nove coorti di cui tre stanziate a Roma, al comando di un prefetto del Pretorio estratto dall'ordine equestre — pertanto, come diremmo oggigiorno, dalla borghesia abbiente. Queste coorti raggruppavano «il meglio della gioventù italiana», come sottolineò Santo Mazzarino, «che si dava alla carriera militare». Certo che lo stare così vicino al principe non poteva non suscitare comprensibili orgogli e ambizioni. Il corpo infatti era un qualcosa di vivo e operante e non svolgeva certamente solo funzioni decorative tipo corazzieri o moschettieri del duce; alla bisogna sapeva infatti schierarsi in battaglia come la vecchia Guardia napoleonica: inevitabili, scontate le figure di in-
+
+---
+
+
+TERZO ITINERARIO
 
 Ricostruzione ideale secentesca del Castro Pretorio
 
@@ -27580,11 +25752,94 @@ E fu così che nel 69 d.C. furono pretoriani ad offrire la carica imperiale ad
 
 ---
 
-<!-- p.1104 (orig. p.1104) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1104
+100
+
+RIONE XVIII. CASTRO PRETORIO
+
+L'antica porta Chiusa, oggi distrutta, con un tratto delle mura di Aureliano all'altezza del Castro Pretorio (incisione di G. Vasi).
+
+Ottone, dopo aver fatto fuori Galba, ma si era alla caduta della dinastia giulio-claudia, e pertanto di fronte ad una crisi vasta e profonda: superata la quale, si dovranno attendere ben 124 anni per assistere di nuovo ad abusi del genere. Non sarà infatti la forza o la prepotenza del corpo a determinare certi eventi, ma la debolezza delle istituzioni. Nel 193 d.C. infatti, con la caduta degli Antonini, i pretoriani si riaffacciano sulla scena. Troppo severo e al tempo stesso non sufficientemente forte Pertinace, e loro lo fanno fuori; e, in un eccesso di cui si pentiranno amaramente, arrivarono a mettere all'asta la carica imperiale fra Sulpiciano e Didio Giuliano. La vicenda mise all'avviso Settimio Severo, l'uomo forte del momento, e con lui la guardia pretoriana perse completamente potere.
+
+Il viale Pretoriano si snoda in modo pressoché rettilineo, costeggiando le mura di Aureliano che compaiono basse e alquanto malridotte fra gli alberi e il verde delle aiuole, che ingentiliscono la parte destra del viale stesso. Sull'altro lato, i magazzini militari continuano, bassi e anonimi, ravvivati dal giallo dei cartelli che avvertono essere una zona militare e pertanto dal limite invalicabile; in particolare, come annunciato da un altro cartello, siamo di fronte allo stabilimento militare per il materiale elettronico.
+
+Il viale dell'Università tronca le residue mura d'Aureliano che, rabbernate alla meglio, segno di infinite vicende, difendono la loro sopravvivenza. Queste riprendono, con accenni di torri, anche nei pressi dell'imponente edificio del Ministero della difesa-aeronautica.
+
+Di fronte, i magazzini militari conservano la loro matrice originaria di stalle, vuoi per la forma capannone, ma soprattutto per quattro teste equine, le quali, benché mutilate e malridotte, testimoniano la lontana origine di questi edifici. Superiamo l'incrocio con il viale dell'Università e inoltriamoci lungo il viale Castro Pretorio. La presenza, però, delle antiche mura, ogni lato, quella...
+
+***
+
+1100 RIONE XVIII. CASTRO PRETORIO
+
+[Immagine]
+
+L'antica porta Chiusa, oggi distrutta, con un tratto di mura di Aureliano all'altezza del Castro Pretorio (incisione di G. Vasi).
+
+Ottone, dopo aver fatto fuori Galba, ma si era alla caduta della dinastia giulio-claudia, e pertanto di fronte ad una crisi vasta e profonda. Superata la quale, si dovranno attendere ben 124 anni per assistere di nuovo ad abusi del genere. Non sarà infatti la forza o la prepotenza del corpo a determinare certi eventi, ma la debolezza delle istituzioni. Nel 193 d.C. infatti, con la caduta degli Antonini, i pretoriani si riaffacciano sulla scena. Troppo severo e non sufficientemente forte Pertinace, e loro lo fanno fuori; e, in un eccesso di cui si pentiranno amaramente, arrivarono a mettere all'asta la carica imperiale fra Sulpiciano e Didio Giuliano. La vicenda mise però all'avviso Settimio Severo, l'uomo forte del momento, e con lui la guardia pretoriana perse completamente potere.
+
+Il viale Pretoriano si snoda in modo pressoché rettilineo, costeggiando le mura di Aureliano che compaiono alquanto malridotte fra gli alberi e il verde delle aiuole che ingentiliscono la parte destra del viale stesso. Sull'altro lato, i magazzini militari continuano, bassi e anonimi, ravvivati dal giallo dei cartelli che avvertono quella zona militare e pertanto dal limite invalicabile. In particolare, come annunciato da un altro cartello, siamo di fronte allo stabilimento militare per il materiale elettronico. Il viale dell'Università tronca le residue mura d'Aureliano che, rabbernate alla meglio, segno di infinite vicende, difendono la loro sopravvivenza. Queste riprendono, con accenni di torri, anche nei pressi dell'imponente edificio del Ministero della difesa-aeronautica. Di fronte, i magazzini militari conservano la loro matrice originaria di stalle, vuoi per la forma capannone, ma soprattutto per quattro teste equine, le quali, benché mutilate, testimoniano la lontana origine di questi edifici. Superiamo l'incrocio con il viale dell'Università e inoltriamoci lungo il viale Castro Pretorio. La presenza, per quanto labile, delle antiche mura...
+
+---
+
+
+TERZO ITINERARIO [1101]
+
+Obbligò gli urbanisti del tempo a conferire una leggera andatura a gomito al viale. Superato un edificio pubblico prima della via Monzambano, riprendono basse le costruzioni militari. Il tutto su questo lato attende una sua definitiva sistemazione. Qui dove Tiberio aveva fatto costruire il muro occidentale del suo Castro occorre da anni la costruzione d'un ingresso adeguato all'importanza della Biblioteca nazionale, e magari un relativo parcheggio. Questo punto, prescelto dalle linee dell'ACOTRAL provvisoria stazione per numerosi pullman che collegano con Roma i centri della regione, appare alquanto pasticciato per molte ore della giornata. Non si esclude che anche la parte più settentrionale dell'antico Castro, tuttora adibito a caserma, possa subire una radicale trasformazione, onde ospitare in modo più razionale questa stazione. Il che se da una parte può apparire una cosa logica, data la vicinanza della Stazione Termini, non può non spiacere; perché finirebbe così la più antica caserma del mondo.
+
+Edifici fine sec. occupano il lato di fronte al Castro; sul lato successivo, dopo l'incrocio con la via S. Martino della Battaglia, compaiono solo costruzioni moderne. Il rione termina contro il muro di Aureliano, con una vecchia centrale elettrica chiusa da un edificio stile anni Venti.
+
+Sconfiniamo per poco nel quartiere Nomentano; poco prima della torre posta a difesa della murata porta Nomentana, rientriamo nel nostro rione, inoltrandoci per via Montebello. Qui siamo nella parte del rione che il piano regolatore umbertino volle suddiviso secondo uno schema a pianta ortogonale; secondo uno schema che senz'ombra di esagerazione possiamo definire Ippodameo: la toponomastica è totalmente rivolta ai luoghi ove si svolsero i principali avvenimenti delle guerre d'Indipendenza. E l'Indipendenza, coronamento di tante lotte, è esaltata al centro di questo reticolo di strade, con la omonima piazza; concepita punto focale di questa parte del rione.
+
+Siamo di fronte ad un vero e proprio sub-rione che potremmo definire appunto del Risorgimento e dell'unità nazionale. Inoltriamoci in questo reticolo di strade cercando di farcene un'idea. Giriamo sulla sinistra rientrando nel nostro rione dal rettifilo di via Montebello. Compaiono sullo sfondo le strutture delle terme di Diocleziano; scuole sul nostro lato sinistro; mentre sull'opposto un muro grigio e anonimo protegge il giardino dell'ex villa Torlonia che circonda l'ambasciata britannica. Questa occupa una vasta area fra questa via, via Palestro, via XX Settembre e il muro di Aureliano. Nel 1947, quando gli inglesi erano ancora invischiati nella "faccenda" Palestina, forse anche della famigerata Irghun o della Stern, pensarono bene di rafforzare le loro motivazioni attuando un piano dinamitardo che mise fuori uso l'intero complesso; di recente questa sede diplomatica è tornata al suo passato livello; sicché i rappresentanti di Sua Maestà britannica, considerando anche la sede di villa Wolkonski a via Ludovico di Savoia, possono vantare quanto di meglio si possa avere in Roma in fatto di sedi diplomatiche. Il lato sulla via Palestro di questo giardino è reso meno scostante da una lunga cancellata che lascia un tantino di verde e frescura anche al quale può piacere all'anonimo viandante.
+
+Il moderno...
+
+---
+
+
+102
+RIONE XVIII. CASTRO PRETORIO
+
+edificio che ospita l'ambasciata; con ingresso in via XX Settembre, è opera dell'architetto angloindiano Basil Spence (1907-1976). Un lago più che una fontana, divide l'edificio dalla cancellata in elegante ferro battuto con tanto di stemma di Windsor. Un ponte collega quest'ultima con l'ingresso all'ambasciata vera propria; ed una statua di Moore ne orna il lato sinistro accentuando la proiezione moderna del complesso. Dalla via Palestro passiamo a via Cernaia. Come facile notare le costruzioni rivelano un'unica impronta architettonica culturale. Quando sorsero, un centinaio d'anni fa, dovevano soddisfare le esigenze abitative duna burocrazia decorosa, totalmente proveniente da zone lontane.
+
+Questo è il primo rione non romano di Roma capitale ed i "buzzurri" come venivano sfottuti dai romani "de Roma in progressiva inarrestabile minoranza" venivano a creare strato sociale intermedio, nuovo per l'Urbe, laddove si era tra principi o popolani; con pochissime vie di mezzo. Questa burocrazia aveva il suo patronus, il suo castello, nei mastodontici e decoratissimi ministeri, che senza avvedersene divenivano i nuovi manieri attorno ai quali si raccoglieva in modo più o meno anonimo la nuova plebs, ovvero erano le nuove grandi abbazie, attorno alle quali gravavano nuovi servi della gleba. Ma non siamo più nel medioevo; ora se la sostanza nel profondo non cambia, deve assolutamente far trasparire tutto lo spirito d'una dignitosa borghesia; che non rischia, ma cerca nello stipendio quella sicurezza limitata e quella garanzia alla sopravvivenza da cui scaturirà il fascino alquanto discutibile dello stipendio misero magari, ma comunque fisso.
+
+Pochi fronzoli architettonici, anche se il gusto del momento ne vorrebbe molti e non solo sui cappellini delle signore. Fronzoli; decorazioni trionfalistiche sono appannaggio degli enormi edifici pubblici, i quali così soddisfano anche quel senso legittimo di soddisfazione d'una generazione che non si fermò di fronte a Roma come Liutprando, ma seppe andare più in là, realizzando un qualcosa che sembrava relegata al mondo delle utopie. Se prescindiamo dallo spirito di un periodo; non potremo comprendere molto di ciò che si realizzò in quel periodo stesso: Una casa all'angolo fra via Cernaia e via Castelfidardo superò lo schema generalizzato in questa area, lanciandosi per prima forse nella direzione dei motti latini, alquanto ingenui nella loro formulazione moraleggiante, che furoreggeranno fino agli anni Trenta circa. Il senso laico del periodo è ribadito dalla data della costruzione della casa espressa ab urbe condita, dalla fondazione della città. Su due cartigli in alto sull'angolo si legge MMDCXXXIV, il che vuol dire che Cristum natum correva l'anno di 1881. Sotto; la lunga scritta in facile latinetto a cui abbiamo fatto cenno; che riguarda dapprima la scelta dei luoghi salubri, la solidità della casa, ed in un crescendo le convenienze:
+
+EA SUNT PRINCIPIA
+PRIMUM ELECTIO LOCI SALUBERRIMI REGIONESQUE
+COELI SPECTANTIS NEQUE FRIGIDAS NEQUE AEUSTUOSAS
+FUNDAMENTA
+AD SOLIDUM
+COMMODA
+DISTRIBUTIO VENOSTA
+SPECIES ATQUE EX
+MEMBRIS CONVENIENS CONSENSUS
+
+Proseguiamo per via Cernaia. All'angolo sulla destra compare; quello...
+
+---
+
+
+TERZO ITINERARIO
+1103
+
+Severa, se vogliamo anche un po' tetra coi suoi muri in laterizio avana, la Chiesa dedicata alla ALMAE SS. ROSARI REGINAE (e se qualcuno non avesse capito, basta guardare un po' più in basso laddove è scritto sempre a belle lettere DIVAE VIRGINI SACRA). L'ingresso, leggermente sopraelevato rispetto al battuto del marciapiede, presenta un portone binato sovrastato da una croce greca contornata da due colombe.
+
+Dopo una porta sormontata da una sbiadita immagine della «Madonna», sotto cui c'è scritto F 31.X.1889, giriamo a destra per via Goito e di fronte, al lato orientale del Ministero delle Finanze, abbiamo l'imponente costruzione della Cassa Depositi e Prestiti, come ben evidenziato nella facciata principale che dà proprio su questa via: su un piano terra dal bugnato regolare scarsamente marcato, s'ergono due imponenti piani. Il primo con lesene e semicolonne jonicizzanti, ed il secondo corinzio. Grande stemma sabaudo sulla sommità, affiancato da figure allegoriche femminili raffiguranti legge e ricchezza; putti ai lati; agli angoli, aquile ad ali spiegate con tanto di corona d'oro. Due date sono marcate in due specifici medaglioni: 1863 e 1910, riguardando la data di fondazione dell'istituto e della costruzione dell'edificio.
+
+Di fronte, all'angolo formato dal Ministero delle Finanze con la via XX Settembre, apriva la vetusta Porta Collina del cosiddetto muro di Servio Tullio. Da questa porta uscivano le grandi vie di comunicazione fra Roma e la Sabina: la Salaria e la Ficulense (nota in seguito come via Nomentana). Ben si comprende come, data la posizione, il Quirinale sia stato nel periodo storico il punto di riferimento dei Sabini, tanto che ad essi sembra vada attribuita l'origine stessa del toponimo Quirinale. Una terza via, ma più lontana dal posto dove ci troviamo, era quella fluviale, che la Salaria raggiungeva nei pressi dell'antica Fidene.
+
+Sempre restando sulla via Goito, facciamo dietrofront e raggiungiamo Piazza Indipendenza, focale di questo reticolo di strade. Questa occupa parte di quello che nell'antica Roma era tristemente famoso come Campus Sceleratus: luogo orribile dove avvenivano sacrifici umani, cui, famosi, quello riservato alle vestali (le poverette infatti venivano sepolte vive!).
+
+I più disparati stili si affacciano su questo grande rettangolo: sulla sinistra, per noi che proveniamo da via Goito, abbiamo l'attuale sede del Consiglio Superiore della Magistratura, un tempo riservata ai marescialli d'Italia. Costruito negli anni Trenta, costituisce un esempio tipico dell'ufficialità del tempo: travertini s'alternano con tufi scuri, il tutto in forma lineare e squadrata; volti incorniciati negli elmetti con espressione vagamente ottusa ed uniforme, cercando di conferire fierezza al tutto.
+
+Accanto, dopo la via Bachelet, la piazza prosegue con una scuola e subito dopo con un bell'edificio di stile umbertino, color ocra carico e con l'ornamento sulla sommità d'un bel angelo alato secondo il miglior gusto dell'epoca. Dopo l'incrocio con la via dei Mille, il moderno edificio dei giornali: qui infatti, oltre al «Corriere dello Sport» e «la Repubblica», hanno sede altri noti rotocalchi. Il giro della piazza continua sul moderno, dando un esempio di edificio primo esempio di genio e golo fra punto fra...
+
+---
+
+
+1104
 RIONE XVIII. CASTRO PRETORIO
 
 Pubblico posteriore agli anni Cinquanta con la grande sede dei Consorzi agrari: la balconata che corre su tutta la facciata è decorata dal lungo fregio bronzeo di Pericle Fazzini, dedicato al «Lavoro dei campi». Ma di fronte, dopo via Goito da cui siamo venuti, resiste sia pure mal ridotta ed adibita a parcheggio: una villa il cui stile, per quanto è dato vedere, tradisce tempi migliori. Un tempo il grande bar all'angolo verso via Solferino, dedicato ad una nota cascata al confine fra USA e Canada, era uno dei punti di riferimento degli immigrati di colore. Allora non erano molli, ora si sono ampiamente moltiplicati risolvendo problemi di basso lavoro per privati, ma creando problemi esplosivi per la comunità. La parte del rione Castro Pretorio, un secolo fa destinata a perpetuare presso posteri i fasti delle lotte per l'Indipendenza, ora ha assunto uno spirito ed un significato decisamente diverso.
@@ -27611,11 +25866,8 @@ Accanto c'è il grande complesso salesiano di Roma in cui non è facile accedere
 
 ---
 
-<!-- p.1105 (orig. p.1105) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 1105
+TERZO ITINERARIO 1105
 
 in travertino con porta centrale e laterali in marmo. Le colonne sono in granito nero delle Balme, lunetta in mosaico ed angeli in brughette. Sul vertice del timpano, statue di «S. Agostino» e di «S. Francesco di Sales». Padre Giovanni Bosco non condivideva certamente il ritiro dei cattolici dalla scena politica ed aveva perfettamente capito che superato il problema risorgimentale, l'attenzione andava spostandosi anche in Italia sui problemi sociali: Da qui la grande idea dei Salesiani diretta a trasformare i giovani ancora impegnati per mentalità; per mancanza di iniziative od altro, nei lavori tradizionali soprattutto agricoli e pastorali: in operai capaci di far fronte alla crescente richiesta di una società che sia pur timidamente andata industrializzandosi. E così, mentre a Milano gli operai venivano messi a tacere dai cannoni di Bava Beccaris, Torino andava formandosi, attraverso le scuole di formazione salesiane, una classe operaia tanto docile quanto atta a far fronte alle richieste delle fabbriche del momento.
 
@@ -27636,11 +25888,8 @@ E tutti partecipano, bianchi, neri, gialli, cercando per un momento di sentirsi 
 
 ---
 
-<!-- p.1106 (orig. p.1106) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione XIX. Celio
+# Rione XIX. Celio
 di Carlo Villa
 
 ### Dalle origini ad oggi
@@ -27661,11 +25910,8 @@ Insomma il colle in origine doveva avere un profilo ben più accidentato, con pr
 
 ---
 
-<!-- p.1107 (orig. p.1107) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 107
 
 Il Celio visto dal Palatino in un'incisione ottocentesca di B. Pinelli della villa Celimontana e nella valle di S. Sisto, dove si trova il semenzaio comunale.
@@ -27686,11 +25932,8 @@ Il Celio era attraversato da una fitta rete viaria, che tuttora con-
 
 ---
 
-<!-- p.1108 (orig. p.1108) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>108
+108
 
 RIONE XIX. CELIO
 
@@ -27716,11 +25959,8 @@ I Flavi, sopravvenuti a Nerone, edificarono il Colosseo, dov'era anticamente un 
 
 ---
 
-<!-- p.1109 (orig. p.1109) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1109
 
 La zona, a seguito di questa specializzazione, s'infittì di costruzioni signorili, preziose per mosaici e opere d'arte. Settimio Severo ripristinò l'acquedotto neroniano, che ancora oggi domina la zona, arricchendolo di archi e iscrizioni.
@@ -27737,11 +25977,8 @@ Sul Celio, e precisamente dove si trova oggi l'ospedale militare, venne mantenut
 
 ---
 
-<!-- p.1110 (orig. p.1110) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>110
+110
 
 RIONE XIX. CELIO
 S. Agostino di Canterbury, evangelizzatore della Britannia.
@@ -27768,11 +26005,8 @@ Il quadrilatero compreso tra la via di S. Gregorio, la via dei Ss. Giovanni e Pa
 
 ---
 
-<!-- p.1111 (orig. p.1111) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 
 [Mappa del rione Celio]
 
@@ -27786,11 +26020,8 @@ La quiete campestre del rione Celio durò fino all'entrata a Roma dei piemontesi
 
 ---
 
-<!-- p.1112 (orig. p.1112) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1112
+1112
 RIONE XIX. CELIO
 
 La costruzione di un nuovo centro urbano nell'area in questione.
@@ -27821,11 +26052,8 @@ Ma questo appellativo sembra doveroso alla sua grandezza, l'analisi scientifica 
 
 ---
 
-<!-- p.1113 (orig. p.1113) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1113
 
 **Un Colosseo tuttofare**
@@ -27860,11 +26088,8 @@ quale dappqui dgelati»
 
 ---
 
-<!-- p.1114 (orig. p.1114) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>114
+114
 
 RIONE XIX. CELIO
 
@@ -27888,11 +26113,8 @@ Una volta, nell'area occupata dal monumento, si stendeva uno stagno artificiale 
 
 ---
 
-<!-- p.1115 (orig. p.1115) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1115
 
 Vespasiano fu il primo imperatore che si occupò, negli anni 69-79 d.C., dell'edificio; elevandolo fino al terzo ordine, e il suo nome corrente era all'epoca anfiteatro Flavio, dalla casata di Vespasiano.
@@ -27913,11 +26135,8 @@ Ma le rappresentazioni ebbero destino avverso, con sospensioni anche notevoli, d
 
 ---
 
-<!-- p.1116 (orig. p.1116) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1116
+1116
 
 RIONE XIX. CELIO
 
@@ -27941,11 +26160,8 @@ Questi scavi hanno permesso interessanti reperimenti riferiti alle vicende legat
 
 ---
 
-<!-- p.1117 (orig. p.1117) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1117
 
 Il Colosseo in un'incisione ottocentesca di G. Cottafavi.
@@ -27966,11 +26182,8 @@ I fornici in travertino; nel piano terreno; sono indicati con dei numeri romani 
 
 ---
 
-<!-- p.1118 (orig. p.1118) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>118
+118
 RIONE XIX. CELIO
 
 L'afflusso degli spettatori in via preventiva; e qui l'ordine delle colonne che reggono gli archi è tuscanico; quindi, al piano superiore, l'ordine ionico; per finire al terzo piano in quello corinzio. Nell'attico sono presenti finestroni alternati a scudi bronzei oggi spariti.
@@ -27983,11 +26196,8 @@ Nei sotterranei erano presenti magazzini, montacarichi, piani inclinati, botole,
 
 ---
 
-<!-- p.1119 (orig. p.1119) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1119
 
 **Telemaco**
@@ -28018,11 +26228,8 @@ All'inizio della strada che ci accingia...
 
 ---
 
-<!-- p.1120 (orig. p.1120) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1120
+1120
 RIONE XIX. CELIO
 
 ...mo a percorrere, fino al 1815 era la chiesa di S. Giacomo del Colosseo, che già nel 1748, nella pianta del Nolli, era ridotta a un magazzino per il fieno, mentre fu demolita nel 1815 per conto dell'amministrazione francese della città, così da creare una passeggiata attorno all'insigne monumento con il pomposo titolo di «Jardin du Capitale».
@@ -28045,11 +26252,8 @@ L'edicola mariana si trova attualmente in uno stato davvero indecoroso, facendo 
 
 ---
 
-<!-- p.1121 (orig. p.1121) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1121
 
 Rassero con serietà e impegno sia politico che amministrativo; una bonifica e cura puntuali dei monumenti e delle strade, non imbellettandoli, ma certo mantenendoli al meglio; senza snaturarli, né distruggendoli, tenendo presente che specialmente una città come Roma è né più né meno che un organismo vitale che, se ferito e trascurato, finisce per infettarsi irreparabilmente e per morire. L'emblematica edicola oggetto di così mesta elucubrazione presenta al suo esterno un'iscrizione ancora decifrabile, che narra: «Il sorriso di Maria / questi luoghi allieterà / se chi passa per la via / "Salve, o Madre" / a Lei dirà».
@@ -28066,11 +26270,8 @@ Ma esiste anche un'altra versione che identifica i martiri, stavolta col numero 
 
 ---
 
-<!-- p.1122 (orig. p.1122) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1122
+1122
 RIONE XIX. CELIO
 
 La torre del Ss. Quattro Coronati (in una xilografia del 1929 di L. Bonetti).
@@ -28081,11 +26282,8 @@ Negli anni successivi alla sua edificazione la chiesa ricevette attenzioni, doni
 
 ---
 
-<!-- p.1123 (orig. p.1123) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1123
+PRIMO ITINERARIO 1123
 
 vivo di Foligno; che la mantennero fino al Quattrocento. Quindi con Martino divenne dimora episcopale; nel 1521 ai camaldolesi e nel 1560 alle suore agostiniane, che ancora ne mantengono la cura.
 
@@ -28111,11 +26309,8 @@ Ciò che colpisce nella chiesa paleocristiana è il presbiterio che occupa tutta
 
 ---
 
-<!-- p.1124 (orig. p.1124) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1124
+1124
 RIONE XIX. CELIO
 
 5. Maria Imperatrice e villa Campana
@@ -28144,11 +26339,8 @@ La cosa più notevole dell'intero edificio si trova invece nella cappella di S. 
 
 ---
 
-<!-- p.1125 (orig. p.1125) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1125
 
 Licrome, con un ciclo di affreschi dedicato a Costantino; diviso in undici riquadri, nei quali viene narrato come l'imperatore, affetto da lebbra, dovesse venire curato col sangue di bambini sacrificati allo scopo. L'imperatore respinge l'offerta esecranda delle madri accorse addolorate per la perdita imminente dei loro figlioli e, a seguito di un sogno, gli apostoli Pietro e Paolo gli consigliano di rivolgersi al papa Silvestro; che si trova sul monte Soratte, viene battezzato da costui e mondato dal male. E così Costantino dona al papa il potere imperiale d'Occidente. Gli affreschi costituirono una "propaganda" politica della falsa "Donazione di Costantino", sfruttata dal Papato nelle lotte di prestigio contro l'imperatore fino a tutto il medioevo:
@@ -28163,11 +26355,8 @@ I restauri, a partire dalla dinastia dei Flavi, furono periodici e ne avvennero 
 
 ---
 
-<!-- p.1126 (orig. p.1126) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1126
+1126
 RIONE XIX. CELIO
 
 sibile, il pilastro contrassegnato dal Colini; studioso dell'ingegneria; con il numero CLXIX; maggiore degli altri, conteneva il castello di distribuzione delle acque di afflusso; con le relative vasche di decantamento e spine in piombo per la misurazione del flusso.
@@ -28190,11 +26379,8 @@ Il portale è firmato da Iacopo e dal figlio Cosma di Lorenzo, artefici anche de
 
 ---
 
-<!-- p.1127 (orig. p.1127) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1127
 
 Villa Casali
@@ -28227,11 +26413,8 @@ Doveva trattarsi, date le morsature laterali evidentissime, di una porta inserit
 
 ---
 
-<!-- p.1128 (orig. p.1128) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1128
+1128
 RIONE XIX. CELIO
 
 L'arco di Dolabella in una stampa di fine Ottocento.
@@ -28244,11 +26427,8 @@ La vicenda della chiesa è ricca di contenziosi con il Capitolo Vaticano, a caus
 
 ---
 
-<!-- p.1129 (orig. p.1129) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1129
+PRIMO ITINERARIO 1129
 
 il corpo di S. Giovanni Matha, fondatore dell'Ordine trinitario, sistemandolo definitivamente a Madrid. Il complesso fu affittato a privati fino al 1898, anno centenario della fondazione dell'Ordine trinitario; che avverrà ai religiosi una tardiva restituzione del corpo conteso. Della costruzione medievale esistono ancora tracce, visibili solo dalla villa Celimontana, mentre la massima parte della costruzione, compresa la facciata, è di un Seicento privo di particolare interesse. Nell'interno gli altari sono opera del Capitolo vaticano con datazione 1663 e i dipinti sono di un tardo Cinquecento. Non mancano modernissimi, addirittura del 1971 e del '72. La cella dove dal 1299 al 1313 abitò il fondatore dei trinitari si trova proprio sopra l'arco di Dolabella. Percorrendo ancora la via stretta tra le mura altissime della villa Celimontana e del giardino dei passionisti, incontriamo ancora i fornici dell'acquedotto neroniano; fino ad arrivare alla piazza dei Ss. Giovanni e Paolo e alla chiesa omonima, sorta su un gruppo di vecchie case del I secolo d.C. Per una leggenda sfatata dalla storiografia recente, questi due santi che non hanno nulla a che vedere con gli omonimi
 
@@ -28256,11 +26436,8 @@ L'abside dei Ss. Giovanni e Paolo in un'incisione tardo-ottocentesca.
 
 ---
 
-<!-- p.1130 (orig. p.1130) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1130
+1130
 RIONE XIX. CELIO
 
 Apostoli di Cristo: sarebbero stati dei notabili dell'impero; convertitisi e martirizzati dall'imperatore Giuliano nel 361 d.C. Abbiamo le prime notizie catastali della chiesa da Leone nel 440; viene quindi menzionata come *Titulus Pammachii* e successivamente, alla fine del 500 d.C., appare la denominazione odierna. La chiesa originaria subì parecchi danni con il sacco di Roma; quindi subì svariate trasformazioni interne ed esterne. I lavori della metà del Novecento, voluti e finanziati dal cardinale Spellman, arcivescovo di New York, ripristinarono la facciata, il portico e il campanile paleocristiano. Sulla facciata è notevole la polifora a cinque luci e sui fianchi sono visibili le ravvicinate finestre paleocristiane. Il portale cosmatesco presenta due leoni del XII secolo, simbolo della Chiesa militante; esistono tracce di affreschi dello stesso secolo.
@@ -28275,11 +26452,8 @@ Le varie decorazioni di carattere moresco-bizantino sono in copia, mentre gli or
 
 ---
 
-<!-- p.1131 (orig. p.1131) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1131
+PRIMO ITINERARIO 1131
 
 La chiesa di S. Gregorio al Cello. In un'incisione di G. Vasi.
 
@@ -28299,11 +26473,8 @@ L'oratorio di S. Barbara, del XII secolo; vedeva S. Gregorio men...
 
 ---
 
-<!-- p.1132 (orig. p.1132) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1132
+1132
 
 RIONE XIX. CELIO
 
@@ -28325,11 +26496,8 @@ Non si deve confondere quest'Orto botanico con quello ben più vasto e scientifi
 
 ---
 
-<!-- p.1133 (orig. p.1133) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1133
 
 **Imperia e la testa itinerante**
@@ -28373,11 +26541,8 @@ Quanto andiamo percorrendo, precedentemente all'istituzione del rione Celio (e d
 
 ---
 
-<!-- p.1134 (orig. p.1134) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1134
+1134
 
 RIONE XIX. CELIO
 
@@ -28399,11 +26564,8 @@ Alcuni di questi luoghi possono ricordarsi nella chiesa di S. Giovanni a Porta L
 
 ---
 
-<!-- p.1135 (orig. p.1135) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 135
 
 I secolo. Se la via Appia Antica fu sempre un centro nevralgico di comunicazione, periodicamente riattata allo scopo, la porta Latina per secoli rimase murata. La porta Metronia invece fu utilizzata per condurre in città l'acqua Mariana, dai romani disinvoltamente chiamata «marrana», deviazione linguistica che poi nella città dei papi e del Belli rimarrà per indicare qualsiasi acqua stagnante.
@@ -28426,11 +26588,8 @@ L'interno a pianta basilicale è diviso in tre navate tramite 18 colonne dai cap
 
 ---
 
-<!-- p.1136 (orig. p.1136) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1136
+1136
 
 RIONE XIX. CELIO
 
@@ -28445,11 +26604,8 @@ Nel 1802 la villa fu venduta a Marianna d'Austria; quindi passò a un Pianciani,
 
 ---
 
-<!-- p.1137 (orig. p.1137) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1137
 
 **Due curiose vestigia e un imperatore arguto**
@@ -28514,11 +26670,8 @@ sibili al richiamo delle pubbliche aule.
 
 ---
 
-<!-- p.1138 (orig. p.1138) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1138
+1138
 
 RIONE XIX. CELIO
 
@@ -28580,11 +26733,8 @@ larga pub...
 
 ---
 
-<!-- p.1139 (orig. p.1139) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1139
 
 **Sette chiese per un pic-nic**
@@ -28603,11 +26753,8 @@ L'andamento alterno e imperscrutabile, dovuto alla disponibilità di custodia e 
 
 ---
 
-<!-- p.1140 (orig. p.1140) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>140
+140
 
 **RIONE XIX. CELIO**
 
@@ -28629,11 +26776,8 @@ Ed eccoci alla porta Latina, attraverso la quale la via omonima recava ai Colli 
 
 ---
 
-<!-- p.1141 (orig. p.1141) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1141
 
 Nenti e le liti per lesazione finì sempre per essere chiusa; è stata resa praticabile in via definitiva solo nel 1911.
@@ -28648,11 +26792,8 @@ Siamo così giunti alla via di Porta S. Sebastiano, che è la denominazione pres
 
 ---
 
-<!-- p.1142 (orig. p.1142) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>142
+142
 
 RIONE XIX. CELIO
 
@@ -28673,11 +26814,8 @@ La chiesa di S. Giovanni a Porta Latina. In un'antica incisione.
 
 ---
 
-<!-- p.1143 (orig. p.1143) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1143
 
 Lombario di Pomponio Hylas con accesso da una scala ancora originaria: le chiavi bisogna richiederle al custode del sepolcro degli Scipioni, di cui diremo appresso. Opera dell'età Flavia, il colombario è felicemente ricoperto di stucchi e pitture nella sua pianta rettangolare; presenta inoltre un'abside con una edicola votiva nel centro e un'altra sulla destra. Una datazione possibile può essere dell'epoca neroniana. Attraversato il parco degli Scipioni, al numero 9 della via di porta S. Sebastiano è l'ingresso del Sepolcro degli Scipioni. Si tratta di una delle famiglie illustri della romanità che dette all'impero Scipione l'Africano, vincitore di Annibale e Scipione Emiliano, distruttore di Cartagine.
@@ -28697,11 +26835,8 @@ Sulla destra si stende invece il parco di Monte d'Oro, il cosiddetto Coeliolus, 
 
 ---
 
-<!-- p.1144 (orig. p.1144) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1144
+1144
 RIONE XIX. CELIO
 
 **Sette emblematici dormienti**
@@ -28726,11 +26861,8 @@ Lasciata la chiesa si percorre l'agreste e solitaria via intitolata alla Valle d
 
 ---
 
-<!-- p.1145 (orig. p.1145) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1145
 
 zaio comunale. Sulla destra è un'edicola con la «Madonna del Buon Consiglio» eretta, nel 1803, al fine di erogare indulgenze ai passanti volenterosi; 100 giorni, dice l'iscrizione, per ogni preghiera volta alla sacra immagine. L'itinerario che siamo andati percorrendo ora si ferma dinanzi al loggiato che si trova all'inizio della passeggiata archeologica, ovvero via delle Terme di Caracalla, sulla destra provenendo da piazza Numa Pompilio. Si tratta della già accennata «vignola Boccapaduli», che non deve far pensare, dato il nome peraltro scritto minuscolo, all'architetto Jacopo Barozzi, detto il Vignola. È invece un fabbricato un tempo annesso a una vigna che si trovava, come tante in questo rione, nella periferia della città.
@@ -28744,11 +26876,8 @@ CELIO
 
 ---
 
-<!-- p.1146 (orig. p.1146) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XX. Testaccio
+Rione XX. Testaccio
 di Claudia Cerchiai
 Dalle origini ad oggi
 
@@ -28764,11 +26893,8 @@ In questa zona esistevano molti luoghi di culto dedicati a Faunus, Fauna, Picus,
 
 ---
 
-<!-- p.1147 (orig. p.1147) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1147
 
 Sezione della pianta di Roma del 1590 con l'area di Monte Testaccio.
@@ -28781,11 +26907,8 @@ In epoca successiva la via Ostiense, che collegava in età imperiale il porto Ti
 
 ---
 
-<!-- p.1148 (orig. p.1148) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1148
+1148
 RIONE XX. TESTACCIO
 
 Nonostante questo transito però, la zona restò sempre molto disabitata e oggetto di processioni sacre e relative sacre rappresentazioni e, dalla metà del XIII secolo, di giochi di carnevale che avevano il monte Testaccio, i prati e l'area prospiciente il fiume come palcoscenico, spesso cruento.
@@ -28802,11 +26925,8 @@ Questo progetto del Comune venne però bloccato, prima da una crisi della giunta
 
 ---
 
-<!-- p.1149 (orig. p.1149) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 
 1149
 
@@ -28822,11 +26942,8 @@ Architetti di questi nuclei furono Giulio Magni e Quadrio Pirani. Questi edifici
 
 ---
 
-<!-- p.1150 (orig. p.1150) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>150
+150
 
 RIONE XX. TESTACCIO
 
@@ -28851,11 +26968,8 @@ A partire dal medioevo la piramide viene anche ricordata con l'epiteto di *meta 
 
 ---
 
-<!-- p.1151 (orig. p.1151) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1151
 
 [Immagine: La pianta del rione Testaccio (disegno di De Zio)]
@@ -28871,11 +26985,8 @@ Iniziamo la nostra passeggiata per il rione XX, Testaccio, dalla piazza dell'Emp
 
 ---
 
-<!-- p.1152 (orig. p.1152) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1152
+1152
 RIONE XX. TESTACCIO
 
 Essa sbocca il bianco ponte Sublicio mentre di fronte si erge la parete a picco dell'Aventino con la sede dei Cavalieri di Malta: una veduta spesso rappresentata nelle incisioni romane.
@@ -28890,11 +27001,8 @@ Prima di iniziare a percorrere la via Marmorata vediamo il ponte Sublicio che un
 
 ---
 
-<!-- p.1153 (orig. p.1153) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1153
 
 Piacentini nel 1914, si chiamava Aventino e fu inaugurato il 21 aprile 1919. Il ponte a tre arcate a sesto ribassato è in laterizio; mentre con il travertino sono sottolineate le ghiere delle arcate e le spallette.
@@ -28909,11 +27017,8 @@ All'interno di un giardino sono conservate testimonianze antiche riferibili ad u
 
 ---
 
-<!-- p.1154 (orig. p.1154) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1154
+1154
 
 RIONE XX. TESTACCIO
 
@@ -28929,11 +27034,8 @@ Oltre questo giardino si aprono campi della società bocciofila «La Piramide».
 
 ---
 
-<!-- p.1155 (orig. p.1155) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1155
 
 La piramide Cestia e la porta Ostiense in un'incisione di G. Vasi.
@@ -28946,11 +27048,8 @@ La via Ostiense oltrepassando la posterula si univa, appena fuori dalle mura, co
 
 ---
 
-<!-- p.1156 (orig. p.1156) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>156
+156
 
 RIONE XX. TESTACCIO
 
@@ -28966,11 +27065,8 @@ La concessione di una parte di terreno recintato a fianco della piramide Cestia 
 
 ---
 
-<!-- p.1157 (orig. p.1157) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO [157]
+UNICO ITINERARIO [157]
 
 Terreno allora concessa è adiacente a quella che viene oggi defini-
 ta come "zona vecchia", nella quale le tombe non sono dispo-
@@ -29003,11 +27099,8 @@ ne dovuta alla presenza del percorso ferroviario: L'ultima torre,
 
 ---
 
-<!-- p.1158 (orig. p.1158) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1158
+1158
 RIONE XX. TESTACCIO
 
 voluta da Onorio, fu demolita nel Settecento e il materiale con cui era stata costruita; cioè alabastro; fu reimpiegato per abbellire la tomba di Raffaello Sanzio nel Pantheon. Rientriamo ancora attraverso passaggi aperti entro le mura per rendere possibile un percorso su via Zabaglia e iniziamo a percorrerla per intero. Subito dopo il cimitero degli inglesi, sullo stesso lato della strada, vediamo una fontanina realizzata da un ornato anteriormente da quattro pilastrini in travertino. Nella parte posteriore, a meglio contenere la terra della scarpata nella via di Monte Testaccio che in questo tratto; prima di congiungersi, poco più avanti con la stessa via Zabaglia corre ad un livello più basso; la fontana ha un sedile in pietra disposto con andamento a semicerchio. Percorriamo quindi via Zabaglia per raggiungere l'incrocio con via Galvani dove è situato l'ingresso al monte Testaccio e, al di là della strada, vediamo che al n. 42 di via di Monte Testaccio ha sede il teatro «Dei Documentis». Di fronte, entro un recinto, si vedono i prefabbricati della scuola media statale «C. Cattaneo». Raggiungiamo quindi via Galvani dove all'angolo è sistemata un'immagine mariana raffigurante la «Madonna della Divina Provvidenza». Di fronte si apre un piccolo cancello che dà accesso al monte Testaccio.
@@ -29022,11 +27115,8 @@ In un'iscrizione del secolo VIII compare per la prima volta il nome «Testaccio�
 
 ---
 
-<!-- p.1159 (orig. p.1159) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1159
 
 ![Monimcnla Tesialu prope porlam Tancf Pauli]
@@ -29043,11 +27133,8 @@ Sono del 1742 e del 1744 due editti capitolini incisi su lapidi che dovevano ess
 
 ---
 
-<!-- p.1160 (orig. p.1160) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>160
+160
 
 RIONE XX. TESTACCIO
 
@@ -29061,11 +27148,8 @@ Negli anni attorno al 1697-1699 durante la costruzione di una delle grotte da vi
 
 ---
 
-<!-- p.1161 (orig. p.1161) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1161
 
 rinvennero un cippo su cui era ricordata l'esistenza del *monumentum Rusticeliorum* e la distanza che divideva il cippo da quello. Lo scavo venne allora proseguito e alla distanza effettivamente riportata venne rinvenuto questo monumento sepolcrale costituito da un basamento su cui era un dado in tufo con la scritta:
@@ -29102,11 +27186,8 @@ A ridosso della *porticus Aemilia*, e da questa separata da una strada; come ved
 
 ---
 
-<!-- p.1162 (orig. p.1162) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1162
+1162
 RIONE XX. TESTACCIO
 
 **I giochi di Agone e Testaccio**
@@ -29115,11 +27196,8 @@ Una delle feste più caratteristiche che avvenivano nel Cinquecento nel rione Te
 
 ---
 
-<!-- p.1163 (orig. p.1163) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO 163
+UNICO ITINERARIO 163
 
 ligola, tutti i beni di questa furono confiscati dal successore Claudio che l'aveva mandata in esilio e così anche gli horrea Lolliana passarono nell'amministrazione imperiale. Questo complesso, di cui non restano testimonianze visibili, lo vediamo raffigurato nella Forma Urbis; era situato ad ovest della porticus Aemilia; al di sotto della zona interessata dall'ex mattatoio e affacciato verso il fiume su cui era un molo per l'attracco per il carico e lo scarico delle merci con relative scalette di collegamento. All'interno di questo grande complesso erano anche strade che dividevano le varie zone e tabernae aperte verso l'esterno. Di fronte al monte Testaccio, su via Nicola Zabaglia si aprivano i cosiddetti Prati del popolo romano o Prati di Testaccio; un'ampia pianura su cui si ergeva una collinetta detta «Cavone», scomparsa prima del 1870 e anch'essa oggetto di scavo e protetta dal medesimo editto promulgato per il monte Testaccio nel 1744. Sembra che l'origine di questo Cavone sia stata analoga a quella del monte, cioè scarico di cocci quando al tempo dell'imperatore Gallieno sarebbe diventato ormai difficile scaricare sull'altro; tra il 272 e il 279 fu abbandonato. La zona dei «Prati» era un luogo adibito a manifestazioni e feste, delineata nelle planimetrie cinquecentesche come una zona libera da recinzioni, aperta al popolo: i «Prati» furono, fin dall'età repubblicana, di proprietà demaniale ma destinati al popolo e così rimasero anche nel 1363, allorquando vennero acquistati dai romani che pagarono al priore della chiesa di S. Maria in Aventino una somma perché vi fosse loro concesso il pascolo del bestiame. Anche la zona dei «Prati» fu utilizzata per lo scarico di calcinacci provenienti dal Circo Massimo; ma questa volta dalle officine del gas che vi si erano impiantate nel 1854. La costruzione del nuovo quartiere ebbe inizio alla fine dell'Ottocento e avrebbe dovuto interessare l'intera pianura con una serie di impianti urbani e industriali disposti lungo strade ortogonali, e fino al 1889 venne realizzata l'intera zona verso il fiume. Seguì quindi la costruzione di edifici per conto dell'Istituto delle Case popolari; nel 1911, la zona dei «Prati» avrebbe dovuto seguire il completamento del progetto ma l'inizio della guerra mondiale ne rimandò l'esecuzione che però non avvenne mai. Infatti in questa zona, oltre alla caserma dei vigili del fuoco (costruita su progetto di Vincenzo Fasolo) che abbiamo già incontrato all'angolo di via Galvani e inaugurata il 27 ottobre 1929, e l'Istituto tecnico industriale Edmondo de Amicis al n. 6 di via Galvani, venne costruito lo stadio della Società sportiva Roma che vide, nel 1942, la squadra conquistare il suo primo scudetto. Questo campo, denominato campo Testaccio, fu disattivato dopo l'ultima guerra perché fatiscente e poiché era stato sede degli alloggi delle truppe alleate a Roma.
 
@@ -29127,11 +27205,8 @@ Su via Alessandro Volta si apre al n. 41 la scuola elementare «Quattro Novembre
 
 ---
 
-<!-- p.1164 (orig. p.1164) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1164
+1164
 RIONE XX. TESTACCIO
 
 Invece, al n. 43 la sede del Centro formazione professionale «Simonetta Tosi». Riprendiamo la via Zabaglia e in corrispondenza al n. 12 è posta la targa che indica la sede della sezione Testaccio, S. Saba e Aventino dell'Associazione nazionale combattenti e reduci. Vediamo quindi un compatto edificio annesso alla chiesa, dal rivestimento in laterizio e con ornamenti sempre in laterizio. Su di esso è un'edicola mariana con immagine, in mosaico, della «Madonna», entro una cornice marmorea. L'edicola è all'angolo dell'edificio dell'Istituto Figlie della Divina Provvidenza; la targa del circolo ACLI Lino Lana-Testaccio e subito dopo è la cancellata della chiesa di S. Maria Liberatrice, che si affaccia sulla piazza che le ha dato il nome: infatti prima era denominata Piazza dell'Industria.
@@ -29146,11 +27221,8 @@ Al di sopra dell'altare è l'immagine di «S. Maria Liberatrice», immagine che 
 
 ---
 
-<!-- p.1165 (orig. p.1165) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1165
 
 CINEMA VITTORIA TEATRO
@@ -29176,11 +27248,8 @@ All'angolo con via Franklin è un'edicola mariana con l'immagine di "S. Maria Li
 
 ---
 
-<!-- p.1166 (orig. p.1166) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1166
+1166
 RIONE XX. TESTACCIO
 
 Trepassando ancora via Alessandro Volta notiamo, sempre sul lato sinistro, un'area con tendoni adibita a deposito di materiale vario. Arriviamo quindi a Piazza Giustiniani dove dal 1887 ha sede il noto ristorante romano «Checchino al Testaccio», dove si possono gustare, tra l'altro, i famosi piatti della cucina tradizionale romana.
@@ -29203,11 +27272,8 @@ L'esperienza acquisita dal progettista nella ristrutturazione del precedente mat
 
 ---
 
-<!-- p.1167 (orig. p.1167) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1167
 
 due a due
@@ -29225,11 +27291,8 @@ Lasciato il Mattatoio e piazza Giustiniani, ripercorriamo via Franklin fino all'
 
 ---
 
-<!-- p.1168 (orig. p.1168) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1168
+1168
 RIONE XX - TESTACCIO
 
 B. Pinelli, *Il Poeta Improvvisatore a Testaccio nel mese di Ottobre*
@@ -29244,11 +27307,8 @@ A sud dell'isola Tiberina là dove il Tevere fa un'ansa, alle pendici della coll
 
 ---
 
-<!-- p.1169 (orig. p.1169) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1169
 
 sincagliò la nave che si era arenata; episodio anche raffigurato in un rilievo su un cippo ora conservato ai Musei Capitolini [episodio del serpente sacro ad Asclepio, che scese dalla nave che lo portava da Epidauro quando questa si trovava davanti all'isola].
@@ -29263,11 +27323,8 @@ Questo grande complesso venne costruito in opera cementizia con rivestimento in 
 
 ---
 
-<!-- p.1170 (orig. p.1170) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1170
+1170
 RIONE XX. TESTACCIO
 
 Nella *lex de urbe augenda* è esposto il programma che Cesare aveva fatto studiare ai tecnici greci per risolvere alcuni notevoli problemi quali arginature del fiume per evitare le inondazioni, la costruzione di un canale pontino per unire Roma con il porto di Pozzuoli, la costruzione di un nuovo porto ad Ostia fra il braccio pontino e quello del Tevere.
@@ -29284,11 +27341,8 @@ Questi ambienti costituiscono il corpo più avanzato dell'intero complesso comme
 
 ---
 
-<!-- p.1171 (orig. p.1171) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1171
 
 ![Monte Testaccio]
@@ -29299,11 +27353,8 @@ secolo d.C. fu in seguito abbandonata e in essa si impiantò un nucleo cimiteria
 
 ---
 
-<!-- p.1172 (orig. p.1172) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>172
+172
 
 RIONE XX. TESTACCIO
 
@@ -29324,11 +27375,8 @@ sparse a terra, in un ambiente, per uno strato spesso cm 25.
 
 ---
 
-<!-- p.1173 (orig. p.1173) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XXI, S. Saba
+Rione XXI, S. Saba
 di Claudia Cerchiai
 Dalle origini ad oggi
 
@@ -29344,11 +27392,8 @@ Dalla porta Capena, che si apriva nelle mura cosiddette serviane, usciva la via 
 
 ---
 
-<!-- p.1174 (orig. p.1174) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>174
+174
 
 RIONE XXI. S. SABA
 
@@ -29364,11 +27409,8 @@ Nel corso del IV secolo in alcune delle abitazioni private si formarono ambienti
 
 ---
 
-<!-- p.1175 (orig. p.1175) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1175
 
 Porta S. Sebastiano in un'incisione di G. Vasi.
@@ -29413,11 +27455,22 @@ Questo rione comprende un cospicuo e ben conservato tratto della cinta muraria d
 
 ---
 
-<!-- p.1177 (orig. p.1177) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO 1177
+1176
+RIONE XXI S. SABA
+
+Fra quelle che si aprono attualmente nelle mura. Iniziamo allora la nostra visita al rione XXI, S. Saba, dalla porta di S. Sebastiano che anticamente si chiamava Porta Appia come la strada che le passava al di sotto; ma che fu detta di S. Sebastiano; essa infatti conduceva alla basilica omonima, meta di numerosi pellegrinaggi dovuti soprattutto al fatto che questa chiesa ospitò per un periodo le reliquie dell'apostolo Pietro. La porta venne costruita insieme alle mura dall'imperatore Aureliano nel periodo compreso fra il 271 e il 275 ed era a doppio fornice fiancheggiata da due torri a pianta semicircolare.
+
+Una seconda fase portò ad un ampliamento delle torri che si fusero alle precedenti, alla loro sopraelevazione di un piano e all'utilizzo dell'area interna adeguandola a cortile fortificato; che sfruttò la presenza del cosiddetto arco di Druso adibendolo a controporta.
+
+Nel V secolo, durante l'impero di Onorio, allorquando vennero apportati alle mura notevoli restauri per proteggere la città dagli eventuali assalti dei Goti, i torrioni vennero rafforzati con la creazione di basamenti quadrangolari che, rivestiti di marmo, inglobarono la parte inferiore in opera laterizia e si ebbe la riduzione ad un solo passaggio.
+
+Seguirono successivamente altri rifacimenti agli ambienti interni e un'altra sopraelevazione sia dei torrioni che della struttura che le collegava: nella parte interna della porta; sulla destra uscendo, è visibile l'imposta di uno di questi passaggi poi richiusi. Sempre a destra, per chi esce; è da notare, nello spessore della porta, la bella figura incisa raffigurante l'<Arcangelo Gabriele> e un'iscrizione che ricorda la vittoria riportata dai romani contro il re di Napoli Roberto d'Angiò il 29 settembre 1327. All'interno della struttura erano situate le camere di manovra; dalle quali veniva assicurata la chiusura della porta mediante l'abbassamento di una saracinesca, che doveva essere sostenuta da mensole in travertino; ma la chiusura della porta era altresì ulteriormente assicurata da due battenti. Gli ambienti, ricavati all'interno delle torri furono occupati negli anni 1942-1943 da Ettore Muti, già segretario del partito fascista e a tale periodo sono attribuibili i mosaici che ancora qui si vedono; attualmente ospitano il Museo delle Mura che, oltre a essere sede di mostre, raccoglie modelli delle mura stesse nelle sue varie fasi edilizie e calchi di opere murarie. Da qui si può iniziare una suggestiva passeggiata per i camminamenti, opportunamente restaurati e ripristinati, fra le torri 1-6 e 10-11. Infatti, all'interno della torre 4, vediamo che sono conservati resti di un affresco bizantino raffigurante la <Madonna con il Bambino>, mentre nella torre 11 è possibile l'accesso alla terrazza da cui si ha la vista del percorso delle mura. Lasciata la passeggiata sull'alto del camminamento; iniziamo quella in esterno; lungo le mura e in questo tratto di quasi due km di lunghezza è possibile vedere l'intervento di restauro di Massenzio realizzato in filari di tufo e di laterizio; quindi la sopraelevazione apportata nel 402-403 dagli imperatori Arcadio ed Onorio con il nuovo cammino di ronda e infine restauri effettuati in epoca successiva dai bizantini e dai papi, da Niccolò V poi...
+
+---
+
+
+UNICO ITINERARIO 1177
 
 L'arco di Druso in una stampa di fine Ottocento.
 
@@ -29425,11 +27478,207 @@ L'arco di Druso in una stampa di fine Ottocento.
 
 ---
 
-<!-- p.1185 (orig. p.1185) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+178
+
+RIONE XXI S. SABA
+
+costruito questo avancorpo di otto metri di spessore e di tre piani
+di altezza, uno dei quali interrato. All'interno di questo piano
+erano le camere di contromina che servivano a ritardare l'offen-
+siva nemica con materiale incendiario sistemato in apposite
+gallerie. Altre gallerie al piano terra favorivano l'uscita per il com-
+battimento mentre le artiglierie leggere e pesanti erano sistemate
+negli ambienti superiori. Sulla parte esterna del bastione è visibi-
+le lo stemma dei Farnese. Oltrepassato il bastione vediamo che
+le mura presentano numerosi rimaneggiamenti e restauri che
+portarono alla ricostruzione quasi completa dei rafforzamenti.
+In questo tratto si apre (in corrispondenza della terza torre), la
+posterula Ardeatina, realizzata con arco di scarico in laterizio,
+stipiti e piattabanda in travertino. Ai lati dell'arco di scarico si
+notano le impronte di colonne in laterizio che dovevano sottoli-
+neare, insieme ad una piattabanda; la parte superiore della poste-
+probabili resti, questi ultimi di una porta dell'epoca dei Fla-
+vi, la quale si apriva nella cinta daziaria su cui poi si impostò
+quella Aureliana. Da questa porta usciva la strada che, all'inter-
+no, affiancava un sepolcreto del I secolo a.C. esistente nella
+zona, che fu in parte sconvolto dalla costruzione della cinta aure-
+liana. Di questo sepolcreto vediamo ancora su via Lucio Fabio
+Cilone, entro le mura, strada che ripercorre il tracciato della via
+antica, un sepolcro a pianta circolare detto tomba di Cilone. Si
+tratta di un sepolcro monumentale all'interno del quale è
+una cella con nicchie alle pareti. Siamo quindi davanti alla porta
+Ostiensis attraverso la quale entrò in Roma Totila al comando
+dei Goti nel 594 d.C. Questa porta viene ricordata, per la prima
+volta, da Ammiano Marcellino a proposito del trasporto del se-
+condo obelisco che avrebbe dovuto ornare la spina del vicino
+Circo Massimo, avvenuto nel 357 d.C. Originariamente la porta
+si apriva con un doppio fornice protetto da torri a pianta semicir-
+colare; con Massenzio fu rafforzata con una controporta più in-
+terna e raccordata da due settori di muratura, in modo da creare
+una corte; mentre alle torri furono apportate delle sopraelevazio-
+ni. La chiusura di uno dei due fornici a questa porta, come ad al-
+tre situate sulle principali strade romane, avvenne con Arcadio e
+Onorio nel 402-403 e l'unica fu sistemata al posto del pila-
+stro al centro. Sulla chiave dell'arco, sia in entrata che in uscita,
+venne inciso il Cristogramma; Anche questa porta, protetta da
+torri che furono ancora sopraelevate e merlate, era chiusa da una
+saracinesca. In questo periodo furono sistemate, per decorazio-
+ne, le cornici di marcapiano in marmo e laterizio. La porta, che
+sempre fu oggetto di manutenzioni durante il corso dei secoli,
+presenta, sul lato verso il rione S. Saba, il rivestimento in traver-
+tino nella parte inferiore, mentre nella parte a destra è una bassa
+sopraelevazione quadrangolare al di sotto della quale è un'edico-
+la del Quattrocento di cui parleremo in seguito; Entrando nel pic-
+colo spazio interno vediamo un edificio del Settecento che fu
+sede della dogana, vicino al quale si apre un passaggio che con-
+duce ai camminamenti. All'interno della porta ha sede il Museo
+della via Ostiense sistemato nelle due torri nell' ambiente dove
+avveniva la manovra per abbassare o alzare la saracinesca.
+
+---
+
+
+UNICO ITINERARIO
+1179
+
+Questo museo, che conserva memorie e documentazione della vita della strada che collegava Ostia a Roma, si accede attraverso una porta che si apre a destra (vicino ad una lapide relativa al monte Testaccio del 1720). Di particolare interesse sono le tre lunette affrescate, sistemate nella camera di manovra della saracinesca e provenienti da una tomba rinvenuta dietro la basilica di S. Paolo.
+
+In questo museo sono anche conservate le settecentesche stampe che riproducono la decorazione, esistente all'interno della cella funeraria della Piramide Cestia oggi per la maggior parte scomparsa. La raffigurazione di una «Madonna con il Bambino fra due Santi», conservata in un ambiente della torre ad est, testimonia la presenza in questo luogo, nel XIV secolo, di un ambiente di culto. La porta Ostiense, detta anche porta S. Paolo, è parte del rione S. Saba soltanto per il settore interno, mentre subito all'esterno è il quartiere Ostiense ed è quindi parte del nostro rione la bella edicola che è ancora visibile al di sopra della porta verso via Marmorata. Si tratta di un'edicola di età medievale racchiusa da un arco tutto sesto, sostenuto da due piccole colonne in marmo poggianti su mensole. Essa, originariamente doveva racchiudere l'immagine dell'apostolo Paolo, ora invece protegge un affresco ottocentesco con la raffigurazione di «S. Pietro» come viene anche indicato dalla scritta che si legge al di sotto e che recita: «S. Petre ora pro nobis».
+
+Lasciamoci alle spalle la porta e incontriamo il piccolo edificio situato fra le arcate della porta Ostiense. Su questa casa sono due edicole mariane. Esse sono uguali.
+
+Sulla sinistra si apre un giardino che prende il nome di Cestio dal famoso proprietario della monumentale piramide che si erge fra le mura aureliane e inclusa nell'adiacente rione XX Testaccio. È in questo punto infatti che si incontrano tre rioni: S. Saba, XXI, il rione XX, Testaccio e il XIX Celio. Il parco ha forma triangolare chiuso com'è da via della Piramide Cestia, via Marmorata e via Manlio Gelsomini. Questo giardino dopo la seconda guerra mondiale, a memoria degli episodi che seguirono dopo l'8 settembre 1943, venne denominato «Parco della Resistenza dell'8 settembre».
+
+Il nome di parco Cestio è rimasto al piccolo settore di verde che vediamo dall'altro lato di via Marmorata e che è parte del rione Testaccio. Percorriamo via Marmorata e incontriamo sul lato destro il parco ridotto ad un giardino con poche piante ad alto fusto che circonda un moderno edificio in cui ha sede l'ufficio postale, che fu costruito fra il 1933 e il 1935. I due progettisti, Adalberto Libera e Mario De Renzi avevano vinto il concorso bandito a tale scopo nel 1932. La realizzazione di questo edificio si discosta di poco dal progetto, in quanto si trattava di inserire un edificio in un'area libera da precedenti costruzioni. Arretrato di poco rispetto al marciapiede e con ampi gradoni fra i prati, l'edificio è formato da tre piani più un interrato e presenta tre corpi di fabbrica disposti ad U. Fra le due ante davanti ad esse è situato un porticato sostenuto da pilastri, al di sopra del quale, nella parte centrale, è posto un basso elemento ellittico riporta...
+
+---
+
+
+180
+
+RIONE XXI S. SABA
+
+Coperto da piastrelle all'esterno, chiuso superiormente da una lastra di vetrocemento così da rendere ulteriormente luminoso il salone sottostante destinato al pubblico. Ancora il vetrocemento è stato impiegato a chiudere la serie regolare delle aperture quadrangolari che si aprono in doppia fila sulla parete della struttura retrostante e sulle due facciate laterali interne. Le fronti, invece, dei due corpi avanzati mostrano serie oblique di aperture, contrapposte, nei due nuclei, che sottolineano l'andamento delle scale insieme a grosse nervature disposte con andamento contrario. Fra le opere progettate dall'architetto Libera ricordiamo, fra le altre, la Villa Malaparte a Capri, il Palazzo dei Congressi all'EUR e la partecipazione al progetto per la costruzione del Villaggio Olimpico in occasione delle Olimpiadi di Roma del 1960 e alla costruzione del quartiere residenziale di Casal Palocco. Di De Renzi ricordiamo invece anche il progetto del quartiere residenziale Stella Polare ad Ostia e il grande complesso di abitazioni in Viale XXI Aprile.
+
+Raggiunto Largo Manlio Gelsomini, percorriamo sulla destra, in lieve salita, il viale omonimo che ricorda appunto Manlio Gelsomini, partigiano insignito di medaglia d'oro. Organizzò una strenua resistenza dopo l'8 settembre 1943; catturato dalle truppe tedesche, fu ucciso alle Fosse Ardeatine. Il viale sulla destra fiancheggia il Parco della Resistenza fino ad arrivare a Piazza Albania. Qui, posto su un alto piedistallo e volto verso il Viale Aventino, è situato il monumento equestre dedicato al condottiero albanese Giorgio Castriota Scanderbeg (1403-1468). Il condottiero, in armi, con elmo ornato da alette laterali, con la spada sguainata e sollevata nella destra, è su un robusto cavallo in atto di avanzare. Questo gruppo, in bronzo e sistemato su un piedistallo in travertino, è stato progettato da Romano Romanelli e fu inaugurato il 24 ottobre 1940.
+
+In questo punto si unisce alla piazza anche il Viale della Piramide Cestia che proviene dalla Porta S. Paolo, ricalcando il percorso dell'antico *vicus Portae Raudusculanae*, che dalla porta omonima della cinta cosiddetta serviana, situata a mezza costa del colle Aventino, usciva, come si è già detto, dalla Porta Ostiensis. Questo viale, sulla destra, ha una serie di edifici costruiti intorno agli anni Trenta. Uno di questi conserva sulla strada parte di una struttura in cementizio mentre, protette da una tettoia, sul lato opposto di Largo Albania (nel settore incluso nel Rione XII Ripa), si può vedere un tratto delle mura serviane. Percorriamo quindi il Viale Aventino, che è al confine fra il Rione XII Ripa e il Rione XXI S. Saba. Il nome deriva da quello del colle talvolta scelto dalla plebe romana per radunarvisi. Sembra verosimile che il nome del colle tragga origine da quello del re di Alba, Aventino appunto, che fu colpito da un fulmine mentre si trovava su questo colle e qui sarebbe stato sepolto; oppure che derivi dal nome di un fiume della Sabina, Avente, passato ad indicare il luogo abitato dai Sabini e dove il loro re Tito Tazio era stato sepolto. Il Viale Aventino, negli anni Trenta (e fino al 1945 fu ribattezzato Viale Africa), dopo essere stato allargato come lo vediamo oggi, nel 1934.
+
+Al centro di questa strada, che è larga quasi cospicuo...
+
+---
+
+
+UNICO ITINERARIO
+1181
+
+50 metri, è una fascia non asfaltata ombreggiata da una doppia fila di alti platani, all'interno della quale passa una delle poche linee di tram ancora rimaste a Roma. Una serie di abitazioni sono ancora tra la via di S. Saba e via Aventino ma nel tratto successivo vediamo la strada fiancheggiata da un alto muro continuo rivestito in travertino che, in prossimità di piazza di Porta Capena (nei pressi di una delle stazioni della linea B della metropolitana), si interrompe in una breve scalinata che ad un piccolo slargo pavimentato in travertino; al centro del quale è un alto pennone dove viene issata la bandiera della FAO. Infatti lungo tutto il muro di recinzione e attorno a questo slargo, vengono sistemate in occasione di ricorrenze o celebrazioni le bandiere di cento paesi del mondo. Prospicente un grande piazzale che nella parte antistante è occupato da un giardino, sorge il palazzo che ospita la sede della FAO (l'organizzazione delle Nazioni Unite per l'alimentazione e l'agricoltura: Food and Agriculture Organization). Il complesso di grandiose dimensioni è realizzato con rivestimento in travertino e serie continue di finestre, tutte uguali, si aprono su ciascuna facciata. Alla sommità è una terrazza da cui si ha la vista di gran parte della città. La struttura venne costruita su progetto di Vittorio Cafiero nel 1938, affinché fosse sede del ministero dell'Africa italiana, cosa che non avvenne mai. Con la perdita delle Colonie, l'edificio con il suo ampliamento successivo apportato nel 1952, ospitò la FAO che, sorta nel 1945, ebbe sede a Roma a partire dal 1950. All'interno del palazzo è un'interessante esposizione che ha come argomento il pane.
+
+Sul marciapiede, all'angolo fra il viale Aventino e la piazza di Porta Capena vediamo ergersi una alta stele che fu innalzata il 28 ottobre 1937 in occasione del quindicesimo anniversario della marcia su Roma: Questa stele che proviene da Axum, città santa d'Etiopia, in cui gli italiani erano entrati due anni prima, con i suoi ventiquattro metri di altezza era la seconda stele per altezza che si trovava ad Axum ed è attribuibile al IV secolo d.C. (età paleoetiopica). Rastremata verso l'alto, dove termina con elemento a semicerchio, la stele presenta sulle due facce principali (è a sezione rettangolare) due analoghe rientranze, nella parte inferiore delle quali sono delineate due porte con doppi battenti con anello: La stele infatti simula un'abitazione di ben undici piani, separati fra loro da elementi rotondi in rilievo, che stanno a ricordare le testate delle travi, come avrebbero dovuto essere in realtà e come è attestato fino al sedicesimo secolo. Su ciascun piano sono disposte coppie di finestre. La stele poggia su un basamento che a sua volta è sistemato su due gradoni di travertino.
+
+Entriamo quindi in piazza di Porta Capena, che ricorda nel nome l'omonima porta della cinta muraria cosiddetta serviana e che era situata presso l'attuale lato curvo del Circo Massimo e da cui usciva la via Appia Antica: Inizia a questo punto la via delle Terme di Caracalla, un largo viale a tre corsie asfaltate separate da due marciapiedi sterrati su cui sono file continue di lecci ed alti pini. A destra è lo stadio...
+
+---
+
+
+182
+
+RIONE XXI $. SABA
+
+sportivo delle Terme mentre la vasta area a sinistra, tenuta
+a verde in parte attrezzato; è inclusa nel rione adiacente, Celio.
+Quest' area, parco di Porta Capena, è comunemente detta «pas-
+seggiata archeologica» per la vicinanza di cospicue testimonian-
+ze antiche: il Circo Massimo; il Palatino, il Settizodio, il
+tratto entro le mura aureliane della via Appia; con i suoi
+sepolcri famosi e importanti e le terme di Caracalla. La creazione di una
+vasta area a verde era
+già stata progettata allorquando si pensò di
+dare, nel 1536, una accoglienza degna a Carlo V che sarebbe do-
+vuto entrare in Roma passando dalla porta Appia (cioè porta S.
+Sebastiano). Fu quindi Latino Giovenale, maestro delle strade
+durante il pontificato di Paolo III, che pensò al progetto di una
+strada tra il verde e gli antichi monumenti. La presenza di una
+zona priva di abitazioni che assicurasse alla città la godibilità
+piena delle testimonianze antiche è indicata anche in un progetto
+redatto durante il dominio napoleonico e presentato da Camille
+de Tournon. Nel progetto per il piano regolatore del 1870 era an-
+cora presente la sistemazione di una vasta area lasciata a verde
+pubblico; nella quale dovevano essere comprese le zone archeo-
+logiche e percorsa da viali. Questo venne ribadito anche nel pro-
+getto per il piano regolatore del 1883 e proposto da Guido Bac-
+celli alla Camera dei deputati nello stesso anno.
+Quattro anni dopo, il 17 gennaio 1887, venne approvata la legge che autoriz-
+zava la costruzione di una passeggiata archeologica; ricca di via-
+li alberati e di quelle costruzioni moderne del Testaccio,
+dell' Aventino, del Celio e di S. Giovanni che si stavano esten-
+dendo. Con la successiva legge del 7 giugno 1889 venne esclusa
+la zona fra il Circo Massimo (che sarebbe stato poi liberato dalla
+struttura del gasometro che vi si era impiantata) e il Tevere. Con
+la legge poi del 15 luglio 1897 la zona venne ulteriormente ridot-
+ta.
+I lavori iniziarono finalmente nel maggio del 1908 condotti
+da Giacomo Boni, Rodolfo Lanciani e presieduti dal Baccelli e
+la loro ultimazione fu prorogata fino al 1930, ma è del 1938 l'
+ulteriore allargamento della via delle Terme di Caracalla. Percor-
+riamo quindi il grande viale e subito oltrepassato lo stadio pren-
+diamo a destra per una stradina in salita, fiancheggiata da
+un muro di contenimento, la quale ci permette di accedere ad una
+vasta area scoperta e sterrata davanti alla quale è l'ingresso alle
+imponenti strutture delle terme antoniniane dette di Caracalla dal
+soprannome con cui è più noto l'imperatore Marco Aurelio An-
+tonino. Le terme di Caracalla, complesso edilizio di notevoli di-
+mensioni, furono fatte costruire da Settimio Severo e proseguite
+dal figlio e successore Marco Aurelio Antonino; detto Caracalla;
+in un periodo compreso tra il 206 e il 216 e furono denominate
+terme antoniniane. Gli imperatori che seguirono, Elagabalo
+Alessandro Severo, portarono a termine la costruzione. Le terme
+ebbero successivi restauri con Aureliano e poi ancora con Valen-
+tiniano e Valente e sappiamo che erano ancora aperte nel VI se-
+colo. Furono i Goti, durante il terribile assedio alla città nel 537,
+che ne causarono l'interruzione allorquando tagliarono l'acquedotto che le alimentava decretandone, indirettamente, l'abbandono. Per la costruzione di queste terme, in un' area compresa fra...
+
+---
+
+
+UNICO ITINERARIO
+1183
+
+1
+17
+
+Le terme di Caracalla. In una ricostruzione ottocentesca di L. Canina.
+
+Il Celio, il Aventino e quindi avvallata e spessa paludosa, vennero effettuati notevoli sbancamenti e spianamenti di terreno, che segnarono la fine anche di edifici privati, i cui resti furono poi rinvenuti in scavi condotti tra il 1858 e il 1866. Si tratta in questo caso di una lussuosa dimora privata, datata al II secolo d.C. ed abitata, con diversi successivi rimaneggiamenti fino al 206 d.C. Essa presentava un atrio porticato con impluvium, il tablinum, il triclinio e un larario che conteneva, al di sotto di una volta a crociera, un altare.
+
+Un bel mosaico in bianco e nero, con raffigurazioni a soggetto marino con nereidi e tritoni, ornava l'impluvium. Altri mosaici in bianco e nero, con motivi floreali e geometrici, ornavano gli altri ambienti: alcuni presentano motivi geometrici, altri racemi vegetali con uccelli (fra cui pavoni) e figure forse raffiguranti stagioni.
+
+Di notevole interesse sono gli affreschi che decoravano le pareti e il soffitto, i cui numerosi frammenti, ricomposti, furono recuperati negli scavi condotti nel 1970. Con vivacissimi colori sono raffigurate scene e personaggi tratti dal repertorio dionisiaco, scene di trattenimento, scene rituali, eroti che cavalcano scene mitologiche. Interessante è anche la decorazione che ornava il larario con le figure di Anubi, Arpocrate, Cerere, Serapide, la capitolina con Romolo e Remo e la personificazione del Giorno e della Notte. Tornando alle terme vediamo che il terreno su cui esse furono costruite dovette essere rafforzato, sul lato verso via delle Terme di Caracalla, da una serie di strutture di supporto:
+
+Un ampio recinto di metri 337x328 le racchiudeva e vi si poteva accedere da ingressi al centro del lato verso il viale attuale, che Severo Alessandro ornò con un porticato. Lateralmente era una serie di stanze ad uso del personale e una serie di tabernae. Queste erano interrotte al centro dei due lati da due grandi esedre mentre sul lato di fondo, opposto all'ingresso, era disposta una doppia serie di cisterne a due piani nelle quali affluiva l'acqua Marcia.
+
+---
+
+
+184
+
+RIONE XXI. S. SABA
+
+Le rovine delle terme di Caracalla in un'incisione secentesca di P. Schenck.
+
+che giungeva; in una sua derivazione; verso un castello di distribuzione. Le 64 cisterne potevano contenere 80.000 metri cubi d'acqua. Un viale sopraelevato di pochi gradini correva all'interno lungo il perimetro e presentava, alla base, delle rientranze per accogliervi statue e fontane, che erano volte verso l'area interna sistemata a giardino. All'interno di quest'area era situato il complesso degli ambienti specifici per ogni nucleo termale che erano raggruppati entro un rettangolo di m 220x114. Sul lato lungo di questo, opposto all'ingresso, si apriva una vasta esedra che racchiudeva il calidarium. Intorno l'area era sistemata giardino.
+
+Al centro delle due esedre porticate che si aprivano simmetricamente sui lati del recinto, erano sistemate due palestre rettangolari, fiancheggiate a destra e a sinistra da ambienti per raduni incontri, uno dei quali a pianta ottagonale, forse ospitava un ninfeo.
+
+La fronte delle cisterne, verso l'interno, era occupata da una serie di gradinate che ospitavano i frequentatori delle terme stesse che desideravano assistere giochi ed esibizioni di ginnastica, che avvenivano nel settore antistante.
+
+Ai lati di queste gradinate erano due ambienti destinati a cortili e quindi due biblioteche, forse la greca e la latina, individuabili per le caratteristiche nicchie rettangolari alle pareti che dovevano accogliere i volumina. Entriamo quindi nel nucleo centrale attraverso una stanza rettangolare che è collegata con la grande natatio mediamente quattro colonne. L'ingresso a destra la mette in comunicazione con un ambiente di minori dimensioni, e quasi quadrato; che è collegato con altri quattro più piccoli con copertura a botte e quindi con una grande palestra. Questi ambienti,
+
+---
+
+
+UNICO ITINERARIO
 1185
 
 Prima della palestra; erano forse dell'apodyterium, cioè lo spogliatoio. Seguendo quindi un percorso che doveva essere tale anche in antico, il frequentatore iniziava a questo punto con gli esercizi ginnici che potevano essere eseguiti sia all'aperto, nella palestra, sia al coperto negli ambienti ad essa adiacenti. Infatti la palestra era porticata e uno dei lati lunghi, antistanti il portico, era absidato. Il portico, chiuso a volta, aveva una serie di colonne in marmo giallo di Numidia e, sul lato opposto a quello absidato, erano disposti cinque ambienti (di cui centrale animato da una piccola abside) pavimentati da mosaici policromi dei quali restano tracce.
@@ -29442,11 +27691,8 @@ Si entrava quindi nel grande salone centrale, di metri 58x24, ai lati del quale 
 
 ---
 
-<!-- p.1186 (orig. p.1186) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>186
+186
 
 RIONE XXI. S. SABA
 
@@ -29455,11 +27701,8 @@ Il mitreo delle terme di Caracalla è il più grande rinvenuto a Roma. Esso è c
 
 ---
 
-<!-- p.1187 (orig. p.1187) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1187
 
 La chiesa dei Ss. Nereo e Achilleo in un'incisione di G. Vasi.
@@ -29476,11 +27719,8 @@ Questo restauro consistette, tra l'altro, nella sostituzione delle colonne che n
 
 ---
 
-<!-- p.1188 (orig. p.1188) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1188
+1188
 RIONE XXI: S. SABA
 
 Le navate e fu creata, sotto l'altare centrale, una confessione. Qui furono fatte trasportare le reliquie dei Ss. Nereo, Achilleo e Domitilla, che erano conservate nella chiesa di S. Adriano al Foro Romano. La chiesa ebbe successivi restauri nei primi anni del Novecento e ancora nel 1941, che rimisero in questi ultimi nella facciata la scansione della superficie in riquadri con drappi che si intravede tuttora; commissionata dal cardinal Baronio tra la fine del Cinquecento e gli inizi del secolo successivo Girolamo Massei. La chiesa presenta la facciata arretrata fra due alte murature appartenenti all'originario impianto e mostra il corpo centrale con tetto a capanna sopraelevato rispetto alle navate laterali, coperti da un tetto obliquo. Davanti al sagrato, creatosi fra le due murature antiche, è una serie di colonnotti ricavati dal marmo e dal granito antico che lo separano dalla strada. Il portale, estremamente semplice, è fronteggiato da un protiro con timpano triangolare, mentre la finestra posta al di sopra e che illumina la navata centrale presenta una semplice cornice in travertino e ha, al di sopra, un timpano spezzato. Il tetto è molto aggettante.
@@ -29491,11 +27731,8 @@ Tornando nella navata centrale, che è coperta da un bel tetto a capanna, vediam
 
 ---
 
-<!-- p.1189 (orig. p.1189) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1189
 
 La chiesa di S. Cesareo in Palatio nel Settecento (incisione di G. Vasi).
@@ -29512,11 +27749,8 @@ Questo soffitto ha, nel riquadro
 
 ---
 
-<!-- p.1190 (orig. p.1190) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1190
+1190
 
 RIONE XXI S. SABA
 "Domine, quo vadis?"
@@ -29531,11 +27765,8 @@ Di notevole interesse è anche l'ambone formato da numerosi elementi databili al
 
 ---
 
-<!-- p.1191 (orig. p.1191) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 191
 
 Di provenienza eterogenea sono anche le due transenne del presbiterio. Usciamo quindi dalla chiesa e ci inoltriamo nella via di Porta S. Sebastiano, tratto urbano dopo la costruzione delle mura aureliane della via Appia, che esce dalla porta omonima.
@@ -29556,11 +27787,8 @@ Riprendiamo quindi a percorrere la via di Porta S. Sebastiano e, a sinistra, ved
 
 ---
 
-<!-- p.1192 (orig. p.1192) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>192
+192
 
 RIONE XXI. S. SABA
 
@@ -29624,11 +27852,8 @@ ciso in una delle travi che sostengono il tetto. Altri restauri li
 
 ---
 
-<!-- p.1193 (orig. p.1193) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1193
 
 La facciata di S. Balbina, in un'inclinazione settecentesca, ebbe durante il pontificato di Sisto V (1585-1590) fatti apportare dal cardinal Pompeo Arrigoni e poco dopo; alla fine del Seicento, Anastasio Fontebuoni dipinse l'abside su incarico di papa Clemente VIII. Intorno alla fine del Seicento, la chiesa venne affidata alla congregazione dei Pii Operai, che la ressero per quasi cento anni, fino al 1798 quando la chiesa fu messa all'asta.
@@ -29639,11 +27864,8 @@ La facciata, sopraelevata su una modesta gradinata, è in laterizio; presenta ne
 
 ---
 
-<!-- p.1194 (orig. p.1194) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1194
+1194
 RIONE XXI S. SABA
 
 Su tre arcate a tutto sesto su pilastri che hanno al centro delle lesene; la parte superiore, che corrisponde alla navata, presenta sulla facciata tre grandi finestre ad arco ed è chiusa da un tetto a doppio spiovente. Sotto il portico sono raccolti numerosi frammenti antichi tra cui frammenti di bipedali, una tabula luso-epigrafi, anfore e alcuni elementi appartenenti alla decorazione precedente alla chiesa come parte dei plutei della schola cantorum; un capitello con lo stemma di papa Sisto V.
@@ -29658,11 +27880,8 @@ Attraverso via Bramante arriviamo in piazza Gian Lorenzo Bernini, dove al centro
 
 ---
 
-<!-- p.1195 (orig. p.1195) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1195
 
 **La chiesa di S. Saba**
@@ -29678,11 +27897,8 @@ Nel X secolo è probabile che il monastero fosse abitato da monaci dell'ordine d
 
 ---
 
-<!-- p.1196 (orig. p.1196) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>196
+196
 
 RIONE XXI. S. SABA
 **San Saba**
@@ -29697,11 +27913,8 @@ La chiesa è a tre navate che terminano in tre absidi e la navata centrale, che 
 
 ---
 
-<!-- p.1197 (orig. p.1197) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1197
 
 protiro e la facciata di S. Saba in un disegno del primo Novecento.
@@ -29710,11 +27923,8 @@ ta da una serie di otto finestre che si aprono su lato al di sopra degli archi c
 
 ---
 
-<!-- p.1198 (orig. p.1198) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XXII. Prati
+Rione XXII. Prati
 di Alberto Manodori
 Dalle origini ad oggi
 
@@ -29724,11 +27934,8 @@ Il nome di Prati ha antica origine come toponimo del posto e stava ad indicare a
 
 ---
 
-<!-- p.1199 (orig. p.1199) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1199
 
 Lo scavo presentò una relazione a Papa Benedetto XIV. Labate penetrò in un lungo corridoio coperto a volta dove, in tre diversi punti, apparvero scale simili a quelle che negli anfiteatri e nei circhi conducevano dagli ambulacra di ingresso alle gradinate. Il De Revillas scavò allora dove suppose si dovesse trovare l'arena del Circo e rinvenne alcune rovine disposte lungo l'asse centrale di quello che a lui sembrava il circo di Adriano. Anche Giovanni Battista Nolli, nella sua pianta di Roma, raffigurò i resti di questo antico edificio, ma con la differenza dovuta al fatto che diversi furono i punti di riferimento presi dai due studiosi per tratteggiare la pianta; dopo il 1870, quando i Prati di Castello furono radicalmente interessati dai lavori di urbanizzazione e di edilizia residenziale intensiva; avvennero rispettivamente nel 1893, 1899, 1910 e nel 1924, scoperte archeologiche.
@@ -29743,11 +27950,8 @@ Sul lato orientale si ritrovarono invece due sarcofagi appartenenti, come risult
 
 ---
 
-<!-- p.1200 (orig. p.1200) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1200
+1200
 RIONE XXII. PRATI
 
 Come se dovessero costituire un'unica sepoltura bisoma: infatti, mentre erano lavorati, oltre alla fronte, i lati brevi esterni, non lo erano invece quelli interni, che risultavano accostati l'un l'altro. 
@@ -29768,12 +27972,9 @@ Nel 1798 le truppe francesi fecero campo nei Prati per occupare il Castello; imi
 
 ---
 
-<!-- p.1201 (orig. p.1201) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1201
 
 2
@@ -29784,11 +27985,8 @@ Sezione della pianta di Roma del Pinelder, del 1870 ca., con l'area dei Prati di
 
 ---
 
-<!-- p.1202 (orig. p.1202) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1202
+1202
 RIONE XXII. PRATI
 
 Stati campi di bocce oppure prendevano verso Porta Angelica e la valle dell'Inferno; mentre altri utilizzavano i Prati a ridosso di Castello; pareva corrispondente al palazzo di giustizia e Piazza Cavour dove, nei pressi di una vigna Gualdi, era un'osteria con cucina. Tre erano le osterie di Prati, almeno le più note; e venivano chiamate semplicemente: la Prima, la Seconda e la Terza.
@@ -29801,11 +27999,8 @@ A tempi (1874) via Vittoria Colonna era detta via Reale, mentre l'attuale via Pi
 
 ---
 
-<!-- p.1203 (orig. p.1203) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1203
 
 della procura reale. Il principe Odescalchi, allora, sospese i lavo-
@@ -29862,11 +28057,8 @@ noto il pittore spagnolo Coello, che abitava una villetta;
 
 ---
 
-<!-- p.1204 (orig. p.1204) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1204
+1204
 RIONE XXI PRATI
 
 La pianta del rione Prati.
@@ -29877,11 +28069,8 @@ La violenta crisi economica edilizia che colpì l'Italia nell'ultimo decennio de
 
 ---
 
-<!-- p.1205 (orig. p.1205) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1205
 
 La linea nera faceva l'itinerario inverso. Una tramvia a cavalli arrivava fino a piazza Cola di Rienzo; provenendo da piazza del Popolo: Si giunge così al 1921, quando Prati diviene il ventiduesimo rione. È ormai una delle zone più caratteristiche, anche se recente, di Roma.
@@ -29951,11 +28140,8 @@ Subito dopo incontriamo quella che può essere definita la più gotica delle chi
 
 ---
 
-<!-- p.1206 (orig. p.1206) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1206
+1206
 RIONE XXII. PRATI
 
 Il Sacro Cuore del Suffragio sia un gotico (in ciò confortati dall'affermazione documentata che Roma abbia testimonianza di cultura e arte d'Occidente). La fronte, protetta da una bella ed alta cancellata lavorata dal Maccaferri, è fiorita di intagli e decorazioni che si aggiungono alle modanature; ai costoloni alle guglie; movimentando tutto l'edificio con le tradizionali linee ascendenti. Essa è costituita da un più alto corpo centrale su cui sta una cimasa ed edicole fiorite tra due guglie nelle quali si chiudono due costoloni maggiori. Questa parte della facciata comprende il portale maggiore il quale, come anche gli altri due, è racchiuso in un protiro multiplo tra colonnette in marmo rosso di Verona e fasce di marmi verdi e che ha al di sopra un' elegante cimasa fiorita. Al centro della facciata è un altissimo finestrone le cui vetrate policrome sono percorse da un fascio di alte colonnine destinate a sorreggere il grande rosone superiore; Anche al di sopra delle due porte laterali stanno finestre, analoghe alla precedente ma più piccole.
@@ -29970,22 +28156,16 @@ Nella parte superiore delle pareti della navata centrale si aprono serie di bifo
 
 ---
 
-<!-- p.1207 (orig. p.1207) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1207
 
 Giuseppe Catani entro schemi predisposti da Giambattista Conti. Presentano le figure di dodici santi, tra i quali vediamo S. Tommaso d'Aquino e S. Bonaventura. Il pavimento è realizzato in marmo rosso veronese, bigio e nero e presenta un motivo di spina di pesce entro grandi quadrati, mentre le balaustre hanno colonnine di alabastro con basi e capitelli in bronzo. Ognuna delle tre porte di ingresso è protetta da grandi bussole in noce intagliato con ornati gotici e sulla parete della controfacciata sono murate due iscrizioni: una di esse ricorda il rito di consacrazione della chiesa e l'altra le benemerenze dei papi S. Pio X e Benedetto XV che la aiutarono a sorgere. Il pulpito è disegnato dal Gualandi ed eseguito dal Mingoli, mentre i confessionali, sempre disegnati dal Gualandi, furono eseguiti dal Carafa. Le stazioni della via Crucis sono state dipinte da G. B. Conti e sono collocate entro comici realizzate dal Gualandi. L'organo che vediamo situato dietro l'altare maggiore fu realizzato in Svizzera da T. Kuhn e in un primo momento fu destinato alla chiesa di S. Brigida in piazza Farnese. Sul fondo dell'abside, che è voltata anch'essa nella struttura ogivale, è l'altare maggiore, disegnato dal Gualandi e realizzato in marmi policromi e bronzi dorati; ed è pregevole lavoro di oreficeria il tabernacolo bronzeo. L'altare, che vediamo all'interno di una grande triplice cornice gotica, fu eseguito dai pittori Giuseppe Alessandro Catani e presenta al centro N.S. del Sacro Cuore che ha ai lati la Vergine Maria e S. Giuseppe. Alla fine della calotta dell'abside stanno poi altre tre finestre policrome. Nella navata di destra vediamo poi alcuni altari, fra i quali dedicato a S. Michele Arcangelo, raffigurato nella pala dipinta dal Catani. All'abside è l'altare con la pala raffigurante S. Giuseppe, opera del pittore romano Brugo. La navata di sinistra presenta, nell'abside, l'altare dedicato alla Madonna del Rosario; nella cui pala la Vergine appare seduta in trono con il Bambino Gesù e con ai lati S. Domenico di Guzman e S. Caterina da Siena (dipinto di Giuseppe Notari). Nella navata è collocato il monumento funebre a monsignor P. Benedetti. Le statue bronzee sono opera del Conti e fuse a Napoli dai Laganà, mentre i rilievi marmorei sono del Mingoli. Più in alto, su una mensola, è il busto di mons. Benedetti realizzato in bronzo dorato. Segue l'altare dedicato a S. Gregorio Magno con pala del Conti. Incontriamo l'altare di S. Antonio da Padova con pala di G. Brugo. Infine, presso la porta laterale sinistra, è la cappella del battistero chiusa da un cancello. Il fonte, in marmo di Verona, sta su un pilastro ottagonale e dal catino si leva un tempietto bronzeo a colonne e guglie, ornato da figure allegoriche della Virtù, mentre sulla sommità è la raffigurazione di S. Giovanni che battezza il Cristo, di G. Bortotti. Nel vano d'accesso è conservato il trittico dell' Addolorata, dipinto da Beatrice Lucci De Angeli. In sacrestia, oltre al grande bassorilievo marmoreo di G. Rondoni che ricorda il P. Jouet, sono conservati anche quattro reliquiari bronzei e un notevole ostensorio in oro e argento donato dai parrocchiani e dagli iscritti all'Arciconfraternita del Sacro Cuore.
 
 ---
 
-<!-- p.1208 (orig. p.1208) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>208
+208
 RIONE XXII. PRATI
 
 prospetto principale del palazzo di giustizia (stampa di fine Ottocento)
@@ -30000,11 +28180,8 @@ Purtroppo ci furono subito polemiche che portarono presto all'esonero del Calder
 
 ---
 
-<!-- p.1209 (orig. p.1209) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO                                                                    1209
+UNICO ITINERARIO                                                                    1209
 
 Vimentata da un corpo mediano e due ali laterali, stanno su più livelli, statue colossali di giureconsulti scolpite da E. Maccagnani, E. Quattrini, M. Benini, M. Tripisciano; A. Dazzi, L. De Luca, E. Bianchi, A. Rivalta, S. Sbricioli e Gallori. Esse raffigurano, da destra verso sinistra: «Gaius», «Modestus» (seduti). Ai lati dell'ingresso (in piedi) sono le statue di «Cicero», «Papinianus», «De Luca» e «Vico», mentre a sinistra (seduti) sono «Licinio Crasso» e «Salvio Giuliano». Splendida impostazione animata da forte gestualità, che ha il suo riferimento nei valori del classicismo; soprattutto visibile nelle statue di Crasso e di Cicerone. Sul retro sono poste, ai lati dello scalone di accesso, due grandi fontane a vasca inserite in un prospetto architettonico neo-barocco, ornato da un frontone e contenente una vasca superiore, con conchiglia. Tra le colonne e le teste elmate di «Minerva» è collocata una serie di medaglioni a rilievo con profili di altri giureconsulti fra cui: Beccaria; Romagnosi, D'Andrea; Gentile, De Luca, Alciato, Taldo; Bortolo; Accursio, Graziano.
 
@@ -30018,11 +28195,8 @@ Sul piazzale si affaccia la mole dell'edificio sorto come Casa Lupa più in prim
 
 ---
 
-<!-- p.1210 (orig. p.1210) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1210
+1210
 RIONE XXll PRATI
 
 Madre dei mutilati e delle vedove di guerra, in forma di severa
@@ -30046,11 +28220,8 @@ Prendiamo per via Alberico II, intitolata al figlio di Marozia fratello di papa 
 
 ---
 
-<!-- p.1211 (orig. p.1211) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>121/
+121/
 
 L'«Alberico» con la sua saletta aggiunta: l'«Alberichino»; si attraversa quindi piazza Americo Capponi, dedicata al nobile romano morto nel 1619, che fu castellano di Castel S. Angelo sotto i papi Clemente VII, Leone XI e Paolo V. Da qui si prosegue per via Stefano Porcari, che ricorda l'umanista quattrocentesco romano che, per rinnovare gli ideali repubblicani, cospirò contro il papa e, scoperto, fu impiccato dalla giustizia pontificia ai merli di Castel S. Angelo. Qui al n. 9 è una palazzina ornata da riquadri graffiti posti tra le finestre del sottotetto:
 
@@ -30062,11 +28233,8 @@ Su piazza Risorgimento sbocca via Vespasiano, che ricorda l'imperatore romano, f
 
 ---
 
-<!-- p.1212 (orig. p.1212) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1212
+1212
 RIONE XXII. PRATI
 
 con 1300 posti tra platea e galleria. Di fronte, stretta fra alti edi-
@@ -30124,11 +28292,8 @@ fin dal 1920 sulle pagine dei migliori manuali di architettura.
 
 ---
 
-<!-- p.1213 (orig. p.1213) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1213
 
 Pieno è il gusto della facciata sottolineata dai balconi ed elegante la soluzione delle logge angolari sull'attico; Proseguiamo quindi su Lungotevere dei Mellini dopo avere visitato i giardini di piazza della Libertà, che vuole commemorare con questo toponimo la libertà dell'Italia ottenuta con le guerre d'indipendenza e dove, al centro delle aiuole, dopo l'incrocio con via Cola di Rienzo, sta il monumento dedicato a Pietro Cossa, drammaturgo romano dell'Ottocento rievocatore dell'antica Roma imperiale, raffigurato in severi abiti borghesi mentre porta una mano al cuore. Elegante è il plinto di base ornato da festoni e maschere teatrali. Questo monumento fu trasferito da largo Arenula dove era stato collocato inizialmente.
@@ -30141,11 +28306,8 @@ Attraverso questo triplice ingresso si entra in uno dei più conosciuti e antich
 
 ---
 
-<!-- p.1214 (orig. p.1214) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1214
+1214
 RIONE XXII. PRATI
 
 I principali monumenti di piazza Cavour e dintorni. Dall'alto, in senso orario: il teatro Adriano, la chiesa valdese; la chiesa del Sacro Cuore del Suffragio, palazzo di giustizia, la casa madre dei mutilati.
@@ -30156,11 +28318,8 @@ Usciamo così da via Marianna Dionigi in piazza Cavour. Qui
 
 ---
 
-<!-- p.1215 (orig. p.1215) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1215
 
 Sulla destra sorge la chiesa valdese costruita nel 1914, che presenta un'ampia facciata inscritta in due alti campanili le cui cupolette sono ispirate allo stile di quella del Sacro Cuore di Parigi. Questa chiesa presenta nella lunetta sopra il portale centrale la raffigurazione di un libro su cui è un candelabro con candela accesa che illumina una selva, come ricorda la scritta: «lux lucet in tenebris». La chiesa fu progettata in uno stile ispirato al romanico tedesco dall'architetto Bonci e fu eretta dall'Rudelli. Le vetrate sono di Picchiaroni su disegno di Paschetto.
@@ -30176,11 +28335,8 @@ Il progetto di L. Rolland per il teatro Adriano a piazza Cavour
 
 ---
 
-<!-- p.1216 (orig. p.1216) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1216
+1216
 
 RIONE XXII PRATI
 
@@ -30198,11 +28354,8 @@ Da qui prendiamo per via Cola di Rienzo che è intitolata al tribu-
 
 ---
 
-<!-- p.1217 (orig. p.1217) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 12/7
 
 no romano ucciso nel 1354. Sulla sinistra si apre uno dei più antichi ristoranti della zona «Zì Gaetano», che occupa ampi locali del seminterrato ornati da caratteristici affreschi di ispirazione popolare: qui la signora sarà lieta di mostrare il libro con la firma dei clienti più noti e affezionati e in queste troveremo di un habitué, il grande Trilussa; che vi ha lasciato uno dei suoi versi, di Anna Magnani, Aldo Fabrizi e Josephine Baker. Vicino al ristorante esisteva ancora pochi anni fa il più antico negozio di cappelli di Prati di Enrico Chiapparicci, più conosciuto nel rione come «er muto» perché di poche parole. Vicino si apriva il bar Universal, ritrovo dei bulli della zona che negli anni Trenta andavano giocare a biliardo; dove oggi è la fabbrica di confetti Loreti (n. 242).
@@ -30219,22 +28372,16 @@ Tutta via Cola di Rienzo è una galleria di negozi molti dei quali caratterizzan
 
 ---
 
-<!-- p.1218 (orig. p.1218) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1218
+1218
 RIONE XXII PRATI
 
 corniciati. Dopo via Virgilio, al n. 140, è il grande Palazzo in stile neo-romanico sede dell'Istituto Nazareth, aperto nel 1889. All'interno è un bel giardino con fontana centrale ornata dalla statua della «Madonna». È di particolare importanza la chiesa dell'Istituto eretta con architetture neo-gotiche; presenta un ciborio marmoreo su colonne di porfido ornato da un bassorilievo raffigurante «Gesù in mezzo ai fanciulli e con angeli» ai lati. All'esterno dell'Istituto, in alto su via Cola di Rienzo, entro un'edicola è la statua di «S. Giuseppe con il Bambino Gesù», mentre su via Orazio è quella del «Redentore». Proseguiamo appena per via Orazio e quindi entriamo in via Boezio. Nel proseguimento di via Boezio, all'incrocio con via Tacito, in un villino vediamo all'esterno una fontana decorata da una statua bronzea di un efebo impostata sulla doppia valva di una conchiglia e sostenente una conchiglia. Il villino presenta una decorazione realizzata a mosaico con riquadri dove su fondo dorato spiccano dei festoni. Torniamo su via Cola di Rienzo e la proseguiamo sino ad uscire sulla piazza Cola di Rienzo, dove una volta si aprivano ben tre cinema e ora soltanto due: scomparso lo Splendid, restano l'Eden e il Cola di Rienzo. La piazza, in alto a sinistra, presenta un modernissimo edificio distinto dal succedersi di strutture verticali, opera anch'essa di O. Ciaramaglia. Sulla sinistra della piazza è situato il monumento del rione Prati ai suoi caduti della guerra 1915-1918. I nomi, incisi su una lapide, sono affiancati da due fasci littori e accompagnati dal motto: «Il paradiso è all'ombra delle spelled». Segue, sullo stesso lato, il villino ove ha sede l'Istituto per il credito sportivo e che è ornato, nel giardino, da una copia dell'antica statua mironiana del Discobolo. Sul muro di cinta che dà sulla piazza è affissa una targa che ricorda F. Faragli benemerito degli sport equestri italiani. Sulla destra prendiamo per via Lucrezio Caro, famoso scrittore latino; e qui vediamo il Palazzo costruito per la Società italiana autori ed editori. L'edificio progettato da L. Tuffaroli è interamente rivestito di travertino di Rapolano; mentre le fasce di marcapiano e il portone sono di travertino opalino. Più avanti ai nn. 24-28 si apre una delle più caratteristiche e antiche confetterie e cioccolaterie di Roma. Entriamo in via Cossa e quindi in via Pietro Cavallini, intitolata al pittore e mosaicista romano, dove è la piccola chiesa dedicata a S. Giuseppe Calasanzio e costruita per le suore calasanziane da Andrea Busiri Vici nel 1888. La facciata, neo-romanica, è realizzata in cotto e in essa campeggia un rosone centrale in marmo. Il portale dagli stipiti decorati con un motivo di racemi presenta al di sopra un'edicola a trifora con colonnine sporgenti su mensole all'interno della quale è, realizzata a mosaico, la raffigurazione di «S. Giuseppe con il Bambino Gesù in braccio e due angeli». Ai lati, le finestre del piano terra e le bifore del secondo sono ornate da mensole marmoree e da una transenna con cristogrammi. Accanto al n. 38 si apre la sede del Pontificio istituto ecclesiastico polacco; nella vicina via Giuseppe Gioachino Belli ha sede l'Istituto delle suore pie venerine e all'incrocio con via Federico Cesi è uno dei grandi alberghi romani che all'angolo ha una moderna quanto stilizzata fontana a canne degradanti. All'angolo quella quale primo...
 
 ---
 
-<!-- p.1219 (orig. p.1219) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1219
 
 Fra via G.G. Belli e via Lucrezio Caro vediamo un'immagine mariana con la «Madonna, il Bambino e S. Giovanni», realizzata in maiolica; in stile robbiano e protetta da un vetro.
@@ -30249,11 +28396,8 @@ Portiamoci ora su via dei Gracchi dove all'angolo è un villino ornato da stucch
 
 ---
 
-<!-- p.1220 (orig. p.1220) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1220
+1220
 RIONE XXII PRATI
 
 G. Venturi, schizzo della casa tra via Proprizio e via Crescenzio.
@@ -30268,11 +28412,8 @@ Al n. 107 è un edificio per appartamenti progettato e costruito nel 1920 da Mar
 
 ---
 
-<!-- p.1221 (orig. p.1221) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO 122/
+UNICO ITINERARIO 122/
 
 La strada, sopra il portone d'ingresso ornato da una leonina in stucco, presenta una serie di bow-windows. Una lunetta in ferro con l'indicazione del numero civico è al di sopra del portone.
 
@@ -30284,11 +28425,8 @@ L'abate A. Brigidou s'incaricò del reperimento dei fondi e lanciò un appello a
 
 ---
 
-<!-- p.1222 (orig. p.1222) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1222
+1222
 RIONE XXII PRATI
 
 Fregio in ferro con gli emblemi dello stemma di Leone XIII: cipressi, stelle e gigli. La fronte della chiesa presenta un portico su sei colonne e due pilastri di granito rosso sorreggenti capitelli corinzi. Una scritta nella cornice ricorda la consacrazione del tempio in onore di S. Gioacchino e in onore del giubileo del papa. L'attico, modanato ad edicole e a un breve frontone, presenta un grande mosaico; opera del Monti, raffigurante «Leone XIII» alla destra di un altare su cui è esposto l'ostensorio. Al di sopra del frontone è posta poi una statua in bronzo alta 3 metri e raffigurante «S. Gioacchino con la piccola Maria», opera di A. Vermare. Più arretrata è la fronte della navata centrale anch'essa in stile neo-romanico; ornata da angeli in adorazione e da una Croce sulla sommità posta sul globo terracqueo.
@@ -30303,11 +28441,8 @@ Si conclude così la nostra passeggiata nel rione Prati che, da qualche anno osp
 
 ---
 
-<!-- p.1223 (orig. p.1223) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Indice dei luoghi
+Indice dei luoghi
 
 Acquario; 988, 989
 Argentari; 456, 788-790, 792
@@ -30397,11 +28532,8 @@ Vignola; 662
 
 ---
 
-<!-- p.1224 (orig. p.1224) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1224
+1224
 
 INDICE DEI LUOGHI
 
@@ -30516,11 +28648,8 @@ Salvator Rosa, 281
 
 ---
 
-<!-- p.1225 (orig. p.1225) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 1225
 
 Sanguigni, 446
@@ -30631,11 +28760,8 @@ S. Adriano, 14, 705, 718
 
 ---
 
-<!-- p.1226 (orig. p.1226) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1226
+1226
 
 INDICE DEI LUOGHI
 
@@ -30724,11 +28850,8 @@ S. Eufemia in Trevi, 153
 
 ---
 
-<!-- p.1227 (orig. p.1227) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 
 S. Ignazio, 228, 556, 558, 601, 602, 617, 641
 S. Maria degli Angeli in Cacabaris, 451, 488, 490, 496
@@ -30816,11 +28939,8 @@ S. Maria fra le Due Vie, 61
 
 ---
 
-<!-- p.1228 (orig. p.1228) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1228
+1228
 
 INDICE DEI LUOGHI
 
@@ -30916,11 +29036,8 @@ S. Michele e Magno, 958, 962-964
 
 ---
 
-<!-- p.1229 (orig. p.1229) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 1229
 
 S. Salvatore de Camilliano; 133, 559, 617
@@ -31015,11 +29132,8 @@ Pigna,
 
 ---
 
-<!-- p.1230 (orig. p.1230) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1230
+1230
 
 INDICE DEI LUOGHI
 
@@ -31115,11 +29229,8 @@ piazza G.G. Belli, 840
 
 ---
 
-<!-- p.1231 (orig. p.1231) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 
 **piazza S. Andrea della Valle**, 542
 **Seiana**, 1146, 1161
@@ -31218,11 +29329,8 @@ Augusto, 15, 31, 64, 111, 173, 174
 
 ---
 
-<!-- p.1232 (orig. p.1232) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1232
+1232
 
 INDICE DEI LUOGHI
 
@@ -31331,11 +29439,8 @@ Palatino, 20, 30, 64, 66, 619, 656, 661, 668, 677, 679-682, 696, 698, 705-718, 7
 
 ---
 
-<!-- p.1233 (orig. p.1233) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 1233
 
 Parioli, 264, 448, 1043
@@ -31426,11 +29531,8 @@ Vaticani, 115, 204, 324, 442, 558, 568, 574, 775, 969, 970, 982, 1013
 
 ---
 
-<!-- p.1234 (orig. p.1234) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1234
+1234
 
 INDICE DEI LUOGHI
 
@@ -31549,11 +29651,8 @@ S. Giacomo degli Spagnoli, 443
 
 ---
 
-<!-- p.1235 (orig. p.1235) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 1235
 
 Braschi, 17, 213, 401, 402, 404, 410, 414, 420-424, 573, 591, 623, 675
@@ -31669,11 +29768,8 @@ Floridi, 395
 
 ---
 
-<!-- p.1236 (orig. p.1236) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1236
+1236
 
 INDICE DEI LUOGHI
 
@@ -31790,11 +29886,8 @@ papa Niccolò I, 822
 
 ---
 
-<!-- p.1237 (orig. p.1237) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 
 Parracciani, 610
 Patrizi, 516, 517, 755, 756
@@ -31918,11 +30011,8 @@ Zecca, 338, 366
 
 ---
 
-<!-- p.1238 (orig. p.1238) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1238
+1238
 INDICE DEI LUOGHI
 
 Zuccari, 278, 281-284, 309
@@ -31992,11 +30082,8 @@ Querquetulana, 1108
 
 ---
 
-<!-- p.1239 (orig. p.1239) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 
 **PORTICI**
 * Aemilia: 1146, 1161, 1163, 1165, 1169, 1198-1222
@@ -32004,11 +30091,8 @@ Querquetulana, 1108
 
 ---
 
-<!-- p.1240 (orig. p.1240) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1240
+1240
 
 **INDICE DEI LUOGHI**
 
@@ -32123,11 +30207,8 @@ Eliogabalo (Sole) 677, 717
 
 ---
 
-<!-- p.1241 (orig. p.1241) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 
 Minerva Medica; 239, 969, 982, 992
 Mitra; 806-808
@@ -32233,11 +30314,8 @@ Vetus; 439
 
 ---
 
-<!-- p.1242 (orig. p.1242) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1242
+1242
 INDICE DEI LUOGHI
 
 Altieri (poi Ludovisi), 1033
@@ -32311,11 +30389,8 @@ Vittoriano (Altare della Patria), 31, 32, 619, 622-624, 637, 639-642, 647, 656, 
 
 ---
 
-<!-- p.1243 (orig. p.1243) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Indice del volume
+# Indice del volume
 
 | p. | |
 | :--- | :--- |
@@ -32355,11 +30430,8 @@ Vittoriano (Altare della Patria), 31, 32, 619, 622-624, 637, 639-642, 647, 656, 
 
 ---
 
-<!-- p.1244 (orig. p.1244) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1244
+1244
 INDICE DEL VOLUME
 
 p.
@@ -32379,11 +30451,8 @@ p.
 
 ---
 
-<!-- p.1245 (orig. p.1245) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Indice
+Indice
 
 VOLUME PRIMO
 
@@ -32425,11 +30494,8 @@ p. 6 Presentazione, di Claudio Rendina
 
 ---
 
-<!-- p.1246 (orig. p.1246) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1246
+1246
 INDICE
 
 | P. | |
@@ -32488,11 +30554,8 @@ INDICE
 
 ---
 
-<!-- p.1247 (orig. p.1247) -->
 
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE
+INDICE
 
 | p. | |
 | :--- | :--- |

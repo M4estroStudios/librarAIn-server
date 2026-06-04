@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1212
+1212
 RIONE XXII. PRATI
 
 con 1300 posti tra platea e galleria. Di fronte, stretta fra alti edi-

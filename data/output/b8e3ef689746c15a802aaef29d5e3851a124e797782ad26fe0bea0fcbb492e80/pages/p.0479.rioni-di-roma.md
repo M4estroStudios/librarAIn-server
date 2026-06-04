@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 479
 
 sulla piazza Ippolito Nievo, poco al di là delle mura di Urbano VIII. Superato il lungotevere dei Vallati, imbocchiamo via Arenula, tenendoci sulla sinistra. Un edificio fa da spartitraffico fra la via che stiamo percorrendo, via delle Zoccolette, e quella del Melangolo. Quest'ultima deve il suo nome alla presenza d'un albero, scomparso chissà da quanto. Si tratta del *malum assyrium*, sorta d'agrume simile all'arancio: secondo alcuni, andrebbe ubicata la torre Pertundata o Perforata, dei Manetti, su cui avremo modo di tornare più avanti.

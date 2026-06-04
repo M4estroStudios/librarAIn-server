@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 491
 
 zione del divino; ovviamente cristiano; alla vicinanza degli ebrei. Siamo infatti alla presenza di una delle numerose immagini della Madonna famosa per le sue lacrime. Stavolta queste ultime non sarebbero state strappate dalla caparbietà del popolo ebraico; bensì da un fattaccio di cronaca nera.

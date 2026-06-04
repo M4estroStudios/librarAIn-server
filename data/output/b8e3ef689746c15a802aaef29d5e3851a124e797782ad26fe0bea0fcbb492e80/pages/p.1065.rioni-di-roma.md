@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AI NOSTRI GIORNI
+DALLE ORIGINI AI NOSTRI GIORNI
 1065
 
 L'area del Castro Pretorio in un'incisione di G. Vasi.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AI GIORNI ODIERNI
+DALLE ORIGINI AI GIORNI ODIERNI
 559
 
 In parte e a cielo aperto nella piazza Argentina, mentre in via delle Botteghe Oscure era il grande portico «Minucia frumentaria», nonché la «Villa Publica».

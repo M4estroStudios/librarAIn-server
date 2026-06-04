@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 591
 
 mantenuta questa sua primitiva, per quanto non più officiata; funzione. Nell'anno che abbiamo citato invece questa cominciò ad essere stravolta. L'imperatore di Bisanzio Foca lo elargì graziosamente in dono a papa Bonifacio IV; e questo lo trasformò naturalmente in una chiesa cristiana, dedicata alla Vergine Maria, con il nome di *S. Maria ad Martyres*. L'imperatore Costante II, nonostante la cessione effettuata alla Chiesa da parte del suo predecessore nel 655, fece togliere dalla copertura della cupola tutte le tegole di bronzo dorato per specularvi in una gigantesca fusione a scopi statuari. Solo cento anni più tardi, ad opera del pontefice Gregorio III, la copertura fu ripristinata mediante ben più vili lamine di piombo che ancora attualmente la rivestono.

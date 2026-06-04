@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 785
 
 dono e di avanzato degrado; da cui ne uscì quando nel 1575 fu assegnata all'università dei sarti, giubbonari e calzettari che la dedicava al proprio patrono: S. Omobono e a S. Antonio.

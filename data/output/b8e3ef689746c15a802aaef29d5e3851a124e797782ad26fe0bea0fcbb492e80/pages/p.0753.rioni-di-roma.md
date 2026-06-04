@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 753
 
 *Il cortile del palazzo Mattei di Giove in un'incisione ottocentesca di P. Letarouilly*

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 905
 
 Palazzo degli Spiriti: Qui vivevano le novizie e pregavano nella chiesa dedicata al Sacro Cuore; entro l'edificio. È una chiesa neogotica, ma risale alla prima metà dell'Ottocento ed ha opere di Pietro Gagliardi (Roma, 1809-1890).

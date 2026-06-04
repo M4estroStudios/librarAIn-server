@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO                                                                    631
+PRIMO ITINERARIO                                                                    631
 
 [Immagine: incisione di G. Vasi]
 

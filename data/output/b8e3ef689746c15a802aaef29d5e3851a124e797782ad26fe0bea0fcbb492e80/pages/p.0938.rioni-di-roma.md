@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>938
+938
 
 RIONE XIV. BORGO
 Vicende; orrori, leggende e tradizioni del Castello

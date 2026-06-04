@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 547
 
 Dai Caffarelli passò successivamente ai Colonna, al cardinale G. Francesco Stoppani; al cardinal Pietro Vidoni, al duca Carlo Giustiniani e in seguito allo Stato italiano.

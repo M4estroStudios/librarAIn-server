@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 515
 
 colonna nella chiesa di S. Luigi, è il ritratto della madre di Cesare Borgia, cioè Vannozza. La cosa è abbastanza credibile poiché la piissima Vannozza, moglie di Alessandro VI, elargì una lauta somma alla chiesa di S. Salvatore in Thermis e formulò il desiderio di essere ivi sepolta. Date queste relazioni fra i membri della potentissima famiglia Borgia e la chiesa in parola, è spiegabile che il Cristo e la Madonna si siano trovati appioppate le sembianze di Cesare e di Vannozza.

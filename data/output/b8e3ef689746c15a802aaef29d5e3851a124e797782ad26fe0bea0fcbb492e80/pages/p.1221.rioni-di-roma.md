@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO 122/
+UNICO ITINERARIO 122/
 
 La strada, sopra il portone d'ingresso ornato da una leonina in stucco, presenta una serie di bow-windows. Una lunetta in ferro con l'indicazione del numero civico è al di sopra del portone.
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 923
 
 Erano nelle vicinanze della chiesa di S. Pasquale Baylon in via S. Francesco a Ripa: anche il palazzo Castellani del Quattrocento con torre è sparito nell'Ottocento. Donna Olimpia Maidalchini Pamphilj rimpiange ancora il suo secentesco Casino col bel portico a tre campate con vista sul fiume, assorbito dal Lungotevere, e il principe Gabrielli la sua villa divorata dal manicomio alla Lungara; anch'esso demolito; ma i matti di allora furono ospitati nel nuovo manicomio di Monte Mario, mentre quelli di oggi (e son tanti) passeggiano e reggiano negli ospedali per infemi sani di mente con grave rischio di questi ultimi, come dimostrano le notizie di cronaca.

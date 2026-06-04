@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>**PRIMO ITINERARIO 45**
+**PRIMO ITINERARIO 45**
 
 **La notte delle streghe: il 23 giugno**
 

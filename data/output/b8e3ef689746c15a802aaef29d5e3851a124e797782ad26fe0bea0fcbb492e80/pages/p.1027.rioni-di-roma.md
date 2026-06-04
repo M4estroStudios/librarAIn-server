@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1027
 
 zi e mobilia. Si trattava di realizzare architettonicamente ed artisticamente un programma preciso di politica culturale per valorizzare l'arte contemporanea ufficiale.

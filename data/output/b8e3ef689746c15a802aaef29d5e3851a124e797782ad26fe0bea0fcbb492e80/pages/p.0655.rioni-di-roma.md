@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 655
 
 da Giacomo Della Porta, tagliata di alcuni gradini alla base per l'apertura dell'attuale via Tor de' Specchi.

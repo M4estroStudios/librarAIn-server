@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 807
 
 struttito il *titulus* e quindi, forse ad opera degli stessi cristiani che in quei tempi si mostrarono tenacemente intolleranti verso i seguaci del dio Mitra. Un'altra tradizione vorrebbe che la chiesa fosse sorta sui resti del tempio di Diana costruito da Servio Tullio mentre un frammento della *Forma Urbis*, la pianta marmorea di Roma, eseguita in età severiana, ci indica che nei pressi dell'area di S. Prisca erano poste le terme Surane e un tempio; forse quello di Consus o di Vertumnus. Nel ninfeo è oggi sistemato il Museo dei materiali archeologici provenienti dagli scavi, tra cui una lamina di piombo traforata raffigurante il dio Sole; dietro la quale, durante le cerimonie mitriache veniva fatta brillare una luce; un'altra testa del dio Sole composta con vari pezzi di marmi policromi (*opus sectile*) è conservata al Museo nazionale romano.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 981
 
 Non ancora vedere i busti maschili e femminili in stucco, entro ovali in stucco e analoghi a quelli che ornano una sala. Soltanto in tre sale di questa villa, che ha subito alcuni considerevoli interventi moderni come sopraelevazioni e laddossamento di una struttura recente a limitarne il cortile, sono conservati scarsi elementi dell'originaria decorazione pittorica e il soffitto a cassettoni. La villa, già residenza del cardinale Francesco di Paola Cassetta, è, come villa Altieri, proprietà della Congregazione delle figlie di N.S. del Calvario.

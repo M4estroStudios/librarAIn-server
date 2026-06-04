@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>708
+708
 RIONE X. CAMPITELLI
 
 Contrato: A queste frustate non si sottraevano le donne che chiedevano fecondità e future gravidanze.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1086
+1086
 RIONE XVIII. CASTRO PRETORIO
 
 St'angolo estremo del rione ha di monumentale solo un indescrivibile movimento. La cosa comunque, nel bene e nel male, ha contribuito a conservare il compito riconosciuto nel 1871 al rione stesso di ricevere, ospitare e, nei limiti del possibile, ristorare i viaggiatori. Prima di lasciare questa parte del rione, soffermiamoci ad osservare l'edificio che fa angolo fra la via Cavour e via Torino; con ingresso al civico 163 di quest'ultima. È un imponente edificio costruito, come riportato dall'iscrizione sovrastante l'ingresso, da CAESAR JANZ ARCHITECTUS. MDCCCLXXXVIII. Un corpo centrale, composto da sei colonne ionizzanti alte due piani dell'edificio, grava su un piano con sette balconi con parapetti classicheggianti. Il tutto poggia su un piano terra con robusto bugnato. Ricca e movimentata dai balconi l'angolo che guarda piazza dell'Esquilino. Quest'edificio stabilì una moda, anche se dell'architetto Janz non troviamo che un'altra sola testimonianza, di grande rilievo comunque, sia per l'edificio in sé che per una delle persone che lo abitarono.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 657
+PRIMO ITINERARIO 657
 
 Altrettanto antichi e di risulta sono i capitelli e le basi delle colonne. Il pavimento è cosmatesco con fasce mosaicate e conserva numerose pietre tombali del Trecento e del Quattrocento. Importanti, soprattutto, sono: la prima cappella a destra, che è illustrata con le «Storie di S. Bernardino e S. Francesco» dipinte, nel 1486, dal Pinturicchio; la statua di «Gregorio XIII» di P.P. Olivieri del 1476; la «tomba di Cecchino Bracci (1544)» di F. Amadori, su disegno di Michelangelo; nella nona cappella la «tomba di fra' Ginepro, compagno di S. Francesco»; l'altare maggiore con paliotto settecentesco sul quale Cola di Rienzo, tornando vittorioso sui Colonna da porta S. Giovanni, poggiò la propria spada dicendo: «Hai mozzata recchia di tale capo che non la potevo tagliare né papa né imperatore».
 

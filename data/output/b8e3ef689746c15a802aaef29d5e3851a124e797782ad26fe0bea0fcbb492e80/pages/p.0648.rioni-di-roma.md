@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>648
+648
 RIONE X. CAMPITELLI
 
 Ma prima indicava il luogo dove venivano lette le sentenze di morte e dove i malfattori, nei giorni di mercato, erano messi alla gogna. Da qui il detto di «dare il culo al liones». Si possono vedere i resti del tempio di Veiove; di età repubblicana. Veiove; dio romano; aveva un santuario sul Campidoglio ed un altro sull'isola Tiberina. Legata ai culti degli inferi, questa divinità era in rapporto alle paludi e alle manifestazioni vulcaniche. È conservato soprattutto il podio che si inseriva nel Tabularium e la statua colossale del dio, senza testa; impostata secondo un'iconografia apollinea perché Veiove fu in epoca storica accostato all'Apollo greco. Da qui si può andare nella galleria del Tabularium per godere della splendida vista sul Foro Romano fino al monte Albano su cui, in età antica, sorgeva il santuario di Giove Laziale che dal Campidoglio era traguardato in omaggio al vincolo religioso e politico che univa Roma agli altri popoli latini; sul quale doveva ben presto emergere.

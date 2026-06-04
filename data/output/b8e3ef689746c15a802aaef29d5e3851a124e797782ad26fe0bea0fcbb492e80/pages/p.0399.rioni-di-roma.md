@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 399
 
 stra; sovrastata da terrazzo. Il portone è ora un negozio, perché è stata inglobata nell' edificio antico. Singolare è, di certo; la casa quattrocentesca rifatta nel Settecento al n. 104, perché, oltre i graffiti, ancora evidenti, del primo piano, mostra nella seconda finestra dell' ultimo piano un affresco che raffigura il padrone di casa affacciato ad una loggetta insieme col suo segretario; e nel vano di un' altra finestra un pappagallo. Il Settecento ha lasciato la sua brava impronta sulla facciata; attaccandole dei medaglioni con ritratti di giuristi, festoni e mascheroni. Un oculo circondato da festoni sovrasta il portone. Nell' architrave vi è una tabella dell' arciconfraternita delle Sacre Stimmate di Roma sovrapposta all'iscrizione che rimane parzialmente nascosta:

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>302
+302
 RIONE IV. CAMPO MARZIO
 
 ma torre dell' antico muro di Aureliano. Poco oltre; il fiume, e lì era la legnara, ossia il deposito di una delle materie del tempo; appunto la legna.

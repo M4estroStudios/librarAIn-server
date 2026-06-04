@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI, LA STORIA
+LE ORIGINI, LA STORIA
 385
 
 una è quella di Pasquino; che è una copia di un gruppo ellenistico pergameno rappresentante Menelao che sorregge il corpo di Patroclo.

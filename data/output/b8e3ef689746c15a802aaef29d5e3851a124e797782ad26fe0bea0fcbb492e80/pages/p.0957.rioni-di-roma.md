@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 957
 
 Fondi occorrenti, nel 1744 iniziò la costruzione dell'oratorio che stiamo descrivendo, affidandone l'esecuzione all'architetto Pietro Passalacqua.

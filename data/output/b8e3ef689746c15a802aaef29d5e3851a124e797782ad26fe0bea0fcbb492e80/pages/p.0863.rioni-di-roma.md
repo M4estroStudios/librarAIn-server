@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 863
 
 S. Giovanni Battista dei Genovesi nel suo aspetto settecentesco (G. Vasi).

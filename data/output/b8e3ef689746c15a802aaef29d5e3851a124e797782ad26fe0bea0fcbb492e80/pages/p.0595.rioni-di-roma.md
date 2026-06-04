@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 595
 
 La prima cappella sulla destra accoglie un'«Annunciazione» attribuita a Melozzo da Forlì; nella seconda cappella è la tomba di Vittorio Emanuele I; in alto sul coro immagine bizantina degli inizi del VII secolo rivestita con un manto argenteo del secolo XVIII.

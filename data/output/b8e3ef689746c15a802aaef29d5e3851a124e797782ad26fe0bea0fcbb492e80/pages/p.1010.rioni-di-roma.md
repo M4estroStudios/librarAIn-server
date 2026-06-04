@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1010
+1010
 RIONE XV. ESQUILINO
 
 del cardinale Carvajal. Opera del Giaquinto sono anche gli affreschi raffiguranti «Episodi dell' Antico Testamento».

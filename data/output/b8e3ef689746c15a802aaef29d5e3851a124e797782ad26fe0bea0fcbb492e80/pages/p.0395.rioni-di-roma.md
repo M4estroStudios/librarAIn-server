@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 395
 
 Il cardinale Gregorio Barbarigo (titolare della chiesa nel Seicento). In questa chiesa fu sepolto G.B. Gaulli; detto il Baciccia, morto nel 1709 e abitante nel palazzo attiguo dai caratteri barocchi.

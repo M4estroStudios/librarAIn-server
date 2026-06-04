@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>760
+760
 
 RIONE XI S. ANGELO
 CAMPIDOGLIO / PRESSO LA SCALA DI

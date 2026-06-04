@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1028
+1028
 RIONE XVI LUDOVISI
 
 «Nazareni». La via fino al 1871 si chiamava via di S. Isidoro e immetteva nella scomparsa piazza dei Cappuccini; ha mutato il nome per non confondersi con l'attuale via di S. Isidoro, che va da via degli Artisti a via Veneto. La chiesa di S. Isidoro fu progettata da Antonio Casoni nel Seicento mentre il portico è di Domenico Castelli; la facciata, poi, di Carlo Francesco Bizzaccheri del 1704, restaurata quarant'anni dopo, è in stile rococò; è divisa in due ordini ed ha davanti una scala a doppia rampa. Nell'ordine inferiore il portico è diviso da tre ingressi, dei quali uno centrale ad arco, separati da paraste con capitelli ionici con festoncini. Sulle entrate minori vi sono due riquadri con simboli francescani.

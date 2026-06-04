@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1185
 
 Prima della palestra; erano forse dell'apodyterium, cioè lo spogliatoio. Seguendo quindi un percorso che doveva essere tale anche in antico, il frequentatore iniziava a questo punto con gli esercizi ginnici che potevano essere eseguiti sia all'aperto, nella palestra, sia al coperto negli ambienti ad essa adiacenti. Infatti la palestra era porticata e uno dei lati lunghi, antistanti il portico, era absidato. Il portico, chiuso a volta, aveva una serie di colonne in marmo giallo di Numidia e, sul lato opposto a quello absidato, erano disposti cinque ambienti (di cui centrale animato da una piccola abside) pavimentati da mosaici policromi dei quali restano tracce.

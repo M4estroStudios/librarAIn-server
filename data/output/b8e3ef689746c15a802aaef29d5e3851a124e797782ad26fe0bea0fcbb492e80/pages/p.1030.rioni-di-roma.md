@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1030
+1030
 RIONE XVI. LUDOVISI
 
 Vici nel 1926 e proseguito da Marcello Piacentini e Giuseppe Vaccaro. La facciata curva è ricca di colonne tra le quali grandi nicchie ospitano figure muliebri bronzee in ginocchio con lampada, opera del Cloza. I portoni bugnati e con i soliti timpani spezzati richiamano le finestre del piano rialzato; sovrastate ugualmente da timpani spezzati le altre sono a bugne; al quinto piano un ampio loggiato a portici domina il tutto.

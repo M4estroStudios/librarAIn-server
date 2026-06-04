@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1143
 
 Lombario di Pomponio Hylas con accesso da una scala ancora originaria: le chiavi bisogna richiederle al custode del sepolcro degli Scipioni, di cui diremo appresso. Opera dell'età Flavia, il colombario è felicemente ricoperto di stucchi e pitture nella sua pianta rettangolare; presenta inoltre un'abside con una edicola votiva nel centro e un'altra sulla destra. Una datazione possibile può essere dell'epoca neroniana. Attraversato il parco degli Scipioni, al numero 9 della via di porta S. Sebastiano è l'ingresso del Sepolcro degli Scipioni. Si tratta di una delle famiglie illustri della romanità che dette all'impero Scipione l'Africano, vincitore di Annibale e Scipione Emiliano, distruttore di Cartagine.

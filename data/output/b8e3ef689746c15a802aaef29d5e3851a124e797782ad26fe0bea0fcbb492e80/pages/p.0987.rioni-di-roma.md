@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 987
 
 miglia Dominici, che la detiene tuttora anche se l'area è stata ristretta a seguito di espropri dovuti alla sistemazione stradale:

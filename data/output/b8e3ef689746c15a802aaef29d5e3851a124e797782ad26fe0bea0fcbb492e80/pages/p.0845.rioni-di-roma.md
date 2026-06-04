@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 845
 
 Unito alla facciata vi è il campanile romanico (del XII secolo rimaneggiato nel Seicento) con un grande orologio al centro con un'edicoletta della «Madonna» al culmine. L'interno della basilica a tre navate si presenta imponente e maestoso con colonne di varia origine perché provenienti probabilmente dalle terme di Caracalla. Il colonnato, su fondo oro, emergono figure di Santi opera di artisti del secolo scorso. Il pavimento moderno è in stile cosmatesco e nel soffitto magnifico con intagli in legno dorato si vede una «Assunta» eseguita su disegno del Domenichino (1581-1641). Nel catino absidale, su fondo oro, lo smagliante mosaico (del 1140) del «Redentore e della Madonna seduti in trono con ai lati diversi santi e il papa Innocenzo II col modello della chiesa». Nei riquadri del tamburo, Pietro Cavallini nel 1291 ha raffigurato con grande efficacia espressiva episodi della «Vita della Vergine» e al centro si vede la «Madonna col Bambino tra S. Pietro e S. Paolo» dinanzi ai quali sta inginocchiato il donatore Bertoldo Stefaneschi. Sull'arcone dell'abside campeggia la «Croce tra i sette candelabri dell' calice» e i simboli degli Evangelisti; ai lati i profeti «Isaia e Geremia» con due scritte in cui si legge che il piccolo uccello in gabbia, raffigurato vicino, è il simbolo del mistero dell'«Incarnazione del Verbo».

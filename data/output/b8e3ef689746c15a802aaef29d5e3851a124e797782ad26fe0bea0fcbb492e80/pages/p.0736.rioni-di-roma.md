@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>736
+736
 RIONE XI S. ANGELO
 
 morto undici anni prima:

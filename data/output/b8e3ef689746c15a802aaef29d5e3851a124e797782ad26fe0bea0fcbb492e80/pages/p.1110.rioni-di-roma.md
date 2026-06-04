@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>110
+110
 
 RIONE XIX. CELIO
 S. Agostino di Canterbury, evangelizzatore della Britannia.

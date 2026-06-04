@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 123
 
 Giovane stato italiano e, nel 1860, produttore in Sicilia: Dopo una palazzina in stile pseudo tardo-medievale resta la sconsacrata chiesa di S. Paolo Eremita, costruita intorno al 1785 su progetto di Clemente Orlandi. La facciata, concava, incorniciata da alte paraste e basso timpano, include un breve protiro convesso su cui stanno un leone e un corvo: simboli del Santo che una volta si affrontavano ai lati di una palma e oggi, davanti all'antico finestrone centrale, sorreggono lo stemma dei Savoia.

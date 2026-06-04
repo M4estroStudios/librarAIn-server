@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>118
+118
 RIONE XIX. CELIO
 
 L'afflusso degli spettatori in via preventiva; e qui l'ordine delle colonne che reggono gli archi è tuscanico; quindi, al piano superiore, l'ordine ionico; per finire al terzo piano in quello corinzio. Nell'attico sono presenti finestroni alternati a scudi bronzei oggi spariti.

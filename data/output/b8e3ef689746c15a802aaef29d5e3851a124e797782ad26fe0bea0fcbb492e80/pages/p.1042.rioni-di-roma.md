@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1042
+1042
 RIONE XVII. SALLUSTIANO
 
 [Immagine: Particolare della pianta di Roma del Nolli (1748) con il Circo di Flora]

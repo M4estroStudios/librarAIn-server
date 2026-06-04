@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 745
 
 Al l'incrocio con la via della Reginella, abbiamo la Casa di Lorenzo Manili. Evidentemente la passione per l'antichità, ridestato dallo spirito umanistico fu talmente intensa da coinvolgere se non tutti, molti strati sociali e la riprova di ciò l'abbiamo con questa dimora in cui il proprietario trasfuse, senza mezzi termini, l'ideale a cui si rifaceva. La grande iscrizione che in bei caratteri su due righe, percorre in ampia fascia, tutta la lunghezza dell'edificio al di sopra del piano terra; è quanto mai eloquente e ne riportiamo la traduzione:

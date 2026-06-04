@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>594
+594
 RIONE IX. PIGNA
 
 sole per la terza volta fece; mentre la seconda, più piccola, pure tradotta, commemora così il restauro severiano del 202 d.C. «L'imperatore Cesare Lucio Settimio Severo e l'imperatore Cesare Marco Aurelio Antonino il Pantheon, rovinato dalla vetustà, restaurarono con cura».

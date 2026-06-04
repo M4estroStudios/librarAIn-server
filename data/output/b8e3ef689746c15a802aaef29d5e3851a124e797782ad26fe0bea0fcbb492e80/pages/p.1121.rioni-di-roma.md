@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1121
 
 Rassero con serietà e impegno sia politico che amministrativo; una bonifica e cura puntuali dei monumenti e delle strade, non imbellettandoli, ma certo mantenendoli al meglio; senza snaturarli, né distruggendoli, tenendo presente che specialmente una città come Roma è né più né meno che un organismo vitale che, se ferito e trascurato, finisce per infettarsi irreparabilmente e per morire. L'emblematica edicola oggetto di così mesta elucubrazione presenta al suo esterno un'iscrizione ancora decifrabile, che narra: «Il sorriso di Maria / questi luoghi allieterà / se chi passa per la via / "Salve, o Madre" / a Lei dirà».

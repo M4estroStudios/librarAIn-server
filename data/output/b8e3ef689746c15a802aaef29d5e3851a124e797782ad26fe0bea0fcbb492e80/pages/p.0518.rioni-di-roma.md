@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>518
+518
 RIONE VIII. S. EUSTACHIO
 
 me notevoli per riparare la chiesa che aveva subito danni dall'inondazione del Tevere del 1495. Tuttavia il processo fu riaperto e il povero (ricco e potente) prelatò finì nel carcere di Castel S. Angelo dove morì per il crollo del tetto dell'alloggio. *Sic transit gloria mundi*.

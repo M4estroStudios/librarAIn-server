@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 699
 
 dedicati a Minerva, ma Nerva lo inaugurò con esso tutto il complesso dei Fori Imperiali; prima della costruzione di quello di Traiano, venne a congiungersi con il Foro Romano all'altezza dell'Argileto, dietro la Curia e la basilica Emilia. Si entra così nel II secolo d.C., che è considerato quello dell'età più felice per l'Impero di Roma: il secolo che vide Traiano, Adriano, Antonino Pio e Marco Aurelio, e ancora Settimio Severo dopo le parentesi, non felici, di Commodo, Elvio Pertinace e Didio Giuliano. Tutta l'attività edilizia di Traiano connessa agli impianti dei Fori si concentrò nella costruzione del suo Foro, della basilica Ulpia, della sua straordinaria colonna dei grandi Mercati e, nel Foro Romano, l'unica sua memoria visibile è costituita dai due plutei conservali all'interno della Curia.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>46
+46
 RIONE L. MONTI
 
 tettura di Giacomo Della Porta (1570) con dipinti del Siciolante e del Cavalier d'Arpino; è un'altra delle cappelle che in Roma appartengono ai principi Massimo. All'esterno di quest'ultima cappella è una splendida statua quattrocentesca di S. Giacomo, opera di Andrea Bregno.

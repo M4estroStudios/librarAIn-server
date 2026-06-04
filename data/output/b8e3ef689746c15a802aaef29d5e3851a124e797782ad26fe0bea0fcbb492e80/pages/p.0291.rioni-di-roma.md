@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 291
 
 G. Vasi, la chiesa dei Ss Ambrogio e Carlo al Corso.

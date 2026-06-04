@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>962
+962
 RIONE XIV. BORGO
 
 Niva esposto il velo della Veronica; nella prima domenica dopo l'Epifania: era appositamente recato in processione dalla vicina basilica di S. Pietro.

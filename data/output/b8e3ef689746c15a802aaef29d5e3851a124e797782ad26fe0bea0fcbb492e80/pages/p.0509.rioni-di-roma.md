@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 509
 
 Seconda metà dell'Ottocento il Vespignani costruì un teatrino (il Rossini) di breve vita perché piccolo. Nel 1950 l'Ente comunale di assistenza cedette un locale all'attore romano Checco Durante, che riaprì il teatro Rossini, per rappresentarvi commedie romanesche.

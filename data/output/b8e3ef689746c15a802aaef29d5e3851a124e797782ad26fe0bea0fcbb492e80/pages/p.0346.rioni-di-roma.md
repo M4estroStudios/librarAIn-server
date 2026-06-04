@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>346
+346
 RIONE V. PONTE
 
 Sulla sinistra è una palazzina quattrocentesca con un porticato antistante sorretto da colonne e da pilastri. L'edificio che fu restaurato, anzi «ricostruito» dai Bennicelli è conosciuto come Casa di Fiammetta; in quanto si ritiene che fosse l'abitazione della famosa cortigiana amante di Cesare Borgia detto il Valentino.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>426
+426
 RIONE VII PARIONE
 
 che nella zona dovessero esservi gli *stabula factionum*; cioè le

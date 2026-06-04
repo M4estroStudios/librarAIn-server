@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 
 Minerva Medica; 239, 969, 982, 992
 Mitra; 806-808

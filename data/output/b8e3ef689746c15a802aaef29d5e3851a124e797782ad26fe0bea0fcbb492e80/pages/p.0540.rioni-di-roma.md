@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>540
+540
 RIONE VIII. S. EUSTACHIO
 
 L'androne del n° 4 è stato trasformato in magazzino; al di sopra si vede un rilievo funerario romano con tre busti femminili. Tale rilievo è molto simile a quello che si vede nel retro del palazzo della Valle.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 633
 
 Il pittore è rimasto anonimo, ma si ritiene che doveva far parte della bottega di Antoniazzo Romano. Poco vi fu aggiunta la raffigurazione del «Giudizio Universale». Altre storie della Santa sono dipinte nel refettorio da cui si accede alla cella dove S. Francesca Romana trascorse gli ultimi anni. Questa è oggi trasformata in cappella ma conserva, in un armadio, ricordi personali della Santa. Bello è, all'interno, un cortile trecentesco con portico su due ordini.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>42
+42
 RIONE I. MONTI
 
 Accanto alla porta Asinaria le mura aureliane riprendono il cammino; verso destra e verso sinistra. Sulla destra esse proteggono un altro mercato all'aperto caro ai romani, quello di via Sannio. Le mura aureliane che partono dalla porta Asinaria verso destra scendono a costeggiare via della Ferratella e si interrompono presso porta Metronia (in età antica porta Metrovia), un altro accesso principale alla città di Roma.

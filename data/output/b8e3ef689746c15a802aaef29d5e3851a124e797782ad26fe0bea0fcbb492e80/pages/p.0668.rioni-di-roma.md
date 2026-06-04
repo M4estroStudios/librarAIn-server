@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>668
+668
 RIONE X. CAMPITELLI
 
 dell' arte berniniana. Nell' abside sono da ammirare due colonne

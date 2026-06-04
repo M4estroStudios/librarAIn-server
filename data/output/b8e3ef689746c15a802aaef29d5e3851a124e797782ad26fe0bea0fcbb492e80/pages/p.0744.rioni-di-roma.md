@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>744
+744
 
 RIONE XI. S. ANGELO
 Le Cinque Scole

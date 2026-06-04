@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>870
+870
 RIONE XII. TRASTEVERE
 
 cilia di Sebastiano Conca del 1293. Vi è anche la cappella della famiglia Ponziani, a cui appartenne S. Francesca Romana, sposa di Lorenzo. Nella parte centrale è rappresentata <S. Francesca Romana fra la Madonna e S. Lorenzo> e nelle pareti laterali vari santi, opera di un anonimo pittore seicentesco. Era stata attribuita in un primo tempo al quattrocentesco Antonio Massari detto il Pastura; ma una mano che affiora sul manto della Madonna ci fa pensare ad una sovrapposizione di pitture.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1081
 
 Attaccata alla Rotonda; lungo la via del Viminale, al numero 3/B, una bassa abitazione a due piani con tetto a coppi rivela la sua vecchia origine. All'angolo v'è l'ingresso d'un albergo sormontato da una minuscola loggetta: L'insieme della strada di sapore umbertino è rotto dalla modernità delle linee del palazzo ICCREA (Istituto di credito delle casse rurali ed artigiane), ubicato all'angolo con via Torino; opera dell'architetto Francesco Berarducci. Qui la via del Viminale presenta sulla destra un vasto slargo; è la piazza Beniamino Gigli, che fronteggia il Teatro dell'Opera, un tempo *reale* ancora semplicemente *Costanzi*.

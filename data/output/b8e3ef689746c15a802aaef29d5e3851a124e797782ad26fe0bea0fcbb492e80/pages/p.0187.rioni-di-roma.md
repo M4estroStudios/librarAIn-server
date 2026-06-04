@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 187
 
 «Fornarina» di Raffaello; il «Ritratto di Enrico VIII» di Hans Holbein il giovane e tanti altri ancora.

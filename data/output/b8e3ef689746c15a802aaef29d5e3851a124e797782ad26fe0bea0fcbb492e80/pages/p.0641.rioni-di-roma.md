@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>BRONZO, a sinistra l'«Architettura» e la «Musica» di A. Garelli e a destra la «Pittura» e la «Scultura» di L. Gangeri. Nei timpani dei pronai stanno: a sinistra, l'«Unità» di E. Butti e a destra la «Libertà» di E. Gallori. Sulla sommità dei contigui propilei stanno due gruppi bronzei raffiguranti quadrighe condotte da vittorie alate; a sinistra, l'«Unità» di Carlo Fontana e l'altra, raffigurante la «Libertà», è opera di B. Bartolini.
+BRONZO, a sinistra l'«Architettura» e la «Musica» di A. Garelli e a destra la «Pittura» e la «Scultura» di L. Gangeri. Nei timpani dei pronai stanno: a sinistra, l'«Unità» di E. Butti e a destra la «Libertà» di E. Gallori. Sulla sommità dei contigui propilei stanno due gruppi bronzei raffiguranti quadrighe condotte da vittorie alate; a sinistra, l'«Unità» di Carlo Fontana e l'altra, raffigurante la «Libertà», è opera di B. Bartolini.
 
 Le sculture esterne, poste sui lati del monumento, presentano, a cominciare dal suo fianco destro: due «Vittorie» e un «Trofeo» di A. Cozza e quindi un «Trofeo» e due «Vittorie» di E. Maccagnani.
 

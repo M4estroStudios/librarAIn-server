@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>640)
+640)
 RIONE X. CAMPITELLI
 
 ...ranti i cortei del «Lavoro» e dell'«Amor di Patria» che rendono la nazione operosa. All'interno di questo sacello è posta la tomba del milite ignoto che conserva i resti di un soldato non identificato caduto durante la prima guerra mondiale. A questo proposito, un aneddoto scherzoso ricorda come, durante gli imponenti funerali del soldato sconosciuto, una folla immensa si accalcasse intorno alle transenne. Oltre queste stavano i reparti militari schierati e le autorità. Molti chiedevano con insistenza alle guardie di permettere loro di oltrepassare le transenne per poter vedere da vicino, ma le guardie, severe, non facevano passare nessuno. S'avvicinò un furbo monticiano che chiese alla guardia di poter passare. Questa gli chiese: «Chi siete?». E quello, con la risposta pronta e con la faccia tosta: «So 'n parente!». Passò con il saluto militare.

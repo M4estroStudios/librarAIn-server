@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>328
+328
 RIONE IV. CAMPO MARZIO
 
 portone di Carbonianis, le quattro meraviglie della Roma moderna.

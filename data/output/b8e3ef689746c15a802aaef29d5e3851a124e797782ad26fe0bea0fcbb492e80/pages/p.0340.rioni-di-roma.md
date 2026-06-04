@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>340
+340
 RIONE V. PONTE
 
 Già ai Frangipane e ai monaci agostiniani: Il palazzo fu progettato da Giovanni Fontana e conserva un nobile portone su cui sono visibili le mezzelune e le stelle dello stemma degli Scapucci. La torre è anche nota a tutti i romani come Torre della Scimmia, la cui leggenda è narrata anche da Nathaniel Hawthorne. La locanda dell'Orso diede nome per l'insegna che mostrava, con due orsi affrontati, a tutta la via; sempre che tale immagine non sia da riferire, invece, allo stemma degli Orsini, presenti durante il medioevo in questo rione.

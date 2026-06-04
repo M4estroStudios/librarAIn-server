@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1161
 
 rinvennero un cippo su cui era ricordata l'esistenza del *monumentum Rusticeliorum* e la distanza che divideva il cippo da quello. Lo scavo venne allora proseguito e alla distanza effettivamente riportata venne rinvenuto questo monumento sepolcrale costituito da un basamento su cui era un dado in tufo con la scritta:

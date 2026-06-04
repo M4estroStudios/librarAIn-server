@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 839
 
 Piazza S. Maria in Trastevere nel Settecento in un'incisione di G. Vasi

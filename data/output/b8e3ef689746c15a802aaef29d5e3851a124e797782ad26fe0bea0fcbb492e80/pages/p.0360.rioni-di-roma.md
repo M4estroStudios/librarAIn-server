@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>360
+360
 RIONE V. PONTE
 
 Ritrovare la pace: la chiesa odierna fu voluta da Sisto IV nel 1473 in sostituzione di una più antica conosciuta prima come S. Andrea e dedicata alla Madonna; ma sempre accompagnata dall'attributo *de aquarenaris*. Costoro erano rivenditori di acqua che qui si vendeva perché filtrata e quindi potabile.

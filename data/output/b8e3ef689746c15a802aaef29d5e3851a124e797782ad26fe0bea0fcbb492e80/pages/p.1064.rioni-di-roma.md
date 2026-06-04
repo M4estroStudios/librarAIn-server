@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XVIII. Castro Pretorio
+Rione XVIII. Castro Pretorio
 di Mauro Quercioli
 Dalle origini ai nostri giorni
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 243
 
 tua marmorea raffigurante «Giove» (il cosiddetto Giove Verospi che è dal 1771 in Vaticano), i famosi affreschi dell' Albani raffiguranti «Apollo e le altre divinità dell' Olimpo»; di cui restano alcuni esemplari staccati e sistemati al secondo piano. Questi affreschi erano in una loggia; oggi chiusa, sorretta da capitelli ornati da elementi (stelle e teste di cane) derivati dallo stemma della famiglia.

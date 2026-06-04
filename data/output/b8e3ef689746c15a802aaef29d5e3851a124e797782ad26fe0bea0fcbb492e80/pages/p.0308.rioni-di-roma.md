@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>308
+308
 RIONE IV. CAMPO MARZIO
 
 Una sua esatta collocazione ed immagine: certo che oggigiorno di artisti ve ne sono ben pochi, ma fortissimo ne è rimasto il ricordo; e ciò rappresenta l'entratura psicologica delle numerose gallerie presenti.

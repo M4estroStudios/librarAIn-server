@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>812
+812
 RIONE XII. RIPA
 
 nel 1465, la cui effigie sta sul coperchio. Interessante è la visita

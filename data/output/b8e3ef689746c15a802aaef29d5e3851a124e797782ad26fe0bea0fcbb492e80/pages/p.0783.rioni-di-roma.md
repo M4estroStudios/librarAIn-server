@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 78
 
 minile. Mater Matuta aveva templi anche a Gabi, Satrico e Velletri, dove, come a Roma la fase più antica era costituita da una capanna sulla surra. Il mito racconta che Ino-Leucotea aveva curato il figlio della sorella Semele, Dioniso; suscitando l'ira di Hera. Per sfuggire alle vendette della dea, Ino con il proprio figlio Palemone, evitando la pazzia omicida del marito Atamante, aiutata dalle Naiadi, era giunta nuotando fino alle rive del Tevere. Qui aveva assunto il nome di Mater Matuta, mentre il piccolo Palemone veniva chiamato Portunus, dio del porto.

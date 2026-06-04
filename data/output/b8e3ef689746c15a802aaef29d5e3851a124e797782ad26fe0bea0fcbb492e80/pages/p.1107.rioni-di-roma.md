@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 107
 
 Il Celio visto dal Palatino in un'incisione ottocentesca di B. Pinelli della villa Celimontana e nella valle di S. Sisto, dove si trova il semenzaio comunale.

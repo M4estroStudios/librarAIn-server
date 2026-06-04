@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 35 |
 
 Proseguendo su via dei Coronari dopo un'antica bottega di fabbro (al n. 225) vediamo, sulla destra, il vicolo di S. Trifone. Questo vicolo, che si ritiene, come abbiamo detto, essere uno dei più stretti vicoli di Roma, è dedicato al santo, morto martire in Frigia protettore dei giardinieri. Vicolo di S. Trifone, all'incrocio con via dei Tre Archi, mostra un'edicola moderna nell'affresco che la orna e che raffigura la *Madonna con il Bambino e tre Santi*.

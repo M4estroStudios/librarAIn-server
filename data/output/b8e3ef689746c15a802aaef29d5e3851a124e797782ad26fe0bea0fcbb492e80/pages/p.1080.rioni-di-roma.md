@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1082
+1082
 RIONE XVIII. CASTRO PRETORIO
 
 Le impalcature per il trasporto dell'obelisco vaticano in piazza S. Pietro, una delle maggiori opere realizzate da Sisto V.

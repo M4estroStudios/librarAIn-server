@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 541
 
 Monarchico, seppe che il presidente provvisorio della Repubblica, Enrico De Nicola, avrebbe usato l'ingresso reale per accedere al palco; lo fece murare, costringendolo a passare dall'ingresso principale.

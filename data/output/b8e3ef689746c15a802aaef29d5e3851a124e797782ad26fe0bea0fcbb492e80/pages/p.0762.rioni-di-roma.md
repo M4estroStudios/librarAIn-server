@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>762
+762
 RIONE XI S. ANGELO
 
 nito grigio incastonata a rinforzo dell'angolo. Sopra il civico 29,

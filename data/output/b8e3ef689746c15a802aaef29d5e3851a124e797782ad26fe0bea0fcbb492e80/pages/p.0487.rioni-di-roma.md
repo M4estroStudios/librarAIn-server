@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 487
 
 Un edificio malridotto; che sotto la mano di rifacimenti recenti, rivela la sua trama quattrocentesca. Il suo aspetto vagamente sinistro s'addice perfettamente all'origine dell'edificio: questa infatti era la Taverna della Vacca; acquistata tra il 1500 ed il 1513 della famigerata Vannozza Cattanei, nota ai più come la moglie morganatica di papa Alessandro VI, a cui dette due figli: Cesare Borgia e Lucrezia. Lo stemma sul vicolo del Gallo ricapitola in parte le vicende di questa virago del XV secolo. In esso infatti ci sono le armi o simboli dei Borgia (toro passante e strisce), lo stemma dei Cattanei e quello dei Canali di Modena, ai quali era legata per via del suo terzo marito. Ristrutturata nel 1514 ad opera di Sebastiano Pellegrini di Como; la taverna passò quella quale in parte all'ospedale della Consolazione; e di essa abbiamo tracce fin sul fine del secolo successivo.

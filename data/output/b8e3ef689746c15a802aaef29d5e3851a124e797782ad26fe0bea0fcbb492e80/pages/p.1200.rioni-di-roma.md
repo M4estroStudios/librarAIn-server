@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1200
+1200
 RIONE XXII. PRATI
 
 Come se dovessero costituire un'unica sepoltura bisoma: infatti, mentre erano lavorati, oltre alla fronte, i lati brevi esterni, non lo erano invece quelli interni, che risultavano accostati l'un l'altro. 

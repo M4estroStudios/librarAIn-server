@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 
 Chiamò Antonio da Sangallo il Giovane (Antonio Cordini da Firenze; 1483–1546) per eseguire il rinnovo dell'edificio e per la costruzione di una torre istoriata. Morto il cardinale, l'immobile fu ripreso dagli Orsini che lo arricchirono di tesori d'arte: basti pensare alla collezione di dipinti dei Carracci, di Tiziano; del Tintoretto che vi raccolse, nel Seicento, Flavio Orsini. Dagli Orsini il palazzo passò ai Colonna nel Settecento; e quindi ai Braschi; che lo cedettero nel 1790 al papa Pio VI Braschi; il quale lo demolì e affidò la costruzione del nuovo edificio all'architetto Cosimo Morelli (da Imola, 1732–1812) per i nipoti Luigi e Romualdo Onesti, i quali accanto al loro cognome misero quello dei Braschi. Così la famiglia del papa continuava a vivere secondo il suo desiderio. A tale notizia Pasquino fece questo commento: «Son tanti e rigogliosi di Santa Chiesa i paschi / e ci si può ingrassare anche la casa Braschi».
 

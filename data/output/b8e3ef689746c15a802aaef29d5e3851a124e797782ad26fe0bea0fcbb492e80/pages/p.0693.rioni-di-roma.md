@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 693
+TERZO ITINERARIO 693
 
 Si tratta di scacchere (i pezzi si portavano da casa) e del modulo di un filetto. Sono più difficilmente identificabili alcuni graffiti che riproducono le statue visibili della basilica stessa, mentre al centro della facciata le basi conservano le scritte *opus Polycliti* e *opus Tymarchi*, da riferire agli originali di due statue di questi famosissimi scultori che furono qui trasferite.
 

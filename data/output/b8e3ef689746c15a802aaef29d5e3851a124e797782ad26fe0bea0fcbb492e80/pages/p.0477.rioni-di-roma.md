@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 477
 
 Sesso nel 1619, molto probabilmente in diretta conseguenza con la costituzione del Monte di Pietà. Si trattava di francescani provenienti dalla Sicilia; dato che, sotto la diretta protezione del re di Spagna, fondarono un *Collegium Siculum*, dotato non solo d'una reliquia consistente nientemeno che in una parte del braccio di S. Paolo, ma per buona misura anche d'una conspicua biblioteca, dotata di un notevole archivio. Purtroppo questi due ultimi andarono irrimediabilmente dispersi nei tumulti creatisi con la prima Repubblica Romana del 1799, anche se nulla in proposito risulta nei pur dettagliati *Diarii della Repubblica*.

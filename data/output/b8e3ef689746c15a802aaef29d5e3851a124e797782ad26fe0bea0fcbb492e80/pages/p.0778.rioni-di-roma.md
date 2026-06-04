@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>778
+778
 RIONE XII. RIPA
 
 predicando in Arabia, Armenia, India, Ponto, Licaonia e Frigia;

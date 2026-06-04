@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>312
+312
 RIONE IV. CAMPO MARZIO
 
 nome dei Medici. La cosa avvenne nel 1804, allorché la suddetta Scuola aveva cambiato nella sua secolare esistenza ben quattro sedi. Molti personaggi che furono ospiti della villa: dal citato Galileo Galilei, del granduca di Toscana (dopo esser stato prigioniero nella torre dell'osservatorio Vaticano nel convento di Santa Maria sopra Minerva), a Maria dei Medici, al Velázquez.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 913
 
 Giacobini giocarono col teschio di Beatrice.

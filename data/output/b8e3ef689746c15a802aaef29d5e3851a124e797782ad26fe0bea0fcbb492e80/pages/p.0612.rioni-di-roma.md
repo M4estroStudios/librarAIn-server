@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>612
+612
 RIONE IX. PIGNA
 
 Ma lo spazio era più angusto e allora furono sacrificati due archi, uno per e snaturato il portico aperto. Sotto il palazzetto demolito furono scoperti resti della chiesetta di S. Nicola de Monte, o de Pinea.

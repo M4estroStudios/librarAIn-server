@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 555
 
 tre spettacoli in prosa, concerti e opere liriche. Ora è sede del Teatro di Roma. Da anni in alcuni ambienti del palazzo è stato allestito un interessante museo del Teatro Argentina a cura di Cecilia Pericoli Ridolfini, in cui si conservano avanzi di affreschi staccati, libretti e manoscritti di opere; progetti dei vari architetti, quadri riguardanti l'attività del teatro; fotografie; manifesti, locandine; autografi e costumi.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 405
 
 di principi. Con Ottavio si estinse la famiglia dei Massimo che mantennero, tuttavia, il cognome Lancellotti.

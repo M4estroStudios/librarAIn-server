@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 627
 
 stemmi. Oggi nel palazzo ha anche sede l'ambasciata della Repubblica araba siriana che espone sul balcone la propria bandiera. All'angolo con via del Teatro di Marcello è ancora affissa la targa del posto di stazionamento delle carrozze.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>688
+688
 RIONE X. CAMPITELLI
 
 Manesse inascoltato quando la sua voce annunziò ai romani l'ormai inevitabile assalto dei Galli alla città.

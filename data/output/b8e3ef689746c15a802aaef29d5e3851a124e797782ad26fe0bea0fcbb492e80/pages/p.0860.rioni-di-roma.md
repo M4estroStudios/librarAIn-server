@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>860
+860
 RIONE XIII. TRASTEVERE
 Ponte dell'Omicidio e del Miracolo
 

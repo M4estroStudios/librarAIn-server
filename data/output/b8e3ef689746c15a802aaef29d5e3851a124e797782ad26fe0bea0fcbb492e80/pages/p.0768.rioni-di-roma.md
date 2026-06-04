@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>768
+768
 RIONE XII. RIPA
 
 turista di Roma, appena sbarcato nella zona del futuro porto tibe-

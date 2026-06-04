@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>RIONE XII: RIPA
+RIONE XII: RIPA
 
 Racconta infatti una leggenda che quest'uso, in realtà molto più antico, nacque quando un giorno l'imperatore Claudio tardava a dare inizio delle corse perché ancora sdraiato al triclinio e in banchettare insieme ai suoi ospiti. Il popolo intanto rumoreggiava; protestava; cominciava a tumultuare. Allora Claudio, seccato ma non volendo abbandonare il gustoso pranzo, si alzò da tavola, si affacciò alla loggia imperiale che dava sul circo e gettò verso la pista la propria salvietta dando inizio ai giochi.
 

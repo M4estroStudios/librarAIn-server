@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 949
 
 La chiesa di S. Giacomo a Scossacavalli, oggi scomparsa, e palazzo Torlonia in un'incisione di G. Vasari.

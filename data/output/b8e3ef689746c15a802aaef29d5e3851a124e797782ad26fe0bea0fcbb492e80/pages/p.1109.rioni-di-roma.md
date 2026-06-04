@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1109
 
 La zona, a seguito di questa specializzazione, s'infittì di costruzioni signorili, preziose per mosaici e opere d'arte. Settimio Severo ripristinò l'acquedotto neroniano, che ancora oggi domina la zona, arricchendolo di archi e iscrizioni.

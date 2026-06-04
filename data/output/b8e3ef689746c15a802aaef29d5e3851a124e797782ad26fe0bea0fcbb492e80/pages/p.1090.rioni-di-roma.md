@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1090
+1090
 RIONE XVIII. CASTRO PRETORIO
 
 C'è la caravella, ma c'è tutto il resto. Soprattutto il ribadimento del gemellaggio (*geminae sorori Lutetiae Parisiorum*). Forse non sarà del tutto inutile rammentare che *Lutetia Parisiorum* è il nome romano di Parigi. Ecco il testo:

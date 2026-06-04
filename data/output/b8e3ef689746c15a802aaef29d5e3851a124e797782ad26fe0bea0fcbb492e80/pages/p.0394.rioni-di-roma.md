@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>394
+394
 
 RIONE VI. PARIONE
 S. Filippo Neri

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>288
+288
 RIONE IV. CAMPO MARZIO
 
 di portarsela nei loro viaggi, in Francia il primo, a Nizza il secondo.

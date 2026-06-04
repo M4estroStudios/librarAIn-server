@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 527
 
 tato in una comoda stalla. Si pensò un bel giorno di utilizzarlo per uno scherzo ad un presuntuoso abate di nome Baraballo che si riteneva il più grande poeta dei suoi tempi. Costui fu invitato a recarsi in trionfo sul Campidoglio; per essere incoronato poeta, come accadde al Petrarca; ma sarebbe dovuto andare in groppa all'elefante bardato per la memorabile occasione. Non sospettò nulla il povero abate e montò sull'elefante che, a un certo punto del percorso, si scrollò di dosso il nobile peso e se ne tornò nella stalla.

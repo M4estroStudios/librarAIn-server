@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1238
+1238
 INDICE DEI LUOGHI
 
 Zuccari, 278, 281-284, 309

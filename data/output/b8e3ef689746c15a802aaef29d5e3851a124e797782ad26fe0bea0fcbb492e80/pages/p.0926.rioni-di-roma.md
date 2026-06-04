@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>926
+926
 RIONE XIV. BORGO
 
 in eredità alla figlia; anch'essa chiamata Agrippina (Minore), che divenne madre di Nerone. Quest'ultimo fece erigere numerosi monumenti in questa zona, tra i quali citiamo ora la villa imperiale, e tutto il territorio ebbe così per un tempo la generica denominazione di "Giardini di Nerone".

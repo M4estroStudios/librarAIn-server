@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 427
 
 ornamenti, di sapiente distribuzione delle masse; fu anche una prova di grande abilità, perché si trattava di costruire sulle fondazioni di una casa rovinata e incendiata. La denominazione «dalle Colonne» si deve al fatto che ve ne sono sei che formano il magnifico ingresso sul corso Vittorio. La facciata, rivestita di bugne, ha un andamento curvilineo che ricorda l'odeon romano ed è formata dal portico; da un piano terreno; da quello nobile con sette balconcini e da altri due con finestre rettangolari più piccole ma con originale cornice. Rosoni e mensole decorano il cornicione.

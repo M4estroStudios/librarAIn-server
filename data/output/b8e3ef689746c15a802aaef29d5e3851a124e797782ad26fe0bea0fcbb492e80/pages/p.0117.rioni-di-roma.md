@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO                                                                    117
+QUARTO ITINERARIO                                                                    117
 
 ratica; corruzione di piperatica, in quanto qui i romani dell'età di mezzo tenevano probabilmente il mercato delle spezie: Una serie di ambienti dalla complessa disposizione sono appoggiati contro il colle mentre dalla via Biberatica una scala conduce ad una grande galleria a due piani sulla quale si affacciano altri ambienti. La presenza di tante taberne ha fatto credere che si trattasse di un articolato complesso commerciale; ma è piuttosto il caso di vedervi una struttura finanziaria e di rappresentanza commerciale, solo riservata alla vendita al minuto quanto agli uffici delle agenzie di commercio che erano state chiamate a Roma per trasferire il centro economico dell'impero fino ad allora operante nell'Oriente ellenistico.
 

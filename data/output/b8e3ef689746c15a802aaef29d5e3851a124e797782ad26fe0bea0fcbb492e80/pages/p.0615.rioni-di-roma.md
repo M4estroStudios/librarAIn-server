@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 615
 
 Busto di Madama Lucrezia in un disegno cinquecentesco di M. Van Heemskerck; preziosi arredi, un reliquiario in legno e avorio del XV secolo e un altro di arte islamica del XIV secolo; insieme a un frammento di «Crocefissione» del XIII secolo; e a un «S. Marco Evangelista» di Melozzo da Forlì.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 495
 
 Pio VII, appena tornato, non solo fece richiudere i portoni, ma tanto per far capire chiaramente le sue intenzioni, istituì una nuova tassa, a carico ovviamente della comunità israelitica, sul portinariato. S'arrivò così al fatidico '48; i tempi subivano la svolta che ben sappiamo.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO 907
+QUINTO ITINERARIO 907
 
 **Un cannone per Cristina**
 

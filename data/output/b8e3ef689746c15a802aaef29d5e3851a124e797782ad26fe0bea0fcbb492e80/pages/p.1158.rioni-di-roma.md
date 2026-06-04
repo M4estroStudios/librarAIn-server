@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1158
+1158
 RIONE XX. TESTACCIO
 
 voluta da Onorio, fu demolita nel Settecento e il materiale con cui era stata costruita; cioè alabastro; fu reimpiegato per abbellire la tomba di Raffaello Sanzio nel Pantheon. Rientriamo ancora attraverso passaggi aperti entro le mura per rendere possibile un percorso su via Zabaglia e iniziamo a percorrerla per intero. Subito dopo il cimitero degli inglesi, sullo stesso lato della strada, vediamo una fontanina realizzata da un ornato anteriormente da quattro pilastrini in travertino. Nella parte posteriore, a meglio contenere la terra della scarpata nella via di Monte Testaccio che in questo tratto; prima di congiungersi, poco più avanti con la stessa via Zabaglia corre ad un livello più basso; la fontana ha un sedile in pietra disposto con andamento a semicerchio. Percorriamo quindi via Zabaglia per raggiungere l'incrocio con via Galvani dove è situato l'ingresso al monte Testaccio e, al di là della strada, vediamo che al n. 42 di via di Monte Testaccio ha sede il teatro «Dei Documentis». Di fronte, entro un recinto, si vedono i prefabbricati della scuola media statale «C. Cattaneo». Raggiungiamo quindi via Galvani dove all'angolo è sistemata un'immagine mariana raffigurante la «Madonna della Divina Provvidenza». Di fronte si apre un piccolo cancello che dà accesso al monte Testaccio.

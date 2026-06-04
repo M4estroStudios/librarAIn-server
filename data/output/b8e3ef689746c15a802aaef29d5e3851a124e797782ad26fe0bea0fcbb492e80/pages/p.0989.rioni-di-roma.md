@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 989
 
 Ni. Nelle nicchie e nel frontone sono sistemate statue e gruppi scultorei, tutti a soggetto marino.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 225
 
 Questa parte dell'infermeria dove il Santo morì è tuttora al primo piano dell'edificio affiancato alla chiesa della Maddalena nella quale sono conservati i resti del Santo entro un'urna. Molti oggetti personali e reliquie del Santo sono ancora conservati oltre alla lettera da lui scritta giorni prima di morire e che costituisce il suo testamento spirituale.

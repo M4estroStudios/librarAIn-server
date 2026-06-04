@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 151
 
 Oltrepassato il portico; si accede alle tre grandi navate su pilastri a lesene corinzie abbinate, su cui si aprono tre cappelle per lato. La grandiosa ed aerea volta è interamente affrescata dal Baciccia nel 1707; raffigura «Il trionfo dell'ordine di S. Francesco», mentre un suo allievo, Giovanni Odazzi, ha eseguito l'affresco che orna la volta del presbiterio con una «Cacciata degli angeli ribelli», concepita in pieno settecentesco ed eseguita due anni dopo.

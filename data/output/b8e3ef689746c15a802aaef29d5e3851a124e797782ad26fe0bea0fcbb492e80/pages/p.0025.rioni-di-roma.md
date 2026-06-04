@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MODERNA
+ROMA MODERNA
 25
 
 dei rioni. E l'anno seguente questa decisione è ribadita sul campo; murando 220 lapidi ai confini dei rioni, col loro nome e stemma.

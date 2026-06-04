@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 409
+PRIMO ITINERARIO 409
 
 di Pier Paolo Campi (Carrara, 1702-1735); «S. Eustachio» di Melchiorre Cafà (Malta, 1635-1667); «Monumento di Innocenzo X» di G.B. Maini (Varese, 1690-1752); «Le quattro virtù cardinali» di G.B. Gaulli; «Gloria del Paradiso» di Ciro Ferri (Roma, 1634-1689); «Gloria di S. Agnese» di Paolo Gismondi (d. P. Perugino).
 Nel sotterraneo vi è «S. Agnese trascinata al martirio», di Alessandro Algardi (Bologna, 1595-1654).

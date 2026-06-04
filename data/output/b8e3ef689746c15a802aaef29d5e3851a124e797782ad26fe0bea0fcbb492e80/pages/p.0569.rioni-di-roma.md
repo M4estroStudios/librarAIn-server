@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 569
 
 Sulla destra sono invece visibili costruzioni più antiche: al numero civico 19 è un grande portale in bugnato; quindi, dove s'apre il teatro intitolato allo scomparso scrittore Ennio Flaiano, locale gestito dal Teatro di Roma, è una casa del Cinquecento.

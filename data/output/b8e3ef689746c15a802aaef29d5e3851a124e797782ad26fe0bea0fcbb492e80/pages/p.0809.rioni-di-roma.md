@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 809
 
 Attraversiamo quindi piazza Albina che ricorda il nome di una matrona anch'essa famosa per le sue virtù cristiane.

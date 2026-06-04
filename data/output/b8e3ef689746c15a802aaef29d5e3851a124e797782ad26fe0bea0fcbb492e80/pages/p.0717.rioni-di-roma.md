@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 717
 
 Se il martirio di S. Sebastiano è dove sorse poi la chiesa dedicata al martire; Eliogabalo aveva eretto qui un tempio al Sole nel quale si identificava perché anche i giardini di Adone, divinità solare orientale, favorivano il suddetto culto in questa zona.

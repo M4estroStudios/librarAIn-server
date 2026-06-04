@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 329
 
 Palazzo Borghese in un'incisione di A. Specchi

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 403
 
 Dall'epoca di Leone X le pasquinate non diedero pace alle autorità, rappresentando, in un certo senso, la stampa di opposizione. Inoltre Pasquino firmava le anonime satire e aveva altre statue come interlocutori: Madama Lucrezia (un busto gigantesco venuto alla luce durante i lavori per il palazzo Venezia, ritenuto la dea Iside o la moglie di Collatino o Faustina; moglie di Antonino Pio, attualmente in piazza San Marco); Marforio (l'Oceano; collocato oggi nel Museo Capitolino); il Facchino (in via Lata); l'abate Luigi (una statua togata romana in piazza Vidoni); il Babuino (il sileno nella via omonima).

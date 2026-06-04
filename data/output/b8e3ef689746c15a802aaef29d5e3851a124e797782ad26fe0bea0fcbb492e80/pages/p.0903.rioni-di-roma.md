@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 903
 
 [Immagine: Palazzo Salviati in un'incisione di fine Seicento di A. Specchi.]

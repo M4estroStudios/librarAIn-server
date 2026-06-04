@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>INDICE DEI LUOGHI
+INDICE DEI LUOGHI
 
 S. Ignazio, 228, 556, 558, 601, 602, 617, 641
 S. Maria degli Angeli in Cacabaris, 451, 488, 490, 496

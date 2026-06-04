@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>698
+698
 RIONE X. CAMPITELLI
 
 guono le personificazioni del Senato (in toga) e del popolo romano (un giovane a torso nudo). Ma l'apoteosi dell'imperatore divinizzato; la cui anima sale al cielo tra gli dèi, è visibile in un pannello più piccolo; sempre rilievo, collocato al centro della volta dove lo stesso Tito appare trasportato in cielo da un'aquila.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1120
+1120
 RIONE XIX. CELIO
 
 ...mo a percorrere, fino al 1815 era la chiesa di S. Giacomo del Colosseo, che già nel 1748, nella pianta del Nolli, era ridotta a un magazzino per il fieno, mentre fu demolita nel 1815 per conto dell'amministrazione francese della città, così da creare una passeggiata attorno all'insigne monumento con il pomposo titolo di «Jardin du Capitale».

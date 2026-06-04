@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO | 287
+SECONDO ITINERARIO | 287
 
 Vero € proprio che dir si voglia; preceduto dalla ricostruzione del banchetto del cocomeraro, e con le finte finestre aperte su imitazioni dei più tradizionali scorci del paesaggio romano.
 

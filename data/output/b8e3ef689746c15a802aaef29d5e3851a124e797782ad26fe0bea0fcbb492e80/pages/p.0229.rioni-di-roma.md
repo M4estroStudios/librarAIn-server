@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 229
 
 Poco avanti sorge piazza di S. Ignazio; la cui sistemazione, imposta da Benedetto X, fu operata dai gesuiti: costoro la commissionarono al Raguzzini, che ideò una planimetria articolata da edifici disposti a scena teatrale; realizzati in laterizio secondo quanto imponevano i canoni dell'architettura in economia di quegli anni.

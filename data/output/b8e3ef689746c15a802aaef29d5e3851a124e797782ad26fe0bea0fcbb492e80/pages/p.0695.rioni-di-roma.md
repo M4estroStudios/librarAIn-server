@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 695
 
 effetti degli spettacoli e fece erigere nel Campo Marzio il primo anfiteatro di Roma; oggi perduto, quello di Statilio Tauro. Quindi Augusto eresse sul fianco sinistro del tempio del Divo Giulio; nel 29 a.C. un arco ad un solo fornice, celebrativo della vittoria ad Azio ma dieci anni dopo; nel 19 a.C., questo stesso arco fu sostituito da un altro, più monumentale; a tre fornici in onore della politica di trattative avviata da Augusto con i Parti e che si era conclusa, tra l'altro, con la restituzione a Roma delle insegne catturate dai Parti alle legioni di Crasso nella battaglia di Carre (55 a.C.).

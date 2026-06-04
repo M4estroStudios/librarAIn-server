@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>514
+514
 RIONE VIII. S. EUSTACHIO
 
 Palazzo Madama. In un'incisione secentesca di A. Specchi.

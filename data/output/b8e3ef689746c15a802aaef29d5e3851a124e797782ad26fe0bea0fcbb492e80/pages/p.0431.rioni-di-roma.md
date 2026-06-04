@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 431
 
 torio Emanuele (aperto nel 1883-1887), imbocchiamo il vicolo Cellini, così detto perché si è ritenuta sua opera la decorazione con graffiti della casa al n. 31.

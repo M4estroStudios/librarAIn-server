@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1222
+1222
 RIONE XXII PRATI
 
 Fregio in ferro con gli emblemi dello stemma di Leone XIII: cipressi, stelle e gigli. La fronte della chiesa presenta un portico su sei colonne e due pilastri di granito rosso sorreggenti capitelli corinzi. Una scritta nella cornice ricorda la consacrazione del tempio in onore di S. Gioacchino e in onore del giubileo del papa. L'attico, modanato ad edicole e a un breve frontone, presenta un grande mosaico; opera del Monti, raffigurante «Leone XIII» alla destra di un altare su cui è esposto l'ostensorio. Al di sopra del frontone è posta poi una statua in bronzo alta 3 metri e raffigurante «S. Gioacchino con la piccola Maria», opera di A. Vermare. Più arretrata è la fronte della navata centrale anch'essa in stile neo-romanico; ornata da angeli in adorazione e da una Croce sulla sommità posta sul globo terracqueo.

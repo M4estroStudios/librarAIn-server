@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>618
+618
 RIONE IX. PIGNA
 
 La fontana che si trova nel mezzo del giardino è il pozzo scolpito nel 1483 da Antonio da Brescia; con le armi del cardinal Barbo. Ma lasciamo il giardino e dirigiamoci, salendo la rampa monumentale; sulla destra entrando dalla via del Plebiscito; ai locali che ospitano il museo di palazzo Venezia; visitando il quale si concluderà la nostra terza e ultima passeggiata per il rione Pigna:

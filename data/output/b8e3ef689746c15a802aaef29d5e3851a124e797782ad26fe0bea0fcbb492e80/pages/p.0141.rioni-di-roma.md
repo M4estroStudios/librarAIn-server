@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 141
 
 La facciata dei Ss. Vincenzo e Anastasio (incisione di G. Vasi).

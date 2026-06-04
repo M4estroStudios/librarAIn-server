@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 365
 
 Giriamo adesso per la stretta via dei Banchi Nuovi, cosiddetta per la presenza dei banchi dei cambiavalute e detta anche papale perché, come abbiamo già ricordato, veniva percorsa dal corteo papale che accompagnava il papa appena eletto che prendeva <possesso> del Laterano. Qui, subito a sinistra, ai nn. 35-36 è situata la casa che, come si legge sulla cornice che ne scandisce la facciata al primo piano, Francesco da Gallarate, milanese, si fece costruire. Questo cinquecentesco edificio entrò poi a far parte della proprietà dell'ospedale di S. Giacomo.

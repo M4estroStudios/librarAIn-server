@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1122
+1122
 RIONE XIX. CELIO
 
 La torre del Ss. Quattro Coronati (in una xilografia del 1929 di L. Bonetti).

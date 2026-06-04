@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 523
 
 Una targa con la scritta «Maria advocata nostra». È rimasto il braccio di ferro di un lanternino scomparso. Al n. 26 di via della Stelletta, una casa con tracce di pittura e finestre del tardo Quattrocento; nella chiave dell'arco del portone figura uno stemma abraso. Entriamo (al n. 23) nel Palazzo Casali, e attraversiamo il bell'atrio; completamente rifatto; che offre due vecchi ma ospitali sedili di pietra e reca murate delle conchiglie che racchiudono una colomba su torre. Vi sono anche lapidi con analogo stemma alludenti ai proprietari e alcuni busti di personaggi romani. Nel cortile il solito sarcofago fa da vasca ad una fontana presso la quale occhieggia tra il verde una piccola ara.

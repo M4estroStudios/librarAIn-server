@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>8644
+8644
 RIONE XII RIPA
 
 Le comunità fraterne Papa Silverio; nel 537, vi si rifugiò inseguito dai bizantini di Belisario il quale, per conto di Giustiniano, tentava di riportare Roma nell'orbita di Costantinopoli e per fare questo accusava il pontefice di avere chiesto l'aiuto dei Goti di Vitige.

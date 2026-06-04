@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO 125
+QUARTO ITINERARIO 125
 
 le in cui una volta era ben visibile la «Trinitàs» in affresco: La cupola, a pianta ellittica, con ampi finestroni, sorregge una lanterna dove le colonne separano spicchi concavi. Su tutto sta una copertura a gradoni.
 

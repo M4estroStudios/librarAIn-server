@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO 489
+QUARTO ITINERARIO 489
 
 **Santa Lucia della Chiavica o del Gonfalone**
 

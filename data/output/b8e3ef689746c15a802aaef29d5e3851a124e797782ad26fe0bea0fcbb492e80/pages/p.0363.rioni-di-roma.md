@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 363
 
 gli affreschi con «Storie della vita di S. Barbara», opera dell' artista fiammingo Coxie (1534).

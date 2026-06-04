@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 169
 
 alcuni dicevano che fosse qualche crudeltà di Nerone, per essere ivi appresso alcuni edifizi di esso Nerone, e che fossero martiri. Altri dissero qualche gran peste: io andai congetturando che per non essere sfondate di sopra dette volte, fossero stati messi per la bocca, e vanno di cinque dalla cima della volta fino all'ossa era il calo che aveva fatto mancando la carne: se vi fossero stati messi come ossa, avrebbero riempito fino alla sommità della volta e ossa si vedrebbero confusamente gittate; ma vediamo li corpi interi. Questo da notizia che vi fosseri messi con la carne, non significava altro, che a muratori pareva mille anni di fuggire da quelli cadaveri...

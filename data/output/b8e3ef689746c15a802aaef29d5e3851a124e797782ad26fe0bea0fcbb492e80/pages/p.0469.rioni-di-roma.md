@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 469
 
 Ponte Sisto con Trastevere sullo sfondo in un'incisione di G. Vasi.

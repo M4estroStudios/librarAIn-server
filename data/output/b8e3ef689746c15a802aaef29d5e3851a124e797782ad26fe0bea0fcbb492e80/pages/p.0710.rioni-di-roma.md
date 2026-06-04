@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>710
+710
 RIONE X. CAMPITELLI
 
 te alle case aristocratiche che vi furono costruite prima della tra-

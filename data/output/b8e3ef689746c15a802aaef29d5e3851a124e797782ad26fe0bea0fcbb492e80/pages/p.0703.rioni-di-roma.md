@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 703
 
 Una breve scalinata: splendido doveva essere il grande pavimento ad intarsi di marmi policromi. Massenzio non vide mai la conclusione di tutta quest'opera che fu terminata dal suo vincitore Costantino; infatti, in scavi effettuati nel 1487 vi si rinvennero resti dell'acrolito dello stesso Costantino, cioè la testa e frammenti delle braccia e delle gambe in marmo, che costituivano le estremità scolpite di una statua colossale; per il resto fatta con grandi lastre lavorate di bronzo dorato.

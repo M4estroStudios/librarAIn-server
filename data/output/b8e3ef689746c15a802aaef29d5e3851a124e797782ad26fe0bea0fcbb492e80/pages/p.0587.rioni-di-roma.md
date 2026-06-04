@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 587
 
 In via della Pigna, al 19, non è da trascurare ciò che un tempo fu la più vetusta delle case Porcari, famiglia che dette il nome alla piazza, come s'è già detto, prima del sopravvenuto toponimo «Pigna», in concomitanza con la scomparsa degli immobili di questa antica famiglia: si tratta di tracce architettoniche che si trovano soprattutto all'interno del palazzo, che ha finito per inglobarle; ma non vi è difficoltà ad accedervi, una volta dichiarato ai cortesi condomini interesse turistico.

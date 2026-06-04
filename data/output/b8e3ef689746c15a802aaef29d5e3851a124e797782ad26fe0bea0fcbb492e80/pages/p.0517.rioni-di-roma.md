@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 517
+PRIMO ITINERARIO 517
 
 baldacchino con frange. Il lume è fissato al muro. Le illustrano ampiamente il vestibolo con lesene, doppie colonne; la piccola cappella con «l'Eterno Padre» ritratto sul soffitto (opera del Settecento) ed una sala con ritratti dei proprietari: Soffitti a cassettoni si vedono in alcune sale del piano nobile, delle quali citiamo quella «verde» con scene bibliche e quadri del Seicento-Settecento; «rossa» con dipinto di scuola caravaggesca; quella da pranzo con fregi e una con un solo gemello su una consolle; quella da ballo con le «Muse» di Francesco Solimena del Settecento e la sala dell'«Amazzone» con statua che è una copia romana di opera ellenistica.
 

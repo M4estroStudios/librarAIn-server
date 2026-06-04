@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>742
+742
 RIONE XI S. ANGELO
 
 La vecchia Pescheria, oggi scomparsa, in un'incisione tardo-ottocentesca.

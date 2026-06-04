@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 367
 
 L'apertura di corso Vittorio. In questo edificio abitò Cesare Sterbini, che fu uno dei librettisti di Gioacchino Rossini.

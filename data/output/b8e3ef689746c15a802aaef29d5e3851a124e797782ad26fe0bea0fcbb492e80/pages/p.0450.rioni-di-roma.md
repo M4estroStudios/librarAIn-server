@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>450
+450
 RIONE VII REGOLA
 
 re, su cui torneremo; di lì a poco sempre in epoca umbertina; gli sventramenti effettuati per la costruzione di via Arenula; per collegare il nuovo ponte Garibaldi con piazza di Torre Argentina.

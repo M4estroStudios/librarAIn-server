@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 197
 
 lare, che racchiude lo stemma del cardinale Rusticucci, <sponsor> della chiesa:

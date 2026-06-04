@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 565
 
 Chi cardinali e un papa, Clemente X: fino alla metà del Cinquecento questa famiglia era proprietaria, si può dire, di tutti gli immobili che si aprivano sull'odierna Piazza del Gesù; la stessa Chiesa del Gesù si poté costruire nel luogo dove si trova per la vendita fatta dagli Altieri ai Gesuiti di un loro palazzo, demolito per permettere l'edificazione del tempio.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 777
 
 na allo scopo di affermare; pur riconoscendo la superiorità morale del papato; il ruolo specifico di signore degli affari terreni che gli veniva direttamente da Dio. Sulla pietra del puteale è possibile leggere l'antica iscrizione: «Lasciate venire alla fonte chi ha sete e trarvi un sorso di salute». Sulla bocca dello stesso puteale stanno i segni della catena che veniva adoperata per far scendere il secchio all'interno del pozzo per prendervi l'acqua. Si vuole addirittura che il puteale si trovi nel punto esatto dove, nel tempio di Esculapio, era la fonte sacra al dio, ricca anch'essa secondo gli antichi, di acqua miracolosa.

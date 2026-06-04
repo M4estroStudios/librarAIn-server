@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI E LA STORIA
+LE ORIGINI E LA STORIA
 451
 
 [Immagine: La cosiddetta «spiaggia della Regola» prima della costruzione del muraglione (G. Vasi).]

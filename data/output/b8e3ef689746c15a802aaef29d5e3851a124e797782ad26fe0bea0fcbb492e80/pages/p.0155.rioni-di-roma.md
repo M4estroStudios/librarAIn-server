@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 155
 
 mellini; da «alcuni fienili di proprietà dell'abbazia di Grottaferrata, quali per decreto di Gregorio XV con breve spedito al 3 febbraio 1623, vennero smembrati dalla suddetta abbazia». I lavori, iniziati ufficialmente nel 1624 e «sponsorizzati» dal munifico cardinale Odoardo Farnese, furono molto lunghi e procedettero per fasi, fino al 1750, e furono diretti, nella fase maggiormente avanzata, dall'architetto Michelangelo Specchi. Nel 1772 un grave incendio distrusse completamente la chiesa; che venne ricostruita seduta stante per volontà di un papa, Clemente XVI Ganganelli, e di un altro cardinale, Domenico Orsini d'Aragona: i lavori terminarono tre anni dopo.

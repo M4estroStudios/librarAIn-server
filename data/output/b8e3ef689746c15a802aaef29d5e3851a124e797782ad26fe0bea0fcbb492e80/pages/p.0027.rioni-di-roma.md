@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA CAPITALE
+ROMA CAPITALE
 27
 
 Vecchi e bassi edifici con nuove costruzioni più alte e predisposte per l'affitto. Si avviano le prime lottizzazioni intorno alle attuali Piazza Indipendenza e Via Nazionale. Imprese promosse da Monsignor Francesco Saverio de Merode, uno dei tanti putativi padri di Roma moderna. Prima e dopo il 1870, de Merode è alla testa di numerose imprese speculativo-fondiarie che continueranno a funzionare anche dopo la sua morte.

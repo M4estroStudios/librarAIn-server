@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1092
+1092
 RIONE XVIII. CASTRO PRETORIO
 
 ![Immagine della mostra dell'acqua Fellce]

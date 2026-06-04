@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>importante della vita cittadina; il Comune; nel 1889, fece demolire il Palazzo Piombino per potervi edificare il grande Palazzo della Galleria per la Banca italiana di sconto; che fu ultimato nel 1914 ed infine nel 1915. Con la demolizione del Palazzo Lanci-Bonaccorsi e con la costruzione del nuovo palazzo, sede della Banca commerciale italiana, viene sistemato anche l'allineamento su questo lato della strada.
+importante della vita cittadina; il Comune; nel 1889, fece demolire il Palazzo Piombino per potervi edificare il grande Palazzo della Galleria per la Banca italiana di sconto; che fu ultimato nel 1914 ed infine nel 1915. Con la demolizione del Palazzo Lanci-Bonaccorsi e con la costruzione del nuovo palazzo, sede della Banca commerciale italiana, viene sistemato anche l'allineamento su questo lato della strada.
 
 La Galleria rispondeva, tra l'altro, alla funzione di luogo di passeggio coperto; punto di incontri e commerciale della nuova borghesia romana di recente immigrazione, la cui vita pubblica era scandita dalle chiacchiere al caffè, dagli acquisti, dal passeggiare familiare, dagli appuntamenti d'affari e politici.
 

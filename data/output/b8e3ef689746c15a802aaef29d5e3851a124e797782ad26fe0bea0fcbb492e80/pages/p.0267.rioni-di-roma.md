@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AI TEMPI MODERNI
+DALLE ORIGINI AI TEMPI MODERNI
 267
 
 Piazza del Popolo in una stampa di fine Ottocento

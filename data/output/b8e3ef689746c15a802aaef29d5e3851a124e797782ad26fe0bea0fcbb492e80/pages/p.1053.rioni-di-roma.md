@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>**Il monumento funerario di Q. Sulpicio Massimo**
+**Il monumento funerario di Q. Sulpicio Massimo**
 
 Il monumento che vediamo oltre un alto muro con alto cancello è databile alla fine del secolo d.C. ed è costituito da un basamento in travertino su cui è poggiato un altare funerario con acroteri ornati da palmette e piccolo timpano con corona legata da nastri svolazzanti. Qui è stato sistemato un calco; l'originale viene conservato nei Musei capitolini.
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>828
+828
 RIONE XII RIPA
 
 Il tempio di Portunus con la Casa del Crescenzi sullo sfondo (stampa di fine Ottocento)

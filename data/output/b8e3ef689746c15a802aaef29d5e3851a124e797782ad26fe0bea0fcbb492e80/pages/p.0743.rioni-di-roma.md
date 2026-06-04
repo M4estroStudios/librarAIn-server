@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 743
+PRIMO ITINERARIO 743
 
 Accanto vi è la scritta: "ANGELI IN FORO PISCIUM N II". Segno della presenza di un antico banco.
 

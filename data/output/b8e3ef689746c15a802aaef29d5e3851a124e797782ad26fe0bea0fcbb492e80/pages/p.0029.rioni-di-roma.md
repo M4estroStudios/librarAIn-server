@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># ROMA CAPITALE
+# ROMA CAPITALE
 ## Rioni e quartieri nel XIX-XX secolo
 
 Nell'elencazione comunale del 1921 sono codificati i seguenti rioni:

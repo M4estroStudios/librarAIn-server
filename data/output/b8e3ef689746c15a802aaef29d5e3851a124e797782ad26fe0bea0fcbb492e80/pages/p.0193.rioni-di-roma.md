@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 193
 
 Il braccio sud del palazzo fu definitivamente completato da Borromini nel 1660. L'estroso genio del grande architetto lombardo si manifesta in questo caso in alcune soluzioni decorative di notevole respiro, a cominciare dalla rampa ellittica continua, senza gradini, a cui si accede dal fondo dell'atrio.

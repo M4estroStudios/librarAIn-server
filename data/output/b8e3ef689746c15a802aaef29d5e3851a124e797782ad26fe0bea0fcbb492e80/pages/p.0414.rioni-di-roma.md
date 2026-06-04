@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>414
+414
 RIONE VI. PARIONE
 
 Donna Olimpia Maidalchini in una stampa d'epoca.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 519
 
 Lunga via omonima; è un bassorilievo marmoreo ora murato su un fianco dell'ex convento di S. Agostino; e che faceva parte di una fontana del tempo di Gregorio XIII (Ugo Boncompagni). Dalla bocca il pregiato animale gettava uno zampillo che cadeva in una vaschetta ora fissata all'angolo di via dei Portoghesi. Ritornando al largo Giuseppe Toniolo; si sbocca nella via della Scrofa; di cui una parte era piazza. Infatti, l'Ugonio parla di una *platea Scrofae* e in un bando del 1762 è citata la <piazzetta della Scrofa verso l'osteria della Campana>. Al n. 35 Tabate Coppi nel 1813 fondò l'Accademia Tiberina.

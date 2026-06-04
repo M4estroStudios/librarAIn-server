@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>378
+378
 RIONE V. PONTE
 
 La persecuzione di Licinio: il vescovo si fosse rifugiato sulle montagne continuando a seguire i suoi fedeli; scoperto e ricondotto in città, Biagio si rifiutò di sacrificare agli dèi e fu condotto quindi al martirio; mentre veniva condotto sul luogo del supplizio (che, secondo una versione, avvenne per decapitazione), venne fermato da una donna che recava fra le braccia il figlio moribondo per essergli conficcata una spina di pesce in gola. Biagio, avendo imposto le mani sulla gola del fanciullo, lo salvò dalla morte. Questo ha contribuito a fare del Santo il protettore contro tutte le malattie della gola. A maggior sostegno di ciò è anche conservata nella chiesa la reliquia della lingua del Santo.

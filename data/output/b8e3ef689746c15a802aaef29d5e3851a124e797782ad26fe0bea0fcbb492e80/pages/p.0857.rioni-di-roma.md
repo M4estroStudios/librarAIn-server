@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 857
 
 con nastri laterali. La via dei Salumi deriva il nome dai magazzini di prodotti di carne suina sbarcati dal vicino porto di Ripa Grande. Un tempo, nel primo Settecento, fu chiamata via dei Salumieri (il produttore per il prodotto). La via era molto frequentata e ricca di case con depositi di carni; qualcuna era decorata con storie ebraiche a chiaroscuro; andate perdute. Ivi abitò Costantino Caetani che costruì un suo collegio.

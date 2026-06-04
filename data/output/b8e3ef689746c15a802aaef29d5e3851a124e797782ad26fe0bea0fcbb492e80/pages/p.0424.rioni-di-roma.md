@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>424
+424
 RIONE VI PARIONE
 
 Nell'ordine superiore coronato da timpano con dentelli vi è un'arcata cieca con finestra rettangolare. La fascia che divide i due ordini è decorata con stucchi di Pietro Aureli. Due volute sul vertice del timpano sostengono una croce. L'interno, a navata unica con cappelle laterali, è privo di transetto. Il settecentesco altare maggiore è di Antonio Bracci su progetto di Carlo Murena, che disegnò anche l'urna di porfido contenente le reliquie di S. Giuseppe Calasanzio. La volta fu affrescata da Filippo Gherardi (da Lucca, 1643-1704) e rappresenta «Il trionfo del nome di Maria»; nella parete di fondo si può ammirare la composizione scultorea in stucco di Luigi Acquisti (da Forlì, 1745-1823).

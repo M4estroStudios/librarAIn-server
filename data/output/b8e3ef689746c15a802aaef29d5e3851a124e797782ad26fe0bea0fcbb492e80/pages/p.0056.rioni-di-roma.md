@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>56
+56
 RIONE I. MONTI
 
 del livello inferiore in modo da poter seguire le successive fasi

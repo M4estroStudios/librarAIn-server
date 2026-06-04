@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1019
 
 Mulacro della dea con serti di mirto, di menta e di rose, per ottenere la bellezza e il favore degli uomini. Il tempio era interamente circondato da colonne con capitelli corinzi, le quali servirono per una cappella di S. Pietro in Montorio. Celebri statue lo adornavano come il gruppo dei «Niobidin» (a cui apparteneva la Niobide ora al Museo nazionale romano), il «Gallo che si uccide dopo aver ucciso la moglie» e il discusso «Trono Ludovisi», anch'essi nel suddetto museo. La villa, indicata come sede del tempio, era di proprietà dei Borioni-Santacroce, acquistata poi dai Ludovisi-Boncompagni.

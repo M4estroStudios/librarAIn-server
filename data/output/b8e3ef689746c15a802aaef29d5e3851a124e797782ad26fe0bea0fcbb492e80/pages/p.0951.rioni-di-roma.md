@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 951
 
 1798. Ma la tradizione di festeggiare su quest'altare una volta all'anno, precisamente il 14 dicembre, il culto per il cannone è rimasta anche per gli artiglieri dell'esercito italiano; che qui convergono dunque annualmente quanto devotamente nel nome di quella S. Barbara, appunto; figlía di un ricco e potente Dioscuro di Nicomedia.

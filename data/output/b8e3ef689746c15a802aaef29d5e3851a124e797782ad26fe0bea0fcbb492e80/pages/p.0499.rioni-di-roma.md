@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione VIII. S. Eustachio
+Rione VIII. S. Eustachio
 di Giorgio Carpaneto
 Dalle origini ad oggi
 

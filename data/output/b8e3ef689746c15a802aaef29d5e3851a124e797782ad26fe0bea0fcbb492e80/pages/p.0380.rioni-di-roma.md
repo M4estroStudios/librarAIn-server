@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>380
+380
 RIONE V. PONTE
 
 Tava di gettare per la strada l'immondizia; tabella qui sistemata nel 1741, il Palazzo del Vescovo di Cervia. Di questo edificio, in quanto rimasto incompiuto, non vediamo che il settore in angolo con la via dei Banchi Vecchi, sottolineato da forte bugnato; con portoni quadrangolari delle botteghe sormontate da piccole finestre dal piano nobile con eleganti finestre.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 747
 
 Senta alla base della torre delle fasce in travertino con un carattere bugnato a punta di diamante: al contrario del resto che è fasciato; sempre alla base, da lastre lisce.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>482
+482
 RIONE VII REGOLA
 
 dal tempio attribuito a Nettuno giacente sotto S. Maria in <Monticellis>, fra cui famosa lara di Domizio Enobarbo. Nell'interno, affreschi del G.B. Ruggeri detto il Battistino (1640) raffiguranti i <Trionfi dei Santacroce> e nel salone <Scene bibliche> all'angolo fra via degli Specchi e il vicolo dei Catinari. Ora l'edificio ospita uffici della facoltà di economia e commercio dell'Università di Roma, una casa di moda ed altri negozi prospicienti la chiesa di S. Carlo ai Catinari.

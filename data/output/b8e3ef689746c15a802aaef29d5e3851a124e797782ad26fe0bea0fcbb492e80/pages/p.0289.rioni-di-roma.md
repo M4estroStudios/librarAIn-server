@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 289
 
 Pare sullo sfondo dell'androne d'ingresso su una parete del cortile. Il palazzo che segue il caffè Greco reca una di quelle scritte molto diffuse nella Roma di un tempo; piene d'un perbenismo un tantino patetico; dato che il valore legale non poteva non essere che molto circoscritto: "Libera proprietà da ogni peso e canone di Tizio o di Caio". In questo caso la lapidina risale al 1836. Accanto, altra lapide posta nel 1879 relativa al soggiorno di Giacomo Leopardi.

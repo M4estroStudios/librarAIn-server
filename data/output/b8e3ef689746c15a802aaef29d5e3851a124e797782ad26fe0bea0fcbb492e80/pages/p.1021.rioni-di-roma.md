@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1021
+PRIMO ITINERARIO 1021
 
 [Planta degli orti di Lucullo (ricostruzione cinquecentesca di Pirro Ligorio).]
 

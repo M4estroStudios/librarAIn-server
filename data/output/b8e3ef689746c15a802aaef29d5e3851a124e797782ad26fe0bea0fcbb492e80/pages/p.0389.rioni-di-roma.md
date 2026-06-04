@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI, LA STORIA
+LE ORIGINI, LA STORIA
 389
 
 centro della nuova Roma; e della chiesa di S. Maria della Pace, restaurata nel Seicento da Pietro da Cortona. Sotto Innocenzo VIII si rettificano e si rendono più ampie le vie dei Millini e dell'Anima e si inizia quel capolavoro dell'architettura del primo Rinascimento che è il palazzo sorto per incarico del cardinale Raffaele Riario, la futura Cancelleria, mentre Piazza Navona e Campo de' Fiori incrementano la loro importanza; perché ospitano le più varie attività commerciali; e il palazzo eretto già dal 1473 da Stefano Nardini, arcivescovo di Milano e governatore di Roma, conferisce dignità a quel tratto della via di Parione che si chiamerà del Governo Vecchio.

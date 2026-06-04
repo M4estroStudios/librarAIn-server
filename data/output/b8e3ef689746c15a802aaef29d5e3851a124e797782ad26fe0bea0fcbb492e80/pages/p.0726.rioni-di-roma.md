@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XI. S. Angelo di Mauro Quercioli
+Rione XI. S. Angelo di Mauro Quercioli
 Dalle origini ad oggi
 
 Non certo alla sua estensione il rione S. Angelo va debitore della sua importanza; bensì alla rilevanza storica, ben documentata dai monumenti ch'esso racchiude.

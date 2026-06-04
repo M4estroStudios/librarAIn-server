@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>548
+548
 RIONE VIII. S. EUSTACHIO
 
 papa Alessandro VI; autore di una cronica dei suoi tempi, era di Strasburgo che in latino suona Argentoratum; ed *episcopus argentinus* amò nominarsi. E siccome la casa che nel 1503 si fece costruire incorporava una torre ed era alta e stretta; fu chiamata Torre Argentina derivato da Argentoratum. S'intende che Burkkardt divenne l'italianizzato Burcardo e si ebbe, quindi, la «casa del Burcardo». È un esempio di gotico nordico con le sottilissime colonnine ai lati delle finestre e la caratteristica ornamentazione del portale che ci trasportano idealmente alle costruzioni quattro-cinquecentesche della Renania e dell'Alsazia:

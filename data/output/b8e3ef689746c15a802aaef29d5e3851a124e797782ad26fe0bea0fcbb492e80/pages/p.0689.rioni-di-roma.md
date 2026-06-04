@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 689
 
 de interno diviso in quattro navate: una centrale, maggiore, e due laterali minori sul lato nord e una sola minore sul lato sud. Questa asimmetria fu dovuta all'esigenza di sfruttare tutto lo spazio possibile perché, dalla parte dove poi sorgerà il tempio della Pace e il Foro Transitorio, non furono collocate serie di tabernae, che invece si aprirono verso l'area centrale del Foro. Le navate erano separate tra loro da file di colonne del più pregiato marmo dell'antichità; quello detto africano, anche se estratto da cave nella città di Theos in Frigia, oggi non più accessibili perché già in età antica andarono irrimediabilmente sommerse.

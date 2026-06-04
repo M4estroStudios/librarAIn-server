@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 57
 
 Sione; appare non vestito più con il *colubium* bizantino ma con il perizoma derivato dall'iconografia artistica carolingia. Sulla sinistra è un altro affresco; sempre del IX secolo, con la «Storia di S. Alessio».

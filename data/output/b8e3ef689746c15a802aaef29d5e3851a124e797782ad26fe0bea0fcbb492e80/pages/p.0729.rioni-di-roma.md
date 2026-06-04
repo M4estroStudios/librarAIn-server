@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 729
 
 [Immagine: Il ponte Quattro Capi in un'incisione tardo-ottocentesca]

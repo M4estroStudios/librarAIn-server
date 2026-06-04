@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 873
 
 Palazzo del S. Michele alla fine del Selcento (incisione di A. Specchi).

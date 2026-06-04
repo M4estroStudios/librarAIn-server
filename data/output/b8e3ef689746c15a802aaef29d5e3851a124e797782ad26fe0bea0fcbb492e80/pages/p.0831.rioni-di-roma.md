@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione XIII. Trastevere
+# Rione XIII. Trastevere
 di Giorgio Carpaneto
 
 ### Dalle origini ad oggi

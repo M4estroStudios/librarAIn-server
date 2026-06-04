@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 69
 
 Si ritorna adesso per via dei Frangipane su via degli Annibaldi dove all'angolo con via Cavour sta la torre dei Margani. La si raggiunge prendendo sulla destra la rampa che porta alla Salita dei Borgia. Infatti questa torre erroneamente è detta anche dei Borgia, ma in realtà fu dei Montanari, poi dei Cesarini e quindi del Margani. Di forma possente con coronamento a beccatelli di travertino, la torre fu costruita nel secolo XII e risistemata nel XV. Gli era da presso la chiesa castello di S. Maria in Monasterio andata in rovina nel XVI secolo. Ora la torre, con l'aggiunta di una cella campanaria, fa da campanile alla vicina chiesa di S. Francesco di Paola.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 301
 
 Tende, andava immortalato sulla sommità; ed in effetti la piazza del terrazzamento finale venne dedicata a Napoleone. Questo avvenne tardi nel 1920, ma questa è forse l'unica risposta al posto pressante quesito.

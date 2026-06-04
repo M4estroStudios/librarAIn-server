@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>654
+654
 RIONE X. CAMPITELLI
 
 Nel 1603 si diede inizio alla costruzione dell'ultima parte del progetto michelangiolesco; che comunque fu portata a termine sotto papa Innocenzo X; il quale addebitò le spese alla Camera capitolina che, sua volta, vi fece fronte tassando gli stipendi degli impiegati, diminuendo compensi ed elargizioni, licenziando molti funzionari, abolendo gli incarichi dei giudici, dei riformatori di studio, dei pacari e del maresciallo del popolo; diminuendo di 30 scudi annui lo stipendio dei maestri regionali. Nel 1654 il palazzo era completato. Fu utilizzato dalle Università delle arti e dei mestieri, dall'Accademia del disegno e anche per raccogliere le statue antiche in soprannumero nel palazzo dei Conservatori.

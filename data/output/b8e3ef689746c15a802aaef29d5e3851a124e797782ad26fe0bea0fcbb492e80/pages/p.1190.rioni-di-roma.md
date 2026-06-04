@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1190
+1190
 
 RIONE XXI S. SABA
 "Domine, quo vadis?"

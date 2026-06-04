@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 663
 
 Lazzo dei Conservatori e Monte Caprino sono ritenute disegnate dal Vignola mentre la terza porta è moderna. Sugli archi della loggia stanno gli stemmi di papa Giulio III Ciocchi del Monte (1550-1555), che affidò la realizzazione dell'opera agli scalpellini Pietro da Meride e Benedetto da Firenze detto Schiena.

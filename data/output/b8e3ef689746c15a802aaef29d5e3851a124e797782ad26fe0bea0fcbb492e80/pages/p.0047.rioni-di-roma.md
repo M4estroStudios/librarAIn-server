@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 47
 
 liquie delle teste dei Ss. Pietro e Paolo; ma questi reliquiari sono moderni perché quelli originali, medievali, si dovettero fondere per pagare il tributo gravoso che Napoleone aveva imposto all'Italia e al papa con il trattato di Tolentino con la requisizione di numerosissimi capolavori d'arte. Come mai le teste dei due Apostoli si trovano qui in S. Giovanni in Laterano visto che gli altri resti terreni stanno nelle basiliche di S. Pietro e di S. Paolo fuori le mura? Accadde che durante le più terribili invasioni barbari la chiesa romana si preoccupasse di occultare le reliquie più preziose. Si racconta quindi che i resti dei due principi degli apostoli fossero stati trasferiti segretamente nella basilica di S. Sebastiano sulla via Appia. Passato il pericolo, ciascuno dei corpi fu traslato nella sua sede originaria; le teste andarono ad arricchire il tesoro di reliquie nella basilica del papa.

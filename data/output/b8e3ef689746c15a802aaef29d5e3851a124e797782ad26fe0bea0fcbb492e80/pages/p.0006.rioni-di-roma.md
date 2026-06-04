@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Presentazione
+Presentazione
 
 Dall' antico al contemporaneo: è l'immagine di Roma che si è venuta a costruire; alternativamente costruendo, distruggendo e ricostruendo attraverso 2753 anni in una serie di sovrapposizioni urbanistiche sopra i sette colli e all'interno delle mura; piazze su fori, vie su vicoli, palazzi su case, chiese su templi, ponti su monumenti, monumenti su monumenti. Si tratta del «cuore» della città, che è divenuta metropoli al di là delle mura nei quartieri, nei sobborghi, nelle zone dell'Agro nell'ultimo secolo; mentre al suo interno è rimasta circoscritta ai suoi millenni urbanistici, non ha superato il territorio originario della sua matrice, articolandosi dalle 4 regioni romulee alle 14 regioni augustee; per fissarsi poi dal 1921, tra sventramenti, rifondazioni, suddivisioni, nei 22 rioni.
 

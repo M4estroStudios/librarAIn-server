@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 1011
 
 della seconda metà del Seicento. Altri due monumenti funerari del Souchier (1571) e del Cornazzano della metà del Seicento sono invece situati lungo la parete a destra. Nella volta è raffigurata la «Liberazione delle anime del Purgatorio» del Nanni (fine del Cinquecento-prima metà del Seicento). Un rilievo seicentesco in marmo raffigurante la «Pietà» vediamo situato sull'altare dedicato a S. Gregorio.

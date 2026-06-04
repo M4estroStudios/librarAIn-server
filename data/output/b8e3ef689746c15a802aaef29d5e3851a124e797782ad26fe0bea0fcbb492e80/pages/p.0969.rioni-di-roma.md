@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 969
 
 L'Esquilino visto dal Colosseo. In un'incisione ottocentesca di B. Pinelli

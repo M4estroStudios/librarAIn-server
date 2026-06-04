@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>970
+970
 RIONE XV. ESQUILINO
 
 sterna e l'iscrizione (ora ai Musei vaticani) che ricorda il restau-

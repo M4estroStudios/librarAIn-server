@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 443
 
 proprietari; Nell'architrave si legge <Virgini Deiparae Concepita> (Alla Vergine Madre di Dio concepita). Vi è pure un campaniletto. L'interno sconsacrato fu adibito magazzino; ora è un ritrovo pubblico. Alla sinistra della via di Grottapinta vi è il largo del Pallaro; armonioso e semplice spazio triangolare, signoreggiato dall'altissima cupola di S. Andrea, noto per un oste autonomo — <Er monnezzaro>. Il toponimo spiega dottamente Cecilia Pericoli Ridolfini deriva da un tenitore di giuoco che svolgeva la sua attività. Si trattava di una specie di estrazione del lotto. Il <pallarov> raccoglieva le puntate su novanta e estraeva le cinque vincitrici: Al n. 15 un affresco della <Vergine> rovinato. Dal largo del Pallaro si passa alla lunga via dei Chiavari che con un estremo sbocca nel largo omonimo e con l'altro in via dei Giubbonari.

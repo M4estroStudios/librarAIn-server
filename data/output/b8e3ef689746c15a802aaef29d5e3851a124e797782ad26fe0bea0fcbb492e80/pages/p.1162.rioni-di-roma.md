@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1162
+1162
 RIONE XX. TESTACCIO
 
 **I giochi di Agone e Testaccio**

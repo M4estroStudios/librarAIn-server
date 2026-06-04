@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 93
 
 La facciata di S. Maria Maggiore. In una stampa di fine Ottocento identificabile. Interessante piuttosto è che sostituendo le tegole del tetto della basilica, se ne recuperarono molte di età romana imperiale: da Nerone ad Adriano, Marco Aurelio fino a Settimio Severo e Teodorico. Alcune con il monogramma di Cristo erano state fabbricate a Kaccioy in Siria. La basilica più antica, paleocristiana, a tre navate con abside è stata riconosciuta in scavi degli anni Trenta ed era ornata da colonne di reimpiego e da mosaici con «Storie della Bibbia». Ma dal XV secolo in poi la basilica ebbe numerosi rifacimenti e ampliamenti. Il soffitto a cassettoni è di Callisto I e Alessandro VI. Il portico di Gregorio XIII e l'aggiunta delle cappelle di Sisto V e di Paolo V. Clemente risistemò l'abside, Clemente XI costruì il palazzo a sinistra della facciata e finalmente sotto Benedetto XIV, architetto Ferdinando Fuga, la basilica prese la forma attuale:

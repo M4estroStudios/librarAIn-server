@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1124
+1124
 RIONE XIX. CELIO
 
 5. Maria Imperatrice e villa Campana

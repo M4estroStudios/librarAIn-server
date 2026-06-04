@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>866
+866
 RIONE XIII TRASTEVERE
 
 Protesta circostanziata al papa per le sassaiole

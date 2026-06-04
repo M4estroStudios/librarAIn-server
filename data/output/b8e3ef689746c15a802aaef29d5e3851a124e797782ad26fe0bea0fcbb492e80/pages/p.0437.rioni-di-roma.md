@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 437
+TERZO ITINERARIO 437
 
 Camerlengo di S. Romana Chiesa, colmato di onori e ricchezze da Sisto IV, costruì a proprie spese dalle fondamenta il tempio dedicato a S. Lorenzo martire e il palazzo nel 1495 sotto il pontificato di Alessandro VI. Il portale principale, <sguaiatamente> grandioso del 1589, è l'opera peggiore di Domenico Fontana; <che si fece promotore di velleità anticonformistiche>. L'arco d'ingresso è decorato da due leoni con (stemma del cardinale Alessandro Peretti, vicecancelliere che fece eseguire il portale). Sull'architrave retto dalle due colonne di granito si legge: AN. SALVT. / MD LXXXIX / SIXTU V / PONTIF. / ANN. (Nell'anno di redenzione 1589 quinto del pontificato di Sisto V). Sulla finestra del balcone: «Corte Imperiale». L'altro portone, opera del Vignola, si riannoda allo stile del palazzo e dà l'ingresso all'annessa basilica. Il cornicione è leggero e semplice.
 

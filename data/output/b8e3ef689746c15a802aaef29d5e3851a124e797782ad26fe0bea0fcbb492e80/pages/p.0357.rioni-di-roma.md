@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 357
 
 La fontana del cortile di palazzo Orsini a Monte Giordano in un'incisione di G.B. Falda.

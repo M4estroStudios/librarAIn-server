@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1193
 
 La facciata di S. Balbina, in un'inclinazione settecentesca, ebbe durante il pontificato di Sisto V (1585-1590) fatti apportare dal cardinal Pompeo Arrigoni e poco dopo; alla fine del Seicento, Anastasio Fontebuoni dipinse l'abside su incarico di papa Clemente VIII. Intorno alla fine del Seicento, la chiesa venne affidata alla congregazione dei Pii Operai, che la ressero per quasi cento anni, fino al 1798 quando la chiesa fu messa all'asta.

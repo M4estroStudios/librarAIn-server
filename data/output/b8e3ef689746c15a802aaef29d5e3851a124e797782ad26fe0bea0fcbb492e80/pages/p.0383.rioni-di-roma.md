@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione VI. Parione
+Rione VI. Parione
 di Giorgio Carpaneto
 
 **Le origini, la storia**

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1194
+1194
 RIONE XXI S. SABA
 
 Su tre arcate a tutto sesto su pilastri che hanno al centro delle lesene; la parte superiore, che corrisponde alla navata, presenta sulla facciata tre grandi finestre ad arco ed è chiusa da un tetto a doppio spiovente. Sotto il portico sono raccolti numerosi frammenti antichi tra cui frammenti di bipedali, una tabula luso-epigrafi, anfore e alcuni elementi appartenenti alla decorazione precedente alla chiesa come parte dei plutei della schola cantorum; un capitello con lo stemma di papa Sisto V.

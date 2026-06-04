@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 1013
 
 Piazza; procedendo per via Eleniana troviamo i resti della cisterna delle terme di Elena che, sempre parte della residenza imperiale del Sessorio, erano rispetto a questa disposte più a nord e separate da grandi giardini. Queste terme prendono il nome dalla madre di Costantino cui appartennero nel IV secolo. Elena, come si legge in un'iscrizione ora ai Musei Vaticani e proveniente dai pressi di S. Croce, intervenne con un restauro sulle strutture danneggiate da un incendio.

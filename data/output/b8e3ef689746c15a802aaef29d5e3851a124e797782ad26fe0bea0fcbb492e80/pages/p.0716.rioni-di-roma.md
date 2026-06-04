@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>716
+716
 RIONE X. CAMPITELLI
 
 ...rono al restauro della base della colonna Antonina, degli obelischi di piazza del Popolo e vaticano; della base dei Dioscuri a Monte Cavallo e a costruire la cappella del Presepe in S. Maria Maggiore.

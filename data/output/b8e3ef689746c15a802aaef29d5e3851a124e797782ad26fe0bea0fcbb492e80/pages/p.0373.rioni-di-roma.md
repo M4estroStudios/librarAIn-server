@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 373
 
 Dire che costituisca uno dei principali assi viarii del centro storico di Roma. Piazza Pasquale Paoli è costituita da una coppia di grandi edifici simmetrici all'angolo di uno dei quali trovasi un'edicola marinara.

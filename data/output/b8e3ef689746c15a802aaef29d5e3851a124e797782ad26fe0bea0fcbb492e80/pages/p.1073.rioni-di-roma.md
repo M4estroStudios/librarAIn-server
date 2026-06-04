@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO                                                                    1075
+PRIMO ITINERARIO                                                                    1075
 
 Cupato dalla rivoluzione romana fine '48, metà '49, le autorità cittadine non persero di vista il problema ferrovie; concedendo ad una società definita Imprese Industriali Italiana, in attesa di divenire S.A. Pia-Latina, in data 25 novembre 1848 la costruzione d'una linea Roma-Ceprano. Gli eventi aprirono una larga parentesi, che si chiuse nel 1853 allorché alla Roma-Frascati si aggiunsero la Roma-Civitavecchia e la Roma-Ceprano, che univano la capitale con i confini dello Stato sia a sud che dal lato opposto. La necessità di fornire un preciso punto di riferimento a queste tre linee, con biglietteria, arrivi, partenze, buffet, deposito bagagli, sale d'attesa, informazioni, nonché cappella ed altro; impose il moderno concetto di stazione: Il 4 febbraio 1860, giorno in cui si scelse definitivamente il luogo ove far nascere un complesso del genere, segna la nascita della Stazione Termini.
 

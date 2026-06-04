@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO 317
+QUARTO ITINERARIO 317
 
 della strada. Quest'ultima venne eretta nel 1646 con la credità di un certo Matteo Caccia, medico, che viveva nella casa contigua da dove poteva sentir messa, senza muoversi, ad una finestrella serrata nella nuova fabbrica.
 

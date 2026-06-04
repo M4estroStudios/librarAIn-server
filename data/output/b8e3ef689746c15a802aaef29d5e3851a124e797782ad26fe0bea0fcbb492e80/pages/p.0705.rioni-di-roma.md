@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 705
 
 Possibilità di collegare lo stagno gelido del martirio con la de che abbiamo già trovato presente nella leggenda di papa Silvestro I, con la fontana di Campo Vaccino e con la vicina fonte di Giuturna; e si può dire che in questa zona il cristianesimo esorcizzò un antico culto pagano delle acque sublimandolo in una serie di eventi miracolosi e di martirio.

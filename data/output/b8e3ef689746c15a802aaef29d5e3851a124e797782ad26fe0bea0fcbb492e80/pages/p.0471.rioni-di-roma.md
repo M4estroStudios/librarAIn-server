@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 471
 
 Tempo s'erano; secondo gli usi, organizzati in confraternita detta della SS. Trinità; erano costretti a mettere un tantino da parte l'anima per rabberciare alla meglio i poveri corpi.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1077
 
 d'epoca; si trattava di due corpi ben distinti: «Arrivi» e «Partenze», collegati da un'ampia tettoia sotto cui si svolgeva il movimento ferroviario vero e proprio.

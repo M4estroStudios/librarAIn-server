@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>506
+506
 
 RIONE VIII. S. EUSTACHIO
 detto [Imperiali]; del Settecento. Questo altare disegnato da Nico-

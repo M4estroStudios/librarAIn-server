@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 673
 
 dell'impero bizantino. Nei rapporti con i primi fu favorita l'improvvisa morte di Teodorico e rese omaggio all'impero d'Oriente consacrando in Roma la chiesa dei Ss. Cosma e Damiano. Amalasunta, figlia di Teodorico, aveva donato a Felice IV quei due ambienti prospicienti il Foro e la scelta dei due Santi fu dovuta al fatto che Cosma e Damiano erano molto venerati a Bisanzio.

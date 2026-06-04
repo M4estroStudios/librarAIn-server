@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 319
 
 Bella iscrizione: BENEFICENTIA CLEMENTIS XIIII PONT.MAX. AQUA VIRGO / ANNO 1774.

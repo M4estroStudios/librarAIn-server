@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 245
 
 Lo scomparso arco di Portogallo in un'incisione secentesca di P. Schenck.

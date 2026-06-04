@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO 165
+QUARTO ITINERARIO 165
 
 **Pietro Savorgnan di Brazzà**
 

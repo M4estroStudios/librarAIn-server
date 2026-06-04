@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1205
 
 La linea nera faceva l'itinerario inverso. Una tramvia a cavalli arrivava fino a piazza Cola di Rienzo; provenendo da piazza del Popolo: Si giunge così al 1921, quando Prati diviene il ventiduesimo rione. È ormai una delle zone più caratteristiche, anche se recente, di Roma.

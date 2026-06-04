@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LA CITTÀ RINASCIMENTALE:
+LA CITTÀ RINASCIMENTALE:
 19
 
 Intermedi tra pubblico e privato (non solo «portici», le logge, i poggioli, ma anche gli sporti, balconi, i «magnani»); diventano obbligatori anche il raddrizzamento e la pavimentazione delle strade; mentre si sposta il mercato urbano dal Campidoglio a piazza Navona; rendendo ancor più centrale il rione Parione.

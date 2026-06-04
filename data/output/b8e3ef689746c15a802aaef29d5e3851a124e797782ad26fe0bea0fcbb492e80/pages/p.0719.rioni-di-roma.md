@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 719
 
 I tratti urbani oggi mancanti dell'acquedotto furono demoliti tra il Cinquecento e il Seicento; mentre ai primi dell'Ottocento si cominciò a restaurarlo ricostruendo le cortine laterizie portate via dai «cavatori di tegolozze».

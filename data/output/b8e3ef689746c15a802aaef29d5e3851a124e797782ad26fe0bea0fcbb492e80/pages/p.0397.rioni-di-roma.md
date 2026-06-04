@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 397
 
 Governo; e quando (nel Settecento) gli uffici furono trasferiti per ordine di Benedetto XIV (1740-1758) al palazzo Madama, la strada divenne via del Governo Vecchio ed oggi ci appare come un luogo rappresentativo di epoche passate, con quei suoi edifici che spesso ci mostrano il loro volto quattro-cinquecentesco.

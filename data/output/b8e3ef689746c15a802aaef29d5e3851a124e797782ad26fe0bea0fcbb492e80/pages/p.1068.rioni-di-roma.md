@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1068
+1068
 RIONE XVIII. CASTRO PRETORIO
 
 Ricostruzione ottocentesca di L. Canina delle Terme di Diocleziano.

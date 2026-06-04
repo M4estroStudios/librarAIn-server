@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 369
 
 La chiesa dei Ss. Celso e Giuliano (incisione di G. Vasi).

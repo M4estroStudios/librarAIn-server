@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 573
 
 Tra la chiesa di S. Nicola dei Cesarini e la superstite torre del Papitto, di cui s'è già detto all'inizio dell'itinerario appena concluso; era la chiesa di S. Salvatore de Gallia; detta anche questa «de calcarario»; sulla via di Torre Argentina; angolo largo Arenula; era invece il Palazzo Baccelli-Arquati che s'affacciava sulla piazza dei Cavalieri, anch'essa scomparsa. Come del resto l'omonimo palazzo, che faceva parte del rione VIII.

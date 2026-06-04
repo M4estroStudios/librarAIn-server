@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO) ITINERARIO
+PRIMO) ITINERARIO
 97
 
 Alla grande rappresentazione della Roma papale; alle processioni e ai cortei pontifici, segnarono il costituirsi di proprietà aristocratiche con la conseguente edificazione di ville da considerarsi extra-urbane: Altieri, Astalli, Caserta; Magnani, Gentili, Rondinini, De Vecchi, Sacripante e Conti, Giustiniani Massimo e Palombara.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>678
+678
 RIONE X. CAMPITELLI
 
 L'interno è a navata unica con abside. L'altare è ornato da una coppia di colonne di breccia corallina. L'abside conserva affreschi del X secolo. 

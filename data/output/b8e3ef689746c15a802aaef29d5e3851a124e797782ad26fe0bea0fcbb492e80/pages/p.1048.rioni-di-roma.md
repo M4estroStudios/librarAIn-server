@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1048 RIONE XVII. SALLUSTIANO
+1048 RIONE XVII. SALLUSTIANO
 
 Affacciano con scenografia teatrale otto personaggi appartenenti alla famiglia Cornaro; opera del Ferrata; fra cui un doge veneziano. Essi assistono, presi da devozione e da sorpresa, all'estasi della Santa; e noi spettatori veniamo quindi a trovarci nella terza possibile posizione di osservazione, quella frontale e inferiore (naturalmente) davanti alla Santa. Intanto un lucernario, non visibile agli astanti e posto al di sopra del gruppo scultoreo berniniano, illumina la statua della Santa e dell'angelo che la trafigge, venendo così soffusamente illuminati. In realtà questa luce che cade dall'alto è simbolo della Grazia divina che scende sulla Santa.
 

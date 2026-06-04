@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 925
 
 Sillaba che suona appunto "va"; un vagito di Roma anelante ad estendersi su tutti i territori circostanti, massimamente su quelli subito al di là del Tevere. 

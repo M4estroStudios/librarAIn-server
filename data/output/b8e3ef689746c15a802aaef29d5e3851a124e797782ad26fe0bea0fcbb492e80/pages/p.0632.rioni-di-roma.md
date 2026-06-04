@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>632
+632
 RIONE X. CAMPITELLI
 
 conosciuta con il nome di «ad elephantums», il che ha fatto pen-

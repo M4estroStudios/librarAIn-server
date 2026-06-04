@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>642
+642
 RIONE X. CAMPITELLI
 
 selciato moderno; quanto resta; in opera quadrata di tufo; di uno stipite della porta Fontinalis che si apriva nel giro delle mura repubblicane. Esse raggiungevano il Campidoglio in questo punto, provenendo dalla via Senqualis nell'odierno Magnana e percorrendo la sella che univa il Quirinale al Campidoglio. Questo tratto di mura fu abbattuto quando Traiano decise di asportare la cosiddetta sella per poter costruire il suo foro.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 327
 
 Volle che la via Borgognona mutasse nome con quella del noto politico risorgimentale, cosa che s'attuò; ma non ebbe fortuna. Accanto fontana con iscrizione latina che la definisce «fontis hilaritate», voluta da Marino Torlonia; che fece abbattere, non tanto per la fontana, quanto per dar sfogo alla piccola piazza; l'edificio ov'era il banco e l'ufficio cambia-valute della sua famiglia; avendo cura d'apporre una iscrizione che avverte: «L'area è di proprietà del duca Marino Torlonia: È di palmi 156 di lunghezza e 22 in larghezza».

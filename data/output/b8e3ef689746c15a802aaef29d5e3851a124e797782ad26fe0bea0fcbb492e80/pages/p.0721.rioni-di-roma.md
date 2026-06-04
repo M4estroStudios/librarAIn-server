@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 721
+TERZO ITINERARIO 721
 
 gli imperatori Adriano e Marco Aurelio. Sulla sinistra si distin-
 gono le arcate della basilica Giulia e l'arco di Tiberio; a destra

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 779
 
 Te, erano equilibrati da un secondo galleggiante esterno e tenuti ancorati da catene fissate alla riva.

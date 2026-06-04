@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1085
+PRIMO ITINERARIO 1085
 
 progettisti, costituendo a loro giudizio una nuova porta della città. Ciò infatti era esplicitamente affermato da chi approvò il progetto del 1871. «La loro giacitura», asserì il sindaco del tempo, Venturi, alludendo ai due edifici con portici; «è tale da far desiderare che gli edifici che vi sorgeranno abbiano carattere e decorazioni più nobili degli altri, dappoché il primo ingresso sia indispensabile accenno all'importanza dell'intera città». C'è chi in un assetto del genere vide, evidentemente esagerando, una nuova edizione del Tridente, delle vie del Babuino, del Corso e di Ripetta.
 

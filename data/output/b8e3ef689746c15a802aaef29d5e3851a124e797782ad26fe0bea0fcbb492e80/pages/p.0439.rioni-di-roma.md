@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 439
 
 1939. Ancora oggi è sede della cancelleria pontificia e gode del diritto dell'extraterritorialità.

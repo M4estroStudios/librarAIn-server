@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO                                                                          815
+SECONDO ITINERARIO                                                                          815
 
 [Immagine: Il portico di S. Sabina in una stampa di fine Ottocento]
 

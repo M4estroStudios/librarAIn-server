@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 539
 
 Merito di aver dato rilievo a Giosuè Carducci. Per la sua arguzia

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 827
+TERZO ITINERARIO 827
 
 L'immagine in uno scrigno; ma dopo alcuni giorni entrando nella sua camera vide che questa aveva trapassato lo scrigno risplendente come il sole.
 Tutta Roma accorse a vedere il prodigio e l'immagine fu chiamata la Vergine del Sole; fu concessa all'Arciconfraternita della Croce che la portò nella chiesa dei Savelli, poi denominata da questa immagine Maria del Sole.

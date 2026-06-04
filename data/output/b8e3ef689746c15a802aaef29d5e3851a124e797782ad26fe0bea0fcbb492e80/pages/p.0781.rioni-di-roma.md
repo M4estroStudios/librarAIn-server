@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 781
 
 Costruito tra il 1936 e il 1937 su progetto dell'architetto Ignazio Guidi, con decorazioni pittoriche all'interno e sulla facciata principale, che venne chiamata allora via del Mare. E qui fu posta appunto una riproduzione marmorea della Lupa Capitolina.

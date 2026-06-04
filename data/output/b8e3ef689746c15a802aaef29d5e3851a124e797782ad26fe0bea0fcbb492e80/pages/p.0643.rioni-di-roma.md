@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 643
 
 Secondo la leggenda qui furono incarcerati i due apostoli Pietro e Paolo e, mentre venivano fatti scendere nell'ambiente inferiore, S. Pietro avrebbe battuto la testa contro la parete accanto alla scala e questa miracolosamente ne avrebbe conservato l'impronta. In realtà l'ingresso antico alla terribile segreta inferiore era attraverso un foro circolare aperto nel pavimento dell'ambiente superiore.

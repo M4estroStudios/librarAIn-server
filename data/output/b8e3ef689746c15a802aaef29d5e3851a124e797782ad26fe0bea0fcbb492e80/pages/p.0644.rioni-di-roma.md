@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>644
+644
 RIONE X. CAMPITELII
 
 giornate: «Il riposo in Egitto»; «Lo sposalizio della Vergine»; «Gesù fra i dottori»; «Storie della Sacra Famiglia» sono state affrescate dal Montagna sulle quattro pareti al di sopra degli stalli seicenteschi di noce.

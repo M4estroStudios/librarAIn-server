@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>922
+922
 RIONE XIII. TRASTEVERE
 
 **Quel che è scomparso in Trastevere**

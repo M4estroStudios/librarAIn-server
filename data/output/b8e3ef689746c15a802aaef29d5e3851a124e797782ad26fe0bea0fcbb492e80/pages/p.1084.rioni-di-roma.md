@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1074
+1074
 RIONE XVIII. CASTRO PRETORIO
 
 KDH

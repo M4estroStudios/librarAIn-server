@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MEDIEVALE
+ROMA MEDIEVALE
 
 In2
 Roma nel suo aspetto turrito medievale in una stampa d'epoca

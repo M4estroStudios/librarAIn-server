@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 475
 
 dei Coronari, detto fino al XIX secolo Monte Vecchio. Il trasferimento nell'attuale sede avvenne nel 1603, sicché la antica piazza di S. Martinello alla Regola in breve divenne la piazza del Monte di Pietà. All'origine qui era un Palazzo appartenuto ai Santacroce sino al 1588, allorché passò ai Petrignani di Amelia: Importanti lavori vennero effettuati per adattare la fabbrica alle nuove esigenze. Fu il Maderno, con la collaborazione del giovane Borromini, a conferire all'edificio più antico l'aspetto attuale. Il campanile a vela, con il relativo orologio funzionante ed illuminato, risulta fuori centro rispetto al corpo della fabbrica, mentre considerato dalla piazza fa da sfondo superbo alla breve via dei Pompieri che unisce la piazza del Monte con la via dei Giubbonari, di cui consigliamo di non perdere il bello scorcio.

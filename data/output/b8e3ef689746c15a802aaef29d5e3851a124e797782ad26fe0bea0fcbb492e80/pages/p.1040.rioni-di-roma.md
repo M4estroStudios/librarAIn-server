@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1040
+1040
 RIONE XVII. SALLUSTIANO
 
 stato portato a Roma per ornare il tempio romano della dea. È da

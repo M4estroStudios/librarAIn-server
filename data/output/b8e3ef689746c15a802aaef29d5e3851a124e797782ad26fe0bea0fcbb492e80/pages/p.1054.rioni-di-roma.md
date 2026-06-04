@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1054
+1054
 RIONE XVII. SALLUSTIANO
 
 da una recinzione; sono situati alcuni resti di quelli che erano fra i più famosi giardini di Roma, gli Horti Sallustiani. Questi giardini interessavano una vasta estensione di terreno compresa fra la via XX Settembre a sud, le mura aureliane a nord, Podierna via Veneto a ovest e la via Salaria a est. Furono costruiti nel 40 a.C. dall'illustre storico Sallustio su un terreno che era di proprietà di Giulio Cesare e che egli aveva acquistato alla morte del dittatore. Nel 20 d.C. gli Horti passarono a far parte del demanio imperiale; più volte abbelliti ed ampliati furono spesso residenza degli imperatori. Sappiamo infatti che dopo gli aspri combattimenti svoltisi proprio nella zona degli Horti Sallustiani salì al potere Vespasiano; questo imperatore amava soggiornare in questi luoghi. Ugualmente faceva l'imperatore Nerva; tanto sembra, la morte lo cogliesse mentre appunto si trovava nella villa. Lavori di abbellimento furono apportati alla villa da Adriano e più tardi da Aureliano; che vi fece costruire una *porticus miliarensis*, forse un complesso di portici con ippodromo e giardini come spesso venivano costruiti nelle ville lussuose. La villa fu quasi interamente distrutta ed incendiata da Alarico nel 410, allorché i Goti entrarono in Roma proprio attraverso la vicina porta Salaria. La villa conobbe così una lunga fase di abbandono; come ricorda anche lo storico Procopio, nel VI secolo; che ebbe modo di vederla.

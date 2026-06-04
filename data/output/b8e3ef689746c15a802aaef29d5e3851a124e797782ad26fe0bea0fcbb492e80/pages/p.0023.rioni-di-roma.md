@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MODERNA
+ROMA MODERNA
 23
 
 [Immagine]

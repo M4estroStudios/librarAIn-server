@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO                                           111
+QUARTO ITINERARIO                                           111
 
 **Papa Gregorio Magno e l'anima di Traiano**
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>702
+702
 RIONE X. CAMPITELLI
 
 Traiano e di Marco Aurelio è questo un altro esempio dell'evo-

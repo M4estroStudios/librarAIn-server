@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>822
+822
 RIONE XIL RIPA
 
 questo scopo fece demolire i resti dell'Ara Maxima di Ercole. Il papa voleva così testimoniare la protezione che egli offriva ai greci che fuggivano dalle persecuzioni dell'imperatore di Bisanzio Costantino V Copronimo: Questi fuggiaschi, giunti a Roma, attribuirono alla chiesa il titolo di Kosmidion per ricordare l'edificio che avevano abbandonato nella nativa Bisanzio e i papi di nazionalità greca non disdegnarono di risiedervi, finché alla fine del primo millennio alla chiesa fu aggiunto il monastero.

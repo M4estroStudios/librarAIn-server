@@ -1,7 +1,6 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<|channel>thought
-<channel|>912
+912
 RIONE XIII. TRASTEVERE
 
 tempietto del Bramante a S. Pietro In Montorio (stampa dl fne Ottocento) 

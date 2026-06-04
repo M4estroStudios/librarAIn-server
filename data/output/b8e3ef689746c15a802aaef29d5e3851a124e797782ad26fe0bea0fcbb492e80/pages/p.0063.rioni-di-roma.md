@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 63
 
 Le tra il mondo greco-romano e le culture dell'Indo. Palazzo Brancaccio possedeva anche un grande giardino che occupava quasi il colle Oppio; oggi questo giardino è ridotto ad una piccola area folta di alberi ad alto fusto che sono quanto resta di un felice orto botanico.

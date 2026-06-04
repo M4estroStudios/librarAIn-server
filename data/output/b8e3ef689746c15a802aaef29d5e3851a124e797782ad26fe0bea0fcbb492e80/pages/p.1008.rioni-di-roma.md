@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1008
+1008
 RIONE XV. ESQUILINO
 
 Compresa fra le sette basiliche romane, meta dei pellegrini, deriva il nome dal fatto che conserva alcuni frammenti della «Croce del Cristo» che Elena, madre dell'imperatore Costantino, aveva portato a Roma al ritorno dal suo viaggio a Gerusalemme nel 326. Secondo una tradizione la basilica fu invece fatta erigere da Costantino come ringraziamento per la vittoria da lui riportata al ponte Milvio su Massenzio e conseguita al simbolo della croce che gli era apparso e che aveva fatto collocare sui vessilli. È probabile invece che l'originario impianto della basilica sia da attribuire ai discendenti di Costantino e quindi da assegnare alla metà del IV secolo d.C.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 199
 
 5. Nicola da Tolentino in un'incisione secentesca di G.B. Falda e Domenico Guidi: secondo la leggenda, S. Nicola, gravemente malato, avrebbe invocato la Madre di Cristo; che gli sarebbe apparsa insieme agli altri due santi per offrirgli del pane benedetto. In memoria di questo miracolo gli agostiniani distribuivano piccoli pani benedetti, chiamati dal popolo «panini di S. Nicola», che avevano il potere di guarire alcune malattie.

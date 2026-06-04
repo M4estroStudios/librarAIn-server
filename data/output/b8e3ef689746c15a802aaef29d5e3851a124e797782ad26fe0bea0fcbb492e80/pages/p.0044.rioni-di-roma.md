@@ -1,7 +1,6 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<|channel>thought
-<channel|>44
+44
 
 **RIONE I MONTI**
 

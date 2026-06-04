@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1125
 
 Licrome, con un ciclo di affreschi dedicato a Costantino; diviso in undici riquadri, nei quali viene narrato come l'imperatore, affetto da lebbra, dovesse venire curato col sangue di bambini sacrificati allo scopo. L'imperatore respinge l'offerta esecranda delle madri accorse addolorate per la perdita imminente dei loro figlioli e, a seguito di un sogno, gli apostoli Pietro e Paolo gli consigliano di rivolgersi al papa Silvestro; che si trova sul monte Soratte, viene battezzato da costui e mondato dal male. E così Costantino dona al papa il potere imperiale d'Occidente. Gli affreschi costituirono una "propaganda" politica della falsa "Donazione di Costantino", sfruttata dal Papato nelle lotte di prestigio contro l'imperatore fino a tutto il medioevo:

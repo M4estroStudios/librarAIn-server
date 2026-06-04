@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 501
 
 cui si dice che «in Urbe sunt tredecim regiones quae corrupto et vulgari vocabulo dicuntur rioniz».

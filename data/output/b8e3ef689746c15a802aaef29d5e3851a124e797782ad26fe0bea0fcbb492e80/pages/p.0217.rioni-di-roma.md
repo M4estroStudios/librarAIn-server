@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 217
+PRIMO ITINERARIO 217
 
 della Guglia che, ricordiamo, deve il suo nome all'obelisco di Montecitorio (gli obelischi infatti sono genericamente chiamati Guglie o Aguglie) è il Palazzo del [?] appartenente alla famiglia omonima che, conosciuta già a partire dal Quattrocento, aggiunse al proprio cognome anche [?] di Quintili perché il palazzo venne costruito su alcune proprietà dei Quintili: L'edificio con decorazione in stile barocco è della metà del Settecento ed è ornato alle finestre angolari del primo piano da busti di Eracle con la clava ad esclusione dell'ultima, su via della Guglia che, come le altre del primo piano, è ornata invece da protomi di teste leonine che si affacciano <curiose> sulla strada, forse alludenti allo stemma di famiglia: Quelle degli altri piani hanno invece ghirlande e teste femminili. Il portone, ornato dal motivo di una conchiglia e da rami di alloro; ha i battenti formati da una valva di conchiglia con coppie di sirene che battono su uno stemma con monogramma:
 

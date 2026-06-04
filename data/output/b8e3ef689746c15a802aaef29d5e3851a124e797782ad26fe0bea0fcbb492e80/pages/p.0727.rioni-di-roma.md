@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 727
 
 Teghe Oscure, passa innanzi la chiesa dei Ss. Salvatore e Stanislao dei Polacchi, e per tutta la strada dell'Olmo. Quindi volta a man sinistra, e per il vicolo de' S. Anna, entra a man destra nella via dei Falegnami. Volta a mano manca; e va per la strada di S. Maria in Publicolis.

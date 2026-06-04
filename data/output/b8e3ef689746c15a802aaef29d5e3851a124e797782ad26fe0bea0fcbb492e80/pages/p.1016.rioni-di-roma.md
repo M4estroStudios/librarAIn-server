@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1016
+1016
 RIONE XVI: LUDOVISI
 
 La villa Ludovisi in un'incisione secentesca di G.B. Falda.

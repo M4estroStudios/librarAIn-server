@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione III. Colonna
+# Rione III. Colonna
 di Claudia Cerchiai
 
 **Dalle origini ad oggi**

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>544
+544
 RIONE VIII. S. EUSTACHIO
 
 coni chiusi da vetrate. La pavimentazione è in selci con guide marmoree. Sotto il portico, a destra, vi sono due porte con cornici di marmo e con la scritta «A de Valle ep. Mileten», che ricorda la nomina di Andrea della Valle, a vescovo della diocesi di Crotone e Mileto; e su un pilastro campeggia lo stemma con la mitria episcopale.

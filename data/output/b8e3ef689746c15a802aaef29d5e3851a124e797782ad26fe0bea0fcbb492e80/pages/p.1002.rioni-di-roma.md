@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1002 RIONE XV. ESQUILINO
+1002 RIONE XV. ESQUILINO
 
 **Villa Caserta**
 

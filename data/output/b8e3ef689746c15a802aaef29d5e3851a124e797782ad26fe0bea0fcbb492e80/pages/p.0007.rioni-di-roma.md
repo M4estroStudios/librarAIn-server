@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># I rioni e i quartieri nella storia di Roma
+# I rioni e i quartieri nella storia di Roma
 di Mario Sanfilippo
 
 ### Dalla Roma augustea alla Città leonina

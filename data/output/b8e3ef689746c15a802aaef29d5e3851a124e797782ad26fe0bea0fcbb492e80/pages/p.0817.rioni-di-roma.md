@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 817
 
 La basilica di S. Sabina in un'incisione di G. Vasi (1594). In fondo all'atrio si possono vedere una piccola statua di «S. Rosa da Lima» (1668) e moderne di un fanciullo nero di C. Rufini (1973) e una «Pietà».

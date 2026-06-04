@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>85
+85
 
 RIONE XIII. TRASTEVERE
 

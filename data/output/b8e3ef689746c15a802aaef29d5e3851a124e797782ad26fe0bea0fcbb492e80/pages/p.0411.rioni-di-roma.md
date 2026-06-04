@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 41
+PRIMO ITINERARIO 41
 
 sti gruppi erano stati destinati alla fontana di piazza del Popolo, ma poi furono impiegati per la suddetta fontana nel cui centro l'acqua sgorgava da alcuni scogli. Gli autori dei tritoni e delle maschere su disegno del Della Porta furono Simone Moschino, Taddeo Landini, Egidio della Riviera de Malines e Giacobbo Sil-la Longhi; purtroppo gli originali cinquecenteschi si trovano, senza una valida ragione, nel «Giardino del lago» a Villa Bor-ghese: e sulla fontana son poste delle brutte copie ottocentesche di Luigi Amici. Mancava, però, al centro qualcosa di rappresentativo; e il Bernini, dopo aver proposto dei delfini con le code in-trecciate per sorreggere una conchiglia, gruppo chiamato «la lu-macay», adornò la fontana; ma non incontrò il favorevole giu-dizio di Donna Olimpia Pamphilj e perciò dopo un anno la scul-tura disegnata dal Bernini ed eseguita da Angelo Vannelli, fu ri-mossa ed è tutt'ora nella villa Pamphilj. Il secondo tentativo berniniano ebbe, invece, un esito positivo: e l'etiope scolpito da Giovanni Antonio Mari in base al bozzetto del Bernini ancora troneggia fra i tritoni e le «maschere», mentre con evidente forza trattiene un delfino: Così, dopo quasi ottant'anni l'etiope, chia-mato «il Moro» chiuse il problema.
 

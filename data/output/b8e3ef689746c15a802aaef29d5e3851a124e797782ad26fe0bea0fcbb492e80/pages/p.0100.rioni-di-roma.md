@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>100
+100
 RIONE I MONTI
 
 rito dal fondo della navata in questa cappella; In una nicchia trova-

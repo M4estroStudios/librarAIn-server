@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 865
+SECONDO ITINERARIO 865
 
 Ha fatto ritenere l'edificio un'antica sinagoga fondata da Nathan ben Jechiel (1035-1106), insigne lessicografo. Nella seconda metà del Duecento un incendio distrusse la biblioteca e gli arredi sacri della sinagoga che ha alle sue spalle un'altra casa medievale sopraelevata; tanto per guastare.
 

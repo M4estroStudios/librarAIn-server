@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 51
 
 Battesimo ad immersione, che recava al centro il simulacro dell'Agnello di Dio, d'oro; mentre un'ampolla d'oro e sette cervi d'argento versavano acqua nella vasca ai cui bordi erano le statue, sempre d'argento, di Gesù e del Battista. Nei secoli successivi avvennero altre modificazioni e nel 1540 la cupola, ormai precaria, fu sostituita da un tiburio.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1094
+1094
 RIONE XVIII CASTRO PRETORIO
 
 architetto-urbanista di papa Sisto V, e ad Alessandro Specchi, a cui andiamo debitori della scalinata di Trinità dei Monti. L'edificio fa perno sull'incrocio delle Quattro Fontane, lasciando un ruolo secondario alle altre due ali che s'affacciano su via XX Settembre e via delle Quattro Fontane. Questo, più che un lato, è un angolo smussato e, ciononostante, appare come la parte più importante, inserendosi autorevolmente al cospetto del lato Barberini, del palazzo del Quirinale e della famosa chiesa di S. Carlo (o S. Carlino) alle Quattro Fontane.

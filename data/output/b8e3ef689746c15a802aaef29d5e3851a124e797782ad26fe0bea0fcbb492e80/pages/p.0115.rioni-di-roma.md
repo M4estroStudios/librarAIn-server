@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 115
 
 Tore e la sua cavalleria: questo fregio, diviso in quattro parti, fu tolto dalla sua sede originale e riadoperato per ornare l'arco di Costantino.

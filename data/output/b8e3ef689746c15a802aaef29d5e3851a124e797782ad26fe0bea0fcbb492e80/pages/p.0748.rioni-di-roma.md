@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>748
+748
 RIONE XI. S. ANGELO
 
 Judei o in Albis, che sorgeva sull'area dell'attuale piazza Costa-

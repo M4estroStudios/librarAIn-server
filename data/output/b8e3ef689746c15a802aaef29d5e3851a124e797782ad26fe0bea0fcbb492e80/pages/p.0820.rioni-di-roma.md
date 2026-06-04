@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>820
+820
 RIONE XII RIPA
 
 Terzo itinerario

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1079
+PRIMO ITINERARIO 1079
 
 de della Stazione e delle proprietà dei Massimo: Questi erano divenuti nel 1789 proprietari della villa Montalto-Peretti, che da allora assume anche il nome degli ultimi proprietari. Investita la zona dal turbine edilizio della nuova stazione; della vasta proprietà; ai Massimo non restavano nel 1873 che 8000 m², oltre al palazzo ultimato nel 1886 come visto. Fu allora che il gesuita Massimiliano Massimo ritenne opportuno trasformarlo in istituto scolastico, ottenendo, dopo qualche difficoltà burocratica, d'ampliarlo con le spese del fatiscente edificio di Sisto V.
 

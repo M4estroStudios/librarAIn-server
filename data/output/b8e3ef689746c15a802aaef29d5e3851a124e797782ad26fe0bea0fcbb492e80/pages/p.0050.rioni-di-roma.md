@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>50
+50
 RIONE L. MONTI
 
 Più tardi gli fu collocata accanto una fontana per maggior decoro della piazza e anche per una maggiore utilità pubblica.

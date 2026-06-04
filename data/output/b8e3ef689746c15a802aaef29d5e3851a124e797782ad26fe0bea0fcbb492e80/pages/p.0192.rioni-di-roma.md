@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>192
+192
 
 RIONE II. TREVI
 palazzo dell' Accademia di S. Luca

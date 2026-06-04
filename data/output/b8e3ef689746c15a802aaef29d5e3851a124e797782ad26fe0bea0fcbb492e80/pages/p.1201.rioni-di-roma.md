@@ -1,7 +1,6 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 thought
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 1201
 
 2

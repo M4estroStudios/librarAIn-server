@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 711
 
 Sappiamo infatti che la casa di Augusto era accanto al tempio di Apollo; vicina alle capanne di Romolo e alle scale di Caco. Questa abitazione, in fondo non eccessivamente lussuosa, era dotata di uno studiolo, senza finestre, posto in lato su una terrazza chiamata Siracusa, che permetteva all'imperatore, secondo l'uso antico, di chiudervisi per le proprie meditazioni o per lavorare senza essere disturbato. Resti di questo studio, che sarà imitato in età rinascimentale, sono stati ritrovati recentemente e ricostruiti in una mostra a palazzo Altemps.

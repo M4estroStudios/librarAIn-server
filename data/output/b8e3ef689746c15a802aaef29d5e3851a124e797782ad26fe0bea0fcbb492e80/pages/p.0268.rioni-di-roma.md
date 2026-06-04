@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>268
+268
 RIONE IV. CAMPO MARZIO
 
 guendo per Monte Brianzo-Coronari si collegava con l'antichissima via Papalis all'altezza di Panico.

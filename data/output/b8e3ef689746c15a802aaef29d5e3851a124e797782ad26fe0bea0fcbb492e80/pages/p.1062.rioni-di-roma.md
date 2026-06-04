@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1062
+1062
 RIONE XVII. SALLUSTIANO
 
 In via Friuli, ormai inserita nel Palazzo Boncompagni, si riconosce una struttura di epoca precedente che faceva parte della vigna Orsini (1581). Qui ancora, dove via Friuli incrocia via Lucullo; negli anni 1949-1950, durante alcuni lavori eseguiti per costruire un garage, fu rinvenuto un criptoportico in opera cementizia rivestito di intonaco dipinto a finte architetture e figure femminili che può essere datato fra gli ultimi anni dell'età degli Antonini e l'inizio di quella dei Severi (160-220 d.C.).

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 417
 
 Forse nessuna chiesa ha subito tanti cambiamenti come questa, che mutò più volte l'orientamento e l'ingresso. Infatti, a metà del Quattrocento, quando Piazza Navona era impraticabile e ridotta a zona fangosa, l'ingresso era unicamente su via di S. Giacomo (poi via della Sapienza, infine Corso del Rinascimento). Nella seconda metà dell'Ottocento il magnifico portale del 1463 fu spostato sulla piazza e al suo posto fu collocato [il portale] rinascimentale di Pietro Torrigiani che stava sul prospetto di Piazza Navona. Sia il primo che il secondo, però, non sono mai stati di accesso della piazza in quanto murati dall'interno, perché vi è addossato Palazzo: dopo varie ristrutturazioni, ora si entra dalle due facciate, ma l'ingresso principale è su Corso del Rinascimento. Una lapide del Comune ricorda che: «Cesare Fracassini pittore romano dei sommi artisti emulo passò da questa casa ove visse agli immortali MDCCCXXXVIII-MDCCCLXVIII».

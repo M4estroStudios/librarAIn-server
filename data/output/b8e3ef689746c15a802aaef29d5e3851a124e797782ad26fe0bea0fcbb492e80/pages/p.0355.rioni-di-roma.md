@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 355
 
 L'"Immagine di Ponte" di Antonio da Sangallo il Giovane; all'angolo tra via del Coronari e vicolo Domizio.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 283
 
 fossero frammiste come in ogni periferia estrema; ce ne fornisce una poco distante chiesa di S. Andrea detta appunto «delle Fratte», per questa semibucolica situazione. Un breve tratto vivacissimo per traffico e negozi sotto la protettrice immagine d'una Trinità ad imitazione robbiana. L'urbanizzazione di questa zona, un tempo compresa tra le proprietà degli Orsini fra cui v'era il palazzo, ormai scomparso; di Giovanni Giordano Orsini costruito sui resti d'una chiesa dedicata a S. Felice in Pincio, si ebbe con l'anno santo del 1600, riallacciandosi ad un progetto urbanistico sistino; realizzato, secondo l'opinione dei più, nientemeno che dal Maderno; allievo dell' architetto di Sisto V, Domenico Fontana.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>542
+542
 RIONE VIII. S. EUSTACHIO
 
 In una sala su un soffitto del Settecento trionfa la «Gloria» che reca lo stemma dei Capranica tra angeli con trombe; vi sono pure figure di guerrieri in ovati sorretti da angeli. In altra sala v'è un soffitto elegante a cassettoni.

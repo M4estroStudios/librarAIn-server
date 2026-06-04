@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>802
+802
 RIONE XIL. RIPA
 
 Ugo La Malfa; indubbiamente uno dei padri della Repubblica italiana, si è voluto dedicare a questi il piazzale stesso che non è più piazzale Romolo e Remo bensì piazzale Ugo La Malfa (con evidente perdita del più antico riferimento mitologico).

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TESCO CON LA FACCIATA con due ordini di lesene accoppiate su alti plinti; il primo piano ha le finestre centinate e l'ultimo contiene due piani ribassati. Di grande interesse è l'armonioso cortile con portici ad arcate su pilastri quadrati, ornato con statue e busti antichi; sullo sfondo due fontane con rilievi marmorei quattrocenteschi.
+TESCO CON LA FACCIATA con due ordini di lesene accoppiate su alti plinti; il primo piano ha le finestre centinate e l'ultimo contiene due piani ribassati. Di grande interesse è l'armonioso cortile con portici ad arcate su pilastri quadrati, ornato con statue e busti antichi; sullo sfondo due fontane con rilievi marmorei quattrocenteschi.
 
 Oltrepassata, sempre percorrendo la via della Conciliazione, la traversa intitolata alla via dell'Erba, al numero civico 32-36 eccoci giunti dinanzi al Palazzo della Congregazione orientale dei Convertendi. Una volta si trovava a metà della «spina» di Borgo andata distrutta, come abbiamo già detto meglio nella sezione dedicata alle cose scomparse del rione, ed era con la facciata volta alla piazza Scossacavalli, anch'essa scomparsa. Dei convertendi era detto ad opera del cardinal Castaldi per essere stato dedicato a quegli eretici, che avessero chiesto il conforto della religione cattolica.
 

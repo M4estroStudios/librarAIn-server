@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>12
+12
 
 RIONI E I QUARTIERI NELLA STORIA DI ROMA
 

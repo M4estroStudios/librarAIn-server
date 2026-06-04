@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1220
+1220
 RIONE XXII PRATI
 
 G. Venturi, schizzo della casa tra via Proprizio e via Crescenzio.

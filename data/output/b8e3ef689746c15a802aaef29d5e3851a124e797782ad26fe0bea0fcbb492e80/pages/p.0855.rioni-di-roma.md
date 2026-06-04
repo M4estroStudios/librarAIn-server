@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 855
 
 Bonosa furono traslate da ultimo nella chiesa dedicata a S. Maria della Mercede in via Regina Margherita: Nella via di S. Bonosa, nella casa al n. 22, vi è un resto murato di un portico medievale con quattro colonne (tre ioniche; una corinzia) e un portone barocco con la tabella di proprietà dell'arciconfraternita del Gonfalone. La via dell'Olmetto, che fa angolo, deriva chiaramente il nome da un olmo che vi si ergeva un tempo; anzi, era chiamata via dell'Olmo, fu sistemata e allargata nel 1941.

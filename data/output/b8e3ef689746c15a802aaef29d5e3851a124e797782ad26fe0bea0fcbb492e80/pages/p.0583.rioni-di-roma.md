@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 583
 
 Al Tevere, a un altro spettacolo; non meno pittoresco, anche se un tantino più scomodo di disagio per la cittadinanza: inondazione periodica del fiume. La piazza della Minerva infatti si trova nella zona più bassa dell'intera città, e il Tevere, abbastanza vicino ad essa, non appena veniva gonfiato dalle piene, scorreva limaccioso fino a ristagnare per giorni sul posto, data anche l'inefficienza fognaria.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione VII. Regola
+# Rione VII. Regola
 di Mauro Quercioli
 
 ### Le origini e la storia

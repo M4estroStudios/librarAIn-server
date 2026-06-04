@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 83
 
 Ogni giorno una folla di infermi e bisognosi si accalcava davanti alla casa, tanto che papa Gregorio XIII (1572-1585) Boncompagni decretò che l'immagine fosse trasferita nella vicina chiesa di S. Salvatore ai Monti. Nella notte dell'otto maggio 1580 alcuni prelati accompagnati da muratori si avvicinarono alla casa per obbedire all'ordine; ma qualcuno vegliava e diede l'alarme a suon di campane affrontò con molti monticiani gli intrusi che, dopo una rissa violenta, furono messi in fuga.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>862
+862
 RIONE XIII TRASTEVERE
 S. Maria in Cappella
 

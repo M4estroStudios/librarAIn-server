@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>344
+344
 RIONE V. PONTE
 
 Palazzo Altemps e la chiesa di S. Apollinare. In un'incisione di G. Vasi.

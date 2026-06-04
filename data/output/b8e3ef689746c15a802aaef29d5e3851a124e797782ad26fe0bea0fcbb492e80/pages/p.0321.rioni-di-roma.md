@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>parete posteriore della chiesa; le mutandine della cuoca del parroco di S. Carlo oscillanti nell'aria; che naturalmente mettono una nota sentimentale nel nostro cuore ardente di desiderio...
+parete posteriore della chiesa; le mutandine della cuoca del parroco di S. Carlo oscillanti nell'aria; che naturalmente mettono una nota sentimentale nel nostro cuore ardente di desiderio...
 
 Avrà buttato vino?
 «La Botticella?» Il mio amico Rendina è per il sì, l'altro amico Enzo Micheli giura di no. Perché far concorrenza poi a tanti bei, perduti locali, tante pittoresche osterie?

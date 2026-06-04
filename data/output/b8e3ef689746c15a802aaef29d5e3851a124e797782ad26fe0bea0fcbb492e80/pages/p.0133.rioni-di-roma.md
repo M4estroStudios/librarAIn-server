@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI E L'EVOLUZIONE URBANISTICA
+LE ORIGINI E L'EVOLUZIONE URBANISTICA
 133
 
 ...ora è situato l'ingresso) a quella di S. Salvatore de Camilliano (chiesa scomparsa che si trovava nei pressi di piazza del Collegio Romano), per salire per Santa Maria in via Lata fino alla chiesetta di S. Maria de Cannella, chiamata così per il fatto di appartenere al Collegio degli speziali i quali, nei giorni festivi, vi collocavano vasi pieni di essenze profumate; tra cui la cannella. Il Trejo proseguiva verso un altro tempio scomparso, quello di S. Nicola in Arcione (nei pressi dell'attuale Traforo), raggiungeva la chiesa di S. Anastasio e saliva sul Quirinale, dove confinava con il rione Monti.

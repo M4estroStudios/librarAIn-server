@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 441
 
 nua nella via omonima. Il toponimo deriva da due locande medievali l'una chiamata «Paradiso Grande» e l'altra «Paradiso Miccinello» (piccolo) nelle quali si mangiava bene e si stava «come in Paradiso». Tuttavia la piazza fu anche chiamata «della berlina», perché vi si esponevano i colpevoli di piccoli reati e le donne sfacciate. Questa forma di pena risaliva al medioevo e consisteva nell'esporre il condannato alla vista pubblica con una scritta che indicava il delitto: Spesso la berlina consisteva in un palo con catena e collare di ferro (gogna) a cui si attaccava il condannato; talvolta era composta di due assi girevoli o di una torricella con finestre tutt'intorno. Il reo vi era esposto due ore per tre giorni consecutivi. La piazza fu anche detta «dei muratori» che lì si radunavano; e al n. 64 vi è un'edicola del Settecento con la «Madonna e il Bambino».

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 157
 
 La piazza, una delle più tranquille della città, è dominata dalla facciata del Palazzo della pontificia università Gregoriana; costruito nel 1927 da Giulio Barluzzi per volontà di papa Pio XI, per ospitare appunto l'istituzione ecclesiastica; fondata nel 1551 da S. Ignazio di Loyola con il preciso scopo di fornire al clero adeguati corsi di teologia e di altre discipline umanistiche.

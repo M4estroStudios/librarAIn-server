@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 985
 
 La chiesa di S. Bibiana nel Seicento (incisione di G.B. Falda)

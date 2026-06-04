@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 715
 
 Strettamente privata dell'imperatore; mentre il palazzo ad oriente si affaccia su un vasto edificio costruito in forma di circo minore (metri 160x50), ornato lungo i lati da un portico a due piani, in quello inferiore con pilastri in laterizio rivestito di marmo e, in quello superiore, con colonne marmoree.

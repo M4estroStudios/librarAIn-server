@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SESTO ITINERARIO
+SESTO ITINERARIO
 201
 
 Deciso l'acquisto di alcuni locali situati nei pressi di Piazza Barberini, per costruirvi il convento.

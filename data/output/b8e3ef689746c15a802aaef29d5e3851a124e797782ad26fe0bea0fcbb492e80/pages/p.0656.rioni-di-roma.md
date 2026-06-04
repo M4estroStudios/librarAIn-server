@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>656
+656
 RIONE X. CAMPITELLI
 
 cristiano; è collocata dai Mirabilia nella camera dell'imperatore che, però, noi sappiamo, aveva la sua dimora sul Palatino. Al tempo di Gregorio III sorse su questo luogo del Campidoglio il monastero di Maria Camellaria e dei Ss. Giovanni Battista e Evangelista. Nel 944 si parla di un monastero benedettino di Santa Maria in Capitolio.

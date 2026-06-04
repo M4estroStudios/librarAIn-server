@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 66/
+PRIMO ITINERARIO 66/
 
 Fino all'Ottocento questo Monte fu anche detto Caprino perché pastori portavano le capre al pascolo, ma per tutto il Medioevo fino al Cinquecento fu detto anche *locus iustitiae* perché vi stavano innalzate le forche; le quali non spaventarono abbastanza i fabbricanti di canape che qui, come nel Campo Vaccino, venivano a torcere le loro corde.
 

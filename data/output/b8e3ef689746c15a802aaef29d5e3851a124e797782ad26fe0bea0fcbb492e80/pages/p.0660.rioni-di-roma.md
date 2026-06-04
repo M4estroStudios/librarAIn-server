@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>(66)
+(66)
 RIONE X. CAMPITELLI
 
 Fu ricostruito più volte e volta ridedicato. L'ultima ricostruzione fu portata a termine da Domiziano ed ha restituito alcuni frammenti delle colonne di marmo e quindi, presso il n: civico 3 di piazzale Caffarelli, parte del muro in blocchi di tufo e della platea che fu ricomposta con blocchi originali del tempio ma di diverse provenienze, recuperati in uno scavo del 1959. Accanto è una terrazza ornata da un giardino; appoggiata sopra sostruzioni in blocchi di tufo di età romana da cui si ammira un suggestivo panorama.

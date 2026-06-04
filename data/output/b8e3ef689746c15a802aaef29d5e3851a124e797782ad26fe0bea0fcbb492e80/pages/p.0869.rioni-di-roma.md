@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 869
+SECONDO ITINERARIO 869
 
 Da quello delle benedettine ricostruito nel Cinquecento. Un tempo il monastero era occupato dai frati umiliati, fra cui uno non troppo amante del prossimo; sparò un'archibugiata contro S. Carlo Borromeo in preghiera, fallendo il bersaglio per un miracolo. Il papa Clemente VII scacciò via tutti i frati così mal rappresentati!
 

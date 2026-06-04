@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>THRZ(>ITV:RAARIC)
+THRZ(>ITV:RAARIC)
 447
 M4
 1

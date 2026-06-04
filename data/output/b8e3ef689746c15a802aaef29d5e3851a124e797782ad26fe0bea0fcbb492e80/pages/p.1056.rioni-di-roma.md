@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1056
+1056
 RIONE XVII. SALLUSTIANO
 
 sto stesso. Altri ritengono ancora che il suo trasporto a Roma debba essere avvenuto nel II-III secolo d.C. L'obelisco, benché crollato, fu sempre ricordato tanto che papa Sisto V pensò di farlo recuperare e sistemare di fronte alla basilica di S. Maria degli Angeli. Ma non se ne fece nulla.

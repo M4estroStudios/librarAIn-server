@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>122
+122
 RIONE L. MONTI
 
 da alcuni rilievi come quello in cui è raffigurato il trasporto della statua del Laocoonte. In cima a tutto è il gruppo della «Gloria riservata agli artisti».

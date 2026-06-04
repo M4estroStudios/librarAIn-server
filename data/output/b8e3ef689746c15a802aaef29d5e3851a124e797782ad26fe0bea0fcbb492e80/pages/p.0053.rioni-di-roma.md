@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 53
 
 La chiesa di S. Stefano Rotondo come appariva alla fine dell'Ottocento.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 823
 
 L. Canina, il mascherone della Bocca della Verità; tratta quindi di una vera e propria ordalia, un giudizio di Dio, anche se la denominazione «Bocca della Verità» ci riporta invece alla comunità greca del VII-VIII secolo. Quei greci, infatti, indicavano così luoghi oracolari e certamente l'antico Foro Boario era pregno di atmosfere oracolari data la presenza di tanti culti; tra i non va dimenticato quello vicino della ninfa Carmenta. I monaci greci, quindi, è probabile, chiamarono così le sopravvivenze precristiane oracolari del luogo e identificarono nel mascherone l'immagine di tutta questa realtà.

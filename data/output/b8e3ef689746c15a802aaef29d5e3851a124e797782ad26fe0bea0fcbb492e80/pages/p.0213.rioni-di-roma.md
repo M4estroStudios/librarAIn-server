@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 213
 
 **Le chiese di S. Lucia, di S. Paolino e di S. Maria della Pietà dei Pazzarelli**

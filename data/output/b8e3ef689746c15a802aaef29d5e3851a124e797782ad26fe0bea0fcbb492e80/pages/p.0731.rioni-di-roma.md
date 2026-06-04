@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 731
 
 Cata. Spostandoci sulla destra, ci troveremo di fronte al complesso Orsini Savelli insediato con una monumentalità tutta particolare, fra i ruderi imponenti dell'antico Teatro di Marcello.

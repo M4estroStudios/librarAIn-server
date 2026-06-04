@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA MEDIEVALE
+ROMA MEDIEVALE
 15
 
 Re evidentemente non conosce le vicende amministrative e politiche di Roma, per questo immagina che l'Isola Tiberina sia troppo importante per non essere un rione a sé stante; ugualmente immagina che la Città Leonina o Borgo sia un rione; mentre lo diventerà soltanto secoli dopo. Ma complessivamente individua con precisione l'esistenza di 12 rioni sulla riva sinistra del Tevere (citati nominando le due "contrade" del rione; d'altra parte questa citazione binaria è ripresa anche dal Cavallini de Cerroni e per lungo tempo rimane usuale) e di Trastevere sulla riva destra. Inoltre in questa compare il numero 26 (doppio di 13) che ricorre frequentemente nella storia di Roma del tempo. Sotto Brancaleone degli Andalò (senatore e capitano del popolo romano del 1252-55 e nel 1257-58) la rappresentanza del popolo è affidata a 26 "Buoni Uominis", due per ognuno dei 13 rioni; così come intorno al 1263 sono 26 "Buoni Uominis" eletti dal popolo romano per "riformare la città". In ogni caso all'inizio del XIV secolo, nel 1305, gli statuti dei Mercanti sono confermati dai rappresentanti (gli anziani) dei rioni urbani, il cui numero è consolidato in 13. Ma nei secoli tardo medievali e moderni gli stessi notai continuano ad essere imprecisi sui confini dei rioni e sono continui gli spostamenti erronei di chiese da un rione a quello confinante. Questa suddivisione della città in 13 rioni continuerà ad essere valida fino allo scorcio finale del XVI secolo.

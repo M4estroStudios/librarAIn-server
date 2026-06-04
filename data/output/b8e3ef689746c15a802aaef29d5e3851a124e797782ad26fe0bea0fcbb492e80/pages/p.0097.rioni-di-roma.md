@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 97
 
 – combattimento degli ebrei con gli Amaleciti a Rafidam. Mosè su un monte stende le braccia nel gesto dell'orante ottenendo da Dio così la vittoria dei suoi guidati da Giosuè;

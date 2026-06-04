@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 629
 
 Tali ad arco bugnato e finestre incorniciate da peperino; su una di esse resta traccia del nome dell'antico proprietario Andreas Velius, morto nel 1603 quando aveva 82 anni.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1087
 
 Suo ricordo ad una splendida canzone: l'iscrizione — importante perché redatta da repubblicani nel 1929, in pieno periodo monarchico quindi, definisce il nostro uomo: MARTIRE, VINDICE, PRECURSORE.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Alberto Manodori - Ludovico Pratesi
+Alberto Manodori - Ludovico Pratesi
 Claudia Cerchiai - Mauro Quercioli
 
 # I rioni di Roma

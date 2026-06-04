@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1213
 
 Pieno è il gusto della facciata sottolineata dai balconi ed elegante la soluzione delle logge angolari sull'attico; Proseguiamo quindi su Lungotevere dei Mellini dopo avere visitato i giardini di piazza della Libertà, che vuole commemorare con questo toponimo la libertà dell'Italia ottenuta con le guerre d'indipendenza e dove, al centro delle aiuole, dopo l'incrocio con via Cola di Rienzo, sta il monumento dedicato a Pietro Cossa, drammaturgo romano dell'Ottocento rievocatore dell'antica Roma imperiale, raffigurato in severi abiti borghesi mentre porta una mano al cuore. Elegante è il plinto di base ornato da festoni e maschere teatrali. Questo monumento fu trasferito da largo Arenula dove era stato collocato inizialmente.

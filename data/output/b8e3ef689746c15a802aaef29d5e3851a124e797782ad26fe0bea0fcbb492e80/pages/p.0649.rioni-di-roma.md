@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 649
 
 gine all'equivoca interpretazione della sua immagine e alla conseguente leggenda. Un'altra leggenda voleva che il nome Capitolium derivasse dal teschio, *caput*, di un guerriero etrusco di nome Olus, rinvenuto dai Tarquini quando furono scavate le fondazioni del tempio di Giove.

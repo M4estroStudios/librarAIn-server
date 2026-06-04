@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1044
+1044
 RIONE XVII. SALLUSTIANO
 
 Vano con il tempo i caratteri di giardini attorno ad alcune ville aristocratiche. Segue, ad opera di papa Pio IV Medici (1559-1565), la sistemazione della grande dorsale dell'Alta Sèmita; che da lui prende il nome di Pia (via del Quirinale e via XX Settembre); quindi, ad opera di papa Sisto Peretti (1585-1590), la costruzione della grande fontana del Mosè; che vide l'afflusso nella zona dell'acqua Felice. Alla fine dell'Ottocento la valle di origine alluvionale su cui si affacciava il complesso degli Orti Sallustiani fu colmata (ora è a 14 metri sotto il livello stradale) allorquando si iniziò la costruzione della zona Sallustiana-Ludovisi; interessata da un'urbanizzazione intensiva; come avvenne, del resto, in altre zone di Roma dopo il 1870. Vengono costruiti dapprima la sede del Ministero delle finanze, voluta da Quintino Sella, quindi il grande palazzo del Museo geologico ed altre sedi ministeriali che incrementarono le costruzioni di palazzi per abitazione, quali, mentre in un primo momento si dispongono principalmente lungo la via XX Settembre; intorno al 1891 occupano anche l'area attorno a piazza Sallustiana.

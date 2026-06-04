@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1148
+1148
 RIONE XX. TESTACCIO
 
 Nonostante questo transito però, la zona restò sempre molto disabitata e oggetto di processioni sacre e relative sacre rappresentazioni e, dalla metà del XIII secolo, di giochi di carnevale che avevano il monte Testaccio, i prati e l'area prospiciente il fiume come palcoscenico, spesso cruento.

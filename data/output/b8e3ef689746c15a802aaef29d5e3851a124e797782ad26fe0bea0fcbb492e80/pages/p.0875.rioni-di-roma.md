@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 875
 
 Edificio pubblico di Trastevere e solo la scoperta di un tratto dell'acquedotto dell'Aqua Alsietina permette di localizzarla nei pressi di S. Cosimato (Coarelli).

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 581
 
 1854. Tra la seconda e la terza cappella; sempre a destra, è il cenotafio di Umberto Strozzo, fondatore dell'accademia dei Vignaioli.

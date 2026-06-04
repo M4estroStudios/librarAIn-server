@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 513
 
 cavalcavia al palazzo della Sapienza e vi fu collocata la facoltà di lettere dell'Università.

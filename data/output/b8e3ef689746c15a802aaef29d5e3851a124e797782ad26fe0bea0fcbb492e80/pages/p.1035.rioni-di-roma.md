@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 1035
+SECONDO ITINERARIO 1035
 
 [Immagine]
 

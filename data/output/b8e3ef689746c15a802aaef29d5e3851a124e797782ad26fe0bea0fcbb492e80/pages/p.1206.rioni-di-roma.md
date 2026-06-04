@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1206
+1206
 RIONE XXII. PRATI
 
 Il Sacro Cuore del Suffragio sia un gotico (in ciò confortati dall'affermazione documentata che Roma abbia testimonianza di cultura e arte d'Occidente). La fronte, protetta da una bella ed alta cancellata lavorata dal Maccaferri, è fiorita di intagli e decorazioni che si aggiungono alle modanature; ai costoloni alle guglie; movimentando tutto l'edificio con le tradizionali linee ascendenti. Essa è costituita da un più alto corpo centrale su cui sta una cimasa ed edicole fiorite tra due guglie nelle quali si chiudono due costoloni maggiori. Questa parte della facciata comprende il portale maggiore il quale, come anche gli altri due, è racchiuso in un protiro multiplo tra colonnette in marmo rosso di Verona e fasce di marmi verdi e che ha al di sopra un' elegante cimasa fiorita. Al centro della facciata è un altissimo finestrone le cui vetrate policrome sono percorse da un fascio di alte colonnine destinate a sorreggere il grande rosone superiore; Anche al di sopra delle due porte laterali stanno finestre, analoghe alla precedente ma più piccole.

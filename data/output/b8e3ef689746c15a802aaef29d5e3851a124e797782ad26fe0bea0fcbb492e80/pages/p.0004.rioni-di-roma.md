@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Coordinamento di Claudio Rendina
+Coordinamento di Claudio Rendina
 Prima edizione in questa collana: marzo 2005
 © 2000 Newton & Compton editori s.r.l.
 Roma, Casella postale 6214

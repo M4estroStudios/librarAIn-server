@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LA CITTÀ RINASCIMENTALE
+LA CITTÀ RINASCIMENTALE
 Palazzi e rioni
 
 Dalla fine del XV a tutto il XVII secolo, accanto alla Roma papale, prospera una Roma cardinalizia nepotista, che concorre a cancellare l'antica città medievale. Il vecchio tessuto urbano dei rioni è sconvolto dagli accorpamenti e sventramenti, dalla costruzione di edifici monumentali, molto più invadenti di quanto non fossero gli antichi complessi immobiliari dei gruppi familiari (nobili o borghesi).

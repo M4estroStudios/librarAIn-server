@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 819
 
 cio di cui aveva portato il pollone dalla sua Spagna. Si vuole che questo sia stato il primo arancio trapiantato in Italia. Certo è che l'albero antico, ormai seccato, dà frutti attraverso un altro che la tradizione vuole nato miracolosamente su di esso.

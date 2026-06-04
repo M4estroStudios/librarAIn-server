@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1168
+1168
 RIONE XX - TESTACCIO
 
 B. Pinelli, *Il Poeta Improvvisatore a Testaccio nel mese di Ottobre*

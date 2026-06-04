@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 849
 
 Fra i nn. 45-46; al n. 22 il prof. Francesco Sabatini, che con Giggi Zanazzo nel 1887 ridiede vita al periodico «Rugantino» (dallo scrivente diretto dal 1980), fondò l'Istituto romano per l'istruzione popolare. In questa via del Moro (dall'insegna di un caffè) si trovava un teatro di burattini; ma ciò che più sorprende è la costante frequenza del barocco (ad esempio n. 11) in alternanza col rinascimento (ad es: n. 58). Varie sono le tabelle di proprietà sulle case e di tanto in tanto fa capolino il medioevo come nella casa al n. 50. Verso il n. 63 una tabella indica il livello raggiunto dal Tevere durante l'alluvione del dicembre del 1870 (l'ultima).

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 965
 
 Lo specifico sull'argomento, portiamoci ora sul lato destro del colonnato berniniano; e dunque del rione stesso, idealmente diviso in due dalla Via della Conciliazione. Qui s'apre un altro accesso allo Stato Vaticano: il cosiddetto Portone di Bronzo; dietro al quale inizia la famosa Scala Regia.

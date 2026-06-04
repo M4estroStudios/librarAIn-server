@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 589
+SECONDO ITINERARIO 589
 
 Si può salire anche nei locali dell' Arciconfraternita con banchi in noce e decorazioni settecentesche. Una storia particolare presenta il Palazzo Maffei-Marescotti, che si trova sulla via de' Cestari subito dopo la chiesa delle Ss. Stimmate.
 

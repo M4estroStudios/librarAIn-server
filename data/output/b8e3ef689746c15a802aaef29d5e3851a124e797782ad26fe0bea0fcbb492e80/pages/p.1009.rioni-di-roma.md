@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 1009
 
 [Immagine: La facciata di S. Croce In Gerusalemme In un'incisione di G.B. Piranesi]

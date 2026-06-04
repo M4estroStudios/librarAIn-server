@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>878
+878
 RIONE XIII. TRASTEVERE
 
 P.L. Teutonico, prospetto di S. Francesco a Ripa

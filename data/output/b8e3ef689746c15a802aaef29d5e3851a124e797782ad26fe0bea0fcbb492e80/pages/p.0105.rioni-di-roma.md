@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 105
 
 cui si affacciano diverse case del Settecento; fra cui il seicento Collegio Fuccioli in cui trovavano ospitalità diciotto giovani di Città di Castello venuti a Roma per studiare teologia, filosofia o legge;

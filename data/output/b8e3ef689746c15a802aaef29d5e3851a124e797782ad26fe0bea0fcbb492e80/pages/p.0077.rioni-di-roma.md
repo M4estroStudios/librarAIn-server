@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 77
 
 Conserva i resti di un colonnato con capitelli corinzi che forse appartiene alla basilica del V secolo. La facciata a capanna in laterizio ricorda quella della curia al Foro Romano. Un elegante portale la orna al centro. L'accesso alla basilica avviene lateralmente su via di Santa Prassede e accanto ad esso si nota il volume della cappella di S. Zenone eretta sempre da Pasquale I. L'interno della chiesa è a 4 navate, separate da colonne antiche con capitelli corinzi, su cui sta un architrave ottenuto con cornici romane riutilizzate.

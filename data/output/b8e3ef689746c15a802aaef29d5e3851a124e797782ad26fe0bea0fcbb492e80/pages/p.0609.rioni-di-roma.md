@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 609
 
 Palazzo d'Aste-Rinuccini-Bonaparte; all'angolo tra piazza Venezia e via del Corso, in un'incisione di A. Specchi. Da ballo e da musica; che dona al visitatore l'idea d'una magnificenza nobiliare sposata al buon gusto e al caso felice di tanti artisti concorrenti a sfoggiarla.

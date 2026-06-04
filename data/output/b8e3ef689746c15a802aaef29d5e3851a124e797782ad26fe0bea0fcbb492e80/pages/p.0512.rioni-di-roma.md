@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>512
+512
 RIONE VIII. S. EUSTACHIO
 
 La cupola di S. Ivo alla Sapienza in un'incisione dell'inizio del Settecento.

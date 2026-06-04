@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1152
+1152
 RIONE XX. TESTACCIO
 
 Essa sbocca il bianco ponte Sublicio mentre di fronte si erge la parete a picco dell'Aventino con la sede dei Cavalieri di Malta: una veduta spesso rappresentata nelle incisioni romane.

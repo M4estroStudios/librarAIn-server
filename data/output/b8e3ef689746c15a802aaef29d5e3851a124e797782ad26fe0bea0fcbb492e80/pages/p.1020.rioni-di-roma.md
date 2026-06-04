@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1020
+1020
 RIONE XVI LUDOVISI
 
 L'incrocio con via Romagna; oggi sede della Cassa di risparmio della provincia di Macerata. Ha una struttura molto movimentata e la destra è costituita da un avancorpo a forma di torre con balconi; più oltre, con facciata su via Sardegna ma con un lato su via Romagna, c'è la chiesetta di S. Maria Regina dei Cuori con l'annesso convento dei montfortani (n. 44). Risale al 1912. Nella facciata il portone ha un arco sporgente retto da lesene e il cornicione è a dentelli. Le finestre sono bifore o monofore. Nella lunetta è raffigurata l'«Annunciazione». Nell'interno, a una navata, ha vetrate istoriate; e sull'altare un gruppo marmoreo della «Vergine col Bambino adorata da S. Luigi di Montfort e dall'angelo Gabriele» di Paolo Bartolini del Novecento. Anche Francesco Milizia vi è presente con il coro di legno intagliato; e vi sono figure di «Virtù» e plutei di Dell' Aquila. Su una lapide affissa sulla parete sinistra si legge: «Il papa Giovanni XXIII iniziando la stazione quaresimale del rione sostò per implorare la benedizione della Regina dei Cuori in questo santuario Lei dedicato 10 marzo 1962».

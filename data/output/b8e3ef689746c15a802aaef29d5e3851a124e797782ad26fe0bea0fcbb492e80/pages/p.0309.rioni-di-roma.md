@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 309
 
 marguttiana, attraverso una decorazione di cavalletti da pittore e relativi sgabelli, sormontati da una sorta di cesto con pennelli ed altro. Mascheroni da teatro antico; si ritanno forse alle tradizioni del vicino teatro di cui ci accingiamo a parlare.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 1145
 
 zaio comunale. Sulla destra è un'edicola con la «Madonna del Buon Consiglio» eretta, nel 1803, al fine di erogare indulgenze ai passanti volenterosi; 100 giorni, dice l'iscrizione, per ogni preghiera volta alla sacra immagine. L'itinerario che siamo andati percorrendo ora si ferma dinanzi al loggiato che si trova all'inizio della passeggiata archeologica, ovvero via delle Terme di Caracalla, sulla destra provenendo da piazza Numa Pompilio. Si tratta della già accennata «vignola Boccapaduli», che non deve far pensare, dato il nome peraltro scritto minuscolo, all'architetto Jacopo Barozzi, detto il Vignola. È invece un fabbricato un tempo annesso a una vigna che si trovava, come tante in questo rione, nella periferia della città.

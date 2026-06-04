@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLA ROMA AUGUSTEA ALLA CITTÀ LEONINA
+DALLA ROMA AUGUSTEA ALLA CITTÀ LEONINA
 
 Scala per l'effettivo ordine di grandezza della popolazione, crollata verticalmente a poche decine di migliaia di abitanti.
 

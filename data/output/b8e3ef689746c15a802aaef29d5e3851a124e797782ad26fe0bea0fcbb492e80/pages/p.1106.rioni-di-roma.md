@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione XIX. Celio
+# Rione XIX. Celio
 di Carlo Villa
 
 ### Dalle origini ad oggi

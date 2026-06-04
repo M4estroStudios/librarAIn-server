@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 1115
 
 Vespasiano fu il primo imperatore che si occupò, negli anni 69-79 d.C., dell'edificio; elevandolo fino al terzo ordine, e il suo nome corrente era all'epoca anfiteatro Flavio, dalla casata di Vespasiano.

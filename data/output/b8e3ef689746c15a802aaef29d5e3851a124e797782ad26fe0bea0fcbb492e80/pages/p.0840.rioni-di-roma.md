@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>840
+840
 RIONE XIII TRASTEVERE
 
 Il ponte fu costruito dall'architetto Angelo Vescovali nel biennio 1887-1888. Originariamente era costruito su due arcate in ferro, che nel 1956 cedettero il posto all'invadente cemento armato. Nell'anno seguente si procedette a lavori di ampliamento del ponte che raggiunse così la larghezza di m 20,50 e la lunghezza di m 120,40.

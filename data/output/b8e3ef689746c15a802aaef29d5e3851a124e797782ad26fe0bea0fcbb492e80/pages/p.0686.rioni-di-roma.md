@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>686
+686
 RIONE X. CAMPITELLI
 
 È vero che Castori segnarono miracolosamente la vittoria al lago Regillo; ma è anche vero che qualificandosi come cavalieri si situavano divinità protettrici dei cavalieri di Roma; cioè degli aristocratici, i quali, con la vittoria del Regillo si proponevano quale oligarchica della città che poteva vantare dalla sua il favore degli dèi.

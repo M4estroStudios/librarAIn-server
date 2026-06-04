@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 241
 
 Dere noto maggiormente quale castigo ultramondano (le fiamme dell'inferno) attendesse filosofi eretici condannati dalla Santa Inquisizione. Tempi duri per la libertà di parola!

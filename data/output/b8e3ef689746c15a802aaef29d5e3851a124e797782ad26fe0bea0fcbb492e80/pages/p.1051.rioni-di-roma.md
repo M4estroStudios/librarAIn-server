@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1051
 
 via XX Settembre e quindi attraversiamo via Belisario, che prende il nome dal condottiero bizantino (494-565), che nel 537 respinse validamente l'attacco mosso da capo dei Goti, alla città. L'attacco si incentrò soprattutto nel tratto delle mura compreso fra le porte Pinciana e Salaria; e così in questa strada, anche se un po' distante dalle mura, che Belisario viene ricordato.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO
+UNICO ITINERARIO
 1219
 
 Fra via G.G. Belli e via Lucrezio Caro vediamo un'immagine mariana con la «Madonna, il Bambino e S. Giovanni», realizzata in maiolica; in stile robbiano e protetta da un vetro.

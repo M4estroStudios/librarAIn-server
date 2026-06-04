@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>712
+712
 RIONE X. CAMPITELLI
 
 sti di un grande peristilio al centro del complesso e una serie

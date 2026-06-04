@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|># Rione V. Ponte
+# Rione V. Ponte
 di Claudia Cerchiai
 
 ### Le origini, la storia

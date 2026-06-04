@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>562
+562
 RIONE IX. PIGNA
 
 Il quarto e ultimo tempio presente nell'area, contrassegnato con la lettera D; è il più grande, e si fa risalire al I secolo a.C. Secondo uno studio e un'attribuzione di Coarelli, il tempio D potrebbe identificarsi con quello dei Lares Permarini, voluto nel 179 a.C. da Marco Emilio Lepido.

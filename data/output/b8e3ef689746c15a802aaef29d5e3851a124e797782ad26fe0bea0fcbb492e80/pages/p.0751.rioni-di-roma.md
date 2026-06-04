@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 751
 
 Sembra che, almeno nelle intenzioni, al posto delle tartarughe avrebbero dovuto esserci dei piccoli delfini. Comunque, più che con tutte queste simpatiche bestiole, la fontana andrebbe etichettata come «Fontana degli efebi»; questi infatti sono gli autentici protagonisti della movimentata mostra d'acqua. La mossa aggraziata, il modellato del corpo alla Antinoo, non so che di classico e di sensuale che emana dall'insieme avalla le illazioni sulla necessità di rileggere i monumenti costruiti in periodi integralisti e bacchettoni. Quattro efebi di bronzo; con un piede appoggiato su un delfino, per l'estensione della gamba, quasi piegata sul piano dell'elemento centrale, il braccio proteso in alto nell'atto di spingere delle tartarughe verso la vasca più alta; ottengono in uno spazio contenuto slancio, movimento ed armonia esaltanti la perfezione del corpo umano, con un effetto tutto particolare. Nella parte inferiore, grandi conchiglie accolgono l'acqua facendola ricadere nel catino inferiore.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 425
 
 ni, per cui il palazzetto fu indicato dal popolo con questo nome; pur non avendo nulla in comune con la Farnesina alla Lungara. Lo fece costruire un alto prelato bretone, Tommaso Le (nome latinizzato in Regis) che venne a Roma nel 1494 al seguito di Carlo VIII. Rivestì importanti cariche nella corte pontificia ed ebbe parte notevole nel concordato tra il papa Leone X e Francesco I, che, per ricompensarlo dei suoi utili servigi, lo fece nobile e gli concesse di fregiare il suo stemma con gigli di Francia.

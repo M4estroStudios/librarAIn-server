@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>438
+438
 RIONE VI PARIONE
 
 Cento e ritenuto opera del Bramante (1444-1514). Consta di tre

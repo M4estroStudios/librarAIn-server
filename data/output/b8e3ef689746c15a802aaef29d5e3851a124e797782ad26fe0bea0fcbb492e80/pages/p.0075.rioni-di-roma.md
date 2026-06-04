@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 75
 
 Tra le sono due bassorilievi con le figure dei **Ss. Silvestro e Martino**.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 997
 
 La chiesa del Ss. Vito e Modesto con l'arco di Gallieno (incisione di G. Vasi)

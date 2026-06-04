@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 100/
 
 colonne addossate. Un motivo a mensola orna le chiavi di volta degli archi, mentre negli estradossi sono delle borchie in stucco. Al di sopra corre un fregio con triglifi e metope ornate; queste ultime da simboli relativi all'ordine francescano. Al di sopra del porticato, la parete in laterizio si apre in cinque finestre ad arco, chiuse da vetrate policrome, opera del Giuliani: il corpo centrale è chiuso da un timpano con croce in marmo alla sommità e con tondo centrale affiancato da due finestre, anch'esse ad arco.

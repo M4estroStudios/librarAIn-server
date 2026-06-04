@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>814
+814
 RIONE XII RIPA
 
 Bello è il tabernacolo cinquecentesco di D. Ferrerio; detto il Baglione; con le figure dei santi vissuti nell'abbazia. Importante è anche il ciborio sotto la cupola sorretto da colonne di marmo greco, mentre nell'abside sono poste due colonnine che già si trovavano nella precedente chiesa di Onorio III: esse facevano parte di un gruppo di 19 e oggi incorniciano l'iscrizione che ricorda le reliquie dei Ss. Bonifacio e Alessio.

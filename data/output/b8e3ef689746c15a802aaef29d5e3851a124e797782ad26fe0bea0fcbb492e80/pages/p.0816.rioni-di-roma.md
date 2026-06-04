@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>816
+816
 RIONE XII. RIPA
 
 Ordine domenicano ricevette, come s'è detto, da papa Onorio III, la chiesa di S. Sabina. A S. Sabina si tenne, nel 1288, il conclave che elesse papa Niccolò IV. Durante questo conclave tutti i cardinali si ammalarono di malaria. Gli aspetti medievali della chiesa subirono radicali trasformazioni per volontà di papa Sisto V (i restauri furono condotti da Domenico Fontana): demolizione della schola cantorum, dell'iconostasi e del ciborio; nuovo altare maggiore con grande baldacchino; muratura di alcune finestre, asportazione dei marmi dell'abside e del soffitto a lacunari. Altre ristrutturazioni avvennero durante il Settecento e solo nel secolo scorso si diede inizio ai primi restauri, anche se, nel 1874, il convento fu trasformato in lazzaretto; cui seguì l'installazione della lavanderia a vapore di Roma.

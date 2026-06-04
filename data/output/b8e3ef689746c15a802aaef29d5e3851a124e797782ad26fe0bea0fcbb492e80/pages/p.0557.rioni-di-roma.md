@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AI GIORNI ODIERNI
+DALLE ORIGINI AI GIORNI ODIERNI
 557
 
 Numerosissime vestigia e testimonianze della Roma imperiale e repubblicana:

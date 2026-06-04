@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>294
+294
 
 RIONE IV. CAMPO MARZIO
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ROMA CAPITALE
+ROMA CAPITALE
 33
 
 Nel ben organizzato nucleo delle case Incis di piazza Verbano non nasce un vero spirito di corpo. E questo sarà ancor più vero per l'enorme espansione edilizia dall'ultimo decennio fascista fino a questi decenni repubblicani.

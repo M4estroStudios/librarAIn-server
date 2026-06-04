@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 749
 
 Mazza e Hieronimo suo fratello Menico fu con quattro compagni; altri erano otto.

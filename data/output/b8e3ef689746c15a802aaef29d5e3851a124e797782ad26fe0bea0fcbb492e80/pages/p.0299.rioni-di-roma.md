@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 299
 
 La memoria di questi importanti personaggi, per certi aspetti imbarazzante, venne dispersa col tempo; al punto che, come riportato dalla Squadrilli, la lapide funeraria venne ritrovata molto tempo dopo sotto il portico della basilica di S. Marco.

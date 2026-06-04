@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione II. Trevi
+Rione II. Trevi
 di Ludovico Pratesi
 
 **Le origini e l'evoluzione urbanistica**

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO [157]
+UNICO ITINERARIO [157]
 
 Terreno allora concessa è adiacente a quella che viene oggi defini-
 ta come "zona vecchia", nella quale le tombe non sono dispo-

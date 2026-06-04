@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 665
 
 La via dei Fienili sulla sinistra è rione Campitelli, si apre via dei Foraggi dove è un'immagine mariana in ceramica policroma. Si riprenda il lato del colle Capitolino: sulla destra si aprono altre latomie capitoline, chiuse da cancellate e utilizzate come magazzini di materiale archeologico; mentre all'esterno, tra i fichi d'India, si aggirano sornioni.

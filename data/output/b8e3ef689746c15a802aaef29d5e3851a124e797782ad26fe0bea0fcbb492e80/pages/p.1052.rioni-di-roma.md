@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1052
+1052
 RIONE XVII SALLUSTIANO
 
 Montate da semplice architrave si aprono al primo piano, mentre tre porte-finestre sono in corrispondenza del balcone. Altrettante finestre si aprono al secondo piano. La copertura è a tetto. Nel piano interrato sono disposti i servizi. Un mascherone realizzato su progetto del Cipriani (1835) orna l'ingresso principale della villa. Alla morte del cardinale Valenti Gonzaga tutta questa proprietà venne venduta dal nipote ed erede Antonio al cardinale Prospero Colonna e alla morte di questi, avvenuta qui nel 1765, la proprietà rimase agli Sciarra; Nel 1816 fu acquistata dalla sorella di Napoleone, Paolina Borghese, che la abitò fino al 1824. Rimasta ancora per poco ai Bonaparte la villa fu venduta ai del Novecento dapprima a un commerciante e poi al prussiano Otto von Muhlberg, che ne curò il restauro: La scala immette nel vestibolo da cui si accede ad un ambiente dalla ricca decorazione della metà dell'Ottocento con scene e personaggi mitologici. Segue quindi l'altro da cui, mediante una elegante scala con ringhiera in ferro battuto, si sale al piano e si accede al salone anch'esso ornato da figure derivate dal mondo greco.

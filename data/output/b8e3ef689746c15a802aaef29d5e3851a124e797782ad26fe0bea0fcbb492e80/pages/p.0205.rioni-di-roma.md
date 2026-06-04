@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AD OGGI
+DALLE ORIGINI AD OGGI
 205
 
 Quella scoperta nel 1616 all'angolo tra la via di Porta Pinciana e la via Sistina; appartenente ad Octavia, figlia di M. Appius, e dal complesso dei grandi Horti Luculliani; la villa che il famoso L. Licinio Lucullo, generale e uomo politico, si era fatto costruire su una vasta area (tra via Due Macelli, via le Case e via di Porta Pinciana). Questo complesso, innalzato con le ricchezze accumulate durante la guerra contro Mitridate e la guerra sociale, fu abitato successivamente da Valerio Asiatico e da Messallina.

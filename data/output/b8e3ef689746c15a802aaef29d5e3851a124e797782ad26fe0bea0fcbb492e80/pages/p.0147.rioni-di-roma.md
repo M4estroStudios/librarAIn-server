@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 147
 
 portali ed altrettanti padiglioni; di notevole eleganza; con ariose logge, grandi finestre. Di ultimi, quello situato all'angolo con via Quattro Novembre è la «Coffee houses» che ospita all'interno una sala affrescata da Francesco Mancini con la favola di «Amore e Psiche».

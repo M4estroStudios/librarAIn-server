@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 191
 
 All'interno, in una sorta di sala-museo, sono esposti gli strumenti per la stampa: il patrimonio attuale dell'istituto comprende circa 2000 rami dei maggiori incisori italiani dal XV al XX secolo; oltre ad alcuni stranieri.

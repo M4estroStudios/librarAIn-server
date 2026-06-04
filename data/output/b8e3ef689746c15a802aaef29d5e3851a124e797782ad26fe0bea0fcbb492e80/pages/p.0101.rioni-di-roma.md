@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 101
+TERZO ITINERARIO 101
 
 Patrizi e di sua moglie ed ora vi sono le reliquie di S. Mattia e altri martiri.
 

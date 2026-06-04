@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>882
+882
 RIONE XIII. TRASTEVERE
 
 Nel transetto, invece, fa bella mostra di sé un tabernacolo medievale e l'altare maggiore risale in parte al XII secolo.

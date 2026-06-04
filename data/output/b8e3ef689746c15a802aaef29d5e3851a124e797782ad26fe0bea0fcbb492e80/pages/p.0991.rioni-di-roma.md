@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 991
+SECONDO ITINERARIO 991
 
 La raffigurazione della «Consolatrice degli afflitti», opera della fine dell'Ottocento; sistemata al posto di un'altra del Croce (1558-1628). Di notevole interesse è il cinquecentesco coro.
 

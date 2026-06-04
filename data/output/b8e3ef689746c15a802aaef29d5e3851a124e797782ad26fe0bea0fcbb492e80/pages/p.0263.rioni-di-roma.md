@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 263
 
 Ripresa la via del Gambero si esce su via della Vite. Qui, al n. 3, è situato un palazzo ristrutturato nell'Ottocento che conserva però l'originale bugnato seicentesco. Al n. 7 è il Palazzo Ottoboni anch'esso del Seicento che svolta anche su via del Corso. Alle finestre stanno gli emblemi araldici del drago dei Boncompagni, e le aquile bicipiti degli Ottoboni. Al n. 6 è situata una piccola restaurata fontanella.

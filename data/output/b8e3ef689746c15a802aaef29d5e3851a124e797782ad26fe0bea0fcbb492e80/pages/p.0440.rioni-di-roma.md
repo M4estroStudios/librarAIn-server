@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>440
+440
 RIONE VI PARIONE
 
 trovava sul culmine della cavea e che sporgeva verso l'esterno al centro dell'emiciclo. La via di Grottapinta, con andamento a semicerchio delle case, segue e conserva la curva interna della cavea del teatro. La pianta del complesso comprendeva, inoltre, un quadriportico di enormi dimensioni che, partendo dietro la scena lungo la via odierna dei Chiavari, giungeva fino all'Area Sacra dell'Argentina; dove, al centro del lato che rasentava la parte posteriore dei quattro templi era la grande aula della Curia pompeiana, in cui fu ucciso Caio Giulio Cesare il 15 marzo del 44 a.C.; ai piedi di quella sta la statua di Pompeo di cui abbiamo parlato nel nostro primo itinerario, proposito di via dei Leutari dove fu rinvenuta.

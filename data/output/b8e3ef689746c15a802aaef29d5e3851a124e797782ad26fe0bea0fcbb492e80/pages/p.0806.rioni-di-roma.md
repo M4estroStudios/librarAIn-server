@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>806
+806
 RIONE XIL RIPA
 
 Portale affiancato da due antiche colonne di granito e su cui s'apre lochio incorniciato da una cornice marmorea di bell' ornato. E su tutto sta un timpano triangolare. La facciata è opera di Carlo Lambardi e da notare, nei capitelli sulle colonne del portale, sono i volti di cherubini.

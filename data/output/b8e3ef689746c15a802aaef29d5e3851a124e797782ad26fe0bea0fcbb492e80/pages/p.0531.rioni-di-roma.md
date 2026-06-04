@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 531
 
 Eleganti volute Ja Divina Colomba; in basso sotto una conchiglia fra volute e gigli vi è una elegante targa in cui si legge solo una parte di una invocazione: [;! AMICA MEA ET NON MACULA EST IN TE.

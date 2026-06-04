@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1126
+1126
 RIONE XIX. CELIO
 
 sibile, il pilastro contrassegnato dal Colini; studioso dell'ingegneria; con il numero CLXIX; maggiore degli altri, conteneva il castello di distribuzione delle acque di afflusso; con le relative vasche di decantamento e spine in piombo per la misurazione del flusso.

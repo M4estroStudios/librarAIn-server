@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 87
 
 Si gira sulla destra per via Urbana e si raggiunge piazza della Suburra dove un'edicola con diverse targhe ricorda la chiesa perduta di S. Salvatore ad Tres Imagines; detta S. Franceschino. Aveva avuto il primo nome da tre immagini del Cristo riprodotte sul portale e raffiguranti la Trinità.

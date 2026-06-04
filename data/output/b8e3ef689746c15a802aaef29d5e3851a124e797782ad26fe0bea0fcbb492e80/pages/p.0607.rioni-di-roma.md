@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 607
 
 Lonne, su disegno del Bramante; ma con l'anno 1604 l'edificio fu acquistato dagli Aldobrandini che lo arricchirono di decorazioni e di ali immobiliari fino al 1647, ininterrottamente. Alcune decorazioni e stucchi, non più in loco, sono nella galleria Doria.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 295
 
 Tolineare forse, secondo il gusto egittizzante del tempo; l'imponente guglia di granito rosso: «Eine Welt zwar bist du, Rom!» (Tu sei un mondo, Roma!) il Goethe appena varcata la soglia di Porta del Popolo; trovandosi così, giorni e giorni di campagna desolata, immerso nella armonia di questa piazza.

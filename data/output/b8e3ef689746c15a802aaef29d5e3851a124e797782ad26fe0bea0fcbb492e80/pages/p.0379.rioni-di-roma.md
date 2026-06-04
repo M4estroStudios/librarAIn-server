@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO 379
+TERZO ITINERARIO 379
 
 Papa Clemente VIII ebbe come prima sede la vicina chiesa di S. Biagio. La chiesa venne iniziata nel 1662 e, nel 1669, su disegno del Rainaldi, fu costruita la facciata; interamente in travertino, scandita da quattro lesene nell'ordine inferiore sormontate da capitelli in stile composito analoghi a quelli della chiesa di S. Biagio della Pagnotta e quattro lesene anche nell'ordine superiore sormontate da capitelli di stile ionico.
 

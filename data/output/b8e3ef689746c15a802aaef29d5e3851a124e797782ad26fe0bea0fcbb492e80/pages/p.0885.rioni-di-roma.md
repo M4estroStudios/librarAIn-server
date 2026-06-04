@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 885
 
 Il protiro romanico del complesso di S. Cosimato come appariva nel Settecento (incisione di G. Vasl).

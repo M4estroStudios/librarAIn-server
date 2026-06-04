@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>706
+706
 RIONE X. CAMPITELLI
 
 che si riunirono per un certo periodo. Si comincia a salire per una stretta scaletta, accanto alla scorre un getto d'acqua che esce dalla parete a imitazione d'una sorgente improvvisa: Quindi s'accede a una rampa; che sale al primo dei livelli, ornato da una facciata a tre fornici ad arco e due intermedi a piattabanda, ripetuta nella disposizione dell'ambulacro interno. Da questo si entra in una grande sala voltata con, alle pareti, statue e nicchie oggi vuote e basi con gigli dei Farnese. Sulla parete di fondo un nicchione chiuso da un arco ogivale; e ricco di pseudostalattiti, da cui, fragorosamente l'acqua cade in una vasca trilobata: è detta «Fontana della pioggia».

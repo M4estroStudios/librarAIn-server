@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 113
 
 nel tardo impero: Foro della Pace; Quel pochissimo che oggi è visibile di questo foro appartiene al rione Campitelli ma storicamente fa parte dei fori imperiali.

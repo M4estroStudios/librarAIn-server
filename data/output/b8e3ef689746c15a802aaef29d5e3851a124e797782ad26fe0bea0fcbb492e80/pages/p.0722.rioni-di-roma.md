@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>722
+722
 RIONE X. CAMPITELLI
 
 Sole di Roma ma, come enigmaticamente allude la scritta sull'attico; il nuovo sole sarà tra poco il Cristo.

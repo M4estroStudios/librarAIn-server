@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>LE ORIGINI E LA STORIA
+LE ORIGINI E LA STORIA
 449
 
 Uno scorcio del rione Regola nella carta topografica del Maggi (1625)

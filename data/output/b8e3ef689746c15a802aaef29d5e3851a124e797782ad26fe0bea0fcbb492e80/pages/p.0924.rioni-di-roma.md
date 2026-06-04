@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XIV. Borgo
+Rione XIV. Borgo
 di Carlo Villa
 Dalle origini ad oggi
 

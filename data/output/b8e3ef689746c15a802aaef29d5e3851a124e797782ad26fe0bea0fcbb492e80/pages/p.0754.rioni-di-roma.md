@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>754
+754
 RIONE XI S. ANGELO
 
 po Marzio, ubicando il teatro sotto la «isola» Mattei e la via dei Funari, detta così come noto; per la presenza dei fabbricanti di corde, sistemati nell'ambito dell'antica scena, insieme ai cardatori e ai cimatori, attività riconducibile alla stessa categoria. Ora resti del teatro; e ve ne sono non pochi, costituiscono un discorso per gli addetti ai lavori; né è facile accedervi; ma se proprio qualcuno s'incaponisse di farlo; gli suggeriamo di passare dal n. 4 di via Paganica; ammesso che nulla sia capitato nel frattempo:

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 1067
+PRIMO ITINERARIO 1067
 
 La fontana di piazza della Repubblica, ancora senza le statue delle Naiadi, alla fine dell'Ottocento.
 

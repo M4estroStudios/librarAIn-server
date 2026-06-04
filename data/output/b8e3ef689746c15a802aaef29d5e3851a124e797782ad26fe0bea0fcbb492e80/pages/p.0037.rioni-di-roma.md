@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLE ORIGINI AL OGGI
+DALLE ORIGINI AL OGGI
 37
 
 Ni ebbero trasteverini loro fieri fratelli rivali. Trastevere infatti costituiva il più vasto rione al di là del fiume sulla riva destra; separato pertanto, ad eccezione di Borgo, dal resto dei rioni cittadini. Così i trasteverini finivano per avere anch'essi, alla separazione operata dal fiume, una propria particolare identità che li portava a rifiutare d'istinto e di cuore la preminenza dei monticiani. Questa rivalità non si esauriva in una serie di rivendicazioni formali, bensì dava luogo, si ritiene fin dagli inizi del XIV secolo, a periodici scontri cruenti tra i monticiani, appunto, trasteverini. Il luogo privilegiato per queste battaglie di primogenitura era il Campo Vaccino ovvero l'area oggi corrispondente all'attuale Foro Romano ad un livello superiore. Lo scontro veniva detto "partita a roccie" dove i trasteverini e i monticiani si affrontavano investendosi con una fitta sassaiola e ricorrendo spesso all'uso del coltello rifilandosi "puncicate a l'inglese" (cioè coltellate date a modo).

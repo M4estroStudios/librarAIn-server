@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 145
 
 L'ultimo quarto del XV secolo; sono opera di pittori come il Pomarancio, Paris Nogari, Baldassarre Croce, Cesare Nebbia, Giovanni de Vecchi.

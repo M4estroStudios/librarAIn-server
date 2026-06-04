@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 639
+PRIMO ITINERARIO 639
 
 Successivamente portata in piazza S. Marco; quindi sulla piazza del Campidoglio e da dove è ora ad opera di Filippo Barigiani.
 

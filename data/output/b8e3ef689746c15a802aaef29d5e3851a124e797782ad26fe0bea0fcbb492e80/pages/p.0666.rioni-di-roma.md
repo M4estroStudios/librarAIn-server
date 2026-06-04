@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>666
+666
 RIONE X. CAMPITELLI
 
 to per gli appestati, tanto che una sera se ne era caricato uno sulle spalle per portarlo all'ospedale, «felice», diceva; «di aver incontrato così Gesù».

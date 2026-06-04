@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>ALBERTO MANODORI
+ALBERTO MANODORI
 LUDOVICO PRATESI
 CLAUDIA CERCHIAI
 MAURO QUERCIOLI

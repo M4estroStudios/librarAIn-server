@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>396
+396
 RIONE VI PARIONE
 
 rati. Gli stemmi dei Peretti e degli Orsini occhieggiano da più parti. Vi sono quadri di Antoniazzo Romano (1435-1508 ca.), di Federico Barocci (1535-1612) e di Francesco Podesti (1800-1895). In realtà, non vi sono grandiosi saloni o maestosi cortili, ma piccoli spazi, graziosi ambienti e delizioso teatrino pensile, che è il cortiletto superiore; dall'aspetto squisitamente scenografico; destinato a sala per concerti o per rappresentazioni teatrali in famiglia. Lo spazio è circondato da volute e da decorazioni a stucco fra le quali spiccano figure di fanciulle caratterizzate da tre mammelle. Siamo nell'ambito stilistico di un tardo Rinascimento misto ad un ben pronunciato manierismo; nel quale l'elemento paganeggiante e fiabesco fa la parte del leone.

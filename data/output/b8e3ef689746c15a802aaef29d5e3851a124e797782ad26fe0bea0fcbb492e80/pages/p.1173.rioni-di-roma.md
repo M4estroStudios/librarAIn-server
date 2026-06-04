@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>Rione XXI, S. Saba
+Rione XXI, S. Saba
 di Claudia Cerchiai
 Dalle origini ad oggi
 

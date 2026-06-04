@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>848
+848
 RIONE XIII TRASTEVERE
 
 La chiesa di S. Margherita in un'incisione di G. Vasi.

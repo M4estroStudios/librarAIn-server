@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>121/
+121/
 
 L'«Alberico» con la sua saletta aggiunta: l'«Alberichino»; si attraversa quindi piazza Americo Capponi, dedicata al nobile romano morto nel 1619, che fu castellano di Castel S. Angelo sotto i papi Clemente VII, Leone XI e Paolo V. Da qui si prosegue per via Stefano Porcari, che ricorda l'umanista quattrocentesco romano che, per rinnovare gli ideali repubblicani, cospirò contro il papa e, scoperto, fu impiccato dalla giustizia pontificia ai merli di Castel S. Angelo. Qui al n. 9 è una palazzina ornata da riquadri graffiti posti tra le finestre del sottotetto:
 

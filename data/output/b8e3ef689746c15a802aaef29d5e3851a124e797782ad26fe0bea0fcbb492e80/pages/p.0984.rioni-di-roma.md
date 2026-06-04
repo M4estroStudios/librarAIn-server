@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>984
+984
 RIONE XV. ESQUILINO
 
 avanzato e, realizzata ad un solo fornice, fu affiancata da torri. Nella parte interna vi era una seconda porta a doppio passaggio: Tutto ciò fu demolito nel 1838 durante il pontificato di Gregorio XVI. Menzione di questo restauro è nell'iscrizione posta all'esterno della porta sul piazzale Labicano.

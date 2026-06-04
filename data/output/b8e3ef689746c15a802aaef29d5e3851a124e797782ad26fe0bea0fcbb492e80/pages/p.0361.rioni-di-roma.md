@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO 361
+SECONDO ITINERARIO 361
 
 La facciata di S. Maria della Pace in un'incisione ottocentesca
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1036
+1036
 RIONE XVI LUDOVISI
 
 Un'occasione mancata di conservare una bella parte di Roma! Nel rione Ludovisi, privilegiato dalla vasta e ricca villa omonima, vi sono anche dei caffè nei quali si son vissute le vicende di Roma dell'Ottocento; vere finestre aperte sulla città. Cento tavolini tra l'entrata dell'Excelsior e via Sicilia sono quelli del Caffè Doney da decine d'anni luogo di convegno per cineasti e letterati e, un tempo, passerella di gerarchi, come osserva acutamente Bruno Palma. Qualche cosa è cambiata, l'animazione d'allora si è spenta, ma «una certa noblesse turistica ad alto livello» fa ancora la sua esibizione scendendo dai lussuosi alberghi. Scrittori, poeti, letterati s'incontravano; ai tempi d'oro; da Rosati; da gente del cinema; Poi il Caffè de Paris offrì le sue sedie a gente che contava economicamente. Alti ufficiali americani si son seduti presso i tavolini; ma ben altri personaggi vi si sono avvicendati come Edward Kennedy, Elsa Martinelli, Maurice Chevalier, Jolanda Calvi di Bergolo; Giorgio De Chirico; Anita Eckberg; Richard Burton ecc. In seguito ecco elementi eterogenei che sostano nei moderni caffè della via che ha perso gran parte del suo livello di élite; Forse a questo calo di presenze di importanza internazionale è dovuta, a giudizio di intenditori, la decadenza della via fra le celebri del mondo.

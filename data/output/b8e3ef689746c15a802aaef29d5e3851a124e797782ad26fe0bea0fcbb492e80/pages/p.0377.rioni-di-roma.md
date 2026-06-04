@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 377
 
 apre al di sotto dello stretto balcone e con bei lampioni in ferro; si entra nell'austero cortile porticato su pilastri, ornato da un fregio in cui nelle metope sono contenuti gli elementi araldici della famiglia Ceuli. Un interessante rilievo che si pensa rappresenti la presentazione al senato di Caracalla avvenuta nel 197 d.C. quando fu designato dal padre, Settimio Severo, *imperator designatus*.

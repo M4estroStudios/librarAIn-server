@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>674
+674
 RIONE X. CAMPITELLI
 
 «Betlemme e Gerusalemme», cioè le personificazioni dell'antica Sion e di Roma cattolica; e anche della chiesa fondata dal giudaismo cristiano e di quella aperta a tutti i gentili: Alla base del mosaico è «Gesù» come Agnello Mistico e i dodici agnelli converso di Lui a rappresentare i suoi discepoli e, metaforicamente, le dodici tribù d'Israele quali simboli di tutti i popoli del mondo.

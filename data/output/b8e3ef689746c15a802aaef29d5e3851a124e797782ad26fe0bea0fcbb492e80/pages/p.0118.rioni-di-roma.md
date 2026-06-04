@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>118
+118
 RIONE L. MONTI
 
 Fatti pochi passi è la chiesa di S. Caterina. Una volta questa chiesa era annessa ad un monastero tenuto dalle suore domenicane e costruito alla munificenza di Porzia Massimi, che era entrata in ordine monacale con il nome di suor Maria Vittoria.

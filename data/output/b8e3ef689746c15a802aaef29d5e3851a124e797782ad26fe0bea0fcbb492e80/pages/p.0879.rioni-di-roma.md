@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 879
 
 Il toponimo è difficile a spiegarsi: per il Romano «mazzamurello» in romanesco significa spirito maligno e bizzarro; forse in riferimento a qualche tiro fatto da un presunto demonietto ad abitanti di qualche casa; il Rufini ritiene che un mago, ivi residente, spingesse gli spiriti o demoni (mazzamurelli) nella via impedendone il passaggio; potrebbe anche trattarsi di un gioco dazzardo che si faceva nel vicolo.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>504
+504
 RIONE VII. S. EUSTACHIO
 
 [Immagine]

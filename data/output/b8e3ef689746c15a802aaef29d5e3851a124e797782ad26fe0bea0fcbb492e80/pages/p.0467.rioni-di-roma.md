@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 467
 
 Soli 31 anni, nel fiore della bellezza dell'avvenenza fisica, per uno solo. Imperia venne sepolta, assecondando la sua volontà, in S. Gregorio al Celio, in una ricca tomba fatta fare dal solito Agostino Chigi. L'epitaffio che vi si appose riportava — dico riportava perché purtroppo è scomparso — alcune imprecisioni.

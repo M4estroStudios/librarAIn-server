@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>DALLA ROMA AUGUSTEA ALLA CITTÀ LEONINA
+DALLA ROMA AUGUSTEA ALLA CITTÀ LEONINA
 
 **Ponti e rioni**
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 829
 
 Mente questa suole prendere chiunque voglia: Sorge verso gli altri la casa sublime; il cui culmine, prima fra i primi, Niccolò il grande eresse dalle fondamenta per rinnovare il decoro dei suoi sta il nome del padre Crescenzio e della madre Teodora.

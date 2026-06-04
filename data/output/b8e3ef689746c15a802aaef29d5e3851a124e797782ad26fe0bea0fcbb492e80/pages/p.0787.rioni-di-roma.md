@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 787
 
 La chiesa di S. Giorgio in Velabro in una stampa di fine Ottocento.

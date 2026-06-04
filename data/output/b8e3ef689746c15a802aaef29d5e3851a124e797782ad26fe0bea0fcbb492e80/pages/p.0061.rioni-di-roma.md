@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 61
 
 zioni sconvolsero anche il sottosuolo; eliminando così le tracce di altri edifici come le chiese di S. Maria fra le Due Vie, dei Ss. Quaranta, gli Oratori del Santo Pastore di S. Lorenzo. Ma durante i lavori di demolizione è stato rinvenuto il Ludus Magnus, individuato nel 1937, scavato per metà nel 1961 e che oggi è visibile nell'area recintata ad un livello inferiore a strada. Il Ludus Magnus fu la più importante caserma di gladiatori in Roma costruita durante l'impero di Domiziano e collegata al Colosseo: ha pianta rettangolare con al centro un cortile porticato. Tutt'intorno è una numerosa serie di piccole stanze destinate agli alloggi dei gladiatori e in mezzo al cortile l'arena ovale di un piccolo anfiteatro utilizzato dai gladiatori per allenarsi e dotato di una piccola cavea da dove atleti, amici e parenti potevano assistere agli allenamenti.

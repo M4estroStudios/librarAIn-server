@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 771
 
 No al tempio furono costruiti i portici destinati a offrire ricovero ai malati, che si sottoponevano alla pratica dell' *incubatio*: essa consisteva nel passare la notte dormendo sotto i portici dopo alcuni giorni di purificazione e di digiuno e quindi, al risveglio, nel raccontare ai sacerdoti i sogni avuti. L'interpretazione di questi sogni permetteva ai sacerdoti di operare una diagnosi del male, spesso di giungere ad una terapia consigliata e talvolta ad una premonizione dell'esito della malattia stessa. Certamente Sigmund Freud avrebbe visitato con molto interesse questo santuario! Sull'isola i romani costruirono altri templi minori: uno dedicato a Faunus, che proteggeva le partorienti; un altro a Veiove che garantiva i giuramenti. Esistevano piccoli sacelli dedicati a Semo Sancus, Iuppiter Iurarius e infine a Bellona insulensis e, ovviamente, al dio Tevere.

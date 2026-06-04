@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 135
 
 I secolo. Se la via Appia Antica fu sempre un centro nevralgico di comunicazione, periodicamente riattata allo scopo, la porta Latina per secoli rimase murata. La porta Metronia invece fu utilizzata per condurre in città l'acqua Mariana, dai romani disinvoltamente chiamata «marrana», deviazione linguistica che poi nella città dei papi e del Belli rimarrà per indicare qualsiasi acqua stagnante.

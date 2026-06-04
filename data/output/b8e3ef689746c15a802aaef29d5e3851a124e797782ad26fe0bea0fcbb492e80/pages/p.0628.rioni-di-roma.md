@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>628
+628
 RIONE X. CAMPITELLI
 
 Fabi, anch'esso perduto nel 1929 e quindi, vicino alla chiesa di S. Venanzio; era Oratorio della Divina Pietà con annessa la casa per i catecumeni.

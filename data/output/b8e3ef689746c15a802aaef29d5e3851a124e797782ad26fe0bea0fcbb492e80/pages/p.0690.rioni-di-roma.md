@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>696)
+696)
 RIONE X. CAMPITELLI
 
 proposte politiche, ma serviva a lui per arringare la folla che diventava un altro dei suoi strumenti di potere politico. I rostri cesariani hanno la forma di una tribuna con gradinata; rivestita di marmo possiamo visitare accanto all'arco di Settimio Severi. Essi furono comunque sostituiti da rostri augustei che furono collocati davanti in blocchi di tufo dell'Aniene che conservano i fori nei quali venivano alloggiati i rostri bronzei tolti alle navi. Simbolicamente la tribuna dell'oratore si trasformava nella tolda di una nave rostrata, metaforicamente uno strumento di penetrazione persuasiva nel cuore della città.

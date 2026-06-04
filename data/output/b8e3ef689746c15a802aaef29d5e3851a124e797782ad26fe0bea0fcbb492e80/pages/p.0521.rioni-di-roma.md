@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 521
 
 Il convento degli agostiniani con la torre della Scimmia (incisione di G. Vasi)

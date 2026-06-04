@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 739
 
 alla bellezza che traspare dalle loro strutture, anche se profondamente incise dalle ingiurie del tempo. L'essere chiuse le abitazioni ed altre costruzioni tarde contribuisce; in un certo senso; dare risalto all'eleganza delle loro linee.

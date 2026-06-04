@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 371
 
 Cornice con palmette e protomi leonine. All'interno si apre un negozio di stampe e libri antichi. Questo palazzo cinquecentesco, che fu notevolmente ristrutturato intorno al 1940, aveva la facciata ornata da un motivo di bugnato dipinto:

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 61
 
 L'incoronazione del cardinal Barbo al soglio di Pietro; divenendo un palazzo in piena regola; il palazzo precedente copriva 700 metri quadrati, quello ultimato da papa Paolo II superava, con il giardino, 11.000 metri quadrati. La sala detta del Mappamondo fu costruita nel 1466, contemporaneamente all'allestimento della loggia e del portico nella chiesa adiacente.

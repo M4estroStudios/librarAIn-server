@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>868
+868
 RIONE XIII. TRASTEVERE
 
 La basilica di S. Cecilia in Trastevere. In un'incisione di G. Vasi.

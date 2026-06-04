@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUINTO ITINERARIO
+QUINTO ITINERARIO
 333
 
 Ticcio, al quale viene attribuita l'elegante decorazione che la caratterizza. Secondo altri quest'ultima sarebbe da attribuire a Prospero Fontana. Dubbi esistono anche sulla fronte prospiciente il giardino che qualcuno attribuisce all'Ammannati, altri al Vignola. Passato ai Medici, il palazzo divenne «il palazzo del Duca» subito dopo «del granduca», quando il signore di Firenze assunse quest'ultimo titolo.

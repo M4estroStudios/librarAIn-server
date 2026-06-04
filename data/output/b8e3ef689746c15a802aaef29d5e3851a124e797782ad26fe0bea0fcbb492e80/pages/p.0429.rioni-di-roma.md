@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 
 **L'oratorio filippini e la chiesa di S. Maria in Vallicella**
 In un'incisione secentesca.

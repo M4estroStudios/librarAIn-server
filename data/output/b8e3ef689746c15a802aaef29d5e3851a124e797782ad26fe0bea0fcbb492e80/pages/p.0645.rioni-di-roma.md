@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO 645
+PRIMO ITINERARIO 645
 
 Il Tabularium, utilizzato nel medioevo come fortezza anche come magazzino del sale, è oggi la facciata posteriore del palazzo Senatorio. Sulla destra è la Torre di Martino Colonna, eretta intorno al 1427. Tra le torri, questo lato del palazzo Senatorio — che è la facciata di sinistra — ha una sopraelevazione di un piano, eseguita recentemente. La parte più antica dell'edificio è in corrispondenza di una finestrella medievale; dietro cui è un ambiente con affreschi del Duecento. Si nota anche la campanella che veniva fatta suonare quando il senato di Roma entrava e usciva dal palazzo.
 

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 281
 
 Raggiunte le vie Sistina e Gregoriana, la strada che collega la zona antistante con la porta Pinciana va attribuita al presidente delle strade in carica nel 1564, che guarda caso era appunto il cardinale Ricci, proprietario della villa omonima. Come detto nella premessa, la via Sistina venne aperta col nome di via Felice nel 1585 da papa Sisto V; al secolo Felice Peretti. Rappresenta una sorla di cardo massimo che, superando Pincio, Quirinale, Viminale ed Esquilino — sia pur con diverse denominazioni — univa il "nuovo" rione, il vecchio Campo, con l'altro della Roma antica, Laterano che, superato ormai quale sede pontificia dal Vaticano per motivi militari e dal Quirinale per motivi igienici, costituiva pur sempre uno dei storici poli dell'Urbe.

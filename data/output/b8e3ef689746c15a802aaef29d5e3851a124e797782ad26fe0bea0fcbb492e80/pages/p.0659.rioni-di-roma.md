@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 659
 
 La strada prende nome dalle tre pignatte dello stemma della famiglia Pignatelli che è raffigurato sul piccolo monumento celebrante l'apertura di questa via sotto il papa di questa famiglia: Innocenzo XII (1692). Un'iscrizione, tra l'altro, dice: «O tu che passi, mira e rammori: che non vi sia sul Campidoglio la statua del pontefice; alla quale condurrebbero giustamente le benemerenze di lui, se non fosse statua lo stesso Campidoglio».

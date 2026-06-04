@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>PRIMO ITINERARIO
+PRIMO ITINERARIO
 347
 
 Lauro che, passata ai Piceni, fu dedicata a S. Maria di Loreto. Infine la nostra piazza fu anche detta di S. Simeone perché una volta vi si affacciava; appunto l'omonima chiesa di cui oggi resta la sola facciata.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>QUARTO ITINERARIO
+QUARTO ITINERARIO
 889
 
 La chiesa di S. Egidio a Trastevere, in un'incisione di G. Vasari, è divenuta sede del Museo del folclore e dei romaneschi. Qui vi sono quadri riguardanti Roma nelle varie epoche; graziosissime scene pinelliane realizzate da Orazio Amato del Novecento: lo scrivano pubblico; il presepio; il saltarello; la farmacia; il carretto a vino, ecc. Vi è stato parzialmente ricostruito lo studio del poeta romanesco Trilussa.

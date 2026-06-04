@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1170
+1170
 RIONE XX. TESTACCIO
 
 Nella *lex de urbe augenda* è esposto il programma che Cesare aveva fatto studiare ai tecnici greci per risolvere alcuni notevoli problemi quali arginature del fiume per evitare le inondazioni, la costruzione di un canale pontino per unire Roma con il porto di Pozzuoli, la costruzione di un nuovo porto ad Ostia fra il braccio pontino e quello del Tevere.

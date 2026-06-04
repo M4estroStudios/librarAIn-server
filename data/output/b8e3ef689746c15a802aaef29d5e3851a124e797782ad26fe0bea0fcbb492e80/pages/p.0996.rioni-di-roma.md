@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>996
+996
 RIUNE XV. ESQUILINO
 
 Piani superiori ornate alla sommità da stemmi lisci con teste femminili. Più lineare è la decorazione che orna le finestre e il portone dell'edificio successivo (n: 13), con girali in stucco per le finestre incominciate e con conchiglia centrale per il portone.

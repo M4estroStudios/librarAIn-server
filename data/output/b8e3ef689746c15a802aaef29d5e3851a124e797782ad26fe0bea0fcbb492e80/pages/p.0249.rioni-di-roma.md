@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 249
 
 Piazza S. Silvestro nel suo aspetto di fine Ottocento abbiamo la pianta disegnata dal Palladio. Sulla parete è murato un mosaico del I secolo d.C. dall'iconografia molto nota: le due colombe che si abbeverano ad un vaso. Molto bello è l'altare maggiore con arco trionfale ornato da due angeli che sorreggono l'immagine «Edessena». Si ritiene che al progetto di questo arco abbia contribuito lo stesso Michelangelo. L'altare invece è dei primi del Cinquecento e Carlo Rainaldi vi aggiunse il tabernacolo. Il catino absidale è ornato dalla scena del «Battesimo di Costantinovo» e la volta dalla raffigurazione del «Processo a S. Stefano», opera ancora del Gimignani. Nella navata di sinistra è importante, nella cappella, un affresco del Morazzone con scena della «Visitazione», che presenta sul panorama, in lontananza, la Colonna di Marco Aurelio. Segue la piccola cappella dell' Addolorata da cui si entra anche dalla via del Gambero. Qui è lo splendido reliquiario della testa del «Battista» in argento dorato e pietre dure opera di orafi del Trecento.

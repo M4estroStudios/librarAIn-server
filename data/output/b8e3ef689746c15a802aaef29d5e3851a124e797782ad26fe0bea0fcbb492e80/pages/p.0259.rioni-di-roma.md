@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 259
 
 La tradizione indica l'abitazione del pittore al n. 93 della via che all'epoca si chiamava vicolo del Bernino a causa del vicino palazzo Bernini. Al n. 93 tuttavia si ammira un'elegante edicola sacra raffigurante una Vergine Assunta. La cornice dell'edicola è ornata da ghirlande di rose in stucco. Si vuole che questo affresco sia opera del famoso Mario; ma non c'è alcuna credibilità storica e forse anche artistica. Al n. 95 è situato un bel palazzetto del Cinquecento congiunto al palazzo Bernini. I grandi archi del piano terra sono recenti mentre più interessanti sono invece le finestre con inferriate e mensole, che si aprono sui lati del palazzo; il quale conserva un'altra edicola sacra con la Madonna e il Bambino.

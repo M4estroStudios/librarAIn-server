@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>SECONDO ITINERARIO
+SECONDO ITINERARIO
 811
 
 del Priorato; detta anche S. Maria Aventina, che in antico sembra essere stata dedicata anche a S. Giovanni e a S. Basilio. La facciata è percorsa da due lesene scanalate ornate da spade a rilievo e sostenenti capitelli figurati con al centro torri (stemma Rezzonico): Le spade alludono alle virtù militari e morali dei cavalieri di Malta. Il portale, classicheggiante, è chiuso sulla sommità da un timpano su cui sta un occhio incorniciato da una corona di quercia con motivi strigilati.

@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>UNICO ITINERARIO 1177
+UNICO ITINERARIO 1177
 
 L'arco di Druso in una stampa di fine Ottocento.
 

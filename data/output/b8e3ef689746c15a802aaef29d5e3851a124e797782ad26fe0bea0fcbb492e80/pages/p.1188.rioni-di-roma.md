@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1188
+1188
 RIONE XXI: S. SABA
 
 Le navate e fu creata, sotto l'altare centrale, una confessione. Qui furono fatte trasportare le reliquie dei Ss. Nereo, Achilleo e Domitilla, che erano conservate nella chiesa di S. Adriano al Foro Romano. La chiesa ebbe successivi restauri nei primi anni del Novecento e ancora nel 1941, che rimisero in questi ultimi nella facciata la scansione della superficie in riquadri con drappi che si intravede tuttora; commissionata dal cardinal Baronio tra la fine del Cinquecento e gli inizi del secolo successivo Girolamo Massei. La chiesa presenta la facciata arretrata fra due alte murature appartenenti all'originario impianto e mostra il corpo centrale con tetto a capanna sopraelevato rispetto alle navate laterali, coperti da un tetto obliquo. Davanti al sagrato, creatosi fra le due murature antiche, è una serie di colonnotti ricavati dal marmo e dal granito antico che lo separano dalla strada. Il portale, estremamente semplice, è fronteggiato da un protiro con timpano triangolare, mentre la finestra posta al di sopra e che illumina la navata centrale presenta una semplice cornice in travertino e ha, al di sopra, un timpano spezzato. Il tetto è molto aggettante.

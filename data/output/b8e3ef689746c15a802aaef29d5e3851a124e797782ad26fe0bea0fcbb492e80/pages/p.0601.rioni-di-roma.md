@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>TERZO ITINERARIO
+TERZO ITINERARIO
 60
 
 La chiesa di S. Ignazio nel Seicento in un'incisione di G.B. Falda proprio dinanzi alla massiccia facciata della Chiesa di S. Ignazio.

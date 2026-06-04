@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>1072
+1072
 RIONE XVIII. CASTRO PRETORIO
 
 na. Non sappiamo come la prese il buon Del Duca. Passò da questa vita nel 1574 e ora giace in un angolo della sua chiesa: fuori mano, senza epitaffio. Nessun architetto avrebbe meritato di lavorare nellambito delle Terme di Diocleziano se non Michelangelo Buonarroti. Era l'uomo giusto nell'epoca adatta. Pochi decenni prima e soprattutto dopo, avrebbero compromesso tutto.

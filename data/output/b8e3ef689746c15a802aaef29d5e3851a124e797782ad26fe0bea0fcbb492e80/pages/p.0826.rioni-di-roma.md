@@ -1,6 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-<|channel>thought
-<channel|>826
+826
 RIONE XII. RIPA
 
 cheri pose un grande fontanile dalla vasca oblunga con una pro-
