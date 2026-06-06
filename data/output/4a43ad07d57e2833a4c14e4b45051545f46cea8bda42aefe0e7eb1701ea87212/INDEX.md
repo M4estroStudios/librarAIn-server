@@ -1,7 +1,5 @@
 # INDEX — Storia di ROMA Moderna e Contemporanea
 
-CRONOLOGIA
-
 1995
 6 agosto: il Tribunale penale internazionale avrà sede all'Aja e sarà composto da 18 magistrati
 8 ottobre: l'allenatore della Roma Zeman, con una clamorosa intervista, dà il via allo scandalo doping nel calcio
@@ -53,8 +51,9 @@ giugno: la Roma vince il campionato 2000-2001
 4 giugno: mostre e manifestazioni per sessant'anni della liberazione di Roma
 17 settembre: notte bianca con spettacoli culturali e sportivi
 
----
+Albani Giovanni Francesco, Clemente XI
 
+Roma, passim
 About Edmond, storico, 269
 Abruzzo, 8
 Accolti Benedetto, congiurato, 76
@@ -62,7 +61,11 @@ Accoramboni Marcello, 95
 Accoramboni Vittoria, 90, 94-95
 Acquapendente, 137
 Acquarone, politico, 353, 355
+Adriano VI, papa, 15, 19, 21
+Adrianopoli, 157
+Adriatico, mare, 7, 211
 Africa, 27
+Africa, 77, 137, 142, 349-350
 Africa Settentrionale, 89
 Agazzari Agostino, compositore, 129
 Agostino, santo, 127
@@ -71,7 +74,6 @@ Alba, 77, 85
 Albani Alessandro, 199
 Albani Annibale, cardinale, 169
 Albani Carlo, cardinale, 169
-Albani Giovanni Francesco, Clemente XI
 Albani Giuseppe, cardinale, 242
 Albania, 347, 349
 Albano, 160, 260
@@ -91,10 +93,6 @@ Alessandria, 7, 77
 Alessandro VI, papa, 22, 34
 Alessandro VII, papa, 135, 140, 142-146, 151, 212, 269-270, 273, 277
 Algeri, 26-27, 29
-Adriano VI, papa, 15, 19, 21
-Adrianopoli, 157
-Adriatico, mare, 7, 211
-Africa, 77, 137, 142, 349-350
 Alpi, catena montuosa, 222
 Altemps, dinastia, 77
 Altieri Emilio vedi Clemente X
@@ -108,8 +106,8 @@ Amato Giuliano, politico, 396
 Amato Mario, giudice, 384
 Amelia, calciatore, 407
 Amendola Giorgio, politico, 377
-America Latina, 155, 190, 262
 America, 142
+America Latina, 155, 190, 262
 Americhe, 82
 Ammannati Bartolomeo, architetto, 58
 Anagni, 67
@@ -122,9 +120,7 @@ Aniene, fiume, 211, 247
 Antegnate, 262
 Antille, 190
 Antonelli Giacomo, cardinale, 254, 258, 269
-
----
-
+CRONOLOGIA
 Ferdinando III, imperatore, 135, 144
 Ferdinando re di Napoli, 201, 214, 222
 Feri Girolamo, religioso teatino, 103
@@ -148,9 +144,9 @@ Fiano, 161
 Filiberto d'Orange, principe di Chalon, 7
 Filippine, 96, 109
 Filippo d'Este, marchese di San Martino, 105
+Filippo di Borbone re di Spagna, 164, 170-171, 174, 191-192
 Filippo II, re di Spagna e delle Sicilie, 80, 82, 83, 86, 89, 96, 100, 103, 113
 Filippo III, re di Spagna, 114
-Filippo di Borbone re di Spagna, 164, 170-171, 174, 191-192
 Filo della Torre Alberica, contessa, 396
 Fioravanti Giusva, 384
 Fiori Federico, pittore, 99
@@ -171,12 +167,12 @@ Fouché Joseph, politico, 230
 Fougez Anna, cantante, 324
 Fracastoro Girolamo, medico, 43
 Francesca Romana, santa, 120
+Francesco di Lorena, imperatore, 197, 230
 Francesco di Paola, santo, 212
 Francesco di Sales, santo, 127
-Francesco I d'Austria, imperatore, 234
-Francesco di Lorena, imperatore, 197, 230
-Francesco I di Valois, re di Francia, 7-9, 13, 26, 28-30, 32, 48
 Francesco I, granduca di Toscana, 93-94
+Francesco I d'Austria, imperatore, 234
+Francesco I di Valois, re di Francia, 7-9, 13, 26, 28-30, 32, 48
 Francesco II, imperatore, 223
 Francesco Saverio, santo, 36
 Francia, 8, 12, 16, 21, 25-27, 29, 32, 38, 48, 59, 67, 75, 82, 86, 99-100, 105, 108, 137, 142, 144, 152, 157, 161-162, 170, 172, 182, 191-192, 197, 200-201, 204-205, 209, 214, 250, 273, 316, 348
@@ -213,9 +209,6 @@ Genova, 7, 28, 32, 77, 153, 158, 197, 231, 250, 262
 Genovesi Antonio, economista, 195
 Gentileschi Orazio, pittore, 99
 Gerba, 783
-
----
-
 Righetti Ubaldo, calciatore, 389
 Rijswijk, 164
 Rimini, 191, 203
@@ -228,7 +221,6 @@ Rocca d'Arci, 262
 Rocca di Salasco, 262
 Rodinò, politico, 359
 Rodolfo II d'Asburgo, imperatore, 113, 115, 122
-Roma, passim
 Romagna, 17, 90, 191, 194, 202, 239, 244, 250, 253, 272
 Romania, 170
 Romano Giulio, pittore, 20
@@ -290,8 +282,8 @@ Sanfilippo Mario, scrittore, 303, 323
 Sangallo Antonio da, il Giovane, architetto, 24, 28, 34, 49, 53-54, 62
 Sannazaro Jacopo, poeta, 20
 Sant'Agata dei Goti, 94
-Sant'Angelo della Scala, 63
 Sant'Angelo, 148
+Sant'Angelo della Scala, 63
 Sant'Arcangelo di Romagna, 203, 207
 Santacroce Fabio, aristocratico, 83
 Saragat Giuseppe, politico, 375
@@ -299,9 +291,9 @@ Sardegna, 171, 179
 Sarti Antonio, architetto, 53
 Sarto Giuseppe vedi Pio X
 Sartori Giulio Antonio, cardinale, 107
+Savelli, dinastia, 169
 Savelli Domenico, monsignore, 264
 Savelli Giovanni Battista, generale, 10
-Savelli, dinastia, 169
 Savini, colonnello, 259
 Savoia, 250, 344
 Savona, 228
