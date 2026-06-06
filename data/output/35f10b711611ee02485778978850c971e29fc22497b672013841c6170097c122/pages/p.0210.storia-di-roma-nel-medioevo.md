@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+210
+
+LUDOVICO GATTO
+STORIA DI ROMA NEL MEDIOEVO
+
+La prima infatti, creata come è per rispondere a immediate necessità difensive di Roma, appare dotata di accorgimenti che la rendono sicura e funzionale. Per esempio vi si evitano abbellimenti e orpelli onde lasciare ripide e lisce le mura che quindi impediscano la facile scalata dei nemici; anche perché i Saraceni sappiamo bene sono in grado di arrampicarsi su superfici anche scoscese con la rapidità e la destrezza di veri scoiattoli.
+
+Altra differenza tra le due cinture murarie reperirsi nel minor numero di porte. Le mura aureliane, secondo Leone IV e i tecnici del IX secolo, ne hanno troppe e sono per questo meno sicure. È vero e il papa ne è consapevole che sarebbe stato difficile eliminare o ridurre le uscite e le entrate dalle mura cittadine che non possono non essere numerose, data l'estensione immensa del perimetro cittadino, le esigenze del traffico in Roma assai sostenuto; e dello spostamento dei cittadini che devono essere posti in grado di uscire e rientrare agevolmente nell'abitato senza compiere percorsi lunghi e defatiganti.
+
+Comunque per quanto non eliminabile; la moltiplicazione delle porte costituirà sempre un punto vulnerabile della difesa di Roma; anche perché i battenti sono in legno e quindi, seppur solidissimi, possono essere sfondati o bruciati dalla violenza degli assedianti: va detto in proposito che, proprio per ovviare a tale inconveniente fra il 535 e il 553, i varchi della cintura aureliana sono stati rafforzati mediante la costruzione posticcia di posterule in muratura, situate a riparo degli ingressi medesimi dall'assalto di possibili nemici.
+
+Le mura leonine invece, oltre che per motivi di sicurezza, vengono progettate con minor numero di ingressi in quanto il loro perimetro appare ristretto rispetto a quello della grande cintura di Roma e quindi non è necessario moltiplicare loro accessi. Oltretutto il settore nord del nuovo complesso confina con la campagna della valle Aurelia e della Cassia e anche per questo non sembra necessario provvederlo di varchi.
+
+Le porte progettate ed eseguite presso la cinta leonina sono pertanto solo tre: quella detta dei Sassoni, nella via di Santo Spirito ove si trovava allora la vecchia Schola Saxonum e adesso insiste l'Ospedale di Santo Spirito; vê poi quella di San Pellegrino, più vicina alla basilica, presso il colonnato. La terza infine, importantissima, si trova accanto a Castel Sant'Angelo e al ponte ed è quella maggiormente utilizzata per chi voglia entrare o uscire da Roma senza giungere il molto più lontano ponte Milvio. Il Castel Sant'Angelo resta poi unito a San Pietro da un contrafforte; in età rinascimentale sostituito dall'ancora esistente passetto di Borgo, un vero e proprio corridoio che pone in diretto collegamento il castello con la basilica e i palazzi vaticani. Il progetto infine di una quarta porta di cui non rimane traccia.
+
+In relazione alle mura Aureliane, un altro rilievo è stato fatto dai progettisti della cinta leonina: le prime infatti risultano dotate di una troppo ampia merlatura; utile per la difesa intera, ma facilmente scalabile dall'esterno. Quella di Leone IV pertanto, sarà completamente priva di merli collocati nella parte terminale ma verrà provvista di capitoie o passaggi interni segreti che serviranno per mantenere i contatti fra la città e le campagne circostanti mediante passaggi sotterranei. Le capitoie inoltre appaiono adatte a far calare dalla sommità, tramite corde, vedette ben addestrate a perlustrare le zone circostanti.
+
+L'impresa dunque è concepita in modo da essere il più possibile inattaccabile e difendibile. I lavori, cominciati concretamente nell'anno 847, terminano nell'853. Completare una fascia muraria che raccoglie le colline e i borghi di Roma nord in soli sei anni costituisce un'impresa invero prodigiosa. Il 27 giugno 853 avrà luogo...

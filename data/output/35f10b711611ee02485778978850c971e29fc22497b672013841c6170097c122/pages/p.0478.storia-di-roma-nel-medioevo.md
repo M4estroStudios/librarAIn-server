@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+478
+LUDOVICO GATTO - STORIA DI ROMA NEL MEDIOEVO
+
+Una sensibile incrinatura per il troppo prolungato distacco del vicario di Cristo dall'Urbe... Tuttavia, un grande peso nel proposito di Urbano V hanno assunto personaggi come Francesco Petrarca e Santa Caterina da Siena, per fare almeno i loro nomi, più autorevoli ma non gli unici che non si stancano di elencare i validissimi motivi che devono convincere il papa a non abbandonare più a lungo la sua sede e, per converso, devono esortare anche la stessa sede romana a sollecitare il ritorno dei papi:
+
+In realtà tuttavia la sollecitudine petrarchesca e quella cateriniana dovranno essere rivolte soprattutto verso il pontefice. Roma infatti, per parte sua, continua come negli anni precedenti a inviare ambascerie ad Avignone tese ad avanzare richieste di vario genere; volte concluse con la promessa di devozione e obbedienza e, per prima cosa con l'invocazione di un sollecito ritorno del "padre", del quale i "diletti figli" chiedono la presenza e di cui lamentano la non più procrastinabile lontananza.
+
+I Romani poi, o meglio i governanti in loro nome, anche in anni considerati difficili continueranno a impegnare notevoli risorse nel restauro di chiese e palazzi, a predisporre l'ammasso di derrate alimentari e a locare alloggi, in vista del fausto evento della conclusione del papato avignonese sempre invocato e mai ottenuto.
+
+**Papa Urbano V torna a Roma**
+
+Il 12 settembre 1362 muore Innocenzo VI e a succedergli sarà chiamato l'abate del monastero benedettino di San Vittore di Marsiglia, Urbano V, la più nobile figura di pontefice avignonese; il quale, come accennato, non è contrario alla situazione politica "democratica" creatasi a Roma e anzi ne chiede il rafforzamento, perché intravede in essa il supporto più felice all'azione condotta ormai da alcuni anni da Egidio Albornoz. Da tempo infatti permane una difficile situazione nei rapporti fra Roma e le città del *Districtus*, in particolare con Viterbo, prima conquistata e sottomessa e poi perduta, in un perpetuarsi di incidenti volti a creare una situazione di conflittualità strisciante destinata far perdere gran parte dei benefici che la Società dei balestrieri e dei pavesati potrebbe introdurre a Roma.
+
+Alla fine dunque verrà deciso il viaggio papale di rientro nell'Urbe, annunciato da una serie di importanti restauri in San Pietro per circa 15.000 fiorini, e di lavori nei giardini vaticani tolti al loro progressivo inselvatichimento con la spesa di 6600 fiorini. In proposito aggiungiamo qui che l'aspetto del *viridarium* vaticano era allora assai diverso da quello assunto dagli stessi giardini in età rinascimentale e molto più vicino alla configurazione di un orto che a quella di un parco. Infatti dopo i lavori di cui trattasi gli orti vaticani renderanno annualmente trecento botti di ottimo vino e un enorme quantitativo di frutta, i cui proventi saranno assegnati al capitolo lateranense.
+
+Da Avignone Urbano si muove il 30 aprile 1367 con una ricca flotta offertagli dai potentati romani impegnatisi a gara in evenienza: dopo una sosta a Genova, il papa sbarca a Corneto il 3 giugno; comincia l'Italia, annoterà stranamente un cronista avignonese estraneo ai luoghi dove trova ad attenderlo primo fra tutti Egidio di Albornoz che, in Viterbo, gli porterà un carro contenente le chiavi di tutte le città riconquistate all'obbedienza papale, fra queste non ultime quelle di Castel Sant'Angelo che assicura un sicuro ingresso in Roma.

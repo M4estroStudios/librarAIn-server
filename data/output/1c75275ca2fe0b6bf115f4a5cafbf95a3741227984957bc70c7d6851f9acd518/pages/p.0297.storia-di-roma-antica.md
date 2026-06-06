@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+UNA DINASTIA COMPLICATA: [ GIULIO-CLAUDII ]
+
+297
+
+MORTI MISTERIOSE E SUCCESSIONE DIFFICILE
+
+In Oriente il prestigio di Roma è oscurato e i Parti si rifanno minacciosi. Tiberio invia Germanico in Siria con speciali e gli affianca Gneo Calpurnio Pisone. La scarsa intesa tra i due è peggiorata dalla rivalità tra le mogli, Agrippina e Plancina. Germanico, benché Augusto avesse vietato ai senatori di mettervi piede, compie un lungo viaggio in Egitto. Rientrato in Siria, toglie il comando a Pisone, che non ha rispettato le sue disposizioni. Subito dopo si ammala e muore, esprimendo il sospetto di essere stato avvelenato da Pisone e Plancina. Dopo una traversata compiuta in pieno inverno, Agrippina sbarca a Brindisi con le ceneri del marito. Il corteo funebre percorre tutta la via Appia e a Terracina gli va incontro suo cugino Druso, il figlio di Tiberio. Durante i funerali molti si abbandonano a manifestazioni di dolore eccessive e pericolose. Sono assenti, invece, oltre alla madre Antonia, affranta dal dolore, anche Tiberio e Livia. Circola anche la voce che Tiberio non sia estraneo alla scomparsa di Germanico; le cui ceneri sono poste nel mausoleo di Augusto. Pisone, che ha tentato di riprendere la sua provincia con le armi, subisce un processo per tradimento e, per sottrarsi alla condanna, è costretto al suicidio.
+
+Tiberio, insofferente della vita imposta dall'esercizio del potere, eletto console per il 21 d.C. insieme con Druso, lascia al figlio l'amministrazione dello Stato e va a vivere a Nola, nella casa dove è morto Augusto. Rientrato nella capitale in seguito alle pressioni del Senato, gli muore il figlio Druso, avvelenato in circostanze misteriose. Si sussurra che l'omicidio sia stato organizzato dalla moglie Livilla, sedotta dal potente prefetto del pretorio Seiano. Morto Druso, Tiberio deve occuparsi della successione. Invece dei nipoti diretti, Tiberio Gemello e Germanico, che sospetta essere figli adulterini di Livilla, egli presenta al Senato come eredi Nerone Cesare e Druso, figli di suo fratello germanico.
+
+NASCE IL PALAZZO
+
+Tiberio inizia la costruzione del primo vero e proprio palazzo imperiale sul Palatino (domus Tiberiana). La casa di Augusto, infatti, non ha mai assunto un aspetto di costruzione unitaria, benché attraverso l'unione di diverse case repubblicane abbia tentato di creare, accanto alla propria dimora privata, una serie di ambienti di rappresentanza dove avvengono anche importanti riunioni del Senato. L'area prescelta da Tiberio, il versante occidentale del Palatino tra il tempio di Cibele e il Foro, corrisponde probabilmente alla sua casa natale.
+
+Il nucleo originario del palazzo imperiale è ancora poco conosciuto, dato che è coperto dagli orti farnesiani, solo parzialmente scavati. Doveva trattarsi di un edificio costruito a imitazione delle grandi ville suburbane, affacciato sul Foro con effetto scenografico. All'età tiberiana potrebbe appartenere una galleria coperta (criptoportico) con resti di pittura, stucchi e pavimento a mosaico. Caligola dà a sua volta impulso ai lavori del palazzo imperiale che concepisce come una vera e propria reggia orientale e collega, pertanto, secondo un modello tolemaico, il tempio dei Dioscuri nel Foro.
+
+Una ricostruzione della domus Tiberiana con alcune aggiunte, cui appartengono 18 ambienti in laterizio con volte affrescate nel I secolo d.C., è dovuta a Nerone e si dà dopo il grande incendio del 64. Questo primo assetto del palazzo subirà una trasformazione radicale con la costruzione dei palazzi domizianei (vedi capitolo La dinastia dei Flavii).

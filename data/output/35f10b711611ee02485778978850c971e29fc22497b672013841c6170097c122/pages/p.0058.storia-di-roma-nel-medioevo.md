@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+58
+LUDOVICO GATTO
+STORIA DI ROMA NEL MEDIOEVO
+
+Importante opera di conversione al cristianesimo di intere popolazioni, si lanciano sulla città — la ormai più che immagine di uno Stato che non vi risiede e ha posto la nuova capitale a Milano o in Europa Orientale — comincia a diventare il centro della religione di Cristo. La incontenibile virulenza barbarica metterà dunque a dura prova le nuove strutture ecclesiastiche e la credibilità della religione stessa. Ciò rende delicata la situazione romana e gravi i problemi di difesa della città, ponendo in evidenza gli aspetti della sua intima fragilità. Nel campo degli assedi e dei saccheggi cui essa verrà sottoposta, quello di Alarico non sarà né il primo né il più grave; tuttavia si ricorderà sempre con toni drammatici e quasi apocalittici.
+
+I rischi di un'invasione
+Come è noto appaiono contenuti sino a che la difesa resta nelle mani di Teodosio; ma con la sua morte (gennaio 395) il governo diviene appannaggio del giovane e meno esperto Onorio, il quale troverà un valido appoggio nel generale Stilicone, uno degli ultimi grandi condottieri dell'impero, che conseguirà successi contro il visigoto Alarico, che si prepara a invadere la penisola italiana.
+
+Purtroppo, però, i successi riportati da Stilicone, invece di rafforzare il prestigio di quell'uomo d'armi, ne rendono precaria la posizione; anche perché egli è clamorosamente mal visto dai Quiriti, che gli rimproverano l'origine vandalica, e sospettato dagli ecclesiastici per le sue propensioni ariane. Egli quindi cade presto vittima di una congiura di palazzo che lo vorrebbe complice di segrete trattative con il nemico. Nel 408 Stilicone viene ucciso e Roma rimane sola contro la violenza barbarica. Alarico allora, a capo di un esercito che viene ritenuto di circa 30.000 uomini — una cifra enorme ed esagerata per quell'epoca — chiede all'imperatore il permesso di stanziarsi entro le terre di confine del Norico. Onorio e il Senato rispondono in modo sdegnoso alla proposta. Il goto allora scenderà subito con i suoi soldati lungo la via Emilia, giungendo presto in prossimità di Roma.
+
+Gli eredi di Augusto e di Marco Aurelio, dopo mesi di incertezze e di timore, si mostreranno ora incapaci di correre ai ripari. L'Urbe sarà assediata e la notizia provocherà un vero terrore. Dai lontani tempi dell'invasione gallica (387 a.C.) infatti nessun esercito ha osato accostarsi alla capitale del più grande impero del mondo.
+
+Solo di fronte al pericolo il Senato si muoverà, partendo con il piede sbagliato; deciso a tentare le maniere forti nel momento in cui sarebbe stato opportuno ragionare con il cervello piuttosto che con il cuore. Ma tanto è: tra i Romani si insinua il dubbio che responsabile dell'arrivo dei Goti sia Serena, vedova di Stilicone, nipote di Teodosio e figlia del fratello dell'imperatore Onorio. La nobildonna, in quanto consorte di un generale ucciso come traditore — ma la cui colpa è ancora tutta da provare — sarà ritenuta anch'essa spergiura e accusata di connivenza con Alarico, da lei invitato surrettiziamente a Roma.
+
+Anche la principessa Placidia, sorella di Onorio e zia della giovane, forse per paura, forse per invidia, accetta di consegnare Serena al carnefice: a quest'ultima viene così mozzato il capo e il Senato ritiene, in modo invero inopinato, che la notizia dell'esecuzione possa intimorire i Visigoti e indurli ad andarsene dalle vicinanze di Roma.
+
+Invece non sarà così: e poiché le truppe nemiche continuano a circondare le mura, impedendo l'uscita e l'accesso di uomini e cose, il Senato, consapevole dell'impossibilità di tenere a lungo la città priva di cibo e di mezzi, decide di intavolare tardive ma più serie trattative con gli assedianti e pattuisce un riscatto invero assai esoso. Per allontanare l'esercito e risparmiare Roma, Alarico preten...

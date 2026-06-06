@@ -1,0 +1,11 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+ROMA TRA CALLISTO III E ALESSANDRO VI
+515
+
+Ponte Sisto, in un'incisione di Giuseppe Vasi.
+
+tropoli che ancora adesso le è consono; un volto che diventerà ancor più evidente con Alessandro VI; Giulio I e Leone X, i quali compiranno il prodigio di trasformare la città classica e medievale in una metropoli rinascimentale.
+Con Sisto però l'Urbe diviene anche un grande centro commerciale ove si vendono prodotti di moda e di gran lusso: Ogni anno decine e decine di migliaia di pellegrini — il loro numero aumenta a dismisura in occasione di feste, santificazioni, incoronazioni e simili — giungono a Roma ove, compiute le consuete devozioni, sostano per comprare di tutto: stoffe, vestiti, pellicce, calzature, argenterie e oggetti di oreficeria; armi antiche, lenti, libri, monete; oggetti di antiquariato.
+L'estrema agonia dell'impero bizantino fra il 1433 e il 1453 porta in Italia e nell'Urbe il fior fiore della cultura costantinopolitana che farà ingresso nella penisola in occasione dei concili di Firenze e di Ferrara, per poi stabilirsi a Roma con uomini di eccezionale statura intellettuale come Giorgio Bessarione da Trebisonda e Cristoforo Landino.
+La rinascita delle lettere e del greco, la frequenza di studenti e di studiosi in continuo aumento nella Biblioteca Vaticana e nell'Università della Sapienza vanno di pari passo con l'arrivo di pittori, scultori, cesellatori, ebanisti, antiquari, architetti e urbanisti, artisti volti tutti a fare di Roma la loro città; che comincia ad affermarsi negli ultimi decenni del Quattrocento tra le più colte e belle d'Italia e tale da reggere il confronto con Firenze; cui essa sarà collegata dalla presenza di operatori economici e di banchieri fiorentini.
+Il matrimonio di Lorenzo de' Medici con Clarice Orsini rende poi più stretti i rapporti medicei con le nobili famiglie romane e accelera l'ingresso della cultura fiorentina nella città che da questo contatto esce modernizzata e ingentilita. Le abitudini rozze dei Romani del 1300 vanno modificandosi, e così il loro dialetto; fino al secolo precedente pieno di "prestiti" ciociari e meridionali in genere; dal Quattrocento in poi, si avvierà verso un progressivo processo di toscanizzazione destinato nel Cinquecento a far definire la lingua italiana come il prodotto del incontro tra fiorentino e romano.

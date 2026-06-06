@@ -1,0 +1,13 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+UNA DINASTIA COMPLICATA: GIULIO-CLAUDIO 299
+
+[Immagine]
+Antonia Minore in un'incisione tratta dall'Illustrium imagines
+
+COMPLOTTI E COLPI DI SCENA
+
+La situazione a Roma precipita: Seiano riesce a liberarsi di Agrippina esibendo le prove di un suo complotto per eliminare lui e Tiberio e mettere sul trono Nerone Cesare. La principessa è relegata a Ventotene e muore tra atroci supplizi. Nerone è lasciato morire di fame a Ponza; un altro figlio di Agrippina e Germanico, Druso, è incriminato e lasciato morire in carcere grazie alle false testimonianze della moglie Emilia Lepida, anch'essa sedotta da Seiano. Il potente prefetto del pretorio, che è all'apice del potere, ottiene la promessa di poter sposare Giulia, la giovane nipote di Tiberio, figlia di Druso e Livilla, e di maritare la propria figlia con un nipote di Germanico. Ma la sua ascesa è bruscamente interrotta dall'intervento di Antonia Minore, vedova di Druso, fratello di Tiberio; e figlia di Ottavia (sorella di Augusto) e di Marco Antonio. Molto legata a Tiberio, la dama è a capo di un gruppo di senatori ostili a Seiano. Dalle sue lettere l'imperatore apprende le malefatte del collaboratore e il suo proposito di sbarazzarsi anche di Gaio (Caligola) e di Tiberio stesso.
+
+Con molta prudenza (Seiano ha molti seguaci e controlla i pretoriani) Tiberio si procura i piani della congiura e comincia ad agire. Fa venire Caligola al sicuro a Capri e lo designa suo successore. Nomina segretamente un nuovo prefetto del pretorio: Sutorio Macrone; e lo invia in Senato con una lettera.
+
+Seiano aspetta il conferimento della potestà tribunizia, che in pratica ne farebbe il coreggente di Tiberio: tra lo stupore di tutti, egli è invece arrestato; rinchiuso nel carcere Mamertino, condannato a morte e nello stesso giorno strangolato; anche tutta la sua famiglia e i suoi più stretti seguaci vengono trucidati. Livilla, la cui responsabilità nella morte di Druso è ora provata, si lascia morire di fame. Si scatenano false accuse e vendette personali, di cui sono vittime anche alcuni dei più fedeli compagni dell'imperatore, che si tolgono la vita. Tiberio è sempre più solo.

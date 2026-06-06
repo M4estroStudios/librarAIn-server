@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+# Roma assalita dai Vandali: la Roma di Odoacre
+
+### L'assedio del 455
+
+Sebbene in precedenza, parlando di papa Leone I e delle vicende cittadine romane, si sia fatto qualche riferimento all'assalto dei Vandali contro Roma, ci proponiamo di trattare specificamente di uno degli eventi giustamente e più tristemente noti della storia della nostra città. Si è detto in proposito del celebrato incontro del papa con Attila e si è anche aggiunto che, diverso nelle motivazioni e nello sviluppo, si mostra l'incontro del grande Leone con Genserico nel 455.
+
+I preliminari dell'assalto sono noti: Valentiniano II dopo l'intervento di Leone su Attila riprende a governare sorretto anche dal comportamento valoroso del generale Ezio che forse, con il suo fermo atteggiamento militare, ha in qualche modo anch'egli contribuito a determinare la ritirata degli Unni. Tuttavia proprio sull'atteggiamento del prode generale sono ben presto sorti dubbi e contestazioni. Così l'anno successivo alla sconfitta degli Unni, il 454, una congiura di palazzo, cui non sarebbe stato estraneo Valentiniano, condurrà a morte il capo militare. Il 16 marzo 455 mentre si trova nella sua sontuosa residenza «ad duas lauross», situata al terzo miglio della via Labicana, anche Valentiniano, vittima di un agguato, verrà a morte. Lo storico Prospero di Tiro, per dimostrare che chi la fa aspetti, noterà che in difesa dell'Augusto, in certo modo responsabile della fine di Ezio, non sarà sguainata neppure una spada!
+
+A questo punto sale al trono l'usurpatore Massimo e mentre la città giace prostrata e smarrita, priva dei suoi difensori, giunge la feroce notizia dell'approdo alle rive del Tevere di Genserico e dei suoi Vandali, provenienti dall'Africa settentrionale e dalla Sicilia, ove hanno posto le basi di un fiorente regno. Roma risulta sguarnita di difese militari e sconvolta dalla paura, quando al porto si profilano le vele delle imbarcazioni vandaliche. La cittadinanza tumultuante allora, per vendicarsi dell'insipienza di Massimo, il quale non sembra in grado di assicurare l'incolumità dell'ex capitale imperiale, uccide il monarca lapidandolo senza pietà dopo meno di ottanta giorni di regno.
+
+La notizia del tumulto di palazzo e della sua inopinata conclusione sembra mettere le ali ai piedi di Genserico e dei suoi che dal porto si muoveranno verso il centro di Roma. Leone Magno, il quale lo ricordavamo dianzi, si proverà nuovamente a sbarrargli la strada; cercherà di rinnovare il prodigio che in precedenza ha preservato la città dall'assalto di Attila. Comunque, se la prima volta l'intervento papale si risolve felicemente, in questo secondo appuntamento il "miracolo" non si rinnoverà completamente pur se sortirà qualche effetto.
+
+Leone infatti, paludato dei sacri paramenti e recando la croce, si incontra qui già con...

@@ -1,0 +1,21 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+UNA DINASTIA COMPLICATA: I GIULIO-CLAUDII
+
+GLI INCERTI INIZI DI UN SUCCESSORE IMPOSTO DAL DESTINO
+
+Tiberio diviene signore di Roma nel 14 d.C. a 56 anni. Tutta la sua vita si è svolta all'ombra del potere:
+* Dapprima un'infanzia piena di pericoli, sullo sfondo delle guerre civili;
+* La difficile posizione di figliastro non amato di Augusto; che si è visto costretto a nominarlo suo erede solo perché il destino gli ha strappato i prediletti nipoti Gaio e Lucio; 
+* All'inizio Tiberio si muove con prudenza. Accanto a lui è la madre Livia; adottata da Augusto nel testamento e chiamata Giulia Augusta: dato che Tiberio non si è risposato, è la donna più potente dell'Impero; e lo sa. 
+
+La notizia della morte di Augusto è tenuta nascosta. Secondo le disposizioni impartite da Augusto stesso (o da Livia) alle guardie che lo custodiscono a Pandataria (Ventotene), va eliminato Agrippa Postumo, potenziale pretendente al trono in quanto nipote diretto di Augusto (vedi capitolo Riconciliazione e consenso). Così Tiberio è l'unico a poter accogliere l'eredità. Conscio della debolezza costituzionale della sua posizione, Tiberio esita prima di assumere il potere: si decide solo dopo aver ottenuto la sanzione del Senato. Rifiuta i titoli di imperatore e di padre della Patria e non porta volentieri nemmeno il nome di Augusto.
+
+TRIONFA LA NUOVA DINASTIA
+
+Nei primi tempi Tiberio rispetta le prerogative del Senato, cui affida anche la elezione dei magistrati, abolendo le assemblee popolari. La sua ascesa al potere coincide anche con pericolose ribellioni dei soldati stanziati in Pannonia e in Germania che, essendo cambiate le regole del gioco, desiderano partecipare alla scelta del nuovo imperatore. Sono placate solo dagli interventi di Druso in Pannonia e di Germanico sul Reno. 
+
+Per gratificare i soldati, Germanico conduce inoltre una campagna contro i Germani e ottiene un trionfo (16 d.C.). Per celebrare la riconquista delle insegne di Varo a Roma è eretto un arco (oggi perduto) presso il tempio di Saturno, allo sbocco del vicus Iugarius. Altri archi trionfali saranno innalzati da Tiberio:
+* Nel 19 d.C. in onore di Druso e di Germanico, nel Foro di Augusto, accanto al tempio di Marte Ultore;
+* Nel luogo riservato da Augusto alla celebrazione della dinastia, nel 24 d.C. in onore di Druso Minore. 
+
+Altri archi sorgono nelle colonie e nei municipi d'Italia. Deve apparire che sono i principi Giulio-Claudii con le loro imprese vittoriose a garantire la pace e la prosperità.

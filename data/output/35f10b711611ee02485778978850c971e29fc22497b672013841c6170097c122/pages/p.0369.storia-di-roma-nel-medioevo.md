@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+IL COMUNE ROMANO SI CONSOLIDA: LA LOTTA CON IL BARBAROSSA
+369
+
+novesi: risulteranno superati e annullati i danni provocati in seguito a precedenti azioni belliche fra le due potenze (Genova in particolare ha danneggiato navi e impianti portuali romani); inoltre per un triennio Roma si impegna a vendere le merci trasportate da Genova soltanto a operatori genovesi, il cui porto dovrà risultare preferito rispetto a quello della ghibellina Pisa. Per ammenda ai danni ininflitti ai Romani, i Genovesi si impegnano poi a tassare il loro commercio di cabotaggio sino a toccare la somma di 800 libbre per come di consueto; la durata di 29 anni (cioè lo spazio di una generazione) e impegna oltre all'amministrazione romana tutti i luoghi dipendenti da Roma situati nel Districtus; soprattutto quelli siti sul mare. Fra questi si distinguono Corneto, Civitavecchia, Santa Severa, Capo d'Anzio, Capo Linaro, Torre Astura, Terracina; tutti centri obbligati anch'essi a firmare la pace.
+
+È interessante a questo proposito sottolineare che Roma perfeziona un atto dell'importanza del suddetto accordo commerciale con Genova senza chiedere permesso né al papa né all'imperatore e mostra di essere personalmente garante della situazione politica e commerciale di tutta la zona tirrenica per un centinaio di chilometri a nord e centocinquanta a sud.
+
+In questa vicenda ricopre un posto di grande rilievo il suricordato Cencio Obictonis; personaggio influente nella politica della seconda metà del XII secolo; imparentato con la famiglia dei Pierleoni, con tutta probabilità deve avere grossi interessi nella politica marittima romana; dal momento che è stato nominato in quegli anni console della corporazione dei mercanti e marinai. Egli è allo stesso tempo scriniario ecclesiastico; si trova in relazione con gli ambienti curiali dell'Urbe; possiede una certa cultura e un notevole peso nella vita dell'amministrazione capitolina e della Chiesa degli anni successivi al 1150. La sua posizione gli darà quindi una cospicua disponibilità di danaro e un considerevole prestigio politico.
+
+Altri elementi emergono tuttavia dalla lettura dell'accordo romano-genovese: con il suddetto atto, il Comune romano fa riserva di fedeltà al papa al quale nel 1179 ospiterà nel suo palazzo l'arcivescovo genovese e taluni notabili della Città di San Giorgio; presenti a Roma per i loro affari. Altri elementi emergono tuttavia dalla lettura dell'accordo romano-genovese: con il suddetto atto, il Comune romano fa riserva di fedeltà al papa al pari dell'amministrazione genovese che compirà egual riserva nei riguardi dell'imperatore. Con il che Roma viene a porsi virtualmente a fianco del pontefice e a sostenere la politica di Alessandro III e sceglierà di posizionarsi contro Federico Barbarossa. Con questo atto dunque la Città eterna farà concretamente ingresso nelle questioni di politica internazionale e si troverà a partecipare attivamente alla vicenda imperiale con un orientamento ben definito e ormai immutabile. Roma favorirà pertanto la politica destinata a trionfare con la tregua di Venezia del 1177 e poi con la pace di Costanza nel 1183.
+
+**Alessandro III domina su Roma**
+
+Verso la metà del 1177 Alessandro III risiede ad Anagni, dove si svolgeranno i preliminari della tregua di Venezia: lì sarà raggiunto da Cristiano di Magonza e da altri ambasciatori imperiali intenzionati a trovar l'accordo con il papa; un accordo che rimuoverà l'infelice situazione generatasi per Federico in seguito all'infausta battaglia di Legnano.
+
+Nella stessa città della Campagna si recheranno altresì gli ambasciatori romani impegnati in lunghe, estenuanti trattative con il pontefice. Le discussioni si protrarranno per un anno e termineranno ai primi di marzo del 1178.
+
+In conclusione i senatori giureranno fedeltà ad Alessandro III, gli prometteranno...

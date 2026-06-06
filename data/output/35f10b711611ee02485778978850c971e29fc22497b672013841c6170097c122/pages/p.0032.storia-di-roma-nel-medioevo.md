@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+32
+
+LUDOVICO GATTO - STORIA DI ROMA NEL MEDIOEVO
+
+Le regioni ricche sono quelle del nord est, fra la Salaria e la Nomentana, ove si trovano le residenze patrizie quelle dei senatori, immerse nel verde degli ampi parchi. Le *regiones* del primo gruppo raccolgono di preferenza le famiglie di modesta e media estrazione sociale.
+
+I ceti poveri si trovano invece racchiusi nella Suburra; densa di abitanti e di abitazioni malsane, rigurgitante di case di malaffare e di tuguri. Sebbene in misura minore, anche il Trastevere conserva caratteristiche consimili, mentre forse meno umili sono gli abitanti e le dimore del Flaminio.
+
+**Il *Liber pontificalis***
+
+Una delle fonti indispensabili di cui ci dovremo servire per seguire la vicenda cittadina, il suo sviluppo amministrativo, religioso e politico nonché quello culturale ed edilizio-urbanistico durante il periodo tardoantico e altomedievale è senza dubbio il *Liber pontificalis*, ovvero ampia raccolta delle vite dei pontefici romani sin dai primi secoli, scritte dapprima sulla base di componimenti brevi, più circostanziati e precisi, allorché cominceranno a riguardare papi meno lontani nel tempo e più visibilmente e concretamente legati alla vita cittadina oltre che a quella della Chiesa.
+
+Nato per annotare gli eventi più importanti legati ai singoli pontificati, secondo un esempio che trova ampio riscontro nell'ambito della cronistica cristiana il *Liber pontificalis* diverrà una vera e propria raccolta di vite dei vescovi di Roma scrupolosamente redatte a partire dai primissimi secoli, destinata a diventare sempre più sostanziosa. Che vi siano squilibri e aporie in un complesso articolato che, il nucleo introduttivo di biografie conclusosi con papa Damaso, raccoglie le vite da Bonifacio I del 530 a Martino V sino al 1431, è innegabile; tuttavia la suddetta fonte è uno strumento insostituibile per lo studio dell'affermazione e della diffusione del cristianesimo nell'Occidente e ancor più lo è per l'approfondimento; per intendere le trasformazioni sia sotterranee che più evidenti dell'urbanistica romana, nonché la storia dell'amministrazione dell'Urbe fra il IV e il VI secolo.
+
+Essa infatti attesta la nascita di chiese sorte sopra o accanto ai mitrei, la trasformazione delle case private in chiese; templi pagani, palazzi imperiali e privati sottoposti a radicali modifiche e a delicati processi di riuso per cui non pochi edifici apparentemente restano immutati mentre la loro destinazione d'uso viene profondamente modificata: si pensi al Laterano e a Santa Croce. Un altro edificio imperiale, entro la meridiana di Augusto; nei pressi dell'Ara Pacis e del tempio di Giunone Lucina, darà origine alla chiesa di San Lorenzo; ancora oggi ivi localizzata. Durante il pontificato di Bonifacio IV, nel 609, il Pantheon sarà trasformato in un tempio cristiano, ovvero Santa Maria dei Martiri. Santa Pudenziana sarà sistemata sopra le terme di Novato; anche qui adottando una destinazione d'uso diversa dall'originaria. Santo Stefano Rotondo alla Navicella verrà poi adattato sopra un'ampia costruzione militare che darà vita in Roma a un tempio tondeggiante elegante e raro nel suo genere.
+
+Altre chiese sorte su templi pagani saranno Sant'Andrea all'Esquilino, San Sebastiano; San Teodoro al Campidoglio; situato presso i Rostra per i condottieri capitolini, Santa Maria Antiqua ricavata dalla Biblioteca di Augusto e i Santi Cosma e Damiano; derivata da una sopraelevazione del tempio degli dèi Penati. E ancora: un settore del vecchio circo di Gaio e Nerone sul colle Vaticano divenrà San Pietro, forse dopo essere stato granai...

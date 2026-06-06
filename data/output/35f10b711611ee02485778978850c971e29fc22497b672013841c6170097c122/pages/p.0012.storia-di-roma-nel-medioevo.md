@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+12
+LUDOVICO GATTO
+
+Un cenno appena faremo ancora al già ricordato *Liber pontificalis*, fonte indispensabile per la conoscenza dell'alto Medievo romano; pubblicato in tre volumi dall'abate Duchesne; Paris 1886-1887. Su questa fonte rinviamo a G. Bertolini, "In *Liber pontificalis*, in *La storiografia altomedievale*", in *Settimane di Studio del Centro Italiano di Studi sull'Alto Medioevo*, XVII, Spoleto, 1970, pp. 387-445.
+
+Assai significativo è inoltre il *Liber censuum*, compilato intorno al 1192 da Cencio Camerario, divenuto pontefice nel 1216 con il nome di Onorio III. Il *Liber* suddetto sarà continuato anche nel corso del Duecento e costituisce un esempio atipico di fonte attestante l'attività della nascente Camera apostolica e l'entità delle entrate ecclesiastiche corrisposte da enti e chiese. Inoltre tale documento è importante in quanto riferisce descrizioni di carattere liturgico e riporta la trascrizione di bolle, passi e riassunti di cronache; elenchi di pontefici e di chiese romane.
+
+Il *Liber censuum* è pubblicato da P. Fabre e L. Duchesne, 2 vol., Paris 1902-1910. Su tale impareggiabile testimonianza rinviamo a P. Cammarosano, *Italia medievale*, ricordata nella bibliografia finale.
+
+Del tutto essenziale si rivela altresì il Codice Topografico della città di Roma pubblicato da R. Valentini e G. Zucchetti presso l'Istituto Storico Italiano per il Medioevo di Roma fra il 1940 e il 1942, che raccoglie in quattro volumi le fonti per l'età imperiale, la paleocristiana, la medievale e la rinascimentale.
+
+Fonti romane inconsuete e importanti pubblicate nel Codice sono i *Papiri degli Olii di Monza*, contenenti l'olio bruciato nelle lampade votive dei *Cemeteria* romani (fine VI - inizi VII secolo), e l'*Itinerario di Einsiedeln*; ovvero una ricostruzione del percorso dei pellegrini, probabilmente dell'epoca di Paolo I (757-767). Altre significative fonti sono i *Mirabilia Orbis Romae*, legati alla nascita del Comune Romano (1143), una descrizione topografica cittadina in rapporto con l'*Ordo delle cerimonie* di Benedetto Canonico e con il *Liber Polypticus* di Benedetto Canonico. Non dimenticheremo i *Graphia aureae Urbis Romae*, documento connesso agli inizi dell'XI secolo, e il *Liber Istoriarum Romanorum*; esemplare inimitabile di volgare romanesco del XIII secolo.
+
+Apriamo a questo punto per chiuderlo quasi subito — tanto esso è vasto e destinato a portarci fuori strada — il discorso relativo ai cartari romani: da quelli delle chiese secolari (San Pietro in Vaticano, Santa Maria Maggiore, Santa Maria Nova, Santa Prassede, Santa Maria in Via Lata, Santa Maria in Trastevere) a quelli dei monasteri maschili e femminili (da San Sisto Vecchio a Sant'Agnese sulla Nomentana; da Santa Maria in Campo Marzio ai Santi Cosma e Damiano; da San Paolo fuori le mura a Santa Cecilia in Trastevere; da Sant'Alessio sull'Aventino a Sant'Anastasia ad aquas salvias; da San Silvestro in Capite a San Gregorio ad clivum Scauri; da San Lorenzo in Damaso a Sant'Andrea de Aquariciariis). Le edizioni comunque reperibili presso l'Archivio della Società Romana di Storia Patria sono in buona parte dovute a storici e paleografi Pietro Fedele, Vincenzo Federici e Luigi Schiaparelli. Per l'accuratezza del lavoro svolto si è distinta in questi ultimi anni l'opera di Lori Sanfilippo.
+
+Di qualche importanza sono anche gli archivi di San Giovanni in Laterano (sebbene tardo) e di Santa Maria Maggiore. Per evitare richiami a singole edizioni e ad opere critiche legate alle suddette fonti, mi permetto di rinviare all'ampio ed esauriente saggio di A. Ilari, "Gli Archivi istituzionali del Vicariato di Roma", in *Archivi e archivistica a Roma dopo l'Unità*, cit., pp. 114-152.
+
+Restando legati alle fonti più significative per consentirci di effettuare una ricostruzione sufficientemente aggiornata e quindi non inutile della realtà cittadina...

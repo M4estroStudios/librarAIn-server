@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+INTRODUZIONE
+13
+
+ma nell'età di mezzo; non possiamo fare a meno di ricordare i cataloghi relativi alle chiese urbane. Fondamentale è quello di Leone III che possiede un elenco di 117 chiese, redatto nell'806 circa, contenuto nel *Liber pontificalis*; e inoltre la lista denominata di Sigerico che ne riporta 23, del 990; il nominato Catalogo di Cencio Camerario; e inoltre il Catalogo di Torino del 1318 che riferisce su un numero di 409 chiese e che si rivela una oltremodo significativa fonte demografica relativa al clero romano:
+
+Abbiamo in tal modo notizie significative sulla composizione delle *Scholae*, almeno delle più ricche, come la *Schola Saxonum* situata presso Santo Spirito, da allora denominato in Sassia; inoltre anche della *Schola Frisonum*. È infatti allora presente nell'Urbe il fior fiore della cristianità d'oltralpe; per acquisire una buona cultura e ascendere il *cursus honorum* consueto, impegnati a frequentare la *schola cantorum* e la famiglia del papa.
+
+Assai ricche sono la *Descriptio sacrosanctae ecclesiae* e la *Descriptio basilicae Vaticanae*; la prima del canonico lateranense Giovanni, redatta durante il pontificato di Anastasio IV, negli ultimi venticinque anni dell'XI secolo; e la seconda del canonico vaticano Pietro Mallio, successiva di pochi anni. Una pagina del tutto singolare del Medioevo romano è costituita dalla descrizione delle cattedrali romane; e in particolare di due fra esse: San Pietro e San Giovanni. Ma a ben guardare le descrizioni di questo genere sono estensibili a cinque chiese considerabili esse stesse cattedrali, se alle due ricordate aggiungiamo San Paolo, Santa Maria Maggiore e San Lorenzo fuori le mura.
+
+Importante e insostituibile è fra l'altro la descrizione di San Pietro, una chiesa che ora non c'è più fino alla fine del Quattrocento infatti la basilica petriana — demolita e sostituita da quella che chiameremo forse anche impropriamente la grande fabbrica michelangiolesca — è un agglomerato di chiese, chiostri, torri, annessi. Noi conosciamo l'alto numero di religiosi che vi lavorano, di cui molti vivono nelle famose *Scholae*, mentre altri fanno parte della famiglia del papa:
+
+Il clero di San Pietro è di varia provenienza e non si amalgamerà mai bene con Roma e i suoi religiosi; mentre quello di San Giovanni in Laterano si manterrà di natura prettamente cittadina e molto legato al vicario di Cristo. San Giovanni, basilica vescovile, viene difatti utilizzata per tutte le funzioni romane; mentre San Pietro sarà devoluta a quelle universali. Ciò spiega forse anche perché nel 1081 i tedeschi di Enrico IV riusciranno a penetrare nel tempio del principe degli Apostoli, forse aiutati dal clero della basilica, di provenienza germanica e quindi meno favorevole di quello di San Giovanni a Gregorio VII.
+
+Nell'Urbe convengono molti esponenti del clero orientale, volti verso Roma nell'infuriare della lotta iconoclastica, concentrati nel cosiddetto quartiere greco, collocato tra Santa Maria in Cosmedin e il cosiddetto Emporio. Inoltre con la costituzione del Ducato Romano i contatti con Bisanzio appaiono già aumentati e rinsaldati.
+
+Altra raccolta importante di testimonianze sono i non molto numerosi *Obituaria* riguardanti i nomi degli esponenti del clero regolare e secolare spentisi a Roma. Nel complesso infatti tali fonti forniscono forse complessivamente scarse indicazioni ma, oltre a consentirci di ricavare la data di morte di molti personaggi significativi, ci danno indicazioni sulla loro provenienza, in modo da essere edotti sulla percentuale di non romani presenti fra il clero cittadino nonché sulla loro origine.
+
+Importante in proposito è la raccolta dei Necrologi e libri affini della provincia Romana dovuta a P. Egidi, 2 vol., Roma, 1908.

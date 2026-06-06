@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+# La vita quotidiana nella Roma del Quattrocento
+
+### Una vivace quotidianità
+
+Sempre più affascinante si è rivelata; nel corso degli ultimi anni, la ricerca legata alla vita quotidiana in Roma; perciò tale indagine pare destinata a estendersi ancora, di pari passo con quella sullo sviluppo politico ed economico-sociale dell'Urbe in età alto e basso medievale. Questo procedimento parallelo tuttavia ha una sua intima valenza poiché anche se a prima vista potrebbe apparire consigliabile scegliere un osservatorio più consistente e parrebbe più appagante prendere di mira avvenimenti "importanti" e "sensazionali" di carattere politico ed economico per dare vita a rappresentazioni di ampi affreschi relativi a trasformazioni, a progressi, a sconfitte e a rivoluzioni; l'esistenza di ogni giorno; sostanziata di piccole cose e di modesti avvenimenti; specie in un grande centro; offre invero una vasta gamma di sollecitazioni, di "spie" e di tracce utili a soddisfare le nostre curiosità e quindi a dar risposte a più concrete richieste.
+
+In particolare la quotidianità romana fatta di consumi e di spiritualità; di cultura e di divertimento; di amore e di violenze, di sacrificio e di egoismo; di lavoro e di riposo, si presta a effettuare una verifica di che resta dei tempi più antichi e di quanto invece, con il trascorrere dei decenni e dei secoli, appaia radicalmente cambiato.
+
+Proprio tale esame, quindi, ci aiuta a scorgere con maggiore concretezza il passaggio dall'età medievale alla umanistica che del Medioevo romano costituisce l'estrema conclusione. Inoltre va sottolineato che di tale materia ci si avvale di solito per esplorare differenti periodi e di conseguenza la storia di varie città. Infatti i secoli dal XII al XV, ma specialmente il XV saranno contraddistinti da una generale, progressiva crescita cittadina. Già nel XI secolo, ad esempio un centro come Bologna allarga il proprio confine da 50 a 250 acri; mentre Firenze giunge a un perimetro di 250, Pisa ne ha uno ancor maggiore; Milano raggiunge i 500. In particolare nel Quattrocento l'Occidente cristiano dall'Atlantico al Danubio, al Baltico, al Mediterraneo si riempie di città e di villaggi cinti di mura e di *tierras*.
+
+Su una superficie di 2 milioni e mezzo di km² in Europa vivono una settantina di milioni di persone in una quasi ininterrotta distesa di campi e di case: le chiese sono circa 130.000, cosicché si è calcolato ecco un particolare invero non comune che salendo su un campanile se ne possono sempre scorgere nei paraggi almeno altre cinque o sei.
+
+È vero che poco dopo la metà del Trecento — e questo va tenuto presente — la peste e le carestie, soprattutto in talune zone, producono la decimazione della popolazione; tuttavia con il XV secolo, la forzata stasi, il progresso demografico...

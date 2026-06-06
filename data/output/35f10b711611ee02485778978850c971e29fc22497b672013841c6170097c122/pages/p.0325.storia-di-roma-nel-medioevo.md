@@ -1,0 +1,15 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+L'alba del Comune romano
+
+Le famiglie romane nel XII secolo:
+Pierleoni
+
+Se dei Pierleoni si comincia a parlare nell'XI secolo con Pietro di Leone, assai precedente è la nascita della famiglia. In realtà il nonno di Pietro è un banchiere ebreo, Baruch, il quale si trova in rapporti di lavoro, forse anche di stima, con pontefici ai quali, secondo un'abitudine allora inveterata, concede prestiti di ingenti somme di denaro (come è noto, la dottrina cristiana vieta nel modo più tassativo il prestito a interesse e i pontefici, per non far cadere in peccato di usura i banchieri cristiani e non cadere essi stessi in egual colpa inducendo in tentazione per simile mercato altri correligionari, entrano preferibilmente in affari con finanzieri ebrei, quali sono privi di vincoli e di remore legate al costo e al commercio del denaro):
+
+A un certo momento il suddetto banchiere israelita abiura la fede mosaica e, agli inizi del pontificato di Leone IX, riceve il battesimo; mutando il suo nome in quello di Benedetto Cristiano; da allora quindi, parteciperà con una certa continuità alla vita cittadina. D'altra parte, sentenzia a quel proposito il cronista Amolfo, il denaro è il padrone del mondo; così il ricco Benedetto diviene in Curia Romana *magnificentissimus*, continua a mercanteggiare e accresce le sue sostanze consolidate in precedenza con la pratica dell'usura.
+
+Le case ove Benedetto risiede con i familiari sono collocate sulla riva sinistra del Tevere. Poi egli stesso e i suoi successori trasformano il vecchio e fatiscente teatro di Marcello in una casa-fortilizio detta anche, secondo i *Graphia aurea Urbis Romae*, circo Flaminio. Gli stabili della casata si estenderanno poi di lì fino al Cod'Ottavia, da una parte, e all'isola Tiberina dall'altra.
+
+Anche il figlio di Benedetto Cristiano, Leone, accanto a Benedetto riceverà il battesimo e seguirà sempre il padre nel lavoro nelle amicizie e negli orientamenti politici. Egli infatti diverrà uno dei più convinti sostenitori di Gregorio VI tanto che, secondo talune fonti, prenderà parte attiva alla politica del papa; allorché, agli inizi della sua carriera, il futuro Gregorio riceverà in affidamento l'economato della chiesa di San Paolo, per mettere a frutto le cospicue risorse riscosse (elemosine, lasciti, affittanze, ricavi di vendite di prodotti agricoli) - chiederà aiuto a Leone di Benedetto non sfuggendo pertanto all'accusa di essersi servito dell'esperienza di un ex ebreo. Particolarmente esplicito pare in questo proposito Benzone d'Alba, il quale critica Ildebrando affermando che ha avuto persino il coraggio di far entrare i cambiavalute nel portico del Tempio; con un riferimento diretto certamente ai Pierleoni, polemicamente denominati "soboles Judaica".
+
+Il contatto tra il futuro papa e il figlio del banchiere ebreo è destinato in ogni modo a colpire talmente la fantasia, in special modo degli avversari di Ildebrando, che più di uno storico è indotto a sostenere la parentela gregoriana, per parte di madre, con la famiglia Pierleoni.

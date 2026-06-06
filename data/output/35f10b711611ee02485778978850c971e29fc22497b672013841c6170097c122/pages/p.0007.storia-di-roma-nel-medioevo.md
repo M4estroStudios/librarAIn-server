@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+# Introduzione
+
+Senza dubbio, come è ben noto, l'autore è il meno indicato a valutare con sicurezza la bontà e la riuscita dell'opera sua; perciò mi son sempre guardato dal cadere in un simile, ingiustificato peccato di orgoglio. Tuttavia, di un fatto sono certo e quindi posso dichiararlo senza timore: non mi è mai capitato nel corso della mia ormai lunga attività di professore e nell'esercizio del mestiere di storico di insegnare o di scrivere qualcosa — un articolo, un saggio, una nota, un libro — che non reputassi "vero" e al quale non fossi riuscito ad appassionarmi; in quanto mi sento costituzionalmente incapace di rappresentare e trasmettere messaggi in cui non credo e, quando non sono convinto di una cosa, mi viene meno qualsiasi stimolo di parlarne o scriverne.
+
+Il che può essere un bene o un male; ognuno può giudicare come vuole e non è il caso di trattare questo problema. Vi accenno però di passata, per ricordare almeno in proposito che il mio maestro Raffaello Morghen, sempre attento a mitigare e frenare gli entusiasmi eccessivi dei suoi più giovani allievi, ha sempre lasciato corto su questo punto sentenziando: «esistono anche le passioni insane, perciò guardatevene». Io, per parte mia, ho cercato di seguire il suo saggio consiglio e spero che le mie "passioni storiche" non siano state dissennate; certo comunque sono state sincere. E fra queste porrò senz'altro l'ultima, ovvero la presente *Storia di Roma nel Medioevo*, nata inizialmente sulla base di un progetto di pubblicazione a fascicoli commissionati dalla Newton & Compton cinque anni orsono che diligentemente ho scritto.
+
+Il lavoro è stato consegnato e pubblicato; a che pare con un buon successo. Per questo dunque mi è stato proposto di raccogliere insieme i XXX capitoli che lo compongono, onde farne una pubblicazione organica e unitaria.
+
+A questo punto confesso che il primo impulso è stato, entusiasmi a parte, quello di rifiutare categoricamente l'offerta; in quanto troppo complesso e arduo mi sembrava il compito di trasformare una storia a puntate, a carattere largamente divulgativo, in un armonico e ben articolato volume di ricerche. Più complesso che mai il compito stesso mi si presentava in quanto si trattava di mettere mano a un soggetto romano, pieno quindi di insidie, di problemi irrisolti, di difficoltà di tipo.
+
+Ma l'amico Vittorio Avanzini — e non lo dico per coinvolgerlo ma per ringraziarlo della fiducia e non è l'unica occasione in cui me l'ha manifestata — mi ha molto incoraggiato; così, credendo in questa ricerca non nel suo risultato finale e nel suo intrinseco valore naturalmente, ho finito per lasciarmi tentare; anche perché Roma nell'età di mezzo è per un medievista un argomento temibile ma troppo seducente per voltargli impunemente le spalle.
+
+Quindi mi sono accinto all'opera di rilettura nel cui corso molto ho modificato...

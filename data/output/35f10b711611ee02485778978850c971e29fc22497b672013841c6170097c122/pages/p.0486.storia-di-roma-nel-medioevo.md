@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+486
+LUDOVICO GATTO
+STORIA DI ROMA NEL MEDIOEVO
+
+Perdonanza va precisato che l'assenza di una chiara documentazione che la risollecita prendere in considerazione l'ipotesi di un Giubileo esteso e rinnovato di anno in anno sino al 1400. È infatti sostenibile che papa Bonifacio, inaugurando il suo pontificato, voglia in particolare attuare una scelta di segno anche economico che gli permetta di mantenere a livello costante l'afflusso di merci e di pellegrini nella città papale: L'iniziativa, pur se non possiamo esser del tutto certi della sua estensione, è quindi ottima; l'affluenza di pellegrini è notevole; i vantaggi finanziari si palesano soddisfacenti e il prestigio bonifaciano si rinsalda notevolmente.
+
+Seguono a rappresentare il pontificato di papa Tomacelli un insieme di patti diplomatici con esponenti della nobiltà laziale e dell'Italia centrale, un accordo con il Comune di Roma e i suoi tre conservatori cui è riservata larga autonomia. Bonifacio restaura il palazzo Capitolino e il suo stemma bonifaciano sopra una torre a fianco dell'ingresso comprova la sollecitudine di pontefice per l'Urbe. L'accordo firmato l'11 settembre 1391 attesta che Roma tratta allora da pari con il papa impegnandosi a rispettare le immunità dei chierici, a esentare i cardinali e i loro familiari dal pagamento delle imposte e di varie gabelle. Due anni dopo il patto verrà modificato e l'amministrazione si assumerà, fra l'altro, l'onere del sostentamento di mille cavalieri in difesa del papa. Con che commenta Niccolò della Tuccia: Bonifacio diventa il vero e unico signore di Roma.
+
+Tale provvedimento, unito all'istigazione proveniente dagli ambienti avignonese (all'antipapa Clemente VI farà seguito Benedetto XIII) nonché dai nobili del Lazio per esempio Onorato Caetani, conte di Fondi, indurrà presto i Romani alla rivolta contro Bonifacio: «Il popolo di Roma si accorge della sua soggezione e comincia a cercare la libertà». Racconta ancora Niccolò della Tuccia.
+
+Animatore dell'insurrezione sarà Petruccio di Savo (1393-1394), un esponente rivoltoso; seguito da molti altri che lo aiutano rimanendo nell'ombra e che al momento opportuno abbandonano l'animoso personaggio volto alla riscoperta di motivi di laicismo, alla fine del Trecento riecheggianti in certo modo il linguaggio di Cola di Rienzo: Anche Petruccio ridesta gli addormentati Romani, eredi dei Gracchi e degli Scipioni; ma con scarso risultato: il moto viene stroncato sul nascere e l'animatore finirà in mano al boia che gli taglierà la testa! Concludendo; alla fine del secolo Bonifacio; oltre alla città di Roma domata e da allora più intimamente posseduta, riconquista in pieno all'obbedienza papale le città del Districtus; della Tuscia romana, dell'Umbria, delle Marche, della Romagna riuscendo a superare la crisi dei precedenti decenni. Egli poi spenderà ingenti somme — migliaia di fiorini alla volta — per approvvigionare di grano la città e inoltre porrà un calmiere sul vino e sul pane, scoraggiando le mene degli accaparatori.
+
+**La situazione dell'Urbe alla fine del secolo**
+
+La fine del XIV secolo conclude un'epoca drammatica; fra le difficili per Roma; che ha visto fra le sue mura, nonostante la lunga assenza dei papi, personaggi di grande rilievo politico e spirituale: tre imperatori; Anigo VI di Lussemburgo; Ludovico il Bavaro e Carlo IV di Boemia; persone di grande statura culturale e morale come Brigida di Svezia, Caterina da Siena e Francesco Petrarca.
+
+Nonostante ciò tuttavia v'è chi, come lo storico-letterato Toffanin, ha voluto definire questo il «secolo senza Roma», dimenticando come nel Trecento...

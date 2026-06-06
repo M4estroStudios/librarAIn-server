@@ -1,0 +1,54 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+RJ: LATINO-SAJBINI                                                                                                   41
+
+da sole, creando le proprie leggi e punendo i propri colpevoli. È facile allo-
+ra immaginare le dure reazioni a episodi "leggendari" come quello del re Tul-
+lio Ostilio che punisce il superstite dei famosi fratelli Orazi, colpevoli di aver
+ucciso la sorella. Questo affare della famiglia degli Orazi doveva essere di dis-
+cusso all'interno di questa cerchia. Al contrario il re impone le sue decisio-
+ni e una giustizia "pubblica" a queste famiglie, abituate alla giustizia som-
+maria e privata.
+
+I ROMANI IMPARANO A SCRIVERE
+
+L'introduzione della scrittura a Roma è attribuita a Evandro, il mitico colonizzatore
+greco del Palatino. La scrittura sarebbe arrivata dal mondo greco nell'XI sec. a.C., quan-
+do in realtà essa stava ancora affermandosi in Oriente e in Grecia. Il rapido sviluppo
+di Roma, da polo di attrazione per le genti dell'interno e anche per gli intraprendenti
+commercianti fenici e greci, i quali presso il guado del Tevere trovano il punto di scam-
+bio ideale. Questi mercanti, insieme agli oggetti da scambiare e da vendere, hanno por-
+tato anche idee, culti (come il culto di Ercole) e probabilmente l'alfabeto. Il ritrova-
+mento delle più antiche lettere ellenizzanti su un vaso di una tomba della necropoli di
+Osteria dell'Osa, corrispondente all'antica Gabii, coincide in modo stupefacente con
+la tradizione. Secondo quanto si tramanda Romolo e Remo, educati a Gabii, avrebbero ap-
+reso la scrittura: Romolo, divenuto re, avrebbe usato ancora quest'alfabeto
+greco per iscrizioni che celebravano vittorie e definivano trattati. Nel VII sec. a.C.
+questo nuovo strumento, che si va sempre più adattando alla lingua latina, si diffonde
+in maniera più ampia, acquistando anche una dimensione pubblica. Documenti scrit-
+ti cominciano a comparire con frequenza nei santuari, nei donari, negli spazi destina-
+ti alla vita della comunità.
+
+I senatori non hanno particolari poteri. Di solito sono consultati per questioni
+su cui il solo re avrebbe dato il giudizio finale. Il Senato è quindi solo un or-
+gano consultivo, che può appoggiare il re, senza potersi opporre. Certamente an-
+che la divisione del popolo in curie e tribù ha concorso ad aumentare il potere
+del re a discapito delle famiglie e del Senato: I comizi curiati, formati dalle cu-
+rie riunite insieme, hanno particolari compiti. Dal momento che il popolo è il
+vero depositario del potere, il re dopo la sua elezione riceve dai comizi curiati
+il sommo potere che gli permette di governare. Infine il raggruppamento delle
+curie facilita il reclutamento dell'esercito: ogni curia deve fornire una centuria
+di fanti (cento uomini) per un totale di tremila soldati. Questo è l'esercito
+mitico a cui si aggiungono trecento cavalieri, cento per ciascuna delle tribù. In-
+fine i comizi ratificano alcuni atti delle gentes, come una forma particolare di
+testamento: se un capofamiglia è rimasto privo di eredi, davanti alle curie riu-
+nite può nominare un successore, che da quel momento entra a far parte della
+famiglia del padre adottivo, rinunciando a quella d'origine.
+
+L'ACCLAMAZIONE POPOLARE
+
+Secondo la tradizione, dopo la sparizione misteriosa di Romolo i patres deb-
+bono affrontare non pochi problemi per la successione. Essi escogitano allo-
+ra il già citato interregno come soluzione di fortuna per uno Stato rimasto al-
+'improvviso senza guida. I cento senatori si dividono in dieci decurie (un grup-
+po di dieci persone), scegliendo da ciascuna di esse un uomo. I dieci uomini
+agiscono quali reggenti, per poi tornare ognuno presso la propria curia.

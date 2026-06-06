@@ -1,0 +1,26 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+UN FIUME, UN GUADO E UN CROCEVIA                                                                    33
+
+LA CITTÀ TRIBALE
+
+Gli antichi attribuivano a Romolo la fondazione delle tribù in cui era diviso il popolo romano; ma le loro informazioni terminavano così avvolti nel mistero. Lo storico Livio sostiene che i nomi stessi delle tribù sono Ramnensi (Ramni) si chiamano così perché legati a Romolo e sarebbero stati gli abitanti sul Palatino di stirpe e lingua latina.
+
+Titiensi (o Tities) si chiamano così perché legati a Tito Tazio e sarebbero stati gli abitanti sul Campidoglio di stirpe sabina: Livio non riferisce nulla sui Luceri (o Luceres); secondo alcuni sarebbero stati gli abitanti dei boschetti situati sui colli più meridionali di Roma; secondo altri corrisponderebbero alla componente etrusca.
+
+Per alcuni scrittori antichi la divisione in tre tribù sarebbe avvenuta su base gentilizia; cioè quelli che avevano un antenato in comune appartenevano alla stessa tribù.
+
+La sola cosa certa è che ciascuna tribù forniva una centuria (cento uomini) di cavalieri che costituivano la cavalleria dell'esercito arcaico. Soltanto con Servio Tullio il loro ruolo e la loro importanza sociale comincia a essere modificata. Più tardi alle tre originarie si affiancano altre tribù, che hanno un carattere territoriale, dal momento che con il nome di tribù si indica un territorio. Ogni tribù era suddivisa in dieci curiae; ogni curia (da *co-viria* cioè gruppo di uomini) raggruppa più famiglie; nell'ambito della curia si tengono le registrazioni delle nascite e delle morti e si svolgono le procedure di leva militare. Ciascuna curia ha propri culti religiosi, che non condivide con nessun'altra.
+
+Da curia derivano Quirino (il nome di Romolo divenuto un dio, il dio che protegge le curie) e Quirite ("colui che appartiene alla curia" cioè il cittadino romano nel significato più ristretto possibile).
+
+[testo interrotto/non leggibile] bersagliati; mentre gli altri popoli lamentano danni meno gravi alla consistenza della loro popolazione femminile.
+
+Non per questo rinunciano alla vendetta; ma commettono il classico errore di affrontare uno alla volta l'esercito romano e separatamente sono sconfitti, regalando ai Romani i primi trionfi militari. Tocca allora ai fieri abitanti dei colli Sabini, dediti alla dura professione del pastore (e quindi portati ai colpi di mano e alla violenza) di scendere in guerra.
+
+Lo scontro ha luogo nella vallata del Foro e sarebbe stato preceduto dal tradimento d'una donna, Tarpea; figlia del comandante della guarnigione del Campidoglio. La lotta è sempre più dura e continua tra fughe e avanzate, ma senza segni chiari di chi riuscirà a spuntarla: finalmente le donne si mettono in
+
+RUPE TARPEA
+
+Tarpea originariamente doveva essere una divinità preistorica legata al monte Tarpeo; una delle due cime del Campidoglio. Durante i secoli il nome di questa antichissima divinità passa nel racconto leggendario a una Tarpea; figlia del comandante della rocca capitolina; al tempo dell'assedio di Roma da parte dei Sabini di Tito Tazio.
+
+Tarpea attirata dai bracciali e anelli d'oro che i Sabini portavano al braccio sinistro si offre di aprire la porta agli invasori se questi le avessero promesso in dono ciò che portavano al braccio sinistro. Infatti i Sabini entrati nel Campidoglio lanciano addosso a Tarpea gli scudi, che impugnavano con la sinistra; e la uccidono. Questa leggenda subisce varie modifiche ed è rinnovata in occasione dell'assedio gallico: in questo caso Tarpea avrebbe tradito per amore del capo dei Galli. In ogni caso il Saxum Tarpeum o rupe Tarpea fino al 1 secolo d.C. è il luogo dal quale erano precipitati i re di tradimento e degli altri grandi delitti contro lo Stato.

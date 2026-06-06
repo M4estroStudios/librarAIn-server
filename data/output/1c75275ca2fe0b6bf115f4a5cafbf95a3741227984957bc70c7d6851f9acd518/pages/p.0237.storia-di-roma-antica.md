@@ -1,0 +1,17 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+LJ: GUERRE SOCIALI: MARIO J: SILJA
+237
+
+L'ESERCIZIO APPARTIENE A CHI PAGA DI PIÙ
+
+Il nome di Gaio Mario è legato a una innovazione rivoluzionaria: l'arruolamento nell'esercito romano dei nullatenenti. In realtà, da quando era entrata in crisi la piccola proprietà contadina, il sistema della leva legato al censo aveva già creato non pochi problemi e suggerito differenti soluzioni. Sempre più spesso era stato abbassato il limite minimo di iscrizione alla quinta classe (l'ultima) dell'ordinamento centuriato. In tal modo erano stati arruolati cittadini che, nell'ordinamento tradizionale, sarebbero stati considerati proletari. Inoltre, in seguito a un provvedimento di Gaio Gracco, lo Stato già forniva l'armamento ai soldati. La vera innovazione rivoluzionaria è che Mario coniuga l'arruolamento dei proletari con l'organizzazione di un esercito professionale. La possibilità di arruolarsi nell'esercito, aperta a tutti i cittadini, è infatti colta soprattutto dai nullatenenti, attratti dalla prospettiva d'arricchire col bottino e di ricevere assegnazioni di terre alla fine delle campagne. S'instaura in tal modo la mentalità che in esercito si può arricchire come in qualsiasi altra professione; purché si resti fedeli al comandante, da cui dipendono la distribuzione della preda e delle terre. In tal modo si rompe il binomio tradizionale cittadino-soldato, su cui si era fondata gran parte della fortuna militare di Roma e delle conquiste territoriali. Il soldato non serve più lo Stato per dovere civico, ma segue il suo generale per trarre il massimo profitto dalle vittorie: nascono così gli eserciti personali dei capipartiti nelle guerre civili del I secolo a.C.
+
+Paura d'una rivolta servile, scoppiata in Sicilia e protrattasi senza trovare resistenza dal 104 al 101 a.C., Roma ha bisogno di un uomo forte e questi non essere che Mario.
+
+Quando i Teutoni decidono di avanzare verso le Alpi, partendo dalla Gallia meridionale, sono sbaragliati da Mario ad Aquae Sextiae (Aix-en-Provence) nel 102 a.C.; mentre i Cimbri, scesi lungo la valle dell'Adige, sono sterminati da Mario e soprattutto dal suo collega nel consolato Quinto Lutazio Catulo ai Campi Raudii (una località nel Veneto, tra l'Adige e il Po).
+
+Queste vicende hanno dimostrato la fragilità delle difese nei domini romani settentrionali, perciò sono costituite le province della Gallia Transalpina (che prenderà il nome di Narbonese dalla città di Narbo Martius, odierna Narbonne) e della Gallia Cisalpina (l'Italia settentrionale al di qua delle Alpi). Le nuove province si aggiungono alle sette già esistenti (Sicilia; Sardegna e Corsica; le due Spagne; Macedonia; Africa; Asia).
+
+IL POTERE, I TRIBUNALI, LE TERRE
+
+La lotta politica divampa a Roma: Già nel 106 a.C., sotto l'impressione della condanna inflitta l'anno prima ai quattro consolari responsabili delle sconfitte in Africa, il console Gaio Servilio Cepione aveva fatto abrogare la legge graccana che riservava ai cavalieri le cause relative al comportamento dei magistrati in provincia. La fine della guerra contro Giugurta e il trionfo di Mario sui Cimbri e i Teutoni creano condizioni favorevoli all'affermazione dei privilegi del ceto equestre e alla ricompensa dei proletari che si sono battuti per la difesa di Roma: Nel 103 il tribuno della plebe Lucio Apuleio Saturnino, legato a Gaio Mario, ottiene la concessione per i veterani di Mario di copiscue terre nella provincia d'Africa. Nel 101 a.C. un altro tribuno della plebe...

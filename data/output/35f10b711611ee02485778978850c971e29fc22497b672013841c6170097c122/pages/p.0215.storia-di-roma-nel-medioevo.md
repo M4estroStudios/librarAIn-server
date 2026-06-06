@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Roma negli anni centrali del IX secolo
+
+**I successori di Leone IV**
+
+La notevole forza di Leone, unita al pur relativo impegno proveniente dal Sacro Romano Impero, consente alla città di reggere la pressione esercitata dagli Arabi, diminuita dopo la battaglia navale di Ostia dell'849, al termine della quale la vittoria dei collegati cristiani si palesa nella sua pienezza inducendo altri nuovi alleati, meridionali e settentrionali, a porsi dalla parte del vincitore.
+
+In seguito alla scomparsa di Leone IV (855), Roma dovrà tuttavia affrontare una serie di eventi politici negativi, di cui risentiranno l'amministrazione e l'organizzazione della vita cittadina. Di solito, quando si fa cenno allo stato precario della città dei papi nella seconda metà del IX secolo, ci si riferisce alle vicende relative ad Anastasio Bibliotecario, cardinale di origine greca, esponente della tendenza filobizantina ancora ben presente a Roma. Tale tendenza si appoggia agli esponenti della vecchia casta ducale, scontenti dell'attività papale nonché dell'impero d'Occidente e volti quindi al ritorno di un'impossibile unità imperiale con Costantinopoli e all'unione del Ducato romano all'italico, sottratto una buona volta all'influenza pontificia e a quella dei sostenitori franchi.
+
+Il *Liber pontificalis* riferisce che il "greco" Anastasio Bibliotecario reca danno alla *libertas* della Chiesa che per quell' 853 Leone IV lo condanna <davanti alla basilica di San Pietro>. Il pontefice prende infatti la parola in una pubblica adunanza e, per spiegare e commentare la sua posizione antianastasiana, fa affiggere due grandi immagini dipinte, nelle quali Cristo e il papa maledicono il colpevole e rappresentano la triste situazione di Roma, colpita da tanto malevolo personaggio. L'abitudine di illustrare la situazione cittadina mediante immagini diverrà una costante romana dell'età alto e basso medievale; la ritroveremo infatti durante gli anni di Arnaldo da Brescia e nel periodo di Cola di Rienzo. Naturalmente Anastasio, così duramente bollato da Leone, sarà giudicato in contumacia e non risponderà alle accuse; verrà così scomunicato e deposto dal cardinalato nell' 853.
+
+Con papa Benedetto III, eletto nell' 855, il Bibliotecario avrà la sua rivincita: infatti viene graziato da Benedetto, per suggerimento dello zio dello scomunicato, Arsenio vescovo di Orte (ecco un'altra personalità interessante e ambigua dell'ambiente romano-bizantino), e, una volta riammesso alla comunione laica, assume un modesto incarico di "espositore" delle vite dei Santi. Anastasio e Arsenio, scelleratamente uniti, faranno più male a Roma degli stessi Saraceni, viene detto nel *Liber pontificalis*. Anastasio infatti, in avvenire, sarà addirittura eletto antipapa per tre giorni con l'appoggio dell'imperatore Ludovico II.
+
+Anche per ciò si avverte in Roma un'atmosfera di palpabile disagio, quando...

@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+140
+LUDOVICO GATTO
+STORIA DI ROMA NEL MEDIOEVO
+
+postula il Figlio come generato dal Padre, quindi non coeterno ma avente principio dal Padre stesso: con tale premessa si infrange il dogma, fondamento del cristianesimo, della unicità di Dio e si considera in certo modo l'esistenza di due divinità; una dipendente dall'altra; simili per natura (*Homoiousia* = somiglianza) e non uguali (*Ousia* = uguaglianza).
+
+L'arianesimo ha una grande diffusione fra le popolazioni barbariche e in numerose fasce dell'Oriente e dell'Occidente cristiano. Oltre all'opera dei padri della Chiesa, alcuni concili ecumenici hanno contribuito a dettare le norme teoretiche relative alla definizione del dogma cattolico e alla organizzazione complessiva della comunità cristiana: fra i sinodi più importanti ricorderemo quelli convocati a Nicea nel 325 per la definizione del dogma trinitario e la condanna dell'eresia ariana. Ha il concilio di Efeso del 431 per la determinazione della dottrina di Maria, madre di Dio. Menzioniamo quindi il concilio di Calcedonia del 451, connesso alla condanna del monofisismo.
+
+Dopo la sconfessione dell'arianesimo; tuttavia le dispute teologiche non si accenderanno più sulle relazioni tra il Padre e il Figlio; ma sulla duplice natura umana e divina del Cristo e su di esse si fonda l'eresia monofisita; secondo cui al Redentore viene attribuita una sola natura.
+
+Con il concilio del 431 e la proclamazione della dottrina mariologica si riconosce al Cristo la natura umana. Con il concilio di Calcedonia si condanna il monofisismo anche per intervento dell'imperatore Teodosio II. Le discussioni si riaccenderanno però con Zenone, quando nel 492 questo pubblicherà l'editto di unione o *Henoticon*, con cui sarà superata la polemica fra monofisiti e ortodossi. Al tempo di Giustiniano, tuttavia, la divisione permane anche negli ambienti di corte e l'imperatrice Teodora propende per i monofisiti. Dapprima Giustiniano non prende partito fra le due posizioni; poi, nel 544 con l'editto dei tre Capitoli, indottovi pure dalla consorte, l'imperatore finisce per condannare gli scritti di taluni vescovi, ligi alle definizioni calcedoniesi.
+
+Si apre così un dissidio fra Roma e Costantinopoli. Nel corso del contrasto papa Silverio (536-537), sospettato di patteggiamenti con Goti ariani, sarà deportato da Roma a Costantinopoli. Dopo averlo interrogato a fondo, Giustiniano, accortosi della sua complessiva nobiltà, lo rinvia a Roma, ingiungendo a Vigilio di riaprire l'istruttoria relativa al papa e di reintegrarlo o — in caso di nuove prove di colpevolezza — destituirlo, inviandolo presso una sede vescovile periferica. Gli interrogatori sono defatiganti e Vigilio, indottovi da Belisario e dalla sua consorte Antonina, convinti della connivenza silveriana con i Goti, propone la destituzione del pontefice e la sua segregazione nell'isola di Ponza, al largo della costa pontina, ove Silverio morirà forse martirizzato il 2 dicembre 537. In seguito alla sua morte Vigilio diverrà papa.
+
+Giustiniano invita Vigilio a recarsi presso di lui. Il pontefice resiste con tenacia fino a che non è costretto da una violenza, soprattutto psicologica, ad approfondire nuovamente le tesi dell'editto, sposando in taluni casi teorie che sembrano portare il cattolicesimo romano su posizioni filorientali. Sbaglierebbe tuttavia chi ritenesse che la scarsa fermezza vigiliana segni la fine del dissidio. Infatti la divergenza fra le due città, anche al tempo di Vigilio e subito dopo, si arricchisce ancora di motivi che, via via allargati, daranno luogo a una divisione destinata nel tempo ad allontanare definitivamente le due confessioni.
+
+Continuando sui momenti della contesa fra le due città...

@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+RICONCILIAZIONE: CONSENSO                                                                    293
+
+**LE NUOVE DIMORE DEI MORTI**
+
+La crisi dei valori collettivi che caratterizza gli ultimi decenni della morente Repubblica è ben rappresentata dai monumenti funerari. Si afferma il gusto dell'autorappresentazione in forme vistose e persino stravaganti, che sopravvive fino ai primi decenni del principato. Il fornaio Eurisace, un liberto arricchitosi con forniture di pane allo Stato, acquista un terreno in un'area molto frequentata subito fuori porta Maggiore (tra le vie Labicana e Prenestina) e si fa costruire (intorno al 30 a.C.) un singolare monumento funerario in cui sono rappresentate tutte le fasi della panificazione. Persino l'urna con le ceneri della moglie, Atistia, è a forma di madia. Sulla via Appia sorge, su un rialzo del terreno, l'imponente tomba di Cecilia Metella (ca. 30 a.C.), una torre cilindrica poggiata su uno zoccolo quadrato e sormontata da un tumulo (oggi scomparso) che richiama le sepolture arcaiche delle famiglie aristocratiche romane. La donna era figlia di un console di antica famiglia aristocratica, Quinto Cecilio Metello Cretico, e moglie del figlio di Gaio Licinio Crasso, uno degli uomini più ricchi di Roma.
+
+Desiderio di apparire e gusto dell'esotico caratterizzano anche il monumento sepolcrale a forma di piramide fatto erigere davanti alla porta Ostiense (altro luogo molto frequentato) da Gaio Cestio (II a.C.). Questo è però uno degli ultimi monumenti di tipo spettacolare dell'aristocrazia romana. A partire dall'età augustea prevale infatti la tipologia della tomba di famiglia dall'aspetto più modesto. Il monumento è un semplice altare.
+
+Urne e ritratti trovano posto in nicchie ricavate nelle pareti della costruzione, che assume l'aspetto di un colombario. Questa soluzione è prescelta dalle famiglie dell'alta aristocrazia; ma anche dai liberti (specialmente imperiali) e dai membri delle associazioni professionali. Le tombe monumentali diventano rare e sono ricercate soltanto dai nuovi ricchi emergenti, desiderosi avere una sepoltura vistosa, da cui traspaia la loro ricchezza priva di nobiltà.
+
+***
+
+[Immagine della tomba di Cecilia Metella]
+
+*La tomba di Cecilia Metella in un'incisione di G. Contafavi tratta da Raccolta delle città di Roma e sue vicinanze, 1837.*

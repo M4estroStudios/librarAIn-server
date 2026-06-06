@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+8
+
+LUDOVICO GATTO
+
+Ho riscritto; ho aggiunto e tolto; ho chiarito e tagliato, onde trasformare il primitivo impianto del lavoro nella stesura che qui propongo; arricchita altresì di una più ampia e completa Cronologia e di una Bibliografia di base da cui chi lo voglia potrà muoversi per effettuare, su molteplici aspetti della trattazione, più approfonditi percorsi di avvicinamento alla vicenda del Medioevo romano.
+
+Ecco pertanto questa *Storia di Roma nel Medioevo*; chiunque abbia confidenza con l'età di mezzo comprenderà il mio ritegno accresciuto, fra l'altro dal fatto che mi sono deciso ad avvalermi di un titolo praticamente quello della magistrale opera di Ferdinand Gregorovius, un maestro per tutti noi; mentre sarebbe stato forse miglior partito lasciar da parte intestazioni di libri che hanno assunto un significato troppo preciso e inequivocabile per non più riproporli sia pure in un diverso contesto. Tuttavia; è pur vero che quando ci si trova di fronte a un guado; se lo si deve passare, la cosa più saggia è bandire riflessioni e ripensamenti e attraversarlo senza indugiare. *Hic Rodus hic salta*, dicevano difatti in merito i latini.
+
+A mia volta allora; giacché mi sono trovato in un simile frangente; mi è sembrato il caso di abbandonare residua remora e di ricorrere a un titolo che, certo, può far "tremare le vene e i polsi" se si pensi allo storico che l'ha utilizzato; ma che è pur sempre il migliore che anche oggi possa rinvenirsi, se si intenda compiere un percorso complessivo e piuttosto compiuto relativo alle vicende romane dagli inizi del IV al XVI secolo; ovvero se ci si voglia mettere sulla strada sulla quale tento di pormi.
+
+Scelgo dunque in buona sostanza l'intestazione utilizzata dal Gregorovius. Ma nella opzione; oltre a una grossa dose di "imprudente audacia" vi è pure un motivo di carattere metodologico sul quale voglio soffermarmi e che, in certo modo; costituisce una delle ragioni principali che, a parte sin qui ricordate; mi ha convinto a tentare l'impresa: mi è capitato di già, infatti, quando ho trattato tutt'altro argomento; di esporre in proposito il mio pensiero che ora ripeto onde spiegarmi con esempi concreti.
+
+Il mio riferimento è relativo alla storiografia sveva e segnatamente a Federico II di cui mi sono occupato in occasione delle celebrazioni legate all'ottavo centenario della nascita del cosiddetto *Stupor mundi*. Orbene; riferendo sulla storiografia federiciana della prima e della seconda metà del XX secolo; ho sottolineato come sino agli anni Cinquanta del Novecento si sia mantenuta quasi intatta una tradizione interpretativa di studi, progressivamente sviluppatasi e rafforzatasi.
+
+Sensibilmente diverso invece si mostra l'orientamento affermatosi negli ultimi cinque decenni; nel cui corso non sono venuti meno contributi pur qualificati e utili su singoli aspetti legati alla questione sveva, indagati con probità e sviscerati anche a fondo: e tuttavia si è verificato che sulle questioni insieme e in rapporto a un quadro complessivo della vicenda imperiale siamo rimasti fermi a contributi molto precedenti, dell'Ottocento o del primo Novecento, di respiro tutto sommato più ampio e impegnativo rispetto a quei talora dotti, ultimi *Beiträge*, predisposti secondo un orientamento generale tutto sommato riduttivo; ad opera di studiosi di varia cultura e provenienza.
+
+Altra caratteristica prevalente anch'essa parimenti segnalata a proposito della più recente storiografia federiciana riguarda la scarsa propensione degli storici ad avventurarsi da soli in percorsi ritenuti accidentati o storicamente a rischio. Aumentano dunque i casi da me denominati di "conso...

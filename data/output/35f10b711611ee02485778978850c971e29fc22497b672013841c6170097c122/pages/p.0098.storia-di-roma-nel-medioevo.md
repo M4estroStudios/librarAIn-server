@@ -1,0 +1,12 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+98
+
+LUDOVICO GATTO - STORIA DI ROMA NEL MEDIOEVO
+
+*Il taglio degli acquedotti romani; avvenuto nel 537 a opera dei Goti (incisione di Bernardo Gamucci del 1568)*
+
+così nei preparativi di un attacco che tarda a venire. Ai primi di marzo Vitige avanza verso Roma — dice Giordane — come un leone furente, e forza l'Aniene, nonostante i prodigi di valore compiuti da Belisario; costretto rinserrarsi in Roma. Si inizia così il duro assedio della città.
+
+Vitige non ha sufficienti forze per circondare il perimetro aureliano; così si contenterà di alzare sei opere trincerate situate nel tratto fra le porte Flaminia, Prenestina e Maggiore; davanti alle fisserà il quartier generale. La settima trincea sarà collocata in campo Neronis fra il Vaticano, il Tevere e Monte Mario per fronteggiare la mole Adriana, ponte Elio e le porte di San Pietro e San Pancrazio. A rimanere più libera sarà la parte meridionale dell'abitato verso il mare e le città di Portus e Ostia, ciò che consentirà il mantenimento delle comunicazioni con la Campania anche perché libere rimarranno le vie Appia e Latina: Vitige intanto ordina di tagliare l'acqua alla città, facendo interrompere le condutture degli undici acquedotti romani e provocando danni tanto gravi da non essere più riparati. Da parte sua Belisario blocca dall'interno gli stessi acquedotti, la cui intercapedine, data l'ampiezza, potrebbe essere utilizzata dagli avversari per entrare non visti nella città eterna.
+
+Il danno maggiore arrecato dall'interruzione del flusso idrico non consisterà tanto nella mancanza di acqua potabile per i cittadini, che suppiriranno a tale inconveniente con numerosi pozzi fatti scavare all'interno delle mura, quanto nel mancato funzionamento delle terme di cui Roma va fiera, nonché in quello dei mulini, che vengono in tal maniera a trovarsi privi della necessaria forza motrice, ostacolo a cui tuttavia Belisario ovvierà; facendoli funzionare con l'acqua del Tevere, mediante un complicato sistema di installazione che i Goti tenteranno di sabotare lanciando nel fiume tronchi d'albero, carogne di animali e quant' altro. A quest'ultimo subdolo attacco gli assediati, onde proteggere le loro preziose opere, reagiranno tendendo numerose catene poste attraverso le sponde del fiume, atte ad arginare il flusso dei detriti provenienti dal nord nella corrente: in conclusione, l'assedio determina scontri diretti fra le avverse milizie, quali primi.

@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+494
+
+LUDOVICO GATTO
+STORIA DI ROMA NEL MEDIOEVO
+
+gli altri funzionari più autorevoli dell'amministrazione. Si tratta di Matteo de' Patracini da Terni al quale è affidato un compito di controllo non accettato di buon grado dai capitolini ma sopportato, in quanto presentato come un provvedimento di emergenza destinato a consentire una più rapida ripresa del ritmo di crescita cittadina.
+
+Presto Matteo procederà infatti in questo senso, nominando il 31 marzo 1425 Battista di Pier Matteo e Bosio de' Stinchi, maestri «delle strade, piazze, e di altri luoghi pubblici e privati». Dopo molto tempo in cui a ciò non si è più provveduto, egli elegge poi i *magistri aedificiorum Urbis*, coadiuvati da un certo numero di submagistri e di altri ufficiali, in modo speciale dai marescialli pontifici, cui verranno affidati numerosi incarichi anche relativi alla cura dell'arredo urbano. Anzitutto essi daranno a una più intensa politica di lavaggi pubblici, eserciteranno una notevole sorveglianza sugli edifici cittadini, mentre provvederanno anche al buon funzionamento delle fontane, dei corsi d'acqua e dei ponti. Per ottenere maggior rispetto dagli abitanti dell'Urbe essi dovranno inoltre girare armati e avranno il permesso di intervenire anche con durezza, onde far rispettare l'ordine.
+
+Gli stessi hanno il compito di sorvegliare il funzionamento delle fognature, soprattutto quelle collegate con il Tevere la cui acqua, generalmente sudicia, deve essere mantenuta più pulita poiché viene normalmente adoperata dalla cittadinanza per usi domestici. Il fiume costituisce un punto precipuo del programma di Martino, in quanto il suo cattivo uso e mantenimento; oltre a nuocere alla salute pubblica; facilita il ripetersi delle annuali esondazioni, una vera piaga cittadina, causa di ripetuti danni agli edifici, alle strade e a tutta la città.
+
+Fra i luoghi ove la pulizia cittadina, fognaria in particolare, va maggiormente tenuta sotto controllo v'è quello dei rioni Ponte e Parione; come prima si è accennato sede di numerose concerie responsabili del sudiciume del fiume e delle strade circostanti: Appositi provvedimenti papali infatti proibiscono ai licciai e ai conciatori di lasciare le strade imbrattate di acque putride e pellami, li obbligano a fare attenzione all'igiene della zona e del fiume.
+
+Delli stessi provvedimenti rendono responsabili i cittadini del mantenimento di una generale situazione igienica soddisfacente. Tra i colpevoli del pessimo stato dell'igiene cittadina vengono anche annoverati vari ceti sociali e, in particolare, i calzolai e macellai abituati a macellare per le strade, senza preoccuparsi di lasciare a marcire al sole o alle intemperie della stagione invernale ossa e interiora: Commercianti e artigiani che solitamente abitano nei luoghi più belli di Roma sono spesso rimproverati, anche quando abbiano attività differente da quelle precedentemente ricordate, per la loro rozzezza e la loro scarsa pulizia. Anche essi infatti sono abituati a buttare in strada abusivamente carne, pesci marci, frutta, verdura e letame.
+
+Altro punto significativo della suddetta azione di risanamento è costituito dall'ordinanza del 1425, con cui si prevede la confisca delle aree fabbricabili ipotecate dall'amministrazione cittadina e inoltre il recupero delle mura e degli archi adoperati illegalmente da privati che vi pongono le loro dimore o negozi laboratori artigiani e simili: Una successiva ordinanza impone ai responsabili delle famiglie nobili di togliere ogni tipo di barriera artificiale volta a trasformare la città in quartieri-fortilizio, divisi artificialmente e artatamente gli uni dagli altri.
+
+In sostanza Martino è cosciente della cattiva situazione cittadina, favorita dal pessimo comportamento dei Romani abituati da troppo tempo a fare quello che vogliono senza freni e senza leggi cui debbano rispondere. Egli allora con adeguato luogo...

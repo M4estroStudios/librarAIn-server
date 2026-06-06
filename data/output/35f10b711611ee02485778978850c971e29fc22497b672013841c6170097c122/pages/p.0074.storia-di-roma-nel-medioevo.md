@@ -1,0 +1,19 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+thought
+74
+LUDOVICO GATTO
+STORIA DI ROMA NEL MEDIOEVO
+
+il barbaro esortandolo a non recare offesa alla città ove sono morti gli apostoli Pietro e Paolo. Genserico però, solo parzialmente colpito dalla maestà del presule, gli prometterà di non mettere Roma a ferro e a fuoco e si impegnerà soltanto a risparmiare dall'oltraggio le tre storiche basiliche di San Pietro, San Paolo e San Giovanni in Laterano. Per il resto, come massima concessione assicurata che concederà alle sue truppe solo un breve saccheggio. Il risultato non è ottimale ma neppure del tutto negativo.
+
+Del resto, anche se lo avesse voluto; al vandalo sarebbe stato assai difficile placare l'entusiasmo dei suoi soldati, tutti protesi ormai verso la conclusione di un impresa che li avrebbe smisuratamente arricchiti, in quanto soldato come è noto *hoc erat in votis* resta in parte proprietario del bottino che riesce a raccogliere nella città assalita: Ragion per cui, se pure il re avesse avuto l'intenzione di dare completo ascolto a Leone Magno; gli sarebbe stato impossibile frenare del tutto i suoi e impedire almeno un rapido saccheggio:
+
+In realtà le cose non si svolgeranno proprio secondo gli accordi; Infatti, tre giorni dopo la morte di Massimo; i Vandali entreranno nell'abitato dalla via Portuense; dando luogo a una devastazione non certo sommaria e breve come alariciana; ma durata due ininterrotte settimane!
+
+Diversa e più grave sarà dunque la sorte dell'ex capitale rispetto a quella del 410. Dai Vandali infatti i quartieri saranno saccheggiati a uno a uno con metodo e sulla base di una sia pur rozza programmazione. Via via che oggetti d'oro e d'argento, monili, pietre preziose e sculture delle singole *Regiones* vengono concentrati, parte delle ricchezze, secondo le abitudini, è lasciata nelle mani degli armati giunti con il sovrano dalle terre dell'Africa romana. La maggior parte del bottino sarà accatastata su enormi carri fatti sostare nei dintorni delle Tre Fontane nell'attuale zona di San Paolo e quindi avviata lungo il Portuense sino alle installazioni portuali sul Tevere, donde sarà caricata sulle navi di Genserico, presto dirette al sud.
+
+In questi giorni verrà depredato da capo a piè il palazzo imperiale, nuovamente arredato dopo i danni che lo hanno in parte compromesso in seguito alla devastazione del 410. Anche le costruzioni pubbliche situate lungo la via Sacra subiranno egual sorte. Le sontuose ville; collocate sulle pendici dell'Esquilino e del Quirinale e nei pressi degli Orti sallustiani, conosceranno di nuovo la rabbia dell'invasore; questa volta al pari degli edifici del Flaminio e del Trastevere.
+
+Dal Campidoglio saranno asportati oggetti sacri e preziosi; conservati pur dopo l'editto teodosiano; che li ha protetti da eventuali attacchi cristiani con cura rispetto, nel tempio di Giove le cui statue finiranno in Africa per abbellire la reggia di Genserico. In questa occasione ci informa Procopio verrà smontata una buona parte del tetto del suddetto tempio; da cui saranno tolte le lastre di bronzo che ne facevano brillare la sommità sin da lontano.
+
+La storia degli oggetti preziosi, della loro provenienza e delle loro successive asportazioni è in questo caso interessante e piena di riferimenti significativi. Fra i molti oggetti conservati nei palazzi imperiali e nei templi capitolini se ne contano non pochi che non erano stati tradotti nell'Urbe dall'imperatore Tito; che li ha sottratti a Gerusalemme e alla provincia di Palestina per portarli con sé come trofeo vittorioso di guerra. In proposito ci dice ancora Procopio gli stessi oggetti — candelabri d'oro, tripodi di bronzo, bacinelle d'argento, bruciaprofumi — faranno ritorno a Cartagine; nuovamente presi come preda di guerra da Genserico che li farà collocare nella sua residenza reale e in quelle degli altri maggiori.
