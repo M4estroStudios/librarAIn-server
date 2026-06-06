@@ -178,9 +178,11 @@ def upsert_book_reicat(
     sqlite_path: str,
     *,
     last_error: str | None = None,
+    skip_digest_verification: bool = False,
 ) -> BookUpsertResult:
     init_books_schema(sqlite_path)
-    verify_source_pdf_digest_matches(enriched)
+    if not skip_digest_verification:
+        verify_source_pdf_digest_matches(enriched)
     digest = _validate_source_sha256(enriched.source_sha256)
     request = enriched.request
     meta = request.reicat
@@ -441,9 +443,11 @@ def run_ingest_gate_phase(
     init_books_schema(sqlite_path)
     gate = source_hash_gate(enriched.source_sha256, sqlite_path)
     if gate.status == SourceHashGateStatus.NEW_HASH:
+        upsert_result = upsert_book_reicat(enriched, sqlite_path)
         return IngestGatePhaseResult(
             gate=gate,
             pipeline_skipped=False,
+            book_upsert=upsert_result,
         )
     force_meta = enriched.request.options.force_metadata_update_on_duplicate_hash
     if force_meta:

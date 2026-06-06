@@ -378,7 +378,8 @@ class RequestValidationTests(unittest.TestCase):
             phase = run_ingest_gate_phase(enriched, str(sqlite_path))
         self.assertEqual(phase.gate.status, SourceHashGateStatus.NEW_HASH)
         self.assertFalse(phase.pipeline_skipped)
-        self.assertIsNone(phase.book_upsert)
+        assert phase.book_upsert is not None
+        self.assertTrue(phase.book_upsert.was_inserted)
         self.assertIsNone(phase.duplicate_skip_audit_row_id)
 
     def test_run_ingest_gate_phase_duplicate_updates_metadata_when_forced(self) -> None:
