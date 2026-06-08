@@ -8,7 +8,7 @@ import openai
 from pydantic import BaseModel
 
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
-from src.core.openai_client import chat_completion_with_retry
+from src.core.openai_client import build_system_prompt, chat_completion_with_retry
 from src.ingestion.pipeline.stage2 import (
     Stage2Result,
     _read_stage_md,
@@ -52,9 +52,10 @@ async def refine_with_editor(
     page: int,
     settings: Settings,
     temperature: float = 0.1,
+    prompt_notes: str | None = None,
 ) -> str:
     Log(INFO_LOG_LEVEL, "stage3 refine_with_editor load prompt file begin", {"request_id": request_id})
-    system_text = _load_editor_prompt()
+    system_text = build_system_prompt(_load_editor_prompt(), prompt_notes)
     Log(
         INFO_LOG_LEVEL,
         "stage3 refine_with_editor load prompt file done",
@@ -116,6 +117,7 @@ async def run_stage3_editor(
     request_id: str = "",
     force_recompute: bool = False,
     progress: ProgressReporter | None = None,
+    prompt_notes: str | None = None,
 ) -> Stage3Result:
     data_root = Path(settings.data_root)
     stage3_dir = data_root / "tmp" / source_sha256 / "stage3Editor"
@@ -211,6 +213,7 @@ async def run_stage3_editor(
                     request_id=request_id,
                     page=s2_page.aligned_page,
                     settings=settings,
+                    prompt_notes=prompt_notes,
                 )
             except Exception as exc:
                 last_error = str(exc)

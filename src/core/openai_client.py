@@ -219,3 +219,12 @@ async def chat_completion_with_retry(
         if "Empty response from model" in str(exc):
             raise ValueError(str(exc)) from exc
         raise
+
+
+def build_system_prompt(base_prompt: str, notes: str | None) -> str:
+    if not notes:
+        return base_prompt
+    stripped = notes.strip()
+    if not stripped:
+        return base_prompt
+    return f"{base_prompt}\n\n## Operator notes\n\n{stripped}"

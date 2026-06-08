@@ -8,7 +8,7 @@ from typing import Any
 import openai
 
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
-from src.core.openai_client import chat_completion_with_retry
+from src.core.openai_client import build_system_prompt, chat_completion_with_retry
 from src.ingestion.markdown_artifacts import (
     clean_markdown_channel_artifacts,
     strip_lmstudio_channel_artifacts,
@@ -79,8 +79,9 @@ async def _refine_section(
     request_id: str,
     section_index: int,
     settings: Settings,
+    prompt_notes: str | None = None,
 ) -> str:
-    system_text = _load_prompt(kind)
+    system_text = build_system_prompt(_load_prompt(kind), prompt_notes)
     cleaned_input = _strip_obvious_artifacts(section_text)
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": system_text},
@@ -111,6 +112,7 @@ async def refine_aggregate_markdown_file(
     request_id: str = "",
     cache_dir: Path | None = None,
     force_recompute: bool = False,
+    prompt_notes: str | None = None,
 ) -> Path:
     raw = md_path.read_text(encoding="utf-8")
     header, body = _split_header_and_body(raw, kind)
@@ -163,6 +165,7 @@ async def refine_aggregate_markdown_file(
                     request_id=request_id,
                     section_index=section_index,
                     settings=settings,
+                    prompt_notes=prompt_notes,
                 )
             except Exception as exc:
                 Log(
@@ -215,6 +218,7 @@ async def refine_toc_md(
     request_id: str = "",
     cache_dir: Path | None = None,
     force_recompute: bool = False,
+    prompt_notes: str | None = None,
 ) -> Path:
     return await refine_aggregate_markdown_file(
         toc_md_path,
@@ -225,6 +229,7 @@ async def refine_toc_md(
         request_id=request_id,
         cache_dir=cache_dir,
         force_recompute=force_recompute,
+        prompt_notes=prompt_notes,
     )
 
 
@@ -237,6 +242,7 @@ async def refine_index_md(
     request_id: str = "",
     cache_dir: Path | None = None,
     force_recompute: bool = False,
+    prompt_notes: str | None = None,
 ) -> Path:
     return await refine_aggregate_markdown_file(
         index_md_path,
@@ -247,4 +253,5 @@ async def refine_index_md(
         request_id=request_id,
         cache_dir=cache_dir,
         force_recompute=force_recompute,
+        prompt_notes=prompt_notes,
     )

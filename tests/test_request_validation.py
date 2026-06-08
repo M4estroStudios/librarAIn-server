@@ -139,12 +139,14 @@ class RequestValidationTests(unittest.TestCase):
             payload = _valid_payload(str(tmp_path), pdf_pages=40)
             payload["pages_to_remove"] = [5, 2, 5, 3]
             payload["book_id_hint"] = "  test-book  "
+            payload["notes"] = "  keep latin abbreviations  "
             payload["reicat"] = deepcopy(payload["reicat"])
             payload["reicat"]["titolo"] = "  Test Book  "
             payload["reicat"]["autore"] = ["  Author Name  ", "  "]
             result = validate_and_enrich_request(payload)
             self.assertEqual(result.request.pages_to_remove, [2, 3, 5])
             self.assertEqual(result.request.book_id_hint, "test-book")
+            self.assertEqual(result.request.notes, "keep latin abbreviations")
             self.assertEqual(result.request.reicat.title, "Test Book")
             self.assertEqual(result.request.reicat.authors, ["Author Name"])
         finally:

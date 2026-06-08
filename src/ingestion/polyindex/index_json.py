@@ -153,6 +153,8 @@ def update_polyindex_index(
     sqlite_path: str,
     settings: Settings,
     request_id: str,
+    *,
+    prompt_notes: str | None = None,
 ) -> tuple[Path, dict[str, int]]:
     """
     Merge book subject rows into polyindex/INDEX.json.
@@ -181,6 +183,7 @@ def update_polyindex_index(
                 sqlite_path,
                 settings,
                 request_id,
+                prompt_notes=prompt_notes,
             )
             _apply_decision(document, raw_subject, decision, source_sha256)
             if decision.action == "new":
@@ -204,6 +207,8 @@ def sync_polyindex_index_from_book(
     sqlite_path: str,
     settings: Settings,
     request_id: str,
+    *,
+    prompt_notes: str | None = None,
 ) -> tuple[Path, dict[str, int]]:
     raw_subjects = parse_index_md(index_md_path, useful_pages_enumeration)
     if not raw_subjects:
@@ -223,4 +228,5 @@ def sync_polyindex_index_from_book(
         sqlite_path,
         settings,
         request_id,
+        prompt_notes=prompt_notes,
     )

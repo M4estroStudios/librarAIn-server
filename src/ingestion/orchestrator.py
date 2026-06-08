@@ -295,6 +295,7 @@ async def _run_pipeline_body(
     counters: dict[str, int],
 ) -> OrchestratorResult:
     source_sha256 = enriched.source_sha256
+    prompt_notes = enriched.request.notes
 
     aligned_path = resolve_aligned_pdf_path_for_stage1(
         enriched,
@@ -414,6 +415,7 @@ async def _run_pipeline_body(
             openai_client,
             request_id=request_id,
             progress=progress,
+            prompt_notes=prompt_notes,
         )
     except Exception as exc:
         raise OrchestratorStageError("stage2_vision", exc) from exc
@@ -431,6 +433,7 @@ async def _run_pipeline_body(
             openai_client,
             request_id=request_id,
             progress=progress,
+            prompt_notes=prompt_notes,
         )
     except Exception as exc:
         raise OrchestratorStageError("stage3_editor", exc) from exc
@@ -482,6 +485,7 @@ async def _run_pipeline_body(
             source_sha256=source_sha256,
             request_id=request_id,
             cache_dir=toc_refine_cache,
+            prompt_notes=prompt_notes,
         )
     except Exception as exc:
         raise OrchestratorStageError("toc_refine", exc) from exc
@@ -510,6 +514,7 @@ async def _run_pipeline_body(
             source_sha256=source_sha256,
             request_id=request_id,
             cache_dir=toc_refine_cache,
+            prompt_notes=prompt_notes,
         )
     except Exception as exc:
         raise OrchestratorStageError("index_refine", exc) from exc
@@ -558,6 +563,7 @@ async def _run_pipeline_body(
         settings.sqlite_path,
         settings,
         request_id,
+        prompt_notes=prompt_notes,
     )
     if progress is not None:
         progress(

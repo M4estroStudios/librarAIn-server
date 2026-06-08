@@ -14,6 +14,7 @@ from src.core.log import Log, WARNING_LOG_LEVEL
 from src.ingestion.pipeline.stage1 import _slugify
 from src.ingestion.polyindex.index_md_parser import RawSubject, normalize_label
 from src.models.settings import Settings
+from src.core.openai_client import build_system_prompt
 from src.persistence.subject_matcher_sqlite import (
     get_subject_embedding,
     insert_subject_match_audit,
@@ -207,8 +208,9 @@ def _llm_arbitrate(
     candidate_label: str,
     *,
     request_id: str = "",
+    prompt_notes: str | None = None,
 ) -> tuple[bool, str]:
-    system_prompt = _load_matcher_system_prompt()
+    system_prompt = build_system_prompt(_load_matcher_system_prompt(), prompt_notes)
     user_content = json.dumps(
         {"label_a": raw_label, "label_b": candidate_label},
         ensure_ascii=False,
@@ -296,6 +298,8 @@ def _stage2_match(
     sqlite_path: str,
     settings: Settings,
     request_id: str,
+    *,
+    prompt_notes: str | None = None,
 ) -> MatchDecision:
     normalized = normalize_label(raw_subject.raw_label)
     model = settings.matcher_embedding_model
@@ -346,6 +350,7 @@ def _stage2_match(
                 raw_subject.raw_label,
                 candidate_label,
                 request_id=request_id,
+                prompt_notes=prompt_notes,
             )
             if same:
                 return MatchDecision(
@@ -384,6 +389,8 @@ def match_subject(
     sqlite_path: str,
     settings: Settings,
     request_id: str,
+    *,
+    prompt_notes: str | None = None,
 ) -> MatchDecision:
     subjects = _subjects_map(polyindex_state)
     normalized = normalize_label(raw_subject.raw_label)
@@ -420,7 +427,13 @@ def match_subject(
                 )
             elif borderline or settings.matcher_use_ai:
                 decision = _stage2_match(
-                    raw_subject, subjects, client, sqlite_path, settings, request_id
+                    raw_subject,
+                    subjects,
+                    client,
+                    sqlite_path,
+                    settings,
+                    request_id,
+                    prompt_notes=prompt_notes,
                 )
             else:
                 decision = MatchDecision(

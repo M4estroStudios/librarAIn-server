@@ -8,7 +8,7 @@ from pathlib import Path
 from unittest.mock import MagicMock
 
 from src.core.rate_limit import AsyncTokenBucket
-from src.core.openai_client import _ClientState, _client_states
+from src.core.openai_client import _ClientState, _client_states, build_system_prompt
 from src.ingestion.pipeline.stage1 import Stage1PageResult, Stage1Result
 from src.ingestion.pipeline.stage2 import (
     Stage2Result,
@@ -100,6 +100,25 @@ class TestRefineWithVision(unittest.TestCase):
         messages = client.chat.completions.create.call_args.kwargs["messages"]
         self.assertEqual(messages[0]["role"], "system")
         self.assertEqual(messages[0]["content"], _load_vision_prompt())
+
+    def test_system_message_appends_operator_notes(self) -> None:
+        client = _fake_client()
+        png_path = self._write_fake_png()
+        notes = "keep latin abbreviations"
+        asyncio.run(
+            refine_with_vision(
+                client,
+                model="test-model",
+                page_image_path=png_path,
+                raw_ocr_text="raw text",
+                request_id="req-001",
+                page=1,
+                settings=_reasoning_settings(),
+                prompt_notes=notes,
+            )
+        )
+        messages = client.chat.completions.create.call_args.kwargs["messages"]
+        self.assertEqual(messages[0]["content"], build_system_prompt(_load_vision_prompt(), notes))
 
     def test_user_message_contains_text_and_image(self) -> None:
         png_bytes = b"\x89PNG\xfake"

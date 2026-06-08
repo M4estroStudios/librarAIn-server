@@ -192,6 +192,7 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
         reicat_payload["isbn"] = isbn
 
     book_id_hint_raw = fields.get("book_id_hint", "").strip()
+    notes_raw = fields.get("notes", "").strip()
     force_meta = fields.get("force_metadata_update_on_duplicate_hash")
     if force_meta is None:
         force_flag = True
@@ -208,4 +209,6 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
     }
     if book_id_hint_raw:
         ingest_payload["book_id_hint"] = book_id_hint_raw
+    if notes_raw:
+        ingest_payload["notes"] = notes_raw
     return ingest_payload

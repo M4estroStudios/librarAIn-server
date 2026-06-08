@@ -9,7 +9,7 @@ import openai
 from pydantic import BaseModel
 
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
-from src.core.openai_client import chat_completion_with_retry
+from src.core.openai_client import build_system_prompt, chat_completion_with_retry
 from src.ingestion.pipeline.stage1 import Stage1Result
 from src.ingestion.progress import (
     PHASE_STAGE2_VISION,
@@ -90,9 +90,10 @@ async def refine_with_vision(
     page: int,
     settings: Settings,
     temperature: float = 0.1,
+    prompt_notes: str | None = None,
 ) -> str:
     Log(INFO_LOG_LEVEL, "stage2 refine_with_vision load prompt file begin", {"request_id": request_id})
-    system_text = _load_vision_prompt()
+    system_text = build_system_prompt(_load_vision_prompt(), prompt_notes)
     Log(
         INFO_LOG_LEVEL,
         "stage2 refine_with_vision load prompt file done",
@@ -165,6 +166,7 @@ async def run_stage2_vision(
     request_id: str = "",
     force_recompute: bool = False,
     progress: ProgressReporter | None = None,
+    prompt_notes: str | None = None,
 ) -> Stage2Result:
     data_root = Path(settings.data_root)
     stage2_dir = data_root / "tmp" / source_sha256 / "stage2Vision"
@@ -253,6 +255,7 @@ async def run_stage2_vision(
                     request_id=request_id,
                     page=s1_page.aligned_page,
                     settings=settings,
+                    prompt_notes=prompt_notes,
                 )
             except Exception as exc:
                 last_error = str(exc)
