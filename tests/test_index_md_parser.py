@@ -10,6 +10,7 @@ from src.ingestion.polyindex.index_md_parser import (
     RawSubject,
     normalize_label,
     parse_index_md,
+    sort_index_md_body,
 )
 from src.models.request import PageRange, UsefulPagesEnumeration
 
@@ -166,3 +167,34 @@ class TestParseIndexMd(unittest.TestCase):
 
         self.assertEqual(subjects[0].original_pages, [4])
         self.assertEqual(subjects[0].aligned_pages, [104])
+
+
+class TestSortIndexMdBody(unittest.TestCase):
+    def test_sorts_entries_alphabetically_and_keeps_prefix(self) -> None:
+        body = (
+            "Bibliografia intro\n\n"
+            "---\n\n"
+            "Venezia, 4\n"
+            "Marco Polo, 12, 45\n"
+            "Colosseo — 5\n"
+            "Lemma vedi Altro Lemma\n"
+            "ACQUEDOTTI\n"
+        )
+        sorted_body = sort_index_md_body(body)
+        self.assertTrue(sorted_body.startswith("Bibliografia intro"))
+        entries = sorted_body.split("Bibliografia intro", 1)[-1].strip().splitlines()
+        self.assertEqual(
+            entries,
+            [
+                "ACQUEDOTTI",
+                "Colosseo — 5",
+                "Lemma vedi Altro Lemma",
+                "Marco Polo, 12, 45",
+                "Venezia, 4",
+            ],
+        )
+
+    def test_sort_is_accent_insensitive(self) -> None:
+        body = "Zürich, 1\nCittà, 2\n"
+        sorted_body = sort_index_md_body(body)
+        self.assertEqual(sorted_body.splitlines(), ["Città, 2", "Zürich, 1"])

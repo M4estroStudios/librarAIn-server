@@ -10,7 +10,11 @@ from typing import Any, Iterator
 import openai
 
 from src.core.log import Log, WARNING_LOG_LEVEL
-from src.ingestion.polyindex.index_md_parser import RawSubject, parse_index_md
+from src.ingestion.polyindex.index_md_parser import (
+    RawSubject,
+    normalize_label,
+    parse_index_md,
+)
 from src.ingestion.polyindex.subject_matcher import MatchDecision, match_subject
 from src.models.request import UsefulPagesEnumeration
 from src.models.settings import Settings
@@ -95,6 +99,62 @@ def _ensure_alias(entry: dict[str, Any], alias_label: str) -> None:
         return
     if alias_label not in aliases:
         aliases.append(alias_label)
+
+
+def _sort_index_document(document: dict[str, object]) -> dict[str, object]:
+    subjects = document.get("subjects")
+    if not isinstance(subjects, dict) or not subjects:
+        return document
+
+    def _subject_sort_key(item: tuple[str, object]) -> tuple[str, str]:
+        canonical_id, entry = item
+        label = ""
+        if isinstance(entry, dict):
+            canonical = entry.get("canonical_label")
+            if isinstance(canonical, str):
+                label = normalize_label(canonical)
+        return label, canonical_id
+
+    sorted_subjects: dict[str, object] = {}
+    for canonical_id, entry in sorted(subjects.items(), key=_subject_sort_key):
+        if not isinstance(entry, dict):
+            sorted_subjects[canonical_id] = entry
+            continue
+        sorted_entry = dict(entry)
+        aliases = sorted_entry.get("aliases")
+        if isinstance(aliases, list):
+            sorted_entry["aliases"] = sorted(
+                aliases,
+                key=lambda alias: normalize_label(str(alias)),
+            )
+        books = sorted_entry.get("books")
+        if isinstance(books, dict):
+            sorted_entry["books"] = dict(sorted(books.items()))
+        sorted_subjects[canonical_id] = sorted_entry
+
+    document["subjects"] = sorted_subjects
+    return document
+
+
+def sorted_polyindex_index_bytes(raw_document: dict[str, object]) -> bytes:
+    sorted_doc = _sort_index_document(raw_document)
+    return json.dumps(sorted_doc, ensure_ascii=False, indent=2).encode("utf-8")
+
+
+def sort_polyindex_index_file(index_path: Path) -> bool:
+    if not index_path.is_file():
+        return False
+    with _index_file_lock(index_path.parent):
+        raw = index_path.read_bytes()
+        document = json.loads(index_path.read_text(encoding="utf-8"))
+        if not isinstance(document, dict):
+            return False
+        sorted_doc = _sort_index_document(document)
+        content = json.dumps(sorted_doc, ensure_ascii=False, indent=2).encode("utf-8")
+        if content == raw:
+            return False
+        _atomic_write_json(index_path, sorted_doc)
+    return True
 
 
 def _apply_decision(
@@ -193,7 +253,7 @@ def update_polyindex_index(
             else:
                 stats["n_alias"] += 1
 
-        _atomic_write_json(index_path, document)
+        _atomic_write_json(index_path, _sort_index_document(document))
 
     return index_path, stats
 

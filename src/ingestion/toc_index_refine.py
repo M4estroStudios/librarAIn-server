@@ -14,6 +14,7 @@ from src.ingestion.markdown_artifacts import (
     strip_lmstudio_channel_artifacts,
 )
 from src.ingestion.output_writer import _atomic_write_bytes
+from src.ingestion.polyindex.index_md_parser import sort_index_md_body
 from src.ingestion.pipeline.stage2 import _read_stage_md, _write_stage_md
 from src.models.settings import Settings
 
@@ -189,6 +190,8 @@ async def refine_aggregate_markdown_file(
     new_body = clean_markdown_channel_artifacts(
         _SECTION_SEPARATOR.join(refined_sections)
     )
+    if kind is AggregateKind.INDEX:
+        new_body = sort_index_md_body(new_body)
     if header:
         output = f"{header}{new_body}"
     else:
@@ -255,3 +258,24 @@ async def refine_index_md(
         force_recompute=force_recompute,
         prompt_notes=prompt_notes,
     )
+
+
+def sorted_index_md_text(raw: str) -> str:
+    header, body = _split_header_and_body(raw, AggregateKind.INDEX)
+    sorted_body = sort_index_md_body(body)
+    if header:
+        output = f"{header}{sorted_body}"
+    else:
+        output = sorted_body
+    if not output.endswith("\n"):
+        output += "\n"
+    return output
+
+
+def sort_index_md_file(index_md_path: Path) -> bool:
+    raw = index_md_path.read_text(encoding="utf-8")
+    output = sorted_index_md_text(raw)
+    if output == raw:
+        return False
+    _atomic_write_bytes(index_md_path, output.encode("utf-8"))
+    return True

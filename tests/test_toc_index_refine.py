@@ -11,6 +11,8 @@ from src.ingestion.toc_index_refine import (
     AggregateKind,
     refine_aggregate_markdown_file,
     refine_index_md,
+    sort_index_md_file,
+    sorted_index_md_text,
 )
 from src.models.settings import Settings
 
@@ -88,6 +90,9 @@ class TestTocIndexRefine(unittest.TestCase):
         self.assertNotIn("<|channel>", text)
         self.assertIn("Acquario, 988, 989", text)
         self.assertIn("Argentari, 456", text)
+        body = text.removeprefix("# INDEX — Test Book\n\n")
+        entry_lines = [line for line in body.splitlines() if line.strip()]
+        self.assertEqual(entry_lines, sorted(entry_lines, key=str.casefold))
 
     @patch(_P_CHAT, new_callable=AsyncMock)
     def test_refine_skips_empty_body(self, mock_chat: AsyncMock) -> None:
@@ -141,3 +146,31 @@ class TestTocIndexRefine(unittest.TestCase):
         )
 
         self.assertEqual(mock_chat.await_count, 1)
+
+
+class TestSortIndexMdFile(unittest.TestCase):
+    def test_sort_index_md_file_rewrites_unsorted_entries(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_name:
+            index_path = Path(tmp_name) / "INDEX.md"
+            index_path.write_text(
+                "# INDEX — Test Book\n\nVenezia, 4\nMarco Polo, 12\n",
+                encoding="utf-8",
+            )
+            self.assertTrue(sort_index_md_file(index_path))
+            text = index_path.read_text(encoding="utf-8")
+            self.assertEqual(
+                text,
+                sorted_index_md_text("# INDEX — Test Book\n\nVenezia, 4\nMarco Polo, 12\n"),
+            )
+
+    def test_sort_index_md_file_is_idempotent(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_name:
+            index_path = Path(tmp_name) / "INDEX.md"
+            index_path.write_text(
+                "# INDEX — Test Book\n\nVenezia, 4\nMarco Polo, 12\n",
+                encoding="utf-8",
+            )
+            sort_index_md_file(index_path)
+            first = index_path.read_bytes()
+            self.assertFalse(sort_index_md_file(index_path))
+            self.assertEqual(index_path.read_bytes(), first)

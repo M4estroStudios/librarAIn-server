@@ -147,6 +147,68 @@ def _map_original_to_aligned(
     return original_out, aligned_out
 
 
+def _is_all_caps_heading(stripped: str) -> bool:
+    letters = [char for char in stripped if char.isalpha()]
+    if not letters:
+        return False
+    if re.search(r"\d", stripped):
+        return False
+    return all(char.isupper() for char in letters)
+
+
+def index_entry_sort_key(stripped: str) -> tuple[str, str] | None:
+    if _is_skippable_index_line(stripped):
+        return None
+
+    vedi_parts = _try_parse_vedi_line(stripped)
+    if vedi_parts is not None:
+        source_label, _ = vedi_parts
+        return normalize_label(source_label), source_label.lower()
+
+    label_and_pages = _try_split_label_and_pages(stripped)
+    if label_and_pages is not None:
+        raw_label, _ = label_and_pages
+        return normalize_label(raw_label), raw_label.lower()
+
+    if _is_all_caps_heading(stripped):
+        normalized = normalize_label(stripped)
+        return normalized, stripped.lower()
+
+    return None
+
+
+def sort_index_md_body(body: str) -> str:
+    prefix_lines: list[str] = []
+    entry_lines: list[tuple[tuple[str, str], str]] = []
+
+    for line in body.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            if prefix_lines and prefix_lines[-1] != "":
+                prefix_lines.append("")
+            continue
+        if stripped == "---":
+            continue
+
+        sort_key = index_entry_sort_key(stripped)
+        if sort_key is not None:
+            entry_lines.append((sort_key, stripped))
+            continue
+
+        prefix_lines.append(stripped)
+
+    entry_lines.sort(key=lambda item: item[0])
+    sorted_entries = [line for _, line in entry_lines]
+
+    parts: list[str] = []
+    prefix_text = "\n".join(prefix_lines).strip()
+    if prefix_text:
+        parts.append(prefix_text)
+    if sorted_entries:
+        parts.append("\n".join(sorted_entries))
+    return "\n".join(parts)
+
+
 def parse_index_md(
     index_md_path: Path,
     useful_pages_enumeration: UsefulPagesEnumeration,

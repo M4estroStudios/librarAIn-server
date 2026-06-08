@@ -6,7 +6,11 @@ import unittest
 from pathlib import Path
 from unittest.mock import MagicMock
 
-from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
+from src.ingestion.polyindex.index_json import (
+    sort_polyindex_index_file,
+    sorted_polyindex_index_bytes,
+    sync_polyindex_index_from_book,
+)
 from src.models.request import PageRange, UsefulPagesEnumeration
 
 SHA_A = "a" * 64
@@ -153,3 +157,67 @@ class TestPolyindexIndex(unittest.TestCase):
         self.assertEqual(path_a_again, path_a)
         self.assertGreaterEqual(stats_rerun["n_match"], 1)
         self.assertEqual(path_a.read_bytes(), first_bytes)
+
+    def test_index_json_subjects_sorted_by_canonical_label(self) -> None:
+        book_index = self.tmp / "book" / "INDEX.md"
+        book_index.parent.mkdir(parents=True)
+        _write_index_md(
+            book_index,
+            [
+                "Venezia — 4",
+                "Marco Polo — 2, 3",
+                "Colosseo — 5",
+            ],
+        )
+        settings = _settings(str(self.tmp))
+        path, _ = sync_polyindex_index_from_book(
+            self.polyindex_dir,
+            SHA_A,
+            book_index,
+            _enumeration(SHA_A),
+            self.client,
+            self.sqlite_path,
+            settings,
+            "req-sort",
+        )
+        data = json.loads(path.read_text(encoding="utf-8"))
+        labels = [
+            entry["canonical_label"]
+            for entry in data["subjects"].values()
+        ]
+        self.assertEqual(labels, sorted(labels, key=str.casefold))
+
+    def test_sort_polyindex_index_file_reorders_subjects(self) -> None:
+        index_path = self.polyindex_dir / "INDEX.json"
+        index_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": "1.0",
+                    "subjects": {
+                        "venezia": {
+                            "canonical_label": "Venezia",
+                            "aliases": ["Laguna"],
+                            "books": {},
+                        },
+                        "marco-polo": {
+                            "canonical_label": "Marco Polo",
+                            "aliases": [],
+                            "books": {},
+                        },
+                    },
+                },
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+        self.assertTrue(sort_polyindex_index_file(index_path))
+        data = json.loads(index_path.read_text(encoding="utf-8"))
+        labels = [entry["canonical_label"] for entry in data["subjects"].values()]
+        self.assertEqual(labels, ["Marco Polo", "Venezia"])
+        self.assertEqual(data["subjects"]["venezia"]["aliases"], ["Laguna"])
+        self.assertFalse(sort_polyindex_index_file(index_path))
+        self.assertEqual(
+            index_path.read_bytes(),
+            sorted_polyindex_index_bytes(data),
+        )
