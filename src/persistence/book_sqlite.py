@@ -4,15 +4,11 @@ import json
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
 from src.core.hashing import compute_file_sha256
 from src.persistence.pipeline_runs import (
     _sqlite_connection,
-    create_pipeline_run,
     ensure_pipeline_runs_table,
-    get_pipeline_run_by_request_id,
-    mark_pipeline_run_finished,
     reicat_alias_snapshot,
     reicat_alias_snapshot_from_row,
 )

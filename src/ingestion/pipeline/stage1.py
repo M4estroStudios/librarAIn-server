@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import re
-import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -37,13 +35,10 @@ from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.retry import retry_async
 from src.models.settings import Settings
 
-_SLUG_MAX = 32
+from src.core.text import slugify
 
-
-def _slugify(title: str) -> str:
-    text = unicodedata.normalize("NFKD", title).encode("ascii", "ignore").decode("ascii")
-    text = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
-    return text[:_SLUG_MAX].rstrip("-") or "book"
+# Backwards-compatible alias; new code should import from src.core.text.
+_slugify = slugify
 
 
 class Stage1PageResult(BaseModel):

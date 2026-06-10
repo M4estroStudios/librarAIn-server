@@ -6,7 +6,6 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 from src.core.errors import PermanentError, TransientError
 from src.core.openai_client import (
-    _ClientState,
     _client_states,
     _cached_clients,
     build_chat_completion_extra_body,

@@ -21,6 +21,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
+    "ruff>=0.8",
 ]
 
 [tool.setuptools.packages.find]
@@ -33,3 +34,15 @@ cpu_index_url = "https://download.pytorch.org/whl/cpu"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["RagAIO.py", "venv", "data"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "W"]
+
+[tool.ruff.lint.per-file-ignores]
+# Gli script aggiungono la repo root a sys.path prima degli import del progetto.
+"scripts/*" = ["E402"]

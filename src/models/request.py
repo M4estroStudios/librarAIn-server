@@ -118,6 +118,8 @@ class IngestRequest(BaseModel):
     source_pdf_path: str = Field(min_length=1)
     book_id_hint: str | None = None
     notes: str | None = None
+    index_notes: str | None = None
+    page_notes: str | None = None
     pages_to_remove: list[int]
     toc_range: PageRange
     index_range: PageRange
@@ -133,6 +135,10 @@ class IngestRequest(BaseModel):
             self.book_id_hint = self.book_id_hint.strip() or None
         if self.notes is not None:
             self.notes = self.notes.strip() or None
+        if self.index_notes is not None:
+            self.index_notes = self.index_notes.strip() or None
+        if self.page_notes is not None:
+            self.page_notes = self.page_notes.strip() or None
 
         normalized_pages = sorted(set(self.pages_to_remove))
         if any(page < 1 for page in normalized_pages):

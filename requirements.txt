@@ -1,10 +1,4 @@
-annotated-types==0.7.0
-pypdf==6.10.2
-pypdfium2==5.8.0
-pydantic==2.13.4
-pydantic_core==2.46.4
-typing-inspection==0.4.2
-typing_extensions==4.15.0
-easyocr>=1.7,<2
-Pillow>=10,<13
-rapidfuzz>=3.0
+# Le dipendenze sono definite in pyproject.toml (unica fonte di verita').
+# Installazione consigliata: `make setup-env` (gestisce anche la variante
+# corretta di torch: MPS su Apple Silicon, CUDA se disponibile, CPU altrimenti).
+-e .[dev]

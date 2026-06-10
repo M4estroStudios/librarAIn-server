@@ -16,8 +16,6 @@ SHA = "cafebabe" * 8
 REQUEST_ID = "req-log-propagation-001"
 PAGE_COUNT = 2
 
-_P_RENDER = "src.ingestion.orchestrator.render_aligned_pdf_pages"
-_P_RESOLVE = "src.ingestion.orchestrator.resolve_aligned_pdf_path_for_stage1"
 _P_STAGE1 = "src.ingestion.orchestrator.run_stage1_ingest_step"
 
 
@@ -99,8 +97,6 @@ class TestLoggingPropagation(unittest.TestCase):
 
         buffer = io.StringIO()
         with (
-            patch(_P_RENDER, return_value=[(1, Path("/tmp/p.0001.png")), (2, Path("/tmp/p.0002.png"))]),
-            patch(_P_RESOLVE, return_value=Path("/tmp/aligned.pdf")),
             patch(_P_STAGE1, return_value=stage1_result),
             patch("src.ingestion.orchestrator.create_pipeline_run"),
             patch("src.ingestion.orchestrator.mark_pipeline_run_finished"),

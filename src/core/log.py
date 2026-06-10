@@ -34,17 +34,28 @@ _file_lock = threading.Lock()
 request_id_var: ContextVar[str | None] = ContextVar("request_id", default=None)
 source_sha256_var: ContextVar[str | None] = ContextVar("source_sha256", default=None)
 
-redText = lambda text: f"{RED}{text}{END}"
+def redText(text: object) -> str:
+    return f"{RED}{text}{END}"
 
-greenText = lambda text: f"{GREEN}{text}{END}"
 
-yellowText = lambda text: f"{YELLOW}{text}{END}"
+def greenText(text: object) -> str:
+    return f"{GREEN}{text}{END}"
 
-magentaText = lambda text: f"{MAGENTA}{text}{END}"
 
-cyanText = lambda text: f"{CYAN}{text}{END}"
+def yellowText(text: object) -> str:
+    return f"{YELLOW}{text}{END}"
 
-grayText = lambda text: f"{GRAY}{text}{END}"
+
+def magentaText(text: object) -> str:
+    return f"{MAGENTA}{text}{END}"
+
+
+def cyanText(text: object) -> str:
+    return f"{CYAN}{text}{END}"
+
+
+def grayText(text: object) -> str:
+    return f"{GRAY}{text}{END}"
 
 
 logLevel: dict[int, str] = {

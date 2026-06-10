@@ -158,9 +158,17 @@ strong { color: #e8e8e8; }
   <fieldset>
     <legend>Note per i modelli</legend>
     <p class="hint">Testo facoltativo aggiunto al system prompt di Vision, Editor, raffinamento TOC/INDEX e subject matcher per questo libro.</p>
-    <label>Note
+    <label>Note generali
       <textarea name="notes" placeholder="es. conservare le abbreviazioni latine; non normalizzare i nomi propri storici"></textarea>
     </label>
+    <label>Note sulla formattazione dell'INDICE analitico
+      <textarea name="index_notes" placeholder="es. i lemmi sono in maiuscoletto; i rimandi usano 'v.' invece di 'vedi'; i numeri in corsivo indicano le illustrazioni"></textarea>
+    </label>
+    <p class="hint" style="margin:0.25rem 0 0;">Aggiunte al prompt del raffinamento INDEX e del subject matcher.</p>
+    <label>Note sulla formattazione delle pagine
+      <textarea name="page_notes" placeholder="es. note a piè di pagina; titolo del capitolo nell'intestazione; numero di pagina in basso al centro (non confonderlo con le date)"></textarea>
+    </label>
+    <p class="hint" style="margin:0.25rem 0 0;">Aggiunte al prompt di Vision ed Editor (es. note a lato/a piè/a fronte, nome libro e capitolo, posizione del numero di pagina).</p>
   </fieldset>
 
   <fieldset>
@@ -461,8 +469,27 @@ strong { color: #e8e8e8; }
     }
   }
 
+  function apiToken() {
+    return (localStorage.getItem("librarainApiToken") || "").trim();
+  }
+
+  function promptApiToken() {
+    var token = prompt("Il server richiede un token API (INGEST_API_TOKEN):");
+    if (token && token.trim()) {
+      localStorage.setItem("librarainApiToken", token.trim());
+      return token.trim();
+    }
+    return "";
+  }
+
+  function withToken(url) {
+    var token = apiToken();
+    if (!token) return url;
+    return url + (url.indexOf("?") >= 0 ? "&" : "?") + "token=" + encodeURIComponent(token);
+  }
+
   function connectSSE(eventsUrl) {
-    var es = new EventSource(eventsUrl);
+    var es = new EventSource(withToken(eventsUrl));
     var TERMINAL = new Set(["done", "error"]);
 
     function onMessage(e) {
@@ -535,7 +562,14 @@ strong { color: #e8e8e8; }
       }
 
       var fd = new FormData(form);
-      var res = await fetch("/api/ingest/submit", { method: "POST", body: fd });
+      var submitHeaders = apiToken() ? { "X-API-Token": apiToken() } : {};
+      var res = await fetch("/api/ingest/submit", { method: "POST", body: fd, headers: submitHeaders });
+      if (res.status === 401) {
+        var newToken = promptApiToken();
+        if (newToken) {
+          res = await fetch("/api/ingest/submit", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
+        }
+      }
       var data;
       try { data = await res.json(); } catch (_) { data = { ok: false, error: "risposta non JSON" }; }
 

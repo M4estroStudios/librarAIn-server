@@ -10,7 +10,8 @@ from pypdf import PdfWriter
 
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pdf_alignment import build_aligned_pdf
-from src.ingestion.request_validation import run_ingest_gate_phase, validate_and_enrich_request
+from src.ingestion.request_validation import validate_and_enrich_request
+from src.persistence.book_sqlite import run_ingest_gate_phase
 from src.models.request import (
     IngestInputErrorCode,
     IngestInputValidationError,
@@ -74,7 +75,7 @@ class PageEnumerationTests(unittest.TestCase):
                 "options": {"force_metadata_update_on_duplicate_hash": True},
             }
             enriched_first = validate_and_enrich_request(payload)
-            phase_first = run_ingest_gate_phase(enriched_first, str(sqlite_path))
+            run_ingest_gate_phase(enriched_first, str(sqlite_path))
             upsert_book_reicat(enriched_first, str(sqlite_path))
             enriched_dup = validate_and_enrich_request(copy.deepcopy(payload))
             phase_dup = run_ingest_gate_phase(enriched_dup, str(sqlite_path))

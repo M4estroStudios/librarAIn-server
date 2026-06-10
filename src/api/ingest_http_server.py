@@ -5,8 +5,7 @@ import os
 import secrets
 import threading
 import urllib.parse
-from http.server import BaseHTTPRequestHandler, HTTPServer
-from http.server import ThreadingHTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
@@ -18,6 +17,11 @@ from src.api.ingest_form import (
 )
 from src.api.ingest_pipeline_runner import run_full_pipeline
 from src.api.job_registry import JobRegistry
+from src.ingestion.polyindex.index_json import (
+    SubjectMergeError,
+    list_multibook_subjects,
+    merge_polyindex_subjects,
+)
 from src.core.config import ConfigurationError, load_settings
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, make_event
@@ -100,29 +104,57 @@ def _sse_write(handler: BaseHTTPRequestHandler, event_name: str, data: Any) -> b
         return False
 
 
-def run_ingest_http_server() -> None:
-    logInit(INFO_LOG_LEVEL)
-    try:
-        settings = load_settings()
-    except ConfigurationError as exc:
-        Log(ERROR_LOG_LEVEL, "ingest server configuration failed", {"error": str(exc)})
-        raise SystemExit(str(exc)) from exc
+def build_ingest_server(
+    settings: Any,
+    *,
+    host: str = "127.0.0.1",
+    port: int = 0,
+    max_upload: int = 512 * 1024 * 1024,
+    api_token: str = "",
+    max_concurrent_jobs: int = 1,
+) -> tuple[ThreadingHTTPServer, JobRegistry]:
+    """Build the HTTP server (without starting it) and its job registry.
 
-    host = os.environ.get("INGEST_HTTP_HOST", "127.0.0.1")
-    port_raw = os.environ.get("INGEST_HTTP_PORT", "8765")
-    port = int(port_raw)
-    max_upload = int(os.environ.get("INGEST_MAX_UPLOAD_BYTES", str(512 * 1024 * 1024)))
+    Separated from run_ingest_http_server so tests can bind to an ephemeral
+    port and inject configuration without touching the environment.
+    """
     repo_root = _repo_root()
     web_dir = repo_root / "web"
     data_root = Path(settings.data_root)
+    max_concurrent_jobs = max(1, max_concurrent_jobs)
 
     registry = JobRegistry()
+    job_semaphore = threading.Semaphore(max_concurrent_jobs)
 
     class IngestHandler(BaseHTTPRequestHandler):
         server_version = "librarAIn-ingest-http/1.0"
 
         def log_message(self, format: str, *args: Any) -> None:
             return
+
+        def _is_authorized(self, query: dict[str, list[str]] | None = None) -> bool:
+            """API token check. A no-op when INGEST_API_TOKEN is unset."""
+            if not api_token:
+                return True
+            header = self.headers.get("X-API-Token", "")
+            if header and secrets.compare_digest(header, api_token):
+                return True
+            auth = self.headers.get("Authorization", "")
+            if auth.startswith("Bearer ") and secrets.compare_digest(
+                auth.removeprefix("Bearer ").strip(), api_token
+            ):
+                return True
+            if query:
+                for candidate in query.get("token", []):
+                    if secrets.compare_digest(candidate, api_token):
+                        return True
+            return False
+
+        def _require_auth(self, query: dict[str, list[str]] | None = None) -> bool:
+            if self._is_authorized(query):
+                return True
+            _send_json(self, 401, {"ok": False, "error": "unauthorized"})
+            return False
 
         def do_GET(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
@@ -138,12 +170,38 @@ def run_ingest_http_server() -> None:
                 _send_bytes(self, 200, index_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
+            if path in ("/admin", "/admin.html"):
+                admin_file = web_dir / "admin.html"
+                if not admin_file.exists():
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
+                        {"path": str(admin_file)})
+                    _send_json(self, 500, {"ok": False, "error": "web/admin.html missing"})
+                    return
+                _send_bytes(self, 200, admin_file.read_bytes(), "text/html; charset=utf-8")
+                return
+
+            if path == "/api/admin/subjects":
+                query = urllib.parse.parse_qs(parsed.query)
+                if not self._require_auth(query):
+                    return
+                try:
+                    min_books = int(query.get("min_books", ["2"])[0])
+                except ValueError:
+                    min_books = 2
+                subjects = list_multibook_subjects(
+                    data_root / "polyindex", min_books=max(1, min_books)
+                )
+                _send_json(self, 200, {"ok": True, "subjects": subjects})
+                return
+
             if path == "/health":
                 _send_json(self, 200, {"ok": True})
                 return
 
             parts = path.split("/")
             if len(parts) == 5 and parts[1] == "api" and parts[2] == "ingest" and parts[4] in ("events", "status"):
+                if not self._require_auth(urllib.parse.parse_qs(parsed.query)):
+                    return
                 job_id = parts[3]
                 action = parts[4]
                 if action == "events":
@@ -153,6 +211,34 @@ def run_ingest_http_server() -> None:
                 return
 
             self.send_error(404, "Not Found")
+
+        def _handle_subjects_merge(self) -> None:
+            try:
+                body = _read_body(self, 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            target_id = payload.get("target_id")
+            source_ids = payload.get("source_ids")
+            if not isinstance(target_id, str) or not target_id.strip():
+                _send_json(self, 400, {"ok": False, "error": "target_id is required"})
+                return
+            if not isinstance(source_ids, list) or not all(
+                isinstance(sid, str) for sid in source_ids
+            ):
+                _send_json(self, 400, {"ok": False, "error": "source_ids must be a list of strings"})
+                return
+            try:
+                result = merge_polyindex_subjects(
+                    data_root / "polyindex", target_id.strip(), source_ids
+                )
+            except SubjectMergeError as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc)})
+                return
+            Log(INFO_LOG_LEVEL, "admin subjects merge done",
+                {"target_id": target_id, "source_count": len(source_ids)})
+            _send_json(self, 200, {"ok": True, "result": result})
 
         def _handle_status(self, job_id: str) -> None:
             snapshot = registry.get_status(job_id)
@@ -196,8 +282,15 @@ def run_ingest_http_server() -> None:
 
         def do_POST(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
+            if parsed.path == "/api/admin/subjects/merge":
+                if not self._require_auth():
+                    return
+                self._handle_subjects_merge()
+                return
             if parsed.path != "/api/ingest/submit":
                 self.send_error(404, "Not Found")
+                return
+            if not self._require_auth():
                 return
 
             content_type = self.headers.get("Content-Type") or ""
@@ -251,6 +344,15 @@ def run_ingest_http_server() -> None:
                     self, IngestInputErrorCode.PDF_NOT_FOUND, "empty PDF upload", "pdf_file"
                 )
                 return
+            if not file_bytes.startswith(b"%PDF"):
+                Log(WARNING_LOG_LEVEL, "ingest submit rejected: not a PDF (magic bytes)")
+                _send_validation_error(
+                    self,
+                    IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                    "uploaded file is not a PDF",
+                    "pdf_file",
+                )
+                return
 
             saved_path = _save_uploaded_pdf(data_root, filename or "upload.pdf", file_bytes)
             Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
@@ -264,6 +366,15 @@ def run_ingest_http_server() -> None:
                 def reporter(ev: dict) -> None:
                     registry.emit(job_id, ev)
 
+                acquired = job_semaphore.acquire(blocking=False)
+                if not acquired:
+                    registry.emit(job_id, make_event(
+                        "queue",
+                        "progress",
+                        message="waiting for a free ingest slot",
+                        max_concurrent_jobs=max_concurrent_jobs,
+                    ))
+                    job_semaphore.acquire()
                 try:
                     run_full_pipeline(
                         ingest_payload,
@@ -280,6 +391,8 @@ def run_ingest_http_server() -> None:
                         STATUS_ERROR,
                         message=str(exc),
                     ))
+                finally:
+                    job_semaphore.release()
 
             t = threading.Thread(target=_worker, daemon=True, name=f"ingest-{job_id[:8]}")
             t.start()
@@ -294,6 +407,39 @@ def run_ingest_http_server() -> None:
             })
 
     httpd = ThreadingHTTPServer((host, port), IngestHandler)
+    return httpd, registry
+
+
+def run_ingest_http_server() -> None:
+    logInit(INFO_LOG_LEVEL)
+    try:
+        settings = load_settings()
+    except ConfigurationError as exc:
+        Log(ERROR_LOG_LEVEL, "ingest server configuration failed", {"error": str(exc)})
+        raise SystemExit(str(exc)) from exc
+
+    host = os.environ.get("INGEST_HTTP_HOST", "127.0.0.1")
+    port = int(os.environ.get("INGEST_HTTP_PORT", "8765"))
+    max_upload = int(os.environ.get("INGEST_MAX_UPLOAD_BYTES", str(512 * 1024 * 1024)))
+    api_token = os.environ.get("INGEST_API_TOKEN", "").strip()
+    max_concurrent_jobs = max(1, int(os.environ.get("INGEST_MAX_CONCURRENT_JOBS", "1")))
+
+    if host not in ("127.0.0.1", "localhost") and not api_token:
+        Log(
+            WARNING_LOG_LEVEL,
+            "ingest server bound to a non-loopback address WITHOUT auth token; "
+            "set INGEST_API_TOKEN to protect the API",
+            {"host": host},
+        )
+
+    httpd, _registry = build_ingest_server(
+        settings,
+        host=host,
+        port=port,
+        max_upload=max_upload,
+        api_token=api_token,
+        max_concurrent_jobs=max_concurrent_jobs,
+    )
     Log(INFO_LOG_LEVEL, "ingest http server listening", {"url": f"http://{host}:{port}"})
     try:
         httpd.serve_forever()

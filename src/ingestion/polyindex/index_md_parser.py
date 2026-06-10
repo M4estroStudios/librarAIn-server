@@ -14,6 +14,11 @@ VEDI_PATTERN = re.compile(r"^(.+?)\s+vedi\s+(.+)$", re.IGNORECASE)
 PAGE_TOKEN_SPLIT = re.compile(r"[,.\s]+")
 RANGE_TOKEN_PATTERN = re.compile(r"^(\d+)\s*[-\u2013\u2014]\s*(\d+)$")
 SINGLE_PAGE_PATTERN = re.compile(r"^(\d+)$")
+# Fallback for lines without an explicit separator: a label (containing at
+# least one letter) followed by a trailing run of page numbers/ranges.
+TRAILING_PAGES_PATTERN = re.compile(
+    r"^(?P<label>.*[^\W\d_])[\s,;:]+(?P<pages>\d[\d\s,.\u2013\u2014-]*)$"
+)
 
 
 @dataclass(frozen=True)
@@ -22,6 +27,12 @@ class RawSubject:
     original_pages: list[int]
     aligned_pages: list[int]
     alias_of: str | None = None
+
+
+@dataclass(frozen=True)
+class SkippedIndexLine:
+    line: str
+    reason: str
 
 
 def _is_skippable_index_line(stripped: str) -> bool:
@@ -108,18 +119,33 @@ def _try_split_label_and_pages(stripped: str) -> tuple[str, str] | None:
             if label:
                 return label, pages_part
 
-    if "," not in stripped:
-        return None
+    if "," in stripped:
+        label_part, _, pages_part = stripped.partition(",")
+        pages_part = pages_part.strip()
+        if pages_part and re.search(r"\d", pages_part):
+            label = _light_normalize_label(label_part)
+            if label:
+                return label, pages_part
 
-    label_part, _, pages_part = stripped.partition(",")
-    pages_part = pages_part.strip()
-    if not pages_part or not re.search(r"\d", pages_part):
-        return None
+    for separator in (";", ":"):
+        if separator not in stripped:
+            continue
+        label_part, _, pages_part = stripped.partition(separator)
+        pages_part = pages_part.strip()
+        if not pages_part or not re.search(r"\d", pages_part):
+            continue
+        label = _light_normalize_label(label_part)
+        if label and re.search(r"[^\W\d_]", label):
+            return label, pages_part
 
-    label = _light_normalize_label(label_part)
-    if not label:
-        return None
-    return label, pages_part
+    trailing = TRAILING_PAGES_PATTERN.match(stripped)
+    if trailing is not None:
+        label = _light_normalize_label(trailing.group("label"))
+        pages_part = trailing.group("pages").strip()
+        if label and pages_part and _parse_original_pages(pages_part):
+            return label, pages_part
+
+    return None
 
 
 def _map_original_to_aligned(
@@ -209,13 +235,14 @@ def sort_index_md_body(body: str) -> str:
     return "\n".join(parts)
 
 
-def parse_index_md(
+def parse_index_md_with_skipped(
     index_md_path: Path,
     useful_pages_enumeration: UsefulPagesEnumeration,
-) -> list[RawSubject]:
+) -> tuple[list[RawSubject], list[SkippedIndexLine]]:
     text = index_md_path.read_text(encoding="utf-8")
     mapping = useful_pages_enumeration.original_page_to_aligned_page
     subjects: list[RawSubject] = []
+    skipped: list[SkippedIndexLine] = []
 
     for line in text.splitlines():
         stripped = line.strip()
@@ -237,15 +264,25 @@ def parse_index_md(
 
         label_and_pages = _try_split_label_and_pages(stripped)
         if label_and_pages is None:
+            if not _is_all_caps_heading(stripped):
+                skipped.append(
+                    SkippedIndexLine(line=stripped, reason="no_label_pages_separator")
+                )
             continue
 
         raw_label, pages_part = label_and_pages
         original_pages = _parse_original_pages(pages_part)
         if not original_pages:
+            skipped.append(
+                SkippedIndexLine(line=stripped, reason="no_parsable_pages")
+            )
             continue
 
         mapped = _map_original_to_aligned(original_pages, mapping, stripped)
         if mapped is None:
+            skipped.append(
+                SkippedIndexLine(line=stripped, reason="all_pages_out_of_mapping")
+            )
             continue
 
         mapped_original, mapped_aligned = mapped
@@ -257,4 +294,31 @@ def parse_index_md(
             )
         )
 
+    return subjects, skipped
+
+
+def parse_index_md(
+    index_md_path: Path,
+    useful_pages_enumeration: UsefulPagesEnumeration,
+) -> list[RawSubject]:
+    subjects, _ = parse_index_md_with_skipped(index_md_path, useful_pages_enumeration)
     return subjects
+
+
+def write_skipped_lines_report(
+    index_md_path: Path,
+    skipped: list[SkippedIndexLine],
+) -> Path:
+    """Persist unparsed INDEX.md lines next to the source file for human review."""
+    report_path = index_md_path.with_name("INDEX.skipped.md")
+    lines = [
+        "# INDEX — righe scartate dal parser",
+        "",
+        f"Sorgente: {index_md_path.name}",
+        f"Totale scartate: {len(skipped)}",
+        "",
+    ]
+    for item in skipped:
+        lines.append(f"- [{item.reason}] {item.line}")
+    report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return report_path

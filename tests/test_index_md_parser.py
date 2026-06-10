@@ -10,7 +10,9 @@ from src.ingestion.polyindex.index_md_parser import (
     RawSubject,
     normalize_label,
     parse_index_md,
+    parse_index_md_with_skipped,
     sort_index_md_body,
+    write_skipped_lines_report,
 )
 from src.models.request import PageRange, UsefulPagesEnumeration
 
@@ -167,6 +169,53 @@ class TestParseIndexMd(unittest.TestCase):
 
         self.assertEqual(subjects[0].original_pages, [4])
         self.assertEqual(subjects[0].aligned_pages, [104])
+
+    def test_semicolon_and_colon_separators(self) -> None:
+        index_path = _write_index(self.tmp, ["Tevere; 7", "Aventino: 9"])
+        subjects = parse_index_md(index_path, _enumeration(page_count=10))
+        self.assertEqual(
+            [(s.raw_label, s.original_pages) for s in subjects],
+            [("Tevere", [7]), ("Aventino", [9])],
+        )
+
+    def test_trailing_pages_without_separator(self) -> None:
+        index_path = _write_index(self.tmp, ["Foro Romano 7 9"])
+        subjects = parse_index_md(index_path, _enumeration(page_count=10))
+        self.assertEqual(len(subjects), 1)
+        self.assertEqual(subjects[0].raw_label, "Foro Romano")
+        self.assertEqual(subjects[0].original_pages, [7, 9])
+
+    def test_skipped_lines_are_reported_with_reason(self) -> None:
+        index_path = _write_index(
+            self.tmp,
+            [
+                "Roma, 3",
+                "riga senza pagine e senza separatore valido",
+                "Fantasma, 999",
+            ],
+        )
+        subjects, skipped = parse_index_md_with_skipped(
+            index_path, _enumeration(page_count=10)
+        )
+        self.assertEqual(len(subjects), 1)
+        self.assertEqual(len(skipped), 2)
+        reasons = {item.reason for item in skipped}
+        self.assertIn("no_label_pages_separator", reasons)
+        self.assertIn("all_pages_out_of_mapping", reasons)
+
+    def test_all_caps_heading_not_reported_as_skipped(self) -> None:
+        index_path = _write_index(self.tmp, ["ACQUEDOTTI", "Roma, 3"])
+        _, skipped = parse_index_md_with_skipped(index_path, _enumeration(page_count=10))
+        self.assertEqual(skipped, [])
+
+    def test_write_skipped_lines_report(self) -> None:
+        index_path = _write_index(self.tmp, ["riga ignorata senza numeri"])
+        _, skipped = parse_index_md_with_skipped(index_path, _enumeration(page_count=10))
+        report_path = write_skipped_lines_report(index_path, skipped)
+        self.assertEqual(report_path.name, "INDEX.skipped.md")
+        content = report_path.read_text(encoding="utf-8")
+        self.assertIn("riga ignorata senza numeri", content)
+        self.assertIn("no_label_pages_separator", content)
 
 
 class TestSortIndexMdBody(unittest.TestCase):

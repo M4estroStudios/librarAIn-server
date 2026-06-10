@@ -7,6 +7,9 @@ from pathlib import Path
 from unittest.mock import MagicMock
 
 from src.ingestion.polyindex.index_json import (
+    SubjectMergeError,
+    list_multibook_subjects,
+    merge_polyindex_subjects,
     sort_polyindex_index_file,
     sorted_polyindex_index_bytes,
     sync_polyindex_index_from_book,
@@ -186,6 +189,98 @@ class TestPolyindexIndex(unittest.TestCase):
             for entry in data["subjects"].values()
         ]
         self.assertEqual(labels, sorted(labels, key=str.casefold))
+
+    def test_book_entries_carry_title_and_slug(self) -> None:
+        book_index = self.tmp / "book" / "INDEX.md"
+        book_index.parent.mkdir(parents=True)
+        _write_index_md(book_index, ["Venezia — 4"])
+        settings = _settings(str(self.tmp))
+        path, _ = sync_polyindex_index_from_book(
+            self.polyindex_dir,
+            SHA_A,
+            book_index,
+            _enumeration(SHA_A),
+            self.client,
+            self.sqlite_path,
+            settings,
+            "req-meta",
+            book_title="Libro di prova",
+            book_slug="libro-di-prova",
+        )
+        data = json.loads(path.read_text(encoding="utf-8"))
+        entry = next(iter(data["subjects"].values()))
+        book = entry["books"][SHA_A]
+        self.assertEqual(book["title"], "Libro di prova")
+        self.assertEqual(book["slug"], "libro-di-prova")
+        self.assertEqual(book["aligned_pages"], [4])
+
+    def test_list_multibook_subjects_and_merge(self) -> None:
+        index_path = self.polyindex_dir / "INDEX.json"
+        index_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": "1.0",
+                    "subjects": {
+                        "augusto": {
+                            "canonical_label": "Augusto",
+                            "aliases": [],
+                            "books": {
+                                SHA_A: {
+                                    "title": "Libro A",
+                                    "slug": "libro-a",
+                                    "aligned_pages": [3],
+                                    "original_pages": [3],
+                                },
+                                SHA_B: {
+                                    "title": "Libro B",
+                                    "slug": "libro-b",
+                                    "aligned_pages": [9],
+                                    "original_pages": [9],
+                                },
+                            },
+                        },
+                        "ottaviano": {
+                            "canonical_label": "Ottaviano",
+                            "aliases": ["Imperatore Augusto"],
+                            "books": {
+                                SHA_B: {
+                                    "title": "Libro B",
+                                    "slug": "libro-b",
+                                    "aligned_pages": [11],
+                                    "original_pages": [11],
+                                }
+                            },
+                        },
+                    },
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        multibook = list_multibook_subjects(self.polyindex_dir, min_books=2)
+        self.assertEqual(len(multibook), 1)
+        self.assertEqual(multibook[0]["canonical_id"], "augusto")
+        self.assertEqual(multibook[0]["book_count"], 2)
+        self.assertEqual(multibook[0]["books"][0]["title"], "Libro A")
+
+        result = merge_polyindex_subjects(
+            self.polyindex_dir, "augusto", ["ottaviano"]
+        )
+        self.assertEqual(result["target_id"], "augusto")
+        self.assertIn("Ottaviano", result["aliases"])
+        self.assertIn("Imperatore Augusto", result["aliases"])
+
+        data = json.loads(index_path.read_text(encoding="utf-8"))
+        self.assertNotIn("ottaviano", data["subjects"])
+        merged = data["subjects"]["augusto"]
+        self.assertEqual(merged["books"][SHA_B]["aligned_pages"], [9, 11])
+        self.assertEqual(merged["books"][SHA_B]["title"], "Libro B")
+
+        with self.assertRaises(SubjectMergeError):
+            merge_polyindex_subjects(self.polyindex_dir, "augusto", ["inesistente"])
+        with self.assertRaises(SubjectMergeError):
+            merge_polyindex_subjects(self.polyindex_dir, "augusto", ["augusto"])
 
     def test_sort_polyindex_index_file_reorders_subjects(self) -> None:
         index_path = self.polyindex_dir / "INDEX.json"

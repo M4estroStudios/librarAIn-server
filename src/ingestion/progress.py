@@ -15,6 +15,7 @@ PHASE_STAGE2_VISION = "stage2_vision"
 PHASE_STAGE3_EDITOR = "stage3_editor"
 PHASE_POLYINDEX_TOC = "polyindex_toc"
 PHASE_POLYINDEX_INDEX = "polyindex_index"
+PHASE_TIME_INDEX = "time_index"
 
 STATUS_STARTED = "started"
 STATUS_PROGRESS = "progress"

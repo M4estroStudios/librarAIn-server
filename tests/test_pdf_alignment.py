@@ -17,7 +17,8 @@ from src.ingestion.pdf_alignment import (
     maybe_run_pdf_alignment,
     resolve_aligned_pdf_path_for_stage1,
 )
-from src.ingestion.request_validation import run_ingest_gate_phase, validate_and_enrich_request
+from src.ingestion.request_validation import validate_and_enrich_request
+from src.persistence.book_sqlite import run_ingest_gate_phase
 from src.models.request import (
     IngestInputErrorCode,
     IngestInputValidationError,

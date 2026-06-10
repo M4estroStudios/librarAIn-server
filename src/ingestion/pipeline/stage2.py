@@ -10,7 +10,7 @@ from pydantic import BaseModel
 
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
-from src.ingestion.pipeline.stage1 import Stage1Result
+from src.ingestion.pipeline.stage1 import Stage1PageResult, Stage1Result
 from src.ingestion.progress import (
     PHASE_STAGE2_VISION,
     STATUS_COMPLETED,
@@ -21,45 +21,16 @@ from src.ingestion.progress import (
     ProgressReporter,
     make_event,
 )
+from src.ingestion.pipeline.md_cache import read_stage_md, write_stage_md
 from src.models.settings import Settings
 
 _PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 VISION_PROMPT_FILE = _PROMPTS_DIR / "vision_prompt.md"
 _MAX_COMPLETION_TOKENS = 4096
-_MARKER_PREFIX = "<!-- librarain:model="
 
-
-def _stage_md_marker_line(model: str) -> str:
-    return f"{_MARKER_PREFIX}{model} -->\n"
-
-
-def _stage_md_cached_model(first_line: str) -> str | None:
-    line = first_line.strip()
-    if not line.startswith(_MARKER_PREFIX) or not line.endswith(" -->"):
-        return None
-    return line[len(_MARKER_PREFIX) : -4]
-
-
-def _read_stage_md(md_path: Path, model: str) -> str | None:
-    if not md_path.is_file():
-        return None
-    raw = md_path.read_text(encoding="utf-8")
-    if not raw.strip():
-        return None
-    if "\n" in raw:
-        first, body = raw.split("\n", 1)
-    else:
-        first, body = raw, ""
-    cached = _stage_md_cached_model(first)
-    if cached is None:
-        return raw
-    if cached != model:
-        return None
-    return body
-
-
-def _write_stage_md(md_path: Path, model: str, body: str) -> None:
-    md_path.write_text(_stage_md_marker_line(model) + body, encoding="utf-8")
+# Backwards-compatible aliases; new code should import from md_cache.
+_read_stage_md = read_stage_md
+_write_stage_md = write_stage_md
 
 
 def _load_vision_prompt() -> str:

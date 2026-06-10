@@ -20,8 +20,6 @@ SHA = "deadbeef" * 8
 REQUEST_ID = "req-orchestrator-001"
 PAGE_COUNT = 8
 
-_P_RENDER = "src.ingestion.orchestrator.render_aligned_pdf_pages"
-_P_RESOLVE = "src.ingestion.orchestrator.resolve_aligned_pdf_path_for_stage1"
 _P_STAGE1 = "src.ingestion.orchestrator.run_stage1_ingest_step"
 _P_STAGE2 = "src.ingestion.orchestrator.run_stage2_vision"
 _P_STAGE3 = "src.ingestion.orchestrator.run_stage3_editor"
@@ -31,6 +29,19 @@ _P_BUILD_TOC = "src.ingestion.orchestrator.build_toc_md"
 _P_BUILD_INDEX = "src.ingestion.orchestrator.build_index_md"
 _P_SYNC_POLYINDEX_TOC = "src.ingestion.orchestrator.sync_polyindex_toc_from_book"
 _P_SYNC_POLYINDEX_INDEX = "src.ingestion.orchestrator.sync_polyindex_index_from_book"
+_P_SYNC_TIME_INDEX = "src.ingestion.orchestrator.sync_time_index_from_book"
+
+
+def _patch_time_index():
+    return patch(
+        _P_SYNC_TIME_INDEX,
+        new=MagicMock(
+            return_value=(
+                Path("/tmp/TIME_INDEX.json"),
+                {"n_years": 0, "n_dates": 0, "n_pages_scanned": 0},
+            )
+        ),
+    )
 _P_REFINE_TOC = "src.ingestion.orchestrator.refine_toc_md"
 _P_REFINE_INDEX = "src.ingestion.orchestrator.refine_index_md"
 _P_CLIENT = "src.ingestion.orchestrator.build_openai_client"
@@ -114,17 +125,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
-    def _fake_render(self, aligned_path: Path, target_dir: Path, dpi: int) -> list[tuple[int, Path]]:
-        del aligned_path, dpi
-        render_dir = target_dir / SHA / "render"
-        render_dir.mkdir(parents=True, exist_ok=True)
-        rendered: list[tuple[int, Path]] = []
-        for page in range(1, PAGE_COUNT + 1):
-            png_path = render_dir / f"p.{page:04d}.png"
-            png_path.write_bytes(b"\x89PNG\r\n\x1a\n")
-            rendered.append((page, png_path))
-        return rendered
-
+    @_patch_time_index()
     @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
@@ -138,12 +139,8 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
     @patch(_P_STAGE3, new_callable=AsyncMock)
     @patch(_P_STAGE2, new_callable=AsyncMock)
     @patch(_P_STAGE1, new_callable=AsyncMock)
-    @patch(_P_RENDER)
-    @patch(_P_RESOLVE)
     def test_run_pipeline_calls_pipeline_stage1(
         self,
-        mock_resolve: MagicMock,
-        mock_render: MagicMock,
         mock_stage1: AsyncMock,
         mock_stage2: AsyncMock,
         mock_stage3: AsyncMock,
@@ -158,8 +155,6 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_sync_polyindex_toc: MagicMock,
         mock_sync_polyindex_index: MagicMock,
     ) -> None:
-        mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
-        mock_render.side_effect = self._fake_render
         mock_stage1.return_value = _stage1_result(PAGE_COUNT)
         stage3_pages = [MagicMock(aligned_page=i) for i in range(1, PAGE_COUNT + 1)]
         mock_stage2.return_value = MagicMock(pages=[])
@@ -246,6 +241,7 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         result.pages = [MagicMock(aligned_page=1)]
         return result
 
+    @_patch_time_index()
     @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
@@ -259,12 +255,8 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
     @patch(_P_STAGE3, new_callable=AsyncMock)
     @patch(_P_STAGE2, new_callable=AsyncMock)
     @patch(_P_STAGE1, new_callable=AsyncMock)
-    @patch(_P_RENDER)
-    @patch(_P_RESOLVE)
     def test_stages_run_batch_order(
         self,
-        mock_resolve: MagicMock,
-        mock_render: MagicMock,
         mock_stage1: AsyncMock,
         mock_stage2: AsyncMock,
         mock_stage3: AsyncMock,
@@ -279,8 +271,6 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_sync_polyindex_toc: MagicMock,
         mock_sync_polyindex_index: MagicMock,
     ) -> None:
-        mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
-        mock_render.side_effect = self._fake_render
         mock_stage1.side_effect = self._stage1_side_effect
         mock_stage2.side_effect = self._stage2
         mock_stage3.side_effect = self._stage3
@@ -365,6 +355,7 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
             {"n_new": 0, "n_match": 0, "n_alias": 0},
         )
 
+    @_patch_time_index()
     @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
@@ -378,12 +369,8 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
     @patch(_P_STAGE3, new_callable=AsyncMock)
     @patch(_P_STAGE2, new_callable=AsyncMock)
     @patch(_P_STAGE1, new_callable=AsyncMock)
-    @patch(_P_RENDER)
-    @patch(_P_RESOLVE)
     def test_run_pipeline_calls_build_toc_md_after_book_md(
         self,
-        mock_resolve: MagicMock,
-        mock_render: MagicMock,
         mock_stage1: AsyncMock,
         mock_stage2: AsyncMock,
         mock_stage3: AsyncMock,
@@ -398,8 +385,6 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         mock_sync_polyindex_toc: MagicMock,
         mock_sync_polyindex_index: MagicMock,
     ) -> None:
-        mock_resolve.return_value = Path(self.tmp / "aligned.pdf")
-        mock_render.side_effect = self._fake_render
         mock_stage1.return_value = _stage1_result(1)
         mock_stage2.return_value = MagicMock(pages=[])
         mock_stage3.return_value = MagicMock(pages=[MagicMock(aligned_page=1)])
@@ -518,18 +503,11 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
-    def _fake_render(self, aligned_path: Path, target_dir: Path, dpi: int) -> list[tuple[int, Path]]:
-        del aligned_path, dpi
-        render_dir = target_dir / SHA / "render"
-        render_dir.mkdir(parents=True, exist_ok=True)
-        png_path = render_dir / "p.0001.png"
-        png_path.write_bytes(b"\x89PNG\r\n\x1a\n")
-        return [(1, png_path)]
-
     def _toc_md_side_effect(self, book_output: BookOutput, useful_pages: object) -> Path:
         del book_output, useful_pages
         return self.toc_md_path
 
+    @_patch_time_index()
     @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -542,12 +520,8 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
     @patch(_P_STAGE3, new_callable=AsyncMock)
     @patch(_P_STAGE2, new_callable=AsyncMock)
     @patch(_P_STAGE1, new_callable=AsyncMock)
-    @patch(_P_RENDER)
-    @patch(_P_RESOLVE)
     def test_run_pipeline_writes_polyindex_toc_json_on_disk(
         self,
-        mock_resolve: MagicMock,
-        mock_render: MagicMock,
         mock_stage1: AsyncMock,
         mock_stage2: AsyncMock,
         mock_stage3: AsyncMock,
@@ -561,8 +535,6 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         mock_refine_index: AsyncMock,
         mock_sync_polyindex_index: MagicMock,
     ) -> None:
-        mock_resolve.return_value = self.tmp / "aligned.pdf"
-        mock_render.side_effect = self._fake_render
         mock_stage1.return_value = _stage1_result(1)
         mock_stage2.return_value = MagicMock(pages=[])
         mock_stage3.return_value = MagicMock(pages=[MagicMock(aligned_page=1)])

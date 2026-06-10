@@ -6,9 +6,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
-from src.core.hashing import compute_file_sha256
 from src.core.log import INFO_LOG_LEVEL, Log
-from src.ingestion.pipeline.stage1 import _slugify
+from src.core.text import slugify as _slugify
 from src.ingestion.pipeline.stage3 import Stage3Result
 from src.ingestion.markdown_artifacts import clean_markdown_channel_artifacts
 from src.models.request import EnrichedIngestRequest, UsefulPagesEnumeration

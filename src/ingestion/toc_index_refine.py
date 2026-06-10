@@ -15,7 +15,10 @@ from src.ingestion.markdown_artifacts import (
 )
 from src.ingestion.output_writer import _atomic_write_bytes
 from src.ingestion.polyindex.index_md_parser import sort_index_md_body
-from src.ingestion.pipeline.stage2 import _read_stage_md, _write_stage_md
+from src.ingestion.pipeline.md_cache import (
+    read_stage_md as _read_stage_md,
+    write_stage_md as _write_stage_md,
+)
 from src.models.settings import Settings
 
 _PROMPTS_DIR = Path(__file__).resolve().parent / "pipeline" / "prompts"
@@ -114,6 +117,7 @@ async def refine_aggregate_markdown_file(
     cache_dir: Path | None = None,
     force_recompute: bool = False,
     prompt_notes: str | None = None,
+    stats: dict[str, int] | None = None,
 ) -> Path:
     raw = md_path.read_text(encoding="utf-8")
     header, body = _split_header_and_body(raw, kind)
@@ -179,6 +183,8 @@ async def refine_aggregate_markdown_file(
                         "error": str(exc),
                     },
                 )
+                if stats is not None:
+                    stats["fallback_sections"] = stats.get("fallback_sections", 0) + 1
                 return _strip_obvious_artifacts(section_text)
 
         _write_stage_md(cache_file, model, refined)
@@ -222,6 +228,7 @@ async def refine_toc_md(
     cache_dir: Path | None = None,
     force_recompute: bool = False,
     prompt_notes: str | None = None,
+    stats: dict[str, int] | None = None,
 ) -> Path:
     return await refine_aggregate_markdown_file(
         toc_md_path,
@@ -233,6 +240,7 @@ async def refine_toc_md(
         cache_dir=cache_dir,
         force_recompute=force_recompute,
         prompt_notes=prompt_notes,
+        stats=stats,
     )
 
 
@@ -246,6 +254,7 @@ async def refine_index_md(
     cache_dir: Path | None = None,
     force_recompute: bool = False,
     prompt_notes: str | None = None,
+    stats: dict[str, int] | None = None,
 ) -> Path:
     return await refine_aggregate_markdown_file(
         index_md_path,
@@ -257,6 +266,7 @@ async def refine_index_md(
         cache_dir=cache_dir,
         force_recompute=force_recompute,
         prompt_notes=prompt_notes,
+        stats=stats,
     )
 
 

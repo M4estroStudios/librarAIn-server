@@ -193,6 +193,8 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
 
     book_id_hint_raw = fields.get("book_id_hint", "").strip()
     notes_raw = fields.get("notes", "").strip()
+    index_notes_raw = fields.get("index_notes", "").strip()
+    page_notes_raw = fields.get("page_notes", "").strip()
     force_meta = fields.get("force_metadata_update_on_duplicate_hash")
     if force_meta is None:
         force_flag = True
@@ -211,4 +213,8 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
         ingest_payload["book_id_hint"] = book_id_hint_raw
     if notes_raw:
         ingest_payload["notes"] = notes_raw
+    if index_notes_raw:
+        ingest_payload["index_notes"] = index_notes_raw
+    if page_notes_raw:
+        ingest_payload["page_notes"] = page_notes_raw
     return ingest_payload

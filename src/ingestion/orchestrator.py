@@ -15,13 +15,13 @@ from src.core.log import (
 )
 from src.core.lmstudio_models import swap_lmstudio_vision_to_editor
 from src.core.openai_client import build_openai_client
-from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
-from src.ingestion.pipeline.render import render_aligned_pdf_pages
-from src.ingestion.pipeline.stage1 import Stage1Result, _slugify, run_stage1_ingest_step
+from src.core.text import slugify as _slugify
+from src.ingestion.pipeline.stage1 import Stage1Result, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
 from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
+from src.ingestion.polyindex.time_index import sync_time_index_from_book
 from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
 from src.ingestion.toc_builder import build_toc_md
 from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
@@ -31,6 +31,7 @@ from src.ingestion.progress import (
     PHASE_POLYINDEX_INDEX,
     PHASE_POLYINDEX_TOC,
     PHASE_RENDER,
+    PHASE_TIME_INDEX,
     STATUS_COMPLETED,
     STATUS_STARTED,
     ProgressReporter,
@@ -42,7 +43,7 @@ from src.models.request import (
     UsefulPagesEnumeration,
 )
 from src.models.settings import Settings
-from src.persistence.book_sqlite import create_pipeline_run, mark_pipeline_run_finished
+from src.persistence.pipeline_runs import create_pipeline_run, mark_pipeline_run_finished
 
 PAGE_STATUS_PENDING = "pending"
 PAGE_STATUS_STAGE1 = "stage1"
@@ -51,7 +52,17 @@ PAGE_STATUS_STAGE3 = "stage3"
 PAGE_STATUS_COMPLETED = "completed"
 PAGE_STATUS_FAILED = "failed"
 
-_RENDER_DPI = 200
+
+
+def _combine_notes(*parts: str | None) -> str | None:
+    cleaned = [
+        part.strip()
+        for part in parts
+        if isinstance(part, str) and part.strip()
+    ]
+    if not cleaned:
+        return None
+    return "\n\n".join(cleaned)
 
 
 class OrchestratorStageError(Exception):
@@ -135,16 +146,13 @@ def _build_page_jobs(
     useful_pages: UsefulPagesEnumeration,
     tmp_root: Path,
     slug: str,
-    render_map: dict[int, Path],
 ) -> list[PageJob]:
     jobs: list[PageJob] = []
     for original_page in sorted(useful_pages.useful_original_pages):
         aligned_page = useful_pages.original_page_to_aligned_page.get(original_page)
         if aligned_page is None:
             continue
-        png_path = render_map.get(aligned_page)
-        if png_path is None:
-            png_path = tmp_root / "render" / f"p.{aligned_page:04d}.png"
+        png_path = tmp_root / "render" / f"p.{aligned_page:04d}.png"
         jobs.append(
             PageJob(
                 aligned_page=aligned_page,
@@ -296,14 +304,11 @@ async def _run_pipeline_body(
 ) -> OrchestratorResult:
     source_sha256 = enriched.source_sha256
     prompt_notes = enriched.request.notes
+    page_prompt_notes = _combine_notes(prompt_notes, enriched.request.page_notes)
+    index_prompt_notes = _combine_notes(prompt_notes, enriched.request.index_notes)
 
-    aligned_path = resolve_aligned_pdf_path_for_stage1(
-        enriched,
-        alignment,
-        settings.processed_pdf_input_dir,
-        page_range_per_thread=settings.page_range_per_thread,
-    )
-
+    # Rendering happens lazily in stage1 (only the useful pages, with
+    # sidecar-based caching); no upfront full-PDF render is needed.
     render_page_total = len(useful_pages.useful_original_pages)
     if progress is not None:
         progress(
@@ -317,35 +322,28 @@ async def _run_pipeline_body(
         registry,
         request_id,
         stage="render",
-        message="render all pages started",
+        message="render deferred to stage1 (useful pages only)",
     )
-    rendered = await asyncio.to_thread(
-        render_aligned_pdf_pages,
-        aligned_path,
-        data_root / "tmp",
-        _RENDER_DPI,
-    )
-    render_map = {aligned_page: png_path for aligned_page, png_path in rendered}
     if progress is not None:
         progress(
             make_event(
                 PHASE_RENDER,
                 STATUS_COMPLETED,
-                rendered_page_count=len(rendered),
+                rendered_page_count=render_page_total,
             )
         )
     _publish_event(
         registry,
         request_id,
         stage="render",
-        message="render all pages completed",
-        payload={"rendered_page_count": len(rendered)},
+        message="render phase completed (lazy)",
+        payload={"rendered_page_count": render_page_total},
     )
 
     for subdir in ("stage1OCR", "stage2Vision", "stage3Editor", "stage4TocIndexRefine"):
         (tmp_root / subdir).mkdir(parents=True, exist_ok=True)
 
-    page_jobs = _build_page_jobs(useful_pages, tmp_root, slug, render_map)
+    page_jobs = _build_page_jobs(useful_pages, tmp_root, slug)
 
     _publish_event(
         registry,
@@ -395,12 +393,12 @@ async def _run_pipeline_body(
             payload={
                 "completed_count": completed_count,
                 "failed_count": failed_count,
-                "rendered_page_count": len(rendered),
+                "rendered_page_count": render_page_total,
             },
         )
         return OrchestratorResult(
             page_jobs=page_jobs,
-            rendered_page_count=len(rendered),
+            rendered_page_count=render_page_total,
             stage1_result=stage1_result,
             completed_count=completed_count,
             failed_count=failed_count,
@@ -415,7 +413,7 @@ async def _run_pipeline_body(
             openai_client,
             request_id=request_id,
             progress=progress,
-            prompt_notes=prompt_notes,
+            prompt_notes=page_prompt_notes,
         )
     except Exception as exc:
         raise OrchestratorStageError("stage2_vision", exc) from exc
@@ -433,7 +431,7 @@ async def _run_pipeline_body(
             openai_client,
             request_id=request_id,
             progress=progress,
-            prompt_notes=prompt_notes,
+            prompt_notes=page_prompt_notes,
         )
     except Exception as exc:
         raise OrchestratorStageError("stage3_editor", exc) from exc
@@ -477,6 +475,7 @@ async def _run_pipeline_body(
     )
 
     toc_refine_cache = tmp_root / "stage4TocIndexRefine"
+    toc_refine_stats: dict[str, int] = {}
     try:
         toc_md_path = await refine_toc_md(
             toc_md_path,
@@ -486,6 +485,7 @@ async def _run_pipeline_body(
             request_id=request_id,
             cache_dir=toc_refine_cache,
             prompt_notes=prompt_notes,
+            stats=toc_refine_stats,
         )
     except Exception as exc:
         raise OrchestratorStageError("toc_refine", exc) from exc
@@ -494,7 +494,10 @@ async def _run_pipeline_body(
         request_id,
         stage="toc_refine",
         message="toc_refine completed",
-        payload={"toc_md_path": str(toc_md_path)},
+        payload={
+            "toc_md_path": str(toc_md_path),
+            "fallback_sections": toc_refine_stats.get("fallback_sections", 0),
+        },
     )
 
     index_md_path = build_index_md(book_output, useful_pages)
@@ -506,6 +509,7 @@ async def _run_pipeline_body(
         payload={"index_md_path": str(index_md_path)},
     )
 
+    index_refine_stats: dict[str, int] = {}
     try:
         index_md_path = await refine_index_md(
             index_md_path,
@@ -514,7 +518,8 @@ async def _run_pipeline_body(
             source_sha256=source_sha256,
             request_id=request_id,
             cache_dir=toc_refine_cache,
-            prompt_notes=prompt_notes,
+            prompt_notes=index_prompt_notes,
+            stats=index_refine_stats,
         )
     except Exception as exc:
         raise OrchestratorStageError("index_refine", exc) from exc
@@ -523,7 +528,10 @@ async def _run_pipeline_body(
         request_id,
         stage="index_refine",
         message="index_refine completed",
-        payload={"index_md_path": str(index_md_path)},
+        payload={
+            "index_md_path": str(index_md_path),
+            "fallback_sections": index_refine_stats.get("fallback_sections", 0),
+        },
     )
 
     polyindex_dir = data_root / "polyindex"
@@ -563,7 +571,9 @@ async def _run_pipeline_body(
         settings.sqlite_path,
         settings,
         request_id,
-        prompt_notes=prompt_notes,
+        prompt_notes=index_prompt_notes,
+        book_title=enriched.request.reicat.title,
+        book_slug=book_output.slug,
     )
     if progress is not None:
         progress(
@@ -589,6 +599,38 @@ async def _run_pipeline_body(
         },
     )
 
+    if progress is not None:
+        progress(make_event(PHASE_TIME_INDEX, STATUS_STARTED))
+    time_index_path, time_index_stats = await asyncio.to_thread(
+        sync_time_index_from_book,
+        polyindex_dir,
+        source_sha256,
+        book_output,
+        book_title=enriched.request.reicat.title,
+        request_id=request_id,
+    )
+    if progress is not None:
+        progress(
+            make_event(
+                PHASE_TIME_INDEX,
+                STATUS_COMPLETED,
+                time_index_path=str(time_index_path),
+                n_years=time_index_stats["n_years"],
+                n_dates=time_index_stats["n_dates"],
+            )
+        )
+    _publish_event(
+        registry,
+        request_id,
+        stage="time_index",
+        message="time_index completed",
+        payload={
+            "time_index_path": str(time_index_path),
+            "n_years": time_index_stats["n_years"],
+            "n_dates": time_index_stats["n_dates"],
+        },
+    )
+
     completed_count = sum(1 for job in page_jobs if job.status == PAGE_STATUS_COMPLETED)
     failed_count = sum(1 for job in page_jobs if job.status == PAGE_STATUS_FAILED)
     counters["completed"] = completed_count
@@ -602,13 +644,13 @@ async def _run_pipeline_body(
         payload={
             "completed_count": completed_count,
             "failed_count": failed_count,
-            "rendered_page_count": len(rendered),
+            "rendered_page_count": render_page_total,
         },
     )
 
     return OrchestratorResult(
         page_jobs=page_jobs,
-        rendered_page_count=len(rendered),
+        rendered_page_count=render_page_total,
         stage1_result=stage1_result,
         stage2_result=stage2_result,
         stage3_result=stage3_result,

@@ -2,8 +2,7 @@
 
 Server e pipeline per ingestione libri, persistenza metadati e (fase successiva) ricerca. Requisiti di prodotto della Fase 1: `[PRD-Fase1.md](PRD-Fase1.md)`.
 
-> ⚠️ **Stato attuale: pipeline temporanea, parziale e incompleta (solo sviluppo).**
-> L'ingestione esposta da `POST /api/ingest/submit` (e dalla web UI `web/index.html`) oggi esegue **solo lo Stage 1 OCR** e si considera completata a fine OCR (T11.5). Stage 2 Vision, Stage 3 Editor, writer pagine per libro, `TOC.md`, `INDEX.md`, file aggregato `<libro>.md` e polyindex globale **non sono ancora attivi**. La risposta dell'endpoint include solo i risultati fino allo Stage 1 (`stage1`). Le cartelle `data/tmp/<sha>/stage2Vision/` e `stage3Editor/` mostrate nell'albero sotto si materializzeranno solo con le task future T12.5+/T13+.
+Pipeline Fase 1 **completa** (OCR → Vision → Editor → artefatti libro → polyindex). Entrypoint operatore: web UI `web/index.html` e `POST /api/ingest/submit` (risposta `202` + SSE). Admin merge soggetti POH: `web/admin.html`. Fase 2 (ricerca) non ancora implementata.
 
 ## Struttura del repository (bilanciata)
 
@@ -43,12 +42,13 @@ librarAIn-server/ # radice repository
 │   │   └── processed/ # PDF normalizzati/allineati dopo preprocessing
 │   │       ├── <hash libro>.pdf # nome basato su hash SHA-256 del libro
 │   │       └── ... # altri PDF processati
-│   ├── polyndex/ # artefatti globali correnti e snapshot storici
+│   ├── polyindex/ # artefatti globali correnti e snapshot storici
 │   │   ├── checkpoints/ # snapshot giornalieri di TOC/INDEX
 │   │   │   ├── <yyyy>.<mm>.<dd>.INDEX.json # snapshot INDEX del giorno
 │   │   │   ├── <yyyy>.<mm>.<dd>.TOC.json # snapshot TOC del giorno
 │   │   │   └── ... # altri snapshot storici
-│   │   ├── INDEX.json # indice globale corrente
+│   │   ├── INDEX.json # indice soggetti POH globale corrente
+│   │   ├── TIME_INDEX.json # riferimenti temporali (anni/date) per libro
 │   │   └── TOC.json # toc globale corrente
 │   ├── output/ # output organizzati per libro processato
 │   │   ├── <hash libro>/ # artefatti del singolo libro
@@ -84,7 +84,19 @@ librarAIn-server/ # radice repository
 - `src/persistence/` è l'unico posto in cui si concentra SQLite + JSON di biblioteca + (se serve) tracciamento run/hash.
 - `src/core/config.py` legge solo `.env` / `example.env`.
 - `data/` non contiene codice, solo artefatti runtime.
-- `web/index.html` (o nome equivalente) resta il punto unico di input coerente per l'operatore.
+- `web/index.html` resta il punto unico di input per l'ingest; `web/admin.html` per il merge manuale dei soggetti POH tra libri.
+
+## Setup e comandi
+
+```bash
+cp example.env .env   # poi adatta DATA_ROOT, modelli OpenAI, ecc.
+make setup-env        # crea venv, installa torch (MPS/CUDA/CPU) e dipendenze
+make test             # 256+ test unitari
+make lint             # ruff su src/, tests/, scripts/
+make run-server       # HTTP server su http://127.0.0.1:8765
+```
+
+CI GitHub Actions (`.github/workflows/ci.yml`): lint + test su ogni push/PR.
 
 ## Configurazione runtime `.env` (T3)
 
@@ -110,6 +122,11 @@ La configurazione runtime centralizzata è gestita da:
 - `RATE_LIMIT_PER_MINUTE` (default `60`)
 - `VISION_MODEL` (default `None`)
 - `EDITOR_MODEL` (default `None`)
+- `MATCHER_EMBEDDING_MODEL`, `MATCHER_SIMILARITY_THRESHOLD`, `MATCHER_USE_AI` (subject matching POH)
+- `INGEST_HTTP_HOST` (default `127.0.0.1`), `INGEST_HTTP_PORT` (default `8765`)
+- `INGEST_API_TOKEN` (opzionale; se impostato, richiesto su tutti gli endpoint `/api/*`)
+- `INGEST_MAX_CONCURRENT_JOBS` (default `1`; job extra restano in coda)
+- `INGEST_MAX_UPLOAD_BYTES` (default 512 MiB)
 
 ### Vincoli semantici
 
@@ -171,7 +188,7 @@ Per T2 è disponibile anche `validate_and_enrich_request(payload)` in `src/inges
 
 ## SourceHashGate (T5)
 
-Il gate hash sorgente è implementato in `src/ingestion/request_validation.py` con `source_hash_gate(source_sha256, sqlite_path)`.
+Il gate hash sorgente è implementato in `src/persistence/book_sqlite.py` con `source_hash_gate(source_sha256, sqlite_path)`.
 
 - Input: digest SHA-256 (`source_sha256`) e path del DB SQLite (`sqlite_path`).
 - Output: `SourceHashGateResult` con `status`, `source_sha256` e `should_skip_pipeline`.
@@ -183,7 +200,7 @@ Il gate legge la tabella `books` nello SQLite. Se non trova la hash, restituisce
 
 ## Schema SQLite minimo (T6)
 
-Lo schema minimo è inizializzato da `init_books_schema(sqlite_path)` nello stesso modulo `src/ingestion/request_validation.py`.
+Lo schema minimo è inizializzato da `init_books_schema(sqlite_path)` in `src/persistence/book_sqlite.py`. I run della pipeline sono tracciati in `pipeline_runs` via `src/persistence/pipeline_runs.py`.
 
 La tabella `books` usa direttamente `source_sha256` come identificativo:
 
@@ -200,7 +217,7 @@ La tabella `books` usa direttamente `source_sha256` come identificativo:
 - `last_seen_at TEXT NOT NULL`
 - `last_error TEXT`
 
-Per i test e per l'inserimento minimo è disponibile `insert_book_minimal(...)`, che fallisce in modo esplicito su hash duplicata.
+Per i test e per l'inserimento minimo è disponibile `insert_book_minimal(...)` in `src/persistence/book_sqlite.py`, che fallisce in modo esplicito su hash duplicata.
 
 ### Esempio payload valido
 
@@ -265,10 +282,13 @@ Sequenza tipica degli eventi:
 | `stage1_ocr` | `started` | — | `page_total` |
 | `stage1_ocr` | `page_progress` / `page_skipped` / `page_failed` | `true` | `page_index`, `page_total`, `aligned_page`, `original_page` |
 | `stage1_ocr` | `completed` / `failed` | — | |
-| `stage1_ocr` | `done` | — | **terminale**; porta `result` (payload completo) |
+| `stage2_vision` | `started` / `page_*` / `completed` | `true` per pagina | |
+| `stage3_editor` | `started` / `page_*` / `completed` | `true` per pagina | |
+| `polyindex_toc` / `polyindex_index` / `time_index` | `started` / `completed` | — | sync `TOC.json`, `INDEX.json`, `TIME_INDEX.json` |
+| `pipeline` | `done` | — | **terminale**; porta `result` (payload completo) |
 | `pipeline` | `error` | — | **terminale**; porta `message` |
 
-Gli eventi con `counts_as_step: true` includono `global_step` e `global_total` per aggiornare la barra di avanzamento. Formula attuale: `global_total = 1 (alignment) + N (pagine Stage 1)`. Con Stage 2 e Stage 3 cablati diventerà `1 + 3N` senza alcuna modifica al client.
+Gli eventi con `counts_as_step: true` includono `global_step` e `global_total`. Formula: `global_total = 1 (alignment, se eseguito) + 3 × N` (Stage 1 + Vision + Editor per ogni pagina utile).
 
 ### Snapshot JSON — `GET /api/ingest/<job_id>/status`
 
@@ -294,14 +314,18 @@ curl -N http://127.0.0.1:8765/api/ingest/<job_id>/events
 curl -s http://127.0.0.1:8765/api/ingest/<job_id>/status | jq '{status,global_step,global_total}'
 ```
 
+### Autenticazione API
+
+Se `INGEST_API_TOKEN` è impostato, tutti gli endpoint `/api/*` richiedono il token via header `X-API-Token`, `Authorization: Bearer <token>` o query `?token=`. Le pagine statiche (`/`, `/admin`) restano aperte; la UI salva il token in `localStorage`.
+
+### Admin POH — `/admin`
+
+`GET /api/admin/subjects?min_books=2` elenca i soggetti presenti in almeno N libri. `POST /api/admin/subjects/merge` unisce soggetti duplicati (`target_id`, `source_ids`).
+
 ### Payload `result` (evento `done`)
 
-> Nota stato attuale (dev-only, T11.5): la pipeline termina al completamento dello Stage 1 OCR. Stage 2 Vision (T12.5) ed Editor (T13) non sono ancora cablati: il payload `result` non include `stage2`/`stage3` e i file finali per libro (`<libro>.md`, `TOC.md`, `INDEX.md`, polyindex) non vengono prodotti.
+Il campo `result` nell'evento SSE terminale `done` include: `ingest_gate_phase`, `pdf_alignment`, `useful_pages_enumeration`, `stage1`, `stage2`, `stage3`, percorsi output (`book_md`, `toc_md`, `index_md`) e statistiche polyindex.
 
-Il campo `result` incluso nell'evento SSE terminale `done` ha la stessa struttura della precedente risposta sincrona: include `ingest_gate_phase`, `pdf_alignment` (o `null` su hash duplicato), `useful_pages_enumeration` e `stage1`.
+Artefatti per libro in `data/output/<source_sha256>/`: `pages/`, `<slug>.md`, `TOC.md`, `INDEX.md`, `manifest.json`. Polyindex globale in `data/polyindex/` (`TOC.json`, `INDEX.json`, `TIME_INDEX.json`).
 
-`pdf_alignment` include il path assoluto del PDF allineato sotto `<DATA_ROOT>/input/processed` (`<source_sha256>.pdf`) e le mappe `original_page_to_aligned_page` / `aligned_page_to_original_page` (pagine 1-based).
-
-`useful_pages_enumeration` (T10): elenco ordinato delle pagine originali utili, mappe bidirezionali allineamento 1-based, e `toc_range_aligned` / `index_range_aligned` (range TOC/INDEX proiettati sul PDF allineato).
-
-`stage1` (T11.5): risultato dello Stage 1 OCR per le pagine utili enumerate. I file di testo grezzi vengono scritti in `data/tmp/<source_sha256>/stage1OCR/p.<NNNN>.<slug>.txt` (uno per pagina), con `<NNNN>` zero-padded sul numero pagina allineata e `<slug>` derivato dal titolo REICAT.
+Cache intermedie in `data/tmp/<source_sha256>/`: `render/` (PNG lazy, solo pagine utili), `stage1OCR/`, `stage2Vision/`, `stage3Editor/`, `stage4TocIndexRefine/`.

@@ -19,11 +19,8 @@ from src.ingestion.pipeline.stage1 import (
 )
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pdf_alignment import build_aligned_pdf
-from src.ingestion.request_validation import (
-    init_books_schema,
-    run_ingest_gate_phase,
-    validate_and_enrich_request,
-)
+from src.ingestion.request_validation import validate_and_enrich_request
+from src.persistence.book_sqlite import init_books_schema, run_ingest_gate_phase
 from src.models.request import (
     IngestInputErrorCode,
     IngestInputValidationException,
@@ -177,7 +174,7 @@ class Stage1OcrTests(unittest.TestCase):
             enum = _enumeration([1, 2], {1: 1, 2: 2})
             engine1 = FakeEngine({1: "first", 2: "second"})
 
-            result1 = _run_ocr(pdf, "deadbeef", enum, settings, engine1, reicat=_reicat("Cache Book"))
+            _run_ocr(pdf, "deadbeef", enum, settings, engine1, reicat=_reicat("Cache Book"))
             self.assertEqual(len(engine1.calls), 2)
 
             engine2 = FakeEngine({1: "first", 2: "second"})
@@ -381,7 +378,7 @@ class RunStage1IngestStepTests(unittest.TestCase):
                 "reicat": {"titolo": "Wire Test", "autore": ["Author"]},
             }
             enriched = validate_and_enrich_request(payload)
-            phase = run_ingest_gate_phase(enriched, str(base / "biblioteca.db"))
+            run_ingest_gate_phase(enriched, str(base / "biblioteca.db"))
             processed_dir = base / "processed"
             alignment = build_aligned_pdf(
                 enriched,

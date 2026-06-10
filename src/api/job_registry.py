@@ -2,11 +2,15 @@ from __future__ import annotations
 
 import queue
 import threading
+import time
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Generator
 
 _TERMINAL_STATUSES = frozenset({"done", "error"})
+
+DEFAULT_JOB_TTL_SECONDS = 2 * 60 * 60
+DEFAULT_MAX_FINISHED_JOBS = 200
 
 
 class JobState:
@@ -18,6 +22,7 @@ class JobState:
         "error",
         "created_at",
         "updated_at",
+        "finished_at_monotonic",
         "global_total",
         "global_step",
         "_subscribers",
@@ -32,6 +37,7 @@ class JobState:
         self.error: str | None = None
         self.created_at = now
         self.updated_at = now
+        self.finished_at_monotonic: float | None = None
         self.global_total: int | None = None
         self.global_step: int = 0
         self._subscribers: list[queue.Queue[dict[str, Any]]] = []
@@ -44,18 +50,50 @@ class JobRegistry:
     subscribers.  Subscribers receive a replay of the history on connect
     followed by live events pushed by the worker thread.
 
-    TODO: add TTL-based cleanup for finished jobs (e.g. remove jobs older
-    than 2 h after reaching a terminal status).
+    Finished jobs are evicted after ``ttl_seconds`` (and the number of
+    finished jobs retained is capped) so memory stays bounded on a
+    long-running server.
     """
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        ttl_seconds: float = DEFAULT_JOB_TTL_SECONDS,
+        max_finished_jobs: int = DEFAULT_MAX_FINISHED_JOBS,
+    ) -> None:
         self._lock = threading.RLock()
         self._jobs: dict[str, JobState] = {}
+        self._ttl_seconds = ttl_seconds
+        self._max_finished_jobs = max_finished_jobs
+
+    def _evict_finished_locked(self) -> None:
+        now = time.monotonic()
+        finished = [
+            state
+            for state in self._jobs.values()
+            if state.finished_at_monotonic is not None and not state._subscribers
+        ]
+        for state in finished:
+            assert state.finished_at_monotonic is not None
+            if now - state.finished_at_monotonic > self._ttl_seconds:
+                del self._jobs[state.job_id]
+
+        remaining = [
+            state
+            for state in self._jobs.values()
+            if state.finished_at_monotonic is not None and not state._subscribers
+        ]
+        overflow = len(remaining) - self._max_finished_jobs
+        if overflow > 0:
+            remaining.sort(key=lambda state: state.finished_at_monotonic or 0.0)
+            for state in remaining[:overflow]:
+                del self._jobs[state.job_id]
 
     def create_job(self) -> str:
         """Allocate a new job and return its opaque job_id."""
         job_id = uuid.uuid4().hex
         with self._lock:
+            self._evict_finished_locked()
             self._jobs[job_id] = JobState(job_id)
         return job_id
 
@@ -104,9 +142,11 @@ class JobRegistry:
             if status == "done":
                 state.status = "done"
                 state.result = ev.get("result")
+                state.finished_at_monotonic = time.monotonic()
             elif status == "error":
                 state.status = "error"
                 state.error = ev.get("message")
+                state.finished_at_monotonic = time.monotonic()
             elif status == "started" and state.status == "queued":
                 state.status = "running"
 

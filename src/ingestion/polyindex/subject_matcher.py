@@ -10,8 +10,10 @@ from typing import Any
 import openai
 from rapidfuzz import fuzz
 
+from src.core.errors import classify_openai_exception
 from src.core.log import Log, WARNING_LOG_LEVEL
-from src.ingestion.pipeline.stage1 import _slugify
+from src.core.retry import retry_sync
+from src.core.text import slugify as _slugify
 from src.ingestion.polyindex.index_md_parser import RawSubject, normalize_label
 from src.models.settings import Settings
 from src.core.openai_client import build_system_prompt
@@ -119,10 +121,28 @@ def _embedding_vector_from_response(data: Any) -> list[float]:
     raise ValueError("unexpected embedding payload")
 
 
+_MATCHER_RETRY_ATTEMPTS = 3
+
+
+def _openai_call_with_retry(fn: Any) -> Any:
+    """Run a blocking OpenAI call with transient-error classification + retry."""
+
+    def attempt() -> Any:
+        try:
+            return fn()
+        except openai.OpenAIError as exc:
+            wrapped = classify_openai_exception(exc)
+            raise wrapped(str(exc)) from exc
+
+    return retry_sync(attempt, max_attempts=_MATCHER_RETRY_ATTEMPTS)
+
+
 def _fetch_embedding(
     client: openai.OpenAI, model: str, text: str
 ) -> list[float]:
-    response = client.embeddings.create(model=model, input=text)
+    response = _openai_call_with_retry(
+        lambda: client.embeddings.create(model=model, input=text)
+    )
     return _embedding_vector_from_response(response.data[0].embedding)
 
 
@@ -215,13 +235,15 @@ def _llm_arbitrate(
         {"label_a": raw_label, "label_b": candidate_label},
         ensure_ascii=False,
     )
-    response = client.chat.completions.create(
-        model=_matcher_llm_model(settings),
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_content},
-        ],
-        temperature=0.1,
+    response = _openai_call_with_retry(
+        lambda: client.chat.completions.create(
+            model=_matcher_llm_model(settings),
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_content},
+            ],
+            temperature=0.1,
+        )
     )
     content = response.choices[0].message.content or ""
     parsed = _parse_llm_same_response(content)
@@ -380,6 +402,20 @@ def _stage2_match(
         similarity=best_sim,
         ai_used=True,
     )
+
+
+def find_exact_canonical(
+    subjects: dict[str, dict[str, Any]], normalized: str
+) -> str | None:
+    """Public lock-safe exact lookup by normalized label/alias."""
+    return _find_exact_canonical(subjects, normalized)
+
+
+def allocate_canonical_id(
+    subjects: dict[str, dict[str, Any]], normalized: str
+) -> str:
+    """Public allocator for a unique canonical id from a normalized label."""
+    return _allocate_canonical_id(subjects, normalized)
 
 
 def match_subject(

@@ -14,12 +14,14 @@ from pypdf import PdfWriter
 
 from src.ingestion.request_validation import (
     _compute_file_sha256,
+    validate_and_enrich_request,
+)
+from src.persistence.book_sqlite import (
     init_books_schema,
     insert_book_minimal,
     run_ingest_gate_phase,
     source_hash_gate,
     upsert_book_reicat,
-    validate_and_enrich_request,
 )
 from src.models.request import IngestInputErrorCode, SourceHashGateStatus
 

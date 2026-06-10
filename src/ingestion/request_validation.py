@@ -12,14 +12,6 @@ from src.models.request import (
     IngestInputValidationError,
     IngestRequest,
 )
-from src.persistence.book_sqlite import (
-    init_books_schema,
-    insert_book_minimal,
-    run_ingest_gate_phase,
-    source_hash_gate,
-    upsert_book_reicat,
-    verify_source_pdf_digest_matches,
-)
 
 
 _compute_file_sha256 = compute_file_sha256

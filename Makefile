@@ -9,14 +9,19 @@ VENV_PYTHON = $(firstword $(wildcard venv/Scripts/python.exe venv/bin/python.exe
 # Preferisce il Python del venv se presente (dopo setup-env).
 PYTHON ?= $(if $(VENV_PYTHON),$(VENV_PYTHON),$(PY))
 
-.PHONY: check-python setup-env install-torch test clean-pycache run-server
+.PHONY: check-python setup-env finish-env install-torch test lint clean-pycache run-server
 
 check-python:
 	$(PY) -c "import sys; sys.exit('Python 3.11+ required (see pyproject.toml requires-python)' if sys.version_info < (3, 11) else 0)"
 
+# Il venv viene creato qui; i passi successivi girano in una invocazione
+# ricorsiva di make cosi' che VENV_PYTHON venga rivalutato a venv esistente.
 setup-env: check-python
 	$(PY) -c "import shutil; shutil.rmtree('venv', ignore_errors=True)"
 	$(PY) -m venv venv
+	$(MAKE) finish-env
+
+finish-env:
 	"$(VENV_PYTHON)" -m pip install --upgrade pip
 	$(MAKE) install-torch
 	"$(VENV_PYTHON)" -m pip install -e ".[dev]"
@@ -27,6 +32,9 @@ install-torch:
 test:
 	"$(PYTHON)" -m unittest discover -s tests -p "test_*.py"
 	$(MAKE) clean-pycache
+
+lint:
+	"$(PYTHON)" -m ruff check src tests scripts
 
 run-server:
 	"$(PYTHON)" -m src.api.ingest_http_server

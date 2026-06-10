@@ -4,10 +4,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from src.persistence.book_sqlite import (
+from src.persistence.book_sqlite import init_books_schema
+from src.persistence.pipeline_runs import (
     create_pipeline_run,
     get_pipeline_run_by_request_id,
-    init_books_schema,
     mark_pipeline_run_finished,
 )
 

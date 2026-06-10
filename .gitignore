@@ -1,9 +1,12 @@
 data/input/
 data/tmp/
-data/polyindex/.toc.lock
-data/polyindex/.index.lock
+data/output/
+data/db/
+data/polyindex/
 tempdata/
 venv/
 __pycache__/
 *.egg-info/
 .env
+.DS_Store
+logs/

@@ -28,8 +28,6 @@ _P_GATE = "src.api.ingest_pipeline_runner.run_ingest_gate_phase"
 _P_ALIGN = "src.api.ingest_pipeline_runner.maybe_run_pdf_alignment"
 _P_ENUM = "src.api.ingest_pipeline_runner.build_useful_pages_enumeration"
 _P_ORCH = "src.api.ingest_pipeline_runner.run_pipeline"
-_P_RENDER = "src.ingestion.orchestrator.render_aligned_pdf_pages"
-_P_RESOLVE = "src.ingestion.orchestrator.resolve_aligned_pdf_path_for_stage1"
 _P_STAGE1_ORCH = "src.ingestion.orchestrator.run_stage1_ingest_step"
 _P_STAGE3 = "src.ingestion.orchestrator.run_stage3_editor"
 _P_CLIENT = "src.ingestion.orchestrator.build_openai_client"
@@ -423,17 +421,6 @@ class TestCacheHit(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
-    def _fake_render(self, aligned_path: Path, target_dir: Path, dpi: int) -> list[tuple[int, Path]]:
-        del aligned_path, dpi
-        render_dir = target_dir / SHA / "render"
-        render_dir.mkdir(parents=True, exist_ok=True)
-        rendered: list[tuple[int, Path]] = []
-        for i in range(1, 3):
-            png_path = render_dir / f"p.{i:04d}.png"
-            png_path.write_bytes(b"\x89PNG")
-            rendered.append((i, png_path))
-        return rendered
-
     def _run_pipeline(self, fake_openai_client: MagicMock) -> dict:
         enriched = _make_enriched()
         enriched.request.request_id = f"{REQUEST_ID}-{uuid.uuid4().hex[:8]}"
@@ -442,8 +429,6 @@ class TestCacheHit(unittest.TestCase):
             patch(_P_GATE, return_value=_make_gate(pipeline_skipped=False)),
             patch(_P_ALIGN, return_value=None),
             patch(_P_ENUM, return_value=_make_pages_enum(n=2)),
-            patch(_P_RESOLVE, return_value=Path(self.tmp / "aligned.pdf")),
-            patch(_P_RENDER, side_effect=self._fake_render),
             patch(
                 _P_STAGE1_ORCH,
                 new_callable=AsyncMock,

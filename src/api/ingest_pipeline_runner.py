@@ -29,10 +29,8 @@ from src.ingestion.progress import (
     make_event,
     timed_progress_reporter,
 )
-from src.ingestion.request_validation import (
-    run_ingest_gate_phase,
-    validate_and_enrich_request,
-)
+from src.ingestion.request_validation import validate_and_enrich_request
+from src.persistence.book_sqlite import run_ingest_gate_phase
 from src.models.request import IngestInputValidationError, IngestInputValidationException
 from src.models.settings import Settings
 

@@ -9,11 +9,11 @@ from pydantic import BaseModel
 
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
-from src.ingestion.pipeline.stage2 import (
-    Stage2Result,
-    _read_stage_md,
-    _write_stage_md,
+from src.ingestion.pipeline.md_cache import (
+    read_stage_md as _read_stage_md,
+    write_stage_md as _write_stage_md,
 )
+from src.ingestion.pipeline.stage2 import Stage2PageResult, Stage2Result
 from src.ingestion.progress import (
     PHASE_STAGE3_EDITOR,
     STATUS_COMPLETED,

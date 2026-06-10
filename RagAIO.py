@@ -43,8 +43,8 @@ import json
 filterwarnings("ignore")
 environ["USE_FLASH_ATTENTION"] = '1'
 
-OPENAI_BASE_URL = "http://localhost:11111/v1"
-OPENAI_API_KEY = "2E99758548972A8E8822AD47FA1017FF72F06F3FF6A016851F45C398732BC50C"
+OPENAI_BASE_URL = environ.get("OPENAI_BASE_URL", "http://localhost:11111/v1")
+OPENAI_API_KEY = environ.get("OPENAI_API_KEY", "dummy")
 
 options = [
     {
@@ -988,8 +988,8 @@ def chatInteractive():
     print("💬 chat")
     
     client = OpenAI(
-        base_url="http://localhost:11111/v1",
-        api_key="2E99758548972A8E8822AD47FA1017FF72F06F3FF6A016851F45C398732BC50C",
+        base_url=OPENAI_BASE_URL,
+        api_key=OPENAI_API_KEY,
         timeout=30.0,
         max_retries=3
     )
