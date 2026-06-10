@@ -1,9 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-thought
-44
-
-**RIONE I MONTI**
-
-La facciata di San Giovanni in Laterano in un'incisione di fine Ottocento.
-
-dell'antica basilica affinché assumesse un aspetto moderno e maestoso. Borromini compì una vera e propria trasformazione in una prospettiva di un barocco tanto articolato e maestoso quanto nobilmente privo di enfasi, con grandi pilastri al posto delle colonne; le ampie e severe edicole degli apostoli, trasformando la direzionalità assiale della navata paleocristiana in un ampio salone, quasi un atrio immaginario, prima del ciborio e del mosaico. La facciata della basilica fu compiuta solo nel 1735 da Alessandro Galilei sotto papa Clemente XII Corsini. In essa domina il riferimento settecentesco all'architettura tanto romana nei riferimenti architettonici fondamentali quanto rinascimentale e barocca nelle finestre e negli ingressi. Al centro si distingue netto il profilo di un tempio classico poggiu su due gigantesche colonne. Ricorda la scritta che questa è la basilica Lateranense madre e capo di tutte le chiese di Roma del mondo. All'interno del timpano è l'antica immagine del «Cristo» e sopra la balconata che conclude l'edificio sono le statue del «Cristo», dei due S. Giovanni e dei dottori della chiesa greca e latina per indicare che Roma eredita e detiene tutta la tradizione teologica cristiana. Nel portico è possibile seguire le «Storie della vita di Giovanni Battista» raffigurate ad altorilievo mentre sulla sinistra è collocata la statua colossale di «Costantino» del IV secolo d.C. proveniente dalle terme sul Quirinale. La porta principale della basilica è particolarmente importante perché i due battenti di essa, montati qui nel 1660, sono quelli romani antichi, originali, che si trovavano prima alla Curia del senato, nel Foro Romano. Furono trasferiti qui da papa Alessandro VII, Chigi, i cui emblemi nobiliari stanno sulle cornici poste...

@@ -1,9 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-1016
-RIONE XVI: LUDOVISI
-
-La villa Ludovisi in un'incisione secentesca di G.B. Falda.
-
-sacrificando la proprietà privata all'utilità pubblica: Da questo momento (1886-1890) sorgono palazzine aggraziate e grandi case di abitazione borghese modeste, ma dignitose, anche se per taluni in forme banali.
-Il Ludovisi è da considerarsi un rione di espansione al di fuori del vecchio nucleo storico, scaturito da convenzioni di grandi imprese legate a gruppi finanziari. «Tale sistema si dimostrò dannoso per la tutela ambientale e per la stessa economia generale perché conteneva i germi che portarono alla crisi edilizia intorno al 1890. L'esempio eloquente ne fu il nostro rione iniziato dalla Compagnia fondiaria e dalla Società generale immobiliare: Si congiunse piazza Barberini con porta Pinciana; creando via Veneto (poi, nel 1918, via Vittorio Veneto).
-Altre vie furono intitolate alle regioni d'Italia disposte a scacchiera. Connesso al sorgere del rione era un problema sentito fortemente dal Consiglio comunale che considerava le mura di Roma (quelle aureliane in questo caso) un monumento storico della più grande importanza: Nella seduta del 28 febbraio 1886, il Consiglio adottava provvedimenti che valessero alla loro conservazione, deliberando che il nuovo quartiere nella già villa Ludovisi sorgesse a distanza non minore di 16 metri dalle mura di Belisario. Ciò, peraltro, era già in contrasto col piano regolatore del 1873 che prevedeva un viale interno lungo le mura largo 40 metri. Tuttavia l'assessore Balestra e l'impresa edificatrice limitarono arbitrariamente la larghezza della via a soli 9 metri; di rimando, la giunta fece sospendere i lavori di costruzione al fine di far rispettare le volontà del Consiglio. Dal «Cracas» del 23 giugno 1888, p. 154, si apprende che il pomerio interno al rione Ludovisi è stato dichiarato di utilità pubblica e che si sono imposte

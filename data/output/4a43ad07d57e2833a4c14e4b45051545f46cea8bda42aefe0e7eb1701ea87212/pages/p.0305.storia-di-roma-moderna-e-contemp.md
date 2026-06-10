@@ -1,7 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA UMBERTINA
-305
-
-*Il Palazzo della Banca d'Italia (incisione ottocentesca).*
-
-...colo della Stampa si affianca a quello dell'Associazione artistica internazionale in via Margutta. Così pure le ambasciate accreditate al Quirinale sono impegnate in una vita mondana decisamente nuova rispetto al passato; tra gli svaghi si affermano le corse dei cavalli a Tor di Quinto e alle Capannelle, e di grande impegno è la caccia alla volpe, che trova spazio nella Campagna Romana, specialmente nell'Appia Antica; nei liberi spazi spogli di vegetazione; Artisti e scrittori animano una cultura che si fa nazionale, trovando il suo centro nella «Cronaca Bizantina» dell'editore Sommaruga, con Gabriele D'Annunzio ed Edoardo Scarfoglio; la contessa Lara e Matilde Serao: un gruppo eclettico e dinamico che ha in Giosuè Carducci emblematico maestro, come recitavano i suoi versi posti a insegna della rivista: «Impronta Italia di Bisanzio essi le han dato». La condanna dell'editore Sommaruga nel 1885 per truffa inferse un duro colpo all'impresa culturale che per sé i suoi connotati destinati a rinnovarsi fondamentalmente in D'Annunzio, che nel romanzo *Il piacere* e poi nei drammi finirà per dare un'impronta alla cultura romana fino ai primi del Novecento; tanto che artisticamente la Roma umbertina è più specificamente definita dannunziana. Lo scenario tipico di questa cultura e di certa società appare rappresentato nei teatri, tra i quali, scomparso l'Apollo, s'impongono l'Argentina e il Costanzi. E sono le sta-

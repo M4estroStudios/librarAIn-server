@@ -1,9 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-DAI BORGHESE AI BARBERINI
-119
-
-G.B. Piranesi: la fontana dell'Acqua Paola detta "il Fontanone"
-
-Carlo Maderno su una pianta a croce latina al posto di quella a croce greca proposta da Bramante e da Michelangelo. Nel 1607 ebbe inizio la costruzione del nuovo braccio longitudinale a tre navate fiancheggiato da tre cappelle per lato; cominciando dalla facciata con l'ampio atrio e la loggia mentre si demolivano manufatti precedenti. Nel 1614, e non nel 1612 come si legge nella colossale iscrizione, fu completata la facciata che fu subito oggetto di critiche. I lavori furono portati a termine nel 1617 con l'impiego ininterrotto di 700 addetti e contemporaneamente procedettero la decorazione interna della cupola e la sistemazione della Confessione e delle Grotte.
-
-Molti lavori furono eseguiti anche in Vaticano creando nuovi ambienti e ingressi nella parte adiacente alla basilica, ma le cure maggiori le dedicarono Maderno e Flaminio Ponzio al palazzo del Quirinale che allora assunse le caratteristiche di palazzo pontificio sia nell'aspetto sia nelle funzioni e fu dotato delle cappelle Paolina e dell'Annunciata; Una cappella Paolina fu costruita in Santa Maria Maggiore da Ponzio per ospitare i sepolcri di Clemente VIII e di Paolo V e nel 1613 vi fu solennemente trasferita la venerata immagine della Madonna della Neve, alla quale essa fu dedicata. Nel 1615 davanti alla basilica fu innalzata dal Maderno la colonna di marmo imezio proveniente dalla basilica di Massenzio. Strumento delle iniziative edilizie pubbliche e private del papa fu il nipote Scipione, appassionato delle arti del disegno e della musica; grande collezionista d'arte e instancabile artefice della fortuna dei Borghese. Completò la costruzione del palazzo di famiglia; il <cembalo Borghese, eresse sul Quirinale il palazzo di Mazzarino e oggi dei Rospigliosi; per le soste di riposo in città creò villa Borghese; dove espose le sue collezioni.

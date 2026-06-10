@@ -1,7 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-SECONDO ITINERARIO
-967
-
-Porta Angelica, oggi scomparsa, in un'incisione ottocentesca di L. Rossini insieme ai nomi antichi di sicuro fascino; anche perché restano assai popolati. Proseguendo si giunge ora in piazza delle Vaschette, che prende nome dalla fontana incassata che getta l'Acqua Angelica. Alle spalle della graziosa fontana è antica scuola pontificia; che occupa l'intero lato della piazza; ristrutturata ampliata nel 1891 ad opera dell'architetto Zama Nocelli. Sul lato sinistro si trova una lunga fila di edifici piuttosto rozzi, modesti con accesso su via degli Ombrellari; si tratta di vere case popolari disposte a schiera; una sorta di INA-Casa ante litteram; furono realizzate su progetto dell'architetto Andrea Busiri «per ordine e spese di Pio IX per la classe indigente». Questo lotto di case popolari fu terminato nell'anno 1860, dieci anni prima dunque della presa di Roma da parte dei piemontesi; a saperlo il papa, di lì a poco spodestato dalla sua stessa popolazione nel plebiscito del 2 ottobre 1870, non le avrebbe certo edificate. Borgo Vittorio termina con la fine stessa del rione, e giunti al termine anche della nostra fatica; consigliamo ai lettori un giro delle mura e dei camminamenti della Mole Adriana, ora ai nostri piedi nella sua parte posteriore, per avere un colpo d'occhio del vetusto maniero dovuto all'imperatore Adriano.
-
-RIONE XIV. BORGO
