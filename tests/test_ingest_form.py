@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import tempfile
 import unittest
+from io import BytesIO
+from pathlib import Path
 
 from src.api.ingest_form import (
     InvalidPagesSpec,
@@ -8,6 +11,7 @@ from src.api.ingest_form import (
     _parse_pages_spec,
     build_ingest_payload_from_form,
     parse_multipart_form,
+    parse_multipart_form_stream,
 )
 
 
@@ -67,6 +71,61 @@ class TestParseMultipartForm(unittest.TestCase):
     def test_missing_boundary_raises(self) -> None:
         with self.assertRaises(ValueError):
             parse_multipart_form(b"", "multipart/form-data")
+
+
+class TestParseMultipartFormStream(unittest.TestCase):
+    def test_stream_parser_matches_in_memory_parser(self) -> None:
+        boundary = "streamboundary9"
+        body = _multipart_body(
+            {"titolo": "Il libro", "notes": "ciao"},
+            {"pdf_file": ("book.pdf", b"%PDF-1.4 streamed")},
+            boundary,
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            pdf_path = Path(tmp) / "upload.part"
+            parsed = parse_multipart_form_stream(
+                BytesIO(body),
+                f"multipart/form-data; boundary={boundary}",
+                content_length=len(body),
+                max_bytes=len(body) + 1,
+                pdf_part_path=pdf_path,
+            )
+            self.assertEqual(parsed.text_fields["titolo"], "Il libro")
+            self.assertEqual(parsed.text_fields["notes"], "ciao")
+            self.assertIsNotNone(parsed.pdf)
+            assert parsed.pdf is not None
+            self.assertEqual(parsed.pdf.filename, "book.pdf")
+            self.assertEqual(parsed.pdf.size, len(b"%PDF-1.4 streamed"))
+            self.assertEqual(parsed.pdf.path.read_bytes(), b"%PDF-1.4 streamed")
+
+    def test_stream_parser_handles_large_pdf_in_chunks(self) -> None:
+        boundary = "largeboundary1"
+        pdf_bytes = b"%PDF-" + (b"x" * (3 * 1024 * 1024))
+        body = _multipart_body(_BASE_FIELDS, {"pdf_file": ("big.pdf", pdf_bytes)}, boundary)
+        with tempfile.TemporaryDirectory() as tmp:
+            pdf_path = Path(tmp) / "big.part"
+            parsed = parse_multipart_form_stream(
+                BytesIO(body),
+                f"multipart/form-data; boundary={boundary}",
+                content_length=len(body),
+                max_bytes=len(body) + 1,
+                pdf_part_path=pdf_path,
+                chunk_size=64 * 1024,
+            )
+            assert parsed.pdf is not None
+            self.assertEqual(parsed.pdf.size, len(pdf_bytes))
+            self.assertEqual(parsed.pdf.path.read_bytes(), pdf_bytes)
+
+    def test_stream_parser_rejects_oversized_content_length(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(ValueError):
+                parse_multipart_form_stream(
+                    BytesIO(b""),
+                    "multipart/form-data; boundary=x",
+                    content_length=1024,
+                    max_bytes=512,
+                    pdf_part_path=Path(tmp) / "x.part",
+                )
 
 
 class TestParsePagesSpec(unittest.TestCase):

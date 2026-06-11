@@ -12,6 +12,10 @@ from src.core.openai_client import (
     build_openai_client,
     chat_completion_with_retry,
 )
+from src.core.openai_client_sync import (
+    chat_completion_with_retry_sync,
+    embedding_with_retry_sync,
+)
 
 
 def _make_settings(
@@ -178,6 +182,71 @@ class TestBuildChatCompletionExtraBody(unittest.TestCase):
             extra,
             {"reasoning": {"effort": "medium"}, "enable_thinking": True},
         )
+
+
+class TestChatCompletionWithRetrySync(unittest.TestCase):
+    def setUp(self) -> None:
+        _cached_clients.clear()
+
+    def tearDown(self) -> None:
+        _cached_clients.clear()
+
+    def _build_client(self, retry: int = 2) -> object:
+        return build_openai_client(_make_settings(retry=retry))
+
+    def _call(self, client: object, create_mock: object) -> str:
+        client.chat.completions.create = create_mock  # type: ignore[attr-defined]
+        return chat_completion_with_retry_sync(
+            client,  # type: ignore[arg-type]
+            model="gpt-4",
+            messages=[{"role": "user", "content": "hi"}],
+            max_tokens=100,
+            request_id="req-sync",
+            stage="test_sync",
+            page=0,
+        )
+
+    def test_success_first_attempt(self) -> None:
+        client = self._build_client()
+        mock_create = MagicMock(return_value=_make_response("hello"))
+        with patch("time.sleep"):
+            result = self._call(client, mock_create)
+        self.assertEqual(result, "hello")
+        mock_create.assert_called_once()
+
+    def test_transient_then_success(self) -> None:
+        client = self._build_client(retry=2)
+        mock_create = MagicMock(
+            side_effect=[TransientError("rate limit"), _make_response("ok")]
+        )
+        with patch("time.sleep"):
+            result = self._call(client, mock_create)
+        self.assertEqual(result, "ok")
+        self.assertEqual(mock_create.call_count, 2)
+
+
+class TestEmbeddingWithRetrySync(unittest.TestCase):
+    def setUp(self) -> None:
+        _cached_clients.clear()
+
+    def tearDown(self) -> None:
+        _cached_clients.clear()
+
+    def test_success_first_attempt(self) -> None:
+        client = build_openai_client(_make_settings())
+        item = MagicMock()
+        item.embedding = [0.1, 0.2, 0.3]
+        response = MagicMock()
+        response.data = [item]
+        client.embeddings.create = MagicMock(return_value=response)  # type: ignore[attr-defined]
+        vector = embedding_with_retry_sync(
+            client,  # type: ignore[arg-type]
+            model="text-embedding-3-small",
+            text="Roma",
+            request_id="req-embed",
+            stage="subject_matcher_embedding",
+        )
+        self.assertEqual(vector, [0.1, 0.2, 0.3])
 
 
 class TestChatCompletionReasoningParams(unittest.TestCase):

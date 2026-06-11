@@ -1,7 +1,12 @@
 from __future__ import annotations
 
 import re
-from typing import Any
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, BinaryIO
+
+_STREAM_CHUNK_SIZE = 256 * 1024
+_MAX_TEXT_FIELD_BYTES = 256 * 1024
 
 
 class InvalidPagesSpec(ValueError):
@@ -69,6 +74,225 @@ def parse_multipart_form(
         else:
             text_fields[field_name] = payload.decode("utf-8")
     return text_fields, files
+
+
+@dataclass(frozen=True)
+class StreamedPdfUpload:
+    filename: str | None
+    path: Path
+    size: int
+
+
+@dataclass(frozen=True)
+class StreamedMultipartForm:
+    text_fields: dict[str, str]
+    pdf: StreamedPdfUpload | None
+
+
+class _MultipartStreamParser:
+    def __init__(
+        self,
+        stream: BinaryIO,
+        *,
+        boundary: bytes,
+        content_length: int,
+        chunk_size: int,
+    ) -> None:
+        self._stream = stream
+        self._dash_boundary = b"--" + boundary
+        self._part_sep = b"\r\n" + self._dash_boundary
+        self._closing = self._dash_boundary + b"--"
+        self._content_length = content_length
+        self._chunk_size = chunk_size
+        self._bytes_read = 0
+        self._buffer = bytearray()
+        self._overlap = len(self._part_sep) + 8
+
+    def _read_more(self) -> bool:
+        if self._bytes_read >= self._content_length:
+            return False
+        chunk = self._stream.read(
+            min(self._chunk_size, self._content_length - self._bytes_read)
+        )
+        if not chunk:
+            raise ValueError("unexpected end of request body")
+        self._bytes_read += len(chunk)
+        self._buffer.extend(chunk)
+        return True
+
+    def _ensure(self, minimum: int) -> None:
+        while len(self._buffer) < minimum and self._bytes_read < self._content_length:
+            self._read_more()
+
+    def _consume(self, count: int) -> bytes:
+        data = bytes(self._buffer[:count])
+        del self._buffer[:count]
+        return data
+
+    def _drop_through(self, marker: bytes) -> None:
+        while True:
+            self._ensure(len(marker))
+            index = self._buffer.find(marker)
+            if index == -1:
+                if self._bytes_read >= self._content_length:
+                    raise ValueError("multipart form could not be parsed")
+                if len(self._buffer) > len(marker):
+                    del self._buffer[: len(self._buffer) - len(marker) + 1]
+                self._read_more()
+                continue
+            self._consume(index + len(marker))
+            return
+
+    def _read_part_headers(self) -> tuple[str | None, str | None]:
+        while True:
+            self._ensure(4)
+            sep = self._buffer.find(b"\r\n\r\n")
+            if sep == -1:
+                if self._bytes_read >= self._content_length:
+                    raise ValueError("multipart form could not be parsed")
+                self._read_more()
+                continue
+            header_blob = self._consume(sep + 4).decode("utf-8", errors="replace")
+            content_disposition: str | None = None
+            for line in header_blob.split("\r\n"):
+                if line.lower().startswith("content-disposition:"):
+                    content_disposition = line.split(":", 1)[1].strip()
+                    break
+            if not content_disposition:
+                continue
+            return _parse_content_disposition(content_disposition)
+
+    def _read_text_part(self) -> bytes:
+        collected = bytearray()
+        while True:
+            self._ensure(self._overlap)
+            index = self._buffer.find(self._part_sep)
+            if index == -1:
+                if self._bytes_read >= self._content_length:
+                    closing = self._buffer.find(self._closing)
+                    if closing == -1:
+                        raise ValueError("multipart form could not be parsed")
+                    payload = self._consume(closing)
+                    if len(collected) + len(payload) > _MAX_TEXT_FIELD_BYTES:
+                        raise ValueError("multipart text field too large")
+                    collected.extend(payload)
+                    return bytes(collected)
+                flush_len = max(0, len(self._buffer) - self._overlap)
+                if flush_len:
+                    chunk = self._consume(flush_len)
+                    if len(collected) + len(chunk) > _MAX_TEXT_FIELD_BYTES:
+                        raise ValueError("multipart text field too large")
+                    collected.extend(chunk)
+                self._read_more()
+                continue
+            payload = self._consume(index)
+            if len(collected) + len(payload) > _MAX_TEXT_FIELD_BYTES:
+                raise ValueError("multipart text field too large")
+            collected.extend(payload)
+            return bytes(collected)
+
+    def _stream_file_part(self, destination: Path) -> int:
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        written = 0
+        with destination.open("wb") as handle:
+            while True:
+                self._ensure(self._overlap)
+                index = self._buffer.find(self._part_sep)
+                if index == -1:
+                    if self._bytes_read >= self._content_length:
+                        closing = self._buffer.find(self._closing)
+                        if closing == -1:
+                            raise ValueError("multipart form could not be parsed")
+                        payload = self._consume(closing)
+                        if payload:
+                            handle.write(payload)
+                            written += len(payload)
+                        return written
+                    flush_len = max(0, len(self._buffer) - self._overlap)
+                    if flush_len:
+                        chunk = self._consume(flush_len)
+                        handle.write(chunk)
+                        written += len(chunk)
+                    self._read_more()
+                    continue
+                payload = self._consume(index)
+                if payload:
+                    handle.write(payload)
+                    written += len(payload)
+                return written
+
+    def parse(
+        self,
+        *,
+        pdf_part_path: Path,
+    ) -> StreamedMultipartForm:
+        self._drop_through(self._dash_boundary)
+        if self._buffer.startswith(b"\r\n"):
+            self._consume(2)
+        elif self._buffer.startswith(b"--"):
+            raise ValueError("multipart form could not be parsed")
+
+        text_fields: dict[str, str] = {}
+        pdf_upload: StreamedPdfUpload | None = None
+
+        while True:
+            if self._buffer.startswith(self._closing):
+                self._consume(len(self._closing))
+                break
+            field_name, filename = self._read_part_headers()
+            if not field_name:
+                continue
+            if filename is not None:
+                size = self._stream_file_part(pdf_part_path)
+                pdf_upload = StreamedPdfUpload(
+                    filename=filename or None,
+                    path=pdf_part_path,
+                    size=size,
+                )
+            else:
+                payload = self._read_text_part()
+                text_fields[field_name] = payload.decode("utf-8")
+
+            if self._buffer.startswith(b"\r\n"):
+                self._consume(2)
+            if self._buffer.startswith(self._closing):
+                self._consume(len(self._closing))
+                break
+            if not self._buffer.startswith(self._dash_boundary):
+                self._drop_through(self._part_sep)
+            else:
+                self._consume(len(self._dash_boundary))
+                if self._buffer.startswith(b"\r\n"):
+                    self._consume(2)
+
+        if self._bytes_read < self._content_length:
+            drain = self._content_length - self._bytes_read
+            leftover = self._stream.read(drain)
+            if len(leftover) != drain:
+                raise ValueError("unexpected end of request body")
+
+        return StreamedMultipartForm(text_fields=text_fields, pdf=pdf_upload)
+
+
+def parse_multipart_form_stream(
+    stream: BinaryIO,
+    content_type: str,
+    *,
+    content_length: int,
+    max_bytes: int,
+    pdf_part_path: Path,
+    chunk_size: int = _STREAM_CHUNK_SIZE,
+) -> StreamedMultipartForm:
+    if content_length < 0 or content_length > max_bytes:
+        raise ValueError("invalid Content-Length")
+    boundary = _multipart_boundary(content_type)
+    parser = _MultipartStreamParser(
+        stream,
+        boundary=boundary,
+        content_length=content_length,
+        chunk_size=chunk_size,
+    )
+    return parser.parse(pdf_part_path=pdf_part_path)
 
 
 def _parse_pages_spec(raw: str) -> list[int]:

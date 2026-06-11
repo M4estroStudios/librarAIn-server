@@ -78,6 +78,114 @@ def build_openai_client(settings: Settings) -> openai.OpenAI:
     return _cached_clients[key]
 
 
+def _resolve_client_state(
+    client: openai.OpenAI,
+) -> tuple[int, AsyncTokenBucket | None]:
+    state = _client_states.get(client)
+    max_attempts = (state.retry_attempts + 1) if state is not None else 4
+    token_bucket = state.token_bucket if state is not None else None
+    return max_attempts, token_bucket
+
+
+def _chat_completion_create(
+    client: openai.OpenAI,
+    *,
+    model: str,
+    messages: list[dict[str, Any]],
+    temperature: float,
+    max_tokens: int,
+    extra_body: dict[str, Any] | None,
+) -> str:
+    create_kwargs: dict[str, Any] = {
+        "model": model,
+        "messages": messages,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+    }
+    if extra_body is not None:
+        create_kwargs["extra_body"] = extra_body
+    try:
+        response = client.chat.completions.create(**create_kwargs)
+    except openai.OpenAIError as exc:
+        raise classify_openai_exception(exc)(str(exc)) from exc
+    except Exception as exc:
+        classify_openai_exception(exc)
+        raise
+    content = response.choices[0].message.content
+    if not content or not str(content).strip():
+        raise TransientError("Empty response from model")
+    return str(content)
+
+
+def _embedding_vector_from_response(data: Any) -> list[float]:
+    if hasattr(data, "__iter__") and not isinstance(data, (str, bytes)):
+        return [float(x) for x in data]
+    raise ValueError("unexpected embedding payload")
+
+
+def _embedding_create(client: openai.OpenAI, *, model: str, text: str) -> list[float]:
+    try:
+        response = client.embeddings.create(model=model, input=text)
+    except openai.OpenAIError as exc:
+        raise classify_openai_exception(exc)(str(exc)) from exc
+    except Exception as exc:
+        classify_openai_exception(exc)
+        raise
+    return _embedding_vector_from_response(response.data[0].embedding)
+
+
+def _log_chat_attempt(
+    *,
+    attempt: int,
+    max_attempts: int,
+    stage: str,
+    page: int,
+    model: str,
+    request_id: str,
+    reasoning_effort: str | None = None,
+    reasoning_enable_thinking: bool | None = None,
+) -> None:
+    Log(
+        INFO_LOG_LEVEL,
+        "chat_completion retry loop iteration",
+        {
+            "attempt": attempt,
+            "max_attempts": max_attempts,
+            "stage": stage,
+            "page": page,
+            "model": model,
+            "request_id": request_id,
+            "reasoning_effort": reasoning_effort or "",
+            "reasoning_enable_thinking": reasoning_enable_thinking,
+        },
+    )
+
+
+def _log_chat_outcome(
+    *,
+    level: int,
+    message: str,
+    request_id: str,
+    stage: str,
+    page: int,
+    model: str,
+    attempt: int,
+    outcome: str,
+    error: str = "",
+) -> None:
+    payload: dict[str, Any] = {
+        "request_id": request_id,
+        "stage": stage,
+        "page": page,
+        "model": model,
+        "attempt": attempt,
+        "outcome": outcome,
+    }
+    if error:
+        payload["error"] = error
+    Log(level, message, payload)
+
+
 async def chat_completion_with_retry(
     client: openai.OpenAI,
     *,
@@ -91,9 +199,7 @@ async def chat_completion_with_retry(
     reasoning_effort: str | None = None,
     reasoning_enable_thinking: bool | None = None,
 ) -> str:
-    state = _client_states.get(client)
-    max_attempts = (state.retry_attempts + 1) if state is not None else 4
-    token_bucket = state.token_bucket if state is not None else None
+    max_attempts, token_bucket = _resolve_client_state(client)
     attempt_counter = 0
     extra_body = build_chat_completion_extra_body(
         reasoning_effort=reasoning_effort,
@@ -104,19 +210,15 @@ async def chat_completion_with_retry(
         nonlocal attempt_counter
         attempt = attempt_counter
         attempt_counter += 1
-        Log(
-            INFO_LOG_LEVEL,
-            "chat_completion retry loop iteration",
-            {
-                "attempt": attempt,
-                "max_attempts": max_attempts,
-                "stage": stage,
-                "page": page,
-                "model": model,
-                "request_id": request_id,
-                "reasoning_effort": reasoning_effort or "",
-                "reasoning_enable_thinking": reasoning_enable_thinking,
-            },
+        _log_chat_attempt(
+            attempt=attempt,
+            max_attempts=max_attempts,
+            stage=stage,
+            page=page,
+            model=model,
+            request_id=request_id,
+            reasoning_effort=reasoning_effort,
+            reasoning_enable_thinking=reasoning_enable_thinking,
         )
         if token_bucket is not None:
             Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait begin", {"attempt": attempt})
@@ -128,79 +230,55 @@ async def chat_completion_with_retry(
                 "chat_completion API thread invoke begin",
                 {"attempt": attempt, "stage": stage, "page": page},
             )
-            create_kwargs: dict[str, Any] = {
-                "model": model,
-                "messages": messages,
-                "temperature": temperature,
-                "max_tokens": max_tokens,
-            }
-            if extra_body is not None:
-                create_kwargs["extra_body"] = extra_body
-            response = await asyncio.to_thread(
-                client.chat.completions.create,
-                **create_kwargs,
+            content = await asyncio.to_thread(
+                _chat_completion_create,
+                client,
+                model=model,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                extra_body=extra_body,
             )
             Log(
                 INFO_LOG_LEVEL,
                 "chat_completion API thread invoke done",
                 {"attempt": attempt, "stage": stage, "page": page},
             )
-            content = response.choices[0].message.content
-            if not content or not str(content).strip():
-                Log(
-                    WARNING_LOG_LEVEL,
-                    "chat_completion empty response",
-                    {
-                        "request_id": request_id,
-                        "stage": stage,
-                        "page": page,
-                        "model": model,
-                        "attempt": attempt,
-                        "outcome": "empty_response",
-                    },
-                )
-                raise TransientError("Empty response from model")
-            Log(
-                INFO_LOG_LEVEL,
-                "chat_completion success",
-                {
-                    "request_id": request_id,
-                    "stage": stage,
-                    "page": page,
-                    "model": model,
-                    "attempt": attempt,
-                    "outcome": "success",
-                },
+            _log_chat_outcome(
+                level=INFO_LOG_LEVEL,
+                message="chat_completion success",
+                request_id=request_id,
+                stage=stage,
+                page=page,
+                model=model,
+                attempt=attempt,
+                outcome="success",
             )
             return content
         except _PERMANENT_ERRORS as exc:
-            Log(
-                ERROR_LOG_LEVEL,
-                "chat_completion permanent error",
-                {
-                    "request_id": request_id,
-                    "stage": stage,
-                    "page": page,
-                    "model": model,
-                    "attempt": attempt,
-                    "outcome": "permanent_error",
-                    "error": repr(exc),
-                },
+            _log_chat_outcome(
+                level=ERROR_LOG_LEVEL,
+                message="chat_completion permanent error",
+                request_id=request_id,
+                stage=stage,
+                page=page,
+                model=model,
+                attempt=attempt,
+                outcome="permanent_error",
+                error=repr(exc),
             )
             raise
         except _TRANSIENT_ERRORS as exc:
-            Log(
-                WARNING_LOG_LEVEL,
-                "chat_completion transient error",
-                {
-                    "request_id": request_id,
-                    "stage": stage,
-                    "page": page,
-                    "model": model,
-                    "attempt": attempt,
-                    "outcome": "transient_error",
-                    "error": repr(exc),
-                },
+            _log_chat_outcome(
+                level=WARNING_LOG_LEVEL,
+                message="chat_completion transient error",
+                request_id=request_id,
+                stage=stage,
+                page=page,
+                model=model,
+                attempt=attempt,
+                outcome="transient_error",
+                error=repr(exc),
             )
             raise
         except Exception as exc:

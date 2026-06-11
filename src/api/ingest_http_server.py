@@ -13,7 +13,7 @@ from src.api.ingest_form import (
     InvalidPagesSpec,
     InvalidRangeField,
     build_ingest_payload_from_form,
-    parse_multipart_form,
+    parse_multipart_form_stream,
 )
 from src.api.ingest_pipeline_runner import run_full_pipeline
 from src.api.job_registry import JobRegistry
@@ -39,18 +39,6 @@ def _safe_filename(name: str) -> str:
     return base
 
 
-def _save_uploaded_pdf(
-    data_root: Path, original_name: str, content: bytes
-) -> Path:
-    target_dir = data_root / "input" / "raw"
-    target_dir.mkdir(parents=True, exist_ok=True)
-    safe = _safe_filename(original_name)
-    token = secrets.token_hex(6)
-    path = target_dir / f"{token}_{safe}"
-    path.write_bytes(content)
-    return path
-
-
 def _read_body(handler: BaseHTTPRequestHandler, max_bytes: int) -> bytes:
     length_header = handler.headers.get("Content-Length")
     if not length_header:
@@ -59,6 +47,13 @@ def _read_body(handler: BaseHTTPRequestHandler, max_bytes: int) -> bytes:
     if length < 0 or length > max_bytes:
         raise ValueError("invalid Content-Length")
     return handler.rfile.read(length)
+
+
+def _request_content_length(handler: BaseHTTPRequestHandler) -> int:
+    length_header = handler.headers.get("Content-Length")
+    if not length_header:
+        raise ValueError("Content-Length is required")
+    return int(length_header)
 
 
 def _send_json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> None:
@@ -294,11 +289,19 @@ def build_ingest_server(
                 return
 
             content_type = self.headers.get("Content-Type") or ""
+            part_path = data_root / "input" / "raw" / f".upload_{secrets.token_hex(8)}.part"
             try:
-                body = _read_body(self, max_upload)
-                Log(INFO_LOG_LEVEL, "ingest HTTP raw body read", {"bytes": len(body)})
-                text_fields, files = parse_multipart_form(body, content_type)
+                content_length = _request_content_length(self)
+                parsed = parse_multipart_form_stream(
+                    self.rfile,
+                    content_type,
+                    content_length=content_length,
+                    max_bytes=max_upload,
+                    pdf_part_path=part_path,
+                )
+                text_fields = parsed.text_fields
             except (ValueError, OSError) as exc:
+                part_path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest multipart parse failed", {"error": str(exc)})
                 _send_validation_error(
                     self,
@@ -311,12 +314,16 @@ def build_ingest_server(
             try:
                 ingest_payload = build_ingest_payload_from_form(text_fields)
             except InvalidPagesSpec as exc:
+                if parsed.pdf is not None:
+                    parsed.pdf.path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest form pages spec invalid", {"error": str(exc)})
                 _send_validation_error(
                     self, IngestInputErrorCode.INPUT_SCHEMA_INVALID, str(exc), "pages_to_remove"
                 )
                 return
             except InvalidRangeField as exc:
+                if parsed.pdf is not None:
+                    parsed.pdf.path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest form range field invalid",
                     {"field": exc.field, "error": exc.message_text})
                 _send_validation_error(
@@ -324,39 +331,47 @@ def build_ingest_server(
                 )
                 return
             except ValueError as exc:
+                if parsed.pdf is not None:
+                    parsed.pdf.path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest form payload invalid", {"error": str(exc)})
                 _send_validation_error(
                     self, IngestInputErrorCode.INPUT_SCHEMA_INVALID, str(exc), "payload"
                 )
                 return
 
-            uploaded = files.get("pdf_file")
+            uploaded = parsed.pdf
             if uploaded is None:
+                part_path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest submit rejected: pdf_file missing")
                 _send_validation_error(
                     self, IngestInputErrorCode.PDF_NOT_FOUND, "PDF file upload is required", "pdf_file"
                 )
                 return
-            filename, file_bytes = uploaded
-            if not file_bytes:
+            if uploaded.size == 0:
+                uploaded.path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest submit rejected: empty PDF upload")
                 _send_validation_error(
                     self, IngestInputErrorCode.PDF_NOT_FOUND, "empty PDF upload", "pdf_file"
                 )
                 return
-            if not file_bytes.startswith(b"%PDF"):
-                Log(WARNING_LOG_LEVEL, "ingest submit rejected: not a PDF (magic bytes)")
-                _send_validation_error(
-                    self,
-                    IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                    "uploaded file is not a PDF",
-                    "pdf_file",
-                )
-                return
+            with uploaded.path.open("rb") as pdf_handle:
+                if pdf_handle.read(4) != b"%PDF":
+                    uploaded.path.unlink(missing_ok=True)
+                    Log(WARNING_LOG_LEVEL, "ingest submit rejected: not a PDF (magic bytes)")
+                    _send_validation_error(
+                        self,
+                        IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                        "uploaded file is not a PDF",
+                        "pdf_file",
+                    )
+                    return
 
-            saved_path = _save_uploaded_pdf(data_root, filename or "upload.pdf", file_bytes)
+            saved_path = uploaded.path.with_name(
+                f"{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
+            )
+            uploaded.path.rename(saved_path)
             Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
-                {"path": str(saved_path), "bytes": len(file_bytes)})
+                {"path": str(saved_path), "bytes": uploaded.size})
 
             job_id = registry.create_job()
             events_url = f"/api/ingest/{job_id}/events"

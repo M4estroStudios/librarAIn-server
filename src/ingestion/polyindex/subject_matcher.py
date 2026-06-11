@@ -7,16 +7,17 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import openai
 from rapidfuzz import fuzz
 
-from src.core.errors import classify_openai_exception
 from src.core.log import Log, WARNING_LOG_LEVEL
-from src.core.retry import retry_sync
+from src.core.openai_client import build_system_prompt
+from src.core.openai_client_sync import (
+    chat_completion_with_retry_sync,
+    embedding_with_retry_sync,
+)
 from src.core.text import slugify as _slugify
 from src.ingestion.polyindex.index_md_parser import RawSubject, normalize_label
 from src.models.settings import Settings
-from src.core.openai_client import build_system_prompt
 from src.persistence.subject_matcher_sqlite import (
     get_subject_embedding,
     insert_subject_match_audit,
@@ -31,6 +32,9 @@ _LLM_LOW_SIM = 0.82
 _LLM_HIGH_SIM = 0.92
 _TOP_K = 10
 _EMBEDDING_DIM_FALLBACK = 64
+_MATCHER_LLM_MAX_TOKENS = 256
+_STAGE_EMBEDDING = "subject_matcher_embedding"
+_STAGE_LLM = "subject_matcher_llm"
 
 
 @dataclass(frozen=True)
@@ -115,35 +119,20 @@ def _cosine_similarity(a: list[float], b: list[float]) -> float:
     return dot / (norm_a * norm_b)
 
 
-def _embedding_vector_from_response(data: Any) -> list[float]:
-    if hasattr(data, "__iter__") and not isinstance(data, (str, bytes)):
-        return [float(x) for x in data]
-    raise ValueError("unexpected embedding payload")
-
-
-_MATCHER_RETRY_ATTEMPTS = 3
-
-
-def _openai_call_with_retry(fn: Any) -> Any:
-    """Run a blocking OpenAI call with transient-error classification + retry."""
-
-    def attempt() -> Any:
-        try:
-            return fn()
-        except openai.OpenAIError as exc:
-            wrapped = classify_openai_exception(exc)
-            raise wrapped(str(exc)) from exc
-
-    return retry_sync(attempt, max_attempts=_MATCHER_RETRY_ATTEMPTS)
-
-
 def _fetch_embedding(
-    client: openai.OpenAI, model: str, text: str
+    client: object,
+    model: str,
+    text: str,
+    *,
+    request_id: str,
 ) -> list[float]:
-    response = _openai_call_with_retry(
-        lambda: client.embeddings.create(model=model, input=text)
+    return embedding_with_retry_sync(
+        client,  # type: ignore[arg-type]
+        model=model,
+        text=text,
+        request_id=request_id,
+        stage=_STAGE_EMBEDDING,
     )
-    return _embedding_vector_from_response(response.data[0].embedding)
 
 
 def _load_matcher_system_prompt() -> str:
@@ -222,7 +211,7 @@ def _parse_llm_same_response(content: str) -> tuple[bool, str] | None:
 
 
 def _llm_arbitrate(
-    client: openai.OpenAI,
+    client: object,
     settings: Settings,
     raw_label: str,
     candidate_label: str,
@@ -235,17 +224,18 @@ def _llm_arbitrate(
         {"label_a": raw_label, "label_b": candidate_label},
         ensure_ascii=False,
     )
-    response = _openai_call_with_retry(
-        lambda: client.chat.completions.create(
-            model=_matcher_llm_model(settings),
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_content},
-            ],
-            temperature=0.1,
-        )
+    content = chat_completion_with_retry_sync(
+        client,  # type: ignore[arg-type]
+        model=_matcher_llm_model(settings),
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_content},
+        ],
+        temperature=0.1,
+        max_tokens=_MATCHER_LLM_MAX_TOKENS,
+        request_id=request_id,
+        stage=_STAGE_LLM,
     )
-    content = response.choices[0].message.content or ""
     parsed = _parse_llm_same_response(content)
     if parsed is not None:
         return parsed
@@ -273,18 +263,20 @@ def _canonical_label_for_id(
 
 
 def _get_or_create_canonical_embedding(
-    client: openai.OpenAI,
+    client: object,
     sqlite_path: str,
     settings: Settings,
     subjects: dict[str, dict[str, Any]],
     canonical_id: str,
+    *,
+    request_id: str,
 ) -> list[float]:
     model = settings.matcher_embedding_model
     cached = get_subject_embedding(sqlite_path, canonical_id, model)
     if cached is not None:
         return cached
     label = _canonical_label_for_id(subjects, canonical_id)
-    vector = _fetch_embedding(client, model, label)
+    vector = _fetch_embedding(client, model, label, request_id=request_id)
     set_subject_embedding(sqlite_path, canonical_id, label, vector, model)
     return vector
 
@@ -316,7 +308,7 @@ def _resolve_alias_target(
 def _stage2_match(
     raw_subject: RawSubject,
     subjects: dict[str, dict[str, Any]],
-    client: openai.OpenAI,
+    client: object,
     sqlite_path: str,
     settings: Settings,
     request_id: str,
@@ -333,14 +325,21 @@ def _stage2_match(
             ai_used=False,
         )
 
-    raw_vector = _fetch_embedding(client, model, raw_subject.raw_label)
+    raw_vector = _fetch_embedding(
+        client, model, raw_subject.raw_label, request_id=request_id
+    )
     best_id: str | None = None
     best_sim = -1.0
     for canonical_id in candidate_ids:
         if canonical_id not in subjects:
             continue
         candidate_vector = _get_or_create_canonical_embedding(
-            client, sqlite_path, settings, subjects, canonical_id
+            client,
+            sqlite_path,
+            settings,
+            subjects,
+            canonical_id,
+            request_id=request_id,
         )
         sim = _cosine_similarity(raw_vector, candidate_vector)
         if sim > best_sim:
@@ -421,7 +420,7 @@ def allocate_canonical_id(
 def match_subject(
     raw_subject: RawSubject,
     polyindex_state: dict[str, Any],
-    client: openai.OpenAI,
+    client: object,
     sqlite_path: str,
     settings: Settings,
     request_id: str,
