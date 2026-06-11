@@ -1,23 +1,18 @@
 from __future__ import annotations
 
 import json
-import sys
-from contextlib import contextmanager
 from pathlib import Path
-from typing import Iterator
 
 from src.core.log import Log, WARNING_LOG_LEVEL
 from src.ingestion.output_writer import BookOutput
 from src.ingestion.polyindex.chapter_patterns import try_match_chapter_line
+from src.ingestion.polyindex.file_lock import polyindex_dir_lock
 from src.models.polyindex_toc import (
     PolyindexTocBookEntry,
     PolyindexTocChapter,
     PolyindexTocDocument,
 )
 from src.models.request import UsefulPagesEnumeration
-
-if sys.platform != "win32":
-    import fcntl
 
 ChapterEntry = PolyindexTocChapter
 
@@ -94,30 +89,13 @@ def parse_chapters_from_toc_md(
     return entries
 
 
-@contextmanager
-def _toc_file_lock(polyindex_dir: Path) -> Iterator[None]:
-    polyindex_dir.mkdir(parents=True, exist_ok=True)
-    lock_path = polyindex_dir / ".toc.lock"
-    lock_path.touch(exist_ok=True)
-    with lock_path.open("w", encoding="utf-8") as lock_file:
-        if sys.platform != "win32":
-            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
-        else:
-            pass
-        try:
-            yield
-        finally:
-            if sys.platform != "win32":
-                fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
-
-
 def update_polyindex_toc(
     polyindex_dir: Path,
     source_sha256: str,
     book_entry: PolyindexTocBookEntry,
 ) -> Path:
     toc_path = polyindex_dir / "TOC.json"
-    with _toc_file_lock(polyindex_dir):
+    with polyindex_dir_lock(polyindex_dir, ".toc.lock"):
         document = PolyindexTocDocument.load_file(toc_path)
         document.upsert_book(source_sha256, book_entry)
         document.write_atomic(toc_path)

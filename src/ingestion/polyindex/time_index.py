@@ -4,20 +4,16 @@ import asyncio
 import json
 import os
 import re
-import sys
-from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any
 
 import openai
 
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.ingestion.output_writer import BookOutput, BookPageOutput
+from src.ingestion.polyindex.file_lock import polyindex_dir_lock
 from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
 from src.models.settings import Settings
-
-if sys.platform != "win32":
-    import fcntl
 
 SCHEMA_VERSION = "1.0"
 
@@ -143,21 +139,6 @@ def _atomic_write_json(dest: Path, payload: dict[str, object]) -> None:
     finally:
         if tmp_path.is_file():
             tmp_path.unlink(missing_ok=True)
-
-
-@contextmanager
-def _time_index_file_lock(polyindex_dir: Path) -> Iterator[None]:
-    polyindex_dir.mkdir(parents=True, exist_ok=True)
-    lock_path = polyindex_dir / ".time_index.lock"
-    lock_path.touch(exist_ok=True)
-    with lock_path.open("w", encoding="utf-8") as lock_file:
-        if sys.platform != "win32":
-            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
-        try:
-            yield
-        finally:
-            if sys.platform != "win32":
-                fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
 
 
 def _merge_entry_pages(
@@ -315,7 +296,7 @@ async def sync_time_index_from_book_async(
         if used_llm:
             llm_pages += 1
 
-    with _time_index_file_lock(polyindex_dir):
+    with polyindex_dir_lock(polyindex_dir, ".time_index.lock"):
         if time_index_path.is_file():
             document = json.loads(time_index_path.read_text(encoding="utf-8"))
             if not isinstance(document, dict):

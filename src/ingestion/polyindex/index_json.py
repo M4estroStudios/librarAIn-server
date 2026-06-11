@@ -1,14 +1,13 @@
 from __future__ import annotations
 
 import json
-import sys
-from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any
 
 import openai
 
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
+from src.ingestion.polyindex.file_lock import polyindex_dir_lock
 from src.ingestion.polyindex.index_md_parser import (
     RawSubject,
     normalize_label,
@@ -29,27 +28,6 @@ from src.models.polyindex_index import (
 from src.models.request import UsefulPagesEnumeration
 from src.models.settings import Settings
 
-if sys.platform != "win32":
-    import fcntl
-
-
-@contextmanager
-def _index_file_lock(polyindex_dir: Path) -> Iterator[None]:
-    polyindex_dir.mkdir(parents=True, exist_ok=True)
-    lock_path = polyindex_dir / ".index.lock"
-    lock_path.touch(exist_ok=True)
-    with lock_path.open("w", encoding="utf-8") as lock_file:
-        if sys.platform != "win32":
-            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
-        else:
-            pass
-        try:
-            yield
-        finally:
-            if sys.platform != "win32":
-                fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
-
-
 def sorted_polyindex_index_bytes(raw_document: dict[str, object]) -> bytes:
     document = PolyindexIndexDocument.load_json(raw_document)
     return document.to_json_bytes(sort_document=True)
@@ -58,7 +36,7 @@ def sorted_polyindex_index_bytes(raw_document: dict[str, object]) -> bytes:
 def sort_polyindex_index_file(index_path: Path) -> bool:
     if not index_path.is_file():
         return False
-    with _index_file_lock(index_path.parent):
+    with polyindex_dir_lock(index_path.parent, ".index.lock"):
         raw = index_path.read_bytes()
         document = PolyindexIndexDocument.load_file(index_path)
         content = document.to_json_bytes(sort_document=True)
@@ -165,7 +143,7 @@ def update_polyindex_index(
     index_path = polyindex_dir / "INDEX.json"
     stats = {"n_new": 0, "n_match": 0, "n_alias": 0}
 
-    with _index_file_lock(polyindex_dir):
+    with polyindex_dir_lock(polyindex_dir, ".index.lock"):
         snapshot = PolyindexIndexDocument.load_file(index_path)
 
     decisions: list[tuple[RawSubject, MatchDecision]] = []
@@ -189,7 +167,7 @@ def update_polyindex_index(
         )
         decisions.append((raw_subject, decision))
 
-    with _index_file_lock(polyindex_dir):
+    with polyindex_dir_lock(polyindex_dir, ".index.lock"):
         document = PolyindexIndexDocument.load_file(index_path)
         document.schema_version = SCHEMA_VERSION
 
@@ -266,7 +244,7 @@ def merge_polyindex_subjects(
         raise SubjectMergeError("no valid source subjects to merge")
 
     index_path = polyindex_dir / "INDEX.json"
-    with _index_file_lock(polyindex_dir):
+    with polyindex_dir_lock(polyindex_dir, ".index.lock"):
         if not index_path.is_file():
             raise SubjectMergeError("INDEX.json not found")
         document = PolyindexIndexDocument.load_file(index_path)
