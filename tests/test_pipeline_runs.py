@@ -6,6 +6,7 @@ from pathlib import Path
 
 from src.persistence.book_sqlite import init_books_schema
 from src.persistence.pipeline_runs import (
+    _sqlite_connection,
     create_pipeline_run,
     get_pipeline_run_by_request_id,
     mark_pipeline_run_finished,
@@ -89,6 +90,15 @@ class TestPipelineRuns(unittest.TestCase):
                 total_pages=1,
             )
             self.assertIsInstance(row_id, int)
+
+    def test_init_books_schema_uses_wal_journal_mode(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            sqlite_path = str(Path(tmp_dir) / "biblioteca.db")
+            init_books_schema(sqlite_path)
+            with _sqlite_connection(sqlite_path) as conn:
+                row = conn.execute("PRAGMA journal_mode").fetchone()
+            self.assertIsNotNone(row)
+            self.assertEqual(str(row[0]).lower(), "wal")
 
 
 if __name__ == "__main__":

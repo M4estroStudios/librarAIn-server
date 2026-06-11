@@ -13,10 +13,14 @@ def _utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _configure_sqlite_connection(conn: sqlite3.Connection) -> None:
+    conn.execute("PRAGMA journal_mode=WAL")
+
+
 @contextmanager
 def _sqlite_connection(path: str):
     conn = sqlite3.connect(str(path), timeout=30)
-    conn.execute("PRAGMA journal_mode=DELETE")
+    _configure_sqlite_connection(conn)
     try:
         yield conn
         conn.commit()

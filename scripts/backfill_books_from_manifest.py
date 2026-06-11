@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import sqlite3
 import sys
 from pathlib import Path
 
@@ -14,6 +13,7 @@ if str(ROOT) not in sys.path:
 from src.core.hashing import compute_file_sha256
 from src.models.request import EnrichedIngestRequest, IngestRequest, PageRange, ReicatMetadata
 from src.persistence.book_sqlite import init_books_schema, upsert_book_reicat
+from src.persistence.pipeline_runs import _sqlite_connection
 
 
 def _resolve_data_root(explicit: str | None) -> Path:
@@ -48,7 +48,7 @@ def _count_pdf_pages(pdf_path: Path) -> int:
 
 
 def _book_exists(sqlite_path: str, source_sha256: str) -> bool:
-    with sqlite3.connect(sqlite_path) as conn:
+    with _sqlite_connection(sqlite_path) as conn:
         row = conn.execute(
             "SELECT 1 FROM books WHERE source_sha256 = ?",
             (source_sha256.strip().lower(),),

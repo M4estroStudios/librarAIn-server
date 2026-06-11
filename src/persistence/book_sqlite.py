@@ -81,66 +81,62 @@ def _ensure_books_legacy_columns(conn: sqlite3.Connection) -> None:
 def init_books_schema(sqlite_path: str) -> None:
     db_path = Path(sqlite_path)
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(str(db_path), timeout=30)
-    conn.execute("PRAGMA journal_mode=DELETE")
     try:
-        conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS _schema_migrations (
-                id TEXT PRIMARY KEY,
-                applied_at TEXT NOT NULL,
-                description TEXT NOT NULL
+        with _sqlite_connection(str(db_path)) as conn:
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS _schema_migrations (
+                    id TEXT PRIMARY KEY,
+                    applied_at TEXT NOT NULL,
+                    description TEXT NOT NULL
+                )
+                """
             )
-            """
-        )
-        conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS books (
-                source_sha256 TEXT PRIMARY KEY,
-                schema_version TEXT NOT NULL,
-                title TEXT NOT NULL,
-                subtitle TEXT,
-                title_complements TEXT,
-                authors_json TEXT NOT NULL,
-                editors_json TEXT,
-                translators_json TEXT,
-                edition_number TEXT,
-                publication_year INTEGER,
-                publication_type TEXT,
-                publication_place TEXT,
-                publisher TEXT,
-                page_count INTEGER,
-                series_title TEXT,
-                series_number TEXT,
-                isbn TEXT,
-                created_at TEXT NOT NULL,
-                updated_at TEXT NOT NULL,
-                last_seen_at TEXT NOT NULL,
-                last_error TEXT
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS books (
+                    source_sha256 TEXT PRIMARY KEY,
+                    schema_version TEXT NOT NULL,
+                    title TEXT NOT NULL,
+                    subtitle TEXT,
+                    title_complements TEXT,
+                    authors_json TEXT NOT NULL,
+                    editors_json TEXT,
+                    translators_json TEXT,
+                    edition_number TEXT,
+                    publication_year INTEGER,
+                    publication_type TEXT,
+                    publication_place TEXT,
+                    publisher TEXT,
+                    page_count INTEGER,
+                    series_title TEXT,
+                    series_number TEXT,
+                    isbn TEXT,
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL,
+                    last_seen_at TEXT NOT NULL,
+                    last_error TEXT
+                )
+                """
             )
-            """
-        )
-        _ensure_books_legacy_columns(conn)
-        conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS book_metadata_audit (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                source_sha256 TEXT NOT NULL,
-                event_at TEXT NOT NULL,
-                operation TEXT NOT NULL,
-                prior_snapshot_json TEXT,
-                snapshot_json TEXT NOT NULL
+            _ensure_books_legacy_columns(conn)
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS book_metadata_audit (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    source_sha256 TEXT NOT NULL,
+                    event_at TEXT NOT NULL,
+                    operation TEXT NOT NULL,
+                    prior_snapshot_json TEXT,
+                    snapshot_json TEXT NOT NULL
+                )
+                """
             )
-            """
-        )
-        ensure_pipeline_runs_table(conn)
-        ensure_subject_matcher_tables(conn)
-        _apply_pending_migrations(conn)
-        conn.commit()
+            ensure_pipeline_runs_table(conn)
+            ensure_subject_matcher_tables(conn)
+            _apply_pending_migrations(conn)
     except sqlite3.Error as exc:
         raise RuntimeError("unable to initialize books schema") from exc
-    finally:
-        conn.close()
 
 
 def verify_source_pdf_digest_matches(enriched: EnrichedIngestRequest) -> None:
