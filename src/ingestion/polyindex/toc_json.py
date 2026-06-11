@@ -1,32 +1,25 @@
 from __future__ import annotations
 
 import json
-import os
 import sys
 from contextlib import contextmanager
-from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterator
 
 from src.core.log import Log, WARNING_LOG_LEVEL
 from src.ingestion.output_writer import BookOutput
 from src.ingestion.polyindex.chapter_patterns import try_match_chapter_line
+from src.models.polyindex_toc import (
+    PolyindexTocBookEntry,
+    PolyindexTocChapter,
+    PolyindexTocDocument,
+)
 from src.models.request import UsefulPagesEnumeration
 
 if sys.platform != "win32":
     import fcntl
 
-
-SCHEMA_VERSION = "1.0"
-
-
-@dataclass(frozen=True)
-class ChapterEntry:
-    label: str
-    aligned_page_start: int
-    aligned_page_end: int
-    original_page_start: int
-    original_page_end: int
+ChapterEntry = PolyindexTocChapter
 
 
 def _is_skippable_toc_line(stripped: str) -> bool:
@@ -44,7 +37,7 @@ def _is_skippable_toc_line(stripped: str) -> bool:
 def parse_chapters_from_toc_md(
     toc_md_path: Path,
     useful_pages_enumeration: UsefulPagesEnumeration,
-) -> list[ChapterEntry]:
+) -> list[PolyindexTocChapter]:
     text = toc_md_path.read_text(encoding="utf-8")
     mapping = useful_pages_enumeration.original_page_to_aligned_page
     useful_original = useful_pages_enumeration.useful_original_pages
@@ -77,7 +70,7 @@ def parse_chapters_from_toc_md(
 
     parsed.sort(key=lambda item: (item[1], item[0]))
 
-    entries: list[ChapterEntry] = []
+    entries: list[PolyindexTocChapter] = []
     for index, (label, original_start, aligned_start) in enumerate(parsed):
         if index + 1 < len(parsed):
             next_original_start = parsed[index + 1][1]
@@ -89,7 +82,7 @@ def parse_chapters_from_toc_md(
             aligned_end = last_useful_aligned
 
         entries.append(
-            ChapterEntry(
+            PolyindexTocChapter(
                 label=label,
                 aligned_page_start=aligned_start,
                 aligned_page_end=aligned_end,
@@ -101,22 +94,6 @@ def parse_chapters_from_toc_md(
     return entries
 
 
-def _empty_toc_document() -> dict[str, object]:
-    return {"schema_version": SCHEMA_VERSION, "books": {}}
-
-
-def _atomic_write_json(dest: Path, payload: dict[str, object]) -> None:
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    content = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
-    tmp_path = dest.with_name(dest.name + ".tmp")
-    try:
-        tmp_path.write_bytes(content)
-        os.replace(tmp_path, dest)
-    finally:
-        if tmp_path.is_file():
-            tmp_path.unlink(missing_ok=True)
-
-
 @contextmanager
 def _toc_file_lock(polyindex_dir: Path) -> Iterator[None]:
     polyindex_dir.mkdir(parents=True, exist_ok=True)
@@ -126,7 +103,7 @@ def _toc_file_lock(polyindex_dir: Path) -> Iterator[None]:
         if sys.platform != "win32":
             fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
         else:
-            pass  # TODO: Windows file locking when polyindex runs on win32
+            pass
         try:
             yield
         finally:
@@ -137,31 +114,20 @@ def _toc_file_lock(polyindex_dir: Path) -> Iterator[None]:
 def update_polyindex_toc(
     polyindex_dir: Path,
     source_sha256: str,
-    book_entry: dict[str, object],
+    book_entry: PolyindexTocBookEntry,
 ) -> Path:
     toc_path = polyindex_dir / "TOC.json"
     with _toc_file_lock(polyindex_dir):
-        if toc_path.is_file():
-            document = json.loads(toc_path.read_text(encoding="utf-8"))
-            if not isinstance(document, dict):
-                document = _empty_toc_document()
-        else:
-            document = _empty_toc_document()
-
-        books = document.get("books")
-        if not isinstance(books, dict):
-            books = {}
-            document["books"] = books
-
-        document["schema_version"] = SCHEMA_VERSION
-        books[source_sha256] = book_entry
-        _atomic_write_json(toc_path, document)
-
+        document = PolyindexTocDocument.load_file(toc_path)
+        document.upsert_book(source_sha256, book_entry)
+        document.write_atomic(toc_path)
     return toc_path
 
 
-def chapter_entries_to_dicts(entries: list[ChapterEntry]) -> list[dict[str, object]]:
-    return [asdict(entry) for entry in entries]
+def chapter_entries_to_dicts(
+    entries: list[PolyindexTocChapter],
+) -> list[dict[str, object]]:
+    return [entry.model_dump(mode="json") for entry in entries]
 
 
 def _resolve_book_title(book_output: BookOutput) -> str:
@@ -185,9 +151,9 @@ def sync_polyindex_toc_from_book(
     useful_pages_enumeration: UsefulPagesEnumeration,
 ) -> Path:
     chapters = parse_chapters_from_toc_md(toc_md_path, useful_pages_enumeration)
-    book_entry: dict[str, object] = {
-        "title": _resolve_book_title(book_output),
-        "slug": book_output.slug,
-        "chapters": chapter_entries_to_dicts(chapters),
-    }
+    book_entry = PolyindexTocBookEntry(
+        title=_resolve_book_title(book_output),
+        slug=book_output.slug,
+        chapters=chapters,
+    )
     return update_polyindex_toc(polyindex_dir, source_sha256, book_entry)

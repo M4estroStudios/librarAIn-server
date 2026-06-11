@@ -7,6 +7,7 @@ import unittest
 from pathlib import Path
 
 from src.ingestion.output_writer import BookOutput
+from src.models.polyindex_toc import PolyindexTocBookEntry
 from src.ingestion.polyindex.toc_json import (
     ChapterEntry,
     chapter_entries_to_dicts,
@@ -129,14 +130,11 @@ class TestUpdatePolyindexToc(unittest.TestCase):
         self._tmp = tempfile.TemporaryDirectory()
         self.tmp = Path(self._tmp.name)
         self.polyindex_dir = self.tmp / "polyindex"
-        self.chapters = chapter_entries_to_dicts(
-            parse_chapters_from_toc_md(_sample_toc_md(self.tmp), _enumeration())
+        self.book_entry = PolyindexTocBookEntry(
+            title=TITLE,
+            slug=SLUG,
+            chapters=parse_chapters_from_toc_md(_sample_toc_md(self.tmp), _enumeration()),
         )
-        self.book_entry = {
-            "title": TITLE,
-            "slug": SLUG,
-            "chapters": self.chapters,
-        }
 
     def tearDown(self) -> None:
         self._tmp.cleanup()
@@ -154,11 +152,11 @@ class TestUpdatePolyindexToc(unittest.TestCase):
 
     def test_update_same_sha_replaces_without_growth(self) -> None:
         update_polyindex_toc(self.polyindex_dir, SHA, self.book_entry)
-        replacement = {
-            "title": "Replaced Title",
-            "slug": "replaced-slug",
-            "chapters": [],
-        }
+        replacement = PolyindexTocBookEntry(
+            title="Replaced Title",
+            slug="replaced-slug",
+            chapters=[],
+        )
         update_polyindex_toc(self.polyindex_dir, SHA, replacement)
 
         data = json.loads((self.polyindex_dir / "TOC.json").read_text(encoding="utf-8"))
@@ -177,11 +175,11 @@ class TestUpdatePolyindexToc(unittest.TestCase):
                 update_polyindex_toc(
                     self.polyindex_dir,
                     SHA,
-                    {
-                        "title": f"{TITLE}-{suffix}",
-                        "slug": f"{SLUG}-{suffix}",
-                        "chapters": self.chapters,
-                    },
+                    PolyindexTocBookEntry(
+                        title=f"{TITLE}-{suffix}",
+                        slug=f"{SLUG}-{suffix}",
+                        chapters=list(self.book_entry.chapters),
+                    ),
                 )
             except Exception as exc:
                 errors.append(exc)

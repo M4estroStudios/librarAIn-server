@@ -8,11 +8,20 @@ from unittest.mock import MagicMock
 
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
+    _apply_decision,
+    _revalidate_decision,
     list_multibook_subjects,
     merge_polyindex_subjects,
     sort_polyindex_index_file,
     sorted_polyindex_index_bytes,
     sync_polyindex_index_from_book,
+)
+from src.ingestion.polyindex.index_md_parser import RawSubject
+from src.ingestion.polyindex.subject_matcher import MatchDecision
+from src.models.polyindex_index import (
+    PolyindexIndexBookEntry,
+    PolyindexIndexDocument,
+    PolyindexIndexSubjectEntry,
 )
 from src.models.request import PageRange, UsefulPagesEnumeration
 
@@ -316,3 +325,120 @@ class TestPolyindexIndex(unittest.TestCase):
             index_path.read_bytes(),
             sorted_polyindex_index_bytes(data),
         )
+
+
+class TestPolyindexIndexDecisionHelpers(unittest.TestCase):
+    def test_apply_decision_new_creates_subject(self) -> None:
+        document = PolyindexIndexDocument.empty()
+        raw = RawSubject(
+            raw_label="Venezia",
+            aligned_pages=[4],
+            original_pages=[4],
+        )
+        _apply_decision(
+            document,
+            raw,
+            MatchDecision(action="new", canonical_id="venezia"),
+            SHA_A,
+            book_title="Libro",
+            book_slug="libro",
+        )
+        entry = document.subjects["venezia"]
+        self.assertEqual(entry.canonical_label, "Venezia")
+        self.assertEqual(entry.books[SHA_A].aligned_pages, [4])
+        self.assertEqual(entry.books[SHA_A].title, "Libro")
+
+    def test_apply_decision_new_with_alias_of(self) -> None:
+        document = PolyindexIndexDocument.empty()
+        raw = RawSubject(
+            raw_label="Laguna",
+            aligned_pages=[2],
+            original_pages=[2],
+            alias_of="Venezia",
+        )
+        _apply_decision(
+            document,
+            raw,
+            MatchDecision(action="new", canonical_id="venezia"),
+            SHA_A,
+        )
+        entry = document.subjects["venezia"]
+        self.assertEqual(entry.canonical_label, "Venezia")
+        self.assertIn("Laguna", entry.aliases)
+
+    def test_apply_decision_alias_adds_alias(self) -> None:
+        document = PolyindexIndexDocument(
+            subjects={
+                "venezia": PolyindexIndexSubjectEntry(
+                    canonical_label="Venezia",
+                    books={
+                        SHA_A: PolyindexIndexBookEntry(aligned_pages=[1]),
+                    },
+                )
+            }
+        )
+        raw = RawSubject(
+            raw_label="Laguna",
+            aligned_pages=[3],
+            original_pages=[3],
+        )
+        _apply_decision(
+            document,
+            raw,
+            MatchDecision(action="alias", canonical_id="venezia"),
+            SHA_A,
+        )
+        entry = document.subjects["venezia"]
+        self.assertIn("Laguna", entry.aliases)
+        self.assertEqual(entry.books[SHA_A].aligned_pages, [1, 3])
+
+    def test_revalidate_match_keeps_existing_canonical(self) -> None:
+        document = PolyindexIndexDocument(
+            subjects={
+                "venezia": PolyindexIndexSubjectEntry(canonical_label="Venezia"),
+            }
+        )
+        raw = RawSubject(raw_label="Venezia", aligned_pages=[1], original_pages=[1])
+        decision = MatchDecision(action="match", canonical_id="venezia")
+        final = _revalidate_decision(document, raw, decision)
+        self.assertEqual(final.action, "match")
+        self.assertEqual(final.canonical_id, "venezia")
+
+    def test_revalidate_match_redirects_when_id_missing(self) -> None:
+        document = PolyindexIndexDocument(
+            subjects={
+                "venezia": PolyindexIndexSubjectEntry(
+                    canonical_label="Venezia",
+                    aliases=["Laguna"],
+                ),
+            }
+        )
+        raw = RawSubject(raw_label="Laguna", aligned_pages=[1], original_pages=[1])
+        decision = MatchDecision(action="match", canonical_id="missing-id")
+        final = _revalidate_decision(document, raw, decision)
+        self.assertEqual(final.action, "match")
+        self.assertEqual(final.canonical_id, "venezia")
+
+    def test_revalidate_new_becomes_match_when_label_exists(self) -> None:
+        document = PolyindexIndexDocument(
+            subjects={
+                "venezia": PolyindexIndexSubjectEntry(canonical_label="Venezia"),
+            }
+        )
+        raw = RawSubject(raw_label="Venezia", aligned_pages=[1], original_pages=[1])
+        decision = MatchDecision(action="new", canonical_id="venezia")
+        final = _revalidate_decision(document, raw, decision)
+        self.assertEqual(final.action, "match")
+        self.assertEqual(final.canonical_id, "venezia")
+
+    def test_revalidate_new_becomes_alias_when_id_taken_with_different_label(self) -> None:
+        document = PolyindexIndexDocument(
+            subjects={
+                "venezia": PolyindexIndexSubjectEntry(canonical_label="Venezia"),
+            }
+        )
+        raw = RawSubject(raw_label="Laguna", aligned_pages=[1], original_pages=[1])
+        decision = MatchDecision(action="new", canonical_id="venezia")
+        final = _revalidate_decision(document, raw, decision)
+        self.assertEqual(final.action, "alias")
+        self.assertEqual(final.canonical_id, "venezia")
