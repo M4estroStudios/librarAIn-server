@@ -2,7 +2,7 @@
 
 > Documento unico di prodotto. Sostituisce la precedente versione limitata alla sola Fase 1.
 > Allineato al manoscritto in `trascrizione-fogli-manoscritti.md` e alla struttura repo in `README.md`.
-> **Ultimo allineamento codebase**: 2026-05-31 (stato task in §5.1 e §7).
+> **Ultimo allineamento codebase**: 2026-06-11 (stato task in §5.1 e §7).
 
 ## 0. Assunzioni di scoping (da confermare in PR review)
 
@@ -23,7 +23,7 @@ Queste assunzioni sono frutto di discovery non completata. Vanno confermate o ri
 - **Proposed Solution**: pipeline end-to-end deterministica che (1) ingesce PDF + REICAT in pagine Markdown allineate, (2) costruisce per ogni libro `TOC.md`/`INDEX.md`/`<NomeLibro>.md`, (3) aggrega cross-book in `polyindex/TOC.json` e `polyindex/INDEX.json` con riconciliazione AI dei soggetti, (4) espone una API di **Ricerca** che, data una query (eventualmente collegata a un POH), produce un **unico file Markdown** in stile Wikipedia con citazioni come link MD alle fonti (passi `a`–`b`), hyperlink agli altri POH in sintassi CommonMark (passo `c`) e sezione `## Cronologia` tabellare verticale per la linea temporale (passo `d`).
 - **Success Criteria (cross-fase)**:
   - 100% dei libri ingestiti produce: cartella `data/output/<sha256>/` con `pages/`, `<slug>.md`, `TOC.md`, `INDEX.md`, `manifest.json`.
-  - 100% delle ingestioni con esito `succeeded` aggiorna `polyindex/TOC.json` e `polyindex/INDEX.json` in modo idempotente (riesecuzione → zero duplicati). *Stato codebase*: `TOC.json` sì (T23); `INDEX.json` no finché T26 non è completato.
+  - 100% delle ingestioni con esito `succeeded` aggiorna `polyindex/TOC.json` e `polyindex/INDEX.json` in modo idempotente (riesecuzione → zero duplicati). *Stato codebase*: `TOC.json` (T23) e `INDEX.json` (T26) implementati; anche `TIME_INDEX.json` (estensione post-PRD, cablato in orchestrator).
   - Per la ricerca: ≥80% di una gold set di 20 query produce un **Markdown** che soddisfa **tutti** i passi a–d (articolo, link fonti, link POH, sezione Cronologia); almeno 1 fonte valida per articolo; precisione citazioni (pagine esistenti) ≥95%; ogni link `poh:` punta a un `poh_id` noto nel registro POH o è marcato esplicitamente come `poh:unknown-<slug>` con TODO in coda documento.
   - Tempo medio end-to-end Upload (PDF 200 pagine, 1 vCPU + endpoint AI raggiungibile) < 30 min con `MAX_PARALLEL_REQUEST=4`.
   - 100% delle esecuzioni produce una riga in `pipeline_runs` con stato finale e contatori.
@@ -75,7 +75,7 @@ Conservati e raffinati rispetto alla versione precedente del PRD; di seguito sol
   }
   ```
   Cablato in `orchestrator.run_pipeline` via `sync_polyindex_toc_from_book` (`src/ingestion/polyindex/toc_json.py`).
-- `polyindex/INDEX.json` aggiornato con struttura (**non ancora implementato**, T26):
+- `polyindex/INDEX.json` aggiornato con struttura (**implementato**, T26):
   ```json
   {
     "<canonical_subject_id>": {
@@ -218,7 +218,7 @@ flowchart TD
   auditOnly --> reicatStore
 ```
 
-*Nota implementativa (2026-05-31)*: `polyTocUpdater` è cablato (`sync_polyindex_toc_from_book`); `indexParser`/`subjectMatcher`/`polyIndexUpdater` e `snapshot` non sono ancora in pipeline.
+*Nota implementativa (2026-06-11)*: `polyTocUpdater`, `polyIndexUpdater` (`sync_polyindex_index_from_book`), `timeIndexUpdater` (`sync_time_index_from_book_async` → `TIME_INDEX.json`) e `cleanup tmp` (T28, `cleanup_tmp_after_success`) sono cablati in `orchestrator.run_pipeline`; `snapshot` (T27) non è ancora in pipeline.
 
 ### 4.2 Architettura — Fase 2 Ricerca
 
@@ -240,7 +240,7 @@ Nota: i tre passi LLM possono essere **fusi** in una o due chiamate se i prompt 
 
 ### 4.3 Modello di esecuzione HTTP
 
-**Stato attuale (MVP, uso interno)**: `ThreadingHTTPServer` in `src/api/ingest_http_server.py` — `POST /api/ingest/submit` → 202 con `job_id`, worker in background (`threading` + `run_full_pipeline` in `ingest_pipeline_runner.py`), `GET /api/ingest/{job_id}/status`, SSE `GET /api/ingest/{job_id}/events`. Servizio statico `web/index.html` su `/` e `/index.html`. Upload multipart in RAM fino a `INGEST_MAX_UPLOAD_BYTES`. Registry in-process: `src/api/job_registry.py`. Il worker invoca `orchestrator.run_pipeline` con `_ACTIVE_PAGE_STAGES = 3` (OCR → Vision → Editor), poi writer per libro, `TOC.md`/`INDEX.md`, sync `polyindex/TOC.json`; il payload JSON di risposta espone `stage1`/`stage2`/`stage3` (non ancora path artefatti finali nel body). Sufficiente per cura/gestione biblioteca a bassa concorrenza.
+**Stato attuale (MVP, uso interno)**: `ThreadingHTTPServer` in `src/api/ingest_http_server.py` — `POST /api/ingest/submit` → 202 con `job_id`, worker in background (`threading` + `run_full_pipeline` in `ingest_pipeline_runner.py`), `GET /api/ingest/{job_id}/status`, SSE `GET /api/ingest/{job_id}/events`. Servizio statico `web/index.html` su `/` e `/index.html`. Upload multipart in RAM fino a `INGEST_MAX_UPLOAD_BYTES`. Registry in-process: `src/api/job_registry.py`. Il worker invoca `orchestrator.run_pipeline` con `_ACTIVE_PAGE_STAGES = 3` (OCR → Vision → Editor), poi writer per libro, `TOC.md`/`INDEX.md`, sync `polyindex/{TOC,INDEX,TIME_INDEX}.json`; il payload JSON di risposta espone `stage1`/`stage2`/`stage3` (non ancora path artefatti finali nel body). Sufficiente per cura/gestione biblioteca a bassa concorrenza.
 
 **Modello target (rimandato — T18.5 + T21b)**: refactor FastAPI/async come sotto; non bloccante per il percorso MVP Upload descritto in §5.1.
 
@@ -361,20 +361,22 @@ Log(INFO_LOG_LEVEL, "dettaglio pagina", {"page": 12}, json=True, to_file=True)
 - **T12 — Vision Stage 2 (✅ completato)**: T12(a–c) — client OpenAI centralizzato (`src/core/openai_client.py`), `refine_with_vision` + `prompts/vision_prompt.md`, persistenza/cache Stage 2 (`stage2Vision`); **T12.5** — cablaggio HTTP (`stage2` in risposta, `_ACTIVE_PAGE_STAGES = 2`).
 - **T13 — Editor Stage 3 (✅ completato)**: T13(a–b) — `refine_with_editor` + `prompts/editor_prompt.md`, persistenza/cache Stage 3 (`stage3Editor/`, sidecar idempotente); **T13.5** — cablaggio HTTP (`stage3` in risposta, `_ACTIVE_PAGE_STAGES = 3`, `STATUS_DONE` su `PHASE_STAGE3_EDITOR`).
 - **T14 — Orchestrazione concorrente (✅ completato)**: T14(a) — `src/ingestion/orchestrator.py` con `PageJob`, `run_pipeline` batch-per-stage (render → stage1 → stage2 → stage3), `asyncio.Semaphore` per concorrenza intra-stage, swap Vision→Editor, eventi `IngestJobEvent`; T14(b) — `src/core/retry.py` + `src/core/errors.py`; T14(c) — `src/core/rate_limit.py`; T14(d) — migration 003 `pipeline_runs`, create/update in orchestrator, propagazione `request_id` in eventi.
-- **T15–T17 (✅ completato)**: writer pagine + `manifest.json` (`output_writer.py`), builder `TOC.md` (`toc_builder.py`), builder `INDEX.md` (`index_builder.py`); T15/T16/T17/T22 integrati in `orchestrator.py` (post-stage3: `materialize_book_pages` → `<slug>.md` → `TOC.md` → `INDEX.md` → `polyindex/TOC.json`).
+- **T15–T17 (✅ completato)**: writer pagine + `manifest.json` (`output_writer.py`), builder `TOC.md` (`toc_builder.py`), builder `INDEX.md` (`index_builder.py`); T15/T16/T17/T22 integrati in `orchestrator.py` (post-stage3: `materialize_book_pages` → `<slug>.md` → `TOC.md` → `INDEX.md` → polyindex).
 - **T23 (✅ completato)**: `src/ingestion/polyindex/toc_json.py` + `chapter_patterns.py`; merge atomico, lock `.toc.lock`; test `tests/test_polyindex_toc.py`; cablaggio orchestrator (`polyindex_toc`).
-- **T24 (✅ completato, non cablato in pipeline)**: `src/ingestion/polyindex/index_md_parser.py` (`parse_index_md`, `RawSubject`); test `tests/test_index_md_parser.py`. Parser pronto per T25/T26; orchestrator non lo invoca ancora.
-- **T29 (✅ completato, residuo copy UI)**: `web/index.html` + submit/status/SSE; banner in-page obsoleto (descrive ancora assenza di writer/polyindex nonostante il runner completo).
-- **T30 ([~] parziale)**: `run_full_pipeline` → orchestrator end-to-end + job registry HTTP; **mancano** sync `INDEX.json` (T26), snapshot (T27), cleanup tmp (T28).
+- **T24 (✅ completato)**: `src/ingestion/polyindex/index_md_parser.py` (`parse_index_md`, `RawSubject`); test `tests/test_index_md_parser.py`; consumato da T26 (`index_json.py`).
+- **T25 (✅ completato)**: `src/ingestion/polyindex/subject_matcher.py` + `src/persistence/subject_matcher_sqlite.py` + `prompts/subject_matcher_prompt.md`; normalizzazione + embeddings + LLM dirimitore.
+- **T26 (✅ completato)**: `src/ingestion/polyindex/index_json.py`; merge atomico `INDEX.json` + AI matching cross-book; test `tests/test_polyindex_index.py`; cablaggio orchestrator (`polyindex_index`).
+- **T-EXT (✅ completato, estensione post-PRD)**: `TIME_INDEX.json` — `time_index.py`, `time_index_llm.py`, prompt `time_index_extract_prompt.md`; test `tests/test_time_index.py`; cablaggio orchestrator (`time_index`); backfill `scripts/backfill_time_index.py`.
+- **T19' (✅ completato)**: smoke E2E pipeline via `orchestrator.run_pipeline` (mock OpenAI/OCR, no rete); copertura in `tests/test_orchestrator.py`; sostituisce in MVP il test HTTP rimandato **T21(b)**.
+- **T21(a) (✅ completato)**: test form mapping in `tests/test_ingest_form.py`.
+- **T29 (✅ completato)**: `web/index.html` + submit/status/SSE; servito da `ingest_http_server`.
+- **T28 (✅ completato)**: `src/ingestion/tmp_cleanup.py`; cleanup `data/tmp/<sha>/` configurabile via `TMP_KEEP_AFTER_SUCCESS` (default keep); test `tests/test_tmp_cleanup.py`; cablaggio orchestrator (`tmp_cleanup`).
+- **T30 ([~] parziale)**: `run_full_pipeline` → orchestrator end-to-end + job registry HTTP; **manca** snapshot (T27).
 - **T18 — Logging + audit (✅ completato)**: T18(a) — estensione `src/core/log.py` (`json`, `to_file`, `log_dir`, `safe_text`); T18(b) — `bind_log_context` + `log_stage_block_async` in `run_pipeline`, correlazione con `pipeline_runs`; test `tests/test_logging.py`, `tests/test_logging_propagation.py`.
 - **T22 (✅ completato)**: builder `<slug>.md` aggregato (`book_md_builder.py`), integrato in orchestrator dopo T15.
-- **T19'**: smoke E2E pipeline (orchestrator, no rete) — sostituisce in MVP il test HTTP rimandato **T21(b)**.
 - ~~T18.5(a–d)~~ **rimandato** (v2.0 / on-demand): refactor HTTP FastAPI + upload streaming + `/artifacts`.
 - ~~T21(b)~~ **rimandato** con T18.5: E2E HTTP submit→poll→artifacts (FastAPI TestClient).
-- **T25 (NUOVO)**: AI Subject Matcher (normalizzazione + embeddings + LLM dirimitore + persistence dei canonical).
-- **T26 (NUOVO)**: builder `polyindex/INDEX.json` con merge atomico + AI matching cross-book (consuma T24 + T25).
-- **T27 (NUOVO)**: checkpoint daily/on-demand DB + polyindex.
-- **T28 (NUOVO)**: cleanup `data/tmp/<sha>/` su successo (configurabile, default keep).
+- **T27**: checkpoint daily/on-demand DB + polyindex.
 - **F2 — Ricerca (passi manoscritto a–d)**: **F2-T1..F2-T10** come da §7 (schema, lookup, loader, LLM article/POH/timeline, HTTP, `research_runs`, E2E).
 
 **v1.1**:
@@ -405,14 +407,14 @@ La struttura cartelle (albero, principi, linee guida) è documentata in [`README
 Differenze chiave rispetto al README attuale (richieste da questo PRD):
 
 - Rinominare `data/polyndex/` → `data/polyindex/` nel README (fix typo; in runtime il codice usa già `data/polyindex/`).
-- Modulo `src/ingestion/pipeline/` — **presente**: `engine.py`, `render.py`, `stage1.py`, `stage2.py`, `stage3.py`, `prompts/` (`vision_prompt.md`, `editor_prompt.md`). Prompt ricerca e matcher: **da aggiungere** con F2-T* e T25.
+- Modulo `src/ingestion/pipeline/` — **presente**: `engine.py`, `render.py`, `stage1.py`, `stage2.py`, `stage3.py`, `prompts/` (`vision_prompt.md`, `editor_prompt.md`). Prompt matcher: **presente** (`subject_matcher_prompt.md`, `time_index_extract_prompt.md`). Prompt ricerca: **da aggiungere** con F2-T*.
 - **T14** — **presente**: `orchestrator.py`, `retry.py`, `errors.py`, `rate_limit.py`, `pipeline_runs.py`.
-- Ingest HTTP — **presente**: `ingest_http_server.py` + `ingest_form.py` + `ingest_pipeline_runner.run_full_pipeline` (orchestrator completo, non solo Stage 1); `resolve_aligned_pdf_path_for_stage1` in `pdf_alignment.py`.
-- `src/ingestion/polyindex/` — **parziale**: T23 (`toc_json.py`, `chapter_patterns.py`) e T24 (`index_md_parser.py`) implementati; T25–T26 (matcher + `INDEX.json`) **assenti**.
+- Ingest HTTP — **presente**: `ingest_http_server.py` + `ingest_form.py` + `ingest_pipeline_runner.run_full_pipeline` (orchestrator completo); `resolve_aligned_pdf_path_for_stage1` in `pdf_alignment.py`.
+- `src/ingestion/polyindex/` — **presente**: T23 (`toc_json.py`), T24 (`index_md_parser.py`), T25 (`subject_matcher.py`), T26 (`index_json.py`), T-EXT (`time_index.py`, `time_index_llm.py`).
 - `src/search/` — **assente** (F2-T1+).
 - `data/db/biblioteca.csv` (SQLite) — **presente** (`Settings.sqlite_path`).
 - `src/core/checkpoints.py` — **assente** (T27).
-- `web/index.html` — **presente**; aggiornare copy UI e README (ancora descrivono pipeline solo-OCR).
+- `web/index.html` — **presente**; allineato al runner completo.
 
 ## 7. Backlog task atomiche e stato
 
@@ -473,31 +475,32 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** 
 
 - [x] **T19** — Smoke test end-to-end (validazione/edge case).
 - [x] **T20** — Smoke test duplicate hash.
-- [ ] **T19'** — Smoke E2E nuovo hash (reale, no rete, via orchestrator). *(Sonnet)* — **priorità MVP** al posto di T21(b)
-- [ ] **T21(a)** — Test form mapping HTTP (`build_ingest_payload_from_form` in `ingest_form.py`). *(Sonnet)* — **in MVP** (non dipende da T18.5)
+- [x] **T19'** — Smoke E2E nuovo hash (reale, no rete, via orchestrator). *(Sonnet)* — copertura in `tests/test_orchestrator.py` (mock); sostituto MVP di T21(b).
+- [x] **T21(a)** — Test form mapping HTTP (`build_ingest_payload_from_form` in `ingest_form.py`). *(Sonnet)* — `tests/test_ingest_form.py`.
 - [⏸] **T21(b)** — E2E HTTP submit→poll→artifacts (FastAPI TestClient). *(Sonnet)* — **rimandato**; **richiede T18.5(a–d)**
 
 ### Fase 1 — Upload (polyindex e biblioteca cross-book)
 
 - [x] **T23 (NUOVO)** — Polyindex `TOC.json` updater: `src/ingestion/polyindex/toc_json.py` (`update_polyindex_toc`, `sync_polyindex_toc_from_book`, `parse_chapters_from_toc_md`); scrittura atomica + lock `.toc.lock` (Windows: stub); cablaggio in `orchestrator.py`; test `tests/test_polyindex_toc.py`. *(Sonnet)*
-- [x] **T24 (NUOVO)** — Parser deterministico `INDEX.md` → `list[RawSubject]` (`parse_index_md`, `normalize_label` in `index_md_parser.py`); test `tests/test_index_md_parser.py`. Non ancora invocato dall’orchestrator (attende T26). *(Sonnet)*
-- [ ] **T25 (NUOVO)** — AI Subject Matcher (2-stadi: normalizzazione + embeddings + LLM dirimitore). *(Opus)*
-- [ ] **T26 (NUOVO)** — Polyindex `INDEX.json` updater con merge atomico. *(Opus)*
+- [x] **T24 (NUOVO)** — Parser deterministico `INDEX.md` → `list[RawSubject]` (`parse_index_md`, `normalize_label` in `index_md_parser.py`); test `tests/test_index_md_parser.py`; consumato da T26. *(Sonnet)*
+- [x] **T25 (NUOVO)** — AI Subject Matcher (2-stadi: normalizzazione + embeddings + LLM dirimitore). *(Opus)* — `subject_matcher.py`, `subject_matcher_sqlite.py`, `prompts/subject_matcher_prompt.md`.
+- [x] **T26 (NUOVO)** — Polyindex `INDEX.json` updater con merge atomico. *(Opus)* — `index_json.py`; test `tests/test_polyindex_index.py`; cablaggio orchestrator.
+- [x] **T-EXT (NUOVO)** — `TIME_INDEX.json`: estrazione temporale regex + LLM; `time_index.py`, `time_index_llm.py`; test `tests/test_time_index.py`; cablaggio orchestrator; backfill `scripts/backfill_time_index.py`. *(Opus/Sonnet)*
 - [ ] **T27 (NUOVO)** — Checkpoint daily + on-demand DB e polyindex. *(Composer 2)*
-- [ ] **T28 (NUOVO)** — Cleanup `data/tmp/<sha>/` policy. *(Composer 2)*
+- [x] **T28 (NUOVO)** — Cleanup `data/tmp/<sha>/` policy: `tmp_cleanup.py`, `TMP_KEEP_AFTER_SUCCESS`, cablaggio orchestrator; test `tests/test_tmp_cleanup.py`. *(Composer 2)*
 
 ### Fase 1 — Upload (UX e cablaggio finale)
 
-- [x] **T29 (NUOVO)** — `web/index.html`: form REICAT + PDF, `POST /api/ingest/submit`, polling `/status`, SSE `/events`; servito da `ingest_http_server`. **Residuo**: banner “pipeline parziale” obsoleto (allineare al runner completo). *(Composer 2)*
-- [~] **T30 (NUOVO)** — Orchestrazione end-to-end Upload: **fatto** gate→align→render→stage1–3→writer→`TOC.md`/`INDEX.md`→`polyindex/TOC.json` via `run_full_pipeline` + job registry; **manca** `INDEX.json` (T26), snapshot (T27), cleanup tmp (T28). *(Opus)*
+- [x] **T29 (NUOVO)** — `web/index.html`: form REICAT + PDF, `POST /api/ingest/submit`, polling `/status`, SSE `/events`; servito da `ingest_http_server`. *(Composer 2)*
+- [~] **T30 (NUOVO)** — Orchestrazione end-to-end Upload: **fatto** gate→align→render→stage1–3→writer→`TOC.md`/`INDEX.md`→`polyindex/{TOC,INDEX,TIME_INDEX}.json`→cleanup tmp (T28) via `run_full_pipeline` + job registry; **manca** snapshot (T27). *(Opus)*
 
 ### Fase 1 — Upload (copertura test aggiuntiva codebase)
 
-- Copertura orchestrator/polyindex oltre al backlog formale: `tests/test_orchestrator.py` (ordine builder + `polyindex_toc` on disk), `tests/test_ingest_pipeline_runner.py` (runner HTTP-level con mock). Non sostituiscono T19'/T21(a).
+- Copertura orchestrator/polyindex oltre al backlog formale: `tests/test_orchestrator.py`, `tests/test_ingest_pipeline_runner.py`, `tests/test_polyindex_index.py`, `tests/test_time_index.py`.
 
 ### Fase 1 — Test E2E cross-book
 
-- [ ] **T31 (NUOVO)** — E2E cross-book: 2 libri ingestiti → `polyindex/*.json` aggregato correttamente. *(Sonnet)*
+- [ ] **T31 (NUOVO)** — E2E cross-book: 2 libri ingestiti → `polyindex/{TOC,INDEX,TIME_INDEX}.json` aggregato correttamente. *(Sonnet)*
 
 ### Fase 2 — Ricerca (MVP: passi **a–d** del manoscritto)
 
