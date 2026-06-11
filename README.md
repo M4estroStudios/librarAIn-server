@@ -15,7 +15,7 @@ Obiettivo: **tre pilastri** chiari (ingestione, ricerca, dati) senza minimalismo
 - **`persistence/`** (o `data_layer/`): accesso a SQLite, file JSON di biblioteca, registro hash — "dove stanno i dati" lato codice, separato dalla pipeline.
 - **`core/`**: configurazione `.env`, logging, costanti condivise — sottile, non una copia del progetto.
 - **`api/`**: HTTP/CLI che smista verso `ingestion` e (poi) `search`, senza logica di dominio pesante.
-- **`data/` (root)**: solo file su disco (input PDF, output libri, `biblioteca.csv`, `TOC.json` / `INDEX.json`) — non confonderla con `src/...`.
+- **`data/` (root)**: solo file su disco (input PDF, output libri, `biblioteca.db`, `TOC.json` / `INDEX.json`) — non confonderla con `src/...`.
 
 ### Albero indicativo (solo cartelle, con commenti)
 
@@ -32,9 +32,9 @@ librarAIn-server/ # radice repository
 ├── data/ # solo dati su disco, mai codice
 │   ├── db/ # database principale e snapshot checkpoint
 │   │   ├── checkpoints/ # snapshot/versioni storiche del db
-│   │   │   ├── biblioteca.<yyyy>.<mm>.<dd>.csv # checkpoint giornaliero (copia di biblioteca.csv)
+│   │   │   ├── biblioteca.<yyyy>.<mm>.<dd>.db # checkpoint giornaliero (copia di biblioteca.db)
 │   │   │   └── ... # altri checkpoint (es. più date/versioni)
-│   │   └── biblioteca.csv # database SQLite corrente (nome file convenzionale)
+│   │   └── biblioteca.db # database SQLite corrente
 │   ├── input/ # PDF sorgente in ingresso
 │   │   ├── raw/ # file originali caricati dall'operatore
 │   │   │   ├── <libro>.pdf # nome file originale
@@ -73,7 +73,7 @@ librarAIn-server/ # radice repository
 │       │   └── ... # altri temporanei del libro
 │       └── ... # altri temporanei
 ├── scripts/ # script operativi, bootstrap, utility
-├── tests/ # test e smoke (POI, quando introdotti)
+├── tests/ # ~265 test unitari; eseguiti da `make test` e CI
 └── web/ # pagina HTML punto unico di input operatore
 ```
 
@@ -140,7 +140,7 @@ La configurazione runtime centralizzata è gestita da:
 
 In caso di variabili mancanti o invalide, il loader fallisce in modo esplicito con messaggio aggregato e riferimento a `example.env`.
 
-`sqlite_path` viene derivato automaticamente come `<DATA_ROOT>/db/biblioteca.csv` (file binario SQLite; l'estensione `.csv` è solo convenzione di naming richiesta dal prodotto, non un export CSV).
+`sqlite_path` viene derivato automaticamente come `<DATA_ROOT>/db/biblioteca.db` (file binario SQLite).
 
 I PDF sorgente con le pagine indicate in `pages_to_remove` già rimosse (PDF allineato / normalizzati) devono essere scritti sotto `<DATA_ROOT>/input/processed` (di default `data/input/processed`); nel codice questo path è disponibile come `Settings.processed_pdf_input_dir`.
 
@@ -158,7 +158,12 @@ Per T2 è disponibile anche `validate_and_enrich_request(payload)` in `src/inges
 - `toc_range`: intervallo pagine TOC (`start`, `end`).
 - `index_range`: intervallo pagine INDEX (`start`, `end`).
 - `reicat`: metadati bibliografici REICAT.
+- `notes`: note generali facoltative sul libro (propagate a tutti i prompt LLM se non sovrascritte da note più specifiche).
+- `index_notes`: note facoltative sulla formattazione dell'INDEX del libro (es. lemmi in maiuscoletto, convenzioni dei rimandi); usate nei prompt di refine TOC/INDEX, subject matching POH e `TIME_INDEX`.
+- `page_notes`: note facoltative sulla formattazione delle pagine (es. note a piè di pagina, intestazioni capitolo, numeri di pagina da non confondere con date); usate nei prompt Vision, Editor e `TIME_INDEX`.
 - `options`: opzioni runtime facoltative.
+
+Nel form `web/index.html` i campi note sono separati; a runtime `notes` viene combinata con `index_notes` o `page_notes` a seconda della fase (`notes` + `index_notes` per INDEX/polyindex; `notes` + `page_notes` per le pagine).
 
 #### Campi `reicat`
 
@@ -336,7 +341,7 @@ Ultimo passo del polyindex, dopo `INDEX.json`: rilettura pagina per pagina del m
 
 - **LLM** (`TIME_INDEX_USE_LLM=true`): estrae anni espliciti, periodi testuali (`Quattrocento`, `XIV secolo`, …) e date di calendario; prompt in `src/ingestion/polyindex/prompts/time_index_extract_prompt.md`.
 - **Regex**: integrazione/fallback per date numeriche e filtro su numeri di pagina (`p.`, `pp.`).
-- Le **`page_notes`** del form ingest (note sulla formattazione delle pagine) vengono propagate nel system prompt LLM, come per Vision/Editor.
+- Usa le note combinate `notes` + `page_notes` nel system prompt LLM (vedi schema ingest sopra).
 - Parallelismo: `MAX_PARALLEL_REQUEST` (una chiamata LLM per pagina utile).
 - Schema: sezioni `years` e `dates`; ogni voce mappa a `books[<sha256>]` con `title`, `slug`, `aligned_pages`, `original_pages` (stesso pattern di `INDEX.json`).
 
