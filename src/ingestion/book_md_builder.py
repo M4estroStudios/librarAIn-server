@@ -1,10 +1,16 @@
 from __future__ import annotations
 
+import filecmp
 import json
+import os
+import shutil
 from pathlib import Path
 
-from src.ingestion.output_writer import BookOutput, BookPageOutput, _atomic_write_bytes
+from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.models.request import UsefulPagesEnumeration
+
+_STREAM_CHUNK_SIZE = 65536
+_PAGE_SEPARATOR_TEMPLATE = "\n\n---\n\n<!-- p.{aligned} (orig. p.{original}) -->\n\n"
 
 
 def _load_reicat(book_output: BookOutput) -> dict[str, object]:
@@ -36,17 +42,33 @@ def _resolve_author_line(reicat: dict[str, object]) -> str:
     return f"_{author}_"
 
 
-def _concat_page_bodies(pages: list[BookPageOutput]) -> str:
-    chunks: list[str] = []
-    for index, page in enumerate(pages):
-        if not page.file.is_file():
-            raise FileNotFoundError(f"page md not found: {page.file}")
-        if index > 0:
-            chunks.append(
-                f"\n\n---\n\n<!-- p.{page.aligned} (orig. p.{page.original}) -->\n\n"
-            )
-        chunks.append(page.file.read_text(encoding="utf-8"))
-    return "".join(chunks)
+def _page_separator(page: BookPageOutput) -> bytes:
+    return _PAGE_SEPARATOR_TEMPLATE.format(
+        aligned=page.aligned,
+        original=page.original,
+    ).encode("utf-8")
+
+
+def _stream_book_md(dest: Path, *, header: bytes, pages: list[BookPageOutput]) -> None:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = dest.with_name(dest.name + ".tmp")
+    try:
+        with tmp_path.open("wb") as out:
+            out.write(header)
+            for index, page in enumerate(pages):
+                if index > 0:
+                    out.write(_page_separator(page))
+                if not page.file.is_file():
+                    raise FileNotFoundError(f"page md not found: {page.file}")
+                with page.file.open("rb") as src:
+                    shutil.copyfileobj(src, out, length=_STREAM_CHUNK_SIZE)
+        if dest.is_file() and filecmp.cmp(dest, tmp_path, shallow=False):
+            tmp_path.unlink(missing_ok=True)
+            return
+        os.replace(tmp_path, dest)
+    finally:
+        if tmp_path.is_file():
+            tmp_path.unlink(missing_ok=True)
 
 
 def build_book_md(
@@ -58,8 +80,7 @@ def build_book_md(
     title = _resolve_title(reicat, book_output)
     author_line = _resolve_author_line(reicat)
     selected_pages = sorted(book_output.pages, key=lambda page: page.aligned)
-    body = _concat_page_bodies(selected_pages)
-    content = f"# {title}\n\n{author_line}\n\n{body}"
+    header = f"# {title}\n\n{author_line}\n\n".encode("utf-8")
     dest = book_output.output_dir / f"{book_output.slug}.md"
-    _atomic_write_bytes(dest, content.encode("utf-8"))
+    _stream_book_md(dest, header=header, pages=selected_pages)
     return dest
