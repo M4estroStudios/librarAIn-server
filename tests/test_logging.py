@@ -32,6 +32,39 @@ class TestLogging(unittest.TestCase):
         text = "x" * 250
         self.assertEqual(safe_text(text, 200), ("x" * 200) + "...")
 
+    def test_log_truncates_long_param_strings(self) -> None:
+        long_text = "y" * 300
+        with redirect_stdout(io.StringIO()):
+            payload = Log(
+                INFO_LOG_LEVEL,
+                "truncated params",
+                {"preview": long_text, "count": 3},
+                json=True,
+            )
+        self.assertIsNotNone(payload)
+        record = json.loads(payload or "")
+        self.assertEqual(record["preview"], safe_text(long_text))
+        self.assertEqual(record["count"], 3)
+
+    def test_log_truncates_nested_long_param_strings(self) -> None:
+        nested = {"body": "z" * 250}
+        with redirect_stdout(io.StringIO()):
+            payload = Log(
+                INFO_LOG_LEVEL,
+                "nested truncated params",
+                {"details": nested},
+                json=True,
+                to_file=True,
+            )
+        self.assertIsNotNone(payload)
+        record = json.loads(payload or "")
+        self.assertEqual(record["details"]["body"], safe_text("z" * 250))
+
+        day = datetime.now().astimezone().date().isoformat()
+        log_path = self.log_dir / f"{day}.log"
+        file_record = json.loads(log_path.read_text(encoding="utf-8").strip().splitlines()[-1])
+        self.assertEqual(file_record["details"]["body"], safe_text("z" * 250))
+
     def test_log_injects_bound_context_into_params(self) -> None:
         buffer = io.StringIO()
         request_token, sha_token = bind_log_context(

@@ -112,6 +112,27 @@ def _merge_log_params(params: dict[str, Any] | None) -> dict[str, Any] | None:
     return merged or None
 
 
+def _sanitize_log_value(value: Any, max_len: int = 200) -> Any:
+    if isinstance(value, str):
+        return safe_text(value, max_len)
+    if isinstance(value, dict):
+        return {key: _sanitize_log_value(item, max_len) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_sanitize_log_value(item, max_len) for item in value]
+    if isinstance(value, tuple):
+        return tuple(_sanitize_log_value(item, max_len) for item in value)
+    return value
+
+
+def _sanitize_log_params(params: dict[str, Any] | None) -> dict[str, Any] | None:
+    if not params:
+        return params
+    sanitized = _sanitize_log_value(params)
+    if isinstance(sanitized, dict):
+        return sanitized
+    return params
+
+
 def _build_log_record(
     currentLogLevel: int,
     message: str,
@@ -182,7 +203,7 @@ def Log(
     localLogLevel = GLOBAL_LOG_LEVEL
     if override:
         localLogLevel = currentLogLevel
-    parameters = _merge_log_params(params)
+    parameters = _sanitize_log_params(_merge_log_params(params))
 
     if currentLogLevel > localLogLevel:
         return None
