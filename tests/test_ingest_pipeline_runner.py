@@ -131,6 +131,9 @@ def _make_settings(data_root: str, vision_model: str = "test-model", editor_mode
     s.sqlite_path = str(Path(data_root) / "db" / "biblioteca.db")
     s.vision_model = vision_model
     s.editor_model = editor_model
+    s.matcher_llm_model = None
+    s.time_index_llm_model = None
+    s.time_index_use_llm = True
     s.max_parallel_request = 2
     return s
 

@@ -29,16 +29,16 @@ _P_BUILD_TOC = "src.ingestion.orchestrator.build_toc_md"
 _P_BUILD_INDEX = "src.ingestion.orchestrator.build_index_md"
 _P_SYNC_POLYINDEX_TOC = "src.ingestion.orchestrator.sync_polyindex_toc_from_book"
 _P_SYNC_POLYINDEX_INDEX = "src.ingestion.orchestrator.sync_polyindex_index_from_book"
-_P_SYNC_TIME_INDEX = "src.ingestion.orchestrator.sync_time_index_from_book"
+_P_SYNC_TIME_INDEX = "src.ingestion.orchestrator.sync_time_index_from_book_async"
 
 
 def _patch_time_index():
     return patch(
         _P_SYNC_TIME_INDEX,
-        new=MagicMock(
+        new=AsyncMock(
             return_value=(
                 Path("/tmp/TIME_INDEX.json"),
-                {"n_years": 0, "n_dates": 0, "n_pages_scanned": 0},
+                {"n_years": 0, "n_dates": 0, "n_pages_scanned": 0, "n_llm_pages": 0},
             )
         ),
     )

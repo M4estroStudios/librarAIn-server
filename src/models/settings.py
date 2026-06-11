@@ -85,6 +85,14 @@ class Settings(BaseModel):
         default=0.86, ge=0.0, le=1.0, alias="MATCHER_SIMILARITY_THRESHOLD"
     )
     matcher_use_ai: bool = Field(default=True, alias="MATCHER_USE_AI")
+    time_index_llm_model: str | None = Field(default=None, alias="TIME_INDEX_LLM_MODEL")
+    time_index_use_llm: bool = Field(default=True, alias="TIME_INDEX_USE_LLM")
+
+    @field_validator("time_index_use_llm", mode="before")
+    @classmethod
+    def parse_time_index_use_llm(cls, v: object) -> bool:
+        parsed = _parse_reasoning_enable_thinking(v, "TIME_INDEX_USE_LLM")
+        return True if parsed is None else parsed
 
     @field_validator("matcher_use_ai", mode="before")
     @classmethod
@@ -158,6 +166,8 @@ class Settings(BaseModel):
             raise ValueError("MATCHER_EMBEDDING_MODEL must be non-empty")
         if self.matcher_llm_model is not None:
             self.matcher_llm_model = self.matcher_llm_model.strip() or None
+        if self.time_index_llm_model is not None:
+            self.time_index_llm_model = self.time_index_llm_model.strip() or None
 
         if self.openai_provider == "remote":
             missing_fields: list[str] = []

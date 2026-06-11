@@ -4,15 +4,110 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import AsyncMock, patch
 
 from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.ingestion.polyindex.time_index import (
     extract_time_references,
     sync_time_index_from_book,
 )
+from src.ingestion.polyindex.time_index_llm import parse_llm_time_response
+from src.models.settings import Settings
 
 SHA_A = "a" * 64
 SHA_B = "b" * 64
+
+
+def _settings(**overrides: object) -> Settings:
+    base: dict[str, object] = {
+        "DATA_ROOT": "data",
+        "OPENAI_PROVIDER": "local",
+        "OPENAI_BASE_URL": "http://127.0.0.1:1234/v1",
+        "OPENAI_API_KEY": "test-key",
+        "EDITOR_MODEL": "test-editor",
+        "MAX_PARALLEL_REQUEST": 2,
+        "TIME_INDEX_USE_LLM": True,
+    }
+    base.update(overrides)
+    return Settings.model_validate(base)
+
+
+class TestParseLlmTimeResponse(unittest.TestCase):
+    def test_parses_json_payload(self) -> None:
+        parsed = parse_llm_time_response(
+            '{"years": ["Quattrocento", "1848"], "dates": ["12 marzo 1848"]}'
+        )
+        self.assertIsNotNone(parsed)
+        years, dates = parsed
+        self.assertEqual(years, {"Quattrocento", "1848"})
+        self.assertEqual(dates, {"12 marzo 1848"})
+
+    def test_parses_fenced_json(self) -> None:
+        parsed = parse_llm_time_response(
+            '```json\n{"years": ["XIV secolo"], "dates": []}\n```'
+        )
+        self.assertIsNotNone(parsed)
+        self.assertEqual(parsed[0], {"XIV secolo"})
+
+
+class TestExtractTimeReferencesForPage(unittest.IsolatedAsyncioTestCase):
+    async def test_merges_llm_and_regex(self) -> None:
+        with patch(
+            "src.ingestion.polyindex.time_index_llm.extract_time_references_llm",
+            new=AsyncMock(
+                return_value=({"Quattrocento"}, set())
+            ),
+        ):
+            from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
+
+            years, dates, used_llm = await extract_time_references_for_page(
+                "Nel 1848 e agli inizi del Quattrocento.",
+                client=object(),
+                settings=_settings(),
+                aligned_page=3,
+            )
+        self.assertTrue(used_llm)
+        self.assertEqual(years, {"1848", "Quattrocento"})
+        self.assertEqual(dates, set())
+
+    async def test_regex_only_when_llm_disabled(self) -> None:
+        with patch(
+            "src.ingestion.polyindex.time_index_llm.extract_time_references_llm",
+            new=AsyncMock(),
+        ) as mock_llm:
+            from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
+
+            years, dates, used_llm = await extract_time_references_for_page(
+                "Nel 1848.",
+                client=object(),
+                settings=_settings(TIME_INDEX_USE_LLM=False),
+                aligned_page=1,
+            )
+        mock_llm.assert_not_called()
+        self.assertFalse(used_llm)
+        self.assertEqual(years, {"1848"})
+        self.assertEqual(dates, set())
+
+
+    async def test_llm_cache_skips_second_api_call(self) -> None:
+        with patch(
+            "src.ingestion.polyindex.time_index_llm.extract_time_references_llm",
+            new=AsyncMock(return_value=({"Quattrocento"}, set())),
+        ) as mock_llm:
+            from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
+
+            settings = _settings()
+            text = "Agli inizi del Quattrocento."
+            kwargs = {
+                "client": object(),
+                "settings": settings,
+                "aligned_page": 1,
+                "source_sha256": SHA_A,
+                "book_slug": "libro-a",
+            }
+            await extract_time_references_for_page(text, **kwargs)
+            await extract_time_references_for_page(text, **kwargs)
+        self.assertEqual(mock_llm.await_count, 1)
 
 
 class TestExtractTimeReferences(unittest.TestCase):
@@ -142,3 +237,26 @@ class TestSyncTimeIndexFromBook(unittest.TestCase):
         )
         data = json.loads(path.read_text(encoding="utf-8"))
         self.assertEqual(list(data["years"].keys()), ["44 a.C.", "324", "1848"])
+
+    def test_llm_only_year_appears_in_index(self) -> None:
+        book = self._make_book(
+            SHA_A,
+            "libro-a",
+            {1: "Agli inizi del Quattrocento la città prosperò."},
+        )
+        with patch(
+            "src.ingestion.polyindex.time_index_llm.extract_time_references_llm",
+            new=AsyncMock(return_value=({"Quattrocento"}, set())),
+        ):
+            path, stats = sync_time_index_from_book(
+                self.polyindex_dir,
+                SHA_A,
+                book,
+                book_title="Libro A",
+                client=object(),
+                settings=_settings(),
+            )
+        self.assertEqual(stats["n_years"], 1)
+        self.assertEqual(stats["n_llm_pages"], 1)
+        data = json.loads(path.read_text(encoding="utf-8"))
+        self.assertIn("Quattrocento", data["years"])

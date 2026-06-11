@@ -1,7 +1,7 @@
 """Backfill data/polyindex/TIME_INDEX.json from already-processed books.
 
 Reads every data/output/<hash>/manifest.json, rebuilds a BookOutput view and
-re-runs the year/date extraction page by page.
+re-runs the year/date extraction page by page (LLM + regex when configured).
 
 Usage: python -m scripts.backfill_time_index [--data-root data]
 """
@@ -9,11 +9,14 @@ Usage: python -m scripts.backfill_time_index [--data-root data]
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 from pathlib import Path
 
+from src.core.config import load_settings
+from src.core.openai_client import build_openai_client
 from src.ingestion.output_writer import BookOutput, BookPageOutput
-from src.ingestion.polyindex.time_index import sync_time_index_from_book
+from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
 
 
 def _book_output_from_manifest(manifest_path: Path) -> tuple[BookOutput, str | None]:
@@ -48,12 +51,7 @@ def _book_output_from_manifest(manifest_path: Path) -> tuple[BookOutput, str | N
     )
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data-root", default="data", type=Path)
-    args = parser.parse_args()
-
-    data_root: Path = args.data_root
+async def _run_backfill(data_root: Path) -> None:
     output_root = data_root / "output"
     polyindex_dir = data_root / "polyindex"
     if not output_root.is_dir():
@@ -63,21 +61,37 @@ def main() -> None:
     if not manifests:
         raise SystemExit("no manifests found")
 
+    settings = load_settings()
+    settings.data_root = str(data_root)
+    client = build_openai_client(settings)
+    path: Path | None = None
+
     for manifest_path in manifests:
         sha = manifest_path.parent.name
         book_output, title = _book_output_from_manifest(manifest_path)
-        path, stats = sync_time_index_from_book(
+        path, stats = await sync_time_index_from_book_async(
             polyindex_dir,
             sha,
             book_output,
             book_title=title,
             request_id=f"backfill-{sha[:12]}",
+            client=client,
+            settings=settings,
         )
         print(
             f"{sha[:12]}…  years={stats['n_years']:5d}  dates={stats['n_dates']:5d}  "
+            f"llm_pages={stats['n_llm_pages']:4d}  "
             f"pages={stats['n_pages_scanned']:4d}  ({title or book_output.slug})"
         )
-    print(f"written: {path}")
+    if path is not None:
+        print(f"written: {path}")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data-root", default="data", type=Path)
+    args = parser.parse_args()
+    asyncio.run(_run_backfill(args.data_root.resolve()))
 
 
 if __name__ == "__main__":

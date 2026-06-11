@@ -21,7 +21,7 @@ from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
 from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
-from src.ingestion.polyindex.time_index import sync_time_index_from_book
+from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
 from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
 from src.ingestion.toc_builder import build_toc_md
 from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
@@ -601,13 +601,15 @@ async def _run_pipeline_body(
 
     if progress is not None:
         progress(make_event(PHASE_TIME_INDEX, STATUS_STARTED))
-    time_index_path, time_index_stats = await asyncio.to_thread(
-        sync_time_index_from_book,
+    time_index_path, time_index_stats = await sync_time_index_from_book_async(
         polyindex_dir,
         source_sha256,
         book_output,
         book_title=enriched.request.reicat.title,
         request_id=request_id,
+        client=openai_client,
+        settings=settings,
+        prompt_notes=page_prompt_notes,
     )
     if progress is not None:
         progress(

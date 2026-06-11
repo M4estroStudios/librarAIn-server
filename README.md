@@ -10,7 +10,7 @@ Obiettivo: **tre pilastri** chiari (ingestione, ricerca, dati) senza minimalismo
 
 ### Principi
 
-- **`ingestion/`**: tutta la Fase 1 (PDF → MD, TOC/INDEX, matching AI per `INDEX.json`).
+- **`ingestion/`**: tutta la Fase 1 (PDF → MD, TOC/INDEX, matching AI per `INDEX.json`, indice temporale `TIME_INDEX.json`).
 - **`search/`**: Fase 2 (ricerca e generazione articoli) — cartella dedicata fin da subito così il codice non si mescola con l'ingestione; all'inizio può contenere solo entrypoint/stub o essere vuota fino all'implementazione.
 - **`persistence/`** (o `data_layer/`): accesso a SQLite, file JSON di biblioteca, registro hash — "dove stanno i dati" lato codice, separato dalla pipeline.
 - **`core/`**: configurazione `.env`, logging, costanti condivise — sottile, non una copia del progetto.
@@ -48,7 +48,7 @@ librarAIn-server/ # radice repository
 │   │   │   ├── <yyyy>.<mm>.<dd>.TOC.json # snapshot TOC del giorno
 │   │   │   └── ... # altri snapshot storici
 │   │   ├── INDEX.json # indice soggetti POH globale corrente
-│   │   ├── TIME_INDEX.json # riferimenti temporali (anni/date) per libro
+│   │   ├── TIME_INDEX.json # indice temporale globale (anni/periodi + date → libri/pagine)
 │   │   └── TOC.json # toc globale corrente
 │   ├── output/ # output organizzati per libro processato
 │   │   ├── <hash libro>/ # artefatti del singolo libro
@@ -122,7 +122,9 @@ La configurazione runtime centralizzata è gestita da:
 - `RATE_LIMIT_PER_MINUTE` (default `60`)
 - `VISION_MODEL` (default `None`)
 - `EDITOR_MODEL` (default `None`)
-- `MATCHER_EMBEDDING_MODEL`, `MATCHER_SIMILARITY_THRESHOLD`, `MATCHER_USE_AI` (subject matching POH)
+- `MATCHER_EMBEDDING_MODEL`, `MATCHER_LLM_MODEL`, `MATCHER_SIMILARITY_THRESHOLD`, `MATCHER_USE_AI` (subject matching POH in `INDEX.json`)
+- `TIME_INDEX_LLM_MODEL` (default `None`; fallback: `MATCHER_LLM_MODEL` → `EDITOR_MODEL` → `gpt-4.1-mini`)
+- `TIME_INDEX_USE_LLM` (default `true`; se `false`, estrazione temporale solo regex)
 - `INGEST_HTTP_HOST` (default `127.0.0.1`), `INGEST_HTTP_PORT` (default `8765`)
 - `INGEST_API_TOKEN` (opzionale; se impostato, richiesto su tutti gli endpoint `/api/*`)
 - `INGEST_MAX_CONCURRENT_JOBS` (default `1`; job extra restano in coda)
@@ -284,7 +286,7 @@ Sequenza tipica degli eventi:
 | `stage1_ocr` | `completed` / `failed` | — | |
 | `stage2_vision` | `started` / `page_*` / `completed` | `true` per pagina | |
 | `stage3_editor` | `started` / `page_*` / `completed` | `true` per pagina | |
-| `polyindex_toc` / `polyindex_index` / `time_index` | `started` / `completed` | — | sync `TOC.json`, `INDEX.json`, `TIME_INDEX.json` |
+| `polyindex_toc` / `polyindex_index` / `time_index` | `started` / `completed` | — | sync `TOC.json`, `INDEX.json`, `TIME_INDEX.json`; su `time_index` completed: `n_years`, `n_dates`, `time_index_path` |
 | `pipeline` | `done` | — | **terminale**; porta `result` (payload completo) |
 | `pipeline` | `error` | — | **terminale**; porta `message` |
 
@@ -327,5 +329,21 @@ Se `INGEST_API_TOKEN` è impostato, tutti gli endpoint `/api/*` richiedono il to
 Il campo `result` nell'evento SSE terminale `done` include: `ingest_gate_phase`, `pdf_alignment`, `useful_pages_enumeration`, `stage1`, `stage2`, `stage3`, percorsi output (`book_md`, `toc_md`, `index_md`) e statistiche polyindex.
 
 Artefatti per libro in `data/output/<source_sha256>/`: `pages/`, `<slug>.md`, `TOC.md`, `INDEX.md`, `manifest.json`. Polyindex globale in `data/polyindex/` (`TOC.json`, `INDEX.json`, `TIME_INDEX.json`).
+
+### `TIME_INDEX.json` (indice temporale)
+
+Ultimo passo del polyindex, dopo `INDEX.json`: rilettura pagina per pagina del markdown del libro.
+
+- **LLM** (`TIME_INDEX_USE_LLM=true`): estrae anni espliciti, periodi testuali (`Quattrocento`, `XIV secolo`, …) e date di calendario; prompt in `src/ingestion/polyindex/prompts/time_index_extract_prompt.md`.
+- **Regex**: integrazione/fallback per date numeriche e filtro su numeri di pagina (`p.`, `pp.`).
+- Le **`page_notes`** del form ingest (note sulla formattazione delle pagine) vengono propagate nel system prompt LLM, come per Vision/Editor.
+- Parallelismo: `MAX_PARALLEL_REQUEST` (una chiamata LLM per pagina utile).
+- Schema: sezioni `years` e `dates`; ogni voce mappa a `books[<sha256>]` con `title`, `slug`, `aligned_pages`, `original_pages` (stesso pattern di `INDEX.json`).
+
+Backfill su libri già processati:
+
+```bash
+python -m scripts.backfill_time_index [--data-root data]
+```
 
 Cache intermedie in `data/tmp/<source_sha256>/`: `render/` (PNG lazy, solo pagine utili), `stage1OCR/`, `stage2Vision/`, `stage3Editor/`, `stage4TocIndexRefine/`.

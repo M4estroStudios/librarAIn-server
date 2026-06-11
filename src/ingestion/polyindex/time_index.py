@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import os
 import re
@@ -8,8 +9,12 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any, Iterator
 
+import openai
+
 from src.core.log import INFO_LOG_LEVEL, Log
-from src.ingestion.output_writer import BookOutput
+from src.ingestion.output_writer import BookOutput, BookPageOutput
+from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
+from src.models.settings import Settings
 
 if sys.platform != "win32":
     import fcntl
@@ -33,22 +38,17 @@ _MONTHS = (
 
 _ERA_SUFFIX = r"(?:a|d)\.\s*C\."
 
-# Full date: "12 marzo 1848", "1° maggio", "25 dicembre 800 d.C."
 _DATE_PATTERN = re.compile(
     r"\b(?P<day>[1-9]\d?)\s*°?\s+(?P<month>" + "|".join(_MONTHS) + r")"
     r"(?:\s+(?P<year>\d{1,4})\s*(?P<era>" + _ERA_SUFFIX + r")?)?\b",
     re.IGNORECASE,
 )
 
-# Year with explicit era suffix: any 1-4 digit number ("44 a.C.", "800 d.C.").
 _YEAR_WITH_ERA_PATTERN = re.compile(
     r"\b(?P<year>\d{1,4})\s*(?P<era>" + _ERA_SUFFIX + r")",
     re.IGNORECASE,
 )
 
-# Bare year: 3-4 digits in a plausible historical range. Numbers preceded by
-# page-reference markers (p., pp., pag.) are excluded because index/citation
-# page numbers are easily mistaken for years.
 _BARE_YEAR_PATTERN = re.compile(
     r"(?<![\d.])\b(?P<year>\d{3,4})\b(?!\s*" + _ERA_SUFFIX + r")"
 )
@@ -84,11 +84,7 @@ def _year_sort_key(label: str) -> tuple[int, int]:
 
 
 def extract_time_references(text: str) -> tuple[set[str], set[str]]:
-    """Extract year labels and date labels from a page of text.
-
-    Returns (years, dates). Date labels are lowercase, e.g. "12 marzo 1848"
-    or "12 marzo" when the year is absent.
-    """
+    """Extract year labels and date labels from a page of text."""
     years: set[str] = set()
     dates: set[str] = set()
 
@@ -250,22 +246,74 @@ def sync_time_index_from_book(
     *,
     book_title: str | None = None,
     request_id: str = "",
+    client: openai.OpenAI | None = None,
+    settings: Settings | None = None,
+    prompt_notes: str | None = None,
 ) -> tuple[Path, dict[str, int]]:
-    """Re-read the full book page by page and index every year and date found.
+    return asyncio.run(
+        sync_time_index_from_book_async(
+            polyindex_dir,
+            source_sha256,
+            book_output,
+            book_title=book_title,
+            request_id=request_id,
+            client=client,
+            settings=settings,
+            prompt_notes=prompt_notes,
+        )
+    )
 
-    The book's previous entries are replaced (re-ingest safe); other books'
-    entries are preserved.
-    """
+
+async def sync_time_index_from_book_async(
+    polyindex_dir: Path,
+    source_sha256: str,
+    book_output: BookOutput,
+    *,
+    book_title: str | None = None,
+    request_id: str = "",
+    client: openai.OpenAI | None = None,
+    settings: Settings | None = None,
+    prompt_notes: str | None = None,
+) -> tuple[Path, dict[str, int]]:
     time_index_path = polyindex_dir / "TIME_INDEX.json"
 
     page_refs: list[tuple[int, int, set[str], set[str]]] = []
-    for page in book_output.pages:
+    llm_pages = 0
+    sem = (
+        asyncio.Semaphore(settings.max_parallel_request)
+        if settings is not None
+        else asyncio.Semaphore(1)
+    )
+
+    async def _scan_page(page: BookPageOutput) -> tuple[int, int, set[str], set[str], bool] | None:
         if not page.file.is_file():
-            continue
+            return None
         text = page.file.read_text(encoding="utf-8")
-        years, dates = extract_time_references(text)
-        if years or dates:
-            page_refs.append((page.aligned, page.original, years, dates))
+        async with sem:
+            years, dates, used_llm = await extract_time_references_for_page(
+                text,
+                client=client,
+                settings=settings,
+                request_id=request_id,
+                aligned_page=page.aligned,
+                prompt_notes=prompt_notes,
+                source_sha256=source_sha256,
+                book_slug=book_output.slug,
+            )
+        if not years and not dates:
+            return None
+        return page.aligned, page.original, years, dates, used_llm
+
+    scan_results = await asyncio.gather(
+        *(_scan_page(page) for page in book_output.pages)
+    )
+    for result in scan_results:
+        if result is None:
+            continue
+        aligned_page, original_page, years, dates, used_llm = result
+        page_refs.append((aligned_page, original_page, years, dates))
+        if used_llm:
+            llm_pages += 1
 
     with _time_index_file_lock(polyindex_dir):
         if time_index_path.is_file():
@@ -328,6 +376,7 @@ def sync_time_index_from_book(
             and source_sha256 in entry["books"]
         ),
         "n_pages_scanned": len(book_output.pages),
+        "n_llm_pages": llm_pages,
     }
     Log(
         INFO_LOG_LEVEL,
