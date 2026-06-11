@@ -87,6 +87,13 @@ class Settings(BaseModel):
     matcher_use_ai: bool = Field(default=True, alias="MATCHER_USE_AI")
     time_index_llm_model: str | None = Field(default=None, alias="TIME_INDEX_LLM_MODEL")
     time_index_use_llm: bool = Field(default=True, alias="TIME_INDEX_USE_LLM")
+    tmp_keep_after_success: bool = Field(default=True, alias="TMP_KEEP_AFTER_SUCCESS")
+
+    @field_validator("tmp_keep_after_success", mode="before")
+    @classmethod
+    def parse_tmp_keep_after_success(cls, v: object) -> bool:
+        parsed = _parse_reasoning_enable_thinking(v, "TMP_KEEP_AFTER_SUCCESS")
+        return True if parsed is None else parsed
 
     @field_validator("time_index_use_llm", mode="before")
     @classmethod

@@ -24,6 +24,7 @@ from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
 from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
 from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
 from src.ingestion.toc_builder import build_toc_md
+from src.ingestion.tmp_cleanup import cleanup_tmp_after_success
 from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
 from src.ingestion.output_writer import BookOutput, materialize_book_pages
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
@@ -264,6 +265,24 @@ async def run_pipeline(
                     last_error=str(exc),
                 )
                 raise
+
+            cleanup_result = cleanup_tmp_after_success(source_sha256, settings)
+            _publish_event(
+                registry,
+                request_id,
+                stage="tmp_cleanup",
+                message=(
+                    "tmp_cleanup completed"
+                    if not cleanup_result.skipped
+                    else "tmp_cleanup skipped"
+                ),
+                payload={
+                    "skipped": cleanup_result.skipped,
+                    "reason": cleanup_result.reason,
+                    "files_removed": cleanup_result.files_removed,
+                    "bytes_freed": cleanup_result.bytes_freed,
+                },
+            )
 
             mark_pipeline_run_finished(
                 sqlite_path_str,
