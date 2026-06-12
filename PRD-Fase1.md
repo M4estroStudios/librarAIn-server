@@ -3,6 +3,9 @@
 > Documento unico di prodotto. Sostituisce la precedente versione limitata alla sola Fase 1.
 > Allineato al manoscritto in `trascrizione-fogli-manoscritti.md` e alla struttura repo in `README.md`.
 > **Ultimo allineamento codebase**: 2026-06-11 (stato task in §5.1 e §7).
+> **Fase 2 — Ricerca**: le sezioni Fase 2 di questo documento (§2.3, §2.5, §4.2, §7 F2-T*) sono
+> superate da [`PRD_research.md`](PRD_research.md), che è il riferimento normativo aggiornato ed
+> espanso per la Ricerca. Qui restano per contesto storico e tracciabilità del backlog.
 
 ## 0. Assunzioni di scoping (da confermare in PR review)
 
@@ -93,6 +96,9 @@ Conservati e raffinati rispetto alla versione precedente del PRD; di seguito sol
 - Telemetria minima: tabella `pipeline_runs` con `request_id`, `source_sha256`, stato finale, contatori, `pipeline_version`.
 
 ### 2.5 Acceptance Criteria — Fase 2 Ricerca (MVP: passi **a, b, c, d** del manoscritto)
+
+> **Superato**: versione aggiornata ed espansa in [`PRD_research.md`](PRD_research.md) §2.3–§2.4
+> (include il nuovo Time Lookup su `TIME_INDEX.json` e gli stati limite).
 
 - Endpoint `POST /api/research/submit` accetta body JSON `{query: str, poh?: {id, label, time_range?}, options?: {max_books?, max_pages_per_book?}}`. Ritorna 202 con `{request_id, status: "accepted"}`.
 - Endpoint `GET /api/research/{request_id}` ritorna stato job (`accepted|running|succeeded|failed`) + `pipeline_version` + `last_error?` + ultimi N eventi.
@@ -503,6 +509,9 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** 
 - [ ] **T31 (NUOVO)** — E2E cross-book: 2 libri ingestiti → `polyindex/{TOC,INDEX,TIME_INDEX}.json` aggregato correttamente. *(Sonnet)*
 
 ### Fase 2 — Ricerca (MVP: passi **a–d** del manoscritto)
+
+> **Superato**: backlog aggiornato in [`PRD_research.md`](PRD_research.md) §5.1 (aggiunge
+> F2-T3b Time Lookup, F2-T13/T14 v1.1 e l'ordine di esecuzione consigliato).
 
 - [ ] **F2-T1 (NUOVO)** — Schema input ricerca (`ResearchRequest` Pydantic) + validazione. *(Sonnet)*
 - [ ] **F2-T2 (NUOVO)** — Subject Lookup deterministico su `polyindex/INDEX.json` (normalizzazione + match) + AI fallback su soggetti residui. *(Opus)*
