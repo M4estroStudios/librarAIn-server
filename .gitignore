@@ -3,6 +3,7 @@ data/tmp/
 data/output/
 data/db/
 data/polyindex/
+backup/
 tempdata/
 venv/
 __pycache__/
