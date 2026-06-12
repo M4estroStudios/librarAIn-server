@@ -1,12 +1,17 @@
 from __future__ import annotations
 
-import fcntl
 import shutil
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
 from src.core.log import INFO_LOG_LEVEL, WARNING_LOG_LEVEL, Log
 from src.models.settings import Settings
+
+if sys.platform == "win32":
+    import msvcrt
+else:
+    import fcntl
 
 SKIP_REASON_KEEP = "tmp_keep_after_success"
 SKIP_REASON_LOCKED = "tmp_files_locked"
@@ -45,8 +50,13 @@ def _has_locked_tmp_files(tmp_dir: Path) -> bool:
     for tmp_file in tmp_files:
         try:
             with tmp_file.open("rb") as handle:
-                fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+                fd = handle.fileno()
+                if sys.platform == "win32":
+                    msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+                    msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+                else:
+                    fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    fcntl.flock(fd, fcntl.LOCK_UN)
         except (BlockingIOError, OSError):
             return True
     return False
