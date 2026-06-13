@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+300
+
+STORIA DI ROMA ANTICA
+
+GIUDEI E CRISTIANI A ROMA
+
+La presenza di una comunità giudaica a Roma diviene consistente nei primi decenni dell'Impero.
+
+Giudei, come gli altri orientali, si diffondono soprattutto attraverso il porto di Pozzuoli (*Puteoli*) che per Roma è la porta dell'Oriente prima della costruzione di Ostia da parte di Claudio. Tra questi Giudei, organizzati intorno a una sinagoga, cominciano a distinguersi a partire dall'epoca di Tiberio anche i Cristiani: si tratta però di una comunità inquieta che riproduce nell'Urbe le beghe che dividono le varie sette in Palestina. Inoltre la religione ebraica è rigorosamente monoteista e non ammette la raffigurazione della divinità: è quindi del tutto incompatibile con il tradizionale politeismo e con il colorito pantheon antropomorfo dei Romani e con la consueta apertura verso i culti stranieri. Diversamente da quanto avviene per altre sette orientali (ad esempio i seguaci di Iside, di Cibele e di Attis) l'integrazione è dunque difficile. Sotto Tiberio avviene una prima cacciata dei Giudei da Roma; notevoli tensioni si verificano durante il regno di Caligola, in seguito al rifiuto dei Giudei di collocare la statua dell'imperatore nel tempio di Gerusalemme. Anche Claudio è costretto a proibire le riunioni dei Giudei a Roma per ragioni di ordine pubblico. E ancora Claudio bandisce da Roma quei Giudei che causano continui disordini per istigazione di un certo Cresto (49 d.C.). Non si tratta di una persecuzione antiebraica o anticristiana: Claudio bandisce infatti anche gli astrologi e proibisce in Gallia le pratiche religiose dei Druidi, considerate fonte di disordini antiromani; da allora comunque si cominciano chiaramente a distinguere i Cristiani dalle altre sette giudaiche.
+
+La separazione della sinagoga porta anche alla nascita dei primi luoghi di culto cristiano dell'Urbe, intorno a cui si riuniscono anche i Cristiani convertiti dal paganesimo. La maggiore concentrazione dei più antichi Cristiani a Roma si ha nei quartieri, per lo più periferici, tradizionalmente sede anche di comunità giudaiche: Trastevere, il tratto urbano della via Appia, l'Aventino, il Celio, il vico Patrizio e il Circo Massimo. Sono luoghi più frequentati dagli apostoli Pietro e Paolo durante i loro soggiorni a Roma.
+
+FINE DI UN IMPERATORE TACITURNO
+
+Tiberio si chiude sempre più nella sua villa di Capri. Solo alcuni fatti drammatici lo scuotono. Corre infatti a Fidene, dove è crollato un anfiteatro, travolgendo ventimila persone. Manda sovvenzioni in denaro agli abitanti del Celio, dell'Aventino e della zona del Circo Massimo, rimasti senza tetto a causa di incendi. Si preoccupa anche di prevenire le rovinose alluvioni del Tevere con opere di arginatura; a Capri Tiberio apprende anche che Erode Antipa, che governa la Giudea con la protezione di Roma, ha fatto decapitare un predicatore sovversivo di nome Giovanni e, qualche anno dopo, che il prefetto di Giudea, Ponzio Pilato, ha fatto crocifiggere un pericoloso agitatore di nome Gesù. Due banali episodi della costante irrequietezza delle sette ebraiche della Palestina.
+
+A Roma giungono echi di una vita dissoluta dell'imperatore, dedito nel suo lussuoso ritiro a capricci, piaceri, crudeltà e perversioni di ogni genere. L'isolamento aumenta in lui le paure e le superstizioni. Lo crucca il problema della successione. Dei parenti gli sono rimasti solo Gaio (Caligola) figlio di Germanico e Agrippina; e il nipote diretto Tiberio Gemello (figlio di suo figlio Druso e di Livilla).

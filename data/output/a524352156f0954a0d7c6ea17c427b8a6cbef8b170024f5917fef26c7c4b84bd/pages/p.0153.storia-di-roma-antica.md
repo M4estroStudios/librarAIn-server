@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+I ROMANI E LA PENISOLA
+
+LA CONQUISTA DELL'ITALIA CENTRALE
+
+Le vittorie nelle guerre sannitiche e nella guerra tarantina sono decisive per il processo di espansione di Roma nel Mediterraneo (quanto la successiva vittoria nella prima guerra punica) e i gruppi politici romani: legati ai ceti mercantili, realizzano i progetti di conquista di nuovi mercati marittimi.
+
+Al contrario, il programma politico dei gruppi dirigenti romani, legati al ceto dei proprietari terrieri e alla domanda di terre coltivabili da parte del proletariato romano; deve trovare risposta nel centro-nord della penisola e impone il controllo dei territori appartenenti a Etruschi, Umbri, Sabini e Galli.
+
+Con gli Etruschi dal 351 vige una tregua di lunga durata, ma l'occasione per una ripresa delle ostilità è offerta dall'andamento della seconda guerra sannitica. Le vittorie dei Romani, soprattutto dopo la fondazione della colonia di Lucera, preoccupano le città etrusche; gli Équi, gli Aurunci: A questi tradizionali nemici in questa occasione si aggiungono anche molti degli alleati italici, sia antichi (gli Ernici) sia recenti (i Marrucini, Frentani, Marsi, Peligni). Per tutti, infatti, la crescente potenza romana costituisce un pericolo maggiore di quello costituito dai Sanniti.
+
+In uno scontro (314) i Romani massacrano gli Aurunci: per non trovarsi irrimediabilmente presi tra due fuochi, sono costretti ad attaccare in anticipo gli Etruschi. Perciò il console Quinto Fabio Massimo Rulliano (un ennesimo Fabio contro gli Etruschi!) porta l'esercito romano oltre i monti Cimini, bloccando la possibile avanzata etrusca verso Roma (311); poi la vittoria romana del 310 presso il lago Vadimone (Bracciano) costringe gli Etruschi a sottoscrivere una nuova tregua per la durata di quarant'anni.
+
+Roma tratta molto duramente alcuni popoli. Stronca una rivolta degli Ernici (306) e annette allo Stato romano; come *civitas sine suffragio*; la loro città principale, Anagni. Gli Equi, battuti con una guerra lampo; cessano d'esistere come indipendente (304). Altre popolazioni (Marsi, Peligni, Marrucini, Frentani e Vestini) sono forzate a stringere patti separati con Roma; perdono l'indipendenza in politica estera e sono obbligate a fornire aiuti militari a Roma; mantengono l'autonomia amministrativa interna e non devono pagare né tasse né tributi alla città dominante; inoltre in qualità di alleati partecipano alla distribuzione delle terre strappate ai nemici di Roma. L'intenzione di procedere alla conquista delle regioni adriatiche è testimoniata dalla costruzione di una nuova strada, la *via Valeria*; che valica l'Appennino centrale e raggiunge la costa marchigiana (306); mentre le già citate (vedi capitolo precedente) colonie di Sora e Alba Fucens rafforzano il controllo dei territori verso l'Abruzzo.

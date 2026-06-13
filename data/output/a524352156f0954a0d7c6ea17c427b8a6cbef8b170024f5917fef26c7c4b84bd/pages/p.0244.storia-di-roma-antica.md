@@ -1,0 +1,58 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+244                                                                    STORIA DI ROMA ANTICA
+
+è ritirato nella sua provincia; la Spagna Citeriore; dove organizza un contro-
+governo.
+
+I consoli dell'82, Gneo Papirio Carbone e Gaio Mario il giovane (figlio di 
+Mario) subiscono ripetute sconfitte. Gli ultimi difensori, tra cui vi è un
+contingente di Sanniti, tentano la resistenza presso porta Collina; ma sono tra-
+volti e massacrati dai Sillani. La lotta continua per le strade della città, semi-
+nando morte e distruzione. I Sanniti fatti prigionieri sono uccisi nel Campo Mar-
+zio. Papirio Carbone; che ha tentato di fuggire in Sicilia, è raggiunto da Gneo
+Pompeo e ucciso con i suoi seguaci. Gaio Mario il giovane trova la morte a Pa-
+lestrina; dove ha cercato rifugio. La vendetta di Silla è feroce e sistematica: So-
+no redatte liste di proscrizione (veri e propri bandi) con i nomi di tutti gli av-
+versari; chiunque è autorizzato a uccidere impunemente; ricavandone anzi un
+compenso. Sono così eliminati, oltre a un numero imprecisato di cittadini (for-
+se circa 10.000), 80 senatori e 1500 cavalieri romani. Le terre dei proscritti so-
+no confiscate e servono per le assegnazioni da dare ai legionari congedati, men-
+tre i loro figli sono esclusi dalle cariche pubbliche.
+
+***
+
+LE VENDETTE DEL DITATORE E DEI SUOI AMICI
+
+Dopo il ritorno di Silla a Roma i massacri si susseguono senza regola. Molti sono
+eliminati per inimicizie con fautori del dittatore, ai quali è lasciata mano libera co-
+mo ricompensa per la fedeltà. Alla richiesta di dire quando sarebbero cessati i mas-
+sacri, chi intendesse castigare e chi risparmiare, Silla immediatamente proscrive 80
+persone, senza far avvertire nessun magistrato. Il giorno proscrive altre 220 persone e quello successivo altrettante. Affer-
+ma che proscriverà quelli di cui si ricorda; in seguito proscriverà quelli che ha dimenti-
+cato. È proscritto chi nasconde un proscritto; anche se si tratta di parenti stretti. In-
+vece chi uccide un proscritto riceve un compenso in denaro: così lo schiavo ammaz-
+za il padrone e il figlio ammazza il padre. Molti sono uccisi semplicemente per ap-
+propriarsi dei loro beni, tanto che spesso si dice: «Costui lo ha ucciso la sua ricca
+casa, il giardino, o altri i suoi bagni caldi». Quinto Aurelio; uomo pacifico e 
+lontano da inimicizia, si reca nel Foro e nella lista dei proscritti legge il pro-
+nome. Allora esclama: «La mia tenuta di Alba mi perseguita?» e fatti pochi pas-
+si è scannato da un tale, che lo ha seguito per appropriarsi della ricompensa.
+
+***
+
+LA DITTAURA E LE RIFORME
+
+Dopo la vittoria Silla si preoccupa di legittimare il suo potere. Per l'82 e l'81
+si fa eleggere dai comizi centuriati dittatore a tempo indeterminato con po-
+teri amplissimi (il titolo completo suona «dittatore col compito di emanare
+leggi e di riformare la costituzione»). Poi riprende il progetto di Druso; esclu-
+de i cavalieri dai tribunali e porta il numero dei senatori da 300 a 600, con
+l'immissione di cavalieri, *homines novi* e soprattutto di suoi seguaci. Inoltre
+limita radicalmente il potere dei tribuni della plebe, che in passato erano sta-
+ti la causa di tanti turbamenti dello Stato. A lungo rimane lettera morta la con-
+cessione della cittadinanza agli ex alleati: per molti anni, infatti, non si eleg-
+gono quindi non possono essere registrati nuovi cittadini. Data l'importanza dell 
+esercito in armi durante le contese civili, è proibita la pre-
+senza di truppe su tutto il territorio della penisola italiana; dal Rubicone e dalla Magra fino allo stretto di Messina. Nell'80 Silla depone la dittatura e si fa
+
+244                                                                    STORIA DI ROMA ANTICA

@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+I LUOGHI E LE ISTITUZIONI                                                                                                          133
+
+patrizi e cinque plebei. I *Libri* sono consultati; per ordine del Senato e dei magistrati supremi; per trovare rimedi in tempi di calamità pubbliche. A questo collegio è affidata in seguito anche la supervisione sui culti stranieri introdotti ufficialmente a Roma (come quello della *Magna Mater*).
+
+Le formule giuridico-religiose per la dichiarazione di guerra; la conclusione della pace; la stipulazione di trattati internazionali sono prerogativa del collegio dei Feziali, che sono in pratica i rappresentanti del popolo romano verso gli stranieri in caso di conflitto. Accanto ai collegi sacerdotali operano altri sodalizi religiosi, alcuni già ricordati e antichissimi, cui sono affidati culti e cerimonie particolari: i *Salii* del Palatino e del Quirinale, *Luperci*, *Fratres Arvales*, *Sodales Titii* (forse custodi dell'antica sapienza religiosa sabina). Gli aruspici, depositari dell'antica disciplina religiosa etrusca: non sono sacerdoti del popolo romano. Essi vengono chiamati ad assistere i magistrati e i sacerdoti, quando è necessario interpretare i segni che vengono dalle viscere degli animali sacrificati.
+
+### GLI DÈI DELLA CITTÀ
+
+Tra le divinità venerate dai Romani vi sono antichissimi dèi comuni alle popolazioni indoeuropee (che si erano stanziate nell'Europa centrale nel secondo millennio a.C.) come Giove, Diana e Vesta. Altri culti, come quelli di Marte, Cerere e Minerva; sono condivisi dai Romani con le popolazioni latine e italiche: alcune divinità sono in comune con i soli Latini o sono esclusivamente romane, come Giunone, Mercurio, Giano e Venere. Accanto ai culti tradizionali dei Romani, altri sono importati in momenti diversi dalle colonie della Magna Grecia (ad esempio Ercole e Apollo), dalla Grecia stessa (Esculapio) o dal Oriente (*Magna Mater*): l'introduzione ufficiale del culto delle divinità straniere è filtrata dal collegio dei *duoviri decemviri, sacris faciundis*.
+
+Un caso particolare è quello già noto delle divinità introdotte a Roma con la cerimonia dell'*evocatio*, dai Dioscuri e Giunone Regina alla Mater Matuta. Queste divinità hanno templi a Roma, con cerimonie sacre in determinati giorni dell'anno: La funzione ufficiale di protettrici dello Stato romano è svolta dalle tre divinità venerate nel grande tempio sul Campidoglio: Giove; Giunone; Minerva. Come già detto; è la trasposizione a Roma della triade protettrice etrusca (*Tinia, Uni, Menrva*): Tarquinio Prisco con una operazione politico-culturale la sostituisce alla più antica triade latino-sabina (Giove, Marte e Quirino) della quale sopravvive un chiaro ricordo nella denominazione dei tre antichissimi flamini maggiori: *Dialis, Martialis, Quirinalis*.
+
+***
+
+| CONTRATTARE CON GLI DÈI |
+| :--- |
+| *I Romani, quando chiedono qualcosa alla divinità con sacrifici e giochi, specificano dettagliatamente quanto vogliono e cosa offrono in cambio, come per un contratto o rapporto d'affari. Gli dèi non sono tenuti a fornire quanto richiesto, ma sono liberi di scegliere. Il rapporto particolare tra uomini e dèi assomiglia a quello tra patrono e cliente. È un rapporto basato sulla reciprocità, nel quale il cliente (l'uomo) è passibile d'una severa punizione; se non esegue in modo adeguato quanto richiesto dal patrono (la divinità).* |

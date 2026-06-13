@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+COSPIRAZIONE E DITTATURA                                           261
+
+IL RE MANCATO
+
+La città, pur abbellita dalle splendide opere pubbliche volute dal dittatore, è costretta a sorridere tra denti di fronte a pesanti cambiamenti. Le donazioni di frumento, che fino a pochi anni prima erano il prezzo per il successo politico, sono drasticamente ridotte. Ma la plebaglia e gli sfaccendati possono trovare lavoro nell'edificazione e nel restauro di numerosi edifici pubblici.
+
+La posizione di Cesare e il suo governo autoritario con sempre maggiore difficoltà possono dirsi repubblicani.
+
+Durante la festa dei Lupercali, il suo fidatissimo generale Marco Antonio
+
+*LA CURIA IULIA*
+
+Dopo l'incendio della curia Hostilia del 52 a.C., Cesare crea una nuova sede del Senato. La nuova curia, che da lui sarà chiamata *curia Iulia*, è l'edificio in mattoni che ancora oggi si vede tra l'angolo dell'Argileto e del Comizio: Il suo aspetto attuale è legato alla ricostruzione seguita al grande incendio del 283 d.C., che distrusse gran parte del Foro; e questa ricostruzione dal VI secolo d.C. è stata trasformata nella chiesa di Sant'Adriano. L'edificio odierno è frutto dei restauri del 1930-1936: a pianta rettangolare, presenta quattro pilastri sulla fronte che reggono il timpano triangolare. Le tracce di locali, visibili sulla facciata, sono resti di tombe medievali. La grandiosa porta bronzea che permette l'accesso all'edificio è una copia dell'originale, d'età dioclezianea. Il bellissimo interno presenta molte tracce delle progressive trasformazioni subite dalla curia. Il bellissimo pavimento in marmo è del rifacimento dioclezianeo; mentre i resti di pittura bizantine alle pareti appartengono alla chiesa di Sant'Adriano.
+
+IL DITTATORE E LA SUA PIAZZA
+
+Inizialmente Cesare progettava di dare nuova vita al vecchio Foro, ormai troppo ristretto e soffocato. L'unica possibilità d'espansione è nello spazio tra l'Argileto e lo sperone che congiunge Campidoglio e Quirinale. Per fare questo il dittatore dal 54 a.C. acquista molte case private, spendendo di tasca sua cifre enormi. Ma il desiderio di costruire un tempio a Venere Genitrice (dalla quale discendeva la *gens Giulia*), votato a Farsalo (48 a.C.) impone sostanziali modifiche al primo progetto: Il risultato è un tempio su alto podio posto in posizione assiale rispetto alla piazza (160 x 75 m) al centro della quale si trova la statua equestre del dittatore; sugli altri tre lati si aprono portici a due piani, dietro ai quali si trovano numerose botteghe. Lo spazio, che inizialmente doveva costituire un allargamento del vecchio Foro, è diventato un recinto sacro per il tempio di Venere Genitrice: è il nuovo foro Giulio. Sottili corrispondenze, come la statua equestre del dittatore posta al centro dello spazio porticato (il figlio che corrisponde alla madre) fanno intuire i propositi del dittatore; capace di ricevere il Senato seduto nel centro del tempio, come una vera divinità. Cesare impiega molto denaro anche per ricostruire alcuni edifici dell'antico Foro (come la basilica Aemilia) o per edificarne di nuovi (la basilica Iulia al posto della Sempronia), ma il suo intento è chiaro. Il legame tra la curia Giulia, nuova sede del Senato, e la sua piazza, di cui la curia è quasi un'appendice, rivela la volontà di spostare il centro del potere e di gestire, per quanto possibile, la vita pubblica. Attualmente è visibile solo un terzo dell'originario foro Giulio: la parte meridionale è inclusa nell'area archeologica del Foro Romano, mentre quella orientale e quella settentrionale sono quasi completamente ricoperte.

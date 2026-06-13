@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+RICONCILIAZIONE E CONSENSO                                           291
+
+II. SECONDO UOMO DELL'IMPERO
+
+Marco Agrippa; il cui nome campeggia sull'architrave del Pantheon (il gentilizio Vipsanio è normalmente tralasciato) è il classico *homo novus* con umili origini. Nato come Gaio Ottavio nel 63 a.C. (l'anno della congiura di Catilina) è amico del futuro Augusto fin dagli anni giovanili. La sua carriera politica (dal tribunato della plebe ai tre consolati) è legata alle fortune di Ottaviano.
+
+Egli si distingue come generale e ammiraglio: sia nelle guerre civili (per le vittorie navali a Milazzo e a Nauloco contro Sesto Pompeo ottiene come onorificenza la corona rostrata; ha il comando della flotta ad Azio) sia nelle campagne di conquista delle province germaniche (39 a.C.) e illiriche (35-34 e 13-12 a.C.). Con Mecenate rappresenta Ottaviano a Roma fino al suo ritorno dopo Azio. Nel 23 a.C. è il depositario del sigillo di Augusto; in occasione di una grave malattia, è più volte incaricato di missioni diplomatiche e militari in Oriente (tra il 23 e il 13 a.C.), in Gallia e in Spagna (20-18 a.C.). Divide con Augusto la censura (28 a.C.), la potestà tribunizia (dal 18 a.C.) e il potere proconsolare maggiore: non solo è il più stretto collaboratore di Augusto; ma sul piano formale e costituzionale è il secondo uomo dell'Impero.
+
+Dopo due precedenti matrimoni, con Pomponia Attica (da cui nasce Vipsania Agrippina, moglie del futuro imperatore Tiberio) e con Claudia Marcella (figlia di Ottavia; sorella di Augusto) sposa nel 21 a.C. Giulia (figlia di Augusto e Scribonia) già vedova di Marco Claudio Marcello (anche lui figlio di Ottavia). Diventa così genero di Augusto.
+
+Da questo matrimonio nascono Gaio e Lucio (i due Cesari adottati da Augusto come successori), Giulia, Agrippina (poi moglie di Germanico) e Agrippa Postumo. Uno dei suoi principali incarichi è l'approvvigionamento idrico della assetata città di Roma e Agrippa si distingue soprattutto per iniziative urbanistico-edilizie nel Campo Marzio orientale. Completa i portici dei recinti per le riunioni dei comizi, iniziati da Cesare e continuati da Lepido (*Saepta Julia*); li orna con statue e opere d'arte, vi aggiunge l'edificio per i voti (*diribitorium*). Tra il 27 e il 25 a.C. costruisce il primo Pantheon e subito dopo, nella stessa zona, costruisce le più antiche terme pubbliche di Roma. Accanto a esse, circondato da giardini e impianti sportivi, fa scavare un lago artificiale (*stagnum Agrippae*) le cui acque defluiscono nel Tevere tramite il canale Euripo.
+
+Al centro sorge la villa di Agrippa. Tutto il complesso, concepito per il riposo e lo svago, è alimentato dal nuovo acquedotto dell'Acqua Vergine, che poi passa il Tevere sul *pons Agrippae*, corrispondente all'attuale ponte Sisto. A oriente di quest'area, presso un parco pubblico (*campus Agrippae*) sorge la *porticus Vipsania*; terminata dopo la sua morte dalla sorella e da Augusto.
+
+Inoltre, per garantire l'approvvigionamento e una pronta distribuzione di cereali, Agrippa fa costruire sulle pendici sudorientali del Palatino un monumentale mercato (*Horrea Agrippiana*). Morto nel 12 a.C., gli sono tributate onoranze funebri eccezionali (Augusto stesso pronuncia *elogio funebre*) ed è sepolto nel mausoleo di Augusto.
+
+Infine proprio Tiberio; poco simpatico ad Augusto; è richiamato dal suo ritiro di Rodi e adottato da Augusto; assumendo i nomi di Tiberio Giulio Cesare. Nel 4 d.C. all'erede è conferita la potestà tribunizia e nell'11 d.C. il potere proconsolare maggiore: così la successione è finalmente assicurata attraverso la fusione dei Giulii con i Claudii.

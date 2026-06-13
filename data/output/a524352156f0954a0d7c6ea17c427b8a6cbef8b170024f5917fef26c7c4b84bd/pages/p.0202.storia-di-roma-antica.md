@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+202                                                                    STORIA DI ROMA ANTICA
+
+LA RIPICCA DI UN GENERALE SENZA TRIONFO
+
+L'ira di un generale, cui è negato il trionfo; dà origine all'edificazione d'un monumento che conoscerà enorme fortuna presso i Romani, l'arco di trionfo. Lucio Stertinio; dal momento che per rivalità politica non può sfilare lungo la via trionfale, decide di edificare i *fornicis Stertini* (gli archi di Stertinio): i due archi davanti al tempio di Fortuna e di Mater Matuta raddoppiano così l'arco già esistente (196 a.C.). Un altro arco è edificato presso il centro della curva del Circo Massimo. Se Stertinio non può sfilare, coloro che sfileranno saranno costretti a passare sotto i suoi archi, memoria immortale della sua impresa. Scipione Africano riprende l'idea rendendola ulteriormente monumentale. L'arco da lui dedicato è sormontato addirittura da sette statue e decorato da due bacini marmorei. La sua collocazione sul clivo Capitolino coincide col monumento più importante della processione del trionfatore; l'ingresso sul Campidoglio.
+
+LA SECONDA GUERRA MACEDONICA
+
+L'occasione del nuovo intervento contro Filippo V, mancato alleato di Annibale (vedi capitolo precedente), è offerta dalle pericolose alleanze del re macedone. In Egitto (altra grande potenza ellenistica) la morte del re crea una crisi dinastica. Il nuovo re bambino è una facile preda per Antioco III re di Siria, altro monarca protagonista della politica di questi anni; Roma è chiamata a intervenire contro una possibile alleanza tra Filippo e Antioco. Le pressioni degli alleati greci convincono il Senato riluttante: Roma è appena uscita dalla guerra contro Annibale e la vittoria l'ha resa troppo fiduciosa nelle sue capacità. Dietro il paravento della guerra giusta (Roma interviene in difesa degli alleati!), Marco Emilio Lepido avanza richieste esose a Filippo V. Il re rifiuta e scoppia il conflitto (200 a.C.). Messo a freno Antioco III, cominciano le operazioni militari, ma i successi non sono decisivi: la guerra minaccia di trascinarsi a lungo.
+
+I MILITARI INTELLETTUALI
+
+L'arrivo di Tito Quinzio Flaminino imprime una svolta alle operazioni. Il nobile romano inaugura un nuovo modo di fare la guerra. Egli si rende conto che gli attacchi brutali danno ben risultati e con finissima diplomazia porta avanti un suo progetto filoellenico (cioè, favorevole alla Grecia): Roma si presenta come la protettrice della libertà delle città greche di fronte allo strapotere delle monarchie ellenistiche: Roma non conquista "libera" sarebbe disposta trattare la pace, ma Flaminino alza sempre di più il prezzo. Le due principali Leghe greche, la Lega achea e quella etolica; insieme a Sparta, passano ai Romani. Ormai Flaminino ha le coperte e sconfigge Filippo nella battaglia presso la città di Cinocefale (letteralmente testa di cane) in Tessaglia (197 a.C.). Il re è costretto ad abbandonare i suoi possedimenti in Grecia e in Asia Minore, a consegnare la flotta e a pagare una grossa indennità come conto spese dei Romani.
+
+Sull'onda del successo di Flaminino sono prolungati i poteri in Asia. Il suo piano filoellenico diventa una realtà: entusiasmo e stupore accompagnano la sua proclamazione della libertà ai Greci. Nella variopinta cornice dei giochi...

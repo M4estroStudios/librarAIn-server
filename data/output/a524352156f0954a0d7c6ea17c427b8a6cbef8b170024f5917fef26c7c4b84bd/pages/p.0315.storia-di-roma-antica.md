@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+NERONE E LA FINE DEI CONSENSO                                            315
+
+li artistici e riformistici: È qui che la regalità divina è portata alle stelle e il suo talento come auriga e citaredo è esaltato da un pubblico pronto all'adulazione.
+
+Una corte di questo tipo deve avere popolato certamente i sogni di Caligola che non ha avuto il tempo necessario per realizzarla. C'è anche spazio per la cultura. Lo stesso imperatore, pur nelle sue esagerazioni teatrali e folli, è un intellettuale raffinato. Poeti, letterati, filosofi, pittori, scultori, musicisti trovano protezione e aiuto. Tra questi c'è Lucano, nipote di Seneca; abile poeta epico. Non mancano i letterati "asserviti" come Bebio Italico; autore di un poema sui Giulio-Claudii, esaltati come discendenti diretti di Enea. Il personaggio più affascinante è Petronio, famoso scrittore satirico. La corte trova in questo maestro di eleganza ed eccentricità la sua raffinata guida.
+
+Gli uomini che circondano il principe sono tutti giovani come lui. Gli unici valori che si riconoscono sono la gioventù, la spensieratezza e l'amoralità. In loro Nerone trova i compagni adatti per i suoi lunghi festini che durano anche giorni. Discussioni letterarie e orgie si mescolano senza problemi. Il principe è anche generoso con i suoi amici, fa loro regali splendidi e non dimentica neppure che anche la plebe ama questo tipo di piaceri: spesso perciò cena in pubblico, coltivando l'affetto che il popolo ancora gli dimostra.
+
+I RAGAZZI DELL'IMPERATORE:
+
+La corte è anche una struttura ben organizzata. Un posto particolare lo occupano gli Augustiani, speciali guardie del corpo che seguono continuamente l'imperatore. Sono figli di cavalieri, tutti giovani di bell'aspetto e di taglia robusta che giorno e notte fanno risuonare i loro applausi nelle stanze del palazzo: lodano la bellezza del principe e la sua voce con appellativi divini. Questi giovani, già 500 nel 59 d.C., più numerosi in seguito; hanno una folta e ricca capigliatura; gli abiti sono elegantissimi, lasciano una scia di profumo al loro passaggio. Si riconoscono anche perché portano un anello nella mano sinistra, insegna dell'ordine equestre. Una volta divenuti Augustiani, non appartengono più a nessuna classe sociale. Per loro conta solo una cosa: servire e proteggere Nerone, facendosi portavoci della sua ideologia. Appoggiati da 4000 plebei fanno anche da claque per il principe. Divisi in tre squadre applaudono il principe ciascuno con una cadenza diversa: per rendere l'applauso ancora più grandioso Nerone ha arruolato "Neroniani" robusti plebei per applaudire, suonare e cantare. Il principe artista dovunque vada si porta dietro questo pubblico; pronto in ogni momento a esaltarlo e lodarlo.
+
+LA CITTÀ IN FIAMME:
+
+Nella notte tra il 18 e il 19 luglio del 64 d.C. scoppia un enorme incendio nella capitale. Per sei giorni Roma brucia finché le arse rovine degli edifici soffocano la violenza delle fiamme. Un nuovo focolaio scoppia nel Campo Marzio ma in capo a tre giorni tutto è domato. Finalmente il 27 luglio nessuna nuvola di fumo si leva più dalla città.
+
+Gli incendi non sono una novità per i Romani. Il fuoco nasce spontaneamente nella capitale, pericoloso ammasso di edifici infiammabili, di strade intasate, di vicoli privi d'acqua. Ma questa volta il vento e la siccità hanno spazio per guidare ogni...
