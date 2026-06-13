@@ -35,30 +35,30 @@ code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0
 #out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
 small.req { display: inline; color: #f08080; }
 strong { color: #e8e8e8; }
-.dev-banner { margin: 0 0 1rem; padding: 0.7rem 0.9rem; border-radius: 10px; background: #3a2f12; color: #f5d98a; border: 1px solid #6b5524; font-size: 0.85rem; line-height: 1.4; }
-.dev-banner strong { color: #ffe9a8; }
+a { color: #4ec9b0; }
+.nav { font-size: 0.85rem; margin-bottom: 1rem; }
 #progress { display: none; margin-top: 1rem; padding: 0.9rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
 #progress.show { display: block; }
-#progress-bar { width: 100%; height: 10px; border-radius: 5px; appearance: none; -webkit-appearance: none; background: #3c3c3c; border: none; display: block; margin: 0.6rem 0 0.4rem; }
-#progress-bar::-webkit-progress-bar { background: #3c3c3c; border-radius: 5px; }
-#progress-bar::-webkit-progress-value { background: #4ec9b0; border-radius: 5px; transition: width 0.25s ease; }
-#progress-bar::-moz-progress-bar { background: #4ec9b0; border-radius: 5px; }
-#progress-global { font-size: 0.8rem; color: #9d9d9d; }
-#progress-detail { font-size: 0.78rem; color: #7d7d7d; margin-top: 0.2rem; }
-#progress-timing { font-size: 0.76rem; color: #9d9d9d; margin-top: 0.35rem; line-height: 1.45; }
-.phase-list { list-style: none; padding: 0; margin: 0 0 0.5rem; display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; }
-.phase-list li { font-size: 0.8rem; color: #7d7d7d; }
-.phase-list li.active { color: #4ec9b0; font-weight: 600; }
-.phase-list li.done { color: #6a9955; }
-.phase-list li.failed { color: #f48771; }
+.progress-row { margin-bottom: 1rem; }
+.progress-row:last-child { margin-bottom: 0; }
+.progress-row.global-row { padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #3e3e3e; }
+.progress-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; font-size: 0.85rem; margin-bottom: 0.35rem; }
+.progress-label { color: #e8e8e8; font-weight: 600; }
+.progress-label.active { color: #4ec9b0; }
+.progress-label.done { color: #6a9955; }
+.progress-label.failed { color: #f48771; }
+.progress-time { color: #9d9d9d; font-size: 0.8rem; white-space: nowrap; }
+.progress-body { display: flex; align-items: center; gap: 0.65rem; }
+.progress-body progress { flex: 1; height: 10px; border-radius: 5px; appearance: none; -webkit-appearance: none; background: #3c3c3c; border: none; }
+.progress-body progress::-webkit-progress-bar { background: #3c3c3c; border-radius: 5px; }
+.progress-body progress::-webkit-progress-value { background: #4ec9b0; border-radius: 5px; transition: width 0.25s ease; }
+.progress-body progress::-moz-progress-bar { background: #4ec9b0; border-radius: 5px; }
+.progress-stats { font-size: 0.8rem; color: #9d9d9d; white-space: nowrap; }
 </style>
 </head>
 <body>
+<p class="nav">Ingestione · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a></p>
 <h1>Ingestione libro</h1>
-<div class="dev-banner" role="note">
-  <strong>Pipeline ingestione end-to-end.</strong>
-  Dopo OCR, Vision e Editor: pagine in <code>data/output/&lt;hash&gt;/</code>, <code>TOC.md</code>, <code>INDEX.md</code>, aggregato <code>&lt;libro&gt;.md</code> e aggiornamento <code>data/polyindex/TOC.json</code> e <code>INDEX.json</code> (fasi visibili in avanzamento sotto).
-</div>
 <p class="lead">Carica il PDF e indica quali pagine del file escludere e dove si trovano, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT. Prima dell’invio il browser tenta una verifica delle pagine rispetto al PDF (servono rete per caricare pdf.js).</p>
 
 <form id="ingest-form">
@@ -182,27 +182,21 @@ strong { color: #e8e8e8; }
 
   <div class="actions">
     <button type="submit" id="submit-btn">Invia validazione</button>
-    <span class="hint">POST <code>/api/ingest/submit</code></span>
   </div>
 </form>
 
 <div id="progress" role="status" aria-live="polite">
-  <ul class="phase-list">
-    <li id="ph-validation" data-phase="validation">Validazione</li>
-    <li id="ph-gate_hash" data-phase="gate_hash">Hash gate</li>
-    <li id="ph-pdf_alignment" data-phase="pdf_alignment">Allineamento PDF</li>
-    <li id="ph-page_enumeration" data-phase="page_enumeration">Enumerazione pagine</li>
-    <li id="ph-render" data-phase="render">Render PNG</li>
-    <li id="ph-stage1_ocr" data-phase="stage1_ocr">Stage 1 OCR</li>
-    <li id="ph-stage2_vision" data-phase="stage2_vision">Stage 2 Vision</li>
-    <li id="ph-stage3_editor" data-phase="stage3_editor">Stage 3 Editor</li>
-    <li id="ph-polyindex_toc" data-phase="polyindex_toc">Polyindex TOC.json</li>
-    <li id="ph-polyindex_index" data-phase="polyindex_index">Polyindex INDEX.json</li>
-  </ul>
-  <progress id="progress-bar" value="0" max="100"></progress>
-  <div id="progress-global">In attesa di aggiornamenti…</div>
-  <div id="progress-detail"></div>
-  <div id="progress-timing"></div>
+  <div class="progress-row global-row" id="progress-global-row">
+    <div class="progress-head">
+      <span class="progress-label" id="global-label">Totale</span>
+      <span class="progress-time" id="global-time"></span>
+    </div>
+    <div class="progress-body">
+      <progress id="progress-bar-global" value="0" max="100"></progress>
+      <span class="progress-stats" id="global-stats">0% (0/0)</span>
+    </div>
+  </div>
+  <div id="phase-rows"></div>
 </div>
 <pre id="out" aria-live="polite"></pre>
 
@@ -296,14 +290,23 @@ strong { color: #e8e8e8; }
   var out = document.getElementById("out");
   var btn = document.getElementById("submit-btn");
   var progressBox = document.getElementById("progress");
-  var progressBar = document.getElementById("progress-bar");
-  var progressGlobal = document.getElementById("progress-global");
-  var progressDetail = document.getElementById("progress-detail");
-  var progressTiming = document.getElementById("progress-timing");
+  var progressBarGlobal = document.getElementById("progress-bar-global");
+  var globalTimeEl = document.getElementById("global-time");
+  var globalStatsEl = document.getElementById("global-stats");
+  var phaseRowsEl = document.getElementById("phase-rows");
 
   var elapsedSeconds = 0;
   var phaseDurations = {};
-  var lastGlobalStepText = "In attesa di aggiornamenti\u2026";
+  var globalStep = 0;
+  var globalTotal = 0;
+  var phaseState = {};
+  var phaseDom = {};
+
+  var PHASE_ORDER = [
+    "validation", "gate_hash", "pdf_alignment", "page_enumeration",
+    "render", "stage1_ocr", "stage2_vision", "stage3_editor",
+    "polyindex_toc", "polyindex_index", "time_index",
+  ];
 
   var PHASE_LABELS = {
     validation: "Validazione",
@@ -316,17 +319,8 @@ strong { color: #e8e8e8; }
     stage3_editor: "Stage 3 Editor",
     polyindex_toc: "Polyindex TOC.json",
     polyindex_index: "Polyindex INDEX.json",
+    time_index: "Polyindex TIME_INDEX.json",
   };
-
-  function phaseEl(phase) {
-    return document.getElementById("ph-" + phase);
-  }
-
-  function setPhaseState(phase, state) {
-    var el = phaseEl(phase);
-    if (!el) return;
-    el.className = state;
-  }
 
   function formatDuration(sec) {
     var s = Math.max(0, Math.round(Number(sec) || 0));
@@ -336,29 +330,109 @@ strong { color: #e8e8e8; }
     return m + " min " + r + " s";
   }
 
-  function setPhaseLabel(phase) {
-    var el = phaseEl(phase);
-    if (!el) return;
-    var base = PHASE_LABELS[phase] || phase;
-    var dur = phaseDurations[phase];
-    el.textContent = dur != null ? base + " (" + formatDuration(dur) + ")" : base;
+  function formatPercent(done, total) {
+    if (!total) return 0;
+    return Math.min(100, Math.round((done / total) * 100));
   }
 
-  function refreshGlobalLine() {
-    var extra = elapsedSeconds > 0 ? " \u00b7 " + formatDuration(elapsedSeconds) : "";
-    progressGlobal.textContent = lastGlobalStepText + extra;
+  function formatStatsLine(done, total, etaMs) {
+    var pct = formatPercent(done, total);
+    var line = pct + "% (" + done + "/" + total + ")";
+    if (etaMs != null && etaMs > 0) line += " (~" + formatDuration(etaMs / 1000) + ")";
+    return line;
   }
 
-  function refreshTimingBlock() {
-    if (!progressTiming) return;
-    var parts = [];
-    if (elapsedSeconds > 0) parts.push("Totale: " + formatDuration(elapsedSeconds));
-    Object.keys(PHASE_LABELS).forEach(function (ph) {
-      if (phaseDurations[ph] != null) {
-        parts.push((PHASE_LABELS[ph] || ph) + ": " + formatDuration(phaseDurations[ph]));
-      }
+  function freshPhaseState() {
+    return {
+      done: 0,
+      total: 1,
+      status: "pending",
+      stepTimes: [],
+      phaseStartMs: null,
+      lastStepMs: null,
+    };
+  }
+
+  function buildPhaseRows() {
+    phaseRowsEl.innerHTML = "";
+    phaseDom = {};
+    PHASE_ORDER.forEach(function (phase) {
+      var row = document.createElement("div");
+      row.className = "progress-row";
+      row.dataset.phase = phase;
+      row.innerHTML =
+        '<div class="progress-head">' +
+        '<span class="progress-label" data-role="label"></span>' +
+        '<span class="progress-time" data-role="time"></span>' +
+        "</div>" +
+        '<div class="progress-body">' +
+        '<progress value="0" max="1" data-role="bar"></progress>' +
+        '<span class="progress-stats" data-role="stats"></span>' +
+        "</div>";
+      phaseRowsEl.appendChild(row);
+      phaseDom[phase] = {
+        row: row,
+        label: row.querySelector('[data-role="label"]'),
+        time: row.querySelector('[data-role="time"]'),
+        bar: row.querySelector('[data-role="bar"]'),
+        stats: row.querySelector('[data-role="stats"]'),
+      };
+      phaseDom[phase].label.textContent = PHASE_LABELS[phase] || phase;
     });
-    progressTiming.textContent = parts.length ? parts.join(" \u00b7 ") : "";
+  }
+
+  function phaseElapsedSeconds(phase) {
+    var st = phaseState[phase];
+    if (!st) return null;
+    if (st.status === "done" || st.status === "failed") {
+      return phaseDurations[phase] != null ? phaseDurations[phase] : null;
+    }
+    if (st.status === "active" && st.phaseStartMs != null) {
+      return (Date.now() - st.phaseStartMs) / 1000;
+    }
+    return null;
+  }
+
+  function phaseEtaMs(phase) {
+    var st = phaseState[phase];
+    if (!st || st.status !== "active" || st.done >= st.total || !st.stepTimes.length) return null;
+    var avg = st.stepTimes.reduce(function (a, b) { return a + b; }, 0) / st.stepTimes.length;
+    return avg * (st.total - st.done);
+  }
+
+  function recordPhaseStep(phase) {
+    var st = phaseState[phase];
+    if (!st) return;
+    var now = Date.now();
+    var delta = st.lastStepMs != null ? now - st.lastStepMs : (st.phaseStartMs != null ? now - st.phaseStartMs : 0);
+    if (delta > 0) st.stepTimes.push(delta);
+    st.lastStepMs = now;
+    st.done += 1;
+  }
+
+  function renderPhaseRow(phase) {
+    var dom = phaseDom[phase];
+    var st = phaseState[phase];
+    if (!dom || !st) return;
+    dom.label.className = "progress-label" + (st.status === "active" ? " active" : st.status === "done" ? " done" : st.status === "failed" ? " failed" : "");
+    var elapsed = phaseElapsedSeconds(phase);
+    dom.time.textContent = elapsed != null ? "(" + formatDuration(elapsed) + ")" : "";
+    dom.bar.max = st.total || 1;
+    dom.bar.value = Math.min(st.done, st.total || 1);
+    var eta = phaseEtaMs(phase);
+    dom.stats.textContent = formatStatsLine(st.done, st.total, eta);
+  }
+
+  function renderGlobalRow() {
+    progressBarGlobal.max = globalTotal || 1;
+    progressBarGlobal.value = globalStep;
+    globalTimeEl.textContent = elapsedSeconds > 0 ? "(" + formatDuration(elapsedSeconds) + ")" : "";
+    globalStatsEl.textContent = formatStatsLine(globalStep, globalTotal, null);
+  }
+
+  function renderAllProgress() {
+    renderGlobalRow();
+    PHASE_ORDER.forEach(renderPhaseRow);
   }
 
   function applyTimingFields(ev) {
@@ -366,33 +440,28 @@ strong { color: #e8e8e8; }
     var phase = ev.phase;
     if (phase && ev.phase_duration_seconds != null) {
       phaseDurations[phase] = ev.phase_duration_seconds;
-      setPhaseLabel(phase);
     }
     if (ev.timing && ev.timing.phases) {
       Object.keys(ev.timing.phases).forEach(function (ph) {
         phaseDurations[ph] = ev.timing.phases[ph];
-        setPhaseLabel(ph);
       });
       if (ev.timing.total_seconds != null) elapsedSeconds = ev.timing.total_seconds;
     }
-    refreshGlobalLine();
-    refreshTimingBlock();
+    renderAllProgress();
   }
 
   function resetProgress() {
     progressBox.classList.remove("show");
-    progressBar.value = 0;
-    progressBar.max = 100;
+    globalStep = 0;
+    globalTotal = 0;
     elapsedSeconds = 0;
     phaseDurations = {};
-    lastGlobalStepText = "In attesa di aggiornamenti\u2026";
-    progressGlobal.textContent = lastGlobalStepText;
-    progressDetail.textContent = "";
-    if (progressTiming) progressTiming.textContent = "";
-    Object.keys(PHASE_LABELS).forEach(function (ph) {
-      setPhaseState(ph, "");
-      setPhaseLabel(ph);
+    phaseState = {};
+    PHASE_ORDER.forEach(function (ph) {
+      phaseState[ph] = freshPhaseState();
     });
+    buildPhaseRows();
+    renderAllProgress();
   }
 
   function show(kind, payload) {
@@ -410,63 +479,66 @@ strong { color: #e8e8e8; }
   function handleEvent(ev) {
     var phase = ev.phase;
     var status = ev.status;
-    applyTimingFields(ev);
+    if (ev.elapsed_seconds != null) elapsedSeconds = ev.elapsed_seconds;
 
     if (status === "pipeline_total") {
-      progressBar.max = ev.global_total || 100;
-      lastGlobalStepText = "Step 0 / " + ev.global_total;
-      refreshGlobalLine();
+      globalTotal = ev.global_total || 0;
+      globalStep = 0;
+      renderAllProgress();
       return;
     }
 
     if (ev.global_step != null && ev.global_total != null) {
-      progressBar.value = ev.global_step;
-      progressBar.max = ev.global_total;
-      lastGlobalStepText = "Step " + ev.global_step + " / " + ev.global_total;
-      refreshGlobalLine();
+      globalStep = ev.global_step;
+      globalTotal = ev.global_total;
     }
 
-    if (status === "started") {
-      setPhaseState(phase, "active");
-      if (ev.page_total != null) {
-        var phaseLabel = PHASE_LABELS[phase] || phase;
-        progressDetail.textContent = phaseLabel + " — pagina 0 / " + ev.page_total;
+    if (phase && phaseState[phase]) {
+      var st = phaseState[phase];
+
+      if (status === "started") {
+        st.status = "active";
+        st.phaseStartMs = Date.now();
+        st.lastStepMs = null;
+        st.stepTimes = [];
+        st.done = 0;
+        if (ev.page_total != null && ev.page_total > 0) st.total = ev.page_total;
       }
-    }
 
-    if (status === "page_progress" || status === "page_skipped" || status === "page_failed") {
-      var label = PHASE_LABELS[phase] || phase;
-      var suffix = status === "page_failed" ? " (fallita)" : status === "page_skipped" ? " (cache)" : "";
-      progressDetail.textContent = label + " — pagina " + ev.page_index + " / " + ev.page_total + suffix;
-    }
+      if (status === "page_progress" || status === "page_skipped" || status === "page_failed") {
+        if (ev.page_total != null && ev.page_total > 0) st.total = ev.page_total;
+        recordPhaseStep(phase);
+      }
 
-    if (status === "completed") {
-      setPhaseState(phase, "done");
-      if (phase === "render") progressDetail.textContent = "Render PNG completato";
-      else if (phase === "stage1_ocr") progressDetail.textContent = "Stage 1 OCR completato";
-      else if (phase === "stage2_vision") progressDetail.textContent = "Stage 2 Vision completato";
-      else if (phase === "stage3_editor") progressDetail.textContent = "Stage 3 Editor completato";
-      else if (phase === "polyindex_toc") progressDetail.textContent = "TOC.json aggiornato in data/polyindex/";
-      else if (phase === "polyindex_index") {
-        var stats = "";
-        if (ev.n_new != null) {
-          stats = " — nuovi " + ev.n_new + ", match " + ev.n_match + ", alias " + ev.n_alias;
+      if (status === "completed") {
+        st.status = "done";
+        if (ev.page_total != null && ev.page_total > 0) {
+          st.total = ev.page_total;
+          st.done = ev.page_total;
+        } else if (ev.rendered_page_count != null) {
+          st.total = ev.rendered_page_count;
+          st.done = ev.rendered_page_count;
+        } else if (st.done < st.total) {
+          st.done = st.total;
         }
-        progressDetail.textContent = "INDEX.json aggiornato in data/polyindex/" + stats;
+        if (ev.phase_duration_seconds != null) phaseDurations[phase] = ev.phase_duration_seconds;
+      }
+
+      if (status === "failed") {
+        st.status = "failed";
+        if (ev.phase_duration_seconds != null) phaseDurations[phase] = ev.phase_duration_seconds;
       }
     }
 
-    if (status === "started" && phase === "polyindex_toc") {
-      progressDetail.textContent = "Aggiornamento TOC.json (polyindex)…";
-    }
-    if (status === "started" && phase === "polyindex_index") {
-      progressDetail.textContent = "Aggiornamento INDEX.json (subject matcher)…";
+    if (phase && ev.phase_duration_seconds != null) phaseDurations[phase] = ev.phase_duration_seconds;
+    if (ev.timing && ev.timing.phases) {
+      Object.keys(ev.timing.phases).forEach(function (ph) {
+        phaseDurations[ph] = ev.timing.phases[ph];
+      });
+      if (ev.timing.total_seconds != null) elapsedSeconds = ev.timing.total_seconds;
     }
 
-    if (status === "failed") {
-      setPhaseState(phase, "failed");
-      progressDetail.textContent = (PHASE_LABELS[phase] || phase) + " fallito: " + (ev.error || "");
-    }
+    renderAllProgress();
   }
 
   function apiToken() {
@@ -505,10 +577,8 @@ strong { color: #e8e8e8; }
       var result = ev.result || ev;
       if (result && result.timing) applyTimingFields({ timing: result.timing });
       show("ok", result);
-      lastGlobalStepText = "Completato";
-      refreshGlobalLine();
-      refreshTimingBlock();
-      progressBar.value = progressBar.max;
+      if (globalTotal > 0) globalStep = globalTotal;
+      renderAllProgress();
       es.close();
       btn.disabled = false;
     }
@@ -517,7 +587,6 @@ strong { color: #e8e8e8; }
       var ev;
       try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
       show("err", ev.message || ev);
-      progressDetail.textContent = "Errore: " + (ev.message || "sconosciuto");
       es.close();
       btn.disabled = false;
     }
@@ -579,8 +648,6 @@ strong { color: #e8e8e8; }
         return;
       }
 
-      lastGlobalStepText = "Job avviato \u2014 ID: " + data.job_id;
-      refreshGlobalLine();
       connectSSE(data.events_url);
     } catch (err) {
       show("err", String(err.message || err));

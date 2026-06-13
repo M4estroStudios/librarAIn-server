@@ -23,7 +23,17 @@ button { font: inherit; padding: 0.5rem 0.95rem; border-radius: 8px; border: 0; 
 button:hover:not(:disabled) { background: #ffffff; }
 button:disabled { opacity: 0.55; cursor: not-allowed; }
 button.danger { background: #c95050; color: #fff; }
+button.secondary { background: #3c3c3c; color: #e8e8e8; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; }
 .hint { font-size: 0.8rem; color: #9d9d9d; }
+.nav { font-size: 0.85rem; margin-bottom: 1rem; }
+.panel { margin-bottom: 1.5rem; padding: 1rem; border-radius: 12px; background: #252526; border: 1px solid #3e3e3e; }
+.panel h2 { font-size: 0.95rem; margin: 0 0 0.75rem; color: #e8e8e8; }
+.panel-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 0.75rem; }
+.panel select { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; min-width: 14rem; max-width: 100%; }
+.stats { font-size: 0.82rem; color: #9d9d9d; }
+#progress-gen { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #454545; font-size: 0.85rem; white-space: pre-wrap; }
+#progress-gen.show { display: block; }
 code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0.4em; border-radius: 6px; }
 table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
 th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid #333; vertical-align: top; }
@@ -44,8 +54,21 @@ a { color: #4ec9b0; }
 </style>
 </head>
 <body>
+<p class="nav"><a href="/">Ingestione</a> · Admin · <a href="/ricerca.html">Ricerca</a></p>
 <h1>Admin — POH multi-libro</h1>
 <p class="lead">Soggetti (POH) presenti in più libri in <code>data/polyindex/INDEX.json</code>. Seleziona due o più voci che indicano la stessa entità (es. <em>Augusto</em>, <em>Ottaviano</em>, <em>Imperatore Augusto</em>), scegli la voce canonica e uniscile. Le etichette delle voci assorbite diventano alias della voce canonica.</p>
+
+<div class="panel">
+  <h2>Genera articoli mancanti</h2>
+  <p class="hint">Un articolo HTML per ogni soggetto in <code>INDEX.json</code> senza file in <code>data/research/articles/</code>.</p>
+  <div class="stats" id="article-stats">Caricamento stato…</div>
+  <div class="panel-row">
+    <button type="button" id="gen-all">Genera tutti i mancanti</button>
+    <select id="book-select"><option value="">— libro —</option></select>
+    <button type="button" id="gen-book" class="secondary" disabled>Genera per libro</button>
+  </div>
+  <div id="progress-gen"></div>
+</div>
 
 <div class="toolbar">
   <input type="search" id="search" placeholder="Filtra per etichetta o alias…">
@@ -245,7 +268,89 @@ document.getElementById("reload").addEventListener("click", load);
 searchEl.addEventListener("input", render);
 minBooksEl.addEventListener("change", load);
 
+async function loadArticleStatus() {
+  const res = await apiFetch("/api/research/status");
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || "status failed");
+  document.getElementById("article-stats").textContent =
+    data.articles_count + " articoli su " + data.total_subjects + " soggetti — " +
+    data.missing_count + " ancora da generare";
+}
+
+async function loadBooks() {
+  const res = await apiFetch("/api/research/books");
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || "books failed");
+  const sel = document.getElementById("book-select");
+  sel.innerHTML = '<option value="">— libro —</option>';
+  for (const b of data.books || []) {
+    const opt = document.createElement("option");
+    opt.value = b.source_sha256;
+    opt.textContent = (b.title || b.slug || b.source_sha256.slice(0, 12) + "…") +
+      " (" + b.page_count + " pp.)";
+    sel.appendChild(opt);
+  }
+  document.getElementById("gen-book").disabled = !(data.books || []).length;
+}
+
+async function pollGenerate(jobId) {
+  const box = document.getElementById("progress-gen");
+  box.classList.add("show");
+  for (let i = 0; i < 600; i++) {
+    const res = await apiFetch("/api/research/generate/status?job_id=" + encodeURIComponent(jobId));
+    const data = await res.json();
+    if (!data.ok) {
+      box.textContent = "Errore stato job: " + (data.error || res.status);
+      return;
+    }
+    box.textContent = "Generazione: " + data.done + " / " + data.total + " — " + data.status;
+    if (data.status === "succeeded" || data.status === "failed") {
+      if (data.errors && data.errors.length) {
+        box.textContent += "\nErrori: " + data.errors.map((e) => e.poh_id + ": " + e.error).join("; ");
+      }
+      await loadArticleStatus();
+      return;
+    }
+    await new Promise((r) => setTimeout(r, 800));
+  }
+  box.textContent = "Timeout polling job.";
+}
+
+async function startGenerate(body) {
+  const res = await apiFetch("/api/research/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body || {}),
+  });
+  const data = await res.json();
+  if (!res.ok || !data.ok) {
+    showOut(data.error || "Generazione fallita", true);
+    return;
+  }
+  if (!data.job_id) {
+    const box = document.getElementById("progress-gen");
+    box.classList.add("show");
+    box.textContent = data.message || "Nessun articolo da generare.";
+    await loadArticleStatus();
+    return;
+  }
+  await pollGenerate(data.job_id);
+}
+
+document.getElementById("gen-all").addEventListener("click", () => {
+  if (!confirm("Generare tutti gli articoli mancanti?")) return;
+  startGenerate({}).catch((err) => showOut(String(err), true));
+});
+
+document.getElementById("gen-book").addEventListener("click", () => {
+  const sha = document.getElementById("book-select").value;
+  if (!sha) return;
+  startGenerate({ book_sha: sha }).catch((err) => showOut(String(err), true));
+});
+
 load();
+loadArticleStatus().catch((err) => showOut(String(err), true));
+loadBooks().catch((err) => showOut(String(err), true));
 </script>
 </body>
 </html>

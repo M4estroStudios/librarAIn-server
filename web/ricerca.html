@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ricerca — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.45;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0; min-height: 100vh; }
+a { color: #8ab4f8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.wrap.compact { padding-top: 0.75rem; }
+.nav { font-size: 0.85rem; margin-bottom: 1rem; }
+.nav a { color: #4ec9b0; }
+.hero { text-align: center; padding: 4rem 1rem 2rem; }
+.hero.compact { padding: 0.5rem 0 1rem; text-align: left; }
+.logo { font-size: 2rem; font-weight: 700; color: #e8e8e8; letter-spacing: -0.02em; margin: 0 0 1.5rem; }
+.hero.compact .logo { font-size: 1.2rem; margin: 0 0 0.75rem; }
+.search-row { display: flex; gap: 0.5rem; max-width: 36rem; margin: 0 auto; }
+.hero.compact .search-row { margin: 0; max-width: none; }
+#q { flex: 1; font: inherit; padding: 0.65rem 1rem; border-radius: 24px; border: 1px solid #454545; background: #252526; color: #e8e8e8; }
+#q:focus { outline: 2px solid #4ec9b0; border-color: transparent; }
+button { font: inherit; padding: 0.55rem 1.1rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
+button:hover:not(:disabled) { background: #ffffff; }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+.hint { font-size: 0.8rem; color: #9d9d9d; }
+#results-meta { font-size: 0.85rem; color: #9d9d9d; margin: 1.25rem 0 0.75rem; }
+.result { margin-bottom: 1.35rem; }
+.result h3 { margin: 0 0 0.15rem; font-size: 1.15rem; font-weight: 400; }
+.result .url { font-size: 0.82rem; color: #6a9955; margin-bottom: 0.2rem; word-break: break-all; }
+.result .snippet { font-size: 0.9rem; color: #b8b8b8; }
+#empty { display: none; margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; font-size: 0.88rem; }
+#empty.show { display: block; }
+#out { display: none; margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #2d2d2d; border: 1px solid #454545; font-size: 0.8rem; white-space: pre-wrap; }
+#out.show { display: block; }
+#out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
+</style>
+</head>
+<body>
+<div id="hero" class="hero">
+  <p class="nav" style="text-align:left;max-width:42rem;margin:0 auto 0.5rem;"><a href="/">Ingestione</a> · <a href="/admin.html">Admin</a> · Ricerca</p>
+  <h1 class="logo">librarAIn <span style="color:#4ec9b0;font-weight:500;">Ricerca</span></h1>
+  <form id="search-form" class="search-row" role="search">
+    <input type="search" id="q" name="q" placeholder="Cerca negli articoli generati…" autocomplete="off" minlength="2" required>
+    <button type="submit">Cerca</button>
+  </form>
+</div>
+
+<div class="wrap" id="main">
+  <div id="results-meta"></div>
+  <div id="results"></div>
+  <div id="empty">Nessun risultato. Prova altri termini o genera gli articoli da <a href="/admin.html">Admin</a>.</div>
+  <div id="out"></div>
+</div>
+
+<script>
+const TOKEN_KEY = "librarAIn_api_token";
+
+function apiToken() {
+  return sessionStorage.getItem(TOKEN_KEY) || "";
+}
+
+function setApiToken(token) {
+  if (token) sessionStorage.setItem(TOKEN_KEY, token);
+}
+
+async function apiFetch(url, options) {
+  const opts = Object.assign({ headers: {} }, options || {});
+  const token = apiToken();
+  if (token) opts.headers["X-API-Token"] = token;
+  let res = await fetch(url, opts);
+  if (res.status === 401 && !token) {
+    const entered = prompt("Il server richiede un token API (INGEST_API_TOKEN):");
+    if (entered && entered.trim()) {
+      setApiToken(entered.trim());
+      opts.headers["X-API-Token"] = entered.trim();
+      res = await fetch(url, opts);
+    }
+  }
+  return res;
+}
+
+function showOut(text, isErr) {
+  const el = document.getElementById("out");
+  el.textContent = text;
+  el.className = "show" + (isErr ? " err" : "");
+}
+
+function originUrl(path) {
+  return window.location.origin + path;
+}
+
+function renderResults(query, items) {
+  const meta = document.getElementById("results-meta");
+  const box = document.getElementById("results");
+  const empty = document.getElementById("empty");
+  const hero = document.getElementById("hero");
+  hero.classList.add("compact");
+  document.getElementById("main").classList.add("compact");
+  if (!items.length) {
+    meta.textContent = "";
+    box.innerHTML = "";
+    empty.classList.add("show");
+    return;
+  }
+  empty.classList.remove("show");
+  meta.textContent = "Circa " + items.length + " risultati per \"" + query + "\"";
+  box.innerHTML = items.map(function (item) {
+  const href = item.url;
+  return (
+    '<article class="result">' +
+    '<h3><a href="' + href + '">' + escapeHtml(item.title) + "</a></h3>" +
+    '<div class="url">' + escapeHtml(originUrl(href)) + "</div>" +
+    '<p class="snippet">' + escapeHtml(item.snippet || "") + "</p>" +
+    "</article>"
+  );
+  }).join("");
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+async function runSearch(q) {
+  const res = await apiFetch("/api/research/search?q=" + encodeURIComponent(q));
+  const data = await res.json();
+  if (!res.ok || !data.ok) {
+    showOut(data.error || "Ricerca fallita", true);
+    return;
+  }
+  document.getElementById("q").value = q;
+  renderResults(data.query, data.results || []);
+  history.replaceState(null, "", "?q=" + encodeURIComponent(q));
+}
+
+document.getElementById("search-form").addEventListener("submit", function (ev) {
+  ev.preventDefault();
+  const q = document.getElementById("q").value.trim();
+  if (q.length < 2) return;
+  runSearch(q).catch(function (err) { showOut(String(err), true); });
+});
+
+(async function init() {
+  const params = new URLSearchParams(window.location.search);
+  const q = (params.get("q") || "").trim();
+  if (q.length >= 2) {
+    document.getElementById("q").value = q;
+    runSearch(q).catch(function (err) { showOut(String(err), true); });
+  }
+})();
+</script>
+</body>
+</html>

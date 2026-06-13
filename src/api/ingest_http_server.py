@@ -17,6 +17,7 @@ from src.api.ingest_form import (
 )
 from src.api.ingest_pipeline_runner import run_full_pipeline
 from src.api.job_registry import JobRegistry
+from src.api.research_handlers import ResearchBatchRegistry, build_research_routes
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
     list_multibook_subjects,
@@ -119,7 +120,17 @@ def build_ingest_server(
     max_concurrent_jobs = max(1, max_concurrent_jobs)
 
     registry = JobRegistry()
+    research_batch_registry = ResearchBatchRegistry()
     job_semaphore = threading.Semaphore(max_concurrent_jobs)
+
+    research_try_get, research_try_post = build_research_routes(
+        data_root=data_root,
+        web_dir=web_dir,
+        batch_registry=research_batch_registry,
+        send_json=_send_json,
+        send_bytes=_send_bytes,
+        read_json_body=_read_body,
+    )
 
     class IngestHandler(BaseHTTPRequestHandler):
         server_version = "librarAIn-ingest-http/1.0"
@@ -154,6 +165,10 @@ def build_ingest_server(
         def do_GET(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
             path = parsed.path
+            query = urllib.parse.parse_qs(parsed.query)
+
+            if research_try_get(self, path, query):
+                return
 
             if path in ("/", "/index.html"):
                 index_file = web_dir / "index.html"
@@ -176,7 +191,6 @@ def build_ingest_server(
                 return
 
             if path == "/api/admin/subjects":
-                query = urllib.parse.parse_qs(parsed.query)
                 if not self._require_auth(query):
                     return
                 try:
@@ -277,6 +291,8 @@ def build_ingest_server(
 
         def do_POST(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
+            if research_try_post(self, parsed.path):
+                return
             if parsed.path == "/api/admin/subjects/merge":
                 if not self._require_auth():
                     return
