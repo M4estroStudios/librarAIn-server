@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
+from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.orchestrator import (
     NullOrchestratorRegistry,
     OrchestratorStageError,
@@ -111,6 +112,23 @@ def run_full_pipeline(
     _emit(reporter, make_event(PHASE_GATE_HASH, STATUS_COMPLETED,
                                pipeline_skipped=ingest_gate_phase.pipeline_skipped,
                                gate_status=ingest_gate_phase.gate.status.value))
+
+    try:
+        require_gpu_vram_at_pipeline_start(
+            settings,
+            skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+        )
+    except IngestInputValidationException as exc:
+        err_detail = _extract_validation_error(exc)
+        Log(WARNING_LOG_LEVEL, "pipeline gpu vram preflight failed", {"error": str(exc)})
+        _emit_error(
+            reporter,
+            PHASE_STAGE1_OCR,
+            err_detail["message"],
+            code=err_detail.get("code"),
+            field=err_detail.get("field"),
+        )
+        raise
 
     alignment_counts_as_step = not ingest_gate_phase.pipeline_skipped
     _emit(reporter, make_event(PHASE_PDF_ALIGNMENT, STATUS_STARTED,

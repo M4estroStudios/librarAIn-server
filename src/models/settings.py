@@ -61,6 +61,8 @@ class Settings(BaseModel):
     ocr_languages: list[str] = Field(default_factory=lambda: ["it", "en"], alias="OCR_LANGUAGES")
     ocr_use_gpu: bool = Field(default=False, alias="OCR_USE_GPU")
     ocr_gpu_device: str = Field(default="all", alias="OCR_GPU_DEVICE")
+    gpu_vram_check_enabled: bool = Field(default=True, alias="GPU_VRAM_CHECK_ENABLED")
+    gpu_vram_max_used_gb: float = Field(default=4.0, ge=0, alias="GPU_VRAM_MAX_USED_GB")
     lm_studio_swap_models: bool = Field(default=True, alias="LM_STUDIO_SWAP_MODELS")
     lm_studio_load_timeout_seconds: int = Field(
         default=600, gt=0, alias="LM_STUDIO_LOAD_TIMEOUT_SECONDS"
@@ -126,6 +128,12 @@ class Settings(BaseModel):
     @classmethod
     def parse_reasoning_enable_thinking_editor(cls, v: object) -> bool | None:
         return _parse_reasoning_enable_thinking(v, "REASONING_ENABLE_THINKING_EDITOR")
+
+    @field_validator("gpu_vram_check_enabled", mode="before")
+    @classmethod
+    def parse_gpu_vram_check_enabled(cls, v: object) -> bool:
+        parsed = _parse_reasoning_enable_thinking(v, "GPU_VRAM_CHECK_ENABLED")
+        return True if parsed is None else parsed
 
     @field_validator("ocr_gpu_device", mode="before")
     @classmethod

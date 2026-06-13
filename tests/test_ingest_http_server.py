@@ -54,7 +54,12 @@ _FORM_FIELDS = {
 class _ServerHarness:
     def __init__(self, api_token: str = "", max_concurrent_jobs: int = 1) -> None:
         self._tmp = tempfile.TemporaryDirectory()
-        settings = SimpleNamespace(data_root=self._tmp.name)
+        settings = SimpleNamespace(
+            data_root=self._tmp.name,
+            ocr_use_gpu=False,
+            openai_provider="remote",
+            gpu_vram_check_enabled=False,
+        )
         self.httpd, self.registry = build_ingest_server(
             settings,
             host="127.0.0.1",

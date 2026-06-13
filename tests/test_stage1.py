@@ -53,6 +53,8 @@ def _settings(data_root: str) -> object:
     s.ocr_languages = ["it", "en"]
     s.max_parallel_request = 2
     s.retry_attempts = 1
+    s.gpu_vram_check_enabled = False
+    s.ocr_use_gpu = False
     return s
 
 
@@ -392,6 +394,7 @@ class RunStage1IngestStepTests(unittest.TestCase):
             settings.page_range_per_thread = 10
             settings.ocr_languages = ["en"]
             settings.ocr_use_gpu = False
+            settings.gpu_vram_check_enabled = False
             settings.max_parallel_request = 2
             engine = FakeEngine({i: f"line-{i}" for i in range(1, 10)})
             result = _run_ingest_step(

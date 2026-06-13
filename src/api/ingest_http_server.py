@@ -25,8 +25,9 @@ from src.ingestion.polyindex.index_json import (
 )
 from src.core.config import ConfigurationError, load_settings
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
+from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, make_event
-from src.models.request import IngestInputErrorCode, IngestInputValidationError
+from src.models.request import IngestInputErrorCode, IngestInputValidationError, IngestInputValidationException
 
 
 def _repo_root() -> Path:
@@ -86,7 +87,8 @@ def _send_validation_error(
     field: str | None = None,
 ) -> None:
     err = IngestInputValidationError(code=code, message=message, field=field)
-    _send_json(handler, 400, {"ok": False, "errors": err.model_dump(mode="json")})
+    payload = err.model_dump(mode="json")
+    _send_json(handler, 400, {"ok": False, "error": message, "errors": payload})
 
 
 def _sse_write(handler: BaseHTTPRequestHandler, event_name: str, data: Any) -> bool:
@@ -389,6 +391,20 @@ def build_ingest_server(
             Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
                 {"path": str(saved_path), "bytes": uploaded.size})
 
+            try:
+                require_gpu_vram_at_pipeline_start(settings, skip_vision_editor=False)
+            except IngestInputValidationException as exc:
+                saved_path.unlink(missing_ok=True)
+                Log(WARNING_LOG_LEVEL, "ingest submit blocked by gpu vram preflight",
+                    {"error": exc.detail.message})
+                _send_validation_error(
+                    self,
+                    exc.detail.code,
+                    exc.detail.message,
+                    exc.detail.field,
+                )
+                return
+
             job_id = registry.create_job()
             events_url = f"/api/ingest/{job_id}/events"
             status_url = f"/api/ingest/{job_id}/status"
@@ -414,6 +430,8 @@ def build_ingest_server(
                         reporter=reporter,
                         set_global_total=lambda total: registry.set_global_total(job_id, total),
                     )
+                except IngestInputValidationException:
+                    pass
                 except Exception as exc:
                     Log(ERROR_LOG_LEVEL, "ingest pipeline worker unhandled error",
                         {"job_id": job_id, "error": str(exc)})

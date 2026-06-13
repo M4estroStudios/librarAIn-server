@@ -21,6 +21,8 @@ def _settings(**kwargs: object) -> MagicMock:
     s.lm_studio_swap_models = kwargs.get("lm_studio_swap_models", True)
     s.timeout_seconds = kwargs.get("timeout_seconds", 30)
     s.lm_studio_load_timeout_seconds = kwargs.get("lm_studio_load_timeout_seconds", 600)
+    s.gpu_vram_check_enabled = kwargs.get("gpu_vram_check_enabled", False)
+    s.gpu_vram_max_used_gb = kwargs.get("gpu_vram_max_used_gb", 4.0)
     return s
 
 
