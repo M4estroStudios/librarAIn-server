@@ -383,7 +383,7 @@ Log(INFO_LOG_LEVEL, "dettaglio pagina", {"page": 12}, json=True, to_file=True)
 - ~~T18.5(a–d)~~ **rimandato** (v2.0 / on-demand): refactor HTTP FastAPI + upload streaming + `/artifacts`.
 - ~~T21(b)~~ **rimandato** con T18.5: E2E HTTP submit→poll→artifacts (FastAPI TestClient).
 - **T27**: checkpoint daily/on-demand DB + polyindex.
-- **F2 — Ricerca (passi manoscritto a–d)**: **F2-T1..F2-T10** come da §7 (schema, lookup, loader, LLM article/POH/timeline, HTTP, `research_runs`, E2E).
+- **F2 — Ricerca (passi manoscritto a–d)**: **F2-T1 (✅ completato)**; **F2-T2..F2-T10** da fare (dettaglio in [`PRD_research.md`](PRD_research.md) §5.1).
 
 **v1.1**:
 - UI ricerca (`web/search.html`).
@@ -417,10 +417,11 @@ Differenze chiave rispetto al README attuale (richieste da questo PRD):
 - **T14** — **presente**: `orchestrator.py`, `retry.py`, `errors.py`, `rate_limit.py`, `pipeline_runs.py`.
 - Ingest HTTP — **presente**: `ingest_http_server.py` + `ingest_form.py` + `ingest_pipeline_runner.run_full_pipeline` (orchestrator completo); `resolve_aligned_pdf_path_for_stage1` in `pdf_alignment.py`.
 - `src/ingestion/polyindex/` — **presente**: T23 (`toc_json.py`), T24 (`index_md_parser.py`), T25 (`subject_matcher.py`), T26 (`index_json.py`), T-EXT (`time_index.py`, `time_index_llm.py`).
-- `src/search/` — **assente** (F2-T1+).
+- `src/search/` — **parziale** (F2-T1: `request_schema.py` + `request_validation.py`; scaffold catalogo articoli `article_catalog.py` + `research_handlers.py`; pipeline query F2-T2+ assente).
 - `data/db/biblioteca.csv` (SQLite) — **presente** (`Settings.sqlite_path`).
 - `src/core/checkpoints.py` — **assente** (T27).
 - `web/index.html` — **presente**; allineato al runner completo.
+- `web/ricerca.html` — **presente** (scaffold catalogo articoli POH; non equivale a F2-T11 `search.html`).
 
 ## 7. Backlog task atomiche e stato
 
@@ -513,7 +514,7 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** 
 > **Superato**: backlog aggiornato in [`PRD_research.md`](PRD_research.md) §5.1 (aggiunge
 > F2-T3b Time Lookup, F2-T13/T14 v1.1 e l'ordine di esecuzione consigliato).
 
-- [ ] **F2-T1 (NUOVO)** — Schema input ricerca (`ResearchRequest` Pydantic) + validazione. *(Sonnet)*
+- [x] **F2-T1 (NUOVO)** — Schema input ricerca (`ResearchRequest` Pydantic) + validazione. *(Sonnet)*
 - [ ] **F2-T2 (NUOVO)** — Subject Lookup deterministico su `polyindex/INDEX.json` (normalizzazione + match) + AI fallback su soggetti residui. *(Opus)*
 - [ ] **F2-T3 (NUOVO)** — Chapter Expansion su `polyindex/TOC.json` (pagine candidate → capitolo → pagine vicine, con budget). *(Sonnet)*
 - [ ] **F2-T4 (NUOVO)** — Pages Markdown Loader (carica `pages/p.NNNN.<slug>.md` per pagine candidate, taglia/normalizza). *(Composer 2)*

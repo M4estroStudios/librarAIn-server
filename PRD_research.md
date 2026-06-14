@@ -28,7 +28,10 @@
 | `data/output/<sha>/manifest.json` | ✅ presente (T15) | validazione citazioni `source:` |
 | `src/core/openai_client.py` | ✅ presente (T12a) | client unico per il modello Research |
 | `src/api/ingest_http_server.py` + `job_registry.py` | ✅ presente | `ThreadingHTTPServer`; la Ricerca si aggancia qui (no FastAPI in MVP) |
-| `src/search/` | ❌ assente | da creare con F2-T1+ |
+| `src/search/request_schema.py` + `request_validation.py` | ✅ presente (F2-T1) | `ResearchRequest`/`ResearchOptions` + errori 400 strutturati |
+| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T2+ |
+| `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
+| `src/search/` (pipeline query) | ❌ assente | lookup/expansion/loader/LLM/postprocess F2-T2+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -467,7 +470,7 @@ Già esistenti e riusate: `MATCHER_*` (subject matcher), `TIMEOUT_SECONDS`, `RET
 Prerequisiti: Fase 1 MVP completa per la parte polyindex (T23–T26, T-EXT: ✅ già in codebase);
 T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'avvio di F2-T1.
 
-- [ ] **F2-T1** — Schema input ricerca: `ResearchRequest`/`ResearchOptions` (Pydantic) +
+- [x] **F2-T1** — Schema input ricerca: `ResearchRequest`/`ResearchOptions` (Pydantic) +
   validazione (lunghezza query, bounds options) + errori 400 strutturati. *(Sonnet)*
 - [ ] **F2-T2** — Subject Lookup deterministico su `INDEX.json` (normalizzazione + match
   label/aliases) + AI subject matcher (riuso T25) sui residui; fallback solo-deterministico se
