@@ -56,7 +56,7 @@ nelle fonti, riducendo le date inventate (vedi §2.3 punto 6 e §4.1).
     (articolo, link fonti, link POH, sezione `## Cronologia` valida).
   - **Precisione citazioni ≥95%**: ogni link `source:` sopravvissuto al post-validatore risolve a
     una pagina esistente in `manifest.json` del libro citato.
-  - **0 link `poh:` orfani non marcati**: ogni `poh:` punta a un `canonical_subject_id` noto in
+  - **0 link `poh:` orfani non marcati**: ogni `poh:` punta a un `canonical_id` noto in
     `INDEX.json` oppure è esplicitamente `poh:unknown-<slug>` con TODO in `## Annotazioni`.
   - **≥90% delle righe `## Cronologia` con fonte**: colonna Fonti con almeno un `source:` valido
     (tolleranza: max 1 riga consecutiva con `—` per contesto temporale derivato).
@@ -140,7 +140,7 @@ nelle fonti, riducendo le date inventate (vedi §2.3 punto 6 e §4.1).
    {
      "markdown": "…articolo completo UTF-8…",
      "citations": [{"source_sha256": "…", "aligned_page": 112, "label": "…"}],
-     "pohs_referenced": [{"poh_id": "subj_…", "label": "…", "linked_from_count": 3}],
+     "pohs_referenced": [{"poh_id": "marco-polo", "label": "…", "linked_from_count": 3}],
      "timeline_rows": [{"period": "1271–1295", "event": "…", "source_links": ["source:…"]}]
    }
    ```
@@ -181,7 +181,7 @@ nelle fonti, riducendo le date inventate (vedi §2.3 punto 6 e §4.1).
 9. **Post-processing deterministico**: parsing di tutti i link del Markdown; ogni `source:` risolto
    contro `manifest.json` (sha + pagina allineata esistenti) — link invalidi rimossi e sostituiti
    con `*[[fonte non verificabile]]*` + log warning; ogni `poh:` verificato contro i
-   `canonical_subject_id` di `INDEX.json`; validazione strutturale tabella `## Cronologia` (3
+   `canonical_id` di `INDEX.json`; validazione strutturale tabella `## Cronologia` (3
    colonne, header fissi, ordine cronologico crescente); allineamento `citations`/`pohs_referenced`
    /`timeline_rows` JSON con il Markdown finale.
 
@@ -218,8 +218,8 @@ entità già escaped nelle fonti restano come nel sorgente).
 
 **Passo `c` — Link ad altri POH**
 
-- Forma: `[Nome leggibile](poh:<poh_id>)`; in MVP `<poh_id>` = `canonical_subject_id` di
-  `INDEX.json` (es. `subj_marco_polo`). Niente URL `http(s):` verso articoli POH (non esistono
+- Forma: `[Nome leggibile](poh:<poh_id>)`; in MVP `<poh_id>` = `canonical_id` di
+  `INDEX.json` (chiave del dict `subjects`: slug ascii con trattini, max 32 char, es. `marco-polo`). Niente URL `http(s):` verso articoli POH (non esistono
   host stabili); `poh:` è un placeholder risolvibile da viewer/CLI.
 - Entità non a registro: `[Nome](poh:unknown-<slug-normalizzato>)` + sezione finale
   `## Annotazioni` con bullet `TODO: risolvere poh:unknown-…`.
@@ -266,7 +266,7 @@ Regole:
 
 | Stage | Tipo | Config | Output atteso |
 |---|---|---|---|
-| Subject Matcher (riuso T25) | Embeddings + LLM dirimitore | `MATCHER_EMBEDDING_MODEL` + `MATCHER_LLM_MODEL` | `canonical_subject_id` per i soggetti query residui |
+| Subject Matcher (riuso T25) | Embeddings + LLM dirimitore | `MATCHER_EMBEDDING_MODEL` + `MATCHER_LLM_MODEL` | `canonical_id` per i soggetti query residui |
 | Research Article (`a`+`b`) | LLM testuale, long context utile | `RESEARCH_MODEL` | Corpo articolo Markdown + link `source:` |
 | POH Links (`c`) | LLM testuale | `RESEARCH_MODEL` | Markdown con `[…](poh:…)` |
 | Timeline (`d`) | LLM testuale | `RESEARCH_MODEL` | Sezione `## Cronologia` (tabella GFM) |
@@ -405,7 +405,7 @@ src/search/
     poh_id TEXT,
     status TEXT NOT NULL,                 -- accepted|running|succeeded|failed
     context_books_json TEXT NOT NULL,     -- {sha: [aligned_pages]} effettivamente caricati
-    subjects_matched_json TEXT NOT NULL,  -- soggetti query → canonical_subject_id
+    subjects_matched_json TEXT NOT NULL,  -- soggetti query → canonical_id
     citations_count INTEGER,
     pipeline_version TEXT NOT NULL,
     started_at TEXT NOT NULL,
