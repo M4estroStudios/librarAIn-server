@@ -30,9 +30,11 @@
 | `src/api/ingest_http_server.py` + `job_registry.py` | ✅ presente | `ThreadingHTTPServer`; la Ricerca si aggancia qui (no FastAPI in MVP) |
 | `src/search/request_schema.py` + `request_validation.py` | ✅ presente (F2-T1) | `ResearchRequest`/`ResearchOptions` + errori 400 strutturati |
 | `src/search/subject_lookup.py` | ✅ presente (F2-T2) | Subject Lookup read-only su `INDEX.json`: match deterministico + semantico (embedding intera query, riuso T25); fallback solo-deterministico se AI giù |
-| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T3+ |
+| `src/search/chapter_expansion.py` | ✅ presente (F2-T3) | Chapter Expansion read-only su `TOC.json`: pagina → capitolo; espansione a capitolo intero se < 6 pagine; budget `max_books`/`max_pages_per_book` |
+| `src/search/time_lookup.py` | ✅ presente (F2-T3b) | Time Lookup read-only su `TIME_INDEX.json`: regex `extract_time_references` su query/`poh.time_range`; range con fallback anno inizio; `timeline_candidates` + arricchimento pagine (budget merge → F2-T4) |
+| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T4+ |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion/loader/LLM/postprocess F2-T3+ |
+| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader/LLM/postprocess F2-T4+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -359,8 +361,8 @@ src/search/
 ├── __init__.py
 ├── request_schema.py      # ResearchRequest/ResearchOptions (F2-T1)
 ├── subject_lookup.py      # F2-T2 ✅ (riusa polyindex.subject_matcher)
-├── chapter_expansion.py   # F2-T3
-├── time_lookup.py         # F2-T3b (riusa polyindex.time_index)
+├── chapter_expansion.py   # F2-T3 ✅
+├── time_lookup.py         # F2-T3b ✅ (riusa polyindex.time_index)
 ├── pages_loader.py        # F2-T4
 ├── article_llm.py         # F2-T5 (+ F2-T6 se fusi)
 ├── timeline_llm.py        # F2-T7
@@ -456,8 +458,9 @@ Già esistenti e riusate: `MATCHER_*` (subject matcher), `TIMEOUT_SECONDS`, `RET
 - **OQ-R2**: fusione passi `a`+`b`+`c` in una sola chiamata LLM vs chiamate separate — decidere
   con smoke comparativo in F2-T6 (qualità link POH vs costo/latenza). Owner: F2-T5/T6.
 - **OQ-R3**: il lookup temporale (F2-T3b) deve estrarre range dalla query con il solo regex di
-  `time_index.py` o serve un mini-pass LLM per espressioni come "durante le crociate"? MVP: solo
-  regex; espressioni vaghe → `TBD` v1.1. Owner: F2-T3.
+  `time_index.py` o serve un mini-pass LLM per espressioni come "durante le crociate"? **Risolto
+  (MVP)**: solo regex; range `1271-1295` con fallback anno inizio se anno fine assente in TIME_INDEX;
+  espressioni vaghe → v1.1.
 - **OQ-R4**: dimensione contesto — con libri densi 5×8 pagine possono superare la context window
   di modelli locali piccoli. Serve chunking/riassunto intermedio? MVP: hard cap caratteri per
   pagina + troncamento con log; map-reduce v1.1. Owner: F2-T4.
@@ -476,9 +479,9 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
 - [x] **F2-T2** — Subject Lookup deterministico su `INDEX.json` (normalizzazione + match
   label/aliases) + AI subject matcher (riuso T25) sui residui; fallback solo-deterministico se
   endpoint AI giù. *(Opus)*
-- [ ] **F2-T3** — Chapter Expansion su `TOC.json` (pagina → capitolo → pagine vicine se capitolo
+- [x] **F2-T3** — Chapter Expansion su `TOC.json` (pagina → capitolo → pagine vicine se capitolo
   < 6 pagine, entro budget). *(Sonnet)*
-- [ ] **F2-T3b (NUOVO)** — Time Lookup su `TIME_INDEX.json`: estrazione riferimenti temporali da
+- [x] **F2-T3b (NUOVO)** — Time Lookup su `TIME_INDEX.json`: estrazione riferimenti temporali da
   query/`poh.time_range` (riuso `extract_time_references`) → `timeline_candidates` + arricchimento
   pagine candidate. *(Sonnet)*
 - [ ] **F2-T4** — Pages Markdown Loader: caricamento `pages/p.NNNN.<slug>.md`, hard cap caratteri,
