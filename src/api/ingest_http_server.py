@@ -23,6 +23,16 @@ from src.ingestion.polyindex.index_json import (
     list_multibook_subjects,
     merge_polyindex_subjects,
 )
+from src.persistence.book_pages_audit import audit_all_books
+from src.persistence.book_page_exclude import PageExcludeError, exclude_book_page
+from src.persistence.book_page_preview import (
+    PagePreviewError,
+    confirm_page_transcript,
+    ensure_page_render_png,
+    load_page_transcript,
+    save_page_transcript,
+)
+from src.persistence.book_page_repair import PageRepairError, run_book_gaps_repair, run_book_page_repair
 from src.core.config import ConfigurationError, load_settings
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
@@ -205,6 +215,76 @@ def build_ingest_server(
                 _send_json(self, 200, {"ok": True, "subjects": subjects})
                 return
 
+            if path == "/api/admin/book-pages-audit":
+                if not self._require_auth(query):
+                    return
+                report = audit_all_books(data_root)
+                _send_json(self, 200, {"ok": True, **report})
+                return
+
+            if path == "/api/admin/book-pages/render":
+                if not self._require_auth(query):
+                    return
+                source_sha256 = (query.get("source_sha256") or [""])[0].strip()
+                aligned_raw = (query.get("aligned_page") or [""])[0].strip()
+                if not source_sha256:
+                    _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                    return
+                try:
+                    aligned_page = int(aligned_raw)
+                except ValueError:
+                    _send_json(self, 400, {"ok": False, "error": "aligned_page must be an integer"})
+                    return
+                if aligned_page < 1:
+                    _send_json(self, 400, {"ok": False, "error": "aligned_page must be positive"})
+                    return
+                try:
+                    png_path = ensure_page_render_png(
+                        data_root, source_sha256, aligned_page
+                    )
+                except PagePreviewError as exc:
+                    _send_json(self, 400, {"ok": False, "error": str(exc)})
+                    return
+                _send_bytes(self, 200, png_path.read_bytes(), "image/png")
+                return
+
+            if path == "/api/admin/book-pages/transcript":
+                if not self._require_auth(query):
+                    return
+                source_sha256 = (query.get("source_sha256") or [""])[0].strip()
+                aligned_raw = (query.get("aligned_page") or [""])[0].strip()
+                if not source_sha256:
+                    _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                    return
+                try:
+                    aligned_page = int(aligned_raw)
+                except ValueError:
+                    _send_json(self, 400, {"ok": False, "error": "aligned_page must be an integer"})
+                    return
+                if aligned_page < 1:
+                    _send_json(self, 400, {"ok": False, "error": "aligned_page must be positive"})
+                    return
+                try:
+                    text, stage_key, producer_model = load_page_transcript(
+                        data_root, source_sha256, aligned_page
+                    )
+                except PagePreviewError as exc:
+                    _send_json(self, 400, {"ok": False, "error": str(exc)})
+                    return
+                _send_json(
+                    self,
+                    200,
+                    {
+                        "ok": True,
+                        "source_sha256": source_sha256.strip().lower(),
+                        "aligned_page": aligned_page,
+                        "stage": stage_key,
+                        "text": text,
+                        "producer_model": producer_model,
+                    },
+                )
+                return
+
             if path == "/health":
                 _send_json(self, 200, {"ok": True})
                 return
@@ -250,6 +330,289 @@ def build_ingest_server(
             Log(INFO_LOG_LEVEL, "admin subjects merge done",
                 {"target_id": target_id, "source_count": len(source_ids)})
             _send_json(self, 200, {"ok": True, "result": result})
+
+        def _handle_book_page_exclude(self) -> None:
+            try:
+                body = _read_body(self, 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            source_sha256 = payload.get("source_sha256")
+            aligned_page = payload.get("aligned_page")
+            if not isinstance(source_sha256, str) or not source_sha256.strip():
+                _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                return
+            if not isinstance(aligned_page, int) or aligned_page < 1:
+                _send_json(self, 400, {"ok": False, "error": "aligned_page must be a positive integer"})
+                return
+            try:
+                result = exclude_book_page(
+                    data_root, source_sha256.strip(), aligned_page
+                )
+            except PageExcludeError as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc)})
+                return
+            Log(INFO_LOG_LEVEL, "admin book page excluded",
+                {"source_sha256": source_sha256[:16], "aligned_page": aligned_page})
+            _send_json(self, 200, {"ok": True, "result": result})
+
+        def _handle_book_page_transcript_save(self) -> None:
+            try:
+                body = _read_body(self, 8 * 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            source_sha256 = payload.get("source_sha256")
+            aligned_page = payload.get("aligned_page")
+            text = payload.get("text")
+            if not isinstance(source_sha256, str) or not source_sha256.strip():
+                _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                return
+            if not isinstance(aligned_page, int) or aligned_page < 1:
+                _send_json(self, 400, {"ok": False, "error": "aligned_page must be a positive integer"})
+                return
+            if not isinstance(text, str):
+                _send_json(self, 400, {"ok": False, "error": "text must be a string"})
+                return
+            try:
+                result = save_page_transcript(
+                    data_root, source_sha256.strip(), aligned_page, text
+                )
+            except PagePreviewError as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc)})
+                return
+            Log(INFO_LOG_LEVEL, "admin book page transcript saved",
+                {"source_sha256": source_sha256[:16], "aligned_page": aligned_page,
+                 "stage": result.get("stage")})
+            _send_json(self, 200, {"ok": True, "result": result})
+
+        def _handle_book_page_transcript_confirm(self) -> None:
+            try:
+                body = _read_body(self, 8 * 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            source_sha256 = payload.get("source_sha256")
+            aligned_page = payload.get("aligned_page")
+            text = payload.get("text")
+            if not isinstance(source_sha256, str) or not source_sha256.strip():
+                _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                return
+            if not isinstance(aligned_page, int) or aligned_page < 1:
+                _send_json(self, 400, {"ok": False, "error": "aligned_page must be a positive integer"})
+                return
+            if not isinstance(text, str):
+                _send_json(self, 400, {"ok": False, "error": "text must be a string"})
+                return
+            try:
+                result = confirm_page_transcript(
+                    data_root, source_sha256.strip(), aligned_page, text
+                )
+            except PagePreviewError as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc)})
+                return
+            Log(INFO_LOG_LEVEL, "admin book page transcript confirmed",
+                {"source_sha256": source_sha256[:16], "aligned_page": aligned_page})
+            _send_json(self, 200, {"ok": True, "result": result})
+
+        def _handle_book_page_repair(self) -> None:
+            try:
+                body = _read_body(self, 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            source_sha256 = payload.get("source_sha256")
+            aligned_page = payload.get("aligned_page")
+            missing_in = payload.get("missing_in")
+            if not isinstance(source_sha256, str) or not source_sha256.strip():
+                _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                return
+            if not isinstance(aligned_page, int) or aligned_page < 1:
+                _send_json(self, 400, {"ok": False, "error": "aligned_page must be a positive integer"})
+                return
+            if missing_in is not None and (
+                not isinstance(missing_in, list)
+                or not all(isinstance(stage, str) for stage in missing_in)
+            ):
+                _send_json(self, 400, {"ok": False, "error": "missing_in must be a list of strings"})
+                return
+            job_id = registry.create_job()
+            status_url = f"/api/ingest/{job_id}/status"
+            events_url = f"/api/ingest/{job_id}/events"
+            sha = source_sha256.strip()
+            stages_hint = missing_in if isinstance(missing_in, list) else []
+
+            def _worker() -> None:
+                def reporter(ev: dict) -> None:
+                    registry.emit(job_id, ev)
+
+                acquired = job_semaphore.acquire(blocking=False)
+                if not acquired:
+                    registry.emit(job_id, make_event(
+                        "queue",
+                        "progress",
+                        message="waiting for a free ingest slot",
+                        max_concurrent_jobs=max_concurrent_jobs,
+                    ))
+                    job_semaphore.acquire()
+                try:
+                    registry.set_global_total(job_id, 3)
+                    result = run_book_page_repair(
+                        data_root,
+                        settings,
+                        sha,
+                        aligned_page,
+                        missing_in=stages_hint,
+                        request_id=job_id,
+                        progress=reporter,
+                    )
+                    registry.emit(job_id, make_event(
+                        "page_repair",
+                        STATUS_DONE,
+                        result=result,
+                    ))
+                except PageRepairError as exc:
+                    registry.emit(job_id, make_event(
+                        "page_repair",
+                        STATUS_ERROR,
+                        message=str(exc),
+                    ))
+                except IngestInputValidationException as exc:
+                    registry.emit(job_id, make_event(
+                        "page_repair",
+                        STATUS_ERROR,
+                        message=exc.detail.message,
+                        code=exc.detail.code.value,
+                        field=exc.detail.field,
+                    ))
+                except Exception as exc:
+                    Log(ERROR_LOG_LEVEL, "admin book page repair worker error",
+                        {"job_id": job_id, "error": str(exc)})
+                    registry.emit(job_id, make_event(
+                        "page_repair",
+                        STATUS_ERROR,
+                        message=str(exc),
+                    ))
+                finally:
+                    job_semaphore.release()
+
+            threading.Thread(
+                target=_worker, daemon=True, name=f"repair-{job_id[:8]}"
+            ).start()
+            Log(INFO_LOG_LEVEL, "admin book page repair job started",
+                {"job_id": job_id, "source_sha256": sha[:16], "aligned_page": aligned_page})
+            _send_json(self, 202, {
+                "ok": True,
+                "job_id": job_id,
+                "status_url": status_url,
+                "events_url": events_url,
+            })
+
+        def _handle_book_gaps_repair(self) -> None:
+            try:
+                body = _read_body(self, 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            source_sha256 = payload.get("source_sha256")
+            gap_pages = payload.get("gap_pages")
+            if not isinstance(source_sha256, str) or not source_sha256.strip():
+                _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                return
+            if not isinstance(gap_pages, list) or not gap_pages:
+                _send_json(self, 400, {"ok": False, "error": "gap_pages must be a non-empty list"})
+                return
+            for entry in gap_pages:
+                if not isinstance(entry, dict):
+                    _send_json(self, 400, {"ok": False, "error": "gap_pages entries must be objects"})
+                    return
+                aligned = entry.get("aligned")
+                if not isinstance(aligned, int) or aligned < 1:
+                    _send_json(self, 400, {"ok": False, "error": "each gap page must have positive aligned"})
+                    return
+                missing_in = entry.get("missing_in")
+                if missing_in is not None and (
+                    not isinstance(missing_in, list)
+                    or not all(isinstance(stage, str) for stage in missing_in)
+                ):
+                    _send_json(self, 400, {"ok": False, "error": "missing_in must be a list of strings"})
+                    return
+            job_id = registry.create_job()
+            status_url = f"/api/ingest/{job_id}/status"
+            events_url = f"/api/ingest/{job_id}/events"
+            sha = source_sha256.strip()
+            gap_payload = gap_pages
+
+            def _worker() -> None:
+                def reporter(ev: dict) -> None:
+                    registry.emit(job_id, ev)
+
+                acquired = job_semaphore.acquire(blocking=False)
+                if not acquired:
+                    registry.emit(job_id, make_event(
+                        "queue",
+                        "progress",
+                        message="waiting for a free ingest slot",
+                        max_concurrent_jobs=max_concurrent_jobs,
+                    ))
+                    job_semaphore.acquire()
+                try:
+                    aligned_count = len({entry["aligned"] for entry in gap_payload})
+                    registry.set_global_total(job_id, max(aligned_count * 3, 1))
+                    result = run_book_gaps_repair(
+                        data_root,
+                        settings,
+                        sha,
+                        gap_payload,
+                        request_id=job_id,
+                        progress=reporter,
+                    )
+                    registry.emit(job_id, make_event(
+                        "gaps_repair",
+                        STATUS_DONE,
+                        result=result,
+                    ))
+                except PageRepairError as exc:
+                    registry.emit(job_id, make_event(
+                        "gaps_repair",
+                        STATUS_ERROR,
+                        message=str(exc),
+                    ))
+                except IngestInputValidationException as exc:
+                    registry.emit(job_id, make_event(
+                        "gaps_repair",
+                        STATUS_ERROR,
+                        message=exc.detail.message,
+                        code=exc.detail.code.value,
+                        field=exc.detail.field,
+                    ))
+                except Exception as exc:
+                    Log(ERROR_LOG_LEVEL, "admin book gaps repair worker error",
+                        {"job_id": job_id, "error": str(exc)})
+                    registry.emit(job_id, make_event(
+                        "gaps_repair",
+                        STATUS_ERROR,
+                        message=str(exc),
+                    ))
+                finally:
+                    job_semaphore.release()
+
+            threading.Thread(
+                target=_worker, daemon=True, name=f"gaps-repair-{job_id[:8]}"
+            ).start()
+            Log(INFO_LOG_LEVEL, "admin book gaps repair job started",
+                {"job_id": job_id, "source_sha256": sha[:16], "page_count": len(gap_pages)})
+            _send_json(self, 202, {
+                "ok": True,
+                "job_id": job_id,
+                "status_url": status_url,
+                "events_url": events_url,
+            })
 
         def _handle_status(self, job_id: str) -> None:
             snapshot = registry.get_status(job_id)
@@ -299,6 +662,31 @@ def build_ingest_server(
                 if not self._require_auth():
                     return
                 self._handle_subjects_merge()
+                return
+            if parsed.path == "/api/admin/book-pages/exclude":
+                if not self._require_auth():
+                    return
+                self._handle_book_page_exclude()
+                return
+            if parsed.path == "/api/admin/book-pages/transcript/confirm":
+                if not self._require_auth():
+                    return
+                self._handle_book_page_transcript_confirm()
+                return
+            if parsed.path == "/api/admin/book-pages/transcript":
+                if not self._require_auth():
+                    return
+                self._handle_book_page_transcript_save()
+                return
+            if parsed.path == "/api/admin/book-pages/repair":
+                if not self._require_auth():
+                    return
+                self._handle_book_page_repair()
+                return
+            if parsed.path == "/api/admin/book-pages/repair-all":
+                if not self._require_auth():
+                    return
+                self._handle_book_gaps_repair()
                 return
             if parsed.path != "/api/ingest/submit":
                 self.send_error(404, "Not Found")

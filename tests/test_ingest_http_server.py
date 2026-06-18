@@ -6,6 +6,7 @@ import threading
 import time
 import unittest
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 from types import SimpleNamespace
@@ -228,6 +229,86 @@ class TestIngestAuth(unittest.TestCase):
         )
         self.assertEqual(status, 200)
         self.assertEqual(payload["subjects"], [])
+
+    def test_admin_book_pages_audit_requires_token(self) -> None:
+        status, _ = self.server.request("/api/admin/book-pages-audit")
+        self.assertEqual(status, 401)
+        status, payload = self.server.request(
+            "/api/admin/book-pages-audit", headers={"X-API-Token": self.TOKEN}
+        )
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["summary"]["book_count"], 0)
+
+    def test_admin_book_page_exclude_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/book-pages/exclude",
+            method="POST",
+            body=json.dumps({"source_sha256": "a" * 64, "aligned_page": 1}).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        self.assertEqual(status, 401)
+
+    def test_admin_book_page_render_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/book-pages/render?source_sha256=" + "a" * 64 + "&aligned_page=1"
+        )
+        self.assertEqual(status, 401)
+
+    def test_admin_book_page_render_returns_png(self) -> None:
+        sha = "f" * 64
+        data_root = Path(self.server._tmp.name)
+        png_path = data_root / "tmp" / sha / "render" / "p.0001.png"
+        png_path.parent.mkdir(parents=True, exist_ok=True)
+        png_path.write_bytes(b"\x89PNG\r\n\x1a\ncontent")
+        processed = data_root / "input" / "processed"
+        processed.mkdir(parents=True, exist_ok=True)
+        processed.joinpath(f"{sha}.pdf").write_bytes(b"%PDF-1.4\n")
+        req = urllib.request.Request(
+            self.server.url(
+                "/api/admin/book-pages/render?"
+                + urllib.parse.urlencode({"source_sha256": sha, "aligned_page": "1"})
+            ),
+            headers={"X-API-Token": self.TOKEN},
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            self.assertEqual(resp.status, 200)
+            self.assertEqual(resp.headers["Content-Type"], "image/png")
+            body = resp.read()
+        self.assertEqual(body[:8], b"\x89PNG\r\n\x1a\n")
+
+    def test_admin_book_page_repair_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/book-pages/repair",
+            method="POST",
+            body=json.dumps({"source_sha256": "a" * 64, "aligned_page": 1}).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        self.assertEqual(status, 401)
+
+    def test_admin_book_page_transcript_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/book-pages/transcript?source_sha256=" + "a" * 64 + "&aligned_page=1"
+        )
+        self.assertEqual(status, 401)
+
+    def test_admin_book_page_transcript_post_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/book-pages/transcript",
+            method="POST",
+            body=json.dumps({"source_sha256": "a" * 64, "aligned_page": 1, "text": "x"}).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        self.assertEqual(status, 401)
+
+    def test_admin_book_page_transcript_confirm_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/book-pages/transcript/confirm",
+            method="POST",
+            body=json.dumps({"source_sha256": "a" * 64, "aligned_page": 1, "text": "x"}).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        self.assertEqual(status, 401)
 
     def test_health_open_without_token(self) -> None:
         status, _ = self.server.request("/health")
