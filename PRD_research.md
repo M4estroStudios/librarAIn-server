@@ -32,9 +32,10 @@
 | `src/search/subject_lookup.py` | ✅ presente (F2-T2) | Subject Lookup read-only su `INDEX.json`: match deterministico + semantico (embedding intera query, riuso T25); fallback solo-deterministico se AI giù |
 | `src/search/chapter_expansion.py` | ✅ presente (F2-T3) | Chapter Expansion read-only su `TOC.json`: pagina → capitolo; espansione a capitolo intero se < 6 pagine; budget `max_books`/`max_pages_per_book` |
 | `src/search/time_lookup.py` | ✅ presente (F2-T3b) | Time Lookup read-only su `TIME_INDEX.json`: regex `extract_time_references` su query/`poh.time_range`; range con fallback anno inizio; `timeline_candidates` + arricchimento pagine (budget merge → F2-T4) |
-| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T4+ |
+| `src/search/pages_loader.py` | ✅ presente (F2-T4) | Pages Markdown Loader: `pages/p.NNNN.<slug>.md`, hard cap caratteri, ordinamento, budget `max_books`/`max_pages_per_book` |
+| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T5+ |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader/LLM/postprocess F2-T4+ |
+| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); LLM/postprocess F2-T5+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -363,7 +364,7 @@ src/search/
 ├── subject_lookup.py      # F2-T2 ✅ (riusa polyindex.subject_matcher)
 ├── chapter_expansion.py   # F2-T3 ✅
 ├── time_lookup.py         # F2-T3b ✅ (riusa polyindex.time_index)
-├── pages_loader.py        # F2-T4
+├── pages_loader.py        # F2-T4 ✅
 ├── article_llm.py         # F2-T5 (+ F2-T6 se fusi)
 ├── timeline_llm.py        # F2-T7
 ├── postprocess.py         # F2-T8: parser/validator link + tabella
@@ -484,7 +485,7 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
 - [x] **F2-T3b (NUOVO)** — Time Lookup su `TIME_INDEX.json`: estrazione riferimenti temporali da
   query/`poh.time_range` (riuso `extract_time_references`) → `timeline_candidates` + arricchimento
   pagine candidate. *(Sonnet)*
-- [ ] **F2-T4** — Pages Markdown Loader: caricamento `pages/p.NNNN.<slug>.md`, hard cap caratteri,
+- [x] **F2-T4** — Pages Markdown Loader: caricamento `pages/p.NNNN.<slug>.md`, hard cap caratteri,
   ordinamento, budget 5×8 default. *(Composer 2)*
 - [ ] **F2-T5** — Article Generation LLM (`article_prompt.md`): passi `a`+`b`, link `source:`
   come da §2.4. *(Opus)*
