@@ -85,12 +85,100 @@ a { color: #4ec9b0; }
 .progress-row progress::-webkit-progress-value { background: #4ec9b0; border-radius: 4px; transition: width 0.25s ease; }
 .progress-row progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
 .progress-stats { color: #9d9d9d; font-size: 0.78rem; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+#ingest-pages-panel { display: none; margin-top: 1rem; }
+#ingest-pages-panel.show { display: block; }
+.ingest-section { margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #3e3e3e; }
+.ingest-section h3 { margin: 0 0 0.55rem; font-size: 0.88rem; color: #e8e8e8; }
+.ingest-section-stats { font-size: 0.78rem; color: #9d9d9d; margin-bottom: 0.55rem; }
+.ingest-section-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.55rem; }
+button.secondary { background: #3c3c3c; color: #e8e8e8; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button.review-btn { background: #2f5a48; color: #e8e8e8; }
+button.review-btn:hover:not(:disabled) { background: #3a6b55; }
+.ingest-page-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.ingest-page-chip { font: inherit; font-size: 0.72rem; font-family: ui-monospace, monospace; padding: 0.2rem 0.45rem; border-radius: 6px; border: 1px solid #454545; background: #2d2d2d; color: #d4d4d4; cursor: pointer; }
+.ingest-page-chip:hover { border-color: #4ec9b0; color: #4ec9b0; }
+.audit-pages-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 0.35rem; --audit-btn-h: 2rem; --audit-row-h: 2rem; }
+.audit-pages-table col.audit-col-page { width: 18%; }
+.audit-pages-table col.audit-col-status { width: 32%; }
+.audit-pages-table th, .audit-pages-table td { padding: 0.35rem 0.5rem; vertical-align: middle; border-bottom: 1px solid #2a2a2a; font-size: 0.78rem; }
+.audit-pages-table th { color: #9d9d9d; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; text-align: left; }
+.audit-page-controls { display: flex; align-items: center; gap: 0.35rem; }
+.audit-page-num { font-family: ui-monospace, monospace; color: #e8e8e8; }
+.audit-view-btn { width: var(--audit-btn-h); height: var(--audit-btn-h); padding: 0; font: inherit; font-size: 0.78rem; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; cursor: pointer; }
+.audit-view-btn:hover:not(:disabled) { background: #4a4a4a; }
+.audit-status-wait { color: #9d9d9d; }
+.audit-status-failed { color: #f48771; }
+.audit-status-gap { color: #f0a060; }
+tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
+.page-preview-overlay { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; box-sizing: border-box; }
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.68); cursor: pointer; }
+.page-preview-dialog { position: relative; z-index: 1; width: min(95vw, 920px); max-height: 92vh; display: flex; flex-direction: column; background: #1e1e1e; border: 1px solid #454545; border-radius: 12px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45); overflow: hidden; }
+.page-preview-close { position: absolute; top: 0.55rem; right: 0.55rem; z-index: 2; width: 2rem; height: 2rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.15rem; cursor: pointer; }
+.page-preview-title { margin: 0; padding: 0.85rem 3rem 0.65rem 1rem; font-size: 1rem; font-weight: 600; color: #e8e8e8; border-bottom: 1px solid #2a2a2a; }
+.page-preview-body { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; box-sizing: border-box; min-height: 0; }
+.page-preview-nav { flex: 0 0 auto; width: 2.5rem; height: 2.5rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.25rem; cursor: pointer; }
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+.page-preview-nav.hidden { visibility: hidden; pointer-events: none; }
+.page-preview-img-wrap { flex: 1 1 auto; min-width: 0; max-height: calc(92vh - 5.5rem); display: flex; align-items: center; justify-content: center; overflow: auto; }
+.page-preview-img { display: block; max-width: 100%; max-height: calc(92vh - 5.5rem); background: #fff; }
+.page-review-dialog { width: min(98vw, 1480px); }
+.page-review-body { display: flex; align-items: stretch; gap: 0.75rem; padding: 1rem; box-sizing: border-box; min-height: 0; }
+.page-review-panels { flex: 1 1 auto; min-width: 0; display: flex; justify-content: center; align-items: flex-start; gap: 0.75rem; }
+.page-review-pane { flex: 0 0 auto; }
+.page-review-frame { box-sizing: border-box; border: 1px solid #454545; border-radius: 4px; background: #fff; overflow: hidden; display: flex; flex-direction: column; }
+.page-review-img-wrap { width: 100%; height: 100%; overflow: hidden; line-height: 0; }
+.page-review-img { display: block; width: 100%; height: 100%; object-fit: fill; background: #fff; }
+.page-review-text { display: block; flex: 1 1 auto; width: 100%; height: 100%; min-height: 0; margin: 0; padding: 0.65rem; box-sizing: border-box; border: 0; outline: none; resize: none; overflow: auto; background: transparent; color: #111; font-family: ui-monospace, monospace; font-size: 0.72rem; line-height: 1.35; white-space: pre-wrap; word-break: break-word; }
+.page-review-meta { margin: 0; padding: 0.35rem 1rem 0; font-size: 0.72rem; color: #9d9d9d; }
+.page-review-toolbar { display: flex; gap: 0.45rem; padding: 0 1rem 0.55rem; align-items: center; min-height: 1.85rem; }
+.page-review-toolbar .hidden { display: none; }
+.page-review-toolbar button { font: inherit; font-size: 0.72rem; font-weight: 600; height: 1.85rem; padding: 0 0.65rem; border: 0; border-radius: 8px; cursor: pointer; }
+.page-review-save { background: #2f5a48; color: #e8e8e8; }
+.page-review-save:hover:not(:disabled) { background: #3a6b55; }
+.page-review-reset { background: #3c3c3c; color: #e8e8e8; }
+.page-review-reset:hover:not(:disabled) { background: #4a4a4a; }
+.page-review-toolbar button:disabled { opacity: 0.45; cursor: not-allowed; }
+.page-review-confirmed-label { font-size: 0.78rem; font-weight: 600; color: #4ec9b0; }
+.page-review-confirmed-label.hidden { display: none; }
+.page-picker-panel { display: none; margin-top: 0.75rem; border: 1px solid #454545; border-radius: 10px; background: #1e1e1e; overflow: hidden; }
+.page-picker-panel.show { display: block; }
+.page-picker-panel.is-loading { opacity: 0.85; }
+.page-picker-toolbar { padding: 0.65rem 0.85rem; border-bottom: 1px solid #3e3e3e; background: #252526; }
+.page-picker-toolbar label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #cccccc; margin: 0; }
+.page-picker-toolbar input { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
+.page-picker-toolbar-meta { margin-top: 0.35rem; font-size: 0.75rem; color: #9d9d9d; }
+.page-picker-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 0.75rem; padding: 0.75rem; min-height: 18rem; }
+@media (max-width: 760px) { .page-picker-body { grid-template-columns: 1fr; } }
+.page-picker-grid-wrap { min-width: 0; max-height: 28rem; overflow: auto; border: 1px solid #3e3e3e; border-radius: 8px; background: #252526; padding: 0.55rem; }
+.page-picker-grid-wrap.is-rendering .page-picker-grid { display: none; }
+.page-picker-progress { display: none; padding: 2.5rem 1rem; text-align: center; }
+.page-picker-grid-wrap.is-rendering .page-picker-progress { display: block; }
+.page-picker-progress-label { font-size: 0.82rem; color: #e8e8e8; margin-bottom: 0.65rem; }
+.page-picker-progress progress { width: 100%; height: 10px; border-radius: 4px; appearance: none; -webkit-appearance: none; background: #3c3c3c; border: none; }
+.page-picker-progress progress::-webkit-progress-bar { background: #3c3c3c; border-radius: 4px; }
+.page-picker-progress progress::-webkit-progress-value { background: #4ec9b0; border-radius: 4px; }
+.page-picker-progress progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
+.page-picker-progress-stats { margin-top: 0.45rem; font-size: 0.75rem; color: #9d9d9d; }
+.page-picker-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.45rem; }
+.page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 6px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; }
+.page-picker-thumb.is-selected { border-color: #4ec9b0; box-shadow: 0 0 0 1px #4ec9b0; }
+.page-picker-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.page-picker-thumb-num { position: absolute; left: 0.2rem; top: 0.2rem; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
+.page-picker-detail { min-width: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.page-picker-detail-label { font-size: 0.82rem; color: #e8e8e8; font-weight: 600; }
+.page-picker-detail-img-wrap { flex: 1 1 auto; min-height: 12rem; display: flex; align-items: center; justify-content: center; overflow: auto; background: #fff; border-radius: 6px; }
+.page-picker-detail-img-wrap img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+.page-picker-detail-empty { font-size: 0.78rem; color: #9d9d9d; text-align: center; padding: 2rem 0.75rem; }
+.hidden { display: none !important; }
 </style>
 </head>
 <body>
 <p class="nav">Ingestione · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a></p>
 <h1>Ingestione libro</h1>
-<p class="lead">Carica il PDF e indica quali pagine del file escludere e dove si trovano, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT. Prima dell’invio il browser tenta una verifica delle pagine rispetto al PDF (servono rete per caricare pdf.js).</p>
+<p class="lead">Carica il PDF: compare un’anteprima pagina per pagina per scegliere visivamente le esclusioni. Indica anche dove si trovano, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT.</p>
 
 <form id="ingest-form">
   <fieldset>
@@ -103,26 +191,94 @@ a { color: #4ec9b0; }
       <input type="text" name="book_id_hint" placeholder="es. collana-2024-verdi" autocomplete="off">
     </label>
     <p class="hint" style="margin:0.25rem 0 0;">Per l’etichetta: slug, sigla o codice da catalogo utile in log o integrazioni.</p>
-    <label>Pagine da escludere dall’elaborazione
-      <input type="text" name="pages_to_remove" placeholder="1, 2, 10-15, 22">
-    </label>
-    <p class="hint" style="margin:0.25rem 0 0;">Elenco separato da virgole; intervalli inclusi con <code>prima-ultima</code> (es. <code>3-7</code> = pagine 3 … 7).</p>
+    <div id="page-picker-panel" class="page-picker-panel" aria-live="polite">
+      <div class="page-picker-toolbar">
+        <label>Pagine da escludere dall’elaborazione
+          <input type="text" name="pages_to_remove" id="pages-to-remove-input" placeholder="1, 2, 10-15, 22" autocomplete="off">
+        </label>
+        <div class="page-picker-toolbar-meta" id="page-picker-meta">Seleziona un PDF per caricare l’anteprima pagine.</div>
+      </div>
+      <div class="page-picker-body">
+        <div class="page-picker-grid-wrap" id="page-picker-grid-wrap">
+          <div class="page-picker-progress" id="page-picker-progress">
+            <div class="page-picker-progress-label">Rendering pagine…</div>
+            <progress id="page-picker-progress-bar" value="0" max="1"></progress>
+            <div class="page-picker-progress-stats" id="page-picker-progress-stats">0 / 0</div>
+          </div>
+          <div class="page-picker-grid" id="page-picker-grid"></div>
+        </div>
+        <div class="page-picker-detail">
+          <div class="page-picker-detail-label">Anteprima — pagina <span id="page-picker-detail-num">—</span></div>
+          <div class="page-picker-detail-img-wrap" id="page-picker-detail-wrap">
+            <div class="page-picker-detail-empty" id="page-picker-detail-empty">Seleziona una pagina nella griglia o scrivi il numero nel campo sopra.</div>
+            <img id="page-picker-detail-img" class="hidden" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hint" style="margin:0.35rem 0 0;">Clicca le miniature per escludere pagine; intervalli contigui compaiono come <code>prima-ultima</code>. Puoi anche digitare direttamente nel campo.</p>
   </fieldset>
 
   <fieldset>
     <legend>Table of Content</legend>
-    <p class="hint">Stessa sintassi delle pagine da escludere: virgole e intervalli <code>prima-ultima</code> inclusivi. Deve corrispondere a <strong>un solo blocco contiguo</strong> di pagine (es. <code>11-18</code> oppure <code>11,12,13,14,15,16,17,18</code>) dove compare il sommario / le rubriche dei capitoli.</p>
-    <label><span>Pagine del Table of Content <small class="req">*</small></span>
-      <input type="text" name="toc_range" placeholder="11-18" required autocomplete="off">
-    </label>
+    <p class="hint">Scegli visivamente le pagine del sommario oppure indica un intervallo contiguo nel campo. Le pagine già escluse sopra non compaiono qui. Deve essere <strong>un solo blocco contiguo</strong> (es. <code>11-18</code>).</p>
+    <div id="toc-page-picker-panel" class="page-picker-panel" aria-live="polite">
+      <div class="page-picker-toolbar">
+        <label><span>Pagine del Table of Content <small class="req">*</small></span>
+          <input type="text" name="toc_range" id="toc-range-input" placeholder="11-18" required autocomplete="off">
+        </label>
+        <div class="page-picker-toolbar-meta" id="toc-page-picker-meta">Disponibile dopo il caricamento del PDF.</div>
+      </div>
+      <div class="page-picker-body">
+        <div class="page-picker-grid-wrap" id="toc-page-picker-grid-wrap">
+          <div class="page-picker-progress" id="toc-page-picker-progress">
+            <div class="page-picker-progress-label">Rendering pagine…</div>
+            <progress id="toc-page-picker-progress-bar" value="0" max="1"></progress>
+            <div class="page-picker-progress-stats" id="toc-page-picker-progress-stats">0 / 0</div>
+          </div>
+          <div class="page-picker-grid" id="toc-page-picker-grid"></div>
+        </div>
+        <div class="page-picker-detail">
+          <div class="page-picker-detail-label">Anteprima — pagina <span id="toc-page-picker-detail-num">—</span></div>
+          <div class="page-picker-detail-img-wrap" id="toc-page-picker-detail-wrap">
+            <div class="page-picker-detail-empty" id="toc-page-picker-detail-empty">Seleziona una pagina nella griglia o scrivi l’intervallo nel campo sopra.</div>
+            <img id="toc-page-picker-detail-img" class="hidden" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hint" style="margin:0.35rem 0 0;">Clicca le miniature del TOC; intervalli contigui compaiono come <code>prima-ultima</code>.</p>
   </fieldset>
 
   <fieldset>
     <legend>Indice analitico</legend>
-    <p class="hint">Stessa sintassi: un solo intervallo contiguo (es. <code>301-324</code>) per l’indice dei nomi o soggetti.</p>
-    <label><span>Pagine dell’indice analitico <small class="req">*</small></span>
-      <input type="text" name="index_range" placeholder="301-324" required autocomplete="off">
-    </label>
+    <p class="hint">Scegli visivamente le pagine dell’indice analitico oppure indica un intervallo contiguo nel campo. Le pagine già escluse sopra non compaiono qui. Deve essere <strong>un solo blocco contiguo</strong> (es. <code>301-324</code>).</p>
+    <div id="index-page-picker-panel" class="page-picker-panel" aria-live="polite">
+      <div class="page-picker-toolbar">
+        <label><span>Pagine dell’indice analitico <small class="req">*</small></span>
+          <input type="text" name="index_range" id="index-range-input" placeholder="301-324" required autocomplete="off">
+        </label>
+        <div class="page-picker-toolbar-meta" id="index-page-picker-meta">Disponibile dopo il caricamento del PDF.</div>
+      </div>
+      <div class="page-picker-body">
+        <div class="page-picker-grid-wrap" id="index-page-picker-grid-wrap">
+          <div class="page-picker-progress" id="index-page-picker-progress">
+            <div class="page-picker-progress-label">Rendering pagine…</div>
+            <progress id="index-page-picker-progress-bar" value="0" max="1"></progress>
+            <div class="page-picker-progress-stats" id="index-page-picker-progress-stats">0 / 0</div>
+          </div>
+          <div class="page-picker-grid" id="index-page-picker-grid"></div>
+        </div>
+        <div class="page-picker-detail">
+          <div class="page-picker-detail-label">Anteprima — pagina <span id="index-page-picker-detail-num">—</span></div>
+          <div class="page-picker-detail-img-wrap" id="index-page-picker-detail-wrap">
+            <div class="page-picker-detail-empty" id="index-page-picker-detail-empty">Seleziona una pagina nella griglia o scrivi l’intervallo nel campo sopra.</div>
+            <img id="index-page-picker-detail-img" class="hidden" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hint" style="margin:0.35rem 0 0;">Clicca le miniature dell’indice; intervalli contigui compaiono come <code>prima-ultima</code>.</p>
   </fieldset>
 
   <fieldset>
@@ -225,6 +381,68 @@ a { color: #4ec9b0; }
     <span class="progress-time" id="global-time"></span>
   </div>
   <div id="phase-rows"></div>
+  <div id="ingest-pages-panel">
+    <div class="ingest-section" id="ingest-processed-section">
+      <h3>Pagine elaborate</h3>
+      <div class="ingest-section-stats" id="ingest-processed-stats">Nessuna pagina ancora.</div>
+      <div class="ingest-section-row">
+        <button type="button" class="review-btn" id="ingest-review-all-btn" disabled>Review pagine elaborate</button>
+      </div>
+      <div class="ingest-page-chips" id="ingest-processed-chips"></div>
+    </div>
+    <div class="ingest-section" id="ingest-pending-section">
+      <h3>Pagine non elaborate</h3>
+      <div class="ingest-section-stats" id="ingest-pending-stats">Nessuna pagina in attesa.</div>
+      <div id="ingest-pending-table-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+
+<div id="page-review-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-review-backdrop"></div>
+  <div class="page-preview-dialog page-review-dialog" role="dialog" aria-modal="true" aria-labelledby="page-review-title">
+    <button type="button" class="page-preview-close" id="page-review-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-review-title">Review</h2>
+    <p class="page-review-meta" id="page-review-meta"></p>
+    <div class="page-review-toolbar" id="page-review-toolbar">
+      <button type="button" class="page-review-save" id="page-review-confirm">Conferma</button>
+      <button type="button" class="page-review-reset" id="page-review-reset" disabled>Reset</button>
+      <span class="page-review-confirmed-label hidden" id="page-review-confirmed-label">Confermato</span>
+    </div>
+    <div class="page-review-body">
+      <button type="button" class="page-preview-nav" id="page-review-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-review-panels">
+        <div class="page-review-pane">
+          <div class="page-review-frame" id="page-review-img-frame">
+            <div class="page-review-img-wrap">
+              <img class="page-review-img" id="page-review-img" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="page-review-pane">
+          <div class="page-review-frame" id="page-review-text-frame">
+            <textarea class="page-review-text" id="page-review-text" spellcheck="false"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="page-preview-nav" id="page-review-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
 </div>
 <pre id="out" aria-live="polite"></pre>
 
@@ -275,6 +493,748 @@ a { color: #4ec9b0; }
     return Object.keys(set).map(function (k) { return parseInt(k, 10); }).sort(function (a, b) { return a - b; });
   }
 
+  function pagesToSpec(sortedPages) {
+    if (!sortedPages.length) return "";
+    var parts = [];
+    var start = sortedPages[0];
+    var prev = sortedPages[0];
+    for (var i = 1; i <= sortedPages.length; i++) {
+      var cur = sortedPages[i];
+      if (i < sortedPages.length && cur === prev + 1) {
+        prev = cur;
+        continue;
+      }
+      parts.push(start === prev ? String(start) : start + "-" + prev);
+      if (i < sortedPages.length) {
+        start = cur;
+        prev = cur;
+      }
+    }
+    return parts.join(", ");
+  }
+
+  function tryParsePagesSpec(raw) {
+    try {
+      return parsePagesSpec(raw);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  var pagePickerPanel = document.getElementById("page-picker-panel");
+  var pagesToRemoveInput = document.getElementById("pages-to-remove-input");
+  var pagePickerMeta = document.getElementById("page-picker-meta");
+  var pagePickerGrid = document.getElementById("page-picker-grid");
+  var pagePickerGridWrap = document.getElementById("page-picker-grid-wrap");
+  var pagePickerProgressBar = document.getElementById("page-picker-progress-bar");
+  var pagePickerProgressStats = document.getElementById("page-picker-progress-stats");
+  var pagePickerDetailNum = document.getElementById("page-picker-detail-num");
+  var pagePickerDetailWrap = document.getElementById("page-picker-detail-wrap");
+  var pagePickerDetailEmpty = document.getElementById("page-picker-detail-empty");
+  var pagePickerDetailImg = document.getElementById("page-picker-detail-img");
+  var pagePickerState = {
+    loadGen: 0,
+    pdfDoc: null,
+    numPages: 0,
+    selected: {},
+    lastSelected: null,
+    thumbUrls: {},
+    detailCache: {},
+    syncing: false,
+  };
+
+  function selectedPagesList() {
+    return Object.keys(pagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function updatePagePickerMeta() {
+    if (!pagePickerState.numPages) {
+      pagePickerMeta.textContent = "Seleziona un PDF per caricare l’anteprima pagine.";
+      return;
+    }
+    var selectedCount = selectedPagesList().length;
+    pagePickerMeta.textContent =
+      pagePickerState.numPages + " pagine nel PDF · " +
+      selectedCount + " selezionat" + (selectedCount === 1 ? "a" : "e") + " da escludere";
+  }
+
+  function refreshPagePickerSelectionUi() {
+    var buttons = pagePickerGrid.querySelectorAll(".page-picker-thumb");
+    for (var i = 0; i < buttons.length; i++) {
+      var btn = buttons[i];
+      var pageNum = parseInt(btn.dataset.page, 10);
+      btn.classList.toggle("is-selected", !!pagePickerState.selected[pageNum]);
+    }
+    updatePagePickerMeta();
+  }
+
+  function syncPagePickerFieldFromSelection() {
+    if (pagePickerState.syncing) return;
+    pagePickerState.syncing = true;
+    pagesToRemoveInput.value = pagesToSpec(selectedPagesList());
+    pagePickerState.syncing = false;
+    refreshFilteredRangePickers();
+  }
+
+  function syncPagePickerSelectionFromField() {
+    if (pagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(pagesToRemoveInput.value);
+    pagePickerState.syncing = true;
+    pagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) pagePickerState.selected[parsed[i]] = true;
+      pagePickerState.lastSelected = parsed.length ? parsed[parsed.length - 1] : null;
+    } else if (!String(pagesToRemoveInput.value || "").trim()) {
+      pagePickerState.lastSelected = null;
+    }
+    pagePickerState.syncing = false;
+    refreshPagePickerSelectionUi();
+    renderPagePickerDetail(pagePickerState.lastSelected);
+    refreshFilteredRangePickers();
+  }
+
+  function getExcludedPagesList() {
+    return selectedPagesList();
+  }
+
+  function getExcludedPagesSet() {
+    var set = {};
+    var list = getExcludedPagesList();
+    for (var i = 0; i < list.length; i++) set[list[i]] = true;
+    return set;
+  }
+
+  function getPickerAvailablePages() {
+    if (!pagePickerState.numPages) return [];
+    var excluded = getExcludedPagesSet();
+    var pages = [];
+    for (var p = 1; p <= pagePickerState.numPages; p++) {
+      if (!excluded[p]) pages.push(p);
+    }
+    return pages;
+  }
+
+  function refreshFilteredRangePickers() {
+    refreshTocPagePicker();
+    refreshIndexPagePicker();
+  }
+
+  var tocPagePickerPanel = document.getElementById("toc-page-picker-panel");
+  var tocRangeInput = document.getElementById("toc-range-input");
+  var tocPagePickerMeta = document.getElementById("toc-page-picker-meta");
+  var tocPagePickerGrid = document.getElementById("toc-page-picker-grid");
+  var tocPagePickerGridWrap = document.getElementById("toc-page-picker-grid-wrap");
+  var tocPagePickerProgressBar = document.getElementById("toc-page-picker-progress-bar");
+  var tocPagePickerProgressStats = document.getElementById("toc-page-picker-progress-stats");
+  var tocPagePickerDetailNum = document.getElementById("toc-page-picker-detail-num");
+  var tocPagePickerDetailEmpty = document.getElementById("toc-page-picker-detail-empty");
+  var tocPagePickerDetailImg = document.getElementById("toc-page-picker-detail-img");
+  var tocPagePickerState = {
+    selected: {},
+    lastSelected: null,
+    detailCache: {},
+    syncing: false,
+    rendering: false,
+  };
+
+  function tocSelectedPagesList() {
+    return Object.keys(tocPagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function updateTocPagePickerMeta() {
+    var available = getPickerAvailablePages();
+    if (!pagePickerState.numPages) {
+      tocPagePickerMeta.textContent = "Disponibile dopo il caricamento del PDF.";
+      return;
+    }
+    var excludedCount = getExcludedPagesList().length;
+    var selectedCount = tocSelectedPagesList().length;
+    tocPagePickerMeta.textContent =
+      available.length + " pagine disponibili" +
+      (excludedCount ? " (" + excludedCount + " escluse)" : "") +
+      " · " + selectedCount + " selezionat" + (selectedCount === 1 ? "a" : "e") + " per il TOC";
+  }
+
+  function refreshTocPagePickerSelectionUi() {
+    var buttons = tocPagePickerGrid.querySelectorAll(".page-picker-thumb");
+    for (var i = 0; i < buttons.length; i++) {
+      var btn = buttons[i];
+      var pageNum = parseInt(btn.dataset.page, 10);
+      btn.classList.toggle("is-selected", !!tocPagePickerState.selected[pageNum]);
+    }
+    updateTocPagePickerMeta();
+  }
+
+  function syncTocPagePickerFieldFromSelection() {
+    if (tocPagePickerState.syncing) return;
+    tocPagePickerState.syncing = true;
+    tocRangeInput.value = pagesToSpec(tocSelectedPagesList());
+    tocPagePickerState.syncing = false;
+  }
+
+  function syncTocPagePickerSelectionFromField() {
+    if (tocPagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(tocRangeInput.value);
+    var excluded = getExcludedPagesSet();
+    tocPagePickerState.syncing = true;
+    tocPagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) {
+        if (!excluded[parsed[i]]) tocPagePickerState.selected[parsed[i]] = true;
+      }
+      var selected = tocSelectedPagesList();
+      tocPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
+    } else if (!String(tocRangeInput.value || "").trim()) {
+      tocPagePickerState.lastSelected = null;
+    }
+    tocPagePickerState.syncing = false;
+    refreshTocPagePickerSelectionUi();
+    renderTocPagePickerDetail(tocPagePickerState.lastSelected);
+  }
+
+  function setTocPagePickerRenderProgress(done, total) {
+    tocPagePickerProgressBar.max = total || 1;
+    tocPagePickerProgressBar.value = done;
+    tocPagePickerProgressStats.textContent = done + " / " + total;
+  }
+
+  function buildTocPagePickerGrid(thumbs) {
+    tocPagePickerGrid.innerHTML = "";
+    for (var i = 0; i < thumbs.length; i++) {
+      var item = thumbs[i];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "page-picker-thumb";
+      btn.dataset.page = String(item.pageNum);
+      btn.title = "Pagina " + item.pageNum;
+      var img = document.createElement("img");
+      img.alt = "Pagina " + item.pageNum;
+      img.src = item.thumbUrl;
+      var numEl = document.createElement("span");
+      numEl.className = "page-picker-thumb-num";
+      numEl.textContent = String(item.pageNum);
+      btn.appendChild(img);
+      btn.appendChild(numEl);
+      btn.addEventListener("click", function () {
+        toggleTocPagePickerSelection(parseInt(this.dataset.page, 10));
+      });
+      tocPagePickerGrid.appendChild(btn);
+    }
+    refreshTocPagePickerSelectionUi();
+  }
+
+  async function renderTocPagePickerDetail(pageNum) {
+    if (!pageNum || !pagePickerState.pdfDoc || pageNum < 1 || pageNum > pagePickerState.numPages) {
+      tocPagePickerDetailNum.textContent = "—";
+      tocPagePickerDetailImg.classList.add("hidden");
+      tocPagePickerDetailEmpty.textContent = "Seleziona una pagina nella griglia o scrivi l’intervallo nel campo sopra.";
+      tocPagePickerDetailEmpty.classList.remove("hidden");
+      tocPagePickerDetailImg.removeAttribute("src");
+      return;
+    }
+    tocPagePickerDetailNum.textContent = String(pageNum);
+    tocPagePickerDetailEmpty.classList.add("hidden");
+    tocPagePickerDetailImg.classList.remove("hidden");
+    if (tocPagePickerState.detailCache[pageNum]) {
+      tocPagePickerDetailImg.src = tocPagePickerState.detailCache[pageNum];
+      return;
+    }
+    tocPagePickerDetailImg.removeAttribute("src");
+    try {
+      var url = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 1.1);
+      tocPagePickerState.detailCache[pageNum] = url;
+      if (tocPagePickerState.lastSelected === pageNum) tocPagePickerDetailImg.src = url;
+    } catch (_) {
+      tocPagePickerDetailEmpty.textContent = "Anteprima non disponibile per la pagina " + pageNum + ".";
+      tocPagePickerDetailEmpty.classList.remove("hidden");
+      tocPagePickerDetailImg.classList.add("hidden");
+    }
+  }
+
+  function toggleTocPagePickerSelection(pageNum) {
+    var excluded = getExcludedPagesSet();
+    if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
+    if (tocPagePickerState.selected[pageNum]) delete tocPagePickerState.selected[pageNum];
+    else tocPagePickerState.selected[pageNum] = true;
+    tocPagePickerState.lastSelected = pageNum;
+    refreshTocPagePickerSelectionUi();
+    syncTocPagePickerFieldFromSelection();
+    renderTocPagePickerDetail(pageNum);
+  }
+
+  function resetTocPagePicker() {
+    tocPagePickerState.selected = {};
+    tocPagePickerState.lastSelected = null;
+    tocPagePickerState.detailCache = {};
+    tocPagePickerState.rendering = false;
+    tocPagePickerGrid.innerHTML = "";
+    tocPagePickerGridWrap.classList.remove("is-rendering");
+    setTocPagePickerRenderProgress(0, 0);
+    tocPagePickerPanel.classList.remove("show", "is-loading");
+    renderTocPagePickerDetail(null);
+    updateTocPagePickerMeta();
+  }
+
+  function makeFallbackThumb(pageNum) {
+    return "data:image/svg+xml," + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="160" viewBox="0 0 120 160">' +
+      '<rect width="120" height="160" fill="#f0f0f0"/>' +
+      '<text x="60" y="84" text-anchor="middle" font-size="14" fill="#666">' + pageNum + "</text></svg>"
+    );
+  }
+
+  async function refreshTocPagePicker() {
+    if (!pagePickerState.pdfDoc || !pagePickerState.numPages) {
+      resetTocPagePicker();
+      return;
+    }
+    var loadGen = pagePickerState.loadGen;
+    var available = getPickerAvailablePages();
+    var excluded = getExcludedPagesSet();
+    var selected = tocSelectedPagesList().filter(function (p) { return !excluded[p]; });
+    tocPagePickerState.selected = {};
+    for (var i = 0; i < selected.length; i++) tocPagePickerState.selected[selected[i]] = true;
+    if (selected.length) tocPagePickerState.lastSelected = selected[selected.length - 1];
+    else if (tocPagePickerState.lastSelected && excluded[tocPagePickerState.lastSelected]) {
+      tocPagePickerState.lastSelected = null;
+    }
+
+    tocPagePickerPanel.classList.add("show");
+    if (!available.length) {
+      tocPagePickerGridWrap.classList.remove("is-rendering");
+      tocPagePickerGrid.innerHTML = "";
+      tocPagePickerMeta.textContent = "Nessuna pagina disponibile: tutte risultano escluse.";
+      renderTocPagePickerDetail(null);
+      return;
+    }
+
+    var pending = [];
+    var i;
+    var pageNum;
+    for (i = 0; i < available.length; i++) {
+      pageNum = available[i];
+      if (pagePickerState.thumbUrls[pageNum]) continue;
+      pending.push(pageNum);
+    }
+
+    if (pending.length) {
+      tocPagePickerState.rendering = true;
+      tocPagePickerGridWrap.classList.add("is-rendering");
+      setTocPagePickerRenderProgress(0, pending.length);
+      for (i = 0; i < pending.length; i++) {
+        if (loadGen !== pagePickerState.loadGen) return;
+        pageNum = pending[i];
+        try {
+          pagePickerState.thumbUrls[pageNum] = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 0.22);
+        } catch (_) {
+          pagePickerState.thumbUrls[pageNum] = makeFallbackThumb(pageNum);
+        }
+        setTocPagePickerRenderProgress(i + 1, pending.length);
+      }
+      if (loadGen !== pagePickerState.loadGen) return;
+      tocPagePickerState.rendering = false;
+    }
+
+    var thumbs = [];
+    for (i = 0; i < available.length; i++) {
+      pageNum = available[i];
+      thumbs.push({
+        pageNum: pageNum,
+        thumbUrl: pagePickerState.thumbUrls[pageNum] || makeFallbackThumb(pageNum),
+      });
+    }
+    buildTocPagePickerGrid(thumbs);
+    tocPagePickerGridWrap.classList.remove("is-rendering");
+    syncTocPagePickerSelectionFromField();
+    syncTocPagePickerFieldFromSelection();
+    if (tocPagePickerState.lastSelected) renderTocPagePickerDetail(tocPagePickerState.lastSelected);
+  }
+
+  var indexPagePickerPanel = document.getElementById("index-page-picker-panel");
+  var indexRangeInput = document.getElementById("index-range-input");
+  var indexPagePickerMeta = document.getElementById("index-page-picker-meta");
+  var indexPagePickerGrid = document.getElementById("index-page-picker-grid");
+  var indexPagePickerGridWrap = document.getElementById("index-page-picker-grid-wrap");
+  var indexPagePickerProgressBar = document.getElementById("index-page-picker-progress-bar");
+  var indexPagePickerProgressStats = document.getElementById("index-page-picker-progress-stats");
+  var indexPagePickerDetailNum = document.getElementById("index-page-picker-detail-num");
+  var indexPagePickerDetailEmpty = document.getElementById("index-page-picker-detail-empty");
+  var indexPagePickerDetailImg = document.getElementById("index-page-picker-detail-img");
+  var indexPagePickerState = {
+    selected: {},
+    lastSelected: null,
+    detailCache: {},
+    syncing: false,
+    rendering: false,
+  };
+
+  function indexSelectedPagesList() {
+    return Object.keys(indexPagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function updateIndexPagePickerMeta() {
+    var available = getPickerAvailablePages();
+    if (!pagePickerState.numPages) {
+      indexPagePickerMeta.textContent = "Disponibile dopo il caricamento del PDF.";
+      return;
+    }
+    var excludedCount = getExcludedPagesList().length;
+    var selectedCount = indexSelectedPagesList().length;
+    indexPagePickerMeta.textContent =
+      available.length + " pagine disponibili" +
+      (excludedCount ? " (" + excludedCount + " escluse)" : "") +
+      " · " + selectedCount + " selezionat" + (selectedCount === 1 ? "a" : "e") + " per l’indice";
+  }
+
+  function refreshIndexPagePickerSelectionUi() {
+    var buttons = indexPagePickerGrid.querySelectorAll(".page-picker-thumb");
+    for (var i = 0; i < buttons.length; i++) {
+      var btn = buttons[i];
+      var pageNum = parseInt(btn.dataset.page, 10);
+      btn.classList.toggle("is-selected", !!indexPagePickerState.selected[pageNum]);
+    }
+    updateIndexPagePickerMeta();
+  }
+
+  function syncIndexPagePickerFieldFromSelection() {
+    if (indexPagePickerState.syncing) return;
+    indexPagePickerState.syncing = true;
+    indexRangeInput.value = pagesToSpec(indexSelectedPagesList());
+    indexPagePickerState.syncing = false;
+  }
+
+  function syncIndexPagePickerSelectionFromField() {
+    if (indexPagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(indexRangeInput.value);
+    var excluded = getExcludedPagesSet();
+    indexPagePickerState.syncing = true;
+    indexPagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) {
+        if (!excluded[parsed[i]]) indexPagePickerState.selected[parsed[i]] = true;
+      }
+      var selected = indexSelectedPagesList();
+      indexPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
+    } else if (!String(indexRangeInput.value || "").trim()) {
+      indexPagePickerState.lastSelected = null;
+    }
+    indexPagePickerState.syncing = false;
+    refreshIndexPagePickerSelectionUi();
+    renderIndexPagePickerDetail(indexPagePickerState.lastSelected);
+  }
+
+  function setIndexPagePickerRenderProgress(done, total) {
+    indexPagePickerProgressBar.max = total || 1;
+    indexPagePickerProgressBar.value = done;
+    indexPagePickerProgressStats.textContent = done + " / " + total;
+  }
+
+  function buildIndexPagePickerGrid(thumbs) {
+    indexPagePickerGrid.innerHTML = "";
+    for (var i = 0; i < thumbs.length; i++) {
+      var item = thumbs[i];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "page-picker-thumb";
+      btn.dataset.page = String(item.pageNum);
+      btn.title = "Pagina " + item.pageNum;
+      var img = document.createElement("img");
+      img.alt = "Pagina " + item.pageNum;
+      img.src = item.thumbUrl;
+      var numEl = document.createElement("span");
+      numEl.className = "page-picker-thumb-num";
+      numEl.textContent = String(item.pageNum);
+      btn.appendChild(img);
+      btn.appendChild(numEl);
+      btn.addEventListener("click", function () {
+        toggleIndexPagePickerSelection(parseInt(this.dataset.page, 10));
+      });
+      indexPagePickerGrid.appendChild(btn);
+    }
+    refreshIndexPagePickerSelectionUi();
+  }
+
+  async function renderIndexPagePickerDetail(pageNum) {
+    if (!pageNum || !pagePickerState.pdfDoc || pageNum < 1 || pageNum > pagePickerState.numPages) {
+      indexPagePickerDetailNum.textContent = "—";
+      indexPagePickerDetailImg.classList.add("hidden");
+      indexPagePickerDetailEmpty.textContent = "Seleziona una pagina nella griglia o scrivi l’intervallo nel campo sopra.";
+      indexPagePickerDetailEmpty.classList.remove("hidden");
+      indexPagePickerDetailImg.removeAttribute("src");
+      return;
+    }
+    indexPagePickerDetailNum.textContent = String(pageNum);
+    indexPagePickerDetailEmpty.classList.add("hidden");
+    indexPagePickerDetailImg.classList.remove("hidden");
+    if (indexPagePickerState.detailCache[pageNum]) {
+      indexPagePickerDetailImg.src = indexPagePickerState.detailCache[pageNum];
+      return;
+    }
+    indexPagePickerDetailImg.removeAttribute("src");
+    try {
+      var url = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 1.1);
+      indexPagePickerState.detailCache[pageNum] = url;
+      if (indexPagePickerState.lastSelected === pageNum) indexPagePickerDetailImg.src = url;
+    } catch (_) {
+      indexPagePickerDetailEmpty.textContent = "Anteprima non disponibile per la pagina " + pageNum + ".";
+      indexPagePickerDetailEmpty.classList.remove("hidden");
+      indexPagePickerDetailImg.classList.add("hidden");
+    }
+  }
+
+  function toggleIndexPagePickerSelection(pageNum) {
+    var excluded = getExcludedPagesSet();
+    if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
+    if (indexPagePickerState.selected[pageNum]) delete indexPagePickerState.selected[pageNum];
+    else indexPagePickerState.selected[pageNum] = true;
+    indexPagePickerState.lastSelected = pageNum;
+    refreshIndexPagePickerSelectionUi();
+    syncIndexPagePickerFieldFromSelection();
+    renderIndexPagePickerDetail(pageNum);
+  }
+
+  function resetIndexPagePicker() {
+    indexPagePickerState.selected = {};
+    indexPagePickerState.lastSelected = null;
+    indexPagePickerState.detailCache = {};
+    indexPagePickerState.rendering = false;
+    indexPagePickerGrid.innerHTML = "";
+    indexPagePickerGridWrap.classList.remove("is-rendering");
+    setIndexPagePickerRenderProgress(0, 0);
+    indexPagePickerPanel.classList.remove("show", "is-loading");
+    renderIndexPagePickerDetail(null);
+    updateIndexPagePickerMeta();
+  }
+
+  async function refreshIndexPagePicker() {
+    if (!pagePickerState.pdfDoc || !pagePickerState.numPages) {
+      resetIndexPagePicker();
+      return;
+    }
+    var loadGen = pagePickerState.loadGen;
+    var available = getPickerAvailablePages();
+    var excluded = getExcludedPagesSet();
+    var selected = indexSelectedPagesList().filter(function (p) { return !excluded[p]; });
+    indexPagePickerState.selected = {};
+    for (var i = 0; i < selected.length; i++) indexPagePickerState.selected[selected[i]] = true;
+    if (selected.length) indexPagePickerState.lastSelected = selected[selected.length - 1];
+    else if (indexPagePickerState.lastSelected && excluded[indexPagePickerState.lastSelected]) {
+      indexPagePickerState.lastSelected = null;
+    }
+
+    indexPagePickerPanel.classList.add("show");
+    if (!available.length) {
+      indexPagePickerGridWrap.classList.remove("is-rendering");
+      indexPagePickerGrid.innerHTML = "";
+      indexPagePickerMeta.textContent = "Nessuna pagina disponibile: tutte risultano escluse.";
+      renderIndexPagePickerDetail(null);
+      return;
+    }
+
+    var pending = [];
+    var i;
+    var pageNum;
+    for (i = 0; i < available.length; i++) {
+      pageNum = available[i];
+      if (pagePickerState.thumbUrls[pageNum]) continue;
+      pending.push(pageNum);
+    }
+
+    if (pending.length) {
+      indexPagePickerState.rendering = true;
+      indexPagePickerGridWrap.classList.add("is-rendering");
+      setIndexPagePickerRenderProgress(0, pending.length);
+      for (i = 0; i < pending.length; i++) {
+        if (loadGen !== pagePickerState.loadGen) return;
+        pageNum = pending[i];
+        try {
+          pagePickerState.thumbUrls[pageNum] = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 0.22);
+        } catch (_) {
+          pagePickerState.thumbUrls[pageNum] = makeFallbackThumb(pageNum);
+        }
+        setIndexPagePickerRenderProgress(i + 1, pending.length);
+      }
+      if (loadGen !== pagePickerState.loadGen) return;
+      indexPagePickerState.rendering = false;
+    }
+
+    var thumbs = [];
+    for (i = 0; i < available.length; i++) {
+      pageNum = available[i];
+      thumbs.push({
+        pageNum: pageNum,
+        thumbUrl: pagePickerState.thumbUrls[pageNum] || makeFallbackThumb(pageNum),
+      });
+    }
+    buildIndexPagePickerGrid(thumbs);
+    indexPagePickerGridWrap.classList.remove("is-rendering");
+    syncIndexPagePickerSelectionFromField();
+    syncIndexPagePickerFieldFromSelection();
+    if (indexPagePickerState.lastSelected) renderIndexPagePickerDetail(indexPagePickerState.lastSelected);
+  }
+
+  async function renderPdfPageToDataUrl(pdfDoc, pageNum, scale) {
+    var page = await pdfDoc.getPage(pageNum);
+    var viewport = page.getViewport({ scale: scale });
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d", { alpha: false });
+    if (!ctx) throw new Error("canvas 2d non disponibile");
+    canvas.width = Math.max(1, Math.ceil(viewport.width));
+    canvas.height = Math.max(1, Math.ceil(viewport.height));
+    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+    return canvas.toDataURL("image/png");
+  }
+
+  function setPagePickerRenderProgress(done, total) {
+    pagePickerProgressBar.max = total || 1;
+    pagePickerProgressBar.value = done;
+    pagePickerProgressStats.textContent = done + " / " + total;
+  }
+
+  function buildPagePickerGrid(thumbs) {
+    pagePickerGrid.innerHTML = "";
+    for (var i = 0; i < thumbs.length; i++) {
+      var item = thumbs[i];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "page-picker-thumb";
+      btn.dataset.page = String(item.pageNum);
+      btn.title = "Pagina " + item.pageNum;
+      var img = document.createElement("img");
+      img.alt = "Pagina " + item.pageNum;
+      img.src = item.thumbUrl;
+      var numEl = document.createElement("span");
+      numEl.className = "page-picker-thumb-num";
+      numEl.textContent = String(item.pageNum);
+      btn.appendChild(img);
+      btn.appendChild(numEl);
+      btn.addEventListener("click", function () {
+        togglePagePickerSelection(parseInt(this.dataset.page, 10));
+      });
+      pagePickerGrid.appendChild(btn);
+    }
+    refreshPagePickerSelectionUi();
+  }
+
+  async function renderPagePickerDetail(pageNum) {
+    if (!pageNum || !pagePickerState.pdfDoc || pageNum < 1 || pageNum > pagePickerState.numPages) {
+      pagePickerDetailNum.textContent = "—";
+      pagePickerDetailImg.classList.add("hidden");
+      pagePickerDetailEmpty.textContent = "Seleziona una pagina nella griglia o scrivi il numero nel campo sopra.";
+      pagePickerDetailEmpty.classList.remove("hidden");
+      pagePickerDetailImg.removeAttribute("src");
+      return;
+    }
+    pagePickerDetailNum.textContent = String(pageNum);
+    pagePickerDetailEmpty.classList.add("hidden");
+    pagePickerDetailImg.classList.remove("hidden");
+    if (pagePickerState.detailCache[pageNum]) {
+      pagePickerDetailImg.src = pagePickerState.detailCache[pageNum];
+      return;
+    }
+    pagePickerDetailImg.removeAttribute("src");
+    try {
+      var url = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 1.1);
+      pagePickerState.detailCache[pageNum] = url;
+      if (pagePickerState.lastSelected === pageNum) pagePickerDetailImg.src = url;
+    } catch (_) {
+      pagePickerDetailEmpty.textContent = "Anteprima non disponibile per la pagina " + pageNum + ".";
+      pagePickerDetailEmpty.classList.remove("hidden");
+      pagePickerDetailImg.classList.add("hidden");
+    }
+  }
+
+  function togglePagePickerSelection(pageNum) {
+    if (pageNum < 1 || pageNum > pagePickerState.numPages) return;
+    if (pagePickerState.selected[pageNum]) delete pagePickerState.selected[pageNum];
+    else pagePickerState.selected[pageNum] = true;
+    pagePickerState.lastSelected = pageNum;
+    refreshPagePickerSelectionUi();
+    syncPagePickerFieldFromSelection();
+    renderPagePickerDetail(pageNum);
+  }
+
+  function resetPagePicker() {
+    pagePickerState.loadGen += 1;
+    pagePickerState.pdfDoc = null;
+    pagePickerState.numPages = 0;
+    pagePickerState.selected = {};
+    pagePickerState.lastSelected = null;
+    pagePickerState.thumbUrls = {};
+    pagePickerState.detailCache = {};
+    pagePickerGrid.innerHTML = "";
+    pagePickerGridWrap.classList.remove("is-rendering");
+    setPagePickerRenderProgress(0, 0);
+    pagePickerPanel.classList.remove("show", "is-loading");
+    renderPagePickerDetail(null);
+    updatePagePickerMeta();
+    resetTocPagePicker();
+    resetIndexPagePicker();
+  }
+
+  async function loadPagePickerFromFile(file) {
+    resetPagePicker();
+    if (!file || !file.size) return;
+    var loadGen = pagePickerState.loadGen;
+    pagePickerPanel.classList.add("show", "is-loading");
+    pagePickerGridWrap.classList.add("is-rendering");
+    pagePickerMeta.textContent = "Caricamento PDF…";
+    try {
+      var mod = await pdfJs();
+      var buf = await file.arrayBuffer();
+      var pdfDoc = await mod.getDocument({ data: buf }).promise;
+      if (loadGen !== pagePickerState.loadGen) return;
+      pagePickerState.pdfDoc = pdfDoc;
+      pagePickerState.numPages = pdfDoc.numPages;
+      syncPagePickerSelectionFromField();
+      setPagePickerRenderProgress(0, pdfDoc.numPages);
+      var thumbs = [];
+      for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+        if (loadGen !== pagePickerState.loadGen) return;
+        try {
+          var thumbUrl = await renderPdfPageToDataUrl(pdfDoc, pageNum, 0.22);
+          if (loadGen !== pagePickerState.loadGen) return;
+          pagePickerState.thumbUrls[pageNum] = thumbUrl;
+          thumbs.push({ pageNum: pageNum, thumbUrl: thumbUrl });
+        } catch (thumbErr) {
+          thumbs.push({
+            pageNum: pageNum,
+            thumbUrl: makeFallbackThumb(pageNum),
+          });
+        }
+        setPagePickerRenderProgress(pageNum, pdfDoc.numPages);
+      }
+      if (loadGen !== pagePickerState.loadGen) return;
+      buildPagePickerGrid(thumbs);
+      pagePickerGridWrap.classList.remove("is-rendering");
+      pagePickerPanel.classList.remove("is-loading");
+      updatePagePickerMeta();
+      if (pagePickerState.lastSelected) renderPagePickerDetail(pagePickerState.lastSelected);
+      await refreshFilteredRangePickers();
+    } catch (err) {
+      if (loadGen !== pagePickerState.loadGen) return;
+      pagePickerGridWrap.classList.remove("is-rendering");
+      pagePickerPanel.classList.remove("is-loading");
+      pagePickerMeta.textContent = "Anteprima non disponibile: " + String(err && err.message ? err.message : err);
+    }
+  }
+
+  pagesToRemoveInput.addEventListener("input", syncPagePickerSelectionFromField);
+  pagesToRemoveInput.addEventListener("change", syncPagePickerSelectionFromField);
+  tocRangeInput.addEventListener("input", syncTocPagePickerSelectionFromField);
+  tocRangeInput.addEventListener("change", syncTocPagePickerSelectionFromField);
+  indexRangeInput.addEventListener("input", syncIndexPagePickerSelectionFromField);
+  indexRangeInput.addEventListener("change", syncIndexPagePickerSelectionFromField);
+
   function contiguousBounds(sortedUnique) {
     if (sortedUnique.length === 0) throw new Error("valore obbligatorio");
     var lo = sortedUnique[0];
@@ -315,6 +1275,11 @@ a { color: #4ec9b0; }
   }
 
   var form = document.getElementById("ingest-form");
+  form.querySelector('[name="pdf_file"]').addEventListener("change", function (event) {
+    var input = event.target;
+    var file = input.files && input.files.length ? input.files[0] : null;
+    loadPagePickerFromFile(file);
+  });
   var out = document.getElementById("out");
   var btn = document.getElementById("submit-btn");
   var progressBox = document.getElementById("progress");
@@ -323,6 +1288,584 @@ a { color: #4ec9b0; }
   var globalTimeEl = document.getElementById("global-time");
   var globalStatsEl = document.getElementById("global-stats");
   var phaseRowsEl = document.getElementById("phase-rows");
+  var ingestPagesPanel = document.getElementById("ingest-pages-panel");
+  var ingestProcessedStats = document.getElementById("ingest-processed-stats");
+  var ingestProcessedChips = document.getElementById("ingest-processed-chips");
+  var ingestReviewAllBtn = document.getElementById("ingest-review-all-btn");
+  var ingestPendingStats = document.getElementById("ingest-pending-stats");
+  var ingestPendingTableWrap = document.getElementById("ingest-pending-table-wrap");
+
+  var ingestPagesState = {
+    sourceSha256: "",
+    expectedPages: [],
+    processedPages: [],
+    failedPages: {},
+    auditBook: null,
+  };
+  var ingestAuditTimer = null;
+
+  var STAGE_LABELS = {
+    stage1OCR: "Stage1 OCR",
+    stage2Vision: "Stage2 Vision",
+    stage3Editor: "Stage3 Editor",
+    output: "Output",
+  };
+
+  function resetIngestPagesState() {
+    if (ingestAuditTimer) {
+      clearTimeout(ingestAuditTimer);
+      ingestAuditTimer = null;
+    }
+    ingestPagesState = {
+      sourceSha256: "",
+      expectedPages: [],
+      processedPages: [],
+      failedPages: {},
+      auditBook: null,
+    };
+    ingestPagesPanel.classList.remove("show");
+    renderIngestPagesSections();
+  }
+
+  function sortedUniquePages(list) {
+    var set = {};
+    for (var i = 0; i < list.length; i++) set[list[i]] = true;
+    return Object.keys(set).map(function (k) { return parseInt(k, 10); }).sort(function (a, b) { return a - b; });
+  }
+
+  function addProcessedPage(aligned) {
+    if (!aligned || aligned < 1) return;
+    if (ingestPagesState.processedPages.indexOf(aligned) >= 0) return;
+    ingestPagesState.processedPages.push(aligned);
+    ingestPagesState.processedPages.sort(function (a, b) { return a - b; });
+    delete ingestPagesState.failedPages[aligned];
+  }
+
+  function noteFailedPage(phase, aligned) {
+    if (!aligned || aligned < 1) return;
+    ingestPagesState.failedPages[aligned] = phase || "pipeline";
+  }
+
+  function scheduleIngestAuditRefresh() {
+    if (!ingestPagesState.sourceSha256) return;
+    if (ingestAuditTimer) clearTimeout(ingestAuditTimer);
+    ingestAuditTimer = setTimeout(function () {
+      ingestAuditTimer = null;
+      refreshIngestAudit().catch(function () {});
+    }, 800);
+  }
+
+  async function apiFetch(url, options) {
+    var opts = options || {};
+    opts.headers = Object.assign({}, opts.headers || {});
+    var token = apiToken();
+    if (token) opts.headers["X-API-Token"] = token;
+    var res = await fetch(url, opts);
+    if (res.status === 401) {
+      var entered = promptApiToken();
+      if (entered) {
+        opts.headers["X-API-Token"] = entered;
+        res = await fetch(url, opts);
+      }
+    }
+    return res;
+  }
+
+  async function refreshIngestAudit() {
+    if (!ingestPagesState.sourceSha256) return;
+    var params = new URLSearchParams({ source_sha256: ingestPagesState.sourceSha256 });
+    var res = await apiFetch("/api/admin/book-pages-audit?" + params.toString());
+    var data = await res.json();
+    if (!res.ok || !data.ok) return;
+    ingestPagesState.auditBook = (data.books && data.books.length) ? data.books[0] : null;
+    renderIngestPagesSections();
+  }
+
+  function buildPendingEntries() {
+    var byPage = {};
+    var expected = ingestPagesState.expectedPages.slice();
+    var processedSet = {};
+    for (var i = 0; i < ingestPagesState.processedPages.length; i++) {
+      processedSet[ingestPagesState.processedPages[i]] = true;
+    }
+    for (i = 0; i < expected.length; i++) {
+      var aligned = expected[i];
+      if (processedSet[aligned]) continue;
+      byPage[aligned] = {
+        aligned: aligned,
+        kind: ingestPagesState.failedPages[aligned] ? "failed" : "waiting",
+        missing_in: [],
+        failedPhase: ingestPagesState.failedPages[aligned] || "",
+        pendingReview: false,
+      };
+    }
+    var book = ingestPagesState.auditBook;
+    if (book) {
+      for (i = 0; i < (book.missing_pages || []).length; i++) {
+        var entry = book.missing_pages[i];
+        if (processedSet[entry.aligned]) continue;
+        if (byPage[entry.aligned]) {
+          byPage[entry.aligned].kind = "gap";
+          byPage[entry.aligned].missing_in = entry.missing_in || [];
+        } else {
+          byPage[entry.aligned] = {
+            aligned: entry.aligned,
+            kind: "gap",
+            missing_in: entry.missing_in || [],
+            failedPhase: "",
+            pendingReview: false,
+          };
+        }
+      }
+      for (i = 0; i < (book.pending_review_pages || []).length; i++) {
+        aligned = book.pending_review_pages[i];
+        if (processedSet[aligned]) continue;
+        if (byPage[aligned]) byPage[aligned].pendingReview = true;
+        else {
+          byPage[aligned] = {
+            aligned: aligned,
+            kind: "review",
+            missing_in: [],
+            failedPhase: "",
+            pendingReview: true,
+          };
+        }
+      }
+    }
+    return Object.keys(byPage).map(function (k) { return byPage[k]; }).sort(function (a, b) { return a.aligned - b.aligned; });
+  }
+
+  function createIconButton(label, title, onClick) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "audit-view-btn";
+    btn.textContent = label;
+    btn.title = title;
+    btn.addEventListener("click", function (event) {
+      event.preventDefault();
+      onClick();
+    });
+    return btn;
+  }
+
+  function renderIngestPagesSections() {
+    var processed = ingestPagesState.processedPages.slice();
+    var pending = buildPendingEntries();
+    var hasPages = processed.length || pending.length || ingestPagesState.expectedPages.length;
+    ingestPagesPanel.classList.toggle("show", hasPages && progressBox.classList.contains("show"));
+
+    ingestProcessedStats.textContent = processed.length
+      ? processed.length + " pagin" + (processed.length === 1 ? "a" : "e") + " con Stage 3 completato"
+      : "Nessuna pagina ancora.";
+    ingestReviewAllBtn.disabled = processed.length === 0;
+    ingestProcessedChips.innerHTML = "";
+    for (var i = 0; i < processed.length; i++) {
+      (function (pageNum) {
+        var chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "ingest-page-chip";
+        chip.textContent = String(pageNum);
+        chip.title = "Review pagina " + pageNum;
+        chip.addEventListener("click", function () {
+          openPageReview(ingestPagesState.sourceSha256, pageNum, processed);
+        });
+        ingestProcessedChips.appendChild(chip);
+      })(processed[i]);
+    }
+
+    ingestPendingStats.textContent = pending.length
+      ? pending.length + " pagin" + (pending.length === 1 ? "a" : "e") + " ancora da completare"
+      : (ingestPagesState.expectedPages.length ? "Tutte le pagine attese risultano elaborate." : "Nessuna pagina in attesa.");
+    ingestPendingTableWrap.innerHTML = "";
+    if (!pending.length) return;
+
+    var table = document.createElement("table");
+    table.className = "audit-pages-table";
+    var colgroup = document.createElement("colgroup");
+    for (var c = 0; c < 3; c++) {
+      var col = document.createElement("col");
+      col.className = c === 0 ? "audit-col-page" : (c === 1 ? "audit-col-status" : "audit-col-actions");
+      colgroup.appendChild(col);
+    }
+    table.appendChild(colgroup);
+    var thead = document.createElement("thead");
+    var headTr = document.createElement("tr");
+    ["Pagina", "Stato", ""].forEach(function (text) {
+      var th = document.createElement("th");
+      th.textContent = text;
+      headTr.appendChild(th);
+    });
+    thead.appendChild(headTr);
+    table.appendChild(thead);
+    var tbody = document.createElement("tbody");
+    var viewerPages = (ingestPagesState.auditBook && ingestPagesState.auditBook.viewer_pages) || pending.map(function (e) { return e.aligned; });
+    var reviewPages = (ingestPagesState.auditBook && ingestPagesState.auditBook.pending_review_pages) || [];
+    for (i = 0; i < pending.length; i++) {
+      var row = pending[i];
+      var tr = document.createElement("tr");
+      if (row.pendingReview) tr.classList.add("audit-row-pending-review");
+      var tdPage = document.createElement("td");
+      var controls = document.createElement("div");
+      controls.className = "audit-page-controls";
+      var pageNumEl = document.createElement("span");
+      pageNumEl.className = "audit-page-num";
+      pageNumEl.textContent = String(row.aligned);
+      controls.appendChild(pageNumEl);
+      if (ingestPagesState.sourceSha256) {
+        controls.appendChild(createIconButton("▣", "Visualizza pagina", function () {
+          openPagePreview(ingestPagesState.sourceSha256, row.aligned, viewerPages);
+        }));
+      }
+      tdPage.appendChild(controls);
+      var tdStatus = document.createElement("td");
+      if (row.kind === "waiting") {
+        tdStatus.innerHTML = '<span class="audit-status-wait">In attesa</span>';
+      } else if (row.kind === "failed") {
+        tdStatus.innerHTML = '<span class="audit-status-failed">Errore (' + (row.failedPhase || "pipeline") + ")</span>";
+      } else if (row.missing_in.length) {
+        tdStatus.innerHTML = '<span class="audit-status-gap">Mancante in: ' + row.missing_in.map(function (s) { return STAGE_LABELS[s] || s; }).join(", ") + "</span>";
+      } else if (row.pendingReview) {
+        tdStatus.innerHTML = '<span class="audit-status-gap">In review</span>';
+      } else {
+        tdStatus.innerHTML = '<span class="audit-status-wait">Non elaborata</span>';
+      }
+      var tdActions = document.createElement("td");
+      if (ingestPagesState.sourceSha256 && (row.pendingReview || row.kind === "review")) {
+        tdActions.appendChild(createIconButton("⎘", "Review immagine + testo", function () {
+          openPageReview(ingestPagesState.sourceSha256, row.aligned, reviewPages.length ? reviewPages : [row.aligned]);
+        }));
+      }
+      tr.append(tdPage, tdStatus, tdActions);
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    ingestPendingTableWrap.appendChild(table);
+  }
+
+  var pagePreviewOverlay = document.getElementById("page-preview-overlay");
+  var pagePreviewTitle = document.getElementById("page-preview-title");
+  var pagePreviewImg = document.getElementById("page-preview-img");
+  var pagePreviewPrev = document.getElementById("page-preview-prev");
+  var pagePreviewNext = document.getElementById("page-preview-next");
+  var pagePreviewState = { sha: "", pages: [], index: 0 };
+
+  var pageReviewOverlay = document.getElementById("page-review-overlay");
+  var pageReviewTitle = document.getElementById("page-review-title");
+  var pageReviewMeta = document.getElementById("page-review-meta");
+  var pageReviewImg = document.getElementById("page-review-img");
+  var pageReviewImgFrame = document.getElementById("page-review-img-frame");
+  var pageReviewTextFrame = document.getElementById("page-review-text-frame");
+  var pageReviewText = document.getElementById("page-review-text");
+  var pageReviewConfirm = document.getElementById("page-review-confirm");
+  var pageReviewReset = document.getElementById("page-review-reset");
+  var pageReviewConfirmedLabel = document.getElementById("page-review-confirmed-label");
+  var pageReviewPrev = document.getElementById("page-review-prev");
+  var pageReviewNext = document.getElementById("page-review-next");
+  var pageReviewState = { sha: "", pages: [], index: 0, baselineText: "", stage: "" };
+  var pageReviewLoadGen = 0;
+  var pageReviewDimCache = {};
+
+  function pagePreviewUrl(sourceSha256, alignedPage) {
+    var params = new URLSearchParams({
+      source_sha256: sourceSha256,
+      aligned_page: String(alignedPage),
+    });
+    var token = apiToken();
+    if (token) params.set("token", token);
+    return "/api/admin/book-pages/render?" + params.toString();
+  }
+
+  function reviewDimCacheKey(sha, aligned) {
+    return sha + "|" + aligned;
+  }
+
+  function applyReviewFrameSizes(w, h) {
+    var ws = w + "px";
+    var hs = h + "px";
+    pageReviewImgFrame.style.width = ws;
+    pageReviewImgFrame.style.height = hs;
+    pageReviewTextFrame.style.width = ws;
+    pageReviewTextFrame.style.height = hs;
+  }
+
+  function computeReviewFrameSize(nw, nh) {
+    var panels = pageReviewOverlay.querySelector(".page-review-panels");
+    var maxH = Math.min(Math.max(280, window.innerHeight * 0.92 - 160), 860);
+    var panelsWidth = panels.clientWidth || Math.min(window.innerWidth * 0.92, 1480) - 120;
+    var maxW = Math.max(200, panelsWidth / 2 - 6);
+    var h = maxH;
+    var w = (h * nw) / nh;
+    if (w > maxW) {
+      w = maxW;
+      h = (w * nh) / nw;
+    }
+    return { w: Math.round(w), h: Math.round(h) };
+  }
+
+  function isPageReviewDirty() {
+    return pageReviewText.value !== pageReviewState.baselineText;
+  }
+
+  function updatePageReviewResetState() {
+    pageReviewReset.disabled = !isPageReviewDirty();
+  }
+
+  function setPageReviewToolbarConfirmed(confirmed) {
+    pageReviewConfirm.classList.toggle("hidden", confirmed);
+    pageReviewReset.classList.toggle("hidden", confirmed);
+    pageReviewConfirmedLabel.classList.toggle("hidden", !confirmed);
+    pageReviewText.readOnly = confirmed;
+    if (confirmed) {
+      pageReviewConfirm.disabled = false;
+      pageReviewReset.disabled = true;
+    }
+  }
+
+  function syncPageReviewNav() {
+    var solo = pageReviewState.pages.length <= 1;
+    pageReviewPrev.classList.toggle("hidden", solo);
+    pageReviewNext.classList.toggle("hidden", solo);
+  }
+
+  function syncReviewFrameSizes(nw, nh) {
+    var naturalW = nw || pageReviewImg.naturalWidth;
+    var naturalH = nh || pageReviewImg.naturalHeight;
+    if (!naturalW || !naturalH) return;
+    var size = computeReviewFrameSize(naturalW, naturalH);
+    applyReviewFrameSizes(size.w, size.h);
+    var aligned = pageReviewState.pages[pageReviewState.index];
+    if (aligned != null) pageReviewDimCache[reviewDimCacheKey(pageReviewState.sha, aligned)] = size;
+  }
+
+  function refreshPagePreview() {
+    var aligned = pagePreviewState.pages[pagePreviewState.index];
+    pagePreviewTitle.textContent = "Pagina " + aligned;
+    pagePreviewImg.alt = "Pagina " + aligned;
+    pagePreviewPrev.disabled = pagePreviewState.index <= 0;
+    pagePreviewNext.disabled = pagePreviewState.index >= pagePreviewState.pages.length - 1;
+    pagePreviewImg.src = pagePreviewUrl(pagePreviewState.sha, aligned);
+  }
+
+  function openPagePreview(sourceSha256, alignedPage, viewerPages) {
+    var pages = Array.isArray(viewerPages) && viewerPages.length ? viewerPages.slice() : [alignedPage];
+    var index = pages.indexOf(alignedPage);
+    if (index < 0) {
+      pages.push(alignedPage);
+      pages.sort(function (a, b) { return a - b; });
+      index = pages.indexOf(alignedPage);
+    }
+    pagePreviewState = { sha: sourceSha256, pages: pages, index: index };
+    pagePreviewOverlay.classList.remove("hidden");
+    pagePreviewOverlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    refreshPagePreview();
+  }
+
+  function closePagePreview() {
+    pagePreviewOverlay.classList.add("hidden");
+    pagePreviewOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    pagePreviewImg.removeAttribute("src");
+  }
+
+  async function refreshPageReview() {
+    setPageReviewToolbarConfirmed(false);
+    var aligned = pageReviewState.pages[pageReviewState.index];
+    var loadGen = ++pageReviewLoadGen;
+    pageReviewText.readOnly = true;
+    pageReviewConfirm.disabled = true;
+    pageReviewTitle.textContent = "Review — Pagina " + aligned;
+    pageReviewMeta.textContent = "Caricamento testo…";
+    pageReviewText.value = "";
+    pageReviewState.baselineText = "";
+    syncPageReviewNav();
+    pageReviewPrev.disabled = pageReviewState.index <= 0;
+    pageReviewNext.disabled = pageReviewState.index >= pageReviewState.pages.length - 1;
+    var dimKey = reviewDimCacheKey(pageReviewState.sha, aligned);
+    if (pageReviewDimCache[dimKey]) applyReviewFrameSizes(pageReviewDimCache[dimKey].w, pageReviewDimCache[dimKey].h);
+    var imgUrl = pagePreviewUrl(pageReviewState.sha, aligned);
+    var preload = new Image();
+    preload.onload = function () {
+      if (loadGen !== pageReviewLoadGen) return;
+      var size = computeReviewFrameSize(preload.naturalWidth, preload.naturalHeight);
+      applyReviewFrameSizes(size.w, size.h);
+      pageReviewDimCache[dimKey] = size;
+      pageReviewImg.src = imgUrl;
+    };
+    preload.src = imgUrl;
+    try {
+      var params = new URLSearchParams({
+        source_sha256: pageReviewState.sha,
+        aligned_page: String(aligned),
+      });
+      var res = await apiFetch("/api/admin/book-pages/transcript?" + params.toString());
+      if (loadGen !== pageReviewLoadGen) return;
+      var data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.error || "Testo non disponibile");
+      pageReviewText.value = data.text || "";
+      pageReviewState.baselineText = pageReviewText.value;
+      pageReviewState.stage = data.stage || "";
+      var modelHint = data.producer_model ? " · modello " + data.producer_model : "";
+      pageReviewMeta.textContent = "Fonte: " + (pageReviewState.stage || "sconosciuta") + modelHint;
+    } catch (err) {
+      if (loadGen !== pageReviewLoadGen) return;
+      pageReviewMeta.textContent = String(err.message || err);
+    }
+    pageReviewText.readOnly = false;
+    pageReviewConfirm.disabled = false;
+    updatePageReviewResetState();
+  }
+
+  function openPageReview(sourceSha256, alignedPage, reviewPages) {
+    var pages = Array.isArray(reviewPages) && reviewPages.length ? reviewPages.slice() : [alignedPage];
+    var index = pages.indexOf(alignedPage);
+    if (index < 0) {
+      pages.push(alignedPage);
+      pages.sort(function (a, b) { return a - b; });
+      index = pages.indexOf(alignedPage);
+    }
+    pageReviewState = { sha: sourceSha256, pages: pages, index: index, baselineText: "", stage: "" };
+    pageReviewOverlay.classList.remove("hidden");
+    pageReviewOverlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    refreshPageReview();
+  }
+
+  function closePageReview() {
+    if (isPageReviewDirty() && !window.confirm("Ci sono modifiche non salvate. Scartarle?")) return;
+    pageReviewOverlay.classList.add("hidden");
+    pageReviewOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    pageReviewImg.removeAttribute("src");
+    pageReviewImgFrame.style.width = "";
+    pageReviewImgFrame.style.height = "";
+    pageReviewTextFrame.style.width = "";
+    pageReviewTextFrame.style.height = "";
+    pageReviewText.value = "";
+    setPageReviewToolbarConfirmed(false);
+  }
+
+  async function changePageReviewIndex(nextIndex) {
+    if (isPageReviewDirty() && !window.confirm("Ci sono modifiche non salvate. Scartarle?")) return;
+    pageReviewState.index = nextIndex;
+    await refreshPageReview();
+  }
+
+  async function confirmPageReviewText() {
+    var aligned = pageReviewState.pages[pageReviewState.index];
+    pageReviewConfirm.disabled = true;
+    var res = await apiFetch("/api/admin/book-pages/transcript/confirm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_sha256: pageReviewState.sha,
+        aligned_page: aligned,
+        text: pageReviewText.value,
+      }),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || "Conferma fallita");
+    pageReviewState.baselineText = pageReviewText.value;
+    pageReviewMeta.textContent = "Scritto in stage3 e output";
+    setPageReviewToolbarConfirmed(true);
+    await refreshIngestAudit();
+  }
+
+  ingestReviewAllBtn.addEventListener("click", function () {
+    if (!ingestPagesState.sourceSha256 || !ingestPagesState.processedPages.length) return;
+    openPageReview(
+      ingestPagesState.sourceSha256,
+      ingestPagesState.processedPages[0],
+      ingestPagesState.processedPages.slice()
+    );
+  });
+
+  pagePreviewPrev.addEventListener("click", function () {
+    if (pagePreviewState.index <= 0) return;
+    pagePreviewState.index -= 1;
+    refreshPagePreview();
+  });
+  pagePreviewNext.addEventListener("click", function () {
+    if (pagePreviewState.index >= pagePreviewState.pages.length - 1) return;
+    pagePreviewState.index += 1;
+    refreshPagePreview();
+  });
+  document.getElementById("page-preview-close").addEventListener("click", closePagePreview);
+  document.getElementById("page-preview-backdrop").addEventListener("click", closePagePreview);
+  pagePreviewOverlay.querySelector(".page-preview-dialog").addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+
+  pageReviewImg.addEventListener("load", function () { syncReviewFrameSizes(); });
+  pageReviewText.addEventListener("input", updatePageReviewResetState);
+  pageReviewConfirm.addEventListener("click", function () {
+    confirmPageReviewText().catch(function (err) {
+      show("err", String(err.message || err));
+      pageReviewConfirm.disabled = false;
+    });
+  });
+  pageReviewReset.addEventListener("click", function () {
+    pageReviewText.value = pageReviewState.baselineText;
+    updatePageReviewResetState();
+  });
+  pageReviewPrev.addEventListener("click", function () {
+    if (pageReviewState.index <= 0) return;
+    changePageReviewIndex(pageReviewState.index - 1);
+  });
+  pageReviewNext.addEventListener("click", function () {
+    if (pageReviewState.index >= pageReviewState.pages.length - 1) return;
+    changePageReviewIndex(pageReviewState.index + 1);
+  });
+  document.getElementById("page-review-close").addEventListener("click", closePageReview);
+  document.getElementById("page-review-backdrop").addEventListener("click", closePageReview);
+  pageReviewOverlay.querySelector(".page-preview-dialog").addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+    if (!pagePreviewOverlay.classList.contains("hidden")) closePagePreview();
+    else if (!pageReviewOverlay.classList.contains("hidden")) closePageReview();
+  });
+  window.addEventListener("resize", function () {
+    if (!pageReviewOverlay.classList.contains("hidden")) syncReviewFrameSizes();
+  });
+
+  function handleIngestPageEvent(ev) {
+    if (ev.phase === "validation" && ev.status === "completed" && ev.source_sha256) {
+      ingestPagesState.sourceSha256 = String(ev.source_sha256).trim().toLowerCase();
+    }
+    if (ev.phase === "page_enumeration" && ev.status === "completed" && ev.aligned_useful_pages) {
+      ingestPagesState.expectedPages = sortedUniquePages(ev.aligned_useful_pages);
+    }
+    if (ev.status === "page_failed" && ev.aligned_page) {
+      noteFailedPage(ev.phase, ev.aligned_page);
+    }
+    if (ev.phase === "stage3_editor" && (ev.status === "page_progress" || ev.status === "page_skipped") && ev.aligned_page) {
+      addProcessedPage(ev.aligned_page);
+      scheduleIngestAuditRefresh();
+    }
+    renderIngestPagesSections();
+  }
+
+  function applyResultPagesState(result) {
+    if (!result || typeof result !== "object") return;
+    var enriched = result.enriched || {};
+    if (enriched.source_sha256) ingestPagesState.sourceSha256 = String(enriched.source_sha256).trim().toLowerCase();
+    var enumeration = result.useful_pages_enumeration || {};
+    if (enumeration.original_page_to_aligned_page && enumeration.useful_original_pages) {
+      ingestPagesState.expectedPages = sortedUniquePages(
+        enumeration.useful_original_pages.map(function (orig) {
+          return enumeration.original_page_to_aligned_page[orig];
+        })
+      );
+    }
+    var stage3 = result.stage3;
+    if (stage3 && Array.isArray(stage3.pages)) {
+      ingestPagesState.processedPages = sortedUniquePages(stage3.pages.map(function (p) { return p.aligned_page; }));
+    }
+    scheduleIngestAuditRefresh();
+    renderIngestPagesSections();
+  }
 
   var elapsedSeconds = 0;
   var phaseDurations = {};
@@ -489,6 +2032,7 @@ a { color: #4ec9b0; }
   function resetProgress() {
     progressBox.classList.remove("show");
     clearProgressAlert();
+    resetIngestPagesState();
     globalStep = 0;
     globalTotal = 0;
     elapsedSeconds = 0;
@@ -520,6 +2064,7 @@ a { color: #4ec9b0; }
   }
 
   function handleEvent(ev) {
+    handleIngestPageEvent(ev);
     var phase = ev.phase;
     var status = ev.status;
     if (ev.elapsed_seconds != null) elapsedSeconds = ev.elapsed_seconds;
@@ -619,6 +2164,7 @@ a { color: #4ec9b0; }
       applyTimingFields(ev);
       var result = ev.result || ev;
       if (result && result.timing) applyTimingFields({ timing: result.timing });
+      applyResultPagesState(result);
       show("ok", result);
       if (globalTotal > 0) globalStep = globalTotal;
       renderAllProgress();

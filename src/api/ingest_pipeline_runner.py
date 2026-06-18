@@ -102,7 +102,7 @@ def run_full_pipeline(
     Log(INFO_LOG_LEVEL, "pipeline validate_and_enrich_request done",
         {"source_sha256": enriched.source_sha256[:16]})
     _emit(reporter, make_event(PHASE_VALIDATION, STATUS_COMPLETED,
-                               source_sha256=enriched.source_sha256[:16]))
+                               source_sha256=enriched.source_sha256))
 
     _emit(reporter, make_event(PHASE_GATE_HASH, STATUS_STARTED))
     Log(INFO_LOG_LEVEL, "pipeline run_ingest_gate_phase begin")
@@ -167,8 +167,17 @@ def run_full_pipeline(
         raise
 
     n_pages = len(useful_pages_enumeration.useful_original_pages)
+    aligned_useful_pages = sorted(
+        useful_pages_enumeration.original_page_to_aligned_page[p]
+        for p in useful_pages_enumeration.useful_original_pages
+    )
     Log(INFO_LOG_LEVEL, "pipeline build_useful_pages_enumeration done", {"n_pages": n_pages})
-    _emit(reporter, make_event(PHASE_PAGE_ENUMERATION, STATUS_COMPLETED, n_pages=n_pages))
+    _emit(reporter, make_event(
+        PHASE_PAGE_ENUMERATION,
+        STATUS_COMPLETED,
+        n_pages=n_pages,
+        aligned_useful_pages=aligned_useful_pages,
+    ))
 
     alignment_step = 1 if alignment_counts_as_step else 0
     total_steps = alignment_step + n_pages * _ACTIVE_PAGE_STAGES

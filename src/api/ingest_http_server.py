@@ -219,6 +219,12 @@ def build_ingest_server(
                 if not self._require_auth(query):
                     return
                 report = audit_all_books(data_root)
+                sha_filter = (query.get("source_sha256") or [""])[0].strip().lower()
+                if sha_filter:
+                    report["books"] = [
+                        book for book in report["books"]
+                        if book["source_sha256"] == sha_filter
+                    ]
                 _send_json(self, 200, {"ok": True, **report})
                 return
 
