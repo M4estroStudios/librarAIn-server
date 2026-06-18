@@ -29,9 +29,10 @@
 | `src/core/openai_client.py` | ✅ presente (T12a) | client unico per il modello Research |
 | `src/api/ingest_http_server.py` + `job_registry.py` | ✅ presente | `ThreadingHTTPServer`; la Ricerca si aggancia qui (no FastAPI in MVP) |
 | `src/search/request_schema.py` + `request_validation.py` | ✅ presente (F2-T1) | `ResearchRequest`/`ResearchOptions` + errori 400 strutturati |
-| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T2+ |
+| `src/search/subject_lookup.py` | ✅ presente (F2-T2) | Subject Lookup read-only su `INDEX.json`: match deterministico + semantico (embedding intera query, riuso T25); fallback solo-deterministico se AI giù |
+| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T3+ |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ❌ assente | lookup/expansion/loader/LLM/postprocess F2-T2+ |
+| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion/loader/LLM/postprocess F2-T3+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -357,7 +358,7 @@ scritto nel polyindex dalla Ricerca (sola lettura).
 src/search/
 ├── __init__.py
 ├── request_schema.py      # ResearchRequest/ResearchOptions (F2-T1)
-├── subject_lookup.py      # F2-T2 (riusa polyindex.subject_matcher)
+├── subject_lookup.py      # F2-T2 ✅ (riusa polyindex.subject_matcher)
 ├── chapter_expansion.py   # F2-T3
 ├── time_lookup.py         # F2-T3b (riusa polyindex.time_index)
 ├── pages_loader.py        # F2-T4
@@ -472,7 +473,7 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
 
 - [x] **F2-T1** — Schema input ricerca: `ResearchRequest`/`ResearchOptions` (Pydantic) +
   validazione (lunghezza query, bounds options) + errori 400 strutturati. *(Sonnet)*
-- [ ] **F2-T2** — Subject Lookup deterministico su `INDEX.json` (normalizzazione + match
+- [x] **F2-T2** — Subject Lookup deterministico su `INDEX.json` (normalizzazione + match
   label/aliases) + AI subject matcher (riuso T25) sui residui; fallback solo-deterministico se
   endpoint AI giù. *(Opus)*
 - [ ] **F2-T3** — Chapter Expansion su `TOC.json` (pagina → capitolo → pagine vicine se capitolo
