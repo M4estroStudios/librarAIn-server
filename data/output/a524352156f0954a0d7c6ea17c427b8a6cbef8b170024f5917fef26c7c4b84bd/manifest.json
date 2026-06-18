@@ -2,12 +2,17 @@
   "source_sha256": "a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd",
   "slug": "storia-di-roma-antica",
   "original_page_count": 420,
-  "aligned_page_count": 417,
+  "aligned_page_count": 418,
   "pages": [
     {
       "aligned": 1,
       "original": 1,
       "file": "pages/p.0001.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 2,
+      "original": 2,
+      "file": "pages/p.0002.storia-di-roma-antica.md"
     },
     {
       "aligned": 3,
@@ -20,19 +25,124 @@
       "file": "pages/p.0004.storia-di-roma-antica.md"
     },
     {
-      "aligned": 5,
-      "original": 8,
-      "file": "pages/p.0005.storia-di-roma-antica.md"
-    },
-    {
       "aligned": 6,
       "original": 9,
       "file": "pages/p.0006.storia-di-roma-antica.md"
     },
     {
+      "aligned": 7,
+      "original": 7,
+      "file": "pages/p.0007.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 8,
+      "original": 9,
+      "file": "pages/p.0008.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 9,
+      "original": 10,
+      "file": "pages/p.0009.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 10,
+      "original": 11,
+      "file": "pages/p.0010.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 11,
+      "original": 12,
+      "file": "pages/p.0011.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 12,
+      "original": 13,
+      "file": "pages/p.0012.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 13,
+      "original": 14,
+      "file": "pages/p.0013.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 14,
+      "original": 15,
+      "file": "pages/p.0014.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 15,
+      "original": 16,
+      "file": "pages/p.0015.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 16,
+      "original": 17,
+      "file": "pages/p.0016.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 17,
+      "original": 18,
+      "file": "pages/p.0017.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 18,
+      "original": 19,
+      "file": "pages/p.0018.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 19,
+      "original": 20,
+      "file": "pages/p.0019.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 20,
+      "original": 21,
+      "file": "pages/p.0020.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 21,
+      "original": 22,
+      "file": "pages/p.0021.storia-di-roma-antica.md"
+    },
+    {
       "aligned": 22,
       "original": 25,
       "file": "pages/p.0022.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 23,
+      "original": 24,
+      "file": "pages/p.0023.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 24,
+      "original": 25,
+      "file": "pages/p.0024.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 25,
+      "original": 26,
+      "file": "pages/p.0025.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 26,
+      "original": 27,
+      "file": "pages/p.0026.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 27,
+      "original": 28,
+      "file": "pages/p.0027.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 28,
+      "original": 29,
+      "file": "pages/p.0028.storia-di-roma-antica.md"
+    },
+    {
+      "aligned": 29,
+      "original": 30,
+      "file": "pages/p.0029.storia-di-roma-antica.md"
     },
     {
       "aligned": 30,
@@ -1965,11 +2075,6 @@
       "file": "pages/p.0415.storia-di-roma-antica.md"
     },
     {
-      "aligned": 416,
-      "original": 419,
-      "file": "pages/p.0416.storia-di-roma-antica.md"
-    },
-    {
       "aligned": 417,
       "original": 420,
       "file": "pages/p.0417.storia-di-roma-antica.md"
@@ -1995,5 +2100,13 @@
     "isbn": null
   },
   "pipeline_version": "1.0",
-  "generated_at": "2026-06-12T20:52:05.062050+00:00"
+  "generated_at": "2026-06-18T14:37:32.773042+00:00",
+  "excluded_aligned_pages": [
+    5,
+    416
+  ],
+  "pages_to_remove": [
+    8,
+    419
+  ]
 }
