@@ -33,9 +33,10 @@
 | `src/search/chapter_expansion.py` | ✅ presente (F2-T3) | Chapter Expansion read-only su `TOC.json`: pagina → capitolo; espansione a capitolo intero se < 6 pagine; budget `max_books`/`max_pages_per_book` |
 | `src/search/time_lookup.py` | ✅ presente (F2-T3b) | Time Lookup read-only su `TIME_INDEX.json`: regex `extract_time_references` su query/`poh.time_range`; range con fallback anno inizio; `timeline_candidates` + arricchimento pagine (budget merge → F2-T4) |
 | `src/search/pages_loader.py` | ✅ presente (F2-T4) | Pages Markdown Loader: `pages/p.NNNN.<slug>.md`, hard cap caratteri, ordinamento, budget `max_books`/`max_pages_per_book` |
+| `src/search/article_llm.py` + `prompts/article_prompt.md` | ✅ presente (F2-T5) | Article Generation LLM: passi `a`+`b`, articolo Markdown in italiano con link `source:`; template fisso se nessuna pagina di contesto |
 | `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T5+ |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); LLM/postprocess F2-T5+ |
+| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); postprocess F2-T6+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -487,7 +488,7 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
   pagine candidate. *(Sonnet)*
 - [x] **F2-T4** — Pages Markdown Loader: caricamento `pages/p.NNNN.<slug>.md`, hard cap caratteri,
   ordinamento, budget 5×8 default. *(Composer 2)*
-- [ ] **F2-T5** — Article Generation LLM (`article_prompt.md`): passi `a`+`b`, link `source:`
+- [x] **F2-T5** — Article Generation LLM (`article_prompt.md`): passi `a`+`b`, link `source:`
   come da §2.4. *(Opus)*
 - [ ] **F2-T6** — POH link pass (`poh_links_prompt.md`) o fusione in F2-T5 (decisione con smoke
   comparativo, OQ-R2): passo `c`. *(Opus)*

@@ -89,6 +89,14 @@ class Settings(BaseModel):
     matcher_use_ai: bool = Field(default=True, alias="MATCHER_USE_AI")
     time_index_llm_model: str | None = Field(default=None, alias="TIME_INDEX_LLM_MODEL")
     time_index_use_llm: bool = Field(default=True, alias="TIME_INDEX_USE_LLM")
+    research_model: str | None = Field(default=None, alias="RESEARCH_MODEL")
+    research_temperature: float = Field(default=0.3, ge=0.0, le=2.0, alias="RESEARCH_TEMPERATURE")
+    reasoning_effort_research: ReasoningEffort | None = Field(
+        default=None, alias="REASONING_EFFORT_RESEARCH"
+    )
+    reasoning_enable_thinking_research: bool | None = Field(
+        default=None, alias="REASONING_ENABLE_THINKING_RESEARCH"
+    )
     tmp_keep_after_success: bool = Field(default=True, alias="TMP_KEEP_AFTER_SUCCESS")
 
     @field_validator("tmp_keep_after_success", mode="before")
@@ -128,6 +136,16 @@ class Settings(BaseModel):
     @classmethod
     def parse_reasoning_enable_thinking_editor(cls, v: object) -> bool | None:
         return _parse_reasoning_enable_thinking(v, "REASONING_ENABLE_THINKING_EDITOR")
+
+    @field_validator("reasoning_effort_research", mode="before")
+    @classmethod
+    def parse_reasoning_effort_research(cls, v: object) -> ReasoningEffort | None:
+        return _parse_reasoning_effort(v, "REASONING_EFFORT_RESEARCH")
+
+    @field_validator("reasoning_enable_thinking_research", mode="before")
+    @classmethod
+    def parse_reasoning_enable_thinking_research(cls, v: object) -> bool | None:
+        return _parse_reasoning_enable_thinking(v, "REASONING_ENABLE_THINKING_RESEARCH")
 
     @field_validator("gpu_vram_check_enabled", mode="before")
     @classmethod
@@ -183,6 +201,8 @@ class Settings(BaseModel):
             self.matcher_llm_model = self.matcher_llm_model.strip() or None
         if self.time_index_llm_model is not None:
             self.time_index_llm_model = self.time_index_llm_model.strip() or None
+        if self.research_model is not None:
+            self.research_model = self.research_model.strip() or None
 
         if self.openai_provider == "remote":
             missing_fields: list[str] = []
