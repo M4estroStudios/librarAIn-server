@@ -1,24 +1,21 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-10
+ROMA PRIMA DI ROMA
+11
 
-STORIA DI ROMA ANTICA
+Hanno assunto un aspetto molto simile a quello attuale: in epoca preistorica e storica ci sono state continue modifiche della linea di costa, come in età moderna. Il Tevere, con l'apporto continuo di detriti, ha spostato sempre più avanti la sua foce, colmando prima la laguna che si estendeva fino ad Acilia; poi insabbiando progressivamente i porti progettati e costruiti da Claudio e Traiano: tra i ruderi dei magazzini e dei vecchi moli di Porto sorgono le piste dell'aeroporto internazionale Leonardo da Vinci.
 
-NASCITA DI UN TERRITORIO
+Le spaventose eruzioni vulcaniche, i cambiamenti del corso del Tevere e dell'Aniene, il sollevarsi e ritirarsi del mare, le grandi glaciazioni ebbero come testimoni gli uomini dell'età della pietra: primi abitatori del territorio di Roma. E nei millenni gli uomini hanno concorso a modificare il territorio, disboscando le pendici delle alture o incanalando l'acqua.
 
-Circa due milioni di anni fa quasi tutto il Lazio era ricoperto dal mar Tirreno: le acque hanno lasciato tracce d'una linea di costa che andava dai piedi dei monti Sabini (da Magliano Sabino a Fara) e dei Licrètili (da Marcellina a Scandriglia) alle prime falde dei monti Prenestini e Lepini (da Artena a Priverno). La conca di Rieti era completamente sommersa, come tante altre zone di pianura: dal mare emergevano come isole il Soratte; le cime dei monti Cornicolani; monte Gennaro, il Circeo, l'arcipelago pontino (Ponza, Palmarola e Zannone), forse qualche cima dei monti della Tolfa.
+**1 PRIMI ABITANTI**
 
-In seguito a sollevamenti di parte del fondo del mare e a grandi fenomeni vulcanici nacque un cordone di terre emerse. Il corso del Tevere sfociava molto più nord (davanti a Cetona, in provincia di Siena); sbarrato da nuovi ostacoli, deviò, portando con sé una quantità di detriti, che colmarono l'antico marino.
+Le prime tracce di vita umana nel territorio urbano di Roma o nei suoi immediati dintorni (nella Valchetta della tenuta Cartoni nella XIX circoscrizione e a Monte Mario a via Cortina d'Ampezzo) risalgono a circa 650.000 anni fa. Si tratta di qualche scheggia di selce lavorata e d'un utensile, sempre in selce (un ciottolo appositamente smussato a un'estremità per poter rompere ossa o per spezzare il legno), trovato insieme a denti di cinghiale e d'un animale oggi estinto e simile a un bovino.
 
-Circa 700.000 anni fa due vulcani entrarono in attività: il vulcano Laziale (alto circa 2000 metri, le sue macerie oggi costituiscono i colli Albani; il suo cratere principale corrispondeva a "Campi di Annibale" immediatamente sotto Rocca di Papa; mentre lo sprofondamento dei crateri minori ha dato origine ai laghi di Albano e di Nemi) e il vulcano Sabatino (il suo cratere principale corrispondeva al lago di Bracciano; mentre i crateri minori sono riconoscibili nei laghi di Monterosi e di Martignano, negli antichi laghetti prosciugati di Baccano e di Stracciacappe).
+A circa 250.000 anni fa risalgono altre tracce consistenti concentrate a ovest di Roma nella zona dove allora scorreva il Tevere (presso il km 20 della via Aurelia; Palidoro; Torre in Pietra, Malagrotta).
 
-I due vulcani eruttarono enormi quantità di materiali: lapilli e le ceneri si depositarono sui sette colli e in tutto l'Agro romano, mentre le colate di lava modificarono profondamente il territorio; dando ai dintorni di Roma alcune caratteristiche in parte ancora conservate.
+**COME VIVEVANO I NOSTRI ANTENATI**
 
-La lava del vulcano Sabatino è giunta fino alla sponda destra del Tevere, mentre quella del vulcano Laziale è arrivata fin quasi alla sponda sinistra e ha scavalcato il corso attuale dell'Aniene, giungendo fino a Lunghezza; in direzione opposta un'altra sua enorme colata di lava (estesa circa 12 chilometri) affiora ancora nella campagna, arrivando nei pressi della tomba di Cecilia Metella sull'Appia.
+Gli uomini di cui si sono scoperte le tracce a Torre in Pietra, Castel di Guido, Malagrotta, vivevano con probabilità in gruppi (lo dimostra il fatto che riuscissero a cacciare e uccidere gli animali di grandi dimensioni). Si dovevano spostare continuamente sulle orme dei grandi branchi di selvaggina, perché solo così potevano assicurarsi un rifornimento costante di cibo. Tutti i ritrovamenti archeologici avvenuti nei dintorni di Roma riguardano accampamenti provvisori in località aperte, su quello che doveva essere il territorio di caccia. Nella fabbricazione degli attrezzi erano impiegati ciottoli di calcare, selce, ossa di animali. Le prede abbattute erano consumate sul posto; molte delle ossa rinvenute erano state spezzate per succhiarne il midollo. Anche molti degli attrezzi erano preparati sul posto, quando se ne sentiva la necessità.
 
-E le ultime eruzioni del Laziale e del Sabatino avvennero circa 6000 anni fa.
+La quantità di attrezzi e di resti di animali scoperti ci permettono d'ipotizzare in quale ambiente vivessero i nostri antenati. Le ossa di animali appartengono a una fauna tipica dei climi temperati con qualche tendenza al freddo: erano comuni i cervi, i bovini, i cavalli, lupi, gli elefanti, i rinoceronti; non mancano marmotte, bipedi della famiglia delle anatre, delle oche.
 
-L'attività dei due vulcani a un certo momento ha completamente sbarrato il corso del Tevere. Allora si creò un grande lago; che raccoglieva anche le acque del Nera e dell'Aniene e che si estendeva dall'altezza della confluenza del fiume Paglia (nei pressi di Orvieto) fino a Roma. Il fiume infine ritrovò la strada per il mare, scavandosi una vallata; molto più profonda dell'attuale, quasi un solco nella pianura. Il nuovo percorso era diverso da quello di oggi: nella zona nord della città scorreva spostato più a occidente, nella zona sud-est si volgeva in direzione di Torrenova e sfociava in mare vicino a Tor San Lorenzo.
-
-Anche le grandi glaciazioni che si sono ripetute ciclicamente hanno cambiato l'aspetto del territorio; circa 100.000 anni fa, ad esempio, il livello del mare si era abbassato di 100-120 metri, allontanando la linea della costa di una decina di chilometri da quella precedente.
-
-Dopo l'ultima glaciazione (circa 10.000 anni fa) il Lazio e l'area di Roma...
+Così le ossa di marmotta, rinvenute a Malagrotta, fanno pensare a una zona ricca di specchi d'acqua, cioè fiumi e paludi; così quelle di cavallo, rinvenute in gran numero a Torre in Pietra, suggeriscono l'esistenza di vaste radure: mentre nei boschi dovevano vivere lupi, cervi e elefanti.

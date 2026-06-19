@@ -1,16 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-IL RIFORMATORE, IL TIRANNO, LE RIVOLUZIONI
+86
 
-85
+STORIA DI ROMA ANTICA
 
-*DONNA LO FECE, DONNA LO DISPIACQUE*
+IL CIPPO DEL LAPIS NIGER
 
-La vita di Servio Tullio è contrassegnata da donne fatali. La sua incoronazione regale era stata merito della moglie di Tarquinio Prisco; Tanaquil, esperta nella divinazione, aveva convinto il marito a partire per Roma e diventare il re: Tanaquil per prima aveva riconosciuto in Servio i segni di un brillante destino. In definitiva Tanaquil rappresenta un "doppione umano della dea Fortuna, protettrice di Servio Tullio. In molte delle sue azioni sono adombrate quelle d'una dea che sceglie il re, secondo una tradizione biblica. Se una donna fece la sua fortuna, una donna fece la sua rovina. Tullia Minore rappresenta il "doppione negativo" della donna etrusca. È la Fortuna che ha voltato le spalle al suo protetto come racconta una *sors*, che serviva per le predizioni durante i riti oracolari. Su questo ciottolo è inciso un testo latino, che ricorda come la vicenda di Servio e il suo legame con Fortuna fossero ormai divenuti leggenda e quasi proverbio: «Se mi obbedisci, non (ti) voglio rovinare: se non (mi) obbedisci, (ricordati che) per opera della Fortuna Servio va (andò) in rovina».
+Il Lapis Niger è il pavimento di pietra nera situato nel Comizio. Al di sotto di questa area è stato identificato un complesso sacro edificato in concomitanza con la seconda pavimentazione del Foro. Si compone di un altare a tre ante, una base circolare e il cippo quadrangolare iscritto: questo santuario rappresenta una delle ricostruzioni del Volcanale (vedi capitolo latino-sabini), dove si sapeva che era conservata un'iscrizione «in caratteri graeci» cioè in alfabeto latino arcaico. Il testo del cippo è scolpito in verticale con un andamento bustrofedico (come i buoi che arano il campo da destra verso sinistra e da sinistra verso destra). Benché il testo sia frammentario è facile comprendere che si tratta di una legge sacra sull'intangibilità del luogo nel quale il re e il suo araldo (*kalator*) compiono lustrazioni (purificazioni) e operazioni sacre con l'impiego di animali da tiro (*iouxmenta*).
 
-*I LIBRI SIBILLINI*
+LA CADUTA DELLA MONARCHIA
 
-Durante il regno di Tarquinio il Superbo giunge alla corte del re una straniera decisa a vendergli nove libri contenenti oracoli sibillini (predizioni della Sibilla, la profetessa di Cuma). Tarquinio la deride cacciandola. La donna allora brucia tre di questi libri. Dopo un po' di tempo ritorna dal sovrano proponendogli i libri rimasti allo stesso prezzo richiesto la prima volta. Ancora una volta Tarquinio la deride e la caccia in malo modo. La donna brucia la metà dei libri, tornando dopo alcuni giorni a chiedere il medesimo oro per i tre libri superstiti. Stavolta il re non ride ma comincia a spaventarsi. Chiede consiglio agli auguri che gli predicono una grande sventura per quanto è accaduto e lo invitano ad acquistare immediatamente i libri ancora in possesso della donna. Tarquinio obbedisce e predispone che due uomini di nobile origine ne abbiano cura. Da allora in poi tre testi sacri assunsero un ruolo fondamentale nella vita politica dei Romani, diventando la parola, il consiglio degli dèi nei momenti difficili dello Stato. Quando nell'83 a.C. i testi furono bruciati, nonostante l'accuratissima custodia, su decreto del Senato vennero inviati ad Eritrea, in Asia, dove si trovava famoso oracolo, tre messi per copiarli e ricostruire questo patrimonio.
+Intanto Tarquinio rafforza la conquista del litorale tirreno con la fondazione delle colonie di Signia e Circei. Il re garantisce le frontiere del territorio romano, stringendo alleanza con le città di Ecetra e di Antium, alla frontiera tra Volsci e Latini. Parte della tradizione riferisce anche di trattati d'alleanza con i Volsci.
 
-*IL TIRANNO*
+Conquista Suessa Pometia; città ancora sabina o già occupata dai Volsci, perché è interessato alla Campania e alle strade per raggiungerla. Il ricco bottino è investito nel tempio capitolino che sta portando a termine.
 
-Tarquinio il Superbo si impadronisce del potere con modalità che contrassegnano tutto il suo regno. La sua vita e le sue azioni corrispondono pienamente all'immagine del tiranno nel mondo greco. Uccide suo suocero, impedendo la sepoltura; ed elimina senza scrupoli i suoi rivali: la sua tirannide è «senza legge» e al contrario del suo predecessore «democratico» condanna la plebe ai «lavori forzati» per il tempio capitolino. Tarquinio il Superbo è l'unico arbitro della sorte di Roma e priva del suo potere il Senato. Insicuro in patria, ricerca all'esterno l'appoggio necessario. In questo senso va interpretato il matrimonio tra una delle sue figlie e Ottavio Mamilio di Tusculum. Questa città fortemente etruschizzata diviene il tramite per la sottomissione «diplomatica» dei Latini. Senza scrupoli elimina Turno Erdonio.
+Per la tradizione Tarquinio è un abile comandante; ma è anche il prototipo della slealtà e dell'inganno. Per occupare Gabii, che resisteva coraggiosamente ai suoi attacchi, finge di cacciare il figlio Sesto: il giovane maledice pubblicamente il crudele genitore e chiede ospitalità agli abitanti di Gabii, i quali — toccati dalla sua cattiva sorte — concedono: con l'inganno Sesto fa uccidere i maggiorenni e senza opposizione Gabii finisce nelle mani del Superbo.
+
+UN BACIO PER LA MADRE
+
+Durante i ferventi lavori del tempio; in cui sono impegnati artisti etruschi e la stessa plebe, un prodigio spaventa mortalmente il tiranno. Un serpente uscito da una colonna di legno provoca il panico nel palazzo.
+
+Tarquinio non perde tempo; e manda in Grecia i figli Tito e Arrunte col nipote Lucio Junio Bruto; a consultare l'oracolo di Delfi: il giovane Bruto, figlio di Tarquinia sorella del re, aveva visto uccidere dal re il fratello e da tempo fingeva di essere sciocco; covando in cuor suo l'occasione adatta per vendicarsi. Aveva capito che a volte fingersi sciocchi (*brutus* = sciocco) salva la vita:
+
+I tre giovani, dal momento che trovarsi a Delfi non accadeva tutti i giorni, chiedono anche all'oracolo chi erediterà il trono. L'oracolo risponde che regnerà colui che per primo avesse baciato la madre. Tito e Arrunte decidono allora di tacere il responso al cugino e di baciare insieme la madre. Bruto è l'unico che intende il vero senso dell'oracolo: la madre da baciare è la madre di tutti, cioè la terra. Arrivato in Italia finge di inciampare e bacia il suolo, secondo le indicazioni della Pizia o sacerdotessa delfica.

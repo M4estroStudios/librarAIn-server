@@ -1,14 +1,66 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-EGEMONIA NELL' ITALIA CENTRO-MERIDIONALE 149
+150
 
-Roma, ripiega verso sud. Ad Asculum sull'Ofanto riconferma la sua superiorità e vince una seconda volta, seppur in modo meno grandioso (279 a.C.). Ma i Romani, dopo lo stupore iniziale, hanno preso le misure alla falange ellenistica e hanno imparato a contrastare gli elefanti con carri dotati di falci. L'anno seguente (278 a.C.) giungono a Roma messaggeri di Cartagine, preoccupata che i Romani stipulino una pace separata con Pirro. Il terzo anno di guerra trascorre nell'inattività. La tradizione racconta che il medico di Pirro sarebbe giunto a Roma, proponendo di avvelenare il suo re. Il console Caio Fabrizio Luscino avrebbe rifiutato col medesimo sdegno con cui avrebbe ordinato di allontanare Cinea, ritornato a proporre la pace. Alla fine del 278 a.C. cambia lo scenario dell'avventura italiana di Pirro. Il re, chiamato da gran voce dai Greci di Sicilia, sbarca nell'isola per combattere i Cartaginesi. Siracusa, liberata dall'assedio cartaginese, sull'onda dell'entusiasmo la proclama re. L'anno seguente nuovi successi rafforzano la posizione di Pirro al punto che i Cartaginesi chiedono la pace. Il re rifiuta e, deciso a vincere in modo definitivo, cerca invano di espugnare Lilibeo e Trapani, ultima roccaforte fenicia dell'isola.
+STORIA DI ROMA ANTICA
 
-Ma il successo gli sta ormai oscurando la ragione. Pirro s'abbandona a una campagna africana, per colpire Cartagine alle radici. Le dure misure che adotta nei confronti dei Siciliani, costretti a denari, approvvigionamento e uomini, gli valgono la fama di tiranno e lo costringono ad abbandonare Sicilia.
+L'UMORISMO GRECO A ROMA
 
-Poi Pirro subisce una sconfitta navale nello stretto e perde parte dell'e-
+Dopo le rappresentazioni sacre, importate dall'Etruria; nel I secolo a.C., Roma conosce altre forme di spettacolo tramite i contatti con gli Osci e i Greci.
+
+I Romani cominciano a ridere, guardando l'Atellana (da Atella, una città osca tra Capua e Napoli) una farsa giocata sulla comicità di alcuni personaggi fissi: Macco, lo sciocco beffato; Bucco, il grasso ciarlatano; Pappo, il vecchio vizioso; Dossennio, il sapiente astuto e perennemente affamato.
+
+Le battute (scontate e volgari) e gli intrecci sono sempre uguali, ma suscitano il riso degli abitanti dell'urbe, poco raffinati in fatto di teatro.
+
+Soltanto dopo la guerra con Pirro Roma assaggia il vero teatro; nato in Grecia più di due secoli prima: Da Taranto giunge come schiavo Tito Livio Andronico; in seguito liberato dal patrono Livio; che fa provare ai Romani il gusto del teatro greco, fondendo insieme i lazzi e le facezie (graditi al pubblico) con l'intreccio delle commedie greche: Nasce così la commedia latina chiamata commedia palliata, dal pallio o mantello di tipo greco, indossato dagli attori.
+
+Andronico traduce e mette insieme anche parti delle tragedie greche, creando una nuova rappresentazione tragica; la tragedia coturnata (dai coturni, gli alti sandali usati dagli attori).
 
 ***
 
-| I TRATTATI CON CARTAGINE |
-| :--- |
-| *L'espansione romana prima nel Lazio e nell'Italia meridionale è accompagnata da vari rinnovi del primo trattato con Cartagine, stipulato nel 509 a.C. Nei momenti cruciali della storia romana puntualmente navi e ambasciatori cartaginesi compaiono all'orizzonte (348, 306, 279 a.C.) pronti a tutelarsi dalle possibili evoluzioni della politica romana. Il primo trattato (509 a.C.) vietava ai Romani e loro alleati di frequentare gli empori africani della Bizacena e della Piccola Sirte; mentre i Cartaginesi dovevano rispettare la sovranità di Roma sul Lazio e non dovevano arrecare offesa ai Latini o attaccarne le città. Nel secondo trattato (348 a.C.) si ribadiscono più o meno le stesse clausole, ma accanto a Cartagine compaiono anche i popoli di Utica, città fenicia della costa africana, di Tiro, la madrepatria della stessa Cartagine. Inoltre la zona vietata ai commerci, alla pirateria e alla colonizzazione romana è ampliata a ove fino alla città di Cartagena, città fenicia fondata nel territorio dei Tartessi in Spagna; anche la Sardegna rientra nella zona d'influenza cartaginese e i Romani abbandonano la colonia già fondata sull'isola nel 386. D'altra parte se pirati cartaginesi catturano i cittadini di una città latina, alleata a Roma, possono trattenere le persone e le ricchezze, ma debbono consegnare la città ai Romani. Il terzo trattato (306 a.C.) ribadisce i due precedenti con la novità del riconoscimento cartaginese per l'ingerenza romana nell'Italia meridionale. Il quarto trattato (279 a.C.), concluso ancora una volta in un momento difficile, quando Pirro incombe ad Anagni e Cinea propone la pace al Senato; vuole evitare che i Romani concludano una pace separata con l'Epiro; Cartagine conosce i progetti di Pirro sulla Sicilia e teme che l'alleanza di Romani ed Epiroti possa esserle fatale. D'altra parte nel 277 a.C., sconfitta da Pirro, Cartagine cerca una pace separata, dimenticando l'impegno preso.* |
+[Testo relativo alla guerra contro Pirro]
+
+sercito contro i Campani di Reggio; sostenuti dai Mamertini di Messina. La sua cattiva condotta militare si macchia anche di azioni sacrileghe come il saccheggio del tempio di Persefone a Locri (276 a.C.) Roma intanto si è preparata allo scontro.
+
+Tra Puglia e Sannio il re è battuto dal console Manio Curio Dentato. Il comandante romano approfitta del terreno accidentato, sul quale sono d'ostacolo l'armamento pesante e la falange.
+
+A Malevento (da allora Benevento) l'altro console Lucio Cornelio Lentulo sconfigge di nuovo l'esercito di Pirro e lo convince a lasciare l'Italia (275 a.C.) chiudendo il suo sogno di conquista;
+
+I Romani non perdono tempo: tra il 273 e il 272 a.C. sottomettono le principali città greche, stipulando trattati con Lucani e Bruzii, nel 273 a.C. fon...
+
+***
+
+UN SERPENTE SULL'ISOLA TIBERINA
+
+Una violenta pestilenza imperversa a Roma. I pontefici, incapaci di trovare rimedio al morbo, decidono di ricorrere ai decemviri sacris faciundis, dieci sacerdoti addetti alle cose sacre e in particolar modo alla consultazione dei Libri Sibillini.
+
+La raccolta degli oracoli della Sibilla Cumana era arrivata a Roma al tempo dell'ultimo Tarquinio: da quel momento era divenuta il testo sacro cui ci si rivolgeva quando fallivano le normali pratiche religiose.
+
+I dieci riferiscono che l'unica salvezza per lo Stato consiste nell'introduzione del culto di Esculapio (figlio di Apollo) venerato in Grecia, come dio della medicina. Epidauro; i fratelli Ogulnii, legati al mondo etrusco per la loro origine chiusina; promuovono il nuovo culto. Inviati in Grecia a capo di un'ambasceria per richiedere una statua del dio, tornano con un serpente, animale magico e simbolo d'Esculapio:
+
+I pontefici fissano nell'isola Tiberina la sede del culto: un'area vicina alla città, ma contemporaneamente separata: Posizione ideale per un tempio dove si raccolgono malati in cerca della salvezza. La divinità appare in sogno ai malati e svela come possono ottenere la guarigione (la pratica dell'incubazione) L'edificio sacro diventa un "ospedale" per coloro che il male ha bandito dalla città; gli "isolati" dell'isola.
+
+***
+
+150 | STORIA DI ROMA ANTICA
+
+L'UMORISMO GRECO A ROMA
+
+Dopo le rappresentazioni sacre, importate dall'Etruria, nel I sec a.C., Roma conosce altre forme di spettacolo tramite contatti con gli Osci e i Greci. I Romani cominciano a ridere, guardando l'Atellana (da Atella, una città osca tra Capua e Napoli), una farsa giocata su comicità alcuni personaggi fissi: Macco, lo sciocco beffato; Bucco, il grasso ciarlatano; Pappo, il vecchio vizioso; Dossennio, il sapiente astuto e perennemente affamato.
+
+Le battute (scontate e volgari) e gli intrecci sono sempre uguali, ma suscitano il riso degli abitanti dell'urbe, poco raffinati in fatto di teatro.
+
+Soltanto dopo la guerra con Pirro Roma assaggia il vero teatro; nato in Grecia più di due secoli prima. Da Taranto giunge come schiavo Livio Andronico, in seguito liberato dal patrono Livio, che fa provare ai Romani il gusto del teatro greco, fondendo insieme i lazzi (graditi al pubblico) con l'intreccio delle commedie greche. Nasce così la commedia latina chiamata commedia palliata, dal pallio o mantello di tipo greco, indossato dagli attori.
+
+Andronico traduce e mette insieme anche parti delle tragedie greche, creando una "nuova" rappresentazione tragica, la tragedia coturnata (dai coturni, gli alti sandali usati dagli attori).
+
+[Testo relativo alla guerra contro Pirro]
+
+sercito contro i Campani di Reggio, sostenuti dai Mamertini di Messina. La sua cattiva condotta militare si macchia anche di azioni sacrileghe come il saccheggio del tempio di Persefone a Locri (276 a.C.). Roma intanto si è preparata allo scontro. Il comandante romano approfitta del terreno accidentato, sul quale sono d'ostacolo l'armamento pesante e la falange. A Malevento (da allora Benevento) l'altro console Cornelio Lentulo sconfigge di nuovo l'esercito di Pirro e lo convince a lasciare l'Italia (275 a.C.), chiudendo il suo sogno di conquista.
+
+I Romani non perdono tempo: tra il 273 e il 272 a.C. sottomettono le principali città greche, stipulando trattati con Lucani e Bruzii, nel 273 a.C. fon...
+
+UN SERPENTE SULL'ISOLA TIBERINA
+
+Una violenta pestilenza imperversa a Roma. I pontefici, incapaci di trovare rimedio al morbo, decidono di ricorrere ai sacerdoti addetti alle cose sacre e in particolar modo alla consultazione dei Libri Sibillini. La raccolta degli oracoli della Sibilla Cumana era arrivata a Roma al tempo dell'ultimo Tarquinio: da quel momento era divenuta il testo sacro cui si rivolgeva quando fallivano le normali pratiche religiose. I dieci riferiscono che l'unica salvezza per lo Stato consiste nell'introduzione del culto di Esculapio (figlio di Apollo) venerato a Epidauro, in Grecia, come dio della medicina.
+
+I fratelli Ogulnii, legati al mondo etrusco per la loro origine chiusina, promuovono il nuovo culto. Inviati in Grecia a capo di un'ambasceria per richiedere una statua del dio, tornano con un serpente, animale magico e simbolo d'Esculapio. I pontefici fissano nell'isola Tiberina la sede del culto: un'area vicina alla città, ma contemporaneamente separata. Posizione ideale per un tempio dove si raccolgono i malati in cerca della salvezza. La divinità appare in sogno ai malati e svela come possono ottenere la guarigione (la pratica dell'incubazione). L'edificio sacro diventa un "ospedale" per coloro che il male ha bandito dalla città, gli "isolati" dell'isola.

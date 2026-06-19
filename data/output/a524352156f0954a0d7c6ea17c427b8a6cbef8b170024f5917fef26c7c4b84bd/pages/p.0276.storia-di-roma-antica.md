@@ -1,22 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-276
+LA REPUBBLICA PERDUTA 277
 
-STORIA DI ROMA ANTICA
+IL PORTICO DELLA SORELLA OTTAVIA
 
-*Ricostruzione ideale del mausoleo di Augusto di Peter Schenk.*
+Tra numerosi portici intorno al circo Flaminio l'unico ancora visibile è quello dedicato da Ottaviano alla sorella, il portico di Ottavia. Nello stesso punto preesisteva il portico di Metello; che circondava i templi di Giunone Regina e di Giove Statore. Ottaviano ristruttura questo complesso e lo monumentalizza. Vi aggiunge un edificio absidato (la curia Ottavia), come sede d'una biblioteca: mentre il portico restaurato accoglie molte opere d'arte. Il gruppo più imponente è costituito da 34 statue equestri di bronzo; opera del famoso scultore greco Lisippo, ritraenti Alessandro Magno e i suoi ufficiali alla battaglia del Granico. I resti attuali appartengono al rifacimento del 203 d.C., dopo un violento incendio, commemorato nella grande iscrizione tuttora visibile. La parte più conservata è il propileo; che si apriva al centro del lato meridionale, mentre alcune colonne sono state reimpiegate nelle case medievali adiacenti.
 
-***
+PRESTITO E CESSIONE DELLA MOGLIE INCINTA: L'IMPORTANZA DELL'ADOZIONE NELLA SOCIETÀ ROMANA
 
-**II. MAUSOLEO**
+Per un patrizio romano (e in seguito per un appartenente alla nobilitas senatoria) è fondamentale avere figli sufficienti per mantenere vive le tradizioni familiari. Nel caso che la moglie sia sterile non ci sono incertezze: si divorzia per contrarre un matrimonio più fortunato. Spesso si ricorre all'adozione, non solo d'un bambino ma anche d'un adulto. In questo caso l'adottato conserva traccia della propria origine nel suo nome. Infatti il gentilizio della sua famiglia d'origine, con il suffisso *-anus*, è accodato come cognome al nome del padre adottivo. Così Gaio Ottavio, una volta adottato, diventa Gaio Giulio Cesare Ottaviano. Se non si hanno figli è, quindi, possibile adottarli. Esiste anche un'altra pratica assai diffusa: il prestito e la cessione della moglie incinta.
 
-Antonio, secondo il testamento, vuole essere sepolto ad Alessandria insieme a Cleopatra. Questo desiderio, d'appartenere anche dopo la morte a una terra straniera, giustifica in parte l'inizio della costruzione della tomba di Ottaviano, subito dopo Azio. Al contrario del rivale, Ottaviano anche in questo vuole sancire il suo legame con la patria. Nello stesso tempo il nome, *mausoleo*, deriva dalla tomba di Mausolo, sovrano ellenistico della Caria (Asia Minore, odierna Turchia) e la sua posizione panoramica tra il Tevere e la via Flaminia richiama la tradizione delle tombe regali.
+Molti uomini, desiderosi d'avere un figlio, chiedono in prestito la feconda moglie dell'amico e spesso accade che la donna sia già incinta. Silla fa divorziare la figlia incinta per darla in moglie a Pompeo. Lo stesso Ottaviano si fa dare Livia, incinta, da Tiberio Nerone; presente anche alle nozze. Ma in questi casi politici la cessione della moglie, come del resto il matrimonio, è uno strumento per stringere vincoli d'alleanza molto più stretti di qualunque patto. Non a caso la fine dell'alleanza coincide sempre con la fine del matrimonio: Ottavia è rispedita da Antonio al fratello Ottaviano.
 
-Il gigantesco mausoleo, alto 40 m e largo 87, è costituito da due masse cilindriche sovrapposte, rivestite da travertino e separate da un terrapieno obliquo con alberi. Il modello è chiaramente orientale, ma gli alberi ricordano molto le tombe antiche della penisola, come i tumuli etruschi.
-
-Alla sommità della poderosa costruzione era collocata una statua colossale di Ottaviano. Mentre la grandezza, la forma, il modello mettono Ottaviano in posizione privilegiata rispetto agli altri cittadini. Le suggestioni monarchiche sono abilmente temperate dal richiamo alle antiche tombe dei padri e lo stesso nome ufficiale dell'edificio (*tumulo dei Giulii*) conferma che si tratta, secondo la migliore tradizione romana, di una tomba di famiglia.
-
-La battaglia è veramente combattuta: Antonio rimane bloccato, mentre la regina fugge, rientrando ad Alessandria (31 a.C.). Tra lo stupore dei suoi soldati, Antonio abbandona il campo di battaglia per raggiungere Cleopatra. Ricongiuntosi alla sua donna, passano insieme un intero anno, durante il quale tentano invano di venire a patti con Ottaviano: poi non rimane altro che il suicidio.
-
-**L'UNICO VINCITORE**
-
-Ottaviano esce dalle guerre civili come l'ultimo capofazione alla testa di 50 legioni, comprese quelle di Antonio. Ma la sua vera forza è il giuramento di fedeltà dell'intera Italia (32 a.C.). La sua persona è sacra e inviolabile, come quella dei tribuni; dal 36 a.C., anno dopo anno, è stato rieletto console. Il po-
+Il caso più noto è quello dell'oratore Ortensio, maestro di Cicerone. Ortensio chiede all'amico Catone Uticense la figlia Porcia, ma la donna è sposata. Pur essendo tutti (padre e marito) disposti a far divorziare Porcia, Ortensio rifiuta e chiede a Catone la moglie Marcia. Di fronte alla nuova richiesta, Catone si consulta con suo suocero, che ha, in quanto padre, ancora diritti su Marcia. Alla fine entrambi acconsentono; Marcia, dopo il divorzio, sposa Ortensio. Alla morte del ricchissimo secondo marito, di cui diviene legittima erede, risposa Catone. Come si è detto, Ortensio desiderava un figlio; perciò ha voluto Marcia già incinta di Catone e con la nascita del neonato Ortensio finalmente ha avuto un suo erede. Altra pratica, altrettanto diffusa in caso di sterilità della moglie, consiste nel prendere in casa un'altra donna quasi sempre col consenso della moglie legittima, che alleva poi i figli nati da relazione come fossero suoi. In questo modo il futuro della famiglia è assicurato: tuttavia, nonostante questi rimedi, non è raro che gentes dell'aristocrazia repubblicana si estinguano nell'età augustea; come nel caso notissimo degli Scipioni.

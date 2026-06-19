@@ -1,14 +1,70 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-390                                           STORIA DI ROMA ANTICA
+# RE E IMPERATORI DI ROMA ANTICA
 
-***
+## I SETTE RE DI ROMA
 
-LA CURIA
+Riguardo alla storia e alla cronologia dei re di Roma siamo a metà fra storia e leggenda. Ai sette sovrani vengono attribuiti complessivamente 244 anni di regno; circa 35 per ciascuno, dal 753 al 509 a.C., nascita della Repubblica. Le date che seguono sono dunque da considerarsi meramente orientative.
 
-Il grande edificio in laterizio che si erge maestoso nel Foro Romano; accanto all'arco di Settimio Severo; al limite dell'antico Argileto; fu la Curia del Senato di Roma: Fu voluta da Giulio Cesare a sostituire quella più antica che sorgeva nei pressi e fu terminata da Augusto. L'interno è costituito da un'unica grande sala alta 21 metri; larga 18 e lunga 27, che sono le misure canoniche ricordate da Vitruvio nei suoi libri di architettura. È in quest'aula che si svolsero tutte le più importanti situazioni politiche dell'età imperiale. Qui entrarono tutti gli imperatori di Roma; affrontando con maggiore o minore sicurezza, a seconda delle fasi storiche, l'antico potere del Senato.
+* Romolo (753-717)
+* Numa Pompilio (715-673)
+* Tullo Ostilio (672-641)
+* Anco Marcio (639-616)
+* Tarquinio Prisco (616-579)
+* Servio Tullio (578-535)
+* Tarquinio il Superbo (534-510)
 
-La Curia ebbe diversi restauri e ristrutturazioni, dovuti a ricostruzioni dopo alcuni incendi subiti o a ristrutturazioni per migliorarne il funzionamento:
+## GLI IMPERATORI
 
-Quanto resta oggi visibile, che negli anni Trenta fu eliminato tutto che era la chiesa di Sant' Adriano, inserita nella Curia nel VII secolo d.C., ci restituisce l'immagine della Curia voluta dall'imperatore Diocleziano. I banchi dei senatori stavano su file parallele sui lati lunghi dell'aula rettangolare. Nell'abside di fondo sorgevano l'altare e la statua della Vittoria; davanti alla quale si scontrarono i senatori pagani e cristiani che, alla fine del IV secolo, ne ordinarono la definitiva rimozione in nome del vincente cristianesimo.
+La cronologia degli imperatori romani che segue si riferisce all'Impero Romano d'Occidente; dall'inizio del principato di Augusto (27 a.C.).
 
-A guidare gli eserciti fu delegato Costantino che, passate le Alpi, entrò in Italia sbaragliando i soldati di Massenzio una volta a Torino, una seconda più decisiva a Verona e quindi, presago della vittoria, marciava verso l'Urbe, mentre Diocleziano nella sua reggia di Spalato era ormai ridotto a puro osservatore.
+* Augusto (27 a.C.-14 d.C.)
+* Tiberio (14-37)
+* Caligola (37-41)
+* Claudio (41-54)
+* Nerone (54-68)
+* Galba (68-69)
+* Ottone (69)
+* Vitellio (69)
+* Vespasiano (69-79)
+* Tito (79-81)
+* Domiziano (81-96)
+* Nerva (96-98)
+* Traiano (98-117)
+* Adriano (117-138)
+* Antonino Pio (138-161)
+* Marco Aurelio e Lucio Vero (161-169)
+* Marco Aurelio (169-180)
+* Commodo (180-192)
+* Pertinace (193)
+* Didio Giuliano (193)
+* Settimio Severo (193-211)
+* Caracalla (211-217)
+* Macrino (217-218)
+* Eliogabalo (218-222)
+* Alessandro Severo (222-235)
+* Massimino il Trace (235-238)
+* Gordiano I (238)
+* Gordiano II (238)
+* Pupieno (238)
+* Balbino (238)
+* Giordano III (238-244)
+* Filippo l'Arabo (245-249)
+* Decio (249-251)
+* Treboniano Gallo (251-253)
+* Emiliano (253)
+* Valeriano e Gallieno (253-260)
+* Gallieno (260-268)
+* Claudio II (268-270)
+* Aureliano (270-275)
+* Tacito (275-276)
+* Floriano (276)
+* Probo (276-282)
+* Caro (282-283)
+* Numeriano (283-284)
+* Carino (283-285)
+* Diocleziano (284-305)
+* Massimiano (286-310)
+* Costanzo Cloro (305-306)
+* Galerio (305-311)
+* Massenzio (306-312)
+* Costantino (306-337)

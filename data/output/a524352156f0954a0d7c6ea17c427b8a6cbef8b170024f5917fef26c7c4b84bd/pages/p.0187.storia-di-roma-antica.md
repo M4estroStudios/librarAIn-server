@@ -1,12 +1,26 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMANI E CARTAGINESI: LA CONQUISTA DEL MEDITERRANEO 187
+188
 
-...e le popolazioni celtiche passano dalla parte di Annibale. A fianco dei Romani resistono i Cenomani di Brescia e i Veneti. Essi riforniranno di viveri Cremona e Piacenza, le due colonie latine, che resisteranno agli attacchi del comandante cartaginese fino al 200 a.C. In realtà, dopo un primo momento di euforia, gli alleati si accorgono che Annibale non tiene in alcun conto la vita dei soldati. I saccheggi per procurarsi viveri diventano sempre più pesanti da sopportare. I contingenti africani e iberici sono notevolmente ridotti e gli elefanti sopravvissuti alle nevi alpine muoiono uno dopo l'altro. Solo uno, chiamato "il Sirio" (cioè un elefante siriano, asiatico), resiste e serve unicamente impressionare la gente quando entra nelle città con Annibale sul groppone. Nonostante tutto in poco tempo Annibale annulla la conquista romana della Gallia Cisalpina e Roma comincia a tremare.
+STORIA DI ROMA ANTICA
 
-TEMPI DURI PER LE SPIE:
-*Come in ogni che si rispetti, anche in quella annibalica le spie e gli informatori segreti fanno la loro parte di lavoro: la permanenza di Annibale nella penisola e la sua assoluta libertà di movimento richiedono grandi sforzi a informatori o traditori. A Roma nei momenti cruciali non passa giorno che non si scoprano informatori, infiltrati e mescolati al popolo e addirittura ai soldati. Lo stesso accade nell'accampamento avverso. Il condottiero difficilmente riesce a valutare la fedeltà dei nuovi alleati italici, sempre più numerosi. Il lavoro delle spie è redditizio, non mancano rischi. Romani e Cartaginesi si distinguono profondamente nel trattamento delle spie una volta scoperte. Gli informatori di Annibale in genere sono rispediti all'accampamento del mittente con le mani tagliate: mentre Annibale non ama lasciare in giro superstiti, perciò provvede a crocifiggere pubblicamente le spie dei Romani.*
+stamento: freddo e gelo decimano i soldati bagnati dalle piogge torrenziali; lo stesso Annibale contrae un'infezione che, mal curata, lo rende orbo.
 
-1 PRODIGI DELLA PAURA
-Annibale passa l'inverno a Bologna: mentre a Roma e nei dintorni avvengono strani prodigi. Nel foro Boario un bue sale fino al terzo piano di un'abitazione e si getta capofitto al suolo: Un bimbo di sei mesi gridò *Io triumphev*, il grido dei generali trionfatori. Nel cielo balena una visione di navi e il tempio di Speranza nel foro Olitorio (il mercato delle verdure) è colpito dal fulmine. A Lanuvio la lastra della statua di Giunone si muove da sola; nel Piceno piovono pietre; in Gallia un lupo ruba e porta via la spada dal fodero d'una sentinella. Consultati i Libri Sibillini, si stabilisce di compiere la purificazione della città e di indirizzare preghiere pubbliche agli dèi. L'elezione a console di Gaio Flaminio, noto capo popolare (vedi box ...), insieme a Cneo Servilio Gemino, peggiora la situazione. In un momento così difficile, la sua partenza per l'Etruria senza prendere gli auspici accresce il terrore dilagante. I due consoli si dividono l'esercito: Cneo Servilio va a Rimini con due legioni e Flaminio ad Arezzo con le altre due. Nuovi prodigi diffondono paura. Sassi infiammati cadono a Praeneste: le acque delle fonti di Caere fluiscono miste a sangue; capre si trasformano in pecore, galline in galli, galli in galline.
+**II. CLIMA MALASANO DEL LAGO**
 
-Dopo il riposo emiliano, Annibale tenta di scendere verso la costa ligure ma il maltempo lo blocca. L'esercito punico prova qui altri disagi, che non aveva provato sulle Alpi: per tre notti la piena dei fiumi impedisce qualunque spogliazione.
+Lasciata la Flaminia Annibale giunge nell'alta valle dell'Arno, nei pressi di Fiesole. Flaminio, sopravvalutando se stesso e il cattivo stato dei soldati punici, decide di non aspettare il collega; ma gli dèi non sembrano d'accordo: saltato sul cavallo in all'ira per l'inutile attesa, l'animale stramazza al suolo facendo sbattere la testa al console. Flaminio, testardo, prende un altro cavallo.
+
+Al Trasimeno i Romani sono sorpresi nella nebbia, mentre sono ancora in ordine di marcia; 15.000 uomini sono massacrati e 10.000 fatti prigionieri; Flaminio stesso è colpito a morte (21 giugno 217 a.C.); è annientata anche un'avanguardia di 4.000 uomini, mandata da Servilio: Roma non aveva mai subito una sconfitta così grande.
+
+**AMORE PUNICO E DEMENZIALITÀ DI FLAMINIO**
+
+Dopo la sconfitta del Trasimeno Tito Otacilio, per ordine del Senato, vota sul Campidoglio un tempio a Mens; la Mente. Questo culto per una divinità astratta si colloca in un momento difficile per la città. La follia, la mancanza di senno (cioè, mente) di Flaminio ha condotto lui stesso e l'esercito a una tragica rovina. L'appello alla razionalità è comprensibile, in quanto richiama il concetto di misura, di ordine: tutto ciò che manca in quel momento.
+
+Nello stesso anno, Quinto Fabio Massimo vota un tempio a Venere Ericina. Si tratta della divinità punica del monte Erice in Sicilia. Secondo una pratica collaudata, i Romani si appropriano d'una divinità nemica e il tempio sul Campidoglio è in stretto collegamento con quello di Mente. Venere, dea dell'amore e dell'istinto, è il contrario della razionalità e dell'equilibrio: è il contrario di Mente. Mettere i due templi vicini tende a contrapporre e contenere gli influssi di ciascuna divinità, nella ricerca dell'equilibrio necessario in anni difficili.
+
+[Immagine: Lago Trasimeno]
+F = CAMPO DI FLAMINIO  
+A $\rightarrow$ CAMPO DI ANNIBALE  
+$\Rightarrow$ ROMANI  
+$\Rightarrow$ CARTAGINESI
+
+Lo schieramento degli eserciti cartaginese e romano durante la battaglia del lago Trasimeno (da W. Holden).

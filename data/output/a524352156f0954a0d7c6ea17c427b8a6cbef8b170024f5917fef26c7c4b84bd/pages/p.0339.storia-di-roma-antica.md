@@ -1,11 +1,10 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA DINASTIA DEI FLAVII                                                                    339
+L'IMPERO NELLA SUA MASSIMA ESPANSIONE
 
-Presero così corpo le voci che volevano avesse costretto all'aborto; e quindi alla morte, la figlia di suo fratello Tito, da lui amata incestuosamente. Il Senato diffondeva la voce che Domiziano fosse ormai soltanto un bieco tiranno, mentre l'esercito non riconosceva in lui un capo da servire con fedeltà, perché Domiziano non aveva saputo frequentare assiduamente e con simpatia la classe militare.
+NERVA: LA DINASTIA DEGLI ANTONINI
 
-Si preparò così una congiura alla quale prese parte innanzitutto la stessa moglie dell'imperatore, risposata in seconde nozze dopo un divorzio. Non estranea alla congiura furono i Cristiani del palazzo imperiale; che già avevano visto nella persecuzione Flavio Clemente, console convertito al Cristianesimo, i cui figli Domiziano aveva in un primo momento destinato a succedergli.
+Aveva partecipato alla congiura contro Domiziano, il senatore Marco Cocceio Nerva; famoso avvocato; già amico di Nerone, che aveva aiutato nel reprimere la congiura dei Pisoni. Era stato collega di Vespasiano nel consolato del 71 e, nel 90, console con Domiziano. Fu eletto imperatore lo stesso giorno dell'assassinio di Domiziano e dovette immediatamente provvedere a compensi straordinari per le truppe e per i pretoriani; che non accettavano supinamente l'eliminazione fisica dell'imperatore. Nerva, però, seppe dare luogo a una intelligente politica di riconciliazione; sorretta da importanti riforme. Intanto ordinò la costruzione di nuovi grandi magazzini per le derrate alimentari, la distribuzione delle quali al popolo di Roma fu incrementata. Quindi ordinò il restauro degli acquedotti, aumentò le esenzioni dal pagamento delle tasse di successione e liberalizzò il servizio postale pubblico da imposta, mettendolo a carico dello Stato. Abolì la tassa speciale pagata dagli Ebrei e alleggerì comunque la repressione fiscale nelle province. Riequilibrò il rapporto tra la tassazione agraria diretta,
 
-A uccidere Domiziano fu un procuratore di Domitilla, tale Stefano: Costui frequentava il palazzo e prese ad avvolgersi il braccio sinistro con fasce di lana per diversi giorni; allo scopo di apparire malato e allontanare così ogni sospetto; All'ora stabilita vi nascose dentro un pugnale e ottenne un colloquio da Domiziano; cui fece sapere di essere in grado di rivelargli una congiura. Mentre Domiziano leggeva l'appunto che Stefano gli aveva consegnato; lo stesso lo colpiva con il pugnale e quindi su Domiziano che ferito cercava di reagire furono i suoi servi di camera, che lo avevano tradito; che lo trapassarono con sette pugnalate; Domiziano chiese un pugnale, ma gliene fu dato uno senza lama. Corse alle porte, ma le trovò chiuse. Ingaggiò allora una serrata e violenta lotta con Stefano; che finì l'imperatore uscendo malconcio. Al cadavere di Domiziano solo la sua nutrice, Fillide, rese gli onori funebri nella villa sulla via Latina. Era il 96 d.C.
+[Immagine dell'imperatore Nerva]
 
-![Pianta ricostruita dello stadio di Domiziano]
-*Pianta ricostruita dello stadio di Domiziano come appariva nell'antichità (da N. Colini).*
+*L'imperatore Nerva in un'incisione di F. Garzoli, 1833.*

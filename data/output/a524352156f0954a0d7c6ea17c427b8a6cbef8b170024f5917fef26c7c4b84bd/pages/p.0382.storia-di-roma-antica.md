@@ -1,20 +1,17 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-382                                                                    STORIA DI ROMA ANTICA
+DA CLAUDIO II. TACITO A DIOCLEZIANO 383
 
-cettarono facilmente un impegno che li declassava di rango e non consentiva facili guadagni.
+[Immagine di due medaglie]
+L'imperatore Diocleziano (a sinistra) e Massimiano (a destra).
 
-AURELIO CARO
+Diocleziano dovette intervenire personalmente a domare, nel 297, la ribellione dell'Egitto. Contemporaneamente, Massimiano Galerio attaccava i Persiani, riconquistando la Mesopotamia; obbligandoli a riconoscere il protettorato romano sull'Armenia e quindi a rinunciare all'imposizione di dazi sui commerci romani in Oriente.
 
-Nell'ottobre del 282 le truppe impiegate al prosciugamento di una palude in Illiria uccisero Aurelio Probo, appena furono raggiunte dalla notizia che i soldati della Rezia e del Norico avevano proclamato imperatore il prefetto Aurelio Caro. Costui soddisfe con subito le istanze dell'esercito, conducendo vittoriosamente contro i Persiani e conquistando Seleucia; ma nel 283 morì e gli successero i due figli Numeriano e Carino.
+LA RIFORMA TRIBUTARIA DI DIOCLEZIANO
 
-NUMERIANO E CARINO
+Fu allora che Diocleziano operò l'ultima grande riforma ideata ancora secondo le linee di programma che avevano caratterizzato la storia economica e sociale dell'Impero fin dall'età di Augusto.
 
-*A Numeriano spettò il governo dell'Oriente e a Carino dell'Occidente*
+Per prima cosa Diocleziano intervenne nell'ordinamento tributario stabilendo che ogni lavoratore dovesse una tassa allo Stato quale unità lavorativa. Tutto l'Impero, ai fini tributari, veniva diviso in raggruppamenti di unità lavorative dette diocesi. Scomparivano così le province e nelle divisioni diocesane rientrava anche l'Italia con Roma. Ogni diocesi doveva censire le proprie forze lavoratrici agricole e l'estensione dei terreni coltivabili, il cui rapporto avrebbe indicato l'entità della tassazione individuale: con questo sistema le tasse sarebbero state tanto più alte quanto minore sarebbe stata la densità demografica. È evidente che la disposizione dioclezianea guardava ai sudditi come collettività, abbandonando ipotesi di differente situazione individuale. Con questo Diocleziano affermava che l'Impero era composto da una grande massa di sudditi e da una molto più esigua classe dirigente. In conseguenza di questo ordinamento tributario fu vietato ai contadini di abbandonare la terra e di fornire invece un numero fisso di uomini all'esercito. Nasceva così la servitù della gleba, che avrebbe caratterizzato tutta l'età medievale.
 
-Prendeva così corpo la futura divisione dell'Impero di Roma: Numeriano, però, fu ucciso nel settembre del 284 e fu sostituito da Valerio Diocle, destinato a divenire molto più famoso e importante con il nome di Diocleziano.
+LA NUOVA POLITICA MONETARIA
 
-DIOCLEZIANO E MASSIMIANO
-
-Diocle fu proclamato imperatore il 20 novembre del 284 a Calcedonia e quindi dovette prepararsi ad affrontare l'esercito di Carino. Lo scontro avvenne in Mesia. Sul campo di battaglia vinceva Carino, ma subito dopo una congiura lo eliminava. Era il 285 d.C. e Diocleziano restava unico imperatore.
-
-Caio Aurelio Valerio Diocle, detto Diocleziano, era nato in Dalmazia nel 243. Percorse la carriera militare raggiungendo i più alti gradi sotto Aureliano e Probo. Appena eletto imperatore, Diocleziano nominò un Cesare nella persona di Massimiano; altro generale dell'esercito che, nel 286, fu dallo stesso Diocleziano elevato ad Augusto. Il binomio dei due Augusti, fondato sulla diversa competenza in Occidente e in Oriente, era anche basato sulla proiezione delle due figure imperiali su un livello di sacralità che corrispondeva alla tradizionale divinizzazione dell'imperatore. Tale sacralità era comunque definita da un ordine gerarchico che poneva Diocleziano al di sopra del collega: infatti, Diocleziano assumeva l'appellativo di *Iovius* e Massimiano quello di *Herculius*, cosicché il primo si attribuiva il valore di Giove e al secondo andavano le qualità semidivine di Ercole. Massimiano, soldato leale e coraggioso quanto rude, intervenne subito nelle Gallie a domare una ripresa dei tentativi armati di autonomia dall'Impero, raggiungendo importanti successi, ma non riuscendo a piegare l'insurrezione del batavo Carausio; che con la sua flotta dominava il canale della Manica e aveva eletto a capitale del suo regno, appoggiato dai mercanti, l'attuale Boulogne; Carausio mantenne il controllo di questa zona fino al 294. Per stabilire un controllo maggiore delle province imperiali Diocleziano e Massimiano, Augusti, nominarono due Cesari, Massimiano Galerio per l'Oriente e Costanzo Cloro per l'Occidente. Quest'ultimo nel 296 intervenne contro Carausio che nel frattempo fu ucciso e l'unità dell'Impero venne ristabilita nelle Gallie; se da un lato ritomava la pace, da un altro si riaprivano gravi problemi: Dio-
+Diocleziano riformò anche la politica monetaria; restituendo con decreti un corso elevato al denario di rame che era in crisi profonda e appoggiandolo sulla moneta d'oro e d'argento. Questo programma fallì perché il potere d'acquisto del rame non garantiva la stabilità dei prezzi che crebbero così vor-

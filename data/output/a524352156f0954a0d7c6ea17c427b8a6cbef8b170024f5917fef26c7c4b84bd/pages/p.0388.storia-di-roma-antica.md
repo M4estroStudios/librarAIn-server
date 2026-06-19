@@ -1,8 +1,11 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-388
+DA CLAUDIO II. TACITO A DIOCLEZIANO 389
 
-STORIA DI ROMA ANTICA
+[Illustrazione di un arco trionfale con iscrizione latina]
 
-![Immagine]
-
-*Il Foro Romano con l'arco di Settimio Severo, incisione di G. Vasi.*
+IMP CAES CLAVDIVS FR AVGVSTVS
+PONTIF MAX TRIB POT VII IMP III COS III
+P P
+[...]
+IMP CAES DIOCLETIANVS P F AVG
+[...]

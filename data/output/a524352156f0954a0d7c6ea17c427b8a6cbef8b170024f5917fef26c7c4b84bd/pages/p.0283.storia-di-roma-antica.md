@@ -1,14 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-RICONCILIAZIONE E CONSENSO                                                                           283
+284 STORIA DI ROMA ANTICA
 
-*Il teatro di Marcello in un'incisione di G.B. Piranesi.*
+IL FONDATORE DELLA PACE
 
-***
+L'arco di Giano Quirino (situato nel Foro, presso l'Argileto), che i nostri antenati vollero che fosse chiuso ogni qual volta in tutti i domini del popolo romano regnava la pace, conquistata con le vittorie ottenute per terra e per mare, mentre dalla mia nascita si tramanda che fosse rimasto chiuso solo due volte a partire dalla fondazione della città (al tempo di Numa e dopo la prima guerra punica), il Senato decretò che fosse chiuso ben tre volte durante il mio principato.
 
-### PADRE DELLA PATRIA
+Fine delle guerre civili, pacificazione del mondo sotto il dominio di Roma sono le realizzazioni che Augusto può ascrivere a proprio merito;
 
-La forte carica religiosa contenuta nel nome di *Augustus* (un uomo che gode di autorità per augurio divino; *vedi pagine precedenti*) pone automaticamente Augusto al di sopra di tutti gli altri uomini: Egli evita di farsi venerare a Roma come un dio; contrariamente a quanto avviene nelle province dell'Impero e soprattutto in Oriente e in Egitto, dove il successore dei Faraoni e dei Tolomei è considerato come un dio in terra. Accetta, però, di far intitolare al suo nome il mese *Sestile* (il sesto dell'anno; secondo l'antico calendario romano, prima dell'introduzione di gennaio e febbraio), divenuto *Augustus* o agosto. Del resto già Cesare aveva cambiato nome al mese *Quintile*, divenuto *Iulius* o luglio.
+La *pax Augusta*, la pace procurata da Augusto, è una conquista duratura per il nuovo mondo dominato da Roma. Libertà dalla paura delle guerre civili, libertà e sicurezza dei traffici, soprattutto marittimi, nel Mediterraneo divenuto un lago romano, sono il presupposto del nuovo assetto istituzionale e sociale del principato. Simbolo monumentale di questa nuova pace dovuta ad Augusto è l'Ara Pacis.
 
-È sfruttata a livello pubblico la credenza antichissima che ogni uomo abbia una divinità personale o *Genio*, che lo accompagna tutta la vita. In casa familiari e schiavi venerano nel larario domestico il *Genio* del capofamiglia (*vedi capitolo I luoghi e le istituzioni*): ugualmente il *Genio* d'Augusto è associato al culto dei *Lares Compitales*, celebrato nei *compita* o crocicchi dei vici di Roma; in tal modo Augusto diventa il capofamiglia degli abitanti di ogni quartiere di Roma e quindi di tutto il popolo romano.
+UN PROGRAMMA NEL MARMO: L'ARA PACIS
 
-Per questo motivo nel 2 a.C. il Senato e il popolo gli conferiscono il titolo di «padre della patria».
+L'Ara Pacis o altare della pace, è votata nel 13 a.C. e dedicata il 30 gennaio del 9 a.C. nel Campo Marzio settentrionale all'ingresso in città della via Flaminia, dove già è sorto il mausoleo di Augusto. Sopra un ampio basamento dentro un recinto rettangolare con le pareti decorate da rilievi, si trova l'altare riccamente decorato:
+
+Il programma ideologico raffigurato nei rilievi dei grandi quadri e dei fregi ricorda del Foro di Augusto. Le scene mitologiche (rappresentazione del Lupercale e del sacrificio d'Enea) trovano corrispondenza nelle figure allegoriche (la Pace e la dea Roma). I lati esterni rappresentano la famiglia imperiale al completo: con i personaggi principali dei Giulii e dei Claudii gerarchicamente disposti intorno ad Augusto. In pratica Augusto e la sua discendenza sono ricollegati a Enea e a Romolo.
+
+In stretto rapporto con l'Ara Pacis c'è l'orologio solare d'Augusto, col quadrante disegnato al suolo e l'asta costituita da un obelisco (attualmente in piazza Montecitorio). L'ombra di questo gigantesco gnomone il 23 settembre, giorno dell'equinozio d'autunno e del compleanno di Augusto, cade esattamente sull'asse dell'altare, a evidenziare che Augusto è il principe nato per portare la pace.
+
+[Immagine]
+
+*Ara Pacis, fregio con processione del lato sud (particolare).*

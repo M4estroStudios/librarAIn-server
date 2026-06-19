@@ -1,30 +1,21 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CRISI DELL'IMPERO                                                                    373
+374
 
-                    IL MILLESIMO ANNIVERSARIO
-                      DELLA FONDAZIONE DI ROMA
+STORIA DI ROMA ANTICA
 
-Sotto il suo regno, la città di Roma visse uno dei momenti più splendidi per-
-ché in essa, con grande sfarzo, si celebrò il millesimo anniversario della sua
-fondazione.
+Ruderi dell'arco di Balbo,
+*antica incisione*.
 
-___________________________________________________________________________
-| IL MILLENNIO DI ROMA                                                    |
-| *San Girolamo nella Cronaca redatta alla fine del IV secolo d.C. per l'anno 246 racconta: Mentre regnavano Filippo e suo figlio si compì il millesimo anniversario della città di Roma. In quella solenne occasione venne uccisa nel circo una enorme quantità di animali e nel Campo Marzio si svolsero spettacoli teatrali per tre giorni e tre notti con assidua partecipazione di popolo. Zosimo, uno storico vissuto nel V secolo, accuserà Filippo l'Arabo di aver compiuto i riti tradizionali per il millennio di Roma con scarso entusiasmo, tanto da attribuire a questo episodio una precisa e documentata conseguenza: «Se le cerimonie sacre fossero state osservate religiosamente; l'Impero romano avrebbe conservato la sua potenza; ma poiché sono state trascurate, l'Impero è caduto sotto la dominazione dei barbari».* |
-|_________________________________________________________________________|
+me nelle aule delle grandi terme; si offrivano pubbliche recite; letture e mostre di quadri che illustravano gli episodi maggiori della storia di Roma. L'augurio di tutti era per un felice secondo millennio:
 
-Giochi e spettacoli si svolsero numerosi e scenografici nel Circo Massi-
-mo, nel circo Variano e nel circo Vaticano come nell' anfiteatro Flavio e in
-quello castrense.
+Ma ormai gli eserciti di Germania si sentivano sempre più padroni della scena politica e, nell'anno successivo ai grandi festeggiamenti, le legioni della Pannonia, insoddisfatte di quanto l'imperatore concedeva loro, si ribellarono proclamando imperatore un senatore originario di quelle terre, Messio Traiano Decio.
 
-Naumachie si tennero a Trastevere e nel bacino che sorgeva vicino al mau-
-soleo di Adriano; gare atletiche si svolsero nello stadio di Domiziano. Tutti
-i templi accolsero solenni cerimonie religiose, mentre innumerevoli proces-
-sioni con le statue degli dèi attraversavano la città.
+MESSIO TRAIANO DECIO
 
-Nei teatri di Marcello, di Pompeo, di Balbo e nell' odeon di Domiziano; co-
+Nel 249 d.C. Decio marciava immediatamente contro Filippo l'Arabo e lo vinceva a Verona. Intanto a Roma i senatori trovavano contraddittoria e irritante la simpatia che Filippo l'Arabo nutriva sempre più apertamente per il cristianesimo e, raggiunto l'accordo con i pretoriani, facevano uccidere anche il figlio più giovane. Il pannone Decio era così imperatore di Roma e appariva a tutti un po' meno barbaro per aver sposato una donna di famiglia etrusca, Erennia Cupressenia Etruscilla;
 
-___________________________________________________________________________
-| GIOCHI GLADIATORI                                                       |
-| *Gli spettacoli che appassionavano i cittadini di Roma erano soprattutto quelli dei duelli tra gladiatori, delle cosiddette cacce alle belve o delle lotte fra animali diversi e le corse con i carri nel circo. Nonostante gli sforzi degli imperatori più ellenizzati, i Romani non si appassionarono mai agli spettacoli di atletica né ai concerti e alle recite poetiche. A malapena riuscirono ad apprezzare il teatro; dove, però, alla tragedia preferirono le divertenti commedie. I giochi gladiatori si tennero soprattutto nel grande anfiteatro Flavio detto anche Colosseo. I gladiatori, per lo più prigionieri di guerra, si affrontavano indossando particolari armature ed elmi che facevano riferimento a modi specifici di duellare o ai lontani paesi di origine. C'era chi era armato di scudo e spada corta, oppure di spada lunghissima o, ancora, di una rete e di un tridente. Raramente il combattimento si protraeva fino all'ultimo sangue, ma la continua presenza di medici e infermieri era necessaria per soccorrere i feriti. I gladiatori erano organizzati in vere e proprie truppe al soldo di un organizzatore e giravano l'Impero dando spettacoli nelle varie città. Allo stesso modo giravano anche i cosiddetti bestiari che nell' arena, invece, affrontavano belve o animali feroci.* |
-|_________________________________________________________________________|
+Nel 250 Decio nominava Cesare il proprio figlio, Erennio Etrusco; e scatenava una delle più terribili persecuzioni anticristiane. Nel 251 d.C. Decio nominava Cesare anche l'altro suo figlio: Ostiliano Messio.
+
+Con ciò di nuovo l'identità dinastica veniva garantita, mentre gran parte del potere veniva restituito al Senato e Decio provvedeva al controllo dei pretoriani e a garantirsi la fedeltà dell'esercito.
+
+Ma fu la persecuzione anticristiana a fare da elemento unificante del corpo so-

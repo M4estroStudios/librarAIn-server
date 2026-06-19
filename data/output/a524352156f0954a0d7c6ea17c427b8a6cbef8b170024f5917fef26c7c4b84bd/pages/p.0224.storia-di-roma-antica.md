@@ -1,26 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-224                                           STORIA DI ROMA ANTICA
+ROMA TRA CONSERVATORI E INNOVATORI
 
-[BOX]
-1). TEMPIO RETTANGOLARE: VICINO AL TEVERE
-*Tra gli edifici ancora conservati va senz'altro ricordato il tempio rettangolare di Portuno; vicino a quello rotondo di Ercole. Si tratta di un tempio pseudoperiptero (cioè solo semicolonne circondano la cella) rivestito inoltre da lastre di travertino. Purtroppo della ricca decorazione in stucco non rimane più nulla; mentre si vedono ancora musi leonini che decorano il cornicione, frutto di un restauro successivo. L'edificio del I secolo a.C. ha coperto un luogo di culto molto più antico, forse del IV secolo; segno della continuità del culto del dio Portuno; protettore dei porti e degli ingressi nelle città, ed è erronea la denominazione di tempio della Fortuna Virile.*
-[/BOX]
+225
 
-La morte di Scipione Nasica; forse assassinato, segna una ripresa del movimento filograccano (129 a.C.). Per placare gli Italici il console Fulvio Flacco propone di estendere la cittadinanza. La proposta cade e Fulvio è trasferito in Gallia (125 a.C.).
+CATONE PAPÀ MODELLO
 
-Il fratello minore di Tiberio; il secondo «gioiello» di Cornelia; in questi anni ha cercato di sostenere la legge agraria. Senza clamore ha continuato a lavorare nella commissione per la distribuzione delle terre.
+La tradizione racconta che Catone è stato un buon marito e un buon padre. Essere considerato un buon marito equivale per lui a essere un buon senatore. Con la nascita del figlio non c'è faccenda importante che lo tenga lontano da casa, quando sua moglie lava o fascia il piccolo. Quando questi ha raggiunto l'età di capire, è lo stesso Catone che si occupa della sua educazione, nonostante abbia in casa uno schiavo d'origine greca, maestro di molti ragazzi. Preferisce insegnargli lui stesso a leggere e a scrivere per non permettere che uno schiavo peggio punisca suo figlio. L'apprendimento riguarda non solo le lettere e il diritto, ma comprende esercizi fisici che ne rafforzino il corpo. Il piccolo Catone impara così a nuotare, a combattere, a cavalcare, a sopportare il freddo. Il padre scrive la sua opera storica a caratteri grandi per fare in modo che avendola in casa il figlio possa fare esercizio e conoscere fatti importanti. Come spesso accade il ragazzo, pur con tutta la buona volontà e l'impegno, cresce deboluccio e malato. Nonostante tutto, quando ha occasione di andare in battaglia, dimostra il suo valore. Durante lo scontro a Pidna gli sfugge di mano la spada: afflitto si getta nella mischia e, facendosi largo fra i corpi dei nemici uccisi, la recupera. Emilio Paolo lo loda e una volta tornati in patria gli dà in moglie sua figlia Terzia.
 
-Rispetto al fratello, Caio è un personaggio estremamente complesso. Attento politico, è un abilissimo oratore che sa incantare le folle. Reso saggio dalla fine di Tiberio, ha pensato il suo programma politico, presentato dieci anni dopo, in modo che possa affrontare opposizioni e avere appoggi. La novità e la lungimiranza della sua opera consistono nell'aver saputo agganciarsi alle nuove forze, che reclamano di entrare nella vita politica; perché la plebe (che ha appoggiato Tiberio) è una base troppo labile e mutevole.
+Clamorosi casi di assoluzione di membri della *nobilitas* hanno fatto più volte grido allo scandalo. Il contrasto profondo tra classe senatoria e classe equestre si coglie in tutta la sua drammaticità proprio in questi processi. Caio priva i senatori della maggioranza e trasferisce ai cavalieri la direzione dei processi. La sua attività in favore della classe equestre si manifesta anche in un'altra legge: la provincia d'Asia, la provincia asiatica, risultato dell'eredità di Attalo (re di Pergamo), pone problemi di natura burocratica e fiscale: Caio stabilisce che l'appalto della riscossione delle tasse sia affidato ai *publicani* (cioè a dei cavalieri) e il tesoro della corona sia usato per il popolo. L'intuizione politica che i cavalieri possano sostenere chi appoggi i loro interessi economici è destinata a lungo successo nella storia della Repubblica.
 
-CENTRATO IN MAIUSCOLETTO
+PASSIONI SENILI
 
-UN PROGRAMMA AMBIZIOSO
-
-Il programma di Caio contempla innanzitutto una legge frumentaria, comportante la vendita ai poveri di grano a prezzo ridotto. Un'altra legge stabilisce che il vestiario dei soldati sia a carico dello Stato e che esso non sia più detratto dallo stipendio. Inoltre proibisce che si arruolino giovani con meno di 17 anni.
-
-[BOX]
-I ROMANI NON PAGANO TASSES
-*L'enorme quantità di metallo prezioso che affluisce nelle casse dello Stato dopo la sconfitta di Perseo riesce a sopperire ai bisogni della Repubblica. Secondo i Romani la guerra deve pagare se stessa. In questo caso il bottino sopravanza al punto che i cittadini possono permettersi di non pagare più il tributo. Il tributo è l'unica tassa pagata dai Romani e in tempi difficili, come nel corso della guerra annibalica, è stato addirittura raddoppiato. L'esenzione dal pagamento dura a lungo e soltanto nel 43 a.C. sarà ripristinato il tributo; da allora in sempre pagato.*
-[/BOX]
-
-Ma l'anima della sua proposta politica è la legge giudiziaria. Dal 149 a.C. è stato istituito un tribunale per giudicare i casi di estorsione ai danni dei provinciali. Il tribunale è costituito da una giuria di senatori.
+Perdere la testa per una donna più giovane anche nel mondo antico è una "follia" diffusa. Antioco I ha trascorso un intero inverno con la sua giovanissima moglie, mentre la guerra con i Romani si fa imminente. Massinissa, il vecchio alleato di Roma contro Cartagine, cede al fascino della giovinezza. Lo stesso Catone, ligio difensore della morale romana, non sa resistere alla carne. Pur essendo vecchio non rifugge il piacere insieme alla moglie: quando questa muore, si sposa con una giovanissima ragazza. Infatti, rimasto vedovo, si trova a vivere nella stessa casa in cui abita il figlio e la nuora. La casa è piccola e la nuora non tarda molto ad accorgersi che una giovane schiava frequenta la camera del padrone. La ragazza, diventata insolente, suscita la reazione del figlio di Catone, che non riconosce nel vecchio satiro il padre che gli ha insegnato a leggere e che non si mostrava nudo di fronte a lui. Catone allora decide di sposare la ragazza. Da queste nozze, osteggiate dal figlio, nascerà un bimbo che allieterà gli ultimi anni della vecchiaia dell'anziano padre e allevierà il dolore per la morte del primogenito.

@@ -1,18 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA TRA CONSERVATORI E INNOVATORI  
-223
+224
 
-***
+STORIA DI ROMA ANTICA
 
-*NON DI SOLA PAPPA...*
+1. TEMPIO RETTANGOLARE VICINO AL TEVERE
 
-*L'alimentazione del cittadino romano, privo di consistenti fortune, è sempre stata povera: il piatto principale è la puls, una pappa di cereali; a volte arricchita da fave, lenticchie, ceci. Le carni non si mangiano spesso e in genere si macellano solo gli animali vecchi e inutilizzabili. Per ammorbidire questa carne coriacea, si usa bollirla lungamente e dopo arrostirla sul fuoco. La dieta mediterranea dei Romani è ricca di verdure e di oli vegetali, dal momento che l'olivo è sempre più diffuso e coltivato. Il grande afflusso di ricchezze del I secolo a.C. muta questa dieta tutta salute. Il lusso colpisce anche a tavola e improvvisamente la pappa abituale diventa scipita. Si passa al pane e al vino, ben presto protagonisti delle tavole anche modeste. Le pietanze si arricchiscono di salse e di ingredienti nuovi. Per chi permetterselo la carne diventa il piatto principale. Dato che il cibo è specchio dell'uomo, anche il costume alimentare diventa espressione di fedeltà alla tradizione romana. Chi si oppone alla dilagante moda greca rimane fedele alla pappa e alle verdure, vero cibo di un vero Romano: così il cibo semplice diventa il simbolo di una rimpianta semplicità.*
+Tra gli edifici ancora conservati va senz'altro ricordato il tempio rettangolare di Portuno, vicino a quello rotondo di Ercole. Si tratta di un tempio pseudoperiptero (cioè solo semicolonne circondano la cella), rivestito inoltre da lastre di travertino. Purtroppo della ricca decorazione in stucco non rimane più nulla; mentre si vedono ancora musi leonini che decorano il cornicione, frutto di un restauro successivo.
 
-***
+L'edificio del I secolo a.C. ha coperto un luogo di culto molto più antico, forse del IV secolo; segno della continuità del culto del dio Portuno, protettore dei porti e degli ingressi nelle città, ed è erronea la denominazione di tempio della Fortuna Virile.
 
-*IL TEMPIO ROTONDO VICINO AL TEVERE*
+La morte di Scipione Nasica, forse assassinato, segna una ripresa del movimento filograccano (129 a.C.). Per placare gli Italici il console Fulvio Flacco propone di estendere la cittadinanza. La proposta cade e Fulvio è trasferito in Gallia (125 a.C.).
 
-*Vicino al Tevere, nel foro Boario esiste l'unico esempio di tempio quasi completamente in marmo, giunto fino a noi. Il tempio circolare è decorato da 20 colonne di marmo. La cella è anch'essa in marmo: purtroppo è andata perduta tutta la parte superiore. Il tempio è stato erroneamente identificato con quello di Vesta. In realtà i resti di un'iscrizione e d'una statua di culto non concedono dubbi sulla divinità dell'edificio. Si tratta di un tempio dedicato a Ercole «Olivarius», costruito forse da Ermogene, lo stesso architetto greco autore del tempio di Giove Statore, il primo tempio in marmo di Roma. La statua d'Ercole, di cui si sono trovati alcuni frammenti, è probabilmente opera di Scopas minore, lo scultore greco che ha aperto bottega a Roma nel I secolo a.C. Il committente del tempio è un mercante romano, Marco Ottavio Erreno, arricchitosi con il commercio dell'olio: proprio come patrono degli olearii, dedica l'edificio a Ercole, chiamato per la sua funzione «Olivarius». Il foro Boario continua dunque a curare il culto di Ercole, divinità che fin dall'epoca arcaica protegge i mercanti che passano attraverso il guado. Molto simile all'edificio ancora conservato doveva essere il tempio rotondo a Ercole voluto da Scipione Emiliano (142 a.C.); i suoi resti esistevano ancora nel XV secolo quando furono completamente demoliti. Esso era probabilmente situato nell'area occupata dall'ex palazzo dei musei di Roma, a nord della chiesa di Santa Maria in Cosmedin.*
+Il fratello minore di Tiberio, il secondo gioiello di Cornelia, in questi anni ha cercato di sostenere la legge agraria. Senza clamore ha continuato a lavorare nella commissione per la distribuzione delle terre. Rispetto al fratello, Caio è un personaggio estremamente complesso. Attento politico, è un abilissimo oratore che sa incantare le folle. Reso saggio dalla fine di Tiberio, ha pensato il suo programma politico, presentato dieci anni dopo, in modo che possa affrontare opposizioni e avere appoggi. La novità e la lungimiranza della sua opera consistono nell'aver saputo agganciarsi alle nuove forze, che reclamano di entrare nella vita politica; perché la plebe (che ha appoggiato Tiberio) è una base troppo labile e mutevole.
 
-[Immagine]  
-*Pianta e ricostruzione del tempio rotondo dedicato a Ercole, noto come tempio di Vesta.*
+UN PROGRAMMA AMBIZIOSO
+
+Il programma di Caio contempla innanzitutto una legge frumentaria, comportante la vendita ai poveri di grano a prezzo ridotto. Un'altra legge stabilisce che il vestiario dei soldati sia a carico dello Stato e che esso non sia più detratto dallo stipendio. Inoltre proibisce che si arruolino giovani con meno di 17 anni.
+
+I ROMANI NON PAGANO TASSE
+
+L'enorme quantità di metallo prezioso che affluisce nelle casse dello Stato dopo la sconfitta di Perseo riesce a sopperire ai bisogni della Repubblica. Secondo i Romani la guerra deve pagare se stessa. In questo caso il bottino sopravanza al punto che i cittadini possono permettersi di non pagare più il tributo. Il tributo è l'unica tassa pagata dai Romani e in tempi difficili, come nel corso della guerra annibalica, è stato addirittura raddoppiato.
+
+L'esenzione dal pagamento dura a lungo e soltanto nel 43 a.C. sarà ripristinato il tributo; da allora è sempre pagato. Ma l'anima della sua proposta politica è la legge giudiziaria. Dal 149 a.C. è stato istituito un tribunale per giudicare i casi di estorsione ai danni dei provinciali. Il tribunale è costituito da una giuria di senatori.

@@ -1,14 +1,30 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMANI E CARTAGINESI: LA CONQUISTA DEL MEDITERRANEO | 197
+198
 
-*Bassorilievo; proveniente da Pozzuoli, raffigurante una trireme.*
+STORIA DI ROMA ANTICA
 
-**LE CONDIZIONI DI PACE: DOPO ZAMA**
+Massinissa offre a Sofonisba una coppa di veleno (incisione di B. Pinelli)
 
-Il greco Polibio (205-123 a.C.) ha tramandato le condizioni di pace consegnate ai plenipotenziari punici dopo la sconfitta: «I Cartaginesi conserveranno in Africa le città che avevano prima di dichiarare la guerra, il territorio che possedevano un tempo, il bestiame; gli schiavi e tutti gli altri beni. Cominciando da oggi, non sarà fatto loro alcun male e vivranno secondo le loro leggi e i loro costumi. Non saranno imposte guarnigioni [...]. Ma restituiranno ai Romani tutto ciò che è stato ingiustamente sottratto durante l'armistizio. Restituiranno prigionieri e gli schiavi fuggiaschi, senza limiti di tempo; consegneranno tutte le navi da guerra, ad eccezione di dieci triremi, e tutti gli elefanti. Non faranno guerra ad alcun popolo al di fuori della Libia e nella Libia stessa la faranno solo con il consenso dei Romani. Restituiranno a Massinissa le case, le terre, le città e tutto ciò che apparteneva al re e agli antenati, entro i confini indicati. Forniranno all'armata grano per tre mesi e pagheranno le spese fino a quando non sarà giunta da Roma la risposta relativa a questo trattato. In cinquant' anni verseranno 10.000 talenti euboici d'argento (una moneta greca dell'isola di Eubea, in pratica una cifra enorme) nella misura di 200 talenti all'anno. Consegneranno in garanzia cento ostaggi, che il generale romano sceglierà tra i giovani dai quattordici ai trent'anni».
+Utica. Finge di interessarsi alle trattative avanzate da Asdrubale e Siface, lascia passare l'inverno; con le truppe accampate nei Castra Cornelia (l'accampamento Cornelio) in primavera con un attacco a sorpresa occupa e brucia gli accampamenti nemici. Siface è inseguito fino a Cirta, dove è catturato insieme alla regina Sofonisba, figlia di Asdrubale. La giovane e bella donna era stata un tempo fidanzata di Massinissa; ancora innamorato di lei.
 
-falliscono contro Piacenza, la fedele colonia che da sempre resiste ad Annibale, e l'impresa si conclude con la sua sconfitta al Metauro del 207 a.C.
+Sofonisba senza fatica riesce a convincere il vecchio amore a sposarla quello stesso giorno. Ma Scipione non è sensibile a queste storie d'amore un po' stantie e tardive; la figlia di Asdrubale è pericolosa e va eliminata. A Massinissa dovrà bastare il regno di Numidia. Consapevole del suo fallimento, Sofonisba beve la coppa di veleno che il fresco sposo a malincuore le offre.
 
-**«MAL D'AFRICA» DI UN GENERALE VITTORIOSO**
+La fine di Siface, inviato prigioniero in Italia, fa vacillare la potenza cartaginese: Il potere passa ad Annone, un nipote di Annibale, che riporta in auge la fazione dei Barca. Nonostante una vittoria navale a Utica (la flotta si dirige verso Crotone per andare a prendere Annibale) il Senato cartaginese accetta le condizioni romane. Scipione esige "solo" l'abbandono dell'Italia, la rinuncia a Spagna e Sardegna; la consegna della flotta; salvo 20 navi.
 
-Tornato Scipione dalla Spagna; i suoi sostenitori ne ottengono l'elezione a console. La Sicilia gli è assegnata come provincia o area d'influenza. Il sogno d'una guerra africana affascina Scipione: ma Fabio Massimo si oppone con tutte le forze; il ricordo di Attilio Regolo è ancora troppo vivo (vedi capitolo precedente). Se non è possibile fermare il giovane console con le parole; gli si possono togliere finanziamenti e il Senato rifiuta di ricorrere a nuove contribuzioni. Ma Scipione può contare su vaste clientele. Da parte etrusca gli giungono gli aiuti più consistenti. Neppure lo scandalo causato dalla brutalità del suo luogotenente con gli abitanti di Locri, ferma i preparativi della grande spedizione. Alla fine dell'estate del 204 a.C. Scipione sbarca
+Ma la guerra non può finire così: manca ancora lo scontro con Annibale. Alla fine di ottobre i due generali, dopo un colloquio infruttuoso, si fronteggiano a Naraggara, presso il villaggio di Zama (202 a.C.). Per la prima volta Annibale è sconfitto in una battaglia campale: Tornato a Cartagine convince i concittadini a chiedere la pace; È così sancita la fine della potenza cartaginese: Pochi giorni dopo la sconfitta le vedette romane vedono partire dal porto di Cartagine una nave coperta di bende e di rami d'ulivo: sono plenipotenziari che si recano a Roma a implorare la pace.
+
+***
+
+198
+
+STORIA DI ROMA ANTICA
+
+[Immagine]
+
+Massinissa offre a Sofonisba una coppa di veleno (incisione di B. Pinelli).
+
+a Utica. Finge di interessarsi alle trattative avanzate da Asdrubale e Siface, lascia passare l'inverno, con le truppe accampate nei Castra Cornelia (l'accampamento Cornelio). In primavera con un attacco a sorpresa occupa e brucia gli accampamenti nemici. Siface è inseguito fino a Cirta, dove è catturato insieme alla regina Sofonisba, figlia di Asdrubale. La giovane e bella donna era stata un tempo fidanzata di Massinissa, ancora innamorato di lei. Sofonisba senza fatica riesce a convincere il vecchio amore a sposarla quello stesso giorno. Ma Scipione non è sensibile a queste storie d'amore un po' stantie e tardive; la figlia di Asdrubale è pericolosa e va eliminata. A Massinissa dovrà bastare il regno di Numidia. Consapevole del suo fallimento, Sofonisba beve la coppa di veleno che il fresco sposo a malincuore le offre.
+
+La fine di Siface, inviato prigioniero in Italia, fa vacillare la potenza cartaginese. Il potere passa ad Annone, un nipote di Annibale, che riporta in auge la fazione dei Barca. Nonostante una vittoria navale a Utica (la flotta si dirige verso Crotone per andare a prendere Annibale) il Senato cartaginese accetta le condizioni romane. Scipione esige "solo" l'abbandono dell'Italia, la rinuncia a Spagna e Sardegna, la consegna della flotta, salvo 20 navi.
+
+Ma la guerra non può finire così: manca ancora lo scontro con Annibale. Alla fine di ottobre i due generali, dopo un colloquio infruttuoso, si fronteggiano a Naraggara, presso il villaggio di Zama (202 a.C.). Per la prima volta Annibale è sconfitto in una battaglia campale. Tornato a Cartagine convince i concittadini a chiedere la pace. È così sancita la fine della potenza cartaginese: Pochi giorni dopo la sconfitta le vedette romane vedono partire dal porto di Cartagine una nave coperta di bende e di rami d'ulivo: sono plenipotenziari che si recano a Roma a implorare la pace.

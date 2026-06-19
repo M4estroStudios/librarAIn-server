@@ -1,16 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-DAGLI ANTONINI ALLA DINASTIA DEI SEVERI
+358
 
-COMMODO
+STORIA DI ROMA ANTICA
 
-Commodo salì al trono imperiale a diciannove anni, nel 180 d.C. Nel 178 aveva sposato Bruttia Crispina, nipote di Antonino Pio. Alla morte di Marco Aurelio prese il nome di Marco Aurelio Commodo Antonino e per la terza volta nell'Impero di Roma, un figlio succedeva sul trono del padre. Immediatamente abbandonò la politica di espansione territoriale; concludendo un accordo con barbari che garantì la pace ai confini. Tornò quindi a Roma, ove amava vivere, e adottò una politica che accontentasse la plebe romana promulgando un calmiere dei prezzi, elargendo pubbliche distribuzioni di denaro e di alimenti e offrendo grandiosi spettacoli nel Circo Massimo nell'anfiteatro Flavio.
+[Incisione di F. Garzoli riproducente gli imperatori Commodo (a sinistra) e Publio Elio Pertinace (a destra).]
 
-Amava una concubina di nome Marcia; che si dice fosse cristiana e, grazie a costei, Commodo inaugurò una politica di tolleranza verso gli stessi Cristiani, che gli riconobbero di avere dato vita a un regno di pace. Ma con tanta serenità dovette affrontare diverse congiure che Commodo represse nel sangue: Contemporaneamente, la politica adottata verso la plebe romana e la di continui privilegi all'esercito, irritò e favorì le proteste dei provinciali, cosicché gli eserciti di Roma si trasformarono ben presto in corpo di polizia, incaricati di arrestare i sobillatori e reprimere le sedizioni:
+la cancellazione del suo nome dalle iscrizioni pubbliche, l'abbattimento delle statue e l'esposizione pubblica del suo cadavere, ma lo stesso Leto, promotore della congiura; che gli era stato amico nei primi anni, provvide segretamente alla sepoltura (192 d.C.)
 
-Identificatosi con il dio Ercole, assunti titoli di *Pio* e *Felice*, Commodo, ormai quasi trentenne, si volse con brutalità verso il Senato e i patrizi, provocandoli e confiscando i loro beni. Fu così che Commodo divenne soprattutto l'imperatore della plebe romana, finendo per alienarsi anche le simpatie dei pretoriani. A questo punto, nello stesso palazzo, prese a covare lo spirito della congiura. Il prefetto del pretorio, Quinto Emilio Leto e l'amante dell'imperatore, Marcia, decisero l'assassinio dell'imperatore stesso. Essi si assicurarono l'appoggio delle legioni della Pannonia e della Britannia e di alcuni migliori generali, come Settimio Severo e Clodio Albino.
+PUBLIO ELIO PERTINACE
 
-Decisero che sul trono sarebbe salito il prefetto della città, Pertinace, appoggiato dall'influente Pescennio Nigro: Ultimo ostacolo alla congiura era la forza incredibile dello stesso Commodo; che infatti amava spesso scendere nell'arena e battersi da gladiatore.
+Il giorno dopo, primo gennaio del 193 d.C., i pretoriani acclamarono il nuovo imperatore, Publio Elio Pertinace, cui i senatori indirizzarono il saluto consueto: «Noi siamo sicuri finché tu vivrai». Publio Elio Pertinace era figlio di un liberto, Elvio Successo, che gli aveva dato più tardi il soprannome Pertinace perché aveva voluto seguire a tutti i costi il mestiere paterno di commerciante in lana. Era nato in Liguria; rinunciò all'esercizio di questa attività solo quando gli scarsi guadagni lo obbligarono a entrare nell'esercito e a scegliere la carriera militare. Qui si distinse salendo i vari gradi, da centurione a comandante della flotta in Germania, e infine divenne senatore, familiare di Marco Aurelio e console. Attraversò alcuni momenti critici, in diverse occasioni per l'accusa di corruzione, ma tanto Marco Aurelio quanto Commodo lo riabilitarono. Alla fine divenne prefetto di Roma e console una seconda volta insieme all'imperatore. Venne a conoscenza della congiura contro Commodo e se ne fece complice: dopo l'uccisione dell'imperatore, si recò alla caserma dei pretoriani e parlò a costoro promettendo un particolare donativo. Fu così che i pretoriani lo acclamarono imperatore: Pertinace aveva poco più di sessant'anni. L'acclamazione fu quindi, prima dell'alba, confermata dal Senato riunito in seduta straordinaria.
 
-Fu così convinto a partecipare alla congiura un atleta di nome Narciso, con cui lo stesso Commodo spesso si allenava.
-
-Marcia provvide ad avvelenare Commodo; ma, poiché questo non moriva, Narciso pensò a strangolarlo. Il Senato decretò la condanna della sua memoria.
+Pertinace inaugurò una politica di grande collaborazione e rispetto verso il Senato e provvide a diverse elargizioni di terre a favore della plebe, mentre ridusse le spese militari, provocando il risentimento dell'esercito e inimicandosi i primi...

@@ -1,33 +1,13 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-246                                                                    STORIA DI ROMA ANTICA
+# COSPIRAZIONE E DITTATURA
 
-provvede alla nuova pavimentazione della piazza: Silla stesso fa costruire la
-nuova Curia; più ampia di quella precedente, poiché è raddoppiato il nume-
-ro dei senatori.
+## UNA SITUAZIONE ESPLOSIVA
 
-Nel 78 a.C.: Marco Emilio Lepido; con grande dispendio di
-mezzi, ricostruisce la basilica Emilia (l'unica basilica repubblicana conser-
-vata fino ai giorni nostri) se pur nelle forme conseguenti ai restauri di età im-
-periale; al posto di quella eretta dai censori del 179 a.C. Marco Emilio Le-
-pido, antenato del console del 78, e Marco Fulvio Nobiliore (vedi capitolo
-*La conquista dell'Oriente*). Nello stesso anno è realizzato anche il Tabula-
-rium; che costituisce lo sfondo monumentale del Foro sul lato nord, unificando
-in un complesso comunicante tutti gli edifici destinati all'amministrazione fi-
-nanziaria dello Stato.
+Dopo la morte di Silla (78 a.C.) la crisi della Repubblica diventa più grave. Le riforme del dittatore sono messe a dura prova e da più parti si richiede ormai la loro abolizione. Altre vicende turbano a fondo l'impero: Quinto Sertorio, uno dei capi democratici perseguitati da Silla, suscita la rivolta in Spagna (80-78 a.C.) e le popolazioni spagnole, da sempre ostili al dominio romano, trovano in lui la risposta alla loro esigenza d'autonomia.
 
-II. TABULARIUM
+Anche in Oriente la situazione è altamente esplosiva. Mitridate e il suo alleato Tigrane fomentano il malcontento. Mitridate protegge i pirati e le coste della Cilicia (costa turca) diventano le basi da cui partono le spedizioni di questi briganti del mare, le cui navi (tutte dorate, con le vele color porpora e i remi ricoperti d'argento) terrorizzano i commercianti italici al loro solo apparire.
 
-*A Quinto Lutazio Catulo è affidato l'incarico d'edificare (o forse ampliare) il Ta-
-bularium; l'archivio dello Stato romano. Con un progetto imponente anche sul piano
-tecnico (un'iscrizione rivela il nome dell'architetto: Lucio Cornelio, forse un liberto
-o un cliente di Silla) sono unificate, per mezzo d'un imponente muro di sostegno (an-
-cora visibile alla base del palazzo dei Senatori) le due vette del Capitolium e dell'Arx,
-prima divise dalla sella dell'Asylum. Si ottiene in tal modo una costruzione di gran-
-de effetto scenografico; che diventa con la sua monumentale fuga di arcate la quinta
-finale, lo sfondo prospettico del Foro. In quest' edificio sono conservate le *tabulae* dei
-testi giuridici e amministrativi; nello stesso tempo sono resi comunicanti vari edifici
-dell'amministrazione fiscale dello Stato romano: l'archivio vero e proprio; la zecca (collegata al tempio di Giunone Moneta); l'erario (collegato al tempio di Saturno).*
+Nella stessa penisola italiana la situazione è difficile. Le proscrizioni sillane hanno lasciato un segno profondo nella società. Chi ha perso i suoi beni non si rassegna facilmente e vuole riottenere le proprie ricchezze e il proprio ruolo: anche la plebe non ha motivo di essere contenuta e i suoi tribuni sono ridotti a larve senza peso politico. I cavalieri sono im-
 
-[Immagine della pianta]
-
-*Tabularium, pianta delle strutture antiche all'interno del Palazzo Senatorio.*
+![Antiche monete riproducenti, a sinistra, Mitridate e, a destra, Tigrane, conservate al British Museum di Londra.](https://example.com/image_placeholder)
+*Antiche monete riproducenti, a sinistra, Mitridate e, a destra, Tigrane, conservate al British Museum di Londra.*

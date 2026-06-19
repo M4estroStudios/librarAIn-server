@@ -1,10 +1,46 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-254                                           STORIA DI ROMA ANTICA
+COSPIRAZIONI E DITTATURA
+255
 
-GLI ODORI DI ROMA
+Pompeo in un'incisione tratta dall'Illustrium imagines
 
-Ogni "quartiere" di Roma è accompagnato da un odore particolare; perché artigiani e commercianti che fanno lo stesso mestiere tendono a raggrupparsi insieme: L'Argileto e le strade vicine hanno un acutissimo odore di concia; dato che lì lavorano i cuoiai gli oggetti di cuoio escono da queste botteghe. L'odore accompagna quello del sale al quartiere della Suburra; il regno delle prostitute. Profumi orientali si mescolano ai richiami e alle occhiate delle donne. Dall'altra parte nel Velabro l'odore dolciastro e nauseabondo del sangue; mescolato a quello degli escrementi, ricorda che vi lavorano i macellai, spesso squartando i maiali, allevati usualmente per la strada: non è difficile che i passanti siano travolti da questi animali che grufolano e corrono nelle pozzanghere della via. Nel *vicus Tuscus* ci sono i negozi di lusso: i profumi migliorano e si comprano i pregiati rotoli di papiri; a caro prezzo si paga la prostituzione di lusso d'ogni tipo e genere. Ma i profumi più cari, insieme all'onnipresente incenso, si mescolano all'odore della porpora bollita nell'urina. Per gli estranei i quartieri possono essere labirinti nauseabondi. Mentre per chi ci abita, l'odore che si porta addosso è la spia della provenienza. Gli uomini e le donne raffinate mal sopportano questo lezzo. Non è raro vederli passare svelti con fiori davanti al naso per proteggere le loro delicate narici. Le donne spesso preferiscono ampolline d'ambra che strofinate emanano un piacevole odore, sufficiente per sopportare il fetore delle strade.
+***
 
-LA DIMORA DELL'AVVOCATO
+biti (unica risorsa per sopravvivere) è incontrollabile. Anche Pompeo, seppur garbatamente, cerca il consenso della plebe: dona denaro e fa dare spettacoli nel suo teatro.
 
-Tutta l'élite politica romana desidera abitare in centro; vicino al Foro. La zona residenziale più esclusiva è quella sul Palatino; da qui si domina la città. Rampe, a volte molto ripide, permettono l'accesso col carro in queste lussuose dimore: Lora- tore Crasso, console nel 95 a.C., era stato chiamato addirittura la «Venere del Palatino» per lo sfoggio di marmi asiatici nella sua abitazione. Cicerone dopo il suo consolato (63 a.C.) arde dal desiderio d'avere casa e lasciare la sua vecchia abitazione alle Carine. Alla fine riesce a spuntarla e va ad abitare sul Palatino; ma la casa sul Palatino sembra diventare una maledizione. Clodio, nemico giurato di Cicerone, quando riesce a mandarlo in esilio, demolisce la sua casa e ne disperde mobili e statue, edificando al suo posto un tempio alla Libertà: Cicerone non rinuncia al Palatino, simbolo del successo: Tornato dall'esilio grazie a Pompeo, abbatte il tempio e ricostruisce la dimora: Gli uomini di Clodio ne ritardano i lavori con continui assalti agli operai e incendi nel cantiere: Solo quando Milone uccide Clodio (52 a.C.) Cicerone riesce ad avere la sua sospirata dimora. Forse proprio la gioia eccessiva è la causa della pessima orazione che egli compone in difesa di Milone, il quale è spedito in esilio a Marsiglia: Quando Cicerone gli invia l'orazione, riscritta con più calma, Milone osserva che se Cicerone avesse parlato così in tribunale, Milone non mangerebbe le buone triglie di Marsiglia. Il rientro di Cicerone dall'esilio. La vita nella capitale precipita nella più totale anarchia. La plebe, manovrata da personaggi come Clodio, affolla rumorosa i Comizi. Tranne Cicerone, sempre presente, tutti gli altri preferiscono stare lontani dalle sedute: Bande di plebaglia e avanzi di galera danno vita a una sorta di guerra privata. Tra i capi, oltre a Clodio, esponente dei popolari, figura Tito Annio Milone, che si dichiara sostenitore dell'aristocrazia. La città è completamente paralizzata. Nessuno s'arrischia più a uscire di casa per paura d'essere ucciso negli scontri tra opposte fazioni. Il malcontento del popolo, schiacciato dai...
+L'improvvisa morte di Crasso cambia ancora una volta il corso delle vicende (53 a.C.). Il triumviro muore combattendo contro i Parti e la sconfitta assume toni drammatici, perché le insegne dell'esercito cadono nel-
+
+***
+
+UNA SCALA CHE ASSOMIGLIA A UN TEATRO
+
+Il Campo Marzio è una delle aree maggiormente interessate dagli interventi degli *imperatores* (comandanti) dell'ultima età repubblicana. Pompeo, subito dopo il suo triplice trionfo del 61 a.C., ha l'audacia e l'astuzia necessarie per eludere i divieti censori, che hanno sempre proibito la costruzione di un teatro in pietra a Roma. Il primo teatro in pietra secondo Pompeo è soltanto una gradinata per permettere l'accesso al tempio di Venere Vincitrice, situato alla sommità della cavea!
+
+Il teatro ha un diametro di 150 m e può contenere circa 20.000 spettatori: attualmente la sua curva interna è perfettamente ripresa da piazza di Grotta Pinta; mentre la curva esterna si nota soprattutto in via del Biscione e in piazza Pollarola. Alla sommità della cavea si trovava il tempio di Venere Vincitrice, oggi ricalcato da palazzo Righetti.
+
+Dietro la scena del teatro si estende un portico di eccezionali dimensioni (180 x 135 m) che in direzione est-ovest va da via dei Chiavari fino all'area di largo Argentina e in direzione nord-sud da via del Sudario a via di Sant'Anna. Al centro del portico due boschetti di platani, bordati da fontanelle, rendono piacevoli le passeggiate pomeridiane e serali dei Romani. Attico, il ricchissimo amico di Cicerone e fine intenditore d'arte, ha scelto le statue che ornano il portico; si conservano due enormi sculture delle Muse, oggi al museo nazionale di Napoli e al Louvre. A largo Argentina sono visibili i resti di una esedra rettangolare, usata come curia (curia Pompeia) per le riunioni del Senato: qui è ucciso Cesare il 15 marzo del 44 a.C. Sempre nel Campo Marzio è situata la grande villa urbana di Pompeo, una vera propria reggia. In definitiva Pompeo con questi interventi cerca di realizzare un suo progetto urbano e di spostare nel Campo Marzio il centro politico di Roma: non per nulla il "patrizio" Giulio Cesare interverrà successivamente nel Foro, per rilanciare l'antico centro politico della città.
+
+***
+
+COSPIRAZIONE E DITTATURA
+255
+
+Pompeo in un'incisione tratta dall'Illustrium imagines.
+
+[Immagine di un medaglione con profilo maschile e iscrizione: C·N·POMPEIVS·MAGNVS·TERTIVS]
+
+***
+
+biti (unica risorsa per sopravvivere) è incontrollabile. Anche Pompeo, seppur garbatamente, cerca il consenso della plebe: dona denaro e fa dare spettacoli nel suo teatro.
+
+L'improvvisa morte di Crasso cambia ancora una volta il corso delle vicende (53 a.C.). Il triumviro muore combattendo contro i Parti e la sconfitta assume toni drammatici, perché le insegne dell'esercito cadono nel-
+
+***
+
+UNA SCALA CHE ASSOMIGLIA A UN TEATRO
+
+Il Campo Marzio è una delle aree maggiormente interessate dagli interventi degli *imperatores* (comandanti) dell'ultima età repubblicana. Pompeo, subito dopo il suo triplice trionfo del 61 a.C., ha l'audacia e l'astuzia necessarie per eludere i divieti censori, che hanno sempre proibito la costruzione di un teatro a Roma. Il primo teatro in pietra secondo Pompeo è soltanto una gradinata per permettere l'accesso al tempio di Venere Vincitrice, situato alla sommità della cavea!
+
+Il teatro ha un diametro di 150 m e può contenere circa 20.000 spettatori: attualmente la sua curva interna è perfettamente ripresa da piazza di Grotta Pinta; mentre la curva esterna si nota soprattutto in via del Biscione e in piazza Pollarola. Alla sommità della cavea si trovava il tempio di Venere Vincitrice, oggi ricalcato da palazzo Righetti.
+
+Dietro la scena del teatro si estende un portico di eccezionali dimensioni (180 x 135 m), che in direzione est-ovest va da via dei Chiavari fino all'area di largo Argentina e in direzione nord-sud da via del Sudario a via di Sant'Anna. Al centro del portico due boschetti di platani, bordati da fontanelle, rendono piacevoli le passeggiate pomeridiane e serali dei Romani. Attico, il ricchissimo amico di Cicerone e fine intenditore d'arte, ha scelto le statue che ornano il portico; si conservano due enormi sculture delle Muse, oggi al museo nazionale di Napoli e al Louvre. A largo Argentina sono visibili i resti di una esedra rettangolare, usata come curia (curia Pompeia) per le riunioni del Senato. Qui è ucciso Cesare il 15 marzo del 44 a.C. Sempre nel Campo Marzio è situata la grande villa urbana di Pompeo, una vera propria reggia. In definitiva Pompeo con questi interventi cerca di realizzare un suo progetto urbano e di spostare nel Campo Marzio il centro politico di Roma. Non per nulla il "patrizio" Giulio Cesare interverrà successivamente nel Foro, per rilanciare l'antico centro politico della città.

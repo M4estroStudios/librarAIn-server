@@ -1,15 +1,17 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-236                                           STORIA DI ROMA ANTICA
+LJ: GUERRE SOCIALI: MARIO J: SILJA
+237
 
-***
+L'ESERCIZIO APPARTIENE A CHI PAGA DI PIÙ
 
-L'ASCESA DEGLI HOMINES NOVI E GAIO MARIO
+Il nome di Gaio Mario è legato a una innovazione rivoluzionaria: l'arruolamento nell'esercito romano dei nullatenenti. In realtà, da quando era entrata in crisi la piccola proprietà contadina, il sistema della leva legato al censo aveva già creato non pochi problemi e suggerito differenti soluzioni. Sempre più spesso era stato abbassato il limite minimo di iscrizione alla classe (quinta) dell'ordinamento centuriato. In tal modo erano stati arruolati cittadini che, nell'ordinamento tradizionale, sarebbero stati considerati proletari. Inoltre, in seguito a un provvedimento di Gaio Gracco, lo Stato già forniva l'armamento ai soldati. La vera innovazione rivoluzionaria è che Mario coniuga l'arruolamento dei proletari con l'organizzazione di un esercito professionale. La possibilità di arruolarsi nell'esercito, aperta a tutti i cittadini, è infatti colta soprattutto dai nullatenenti, attratti dalla prospettiva d'arricchire col bottino e di ricevere assegnazioni di terre alla fine delle campagne. S'instaura in tal modo la mentalità che nell'esercito si può arricchire come in qualsiasi altra professione, purché si resti fedeli al comandante, da cui dipendono la distribuzione della preda e delle terre. In tal modo si rompe il binomio tradizionale cittadino-soldato, su cui si era fondata gran parte della fortuna militare di Roma nelle conquiste territoriali. Il soldato non serve più lo Stato per dovere civico, ma segue il suo generale per trarre il massimo profitto dalle vittorie: nascono così gli eserciti personali dei capiparte nelle guerre civili del I secolo a.C.
 
-*Homo novus* per i Romani è un cittadino che inizia la carriera politica senza poter vantare nella propria famiglia almeno un magistrato curule (pretore o console). Le cariche pubbliche, infami, si tramandano all'interno di una ristretta cerchia di famiglie (*nobilitas*) che ripetutamente ricopre le magistrature romane. L'ascesa politica di chi non appartiene alla *nobilitas* è molto difficile e nei primi tempi del tutto eccezionale: richiede comunque il sostegno di membri influenti dell'aristocrazia patrizio-plebea, che detiene il potere.
+Paura d'una rivolta servile, scoppiata in Sicilia e protrattasi senza trovare resistenza dal 104 al 101 a.C., Roma ha bisogno di un uomo forte e questo non può essere che Mario.
 
-Un caso esemplare è costituito da Gaio Mario. Nato da genitori oscuri, che vivevano del proprio lavoro; Gaio Mario passa i primi anni della sua vita nel villaggio di Cirreatone, nel territorio di Arpino. Milita sotto Scipione Emiliano nella campagna contro i Celtiberi e partecipa alla presa di Numanzia (134-133), facendosi apprezzare dal generale per le sue virtù militari. Intraprende la carriera politica grazie all'appoggio di Cecilio Metello. Tribuno della plebe nel 119, in seguito è pretore e propretore in Iberia. Rientrato a Roma, sposa Giulia (la zia del futuro Giulio Cesare) e si assicura l'appoggio della famiglia patrizia dei Valerii Flacci.
+Quando i Teutoni decidono di avanzare verso le Alpi, partendo dalla Gallia meridionale, sono sbaragliati da Mario ad Aquae Sextiae (Aix-en-Provence) nel 102 a.C.; mentre i Cimbri, scesi lungo la valle dell'Adige, sono sterminati da Mario e soprattutto dal suo collega nel consolato Quinto Lutazio Catulo ai Campi Raudii (una località nel Veneto, tra l'Adige e il Po).
 
-La sua posizione è così consolidata e può aspirare a onori maggiori: e questo *homo novus*, console per ben sei volte, per molti anni è l'arbitro della politica romana.
+Queste vicende hanno dimostrato la fragilità delle difese nei domini romani settentrionali, perciò sono costituite le province della Gallia Transalpina (che prenderà il nome di Narbonese dalla città di Narbo Martius, odierna Narbonne) e della Gallia Cisalpina (l'Italia settentrionale al di qua delle Alpi). Le nuove province si aggiungono alle sette già esistenti (Sicilia, Sardegna e Corsica, le due Spagne, Macedonia, Africa, Asia).
 
-[Immagine]
-*Mario brucia le armi dei Cimbri e dei Teutoni (particolare da un'incisione di B. Pinelli).*
+IL POTERE, I TRIBUNALI, LE TERRE
+
+La lotta politica divampa a Roma: già nel 106 a.C., sotto l'impressione della condanna inflitta l'anno prima ai quattro consolari responsabili delle sconfitte in Africa, il console Gaio Servilio Cepione aveva fatto abrogare la legge graccana che riservava ai cavalieri le cause relative al comportamento dei magistrati in provincia. La fine della guerra contro Giugurta e il trionfo di Mario sui Cimbri e i Teutoni creano condizioni favorevoli all'affermazione dei privilegi del ceto equestre e alla ricompensa dei proletari che si sono battuti per la difesa di Roma: nel 103 il tribuno della plebe Lucio Apuleio Saturnino, legato a Gaio Mario, ottiene la concessione per i veterani di Mario di possedere terre nella provincia d'Africa. Nel 101 a.C. un altro tribuno della plebe...

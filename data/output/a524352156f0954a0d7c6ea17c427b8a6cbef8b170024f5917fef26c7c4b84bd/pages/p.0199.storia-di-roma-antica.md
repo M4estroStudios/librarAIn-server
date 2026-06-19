@@ -1,22 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMANI E CARTAGESI: LA CONQUISTA DEL MEDITERRANEO 199
+LA CONQUISTA DELL'ORIENTE
 
-*Sepolcro degli Scipioni; sarcofago di L. Cornelio Scipione Barbato.*
+GLI INTERESSI ADRIATICI
 
-[Immagine: Sarcofago con iscrizione]
-*AVLLA CORNELIA CN F HISP*
-*CORNELIO CN SCIPIO*
-[Iscrizione sul bordo del sarcofago]
-*... BARBATO ...*
+Roma aveva cominciato a tenere d'occhio la costa orientale dell'Adriatico già durante le guerre puniche. La flotta romana era intervenuta contro i pirati (vedi capitolo Romani e Cartaginesi: è lo scontro), poi contro Filippo V, in occasione della prima guerra macedonica: ma in quest'ultimo conflitto Roma aveva impegnato solo sei navi, lasciando il peso della guerra agli Etoli, sfortunati alleati. Dopo la sconfitta e l'espulsione di Demetrio, cui era affidata l'Illiria (vedi capitolo Romani e Cartaginesi: è lo scontro), la Grecia comincia ad avvertire sul collo il fiato caldo dei Romani, sempre più vicini e interessati.
 
-***
+LA GUERRA DIFFERENZIATA
 
-IL LUPO PERDE IL PELO MA NON IL VIZIO
+Alla fine della guerra annibalica Roma è costretta a ricominciare da capo il lavoro di riconquista della Gallia Cisalpina e della Spagna: l'intensa colonizzazione dell'Italia settentrionale costituisce una valvola di sfogo per i cittadini romani nullatenenti e per gli italici. Dopo la grande paura c'è bisogno di terre fertili e ricchezze, per fare dimenticare il sangue e il peso della guerra. La riconquista della Spagna invece, oltre al bisogno di terre, è legata alla volontà di spezzare alle radici la potenza dei Barcidi e di Cartagine: per controllare il territorio si fondano colonie, che sono insufficienti. Il carattere tutt'altro che arrendevole degli Iberici rende necessario l'impiego permanente di legioni e di truppe alleate: così i soldati romani sono costretti a rimanere lunghi anni lontano da casa, tra gente ostile.
 
-Dopo la sconfitta e il ritorno a Cartagine Annibale non vive momenti allegri. Molti dirigenti lo odiano ma lo sopportano come baluardo contro la rivoluzione che serpeggia tra il popolo. L'ex generalissimo si ritira nei suoi possedimenti; dove trasforma i suoi soldati in coltivatori di ulivi, pur di tenerli occupati ed evitare sommosse. Ma il condottiero, che aveva tenuto in scacco l'Italia, non può trasformarsi in un pacifico proprietario terriero: Cinque anni dopo Zama rientra in politica come *sufeta*; l'equivalente punico del console romano.
-
-Intanto i suoi occhi sono puntati sull'Oriente dove possono nascere i suoi rapporti con il sovrano siriaco Antioco III (vedi pagine seguenti) cominciano presto. A Roma i suoi movimenti scatenano paura: Scipione l'Africano difende il vecchio nemico; invitando a non dare credito alle chiacchiere. Nessuno è convinto e nel 195 a.C. il Senato invia a Cartagine una commissione d'inchiesta composta da Cneo Servilio (il vecchio console del 217 a.C.) da Claudio Marcello (figlio del vincitore di Siracusa) e da Terenzio Culleone (un prigioniero di guerra liberato da Scipione). I tre non sono molto soddisfatti di quanto vedono.
-
-Intanto Annibale prepara la fuga, perché teme che la missione porti al suo arresto. Giunto sull'estrema punta orientale della Tunisia, dove lo attende una nave, invita i comandanti delle navi all'ancora a un banchetto sulla spiaggia; La grande tenda del festino nasconde la sua nave alla vista degli uomini. I cibi abbondano e il vino scorre fiumi. Dopo poco tempo tutti sono ubriachi e non pochi cominciano ad addormentarsi. Allora Annibale sguscia via e salpa per la Siria, dove il re Antioco lo aspetta.
-
-Presto tra i due cominceranno i malintesi e le delusioni. Il re cerca nell'ex generale punico un tecnico; che gli riorganizzi l'esercito. Annibale invece progetta d'intervenire in Oriente. Vorrebbe che il sovrano gli concedesse parte delle sue truppe e della sua flotta per tornare a Cartagine e trascinarla in guerra: Ancora una volta vorrebbe sbarcare in Italia e suscitare la definitiva rivolta degli alleati: ma ad Antioco questo progetto sembra una chimera e Annibale deve adattarsi a seguire il re, che si sta preparando allo scontro con Roma.
+Roma scopre invece in Grecia un mondo completamente nuovo. Già il contatto con la Sicilia e la Magna Grecia ha lasciato un segno profondo nella mentalità romana (vedi capitolo I Romani e la penisola). Le città greche, le monarchie ellenistiche (nate dalla disgregazione dell'impero di Alessandro), le Leghe (come quella etolica e quella achea) sono interlocutori molto differenti dalle tribù galliche o iberiche. La ragione affidata alle armi, la diplomazia grossolana dei Romani si erano già sentiti i "cugini poveri" quando erano stati accolti ai giochi istmici di Corinto; come ringraziamento per aver eliminato i pirati (vedi capitolo Romani e Cartaginesi: è lo scontro). L'unica scappatoia è quella di offrire alla Grecia protezione e "patronato". Pertanto, nella fase iniziale della loro interferenza, però, i Romani si presentano come difensori della libertà greca, un comodo paravento dietro cui nascondere interessi meno nobili.

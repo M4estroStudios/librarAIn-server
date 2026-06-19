@@ -1,31 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-185
+186
 
 STORIA DI ROMA ANTICA
 
-***
+ANNIBALE TRASFORMISTA OVVERO COME NON FARSI UCCIDERE DAGLI ALLEATI
 
-| ANNIBALE E FAMIGLIA |
-| :--- |
-| *Annibale appartiene alla famiglia dei Barca: Figlio di Amilcare e cognato di Asdrubale (successore di Amilcare nel comando dell'esercito) ha due fratelli, Asdrubale e Magone e alcune sorelle di cui non conosciamo il nome.* |
-| *Annibale significa* |
-| *Ba'al ha fatto la grazia =* |
-| *Ba'al, identificato con Saturno; era la maggiore divinità fenicia). È fatto parallelo dell'ebraico lohannan; dal quale deriva il nostro Giovanni, che significa "Yahwve (Dio) ha fatto la grazia".* |
-| *Il nome della famiglia Barca probabilmente significa 'folgore'.* |
-| *Il padre di Annibale comincia a essere chiamato dai suoi soldati 'folgore di guerra', facendo del soprannome il 'cognome' della famiglia. Il cognome Barca diventa distintivo per i discendenti del comandante dato che in fatto di nomi i Cartaginesi hanno ancor meno fantasia dei Romani. Tra i più frequenti figurano Amilcare, Asdrubale, Annone, Magone portati dalla maggior parte dei capi punici di cui si ha ricordo.* |
+Mentre sverna nella Gallia Cisalpina, Annibale ricorre alla proverbiale astuzia cartaginese nei confronti degli alleati celtici. Il generale si fida poco della loro recente amicizia e teme che in cambio di bottino e ricchezze possano ordire qualche urto tentato. Si fa allora preparare numerosi abiti e numerose parrucche di colore e di foggia diversa; adatte a persone di tutte le età. Per evitare di essere identificato, cambia continuamente abito e parrucca. Si trasforma in giovane schiavo; in soldato numida; in stalliere; in cavaliere, in cuoco; in una girandola di personaggi che non consente nemmeno ai suoi più vicini collaboratori di identificarlo. Il generalissimo si sente a suo agio in questo ruolo di trasformista da varietà; che la paura degli alleati giustifica solo in parte.
 
-***
+Taurini (presso l'odierna Torino) Anche l'improvviso miglioramento delle condizioni climatiche e l'abbondanza di cibo non risollevano l'esercito, da troppo tempo malridotto per la miseria e i disagi.
 
-II. IL SOGNO DI ANNIBALE
+LA GUERRA IN ITALIA: ROMA IN GINOCCHIO
 
-Gli scrittori antichi narrano che un sogno straordinario avrebbe turbato Annibale: di passare l'Ebro. Gli appare un giovane, inviato dagli dèi e lui stesso simile a un dio. Il giovane lo invita a seguirlo in Italia senza voltarsi mai indietro. Anche in sogno la curiosità ha il sopravvento: Annibale si volge e vede un serpente enorme, avvolto nelle sue spire, in mezzo a una devastazione di alberi e piante. Dietro all'animale arriva un fragoroso temporale. Svegliato di colpo, Annibale chiede agli indovini il significato del sogno: gli rispondono che il sogno allude alla devastazione dell'Italia e che di più non è lecito sapere. Felice per il presagio, parte in primavera da Cartagena con 102.000 uomini e si addentra nelle vallate alpine, quando si avvicina l'autunno.
+Dei due Scipioni arrivati troppo tardi in Gallia; Cneo si dirige in Spagna; il console Publio rientra in Italia e si prepara allo scontro con Annibale nella Valle Padana. L'esercito punico, mezzo assiderato e azzoppato secondo i discorsi del console, lo batte al Ticino in ottobre. In dicembre le altre legioni, guidate da Tiberio Sempronio Longo, ricevono una vergognosa batosta alla Treb-
 
-***
+[Immagine]
 
-AFRICANI ED ELEFANTI ATTRAVERSANO LE ALPI
-
-La strada seguita dal generale cartaginese attraverso le Alpi non è ben conosciuta. È probabile che, dopo aver risalito il Rodano fino alla confluenza con l'Isère, abbia seguito poi la Maurienne per passare attraverso il Gran San Bernardo, il Moncenisio e il passo di Clapier. Lungo questo difficile percorso è più facile procurarsi alleati tra le popolazioni celtiche. Il re Branco, capo degli Allobrogi, gli offre sostegno e aiuti. Guidare gli animali da soma e soprattutto gli elefanti lungo gli stretti e pericolosi sentieri alpini diventa sempre più difficile. Il nevischio trasforma i sentieri ghiacciati in piste scivolose e pericolose: il ghiaccio sotto il peso degli animali si rompe e impiglia le zampe come si trattasse di un laccio mortale.
-
-I soldati punici sono costretti a costruire nuovi percorsi, dove il gelo e il maltempo hanno distrutto i sentieri. Dopo aver accatastato e bruciato grandi alberi, spezzano la roccia bruciata con l'aceto e il ferro. Poi addolciscono la discesa con modesti tornanti per rendere più facile la strada agli elefanti. Fatica, freddo e mancanza di cibo cominciano a decimare l'esercito, ridotto a 20.000 fanti e 6.000 cavalieri, mentre molti animali muoiono di fame per mancanza di foraggio.
-
-A settembre Annibale arriva in pianura e riesce a conquistare la capitale dei...
+La battaglia del Ticino vinta dai Cartaginesi. Scipione salva il padre dalla cattura (incisione di B. Pinelli)

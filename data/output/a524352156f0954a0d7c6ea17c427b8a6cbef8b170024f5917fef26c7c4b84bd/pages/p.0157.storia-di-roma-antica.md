@@ -1,22 +1,30 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-I ROMANI E LA PENISOLA                                                                    157
+158
+
+STORIA DI ROMA ANTICA
+
+La stessa riflessione del resto è valida anche per le aristocrazie campane e per quelle di molti altri popoli della penisola; che via via entrano in stretti rapporti con Roma. Alla vigilia della guerra punica (264) il dominio romano, praticamente ininterrotto, si estende dallo stretto di Messina fino a Rimini sull'Adriatico e a Pisa sul Tirreno.
+
+Il territorio romano vero e proprio va da Talamone a Cuma sul versante tirrenico e da Pesaro a Giulianova su quello adriatico: sono poco più di 20.000 kmq che comprendono anche alcune zone del Sannio e l'intera Sabina. A questo nucleo centrale s'aggiunge il territorio in mano degli alleati, che raggiunge circa 60.000 kmq: la federazione romano-italica esercita dunque il controllo su circa 80.000 kmq, in pratica su quasi tutta l'Italia peninsulare.
+
+Soltanto i regni di Siria e d'Egitto o lo Stato cartaginese superano in grandezza il dominio di Roma e dei suoi alleati.
+
+Questo spiega ampiamente perché nel 273 il re d'Egitto Tolomeo Filadelfo abbia inviato un'ambasciata a Roma, per instaurare rapporti di commercio e d'amicizia. Con Cartagine, invece, i trattati non servono più alle soglie d'un conflitto aperto, per la supremazia del Mediterraneo occidentale.
+
+IL BUON USO DEL BOTTINO: EDILIZIA E AUTO CELEBRAZIONE
+
+L'esproprio delle terre dei popoli vinti, con la conseguente disponibilità di vaste estensioni d'agro pubblico da dare in affitto ai privati, contribuisce al arricchimento dell'erario romano.
+
+Il ricavato del bottino, diviso tra i comandanti e i soldati, provoca anche un incremento delle fortune private. L'afflusso di queste nuove ricchezze, oltre a creare una grande richiesta di merci di lusso (vedi box), dà anche nuovo impulso all'attività edilizia a Roma. Per il solo trentennio tra il 302 e il 272 le fonti antiche danno notizia della costruzione di ben undici templi.
+
+I lavori sono di regola appaltati dai censori, che controllano le imposte e i canoni di affitto delle terre pubbliche. Alcuni templi sono anche costruiti dagli edili col ricavato di multe (*ex aere multaticio*). Sono ancora in vigore le norme che limitano le forme eccessive d'autocelebrazione (la principale delle quali è proprio offrire un edificio pubblico alla città), ma la proibizione è...
+
+LE LEGGI CONTRO IL LUSSO
+
+Il lusso sfrenato, e soprattutto la sua ostentazione, va contro le norme morali della classe dirigente romana dell'epoca: ma i provvedimenti contro il lusso ben presto sono destinati a ridursi.
+
+I controlli sembrano affievolirsi già alla svolta tra IV e III secolo a.C., come testimoniano in una tomba a camera con 7 sarcofagi di peperino, uno strigile (strumento ricurvo e con manico; adatto per ripulire la pelle e detergere il sudore: è un indizio dell'introduzione a Roma della frequentazione delle palestre) diverse terrecotte architettoniche prodotte nella Magna Grecia. Nel caso specifico si tratta di un membro dell'aristocrazia romana, forse un trionfatore, come si deduce dalla presenza nella decorazione di alcune quadrighe tirate da vittorie alate.
 
 ***
 
-[Immagine: ricostruzione ideale del sepolcro degli Scipioni]
-
-*Il sepolcro degli Scipioni nella ricostruzione ideale di La Canina.*
-
-***
-
-La necessità di concentrare le forze nella guerra contro Taranto e Pirro (284-272) impone una battuta d'arresto nel conflitto con i Galli.
-
-ROMA TRA DUE MARI
-
-Contemporaneamente alle prime fasi della guerra contro Taranto e Pirro, Roma ha consolidato il controllo della costa adriatica centromeridionale, annettendo il territorio dei Pretuzi (283), che hanno partecipato alla coalizione antiromana sconfitta a Sentino. Verso la fine della stessa guerra, Roma fonda una colonia latina a Cosa, sulla costa tirrenica dell'Etruria settentrionale (273). In questa colonia è realizzata una riorganizzazione fondiaria di vaste proporzioni; che costituisce uno dei primi esempi della "centuriazione" romana (vedi box *La centuriazione: la forma romana del paesaggio rurale*).
-
-Negli anni seguenti sono sconfitti anche i Piceni, i cui territori entrano a far parte dello Stato romano; con l'eccezione di Ascoli e Ancona; che restano autonome e diventano alleate di Roma (269-268). Il controllo dell'agro piceno-gallico è rafforzato dalla fondazione di due colonie latine a Rimini (268) e a Fermo (264). Due anni dopo i Romani ottengono una vittoria anche sui Messapi, abitanti nell'area pugliese settentrionale.
-
-Un episodio molto significativo chiarisce i rapporti intrattenuti dai Romani con le aristocrazie delle città etrusche. Gli abitanti di Volsinii (Orvieto), infatti, dopo aver liberato i loro schiavi e aver loro concesso l'accesso alle magistrature; si ritrovano oppressi dagli stessi ex schiavi: Di nascosto perciò chiamano in loro aiuto i Romani, che inviano Decio Mure; il quale in parte fa uccidere i liberti, in parte li restituisce come schiavi ai loro padroni.
-
-Quest'episodio e quello ricordato precedentemente della repressione della plebe di Arezzo testimoniano quanto fosse avanzato il grado d'assimilazione delle aristocrazie etrusche a Roma.
+P. Cornelio Rufino, console nel 290 e nel 277, è espulso dal Senato nel 275 a.C., perché possiede dieci libbre di vasellame d'argento, e il disonore di quest'espulsione dal Senato pesa sui suoi discendenti per quattro o cinque generazioni.

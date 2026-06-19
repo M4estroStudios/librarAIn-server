@@ -1,60 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-194
+ROMANI E CARTAGINESI: LA CONQUISTA DEL MEDITERRANEO 195
 
-STORIA DI ROMA ANTICA
+**LO SCUDO E LA SPADA DI ROMA**
 
-CEMENTO CONTRO PIETRA QUADRATA
+A Roma, dopo i disastri della strategia "interventista", si torna alla tattica di Fabio Massimo. I due protagonisti della ripresa sono ancora Fabio (console nel 215, 214 e 207 a.C.) e Claudio Marcello; detti «lo scudo» e «la spada» di Roma.
 
-Alla fine del I secolo le tecniche costruttive edilizie registrano un importante cam-
-biamento. In Campania comincia a essere usato il cementizio; ottenuto da una miscela
-di calce e pozzolana; adoperato come legante per le pietre. Piccole scaglie di tufo di
-forma piramidale sono inserite nel nucleo del muro di cementizio; lasciando a vista
-la parte irregolare (*opera incertav*).
+Le azioni militari più importanti si concentrano in Campania nell'assedio di Capua; Annibale, incapace di difendere la città alleata, si spinge a sud e occupa Taranto. Capua è costretta alla resa contemporaneamente a Siracusa, che si arrende a Marcello nel 212 a.C., dopo due anni d'assedio. Nel medesimo anno gli Scipioni espugnano Sagunto, costringendo i Cartaginesi a un maggior impegno sul fronte spagnolo, mentre in Africa Siface, alleato romano, con scontri e scaramucce rivendica il regno di Numidia.
 
-Progressivamente l'orditura delle mura assume un aspetto più regolare; quasi reti-
-colato; grazie ai tufelli di eguale dimensione, disposti ordinatamente (*opera retico-
-latav*). Quest'invenzione è utilizzata per le fondazioni e per gli alzati e la sua portata
-è enorme; perché consente soluzioni architettoniche fino ad allora impensabili. Nono-
-stante la duttilità del cementizio; i Romani rimangono legati alla vecchia tecnica del-
-la pietra quadrata; usata ancora in età imperiale per le costruzioni di prestigio e la fe-
-deltà al «sasso quadrato» è solo un'altra espressione della tenace fedeltà al passato.
+**LO SCIENZIATO SVAGATO**
 
-CEMENTO CONTRO PIETRA QUADRATA
+La gioia di Claudio Marcello per la resa di Siracusa nel 212 a.C. è offuscata da un fatto increscioso. Romani, espugnata la città, si riversano come un'orda scatenata nelle vie cittadine, depredando, uccidendo, violentando. La famosa ricchezza dei Siracusani acceca la mente. Un soldato giunge nella casa di Archimede, famoso scienziato greco.
 
-I MUTAMENTI DELLA SORTE
+Archimede non si è accorto che la città è stata presa. Da molto tempo è impegnato nella dimostrazione d'una proposizione geometrica e ancora non è giunto alla soluzione. Il soldato gli ordina di lasciare tutto e di seguirlo. Archimede, intento alle sue carte, lo invita ad accomodarsi e aspettare che abbia ridotto la proposizione a dimostrazione. Il romano, poco incline all'ammirazione per gli uomini di scienza, non si accomoda e la spada uccide Archimede, probabilmente troppo assorto nei suoi pensieri per accorgersi di morire.
 
-Magone sbarcato in Africa non incontra difficoltà a preparare aiuti per An-
-nibale, nonostante l'ostilità di Annone (da sempre nemico dei Barca). Al mo-
-mento della partenza la notizia d'una pesante sconfitta cartaginese in Spagna
-convince i dirigenti punici a convogliare là esercito e flotta: Gli alleati intanto
-non deludono Annibale: i Galli Cisalpini combattono vittoriosamente contro
-i Romani e il cranio del console Postumio; scuoiato e ricoperto d'oro, diventa
-un calice per i sacrifici dei sacerdoti celtici.
+È ormai irrealizzabile la guerra impostata da Annibale. L'improvvisa inversione di marcia fin sotto le mura di Roma suscita grande paura, ma è militarmente improduttiva (211 a.C.). I generali romani non osano ancora avventurarsi contro di lui in campo aperto e l'incoscienza del proconsole Cneo Fulvio Centumalo a Erdonea è punita da una pesante sconfitta: la superiorità militare e strategica di Annibale è ancora indiscussa, anche se il "generalissimo" è costretto a ritirarsi nel Bruzio, dopo la perdita di Capua.
 
-Ma lentamente la situazione muta per il «generalissimo» cartaginese. In
-Sicilia la morte del tiranno Ierone sembrava favorire l'avvento punico; ma
-le tempestive azioni d' Appio Claudio Pulcro e Marco Claudio Marcello ri-
-baltano piano. Siracusa è assediata (214 a.C.).
+**LARGO AI GIOVANI**
 
-In Spagna i due Scipioni mietono successi. L'alleanza con la Macedonia
-è ostacolata dall'avvicinamento dei Romani a Etòli e Achei, nemici di Fi-
-lippo e in guerra contro di lui. Con minima spesa (forniscono navi
-agli alleati) i Romani si tutelano le spalle (212 a.C.). In Africa intrapre-
-ndenti agenti romani, pronti raccogliere il malcontento intorno a Carta-
-gine, stipulano un accordo col capo numida Massinissa, nemico dei Car-
-taginesi e di Siface, suo rivale per il trono della Numidia.
-
-I ROMANI COLLEZIONISTI D'ARTE
-
-Da tempo l'arte greca ha trovato grandi estimatori in alcuni Romani. La presa di Si-
-racusa rappresenta un momento di svolta nel gusto artistico romano, perché Marcel-
-lo e i conquistatori trovano a disposizione un grandissimo numero di stupefacenti ope-
-re d'arte. Il saccheggio della ricca città greca frutta un ricco bottino di quadri, statue,
-oggetti preziosi d'ogni fattura.
-
-Da questo momento i Romani si trasformano in ladri d'opere d'arte, spinti da una
-bramosia e da un'ammirazione esagerata verso tutto ciò che porta il marchio greco. Gran
-parte degli oggetti siracusani diventa l'ornamento del tempio di Honos (Ono-
-re) costruito da Claudio Marcello fuori porta Capena. La fama della collezione cir-
-cola velocemente, tanto che i visitatori stranieri non lasciano Roma prima d'aver am-
-mirato i quadri e le statue regalate da Marcello.
+Roma è ormai allo stremo. Dodici colonie si rifiutano di fornire i contingenti richiesti. La guerra assume tinte che possono sembrare paradossali. Fabio Massimo non esita a saccheggiare la penisola per impedire ad Annibale di ottenere rifornimenti, ma in questo modo contribuisce al generale impoverimento e alla prostrazione delle popolazioni italiche. Il colpo duro arriva dalla Spagna: la morte improvvisa dei due Scipioni rischia di vanificare anni di guerre vittoriose (211 a.C.). Con una decisione senza precedenti è eletto proconsole il ventiquattrenne Publio Cornelio Scipione, figlio d'uno dei generali morti e il giovane parte per la Spagna.

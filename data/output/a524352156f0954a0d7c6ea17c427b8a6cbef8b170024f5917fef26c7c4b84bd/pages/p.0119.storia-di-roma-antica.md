@@ -1,22 +1,30 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ASCESA, CADUTA E RISURREZIONE DI ROMA | 119
+120
 
-# IL SECONDO FONDATORE DI ROMA
+STORIA DI ROMA ANTICA
 
-La figura di Camillo domina la scena dell'ultimo secolo della storia di Roma prima della storia. Egli è definito «secondo Romolo, secondo padre della patria; secondo fondatore della città».
+[Immagine: La rupe Tarpea in un'antica incisione]
 
-Alla leggenda aurea di Camillo ha contribuito la sua presenza in tutti i momenti cruciali della storia romana nel IV secolo a.C.: la presa di Veio; il riscatto di Roma dopo il sacco gallico; l'approvazione delle rogazioni Licinie-Sestie nel 367 (vedi *I luoghi e le istituzioni*).
+La rupe Tarpea in un'antica incisione.
 
-Dell'esistenza di Camillo è difficile dubitare. Ma è necessario ripensare criticamente l'eccessiva concentrazione di episodi eroici e mitici, tali da farlo apparire come un eroe leggendario invece che nella sua reale dimensione di condottiero politico. La sua biografia è un'antologia di virtù esemplari: capacità militari (presa di Veio); etica nella condotta della guerra (restituzione dei fanciulli falisci); generosità verso i vinti (ad esempio verso i Tuscolani); amore per la patria nonostante i torti subiti (rientra dall'esilio per liberare Roma dai Galli); rispetto delle leggi (richiede la ratifica del Senato asserragliato sul Campidoglio per riprendere il comando dell'esercito come dittatore); preoccupazione per la concordia sociale.
+GIUNONE "CHE AMMONISCE" CHI VUOL FARSI RE
 
-Inoltre anche un alone religioso si è aggiunto alla sua figura: lo stesso cognome Camillo deriva dal suo precedente ruolo di assistente del *Flamen Dialis*; il suo rapporto privilegiato con Fortuna e Mater Matuta lo rende simile a Servio Tullio; il sapiente ricorso all' *evocatio* e alle pratiche oracolari lo avvicina alle funzioni sacerdotali; l'introduzione del *lectisternium* è un chiaro richiamo alla posizione privilegiata dei patrizi nel rapporto con la divinità.
+Nel 345 a.C. Camillo dedica sul Campidoglio (più o meno nell'area dell'attuale chiesa dell'Aracoeli) il tempio di Giunone Moneta (Giunone che ammonisce). Esso sorge sulle macerie della casa di Marco Manlio Capitolino, distrutta da 39 anni per la condanna a morte del proprietario.
 
-Camillo e la maggioranza dei patrizi vogliono rifondare la città, mentre la plebe vede nel trasferimento a Veio una facile soluzione dei problemi per la ripresa della vita urbana.
+Il tempio della dea (protettrice delle oche che avevano salvato il Campidoglio) si sovrappone e cancella ogni traccia della casa del coraggioso difensore del Campidoglio, gettato dalla rupe Tarpea per la sua cupidigia del potere.
 
-Il Senato proroga per un intero anno la carica di dittatore di Camillo; atto straordinario, perché nessun dittatore è rimasto in carica più di sei mesi: ma è in gioco la stessa sopravvivenza della città. I tribuni della plebe insistono per il trasferimento della popolazione a Veio. Camillo decide di portare la questione davanti al Senato.
+Questa condanna deve essere un monito permanente per chi vuol farsi re e da allora nessun edificio privato potrà più sorgere sul Campidoglio.
 
-Secondo la tradizione, mentre si dibatte la questione, un portainsegna pianta lo stendardo sulle rovine del Comizio ed esclama, rivolto ai soldati che cercavano un luogo dove sostare: *hic manebimus optime* ("questo è il posto migliore dove fermarsi"). Per la mentalità religiosa dei Romani questo è il segno divino (*omen*) in favore della ricostruzione della città nello stesso posto. L'abbandono di Roma è scongiurato.
+LE MURA, L'INCENDIO, LA "CITTÀ DISORDINATA"
 
-Il successo di Camillo nella questione e il trionfo ottenuto per la vittoria sugli Equi e sui Volsci (il terzo, dopo quello per la conquista di Veio e la cacciata dei Galli) suscitano nuovamente invidia tra i Romani, primo tra tutti Marco Manlio Capitolino, ritornato nell'ombra dopo la gloriosa impresa in difesa del Campidoglio.
+La pianta urbana e l'aspetto architettonico di Roma tra la fine del V e la metà del IV secolo a.C. sono quasi ignoti.
 
-Manlio aspira a conquistare il potere e promette la cancellazione dei debiti, per accattivarsi il favore della plebe. Dopo continui tumulti Manlio è imprigionato; rilasciato per paura di ulteriori disordini, ma alla fine processato per *adfectatio regni* (desiderio di farsi re) e condannato a essere gettato dalla rupe Tarpea.
+GLI DÈI INVITATI A BANCHETTO
+
+Nello stesso anno del sacco gallico, nella città scoppia una grave epidemia: i sacerdoti consigliano d'istituire una nuova festa religiosa con un rituale inconsueto: le immagini degli dèi, esposte su dei cocchi, debbono partecipare a un banchetto sacrificiale. In questa occasione per influsso di Camillo a Roma si celebra il primo *lectisternium*.
+
+Gli dèi mangiano con gli uomini, per ristabilire la concordia tra il terreno e il divino, la cui interruzione ha causato l'evento luttuoso che si vuole allontanare.
+
+Le divinità invitate al primo *lectisternium* sono: Apollo e Latona, per propiziare la guarigione; Ercole e Diana, che proteggono l'agricoltura o forse anche gli uomini e le donne; Mercurio e Nettuno, garanti dei commerci e dei traffici marittimi. Cerimonie simili sono note da dipinti etruschi. È possibile che il *lectisternium* sia stato importato a Roma da Caere, città etrusca con la quale esistono rapporti privilegiati.
+
+Il sacco gallico del 390 sarebbe la conferma dell'assenza d'una cinta muraria a Roma fino agli inizi del IV secolo a.C. Le uniche difese sarebbero state quelle della rocca capitolina, dove si asserragliano i Romani, abbandonando il resto.

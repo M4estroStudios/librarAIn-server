@@ -1,39 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-94                                                                    STORIA DI ROMA ANTICA
+LA CITTÀ-STATO: CONTINUITÀ E RINNOVAMENTO 95
 
-[Immagine: Il monte Aventino visto dal Tevere]
+Nel suo racconto metaforico la plebe è paragonata alle braccia che si rifiutano di lavorare per lo stomaco (i patrizi), ritenuto un parassita. Le mani non portano più cibo alla bocca: lo stomaco comincia a infiacchirsi ma ben presto anche le stesse braccia si sentono deboli e sfinite. Il senso dell'apologo di Menenio Agrippa è chiaro: il buon funzionamento dello Stato si basa sullo stesso principio del buon funzionamento del corpo: se non esiste concordia e aiuto reciproco tra patrizi e plebei, la Repubblica è destinata alla rovina.
 
-*Il monte Aventino visto dal Tevere in un'incisione di Etienne Du Pérac.*
+GLI ANTICONSOLI
 
-re continue impoveriscono ancora di più i piccoli proprietari, che sono stran-
-golati dai creditori.
+Al di là della storiella edificante, questa prima secessione (come rifiuto di rispondere alla mobilitazione) ha come effetto la creazione dei due tribuni della plebe: sono due "quasi magistrati" rappresentanti della plebe per opporsi al potere consolare (*contra consulaire imperium*). Essi rappresentano una sorta di "potere negativo" fondato sull'*auxilium* (assistenza) e sull'*intercessio* (diritto di opporre il veto). I tribuni portano soccorso al plebeo minacciato dalle decisioni dei consoli e possono opporre il veto alle decisioni di qualunque magistrato. Dopo la seconda secessione (in occasione del decemvirato) la persona di questi magistrati, creati sul modello dei *tribuni militum* (i capi militari), diventa sacra e inviolabile. Fondamento del potere dei tribuni della plebe è la cosiddetta *lex sacrata* (legge consacrata) in base alla quale i plebei giurano di rispettare le loro delibere (*plebis scita*), emesse e approvate nelle riunioni dei comizi tributi, organizzati dal 471 a.C. in chiave territoriale (le tribù). Chi contravviene alle loro decisioni o chi osa opporsi ai tribuni è dichiarato *sacer* (maledetto e quindi punibile).
 
-Nei primi anni della Repubblica la creazione di nuove tribù territoriali ag-
-grava la situazione: Nella formazione delle tribù (e quindi nell'asseznazio-
-ne delle terre conquistate) è esclusa buona parte della popolazione; a vantaggio
-delle *gentes* che occupano il territorio intorno a Roma.
+La costruzione della "Repubblica plebea" si definisce ancora meglio con la creazione d'un proprio luogo di culto, d'un proprio archivio e di propri ministri. Spurio Cassio nel 493 a.C. dedica il tempio di Cerere, Libero e Libera sull'Aventino, dove gli edili plebei (*aediles* da *aedes*, edificio sacro) custodiscono il tesoro, l'archivio e le delibere delle riunioni della plebe e del Senato.
 
-                                LO SCIOPERO DELLA PLEBE
+LE INNOVAZIONI DEL TEMPIO DI CERERE
 
-La prima profonda frattura del corpo civico avviene in occasione d'una vit-
-toriosa campagna contro i Sabini e gli Equi. Nonostante il parere opposto di
-Valerio Publicola, il Senato rifiuta di dividere bottino e terre con la moltitu-
-dine dei plebei, che hanno militato nell' esercito: si scatena così la rivolta.
-L'esercito, mantenuto in armi, si ritira a Monte Sacro o sull' Aventino, at-
-tuando il primo caso di "disobbedienza civica". La tradizione ci tramanda il
-famoso discorso di Menenio Agrippa, un ex console plebeo.
-
-                          PUBLIO VALERIO E I SUOI SEGUACI
-
-Publio Valerio Publicola è uno dei padri della Repubblica; che campeggiano nei pri-
-mi decenni del nuovo regime. La sua figura, come quella di Bruto, è complessa e oscu-
-ra. In lui sono tipici i tratti dell'eroe repubblicano; votato alla libertà e ai
-giusti, nel rispetto anche dei diritti della plebe. D'altro lato presenta le caratteristiche
-tipiche del demagogo e la stessa costruzione d'una casa sulla Velia (da lui stesso ra-
-sa al suolo quando è sospettato di atteggiamenti tirannici) oscura la sua limpida im-
-magine. La recente scoperta del *Lapis Satricanus*; un'iscrizione nel tempio di Sati-
-rico risalente al 500 a.C. e dedicata a un Publio Valerio dai suoi *sodales* o compagni
-armati, conferma la storicità del personaggio e ne sottolinea il carattere di capo.
-Valerio non sembra molto dissimile dai capi aristocratici; accompagnati da *so-
-dales* (come l'etrusco Mastarna e i fratelli Vibenna) i combattevano le loro guer-
-re private (vedi box sui Fabii).
+La città e i suoi templi per lungo tempo hanno conosciuto la supremazia delle botteghe etrusche, famose per le loro statue e per le loro decorazioni in terracotta. La decorazione del tempio di Cerere segna l'ingresso a Roma dei primi artisti greci, Damofilo e Gorgaso. Attraverso le loro pitture la città entra in contatto con tutto un patrimonio di miti e di leggende greche, che costituiscono il soggetto delle decorazioni del tempio. Recentemente, in un frammento di statua in terracotta trovato sull'Esquilino, si è creduto di riconoscere una parte della decorazione del tempio di Cerere. La tecnica greca di fabbricazione e il realismo della raffigurazione sono facilmente riferibili al mondo greco dell'Italia meridionale. Inoltre il tempio plebeo costituisce una pietra miliare per Roma anche sotto un altro aspetto: qui è conservata la prima statua in bronzo raffigurante la dea Cerere. La sua origine è veramente singolare, infatti è stata fusa col ricavato dei beni di Spurio Cassio, accusato di tendenze monarchiche e gettato dalla rupe Tarpea.

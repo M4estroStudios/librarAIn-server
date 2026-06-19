@@ -1,26 +1,26 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CONQUISTA DELL'ORIENTE:
+204
 
-[Immagine: Carta geografica con indicazione dell'espansione di Roma negli anni 241-27 a.C.]
+STORIA DI ROMA ANTICA
 
-*Carta geografica con l'indicazione dell'espansione di Roma negli anni 241-27 a.C.*
+Equest'infiacchimento dell'esercito siriano si rivela in tutta la sua gravità nello scontro con Roma. Il malcontento della Lega etolica, intanto, rende vani gli sforzi di Flaminino. Assassini e tradimenti fanno precipitare la situazione. Gli Etoli si rivolgono ad Antioco III, scelto infine come comandante supremo della stessa Lega achea e sulla neutralità di Filippo. La spedizione in Grecia di Antioco III, condotta troppo velocemente con un esercito raffazzonato, non ha successo. Alle Termopili, Acilio Glabrione blocca il re e lo costringe a ritornare sui suoi passi (191 a.C.).
 
-istmici. I Romani "gratuitamente" si dichiarano garanti dell'autonomia delle città (196 a.C.). Ma è una libertà vigilata. Lo stesso Flaminino è invischiato in scaramucce diplomatiche e scontri senza esito definitivo con alcuni alleati, già stanchi e preoccupati. Nonostante tutto, riesce a evacuare le truppe romane dalla Grecia, lasciando solo guarnigioni in qualche piazzaforte (194 a.C.).
+**SCIPIONE: UN AMULETO CONTRO LA PAURA**
 
-La politica di Flaminino ha il vantaggio di non costringere lo Stato romano a un'occupazione permanente dei territori, come avviene invece in Spagna; i problemi di tipo istituzionale (una nuova burocrazia responsabile per la politica estera), militare (un esercito permanente), sociale (necessità di uomini, strapadati dalle loro terre) ed economico sono per il momento accantonati.
+Sebbene siano trascorsi dieci anni, torna a farsi sentire la paura, eredità della guerra annibalica. A Roma nessuno ha dimenticato che l'antico nemico è ospite del sovrano ellenistico e c'è il sospetto che le operazioni di Antioco III possano nascondere chissà quale astuto piano del generale cartaginese.
 
-Le vicende della seconda guerra macedonica segnano il successo d'una parte della classe dirigente.
+La scelta di inviare Scipione Africano è l'antidoto al terrore. In veste di ufficiale del fratello, scialba contrafigura, il vincitore di Zama ha la possibilità di realizzare la sua politica orientale (190-189 a.C.).
 
-Flaminino, come Scipione, è imbevuto di cultura greca, ma la sua condotta impensierisce i tradizionalisti, i quali non si riconoscono più in questi generali che fanno la guerra soprattutto con le parole.
+Al pari di Flaminino, la diplomazia e il dialogo contrassegnano la sua attività. Egli intrattiene rapporti personali con Antioco, Annibale e Filippo, che frequenta presso la corte siriana. Si racconta che durante una passeggiata Scipione abbia chiesto ad Annibale quali siano stati i generali più grandi. Annibale mette al primo posto Alessandro, Pirro e infine se stesso. Scipione ridendo gli chiede quale sarebbe stata la classifica qualora avesse vinto a Zama. Senza la minima incertezza, l'ex generale risponde che allora si sarebbe messo al primo posto.
 
-LA GUERRA FREDDA
+Alla vigilia dello scontro decisivo, Scipione cade malato. La sua richiesta può...
 
-L'abile diplomazia e le spettacolari dichiarazioni di Flaminino purtroppo non risolvono la situazione. Roma già da qualche anno è impegnata in un braccio di ferro con Antioco III e quest'ultimo si propone come garante della Grecia contro gli opportunisti Romani.
+***
 
-In un clima di guerra fredda si prepara l'inevitabile conflitto. Antioco III, in un momento così difficile, trova spazio per un'avventura amorosa, che fa gridare allo scandalo.
+**SPECULAZIONE EDILIZIA E INCENDI**
 
-Il re, già avanti negli anni, s'innamora di una ragazza molto giovane: a quel punto la difesa della Grecia e la guerra contro Roma diventano solo fastidiosi impegni.
+Una larga fascia della popolazione si accontenta di edifici molto più modesti delle nuove domus lussuose. A tradizioni più sobrie rimangono anche alcune famiglie aristocratiche come quella degli Elii. Sedici persone vivono in una *domuncula*, una casupola sull'Esquilino; impermeabili alle nuove mode che hanno fatto perdere il senno a molte persone. In particolare scoppia una speculazione edilizia sfrenata per le abitazioni destinate alla sfera più umile della popolazione, costituita spesso da immigrati italici o cittadini latini. Liberti e schiavi del ceto senatorio promuovono un'intensa attività edilizia dai grossi profitti.
 
-In preda alla sua ubriacatura amorosa si getta anima e corpo nel piacere. Per un intero inverno Antioco si dedica ai banchetti e alla sua giovanissima sposa, contagiando anche ufficiali e soldati.
+A questi si aggiungono guadagni ricavati dalle botteghe che si aprono sulle facciate esterne delle abitazioni, gestite da privati dagli stessi liberti. L'origine della ricchezza personale lascia la traccia nei nomi di personaggi come Publio Licinio Tegola e Publio Licinio Embrice; liberti d'una famiglia che guadagna parecchio con i luterizi.
 
-203
+Le case crescono come funghi, senza regole e smisurate in altezza. L'ampio uso di laterizio e soprattutto del legno le rende facile preda di incendi. Ben presto si pone freno a quest'edilizia selvaggia con leggi che limitano l'altezza e prescrivono lo spazio da lasciare tra una casa e l'altra (due piedi e mezzo, cioè 75 cm) per scongiurare gli incendi a catena.

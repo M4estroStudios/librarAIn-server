@@ -1,22 +1,32 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CONQUISTA DELL'ORIENTE                                           213
+214
 
-*Foro Olitorio:*
-*pianta dei templi*
-*dedicati a Giano*
-*(A) a Giunone*
-*Sospita (B) e alla*
-*Speranza (C)*
-*inglobati nella*
-*chiesa di San*
-*Nicola in Carcere.*
+STORIA DI ROMA ANTICA
 
-[Immagine: Pianta del Foro Olitorio con indicazioni A, B, C e l'area della chiesa di S. Nicola in carcere]
+SOGNI E ELEZIONI
 
-***
+Dopo la sconfitta di Canne Lucio Cornelio Scipione, fratello di Publio il futuro Africano, si presenta alle elezioni come edile. Le possibilità di successo sono poche.
 
-I PORTICATI DEL CAMPO MARZIO
+Publio Cornelio pensa allora di ricorrere all'aiuto divino. La madre compie continui pellegrinaggi nei santuari e fa offerte agli dèi, preoccupata per la candidatura di Lucio.
 
-Il Campo Marzio nella parte circostante al circo Flaminio è interessato da grandi opere pubbliche: gran parte dei bottini guadagnati in guerra è impiegata in edifici sacri e quadriportici quali il tempio di Ercole e delle Muse (divinità protettrici delle arti), il portico d'Ottavio (168 a.C.) e il portico di Metello (146 a.C.). Gli edifici, situati lungo il lato settentrionale del circo, sono il primo esempio di urbanistica monumentale a Roma. Artisti, architetti e pittori greci fanno conoscere la *luxuria* asiatica (il lusso orientale) a una città che fino a quel momento si è accontentata di edifici modesti, specchio della semplicità dei suoi costumi. All'interno del quadriportico di Metello trovano spazio due templi dedicati a Giunone Regina (creato da Marco Emilio Lepido nel 179 a.C.) e a Giove Stautore: quest'ultimo rappresenta un'importante innovazione, poiché si tratta del primo edificio sacro costruito interamente in marmo a opera dell'architetto Ermodoro di Salamina di Cipro. Il modello ellenistico-orientale conoscerà da questo momento numerose imitazioni nell'architettura religiosa romana. Le statue di Giunone e Giove sono ugualmente create da scultori greci, Policle e Dionisio; quasi a confermare fino a che punto la committenza nobiliare sia impregnata di cultura greca.
+Publio va da lei e le racconta il sogno che ha fatto. Entrambi i fratelli erano stati eletti edili e una volta giunti a casa la madre li aveva abbracciati e baciati. Ascoltando il sogno la donna si commuove e tra le lacrime augura che ciò possa accadere.
 
-che la parentela con Perseo è soltanto la sfortuna e nello stesso luogo: la Macedonia perde così l'autonomia formale e i distretti sono sostituiti di lì a poco da una provincia. I Romani non si fermano, perché sono ben decisi a indebolire completamente la Lega achea; La richiesta di lasciare fuori dalla confederazione città come Sparta, Argo e Corinto scatena una nuova rivolta, repressa senza freni o incertezze. La reazione di Corinto non è tollerata e Lucio Mummio occupa e distrugge la città dell'istmo. L'enorme bottino in opere d'arte supera quasi quello che Emilio Paolo ha portato a Roma dopo la vittoria di Pidna. L'autonomia della Grecia è decisamente finita.
+Publio Cornelio dichiara allora di voler tentare la sorte e chiede alla madre di preparargli una toga candida. È infatti sua intenzione presentarsi alle elezioni con il fratello. La donna accondiscendente sorride e non pensa più alla sua richiesta. Giunto il giorno delle elezioni, il giovane si procura la toga che la madre ha dimenticato e va al Foro.
+
+Il popolo, sia per la novità, sia per la fama che Publio già gode, è entusiasta e vota i due fratelli. Tornati a casa, la madre come in sogno, li abbraccia e li bacia piena di gioia. Le amiche della donna si incaricano di diffondere il racconto del prodigio. Così tutti credono che i sogni del giovane Scipione si avverino e che egli sia in contatto diretto con gli dèi, anche nella vita quotidiana.
+
+DALLA DIPLOMAZIA DI FLAMININO ALL'AGGRESSIVITÀ DELL'EMILIANO
+
+Dopo la caduta degli Scipioni e la morte di Flaminino, la politica estera romana segue la strada da essi indicata. L'opposizione dei conservatori tradizionalisti, per quanto violenta, non modifica la condotta dei dirigenti romani.
+
+Per mezzo secolo, pur affermando la sua egemonia, Roma evita di ampliare il territorio e di creare nuove province. Ovunque la sua supremazia è riconosciuta e i mercanti romani e italici si espandono e si affermano sempre più nel mondo mediterraneo.
+
+Il delicato problema istituzionale dell'amministrazione dei territori fuori dall'Italia è affrontato parzialmente nel 179 a.C., con la legge Bebia. Per risolvere il problema spagnolo si decide di eleggere, alternativamente ogni anno, quattro e sei pretori, in modo che due rimangano a Roma e due vadano nelle province: nel secondo anno si compie una rotazione completa nelle quattro province (Sicilia, Sardegna, Spagna Citeriore e Spagna Ulteriore).
+
+Questo meccanismo, un rimedio di fortuna, è però destinato a saltare in breve tempo, quando cominciano a farsi strada i comandi straordinari (vedi anche il capitolo successivo).
+
+Nella seconda metà del II secolo a.C. si assiste a un profondo mutamento di indirizzo. L'azione romana si fa aggressiva e distruttiva. Non solo in Spagna si compiono stragi di Stato; ma anche in Oriente.
+
+La guerra di sterminio diventa la norma. Incarnazione perfetta di questa seconda tendenza è Publio Cornelio Scipione Emiliano, figlio adottivo dell'Africano.
+
+Il giovane figlio di Lucio Emilio Paolo, il vincitore di Pidna, al momento della sua adozione ha acquisito prenome, nome e cognome degli Scipioni che però poi legge.

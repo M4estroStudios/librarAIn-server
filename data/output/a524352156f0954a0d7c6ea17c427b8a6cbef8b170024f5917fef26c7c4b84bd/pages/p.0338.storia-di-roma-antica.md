@@ -1,15 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-338                                                                    STORIA DI ROMA ANTICA
+LA DINASTIA DEI FLAVII 339
 
-[Immagine: L'arco di Tito, incisione ottocentesca]
-*L'arco di Tito, incisione ottocentesca.*
+Presero così corpo le voci che volevano avesse costretto all'aborto; e quindi alla morte, la figlia di suo fratello Tito, da lui amata incestuosamente.
 
-LA PRIMA PERSECUZIONE DEI CRISTIANI
+Il Senato diffondeva la voce che Domiziano fosse ormai soltanto un bieco tiranno, mentre l'esercito non riconosceva in lui un capo da servire con fedeltà, perché Domiziano non aveva saputo frequentare assiduamente e con simpatia la classe militare.
 
-Domiziano inaugurò anche una politica moralistica che giunse a portare alla morte tre vestali che non avevano mantenuto il giuramento della castità; nel contempo ordinò la persecuzione degli adulteri e degli omosessuali; e infine ordinò la prima persecuzione contro i Cristiani, che rifiutavano di rendere il culto all'imperatore divinizzato.
+Si preparò così una congiura alla quale prese parte innanzitutto la stessa moglie dell'imperatore, risposata in seconde nozze dopo un divorzio.
 
-Questi atteggiamenti finirono per allontanare Domiziano dal consenso popolare che, se non aveva peso politico, costituiva sempre una giustificazione per eventuali congiure.
+Non estranea alla congiura furono i Cristiani del palazzo imperiale; che già avevano visto nella persecuzione Flavio Clemente, console convertito al Cristianesimo, i cui figli Domiziano aveva in un primo momento destinato a succedergli.
 
-L'opinione pubblica romana era da sempre ostile e critica nei confronti delle culture greche e orientali, nonostante ad esse aderissero i migliori ingegni dell'Impero; così quando Domiziano manifestò pubblicamente il suo amore per la Grecia facendo costruire in Roma uno stadio di giochi atletici di tipo olimpico, che sorse ove oggi è piazza Navona, e ancora, facendo costruire un odeon per le audizioni poetiche e musicali, si alienò del tutto le simpatie dei Romani.
+A uccidere Domiziano fu un procuratore di Domitilla, tale Stefano: costui frequentava il palazzo e prese ad avvolgersi il braccio sinistro con fasce di lana per diversi giorni; allo scopo di apparire malato e allontanare così ogni sospetto. All'ora stabilita vi nascose dentro un pugnale e ottenne un colloquio da Domiziano; cui fece sapere di essere in grado di rivelargli una congiura. Mentre Domiziano leggeva l'appunto che Stefano gli aveva consegnato, lo stesso lo colpiva con il pugnale e quindi su Domiziano che ferito cercava di reagire furono i suoi servi di camera, che lo avevano tradito; che lo trapassarono con sette pugnalate; Domiziano chiese un pugnale, ma gliene fu dato uno senza lama. Corse alle porte, ma le trovò chiuse. Ingaggiò allora una serrata e violenta lotta con Stefano; che finì l'imperatore uscendo malconcio. Al cadavere di Domiziano solo la sua nutrice, Fillide, rese gli onori funebri nella villa sulla via Latina. Era il 96 d.C.
 
-La persecuzione dei Cristiani gli inimicò alcune delle matrone cristiane del palazzo imperiale, tra le quali Domitilla, il cui influsso nella corte era grande, sicché Domiziano venne a trovarsi sempre più solo anche nel proprio palazzo.
+[Immagine della pianta dello stadio]
+
+*Pianta ricostruita dello stadio di Domiziano come appariva nell'antichità (da N. Colini).*

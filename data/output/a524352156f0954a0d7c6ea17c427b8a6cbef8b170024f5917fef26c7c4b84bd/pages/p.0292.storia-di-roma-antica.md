@@ -1,17 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-292                                                                    STORIA DI ROMA ANTICA
+RICONCILIAZIONE: CONSENSO 293
 
-![Immagine del Pantheon]
-*Il Pantheon incisione tratta da un'antica guida del Seicento.*
+LE NUOVE DIMORE DEI MORTI
 
-***
+La crisi dei valori collettivi che caratterizza gli ultimi decenni della morente Repubblica è ben rappresentata dai monumenti funerari. Si afferma il gusto dell'autorappresentazione in forme vistose e persino stravaganti, che sopravvive fino ai primi decenni del principato. Il fornaio Eurisace, un liberto arricchitosi con forniture di pane allo Stato, acquista un terreno in un'area molto frequentata subito fuori porta Maggiore (tra le vie Labicana e Prenestina) e si fa costruire (intorno al 30 a.C.) un singolare monumento funerario in cui sono rappresentate tutte le fasi della panificazione. Persino l'urna con le ceneri della moglie, Atistia, è a forma di madia. Sulla via Appia sorge, su un rialzo del terreno, l'imponente tomba di Cecilia Metella (ca. 30 a.C.), una torre cilindrica poggiata su uno zoccolo quadrato e sormontata da un tumulo (oggi scomparso) che richiama le sepolture arcaiche delle famiglie aristocratiche romane. La donna era figlia di un console di antica famiglia aristocratica, Quinto Cecilio Metello Cretico, e moglie del figlio di Gaio Licinio Crasso, uno degli uomini più ricchi di Roma.
 
-**LA NUOVA ETÀ DELL'ORO**
+Desiderio di apparire e gusto dell'esotico caratterizzano anche il monumento sepolcrale a forma di piramide, fatto erigere davanti alla porta Ostiense (altro luogo molto frequentato) da Gaio Cestio (II a.C.). Questo è però uno degli ultimi monumenti di tipo spettacolare dell'aristocrazia romana. A partire dall'età augustea prevale infatti la tipologia della tomba di famiglia dall'aspetto più modesto. Il monumento è un semplice altare.
 
-«Fede, pace, onore e il pudore antico; la virtù smarrita osano ora tornare e lieta apparire l'abbondanza col suo corno ricolmo. Così cantano i cori di fanciulle e fanciulli davanti al tempio di Apollo Palatino; intonando il poema composto da Orazio per i giochi secolari del 17 a.C. Si celebra il ritorno della mitica età dell'oro; sognata da tempo e portata dal nuovo principe. L'attesa è grande. Araldi in costumi antichi hanno annunciato «una festa che nessuno vide e nessuno vedrà».
+Urne e ritratti trovano posto in nicchie ricavate nelle pareti della costruzione, che assume l'aspetto di un colombario. Questa soluzione è prescelta dalle famiglie dell'alta aristocrazia, ma anche dai liberti (specialmente imperiali) e dai membri delle associazioni professionali. Le tombe monumentali diventano rare e sono ricercate soltanto dai nuovi ricchi emergenti, desiderosi avere una sepoltura vistosa, da cui traspaia la loro ricchezza priva di nobiltà.
 
-La regia della celebrazione è di Augusto e Agrippa; che per fatidico anno si sono fatti eleggere magistri dal collegio che sovrintende alle cerimonie sacre (*xv viri sacris faciundis*). La città è purificata e, secondo un rituale arcaico, il popolo partecipa alla cerimonia portando offerte di primizie sull'Aventino. In cerimonie notturne si invocano le dee del destino, le dee protettrici delle partorienti e la Terra Madre, dea della fecondità.
+[Immagine della tomba di Cecilia Metella]
 
-In tre giorni successivi Augusto e Agrippa offrono in sacrificio due buoi a Giove Capitolino, due vacche a Giunone Regina; focacce ad Apollo e Diana. Centodieci madri di famiglia invocano la protezione di Giunone sullo Stato e sulla famiglia.
-
-Il popolo, affascinato dalla grandiosità e dalla suggestione delle cerimonie, può ben credere che nulla sia più grande di Roma, la cui grandezza e la cui prosperità si fondano sul valore delle armi, sulla fedeltà alle tradizioni, sulla moralità della famiglia. E nessuno è più grande del principe; rifondatore di Roma.
+La tomba di Cecilia Metella in un'incisione di G. Contafavi tratta da *Raccolta delle città di Roma e sue vicinanze*, 1837.

@@ -1,22 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-228
+ROMA TRA CONSERVATORI E INNOVATORI
 
-STORIA DI ROMA ANTICA
+229
 
-PROVA D'AMORE
+La figura di Emilio Paolo incarna invece una nuova fase dell'atteggiamento romano verso la Grecia. Dopo la vittoria di Pidna, prima di rientrare, il generale compie un viaggio nelle località più importanti della Grecia classica (la Grecia del V secolo a.C., la Grecia di Pericle). Lascia addirittura un monumento a Delfi che commemora la battaglia di Pidna. L'iscrizione che accompagna il fregio è in latino; ad Olimpia il generale rimane affascinato dalla statua di Zeus costruita da Fidia (V secolo a.C.) e dalla statua di Atena nel Partenone di Atene.
 
-Come censore Tito Quinzio Flaminino conferisce la dignità di principe del Senato all'Africano (189 a.C.). Per questo motivo Catone gli giura inimicizia eterna e non perde occasione per colpirlo.
+È innegabile il filoellenismo di Emilio Paolo; come è innegabile la sua diversità da quello di Scipione o Flaminino: non c'è più l'imitazione del monarca orientale in tutte le sue espressioni artistiche; ora si ricerca un'arte che sia espressione duna città che ha conquistato un impero. Si cerca un'arte ufficiale. Il suo modello non saranno più le corti ellenistiche, sorte dopo la morte di Alessandro, ma la Grecia classica, la Grecia delle città-stato del V secolo a.C., di Atene in modo particolare.
 
-Flaminino ha un fratello che non gli assomiglia per nulla: anche nella famiglia Quinzio c'è una pecora nera, dissipata e gaudente. Lucio Quinzio si distingue per il suo amore spassionato per i piaceri terreni e per i suoi amanti. Invaghitosi d'un ragazzino, lo porta sempre dietro, anche quando comanda un esercito o una provincia. Il giovane sembra amarlo con la stessa intensità. Durante un banchetto si profonda in dichiarazioni d'amore per Lucio, dicendo che lo ama al punto da aver disertato un'esecuzione a morte.
+MEDICINA CASALINGA E MEDICI CARNEFICI
 
-Infatti gli sarebbe piaciuto vedere 'in diretta la morte d'un condannato; ma per stare con Lucio, per vedere Lucio; per dare una gioia a Lucio, vi rinuncia. Lucio, confuso e contento, rassicura l'amante promettendogli ciò a cui ha rinunciato. Fa venire dalla prigione un condannato a morte, insieme a un carnefice nella sala del banchetto ordina al boia di scannare il poveretto. L'amante le mani felice. Saputa la cosa Catone decide di render pan per focaccia a Tito Quinzio. Non appena diventa censore del Senato il fratello del generale con l'accusa di indegnità. E tutti che conoscono la storia dell'amante non possono che essere d'accordo.
+Secondo Catone il capofamiglia deve occuparsi della sua terra, dei suoi animali e della sua famiglia; salvaguardando la salute dei suoi familiari. La medicina domestica ha una lunga tradizione a Roma e si aggiunge una certa diffidenza nel mettersi nelle mani di schiavi e stranieri che si spacciano per guaritori. A partire dal I secolo a.C. compaiono i primi medici d'origine greca. Nel mondo ellenistico gli studi di medicina sono molto avanzati e ad Alessandria si pratica comunemente la vivisezione, per conoscere il funzionamento del corpo umano.
 
-UN MONTE DI COCCI
+Roma non è una piazza molto ambita dai medici. Tuttavia uno di essi, Arcagato, è invitato dal Senato a esercitare la sua arte a Roma (219 a.C.). Grazie a fondi pubblici ha a disposizione un ambulatorio per ricevere i malati; ma il suo progetto fallisce sia per mancanza di altre sovvenzioni, sia per i metodi non proprio delicati. Arcagato diventa la personificazione della paura che hanno i Romani del medico carnefice, quello che non tentenna di fronte agli interventi più cruenti. Passerà altro tempo prima che la figura del medico diventi consueta, familiare e non fonte di angosciosi incubi.
 
-La collina artificiale chiamata Testaccio (*Mons testaceus*, monte di cocci) misura 30 metri e ha una circonferenza di km con una superficie coperta di 20.000 mq: è collocata verso il fiume nell'angolo sud della città. La sua particolarità è dovuta alla sua origine, dal momento che è sorta grazie agli scarichi delle anfore contenenti prodotti importati. Rampe permettevano d'accedere alla sommità del mucchio, per vuotare i carri pieni di detriti.
+PIEDI, UTERI ED EX VOTO: L'AIUTO DEL TEVERE
 
-Qui si ammucchiano gli antichi vuoti a perdere dal 140 a.C. fino al III secolo d.C.
+Accanto alla medicina tradizionale e alla nuova medicina d'origine greca per il Romano resta comunque importante l'aiuto degli dèi. Dopo l'arrivo d'Esculapio, l'Isola Tiberina si è trasformata in un ospedale (vedi capitolo L'egemonia nell'Italia centro-meridionale), che accoglie i malati.
 
-E questa collina costituisce un documento insostituibile della vita economica di Roma per circa quattro secoli, perché le anfore permettono di identificare le vie commerciali, le fonti di approvvigionamento della città e il loro mutare nel corso del tempo.
+Dopo la guarigione è usuale donare al dio Esculapio che era stato promesso in voto secondo le proprie possibilità. Molto spesso si tratta di ex voto anatomici, come oggetti in terracotta, prodotti a stampo, che rappresentano la parte del corpo guarita. Il Tevere continua a restituire migliaia di questi ex voto che i fedeli hanno donato a Esculapio.
 
-*Tipo di anfore del Testaccio.*
+Tra questi si possono distinguere quelli che rappresentano l'organo guarito (come piedi, occhi, orecchie, mammelle, uteri, cuori, intestini) e quelli che invece simboleggiano la protezione richiesta circa la fecondità e il ciclo riproduttivo. Esiste dunque un mercato di ex voto anatomici che, fiorito sulla religione popolare ancora legata a rituali e culti antichi, segue la conquista romana e si diffonde con essa.

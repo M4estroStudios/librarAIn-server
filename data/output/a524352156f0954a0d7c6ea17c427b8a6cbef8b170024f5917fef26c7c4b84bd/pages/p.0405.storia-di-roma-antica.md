@@ -1,80 +1,98 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
+406
+
 INDICE DEI NOMI E DEI LUOGHI
 
-405
-
-Fabio Massimo Gurgite Quinto, 164
-Fabio Massimo Quinto, 151, 178, 188-190, 195-197
-Fabio Massimo Rulliano Quinto, 142-143, 145, 153, 155, 162
-Fabio Pittore, 156
-Fabullo, 320
-Falerii Novi, 173
-Falerii, v *Civita Castellana*
-Falerna, tribù, 160
-Falerno, agro, 160, 189, 196
-Fannio, 226
-Fard, 10
-Faro, v *Lesina*
-Fausta, 387
-Faustina Maggiore, 352-353
-Faustolo, 8, 23, 43
-Fenicia, 166
-Fenio Rufo, 314
-Fermo, 157
-Feronia, 160, 219
-Fiano, 31
-Ficana, 17, 29-30, 46, 49
-Ficulea, 59
-Fidene, 34, 47, 58-59, 107-108, 126, 300
-Fidia, 229
-Fiesole, 188
-Filippi, 266-267, 273, 296
-Filippo Marcio, 282
-Filippo l'Arabo, 372-374
-Filippo v di Macedonia, 175, 194, 196, 200, 202, 206
-Fillide, 339
-Flaminio Gaio, 176-178, 180, 187-189
-Flaminio Tito Quinzio, 202-203, 210, 214, 218, 227-230
-Flavii, dinastia, 330, 342, 360
-Flavio Cneo, 147
-Flavio Fimbria Gaio, 243
-Germanico Giulio Cesare, 289, 295, 297, 299-301, 305, 307, 310
-Gerone, 167-168
-Gerusalemme, 300, 332, 350, 352
-Gesù, 300, 378
-Geta, 363
-Gianicolo, colle, 49-50, 55, 59
-Giano, 40, 133, 178, 212, 324
-Giano Curiazio, 48
-Gibilterra, 343
-Giove, 43, 45, 48, 108, 131-133, 162, 192, 196, 364
-Giove Capitolino, 51, 60, 63, 66, 69, 303, 386
-Giove Custode, 206
-Forum
-
-***
-
-Fortuna Virile, 224
-Forum Clodi, 156
-Francia, 114, 332
-Fregellae, 140
-Fregene, 173
-Fucino, conca, 96
-Fucino, lago, 308
-Fulginie; v *Foligno*
-Fulvia, 267, 269
-Fulvio Flacco, 224
-Fulvio Nobiliore, Marco, 206, 246
-Furio Camillo Marco, 109-122, 125-126, 141, 147, 162
-Furnace, 258-259
-Furno, 139
-Fundo, 123, 140, 142
-Furia, 139
-Fuscio, 139
-Fustano, 139
-Futilia, 139
-Fuxina, 139
-
-***
-
-*(Nota: Il testo fornito sembra contenere una lista di nomi e luoghi. Ho normalizzato la formattazione mantenendo l'ordine e i riferimenti numerici.)*
+Giove Feretrio, 108
+Giove Laziale, 79, 129
+Giove Lucezio, 40
+Giove Ottimo Massimo, 69, 115, 129
+Giove Palatino, 303
+Giove Statore, 81, 162, 213, 277
+Giove Tonante, 282
+Giove Vincitore, 162
+Giuba, 258-259
+Giudea, 300, 324, 328, 332, 352
+Giugurta, 232-235, 237
+Giulia, figlia di Augusto, 287-288, 290
+Giulia, madre di Augusto, 264
+Giulia, nipote di Augusto, 289
+Giulia, nipote di Tiberio, 299
+Giulia Domna, 359, 363
+Giulia Livilla, 302
+Giulio Cesare Gaio, 7, 40, 71, 112, 207, 250-251, 253, 256-260, 264-265, 275, 283, 285-286, 290, 333, 375
+Giulio-Claudii, dinastia, 295, 310, 315, 325, 342, 360
+Iulio Antonio, 302
+Giulio Placidiano, 379
+Giunia Claudilla, 304
+Giunio Pullo, 172
+Giunio Rubulco, 147
+Giunone, 40, 63, 117, 133, 187
+Giunone Lucina, 122
+Giunone Moneta, 120, 246
+Giunone Regina, 66, 122, 133, 151, 162, 213, 277
+Giunone Sororia, 48
+Giugurta, 178
+Giuturna, fonte, 104
+Gordiano I, 371
+Gordiano III, 371-372
+Gorgaso, 95
+Gracchi, famiglia, 178, 207, 221, 230, 232
+Gracco Caio, 222, 224, 226, 237, 239
+Gracco Tiberio, 178, 211, 218, 220-222, 224
+Granico, fiume, 277
+Gran San Bernardo, valico, 185
+Gravisca, 50, 83
+Grecia, 24, 27, 41, 127, 133, 150, 181, 191, 200, 207-208, 210, 212-213, 229, 241, 243, 248, 296, 317, 320, 323-324, 354, 377
+Grottaferrata, 30
+Grotta Oscura, 121
+Grottarossa, 31
+Hercules Victor, 147
+Honos, v. Onore
+Horatia, tribù, 160
+Horus, 305
+Iberia, 236
+Icaro, 376
+Icilio, 98
+Iempsale, 234
+Ierone, 194
+Illiria, 175, 200, 382
+Illirico, 253
+India, 360
+Ingenuo, 377
+Ino-Leucotea, 80
+Interamna, 142, 156
+Ionio, mare, 175
+Ipponio, 146
+Irzio, 266
+Isère, fiume, 185
+Iside, 300, 305, 337
+Isso, 359
+Italia, passim
+Iuppiter Victor, 147
+Jutland, 285
+Ladispoli, 173
+Lanuvio, 96, 123, 160, 187, 352
+Larenzia, 8, 23
+Larte Tolumnio, 108
+La Rustica, 51
+Laterano Lucio Sestio, 125
+Latino, 7, 21, 23
+Latona, 120
+Laurento, 21
+Lavinia, 7, 21
+Lavinio, 7, 17-18, 22, 24, 27, 29, 104, 139
+Lavinium, v. Lavinio
+Laziale, vulcano, 10, 12-13
+Lazio, 7, 10-12, 15-16, 18-19, 21-22, 24, 28, 32, 37, 51-52, 58, 82, 96, 123, 140-141, 149, 301, 303, 352
+Le Ferriere, 17, 29, 51
+Lemonia, tribù, 160
+Lentulo, 150
+Lepido Marco Emilio, 202, 206, 213, 246, 248, 265, 269, 281, 302
+Lepini, monti, 10
+Leptis Magna, 359
+Lesina, isola, 175-176
+Leucotea, 80
+Libera, 102, 105, 134
+Libero, 102, 105, 134
+Libia, 272

@@ -1,17 +1,40 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UN AVVENTURIERO ETRUSCO
-SUL TRONO DI ROMA
+56
 
-DUE ETRUSCHI SU UN CARRO
+STORIA DI ROMA ANTICA
 
-Durante il regno di Anco Marcio Roma (il cui abitato abbraccia Palatino, Campidoglio, Celio, Aventino e Gianicolo) diventa uno tra i centri più importanti del Lazio:
+[Immagine della mappa]
+Carta dell'Etruria.
 
-L'epoca oscura delle origini è ormai lontana; e la città appare ai popoli confinanti come un centro che promette di diventare sempre più potente. Come nelle origini, in questo momento è ancora più forte la sua tipica apertura verso gli stranieri e numerose persone immigrano a Roma in cerca di fortuna e di ricchezza.
+Adria
+ETRURIA
+Po
+Spina
+Felsino (Bononia)
+Marzabotto
+APENNINI
+ETRURIA
+Arno
+Populonia
+Clusium
+Ilva
+Lago Volsiniensis
+Monti Cimini
+Tarquinii
+Graviscae
+Cremera
+Monti della Tolfa
+Veii
+Pyrgi
+Caere
+Fidenae
+Roma
+LAZIO
 
-Proprio durante il regno di Anco Marcio arriva l'etrusco Lucumone, importante personaggio originario dall'etrusca Tarquinia: Insieme a lui arrivano la moglie, numerosi familiari e amici, oltre a grandi ricchezze.
+te in cui Tanaquil fa sfoggio della sua conoscenza di prodigi e auspici; l'etrusca *doctrina*, diffusa e praticata in Etruria. Riconosce nel volo dell'aquila il segno del glorioso destino che gli dèi riservano al marito. Così i due coniugi, felici e speranzosi, entrano Roma.
 
-Alle sue spalle c'è una lunga storia: è figlio d'un nobile greco, Demarato di Corinto, fuggito dalla sua città quando era salito al potere il tiranno Cipselo: Demarato, dopo aver caricato su una nave le sue ricchezze, aveva deciso di trasferirsi in Etruria: da tempo aveva rapporti commerciali con i Tirreni (così i Greci chiamavano gli Etruschi) e pensava di potersi stabilire in una delle loro città, che conosceva bene. Scelse Tarquinia, dove aveva numerosi amici a causa dei frequenti rapporti commerciali, e nella città etrusca costruì una nuova casa, sposando una nobildonna tarquiniese: Da questo matrimonio erano nati due figli: Arrunte e Lucumone. La morte del primogenito Arrunte costringe il padre, ormai vecchio, a lasciare suo bene al figlio minore, Lucumone.
+COME DIVENTARE INDISPENSABILI AL RE E VINCERE IL REGNO
 
-Demarato non sapeva che sua nuora, la moglie di Arrunte, era incinta: il bambino che nascerà, proprio per la sua completa povertà, sarà chiamato Egerio (*povero*). Lucumone non può dirsi contento: alle ricchezze paterne non corrisponde la possibilità di rivestire cariche politiche di qualche rilievo. La sua condizione di figlio d'un greco e d'una etrusca lo pone fuori gioco nella concorrenza con gli Etruschi "purosangue". Anche il suo matrimonio con la nobile Tanaquil si rivela fonte di insoddisfazione; poiché la moglie alimenta la sua ansia di potere e non si accontenta della posizione subordinata del marito: Infine Tanaquil convince Lucumone a partire per Roma prospettandogli una città dove a nessuno sarebbe interessato sapere di chi fosse figlio e dove sarebbe stato facile ottenere onori e potere.
+Comincia una nuova vita per Lucumone; che cambia il suo nome etrusco in quello romano di Lucio Tarquinio (Tarquinio perché originario di Tarquinia). La sua casa diviene ben presto nota a tutti a Roma: il nuovo venuto cerca in modo di rendersi amabile, offrendo il suo aiuto a chiunque ne abbia bisogno.
 
-Seduti sul carro, arrivano sul Gianicolo, in procinto di entrare a Roma. Ma all'improvviso un'aquila planando sulla testa dell'uomo gli strappa il cappello che, dopo un rapido volo, gli rimette sul capo. È questa una delle prime grandi...
+Ancora una volta il denaro conosce la strada più breve per raggiungere il cuore e il cervello degli uomini. Da bravo politico Lucio costruisce un ampio consenso intorno a sé, sapendo che ben presto la sua fama arriverà fino al re.

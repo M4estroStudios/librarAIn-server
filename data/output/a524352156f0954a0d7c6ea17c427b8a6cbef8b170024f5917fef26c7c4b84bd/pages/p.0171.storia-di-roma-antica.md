@@ -1,15 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMANI E CARTAGINESI: LO SCONTRO
+172
 
-171
+STORIA DI ROMA ANTICA
 
-troppo gravose e umilianti. Le scaramucce continuano; mentre Regolo non sa approfittare di alcune circostanze favorevoli (come la rivolta degli alleati numidi contro Cartagine), i Cartaginesi non osano affrontare l'esercito romano in campo aperto. L'andamento della guerra cambia radicalmente nel 255 a.C., quando giungono a Cartagine i mercenari spartani, guidati dall'abile generale Santippo. Questi dispone di 12.000 fanti, 4.000 cavalieri e circa 100 elefanti; Regolo schiera 15.000 fanti, ma solo 500 cavalieri. Santippo approfitta della maggiore mobilità di manovra e dell'impatto degli elefanti, attacca i Romani in pianura e li sconfigge pesantemente. Solo 5.000 uomini riescono a rifugiarsi a Clupea: lo stesso Regolo con 500 uomini cade prigioniero. Il Senato romano ha già allestito 350 navi per portare i rinforzi in Africa; ma decide di rinunciare all'impresa e invia la flotta solo per imbarcare i 2.000 superstiti, asserragliati a Clupea. Sulla via del ritorno la flotta è colta da una spaventosa tempesta: 284 navi sono distrutte e annegano 70.000 rematori e 25.000 soldati: è il più spaventoso disastro navale dell'antichità.
+[Immagine: Attilio Regolo è condannato a morte dai Cartaginesi (incisione di B. Pinelli)]
 
-LA BOTTE CHIODATA DI ATTILIO REGOLO
+*Attilio Regolo è condannato a morte dai Cartaginesi (incisione di B. Pinelli)*
 
-*Attilio Regolo non è stato un gran generale e neppure un abile diplomatico: su lui pesa la responsabilità della disastrosa conclusione della spedizione in Africa. In cambio l'episodio della sua prigionia presso i Cartaginesi ha prodotto numerosi racconti leggendari, che hanno finito per fare di Regolo un personaggio esemplare, come di Muzio Scevola, Orazio Coclite o Clelia; sempre i Romani hanno saputo ammantare le loro leggende di un alone eroico. Se non sono vere, sono sempre ben inventate. Regolo infatti sarebbe stato inviato a Roma per negoziare la pace, dopo aver giurato ai Cartaginesi che sarebbe ritornato in ogni caso in Africa: egli avrebbe persuaso il Senato romano a respingere le proposte dei Cartaginesi e, mantenendo la parola, sarebbe tornato a Cartagine. Lì sarebbe stato torturato e avrebbe trovato la morte rinchiuso in una botte irta di chiodi. Si celebra così la fides (lealtà) dei Romani e si sottolinea la crudeltà e la barbarie dei Punici. Di tutto ciò, naturalmente, non si trova traccia nel resoconto della guerra punica fornito dagli storici più attendibili, come ad esempio il greco Polibio; e probabilmente Regolo è morto in prigionia, prima dello scambio di prigionieri avvenuto nel 247 a.C.*
+dagli alleati siracusani, i Romani non riescono a espugnare Lilibeo, rifornita per mare da 50 navi cartaginesi che forzano il blocco. Si giunge così al 249 a.C.: il nuovo console, Publio Claudio Pulcro, tenta di prevenire l'arrivo di ulteriori rinforzi agli assediati e attacca immediatamente la squadra cartaginese, ancorata a Trapani.
 
-IL NUOVO FARO DELLA GUERRA IN SICILIA
-I NUOVI DISASTRI NAVALI
+Ma l'abilità del comandante cartaginese porta alla sconfitta della flotta romana e alla perdita di quasi 100 navi. Il console, caso rarissimo nella storia romana, è processato per trascuratezza e pesantemente multato. Il suo collega, Giunio Pullo, non ha maggiore fortuna. Nel corso d'una scaramuccia contro la flotta cartaginese, le sue navi sono sorprese dalla tempesta presso capo Pachino e completamente distrutte contro gli scogli della costa. In questa fase della guerra, l'unica vittoria romana è la presa della città di Erice, che permette di isolare completamente da terra Trapani e Lilibeo.
 
-La guerra continua in Sicilia, dove i Romani riescono a prendere Palermo, mentre i Cartaginesi conquistano e distruggono Agrigento. Una sfortunata spedizione navale romana verso la Tripolitania (253 a.C.) finisce nelle secche e nuovamente in un naufragio, con la perdita di altre 150 navi e dei loro equipaggi. Nel 250 a.C. i Cartaginesi non riescono a riprendere Palermo; pur usando numerosi elefanti come forza d'urto, mantengono il controllo soltanto delle fortezze marittime di Lilibeo e Trapani. I Romani concentrano gli sforzi contro Lilibeo, che è stretta in una morsa per terra, con due legioni, e per mare, con 200 navi: la città è munitissima e circondata da un ampio fossato. Nonostante l'impiego di macchine da assedio, fornite dai Romani, i Cartaginesi vengono sconfitti dopo...
+VERSO LA PACE
+
+Roma è esausta. Manca il denaro per armare un'altra flotta. Secondo il censimento del 247 la popolazione atta alle armi è calata in vent'anni di circa 50.000 unità (quasi il 17%).
+
+A Cartagine, proprio quando potrebbe riprendere il controllo del mare nella lotta contro Roma e probabilmente concludere una pace accettabile, prevale il partito che persegue l'espansione sul territorio africano:
+
+Ora Cartagine disarma praticamente la flotta e concentra tutti i suoi sforzi nelle campagne terrestri che portano, sotto la guida di Annone il Grande, alla conquista di ampi territori sul suolo africano.
+
+Il comando delle operazioni in Sicilia è affidato nel 247 a.C. ad Amilca-

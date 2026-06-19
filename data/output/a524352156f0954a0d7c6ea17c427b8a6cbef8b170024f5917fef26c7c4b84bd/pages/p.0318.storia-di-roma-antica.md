@@ -1,15 +1,43 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-## Operator notes
+NERONE E IL CONSENSO
+319
 
-A pagine 395-402 del pdf trovi una Cronologia con Anno - Eventi.
-Utilissima per il time index.
+L'INCENDIO DI ROMA
 
-Numerazione: pagina del LIBRO in alto — a sinistra sulle pagine pari, a destra sulle dispari; offset costante PDF−3 rispetto al numero stampato nel corpo. Non confondere con date nel testo (753 a.C., 202 a.C., 66 d.C., ecc.).
+Seguì un disastro, non si sa se dovuto al caso, oppure alla perfidia di Nerone, poiché gli storici interpretarono la cosa nell'un modo e nell'altro. È certo però che l'incendio per la sua violenza ebbe effetti più terribili e spaventosi di tutti gli incendi precedenti.
 
-Intestazione di corridoio: sulle dispari titolo del capitolo/sezione in maiuscoletto a sinistra; sulle pari «STORIA DI ROMA ANTICA» a destra. Le pagine di apertura sezione possono avere solo titolo decorativo centrato e nessun numero.
+Cominciò in quella parte del circo, che è contigua ai colli del Palatino e del Celio; dove il fuoco, appena scoppiato nelle botteghe in cui si trovavano merci infiammabili, subito divampò violento alimentato dal vento e avvolse il circo per tutta la sua lunghezza, poiché non vi erano palazzi con recinti o templi circondati da mura o qualunque altra difesa che potesse arrestare la marcia delle fiamme. Spinto dalla violenza l'incendio si diffuse dapprima nei luoghi piani, poi salì ai colli e di nuovo invase i luoghi bassi e con la sua rapidità prevenne ogni possibilità di rimedio, poiché il fuoco si appiccava con estrema facilità alle vie strette e tortuose e agli immensi agglomerati di case della vecchia Roma.
 
-Box monografici: riquadro con bordo nero; titolo in maiuscoletto (talvolta numerato romano o arabo); testo interno tutto in corsivo — trattare come inserto tematico separato dal flusso narrativo, non come corpo del capitolo.
+A tutto ciò s'aggiungevano le grida lamentose delle donne atterrite e l'impaccio dei vecchi malferni e dei bambini e coloro che cercavano di salvare sé e quelli che cercavano invece di aiutare altri, trascinando i malati, fermandosi ad aspettarli; chi indugiava; chi si precipitava; tutto era causa d'ingombro e d'impedimento. Avveniva spesso che qualcuno, mentre si sorvegliava le spalle, si trovasse circondato dalle fiamme ai fianchi e di fronte; altri, poi, che erano fuggiti nelle vicinanze le trovavano già invase dall'incendio: quelle località che avevano credute immuni dal fuoco per la loro lontananza vedevano, invece, avvolte nella medesima rovina.
 
-Immagini: incisioni/xilografie in bianco e nero, spesso in cornice; talvolta pagina intera senza testo. Didascalie in corsivo, più piccole: sotto l’immagine oppure nel margine laterale (nota a lato), a sinistra o a destra del riquadro — non fondere con il testo corrente. Possibili coppie pianta+ricostruzione nello stesso box, con didascalia esterna.
+Alla fine, non sapendo più da quali luoghi fuggire e in quali trovare riparo, si riversarono nelle vie e si buttarono prostrati nei campi; alcuni, per aver perduto possibilità finanziaria anche per la vita di tutti i giorni; altri, invece, per la disperazione di non aver potuto salvare i loro cari, si abbandonarono inerti alla morte, pur avendo una possibilità di salvarsi.
 
-Sottotitoli di sezione: centrati in maiuscoletto nel flusso del testo. Nel corpo, corsivo per latino, toponimi e rimandi «(vedi box …)». Non risultano note a piè numerate nel campione.
+Nessuno aveva il coraggio di tentare qualche cosa contro l'incendio; di fronte alle frequenti minacce di coloro che ne impedivano l'estinzione e alla vista di quelli che scagliavano torce ardenti e che dichiaravano a gran voce che avevano ricevuto un ordine, sia che facessero ciò per rapinare in piena libertà, sia che in realtà eseguissero un comando.
+
+Ovunque nella città si sentono i carpentieri, gli scalpellini, muratori al lavoro. Anche la via Sacra è ricostruita. Il suo tracciato è leggermente modificato e la via che era la via più antica di Roma diventa un comodo e ampio viale, fiancheggiato da portici e alberi. Si ricostruiscono anche gli edifici ai suoi lati come la casa delle Vestali, ora ampliata e ingrandita. Il suolo di Roma, una volta livellate le rovine, si innalza ancora un po' sigillando sotto qualche metro di terra i resti degli edifici preneroniani.
+
+Nasce una nuova città. Per la prima volta Roma è dotata di un piano urbanistico coerente. Roma deve essere bella, più comoda, più sicura. In questo modo Nerone allontana l'accusa di voler trasferire la capitale altrove, in Oriente, magari in Egitto.
+
+La nuova città si organizza intorno alla casa del Sole come un immenso giardino, un enorme porticato. Nerone-Elio potrà vivere la "vita inimitabile" dei sovrani ellenistici, dei Tolomei di Alessandria. Si diffonde la voce che il principe voglia cambiare il nome alla capitale, dandole il suo; Egli si considera il nuovo fondatore di Roma, un altro Romolo. La sua città non potrà allora chiamarsi che Neronia.
+
+***
+
+NERONE E LA FINE DEL CONSENSO 319
+
+L'INCENDIO DI ROMA
+
+«Seguì un disastro, non si sa se dovuto al caso, oppure alla perfidia di Nerone, poiché gli storici interpretarono la cosa nell'un modo e nell'altro. È certo però che questo incendio per la sua violenza ebbe effetti terribili e spaventosi di tutti gli incendi precedenti.
+
+Cominciò in quella parte del circo, che è contigua ai colli del Palatino e del Celio; dove il fuoco, appena scoppiato nelle botteghe in cui si trovavano merci infiammabili, subito divampò alimentato dal vento e avvolse il circo per tutta la sua lunghezza, poiché non vi erano palazzi con recinti o templi circondati da mura o qualunque altra difesa che potesse arrestare le fiamme. Spinto dalla violenza l'incendio diffuse dapprima nei luoghi piani, poi salì ai colli e di nuovo invase devastando i luoghi bassi e con la sua rapidità prevenne ogni possibilità di rimedio, poiché il fuoco si appiccava con estrema facilità alle vie strette e agli immensi agglomerati di case della vecchia Roma.
+
+A tutto ciò s'aggiungevano le grida lamentose delle donne atterrite e l'impaccio dei vecchi malferni e dei bambini e coloro che cercavano di salvare sé e quelli che cercavano invece di aiutare altri, trascinando i malati, o fermandosi ad aspettarli; chi indugiava, chi si precipitava, tutto era causa d'ingombro e d'impedimento. Avveniva spesso che qualcuno, mentre si sorvegliava le spalle, si trovasse circondato dalle fiamme ai fianchi e di fronte; altri, poi, che erano fuggiti nelle vicinanze le trovavano già invase dall'incendio: quelle località che avevano credute immuni dal fuoco per la loro lontananza vedevano, invece, avvolte nella medesima rovina.
+
+Alla fine, non sapendo più da quali luoghi fuggire e in quali trovare riparo, si riversarono nelle vie e si buttarono prostrati nei campi; alcuni, per aver perduto ogni possibilità finanziaria anche per la vita di tutti i giorni; altri, invece, per la disperazione di non aver potuto salvare i loro cari, si abbandonarono inerti alla morte, pur avendo una possibilità di salvarsi.
+
+Nessuno aveva il coraggio di tentare qualche cosa contro l'incendio, di fronte alle frequenti minacce di coloro che ne impedivano l'estinzione e alla vista di quelli che scagliavano torce ardenti e che dichiaravano a gran voce che avevano ricevuto un ordine, sia che facessero ciò per rapinare in piena libertà, sia che in realtà eseguissero un comando».
+
+Ovunque nella città si sentono i carpentieri, gli scalpellini, i muratori al lavoro. Anche la via Sacra è ricostruita. Il suo tracciato è leggermente modificato e la via che era la via più antica di Roma diventa un comodo e ampio viale, fiancheggiato da portici e alberi. Si ricostruiscono anche gli edifici ai suoi lati come la casa delle Vestali, ora ampliata e ingrandita. Il suolo di Roma, una volta livellate le rovine, si innalza, sigillando sotto qualche metro di terra i resti degli edifici preneroniani.
+
+Nasce una nuova città. Per la prima volta Roma è dotata di un piano urbanistico coerente. Roma deve essere bella, più comoda, più sicura. In questo modo Nerone allontana l'accusa di voler trasferire la capitale altrove, in Oriente, magari in Egitto.
+
+La nuova città si organizza intorno alla casa del Sole, come un immenso giardino, un enorme porticato. Nerone-Elio potrà vivere la "vita inimitabile" dei sovrani ellenistici, dei Tolomei di Alessandria. Si diffonde la voce che il principe voglia cambiare il nome alla capitale, dandole il suo. Egli si considera il nuovo fondatore di Roma, un altro Romolo. La sua città non potrà allora chiamarsi Neronia.

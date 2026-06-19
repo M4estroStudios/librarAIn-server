@@ -1,17 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UN FIUME, UN GUADO E UN CROCEVIA
-STORIA, TRADIZIONE E LEGGENDE
+22
 
-Alla metà dell'VIII secolo a.C. un gruppo di agricoltori e allevatori fonda una città sulla sponda sinistra del Tevere: Roma.
+STORIA DI ROMA ANTICA
 
-In Occidente la scrittura alfabetica è ancora uno strumento nuovissimo e dovranno passare secoli perché sia utilizzata per annotare gli avvenimenti storici. Per questo gli antichi Romani affidano il racconto della nascita della loro città alla memoria. Di generazione in generazione alcuni particolari si perdono; altri acquistano un'importanza che non avevano. I cambiamenti d'alleanze o di linea politica e il desiderio di inventarsi antenati prestigiosi fanno il resto: specialmente negli elogi funebri e nei canti conviviali i dati concreti sfumano nella leggenda; nel mito. Grazie al grande lavoro di raccolta di notizie e di rielaborazione dei dati della tradizione svolto da Varrone (116 a.C.? - 27 a.C.) la leggenda delle origini di Roma assume la sua veste pressoché definitiva sotto Augusto (27 a.C. - 14 d.C.) a opera del poeta Virgilio (70 a.C. - 19 a.C.) e dello storico Livio (59 a.C. - 17 d.C.).
+[Immagine: incisione di G. Vasi raffigurante la personificazione del fiume, la lupa capitolina con i gemelli Romolo e Remo e monumenti dell'antica Roma]
 
-È indubbio che si è trattato di una operazione politico-culturale; ma è necessario ripetere che gli antichi Romani su molti particolari della loro storia ne sapevano più di noi. Se ci sono vari episodi molto favolosi e poco veridici nel complesso delle antiche leggende, le scoperte archeologiche degli ultimi anni in più casi hanno confermato il nocciolo di informazione veridica che è alla base del racconto tradizionale.
+L'immagine raffigura la celebre personificazione del fiume insieme alla lupa capitolina e ai due gemelli Romolo e Remo: sullo sfondo, inoltre, si distinguono alcuni celebri monumenti dell'antica Roma, giustapposti senza tenere conto della realtà topografica; in un'incisione di G. Vasi.
 
-LA FONDAZIONE DI ROMA: LA LEGGENDA
+**LA LEGGENDA DI ENEA**
 
-Nella versione definitiva della leggenda (riportata da Livio nelle sue *Storie*) le origini di Roma risalgono alla guerra di Troia. La sconfitta e il saccheggio di questa città causano l'esilio e il vagabondaggio dei superstiti. Tra questi spiccano Antenore ed Enea. Antenore con un gruppo dei suoi si stabilisce nel Veneto, fondando la città di Padova; Enea invece prima sbarca in Macedonia, poi in Sicilia, infine a Laurento nel Lazio.
+La discendenza dei Romani dai Troiani è un elemento d'invenzione. Si è avanzata spesso l'ipotesi che la leggenda possa tramandare lontani echi della presenza dei mercanti e dei viaggiatori micenei in Italia tra il XVI e il XV secolo a.C., ma quest'ipotesi suggestiva è priva di basi concrete.
 
-I Troiani approdati nel Lazio mancano di tutto e si danno al saccheggio: ne nasce una guerra con gli aborigeni (abitanti originali della regione), condotti dal re Latino.
+È indubbio che la leggenda di Enea è presente nella cultura latina da una data antica, ma è posteriore alla data di nascita di Roma (753 a.C.).
 
-Ci sono due tradizioni diverse: la prima afferma che Latino è stato sconfitto in battaglia, l'altra che chiede spontaneamente e ottiene la pace: il matrimonio tra Enea e Lavinia, figlia di Latino, stringe ancor più il vincolo tra i due popoli. Asca-
+Una prima versione del mito forse già correva a Lavinio (Pratica di Mare) nel VI secolo a.C. Comunque, nel I secolo a.C., poca distanza dalle mura di questa città, esisteva un santuario dedicato all'eroe troiano, costruito trasformando parzialmente un tumulo del VII secolo a.C.
+
+Il santuario ha funzionato da centro di diffusione dei racconti leggendari sulla presenza di Enea nel Lazio; anche perché il mito troiano fondava e rinsaldava il ricordo della parentela e della vicinanza culturale tra i popoli latini che abitavano a sud del Tevere: è lo stesso meccanismo in base al quale si dice che la democrazia italiana si basa sui valori della Resistenza anche se i vari partiti sono continuamente in lotta per il potere.
+
+Il mito di Enea servì oltre che a scopi di propaganda nella politica interna dei popoli latini; anche nelle relazioni di Roma col mondo greco.
+
+Per i Greci la leggenda troiana era una narrazione di fatti realmente accaduti; questa storia era il legame che univa concretamente le varie città-stato, al di là delle discordie e delle lotte. In quanto discendenti di Enea, i Romani erano in qualche modo dei cugini; legati da sempre alle vicende e alla storia dei Greci.
+
+Questo particolare aspetto della leggenda di Enea, elaborato da alcuni autori greci nel V secolo a.C., ebbe uno sviluppo del tutto autonomo dalla elaborazione laziale centrata su Lavinium (l'odierna Pratica di Mare).

@@ -1,26 +1,34 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-324
+NERONE E LA FINE DEL CONSENSO 325
 
-STORIA DI ROMA ANTICA
+*Le Terme di Nerone nella topografia odierna (Studio Groma).*
 
-l'imperatore tutto viene stravolto: La cerimonia pubblica più importante del mondo romano diventa un grandioso spettacolo teatrale. L'imperatore celebra il suo trionfo. In marzo entra finalmente a Roma: Il percorso del trionfo è modificato; Dalla porta Capena attraverso il Circo Massimo; il corteo percorre la Via Sacra per arrivare al Palatino; al tempio di Apollo: A Giove capitolino Nerone ha preferito la divinità degli artisti. Al posto degli abiti tradizionali indossa un mantello costellato; simbolo della volta celeste. Nerone è il signore della natura e degli uomini.
-
-***
-
-LA GIORNATA D'ORO DI TIRIDATE
-
-A partire dal 54 d.C., in Armenia i Romani sono coinvolti in una lunga guerra, durata nove anni, contro i Parti. Il generale Corbulone è il principale artefice dei successi romani. Ma la guerra è dura e difficile. Dopo numerosi conflitti, i Romani vengono a patti con i Parti. Il risultato dell'accordo è Tiridate, sovrano partico; riconosciuto come re d'Armenia. La soluzione non piace molto al principe, che sperava in una definitiva soluzione del conflitto. Ma in fondo i Parti ammettono che la sovranità del re d'Armenia non dipende da loro; ma è un'emanazione del potere romano. Nerone è quindi riconosciuto come sovrano supremo del mondo abitato. Da questo momento i Parti diventeranno fedelissimi alleati dei Romani, saldi anche durante la rivolta della Giudea e durante la crisi del 68-69 d.C.
-
-Il viaggio di Tiridate a Roma segna per Nerone l'apogeo del suo regno: La spedizione dura tre anni, anche perché il sovrano evita il viaggio per mare. Il mazdaismo, la religione monoteista diffusa tra i Parti, vieta di navigare più di 24 ore perché l'acqua, elemento sacro, non deve essere contaminata né da escrementi, né da sputi. L'eccezionalità del viaggio e la magnificenza dello sterminato corteo che accompagna Tiridate impressionano i Romani. Migliaia di persone seguono i dignitari partici. Tutte le città italiche al loro passaggio sono adornate. Nerone, nella sua sconfinata magnificenza, si assume tutte le spese del viaggio, che gravano pesantemente sulle province.
-
-In una Roma vestita a festa; in una cornice fastosa di giochi e banchetti, si procede alla spettacolare incoronazione di Tiridate secondo la labile regia di Nerone.
-
-Il sovrano giura fedeltà. Più tardi, nel teatro di Pompeo scintillante di oro e velluti (tanto da ricordare il giorno come «la giornata d'oro»), Tiridate ripete il suo giuramento. Nerone può chiudere il tempio di Giano; convinto che ormai non ci saranno più guerre per i Romani.
+[Immagine tecnica/planimetria]
 
 ***
 
-L'ULTIMO ATTO
+LE TERME NERONIANE
 
-Certi ambienti aristocratici dopo avere aderito al neronismo ora lo rifiutano; Il lusso della domus Aurea, le esibizioni artistiche del principe, il fasto della visita di Tiridate, il viaggio in Grecia provocano sconcerto e opposizione. La stessa plebe è stata segnata dalla penuria alimentare e dall'inflazione. Le navi con il grano arrivano irregolarmente in Italia. Molte hanno preso la strada della Grecia e molte altre quella della Palestina.
+A Nerone si deve attribuire la costruzione delle prime "grandi terme". Si tratta cioè del primo grande complesso che si organizza intorno a un asse simmetrico, secondo un modello che diverrà canonico. Le terme occupano lo spazio compreso tra piazza della Rotonda e corso Rinascimento (da est a ovest) e tra via delle Cornacchie e via della Dogana Vecchia (da nord a sud) per un'ampiezza di 190 per 120 metri.
 
-Un fatto nuovo è la stanchezza e l'opposizione del mondo provinciale. Da tutto si comincia a respirare aria di crisi: Sono i provinciali che hanno dovuto pagare buona parte delle stravaganze di Nerone. Anche i notabili locali delle province occidentali, un tempo legati al principe, fomentano l'insurrezione. I soldati sono stanchi. Mentre loro combattono il principe si diverte in Grecia e in Italia. I pretoriani non hanno perduto quel privilegio.
+Le terme non sono soltanto il luogo dove i cittadini possono lavarsi (solo le case dei ricchi sono dotate di bagni), ma sono anche un punto di ritrovo, dove amici e conoscenti si incontrano. La durata del bagno, dal momento che ci si sposta progressivamente in stanze e piscine con temperatura diversa, è piuttosto lunga. È facile trovare il tempo per parlare e per intrecciare relazioni di tutti i generi. Questo complesso termale, costruito lo stesso anno (62 d.C.) della palestra, fa parte del piano di Nerone di convertire i Romani ai costumi ellenici, creando loro nuove abitudini ed esigenze.
+
+nato le repressioni degli anni precedenti. L'Impero è in rivolta. La Gallia Lusitanense insorge sotto la guida di Gaio Giulio Vindice; seguito poi da Servio Sulpicio Galba; legato della Spagna Tarraconense e da Marco Ottone, legato della Lusitania e dal questore della Betica, Aulo Cecina Alieno. L'imperatore si sente completamente perduto quando fallisce il suo tentativo di fare assassinare il vecchio Galba. Il regime di Nerone si sgretola. Il Senato lo dichiara nemico pubblico e riconosce in Galba il nuovo principe. Nerone fugge da Roma e si rifugia in una villa fuori città. Anche gli ultimi fedeli lo abbandonano svelando ai pretoriani dove è nascosto. Mentre un distaccamento di pretoriani viene a ucciderlo l'imperatore istrione, a trent'anni, si dà la morte (11 giugno del 68 d.C.). Con lui si chiude la lunga dinastia dei Giulio-Claudi.
+
+***
+
+NERONE E LA FINE DEL CONSENSO 325
+
+*Le Terme di Nerone nella topografia odierna (Studio Groma).*
+
+[Immagine tecnica/planimetria]
+
+***
+
+LE TERME NERONIANE
+
+A Nerone si deve attribuire la costruzione delle prime "grandi terme". Si tratta cioè del primo grande complesso che si organizza intorno a un asse simmetrico, secondo un modello che diverrà canonico. Le terme occupano lo spazio compreso tra piazza della Rotonda e corso Rinascimento (da est a ovest) e tra via delle Cornacchie e via della Dogana Vecchia (da nord a sud) per un'ampiezza di 190 per 120 metri.
+
+Le terme non sono soltanto il luogo dove i cittadini possono lavarsi (solo le case dei ricchi sono dotate di bagni), ma sono anche un punto di ritrovo, dove amici e conoscenti si incontrano. La durata del bagno, dal momento che ci si sposta progressivamente in stanze e piscine con temperatura diversa, è piuttosto lunga. È facile trovare il tempo per parlare e intrecciare relazioni di tutti i generi. Questo complesso termale, costruito lo stesso anno (62 d.C.) della palestra, fa parte del piano di Nerone di convertire i Romani ai costumi ellenici, creando loro nuove abitudini ed esigenze.
+
+nato le repressioni degli anni precedenti. L'Impero è in rivolta. La Gallia Lusitanense insorge sotto la guida di Gaio Giulio Vindice, seguito poi da Servio Sulpicio Galba, legato della Spagna Tarraconense e da Marco Ottone, legato della Lusitania e dal questore della Betica, Aulo Cecina Alieno. L'imperatore si sente completamente perduto quando fallisce il suo tentativo di fare assassinare il vecchio Galba. Il regime di Nerone si sgretola. Il Senato lo dichiara nemico pubblico e riconosce in Galba il nuovo principe. Nerone fugge da Roma e si rifugia in una villa fuori città. Anche gli ultimi fedeli lo abbandonano svelando ai pretoriani dove è nascosto. Mentre un distaccamento di pretoriani viene a ucciderlo l'imperatore istrione, a trent'anni, si dà la morte (11 giugno del 68 d.C.). Con lui si chiude la dinastia dei Giulio-Claudi.

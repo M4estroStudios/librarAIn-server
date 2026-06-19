@@ -1,22 +1,28 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-48                                                                    STORIA DI ROMA ANTICA
+IRE LATINO-SABINI 49
 
-*IL TIGILLUM SORORIUM: RITO DI PASSAGGIO E PORTA TRIONFALE:*
+Tellene e Ficana; situate a sud di Roma si insediano sull'Aventino (che a lungo rimarrà fuori dalle mura).
 
-*Il Tigillum Sororium (travicella delle sorelle) era un passaggio obbligato sotto una trave di legno e si trovava presso le Carinae. Qui c'era anche l'incrocio di importanti strade: il vicus Orbius, che portava verso l'Esquilino, il vicus Cuprius, che scendeva nella successiva valle del Colosseo; così come il clivo Acilio e il clivo di Venere Felice. Il Tigillum si configurava come una porta del nucleo abitato più antico, tardi sostituito dalla porta Capena, edificata insieme alle mura serviane. I due pilastri su cui poggiava la travicella erano i due altari di Giano Curiazio e di Giunone Sororia: Giano Curiazio era legato alle curie; quindi presiedeva alle cerimonie che consentono l'accesso dei giovani nelle curie. Giunone Sororia presiedeva alle cerimonie di iniziazione femminili, che coincidevano con l'età fertile delle ragazze. Le due divinità tutelavano il momento di passaggio dall'infanzia all'età adulta: questi due riti di passaggio erano celebrati presso il Tigillum Sororium; perché quest'ultimo era una porta; un passaggio tra la città e l'esterno: e l'esterno in genere è sempre nemico; ostile. Passare sotto questa porta per rientrare nella città, come è imposto all'Orazio assassino, purifica dal sangue e dagli orrori della guerra combattuta all'esterno e questo rito riammette nel corpo civico. Ma in concreto il Tigillum diventa anche la più antica porta trionfale della città, quella da cui rientrano i condottieri vincitori.*
+L'archeologia confermerebbe quanto tramanda la tradizione sulla distruzione quasi totale di Politorium voluta da Anco Marcio: forse a Politorium, centro abitato dai Latini, corrispondono i resti del modesto abitato scoperto a Castel di Decima: infatti questo villaggio, dopo un periodo di relativa ricchezza, attestata dalle necropoli del VII secolo a.C., decade rapidamente per essere abbandonato intorno al 600 a.C.
 
-alcuna possibilità di riscatto a Mettio Fufezio; che è giustiziato in modo atroce: il re romano fa venire due carri e lega Mettio per le braccia e per i piedi a ciascuno di essi opposti l'uno all'altro. Poi incita i cavalli: mentre Alba è distrutta gli Albani sono deportati a Roma.
+LA CURIA OSTILIA
 
-CENTRATO IN MAIUSCOLETTO
+L'edificazione della Curia Ostilia, la più antica sede del Senato, è riferita a Tullo Ostilio. Si trattava di un'area quadrata, dotata di gradinate, orientata secondo un asse nord-sud. La sua facciata sud coincideva con la parete settentrionale del Comizio arcaico. Nell'utilizzazione del Comizio come orologio solare, la Curia Ostilia costituiva il punto di osservazione delle varie posizioni del sole rispetto all'area quadrata del Comizio, traguardando così l'alba, il mezzogiorno, il tramonto.
 
-LA CRESCITA DELLA CITTÀ
+Anche il Gianicolo è unito a Roma per evitare che qualunque nemico se ne appropri.
 
-Sotto i successori di Romolo la città si ingrandisce sempre più: anche il Celio è incluso nel pomerio e Tullo Ostilio fa costruire la sua abitazione sulla Velia, mentre Romolo aveva abitato sul Germalo e Numa Pompilio nel Foro, in un luogo corrispondente alla Regia storica:
+Così Roma non soltanto si arricchisce del bottino di guerra, ma vede incrementare la sua popolazione e aumentare lo spazio urbano abitato.
 
-Ancora nuovi scontri; questa volta con i Sabini, costellano gli ultimi anni di Tullo Ostilio: Ma gli dèi sono stanchi, dopo Numa Pompilio i Romani sembrano essersi dimenticati di loro.
+LA VIA DEI SALE
 
-Una pioggia di pietre sul monte Albano accompagna la richiesta di sacrificare agli dèi della patria. Come spesso accade, non risulta sufficiente provvedere subito ai riti prescritti e l'intera città è colpita da una violenta pestilenza. Tullo Ostilio cerca di placare gli dèi, ricorrendo addirittura a scritti lasciati da Numa: Giove, adirato da questi pentimenti tardivi, lo punisce come era solito fare; inviandogli un fulmine:
+Anco Marcio, dopo aver accolto nella città numerosi Latini, si preoccupa di provvedere alla difesa di quest'insediamento molto ingrandito.
 
-Dopo trentadue anni Roma si trova di nuovo senza re. Il popolo sceglie come successore un nipote di Numa Pompilio; Anco Marcio: Questi ha un carattere mite; attento alle esigenze dei culti, ma sull'esempio dei suoi predecessori dichiara guerra ai Latini, perché questi ultimi avrebbero commesso gravi colpe che dovevano essere punite. Comincia così una lunga guerra che è risolta dallo scontro finale e vittorioso a Medullia.
+Le Carinae, lampio terrapieno che proteggeva la città (ancora limitata al Palatino e alla Velia), avevano costituito le prime fortificazioni di Roma. Il re ora fortifica anche il Gianicolo, proprio perché è completamente esposto agli attacchi nemici, così isolato sulla riva destra del Tevere. È costruito anche il ponte Sublicio in legno, il primo ponte di Roma che sostituisce il guado o il traghetto sul Tevere.
 
-Dopo gli Albani stanziati da Tullo Ostilio sul Celio; le popolazioni vinte da Anco Marcio sono stanziate nella valle Murcia, tra Palatino e Aventino; dove più tardi sarà costruito il Circo Massimo; mentre le popolazioni vinte di più...
+DAL GUADO AL PONTE
+
+Nella città che si sta consolidando il guado sul Tevere è sostituito da un ponte sopra i quali è gettato il ponte.
+
+Ormai Roma controlla le due rive del fiume, fino al mare dove sono situate le saline e la prima colonia, Ostia. Il ponte di Anco Marcio, detto Sublicio (le *sublicae* sono i pali sopra i quali è gettato il ponte), insieme allo scalo sul Tevere accentua il carattere di emporio del foro Boario: è possibile che da questo momento venga creato il mercato dei buoi da cui l'intera zona prenderà il nome. La posizione del ponte Sublicio, nelle sue successive ricostruzioni in pietra, è di facile localizzazione: la testa della riva sinistra è situata poco più a sud dello sbocco della Cloaca Massima, accanto al tempio rotondo vicino al Tevere.
+
+Tutte queste operazioni, insieme alla fondazione di Ostia, fanno parte d'un piano d'espansione flessibile, ma ostinato.

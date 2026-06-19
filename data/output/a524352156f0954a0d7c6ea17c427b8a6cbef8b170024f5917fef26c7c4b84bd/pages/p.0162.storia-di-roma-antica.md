@@ -1,57 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-162                                           STORIA DI ROMA ANTICA
+I ROMANI E LA PENISOLA 163
 
-Sulle altre costruzioni e sui monumenti eretti a Roma in questo periodo so-
-no note soltanto informazioni ricavate dalle narrazioni degli scrittori antichi
-dalle riproduzioni di particolari edifici o statue sulle monete d'epoca più
-tarda. È certo soltanto che nel IV secolo la lotta politica tra i gruppi dirigenti
-della *nobilitas* romana si svolge anche attraverso contrapposti piani di svi-
-luppo edilizio e forme più o meno sfarzose d'autocelebrazione. Nel 306 a.C.
-davanti al tempio dei Castori (*vedi capitolo La città-stato: continuità e rin-
-novamento*) è eretta la statua equestre di Quinto Marcio Tremulo; onorato per
-le vittorie riportate sugli Ernici, questo monumento è riprodotto probabil-
-mente su una moneta di Lucio Marcio Filippo (coniata nel 1/3-112 a.C.), che
-intendeva esaltare il ricordo dell'unico trionfatore della famiglia.
+![Immagine di rovine]
 
-Sul Campidoglio nel 305 è innalzata una statua colossale di Ercole. Sempre sul
-Campidoglio è realizzata nel 293 una statua di Giove (ugualmente colossale; tan-
-to che era visibile dal monte Cavo), con la fusione delle armature tolte ai San-
-niti. Gaio Spurio Carvilio dedica questa statua colossale a Giove, ponendo ad-
-jacente una propria statua di dimensioni minori. In questo periodo è ricorrente
-l'uso di «votare» templi alle divinità, romane e d'importazione: è un modo clas-
-sico per esaltare il ruolo degli individui e delle *gentes*, che lottano per il pri-
-mato politico. Giugno Bubulco «vota» e costruisce il tempio della *Salus*, famo-
-so nell'antichità per le pitture di Gaio Fabio (*vedi box Nasce a Roma la pittura; 
-arte non disdegnata dai nobili*). Per celebrare l'ideologia della vittoria, sempre 
-più dominante a Roma in seguito al successo delle campagne militari contro i 
-popoli limitrofi, sul Palatino sorgono tre templi:
+*Rovine dell'Acquedotto Claudio verso i Castelli Romani in un'incisione ottocentesca.*
 
-Il più antico è quello a Giove Vincitore: votato in occasione della battaglia di
-Sentino (295) dal dittatore Quinto Fabio Massimo Rulliano, è poi da lui co-
-struito con le spoglie raccolte nello scontro contro i Sanniti.
+Il richiamo alla Roma dell'età monarchica spiega anche l'erezione del tempio alla Fors Fortuna, appaltato nel 293 con la preda di guerra da Spurio Carvilio proprio accanto a quello dedicato alla stessa divinità da Servio Tullio (vedi capitolo *Il re riformatore, il re tiranno e la rivoluzione*).
 
-Un tempio alla Vittoria è dedicato nel 294, presso porta Romanula sul Palati-
-no per iniziativa dell'edile Lucio Postumio Megello, che destina alla costru-
-zione il ricavato dell'esazione di multe. Questo tempio sorge sul luogo di un'a-
-rea antichissima riferita al mitico Evandro, re degli Arcadi (*vedi capitolo Un 
-fiume; un guado e un crocevia*) e gli si attribuiscono alcune notevoli terrecot-
-te della decorazione, rinvenute sul retro del più tardo tempio della *Magna Ma-
-ter* (*vedi capitolo Romani e cartaginesi: la conquista del Mediterraneo*). Infi-
-ne il console Marco Attilio Regolo fa erigere il tempio di Giove Statore pres-
-so la porta Mugonia, dove, secondo la tradizione, Romolo avrebbe fermato i 
-Sabini.
+Ricchissima è la serie delle divinità astratte che iniziano a diffondersi in questo periodo: si tratta per lo più di personificazioni di virtù pubbliche e private. Si è già visto il significato della dedica di un tempio alla Concordia, eretto in ricordo della pacificazione tra patrizi e plebei (vedi capitolo *I luoghi e le istituzioni*). Ora si dedicano templi alla Salus, alla Spes, alla Libertas, all'Honos, alla Mens, alla Virtus e alla Fides. Quest'ultima divinità è particolarmente importante per la politica romana nei confronti degli alleati, basata sì su norme scritte, ma fondata soprattutto sulla reciproca fiducia tra i contraenti.
 
-Sempre alla più antica leggenda di Roma si riferisce la dedica del tempio di 
-Quirino (cioè di Romolo divinizzato), voluto dal dittatore Lucio Papirio 
-Cursore (325) e realizzato da suo figlio Tito nel 293 presso la porta Quirinale.
-Lo stesso Tito Papirio Cursore fa costruire nel 272 sull'Aventino un tempio a 
-Conso (il dio del consiglio, che forniva a Romolo l'ispirazione per le scelte po-
-litiche) votato fin dal 293 e nella cella del tempio una pittura rappresentava 
-Papirio in veste trionfale.
+**CAMBIA LA MODA, CAMBIA LA BARBA**
 
-In questo periodo, oltre al richiamo all'antichissima leggenda romana (Evan-
-dro, Romolo), si manifesta anche un'esplicita emulazione di Camillo. Mar-
-co Fulvio Flacco nel 264 trionfa sugli Etruschi di Volsinii e pone dediche sa-
-cre nell'area dei templi di *Mater Matuta* (ricostruito da Camillo per ricorda-
-re la grande Roma dei Tarquini) e di Giunone Regina (fatto edificare dopo la 
-presa di Veio; *vedi capitolo Ascesa, caduta e resurrezione di Roma*).
+I Romani dei tempi più antichi portano regolarmente la barba, come si può vedere nei pochi ritratti conservati, il più noto dei quali è il cosiddetto Bruto Capitolino. A partire dalla prima metà del I secolo a.C. a Roma si impone la moda di rasarsi. I primi barbieri (*tonstrini*) sarebbero giunti dalla Magna Grecia intorno al 300 a.C. La nuova moda deriverebbe dunque dall'imitazione delle abitudini del mondo greco-ellenistico: così tenere la barba lunga diviene il segno d'un voluto attaccamento alle tradizioni romane antiche. Si spiega così anche il cognome aggiunto (un vero e proprio soprannome) portato da Lucio Cornelio Scipione Barbato; capostipite del ramo della gens Cornelia cui si riferisce il famoso sepolcro degli Scipioni, scavato nei pressi della via Appia.

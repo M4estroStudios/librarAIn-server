@@ -1,59 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA PRIMA DI ROMA                                                                    15
+16
 
-erano la batteria di cucina e il vasellame usati quotidianamente. Altri oggetti
-di ceramica sembrerebbero per reti da pesca, forse da mettere in relazione
-col fiume, su cui si affacciava il piccolo insediamento; tra le attività domesti-
-che c'era anche la filatura e la tessitura, come mostrano le fuseruole e i
-pesi da telaio scoperti.
+STORIA DI ROMA ANTICA
 
-Tutte queste attività presuppongono l'esistenza d'un riparo, d'una capan-
-na, che non è stata trovata.
+[Immagine: Ricostruzione ideale dei monumenti del Foro Romano a ridosso del Campidoglio, tratta dal volume di Luigi Canina *L'architettura romana*, Roma 1830-1840.]
 
-Ad appena qualche centinaio di metri da Piscina di Torre Spaccata sono stati
-individuati altri tre insediamenti che approssimativamente risalgono allo stes-
-so periodo. Non sarà mai possibile stabilire se sia stato lo stesso gruppo di
-persone a coltivare, in un arco di tempo non lunghissimo, le terre della zona.
-La cosa non è impossibile; poiché le tecniche d'allevamento del bestiame e
-di coltivazione dei campi erano molto rudimentali; così provocavano il rapido
-impoverimento dei suoli e imponevano la continua messa a coltura di nuovi
-terreni, con la necessità di spostare continuamente la residenza del gruppo.
+Ricostruzione ideale dei monumenti del Foro Romano a ridosso del Campidoglio, tratta dal volume di Luigi Canina *L'architettura romana*, Roma 1830-1840.
 
-I PASTORI
+col quale si livellò tutta la zona, e si deve escludere che questa fosse la loro posizione originale: l'ipotesi avanzata al momento della scoperta era che questi antichissimi cocci provenissero da un insediamento situato sul Colle Capitolino, situato sul versante che si affaccia sul Tevere.
 
-Nella successiva fase preistorica, caratterizzata dall'uso del bronzo e che
-inizia intorno al XVIII secolo a.C. (circa 3700 anni fa) c'è una battuta d'ar-
-resto nello sviluppo di insediamenti a Roma e nei suoi immediati dintorni;
-Forse l'abbandono delle vecchie sedi, attestato anche in altre zone
-del Lazio, può significare un momentaneo riflusso nello sviluppo della regione
-a sud del Tevere; ma quest'interpretazione dei dati archeologici, ora
-disponibili, può essere contraddetta da nuovi ritrovamenti.
+Per capire meglio cosa è avvenuto nell'area Campidoglio-Foro Romano-Palatino è necessario guardarsi intorno, allargando la visuale all'area del Lazio meridionale delimitata dal fiume Tevere, cioè la zona che i Romani chiamavano antico Lazio (*Latium vetus*).
 
-Le zone intensamente frequentate, come Piscina di Torre Spaccata,
-cadono in abbandono; mentre abbiamo ritrovamenti archeologici in località
-precedentemente disabitate: Si pensa che un irrigidimento della temperatura
-abbia provocato condizioni meno favorevoli per la coltivazione dei campi e
-che gli uomini si siano piuttosto rivolti all'allevamento di pecore; iniziando
-la lunga tradizione della transumanza periodica delle greggi. In quest'epoca
-nella penisola s'impone un modo di vivere e di costruire gli attrezzi pastora-
-li; la cosiddetta "cultura appenninica", come si riscontra nei ritrovamenti
-alla Marcigliana (sulla via Salaria) e al Casale Capobianco, al 16° chilome-
-tro della via Nomentana.
+**LATIUM VETUS E LATIUM NOVUM**
 
-I pastori della cultura appenninica avviano contatti
-commerciali e culturali con i Micenei, che basavano la loro ricchezza sugli
-scambi commerciali; assicurati dalla potenza navale.
+Recentemente, durante uno scavo nell'area del successivo *Tabularium*, sono venuti finalmente alla luce altri reperti, di poco posteriori ai più antichi frammenti di ceramica scoperti nell'area di Sant'Omobono che hanno fornito la prova concreta dell'esistenza di un'area abitata sul Colle Capitolino, situata sul versante che si affaccia sul Tevere.
 
-CAMPIDOGLIO, PALATINO, FORO: I PRIMI ABITATI
+In questo periodo anche a Gabii (sulla via Prenestina, a circa 20 chilometri) questo si aggiungerà il territorio fino al Liri, il *Latium novum adiectum* (= Lazio nuovo, aggiunto).
 
-Intorno al XIV secolo a.C., per la prima volta è archeologicamente attesta-
-to un insediamento umano di qualche importanza nei luoghi che furono in
-seguito il cuore stesso di Roma.
+Il Lazio antico era abitato esclusivamente dai Latini, anche se la zona più meridionale, tra Anzio e Terracina, era meno fittamente popolata. La culla della civiltà latina infatti era sulla riva destra della valle del Tevere; sulla riva sinistra gli unici Latini erano gli abitanti di Capena e di Falerii Veteres.
 
-Scavi archeologici nell'area presso la chiesa di Sant'Omobono (immedia-
-tamente ai piedi del Campidoglio, davanti al moderno palazzo
-dell'Anagrafe) hanno restituito frammenti di ceramica tipici della cultura
-appenninica e di quella micenea; frammisti caoticamente materiali
-reperti di età anche molto posteriore e a ossa di animali.
-
-I materiali sono stati ritrovati in un terrazzamento del IV secolo a.C.,
+Intorno al IX secolo a.C. iniziano grandi movimenti di popolazioni che in parte mutano questa situazione. Dall'interno della penisola arrivano i Sabini, che inglobano gli abitanti di Capena; e premono anche sulla destra del Tevere, arrivando a infiltrarsi a Roma. A sud invece giungono gli Equi, gli Erici e i Volsci, che si fermano su una linea che va da Palestrina ad Anzio. Proprio queste frontiere sono i limiti del *Latium vetus* (= antico Lazio); solo alcuni secoli più tardi, con le conquiste dei Romani a questo si aggiungerà il territorio fino al Liri, il *Latium novum adiectum* (= Lazio nuovo, aggiunto).

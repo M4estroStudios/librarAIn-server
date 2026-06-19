@@ -1,20 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-46                                                                     STORIA DI ROMA ANTICA
+I RE LATINO-SABINI 47
 
-**IL RITMO SACRO DELLA GUERRA**
+[Immagine: incisione di B. Pinelli]
 
-Accanto al calendario religioso esiste un vero e proprio calendario della guerra. Il periodo dell'anno dedicato a questa attività si apre nella buona stagione e finisce all'inizio di quella cattiva.
-I Salii erano addetti all'apertura e alla chiusura di questo ciclo mediante cerimonie comuni anche alle altre città latine.
-A Roma si diceva che durante il regno di Numa fosse caduto uno scudo dal cielo. Dopo averlo raccolto il re ne fece allora fabbricare altri undici uguali dal fabbro Mamurio Veturio. Da questo momento in poi dodici scudi furono conservati nella *Curia Saliorum* del Palatino; dove era riposto anche il bastone augurale di Romolo: Ogni anno il primo marzo, i sacerditi Salii mettevano in movimento questi scudi insieme alle lance di Marte conservate nella Regia del Foro: Con la loro particolare danza nella città risvegliavano la guerra, toccando varie parti dell'abitato. Di sera, al termine della cerimonia; gli scudi e le lance erano di nuovo riposti e i sacerdoti celebravano un banchetto. Altri riti, come le corse di cavalli del 14 marzo (*Equirria*) la purificazione delle trombe del 23 marzo (*Tubilustrium*) segnano ulteriormente l'inizio della stagione guerresca: Gli antichi sapevano bene che non si può condurre una guerra d'inverno perché freddo, carestia e fame sono in ugguato. Perciò nel mese di ottobre era celebrata la fine dell'anno militare.
-Salii di nuovo ricomparivano insieme ai riti di purificazione che permettevano ai soldati (con la cerimonia del *Tigillum Sororium*) alle loro armi (purificate durante l'*Armilustrium*) e ai loro animali (*October equos* la simulazione dell'uccisione dell'animale usato in guerra) di rientrare nella città liberi del sangue e degli orrori della guerra.
+*Orazio uccide sua sorella nemica della Patria, incisione di B. Pinelli.*
 
-**LA CITTÀ E LA GUERRA**
+Nel racconto degli antichi il duello assume toni quasi epici. I due eserciti, in silenzio, trattengono il respiro, mentre i sei campioni si scagliano gli uni sugli altri. Due degli Orazi romani rimangono sul terreno, ma ancora una volta la buona stella di Roma ha la meglio: l'unico sopravvissuto degli Orazi si dà alla fuga e, riuscendo a distanziare ciascuno degli avversari, li uccide uno per volta.
 
-Dopo la morte di Numa Pompilio segue un altro periodo di interregno fino all'elezione di Tullo Ostilio Le guerre e le prime conquiste hanno finora comportato l'immigrazione parziale dei vinti compensata a volte dall'invio di "colon" romani nelle terre conquistate. Con Tullo Ostilio e Anco Marcio c'è invece la rottura di questa tradizione:
-Nel caso di centri come Alba, Tellene, Ficana, Medullia gli abitanti vengono deportati nell'urbe, senza lo stanziamento di coloni romani. Questa straordinaria apertura della collettività romana verso gli stranieri può essere spiegata con la volontà di potenziare il numero dei cittadini; garanzia di forza per la città. Mentre la guerra diviene l'attività principale di Roma; che si ritaglia una posizione sempre più grande a spese delle popolazioni vicine.
+La grande gioia che segue alla vittoria è di breve durata. I tre Orazi hanno una sorella, fidanzata con uno dei Curiazi uccisi. Non appena ella riconosce sulle spalle del fratello il mantello che lei stessa aveva tessuto per l'innamorato, si getta a terra disperata. L'orgoglioso Orazio si infuria per questa disperazione fuori luogo e la uccide, mentre Tullo Ostilio è costretto a condannarlo a morte per l'orrendo delitto.
 
-**LA FINE DI ALBA LONGA**
+Il giovane guerriero si appella al popolo, rimettendosi al giudizio dell'assemblea popolare, e il racconto vuole mettere in risalto l'amore incrollabile dei Romani verso la patria. Il vecchio padre, Publio Orazio, sostiene che la figlia sciagurata è morta giustamente; invece suo figlio, che ha salvato la patria, è ingiustamente condannato a morte da una città che fino a poco prima l'aveva festeggiato come un eroe. L'assemblea, colpita dal discorso del padre, decide che il giovane Orazio viva e che espii il suo delitto compiendo cerimonie di purificazione presso il Tigillum Sororium.
 
-La prima grande impresa di Tullo Ostilio è la guerra con Alba, allora governata da Gaio Cluilio: Dopo gli scontri, durante i quali muore il loro re, gli Albani eleggono Mettio Fufezio:
-La tradizione narra che due re nemici, dopo aver constatato l'inutilità di uno scontro diretto; vengono a patti:
-Questa è certamente una delle poche volte in cui due capi di Stato si preoccupano delle conseguenze di una lunga guerra sulle loro popolazioni: Tullo Ostilio e Mettio Fufezio decidono che un duello tra "campioni" dei due eserciti; risparmierà sangue e sofferenze inutili: Vengono scelte due terne di fratelli, tre Orazi per i Romani e i tre Curiazi per gli Albani.
+L'alleanza con Alba, seguita allo scontro dei guerrieri, si mostra tuttavia di breve durata. Mettio Fufezio stringe alleanza segreta con Fidene e con Veio, promettendo di tradire i Romani, e il suo tradimento diventa chiaro a tutti quando è dichiarata la guerra a questi due popoli. Tullo Ostilio vincitore non concede alleanza.

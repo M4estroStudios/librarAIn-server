@@ -1,47 +1,50 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-82                                                                    STORIA DI ROMA ANTICA
+Col controllo di Tarquinia (col porto di Gravisca) e di Caere (col porto di Pyrgi) Roma esercita la sua influenza su due dei principali sbocchi sul Tirreno.
 
-su 285 ettari elevabili a 427 ettari se teniamo conto anche del terreno colti-
-vabile e dei boschi: così la *Grande Roma dei Tarquini* diventa una delle città
-più grandi e importanti del Mediterraneo occidentale.
+Parte del commercio etrusco probabilmente trova nuovi sbocchi nella città serviana e in particolare nel *portus Tiberinus*, area del foro Boario preposta allo scalo delle merci trasportate sul Tevere.
 
-ROMA CITTÀ-EMPORIO E LA CONQUISTA DEL TIRRENO
+Il ritrovamento d'una placchetta d'avorio fa intuire che i rapporti tra Roma e le principali città etrusche del Tirreno dovevano essere rafforzati dagli Etruschi stanziati a Roma. La placchetta, trovata in un deposito votivo vicino al tempio della Fortuna del foro Boario, rappresenta un leoncino accucciato diviso a metà. Sulla parte non lavorata c'era un'altra placchetta della medesima forma, che completava in questo modo la figura.
 
-La tradizione non offre notizia di scontri con i Latini, che giustifichino la
-supremazia romana, simbolizzata dal tempio di Diana sull'Aventino; e sem-
-bra quasi che il successo politico sia dovuto a fortunati negoziati condotti da
-Servio.
-Roma però si trova a combattere una lunga guerra con gli Etruschi, quasi
-un'anticipazione della decennale lotta con Veio in età repubblicana. Sembra
-che Tarquinia, patria della dinastia dei Tarquini, avesse stretto alleanza in fun-
-zione antiromana con Veio e Caere (*Cerveteri*).
+Si tratta d'una tessera ospitale, un oggetto diviso a metà le cui parti erano conservate dalle due persone che avevano un legame di amicizia e d'ospitalità. L'iscrizione etrusca menziona due personaggi, un Araz Silqetenas, abitante a Roma e uno Spurianas, Tamico legato dal vincolo d'ospitalità; abitante probabilmente a Tarquinia.
 
-> *Servio Tullio fa d'ogni atto religioso un atto politico; adottando culti e costruendo
-> templi che hanno stretti legami col potere.*
->
-> *L'instaurazione del culto pubblico di Diana è uno squisito atto politico. Secondo la
-> tradizione rappresenta il culmine del successo diplomatico sulla Lega latina.
-> Infatti Servio Tullio convince i rappresentanti della Lega a edificare un tempio dedi-
-> cato a Diana in Roma; in sostituzione del tempio federale di Diana Nemorensis (da *nemus*, bosco) situato vicino ad Aricia; motivo per cui la divinità era
-> chiamata anche Diana Aricina.
-> Lo spostamento del culto federale promuove Roma da città egemone a città
-> capitale del Lazio.
-> Il nuovo tempio sull'Aventino si presta ad altre letture.
-> Il culto di Diana Nemorensis non era legato alla città di Aricia (cui era solo vic-
-> ino), ma il santuario si trovava in un bosco; cioè in una terra di nessuno, fuori dall'
-> abitato.
-> L'Aventino inoltre è legato alla plebe e agli schiavi: coloro che abitano a Roma ma
-> non ne godono la cittadinanza; e il tempio sull'Aventino offre asilo ai fuggiaschi, ai
-> senza patria, anche agli schiavi.
-> Il *rex Nemorensis*, il sacerdote preposto al culto della Diana federale, era uno
-> schiavo. Era eletto a vita e il suo incarico cessava soltanto quando il suo successore
-> lo batteva e lo uccideva in duello.
-> A Roma è divenuto re Servio Tullio, figlio della schiava Ocrisia: Anche l'usurpato-
-> re, come il *rex Nemorensis*, non è destinato ad avere una successione indolore, ucci-
-> sso dalla perfidia della sua stessa figlia:*
+**ANCORA SULLE LAMINE DI PYRGI: ETRURIA E MONDO FENICIO**
 
-Il racconto degli antichi non è concorde nella menzione delle città coinvol-
-te nella lotta e, secondo alcuni, si sarebbe trattato di quasi tutte le città etru-
-sche. La vittoria arride a Roma dopo una guerra ventennale: soltanto Tarquinia,
-Veio e Caere sono punite con la perdita del loro territorio; assegnato ai nuo-
-vi cittadini romani.
+Esiste uno stretto rapporto tra la situazione topografica e sacrale del foro Boario, la figura di Servio Tullio, la regalità acquisita per mezzo di una dea e Pyrgi, il porto della città etrusca di Caere (Cerveteri). Come a Sant' Omobono anche a Pyrgi esiste un santuario dedicato a una dea (Uni-Iizia-Leucotea-Astarte corrispondenti alla Fortuna; a Venere e alla Mater Matuta di Roma) che si sviluppa e si 'grecizza nel corso del tempo. In questo sorprendente santuario esistono testimonianze mancanti nel complesso del foro Boario.
+
+Poco di vent'anni fa è stata ritrovata un'iscrizione bilingue (in etrusco-fenicio) su lamina d'oro, che ricorda la dedica di un oggetto sacro nel tempio di Uni ad opera del signore di Caere, Thefarie Velianas: Il contenuto della dedica è ancora più esplicito: Thefarie Velianas fa questo dono alla dea perché ella gli ha donato il potere. Il parallelo con Servio Tullio è strettissimo: il re romano regna per volere della dea Fortuna come il re ceretano regna per volere di Astarte; Servio Tullio costruisce e dedica alla sua protettrice un tempio nel foro Boario; il porto tiberino di Roma, Thefarie Velianas dedica un oggetto sacro nel santuario nell'area emporico-portuale di Caere; Ma nell'iscrizione di Pyrgi è fondamentale la notizia dei rapporti strettissimi tra l'Etruria e il mondo fenicio, se non addirittura la presenza stabile sul luogo di scribi e incisori fenici; che potevano scolpire le lamine.
+
+**LA SUCCESSIONE DI SANGUE**
+
+Servio Tullio fa sposare le sue due figlie con figli (o secondo altri nipoti) di Tarquinio Prisco, sperando di controllare il malcontento degli eredi al trono.
+
+Ma i due matrimoni si rivelano mal assortiti: il maggiore, Lucio Tarquinio, ha un carattere forte e impetuoso ed è sposato a Tullia Maggiore, donna mite e dolce; il minore, buono e saggio, è sposato a Tullia Minore, donna perfida e malvagia.
+
+I due caratteri simili si incontrano e decidono d'eliminare i rispettivi coniugi, per convolare a giuste nozze.
+
+Tullia Minore ha buon gioco con Lucio Tarquinio, nel quale stimola l'am-
+
+***
+
+IL REFORMATORE; IL RE TRANNANO E LA RIVOLUZIONE
+
+Col controllo di Tarquinia (col porto di Gravisca) e di Caere (col porto di Pyrgi) Roma esercita la sua influenza su due dei principali sbocchi sul Tirreno.
+
+Parte del commercio etrusco probabilmente trova nuovi sbocchi nella città serviana e in particolare nel *portus Tiberinus*, l'area del foro Boario preposta allo scalo delle merci trasportate sul Tevere.
+
+Il ritrovamento d'una placchetta d'avorio fa intuire che i rapporti tra Roma e le principali città etrusche del Tirreno dovevano essere rafforzati dagli Etruschi stanziati a Roma. La placchetta, trovata in un deposito votivo vicino al tempio della Fortuna del foro Boario, rappresenta un leoncino accucciato diviso a metà. Sulla parte non lavorata c'era un'altra placchetta della medesima forma, che completava in questo modo la figura.
+
+Si tratta d'una tessera ospitale, un oggetto diviso a metà le cui parti erano conservate dalle due persone che avevano un legame di amicizia e d'ospitalità. L'iscrizione etrusca menziona due personaggi, un Araz Silqetenas, abitante a Roma e uno Spurianas, l'amico legato dal vincolo d'ospitalità, probabilmente a Tarquinia.
+
+**ANCORA SULLE LAMINE DI PYRGI: ETRURIA E MONDO FENICIO**
+
+Esiste uno stretto rapporto tra la situazione topografica e sacrale del foro Boario, la figura di Servio Tullio, la regalità acquisita per mezzo di una dea e Pyrgi, il porto della città etrusca di Caere (Cerveteri). Come a Sant' Omobono anche a Pyrgi esiste un santuario dedicato a una dea (Uni-Iizia-Leucotea-Astarte corrispondenti alla Fortuna, a Venere e alla Mater Matuta di Roma) che si sviluppa e si 'grecizza nel corso del tempo. In questo sorprendente santuario esistono testimonianze mancanti nel complesso del foro Boario.
+
+Poco di vent'anni fa è stata ritrovata un'iscrizione bilingue (in etrusco e fenicio) su lamina d'oro, che ricorda la dedica di un oggetto sacro nel tempio di Uni ad opera del signore di Caere, Thefarie Velianas. Il contenuto della dedica è ancora più esplicito: Thefarie Velianas fa questo dono alla dea perché ella gli ha donato il potere. Il parallelo con Servio Tullio è strettissimo: il re romano regna per volere della dea Fortuna come il re ceretano regna per volere di Astarte; Servio Tullio costruisce e dedica alla sua protettrice un tempio nel foro Boario, il porto tiberino di Roma, Thefarie Velianas dedica un oggetto sacro nel santuario nell'area emporico-portuale di Caere. Ma nell'iscrizione di Pyrgi è fondamentale la notizia dei rapporti strettissimi tra l'Etruria e il mondo fenicio, se non addirittura la presenza stabile sul luogo di scribi e incisori fenici, che potevano scolpire le lamine.
+
+**LA SUCCESSIONE DI SANGUE**
+
+Servio Tullio fa sposare le sue due figlie con i figli (o secondo altri nipoti) di Tarquinio Prisco, sperando di controllare il malcontento degli eredi al trono. Ma i due matrimoni si rivelano mal assortiti: il maggiore, Lucio Tarquinio, ha un carattere forte e impetuoso ed è sposato a Tullia Maggiore, donna mite e dolce; il minore, buono e saggio, è sposato a Tullia Minore, donna perfida e malvagia.
+
+I due caratteri simili incontrano e decidono d'eliminare i rispettivi coniugi, per convolare a giuste nozze.
+
+Tullia Minore ha buon gioco con Lucio Tarquinio, nel quale stimola l'am-

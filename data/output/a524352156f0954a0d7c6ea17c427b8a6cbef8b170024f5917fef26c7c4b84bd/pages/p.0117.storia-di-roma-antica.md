@@ -1,18 +1,21 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ASCESA, CADUTA E RESURREZIONE DI ROMA                                     117
+118
 
-co gallico è così ridotta a una serie di episodi, che esaltano singoli personaggi o forniscono modelli di comportamento esemplari.
+STORIA DI ROMA ANTICA
 
-Le vergini Vestali e il Flamine di Quirino portano a Caere i tesori sacri di Roma con l'aiuto del plebeo Lucio Albinio, che li accoglie sul suo carro in fuga da Roma. Poi lo stesso Lucio Albinio avrebbe riportato a Roma i *sacra* e le Vestali. Secondo una tradizione diversa, i tesori sacri sarebbero stati nascosti dalle Vestali e dal *flamen Quirinalis* in grandi vasi (*doliola*) e sepolti a Roma nel tempio di Quirino.
+OCHE IN PROCESSIONE E CANI CROCIFISSI
+L'episodio celebre del salvataggio del Campidoglio da parte delle oche ha lasciato traccia anche nel calendario festivo romano. Diversi scrittori antichi riportano la notizia che il 3 agosto a Roma si uccidono i cani in onore delle oche, perché i cani dormendo hanno tradito il Campidoglio; mentre le oche stando sveglie lo hanno salvato. In quest'occasione i cani venivano crocefissi, le oche venivano ornate di oro e di porpora e portate in processione; e così ogni anno i cani scontano la pena, affissi vivi per le zampe anteriori a una forca di sambuco.
 
-Mentre tutti i Romani rimasti nella città si rifugiano sul Campidoglio; sacerdoti e vecchi senatori, indossati i paramenti sacri e le vesti delle grandi occasioni, restano seduti immobili sui seggi della Curia. Sono tutti massacrati, quando il vecchio Marco Papirio colpisce con un colpo di bastone il gallo che ha osato tirargli la barba.
+Le matrone romane contribuiscono con loro gioielli al pagamento del riscatto della città. Camillo, intervenuto all'ultimo momento, riscatta Roma col valore delle armi; recupera l'oro che stava per essere pagato ai Galli e caccia gli invasori dalla città. E naturalmente inventa una frase famosa: «Non con l'oro, ma col ferro si salva la patria!».
 
-Il giovane plebeo Ponzio Cominio attraversa le linee nemiche, lasciandosi prima trasportare dal Tevere e scalando poi un versante impervio del Campidoglio; per ottenere dal Senato romano l'investitura ufficiale; richiesta da Camillo in esilio per rimettersi alla testa dell'esercito romano contro i Galli.
+LA CRISI DI ROMA: LA TRADIZIONE INTERPRETATA
+La lettura critica della tradizione leggendaria permette di interpretare il sacco di Roma come un fattore d'accelerazione per la risoluzione della contesa tra le classi sociali. La netta divisione dei cittadini romani tra Roma e Veio (e Caere) diventa il punto centrale di tutta la vicenda. Praticamente si verifica una nuova secessione della plebe e riemergono tutte le contraddizioni interne alla società romana.
 
-Il giovane patrizio Gaio Fabio Duorsone attraversa anch'egli lo schieramento gallico, per recarsi a Roma a compiere nel tempio di Quirino o nel tempio di Vesta i sacrifici tradizionali della *gens* nei giorni prescritti.
+I patrizi restano a Roma e, secondo la versione patrizia, anche i sacri sarebbero rimasti a Roma. Per loro la città è ancora il centro religioso; la sede dell'autorità (leggenda di Ponzio Cominio) e delle cerimonie sacre (leggenda di Fabio Duorsone) e i vecchi senatori e i sacerdoti si immolano come vittime sacrificali (leggenda di Papirio) secondo l'arcaico rito religioso (*devotio*): nei momenti di crisi un ex magistrato offre in sacrificio la propria vita per ottenere il favore degli dèi per la comunità.
 
-I Galli tentano un'incursione notturna sull'area capitolina e stanno per riuscire nel loro intento — perché le sentinelle e i cani non fanno buona guardia — ma le oche sacre a Giunone si mettono a starnazzare e risvegliano la guarnigione; permettendo ai difensori di respingere gli assalitori. Tra gli altri si distingue il patrizio Marco Manlio, che per questo assume il cognome o soprannome onorifico di Capitolino.
+I plebei invece si insediano a Veio, dove trova appagamento la loro tradizionale fame di terra. La ricerca archeologica ha riportato alla luce, nei depositi votivi di Veio di questo periodo, numerose e significative statuette raffiguranti Enea col padre Anchise sulle spalle. Appare chiara la funzione attribuita a Veio di rifugio dei profughi, scampati alla distruzione di Roma, identificata con Troia. Il plebeo Lucio Albinio porta le Vestali e i sacra fuori della città, a Caere.
 
-[Immagine]
+La salvezza di Roma alla fine è il risultato della conciliazione tra patrizi e plebei. Il giovane plebeo Ponzio Cominio rischia la vita per ottenere dal Senato riunito sul Campidoglio la legittimazione dell'investitura di Camillo a dittatore. "I Romani di Veio", per la maggior parte plebei, soccorrono la città al seguito di Camillo. Lo stesso plebeo Lucio Albinio riporta le Vestali e i sacra a Roma da Caere dopo la ritirata dei Galli. La secessione così rientra anche simbolicamente a Roma per continuare la sua vita e il suo sviluppo nella sede tradizionale.
 
-*Manlio e le sentinelle, svegliati dagli schiamazzi delle oche, respingono i Galli che assaltano il Campidoglio; incisione di B. Pinelli.*
+I GALLI SI RITIRANO, I PROBLEMI RESTANO
+Partiti i Galli, il problema centrale è ancora quello della ricostruzione della città o del suo abbandono in favore di Veio, che è rimasta intatta e fornita di tutto, inoltre risulta già abitata da un gran numero di cittadini romani.

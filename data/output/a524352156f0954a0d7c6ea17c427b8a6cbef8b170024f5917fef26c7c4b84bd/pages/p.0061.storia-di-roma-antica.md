@@ -1,22 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UN AVVENTURIERO ETRUSCO SUL "TRONO DI ROMA"
+62
 
-61
+STORIA DI ROMA ANTICA
 
-II. CAMPO MARZIO
+![La Cloaca Massima in un'incisione del secolo scorso](Immagine)
 
-Con i Tarquini si comincia a parlare del Campo Marzio. Con questo nome, nel suo significato più ampio, si intende tutta la pianura compresa tra il Campidoglio, il Tevere e le estreme pendici del Quirinale e del Pincio. Secondo la tradizione questa porzione di pianura, definita dall'ansa del Tevere, apparteneva ai Tarquini come possesso regio. Nel momento della cacciata diventa un'area pubblica della città.
+*La Cloaca Massima in un'incisione del secolo scorso*
 
-Anche quest'ampia pianura (*campus*) è costellata d'acquitrini e paludi. Toponimi come quello di Valle (S. Andrea della Valle; teatro Valle) e di Vallicella ricordano queste bassure, tra le quali era famosissima la *palus Caprae* (la palude della Capra). Il nome di Campo Marzio non è l'unico assegnato a questo luogo; ma è quello che ha prevalso nel corso del tempo. Esso deriva da un altare d'origine antichissima, dedicato a Marte, dato il carattere militare di questa area (la pianura di Marte, dio della guerra). Nel Campo Marzio era presente anche il *Tarentum* (situato con certezza presso ponte Vittorio Emanuele), un santuario dedicato al culto arcaico delle due divinità del regno infernale: Dite e Proserpina.
+**IL LIVELLAMENTO DEL FORO E LA CLOACA MAXIMA**
 
-D'origine antichissima era anche il *Trigarium* (corrispondente all'attuale via Giulia), un terreno adibito alle corse delle *trighe*; gli arcaici carri tirati da tre cavalli.
+La pavimentazione del Foro Romano, attualmente visibile, risale a Lucio Nevio Surdino, pretore del 14 a.C., come si legge nell'iscrizione in lettere di bronzo situata vicino alla colonna di Foca, nella parte centrale della piazza.
 
-Il re, muto come conviene in questi casi, rinuncia al suo progetto; Le centurie rimangono immutate ma egli aumenta il numero dei cavalieri portandolo a 1800. Probabilmente con questo ritocco della cavalleria deve essere stata avviata la riforma dell'esercito, completata da Servio Tullio.
+Si ripavimentava il Foro ogni volta che incendi, demolizioni o nuove costruzioni rendevano necessario livellare tutto e sistemare un nuovo piano di calpestio. Tra questi otto strati successivi, il pavimento in terra battuta corrisponde alla prima utilizzazione della valle tra Campidoglio e Palatino come piazza della città o foro e risale all'avvento dei Tarquini. Infatti Tarquinio Prisco promuove l'imponente opera di drenaggio della valle, che presentava un fondo sconnesso, solcato da numerosi corsi d'acqua e reso inospitale da molte paludi.
 
-ROMA CITRA "ETRUSCA"
+La più importante delle numerose canalizzazioni è la Cloaca Maxima (la fogna maggiore). Il suo percorso inizia dal Quirinale per poi dirigersi verso la futura basilica Emilia (subito a destra per chi entra nell'attuale ingresso del Foro), attraversandola obliquamente. Dopo aver piegato in avanti alla volta del santuario di Venere Cloacina, il canale attraversa il Foro e la futura basilica Giulia, descrivendo un gomito in corrispondenza del santuario di Vertumno. Sempre zigzagando, sbocca infine nel Tevere, vicino al ponte Sublicio. La Cloaca in origine è coperta solo in parte: la sua struttura sotterranea è posta fino a 10 m di profondità ed è alta oltre 4 m e larga più di 3 m.
 
-Il regno di Tarquinio Prisco rappresenta la sintesi e il completamento di quanto era già stato impostato dai precedenti monarchi. L'effettivo momento di svolta per la città si era verificato con Anco Marcio quando aveva ampliato e fortificato l'abitato (vedi pagine precedenti). Queste premesse sono completate da Tarquinio Prisco; che può essere considerato il nuovo fondatore della "città", intesa come spazio urbano organizzato e articolato. La grandezza di Roma e la sua futura potenza si manifestano anche nel prodigioso rinvenimento nello scavo delle fondazioni del tempio di Giove. Sul monte Tarpeo si trova una testa umana perfettamente conservata, che diventa il simbolo della posizione di *caput mundi*, riservata dagli dèi alla città di Romolo. Il monte Tarpeo (chiamato così da Tarpea) per questa testa (*caput*) assume il nome di *Capitolium*.
-
-L'ingrandimento della città si manifesta chiaramente nella costruzione d'una nuova cinta muraria in pietra, che sostituisce il precedente muro di terra. La Roma di Anco Marcio ruotava intorno al foro Boario, unica area di scambio e di mercato per gli insediamenti dei colli: il prosciugamento della valle, che collega il Campidoglio col Palatino e la Velia, permette di costruire nuovi assi stradali e un nuovo spazio civico; un complesso sistema di canalizzazione, culminante nella *Cloaca Maxima* (un canale di scolo in parte a cielo scoperto), permette a Tarquinio di drenare le numerose acque e gli acquitrini della valle.
-
-Al posto delle capanne nasce una vera e propria piazza; dove è possibile vendere, comprare, incontrarsi, fare politica: l'augure Attio Nevio trasporta la *ficus Ruminalis* dalle pendici del Palatino, presso il Velabro, nel Foro, per sottolineare chiaramente l'importanza politica religiosa della grande opera di Tarquinio.
+Al drenaggio delle acque segue il livellamento e la pavimentazione in terra battuta: così la valle tra i colli diviene la piazza dei nuclei abitati situati sui colli. Le due strade, la via Sacra e la via Nova, prima extraurbane, divengono ora percorsi urbani. In questo momento è pavimentata l'area del Comizio, sottostante alla rocca capitolina, forse già utilizzata precedentemente: a questa sistemazione del Foro e del Comizio corrisponde anche la prima fase costruttiva.

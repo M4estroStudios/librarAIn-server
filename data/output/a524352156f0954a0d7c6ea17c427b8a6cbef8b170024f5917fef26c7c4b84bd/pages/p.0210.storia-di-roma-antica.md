@@ -1,20 +1,28 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-210                                                                    STORIA DI ROMA ANTICA
+LA CONQUISTA DELL'ORIENTE 211
 
-STUPRI E VIOLENZE PER DIONISO
+Momenti più critici. Dopo i successi di Catone e Tiberio Gracco, le tribù iberiche respirano aria di libertà con Viriato, un nuovo capo che li spinge alla rivolta.
 
-Dietro la Roma vittoriosa delle grandi guerre orientali si nascondono lotte sociali e malesseri. Oltre ai processi agli Scipioni, un altro grave episodio è sintomo d'una profonda frattura nella comunità. La repressione sanguinosa dei baccanali — le feste in onore di Bacco (Dioniso in greco) — provoca la morte di moltissime persone. Le feste mescolano insieme diversi ingredienti esplosivi: celebrazioni notturne, avvolte da profondo mistero, possono prendere parte solo gli iniziati. Il vino e la musica assordante stordiscono i partecipanti, donne e uomini vestiti da donne. Orrendi delitti si consumano tra le allucinazioni religiose che sviluppano le facoltà divinatorie dei partecipanti. Lo stupro e l'unione carnale simboleggiano la fusione fisica con la divinità; l'orgia culmina spesso col suicidio e l'assassinio: alla divinità è riservato il sacrificio umano e gli iniziati praticano l'omofagia (mangiano i propri simili).
+I Romani non vanno per il sottile; così massacrano 20.000 Vaccei (una popolazione spagnola) nel 152 a.C. e altrettanti Lusitani (abitanti dell'attuale Portogallo) nel 150 a.C.
 
-In un clima di terrore Roma trema di fronte a queste sette segrete. La denuncia al console arriva come conseguenza di oscure macchinazioni. Un cavaliere, Publio Ebuzio, rimasto orfano di padre, aveva come tutore il nuovo marito della madre. Costui, per impadronirsi del patrimonio, decide di compromettere il giovane. La madre, evidentemente d'accordo, chiede a Ebuzio di compiere il voto fatto in occasione di una malattia. Ebuzio, per rendere grazie della salute riacquistata, deve iniziarsi ai baccanali. Dopo dieci giorni di castità egli sarà accompagnato nel sacrario. Ebuzio acconsente: quando arriva però dalla prostituta di cui è innamorato, trova difficile mantenere fede alla promessa e ridendo le spiega il motivo dell'improvvisa freddezza. La donna rabbrividisce perché, quando era ancora schiava, è entrata una volta nel sacrario e sa che lì i sacerdoti portano l'iniziato, che deve avere meno di venti anni: lo trattano come fosse una "vittima" mentre ululati, suoni di cembali e tamburi coprono le grida di chi è violentato.
+Pace e guerra si alternano senza posa fino al 133 a.C. quando il giovane Scipione Emiliano, reduce da Cartagine (vedi infra), prende Numanzia, la capitale della rivolta celtibera. Con un esercito arruolato a sue spese, il giovane figlio adottivo dell'Africano distrugge la città e riduce in schiavitù gli abitanti che non si sono suicidati.
 
-Ebuzio decide di parlare con la madre. La donna e il patrigno lo accusano di non saper stare dieci giorni lontano da donnaccia e lo cacciano di casa. A questo punto il giovane cavaliere presenta denuncia al console. Dopo una penosa sceneggiata di fronte al magistrato, la verità è raccontata. Il quadro di questa folla invasata e allucinata è ancora più sconvolgente di quanto si possa supporre: scatta immediatamente la repressione. Si promulgano senatoconsulti (leggi senatorie) per vietare qualunque tipo d'associazione segreta e si puniscono i colpevoli. Le delazioni e le condanne si susseguono senza posa. Molti, in preda alla vergogna, si suicidano. La città è bagnata di sangue.
+SI PAGA CON IL «DENARIO»
 
-Delo è aperto dai Romani un porto franco che diventa il nuovo centro dei traffici mediterranei.
+Probabilmente durante la seconda guerra punica il sistema monetario romano raggiunge la sua forma definitiva.
 
-La sorte dell'Epiro è certamente quella più dura. La sua punizione deve diventare l'esempio per chi osa ribellarsi a Roma. Circa 150.000 persone sono ridotte in schiavitù. Ormai Roma non tollera più alcuna opposizione. Per l'intera Grecia inizia una profonda e inarrestabile crisi.
+Il pezzo principale è il «denario» d'argento (letteralmente la moneta di dieci assi) che pesa inizialmente poco più di 4 grammi. Sul diritto e sul rovescio sono impressi dei «tipi» (immagini) costanti: più tardi appaiono i ritratti di antenati di vecchie glorie familiari dei magistrati incaricati di sovrintendere alla coniazione di denaro.
 
-LA SPAGNA INSANGUINATA
+I pochi centimetri quadrati della moneta diventano un potente mezzo di propaganda, utile per ricordare agli elettori, nel prosieguo della carriera, i meriti della *gens* in lizza.
 
-La logica dell'imperialismo ha così preso il sopravvento: nel giro di pochi decenni la politica di garante d'un equilibrio ha lasciato il posto a una politica d'aggressione. Il lento lavoro diplomatico di Flaminino e di Scipione è abbandonato. Tuttavia Roma non ha ben chiaro cosa fare dopo la guerra. La stessa soluzione della Macedonia mostra come i dirigenti romani siano titubanti e in bilico fra soluzioni differenti.
+Il denario ha come sottomultipli: il «quinario» (equivalente a cinque assi) e il «sesterzio» (due assi e mezzo). A questi si aggiungono sottomultipli di bronzo: le monete che veramente circolano nelle mani dei Romani. In seguito alle conquiste cominciano ad affluire grosse quantità d'argento e si conia una nuova moneta; il «vittoriato» (pari a tre quarti di denario), mentre le monete di bronzo piano piano diventano meno usuali.
 
-In Occidente Roma non ha invece medesimi scrupoli e risolve i problemi con la guerra. In Spagna si combatte e si stabilisce la pace con le armi in pugno. L'impegno militare raggiunge dimensioni enormi, circa 50.000 uomini nei...
+Anche lo stipendio militare è pagato in monete d'argento. L'affermazione del denario accompagna le azioni militari romane al punto da divenire quasi l'unica moneta circolante nel Mediterraneo. Commercianti greci, romani e italici ormai comprano e vendono a suon di denari.
+
+GLI ULTIMI SINGOLI: CARTAGINE E CORINTO
+
+In Africa Roma si serve dell'appoggio di Massinissa, re della Numidia, per tenere sotto controllo Cartagine. Continue scaramucce e conflitti hanno caratterizzato l'ultimo cinquantennio.
+
+La rinascita dell'agricoltura cartaginese e la stessa posizione molto favorevole della città (vedi capitolo Romani e Cartaginesi: è lo scontro) fanno temere una ripresa della sua potenza mercantile. Da anni uomini politici come Catone proclamano la necessità di eliminare per sempre il pericolo cartaginese.
+
+Catone un giorno si presenta in Senato con dei magnifici fichi. I senatori ne ammirano la freschezza e le dimensioni chiedendo da dove provengano. Con un lampo negli occhi il vecchio censore dice che li ha colti lui stesso tre giorni prima a Cartagine. La città e la sua ripresa sono più forti e vicine di quanto si possa supporre. Nuovi contrasti con Massinissa per questioni di confine suscitano infine l'intervento romano (149 a.C.).

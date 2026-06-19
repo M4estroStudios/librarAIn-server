@@ -1,46 +1,31 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-250                                            STORIA DI ROMA ANTICA
+COSPIRAZIONE E DITTATURA
+251
 
-In Italia il suo ritorno è atteso con timore: ricorda troppo da vicino l'altro
-sbarco; quello di Silla; poco meno di vent'anni prima. Contro ogni aspettativa e oscuro
-presentimento il generale, ormai potentissimo, cede l'esercito a Brindisi. Chiede "solo"
-al Senato di approvare il suo operato in Oriente; accettandone la sistemazione. Ma il
-Senato rifiuta (62 a.C.), spaventato dall'immenso potere di Pompeo e per nulla commosso
-dal suo rispetto per la legalità repubblicana e non sistema i veterani di Pompeo.
+CATILINA
 
-BROGLI ELETTORALI TRA SPLENDIDI MARMI
-*Le elezioni politiche; come dimostrano gli accordi tra Pompeo, Cesare e Crasso o le
-macchinazioni per bloccare Catilina, in età tardo repubblicana sono ormai completamente
-controllate: Il voto è guidato da chi paga di più e al mattino prepara più spazi per i suoi
-clienti. Crasso, ma gli altri non sono da meno, offre banchetti al popolo e per tre mesi
-prima della sua elezione distribuisce frumento a Romano. Cesare costruisce nel Campo
-Marzio i *Saepta Iulia* ossia il recinto per le elezioni di cui è rimasto solo un pezzo di
-muro lungo il Pantheon. Si trattava d'una splendida cinta marmorea, affiancata da un
-enorme porticato; dove si svolgevano comodamente le operazioni di voto. In quest'area
-rettangolare (286 x 94 metri) ampie campate, separate da barriere di legno o di funi,
-dividono le unità di voto. A sud si trova il *diribitorium*; dove si effettua lo spoglio dei
-voti. L'ironia della storia vuole che Cesare costruisca questo complesso quando il voto dei
-cittadini romani perde apertamente significato; monumentalizzando il tramonto dell'espressione
-più alta della vita politica repubblicana.*
+Il rientro di Pompeo dall'Oriente coincide con la denuncia della congiura di Catilina. Lucio Sergio Catilina era un nobile, esponente dell'antica famiglia dei Sergii, ormai ridotta in povertà.
 
-I BANCHETTI DI LUCULLO
-*Dopo le imprese asiatiche, Lucullo a Roma si dedica a una esistenza agiata e comoda. La
-sua passione è soprattutto il buon cibo e trova modo di far partecipe della sua passione
-anche il popolo; invitando tutta Roma a banchetto dopo il corteo trionfale (66 a.C.). Le sue
-cene sono famosissime. Essere invitati da Lucullo significa provare i cibi più raffinati, le
-pietanze più strane e inconsuete. A ogni tipo di cibo si accompagna anche un salone
-differente delle sue numerose e ricchissime dimore. Quando ordina la cena ai suoi cuochi
-è sufficiente che indichi loro il luogo dove vorrà mangiare. In un tempo rapidissimo le mense
-sono allestite e imbandite. Anche quando cena da solo vuole che molte tavole siano
-imbandite, perché, come ama dire, quando non ci sono ospiti, c'è sempre Lucullo che cena
-con Lucullo.*
+La sua carriera era iniziata sotto i migliori auspici nella cerchia di Pompeo Strabone, padre di Pompeo Magno. Nonostante la mancanza di denaro (per spettacoli ed elargizioni alla plebe), Catilina diventa questore (78 a.C.) ed edile (71 a.C.). Implicato in diversi scandali che scuotono lo Stato in questi anni, Catilina è avversato dall'oligarchia senatoria.
 
-CENTRATI IN MAIUSCOLETTO NEL FLUSSO DEL TESTO
+Tra le tante dicerie che circolano sul suo conto si dice che sia l'amante di sua figlia e che abbia ucciso il proprio fratello. I suoi tentativi d'ottenere il consolato sono ripetutamente ostacolati.
 
-MALCONTENTO, RICCHEZZA E AMBIZIONE
-La situazione a Roma si fa sempre più difficile. La congiura di Catilina dimostra che
-intrighi e ambizioni personali hanno sostituito i partiti e le idee politiche (63 a.C.). Il
-risentimento di Pompeo verso il Senato è sfruttato da un nuovo personaggio; Gaio Giulio
-Cesare; da poco in primo piano sulla scena politica. Il suo passato non è dei più limpidi e
-dei più coerenti. Sposatosi con *Cornelia*, figlia di *Cinna* (vedi box ...), era stato
-proscritto da *Silla*. Il dittatore l'aveva perdonato e il suo reinserimento nella vita politi-
+Il suo programma è basato sulla cancellazione dei debiti e sull'assegnazione di terre alla plebe, per questo è pericolosamente "demagogico". Contro il rischio che queste misure così popolari gli garantiscano un pericoloso consenso, Catilina è bocciato per la terza volta, nonostante l'aiuto di Crasso e Cesare.
+
+A questo punto decide di fare leva sugli elementi sillani concentrati in Etruria, sul malcontento della plebe urbana e dei nobili, afflitti come lui dai debiti, per scatenare una rivolta.
+
+In Etruria cresce un esercito in armi sotto il comando di Manlio, un giovane nobile legato a Catilina. Il piano è di suscitare un'insurrezione armata in Etruria e di uccidere i due consoli a Roma.
+
+Cicerone, avversario di Catilina alle elezioni, è divenuto console e per vie traverse viene a conoscenza della congiura. Catilina e i suoi seguaci, nonostante la mite proposta di Cesare (confiscare i beni lasciando loro la vita), sono condannati a morte in contumacia, senza diritto di appello.
+
+Alcuni congiurati catturati a Roma sono giustiziati: Catilina e molti suoi seguaci muoiono sul campo, combattendo coraggiosamente.
+
+Il trionfo di Cicerone diventa il trionfo del governo senatorio. Ma in questo regime repubblicano, apparentemente forte e legalitario, Catilina ha trovato spazio per una rivolta e creare un esercito. Catilina, al di là della turpe fama che lo circonderà grazie alle orazioni di Cicerone (le *Catilinarie*) e al racconto dello storico Sallustio (*La congiura di Catilina*), assomiglia moltissimo a un capro espiatorio, mentre si salvano alcuni suoi favoreggiatori, tra i quali Cesare.
+
+***
+
+Ca non aveva avuto grandi difficoltà. Come questore aveva anche seguito Pompeo in Spagna. L'amicizia col milionario Crasso rappresenta la sua salvezza: infatti Cesare è perennemente rincorso dai creditori per il saldo dei suoi infiniti debiti. Crasso salda i debiti e finanzia l'arruolamento di uomini. Quando ha i mezzi per "fare" politica, Gaio Giulio Cesare diventa il sostenitore del partito popolare.
+
+Il malcontento di Pompeo, la ricchezza di Crasso e l'ambizione di Cesare costituiscono un cocktail esplosivo.
+
+I tre si alleano sulla base di un accordo privato, noto come «primo triunvirato» (tre uomini), basato sul principio che l'unione fa la forza: Pompeo s'impegna a passare voti a Cesare per il consolato del 59 a.C., Cesare s'impegna a fare approvare provvedimenti orientali di Pompeo e a sistemare i veterani, Crasso si fa portavoce degli interessi dei gruppi finanziari in Oriente.

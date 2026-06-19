@@ -1,16 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CITTÀ-STATO: CONTINUITÀ E RINNOVAMENTO
+92
 
-91
+STORIA DI ROMA ANTICA
 
-[Immagine: Incisione che raffigura Clelia che fugge dal campo degli Etruschi]
+BRUTO: IL 'TIRANNICIDA
 
-*Clelia fugge dal campo degli Etruschi, attraversando il Tevere con le compagne, incisione di B. Pinelli.*
+Lucio Giunio Bruto rappresenta per i Romani il primo eroe della Repubblica; il Romolo della libertà. Tutte le storie narrate sul suo conto non tolgono spessore storico al suo personaggio; ma rendono più problematica la sua figura. Nei torbidi anni dopo la caduta dei Tarquini, il fiero tirannicida assomiglia quasi a un nuovo tiranno. Il tempo che probabilmente intercorre tra la cacciata di Tarquinio il Superbo e la sua morte (durante la guerra con Porsenna) fa intuire che il potere di Bruto non fu annuale. La sua statua era sul Campidoglio insieme a quelle dei re: si può dire che Bruto, come un tiranno laico, desacralizza il potere. L'istituzione del primo pontefice al *rex sacrorum*, il fantasma repubblicano del re creato dallo stesso Bruto, toglie quel minimo di potere religioso che ancora conserva. Si intuisce che la figura di Bruto come grande difensore della libertà repubblicana è necessariamente una creazione posteriore. Sebbene i Romani dopo la fine dei Tarquini abbiano un sacro terrore della monarchia, la storia del primo secolo della Repubblica è costellata da figure quasi "regali". L'accusa si chiamerà *affectatio* (amore per il regno) e colpirà diversi eroi del nuovo Stato come Publio Valerio Publicola (l'altro padre della Repubblica), Spurio Cassio (il console plebeo) e Marco Manlio Capitolino (il difensore del Campidoglio durante l'incendio gallico), tutti accusati di eccessivo amore per il potere assoluto.
 
-PATRONI E CLIENTI
+[ I PLEBEI NON HANNO GENS ]
 
-Anche nel regime repubblicano la *gens* costituisce la componente più importante della città. È formata da un gruppo di famiglie che si riconoscono come discendenti da un comune antenato; vero o mitico: La *familia*, ossia la famiglia in senso più stretto, si distingue dalla *gens*; perché vi fanno riferimento tutte le persone legate tra loro da parentela e discendenti da un antenato reale. La forza della *gens* è costituita dalle famiglie che vi appartengono; ma anche dai *clienti* (da *cluere*, obbedire) che dipendono dal capo della stessa *gens*: Tale forma di dipendenza ha un'origine antica. Nasce dall'esigenza dei più deboli di assicurarsi aiuti economici, protezione e assistenza; fondamentali nei momenti di carestia e di guerra. Il vincolo della clientela assicura la protezione del patrono (*patronus* da *pater*) e comporta l'obbedienza assoluta del cliente; soggetto a prestazioni forzose di lavoro (*corvées*) nella cura delle terre e degli armenti: inoltre il cliente è obbligato a fornire aiuto in caso di guerra. Con la dichiarazione della propria sottomissione al patrono il cliente, dal punto di vista giuridico, diventa quasi un figlio, cioè privo di diritti: rinuncia ai propri antenati, che sono sostituiti dai Lari del patrono; addirittura rinuncia al proprio gentilizio, che è sostituito da quello del patrono e signore.
+I primi due secoli della Repubblica sono contrassegnati dalle lotte fra patrizi (i discendenti dei *patres*, gli aristocratici) e plebei, due antagonisti collettivi del potere.
 
-Il peso politico della clientela è chiaramente visibile nella venuta di Tarquinio Prisco a Roma e nel successivo arrivo di Attio Claudio dalla Sabina.
+[ L'ARRIVO DELLA GENS CLAUDIA ]
 
-*Le lastre fittili di rivestimento di molti palazzi dell'Etruria, come quello di Murlo a Siena (vedi capitolo «Un avventuriero etrusco sul trono di Roma»).*
+Il racconto tradizionale fa risalire ai primi anni della Repubblica l'arrivo della gens Claudia a Roma. Il sabino Attio (poi alla romana Appio) Claudio lascia per ragioni politiche l'originaria Inregillum e decide di trasferirsi a Roma col suo seguito di parenti, amici e clienti. Lo seguono circa 5000 clienti a ciascuno dei quali è assegnato un terreno di due iugeri (*heredium*); mentre al nobile Appio Claudio (accolto poi nella cerchia patrizia) sono assegnati venticinque iugeri.
+
+Il *iugero* (da *iugum*, giogo) era l'estensione di terreno che poteva essere arata in una giornata da una coppia di bovini e corrispondeva a circa un quarto di ettaro.
+
+L'arrivo della gens Claudia perpetuava una tradizione di spostamenti, nota fin dalle epoche più antiche. L'assignatio di terra a Appio Claudio e ai suoi seguaci probabilmente coincide con la creazione della tribù Claudia; cioè il territorio dove originariamente abitavano i Claudii.

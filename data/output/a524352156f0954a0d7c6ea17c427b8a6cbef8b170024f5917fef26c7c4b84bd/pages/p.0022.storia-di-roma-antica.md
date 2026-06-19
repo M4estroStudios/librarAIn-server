@@ -1,21 +1,11 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-22                                           STORIA DI ROMA ANTICA
+UN FIUME, UN GUAI, UN CROCEVIA $\quad$ 23
 
-[Immagine: incisione in bianco e nero]
+La guerra tra Latini e Troiani vede Turno sconfitto, ma Latino cade in battaglia. Turno si rivolge allora all'etrusco Mezenzio, re di Caere (Cerveteri). Per rispondere alla pericolosa minaccia, Enea unifica gli aborigeni e i Troiani in un solo popolo, che prende il nome di Latino. In una successiva battaglia, gli Etruschi e i Rutuli sono sconfitti e Turno viene ucciso da Enea; è l'ultima impresa dell'eroe, che durante la medesima battaglia scompare misteriosamente. Ascanio abbandona Lavinio sovrappopolata e fonda Alba Longa sulle pendici del monte Albano. Il trattato di pace tra Latini ed Etruschi, concluso dopo la morte di Turno, delimita sul Tevere il confine tra i due popoli.
 
-*L'immagine raffigura la celebre personificazione del fiume insieme alla lupa capitolina e ai due gemelli Romolo e Remo; sullo sfondo, inoltre, si distinguono alcuni celebri monumenti dell'antica Roma, giustapposti senza tenere conto della realtà topografica; in un'incisione di G. Vasi.*
+In quattrocento anni si succedono trenta re sul trono di Alba Longa, finché Proca lascia due figli, Numitore e Amulio, che si contendono il potere. Amulio riesce a scacciare il fratello primogenito Numitore e costringe Rea Silvia, figlia di questi, a divenire vergine Vestale, impedendole così di generare figli. Malgrado l'obbligo della verginità, Rea Silvia concepisce due figli e ne attribuisce la paternità a Marte.
 
-LA LEGGENDA DI ENEA
-*La discendenza dei Romani dai Troiani è un elemento d'invenzione. Si è avanzata spesso l'ipotesi che la leggenda possa tramandare lontani echi della presenza dei mercanti e dei viaggiatori micenei in Italia tra il XVI e il XV secolo a.C., ma quest'ipotesi suggestiva è priva di basi concrete.*
+I due neonati (Romolo e Remo) sono destinati a essere affogati nel Tevere, ma una provvidenziale inondazione impedisce ai servi del re di accostarsi alle sponde del fiume. I gemelli vengono abbandonati presso il fico Ruminale (nell'area del Foro Romano, presso la zona centrale dove si teneva il Comizio), dove li trova il pastore Faustolo, la cui moglie Larenzia — dedita a quanto pare alla prostituzione — aveva il soprannome di "lupa". Sarebbe lei, secondo l'interpretazione degli antichi che volevano spiegare ragionevolmente la leggenda, la lupa che allatta i due neonati.
 
-È indubbio che la leggenda di Enea è presente nella cultura latina da una data antica, ma è posteriore alla data di nascita di Roma (753 a.C.).
-
-Una prima versione del mito forse già correva a Lavinio (Pratica di Mare) nel VII secolo a.C. Comunque, nel I secolo a.C., poca distanza dalle mura di questa città, esisteva un santuario dedicato all'eroe troiano, costruito trasformando parzialmente un tumulo del VII secolo a.C.
-
-Il santuario ha funzionato da centro di diffusione dei racconti leggendari sulla presenza di Enea nel Lazio; anche perché il mito troiano fondava e rinsaldava il ricordo della parentela e della vicinanza culturale tra i popoli latini che abitavano a sud del Tevere: è lo stesso meccanismo in base al quale si dice che la democrazia italiana si basa sui valori della Resistenza, anche se i vari partiti sono continuamente in lotta per il potere.
-
-Il mito di Enea servì oltre che a scopi di propaganda nella politica interna dei popoli latini, anche nelle relazioni di Roma col mondo greco.
-
-Per i Greci la leggenda troiana era una narrazione di fatti realmente accaduti; questa storia era il legame che univa concretamente le varie città-stato, al di là delle discordie e delle lotte. In quanto discendenti di Enea, i Romani erano in qualche modo dei cugini, legati da sempre alle vicende e alla storia dei Greci.
-
-Questo particolare aspetto della leggenda di Enea, elaborato da alcuni autori greci nel V secolo a.C., ebbe uno sviluppo del tutto autonomo dalla elaborazione laziale centrata su Lavinium (l'odierna Pratica di Mare).
+[Immagine]
+Romolo e Remo in un'incisione tratta da *Monumenti scelti della Villa Borghese*, di A. Nibby; 1832.

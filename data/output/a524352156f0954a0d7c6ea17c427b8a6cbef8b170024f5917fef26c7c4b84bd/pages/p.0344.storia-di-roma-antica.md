@@ -1,19 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-344                                           STORIA DI ROMA ANTICA
+L'IMPERO NELLA SUA MASSIMA ESPANSIONE 345
 
-to di dare vita a gruppi esclusivi e differenziati; questi avevano grande suc-
-cesso e diffusione il culto del dio Mitra, di origine persiana, e lo stesso cristianesimo.
+[Immagine: Planimetria e sezione dei Mercati Traianei]
 
-GLI EQUITES SINGULARES E LA NUOVA POLITICA
+Mercati Traianei, planimetria generale e sezione (L. Lancaster).
 
-Traiano si trovò così a governare un Impero colossale; che richiedeva un im-
-pegno continuo e il nuovo imperatore seppe fare bene la sua parte, rimanen-
-do sul trono per ben diciannove anni. Innanzitutto, Traiano diede vita a un
-corpo speciale di informatori che lo aggiornassero sulle idee politiche presi-
-nti nell'Impero; che lo avvertissero in tempo del formarsi di gruppi di opposizione dai quali potevano nascere eventuali congiure. Quindi alla guardia pretoriana; composta da Italici, Traiano affiancò un corpo di soldati a cavallo, detti *equites singulares*, arruolati fra i Germani e i Pannoni. Con queste due iniziative; Traiano si garantì la sicurezza personale. Successivamente l'imperatore decretò un sistema di sussidi economici per l'infanzia povera e assicurò la distribuzione gratuita di grano ai non abbienti.
+LA CONQUISTA DELLA DACIA
 
-I MERCATI DI TRAIANO
+Tutti questi atti politici e amministrativi fanno da corona a quello che fu il grande progetto di Traiano: la conquista della Dacia e il consolidamento del confine con i Parti per assicurare la continuità dei commerci con la lontana India. La conquista della Dacia era già stata ideata da Domiziano ma Traiano ne fece il cardine del benessere dell'Impero; in quanto l'invasione di quel territorio, che oggi è l'attuale Romania, fu motivata dalla necessità di garantire a Roma il possesso delle miniere d'oro della Dacia.
 
-A ridosso del Quirinale sono situati i Mercati di Traiano, articolati in terrazze e con la via Biberatica (cosiddetta nel Medioevo) a separare le due terrazze principali. Sono disposti a emiciclo; perfettamente simmetrici, con bella architettura in laterizio nella quale; con lo stesso materiale; sono lesene sostenenti archi e frontoni a incorniciare le finestre. Inferiormente; si aprono delle *tabernae*; fiancheggiate da stipiti e architravi in travertino e pavimentate da mosaici con tessere in bianco e nero. Attraverso due scale all'interno dei vani alle estremità, si accede al piano superiore; dove le *tabernae* sono invece situate verso l'interno; fronteggiate da un corridoio illuminato da ampie finestre. Attraverso altre rampe di scale si accede alla via Biberatica, scoperta; sulla quale si affacciano altre *tabernae* a ridosso del colle, ben conservate, e quelle verso la piazza prospicienti su un'ampia terrazza. Quasi all'altezza della odierna via Quattro Novembre si apre un'ampia sala; con copertura a sei crociere, che presenta; nella parte superiore; delle aperture somiglianti un matroneo; accessibile dal primo mediante scale. Qui si aprono altre stanze, due delle quali, con nicchie alle pareti, prendono luce da un piccolo cortile; forse destinato a un funzionario preposto alle vendite. In altre stanze dovevano essere forse uffici utilizzati dal personale della direzione. Da un passo di Ulpiano sappiamo che erano gli *arcarii*, cioè coloro che riscuotevano le tasse e che tenevano il pubblico denaro. Gli *arcarii vinarii* erano coloro che avevano il compito di provvedere di vino la capitale; gli *arcarii frumentari*, che provvedevano al rifornimento e alla distribuzione di grano e gli *olearii*, che curavano la vendita dell'olio a basso prezzo. Mercati Traianei erano perciò rivendita ufficiale dell'Impero; dove la merce, portata dai vari magazzini dislocati nella città, veniva subito distribuita.
-
-Alleggerì le tasse provinciali, mentre lasciò autonomia amministrativa alle varie città dell'Impero: Traiano; inoltre, favorì grandi lavori pubblici, come un altro acquedotto per Roma destinato a portare l'acqua alle grandi terme che fece edificare sul colle Oppio: Sempre a Roma; egli affidò all' architetto Apollodoro di Damasco la costruzione dei grandi mercati alle falde del Quirinale; che dovevano diventare il cuore pulsante dell' economia dell'Impero: Ampliò; inoltre; la rete stradale e favorì la costruzione di ponti e di nuove città coloniali.
+L'arrivo nell'Impero romano di un notevole rifornimento di oro avrebbe garantito il potere di acquisto della moneta corrente; che era il denario; il cui

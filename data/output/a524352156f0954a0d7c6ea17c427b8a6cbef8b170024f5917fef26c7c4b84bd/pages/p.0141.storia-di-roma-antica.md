@@ -1,20 +1,23 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-EGEMONIA NELL'ITALIA CENTRO-MERIDIONALE 141
+142
 
-...lis, la vecchia città) ma nel 470 a.C. la città era stata ricostruita e spostata a est (*Neapolis*, la città nuova). I Sanniti da tempo si erano infiltrati tra gli originari abitanti greci (come aveva già fatto quella cumana); la plebe insieme ai Sanniti si ritira a *Paleapolis*.
+STORIA DI ROMA ANTICA
 
-La città vecchia dopo un lungo assedio si arrende al console Publilio Filone. Il trattato che ne segue (326 a.C.) contempla condizioni molto favorevoli per i vinti e da questo momento inizia la politica filoellenica che caratterizzerà successivi rapporti col mondo greco; ma il trattato con Napoli esaspera i rapporti con i Sanniti, già deteriorati durante l'assedio:
+Le forche caudine
+(da F. Bartolini).
 
-Gli scontri armati che seguono sono comunemente chiamati seconda (326-304 a.C.) e terza (298-290 a.C.) guerra sannitica. In realtà sono un'unica lunga ed estenuante guerra (interrotta da periodi di tregua) nella quale è coinvolta la maggior parte delle popolazioni italiche, alleate con l'uno o con l'altro dei contendenti.
+Vestono le loro azioni con una patina di correttezza giuridica, apparentemente inattaccabile; la sfortunata vicenda delle Forche Caudine insegna qualcosa e provoca profondi cambiamenti nella struttura militare romana.
 
-LA RIFORMA DELL'ESERCITO E LE ARMI DEL LEGIONARIO
+La ripresa del conflitto inizialmente è ancora sfavorevole all'esercito romano, nuovamente battuto (315 a.C.). Si combatte a Satrico; a Lautulae fra Terracina e Fondi, ad Ausonia, a Minturno, a Vescia. La fondazione della colonia di Luceria (314 a.C.), tra Puglia e Sannio, concretizza l'ampliamento del controllo territoriale romano, già rafforzato in altro modo con l'alleanza di Marsi, Peligni, Marrucini e Frentani. Il trasferimento delle 2500 famiglie di coloni a Luceria segna il futuro tracciato della via Valeria, che i Romani cominciano ben presto a costruire.
 
-L'esperienza della prima guerra sannitica, durante la quale la parte più povera dell'esercito si rifiuta per un momento di combattere, comporta un cambiamento nella struttura dell'esercito, già modificata da Camillo. Abbandonata la falange oplitica e la centuria, sull'esempio dei Sanniti si adotta il manipolo (120 persone), molto più mobile, composto da tre file di soldati armati. L'abbandono della centuria comporta la crisi dell'esercito oplitico e dell'ordinamento centuriato. Grazie al manipolo lo sforzo bellico è distribuito in maniera più uniforme e non è più concentrato nelle prime classi di censo. Anche l'armamento è rinnovato: i soldati sono tutti dotati di scudo, delle medesime armi e l'unica differenza riguarda i cittadini più ricchi che possono permettersi la cotta di maglia. Lo scudo dopo l'incendio gallico non è il *clipeus* (scudo rotondo), ma si adotta lo *scutum*, il grande scudo rettangolare, che diventerà il classico simbolo del legionario romano.
+La deduzione di colonie ai margini del territorio sannita ha lo scopo di rafforzare il possesso delle terre strappate con fatica al nemico. Nel 313 a.C. si deducono Saticola e Suessa, mentre l'anno dopo nella mille volte perduta valle del Liri è fondata Interamna. Nello stesso anno è dedotta la colonia di Ponza con lo scopo di proteggere le coste.
 
-UMILIATI E VENDICATI
+Sanniti adottano la tattica della guerriglia ed evitano gli scontri decisivi: per questo Roma invia sul campo gli uomini migliori, come Lucio Papirio Cursore o Quinto Fabio Rulliano, che a Terracina riporta una delle prime effettive vittorie.
 
-Nella seconda guerra sannitica i Romani cercano d'accerchiare il nemico occupando il territorio dei Vestini, una popolazione situata a nord del territorio sannita. Gli scontri avvengono nella regione occidentale tra Lazio e Campania e nel Sannio, dove i Romani tentano di penetrare con un'azione troppo azzardata. I due consoli, Tito Veturio Calvino e Spurio Albino, rimangono bloccati a Caudio (tra Capua e Benevento) nella doppia valle delle Forche Caudine.
+Per Roma le difficoltà aumentano. Il ruolo di città egemone impone un prezzo enorme in fatica e sangue. Al pericolo sannita si aggiungono gli Etruschi, che attaccano alle spalle i Romani (vedi capitolo Romani e la penisola).
 
-I Sanniti obbligano i consoli a firmare un accordo infamante e a passare sotto un giogo, insieme a tutti i soldati, seminudi e privi di armi, mentre li coprono di insulti e facezie (321 a.C.).
+Sanniti tentano allora di colpire Roma al fianco, staccando i fedelissimi Ernici (306 a.C.). Finalmente la presa di Roviano, capitale dei Pentri, suggella il successo della strategia romana (305 a.C.). Ma per entrambi i contendenti si tratta d'una mezza vittoria e d'una mezza sconfitta:
 
-La tradizione ha chiaramente minimizzato l'episodio, presto lavato da nuove vittorie. In realtà i termini del trattato (non un *foedus* ma una *sponsio*, ossia un trattato vincolante solo per i comandanti) contemplano l'evacuazione di tutte le colonie romane della valle del Liri e lasciano trasparire una pesante sconfitta. Il popolo romano non si ritiene vincolato dai patti, ma consegna al nemico i consoli (unici responsabili della *sponsio*) ed è libero di scendere di nuovo in campo contro i Sanniti. Ancora una volta con procedure dubbie i Romani
+Romani non sono riusciti ad annullare la potenza sannita e i Sanniti non hanno bloccato l'espansione romana: così un altro inevitabile scontro si profila all'orizzonte.
+
+Per Roma il pericolo che precede l'ultima guerra sannitica ferve di attività. Nuove fondazioni di colonie cercano di proteggere territori appena conquistati: sul...

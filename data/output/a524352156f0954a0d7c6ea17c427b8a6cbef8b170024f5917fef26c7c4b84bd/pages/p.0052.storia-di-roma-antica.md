@@ -1,18 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-52                                                                    STORIA DI ROMA ANTICA
+RE LATINO-SABINI 53
 
-| |
-| :--- |
-| *Il dio Crono. Da una statua conservata nel museo del Louvre di Parigi.* |
+**IL CULTO DEI LARI E I LORO TEMPLI**
 
-![Immagine del dio Crono]
+I Lari sono i geni (creature divine o spiriti) degli antenati defunti che proteggono la famiglia dei vivi. Essi somigliano ai Penati, altre divinità tipiche della casa che vegliano sulle provviste familiari (*penus*).
+Esiste dunque un culto familiare dei Lari (*Lar familiaris*) celebrato dall'intera famiglia intorno al focolare e un culto "esterno" che coinvolge l'intera comunità. I Lari (come *Lares Compitales*, cioè dei crocicchi delle strade) sono intesi come i primordiali abitatori del territorio e diventano gli antenati ideali dei cittadini romani. Durante la festa dei *Compitalia* — la festa cioè dei crocevia *compita*, celebrata i primi giorni di gennaio — è compreso anche un sacrificio a questi Lares che proteggono non la casa ma i luoghi civici.
+Il loro tempio (*aedes Larum*) è situato vicino alla casa di Anco Marcio, nei pressi della porta Mugonia. Un altro sacello o piccolo tempietto dei Lari è collocato nel Foro vicino all'antica porta Romanula.
 
-...so è arrivato a conclusione più tardi sotto la dinastia etrusca, quando ormai Roma è già divenuta la prima potenza del Lazio.
+**IL VOLCANALE**
 
-### LA DIVISIONE DEL LAVORO E LE DIFFERENZE SOCIALI
+Vulcano (il dio del fuoco identificato con il greco Efesto) è celebrato nelle solenni feste (*Volcanalia*) del 23 agosto. Come Saturno, è presente nelle origini mitiche di Roma.
+Vulcano è il padre di Caco, il pastore ladro (per altri un mostro sputafuoco) che pensò di alleggerire Ercole dei buoi di Gerione.
+Il Volcanale è l'antico santuario dedicato a Vulcano nel Foro Romano ed è spesso erroneamente identificato con l'area di Saturno, vicino all'Arco di Settimio Severo. Gli antichi scrittori ci forniscono precise indicazioni per identificare l'area di Vulcano nel Comizio.
+Una pietra nera (*Lapis Niger*) indica il luogo funesto dove in circostanze misteriose è morto Romolo; gli antichi scrittori ci dicono che Romolo è stato ucciso nel Volcanale. È lecito dedurre che l'area di Vulcano coincidesse col complesso del Lapis Niger. Quest'ultimo è stato costruito almeno nel VI sec. a.C. e in tempo il Volcanale deve esser stato trasferito nelle vicinanze, forse nella piccola area quadrata che ancora oggi si vede a 5 metri a sud-est del Lapis Niger. Scavi sotto il pavimento di marmo nero vicino alla Curia Giulia hanno rivelato la presenza di un piccolo santuario (formato da un altare, da un'iscrizione e da una colonna con la statua della divinità); questo complesso è tuttora visibile vicino alla Curia Giulia, coperto da un pavimento di vetro e da una tettoia di lamiera.
 
-L'accelerato sviluppo della città e l'aumento della popolazione corrispondono a un salto di qualità nella vita dei suoi abitanti, almeno per quelli benestanti. Alla semplice capanna si sostituisce un'abitazione con fondazioni di pietra e muri di mattoni crudi, composta da più stanze.
+**DA PASTORI A MERCANTI**
 
-Le attività principali sono ancora la pastorizia e l'attività agricola, ma si registra una maggiore divisione del lavoro. Precedentemente ciascuno si occupava di attività destinata ad assicurargli la sussistenza; adesso cominciano a manifestarsi delle differenze sociali che hanno degli effetti anche sull'assegnazione dei diversi compiti. Si consolida un'aristocrazia che si distingue dalla massa povera che non possiede nulla. Nelle sepolture accanto a tombe modeste, compaiono altre tombe piene di oggetti preziosi e d'importazione.
-
-Il lusso di questa nuova aristocrazia provoca non solo un aumento della produzione di oggetti di consumo (specialmente vasi e vasellame), ma ne stimola anche l'importazione. La ricchezza di queste aristocrazie, diffuse nell'intero Lazio e in Etruria meridionale, è attestata dalle ricchissime tombe principesche di Preneste.
+La fame di lusso dell'aristocrazia stimola il commercio, favorito anche dalla consueta apertura del mondo romano agli stranieri, che cominciano a stabilirsi nell'urbe. Essi producono non solo terrecotte di alto livello, ma anche numerosissimi oggetti di bronzo e soprattutto di ferro, destinato a divenire il materiale maggiormente usato. Abbiamo così spade, lance, coltelli, fibule (spille o fibbie che sostituiscono i bottoni negli abiti). Accanto alla produzione comune, rivolta a una fascia abbastanza ampia della popolazione, sono attestati anche prodotti destinati a un piccolo gruppo ristretto, appunto membri dell'aristocrazia. Si tratta di elmi, scudi, carri a due ruote, morsi di cavallo e vasi metallici.
+Le donne di rango hanno i loro oggetti di lusso come gli specchi e le piccole *cistae* (contenitori cilindrici, in genere per gioielli) lavorate a sbalzo.

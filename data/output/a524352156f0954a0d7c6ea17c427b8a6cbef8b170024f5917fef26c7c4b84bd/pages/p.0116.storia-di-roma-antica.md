@@ -1,17 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-116
+ASCESA, CADUTA E RESURREZIONE DI ROMA 117
 
-STORIA DI ROMA ANTICA
+co gallico è così ridotta a una serie di episodi, che esaltano singoli personaggi o forniscono modelli di comportamento esemplari.
 
-[Incisione: Le donne romane donano i loro ori per amore della patria, incisione di B. Pinelli.]
+Le vergini Vestali e il Flamine di Quirino portano a Caere i tesori sacri di Roma con l'aiuto del plebeo Lucio Albinio, che li accoglie sul suo carro in fuga da Roma. Poi lo stesso Lucio Albinio avrebbe riportato a Roma i sacra e le Vestali. Secondo una tradizione diversa, i tesori sacri sarebbero stati nascosti dalle Vestali e dal *flamen Quirinalis* in grandi vasi (*doliola*) e sepolti a Roma nel tempio di Quirino. Mentre tutti i Romani rimasti nella città si rifugiano sul Campidoglio, sacerdoti e vecchi senatori, indossati i paramenti sacri e le vesti delle grandi occasioni, restano seduti immobili sui seggi della Curia. Sono tutti massacrati, quando il vecchio Marco Papirio colpisce con un colpo di bastone il gallo che ha osato tirargli la barba: Il giovane plebeo Ponzio Cominio attraversa le linee nemiche, lasciandosi prima trasportare dal Tevere e scalando poi un versante impervio del Campidoglio; per ottenere dal Senato romano l'investitura ufficiale, richiesta da Camillo in esilio per rimettersi alla testa dell'esercito romano contro i Galli.
 
-tera città e si decide di resistere soltanto sulla rocca capitolina: I Galli possono così liberamente saccheggiare e incendiare Roma e assediano il Campidoglio; anzi secondo alcune fonti lo espugnano. Alla fine d'un lungo ed estenuante assedio i Romani pagano un grosso riscatto in oro e i Galli si ritirano.
+Il giovane patrizio Gaio Fabio Duorsone attraversa anch'egli lo schieramento gallico, per recarsi a Roma a compiere nel tempio di Quirino o nel tempio di Vesta i sacrifici tradizionali della *gens* nei giorni prescritti.
 
-LA PRESA DI ROMA: I RACCONTI LEGGENDARI
+I Galli tentano un'incursione notturna sull'area capitolina e stanno per riuscire nel loro intento — perché le sentinelle e i cani non fanno buona guardia —, ma le oche sacre a Giunone si mettono a starnazzare e risvegliano la guarnigione, permettendo ai difensori di respingere gli assalitori. Tra gli altri si distingue il patrizio Marco Manlio, che per questo assume il cognome o soprannome onorifico di Capitolino.
 
-Su questo semplice canovaccio si intrecciano numerosi narrazioni leggendarie. Gli storiografi romani non possono passare sotto silenzio il traumatico avvenimento; riportato insistentemente nelle fonti greche. La storia del sac-
+[Immagine]
 
-***
-
-[TESORI SACRI MESSI AL SICURO
-Gli antichi eruditi affermano che sono sette oggetti che assicurano la salvezza di Roma: il cocchio di terracotta di Veio, la madre degli dèi; le ceneri di Oreste; lo scettro di Priamo; il velo di Ilio; il Palladio (la statua di Pallade Atena che si diceva provenisse da Troia) e gli *ancilia* (gli scudi dei Salii). Alcuni aggiungono anche due vasi antichissimi e due statue in misura ridotta dei Penati. Non è importante ricostruire l'elenco degli oggetti sacri trasferiti a Caere: insieme al fuoco del focolare comune quegli oggetti simboleggiano la sopravvivenza dello spirito di Roma. Per questo l'aiuto di Lucio Albinio (per porre in salvo le Vestali e i *sacra*) è ricordato con particolare evidenza dagli antichi. Aristotele lo definisce come il salvatore di Roma, ignorando del tutto l'importanza di Camillo. Non per nulla in un'iscrizione in suo onore, posteriore di qualche secolo; si leggeva: «Mentre i Galli stavano assediando il Campidoglio / egli condusse le Vergini Vestali a Caere. Colà si assunse la responsabilità di far sì, che i sacrifici e le cerimonie non venissero interrotti. / Quando la città si riprese egli riportò / i sacri oggetti e le Vergini a Roma». Ei Romani manifestarono lungo grande riconoscenza per Caere, che aveva ospitato i *sacra*.]
+Manlio e le sentinelle, svegliati dagli schiamazzi delle oche, respingono i Galli che assaltano il Campidoglio, incisione di B. Pinelli.

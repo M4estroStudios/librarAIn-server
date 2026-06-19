@@ -1,19 +1,30 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-1 ROMANI E LA PENISOLA                                                                            159
+160
 
-può essere aggirata con la promessa solenne, pronunciata davanti all'esercito in armi, d'un edificio templare a una divinità e questo tempio è poi costruito col bottino (*de manubiis*) ricavato dalla vittoria dal generale vincitore.
+STORIA DI ROMA ANTICA
 
-II. RINNOVAMENTO URBANISTICO
+È noto il cosiddetto tempio C dell'Area sacra di Largo Argentina, il terzo da nord tra quelli ancora visibili. Con quest'edificio comincia un lungo periodo di riorganizzazione e trasformazione dell'area del Campo Marzio: con molta probabilità era dedicato a Feronia; il culto di questa divinità della Sabina è introdotto col consueto rituale dell'*evocatio* (la «chiamata fuori» del dio dalla città vinta) e con l'offerta di un tempio a opera del console Manio Curio Dentato dopo la vittoria sui Sabini nel 290.
 
-Quasi nulla è rimasto visibile del notevole arricchimento edilizio di Roma tra IV e III secolo a.C. Oltre ai numerosi templi, negli ultimi decenni del IV secolo a.C. e nei primi decenni del III secolo è noto che sono costruiti due acquedotti; inoltre sono innalzate alcune statue onorarie di privati e almeno due statue colossali di divinità.
+L'altro in tufo risale alla fase più antica del tempio, di cui rimangono frammenti della decorazione architettonica in terracotta e alcune iscrizioni.
 
-Pochissime opere di questo periodo hanno lasciato qualche traccia e tra que-
+ANCORA SUI NOMI DEI ROMANI
 
-***
+Agli inizi del II secolo a.C. è ormai stabilita l'usanza definitiva dell'onomastica dei ceti superiori. Ogni individuo è connotato dal prenome (= il nostro nome proprio), dal nome (= il gentilizio) e dal cognome (ulteriore specificazione familiare all'interno d'una *gens*): ad esempio Publio Cornelio Scipione.
 
-MANIO CURIO DENTATO E L'URBANISTICA
+Progressivamente, specie nei casi di clan familiari molto prolifici, si aggiungono altri soprannomi che diventano specifici cognomi di un ramo familiare all'interno di una *gens*. Così avremo gli Scipioni Barbati o Cetegi, eccetera.
 
-*Manio Curio Dentato è uno dei personaggi più illustri della media Repubblica romana. È un homo novus, ossia non discende da magistrati curuli e non appartiene per nascita alla nobilitas romana. Si distingue come generale; ricopre il consolato per quattro volte (290, 284, 275 e 274); è nominato censore nel 272. A lui si devono nel 290 la vittoriosa conclusione della terza guerra sannitica e la conquista della Sabina, per le quali celebra il trionfo; nel 283 sconfigge i Sènoni e riporta vittorie anche sugli Etruschi; batte definitivamente Pirro nel 275. A Manio Curio Dentato è attribuita anche una notevole attività edilizia a Roma. Costruisce il tempio di Feronia, votato in seguito alla vittoria sui Sabini, da identificarsi probabilmente col tempio C di largo Argentina. Col bottino ricavato dalla vittoria su Pirro nell'anno della censura procede all'edificazione dell'Anio Vetus; il secondo acquedotto di Roma in ordine cronologico, che porta a Roma l'acqua dell'Aniene, convogliata presso Vicovaro.*
+LE TRENTACINQUE TRIBÙ DEI ROMANI
 
-[Immagine: planimetria]
-*Area sacra del largo Argentina, planimetria generale.*
+Le prime tre tribù di Roma antica sono i Tities, Ramnes e Luceres, secondo la tradizione risalenti a Romolo e corrispondenti alle genti che formano il nucleo originario della nuova città (tribù «genetiches»). Nel periodo di passaggio tra la monarchia e la repubblica vengono istituite ventuno tribù, cui corrispondono altrettanti ambiti territoriali: quattro entro la città (tribù urbane) e diciassette nell'agro romano (tribù rustiche). Altre diciotto tribù sono create nel corso del IV e del III secolo, in corrispondenza alle conquiste e al conseguente allargamento del territorio controllato direttamente da Roma: nel 241 a.C. viene così raggiunto il numero definitivo di trentacinque tribù.
+
+Tutti i cittadini romani creati dopo questa data sono iscritti a una delle tribù già esistenti. Le tribù costituiscono la base dei comizi curiati (ogni tribù è suddivisa in 10 curie) o dei tributi (assemblee di tutto il popolo romano o della sola plebe) che hanno poteri legislativi, elettorali e giudiziari e funzionano fino agli inizi del principato.
+
+Le tribù dei Romani (sono indicati il momento della creazione e il territorio di pertinenza):
+
+* **ante 495 a.C.**: 4 tribù urbane: Esquilina, Palatina, Collina, Suburana (regioni di Roma); 17 tribù rustiche, di cui 6 più antiche: Lemonia, Camilia, Pupinia, Pollia, Romilia e Voltinia (stretta fascia dei villaggi intorno a Roma) e 15 più recenti: Voturia, Aemilia, Horatia, Papiria, Menenia, Claudia, Sergia, Cornelia, Fabia, Galeria (area più esterna di territori di pertinenza delle *gentes* dell'aristocrazia romana) e Clustumina (annessione dell'agro di Crustumerio);
+* **387**: Stellatina, Sabatina, Tromentina e Arnensis (agro veiente e capenata);
+* **358**: Pomptina (area pontina) e Poblilia (territorio degli Ernici);
+* **338**: Scaptia e Maecia (territorio laziale: Lanuvio e Velletri);
+* **318**: Falerna (agro Falerno) e Dufentina (valle del fiume Ufente);
+* **299**: Aniensis (territorio degli Equi, nella valle dell'Aniene) e Terentina (territorio degli Aurunci);
+* **241**: Velina (territorio dei Pretuzii) e Quirina (area sabina).

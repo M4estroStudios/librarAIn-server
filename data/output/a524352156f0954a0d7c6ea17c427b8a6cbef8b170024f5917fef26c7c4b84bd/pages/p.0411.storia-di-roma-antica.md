@@ -1,233 +1,194 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-INDICI: DEI NOMI
+418
 
-Scipione Africano Publio Cornelio; 167-192, 195-199, 202, 204, 210, 215, 227, 229
-Scipione Asiatico Lucio Cornelio; 167, 215
-Scipione Barbato Lucio Cornelio; 163
-Scipione Barbato Publio Cornelio; 143, 215
-Scipione Emiliano Publio Cornelio; III, 209, 211-212, 214-216, 220, 223, 234
-Scipione Gneo Cornelio; 167
-Scipione Nasica Publio Cornelio; 191, 221, 224
-Scipioni, dinastia; 192, 194-195, 214-215
-Scribonia; 287, 290
-Seiano Lucio Elio; 297-299, 301-302, 304
-Sele, fiume; 248
-Selene; 305
-Seleuco; 249
-Selinunte di Cilicia; 346
-Semele; 80
-Semo Sancus; 106
-Sempronio Gracco; 218
-Seneca; 309-310, 312, 322-323
-Senigallia; 123, 155
-Senna, fiume; 257
-Sentino; 143, 155, 157, 162
-Sergia; 151
-Sergia, tribù; 160
-Sergii, dinastia; 251
-Sertorio; 243, 247-249
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa; 59
-Sinuessa; 144
-Siracusa; 122, 149, 167-168, 194-195
-Siria; 158, 199, 202, 253, 297, 328-329, 342, 354, 380-381
-Sisto V; 332
-Settimia Zenobia; 379-380
-Settimio Odenato; 379
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
+INDICE DEI NOMI J: J-U
 
-***
-
-INDICI: I LUOGHI
-
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa; 59
-Sinuessa; 144
-Siracusa; 122, 149, 167-168, 194-195
-Siria; 158, 199, 202, 253, 297, 328-329, 342, 354, 380-381
-Sisto V; 332
-Settimia Zenobia; 379-380
-Settimio Odenato; 379
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
-
-***
-
-INDICI: I LUOGHI
-
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa; 59
-Sinuessa; 144
-Siracusa; 122, 149, 167-168, 194-195
-Siria; 158, 199, 202, 253, 297, 328-329, 342, 354, 380-381
-Sisto V; 332
-Settimia Zenobia; 379-380
-Settimio Odenato; 379
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
+Taranto, 104, 143, 145-148, 150, 152, 154, 157, 195-196, 270
+Tito Tarquinio, 86
+Tito Tazio, 32-35, 37
+Tarpea, 33
+Tito Veturio Calvino, 141
+Tarpea, rupe, 95, 119-120, 129
+Tivoli, 20, 31, 51, 96, 351, 380
+Tarpeo, monte, 33, 61
+Tizio, 207
+Tarquini, dinastia, 43, 58, 63, 76, 81, 88-90, 102, 104, 110, 122, 125, 162
+Tolfa, monti, 10
+Tolomei, dinastia, 283, 305, 319
+Tarquinia, 86, 138
+Tolomeo, 257-258, 272, 305
+Tarquinia, 50, 55, 58, 82-83
+Tolomeo Filadelfo, 152, 158
+Tarquinio Cneo, 74
+Tomi, 290
+Tarquinio Collatino, 87, 89
+Torino, 186
+Tarquinio il Superbo, 58-59, 64, 87-88, 92, 96
+Torre in Pietra, 11
+Tarquinio Lucio, 83
+Torrenova, 10
+Tarquinio Prisco, 40, 57-60, 62-69, 72, 78, 81, 83-85, 89, 91-92, 112, 128, 133
+Tor San Lorenzo, 10
+Tapso, 258
+Toscana, 28-29, 240
+Teano, 138
+Tracia, 219, 308, 369, 379
+Teisicrate, 230
+Traiano Decio, 374, 377
+Tellene, 46, 49
+Traiano Ulpio, 341, 344-348, 375
+Terentina, tribù, 160, 165
+Trapani, 149, 170-173
+Terenzio Culleone, 199
+Trasimeno, lago, 188
+Termopili, 204, 207
+Trebbia, fiume, 186-187
+Terni, 156, 377
+Treboniano Gallo, 376-377
+Terracina, 297-298
+Treviri, 377
+Teuta, 173, 175
+Tripolitania, 171
+Tevere, fiume, passim
+Troade, 191
+Teuta, 173, 175
+Troia, 7, 21, 111, 118, 122, 143
+Tiberina, isola, 28-29, 150
+Tromentina, tribù, 160
+Tiberina, valle, 97
+Tullia Drusilla, 304
+Tullo Ostilio, 38, 41-43, 46-49, 63, 129
+Tullia Maggiore, 83
+Tiberio Claudio Nerone, 285, 290-291, 295-301, 305, 307
+Tullia Minore, 83, 85
+Tiberio Gemello, 297, 304
+Tunisi, 166, 170
+Tiberio Sempronio Longo, 186
+Tunisia, 199
+Ticino, fiume, 186, 196
+Turchia, 204, 276
+Tigellino, 314
+Turi, 146, 148
+Tigrane, 247
+Tumo, 22-23
+Tigri, fiume, 361
+Turno Erdonio, 85
+Timesiteo, 110
+Tuscania, 179
+Tinia, 133
+Tuscolo, 85, 88, 96, 98, 123, 137
+Tiridate, 324
+Tusculum, v Tuscolo
+Tirreno, mare, 10, 89, 123, 158, 183, 285
+Tiro, 149, 166
+Tities, tribù, 160
+Umbria, 143, 155, 342
+Uni, 133
+Urgulanilla, 304
+Utica, 149, 198
 
 ***
 
-INDICI: I LUOGHI
+412
 
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa; 59
-Sinuessa; 144
-Siracusa; 122, 149, 167-168, 194-195
-Siria; 158, 199, 202, 253, 297, 328-329, 342, 354, 380-381
-Sisto V; 332
-Settimia Zenobia; 379-380
-Settimio Odenato; 379
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
+INDICE DEI NOMI E DEI LUOGHI
 
-***
+Taranto, 104, 143, 145-148, 150, 152, 154, 157, 195-196, 270
+Tarpea, 33
+Tarpea, rupe, 95, 119-120, 129
+Tarpeo, monte, 33, 61
+Tarquini, dinastia, 43, 58, 63, 76, 81, 88-90, 102, 104, 110, 122, 125, 162
+Tarquinia, 86, 138
+Tarquinia, 50, 55, 58, 82-83
+Tarquinio Cneo, 74
+Tarquinio Collatino, 87, 89
+Tarquinio il Superbo, 58-59, 64, 87-88, 92, 96
+Tarquinio Lucio, 83
+Tarquinio Prisco, 57-60, 62-69, 72, 78, 81, 83-85, 89, 91-92, 112, 128, 133
+Tapso, 258
+Teano, 138
+Teisicrate, 230
+Tellene, 46, 49
+Terentina, tribù, 160, 165
+Terenzio Culleone, 199
+Termopili, 204, 207
+Terni, 156, 377
+Terracina, 297-298
+Tessalonica, v Salonico
+Teuta, 173, 175
+Tevere, fiume, passim
+Thefarie Velianas, 83
+Tiberina, isola, 28-29, 150
+Tiberina, valle, 97
+Tiberio Claudio Nerone, 285, 290-291, 295-301, 305, 307
+Tiberio Gemello, 297, 304
+Tiberio Sempronio Longo, 186
+Ticino, fiume, 186, 196
+Tigellino, 314
+Tigrane, 247
+Tigri, fiume, 361
+Timesiteo, 110
+Tinia, 133
+Tiridate, 324
+Tirreno, mare, 10, 89, 123, 158, 183, 285
+Tities, tribù, 160
+Tito Aurelio Fulvio Boionico Antonino, 352
+Tito Erminio, 90
+Tito Flavio Vespasiano, 307, 328-330, 334, 337
+Tito Flavio Vespasiano, figlio di Vespasiano, 307, 332-334, 337, 339
+Tito Otacilio, 188
+Tito Papirio Cursore, 162
+Tito Tarquinio, 86
+Tito Tazio, 32-35, 37
+Tito Veturio Calvino, 141
+Tivoli, 20, 31, 51, 96, 351, 380
+Tizio, 207
+Tolfa, monti, 10
+Tolomei, dinastia, 283, 305, 319
+Tolomeo, 257-258, 272, 305
+Tolomeo Filadelfo, 152, 158
+Tomi, 290
+Torino, 186
+Torre in Pietra, 11
+Torrenova, 10
+Tor San Lorenzo, 10
+Toscana, 28-29, 240
+Tracia, 219, 308, 369, 379
+Traiano Decio, 374, 377
+Traiano Ulpio, 341, 344-348, 375
+Trapani, 149, 170-173
+Trasimeno, lago, 188
+Trebbia, fiume, 186-187
+Treboniano Gallo, 376-377
+Treviri, v Sacco
+Trevis, v Sacco
+Trevi, 377
+Tripolitania, 171
+Troade, 191
+Troia, 7, 21, 111, 118, 122, 143
+Tromentina, tribù, 160
+Tullia Drusilla, 304
+Tullia Maggiore, 83
+Tullia Minore, 83, 85
+Tullo Ostilio, 38, 41-43, 46-49, 63, 129
+Tunisi, 166, 170
+Tunisia, 199
+Turchia, 204, 276
+Turi, 146, 148
+Turno Erdonio, 85
+Tuscania, 179
+Tuscolo, 85, 88, 96, 98, 123, 137
+Tusculum, v Tuscolo
+Tiro, 149, 166
+Ufente, fiume, 160
+Ulisse, 143
+Umbria, 143, 155, 342
+Uni, 133
+Urgulanilla, 304
+Utica, 149, 198
 
-INDICI: I LUOGHI
-
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa; 59
-Sinuessa; 144
-Siracusa; 122, 149, 167-168, 194-195
-Siria; 158, 199, 202, 253, 297, 328-329, 342, 354, 380-381
-Sisto V; 332
-Settimia Zenobia; 379-380
-Settimio Odenato; 379
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
-
-***
-
-INDICI: I LUOGHI
-
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa; 59
-Sinuessa; 144
-Siracusa; 122, 149, 167-168, 194-195
-Siria; 158, 199, 202, 253, 297, 328-329, 342, 354, 380-381
-Sisto V; 332
-Settimia Zenobia; 379-380
-Settimio Odenato; 379
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
-
-***
-
-INDICI: I LUOGHI
-
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa; 59
-Sinuessa; 144
-Siracusa; 122, 149, 167-168, 194-195
-Siria; 158, 199, 202, 253, 297, 328-329, 342, 354, 380-381
-Sisto V; 332
-Settimia Zenobia; 379-380
-Settimio Odenato; 379
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
-
-***
-
-INDICI: I LUOGHI
-
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa; 59
-Sinuessa; 144
-Siracusa; 122, 149, 167-168, 194-195
-Siria; 158, 199, 202, 253, 297, 328-329, 342, 354, 380-381
-Sisto V; 332
-Settimia Zenobia; 379-380
-Settimio Odenato; 379
-Severi, dinastia; 357
-Severo Flavio Valerio; 387
-Severo Lucio Settimio; 329, 357, 359, 363
-Shahpur; 376-377
-Shakespeare William; 96
-Sibilla; 85, 132
-Sicilia; 21, 31, 113, 149, 166-167, 170, 172-173, 177-178, 181, 183, 192, 194, 200, 214, 220, 237, 266, 285, 296
-Siena; 10, 91
-
-***
-
-INDICI: I LUOGHI
-
-Siface; 194-195, 198
-Signia; 86, 96
-Silio Gaio; 304
-Silla Lucio Cornelio; 232-250, 267, 375, 386
-Silvia Mesa
+Vaballato, 380
+Vadimone, v Bracciano
+Valeria, 141
+Valerii Flacci, famiglia, 236
+Valerio Asiatico, 302

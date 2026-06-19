@@ -1,20 +1,26 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-RICONCILIAZIONE E CONSENSO                                              289
+290
 
-***
+STORIA DI ROMA ANTICA
 
-LA MODESTA DIMORA DELL'IMPERATORE
+LA CARTA DELL'IMPERO
 
-Nella villa suburbana degli Ottavii, presso Velletri, si conserva (e si venera in età imperiale) un ambiente modestissimo; più simile a una dispensa che a una stanza; dove si dice che sia nato e sia stato allevato Augusto.
+Le conquiste militari della tarda Repubblica e dei primi anni di Augusto ampliano i confini dell'Impero: ma, per dominare il mondo, è necessario conoscerlo; misurarlo, descriverlo, rappresentarlo; Roma (*Urbs*) è al centro del mondo (*Orbis*). Da Roma partono le strade per l'Italia e per le province.
 
-Roma egli abita in un primo tempo presso il Foro; sopra le *Scalae Anularie* (sede delle botteghe dei gioiellieri). Acquista la casa dell'oratore Ortensio sul Palatino. Al contrario di tante *domus* aristocratiche del tempo; la sua dimora non si fa notare per particolare lusso: sono assenti marmi e mosaici di pregio; un piccolo porticato e un terrazzo dove lavorare tranquilli ne costituiscono gli ornamenti e i pregi. Augusto dorme per quarant'anni nella stessa stanza e sullo stesso semplicissimo letto. Quando vuole stare in pace va a dormire da qualche liberto o da Mecenate.
+Nel Foro Romano è perciò posto nel 20 a.C. il *miliarium aureum* (miliario d'oro), una colonna rivestita in bronzo dorato su cui sono segnate le distanze da Roma delle principali città dell'Impero. Misurazioni del mondo conosciuto sono state già intraprese, probabilmente per iniziativa di Cesare, e si sono protratte per alcuni decenni.
 
-La casa d'Augusto, ampliata più riprese acquistando altre case adiacenti (tra cui una destinata agli appartamenti di Livia) e in stretta relazione col tempio di Apollo Palatino, è collegata tramite un passaggio interno: perché il principe possa avere accesso diretto alla dimora del dio che lo protegge. Allo stesso modo gli appartamenti di Livia si trovano vicini al tempio della Magna Mater. Con tutti i mezzi si sottolinea l'eccezionalità dei personaggi che vi abitano e il messaggio appare anche più evidente, se si pensa che nella stessa area la tradizione collocava la casa o la capanna di Romolo: soltanto Augusto, rifondatore di Roma e protetto da Apollo, poteva abitare in quel luogo.
+Augusto stesso descrive le province e le regioni estreme dell'Impero nell'autobiografia politica (*Res Gestae*) e numerose opere di carattere storico-geografico vedono la luce in questi anni.
 
-LE 11 REGIONI D'ITALIA
+La realizzazione destinata ad avere ampia eco è senz'altro la famosa carta dell'Impero, fatta disegnare da Agrippa per essere esposta davanti agli occhi di tutti nel cuore di Roma; affissa alla parete interna della *porticus Vipsania*. Questa grande carta murale contribuiva a diffondere, rappresentandola visivamente, l'idea dell'Impero universale, inaugurato da Augusto.
 
-Augusto suddivide anche l'Italia in 11 regioni: non si tratta però d'una ripartizione amministrativa della penisola, paragonabile alla moderna struttura regionale. Nel complesso questa suddivisione offre un quadro geografico per l'organizzazione centralizzata dei dati demografici, risultanti dai censimenti, e probabilmente anche per altre operazioni di archivio (catasti, elenchi delle proprietà imperiali, definizione delle circoscrizioni fiscali). Il criterio di formazione delle nuove regioni risponde al desiderio di valorizzare le antiche popolazioni confluite nella nuova Italia romana, estesa dalle Alpi allo stretto di Messina (la Sicilia e la Sardegna rimangono infatti province).
+VIZI PRIVATI E PUBBLICI E VIRTÙ
 
-Le regioni inizialmente sono denominate con un numero d'ordine (*Regio I*, *II* ecc.). Ben presto si afferma l'uso di appellativi che ricordano antichi abitanti, ormai tutti cittadini romani: *Latium et Campania*, *Sabina et Sannium*, *Apulia et Hirpinia*; *Lucania et Bruttium*; *Etruria*; *Umbria*; *Picenum*; *Venetia et Histria*; *Liguria*. Significativamente mancano nomi delle popolazioni galliche; nemiche tradizionali di Roma. Così la *Regio VIII* (terra dei Boi) è chiamata *Aemilia* (in ricordo dell'asse stradale portante della romanizzazione) e la *Regio XI* (terra degli Insubri) è detta semplicemente *Transpadana*.
+Uno degli obiettivi del regime augusteo è il ritorno all'antica moralità della famiglia romana. Tutti gli uomini (tra 25 e i 60 anni) e le donne (tra i 20 e i 50) devono contrarre matrimonio, altrimenti non possono ricevere eredità e lasciti o partecipare alle cerimonie pubbliche. Si scoraggiano i divorzi e si persegue una politica d'incremento demografico, con incentivi e privilegi per chi ha numerosa prole: mentre chi non ha figli può ricevere per testamento solo la metà di quanto gli è destinato.
 
-I primi due, adottati da Augusto nel 17 a.C., prendono il nome di Gaio Cesare e Lucio Cesare. Agrippa praticamente è il coreggente d'Augusto: ma muore nel 12 a.C. e i due figli muoiono nel 2 e nel 4 d.C. Augusto adotta il nipote Agrippa Postumo, che ben presto per la sua condotta immorale deve essere esiliato nell'isola di Ventotene. Uguale destino è riservato alle due Giulie; figlia e nipote di Augusto; la prima quale principessa, la seconda però...
+Leggi particolari puniscono l'adulterio e l'impudicizia. Ogni relazione extraconiugale è perseguita: sono colpite sia le donne coniugate che le vergini e le vedove.
+
+La moralità della donna diventa un fatto pubblico: la condotta immorale è un crimine perseguito dallo Stato. Queste leggi non hanno un effetto positivo: del resto l'esempio offerto dalla famiglia di Augusto e dai suoi amici non è dei migliori. Augusto ha quattro mogli e Agrippa tre. Giulia (figlia di Augusto e Scribonia) ha tre mariti; Scribonia stessa, prima di Augusto, ha avuto due mariti e ha un figlio dal secondo.
+
+Livia è tolta da Augusto a Tiberio Claudio Nerone, mentre è ancora sposata con lui ed è incinta. Ripudi e divorzi sono all'ordine del giorno nella famiglia dei Giulii. Interessi privati e ragioni di Stato guidano scelte matrimoniali e separazioni. Ma la stessa morale privata è discutibile, tanto che le due Giulie, figlia e nipote di Augusto, sono esiliate per condotta immorale a Ventotene. L'esilio di Ovidio, sul Mar Nero, del famoso poeta sembra collegato con uno scandalo avvenuto alla corte imperiale. Agrippa Postumo, nipote dell'imperatore come già detto, è tolto dalla successione e mandato in esilio per la sua condotta scandalosa. Tiberio è costretto da Augusto a ripudiare la prima moglie, amata e che lo ha già reso padre. La casa del principe ha comportamenti in contrasto con i princìpi informatori del nuovo regime.
+
+Per di più Augusto è accusato dalla voce popolare di sodomia, di essere sempre pronto a soddisfare la sua libidine, con la scusa di conoscere le macchinazioni dei suoi avversari attraverso le loro mogli. E per soddisfare le sue voglie, gli amici e persino la moglie Livia, gli procurano spose e vergini.

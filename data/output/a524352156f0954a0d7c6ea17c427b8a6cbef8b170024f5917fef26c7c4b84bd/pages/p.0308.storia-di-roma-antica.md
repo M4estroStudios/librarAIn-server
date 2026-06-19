@@ -1,20 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-308                                                                    STORIA DI ROMA ANT.
+UNA DINASTIA COMPLICATA: I GIULIO-CLAUDII 309
 
-LE REALIZZAZIONI DELL'IMPERATORE «INCAPACE»
+![Agrippina in un'incisione tratta dall'Illustrium imagines]
 
-Claudio, benché succube delle mogli e dei liberti, si rivela sorprendentemente all'altezza del compito. La sua prima preoccupazione è l'approvvigionamento di acqua e di viveri della capitale. Intraprende un'unica campagna militare, la conquista della Britannia, che diviene provincia romana: dai suoi generali sono annesse all'Impero anche la Mauritania e parte della Tracia. Viene inoltre acquisita pacificamente la provincia del Norico: in conseguenza di questo allargamento dei confini dello Stato romano Claudio amplia anche il pomerio di Roma; i cui limiti sono ancora fissati da Silla. Aumenta anche il numero dei cittadini e (vincendo una tenace opposizione del partito conservatore) fa ammettere al Senato di Roma anche i maggiorianti della Gallia Comata, provincia ormai fortemente romanizzata.
+*Agrippina in un'incisione tratta dall'Illustrium imagines.*
 
-IL POPOLO SAZIO NON SI RIVOLTA
+ghi, di cui Claudio va ghiotto: Claudio muore: Ma anche dopo la morte egli è oggetto di battute e scherzi. Basti pensare che il filosofo Seneca scrive addirittura una satira intitolata *La trasformazione in zucca del divino Claudio*.
 
-La plebe urbana è sempre affamata e la maggiore preoccupazione di chi governa è l'approvvigionamento alimentare dell'Urbe: la regolare distribuzione gratuita di frumento. Per questo è creato da Augusto un apposito ufficio; cui sovrintende un funzionario equestre di grado molto elevato, il prefetto dell'annona: ogni carestia è motivo di disordini. In occasione di un aumento dei prezzi dei viveri l'imperatore Claudio è bersagliato dalla folla con pezzi di pane raffermo ed è costretto a rifugiarsi precipitosamente nel palazzo dalla porta di servizio per evitare il peggio.
+**NASCE IL CORPO DEI POMPIERI**
 
-Si spiegano così gli sforzi per garantire il regolare afflusso di viveri e la loro distribuzione. Claudio rimborsa e premia gli armatori che effettuano viaggi anche d'inverno per rifornire Roma.
-
-Fa costruire un apposito edificio coperto (*porticus Minucia frumentaria*) dove la plebe che ne ha diritto (il numero è fissato in 200.000 cittadini, nati e residenti a Roma), munita di un'apposita tessera, può ritirare uno dei 44 sportelli le razioni di frumento spettanti (40 kg all'anno per persona).
-
-Per avere terre coltivabili vicino alla capitale Claudio non esita a intraprendere i colossali lavori per la bonifica del bacino del Fucino; che impiegano trentamila uomini per undici anni. E dall'Egitto promuove la costruzione del nuovo porto di Ostia, che fa dotare anche di un faro, in imitazione di quello di Alessandria:
-
-UN PIATTO DI FUNGHI E UNA ZUCCA IMPERIALE
-
-Dopo varie vicissitudini amorose, Claudio si è fatto irretire dalla nipote Agrippina, donna ambiziosa e intrigante che gli ha fatto adottare il figlio Lucio Domizio; avuto da uno dei precedenti mariti, il nobile Lucio Domizio Enobarbo, ed estromettere dalla successione il proprio figlio Britannico; avuto dalla prediletta Messalina. Per rafforzare i diritti al trono del giovane Tiberio Claudio Nerone (questo è il suo nome dopo l'adozione) gli fa anche dare in moglie Ottavia; figlia di Claudio e Messalina: tutto sembra combinato per la successione: ma Agrippina è impaziente. Preferisce regnare come imperatrice madre che come moglie dell'imperatore: si accorda così col prefetto al pretorio Afranio Burro (è infatti indispensabile avere pretoriani dalla propria parte) e decide di eliminare il marito. L'arma del delitto è un piatto di funghi.
+Il problema degli incendi è endemico a Roma: La città ha avuto una crescita di popolazione enorme e uno sviluppo urbanistico disordinato. Strade strette, case popolari a più piani (*insulae*) costruite in fretta con materiali combustibili (legno; paglia) creano le condizioni per continui incendi che dilagano in un batter d'occhio distruggendo quartieri interi. Tentativi di risanamento e di prevenzione si susseguono senza successo dalla tarda età repubblicana. Si organizzano squadre di volontari; si addestrano gruppi di liberti. Alcune corporazioni professionali (taglialegna; carpentieri; fabbricanti di panni) hanno tra i loro compiti l'intervento in caso di incendi. È però Augusto a creare un primo corpo militare incaricato della prevenzione e dello spegnimento degli incendi, *vigiles*. Organizzati in coorti e coordinati da un funzionario di rango equestre; il prefetto dei vigili, essi sono distribuiti nei quartieri della città e sorvegliano sulla sicurezza del fuoco. Il corpo è perfezionato e ampliato dagli imperatori successivi, soprattutto da Claudio; sempre preoccupato della sicurezza dell'Urbe. Egli, anzi, stanzia coorti di vigili stabili anche nei porti di Pozzuoli e di Ostia; importanti per i rifornimenti della capitale.

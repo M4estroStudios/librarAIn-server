@@ -1,16 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-282
+RICONCILIAZIONE E CONSENSO 283
 
-STORIA DI ROMA ANTICA
+*Il teatro di Marcello in un'incisione di G.B. Piranesi.*
 
-LA CITTÀ DI MARMO
+***
 
-Augusto si vanta d'avere trovato Roma di mattoni e d'averla lasciata di marmo. Infatti costruisce (o fa costruire dai suoi amici) numerosi edifici pubblici di prestigio. Sul piano urbanistico è fondamentale il nuovo Foro, costruito per far fronte all'aumento della popolazione dell'Urbe e all'accresciuto numero dei processi; oltre alla ristrutturazione del Campo Marzio settentrionale (vedi box *Un programma nel marmo: l'Ara Pacis*).
+# PADRE DELLA PATRIA
 
-Sotto Augusto sono costruiti o restaurati circa ottanta edifici di culto. Augusto stesso promette in voto e poi dedica, oltre al tempio di Marte Ultore nel nuovo Foro, templi di Apollo sul Palatino e di Giove Tonante sul Campidoglio. Fa restaurare (senza farvi iscrivere il proprio nome, come sottolinea nella propria autobiografia) il Campidoglio e il teatro di Pompeo.
+La forte carica religiosa contenuta nel nome di *Augustus* (un uomo che gode di autorità per augurio divino; vedi pagine precedenti) pone automaticamente Augusto al di sopra di tutti gli altri uomini: Egli evita di farsi venerare a Roma come un dio; contrariamente a quanto avviene nelle province dell'Impero e soprattutto in Oriente e in Egitto, dove il successore dei Faraoni e dei Tolomei è considerato come un dio in terra. Accetta, però, di far intitolare al suo nome il mese Sestile (il sesto dell'anno, secondo l'antico calendario romano, prima dell'introduzione di gennaio e febbraio), divenuto *Augustus* o agosto. Del resto già Cesare aveva cambiato nome al mese Quintile, divenuto *Iulius* o luglio.
 
-In nome dei suoi parenti fa costruire la basilica con portico di Gaio e Lucio, portici di Ottavia e di Livia, il teatro di Marcello.
+È sfruttata a livello pubblico la credenza antichissima che ogni uomo abbia una divinità personale o *Genio*, che lo accompagna tutta la vita. In casa familiari e schiavi venerano nel larario domestico il Genio del capofamiglia (vedi capitolo *I luoghi e le istituzioni*): ugualmente il Genio d'Augusto è associato al culto dei *Lares Compitales*, celebrato nei compita o crocicchi dei vici di Roma; in tal modo Augusto diventa il capofamiglia degli abitanti di ogni quartiere di Roma e quindi di tutto il popolo romano.
 
-All'abbellimento della città contribuiscono gli amici consiglieri di Augusto: Marzio Filippo costruisce il tempio di Ercole Musagete (conduttore delle Muse); Lucio Cornificio il tempio di Diana; Asinio Pollione l'atrio della Libertà; Munazio Planco il tempio di Saturno; Cornelio Balbo un nuovo teatro; Statilio Tauro l'anfiteatro Panfiteatro.
-
-Tra tutti spicca Marco Agrippa con il Pantheon.
+Per questo motivo nel 2 a.C. il Senato e il popolo gli conferiscono il titolo di *padre della patria*.

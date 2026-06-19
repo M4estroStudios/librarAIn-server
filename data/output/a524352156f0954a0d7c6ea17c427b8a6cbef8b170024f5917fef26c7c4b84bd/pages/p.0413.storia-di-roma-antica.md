@@ -1,59 +1,21 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-INDICE DEI NOMI E DEI LUOGHI
+INDICE
 
-Valerio Flacco, 238, 243
-Valerio Messalla, 241
-Valerio Publio, 87
-Valerio Potito, 101
-Valerio Publicola, 92, 94
-Varo, 295-296
-Varrone Caio Terenzio, 189-190
-Vaticano, 318, 321
-Veio, 29, 34, 47, 58, 66, 82, 97, 99, 107-116, 118-119, 121-124, 137
-Velabro, 31
-Velina, tribù, 160, 165
-Velletri, 139, 160, 289
-Venere, 7, 73, 80, 133, 350
-Venere Ericina, 188
-Venere Genitrice, 261
-Venere Murcia, 65
-Venere Ossequiente, 164
-Veneto, 21, 237
-Venosa, 144, 155, 190, 196
-Ventidio Basso, 270
-Ventotene, isola, 290, 295, 299
-Vergilia, 96
-Vero, Lucio Aurelio, 352, 354
-Verona, 354, 374
-Vertumno, 163
-Vescia, 142
-Veseri, fiume, 155
-Vesta, 25, 117, 133, 192, 207, 223, 367
-Vesuvio, vulcano, 155, 334
-Vibia Sabina, 351
-Visconvaro, 159
-Victoria, 147
-Vienna, 355
-Viminale, colle, 35, 37, 78, 385
-Vindelicia, 285
-Vindobona, *v. Vienna*
-Viniciano, 323
-Virgilio, 21, 270, 274
-Virginio Lucio, 99
-Viridomaro, 176
-Virtus, 215
-Vitellio Lucio Aulo, 328
-Vittoria, 162, 191
-Volsinii, *v. Orvieto*
-Voltinia, tribù, 160
-Volturno, fiume, 40
-Volumnia, 96
-Volumnio Lucio, 143
-Volusiano, 376-377
-Voturia, tribù, 160
-Vulca, 66
-Vulcano, 53
-Vulci, 58, 74, 88, 179
-Zama, 197-199, 204
-Zannone, isola, 10
-Zoroastro, 369
+p. 7 Roma prima di Roma (*Vincenzo Matera*)
+p. 21 Un fiume, un guado e un crocevia (*Vincenzo Matera*)
+p. 38 I re latino-sabini (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 55 Un avventuriero etrusco sul trono di Roma (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 72 Il re riformatore, il re tiranno e la rivoluzione (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 89 La città-stato: continuità e rinnovamento (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 107 Ascesa, caduta e resurrezione di Roma (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 123 I luoghi e le istituzioni (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 137 L'egemonia nell' Italia centro-meridionale (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 153 I Romani e la penisola (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 166 Romani e Cartaginesi: è lo scontro (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 183 Romani e Cartaginesi: la conquista del Mediterraneo (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 200 La conquista dell'Oriente (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 217 Roma tra conservatori e innovatori (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 232 Le guerre sociali: Mario e Silla (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 247 Cospirazione e dittatura (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 264 La Repubblica perduta (*Fulvia Mainardis e Claudio Zaccaria*)
+p. 279 Riconciliazione e consenso (*Fulvia Mainardis e Claudio Zaccaria*)

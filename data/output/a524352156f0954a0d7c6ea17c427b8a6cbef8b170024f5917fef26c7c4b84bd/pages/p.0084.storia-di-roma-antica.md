@@ -1,20 +1,32 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-84                                                                    STORIA DI ROMA ANTICA
+IL RIFORMATORE, IL TIRANNO, LE RIVOLUZIONI:
 
-[Immagine: incisione di Tullia sul carro che passa sopra il corpo di Servio Tullio]
+85
 
-*Tullia, moglie di Tarquinio il Superbo, passa con il suo carro sul corpo del padre Servio Tullio, incisione di B. Pinelli.*
+DONNA LO FECE, DONNA LO DISPIACQUE
 
-bizione e l'odio verso l'usurpatore: la piccola fiamma, gettata nel cuore del malvagio compagno; divampa violentemente.
+La vita di Servio Tullio è contrassegnata da donne fatali. La sua incoronazione regale era stata merito della moglie di Tarquinio Prisco; Tanaquil, esperta nella divinazione che aveva convinto il marito a partire per Roma e diventare il re: Tanaquil per prima aveva riconosciuto in Servio i segni di un brillante destino. In definitiva Tanaquil rappresenta un "doppione umano della dea Fortuna, protettrice di Servio Tullio. In molte delle sue azioni sono adombrate quelle d'una dea che sceglie il re, secondo una tradizione biblica. Se una donna fece la sua fortuna, una donna fece la sua rovina. Tullia Minore rappresenta il "doppione negativo" della donna etrusca. È la Fortuna che ha voltato le spalle al suo protetto come racconta una sors, che serviva per le predizioni durante i riti oracolari. Su questo ciottolo è inciso un testo latino che ricorda come la vicenda di Servio e il suo legame con Fortuna fossero ormai divenuti leggenda e quasi proverbio: «Se mi obbedisci, non (ti) voglio rovinare: se non (mi) obbedisci, (ricordati che) per opera della Fortuna Servio va (andò) in rovina».
 
-I due vedovi, unitisi in matrimonio; preparano un piano per togliere il trono a Servio.
+I LIBRI SIBILLINI
 
-Dopo un primo tentativo fallito; Tarquinio, spinto dalla moglie malvagia; si veste degli abiti regali e delle insegne del comando e si presenta nel Foro:
+Durante il regno di Tarquinio il Superbo giunge alla corte del re una straniera decisa a vendergli nove libri contenenti oracoli sibillini (predizioni della Sibilla, la profetessa di Cuma). Tarquinio la deride cacciandola. La donna allora brucia tre di questi libri. Dopo un po' di tempo ritorna dal sovrano proponendogli i libri rimasti allo stesso prezzo richiesto la prima volta. Ancora una volta Tarquinio la deride e la caccia in malo modo. La donna brucia la metà dei libri, tornando dopo alcuni giorni a chiedere il medesimo oro per i tre libri superstiti. Stavolta il re non ride ma comincia a spaventarsi. Chiede consiglio agli auguri che gli predicono una grande sventura per quanto è accaduto e lo invitano ad acquistare immediatamente i libri ancora in possesso della donna. Tarquinio obbedisce e predispone che due uomini di nobile origine ne abbiano cura. Da allora in poi tre testi sacri assunsero un ruolo fondamentale nella vita politica dei Romani, diventando la parola, il consiglio degli dèi nei momenti difficili dello Stato. Quando nell'83 a.C. i testi furono bruciati, nonostante l'accuratissima custodia; su decreto del Senato vennero inviati ad Eritrea, in Asia, dove si trovava famoso oracolo, tre messi per copiarli e ricostruire questo patrimonio.
 
-Il re, sbalordito dall'audacia dell'atto, si precipita nel Senato dove trova il giovane seduto sul trono; Tarquinio accusa Servio, figlio d'una schiava, essersi impadronito illegalmente del potere; La reazione violenta del vecchio re è proprio ciò che sta aspettando: alzandosi, lo afferra e lo scaglia giù dalle gradinate del Senato:
+IL TIRANNO
 
-Il re, ferito e insanguinato; riesce ad allontanarsi insieme ai pochi cittadini ancora fedeli. Ma entra in scena la figlia degenera. Accorsa nel Foro per salutare il marito; in disparte; lo rimprovera per non aver fatto le cose perbene: Servio è ancora vivo ed è necessario mandare qualcuno a finirlo, Tarquinio obbedisce prontamente:
+Tarquinio il Superbo si impadronisce del potere con modalità che contraddistinguono tutto il suo regno. La sua vita e le sue azioni corrispondono pienamente all'immagine del tiranno nel mondo greco. Uccide suo suocero, impedendo la sepoltura; ed elimina senza scrupoli i suoi rivali: la sua tirannide è "senza legge" e al contrario del suo predecessore "democratico" condanna la plebe ai "lavori forzati" per il tempio capitolino. Tarquinio il Superbo è l'unico arbitro della sorte di Roma e priva del suo potere il Senato. Insicuro in patria; ricerca all'esterno l'appoggio necessario. In questo senso va interpretato il matrimonio tra una delle sue figlie e Ottavio Mamilio di Tusculum. Questa città fortemente etruschizzata diviene il tramite per la sottomissione "diplomatica" dei Latini. Senza scrupoli elimina Turno Erdonio; quasi greco.
 
-Tullia sale sul carro e si dirige verso la casa del re, che abita vicino alla Regia: Il cadavere insanguinato di Servio ingombra il *vicus Orbius*, la strada che dalle *Carinae* porta all'Oppio. La figlia non ferma il carro, anzi incita i cavalli che obbediscono.
+***
 
-Le ruote tracciano una lunga linea di sangue sul selciato della strada chiamata da allora *vicus Sceleratus*.
+IL RIFORMATORE, IL TIRANNO E LA RIVOLUZIONE 85
+
+DONNA LO FECE, DONNA LO DISPIACQUE
+
+La vita di Servio Tullio è contrassegnata da donne fatali. La sua incoronazione regale era stata merito della moglie di Tarquinio Prisco, Tanaquil, esperta nella divinazione, che aveva convinto il marito a partire per Roma e diventare re. Tanaquil per prima aveva riconosciuto in Servio un brillante destino. In definitiva Tanaquil rappresenta un "doppione umano" della dea Fortuna, protettrice di Servio Tullio. In molte delle sue azioni sono adombrate quelle di una dea che sceglie il re, secondo una tradizione biblica. Se una donna fece la sua fortuna, una donna fece la sua rovina. Tullia Minore rappresenta il "doppione negativo" della donna etrusca. È la Fortuna che ha voltato le spalle al suo protetto come racconta una sors, che serviva per le predizioni durante i riti oracolari. Su questo ciottolo è inciso un testo latino, che ricorda come la vicenda di Servio e il suo legame con Fortuna fossero ormai divenuti leggenda e quasi proverbio: «Se mi obbedisci, non (ti) voglio rovinare: se non (mi) obbedisci, (ricordati che) per opera della Fortuna Servio va (andò) in rovina».
+
+I LIBRI SIBILLINI
+
+Durante il regno di Tarquinio il Superbo giunge alla corte del re una straniera decisa a vendergli nove libri contenenti oracoli sibillini (predizioni della Sibilla, di Cuma). Tarquinio la deride cacciandola. La donna allora brucia tre di questi libri. Dopo un po' di tempo ritorna al sovrano proponendogli i libri rimasti allo stesso prezzo richiesto la prima volta. Ancora una volta Tarquinio la deride e la caccia in malo modo. La donna brucia la metà dei libri, tornando dopo alcuni giorni a chiedere il medesimo oro per i tre libri superstiti. Stavolta il re non ride ma comincia a spaventarsi. Chiede consiglio agli auguri che gli predicono una grande sventura per quanto è accaduto e lo invitano ad acquistare immediatamente i libri ancora in possesso della donna. Tarquinio obbedisce e predispone che due uomini di nobile origine ne abbiano cura. Da allora i tre testi assunsero un ruolo fondamentale nella vita politica dei Romani, diventando la parola, il consiglio degli dèi nei momenti difficili dello Stato. Quando nell'83 a.C. i testi furono bruciati, nonostante l'accuratissima custodia, su decreto del Senato vennero inviati ad Eritrea, in Asia, dove si trovava famoso oracolo, tre messi per copiarli e ricostruire questo patrimonio.
+
+IL TIRANNO
+
+Tarquinio il Superbo si impadronisce del potere con modalità che contraddistinguono il suo regno. La sua vita e le sue azioni corrispondono pienamente all'immagine del tiranno nel mondo greco. Uccide suo suocero, impedendo la sepoltura, ed elimina senza scrupoli i suoi rivali: la sua tirannide è "senza legge" e al contrario del suo predecessore "democratico", condanna la plebe ai lavori forzati per il tempio capitolino. Tarquinio il Superbo è l'unico arbitro della sorte di Roma e priva del suo potere il Senato. Insicuro in patria, ricerca all'esterno l'appoggio necessario. In questo senso va interpretato il matrimonio tra una delle sue figlie e Ottavio Mamilio di Tusculum. Questa città fortemente etruschizzata diviene il tramite per la sottomissione "diplomatica" dei Latini. Senza scrupoli elimina Turno Erdonio.

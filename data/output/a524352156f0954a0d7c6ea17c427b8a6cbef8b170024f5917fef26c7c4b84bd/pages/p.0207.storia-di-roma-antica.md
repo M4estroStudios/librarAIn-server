@@ -1,20 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CONQUISTA DELL'ORIENTE
+208
 
-207
+STORIA DI ROMA ANTICA
 
-IL CONTO DELLA GUERRA
+[Immagine: Ricostruzione ideale del serbatoio dell'acqua Marcia all'Esquilino di Peter Schenck.]
 
-L'espansione romana in Grecia e in Oriente comincia a far sentire i suoi effetti sull'assetto istituzionale e sociale di Roma. L'azione di Catone il Censore è il segno più chiaro della crisi.
+Ricostruzione ideale del serbatoio dell'acqua Marcia all'Esquilino di Peter Schenck.
 
-Il primo attacco lo sferra ad Acilio Glabrione, il vincitore delle Termopili, accusandolo di avere intascato nascostamente del denaro. Anche a Lucio, fratello dell'Africano, tenta un processo con la medesima accusa: mancano all'appello 500 talenti (una cifra enorme) versati da Antioco. L'Africano interviene personalmente stracciando in aula i registri e sfidando chiunque ad accusare colui che ha vinto Annibale e ha salvato Roma (187 a.C.).
+**L'ACQUA MARCIA**
 
-Tre anni più tardi, quando Catone diviene censore, la denuncia colpisce lo stesso Scipione.
+La popolazione è notevolmente aumentata; le misure igieniche e il fabbisogno di acqua sono cresciuti proporzionalmente. Si spiega così la creazione del secondo acquedotto: l'Aqua Marcia, realizzato nel 144 a.C. Con la sua portata giornaliera di 196.600 metri cubi di acqua dalle fonti di Subiaco, riesce a rifornire i quartieri orientali e centrali, compreso il Campidoglio. Ma dopo vent'anni l'acquedotto si rivela insufficiente. Probabilmente per le medesime zone si crea un nuovo acquedotto di sostegno: l'Aqua Tepula, proveniente da una sorgente tiepida al decimo miglio della via Latina (125 a.C.).
 
-UN NUOVO EDIFICIO PUBBLICO: LA BASILICA
+**LA TERZA GUERRA MACEDONICA**
 
-*Catone costruisce la prima basilica, una delle più grandi innovazioni dell'architettura romana. Basilica proviene dal greco basilikòs (= regale) e designa un'aula porticus basilica (portico regale). Catone durante la sua censura acquista con denaro pubblico gli atri di Menio e di Tizio e al loro posto edifica la basilica Porcia (184 a.C.). L'edificio è collocato a ovest della curia senatus, dell'atrium Libertatis (sede dei censori) e della zona dei tribunali.*
-
-È probabile che inizialmente la basilica sia stata a un piano e priva dei colonnati tipici delle costruzioni posteriori: doveva essere una sala rettangolare coperta; sostenuta da file di pilastri; nella cattiva stagione destinata a servire alle funzioni tipiche del Foro. Alla basilica Porcia si affiancano successivamente la *basilica Emilia*, edificata dai censori del 79 a.C., la *basilica Sempronia* costruita dal padre dei due Gracchi al posto della casa di Scipione Africano e delle botteghe adiacenti. In particolare la basilica Emilia, destinata a vita lunghissima, diventa il monumento simbolico del prestigio della gens Emilia, alla quale tocca la manutenzione e il restauro dell'edificio sino all'epoca cesariana.
-
-La creazione di nuovi punti di ritrovo nel Foro toglie importanza ad aree come il Comizio. Si verifica un progressivo spostamento della sede delle funzioni giudiziarie, politiche ed economiche verso nord-est, fuori dallo spazio forense. L'installazione di un orologio ad acqua, necessario per stabilire l'ora dei processi; fa della basilica Emilia il nuovo centro della attività giudiziaria. Ormai la vita della città si articola su un nuovo asse che comprende il mercato (il *macellum*), le basiliche, il *vicus Tuscus*, l'emporio fluviale e il percorso che porta al Campidoglio; monumentale e abbellito da colonne, statue e archi. Risultano tagliati fuori spazi come l'area circostante alla Regia e al tempio di Vesta; un tempo vero cuore della città. Queste aree riacquisteranno importanza solo alla fine della Repubblica, grazie all'intervento di Cesare e di Augusto.
+Il periodo che intercorre fra la vittoria di Magnesia e la nuova guerra con la Macedonia segna una profonda evoluzione nella politica romana. Nel conflitto con le monarchie ellenistiche si fa sempre più chiara da parte romana una nuova volontà imperialistica. La politica di disimpegno — il protettorato — che hanno funzionato fino a quel momento, sono sottoposti a revisione. L'intervento diretto nelle vicende orientali diviene più massiccio. In Grecia la situazione si trascina nei soliti scontri e conflitti. La "libertà" regalata da Roma è un fardello pesante e pieno di incognite: a Roma importa il mantenimento dell'ordine, unica garanzia per il controllo della situazione. La Lega achea, vecchia alleata, riprende i suoi piani d'egemonia nel Peloponneso. Roma tenta d'arginare l'inevitabile crisi con l'appoggio di Demetrio, il figlio minore di Filippo. Il giovane, che ha vissuto a lungo in Italia come ostaggio, è diventato il portavoce di un atteggiamento filoromano in patria. Filippo, convinto dal primogenito Perseo, ne autorizza l'assassinio. La si-

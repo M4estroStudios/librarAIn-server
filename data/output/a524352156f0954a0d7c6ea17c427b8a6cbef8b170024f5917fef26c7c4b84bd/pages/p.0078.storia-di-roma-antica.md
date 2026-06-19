@@ -1,19 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-78
+II. RE, I REFORMATORI, II. TIRANNO E LA RIVOLUZIONE 79
 
-STORIA DI ROMA ANTICA
+La porta Viminale in una xilografia di A. Loreti.
 
-base alla residenza. Le nuove tribù territoriali, urbane e rustiche (della campagna): rappresentano la nuova articolazione della città serviana.
-Il territorio urbano è diviso in quattro tribù (*la Palatina; la Collina, la Suburana sul Celio; l'Esquilina*) e Roma diviene la «città delle quattro regioni»;
-Le tribù rustiche (le più antiche sono la *Lemonia*, la *Voltinia*, la *Camilia*, la *Pollia*, la *Pupinia*, la *Romilia*) corrispondono probabilmente, come si deduce dal nome di alcune di esse, ai *pagi* (i villaggi) che circondano la città; coprendo probabilmente tutto il territorio romano più antico (*l'ager Romanus antiquus*).
+[Immagine della porta Viminale]
 
-CENTRATO IN MAIUSCOLETTO: LA GRANDE ROMA DEI TARQUINI
+L'intensa crescita edilizia e urbana di Roma durante il regno di Servio Tullio è nota nelle aree maggiormente interessate e meglio conosciute (come il Comizio, la Regia, il foro Boario), anche attraverso numerosi rinvenimenti di terrecotte architettoniche appartenenti ai numerosi edifici pubblici e sacri edificati in questo momento sulla Velia, presso il Tevere, sull'Esquilino.
 
-L'organizzazione dello spazio urbano ed extraurbano comporta una nuova definizione del pomerio romuleo, il limite giuridico-sacrale (vedi il secondo capitolo) è ora ampliato per comprendere anche il Viminale e l'Esquilino.
-Servio Tullio porta a termine la straordinaria ristrutturazione dello spazio urbano, iniziata da Tarquinio Prisco: così riorganizza insieme la città fisica e i suoi abitanti. Il senso di questa città, quasi "rifondata", è dato dalle gigantesche «mura serviane» che circondano l'abitato per una lunghezza di circa 11 km.
+Il Comizio, in coincidenza con l'avvento del nuovo re, è "monumentalizzato". I frammenti di lastre architettoniche che raffigurano processioni di cavalieri e di carri (appartenenti forse agli spioventi della *Curia senatus*) e il cippo con la legge sacra o *Lapis Niger* confermano la sacralità e il significato politico di quest'area.
 
-CENTRATO IN MAIUSCOLETTO: L'ANELLO DELLE MURA SERVIANE
+L'area del foro Boario ha una posizione centrale nel progetto urbano di Servio. Questi abbandona il tempio capitolino, che sarà concluso dal suo successore, e dedica particolare attenzione alla Fortuna, sua dea protettrice. Benché a Servio siano attribuiti numerosi templi dedicati alla dea Fortuna, conosciamo e possiamo localizzare soltanto quello situato nell'area sacra di Sant'Omobono.
 
-Prima della cinta muraria serviana Roma aveva conosciuto altre forme di fortificazione; come le *Carinae* e il *murus terreus* di Anco Marcio. Secondo la tradizione Tarquinio aveva costruito il primo muro di pietra, inglobato in quello serviano. Un tratto ben visibile è quello situato in via del Teatro di Marcello: cinque filari di blocchi quadrati in cappellaccio (un tufo friabile che si estrae dal sottosuolo urbano) inseriti in un muro moderno.
-Qui si apriva la porta *Catularia* che dava accesso al Campidoglio. Dall'altra parte del colle si apriva la porta *Fontinalis*, dalla quale partiva il *vicus Lautumiarum* (le *lautumiae* erano le cave di pietra) verso il Foro. Le mura continuavano verso la sella tra Campidoglio e Quirinale; tagliata successivamente dal foro di Traiano. Sulla cresta del Quirinale si aprivano la porta *Salutaris* e la *Quirinalis*; Dopo un percorso in salita le mura giravano verso sud, costituendo la protezione della parte orientale della città; quella maggiormente esposta; Qui erano situate la porta *Collina* (i resti nel Ministero delle finanze), la porta *Esquilina* (arco di Gallieno) e la porta *Viminalis* (piazza dei Cinquecento); questa ultima porta usciva il *vicus* che andava a formare le vie Nomentana e Salaria. Questo tratto delle mura era fortificato anche da un terrapieno (*agger*) e da una fossa.
-Dopo la porta Viminalis il tratto sicuramente meglio conservato è quello sul fronte della stazione Termini. Altre porzioni di mura si vedono in piazza Manfredo Fanti e in via Carlo Alberto; poco lontano dalla porta Esquilina qui finiva anche la parte fortificata dal terrapieno e da questo punto diviene più difficile l'andamento delle mura. Altro tratto notevole è in viale Aventino, lungo 42 m e alto circa 6; L'Aventino era probabilmente incluso nella prima cinta e nel tratto tra il Piccolo e il Grande Aventino si aprivano le porte *Naevia*, *Raudusculana* e *Lavernalis*; È pressoché impossibile stabilire quale fosse il percorso tra Aventino e Campidoglio. È probabile che le mura corressero parallele al Tevere, includendo il foro Boario dove si trovava la porta *Triumphalis*; che sostituirà il già noto *Tigillum Sororium*; come ingresso della città per il comandante vincitore. In quest'area erano situate anche la porta *Trigemina* (vicino a Santa Maria in Cosmedin), la *Flumentana* (presso il tempio di Portunus) e la *Carmentalis* (presso l'area sacra di Sant'Omobono).
+Edilizia sacra e supremazia politica vanno di pari passo anche durante il regno di Servio Tullio. Come per Tarquinio l'edificazione del tempio capitolino aveva significato spogliare il santuario di Giove Laziale della sua importanza politica e religiosa, così la costruzione del tempio di Diana voluta da Servio Tullio dà un ulteriore colpo alla già vacillante Lega latina e al santuario federale di Diana Aricina.
+
+L'edificio situato fuori dal pomerio sull'Aventino, il colle "plebeo", gode del diritto di asilo, perpetuando una tradizione che risale addirittura a Romolo. Accanto all'edilizia pubblica e sacra il regno di Servio Tullio è caratterizzato anche dalle prime *domus* aristocratiche.
+
+Le ricche, grandiose e sontuose dimore che occupano l'area tra Velia e Palatino confermano il racconto tradizionale sulla venuta di *gentes* straniere (soprattutto etrusche) che si trasferiscono a Roma con amici, parenti e ricchezze. Lo scavo del grande abitato arcaico sulla Laurentina (forse l'antica Tellenae: con una necropoli e una fattoria del VI secolo a.C.) insieme ad altri sca-

@@ -1,26 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-EGEMONIA NELL'ITALIA CENTRO-MERIDIONALE 147
+148
 
-ce di chiedere aiuto a Taranto; si rivolge ai Romani. Una flotta di dieci navi romane solca il golfo di Taranto; contravvenendo palesemente agli accordi del 302 a.C.
+STORIA DI ROMA ANTICA
 
-***
+a.C.: Immediata risposta di Taranto; che riprende Turi e affonda buona parte delle navi, apre la guerra (282 a.C.)
 
-BELLONA: L'IDEOLOGIA DELLA GUERRA E LA MEMORIA DEGLI ANTENATI
+L'AVVENTURA DI PIRRO
 
-Dopo gli interventi di Camillo (vedi capitolo *Ascesa, caduta e resurrezione di Roma*) il foro Boario conosce un nuovo fervore edilizio. In stretto collegamento con i ceti mercantili, Appio Claudio rivitalizza questa area mercantile e commerciale: Nel 296 a.C. accanto al tempio di Apollo Medico costruisce il tempio di Bellona (da *bellum*) che diventa simbolo dell'ideologia della guerra che ormai anima i Romani.
+Taranto in passato, quando era difficile sostenere la spinta delle popolazioni indigene, aveva già chiesto aiuto a condottieri e mercenari spartani (Sparta era la sua madrepatria) ed epiroti. Il primo era stato Archidamo (343-338 a.C.), cui erano seguiti Alessandro il Molosso (336-331) e Cleonino (303-302 a.C.), impegnati quasi tutti contro Apuli e Lucani, le bellicose popolazioni dell'interno. Anche questa volta Taranto segue la tradizione e chiama in soccorso Pirro, sovrano dell'Epiro; l'avventura di quest'ultimo si tinge di toni leggendari, sia per le vittorie mal utilizzate (le proverbiali «vittorie di Pirro»), sia per il grande disegno d'unificazione della Magna Grecia, rimasto uno splendido sogno:
 
-Davanti al tempio si trova la *columna bellica* dove si compiono i rituali della guerra; mentre all'interno sono esposte le *imagines clipeatae* (ritratti scolpiti negli scudi) degli antenati del censore; in uno stretto e ormai indistinguibile legame il sacrario familiare della gens Appia e l'espansionismo o militarismo romano. Quando Roma si consacra alla conquista; inevitabilmente si afferma l'ideologia della Vittoria; già diffusa nel mondo greco con la divinizzazione dell'invincibile Alessandro Magno: Oltre al tempio di Bellona detta *Victrix* (vincitrice) negli anni seguenti sono dedicati il tempio di Jupiter Victor (295 a.C.) ed il tempio di Victoria sul Palatino (294 a.C.). Lo stesso Ercole dell'Ara Maxima diviene *Hercules Victor*, la principale divinità dei generali trionfatori.
+Al primo incrociarsi delle armi Pirro vince Eraclea (280 a.C.), cogliendo il nemico di sorpresa. Il re scende in campo con gli elefanti e con soldati schierati a falange: la disposizione classica delle schiere armate di Pirro sbaraglia i legionari. Per i Romani inizia un momento difficile, perché l'esercito epirota, seguendo la via Latina, giunge pericolosamente fino ad Anagni (forse addirittura a Praeneste). Cinea, l'ambasciatore del re, trattando col Senato, propone condizioni durissime di pace. Il vecchio Appio Claudio Cieco con un vigoroso discorso induce i senatori a rifiutarle: se i Romani avessero accettato quelle condizioni di pace, si sarebbero preclusi qualunque futura possibilità d'intervento nella Magna Grecia. Pirro, incapace di approfittare del successo e del terrore che regna a
 
-***
+[Immagine]
 
-ERCOLE: PUBBLICO
-
-*Uno dei più antichi santuari di Ercole, l'*Ara Maxima* (ritenuto precedente alla stessa Roma romulea) è reso «pubblico» da Appio Claudio. La gens Pinaria da tempo immemorabile controllava l'altare e il culto, affidato ai soli ministri (i *poti*) della gens; legati alla divinità da una sorta di schiavitù sacra (*ierodulia*). Questa «pubblicazione» del culto assume un significato politico ed economico; perché le decime tradizionalmente donate al tempio (dai Pinarii) confluiscono nelle casse dello Stato.*
-
-***
-
-POLITICA E DECORO URBANO
-
-La nuova *nobilitas* patrizio-plebea; in gran parte promotrice dell'espansionismo romano, lascia un segno tangibile della sua potenza e del suo prestigio nel Foro; centro simbolico della città. L'intensa e nota attività edilizia di Caio Menio (vedi capitolo precedente) modifica l'aspetto della piazza; i fratelli Ogulnii, d'origine plebea; fanno erigere, col denaro delle multe inflitte agli usurai, una copia della lupa del Lupercale (a cui aggiungono i gemelli) da collocarsi accanto alla statua dell'augure Attio Navio. 
-
-Nel 296 a.C. accanto al fico Ruminale, un altro plebeo giunto alla censura, Quinto Marcio Rutilo Censorino; erige una statua di Marsia, in memoria della sua gens (sulla base della falsa etimologia *Marcius* da *Marsyas*) mentre i ceppi ai piedi della statua sono il simbolo della libertà dalla schiavitù per debiti, ottenuta dalla plebe con la legge *Petelia Papiria* del 326 a.C. Sempre col denaro delle multe agli usurai si abbellisce anche il tempio Capitolino e l'edile Cneo Flavio, liberto protetto da Appio Claudio, edifica un altare alla Concordia, vicino al Volcanale. Il contatto col mondo greco spinge i Romani importare anche gli uomini ideali: nel Comizio trovano spazio le statue di Alcibiade e di Pitagora; il più forte e il più saggio dei Greci, segno indubbio del fascino del mondo greco su Roma. Il Campo Marzio e il Quirinale; aree importanti nell' età repubblicana, sono ugualmente interessate da edifici sacri voluti dalle famiglie eminenti. I Papirii Cursori terminano nel 293 a.C. il tempio di Quirino, mentre Giunio Rubulco dedica e vota un tempio a Salus (la salvezza).
+Pirro mostra a Fabrizio, ambasciatore romano, un elefante, incisione di B. Pinelli.

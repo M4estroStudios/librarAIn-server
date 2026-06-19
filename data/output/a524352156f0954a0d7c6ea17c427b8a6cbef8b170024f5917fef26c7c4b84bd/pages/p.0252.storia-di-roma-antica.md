@@ -1,18 +1,36 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-252                                           STORIA DI ROMA ANTICA
+ESPLICAZIONE: IL TRIUMVIRATO
 
-[Immagine: incisione di un gruppo di uomini in toga e armatura]
+Quest'alleanza a tre rappresenta una delle fratture più grandi all'interno del sistema politico romano. L'opposizione al Senato diventa ora governo e non più lotta esterna e sovversiva; mentre è il Senato che diventa l'opposizione.
 
-*Rievocazione della congiura di Catilina in un'incisione di B. Pinelli.*
+LA SPARIZIONE DEL POTERE
+Eletto console, Cesare fa approvare i provvedimenti con o senza il parere del Senato. I veterani di Pompeo sono sistemati sull'agro pubblico. Nessun esproprio turba i sonni dei piccoli proprietari e anzi il ricco bottino di Pompeo è in parte utilizzato per acquistare nuovi lotti di terra per la plebe. Nonostante l'opposizione del Senato, la sistemazione dell'Asia fatta da Pompeo è approvata. Anche Crasso e i suoi protetti (i pubblicani asiatici) sono accontentati e il canone degli appalti da versare allo Stato è ridotto d'un terzo. Inoltre Cesare fa promulgare una legge che gli assegna per cinque anni la Gallia Cisalpina (l'Italia settentrionale), l'Illirico e poi anche la Gallia Narbonese: la base per crearsi una grande forza militare. A Roma tutti sono consapevoli che stanno accadendo trasformazioni eccezionali: gira infatti voce che il 59 è l'anno del consolato di Giulio e di Cesare, poiché il collega Bibulo è niente più che una comparsa.
+
+LA NUOVA ALLEANZA
+Finito l'anno di consolato, il Senato tira un respiro di sollievo. Una volta partito per le lontane Gallie, Cesare sembra meno pericoloso: ma il previdente Cesare lascia a Roma un professionista della demagogia e degli scandali: Publio Clodio. Questi, diventato tribuno, trova il modo di mandare in esilio Cicerone col pretesto di aver condannato a morte i seguaci di Catilina, senza aver concesso l'appello al popolo. Con un tale successore nella fazione popolare Cesare parte con le spalle coperte (58 a.C.).
+
+La fragilità del <triumvirato> si mostra ben presto in tutta la sua pericolosità. Mentre Clodio impazza a Roma, Pompeo prende le distanze e lentamente si riavvicina al Senato, apprensivo spettatore dei successi di Cesare in Gallia (vedi box La guerra gallica).
+
+Per tentare di ricucire un'alleanza che fa acqua da tutte le parti Crasso, Pompeo e Cesare si incontrano a Lucca (56 a.C.). Di nuovo si stabilisce una divisione dei doveri e dei poteri: mentre il matrimonio tra Giulia, giovanissima figlia di Cesare, e l'attempato Pompeo rinsalda l'accordo. Secondo i patti Crasso e Pompeo diventeranno consoli l'anno seguente (55 a.C.) e prolungheranno il mandato di Cesare nelle Gallie per altri cinque anni. Scaduto l'incarico Pompeo avrà il proconsolato in Spagna e Crasso in Siria, dove si stanno presentando all'orizzonte nuovi nemici: i Parti.
+
+POMPEO E IL SENATO NELLA CITTÀ IMPAZZITA
+Tutto funziona come stabilito, tranne un piccolo particolare. Mentre Crasso parte per la Siria e Cesare si lancia in una vasta campagna di conquista, Pompeo rimane a Roma: il suo sogno di "moderato" è il riavvicinamento al Senato, per diventarne il *princeps*, il primo dei senatori, e la mossa è già...
 
 ***
 
-CRASSO E LUCULLO FINTI SEDUTTORI
+ESPLICAZIONE E DITTATURA
 
-Tra i difetti (o pregi) di Marco Crasso l'amore per il denaro, che farà di lui uno dei più grandi milionari romani; è certamente quello più marcato. L'accusa d'intendersela con Licinia, una vestale appartenente alla sua gens, nasce dalla sua assidua presenza al fianco della donna: Ovunque Licinia vada, Crasso è al suo fianco; gentile e innamorato.
+Quest'alleanza rappresenta una delle fratture più grandi all'interno del sistema politico romano. L'opposizione al Senato diventa ora governo e non più lotta esterna e sovversiva, mentre il Senato diventa l'opposizione.
 
-I maligni ci mettono poco a portare la donna in tribunale, con la prospettiva della usuale condanna a morte: ma Licinia è assolta.
+LA SPARIZIONE DEL POTERE
+Eletto console, Cesare fa approvare i provvedimenti con o senza il parere del Senato. I veterani di Pompeo sono sistemati sull'agro pubblico. Nessun esproprio turba i sonni dei piccoli proprietari e anzi il ricco bottino di Pompeo è in parte utilizzato per acquistare nuovi lotti di terra per la plebe. Nonostante l'opposizione del Senato, la sistemazione dell'Asia fatta da Pompeo è approvata. Anche Crasso e i suoi protetti (i pubblicani asiatici) sono accontentati e il canone degli appalti da versare allo Stato è ridotto d'un terzo. Inoltre Cesare fa promulgare una legge che gli assegna per cinque anni la Gallia Cisalpina (l'Italia settentrionale), l'Illirico e poi anche la Gallia Narbonese: la base per crearsi una grande forza militare. A Roma tutti sono consapevoli che stanno accadendo trasformazioni eccezionali: gira infatti voce che il 59 è l'anno del consolato di Giulio e di Cesare, poiché il collega Bibulo è niente più che una comparsa.
 
-Crasso imperterrito riprende la sua corte galante al punto da essere a sua volta accusato: ma ancora una volta il verdetto è l'assoluzione. Infatti ciò che interessa a Crasso non è certo la vestale, quanto la proprietà che Licinia possiede fuori Roma; Così una volta assolto, ricomincia la sua corte serrata finché la donna, pur di toglierselo dai piedi, gli concede quanto chiede.
+LA NUOVA ALLEANZA
+Finito l'anno di consolato, il Senato tira un respiro di sollievo. Una volta partito per le lontane Gallie, Cesare sembra meno pericoloso: ma il previdente Cesare lascia a Roma un professionista della demagogia e degli scandali: Publio Clodio. Diventato tribuno, trova il modo di mandare in esilio Cicerone col pretesto di aver condannato a morte i seguaci di Catilina senza aver concesso l'appello al popolo. Con un tale successore nella fazione popolare Cesare parte con le spalle coperte (58 a.C.).
 
-Anche Lucullo ricorre a vie traverse, per ottenere il governo della Cilicia, la provincia dell'Asia Minore (74 a.C.) che può aprire la strada per la guerra contro Mitridate: È candidato per la Cilicia anche Ctego; preso da un'intensa passione amorosa per Precia, una donna celebre per la sua bellezza; per le sue intelligenza, per le sue capacità amatorie. Precia è famosa per servirsi di quelli a cui piace e favorire i maneggi politici dei suoi amanti. Quello che Precia vuole, ottiene. Lucullo con regali e infinite adulazioni entra nelle sue grazie; Ctego, tramite la donna, diventa uno strumento nelle mani di Lucullo; pronto a favorirlo negli usuali brogli elettorali; così senza ostacoli Lucullo ottiene la provincia della Cilicia.
+La fragilità del <triumvirato> si mostra ben presto in tutta la sua pericolosità. Mentre Clodio impazza a Roma, Pompeo prende le distanze e lentamente si riavvicina al Senato, apprensivo spettatore dei successi di Cesare in Gallia (vedi box La guerra gallica).
+
+Per tentare di ricucire un'alleanza che fa acqua da tutte le parti Crasso, Pompeo e Cesare si incontrano a Lucca (56 a.C.). Di nuovo si stabilisce una visione dei doveri e dei poteri: mentre il matrimonio tra Giulia, giovanissima figlia di Cesare, e il già attempato Pompeo rinsalda l'accordo. Secondo i patti Crasso e Pompeo diventeranno consoli l'anno seguente (55 a.C.) e prolungheranno il mandato di Cesare nelle Gallie per altri cinque anni. Scaduto l'incarico Pompeo avrà il proconsolato in Spagna e Crasso in Siria, dove si stanno presentando all'orizzonte nuovi nemici: i Parti.
+
+POMPEO E IL SENATO NELLA CITTÀ IMPAZZITA
+Tutto funziona come stabilito, tranne un piccolo particolare. Mentre Crasso parte per la Siria e Cesare si lancia in una vasta campagna di conquista, Pompeo rimane a Roma. Il suo sogno di "moderato" è il riavvicinamento al Senato, per diventarne il *princeps*, il primo dei senatori, e la mossa è già...

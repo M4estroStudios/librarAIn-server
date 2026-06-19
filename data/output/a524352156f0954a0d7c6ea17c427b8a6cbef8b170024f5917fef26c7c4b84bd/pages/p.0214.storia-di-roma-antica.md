@@ -1,21 +1,21 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-214                                           STORIA DI ROMA ANTICA
+LA CONQUISTA DELL'ORIENTE 215
 
-SOGNI E ELEZIONI
+IL SEPOLCRO DEGLI EROI
 
-Dopo la sconfitta di Canne Lucio Cornelio Scipione, fratello di Publio il futuro Africano, si presenta alle elezioni come edile. Le possibilità di successo sono poche.
-Publio Cornelio pensa allora di ricorrere all'aiuto divino. La madre in giorni compie continui pellegrinaggi nei santuari e fa offerte agli dèi, preoccupata per la candidatura di Lucio.
-Publio va da lei e le racconta il sogno che ha fatto. Entrambi i fratelli erano stati eletti edili e una volta giunti a casa la madre li aveva abbracciati e baciati. Ascoltando il sogno la donna si commuove e tra le lacrime augura che ciò possa accadere.
-Publio Cornelio dichiara allora di voler tentare la sorte e chiede alla madre di preparargli una toga candida. È infatti sua intenzione presentarsi alle elezioni con il fratello. La donna accondiscendente sorride e non pensa più alla sua richiesta. Giunto il giorno delle elezioni, il giovane si procura la toga che la madre ha dimenticato e va al Foro.
-Il popolo, sia per la novità, sia per la fama che Publio già gode, è entusiasta e vota i due fratelli. Tornati a casa, la madre come in sogno, li abbraccia e li bacia piena di gioia. Le amiche della donna si incaricano di diffondere il racconto del prodigio. Così tutti credono che i sogni del giovane Scipione si avverino e che egli sia in contatto diretto con gli dèi, anche nella vita quotidiana.
+A Roma i sepolcreti sono esclusi dal centro abitato e dal pomerio; il limite giuridico sacrale della città: sono disposti generalmente ai lati delle strade che escono dalla città.
 
-DALLA DIPLOMAZIA DI FLAMININO
-ALL'AGGRESSIVITÀ DELL'EMILIANO
+Lungo la via Appia, subito dopo la sua costruzione nel 312 a.C. (vedi capitolo L'egemonia nell'Italia centro-meridionale) sono edificate tombe gentilizie. Una delle prime è degli Scipioni, cui si aggiungono dei Servilii e dei Metelli. Inizialmente sono tombe familiari sotterranee, prive di ornamenti esterni. Solo alla fine del II secolo a.C., quando inizia l'uso del monumento isolato, la via assume l'aspetto che conserva tuttora.
 
-Dopo la caduta degli Scipioni e la morte di Flaminino; la politica estera romana segue la strada da essi indicata. L'opposizione dei conservatori tradizionalisti, per quanto violenta, non modifica la condotta dei dirigenti romani.
-Per mezzo secolo, pur affermando la sua egemonia, Roma evita di ampliare il territorio e di creare nuove province. Ovunque la sua supremazia è riconosciuta e i mercanti romani e italici si espandono e si affermano sempre più nel mondo mediterraneo.
-Il delicato problema istituzionale dell'amministrazione dei territori fuori dall'Italia è affrontato parzialmente nel 179 a.C., con la *lex Bebia*. Per risolvere il problema spagnolo si decide di eleggere, alternativamente ogni anno, quattro e sei pretori, in modo che due rimangano a Roma e due vadano nelle province: nel secondo anno si compie una rotazione completa nelle quattro province (Sicilia, Sardegna, Spagna Citeriore e Spagna Ulteriore).
-Questo meccanismo, un rimedio di fortuna, è però destinato a saltare in breve tempo, quando cominciano a farsi strada i comandi straordinari (vedi anche il capitolo successivo).
-Nella seconda metà del II secolo a.C. si assiste a un profondo mutamento di indirizzo. L'azione romana si fa aggressiva e distruttiva. Non solo in Spagna si compiono stragi di Stato; ma anche in Oriente.
-La guerra di sterminio diventa la norma. Incarnazione perfetta di questa seconda tendenza è Publio Cornelio Scipione Emiliano, figlio adottivo dell'Africano.
-Il giovane figlio di Lucio Emilio Paolo, il vincitore di Pidna; al momento della sua adozione ha acquisito prenome, nome e cognome degli Scipioni che però poi legge.
+Vicino alla porta Capena Claudio Marcello, vincitore di Siracusa (208 a.C.), ha edificato il tempio di Virtus (Valore). Accanto all'edificio sacro i Marcelli hanno costruito la tomba di famiglia, di cui attualmente non rimane nulla. Non lontano da porta San Sebastiano si trova la tomba sotterranea degli Scipioni (scoperta nel 1780 durante lo scavo di una cantina) e, dai pochi resti conservati, si può ricostruire la facciata, che doveva assomigliare a una grande scena teatrale, divisa da pilastri. Il basamento sottostante, nel quale si aprono gli ingressi al sepolcro, è decorato da affreschi, probabilmente di carattere militare. La parte più antica accoglie una trentina di sarcofagi, nei quali sono stati sepolti tutti i membri della famiglia dall'inizio del II secolo alla metà del I secolo a.C.; ma l'Africano è stato sepolto nella sua villa di Literno.
+
+Grandi lavori di sistemazione della tomba sono stati condotti da Scipione Emiliano tra il 146 a.C. (distruzione di Cartagine) e il 133 a.C. (distruzione di Numanzia). In quello stesso momento la tomba fu dotata di una facciata scenografica. Gli Scipioni sono una delle numerose famiglie di età repubblicana che si estingue agli inizi dell'impero: la tomba in età augustea accolse solo alcuni membri del ramo secondario dei Cornelii Lentuli, che si vantavano della loro discendenza dall'Africano.
+
+I sarcofagi sono collocati lungo le pareti e, in base alle iscrizioni dipinte o scolpite sui fianchi, si possono riconoscere i membri della famiglia. Come conviene agli epitaffi, tutti gli Scipioni sepolti brillano per virtù, coraggio e onore anche se si tratta di ragazzini di 16 anni. Tra le dediche, oltre a quella di Scipione Barbato (probabilmente il creatore della tomba come si nota dalla posizione del suo sarcofago; vedi capitolo Romani e Cartaginesi: è lo scontro), si legge su un sarcofago questa iscrizione:
+
+Lucio Comelio Scipione, figlio di Lucio; nipote di Publio; questore, tribuno militare, morto a 33 anni. Suo padre vinse il re Antioco. Si tratta evidentemente del figlio di Lucio Comelio Scipione Asiatico, fratello dell' Africano.
+
+[Immagine della ricostruzione grafica]
+0          5          10 m
+
+Ricostruzione grafica della facciata del Sepolcro degli Scipioni sulla via Appia secondo F. Coarelli.

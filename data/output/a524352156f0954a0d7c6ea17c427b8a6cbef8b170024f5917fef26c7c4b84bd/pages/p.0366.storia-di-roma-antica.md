@@ -1,18 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-366                                                                    STORIA DI ROMA ANTICA
+367
 
-MACRINO
+I compagni di scuola spesso lo prendevano in giro indicando nel suo nome vario il fatto che fosse figlio di vari padri.
 
-Macrino emanò delle leggi per ridurre le tasse e di conseguenza la spesa pubblica; il che colpì anche la paga dei militari. Fu così che costoro presero un atteggiamento di opposizione nei confronti dell'imperatore; che intanto aveva proseguito la guerra contro i Parti, credendo con ciò di impegnare i soldati al punto di impedire coalizioni contro di lui.
+**IL CULTO DEL DIO SOLE INVITTO**
 
-Ma nel campo di Rapheneiai le truppe di forza deposero Macrino e acclamarono imperatore al suo posto il piccolo Eliogabalo; nato da una figlia di Iulia Mesa, sorella dell'imperatrice. Macrino e i suoi fedelissimi presero le armi per affrontare i rivoltosi, ma furono sconfitti e Macrino venne ucciso. Insieme a Macrino veniva trucidato il figlio di nove anni, Antonino Diadumeno, che il padre aveva già designato come erede al trono.
+L'esaltazione di Eliogabalo per il culto del Sole Invitto, a cui egli voleva accostare gli altri culti dell'Impero; soprattutto orientali e insieme a questi trasferirvi le più antiche e nobili tradizioni del paganesimo; appariva da un lato come un atteggiamento pienamente giovanile; ma dall'altro come il frutto di una cultura teologica e filosofica che nella dimensione religiosa intendeva riscoprire tutto il senso del mistero.
 
-*L'ANFITEATRO CASTRENSE*
+Fu così che Eliogabalo volle che sul tempio del dio Sole Invitto, costruito sul Palatino, fossero trasferiti la statua della dea Cibele del vicino tempio della Magna Mater, il Palladio e il fuoco sacro di Vesta dal tempio della omonima dea del Foro romano e dodici scudi di Marte, che erano custoditi nella reggia già fin dall'età arcaica.
 
-*In un tratto delle mura Aureliane, tra San Giovanni e Santa Croce in Gerusalemme, si nota una struttura curvilinea, in laterizio, con pochi elementi in travertino: si tratta di quanto resta dell'anfiteatro Castrense. Questo edificio era a pianta quasi circolare (metri 75,80 X 88) ed era a tre ordini. Nel primo, i fornici erano sostenuti da pilastri con semicolonne con capitelli, in laterizio; in stile corinzio. Il secondo presentava paraste in sostituzione delle semicolonne, mentre il terzo, in somiglianza di quanto realizzato nell'anfiteatro Flavio; aveva delle finestre alternate a mensole; che dovevano sostenere i canapi che tenevano teso il velario; perché gli spettatori fossero al riparo dal sole. Dell' anfiteatro; come si è detto, resta soltanto parte del primo piano e pochi resti del secondo, mentre è interamente perduto il terzo, ricostruibile solo attraverso alcuni disegni che furono realizzati nella metà del XVI secolo; quando questa parte della struttura era ancora esistente. La costruzione dell'anfiteatro risale all'ultimo periodo dell'età severiana.*
+Successivamente, Eliogabalo manifestò l'intenzione di far svolgere nello stesso tempio del Sole anche le cerimonie e i riti sacri dei Giudei, dei Samaritani e dei Cristiani. I sacerdoti del dio Sole che lo consigliavano stavano tentando di realizzare, attraverso di lui, il più incredibile, in fondo assurdo e certamente utopistico, programma di conciliazione e fusione di tutte le religioni dell'Impero. Forse volevano così risolvere le divisioni religiose, che ormai aprivano conflitti sempre più profondi nel corpo sociale dell'Impero e, come nel caso dei Cristiani, tra questi e lo Stato.
 
-VARIO ANTONINO ELIOGABALO
+Eliogabalo autorizzò la madre a sedersi in Senato e a partecipare alle sedute e con ciò commise un atto che offese fortemente il senso aristocratico dei senatori, cui rispose organizzando un Senato di sole donne, composto dalle matrone di Roma.
 
-L'8 giugno del 218, Vario Antonino Eliogabalo; a quattordici anni di età; saliva al trono. La memoria che Eliogabalo avrebbe lasciato di sé sarebbe stata tra le più tristi e lo avrebbe accostato alle immagini più tradizionali di un Caligola; di un Nerone o di un Vitellio. Il suo vero nome era Vario Avito, ma si aggiunse quello di Antonino per confermare le voci che lo volevano figlio naturale di Caracalla; e quindi prese il nome di Eliogabalo in onore del dio Elagabal, venerato a Emesa in Siria sotto forma di una pietra nera, cioè di un meteorite ritenuto caduto dal cielo. Il giovane imperatore decretò l'ingresso ufficiale in Roma del culto di *Deus Invictus Sol Elagabalus* e gli edificò due templi, uno dei quali sul Palatino.
+Anche qui si può ritenere che il giovane imperatore agisse dietro consiglio materno; ma aggiunse che le matrone romane avevano ormai un'influenza determinante nella vita quotidiana dell'Impero; ciò derivava loro dal rango e dalla ricchezza di cui spesso erano eredi e amministratrici e dalle loro conversioni alle religioni orientali, delle quali divenivano le più convinte sostenitrici.
 
-Questo culto; detto più semplicemente *Sol Invictus*; cioè il Sole Invitto; fu posto al di sopra dei culti di tutti gli altri dèi di Roma e finì per costituire un altro dei momenti del processo che conduceva l'antica cultura pagana verso una forma religiosa monoteista. Eliogabalo dipendeva in tutto dalla madre; Giulia Soemia Bassiana, sulla quale aleggiava una pessima fama, tanto che...
+***
+
+Tempio del Sole, planimetria generale e prospetto parziale dell'emiciclo in un disegno del Palladio.

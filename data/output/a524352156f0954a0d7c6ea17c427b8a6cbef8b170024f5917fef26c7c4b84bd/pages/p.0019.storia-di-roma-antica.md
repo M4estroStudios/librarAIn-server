@@ -1,19 +1,48 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA PRIMA DI ROMA
-19
+90
 
-I fondi di capanna scoperti sul Palatino dovrebbero risalire alla fine del IX sec. a.C. e permettono di capire le dimensioni e la struttura delle "case" dei primi abitatori di Roma. Su un impiantito scavato nel tufo spiccano ancora fori in cui si conficcavano i pali di sostegno del tetto a due spioventi; altri pali sostenevano le "pareti" di graticcio ricoperto di fango e inquadravano la porta, su cui era posta una tettoia.
+STORIA DI ROMA ANTICA
 
-A circa cinquanta centimetri dal "pavimento" della capanna un canaletto doveva assicurare lo scolo dell'acqua piovana. Talvolta le urne per le ceneri dei defunti raffigurano delle capanne e queste mostrano che il tetto era fornito di una apertura per il fumo del focolare.
+ROMA: MEZZANOTTE MENO UN MINUTO
 
-Sopra qualche urna appaiono figurine umane sedute sul tetto; ma è incerto se queste eventuali raffigurazioni di antenati, che proteggono la casa, effettivamente fossero presenti sulle capanne.
+Sulla riva sinistra del Tevere nell'area compresa tra il Campidoglio, il Palatino, l'Esquilino e il Quirinale si è ormai consolidato un rudimentale sistema insediativo d'un certo rilievo. Vari elementi contribuiscono ad assicurargli una possibilità d'espansione e d'ulteriore sviluppo:
 
-Tra il IX e IV secolo a.C. si amplia lo spazio utilizzato dai primi abitatori di Roma e si avvicina la data tradizionale della fondazione di Roma. Il sepolcreto del Foro Romano cade in disuso, mentre si avvia una nuova area cimiteriale sull'Esquilino, ma persistono nel Foro le tombe di bambini, i quali potevano essere sepolti all'interno dello spazio abitato (consuetudine largamente attestata anche in altre località del Lazio meridionale).
+Per prima cosa la posizione naturale; i colli sono molto più ripidi di quanto si possa oggi immaginare e per questo sono difendibili abbastanza facilmente. Questi colli sono disposti in stretta raggiera e possono contare su due rocche forti naturali: il Campidoglio, quasi completamente isolato dalle altre alture, e il Palatino. Essi incorniciano e difendono una vallata coltivabile, sin troppo ricca di acqua. Le risorse naturali, benché non molto abbondanti, sono sufficienti per la ridotta popolazione dell'area in cui sta per nascere Roma. L'agricoltura non conosce ancora tipi di grano più adatti a fare il pane, ma l'allevamento delle pecore e delle capre è facilitato dalla estrema vicinanza delle saline, che forniscono l'elemento indispensabile per la sopravvivenza delle greggi. Tutto intorno ci sono boschi di querce, in cui i maiali possono pascolare allo stato brado; ci sono poi sempre le risorse alimentari fornite dalla caccia e dalla pesca. Gli abitatori delle alture sul Tevere, organizzati in semplici comunità a base familiare, sono autosufficienti, ma sicuramente il loro livello di vita non è molto alto. Continuano così ad usare abbastanza comunemente il bronzo, ma hanno pochissimo ferro; o forse non ne posseggono per niente.
 
-Secondo l'ipotesi più logica quest'allargamento dell'area abitabile deve essere messo in rapporto con l'importanza sempre maggiore dei traffici e commerci: forse una prova indiretta è il contemporaneo abbandono delle località abitate nei colli Albani; probabilmente collegato col cambiamento del percorso dei principali itinerari commerciali del Lazio.
+Gli utensili di ferro iniziano ad apparire nelle tombe alla metà dell'VIII secolo a.C. e per almeno altri cento anni il metallo continuerà ad essere relativamente raro.
 
-Così in quest'epoca sarebbe avvenuta un'immigrazione dai colli Albani verso la piana del Tevere.
+Gli abitanti di questo villaggio che non è ancora Roma hanno diversi assi nella manica: un guado, un incrocio di strade, più tardi un ponte. È quanto basta perché nasca una città.
 
-[Immagine]
+I MATERIALI EDILIZI: UNA CITTÀ DAL MARE E DAI VULCANI
 
-*Il ponte Palatino con il Campidoglio sullo sfondo in una ricostruzione ideale di Luigi Canina.*
+Prima dell'invenzione del cemento armato, Roma si costruiva usando mattoni, travertino o scorie laviche (tufo, peperino, pozzolana). L'uso dei mattoni di cotta è abbastanza recente e la sua diffusione si consolida nel I secolo d.C.
+
+Il travertino, formatosi con il prosciugamento delle grandi lagune di acqua salata che un tempo coprivano il Lazio, è particolarmente abbondante nella zona di Tivoli, per questo i Romani lo chiamavano "pietra di Tivoli" (in latino *lapis Tiburtinus*). Era riservato agli edifici monumentali ed è diventato la pietra romana per eccellenza.
+
+Il tufo ha origine dal depositarsi delle ceneri e dei frammenti di rocce eruttati dai vulcani. Anche il peperino e la pozzolana sono scorie laviche, pur sembrando materiali completamente diversi dal tufo: ma la loro differente consistenza dipende dai processi naturali avvenuti dopo che si depositarono al suolo.
+
+I suoli di Roma sono quasi tutti di tipo tufaceo ed hanno fornito nei secoli materiale da costruzione a basso costo; sull'Aventino ancora all'inizio di questo secolo era attiva una cava di tufo. Un'altra pietra molto importante nella storia di Roma è il basalto: semplicemente lava raffreddata, molto povera di silicio (il minerale che costituisce la sabbia delle spiagge), piuttosto dura e di colore nerastro. I Romani lo squadravano in grossi blocchi (i basoli) e lo usavano per pavimentare le strade, specialmente quelle su cui passava il traffico principale; come la via Appia, che fu la prima via consolare a essere lastricata.
+
+***
+
+90
+
+STORIA DI ROMA ANTICA
+
+ROMA: MEZZANOTTE MENO UN MINUTO
+
+Sulla riva sinistra del Tevere nell'area compresa tra il Campidoglio, il Palatino, l'Esquilino e il Quirinale si è consolidato un rudimentale sistema insediativo d'un certo rilievo. Vari elementi contribuiscono ad assicurargli una possibilità d'espansione e d'ulteriore sviluppo.
+
+Per prima cosa la posizione naturale; i colli sono molto più ripidi di quanto si possa oggi immaginare e per questo sono difendibili abbastanza facilmente. Questi colli sono disposti in stretta raggiera e possono contare su due rocche forti naturali: il Campidoglio, quasi completamente isolato dalle altre alture, e il Palatino. Essi incorniciano e difendono una vallata coltivabile, sin troppo ricca di acqua. Le risorse naturali, benché non molto abbondanti, sono sufficienti per la ridotta popolazione dell'area in cui sta per nascere Roma. L'agricoltura non conosce ancora tipi di grano più adatti e per questo è facilitata dalla estrema vicinanza delle saline, che forniscono l'elemento indispensabile per la sopravvivenza delle greggi. Tutto intorno ci sono boschi di querce, in cui i maiali possono pascolare allo stato brado. Ci sono poi sempre le risorse alimentari fornite dalla caccia e dalla pesca. Gli abitatori delle alture sul Tevere, organizzati in semplici comunità a base familiare, sono autosufficienti, ma sicuramente il loro livello di vita non è molto alto. Continuano così ad usare abbastanza comunemente il bronzo, ma hanno pochissimo ferro, o forse non ne posseggono niente.
+
+Gli utensili di ferro iniziano ad apparire nelle tombe alla metà dell'VIII secolo a.C. e per almeno altri cento anni il metallo continuerà ad essere relativamente raro. Gli abitanti di questo villaggio che non è ancora Roma hanno diversi assi nella manica: un guado, un incrocio di strade, più tardi un ponte. È quanto basta perché nasca una città.
+
+I MATERIALI EDILIZI: UNA CITTÀ DAL MARE E DAI VULCANI
+
+Prima dell'invenzione del cemento armato, a Roma si costruiva usando mattoni, argilla, travertino o scorie laviche (tufo, peperino, pozzolana). L'uso dei mattoni di cotta è abbastanza recente e la sua diffusione si consolida nel I secolo d.C.
+
+Il travertino, formatosi con il prosciugamento delle grandi lagune di acqua salata che un tempo coprivano il Lazio, è particolarmente abbondante nella zona di Tivoli, per questo i Romani lo chiamavano pietra di Tivoli (in latino *lapis Tiburtinus*). Era riservato agli edifici monumentali ed è diventato la pietra romana per eccellenza.
+
+Il tufo ha origine dai depositi di ceneri e di frammenti di rocce eruttati dai vulcani. Anche il peperino e la pozzolana sono scorie laviche, pur sembrando materiali completamente diversi dal tufo: la loro differente consistenza dipende dai processi naturali avvenuti dopo che si depositarono al suolo.
+
+I suoli di Roma sono quasi tutti di tipo tufaceo ed hanno fornito nei secoli materiale da costruzione a basso costo; sull'Aventino ancora all'inizio di questo secolo era attiva una cava di tufo. Un'altra pietra molto importante nella storia di Roma è il basalto: semplicemente lava raffreddata, molto povera di silicio (il minerale che costituisce la sabbia delle spiagge), piuttosto dura e di colore nerastro. I Romani lo squadravano in grossi blocchi (i basoli) e lo usavano per pavimentare le strade, specialmente quelle su cui passava il traffico principale; come la via Appia, che fu la prima via consolare a essere lastricata.

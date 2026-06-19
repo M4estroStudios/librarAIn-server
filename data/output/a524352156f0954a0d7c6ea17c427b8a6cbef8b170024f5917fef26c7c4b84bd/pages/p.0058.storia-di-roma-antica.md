@@ -1,18 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-58                                                                    STORIA DI ROMA ANTICA
+UN AVVENTURIERO ETRUSCO SUL 'TRONO DI ROMA
 
-[Immagine: Il Foro Romano in una ricostruzione ideale di L. Canina]
+A Roma vive 17 anni, prima che la morte di Anco Marzio gli permetta di accedere al regno: aggiungendo anche i 38 anni del suo regno, Tarquinio avrebbe raggiunto gli ottant'anni (17 + 38 = 80).
 
-*Il Foro Romano in una ricostruzione ideale di L. Canina.*
+Alla sua morte i due figli, Lucio e Arrunte, hanno rispettivamente 27 e 25 anni. Se Servio Tullio ha regnato per 44 anni il povero Lucio Tarquinio il Superbo: all'epoca del regicidio; quando scaraventa giù Servio dai gradini della curia, sarebbe ormai ultrasettantenne (27 + 44 = 71).
 
-La prima (che sarà la futura via Latina) partendo da Caere e Veio, dopo aver oltrepassato il Tevere a Fidene, giunge a Palestrina, senza passare per Roma. Da qui, superati due facili valichi dell'Appennino, la strada segue il corso del Sacco (l'antico *Teverus*) e del Garigliano (l'antico *Liris*). Il guado presso Roma e quindi Roma stessa sono invece fondamentali per l'altra strada, la futura via Appia, che corre parallela alla costa. Nella stessa epoca in cui si installano i Tarquini nell'urbe, le principali città del Lazio (Solonio, Ardea, Collatia e Gabii) subiscono una forte influenza etrusca o addirittura ricevono *lucumones* etruschi (la parola etrusca corrispondente alla figura del *rex* latino).
+Ammesso che il clima di Roma antica preservasse la salute e favorisse una buona vecchiaia; al momento della sua cacciata, dopo ben 25 anni di regno, Tarquinio il Superbo avrebbe avuto 96 anni (27 + 44 + 25 = 96). Egli sarebbe inoltre vissuto ancora per 14 anni, quelli dell'esilio; così da diventare ultracentenario (27 + 44 + 25 + 14 = 110).
 
-L'influenza etrusca e il controllo di alcune città laziali non fanno parte d'un ampio progetto di conquista. In realtà numerose città etrusche (come Caere, Tarquinia, Vulci e Veio) sono in lotta tra loro per poter espandere il proprio dominio e il proprio controllo sul Lazio.
+È evidente che gli antichi storiografi romani hanno dimenticato per strada qualcuno dei Tarquini: doveva essere pesante per l'orgoglio romano ammettere una dominazione straniera con molteplici re. Forse un riequilibrio tra tre re, ricordati dalla tradizione; si ottiene ammettendo semplicemente che Tarquinio il Superbo sia stato il nipote e non il figlio del Tarquinio.
 
-L'arrivo di Lucumone, alias Tarquinio, così come è narrato dalla tradizione, maschera un'occupazione della città. Lucumone (ossia re), come ogni grande e potente aristocratico, giunge insieme ad un gran numero di parenti ed amici (*clienti*). Lo stesso mezzo con cui viaggia insieme a Tanaquil, il carro (*carpentum*) è simbolo del suo rango e del suo potere. In definitiva il racconto tradizionale d'un Tarquinio esule e avventuriero nasconde una realtà "vergognosa": Roma è caduta nelle mani di una potenza straniera.
+IL PRIMATO NEL LAZIO E IL CONTROLLO DELLE VIE COMMERCIALI
 
-TRE RE TROPPO LUNGEVI
+Secondo l'usuale costume romano, il regno di Tarquinio si apre con una serie di campagne contro i Latini e contro i Sabini che hanno superato l'Aniene. Dopo aver preso ai Latini Apiolae (forse Pomezia), il re si volge a Oriente, contro i Sabini. La vittoria su Collazia, festeggiata col primo trionfo, sancisce il controllo romano sull'importante asse viario che da Caere e Veio conduce a Gabii e Praeneste. Egerio, il nipote di Demarato rimasto povero in canna, è posto al comando della città; forse come lucumone. I successivi scontri con Prisci Latini (o con Sabini passati ai Latini) rispondono alla medesima volontà di controllo delle vie terrestri, che passano a est della città.
 
-I tre ultimi re etruschi coprono un arco di tempo di 106 anni, decisamente troppi. Secondo quanto ci è tramandato Tarquinio Prisco avrebbe regnato 38 anni, Servio Tullio 44 e Tarquinio il Superbo, l'ultimo re prima della nascita della Repubblica, 25 anni. Ma i conti non tornano.
+Tarquinio, dopo una serie di successi, riesce a occupare alcune delle città latine situate fra il Tevere e l'Aniene: Corniculo, Crustumerio, Ficulea, Cameria, Ameriola, Nomento, Fidene cadono sotto il controllo romano-etrusco. Non è opposta grande resistenza: solo la popolazione di Corniculo, come quella di Apiolae (la cui conquista ha richiesto un massiccio uso delle armi), è ridotta in schiavitù. È probabile però che si tratti d'una città etrusca, decisa a non rinunciare alla sua posizione.
 
-Lucumone, poi Tarquinio Prisco, doveva avere circa 25 anni quando aveva abbandonato Tarquinia; nell'età in cui voleva intraprendere la carriera politica e aveva cominciato a sentire il peso della sua condizione di "sangue misto" come freno alla sua ambizione.
+Roma alla fine di questi scontri esercita il suo controllo sulle località a sud del Tevere per circa 15-20 km; sulla regione dell'Aniene nei pressi della sua confluenza col Tevere, almeno su parte dei colli Albani e sulla sponda destra del fiume (Gianicolo e Silva Mesa). La popolazione dell'urbe risulta notevolmente ingrandita dalle conquiste. Gli abitanti delle città vinte sono trasferiti a Roma, dove si stanziano coi, acquisendo anche la cittadinanza romana.
+
+LA LEGA LATINA E TARQUINIO PRISCO
+
+La Lega latina, formata dai trenta albani confederati, si trova a dover fare i conti con la potenza romana: Roma è ormai una città impegnata nella fondazione e nell'ingrandimento del suo imperium ai danni delle città vite.

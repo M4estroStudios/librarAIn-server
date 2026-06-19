@@ -1,16 +1,55 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-202                                                                    STORIA DI ROMA ANTICA
+LA CONQUISTA DELL'ORIENTE:
 
-LA RIPICCA DI UN GENERALE SENZA TRIONFO
+203
 
-L'ira di un generale, cui è negato il trionfo; dà origine all'edificazione d'un monumento che conoscerà enorme fortuna presso i Romani, l'arco di trionfo. Lucio Stertinio; dal momento che per rivalità politica non può sfilare lungo la via trionfale, decide di edificare i *fornicis Stertini* (gli archi di Stertinio): i due archi davanti al tempio di Fortuna e di Mater Matuta raddoppiano così l'arco già esistente (196 a.C.). Un altro arco è edificato presso il centro della curva del Circo Massimo. Se Stertinio non può sfilare, coloro che sfileranno saranno costretti a passare sotto i suoi archi, memoria immortale della sua impresa. Scipione Africano riprende l'idea rendendola ulteriormente monumentale. L'arco da lui dedicato è sormontato addirittura da sette statue e decorato da due bacini marmorei. La sua collocazione sul clivo Capitolino coincide col monumento più importante della processione del trionfatore; l'ingresso sul Campidoglio.
+[Mappa con indicazioni geografiche e date]
+GALLIA
+TRANSALPINA
+SPAIN ULTERIORE
+SPAGNA
+AFRICA NOVA
+CIRENAICA
+EGITTO
+SIRIA
+MACEDONIA
+ILLIRIA
+FRIGIA
+ASIA MINORE
+...
 
-LA SECONDA GUERRA MACEDONICA
+Carta geografica con indicazione dell'espansione di Roma negli anni 241-27 a.C.
 
-L'occasione del nuovo intervento contro Filippo V, mancato alleato di Annibale (vedi capitolo precedente), è offerta dalle pericolose alleanze del re macedone. In Egitto (altra grande potenza ellenistica) la morte del re crea una crisi dinastica. Il nuovo re bambino è una facile preda per Antioco III re di Siria, altro monarca protagonista della politica di questi anni; Roma è chiamata a intervenire contro una possibile alleanza tra Filippo e Antioco. Le pressioni degli alleati greci convincono il Senato riluttante: Roma è appena uscita dalla guerra contro Annibale e la vittoria l'ha resa troppo fiduciosa nelle sue capacità. Dietro il paravento della guerra giusta (Roma interviene in difesa degli alleati!), Marco Emilio Lepido avanza richieste esose a Filippo V. Il re rifiuta e scoppia il conflitto (200 a.C.). Messo a freno Antioco III, cominciano le operazioni militari, ma i successi non sono decisivi: la guerra minaccia di trascinarsi a lungo.
+Ite smici Romani "gratuitamente" si dichiarano garanti dell'autonomia delle città (196 a.C.). Ma è una libertà vigilata. Lo stesso Flaminino è invischiato in scaramucce diplomatiche e scontri senza esito definitivo con alcuni alleati, già stanchi e preoccupati. Nonostante tutto, riesce a evacuare le truppe romane dalla Grecia, lasciando solo guarnigioni in qualche piazzaforte (194 a.C.).
 
-I MILITARI INTELLETTUALI
+La politica di Flaminino ha il vantaggio di non costringere lo Stato romano a un'occupazione permanente dei territori, come avviene invece in Spagna; i problemi di tipo istituzionale (una nuova burocrazia responsabile per la politica estera), militare (un esercito permanente), sociale (necessità di uomini, strapazzi dalle loro terre) ed economico sono per il momento accantonati.
 
-L'arrivo di Tito Quinzio Flaminino imprime una svolta alle operazioni. Il nobile romano inaugura un nuovo modo di fare la guerra. Egli si rende conto che gli attacchi brutali danno ben risultati e con finissima diplomazia porta avanti un suo progetto filoellenico (cioè, favorevole alla Grecia): Roma si presenta come la protettrice della libertà delle città greche di fronte allo strapotere delle monarchie ellenistiche: Roma non conquista "libera" sarebbe disposta trattare la pace, ma Flaminino alza sempre di più il prezzo. Le due principali Leghe greche, la Lega achea e quella etolica; insieme a Sparta, passano ai Romani. Ormai Flaminino ha le coperte e sconfigge Filippo nella battaglia presso la città di Cinocefale (letteralmente testa di cane) in Tessaglia (197 a.C.). Il re è costretto ad abbandonare i suoi possedimenti in Grecia e in Asia Minore, a consegnare la flotta e a pagare una grossa indennità come conto spese dei Romani.
+Le vicende della seconda guerra macedonica segnano il successo d'una parte della classe dirigente.
 
-Sull'onda del successo di Flaminino sono prolungati i poteri in Asia. Il suo piano filoellenico diventa una realtà: entusiasmo e stupore accompagnano la sua proclamazione della libertà ai Greci. Nella variopinta cornice dei giochi...
+Flaminino, come Scipione, è imbevuto di cultura greca, ma la sua condotta impensierisce i tradizionalisti, i quali non si riconoscono più in questi generali che fanno la guerra soprattutto con le parole.
+
+LA GUERRA FREDDA
+
+Labile diplomazia e le spettacolari dichiarazioni di Flaminino purtroppo non risolvono la situazione. Roma già da qualche anno è impegnata in un braccio di ferro con Antioco III e quest'ultimo si propone come garante della Grecia contro gli opportunisti Romani.
+
+In un clima di guerra fredda si prepara l'inevitabile conflitto. Antioco III, in un momento così difficile, trova spazio per un'avventura amorosa, che fa gridare allo scandalo.
+
+Il re, già avanti negli anni, s'innamora di una ragazza molto giovane: a questo punto la difesa della Grecia e la guerra contro Roma diventano solo fastidiosi impegni.
+
+In preda alla sua ubriacatura amorosa si getta anima e corpo nel piacere. Per un intero inverno Antioco si dedica ai banchetti e alla sua giovanissima sposa, contagiando anche ufficiali e soldati.
+
+***
+
+203
+LA CONQUISTA DELL'ORIENTE
+
+[Mappa]
+Carta geografica con l'indicazione dell'espansione di Roma negli anni 241-27 a.C.
+
+Ite smici Romani "gratuitamente" si dichiarano garanti dell'autonomia delle città (196 a.C.). Ma è una libertà vigilata. Lo stesso Flaminino è invischiato in scaramucce diplomatiche e scontri senza esito definitivo con alcuni alleati, già stanchi e preoccupati. La politica di Flaminino ha il vantaggio di non costringere lo Stato romano a un'occupazione permanente dei territori, come avviene invece in Spagna. I problemi di tipo istituzionale (una nuova burocrazia responsabile per la politica estera), militare (un esercito permanente), sociale (necessità di uomini, strapazzi dalle loro terre) ed economico sono per il momento accantonati.
+
+Le vicende della seconda guerra macedonica segnano il successo d'una parte della classe dirigente. Flaminino, come Scipione, è imbevuto di cultura greca, ma la sua condotta impensierisce i tradizionalisti, i quali non riconoscono più in questi generali che fanno la guerra soprattutto con le parole.
+
+LA GUERRA FREDDA
+
+L'abile diplomazia e le spettacolari dichiarazioni di Flaminino purtroppo non risolvono la situazione. Roma già da qualche anno è impegnata in un braccio di ferro con Antioco III e quest'ultimo si propone come garante della Grecia contro gli opportunisti Romani. In un clima di guerra fredda si prepara l'inevitabile conflitto. Antioco III, in un momento così difficile, trova spazio per un'avventura amorosa, che fa gridare allo scandalo. Il re, già avanti negli anni, s'innamora di una ragazza molto giovane: a questo punto la difesa della Grecia e la guerra contro Roma diventano solo fastidiosi impegni. Per un intero inverno Antioco si dedica ai banchetti e alla sua giovanissima sposa, contagiando anche ufficiali e soldati.

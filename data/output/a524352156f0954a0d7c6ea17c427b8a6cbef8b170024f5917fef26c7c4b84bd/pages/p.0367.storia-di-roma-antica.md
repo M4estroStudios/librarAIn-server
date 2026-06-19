@@ -1,22 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-DA GLI ANTONINI ALLA DINASTIA DEI SEVERI $\quad$ 367
+368
 
-I compagni di scuola spesso lo prendevano in giro indicando nel suo nome Vario il fatto che fosse figlio di vari padri.
+STORIA DI ROMA ANTICA
 
-***
+Infine Eliogabalo, sulla base del sincretismo religioso da lui avviato e del nuovo ruolo, novità assoluta del mondo antico concesso alle donne, affermò di condannare la violenza e la stessa guerra e di volere essere chiamato, per tali ragioni, Pio Felice.
 
-**IL CULTO DEL DIO SOLE INVITTO**
+Per sottolineare il mutamento che voleva dare ai costumi antichi, Eliogabalo prese in moglie una vestale e decise che la carriera senatoria e la carriera equestre non fossero più distinte tra loro. Inoltre, egli inaugurava un cerimoniale di adorazione della sua persona quale imperatore che diede vita a una casta — di certo spesso corrotta e capricciosa — dove le cariche più importanti venivano date a liberti, poiché questi erano più disponibili ad abbracciare le novità volute dall'imperatore.
 
-*L'esaltazione di Eliogabalo per il culto del Sole Invitto, a cui egli voleva accostare gli altri culti dell'Impero; soprattutto orientali e insieme a questi trasferirvi le più antiche e nobili tradizioni del paganesimo; appariva da un lato come un atteggiamento pienamente giovanile; ma dall'altro come il frutto di una cultura teologica e filosofica che nella dimensione religiosa intendeva riscoprire tutto il senso del mistero.*
+Questa politica portò Eliogabalo a perdere il favore del Senato che, nelle tradizioni di Roma sconvolte dall'imperatore, vedeva la fine dell'identità romana e della propria casta. Allo stesso tempo l'esercito, e in particolare i pretoriani, si allontanarono sempre di più dal giovane imperatore che toglieva loro, con il rifiuto della guerra, il ruolo di potere che detenevano nell'Impero. Infine, lo stesso popolo di Roma non riusciva ad affezionarsi a un imperatore chiuso nel cerimoniale incomprensibile della sua corte e apparentemente rinnegatore dei più antichi culti della città.
 
-*Fu così che Eliogabalo volle che sul tempio del dio Sole Invitto, costruito sul Palatino, fossero trasferiti la statua della dea Cibele del vicino tempio della Magna Mater, il Palladio e il fuoco sacro di Vesta dal tempio della omonima dea del Foro romano e dodici scudi di Marte, che erano custoditi nella reggia già fin dall'età arcaica.*
+Quando la nonna di Eliogabalo, Mesa, e la madre Soemia si resero conto che la situazione stava per precipitare, corsero a porvi rimedio facendo in modo che Eliogabalo, diciottenne, adottasse il proprio successore. Costui era Alessandro, figlio di un'altra figlia di Giulia Mesa di nome Mamea e perciò primo cugino dell'imperatore. Ben presto il giovanissimo Alessandro raccolse, come previsto, le simpatie dei senatori e della classe militare in quanto, essendo stato educato secondo i modelli tradizionali di Roma, appariva a tutti molto più autenticamente romano di quanto mai avrebbe voluto sembrare lo stesso Eliogabalo.
 
-*Successivamente, Eliogabalo manifestò l'intenzione di far svolgere nello stesso tempio del Sole anche le cerimonie e i riti sacri dei Giudei, dei Samaritani e dei Cristiani. I sacerdoti del dio Sole che lo consigliavano stavano tentando di realizzare, attraverso di lui, il più incredibile, in fondo assurdo e certamente utopistico, programma di conciliazione e fusione di tutte le religioni dell'Impero. Forse volevano così risolvere le divisioni religiose, che ormai aprivano conflitti sempre più profondi nel corpo sociale dell'Impero e, come nel caso dei Cristiani, tra questi e lo Stato.*
+Tutto ciò suscitò un sordo rancore in Eliogabalo che organizzò una congiura per uccidere il suo giovane successore, ma i congiurati furono scoperti dai pretoriani, che decisero di eliminare Eliogabalo: i primi a cadere furono i suoi cortigiani, evirati e impalati; e quindi Eliogabalo fu raggiunto in una latrina dove si era nascosto. Qui fu ucciso e il suo cadavere trascinato per le vie di Roma in mezzo a due ali di folla che lo percuoteva e lo dileggiava; fu gettato, poi, in una cloaca; ma poiché il corpo non passava fu portato nel circo e di nuovo esposto al ludibrio del pubblico. Quindi legato e appesantito con pietre, fu gettato nel Tevere dal ponte Emilio per impedire che qualcuno lo seppellisse. Insieme a Eliogabalo, unico imperatore nella storia di Roma a subire tante offese dopo morto, fu uccisa anche la madre Soemia (222 d.C.).
 
-*Eliogabalo autorizzò la madre a sedersi in Senato e a partecipare alle sedute e con ciò commise un atto che offese fortemente il senso aristocratico dei senatori, cui rispose organizzando un Senato di sole donne, composto dalle matrone di Roma.*
+AURELIO SEVERO ALESSANDRO
 
-*Anche qui si può ritenere che il giovane imperatore agisse dietro consiglio materno; ma aggiunse che le matrone romane avevano ormai un'influenza determinante nella vita quotidiana dell'Impero; ciò derivava loro dal rango e dalla ricchezza di cui spesso erano eredi e amministratrici e dalle loro conversioni alle religioni orientali, delle quali divenivano le più convinte sostenitrici.*
+I pretoriani acclamarono imperatore il tredicenne Aurelio Severo Alessandro, figlio di Mamea; e il Senato diede a lui l'appellativo di Augusto, il titolo di Padre della Patria, la potestà consolare e quella tribunicia, oltre al diritto di presentare all'ordine del giorno fino a cinque proposte.
 
-***
-
-*Tempio del Sole, planimetria generale e prospetto parziale dell'emiciclo in un disegno del Palladio.*
+Questo fu possibile perché tanto Mamea quanto il giovane imperatore Severo...

@@ -1,22 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-328                                                              STORIA DI ROMA ANTICA
+LA DINASTIA DEI FLAVII 329
 
-***
+Le truppe danubiane, fedeli a Vespasiano, entrarono in Italia; sconfiggevano i vitelliani e venivano accolte a Roma il 21 dicembre del 69 d.C.
 
-![Immagine di due monete: una con il profilo di Ottone e l'altra con quello di Vitellio]
+Vespasiano era riconosciuto dal Senato imperatore e, poiché si trovava in Egitto, il potere imperiale venne delegato al legato di Siria, Nuciano, e a uno dei figli di Vespasiano, Domiziano. I due dovettero presto reprimere una rivolta vitelliana appoggiata da un'insurrezione antiromana dei Batavi, guidata dalla classe sacerdotale dei Druidi. Lo stesso colle capitolino fu dato alle fiamme dai rivoltosi, ma la vittoria arrise ancora una volta agli uomini di Vespasiano; il quale rientrò a Roma come ultimo vincitore.
 
-*L’imperatore Ottone e Vitellio, da una moneta dell’epoca tratta dall’Illustrium imagines.*
+LA POLITICA DI VESPASIANO
 
-***
+L'opera politica di Vespasiano fu volta immediatamente a lasciare alla borghesia l'amministrazione dello Stato e a soddisfare le aspettative dei militari: Tutti questi eventi avevano rivelato, comunque, come il ruolo politico della plebe fosse ormai quasi completamente annullato; tanto che le decisioni e le scelte non la videro mai più esprimere pareri decisivi, lasciando l'unica possibilità di espressione nei moti di piazza legati a situazioni straordinarie come quella della caduta di Nerone.
 
-OTTONE
+Tito Flavio Vespasiano aveva un forte concetto dell'autorità del potere centrale e come primo provvedimento operò il sequestro di quei terreni che, trovandosi al di fuori dei territori delle colonie, erano stati liberamente occupati da coloro che avevano proprietà confinanti: Al sequestro seguì la vendita al pasta a favore degli stranieri che vivevano nelle colonie. Lo scopo di Vespasiano era quello di amalgamare tutti i residenti nelle province rafforzando la classe dei piccoli proprietari dalla quale provenivano i soldati.
 
-A questo punto i pretoriani abbandonarono Galba e cinque giorni dopo eleggevano un loro imperatore da opporre allo stesso Galba, Marco Salvio Ottone, il primo marito di Poppea; senatore anch'egli, ma rappresentante della classe dei cavalieri, legato; perciò; tanto alla burocrazia amministrativa quanto alle classi commerciali. Questi avvenimenti mostrarono alle forze dislocate nelle province e ai loro generali che il potere centrale era sconvolto da una profonda crisi e che non era più il tempo di accettare supinamente le decisioni politiche espresse soltanto dal Senato o dai pretoriani.
+La sua opera a favore dell'amministrazione dello Stato prese forma in una
 
-VITELLIO
+IL TEMPLUM PACIS
 
-I primi a insorgere furono i legionari di stanza in Germania, i quali riconobbero come imperatore il legato di Roma Lucio Aulo Vitellio. Ottone, raggiunto dalle legioni danubiane, marciò contro Vitellio; ma ne uscì sconfitto; riducendo così il ruolo dei pretoriani nella crisi. Già Vitellio si preparava a raggiungere Roma, dove contava di allearsi con il Senato, al cui censo apparteneva la sua famiglia; quando giunse la notizia che erano insorte le legioni impegnate in Giudea, riconoscendo come imperatore Tito Flavio Vespasiano.
+Nel 74 d.C. venne impiantato accanto al Foro Romano il *templum Pacis*, recinto della pace, come è spesso ricordato dagli antichi. Vespasiano lo volle edificare per ricordare la *pax augusta* che era stata restaurata nell'Impero romano. Era formato da un porticato che chiudeva una vasta e monumentale area centrale nella quale sorgevano ameni giardini con fontane e statue: Sul lato principale del portico si aprivano tre grandi ambienti; di cui quello centrale, maggiore per ampiezza; costituiva il vero e proprio tempio. Questa sala era divisa all'interno da un doppio colonnato e conservava la grande statua della Pace e il famoso bue di bronzo opera di Lisippo.
 
-VESPASIANO
+Fu questo il primo tempio romano edificato interamente inserito all'interno di un complesso monumentale. Le due sale simmetriche ai lati del tempio erano invece adibite a biblioteche ed erano ornate una da un grande affresco raffigurante una pianta topografica dell'Impero romano; e l'altra conservava, invece, affissa su una parete la pianta topografica di Roma: Questa mostrava tutti gli edifici della città; sia quelli monumentali che pubblici che le case private e nello stesso tempo le piazze, le strade, le vie e i vicoli di Roma.
 
-Vespasiano non aveva alcun legame con il Senato se non l'esservi rientrato, durante l'impero di Caligola, per meriti militari. Di famiglia reatina, di censo borghese (era figlio di un appaltatore delle imposte) Vespasiano rappresentava per i suoi soldati niente altro che uno di loro, che aveva scelto la carriera delle armi e che nell'esercito riconosceva la sua classe sociale. Immediatamente Vespasiano fu riconosciuto dalle legioni della Siria e del Danubio e anche dai pretoriani rimasti fedeli al ricordo di Ottone e quindi ancora ostili a Vitellio.
+Una parte dei frammenti di questa pianta monumentale apposta nel tempio all'età di Settimio Severo fu rinvenuta in questo secolo alla base della stessa parete antica; ove sono visibili ancora i fori per l'alloggiamento delle grappe di sostegno e che costituisce la facciata; su via dei Fori Imperiali, del convento annesso alla basilica dei Santi Cosma e Damiano.

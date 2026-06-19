@@ -1,41 +1,17 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-260                                                                    STORIA DI ROMA ANTICA
+COSPIRAZIONE E DITTATURA
+261
 
-*Giulio Cesare, nel ritratto*
-*dall'Illustrium imagines.*
+IL RE MANCATO
 
-[Immagine: Ritratto di Giulio Cesare]
+La città, pur abbellita dalle splendide opere pubbliche volute dal dittatore, è costretta a sorridere tra denti di fronte a pesanti cambiamenti. Le donazioni di frumento, che fino a pochi anni prima erano il prezzo per il successo politico, sono drasticamente ridotte. Ma la plebaglia e gli sfaccendati possono trovare lavoro nell'edificazione e nel restauro di numerosi edifici pubblici.
 
-*Adeo note sunt .C. Caesaris animi &*
-*corporis doter & toto orbe praegelara*
-*Stat ea silentio simulare fatiue fue*
-*sic quneper ambitio obtinere ceces-*
-*rum quae imagines attinere debent*
-*erant breviter stringimus huic*
-*traditio excelsa Statues elatus edi*
-*de brevibus membris prae paulo plus*
-*more nigris negotijs oculis caeso*
+La posizione di Cesare e il suo governo autoritario con sempre maggiore difficoltà possono dirsi repubblicani. Durante la festa dei Lupercali, il suo fidatissimo generale Marco Antonio...
 
-Le continue modifiche della sua posizione giuridica sono il segno tangi-
-bile della difficoltà di collocare l'eccezionalità del suo potere all'interno
-del sistema dei poteri repubblicani. Il rientro nella capitale è caratterizza-
-to da un'intensa attività di riforma. Tuttavia la sua non è tanto un'opera di
-restaurazione, quanto di trasformazione dello Stato: si passa dalla Repubblica
-oligarchica a un organismo amministrativo più adeguato alle esigenze
-d'uno Stato che, ormai, ha assunto una dimensione mondiale. L'azione di
-Cesare è volta fin dall'inizio a creare un regime più efficiente.
+LA CURIA IULIA
 
-Il numero dei senatori è aumentato (da 600 a 900 membri). Per il fun-
-zionamento di un apparato burocratico molto grande c'è anche bisogno di
-molti questori, pretori, edili, prontamente aumentati dal dittatore. Cesare
-promuove inoltre la fondazione di nuove colonie sia nelle province orientali
-che in quelle occidentali, estendendo il diritto di cittadinanza. I soldati, che
-per anni hanno combattuto lontano dall'Italia, possono ora integrarsi nelle
-nuove comunità.
+Dopo l'incendio della curia Hostilia del 52 a.C., Cesare crea una nuova sede del Senato. La nuova curia, che da lui sarà chiamata Curia Iulia, è l'edificio in mattoni che ancora oggi si vede tra l'angolo dell'Argileto e del Comizio: il suo aspetto attuale è legato alla ricostruzione seguita al grande incendio del 283 d.C., che distrusse gran parte del Foro; e questa ricostruzione dal VI secolo d.C. è stata trasformata nella chiesa di Sant'Adriano. L'edificio odierno è frutto dei restauri del 1930-1936: a pianta rettangolare, presenta quattro pilastri sulla fronte che reggono il timpano triangolare. Le tracce di locali, visibili sulla facciata, sono resti di tombe medievali. La grande porta bronzea che permette l'accesso all'edificio è una copia dell'originale d'età dioclezianea. Il grandioso interno presenta molte tracce delle progressive trasformazioni subite dalla curia. Il bellissimo pavimento in marmo è del rifacimento dioclezianeo, mentre i resti di pittura bizantina alle pareti appartengono alla chiesa di Sant'Adriano.
 
-Il desiderio di ordine e la volontà di dotare la città d'un nuovo "tempo"
-sono alla base della sua riforma più duratura. L'astronomo alessandrino So-
-sigene è l'autore del nuovo calendario; detto giuliano, dal nome del suo
-promotore, e il mese luglio è chiamato così dal nome *Iulius*. Solo nel 1582
-Gregorio XIII introdurrà un'ulteriore riforma: riducendo la durata dell'an-
-no da 365 giorni e 6 ore a 365 giorni, 5 ore, 48' e 46''.
+IL DITTATORE E LA SUA PIAZZA
+
+Inizialmente Cesare progettava di dare nuova vita al vecchio Foro, ormai troppo ristretto e soffocato. L'unica possibilità d'espansione è nello spazio tra l'Argileto e lo sperone che congiunge Campidoglio e Quirinale. Per fare questo il dittatore dal 54 a.C. acquista molte case private, spendendo di tasca sua cifre enormi. Ma il desiderio di costruire un tempio a Venere Genitrice (dalla quale discendeva la gens Giulia), votato a Farsalo (48 a.C.), impone sostanziali modifiche al primo progetto: il risultato è un tempio su alto podio posto in posizione assiale rispetto alla piazza (160 x 75 m) al centro della quale si trova la statua equestre del dittatore; sugli altri tre lati si aprono portici a due piani, dietro ai quali si trovano numerose botteghe. Lo spazio, che inizialmente doveva costituire un allargamento del vecchio Foro, è diventato un recinto sacro per il tempio di Venere Genitrice: è il nuovo Foro Giulio. Sottili corrispondenze, come la statua equestre del dittatore posta al centro dello spazio porticato (il figlio che corrisponde alla madre), fanno intuire i propositi del dittatore, capace di ricevere il Senato seduto nel centro del tempio come una vera divinità. Cesare impiega molto denaro anche per ricostruire alcuni edifici dell'antico Foro (come la Basilica Aemilia) o per edificarne di nuovi (la Basilica Iulia al posto della Sempronia), ma il suo intento è chiaro. Il legame tra la Curia Iulia, nuova sede del Senato, e la sua piazza, di cui la curia è quasi un'appendice, rivela la volontà di spostare il centro del potere e di gestire, per quanto possibile, la vita pubblica. Attualmente è visibile solo un terzo dell'originario Foro Giulio: la parte meridionale è inclusa nell'area archeologica del Foro Romano, mentre quella orientale e quella settentrionale sono quasi completamente ricoperte.

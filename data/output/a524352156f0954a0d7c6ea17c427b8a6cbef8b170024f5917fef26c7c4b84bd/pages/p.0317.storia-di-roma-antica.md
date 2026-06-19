@@ -1,18 +1,27 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-317
+318
 
-CUIEI LE PERVERSIONI?
+STORIA DI ROMA ANTICA
 
-A Nerone non piacciono soltanto le donne. La sua più grande passione sono gli adolescenti, al punto che non solo ama circondarsene, ma non disdegna neppure ricorrere allo stupro; come nel caso di Aulo Plauzio. Durante il suo viaggio in Grecia il principe artista consuma un altro strano matrimonio. Il giovane eunuco Sporo, somigliantissimo a Poppea, con dote, velo rosso e gran corteo viene sposato da Nerone. In un'altra occasione, invece, Nerone riveste il ruolo dell'omosessuale passivo. Questa volta è l'imperatore che porta il velo per diventare la dolce moglie di Pitagora. Un giovane eunuco, somigliantissimo a Poppea, con dote, velo rosso e gran corteo viene sposato da Nerone. Al di là della nota scandalistica e dei sessuali di Nerone, che di certezze erano variegate, in queste strane unioni si devono piuttosto vedere dei rituali iniziali al culto di *Cibele* nel caso di Sporo (gli adepti sono evirati) al culto di *Bellona* nel caso di Pitagora. Del resto, un'altra perversione di Nerone che, coperto da una pelle di belva si avventava sugli organi sessuali di uomini e donne legati a pali, non lascia dubbi che si tratti di un rito mistico della religione del dio *Mitra*, un nuovo culto orientale che si va diffondendo a Roma.
+L'area urbana occupata dalla *domus Aurea*.
 
-***
+[Mappa]
 
-CALUNNIE E TORCE CRISTIANE
+**DOMUS AUREA**  
+**ESQUILINO**  
+**PALATINO**  
+**COLOSSEO?**  
+**STADIO**  
+**TEMPIO CLAUDIO**  
+**CELIO**  
+**CAMPO MARCIO**
 
-I Cristiani sono noti molto presto alle autorità romane come una delle sette del giudaismo palestinese. L'atteggiamento degli organi di governo è generalmente neutrale o addirittura benevolo di fronte alla loro predicazione nelle province dell'Oriente mediterraneo. A Roma, la nuova religione si sviluppa molto presto e fino al 62 d.C. non si registra l'ostilità delle autorità politiche (vedi box ...). Anzi, proprio in età neroniana si conclude felicemente il primo processo di Paolo al quale è concesso di predicare liberamente il Vangelo; Il Cristianesimo penetra così anche nel pretorio e nella cerchia del principe.
+**DA ROMA A NERONIA**
 
-Tra il 62 e il 63 d.C. si registra una svolta decisiva nella politica di Nerone. Il mutamento dell'imperatore nei confronti del Cristianesimo coincide con un mutamento della sua condotta politica. La persecuzione dei Cristiani è solo in parte legata alla ricerca di un capro espiatorio per l'incendio di Roma. Nerone decide in realtà di dare libero sfogo al malumore popolare verso questa nuova superstizione. I Cristiani, colpevoli solo di una condotta diversa da quella dei Romani, di orrendi delitti. Le accuse più gravi sono di infanticidio (così i pagani interpretano il banchetto eucaristico) e di incesto (dovuto all'uso dei Cristiani di chiamarsi fratelli e sorelle). Inoltre i Cristiani odiano il genere umano. Secondo alcuni degli antichi scrittori, Nerone scatena una vasta repressione. Scattano le denunce. Si cade in arresto se si confessa la fede. Processi sommari condannano gli arrestati. Al danno si aggiunge anche la beffa. Infatti Nerone non li condanna solo a morte, ma, coperti da pelli di animali, li fa morire straziati dai morsi dei cani. Altri sono invece crocefissi e spesso si appicca il fuoco alle loro vesti affinché, come torce umane, illuminino la notte romana. Sembra comunque che questi racconti siano in parte esagerati. L'episodio, benché grave, rimane isolato. Ebbene, benché grave sia l'accusa rivolta al Cristianesimo di «religione illecita», molto più grave è l'accusa dei Cristiani in quanto tali e il credito che le autorità romane sembrano dare a tutte le calunnie che circolano nella città. Saranno proprio questi presupposti di ben più gravi repressioni che si realizzeranno nei secoli a venire.
+Il principe si precipita a Roma: dimostra subito una grande capacità organizzativa preparando per 200.000 sinistrati rifugi provvisori nel Campo Marzio e nei giardini del Vaticano. Da Ostia fa arrivare provviste e abbassa il prezzo del grano: ma l'opinione pubblica si scatena. Nerone è additato come il colpevole. Si dice in giro che egli abbia mandato uomini ad appiccare l'incendio: lo scopo è quello di avere via libera per la ricostruzione secondo i suoi desideri. Le voci si contraddicono e si accavallano. Per la prima volta si fa il nome dei Cristiani come possibili colpevoli:
 
-***
+È certo che alcuni incendiari hanno percorso le strade di Roma la famosa notte di luglio: è anche certo che dopo l'incendio Nerone intraprende la costruzione della nuova residenza, la *domus Aurea*, proprio al posto dei magazzini bruciati. Persino nell'ispirazione poetica dell'imperatore si riconosce una delle cause della disgrazia: in quei giorni Nerone sta infatti lavorando a un poema epico sulla presa di Troia. Le fiamme della capitale gli avrebbero così facilitato la descrizione dell'incendio della città antica: c'è anche chi giura di aver visto l'imperatore sopra una torre nei giardini di Mecenate sull'Esquilino; intento, con la sua inseparabile cetra, a fissare il bagliore rossastro che si leva da Roma.
 
-NERONE E LA FINE DEL CONSENSO | 317
+**DA ROMA A NERONIA**
+
+Passata l'emergenza si deve provvedere alla ricostruzione. Ancora una volta Nerone dà prova di capacità organizzativa e di piena consapevolezza dei bisogni della città. Innanzi tutto stabilisce che le case in affitto debbano avere portici (costruiti a sue spese) sormontati da terrazze da cui si possano combattere gli incendi. Inoltre ordina che le case siano allineate, le strade allargate, gli edifici abbassati: a sue spese impone che sia usata pietra al posto del legno e che sia più facile ottenere acqua e soccorso. A questo scopo potenzia il corpo dei vigili (i pompieri) e aggiunge un ramo nuovo all' *aqua Claudia* (vedi pagine precedenti). Gli edifici più importanti sono ricostruiti con incredibile velocità.

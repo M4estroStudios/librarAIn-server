@@ -1,18 +1,42 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-300
+UNA DINASTIA COMPLICATA: I GIULIO-CLAUDII 301
 
-STORIA DI ROMA ANTICA
+COM'È SCACCIARE LA NOIA A CAPRI
+Augusto si invaginisce dell'isola di Capri; la acquisisce e ne fa una delle sue residenze preferite. Nella villa fatta costruire apposta (probabilmente il cosiddetto palazzo a mare, lato che guarda Napoli) con una ristretta cerchia di amici ama darsi al dolce far niente.
 
-GIUDEI E CRISTIANI A ROMA
+Tiberio ne fa addirittura la sua residenza stabile per dieci anni. Secondo la tradizione, egli vi avrebbe fatto costruire ben dodici ville, ciascuna chiamata col nome di un dio. Due sono ancora abbastanza ben conservate: la villa di Giove (sulle terrazze ricavate sul promontorio orientale) e la villa di Damecuta (sulla punta nord-occidentale). Entrambe in posizione scenografica offrono ogni comfort. Una torre-faro garantisce rapide comunicazioni a vista con la terraferma e quindi con Roma.
 
-La presenza di una comunità giudaica a Roma diviene consistente nei primi decenni dell'Impero.
+In questo ritiro isolato Tiberio passa il tempo tra piaceri libidinosi e l'esercizio di crudeltà inaudite. Fa ornare con immagini lascive le camere da letto. Organizza orge in cui rugazze, invertiti e specialisti (da lui chiamati *spintriae*) si esibiscono a catena in accoppiamenti mostruosi. Ama far accoppiare fanciulli e fanciulle, abbigliati da satiri e ninfe sparse nei giardini e nei boschetti. Egli stesso partecipa a giochi sessuali con bambini e fanciulli. Si comporta in maniera crudele con i condannati, che fa torturare in mille modi e poi fa gettare in mare, dove alcuni pescatori con arpioni sono pronti a finirli.
 
-Giudei, come gli altri orientali, si diffondono soprattutto attraverso il porto di Pozzuoli (*Puteoli*) che per Roma è la porta dell'Oriente prima della costruzione di Ostia da parte di Claudio. Tra questi Giudei, organizzati intorno a una sinagoga, cominciano a distinguersi a partire dall'epoca di Tiberio anche i Cristiani: si tratta però di una comunità inquieta che riproduce nell'Urbe le beghe che dividono le varie sette in Palestina. Inoltre la religione ebraica è rigorosamente monoteista e non ammette la raffigurazione della divinità: è quindi del tutto incompatibile con il tradizionale politeismo e con il colorito pantheon antropomorfo dei Romani e con la consueta apertura verso i culti stranieri. Diversamente da quanto avviene per altre sette orientali (ad esempio i seguaci di Iside, di Cibele e di Attis) l'integrazione è dunque difficile. Sotto Tiberio avviene una prima cacciata dei Giudei da Roma; notevoli tensioni si verificano durante il regno di Caligola, in seguito al rifiuto dei Giudei di collocare la statua dell'imperatore nel tempio di Gerusalemme. Anche Claudio è costretto a proibire le riunioni dei Giudei a Roma per ragioni di ordine pubblico. E ancora Claudio bandisce da Roma quei Giudei che causano continui disordini per istigazione di un certo Cresto (49 d.C.). Non si tratta di una persecuzione antiebraica o anticristiana: Claudio bandisce infatti anche gli astrologi e proibisce in Gallia le pratiche religiose dei Druidi, considerate fonte di disordini antiromani; da allora comunque si cominciano chiaramente a distinguere i Cristiani dalle altre sette giudaiche.
+Il primo ha già manifestato le sue perversioni stuprando le sorelline che abitano con lui nella casa della nonna Antonia. Il secondo è sospettato di essere figlio adulterino di Livilla e Seiano. Entrambi vengono comunque adottati e nominati eredi in parti uguali (35 d.C.). Inoltre ciascuno dei due è nominato erede dell'altro. Questo favorisce il nascere di nuove fazioni a Roma.
 
-La separazione della sinagoga porta anche alla nascita dei primi luoghi di culto cristiano dell'Urbe, intorno a cui si riuniscono anche i Cristiani convertiti dal paganesimo. La maggiore concentrazione dei più antichi Cristiani a Roma si ha nei quartieri, per lo più periferici, tradizionalmente sede anche di comunità giudaiche: Trastevere, il tratto urbano della via Appia, l'Aventino, il Celio, il vico Patrizio e il Circo Massimo. Sono luoghi più frequentati dagli apostoli Pietro e Paolo durante i loro soggiorni a Roma.
+Nel 37 d.C. Tiberio esprime l'intenzione di rientrare a Roma. Si organizza il viaggio. Ma l'imperatore non si decide a entrare nella sua capitale. Colto da malore nelle sue peregrinazioni tra Lazio e Campania, è portato a Miseno dove, dopo varie riprese e ricadute, viene aiutato a morire da Caligola e Macrone.
 
-FINE DI UN IMPERATORE TACITURNO
+FIGLIO DI GERMANICO: PRONIPOTE DI ANTONIO
+È solo una leggenda che Gaio Cesare sia nato nel 12 d.C. in un campo militare sul Reno. Certo è che vi è stato portato in tenera età e che ha passato l'infanzia tra i soldati, tanto da conquistarsi il nomignolo di Caligola ("scarponcino").
 
-Tiberio si chiude sempre più nella sua villa di Capri. Solo alcuni fatti drammatici lo scuotono. Corre infatti a Fidene, dove è crollato un anfiteatro, travolgendo ventimila persone. Manda sovvenzioni in denaro agli abitanti del Celio, dell'Aventino e della zona del Circo Massimo, rimasti senza tetto a causa di incendi. Si preoccupa anche di prevenire le rovinose alluvioni del Tevere con opere di arginatura; a Capri Tiberio apprende anche che Erode Antipa, che governa la Giudea con la protezione di Roma, ha fatto decapitare un predicatore sovversivo di nome Giovanni e, qualche anno dopo, che il prefetto di Giudea, Ponzio Pilato, ha fatto crocifiggere un pericoloso agitatore di nome Gesù. Due banali episodi della costante irrequietezza delle sette ebraiche della Palestina.
+L'amore dei soldati per Germanico è ancora vivo e si trasferisce anche sul figlio; sicché, nonostante Tiberio abbia designato come erede anche Tiberio Gemello, egli è scelto come suo unico successore. Gaio Cesare ha otto anni quando gli muore il padre.
 
-A Roma giungono echi di una vita dissoluta dell'imperatore, dedito nel suo lussuoso ritiro a capricci, piaceri, crudeltà e perversioni di ogni genere. L'isolamento aumenta in lui le paure e le superstizioni. Lo crucca il problema della successione. Dei parenti gli sono rimasti solo Gaio (Caligola) figlio di Germanico e Agrippina; e il nipote diretto Tiberio Gemello (figlio di suo figlio Druso e di Livilla).
+Ritornato a Roma vive dapprima nella casa della bisnonna Livia e poi, dopo la sua morte e dopo la condanna della madre e del fratello a opera di Seiano, con la nonna Antonia, figlia del triumviro Marco Antonio. Qui assorbe una cultura fortemente intrisa di elementi greco-egiziani; che sono all'origine di alcune delle "stranezze" che caratterizzano il suo regno, che ha come modello la monarchia faraonico-tolemaica e come sfondo culturale la religione isiaca.
+
+***
+
+UNA DINASTIA COMPLICATA: I GIULIO-CLAUDII 301
+
+COM'È SCACCIARE LA NOIA A CAPRI
+Augusto si invaginisce dell'isola di Capri; la acquisisce e ne fa una delle sue preferite. Nella villa fatta costruire apposta (probabilmente il cosiddetto palazzo a mare, lato che guarda Napoli), con una ristretta cerchia di amici ama darsi al dolce far niente.
+
+Tiberio ne fa addirittura la sua residenza stabile per dieci anni. Secondo la tradizione, egli vi avrebbe fatto costruire dodici ville, ciascuna chiamata col nome di un dio. Due sono ancora abbastanza ben conservate: la villa di Giove (sulle terrazze sul promontorio orientale) e la villa di Damecuta (sulla punta nord-occidentale). Entrambe in posizione scenografica offrono ogni comfort. Una torre-faro garantisce rapide comunicazioni con la terraferma e con Roma.
+
+In questo ritiro isolato Tiberio passa il tempo tra piaceri libidinosi e l'esercizio di crudeltà inaudite. Fa ornare con immagini lascive le camere da letto. Organizza orge in cui rugazze, invertiti e specialisti (da lui chiamati *spintriae*) si esibiscono a catena in accoppiamenti mostruosi. Ama far accoppiare fanciulli e fanciulle, abbigliati da satiri e ninfe sparse nei giardini e nei boschetti. Egli stesso partecipa a giochi sessuali con bambini e fanciulli. Si comporta in maniera crudele con i condannati, che fa torturare in mille modi e poi fa gettare in mare, dove alcuni pescatori con arpioni sono pronti a finirli.
+
+Il primo ha già manifestato le sue perversioni stuprando le sorelline che abitano con lui nella casa della nonna Antonia. Il secondo è sospettato di essere figlio adulterino di Livilla e Seiano. Entrambi vengono comunque adottati e nominati eredi in parti uguali (35 d.C.). Inoltre ciascuno dei due è nominato erede dell'altro. Questo favorisce il nascere di nuove fazioni a Roma.
+
+Nel 37 d.C. Tiberio esprime l'intenzione di rientrare a Roma. Si organizza il viaggio. Ma l'imperatore non si decide a entrare nella sua capitale. Colto da malore nelle sue peregrinazioni tra Lazio e Campania, è portato a Miseno dove, dopo varie riprese e ricadute, viene aiutato a morire da Caligola e Macrone.
+
+FIGLIO DI GERMANICO: PRONIPOTE DI ANTONIO
+È solo una leggenda che Gaio Cesare sia nato nel 12 d.C. in un campo militare sul Reno. Certo è che vi è stato portato in tenera età e che ha passato l'infanzia tra i soldati, tanto da conquistarsi il nomignolo di Caligola ("scarponcino").
+
+L'amore dei soldati per Germanico è ancora vivo e si trasferisce anche sul figlio, sicché, nonostante Tiberio abbia designato come erede Tiberio Gemello, egli è scelto come suo unico successore. Gaio Cesare ha otto anni quando gli muore il padre.
+
+Ritornato a Roma vive dapprima nella casa della bisnonna Livia e poi, dopo la sua morte e dopo la condanna della madre e del fratello a opera di Seiano, con la nonna Antonia, figlia del triumviro Marco Antonio. Qui assorbe una cultura fortemente intrisa di elementi greco-egiziani; che sono all'origine di alcune delle "stranezze" che caratterizzano il suo regno, che ha come modello la monarchia faraonico-tolemaica e come sfondo culturale la religione isiaca.

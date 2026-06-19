@@ -1,12 +1,19 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-198                                                                    STORIA DI ROMA ANTICA
+ROMANI E CARTAGESI: LA CONQUISTA DEL MEDITERRANEO 199
 
-[Incisione di B. Pinelli: Massinissa offre a Sofonisba una coppa di veleno]
+Sepolcro degli Scipioni; sarcofago di L. Cornelio Scipione Barbato.
 
-*Massinissa offre a Sofonisba una coppa di veleno (incisione di B. Pinelli)*
+[Immagine del sarcofago]
+AVLLA CORNELIA CN FISP
+CORNELIO CN SCIPIO
+...
+BARBATO SCHM...
+...
 
-Utica. Finge di interessarsi alle trattative avanzate da Asdrubale e Siface, lascia passare l'inverno; con le truppe accampate nei *Castra Cornelia* (l'accampamento Cornelio) in primavera con un attacco a sorpresa occupa e brucia gli accampamenti nemici. Siface è inseguito fino a Cirta, dove è catturato insieme alla regina Sofonisba, figlia di Asdrubale. La giovane e bella donna era stata un tempo fidanzata di Massinissa; ancora innamorato di lei, Sofonisba senza fatica riesce a convincere il vecchio amore a sposarla quello stesso giorno. Ma Scipione non è sensibile a queste storie d'amore un po' stantie e tardive; la figlia di Asdrubale è pericolosa e va eliminata. A Massinissa dovrà bastare il regno di Numidia. Consapevole del suo fallimento, Sofonisba beve la coppa di veleno che il fresco sposo a malincuore le offre.
+**IL LUPO PERDE IL PELO MA NON IL VIZIO**
 
-La fine di Siface, inviato prigioniero in Italia, fa vacillare la potenza cartaginese: Il potere passa ad Ánnone, un nipote di Annibale, che riporta in auge la fazione dei Barca. Nonostante una vittoria navale a Utica (la flotta si dirige verso Crotone per andare a prendere Annibale) il Senato cartaginese accetta le condizioni romane. Scipione esige "solo" l'abbandono dell'Italia, la rinuncia a Spagna e Sardegna; la consegna della flotta; salvo 20 navi.
+Dopo la sconfitta e il ritorno a Cartagine Annibale non vive momenti allegri. Molti dirigenti lo odiano ma lo sopportano come baluardo contro la rivoluzione che serpeggia tra il popolo. L'ex generalissimo si ritira nei suoi possedimenti; dove trasforma i suoi soldati in coltivatori di ulivi, pur di tenerli occupati ed evitare sommosse. Ma il condottiero, che aveva tenuto in scacco l'Italia, non può trasformarsi in un pacifico proprietario terriero: cinque anni dopo Zama rientra in politica come sufeta; l'equivalente punico del console romano. Intanto i suoi occhi sono puntati sull'Oriente dove possono nascere guai per Roma.
 
-Ma la guerra non può finire così: manca ancora lo scontro con Annibale. Alla fine di ottobre i due generali, dopo un colloquio infruttuoso, si fronteggiano a Naraggara, presso il villaggio di Zama (202 a.C.). Per la prima volta Annibale è sconfitto in una battaglia campale: Tornato a Cartagine convince i concittadini a chiedere la pace; È così sancita la fine della potenza cartaginese: Pochi giorni dopo la sconfitta le vedette romane vedono partire dal porto di Cartagine una nave coperta di bende e di rami d'ulivo: sono plenipotenziari che si recano a Roma a implorare la pace.
+I suoi rapporti con il sovrano siriaco Antioco III (vedi pagine seguenti) cominciano presto. A Roma i suoi movimenti scatenano paura: Scipione l'Africano difende il vecchio nemico, invitando a non dare credito alle chiacchiere. Nessuno è convinto e nel 195 a.C. il Senato invia a Cartagine una commissione d'inchiesta composta da Cneo Servilio (il vecchio console del 217 a.C.), da Claudio Marcello (figlio del vincitore di Siracusa) e da Terenzio Culleone (un prigioniero di guerra liberato da Scipione). I tre non sono molto soddisfatti di quanto vedono. Intanto Annibale prepara la fuga, perché teme che la missione porti al suo arresto. Giunto sull'estrema punta orientale della Tunisia, dove lo attende una nave, invita i comandanti delle navi all'ancora a un banchetto sulla spiaggia; la grande tenda del festino nasconde la sua nave alla vista degli uomini.
+
+I cibi abbondano e il vino scorre fiumi. Dopo poco tempo tutti sono ubriachi e non pochi cominciano ad addormentarsi. Allora Annibale sguscia via e salpa per la Siria, dove il re Antioco lo aspetta. Presto tra i due cominceranno i malintesi e le delusioni. Il re cerca nell'ex generale punico un tecnico che gli riorganizzi l'esercito. Annibale invece progetta d'intervenire in Oriente. Vorrebbe che il sovrano gli concedesse parte delle sue truppe e della sua flotta per tornare a Cartagine e trascinarla in guerra: ancora una volta vorrebbe sbarcare in Italia e suscitare la definitiva rivolta degli alleati; ma ad Antioco questo progetto sembra una chimera e Annibale deve adattarsi a seguire il re, che si sta preparando allo scontro con Roma.

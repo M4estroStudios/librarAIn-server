@@ -1,55 +1,17 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-76                                                                    STORIA DI ROMA ANTICA
+II. RE RIFORMATORE, II. RE TIRANNO E LA RIVOLUZIONE $\quad$ 77
 
-della legione romana classica (40+10+10 centurie = 6000 uomini). L'esercito
-oplitico (*oplita* uomo armato; dal greco *oplon*) creato da Servio costituisce
-l'esatto raddoppiamento dell'esercito romuleo composto di 3000 uomini. Per
-essere efficaci, gli opliti devono essere schierati in formazione di massa come la
-falange, costituita da parecchie file di soldati: in media otto. Il buon esito di uno
-scontro tra due falangi dipende dalla saldezza e coesione dei suoi componenti, gli
-opiti: dipende dunque dalla solidarietà civica.
+assegna nuova forza politica alle classi più ricche. L'assemblea e la distribuzione dei voti sono infatti articolati in modo che nelle votazioni la maggioranza automaticamente spetti alle centurie dei cavalieri e alla prima classe. Col voto per centurie le classi più ricche raggiungono il totale di 98 voti, con una maggioranza di tre voti sulla somma totale dei voti delle altre classi (95).
 
-LA CAVALLERIA E LA CRISI DELL'ESERCITO GENTILIZIO
+### LA NUOVA DIVISIONE TERRITORIALE
 
-A Servio si attribuisce il potenziamento della cavalleria; insieme alla creazione
-della legione di opliti. Le 18 centurie di cavalieri dell'esercito serviano (costituite
-dai cittadini più ricchi) sono il risultato delle centurie reclutate tra i primi
-cittadini (*ex primoribus civitatis*).
+Come già anticipato, Servio Tullio modifica le istituzioni e la suddivisione della popolazione: infatti è cambiato il vecchio ordinamento in tre tribù gentilizie (*Tities*, *Ramnes*, *Luceres*) e in curie. Lo stretto legame esistente tra il cittadino, possessore di terra, e il soldato comporta una nuova divisione del territorio in tribù, intese come circoscrizioni territoriali, cui si appartiene in
 
-Nonostante il potenziamento della cavalleria, che gode anche di particolari diritti
-di voto, con Servio Tullio tramonta l'importanza del combattimento a cavallo e su
-carro, tipico delle lotte aristocratiche. Per questo precedentemente la guerra era
-appannaggio dell'aristocrazia e l'esercito era organizzato soprattutto su base
-gentilizia. Con Servio la proprietà fondiaria diventa la base per l'arruolamento.
+***
 
-Il possesso della terra è una prerogativa tipica dei cittadini; cioè di coloro che
-godono la totalità dei diritti della città. La riforma serviana ha il merito di
-sostituire un esercito cittadino a un esercito gentilizio e di essa fa parte anche la
-divisione territoriale della popolazione; così le tribù territoriali prendono il posto
-delle curie.
+### PORTUNUS
 
-L'asse di Servio Tullio è l'asse su cui ruota tutta la riforma: la divisione in classi
-in base al censo (la ricchezza) e non più solo per nascita o stirpe.
+Il santuario di Portunus era situato vicino al Tevere, presso la porta Flumentana fuori dal perimetro delle mura serviane. Portunalia, festa del calendario «numano», erano celebrati il 17 agosto. Portunus, divinità «legata alle porte» (non solo al *portus* come si potrebbe credere) si identificava con Melicerte-Palemone figlio di Ino-Leucotea, quindi è particolarmente legato alla Mater Matuta del foro Boario. Del resto è comprensibile il legame tra la porta e il porto che questo culto sembra simboleggiare. Portunus, in quanto custode delle porte, può essere interpretato come custode del porto, l'ingresso fluviale-marino alla città. Il tempio arcaico di questa divinità è ignoto e probabilmente nuovi scavi, sotto il tempio rettangolare sul Tevere identificato quasi con certezza con l'edificio sacro a Portunus, permetteranno di conoscere un altro tempio «serviano», coevo a quello di Mater Matuta-Fortuna.
 
-L'ASSEMBLEA DEL CITTADINO-SOLDATO:
-I COMIZI CENTURIATI
-
-I cittadini godono particolari diritti politici, in proporzione al servizio for-
-nito da ciascuna classe nell'esercito. È probabile che la creazione dei comizi
-centuriati (assemblee del popolo; diviso in centurie) in sostituzione dei comizi
-curiati, sia contemporanea alle riforme serviane; cui è strettamente legata. La
-novità consiste nel fatto che questa nuova assemblea presenta una diversifica-
-zione nei diritti di ciascuna delle sue componenti. Come un esercito essa si riu-
-ne in fuori dalla città, nel Campo Marzio; dove ciascuna delle 193 centurie repre-
-senta una sola unità di voto. I *capite censi* sono riuniti in una sola centuria, men-
-tre le due del genio votano con la prima e le due dei musici con la quarta.
-
-L'ordinamento censitario corrisponde alla nuova realtà cittadina della Roma dei
-Tarquini. La struttura sociale; sempre molto elastica e aperta a stimoli esterni,
-inizia ora a dare segni di cedimento. Le antiche *gentes* cominciano a rivendicare
-i privilegi della loro condizione: bande armate e fazioni, come quella ad esempio
-dei Marcii, sconvolgono la quiete. Le nuove *gentes*; giunte anche al Senato, ri-
-vendicano al contrario spazi più ampi nella vita politica. Ai diritti dell'antica
-aristocrazia si contrappone o si sostituisce il diritto del nuovo denaro.
-
-La riforma di Servio può sembrare ispirata a princìpi di eguaglianza, ma in realtà...
+*(Didascalia immagine)*
+Il tempio di Portunus detto della Fortuna Virile, incisione di G. B. Piranesi.

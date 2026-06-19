@@ -1,10 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-268                                           STORIA DI ROMA ANTICA
+269
 
-LA FINE DI UN AVVOCATO DALLA LINGUA LUNGA
+LA DIVISIONE DELLE SPOGLIE
 
-Cicerone è stato il più accanito avversario di Antonio. Le sue infiammate Filippi che hanno privato Antonio della simpatia di molti senatori e inevitabilmente le cose si mettano male per Cicerone, quando Antonio s'allea con Ottaviano, e il suo nome figura nelle prime liste di proscrizione.
+I triumviri passano a una nuova spartizione di eserciti e poteri. Antonio ottiene le province orientali; Ottaviano allarga i suoi territori in Occidente (le province spagnole) a spese di Lepido, cui rimane solo l'Africa.
 
-L'unica alternativa è la fuga nella sua villa di Formia: Qui Cicerone, turbato e sconvolto, si rifugia in casa e si mette a letto. Ma molti corvi si appoggiano alla finestra, gracchiando in modo sinistro; uno di essi vola fin sul letto e strappa la toga all'oratore, che cerca invano di coprirsi. I familiari, terrorizzati dall'infausto presagio, lo pregano di recarsi alla spiaggia per imbarcarsi. Cicerone acconsente e sale sulla lettiga.
+Questa spartizione è una premessa delle vicende successive: Antonio, col suo comportamento e i suoi atteggiamenti, si allontanerà dalla mentalità romana; per Ottaviano, invece, l'assegnazione dell'Italia come sfera di influenza significherà un progressivo avvicinamento alle classi dei possidenti e al Senato romano, basi della sua futura potenza.
 
-Intanto giungono nella villa i soldati mandati da Antonio con l'ordine di ucciderlo. Scoperto che l'oratore è fuggito, si lanciano al suo inseguimento e lo raggiungono. Cicerone, che si è accorto di quanto sta accadendo, fa deporre la lettiga e, come suo solito, toccandosi il mento con la mano sinistra, fissa negli occhi i suoi inseguitori. Il suo volto è pallido tirato, i capelli scarigliati. Protende il collo fuori dalla lettiga e gli viene troncata la testa. Ma Antonio ha ordinato che oltre alla testa vuole anche la mano destra di Cicerone, quella mano con cui ha scritto tante cose infamanti sul suo conto. Così la testa e la mano destra di Cicerone, avvolte in un panno, sono trasportate a Roma. Fulvia — una vera signora — se ne impadronisce, prima che siano consegnate al triumviro. Prende la testa dell'oratore e se la mette sulle ginocchia: gli rivolge irripetibili insulti e la colpisce con pugni e schiaffi; ne apre la bocca e ne tira fuori la lingua. Con gli spilloni usati per acconciarsi la chioma, fora parte per parte la lingua che l'ha infamata di fronte a tutta Roma; accompagnando il gesto di spregio con insulti e ingiurie.
+Ben presto il triumvirato è reso difficile da dissidi e malcontenti. Il problema delle terre per i veterani costringe Ottaviano a numerose confische. L'esasperazione dei piccoli proprietari italici è prontamente raccolta da elementi vicini ad Antonio. In particolare, il fratello e la moglie del triumviro, Lucio Antonio e Fulvia, si mettono a capo della rivolta: costretti a fuggire dalla capitale, si rifugiano a Perugia, dove sono assediati da Ottaviano. L'Italia ridiventa un campo di battaglia: Ottaviano vittorioso non infierisce su Lucio Antonio e Fulvia, per timore del collega. Invece, è duramente punita Perugia insieme ad altre città insorte.
+
+LA VILLA SOPRA IL CIMITERO
+
+Mecenate, abilissimo "ministro della cultura" di Ottaviano, ha esteso i suoi possedimenti sull'Esquilino, che da secoli è il cimitero dei poveri. Si tratta quindi d'un ambiente malsano, dove i cadaveri sono ricoperti con poche palate di terra. Quando decide di costruire la sua villa, Mecenate reinterra questa parte del colle (40-30 a.C.). Gli orti, che sostituiscono il misero cimitero, sono tra i più belli e rigogliosi della zona. Dell'intero complesso la sola parte conservata è il cosiddetto auditorium di Mecenate, scoperto nel 1874 durante i lavori di apertura di via Merulana. Si tratta di un'aula absidata, lunga oltre 24 m, costituita da un vestibolo rettangolare a sud-est, dall'aula vera e propria, da un'esedra (ambiente semicircolare) a gradini e da una doppia rampa di accesso.
+
+Nella sala rettangolare si aprono profonde nicchie, decorate con riproduzioni realistiche di giardini. Le pareti, oggi molto danneggiate, sono dipinte di rosso, mentre sopra le nicchie corre un fregio a fondo nero con figure di animali. L'esedra è occupata da sette gradini molto stretti, inadatti a costituire sedili per spettatori.
+
+È probabile quindi che non si tratti di un auditorium, ma piuttosto di una *coenatio*, una sala da pranzo estiva. Gli stretti gradini probabilmente erano destinati ad accogliere vasi di fiori per creare l'illusione di un vero giardino.
+
+NUOVI ACCORDI DEI DUE TRIUMVIRI
+
+Dopo l'amara vicenda di Perugia, Ottaviano e Antonio si incontrano a Brindisi per rinnovare i patti. Mentre Lepido è ulteriormente emarginato, Sesto Pompeo da nemico diventa alleato e gli è riconosciuto un comando marittimo, in cambio della promessa di non turbare gli approvvigionamenti granari della capitale. Infatti il ribelle, figlio di Pompeo, fino a questo momento ha attuato una sorta di guerriglia nel Mediterraneo occidentale.
+
+L'accordo, secondo il vecchio uso, nel 40 a.C. è rinsaldato dal matrimonio di Antonio (Fulvia è opportunamente morta) con Ottavia, sorella di Ottaviano.

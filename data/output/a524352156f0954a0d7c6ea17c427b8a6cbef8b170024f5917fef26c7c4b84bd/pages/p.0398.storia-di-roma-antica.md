@@ -1,46 +1,38 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-398
+CRONOLOGIA 399
 
-CRONOLOGIA
-
-68. Ritorno di Nerone in Italia. Rivolta di Vindice, Galba; Ottone, Cecina. Morte di Nerone (9 giugno).
-69. Quattro imperatori in un anno: Galba, Ottone, Vitellio e Vespasiano. Guerre civili. I pretoriani uccidono a Roma Galba ed eleggono Ottone; l'esercito romano stanziato sul Reno elegge imperatore Vitellio; Vitellio sconfitto da Vespasiano.
-70. Tito doma la rivolta giudaica e conquista Gerusalemme.
-73. Vespasiano immette nelle liste dei senatori dei cavalieri numerose personalità extraitaliche.
-74. Vespasiano censore.
-79. Eruzione del Vesuvio; con distruzione di Pompei, Ercolano e Stabia. Vespasiano fa costruire la via Flavia, che porta a Trieste e Pola. Morte di Vespasiano. Tito imperatore.
-80. Un grande incendio devasta ancora Roma. Inaugurazione dell'Anfiteatro Flavio.
-81. Morte di Tito; gli succede il fratello Domiziano.
-83. Prima campagna di Domiziano contro i Catti, ampliati i possedimenti romani nel medio e alto corso del Reno.
-84. Domiziano, all'opera del generale Giulio Agricola; rafforza la presenza romana in Britannia.
-85. Inizio delle campagne di guerra contro i Daci.
-86. Domiziano si proclama censore a vita.
-88. Creazione di una nuova provincia in Germania.
-89. Compromesso tra Romani e Daci. Decebalo riconosce la supremazia di Roma in cambio di un tributo.
-92. Domiziano caccia dall'Italia i filosofi.
-96. Domiziano viene ucciso in una congiura di palazzo.
-96. Il Senato proclama imperatore Nerva, che adotta Traiano: inizio del principato adottivo con la dinastia degli Antonini. Muore a Napoli il poeta Stazio.
-98. Morte di Nerva. Traiano imperatore.
-101-106. Conquista della Dacia, immortalata nella Colonna Traiana.
-105-106. Creazione della provincia d'Arabia.
-113-116. Guerra contro i Parti. Nuove province: Armenia; Assiria e Mesopotamia. Apollodoro di Damasco costruisce il Foro di Traiano e vi inserisce la Colonna Traiana.
-117. Morte di Traiano. Adriano imperatore.
-123. Inizio di due viaggi di Adriano, che lo portano a visitare tutto l'Impero.
-129. Adriano viene proclamato Olimpio in Grecia.
-131-133. Rivolta antiromana in Giudea.
-138. Morte di Adriano. Antonino Pio imperatore.
-139-160. Lungo periodo di pace.
-143. Costruzione del vallum Antonini in Britannia.
-161. Morte di Antonino Pio. Marco Aurelio e Lucio Vero imperatori.
-161-166. Guerra contro i Parti. La peste a Roma.
-167. I barbari minacciano Aquileia.
-169. Morte di Lucio Vero.
-176. Marco Aurelio rientra a Roma, la guerra contro i Marcomanni e i Quadi. Le imprese immortalate nella colonna coclide oggi in piazza Colonna.
-176. Marco Aurelio associa all'impero il figlio Commodo, ponendo fine al principato adottivo.
-177. Rivolte sociali in Oriente e in Occidente.
-180. Marco Aurelio muore a Vindobona (Vienna). Commodo imperatore. Sospensione della guerra contro i barbari.
-182. Congiura contro Commodo: feroci repressioni.
-189. Commodo chiama Roma colonia commodiana.
-192. Commodo viene assassinato. Pertinace imperatore che, a sua volta, viene ucciso dai pretoriani, che eleggono imperatore Didio Giuliano.
-193. Settimio Severo è eletto imperatore. L'Italia viene militarizzata.
-197-202. Nuove guerre contro i Parti. I confini dell'Impero vengono rafforzati.
+198. Settimio Severo associa all'Impero il figlio Caracalla.
+208. Spedizione di Settimio Severo in Britannia.
+209. Geta, fratello di Caracalla, associato all'Impero.
+211. Settimio Severo muore in Britannia. Caracalla uccide il fratello e impone una nuova politica monetaria.
+212. Con la *Constitutio antoniniana* Caracalla estende la cittadinanza romana a tutti gli abitanti dell'impero.
+217. Caracalla viene ucciso in Oriente. L'esercito elegge Macrino.
+218. Le truppe fedeli alla gens dei Severi uccidono Macrino e scelgono come imperatore Avito Bassiano, che assume il nome di Eliogabalo.
+222. I pretoriani uccidono Eliogabalo ed eleggono Alessandro Severo.
+227. La dinastia arsacide dei Parti viene rovesciata dalla persiana sasanide, ostile a Roma.
+231-233. Inconcludenti campagne di Alessandro Severo contro i Sasanidi.
+235. Alessandro Severo viene ucciso in Germania. Fine della dinastia dei Severi.
+235. Massimino Trace eletto imperatore.
+238. Una rivoluzione guidata da senatori proclama imperatori Pupieno e Balbino. Massimino Trace è ucciso dai pretoriani. Dopo varie lotte viene proclamato imperatore Gordiano III.
+241. Shahpur sale sul trono sasanide e avvia una serie di guerre vittoriose contro i Romani.
+244. Uccisione di Gordiano. Filippo l'Arabo proclamato imperatore.
+246. Si compie il millennio della fondazione di Roma. I Goti minacciano i confini sul Danubio.
+249-251. Morte di Filippo l'Arabo; gli succedono, uno dopo l'altro, Decio, Treboniano Gallo ed Emiliano. Prima persecuzione contro i Cristiani. Guerra contro i Goti. Diffusione della peste.
+253. Valeriano, proclamato Augusto, si associa il figlio Gallieno. Il confine renano è sfondato dai Franchi e dagli Alamanni. I Goti premono sulla Grecia e invadono l'Anatolia.
+256. Sasanidi conquistano Antiochia.
+257-258. Persecuzione contro i Cristiani. Odenato rafforza il suo regno a Palmira. Postumo proclama l'*Imperium Galliarum*. Gallieno controlla solo l'Italia, l'Illirico e l'Africa.
+260. Valeriano sconfitto e fatto prigioniero dai Sasanidi.
+267. Zenobia succede a Odenato ed estende l'influenza dello Stato Salmireno.
+268. Gallieno è ucciso a Milano. Crisi dell'Impero.
+268-270. Claudio il gotico imperatore.
+270-275. Aureliano cinge Roma di nuove mura, organizzando la struttura difensiva dell'impero.
+272. I Romani riconquistano Palmira.
+276. Dopo l'elezione di Tacito, Probo continua la serie degli imperatori illirici.
+282. Probo è ucciso a Sirmium.
+283. Diocleziano, dalmata, eletto imperatore, *dominus et deus*, trasforma l'impero nelle sue strutture. Nicomedia capitale dell'Impero.
+287. Massimiano, associato all'Impero, ne controlla la parte occidentale.
+293. Diocleziano istituisce la tetrarchia con la proclamazione di due Cesari: Galerio e Costanzo Cloro. Suddivisione dell'impero in diocesi e prefetture.
+301. Editto di Diocleziano contro l'inflazione.
+303. Violenta persecuzione anticristiana.
+305. Diocleziano abbandona il potere, costringendo Massimiano a dimettersi. Galerio e Costanzo Cloro Augusti.
+306. Alla morte di Costanzo, le truppe proclamano Augusto il figlio Costantino. A Roma viene proclamato Massenzio, figlio di Massimiano.

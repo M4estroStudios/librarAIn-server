@@ -1,14 +1,54 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-I ROMANI E LA PENISOLA                                                                           163
+164
 
-[Immagine: incisione di rovine]
+STORIA DI ROMA ANTICA
 
-*Rovine dell'Acquedotto Claudio verso i Castelli Romani in un'incisione ottocentesca.*
+Un terremoto verificatosi durante la lotta contro i Piceni (268) fornisce occasione per la dedica d'un tempio alla Tellus (la Terra) nell'area delle Carinae, nella zona di passaggio tra la Velia e l'Esquilino. Le fonti scritte narrano che nella cella era rappresentata una mappa d'Italia; la prima carta geografica della penisola di cui si abbia notizia.
 
-Il richiamo alla Roma dell'età monarchica spiega anche l'erezione del tempio alla *Fors Fortuna*, appaltato nel 293 con la preda di guerra da Spurio Carvilio proprio accanto a quello dedicato alla stessa divinità da Servio Tullio (vedi capitolo *Il re riformatore, il re tiranno e la rivoluzione*).
+Un caso particolare è offerto dal tempio della Venere Ossequiente presso il Circo Massimo; votato dall'edile Quinto Fabio Massimo Gurgite col ricavato delle multe imposte alle dame romane accusate di adulterio: infatti questo tempio diviene anche la sede della prostituzione urbana.
 
-Ricchissima è la serie delle divinità «astratte», che iniziano a diffondersi in questo periodo: si tratta per lo più di personificazioni di virtù pubbliche e private. Si è già visto il significato della dedica di un tempio alla *Concordia*, eretto in ricordo della pacificazione tra patrizi e plebei (vedi capitolo *I luoghi e le istituzioni*). Ora si dedicano templi alla *Salus*, alla *Spes*, alla *Libertas*, all'*Honos*, alla *Mens*, alla *Virtus* e alla *Fides*. Quest'ultima divinità è particolarmente importante per la politica romana nei confronti degli alleati, basata sì su norme scritte, ma fondata soprattutto sulla reciproca fiducia tra i contraenti.
+Va ricordato, infine, il tempio eretto da Marco Fulvio Flacco in occasione del trionfo per la presa di Volsinii (264) e dedicato a Vertumno; la divinità principale dei Volsiniensi.
 
-CAMBIA LA MODA, CAMBIA LA BARBA
+Si tratta del solito rituale dell' *evocatio* della divinità del nemico vinto e le spese sono sostenute coi proventi del bottino (la tradizione parla di duemila statue in bronzo). Anche qui (come nel tempio di Conso) secondo una consuetudine evidentemente diffusasi in questo periodo; una pittura rappresentava il dedicante in veste di trionfatore.
 
-I Romani dei tempi più antichi portano regolarmente la barba, come si può vedere nei pochi ritratti conservati, il più noto dei quali è il cosiddetto Bruto Capitolino. A partire dalla prima metà del I secolo a.C. a Roma si impone la moda di rasarsi. I primi barbieri (*tonstrini*) sarebbero giunti dalla Magna Grecia intorno al 300 a.C. La nuova moda deriverebbe dunque dall'imitazione delle abitudini del mondo greco-ellenistico: così tenere la barba lunga diviene il segno d'un voluto attaccamento alle tradizioni romane antiche. Si spiega così anche il cognome aggiunto (un vero e proprio soprannome) portato da Lucio Cornelio Scipione Barbato; capostipite del ramo della *gens Cornelia* cui si riferisce il famoso sepolcro degli Scipioni, scavato nei pressi della via Appia.
+LA CITTÀ, GLI UOMINI, LA TERRA
+
+Grazie alle guerre e alle conquiste l'aspetto della città di Roma nella prima metà del III secolo a.C. subisce un radicale mutamento e assume sempre più le caratteristiche d'una metropoli ellenistica, ricca di edifici sacri, di pitture, di statue colossali delle divinità e di statue onorarie dei generali trionfatori.
+
+Anche se di tutto questo ormai esistono soltanto le testimonianze delle fonti scritte o delle monete. Tra la fine del IV e i decenni del II secolo si registra un notevole incremento della popolazione urbana; che è stata "stimata" in circa 187.000 abitanti nel periodo immediatamente precedente alla prima guerra punica. Alla crescita della popolazione vanno collegate le opere di pubblica utilità; che caratterizzano in questo periodo l'edilizia urbana: non per nulla...
+
+***
+
+LA CENTURIAZIONE: LA FORMA ROMANA DEL PAESAGGIO RURALE
+
+Il territorio romano può essere distribuito sia a singoli assegnatari (assegnazione «viritane» o «viritanea» da *vir, viri*; ad ogni uomo) sia a gruppi di coloni reclutati per essere dedotti in una colonia. La prima soluzione è applicata, ad esempio, nella distribuzione delle terre conquistate ai Sabini nel 290 a.C.; la seconda soluzione è applicata ogni volta è fondata una colonia romana o latina.
+
+Quello che caratterizza le operazioni d'assegnazione dei loni è la preliminare misurazione (centuriato o centuriazione) del territorio da suddividere, effettuata dagli agrimensori romani (gromatici) che usano un particolare strumento per mantenere gli allineamenti (groma). Si crea in tal modo una maglia ortogonale di grandi quadrati o rettangoli (centurici), che comprende tutto il territorio da distribuire ai coloni. Entro questo sistema ordinato, che tiene conto dell'orientamento solare e delle caratteristiche morfologiche del terreno; in particolar modo dello scolo delle acque indispensabili all'irrigazione; si ricavano le parcelle dei singoli coloni.
+
+Questa procedura trasforma in maniera profonda e duratura il paesaggio precedente. Ancora a distanza di duemila anni è infatti possibile riconoscere le tracce, talora molto ben conservate, dell'antico paesaggio romano.
+
+***
+
+164 | STORIA DI ROMA ANTICA
+
+Un terremoto verificatosi durante la lotta contro i Piceni (268) fornisce l'occasione per la dedica d'un tempio alla Tellus (la Terra) nell'area delle Carinae, nella zona di passaggio tra la Velia e l'Esquilino. Le fonti scritte narrano che nella cella era rappresentata una mappa d'Italia, la prima carta geografica della penisola di cui si abbia notizia.
+
+Un caso particolare è offerto dal tempio della Venere Ossequiente presso il Circo Massimo, votato dall'edile Quinto Fabio Massimo Gurgite col ricavato delle multe imposte alle dame romane accusate di adulterio: infatti questo tempio diviene anche la sede della prostituzione urbana.
+
+Va ricordato, infine, il tempio eretto da Marco Fulvio Flacco in occasione del trionfo per la presa di Volsinii (264) e dedicato a Vertumno, la divinità principale dei Volsiniensi.
+
+Si tratta del solito rituale dell' *evocatio* della divinità del nemico vinto e le spese sono sostenute coi proventi del bottino (la tradizione parla di duemila statue in bronzo). Anche qui (come nel tempio di Conso) secondo una consuetudine diffusasi in questo periodo, una pittura rappresentava il dedicante in veste di trionfatore.
+
+LA CITTÀ, GLI UOMINI, LA TERRA
+
+Grazie alle guerre e alle conquiste l'aspetto della città di Roma nella prima metà del III secolo a.C. subisce un radicale mutamento e assume sempre più le caratteristiche d'una metropoli ellenistica, ricca di edifici sacri, di pitture, di statue colossali delle divinità e di statue onorarie dei generali trionfatori.
+
+Anche se di tutto questo esistono soltanto le testimonianze delle fonti scritte o delle monete. Tra la fine del IV e i decenni del II secolo si registra un notevole incremento della popolazione urbana, che è stata "stimata" in circa 187.000 abitanti nel periodo immediatamente precedente alla prima guerra punica. Alla crescita della popolazione vanno collegate le opere di pubblica utilità, che caratterizzano in questo periodo l'edilizia urbana: non per nulla...
+
+LA CENTURIAZIONE: LA FORMA ROMANA DEL PAESAGGIO RURALE
+
+Il territorio romano può essere distribuito sia a singoli assegnatari (assegnazione «viritane» o «viritanea» da *vir, viri*; ad ogni uomo) sia a gruppi di coloni reclutati per essere dedotti in una colonia. La prima soluzione è applicata, ad esempio, nella distribuzione delle terre conquistate ai Sabini nel 290 a.C.; la seconda soluzione è applicata ogni volta è fondata una colonia romana o latina.
+
+Quello che caratterizza le operazioni d'assegnazione dei loni è la preliminare misurazione (centuriato o centuriazione) del territorio da suddividere, effettuata dagli agrimensori romani (gromatici), che usano un particolare strumento per mantenere gli allineamenti (groma). Si crea in tal modo una maglia ortogonale di grandi quadrati o rettangoli (centurici), che comprende tutto il territorio da distribuire ai coloni. Entro questo sistema ordinato, che tiene conto dell'orientamento solare e delle caratteristiche morfologiche del terreno, in particolar modo dello scolo delle acque indispensabili all'irrigazione; si ricavano le parcelle dei singoli coloni.
+
+Questa procedura trasforma in maniera profonda e duratura il paesaggio precedente. Ancora a distanza di duemila anni è infatti possibile riconoscere le tracce, talora molto ben conservate, dell'antico paesaggio romano.

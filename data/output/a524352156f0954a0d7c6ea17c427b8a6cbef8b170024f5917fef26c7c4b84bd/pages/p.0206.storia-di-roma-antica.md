@@ -1,62 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-206                                                                    STORIA DI ROMA ANTICA
+LA CONQUISTA DELL'ORIENTE: 207
 
-sta ad Antioco di rimandare la battaglia e la restituzione da parte del re di
-suo figlio, caduto prigioniero, fanno drizzare i capelli ai Romani. Più tar-
-di, proprio episodi di questo genere gli costeranno la carriera. Fallita co-
-mununque la mediazione di Scipione, il confronto diretto non può essere pro-
-rogato. Per la prima volta l'esercito romano sbarca in Asia. A Magnesia,
-sul Sipilo; Scipione vince (189 a.C.)
+IL CONTO DELLA GUERRA
 
-L'anno seguente Manlio Vulsone; il successore degli Scipioni, stipula la
-pace che prevede la consegna delle navi da guerra e la cessione di parte
-dell'Asia Minore agli Stati alleati di Rodi e Pergamo: Annibale è costret-
-to a fuggire presso il re Prusia di Bitinia: Più tardi i Romani chiederanno
-al re la consegna dell'antico nemico. L'arrivo di Flaminino alla corte di Pru-
-sia mette Annibale nel panico.
+L'espansione romana in Grecia e in Oriente comincia a far sentire i suoi effetti sull'assetto istituzionale e sociale di Roma. L'azione di Catone il Censore è il segno più chiaro della crisi.
 
-Il cartaginese ha sempre saputo che quella sarebbe stata la sua fine. Per que-
-sto ha costruito in Bitinia una casa con sette uscite, dubitando della lealtà del
-re. Quando le guardie di Flaminino circondano l'abitazione; si rende con-
-to di non avere più scampo. Imprecando contro la vita, contro Prusia e con-
-tro gli dèi, vuota la sua tazza di veleno (183 a.C.)
+Il primo attacco lo sferra ad Acilio Glabrione, il vincitore delle Termopili, accusandolo di avere intascato nascostamente del denaro. Anche a Lucio, fratello dell'Africano, intenta un processo con la medesima accusa: mancano all'appello 500 talenti (una cifra enorme) versati da Antioco. L'Africano interviene personalmente stracciando in aula i registri e sfidando chiunque ad accusare colui che ha vinto Annibale e ha salvato Roma (187 a.C.).
 
-***
+Tre anni più tardi, quando Catone diviene censore, la denuncia colpisce lo stesso Scipione.
 
-I MAGAZZINI DEGLI EMILII
+L'accusa è di tradimento: Quando mai si è sentito di un generale che chiede al nemico di rimandare lo scontro perché si sente poco bene? Quando mai il nemico restituisce un ostaggio senza riscatto? Le sottigliezze della diplomazia; il rapporto di familiarità e di reciproco rispetto instaurati con il re sono incomprensibili per quella fascia di cittadini che Catone rappresenta. Scipione rifiuta di rispondere alle accuse e si ritira nella sua villa di Literno, dove poco dopo la morte porrà fine alla sua eccezionale esistenza.
 
-Il colossale investimento di denaro nell'urbanistica non interessa soltanto edifici di
-culto e complessi destinati allo svago dei Romani. S'investe anche in opere di natu-
-ra utilitaria e di pubblico godimento.
+UN NUOVO EDIFICIO PUBBLICO: LA BASILICA
 
-La gens Emilia svolge un ruolo centrale nell'edificazione del quartiere mercantile
-di Roma, quando suoi membri rivestono la censura e l'edilità. Il risultato è un for-
-midabile sistema di attracco fluviale, corredato da ambienti per l'immagazzena-
-mento delle derrate e lunghi portici che facilitano il collegamento con la città. Marco Emi-
-lio Lepido e Lucio Emilio Paolo; edili nel 193 a.C., ampliano il *portus Tiberinus*; esten-
-dendolo più a valle, sulla riva sinistra. A questo complesso si aggiunge un lungo mo-
-lo pavimentato e dotato di barriere con cordonate di accesso al Tevere. Alle spalle Mar-
-co Emilio Lepido e Marco Fulvio Nobiliore, censori del 179 a.C., aggiungono un enor-
-me magazzino; il *portico Emilio*; destinato a ospitare le derrate alimentari di Roma:
-L'edificio è costruito su modello greco e misura circa 487 m di lunghezza
-e 60 m di larghezza; perfettamente corrispondente alla gigantesca banchina lunga 500 m e lar-
-ga 90 m.
+Catone costruisce la prima basilica, una delle più grandi innovazioni dell'architettura romana. Basilica proviene dal greco *basilikòs* (= regale) e designa un'aula *porticus basilica* (portico regale). Catone durante la sua censura acquista con denaro pubblico gli atria di Menio e di Tizio e al loro posto edifica la basilica Porcia (184 a.C.). L'edificio è collocato a ovest della curia senatus, dell'atrium Libertatis (sede dei censori) e della zona dei tribunali.
 
-Il portico è articolato in 50 navate coperte da volta a botte e posate su 294 pilastri.
-La superficie coperta raggiunge quasi 30.000 mq. Il nuovo complesso segna il
-trionfo del calcestruzzo e della nuova tecnica costruttiva; l'opera incerta (vedi capi-
-tolo precedente). Alcuni muri sono visibili oggi nelle vie Branca, Rubattino e Florio
-Testaccio. L'intensa attività degli Emilii crea un quartiere commerciale; perfetta-
-mente funzionale e adeguatamente collegato alla città. Secondo un modello ellenistico,
-altri portici sono aggiunti per migliorare la comunicazione col resto della città.
-Un primo portico collega l'*emporio* con la porta Trigemina; un altro collega il Tevere con
-il tempio di Speranza nel foro Olitorio e col tempio di Apollo Medico; un terzo infi-
-ne mette in comunicazione con l'area più a monte del Tevere: il tempio di Giove Cu-
-stode, situato vicino ai *carceres* del circo Flaminio.
+È probabile che inizialmente la basilica sia stata a un piano e priva dei colonnati tipici delle costruzioni posteriori: doveva essere una sala rettangolare coperta, sostenuta da file di pilastri, nella cattiva stagione destinata a servire alle funzioni tipiche del Foro. Alla basilica Porcia si affiancano successivamente la basilica Emilia, edificata dai censori del 79 a.C., e la basilica Sempronia, costruita dal padre dei due Gracchi al posto della casa di Scipione Africano e delle botteghe adiacenti. In particolare la basilica Emilia, destinata a vita lunghissima, diventa il monumento simbolico del prestigio della gens Emilia, alla quale tocca la manutenzione e il restauro dell'edificio sino all'epoca cesariana.
 
-Coronamento di questa com-
-plessa operazione urbanistica è il ponte Emilio; il secondo ponte di Roma. Dopo il pon-
-te Sublicio, sul Tevere si getta il primo ponte 'lapideo', costituito da piloni e colon-
-ne in pietra e da sovrastrutture in legno. La creazione di un passaggio stabile, di ri-
-dotta manutenzione, sancisce il ruolo sempre più importante che va acquisendo l'a-
-rea al di là del fiume, il Trastevere, saldamente collegato all'emporio.
+La creazione di nuovi punti di ritrovo nel Foro toglie importanza ad aree come il Comizio. Si verifica un progressivo spostamento della sede delle funzioni giudiziarie, politiche ed economiche verso nord-est, fuori dallo spazio forense. L'installazione di un orologio ad acqua, necessario per stabilire l'ora dei processi, fa della basilica Emilia il nuovo centro dell'attività giudiziaria. Ormai la vita della città si articola su un nuovo asse che comprende il mercato (il macellum), le basiliche, il vicus Tuscus, l'emporio fluviale e il percorso che porta al Campidoglio, monumentale e abbellito da colonne, statue e archi. Risultano tagliati fuori spazi come l'area circostante alla Regia e al tempio di Vesta, un tempo vero cuore della città. Queste aree riacquisteranno importanza solo alla fine della Repubblica, grazie all'intervento di Cesare e di Augusto.

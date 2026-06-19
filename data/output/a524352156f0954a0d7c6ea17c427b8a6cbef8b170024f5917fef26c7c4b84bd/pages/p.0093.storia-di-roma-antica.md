@@ -1,14 +1,44 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CITTÀ-STATO: CONTINUITÀ E RINNOVAMENTO 93
+94
 
-La spartizione del potere economico e politico: Quest'articolazione del popolo romano, nonostante gli antichi tendessero ad attribuirla addirittura a Romolo; è di certo più recente. Il termine plebe (dal greco *plethos*, gran numero o moltitudine) indica la parte della popolazione esterna alle strutture gentilizie. È questo il significato della frase famosa tra gli antichi: «i plebei non hanno *gentes*».
+STORIA DI ROMA ANTICA
 
-I grandi mutamenti, provocati dallo sviluppo economico sotto la dinastia etrusca, hanno favorito l'arrivo di gruppi aristocratici stranieri (che si sono fusi con le vecchie famiglie romane) e soprattutto di persone libere; anche se di estrazione sociale inferiore. Proletari, mercanti, artigiani, clienti, braccianti e piccoli proprietari; tutti esclusi dal ceto dominante costituiscono la plebe. Con la nascita del regime repubblicano diviene più problematica la divisione del corpo civico in patrizi (come appartenenti alle *gentes*) e plebei. Allora gruppi aristocratici, forti e potenti, si «rinserrano» tra loro con lo scopo di controllare le magistrature e il Senato. Tutta la moltitudine degli altri Romani, la plebe, è così estromessa da qualunque ruolo positivo all'interno della città-stato. La causa maggiore del malcontento dei plebei risiede non tanto nell'esclusione quanto nella mancanza di incremento dei loro diritti politici. Anche se la tradizione ha certamente esagerato le lotte fra le due parti della comunità, si può ipotizzare l'esistenza uno «Stato plebeo» (con i suoi magistrati, le sue assemblee, i suoi culti e suoi templi) quasi scisso dallo Stato ufficiale, in mano ai patrizi.
+[Immagine: Il monte Aventino visto dal Tevere in un'incisione di Etienne Du Pérac]
 
-LA REPUBBLICA PATRIZIA
+Il monte Aventino visto dal Tevere in un'incisione di Etienne Du Pérac.
 
-Lo studio dei *Fasti* (le liste dei consoli, tramandate dalla tradizione) permette di conoscere meglio i primi passi della Repubblica. I consoli (o comunque si chiamassero all'inizio i magistrati supremi) dei primi anni sono anche di estrazione plebea e d'origine etrusca (legati alla famiglia dei Tarquini). Solo dopo il periodo dominato dal plebeo Spurio Cassio; più volte console; si nota che i gruppi aristocratici cominciano a riservarsi le cariche pubbliche e nei *Fasti* non compaiono più personaggi d'origine plebea. Questa chiusura è stata definita «la serrata del patriziato», in quanto il sistema politico è controllato esclusivamente dai gruppi aristocratici. Per di più l'aristocrazia progressivamente perde il carattere di classe sociale «aperta» e si chiude in una nobiltà di sangue. La secessione (separazione) della plebe, che si ritira sul Monte Sacro o sull'Aventino; coincide col periodo in cui i *Fasti* registrano magistrati plebei. Per spiegare questa apparente contraddizione; bisogna attribuire il malcontento della plebe anche a cause diverse dalla ridotta partecipazione alla vita politica:
+re continue impoveriscono ancora di più i piccoli proprietari, che sono strangolati dai creditori.
+Nei primi anni della Repubblica la creazione di nuove tribù territoriali aggrava la situazione: Nella formazione delle tribù (e quindi nell'assegnazione delle terre conquistate) è esclusa buona parte della popolazione; a vantaggio delle gentes che occupano il territorio intorno a Roma.
 
-Accanto a una facciolosa élite plebea (che vuole partecipare alla politica); esiste una larga fascia di indigenti, per i quali il vero problema è la sopravvivenza. La mancanza di risorse spinge a contrarre pesanti debiti. Questi, se non sono saldati, danno il diritto al creditore di rendere schiavo il debitore (*nexum*, la schiavitù per debiti). La plebe richiede anche una maggiore partecipazione alla distribuzione e al possesso dell'*ager publicus* (la terra pubblica), frutto delle fortunate campagne belliche; mentre l'*ager publicus* è spartito soltanto tra i patrizi.
+LO SCIOPERO DELLA PLEBE
 
-D'altra parte la mancanza di terre e l'indebitamento costituiscono quasi un circolo vizioso per le fasce più povere della popolazione; anche perché le guer-
+La prima profonda frattura del corpo civico avviene in occasione d'una vittoriosa campagna contro i Sabini e gli Equi. Nonostante il parere opposto di Valerio Publicola il Senato rifiuta di dividere bottino e terre con la moltitudine dei plebei, che hanno militato nell'esercito: si scatena così la rivolta.
+L'esercito, mantenuto in armi, si ritira a Monte Sacro o sull'Aventino, attuando il primo caso di "disobbedienza civica". La tradizione ci tramanda il famoso discorso di Menenio Agrippa, un ex console plebeo.
+
+PUBLIO VALERIO I SUOI SEGUACI
+
+Publio Valerio Publicola è uno dei padri della Repubblica; che campeggiano nei primi decenni del nuovo regime. La sua figura, come quella di Bruto, è complessa e oscura. In lui sono tipici i tratti dell'eroe repubblicano; votato alla libertà e ai giusti, nel rispetto anche dei diritti della plebe. D'altro lato presenta le caratteristiche tipiche del demagogo e la stessa costruzione d'una casa sulla Velia (da lui stesso rasa al suolo quando è sospettato di atteggiamenti tirannici) oscura la sua limpida immagine; La recente scoperta del Lapis Satricanus, un'iscrizione nel tempio di Satrico risalente al 500 a.C. e dedicata a un Publio Valerio dai suoi sodales o compagni armati, conferma la storicità del personaggio e ne sottolinea il carattere di capo.
+Valerio non sembra molto dissimile dai capi aristocratici; accompagnati da sodales (come l'etrusco Mastarna e i fratelli Vibenna) i combattevano le loro guerre private (vedi box sui Fabii).
+
+***
+
+94
+
+STORIA DI ROMA ANTICA
+
+[Immagine: Il monte Aventino visto dal Tevere in un'incisione di Etienne Du Pérac]
+
+Il monte Aventino visto dal Tevere in un'incisione di Etienne Du Pérac.
+
+re continue impoveriscono ancora di più i piccoli proprietari, che sono strangolati dai creditori.
+Nei primi anni della Repubblica la creazione di nuove tribù territoriali aggrava la situazione. Nella formazione delle tribù (e quindi nell'assegnazione delle terre conquistate) è esclusa buona parte della popolazione, a vantaggio delle gentes che occupano il territorio intorno a Roma.
+
+LO SCIOPERO DELLA PLEBE
+
+La prima profonda frattura del corpo civico avviene in occasione d'una vittoriosa campagna contro i Sabini e gli Equi. Nonostante il parere opposto di Valerio Publicola il Senato rifiuta di dividere bottino e terre con la moltitudine dei plebei, che hanno militato nell'esercito: si scatena così la rivolta.
+L'esercito, mantenuto in armi, si ritira a Monte Sacro o sull'Aventino, attuando il primo caso di "disobbedienza civica". La tradizione ci tramanda il famoso discorso di Menenio Agrippa, un ex console plebeo.
+
+PUBLIO VALERIO I SUOI SEGUACI
+
+Publio Valerio Publicola è uno dei padri della Repubblica, che campeggiano nei primi decenni del nuovo regime. La sua figura, come quella di Bruto, è complessa e oscura. In lui sono tipici i tratti dell'eroe repubblicano, votato alla libertà e ai giusti, nel rispetto anche dei diritti della plebe. D'altro lato presenta le caratteristiche tipiche del demagogo e la stessa costruzione d'una casa sulla Velia (da lui stesso rasa al suolo quando è sospettato di atteggiamenti tirannici) oscura la sua limpida immagine. La recente scoperta del Lapis Satricanus, un'iscrizione nel tempio di Satrico risalente al 500 a.C. e dedicata a un Publio Valerio dai suoi sodales o compagni armati, conferma la storicità del personaggio e ne sottolinea il carattere di "capo".
+Valerio non sembra molto dissimile dai vari capi aristocratici, accompagnati da sodales (come l'etrusco Mastarna e i fratelli Vibenna) i quali combattevano le loro guerre private (vedi box sui Fabii).

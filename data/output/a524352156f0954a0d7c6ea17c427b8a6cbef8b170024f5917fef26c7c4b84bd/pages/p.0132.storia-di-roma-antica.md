@@ -1,23 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-132                                                                    STORIA DI ROMA ANTICA
+LUOGHI E ISTITUZIONI 133
 
-![Immagine]
-*Sacerdotessa consacrata al culto di Vesta; incisione di C. Vecellio.*
+patrizi e cinque plebei. I *Libri* sono consultati per ordine del Senato e dei magistrati supremi per trovare rimedi in tempi di calamità pubbliche. A questo collegio è affidata in seguito anche la supervisione sui culti stranieri introdotti ufficialmente a Roma (come quello della Magna Mater).
 
-***
+Le formule giuridico-religiose per la dichiarazione di guerra, la conclusione della pace, la stipulazione di trattati internazionali sono prerogativa del collegio dei Feziali, che sono in pratica i rappresentanti del popolo romano verso gli stranieri in caso di conflitto. Accanto ai collegi sacerdotali operano altri sodalizi religiosi, alcuni già ricordati e antichissimi, cui sono affidati particolari culti e cerimonie: i Salii del Palatino e del Quirinale, Luperci, Fratres Arvales, Sodales Titii (forse custodi dell'antica sapienza religiosa sabina). Gli aruspici, depositari dell'antica disciplina religiosa etrusca, non sono sacerdoti del popolo romano. Essi vengono chiamati ad assistere i magistrati e i sacerdoti quando è necessario interpretare i segni che vengono dalle viscere degli animali sacrificati.
 
-**LA VITA COMPLICATA DEL FLAMEN DIALIS**
+**CONTRATTARE CON GLI DÈI**
 
-*Il Flamen Dialis è un patrizio; sposato col rituale della confarreatio. La sua persona è circondata da infinite prescrizioni, per sottolineare la funzione sacra della sua presenza, separata dal mondo dei comuni cittadini e da quello dei morti.*
+I Romani, quando chiedono qualcosa alla divinità con sacrifici e giochi, specificatamente quanto vogliono e cosa offrono in cambio, come per un contratto o rapporto d'affari. Gli dèi non sono tenuti a fornire quanto richiesto, ma sono liberi di scegliere. Il rapporto particolare tra uomini e dèi assomiglia a quello tra patrono e cliente. È un rapporto basato sulla reciprocità, nel quale il cliente (l'uomo) è passibile d'una severa punizione se non esegue in modo adeguato quanto richiesto dal patrono (la divinità).
 
-*Il Flamen non deve toccare cadaveri, né partecipare a funerali, e deve abbandonare il sacerdozio se gli muore la moglie (Flaminica). Non deve salire a cavallo né vedere armi o armati. Non deve trascorrere la notte fuori di Roma né più di tre notti consecutive fuori del suo letto coniugale, che ha i piedi spalmati di fango, per indicare il contatto con il suolo di Roma. Egli deve portare in permanenza l'apex, un berretto confezionato con la pelle di una vittima, su cui è fissato un ramoscello con un filo di lana, tratto da una vittima. Il suo vestito non deve avere nodi. Può radersi solo con un rasoio di bronzo. Deve sempre essere puro e pronto a sacrificare. Non deve consumare cibi o bevande fermentate né carne cruda. Non deve vedere o nominare determinate piante: edera, fagioli, viti. In cambio di tutte queste e altre limitazioni o proibizioni, il Flamen Dialis gode di privilegi eccezionali. Egli ha diritto di sedere in Senato; di usare la sedia curule, di indossare la toga pretesta, di essere accompagnato da un littore e di spostarsi in città su un carro.*
+**GLI DÈI DELLA CITTÀ**
 
-*Quando egli passa ogni lavoro deve cessare, affinché egli sia sempre circondato da un'atmosfera festiva, come si addice al rappresentante di Giove.*
+Tra le divinità venerate dai Romani vi sono antichissimi dèi comuni alle popolazioni indoeuropee (che si erano stanziate nell'Europa centrale nel secondo millennio a.C.) come Giove, Diana e Vesta. Altri culti, come quelli di Marte, Cerere e Minerva, sono condivisi dai Romani con le popolazioni latine e italiche: alcune divinità sono in comune con i soli Latini o sono esclusivamente romane, come Giunone, Mercurio, Giano e Venere. Accanto ai culti tradizionali dei Romani, altri sono importati in momenti diversi dalle colonie della Magna Grecia (ad esempio Ercole e Apollo), dalla Grecia stessa (Esculapio) o dal Oriente (Magna Mater): l'introduzione ufficiale del culto delle divinità straniere è filtrata dal collegio dei duoviri, decemviri, *sacris faciundis*.
 
-***
-
-[...continua dal testo precedente]
-
-...cerdoti addetti alle cose sacre), la cui funzione originaria è la custodia e la consultazione dei *Libri sibillini*, che contenevano gli oracoli della Sibilla Cumana, la profetessa del dio Apollo famosa in tutto il mondo antico:
-
-Questi due sacerdoti sono entrambi patrizi e soltanto nel 367 a.C. il collegio è allargato a dieci membri (*decemviri sacris faciundis*), di cui cinque...
+Un caso particolare è quello già noto delle divinità introdotte a Roma con la cerimonia dell' *evocatio*, dai Dioscuri e Giunone Regina alla Mater Matuta. Queste divinità hanno templi a Roma, con cerimonie sacre in determinati giorni dell'anno: la funzione ufficiale di protettrici dello Stato romano è svolta dalle tre divinità venerate nel grande tempio sul Campidoglio: Giove, Giunone, Minerva. Come già detto, è la trasposizione a Roma della triade protettrice etrusca (Tinia, Uni, Menrva): Tarquinio Prisco con una operazione politico-culturale la sostituisce alla più antica triade latino-sabina (Giove, Marte e Quirino) della quale sopravvive un chiaro ricordo nella denominazione dei tre antichissimi flamini maggiori: Dialis, Martialis, Quirinalis.

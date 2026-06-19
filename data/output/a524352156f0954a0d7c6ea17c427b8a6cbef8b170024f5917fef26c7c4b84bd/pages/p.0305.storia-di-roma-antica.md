@@ -1,22 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UNA DINASTIA COMPLICATA: I GIULIO-CLAUDII $\quad$ 305
+306
 
-IL NUOVO IMPERATORE: ESCE DA DIETRO LE QUINTE
+STORIA DI ROMA ANTICA
 
-Assassinato Caligola; i pretoriani trucidano anche la moglie Cesonia e la figliolletta di due anni; si spargono per il palazzo per trovare gli altri membri della famiglia. Lo zio di Caligola Tiberio Claudio Druso tenta di nascondersi dietro una tenda, ma viene scoperto da un pretoriano che lo riconosce come fratello di Germanico e lo fa portare a Castro Pretorio.
+[Immagine del tempio]
 
-La città è frattempo in subbuglio: da un lato si discute in Senato, dove vi sono ancora fautori della restaurazione della Repubblica; sul governo da dare a Roma liberata dal tiranno. Dall'altro il popolo tumultua perché vuole subito un nuovo signore e fa il nome di Claudio. Garantitosi l'appoggio dei soldati con la promessa di un donativo sostanzioso, egli accetta. La continuità della dinastia è ancora una volta assicurata con l'accordo di Senato, esercito e popolo.
+Il tempio della Luna o di Iside in una ideale ricostruzione di Peter Schenck.
 
-IL FASCINO DELL'EGITTO
+L'IMPERATORE GOVERNATO DAI LIBERTI
 
-La figura del bisnonno Marco Antonio e soprattutto la sua avventura egiziana con Cleopatra, l'ultima dei Tolomei, conosciuta attraverso i racconti della nonna Antonia e i cimeli che si conservano in casa, alimenta l'accesa fantasia del giovanissimo Gaio Cesare. Egli è del resto cugino di Tolomeo, nipote di Selene, figlia di Antonio e Cleopatra.
+Claudio governa Roma e i suoi liberti (e le sue donne) governano Claudio. Questo pensa la plebe della capitale. E non va lontano dal vero.
 
-L'Egitto sconfitto da Augusto ad Azio riaffiora così con prepotenza a Roma non appena Caligola sale al trono: tra le prime iniziative del nuovo principe è infatti l'introduzione ufficiale e definitiva del culto della dea egiziana Iside, già attivato al tempo dei triumviri, auspice Antonio, proibito da Augusto e addirittura perseguitato da Tiberio in seguito a clamorosi scandali. A Iside Caligola dedica un'aula al Campidoglio e fa innalzare un tempio nel Campo Marzio (nell'area oggi occupata dalla chiesa di Santo Stefano del Cacco; a una statua di culto doveva appartenere il grande piede collocato all'angolo di via Pie' di Marmo).
+Come tutti i ricchi e potenti Romani, anche Claudio affida la gestione del suo patrimonio e dei suoi affari privati ai propri ex schiavi, che svolgono il ruolo di intendenti e amministratori. Quando sale al trono egli affida ai suoi esperti liberti anche l'amministrazione del patrimonio imperiale.
 
-L'imperatore si sente egli stesso un dio in terra e si fa rappresentare persino sulle monete con una corona radiata, come divinità solare. Egli ha anche un proprio culto e gli vengono offerti in sacrificio uccelli esotici: pavoni, fenicotteri, galli di montagna, galline faraone, galli d'India e fagiani. Celebra inoltre le nozze sacre con Selene-Afrodite, la dea della Luna, una delle numerose manifestazioni di Iside, la dea dai molti nomi.
+Essi non possono naturalmente ricoprire cariche pubbliche, ma operano in nome e per conto dell'imperatore. Ai liberti prediletti, da cui si fa spesso guidare nelle sue scelte, Claudio non lesina doni e onori, talora persino eccessivi. Fa avere un'onorificenza militare all'eunuco Poside durante la campagna in Britannia. A Felice affida comandi militari e persino il governo della Giudea. Ad Arpocra concede di girare per Roma in lettiga e di offrire spettacoli. Il suo lettore Polibio gode di tale considerazione da poter passeggiare insieme ai consoli.
 
-Egli si sente figlio della dea e, come Horus, il figlio di Iside, viene rappresentato in un ritratto marmoreo. Caligola veste spesso alla maniera dei sovrani orientali. Come una moda invalsa, fa trasportare a Roma dall'Egitto — superando immani difficoltà tecniche e su una nave costruita apposta — un grande obelisco per i suoi giardini al Laterano (è oggi al Vaticano).
+Soprattutto amati da Claudio sono Narcisso, il suo segretario privato, e Pallanto, il suo intendente di fiducia, cui fece avere le insegne e i privilegi che spettano a un questore e a un pretore.
 
-Con sfarzo imitato dai Tolomei, si fa costruire navi da crociera a dieci ordini di remi, dei veri palazzi galleggianti, ornate di pietre e stoffe preziose e dotate di terme, di portici ombrosi, di sale da pranzo e persino di vigneti e frutteti.
-
-Come i Tolomei, ancor prima i Faraoni, ha rapporti con le sorelle e soprattutto con la prediletta Drusilla, che in vita tratta come moglie legittima e fa divinizzare dopo la morte venerandola come Iside-Afrodite e dedicandole un tempio (non è escluso che sia raffigurata nella famosa *Venere dell'Esquilino*, oggi al palazzo dei Conservatori). Anche gli atti di governo di Caligola si ispirano al modello dei Tolomei, come dimostrano l'amnistia, senza precedenti a Roma, che accompagna la sua ascesa al trono e persino la tassazione da lui introdotta sulle attività industriali e commerciali.
+Naturalmente tutti costoro approfittano della situazione per arricchire in proprio, tanto che il patrimonio dell'imperatore ne risulta visibilmente assottigliato.

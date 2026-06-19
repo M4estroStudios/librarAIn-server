@@ -1,12 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-A pagine 395-402 del pdf trovi una Cronologia con Anno - Eventi. Utilissima per il time index.
+44
 
-Numerazione: pagina del LIBRO in alto — a sinistra sulle pagine pari, a destra sulle dispari; offset costante PDF−3 rispetto al numero stampato nel corpo. Non confondere con date nel testo (753 a.C., 202 a.C., 66 d.C., ecc.).
+STORIA DI ROMA ANTICA
 
-Intestazione di corridoio: sulle dispari titolo del capitolo/sezione in maiuscoletto a sinistra; sulle pari «STORIA DI ROMA ANTICA» a destra. Le pagine di apertura sezione possono avere solo titolo decorativo centrato e nessun numero.
+L'ARX E L'AUGURACULUM
 
-Box monografici: riquadro con bordo nero; titolo in maiuscoletto (talvolta numerato romano o arabo); testo interno tutto in corsivo — trattare come inserto tematico separato dal flusso narrativo, non come corpo del capitolo.
+La collina del Campidoglio è costituita da due cime: il Capitolium e l'Arx; separate da una depressione, l'Asylum. La depressione coincide con la piazza del Campidoglio; collegata a destra e a sinistra dalle scalinate del Vignola che permettono l'accesso a Santa Maria dell'Aracoeli (l'Arx) e al giardino di via del Tempio di Giove (Capitolium). Sull'Arx è situato il tempio di Giunone Moneta (che ammonisce) conosciuto solo dal IV sec. a.C. Di certo questo tempio doveva essere molto più antico perché si tratta di una tipica divinità protettrice della rocca. Attualmente è possibile identificare i resti di questo edificio in alcune strutture in opera quadrata, formate da grandi massi, che si trovano nel giardino dell'Aracoeli.
 
-Immagini: incisioni/xilografie in bianco e nero, spesso in cornice; talvolta pagina intera senza testo. Didascalie in corsivo, più piccole: sotto l’immagine oppure nel margine laterale (nota a lato), a sinistra o a destra del riquadro — non fondere con il testo corrente. Possibili coppie pianta+ricostruzione nello stesso box, con didascalia esterna.
+Il monumento più interessante della rocca capitolina è senza dubbio l'Auguraculum; un'area augurale antichissima legata al Comizio, dove venivano presi gli auspici. È possibile identificare la sede di questo spazio sacro con una piccola costruzione nel giardino dell'Aracoeli. La posizione dell'Auguraculum doveva permettere una libera visuale sulla città, in direzione sud-est, sul sottostante Comizio. La costruzione visibile nel giardino dell'Aracoeli è composta da due settori di muro in tufo di Fidene e per la parte più antica in cappellaccio: questa struttura (i grandi blocchi quadrati in cappellaccio risalgono al VI sec. a.C.) costituisce la base per una sorta di terrazza, che può benissimo essere interpretata come i resti dell'Auguraculum data la sua posizione e il suo orientamento.
 
-Sottotitoli di sezione: centrati in maiuscoletto nel flusso del testo. Nel corpo, corsivo per latino, toponimi e rimandi «(vedi box …)». Non risultano note a piè numerate nel campione.
+UNA NINFA AIUTA IL RE
+
+Numa si rende conto che bisogna agire con astuzia per far accettare le sue riforme ai Romani, i quali non brillano certo per eccessiva mansuetudine. Anche gli animi più coriacei si sarebbero piegati se avessero pensato che il re era solo un esecutore di ordini ricevuti dagli dèi. Ecco così la favola della nin-
+
+Numa Pompilio riceve le leggi dalla ninfa Egeria. Particolare da un'incisione di B. Pinelli.

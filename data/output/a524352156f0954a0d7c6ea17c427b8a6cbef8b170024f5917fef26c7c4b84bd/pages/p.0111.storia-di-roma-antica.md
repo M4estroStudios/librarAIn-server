@@ -1,27 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-A pagine 395-402 del pdf trovi una Cronologia con Anno - Eventi. Utilissima per il time index.
+112
 
-Numerazione: pagina del LIBRO in alto — a sinistra sulle pagine pari, a destra sulle dispari; offset costante PDF−3 rispetto al numero stampato nel corpo. Non confondere con date nel testo (753 a.C., 202 a.C., 66 d.C., ecc.).
+STORIA DI ROMA ANTICA
 
-Intestazione di corridoio: sulle dispari titolo del capitolo/sezione in maiuscoletto a sinistra; sulle pari «STORIA DI ROMA ANTICA» a destra. Le pagine di apertura sezione possono avere solo titolo decorativo centrato e nessun numero.
+![Camillo restituisce alle madri i ragazzi di Faleria (incisione di B. Pinelli)](https://files.oaiusercontent.com/file-S6v9Y8Xm7pWfGZzL3N4R5T?se=2024-10-25T12%3A00%3A00Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dimage.png&sig=...)
 
-Box monografici: riquadro con bordo nero; titolo in maiuscoletto (talvolta numerato romano o arabo); testo interno tutto in corsivo — trattare come inserto tematico separato dal flusso narrativo, non come corpo del capitolo.
-
-Immagini: incisioni/xilografie in bianco e nero, spesso in cornice; talvolta pagina intera senza testo. Didascalie in corsivo, più piccole: sotto l’immagine oppure nel margine laterale (nota a lato), a sinistra o a destra del riquadro — non fondere con il testo corrente. Possibili coppie pianta+ricostruzione nello stesso box, con didascalia esterna.
-
-Sottotitoli di sezione: centrati in maiuscoletto nel flusso del testo. Nel corpo, corsivo per latino, toponimi e rimandi «(vedi box …)». Non risultano note a piè numerate nel campione.
+*Camillo restituisce alle madri i ragazzi di Faleria (incisione di B. Pinelli).*
 
 ***
 
-LA PRESA DI VEIO TRA MITO E REALTÀ
+LO «SCANDALOSO» TRIONFO DI CAMILLO
 
-Molto poco è noto sulle vicende della lunga guerra contro Veio e ci sono giunti brevi cenni su scontri vittoriosi dei Romani con i Falisci e i Capenati. L'assedio di Veio ha fatto invece sorgere numerosi racconti mitici e uno in particolare è narrato con risalto. Durante l'assedio è catturato un indovino veiente, che si aggirava fuori dalle mura. Interrogato, egli rivela che secondo un antico oracolo i Romani non prenderanno Veio finché non avranno fatto ritornare indietro le acque del lago di Albano; che sono prodigiosamente aumentate fino a tracimare nelle vallate circostanti. Anche l'oracolo di Delfi consultato dai Romani dà lo stesso responso; precisando che i Romani possono anche disperdere l'acqua nella pianura, scavando canali e fosse. Non c'è rapporto tra Veio e il lago di Albano; ma sotto la città di Veio esistevano numerosi cunicoli, scavati dagli Etruschi per migliorare l'irrigazione del territorio. Attraverso una di queste gallerie Camillo fa entrare in città un contingente di armati, che sorprende la guarnigione nel corso d'una cerimonia sacra (396). Come Troia, Veio capitola a un'astuzia e il vaticinio è stato probabilmente inventato per colorire la vicenda della galleria.
+La celebrazione del trionfo con una sfilata, aperta dal condottiero vincitore su un cocchio, risale alla tradizione etrusca ed era stata introdotta a Roma forse da Tarquinio Prisco.
 
-L'APPROPRIAZIONE DELLE DIVINITÀ DEL NEMICO
+Dopo la caduta della monarchia la cerimonia è sostituita dalla semplice *ovatio*; l'acclamazione del magistrato trionfatore che entra a Roma a piedi attraverso la porta Triumphalis; sorta al posto dell'antico *Tigillum Sororium*. Camillo non si limita a reintrodurre la sfilata, ma sarebbe apparso su un cocchio tirato da quattro cavalli bianchi col volto dipinto di rosso; prerogative degli dèi e in particolare di Giove e del Sole.
 
-*Nelle guerre dei Romani è frequente l'impiego d'una studiata strategia religiosa accanto alla strategia militare. L'appropriazione delle divinità del nemico, per indebolirne annullarne la potenza, è nota col nome di evocatio (da evocare = chiamare fuori). I Romani vi ricorrono per la prima volta durante la guerra con i Latini, do è votato un tempio ai Dioscuri, costruito dopo la vittoria sui Latini al Regillo. Camillo usa questo strumento religioso almeno due volte. Nel momento cruciale della lotta contro Veio egli dedica un tempio a Mater Matuta, la dea protettrice di Satrico, con l'intenzione di attirare dalla parte romana la città, che controlla i percorsi commerciali del Lazio meridionale. Dopo la presa di Veio, mentre la città è ripopolata dalla plebe romana, trasferisce a Roma la divinità protettrice di Veio, Giunone Regina con un tempio sull'Aventino (presso la basilica di Santa Sabina). Ci è tramandata la formula con cui egli evoca: «O Giunone Regina; io ti prego affinché tu abbandoni questa città dove ora dimori, per seguire le nostre armi vittoriose nella nostra città di Roma; tua dimora futura; la quale ti riceverà in un tempio degno della tua grandezza». Altro famoso episodio di evocatio è quello di Scipione Emiliano, che al momento della distruzione di Cartagine (146 a.C.) evoca la divinità protettrice della città, offrendole ospitalità nei templi di Roma.*
+Il fatto appare doppiamente scandaloso ai Romani, per la reintroduzione di forme dell'epoca regia e l'aspirazione alla tirannide, oltre che per il desiderio d'essere assimilato agli dèi. Anche se l'autenticità della tradizione sui particolari del trionfo è tutt'altro che accertata, il trionfo è alla base dell'esilio volontario di Camillo. E il suo esempio servirà da monito, quando Cesare celebrerà il proprio trionfo nel 46 a.C.
 
-Dopo la presa di Veio, Capena è sottomessa senza troppe difficoltà (395), mentre Falerii Veteres costringe i Romani a un lungo assedio. Anche in questa occasione gli scrittori antichi non tramandano il resoconto di fatti militari, ma un racconto leggendario per esaltare ancora la personalità esemplare di Camillo. Durante l'assedio un maestro, cui era affidata l'educazione dei figli dei maggiori falisci, continua a portare i ragazzi a fare esercizi fuori dalle mura. Un giorno, avendo con sé tutti i ragazzi, egli chiede di parlare con Camillo. Introdotto alla sua presenza, gli dice di essere venuto consegnargli la città nemica nella persona dei suoi fanciulli. Camillo, però, lo rimanda a grande...
+Falerii Veteres legato e ordina ai ragazzi di accompagnarlo a suon di verghe e bastonate. Toccati da questo episodio di giustizia, i Falisci chiedono la resa e ottengono miti condizioni. La rinuncia al bottino sperato crea malcontento tra i soldati, che accusano Camillo di opporsi all'arricchimento dei poveri.
 
-***
-111
+LUCI ED OMBRE DEI DOPOGUERRIA
+
+Dopo la conquista Veio è spopolata e le sue difese sono abbattute: la città però non è distrutta; diversamente da quanto narra la tradizione romanzata sorta intorno all'episodio. Anzi, secondo alcuni scrittori antichi, Camillo fatica molto per contrastare i tribuni della plebe che propongono...

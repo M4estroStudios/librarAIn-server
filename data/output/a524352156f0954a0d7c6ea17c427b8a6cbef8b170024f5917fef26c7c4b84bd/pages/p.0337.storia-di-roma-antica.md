@@ -1,26 +1,40 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA DINASTIA DEI FLAVII                                                                           337
+338
 
-Sotto il suo impero il governatore della Britannia; Gneo Giulio Agricola; condusse incursioni militari fin nella lontana Scozia, mentre cominciava a mettere in punto il progetto dell'invasione della Dacia; governata dal re Decebalo il quale, però, prese l'iniziativa sconfiggendo le truppe romane della Nessia ed essendone battuto solo nell'88 d.C., vittoria per la quale Domiziano si concesse il trionfo.
+STORIA DI ROMA ANTICA
 
-Domiziano considerava la figura dell'imperatore secondo gli archetipi dell'antica civiltà dei Faraoni. L'imperatore era investito di una qualità divina; la sua signoria doveva essere assoluta: egli rappresentava il simbolo vivente dell'Impero stesso e della sua unità. Fu così che favorì l'ingresso a Roma del culto egizio di Iside in simbiosi con quello di Minerva, secondo l'interpretazione della cultura ellenistica.
+L'arco di Tito,
+incisione ottocentesca.
 
-In Campo Marzio, dove oggi sorgono il palazzo di San Macuto, il collegio romano, la basilica Casanatense e Santa Maria sopra Minerva, Domiziano fece costruire un grande tempio a Iside con accanto uno più piccolo, circolare, a Minerva Calcidica; e in questo complesso collocò l'arco quadrifronte trionfale.
+LA PRIMA PERSECUZIONE DEI CRISTIANI
 
-Portò a termine l'edificazione del Colosseo, quella dell'arco dedicato al fratello Tito e del tempio al padre Vespasiano, eretto alla base del colle Capitolino.
+Domiziano inaugurò anche una politica moralistica che giunse a portare alla morte tre vestali che non avevano mantenuto il giuramento della castità; nel contempo ordinò la persecuzione degli adulteri e degli omosessuali; e infine ordinò la prima persecuzione contro i Cristiani, che rifiutavano di rendere il culto all'imperatore divinizzato.
 
-Impose la propria figura politica con la statua equestre, di colossali proporzioni, collocata nell'area del Foro Romano e infine fece edificare il più grande palazzo imperiale della storia antica, la *domus Flavia*, sul Palatino, i cui imponenti resti possono ancora oggi essere visitati.
+Questi atteggiamenti finirono per allontanare Domiziano dal consenso popolare che, se non aveva peso politico, costituiva sempre una giustificazione per eventuali congiure.
 
-<center>L'ARCO DI TITO</center>
+L'opinione pubblica romana era da sempre ostile e critica nei confronti delle culture greche e orientali, nonostante ad esse aderissero i migliori ingegni dell'Impero; così quando Domiziano manifestò pubblicamente il suo amore per la Grecia facendo costruire in Roma uno stadio di giochi atletici di tipo olimpico, che sorse ove oggi è piazza Navona, e ancora, facendo costruire un odeon per le audizioni poetiche e musicali, si alienò del tutto le simpatie dei Romani.
 
-Alla sommità della Velia è situato l'Arco di Tito, conservatosi grazie al fatto che era stato incluso nella fortificazione dei Frangipane, come si legge nel rifacimento in travertino sul lato verso il Foro. Sull'antico lato verso il Colosseo si invece, [nota: testo incompleto nell'originale] che l'Arco era stato dedicato dal Senato e dal popolo romano in onore del divo Tito e del divo Vespasiano.
+La persecuzione dei Cristiani gli inimicò alcune delle matrone cristiane del palazzo imperiale, tra le quali Domitilla, il cui influsso nella corte era grande, sicché Domiziano venne a trovarsi sempre più solo anche nel proprio palazzo.
 
-Il fatto che Tito era stato divinizzato ci consente di dire che l'Arco venne eretto, dopo la morte di Tito, dal fratello Domiziano (dopo l'81 d.C.).
+***
 
-L'arco, a un solo fornice, presenta quattro semicolonne per lato, sormontate da capitelli compositi. Gli archivolti sono ornati da vittorie volanti che recano stendardi.
+338
 
-Il piccolo fregio sopra l'arco, sul lato verso il Colosseo, raffigura gli episodi del trionfo degli imperatori Vespasiano e Tito sui Giudei nel 71 d.C., mentre le scene del trionfo sono nel passaggio dell'arco: l'inizio del trionfo con la processione trionfale che passa sotto l'arco sormontato da due quadrighe. Al di sotto sfilano soldati recanti il bottino di guerra su *fercula* (portantina): le trombe d'argento e il candelabro a sette bracci.
+STORIA DI ROMA ANTICA
 
-Sull'altro pannello è raffigurata la scena centrale del trionfo, con l'imperatore sulla quadriga che avanza incoronato dalla Vittoria, mentre la personificazione della dea Roma guida personalmente i cavalli. Seguono le figure del Senato di Roma e del popolo acclamante.
+L'arco di Tito,
+incisione ottocentesca.
 
-Sulla volta, ornata da cassettoni, è, al centro, la raffigurazione dell'apoteosi di Tito, che viene trasportato in cielo da un'aquila.
+[Immagine dell'Arco di Tito]
+
+LA PRIMA PERSECUZIONE DEI CRISTIANI
+
+Domiziano inaugurò anche una politica moralistica che giunse a portare alla morte tre vestali che non avevano mantenuto il giuramento della castità; nel contempo ordinò la persecuzione degli adulteri e degli omosessuali, e infine ordinò la prima persecuzione contro i Cristiani, che rifiutavano di rendere il culto all'imperatore divinizzato.
+
+Questi atteggiamenti finirono per allontanare Domiziano dal consenso popolare che, se non aveva peso politico, costituiva sempre una giustificazione per eventuali congiure.
+
+L'opinione pubblica romana era da sempre ostile e critica nei confronti delle culture greche e orientali, nonostante ad esse aderissero i migliori ingegni dell'Impero.
+
+Così quando Domiziano manifestò pubblicamente il suo amore per la Grecia facendo costruire in Roma uno stadio di giochi atletici di tipo olimpico, che sorse ove oggi è piazza Navona, e ancora, facendo costruire un odeon per le audizioni poetiche e musicali, si alienò del tutto le simpatie dei Romani.
+
+La persecuzione dei Cristiani gli inimicò alcune delle matrone cristiane del palazzo imperiale, tra le quali Domitilla, il cui influsso nella corte era grande, sicché Domiziano venne a trovarsi sempre più solo anche nel proprio palazzo.

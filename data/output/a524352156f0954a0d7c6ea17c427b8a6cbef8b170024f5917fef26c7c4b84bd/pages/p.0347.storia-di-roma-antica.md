@@ -1,14 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-L'IMPERO NELLA SUA MASSIMA ESPANSIONE                                     347
+348
 
-***
+STORIA DI ROMA ANTICA
 
-![Immagine del Foro di Traiano]
+II FORO DI TRAIANO
 
-*Il Foro di Traiano con le colonne della basilica Ulpia e la Colonna onoraria dell'imperatore (incisione ottocentesca).*
+Tra il 107 e il 113, l'imperatore Traiano fece costruire l'ultimo e più grande Foro e, per fare questo, l'architetto Apollodoro di Damasco eliminò la sella che collegava il Campidoglio con il Quirinale. Il Foro era lungo trecento metri e centottantacinque e vi si accedeva attraverso un arco dal Foro di Augusto e aveva al centro la grande statua equestre dell'imperatore che, ancora nel 357 d.C., destò grande ammirazione in Costanzo II durante la sua venuta a Roma. La piazza aveva sui lati dei portici sostenuti da colonne, dietro ai quali si aprivano due grandi esedre semicircolari, pavimentate da marmi policromi. Opposta all'ingresso era sistemata la basilica Ulpia; alla quale si accedeva mediante tre ingressi ed era probabilmente ornata dal grande fregio che narrava delle imprese daciche dell'imperatore che, scomposto in quattro parti, fu reimpiegato nell'arco di Costantino. La basilica, sopraelevata di tre gradini rispetto al Foro, aveva alle estremità due grandi absidi ed era suddivisa da serie di colonne di marmo caristio e di granito in cinque navate. Sul lato opposto al Foro erano le due biblioteche, greca e latina; davanti alle quali era la splendida colonna coclide istoriata sulla quale, come su un volumen, sono riportate le varie fasi della guerra, dalla partenza, attraversando il Danubio su un ponte di barche, fino alla deportazione della popolazione insieme agli armenti. L'intero complesso venne completato, alla morte di Traiano, dalla costruzione del grande tempio dedicato all'imperatore e alla moglie Plotina e del resto scarsi elementi, ma tali da farci comprendere la grandiosità della struttura. All'interno del basamento della colonna, entro un'urna d'oro, erano racchiuse le ceneri di Traiano, che veniva così sepolto all'interno della città.
 
-***
+ADRIANO
 
-TRAIANO E IL CRISTIANESIMO
+Consigliato dalla moglie Pompea Plotina, poco prima che lo cogliesse il male fatale, Traiano, che non aveva figli, aveva adottato in previsione della successione al trono Publio Elio Adriano, un generale di circa quarant'anni il cui padre era stato senatore e aveva sposato una zia di Traiano. La famiglia di Adriano era anch'essa spagnola, ma di origine italica. Gli avi del nuovo imperatore erano, infatti, emigrati dal Piceno. Traiano conosceva bene Adriano, perché questi da giovane essendo rimasto orfano, era presto entrato a fare parte della famiglia dell'imperatore.
 
-Traiano, infine, adottò nei confronti del cristianesimo una politica di opposizione, decisa ma non persecutoria; se non di fronte a comprovate denunce di confessione cristiana. Egli, infatti, adottò questo atteggiamento verso tutte quelle associazioni religiose o filosofiche che si comportavano autonomamente e separatamente all'interno del sistema sociale dell'Impero romano.
+Fu così che Adriano salì i gradini della carriera militare seguendo Traiano nelle sue imprese belliche; ottenendo infine la carica di governatore della Pannonia e quindi quella della Siria e per due volte il consolato. L'esercito acclamò immediatamente imperatore Adriano, il quale si affrettò ad assicurare i senatori che avrebbe seguito la politica del predecessore.
+
+Voci si erano subito diffuse, infatti, che Traiano non avesse adottato Adriano e che il provvedimento recasse una firma falsificata dopo la morte dell'imperatore; ma bastò l'acclamazione dell'esercito per garantire ad Adriano la successione. Quest' episodio rivela che il sistema dell'adozione accettato nominalmente non veniva gestito con altrettanta sincerità. L'adozione di Adriano, su suggerimento della moglie di Traiano, induce a credere che la famiglia imperiale abbia voluto dare vita comunque a una sorta di dinastia, in quanto Adriano era nipote acquisito di Traiano e cresciuto nell'ambito della sua famiglia.
+
+Adriano, comunque, godeva fama di grande generale e si rivelò imperatore molto attento ai problemi amministrativi dell'Impero. Inaugurò la propria...

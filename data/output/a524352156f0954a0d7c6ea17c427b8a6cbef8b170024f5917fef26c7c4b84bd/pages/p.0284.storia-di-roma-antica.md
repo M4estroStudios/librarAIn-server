@@ -1,21 +1,15 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-284                                                                    STORIA DI ROMA ANTICA
+RICONCILIAZIONE E CONSENSO 285
 
-                                IL FONDATORE DELLA PACE
+L'IMPERO DEL PRINCIPE
 
-L'arco di Giano Quirino (situato nel Foro, presso l'Argileto), che i nostri antenati vollero che fosse chiuso ogni qual volta in tutti i domini del popolo romano regnava la pace, conquistata con le vittorie ottenute per terra e per mare, mentre dalla mia nascita si tramanda che fosse chiuso solo due volte a partire dalla fondazione della città (al tempo di Numa e dopo la prima guerra punica) il Senato decretò che fosse chiuso ben tre volte durante il mio principato.
+Presupposto della pace è la definizione chiara dei confini e l'eliminazione delle resistenze interne e dei nemici esterni. Il mare è liberato dai pirati: sono sminuiti gli schiavi ribelli (che infestano la Sicilia e la Sardegna) e predoni.
+Sono pacificate le province della penisola iberica; non ancora del tutto sottomesse, e quelle della Gallia e della Germania. La pace romana regna da Cadice alla foce dell'Elba. Flotte romane navigano dalla foce del Reno fino al Jutland e oltre; dove nessun Romano si è mai avventurato prima. Quarantasei tribù alpine, dall'Adriatico al Tirreno, sono assoggettate a Roma. A nord delle Alpi centrali sono create le province di Rezia e di Vindelicia: mentre il regno norico diviene un protettorato di Roma; Eserciti romani compiono spedizioni in Arabia Felice e in Etiopia.
+L'Egitto diviene dominio personale d'Augusto ed è retto da un governatore di rango equestre, col titolo di prefetto che risponde direttamente all'imperatore; Ai margini del dominio diretto di Roma sono creati Stati indipendenti alleati di Roma; affidati a dinastie locali, come l'Armenia. Augusto recupera le province orientali date in dono da Antonio a sovrani locali. I Parti sono costretti dalla diplomazia imperiale a restituire le prede e le insegne strappate a Crasso e Antonio.
+Tiberio Claudio Nerone; genero e legato di Augusto; sconfigge le popolazioni della Pannonia. In tal modo i confini dell'Impero sono portati fino alla riva del Danubio, ricacciando oltre il Danubio i Daci, che lo avevano passato in armi. A Roma giungono ambasciatori dalla lontana India: sovrani dei Bastarni, degli Sciti (che vivono oltre il Danubio), dei Sarmati (insediati presso il Don), e di popolazioni abitanti le regioni del Caspio e dell'odierna Georgia inviano ambasciatori per chiedere l'amicizia del popolo romano. Molti re e figli di re cercano l'appoggio di Roma per garantirsi un alleato sicuro o la successione. Alcuni popoli chiedono e ricevono nuovi sovrani designati da Roma.
 
-Fine delle guerre civili, pacificazione del mondo sotto il dominio di Roma sono le realizzazioni che Augusto può ascrivere a proprio merito;
+IL DOMINIO D'UNO SOLO
 
-La *pax Augusta*; la pace procurata da Augusto; è una conquista duratura per il nuovo mondo dominato da Roma. Libertà dalla paura delle guerre civili, libertà e sicurezza dei traffici, soprattutto marittimi, nel Mediterraneo divenuto un lago romano, sono il presupposto del nuovo assetto istituzionale e sociale del principato. Simbolo monumentale di questa nuova pace dovuta ad Augusto è l'Ara Pacis.
-
-                                UN PROGRAMMA NEL MARMO: L'ARA PACIS
-
-L'Ara Pacis o altare della pace, è votata nel 13 a.C. e dedicata il 30 gennaio del 9 a.C. nel Campo Marzio settentrionale all'ingresso in città della via Flaminia; dove già è sorto il mausoleo di Augusto. Sopra un ampio basamento dentro un recinto rettangolare con le pareti decorate da rilievi, si trova l'altare riccamente decorato:
-
-Il programma ideologico raffigurato nei rilievi dei grandi quadri e dei fregi ricorda quello del Foro di Augusto. Le scene mitologiche (rappresentazione del Lupercale e del sacrificio d'Enea) trovano corrispondenza nelle figure allegoriche (la Pace e la dea Roma). I lati esterni rappresentano la famiglia imperiale al completo: con i personaggi principali dei Giulii e dei Claudii gerarchicamente disposti intorno ad Augusto. In pratica Augusto e la sua discendenza sono ricollegati a Enea e a Romolo.
-
-In stretto rapporto con l'Ara Pacis c'è l'orologio solare d'Augusto; col quadrante disegnato al suolo e l'asta costituita da un obelisco (attualmente in piazza Montecitorio). L'ombra di questo gigantesco gnomone il 23 settembre; giorno dell'equinozio d'autunno e del compleanno di Augusto; cade esattamente sull'asse dell'altare; a evidenziare che Augusto è il principe nato per portare la pace.
-
-[Immagine]
-*Ara Pacis, fregio con processione del lato sud (particolare).*
+Già Cesare e Antonio avevano tentato il dominio d'uno solo, sul modello delle monarchie ellenistiche; troppo distante dalla tradizione romana. Fallito il tentativo d'uno Stato retto dall'oligarchia senatoria: c'è spazio soltanto per un cambiamento che si presenti come la restaurazione dei costumi romani antichi in un nuovo contesto territoriale e sociale.
+L'Impero di Roma, che si è formato come compagine territoriale in seguito alle guerre di conquista, ha bisogno d'una nuova classe dirigente d'una nuova burocrazia. La nuova Italia, uscita dalla guerra sociale, si è trovata stretta intorno a Ottaviano nel momento dello scontro decisivo tra Occidente e Oriente (vedi capitolo *La repubblica perduta*).
+Le esigenze della periferia romanizzata si fanno sentire e rendono sempre più inadeguato uno Stato che si fonda su un'organizzazione politica di tipo cittadino. Le magistrature tradizionali; i comizi; il Senato non riescono a rispondere alle esigenze della nuova realtà 'imperiale' le cui dimensioni territoriali e la cui variegata realtà etnica, culturale e religiosa richiedono una diversa organizzazione centrale. Augusto con grande abilità tattica e psicologica restaura formalmente le istituzioni repubblicane; ma in concreto; con sapiente equilibrio tra tradizione e 'rivoluzione' fonda una monarchia.

@@ -1,20 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-130
+I LUOGHI E LE ISTITUZIONI! | 131
 
-STORIA DI ROMA ANTICA
+gli auspici, atto essenziale del comportamento istituzionale del magistrato supremo. Avere accesso al "sacro" è il presupposto per accedere anche alla somma magistratura dello Stato.
 
-[Immagine: incisione delle rovine del Circo Massimo]
+COLLEGI SACERDOTALI
 
-*Rovine del Circo Massimo ai piedi del Palatino; incisione di Etienne Du Pérac, 1575.*
+Nel corso del IV secolo a.C. la religione ufficiale di Roma è organizzata nelle sue forme definitive. Al vertice dell'organizzazione dei sacerdozi c'è il collegio pontificale: vi appartengono, oltre naturalmente ai pontefici, i flàmini, il *rex sacrorum* e le Vestali, tutti nominati dal Pontefice massimo. I pontefici in origine sono cinque e sono portati a nove col plebiscito Ogulnio (300 a.C.): quattro patrizi e cinque plebei; ma il collegio è controllato da *gentes* e non si apre facilmente agli uomini nuovi. Il Pontefice massimo è il depositario delle norme del diritto sacro: fino alle leggi delle XII tavole detiene anche il monopolio della giurisprudenza e della storia della città (Annali dei pontefici); è scelto dal collegio per cooptazione e rimane in carica a vita; ha un seggio nel Senato e ha diritto a essere accompagnato dai littori; progressivamente assume le funzioni del *rex sacrorum*, che agli inizi della Repubblica aveva ereditato le prerogative sacre del re.
 
----
+IL REX SACRORUM NON ABITA PIÙ QUI
 
-gistrati ordinari è anche quello di prendere gli auspici; cioè d'interrogare gli dèi prima di intraprendere ogni atto importante della vita pubblica (convocare i comizi, partire per la guerra ecc.).
-Queste liturgie, lunghe e complesse, impegnano gran parte della giornata; bisogna procurarsi la vittima e gli assistenti; spesso bisogna assicurarsi anche l'assistenza d'un collega o d'un sacerdote; poi si procede all'offerta delle carni, quella delle visceri, infine si dividono le carni tra i partecipanti al sacrificio. Il tutto è accompagnato da gesti prestabiliti e da formule rituali fisse.
-Le funzioni religiose pubbliche sono sempre subordinate al potere politico. Infatti le cariche religiose si inseriscono nel *cursus honorum* (carriera) dei magistrati e per rivestire i maggiori sacerdozi è necessario avere lo stesso *status* sociale che è necessario per ricoprire le magistrature curuli. In definitiva per quanto riguarda i culti pubblici, a Roma non esiste un vero e proprio clero:
+La fine della monarchia determina la trasformazione della Regia in un edificio sacro, continuamente restaurato e ricostruito, nella forma acquisita dopo la sua distruzione alla fine del V secolo avanti Cristo. Il *rex sacrorum* repubblicano rappresenta la pallida copia del monarca e conserva solo la funzione religiosa. La sua casa non è la Regia, ma la *Domus regis sacrorum*, che trovasi a est dell'atrium Vestae. Presto il *rex sacrorum* è privato dei suoi poteri in favore del Pontefice massimo, che lo sostituisce nelle funzioni più importanti. Quando il re repubblicano diviene completamente inutile, la sua casa diventa la *Domus Publica*, la casa del Pontefice massimo. Soltanto con Augusto l'intero complesso è abbandonato e inglobato nella vicina casa delle Vestali.
 
-Per questa stretta compenetrazione tra funzioni religiose e politiche, a lungo i plebei sono tenuti lontani dal consolato, perché non possono prendere gli auspici.
+I flàmini, di origine antichissima (la parola corrisponde al sanscrito *brahman*, bramino), sono addetti al culto di singoli déi. Tre di loro (*Flamines maiores*) sono riservati alle divinità pubbliche più antiche: Giove (*Flamen Dialis*), Marte (*Flamen Martialis*), Quirino (*Flamen Quirinalis*). Essi sono sottoposti a numerosi obblighi e divieti.
 
-### GLI ATRIA
+Le Vestali, come detto precedentemente, sono anch'esse sottoposte a restrizioni e a obblighi di vario genere, fra tutti quello della verginità, e accudiscono al focolare comune dello Stato. Il secondo collegio sacerdotale di Roma è quello degli auguri, che hanno il compito di accertare la volontà degli dèi interpretando i presagi: il volo o il canto degli uccelli, l'appetito dei polli sacri, tuoni e fulmini. Depositari della saggezza pubblica, i loro pareri sono vincolanti per i magistrati: essi in pratica possono opporsi a proposte di legge non gradite ai patrizi, facendo rinviare i comizi. Solo nel 300 a.C., in base al già citato plebiscito Ogulnio che porta a nove i membri del collegio, i plebei vi accedono occupando cinque posti.
 
-Nella parte occidentale del Foro; accanto alle botteghe, sono situati numerosi atria: sono edifici per lo più privati (al contrario delle botteghe statali concesse in affitto) costituiti da singoli ambienti, che si articolano intorno a un cortile centrale. Denominati talvolta con un gentilizio (*atrium Titium*) sono usati per transazioni commerciali, per riunioni di corporazioni oppure per operazioni di pubblica amministrazione. Nell' *atrium Libertatis* si compiono le operazioni per l'affrancamento degli schiavi e i censori vi conservano il loro registro. L'*atrium Minervae* insieme all'*atrium Maenium* (presso la colonna omonima) e al *Titium* è collegato alla Curia e ha pertanto una funzione spiccatamente politica; l'*atrium Regium*, legato al *rex sacrorum*, è invece riservato ad alcune cerimonie religiose. Con la successiva monumentalizzazione del Foro, questi edifici saranno sostituiti dalle più fastose basiliche di origine greco-ellenistica. Mentre la struttura e la funzione degli atria ricalcava la semplicità della casa nobiliare alto-repubblicana: infatti nell' *atrium* si compiva il saluto mattutino dei *clientes* al loro patrono.
+Un altro importante collegio è quello dei *duoviri sacris faciundis* (due sa-

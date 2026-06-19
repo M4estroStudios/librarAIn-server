@@ -1,21 +1,28 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-70                                           STORIA DI ROMA ANTICA
+UN AVVENTURIERO ETRUSCO SUL TRONO DI ROMA
 
-[Immagine: incisione di una donna]
-*Abito di donna romana, incisione di Cesare Vecellio.*
+IL TEMPO DELLA CITTÀ: IL NUOVO CALENDARIO
+
+Alla nuova organizzazione della città corrisponde anche la definitiva fissazione del calendario. Come già detto la tradizione attribuisce a Romolo il calendario primitivo di dieci mesi e a Numa quello scientifico di dodici mesi lunari. È certo che la dinastia etrusca perfeziona il calendario; fissandolo in una forma che si mantiene inalterata fino alla riforma di Giulio Cesare (il cosiddetto calendario giuliano). Tra i numerosi calendari conservatisi, solo quello dipinto di Anzio (scoperto nel 1915) è pregiuliano; Dipinto in rosso e nero, presenta una divisione verticale dei mesi. Luglio e agosto; derivati dai nomi di Caio Giulio Cesare e di Augusto; si chiamano ancora Quintile e Sextile. I giorni della settimana, la nundina, sono segnati in nero; tranne il primo giorno in rosso. Accanto alla lettera di ciascun giorno (dalla A alla H) ci sono alcune sigle: F come *fastus*, giorno in cui è lecito amministrare la giustizia; N come *nefastus*, cioè non *fastus*, giorno in cui non si può amministrare la giustizia e che diventa un giorno di vacanza; i giorni contrassegnati da NP sono i giorni nefasti ma in cui si hanno alcune speciali qualità: i giorni con C, *comitialis*, sono quelli in cui si possono tenere i comizi o assemblee. Infine i giorni con EN sono *endotercisi*, cioè divisi in tre da un'azione rituale che iniziata al mattino, è sospesa, per essere infine terminata la sera. Il giorno è perciò *nefastus* al mattino e *fastus* durante la pausa, *fastus* alla sera. Nel calendario sono indicate in forma abbreviata le divinità e le feste più importanti: ad esempio l'abbreviazione LEMVR (per Lemuria) seguita da una N (*nefastus*) contraddistingue il 9, il 11, il 13 maggio e indica che in quei giorni si celebrava la festa dei Lemures; gli spettri dei morti che invadono il mondo dei vivi. Accanto alle feste fisse (*feriae stativae*) ve ne sono anche altre mobili (*feriae conceptivae*) come le Ambarvalia, le feste dei fratelli Arvali; che non compaiono nel calendario ma sono indicate di anno in anno dai pontefici.
+
+[Immagine del Calendario di Anzio]
+
+Una ricostruzione dei *Fastii ex antiquis maiores*, unico calendario pregiuliano conosciuto.
+
+| I | II | X | XX | I | XXX | XX | M | XX | K |
+|---|---|---|---|---|---|---|---|---|---|
 
 ***
 
-I VESTITI DEI ROMANI
+UN AVVENTURIERO ETRUSCO SUL TRONO DI ROMA | 71
 
-*Non soltanto il trionfatore e le statue degli dèi indossano un abbigliamento di origine etrusca; ma hanno la stessa origine la maggior parte dei capi del vestiario romano destinato a diventare il simbolo stesso di Roma. La toga o mantello arrotondato, fermato con una fibula sulla spalla (diverso dal rettangolare greco; himation), calcei o calzature dalla punta quadrata e dalle quattro stringhe superiori (diverse dalle soleae, sandali) che derivano dal modello etrusco con la punta "orientale" (simile alle babucce arabe) e le stringhe incrociate tipiche della moda del VI e del VII secolo a.C.; il campestre o corto perizoma che copre le nudità maschili, il suo nome deriva dal fatto che i giovani guerrieri, troppo pudibondi per allenarsi nudi come i Greci, lo indossano per esercitarsi nel Campo Marzio. L'influenza etrusca si manifesta nella preferenza per i pesanti tessuti di lana e nella tendenza a coprirsi molto di più (mantelli, tuniche, cappelli) per obiettive esigenze climatiche, così come nell'uso di abiti più lussuosi di quelli greci e nella sensibilità per le mode.*
+IL TEMPO DELLA CITTÀ: IL NUOVO CALENDARIO
 
-*Le vesti dei sacerdoti romani sono il campionario più ampio di abiti etruschi. Come i nostri ordini religiosi hanno conservato per secoli gli abiti tipici del Medioevo; così i principali sacerdozi romani, hanno "fossilizzato" il vestiario di origine etrusca, adottato nel VII e nel VI secolo a.C.*
+Alla nuova organizzazione della città corrisponde anche la definitiva fissazione del calendario. Come già detto la tradizione attribuisce a Romolo il calendario primitivo di dieci mesi e a Numa quello scientifico di dodici mesi lunari. È certo che la dinastia etrusca perfeziona il calendario, fissandolo in una forma che si mantiene inalterata fino alla riforma di Giulio Cesare (il cosiddetto calendario giuliano). Tra i numerosi calendari conservatisi, solo quello dipinto di Anzio (scoperto nel 1915) è pregiuliano. Dipinto in rosso e nero, presenta una divisione verticale dei mesi. Luglio e agosto, derivati dai nomi di Caio Giulio Cesare e di Augusto, si chiamano ancora Quintile e Sextile. I giorni della settimana, la nundina, sono segnati in nero; tranne il primo giorno in rosso. Accanto alla lettera di ciascun giorno (dalla A alla H) ci sono alcune sigle: F come *fastus*, giorno in cui è lecito amministrare la giustizia; N come *nefastus*, cioè non *fastus*, giorno in cui non si può amministrare la giustizia e che diventa un giorno di vacanza. I giorni contrassegnati da NP sono i giorni nefasti ma in cui si hanno alcune speciali qualità: i giorni con C, *comitialis*, sono quelli in cui si possono tenere i comizi o assemblee. Infine i giorni con EN sono *endotercisi*, cioè divisi in tre da un'azione rituale che iniziata al mattino, è sospesa, per essere infine terminata la sera. Il giorno è perciò *nefastus* al mattino e *fastus* durante la pausa, *fastus* alla sera. Nel calendario sono indicate in forma abbreviata le divinità e le feste più importanti: ad esempio l'abbreviazione LEMVR (per Lemuria) seguita da una N (*nefastus*) contraddistingue il 9, il 11, il 13 maggio e indica che in quei giorni si celebrava la festa dei Lemures, gli spettri dei morti che invadono il mondo dei vivi. Accanto alle feste fisse (*feriae stativae*) ve ne sono anche altre mobili (*feriae conceptivae*) come le Ambarvalia, le feste dei fratelli Arvali; che non compaiono nel calendario ma sono indicate di anno in anno dai pontefici.
 
-***
+[Immagine della ricostruzione del Calendario]
 
-ROMOLO E SERVIO TULLIO
+Una ricostruzione dei *Fastii ex antiquis maiores*, unico calendario pregiuliano conosciuto.
 
-Nei racconti degli antichi solo Romolo e Servio Tullio hanno avuto il privilegio di una nascita divina: Esistono strette corrispondenze tra le vicende del primo e del sesto sovrano di Roma: Entrambi sono nati dal fuoco, entrambi sono figli di una donna legata in qualche modo al fuoco. Infatti Rea Silvia è una vestale; Ocresia una schiava di guerra addetta al focolare.
-
-Quest'ultima assomiglia molto a una sacerdotessa sia per la nobile origine sia per i suoi incarichi nel palazzo. Ancora, Romolo e Servio nascono e vivono parte della loro infanzia e giovinezza in una condizione (pastore o schiavo) inferiore alla loro natura e origine. Tutti questi parallelismi potrebbero essere stati creati ad arte mentre Servio Tullio era ancora vivo. L' "usurpatore" della dinastia dei Tarquini potrebbe aver volentieri suscitato tutte queste storie e questi racconti per rendersi più accettabile ai Romani come monarca: perché Servio Tullio è l'unico re a non essere eletto dal popolo.
+| I | II | X | XX | I | XXX | XX | M | XX | K |
+|---|---|---|---|---|---|---|---|---|---|

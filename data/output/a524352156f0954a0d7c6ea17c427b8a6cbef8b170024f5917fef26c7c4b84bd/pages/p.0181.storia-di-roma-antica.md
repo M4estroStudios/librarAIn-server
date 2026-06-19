@@ -1,19 +1,17 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-181
+182
 
-LE PRIME PROVINCE ROMANE
+STORIA DI ROMA ANTICA
 
-Dopo la fine della prima guerra punica; con la conquista della Sicilia, della Sardegna e della Corsica, i Romani estendono il loro dominio anche fuori della penisola italiana. Il modo scelto per controllare questi territori è diverso da quello adottato in Italia. Qui si è fatto ricorso a confische di terre, fondazione di colonie, ad alleanze; si sono sottoposti i nuovi alleati a obblighi militari. Le isole invece diventano proprietà del popolo romano; i loro abitanti non sono cittadini o alleati, ma sono sudditi soggetti a tributi e non sono chiamati a servire nell'esercito. Al contrario, sono sottoposti al controllo d'un esercito e governati da magistrati romani, inviati regolarmente ogni anno con poteri militari e giudiziari.
+**IL TRATTATO DELL'EBRO**
 
-Nascono le prime province definite territorialmente. In precedenza le fonti antiche parlavano di «provincia», proposito della sfera d'attività affidata a un magistrato. Non era però un ambito territoriale delimitato con precisione, bensì l'ambito entro il quale egli deve esercitare il mandato affidatogli per una spedizione, per una guerra eccetera.
+Tra il 226 e il 225, preoccupati dai successi cartaginesi in Spagna e per l'invasione gallica, i Romani decidono di trattare direttamente con Asdrubale e di stabilire le rispettive sfere di azione nella penisola iberica. Il cosiddetto «trattato dell'Ebro» stabilisce che l'espansione cartaginese deve arrestarsi all'Ebro e che i Romani possono mantenere il controllo del territorio spagnolo nord-orientale, difesa delle colonie dei Marsigliesi, loro antichi alleati. Roma, però, ha stretto alleanza negli stessi anni con Sagunto, città iberica posta a sud dell'Ebro e nella sfera di egemonia cartaginese; sarà la causa scatenante della seconda guerra punica: quando Annibale nel 219 a.C. attaccherà Sagunto, i Romani dovranno intervenire a tutela dei propri alleati.
 
-L'operazione spagnola è permettere a Cartagine di pagare i suoi debiti. Benché poco convinti, i Romani stipulano un accordo con i Cartaginesi (226 a.C.) per cui il fiume Ebro (da identificare probabilmente con lo Júcar) è stabilito come limite per l'influenza cartaginese. Asdrubale sostituisce il suocero Amilcare a capo dell'esercito e continua le operazioni in Spagna con abile diplomazia. La Spagna, dominata dai Barca che rivestono le cariche più alte dell'esercito, sembra quasi uno Stato autonomo; dove le decisioni sono prese senza consultare il parere dei dirigenti cartaginesi. La prudenza di Asdrubale era stata un freno e un peso; i veterani si aspettano molto da Annibale: il giovane figlio del grande comandante fa sperare in azioni più gloriose. E le loro speranze non saranno deluse.
+**UN UMBRO RIPÀ IL VGRSO AI GRÆCI E FA RIDERE I ROMANI**
 
-«BARCA»
-La narrazione delle guerre puniche ci mette di fronte a parecchi personaggi della classe dirigente cartaginese di nome Asdrubale, Annibale, Amilcare, Annone, Magone; si tratta dei nomi diffusi a Cartagine: dove, come in Grecia, a un individuo era attribuito un nome personale unico (ad esempio Pericle, Alessandro, Filippo ecc.); spesso seguito, per permettere l'identificazione di personaggi con nomi uguali, dall'indicazione del nome del padre (patronimico). Talora si aggiungevano anche appellativi derivati da particolari virtù o imprese, che restano a caratterizzare il ramo della famiglia: così Annibale appartiene alla famiglia cartaginese dei Barcidi, cosiddetti dal soprannome «Barca» (che significa "fulmine") attribuito a suo padre Amilcare per la rapidità delle sue azioni militari. Ecco lo schema genealogico dei pochi membri della famiglia Barca (con *x* e *y* sono indicate la moglie e la figlia di Amilcare, il cui nome è ignoto):
+Plauto senza dubbio è un personaggio di grande spicco nella vita culturale romana del I secolo a.C. Nato a Sarsina, sull'Appennino, in gioventù come attore calca le scene a Roma. La mancanza di quattrini lo costringe però ad adattarsi a girare la macchina tutto il giorno per poter campare. Raggiunge il successo come autore di commedie, un genere di teatro leggero, misto di recitativi e cantati; vicino alla moderna operetta. I temi, ripresi dalla ricca tradizione della commedia greca, sono rielaborati e adattati al gusto romano. Si tratta per lo più di intrecci complicatissimi, spesso imperniati su scambi di persona, in cui si muovono personaggi molto caratterizzati: un servo imbroglione, un padre severo, un giovane spiantato e innamorato; una mezzana avida di denaro, un soldato gradasso. Vi si trovano anche situazioni tratte dalla storia recente, come nei *Prigionieri di guerra*, nel *Piccolo Cartaginese*, nella *Gomena*. Vi è rappresentata anche in chiave satirica la ricerca di gloria militare e di trionfi dell'aristocrazia romana, che dalle guerre vuole trarre vantaggi e prestigio personale. Celebre la frase messa in bocca al personaggio dell'Anfitrione: «Io li misi in rotta al primo attacco, all'autorità e al comando conferitomi con investitura divina».
 
-Amilcare — Barca (sp. *x*)
-|
-|--------------------------|
-Au \ | As \ | M \ | Y
-Annibale — Asdrubale — Magone (sp. *Asdrubale*) (F.S.)
+[Immagine di una scena teatrale con i nomi dei personaggi:
+GNATHO PARASITVS TRASO MILES THAIS CHEAERA E EVNYCHO ALITIPHO PARMENIO]
+
+Scena teatrale romana, dal Codice vaticano latino 3868, *Eunucus*, atto II, scena I.

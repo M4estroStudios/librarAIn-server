@@ -1,17 +1,28 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-L'IMPERO NELLA SUA MASSIMA ESPANSIONE                                     341
+342
 
-[Immagine: Il foro di Nerva in un'incisione di G. Vasi]
-*Il foro di Nerva in un'incisione di G. Vasi*
+STORIA DI ROMA ANTICA
 
-***
+Germania Superiore e uno dei più famosi e stimati generali del suo tempo. Sarebbe stato Traiano l'uomo in grado di conciliare tutte le forze politiche del suo tempo e di portare l'Impero al massimo della sua solidità e della sua estensione territoriale.
 
-**IL FORO DI NERVA**
+L'ADOZIONE, SISTEMA DI SUCCESSIONI AL TRONO
 
-L'imperatore Domiziano fece iniziare, durante il suo regno, la costruzione di un foro tra il Foro di età repubblicana, quello di Cesare; quello di Augusto e il tempio della Pace.
+Traiano aveva quarantaquattro anni quando apprese di essere stato adottato da Nerva. Con questo atto giuridico, prendeva definitivamente corpo il sistema dell'adozione come meccanismo di successione al trono. 
 
-Questo foro, che collegava le piazze esistenti, venne chiamato Foro Transitorio o di Nerva; perché venne inaugurato da Nerva; inoltre, restituì beni sequestrati da Domiziano ai perseguitati, che invitò a tornare dall'esilio. Difficili furono invece i suoi rapporti con i pretoriani, che riuscirono a imporre, talvolta, la loro volontà all'imperatore.
+Questo sistema doveva permettere una scelta oculata di un personaggio che si fosse già distinto per doti di governo, equità, intelligenza e forte legame con l'esercito. Si credette, così, di avere risolto le contraddizioni del sistema dinastico per evitare gli eccessi che si erano verificati con i successori di Augusto (gens Giulio-Claudia) e con lo stesso Domiziano (gens Flavia). 
 
-Nerva moriva così nel gennaio del 98 d.C., dopo due anni di regno; essendo riuscito a rinsaldare l'amministrazione dello Stato e a far dimenticare la tirannia di Domiziano; ma anche a non legare l'esercito al potere imperiale; cosicché la possibilità di un pronunciamento militare restava reale. Nerva, però, aveva visto giusto scegliendo come successore Traiano, governatore della quella quale che colpiva le proprietà terriere, e quella indiretta, che caratterizzava il contributo fiscale di ogni cittadino. Contemporaneamente, chiamò come coreggente e adottò, per nominarlo erede alla carica imperiale, Marcio Ulpio Traiano.
+Inoltre, l'adozione permetteva di mascherare, agli occhi dell'opinione pubblica, la realtà monarchica dell'Impero romano, e la conseguente scelta del migliore costituiva una formula in un certo senso aristocratica, ma certamente di carattere liberale, che garantiva ai Romani la personalità del nuovo imperatore.
 
-Era una piazza stretta e lunga (metri 120 $\times$ 45) circondata da un colonnato che, per mancanza di spazio, aveva le colonne molto accostate alle pareti. Il lato corto, verso il Foro repubblicano, era curvilineo; mentre sul lato opposto venne costruito un tempio dedicato alla dea Minerva; divinità alla quale l'imperatore Domiziano era molto devoto; ma di questo tempio non restano che alcuni elementi del nucleo cementizio, al di sotto del quale corre un tratto della *Cloaca Massima*. Sul lato verso l'odierna via Cavour restano anche le cosiddette "colonnacce" con parte della trabeazione: sul fregio restano alcune scene, ad altorilievo, raffiguranti, forse, il mito di Aracne; mentre sull'attico è la figura di Minerva. Dietro al tempio di Minerva si apriva la *porticus absidata*, cioè un'esedra semicircolare ornata da un colonnato. Nel III secolo d.C., l'imperatore Alessandro Severo ornò il Foro con alcune statue di notevoli dimensioni, somiglianza di quelle che Traiano aveva fatto sistemare nel suo Foro; ma di queste non è rimasto nulla.
+TRAIANO
+
+L'adozione di Traiano portava un'altra novità: Traiano era nato in Spagna. Apparteneva alla nuova aristocrazia provinciale. 
+
+La sua famiglia si era infatti trasferita, alcune generazioni prima, dall'Umbria nella Spagna meridionale; e qui fu il padre di Traiano a emergere socialmente, ottenendo le cariche di console, di senatore e di governatore delle province di Asia e di Siria. 
+
+L'imperatore spagnolo confermava la trasformazione delle province dell'Impero romano da regioni vinte e sottomesse a membri con diritti e riconoscimenti all'interno dello Stato. 
+
+Un vento di uguaglianza percorreva le province e trasformava l'Impero di Roma in grande Stato multinazionale, ove tutti i cittadini finivano per avere, anche se a volte solo di fatto, gli stessi diritti dei Romani. Fu così che, con Traiano, l'egemonia dell'Urbe sul resto dell'Impero si trasforma in un più accettabile ruolo di capitale politica, economica e culturale dello Stato. Lo stesso Impero, la cui amministrazione era ormai vasta e complessa, doveva ora badare a che i confini fossero sempre sicuri, garantiti dai tentativi di invasione dovuti alle pressioni dei germanici sul Reno, di quelli slavi nell'Europa orientale, e badare ancora che i regni lontani dei Parti e della Persia non mutassero gli equilibri politici dell'Oriente.
+
+LE VIE DELL'IMPERO: TERRESTRI E MARITTIME
+
+L'Impero doveva assicurare, altresì, una fittissima rete di vie di comunicazione, tanto terrestri quanto marittime: milioni di tonnellate di merci, ogni anno, dovevano essere trasferite da provincia a provincia e da città a città. Ovunque, piccole imprese artigianali lavoravano per produrre oggetti di uso quotidiano, quali eguali popoli...

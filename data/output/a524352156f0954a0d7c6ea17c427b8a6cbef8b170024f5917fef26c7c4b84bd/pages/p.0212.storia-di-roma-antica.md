@@ -1,54 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-212                                           STORIA DI ROMA ANTICA
+LA CONQUISTA DELL'ORIENTE:
+213
 
-I soldati che sbarcano in Africa sono guidati da Scipione Emiliano; il futu -
-ro vincitore di Numanzia. Contrariamente a quanto avviene di solito; nessu -
-no avanza proposte di pace.
-La città è distrutta. Il suo territorio è maledetto e cosparso di sale. Per Car-
-tagine cala il sipario (146 a.C.). In Grecia nella medesima epoca nuovi fer -
-menti scatenano la rivolta della popolazione.
-Come è accaduto quasi trent' anni prima, un tale chiamato Andrisco; spacciandosi 
-per il figlio di Perseo; raccoglie intorno a sé l'ostilità greca con-
-tro Roma. Ma Cecilio Metello lo sconfigge a Pidna, quasi a sottolineare
+Foro Olitorio:
+pianta dei templi dedicati a Giano
+(A) a Giunone Sospita (B) e alla Speranza (C)
+inglobati nella chiesa di San Nicola in Carcere.
 
-II TEATRO INSTABILE
+[Immagine della pianta]
+N
+C
+B
+S. Nicola in carcere
+A
+0 m
 
-I ludi religiosi; celebrati con sempre maggior frequenza a Roma, hanno spiccati 
-aspetti teatrali che si prestano a essere rappresentati su una scena. La necessità 
-di un teatro o edificio funzionale agli spettacoli è l'inevitabile conseguenza, acui-
-ta anche dalla passione dei Romani per le tragedie e commedie. Il censore Cassio 
-Longino tenta la costruzione d'un teatro lapideo ai piedi del Palatino (154 a.C.).
-La reazione immediata dell'oligarchia è il rifiuto, perché il teatro è una manife-
-stazione dell'eccessiva ellenizzazione del ceto dirigente. Publio Cornelio Scipio-
-ne Nasica fa smantellare quanto già edificato dal censore e vieta che si allestiscano 
-sedili per spettatori nel raggio d'un miglio intorno a Roma. L'opposizione all'e-
-dificio teatrale risiede soprattutto nel timore che l'assemblea popolare possa tro-
-varvi un adeguato luogo di riunione, come accade nelle città ellenistiche (corrot-
-te e degenerate secondo i tradizionalisti). Inoltre è costante il timore che un mem-
-bro dell'oligarchia acquisisca un prestigio troppo grande, perché aleggia lo spet-
-tro di generali e uomini politici padroni della folla, capaci d'imporsi con misure 
-popolari.
-Nonostante quest' ostilità a Roma non mancano edifici, più o meno stabili, desti-
-nati agli spettacoli. È questo il caso del *theatrum et proscaenium ad Apollinis* (tea-
-tro e proscenio presso il tempio di Apollo) vicino al circo Flaminio. Su un'area se-
-micircolare, fatta costruire dai soliti censori del 179 a.C., trovano spazio gradin-
-ate in legno; davanti alle quali si può erigere una scena teatrale. In queste con-
-dizioni precarie la scena e i fondali utilizzati sono modesti e non conoscono la ric-
-chezza o la varietà goduta dagli spettatori del Sannio e della Campania, dove la 
-tradizione teatrale ha una lunga tradizione.
+***
 
-IL TEMPIO GRECO DEL FORO OLITORIO
+I PORTICATI DEL CAMPO MARZIO
 
-Tra i numerosi edifici pubblici costruiti in questo periodo si ricorda il tempio di 
-Giunone Sospita (Salvatrice) voluto da Caio Cornelio Cetego (tra il 194 e il 197 
-a.C.). La nuova costruzione si affianca a due anteriori, risalenti alla prima guerra 
-punica, il tempio di Giano e il tempio di Speranza nel foro Olitorio (il mercato delle ver-
-dure). Nella piccola piazza oggi compresa fra le pendici del Campidoglio e i resti del 
-teatro di Marcello, sotto e accanto alla chiesa di San Nicola in Carcere, si trovano 
-resti dei tre templi. Probabilmente l'edificio più vicino al teatro di Marcello è il 
-tempio di Giano; quello più vicino al *portus Tiberinus* il tempio di Speranza, men-
-tre quello di Giunone Sospita è probabilmente sottostante alla stessa chiesa. Si trat-
-ta di un tempio lungo 30 m; largo 15, periptero (un colonnato corre sui quattro la-
-ti), esastilo (sei colonne sulla fronte) con tre ordini di colonne sul lato breve ante-
-riore e due su quello posteriore. Nel sotterraneo di S. Nicola sono visibili alcuni ri-
-tocchi delle colonne della facciata.
+Il Campo Marzio nella parte circostante al circo Flaminio è interessato da grandi opere pubbliche: gran parte dei bottini guadagnati in guerra è impiegata in edifici sacri e quadriportici: il tempio di Ercole e delle Muse (divinità protettrici delle arti), il portico d'Ottavio (168 a.C.) e il portico di Metello (146 a.C.). Gli edifici, situati lungo il lato settentrionale del circo, sono il primo esempio di urbanistica monumentale a Roma. Artisti, architetti e pittori fanno conoscere la *luxuria* asiatica (il lusso orientale) a una città che fino a questo momento si è accontentata di edifici modesti, specchio della semplicità dei suoi costumi. All'interno del quadriportico di Metello trovano spazio due templi dedicati a Giunone Regina (creato da Marco Emilio Lepido nel 179 a.C.) e a Giove Stautore: quest'ultimo rappresenta un'importante innovazione; poiché si tratta del primo edificio sacro costruito integralmente in marmo a opera dell'architetto Ermodoro di Salamina di Cipro. Il modello ellenistico-orientale conoscerà da questo momento numerose imitazioni nell'architettura religiosa romana. Le statue di Giunone e Giove sono ugualmente create da scultori greci, Policle e Dionisio; quasi a confermare fino a che punto la committenza nobiliare sia impregnata di cultura greca.
+
+che la parentela con Perseo è soltanto nella sfortuna e nello stesso luogo: la Macedonia perde così l'autonomia formale e i distretti sono sostituiti di lì a poco da una provincia. I Romani non si fermano, perché sono ben decisi a indebolire completamente la Lega achea; la richiesta di lasciare fuori dalla confederazione città come Sparta, Argo e Corinto scatena una nuova rivolta, repressa senza freni o incertezze. La reazione di Corinto non è tollerata e Lucio Mummio occupa e distrugge la città dell'istmo. L'enorme bottino in opere d'arte supera quasi quello che Emilio Paolo ha portato a Roma dopo la vittoria di Pidna. L'autonomia della Grecia è decisamente finita.

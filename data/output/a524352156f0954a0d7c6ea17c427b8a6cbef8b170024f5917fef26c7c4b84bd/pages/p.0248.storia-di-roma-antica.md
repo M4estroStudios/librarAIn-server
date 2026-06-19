@@ -1,62 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-248                                                                    STORIA DI ROMA ANTICA
+ASPIRAZIONI: L'ITTN'TURA
+249
 
-pazienti di recuperare i loro diritti politici e specialmente il controllo dei tri-
-bunali, mezzo per proteggere gli affari non sempre limpidi:
+Pompeo è un attento osservatore della realtà: quando Silla aveva lasciato il potere (vedi capitolo precedente) si era dissociato prontamente dal suo schieramento; consapevole che ormai non gli avrebbe portato nulla di buono. Diventa un "moderato" e intraprende una carriera militare ricca di successi. Dopo avere sconfitto Sertorio, "scippa" a Crasso la gloria del successo finale, sconfiggendo i superstiti seguaci di Spartaco. Nonostante questa azione non proprio corretta, i due uomini vengono ben presto a patti.
 
-Il sottofondo di questo quadro, turbato e sconvolto, è costituito dalla sorda
-protesta degli schiavi. Molti di essi hanno prestato servizio nell'esercito sil-
-vano e la consapevolezza di costituire il livello più basso d'una società ormai
-percorsa da profonde spaccature ha fatto nascere nuove aspirazioni tra le fi-
-le di questi disperati. Non cominciano a sperare di cambiare la situa-
-zione, soprattutto rendendosi conto del proprio numero e della
-propria forza.
+| Il consolato di Pompeo e Crasso è il segno che ormai comanda chi ha mezzi finanziari e militari per imporsi (70 a.C.) |
+| :--- |
 
-SPARTACO: IL GLADIATORE RIVOLUZIONARIO
+Marco Licinio Crasso è un affarista di enorme ricchezza e costituisce un partner ideale per un generale vittorioso; perché è amico dei cavalieri. Pompeo e Crasso promulgano una serie di norme che restaurano l'alleanza tra cavalieri e plebe. La plebe ha di nuovo i suoi tribuni, il ceto equestre i suoi tribunali. Gli ex sillani rovesciano le riforme di Silla!
 
-Mentre a Roma il ceto dirigente conservatore è impegnato a frenare le rifor-
-me democratiche (avanzate da uomini come Marco Emilio Lepido; console
-nel 78 a.C.) e a combattere la rivolta spagnola di Sertorio; da Capua
-fuggono alcune decine di gladiatori. Il loro capo è Spartaco; un soldato trace
-che ha militato nell'esercito romano, prima di essere ridotto in schiavitù per di-
-serzione.
+CRASSO IMPRESIONATORE: POLIVALENTE
+Negli ultimi decenni della Repubblica la speculazione edilizia raggiunge livelli fino ad un momento sconosciuto. Crasso, famoso per il suo fiuto negli affari, nota che in città gli incendi e i crolli sono all'ordine del giorno: compra come schiavi più di 500 architetti e muratori. Come un avvoltoio acquista le case incendiate e conflittuali, vendute dai proprietari per timore di nuovi incendi. Grazie a tragedie, più o meno accidentali, diventa piano piano proprietario di buona parte della città. La parte più grossa dei guadagni la ottiene sempre tramite i suoi schiavi. È abilissimo nell'impiegarli in molteplici attività: architetti, mercanti, lettori, scrivani, banchieri, contabili, fabbri ecc. Tutti alla fine della giornata di lavoro portano moltissimo denaro nelle casse del padrone. Probabilmente proprio per questa sua abilità con gli schiavi (che alleva e istruisce personalmente) infligge una solenne e clamorosa punizione ai rivoltosi di Spartaco, crocifiggendo 6000 schiavi lungo la via Latina, come monito per chiunque voglia sconvolgere l'ordine sociale.
 
-I Romani sottovalutano inizialmente la rivolta e le truppe poco nu-
-merose inviate in Campania sono sbaragliate dagli insorti.
+Ormai la lotta politica non si articola più tra le due grandi fazioni dei nobili (*optimates* o "migliori") e dei popolari, ma tra due schieramenti, nati nel seno dell'oligarchia senatoriale. Da una parte la fazione conservatrice; dall'altra quella dei giovani aristocratici che senza incertezze si servono di chi fa loro più comodo.
 
-Il gladiatore, sull'onda del successo, va intanto rafforzando le file del suo
-esercito "rivoluzionario".
-
-Migliaia di schiavi fuggiaschi, di ladri e briganti, ma anche di ex soldati, di disperati e piccoli
-proprietari rovinati, vedono in lui la possibilità di riscatto. Alla fine Spartaco
-può contare addirittura 70.000 uomini.
-
-Roma a questo punto è giustamente preoccupata perché l'esercito servile con-
-trolla ormai l'Italia meridionale. L'ex sillano Marco Licinio Crasso, un ric-
-chissimo banchiere, è inviato contro i rivoltosi. Da questo momento le cose
-cominciano a mettersi male per Spartaco. Insieme ai suoi uomini risale la pe-
-nisola nel tentativo di oltrepassare le Alpi (72 a.C.) e molti ex schiavi di ori-
-gine germanica o gallica lo piantano in asso, per tornarsene a casa. In tutta
-fretta, Spartaco con pochi superstiti scende di nuovo nella penisola. Ma la sorte
-sembra avergli voltato definitivamente le spalle.
-
-I pirati, che dovrebbero tra-ghettare i fuggiaschi in Grecia, non si fanno trovare all'appuntamento.
-
-Iniziano pesanti sconfitte per l'esercito di Spartaco; sempre più sfiduciato e rap-
-pezzato.
-
-Presso le sorgenti del Sele, tra Puglia e Lucania, circa 60.000 uo-
-mini cadono insieme a Spartaco. I 5.000 superstiti che fuggono verso nord
-sono massacrati da Gneo Pompeo, il generale che sta tornando dalla Spagna,
-dopo la vittoria su Sertorio.
-
-IL MILIONARIO E IL GENERALE
-
-Gneo Pompeo è figlio di Pompeo Strabone, uno spregiudicato uomo
-politico italico, che ha utilizzato le sue clientele nel Piceno, per assicurarsi una
-posizione personale durante la guerra sociale (vedi capitolo precedente). Tut-
-ti i clienti di Pompeo Strabone, alla sua morte sono passati al figlio.
-
-Quando Silla era sbarcato a Brindisi: il giovanissimo Pompeo aveva potu-
-to offrirgli il suo esercito personale: il dittatore aveva ricambiato il favore,
-concedendogli onori e il titolo di *Magno* (Grande).
+I SUCCESSI ORIENTALI DI POMPEO
+Dopo il consolato per Pompeo seguono anni di attesa; Il suo grande momento è la campagna contro i pirati della Cilicia. In tre mesi riesce a fare piazza pulita dei pirati (67 a.C.). Con manovre poco chiare si fa assegnare anche la campagna orientale contro Mitridate; e in due anni, giovandosi di quanto ha già fatto Lucullo, il suo predecessore, sconfigge il sovrano orientale. Non contento, spazza via anche gli ultimi discendenti della dinastia di Seleuco; il grande regno che aveva avuto come sovrano Antioco III (vedi capitolo Romani e Cartaginesi: la conquista del Mediterraneo). Ora Pompeo crea nuove province e risistema i confini del dominio romano in Oriente.

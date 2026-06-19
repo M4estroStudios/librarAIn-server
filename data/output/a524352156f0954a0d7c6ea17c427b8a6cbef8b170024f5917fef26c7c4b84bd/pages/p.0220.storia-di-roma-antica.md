@@ -1,17 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-220                                           STORIA DI ROMA ANTICA
+ROMA TRA CONSERVATORI E INNOVATORI
 
-**GLI SCHIAVI DI CATONE**
+221
 
-Nella casa di Catone ci sono molti schiavi, ma ancora in numero contenuto, senza confronto con le grandi aziende agricole, dove centinaia o migliaia di schiavi costituiscono pericolosi focolai di rivolta.
-Il Censore con i suoi schiavi si comporta ancora come un padrone, che si sente a capo d'una grande famiglia. Egli preferisce acquistarli quando sono piccoli, per allevarli con facilità, come i cuccioli. In casa, quando non sono occupati in qualche lavoro, sono obbligati a dormire.
-Catone è felice, vedendoli dormire, perché il sonno fa bene al corpo e rende l'uomo più docile. Si preoccupa anche dei loro piaceri sessuali, osservando che la castità li rende insofferenti e trascurati. Ma si tradisce la mentalità speculativa del vecchio romano: permette loro di frequentare le schiave soltanto dietro un piccolo compenso e vieta d'incontrare altre donne! Suscita inoltre gelosie e discordie, ben sapendo che la concordia tra gli schiavi è pericolosa per il padrone.
-Già nel 185-180 a.C. si promulga una legge che impone di impiegare una certa quota di liberi nelle aziende di quanti occupano il terreno pubblico. L'impiego di schiavi entra prepotentemente in altri settori dell'economia. Nella pastorizia e nelle miniere lo sfruttamento assume toni durissimi. Da questo momento in poi le rivolte servili diventano un problema sociale ricorrente per il mondo romano. La rivolta più seria scoppia in Sicilia tra gli schiavi addetti alla pastorizia.
-Diversamente dalle altre volte, i ribelli hanno un capo carismatico, Euno, che si vanta del dono della profezia. Il suo modello è Antioco III e, come il vecchio nemico romano, si fa incoronare re. La rivolta ha un'articolata organizzazione e coesione interna che ritarda e rende difficile la repressione.
+LO STATO CONTRO IL LUSSO
 
-**LA RIFORMA AGRARIA**
+Di fronte al lusso dilagante si promulgano a più riprese leggi suntuarie, per contenere il lusso. Catone, soprattutto durante la sua censura, si prodiga con tutte le sue forze per far rispettare i divieti. I banchetti, gli arredi delle tavole e i gioielli delle donne sono i campi più colpiti. Lo Stato stabilisce delle cifre limite oltre le quali scatta la multa. Catone alla fine giunge al punto da inimicarsi sia chi per mantenere il lusso paga le tasse, sia chi per colpa delle tasse non può più permettersi il lusso. La furia di Catone non si ferma qui. Distrugge le condutture che portano l'acqua dagli acquedotti nelle case e nei giardini; fa abbattere e demolire edifici che occupano il suolo pubblico; blocca le somme stanziate per il restauro dei templi. In realtà queste norme, al di là della spettacolare azione di Catone, mirano soltanto a contenere le spese smodate, cui si lascia andare la nobiltà. Il loro scopo è quello d'impedire che patrimoni ingenti siano dispersi e che s'impoveriscano intere famiglie dell'oligarchia, da cui è retto lo Stato.
 
-La crisi dei ceti contadini ha importanti risvolti militari che non possono essere sottovalutati. Il modello del contadino-soldato sta entrando in crisi. Il ceto dirigente si rende conto ben presto che l'unico rimedio consiste nella suddivisione dell'agro pubblico.
-Alcuni nobili, tra cui Scipione Emiliano, propongono di limitare il possesso dell'agro e ridistribuire ai più poveri le terre recuperate. Questa riforma agraria, rimasta inattuata, è ripresa da Tiberio Gracco.
-Come tribuno della plebe il giovane nipote dell'Africano si mette dalla parte dei più deboli. La sua legge agraria è a vantaggio di coloro che combattono e muoiono per Roma. Gli uomini politici devono ricordarsi che la decadenza della piccola proprietà lascerà lo Stato senza esercito.
-Il tribuno propone dunque un limite per il terreno pubblico: non più di 500 iugeri (125 ettari) per capofamiglia (con l'aggiunta di 250 iugeri per ciascun figlio maschio). La terra tolta agli occupanti abusivi deve essere distribuita come possesso inalienabile ai poveri, in lotti forse di 30 iugeri. Una commissione di tre membri deve procedere alle espropriazioni e alle nuove assegnazioni.
+La proposta di Tiberio ha lo scopo di ricostituire un largo strato di piccoli proprietari; ma gran parte del ceto dirigente s'oppone: la legge è sentita come sovversiva e rivoluzionaria. Quando Tiberio propone di distribuire al popolo l'eredità lasciata ai Romani dal sovrano di Pergamo, i senatori a stento tollerano questa invasione nel campo della politica estera.
+
+Ad arte si diffonde la voce che Tiberio tenga nascosta in casa sua la corona e il manto regale. L'opposizione è condotta ad armi pari col tribuno Ottavio. Con un atto totalmente anticostituzionale Tiberio destituisce Ottavio, dichiarando che la sua azione tradisce gli interessi del popolo.
+
+SI IL CIELO NON VUOLE...
+
+Un gruppo di nobili, tra cui Scipione Nasica, decide di passare dalle parole ai fatti. Scaduta la carica, Tiberio si candida per l'anno successivo. Il clima si fa pesante: in città si respira aria di violenza e terrore.
+
+Il giorno dell'elezione segni infausti creano ulteriore timore. I polli degli auspicì rifiutano di uscire dalla loro gabbia. Tiberio ricorda un altro oscuro segnale: nel suo bellissimo elmo poco tempo prima si erano insinuati due serpenti che, dopo aver deposto le uova, le avevano ingoiate.
+
+Ma in quel giorno nero i presagi non finiscono qui. Uscito di casa inciampa; l'unghia del piede gli si spezza. Il sangue comincia a sgorgare dal sandalo. Nel frattempo due corvi, litigando nel cielo, lasciano cadere ai suoi piedi una pietra. Tiberio decide comunque di recarsi in Campidoglio. L'assemblea, iniziata nel migliore dei modi, va via via degenerando. Un gesto di Tiberio viene subito interpretato dalla fazione avversaria come la richiesta della corona. Scipione Nasica intanto chiede a gran voce l'intervento del console. Di fronte al rifiuto di questi, s'infuria e, copertosi il capo con un lembo della toga, si avvia sul Campidoglio.
+
+Altri lo seguono. Armati di leve e bastoni cominciano a colpire i partigiani di Tiberio. Il tribuno cerca di fuggire ma è colpito con una sedia. Il suo corpo insieme a quello di molti compagni è gettato nel fiume. La repressione dei sostenitori dei Gracchi è senza limiti.

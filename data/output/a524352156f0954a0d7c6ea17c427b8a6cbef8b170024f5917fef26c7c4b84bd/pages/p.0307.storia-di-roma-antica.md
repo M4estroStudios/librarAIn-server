@@ -1,19 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UNA DINASTIA COMPLICATA: I GIULIO-CLAUDII                                            307
+308
 
-Il nuovo imperatore ha 51 anni. Considerato un incapace sia da Augusto che da Tiberio; egli non ricopre cariche pubbliche di rilievo fino a che suo nipote Caligola non lo eleva al consolato. Probabilmente sopravvive alle lotte di palazzo solo perché è considerato innocuo e Caligola lo fa bersaglio dei suoi scherzi. Ha in cambio una buona cultura e notevoli interessi antiquari (ha scritto un'opera sugli Etruschi ed è uno degli ultimi a conoscerne la lingua).
-È in ottimi rapporti con l'ordine equestre: che lo sceglie come patrono e portavoce presso il Senato e i consoli.
-Il Senato lo onora conferendogli in via straordinaria il sacerdozio del Divo Augusto e decretando di ricostruire, a spese pubbliche, la sua casa distrutta da un incendio. Gode inoltre delle simpatie del popolo e dei soldati in quanto fratello di Germanico.
+STORIA DI ROMA ANTICA
 
-***
+LE REALIZZAZIONI DELL'IMPERATORE «INCAPACE»
 
-LA GRANDE SETE DELLA CAPITALE:
-*La crescita della popolazione dell'Urbe impone di provvedere all'afflusso di acqua. La costruzione di nuovi acquedotti (come l'*Aqua Alsicetina* e l'*Aqua Virgo*) e il restauro di esistenti è uno dei punti qualificanti della politica edilizia di Augusto.*
-*Si è vista anche la cura di Agrippa per il rifornimento idrico dell'area del Campo Marzio (vedi box Riconciliazione e consenso).*
-*La zona più adatta per l'arrivo degli acquedotti e per la distribuzione dell'acqua nei diversi quartieri è quella di Porta Maggiore, elevata rispetto alla città antica (45 m sopra il livello del mare).*
-*Qui giungevano già l'*Anio Vetus* (275 a.C.), l'*Aqua Marcia* (144), l'*Aqua Tepula* (125) e l'*Aqua Iulia* (33). Giungono anche gli acquedotti lunghi circa 70 km, che prendono acqua presso Tivoli, iniziati da Caligola nel 38 e ultimati da Claudio nel 52 d.C. (*Aqua Claudia* e *Anio Novus*).*
-*Due arcate di essi, che scavalcavano le vie Labicana e Prenestina, saranno inserite nel II secolo nel circuito delle mura aureliane e costituiscono l'attuale Porta Maggiore.*
-*Questi acquedotti costituiscono un apporto notevole d'acqua per la capitale assestata e saranno più volte restaurati (ad esempio da Vespasiano nel 71 e da Tito nell'81 d.C.).*
+Claudio, benché succube delle mogli e dei liberti, si rivela sorprendentemente all'altezza del compito. La sua prima preoccupazione è l'approvvigionamento di acqua e di viveri della capitale. Intraprende un'unica campagna militare, la conquista della Britannia, che diviene provincia romana: dai suoi generali sono annesse all'Impero anche la Mauritania e parte della Tracia. Viene inoltre acquisita pacificamente la provincia del Norico: in conseguenza di questo allargamento dei confini dello Stato romano Claudio amplia anche il pomerio di Roma, i cui limiti sono ancora fissati da Silla. Aumenta anche il numero dei cittadini e (vincendo una tenace opposizione del partito conservatore) fa ammettere al Senato di Roma anche i maggiorirenti della Gallia Comata, provincia ormai fortemente romanizzata.
 
-[Immagine]
-*Porta Maggiore con il condotto dell'acqua Claudia (incisione settecentesca)*
+IL POPOLO SANZIO NON SI RIVOLTA
+
+La plebe urbana è sempre affamata e la maggiore preoccupazione di chi governa è l'approvvigionamento alimentare dell'Urbe e la regolare distribuzione gratuita di frumento. Per questo è creato da Augusto un apposito ufficio, cui sovrintende un funzionario equestre di grado molto elevato: il prefetto dell'annona. Ogni carestia è motivo di disordini. In occasione di un aumento dei prezzi dei viveri l'imperatore Claudio è bersagliato dalla folla con pezzi di pane raffermo ed è costretto a rifugiarsi precipitosamente nel palazzo dalla porta di servizio per evitare il peggio.
+
+Si spiegano così gli sforzi per garantire il regolare afflusso di viveri e la loro distribuzione. Claudio rimborsa e premia gli armatori che effettuano viaggi anche d'inverno per rifornire Roma.
+
+Fa costruire un apposito edificio coperto (*porticus Minucia frumentaria*) dove la plebe che ne ha diritto (il numero è fissato in 200.000 cittadini, nati e residenti a Roma), munita di un'apposita tessera, può ritirare uno dei 44 sportelli le razioni di frumento spettanti (40 kg all'anno per persona).
+
+Per avere terre coltivabili vicino alla capitale Claudio non esita a intraprendere i colossali lavori per la bonifica del bacino del Fucino, che impiegano trentamila uomini per undici anni. E dall'Egitto promuove la costruzione del nuovo porto di Ostia, che fa dotare anche di un faro, in imitazione di quello di Alessandria.
+
+UN PIATTO DI FUNGHI E UNA ZUCCA IMPERIALE
+
+Dopo varie vicissitudini amorose, Claudio si è fatto irretire dalla nipote Agrippina, donna ambiziosa e intrigante che gli ha fatto adottare il figlio Lucio Domizio, avuto da uno dei precedenti mariti, il nobile Lucio Domizio Enobarbo, ed estromettere dalla successione il proprio figlio Britannico, avuto dalla fidata Messalina. Per rafforzare i diritti al trono del giovane Tiberio Claudio Nerone (questo è il suo nome dopo l'adozione) gli fa anche dare in moglie Ottavia, figlia di Claudio e Messalina. Tutto sembra combinato per la successione: ma Agrippina è impaziente. Preferisce regnare come imperatrice madre che come moglie dell'imperatore. Si accorda così col prefetto al pretorio Afranio Burro (è infatti indispensabile avere i pretoriani dalla propria parte) e decide di eliminare il marito. L'arma del delitto è un piatto di funghi.

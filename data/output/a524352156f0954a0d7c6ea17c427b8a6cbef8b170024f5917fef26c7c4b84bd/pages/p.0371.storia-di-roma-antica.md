@@ -1,16 +1,42 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CRISI DELL'IMPERO
+372
 
-DA MASSIMINO A GORDIANO III
+STORIA DI ROMA ANTICA
 
-Il Senato romano nominò imperatori collegiali da opporre a Massimino, che riteneva decaduto dalla carica, Pupieno e Balbino; ma quando li presentò al popolo, questi non si accontentò; perché ormai abituato a identificare nell'imperatore un monarca dinastico. Allora il Senato, a Pupieno e Balbino Augusti, aggiunse come Cesare Gordiano II, figlio della figlia di Gordiano I. Questo atto, apparentemente legato a una contingenza particolare, in realtà sanciva la resa del Senato ai princìpi dinastici, che erano nei disegni tanto delle famiglie imperiali quanto nei sentimenti del popolo. La plebe prese a parteggiare con animosità per il giovane Gordiano II¹ e si scontrò, sostenuta dai gladiatori assoldati dal Senato, con i pretoriani che non si decidevano tra Massimino e lo stesso Gordiano.
+**IMP. GORDIANVS AVG.**
 
-Intanto Massimino, alla guida di truppe illiriche, maore, osroene e germaniche scendeva in Italia e poneva l'assedio ad Aquileia; ma qui gli vennero a mancare i rifornimenti e si trovò così, ben presto, con l'esercito fiaccato e demoralizzato. Allora i soldati della seconda legione partica, tutti cittadini di Albano, congiurarono contro Massimino e il figlio di lui, Massimino il Giovane, e li uccisero. Le loro teste furono inviate a Roma e date alle fiamme nel Campo Marzio, in mezzo agli insulti della folla. Ancora una volta l'esercito aveva deciso le sorti dell'Impero.
+[Immagine: Il ritratto dell'imperatore Gordiano I dall'Illustrium imagines]
 
-Ma la triste vicenda del vertice dello Stato romano non era ancora conclusa.
+Il ritratto dell'imperatore Gordiano I dall'Illustrium imagines.
 
-¹ *I pretoriani non volevano perdere il loro ruolo egemone nei confronti degli eserciti provinciali e così per affermare la propria volontà e importanza uccisero tanto Balbino quanto Pupieno.*
+litari e si arrivò presto alla situazione in cui la classe militare godeva di un certo benessere e il popolo trovava sempre più spesso i mercati sprovvisti e prezzi altissimi.
+Il depauperamento dell'economia romana comportò un progressivo calo demografico e un lento ma costante asservimento dei piccoli contadini, che così finivano per sottrarsi alla leva militare.
+Divenne allora ancora più necessario arruolare soldati barbarici nell'esercito; che cominciò così ad acquistare un carattere mercenario che avrebbe finito per rendere la classe militare provinciale infida al potere centrale.
+Fu con questi soldati che, nel 242, Gordiano III marciò contro i Persiani, ma le truppe romane ancora presenti nelle legioni rifiutarono la convivenza con soldati barbarici e rivolsero il loro scontento verso l'imperatore.
+Nel 244, nei pressi di Doura Europos, in Palestina, i soldati uccidevano Gordiano III e proclamavano imperatore Giulio Filippo, un hauranita che licenziava le truppe germaniche e stipulava una pace con i Persiani pagando loro ben cinquecentomila denari.
 
-GORDIANO III
+**FILIPPO L'ARABO**
 
-Rimase così, solo a regnare, Gordiano III, che rappresentava l'ultimo compromesso tra gli eserciti lontani, i senatori, i pretoriani e la plebe. Conscio della forza dei pretoriani, Gordiano III concesse ad essi grande autorità e affidò le maggiori responsabilità di governo al prefetto del pretorio (238 d.C.) che nominò di rango equestre. Ma la politica economica era ancora un banco di prova per Gordiano III, che provvide a un incremento del conio degli aurei, che comportò un'ulteriore svalutazione della moneta corrente: il denario. Né egli riuscì a contenere la crescita dei prezzi, cosicché il controllo dell'annona, cioè degli approvvigionamenti alimentari, fu affidato ai mi-
+Giulio Filippo era di origine araba e fu subito chiamato Filippo l'Arabo: Egli divenne Augusto nel 247 e immediatamente nominò Cesare il proprio figlio, Giulio Severo Filippo, allora di sette anni. Filippo l'Arabo garantiva così all'Impero una nuova dinastia e sembrò che con lui l'Impero potesse rinnovarsi e consolidarsi. Filippo l'Arabo, ufficialmente pontefice massimo responsabile della tradizione pagana, nutriva comunque un'intima simpatia per il cristianesimo; tanto che ebbe uno scambio epistolare con Origene.
+
+***
+
+372
+
+STORIA DI ROMA ANTICA
+
+**IMP. GORDIANVS AVG.**
+
+[Immagine: Ritratto circolare di Gordiano I]
+
+Il ritratto dell'imperatore Gordiano III dall'Illustrium imagines.
+
+litari e si arrivò presto alla situazione in cui la classe militare godeva di un certo benessere e il popolo trovava sempre più spesso i mercati sprovvisti e i prezzi altissimi.
+Il depauperamento dell'economia romana comportò un progressivo calo demografico e un lento ma costante asservimento dei piccoli contadini, che così finivano per sottrarsi alla leva militare.
+Divenne allora ancora più necessario arruolare soldati barbarici nell'esercito, che cominciò così ad acquistare un carattere mercenario che avrebbe finito per rendere la classe militare provinciale infida al potere centrale.
+Fu con questi soldati che, nel 242, Gordiano III marciò contro i Persiani, ma le truppe romane ancora presenti nelle legioni rifiutarono la convivenza con i soldati barbarici e rivolsero il loro scontento verso l'imperatore.
+Nel 244, nei pressi di Doura Europos, in Palestina, i soldati uccidevano Gordiano III e proclamavano imperatore Giulio Filippo, un hauranita che licenziava le truppe germaniche e stipulava una pace con i Persiani pagando loro ben cinquecentomila denari.
+
+**FILIPPO L'ARABO**
+
+Giulio Filippo era di origine araba e fu subito chiamato Filippo l'Arabo. Egli divenne Augusto nel 247 e immediatamente nominò Cesare il proprio figlio, Giulio Severo Filippo, allora di sette anni. Filippo l'Arabo garantiva così all'Impero una nuova dinastia e sembrò che con lui l'Impero potesse rinnovarsi e consolidarsi. Filippo l'Arabo, ufficialmente pontefice massimo responsabile della tradizione pagana, nutriva comunque un'intima simpatia per il cristianesimo, tanto che ebbe uno scambio epistolare con Origene.

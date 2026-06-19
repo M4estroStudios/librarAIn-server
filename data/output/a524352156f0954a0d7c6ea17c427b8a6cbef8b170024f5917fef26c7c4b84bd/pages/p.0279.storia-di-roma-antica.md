@@ -1,20 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-RICONCILIAZIONE E CONSENSO
+280 STORIA DI ROMA ANTICA
 
-IL RIPRISTINO DELLA LEGALITÀ
+PRINCIPE ARMATO E SENATO INERME
 
-Durante il mio sesto e settimo consolato; dopo aver spento l'incendio delle guerre civili e aver ricevuto per consenso universale il controllo di tutti gli affari politici, io trasferii la cosa pubblica dal mio potere alla volontà del Senato e del popolo romano: Da allora fui il primo per considerazione e influenza; ma non avevo maggiore potere di coloro che erano miei colleghi nelle varie magistrature.
+A Roma è impensabile un'autorità senza il potere militare. Augusto, perciò, mantiene un rapporto esclusivo con l'esercito, che è stato uno dei principali punti di appoggio per la sua ascesa politica. Infatti, dichiara di prendere su di sé tutti i pericoli e i disagi. Così lascia all'amministrazione del Senato le regioni più romanizzate e pacificate, che sono governate da senatori di rango consolare (proconsoli); mentre assume il comando di tutte le pro-
 
-Così Augusto nella *Res Gestae* (vedi box alla fine di questo capitolo), tenta di legittimare la sua posizione di preminenza al vertice dello Stato romano.
+14 REGIONI, 265 QUARTIERI
 
-Nel 28-27 a.C. la restaurazione delle forme costituzionali e delle magistrature ordinarie aveva posto fine ai poteri straordinari del periodo del triumvirato (vedi capitolo precedente).
+Augusto realizza il progetto della "grande Roma" che ingloba i *pagi* o villaggi suburbani. La città (*Urbs*) rimane definita dalla linea sacrale del pomerio (fissata da Silla) e dall'antica cinta muraria (di cui Augusto fa restaurare torri e porte, come la porta Esquilina nota oggi come «arco di Gallieno»). Per ragioni di sicurezza, dal 7 a.C. Roma è suddivisa in 14 (*regiones*) cui sovrintendono magistrati statali sorteggiati annualmente, e in ben 265 *vici* o quartieri affidati a commissari (*magistri vicorum*) eletti dagli abitanti dei quartieri stessi. In ogni quartiere, sotto la supervisione di appositi collegi di *magistri*, si celebrano i Lares compitales ed è tributato il culto della Potenza divina (*Numen*) e al Genio dell'imperatore. L'organizzazione capillare del consenso, che si manifesta in forme ufficiali (politiche e religiose) secondo un ordine e un rituale prestabiliti, raggiunge in tal modo ogni strada, piazza e vicolo.
 
-Augusto si presenta (e probabilmente così era visto dai contemporanei) come il restauratore di Roma dopo la bufera delle guerre civili, come chi ha consentito il ripristino della legalità e della libertà.
+Nuovi splendidi edifici di marmo sorgono nel tessuto caotico della vecchia Roma e non si riesce a dare un impianto ordinato alle strutture urbane e alla rete viaria della capitale dell'Impero, per troppo tempo cresciuta in modo disordinato; anche se nuove norme regolamentano l'altezza massima degli edifici. Agrippa è incaricato di migliorare l'approvvigionamento idrico della città; mentre per prevenire e spegnere gli incendi è creato un apposito corpo di vigili.
 
-DAL POTERE DEL TRIUMVIRATO ALL'AUTORITÀ DEL PRINCIPE
+[Immagine mappa]
 
-Già prima di Azio, Ottaviano ha modificato il suo nome da Gaio Giulio Cesare Ottaviano (= Gaio Ottavio adottato da Gaio Giulio Cesare) in *imperator Caesar* (= generale vittorioso Cesare).
-
-A partire dal 27 a.C. egli assume la denominazione completa (che corrisponde ai tre nomi e alla filiazione portati dal cittadino romano) di *imperator Caesar divi filius Augustus* (= generale vittorioso Cesare, figlio di Giulio Cesare divinizzato; Augusto). Favorito dagli dèi, che gli hanno concesso la vittoria militare, discendente dal dio Cesare, dotato di autorità carismatica; il nuovo padrone di Roma (ma egli non volle mai farsi chiamare *dominus*, signore) cerca un fondamento legale per il suo potere.
-
-La ripetuta rielezione al consolato (carica che Augusto ricopre dal 31 al 23) somiglia troppo alla dittatura a vita e rischia di divenire impopolare; Perciò Augusto predilige farsi chiamare principe: Nella tradizione repubblicana, infatti, erano detti *principes rei publicae* (cioè primi cittadini dello Stato) alcuni senatori preminenti, cui era affidata la conduzione della cosa pubblica.
+Le 14 regioni augustee, con il tracciato delle antiche mura repubblicane e aureliane, quest'ultime costruite nel III sec. d.C.

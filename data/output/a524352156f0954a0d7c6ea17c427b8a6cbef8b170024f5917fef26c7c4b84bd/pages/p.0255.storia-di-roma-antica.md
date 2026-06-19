@@ -1,12 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-COSPIRAZIONI E DITTATURA                                            255
+256
 
-*Pompeo in un'incisione tratta dall'Illustrium imagines*
+STORIA DI ROMA ANTICA
 
-[Immagine]
+[Immagine: Veduta prospettica ricostruita della cavea (col tempio di Venere Vincitrice) del teatro di Pompeo (da L. Canina)]
 
-UNA SCALA CHE ASSOMIGLIA A UN TEATRO
+Veduta prospettica ricostruita della cavea (col tempio di Venere Vincitrice), del teatro di Pompeo (da L. Canina).
 
-Il Campo Marzio è una delle aree maggiormente interessate dagli interventi degli *imperatores* (comandanti) dell'ultima età repubblicana. Pompeo, subito dopo il suo triplice trionfo del 61 a.C., ha l'audacia e l'astuzia necessarie per eludere i divieti censori, che hanno sempre proibito la costruzione di un teatro in pietra a Roma. Il primo teatro in pietra secondo Pompeo è soltanto una gradinata per permettere l'accesso al tempio di *Venere Vincitrice*, situato alla sommità della cavea.
+***
 
-Il teatro ha un diametro di 150 m e può contenere circa 20.000 spettatori: attualmente la sua curva interna è perfettamente ripresa da piazza di Grotta Pinta; mentre la curva esterna si nota soprattutto in via del Biscione e in piazza Pollarola. Alla sommità della cavea si trovava il tempio di *Venere Vincitrice*, oggi ricalcato da palazzo Righetti. Dietro la scena del teatro si estende un portico di eccezionali dimensioni (180 x 135 m) che in direzione est-ovest va da via dei Chiavari fino all'area di largo Argentina e in direzione nord-sud da via del Sudario a via di Sant'Anna. Al centro del portico due boschetti di platani, bordati da fontanelle, rendono piacevoli le passeggiate pomeridiane e serali dei Romani. Attico, il ricchissimo amico di Cicerone e fine intenditore d'arte, ha scelto le statue che ornano il portico; si conservano due enormi sculture delle Muse, oggi al museo nazionale di Napoli e al Louvre. A largo Argentina si vedono anche visibili i resti di una esedra rettangolare, usata come *curia* (*curia Pompeia*) per le riunioni del Senato: qui è ucciso Cesare il 15 marzo del 44 a.C. Sempre nel Campo Marzio è situata la grande villa urbana di Pompeo, una vera propria reggia. In definitiva Pompeo con questi interventi cerca di realizzare un suo progetto urbano e di spostare nel Campo Marzio il centro politico di Roma: non per nulla il "patrizio" Giulio Cesare interverrà successivamente nel Foro, per rilanciare l'antico centro politico della città.
+La morte di Clodio, ucciso da una squadraccia di Milone, rende evidente che Pompeo è libero da ogni legame e la sua vicinanza al Senato è chiara; quando si fa eleggere console «senza collega» col compito d'arruolare uomini per ristabilire l'ordine (52 a.C.).
+
+**CESARE NEMICO DELLO STATO**
+
+A questo punto è facile mettere i bastoni tra le ruote a Cesare, sempre lontano; e Pompeo fa promulgare una legge mirata a colpirlo. Chi voglia diventare magistrato deve presentare a Roma personalmente la sua candidatura. Cesare è così costretto a scegliere tra rimanere nelle Gallie o tornare a Roma come privato cittadino, senza il suo fedelissimo esercito. Ma gli avversari hanno sottovalutato il sangue freddo di Cesare.
+
+Come risposta alle intimidazioni, Cesare varca col suo esercito il Rubicone, il fiumiciattolo che segna il limite della provincia: oltrepassarlo con l'esercito significa condurre la guerra in Italia, ormai «il dado è tratto». Il Senato e Pompeo sono atterriti dalla sorpresa: poiché non c'è nessuna possibilità d'opporsi a Cesare, che avanza verso Roma, Pompeo prende la decisione più coraggiosa e fugge da Roma. Cesare lo insegue fino a Brindisi, dove il rivale gli scappa sotto il naso: invece di prendere il mare come Pompeo, torna indietro per coprirsi le spalle. A Roma da troppo tempo si trama contro di lui e sarebbe un errore lasciare l'Italia.
+
+A Roma si ferma otto giorni, giusto il tempo di prendere provvedimenti d'emergenza, e parte per la Spagna. Questa dilazione nell'inseguimento di Pompeo ha un senso molto preciso. La Spagna infatti, dopo anni di pro-

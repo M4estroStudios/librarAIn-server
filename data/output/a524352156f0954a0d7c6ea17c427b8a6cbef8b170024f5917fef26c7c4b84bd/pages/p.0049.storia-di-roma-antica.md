@@ -1,56 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-I RE LATINO-SABINI                                                                           49
+50
 
-Tellene e Ficana; situate a sud di Roma si insediano sull'Aventino (che a lun-
-go rimarrà fuori dalle mura).
+STORIA DI ROMA ANTICA
 
-L'archeologia confermerebbe quanto tramanda la tradizione sulla distruzione
-quasi totale di Politorium voluta da Anco Marcio: forse a Politorium, cen-
-tro abitato dai Latini, corrispondono i resti del modesto abitato scoperto a Ca-
-stel di Decima: infatti questo villaggio, dopo un periodo di relativa ricchez-
-za, attestata dalle necropoli del VII secolo a.C., decade rapidamente per esse-
-re abbandonato intorno al 600 a.C.
+*Raffigurazione cinquecentesca del ponte Sublicio e del parallelo ponte Emilio. Il ponte Sublicio è chiaramente in legno mentre l'altro è in muratura.*
 
-LA CURIA OSTILIA
+***
 
-L'edificazione della Curia Ostilia, la più antica sede del Senato, è riferita a Tullo
-Ostilio. Si trattava di un'area quadrata, dotata di gradinate, orientata secondo un as-
-se nord-sud. La sua facciata sud coincideva con la parete settentrionale del Comizio
-arcaico. Nell'utilizzazione del Comizio come orologio solare, la Curia Ostilia costi-
-tuiva il punto di osservazione delle varie posizioni del sole rispetto all'area quadra-
-ta del Comizio, traguardando così l'alba, il mezzogiorno, il tramonto.
+**LA PRIMA COLONIA: OSTIA**
 
-Anche il Gianicolo è unito a Roma per evitare che qualunque nemico se ne
-approprii.
+Gli scavi archeologici non confermano la tradizione antica, che attribuisce ad Anco Marcio la fondazione di Ostia, quasi a sancire l'estensione del territorio romano. Sembra infatti che non si possa risalire oltre il V secolo a.C.
 
-Così Roma non soltanto si arricchisce del bottino di guerra, ma vede incre-
-mentare la sua popolazione e aumentare lo spazio urbano abitato.
+Può darsi che la prima Ostia, di Anco Marcio, fosse situata in un luogo differente da quello della città imperiale, forse sull'altra riva del fiume. In ogni modo con Ostia Roma ha il suo porto marittimo e diventa in tutto simile agli altri importanti mercati dell'epoca, come Tarquinia e il suo porto di Gravisca. Lo scalo marino è strettamente collegato al porto Tiberino; situato nei pressi del foro Boario, dove le navi, dopo aver risalito il fiume, scaricano le merci destinate ai mercati di Roma.
 
-LA VIA DEL SALE
+La costruzione di Ostia facilita, oltre all'accesso sul mare, anche l'approvvigionamento del sale portato a Roma presso le Saline dell'Aventino, seguendo il percorso del Tevere.
 
-Anco Marcio, dopo aver accolto nella città numerosi Latini, si preoccupa
-di provvedere alla difesa di quest'insediamento molto ingrandito.
-
-Le Carinae, lampio terrapieno che proteggeva la città (ancora limitata al
-Palatino e alla Velia) avevano costituito le prime fortificazioni di Roma. Il
-re ora fortifica anche il Gianicolo, proprio perché è completamente esposto
-agli attacchi nemici, così isolato sulla riva destra del Tevere. È costruito an-
-che il ponte Sublicio in legno, il primo ponte di Roma che sostituisce il gua-
-do o il traghetto sul Tevere.
-
-DAL GUADO AL PONTE
-
-Nella città che si sta consolidando il guado sul Tevere è sostituito da un pon-
-te.
-
-Ormai Roma controlla le due rive del fiume, fino al mare dove sono situate le sa-
-line e la prima colonia, Ostia. Il ponte di Anco Marcio, detto Sublicio (*le *sublicae* so-
-no i pali sopra i quali è gettato il ponte*), insieme allo scalo sul Tevere accentua il ca-
-rattere di emporio del foro Boario: è possibile che da questo momento venga creato
-il mercato dei buoi da cui l'intera zona prenderà il nome. La posizione del ponte Su-
-blicio, nelle sue successive ricostruzioni in pietra, è di facile localizzazione: la testa-
-ta della riva sinistra è situata poco più a sud dello sbocco della Cloaca Massima, ac-
-canto al tempio rotondo vicino al Tevere.
-
-Tutte queste operazioni, insieme alla fondazione di Ostia, fanno parte d'un
-piano d'espansione flessibile, ma ostinato.
+La via Ostiense che collega Roma a Ostia non ha costituito il percorso antico per il sale. Come detto precedentemente questo compito era svolto dal duplice asse composto dalla via Salaria e dalla via Campana, che portava direttamente verso sud, verso il mare. La costruzione del ponte Sublicio e la fortificazione del Gianicolo garantiscono la protezione e l'accesso alle Saline, ormai tutelate dalla città.

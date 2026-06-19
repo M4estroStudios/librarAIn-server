@@ -1,18 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UN AVVENTURIERO ETRUSCO SUL TRONO DI ROMA $\quad$ 69
+70
 
-Le verghe dei fasci, portati dai dodici littori, concretizzano la capacità del re di castigare e di punire. L'ascia legata insieme ad esse è il segno della punizione suprema: la morte, che solo il re può dare. La sedia curule — un sedile con le gambe a X — diviene uno dei segni dell'*imperium* del re, ereditato dai magistrati della Repubblica. L'anello d'oro, già usato dai re etruschi, è adottato dalla classe equestre romana ed è un tipico segno distintivo d'una classe ricca e nobile in una società composita; a questi simboli si aggiungono lo scettro con l'aquila e la corona d'oro, entrambi simboli d'un potere assoluto, fastoso, tipicamente orientale (vedi box *La statua e il suo scultore*).
+STORIA DI ROMA ANTICA
 
-CENTRATO IN MAIUSCOLETTO: L'INTRODUZIONE DEL TRIONFO
+*Abito di donna romana, incisione di Cesare Vecellio.*
 
-A Tarquinio Prisco è attribuita la creazione del rituale del trionfo: in occasione della vittoria a Collazia per la prima volta il re celebra fastosamente il suo successo. La parola «trionfo» deriva dall'etrusco *triumpe*, un termine che in origine designa una musica e una danza. Il trionfatore, che percorre la città con i suoi soldati, danzando e cantando, è vestito come un lucumone etrusco o come la statua di Giove Capitolino. Porta la toga purpurea (un mantello corrispondente alla *tebenna* etrusca) e la tunica palmata, una tunica bordata e decorata: in mano ha lo scettro con l'aquila e al collo la bulla d'oro (una collana-amuleto etrusca). Seduto sul carro, dopo aver completato il percorso processionale attraverso la città, giunge in Campidoglio dove hanno inizio i solenni sacrifici a Giove Ottimo Massimo.
+***
 
-CENTRATO IN MAIUSCOLETTO: IL RE NATO DALLE FIAMME
+I VESTITI DEI ROMANI
 
-Alla corte di Tarquinio cominciano a verificarsi strani eventi intorno a un bambino di nome Servio Tullio. Secondo la tradizione sua madre Ocresia, una nobile donna di Corniculo, divenuta una schiava addetta al fuoco alla corte di Tarquinio Prisco, sarebbe stata fecondata da una scintilla o addirittura da un fallo emerso dal focolare. Un giorno, mentre il piccolo Servio dorme, la sua testa è avvolta da fiamme e il fanciullo placido continua a dormire.
+Non soltanto il trionfatore e le statue degli dèi indossano un abbigliamento di origine etrusca; ma hanno la stessa origine la maggior parte dei capi del vestiario romano destinato a diventare il simbolo stesso di Roma. La toga o mantello arrotondato, fermato con una fibula sulla spalla (diverso dal rettangolare greco; *himation*); calcei o calzature dalla punta quadrata e dalle quattro stringhe superiori (diverse dalle *soleae*, sandali) che derivano dal modello etrusco con la punta "orientale" (simile alle babucce arabe) e le stringhe incrociate tipiche della moda del VII e del VI secolo a.C.; il campestre o corto perizoma che copre le nudità maschili, il suo nome deriva dal fatto che i giovani guerrieri, troppo pudibondi per allenarsi nudi come i Greci, lo indossano per esercitarsi nel Campo Marzio. L'influenza etrusca si manifesta nella preferenza per i pesanti tessuti di lana e nella tendenza a coprirsi molto di più (mantelli, tuniche, cappelli) per obiettive esigenze climatiche, così come nell'uso di abiti più lussuosi di quelli greci e nella sensibilità per le mode.
 
-Per la seconda volta Tanaquil ha modo di manifestare la sua dottrina di origine etrusca. Di fronte alla corte completamente impazzita, con calma imperturbabile ordina di non svegliare il bimbo e contemporaneamente ne annuncia un glorioso futuro. Egli sarà la luce del trono nei momenti difficili, sarà compito suo e di Tarquinio favorire questa gloria infinita. Estinte naturalmente le fiamme, il bimbo si sveglia: da questo momento sarà allevato nella corte reale, come un giovane principe, dimostrandone in pieno le virtù e le capacità. Sarà così naturale per Tarquinio dargli in sposa sua figlia.
+Le vesti dei sacerdoti romani sono il campionario più ampio di abiti etruschi. Come i nostri ordini religiosi hanno conservato per secoli gli abiti tipici del Medioevo; così i principali sacerdozi romani hanno "fossilizzato" il vestiario di origine etrusca, adottato nel VII e nel VI secolo a.C.
 
-Nuvole scure si addensano sul trono. I figli di Anco decidono di uccidere Tarquinio per vendicarsi di essere stati estromessi dal trono. Assoldano due pastori improvvisando una lite nella reggia; chiedono del re. Il re accorre per placare i due litiganti, ma al contrario del famoso proverbio, il terzo (il re) non gode. I due falsi pastori dopo averlo pugnalato mortalmente fuggono.
+***
 
-Tra grida e pianti ancora una volta la voce di Tanaquil si leva calma e sicura. Fatto chiamare Servio accanto a Tarquinio morente gli ordina di diventare il nuovo re di Roma: dovrà perciò dimenticare la sua origine servile e vendicare suo suocero. Servio accetta.
+ROMOLO E SERVIO TULLIO
+
+Nei racconti degli antichi solo Romolo e Servio Tullio hanno avuto il privilegio di una nascita divina: esistono strette corrispondenze tra le vicende del primo e del sesto sovrano di Roma: entrambi sono nati dal fuoco, entrambi sono figli di una donna legata in qualche modo al fuoco. Infatti Rea Silvia è una vestale; Ocresia una schiava di guerra addetta al focolare.
+
+Quest'ultima assomiglia molto a una sacerdotessa sia per la nobile origine sia per i suoi incarichi nel palazzo. Ancora, Romolo e Servio nascono e vivono parte della loro infanzia e giovinezza in una condizione (pastore o schiavo) inferiore alla loro natura e origine. Tutti questi parallelismi potrebbero essere stati creati ad arte mentre Servio Tullio era ancora vivo. L'"usurpatore" della dinastia dei Tarquini potrebbe aver volentieri suscitato tutte queste storie e questi racconti per rendersi più accettabile ai Romani come monarca: perché Servio Tullio è l'unico re a non essere eletto dal popolo.

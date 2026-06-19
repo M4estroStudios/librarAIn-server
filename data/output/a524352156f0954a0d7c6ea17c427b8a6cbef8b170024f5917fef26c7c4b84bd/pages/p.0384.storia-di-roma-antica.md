@@ -1,57 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-384                                                                    STORIA DI ROMA ANTICA
+DA CLAUDIO IL 'TACITO A DIOCLEZIANO 385
 
-ticosamente che nel 301 Diocleziano, con l'Editto dei prezzi, ne ordinò il bloc-
-co. Il blocco dei prezzi ebbe come conseguenza la caduta finale del denario,
-la diffusione cronica della borsa nera e l'incremento dei pagamenti in natu-
-ra. Intanto Massimiano Erculio a Milano, come Diocleziano a Nicomedia, di-
-menticano Roma e considerano le loro residenze come nuove capitali.
+[Immagine: L'aula centrale delle Terme di Diocleziano trasformata nella basilica di Santa Maria degli Angeli (incisione di E. Du Pérac; 1575).]
 
-Riunite le leggi in due codici fondamentali e imposto l'uso del latino in tut-
-to l'Impero quale lingua ufficiale; Diocleziano fissa il cerimoniale della cor-
-te imperiale che ha il suo apice nell' adorare e nel prosternarsi davanti alla per-
-sona dell'imperatore. Infine Diocleziano combina il matrimonio di sua figlia
-con il Cesare Massimiano Galerio e della figliastra di Massimiano Erculio
-con Cesare Costanzo Cloro che, per contrarre questo matrimonio, dovette la-
-sciare la compagna Elena, dalla quale aveva avuto un figlio; il futuro impe-
-ratore Costantino.
+L'aula centrale delle Terme di Diocleziano trasformata nella basilica di Santa Maria degli Angeli (incisione di E. Du Pérac; 1575).
 
-Roma restava così priva del suo imperatore. I palazzi imperiali erano man-
-tenuti da una esigua servitù agli ordini di un cerimoniere. I grandi saloni, de-
-serti e silenziosi. Sotto il Palatino una plebe sempre più anonima coloriva la
-città con la sua miseria, il suo accattonaggio e mille mestieri improvvisati.
+LE TERME DI DIOCLEZIANO
 
-Le grandi famiglie patrizie di antica e recente tradizione vivevano nelle lo-
-splendide residenze suburbane. Si mostravano in città solo in occasione
-di solenni ricorrenze.
+L'imperatore Diocleziano fra il 298 e il 306 fece costruire, alla confluenza dei colli Viminale, Esquilino e Quirinale, un grandioso complesso termale di circa 380 x 370 metri. Lo schema è consueto che si riscontra negli edifici termali, con la successione degli ambienti del calidarium, tepidarium e della piscina della natatio, con la grande aula centrale e le palestre. Alcuni ambienti delle terme sono stati riutilizzati, in particolar modo l'aula centrale ospita la chiesa di Santa Maria degli Angeli e dei Martiri; adattata dall'intervento di Michelangelo e del Vanvitelli, la quale occupa anche due aule laterali e parte della natatio. Appartengono al grande impianto termale le otto colonne di granito, monolitiche, la vasta copertura a crociera. Sono ancora visibili, nel settore occupato dal Museo delle Terme, la parte restante della natatio; il cosiddetto apodyterium (luogo dove i frequentatori delle terme lasciavano gli abiti), vari ambienti, fra i quali una sala ovale, e le due grandi esedre, una delle quali ancora con la pavimentazione musiva.
 
-Diocleziano doveva continuamente provvedere a rifornire l'antica capitale
-di generi di consumo che comunque non colmavano più i grandi magazzini.
-Solo il circo e l'anfiteatro vivevano calde giornate di spettacoli cruenti che
-davano luogo a risse e scontri tra i vari gruppi di spettatori; mentre davanti
-ai fornici d'ingresso si riunivano gruppi di Cristiani che esortavano nel no-
-me di Cristo a non frequentare simili spettacoli, finendo spesso con l'essere
-derisi, malmenati e arrestati.
+L'ex Planetario, a pianta ottagonale con nicchie semicircolari agli angoli, è un altro ambiente delle terme dioclezianee ed è ora adibito a grande sala espositiva del Museo nazionale romano. Ancora ambienti del grande complesso termale sono le aule a pianta circolare; in una delle quali è ospitata la chiesa di San Bernardo; mentre l'altra mostra le sue mura tra via del Viminale e piazza dei Cinquecento. Nelle terme erano situate anche le biblioteche; una delle quali sappiamo che accoglieva i volumi fatti trasportare, per volere dell'imperatore, dalla basilica Ulpia, forse perché già in decadenza.
 
-LE PERSECUZIONI RELIGIOSE
+Davanti alla Curia, da lui stesso restaurata, Diocleziano pose un altare a ricordo del compleanno del regno, che ancora oggi presenta nei suoi rilievi i momenti principali delle celebrazioni. Diocleziano volle manifestare il suo rispetto per l'Urbe erigendo, a vantaggio del popolo, il più grande edificio termale che sia mai stato costruito in tutta la storia dell'Impero di Roma.
 
-Diocleziano non aveva in animo di ordinare persecuzioni religiose; ma lo
-fece in due occasioni, costrettovi dalla ragione di Stato. Il suo desiderio più
-forte era quello di preservare l'unità interna dell'Impero e così, nel 296, de-
-cretò la persecuzione degli adepti al manicheismo poiché questa religione si
-era legata alla rivolta dell'Egitto; Allo stesso modo, nel 303 ordinò la per-
-secuzione contro i Cristiani, considerati dall'opinione pubblica traditori dello
-Stato: La persecuzione di Diocleziano fu la più aspra e la più dura che i Cri-
-stiani dovettero sopportare, tanto che si ebbero fratture all'interno delle chie-
-se cristiane per i diversi atteggiamenti assunti nei confronti dei persecutori.
-
-Nello stesso anno 303, Diocleziano decretava la solenne celebrazione del ven-
-tennale del suo regno; l'imperatore sessantenne compiva venti anni di regno
-e i festeggiamenti volle che si tenessero a Roma, dove egli stesso si recò per
-presiederli.
-
-Così Roma poté rinnovare per un breve periodo tutto il fasto e la gloria della sua tradizione. I palazzi imperiali brillavano di luci nelle continue feste not-
-turne. L'imperatore, con il capo velato, rinnovava i sacrifici nei templi e
-dava le più solenni processioni. La folla, saziata da continue donazioni, esul-
-tava festante e lo applaudiva e i patrizi facevano a gara nell' accoglierlo nelle
-proprie dimore.
+Queste terme, dette appunto di Diocleziano, furono talmente maestose e ampie che ancora oggi ne restano vestigia monumentali tali da includere nella

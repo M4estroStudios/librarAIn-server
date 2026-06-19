@@ -1,52 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CRISI DELL'IMPERO                                                                    377
+378
 
-tava i soldati a non riconoscersi più nel loro imperatore e così, presso Terni,
-uccisero tanto Treboniano quanto Volusiano; proclamando imperatore Mar-
-co Emilio Emiliano. Contemporaneamente, però, un senatore, Valeriano, era
-giunto nei pressi di Terni con un esercito in aiuto, ormai tardivo, di Trebo-
-niano. Le legioni ribelli non vollero battersi contro i soldati di Valeriano e pas-
-sarono al comando di questi dopo avere ucciso Marco Emilio Emiliano. Era
-l'ottobre del 253 d.C.
+STORIA DI ROMA ANTICA
 
-Licinio Valeriano restava imperatore e associava al trono il figlio Licinio
-Egnazio Gallieno. Saliva al trono una dinastia tutta italica, di rango patrizio e di
-tradizione senatoria.
+L'arco di Gallieno da cui partiva la via Labicana (incisione di G. Brun).
 
-VALERIANO IMPERATORE
+***
 
-*Valeriano inaugurò una politica tributaria organizzata secondo le richieste
-principali che venivano dalla classe senatoria, cosicché ne risultarono dan-
-neggiate le classi inferiori, soprattutto gli agricoltori e i commercianti. Ma in
-quegli stessi giorni il giovane Gallieno dovette spingersi alle frontiere galli-
-che per affrontare i Franchi e gli Alamanni che, quattro anni dopo, sarebbe-
-ro entrati e avrebbero attraversato la Gallia e la penisola iberica fino al Ma-
-rocco. Sempre nel 254 d.C., i Goti invadevano la Grecia e gli Alamanni en-
-travano in Italia. In Africa, i Berberi della Mauritania davano vita a una guer-
-riglia di confine. La propaganda imperiale si difese da tanti tristi eventi rin-
-novando l'accusa ai Cristiani, colpevoli di avere offeso gli dèi pagani e di ave-
-re così provocato la loro vendetta sulle sorti dell'Impero. Valeriano, con
-gli editti del 257 e del 258, diede il via a una nuova sanguinosa persecuzione an-
-ticristiana, nella quale morì il vescovo di Roma San Sisto. Nel 259 il re dei
-Persiani Shahpur I invadeva di nuovo l'impero riconquistando Antiochia. Con-
-tro di lui mosse lo stesso Valeriano, ma venne sconfitto a Edessa e fatto
-prigioniero. Si iniziava per lui una dolorosa e umiliante prigionia senza ritorno
-nella quale, nelle cerimonie ufficiali, era costretto ad accompagnare il sovrano
-persiano che lo teneva al guinzaglio come un cane.*
+# L'ANARCHIA MILITARE E LA POLITICA DI GALLIENO
 
-GALLIENO
+Ormai era evidente che l'anarchia militare sconvolgeva lo Stato, dove i vecchi ordinamenti erano incapaci di operare azioni di governo. I confini erano sempre più fragili e le città, abbandonate a se stesse, esposte ai saccheggi dei barbari. In questa situazione Roma restava soltanto un simbolo, divisa tra una plebe affamata e una classe di senatori chiusa a riccio e incapace di rinnovarsi sulla scena politica: i grandi monumenti rappresentavano ancora l'immagine di una grande civiltà; ma la città sapeva soltanto da affaticati messaggeri provenienti da lontano chi fosse l'imperatore regnante, e si sentiva perciò più abbandonata di chiunque altro.
 
-*Gallieno si rese subito conto che non era
-possibile alcuna spedizione di sal-
-vataggio e rinunciò all'impresa.
-Ormai l'Impero si stava costituendo in tre grandi zone diverse profondamen-
-te per la sicurezza dei propri confini, per l'autonomia economica e per le carat-
-teristiche socio-culturali: l'Oriente, il complesso Britannia, Gallia, Spagna e quin-
-di l'Italia e l'Africa. In questa prospettiva ripresero le ribellioni al potere cen-
-trale. Aprì questa serie il nobile Ciriade, in Oriente, ma fu eliminato dai suoi stes-
-si soldati. Fu la volta di Postumo: in Gallia, che si proclamò Augusto e mi-
-se a morte il figlio di Gallieno, Salonino. Postumo creò in Gallia un suo proprio
-regno con capitale a Treviri, un proprio Senato, consoli e pretoriani: era il pre-
-sagio della futura disgregazione dell'Impero di Roma e della nascita, ancora lon-
-tana, delle nazioni d'Europa. Intanto altri usurpatori si proclamavano impera-
-tori in Pannonia, in Mesia e nell'Illiria: Ingenuo, Regaliano e i due Macriani.*
+Solo la Chiesa cristiana, con la ramificazione delle sue comunità in tutte le province dell'Impero, manteneva il senso di una patria comune, ma certamente non si identificava con lo Stato romano. D'altronde, la conquista gotica di Atene rappresentò un chiaro presagio di quello che i pagani temevano e i cristiani aspettavano: la fine di un Impero che non accettava il messaggio del Cristo.
+
+Gallieno era un imperatore aristocratico di alta spiritualità, pervaso dal grande ideale della tradizione dell'antica Roma. Nonostante ciò, decise di opporsi al Senato nel tentativo di salvare l'economia romana. Portò al 5% la presenza di argento nel denario e decretò che il conio della moneta sarebbe stato vietato da quel momento in poi al Senato e passato soltanto all'imperatore. Inoltre i senatori venivano privati di tutti gli incarichi amministrativi e dei comandi militari. Gallieno cercava di appoggiarsi all'e-

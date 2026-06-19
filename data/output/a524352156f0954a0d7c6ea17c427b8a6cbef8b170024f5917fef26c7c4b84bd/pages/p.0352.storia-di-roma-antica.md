@@ -1,14 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-352                                           STORIA DI ROMA ANTICA
+L'IMPERO NELLA SUA MASSIMA ESPANSIONE 353
 
-peratore. Ma pochi mesi prima della morte di Adriano, Elio morì e Adriano, allora, pensò un'altra soluzione: scelse il diciassettenne Marco Annio Vero, promesso sposo della figlia dell'appena scomparso Lucio Elio Cesare. Adottò quindi un anziano senatore di cinquantadue anni, Tito Aurelio Fulvio Boionio Antonino; ordinandogli di adottare a sua volta tanto il giovane Marco Annio Vero quanto il piccolo Lucio Vero. Il primo era comunque parente di Antonino, in quanto nipote della moglie di questi, Faustina Maggiore.
+**IL TEMPIO DI ANTONINO E FAUSTINA**
 
-ANTONINO PIO
+Accanto al sepolcreto arcaico si erge maestoso il tempio che Antonino Pio aveva dedicato nel 141 alla moglie Faustina e che, dopo la morte dell'imperatore, venne dedicato anche a lui (161 d.C.) per decreto del Senato; come leggiamo sull'iscrizione incisa sull'architrave.
 
-Antonino discendeva da emigranti della Gallia Narbonense che si erano trasferiti a Lanuvio, nel Lazio: qui, tanto il nonno quanto il padre del nuovo imperatore avevano ricoperto la carica di prefetto della città. Lo stesso Antonino aveva percorso la carriera pubblica, ricoprendo le cariche di questore, pretore, console e di giudice distrettuale d'Italia. Era stato poi nominato proconsole in Asia e quindi era entrato a far parte del consiglio ristretto dell'imperatore: per cosa, Antonino si guadagnò l'appoggio del Senato, abolendo la divisione distrettuale dell'Italia, subito dopo, dando inizio a una politica pacificatrice delle situazioni di pericolo per l'Impero.
+Il tempio è posto su un alto basamento e conserva ancora le pareti esterne in blocchi di peperino, che dovevano essere ricoperte di lastre di marmo. Nel fregio si conserva ancora il bel rilievo classicistico raffigurante la sequenza dei grifi e dei candelabri.
 
-Ciò non impedì, comunque, che dovesse reprimere una ribellione dei Britanni e costruire un secondo vallo che costituisse una linea di difesa davanti a quello di Adriano.
+Il tempio era esastile, con colonne in marmo caristio, sormontate da capitelli in stile corinzio.
 
-Antonino adottò anche una politica di forzata migrazione dei gruppi ribelli che vivevano nelle province più lontane dell'Impero: così, Britanni furono trasferite in Germania e altri gruppi di Numidi costretti a migrare in Mauritania, mentre gli Egizi furono cacciati nei territori della Nubia. Disordini e rivolte armate guastarono comunque propositi di pace di Antonino: in Dacia e ancora in Giudea, dove agli Ebrei era proibito di entrare in Elia Capitolina, Gerusalemme. Per garantire la lealtà nei confronti di Roma, Antonino abolì la concessione, sotto varie forme, della cittadinanza romana, riservandola solo a coloro che si fossero arruolati nelle legioni. Al contrario di Adriano, nei suoi ventitré anni di regno Antonino non lasciò mai l'Italia, preferendo trascorrere le sue giornate nella villa di Lanuvio.
+Le colonne, alte diciassette metri, presentano profondi solchi obliqui scavati per trattenere le corde con le quali si cercò invano di far cadere colonne e trabeazione. La gradinata è interrotta dall'altare, del quale resta parte del nucleo con rivestimento in laterizio.
 
-Ottenne comunque la sepoltura di Adriano a Roma e la sua divinizzazione; e per questo sentimento di pietà filiale verso l'imperatore scomparso Antonino ricevette il soprannome di Pio. Morì nel 161 d.C. e fu sostituito sul trono da una diarchia, cioè da due sovrani: Marco Annio Vero, che al momento dell'adozione aveva preso il nome di Marco Aurelio Cesare, e Lucio Vero. Forse tra i due il più grande gestiva un potere maggiore; ma indubbiamente i due fratelli adottivi non diedero luogo a momenti di forte contrasto, confermando che il sistema dell'adozione sembrava comunque funzionare; anche se in realtà Adriano, nell'indicare due giovani successori di Antonino, era sembrato voler costruire artificialmente una dinastia, tanto che il giovane Marco Aurelio dovette rompere il fidanzamento con la figlia di Elio, scomparso, e sposare quella del nuovo imperatore, Annia Galeria Faustina Minore. In quanto alla divisione del potere fra due imperatori, questa trovava i suoi esempi migliori nella tradizione repubblicana dei consoli e prometteva quindi di funzionare.
+Nel pronao sono collocati i resti di due statue, una maschile e una femminile, raffiguranti forse la coppia imperiale, che sono stati rinvenuti ai piedi della gradinata. Il tempio accoglie oggi la chiesa di San Lorenzo in Miranda:
+
+[Immagine del tempio con iscrizione:]
+DIVI
+ANTONINI
+ET
+DIVAE
+FAUSTINAE
+EX S C
+
+Il tempio di Antonino e Faustina in una ricostruzione ideale di L. Cantina.

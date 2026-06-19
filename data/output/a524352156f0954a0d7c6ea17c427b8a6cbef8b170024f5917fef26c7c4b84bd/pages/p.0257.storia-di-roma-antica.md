@@ -1,42 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-COSPIRAZIONE E DITTATURA                                            257
+258 STORIA DI ROMA ANTICA
 
-LA GUERRA GALLICA
+co, il re lo fa pugnalare a tradimento (settembre 48 a.C.). Quando Cesare arriva ad Alessandria sulle tracce del rivale, un funzionario egiziano gli consegna la testa di Pompeo imbalsamata: ma il servizievole Tolomeo non riceve il ringraziamento che si aspetta; perché Cesare avrebbe preferito mettere le mani su Pompeo vivo e non farne un martire. Infatti la morte di Pompeo non chiude affatto la vicenda: anzi i suoi seguaci, insieme ad alcuni esponenti dell'oligarchia senatoria, si organizzano per opporre una disperata difesa in Africa e in Spagna.
 
-Al tempo di Cesare la Gallia è divisa in tre parti: al centro ci sono i Celti, a sud-
-ovest gli Aquitani; a nord i Belgi. I Romani da tempo frequentano soprattutto l'area
-meridionale, dove l'attuale Provenza corrisponde all'antica provincia della Gallia Nar-
-bonese. Il resto del territorio è abitato da diversi popoli; dediti all'agricoltura e alla
-pastorizia e del tutto privi di qualunque organizzazione politica unitaria. Quando gli
-Edui, alleati di Roma, chiedono aiuto contro la minaccia di un'invasione degli Elve-
-zi (altra popolazione celtica) Cesare pone la base della sua azione nella Gallia Nar-
-bonese. Dopo la sua vittoria a Bibracte (Autun) un'assemblea di Celti chiede a Ce-
-sare di intervenire contro Ariovisto; continua minaccia per le popolazioni di confine.
-L'ulteriore vittoria procura al generale l'alleanza di moltissime genti, ma anche l'o-
-dio di altre.
+LA «VACANZA EGIZIANA» E LA RIPRESA DELLE OPERAZIONI
 
-La nuova sollevazione è questa volta fomentata dai Belgi, tra il Reno e la Senna.
-Cesare vince di nuovo e le sue azioni cominciano a essere avvolte nella leggenda. Il
-Senato decreta 15 giorni di preghiere pubbliche per ringraziare gli dèi. Dopo l'incontro
-di Lucca (56 a.C.) il piano di Cesare è di conquistare l'Aquitania, tra la Garonna e i
-Pirenei. Ormai nulla sembra più fermare l'avanzata del generale vittorioso: un'in-
-vasione di Tencteri e Usipeti (popolazioni germaniche) è ricacciata oltre il Reno. Ma
-il suo sogno è spingersi ben più in là del Reno. La Britannia, lontana terra su cui cir-
-colano numerose leggende, è la sua prossima meta. La campagna si risolve in un suc-
-cesso: pur senza passare alla conquista, Cesare impone tributi e chiede ostaggi (54
-a.C.). In Gallia si sta intanto preparando la rivolta. A capo dell'insurrezione c'è Ver-
-cingetorige: re degli Alveri.
+Dal caos totale c'è chi trae giovamento come Farnace, il figlio di Mitridate, che s'impadronisce della Bitinia e della Cappadocia. Ma c'è anche chi trova tempo per l'amore.
 
-In pieno inverno Cesare attraversa le Cevenne e penetra nel territorio nemico, fino a Gergovia (vicino Clermont-Ferrand), la capitale del re insorto. Ma la città resiste. Costretto a tornare indietro, il generale è attaccato al-
-le spalle da Vercingetorige; ma il valore dell'esercito romano ha la meglio. Il Ver-
-cingetorige respinto fugge ad Alesia che diventa la sua trappola mortale. La presa di Ale-
-sia (vicino Digione) segna la fine della conquista e la Gallia è ridotta a provincia ro-
-mana (52 a.C.).
+Nel momento meno indicato della sua carriera, Cesare s'innamora. Oggetto di questa passione, che lo tratterrà in Egitto addirittura per un anno, è Cleopatra, la sorella di Tolomeo. L'affascinante regina unisce l'utile al dilettevole e grazie al suo innamorato riesce a cacciare Tolomeo e a diventare sovrana del regno paterno (47 a.C.).
 
-L'INSEGUIMENTO DI POMPEO
+Risvegliatosi dal «torpore amoroso», che gli ha fatto quasi rischiare la pelle ad Alessandria durante una rivolta, Cesare riprende in mano la situazione. In un batter d'occhio, giusto il tempo della famosa frase «Veni, vidi, vici» (venni, vidi, vinsi) spazza via Farnace. L'osso più duro sono i pompeiani che hanno anche l'aiuto di Giuba, re di Mauritania. La vittoria a Tapso in Africa non è decisiva (46 a.C.), però Giuba e Catone Minore, discendente del Censore, si suicidano piuttosto che cadere vivi nelle mani di Cesare: mentre i figli di Pompeo, Gneo e Sesto, fuggono in Spagna con pochi fedeli.
 
-A questo punto l'inseguimento di Pompeo può avere inizio. In pieno inverno, quando anche i Galli stanno a casa, Cesare attraversa l'Adriatico per sbarcare con 15.000 uomini a Durazzo. Nella penisola balcanica Pompeo ha costruito un piccolo regno con capitale Tessalonica (Salonicco). È forte di un esercito composto da nove legioni (arruolato con i suoi soldi), cui s'aggiungono molti reparti di ausiliari e una grande flotta dei suoi alleati orientali.
+[Immagine: CLEOPATRA AEGYPTI REGINA CESAMICA]
 
-Cesare, inferiore numericamente, attacca battaglia a Durazzo. Inevitabilmente sconfitto, si ritira per scendere di nuovo in campo a Farsalo. I fanti e la cavalleria pompeiana non riescono a frenare Cesare, che riporta una decisiva vittoria (agosto del 48 a.C.).
-
-Pompeo non resta nulla di meglio che fuggire. Dopo aver cercato salvezza in varie città, si dirige alla volta dell'Egitto. Il giovane Tolomeo, re dell'Egitto, gli sembra un buon alleato. Invece, durante le operazioni di sbarco...
+Cleopatra, in un'incisione dall'Illustrium imagines.

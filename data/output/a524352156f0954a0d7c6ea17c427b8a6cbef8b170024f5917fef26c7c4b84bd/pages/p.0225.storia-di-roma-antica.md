@@ -1,16 +1,19 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA TRA CONSERVATORI E INNOVATORI $\quad$ 225
+226
 
-CATONE PAPÀ MODELLO
+STORIA DI ROMA ANTICA
 
-La tradizione racconta che Catone è stato un buon marito e un buon padre. Essere considerato un buon marito equivale per lui a essere un buon senatore. Con la nascita del figlio non c'è faccenda importante che lo tenga lontano da casa; quando sua moglie lava o fascia il piccolo, è lo stesso Catone che si occupa della sua educazione, nonostante abbia in casa uno schiavo d'origine greca, maestro di molti ragazzi. Preferisce insegnargli lui stesso a leggere e a scrivere per non permettere che uno schiavo peggio punisca suo figlio. L'apprendimento riguarda non solo le lettere e il diritto; ma comprende esercizi fisici che ne rafforzino il corpo. Il piccolo Catone impara così a nuotare, a combattere, cavalcare, sopportare il freddo. Il padre scrive la sua opera storica a caratteri grandi per fare in modo che, avendola in casa, il figlio possa fare esercizio e conoscere fatti importanti. Come spesso accade, il ragazzo, pur con tutta la buona volontà e l'impegno, cresce deboluccio e malato. Nonostante tutto, quando ha occasione di andare in battaglia, dimostra il suo valore. Durante lo scontro a Pidna gli sfugge di mano la spada: afflitto, si getta nella mischia e, facendosi largo fra i corpi dei nemici uccisi, la recupera. Emilio Paolo lo loda e, una volta tornati in patria, gli dà in moglie sua figlia Terzia.
+Marco Porcio Catone
+(incisione ottocentesca)
 
-Clamorosi casi di assoluzione di membri della *nobilitas* hanno fatto più volte allo scandalo. Il contrasto profondo tra classe senatoria e classe equestre si coglie in tutta la sua drammaticità proprio in questi processi. Caio priva i senatori della maggioranza e trasferisce ai cavalieri la direzione dei processi. La sua attività in favore della classe equestre si manifesta anche in un'altra legge: la provincia d'Asia, la provincia asiatica, risultato dell'eredità di Attalo (re di Pergamo), pone problemi di natura burocratica e fiscale: Caio stabilisce che l'appalto della riscossione delle tasse sia affidato ai *publicani* (cioè a dei cavalieri) e il tesoro della corona sia usato per il popolo. L'intuizione politica che i cavalieri possano sostenere chi appoggi i loro interessi economici è destinata a lungo successo nella storia della Repubblica.
+I cavalieri assumono in questo momento una dimensione politica più chiara. L'alleanza tra tribuni, plebe e cavalieri funzionerà ogni volta che si vorrà contrastare la *nobilitas*. Con questi appoggi Caio Gracco è pronto per rilanciare la legge agraria, accompagnata questa volta da un ricco programma di deduzioni di colonie, anche all'estero.
 
-PASSIONI SENILI
+II. SUCCESSO FA PERDERE LA TESTA
 
-Perdere la testa per una donna più giovane anche nel mondo antico è una "follia" diffusa. Antioco I ha trascorso un intero inverno con la sua giovanissima moglie, mentre la guerra con i Romani si fa imminente; Massinissa, il vecchio alleato di Roma contro Cartagine, cede al fascino della giovinezza; lo stesso Catone, ligio difensore della morale romana, non sa resistere alla carne.
+All'apice del suo successo l'anno seguente è rieletto tribuno. Il suo programma si allarga: Caio propone una legge che conceda la cittadinanza romana ai Latini e la cittadinanza latina agli altri Italici. Il suo impegno antioligarchico è alla base dell'altra proposta riguardante una nuova procedura di voto. L'ordine di votazione nei comizi centuriati sarà sorteggiato; non sarà più automatica la vittoria dei ceti più ricchi.
 
-Pur essendo vecchio non rifugge il piacere insieme alla moglie: quando questa muore, si sposa con una giovanissima ragazza. Infatti, rimasto vedovo, si trova a vivere nella stessa casa in cui abita il figlio e la nuora. La casa è piccola e la nuora non tarda molto ad accorgersi che una giovane schiava frequenta la camera del padrone. La ragazza, diventata insolente, suscita la reazione del figlio di Catone, che non riconosce nel vecchio satiro il padre che gli ha insegnato a leggere e che non si mostrava nudo di fronte a lui.
+Probabilmente quest'ultima proposta provoca il ripensamento di vasti gruppi che appoggiano il tribuno. Scoppiano torbidi in città. Numerosi Italici e Latini, dalle parole di Gracco, sono espulsi. Il console Fannio eccita la plebe, spaventata dalla possibilità che la cittadinanza e i suoi privilegi siano allargati a troppe persone.
 
-Catone allora decide di sposare la ragazza. Da queste nozze, osteggiate dal figlio, nascerà un bimbo che allieterà gli ultimi anni della vecchiaia dell'anziano padre e allevierà il dolore per la morte del primogenito.
+Il tribuno Marco Livio Druso diventa il perno dell'opposizione aristocratica. La politica demagogica dell'avversario fa perdere a Caio Gracco gran parte dell'appoggio della plebe. Il suo tentativo di fondare una colonia a Cartagine è bloccato e gli ostacoli aumentano. Gli scontri sono sempre più feroci finché ai consoli è concessa la piena potestà di agire per il bene dello Stato.
+
+Caio Gracco e i suoi compagni sono dichiarati nemici pubblici: sull'Aventino si consuma lo scontro finale. Molti cadono e lo stesso Caio si fa uccidere da uno schiavo. I suoi persecutori tagliano la testa del cadavere per portarla al console; dal momento che è stato promesso di pagare per esso la testa, un tale, che se n'era impadronito, toglie il cervello e lo sostituisce con piombo (121 a.C.).

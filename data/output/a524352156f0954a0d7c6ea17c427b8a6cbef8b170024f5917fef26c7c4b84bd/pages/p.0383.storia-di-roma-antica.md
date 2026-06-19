@@ -1,17 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-DA CLAUDIO II. TACITO A DIOCLEZIANO                                     383
+384
 
-[Immagine: Due medaglie con ritratti]
-*L'imperatore Diocleziano (a sinistra) e Massimiano (a destra).*
+STORIA DI ROMA ANTICA
 
-Diocleziano dovette intervenire personalmente a domare, nel 297, la ribellione dell'Egitto. Contemporaneamente, Massimiano Galerio attaccava i Persiani, riconquistando la Mesopotamia; obbligandoli a riconoscere il protettorato romano sull'Armenia e quindi a rinunciare all'imposizione di dazi sui commerci romani in Oriente.
+ticosamente che nel 301 Diocleziano, con l'Editto dei prezzi, ne ordinò il blocco. Il blocco dei prezzi ebbe come conseguenza la caduta finale del denario, la diffusione cronica della borsa nera e l'incremento dei pagamenti in natura. Intanto Massimiano Erculio a Milano, come Diocleziano a Nicomedia, dimenticano Roma e considerano le loro residenze come nuove capitali.
 
-LA RIFORMA TRIBUTARIA DI DIOCLEZIANO
+Riunite le leggi in due codici fondamentali e imposto l'uso del latino in tutto l'Impero quale lingua ufficiale; Diocleziano fissa il cerimoniale della corte imperiale che ha il suo apice nell' adorare e nel prosternarsi davanti alla persona dell'imperatore. Infine Diocleziano combina il matrimonio di sua figlia con il Cesare Massimiano Galerio e della figliastra di Massimiano Erculio con Cesare Costanzo Cloro che, per contrarre questo matrimonio, dovette lasciare la compagna Elena, dalla quale aveva avuto un figlio; il futuro imperatore Costantino.
 
-Fu allora che Diocleziano operò l'ultima grande riforma ideata ancora secondo le linee di programma che avevano caratterizzato la storia economica e sociale dell'Impero fin dall'età di Augusto.
+Roma restava così priva del suo imperatore. I palazzi imperiali erano mantenuti da una esigua servitù agli ordini di un cerimoniere. I grandi saloni, deserti e silenziosi. Sotto il Palatino una plebe sempre più anonima coloriva la città con la sua miseria, il suo accattonaggio e mille mestieri improvvisati.
 
-Per prima cosa Diocleziano intervenne nell'ordinamento tributario stabilendo che ogni lavoratore dovesse una tassa allo Stato quale unità lavorativa. Tutto l'Impero, ai fini tributari, veniva diviso in raggruppamenti di unità lavorative dette diocesi. Scomparivano così le province e nelle divisioni diocesane rientrava anche l'Italia con Roma. Ogni diocesi doveva censire le proprie forze lavoratrici agricole e l'estensione dei terreni coltivabili, il cui rapporto avrebbe indicato l'entità della tassazione individuale: con questo sistema le tasse sarebbero state tanto più alte quanto minore sarebbe stata la densità demografica. È evidente che la disposizione dioclezianea guardava ai sudditi come collettività; abbandonando ipotesi di differente situazione individuale. Con questo Diocleziano affermava che l'Impero era composto da una grande massa di sudditi e da una molto più esigua classe dirigente. In conseguenza di questo ordinamento tributario fu vietato ai contadini di abbandonare la terra e di fornire invece un numero fisso di uomini all'esercito. Nasceva così la servitù della gleba, che avrebbe caratterizzato tutta l'età medievale.
+Le grandi famiglie patrizie di antica e recente tradizione vivevano nelle lussuose residenze suburbane. Si mostravano in città solo in occasione di solenni ricorrenze.
 
-LA NUOVA POLITICA MONETARIA
+Diocleziano doveva continuamente provvedere a rifornire l'antica capitale di generi di consumo che comunque non colmavano più i grandi magazzini. Solo il circo e l'anfiteatro vivevano calde giornate di spettacoli cruenti che davano luogo a risse e scontri tra i vari gruppi di spettatori; mentre davanti ai fornici d'ingresso si riunivano gruppi di Cristiani che esortavano nel nome di Cristo a non frequentare simili spettacoli, finendo spesso con l'essere derisi, malmenati e arrestati.
 
-Diocleziano riformò anche la politica monetaria; restituendo con decreti un corso elevato al denario di rame che era in crisi profonda e appoggiandolo sulla moneta d'oro e d'argento. Questo programma fallì perché il potere d'acquisto del rame non garantiva la stabilità dei prezzi che crebbero così vor-
+LE PERSECUZIONI RELIGIOSE
+
+Diocleziano non aveva in animo di ordinare persecuzioni religiose; ma lo fece in due occasioni, costretti dalla ragione di Stato. Il suo desiderio più forte era quello di preservare l'unità interna dell'Impero e così, nel 296, decretò la persecuzione degli adepti al manicheismo poiché questa religione si era legata alla rivolta dell'Egitto; Allo stesso modo, nel 303 ordinò la persecuzione contro i Cristiani, considerati dall'opinione pubblica traditori dello Stato: La persecuzione di Diocleziano fu la più aspra e la più dura che i Cristiani dovettero sopportare, tanto che si ebbero fratture all'interno delle chiese cristiane per i diversi atteggiamenti assunti nei confronti dei persecutori.
+
+Nello stesso anno 303, Diocleziano decretava la solenne celebrazione del ventennale del suo regno; l'imperatore sessantenne compiva venti anni di regno e i festeggiamenti volle che si tenessero a Roma, dove egli stesso si recò per presiederli.
+
+Così Roma poté rinnovare per un breve periodo tutto il fasto e la gloria della sua tradizione. I palazzi imperiali brillavano di luci nelle continue feste notturne. L'imperatore, con il capo velato, rinnovava i sacrifici nei templi e dava le più solenni processioni. La folla, saziata da continue donazioni, esultava festante e lo applaudiva e i patrizi facevano a gara nell' accoglierlo nelle proprie dimore.

@@ -1,26 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-16 STORIA DI ROMA ANTICA
+ROMA PRIMA DI ROMA 17
 
-[Immagine: Ricostruzione ideale dei monumenti del Foro Romano a ridosso del Campidoglio, tratta dal volume di Luigi Canina *L'architettura romana*, Roma 1830-1840.]
+tri da Roma), ad Ardea, a Lavinium (l'antica Lavinio si trova vicino Pratica di Mare), a Satricum (località Le Ferriere, presso Nettuno), a Ficana (vicino al Tevere, all'altezza di Acilia), si stanno formando nuclei abitati che continuano a essere frequentati nell'età del ferro (IX secolo a.C.) e piano piano aumentano anche le loro dimensioni. Le comunità del Lazio sud del Tevere sono apparentate tra di loro da legami, che forse spiegano le somiglianze nel processo di formazione dei nuclei urbani: è nata cioè una "cultura laziale" che continua quella pastorale "appenninica" ma è ormai diversa da quella delle regioni confinanti. La "cultura laziale" è attestata non solo nei centri ricordati sopra, ma anche nei Colli Albani e in alcuni centri della Sabina.
 
-Ricostruzione ideale dei monumenti del Foro Romano a ridosso del Campidoglio, tratta dal volume di Luigi Canina *L'architettura romana*, Roma 1830-1840.
+Elemento distintivo della "cultura laziale" è il modo di seppellire i morti. A partire dal X secolo a.C. e fino all' VIII, i morti sono bruciati e le ceneri sono raccolte in vasi tondeggianti con coperchio a forma di cono. Qualche volta l'urna per le ceneri ha la forma d'una capanna oppure il coperchio è modellato come un tetto di capanna a due spioventi. Secondo le credenze primitive il defunto aveva bisogno di una serie di attrezzi che lo doveva accompagnare nel mondo dei morti; il corredo standard delle tombe è costituito da stoviglie di terracotta. Qualche volta si ritrovano anche statuette; ornamenti; armi di difesa e di offesa; tutti in bronzo. Questi oggetti di metallo (talvolta anche quelli di terracotta) sono in miniatura; c'è quindi una produzione specializzata di oggetti destinati ai riti della sepoltura.
 
-col quale si livellò tutta la zona, e si deve escludere che questa fosse la loro posizione originale: L'ipotesi avanzata al momento della scoperta era che questi antichissimi cocci provenissero da un insediamento situato sul Colle Capitolino; situata sul versante che si affaccia sul Tevere.
+Le tombe ritrovate sono troppo poche anche rispetto alla scarsa popolazione degli insediamenti laziali esistenti in epoca. Forse soltanto le persone con un ruolo preminente erano sotterrate col corredo rituale; mentre le persone meno importanti dovevano essere seppellite nella nuda terra, senza alcun corredo.
 
-Per capire meglio cosa è avvenuto nell'area Campidoglio-Foro Romano-Palatino è necessario guardarsi intorno; allargando la visuale all'area del Lazio meridionale delimitata dal fiume Tevere, cioè la zona che i Romani chiamavano antico Lazio (*Latium vetus*).
+Nell' XI secolo a.C. appare per la prima volta un'area abitata nel Foro Romano; probabilmente si tratta d'una espansione in pianura dell'insediamento.
 
-**LATIUM VETUS E LATIUM NOVUM**
+[Immagine di una pianta archeologica]
 
-Il Lazio antico era abitato esclusivamente dai Latini, anche se la zona più meridionale, tra Anzio e Terracina era meno fittamente popolata.
-
-La culla della civiltà latina infatti era sulla riva destra della valle del Tevere; sulla riva sinistra gli unici Latini erano gli abitanti di Capena e di Falerii Veteres.
-
-Intorno al IX secolo a.C. iniziano grandi movimenti di popolazioni che in parte mutano questa situazione.
-
-Dall'interno della penisola arrivano i Sabini, che inglobano gli abitanti di Capena; e premono anche sulla destra del Tevere, arrivando a infiltrarsi a Roma.
-
-A sud invece giungono gli Equi, gli Erici e i Volsci, che si fermano su una linea che va da Palestrina ad Anzio. Proprio queste frontiere sono i limiti del *Latium vetus* (= antico Lazio); solo alcuni secoli più tardi, con le conquiste dei Romani a questo si aggiungerà il territorio fino al Liri, il *Latium novum adiectum* (= Lazio nuovo, aggiunto).
-
-Recently, durante uno scavo nell'area del successivo Tabularium, sono venuti finalmente alla luce altri reperti, di poco posteriori ai più antichi frammenti di ceramica scoperti nell'area di Sant'Omobono che hanno fornito la prova concreta dell'esistenza di un'area abitata sul Colle Capitolino, situata sul versante che si affaccia sul Tevere.
-
-In questo periodo anche a Gabii (sulla via Prenestina, a circa 20 chilometri...)
+Foro Romano, pianta della Regia.

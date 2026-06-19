@@ -1,15 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-378
+LA CRISI DELL'IMPERO 379
 
-STORIA DI ROMA ANTICA
+esercito e di istituire una monarchia che si fondasse non sull'amministrazione e sulla classe politica, ma solo sull'appoggio dei militari.
 
-[Immagine: L'arco di Gallieno]
-*L'arco di Gallieno da cui partiva la via Labicana (incisione di G. Brun).*
+Uno dei protagonisti della lunga storia di Roma, il Senato, veniva così messo da parte e con questo atto il prestigio di Roma agli occhi di tutti era drasticamente dimezzato e l'isolamento della città si faceva ancora più drammatico. Ma non tutti accettarono supinamente i decreti di Gallieno.
 
-# L'ANARCHIA MILITARE E LA POLITICA DI GALLIENO
+Si ribellò la cavalleria al comando di Aureolo, mentre Gallieno affrontava nei Balcani Goti e gli Eruli. Aureolo assunse la porpora a Milano e ciò costrinse Gallieno a non dare il colpo finale ai barbari, a ritornare in Italia e ad assediare Aureolo a Milano. Durante l'assedio, i generali di Gallieno tramarono contro di lui e lo uccisero, proclamando imperatore il loro comandante di cavalleria Aurelio Valerio Claudio, detto il Gotico.
 
-Ormai era evidente che l'anarchia militare sconvolgeva lo Stato, dove i vecchi ordinamenti erano incapaci di operare azioni di governo. I confini erano sempre più fragili e le città, abbandonate a se stesse, esposte ai saccheggi dei barbari. In questa situazione Roma restava soltanto un simbolo, divisa tra una plebe affamata e una classe di senatori chiusa a riccio e incapace di rinnovarsi sulla scena politica: i grandi monumenti rappresentavano ancora l'immagine di una grande civiltà; ma la città sapeva soltanto da affaticati messaggeri provenienti da lontano chi fosse l'imperatore regnante, e si sentiva perciò più abbandonata di chiunque altro.
+AURELIO VALERIO CLAUDIO, DETTO IL GOTICO
 
-Solo la Chiesa cristiana, con la ramificazione delle sue comunità in tutte le province dell'Impero, manteneva il senso di una *patria* comune, ma certamente non si identificava con lo Stato romano. D'altronde, la conquista gotica di Atene rappresentò un chiaro presagio di quello che i pagani temevano e i cristiani aspettavano: la fine di un Impero che non accettava il messaggio del Cristo.
+Claudio il Gotico era un dalmata di modeste origini: governò per meno di due anni, ma dedicò tutto questo tempo a restaurare l'Impero sconvolto, riorganizzando gli eserciti. Innanzitutto affrontò Aureolo che si arrese, ma fu ucciso dai soldati che lo avevano preso in consegna. Quindi stipulò un patto con gli Alamanni, che così lasciarono l'Italia. Si volse poi contro i Goti e gli Eruli e sconfisse i primi a Naisso, ai confini con la Tracia. Restava l'Impero delle Gallie, dove a Postumo era succeduto Piavonio Vittorino. Contro di lui Claudio il Gotico inviò un esercito al comando di Giulio Placidiano. In Oriente, intanto, Settimio Odenato aveva assunto il controllo delle legioni che, lui defunto, era passato nelle mani della sua vedova, Settimia Zenobia, regina di Palmyra: Claudio il Gotico cominciò a organizzare la spedizione in Oriente, ma ai primi del 270 d.C. morì di peste.
 
-Gallieno era un imperatore aristocratico di alta spiritualità, pervaso dal grande ideale della tradizione dell'antica Roma. Nonostante ciò, decise di opporsi al Senato nel tentativo di salvare l'economia romana. Portò al 5% la presenza di argento nel denario e decretò che il conio della moneta sarebbe stato vietato da quel momento in poi al Senato e passato soltanto all'imperatore. Inoltre i senatori venivano privati di tutti gli incarichi amministrativi e dei comandi militari. Gallieno cercava di appoggiarsi all'e-
+I soldati acclamarono allora imperatore Lucio Domizio Aureliano, illirico, anch'egli comandante di cavalleria, che si riteneva discendente dal dio Sole.
+
+LUCIO DOMIZIO AURELIANO
+
+Prosegue così la serie degli imperatori illirici, dovuta essenzialmente al fatto che nelle stesse regioni illiriche si muoveva il grosso dell'esercito e si decidevano i destini dell'Impero.
+
+Aureliano riprese la lotta contro i barbari e molti ne accolse nell'esercito quando accettavano di trattare la pace, che comunque l'imperatore non accettava mai sulla base di un esborso in denaro da parte romana, come avevano fatto suoi ultimi predecessori. Egli dovette così affrontare Vandali, gli Azigi e gli Iutungi che fermò a Pavia. Nel 270 Aureliano tornava a Roma, che si era sentita fortemente minacciata dall'invasione iutunga.
+
+Riconfermata l'unità di conio della moneta dell'imperatore, Aureliano provvide a emettere monete di taglio minore al denario, per permettere piccoli commerci alle classi plebee e infine diede inizio alla costruzione dei diciannove chilometri di cinta muraria per racchiudere e difendere la città di Roma. Le mura aureliane furono dotate di una torre ogni trenta metri, spalti merlati, finestre e aperture per arcieri e catapulte, controporte e porte munite dove passavano le vie consolari.
+
+Roma scopriva così che avrebbe dovuto vivere come una città chiusa, non poli-

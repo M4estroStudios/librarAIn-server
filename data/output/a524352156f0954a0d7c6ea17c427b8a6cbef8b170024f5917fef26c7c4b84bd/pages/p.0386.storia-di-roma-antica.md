@@ -1,54 +1,42 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-386                                                                    STORIA DI ROMA ANTICA
+DA CLAUDIO IL TACITO A DIOCLEZIANO
+387
 
-loro area una parte del rione Castro Pretorio, oltre a contenere; in quello che
-fu l'edificio centrale, la basilica di Santa Maria degli Angeli e dei Martiri, il Mu-
-seo nazionale romano con gli uffici della
-soprintendenza archeologica di Roma
-e il Planetario. A questo punto Diocleziano; come alcuni secoli prima il gran 
-imperatore aveva fatto il suo dovere e voleva verificare dall'esterno se la macchina
-statale che egli aveva ripristinato sarebbe stata in grado di funzionare anche sen-
-za di lui. Egli non temeva prese di posizione da parte dell'esercito; da lui stesso
-ristrutturato sulla base di un dislocamento in una vasta serie di fortezze confi-
-narie: utili al controllo dei movimenti delle popolazioni barbariche. Così, nel tem-
-pio di Giove Capitolino a Roma, Diocleziano obbligò Massimiano Erculio a giu-
-rare la prossima abdicazione ed entrambi abdicarono il primo maggio del 305.
+[Immagine: La basilica di Massenzio in una ricostruzione ideale di L. Canina.]
 
-LA TORÈUTICA
+La basilica di Massenzio in una ricostruzione ideale di L. Canina.
 
-*L'arte di lavorare il metallo a incavo e a rilievo mediante le tecniche dello sbalzo,
-il cesello e del bulino — la torèutica ha avuto nell'antica Roma un grande sviluppo
-e successo; soprattutto per le oreficerie e le argenterie finemente decorate che
-riusciva a produrre.*
+Ritiratisi i due Augusti, la stessa dignità passò ai due Cesari: Massimiano Galerio per l'Oriente e Costanzo Cloro per l'Occidente. Costoro nominarono due nuovi Cesari: Massimino Daia per Massimiano Galerio e Flavio Severo Valerio per Costanzo Cloro.
 
-*Le botteghe orafe di Roma; che praticavano un'arte introdotta e praticata da ar-
-tisti greci, riuscivano a produrre vasellami preziosi sia per il valore venale del me-
-tallo che per l'elevata capacità tecnica e artistica del maestro argentiere.*
+Severo Valerio non riuscì però a gestire il potere che gli veniva assegnato perché in Occidente trovò due concorrenti che godevano di grande seguito tra l'esercito e tra le folle: Costantino nelle Gallie e Marco Aurelio Valerio, detto Massenzio, figlio dell'ex Augusto Massimiano Erculio. Alla morte di Costanzo Cloro nel 306, il sistema dei due Augusti e dei due Cesari, detto tetrarchia, ideato da Diocleziano, si sfasciò. Costantino fu acclamato Augusto dai suoi soldati, mentre a Roma i pretoriani acclamavano come Augusto Massenzio, sostenuto dalla plebe. Subito Massimiano Erculio, dalla sua residenza, appoggiava il figlio Massenzio; mentre Severo Aurelio veniva ucciso.
 
-*I moltissimi esemplari ritrovati in tombe o in tesori testimoniano l'uso continuo; nel
-la vita quotidiana romana; di coppe, piatti e recipienti di vario genere; finemente sbal-
-cesellati con motivi ornamentali e figure della mitologia o della realtà. Alcuni
-piatti di particolare pregio venivano usati soltanto per i sacrifici agli dèi.*
+Massenzio rifiutò l'aiuto del padre perché questi voleva per sé il titolo di Augusto e dare al figlio quello di Cesare.
 
-MASSIMIANO ERCULIO
+Fu allora che Massimiano Erculio si incontrò con Diocleziano per ridare ordine alla situazione.
 
-Massimiano Erculio si ritirò in una splendida villa nel Salernitano; mentre
-Diocleziano scelse la sua celebre villa-fortezza di Spalato, imponente castello
-sul mare Adriatico.
+I due vecchi imperatori decisero di confermare Massimiano Galerio come Augusto e di affiancargli Licinio Liciniano e nominare quindi Cesari Massimino Daia e Costantino. Così facendo credevano di avere escluso Massenzio e invece avevano solo aggiunto Licinio.
 
-SPALATO
+Intanto Massimiano Erculio aveva combinato il matrimonio tra Costantino e la propria figlia Fausta, ma ciò non gli valse la vita perché Costantino lo fece uccidere a Marsiglia nel 310. Nel 311 moriva d'improvvisa malattia Massimiano Galerio; sostituito come Augusto da Massimino Daia, mentre Massenzio continuava a governare senza riconoscimenti l'Italia e l'Africa:
 
-Diocleziano, dalla sua abdicazione fino alla morte avvenuta nel 316 d.C., abitò nel pa-
-lazzo che si era fatto costruire a Spalato, città dalmata che era sorta attorno a esso. Il
-palazzo; ispirato all'impianto dell'accampamento; fu costruito in grandi blocchi squa-
-drati di pietra calcarea; sia per quanto riguarda la struttura esterna che quella interna;
-L'impianto è trapezoidale, con possenti torri quadrangolari sistemate agli angoli e con
-le porte d'accesso che si aprono al centro di ciascun lato (sono ben conservate la porta
-aurea a nord e la porta argentea a sud). Finestre si aprono nella muratura esterna; men-
-tre sul lato verso il mare, dove sono state costruite notevoli sostruzioni, si aprono delle
-arcate poggianti su pilastri. Le porte di accesso sono protette da torri ottagonali, ad ec-
-cezione di quelle verso il mare. All'interno sono conservate alcune strutture, fra queste
-il peristilio; con serie di arcate su colonne, chiuso a sud da un pronao tetrastilo sor-
-montato da un timpano ad arco sul passaggio centrale e il mausoleo imperiale; circolare in-
-ternamente, dove la parete è scandita da nicchie, mentre è ottagonale all'esterno, dove il
-perimetro è sottolineato da un colonnato su alto podio.
+Fu allora che Massimino Daia, Costantino (nominatosi Augusto di Gallia, Spagna e Britannia) e Licinio si coalizzarono contro Massenzio.
+
+***
+
+DA CLAUDIO IL TACITO A DIOCLEZIANO
+387
+
+[Immagine della Basilica di Massenzio]
+
+La basilica di Massenzio in una ricostruzione ideale di L. Canina.
+
+Ritiratisi i due Augusti, la stessa dignità passò ai due Cesari: Massimiano Galerio per l'Oriente e Costanzo Cloro per l'Occidente. Costoro nominarono due nuovi Cesari: Massimino Daia per Massimiano Galerio e Flavio Severo Valerio per Costanzo Cloro.
+
+Severo Valerio non riuscì a gestire il potere che gli veniva assegnato perché in Occidente trovò due concorrenti che godevano di grande seguito tra l'esercito e tra le folle: Costantino nelle Gallie e Marco Aurelio Valerio, detto Massenzio, figlio dell'ex Augusto Massimiano Erculio. Alla morte di Costanzo Cloro, nel 306, il sistema dei due Augusti e dei due Cesari, detto tetrarchia, ideato da Diocleziano, si sfasciò. Costantino fu acclamato Augusto dai suoi soldati, mentre a Roma i pretoriani acclamavano come Augusto Massenzio, sostenuto dalla plebe. Subito Massimiano Erculio, dalla sua residenza, appoggiava il figlio Massenzio, mentre Severo Aurelio veniva ucciso.
+
+Massenzio rifiutò l'aiuto del padre perché questi voleva per sé il titolo di Augusto e dare al figlio quello di Cesare.
+
+Fu allora che Massimiano Erculio si incontrò con Diocleziano per ridare ordine alla situazione. I due vecchi imperatori decisero di confermare Massimiano Galerio come Augusto e di affiancargli Licinio Liciniano e nominare quindi Cesari Massimino Daia e Costantino. Così facendo credevano di avere escluso Massenzio e invece avevano solo aggiunto Licinio.
+
+Intanto Massimiano Erculio aveva combinato il matrimonio tra Costantino e la propria figlia Fausta, ma ciò non gli valse la vita perché Costantino lo fece uccidere a Marsiglia nel 310. Nel 311 moriva d'improvvisa malattia Massimiano Galerio, sostituito come Augusto da Massimino Daia, mentre Massenzio continuava a governare senza riconoscimenti l'Italia e l'Africa.
+
+Fu allora che Massimino Daia, Costantino (nominatosi Augusto di Gallia, Spagna e Britannia) e Licinio si coalizzarono contro Massenzio.

@@ -1,24 +1,17 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-90
+UN FIUME, UN GUADO E UN CROCEVIA
+STORIA, TRADIZIONE E LEGGENDE
 
-STORIA DI ROMA ANTICA
+Alla metà dell'VIII secolo a.C. un gruppo di agricoltori e allevatori fonda una città sulla sponda sinistra del Tevere: Roma.
 
-ROMA: MEZZANOTTE MENO UN MINUTO
+In Occidente la scrittura alfabetica è ancora uno strumento nuovissimo e dovranno passare secoli perché sia utilizzata per annotare gli avvenimenti storici. Per questo gli antichi Romani affidano il racconto della nascita della loro città alla memoria. Di generazione in generazione alcuni particolari si perdono; altri acquistano un'importanza che non avevano. I cambiamenti d'alleanze o di linea politica e il desiderio di inventarsi antenati prestigiosi fanno il resto: specialmente negli elogi funebri e nei canti conviviali i dati concreti sfumano nella leggenda; nel mito. Grazie al grande lavoro di raccolta di notizie e di rielaborazione dei dati della tradizione svolto da Varrone (116 a.C.? - 27 a.C.) la leggenda delle origini di Roma assume la sua veste pressoché definitiva sotto Augusto (27 a.C. - 14 d.C.) a opera del poeta Virgilio (70 a.C. - 19 a.C.) e dello storico Livio (59 a.C. - 17 d.C.).
 
-Sulla riva sinistra del Tevere nell'area compresa tra il Campidoglio, il Palatino, l'Esquilino e il Quirinale si è ormai consolidato un rudimentale sistema insediativo d'un certo rilievo. Vari elementi contribuiscono ad assicurarli una possibilità d'espansione e d'ulteriore sviluppo:
+È indubbio che si è trattato di una operazione politico-culturale; ma è necessario ripetere che gli antichi Romani su molti particolari della loro storia ne sapevano più di noi. Se ci sono vari episodi molto favolosi e poco veridici nel complesso delle antiche leggende, le scoperte archeologiche degli ultimi anni in più casi hanno confermato il nocciolo di informazione veridica che è alla base del racconto tradizionale.
 
-Per prima cosa la posizione naturale; i colli sono molto più ripidi di quanto si possa oggi immaginare e per questo sono difendibili abbastanza facilmente. Questi colli sono disposti in stretta raggiera e possono contare su due rocche forti naturali: il Campidoglio, quasi completamente isolato dalle altre alture, e il Palatino. Essi incorniciano e difendono una vallata coltivabile, sin troppo ricca di acqua. Le risorse naturali, benché non molto abbondanti, sono sufficienti per la ridotta popolazione dell'area in cui sta per nascere Roma. L'agricoltura non conosce ancora tipi di grano più adatti a fare il pane, ma l'allevamento delle pecore e delle capre è facilitato dalla estrema vicinanza delle saline, che forniscono l'elemento indispensabile per la sopravvivenza delle greggi. Tutto intorno ci sono boschi di querce, in cui i maiali possono pascolare allo stato brado; ci sono poi sempre le risorse alimentari fornite dalla caccia e dalla pesca. Gli abitatori delle alture sul Tevere, organizzati in semplici comunità a base familiare, sono autosufficienti, ma sicuramente il loro livello di vita non è molto alto. Continuano così ad usare abbastanza comunemente il bronzo, ma hanno pochissimo ferro; o forse non ne posseggono per niente.
+LA FONDAZIONE DI ROMA: LA LEGGENDA
 
-Gli utensili di ferro iniziano ad apparire nelle tombe alla metà dell'VIII secolo a.C. e per almeno altri cento anni il metallo continuerà ad essere relativamente raro.
+Nella versione definitiva della leggenda (riportata da Livio nelle sue *Storie*) le origini di Roma risalgono alla guerra di Troia. La sconfitta e il saccheggio di questa città causano l'esilio e il vagabondaggio dei superstiti. Tra questi spiccano Antenore ed Enea. Antenore con un gruppo dei suoi si stabilisce nel Veneto, fondando la città di Padova; Enea invece prima sbarca in Macedonia; poi in Sicilia, infine a Laurento nel Lazio.
 
-Gli abitanti di questo villaggio che non è ancora Roma hanno diversi assi nella manica: un guado, un incrocio di strade, più tardi un ponte. È quanto basta perché nasca una città.
+I Troiani approdati nel Lazio mancano di tutto e si danno al saccheggio: ne nasce una guerra con gli aborigeni (abitanti originali della regione), condotti dal re Latino.
 
-I MATERIALI EDILIZI: UNA CITTÀ DAL MARE E DAI VULCANI
-
-Prima dell'invenzione del cemento armato, Roma si costruiva usando mattoni, travertino o scorie laviche (tufo, peperino, pozzolana). L'uso dei mattoni di argilla cotta è abbastanza recente e la sua diffusione si consolida nel I secolo d.C.
-
-Il travertino, formatosi con il prosciugamento delle grandi lagune di acqua salata che un tempo coprivano il Lazio, è particolarmente abbondante nella zona di Tivoli, per questo i Romani lo chiamavano "pietra di Tivoli" (in latino *lapis Tiburtinus*). Era riservato agli edifici monumentali ed è diventato la pietra romana per eccellenza.
-
-Il tufo ha origine dal depositarsi delle ceneri e dei frammenti di rocce eruttati dai vulcani. Anche il peperino e la pozzolana sono scorie laviche, pur sembrando materiali completamente diversi dal tufo: ma la loro differente consistenza dipende dai processi naturali avvenuti dopo che si sono depositati al suolo.
-
-I suoli di Roma sono quasi tutti di tipo tufaceo ed hanno fornito nei secoli materiale da costruzione a basso costo; sull'Aventino ancora all'inizio di questo secolo era attiva una cava di tufo. Un'altra pietra molto importante nella storia di Roma è il basalto: semplicemente lava raffreddata, molto povera di silicio (il minerale che costituisce la sabbia delle spiagge), piuttosto dura e di colore nerastro. I Romani lo squadravano in grossi blocchi (i basoli) e lo usavano per pavimentare le strade, specialmente quelle su cui passava il traffico principale; come la via Appia, che fu la prima via consolare a essere lastricata.
+Ci sono due tradizioni diverse: la prima afferma che Latino è stato sconfitto in battaglia, l'altra che chiede spontaneamente e ottiene la pace: il matrimonio tra Enea e Lavinia, figlia di Latino, stringe ancor più il vincolo tra i due popoli. Asca-

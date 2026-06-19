@@ -1,16 +1,25 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-COSPIRAZIONE E DITTATURA                                     259
+260 STORIA DI ROMA ANTICA
 
-***
+*Giulio Cesare, nel ritratto*
+*dall'Illustrium imagines.*
 
-CALVIZIE E VIRILITÀ
+[Immagine di Giulio Cesare]
 
-Nella descrizione di Cesare tramandata dagli antichi, a parte un accenno all'epilessia che tanto lo colpiva; la sua calvizie è argomento di grande discussione. Che Cesare abbia pochi capelli non è un fatto eccezionale; ciò che suscita maligni commenti è la sua tenacia nel mascherare questo difetto. Con abili e ondeggianti riporti cerca di coprire il cranio lucido, finché il successo militare non gli offre un'inaspettata soluzione. Infatti la corona di alloro; simbolo del comandante vittorioso; concessigli quale grandissimo onore dal Senato; gli consente finalmente di coprire la sua testa troppo spoglia. Cesare indirettamente conferma l'idea che calvizie e virilità vadano di pari passo. Non solo gli sono attribuite come amanti numerosissime donne romane sposate, ma sembra anche che i suoi gusti siano vari e molteplici. Le malignità sulla sua amicizia con Nicomede re della Bitinia durante le sue campagne in Oriente, al punto da essere chiamato rivale della regina; non lasciano dubbi sulla sua natura. Neppure in Gallia la sua condotta deve essere stata delle più moderate se i soldati, durante i vari lazzi, urlati il giorno del trionfo; gridano: «Cittadini, tenete sotto chiave le donne! Noi conduciamo il donnaiolo calvo. Tu (o Cesare) hai sperperato il denaro in Gallia, a Roma l'hai preso in prestito!». Anche se lo soprannominano «uomo di tutte le donne e donna di tutti gli uomini», Cesare ha una spiccata preferenza per le donne di rango. A parte la figlia del già ricordato Nicomede; la moglie del re dei Mauri Eunoe, la sua passione più nota e più divorante è certamente Cleopatra. Su questa affascinante donna (che Cesare riesce a irretire anche Marco Antonio) si sono accumulate attraverso secoli le chiccherie di generazioni. È indubbio che le sue arti e capacità amatorie dovevano essere strepitose, se è riuscita a trattenere Cesare per un intero anno in Egitto. Dalla loro relazione nacque Cesarione, che avrà vita ben dura. Del resto molti giurano che non è figlio del dittatore; il quale di figli nel mondo ne ha già seminati parecchi.
+*Adeo note sunt C. Caesaris animi &*
+*corporis doter & toto orbe praegelare ge*
+*Stat ea silentio simulare fatiue fue*
+*sic cinispa ambitio obtinere ceter*
+*rum que ad eas imagines attinere*
+*dentur breviter stringimus huius*
+*traditio excelsa Statues elatus adi*
+*de brevibus membris prae paulo plus*
+*mora nigris negotijs oculis calvo*
 
-LA VITTORIA CONTRO I POMPEIANI
+Le continue modifiche della sua posizione giuridica sono il segno tangibile della difficoltà di collocare l'eccezionalità del suo potere all'interno del sistema dei poteri repubblicani. Il rientro nella capitale è caratterizzato da un'intensa attività di riforma. Tuttavia la sua non è tanto un'opera di restaurazione, quanto di trasformazione dello Stato: si passa dalla Repubblica oligarchica a un organismo amministrativo più adeguato alle esigenze d'uno Stato che, ormai, ha assunto una dimensione mondiale. L'azione di Cesare è volta fin dall'inizio a creare un regime più efficiente.
 
-Il comandante vittorioso giudica che sia il momento di rientrare a Roma, dopo molti anni di assenza. Nella capitale celebra addirittura quattro trionfi: sui Galli, sugli Egiziani, su Farnace e su Giuba. Vercingetorige; il capo della rivolta gallica; è stato tenuto in vita fino a questo momento per fare mostra di sé nel trionfo. Dalla Spagna arrivano notizie preoccupanti. Sembra che i figli di Pompeo abbiano recuperato i veterani del padre e abbiano sollevato alla rivolta i Celtiberi e i Lusitani. Cesare è costretto a partire di nuovo (fine del 46 a.C.). Questa volta lo attende una lunga e dura campagna; in cui corre il rischio di perdere le sue otto legioni. Lo scontro a Munda (presso Cadice) si rivela alla fine decisivo (marzo 45 a.C.). Tutti i pompeiani sono sconfitti, tranne Sesto Pompeo che darà ancora molto filo da torcere ai rivali. Dopo avere ristabilito l'ordine tra le popolazioni indigene spagnole; Cesare può tornare a Roma a celebrare il suo quinto trionfo (settembre 45 a.C.).
+Il numero dei senatori è aumentato (da 600 a 900 membri). Per il funzionamento di un apparato burocratico molto grande c'è anche bisogno di molti questori, pretori, edili, prontamente aumentati dal dittatore.
 
-LE RIFORME PER UNO STATO PIÙ EFFICIENTE
+Cesare promuove inoltre la fondazione di nuove colonie sia nelle province orientali che in quelle occidentali, estendendo il diritto di cittadinanza. I soldati, che per anni hanno combattuto lontano dall'Italia, possono ora integrarsi nelle nuove comunità.
 
-Dal 49 a.C. Cesare è di fatto il padrone di Roma: In quello stesso anno, durante un suo breve soggiorno nella capitale, il Senato gli ha offerto la dittatura. L'anno seguente è stato eletto console (48 a.C.). In seguito gli è stata concessa la potestà tribunizia; il potere che rende sacra e inviolabile la persona dei tribuni della plebe. Infine, dopo la vittoria di Munda; Cesare diviene dittatore a vita.
+Il desiderio di ordine e la volontà di dotare la città d'un nuovo 'tempo' sono alla base della sua riforma più duratura. L'astronomo alessandrino Sosigene è l'autore del nuovo calendario; detto giuliano, dal nome del suo promotore e il mese luglio è chiamato così dal nome Iulius. Solo nel 1582 Gregorio XIII introdurrà un'ulteriore riforma; riducendo la durata dell'anno da 365 giorni e 6 ore a 365 giorni, 5 ore, 48' e 46''.

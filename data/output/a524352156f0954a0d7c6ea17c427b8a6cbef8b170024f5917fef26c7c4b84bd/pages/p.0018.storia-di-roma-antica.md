@@ -1,26 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-18
+ROMA PRIMA DI ROMA 19
 
-STORIA DI ROMA ANTICA
+I fondi di capanna scoperti sul Palatino dovrebbero risalire alla fine del IX sec. a.C. e permettono di capire le dimensioni e la struttura delle "case" dei primi abitatori di Roma. Su un impiantito scavato nel tufo spiccano ancora i fori in cui si conficcavano i pali di sostegno del tetto a due spioventi; altri pali sostenevano le "pareti" di graticcio ricoperto di fango e inquadravano la porta, su cui era posta una tettoia.
 
-mento sul Campidoglio; sorto, come abbiamo visto, nel corso del XII secolo a.C. In effetti la distanza tra le due zone abitate non supera i 200 metri. Questi antichi abitatori dell'area intorno al Foro Romano appartengono alla "cultura laziale".
+A circa cinquanta centimetri dal "pavimento" della capanna un canaletto doveva assicurare lo scolo dell'acqua piovana. Talvolta le urne per le ceneri dei defunti raffigurano delle capanne e queste mostrano che il tetto era fornito di una apertura per il fumo del focolare.
 
-I corredi funerari d'un sepolcreto presso l'arco di Augusto; consistono in vasi e in ornamenti vari, tutti miniaturizzati. Le quattro tombe più antiche risalgono al X secolo a.C. e si sovrappongono all'insediamento dell'XI secolo a.C. di cui si è già detto.
+Sopra qualche urna appaiono figurine umane sedute sul tetto; ma è incerto se queste eventuali raffigurazioni di antenati, che proteggono la casa, effettivamente fossero presenti sulle capanne.
 
-Sempre al X secolo risale lo stanziamento di un gruppo di abitatori sul colle del Palatino: la necropoli (la città dei morti) nacque in relazione a quest'importante avvenimento; anche se alcune sepolture sono localizzate nella piccola valle tra la cresta del Germalo e quella del Palatino propriamente detto.
+Tra il IX e IV secolo a.C. si amplia lo spazio utilizzato dai primi abitatori di Roma e si avvicina la data tradizionale della fondazione di Roma. Il sepolcreto del Foro Romano cade in disuso, mentre si avvia una nuova area cimiteriale sull'Esquilino, ma persistono nel Foro le tombe di bambini, i quali potevano essere sepolti all'interno dello spazio abitato (consuetudine largamente attestata anche in altre località del Lazio meridionale).
 
-Le testimonianze archeologiche disponibili non permettono d'affermare con assoluta certezza se questo nucleo abitativo sia sorto indipendentemente dall'insediamento del Campidoglio-Foro oppure se sia una successiva espansione di quest'ultimo: l'orientamento generale del sepolcreto, che si è ingrandito in direzione delle pendici del Palatino e allontanandosi progressivamente dal Campidoglio e dall'area del Foro, fa pensare che questa area cimiteriale sia stata utilizzata da un abitato unitario che comprendeva i tre insediamenti.
+Secondo l'ipotesi più logica quest'allargamento dell'area abitabile deve essere messo in rapporto con l'importanza sempre maggiore dei traffici e commerci: forse una prova indiretta è il contemporaneo abbandono delle località abitate nei colli Albani; probabilmente collegato col cambiamento del percorso dei principali itinerari commerciali del Lazio.
 
-Uno scavo nel Foro, effettuato sotto il rudere della Regia (il palazzo dei re di Roma) ha riportato alla luce tracce delle strutture d'un edificio di legno a pianta rettangolare e di proporzioni notevoli. Quest'edificio dovrebbe risalire all'ultima fase dell'età del bronzo (intorno al 900 a.C.) e dovrebbe essere stato destinato ad una funzione molto importante: il confronto con altri abitati del Lazio meridionale può far pensare ad un luogo di culto.
+Così in quest'epoca sarebbe avvenuta un'immigrazione dai colli Albani verso la piana del Tevere.
 
-Altri ritrovamenti archeologici in piazza della Pilotta e presso Santa Maria della Vittoria a via XX Settembre-largo di Santa Susanna sembrano indicare l'esistenza di un insediamento autonomo sul Quirinale, ma l'interpretazione e la datazione del materiale è controversa.
+[Immagine]
 
-II. LAZIO E CULTURA MICENEA
-
-Nel I millennio a.C. nell'area del mar Egeo si sviluppò una grande civiltà basata sul dominio dei mari e sul commercio; distinta nelle due grandi ripartizioni "minoica" (con riferimento alle grandi regge situate sull'isola di Creta) e "elladica" (sviluppatasi sulla terraferma greca). Il periodo più recente della cultura elladica (che inizia circa 3600 anni fa) viene chiamato "miceneo" dal nome della città di Micene, regno dell'omerico Agamennone. Gruppi di navigatori provenienti dal mar Egeo approdarono sulle rive della penisola italiana circa 3500 anni fa e continuarono a frequentarne le coste per circa 500 anni.
-
-Micenei ebbero intensi scambi con le comunità insediate nel golfo di Napoli, con la Puglia e con la costa ionica.
-
-3300 anni fa essi stabilirono una specie di colonia nelle isole Eolie, come base per commerci e scorribande di tipo piratesco.
-
-Micenei ebbero contatti anche con le popolazioni che vivevano nel Lazio, con le quali dovevano scambiare i loro prodotti (ceramica, oggetti di bronzo) in cambio di metallo grezzo; forse frequentarono anche la zona di Roma. Per questo alcuni studiosi sostengono che il ricordo dei loro contatti commerciali è sopravvissuto nella leggenda dello sbarco di Enea sul lido di Lavinio.
+*Il ponte Palatino con il Campidoglio sullo sfondo in una ricostruzione ideale di Luigi Canina.*

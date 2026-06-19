@@ -1,28 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-A pagine 395-402 del PDF trovi una Cronologia con Anno - Eventi. Utilissima per il time index.
-
-Numerazione: pagina del LIBRO in alto — a sinistra sulle pagine pari, a destra sulle dispari; offset costante PDF−3 rispetto al numero stampato nel corpo. Non confondere con date nel testo (753 a.C., 202 a.C., 66 d.C., ecc.).
-
-Intestazione di corridoio: sulle dispari titolo del capitolo/sezione in maiuscoletto a sinistra; sulle pari «STORIA DI ROMA ANTICA» a destra. Le pagine di apertura sezione possono avere solo titolo decorativo centrato e nessun numero.
-
-Box monografici: riquadro con bordo nero; titolo in maiuscoletto (talvolta numerato romano o arabo); testo interno tutto in corsivo — trattare come inserto tematico separato dal flusso narrativo, non come corpo del capitolo.
-
-Immagini: incisioni/xilografie in bianco e nero, spesso in cornice; talvolta pagina intera senza testo. Didascalie in corsivo, più piccole: sotto l’immagine oppure nel margine laterale (nota a lato), a sinistra o a destra del riquadro — non fondere con il testo corrente. Possibili coppie pianta+ricostruzione nello stesso box, con didascalia esterna.
-
-Sottotitoli di sezione: centrati in maiuscoletto nel flusso del testo. Nel corpo, corsivo per latino, toponimi e rimandi «(vedi box …)». Non risultano note a piè numerate nel campione.
+302 STORIA DI ROMA ANTICA
 
 ***
 
-UNA DINASTIA COMPLICATA: I GIULIO-CLAUDII
+**CHI SARÀ IL SUCCESSORE? CHERCHETE LE DONNE!**
 
-COM'È SCACCIARE LA NOIA A CAPRI
+La successione al potere nella prima età imperiale sembra un affare di donne. I successivi matrimoni di Giulia con Marcello, Agrippa e Tiberio sono pensati per garantire un successore ad Augusto. Marcello (quello del teatro) è figlio della sorella di Augusto; Ottavia (quella del Portico) Giulio Antonio, amante di Giulia, è causa del suo esilio; voleva impalmarla per conquistare il potere.
 
-Augusto si invaginisce dell'isola di Capri; la acquisisce e ne fa una delle sue preferite. Nella villa fatta costruire apposta (probabilmente il cosiddetto palazzo a mare, lato che guarda Napoli), con una ristretta cerchia di amici ama darsi al dolce far niente. Tiberio ne fa addirittura la sua residenza stabile per dieci anni. Secondo la tradizione, egli vi avrebbe fatto costruire dodici ville, ciascuna chiamata col nome di un dio. Due sono ancora abbastanza ben conservate: la villa di Giove (sulle terrazze sul promontorio orientale) e la villa di Damecuta (sulla punta nord-occidentale). Entrambe in posizione scenografica offrono ogni comfort. Una torre-faro garantisce rapide comunicazioni con la terraferma e con Roma. In questo ritiro isolato Tiberio passa il tempo tra piaceri libidinosi e l'esercizio di crudeltà inaudite. Fa ornare con immagini lascive le camere da letto. Organizza orge in cui rugazze, invertiti e specialisti (da lui chiamati *spintriae*) si esibiscono a catena in accoppiamenti mostruosi. Ama far accoppiare fanciulli e fanciulle, abbigliati da satiri e ninfe sparse nei giardini e nei boschetti. Egli stesso partecipa a giochi sessuali con bambini e fanciulli. Si comporta in maniera crudele con i condannati, che fa torturare in mille modi e poi fa gettare in mare, dove alcuni pescatori sono pronti a finirli.
+Tiberio, a sua volta, dopo il divorzio da Giulia, è adottato e legittimato come coreggente e successore solo perché figlio di Livia, ultima moglie del primo imperatore; che non a caso è adottata da Augusto nel testamento e garantisce la linea dinastica, assumendo anche il nome di Giulia Augusta.
 
-Il primo ha già manifestato le sue perversioni stuprando le sorelline che abitano con lui nella casa della nonna Antonia. Il secondo è sospettato di essere figlio adulterino di Livilla e Seiano. Entrambi vengono comunque adottati e nominati eredi in parti uguali (35 d.C.). Inoltre ciascuno dei due è nominato erede dell'altro. Questo favorisce il nascere di nuove fazioni a Roma. Nel 37 d.C. Tiberio esprime l'intenzione di rientrare a Roma. Si organizza il viaggio. Ma l'imperatore non si decide a entrare nella sua capitale. Colto da malore nelle sue peregrinazioni su Lazio e Campania, è portato a Miseno dove, dopo varie riprese e ricadute, viene aiutato a morire da Caligola e Macrone.
+Lo schema è chiaro: Seiano, che, per divenire coreggente di Tiberio, prima cerca di sedurre sua nuora Claudia Livilla, vedova di Druso; tenta di ottenere in sposa la giovane figlia di lei, Giulia Livilla.
 
-FIGLIO DI GERMANICO: PRONIPOTE DI ANTONIO
+Quando Caligola, ammalatosi, designa come erede la sorella Drusilla; il marito Marco Lepido pensa di ottenere tramite lei la successione. Morta Drusilla, Lepido, sempre nella speranza di conquistare il potere, tenta di circuire Agrippina, la sorella maggiore di Caligola.
 
-È solo una leggenda che Gaio Cesare sia nato nel 12 d.C. in un campo militare sul Reno. Certo è che vi è stato portato in tenera età e che ha passato l'infanzia tra i soldati, tanto da conquistarsi il nomignolo di Caligola "scarponcino".
-L'amore dei soldati per Germanico è ancora vivo e si trasferisce anche sul figlio, sicché, nonostante Tiberio abbia designato come erede Tiberio Gemello, egli è scelto come suo unico successore. Gaio Cesare ha otto anni quando muore il padre.
-Ritornato a Roma vive dapprima nella casa della bisnonna Livia e poi, dopo la sua morte e dopo la condanna della madre e del fratello a opera di Seiano, con la nonna Antonia, figlia del triumviro Marco Antonio. Qui assorbe una cultura fortemente intrisa di elementi greco-egiziani; che sono all'origine di alcune delle "stranezze" che caratterizzano il suo regno, che ha come modello la monarchia faraonico-tolemaica e come sfondo culturale la religione isiaca.
+Anche Marco Vinicio, marito della sorella minore di Caligola, Livilla; alla morte dell'imperatore avanza pretese al trono in quanto marito di una principessa imperiale. E le stesse pretese accampa persino Valerio Asiatico, la cui moglie è stata per un periodo la favorita di Caligola.
+
+Anche l'imperatore Claudio, contro la tradizione che considera questi matrimoni incestuosi, finisce con lo sposare sua nipote Agrippina, per non permettere che altri, sposandola, possono presentarsi come pretendenti al trono. Allo stesso modo il figlio di Agrippina, Lucio Domizio, il futuro Nerone, sposa Ottavia, figlia di Claudio, che diventa così sua sorella e poi moglie.
+
+[Immagine dell'imperatore Caligola]
+
+*L'imperatore Caligola, incisione su rame del 1882.*

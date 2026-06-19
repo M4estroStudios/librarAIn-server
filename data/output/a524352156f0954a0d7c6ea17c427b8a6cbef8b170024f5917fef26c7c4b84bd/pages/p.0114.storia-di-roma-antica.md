@@ -1,49 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-114                                                                    STORIA DI ROMA ANTICA
+ASCESA, CADUTA E RESURREZIONE DI ROMA: 115
 
-sta popolazione indoeuropea intorno all'anno 1000 a.C., dalle sedi origi-
-narie nell'Europa centrale, si era diffusa in Francia e Spagna. Alcune tribù
-avevano varcato le Alpi già nel VI e V secolo e si erano insediate nella pia-
-nura padana. Agli inizi del IV secolo una nuova grande ondata, attirata dalla sua fertilità, investe l'Italia. Da ovest e da nord i Celti (chiamati Galli
-dai Romani) invadono il Piemonte (Taurini), la Lombardia (Insubri e Ce-
-nomani), l'Emilia (Boi) e le Marche (Sènoni). Le città etrusche dell' Italia
-settentrionale capitolano di fronte alla potenza militare celtica: resistono so-
-lo alcune tribù liguri e Veneti. In seguito la Pianura Padana sarà talmen-
-te "celtizzata" che i Romani la chiameranno Gallia Cisalpina. Il grosso dell'
-ondata celtica si infrange sulle propaggini settentrionali dell' Appennino,
-mentre alcune bande bellicose, soprattutto di Sènoni, avidi di ulteriore
-bottino, si spingono fino all'Etruria settentrionale e minacciano Chiusi.
+I tre membri di quella gens Fabia, che da tempo ha interessi nell'area etrusca, raggiungono il campo dei Galli presso Chiusi e intavolano trattative senza successo. Entrati poi in città, protetti dalla loro veste di ambasciatori, suggeriscono ai Chiusini di operare insieme a loro una sortita contro gli assedianti. Nello scontro che segue uno dei Fabii uccide un condottiero dei Galli. È riconosciuto dal capo dei Sènoni (nella lingua celtica Brenno non è un nome proprio, ma significa capo) che gli rimprovera la violazione del diritto delle genti (*ius gentium*): infatti è stato accolto come ambasciatore e si comporta come nemico. La responsabilità dei Fabii è discussa a Roma. Nonostante l'insistenza dei Feziali, i sacerdoti che curano le norme che regolano la pace e la guerra, il popolo romano si rifiuta di punire il colpevole dell'atto sacrilego e anzi lo nomina tribuno militare insieme ai suoi fratelli. Conosciuto questo ulteriore affronto, Brenno decide di togliere l'assedio a Chiusi e di marciare su Roma.
 
-DIES ALIIENSIS: UNA GIORNATA "NERA"
+LA PRISA DI ROMA: I FATTI ESSENZIALI
+La tradizione offre pochi punti fermi per ricostruire gli avvenimenti dell'occupazione gallica: i Romani raccolgono in fretta un esercito di circa quarantamila uomini e si schierano alla confluenza del fiume Allia col Tevere, miglia a nord di Roma; i comandanti romani, però, trascurano di osservare le indicazioni degli dèi, elemento indispensabile per intraprendere un atto di guerra: inoltre non unificano il comando nelle mani di un solo responsabile. Infine l'esercito dei Romani e dei loro alleati non è addestrato e molti soldati combattono per la prima volta. Lo scontro, ricordato tra le giornate più infauste di Roma, si risolve fatalmente con la vittoria dei Galli, che hanno via libera verso la città.
 
-Il calendario romano considera nefasti 36 giorni all'anno; quelli che seguono le
-calende, le none e le idi di ogni mese. In essi, né in pubblico né in privato,
-è lecito compiere nessuna azione che non sia strettamente necessaria.
-La tradizione risale probabilmente alla decisione assunta nel 389 a.C. dai cinque tri-
-buni militari (incaricati di restaurare le istituzioni religiose e politiche dello Stato ro-
-mano dopo la disastrosa incursione gallica) di considerare nefasto il Dies Aliensis;
-che cade il 18 luglio, anniversario del giorno in cui i Galli hanno messo in fuga l'e-
-sercito romano al fiume Allia. Poiché il tribuno militare Sulpicio aveva preso gli au-
-spici (il giorno dopo le idi di luglio) si stabilisce che tutti i giorni successivi alle idi siano considerati nefasti e che la stessa proibizione di compiere azioni religiose e civili sia estesa anche ai giorni successivi alle calende e alle none. La decisione di segnare come nefasto il 18 luglio è inoltre rafforzata dal fatto che nel-
-lo stesso giorno sarebbe avvenuto un altro episodio luttuoso: la strage dei Fabii al Crè-
-mera nello scontro con gli Etruschi di Veio.
+Il grosso dell'esercito romano si rifugia a Veio, che assume sempre più la fisionomia d'una seconda Roma; altri superstiti della battaglia raggiungono Roma. Con un contingente di soldati così ridotto è impossibile la difesa dell'in-
 
-TRE AMBASCIATORI TROPPO DISINVOLTI
+CHI HA RECUPERATO L'ORO GALLICO?
+È indubbio che i Romani abbiano raccolto con grande sforzo e con l'aiuto degli alleati una forte somma (si parla di mille libbre d'oro) perché i Galli abbandonino la città. Secondo la tradizione vi contribuirono, oltre alle matrone romane, anche alcuni mercanti di Marsiglia: infatti più tardi i Romani concedono ai Marsigliesi speciali privilegi commerciali in segno di gratitudine. Cosa è avvenuto dell'oro pagato dopo il ritiro dei Galli da Roma? È inverosimile la leggenda che il riscatto non sarebbe mai stato pagato per l'intervento di Camillo, tempestivamente rientrato a Roma a interrompere le vergognose operazioni di pesatura.
 
-Di fronte al pericolo gli abitanti di Chiusi chiedono aiuto ai Romani, con
-quali intrattengono da tempo rapporti commerciali, dato che la città etrusca
-costituisce un importante mercato per il sale proveniente da Roma.
-I Romani, a loro volta preoccupati per la nuova minaccia, inviano degli Os-
-servatori. Secondo la tradizione, ai tre figli di Marco Fabio Ambusto è affi-
-dato il compito di ottenere che i Galli non assaglino gli alleati di Roma.
-
-UN ORACOLO NON ASCOLTATO (E POI VENERATO)
-
-Secondo la tradizione, un certo Marco Cedicio si presenta ai tribuni militari e nar-
-ra che la notte precedente, mentre camminava per la via Nova, ha sentito una voce
-misteriosa che gli diceva di avvertire le autorità dell'arrivo entro breve tempo dei Gal-
-li. Il poveretto, benché abbia fama di persona a modo ed equilibrata, è deriso e la sua
-storia non è creduta. Dopo che si è avverato il vaticinio, Camillo fa erigere sulla via No-
-va, nel luogo in cui è stata sentita la voce profetica, un tempio all'ignota divinità che aveva avvertito i Romani del pericolo e il nuovo dio è chiamato Aio Locutio (Aius Locutius
-o Aius Loquens; la divinità che parla o che annuncia, da *aio* = dico o *loquor* = 
-parlo).
+La tradizione è discorde sui modi e i luoghi del presunto recupero dell'oro versato ai Galli. Alcuni riferiscono che sarebbe stato ripreso da Camillo ai Galli in ritirata verso nord; per altri l'oro sarebbe stato riconquistato dagli abitanti di Caere, alleati di Roma fin dalla guerra contro Veio. Altri ancora hanno messo in relazione col riscatto le duemila libbre d'oro trovate da Pompeo nel corso dei lavori del 52 a.C. sotto il tempio di Giove Ottimo Massimo; ma questo accostamento è probabilmente privo di fondamento. È probabile invece che l'oro non sia mai stato recuperato: mentre per gli scrittori romani l'onta del riscatto doveva essere necessariamente "riscattata".

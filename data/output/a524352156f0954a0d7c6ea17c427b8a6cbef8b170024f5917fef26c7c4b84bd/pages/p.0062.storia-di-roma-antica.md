@@ -1,17 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-62                                                                    STORIA DI ROMA ANTICA
+UN AVVENTURIERO ETRUSCO SUI 'TRONI DI ROMA
 
-[Immagine: incisione della Cloaca Massima]
-*La Cloaca Massima in un'incisione del secolo scorso.*
+Va in pietra della Regia: da casa d'abitazione dei re della dinastia etrusca questo complesso assumerà in età repubblicana la funzione di casa di rappresentanza del *rex sacrorum*. In un articolato progetto urbano il Campidoglio e il suo gigantesco tempio diventano il centro sacro e politico di Roma; che ormai vive della sua piazza e della sua rocca.
 
-***
+FORO E COMIZIO: AFFARI E POLITICA
+La creazione del Foro corrisponde all'integrazione definitiva della comunità palatino-veliense col complesso del Campidoglio e del Quirinale. La piazza, segno di una vera propria comunità civica, è ben presto divisa in due settori, ciascuno con funzioni precise. Dopo la prima pavimentazione (risalente a Tutto Ostilio o ad Anco Marzio) al tempo dei Tarquini il Comizio è dotato delle gradinate per accogliere le assemblee.
 
-**IL LIVELLAMENTO DEL FORO E LA CLOACA MAXIMA**
+Questa parte del Foro è destinata dunque alla politica e all'amministrazione della giustizia; mentre le attività propriamente economiche si stabiliscono nella parte meridionale del Foro. Le numerose botteghe artigiane, dislocate tutt'intorno per volere di Tarquinio, sono destinate ad attività commerciali sulla base di prodotti più raffinati e riservati a un mercato socialmente più elevato di quelli del foro Boario e del foro Olitorio, riservati allo smercio delle derrate alimentari e del bestiame.
 
-La pavimentazione del Foro Romano, attualmente visibile, è risalita a Lucio Nevio Surdino, pretore del 14 a.C., come si legge nell'iscrizione in lettere di bronzo situata vicino alla colonna di Foca, nella parte centrale della piazza.
+IL TEMPIO DI GIOVE SUL CAMPIDOGLIO
+La tradizione sul tempio di Giove Capitolino del Campidoglio presenta qualche incertezza nell'attribuzione all'uno o all'altro dei Tarquini. Tarquinio Prisco l'avrebbe iniziato e Tarquinio il Superbo l'avrebbe concluso. Infine la dedica vera e propria del tempio (si potrebbe dire 'inaugurazione') coincide con il primo anno della Repubblica. Date le dimensioni colossali dell'edificio è lecito pensare che il primo sovrano etrusco abbia edificato il solo grande basamento e parte dell'alzato e che l'ultimo dei re abbia concluso l'intero edificio.
 
-Si ripavimentava il Foro ogni volta che incendi, demolizioni o nuove costruzioni rendevano necessario livellare tutto e sistemare un nuovo piano di calpestio. Tra questi otto strati successivi, il pavimento in terra battuta corrisponde alla prima utilizzazione della valle tra Campidoglio e Palatino come piazza della città o foro e risale all'avvento dei Tarquini. Infatti Tarquinio Prisco promosse l'imponente opera di drenaggio della valle, che presentava un fondo sconnesso, solcato da numerosi corsi d'acqua e reso inospitale da molte paludi.
+Il tempio di Giove è il primo esempio di tempio "tuscanico" (che imita modelli greci in parte modificandoli) diffuso nell'Etruria e nel Lazio. Prima i palazzi e le regiae ospitavano le divinità gentilizie: ora si costruisce un edificio pubblico funzionale solo al culto delle divinità. Molti culti arcaici preesistenti sono spostati o accolti nel tempio; come Terminus (dio dei confini) ospitato nella cella del dio.
 
-La più importante delle numerose canalizzazioni è la *Cloaca Maxima* (la fogna maggiore). Il suo percorso inizia dal Quirinale per poi dirigersi verso la futura basilica Emilia (subito a destra per chi entra nell'attuale ingresso del Foro), attraversandola obliquamente. Dopo aver piegato in avanti alla volta del santuario di *Venere Cloacina*, il canale attraversa il Foro e la futura basilica Giulia, descrivendo un gomito in corrispondenza del santuario di *Vertumno*. Sempre zigzagando sbocca infine nel Tevere, vicino al ponte *Sublicio*. La *Cloaca* in origine è coperta solo in parte: la sua struttura sotterranea è posta fino a 10 m di profondità ed è alta oltre 4 m e larga più di 3 m.
+L'edificio, orientato secondo un asse nord-sud, misurava 53 m per 63 m circa. È abbastanza difficile ricostruirne puntualmente l'alzato: probabilmente le celle (a partire da sinistra di Minerva; Giove e Giunone) occupavano solo parte del podio. Sui lati lunghi sei colonne formavano un colonnato che si arrestava contro la parete cieca di fondo.
 
-Al drenaggio delle acque segue il livellamento e la pavimentazione in terra battuta: così la valle tra i colli diviene la piazza dei nuclei abitati situati sui colli. Le due strade, la *via Sacra* e la *via Nova*, prima extraurbane, divengono ora percorsi urbani. In questo momento è pavimentata l'area del Comizio, sottostante alla rocca capitolina; forse già utilizzata precedentemente. A questa sistemazione del Foro e del Comizio corrisponde anche la prima fase costruttiva.
+Le sei colonne della facciata, orientata a sud, insieme ad altri due ranghi di colonne costituivano il sostegno per il tetto del profondo pronao; lo spazio templare che sta davanti alle celle. Il tetto (forse a tre falde) era decorato alla sommità da una statua di terracotta raffigurante Giove in una quadriga.
+
+Di questo imponente edificio attualmente rimangono visibili ben pochi resti. Parte dell'angolo orientale della facciata sud si scorge in via del Tempio di Giove, resti della parete nord in piazzale Caffarelli, mentre la parte più cospicua del nucleo centrale si trova all'interno del museo Capitolino.

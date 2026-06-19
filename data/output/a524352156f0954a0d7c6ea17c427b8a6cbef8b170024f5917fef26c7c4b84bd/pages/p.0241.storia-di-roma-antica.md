@@ -1,22 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-241
+242
 
-nato, preoccupato per questo atteggiamento, ha più volte inviato osservatori in Oriente (nel 92 Mario, nell'87 Silla) per studiare la situazione.
+STORIA DI ROMA ANTICA
 
-**La mossa di Mitridate VI coglie di sorpresa i Romani, distratti dagli avvenimenti in Italia.** Ma l'occasione è stata offerta a Mitridate VI dal comportamento di alcuni senatori romani, i quali, avendo concesso dei prestiti al re di Bitinia, Nicomede IV, hanno incoraggiato a saccheggiare il Ponto, per procurarsi il denaro da restituire loro: Mitridate VI non può reagire alla provocazione. Liquidato facilmente Nicomede IV, decide d'invadere la provincia romana d'Asia e se ne impadronisce: Da Efeso invia segretamente messi ai magistrati delle città greche con l'ordine di eliminare i Romani e gli Italici (soprattutto *publicani* e *negotiatores*) presenti nella provincia.
+Caio Mario, incisione tratta dall'Illustrium imagines.
 
-L'ordine è eseguito con incredibile zelo, tanto che sono massacrati in un solo giorno circa 80.000 uomini: Anche la propaganda filoellenica, perseguita da Mitridate VI, sortisce buoni effetti. Infatti raggiunge con i suoi eserciti la Macedonia e la Grecia, dove è acclamato come liberatore.
+(ad allontanarsi da Roma) il plebiscito è approvato con l'appoggio dei cavalieri fedeli a Mario.
 
-<center>**...A ROMA**</center>
+Un altro plebiscito toglie il comando della guerra in Oriente a Silla per affidarlo a Mario. Allora Silla marcia su Roma con sei legioni, per «liberarla da coloro che la stavano governando da tiranni». Alla violenza politica risponde un atto rivoluzionario. Presa Roma, cacciati o uccisi i rivali (Mario riesce a fuggire in Africa) abrogati i plebisciti di Sulpicio; Silla parte per la campagna contro Mitridate VI. Appena Silla lascia Roma il console dell'87 Lucio Cornelio Cinna, suo rivale politico, tenta di varare una legge che autorizza l'iscrizione dei nuovi cittadini nelle 35 tribù storiche. L'altro console, Gneo Ottavio, partigiano di Silla, si oppone. Le opposte fazioni si scontrano e per le vie di Roma scorre di nuovo il sangue di cittadini. Cinna raggiunge le legioni nel Sannio; chiude la guerra con Lucani e Sanniti, e marcia su Roma, avendo trovato un alleato in Mario rientrato in Italia.
 
-A Roma il comando della guerra in Oriente è stato assegnato regolarmente a Lucio Cornelio Silla, console nell'88 e che si trova a combattere contro i Sanniti. Nello stesso tempo si dibatte la questione dell'iscrizione dei nuovi cittadini nelle tribù. La legge Giulia prevedeva che essi fossero iscritti in nuove tribù (8 o 10) appositamente istituite. Così i nuovi cittadini non avrebbe- ro conquistato il controllo dei comizi, come sarebbe avvenuto se essi, più numerosi dei vecchi cittadini, fossero stati distribuiti nelle 35 tribù tradizionali: L'ala più radicale dei seguaci di Druso; capeggiata dal tribuno Publio Sulpicio Rufo; intende eliminare questa restrizione e presenta un plebiscito contro l'istituzione delle nuove tribù.
+Lo scontro assume la fisionomia di una vera e propria guerra civile. Affianco del console Ottavio si schierano infatti con i loro eserciti i due generali Quintio Cecilio Metello Pio e Gneo Pompeo Strabone. Si combatte nei dintorni di Roma, ma i difensori della città non danno prova di abilità tattica e di chiare scelte politiche; per evitare ulteriori spargimenti di sangue, il Senato decide di trattare con Cinna e Mario. Quando questi entrano in città, si assiste però alla solita sequenza di stragi e condanne che accompagnano questa fase della storia di Roma. Ormai la ripetizione delle cariche è divenuta consueta. Per l'86 a.C. sono eletti consoli Mario per la settima volta (che muore poco dopo l'entrata in carica) e Cinna per la seconda. E Cinna, console anche negli anni 85 e 84, domina la scena politica per un triennio molto travagliato. L'iscrizione dei nuovi cittadini nelle tribù sarà risolta più tardi (forse nel 70 a.C.).
 
-La proposta è appoggiata anche da Gaio Mario; sia per la sua tradizionale disponibilità nei confronti degli ex alleati sia per il desiderio di crearsi una nuova base politica e di farsi assegnare la guerra contro Mitridate VI.
+Preme invece il problema dei debiti, che interessa buona parte degli aristocratici romani, privati delle loro rendite dalla guerra sociale e dall'occupazione della provincia d'Asia da parte di Mitridate VI. Nell'86, nonostante l'opposizione dei cavalieri, è varato un provvedimento che rimette tre quarti dell'ammontare dei debiti esistenti: in cambio è garantito il valore del denario d'argento, perché i debiti fatti con moneta buona non siano restituiti con moneta deprezzata.
 
-Nonostante l'ostilità del Senato e dei consoli in carica (tra cui Silla, costretto...
-
-***
-
-**SILLA IN PRIVATO**
-
-*Lucio Cornelio Silla appartiene a una famiglia patrizia. Un suo antenato era stato espulso dal Senato perché possedeva una quantità d'argento superiore a quanto consentito dalle leggi sul lusso. La condanna ha segnato tutti i discendenti e il giovane Silla conduce una vita disagiata. Spesso gli è rimproverata l'origine sospetta delle sue ricchezze, perché si arricchisce con le eredità della matrigna e d'una ricca cortigiana innamorata di lui. Trascorre il suo tempo in compagnia di mimi e buffoni, cantanti e danzatori. Da giovane s'innamora d'un attore, Metrobio; e continua ad amarlo per tutta la vita; bisessuale perfetto; ha cinque mogli. In giovanissima età sposa Ilia, da cui ha una bambina; sposa Elia e, successivamente per la terza volta Clelia, che ripudia col pretesto che è sterile. Pochi giorni dopo, a cinquant'anni, fa uno splendido matrimonio, molto chiacchierato, con Cecilia Metella; che gli dà figli e per i cui funerali spende molto più del consentito dalla legge. Ancora vedovo, s'innamora di Valeria; figlia di Valerio Messalla, conosciuta durante uno spettacolo di gladiatori. Da questa passione senile nasce una figlia, nata però dopo la sua morte perciò chiamata Postuma.*
+Ma il programma di Cinna è interrotto bruscamente dalla sua morte (84 a.C.) e i suoi successori non sono all'altezza della situazione.

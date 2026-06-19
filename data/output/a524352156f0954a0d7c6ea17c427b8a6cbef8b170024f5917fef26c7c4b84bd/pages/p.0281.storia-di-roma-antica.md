@@ -1,12 +1,36 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-RICONCILIAZIONE E CONSENSO                                                                          281
+282
 
-*La statua di Augusto ai Musei Vaticani.*
+STORIA DI ROMA ANTICA
 
-[Immagine della statua di Augusto]
+**LA CITTÀ DI MARMO**
 
-vince dove è necessaria la presenza dei soldati e la governa per mezzo di senatori da lui delegati o di amministratori di rango equestre (procuratori). Anche i proventi delle province sono divisi tra la cassa dello Stato (*erario*) e la nuova cassa imperiale (*fisco*). Inoltre dal 23 a.C. Augusto si fa conferire anche il potere proconsolare maggiore, cioè il diritto di controllare i governatori delle province disarmate (scovando un precedente nel potere affidato a Pompeo al tempo della guerra contro i pirati).
+Augusto si vanta d'avere trovato Roma di mattoni e d'averla lasciata di marmo. Infatti costruisce (o fa costruire dai suoi amici) numerosi edifici pubblici di prestigio. Sul piano urbanistico è fondamentale il nuovo Foro, costruito per far fronte all'aumento della popolazione dell'Urbe e all'accresciuto numero dei processi; oltre alla ristrutturazione del Campo Marzio settentrionale.
 
-II. IL PRINCIPE È INVIOLABILE E SACROSANTO
+Sotto Augusto sono costruiti o restaurati circa ottanta edifici di culto. Augusto stesso promette in voto e poi dedica, oltre al tempio di Marte Ultore nel nuovo Foro, templi di Apollo sul Palatino e di Giove Tonante sul Campidoglio. Fa restaurare (senza farvi iscrivere il proprio nome, come sottolinea nella propria autobiografia) il Campidoglio e il teatro di Pompeo.
 
-Sempre nel 23 a.C. Augusto assume anche la potestà tribunizia: in tal modo è inviolabile e può opporsi alle decisioni di qualsiasi magistrato col tradizionale diritto di veto dei tribuni della plebe. Inoltre può convocare l'assemblea della plebe, per proporre nuove leggi e aggirare un'eventuale opposizione del Senato alle sue iniziative. A partire da Augusto la potestà tribunizia sarà rinnovata anno dopo anno dai suoi successori, che la assumeranno al momento dell'ascesa al potere. L'indicazione dell'iterazione o ripetuta elezione diviene quindi un modo per contare gli anni di regno. Dopo queste innovazioni costituzionali Augusto può deporre il consolato: è di fatto il più autorevole e intoccabile personaggio dello Stato romano. Gli manca solo il controllo della sfera religiosa, detenuto da Marco Emilio Lepido, l'ex triumviro emarginato dalla vita politica e creato pontefice massimo; Dato che la carica è a vita, solo alla morte di Lepido, nel 12 a.C., anche il primato tra i sacerdoti romani passa ad Augusto.
+In nome dei suoi parenti fa costruire la basilica con portico di Gaio e Lucio, portici di Ottavia e di Livia, il teatro di Marcello.
+
+All'abbellimento della città contribuiscono gli amici consiglieri di Augusto: Marzio Filippo costruisce il tempio di Ercole Musagete (conduttore delle Muse); Lucio Cornificio il tempio di Diana; Asinio Pollione l'atrio della Libertà; Munazio Planco il tempio di Saturno; Cornelio Balbo un nuovo teatro; Statilio Tauro l'anfiteatro Panfiteatro.
+
+Tra tutti spicca Marco Agrippa con il Pantheon. Un poi quello
+
+***
+
+282
+
+STORIA DI ROMA ANTICA
+
+[Immagine del Pantheon]
+
+**LA CITTÀ DI MARMO**
+
+Augusto si vanta di avere trovato Roma di mattoni e d'averla lasciata di marmo. Infatti costruisce (o fa costruire dai suoi amici) numerosi edifici pubblici di prestigio. Sul piano urbanistico è fondamentale il nuovo Foro, costruito per far fronte all'aumento della popolazione dell'Urbe e all'accresciuto numero dei processi, oltre alla ristrutturazione del Campo Marzio settentrionale (vedi box Un programma nel marmo: l'Ara Pacis).
+
+Sotto Augusto sono costruiti o restaurati circa ottanta edifici di culto. Augusto stesso promette in voto e poi dedica, oltre al tempio di Marte Ultore nel nuovo Foro, i templi di Apollo sul Palatino e di Giove Tonante sul Campidoglio. Fa restaurare (senza farvi iscrivere il proprio nome, come sottolinea nella propria autobiografia) il Campidoglio e il teatro di Pompeo.
+
+In nome dei suoi parenti fa costruire la basilica con portico di Gaio e Lucio, i portici di Ottavia e di Livia, il teatro di Marcello.
+
+All'abbellimento della città contribuiscono gli amici e consiglieri di Augusto: Marzio Filippo costruì il tempio di Ercole Musagete (conduttore delle Muse); Lucio Cornificio quello di Diana; Asinio Pollione l'atrio della Libertà; Munazio Planco il tempio di Saturno; Cornelio Balbo un nuovo teatro; Statilio Tauro l'anfiteatro.
+
+Tra tutti spicca Marco Agrippa con il Pantheon.

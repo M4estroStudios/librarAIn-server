@@ -1,22 +1,34 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-re dell'Umbria. Lo scontro decisivo avviene nel 295 a Sentino sull' *Aesis* (Esino) presso l'odierna Sassoferrato (AN).
+156
 
-Nella battaglia, che è stata una vera e propria «battaglia delle nazioni», i consoli Quinto Fabio Massimo Rulliano e Publio Decio Mure, con quattro legioni e l'appoggio degli alleati, riescono a sconfiggere nemici assai più numerosi. Restano sul campo sia Gellio Egnazio sia Decio Mure.
+STORIA DI ROMA ANTICA
 
-Quest'ultimo trova la morte volontariamente; dopo aver pronunciato una solenne formula sacra, con cui offre la propria vita per ottenere dagli dèi la vittoria per l'esercito romano: è l'antico rituale della *devotio*, che accomuna il figlio al padre, che si era sacrificato allo stesso modo nella guerra contro i Latini.
+ROMA INVIA I SUOI PRIMI PREFETTI
 
-Negli anni successivi tutti i nemici dei Romani si arrendono o vengono a patti. Gli irriducibili Sabini sono domati (come i Sanniti) da Manio Curio Dentato (290) e Feronia, divinità sabina, è trasferita a Roma; dove le viene dedicato un tempio (vedi box *Manio Curio Dentato e l'urbanistica*).
+I Romani nel corso del II secolo a.C. debbono risolvere il problema dell'amministrazione dei territori annessi di recente formalmente autonomi (p. es. le *civitates sine suffragio*). Nascono così le «prefetture» o circoscrizioni territoriali, soggette alla giurisdizione di un *praefectus iure dicundo* inviato da Roma per l'amministrazione della giustizia e l'organizzazione dei mercati.
 
-In questo periodo il territorio controllato direttamente da Roma registra un notevole incremento e può essere usato per allentare la pressione demografica del proletariato urbano: nella regione strappata ai Sènoni è fondata la colonia romana di Sena Gallica (Senigallia).
+In questo periodo la formula è applicata:
+* al territorio unificato di Capua e Cuma;
+* all'agro cerelano (Caere / Cerveteri e Forum Clodi, a ovest del lago di Bracciano);
+* all'agro vulcente (Saturnia, nella valle dell'Albegna; Statonia nella valle del Flora);
+* al territorio umbro (Interamna Nahars / Terni, Plestia / Colfiorito; Fulginie / Foligno);
+* al territorio sabino (Reate / Rieti, Amiternum / Amiterno, Nursia / Norcia);
+* all'area picena e pretuzia (nelle Marche).
 
-I territori di Foligno e Spoleto, insieme a quelli dei Sabini e dei Pretuzi, sono annessi allo Stato romano, che si estende così fino al mare Adriatico. Nel sud, come già detto, è fondata la colonia di Venosa, nel territorio tolto ai Sanniti (291).
+Nuovi trattati d'alleanza (*foedera*) sono stretti o rinnovati in questo periodo tra Roma e i popoli sconfitti, che mantengono formalmente la propria indipendenza.
 
-***
+ANCORA I GALLI
 
-LA DEVOTIO DEI DECII
+Il pericolo si affaccia nuovamente dal nord nel 284, quando bande di Galli Sènoni invadono l'Etruria settentrionale. I Romani subiscono gravi perdite in una battaglia presso Arezzo, nella quale muore il console Quinto Cecilio Metello con sette tribuni militari e 13.000 soldati.
 
-*La devotio o sacrificio è uno tra i rituali più conosciuti nel mondo romano. Esistono due tipi di devotiones: la devotio ducis, quando il comandante sacrifica se stesso per la salvezza dell'esercito (come nel caso dei Decii Mure) e la devotio hostium o «sacrificio dell'esercito nemico», che è consacrato agli dèi. Si tratta in entrambi i casi d'una sorta di voto; col dono alle divinità infernali della persona o delle cose scelte.*
+Ma i Romani passano subito al contrattacco e rovesciano la situazione, mettendo a ferro e fuoco il territorio dei Sènoni, che viene occupato fino a Rimini: l'anno seguente la minaccia gallica si ripresenta. Questa volta gli invasori sono i Galli Boi, evidentemente preoccupati della rapida avanzata dei Romani verso le loro sedi nella pianura padana orientale.
 
-*Il primo caso di devotio, ambientato nella Roma romulea, è quello di Metteo Curzio. Il comandante sabino si getta col cavallo in una palude della valle del Foro (da allora chiamato locus Curtius) per garantire la salvezza ai suoi. Ma il suicidio dei maschi della famiglia dei Decii ci offre l'esempio più chiaro del rituale della devotio: Il primo Publio Decio Mure vota se stesso agli dèi inferi durante la guerra latina, quando si combatte ai piedi del Vesuvio lungo la strada che porta al fiume Veseri (340 a.C.). Dopo la preghiera agli dèi si lancia tra i nemici penetrando profondamente tra la schiera, da lui scompaginata. Con la sua morte i Romani vincono. Il secondo Decio Mure, figlio del console del 340 a.C., sacrifica se stesso in occasione della terza guerra sannitica, nello scontro di Sentino (295 a.C.). Anche questa volta per i Romani la battaglia vinta è decisiva, dato che prelude alla vittoria finale su Sanniti, Galli, Etruschi e Umbri. Il terzo Decio è il figlio del Decio Mure di Sentino. La possibilità di seguire le orme del nonno o del padre gli si presenta durante la guerra con Pirro; in occasione della battaglia di Asculum (279 a.C.).*
+I Galli, grazie all'alleanza delle città etrusche ostili a Roma, giungono ancora una volta fino al Vadimone (Bracciano), dove sono battuti da un esercito romano comandato dal console Publio Cornelio Dolabella (283).
 
-*In genere si ritiene che la triplice devotio dei Decii Mure rappresenti uno dei frequenti casi di raddoppiamento di un fatto leggendario. Dei tre sacrifici probabilmente è falso il primo, poiché la gens Decia di origine osca, è conosciuta a Roma soltanto con la prima guerra sannitica; quando il primo Decio, a causa d'uno stratagemma, si conquista il cognome di Mus, topo. Le altre due devotiones sono probabilmente vere. In particolare il Decio morto a Sentino, censore nel 304 a.C., quattro volte console, nei racconti dei Romani diventa un eroe, protagonista anche d'un dramma del tragediografo Accio (fine del I secolo a.C.) intitolato Decius sive Aeneadae (Decio o gli Eneadi).*
+NASCE A ROMA LA PITTURA: ARTE NON DISDEGNATA DAI NOBILI
+
+Tra il IV e il II secolo a.C. un patrizio romano, Gaio Fabio, si dedica alla pittura: infatti dipinge di propria mano il tempio della Salute, votato nel 311 dal console Gaio Giugno Bubulco durante la seconda guerra sannitica e costruito dallo stesso come censore tra il 306 e il 303. Secondo la tradizione queste pitture si potevano ammirare fino all'epoca dell'imperatore Claudio, quando il tempio fu distrutto da un incendio.
+
+Esempi di pittura romana di questo periodo si conservano in qualche tomba gentilizia: quella più nota è il sepolcro dei Cornelii Scipioni presso la via Appia; sono noti anche gli affreschi frammentari di alcuni sepolcri a camera rinvenuti sull'Esquilino, che riproducono scene di battaglia o di trionfo, da collegare con le gesta dei personaggi sepolti. Uno in particolare, in cui è raffigurata probabilmente la consegna di doni militari dopo la presa di una città, in base ai nomi dipinti come didascalia alle figure (Fabius, Fannius), è ritenuto da molti il sepolcro dei Fabii.
+
+La pittura deve essere stata tenuta in grande onore a Roma; se gli illustri membri della gens Fabia discendenti dal pittore Gaio Fabio ereditano da questo antenato artista il cognome di Pittore, e tra loro è noto il più antico storico romano: Fabio Pittore.

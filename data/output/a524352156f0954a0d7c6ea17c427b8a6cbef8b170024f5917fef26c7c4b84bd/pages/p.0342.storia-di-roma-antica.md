@@ -1,21 +1,40 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-342                                                                    STORIA DI ROMA ANTICA
+L'IMPERO NELLA SUA MASSIMA ESPANSIONE;
 
-Germania Superiore e uno dei più famosi e stimati generali del suo tempo. Sarebbe stato Traiano l'uomo in grado di conciliare tutte le forze politiche del suo tempo e di portare l'Impero al massimo della sua solidità e della sua estensione territoriale.
+343
 
-ADOPZIONE, SISTEMA DI SUCCESSIONI AL TRONO
+tidiano, mentre milioni di schiavi erano obbligati ai lavori nei latifondi, nelle miniere o a remare sulle navi. Scuole, università e biblioteche garantivano un'istruzione tanto elementare quanto superiore riservata; quest'ultima ai figli delle famiglie borghesi e patrie: e ogni anno entravano nella società romana medici, ingegneri, architetti, amministratori, geografi, giuristi, filosofi, scrittori ecc.
 
-*Traiano aveva quarantaquattro anni quando apprese di essere stato adottato da Nerva. Con questo atto giuridico, prendeva definitivamente corpo il sistema dell'adozione come meccanismo di successione al trono.*
-*Questo sistema doveva permettere una scelta oculata di un personaggio che si fosse già distinto per doti di governo, intelligenza e forte legame con l'esercito. Si credette, così, di avere risolto le contraddizioni del sistema dinastico per evitare gli eccessi che si erano verificati con i successori di Augusto (gens Giulio-Claudia) e con lo stesso Domiziano (gens Flavia).*
-*Inoltre, l'adozione permetteva di mascherare, agli occhi dell'opinione pubblica, la realtà monarchica dell'Impero romano, e la conseguente scelta del migliore costituiva una formula in un certo senso aristocratica, ma certamente di carattere liberale, che garantiva ai Romani la personalità del nuovo imperatore.*
+Le navi romane, a migliaia, solcavano le acque del Mediterraneo, dalle coste della Gallia allo stretto del Bosforo; trasportando materie prime e prodotti finiti, grano, farina, olio e vino come anche colonne e blocchi di marmo per gli edifici, templi, circhi e gli anfiteatri, che venivano eretti in quasi tutte le città dell'Impero. Le stesse navi oltrepassavano Gibilterra e risalivano le coste iberiche fino alla Britannia o costeggiavano dell'Africa fino al Marocco e alle Canarie. La costruzione delle navi causò il primo dei maggiori disboscamenti che l'Italia e l'Europa abbiano conosciuto prima di quelli successivi del Medioevo e dell'età moderna.
 
-TRAIANO
+MITHRA
 
-L'adozione di Traiano portava un'altra novità: Traiano era nato in Spagna. Apparteneva alla nuova aristocrazia provinciale.
-La sua famiglia si era infatti trasferita, alcune generazioni prima, dall'Umbria nella Spagna meridionale; e qui fu il padre di Traiano a emergere socialmente, ottenendo le cariche di console, di senatore e di governatore delle province di Asia e di Siria.
-L'imperatore spagnolo confermava la trasformazione delle province dell'Impero romano da regioni vinte e sottomesse a membri con diritti e riconoscimenti all'interno dello Stato.
-Un vento di uguaglianza percorreva le province e trasformava l'Impero di Roma in grande Stato multinazionale, ove tutti i cittadini finivano per avere, anche se a volte solo di fatto, gli stessi diritti dei Romani. Fu così che, con Traiano, l'egemonia dell'Urbe sul resto dell'Impero si trasforma in un più accettabile ruolo di capitale politica, economica e culturale dello Stato. Lo stesso Impero, la cui amministrazione era ormai vasta e complessa, doveva ora badare a che i confini fossero sempre sicuri, garantiti dai tentativi di invasione dovuti alle pressioni dei germanici sul Reno, di quelli slavi nell'Europa orientale e badare ancora che i regni lontani dei Parti e della Persia non mutassero gli equilibri politici dell'Oriente.
+La figura del dio Mithra si formò nell'antica Persia, attraverso un processo religioso che coinvolse eredità babilonesi e temi ellenistici. La deportazione dei pirati della Cilicia in Grecia per opera di Pompeo rappresentò il primo contatto del mondo occidentale con il mitraismo che nel secolo I d.C. giunse in Italia con le prime comunità di Capua, Ostia e Roma. Il mitraismo ebbe suoi adepti più numerosi e fedeli tra i militari, propagandosi così velocemente in tutte le guarnigioni.
 
-LE VIE DELL'IMPERO: TERRESTRI E MARITTIME
+Il mito racconta che Mithra nasceva da una roccia; uscendone con nelle mani un pugnale e una fiaccola; mentre alcuni pastori e il dio Saturno assistono alla sua nascita. Recise alcune canne, Mithra colpisce una roccia con una freccia e da questa scaturisce un'acqua che viene bevuta dai suoi adepti, dopodiché il dio si pone alla caccia di un toro e lo cattura; aiutato da un corvo. Trasportato il toro in una grotta, lo sacrifica perché il sangue dell'animale redime gli adepti; quindi Mithra viene coronato dal sole con una raggiera splendente. Il culto di Mithra garantiva la resurrezione, la remissione dei peccati, la consacrazione al dio e l'appartenenza a una comunità gerarchica in cui si passavano sette diversi livelli di iniziazione; i cui contenuti erano noti solo agli adepti.
 
-L'Impero doveva assicurare, altresì, una fittissima rete di vie di comunicazione, tanto terrestri quanto marittime: milioni di tonnellate di merci, ogni anno, dovevano essere trasferite da provincia a provincia e da città a città. Ovunque, piccole imprese artigianali lavoravano per produrre oggetti di uso...
+I santuari e i luoghi rituali del mitraismo furono detti mitrei e numerosi ne sono stati identificati in tutto il mondo romano. Molti ne esistono ancora a Roma e a Ostia. Essi hanno l'aspetto di una grotta naturale e presentano i banchi degli adepti su due lati lunghi della sala, sul cui fondo è l'immagine del dio e, al centro, è l'altare. Il culto di Mithra ebbe forte diffusione e contrastò lungo il nascente cristianesimo; tanto che le fonti ricordano la chiusura violenta di alcuni mitrei operata dai cristiani dopo l'editto di Costantino.
+
+I CULTI RELIGIOSI
+
+In questo Impero, così multiforme e articolato, i culti religiosi degli antichi Romani costituivano una minoranza senza futuro; il cui primato derivava unicamente dal fatto che le divinità si trovavano nella città che aveva costruito l'impero e che dava loro un ruolo non solo religioso, ma anche politico: Viceversa, i trasferimenti dei militari da un esercito all'altro nelle varie province, dovuti alla ricerca di lavoro nelle altre città e quelli di tanti e diversi predicatori, diffondevano religioni e culti esoterici e salvifici, distinti da quelli...
+
+***
+
+L'IMPERO NELLA SUA MASSIMA ESPANSIONE; 343
+
+tidiano, mentre milioni di schiavi erano obbligati ai lavori nei grandi latifondi, nelle miniere o a remare sulle navi. Scuole, università e biblioteche garantivano un'istruzione tanto elementare quanto superiore, quest'ultima ai figli delle famiglie borghesi e patrie, e ogni anno entravano nella società romana, ingegneri, architetti, amministratori, geografi, giuristi, filosofi, scrittori ecc.
+
+Le navi romane, a migliaia, solcavano le acque del Mediterraneo, dalle coste della Gallia allo stretto del Bosforo, trasportando materie prime e prodotti finiti, grano, farina, olio e vino come anche colonne e blocchi di marmo per gli edifici, i templi, i circhi e gli anfiteatri, che venivano eretti in tutte le città dell'Impero. Le stesse navi oltrepassavano Gibilterra e risalivano le coste iberiche fino alla Britannia o costeggiavano quelle dell'Africa fino al Marocco e alle Canarie. La costruzione delle navi causò il primo dei maggiori disboscamenti che l'Italia e l'Europa abbiano conosciuto prima di quelli successivi del Medioevo e dell'età moderna.
+
+MITHRA
+
+La figura del Mithra si formò nell'antica Persia, attraverso un processo religioso che coinvolse eredità babilonesi e temi ellenistici. La deportazione dei pirati della Cilicia in Grecia per opera di Pompeo rappresentò il primo contatto del mondo occidentale con il mitraismo, che nel secolo I d.C. giunse in Italia con le comunità di Capua, Ostia e Roma. Il mitraismo ebbe adepti più numerosi e fedeli tra i militari, propagandosi così velocemente nelle guarnigioni.
+
+Il mito racconta che Mithra nasceva da una roccia, uscendone con nelle mani un pugnale e una fiaccola, mentre alcuni pastori e il dio Saturno assistono alla sua nascita. Recise alcune canne, Mithra colpisce una roccia con una freccia e da questa scaturisce un'acqua che viene bevuta dagli adepti, dopodiché il dio si pone alla caccia di un toro e lo cattura, aiutato da un corvo. Trasportato il toro in una grotta, lo sacrifica perché il sangue dell'animale redime gli adepti, quindi Mithra viene coronato dal sole con una raggiera splendente. Il culto di Mithra garantiva la resurrezione, la remissione dei peccati, la consacrazione al dio e l'appartenenza a una comunità gerarchica in cui si passavano diversi livelli di iniziazione, i cui contenuti erano noti solo agli adepti.
+
+I santuari e i luoghi rituali del mitraismo furono detti mitrei e numerosi ne sono stati identificati in tutto il mondo romano. Molti ne esistono ancora a Roma e a Ostia. Essi hanno l'aspetto di una grotta naturale e presentano i banchi degli adepti su due lati lunghi della sala, sul cui fondo è l'immagine del dio e, al centro, l'altare. Il culto di Mithra ebbe forte diffusione e contrastò lungo il nascente cristianesimo, tanto che le fonti ricordano la chiusura violenta di alcuni mitrei operata dai cristiani dopo l'editto di Costantino.
+
+I CULTI RELIGIOSI
+
+In questo Impero, così multiforme e articolato, i culti religiosi degli antichi Romani costituivano una minoranza senza futuro, il cui primato derivava unicamente dal fatto che le divinità si trovavano nella città che aveva costruito l'impero e che dava loro un ruolo non solo religioso, ma anche politico. Viceversa, i trasferimenti dei militari da un esercito all'altro nelle varie province, quelli dovuti alla ricerca di lavoro nelle altre città e quelli di tanti e diversi predicatori, diffondevano religioni e culti esoterici e salvifici, distinti dal fat...

@@ -1,20 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-I ROMANI E LA PENISOLA | 165
+ROMANI E CARTAGINESI: È LO SCONTRO
 
-***
+I TRATTATI NON BASTANO PIÙ
 
-CITADINI E TERRE
+Roma, dopo aver completata la conquista dell'Italia meridionale; quando è costretta a intervenire in Sicilia; si trova faccia a faccia con la potenza cartaginese (vedi capitolo *L'egemonia nell' Italia centro-meridionale*). Ma fin dagli inizi della Repubblica vari trattati di navigazione e di commercio con scadenze sempre più ravvicinate (509, 348, 306 e 279 a.C.; vedi box *I trattati di Cartagine* nello stesso capitolo) dimostravano che la possibilità di uno scontro con Cartagine era stata costante nella politica romana.
 
-*L'incremento dei cittadini romani, abitanti nell'Urbe e nel territorio romano, nel periodo che va dalla fine della Lega latina allo scoppio della prima guerra punica può essere seguito grazie ai dati sui censimenti tramandati dagli scrittori antichi. Può essere utile confrontare l'aumento della popolazione (le cifre si riferiscono ai cittadini maschi adulti) con i dati proposti dagli studiosi sull'estensione del territorio romano.*
+L'antica colonia della città fenicia di Tiro sulla costa africana (a nord-est dell'attuale Tunisi) è una tappa obbligata dei traffici marittimi tra il Mediterraneo orientale (Egitto e Fenicia; da cui riceve tappeti, ceramiche, vetri, pietre preziose) e quello occidentale (Spagna; da cui riceve argento e pesce salato). È una tappa obbligata anche nei traffici nord-sud, perché è in diretto contatto con gli empori della Sicilia (da cui importa prodotti artistici) ed è il porto d'imbarco delle merci dell'Africa centrale (avorio, penne di struzzo, schiavi). Cartagine, come tutte le città fenicie, è famosa per la produzione di porpora e il suo "impero mercantile" si estende, per mezzo di fondazioni coloniali e scali commerciali, lungo tutto il bacino mediterraneo occidentale: dalla Cirenaica alle colonne d'Ercole, dalla Spagna meridionale alle Baleari, dalla Sardegna e Corsica a parte della Sicilia. Nell'economia cartaginese una parte importante è rappresentata anche dall'agricoltura, esercitata soprattutto nella fertile pianura del fiume Bagrado: lì sorgono le fattorie dei grandi proprietari fondiari, i quali insieme ai grandi mercanti e ai grandi imprenditori-artigiani costituiscono il nucleo della oligarchia nelle cui mani è concentrato il potere politico. Anche a Cartagine si contrappongono due differenti linee politiche: i proprietari terrieri preferiscono una politica di espansione territoriale in Africa; mentre mercanti e gli artigiani vedono con favore le conquiste d'oltremare, per consolidare e allargare i mercati. La difesa di un impero coloniale e il controllo degli alleati in Africa, dai quali esigono pesanti tributi, obbligano i Cartaginesi a mantenere un ingente apparato militare, costituito soprattutto da mercenari. Ma sempre la forza cartaginese di base è costituita dalla flotta.
 
-| Anno | Cittadini | Territorio |
-| :--- | :--- | :--- |
-| 336 | 250.000 | 5.776 kmq |
-| 294 | 262.321 | 14.000 kmq |
-| 280 | 287.222 | 17.320 kmq |
-| 276 | 271.224 | |
-| 265 | 292.234 | 24.000 kmq |
+LA QUESTIONE SICILIANA
 
-In meno di cinquant'anni sono costruiti ben due acquedotti: l'*aqua Appia* (312) e l'*Anio Vetus* (273).
-Allo stesso modo l'annessione dei territori dei Sabini e dei Pretuzi (290) porterà alla costituzione delle due ultime tribù: la *Quirina* e la *Velina*, nel 241 a.C.
-In definitiva nella prima metà del III secolo a.C. Roma diventa sempre più uno Stato territoriale. L'incremento dei cittadini romani, abitanti nell'Urbe e nel territorio romano, nel periodo che va dalla fine della Lega latina allo scoppio della prima guerra punica può essere seguito grazie ai dati sui censimenti tramandati dagli scrittori antichi. Può essere utile confrontare l'aumento della popolazione (le cifre si riferiscono ai cittadini maschi adulti) con i dati proposti dagli studiosi sull'estensione del territorio romano.
+Pirro nel 275 a.C., al momento dell'abbandono della Sicilia (vedi capitolo *L'egemonia nell'Italia centro-meridionale*) avrebbe esclamato: «Che bel dopo...

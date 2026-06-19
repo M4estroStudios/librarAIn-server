@@ -1,20 +1,19 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-374
+LA CRISI DELL'IMPERO 375
 
-STORIA DI ROMA ANTICA
+ciale dell'Impero dove tutti i pagani, plebei, patrizi, militari, commercianti, ricchi e poveri erano ormai persuasi dalla propaganda imperiale che il primo nemico interno dell'Impero stesso era proprio e soltanto il cristianesimo. La persecuzione di Decio fu terribile, spietata e profondamente intollerante: tanto che molti dei cittadini abiurarono e altri pagarono per ottenere falsi certificati di avere sacrificato agli dèi e all'imperatore.
 
-*Ruderi dell'arco di Balbo, antica incisione.*
+LE VENATIONES
+A Roma l'organizzazione delle venationes era mastodontica e in essa trovavano posto dipendenti con le diverse e specifiche funzioni. L'adiutor ad feras, colui che badava ai carnivori; il praepositus herbarium, che sorvegliava gli erbivori; infine il curator venatiorum, colui che dirigeva l'organizzazione dello spettacolo.
 
-ne nelle aule delle grandi terme; si offrivano pubbliche recite, letture e mostre di quadri che illustravano gli episodi maggiori della storia di Roma. L'augurio di tutti era per un felice secondo millennio:
+Sappiamo che le venationes si tenevano al mattino, da cui il nome di *ludus matutinus* che per analogia era dato anche all'edificio dove si tenevano le bestie e dove si allevavano venatores, cioè coloro che nell'arena avrebbero affrontato le belve. L'imperatore Claudio era talmente appassionato di questi spettacoli che poteva assistervi e li faceva iniziare fin dall'alba. Maggiore era il numero di animali e maggiore per importanza era la venatio che si dava al pubblico. Si calcola che nelle venationes date da Augusto siano stati presentati 3500 animali, con una media di 130 per ogni spettacolo. Pompeo, però, ne aveva offerti 500 in 5 giorni e Cesare addirittura 400 leoni in una sola giornata.
 
-Ma ormai gli eserciti di Germania si sentivano sempre più padroni della scena politica e, nell'anno successivo ai grandi festeggiamenti, le legioni della Pannonia, insoddisfatte di quanto l'imperatore concedeva loro, si ribellarono proclamando imperatore un senatore originario di quelle terre, Messio Traiano Decio.
+Ma le cifre degli spettacoli dell'età repubblicana sono ben misera cosa rispetto a quelle dell'età imperiale. Cifre da far brividire un moderno ecologo al solo sentirle. L'inaugurazione del Colosseo vide morire nell'arena ben 9000 animali e Traiano, per il suo trionfo nel 106 d.C., offrì ai Romani una venatio di 11.000 animali.
 
-MESSIO TRAIANO DECIO
+La simpatia popolare era conquistata; l'imperatore era al massimo della popolarità. Trovato così il modo semplice per ingannare fino in fondo il popolo e assicurarselo dalla propria parte, prese forma definitiva tutta questa organizzazione di ricerca e cattura degli animali nelle varie province: in Asia, in Africa, in Germania e in Gallia. L'arrivo di tante belve non era tuttavia solo un fatto che saziava la fame di spettacoli dei Romani o la loro semplice curiosità; esso infatti era utile a quegli studiosi della natura, che potevano così osservare da vicino gli animali più diversi e rari.
 
-*Nel 249 d.C. Decio marciava immediatamente contro Filippo l'Arabo e lo vinceva a Verona. Intanto a Roma i senatori trovavano contraddittoria e irritante la simpatia che Filippo l'Arabo nutriva sempre più apertamente per il cristianesimo e, raggiunto l'accordo con i pretoriani, facevano uccidere anche il figlio più giovane. Il pannone Decio era così imperatore di Roma e appariva a tutti un po' meno barbaro per aver sposato una donna di famiglia etrusca, Erennia Cupressenia Etruscilla:*
+Quando le venationes venivano date, esse erano precedute, come i giochi gladiatori, da una sfilata in cui, in questo caso, si portavano in fila gli animali bardati e ornati, sempre per dare effetto scenografico a tutto l'insieme. Leoni, tigri, pantere, tori, elefanti sfilavano con pennacchi, stoffe policrome, cinture e collari borchiati. C'è da credere che rara e straordinaria doveva essere la perizia dei domatori romani, se riuscivano a far sfilare con una relativa tranquillità belve tanto feroci. Finita la sfilata, gli animali rientravano nelle gabbie, da dove, a turno, venivano introdotti nell'arena.
 
-*Nel 250 Decio nominava Cesare il proprio figlio, Erennio Etrusco; e scatenava una delle più terribili persecuzioni anticristiane. Nel 251 d.C. Decio nominava Cesare anche l'altro suo figlio; Ostiliano Messio.*
+Nei primi tempi, quando non c'erano gli anfiteatri, gli animali feroci erano tenuti, come guinzaglio, da una lunga corda, che permetteva loro di muoversi ma non d'avventarsi sulla cancellata avendo preferito qualcuno del pubblico alla preda già designata. Ma l'uso stesso della corda, segno di prudenza, fu abolito da Silla, perché la folla non si entusiasmava alla vista di un animale legato. Più rischio, più emozione. Doveva essere questa la regola di comportamento di un normale spettatore di venationes.
 
-Con ciò di nuovo l'identità dinastica veniva garantita, mentre gran parte del potere veniva restituito al Senato e Decio provvedeva al controllo dei pretoriani e a garantirsi la fedeltà dell'esercito.
-
-Ma fu la persecuzione anticristiana a fare da elemento unificante del corpo so-
+Nell'arena, abbiamo detto, gli animali non scendevano tutti insieme. Il loro massacro non era una generale e disordinata carneficina; bensì venivano presentati a coppie e gli accoppiamenti erano studiati. Un animale carnivoro contro un erbivoro; oppure due carnivori diversi e nemici tra loro o la curiosità di un combattimento inusuale in natura come, per esempio, una tigre contro un orso o non un animale contro un altro, ma coppie o gruppi di animali, magari legati fra loro e costretti a dipendere l'un l'altro nei loro movimenti.

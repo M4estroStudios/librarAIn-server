@@ -1,12 +1,38 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-L'IMPERO NELLA SUA MASSIMA ESPANSIONE                                     345
+346
 
-[Immagine: Mercati Traianei, planimetria generale e sezione]
+STORIA DI ROMA ANTICA
 
-*Mercati Traianei, planimetria generale e sezione (L. Lancaster).*
+valore nominale cominciava a non corrispondere più al tradizionale potere d'acquisto; in quanto lo Stato non possedeva fondi capaci per sostenere il conio continuo di valuta; mentre la spesa pubblica, il sistema fiscale e i continui problemi economici delle province creavano una sempre più evidente inflazione.
 
-LA CONQUISTA DELLA DACIA
+Le campagne militari in Dacia si svolsero in due riprese. La prima (101-102) ridusse lo Stato di Decebalo a cliente di Roma, mentre la seconda (105-106) fece della Dacia un'altra provincia romana. Traiano, come bottino, portò a Roma cinque milioni di libbre d'oro, dieci milioni di libbre d'argento e mezzo milione di schiavi. Non solo la Dacia era stata conquistata, ma anche in gran parte svuotata dei suoi abitanti e gli Italici, che vi furono mandati come coloni, riuscirono a latinizzare quella provincia tanto che ancora oggi la lingua romena testimonia la sua diretta discendenza dal latino.
 
-Tutti questi atti politici e amministrativi fanno da corona a quello che fu il grande progetto di Traiano: la conquista della Dacia e il consolidamento del confine con i Parti per assicurare la continuità dei commerci con la lontana India. La conquista della Dacia era già stata ideata da Domiziano, ma Traiano ne fece il cardine del benessere dell'Impero; in quanto l'invasione di quel territorio, che oggi è l'attuale Romania, fu motivata dalla necessità di garantire a Roma il possesso delle miniere d'oro della Dacia.
+### I PARTI
 
-L'arrivo nell'Impero romano di un notevole rifornimento di oro avrebbe garantito il potere di acquisto della moneta corrente; che era il denario; il cui
+In Oriente, Traiano riprese i programmi di Nerone, riducendo il territorio dei Nabatei, con la splendida città di Petra, a provincia di Arabia; mentre, con una dura e faticosa campagna militare, riduceva a provincia romana l'Armenia conquistando Ctesifonte, capitale dei Parti. Il progetto di Traiano era di trasformare anche il territorio dei Parti in provincia di Roma; ma dovette rinunciare a questo progetto per recarsi nel Vicino Oriente dove, dalla Mesopotamia a Cipro, le colonie giudaiche fomentavano rivolte.
+
+Da questa situazione Traiano non sarebbe mai più uscito. Ai primi di agosto del 117 d.C., l'imperatore si spegneva a Selinunte di Cilicia. Lasciava a Roma uno dei monumenti maggiori alla grandezza dell'Impero, il Foro, che da lui aveva preso il nome, con la grande colonna istoriata che ancora oggi costituisce una delle testimonianze maggiori dell'antichità, oltre che essere un'importantissima opera dell'arte antica.
+
+Traiano lasciava di sé una grande memoria: di imperatore saggio, di valente comandante e di scrittore, anche se i suoi diari di guerra, molto noti nell'antichità, non sono giunti fino a noi.
+
+***
+
+346
+
+STORIA DI ROMA ANTICA
+
+valore nominale cominciava a non corrispondere più al tradizionale potere d'acquisto, in quanto lo Stato non possedeva fondi capaci per sostenere il conio continuo di valuta, mentre la spesa pubblica, il sistema fiscale e i continui problemi economici delle province creavano una sempre più evidente inflazione.
+
+Le campagne militari in Dacia si svolsero in due riprese. La prima (101-102) ridusse lo Stato di Decebalo a cliente di Roma, mentre la seconda (105-106) fece della Dacia un'altra provincia romana. Traiano, come primo bottino, portò a Roma cinque milioni di libbre d'oro, dieci milioni di libbre d'argento e mezzo milione di schiavi. Non solo la Dacia era stata conquistata, ma anche in gran parte svuotata dei suoi abitanti e gli Italici, che vi furono mandati come coloni, riuscirono a latinizzare quella provincia tanto che ancora oggi la lingua romena testimonia la sua diretta discendenza dal latino.
+
+### I PARTI
+
+In Oriente, Traiano riprese i programmi di Nerone, riducendo il territorio dei Nabatei, con la splendida città di Petra, a provincia di Arabia, mentre una dura e faticosa campagna militare, riduceva a provincia romana l'Armenia conquistando Ctesifonte, capitale dei Parti. Il progetto di Traiano era di trasformare anche il territorio dei Parti in provincia di Roma, ma dovette rinunciare a questo progetto per recarsi nel Vicino Oriente dove, dalla Mesopotamia a Cipro, le colonie giudaiche fomentavano rivolte.
+
+Da questa situazione Traiano non sarebbe mai più uscito. Ai primi di agosto del 117 d.C., l'imperatore si spegneva a Selinunte di Cilicia. Lasciava a Roma uno dei monumenti maggiori alla grandezza dell'Impero, il Foro, che da lui aveva preso il nome, la grande colonna istoriata che ancora oggi costituisce una delle testimonianze maggiori dell'antichità, oltre che essere un'importantissima opera dell'arte antica.
+
+Traiano lasciava di sé una grande memoria: di imperatore saggio, di valente comandante e di scrittore, anche se i suoi diari di guerra, molto noti nell'antichità, non sono giunti fino a noi.
+
+![Immagine]
+
+*Graffiti raffiguranti cavalieri partici con armamento pesante e leggero, rinvenuti in case private di Dura Europos.*

@@ -1,26 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-380                                                                    STORIA DI ROMA ANTICA
+DA CLAUDIO IL TACITO A DIOCLEZIANO
 
-sicura del proprio Impero; e ogni giorno avrebbe dovuto osservare dalle torri se all'orizzonte fossero spuntate armi nemiche; Aureliano, quindi, abbandonava la provincia di Dacia perché non più difendibile e riportava il confine di Roma al di qua del Danubio: Quindi si volse contro il regno di Zenobia, la quale si era impadronita dell'Oriente e preparava l'invasione dell'Egitto. Il regno di Palmira era sempre più ricco e vi prosperavano floridi commerci, controllati dagli arabi Nabatei.
+CLAUDIO IL TACITO, ANNIO FLORIANO E AURELIO PROBO
 
-Aureliano sconfisse i Palmireni e liberò Antiochia, dove manifestò le proprie simpatie cristiane destituendo il locale vescovo Paolo di Samosata e dando la carica a Domno, che si era dimostrato fedele al vescovo di Roma. Proseguendo la campagna nel regno di Palmira, Aureliano catturò Zenobia e distrusse la capitale Palmira.
+L'esercito non si mise d'accordo sul nome del successore e la scelta fu demandata al Senato. Il Senato ebbe allora di nuovo in mano il potere di una volta e scelse un ricco patrizio italico; Claudio Tacito; al quale fu subito portata la notizia che i Goti del Bosforo avevano invaso l'Asia Minore. Claudio Tacito mosse contro di loro e li vinse; ma sulla via del ritorno, nel giugno del 276, rimase vittima di un attentato. Gli succedeva Annio Floriano.
 
-***
+Contemporaneamente le legioni di Egitto e di Siria acclamarono imperatore un altro generale illirico; Aurelio Probo. I due si affrontarono, Probo vinse la battaglia e i soldati di Floriano uccisero il proprio comandante: Così Aurelio Probo restava imperatore e accorreva con le sue truppe in Gallia; debellando i Burgundi, Vandali e i Franchi che avevano invaso. Si volse quindi a Oriente, dove sul Danubio sconfisse i Sarmati e quindi affrontò gli Isauri.
 
-PALMIRA
+Passò, poi, in Egitto dove sconfisse le truppe barbariche che si erano insediate a Copto. Tentò di mettere argine alla crisi monetaria e tributaria, ma l'inflazione era ormai galoppante, i prezzi salivano senza controllo; diminuivano le esportazioni tra le province dell'Impero; gli scambi si limitavano a zone sempre più ristrette e fortemente confinanti e le prestazioni di lavoro cominciavano a essere retribuite soprattutto con beni in natura. Probo applicò allora una forte disciplina militare onde garantirsi dell'opera di pace cui delegare i soldati (lavori di bonifica, stradali e agricoli). I soldati, però, non ac-
 
-*Palmira fu una delle più ricche città dell'antico Oriente, situata accanto a una vastissima oasi nella regione della Celesiria, tra Siria e Arabia e abitata da una popolazione araba.*
+[Immagini di monete]
 
-*La città si trovava sull'importante via commerciale che collegava la valle dell'Eufrate al mare Mediterraneo e subì così gli influssi culturali tanto della penisola mesopotamica quanto del mondo ellenistico.*
-
-*Fino al I secolo d.C. la città mantenne buoni rapporti con Roma, governata da una famiglia del posto che aveva assunto il nome romano di Iulii Aurelii Septimi; Dopo che i Persiani ebbero sconfitto e catturato l'imperatore Valeriano, Odenato di Palmira, membro della famiglia suddetta, riuscì a difendere la città dai Persiani e assunse il titolo di re, estendendo il proprio dominio sull'Oriente romano. Una congiura, però, lo eliminò e gli successe il figlio Vaballato; sotto la tutela della madre Zenobia, di cui restano importanti ritratti in cui la regina è raffigurata con le vesti tipiche della sua terra e ornata da pesanti e complicati gioielli. La politica di Zenobia provocò l'intervento dei Romani.*
-
-*L'imperatore Aureliano vinse le truppe di Palmira ad Emesa e fece prigioniera la regina che fu condotta a Roma e costretta a finire i suoi giorni nell'esilio dorato della splendida villa di Adriano a Tivoli.*
-
-*Cominciò allora la decadenza del regno di Palmira di cui oggi restano grandiose rovine.*
-
-***
-
-Subito dopo, Aureliano passò nelle Gallie e affrontò la questione di quel regno locale che si era separato dall'Impero, affrontando l'imperatore gallico Esuvio Tetrico; che si arrese e che lo stesso Aureliano nominò co-rettore (una specie di governatore) dell'Italia: Con questo atto, Aureliano definiva il rango provinciale dell'Italia, non più dipendente da Roma, ma ridotta a una delle tante province; cosicché la capitale restava tale solo di nome. L'opera di governo di Aureliano richiese comunque una forte restrizione della spesa pubblica; che lasciò insoddisfatti tutti coloro che vivevano perché dipendenti dello Stato: innanzitutto i militari e quindi gli amministratori.
-
-Ai soldati, inoltre, le guerre di Aureliano, guerre di riconquista, avevano assicurato scarsi bottini e così accadde che, mentre l'imperatore preparava una grande spedizione contro i Persiani, fu ucciso da una congiura di ufficiali nel ottobre del 275.
+Gli imperatori Claudio il Tacito (a sinistra), Annio Floriano (al centro) e Aurelio Probo (a destra).

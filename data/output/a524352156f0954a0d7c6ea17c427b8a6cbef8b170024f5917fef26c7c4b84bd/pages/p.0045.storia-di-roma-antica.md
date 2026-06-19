@@ -1,22 +1,26 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LATINO-SABINI                                                                           45
+46
 
-Egeria e dei loro incontri notturni. Nel bosco delle Camene, presso la futura porta Capena; alle pendici sud orientali del Celio; questa creatura divina, tipica dei boschi e delle acque, parla al re, insegnandogli i culti e le cerimonie. Secondo le moderne interpretazioni la ninfa Egeria è l'incarnazione di Diana, dea dei boschi: i suoi rapporti con Numa rappresentano una sorta di matrimonio sacro, che il re di Roma contrae con una divinità delle acque e della vegetazione, quasi che la «civiltà» faccia un patto con la «natura».
+STORIA DI ROMA ANTICA
 
-L'AMBITO DELL'ORGANIZZAZIONE DELLA RELIGIONE
+IL RITMO SACRO DELLA GUERRA
 
-Numa è attribuita anche la creazione dei collegi sacerdotali dei Flamini, dei Salii e delle Vestali. Come sempre gli antichi stabilivano un unico fondatore; in questo caso Numa, per rituali e culti che certamente sono stati il risultato di una lunga e lenta stratificazione; soggetta a numerosi influssi.
+Accanto al calendario religioso esiste un vero e proprio calendario della guerra. Il periodo dell'anno dedicato a questa attività si apre nella buona stagione e finisce all'inizio di quella cattiva.
 
-I tre Flamini, cioè i sacerdoti dediti esclusivamente al culto di Giove, Marte e Quirino (identificato con Romolo), fanno parte del patrimonio indoeuropeo; presente in tutte le popolazioni di origine indoeuropea (come i Greci e gli Indiani). Il loro nome e la loro funzione sono state infatti paragonate a quelle dei bramini indiani. Lo stesso discorso è valido anche per il fuoco sacro di Vesta e per il collegio dei Salii, certamente precedenti alla fondazione della città.
+I Salii erano addetti all'apertura e alla chiusura di questo ciclo mediante cerimonie comuni anche alle altre città latine.
 
-IL «SURPLUS» ALLA DIVINITÀ
+A Roma si diceva che durante il regno di Numa fosse caduto uno scudo dal cielo. Dopo averlo raccolto il re ne fece allora fabbricare altri undici uguali dal fabbro Mamurio Veturio. Da questo momento in poi dodici scudi furono conservati nella Curia Saliorum del Palatino, dove era riposto anche il bastone augurale di Romolo. Ogni anno il primo marzo, i sacerdoti Salii mettevano in movimento questi scudi insieme alle lance di Marte conservate nella Regia del Foro: con la loro particolare danza nella città risvegliavano la guerra, toccando varie parti dell'abitato. Di sera, al termine della cerimonia, gli scudi e le lance erano di nuovo riposti e i sacerdoti celebravano un banchetto. Altri riti, come le corse di cavalli del 14 marzo (Equirria) e la purificazione delle trombe del 23 marzo (Tubilustrium), segnano ulteriormente l'inizio della stagione guerresca: gli antichi sapevano bene che non si può condurre una guerra d'inverno perché freddo, carestia e fame sono in ugguato. Perciò nel mese di ottobre era celebrata la fine dell'anno militare.
 
-In questo periodo, in concomitanza con la sistemazione religiosa riferita a Numa, si registra la tendenza a dedicare alla divinità oggetti, raccolti in votivi. Il passo successivo è segnato dalla costruzione di edifici sacri agli dèi. Entrambi i fenomeni sono comunque la prova che qualcosa sta cambiando all'interno di una società fino ad allora senza distinzioni: come risulta dagli oggetti, tutti uguali, insieme ai defunti.
+I Salii di nuovo ricomparivano insieme ai riti di purificazione che permettevano ai soldati (con la cerimonia del Tigillum Sororium), alle loro armi (purificate durante l'Armilustrium) e ai loro animali (l'October equos, la simulazione dell'uccisione dell'animale usato in guerra) di rientrare nella città liberi del sangue e degli orrori della guerra.
 
-Adesso si comincia a donare alla divinità il surplus (quanto rimane dopo aver soddisfatto le esigenze primarie dell'esistenza), costituito da offerte di cibo, vasi, statuette e altri oggetti. Nascono valori differenti da quelli che regolavano l'insediamento primitivo, quando la preoccupazione riguardava proprio la sussistenza: ora si sviluppa il senso della comunità; si elaborano valori collettivi, legati alla nuova realtà urbana che si sta sviluppando.
+LA CITTÀ E LA GUERRA
 
-Anche gli dèi, prima venerati all'aperto e privatamente in ciascuna famiglia, ora diventano gli dèi della comunità, venerati in luoghi pubblici.
+Dopo la morte di Numa Pompilio segue un altro periodo di interregno fino all'elezione di Tullo Ostilio. Le guerre e le prime conquiste hanno finora comportato l'immigrazione parziale dei vinti, compensata a volte dall'invio di "colon" romani nelle terre conquistate. Con Tullo Ostilio e Anco Marcio c'è invece la rottura di questa tradizione:
 
-A Numa vengono fatte risalire numerose riforme, quasi tutte volte a dotare Roma di leggi e culti. Per la prima volta la città si occupa della pace di cui diventeranno espressione il culto e il tempio di Giano. Già al tempo del primo scontro tra Romani e Sabini nell'area del Foro (scontro esterno all'area dei primitivi abitati), la pace stipulata dai due popoli era stata sancita dalla fondazione d'un tempietto dedicato a questo dio bifronte (la sua testa presenta due facce opposte).
+Nel caso di centri come Alba, Tellene, Ficana, Medullia gli abitanti vengono deportati nell'urbe, senza lo stanziamento di coloni romani. Questa straordinaria apertura della collettività romana verso gli stranieri può essere spiegata con la volontà di potenziare il numero dei cittadini, garanzia di forza per la città, mentre la guerra diviene l'attività principale di Roma, che si ritaglia una posizione sempre più grande a spese delle popolazioni vicine.
 
-Numa, secondo la tradizione, erige il tempio dalla doppia entrata presso il punto di incrocio tra l'Argileto (la via che collega la Suburra al Foro) e la via Sacra. Era dunque esterno alla città palatino-veliense dei re latino-sabini, di cui costituisce una porta mistica verso il mondo esterno, straniero e nemico: le doppie porte, chiuse in tempo di pace, rimangono aperte in tempo di guerra per permettere ai guerrieri di rientrare nella città in qualsiasi momento.
+LA FINE DI ALBA LONGA
+
+La prima grande impresa di Tullo Ostilio è la guerra con Alba, allora governata da Gaio Cluilio: dopo gli scontri, durante i quali muore il loro re, gli Albani eleggono Mettio Fufezio, il vero protagonista della guerra. La tradizione narra che due re nemici, dopo aver constatato l'inutilità di uno scontro diretto, vengono a patti:
+
+Questa è certamente una delle poche volte in cui due capi di Stato si preoccupano delle conseguenze di una lunga guerra sulle loro popolazioni: Tullo Ostilio e Mettio Fufezio decidono che un duello tra "campioni" dei due eserciti risparmierà sangue e sofferenze inutili. Vengono scelte due terne di fratelli, tre Orazi per i Romani e i tre Curiazi per gli Albani. Da poi si può...

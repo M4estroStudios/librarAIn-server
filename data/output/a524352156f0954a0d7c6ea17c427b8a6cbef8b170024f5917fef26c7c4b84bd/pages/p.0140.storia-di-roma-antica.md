@@ -1,43 +1,19 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-140                                                                    STORIA DI ROMA ANTICA
+| EGEOMONIA NELL'ITALIA CENTRO-MERIDIONALE | 141 |
+| :--- | :--- |
 
-colonia e confiscato il porto: Infine sono revocati il diritto di matrimonio, di
-commercio e di riunione delle altre città. I magistrati romani diventano anche
-magistrati dei Latini: Roma, da città più grande, diventa la capitale del La-
-zio. Il suo territorio è quasi raddoppiato e giunge a coprire un'area di 6000
-kmq, mentre sono create altre due tribù rustiche: la *Scaptia* e la *Mecia*.
+...lis, la vecchia città) ma nel 470 a.C. la città era stata ricostruita e spostata a est (Neapolis, la città nuova). I Sanniti da tempo si erano infiltrati tra gli originari abitanti greci (come aveva già fatto quella cumana), la plebe insieme ai Sanniti si ritira a Paleapolis.
 
-La deduzione di una colonia romana ad Anzio (la seconda dopo Ostia) e più
-a sud, a Terracina (328 a.C.) mostra l'intento di conquistare la costa e di raffor-
-zare con presidi militari il territorio appena conquistato.
+La città vecchia dopo un lungo assedio si arrende al console Publilio Filone. Il trattato che ne segue (326 a.C.) contempla condizioni molto favorevoli per i vinti e da questo momento inizia la politica filoellenica, che caratterizzerà i successivi rapporti col mondo greco. Ma il trattato con Napoli esaspera i rapporti con i Sanniti, già deteriorati durante l'assedio.
 
-                                ESPANSIONE ROMANA IN CAMPANIA
+Gli scontri armati che seguono sono comunemente chiamati seconda (326-304 a.C.) e terza (298-290 a.C.) guerra sannitica. In realtà sono un'unica lunga ed estenuante guerra (interrotta da periodi di tregua), nella quale è coinvolta la maggior parte delle popolazioni italiche, alleate con l'uno o con l'altro dei contendenti.
 
-Dopo la guerra latina gli interessi romani sulla Campania diventano evidenti
-nel trattamento differenziato verso le città greche: Fondi e Formia ricevono
-la cittadinanza senza diritto di voto, mentre il fertilissimo territorio (*ager Fal-
-ernus*) della ricca Capua è confiscato e distribuito ai cittadini romani e nel
-318 a.C. si creano le tribù *Falerna* e *Oufentina*. I Romani premiano la fedeltà
-dei cavalieri campani, che non hanno defezionato durante la guerra latina, e
-concedono soltanto a loro la cittadinanza, rifiutata invece al resto della popo-
-lazione. In pratica l'alleanza con i ceti dirigenti cittadini tende a prevenire il
-pericolo di future rivolte.
+LA RIFORMA DELL'ESERCITO E LE ARMI DEL LEGIONARIO
+L'esperienza della prima guerra sannitica, durante la quale la parte più povera dell'esercito si rifiuta per un momento di combattere, comporta un cambiamento nella struttura dell'esercito, già modificata da Camillo. Abbandonata la falange oplitica e la centuria, sull'esempio dei Sanniti si adotta il manipolo (120 persone), molto più mobile, composto da tre file di soldati armati. L'abbandono della centuria comporta la crisi dell'esercito oplitico e dell'ordinamento centuriato. Grazie al manipolo lo sforzo bellico è distribuito in maniera più uniforme e non è più concentrato nelle prime classi di censo. Anche l'armamento è rinnovato: i soldati sono tutti dotati di scudo, delle medesime armi e l'unica differenza riguarda i cittadini più ricchi che possono permettersi la cotta di maglia. Lo scudo dopo l'incendio gallico non è il clipeus ma si adotta lo scutum, il grande scudo rettangolare, che diventerà il classico simbolo del legionario romano.
 
-La deduzione di colonie di diritto latino a *Cales* (334 a.C.) e *Fregellae* (328
-a.C.) fortifica la via Latina (il percorso interno che collega Roma e
-Capua) e completa il controllo della regione tra il Liri e il Volturno, rinnovando
-motivi dello scontro con i Sanniti. Ormai gli interessi delle due sono in net-
-to contrasto ed è chiaro che la componente greca presente in Campania occupa
-un ruolo chiave nelle possibili spartizioni.
+UMILIATI E VENDICATI
+Nella seconda guerra sannitica i Romani cercano d'accerchiare il nemico, occupando il territorio dei Vestini, una popolazione situata a nord del territorio sannita. Gli scontri avvengono nella regione occidentale tra Lazio e Campania nel Sannio, dove i Romani tentano di penetrare con un'azione troppo azzardata. I due consoli, Tito Veturio Calvino e Spurio Albino, rimangono bloccati a Caudio (tra Capua e Benevento) nella doppia trappola delle Forche Caudine.
 
-__________________________________________________________________
-| LA NUOVA MONETAZIONE                                            |
-| *Fino alle guerre sannitiche Roma ha conosciuto due tipi di moneta; l' aes grave, una barra di bronzo senza segni distintivi, e l' aes signatum; attribuito a Servio Tullio (vedi capitolo Un avventuriero etrusco sul trono di Roma). Il trattato d'alleanza con i Campani (326 a.C.) lascia un segno anche nella monetazione. La zecca di Napoli produce per gli alleati una moneta simile alla propria; salvo nella «leggenda»: prima Rhomaion (in greco) poi Romano. Non è ancora chiaro cosa significassero e che scopo avessero questi coni; non è escluso però che fossero un segno della volontà dei mercanti romani di infiltrarsi nelle rotte del grande commercio greco, che aveva in Napoli uno dei centri principali. Nel 289 a.C. sono creati i triumviri monetali, ma magistrati predisposti alla monetazione; mentre la zecca è posta vicino al tempio di Giunone Moneta, dedicato nel 345 a.C., che lascia il suo epiteto a quella che tuttora chiamiamo moneta. La prima moneta d'argento è coniata nel 269 a.C. sotto il consolato di Quinto Ogulnio e di Caio Fabio; il denario d'argento vale dieci assi di bronzo; sul retro è incisa l'immagine di Ercole e sul verso la lupa che allatta i gemelli.* |
-|_________________________________________________________________|
+I Sanniti obbligano i consoli a firmare un accordo infamante e a passare sotto un giogo, insieme a tutti i soldati, seminudi e privi di armi, mentre li coprono di insulti e facezie (321 a.C.).
 
-                                LA SECONDA GUERRA
-
-L'aristocrazia greca di Napoli, chiaramente antisannita e decisa a tutto pur
-di liberarsi dell'invasore, promuove la guerra: Napoli era stata fondata da Cu-
-ma nel VII secolo a.C. sulla collina di Pizzofalcone (*Parthenope* o *Paleapo-
-polis*).
+La tradizione ha chiaramente minimizzato l'episodio, presto lavato da nuove vittorie. In realtà i termini del trattato (non un foedus ma una sponsio ossia un trattato vincolante solo per i comandanti) contemplano l'evacuazione di tutte le colonie romane della valle del Liri e lasciano trasparire una pesante sconfitta. Il popolo romano non si ritiene vincolato dai patti, ma consegna al nemico i consoli (unici responsabili della sponsio) ed è libero di scendere di nuovo in campo contro i Sanniti. Ancora una volta con procedure dubbie i Romani ri-

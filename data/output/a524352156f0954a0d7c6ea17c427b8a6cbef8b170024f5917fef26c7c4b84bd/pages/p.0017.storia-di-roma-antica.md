@@ -1,14 +1,26 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA PRIMA DI ROMA                                                                    17
+18
 
-tri da Roma), ad Ardea, a Lavinium (l'antica Lavinio si trova vicino a Pratica di Mare), a Satricum (località Le Ferriere, presso Nettuno), a Ficana (vicino al Tevere, all'altezza di Acilia), si stanno formando nuclei abitati che continuano a essere frequentati nell'età del ferro (IX secolo a.C.) e piano piano aumentano anche le loro dimensioni. Le comunità del Lazio sud del Tevere sono apparentate tra di loro da legami, che forse spiegano le somiglianze nel processo di formazione dei nuclei urbani: è nata cioè una "cultura laziale" che continua quella pastorale "appenninica" ma è ormai diversa da quella delle regioni confinanti. La "cultura laziale" è attestata non solo nei centri ricordati sopra, ma anche nei Colli Albani e in alcuni centri della Sabina.
+STORIA DI ROMA ANTICA
 
-Elemento distintivo della "cultura laziale" è il modo di seppellire i morti. A partire dal X secolo a.C. e fino all' VIII, i morti sono bruciati e le ceneri sono raccolte in vasi tondeggianti con coperchio a forma di cono. Qualche volta l'urna per le ceneri ha la forma d'una capanna oppure il coperchio è modellato come un tetto di capanna a due spioventi. Secondo le credenze primitive il defunto aveva bisogno di una serie di attrezzi che lo doveva accompagnare nel mondo dei morti; il corredo standard delle tombe è costituito da stoviglie di terracotta. Qualche volta si ritrovano anche statuette; ornamenti o armi di difesa e di offesa; tutti in bronzo. Questi oggetti di metallo (talvolta anche quelli di terracotta) sono in miniatura; c'è quindi una produzione specializzata di oggetti destinati ai riti della sepoltura.
+mento sul Campidoglio; sorto, come abbiamo visto, nel corso del XII secolo a.C. In effetti la distanza tra le due zone abitate non supera i 200 metri. Questi antichi abitatori dell'area intorno al Foro Romano appartengono alla "cultura laziale".
 
-Le tombe ritrovate sono troppo poche anche rispetto alla scarsa popolazione degli insediamenti laziali esistenti in epoca. Forse soltanto le persone con un ruolo preminente erano sotterrate col corredo rituale; mentre le persone meno importanti dovevano essere seppellite nella nuda terra, senza alcun corredo.
+I corredi funerari d'un sepolcreto presso l'arco di Augusto; consistono in vasi e in ornamenti vari, tutti miniaturizzati. Le quattro tombe più antiche risalgono al X secolo a.C. e si sovrappongono all'insediamento dell'XI secolo a.C. di cui si è già detto.
 
-Nell' XI secolo a.C. appare per la prima volta un'area abitata nel Foro Romano; probabilmente si tratta d'una espansione in pianura dell'insediamento.
+Sempre al X secolo risale lo stanziamento di un gruppo di abitatori sul colle del Palatino: la necropoli (la città dei morti) nacque in relazione a quest'importante avvenimento; anche se alcune sepolture sono localizzate nella piccola valle tra la cresta del Germalo e quella del Palatino propriamente detto.
 
-[Immagine: Foro Romano, pianta della Regia]
+Le testimonianze archeologiche disponibili non permettono d'affermare con assoluta certezza se questo nucleo abitativo sia sorto indipendentemente dall'insediamento del Campidoglio-Foro oppure se sia una successiva espansione di quest'ultimo: l'orientamento generale del sepolcreto, che si è ingrandito in direzione delle pendici del Palatino e allontanandosi progressivamente dal Campidoglio e dall'area del Foro, fa pensare che questa area cimiteriale sia stata utilizzata da un abitato unitario che comprendeva i tre insediamenti.
 
-Foro Romano, pianta della Regia
+Uno scavo nel Foro, effettuato sotto il rudere della Regia (il palazzo dei re di Roma) ha riportato alla luce tracce delle strutture d'un edificio di legno a pianta rettangolare e di proporzioni notevoli. Quest' edificio dovrebbe risalire all'ultima fase dell'età del bronzo (intorno al 900 a.C.) e dovrebbe essere stato destinato ad una funzione molto importante: il confronto con altri abitati del Lazio meridionale può far pensare ad un luogo di culto.
+
+Altri ritrovamenti archeologici in piazza della Pilotta e presso Santa Maria della Vittoria a via XX Settembre-largo di Santa Susanna sembrano indicare l'esistenza d'un insediamento autonomo sul Quirinale, ma l'interpretazione e la datazione del materiale è controversa.
+
+II. LAZIO E CULTURA MICENEA
+
+Nel I millennio a.C. nell'area del mar Egeo si sviluppò una grande civiltà basata sul dominio dei mari e sul commercio; distinta nelle due grandi ripartizioni 'minoica' (con riferimento alle grandi regge situate sull'isola di Creta) e 'elladica' (sviluppatasi sulla terraferma greca). Il periodo più recente della cultura elladica (che inizia circa 3600 anni fa) viene chiamato 'miceneo' dal nome della città di Micene, regno dell'omerico Agamennone. Gruppi di navigatori provenienti dal mar Egeo approdarono sulle rive della penisola italiana circa 3500 anni fa e continuarono a frequentarne le coste per circa 500 anni.
+
+Micenei ebbero intensi scambi con le comunità insediate nel golfo di Napoli, con la Puglia e con la costa ionica.
+
+3300 anni fa essi stabilirono una specie di colonia nelle isole Eolie, come base per commerci e scorribande di tipo piratesco.
+
+Micenei ebbero contatti anche con le popolazioni che vivevano nel Lazio, con le quali dovevano scambiare i loro prodotti (ceramica, oggetti di bronzo) in cambio di metallo grezzo; forse frequentarono anche la zona di Roma. Per questo alcuni studiosi sostengono che il ricordo dei loro contatti commerciali è sopravvissuto nella leggenda dello sbarco di Enea sul lido di Lavinio.

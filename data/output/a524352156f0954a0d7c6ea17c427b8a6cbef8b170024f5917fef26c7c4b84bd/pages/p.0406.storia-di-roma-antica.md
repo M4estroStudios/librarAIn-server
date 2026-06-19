@@ -1,96 +1,100 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-406
-
 INDICE DEI NOMI E DEI LUOGHI
 
-Giove Feretrio; 108
-Giove Laziale, 79; 129
-Giove Lucezio, 40
-Giove Ottimo Massimo, 69, 115, 129
-Giove Palatino; 303
-Giove Statore, 81, 162, 213, 277
-Giove Tonante, 282
-Giove Vincitore, 162
-Giuba, 258-259
-Giudea, 300, 324, 328, 332, 352
-Giugurta, 232-235, 237
-Giulia, figlia di Augusto; 287-288, 290
-Giulia, madre di Augusto; 264
-Giulia, nipote di Augusto; 289
-Giulia, nipote di Tiberio, 299
-Giulia Domna, 359, 363
-Giulia Livilla, 302
-Giulio Cesare Gaio, 7, 40, 71, 112, 207, 250-251, 253, 256-260, 264-265, 275, 283, 285-286, 290, 333, 375
-Giulio-Claudii, dinastia, 295, 310, 315, 325, 342, 360
-Iulio Antonio; 302
-Giulio Placidiano, 379
-Giunia Claudilla, 304
-Giunio Pullo; 172
-Giunio Rubulco, 147
-Giunone, 40, 63, 117, 133, 187
-Giunone Lucina, 122
-Giunone Moneta, 120, 246
-Giunone Regina, 66, 122, 133, 151, 162, 213, 277
-Giunone Sororia, 48
-Giugurta, 178
-Giuturna, fonte, 104
-Gordiano I, 371
-Gordiano III, 371-372
-Gorgaso, 95
-Gracchi, famiglia, 178, 207, 221, 230, 232
-Gracco Caio, 222, 224, 226, 237, 239
-Gracco Tiberio, 178, 211, 218, 220-222, 224
-Granico, fiume, 277
-Gran San Bernardo, valico; 185
-Gravisca, 50, 83
-Grecia, 24, 27, 41, 127, 133, 150, 181, 191, 200, 207-208, 210, 212-213, 229, 241, 243, 248, 296, 317, 320, 323-324, 354, 377
-Grottaferrata, 30
-Grotta Oscura, 121
-Grottarossa, 31
-Hercules Victor; 147
-Honos, v Onore
-Horatia, tribù, 160
-Horus, 376
-Iberia, 236
-Icaro, 376
-Icilio; 98
-Iempsale, 234
-Ierone, 194
-Illiria, 175, 200, 382
-Illirico, 253
-India, 360
-Ingenuo, 377
-Ino-Leucotea, 80
-Interamna, 142, 156
-Ionio; mare, 175
-Ipponio; 146
-Irzio; 266
-Isère, fiume, 185
-Iside, 300, 305, 337
-Isso, 359
-Italia, passim
-Iuppiter Victor, 147
-Jutland, 285
-Ladispoli, 173
-Lanuvio, 96, 123, 160, 187, 352
-Larenzia, 8, 23
-Larte Tolumnio, 108
-La Rustica, 51
-Laterano Lucio Sestio, 125
-Latino, 7, 21, 23
-Latona, 120
-Lavinia, 7, 21
-Lavinio, 7, 17-18, 22, 24, 27, 29, 104, 139
-Lavinium; v Lavinio
-Laziale, vulcano; 10, 12-13
-Lazio, 7, 10-12, 15-16, 18-19, 21-22, 24, 28, 32, 37, 51-52, 58, 82, 96, 123, 140-141, 149, 301, 303, 352
-Le Ferriere, 17, 29, 51
-Lemonia, tribù, 160
-Lentulo, 150
-Lepido Marco Emilio, 202, 206, 213, 246, 248, 265, 269, 281, 302, 354, 377
-Lepini, monti, 10
-Leptis Magna, 359
-Leucotea, 80
-Libera, 102, 105, 134
-Libero, 102, 105, 134
-Libia, 272
+Licata, 170
+Licinia, 252
+Licinio Calvo Gaio, 125
+Licinio Crasso Gaio, 293
+Licinio Embrice Publio, 204
+Licinio Liciniano, 387
+Licinio Stolone, Gaio, 125
+Licinio Tegola Publio, 204
+Licinio Valeriano, 377
+Licrètili, monti, 10
+Liguria, 358
+Lilibeo, 149, 170, 172-173, 178
+Lipari, isola, 110
+Lipari, isole, 169
+Liri, fiume, 16, 29, 96, 140-142
+Liris, v. Garigliano
+Lisippo, 277, 329
+Lissa, 175
+Literno, 215
+Livia, 291, 295-298, 301, 333
+Livia Drusilla, 296
+Livia Medullina, 304
+Livia Orestilla, 304
+Livilla, 297, 301
+Livio Tilo Andronico, 7, 9, 21, 121, 143, 150-151
+Locri, 146, 150, 197
+Lucania, 248
+Lucia, 257
+Luceria, 142
+Lucrezia, 89
+Lucrezio Manilio, 98
+Lucullo, 249-250, 252
+Lucumone, 55-56, 58
+Luscino Caio Fabrizio, 149
+Lusitania, 325
+Maarbale, 190
+Macedonia, 21, 175, 194, 208-209, 213, 241, 266
+Macrino Marco Opellio, 365, 366
+Macrone, 301, 304
+Maecia, tribù, 160
+Maenio Gaio, 139
+Magliano Sabina, 10
+Magna Grecia, v. Magna Grecia
+Magna Grecia, 7, 66, 104, 133, 144, 158, 200
+Magna Mater, 133, 162, 191, 289, 367
+Magnesia, 206, 208
+Magone Barca, 181, 185, 192, 194
+Magonza, 370
+Magra, fiume, 240, 244
+Malagrotta, 11
+Malevento, v. Benevento
+Mamea, 368, 370
+Mamurio Veturio, 46
+Manica, canale, 382
+Manio Otacilio, 168
+Manlio Capitolino Marco, 92, 117, 119-120
+Manlio Capitolino Publio, 125
+Manlio Tito, 139
+Manlio Vulsone, 170, 206
+Marcelli, dinastia, 215
+Marcellina, 10
+Marcello Marco Claudio, 108, 176, 178, 194, 288, 291
+Marche, 114, 156
+Marcigliana, 15
+Marcia, 357
+Marcia, famiglia, 96
+Marcio Filippo Lucio, 162, 239
+Marco Annio Vero, v. Antonino Pio
+Marco Antonio, 261, 264-266, 268-270, 272-276, 285, 296, 299, 301, 303, 305, 333
+Marco Aurelio Cesare, 355, 358
+Marco Cedicio, 114
+Marco Fabio Ambusto, 114
+Marco Minucio Rufo, 189, 219
+Marco Orazio Barbato, 101
+Marco Ottavio Erreno, 223
+Marco Papirio, 117-118
+Marco Postumio, 196
+Marco Postumio Albino, 109
+Marco Vinicio, 302
+Mario Gaio, 232-247, 267
+Mario, il giovane, 244
+Marsia, 147
+Marsiglia, 88, 110, 113, 115, 232, 387
+Marte, 23, 45-46, 66, 106, 122, 131, 133, 145, 361, 367
+Marte Ultore, 282, 295
+Martignano, 10
+Massalia, v. Marsiglia
+Massenzio Marco Aurelio Valerio, 387
+Massimiano Erculio, 384, 386-387
+Massimiano Galerio, 382-384, 387
+Massimino Daia, 387
+Massimino il Giovane, 371
+Massimino il Trace, 369-371
+Massinissa, 194, 198, 211, 225, 232, 234
+Massiva, 234
+Mastanabale, 234
+Mater Matuta, 77, 80, 83, 105, 111, 119, 122, 133, 162, 192, 202

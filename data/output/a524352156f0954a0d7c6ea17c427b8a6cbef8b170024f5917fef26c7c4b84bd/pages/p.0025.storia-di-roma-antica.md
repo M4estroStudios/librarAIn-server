@@ -1,19 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UN FIUME, UN GUADO E UN CROCEVIA
-25
+26
 
-Tre è l'iniziatore dei culti religiosi, perché offre immediatamente dei sacrifici agli dèi. Tra le divinità sembra avere un ruolo importante Ercole, il quale su un pendio del Palatino ha ucciso il pastore Caco, che aveva tentato di rubargli una mandria di buoi.
+STORIA DI ROMA ANTICA
 
-IL SOLCO E LA COLLINA
-Per tradizione il solco tracciato ritualmente da Romolo sul Palatino (alle pendici del colle e non, come si potrebbe credere, sull'orlo dell'altura) racchiude la cosiddetta *Roma quadrata*: secondo lo storico Tacito (ca. 54/55 d.C.–ca. 120 d.C.) questo primo confine della città andava dal luogo dove poi è stata conservata l'*ara maxima Herculia* (altare dedicato a Ercole, sito all'estremità del Circo Massimo verso il Tevere e subito dietro la chiesa di Santa Maria in Cosmedin) all' *ara Consi* (altare consacrato a Conso, dio dei granimaggiati, sito all'altra estremità del Circo), piegava verso le *Curiae veteres* (sul pendio del Palatino; vicino al posteriore arco di Costantino) e infine si dirigeva al tempietto dei Lari (dèi della casa e del focolare; sito nel Foro; presso il tempio di Vesta). Questo confine sacro sarebbe stato il pomerio.
+![Immagine della ricostruzione di Roma quadrata]
 
-IL "POMERIO" DI ROMA
-Il pomerio (dal latino *post murum*, dopo il muro) d'una città è una linea di demarcazione il cui significato va oltre quello di un semplice confine politico e militare: il pomerio è un limite magico e sacro, difeso da tabù e divieti. All'interno del pomerio si possono compiere alcune azioni, non se ne devono compiere altre. Tra i divieti più forti la proibizione di seppellire i morti all'interno del pomerio; essi restano fuori dall'area cittadina; la misura ha lo scopo di assicurare una migliore igiene urbana, ma non manca una forte componente di superstizioso timore del cattivo influsso dei morti, che vanno tenuti a bada e lontano dalle case dei vivi.
+La Roma quadrata fondata da Romolo, ricostruzione ideale della Roma arcaica, tratta da *Antiquae Urbis Romae cum regionibus simulacrum*, di M. Fabio Calvo.
 
-Esistono invece incertezze sull'esatta definizione e sul percorso del primo pomerio romano. Secondo Tacito, il pomerio di Romolo sarebbe stato più ampio delle mura di Roma quadrata; mentre il pomerio di Servio Tullio sarebbe stato interno alle mura serviane. È certo che l'Aventino e parte dell'Esquilino (destinato alle necropoli) sono rimasti fuori del pomerio fino ad Augusto. Da Claudio in poi, molti imperatori allargano il pomerio, che al tempo di Aureliano coincide con la nuova cinta muraria.
+IL MURO DI ROMOLO
 
-Si è a lungo dubitato della reale esistenza d'una struttura di fortificazione sul Palatino. I riti ricordati dalla leggenda (osservazione del volo degli uccelli, apertura del solco con un aratro tirato da una coppia di buoi) sono stati collegati al desiderio di "nobilitare" le origini della città, prendendo in prestito i rituali usati dagli Etruschi.
+Sino a qualche tempo fa la revisione storiografica tendeva ad affermare che la fondazione di Roma (cioè la nascita della città come organismo politico e come impianto urbano; in cui gli abitanti erano associati) risaliva alla metà del VI secolo a.C. La scoperta del cosiddetto "muro di Romolo" ha cambiato le carte in tavola. Alle spalle della basilica di Massenzio, in corrispondenza dell'antico pendio del Palatino contrapposto alla Velia, sono venute alla luce tre diverse e successive mura della città. Il più antico muro, databile al 730-720 a.C., costruito con scaglie di tufo, è circa un metro e venti centimetri e conserva alla sommità tracce d'una palizzata. Il ruscello che scorreva nel lavalcamento tra il Palatino e la Velia rendeva ancora più sicura la fortificazione. Alle spalle di questo muro, a circa tredici metri di distanza, correva una palizzata, che è evidentemente il più antico pomerio di Roma. La corrispondenza tra l'orientamento e la datazione di questo muro con il racconto tradizionale sulla fondazione di Roma è sorprendente. Insomma, Romolo evidentemente è un nome derivato da Roma, ma un fondatore è veramente esistito, anche se si chiamava Tiburzio o Pampurio!
 
-Il recente ritrovamento del "muro di Romolo" smentisce queste ipotesi fortemente negative. Il tratto di mura e il fossato venuti alla luce sul Palatino; il versante che si affacciava verso la Velia; risalgono con buona approssimazione al 730-720 a.C., in un periodo sorprendentemente vicino al 753 a.C. fissato dalla tradizione come data della fondazione dell'Urbe.
-
-Si può quindi stabilire un punto fermo nella storia più antica di Roma: la città nasce in un preciso momento e in base a una scelta precisa; così come diceva il racconto leggendario. Il processo di unificazione degli insediamenti...
+...ti sparsi doveva essere iniziato da qualche decennio. Infatti intorno al 750 a.C. le sepolture dei primi abitanti di Roma iniziano a concentrarsi nella zona dell'Esquilino. L'esistenza di una sola grande area cimiteriale significa che lo spazio cittadino inizia a essere sentito come un tutto unico, all'interno del quale alcune zone vengono usate per scopi specifici.

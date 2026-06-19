@@ -1,20 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-19
+ROMA PRIMA DI ROMA 13
 
-STORIA DI ROMA ANTICA
+Anni fa sono avvenuti ancora al Monte delle Gioie e a Tor Vergata, ma anche altri luoghi (frequentati in precedenza dagli uomini dell'antica età della pietra) restituiscono le tracce della loro attività. È molto probabile che il clima e la temperatura siano rimasti stabili per un lungo periodo. Questo fenomeno deve aver facilitato la permanenza in luoghi favorevoli alla sopravvivenza, ma non è possibile dire di più.
 
-[Immagine: Scena campestre da un rilievo in marmo conservato a Monaco.]
+DA CACCIATORI AD AGRICOLTORI
 
-Nel territorio urbano sono stati scoperti due attrezzi di selce di 250.000 anni fa, uno sui banchi di breccia del Tevere presso ponte Milvio; l'altro sull'Aniene in corrispondenza della batteria Nomentana.
+Fino a circa 7000 anni fa gli abitanti del Lazio erano essenzialmente cacciatori e pescatori: si limitavano a raccogliere le radici, bacche o frutti, per esperienza mangiabili senza sgradevoli conseguenze.
 
-Da 220.000 a 130.000 anni fa sulle sponde dell'Aniene vissero gruppi di uomini che sfruttavano l'abbondanza d'acqua e la disponibilità di selvaggina sempre legata alla presenza dell'acqua. Questa fase più recente dell'uomo preistorico prepara l'apparizione nel Lazio del cosiddetto uomo di Neanderthal. Sono stati rinvenuti alcuni strumenti di pietra, databili a circa 200.000 anni fa, in una caverna sul monte delle Gioie (collina cancellata dallo sviluppo edilizio della città nei pressi dei Prati Fiscali). Altri ritrovamenti, alcuni recentissimi, sono stati fatti alla Sedia del Diavolo (vicino a piazza Vescovio), a Saccopastore (sulla curva dell'Aniene compresa tra il ponte Tazio e il viadotto delle Valli), a Casal de' Pazzi (presso via di Ripa Mammea e ponte Mammolo).
+La grande svolta avvenne quando gli antichi cacciatori, nomadi o semi-nomadi iniziano ad addomesticare gli animali e gradualmente a coltivare alcune specie di piante; soprattutto quando iniziano a produrre vasellame d'argilla. Questa vera rivoluzione culturale (la cosiddetta "rivoluzione neolitica", cioè della "età della pietra nuova"), ha costituito il punto di partenza per la civiltà umana. Ne restano numerose testimonianze, anche se non ricchissime, nel territorio di Roma (di nuovo a Tor Vergata e Torre Spaccata; a Palidoro, Pyrgi o Santa Severa). Queste testimonianze sono riconducibili a una prima fase, in cui gli utensili di ceramica erano decorati incidendone profondamente le pareti con linee o utilizzando i bordi delle conchiglie per imprimere nell'argilla semplici motivi di tipo geometrico.
 
-### I RITROVAMENTI ARCHEOLOGICI A CASAL DE' PAZZI
+La fase successiva comincia meno di 7000 anni fa: il ritrovamento archeologico più importante avvenne nella grotta Patrizi, in località Sasso di Furbara, a pochi chilometri dalla spiaggia di Santa Severa. Si tratta di sette sepolture, una delle quali doveva riguardare un personaggio particolarmente importante; in vita doveva aver sofferto di gravi malformazioni dello scheletro e aveva subito la trapanazione del cranio. Collegate alla stessa fase di sviluppo delle sepolture del Sasso di Furbara sono le tracce di attività umana scoperte nei pressi di Roma a Casale del Pescatore (sulla via Prenestina), mentre di poco più recenti sono quelle del VI millennio a.C., rinvenute a Torre Spaccata, tra la Casilina e la Tuscolana.
 
-Nel 1980, mentre si stava costruendo, nei pressi di Casal de' Pazzi, il collettore della rete fognaria del quartiere di Rebibbia, le ruspe hanno portato alla luce un giacimento archeologico risalente a circa 20.000 anni fa.
+L'ALIMENTAZIONE DEGLI ABITATORI DI PISCINA DI TORRE SPACCATA
 
-Lo scavo scientifico di circa 1000 mq di terreno ha scoperto un tratto dell'antichissimo letto dell'Aniene, che scorreva con corrente impetuosa sopra un banco di tufo formatosi da un'eruzione del vulcano Laziale circa 300.000 anni fa.
+Nello scavo di Piscina di Torre Spaccata sono state ritrovate nelle fosse di scarico numerose ossa che mostrano tracce di esposizione al fuoco. Gli specialisti hanno calcolato che l'80% della carne consumata appartiene a bovini, il 13% caprovini, il 6% a suini; hanno anche determinato l'età degli animali al momento della macellazione: i maiali venivano scannati prima di aver compiuto un anno, i bovini in genere a un anno e mezzo (anche se alcuni capi dovevano aver raggiunto e superato i tre anni), i caprovini venivano uccisi a tre anni. In queste cifre colpisce da un lato il ruolo di tutto rilievo assolto nell'alimentazione carnea dei bovini, dall'altro esse fanno pensare che l'allevamento di bestiame fosse organizzato basandosi su tecniche piuttosto rozze; poco attente all'incremento degli armenti o delle greggi.
 
-Tra le ripide rive del fiume erano incastrate ossa di animali e zanne di elefanti, la più lunga delle quali misura 3 metri e 15 centimetri. Sono stati individuati anche resti di ippopotamo, rinoceronte, daino, cervo, capriolo, lupo, iena, bue, cavallo. Parte del cranio di un uomo è stata trovata sul fondo del fiume, mentre sull'antica riva giaceva una grande quantità di strumenti di pietra e almeno uno ricavato da un osso di elefante.
-
-Circa 40.000 anni fa gli uomini di Neanderthal, per ragioni misteriose, scomparvero senza lasciare traccia e lasciarono il campo libero ai nostri progenitori diretti. Di questi però, per un lungo periodo non rimangono a Roma tracce particolarmente rilevanti. I ritrovamenti più importanti per l'epoca anteriore a 7000...
+Sono state ritrovate anche le ossa di un daino e di un cervo; la caccia, quindi, contribuiva sempre all'alimentazione.

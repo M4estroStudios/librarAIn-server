@@ -1,18 +1,33 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ASCESA, CADUTA E RESURREZIONE DI ROMA 115
+116
 
-I tre membri di quella *gens Fabia*, che da tempo ha interessi nell'area etrusca, raggiungono il campo dei Galli presso Chiusi e intavolano trattative senza successo. Entrati poi in città, protetti dalla loro veste di ambasciatori, suggeriscono ai Chiusini di operare insieme a loro una sortita contro gli assedianti. Nello scontro che segue uno dei Fabii uccide un condottiero dei Galli. È riconosciuto dal capo dei Sènoni (nella lingua celtica *Brenno* non è un nome proprio, ma significa capo) che gli rimprovera la violazione del diritto delle genti (*ius gentium*): infatti è stato accolto come ambasciatore e si comporta come nemico. La responsabilità dei Fabii è discussa a Roma. Nonostante l'insistenza dei Feziali, i sacerdoti che curano le norme che regolano la pace e la guerra, il popolo romano si rifiuta di punire il colpevole dell'atto sacrilego e anzi lo nomina tribuno militare insieme ai suoi fratelli. Conosciuto questo ulteriore affronto, Brenno decide di togliere l'assedio a Chiusi e di marciare su Roma.
+STORIA DI ROMA ANTICA
 
-LA PRESA DI ROMA: I FATTI ESSENZIALI
+*Le donne romane donano i loro ori per amore della patria, incisione di B. Pinelli.*
 
-La tradizione offre pochi punti fermi per ricostruire gli avvenimenti dell'occupazione gallica: i Romani raccolgono in fretta un esercito di circa quarantamila uomini e si schierano alla confluenza del fiume Allia col Tevere, poche miglia a nord di Roma; i comandanti romani, però, trascurano di osservare le indicazioni degli dèi, elemento indispensabile per intraprendere un atto di guerra; inoltre non unificano il comando nelle mani di un solo responsabile. Infine l'esercito dei Romani e dei loro alleati non è addestrato e molti soldati combattono per la prima volta. Lo scontro, ricordato tra le giornate più infauste di Roma, si risolve fatalmente con la vittoria dei Galli, che hanno via libera verso la città.
+[Immagine]
 
-Il grosso dell'esercito romano si rifugia a Veio, che assume sempre più la fisionomia d'una seconda Roma; altri superstiti della battaglia raggiungono Roma. Con un contingente di soldati così ridotto è impossibile la difesa dell'in-
+tera città e si decide di resistere soltanto sulla rocca capitolina: I Galli possono così liberamente saccheggiare e incendiare Roma e assediano il Campidoglio; anzi secondo alcune fonti lo espugnano. Alla fine d'un lungo ed estenuante assedio i Romani pagano un grosso riscatto in oro e i Galli si ritirano.
+
+LA PRESA DI ROMA: I RACCONTI LEGGENDARI
+Su questo semplice canovaccio si intrecciano numerosi narrazioni leggendarie. Gli storiografi romani non possono passare sotto silenzio il traumatico avvenimento; riportato insistentemente nelle fonti greche. La storia del sac-
+
+[TESORI SACRI MESSI AL SICURO]
+Gli antichi eruditi affermano che i sacra sono sette oggetti che assicurano la salvezza di Roma: della madre degli dèi, il cocchio di terracotta di Veio; le ceneri di Oreste; lo scettro di Priamo; il velo di Ilio; il Palladio (la statua di Pallade Atena che si diceva provenisse da Troia) e gli ancilia (gli scudi dei Salii). Alcuni aggiungono anche due vasi antichissimi e due statue in misura ridotta dei Penati. Non è importante ricostruire l'elenco degli oggetti sacri trasferiti a Caere: insieme al fuoco del focolare comune quegli oggetti simboleggiano la sopravvivenza dello spirito di Roma. Per questo l'aiuto di Lucio Albinio (per porre in salvo le Vestali e i sacra) è ricordato con particolare evidenza dagli antichi. Anzi Aristotele lo definisce come il salvatore di Roma, ignorando del tutto l'importanza di Camillo. Non per nulla in un'iscrizione in suo onore, posteriore di qualche secolo; si leggeva: «Mentre i Galli stavano assediando il Campidoglio / egli condusse le Vergini Vestali a Caere. Colà si assunse la responsabilità di far sì, che sacrifici e le cerimonie non venissero interrotti. / Quando la città si riprese egli riportò / i sacri oggetti e le Vergini a Roma». E i Romani manifestarono lungo grande riconoscenza per Caere, che aveva ospitato i sacra.
 
 ***
 
-CHI HA RECUPERATO L'ORO GALLICO?
+116
+STORIA DI ROMA ANTICA
 
-È indubbio che i Romani abbiano raccolto con grande sforzo e con l'aiuto degli alleati una forte somma (si parla di mille libbre d'oro) perché i Galli abbandonino la città. Secondo la tradizione vi contribuirono oltre alle matrone romane, anche alcuni mercanti di Marsiglia: infatti più tardi i Romani concedono ai Marsigliesi speciali privilegi commerciali in segno di gratitudine. Cosa è avvenuto dell'oro pagato dopo il ritiro dei Galli da Roma? È inverosimile la leggenda che il riscatto non sarebbe mai stato pagato per l'intervento di Camillo, tempestivamente rientrato a Roma a interrompere le vergognose operazioni di pesatura.
+[Immagine]
 
-La tradizione è discorde sui modi e i luoghi del presunto recupero dell'oro versato ai Galli. Alcuni riferiscono che sarebbe stato ripreso da Camillo ai Galli in ritirata verso nord; per altri sarebbe stato riconquistato dagli abitanti di Caere, alleati di Roma fin dalla guerra contro Veio. Altri ancora hanno messo in relazione col riscatto le duemila libbre d'oro trovate da Pompeo nel corso dei lavori del 52 a.C. sotto il tempio di Giove Ottimo Massimo; ma questo accostamento è probabilmente privo di fondamento. È probabile invece che l'oro non sia mai stato recuperato: mentre per gli scrittori romani l'onta del riscatto doveva essere necessariamente «riscattata».
+*Le donne romane donano i loro ori per amore della patria, incisione di B. Pinelli.*
+
+tera città e si decide di resistere soltanto sulla rocca capitolina. I Galli possono così liberamente saccheggiare e incendiare Roma e assediano il Campidoglio; anzi secondo alcune fonti lo espugnano. Alla fine d'un lungo ed estenuante assedio i Romani pagano un grosso riscatto in oro e i Galli si ritirano.
+
+LA PRESA DI ROMA: I RACCONTI LEGGENDARI
+Su questo semplice canovaccio si intrecciano numerosi narrazioni leggendarie. Gli storiografi romani non possono passare sotto silenzio il traumatico avvenimento, riportato insistentemente nelle fonti greche. La storia del sac-
+
+I TESORI SACRI MESSI AL SICURO
+Gli antichi eruditi affermano che i sacra sono sette oggetti che assicurano la salvezza di Roma: della madre degli dèi, il cocchio di terracotta di Veio, le ceneri di Oreste, lo scettro di Priamo, il velo di Ilio, il Palladio (la statua di Pallade Atena che si diceva provenisse da Troia) e gli ancilia (gli scudi dei Salii). Alcuni aggiungono anche due vasi antichissimi e due statue in misura ridotta dei Penati. Non è importante ricostruire l'elenco degli oggetti sacri trasferiti a Caere: insieme al fuoco del focolare comune quegli oggetti simboleggiano la sopravvivenza dello spirito di Roma. Per questo l'aiuto di Lucio Albinio (per porre in salvo le Vestali e i sacra) è ricordato con particolare evidenza dagli antichi. Aristotele lo definisce come il salvatore di Roma, ignorando dell'importanza di Camillo. Non per nulla in un'iscrizione in suo onore, posteriore di qualche secolo, si leggeva: «Mentre i Galli stavano assediando il Campidoglio / egli condusse le Vergini Vestali a Caere. Colà si assunse la responsabilità di far sì, che i sacrifici e le cerimonie non venissero interrotti. / Quando la città si riprese egli riportò / i sacri oggetti e le Vergini a Roma». E i Romani manifestarono lungo grande riconoscenza per Caere, che aveva ospitato i sacra.

@@ -1,21 +1,42 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-240                                                                    STORIA DI ROMA ANTICA
+LE GUERRE SOCIALI: MARIO E SILLA | 241
 
-Gneo Pompeo Strabone), consiste nel portare la guerra nei territori degli alleati; per disperderne le forze e affrontarli separatamente. Ma gli eserciti romani, accanto a parziali successi, conoscono anche sanguinose sconfitte:
+nato, preoccupato per questo atteggiamento, ha più volte inviato osservatori in Oriente (nel 92 Mario, nell'87 Silla) per studiare la situazione.
 
-Tra il 90 e l'89 gran parte dei popoli ribelli capitolano, sicché nell'88 resistono a Roma solo i Lucani e Sanniti: Fondamentale è la fedeltà degli alleati latini; che permette ai Romani di disporre di rinforzi e soprattutto di piazzeforti situate entro i territori dei nemici. Neutrali rimangono le città greche dell'Italia meridionale.
+**La mossa di Mitridate VI coglie di sorpresa i Romani, distratti dagli avvenimenti in Italia.** Ma l'occasione è stata offerta a Mitridate VI dal comportamento di alcuni senatori romani, i quali, avendo concesso dei prestiti al re di Bitinia, Nicomede IV, hanno incoraggiato a saccheggiare il Ponto, per procurarsi il denaro da restituire loro: Mitridate VI non può reagire alla provocazione. Liquidato facilmente Nicomede IV, decide d'invadere la provincia romana d'Asia e se ne impadronisce: Da Efeso invia segretamente messi ai magistrati delle città greche con l'ordine di eliminare i Romani e gli Italici (soprattutto *publicani* e *negotiatores*) presenti nella provincia.
 
-La vittoria è favorita da una decisiva concessione politica; che incrina fin dal principio la compattezza dei popoli italici. Già alla fine del 90 a.C. il console Lucio Giulio Cesare fa approvare la legge che concede la cittadinanza romana agli alleati rimasti fedeli e a quelli che si arrendono subito; negli anni successivi provvedimenti simili sono presi a favore di comunità anche di singoli alleati che ne facciano richiesta. Anche durante la guerra le contese tra le opposte fazioni continuano a turbare Roma. Sotto la spinta dei cavalieri è infatti istituito agli inizi del 90 un tribunale speciale, per processare coloro che hanno istigato gli alleati alla rivolta. Nasce una vera e propria caccia alle streghe: Molti illustri personaggi, già politicamente vicini al tribuno Druso, subiscono condanne o lasciano Roma spontaneamente: Quando si tenta di colpire Marco Emilio Scauro, il più autorevole dei senatori, la situazione si capovolge. Forte anche dell'appoggio popolare; il Senato fa sospendere i processi.
+L'ordine è eseguito con incredibile zelo, tanto che sono massacrati in un solo giorno circa 80.000 uomini: Anche la propaganda filoellenica, perseguita da Mitridate VI, sortisce buoni effetti. Infatti raggiunge con i suoi eserciti la Macedonia e la Grecia, dove è acclamato come liberatore.
 
-Si giunge in tal modo nell'89 a un'ennesima riforma dei tribunali: La scelta dei giudici diventa elettiva e possono essere eletti sia i senatori, sia i cavalieri, sia i semplici cittadini. Frattanto è cambiato l'orientamento nei confronti della questione della cittadinanza agli alleati: ora di fronte ai nuovi tribunali compaiono coloro che si sono opposti in precedenza a ogni concessione e sono considerati colpevoli della ribellione degli alleati.
+**A ROMA**
 
-Alla fine della guerra sociale tutta Italia peninsulare, a sud del Rubicone (in Romagna) e della Magra (in Toscana), è dunque popolata di cittadini romani. Per effetto della Legge Giulia del 90, sono inoltre cittadini romani anche gli abitanti delle ex colonie latine della Cisalpina (Cremona; Aquileia, Piacenza e Bologna).
+A Roma il comando della guerra in Oriente è stato assegnato regolarmente a Lucio Cornelio Silla, console nell'88 e che si trova a combattere contro i Sanniti. Nello stesso tempo si dibatte la questione dell'iscrizione dei nuovi cittadini nelle tribù. La legge Giulia prevedeva che essi fossero iscritti in nuove tribù (8 o 10) appositamente istituite. Così i nuovi cittadini non avrebbero conquistato il controllo dei comizi, come sarebbe avvenuto se essi, più numerosi dei vecchi cittadini, fossero stati distribuiti nelle 35 tribù tradizionali: L'ala più radicale dei seguaci di Druso; capeggiata dal tribuno Publio Sulpicio Rufo; intende eliminare questa restrizione e presenta un plebiscito contro l'istituzione delle nuove tribù.
 
-Le popolazioni della Pianura Padana (Galli, Veneti e forse Liguri) che hanno aiutato i Romani durante la grave ribellione degli altri alleati, hanno ricevuto a loro volta la cittadinanza di diritto latino; in base a una legge votata dal console dell'89 Gneo Pompeo Strabone.
+La proposta è appoggiata anche da Gaio Mario; sia per la sua tradizionale disponibilità nei confronti degli ex alleati sia per il desiderio di crearsi una nuova base politica e di farsi assegnare la guerra contro Mitridate VI.
 
-Il provvedimento sarà decisivo per la graduale assimilazione della Cisalpina e per il suo inserimento nell'Italia romana.
+Nonostante l'ostilità del Senato e dei consoli in carica (tra cui Silla, costretto...
 
-II
-LA CRISI IN ORIENTE
+***
 
-Nell'anno 88 a.C., mentre un'atmosfera di violenza grava su Roma, dove si susseguono i delitti politici e non sono ancora domati Lucani e i Sanniti, giunge la notizia che la provincia d'Asia è stata invasa da Mitridate VI, re del Ponto, uno Stato vassallo di Roma sulla costa meridionale del Mar Nero. Il giovane sovrano, insofferente della posizione di dipendenza da Roma ereditata dal padre, già da tempo ha iniziato una politica di espansione nei confronti degli Stati vicini (Bitinia, Cappadocia, Paflagonia) e ama presentarsi come difensore degli interessi dei Greci d'Asia Minore contro gli occupanti romani. Il Se-
+**SILLA IN PRIVATO**
+
+Lucio Cornelio Silla appartiene a una famiglia patrizia. Un suo antenato era stato espulso dal Senato perché possedeva una quantità d'argento superiore a quanto consentito dalle leggi sul lusso. La condanna ha segnato tutti i discendenti e il giovane Silla conduce una vita disagiata. Spesso gli è rimproverata l'origine sospetta delle sue ricchezze, perché si arricchisce con le eredità della matrigna e d'una ricca cortigiana innamorata di lui. Trascorre il suo tempo in compagnia di mimi e buffoni, cantanti e danzatori. Da giovane s'innamora d'un attore, Metrobio; e continua ad amarlo per tutta la vita; Bisessuale perfetto; ha cinque mogli. In giovanissima età sposa Ilia, da cui ha una bambina; sposa Elia e, successivamente per la terza volta Clelia, che ripudia col pretesto che è sterile. Pochi giorni dopo, a cinquant'anni, fa uno splendido matrimonio, molto chiacchierato, con Cecilia Metella; che gli dà figli e per i cui funerali spende molto più del consentito dalla legge. Ancora vedovo, s'innamora di Valeria; figlia di Valerio Messalla, conosciuta durante uno spettacolo di gladiatori. Da questa passione senile nasce una figlia, nata però dopo la sua morte perciò chiamata Postuma.
+
+***
+
+LE GUERRE SOCIALI: MARIO E SILLA | 241
+
+nato, preoccupato per questo atteggiamento, ha più volte inviato osservatori in Oriente (nel 92 Mario, nell'87 Silla) per studiare la situazione.
+
+La mossa di Mitridate VI coglie di sorpresa i Romani, distratti dagli avvenimenti in Italia. Ma l'occasione è stata offerta a Mitridate VI dal comportamento di alcuni senatori romani, i quali, avendo concesso dei prestiti di Bitinia, Nicomede IV, lo hanno incoraggiato a saccheggiare il Ponto, per procurarsi il denaro da restituire loro. Mitridate VI non può reagire alla provocazione. Liquidato facilmente Nicomede IV, decide d'invadere la provincia romana d'Asia e se ne impadronisce. Da Efeso invia segretamente messi ai magistrati delle città greche con l'ordine di eliminare i Romani e gli Italici (soprattutto *publicani* e *negotiatores*) presenti nella provincia.
+
+L'ordine è eseguito con incredibile zelo, tanto che sono massacrati in un solo giorno circa 80.000 uomini. Anche la propaganda filoellenica, perseguita da Mitridate VI, sortisce buoni effetti. Infatti raggiunge con i suoi eserciti la Macedonia e la Grecia, dove è acclamato come liberatore.
+
+**...A ROMA**
+
+A Roma il comando della guerra in Oriente è stato assegnato regolarmente a Lucio Cornelio Silla, console nell'88 e che si trova a combattere contro i Sanniti. Nello stesso tempo si dibatte la questione dell'iscrizione dei nuovi cittadini nelle tribù. La legge Giulia prevedeva che essi fossero iscritti in nuove tribù (8 o 10) appositamente istituite. Così i nuovi cittadini non avrebbero conquistato il controllo dei comizi, come sarebbe avvenuto se essi, più numerosi dei vecchi cittadini, fossero stati distribuiti nelle 35 tribù tradizionali. L'ala più radicale dei seguaci di Druso, capeggiata dal tribuno Publio Sulpicio Rufo, intende eliminare questa restrizione e presenta un plebiscito contro l'istituzione delle nuove tribù.
+
+La proposta è appoggiata da Gaio Mario, sia per la sua tradizionale disponibilità nei confronti degli alleati sia per il desiderio di crearsi una nuova base politica e di farsi assegnare la guerra contro Mitridate VI. Nonostante l'ostilità del Senato e dei consoli in carica (tra cui Silla, costretto...
+
+**SILLA IN PRIVATO**
+
+Lucio Cornelio Silla appartiene a una famiglia patrizia. Un suo antenato era stato espulso dal Senato perché possedeva una quantità d'argento superiore a quanto consentito dalle leggi sul lusso. La condanna ha segnato tutti i discendenti e il giovane Silla conduce una vita disagiata. Spesso gli è rimproverata l'origine sospetta delle sue ricchezze, perché si arricchisce con le eredità della matrigna e d'una ricca cortigiana innamorata di lui. Trascorre il suo tempo in compagnia di mimi e buffoni, cantanti e danzatori. Da giovane s'innamora d'un attore, Metrobio, e continua ad amarlo per tutta la vita. Bisessuale perfetto, ha cinque mogli. In gioventù sposa Ilia, da cui ha una bambina; sposa Elia e, successivamente per la terza volta Clelia, che ripudia col pretesto che è sterile. Pochi giorni dopo, a cinquant'anni, fa uno splendido matrimonio, molto chiacchierato, con Cecilia Metella, che gli dà due figli e per i cui funerali spende molto più del consentito dalla legge. Ancora vedovo, s'innamora di Valeria, figlia di Valerio Messalla, conosciuta durante uno spettacolo di gladiatori. Da questa passione nasce una figlia, nata però dopo la sua morte e perciò chiamata Postuma.

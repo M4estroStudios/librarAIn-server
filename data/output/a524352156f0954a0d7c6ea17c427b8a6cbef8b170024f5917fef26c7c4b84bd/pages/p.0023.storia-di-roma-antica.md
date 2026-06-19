@@ -1,22 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UN FIUME, UN GUAIO E UN CROCEVIA $\quad$ 23
+24
 
-ra guerra a Latini e Troiani; viene sconfitto; ma Latino cade in battaglia. Turno si rivolge allora all'etrusco Mezenzio, re di Caere (Cerveteri).
+STORIA DI ROMA ANTICA
 
-Per rispondere alla pericolosa minaccia Enea unifica gli aborigeni e i Troiani in un sol popolo, che prende il nome di Latini. In una successiva battaglia, gli Etruschi e Rutuli sono sconfitti e Turno viene ucciso da Enea; è l'ultima impresa dell'eroe, che durante la medesima battaglia scompare misteriosamente. Ascanio abbandona Lavinio sovrappopolata e fonda Alba Longa sulle pendici del monte Albano. Il trattato di pace tra Latini ed Etruschi, concluso dopo la morte di Turno, delimita sul Tevere il confine tra i due popoli.
+LA LUPA
+La lupa è l'antichissimo totem delle genti che fondarono la città, divenuto il simbolo stesso di Roma. La raffigurazione più conosciuta è la statua di bronzo; opera d'un ignoto artista etrusco vissuto nel VI o nel V sec. a.C.; non è noto se la statua fosse stata creata su commissione o non provenga piuttosto dal bottino d'una delle tante guerre contro gli Etruschi. Nell'antichità la statua era collocata sul Campidoglio; da Cicerone (106 a.C. – 7 dicembre 43 a.C.) sappiamo che fu colpita da un fulmine nel 65 a.C. Prima del 1471 si trovava, con altre statue in bronzo d'età romana, nel palazzo Lateranense (la residenza del papa a San Giovanni); è stata collocata nei palazzi del Campidoglio con i primi pezzi della collezione da cui è nato il museo Capitolino. L'opera ha subito in età moderna numerosi restauri. Particolarmente importante l'aggiunta, nel XV secolo, dei due gemelli che si allattano dalla lupa, modellati da Antonio del Pollaiolo (1431/32–1498).
 
-In quattrocento anni si succedono trenta re sul trono di Alba Longa, finché Proca lascia due figli, Numitore e Amulio, che si contendono il potere. Amulio riesce a scacciare il fratello (primogenito) Numitore e costringe Rea Silvia, figlia di questi, a divenire vergine Vestale, impedendole così di generare figli. Malgrado l'obbligo della verginità, Rea Silvia concepisce due figli e ne attribuisce la paternità a Marte.
+I fratelli, cresciuti, divengono dei fieri guerrieri, che rubano ai ladroni che si aggirano nel bosco per dare ai loro amici pastori: i ladroni ripetutamente rapinati tendono un agguato a Romolo e Remo nel corso della festività dei Lupercali, importata nel Lazio dalla comunità degli Arcadi (un popolo della Grecia che abitava il Peloponneso prima delle migrazioni indoeuropee) stabilitisi con il loro re Evandro sul Palatino.
 
-I due neonati (Romolo e Remo) sono destinati a essere affogati nel Tevere; ma una provvidenziale inondazione impedisce ai servi del re di accostarsi alle sponde del fiume. I gemelli vengono abbandonati presso il fico Ruminale (nell'area del Foro Romano, presso la zona centrale dove si teneva il Comizio), dove li trova il pastore Faustolo; la cui moglie Larenzia, dedita a quanto pare alla prostituzione, aveva il soprannome di "lupa"; sarebbe lei, secondo l'interpretazione degli antichi che volevano spiegare ragionevolmente la leggenda, la lupa che allatta i due neonati.
+Remo è catturato e condotto davanti allo zio Amulio che lo consegna per essere punito a Numitore, il nonno inconsapevole, perché ne stabilisca la condanna. Ma Romolo, chiamati a raccolta i pastori, assale di sorpresa la reggia di Amulio; aiutato anche da Remo, che si era procurato (la cosa è un po' misteriosa) amici nella casa di Numitore. Il colpo di mano riesce, Amulio è ucciso; il vero re sale sul trono di Alba Longa. I gemelli decidono di fondare una città, che superi in grandezza sia Lavinio che Alba. Per un atto così importante si deve indagare quale sia il volere degli dèi; per scorgere i segni della volontà divina Romolo sale sul Palatino, Remo sull'Aventino.
 
-***
+Remo per primo avvista sei avvoltoi e lo annuncia al popolo in attesa; mentre lo acclamano re, Romolo vede invece ben dodici avvoltoi. Conta di più la precedenza nell'avvistamento oppure il numero di segnali che si sono scorti? La discussione si fa animata, ne nasce una rissa nella quale Remo muore. L'altra tradizione racconta che mentre Romolo sta aprendo il solco che delimita in maniera sacra la nuova città, Remo, per sfida, con un salto scavalca la linea magica; il fratello, in alla rabbia, lo uccide. Romolo fortifica il Palatino, cioè il luogo dove è stato allevato dal pastore Faustolo; egli in seguito...
 
-[Immagine: Romolo e Remo in un'incisione tratta da *Monumenti scelti della Villa Borghese*, di A. Nibby; 1832.]
-
-Romolo e Remo
-in un'incisione
-tratta da
-*Monumenti scelti*
-*della Villa*
-*Borghese*, di
-A. Nibby, 1832.
+LA FONDAZIONE DELLE CITTÀ ANTICHE
+La fondazione d'una città era un evento che si svolgeva con un rituale fisso e preciso. Per prima cosa si scrutava il cielo, per cercare di interpretare se fosse la volontà degli dei; per far questo si saliva possibilmente su una altura, in grado di assicurare una visuale sgombra da ostacoli su tutti e quattro i punti cardinali. Avuto un parere favorevole si aggiogava una coppia di buoi ad un aratro e in processione religiosa si delimitavano i confini del nuovo insediamento: solo allora si iniziavano a costruire le case e le mura. Questo procedimento è seguito da Romolo e da Remo e rimane in vigore per secoli ovunque i Romani fondano una nuova città.

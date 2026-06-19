@@ -1,20 +1,17 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LE GUERRE SOCIALI: MARIO E SILLA                                            235
+236
 
-[Immagine: incisione di soldati romani e un prigioniero]
+STORIA DI ROMA ANTICA
 
-*Giugurta incatenato viene consegnato a Silla (incisione di B. Pinelli)*
+L'ASCESA DEGLI HOMINES NOVI E GAIO MARIO
 
-Tante che i *negotiatores* romani e italici possano continuare a fare i propri affari senza ostacoli e pericoli.
+*Homo novus* per i Romani è un cittadino che inizia la carriera politica senza poter vantare nella propria famiglia almeno un magistrato curule (pretore o console). Le cariche pubbliche, infami, si tramandano all'interno duna ristretta cerchia di famiglie (*nobilitas*) che ripetutamente ricopre le magistrature romane. L'ascesa politica di chi non appartiene alla *nobilitas* è molto difficile e nei primi tempi del tutto eccezionale: richiede comunque il sostegno di membri influenti dell'aristocrazia patrizio-plebea, che detiene il potere.
 
-### LA MINACCIA DAL NORD UNISCE I RIVALI
+Un caso esemplare è costituito da Gaio Mario. Nato da genitori oscuri, che vivevano del proprio lavoro; Gaio Mario passa i primi anni della sua vita nel villaggio di Cirreatone; nel territorio di Arpino. Milita sotto Scipione Emiliano nella campagna contro i Celtiberi e partecipa alla presa di Numanzia (134-133), facendosi apprezzare dal generale per le sue virtù militari. Intraprende la carriera politica grazie all'appoggio di Cecilio Metello. Tribuno della plebe nel 119, in seguito è pretore e propretore in Iberia. Rientrato a Roma, sposa Giulia (la zia del futuro Giulio Cesare) si assicura l'appoggio della famiglia patrizia dei Valerii Flacci.
 
-Il vantaggio politico personale tratto da Gaio Mario dalla guerra contro Giugurta è evidente. I suoi oppositori fanno perciò circolare la voce che la prima fase della guerra è stata in realtà risolta per merito di Quinto Cecilio Metello (che ha anche avuto l'appellativo di *Numidico*) e che la trattativa decisiva per la cattura di Giugurta è stata opera di Lucio Cornelio Silla.
+La sua posizione è così consolidata e può aspirare a onori maggiori: e questo *homo novus*, console per ben sette volte, per molti anni è l'arbitro della politica romana.
 
-Questi, infatti, mette in bella mostra un anello dove ha fatto incidere la scena di Bocco che gli consegna Giugurta; cosa che provoca le ire del suscettibile Mario.
+[Immagine]
 
-La contesa è interrotta sul nascere. Mentre Mario è ancora in Africa giunge infatti a Roma, insieme con quella della fine della guerra contro Giugurta, la notizia che l'esercito romano, comandato da due consoli incapaci, presso Arausio (*Orange*; nel sud-est della Francia) è stato sconfitto in modo disastroso dai Cimbri e Teutoni (105 a.C.).
-
-Nonostante la legge proibisca l'iterazione del consolato, nessuno sembra adatto di Mario per far fronte al nuovo pericolo: eletto console contro ogni regola per il 105, Mario rientra dall'Africa, celebra il trionfo e assume il comando delle operazioni contro i Germani; ma i Cimbri e i Teutoni non sembrano avere fretta di scendere in Italia.
-
-Lo scontro è pertanto rimandato per più di due anni, nei quali Mario è rieletto console. A facilitare questa rielezione continuata contribuisce anche la...
+Mario brucia le armi dei Cimbri e dei Teutoni
+(particolare da un'incisione di B. Pinelli).

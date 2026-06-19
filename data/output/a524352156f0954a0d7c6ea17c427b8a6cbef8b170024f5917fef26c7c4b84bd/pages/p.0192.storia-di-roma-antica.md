@@ -1,26 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-192                                                                    STORIA DI ROMA ANTICA
+ROMANI E CARTAGESI: LA CONQUISTA DEL MEDITERRANEO 193
 
-ROMA BRUCIA
+![Scipione con la spada in pugno dichiara che non abbandonerà la causa di Roma e non permetterà a nessun cittadino di farlo (incisione di B. Pinelli, particolare)]
 
-Nel 213 a.C. un violento incendio scoppia nel foro Boario e brucia la maggior parte degli edifici sacri. Lo Stato non naviga nell'oro, ma si trovano i soldi per ricostruire templi di Speranza, Fortuna e Mater Matuta. Nel 210 a.C. un altro violento incendio doloso scoppia nel Foro, divampando in punti diversi.
+Scipione con la spada in pugno dichiara che non abbandonerà la causa di Roma e non permetterà a nessun cittadino di farlo (incisione di B. Pinelli, particolare)
 
-Il tempio di Vesta si salva a stento grazie all'opera di 13 schiavi, che ottengono in premio la libertà. Per due giorni le fiamme bruciano gran parte degli edifici. Il Senato, deciso a trovare i colpevoli, offre un premio in denaro (o la libertà se schiavo) a chi denunci gli incendiari. Uno schiavo della famiglia campana dei Calavii denuncia i suoi padroni e altri giovani campani, che hanno appiccato il fuoco per odio verso Roma, dopo la presa di Capua.
+Tuttavia i punti vitali dello "Stato" dei Barca sono ancora intatti: In Oriente Annibale avvia rapporti con Filippo V di Macedonia; ostile ai Romani per un patto di reciproco aiuto tra i due contraenti in caso d'un attacco nemico.
 
-I denunciati, in un primo momento tentano di accusare lo schiavo; ma alla fine confessano: sono giustiziati seduta stante, mentre lo schiavo è liberato e premiato con una ricca somma di denaro. La ricostruzione permette di risistemare le *tabernae*, le botteghe, che stanno sempre più crescendo in modo disordinato.
+Roma è annichilita dall'esito di Canne. La tensione sociale è fortissima. Scoppiano scandali e si susseguono prodigi. Due vestali; Opinia e Floronia; infrangono il voto di castità: una uccide, l'altra è sepolta viva: Uno dei pontefici minori, Lucio Cantilio, che aveva iniziato Floronia ai piaceri della carne, muore sotto la frusta. Come ultima salvezza si ricorre ai sacrifici umani per placare paure soprannaturali: un uomo e una donna d'origine gallica; un uomo e una donna d'origine greca sono calati vivi sottoterra nel foro Boario; in un luogo circondato da pietre.
 
-Le *tabernae argentariae* ricostruite (e perciò dette *novae*, nuove) sono disposte intorno al nuovo centro commerciale (*macellum* o mercato) che occupa l'area riservata al foro della Pace di Vespasiano.
-
-II. PROGETTO MEDITERRANEO DI ANNIBALE:
-
-Immediatamente gli alleati romani in Apulia, Sannio e quasi tutta l'Italia abbandonano Roma. Annibale passa alla seconda parte del suo piano. Ora potrà recarsi a Capua; città che i suoi alleati segreti sono pronti a consegnargli. Il fratello Magone si dirigerà invece verso sud, nel Bruzio (odierna Calabria); dopo aver occupate le città italiote, rientrerà a Cartagine. Altri emissari debbono suscitare la rivolta in Sicilia; anche in Sardegna la situazione è ormai favorevole; così come in Cisalpina; in Spagna invece è scomoda la presenza dei due Scipioni.
-
-IL GIURAMENTO DI SCIPIONE:
-
-All'indomani della terribile sconfitta di Canne, Roma e il suo esercito vivono momenti difficili. Un pericolo mortale incombe sul destino della città. Gli ufficiali scampati alla strage, insieme ai pochi soldati sopravvissuti, si rifugiano a Canosa e il giovane Publio Scipione è tra questi. Corre voce che alcuni comandanti, capeggiati dal patrizio Lucio Cecilio Metello, abbiano intenzione di abbandonare Roma alla sua sorte e di fuggire in Oriente al servizio di qualche sovrano.
-
-Mentre i kunti insistono per riunire un consiglio, per discutere e verificare la fondatezza di queste voci, Scipione decide di agire. Il pericolo va affrontato con le armi in pugno; il vero nemico si annida dove si perde tempo in chiacchiere e consigli. Con la spada in pugno egli si reca nella tenda di Metello, dove trova i congiurati riuniti. Il giovane, in preda all'ira, agitando pericolosamente la spada sulle loro teste, dichiara che non abbandonerà la causa di Roma e che non permetterà a nessun cittadino di farlo.
-
-Se verrà meno al giuramento possa Giove colpire la sua casa e la sua fortuna con orribili disgrazie. Ordina inoltre a tutti i presenti di prestare giuramento, minacciando di morte istantanea chiunque si rifiuterà. Inutile dire che gli ufficiali, di fronte alla persuasiva argomentazione che si muove sopra le loro teste, sono ben lieti di giurare e di fornire a Roma il loro valido aiuto.
-
-(F.S.)
+Il terrore e il presagio d'una inevitabile rovina gravano sulla città; ridotta alla disperazione. Per la prima volta la mancanza di uomini, quasi tutti perduti a Canne; impone d'arruolare gli schiavi: il grande esercito romano è ridotto a una banda di servi.

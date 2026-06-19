@@ -1,14 +1,48 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-## OPERATOR NOTES
+II. RE: RIFORMATORI; II RE: IL TRANNO E LA RIVOLUZIONE
 
-A pagine 395-402 del PDF trovi una Cronologia con Anno - Eventi. Utilissima per il time index.
+73
 
-**Numerazione:** pagina del LIBRO in alto — a sinistra sulle pagine pari, a destra sulle dispari; offset costante PDF−3 rispetto al numero stampato nel corpo. Non confondere con date nel testo (753 a.C., 202 a.C., 66 d.C., ecc.).
+I figli di Anco Marcio sono banditi mandati in esilio e Servio celebra un fastoso funerale per Tarquinio; come se fosse morto poco prima.
 
-**Intestazione di corridoio:** sulle dispari titolo del capitolo/sezione in maiuscoletto a sinistra; sulle pari «STORIA DI ROMA ANTICA» a destra. Le pagine di apertura sezione possono avere solo titolo decorativo centrato e nessun numero.
+**SERVIO TULLIO E LA FORTUNA ALLA FINESTRA**
 
-**Box monografici:** riquadro con bordo nero; titolo in maiuscoletto (talvolta numerato romano o arabo); testo interno tutto in corsivo — trattare come inserto tematico separato dal flusso narrativo, non come corpo del capitolo.
+La tradizione sottolinea che la presa del potere di Servio Tullio era illegale ed era un regalo di una donna (*muliebri dono*). Risulta interessante; al di là dello stretto rapporto esistente fra Tanaquil e la Fortuna; la possibilità di cogliere alcuni elementi di origine orientale, all'interno della storia di Servio Tullio.
 
-**Immagini:** incisioni/xilografie in bianco e nero, spesso in cornice; talvolta pagina intera senza testo. Didascalie in corsivo, più piccole: sotto l’immagine oppure nel margine laterale (nota a lato), a sinistra o a destra del riquadro — non fondere con il testo corrente. Possibili coppie pianta+ricostruzione nello stesso box, con didascalia esterna.
+| Il tema della | che guarda |
+| :--- | :--- |
+| **donna alla finestra** è presente due volte nel racconto tradizionale sul sovrano: nella notte la Fortuna era solita entrare furtivamente nella stanza di Servio Tullio; Tanaquil dalla finestra del palazzo reale arringa la folla dopo l'attentato contro Tarquinio Prisco: Esistono stretti legami con l'Afrodite di Cipro (la Venere romana) che guarda dalla finestra una divinità rappresentata proprio affacciata a una finestra, e con alcuni episodi biblici come quello di Micol, figlia di Saul e moglie di David. La leggenda sulla regalità di Servio Tullio richiama l'antichissimo mito della dea amante del sovrano, attestato nel Vicino Oriente in tempi antichissimi, conservato e diffuso dai Fenici. Proprio in virtù di questo amore la dea conferisce il potere a un sovrano "irregolare" e il rapporto privilegiato con la divinità rappresenta la legittimazione della regalità. Non è escluso che questi temi fenici seguano la stessa strada delle merci, degli oggetti che gli abili mercanti fenici trasportano fino al *portus Tiberinus*; dove forse fino da tempi antichi esiste un loro emporio. |
 
-**Sottotitoli di sezione:** centrati in maiuscoletto nel flusso del testo. Nel corpo, corsivo per latino, toponimi e rimandi «(vedi box …)». Non risultano note a piè numerate nel campione.
+**IL RE FUORILEGGE**
+
+Ben presto cominciano problemi. *Più gentes* non sono soddisfatte di questo re illegale. Certamente egli è il genero del vecchio re, ma non c'è stata alcuna elezione; il Senato non ha dato il suo consenso e per giunta non sono stati presi gli auspici. Servio Tullio, conosciuto per tempo il loro malcontento, cerca l'appoggio del popolo: in particolare, grazie a un particolareggiato piano di riforme, cerca il consenso dell'ampia fascia di cittadini indigenti:
+
+La schiavitù per debiti costituisce uno dei problemi più grossi per la gente più povera della popolazione.
+Servio stabilisce che il debitore insolvente debba consegnare solo la sua terra e non se stesso come schiavo.
+
+Per meglio gestire e riscuotere le entrate pubbliche attua il censimento (*misurare il census*, la ricchezza) d'ogni cittadino: ciascuno pagherà proporzionalmente alle proprie possibilità. In concomitanza col censimento stabilisce che le terre conquistate in battaglia debbono essere distribuite fra i cittadini più poveri.
+
+Tutte queste iniziative fanno di Servio un personaggio sempre più scomodo e, resosi conto del pericolo che sta correndo; decide di prendere i suoi avversari in contropiede. Durante un'assemblea annuncia che è costretto ad abbandonare la sua carica. Con parole toccanti, lascia libero il popolo di soggiacere alla violenza di uomini, simili agli uccisori di Tarquinio, che stanno tramando contro di lui e contro i discendenti del vecchio re. Ma la folla in lacrime lo trattiene, supplicandolo di rimanere al potere. I suoi sostenitori propongono allora di fare le elezioni e di regolarizzare la sua posizione; trasformando Servio in un re legittimo.
+
+***
+
+II. RE: RIFORMATORI; IL TRANNO E LA RIVOLUZIONE 73
+
+I figli di Anco Marcio sono banditi mandati in esilio e Servio celebra un fastoso funerale per Tarquinio; come se fosse morto poco prima.
+
+**SERVIO TULLIO E LA FORTUNA ALLA FINESTRA**
+
+La tradizione sottolinea che la presa del potere di Servio Tullio era illegale ed era un regalo di una donna (*muliebri dono*). Risulta interessante, al di là dello stretto rapporto esistente fra Tanaquil e la Fortuna; la possibilità di cogliere alcuni elementi di origine orientale, all'interno della storia di Servio Tullio. Il tema della "donna alla finestra" è presente due volte nel racconto tradizionale sul sovrano: nella notte la Fortuna solita entrare furtivamente nella stanza di Servio Tullio; Tanaquil dalla finestra del palazzo reale arringa la folla dopo l'attentato contro Tarquinio Prisco: Esistono stretti legami con l'Afrodite di Cipro (la Venere romana) che guarda dalla finestra una divinità rappresentata proprio affacciata a una finestra, e con alcuni episodi biblici come quello di Micol, figlia di Saul e moglie di David. La leggenda sulla regalità di Servio Tullio richiama l'antichissimo mito della dea amante del sovrano, attestato nel Vicino Oriente in tempi antichissimi, conservato e diffuso dai Fenici. Proprio in virtù di questo amore la dea conferisce il potere a un sovrano "irregolare" e il rapporto privilegiato con la divinità rappresenta la legittimazione della regalità. Non è escluso che questi temi fenici seguano la stessa strada delle merci, degli oggetti che gli abili mercanti fenici trasportano fino al *portus Tiberinus*, dove forse fin da tempi antichi esiste un loro emporio.
+
+**IL RE FUORILEGGE**
+
+Ben presto cominciano problemi. *Più gentes* non sono soddisfatte di questo re illegale. Certamente egli è il genero del vecchio re, ma non c'è stata alcuna elezione; il Senato non ha dato il suo consenso e per giunta non sono stati presi gli auspici. Servio Tullio, conosciuto per tempo il loro malcontento, cerca l'appoggio del popolo: in particolare, grazie a un particolareggiato piano di riforme, cerca il consenso dell'ampia fascia di cittadini indigenti.
+
+La schiavitù per debiti costituisce uno dei problemi più grossi per la gente più povera della popolazione.
+Servio stabilisce che il debitore insolvente debba consegnare solo la sua terra e non se stesso come schiavo.
+
+Per meglio gestire e riscuotere le entrate pubbliche attua il censimento (*misurare il census*, la ricchezza) d'ogni cittadino: ciascuno pagherà proporzionalmente alle proprie possibilità. In concomitanza col censimento stabilisce che le terre conquistate in battaglia debbono essere distribuite fra i cittadini più poveri.
+
+Tutte queste iniziative fanno di Servio un personaggio sempre più scomodo e, resosi conto del pericolo che sta correndo, decide di prendere i suoi avversari in contropiede. Durante un'assemblea annuncia che è costretto ad abbandonare la sua carica. Con parole toccanti, lascia libero il popolo di soggiacere alla violenza di uomini, simili agli uccisori di Tarquinio, che stanno tramando contro di lui e i discendenti del vecchio re.
+
+Ma la folla in lacrime lo trattiene, supplicandolo di rimanere al potere. I suoi sostenitori propongono allora di fare le elezioni e di regolarizzare la sua posizione, trasformando Servio in un legittimo.

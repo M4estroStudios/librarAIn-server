@@ -1,12 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-NERONE E LA FINE DEL CONSENSO                                            325
+326
 
-*Le Terme di Nerone nella topografia odierna (Studio Groma).*
+STORIA DI ROMA ANTICA
 
-[Immagine: Pianta archeologica e ricostruzione delle terme]
+Gli Orti di Nerone in un'incisione del XVIII secolo (da Roma moderna).
 
-LE TERME NERONIANE
+[Immagine: incisione degli Orti di Nerone]
 
-*A Nerone si deve attribuire la costruzione delle prime «grandi terme». Si tratta cioè del primo grande complesso che si organizza intorno a un asse simmetrico; secondo un modello che diverrà canonico. Le terme occupano lo spazio compreso tra piazza della Rotonda e corso Rinascimento (da est a ovest) e tra via delle Cornacchie e via della Dogana Vecchia (da nord a sud) per un'ampiezza di 190 per 120 metri. Le terme non sono soltanto il luogo dove i cittadini possono lavarsi (solo le case dei ricchi sono dotate di bagni) ma sono anche un punto di ritrovo; dove amici e conoscenti si incontrano. La durata del bagno, da quando ci si sposta progressivamente in stanze e piscine con temperatura diversa, è piuttosto lunga. È facile trovare il tempo per parlare e per intrecciare relazioni di tutti i generi. Questo complesso termale, costruito lo stesso anno (62 d.C.) della palestra; fa parte del piano di Nerone di convertire i Romani ai costumi ellenici, creando loro nuove abitudini ed esigenze.*
+LA MONETA SI SVALUTA
 
-nato le repressioni degli anni precedenti. L'Impero è in rivolta. La Gallia Lusitanense insorge sotto la guida di Gaio Giulio Vindice; seguito poi da Servio Sulpicio Galba; legato della Spagna Tarraconense e da Marco Ottone, legato della Lusitania e dal questore della Betica, Aulo Cecina Alieno. L'imperatore si sente completamente perduto quando fallisce il suo tentativo di fare assassinare il vecchio Galba. Il regime di Nerone si sgretola. Il Senato lo dichiara nemico pubblico e riconosce in Galba il nuovo principe. Nerone fugge da Roma e si rifugia in una villa fuori città. Anche gli ultimi fedeli lo abbandonano svelando ai pretoriani dove è nascosto. Mentre un distaccamento di pretoriani viene a ucciderlo l'imperatore istrio-ne, a trent'anni, si dà la morte (11 giugno del 68 d.C.). Con lui si chiude la lunga dinastia dei Giulio-Claudii.
+La riforma monetaria neroniana consiste nella diminuzione del peso degli aurei e dei denari d'argento, che passano rispettivamente da 7,70 g a 7,30 g e da 3,70 g a 3,25 g. L'aureo continua a valere venticinque denari, a tutto profitto di questi ultimi. Inoltre, il denario alleggerito corrisponde meglio alla dracma orientale, migliorando così il cambio e la circolazione di valuta: dalla riforma escono avvantaggiati quei ceti che sono per tradizione manipolatori d'argento, come i cavalieri e i commercianti. Non così per i senatori, da sempre accumulatori d'oro. La leggera svalutazione a breve termine migliora i commerci e gli scambi, ma presto i prezzi rincarano, scatenando un processo inflazionistico durato fino alla fine dell'impero. La moneta nuova viene così rifiutata e si tesaurizzano (si conservano) solo le monete più antiche, mentre le tribù germaniche si rifiutano di fare circolare il denaro di Nerone.

@@ -1,46 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-150                                                                    STORIA DI ROMA ANTICA
+L'EGEMONIA NELL'ITALIA CENTRO-MERIDIONALE 151
 
-L'UMORISMO GRECO A ROMA
+Esculapio, sotto forma di serpentello, scende sull'Isola Tiberina (stampa popolare del XVI secolo).
 
-Dopo le rappresentazioni sacre, importate dall'Etruria; nel I secolo a.C., Roma co-
-nosce altre forme di spettacolo tramite i contatti con gli Osci e i Greci.
-I Romani cominciano a ridere, guardando l'Atellana (da Atella, una città osca tra Capua
-e Napoli) una farsa giocata sulla comicità di alcuni personaggi fissi: Macco, lo sciocco
-beffato; Bucco, il grasso ciarlatano; Pappo, il vecchio vizioso; Dossenno, il
-saggio astuto e perennemente affamato.
-Le battute (scontate e volgari) e gli intrecci sono sempre uguali, ma suscitano il ri-
-so degli abitanti dell'urbe, poco raffinati in fatto di teatro.
-Soltanto dopo la guerra con Pirro Roma assaggia il vero teatro; nato in Grecia più
-di due secoli prima; Da Taranto giunge come schiavo Tito Livio Andronico; in segui-
-to liberato dal patrono Livio; che fa provare ai Romani il gusto del teatro greco, fon-
-dendo insieme i lazzì e le facezie (graditi al pubblico) con l'intreccio delle commedie
-greche; Nasce così la commedia latina chiamata commedia palliata, dal pallio o man-
-tello di tipo greco, indossato dagli attori.
-Andronico traduce e mette insieme anche parti delle tragedie greche, creando una nuova
-rappresentazione tragica; la tragedia coturnata (dai coturni, gli alti san-
-dali usati dagli attori).
+[Immagine: ESCULAPIO]
 
-*Immagine: incisione in bianco e nero di un serpente*
+### LO SCIOPERO DEI MUSICANTI
 
-Una violenta pestilenza imperversa a Roma.
-I pontefici, incapaci di trovare ri-
-medio al morbo, decidono di ricorrere ai decemviri sacris faciundis, dieci sacerdoti
-addetti alle cose sacre e in particolar modo alla consultazione dei Libri Sibillini.
-La raccolta degli oracoli della Sibilla Cumana era arrivata a Roma al tempo del-
-l'ultimo Tarquinio: da quel momento era divenuta il testo sacro cui ci si rivolge-
-va quando fallivano le normali pratiche religiose.
-I dieci riferiscono che l'unica
-salvezza per lo Stato consiste nell'introduzione del culto di Esculapio (figlio di Apol-
-lo) venerato in Grecia, come dio della medicina, ad Epidauro; i
-fratelli Ogulnii, legati al mondo etrusco per la loro origine chiusina; promuovono
-il nuovo culto. Inviati in Grecia a capo di un'ambasceria per richiedere una sta-
-tua del dio, tornano con un serpente, animale magico
-e simbolo d'Esculapio:
-I pontefici fissano nell'isola Tiberina la sede del culto: un'area vicina alla città, ma
-contemporaneamente separata: Posizione ideale per un tempio dove si raccolgono
-i malati in cerca della salvezza. La divinità appare in sogno ai malati e svela co-
-me possono ottenere la guarigione (la pratica dell'incubazione) L'edificio sacro
-diventa un "ospedale"
-per coloro che il male ha bandito dalla città; gli
-"isolati" dell'isola.
+Quando le autorità romane (e in particolare Appio Claudio) cercano di moderare la presenza dei tibicini (i suonatori di tibia, un particolare flauto) onnipresenti nelle cerimonie pubbliche, questi abbandonano la città; si rifugiano a Tivoli e rifiutano di venire a patti con gli ambasciatori romani. Secondo la tradizione sono fatti ubriacare e sono caricati di peso sui carri alla volta di Roma. Poi il riconoscimento della funzione pubblica della corporazione e l'istituzione d'una festa (celebrata il 13 giugno) convincono i suonatori a venire a patti.
+
+A Roma si affermano le corporazioni di mestieri delle attività artistiche, come quella degli attori, con sede nel tempio di Minerva sull'Aventino. Del resto già si conoscono organizzazioni di attori e musicisti in occasione di un'epidemia; quando sono chiamati dall'Etruria i *ludiones* (attori) a celebrare la festa di Giunone Regina (364 a.C.).
+
+### LA CACCIA ALLE AVVELENATRICI
+
+Il 331 a.C. è un anno difficile per i Romani. Strane morti, misteriose epidemie decimano i cittadini più influenti della città. Al cospetto dell'edile curule Quinto Fabio Massimo si presenta un giorno una schiava e si dichiara pronta a rivelare l'origine della misteriosa malattia, se il patrizio le garantisce la vita: così svela che alcune matrone, fabbricando veleni, sono la causa dei misteriosi decessi. Si scatena una vera "caccia alle streghe" e sono arrestate circa 170 matrone patrizie. Due di esse, Cornelia e Sergia, si difendono affermando che si tratta di farmaci salutari. Invitate a bere queste loro medicine, muoiono all'istante fra atroci dolori.
+
+Qui il racconto di Tito Livio improvvisamente cambia direzione: non dice più nulla sul destino delle avvelenatrici e aggiunge che come rito di espiazione di questa faccenda, rimasta poco chiara e che ha legami col mondo della magia, fu stabilito che ogni dittatore tasse un chiodo (per trafiggere gli spiriti del male) nel momento della sua elezione, sull'esempio del chiodo piantato nel tempio capitolino a partire dall'anno zero della Repubblica. È oscuro questo legame tra le avvelenatrici e i dittatori; certo è che nello scandalo furono coinvolte le *gentes* più famose e potenti.

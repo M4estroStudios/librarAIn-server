@@ -1,31 +1,26 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA TRA CONSERVATORI E INNOVATORI | 229
+230
 
-La figura di Emilio Paolo incarna invece una nuova fase dell'atteggiamento romano verso la Grecia. Dopo la vittoria di Pidna, prima di rientrare, il generale compie un viaggio nelle località più importanti della Grecia classica (la Grecia del V secolo a.C., la Grecia di Pericle). Lascia addirittura un monumento a Delfi che commemora la battaglia di Pidna. L'iscrizione che accompagna il fregio è in latino; ad Olimpia il generale rimane affascinato dalla statua di Zeus costruita da Fidia (V secolo a.C.), autore della statua di Atena nel Partenone di Atene.
+STORIA DI ROMA ANTICA
 
-È innegabile il filoellenismo di Emilio Paolo; come è innegabile la sua diversità da quello di Scipione o Flaminino:
-Non c'è più l'imitazione del monarca orientale in tutte le sue espressioni artistiche; ora si ricerca un'arte che sia espressione d'una città che ha conquistato un impero. Si cerca un'arte ufficiale.
+Il ceto dominante romano trova nel classicismo neoattico (che imita l'arte ateniese del V secolo a.C.) il suo mezzo espressivo.
 
-Il suo modello non saranno più le corti ellenistiche, sorte dopo la morte di Alessandro, ma la Grecia classica, la Grecia delle città-stato del V secolo a.C., di Atene in modo particolare.
+BOTTEGHE E ARTISTI GRECI
 
-***
+A Roma gli artisti greci neoattici trovano un ampio mercato. Si costruiscono templi completamente in marmo e le statue di culto assomigliano ai modelli greci del V secolo a.C. Intere scuole e famiglie di artisti lavorano per gli uomini politici. Dalla statua sacra si passa ben presto ai ritratti.
 
-MEDICINA CASALINGA E MEDICI CARNIFICI
+È opera di Teisicrate la statua bronzea di Cornelia e dei due Gracchi, edificata nel luogo in cui furono uccisi. Famosissima è anche la bottega di Scopas minore, autore di numerose opere, tra cui l'Ercole Olivario situato nel tempio rotondo vicino al Tevere (vedi box a p. 223).
 
-*Secondo Catone il capofamiglia deve occuparsi della sua terra, dei suoi animali e della sua famiglia; salvaguardando la salute dei suoi familiari.*
+CONSENSO E GIUSTIFICAZIONE
 
-La medicina domestica ha una lunga tradizione a Roma e si aggiunge una certa diffidenza nel mettersi nelle mani di schiavi e stranieri che si spaccano per guaritori. A partire dal I secolo a.C. compaiono i primi medici d'origine greca. Nel mondo ellenistico gli studi di medicina sono molto avanzati e ad Alessandria si pratica comunemente la vivisezione, per conoscere il funzionamento del corpo umano.
+Durante le guerre di conquista è diffusa a tutti i livelli la consapevolezza che la guerra arricchisce. I soldati, pur costretti a lunghi anni di permanenza all'estero, sono consapevoli dei vantaggi economici che ne deriveranno. Una mentalità imperialistica e militaristica è dunque diffusa. Nel teatro il *miles*, il soldato, diventa un personaggio tipico. Si tratta sempre d'uno spaccone che ha fatto i soldi con la bellica, puntualmente dilapidati dalla sgualdrina astuta che incontra sulla sua strada. Fare il soldato è dunque un affare per buona parte del popolo. A questo si unisce il naturale orgoglio per la propria condizione di Romano, votato al dominio universale e anche su questo sentimento imperialistico di massa i comandanti sanno fare leva. Il 146 a.C., anno della distruzione di Cartagine e Corinto, segna una svolta per la politica romana: ora la guerra aggressiva e distruttiva fa vacillare il consenso che Roma si è costruita in patria e fuori.
 
-Roma non è una piazza molto ambita dai medici. Tuttavia uno di essi, Arcagato, è invitato dal Senato a esercitare la sua arte a Roma (219 a.C.). Grazie a fondi pubblici ha a disposizione un ambulatorio per ricevere i malati; ma il suo progetto fallisce sia per mancanza di altre sovvenzioni, sia per i metodi non proprio delicati.
+In patria emergono problemi sociali ed economici che nemmeno le ricchezze di Perseo sanno risolvere. Fare il soldato è un mestiere con troppe incognite e conseguenze.
 
-Arcagato diventa la personificazione della paura che hanno i Romani del medico carnefice, quello che non tentenna di fronte agli interventi più cruenti. Passerà altro tempo prima che la figura del medico diventi consueta, familiare e non fonte di angosciosi incubi.
+All'esterno Roma deve giustificare la sua violenza: dalla città che donava la libertà al mondo greco è diventata la città che lo distrugge. Si diffonde co-
 
-***
+ORECCHIE A SVENTOLA SU UN CORPO DA EROE
 
-PIEDI, UTERI ED EX VOTO: L'AIUTO DEGLI DEI
+A Roma comincia a diffondersi il gusto per i ritratti. Non solo amano farsi ritrarre gli uomini politici, come Flaminino o Postumio Albino, ma anche gli arricchiti, loro che devono il loro denaro ai mercati orientali. La statua romana tipica è quella togata; ma presto i Romani iniziano a scoprirsi: prima le spalle, poi il corpo.
 
-Accanto alla medicina tradizionale e alla nuova medicina d'origine greca per il Romano resta comunque importante l'aiuto degli dèi. Dopo l'arrivo d'Esculapio, l'Isola Tiberina si è trasformata in un ospedale (vedi capitolo *L'egemonia nell'Italia centro-meridionale*), che accoglie i malati.
-
-Dopo la guarigione è usuale donare al dio l'ex voto che era stato promesso in voto secondo le proprie possibilità. Molto spesso si tratta di ex voto anatomici, come oggetti in terracotta, prodotti a stampo, che rappresentano la parte del corpo guarita. Il Tevere ha restituito e continua a restituire migliaia di questi ex voto, che i fedeli hanno donato a Esculapio.
-
-Tra questi si possono distinguere quelli che rappresentano l'organo guarito (come piedi, occhi, orecchie, mammelle, uteri, cuori, intestini) e quelli che invece simboleggiano la protezione richiesta circa la fecondità e il ciclo riproduttivo. Esiste dunque un mercato di ex voto anatomici che, fiorito sulla religione popolare ancora legata a rituali e culti antichi, segue la conquista romana e si diffonde con essa.
+Il modello è quello del sovrano ellenistico della statuaria classica (arte greca del V secolo a.C.). Molti *negotiatores* (mercanti) si fanno ritrarre in nudità eroica. Per il nostro gusto il risultato sembra discutibile, dal momento che il corpo atletico, composto in una posizione classica, stride col realismo della testa, modellata in modo da ritrarre il committente. I segni della calvizie e le orecchie leggermente a sventola sopra un corpo da divinità greca manifestano il desiderio di ascesa sociale delle nuove classi, che non temono il ridicolo.

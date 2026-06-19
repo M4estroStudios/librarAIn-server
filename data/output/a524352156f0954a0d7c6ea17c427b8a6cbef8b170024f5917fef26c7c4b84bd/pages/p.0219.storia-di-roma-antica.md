@@ -1,20 +1,28 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA TRA CONSERVATORI E INNOVATORI $\quad$ 219
+220
 
-***
+STORIA DI ROMA ANTICA
 
-*L'AREA SACRA DI LARGO ARGENTINA*
+GLI SCHIAVI DI CATONE
 
-*Il complesso chiamato area sacra di largo Argentina si colloca fra le attuali vie Flori-da, di San Nicola ai Cesarini; di Torre Argentina e il largo Argentina. I quattro templi, che occupano questa parte del Campo Marzio meridionale, non appartengono alla stessa epoca. I più antichi sono i templi contrassegnati con la C e con la A. Il tempio C probabilmente è stato edificato da Mario Curio Dentato per Feronia, la divinità sabina evocata con la conquista del 290 a.C. Si tratta di un edificio periptero; cioè tutto circondato da colonnati tranne sul lato posteriore: i resti attualmente visibili appartengono a un restauro posteriore. Il tempio A è stato costruito per celebrare la vittoria su Cartagine, conseguita da Caio Lutazio Catulo nel 241 a.C. La divinità a cui è dedicato è Giuturna, ninfa delle acque che ben si accorda con la presenza della fonte su cui saranno edificate le terme di Agrippa. In ordine di tempo l'edificio sacro successivo è il tempio D; il più grande, dedicato da Marco Emilio Lepido ai Lari Parentini; divinità di origine orientale (179 a.C.). Fino all'incendio del III a.C. tre templi costituiscono complessi cultuali autonomi. Solo dopo la devastazione dell'area si stabilisce di riunire i tre edifici con un'unica pavimentazione, elevando il livello di circa 1,40 m. Nello stesso momento è probabile che si passi alla costruzione d'un porticato intorno agli edifici. Marco Minucio Rufo con la porticus Minucia ringrazia gli dèi della vittoria sugli Scordisci; una popolazione della Tracia (106 a.C.). Nello spazio rimasto libero tra A e C un altro Quinto Lutazio Catulo fa erigere il tempio B. Si tratta del primo edificio rotondo periptero dell'area. Le colonne corinzie sono in tufo dell'Aniene. L'edificio, legato alle distribuzioni di grano che si compiono nell'area, è dedicato alla «Fortuna del giorno presente», ossia il giorno delle frumentazioni. Alla decorazione dell'edificio B appartengono i giganteschi resti (solo la testa e parte del collo misurano 1,40 m) d'una statua femminile costruita in parte in marmo; in parte in metallo. Attualmente è conservata nei Musei capitolini (braccio nuovo). Alla fine del II secolo a.C. quest'area sacra assume l'aspetto che conserva tuttora: la presenza delle divinità che proteggono i viaggi per mare e di quella che soprintende alle frumentazioni della plebe rendono il complesso il simbolo stesso dell'espansione romana; con tutti i suoi vantaggi e contraddizioni.*
+Nella casa di Catone ci sono molti schiavi, ma ancora in numero contenuto, senza confronto con le grandi aziende agricole, dove centinaia o migliaia di schiavi costituiscono pericolosi focolai di rivolta.
 
-***
+Il Censore con i suoi schiavi si comporta ancora come un padrone, che si sente a capo d'una grande famiglia. Egli preferisce acquistarli quando sono piccoli, per allevarli con facilità, come i cuccioli. In casa, quando non sono occupati in qualche lavoro, sono obbligati a dormire.
 
-Dappertutto nella penisola sorgono aziende di media grandezza che coltivano prodotti pregiati come la vite e l'olivo, destinati alla vendita. Le anfore italiche diventano i tipici contenitori per il trasporto dei prodotti dell'Etruria e della Campania. Ovunque nel Mediterraneo si incontrano mercanti italici e romani che scambiano prodotti agricoli e soprattutto schiavi.
+Catone è felice, vedendoli dormire, perché il sonno fa bene al corpo e rende l'uomo più docile.
 
-***
+Si preoccupa anche dei loro piaceri sessuali, osservando che la castità li rende insofferenti e trascurati. Ma si tradisce la mentalità speculativa del vecchio romano: permette loro di frequentare le schiave soltanto dietro un piccolo compenso e vieta d'incontrare altre donne! Suscita inoltre gelosie e discordie, ben sapendo che la concordia tra gli schiavi è pericolosa per il padrone.
 
-*SCHIAVITÙ E RIVOLTA*
+Già nel 185-180 a.C. si promulga una legge che impone di impiegare una certa quota di liberi nelle aziende di quanti occupano il terreno pubblico. L'impiego di schiavi entra prepotentemente in altri settori dell'economia. Nella pastorizia e nelle miniere lo sfruttamento assume toni durissimi. Da questo momento in poi le rivolte servili diventano un problema sociale ricorrente per il mondo romano. La rivolta più seria scoppia in Sicilia tra gli schiavi addetti alla pastorizia.
 
-Un ruolo rilevante nell'ampliamento della produzione agricola è promosso dall'incremento della schiavitù. Il bottino dei conquistatori orientali è costituito da ricchezze; ma anche da migliaia di schiavi. La schiavitù è esistita a Roma e nei suoi trattati Catone concede un ampio spazio ai consigli per l'allevamento e l'addestramento degli schiavi domestici. Accanto allo schiavo nato in casa ora compaiono schiavi d'origine straniera, spesso d'elevata origine sociale e culturale.
+Diversamente dalle altre volte, i ribelli hanno un capo carismatico, Euno, che si vanta del dono della profezia. Il suo modello è Antioco III e, come il vecchio nemico romano, si fa incoronare re. La rivolta ha un'articolata organizzazione e coesione interna che ritarda e rende difficile la repressione.
 
-Vicino alle aziende di medie dimensioni, si sviluppano i grandi latifondi basati sull'impiego di numerosa manodopera servile. Come conseguenza i lavoratori liberi delle classi più umili sono estromessi da impieghi che erano tradizionalmente loro affidati.
+LA RIFORMA AGRARIA
+
+La crisi dei ceti contadini ha importanti risvolti militari che non possono essere sottovalutati. Il modello del contadino-soldato sta entrando in crisi.
+
+Il ceto dirigente si rende conto ben presto che l'unico rimedio consiste nella suddivisione dell'agro pubblico. Alcuni nobili, tra cui Scipione Emiliano, propongono di limitare il possesso dell'agro e ridistribuire ai più poveri le terre recuperate. Questa riforma agraria, rimasta inattuata, è ripresa da Tiberio Gracco.
+
+Come tribuno della plebe il giovane nipote dell'Africano si mette dalla parte dei più deboli. La sua legge agraria è a vantaggio di coloro che combattono e muoiono per Roma. Gli uomini politici devono ricordarsi che la decadenza della piccola proprietà lascerà lo Stato senza esercito.
+
+Il tribuno propone dunque un limite per il terreno pubblico: non più di 500 iugeri (125 ettari) per capofamiglia (con l'aggiunta di 250 iugeri per ciascun figlio maschio). La terra tolta agli occupanti abusivi deve essere distribuita come possesso inalienabile ai poveri, in lotti forse di 30 iugeri. Una commissione di tre membri deve procedere alle espropriazioni e alle nuove assegnazioni.

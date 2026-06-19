@@ -1,14 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-## Operator notes
+INDICE 415
 
-A pagine 395-402 del pdf trovi una Cronologia con Anno - Eventi. Utilissima per il time index.
+p. 295 Una dinastia complicata: i Giulio-Claudii (*Fulvia Mainardis e Claudio Zaccaria*)
+310 Nerone e la fine del consenso (*Fulvia Mainardis e Claudio Zaccaria*)
+327 La dinastia dei Flavii (*Claudia Cerchiai e Alberto Manodori*)
+340 L'Impero nella sua massima espansione (*Claudia Cerchiai e Alberto Manodori*)
+357 Dagli Antonini alla dinastia dei Severi (*Claudia Cerchiai e Alberto Manodori*)
+371 La crisi dell'Impero (*Claudia Cerchiai e Alberto Manodori*)
+381 Da Claudio il Tacito a Diocleziano (*Claudia Cerchiai e Alberto Manodori*)
 
-**Numerazione:** pagina del LIBRO in alto — a sinistra sulle pagine pari, a destra sulle dispari; offset costante PDF−3 rispetto al numero stampato nel corpo. Non confondere con date nel testo (753 a.C., 202 a.C., 66 d.C., ecc.).
-
-**Intestazione di corridoio:** sulle dispari titolo del capitolo/sezione in maiuscoletto a sinistra; sulle pari «STORIA DI ROMA ANTICA» a destra. Le pagine di apertura sezione possono avere solo titolo decorativo centrato e nessun numero.
-
-**Box monografici:** riquadro con bordo nero; titolo in maiuscoletto (talvolta numerato romano o arabo); testo interno tutto in corsivo — trattare come inserto tematico separato dal flusso narrativo, non come corpo del capitolo.
-
-**Immagini:** incisioni/xilografie in bianco e nero, spesso in cornice; talvolta pagina intera senza testo. Didascalie in corsivo, più piccole: sotto l’immagine oppure nel margine laterale (nota a lato), a sinistra o a destra del riquadro — non fondere con il testo corrente. Possibili coppie pianta+ricostruzione nello stesso box, con didascalia esterna.
-
-**Sottotitoli di sezione:** centrati in maiuscoletto nel flusso del testo. Nel corpo, corsivo per latino, toponimi e rimandi «(vedi box …)». Non risultano note a piè numerate nel campione.
+391 *Re e imperatori di Roma antica*
+392 Cronologia
+400 Indice dei nomi e dei luoghi

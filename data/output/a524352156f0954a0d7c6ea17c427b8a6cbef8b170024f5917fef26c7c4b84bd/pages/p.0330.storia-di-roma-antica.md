@@ -1,50 +1,18 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-330                                                                    STORIA DI ROMA ANTICA
+LA DINASTIA DEI FLAVI 331
 
-più attenta politica fiscale e nell'adozione di norme precise per l'agrimensura.
-Vespasiano; inoltre; concesse la cittadinanza latina a tutti gli abitanti del-
-la Spagna per premiare la fedeltà all'imperatore che le province iberiche
-avevano mantenuto e, così facendo; egli pose il germe di un riconoscimento
-politico dei provinciali: prima pietra del sogno di un Impero universale ove
-tutti i sudditi fossero cittadini di pari grado. Vespasiano promulgò, infine,
-la *lex de imperio*, nella quale fissò tutte le prerogative e i poteri dell'im-
-peratore, dando norma giuridica alla sua figura come lo stesso Augusto e
-suoi successori non avevano potuto; voluto o saputo fare. Con quest' at-
-to Vespasiano precludeva al Senato ogni ingerenza nel potere imperiale:
-limitandone il ruolo politico; Infine assegnò al figlio Tito il comando dei
-pretoriani, nominandolo prefetto del pretorio.
+***
 
-CENTRATO IN MAIUSCOLETTO: LA DINASTIA DEI FLAVII
+# L'ANFITEATRO FLAVIO
 
-Questa serie di atti politici garantì a Vespasiano una tale trama di rapporti
-di potere da consentirgli di governare sicuro, fondando nei figli una nuova
-dinastia imperiale, la seconda dopo quella giulio-claudia: Flavii.
-Anche Vespasiano elaborò programmi culturali utili a confermare il ruolo po-
-litico di Roma e in questo egli appoggiò l'interpretazione cosmica e fatale del-
-le eternità di Roma sacra. Ma nonostante gli scritti di Stazio, Vespasiano capì che
-tale politica sarebbe stata più compresa se si fosse espressa in un rinnovamen-
-to urbanistico della città. A quest'ultimo compito lo spinse la ricostruzione di
-Roma; che era allora in corso dopo l'incendio neroniano.
+Nell'area posta alla confluenza del Celio, dell'Oppio e della Velia Nerone aveva fatto costruire un lago artificiale per arricchire la sua *domus Aurea*. La morte dell'imperatore interruppe la costruzione della ricca dimora e il successore, Vespasiano, nel dedicarsi con fervore alla trasformazione edilizia della città, restituì gran parte dei terreni, destinati alla *domus Aurea*, ad uso pubblico. Fece così prosciugare il laghetto per farvi erigere l'Anfiteatro Flavio; ma non ebbe la soddisfazione di inaugurarlo. L'anfiteatro fu, infatti, inaugurato dal figlio Tito anno successivo alla sua ascesa al trono, quando, nel giugno dell'80, l'edificio non era ancora ultimato. Nel giorno dell'inaugurazione furono dati spettacoli grandiosi e l'imperatore stesso gettava tessere nelle quali era indicato il dono che doveva essere ritirato presso gli uffici imperiali.
 
-CENTRATO IN MAIUSCOLETTO: LA POLITICA URBANISTICA DI VESPASIANO
+L'anfiteatro si erge al di sopra di due gradini per evitare l'ingresso dell'acqua piovana nel portico e raggiunge un'altezza di ben 50 metri, suddivisi in tre grandi ordini di arcate al di sopra delle quali si apre un attico nel quale si aprono finestre.
 
-Vespasiano adoperò non più del necessario la residenza imperiale della *domus
-Aurea*, ordinandone l'interruzione dei lavori e inaugurò una politica di edi-
-ficazione di edifici pubblici, spesso sui luoghi che Nerone aveva espropriato al-
-l'Urbe, affinché fosse evidente la sua intenzione di restituire al popolo di Roma
-ciò che il tiranno gli aveva sottratto e ancora di manifestare quanto il nuovo im-
-peratore si preoccupasse del benessere della città. Fu così che sul colle Oppio;
-aldilà sopra della *domus Aurea*; abbandonata e interrata; fu fondato un grande im-
-pianto termale; che porterà il nome del figlio Tito; mentre sullo stagno artificiale;
-che rendeva amena la valle tra il colle Oppio e il Palatino, dopo averlo prosciugato;
-Vespasiano ordinò la costruzione del primo e più grande anfiteatro del mondo
-antico: l'anfiteatro Flavio, più noto come il Colosseo.
-Le terme e l'anfiteatro erano i doni del nuovo imperatore al popolo di Ro-
-ma, ma lo stesso dava inizio ai lavori di una nuova reggia sul Palatino; che
-veniva scelto come colle preposto alla residenza imperiale; libero da abi-
-tazione privata; monumentale come simbolo; altissimo e isolato come luogo
-inaccessibile. Poiché la nuova reggia non era pronta Vespasiano andò
-ad abitare nella casa che fu del ricco Sallustio; circondata da quei giardini,
-gli orti sallustiani; che sorgevano tra la via Salaria e la via Pinciana: Restaurò,
-inoltre; la scena del teatro di Marcello e il colosso di bronzo di Nerone. Ve-
-spasiano morì nel 79 d.C., nel mese di luglio; a sessantanove anni.
+Le arcate sono fiancheggiate da semicolonne con capitelli rispettivamente di ordine dorico, ionico e corinzio. L'alto attico è scandito da paraste con capitelli in stile corinzio: in alternanza dovevano esservi finestre e scudi di bronzo dorato dei quali sono conservati i fori di attacco.
+
+Fra una parasta e l'altra si notano delle mensole alle quali corrispondono altrettanti fori che servivano per collocare e sostenere delle travi che, a loro volta, sostenevano le funi che tenevano il velario teso sull'anfiteatro per ombreggiare gli spettatori. Accuratamente studiata è la distribuzione dei servizi attinenti agli spettacoli, cosicché fosse consentito, tra l'altro, il rapido afflusso e il deflusso degli spettatori attraverso la disposizione delle scale e dei corridoi.
+
+![L'anfiteatro Flavio in una ricostruzione ideale di L. Canina.](https://example.com/image.jpg)
+
+*L'anfiteatro Flavio in una ricostruzione ideale di L. Canina.*

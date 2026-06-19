@@ -1,16 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-UNA DINASTIA COMPLICATA: I GIULIO-CLAUDII                                            309
+# NERONE E LA FINE DEL CONSENSO
 
-***
+## LA MISERA INFANZIA DI UN IMPERATORE
 
-[Immagine: Incisione circolare di Agrippina con iscrizione AGRIPPINA GERMANICOR]
+Lucio Domizio Enobarbo (il futuro Nerone) sale al trono a 17 anni: egli nasce infatti ad Anzio il 15 dicembre del 37 d.C. La sua è un'antica famiglia; il padre, Gneo Domizio Enobarbo, è imparentato con i Giulio-Claudii; la madre, Agrippina, è figlia di Germanico (vedi capitolo precedente). Donna di grande bellezza e intelligenza, ha avuto una giovinezza travagliata e movimentata. Il piccolo Lucio non ha nemmeno due anni quando la sua intraprendente mamma è mandata in esilio perché implicata nella congiura contro Caligola. Il piccolo è allora amorevolmente accolto dalla zia Domizia Lepida.
 
-*Agrippina in un'incisione tratta dall'Illustrium imagines.*
+Ma una nuova tragedia si abbatte sulla famiglia: la morte di Gneo Domizio Enobarbo (40 d.C.). A tre anni il futuro imperatore è privo di padre e di madre. La sorte cambia ancora una volta quando sul trono sale Claudio, fratello di Germanico (41 d.C.). Agrippina rientra a Roma e Lucio eredita il patrimonio paterno: tuttavia il nuovo matrimonio della madre getta altre ombre sulla sua difficile infanzia. Agrippina sposa un ricco e influente uomo politico, Gaio Sallustio Crispo Passieno, facendolo divorziare da Domizia, una sorella del suo precedente marito. Quest'uomo è così a un tempo zio e patrigno poco affettuoso di Lucio. Neppure sua madre del resto, così presa dai suoi intrighi politici, è per lui fonte di tenerezza e amore: i suoi anni trascorrono solitari e miseri, minacciati anche dalla rivalità tra Agrippina e Messalina. Si dice infatti che quest'ultima abbia mandato emissari a uccidere il bimbo nel sonno e che un serpente sbucato da sotto il letto, spaventandoli, abbia evitato la tragedia.
 
-***
+## DAL BARBIERE AL FILOSOFO
 
-ghi, di cui Claudio va ghiotto: Claudio muore: Ma anche dopo la morte egli è oggetto di battute e scherzi. Basti pensare che il filosofo Seneca scrive addirittura una satira intitolata *La trasformazione in zucca del divino Claudio*.
-
-NASCE IL CORPO DEI POMPIERI
-
-Il problema degli incendi è endemico a Roma: La città ha avuto una crescita di popolazione enorme e uno sviluppo urbanistico disordinato. Strade strette, case popolari a più piani (*insulae*) costruite in fretta con materiali combustibili (legno; paglia) creano le condizioni per continui incendi che dilagano in un batter d'occhio distruggendo quartieri interi. Tentativi di risanamento e di prevenzione si susseguono senza successo dalla tarda età repubblicana. Si organizzano squadre di volontari; si addestrano gruppi di liberti. Alcune corporazioni professionali (taglialegna; carpentieri; fabbricanti di panni) hanno tra i loro compiti l'intervento in caso di incendi. È però Augusto a creare un primo corpo militare incaricato della prevenzione e dello spegnimento degli incendi, *vigiles*. Organizzati in coorti e coordinati da un funzionario di rango equestre; il prefetto dei vigili, essi sono distribuiti nei quartieri della città e sorvegliano sulla sicurezza del fuoco. Il corpo è perfezionato e ampliato dagli imperatori successivi, soprattutto da Claudio; sempre preoccupato della sicurezza dell'Urbe. Egli, anzi, stanzia coorti di vigili stabili anche nei porti di Pozzuoli e di Ostia; importanti per i rifornimenti della capitale.
+A casa della zia Domizia nutrici e tutori fanno le veci della madre. Lucio ha anche due maestri molto particolari, un barbiere e un danzatore: comincia presto ad amare il mondo greco agli insegnamenti di altri due precettori, i liberti Aniceto e Berillo, che tuttavia non sono specchi di moralità. Nella serie dei maestri che costellano la sua formazione un posto privilegiato è quello rivestito da Seneca; assunto da Agrippina al suo ritorno dalla Corsica dove era stato in esilio (49 d.C.). L'insegnamento di «colui che allevava e istruiva», come ama definirsi Seneca nei confronti del suo pupillo, sarà fondamentale per la forma del carattere del futuro imperatore: egli infatti sotto il suo sguardo attento studierà la retorica, la morale, l'arte; creandosi un'ampia cultura.

@@ -1,15 +1,56 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-## Operator notes
+PIANO DELLA COLLANA
 
-A pagine 395-402 del pdf trovi una Cronologia con Anno - Eventi.
-Utilissima per il time index.
+CERCHIAI MAINARDIS MANODORI MATERA ZACCARIA
+STORIA DI ROMA ANTICA
 
-Numerazione: pagina del LIBRO in alto — a sinistra sulle pagine pari, a destra sulle dispari; offset costante PDF−3 rispetto al numero stampato nel corpo. Non confondere con date nel testo (753 a.C., 202 a.C., 66 d.C., ecc.).
+LUDOVICO GATTO
+STORIA DI ROMA NEL MEDIOEVO
 
-Intestazione di corridoio: sulle dispari titolo del capitolo/sezione in maiuscoletto a sinistra; sulle pari «STORIA DI ROMA ANTICA» a destra. Le pagine di apertura sezione possono avere solo titolo decorativo centrato e nessun numero.
+GIOVANNI DI BENEDETTO, CLAUDIO RENDINA
+STORIA DI ROMA MODERNA E CONTEMPORANEA
 
-Box monografici: riquadro con bordo nero; titolo in maiuscoletto (talvolta numerato romano o arabo); testo interno tutto in corsivo — trattare come inserto tematico separato dal flusso narrativo, non come corpo del capitolo.
+MICHAEL GRANT
+GLI IMPERATORI ROMANI, STORIA E SEGRETI
 
-Immagini: incisioni/xilografie in bianco e nero, spesso in cornice; talvolta pagina intera senza testo. Didascalie in corsivo, più piccole: sotto l’immagine oppure nel margine laterale (nota a lato), a sinistra o a destra del riquadro — non fondere con il testo corrente. Possibili coppie pianta+ricostruzione nello stesso box, con didascalia esterna.
+CECILIA GATTO TROCCHI
+LEGGENDE E RACCONTI POPOLARI DI ROMA
 
-Sottotitoli di sezione: centrati in maiuscoletto nel flusso del testo. Nel corpo, corsivo per latino, toponimi e rimandi «(vedi box …)». Non risultano note a piè numerate nel campione.
+WILLY POCINO
+LE FONTANE DI ROMA
+
+CLAUDIO RENDINA
+LE CHIESE DI ROMA
+
+PAOLA HOFFMANN
+LE VILLE DI ROMA E DEI DINTORNI
+
+GIORGIO CARPANETO
+I PALAZZI DI ROMA
+
+CLAUDIO RENDINA - DONATELLA PARADISI
+LE STRADE DI ROMA (VOLUME PRIMO)
+
+CLAUDIO RENDINA - DONATELLA PARADISI
+LE STRADE DI ROMA (VOLUME SECONDO)
+
+CLAUDIO RENDINA - DONATELLA PARADISI
+LE STRADE DI ROMA (VOLUME TERZO)
+
+GIULIANO MALIZIA
+PROVERBI, MODI DI DIRE E DIZIONARIO ROMANESCO
+
+CLAUDIO RENDINA
+I PAPI, STORIA E SEGRETI (VOLUME PRIMO)
+
+CLAUDIO RENDINA
+I PAPI, STORIA E SEGRETI (VOLUME SECONDO)
+
+ROMOLO A. STACCIOLI
+GUIDA INSOLITA DI ROMA ANTICA
+
+ISBN 88-541-0193-1
+
+In vendita esclusivamente con Il Messaggero
+€ 2,10 più il prezzo del quotidiano
+788854101937

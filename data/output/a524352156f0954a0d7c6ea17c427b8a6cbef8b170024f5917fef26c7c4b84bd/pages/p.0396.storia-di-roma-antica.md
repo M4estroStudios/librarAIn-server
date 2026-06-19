@@ -1,45 +1,50 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-396
+CRONOLOGIA 397
 
-CRONOLOGIA
-
-76. Pompeo in Spagna contro Sertorio.
-73. Lucio Licinio Lucullo in Asia contro Mitridate. Rivolta di Spartaco.
-72. Marco Licinio Crasso contro gli schiavi. Vittorie di Pompeo in Spagna.
-71. Crasso sconfigge Spartaco. Pompeo elimina gli ultimi rivoltosi tornando dalla Spagna.
-70. Consolato di Pompeo e Crasso. Restituzione dell'autorità ai tribuni della plebe. Assegnazioni di terre ai veterani di Sertorio. Riforma dei tribunali.
-68. Legge speciale proposta dal tribuno della plebe Aulo Gabinio per assegnare un comando straordinario a Pompeo nella guerra contro i pirati.
-67. Assegnazione al comando di Pompeo della guerra contro Mitridate.
-63. Consolato di Marco Tullio Cicerone. Congiura di Catilina; processo e condanna a morte dei congiurati.
-62. Pretura di Gaio Giulio Cesare. Sbarco di Pompeo a Brindisi e congedo dell'esercito.
-61. Opposizione del Senato al trionfo di Pompeo: lavori per il teatro.
-60. Cesare si candida al consolato. Primo triumvirato tra Pompeo, Crasso e Cesare.
-59. Consolato di Cesare. Agevolazioni per i *publicani* sostenuti da Crasso. Sistemazione dell'Oriente per Pompeo: assegnazione della Gallia Cisalpina; dell'Illirico e della Narbonese per Cesare.
-58. Esilio di Cicerone. Legge frumentaria di Clodio in favore della plebe.
-58–51. Cesare conquista la Gallia.
-57. Rientro di Cicerone grazie a Pompeo e Milone.
-56. Convegno di Lucca tra i triumviri.
-55. Secondo consolato di Pompeo e Crasso. Spedizioni di Cesare oltre il Reno e in Britannia fino al Tamigi.
-54. Pompeo rimane a Roma. Crasso in Siria contro i Parti. Progetto dei *Saepta* del Campo Marzio: espropriazioni per il Foro di Cesare.
-53. Morte di Crasso a Carre.
-52. Pompeo console unico. Insurrezione in Gallia sotto la guida di Vercingetorige. Sconfitta di Cesare a Gergovia e vittoria ad Alesia.
-49. Dopo il rifiuto di congedare l'esercito; Cesare varca il Rubicone. Pompeo fugge in Epiro.
-48. Disordini a Roma. Assedio di Durazzo. Vittoria di Cesare a Farsalo. Pompeo ucciso in Egitto. Cleopatra (grazie a Cesare) regina d'Egitto.
-47. Ancora disordini a Roma sulla questione dei debiti. Vittoria di Cesare su Farnace re del Ponto.
-46. Vittoria di Cesare a Tapso (Africa) contro i pompeiani. Suicidio di Catone Uticense. Quattro trionfi di Cesare a Roma. Voto del Tempio di Venere Genitrice nel Foro di Cesare.
-45. Vittoria a Munda (Spagna) contro i pompeiani. Quinto trionfo di Cesare.
-44. Cesare dittatore a vita. Riforme cesariane. Congiura e assassinio di Cesare (15 marzo).
-43. Guerra di Modena. Secondo triumvirato fra Ottaviano, Antonio e Lepido. Uccisione di Cicerone.
-42. Battaglia di Filippi. Morte di Bruto e Cassio.
-41–40. Guerra di Perugia.
-40. Accordo di Brindisi fra Ottaviano e Antonio.
-40–30. Costruzione della villa di Mecenate.
-37. Accordo di Taranto e rinnovo del triumvirato.
-36. Sconfitta di Sesto Pompeo a Nàuloco da parte di Agrippa. Inizio dei lavori per il Tempio di Apollo sul Palatino.
-33–23. Lavori per il Portico di Ottavia.
-32. Giuramento dell'Italia per Ottaviano. Dichiarazione di guerra a Cleopatra.
-31. Battaglia di Azio.
-30. Morte di Antonio e Cleopatra.
-29. Inaugurazione del Tempio del divo Giulio.
-28. Inaugurazione del Tempio di Apollo.
-27. Restaurazione della Repubblica. Primo assetto del governo. Assegnazione a Ottaviano del titolo di Augusto.
+22-15. Sottomissione delle popolazioni alpine; creazione delle province della Rezia e del Norico.
+23. Augusto abbandona il consolato.
+20. Augusto ottiene dai Parti la restituzione delle insegne romane perse durante la battaglia di Carre.
+19. Morte di Virgilio.
+17. Celebrazione dei ludi secolari. *Carmen secolare* di Orazio.
+16-13. Augusto risiede in Gallia a Lione.
+13-9. Costruzione dell'Ara Pacis.
+12. Augusto diviene pontefice massimo. Muore Agrippa.
+12-9. Campagne germaniche di Druso.
+12-8. Creazione delle province di Pannonia e Mesia.
+9. Morte di Druso in Germania.
+8. Morte di Mecenate e del poeta Orazio.
+2 dC. Morte di Caio Cesare, nipote di Augusto.
+4. Morte di Lucio Cesare: Augusto adotta Tiberio, figlio della moglie Livia.
+14. Morte di Augusto. Tiberio assume il potere.
+15. Seiano prefetto del pretorio.
+19. Morte di Germanico. Nascita dei gemelli di Druso (Tiberio e Germanico).
+21. Tiberio in Campania.
+22. Druso riceve la potestà tribunizia.
+23. Morte di Druso.
+27. Ritiro di Tiberio a Capri.
+28. Agrippina Minore sposa Gneo Domizio Enobarbo.
+29. Morte di Livia. Esilio di Agrippina Maggiore e Nerone Cesare.
+30. Imprigionamento di Druso.
+31. Esecuzione di Seiano. Morte di Nerone Cesare.
+33. Morte di Agrippina Maggiore e di Druso.
+37. Morte di Tiberio. Caligola assume il potere. Nascita di Lucio Domizio Enobarbo (Nerone). Morte di Antonia Minore.
+38. Morte di Tiberio Gemello. Morte e consacrazione di Drusilla, sorella di Caligola. Costruzione del Tempio di Iside nel Campo Marzio.
+39. Matrimonio di Caligola con Milonia Cesonia. Nascita di Drusilla. Congiura di Getulico e Lepido contro Caligola.
+40. Nuova congiura contro Caligola.
+41. Uccisione di Caligola. Claudio assume il potere.
+42. Congiura di Scriboniano contro Claudio.
+43. Conquista della Britannia.
+46. Congiura di Gallo e Corvino contro Claudio.
+47. Vittorie di Corbulone oltre il Reno.
+48. I notabili della Gallia ammessi in Senato. Uccisione di Messalina. Claudio sposa Agrippina Minore. Estensione del pomerio.
+50. Claudio adotta Nerone.
+51. Sesto Afranio Burro diviene prefetto del pretorio.
+53. Morte di Claudio.
+54. Inizio del regno di Nerone.
+55. Morte per avvelenamento di Britannico.
+58. Ripresa della guerra tra Roma e Parti sotto la guida di Corbulone. Progetto (inattuato) di riforma fiscale.
+59. Uccisione di Agrippina.
+62. Morte di Afranio Burro. Ritiro di Seneca a vita privata. Tigellino e Fenio Rufo prefetti del pretorio. Divorzio da Ottavia e matrimonio con Poppea.
+63. Nascita e morte di Claudia Augusta.
+64. Incendio di Roma. Ricostruzione della città.
+66. Numerosi processi e condanne. Incoronazione di Tiridate a Roma. Viaggio di Nerone in Grecia. Rivolta in Palestina.

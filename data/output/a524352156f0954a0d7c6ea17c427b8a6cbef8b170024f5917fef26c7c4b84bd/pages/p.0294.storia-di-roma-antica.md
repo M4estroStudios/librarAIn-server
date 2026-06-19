@@ -1,8 +1,17 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-294                                            STORIA DI ROMA ANTICA
+UNA DINASTIA COMPLICATA:
+I GIULIO-CLAUDII
 
-«LA REGINA DELLE ISCRIZIONI»
+GLI INCERTI INIZI DI UN SUCCESSORE IMPOSTO DAL DESTINO
 
-*Alla morte di Augusto le Vestali consegnano il suo testamento; depositato presso di loro; insieme a tre rotoli con le disposizioni dettagliate per il funerale, una relazione sommaria sull'organizzazione della difesa e sulla situazione finanziaria dello Stato romano, l'elenco delle sue imprese da incidere su tavole di bronzo da porre davanti al mausoleo, fatto costruire più di quarant' anni prima nel Campo Marzio. Queste tavole sono andate perdute, ma il testo delle Res Gestae Divi Augusti (Le imprese di Augusto divinizzato) era stato fatto incidere sulle pareti di numerosi templi d'Augusto in diverse parti dell'Impero. La versione greca e latina è stata incisa sulla parete dell'Augusteum dell' antica Ancyra (oggi Ankara) in Turchia e sono note come monumentum Ancyranum: Il grande epigrafista e storico tedesco Theodor Mommsen non ha esitato a chiamare questo testo «la regina delle iscrizioni».*
+Tiberio diviene signore di Roma nel 14 d.C. a 56 anni. Tutta la sua vita si è svolta all'ombra del potere: dapprima un'infanzia piena di pericoli, sullo sfondo delle guerre civili, la difficile posizione di figliastro non amato di Augusto; che si è visto costretto a nominarlo suo erede solo perché il destino gli ha strappato i prediletti nipoti Gaio e Lucio.
 
-*Il testo, estremamente conciso; talora telegrafico; riporta nell'ordine: l'elenco degli onori conferiti ad Augusto dal Senato e dal popolo romano per i suoi meriti; le donazioni da lui fatte allo Stato; ai soldati; alla plebe e l'elenco dei giochi e spettacoli offerti a sue spese; il resoconto delle sue imprese in pace e in guerra. In questo documento, che ha carattere ufficiale; non è fatto cenno della vita privata di Augusto o della sua famiglia: nomi di Agrippa, Tiberio; Gaio; Lucio ricorrono solo in quanto legati a fatti pubblici o pubblici onori. Oggi il turista colto può leggere questo documento sul muro laterale dell' Ara Pacis di fronte all' Augusteo: è l'unica cosa veramente interessante in uno spiazzo squarciato con le demolizioni fasciste ed estraneo alla città.*
+All'inizio Tiberio si muove con prudenza. Accanto a lui è la madre Livia, adottata da Augusto nel testamento e chiamata Giulia Augusta: dato che Tiberio non si è risposato, è la donna più potente dell'Impero; e lo sa. La notizia della morte di Augusto è tenuta nascosta. Secondo le disposizioni impartite da Augusto stesso (o da Livia) alle guardie che lo custodiscono a Pandataria (Ventotene), va eliminato Agrippa Postumo, potenziale pretendente al trono in quanto nipote diretto di Augusto (vedi capitolo Riconciliazione e consenso). Così Tiberio è l'unico a poter accogliere l'eredità.
+
+Conscio della debolezza costituzionale della sua posizione, Tiberio esita a lungo prima di assumere il potere: si decide solo dopo aver ottenuto la sanzione del Senato. Rifiuta i titoli di imperatore e di padre della Patria e non porta volentieri nemmeno il nome di Augusto.
+
+TRIONFA LA NUOVA DINASTIA
+
+Nei primi tempi Tiberio rispetta le prerogative del Senato, cui affida anche l'elezione dei magistrati, abolendo le assemblee popolari. La sua ascesa al potere coincide anche con pericolose ribellioni dei soldati stanziati in Pannonia e in Germania che, essendo cambiate le regole del gioco, desiderano partecipare alla scelta del nuovo imperatore. Sono placate solo dagli interventi di Druso in Pannonia e di Germanico sul Reno.
+
+Per gratificare i soldati, Germanico conduce inoltre una campagna contro i Germani e ottiene un trionfo (16 d.C.). Per celebrare la riconquista delle insegne di Varo a Roma è eretto un arco (oggi perduto) presso il tempio di Saturno, allo sbocco del *vicus Iugarius*. Altri archi trionfali saranno innalzati da Tiberio: nel 19 d.C. in onore di Druso e di Germanico; nel Foro di Augusto, accanto al tempio di Marte Ultore; nel luogo riservato da Augusto alla celebrazione della dinastia; nel 24 d.C. in onore di Druso Minore. Altri archi sorgono nelle colonie e nei municipi d'Italia. Deve apparire che sono i principi Giulio-Claudii con le loro imprese vittoriose a garantire la pace e la prosperità.

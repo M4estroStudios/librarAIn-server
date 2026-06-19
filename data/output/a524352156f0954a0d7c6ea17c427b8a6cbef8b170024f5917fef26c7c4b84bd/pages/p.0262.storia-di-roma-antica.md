@@ -1,22 +1,26 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-262                                           STORIA DI ROMA ANTICA
+COSPIRAZIONE E DITTATURA 263
 
-gli offre per tre volte la corona (15 febbraio 44 a.C.); tra il generale brusio
-Cesare rifiuta e il popolo allora applaude.
-Non si potrà mai sapere se egli abbia pensato di creare una monarchia as-
-soluta; ma certamente fallisce il suo tentativo di avvicinarsi ai ceti più tra-
-dizionalisti. L'opposizione dei repubblicani intransigenti non va tuttavia
-oltre una rivendicazione morale. Quanto Cesare sta facendo è infatti un'in-
-sostenibile vergogna per l'oligarchia senatoria.
+[Immagine: Veduta del Colle Viminale]
 
-*L'affectatio regni* (l'amore per la monarchia), che ha rovinato molti uomini politici del passato, sta intaccando Cesare. Ma, accanto alla protesta e al malumore, non c'è alcun piano, alcun programma per raccogliere e guidare le forze, che sono emerse nell'ultimo secolo della Repubblica.
+Veduta del Colle Viminale in un'incisione di B. Pinelli.
 
-L'ASSASSINIO DEL TIRANNO
+CASE GIARDINO E CASE TUGURIO
 
-A meno d'un mese dai Lupercali una congiura elimina quello che sembra l'unico ostacolo al ritorno del buon tempo antico.
-Il 15 marzo del 44 a.C. un gruppo di senatori, capeggiati da Marco Giunio Bruto e Gaio Cassio Longino; con la connivenza di Cicerone; pugnala a morte Cesare durante una seduta del Senato nella curia Pompeia (vedi box *Una scala che assomiglia a un teatro*). Come una bestia ferita egli si avvolge nella toga; cercando di difendersi dai suoi assalitori. Ma quando scorge tra di essi anche Decimo Giunio Bruto; tanto amato da farne il suo secondo erede e che forse è un suo figlio naturale; si copre la testa e s'abbandona ai suoi assalitori.
-Dopo numerose pugnalate mortali Cesare stramazza morente ai piedi della statua di Pompeo.
+Le dimore in città diventano troppo pericolose nel mezzo delle lotte civili. Pompeo, Cesare, Lucullo si ritirano sui colli periferici, a volte anche in Trastevere. Rispetto alle case di piccole dimensioni, che si possono avere in città, in periferia le residenze sono costruite in mezzo a magnifici parchi (l'intero complesso è chiamato *hortus* come gli orti luculliani). Le zone preferite sono il Quirinale, il Viminale, il Celio e il Pincio, chiamato "la collina dei giardini".
 
-[Immagine]
+In città le zone popolari sono soprattutto quelle più basse (in contrapposizione a quelle alte dei ricchi) come il Velabro, la Suburra, l'Argileto. Qui si ammassa un numero incredibile di persone che vivono nelle *insulae* o grandi edifici di 5-6 piani. Questi edifici hanno una facciata da 6 a 12 m e un'altezza che giunge ai 20 m con piccoli appartamenti in affitto. Sono costruiti con materiali estremamente poveri (paglia, legno, argilla, graticci di mattoni crudi): per stare in piedi hanno bisogno di addossarsi gli uni sugli altri e spesso crollano tutti insieme. Le comodità non esistono: una scala esterna sale ai diversi piani e ogni piano ha due finestre che danno su vicoletti laterali. Senza luce, senz'acqua, senza servizi igienici, queste catapecchie per molti individui sono solo una fase di passaggio.
 
-*La morte di Giulio Cesare in un'incisione di B. Pinelli.*
+Il sogno d'ogni romano è avere una casa poggiata sul suolo e con un po' di verde intorno. Ma c'è anche chi dorme per strada o negli anfratti degli edifici pubblici.
+
+***
+
+COSPIRAZIONE E DITTATURA 263
+
+[Immagine: Veduta del Colle Viminale]
+
+Veduta del Colle Viminale in un'incisione di B. Pinelli.
+
+CASE GIARDINO E CASE TUGURIO
+
+Le dimore in città diventano troppo pericolose nel mezzo delle lotte civili. Pompeo, Cesare, Lucullo si ritirano sui colli "periferici", a volte anche in Trastevere. Rispetto alle case di piccole dimensioni, che si possono avere in città, in periferia *hortus* come gli orti luculliani). Le zone preferite sono il Quirinale, il Viminale, il Celio e il Pincio, chiamato "la collina dei giardini". In città le zone popolari sono soprattutto quelle più basse (in contrapposizione a quelle alte dei ricchi), il Velabro, la Suburra, l'Argileto. Qui si ammassa un numero incredibile di persone che vivono nelle *insulae* o grandi edifici di 5-6 piani. Questi edifici hanno una facciata da 6 a 12 m e un'altezza che giunge ai 20 m con piccoli appartamenti in affitto. Sono costruiti con materiali estremamente poveri (paglia, graticci di legno, mattoni crudi): per stare in piedi hanno bisogno di addossarsi gli uni agli altri e spesso crollano tutti insieme. Le comodità non esistono: una scala esterna sale ai diversi piani e ogni piano ha due finestre che danno su vicoletti laterali. Senza luce, senz'acqua, senza servizi igienici, queste catapecchie per molti individui sono solo una fase di passaggio. Il sogno d'ogni romano è avere una casa poggiata sul suolo e con un po' di verde intorno. Ma c'è anche chi dorme per strada o negli anfratti degli edifici pubblici.

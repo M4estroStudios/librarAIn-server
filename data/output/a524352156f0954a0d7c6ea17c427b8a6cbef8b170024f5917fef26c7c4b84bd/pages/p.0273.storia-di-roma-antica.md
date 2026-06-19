@@ -1,32 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA REPUBBLICA PERDUTA                                                                    273
+274
 
-*L'obelisco di Ramsete II in un'incisione di Domenico Amici, 1839.*
+STORIA DI ROMA ANTICA
 
-[Immagine: incisione dell'obelisco]
+NASCE IL "MECENATISMO"
 
-Antonio è stato prima di tutto un grande generale dell'esercito cesariano e
-un grande condottiero nella campagna orientale: lo stesso non si
-può dire del suo rivale; malato a Filippi e aiutato (o sostituito) da Agrippa a Perugia e a
-Nauloco. L'unica campagna condotta e vinta da Ottaviano è stata quella illi-
-rica, volta ad assicurare la frontiera nord-orientale dell'Italia (36-34 a.C.). Con
-queste premesse, alla vigilia dello scontro tra i due generali, molti senatori e
-anche gli stessi consoli passano ad Antonio. La classe dirigente ancora una
-volta è divisa in due, secondo opportunismi e clientele politiche.
+Augusto è il primo uomo politico che utilizza in modo sistematico e mirato la propaganda letteraria. L'appoggio dei letterati e degli intellettuali; la ricerca di cantori delle proprie gesta sono sempre stati considerati essenziali per qualunque ideologia politica. La novità consiste nell'attenta organizzazione del consenso degli intellettuali intorno al nuovo regime. Con l'aiuto insostituibile di Mecenate, Augusto trasforma i letterati del tempo in portavoce del suo programma politico, religioso e morale. Nasce il fenomeno del mecenatismo (termine derivato da Mecenate), cioè il protettorato dei potenti nei confronti degli intellettuali.
 
-TRADIZIONE ITALICA CONTRO FASCI ORIENTALI:
+Questo legame è tradizionale della clientela, anche se in alcuni casi la familiarità non è convenzionale; come si nota nel legame (fatto d'affetto e stima) tra il poeta Orazio e Mecenate. I letterati che diventano cantori del nuovo regime non sono affatto intellettuali al servizio del potere. Il respiro universale del programma augusteo (vedi pagine successive), incentrato sulla rinascita di Roma e dell'Impero, dà alla poesia la spinta e l'ispirazione per compiere un enorme salto di qualità. L'*Eneide*, il poema che nella storia di Enea preannuncia l'avvento dell'età augustea, è tra i prodotti più alti di quest'epoca. L'autore, Virgilio, è particolarmente legato al principe perché l'intervento di Augusto durante le espropriazioni gli ha permesso di conservare il suo fondo nelle vicinanze di Mantova. La vicenda personale avvicina ancora di più il poeta al programma di pace e di restaurazione. Orazio diventa portavoce del medesimo messaggio, sebbene in modo distaccato.
 
-Ottaviano in difficoltà dimostra l'usuale accortezza; che in passato gli ha
-assicurato il successo politico: si attornia con persone "giuste", tra cui spicca-
-no l'abilissimo Agrippa e Gaio Cilnio Mecenate; il maggiore regista della pro-
-paganda di Ottaviano: Mecenate è cavaliere; di lontane origini etrusche; e si
-appresta a costruire la base ideologica della guerra contro Antonio.
+Il suo affetto è rivolto soprattutto a Mecenate per l'aiuto che gli ha offerto in passato: si è affermato come poeta per merito del solo Mecenate, che ha creduto nel figlio d'un liberto. Per Orazio il nuovo regime di pace va sostenuto, soprattutto perché garantisce la tranquillità e la libertà interiore. Il cosiddetto «circolo di Mecenate» comprende anche altri poeti (come Properzio) che pagano il loro tributo poetico al nuovo ordine, con maggiore o minore resistenza.
 
-Fondamentale è il ruolo dell'Italia, terra fertile e antica: il ritorno alle ori-
-gini italiche, alle tradizioni agricole, tipiche del Romano antico, si contrap-
-one alle mollezze e alla dissolutezza orientale.
+Ma non si tratta sempre di voci entusiaste e ammirate: specialmente in Properzio ci sono a volte delle punte polemiche contro il moralismo e il militarismo celati nei provvedimenti augustei. Il successo di Mecenate, abilissimo organizzatore culturale, dà i suoi frutti nella cerchia di poeti e intellettuali sostenitori di Ottaviano. Poeti come Virgilio, Orazio e in parte Properzio sono portavoce dei temi salienti della propaganda.
 
-Nel programma di Ottaviano, l'Italia e Roma sono il centro dell'Impero che
-si va costruendo: Antonio in Oriente ha un comportamento troppo ambiguo per
-ispirare fiducia: oltre alla riprovevole relazione con Cleopatra, i suoi atteggia-
-menti assomigliano troppo a quelli dei sovrani ellenistici, noti ai Romani dalle
+Il risultato di questa campagna è il grande giuramento in nome di Ottaviano, organizzato dalle principali città italiche (32 a.C.). La clientela politica, base di ogni lotta di fazione, assume un connotato nazionale: se Pompeo poteva contare sul Piceno, Ottaviano può contare sull'intera penisola e diventa il generale difensore delle tradizioni patrie, cui è affidato il compito della guerra contro la regina straniera. Questo è il maggiore risultato degli sforzi di Ottaviano: riuscire a fare passare la guerra contro Antonio per una guerra contro un nemico straniero. Lo spettro della guerra civile è così allontanato e, per dare maggior credito a quest'operazione propagandistica, Ottaviano riesuma la cerimonia feziale, l'antichissima dichiarazione di guerra contro nemici esteri.
+
+LO SCONTRO FINALE
+
+L'esercito di cui dispongono Antonio e Cleopatra è molto più numeroso di quello dell'avversario, ma è privo di compattezza e uniformità. Di fatto ad Ázio, sulla costa meridionale dell'Epiro, la battaglia navale decisiva non è già...

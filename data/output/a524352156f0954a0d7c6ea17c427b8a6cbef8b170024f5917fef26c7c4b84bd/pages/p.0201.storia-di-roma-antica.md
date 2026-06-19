@@ -1,18 +1,15 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-201
+202
 
-LA CONQUISTA DELL'ORIENTE
+STORIA DI ROMA ANTICA
 
-GIARDINI E BALCONI DINTI TRA MARMI E MOSAICI
+LA RIPICA DI UN GENERALE SENZA TRIONFO
+L'ira di un generale, cui è negato il trionfo, dà origine all'edificazione d'un monumento che conoscerà enorme fortuna presso i Romani: l'arco di trionfo. Lucio Stertinio, dal momento che per rivalità politica non può sfilare lungo la via trionfale, decide di edificare i *fornices* Stertini (gli archi di Stertinio): due archi davanti al tempio di Fornellia e di Mater Matuta raddoppiano così l'arco già esistente (196 a.C.). Un altro arco è edificato presso il centro della curva del Circo Massimo. Se Stertinio non può sfilare, coloro che sfileranno saranno costretti a passare sotto i suoi archi, memoria immortale della sua impresa. Scipione Africano riprende l'idea rendendola ulteriormente monumentale. L'arco da lui dedicato è sormontato addirittura da sette statue e decorato da due bacini marmorei. La sua collocazione sul clivo Capitolino coincide col monumento più importante della processione del trionfatore: l'ingresso sul Campidoglio.
 
-Il lusso orientale e la sfrenata attività edilizia lasciano un segno profondo anche nelle costruzioni private.
+LA SECONDA GUERRA MACEDONICA
+L'occasione del nuovo intervento contro Filippo V, mancato alleato di Annibale (vedi capitolo precedente), è offerta dalle pericolose alleanze del re macedone. In Egitto (altra grande potenza ellenistica) la morte del re crea una crisi dinastica. Il nuovo re bambino è una facile preda per Antioco III, re di Siria, altro monarca protagonista della politica di questi anni; Roma è chiamata a intervenire contro una possibile alleanza tra Filippo e Antioco. Le pressioni degli alleati greci convincono il Senato riluttante: Roma è appena uscita dalla guerra contro Annibale e la vittoria l'ha resa troppo fiduciosa nelle sue capacità. Dietro il paravento della guerra giusta (Roma interviene in difesa degli alleati!), Marco Emilio Lepido avanza richieste esose a Filippo V. Il re rifiuta e scoppia il conflitto (200 a.C.). Messo a freno Antioco III, cominciano le operazioni militari, ma i primi successi non sono decisivi: la guerra minaccia di trascinarsi a lungo.
 
-Si registra un notevole incremento delle abitazioni, addensate soprattutto ai margini nella stessa area forense. Il ceto dirigente è consapevole della necessità di vivere nel cuore della città. Per rispondere a quest'esigenza s'innesca uno scatenato mercato speculativo: le abitazioni di alto rango, che affollano Foro e pendici del Palatino, hanno un forte sviluppo in altezza.
+I MILITARI INTELLETTUALI
+L'arrivo di Tito Quinzio Flaminino imprime una svolta alle operazioni. Il nobile romano inaugura un nuovo modo di fare la guerra. Egli si rende conto che gli attacchi brutali danno ben risultati e, con finissima diplomazia, porta avanti un suo progetto filoellenico (cioè, favorevole alla Grecia): Roma si presenta come la protettrice della libertà delle città greche di fronte allo strapotere delle monarchie ellenistiche. Roma, non conquistata "libera", sarebbe disposta a trattare la pace, ma Flaminino alza sempre di più il prezzo. Le due principali Leghe greche, la Lega achea e quella etolica, insieme a Sparta, passano ai Romani. Ormai Flaminino ha le coperte e sconfigge Filippo nella battaglia presso la città di Cinocefale (letteralmente "testa di cane") in Tessaglia (197 a.C.). Il re è costretto ad abbandonare i suoi possedimenti in Grecia e in Asia Minore, a consegnare la flotta e a pagare una grossa indennità come conto spese dei Romani.
 
-Nell'abitazione romana si perpetua la tradizionale distinzione tra sfera pubblica e privata: atrio e *tablinum* sono destinati agli affari pubblici, mentre le aree private acquistano un nuovo valore e una nuova importanza. La parte privata è ora destinata ai *privata consilia*, le riunioni politiche informali, divenute ormai la spina dorsale della politica. Inoltre è in questo spazio che l'amore smodato per il lusso orientale può trovare sfogo. Lo sfarzo, pubblicamente disapprovato, si realizza in peristili, giardini, *triclinia*, esedre. Marmi, decorazioni scultoree e mosaici rispecchiano i gusti eclettici dei nobili romani. Per aumentare il senso della dilatazione dello spazio abitativo, negli ultimi decenni del II secolo a.C., si diffonde il secondo stile pompeiano.
-
-Si tratta di una particolare decorazione pittorica che trae il suo nome proprio da Pompei, dove la cosiddetta Casa del Fauno eguaglia per sfarzo e ricchezza le più splendide dimore ellenistiche. Per mezzo della pittura, prendendo a prestito le scenografie teatrali, si creano spazi illusori come giardini, balconi, ampie vedute che dilatano l'orizzonte. Le pareti si sfondano e lo spettatore scopre prospettive e paesaggi ariosi e sconfinati.
-
-[Immagine]
-
-*Decorazioni parietali pompeiane in un'incisione della prima metà dell'Ottocento.*
+Sull'onda del successo di Flaminino sono prolungati i poteri in Asia. Il suo piano filoellenico diventa una realtà: entusiasmo e stupore accompagnano la sua proclamazione della libertà ai Greci. Nella variopinta cornice dei giochi...

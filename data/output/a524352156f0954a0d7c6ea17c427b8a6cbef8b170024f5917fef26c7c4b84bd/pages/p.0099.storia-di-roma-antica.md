@@ -1,12 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-A pagine 395-402 del PDF trovi una Cronologia con Anno - Eventi. Utilissima per il time index.
+100 STORIA DI ROMA ANTICA
 
-**Numerazione:** pagina del LIBRO in alto — a sinistra sulle pagine pari, a destra sulle dispari; offset costante PDF−3 rispetto al numero stampato nel corpo. Non confondere con date nel testo (753 a.C., 202 a.C., 66 d.C., ecc.).
+Pio Claudio non si arrende; ma anzi conferma la storia del cliente: l'arrivo del padre fa precipitare la situazione: dopo aver chiesto di parlare alla figlia lo abbraccia e uccide, dichiarando che è meglio saperla morta che schiava. Purtroppo non sarà mai possibile conoscere l'opinione di Virginia, ma è certo che è vietato toccare le donne e le pecore d'un popolo di pastori! In ogni caso l'episodio scatena la rivolta dei Romani e una nuova secessione della plebe.
 
-**Intestazione di corridoio:** sulle dispari titolo del capitolo/sezione in maiuscoletto a sinistra; sulle pari «STORIA DI ROMA ANTICA» a destra. Le pagine di apertura sezione possono avere solo titolo decorativo centrato e nessun numero.
+LE TAVOLE DELLA LEGGE
 
-**Box monografici:** riquadro con bordo nero; titolo in maiuscoletto (talvolta numerato romano o arabo); testo interno tutto in corsivo — trattare come inserto tematico separato dal flusso narrativo, non come corpo del capitolo.
+Prima dell'elaborazione scritta delle leggi nelle Dodici tavole, a Roma la giustizia è amministrata dai pontefici che interpretano e applicano le leggi regie: queste leggi, risalenti in parte a Numa, avevano una forte dimensione sacra e religiosa; ma erano orali e dipendevano dall'interpretazione dei patrizi. Nella elaborazione delle tavole il collegio dei pontefici è estromesso per procedere a una "desacralizzazione" del diritto. Come è stato "laicizzato" il potere politico con Bruto, anche la sfera del diritto subisce il medesimo processo. Il rapporto diretto tra i decemviri e i legislatori greci dell'epoca, tramandato dalla tradizione, è solo il frutto di consonanze culturali più antiche, giunte a Roma insieme alle merci greche.
 
-**Immagini:** incisioni/xilografie in bianco e nero, spesso in cornice; talvolta pagina intera senza testo. Didascalie in corsivo, più piccole: sotto l’immagine oppure nel margine laterale (nota a lato), a sinistra o a destra del riquadro — non fondere con il testo corrente. Possibili coppie pianta+ricostruzione nello stesso box, con didascalia esterna.
+Le norme della legislazione decemvirale toccano diversi settori della vita familiare e comunitaria. Il diritto familiare registra qualche modifica anche se il padre ha sempre diritto di vita e di morte su moglie e figli. Le pene per debitori insolventi contemplano ancora la schiavitù. Numerose norme riguardano il diritto penale, nel quale il parricidio è il delitto più grave. Nonostante i progressi giuridici, la legge del taglione è ancora viva e prevede il risarcimento delle diverse menomazioni ma, nel complesso, dalla vendetta si è ormai passati alla pena.
 
-**Sottotitoli di sezione:** centrati in maiuscoletto nel flusso del testo. Nel corpo, corsivo per latino, toponimi e rimandi «(vedi box …)». Non risultano note a piè numerate nel campione.
+Le numerose regole sulla vita comunitaria rispondono alle esigenze d'una società che si va sempre diversificando e articolando. Le stesse norme di procedura penale, minuziosamente descritte, si attuano all'interno di un' città, nella quale il Comizio è il luogo destinato alla giustizia pubblica.
+
+Il colle Aventino; incisione ottocentesca.

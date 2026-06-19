@@ -1,11 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Prima edizione in questa collana: settembre 2004
-© 1997 Newton Compton editori s.r.l./Finedim s.r.l.
-© 2000 Newton & Compton editori s.r.l.
-Roma, Casella postale 6214
+ROMA PRIMA DI ROMA
 
-ISBN 88-541-0193-1
-www.newtoncompton.com
+PREMESSA
 
-Fotocomposizione: GI Grafica Internazionale s.r.l., Roma
-Stampato nel settembre 2004 dalla Legatoria del Sud s.r.l., Ariccia (RM)
+Quanto agli eventi che si dicono accaduti molto prima della fondazione di Roma (o quando questa era imminente) essi appaiono più abbelliti da fole poetiche che sostenuti da incorretti documenti storici e non è mia intenzione né confermarli né confutarli. È questa una concessione che si fa ai tempi andati: mescolare vicende divine e umane per rendere più autorevoli gli inizi delle città. Se dunque esiste una nazione cui si debba concepire di ritenere sacre le proprie origini e di riferirle anzi agli dèi stessi; tale è la gloria militare del popolo romano che, quando esso vanta Marte come padre e come padre del proprio fondatore... Tito Livio; il grande prosatore e storico dell'età augustea; chiarisce immediatamente (nella prefazione al libro della *Storia dalla fondazione di Roma*; Roma; Newton & Compton; 1997) il suo spirito critico e l'intento demistificatorio di fronte alle "favole poetiche" ma non le mette in discussione: le riporta in quanto espressioni della mentalità del tempo arcaico; al quale è necessario riallacciarsi per non perdere l'identità romana dopo il tormentoso e sanguinoso passaggio dalla repubblica all'impero.
+
+Livio amplia il racconto tradizionale e vi inserisce definitivamente l'altro racconto tradizionale dell'arrivo di Enea nel Lazio: non un mito locale, ma un dono dell'antica cultura greca, tramite il canale della Magna Graecia: Enea era scampato alla distruzione di Troia, portando sulle vele spiegate il Anchise, che ai suoi tempi, amoreggiando con Venere, lo aveva generato. Per questa *pietas*, per affetto e attaccamento filiale verso il padre, Enea era stato esaltato dagli stessi Greci vincitori ed era entrato nella storia di Roma: tanto più che da un suo figlio era discesa la *gens Iulia*; il clan familiare di Giulio Cesare e di Augusto; il ceppo della dinastia imperiale. Enea sposa Lavinia, figlia del re Latino; e fonda Lavinio; dove gli esuli troiani pongono definitivamente termine al loro pellegrinaggio nel Mediterraneo e si fondono con i Latini. Da Enea e, forse, da Lavinia nasce Ascanio e quest'ultimo fonda una nuova città sui Colli Albani, detta Alba Longa; perché si allunga sul dorso del monte Albano.
+
+Dopo varie generazioni il re Proca lascia il regno al primogenito Numitore, ma il secondogenito Amulio caccia il fratello; uccide i nipoti maschi e costringe la nipote Rea Silvia a diventare vestale; per obbligarla alla verginità perpetua; senza timore di futuri figli e avversari.
+
+Ma ho motivo di credere che l'origine di una così grande città fosse voluta dal fato: doveva nascere l'impero più prestigioso che mai sia esistito; secondo solo alla potenza degli dèi.
+
+Silvia subì una violenza in seguito alla quale partorì due gemelli. Proclamò al proprio padre...

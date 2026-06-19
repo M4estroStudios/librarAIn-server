@@ -1,21 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA PRIMA DI ROMA
-11
+19
 
-Hanno assunto un aspetto molto simile a quello attuale: in epoca preistorica e storica ci sono state continue modifiche della linea di costa, come in età moderna. Il Tevere, con l'apporto continuo di detriti, ha spostato sempre più avanti la sua foce, colmando prima la laguna che si estendeva fino ad Acilia; poi insabbiando progressivamente i porti progettati e costruiti da Claudio e Traiano: tra i ruderi dei magazzini e dei vecchi moli di Porto sorgono le piste dell'aeroporto internazionale Leonardo da Vinci.
+STORIA DI ROMA ANTICA
 
-Le spaventose eruzioni vulcaniche, i cambiamenti del corso del Tevere e dell'Aniene, il sollevarsi e ritirarsi del mare, le grandi glaciazioni ebbero come testimoni gli uomini dell'età della pietra: primi abitatori del territorio di Roma. E nei millenni gli uomini hanno concorso a modificare il territorio, disboscando le pendici delle alture o incanalando l'acqua.
+[Immagine: Scena campestre da un rilievo in marmo conservato a Monaco.]
 
-**1 PRIMI ABITANTI**
+Nel territorio urbano sono stati scoperti due attrezzi di selce di 250.000 anni fa, uno sui banchi di breccia del Tevere presso ponte Milvio; l'altro sull'Aniene in corrispondenza della batteria Nomentana.
 
-Le prime tracce di vita umana nel territorio urbano di Roma o nei suoi immediati dintorni (nella Valchetta della tenuta Cartoni nella XIX circoscrizione e a Monte Mario in via Cortina d'Ampezzo) risalgono a circa 650.000 anni fa. Si tratta di qualche scheggia di selce lavorata e d'un utensile, sempre in selce (un ciottolo appositamente smussato a un'estremità per poter rompere ossa o per spezzare il legno), trovato insieme a denti di cinghiale e d'un animale oggi estinto e simile a un bovino.
+Da 220.000 a 130.000 anni fa sulle sponde dell'Aniene vissero gruppi di uomini che sfruttavano l'abbondanza d'acqua e la disponibilità di selvaggina sempre legata alla presenza dell'acqua. Questa fase più recente dell'uomo preistorico prepara l'apparizione nel Lazio del cosiddetto uomo di Neanderthal. Sono stati rinvenuti alcuni strumenti di pietra, databili a circa 200.000 anni fa, in una caverna sul monte delle Gioie (collina cancellata dallo sviluppo edilizio della città nei pressi dei Prati Fiscali). Altri ritrovamenti, alcuni recentissimi, sono stati fatti alla Sedia del Diavolo (vicino a piazza Vescovio), a Saccopastore (sulla curva dell'Aniene compresa tra il ponte Tazio e il viadotto delle Valli), a Casal de' Pazzi (presso via di Ripa Mammea e ponte Mammolo).
 
-A circa 250.000 anni fa risalgono altre tracce consistenti concentrate a ovest di Roma nella zona dove allora scorreva il Tevere (presso il km 20 della via Aurelia, Palidoro, Torre in Pietra, Malagrotta).
+I RITROVAMENTI ARCHEOLOGICI A CASAL DE' PAZZI
 
-**COME VIVEVANO I NOSTRI ANTENATI**
+Nel 1980, mentre si stava costruendo nei pressi di Casal de' Pazzi il collettore della rete fognaria del quartiere di Rebibbia, le ruspe hanno portato alla luce un giacimento archeologico risalente a circa 20.000 anni fa.
 
-Gli uomini di cui si sono scoperte le tracce a Torre in Pietra, Castel di Guido, Malagrotta, vivevano con probabilità in gruppi (lo dimostra il fatto che riuscissero a cacciare e uccidere gli animali di grandi dimensioni). Si dovevano spostare continuamente sulle orme dei grandi branchi di selvaggina, perché solo così potevano assicurarsi un rifornimento costante di cibo. Tutti i ritrovamenti archeologici avvenuti nei dintorni di Roma riguardano accampamenti provvisori in località aperte, su quello che doveva essere il territorio di caccia. Nella fabbricazione degli attrezzi erano impiegati ciottoli di calcare, selce, ossa di animali. Le prede abbattute erano consumate sul posto; molte delle ossa rinvenute erano state spezzate per succhiarne il midollo. Anche molti degli attrezzi erano preparati sul posto, quando se ne sentiva la necessità.
+Lo scavo scientifico di circa 1000 mq di terreno ha scoperto un tratto dell'antichissimo letto dell'Aniene, che scorreva con corrente impetuosa sopra un banco di tufo formatosi da un'eruzione del vulcano laziale circa 300.000 anni fa.
 
-La quantità di attrezzi e di resti di animali scoperti ci permettono d'ipotizzare in quale ambiente vivessero i nostri antenati. Le ossa di animali appartengono a una fauna tipica dei climi temperati con qualche tendenza al freddo: erano comuni i cervi, i bovini, i cavalli, lupi, gli elefanti, i rinoceronti; non mancano marmotte, bipedi della famiglia delle anatre, delle oche.
+Tra le ripide rive del fiume erano incastrate ossa di animali e zanne di elefanti, la più lunga delle quali misura 3 metri e 15 centimetri. Sono stati individuati anche resti di ippopotamo, rinoceronte, daino, cervo, capriolo, lupo, iena, bue, cavallo. Parte del cranio di un uomo è stata trovata sul fondo del fiume, mentre sull'antica riva giaceva una grande quantità di strumenti di pietra e almeno uno ricavato da un osso di elefante.
 
-Così le ossa di marmotta, rinvenute a Malagrotta, fanno pensare a una zona ricca di specchi d'acqua, cioè fiumi e paludi; così quelle di cavallo, rinvenute in gran numero a Torre in Pietra, suggeriscono l'esistenza di vaste radure: mentre nei boschi dovevano vivere lupi, cervi e elefanti.
+Circa 40.000 anni fa gli uomini di Neanderthal, per ragioni misteriose, scomparvero senza lasciare traccia e lasciarono il campo libero ai nostri progenitori diretti. Di questi però, per un lungo periodo, non rimangono a Roma tracce particolarmente rilevanti. I ritrovamenti più importanti per l'epoca anteriore a 7000...

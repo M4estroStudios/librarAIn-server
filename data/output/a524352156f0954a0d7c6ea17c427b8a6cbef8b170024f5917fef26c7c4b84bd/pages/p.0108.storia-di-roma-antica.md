@@ -1,11 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-108                                                                    STORIA DI ROMA ANTICA
+ASCESA, CADUTA E RESURREZIONE DI ROMA 109
 
-[Immagine: Pianta topografica]
-*Pianta topografica di Veio con le località ove sono situati i reperti archeologici.*
+CAMILLO E LA RIFORMA DELL'ESERCITO
 
-***
+Le vicende di buona parte del V secolo rivelano le carenze dell'organizzazione militare e sociale romana, inadeguata a reggere un impegno bellico prolungato su fronti diversi. Nessuna delle guerre intraprese giunge infatti a conclusione; mentre si aggrava la situazione interna. Costretti a un lungo e ripetuto servizio militare, senza il contraccambio d'un cospicuo bottino da dividere o della conquista di nuove terre da ricevere in assegnazione, i cittadini romani cadono in miseria e sono soffocati dai debiti. La ripresa delle ostilità contro Veio (405 a.C.), con la prospettiva d'un lungo assedio e del protrarsi delle operazioni militari nella stagione invernale, pone i Romani di fronte al problema della divisione delle responsabilità belliche tra patrizi e plebei e del mantenimento d'un grande esercito permanente.
 
-LE «SPOGLIE OPIME»: REALTÀ, LEGGENDA, IDEOLOGIA
+Nel 405 a.C. durante la censura di Marco Postumio Albino (un uomo politico esperto che è già stato tribuno consolare) e di Marco Furio Camillo si attua una serie di radicali innovazioni. Furio Camillo è un giovane patrizio che è stato impegnato solo in funzioni religiose, ma che manifesta capacità non comuni: infatti è eletto censore, una carica molto impegnativa, senza aver prima ricoperto in precedenza altre magistrature.
 
-Nella guerra contro Fidene e Veio, del 438-426 a.C., il comandante romano Aulo Cornelio Cosso uccide il re dei Veienti (Larte Tolumnio) e si impossessa dell'armatura del capo nemico: le *spolia opima*. Secondo un'antica tradizione, il generale romano vittorioso consacra l'armatura del capo nemico, ucciso in battaglia, nel tempio di Giove Feretrio sul Palatino. Il modello «storico» è offerto da Romolo; che avrebbe dedicato a Giove le spoglie del re dei Ceninensi. Dopo l'episodio di Cornelio Cosso questa tradizione sarà ripresa solo dal console Marco Claudio Marcello (22 a.C.) che dedicherà a Giove Feretrio l'armatura del capo degli Insubri, Viridomaro; da lui ucciso nella battaglia di Casteggio. In genere questa cerimonia, che alcuni risalga a una di Numa (vale a dire alla notte dei tempi), è sostituita in epoca storica dal trionfo del generale vincitore. L'onore di consacrare le *opima* sarà negato da Ottaviano a Marco Licino Crasso, dopo l'uccisione in duello di Deldo, re dei Raetani (29 a.C.) col pretesto che Licino è solo proconsole, mentre quest'onore spetta esclusivamente ai consoli. Ottaviano afferma d'avere esaminato personalmente il copricorazza di lino di Larte Tolumnio (conservato ancora nel tempio di Giove Feretrio; da lui fatto restaurare) e d'avere letto la dedica posta da Cornelio Cosso da console. È incerto se la lettura fosse corretta o se fosse una falsificazione creata per l'occasione. Ma Ottaviano, in quanto Pontefice, è l'unico a poter accedere al sacrario del tempio; precluso ai normali cittadini, e ha bisogno d'un precedente, per limitare la concessione della consacrazione delle spoglie opime e per non dare troppo rilievo alla vittoria di Crasso, suo potenziale rivale.
+Per la prima volta sono arruolati 2000 uomini privi dei requisiti patrimoniali richiesti per servire nell'esercito. Tutti i soldati ricevono una paga per il loro ser-
+
+[Immagine]
+
+Habito dell'uomo d'armi a cavallo, incisione di Cesare Vecellio, 1590.

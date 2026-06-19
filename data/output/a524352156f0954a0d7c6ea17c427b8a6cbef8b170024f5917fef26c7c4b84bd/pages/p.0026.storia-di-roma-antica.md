@@ -1,14 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-26
+# UN FIUME, UN GUADO E UNA CROCEVIA
 
-STORIA DI ROMA ANTICA
+27
 
-![Immagine della Roma Quadrata]
+È certo che un "Romolo" e un "Remo" come quelli descritti nella leggenda della fondazione di Roma non sono mai esistiti: a prima vista ci si accorge che in questi personaggi sono incorporati motivi ricorrenti nella mitologia, come il tema dei gemelli o la scoperta del trovatello nei pressi di un fiume o di uno specchio d'acqua (per quest'ultimo aspetto; si pensi ad esempio alla storia biblica di Mosè ritrovato in una cesta di vimini abbandonata sul Nilo).
 
-La Roma quadrata fondata da Romolo, ricostruzione ideale della Roma arcaica, tratta da *Antique Urbis Romae cum regionibus simulacrum*, di M. Fabio Calvo.
+Non sapremo mai se è esistito un capo che da solo decide di fondare Roma, di renderla "più grande di Lavinio e di Alba Longa"; siamo invece certi che c'è stato un personaggio (o forse un gruppo di persone) che aveva la funzione e le capacità di scrutare il cielo ed estrarre gli auspici, cioè d'interpretare i segnali concreti del consenso o del gradimento degli dèi per la fondazione di una città, la costruzione d'un tempio o di altri edifici pubblici. Infatti il pomerio di una città è sempre stabilito grazie a un rapporto diretto con la divinità.
 
-**IL MURO DI ROMOLO**
+Quando "Remo con un salto scavalca il solco che Romolo" sta tracciando per delimitare la sua città, quest'ultimo lo uccide perché egli ha offeso gli dèi, ha violato una linea sacra, quel confine che permette di distinguere tra la violenza e la pace, tra il nemico e l'amico; tra l'ingiusto e il giusto. Tracciare questo confine spetta per definizione al "re" Romolo: il significato più antico e profondo della parola *rex* è "uomo che traccia la linea diritta o retta".
 
-Sino a qualche tempo fa la revisione storiografica tendeva ad affermare che la fondazione di Roma (cioè la nascita della città come organismo politico e come impianto urbano; in cui gli abitanti erano associati) risaliva alla metà del VI secolo a.C. La scoperta del cosiddetto "muro di Romolo" ha cambiato le carte in tavola. Alle spalle della basilica di Massenzio, in corrispondenza dell'antico pendio del Palatino contrapposto alla Velia, sono venute alla luce tre diverse e successive mura della città. Il più antico muro, databile al 730-720 a.C., costruito con scaglie di tufo, è circa un metro e venti centimetri e conserva alla sommità tracce d'una palizzata. Il ruscello che scorreva nel vallamento tra il Palatino e la Velia rendeva ancora più sicura la fortificazione. Alle spalle di questo muro, a circa tredici metri di distanza, correva una palizzata, che è evidentemente il più antico pomerio di Roma. La corrispondenza tra l'orientamento e la datazione di questo muro con il racconto tradizionale sulla fondazione di Roma è sorprendente. Insomma; Romolo evidentemente è un nome derivato da Roma, ma un fondatore è veramente esistito, anche se si chiamava Tiburzio o Pampurio!
+Nella concezione del mondo dei Romani, i confini sono una cosa importantissima; fino al punto di conservarsi "mummificati" per secoli.
 
-...ti sparsi doveva essere iniziato da qualche decennio. Infatti intorno al 750 a.C. le sepolture dei primi abitanti di Roma iniziano a concentrarsi nella zona dell'Esquilino. L'esistenza di una sola grande area cimiteriale significa che lo spazio cittadino inizia a essere sentito come un tutto unico, all'interno del quale alcune zone vengono usate per scopi specifici.
+Nei pressi del successivo Colosseo c'era uno degli angoli della città quadrata di Romolo; nel VI secolo a.C. in questo stesso punto si incrociarono i confini dei quattro quartieri (o regioni) della suddivisione della città decretata da Servio Tullio; a tempo di Augusto (27 a.C. - 14 d.C.) si incontreranno ancora i confini di quattro o cinque circoscrizioni della nuova divisione amministrativa di Roma.
+
+Già prima della costruzione del "muro di Romolo" la città non è circo...
+
+***
+
+# I LUPERCALI
+
+I Lupercali erano una cerimonia religiosa nata sicuramente prima della fondazione di Roma; nella leggenda di Romolo, tra l'altro, si ricorda che praticare il rito erano gli Arcadi, una popolazione proveniente dalla Grecia, nota perché praticava la pastorizia. In effetti tutti gli elementi più antichi del culto riportano alla cultura dei pastori: è un'altra prova della mescolanza di popoli e di usanze avvenute nella zona del Foro-Palatino-Campidoglio e che determinò la nascita della città. Il rito prevedeva una prima fase all'interno del Lupercal, una grotta del Palatino. Dopo aver sacrificato delle capre e svolto altre cerimonie, i partecipanti uscivano di corsa, coperti solo dalla pelle delle capre sacrificate, e con dei frustini ricavati sempre dalla pelle di queste capre iniziavano a percuotere i malcapitati che incontravano sulla loro strada, e in modo particolare le donne. Le strisce di pelle si chiamavano *februa*; da esse deriva il nome di febbraio.
+
+I Lupercali (che sono tra gli antenati del nostro carnevale) avevano luogo nel mese di febbraio. Già all'epoca dell'impero non si conosce l'esatto significato della cerimonia, né quale dio in effetti era onorato, ma anche nel 494 d.C. il papa Gelasio inveisce contro il "malcostume" di celebrare i Lupercali.

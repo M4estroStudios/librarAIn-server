@@ -1,22 +1,19 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-334
+LA DINASTIA FLAVIA 335
 
-STORIA DI ROMA ANTICA
+gli fu portato un messaggio di Rectina moglie di Casco atterrita dal pericolo che la minacciava, giacché la villa di lei era là sotto, e non si poteva scampare se non per nave: lo pregava di trarla fuori da sì grave condizione.
+Mutò allora consiglio. A cui si era accinto con animo di studioso compì con spirito eroico.
+Fece mettere in mare alcune quadriremi e s'imbarcò, per recar soccorso non solo a Rectina ma anche a tutti gli altri, ché molto popolosa era l'amenità di quella spiaggia. Accorse là d'onde gli altri fuggono, volgendo dritta la rotta e diritto il timone verso il pericolo; e tanto scevro di timore da poter dettare e annotare tutti i momenti e tutti gli aspetti di quel disastro, a mano a mano che gli si offrivano allo sguardo. Già cadeva su le navi la cenere, più calda e più densa quanto più si accostavano; già cadevano pomici e pietre nere arse e frantumate dal fuoco; s'era formata una secca improvvisa, per la rovina del monte il lido era inaccessibile. Dopo di avere un poco indugiato nel pensiero di retrocedere, al pilota che così lo consigliava disse poi:
+"La fortuna aiuta i coraggiosi: punta su la casa di Pomponiano."
 
-*Horti Sallustiani, pianta del complesso d'età imperiale.*
+Era questi a Stabia, di là dal golfo; ché ivi il mare s'insinua nelle rive, tutte seni e sporgenze. Là [Pomponiano], quando ancora il pericolo non era imminente benché ben visibile, ma pure era vicino poiché si accresceva; aveva caricato in nave il suo bagaglio; risoluto a fuggire appena fosse cessato il vento contrario; da questo invece favorito.
+Il mio zio lo abbracciò così come tremante era, lo confortò, lo rincuorò; e, per placare con la tranquillità propria il turbamento di lui, si fece condurre al bagno; lavato, si pose a giacere, ilare, o, ciò che è egualmente magnanimo ostentandosi ilare. Frattanto da molti punti del Vesuvio rilucevano grandissime fiamme e alti incendi, di cui le tenebre notturne rendevano viva la splendente chiarità.
+Ed egli andava dicendo; per placare il terrore, che erano fuochi lasciati accesi dai villici nella trepidazione della fuga, casolari abbandonati che bruciavano. Poi andò a riposare, dormì davvero profondamente; il suo respiro infatti, molto grosso e rumoroso a cagione della gran corporatura, era udito da quelli che si aggiravano presso la soglia.
+Intanto il cortile da cui si accedeva al suo appartamento si era già tanto alzato, per la cenere e le pomici che lo empivano, che egli, se si fosse trattenuto in camera, non sarebbe più potuto uscire.
+Svegliato, venne fuori, e si unì a Pomponiano e agli altri che non avevano mai chiuso occhio. Si consultarono tra loro; se si dovesse restar nella casa o andar vagando all'aperto.
+La casa vacillava infatti per continui e vasti terremoti, quasi smosso dalle fondamenta, pareva andare qua or là e tornare in luogo. All'aperto era da temere la caduta delle pomici, anche se leggere e corrose; ma il confronto tra i due pericoli fece scegliere questo partito. In lui però una ragione prevalse su l'altra, in quelli il forte timore. Si misero in capo cuscini legati con fazzoleni; questo valse a proteggerli da ciò che cadeva dall'alto. Già nelle altre parti era giorno; là notte più negra e più folta di qualsiasi notte, benché tante fiamme e tanti bagliori la rischiarassero.
+Si risolsero a portarsi sul lido, a veder da vicino che cosa permettesse il mare; ma questo era tuttavia contrario.
+Là, postosi a giacere su un lenzuolo disteso; egli cenò, bevve due volte acqua fresca. Ma le fiamme e, nunzio di fiamme, un odore di zolfo fecero volgere gli altri in fuga o lo destarono.
+Appoggiandosi a due servi si alzò. Subito ricadde, come io suppongo; perché il respiro gli era stato impedito dalla troppo densa caligine, che gli aveva ostruito le fauci, che di lor natura erano deboli e strette e soggette a infiammazione. Quando tornò la luce del giorno (il terzo da quello ch'egli aveva visto per l'ultima volta), il suo corpo fu trovato intatto, ileso e coperto dalle vesti ch'egli aveva indosso; l'atteggiamento era di un corpo dormiente piuttosto che di un morto.
 
-L'anno 79 d.C., fu segnato da una delle più grandi tragedie naturali dell'età antica, l'eruzione del Vesuvio.
-
-***
-
-**L'ERUZIONE DEL VESUVIO NEL '79**
-
-*Il cataclisma vulcanico si abbatté su una delle più floride e civili terre dell'età antica, città e ville ricche e colte furono sommerse dalla incessante pioggia di ceneri ardenti o da imponenti ondate di fango. Scomparvero così dalla luce del sole Pompei, Ercolano e Stabia; per non parlare di tante ville rustiche come quella di Oplontis. Si compiva una tragedia in cui trovava la morte l'ammiraglio della flotta romana, il grande erudito e naturalista Plinio il Vecchio; avvicinatosi con le navi alla costa per recare soccorso ai fuggiaschi. Eppure tanta immensa tragedia si sarebbe, secoli dopo, rivelata una fonte incomparabile di testimonianze archeologiche della vita quotidiana del mondo romano:*
-
-*Tito Flavio Vespasiano; si chiamava come il padre, morì a quarantuno anni, pianto da tutta la città e dallo stesso Senato, come dai soldati sparsi nelle province. Lui morto furono tributate tante lodi quante mai ne aveva ricevute da vivo.*
-
-***
-
-**PLINIO IL GIOVANE: L'ERUZIONE DEL VESUVIO**
-
-*«Il nono giorno innanzi alle calende di settembre, verso l'ora settima, mia madre gli indicò un nembo ch'era apparso, di grandezza e di aspetto straordinario. Egli, dopo di aver fatto un bagno di sole e uno freddo; aveva preso a letto un breve pasto e stava studiando; si fa portare i calzari e ascende su un luogo da cui si poteva osservare perfettamente l'eccezionale spettacolo. Si innalzava una nube (non si capiva bene, guardando da lontano, da monte, e si seppe che era il Vesuvio) della quale nessun altro albero meglio del pino avrebbe reso la forma e l'aspetto. Infatti, drizzandosi in su come un lunghissimo tronco, si allargava poi ramificando: credo perché, spinta dapprima in alto da un soffio impetuoso dallo scemare di questo abbandonata a se stessa oppure anche vinta dal proprio peso, sfumava allargandosi: talora candida, talora torbida e chiazzata; secondo che avesse sollevato terra o cenere. Grande e degno d'essere osservato più da vicino parve all'eruditissimo uomo il fenomeno. Fa allestire una liburnica; mi offre, se ne ho voglia, di andar con lui; rispondo che preferisco studiare; proprio egli mi aveva dato da scrivere qualche cosa. Usciva di casa poi...»*
+(Plinio il Giovane; Lettere familiari)

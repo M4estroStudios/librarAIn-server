@@ -1,16 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-EGEMONIA NELL'ITALIA CENTRO-MERIDIONALE                                     139
+140 | STORIA DI ROMA ANTICA
 
-tata dalla tradizione in modo assai confuso. Gli scontri decisivi si verificano a Gauro e Saticula nel cuore del Sannio (341 a.C.). I Romani vincitori stipulano un trattato dubbio; visto che riconoscono ai Sanniti il diritto d'agire contro i Sidicini. Quest'improvvisa inversione di rotta è segno d'una politica romana, incerta e ondeggiante tra posizioni diverse e interessi contrari.
+colonia e confiscato il porto: Infine sono revocati il diritto di matrimonio, di commercio e di riunione delle altre città. I magistrati romani diventano anche i magistrati dei Latini: Roma, da città più grande, diventa la capitale del Lazio; il suo territorio è quasi raddoppiato e giunge a coprire un'area di 6000 kmq, mentre sono create altre due tribù rustiche: la Scaptia e la Mecia.
 
-LA FINE DELLA LEGA LATINA
+La deduzione di una colonia romana ad Anzio (la seconda dopo Ostia) e più a sud, a Terracina (328 a.C.) mostra l'intento di conquistare la costa e di rafforzare con presidi militari il territorio appena conquistato.
 
-I Campani e i Latini sono danneggiati dal voltafaccia di Roma, così nel 340 a.C. a comune difesa Latini, Campani e Sidicini creano una Lega in funzione antiromana e antisannita. Roma, in un nuovo "giro di valzer" delle alleanze, riprende le armi (338 a.C.) a fianco dei Sanniti.
+### L'ESPANSIONE ROMANA IN CAMPANIA
 
-Gli scontri decisivi, nel territorio di Minturnae, sono costellati di azioni "esemplari", dal sacrificio di Decio Mure (vedi *La devotio dei Decii*) alla condanna del figlio del console Tito Manlio. Quest'ultimo, poiché la fedeltà all'esercito e alla patria vanno al di là dei legami familiari, condanna a morte il giovane Manlio; che ha abbandonato la schiera, contravvenendo agli ordini, anche se ha ucciso gloriosamente un avversario, tra lo stupore e il dolore generale.
+Dopo la guerra latina gli interessi romani sulla Campania diventano evidenti nel trattamento differenziato verso le città greche: Fondi e Formia ricevono la cittadinanza senza diritto di voto, mentre il fertilissimo territorio (*ager Falernus*) della ricca Capua è confiscato e distribuito ai cittadini romani e nel 318 a.C. si creano le tribù Falerna e Oufentina. I Romani premiano la fedeltà dei cavalieri campani, che non hanno defezionato durante la guerra latina, e concedono soltanto a loro la cittadinanza, rifiutata invece al resto della popolazione. In pratica l'alleanza con i ceti dirigenti cittadini tende a prevenire il pericolo di future rivolte.
 
-La conseguenza più importante della vittoria romana è lo scioglimento della Lega latina (338 a.C.). Da questo momento ciascun popolo è gestito individualmente con senatoconsulti particolari. I diritti comuni dei Latini confederati sono annullati, mentre alcuni centri (Lavinio, Ariccia, Nomento e Pedo) ricevono la cittadinanza senza diritto di voto (*civitas sine suffragio*); altri (Tivoli e Praeneste) sono privati di parte del territorio e restano città alleate; altri ancora (Velletri) sono distrutti. Ad Anzio, espugnata da Gaio Maenio, famoso per la sua attività edilizia a Roma dopo la vittoria, è dedotta una nuova
+La deduzione di colonie di diritto latino a Cales (334 a.C.) e Fregellae (328 a.C.) fortifica la via Latina (il percorso interno che collega Roma e Capua) e completa il controllo della regione tra il Liri e il Volturno, rinnovando i motivi dello scontro con i Sanniti. Ormai gli interessi delle due sono in netto contrasto ed è chiaro che la componente greca presente in Campania occupa un ruolo chiave nelle possibili spartizioni.
 
-[Immagine]
+### LA NUOVA MONETAZIONE
 
-*Tito Manlio fa decapitare il figlio perché, senza l'ordine dei consoli, aveva combattuto contro i Latini (particolare da un'incisione di B. Pinelli).*
+Fino alle guerre sannitiche Roma ha conosciuto due tipi di moneta: l'*aes grave*, una barra di bronzo senza segni distintivi, e l'*aes signatum*, attribuito a Servio Tullio (vedi capitolo *Un avventuriero etrusco sul trono di Roma*). Il trattato d'alleanza con i Campani (326 a.C.) lascia un segno anche nella monetazione. La zecca di Napoli produce per gli alleati una moneta simile alla propria; salvo nella leggenda: prima *Rhomaion* (in greco) poi *Romano*. Non è ancora chiaro cosa significassero e che scopo avessero questi coni; non è escluso però che fossero un segno della volontà dei commercianti romani di infiltrarsi nelle rotte del grande commercio greco, che aveva in Napoli uno dei centri principali. Nel 289 a.C. sono creati i *triumviri monetales*, magistrati predisposti alla monetazione; mentre la zecca è posta vicino al tempio di Giunone Moneta, dedicato nel 345 a.C., che lascia il suo epiteto a quella che tuttora chiamiamo moneta. La prima moneta d'argento è coniata nel 269 a.C. sotto il consolato di Quinto Ogulnio e di Caio Fabio; il denario d'argento vale dieci assi di bronzo; sul retro è incisa l'immagine di Ercole e sul verso la lupa che allatta i gemelli.
+
+### LA SECONDA GUERRA
+
+L'aristocrazia greca di Napoli, chiaramente antisannita e decisa a tutto pur di liberarsi dell'invasore, promuove la guerra: Napoli era stata fondata da Cuma nel VII secolo a.C. sulla collina di Pizzofalcone (Parthenope o Paleapoli).

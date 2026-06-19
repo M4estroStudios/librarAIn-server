@@ -1,14 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-NERONE E LA FINE DEL CONSENSO                                            311
+312
 
-*Agrippina e Nerone fanciullo in un'incisione ottocentesca di F. Garzoli.*
+STORIA DI ROMA ANTICA
 
-[Immagine: Incisione di Agrippina e Nerone fanciullo]
+L'approvazione del Senato è a questo punto un atto formale. Il discorso del nuovo principe, preparato da Seneca, riscuote l'approvazione di tutti. Nero ora è imperatore a tutti gli effetti (13 ottobre del 54 d.C.).
 
-Il carattere del giovane rampollo è però ormai compromesso. Le vicende familiari e soprattutto la figura materna hanno sconvolto un equilibrio, forse fin dall'inizio, debole. La menzogna è per lui un modo di vivere. Mentire per evitare i castighi, mentire per mendicare un po' d'affetto. Ma la madre incombe sempre, impedisce qualunque espressione. Piano piano il giovane comincia ad odiare quella donna bellissima e intrigante, causa prima dei suoi mali.
+IL QUINQUENNIO FELICE
 
-Il matrimonio di Agrippina con Claudio cambia profondamente l'esistenza di Lucio. Se la sua infanzia è stata priva d'amore e tenerezza, ora, giovane adolescente, è adulato e vezzeggiato. I suoi capricci sono ordini per l'entourage che lo circonda. Solo Agrippina cerca di porgli freno e l'odio di Lucio (adottato da Claudio con il nome di *Tiberio Claudio Nerone*) aumenta (50 d.C.).
+Il discorso programmatico fa presagire un regno felice: Il principe ha infatti espresso l'intenzione di governare secondo i princìpi di Augusto, limitando il potere dei liberti imperiali, perseguendo la corruzione e restituendo a senatori e magistrati le antiche prerogative. Questa adesione alla politica augustea caratterizzerà solo i primi anni (un quinquennio) per poi seguire il modello del sovrano ellenistico-orientale, inaugurato per la prima volta da Antonio.
 
-QUANTO COSTA IL II REGNO
+Nei primi tempi l'influenza di Seneca e Afranio Burro è senz'altro determinante. Secondo quanto annunciato, liberti come Pallante sono progressivamente allontanati. Anche il quattordicenne Britannico, onde evitare futuri problemi, è ucciso (55 d.C.). Ma il vero ostacolo per l'imperatore è un altro: il rivale di sempre che ora viene osteggiato anche da Seneca e da Afranio, incapaci di tollerare i suoi intrighi. Il rivale è Agrippina che non accetta di ridimensionare la sua influenza. I suoi amici sono eliminati uno ad uno, creandole un vuoto intorno. Ma ancora la donna non si arrende.
 
-Nerone ottiene il trono grazie al golpe organizzato nei minimi particolari dalla madre. In quanto figlio (adottivo) di Claudio e discendente di Germanico e di Augusto la sua successione è scontata: Britannico, figlio di Messalina e Claudio, è estromesso dal trono. Gli astrologi guidano le mosse di Agrippina. La morte di Claudio è tenuta nascosta finché tutto è pronto e il cielo ordina di agire. Nerone insieme al prefetto del pretorio Afranio Burro e ad altri liberti imperiali entra nel palazzo: i pretoriani acclamano imperatore il giovane Nerone, poi accompagnato nella caserma dove promette a ciascun soldato un grosso donativo. L'elezione ha il suo prezzo. A Nerone il trono costa quindicimila sesterzi per pretoriano.
+Il rapporto tra Nerone e il Senato corre inizialmente su binari di reciproca comprensione. Poi qualcosa si inceppa. Le distribuzioni di grano, le sovvenzioni costano care allo Stato. I senatori annusano odore di riforma fiscale. Sentono che la proposta del principe di abolire tutte le tasse indirette (come i dazi) nasconde il progetto di imporre tasse dirette ai cittadini. In questo modo Nerone avrebbe potuto mantenere il suo regno sempre più costoso (57-58 d.C.).
+
+La situazione si complica. Lo stesso Seneca si trova in una condizione difficile: Il "contratto" tra principi e senatori si incrina irrimediabilmente. La teoria di Seneca del monarca ideale fallisce. Non è più possibile trovare un equilibrio tra il Senato conservatore e la monarchia autoritaria e assolutistica che Nerone comincia a imporre.
+
+LA SVOLTA: IL SOVRANO SOLARE
+
+L'eliminazione della madre è il segno di un profondo cambiamento (59 d.C.). La "clemenza" che caratterizzava i primi anni del regno ha lasciato posto alla "severità", al rigore. Nerone vuole accelerare la trasformazione del principato in una monarchia ellenistica.
+
+Non c'è più spazio per dubbi e tentennamenti: i valori tradizionali della cultura romana vanno cambiati. Anche i problemi militari sono molto poco seguiti da Nerone, che affida il governo delle province ai suoi generali. Il conflitto con i Parti per il controllo dell'Armenia è condotto da Domizio Corbulone. In Britannia viene domata a stento la rivolta capeggiata dalla regina Boudicca, contro la pressione fiscale romana. Il principe è completamente immerso nel suo progetto di rifondazione culturale, centrato sulla figura del monarca di stampo orientale. Soprattutto l'Oriente ellenistico e in particolare l'Egitto, ricco di cultura e di antiche tradizioni, costituiscono il suo modello. An-

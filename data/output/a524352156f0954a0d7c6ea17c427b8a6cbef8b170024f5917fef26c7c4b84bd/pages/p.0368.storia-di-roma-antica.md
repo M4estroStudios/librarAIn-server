@@ -1,20 +1,28 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-368                                           STORIA DI ROMA ANTICA
+DAGLI ANTONINI ALLA DINASTIA DEI SEVERI $\quad$ 369
 
-Infine Eliogabalo, sulla base del sincretismo religioso da lui avviato e del nuovo ruolo, novità assoluta del mondo antico; concesso alle donne, affermò di condannare la violenza e la stessa guerra e di volere essere chiamato, per tali ragioni, *Pio Felice*.
+*L'imperatore Alessandro Severo ritratto da una moneta dell'epoca (da Illustrium imagines)*
 
-Per sottolineare il mutamento che voleva dare ai costumi antichi, Eliogabalo prese in moglie una vestale e decise che la carriera senatoria e la carriera equestre non fossero più distinte tra loro.
+ro Alessandro avevano stipulato un accordo sia con il Senato, che affiancò all'imperatore un gruppo di famosi giuristi quali consiglieri, sia con i militari, l'importanza dei quali fu pienamente riconfermata; tanto che nove anni dopo Severo Alessandro, ventiduenne, muoveva alla testa dell'impero romano una guerra contro i Persiani.
 
-Inoltre, egli inaugurava un cerimoniale di adorazione della sua persona quale imperatore che diede vita a una casta; di certo spesso corrotta e capricciosa, dove le cariche più importanti venivano date a liberti poiché questi erano più disponibili ad abbracciare le novità volute dall'imperatore.
+Il giovane imperatore adottò una politica tradizionalista e illuminata che lo portò a ridurre le tasse e a promuovere la fondazione di nuove colonie. La guerra contro i Persiani si rivelò un grave errore tattico per Severo Alessandro che non aveva compreso che il nuovo Stato persiano dei Sasanidi, ove vigeva il culto solare di Zoroastro, era molto diverso da quello dei Parti, che aveva infatti vinto e sottomesso. L'esercito romano avanzava in territorio persiano senza poter battersi in uno scontro risolutivo. Così la campagna di Persia apparve presto una spedizione inutile: Il costo della spedizione, a causa della riduzione delle tasse sulle entrate dei commercianti, fu fatto gravare da Severo Alessandro proprio sulle corporazioni degli artigiani di Roma, quali videro le proprie aziende andare incontro a un depauperamento dei capitali da investimento, a un inevitabile rialzo dei prezzi, a un conseguente calo della domanda e quindi a un'inevitabile crisi della produzione. La crisi delle corporazioni artigiane portò al licenziamento degli operai e quindi all'aumento della disoccupazione in Roma. Fu allora che il Senato abbandonò l'alleanza con l'imperatore e si fece portavoce delle istanze popolari; mentre la classe militare, visto l'esito vano della guerra in Persia, si dissociava dallo stesso Severo Alessandro.
 
-Questa politica portò Eliogabalo a perdere il favore del Senato; che nelle tradizioni di Roma, sconvolte dall'imperatore, vedeva la fine dell'identità romana e della propria casta. Allo stesso tempo l'esercito, e in particolare i pretoriani, si allontanarono sempre di più dal giovane imperatore che toglieva loro, con il rifiuto della guerra, il ruolo di potere che detenevano nell'Impero.
+GAIO GIULIO VERO MASSIMINO, DETTO IL TRACE
 
-Infine, lo stesso popolo di Roma non riusciva ad affezionarsi a un imperatore chiuso nel cerimoniale incomprensibile della sua corte e apparentemente rinnegatore dei più antichi culti della città.
+Nel 235 i soldati acclamavano imperatore Gaio Giulio Vero Massimino, detto il Trace, un loro commilitone nato appunto in Tracia e figlio di genitori barbari (il padre goto e la madre alana), che era entrato fin da giovane nell'esercito, dove si era conquistato grande fama per il coraggio, la forza incredibile e l'alta statura, oltre due metri.
 
-Quando la nonna di Eliogabalo, Mesa e la madre Soemia si resero conto che la situazione stava per precipitare, corsero a porvi rimedio facendo in modo che Eliogabalo, diciottenne adottasse il proprio successore. Costui era Alessandro, figlio di un'altra figlia di Giulia Mesa, di nome Mamea e perciò primo cugino dell'imperatore. Ben presto il giovanissimo Alessandro raccolse, come previsto, le simpatie dei senatori e della classe militare in quanto, essendo stato educato secondo i modelli tradizionali di Roma, appariva a tutti molto più autenticamente romano di quanto mai avrebbe voluto sembrare lo stesso Eliogabalo.
+***
 
-Tutto ciò suscitò un sordo rancore in Eliogabalo che organizzò una congiura per uccidere il suo giovane successore ma i congiurati furono scoperti dai pretoriani, che decisero di eliminare Eliogabalo: i primi a cadere furono i suoi cortigiani, evirati e impalati; e quindi Eliogabalo fu raggiunto in una latrina dove si era nascosto; qui fu ucciso e il suo cadavere trascinato per le vie di Roma in mezzo a due ali di folla che lo percuoteva e lo dileggiava; fu gettato, poi, in una cloaca; ma poiché il corpo non passava fu portato nel circo e di nuovo esposto al ludibrio del pubblico: Quindi legato e appesantito con pietre; fu gettato nel Tevere dal ponte Emilio per impedire che qualcuno lo seppellisse. Insieme a Eliogabalo, unico imperatore nella storia di Roma a subire tante offese dopo morto, fu uccisa anche la madre Soemia (222 d.C.).
+DAGLI ANTONINI ALLA DINASTIA DEI SEVERI $\quad$ 369
 
-<center>AURELIO SEVERO ALESSANDRO</center>
+*L'imperatore Alessandro Severo ritratto da una moneta dell'epoca (da Illustrium imagines).*
 
-I pretoriani acclamarono imperatore il tredicenne Aurelio Severo Alessandro; figlio di Mamea; e il Senato diede a lui l'appellativo di Augusto; il titolo di Padre della Patria; la potestà consolare e quella tribunicia; oltre al diritto di presentare all'ordine del giorno fino a cinque proposte.
+[Immagine di moneta con iscrizione: ALEXANDER PIVS AVG]
+
+ro Alessandro avevano stipulato un accordo sia con il Senato, che affiancò all'imperatore un gruppo di famosi giuristi quali consiglieri, sia con i militari, l'importanza dei quali fu pienamente riconfermata, tanto che nove anni dopo Severo Alessandro, ventiduenne, muoveva alla testa dell'impero romano una guerra contro i Persiani.
+
+Il giovane imperatore adottò una politica tradizionalista e illuminata che lo portò a ridurre le tasse e a promuovere la fondazione di nuove colonie. La guerra contro i Persiani si rivelò un grave errore tattico per Severo Alessandro che non aveva compreso che il nuovo Stato persiano dei Sasanidi, ove vigeva il culto solare di Zoroastro, era molto diverso da quello dei Parti, che aveva infatti vinto e sottomesso. L'esercito romano avanzava in territorio persiano senza poter battersi in uno scontro risolutivo. Così la campagna di Persia apparve presto una spedizione inutile. Il costo della spedizione, a causa della riduzione delle tasse sulle entrate dei commercianti, fu fatto gravare da Severo Alessandro proprio sulle corporazioni degli artigiani di Roma, i quali videro le proprie aziende andare incontro a un depauperamento dei capitali da investimento, a un inevitabile rialzo dei prezzi, a un conseguente calo della domanda e quindi a un'inevitabile crisi della produzione. La crisi delle corporazioni portò al licenziamento degli operai e quindi all'aumento della disoccupazione in Roma. Fu allora che il Senato abbandonò l'alleanza con l'imperatore e si fece portavoce delle istanze popolari, mentre la classe militare, visto l'esito vano della guerra in Persia, si dissociava dallo stesso Severo Alessandro.
+
+GAIO GIULIO MASSIMINO, DETTO IL TRACE
+
+Nel 235 i soldati acclamavano imperatore Gaio Giulio Vero Massimino, detto il Trace, un loro commilitone nato in Tracia e figlio di genitori barbari (il padre goto e la madre alana), che era entrato fin da giovane nell'esercito, dove si era conquistato grande fama per il coraggio, la forza incredibile e l'alta statura, oltre due metri.

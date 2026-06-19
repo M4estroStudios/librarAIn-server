@@ -1,38 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-278                                           STORIA DI ROMA ANTICA
+RICONCILIAZIONE E CONSENSO
 
-tere illegale di questi anni si nasconde dietro un non meglio precisato con-
-senso universale. Dal punto di vista costituzionale la sua situazione è inso-
-stenibile: Nel suo testamento spirituale, le *Res Gestae* (Le imprese compiu-
-te), continuamente modificato fino al momento di morire, il futuro Augusto
-sarà molto evasivo nel parlare di questo periodo e del suo potere.
+IL RIPRISTINO DELLA LEGALITÀ
 
-Rispetto ai suoi predecessori, Ottaviano ha il vantaggio di governare già da
-dieci anni e di non avere avversari che si oppongano ai suoi progetti. Il suo
-vero progetto è quello di creare un nuovo regime, dove Cesare prima di lui
-ha fallito. Il ricco tesoro egiziano gli facilita l'acquisto di terre per ve-
-terani, senza creare panico e disperazione. Con tutta calma il generale e il suo
-gruppo cominciano a mettere mano al progetto costituzionale: La prima mos-
-sa è compiuta dal Senato che nomina Ottaviano principe del Senato stesso.
-Ma egli rinuncia; rimettendo il potere nelle mani del popolo e del Senato (28 a
-C.). Inaugura così la sua tipica politica delle ambiguità e della forma priva
-di sostanza: Sul piano propagandistico quest' azione è il segno tangibile del -
-la volontà di tornare alle origini repubblicane; ristabilendo lo Stato sconvol-
-to dalle guerre civili.
+Durante il mio sesto e settimo consolato; dopo aver spento l'incendio delle guerre civili e aver ricevuto per consenso universale il controllo di tutti gli affari politici, io trasferii la cosa pubblica dal mio potere alla volontà del Senato e del popolo romano: Da allora fui il primo per considerazione e influenza; ma non avevo maggiore potere di coloro che erano miei colleghi nelle varie magistrature.
 
-Ma si tratta solo di forma e non di sostanza. Nel 27 a.C. il Senato attribui-
-sce a Ottaviano una serie di poteri e di onori; che costituiscono la prima piat-
-taforma per mantenerlo al vertice. I poteri precedenti sono riconfermati e a
-essi si aggiunge l'*imperium* sulle province non pacificate: in pratica il pote-
-re sugli eserciti. Nello stesso anno il Senato gli attribuisce il titolo di
-Augusto, il nome col quale passerà alla storia. Inizialmente la scelta era caduta sul
-nome di Romolo, per sottolineare che era il nuovo fondatore della capitale;
-dilaniata dalle guerre. Ma Romolo ricordava troppo la monarchia e nella men-
-te dei Romani potevano sorgere pericolose associazioni. Alla fine un verso
-del poeta epico Ennio (II secolo a.C.) suggerisce il nuovo nome: Roma era
-stata fondata, secondo Ennio, con *augusto augurio*; cioè con un favorevole,
-grandioso presagio.
+Così Augusto nella *Res Gestae* (vedi box alla fine di questo capitolo), tenta di legittimare la sua posizione di preminenza al vertice dello Stato romano.
 
-E con favorevole, grandioso presagio Augusto si sistema al vertice del po-
-tere: l'ambiguità ha vinto; mentre il chiaro progetto innovatore di Cesare era
-fallito.
+Nel 28-27 a.C. la restaurazione delle forme costituzionali e delle magistrature ordinarie aveva posto fine ai poteri straordinari del periodo del triumvirato (vedi capitolo precedente).
+
+Augusto si presenta (e probabilmente così era visto dai contemporanei) come il restauratore di Roma dopo la bufera delle guerre civili, come chi ha consentito il ripristino della legalità e della libertà.
+
+DAL POTERE DEL TRIUMVIRATO ALL'AUTORITÀ DEL PRINCIPE
+
+Già prima di Azio, Ottaviano ha modificato il suo nome da Gaio Giulio Cesare Ottaviano (= Gaio Ottavio adottato da Gaio Giulio Cesare) in *imperator Caesar* (= generale vittorioso Cesare).
+
+A partire dal 27 a.C. egli assume la denominazione completa (che corrisponde ai tre nomi e alla filiazione portati dal cittadino romano) di *imperator Caesar divi filius Augustus* (= generale vittorioso Cesare, figlio di Giulio Cesare divinizzato; Augusto). Favorito dagli dèi, che gli hanno concesso la vittoria militare, discendente dal dio Cesare, dotato di autorità carismatica; il nuovo padrone di Roma (ma egli non volle mai farsi chiamare *dominus*, signore) cerca un fondamento legale per il suo potere.
+
+La ripetuta rielezione al consolato (carica che Augusto ricopre dal 31 al 23) somiglia troppo alla dittatura a vita e rischia di divenire impopolare; perciò Augusto predilige farsi chiamare principe: nella tradizione repubblicana, infatti, erano detti *principes rei publicae* (cioè primi cittadini dello Stato) alcuni senatori preminenti, cui era affidata la conduzione della cosa pubblica.

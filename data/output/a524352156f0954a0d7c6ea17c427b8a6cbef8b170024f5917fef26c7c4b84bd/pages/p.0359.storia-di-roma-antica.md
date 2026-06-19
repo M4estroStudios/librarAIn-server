@@ -1,22 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-DA GLI ANTONINI ALLA DINASTIA DEI SEVERI | 359
+360 | STORIA DI ROMA ANTICA
 
-i comandanti. Tutti questi atti erano appena iniziati allorché i pretoriani lo uccisero. Pertinace aveva governato per soli tre mesi. Morì, infatti, il 28 marzo del 193 d.C. La sua testa, spiccata dal busto e infissa su una lancia; fu trasferita come trofeo nella corte del Castro Pretorio. Gli stessi pretoriani, divenuti arbitri della nomina dell'imperatore, acclamarono come tale il senatore Didio Giuliano, che si era recato in tempo al Castro Pretorio e aveva saputo concordare il prezzo della propria elezione.
+mini più influenti dell'Impero nell'ambito del Senato. In realtà, Settimio Severo meditava anche l'eliminazione di Albino per garantire ai propri figli il trono da lui conquistato. Clodio Albino intuì il pericolo, sobborno il tranello e, radunato l'esercito, mosse contro Settimio Severo. Lo scontro fra i due insanguinò la Gallia e Clodio Albino venne sconfitto definitivamente a Lione nel 197.
 
-DIDIO GIULIANO IMPERATORE
+Così si chiudeva un altro dei periodi di scontri violenti tra generali per il trono di Roma, analogo a quelli che avevano caratterizzato il passaggio dalla dinastia Giulio-Claudia a quella dei Flavi. Settimio Severo, rientrato a Roma forte dell'appoggio delle sue truppe, organizzò legalmente la propria presa di potere: innanzitutto, con un decreto speciale, si autonominava figlio adottivo di Marco Aurelio; quindi riabilitava la memoria di Commodo e infine faceva arrestare e giustiziare tutti coloro che si erano mostrati ostili allo stesso Commodo e comunque al trono imperiale.
 
-D'altronde ormai solo due erano le vere forze politiche dell'Impero: il Senato; che era controllato dalla ricca nobiltà e che cooperava con l'imperatore nell'elaborazione delle leggi e nella nomina dei magistrati, e l'esercito; che era ormai una vera e propria casta; poiché tutti i militari, dall'ultimo dei soldati al comandante capo, erano di carriera e quindi di estrazione plebea; oggi diremmo proletaria, e traevano dalla sola paga il proprio benessere economico.
+SETTIMIO SEVERO CONTRO I PARTI
 
-La plebe; che nella più antica storia di Roma aveva costituito il nerbo delle assemblee politiche, partecipando direttamente all'attività legislativa; si era trasformata in una massa di gente nullatenente tanto che, dopo la morte dell'imperatore Adriano; le assemblee popolari cessarono di essere riunite nel Foro e lo stesso popolo divenne così una folla anonima affamata.
+Il programma di Settimio Severo era quindi chiarissimo: annullare, perché priva di valore giuridico, la vicenda delle lotte con Pertinace, Pescennio Nigro, Didio Giuliano e Clodio Albino e quindi ricostruire la formalità legale della successione dinastica e, per questo, eliminare tutti coloro che avevano potuto confidare nell'arma della congiura.
 
-Le legioni di Siria non accettarono l'elezione di Didio Giuliano, già collaboratore di Pertinace e acclamarono imperatore il loro legato Pescennio Nigro. Allora le legioni illiriche presero posizione per proprio conto e acclamarono imperatore il legato della Pannonia superiore Lucio Settimio Severo; nato in Africa a *Leptis Magna*; discendente di cavalieri romani lì emigrati e marito di Giulia Domna, figlia del gran sacerdote del Sole a Emesa di Siria. Lì si era recato in ossequio a un oroscopo che gli aveva indicato che solo a Emesa avrebbe conosciuto la futura consorte.
+Sistemate le cose a Roma, Settimio Severo decise di intraprendere una guerra contro il regno dei Parti che, con alleanze politiche e attacchi ai confini, avevano di nuovo messo in crisi le estremità dell'impero nel Vicino Oriente. Questa zona era vitale per l'economia dell'Impero di Roma, poiché di là passavano le vie commerciali che portavano al Mediterraneo i prodotti dalla lontana India e dalla Cina, specialmente le spezie e le sostanze medicinali, che venivano poi lavorate dagli artigiani delle varie province. Sempre di là passava il commercio delle sete e delle pietre dure, che costituivano gli oggetti qualificanti delle classi dirigenti, del Senato e della famiglia imperiale.
 
-LUCIO SETTIMIO SEVERO
+Inoltre, già dal tempo di Marco Aurelio, a seguito della terribile carestia, centri commerciali e finanziari di maggior peso erano presenti nelle grandi città dell'Asia. La stessa Italia attraversava senza uscirne, e non ne uscirà più, una forte depressione economica. Settimio Severo, perciò, aveva progettato la spedizione contro i Parti per proteggere la forte economia dell'Oriente, su cui i Parti cercavano di estendere la propria influenza.
 
-Il primo giugno una congiura mise termine alla vita di Didio Giuliano; mentre Settimio Severo, attraversate le Alpi e percorsa l'Italia settentrionale e centrale; entrava in Roma alla testa delle sue legioni illiriche.
+Infine la spedizione era un ulteriore premio alle truppe che, grazie alla prospettiva di ulteriori guadagni straordinari della partecipazione alla divisione dei bottini e non avevano, in fondo, tempo per dedicarsi alle questioni politiche.
 
-Qui; Settimio Severo congedava i pretoriani di Roma perché totalmente inaffidabili e li sostituiva con una propria guardia; composta dalle sue truppe più fedeli, e inoltre stanziava un'altra delle sue legioni nella vicina Albano ché fosse pronta a soccorrerlo in caso di difficoltà.
+Era l'anno 197 d.C. e la spedizione portò all'assedio e alla conquista della capitale dei Parti, Ctesifonte, che costituì un'affermazione di grande prestigio, capace di dare un significato a tutta la spedizione militare.
 
-Sistemata la situazione nella capitale; Settimio Severo marciò con i suoi soldati contro Pescennio Nigro e lo sconfisse presso Isso. Quindi provvide a nominare il proprio successore nella persona di Clodio Albino, che era stato uno dei promotori della congiura contro Pertinace:
-
-Albino era anch'egli africano ed era stato nominato Cesare dallo stesso Commodo; che lo aveva trasferito al comando delle legioni della Gallia: Così la nomina di Cesare, che Settimio Severo gli aveva riconosciuto; non era altro che una prima mossa dell'imperatore libico per non inimicarsi uno degli uo-
+Viceversa, la conquista vera del territorio partico fu più difficile e comunque impossibile da mantenere; pertanto Settimio Severo mise termine alla spedizione costituendo la provincia della Mesopotamia e sottoscrivendo con i Parti buoni rapporti diplomatici.

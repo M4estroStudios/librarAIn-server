@@ -1,22 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-NERONE E LA FINE DEL CONSENSO $\quad$ 323
+324
 
-Tri approfittino per detronizzare Pisone: quando la libertà epicurea, una pisoneiana, è arrestata mentre cerca di convincere la flotta ad appoggiare la congiura; decidono di agire. Nerone sarà assassinato il 19 aprile del 65 d.C.
+STORIA DI ROMA ANTICA
 
-Ma qualcosa si inceppa. Il 17 il complotto è smascherato. Un liberto comincia a parlare. In breve tutto viene scoperto. Ogni congiurato denuncia un altro; in una catena vergognosa di viltà e menzogne. Nella sua follia Nerone trascina in carcere quasi tutta Roma. Nelle strade, nelle piazze si vede che corre, che lunghe schiere di persone incatenate ogni giorno percorrono la città. Il solo fatto di aver sorriso una volta ai congiurati, di aver avuto con loro una conversazione o un incontro casuale, di essere andati insieme a un banchetto o a uno spettacolo costituisce un capo d'accusa.
+L'imperatore tutto viene stravolto: la cerimonia pubblica più importante del mondo romano diventa un grandioso spettacolo teatrale. L'imperatore celebra il suo trionfo. In marzo entra finalmente a Roma: il percorso del trionfo è modificato; dalla Porta Capena attraverso il Circo Massimo, il corteo percorre la Via Sacra per arrivare al Palatino, al tempio di Apollo. A Giove Capitolino, Nerone ha preferito la divinità degli artisti. Al posto degli abiti tradizionali indossa un mantello costellato, simbolo della volta celeste. Nerone è il signore della natura e degli uomini.
 
-Il principe auriga, istrione e incendiario fa un massacro terribile. I principali capi sono uccisi, molte persone sono esiliate o degradate: è inevitabile che siano travolti anche personaggi scomodi come Seneca. La repressione si riaccende in occasione della morte di Poppea (vedi box *Le mogli di Nerone*) colpendo in particolar modo il gruppo degli Annei, parenti di Seneca (66 d.C.).
+LA GIORNATA D'ORO DI TIRIDATE
 
-Passo passo Nerone elimina tutti che considera focolai di opposizione. Con accuse vere o false annienta gli avversari e riesce ad avere ragione di un'altra congiura; quella di Viniciano, che pur meno organizzata, coinvolge per la prima volta anche parte dell'esercito di stanza in Asia con il generale Corbulone.
+A partire dal 54 d.C., in Armenia i Romani sono coinvolti in una lunga guerra, durata nove anni, contro i Parti. Il generale Corbulone è il principale artefice dei successi romani. Ma la guerra è dura e difficile. Dopo numerosi conflitti, i Romani vengono a patti con i Parti. Il risultato dell'accordo è Tiridate, sovrano partico, riconosciuto come re d'Armenia. La soluzione non piace molto al principe, che sperava in una definitiva soluzione del conflitto. Ma in fondo i Parti ammettono che la sovranità del re d'Armenia non dipende da loro, ma è un'emanazione del potere romano. Nerone è quindi riconosciuto come sovrano supremo del mondo abitato. Da questo momento i Parti diventeranno fedelissimi alleati dei Romani, saldi anche durante la rivolta della Giudea e durante la crisi del 68-69 d.C.
 
-$\quad$ LA TOURNEE DELL'IMPERATORE
+Il viaggio di Tiridate a Roma segna per Nerone l'apogeo del suo regno: la spedizione dura tre anni, anche perché il sovrano evita il viaggio per mare. Il mazdaismo, la religione monoteista diffusa tra i Parti, vieta di navigare più di 24 ore perché l'acqua, elemento sacro, non deve essere contaminata né da escrementi, né da sputi. L'eccezionalità del viaggio e la magnificenza dello sterminato corteo che accompagna Tiridate impressionano i Romani. Migliaia di persone seguono i dignitari partici. Tutte le città italiche al loro passaggio sono adornate. Nerone, nella sua sconfinata magnificenza, si assume tutte le spese del viaggio, che gravano pesantemente sulle province.
 
-Nerone, benché ossessionato e spaventato, sta per realizzare il sogno della sua vita: un lungo viaggio in Grecia e in Egitto. Il progetto più volte rimandato è ormai pronto per la sua realizzazione.
+In una Roma vestita a festa, in una cornice fastosa di giochi e banchetti, si procede alla spettacolare incoronazione di Tiridate secondo la labile regia di Nerone.
 
-Incurante dei problemi che sorgono nelle province a causa di rivolte (come quella degli Ebrei in Palestina, insofferenti per le vessazioni dei governatori e per la politica religiosa di Nerone) e della pressione delle esterne sui confini dell'Impero (come i Sarmati lungo il Danubio), alla fine di ottobre del 66 Nerone con un vasto seguito prende il mare. Lo accompagna il favorito Sporo e la moglie Messalina: cinquemila Augustiani, qualche migliaio di pretoriani e Neroniani, dotati di cetra; sono organizzati come un esercito musicale. Nerone parte non come un imperatore che va a visitare le terre del suo regno, ma come un musicista, un artista in *tournée*.
+Il sovrano giura fedeltà. Più tardi, nel teatro di Pompeo scintillante di oro e velluti (tanto da ricordare quel giorno come la giornata d'oro), Tiridate ripete il suo giuramento. Nerone può chiudere il tempio di Giano, convinto che ormai non ci saranno più guerre per i Romani.
 
-L'accoglienza è calorosa; i suoi spettacoli applauditissimi. Giochi sono celebrati in tutte le città. Per l'imperatore si inventano anche prove musicali nei giochi olimpici. Corinto viene eletta come sua residenza preferita. Numerose opere pubbliche abbelliscono la città. La più importante è il taglio dell'istmo (67 d.C.). Il 28 novembre a sorpresa Nerone decreta di concedere la libertà ai Greci.
+L'ULTIMO ATTO
 
-*I Greci godranno perciò di una quasi cittadinanza romana*
+Certi ambienti aristocratici dopo avere aderito al neronismo ora lo rifiutano: il lusso della Domus Aurea, le esibizioni artistiche del principe, il fasto della visita di Tiridate, il viaggio in Grecia provocano sconcerto e opposizione. La stessa plebe è stata segnata dalla penuria alimentare e dall'inflazione. Le navi con il grano arrivano irregolarmente in Italia. Molte hanno preso la strada della Grecia e molte altre quella della Palestina.
 
-L'idea di Nerone è di continuare l'anno successivo il suo viaggio in Egitto. Ma da Roma gli arrivano notizie inquietanti. Il malcontento degli aristocratici suscita nuovi complotti. Nelle province nascono rivolte. Nerone decide dunque di tornare (dicembre del 67 d.C.). Ma il ritorno deve essere celebrato in maniera sontuosa. Sarà il trionfo più grandioso che Roma abbia mai visto. Nella mente della gente quelli dell'aprile fugge.
+Un fatto nuovo è la stanchezza e l'opposizione del mondo provinciale. Si comincia a respirare aria di crisi: sono i provinciali che hanno dovuto pagare buona parte delle stravaganze di Nerone.
+
+Anche i notabili locali delle province occidentali, un tempo legati al principe, fomentano l'insurrezione. I soldati sono stanchi. Mentre loro combattono il principe si diverte in Grecia e in Italia. I pretoriani non hanno più quel prestigio.

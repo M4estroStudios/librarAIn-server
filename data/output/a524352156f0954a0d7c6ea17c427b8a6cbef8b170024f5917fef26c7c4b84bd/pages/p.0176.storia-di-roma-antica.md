@@ -1,56 +1,34 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-176                                                                    STORIA DI ROMA ANTICA
+saranno fondate di lì a poco le colonie di Cremona e Piacenza: Tra il 220 e il 219 a.C. Gaio Flaminio, che in quegli anni ricopre la carica di censore, costruisce la via Flaminia; da Roma a Rimini, asse portante della penetrazione verso la Cisalpina.
 
-vengono in forze e costringono in breve Demetrio a lasciare Faro e a tro-
-vare asilo in Macedonia (219 a.C.)
+MODIFICHE ISTITUZIONALI
 
-CENTRATO IN MAIUSCOLETTO: LA NUOVA SPINTA GAIIICA
-LA CONQUISTA DEI NORD
+Alla fine della prima guerra punica e in seguito alla grande mobilitazione delle classi inferiori, per sostenere lo sforzo bellico, a Roma si registra una riforma democratica dell'ordinamento centuriato.
+Nell'organizzazione dei comizi o assemblee si fondono il principio territoriale con quello del censo. Nel 241 le tribù (vedi capitolo *Luoghi e le istituzioni*) raggiungono il numero definitivo di 35, mentre il totale delle centurie rimane fissato a 193. Con la riforma 10 unità di voto sono tolte alla prima classe e le residue 70 centurie vengono divise tra le 35 tribù; a ciascuna delle corrisponde una centuria di *iuniores* e una di *seniores*.
+L'iscrizione a una centuria della prima classe non dipende dunque più dall'entità dei beni e dalla scelta dei censori, ma dall'iscrizione in una tribù e quindi dalla residenza. Inoltre chiunque abbia il censo per rientrare nella prima classe, ma non possiede terre, è iscritto nelle otto centurie in cui si suddividono le quattro tribù urbane. Lo scopo della riforma deve essere stato quello di dare maggiore forza politica al ceto agricolo; ma anche gli esattori pubblici (*publicani*) e mercanti investono parte dei loro guadagni in terreni e possono iscriversi nelle tribù rustiche: D'altra parte proprio durante il II secolo a.C. gradualmente diminuisce l'importanza dei comizi. Sono convocati infatti solo per l'elezione delle magistrature maggiori (consoli, pretori, censori) o per decidere della pace e della guerra.
+L'attività legislativa e l'elezione dei magistrati minori sono sempre più spesso affidate ai *comitia tributa*, cioè alle assemblee del popolo romano organizzate secondo le tribù e non secondo le centurie, e questi comizi tributi non debbono essere confusi con i *concilia plebis tributa*; cui partecipano soltanto i plebei e che emettono i plebisciti con valore di legge (vedi capitolo *Luoghi e le istituzioni*).
+Nella seconda metà del II secolo a.C. cade anche un'altra prerogativa patrizia: infatti l'elezione del *pontifex maximus* viene affidata a un'assemblea popolare (*comitium*) formata per sorteggio da 17 tribù su 35;
+L'espansione della sfera d'influenza di Roma fuori dall'ambito italico porta anche a innovazioni nel sistema giudiziario e amministrativo. Accanto al pretore urbano, che continua a occuparsi delle cause tra cittadini, nasce il pretore *peregrinus*, che dirime le cause tra forestieri (*peregrini*) o tra cittadini romani forestieri (242 a.C.). Sono inoltre creati due pretori, cui è affidata l'amministrazione delle nuove province della Sicilia e della Sardegna e Corsica (227 a.C.).
 
-L'esito della seconda guerra punica ha favorito indubbiamente i ceti mercan-
-tili romani mentre sono restate insoddisfatte le esigenze dei proprietari ter-
-rieri e dei contadini. Nel 232 a.C., per iniziativa del tribuno della plebe Gaio
-Flaminio e contro il volere del Senato, si decide d'assegnare singoli citta-
-dini romani terre nel Piceno e nel cosiddetto agro gallico; tolto in preceden-
-za ai Sènoni (*vedi capitolo precedente*).
+EDILIZIA IN TEMPO DI GUERRA E NEL DOPOGUERRA
 
-Preoccupati dalla ripresa dell'espansione romana verso nord, i Galli Boi e
-gli Insubri passano l'Appennino (255 a.C.), giungono a Chiusi e sconfiggono
-uno degli eserciti romani inviati a fermarli. I Romani possono contare sull' alleanza
-con i Galli Cenomani (insediati tra l'Oglio e l'Adige) e con i Veneti, che ga-
-rantiscono loro un appoggio nella Pianura Padana orientale.
-
-Due eserciti consolari inseguono i Galli in ritirata lungo la costa tirrenica e
-li sbaragliano a Talamone: 40.000 Galli restano sul terreno e 1000 sono fat-
-ti prigionieri. L'anno seguente il territorio dei Boi è messo a ferro e fuoco e
-si apre la possibilità di penetrare nella ricca Pianura Padana:
-
-Il progetto è portato avanti dal gruppo politico interessato all'espansione ter-
-ritoriale in Italia, il cui leader è ancora Gaio Flaminio: Eletto console per il
-223 a.C., egli passa in forze il Po, entra nel territorio degli Insubri e li scon-
-figge presso il fiume Chiese. Contro la volontà della maggioranza del Sena-
-to, l'assemblea popolare gli decreta il trionfo. La guerra però non è conclu-
-sa. Di fronte al rifiuto romano di giungere a un accordo di pace, gli Insubri
-si armano nuovamente, arruolando anche mercenari oltralpe. L'anno se-
-guente (222 a.C.) il console Marco Claudio Marcello li sconfigge a Casteg-
-gio, uccidendo di propria mano il capo gallico Viridomaro e ottenendo per-
-ciò le spoglie opime (*vedi capitolo Ascesa; caduta e resurrezione di Roma*):
-
-Segue la presa di Milano e la resa degli Insubri. Nel territorio tolto ai Galli
+L'edilizia pubblica a Roma nel periodo della prima guerra punica è necessariamente collegata alle vicende belliche e, quindi, interessa soprattutto l'area del foro Boario; dove si trovano i *navalia*, il porto militare di Roma.
 
 ***
 
-[RIQUADRO CON BORDO NERO]
-GLI ERRORI SI PAGANO, ANCH'È SI: TALVOLTA È POSSIBILE CAVARSELA
+ROMANI E CARTAGESI: LO SCONTRO | 177
 
-*I Cartaginesi non son teneri con i loro generali sconfitti: Annone, dopo aver per-
-sa Agrigento nel 261 a.C., è privato del comando; dei diritti civili e multato di 6000
-pezzi d'oro; Asdrubale, sconfitto nel 250 a.C. sotto le mura di Palermo, è richia-
-mato in patria e giustiziato. Tale durezza di trattamento spiega lo stratagemma adotta-
-to da Annibale, lo stratega sconfitto da Gaio Duilio nella battaglia navale di Milaz-
-zo del 260 a.C., che prevedendo una punizione manda un suo uomo di fiducia a son-
-dare gli umori del Senato cartaginese. In particolare fa chiedere ai senatori se lo ave-
-ssero approvato qualora avesse attaccato con 200 navi una squadra romana forte di
-120. Il Senato, udito ciò, lo esorta ad attaccare. Con questo stratagemma Annibale evita il disonore e la punizione per la sconfitta da parte dei concittadini. In se-
-guito, però, sconfitto dai Romani in Sardegna, sarà condannato dai Cartaginesi su-
-perstiti all'impiccagione.*
+saranno fondate di lì a poco le colonie di Cremona e Piacenza. Tra il 220 e il 219 a.C. Gaio Flaminio, che in quegli anni ricopre la carica di censore, costruisce la via Flaminia, da Rimini, asse portante della penetrazione verso la Cisalpina.
+
+MODIFICHE ISTITUZIONALI
+
+Alla fine della prima guerra punica e in seguito alla grande mobilitazione delle classi inferiori, per sostenere lo sforzo bellico, a Roma si registra una riforma "democratica" dell'ordinamento centuriato.
+Nell'organizzazione dei comizi o assemblee popolari si fondono il principio territoriale con il censo. Nel 241 le tribù (vedi capitolo *Luoghi e le istituzioni*) raggiungono il numero definitivo di 35, mentre il totale delle centurie rimane fissato a 193. Con la riforma 10 unità di voto sono tolte alla prima classe e le residue 70 centurie vengono divise tra le 35 tribù, a ciascuna delle quali corrisponde una centuria di *iuniores* e una di *seniores*.
+L'iscrizione a una centuria della prima classe non dipende dunque più dall'entità dei beni e dalla scelta dei censori, ma dall'iscrizione in una tribù e quindi dalla residenza. Inoltre chiunque abbia il censo per rientrare nella prima classe, ma non possiede terre, è iscritto nelle otto centurie in cui si suddivide le quattro tribù urbane. Lo scopo della riforma deve essere stato quello di dare maggiore forza politica al ceto agricolo; ma anche gli esattori pubblici (*publicani*) e i mercanti investono parte dei loro guadagni in terreni e possono iscriversi nelle tribù rustiche. D'altra parte proprio durante il II secolo a.C. diminuisce l'importanza dei comizi. Sono convocati infatti solo per l'elezione delle magistrature maggiori (consoli, pretori, censori) o per decidere della pace e della guerra.
+L'attività legislativa e l'elezione dei magistrati minori sono sempre più spesso affidate ai *comitia tributa*, cioè alle assemblee del popolo romano organizzate secondo le tribù e non secondo le centurie, e questi comizi tributi non debbono essere confusi con i *concilia plebis tributa*, cui partecipano soltanto i plebei e che emettono i plebisciti con valore di legge (vedi capitolo *Luoghi e le istituzioni*).
+Nella seconda metà del II secolo a.C. cade anche un'altra prerogativa: l'elezione del *pontifex maximus* viene affidata a un'assemblea popolare (*comitium*) formata per sorteggio da 17 tribù su 35.
+L'espansione della sfera d'influenza di Roma fuori dall'ambito italico porta anche a innovazioni nel sistema giudiziario e amministrativo. Accanto al pretore urbano, che continua a occuparsi delle cause tra cittadini, nasce il pretore "peregrino", che dirime le cause tra forestieri (*peregrini*) o tra cittadini romani e forestieri (242 a.C.). Sono inoltre creati due pretori, cui è affidata l'amministrazione delle nuove province della Sicilia e della Sardegna e Corsica (227 a.C.).
+
+EDILIZIA IN TEMPO DI GUERRA E NEL DOPOGUERRA
+
+L'edilizia pubblica a Roma nel periodo della prima guerra punica è necessariamente collegata alle vicende belliche e, quindi, interessa soprattutto l'area del foro Boario, dove si trovano i *navalia*, il porto militare di Roma.

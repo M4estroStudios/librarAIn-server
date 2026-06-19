@@ -1,23 +1,10 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMANI E CARTAGINESI: LO SCONTRO | 167
+168 | STORIA DI ROMA ANTICA
 
-Appio Claudio il Cieco censura nel Senato le proposte di pace di Pirro; fu anche uno dei primi conquistatori della Sicilia (da Bartolini).
+Su proposta dei consoli, la questione è rimessa alla votazione dei comizi, che decidono di inviare a Messina i soccorsi richiesti. Il comando della spedizione è affidato al console Appio Claudio; che traghetta parte dell'esercito in Sicilia costringe al ritiro il presidio cartaginese di Messina. Ma la guerra divampa: la presenza armata dei Romani in Sicilia spinge all'alleanza tra i Cartaginesi e Siracusani, che muovono uniti contro Messina. Appio Claudio, constatato che ormai Roma è ufficialmente in guerra, fa passare tutto l'esercito in Sicilia. Venuto a conoscenza delle prime vittorie di Appio Claudio, il Senato romano manda nell'isola entrambi i consoli eletti per il 263 a.C.: Manio Otacilio e Manio Valerio (vedi box). Cartaginesi e Siracusani sono battuti in successivi scontri intorno a Messina. Allora molte città greche si sottopongono spontaneamente ai Romani, che marciano su Siracusa. Gerone, per evitare il peggio, chiede ai Romani una pace separata, accordata con ottime condizioni: come alleato di Roma mantiene il governo di Siracusa e di alcuni possedimenti; versa una piccola indennità di guerra e si impegna a rifornire le truppe romane di stanza in Sicilia. Il patto sarà fedelmente mantenuto per tutto il regno di Gerone, mezzo secolo.
 
-***
+LA SICUREZZA O LA RICCHEZZA
+Il Senato deve scegliere se proseguire una sicura politica di assestamento del dominio romano nell'Italia peninsulare oppure se avviare una decisa espansione fuori della Penisola: la presa di Messina e le facili vittorie creano grandi entusiasmi: la preda è ricchissima e molto di più ci si può aspettare dalla conquista delle altre città siciliane; poiché l'espulsione dei Cartaginesi dall'isola sembra impresa facilmente realizzabile. I Romani scelgono la ricchezza. Così da un intervento militare circoscritto e limitato nel tempo, si giunge alla più lunga guerra dell'età antica: la prima guerra punica (264-241 a.C.).
 
-**COGNOMI: SI GUADAGNA UN COGNOME**
-*Nelle operazioni in Sicilia del 263 a.C., che portano alla resa di Gerone di Siracusa e alla conquista di Messina, si distingue particolarmente il console Manio Valerio, che ottiene oltre al trionfo anche il cognome "trionfale" Messalla (cioè conquistatore di Messana), portato da tutti i suoi discendenti.*
-
-*L'uso di attribuire un cognome trionfale ai generali vincitori da allora diventa una consuetudine molto seguita: Publio Cornelio Scipione Africano, Lucio Cornelio Scipione Asiatico; Quinto Cecilio Metello Macedonico, Quinto Cecilio Metello Numidico e tanti altri ancora. D'altra parte cognomi legati a particolari virtù strategiche sono usuali anche presso i Cartaginesi, se è vero che Amilcare merita il cognome Barca (= fulmine) portato dai discendenti, la sua rapidità nel condurre le azioni belliche.*
-
-*Non sempre, però, cognomi affibbiati ai generali sono lusinghieri. Quando, nel primo scontro navale della guerra punica, il console Gneo Cornelio Scipione è sorpreso dai Cartaginesi nel porto di Lipari, i suoi equipaggi si rifugiano in tutta fretta sulla terraferma e il console stesso, terrorizzato, si arrende. Per questo motivo al primo sfortunato ammiraglio di Roma (quando ritorna a Roma in seguito a uno scambio di prigionieri) è attribuito il cognome burlesco di Asina, con riferimento al terrore dell'acqua che i Romani attribuivano alla femmina dell'asino.*
-
-***
-
-campo di battaglia lascio ai Cartaginesi e ai Romani!¹ e dieci anni dopo diventa un vero profeta!
-
-Infatti nel 265 a.C. Gerone, nuovo signore di Siracusa, assala i Mamertini, mercenari del suo predecessore Agatocle, che alcuni anni prima si erano impadroniti di Messana (Messina) e avevano fondato uno Stato indipendente.
-
-¹ *Mamertini; sconfitti in battaglia, affidano il presidio della rocca a una guarnigione di Cartaginesi e mandano contemporaneamente ambasciatori ai Romani, per offrire la sottomissione della città.*
-
-Il Senato romano si trova di fronte a una scelta decisiva. Gli accordi con Cartagine escludono un intervento romano in Sicilia e i Romani considerano i Mamertini poco più d'una banda di briganti. È chiaro però che i Cartaginesi, se assumono il controllo di Messina, saranno in grado di battere i Siracusani e d'imporre la loro egemonia sull'intera Sicilia.
+IN GUERRA PER LA SICILIA
+Dopo le prime sconfitte campali, i Cartaginesi si rinchiudono in alcune fortezze, ben difese dal lato di terra e facilmente rifornibili per mare. Unica eccezione è la piazzaforte di Akragas (odierna Agrigento) che non è situata sulla costa. Su di essa i Romani concentrano il loro sforzo e la cingono d'assedio con quattro legioni, al comando dei due consoli (262). L'assedio dura ben cinque mesi e la rocca risulta imprendibile. In soccorso giunge dall'Africa Annone con un esercito di mercenari, arruolati di recente. Dopo una furiosa battaglia i Romani espugnano la città, ma la guarnigione cartaginese si mette in salvo e per questo motivo i consoli vittoriosi non ottengono il trionfo. D'altra parte il saccheggio della città e l'asservimento dei superstiti, tutti Greci, compromettono l'immagine dei Romani presso gli abitanti delle altre città greche della Sicilia. Nell'anno successivo (261) qualche città dell'interno passa dalla parte di Roma, ma le fortezze della costa tornano tutte all'alleanza con Cartagine, di cui temono la potenza marittima.

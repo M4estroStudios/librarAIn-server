@@ -1,15 +1,24 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LA CITTÀ-STATO:
-CONTINUITÀ E RINNOVAMENTO
+90 STORIA DI ROMA ANTICA
 
-UN PROCESSO DIFFICILE
+imprecisato; costituiscono un collegio e hanno un potere differente: tra loro esiste un *praetor maximus*; che probabilmente ha il privilegio di parlare per primo e di convocare i consigli ecc.
 
-La fine della monarchia romana è stata oggetto di differenti interpretazioni. Il racconto tradizionale dell'assedio di Porsenna, sostenitore dei Tarquini esuli, probabilmente nasconde l'occupazione dell'urbe da parte del lucumone etrusco: solo così si spiegano alcune incoerenze nel racconto degli antichi (vedi capitolo precedente) e il trattato con Cartagine che Roma stipula proprio nel primo anno della Repubblica. Roma si comporta ancora come una città etrusca che ha forti interessi sulle coste del Tirreno. Nell'interpretazione del racconto tradizionale non bisogna dimenticare alcune "spie" dello stesso racconto; ad esempio Collatino, il marito dell'oltraggiata Lucrezia, è pur sempre appartenente alla *gens* Tarquinia ed è nipote o figlio di Egerio, rimasto privo dell'eredità a vantaggio di Tarquinio Prisco.
+PORSENNA E GLI EROI LEGGENDARI
 
-Da questa "spia" è facile dedurre il carattere profondo delle lotte per il passaggio dalla monarchia alla repubblica: sono sempre contrasti all'interno della stessa aristocrazia; anzi all'interno d'una stessa famiglia. È l'usuale lotta per il potere all'interno d'un ristretto gruppo dirigente d'un ceto dominante.
+L'assedio di Porsenna è contrassegnato da alcuni episodi eroici, ritenuti addirittura causa della finale vittoria di Roma e della pace offerta da Porsenna.
 
-La figura e il nome del *rex sacrorum*, un sacerdote repubblicano, hanno fatto pensare a una fine progressiva e indolore della monarchia: nelle città greche, dove si assiste allo stesso mutamento politico, uno dei magistrati conserva il titolo di *basileus* o re. In analogia col mondo greco la monarchia romana sarebbe finita a causa di un progressivo rafforzamento dell'aristocrazia, sostituitasi al re. Ma a Roma il ricordo della fine violenta della monarchia è troppo vivo; è troppo forte: così la stessa parola re per i Romani diventa progressivamente un tabù. Se è verosimile il violento passaggio alla Repubblica, non è possibile accettare che automaticamente, dopo che è stato cacciato Tarquinio il Superbo, due magistrati, i consoli, si siano sostituiti nell' *imperium*. È necessario ammettere una gradualità nella creazione delle magistrature a capo dello Stato. Forse all'inizio un solo magistrato ha sostituito il re: può essere stato un *magister populi* (un condottiero del popolo) o un *dictator* (analogo al comandante a capo della Lega latina) con medesimi poteri del monarca. Il vantaggio rispetto al re consisteva nel fatto che la sua carica era elettiva e soprattutto a termine.
+Marco Orazio Coclite è il primo dei personaggi mitici, che costellano la prima storia della Repubblica. Insieme a Spurio Larcio e a Tito Erminio, il giovane Orazio; detto Coclite perché nonostante la giovane età ha già perso un occhio in battaglia (*cocles*, cieco di un occhio) riesce a salvare Roma dal nemico etrusco. Tre uomini da soli si ritrovano a fronteggiare e a sostenere l'impatto del nemico sul ponte Sublicio, pericoloso collegamento con la sponda destra del fiume.
 
-I PRIMI MAGISTRATI
+I due più anziani riescono a retrocedere e a salvarsi, mentre Orazio rimane a combattere da solo sul ponte: spregiando l'invito a ritirarsi, ordina ai compagni di tagliare le assi e le travi dietro le sue spalle. Quando ormai il ponte è stato tagliato; il giovane prega il padre Tevere di accoglierlo tra le sue braccia e si getta armato in acqua: nonostante il peso delle armi, sano e salvo raggiunge i compagni sulla riva sinistra.
 
-Dalle notizie più antiche è noto che i primi magistrati della Repubblica sono chiamati anche *praetores* (*praetor*, colui che precede). I pretori, in numero...
+L'assedio intanto continua e il cibo scarseggia; il grano per i Romani arriva addirittura da Cuma, la città greca del tiranno Aristodemo. Ma non si può continuare così, perché ben presto Roma sarebbe ridotta alla fame. Il nobile Mucio Scevola decide di recarsi nell'accampamento nemico e di uccidere Porsenna. Se la sua missione dovesse finire male, i Romani saranno privi soltanto di un uomo; se dovesse avere esito buon fine, Roma sarà salva. Ma un banale scambio di persona vanifica il suo tentativo; perché Mucio non uccide Porsenna, bensì il suo segretario. Catturato e interrogato dal re etrusco; dichiara che, se lui ha fallito, altri verranno finché non sarà ucciso l'uomo giusto. Porsenna; in preda all'ira, minaccia di bruciarlo, se non svela il complotto. Ma il giovane; per dimostrare quanto peso dia alle minacce del re, mette la mano su un braciere; lasciandola bruciare senza segno di dolore.
+
+Porsenna, sconvolto dal gesto; decide di trattare la pace.
+
+Non poteva mancare la donna coraggiosa del gruppo, Clelia. Tra le richieste di Porsenna c'è la restituzione dei beni dei Tarquini e l'invio di ostaggi. I Romani non cedono sui beni dei Tarquini, base del futuro tesoro pubblico, ma acconsentono a consegnare alcuni ostaggi. La giovane Clelia, portata nell'accampamento etrusco, riesce a sfuggire e a gettarsi nel Tevere. Ancora una volta, come già con Orazio Coclite e Mucio Scevola, il fiume salva i suoi figli. A vigorose bracciate la ragazza torna a Roma, ma è riconsegnata perché i Romani non possono venire meno alla parola data!
+
+Accanto ai pretori figurano questori che inizialmente si occupano della repressione di alcuni reati; poi, con l'ampliamento dei loro poteri, assumono la cura di tutta l'amministrazione dello Stato.
+
+L'elaborazione del consolato è un processo lungo e contrastato. Istituire due magistrati elettivi, dotati dello stesso *imperium* del re (potere supremo di derivazione divina) da amministrare in comune per un arco limitato di tempo, impone un periodo di "incubazione" costellato da errori e successi.
+
+La parola *consules* sembra designare i due uomini che "siedono insieme" e sempre insieme governano lo Stato; come antidoto alla tirannide dell'ultimo dei Tarquini.

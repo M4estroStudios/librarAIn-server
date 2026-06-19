@@ -1,55 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-128                                                                    STORIA DI ROMA ANTICA
+LUOGHI E ISTITUZIONI 129
 
-LE BOTTEGHE ARGENTARIE E I MAENIANI
+per le relazioni internazionali. I comizi centuriati (l'assemblea dei cittadini che hanno requisiti di censo per servire nell'esercito) eleggono i magistrati principali (consoli e pretori) e approvano le leggi più importanti. L'elezione dei magistrati minori e l'approvazione di leggi di ordinaria amministrazione sono affidate ai comizi tributi, l'assemblea di tutti i cittadini iscritti nelle tribù territoriali, a prescindere dal censo.
 
-Tarquinio Prisco aveva concesso ai privati di occupare l'area orientale del Foro e
-aveva promosso l'ingresso delle botteghe o *tabernae* nell'area del Foro. Le *tabernae* più diffuse sono quelle dei *laniones* (macellai): sono essenziali per il rifor-
-nimento urbano; ma non offrono un bello spettacolo e alla fine del IV secolo a.C. i macellai sono spostati a nord del Foro, insieme alle botteghe del pesce e dei prodotti ali-
-mentari di lusso (*forum piscatorium* e *forum cuppedinis*). In pratica è un'area spe-
-cializzata per l'approvvigionamento alimentare, che più tardi sarà monumentalizza-
-ta con portici e colonnati, sul modello dei mercati delle città ellenistiche.
+LA MORTE ABITA VICINO ALLA GIUSTIZIA
+Presso la colonna Maenia hanno sede i triumviri capitales, che assistono ai processi e trasportano i condannati nel vicino carcere. Una ricostruzione più tarda di questo edificio si trova ai piedi del Campidoglio; sotto la chiesa di San Giuseppe dei Falegnami, a ovest della Curia. Le lautumiae o cave di tufo sulle pendici del Campidoglio costituiscono le celle della prigione: nella parte più antica si passa nella cella attraverso un buco circolare nel pavimento della stanza trapezoidale. L'ambiente è circolare; con un tetto a cupola; completamente privo di luce; umido e malsano a causa delle numerose infiltrazioni d'acqua. Qui sono gettati e strangolati prigionieri di stato: chi entra nel Tullianum (probabilmente da Tullo Ostilio o Servio Tullio) non ha speranze di uscire vivo. La colonna Maenia, il Carcer e il Tribunal (il luogo dove il pretore amministra la giustizia) sono situati nella parte occidentale del Comizio e costituiscono un insieme organico di edifici destinati all'amministrazione della giustizia:
 
-Nella parte nord-orientale della piazza sono situate le *tabernae argentariae*, le bot-
-teghe o meglio uffici dei cambiavalute e dei banchieri. Altre botteghe argentarie era-
-no vicine al luogo d'incontro degli usurai (la *columna Maeniana*). Dato che lì si riuni-
-vano i tribuni della plebe, cui era concesso assistere alle riunioni del Senato senza
-entrare nella Curia; erano dette *tabernae plebeiae*.
+Per completare il quadro è necessario menzionare anche le scalae Gemoniae e il saxum Tarpeium, la ben nota rupe Tarpea. Le scalae Gemoniae, come continuazione del clivus Argentarius, portavano all'Arx Capitolina; nei pressi della rupe Tarpea: da qui i condannati a morte, legati al tigillum (un congegno di legno), erano precipitati in basso.
 
-Questi edifici sono dotati di balconate lignee; *Maeniana* chiamati così per una singo-
-lare storia. Gli eredi di Gaio Menio, al momento della vendita dell' *atrium Maenium* per
-far posto alla basilica Porcia, vogliono conservare il diritto d'assistere ai giochi gladia-
-tori, che si tenevano nella parte centrale del Foro; perciò costruiscono una balconata ap-
-poggiata alla *columna Maeniana* e chiamata *Maeniana*: attraverso i secoli da *maenianum*
-si arriva a *mignano* e *mignanello*; il servizio igienico rudimentale su un balconcino.
+L'assemblea delle curie, o comizio curiato, ha perso peso politico ed è convocata soltanto per procedere all'investitura formale dei magistrati già eletti e per alcune cerimonie religiose. Anche dopo la conciliazione degli ordini continuano a funzionare le assemblee della plebe (concilia plebis), che diventano sempre più importanti politicamente per tutta la comunità; così le loro delibere o plebisciti ottengono il riconoscimento di leggi dello Stato romano.
 
-IL RIFACIMENTO DEL COMIZIO
+MAGISTRATI E SACERDOTI
+A Roma la religione è strettamente compenetrata con le istituzioni pubbliche e gli atti di culto rientrano tra i compiti istituzionali dei magistrati. I consoli hanno l'autorità di consultare i collegi sacri e di proporre al Senato innovazioni nel campo religioso (introduzione di nuove divinità pubbliche e dedica di templi). Sono prerogativa dei consoli le cerimonie sacre che scandiscono il tempo della città (calendario festivo) a cominciare dai voti da prendere il primo gennaio. È inoltre loro compito la celebrazione delle Feriae latinae, la festa federale della Lega latina, che si svolge ogni anno sulla sommità del Mons Albanus (monte Cavo) in onore di Giove Laziale, e dei Ludi romani o Ludi magri, che si tengono ogni anno nel Circo Massimo in onore di Giove Ottimo Massimo: a partire dal 366 a.C. l'organizzazione di questi ultimi è affidata agli edili curuli.
 
-In concomitanza con l'erezione della sua colonna, il vincitore di Anzio, Gaio Me-
-nio, promuove un altro rifacimento del Comizio; necessario per le esigenze di un cor-
-po civico allargato. Sempre di forma quadrata, il Comizio è pavimentato ed è alzato
-il podio; per appendervi i *rostra*: rostri veri e propri delle navi dello scontro di An-
-zio. Questo momento in questo momento il podio degli oratori sarà chiamato *rostra*. Adesso il
-Comizio e le sue adiacenze diventano la sede di numerosi monumenti, come la statua
-di Camillo eretta sui *rostra* e un nuovo altare per il *Lapis Niger*.
-
-(eletti dai comizi tributi) e due edili plebei (eletti dai concili della plebe) si
-occupano dell'edilizia pubblica; dei mercati e dell'ordine pubblico; oltre che
-della conservazione dei verbali delle sedute del Senato. La cassa dello Sta-
-to (erario) e l'amministrazione delle spese militari sono affidate a quattro que-
-stori, due dei quali restano in città e due seguono i consoli nelle campagne
-militari; sono inoltre regolarmente eletti sei *tribuni militum*; aiutanti di cam-
-po del console, per ogni legione arruolata. Tutti questi magistrati restano in
-carica per un anno.
-
-Ogni cinque anni si eleggono due censori, col compito specifico d'effettuare
-le operazioni di censimento e di leva; di rivedere la composizione del Sena-
-to e di compiere la purificazione periodica della città (*lustrum*, termine pas-
-sato per questo a indicare un periodo di cinque anni).
-
-Invece i dieci tribuni della plebe rappresentano solo il loro ordine e non so-
-no magistrati dello Stato romano; La direzione politica dello Stato romano è
-prerogativa del Senato; l'assemblea degli ex magistrati.
-
-Esso promulga leggi proprie, indipendentemente dai comizi (*senatusconsulta*),
-dà anche le direttive generali per l'amministrazione della finanza pubblica.
+Gli antichi sacrifici in onore di Ercole all'Ara maxima; che nei primi tempi erano privati, diventano di competenza del pretore. Compito principale dei magistrati...

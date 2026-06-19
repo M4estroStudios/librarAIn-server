@@ -1,15 +1,50 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-LE GUERRE SOCIALI: MARIO E SILLA                                           245
+246 STORIA DI ROMA ANTICA
 
-eleggere console; nello stesso anno rinuncia del tutto alle magistrature; ma controlla lo Stato anche da privato; contando solo sulla fedeltà dei suoi veterani, fino alla sua morte, avvenuta nel 78 a.C. Per primo della *gens* patrizia dei Corneli sceglie la cremazione, per timore che sia offeso il suo cadavere, come era toccato al cadavere di Gaio Mario.
+provvede alla nuova pavimentazione della piazza: Silla stesso fa costruire la nuova Curia; più ampia di quella precedente, poiché è raddoppiato il numero dei senatori.
 
-LA RICOSTRUZIONE DI ROMA
+Nel 78 a.C.: Marco Emilio Lepido; con grande dispendio di mezzi, ricostruisce la basilica Emilia (unica basilica repubblicana conservata fino ai giorni nostri) se pur nelle forme conseguenti ai restauri di età imperiale; al posto di quella eretta dai censori del 179 a.C. Marco Emilio Lepido, antenato del console del 78, e Marco Fulvio Nobiliore (vedi capitolo La conquista dell'Oriente). Nello stesso anno è realizzato anche il Tabularium; che costituisce lo sfondo monumentale del Foro sul lato nord, unificando in un complesso comunicante tutti gli edifici destinati all'amministrazione finanziaria dello Stato.
 
-Sono scarse notizie sull'attività edilizia a Roma nei primi decenni del secolo a.C. Solo con Silla si può parlare d'un progetto urbanistico di largo respiro. La città in gran parte era stata devastata dagli incendi, causati dagli scontri tra le truppe rivali nel cuore del centro storico e in particolare nell'area del Foro e il Campidoglio. E proprio dal tempio Capitolino Silla comincia la ricostruzione della città. Inoltre ridisegna i limiti della cerchia urbana, ampliando il pomerio, che era rimasto invariato fin dall'epoca regia. Importanti opere riguardano l'area del Foro, Gaio Aurelio Cotta da pretore (81 a.C.) fa erigere davanti al tempio dei Castori il tribunale *Aurelium*. La tribuna dalla quale il pretore esercitava la giustizia: da console (75 a.C.).
+II. TABULARIUM
 
-II. CAMPIDOGLIO RISORGE DALLE CENERI
+A Quinto Lutazio Catulo è affidato l'incarico d'edificare (o forse ampliare) il Tabularium; l'archivio dello Stato romano. Con un progetto imponente anche sul piano tecnico (un'iscrizione rivela il nome dell'architetto: Lucio Cornelio, forse un liberto o un cliente di Silla) sono unificate, per mezzo d'un imponente muro di sostegno (ancora visibile alla base del palazzo dei Senatori), le due vette del Capitolium e dell'Arx, prima divise dalla sella dell'Asylum. Si ottiene in tal modo una costruzione di grande effetto scenografico; che diventa con la sua monumentale fuga di arcate la quinta finale, lo sfondo prospettico del Foro. In quest'edificio sono conservate le *tabulae* dei testi giuridici e amministrativi; nello stesso tempo sono resi comunicanti vari edifici dell'amministrazione fiscale dello Stato romano:
 
-Le guerre civili non risparmiano neppure i monumenti: negli scontri per la conquista di Roma da parte di Silla numerosi antichi edifici sono distrutti dagli incendi divampati in molte zone del cuore di Roma. Il più illustre è senza dubbio il tempio Capitolino; dove bruciano anche gli antichi Libri Sibillini. I lavori di ricostruzione, promessi da Silla, richiedono un impegno molto grande. Basti dire che sono trasportate a Roma addirittura le colonne dell'Olympia di Atene. Il nuovo tempio è inaugurato solo nel 69 a.C. da Quinto Lutazio Catulo, il figlio del vincitore dei Cimbri; che era stato console nel 78; è stato tratto a sorte tra molti aristocratici (tra i quali figurava anche Cesare) che ambiscono all'onore di associare il proprio nome al rifacimento d'una costruzione così prestigiosa.
+* archivio vero e proprio;
+* la zecca (collegata al tempio di Giunone Moneta);
+* l'erario (collegato al tempio di Saturno).
 
-[Immagine: Disegno di una moneta]
-*Lucio Cornelio Silla. Disegno tratto da una moneta d'argento del 55 a.C.*
+[Immagine della pianta]
+
+CAPITOLIUM — ARX
+      \                                              /
+       \                                            /
+        \                                          /
+         \                                        /
+          \                                      /
+           \                                    /
+            \                                  /
+             \                                /
+              \                              /
+               \                            /
+                \                          /
+                 \                        /
+                  \                      /
+                   \                    /
+                    \                  /
+                     \                /
+                      \              /
+                       \            /
+                        \          /
+                         \        /
+                          \      /
+                           \    /
+                            \  /
+                             \/
+CLIVUS — STRADA N.E.
+
+FORUM
+T. CONCORDIAE
+
+0 5 10 15 20 25 Metri
+
+Tabularium, pianta delle strutture antiche all'interno del Palazzo Senatorio.

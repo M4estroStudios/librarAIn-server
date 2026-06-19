@@ -1,12 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ROMA TRA CONSERVATORI E INNOVATORI
+218
 
-NOBILITAS E CAVALIERI
+STORIA DI ROMA ANTICA
 
-Nel corso delle campagne militari del II secolo a.C. risulta determinante la funzione del Senato e di pochi membri di alcune famiglie: progressivamente il potere politico si concentra nelle mani d'una ristretta cerchia che fornisce consoli, pretori, censori. La chiusura dell'aristocrazia in oligarchia (governo di pochi) coincide con la diffusione del concetto di *nobilitas* (nobiltà): appartengono alla *nobilitas* tutte le famiglie che hanno fornito magistrati. La separazione tra ceto dirigente e popolo si fa più acuta; mentre le assemblee sono ormai dominate dai proletari, coloro che sono troppo poveri per andare in guerra. Tuttavia nuove classi emergono prepotentemente alla ribalta: nel corso delle guerre lo Stato romano ha dovuto ricorrere ad appaltatori privati; per sopperire ai suoi bisogni questi appaltatori — appartenenti al ceto equestre — hanno vasta disponibilità di mezzi per fornire servizi, come l'approvvigionamento degli eserciti. L'interesse di questo ceto affaristico ha causato molte delle manifestazioni più esagerate di bellicismo. L'esempio più lampante è quello di Rodi, punita per la sua mediazione di pace con Perseo: il nuovo porto franco di Delo prostra economicamente l'isola, facendo passare il primato mercantile a Italici e Romani.
+coli proprietari e i nullatenenti. I piccoli proprietari alle misere entrate dei loro campi aggiungono anche i prodotti dell'agro pubblico e i nullatenenti vivono esclusivamente di esso: inoltre i piccoli appezzamenti, non coltivati dai proprietari impegnati per lunghi anni in guerra, nel migliore dei casi diventano sterili, nel peggiore devono essere venduti a causa dei debiti. Accanto alle strepitose ricchezze portate in patria da Flaminino e da Emilio Paolo, l'altra faccia della medaglia è la povertà dei ceti più modesti. La difficile e contraddittoria situazione dell'agricoltura italica si coglie del resto nell'indiscutibile sviluppo della produzione, conseguente all'espansione militare. Per la prima volta le esportazioni di prodotti italici acquistano un ampio raggio.
 
-La vecchia nobiltà fondiaria si scontra col dinamismo del nuovo ceto capitalistico — formato da uomini nuovi, cioè di recente fortuna, e da liberti, pronti a tutto per il guadagno — tuttavia l'opposizione tra i due gruppi assume spesso toni sfumati, infatti anche i senatori sono interessati ai guadagni mercantili e non disdegnano di armare navi per porti orientali, mentre le recenti ricchezze dei cavalieri sono investite in terra, mancando la mentalità capitalistica del reinvestimento (tipica della società moderna). Lo Stato esercita inoltre un controllo diretto sulle attività finanziarie. I censori stabiliscono la concessione degli appalti; un tribunale, formato da senatori, giudica i casi di concussione nelle province, garantendo un minimo di controllo statale.
+**I GIOIELLI DI CORNELIA**
 
-CRISI E SVILUPPO DELL'AGRICOLTURA
+Molte ricche matrone romane amano vantarsi dei loro abiti e dei loro gioielli. Ogni incontro con le amiche è occasione per sfoggiare le ultime novità; spesso portate dai mariti come bottino di guerra. Non fanno eccezione le amiche di Cornelia, figlia dell'Africano e moglie di Sempronio Gracco.
 
-Nella seconda metà del II secolo a.C. la crisi della piccola produzione agricola diventa più acuta. La tendenza da parte dei ricchi ad appropriarsi del terreno pubblico (agro pubblico), cioè del terreno che non è stato assegnato, danneggia i pic-
+Una di esse durante una visita non smette d'elogiare le collane, gli anelli e i bracciali che indossa. Alla fine, dopo aver esaurito i pregi dei propri gioielli, chiede a Cornelia di farle vedere i suoi. Non è possibile che la moglie di un generale vittorioso non abbia pietre e ori di eccezionale bellezza. Cornelia conferma e anzi propone di mostrarle subito le sue splendide gioie. L'amica curiosa acconsente. Cornelia ordina a una schiavetta di condurle i suoi tesori. Tiberio e Caio sono accompagnati nella stanza: «Ecco i miei gioielli!», esclama la matrona all'amica sbigottita e delusa.
+
+(F.S.)
+
+***
+
+[Immagine]
+
+Cornelia, madre dei Gracchi, mostra i suoi gioielli a una matrona (incisione di B. Pinelli).

@@ -1,19 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-L'ESPOSIZIONE DEI NEONATI E LE SANZIONI
+136 STORIA DI ROMA ANTICA
 
-Il *pater familias* può «esporre» il neonato; perché ha la facoltà di accettare o di rifiutare il figlio messo ai suoi piedi, al momento della nascita. Se lo solleva significa che lo riconosce come suo; se lo lascia a terra, il bimbo sarà esposto; cioè abbandonato o affidato alle acque di un fiume. Il padre esplicitamente deve dire di allattarlo se il neonato è una femmina, poiché in una società arcaica le donne possono essere un peso improduttivo: infatti una donna, quando raggiunge l'età di aiutare la famiglia, in genere si sposa e l'abbandona. La pratica dell'abbandono o dell'esposizione è frequente, per ridurre le bocche da sfamare. Per evitare che l'uso di questa pratica provochi un'eccessiva riduzione d'una comunità, sono previste sanzioni per il capofamiglia che espone i figli. Ma le sanzioni sono sempre previste per i maschi, mentre per le femmine riguardano solo la primogenita: perché una sola figlia assicura la riproduzione.
+(da gignere, generare) e più in generale la forza vitale; più tardi il Genius è semplicemente la divinità che nasce con l'uomo e lo accompagna dalla nascita alla morte (come il dàimon dei Greci); è il nume tutelare del capofamiglia e come tale è venerato anche dalla moglie, dai figli e dagli schiavi della casa.
 
-Per questi motivi alle bambine romane (specie delle classi subalterne) che raggiungevano l'età adulta, ce n'erano molte esposte e abbandonate.
+[ Penati (Dii Penates; da penus, riserva di cibo, dispensa) proteggono le parti più intime e private della casa. Essi non hanno una fisionomia definita e alla fine sono identificati con tutte le divinità venerate nelle parti private della casa; che naturalmente cambiano a seconda della devozione privata dei membri della famiglia:
 
-Le famiglie aristocratiche espongono nell'atrio della casa, o nelle stanze che lo affiancano (*alae*), anche ritratti degli antenati (*imagines maiorum*).
+Come solo i maschi possono accedere ai sacerdozi pubblici a eccezione delle Vestali, che comunque dipendono dal Pontefice massimo; così solo i maschi della famiglia possono occuparsi del culto domestico; con l'eccezione del fuoco sacro a Vesta; che deve essere sempre custodito acceso nella cucina da parte delle donne di casa, che sono sottomesse al pater familias.
 
-Al *Lar familiaris*, che custodisce il focolare domestico, si compiono sacrifici alle calende, alle none e alle idi di ogni mese; inoltre sono offerti i cibi caduti a terra dalla tavola: Offerte e sacrifici ai Lari sono fatti anche in occasione di tutti gli avvenimenti che toccano la famiglia: nascite, matrimoni, morti.
+IL DITTATORE SENZA CAVALLO
 
-Il *Genius familiaris* nella fase più antica rappresenta la potenza generatrice...
+Al dittatore e al Flamen Dialis è vietato andare a cavallo. Per il sacerdote questo divieto ha un'origine religiosa: non può guardare l'esercito in armi fuori dal pomerio, probabilmente per evitare che si avvicini a cose e luoghi di morte. Per il dittatore è molto più difficile chiarire l'origine della proibizione; tanto più che sembra in patente opposizione con la sua funzione militare. Ma, accanto alla norma, esisteva una deroga concessa dal Senato e dai comizi centuriati prima della partenza per la guerra.
 
-***
+Forse il divieto risale alla necessità di assicurare alla falange oplitica la presenza del suo capo. La presenza del dittatore al fianco dei soldati è fondamentale nella guida delle operazioni militari e la sua assenza mette in serio pericolo l'esito della battaglia e la vita dei soldati.
 
-[Immagine]
-AEDES ET ATRIVM VESTAE CVM LACV IVTVRNAE
+È noto che il dittatore, appena nominato, a sua volta deve nominare un *magister equitum*, il capo della cavalleria, come se egli dovesse occuparsi soltanto del comando dei fanti. Il divieto di andare a cavallo affonda le origini in un'epoca antica: allora, perché il dittatore non si allontanasse dal campo di battaglia, gli si doveva impedire di montare a cavallo.
 
-*Casa delle Vestali (col Tempio di Vesta e la fontana di Giuturna): ricostruzione prospettica (da Hülsen).*
+Quando quest'esigenza o questa paura viene meno, diventa usuale e quasi automatico concedere la deroga prima della partenza; come segno di una profonda mutazione della struttura dell'esercito.
+
+Con la fine della monarchia è modificata profondamente la direzione della fanteria e della cavalleria. Il dittatore, come comandante supremo, ha un contrappeso formale nel *magister militum* e il divieto di andare a cavallo diventa soltanto un fastidioso intralcio nelle operazioni militari e una reliquia del passato.

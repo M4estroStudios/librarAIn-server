@@ -1,46 +1,16 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-272                                            STORIA DI ROMA ANTICA
+LA REPUBBLICA PERDUTA 273
 
-da un fasto incredibile, Cleopatra aveva trasformato Antonio da accusatore in aman-
-te (41 a.C.).
-Il rude soldato non è abituato a donne simili. L'intelligenza, le raffinatezze
-erotiche, il fascino penetrante di Cleopatra; che sa parlare moltissime lingue
-con la sua voce calda e suadente; lasciano in lui un segno profondo: Anche
-il successivo matrimonio con la bella e assennata Ottavia non potrà distrarlo
-da questa passione divorante. A Roma Ottaviano ha buon gioco a sfruttare in
-termini propagandistici la passione del suo collega: Antonio è dipinto come
-un soldato dissoluto; completamente dominato dagli intrighi d'una donna dal-
-la fama spaventosa.
+*L'obelisco di Ramsete II in un'incisione di Domenico Amici, 1839.*
 
-Se indiscutibile è l'influsso della regina egiziana, tuttavia il progetto
-ellenistico di Antonio ha la sua logica. Ma a Roma è inaccettabile l'idea
-che l'ex generale di Cesare possa creare un Impero orientale, che emargine-
-rebbe l'Italia e l'Occidente.
+[Immagine dell'obelisco]
 
-<center>L'USO POLITICO DELLA PROPAGANDA</center>
+Antonio è stato prima di tutto un grande generale dell'esercito cesariano e un grande condottiero nella campagna orientale: lo stesso non si può dire del suo rivale; malato a Filippi e aiutato (o sostituito) da Agrippa a Perugia e a Nàuloco. L'unica campagna condotta e vinta da Ottaviano è stata quella illirica, volta ad assicurare la frontiera nord-orientale dell'Italia (36-34 a.C.). Con queste premesse, alla vigilia dello scontro tra i due generali, molti senatori e anche gli stessi consoli passano ad Antonio. La classe dirigente ancora una volta è divisa in due, secondo opportunismi e clientele politiche.
 
-Ottaviano si attribuisce gran parte dei meriti della vittoria su Pompeo e si
-avvicina sempre alle classi elevate italiche e all'oligarchia senatoria; che
-rappresenta la continuità del potere: Nello stesso tempo Antonio perfeziona
-il suo progetto orientale e numerosi stati "vassalli" in Asia Minore gli as-
-sicurano una certa stabilità.
+TRADIZIONE ITALICA CONTRO FASCI ORIENTALI:
 
-La conquista dell'Armenia segna l'apice del suo successo come genera-
-le e politico. Il glorioso annuncio nella capitale è subito utilizzato da Ot-
-taviano per demolire l'avversario: a Roma si viene a conoscenza soltanto
-della cerimonia che è seguita alla vittoria. Antonio, con una cornice ricca
-di suggestioni religiose, ha nominato Cleopatra regina dell'Egitto; di Ci-
-pro; della Libia e della Celesiria (regione della Siria) e ha nominato
-loro due figli, Alessandro e Tolomeo, re dei re.
+Ottaviano in difficoltà dimostra l'usuale accortezza che in passato gli ha assicurato il successo politico: si attornia con persone "giuste", tra cui spiccano l'abilissimo Agrippa e Gaio Cilnio Mecenate, il maggiore regista della propaganda di Ottaviano. Mecenate è cavaliere, di lontane origini etrusche, e si appresta a costruire la base ideologica della guerra contro Antonio.
 
-Parlare di re a Roma non è mai stata cosa facile. I piani di Antonio suscitano perplessità e timori. Una dinastia ereditaria è normale in Oriente, ma non in Occidente.
+Fondamentale è il ruolo dell'Italia, terra fertile e antica: il ritorno alle origini italiche, alle tradizioni agricole tipiche del Romano antico, si contrappone alle mollezze e alla dissolutezza orientale.
 
-Ottaviano non incontra difficoltà a giocare le sue carte. La stessa Ottavia,
-ripudiata da Antonio, diviene la vittima innocente delle manovre e della fol-
-lia orientale di quello che i Romani ricordano ancora come un grande gene-
-rale. Forse in quest'unico punto Ottaviano fallisce: nessuno dimentica che An-
-
-***
-
-LA MODA DEGLI OBELISCHI
-*La lunga permanenza di Antonio in Egitto e la vittoria di Ottaviano ad Azio, con la successiva conquista del regno egiziano; suscitano presto un certo gusto esotico nella capitale. Oltre alla tomba a piramide di Gaio Cestio; l'esempio più evidente di questa moda sono gli obelischi. Nel circo Massimo; in occasione della costruzione nel lato verso il Palatino di un palco all'imperatore, Augusto fa erigere nella spina del circo l'obelisco di Ramsete I (alto 23,70 m) portato dall'egiziana Eliopoli (dal 1587 si trova in piazza del Popolo): Con spese ingenti e grandissimo dispendio di energie questi giganteschi monoliti (cioè un unico pezzo) di pietra sono portati via mare dall'Egitto; poi sono trasportati lungo il Tevere, con enormi barconi, di dimensioni eccezionali: la barca con cui l'imperatore Caligola trasporta l'obelisco, poi finito in piazza San Pietro; è affondata da Claudio per costruirci sopra un molo.*
+Nel programma di Ottaviano, l'Italia e Roma sono il centro dell'Impero che si va costruendo: Antonio in Oriente ha un comportamento troppo ambiguo per ispirare fiducia. Oltre alla riprovevole relazione con Cleopatra, i suoi atteggiamenti assomigliano troppo a quelli dei sovrani ellenistici, noti ai Romani dalle

@@ -1,29 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-156                                           STORIA DI ROMA ANTICA
+I ROMANI E LA PENISOLA 157
 
-ROMA INVIA I SUOI PRIMI PREFETTI
+[Immagine: Il sepolcro degli Scipioni in una ricostruzione ideale di L. Canina]
 
-I Romani nel corso del III secolo a.C. debbono risolvere il problema dell'amministrazione dei territori annessi di recente e formalmente autonomi (p. es. le *civitates sine suffragio*). Nascono così le «prefetture» o circoscrizioni territoriali, soggette alla giurisdizione di un *praefectus iure dicundo* inviato da Roma per l'amministrazione della giustizia e l'organizzazione dei mercati.
+Il sepolcro degli Scipioni in una ricostruzione ideale di L. Canina:
 
-In questo periodo la formula è applicata al territorio unificato di Capua e Cuma; all'agro ceretano (*Caere* / Cerveteri e *Forum Clodi*, a ovest del lago di Bracciano); all'agro vulcente (*Saturnia*; nella valle dell'Albegna; *Statonia* nella valle del Flora); al territorio umbro (*Interamna Nahars* / Terni, *Plestia* / Colfiorito, *Fulginie* / Foligno); al territorio sabino (*Reate* / Rieti, *Amiternum* / Amiterno, *Nursia* / Norcia); all'area picena e pretuzia (nelle Marche).
+La necessità di concentrare le forze nella guerra contro Taranto e Pirro (284-272) impone una battuta d'arresto nel conflitto con i Galli.
 
-Nuovi trattati d'alleanza (*foedera*) sono stretti o rinnovati in questo periodo tra Roma e i popoli sconfitti, che mantengono formalmente la propria indipendenza.
+ROMA TRA DUE MARI
 
-ANCORA I GALLI
+Contemporaneamente alle prime fasi della guerra contro Taranto e Pirro, Roma ha consolidato il controllo della costa adriatica centromeridionale, annettendo il territorio dei Pretuzi (283), che hanno partecipato alla coalizione antiromana sconfitta a Sentino. Verso la fine della stessa guerra, Roma fonda una colonia latina a Cosa, sulla costa tirrenica dell'Etruria settentrionale (273). In questa colonia è realizzata una riorganizzazione fondiaria di vaste proporzioni, che costituisce uno dei primi esempi della "centuriazione" romana (vedi box *La centuriazione: la forma romana del paesaggio rurale*).
 
-Il pericolo si affaccia nuovamente dal nord nel 284, quando bande di Galli Sènoni invadono l'Etruria settentrionale. I Romani subiscono gravi perdite in una battaglia presso Arezzo, nella quale muore il console Quinto Cecilio Metello con sette tribuni militari e 13.000 soldati.
+Negli anni seguenti sono sconfitti anche i Piceni, i cui territori entrano a far parte dello Stato romano, con l'eccezione di Ascoli e Ancona, che restano autonome e diventano alleate di Roma (269-268).
 
-Ma i Romani passano subito al contrattacco e rovesciano la situazione, mettendo a ferro e fuoco il territorio dei Sènoni, che viene occupato fino a Rimini; l'anno seguente la minaccia gallica si ripresenta. Questa volta gli invasori sono i Galli Boi, evidentemente preoccupati della rapida avanzata dei Romani verso le loro sedi nella pianura padana orientale.
+Il controllo dell'agro piceno-gallico è rafforzato dalla fondazione di due colonie latine a Rimini (268) e a Fermo (264). Due anni dopo i Romani ottengono una vittoria anche sui Messapi: abitanti nell'area pugliese settentrionale.
 
-I Galli, grazie all'alleanza delle città etrusche ostili a Roma, giungono ancora una volta fino al Vadimone (Bracciano), dove sono battuti da un esercito romano comandato dal console Publio Cornelio Dolabella (283).
+Un episodio molto significativo chiarisce i rapporti intrattenuti dai Romani con le aristocrazie delle città etrusche. Gli abitanti di Volsinii (Orvieto), infatti, dopo aver liberato i loro schiavi e aver loro concesso l'accesso alle magistrature, si ritrovano oppressi dagli stessi ex schiavi: di nascosto perciò chiamano in loro aiuto i Romani, che inviano Decio Mure; il quale in parte fa uccidere i liberti, in parte li restituisce come schiavi ai loro padroni.
 
-***
-
-NASCE A ROMA LA PITTURA, ARTE NON DISDEGNATA DAI NOBILI
-*Tra il IV e il II secolo a.C.*
-
-Un patrizio romano, Gaio Fabio, si dedica alla pittura: infatti dipinge di propria mano il tempio della Salute, votato nel 311 dal console Gaio Giugno Bubulco durante la seconda guerra sannitica e costruito dallo stesso come censore tra il 306 e il 303. Secondo la tradizione queste pitture si potevano ammirare fino all'epoca dell'imperatore Claudio, quando il tempio fu distrutto da un incendio.
-
-Esempi di pittura romana di questo periodo si conservano in qualche tomba gentilizia: quella più nota è il sepolcro dei Cornelii Scipioni presso la via Appia; sono noti anche gli affreschi frammentari di alcuni sepolcri a camera rinvenuti sull'Esquilino, che riproducono scene di battaglia o di trionfo, da collegare con le gesta dei personaggi sepolti. Uno in particolare, in cui è raffigurata probabilmente la consegna di doni militari dopo la presa di una città, in base ai nomi dipinti come didascalia alle figure (*Fabius*, *Fannius*), è ritenuto da molti il sepolcro dei Fabii.
-
-La pittura deve essere stata tenuta in grande onore a Roma; se gli illustri membri della *gens* Fabia, discendenti dal pittore Gaio Fabio, ereditano da questo antenato artista il cognome di Pittore, e tra loro è noto il più antico storico romano: Fabio Pittore.
+Quest'episodio e quello ricordato precedentemente della repressione della plebe di Arezzo testimoniano quanto fosse avanzato il grado d'assimilazione delle aristocrazie etrusche a Roma.

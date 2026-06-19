@@ -1,18 +1,19 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-34                                                                    STORIA DI ROMA ANTICA
+UN FIUME, UN GUADO E UN CROCIVIA
+35
 
-[Immagine: incisione di soldati che assaltano una figura femminile]
+UN RE TROPPO INGOMBRANTE, SCOMPARSO MIRACOLOSAMENTE
 
-*Tarpea uccisa dai Sabini, incisione di Bartolomeo Pinelli.*
+Fondata la città, ripetutamente sconfitti nemici, ingrandito il territorio di Roma, Romolo è ormai un eroe che ha esaurito la sua missione. Durante una parata dell'esercito in piazza d'armi, in Campo Marzio, scoppia una tempesta improvvisa; durante la quale il re scompare misteriosamente. Si grida subito al miracolo; ma il popolo pensa che i senatori abbiano organizzato l'omicidio di Romolo. Non casualmente il re aveva formato, secondo l'uso degli Etruschi, i Celeri; una guardia del corpo di trecento soldati addetta alla sua sicurezza. Ma un certo Proculo Giulio si presenta all'assemblea cittadina e annuncia di aver avuto una visione: Romolo gli è apparso; gli ha comunicato che Roma avrà un grande destino e che la sua scomparsa rientra nella volontà degli dèi. Da quel momento Romolo è identificato con il dio Quirino, che protegge con la sua benevolenza Roma. Il popolo accetta per buona la visione e la profezia; comincia un difficile interregno, in attesa di un re che riporti in città l'ordine e l'armonia.
 
-mezzo, poco rassegnate a perdere padri, fratelli e sposini. Si giunge alla pace, basata sul condominio a Roma tra Romolo e Tito Tazio; e all'unione tra i due popoli. Il condominio però è il modo peggiore di gestire una proprietà; opportunamente di lì a poco Tazio offende gli idi e muore misteriosamente, lasciando il potere interamente nelle mani di Romolo.
+OLTRE LA LEGGENDA
 
-È solo la prima morte misteriosa che avviene a Roma, altre ne seguiranno; fin quasi ai giorni nostri.
+Sotto questo racconto si possono ritrovare tracce di avvenimenti realmente accaduti e razionalmente spiegabili. "Romolo" è un semplice nome; un simbolo che lega insieme fatti e situazioni che sono avvenuti in momenti differenti; questi fatti e queste situazioni si legano però sempre alle origini di Roma.
 
-Alla pace con i Sabini segue la prima organizzazione della vita in comune dei Romani; dopo aver fondato, come si è visto, il Senato, composto dai capifamiglia, Romolo suddivide il popolo in trenta curie, e istituisce anche tre reparti di cavalleria, da cui hanno origine le tre prime tribù: Tiziensi, Ramnensi e i Luceri.
+Per molto tempo si è detto che la storia del ratto delle Sabine era solo il ricordo di un rito matrimoniale antichissimo basato sul rapimento (prima vero, e poi finto) della sposa: questo rito è ancora vivo presso certe popolazioni primitive che si dedicano alla pastorizia. Le più recenti scoperte archeologiche nel sepolcreto dell'osteria dell'Osa (sulla via Prenestina) fanno pensare che gli abitanti dei colli Albani, scesi in pianura verso la fine dell'VII secolo a.C., siano emigrati senza portare con sé donne. I giovani avevano quindi il problema di farsi una famiglia e possono bene aver fatto ricorso a razzie di donne per metterne in piedi una; magari le scorribande dei giovani scapoli sono avvenute nel territorio dei Sabini.
 
-Sempre nuovi pericoli minacciano la giovane città; prima c'è un conflitto con gli abitanti di Fidene, i Romani devono vedersela con un avversario molto più pericoloso: gli Etruschi di Veio.
+Col tempo dal matrimonio forzato si può passare alla convivenza; gli interessi che legano i Sabini e i Latini abitanti nella zona di Roma sono molti, legati al traffico commerciale sulla Salaria e alla difesa della strada dalle mire dei Veienti, vicini agguerriti; e perciò pericolosi. L'unione delle due popolazioni, che parlano lingue diverse e che avevano usi diversi, avviene per gradi.
 
-Tutto inizia con una scorribanda dei Veienti, che saccheggiano i campi e rubano il bestiame; Romolo con decisione fulminea varca il Tevere, sconfigge il potente avversario in campo aperto e lo insegue fin sotto le mura di Veio. Poi, tornando vittorioso a Roma, per vendetta devasta i campi coltivati dai Veienti, i quali chiedono la pace: ci si accorda per una tregua della durata di cento anni, in cambio della quale i Veienti debbono cedere una parte del loro territorio, che si trova sulla sponda sinistra del Tevere.
+Come i mitici Sabini di re Tito Tazio, anche quelli non vengono accolti direttamente all'interno della città. Se la leggenda racconta che essi si stabiliscono sul Campidoglio conquistato con la forza, l'archeologia conferma l'esistenza di un insediamento sul colle Capitolino e sul Viminale: questo abitato è certamente collegato con la città "quadrata" fondata da Romolo, ma ne costituisce la periferia: sembra in qualche maniera una realtà diversa, in parte autonoma.
 
-È la prima espansione territoriale della città destinata a dominare un impero vastissimo.
+Ve ne sono molte prove: le due alture rimangono ancora alla fine dell'VIII secolo fuori dai limiti della città di Roma, propriamente detta; cioè del Sep-
