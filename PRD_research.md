@@ -34,10 +34,11 @@
 | `src/search/time_lookup.py` | ✅ presente (F2-T3b) | Time Lookup read-only su `TIME_INDEX.json`: regex `extract_time_references` su query/`poh.time_range`; range con fallback anno inizio; `timeline_candidates` + arricchimento pagine (budget merge → F2-T4) |
 | `src/search/pages_loader.py` | ✅ presente (F2-T4) | Pages Markdown Loader: `pages/p.NNNN.<slug>.md`, hard cap caratteri, ordinamento, budget `max_books`/`max_pages_per_book` |
 | `src/search/article_llm.py` + `prompts/article_prompt.md` | ✅ presente (F2-T5) | Article Generation LLM: passi `a`+`b`, articolo Markdown in italiano con link `source:`; template fisso se nessuna pagina di contesto |
+| `src/search/poh_links_llm.py` + `prompts/poh_links_prompt.md` | ✅ presente (F2-T6) | POH link pass LLM: passo `c`, link `[…](poh:…)`; `build_poh_candidates` da INDEX + lookup + scan articolo; skip se materiale insufficiente o zero candidati |
 | `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold → F2-T8 | catalogo articoli POH + `POST /api/research/generate`; oggi stub HTML; da F2-T8 il pulsante Admin **Genera articoli mancanti** (`web/admin.html`) invocherà `research_runner` per ogni POH senza articolo |
 | `web/admin.html` | ✅ presente (scaffold) | sezione **Genera articoli mancanti**; da F2-T8 avvio forzato batch della pipeline query (passi `a`–`d`) sui POH mancanti, non più stub |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); postprocess F2-T6+ |
+| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline/postprocess F2-T7+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -297,8 +298,8 @@ hardcoded in Python.
 
 - `src/search/prompts/article_prompt.md` — passi `a`+`b`: stile Wikipedia, vincolo "rispondi solo
   se sostenuto dalle pagine fornite", formato `source:` obbligatorio.
-- `src/search/prompts/poh_links_prompt.md` — passo `c`; **può essere fuso** in `article_prompt.md`
-  se la qualità non degrada (decisione in F2-T6 con smoke test comparativo).
+- `src/search/prompts/poh_links_prompt.md` — passo `c` (✅ F2-T6): pass LLM separato in
+  `poh_links_llm.py`; fusione in `article_prompt.md` rimandata (OQ-R2, smoke comparativo v1.1).
 - `src/search/prompts/timeline_prompt.md` — passo `d`; riceve `timeline_candidates` da
   TIME_INDEX come vincolo esplicito.
 
@@ -371,7 +372,8 @@ src/search/
 ├── chapter_expansion.py   # F2-T3 ✅
 ├── time_lookup.py         # F2-T3b ✅ (riusa polyindex.time_index)
 ├── pages_loader.py        # F2-T4 ✅
-├── article_llm.py         # F2-T5 (+ F2-T6 se fusi)
+├── article_llm.py         # F2-T5 ✅
+├── poh_links_llm.py       # F2-T6 ✅
 ├── timeline_llm.py        # F2-T7
 ├── postprocess.py         # F2-T8: parser/validator link + tabella
 ├── research_runner.py     # orchestrazione job (specchio di ingest_pipeline_runner)
@@ -462,8 +464,9 @@ Già esistenti e riusate: `MATCHER_*` (subject matcher), `TIMEOUT_SECONDS`, `RET
 
 - **OQ-R1**: persistenza articoli su disco (`data/research/<request_id>.md`) o solo in-memory?
   Proposta: scrivere su disco già in MVP (costo nullo, abilita la UI v1.1). Owner: F2-T8 review.
-- **OQ-R2**: fusione passi `a`+`b`+`c` in una sola chiamata LLM vs chiamate separate — decidere
-  con smoke comparativo in F2-T6 (qualità link POH vs costo/latenza). Owner: F2-T5/T6.
+- **OQ-R2**: fusione passi `a`+`b`+`c` in una sola chiamata LLM vs chiamate separate — **Risolto
+  (MVP)**: pass separato (`article_llm` + `poh_links_llm`); smoke comparativo qualità/costo
+  rimandato a v1.1.
 - **OQ-R3**: il lookup temporale (F2-T3b) deve estrarre range dalla query con il solo regex di
   `time_index.py` o serve un mini-pass LLM per espressioni come "durante le crociate"? **Risolto
   (MVP)**: solo regex; range `1271-1295` con fallback anno inizio se anno fine assente in TIME_INDEX;
@@ -495,8 +498,8 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
   ordinamento, budget 5×8 default. *(Composer 2)*
 - [x] **F2-T5** — Article Generation LLM (`article_prompt.md`): passi `a`+`b`, link `source:`
   come da §2.4. *(Opus)*
-- [ ] **F2-T6** — POH link pass (`poh_links_prompt.md`) o fusione in F2-T5 (decisione con smoke
-  comparativo, OQ-R2): passo `c`. *(Opus)*
+- [x] **F2-T6** — POH link pass (`poh_links_prompt.md` + `poh_links_llm.py`): passo `c`, pass LLM
+  separato da F2-T5 (OQ-R2). *(Opus)*
 - [ ] **F2-T7** — Timeline pass (`timeline_prompt.md`): passo `d`, sezione `## Cronologia`
   vincolata ai `timeline_candidates` di F2-T3b. *(Opus)*
 - [ ] **F2-T8** — Aggregatore Markdown finale + post-validatore (link `source:`/`poh:`, tabella

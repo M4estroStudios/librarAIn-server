@@ -38,6 +38,10 @@ def load_article_prompt() -> str:
     return _PROMPT_PATH.read_text(encoding="utf-8").strip()
 
 
+def is_no_material_article(markdown: str) -> bool:
+    return markdown.lstrip().startswith(_NO_MATERIAL_TITLE)
+
+
 def build_no_material_article(query: str) -> str:
     preview = query.strip()
     if len(preview) > _QUERY_PREVIEW_LEN:

@@ -519,7 +519,7 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** 
 - [ ] **F2-T3 (NUOVO)** — Chapter Expansion su `polyindex/TOC.json` (pagine candidate → capitolo → pagine vicine, con budget). *(Sonnet)*
 - [ ] **F2-T4 (NUOVO)** — Pages Markdown Loader (carica `pages/p.NNNN.<slug>.md` per pagine candidate, taglia/normalizza). *(Composer 2)*
 - [x] **F2-T5 (NUOVO)** — Article Generation LLM (`article_prompt.md`): passi `a` + `b` con link `source:` come da §2.5.1. *(Opus)*
-- [ ] **F2-T6 (NUOVO)** — POH link pass LLM (`poh_links_prompt.md`) o fusione in F2-T5: passo `c`. *(Opus)*
+- [x] **F2-T6 (NUOVO)** — POH link pass LLM (`poh_links_prompt.md` + `poh_links_llm.py`): passo `c`. *(Opus)*
 - [ ] **F2-T7 (NUOVO)** — Timeline pass LLM (`timeline_prompt.md`): passo `d`, sezione `## Cronologia` tabella GFM. *(Opus)*
 - [ ] **F2-T8 (NUOVO)** — Aggregatore Markdown finale + post-validatore link/tabellare + endpoint HTTP (`POST /api/research/submit`, `GET /{id}`, `GET /{id}/article`) + job registry `research`; cablaggio Admin **Genera articoli mancanti** → `research_runner` (da F2-T8, non stub). *(Sonnet)*
 - [ ] **F2-T9 (NUOVO)** — Tabella `research_runs` + audit pagine/soggetti usati; propagazione `request_id` nei log. *(Sonnet)*
