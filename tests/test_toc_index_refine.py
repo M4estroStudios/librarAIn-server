@@ -147,6 +147,34 @@ class TestTocIndexRefine(unittest.TestCase):
 
         self.assertEqual(mock_chat.await_count, 1)
 
+    @patch(_P_CHAT, new_callable=AsyncMock)
+    def test_refine_toc_rejects_refusal_and_keeps_input(self, mock_chat: AsyncMock) -> None:
+        mock_chat.return_value = (
+            "Please provide the raw Markdown text from the OCR scan that you would like me to normalize."
+        )
+        toc_path = self.tmp / "TOC.md"
+        toc_path.write_text(
+            "# TOC — Test Book\n\nCapitolo I 12\nCapitolo II 24\n",
+            encoding="utf-8",
+        )
+
+        asyncio.run(
+            refine_aggregate_markdown_file(
+                toc_path,
+                AggregateKind.TOC,
+                self.client,
+                self.settings,
+                source_sha256=_SHA,
+                cache_dir=self.tmp / "cache",
+                force_recompute=True,
+                stats={},
+            )
+        )
+
+        text = toc_path.read_text(encoding="utf-8")
+        self.assertIn("Capitolo I 12", text)
+        self.assertNotIn("Please provide the raw Markdown", text)
+
 
 class TestSortIndexMdFile(unittest.TestCase):
     def test_sort_index_md_file_rewrites_unsorted_entries(self) -> None:

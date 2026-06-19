@@ -23,6 +23,7 @@ from src.ingestion.progress import (
 )
 from src.ingestion.pipeline.md_cache import read_stage_md, write_stage_md
 from src.models.settings import Settings
+from src.ingestion.markdown_artifacts import finalize_vision_page_output
 
 _PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 VISION_PROMPT_FILE = _PROMPTS_DIR / "vision_prompt.md"
@@ -253,7 +254,8 @@ async def run_stage2_vision(
                     ))
                 return None, False
 
-            _write_stage_md(md_path, model, refined)
+            finalized = finalize_vision_page_output(refined, prompt_notes)
+            _write_stage_md(md_path, model, finalized)
             if progress is not None:
                 progress(make_event(
                     PHASE_STAGE2_VISION,
@@ -263,14 +265,14 @@ async def run_stage2_vision(
                     page_total=page_total,
                     aligned_page=s1_page.aligned_page,
                     original_page=s1_page.original_page,
-                    char_count=len(refined),
+                    char_count=len(finalized),
                 ))
             return (
                 Stage2PageResult(
                     aligned_page=s1_page.aligned_page,
                     original_page=s1_page.original_page,
                     md_path=str(md_path),
-                    char_count=len(refined),
+                    char_count=len(finalized),
                 ),
                 False,
             )

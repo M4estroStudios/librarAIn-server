@@ -24,7 +24,7 @@ from src.ingestion.progress import (
     ProgressReporter,
     make_event,
 )
-from src.ingestion.markdown_artifacts import clean_markdown_channel_artifacts
+from src.ingestion.markdown_artifacts import finalize_editor_page_output
 from src.models.settings import Settings
 
 _PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
@@ -41,6 +41,31 @@ def _stage2_body(s2_page: Stage2PageResult, vision_model: str) -> str:
     if cached is not None:
         return cached
     return Path(s2_page.md_path).read_text(encoding="utf-8")
+
+
+def _finalize_stage3_output(
+    refined: str,
+    stage2_md: str,
+    *,
+    prompt_notes: str | None,
+    request_id: str,
+    aligned_page: int,
+) -> tuple[str, bool]:
+    output, used_fallback = finalize_editor_page_output(
+        refined,
+        stage2_md,
+        prompt_notes=prompt_notes,
+    )
+    if used_fallback:
+        Log(
+            WARNING_LOG_LEVEL,
+            "stage3 editor output rejected using stage2 fallback",
+            {
+                "request_id": request_id,
+                "aligned_page": aligned_page,
+            },
+        )
+    return output, used_fallback
 
 
 async def refine_with_editor(
@@ -166,8 +191,18 @@ async def run_stage3_editor(
             if not force_recompute:
                 cached = _read_stage_md(md_path, model)
                 if cached is not None:
-                    stage2_char_count = len(_stage2_body(s2_page, settings.vision_model or ""))
-                    char_delta = len(cached) - stage2_char_count
+                    stage2_md = _stage2_body(s2_page, settings.vision_model or "")
+                    stage2_char_count = len(stage2_md)
+                    finalized, _ = _finalize_stage3_output(
+                        cached,
+                        stage2_md,
+                        prompt_notes=prompt_notes,
+                        request_id=request_id,
+                        aligned_page=s2_page.aligned_page,
+                    )
+                    if finalized != cached:
+                        _write_stage_md(md_path, model, finalized)
+                    char_delta = len(finalized) - stage2_char_count
                     Log(
                         INFO_LOG_LEVEL,
                         "stage3 page skip editor using existing md",
@@ -176,7 +211,7 @@ async def run_stage3_editor(
                             "aligned_page": s2_page.aligned_page,
                             "original_page": s2_page.original_page,
                             "md_path": str(md_path),
-                            "char_count": len(cached),
+                            "char_count": len(finalized),
                         },
                     )
                     if progress is not None:
@@ -188,14 +223,14 @@ async def run_stage3_editor(
                             page_total=page_total,
                             aligned_page=s2_page.aligned_page,
                             original_page=s2_page.original_page,
-                            char_count=len(cached),
+                            char_count=len(finalized),
                         ))
                     return (
                         Stage3PageResult(
                             aligned_page=s2_page.aligned_page,
                             original_page=s2_page.original_page,
                             md_path=str(md_path),
-                            char_count=len(cached),
+                            char_count=len(finalized),
                             stage2_char_count=stage2_char_count,
                             char_delta=char_delta,
                         ),
@@ -240,9 +275,16 @@ async def run_stage3_editor(
                     ))
                 return None, False
 
-            stage3_char_count = len(refined)
+            finalized, _ = _finalize_stage3_output(
+                refined,
+                stage2_md,
+                prompt_notes=prompt_notes,
+                request_id=request_id,
+                aligned_page=s2_page.aligned_page,
+            )
+            stage3_char_count = len(finalized)
             char_delta = stage3_char_count - stage2_char_count
-            _write_stage_md(md_path, model, clean_markdown_channel_artifacts(refined))
+            _write_stage_md(md_path, model, finalized)
             if progress is not None:
                 progress(make_event(
                     PHASE_STAGE3_EDITOR,

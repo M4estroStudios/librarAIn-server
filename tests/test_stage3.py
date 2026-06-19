@@ -219,6 +219,25 @@ class TestRunStage3Editor(unittest.TestCase):
             self.assertEqual(p.char_count, 2)
             self.assertEqual(p.char_delta, 2 - p.stage2_char_count)
 
+    def test_operator_notes_leak_falls_back_to_stage2(self) -> None:
+        notes = "A pagine 395-402 del pdf trovi una Cronologia con Anno - Eventi."
+        leaked = f"## Operator notes\n\n{notes}\n"
+        client = _fake_client(leaked)
+        settings = _settings(self.data_root)
+        result = asyncio.run(
+            run_stage3_editor(
+                self.stage2_result,
+                SHA,
+                settings,
+                client,
+                prompt_notes=notes,
+            )
+        )
+        page = next(p for p in result.pages if p.aligned_page == 1)
+        body = _read_stage_md(Path(page.md_path), "editor-model-v1")
+        self.assertIn("md text page 1", body)
+        self.assertNotIn("Operator notes", body)
+
 
 if __name__ == "__main__":
     unittest.main()

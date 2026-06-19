@@ -1090,7 +1090,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     if (!ctx) throw new Error("canvas 2d non disponibile");
     canvas.width = Math.max(1, Math.ceil(viewport.width));
     canvas.height = Math.max(1, Math.ceil(viewport.height));
-    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+    await page.render({ canvasContext: ctx, viewport: viewport, intent: "print" }).promise;
     return canvas.toDataURL("image/png");
   }
 

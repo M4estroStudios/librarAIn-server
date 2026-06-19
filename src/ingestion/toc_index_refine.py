@@ -11,7 +11,9 @@ from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
 from src.ingestion.markdown_artifacts import (
     clean_markdown_channel_artifacts,
+    is_invalid_aggregate_refine_output,
     strip_lmstudio_channel_artifacts,
+    strip_operator_notes_leak,
 )
 from src.ingestion.output_writer import _atomic_write_bytes
 from src.ingestion.polyindex.index_md_parser import sort_index_md_body
@@ -186,6 +188,25 @@ async def refine_aggregate_markdown_file(
                 if stats is not None:
                     stats["fallback_sections"] = stats.get("fallback_sections", 0) + 1
                 return _strip_obvious_artifacts(section_text)
+
+            cleaned_input = _strip_obvious_artifacts(section_text)
+            if is_invalid_aggregate_refine_output(
+                refined,
+                cleaned_input,
+                prompt_notes=prompt_notes,
+            ):
+                Log(
+                    WARNING_LOG_LEVEL,
+                    "toc_index_refine section rejected using input",
+                    {
+                        "kind": kind.value,
+                        "section_index": section_index,
+                        "request_id": request_id,
+                    },
+                )
+                if stats is not None:
+                    stats["fallback_sections"] = stats.get("fallback_sections", 0) + 1
+                return strip_operator_notes_leak(cleaned_input, prompt_notes)
 
         _write_stage_md(cache_file, model, refined)
         return refined
