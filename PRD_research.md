@@ -34,7 +34,8 @@
 | `src/search/time_lookup.py` | ✅ presente (F2-T3b) | Time Lookup read-only su `TIME_INDEX.json`: regex `extract_time_references` su query/`poh.time_range`; range con fallback anno inizio; `timeline_candidates` + arricchimento pagine (budget merge → F2-T4) |
 | `src/search/pages_loader.py` | ✅ presente (F2-T4) | Pages Markdown Loader: `pages/p.NNNN.<slug>.md`, hard cap caratteri, ordinamento, budget `max_books`/`max_pages_per_book` |
 | `src/search/article_llm.py` + `prompts/article_prompt.md` | ✅ presente (F2-T5) | Article Generation LLM: passi `a`+`b`, articolo Markdown in italiano con link `source:`; template fisso se nessuna pagina di contesto |
-| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold | catalogo/generazione articoli HTML per POH; non è la pipeline query F2-T5+ |
+| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold → F2-T8 | catalogo articoli POH + `POST /api/research/generate`; oggi stub HTML; da F2-T8 il pulsante Admin **Genera articoli mancanti** (`web/admin.html`) invocherà `research_runner` per ogni POH senza articolo |
+| `web/admin.html` | ✅ presente (scaffold) | sezione **Genera articoli mancanti**; da F2-T8 avvio forzato batch della pipeline query (passi `a`–`d`) sui POH mancanti, non più stub |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
 | `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); postprocess F2-T6+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
@@ -115,6 +116,10 @@ nelle fonti, riducendo le date inventate (vedi §2.3 punto 6 e §4.1).
   ogni articolo.
 - Come curatore, voglio che i link `source:` non risolvibili vengano rimossi e loggati (non
   silenziosamente serviti), così da individuare regressioni del polyindex.
+- Come curatore, voglio poter avviare **forzatamente** dalla sezione Admin **Genera articoli
+  mancanti** la pipeline di ricerca su tutti i POH di `INDEX.json` senza articolo (o filtrati per
+  libro), così da popolare il catalogo dopo l'ingest senza attendere query manuali. *(F2-T8:
+  `POST /api/research/generate` → `research_runner`, non stub HTML)*
 
 ### 2.3 Acceptance Criteria — API e pipeline
 
@@ -496,7 +501,10 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
   vincolata ai `timeline_candidates` di F2-T3b. *(Opus)*
 - [ ] **F2-T8** — Aggregatore Markdown finale + post-validatore (link `source:`/`poh:`, tabella
   GFM, sostituzione `*[[fonte non verificabile]]*`) + endpoint HTTP (`submit`, `{id}`,
-  `{id}/article`) + job registry `research` + dedup TTL. *(Sonnet)*
+  `{id}/article`) + job registry `research` + dedup TTL; **cablaggio Admin** (`web/admin.html` →
+  `POST /api/research/generate`): pulsante **Genera articoli mancanti** invoca `research_runner`
+  per ogni POH senza articolo (query sintetica = `canonical_label`, `poh` impostato), sostituendo
+  lo stub HTML attuale. *(Sonnet)*
 - [ ] **F2-T9** — Migration `research_runs` + audit contesto (libri/pagine/soggetti) +
   `bind_log_context` nella run. *(Sonnet)*
 - [ ] **F2-T10** — E2E ricerca: 2 libri ingestiti + query con POH secondario; verifica automatica
@@ -555,5 +563,7 @@ F2-T8 → F2-T9 → F2-T10.
   manoscritto Foglio 1 — l'annotazione Milvus è superata dall'assunzione A3).
 - Articoli multilingua (MVP: solo italiano).
 - Ricerca federata su più biblioteche / istanze.
-- Generazione automatica di articoli POH a batch su tutta la biblioteca (abilitata dal registro
-  POH v2.0).
+- Generazione **automatica** di articoli POH a batch su tutta la biblioteca subito dopo ogni ingest
+  (senza intervento umano; abilitata dal registro POH v2.0). **In scope F2-T8 (MVP)**: avvio
+  **manuale/forzato** dalla sezione Admin **Genera articoli mancanti** sui POH ancora senza
+  articolo.

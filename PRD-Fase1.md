@@ -521,7 +521,7 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** 
 - [x] **F2-T5 (NUOVO)** — Article Generation LLM (`article_prompt.md`): passi `a` + `b` con link `source:` come da §2.5.1. *(Opus)*
 - [ ] **F2-T6 (NUOVO)** — POH link pass LLM (`poh_links_prompt.md`) o fusione in F2-T5: passo `c`. *(Opus)*
 - [ ] **F2-T7 (NUOVO)** — Timeline pass LLM (`timeline_prompt.md`): passo `d`, sezione `## Cronologia` tabella GFM. *(Opus)*
-- [ ] **F2-T8 (NUOVO)** — Aggregatore Markdown finale + post-validatore link/tabellare + endpoint HTTP (`POST /api/research/submit`, `GET /{id}`, `GET /{id}/article`) + job registry `research`. *(Sonnet)*
+- [ ] **F2-T8 (NUOVO)** — Aggregatore Markdown finale + post-validatore link/tabellare + endpoint HTTP (`POST /api/research/submit`, `GET /{id}`, `GET /{id}/article`) + job registry `research`; cablaggio Admin **Genera articoli mancanti** → `research_runner` (da F2-T8, non stub). *(Sonnet)*
 - [ ] **F2-T9 (NUOVO)** — Tabella `research_runs` + audit pagine/soggetti usati; propagazione `request_id` nei log. *(Sonnet)*
 - [ ] **F2-T10 (NUOVO)** — E2E ricerca: 2 libri ingestiti + query che richiede POH secondario + verifica `poh:` + `## Cronologia` + `source:`. *(Sonnet)*
 
