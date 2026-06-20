@@ -1,0 +1,17 @@
+{
+  "default": {
+    "stage": "stage3Editor",
+    "producer_model": "mock-model",
+    "text": "Contenuto mock della pagina.\n\nParagrafo di esempio per la review side-by-side con l'anteprima immagine."
+  },
+  "pages": {
+    "1": "# Pagina 1\n\n**PRESENTAZIONE**\n\nTesto introduttivo del libro mock.",
+    "3": "## Operator notes\n\nQuesto blocco simula una pagina corrotta (solo note).",
+    "5": "# Capitolo I\n\nLe origini leggendarie di Roma secondo il mock.",
+    "7": "# Pagina 7\n\nTrascrizione incompleta — prova **Prova a sistemare**.",
+    "8": "# Pagina 8\n\nTesto in attesa di conferma review.",
+    "11": "# Pagina 11\n\nAltra pagina in pending review.",
+    "12": "# Sommario parziale\n\nCapitolo I .... 12\nCapitolo II .... 24",
+    "15": "# Pagina 15\n\nContenuto normale per scorrere la review."
+  }
+}

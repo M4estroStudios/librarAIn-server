@@ -69,6 +69,18 @@ def _request_content_length(handler: BaseHTTPRequestHandler) -> int:
 
 
 def _send_json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> None:
+    if status >= 400:
+        path = urllib.parse.urlparse(handler.path).path
+        detail: str | None = None
+        if isinstance(payload, dict):
+            raw = payload.get("error") or payload.get("message")
+            if raw is not None:
+                detail = str(raw)
+        Log(
+            ERROR_LOG_LEVEL if status >= 500 else WARNING_LOG_LEVEL,
+            "http json response",
+            {"path": path, "status": status, "error": detail or str(payload)[:200]},
+        )
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     handler.send_response(status)
     handler.send_header("Content-Type", "application/json; charset=utf-8")
@@ -148,7 +160,35 @@ def build_ingest_server(
         server_version = "librarAIn-ingest-http/1.0"
 
         def log_message(self, format: str, *args: Any) -> None:
-            return
+            if len(args) < 2:
+                return
+            try:
+                status = int(str(args[1]))
+            except ValueError:
+                return
+            path = urllib.parse.urlparse(self.path).path
+            if path.endswith("/events"):
+                return
+            if status < 400:
+                return
+            Log(
+                ERROR_LOG_LEVEL if status >= 500 else WARNING_LOG_LEVEL,
+                "http request failed",
+                {
+                    "path": path,
+                    "status": status,
+                    "request": str(args[0])[:200],
+                },
+            )
+
+        def send_error(self, code: int, message: str | None = None, explain: str | None = None) -> None:
+            path = urllib.parse.urlparse(self.path).path
+            Log(
+                ERROR_LOG_LEVEL if code >= 500 else WARNING_LOG_LEVEL,
+                "http error response",
+                {"path": path, "status": code, "message": message or explain or ""},
+            )
+            super().send_error(code, message, explain)
 
         def _is_authorized(self, query: dict[str, list[str]] | None = None) -> bool:
             """API token check. A no-op when INGEST_API_TOKEN is unset."""
@@ -201,6 +241,44 @@ def build_ingest_server(
                     return
                 _send_bytes(self, 200, admin_file.read_bytes(), "text/html; charset=utf-8")
                 return
+
+            if path == "/log.js":
+                log_js = web_dir / "log.js"
+                if log_js.is_file():
+                    _send_bytes(self, 200, log_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
+            if path == "/mockup/lab.html":
+                self.send_response(302)
+                self.send_header("Location", "/index.html?mock=1")
+                self.end_headers()
+                return
+
+            if path.startswith("/mockup/"):
+                rel = path[len("/mockup/") :].lstrip("/")
+                if rel and ".." not in rel.replace("\\", "/"):
+                    mock_root = (web_dir / "mockup").resolve()
+                    asset = (mock_root / rel).resolve()
+                    try:
+                        asset.relative_to(mock_root)
+                    except ValueError:
+                        pass
+                    else:
+                        if asset.is_file():
+                            types = {
+                                ".html": "text/html; charset=utf-8",
+                                ".js": "text/javascript; charset=utf-8",
+                                ".json": "application/json; charset=utf-8",
+                                ".css": "text/css; charset=utf-8",
+                                ".svg": "image/svg+xml",
+                            }
+                            _send_bytes(
+                                self,
+                                200,
+                                asset.read_bytes(),
+                                types.get(asset.suffix.lower(), "application/octet-stream"),
+                            )
+                            return
 
             if path == "/api/admin/subjects":
                 if not self._require_auth(query):

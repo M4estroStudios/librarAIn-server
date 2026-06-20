@@ -1,0 +1,11 @@
+[
+  { "phase": "page_repair", "status": "started", "aligned_page": 7, "global_step": 0, "global_total": 3 },
+  { "phase": "stage1_ocr", "status": "page_skipped", "aligned_page": 7, "global_step": 1, "global_total": 3 },
+  { "phase": "stage2_vision", "status": "started", "aligned_page": 7, "global_step": 1, "global_total": 3 },
+  { "phase": "stage2_vision", "status": "page_progress", "aligned_page": 7, "global_step": 2, "global_total": 3 },
+  { "phase": "stage2_vision", "status": "completed", "aligned_page": 7, "global_step": 2, "global_total": 3 },
+  { "phase": "stage3_editor", "status": "started", "aligned_page": 7, "global_step": 2, "global_total": 3 },
+  { "phase": "stage3_editor", "status": "page_progress", "aligned_page": 7, "global_step": 3, "global_total": 3 },
+  { "phase": "stage3_editor", "status": "completed", "aligned_page": 7, "global_step": 3, "global_total": 3 },
+  { "phase": "page_repair", "status": "completed", "aligned_page": 7, "global_step": 3, "global_total": 3 }
+]

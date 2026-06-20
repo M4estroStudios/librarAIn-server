@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "books": [
+    {
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "title": "Libro mock — Storia di Roma",
+      "slug": "storia-mock",
+      "expected_page_count": 20,
+      "has_manifest": true,
+      "complete": false,
+      "stages": {
+        "stage1OCR": { "present_count": 20, "missing_count": 0, "missing": [] },
+        "stage2Vision": { "present_count": 18, "missing_count": 2, "missing": [7, 14] },
+        "stage3Editor": { "present_count": 16, "missing_count": 4, "missing": [3, 7, 12, 14] },
+        "output": { "present_count": 15, "missing_count": 5, "missing": [3, 7, 12, 14, 19] }
+      },
+      "missing_pages": [
+        { "aligned": 3, "missing_in": ["stage3Editor", "output"] },
+        { "aligned": 7, "missing_in": ["stage2Vision", "stage3Editor", "output"] },
+        { "aligned": 12, "missing_in": ["stage3Editor", "output"] },
+        { "aligned": 14, "missing_in": ["stage2Vision", "stage3Editor", "output"] },
+        { "aligned": 19, "missing_in": ["output"] }
+      ],
+      "excluded_aligned_pages": [],
+      "viewer_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+      "pending_review_pages": [5, 8, 11]
+    }
+  ],
+  "summary": {
+    "book_count": 1,
+    "books_with_gaps": 1,
+    "books_complete": 0,
+    "total_pages_with_gaps": 5
+  }
+}

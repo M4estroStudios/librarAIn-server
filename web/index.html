@@ -4,6 +4,78 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ingestione libro — librarAIn</title>
+<script>
+(function (global) {
+  function pageLabel() {
+    var title = (document.title || "").split("\u2014")[0].trim();
+    return title || global.location.pathname || "web";
+  }
+
+  function formatLine(level, message, params) {
+    var line = "[" + new Date().toISOString() + "][" + level + "][" + pageLabel() + "] " + message;
+    if (params && typeof params === "object" && Object.keys(params).length) {
+      line += " | " + JSON.stringify(params);
+    }
+    return line;
+  }
+
+  function write(level, consoleFn, message, params) {
+    var line = formatLine(level, message, params);
+    consoleFn(line);
+    if (params && params.error instanceof Error) {
+      consoleFn(params.error);
+    }
+    return line;
+  }
+
+  function fromError(err) {
+    if (err instanceof Error) {
+      return { message: err.message, error: err };
+    }
+    return { message: String(err) };
+  }
+
+  var log = {
+    error: function (message, params) {
+      return write("ERROR", global.console.error.bind(global.console), message, params);
+    },
+    warn: function (message, params) {
+      return write("WARNING", global.console.warn.bind(global.console), message, params);
+    },
+    info: function (message, params) {
+      return write("INFO", global.console.info.bind(global.console), message, params);
+    },
+    debug: function (message, params) {
+      return write("DEBUG", global.console.debug.bind(global.console), message, params);
+    },
+    reportError: function (context, err) {
+      var params = fromError(err);
+      return log.error(context, params);
+    },
+    logHttpFailure: function (url, status, detail) {
+      var level = status >= 500 ? "error" : "warn";
+      return log[level]("api request failed", { url: url, status: status, error: detail });
+    },
+  };
+
+  global.LibrarAInLog = log;
+
+  global.addEventListener("error", function (ev) {
+    log.error("uncaught error", {
+      message: ev.message,
+      source: ev.filename,
+      line: ev.lineno,
+      col: ev.colno,
+      error: ev.error instanceof Error ? ev.error : undefined,
+    });
+  });
+
+  global.addEventListener("unhandledrejection", function (ev) {
+    log.reportError("unhandled rejection", ev.reason);
+  });
+})(window);
+
+</script>
 <style>
 :root {
   color-scheme: dark;
@@ -51,9 +123,14 @@ a { color: #4ec9b0; }
   line-height: 1.45;
 }
 #progress-alert.show { display: block; }
+#progress-alert.is-success {
+  background: #1a2e24;
+  color: #b8f0d8;
+  border-color: #2d6b4f;
+}
 .progress-row {
   display: grid;
-  grid-template-columns: 9rem minmax(0, 1fr) auto 3.25rem;
+  grid-template-columns: 9rem minmax(0, 1fr) 9rem 3.25rem;
   gap: 0.35rem 0.65rem;
   align-items: center;
   margin-bottom: 0.5rem;
@@ -71,9 +148,8 @@ a { color: #4ec9b0; }
 .progress-label.failed { color: #f48771; }
 .progress-time { color: #9d9d9d; font-size: 0.75rem; white-space: nowrap; text-align: right; }
 .progress-row progress {
-  width: 90%;
+  width: 100%;
   min-width: 0;
-  justify-self: start;
   height: 9px;
   border-radius: 4px;
   appearance: none;
@@ -84,7 +160,8 @@ a { color: #4ec9b0; }
 .progress-row progress::-webkit-progress-bar { background: #3c3c3c; border-radius: 4px; }
 .progress-row progress::-webkit-progress-value { background: #4ec9b0; border-radius: 4px; transition: width 0.25s ease; }
 .progress-row progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
-.progress-stats { color: #9d9d9d; font-size: 0.78rem; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.progress-stats { color: #9d9d9d; font-size: 0.78rem; white-space: nowrap; text-align: right; }
+.ingest-section.is-hidden { display: none; }
 #ingest-pages-panel { display: none; margin-top: 1rem; }
 #ingest-pages-panel.show { display: block; }
 .ingest-section { margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #3e3e3e; }
@@ -95,12 +172,66 @@ button.secondary { background: #3c3c3c; color: #e8e8e8; }
 button.secondary:hover:not(:disabled) { background: #4a4a4a; }
 button.review-btn { background: #2f5a48; color: #e8e8e8; }
 button.review-btn:hover:not(:disabled) { background: #3a6b55; }
-.ingest-page-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-.ingest-page-chip { font: inherit; font-size: 0.72rem; font-family: ui-monospace, monospace; padding: 0.2rem 0.45rem; border-radius: 6px; border: 1px solid #454545; background: #2d2d2d; color: #d4d4d4; cursor: pointer; }
-.ingest-page-chip:hover { border-color: #4ec9b0; color: #4ec9b0; }
+.ingest-review-card { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; padding: 0.65rem 0.75rem; border-radius: 8px; background: #252526; border: 1px solid #3e3e3e; }
+.ingest-review-card p { margin: 0; flex: 1 1 12rem; font-size: 0.78rem; color: #b8b8b8; line-height: 1.35; }
 .audit-pages-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 0.35rem; --audit-btn-h: 2rem; --audit-row-h: 2rem; }
-.audit-pages-table col.audit-col-page { width: 18%; }
-.audit-pages-table col.audit-col-status { width: 32%; }
+.audit-pages-table col.audit-col-page { width: 14%; }
+.audit-pages-table col.audit-col-status { width: 30%; }
+.audit-pages-table col.audit-col-actions { width: 56%; }
+.audit-repair-cell { display: flex; align-items: flex-end; gap: 0.35rem; min-height: var(--audit-row-h); width: 100%; box-sizing: border-box; flex-wrap: wrap; }
+.audit-repair-stack { display: flex; flex-direction: column; align-items: stretch; gap: 0.25rem; width: min(100%, 14rem); min-width: 0; box-sizing: border-box; }
+.audit-repair-status-row { display: none; flex-direction: column; gap: 0.2rem; }
+.audit-repair-stack.is-active .audit-repair-status-row { display: flex; }
+.audit-repair-status-label { font-size: 0.68rem; color: #4ec9b0; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 14rem; }
+.audit-repair-status-label.is-error { color: #f0a0a0; }
+.audit-repair-inline-bar { height: 0.25rem; border-radius: 999px; background: #3c3c3c; overflow: hidden; }
+.audit-repair-inline-fill { height: 100%; width: 0%; background: #4ec9b0; transition: width 0.25s ease; }
+tr.audit-row-repairing { background: rgba(78, 201, 176, 0.07); }
+.audit-repair-btn { font: inherit; font-size: 0.68rem; font-weight: 600; height: var(--audit-btn-h); width: 100%; min-width: 0; padding: 0 0.35rem; box-sizing: border-box; border-radius: 8px; border: 0; background: #2f5a48; color: #e8e8e8; cursor: pointer; white-space: nowrap; }
+.audit-repair-btn:hover:not(:disabled) { background: #3a6b55; }
+.audit-repair-btn:disabled { opacity: 0.85; cursor: not-allowed; }
+.audit-repair-btn.is-running { background: #264a3a; }
+.audit-repair-all-stack { display: flex; flex-direction: column; align-items: stretch; gap: 0.25rem; width: min(100%, 18rem); min-width: 0; box-sizing: border-box; }
+.audit-repair-all-status { display: none; flex-direction: column; gap: 0.2rem; }
+.audit-repair-all-stack.is-active .audit-repair-all-status { display: flex; }
+.audit-repair-all-stage-label { font-size: 0.68rem; color: #4ec9b0; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.audit-repair-all-stage-label.is-error { color: #f0a0a0; }
+.audit-repair-all-pages { display: flex; gap: 2px; height: 0.35rem; border-radius: 4px; overflow: hidden; background: #3c3c3c; }
+.audit-repair-all-overall-bar { height: 0.25rem; border-radius: 999px; background: #3c3c3c; overflow: hidden; }
+.audit-repair-all-overall-fill { height: 100%; width: 0%; background: #4ec9b0; transition: width 0.25s ease; }
+.audit-repair-all-page-seg { flex: 1 1 0; min-width: 0; background: #4a4a4a; transition: background 0.15s ease; }
+.audit-repair-all-page-seg.is-active { background: #4ec9b0; }
+.audit-repair-all-page-seg.is-done { background: #2f7f6d; }
+.audit-repair-all-page-seg.is-skipped { background: #666; }
+.audit-pages-footer-row td { border-bottom: 0; padding-top: 0.55rem; }
+.repair-progress-panel { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 1900; width: min(92vw, 36rem); padding: 0.75rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #4ec9b0; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); box-sizing: border-box; }
+.repair-progress-panel.hidden { display: none; }
+.repair-progress-panel.is-error { border-color: #c56b6b; }
+.repair-progress-panel.is-error .repair-progress-title, .repair-progress-panel.is-error .repair-progress-phase { color: #f0a0a0; }
+.repair-progress-title { font-size: 0.78rem; font-weight: 600; color: #4ec9b0; margin-bottom: 0.25rem; }
+.repair-progress-phase { font-size: 0.85rem; color: #e8e8e8; margin-bottom: 0.15rem; }
+.repair-progress-detail { font-size: 0.72rem; color: #b8b8b8; min-height: 1rem; margin-bottom: 0.45rem; }
+.repair-progress-bar { height: 0.35rem; border-radius: 999px; background: #3c3c3c; overflow: hidden; }
+.repair-progress-fill { height: 100%; width: 0%; background: #4ec9b0; transition: width 0.25s ease; }
+.ingest-debug-panel { position: fixed; right: 1rem; bottom: 1rem; z-index: 3000; width: min(92vw, 17rem); border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); font-size: 0.78rem; }
+.ingest-debug-panel.is-open { border-color: #4ec9b0; }
+.ingest-debug-panel-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 0; padding: 0.55rem 0.75rem; border: 0; border-radius: 10px; background: transparent; color: #4ec9b0; font: inherit; font-size: 0.82rem; font-weight: 700; cursor: pointer; text-align: left; }
+.ingest-debug-panel.is-open .ingest-debug-panel-toggle { border-radius: 10px 10px 0 0; border-bottom: 1px solid #3e3e3e; }
+.ingest-debug-panel-toggle::after { content: "▸"; color: #9d9d9d; transition: transform 0.15s ease; }
+.ingest-debug-panel.is-open .ingest-debug-panel-toggle::after { transform: rotate(90deg); }
+.ingest-debug-panel-body { padding: 0.65rem 0.75rem 0.75rem; }
+.ingest-debug-panel-body[hidden] { display: none; }
+.ingest-debug-mock-toggle { display: flex; align-items: center; gap: 0.45rem; margin: 0 0 0.45rem; color: #e8e8e8; cursor: pointer; }
+.ingest-debug-mock-toggle input { width: 1rem; height: 1rem; margin: 0; accent-color: #4ec9b0; }
+#ingest-debug-mock-hint { margin: 0 0 0.55rem; font-size: 0.72rem; line-height: 1.35; }
+.ingest-debug-lab-actions { display: grid; gap: 0.35rem; }
+.ingest-debug-lab-actions button { font: inherit; font-size: 0.72rem; font-weight: 600; padding: 0.4rem 0.55rem; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; cursor: pointer; text-align: left; }
+.ingest-debug-lab-actions button:hover:not(:disabled) { background: #4a4a4a; }
+.ingest-debug-lab-actions button:disabled { opacity: 0.55; cursor: not-allowed; }
+.ingest-debug-log { margin: 0.55rem 0 0; padding: 0.45rem 0.5rem; min-height: 2.5rem; max-height: 7rem; overflow: auto; border-radius: 6px; background: #1a1a1a; border: 1px solid #3e3e3e; font-family: ui-monospace, monospace; font-size: 0.65rem; line-height: 1.35; color: #b8b8b8; white-space: pre-wrap; word-break: break-word; }
+.ingest-debug-panel.is-open .ingest-debug-log:empty::before { content: "Log Lab…"; color: #666; }
+.ingest-debug-log.has-error { color: #f48771; border-color: #c95050; }
+body.ingest-mock-active .ingest-debug-panel { border-color: #4ec9b0; }
 .audit-pages-table th, .audit-pages-table td { padding: 0.35rem 0.5rem; vertical-align: middle; border-bottom: 1px solid #2a2a2a; font-size: 0.78rem; }
 .audit-pages-table th { color: #9d9d9d; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; text-align: left; }
 .audit-page-controls { display: flex; align-items: center; gap: 0.35rem; }
@@ -383,15 +514,15 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
   <div id="phase-rows"></div>
   <div id="ingest-pages-panel">
     <div class="ingest-section" id="ingest-processed-section">
-      <h3>Pagine elaborate</h3>
+      <h3>Review trascrizioni</h3>
       <div class="ingest-section-stats" id="ingest-processed-stats">Nessuna pagina ancora.</div>
-      <div class="ingest-section-row">
-        <button type="button" class="review-btn" id="ingest-review-all-btn" disabled>Review pagine elaborate</button>
+      <div class="ingest-review-card">
+        <p>Confronta immagine e testo pagina per pagina, conferma le correzioni. Usa le frecce nel dialogo per scorrere tutte le pagine elaborate.</p>
+        <button type="button" class="review-btn" id="ingest-review-all-btn" disabled>Apri review</button>
       </div>
-      <div class="ingest-page-chips" id="ingest-processed-chips"></div>
     </div>
     <div class="ingest-section" id="ingest-pending-section">
-      <h3>Pagine non elaborate</h3>
+      <h3>Ripara pagine incomplete</h3>
       <div class="ingest-section-stats" id="ingest-pending-stats">Nessuna pagina in attesa.</div>
       <div id="ingest-pending-table-wrap"></div>
     </div>
@@ -420,8 +551,9 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     <h2 class="page-preview-title" id="page-review-title">Review</h2>
     <p class="page-review-meta" id="page-review-meta"></p>
     <div class="page-review-toolbar" id="page-review-toolbar">
-      <button type="button" class="page-review-save" id="page-review-confirm">Conferma</button>
-      <button type="button" class="page-review-reset" id="page-review-reset" disabled>Reset</button>
+      <button type="button" class="page-review-save" id="page-review-confirm-page">Conferma pagina</button>
+      <button type="button" class="page-review-save" id="page-review-confirm-all">Conferma tutto</button>
+      <button type="button" class="page-review-reset" id="page-review-reset" disabled>Reset pagina</button>
       <span class="page-review-confirmed-label hidden" id="page-review-confirmed-label">Confermato</span>
     </div>
     <div class="page-review-body">
@@ -444,8 +576,554 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     </div>
   </div>
 </div>
+
+<div id="repair-progress-panel" class="repair-progress-panel hidden" aria-live="polite">
+  <div class="repair-progress-title">Riparazione pagina</div>
+  <div class="repair-progress-phase" id="repair-progress-phase">Avvio…</div>
+  <div class="repair-progress-detail" id="repair-progress-detail"></div>
+  <div class="repair-progress-bar"><div class="repair-progress-fill" id="repair-progress-fill"></div></div>
+</div>
+
 <pre id="out" aria-live="polite"></pre>
 
+<aside id="ingest-debug-panel" class="ingest-debug-panel" aria-label="Lab debug">
+  <button type="button" id="ingest-debug-panel-toggle" class="ingest-debug-panel-toggle" aria-expanded="false" aria-controls="ingest-debug-panel-body">Lab</button>
+  <div id="ingest-debug-panel-body" class="ingest-debug-panel-body" hidden>
+    <label class="ingest-debug-mock-toggle" for="ingest-debug-mock">
+      <input type="checkbox" id="ingest-debug-mock">
+      Modalità mock
+    </label>
+    <p id="ingest-debug-mock-hint" class="hint">Attiva mock per provare review e riparazione senza pipeline.</p>
+    <div id="ingest-debug-lab-actions" class="ingest-debug-lab-actions">
+      <button type="button" data-scenario="partial">Ingest parziale</button>
+      <button type="button" data-scenario="done">Ingest completo</button>
+      <button type="button" data-scenario="audit">Solo lacune audit</button>
+      <button type="button" data-scenario="reset">Reset progresso</button>
+    </div>
+    <pre id="ingest-debug-log" class="ingest-debug-log" aria-live="polite"></pre>
+  </div>
+</aside>
+
+<script>
+window.__librarainMockFixtures = {"audit.json":{"ok":true,"books":[{"source_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","title":"Libro mock — Storia di Roma","slug":"storia-mock","expected_page_count":20,"has_manifest":true,"complete":false,"stages":{"stage1OCR":{"present_count":20,"missing_count":0,"missing":[]},"stage2Vision":{"present_count":18,"missing_count":2,"missing":[7,14]},"stage3Editor":{"present_count":16,"missing_count":4,"missing":[3,7,12,14]},"output":{"present_count":15,"missing_count":5,"missing":[3,7,12,14,19]}},"missing_pages":[{"aligned":3,"missing_in":["stage3Editor","output"]},{"aligned":7,"missing_in":["stage2Vision","stage3Editor","output"]},{"aligned":12,"missing_in":["stage3Editor","output"]},{"aligned":14,"missing_in":["stage2Vision","stage3Editor","output"]},{"aligned":19,"missing_in":["output"]}],"excluded_aligned_pages":[],"viewer_pages":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"pending_review_pages":[5,8,11]}],"summary":{"book_count":1,"books_with_gaps":1,"books_complete":0,"total_pages_with_gaps":5}},"sse-ingest-done.json":[{"phase":"validation","status":"completed","source_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},{"phase":"gate_hash","status":"completed"},{"phase":"pdf_alignment","status":"completed"},{"phase":"page_enumeration","status":"completed","aligned_useful_pages":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"phase":"pipeline","status":"pipeline_total","global_total":60,"global_step":0},{"phase":"stage1_ocr","status":"started","page_total":20},{"phase":"stage1_ocr","status":"completed","page_total":20},{"phase":"stage2_vision","status":"started","page_total":20},{"phase":"stage2_vision","status":"completed","page_total":20},{"phase":"stage3_editor","status":"started","page_total":20},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":1,"page_index":1,"page_total":20,"global_step":41,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":2,"page_index":2,"page_total":20,"global_step":42,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":3,"page_index":3,"page_total":20,"global_step":43,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":4,"page_index":4,"page_total":20,"global_step":44,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":5,"page_index":5,"page_total":20,"global_step":45,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":6,"page_index":6,"page_total":20,"global_step":46,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":7,"page_index":7,"page_total":20,"global_step":47,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":8,"page_index":8,"page_total":20,"global_step":48,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":9,"page_index":9,"page_total":20,"global_step":49,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":10,"page_index":10,"page_total":20,"global_step":50,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":11,"page_index":11,"page_total":20,"global_step":51,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":12,"page_index":12,"page_total":20,"global_step":52,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":13,"page_index":13,"page_total":20,"global_step":53,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":14,"page_index":14,"page_total":20,"global_step":54,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":15,"page_index":15,"page_total":20,"global_step":55,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":16,"page_index":16,"page_total":20,"global_step":56,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":17,"page_index":17,"page_total":20,"global_step":57,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":18,"page_index":18,"page_total":20,"global_step":58,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":19,"page_index":19,"page_total":20,"global_step":59,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":20,"page_index":20,"page_total":20,"global_step":60,"global_total":60},{"phase":"stage3_editor","status":"completed","page_total":20},{"phase":"polyindex_toc","status":"completed"},{"phase":"polyindex_index","status":"completed"},{"phase":"time_index","status":"completed"}],"sse-ingest-partial.json":[{"phase":"validation","status":"completed","source_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},{"phase":"gate_hash","status":"completed"},{"phase":"pdf_alignment","status":"completed"},{"phase":"page_enumeration","status":"completed","aligned_useful_pages":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"phase":"pipeline","status":"pipeline_total","global_total":60,"global_step":0},{"phase":"stage1_ocr","status":"started","page_total":20},{"phase":"stage1_ocr","status":"completed","page_total":20},{"phase":"stage2_vision","status":"started","page_total":20},{"phase":"stage2_vision","status":"completed","page_total":20},{"phase":"stage3_editor","status":"started","page_total":20},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":1,"page_index":1,"page_total":20,"global_step":41,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":2,"page_index":2,"page_total":20,"global_step":42,"global_total":60},{"phase":"stage3_editor","status":"page_failed","aligned_page":3,"page_index":3,"page_total":20,"message":"Mock: editor leak note operatore"},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":4,"page_index":4,"page_total":20,"global_step":44,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":5,"page_index":5,"page_total":20,"global_step":45,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":6,"page_index":6,"page_total":20,"global_step":46,"global_total":60},{"phase":"stage3_editor","status":"page_failed","aligned_page":7,"page_index":7,"page_total":20,"message":"Mock: timeout vision"},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":8,"page_index":8,"page_total":20,"global_step":48,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":9,"page_index":9,"page_total":20,"global_step":49,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":10,"page_index":10,"page_total":20,"global_step":50,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":11,"page_index":11,"page_total":20,"global_step":51,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":12,"page_index":12,"page_total":20,"global_step":52,"global_total":60}],"sse-repair-all.json":[{"phase":"gaps_repair","status":"started","global_step":0,"global_total":9},{"phase":"pipeline","status":"pipeline_total","global_total":9,"global_step":0},{"phase":"stage2_vision","status":"started","aligned_page":7},{"phase":"stage2_vision","status":"page_progress","aligned_page":7,"global_step":1,"global_total":9},{"phase":"stage2_vision","status":"completed","aligned_page":7,"global_step":2,"global_total":9},{"phase":"stage3_editor","status":"started","aligned_page":3},{"phase":"stage3_editor","status":"page_progress","aligned_page":3,"global_step":3,"global_total":9},{"phase":"stage3_editor","status":"completed","aligned_page":3,"global_step":4,"global_total":9},{"phase":"stage3_editor","status":"started","aligned_page":7},{"phase":"stage3_editor","status":"page_progress","aligned_page":7,"global_step":5,"global_total":9},{"phase":"stage3_editor","status":"completed","aligned_page":7,"global_step":6,"global_total":9},{"phase":"stage3_editor","status":"started","aligned_page":12},{"phase":"stage3_editor","status":"page_progress","aligned_page":12,"global_step":7,"global_total":9},{"phase":"stage3_editor","status":"completed","aligned_page":12,"global_step":8,"global_total":9},{"phase":"stage3_editor","status":"started","aligned_page":14},{"phase":"stage3_editor","status":"page_progress","aligned_page":14,"global_step":9,"global_total":9},{"phase":"gaps_repair","status":"completed","global_step":9,"global_total":9}],"sse-repair-page.json":[{"phase":"page_repair","status":"started","aligned_page":7,"global_step":0,"global_total":3},{"phase":"stage1_ocr","status":"page_skipped","aligned_page":7,"global_step":1,"global_total":3},{"phase":"stage2_vision","status":"started","aligned_page":7,"global_step":1,"global_total":3},{"phase":"stage2_vision","status":"page_progress","aligned_page":7,"global_step":2,"global_total":3},{"phase":"stage2_vision","status":"completed","aligned_page":7,"global_step":2,"global_total":3},{"phase":"stage3_editor","status":"started","aligned_page":7,"global_step":2,"global_total":3},{"phase":"stage3_editor","status":"page_progress","aligned_page":7,"global_step":3,"global_total":3},{"phase":"stage3_editor","status":"completed","aligned_page":7,"global_step":3,"global_total":3},{"phase":"page_repair","status":"completed","aligned_page":7,"global_step":3,"global_total":3}],"transcripts.json":{"default":{"stage":"stage3Editor","producer_model":"mock-model","text":"Contenuto mock della pagina.\n\nParagrafo di esempio per la review side-by-side con l'anteprima immagine."},"pages":{"1":"# Pagina 1\n\n**PRESENTAZIONE**\n\nTesto introduttivo del libro mock.","3":"## Operator notes\n\nQuesto blocco simula una pagina corrotta (solo note).","5":"# Capitolo I\n\nLe origini leggendarie di Roma secondo il mock.","7":"# Pagina 7\n\nTrascrizione incompleta — prova **Prova a sistemare**.","8":"# Pagina 8\n\nTesto in attesa di conferma review.","11":"# Pagina 11\n\nAltra pagina in pending review.","12":"# Sommario parziale\n\nCapitolo I .... 12\nCapitolo II .... 24","15":"# Pagina 15\n\nContenuto normale per scorrere la review."}}};
+</script>
+<script type="text/plain" id="ingest-mock-inline-src">const MOCK_SHA = "a".repeat(64);
+const FIXTURE_BASE = "/mockup/fixtures/";
+const STORAGE_KEY = "librarainIngestDebugMock";
+
+let enabled = false;
+const transcriptOverrides = new Map();
+const renderUrlCache = new Map();
+let auditState = null;
+let repairContext = null;
+
+function jsonResponse(payload, status) {
+  return new Response(JSON.stringify(payload), {
+    status: status || 200,
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+  });
+}
+
+async function loadFixture(name) {
+  if (window.__librarainMockFixtures && window.__librarainMockFixtures[name]) {
+    return JSON.parse(JSON.stringify(window.__librarainMockFixtures[name]));
+  }
+  const res = await fetch(FIXTURE_BASE + name);
+  if (!res.ok) {
+    if (window.__librarainMockFixtures && window.__librarainMockFixtures[name]) {
+      return JSON.parse(JSON.stringify(window.__librarainMockFixtures[name]));
+    }
+    throw new Error("Fixture " + name + " non trovato");
+  }
+  return res.json();
+}
+
+function pageSvgDataUrl(aligned) {
+  if (renderUrlCache.has(aligned)) return renderUrlCache.get(aligned);
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="640" viewBox="0 0 480 640">' +
+    '<rect width="480" height="640" fill="#f5f5f0"/>' +
+    '<rect x="24" y="24" width="432" height="592" fill="#fff" stroke="#333" stroke-width="2"/>' +
+    '<text x="240" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#222">' +
+    "Pagina mock " + aligned +
+    "</text>" +
+    '<text x="240" y="170" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#666">' +
+    "librarAIn mock</text></svg>";
+  const url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  renderUrlCache.set(aligned, url);
+  return url;
+}
+
+function transcriptForPage(aligned, transcripts) {
+  if (transcriptOverrides.has(aligned)) {
+    return transcriptOverrides.get(aligned);
+  }
+  const pages = transcripts.pages || {};
+  if (Object.prototype.hasOwnProperty.call(pages, String(aligned))) {
+    return pages[String(aligned)];
+  }
+  const fallback = transcripts.default || {};
+  return fallback.text || "Testo mock pagina " + aligned + ".";
+}
+
+function parsePath(url) {
+  try {
+    return new URL(url, location.origin).pathname;
+  } catch {
+    return String(url || "").split("?")[0];
+  }
+}
+
+function resetAuditState() {
+  auditState = null;
+  repairContext = null;
+  transcriptOverrides.clear();
+}
+
+async function ensureAuditState() {
+  if (!auditState) {
+    auditState = await loadFixture("audit.json");
+  }
+  return auditState;
+}
+
+function findAuditBook(payload, sha) {
+  const target = String(sha || MOCK_SHA).trim().toLowerCase();
+  return (payload.books || []).find(function (book) {
+    return String(book.source_sha256 || "").toLowerCase() === target;
+  }) || null;
+}
+
+function syncBookStageCounts(book) {
+  const expected = book.expected_page_count || (book.viewer_pages || []).length;
+  Object.keys(book.stages || {}).forEach(function (key) {
+    const stage = book.stages[key];
+    const missing = Array.isArray(stage.missing) ? stage.missing : [];
+    stage.missing = missing;
+    stage.missing_count = missing.length;
+    stage.present_count = Math.max(0, expected - missing.length);
+  });
+  book.complete = !(book.missing_pages || []).length;
+}
+
+function syncAuditSummary(payload) {
+  const books = payload.books || [];
+  let totalGaps = 0;
+  let withGaps = 0;
+  books.forEach(function (book) {
+    const count = (book.missing_pages || []).length;
+    totalGaps += count;
+    if (count > 0) withGaps += 1;
+  });
+  payload.summary = Object.assign({}, payload.summary || {}, {
+    book_count: books.length,
+    books_with_gaps: withGaps,
+    books_complete: books.length - withGaps,
+    total_pages_with_gaps: totalGaps,
+  });
+}
+
+function markPageRepaired(sha, aligned) {
+  if (!auditState || typeof aligned !== "number") return;
+  const book = findAuditBook(auditState, sha);
+  if (!book) return;
+  book.missing_pages = (book.missing_pages || []).filter(function (entry) {
+    return entry.aligned !== aligned;
+  });
+  Object.keys(book.stages || {}).forEach(function (key) {
+    const stage = book.stages[key];
+    if (Array.isArray(stage.missing)) {
+      stage.missing = stage.missing.filter(function (page) { return page !== aligned; });
+    }
+  });
+  syncBookStageCounts(book);
+  if ((book.pending_review_pages || []).indexOf(aligned) < 0) {
+    book.pending_review_pages = (book.pending_review_pages || []).concat([aligned]).sort(function (a, b) {
+      return a - b;
+    });
+  }
+  syncAuditSummary(auditState);
+}
+
+function markPageReviewConfirmed(sha, aligned) {
+  aligned = parseInt(aligned, 10);
+  if (!auditState || !Number.isFinite(aligned) || aligned < 1) return;
+  const book = findAuditBook(auditState, sha);
+  if (!book) return;
+  book.pending_review_pages = (book.pending_review_pages || []).filter(function (page) {
+    return page !== aligned;
+  });
+  const output = book.stages && book.stages.output;
+  if (output && Array.isArray(output.missing)) {
+    output.missing = output.missing.filter(function (page) { return page !== aligned; });
+  }
+  syncBookStageCounts(book);
+  syncAuditSummary(auditState);
+}
+
+function patchRepairEvents(events, alignedPage) {
+  if (typeof alignedPage !== "number") return events;
+  return events.map(function (ev) {
+    if (ev.aligned_page == null) return ev;
+    return Object.assign({}, ev, { aligned_page: alignedPage });
+  });
+}
+
+function finishRepairContext() {
+  if (!repairContext) return;
+  if (repairContext.type === "page") {
+    markPageRepaired(repairContext.sha, repairContext.aligned);
+  } else if (repairContext.type === "all") {
+    repairContext.alignedPages.forEach(function (aligned) {
+      markPageRepaired(repairContext.sha, aligned);
+    });
+  }
+  repairContext = null;
+}
+
+function isEnabled() {
+  return enabled;
+}
+
+function setEnabled(next) {
+  enabled = !!next;
+  try {
+    if (enabled) localStorage.setItem(STORAGE_KEY, "1");
+    else localStorage.removeItem(STORAGE_KEY);
+  } catch {}
+  document.body.classList.toggle("ingest-mock-active", enabled);
+  window.dispatchEvent(new CustomEvent("librarain-mock-mode", { detail: { enabled } }));
+}
+
+function loadSavedEnabled() {
+  try {
+    if (localStorage.getItem(STORAGE_KEY) === "1") setEnabled(true);
+  } catch {}
+  if (new URLSearchParams(location.search).get("mock") === "1") setEnabled(true);
+}
+
+function pageRenderUrl(alignedPage) {
+  return pageSvgDataUrl(alignedPage);
+}
+
+async function apiFetch(url, options) {
+  const path = parsePath(url);
+  const method = ((options && options.method) || "GET").toUpperCase();
+
+  if (path === "/api/admin/book-pages-audit" && method === "GET") {
+    const payload = JSON.parse(JSON.stringify(await ensureAuditState()));
+    const params = new URL(url, location.origin).searchParams;
+    const shaFilter = (params.get("source_sha256") || "").trim().toLowerCase();
+    if (shaFilter && payload.books) {
+      return jsonResponse(Object.assign({}, payload, {
+        books: payload.books.filter(function (book) {
+          return String(book.source_sha256 || "").toLowerCase() === shaFilter;
+        }),
+      }));
+    }
+    return jsonResponse(payload);
+  }
+
+  if (path === "/api/admin/book-pages/transcript" && method === "GET") {
+    const params = new URL(url, location.origin).searchParams;
+    const aligned = parseInt(params.get("aligned_page") || "0", 10);
+    const transcripts = await loadFixture("transcripts.json");
+    const fallback = transcripts.default || {};
+    const text = transcriptForPage(aligned, transcripts);
+    return jsonResponse({
+      ok: true,
+      source_sha256: MOCK_SHA,
+      aligned_page: aligned,
+      stage: fallback.stage || "stage3Editor",
+      text: text,
+      producer_model: fallback.producer_model || "mock-model",
+    });
+  }
+
+  if (path === "/api/admin/book-pages/transcript/confirm" && method === "POST") {
+    const body = JSON.parse(String(options.body || "{}"));
+    const aligned = parseInt(body.aligned_page, 10);
+    if (!Number.isFinite(aligned) || aligned < 1) {
+      return jsonResponse({ ok: false, error: "aligned_page must be a positive integer" }, 400);
+    }
+    const text = typeof body.text === "string" ? body.text : "";
+    transcriptOverrides.set(aligned, text);
+    markPageReviewConfirmed(body.source_sha256 || MOCK_SHA, aligned);
+    return jsonResponse({ ok: true, result: { aligned_page: aligned } });
+  }
+
+  if (path === "/api/admin/book-pages/repair" && method === "POST") {
+    const body = JSON.parse(String(options.body || "{}"));
+    repairContext = {
+      type: "page",
+      sha: body.source_sha256 || MOCK_SHA,
+      aligned: body.aligned_page,
+    };
+    return jsonResponse({
+      ok: true,
+      job_id: "mock-repair-page",
+      events_url: "mock://fixture/sse-repair-page.json",
+    }, 202);
+  }
+
+  if (path === "/api/admin/book-pages/repair-all" && method === "POST") {
+    const body = JSON.parse(String(options.body || "{}"));
+    repairContext = {
+      type: "all",
+      sha: body.source_sha256 || MOCK_SHA,
+      alignedPages: (body.gap_pages || []).map(function (entry) {
+        return entry.aligned;
+      }).filter(function (aligned) {
+        return typeof aligned === "number" && aligned > 0;
+      }),
+    };
+    return jsonResponse({
+      ok: true,
+      job_id: "mock-repair-all",
+      events_url: "mock://fixture/sse-repair-all.json",
+    }, 202);
+  }
+
+  if (path === "/api/ingest/submit" && method === "POST") {
+    return jsonResponse({
+      ok: true,
+      job_id: "mock-ingest",
+      events_url: "mock://fixture/sse-ingest-partial.json",
+    }, 202);
+  }
+
+  return jsonResponse({ ok: false, error: "Mock non implementato per " + path }, 501);
+}
+
+async function watchRepairSse(eventsUrl, onEvent) {
+  if (!String(eventsUrl || "").startsWith("mock://fixture/")) {
+    throw new Error("URL SSE mock non valido");
+  }
+  const name = eventsUrl.replace("mock://fixture/", "");
+  let events = await loadFixture(name);
+  if (repairContext && repairContext.type === "page") {
+    events = patchRepairEvents(events, repairContext.aligned);
+  }
+  for (let i = 0; i < events.length; i++) {
+    onEvent(events[i]);
+    await new Promise(function (resolve) { setTimeout(resolve, 80); });
+  }
+  onEvent({ status: "done", result: { ok: true, mock: true } });
+  finishRepairContext();
+}
+
+async function loadScenarioFixture(name) {
+  return loadFixture(name);
+}
+
+window.__librarainMock = {
+  isEnabled: isEnabled,
+  setEnabled: setEnabled,
+  loadSavedEnabled: loadSavedEnabled,
+  resetAuditState: resetAuditState,
+  pageRenderUrl: pageRenderUrl,
+  apiFetch: apiFetch,
+  watchRepairSse: watchRepairSse,
+  loadScenarioFixture: loadScenarioFixture,
+  MOCK_SHA: MOCK_SHA,
+};
+</script>
+<script type="text/plain" id="ingest-lab-inline-src">const mock = window.__librarainMock;
+const EVENT_MS = 70;
+const LAB_WAIT_MS = 8000;
+
+let labApi = null;
+let running = false;
+
+function sleep(ms) {
+  return new Promise(function (resolve) { setTimeout(resolve, ms); });
+}
+
+function labLog(message) {
+  if (labApi && labApi.labLog) {
+    labApi.labLog(message);
+    return;
+  }
+  if (window.LibrarAInLog) window.LibrarAInLog.info(message, { sink: "lab" });
+}
+
+function waitForLab() {
+  if (labApi) return Promise.resolve(labApi);
+  if (window.__librarainIngestLab) {
+    labApi = window.__librarainIngestLab;
+    return Promise.resolve(labApi);
+  }
+  return new Promise(function (resolve, reject) {
+    const timer = setTimeout(function () {
+      window.removeEventListener("librarain-ingest-ready", onReady);
+      reject(new Error("UI ingest non pronta (ricarica la pagina)"));
+    }, LAB_WAIT_MS);
+    function onReady() {
+      clearTimeout(timer);
+      labApi = window.__librarainIngestLab || null;
+      if (!labApi) {
+        reject(new Error("API Lab mancante"));
+        return;
+      }
+      resolve(labApi);
+    }
+    window.addEventListener("librarain-ingest-ready", onReady, { once: true });
+  });
+}
+
+function syncMockCheckbox() {
+  const mockInput = document.getElementById("ingest-debug-mock");
+  if (mockInput) mockInput.checked = mock.isEnabled();
+}
+
+function syncSubmitButton() {
+  const submit = document.getElementById("submit-btn");
+  const hint = document.getElementById("ingest-debug-mock-hint");
+  if (!submit) return;
+  if (mock.isEnabled()) {
+    submit.disabled = true;
+    submit.title = "Disabilitato in modalità mock — usa i comandi Lab";
+    if (hint) hint.textContent = "Mock attivo: API finte e ingest reale disabilitato.";
+  } else {
+    submit.disabled = false;
+    submit.title = "";
+    if (hint) hint.textContent = "I comandi Lab attivano mock automaticamente. Spunta mock solo per review/repair manuali.";
+  }
+}
+
+function ensureMockEnabled() {
+  if (!mock.isEnabled()) {
+    mock.setEnabled(true);
+    syncMockCheckbox();
+    syncSubmitButton();
+    labLog("Mock attivato automaticamente.");
+  }
+}
+
+function setLabRunning(active) {
+  running = active;
+  const actions = document.getElementById("ingest-debug-lab-actions");
+  if (!actions) return;
+  actions.querySelectorAll("button").forEach(function (btn) {
+    btn.disabled = active;
+  });
+}
+
+async function playEvents(lab, fixtureName, label, finishUi) {
+  labLog("Avvio scenario: " + label + "…");
+  const events = await mock.loadScenarioFixture(fixtureName);
+  lab.startProgress();
+  if (lab.clearProgressAlert) lab.clearProgressAlert();
+  for (let i = 0; i < events.length; i++) {
+    lab.handleEvent(events[i]);
+    await sleep(EVENT_MS);
+  }
+  if (finishUi) {
+    await lab.refreshAudit();
+    if (lab.applyMockAuditPagesState) lab.applyMockAuditPagesState();
+    if (lab.finishIngestUi) lab.finishIngestUi();
+  }
+  labLog("Scenario completato: " + label + ".");
+}
+
+async function runAuditOnly(lab) {
+  labLog("Avvio scenario: solo lacune audit…");
+  await playEvents(lab, "sse-ingest-done.json", "solo lacune audit", false);
+  await lab.refreshAudit();
+  if (lab.applyMockAuditPagesState) lab.applyMockAuditPagesState();
+  if (lab.finishIngestUi) lab.finishIngestUi();
+  labLog("Scenario completato: lacune audit caricate.");
+}
+
+async function runScenario(scenario) {
+  ensureMockEnabled();
+  setLabRunning(true);
+  try {
+    const lab = await waitForLab();
+    if (scenario === "partial") {
+      await playEvents(lab, "sse-ingest-partial.json", "ingest parziale", false);
+      return;
+    }
+    if (scenario === "done") {
+      if (mock.resetAuditState) mock.resetAuditState();
+      await playEvents(lab, "sse-ingest-done.json", "ingest completo", true);
+      return;
+    }
+    if (scenario === "audit") {
+      if (mock.resetAuditState) mock.resetAuditState();
+      await runAuditOnly(lab);
+      return;
+    }
+    if (scenario === "reset") {
+      if (mock.resetAuditState) mock.resetAuditState();
+      lab.resetProgress();
+      if (lab.clearProgressAlert) lab.clearProgressAlert();
+      labLog("Progresso azzerato.");
+    }
+  } finally {
+    setLabRunning(false);
+  }
+}
+
+function initPanel() {
+  const panel = document.getElementById("ingest-debug-panel");
+  const toggle = document.getElementById("ingest-debug-panel-toggle");
+  const body = document.getElementById("ingest-debug-panel-body");
+  const mockInput = document.getElementById("ingest-debug-mock");
+  const actions = document.getElementById("ingest-debug-lab-actions");
+  if (!panel || !toggle || !body || !mockInput || !actions) return;
+
+  mock.loadSavedEnabled();
+  syncMockCheckbox();
+  syncSubmitButton();
+  labApi = window.__librarainIngestLab || null;
+
+  if (new URLSearchParams(location.search).get("mock") === "1") {
+    if (labApi && labApi.openLabPanel) labApi.openLabPanel();
+    mock.setEnabled(true);
+    syncMockCheckbox();
+    syncSubmitButton();
+    labLog("Pannello Lab aperto (mock=1).");
+  }
+
+  mockInput.addEventListener("change", function () {
+    mock.setEnabled(mockInput.checked);
+    syncSubmitButton();
+    labLog(mockInput.checked ? "Mock attivato manualmente." : "Mock disattivato.");
+  });
+
+  window.addEventListener("librarain-mock-mode", function () {
+    syncMockCheckbox();
+    syncSubmitButton();
+  });
+
+  actions.addEventListener("click", function (event) {
+    const btn = event.target.closest("button[data-scenario]");
+    if (!btn || running) return;
+    const scenario = btn.getAttribute("data-scenario");
+    labLog("Comando: " + btn.textContent.trim() + "…");
+    runScenario(scenario).catch(function (err) {
+      if (labApi && labApi.labLogError) labApi.labLogError(String(err && err.message ? err.message : err));
+      else labLog("Errore: " + String(err && err.message ? err.message : err));
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("lab scenario failed", err);
+    });
+  });
+
+  labApi = window.__librarainIngestLab || null;
+  if (labApi) labLog("Lab pronto (inline).");
+}
+
+window.addEventListener("librarain-ingest-ready", function () {
+  labApi = window.__librarainIngestLab || null;
+  labLog("UI ingest collegata al Lab (inline).");
+}, { once: true });
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initPanel);
+} else {
+  initPanel();
+}
+</script>
 <script type="module">
 (function () {
   const PDFJS_ESM =
@@ -1289,11 +1967,68 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
   var globalStatsEl = document.getElementById("global-stats");
   var phaseRowsEl = document.getElementById("phase-rows");
   var ingestPagesPanel = document.getElementById("ingest-pages-panel");
+  var ingestProcessedSection = document.getElementById("ingest-processed-section");
+  var ingestPendingSection = document.getElementById("ingest-pending-section");
   var ingestProcessedStats = document.getElementById("ingest-processed-stats");
-  var ingestProcessedChips = document.getElementById("ingest-processed-chips");
   var ingestReviewAllBtn = document.getElementById("ingest-review-all-btn");
   var ingestPendingStats = document.getElementById("ingest-pending-stats");
   var ingestPendingTableWrap = document.getElementById("ingest-pending-table-wrap");
+  var repairProgressPanel = document.getElementById("repair-progress-panel");
+  var repairProgressPhase = document.getElementById("repair-progress-phase");
+  var repairProgressDetail = document.getElementById("repair-progress-detail");
+  var repairProgressFill = document.getElementById("repair-progress-fill");
+  var ingestDebugPanel = document.getElementById("ingest-debug-panel");
+  var ingestDebugPanelToggle = document.getElementById("ingest-debug-panel-toggle");
+  var ingestDebugPanelBody = document.getElementById("ingest-debug-panel-body");
+  var ingestDebugLogEl = document.getElementById("ingest-debug-log");
+
+  function openLabPanel() {
+    if (!ingestDebugPanelBody || !ingestDebugPanel || !ingestDebugPanelToggle) return;
+    ingestDebugPanelBody.hidden = false;
+    ingestDebugPanelToggle.setAttribute("aria-expanded", "true");
+    ingestDebugPanel.classList.add("is-open");
+  }
+
+  function labLog(message) {
+    if (window.LibrarAInLog) window.LibrarAInLog.info(message, { sink: "lab" });
+    var line = new Date().toLocaleTimeString("it-IT") + " — " + message;
+    if (ingestDebugLogEl) {
+      ingestDebugLogEl.classList.remove("has-error");
+      ingestDebugLogEl.textContent = (ingestDebugLogEl.textContent ? ingestDebugLogEl.textContent + "\n" : "") + line;
+      ingestDebugLogEl.scrollTop = ingestDebugLogEl.scrollHeight;
+    }
+    openLabPanel();
+  }
+
+  function labLogError(message) {
+    if (window.LibrarAInLog) window.LibrarAInLog.error(message, { sink: "lab" });
+    var line = new Date().toLocaleTimeString("it-IT") + " — " + message;
+    if (ingestDebugLogEl) {
+      ingestDebugLogEl.classList.add("has-error");
+      ingestDebugLogEl.textContent = (ingestDebugLogEl.textContent ? ingestDebugLogEl.textContent + "\n" : "") + line;
+      ingestDebugLogEl.scrollTop = ingestDebugLogEl.scrollHeight;
+    }
+    openLabPanel();
+  }
+
+  if (ingestDebugPanelToggle && ingestDebugPanelBody && ingestDebugPanel) {
+    ingestDebugPanelToggle.addEventListener("click", function () {
+      var open = ingestDebugPanelBody.hidden;
+      ingestDebugPanelBody.hidden = !open;
+      ingestDebugPanelToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      ingestDebugPanel.classList.toggle("is-open", open);
+      if (open) labLog("Pannello Lab aperto.");
+    });
+  }
+
+  var ingestDebugLabActions = document.getElementById("ingest-debug-lab-actions");
+  if (ingestDebugLabActions) {
+    ingestDebugLabActions.addEventListener("click", function (event) {
+      var btn = event.target.closest("button[data-scenario]");
+      if (!btn || window.__librarainMock) return;
+      labLogError("Lab non pronto — riavvia il server (make run-server) e ricarica la pagina.");
+    });
+  }
 
   var ingestPagesState = {
     sourceSha256: "",
@@ -1301,6 +2036,8 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     processedPages: [],
     failedPages: {},
     auditBook: null,
+    jobComplete: false,
+    uiPhase: "idle",
   };
   var ingestAuditTimer = null;
 
@@ -1309,6 +2046,27 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     stage2Vision: "Stage2 Vision",
     stage3Editor: "Stage3 Editor",
     output: "Output",
+  };
+
+  var REPAIR_PHASE_LABELS = {
+    page_repair: "Preparazione",
+    gaps_repair: "Riparazione lacune",
+    stage1_ocr: "Stage 1 — OCR",
+    stage2_vision: "Stage 2 — Vision",
+    stage3_editor: "Stage 3 — Editor",
+    queue: "In coda",
+    pipeline: "Pipeline",
+  };
+  var REPAIR_STAGE_PHASES = ["stage1_ocr", "stage2_vision", "stage3_editor"];
+  var activeRowRepairUI = null;
+  var activeBulkRepairUI = null;
+
+  var FAILED_PHASE_TO_MISSING = {
+    stage1_ocr: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
+    stage2_vision: ["stage2Vision", "stage3Editor", "output"],
+    stage3_editor: ["stage3Editor", "output"],
+    render: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
+    pipeline: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
   };
 
   function resetIngestPagesState() {
@@ -1322,6 +2080,8 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
       processedPages: [],
       failedPages: {},
       auditBook: null,
+      jobComplete: false,
+      uiPhase: "idle",
     };
     ingestPagesPanel.classList.remove("show");
     renderIngestPagesSections();
@@ -1346,16 +2106,52 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     ingestPagesState.failedPages[aligned] = phase || "pipeline";
   }
 
+  function finishIngestUi() {
+    ingestPagesState.uiPhase = "finished";
+    ingestPagesState.jobComplete = true;
+    if (globalTotal > 0) globalStep = globalTotal;
+    renderAllProgress();
+    scheduleIngestAuditRefresh();
+    renderIngestPagesSections();
+  }
+
+  function applyMockAuditPagesState() {
+    var book = ingestPagesState.auditBook;
+    if (!book) return;
+    if (Array.isArray(book.viewer_pages) && book.viewer_pages.length) {
+      ingestPagesState.expectedPages = sortedUniquePages(book.viewer_pages);
+    }
+    var stage3Missing = {};
+    var stage3 = book.stages && book.stages.stage3Editor;
+    if (stage3 && Array.isArray(stage3.missing)) {
+      stage3.missing.forEach(function (p) { stage3Missing[p] = true; });
+    }
+    ingestPagesState.processedPages = sortedUniquePages(
+      ingestPagesState.expectedPages.filter(function (p) { return !stage3Missing[p]; })
+    );
+    ingestPagesState.failedPages = {};
+    renderIngestPagesSections();
+  }
+
+  function markIngestJobComplete() {
+    finishIngestUi();
+  }
+
   function scheduleIngestAuditRefresh() {
     if (!ingestPagesState.sourceSha256) return;
     if (ingestAuditTimer) clearTimeout(ingestAuditTimer);
     ingestAuditTimer = setTimeout(function () {
       ingestAuditTimer = null;
-      refreshIngestAudit().catch(function () {});
+      refreshIngestAudit().catch(function (err) {
+        if (window.LibrarAInLog) window.LibrarAInLog.reportError("refresh ingest audit failed", err);
+      });
     }, 800);
   }
 
   async function apiFetch(url, options) {
+    if (window.__librarainMock && window.__librarainMock.isEnabled()) {
+      return window.__librarainMock.apiFetch(url, options);
+    }
     var opts = options || {};
     opts.headers = Object.assign({}, opts.headers || {});
     var token = apiToken();
@@ -1367,6 +2163,9 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
         opts.headers["X-API-Token"] = entered;
         res = await fetch(url, opts);
       }
+    }
+    if (!res.ok && window.LibrarAInLog) {
+      window.LibrarAInLog.logHttpFailure(String(url), res.status);
     }
     return res;
   }
@@ -1403,7 +2202,6 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     if (book) {
       for (i = 0; i < (book.missing_pages || []).length; i++) {
         var entry = book.missing_pages[i];
-        if (processedSet[entry.aligned]) continue;
         if (byPage[entry.aligned]) {
           byPage[entry.aligned].kind = "gap";
           byPage[entry.aligned].missing_in = entry.missing_in || [];
@@ -1419,9 +2217,10 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
       }
       for (i = 0; i < (book.pending_review_pages || []).length; i++) {
         aligned = book.pending_review_pages[i];
-        if (processedSet[aligned]) continue;
-        if (byPage[aligned]) byPage[aligned].pendingReview = true;
-        else {
+        if (byPage[aligned]) {
+          byPage[aligned].pendingReview = true;
+          if (byPage[aligned].kind === "waiting") byPage[aligned].kind = "review";
+        } else {
           byPage[aligned] = {
             aligned: aligned,
             kind: "review",
@@ -1433,6 +2232,374 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
       }
     }
     return Object.keys(byPage).map(function (k) { return byPage[k]; }).sort(function (a, b) { return a.aligned - b.aligned; });
+  }
+
+  function repairMissingInForRow(row) {
+    if (row.missing_in && row.missing_in.length) return row.missing_in.slice();
+    if (row.kind === "failed" && row.failedPhase) {
+      return (FAILED_PHASE_TO_MISSING[row.failedPhase] || ["stage1OCR", "stage2Vision", "stage3Editor", "output"]).slice();
+    }
+    return [];
+  }
+
+  function repairablePendingEntries(pending) {
+    return pending.filter(function (row) { return repairMissingInForRow(row).length > 0; });
+  }
+
+  function formatRepairPhaseLabel(ev, includePage) {
+    var phase = ev.phase || "";
+    var status = ev.status || "";
+    var label = REPAIR_PHASE_LABELS[phase] || phase || "In corso";
+    if (status === "page_skipped") label += " (riuso cache)";
+    else if (status === "started") label += "…";
+    else if (status === "completed" || status === "done") label += " ✓";
+    if (includePage && ev.aligned_page) label = "Pagina " + ev.aligned_page + " — " + label;
+    return label;
+  }
+
+  function repairProgressPercent(ev) {
+    if (typeof ev.global_step === "number" && typeof ev.global_total === "number" && ev.global_total > 0) {
+      return Math.round((ev.global_step / ev.global_total) * 100);
+    }
+    return null;
+  }
+
+  function clearActiveRowRepairUI() {
+    if (!activeRowRepairUI) return;
+    activeRowRepairUI.reset();
+    activeRowRepairUI = null;
+  }
+
+  function clearActiveBulkRepairUI() {
+    if (!activeBulkRepairUI) return;
+    activeBulkRepairUI.reset();
+    activeBulkRepairUI = null;
+  }
+
+  function showRepairProgress(sourceSha256, alignedPage) {
+    repairProgressPanel.classList.remove("hidden", "is-error");
+    repairProgressPhase.textContent = "Pagina " + alignedPage + " — avvio…";
+    repairProgressDetail.textContent = sourceSha256.slice(0, 16) + "…";
+    repairProgressFill.style.width = "0%";
+  }
+
+  function formatRepairErrorMessage(err) {
+    var text = String((err && err.message) || err || "Riparazione fallita");
+    if (text.charAt(0) === "{") {
+      try {
+        var parsed = JSON.parse(text);
+        if (parsed.message) return parsed.message;
+      } catch (e) {}
+    }
+    return text;
+  }
+
+  function showRepairProgressError(message) {
+    repairProgressPanel.classList.remove("hidden");
+    repairProgressPanel.classList.add("is-error");
+    repairProgressPhase.textContent = "Riparazione non riuscita";
+    repairProgressDetail.textContent = message;
+    repairProgressFill.style.width = "0%";
+  }
+
+  function hideRepairProgress() {
+    repairProgressPanel.classList.add("hidden");
+    repairProgressPanel.classList.remove("is-error");
+  }
+
+  function updateRepairProgress(ev) {
+    if (activeBulkRepairUI) {
+      activeBulkRepairUI.update(ev);
+      return;
+    }
+    repairProgressPhase.textContent = formatRepairPhaseLabel(ev, true);
+    var bits = [];
+    if (ev.message) bits.push(ev.message);
+    if (ev.entry_stage) bits.push("entry: " + ev.entry_stage);
+    var percent = repairProgressPercent(ev);
+    if (percent !== null && typeof ev.global_step === "number" && typeof ev.global_total === "number") {
+      bits.push(ev.global_step + " / " + ev.global_total);
+      repairProgressFill.style.width = percent + "%";
+    }
+    repairProgressDetail.textContent = bits.join(" · ");
+    if (activeRowRepairUI) activeRowRepairUI.update(ev);
+    if (activeBulkRepairUI) activeBulkRepairUI.update(ev);
+  }
+
+  function watchRepairJobViaSSE(eventsUrl) {
+    if (window.__librarainMock && window.__librarainMock.isEnabled() && String(eventsUrl || "").indexOf("mock://") === 0) {
+      return window.__librarainMock.watchRepairSse(eventsUrl, updateRepairProgress);
+    }
+    return new Promise(function (resolve, reject) {
+      var es = new EventSource(withToken(eventsUrl));
+      var settled = false;
+      function finish(fn, value) {
+        if (settled) return;
+        settled = true;
+        es.close();
+        fn(value);
+      }
+      function handleMessage(event) {
+        var data;
+        try {
+          data = JSON.parse(event.data);
+        } catch (e) {
+          return;
+        }
+        updateRepairProgress(data);
+        if (data.status === "done") finish(resolve, data);
+        if (data.status === "error") {
+          var err = new Error(data.message || "Riparazione fallita");
+          err.code = data.code || "";
+          finish(reject, err);
+        }
+      }
+      [
+        "started", "progress", "page_progress", "page_skipped",
+        "completed", "failed", "pipeline_total", "page_repair",
+      ].forEach(function (name) {
+        es.addEventListener(name, handleMessage);
+      });
+      es.addEventListener("done", handleMessage);
+      es.addEventListener("error", handleMessage);
+      es.onerror = function () { finish(reject, new Error("Connessione SSE interrotta")); };
+    });
+  }
+
+  async function submitRepairIngestPage(sourceSha256, alignedPage, missingIn) {
+    showRepairProgress(sourceSha256, alignedPage);
+    showProgressAlert("Riparazione pagina " + alignedPage + " avviata…");
+    var res = await apiFetch("/api/admin/book-pages/repair", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_sha256: sourceSha256,
+        aligned_page: alignedPage,
+        missing_in: missingIn,
+      }),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.ok) {
+      hideRepairProgress();
+      throw new Error(data.error || "Avvio riparazione fallito");
+    }
+    if (data.events_url) {
+      await watchRepairJobViaSSE(data.events_url);
+    } else if (data.job_id) {
+      await watchRepairJobViaSSE("/api/ingest/" + encodeURIComponent(data.job_id) + "/events");
+    }
+    hideRepairProgress();
+    clearActiveRowRepairUI();
+    clearActiveBulkRepairUI();
+    showProgressAlert("Riparazione pagina " + alignedPage + " completata. Apri Review per confermare il testo.");
+    await refreshIngestAudit();
+    applyMockAuditPagesState();
+  }
+
+  async function submitRepairAllIngestPages(sourceSha256, gapEntries) {
+    showProgressAlert("Riparazione di " + gapEntries.length + " pagine avviata…");
+    var res = await apiFetch("/api/admin/book-pages/repair-all", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_sha256: sourceSha256,
+        gap_pages: gapEntries.map(function (entry) {
+          return {
+            aligned: entry.aligned,
+            missing_in: repairMissingInForRow(entry),
+          };
+        }),
+      }),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.ok) {
+      throw new Error(data.error || "Avvio riparazione fallito");
+    }
+    if (data.events_url) {
+      await watchRepairJobViaSSE(data.events_url);
+    } else if (data.job_id) {
+      await watchRepairJobViaSSE("/api/ingest/" + encodeURIComponent(data.job_id) + "/events");
+    }
+    clearActiveBulkRepairUI();
+    showProgressAlert(
+      "Riparazione completata per " + gapEntries.length + " pagine. Apri Review per confermare i testi."
+    );
+    await refreshIngestAudit();
+    applyMockAuditPagesState();
+  }
+
+  function createRepairAction(sourceSha256, alignedPage, missingIn) {
+    var stack = document.createElement("div");
+    stack.className = "audit-repair-stack";
+    var statusRow = document.createElement("div");
+    statusRow.className = "audit-repair-status-row";
+    var statusLabel = document.createElement("span");
+    statusLabel.className = "audit-repair-status-label";
+    statusLabel.textContent = "Avvio…";
+    var barWrap = document.createElement("div");
+    barWrap.className = "audit-repair-inline-bar";
+    var barFill = document.createElement("div");
+    barFill.className = "audit-repair-inline-fill";
+    barWrap.appendChild(barFill);
+    statusRow.append(statusLabel, barWrap);
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "audit-repair-btn";
+    btn.textContent = "Prova a sistemare";
+    function rowEl() { return stack.closest("tr"); }
+    function setRunning(active) {
+      stack.classList.toggle("is-active", active);
+      btn.classList.toggle("is-running", active);
+      var row = rowEl();
+      if (row) row.classList.toggle("audit-row-repairing", active);
+    }
+    function updateRow(ev) {
+      statusLabel.textContent = formatRepairPhaseLabel(ev, false);
+      var percent = repairProgressPercent(ev);
+      if (percent !== null) barFill.style.width = percent + "%";
+      var short = formatRepairPhaseLabel(ev, false).replace(" (riuso cache)", "");
+      btn.textContent = short.length > 18 ? "In corso…" : short;
+    }
+    function showRowError(message) {
+      setRunning(true);
+      statusLabel.textContent = message;
+      statusLabel.classList.add("is-error");
+      barFill.style.width = "0%";
+      btn.disabled = false;
+      btn.textContent = "Riprova";
+    }
+    function resetRow() {
+      setRunning(false);
+      statusLabel.textContent = "";
+      statusLabel.classList.remove("is-error");
+      barFill.style.width = "0%";
+      btn.disabled = false;
+      btn.textContent = "Prova a sistemare";
+    }
+    btn.addEventListener("click", function () {
+      statusLabel.classList.remove("is-error");
+      btn.disabled = true;
+      btn.textContent = "Avvio…";
+      setRunning(true);
+      statusLabel.textContent = "Avvio…";
+      barFill.style.width = "0%";
+      activeRowRepairUI = { update: updateRow, reset: resetRow, showError: showRowError };
+      submitRepairIngestPage(sourceSha256, alignedPage, missingIn).catch(function (err) {
+        var msg = formatRepairErrorMessage(err);
+        showRepairProgressError(msg);
+        if (activeRowRepairUI) activeRowRepairUI.showError(msg);
+        showProgressAlert(msg);
+      });
+    });
+    stack.append(statusRow, btn);
+    return stack;
+  }
+
+  function createRepairAllAction(sourceSha256, gapEntries) {
+    var stack = document.createElement("div");
+    stack.className = "audit-repair-all-stack";
+    var status = document.createElement("div");
+    status.className = "audit-repair-all-status";
+    var stageLabel = document.createElement("span");
+    stageLabel.className = "audit-repair-all-stage-label";
+    var pagesBar = document.createElement("div");
+    pagesBar.className = "audit-repair-all-pages";
+    var overallBarWrap = document.createElement("div");
+    overallBarWrap.className = "audit-repair-all-overall-bar";
+    var overallFill = document.createElement("div");
+    overallFill.className = "audit-repair-all-overall-fill";
+    overallBarWrap.appendChild(overallFill);
+    status.append(stageLabel, pagesBar, overallBarWrap);
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "audit-repair-btn";
+    btn.textContent = "Prova a sistemare tutto";
+    var alignedPages = gapEntries.map(function (entry) { return entry.aligned; }).sort(function (a, b) { return a - b; });
+    var pageSegs = {};
+    for (var s = 0; s < alignedPages.length; s++) {
+      var aligned = alignedPages[s];
+      var seg = document.createElement("div");
+      seg.className = "audit-repair-all-page-seg";
+      seg.title = "Pagina " + aligned;
+      pagesBar.appendChild(seg);
+      pageSegs[aligned] = seg;
+    }
+    var currentPhase = "";
+    var overallTotal = alignedPages.length * REPAIR_STAGE_PHASES.length;
+    function resetPageSegs() {
+      Object.keys(pageSegs).forEach(function (key) {
+        pageSegs[key].className = "audit-repair-all-page-seg";
+      });
+    }
+    function updateOverall(ev) {
+      if (ev.status === "pipeline_total" && typeof ev.global_total === "number" && ev.global_total > 0) {
+        overallTotal = ev.global_total;
+      }
+      var percent = repairProgressPercent(ev);
+      if (percent !== null) {
+        overallFill.style.width = percent + "%";
+        return;
+      }
+      if (typeof ev.global_step === "number" && overallTotal > 0) {
+        overallFill.style.width = Math.round((ev.global_step / overallTotal) * 100) + "%";
+      }
+    }
+    function updateBulk(ev) {
+      updateOverall(ev);
+      var phase = ev.phase || "";
+      if (REPAIR_STAGE_PHASES.indexOf(phase) >= 0 && ev.status === "started" && phase !== currentPhase) {
+        currentPhase = phase;
+        resetPageSegs();
+      }
+      if (REPAIR_STAGE_PHASES.indexOf(phase) >= 0 || phase === "gaps_repair" || phase === "queue" || phase === "pipeline") {
+        stageLabel.textContent = formatRepairPhaseLabel(ev, false);
+      }
+      if (typeof ev.aligned_page === "number" && pageSegs[ev.aligned_page]) {
+        var seg = pageSegs[ev.aligned_page];
+        if (ev.status === "page_skipped") seg.className = "audit-repair-all-page-seg is-skipped";
+        else if (ev.status === "page_progress" || ev.status === "completed") seg.className = "audit-repair-all-page-seg is-done";
+        else if (ev.status === "started" || ev.status === "progress") seg.className = "audit-repair-all-page-seg is-active";
+      }
+    }
+    function setRunning(active) {
+      stack.classList.toggle("is-active", active);
+      btn.classList.toggle("is-running", active);
+    }
+    function showError(message) {
+      setRunning(true);
+      stageLabel.textContent = message;
+      stageLabel.classList.add("is-error");
+      overallFill.style.width = "0%";
+      btn.disabled = false;
+      btn.textContent = "Riprova";
+    }
+    function resetBulk() {
+      setRunning(false);
+      currentPhase = "";
+      stageLabel.textContent = "";
+      stageLabel.classList.remove("is-error");
+      overallFill.style.width = "0%";
+      resetPageSegs();
+      btn.disabled = false;
+      btn.textContent = "Prova a sistemare tutto";
+    }
+    btn.addEventListener("click", function () {
+      stageLabel.classList.remove("is-error");
+      btn.disabled = true;
+      btn.textContent = "Avvio…";
+      setRunning(true);
+      stageLabel.textContent = "Avvio…";
+      overallFill.style.width = "0%";
+      resetPageSegs();
+      activeBulkRepairUI = { update: updateBulk, reset: resetBulk, showError: showError };
+      submitRepairAllIngestPages(sourceSha256, gapEntries).catch(function (err) {
+        var msg = formatRepairErrorMessage(err);
+        if (activeBulkRepairUI) activeBulkRepairUI.showError(msg);
+        showProgressAlert(msg);
+      });
+    });
+    stack.append(status, btn);
+    return stack;
   }
 
   function createIconButton(label, title, onClick) {
@@ -1448,33 +2615,41 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     return btn;
   }
 
-  function renderIngestPagesSections() {
-    var processed = ingestPagesState.processedPages.slice();
-    var pending = buildPendingEntries();
-    var hasPages = processed.length || pending.length || ingestPagesState.expectedPages.length;
-    ingestPagesPanel.classList.toggle("show", hasPages && progressBox.classList.contains("show"));
+  function createPagePreviewAction(sourceSha256, alignedPage, viewerPages) {
+    return createIconButton("▣", "Visualizza pagina", function () {
+      openPagePreview(sourceSha256, alignedPage, viewerPages);
+    });
+  }
 
-    ingestProcessedStats.textContent = processed.length
-      ? processed.length + " pagin" + (processed.length === 1 ? "a" : "e") + " con Stage 3 completato"
-      : "Nessuna pagina ancora.";
-    ingestReviewAllBtn.disabled = processed.length === 0;
-    ingestProcessedChips.innerHTML = "";
-    for (var i = 0; i < processed.length; i++) {
-      (function (pageNum) {
-        var chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "ingest-page-chip";
-        chip.textContent = String(pageNum);
-        chip.title = "Review pagina " + pageNum;
-        chip.addEventListener("click", function () {
-          openPageReview(ingestPagesState.sourceSha256, pageNum, processed);
-        });
-        ingestProcessedChips.appendChild(chip);
-      })(processed[i]);
+  function createPageReviewAction(sourceSha256, alignedPage, reviewPages) {
+    return createIconButton("⎘", "Review immagine + testo", function () {
+      openPageReview(sourceSha256, alignedPage, reviewPages.length ? reviewPages : [alignedPage]);
+    });
+  }
+
+  function renderIngestPagesSections() {
+    if (ingestPagesState.uiPhase !== "finished") {
+      ingestPagesPanel.classList.remove("show");
+      return;
     }
 
+    var processed = ingestPagesState.processedPages.slice();
+    var pendingReview = pendingReviewPagesFromAudit();
+    var pending = buildPendingEntries();
+    var repairable = repairablePendingEntries(pending);
+    var hasPages = processed.length || pending.length || pendingReview.length || ingestPagesState.expectedPages.length;
+    ingestPagesPanel.classList.toggle("show", progressBox.classList.contains("show") && hasPages);
+
+    if (ingestProcessedSection) ingestProcessedSection.classList.toggle("is-hidden", pendingReview.length === 0);
+    if (ingestPendingSection) ingestPendingSection.classList.toggle("is-hidden", pending.length === 0);
+
+    ingestProcessedStats.textContent = pendingReview.length
+      ? pendingReview.length + " pagin" + (pendingReview.length === 1 ? "a" : "e") + " in attesa di review"
+      : "Nessuna pagina ancora.";
+    ingestReviewAllBtn.disabled = pendingReview.length === 0;
+
     ingestPendingStats.textContent = pending.length
-      ? pending.length + " pagin" + (pending.length === 1 ? "a" : "e") + " ancora da completare"
+      ? pending.length + " pagin" + (pending.length === 1 ? "a" : "e") + " da completare o riparare"
       : (ingestPagesState.expectedPages.length ? "Tutte le pagine attese risultano elaborate." : "Nessuna pagina in attesa.");
     ingestPendingTableWrap.innerHTML = "";
     if (!pending.length) return;
@@ -1482,15 +2657,15 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     var table = document.createElement("table");
     table.className = "audit-pages-table";
     var colgroup = document.createElement("colgroup");
-    for (var c = 0; c < 3; c++) {
+    ["audit-col-page", "audit-col-status", "audit-col-actions"].forEach(function (cls) {
       var col = document.createElement("col");
-      col.className = c === 0 ? "audit-col-page" : (c === 1 ? "audit-col-status" : "audit-col-actions");
+      col.className = cls;
       colgroup.appendChild(col);
-    }
+    });
     table.appendChild(colgroup);
     var thead = document.createElement("thead");
     var headTr = document.createElement("tr");
-    ["Pagina", "Stato", ""].forEach(function (text) {
+    ["Pagina", "Stato", "Azioni"].forEach(function (text) {
       var th = document.createElement("th");
       th.textContent = text;
       headTr.appendChild(th);
@@ -1500,8 +2675,10 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     var tbody = document.createElement("tbody");
     var viewerPages = (ingestPagesState.auditBook && ingestPagesState.auditBook.viewer_pages) || pending.map(function (e) { return e.aligned; });
     var reviewPages = (ingestPagesState.auditBook && ingestPagesState.auditBook.pending_review_pages) || [];
+    var i;
     for (i = 0; i < pending.length; i++) {
       var row = pending[i];
+      var missingIn = repairMissingInForRow(row);
       var tr = document.createElement("tr");
       if (row.pendingReview) tr.classList.add("audit-row-pending-review");
       var tdPage = document.createElement("td");
@@ -1512,9 +2689,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
       pageNumEl.textContent = String(row.aligned);
       controls.appendChild(pageNumEl);
       if (ingestPagesState.sourceSha256) {
-        controls.appendChild(createIconButton("▣", "Visualizza pagina", function () {
-          openPagePreview(ingestPagesState.sourceSha256, row.aligned, viewerPages);
-        }));
+        controls.appendChild(createPagePreviewAction(ingestPagesState.sourceSha256, row.aligned, viewerPages));
       }
       tdPage.appendChild(controls);
       var tdStatus = document.createElement("td");
@@ -1530,13 +2705,27 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
         tdStatus.innerHTML = '<span class="audit-status-wait">Non elaborata</span>';
       }
       var tdActions = document.createElement("td");
-      if (ingestPagesState.sourceSha256 && (row.pendingReview || row.kind === "review")) {
-        tdActions.appendChild(createIconButton("⎘", "Review immagine + testo", function () {
-          openPageReview(ingestPagesState.sourceSha256, row.aligned, reviewPages.length ? reviewPages : [row.aligned]);
-        }));
+      var actionWrap = document.createElement("div");
+      actionWrap.className = "audit-repair-cell";
+      if (ingestPagesState.sourceSha256 && missingIn.length) {
+        actionWrap.appendChild(createRepairAction(ingestPagesState.sourceSha256, row.aligned, missingIn));
       }
+      if (ingestPagesState.sourceSha256 && (row.pendingReview || row.kind === "review")) {
+        actionWrap.appendChild(createPageReviewAction(ingestPagesState.sourceSha256, row.aligned, reviewPages));
+      }
+      tdActions.appendChild(actionWrap);
       tr.append(tdPage, tdStatus, tdActions);
       tbody.appendChild(tr);
+    }
+    if (repairable.length > 1 && ingestPagesState.sourceSha256) {
+      var footTr = document.createElement("tr");
+      footTr.className = "audit-pages-footer-row";
+      var tdFootPage = document.createElement("td");
+      var tdFootStatus = document.createElement("td");
+      var tdFootActions = document.createElement("td");
+      tdFootActions.appendChild(createRepairAllAction(ingestPagesState.sourceSha256, repairable));
+      footTr.append(tdFootPage, tdFootStatus, tdFootActions);
+      tbody.appendChild(footTr);
     }
     table.appendChild(tbody);
     ingestPendingTableWrap.appendChild(table);
@@ -1556,7 +2745,8 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
   var pageReviewImgFrame = document.getElementById("page-review-img-frame");
   var pageReviewTextFrame = document.getElementById("page-review-text-frame");
   var pageReviewText = document.getElementById("page-review-text");
-  var pageReviewConfirm = document.getElementById("page-review-confirm");
+  var pageReviewConfirmPage = document.getElementById("page-review-confirm-page");
+  var pageReviewConfirmAll = document.getElementById("page-review-confirm-all");
   var pageReviewReset = document.getElementById("page-review-reset");
   var pageReviewConfirmedLabel = document.getElementById("page-review-confirmed-label");
   var pageReviewPrev = document.getElementById("page-review-prev");
@@ -1566,6 +2756,9 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
   var pageReviewDimCache = {};
 
   function pagePreviewUrl(sourceSha256, alignedPage) {
+    if (window.__librarainMock && window.__librarainMock.isEnabled()) {
+      return window.__librarainMock.pageRenderUrl(alignedPage);
+    }
     var params = new URLSearchParams({
       source_sha256: sourceSha256,
       aligned_page: String(alignedPage),
@@ -1611,14 +2804,23 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
   }
 
   function setPageReviewToolbarConfirmed(confirmed) {
-    pageReviewConfirm.classList.toggle("hidden", confirmed);
+    pageReviewConfirmPage.classList.toggle("hidden", confirmed);
+    pageReviewConfirmAll.classList.toggle("hidden", confirmed);
     pageReviewReset.classList.toggle("hidden", confirmed);
     pageReviewConfirmedLabel.classList.toggle("hidden", !confirmed);
     pageReviewText.readOnly = confirmed;
     if (confirmed) {
-      pageReviewConfirm.disabled = false;
+      pageReviewConfirmPage.disabled = false;
+      pageReviewConfirmAll.disabled = false;
       pageReviewReset.disabled = true;
     }
+  }
+
+  function setPageReviewConfirmBusy(busy) {
+    pageReviewConfirmPage.disabled = busy;
+    pageReviewConfirmAll.disabled = busy;
+    if (busy) pageReviewReset.disabled = true;
+    else updatePageReviewResetState();
   }
 
   function syncPageReviewNav() {
@@ -1673,7 +2875,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     var aligned = pageReviewState.pages[pageReviewState.index];
     var loadGen = ++pageReviewLoadGen;
     pageReviewText.readOnly = true;
-    pageReviewConfirm.disabled = true;
+    setPageReviewConfirmBusy(true);
     pageReviewTitle.textContent = "Review — Pagina " + aligned;
     pageReviewMeta.textContent = "Caricamento testo…";
     pageReviewText.value = "";
@@ -1712,8 +2914,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
       pageReviewMeta.textContent = String(err.message || err);
     }
     pageReviewText.readOnly = false;
-    pageReviewConfirm.disabled = false;
-    updatePageReviewResetState();
+    setPageReviewConfirmBusy(false);
   }
 
   function openPageReview(sourceSha256, alignedPage, reviewPages) {
@@ -1751,33 +2952,107 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     await refreshPageReview();
   }
 
-  async function confirmPageReviewText() {
-    var aligned = pageReviewState.pages[pageReviewState.index];
-    pageReviewConfirm.disabled = true;
+  async function postPageReviewConfirm(aligned, text) {
     var res = await apiFetch("/api/admin/book-pages/transcript/confirm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         source_sha256: pageReviewState.sha,
         aligned_page: aligned,
-        text: pageReviewText.value,
+        text: text,
       }),
     });
     var data = await res.json();
     if (!res.ok || !data.ok) throw new Error(data.error || "Conferma fallita");
-    pageReviewState.baselineText = pageReviewText.value;
-    pageReviewMeta.textContent = "Scritto in stage3 e output";
-    setPageReviewToolbarConfirmed(true);
-    await refreshIngestAudit();
+    return data;
+  }
+
+  async function confirmPageReviewText() {
+    var aligned = pageReviewState.pages[pageReviewState.index];
+    var confirmedIndex = pageReviewState.index;
+    setPageReviewConfirmBusy(true);
+    try {
+      await postPageReviewConfirm(aligned, pageReviewText.value);
+      pageReviewState.baselineText = pageReviewText.value;
+      pageReviewMeta.textContent = "Scritto in stage3 e output";
+      setPageReviewToolbarConfirmed(true);
+      await refreshIngestAudit();
+      applyMockAuditPagesState();
+      var remaining = pendingReviewPagesFromAudit();
+      if (!remaining.length) {
+        closePageReview();
+        notifyReviewConfirmed(1);
+        return;
+      }
+      pageReviewState.pages = remaining;
+      pageReviewState.index = Math.min(confirmedIndex, remaining.length - 1);
+      await refreshPageReview();
+    } catch (err) {
+      throw err;
+    } finally {
+      setPageReviewConfirmBusy(false);
+    }
+  }
+
+  function pendingReviewPagesFromAudit() {
+    var book = ingestPagesState.auditBook;
+    return book && Array.isArray(book.pending_review_pages) ? book.pending_review_pages.slice() : [];
+  }
+
+  async function confirmAllPageReviewTexts() {
+    if (isPageReviewDirty() && !window.confirm("La pagina corrente ha modifiche non salvate. Confermarla e procedere con tutte le altre?")) return;
+    setPageReviewConfirmBusy(true);
+    try {
+      await refreshIngestAudit();
+      var pages = pendingReviewPagesFromAudit();
+      if (!pages.length) {
+        applyMockAuditPagesState();
+        closePageReview();
+        if (!buildPendingEntries().length) {
+          showProgressSuccessAlert("Operazione completata: tutte le pagine sono elaborate e le trascrizioni validate.");
+        } else {
+          clearProgressAlert();
+        }
+        return;
+      }
+      var confirmedCount = pages.length;
+      var currentAligned = pageReviewState.pages[pageReviewState.index];
+      var i;
+      for (i = 0; i < pages.length; i++) {
+        var aligned = pages[i];
+        var text;
+        if (aligned === currentAligned) {
+          text = pageReviewText.value;
+        } else {
+          var params = new URLSearchParams({
+            source_sha256: pageReviewState.sha,
+            aligned_page: String(aligned),
+          });
+          var res = await apiFetch("/api/admin/book-pages/transcript?" + params.toString());
+          var data = await res.json();
+          if (!res.ok || !data.ok) throw new Error(data.error || "Testo non disponibile per pagina " + aligned);
+          text = data.text || "";
+        }
+        await postPageReviewConfirm(aligned, text);
+      }
+      pageReviewState.baselineText = pageReviewText.value;
+      await refreshIngestAudit();
+      applyMockAuditPagesState();
+      closePageReview();
+      notifyReviewConfirmed(confirmedCount);
+    } catch (err) {
+      pageReviewMeta.textContent = String(err.message || err);
+      throw err;
+    } finally {
+      setPageReviewConfirmBusy(false);
+    }
   }
 
   ingestReviewAllBtn.addEventListener("click", function () {
-    if (!ingestPagesState.sourceSha256 || !ingestPagesState.processedPages.length) return;
-    openPageReview(
-      ingestPagesState.sourceSha256,
-      ingestPagesState.processedPages[0],
-      ingestPagesState.processedPages.slice()
-    );
+    if (!ingestPagesState.sourceSha256) return;
+    var pendingReview = pendingReviewPagesFromAudit();
+    if (!pendingReview.length) return;
+    openPageReview(ingestPagesState.sourceSha256, pendingReview[0], pendingReview);
   });
 
   pagePreviewPrev.addEventListener("click", function () {
@@ -1798,10 +3073,14 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 
   pageReviewImg.addEventListener("load", function () { syncReviewFrameSizes(); });
   pageReviewText.addEventListener("input", updatePageReviewResetState);
-  pageReviewConfirm.addEventListener("click", function () {
+  pageReviewConfirmPage.addEventListener("click", function () {
     confirmPageReviewText().catch(function (err) {
       show("err", String(err.message || err));
-      pageReviewConfirm.disabled = false;
+    });
+  });
+  pageReviewConfirmAll.addEventListener("click", function () {
+    confirmAllPageReviewTexts().catch(function (err) {
+      show("err", String(err.message || err));
     });
   });
   pageReviewReset.addEventListener("click", function () {
@@ -1842,7 +3121,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     }
     if (ev.phase === "stage3_editor" && (ev.status === "page_progress" || ev.status === "page_skipped") && ev.aligned_page) {
       addProcessedPage(ev.aligned_page);
-      scheduleIngestAuditRefresh();
+      if (ingestPagesState.jobComplete) scheduleIngestAuditRefresh();
     }
     renderIngestPagesSections();
   }
@@ -1863,7 +3142,6 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     if (stage3 && Array.isArray(stage3.pages)) {
       ingestPagesState.processedPages = sortedUniquePages(stage3.pages.map(function (p) { return p.aligned_page; }));
     }
-    scheduleIngestAuditRefresh();
     renderIngestPagesSections();
   }
 
@@ -1876,7 +3154,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 
   var PHASE_ORDER = [
     "validation", "gate_hash", "pdf_alignment", "page_enumeration",
-    "render", "stage1_ocr", "stage2_vision", "stage3_editor",
+    "stage1_ocr", "stage2_vision", "stage3_editor",
     "polyindex_toc", "polyindex_index", "time_index",
   ];
 
@@ -1885,7 +3163,6 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
     gate_hash: "Hash gate",
     pdf_alignment: "Allineamento PDF",
     page_enumeration: "Enumerazione pagine",
-    render: "Render PNG",
     stage1_ocr: "Stage 1 OCR",
     stage2_vision: "Stage 2 Vision",
     stage3_editor: "Stage 3 Editor",
@@ -2020,10 +3297,37 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 
   function clearProgressAlert() {
     progressAlertEl.textContent = "";
-    progressAlertEl.classList.remove("show");
+    progressAlertEl.classList.remove("show", "is-success");
+  }
+
+  function showProgressSuccessAlert(message) {
+    if (window.LibrarAInLog) window.LibrarAInLog.info(message, { sink: "progress" });
+    progressAlertEl.textContent = message;
+    progressAlertEl.classList.add("show", "is-success");
+    progressBox.classList.add("show");
+  }
+
+  function notifyReviewConfirmed(confirmedCount) {
+    var pending = buildPendingEntries();
+    var stillInReview = pendingReviewPagesFromAudit().length;
+    if (stillInReview) {
+      clearProgressAlert();
+      return;
+    }
+    if (!pending.length) {
+      showProgressSuccessAlert("Operazione completata: tutte le pagine sono elaborate e le trascrizioni validate.");
+      return;
+    }
+    if (confirmedCount === 1) {
+      showProgressSuccessAlert("Review confermata: la trascrizione è stata validata.");
+      return;
+    }
+    showProgressSuccessAlert("Review confermata: " + confirmedCount + " trascrizioni validate con successo.");
   }
 
   function showProgressAlert(message) {
+    if (window.LibrarAInLog) window.LibrarAInLog.warn(message, { sink: "progress" });
+    progressAlertEl.classList.remove("is-success");
     progressAlertEl.textContent = message;
     progressAlertEl.classList.add("show");
     progressBox.classList.add("show");
@@ -2047,6 +3351,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 
   function show(kind, payload) {
     var text = typeof payload === "string" ? payload : JSON.stringify(payload, null, 2);
+    if (kind === "err" && window.LibrarAInLog) window.LibrarAInLog.error(text, { sink: "out" });
     if (kind === "err" && progressBox.classList.contains("show")) {
       showProgressAlert(text);
       out.classList.remove("show", "err");
@@ -2059,6 +3364,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 
   function startProgress() {
     resetProgress();
+    ingestPagesState.uiPhase = "running";
     progressBox.classList.add("show");
     out.classList.remove("show", "err");
   }
@@ -2165,6 +3471,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
       var result = ev.result || ev;
       if (result && result.timing) applyTimingFields({ timing: result.timing });
       applyResultPagesState(result);
+      markIngestJobComplete();
       show("ok", result);
       if (globalTotal > 0) globalStep = globalTotal;
       renderAllProgress();
@@ -2176,6 +3483,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
       var ev;
       try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
       showProgressAlert(ev.message || String(ev));
+      markIngestJobComplete();
       es.close();
       btn.disabled = false;
     }
@@ -2196,6 +3504,10 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
+    if (window.__librarainMock && window.__librarainMock.isEnabled()) {
+      showProgressAlert("Modalità mock attiva: usa i comandi nel pannello Lab.");
+      return;
+    }
     btn.disabled = true;
     startProgress();
 
@@ -2240,6 +3552,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 
       connectSSE(data.events_url);
     } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest submit failed", err);
       if (progressBox.classList.contains("show")) {
         showProgressAlert(String(err.message || err));
       } else {
@@ -2248,6 +3561,44 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
       btn.disabled = false;
     }
   });
+
+  window.__librarainIngestLab = {
+    startProgress: startProgress,
+    resetProgress: resetProgress,
+    handleEvent: handleEvent,
+    refreshAudit: function () { return refreshIngestAudit(); },
+    markIngestJobComplete: markIngestJobComplete,
+    finishIngestUi: finishIngestUi,
+    applyMockAuditPagesState: applyMockAuditPagesState,
+    showProgressAlert: showProgressAlert,
+    clearProgressAlert: clearProgressAlert,
+    labLog: labLog,
+    labLogError: labLogError,
+    openLabPanel: openLabPanel,
+  };
+  window.dispatchEvent(new Event("librarain-ingest-ready"));
+
+  function importInlineModule(elementId) {
+    var el = document.getElementById(elementId);
+    if (!el || !el.textContent) return Promise.reject(new Error("inline module " + elementId + " missing"));
+    return import(URL.createObjectURL(new Blob([el.textContent], { type: "text/javascript" })));
+  }
+
+  function bootIngestLab() {
+    import("/mockup/client-mock.js").then(function (mock) {
+      window.__librarainMock = mock;
+      return import("/mockup/ingest-debug.js");
+    }).catch(function (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.warn("Lab remoto non disponibile, uso bundle inline", { error: String(err && err.message ? err.message : err) });
+      return importInlineModule("ingest-mock-inline-src").then(function () {
+        return importInlineModule("ingest-lab-inline-src");
+      });
+    }).catch(function (err) {
+      labLogError("Lab non avviato: " + String(err && err.message ? err.message : err));
+    });
+  }
+
+  bootIngestLab();
 })();
 </script>
 </body>

@@ -1,0 +1,19 @@
+[
+  { "phase": "gaps_repair", "status": "started", "global_step": 0, "global_total": 9 },
+  { "phase": "pipeline", "status": "pipeline_total", "global_total": 9, "global_step": 0 },
+  { "phase": "stage2_vision", "status": "started", "aligned_page": 7 },
+  { "phase": "stage2_vision", "status": "page_progress", "aligned_page": 7, "global_step": 1, "global_total": 9 },
+  { "phase": "stage2_vision", "status": "completed", "aligned_page": 7, "global_step": 2, "global_total": 9 },
+  { "phase": "stage3_editor", "status": "started", "aligned_page": 3 },
+  { "phase": "stage3_editor", "status": "page_progress", "aligned_page": 3, "global_step": 3, "global_total": 9 },
+  { "phase": "stage3_editor", "status": "completed", "aligned_page": 3, "global_step": 4, "global_total": 9 },
+  { "phase": "stage3_editor", "status": "started", "aligned_page": 7 },
+  { "phase": "stage3_editor", "status": "page_progress", "aligned_page": 7, "global_step": 5, "global_total": 9 },
+  { "phase": "stage3_editor", "status": "completed", "aligned_page": 7, "global_step": 6, "global_total": 9 },
+  { "phase": "stage3_editor", "status": "started", "aligned_page": 12 },
+  { "phase": "stage3_editor", "status": "page_progress", "aligned_page": 12, "global_step": 7, "global_total": 9 },
+  { "phase": "stage3_editor", "status": "completed", "aligned_page": 12, "global_step": 8, "global_total": 9 },
+  { "phase": "stage3_editor", "status": "started", "aligned_page": 14 },
+  { "phase": "stage3_editor", "status": "page_progress", "aligned_page": 14, "global_step": 9, "global_total": 9 },
+  { "phase": "gaps_repair", "status": "completed", "global_step": 9, "global_total": 9 }
+]

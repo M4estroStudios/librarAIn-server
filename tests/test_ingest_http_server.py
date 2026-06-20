@@ -132,6 +132,27 @@ class TestIngestSubmit(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertTrue(payload["ok"])
 
+    def test_mockup_fixture_served(self) -> None:
+        req = urllib.request.Request(self.server.url("/mockup/fixtures/audit.json"))
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            self.assertEqual(resp.status, 200)
+            body = resp.read()
+        self.assertIn(b"books", body)
+
+    def test_mockup_lab_script_served(self) -> None:
+        req = urllib.request.Request(self.server.url("/mockup/ingest-debug.js"))
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            self.assertEqual(resp.status, 200)
+            body = resp.read()
+        self.assertIn(b"initPanel", body)
+
+    def test_client_log_script_served(self) -> None:
+        req = urllib.request.Request(self.server.url("/log.js"))
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            self.assertEqual(resp.status, 200)
+            body = resp.read()
+        self.assertIn(b"LibrarAInLog", body)
+
     def test_submit_returns_202_and_runs_pipeline(self) -> None:
         pipeline_done = threading.Event()
 
