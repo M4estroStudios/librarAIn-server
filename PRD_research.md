@@ -35,10 +35,11 @@
 | `src/search/pages_loader.py` | ✅ presente (F2-T4) | Pages Markdown Loader: `pages/p.NNNN.<slug>.md`, hard cap caratteri, ordinamento, budget `max_books`/`max_pages_per_book` |
 | `src/search/article_llm.py` + `prompts/article_prompt.md` | ✅ presente (F2-T5) | Article Generation LLM: passi `a`+`b`, articolo Markdown in italiano con link `source:`; template fisso se nessuna pagina di contesto |
 | `src/search/poh_links_llm.py` + `prompts/poh_links_prompt.md` | ✅ presente (F2-T6) | POH link pass LLM: passo `c`, link `[…](poh:…)`; `build_poh_candidates` da INDEX + lookup + scan articolo; skip se materiale insufficiente o zero candidati |
+| `src/search/timeline_llm.py` + `prompts/timeline_prompt.md` | ✅ presente (F2-T7) | Timeline pass LLM: passo `d`, sezione `## Cronologia` tabella GFM; vincolata a `timeline_candidates` di F2-T3b; skip LLM su articolo no-material |
 | `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold → F2-T8 | catalogo articoli POH + `POST /api/research/generate`; oggi stub HTML; da F2-T8 il pulsante Admin **Genera articoli mancanti** (`web/admin.html`) invocherà `research_runner` per ogni POH senza articolo |
 | `web/admin.html` | ✅ presente (scaffold) | sezione **Genera articoli mancanti**; da F2-T8 avvio forzato batch della pipeline query (passi `a`–`d`) sui POH mancanti, non più stub |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline/postprocess F2-T7+ |
+| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline d ✅ (F2-T7); orchestrazione/postprocess F2-T8+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -266,7 +267,8 @@ Regole:
 - Nessun rendering HTML/PDF dell'articolo; il deliverable è il file Markdown.
 - Nessun registro POH separato da `INDEX.json` in MVP (un "POH registry" autonomo con pagine
   dedicate è v2.0).
-- Nessuna cache persistente degli articoli generati (solo dedup TTL in-process).
+- Nessuna cache persistente separata dagli artefatti su disco (dedup TTL in-process; file Markdown
+  in `data/research/` come da OQ-R1).
 - Nessuna multi-tenancy, nessuna autenticazione utente oltre al token statico già previsto
   (`INGEST_API_TOKEN`), nessun fine-tuning di modelli.
 - Nessuna migrazione del server HTTP a FastAPI per questa fase (resta T18.5, v2.0/on-demand).
@@ -287,9 +289,10 @@ Regole:
   per Vision/Editor.
 - **Dati in input**: esclusivamente artefatti di Fase 1 (`polyindex/*.json`, `pages/*.md`,
   `manifest.json`). Nessuna fonte esterna (no web search) in MVP.
-- **Retention**: gli articoli generati non sono persistiti come artefatti in MVP (restano nel job
-  registry in-process fino a riavvio); l'audit in `research_runs` è permanente. Persistenza
-  articoli su disco: `TBD` (proposta: `data/research/<request_id>.md`, decidere in F2-T8 review).
+- **Retention**: gli articoli Markdown generati sono persistiti su disco in
+  `data/research/<request_id>.md` (run query) e referenziati dal catalogo POH in
+  `data/research/articles/` (batch Admin); il job registry mantiene lo stato in-process; l'audit in
+  `research_runs` è permanente (F2-T9).
 
 ### 3.2 Prompt di sistema (file nel repository)
 
@@ -300,7 +303,7 @@ hardcoded in Python.
   se sostenuto dalle pagine fornite", formato `source:` obbligatorio.
 - `src/search/prompts/poh_links_prompt.md` — passo `c` (✅ F2-T6): pass LLM separato in
   `poh_links_llm.py`; fusione in `article_prompt.md` rimandata (OQ-R2, smoke comparativo v1.1).
-- `src/search/prompts/timeline_prompt.md` — passo `d`; riceve `timeline_candidates` da
+- `src/search/prompts/timeline_prompt.md` — passo `d` (✅ F2-T7); riceve `timeline_candidates` da
   TIME_INDEX come vincolo esplicito.
 
 Il diagramma in §4.1 descrive responsabilità logiche: 1, 2 o 3 chiamate LLM sono tutte
@@ -374,7 +377,7 @@ src/search/
 ├── pages_loader.py        # F2-T4 ✅
 ├── article_llm.py         # F2-T5 ✅
 ├── poh_links_llm.py       # F2-T6 ✅
-├── timeline_llm.py        # F2-T7
+├── timeline_llm.py        # F2-T7 ✅
 ├── postprocess.py         # F2-T8: parser/validator link + tabella
 ├── research_runner.py     # orchestrazione job (specchio di ingest_pipeline_runner)
 └── prompts/
@@ -462,8 +465,10 @@ Già esistenti e riusate: `MATCHER_*` (subject matcher), `TIMEOUT_SECONDS`, `RET
 
 ### 4.6 Open Questions
 
-- **OQ-R1**: persistenza articoli su disco (`data/research/<request_id>.md`) o solo in-memory?
-  Proposta: scrivere su disco già in MVP (costo nullo, abilita la UI v1.1). Owner: F2-T8 review.
+- **OQ-R1**: persistenza articoli su disco (`data/research/<request_id>.md`) o solo in-memory? —
+  **Risolto (MVP)**: scrittura su disco obbligatoria (`data/research/<request_id>.md` per run query;
+  catalogo POH in `data/research/articles/` + `catalog.json` per batch Admin); abilita UI v1.1 e
+  sopravvive al riavvio del server.
 - **OQ-R2**: fusione passi `a`+`b`+`c` in una sola chiamata LLM vs chiamate separate — **Risolto
   (MVP)**: pass separato (`article_llm` + `poh_links_llm`); smoke comparativo qualità/costo
   rimandato a v1.1.
@@ -500,11 +505,13 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
   come da §2.4. *(Opus)*
 - [x] **F2-T6** — POH link pass (`poh_links_prompt.md` + `poh_links_llm.py`): passo `c`, pass LLM
   separato da F2-T5 (OQ-R2). *(Opus)*
-- [ ] **F2-T7** — Timeline pass (`timeline_prompt.md`): passo `d`, sezione `## Cronologia`
-  vincolata ai `timeline_candidates` di F2-T3b. *(Opus)*
+- [x] **F2-T7** — Timeline pass (`timeline_prompt.md` + `timeline_llm.py`): passo `d`, sezione
+  `## Cronologia` vincolata ai `timeline_candidates` di F2-T3b; skip LLM su articolo no-material.
+  *(Opus)*
 - [ ] **F2-T8** — Aggregatore Markdown finale + post-validatore (link `source:`/`poh:`, tabella
-  GFM, sostituzione `*[[fonte non verificabile]]*`) + endpoint HTTP (`submit`, `{id}`,
-  `{id}/article`) + job registry `research` + dedup TTL; **cablaggio Admin** (`web/admin.html` →
+  GFM, sostituzione `*[[fonte non verificabile]]*`) + persistenza su disco
+  (`data/research/<request_id>.md`) + endpoint HTTP (`submit`, `{id}`, `{id}/article`) + job
+  registry `research` + dedup TTL; **cablaggio Admin** (`web/admin.html` →
   `POST /api/research/generate`): pulsante **Genera articoli mancanti** invoca `research_runner`
   per ogni POH senza articolo (query sintetica = `canonical_label`, `poh` impostato), sostituendo
   lo stub HTML attuale. *(Sonnet)*
