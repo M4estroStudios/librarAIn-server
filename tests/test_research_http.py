@@ -97,6 +97,13 @@ class ResearchHttpTests(unittest.TestCase):
         with urllib.request.urlopen(req, timeout=5) as resp:
             html = resp.read().decode("utf-8")
         self.assertIn("librarAIn", html)
+        self.assertIn("Cerca negli articoli generati", html)
+        self.assertIn("/api/research/search", html)
+
+    def test_admin_page_research_generation_section(self) -> None:
+        req = urllib.request.Request(self.harness.url("/admin.html"))
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            html = resp.read().decode("utf-8")
         self.assertIn("Genera articoli mancanti", html)
 
     def test_status_and_missing(self) -> None:
