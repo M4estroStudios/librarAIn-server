@@ -1,0 +1,15 @@
+# Agrippa Postumo
+
+Agrippa Postumo fu il nipote di [Augusto](poh:augusto) e figlio del generale [Marco Vipsanio Agrippa](poh:agrippa), figura centrale nella prima età imperiale romana. Dopo le premature morti dei due eredi designati da Augusto nel 17 a.C., [Gaio Cesare](poh:cesare) e [Lucio Cesare](poh:cesare), avvenute rispettivamente nel 2 e nel 4 d.C., l'imperatore adottò il nipote Agrippa Postumo per garantire la continuità dinastica[Storia di Roma Antica, pp. 288](source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:288). Tuttavia, il suo ruolo di successore si rivelò di breve durata: ben presto [Augusto](poh:augusto) ordinò l'esilio del giovane sull'isola di [Ventotene](poh:ventotene) a causa della sua condotta immorale[Storia di Roma Antica, pp. 288](source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:288).
+
+## Contesto familiare e piano successorio
+Il padre di [Agrippa Postumo](poh:agrippa-postumo), [Marco Vipsanio Agrippa](poh:agrippa), ricopriva una posizione di straordinario potere accanto all'imperatore, agendo praticamente come coreggente di [Augusto](poh:augusto) fino alla sua morte nel 12 a.C.[Storia di Roma Antica, pp. 288](source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:288). La morte di [Agrippa](poh:agrippa) e la successiva scomparsa dei due nipoti adottivi di Augusto costrinsero l'imperatore a valutare nuove opzioni per la successione. L'adozione di [Agrippa Postumo](poh:agrippa-postumo) rappresentò un tentativo di mantenere il controllo politico all'interno della famiglia imperiale, sebbene le fonti disponibili indichino che il giovane fu ben presto rimosso dalla linea successoria a causa dei suoi comportamenti[Storia di Roma Antica, pp. 288](source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:288). Le informazioni biografiche relative alla sua vita precedente all'adozione e ai dettagli specifici del suo esilio sono scarse nei testi forniti, limitando la ricostruzione storica principalmente alle circostanze della sua adozione augustea e al destino riservatogli sull'isola di [Ventotene](poh:ventotene).
+
+## Cronologia
+
+| Periodo | Evento | Fonti |
+|---------|--------|-------|
+| 12 a.C. | Morte del generale Marco Vipsanio Agrippa, che aveva agito come coreggente di Augusto. | [Storia di Roma Antica](source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:288) |
+| 17 a.C. | Adozione di Gaio Cesare e Lucio Cesare da parte di Augusto per garantire la successione dinastica. | [Storia di Roma Antica](source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:288) |
+| 2 d.C. | Morte prematura di Gaio Cesare, primo erede designato dell'imperatore. | [Storia di Roma Antica](source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:288) |
+| 4 d.C. | Morte di Lucio Cesare, adozione del nipote Agrippa Postumo e suo successivo esilio a Ventotene per condotta immorale. | [Storia di Roma Antica](source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:288) |

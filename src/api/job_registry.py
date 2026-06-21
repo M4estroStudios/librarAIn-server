@@ -7,7 +7,9 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any, Generator
 
-_TERMINAL_STATUSES = frozenset({"done", "error"})
+_INGEST_TERMINAL_STATUSES = frozenset({"done", "error"})
+_RESEARCH_TERMINAL_STATUSES = frozenset({"succeeded", "failed"})
+_TERMINAL_STATUSES = _INGEST_TERMINAL_STATUSES | _RESEARCH_TERMINAL_STATUSES
 
 DEFAULT_JOB_TTL_SECONDS = 2 * 60 * 60
 DEFAULT_MAX_FINISHED_JOBS = 200
@@ -16,10 +18,12 @@ DEFAULT_MAX_FINISHED_JOBS = 200
 class JobState:
     __slots__ = (
         "job_id",
+        "job_kind",
         "status",
         "events",
         "result",
         "error",
+        "pipeline_version",
         "created_at",
         "updated_at",
         "finished_at_monotonic",
@@ -28,10 +32,12 @@ class JobState:
         "_subscribers",
     )
 
-    def __init__(self, job_id: str) -> None:
+    def __init__(self, job_id: str, *, job_kind: str = "ingest") -> None:
         now = datetime.now(timezone.utc).isoformat()
         self.job_id = job_id
-        self.status: str = "queued"
+        self.job_kind = job_kind
+        self.status: str = "accepted" if job_kind == "research" else "queued"
+        self.pipeline_version: str | None = None
         self.events: list[dict[str, Any]] = []
         self.result: dict[str, Any] | None = None
         self.error: str | None = None
@@ -89,12 +95,19 @@ class JobRegistry:
             for state in remaining[:overflow]:
                 del self._jobs[state.job_id]
 
-    def create_job(self) -> str:
+    def create_job(
+        self,
+        *,
+        job_kind: str = "ingest",
+        pipeline_version: str | None = None,
+    ) -> str:
         """Allocate a new job and return its opaque job_id."""
         job_id = uuid.uuid4().hex
         with self._lock:
             self._evict_finished_locked()
-            self._jobs[job_id] = JobState(job_id)
+            state = JobState(job_id, job_kind=job_kind)
+            state.pipeline_version = pipeline_version
+            self._jobs[job_id] = state
         return job_id
 
     def set_global_total(self, job_id: str, total: int) -> None:
@@ -147,8 +160,19 @@ class JobRegistry:
                 state.status = "error"
                 state.error = ev.get("message")
                 state.finished_at_monotonic = time.monotonic()
-            elif status == "started" and state.status == "queued":
-                state.status = "running"
+            elif status == "succeeded":
+                state.status = "succeeded"
+                state.result = ev.get("result")
+                state.finished_at_monotonic = time.monotonic()
+            elif status == "failed":
+                state.status = "failed"
+                state.error = ev.get("message")
+                state.finished_at_monotonic = time.monotonic()
+            elif status == "started":
+                if state.job_kind == "research" and state.status == "accepted":
+                    state.status = "running"
+                elif state.status == "queued":
+                    state.status = "running"
 
             state.events.append(ev)
             state.updated_at = now
@@ -164,8 +188,9 @@ class JobRegistry:
             state = self._jobs.get(job_id)
             if state is None:
                 return None
-            return {
+            payload: dict[str, Any] = {
                 "job_id": state.job_id,
+                "job_kind": state.job_kind,
                 "status": state.status,
                 "global_step": state.global_step,
                 "global_total": state.global_total,
@@ -175,6 +200,11 @@ class JobRegistry:
                 "created_at": state.created_at,
                 "updated_at": state.updated_at,
             }
+            if state.job_kind == "research":
+                payload["request_id"] = state.job_id
+                payload["pipeline_version"] = state.pipeline_version
+                payload["last_error"] = state.error
+            return payload
 
     def subscribe(
         self, job_id: str, last_seq: int = -1
@@ -202,13 +232,23 @@ class JobRegistry:
             for ev in history:
                 if ev["seq"] > last_seq:
                     yield ev
-                if ev.get("status") in _TERMINAL_STATUSES:
+                terminal = (
+                    _RESEARCH_TERMINAL_STATUSES
+                    if state.job_kind == "research"
+                    else _INGEST_TERMINAL_STATUSES
+                )
+                if ev.get("status") in terminal:
                     return
 
             while True:
                 ev = q.get()
                 yield ev
-                if ev.get("status") in _TERMINAL_STATUSES:
+                terminal = (
+                    _RESEARCH_TERMINAL_STATUSES
+                    if state.job_kind == "research"
+                    else _INGEST_TERMINAL_STATUSES
+                )
+                if ev.get("status") in terminal:
                     return
         finally:
             with self._lock:

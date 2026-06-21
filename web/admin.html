@@ -841,6 +841,7 @@ a { color: #4ec9b0; }
     <button type="button" id="gen-book" class="secondary" disabled>Genera per libro</button>
   </div>
   <div id="progress-gen"></div>
+  <p class="hint" id="research-mock-hint" style="display:none;">Modalità mock research attiva (<code>?mock=1</code>): generazione simulata senza LLM.</p>
 </div>
 
 <div class="toolbar">
@@ -883,6 +884,14 @@ function apiToken() {
 }
 
 async function apiFetch(url, options) {
+  const path = String(url || "").split("?")[0];
+  if (
+    window.__librarainResearchMock &&
+    window.__librarainResearchMock.isEnabled() &&
+    (path.indexOf("/api/research/") === 0 || path.indexOf("/articolo/") === 0)
+  ) {
+    return window.__librarainResearchMock.apiFetch(url, options);
+  }
   const opts = options || {};
   opts.headers = Object.assign({}, opts.headers || {});
   const token = apiToken();
@@ -2227,6 +2236,20 @@ load();
 loadPagesAudit().catch((err) => showOut(String(err), true));
 loadArticleStatus().catch((err) => showOut(String(err), true));
 loadBooks().catch((err) => showOut(String(err), true));
+</script>
+<script type="module">
+import * as researchMock from "/mockup/research-mock.js";
+window.__librarainResearchMock = researchMock;
+researchMock.loadSavedEnabled();
+const hint = document.getElementById("research-mock-hint");
+if (hint && researchMock.isEnabled()) hint.style.display = "block";
+window.addEventListener("librarain-research-mock-mode", function (ev) {
+  if (hint) hint.style.display = ev.detail && ev.detail.enabled ? "block" : "none";
+  if (ev.detail && ev.detail.enabled) {
+    loadArticleStatus().catch(function () {});
+    loadBooks().catch(function () {});
+  }
+});
 </script>
 </body>
 </html>

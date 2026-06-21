@@ -109,11 +109,12 @@ async def add_timeline(
     request_id: str = "",
     prompt_notes: str | None = None,
 ) -> TimelineResult:
-    log_fields = query_log_fields(query)
+    log_fields = query_log_fields(query, poh)
+    subject = log_fields["research_subject"]
     if is_no_material_article(article_markdown):
         Log(
             INFO_LOG_LEVEL,
-            "research timeline skipped: no-material article",
+            f"research timeline skipped (no material): {subject}",
             {
                 "request_id": request_id,
                 "stage": _STAGE,
@@ -137,7 +138,7 @@ async def add_timeline(
     )
     Log(
         INFO_LOG_LEVEL,
-        "research timeline begin",
+        f"research timeline begin: {subject}",
         {
             "request_id": request_id,
             "stage": _STAGE,
@@ -167,7 +168,7 @@ async def add_timeline(
     markdown = strip_article_markdown_fences(content)
     Log(
         INFO_LOG_LEVEL,
-        "research timeline completed",
+        f"research timeline completed: {subject}",
         {
             "request_id": request_id,
             "stage": _STAGE,

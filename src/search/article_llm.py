@@ -25,6 +25,13 @@ _NO_MATERIAL_BODY = (
     "La biblioteca indicizzata non contiene pagine candidate sufficienti per "
     "rispondere alla query con fonti verificabili."
 )
+_INSUFFICIENT_SOURCE_PATTERNS = (
+    re.compile(r"non\s+(?:contengono|contiene)\s+(?:alcun|alcuna|nessun)", re.I),
+    re.compile(r"non\s+risulta\s+alcuna\s+menzione", re.I),
+    re.compile(r"non\s+(?:è|e)\s+possibile\s+(?:elaborare|redigere)", re.I),
+    re.compile(r"pagin(?:e|a)\s+(?:fornit[ae]|indicat[ae])\s+non", re.I),
+    re.compile(r"fonti\s+(?:fornit[ae]|indicat[ae])\s+non", re.I),
+)
 
 
 @dataclass(frozen=True)
@@ -38,8 +45,24 @@ def load_article_prompt() -> str:
     return _PROMPT_PATH.read_text(encoding="utf-8").strip()
 
 
+def is_insufficient_sources_article(markdown: str) -> bool:
+    body = markdown.lstrip()
+    if body.startswith(_NO_MATERIAL_TITLE):
+        return True
+    sample = body[:4000]
+    return any(pattern.search(sample) for pattern in _INSUFFICIENT_SOURCE_PATTERNS)
+
+
 def is_no_material_article(markdown: str) -> bool:
-    return markdown.lstrip().startswith(_NO_MATERIAL_TITLE)
+    return is_insufficient_sources_article(markdown)
+
+
+def normalize_no_material_article(query: str, markdown: str) -> str:
+    if markdown.lstrip().startswith(_NO_MATERIAL_TITLE):
+        return markdown
+    if is_insufficient_sources_article(markdown):
+        return build_no_material_article(query)
+    return markdown
 
 
 def build_no_material_article(query: str) -> str:
@@ -56,13 +79,35 @@ def build_no_material_article(query: str) -> str:
     return "\n".join(lines)
 
 
-def query_log_fields(query: str) -> dict[str, str]:
+def research_subject(query: str, poh: ResearchPoh | None = None) -> str:
+    if poh is not None and poh.label.strip():
+        label = poh.label.strip()
+        if poh.id:
+            return f"{label} ({poh.id})"
+        return label
+    normalized = query.strip()
+    preview = normalized
+    if len(preview) > _QUERY_PREVIEW_LEN:
+        preview = preview[: _QUERY_PREVIEW_LEN - 1].rstrip() + "…"
+    return preview or "(empty query)"
+
+
+def query_log_fields(query: str, poh: ResearchPoh | None = None) -> dict[str, str]:
     normalized = query.strip()
     digest = hashlib.sha256(normalized.encode("utf-8")).hexdigest()
     preview = normalized
     if len(preview) > _QUERY_PREVIEW_LEN:
         preview = preview[: _QUERY_PREVIEW_LEN - 1].rstrip() + "…"
-    return {"query_hash": digest, "query_preview": preview}
+    fields: dict[str, str] = {
+        "query_hash": digest,
+        "query_preview": preview,
+        "research_subject": research_subject(query, poh),
+    }
+    if poh is not None and poh.id:
+        fields["poh_id"] = poh.id
+    if poh is not None and poh.label.strip():
+        fields["poh_label"] = poh.label.strip()
+    return fields
 
 
 def strip_article_markdown_fences(content: str) -> str:
@@ -141,11 +186,12 @@ async def generate_article(
     request_id: str = "",
     prompt_notes: str | None = None,
 ) -> ArticleGenerationResult:
-    log_fields = query_log_fields(query)
+    log_fields = query_log_fields(query, poh)
+    subject = log_fields["research_subject"]
     if not pages:
         Log(
             INFO_LOG_LEVEL,
-            "research article generation skipped: no context pages",
+            f"research article skipped (no pages): {subject}",
             {
                 "request_id": request_id,
                 "stage": _STAGE,
@@ -163,7 +209,7 @@ async def generate_article(
     user_message = build_article_user_message(query=query, poh=poh, pages=pages)
     Log(
         INFO_LOG_LEVEL,
-        "research article generation begin",
+        f"research article begin: {subject}",
         {
             "request_id": request_id,
             "stage": _STAGE,
@@ -190,9 +236,26 @@ async def generate_article(
         reasoning_enable_thinking=settings.reasoning_enable_thinking_research,
     )
     markdown = strip_article_markdown_fences(content)
+    if is_insufficient_sources_article(markdown):
+        markdown = build_no_material_article(query)
+        Log(
+            INFO_LOG_LEVEL,
+            f"research article no-material: {subject}",
+            {
+                "request_id": request_id,
+                "stage": _STAGE,
+                "model": model,
+                **log_fields,
+            },
+        )
+        return ArticleGenerationResult(
+            markdown=markdown,
+            skipped_llm=True,
+            model=model,
+        )
     Log(
         INFO_LOG_LEVEL,
-        "research article generation completed",
+        f"research article completed: {subject}",
         {
             "request_id": request_id,
             "stage": _STAGE,

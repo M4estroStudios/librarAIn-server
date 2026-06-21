@@ -165,11 +165,12 @@ async def add_poh_links(
     request_id: str = "",
     prompt_notes: str | None = None,
 ) -> PohLinksResult:
-    log_fields = query_log_fields(query)
+    log_fields = query_log_fields(query, poh)
+    subject = log_fields["research_subject"]
     if is_no_material_article(article_markdown):
         Log(
             INFO_LOG_LEVEL,
-            "research poh links skipped: no-material article",
+            f"research poh links skipped (no material): {subject}",
             {
                 "request_id": request_id,
                 "stage": _STAGE,
@@ -184,7 +185,7 @@ async def add_poh_links(
     if not poh_candidates:
         Log(
             INFO_LOG_LEVEL,
-            "research poh links skipped: no poh candidates",
+            f"research poh links skipped (no candidates): {subject}",
             {
                 "request_id": request_id,
                 "stage": _STAGE,
@@ -207,7 +208,7 @@ async def add_poh_links(
     )
     Log(
         INFO_LOG_LEVEL,
-        "research poh links begin",
+        f"research poh links begin: {subject}",
         {
             "request_id": request_id,
             "stage": _STAGE,
@@ -236,7 +237,7 @@ async def add_poh_links(
     markdown = strip_article_markdown_fences(content)
     Log(
         INFO_LOG_LEVEL,
-        "research poh links completed",
+        f"research poh links completed: {subject}",
         {
             "request_id": request_id,
             "stage": _STAGE,

@@ -13,6 +13,7 @@ from src.persistence.subject_matcher_sqlite import (
     get_subject_embedding,
     set_subject_embedding,
 )
+from src.search.article_llm import query_log_fields
 from src.search.request_schema import ResearchPoh
 
 _STAGE_EMBEDDING = "research_subject_lookup_embedding"
@@ -238,9 +239,18 @@ def lookup_subjects(
 
     pages = _aggregate_pages(document, matches)
 
+    log_fields = query_log_fields(query, poh)
+    subject = log_fields["research_subject"]
+    matched_summary = ", ".join(
+        f"{match.canonical_label} ({match.canonical_id})"
+        for match in matches[:8]
+    )
+    if len(matches) > 8:
+        matched_summary += f", +{len(matches) - 8} more"
+
     Log(
         INFO_LOG_LEVEL,
-        "research subject lookup completed",
+        f"research subject lookup: {subject} → {len(matches)} match(es)",
         {
             "request_id": request_id,
             "matched_subjects": len(matches),
@@ -248,6 +258,10 @@ def lookup_subjects(
             "books_in_context": len(pages),
             "ai_used": ai_used,
             "degraded": degraded,
+            "matched_labels": [match.canonical_label for match in matches[:12]],
+            "matched_ids": [match.canonical_id for match in matches[:12]],
+            "matched_summary": matched_summary or "(none)",
+            **log_fields,
         },
     )
 

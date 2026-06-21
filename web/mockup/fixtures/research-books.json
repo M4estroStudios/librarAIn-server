@@ -1,0 +1,10 @@
+{
+  "books": [
+    {
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "title": "Libro mock — Storia di Roma",
+      "slug": "storia-mock",
+      "page_count": 372
+    }
+  ]
+}

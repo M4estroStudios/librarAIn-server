@@ -3,6 +3,9 @@ from __future__ import annotations
 import json
 import os
 import secrets
+import signal
+import socket
+import subprocess
 import threading
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -18,6 +21,7 @@ from src.api.ingest_form import (
 from src.api.ingest_pipeline_runner import run_full_pipeline
 from src.api.job_registry import JobRegistry
 from src.api.research_handlers import ResearchBatchRegistry, build_research_routes
+from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
     list_multibook_subjects,
@@ -86,7 +90,10 @@ def _send_json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> No
     handler.send_header("Content-Type", "application/json; charset=utf-8")
     handler.send_header("Content-Length", str(len(body)))
     handler.end_headers()
-    handler.wfile.write(body)
+    try:
+        handler.wfile.write(body)
+    except (BrokenPipeError, ConnectionResetError, OSError):
+        pass
 
 
 def _send_bytes(
@@ -124,6 +131,66 @@ def _sse_write(handler: BaseHTTPRequestHandler, event_name: str, data: Any) -> b
         return False
 
 
+class ExclusiveThreadingHTTPServer(ThreadingHTTPServer):
+    allow_reuse_address = False
+
+    def server_bind(self) -> None:
+        if os.name == "nt" and hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        super().server_bind()
+
+
+def _listening_pids_for_port(port: int) -> set[str]:
+    if os.name == "nt":
+        output = subprocess.run(
+            ["netstat", "-ano"],
+            capture_output=True,
+            text=True,
+            errors="ignore",
+            check=False,
+        ).stdout
+        pids: set[str] = set()
+        for line in output.splitlines():
+            parts = line.split()
+            if len(parts) >= 5 and parts[1].endswith(f":{port}") and parts[3].upper() == "LISTENING":
+                pids.add(parts[-1])
+        return pids
+
+    result = subprocess.run(
+        ["sh", "-c", f"command -v lsof >/dev/null 2>&1 && lsof -ti tcp:{port} || true"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return {pid for pid in result.stdout.split() if pid.isdigit()}
+
+
+def _stop_existing_server_processes(port: int) -> None:
+    stopped: list[str] = []
+    for pid in sorted(_listening_pids_for_port(port)):
+        if pid == "0" or pid == str(os.getpid()):
+            continue
+        if os.name == "nt":
+            subprocess.run(
+                ["taskkill", "/PID", pid, "/F"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            )
+        else:
+            try:
+                os.kill(int(pid), signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+        stopped.append(pid)
+    if stopped:
+        Log(
+            INFO_LOG_LEVEL,
+            "stopped existing ingest server process(es)",
+            {"port": port, "pids": stopped},
+        )
+
+
 def build_ingest_server(
     settings: Any,
     *,
@@ -132,6 +199,8 @@ def build_ingest_server(
     max_upload: int = 512 * 1024 * 1024,
     api_token: str = "",
     max_concurrent_jobs: int = 1,
+    max_concurrent_research: int = 1,
+    research_dedup_ttl_seconds: float = 3600.0,
 ) -> tuple[ThreadingHTTPServer, JobRegistry]:
     """Build the HTTP server (without starting it) and its job registry.
 
@@ -145,15 +214,22 @@ def build_ingest_server(
 
     registry = JobRegistry()
     research_batch_registry = ResearchBatchRegistry()
+    research_dedup_index = ResearchDedupIndex(ttl_seconds=research_dedup_ttl_seconds)
+    research_concurrency = ResearchConcurrencyLimiter(max_concurrent_research)
     job_semaphore = threading.Semaphore(max_concurrent_jobs)
 
     research_try_get, research_try_post = build_research_routes(
         data_root=data_root,
         web_dir=web_dir,
+        settings=settings,
+        registry=registry,
+        dedup_index=research_dedup_index,
         batch_registry=research_batch_registry,
+        concurrency_limiter=research_concurrency,
         send_json=_send_json,
         send_bytes=_send_bytes,
         read_json_body=_read_body,
+        sse_write=_sse_write,
     )
 
     class IngestHandler(BaseHTTPRequestHandler):
@@ -740,7 +816,19 @@ def build_ingest_server(
 
         def do_POST(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
-            if research_try_post(self, parsed.path):
+            if parsed.path.startswith("/api/research/"):
+                try:
+                    if research_try_post(self, parsed.path):
+                        return
+                except Exception as exc:
+                    Log(
+                        ERROR_LOG_LEVEL,
+                        "research POST handler crashed",
+                        {"path": parsed.path, "error": str(exc)},
+                    )
+                    _send_json(self, 500, {"ok": False, "error": str(exc)})
+                    return
+                _send_json(self, 404, {"ok": False, "error": "not found"})
                 return
             if parsed.path == "/api/admin/subjects/merge":
                 if not self._require_auth():
@@ -927,7 +1015,7 @@ def build_ingest_server(
                 "status_url": status_url,
             })
 
-    httpd = ThreadingHTTPServer((host, port), IngestHandler)
+    httpd = ExclusiveThreadingHTTPServer((host, port), IngestHandler)
     return httpd, registry
 
 
@@ -944,6 +1032,12 @@ def run_ingest_http_server() -> None:
     max_upload = int(os.environ.get("INGEST_MAX_UPLOAD_BYTES", str(512 * 1024 * 1024)))
     api_token = os.environ.get("INGEST_API_TOKEN", "").strip()
     max_concurrent_jobs = max(1, int(os.environ.get("INGEST_MAX_CONCURRENT_JOBS", "1")))
+    max_concurrent_research = max(
+        1, int(os.environ.get("RESEARCH_MAX_CONCURRENT_JOBS", "1"))
+    )
+    research_dedup_ttl_seconds = float(
+        os.environ.get("RESEARCH_DEDUP_TTL_SECONDS", "3600")
+    )
 
     if host not in ("127.0.0.1", "localhost") and not api_token:
         Log(
@@ -953,6 +1047,8 @@ def run_ingest_http_server() -> None:
             {"host": host},
         )
 
+    _stop_existing_server_processes(port)
+
     httpd, _registry = build_ingest_server(
         settings,
         host=host,
@@ -960,6 +1056,8 @@ def run_ingest_http_server() -> None:
         max_upload=max_upload,
         api_token=api_token,
         max_concurrent_jobs=max_concurrent_jobs,
+        max_concurrent_research=max_concurrent_research,
+        research_dedup_ttl_seconds=research_dedup_ttl_seconds,
     )
     Log(INFO_LOG_LEVEL, "ingest http server listening", {"url": f"http://{host}:{port}"})
     try:

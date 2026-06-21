@@ -14,6 +14,8 @@ from src.search.article_llm import (
     build_article_user_payload,
     build_no_material_article,
     generate_article,
+    is_insufficient_sources_article,
+    is_no_material_article,
     load_article_prompt,
     query_log_fields,
     research_model,
@@ -63,6 +65,14 @@ def _loaded_page(*, aligned: int = 12, text: str = "Testo pagina.") -> LoadedPag
 
 
 class TestArticleLlmHelpers(unittest.TestCase):
+    def test_is_insufficient_sources_article_detects_negative_llm_output(self) -> None:
+        negative = (
+            "# Acerra\n\n"
+            "Le fonti fornite non contengono alcuna informazione relativa ad Acerra."
+        )
+        self.assertTrue(is_insufficient_sources_article(negative))
+        self.assertTrue(is_no_material_article(negative))
+
     def test_load_article_prompt_reads_file(self) -> None:
         prompt = load_article_prompt()
         self.assertIn("stile Wikipedia", prompt)
@@ -82,6 +92,16 @@ class TestArticleLlmHelpers(unittest.TestCase):
         fields = query_log_fields(long_query)
         self.assertEqual(len(fields["query_hash"]), 64)
         self.assertLessEqual(len(fields["query_preview"]), 80)
+        self.assertEqual(fields["research_subject"], fields["query_preview"])
+
+    def test_query_log_fields_includes_poh(self) -> None:
+        fields = query_log_fields(
+            "eventi principali",
+            ResearchPoh(id="augusto", label="Augusto"),
+        )
+        self.assertEqual(fields["poh_id"], "augusto")
+        self.assertEqual(fields["poh_label"], "Augusto")
+        self.assertEqual(fields["research_subject"], "Augusto (augusto)")
 
     def test_research_model_prefers_research_then_editor(self) -> None:
         self.assertEqual(
@@ -149,6 +169,24 @@ class TestGenerateArticle(unittest.TestCase):
         user_payload = json.loads(messages[1]["content"])
         self.assertEqual(user_payload["query"], "Marco Polo in Cina")
         self.assertEqual(user_payload["pages"][0]["source_sha256"], SHA)
+
+    def test_normalizes_negative_llm_output_to_no_material(self) -> None:
+        negative = (
+            "# Acerra\n\n"
+            "Le fonti fornite non contengono alcuna informazione relativa ad Acerra."
+        )
+        client = _fake_client(negative)
+        result = asyncio.run(
+            generate_article(
+                query="Acerra",
+                pages=[_loaded_page(text="Testo generico sul Campidoglio.")],
+                client=client,
+                settings=_settings(),
+                request_id="req-negative",
+            )
+        )
+        self.assertTrue(result.skipped_llm)
+        self.assertIn("# Materiale insufficiente", result.markdown)
 
     def test_strips_markdown_fences_from_model_output(self) -> None:
         client = _fake_client("```md\n# Titolo\n```")

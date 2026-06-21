@@ -8,10 +8,11 @@ import unittest
 import urllib.error
 import urllib.request
 from pathlib import Path
+from unittest.mock import patch
 
 from src.api.ingest_http_server import build_ingest_server
 from src.models.polyindex_index import PolyindexIndexDocument, PolyindexIndexSubjectEntry
-from src.search.article_catalog import generate_article_for_poh
+from src.models.settings import Settings
 
 
 class _ServerHarness:
@@ -47,10 +48,19 @@ class _ServerHarness:
             ),
             encoding="utf-8",
         )
-        from types import SimpleNamespace
-
-        settings = SimpleNamespace(data_root=str(self.data_root))
-        self.httpd, _ = build_ingest_server(settings, host="127.0.0.1", port=0)
+        settings = Settings.model_validate(
+            {
+                "DATA_ROOT": str(self.data_root),
+                "OPENAI_PROVIDER": "local",
+                "MATCHER_USE_AI": False,
+            }
+        )
+        self.httpd, _ = build_ingest_server(
+            settings,
+            host="127.0.0.1",
+            port=0,
+            max_concurrent_research=2,
+        )
         self.port = self.httpd.server_address[1]
         self._thread = threading.Thread(target=self.httpd.serve_forever, daemon=True)
         self._thread.start()
@@ -114,17 +124,74 @@ class ResearchHttpTests(unittest.TestCase):
         _, missing = self.harness.get_json("/api/research/missing")
         self.assertEqual(missing["count"], 2)
 
-    def test_generate_search_and_article_page(self) -> None:
-        status, accepted = self.harness.post_json("/api/research/generate", {"poh_ids": ["subj_alpha"]})
+    def test_submit_and_status(self) -> None:
+        status, accepted = self.harness.post_json(
+            "/api/research/submit",
+            {"query": "Alpha Test", "poh": {"label": "Alpha Test", "id": "subj_alpha"}},
+        )
         self.assertEqual(status, 202)
-        job_id = accepted["job_id"]
-        self.assertTrue(job_id)
-        for _ in range(30):
-            _, snap = self.harness.get_json(f"/api/research/generate/status?job_id={job_id}")
+        request_id = accepted["request_id"]
+        self.assertTrue(request_id)
+        for _ in range(50):
+            _, snap = self.harness.get_json(f"/api/research/{request_id}")
             if snap.get("status") in ("succeeded", "failed"):
                 break
             time.sleep(0.1)
         self.assertEqual(snap["status"], "succeeded")
+        _, article = self.harness.get_json(f"/api/research/{request_id}/article")
+        self.assertIn("markdown", article)
+
+    def test_generate_search_and_article_page(self) -> None:
+        article_path = self.harness.data_root / "research" / "articles" / "subj_alpha.html"
+        article_md_path = self.harness.data_root / "research" / "articles" / "subj_alpha.md"
+
+        def fake_generate_article_for_poh(data_root, poh_id, *, settings, request_id, reporter=None, publish_no_material=True):
+            article_path.parent.mkdir(parents=True, exist_ok=True)
+            article_path.write_text("<html><body>Alpha Test</body></html>", encoding="utf-8")
+            article_md_path.write_text("# Alpha Test", encoding="utf-8")
+            catalog_path = self.harness.data_root / "research" / "catalog.json"
+            catalog_path.parent.mkdir(parents=True, exist_ok=True)
+            catalog_path.write_text(
+                json.dumps(
+                    {
+                        "articles": {
+                            poh_id: {
+                                "poh_id": poh_id,
+                                "title": "Alpha Test",
+                                "snippet": "Alpha Test",
+                                "url": "/articolo/subj_alpha.html",
+                                "request_id": request_id,
+                            }
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            return {
+                "poh_id": poh_id,
+                "title": "Alpha Test",
+                "url": "/articolo/subj_alpha.html",
+                "request_id": request_id,
+                "path": str(article_path),
+                "markdown_path": str(article_md_path),
+                "skipped_llm": False,
+            }
+
+        with patch(
+            "src.api.research_handlers.generate_article_for_poh",
+            side_effect=fake_generate_article_for_poh,
+        ):
+            status, accepted = self.harness.post_json("/api/research/generate", {"poh_ids": ["subj_alpha"]})
+            self.assertEqual(status, 202)
+            job_id = accepted["job_id"]
+            self.assertTrue(job_id)
+            for _ in range(50):
+                _, snap = self.harness.get_json(f"/api/research/generate/status?job_id={job_id}")
+                if snap.get("status") in ("succeeded", "failed"):
+                    break
+                time.sleep(0.1)
+        self.assertEqual(snap["status"], "succeeded")
+        self.assertTrue(snap.get("request_ids"))
         _, search = self.harness.get_json("/api/research/search?q=alpha")
         self.assertEqual(search["count"], 1)
         url = search["results"][0]["url"]
@@ -133,11 +200,54 @@ class ResearchHttpTests(unittest.TestCase):
             article = resp.read().decode("utf-8")
         self.assertIn("Alpha Test", article)
 
+    def test_generate_search_excludes_no_material(self) -> None:
+        catalog_path = self.harness.data_root / "research" / "catalog.json"
+        catalog_path.parent.mkdir(parents=True, exist_ok=True)
+        article_path = self.harness.data_root / "research" / "articles" / "subj_alpha.html"
+        article_path.parent.mkdir(parents=True, exist_ok=True)
+        article_path.write_text("<html><body>Alpha Test</body></html>", encoding="utf-8")
+        catalog_path.write_text(
+            json.dumps(
+                {
+                    "articles": {
+                        "subj_alpha": {
+                            "poh_id": "subj_alpha",
+                            "title": "Alpha Test",
+                            "snippet": "Alpha Test",
+                            "url": "/articolo/subj_alpha.html",
+                            "request_id": "req-no-material",
+                            "no_material": True,
+                        }
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        _, search = self.harness.get_json("/api/research/search?q=alpha")
+        self.assertEqual(search["count"], 0)
+        _, missing = self.harness.get_json("/api/research/missing")
+        self.assertEqual(missing["count"], 2)
+
     def test_generate_article_for_poh_writes_file(self) -> None:
-        result = generate_article_for_poh(self.harness.data_root, "subj_beta")
+        from src.search.article_catalog import generate_article_for_poh
+
+        result = generate_article_for_poh(
+            self.harness.data_root,
+            "subj_beta",
+            settings=Settings.model_validate(
+                {
+                    "DATA_ROOT": str(self.harness.data_root),
+                    "OPENAI_PROVIDER": "local",
+                    "MATCHER_USE_AI": False,
+                }
+            ),
+            request_id="test-req-beta",
+        )
         self.assertTrue(result["url"].startswith("/articolo/"))
         path = Path(result["path"])
         self.assertTrue(path.is_file())
+        md_path = Path(result["markdown_path"])
+        self.assertTrue(md_path.is_file())
 
 
 if __name__ == "__main__":

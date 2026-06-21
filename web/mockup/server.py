@@ -20,6 +20,10 @@ DEFAULT_PORT = 8766
 
 _sse_jobs: dict[str, list[dict]] = {}
 _transcript_overrides: dict[int, str] = {}
+_research_catalog: dict | None = None
+_research_status: dict | None = None
+_research_missing: dict | None = None
+_research_jobs: dict[str, dict] = {}
 _lock = threading.Lock()
 
 
@@ -70,6 +74,183 @@ def _register_sse_job(fixture_name: str) -> str:
 def _take_sse_job(job_id: str) -> list[dict] | None:
     with _lock:
         return _sse_jobs.pop(job_id, None)
+
+
+def _ensure_research_catalog() -> dict:
+    global _research_catalog
+    if _research_catalog is None:
+        _research_catalog = _load_json("research-catalog.json")
+        if not isinstance(_research_catalog, dict):
+            _research_catalog = {"articles": {}}
+    return _research_catalog
+
+
+def _ensure_research_status() -> dict:
+    global _research_status
+    if _research_status is None:
+        _research_status = _load_json("research-status.json")
+        if not isinstance(_research_status, dict):
+            _research_status = {
+                "total_subjects": 0,
+                "articles_count": 0,
+                "missing_count": 0,
+            }
+    return _research_status
+
+
+def _ensure_research_missing() -> dict:
+    global _research_missing
+    if _research_missing is None:
+        _research_missing = _load_json("research-missing.json")
+        if not isinstance(_research_missing, dict):
+            _research_missing = {"missing": [], "count": 0}
+    return _research_missing
+
+
+def _sync_research_status() -> dict:
+    catalog = _ensure_research_catalog()
+    status = _ensure_research_status()
+    articles = catalog.get("articles")
+    if not isinstance(articles, dict):
+        articles = {}
+    complete = sum(
+        1 for entry in articles.values()
+        if isinstance(entry, dict) and not entry.get("no_material")
+    )
+    status["articles_count"] = complete
+    status["missing_count"] = max(0, int(status.get("total_subjects", 0)) - complete)
+    return status
+
+
+def _research_article_html(title: str, body: str, *, no_material: bool) -> str:
+    notice = (
+        '<p class="notice">Materiale insufficiente: nessuna fonte pertinente disponibile.</p>'
+        if no_material else ""
+    )
+    return f"""<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>{title} — librarAIn</title>
+<style>
+body {{ font-family: system-ui, sans-serif; max-width: 46rem; margin: 0 auto; padding: 1.5rem; background: #1e1e1e; color: #d4d4d4; line-height: 1.55; }}
+a {{ color: #4ec9b0; }}
+.notice {{ color: #f0ad4e; }}
+</style>
+</head>
+<body>
+<p><a href="/ricerca.html">← Ricerca</a></p>
+<h1>{title}</h1>
+{notice}{body}
+</body>
+</html>"""
+
+
+def _mock_article_body(poh_id: str, label: str, *, no_material: bool) -> str:
+    if no_material:
+        return (
+            "<p>La biblioteca indicizzata non contiene pagine candidate sufficienti "
+            f"per rispondere alla query con fonti verificabili.</p><p><strong>Query:</strong> {label}</p>"
+        )
+    return (
+        f"<p><strong>{label}</strong> — articolo mock generato per review UI.</p>"
+        "<p>Contenuto enciclopedico di esempio con citazioni simulate. "
+        "Nessuna pipeline LLM reale.</p>"
+        "<h2>Cronologia</h2><table border=\"1\" cellpadding=\"6\">"
+        "<tr><th>Periodo</th><th>Evento</th></tr>"
+        f"<tr><td>1271</td><td>Evento mock per {label}</td></tr></table>"
+    )
+
+
+def _publish_mock_article(poh_id: str, label: str, *, no_material: bool) -> None:
+    catalog = _ensure_research_catalog()
+    missing = _ensure_research_missing()
+    display_title = "Materiale insufficiente" if no_material else label
+    snippet = (
+        f"Materiale insufficiente La biblioteca indicizzata non contiene pagine candidate "
+        f"sufficienti per rispondere alla query con fonti verificabili. Query: {label}"
+        if no_material else
+        f"{label} {label} — articolo mock generato per review UI."
+    )
+    articles = catalog.setdefault("articles", {})
+    articles[poh_id] = {
+        "poh_id": poh_id,
+        "title": display_title,
+        "snippet": snippet[:180],
+        "url": f"/articolo/{poh_id}.html",
+        "request_id": f"mock-gen-{poh_id}",
+        "skipped_llm": no_material,
+        "no_material": no_material,
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S+00:00", time.gmtime()),
+    }
+    if not no_material:
+        items = missing.get("missing")
+        if isinstance(items, list):
+            missing["missing"] = [
+                entry for entry in items
+                if not (isinstance(entry, dict) and entry.get("poh_id") == poh_id)
+            ]
+            missing["count"] = len(missing["missing"])
+
+
+def _research_search(query: str) -> list[dict]:
+    catalog = _ensure_research_catalog()
+    articles = catalog.get("articles")
+    if not isinstance(articles, dict):
+        return []
+    q = query.strip().casefold()
+    results: list[dict] = []
+    for poh_id, meta in articles.items():
+        if not isinstance(meta, dict) or meta.get("no_material"):
+            continue
+        hay = f"{meta.get('title', '')} {meta.get('snippet', '')} {poh_id}".casefold()
+        if q not in hay:
+            tokens = [token for token in q.split() if len(token) >= 2]
+            if not tokens or not all(token in hay for token in tokens):
+                continue
+        results.append({
+            "poh_id": poh_id,
+            "title": str(meta.get("title") or poh_id),
+            "snippet": str(meta.get("snippet") or ""),
+            "url": str(meta.get("url") or f"/articolo/{poh_id}.html"),
+        })
+    return results
+
+
+def _start_research_job(targets: list[dict]) -> str:
+    job_id = f"mock-research-{secrets.token_hex(4)}"
+    with _lock:
+        _research_jobs[job_id] = {
+            "job_id": job_id,
+            "targets": list(targets),
+            "done": 0,
+            "total": len(targets),
+            "status": "running" if targets else "succeeded",
+            "errors": [],
+            "started_at": time.monotonic(),
+        }
+    return job_id
+
+
+def _advance_research_job(job_id: str) -> dict | None:
+    with _lock:
+        job = _research_jobs.get(job_id)
+        if job is None:
+            return None
+        if job["status"] != "running":
+            return dict(job)
+        elapsed = time.monotonic() - float(job["started_at"])
+        expected_done = min(job["total"], int(elapsed / 0.7) + 1)
+        while job["done"] < expected_done and job["done"] < job["total"]:
+            target = job["targets"][job["done"]]
+            poh_id = str(target.get("poh_id") or "")
+            label = str(target.get("label") or poh_id)
+            no_material = poh_id in {"abruzzo", "accio"}
+            _publish_mock_article(poh_id, label, no_material=no_material)
+            job["done"] += 1
+        if job["done"] >= job["total"]:
+            job["status"] = "succeeded"
+        return dict(job)
 
 
 class MockHandler(BaseHTTPRequestHandler):
@@ -125,8 +306,14 @@ class MockHandler(BaseHTTPRequestHandler):
         if path == "/admin.html":
             self._serve_static("admin.html")
             return
+        if path in ("/ricerca.html", "/ricerca"):
+            self._serve_static("ricerca.html")
+            return
         if path == "/mockup/lab.html":
             self._serve_static("mockup/lab.html")
+            return
+        if path == "/mockup/research-lab.html":
+            self._serve_static("mockup/research-lab.html")
             return
         if path.startswith("/mockup/"):
             rel = path.lstrip("/")
@@ -183,7 +370,71 @@ class MockHandler(BaseHTTPRequestHandler):
             })
             return
 
+        if path == "/api/research/status":
+            status = _sync_research_status()
+            self._send_json(200, {"ok": True, **status})
+            return
+
+        if path == "/api/research/books":
+            payload = _load_json("research-books.json")
+            books = payload.get("books") if isinstance(payload, dict) else []
+            self._send_json(200, {"ok": True, "books": books if isinstance(books, list) else []})
+            return
+
+        if path == "/api/research/missing":
+            missing = _ensure_research_missing()
+            items = missing.get("missing") if isinstance(missing, dict) else []
+            self._send_json(200, {
+                "ok": True,
+                "missing": items if isinstance(items, list) else [],
+                "count": int(missing.get("count", 0)) if isinstance(missing, dict) else 0,
+            })
+            return
+
+        if path == "/api/research/search":
+            q = (query.get("q") or [""])[0].strip()
+            if len(q) < 2:
+                self._send_json(400, {"ok": False, "error": "query must be at least 2 characters"})
+                return
+            results = _research_search(q)
+            self._send_json(200, {"ok": True, "query": q, "results": results, "count": len(results)})
+            return
+
+        if path.startswith("/articolo/") and path.endswith(".html"):
+            poh_id = path.removeprefix("/articolo/").removesuffix(".html")
+            catalog = _ensure_research_catalog()
+            articles = catalog.get("articles")
+            meta = articles.get(poh_id) if isinstance(articles, dict) else None
+            if not isinstance(meta, dict):
+                self.send_error(404)
+                return
+            label = str(meta.get("title") or poh_id)
+            no_material = bool(meta.get("no_material"))
+            body = _mock_article_body(poh_id, label, no_material=no_material)
+            html = _research_article_html(label, body, no_material=no_material)
+            self._send_bytes(200, html.encode("utf-8"), "text/html; charset=utf-8")
+            return
+
         parts = path.split("/")
+        if len(parts) == 5 and parts[1] == "api" and parts[2] == "research" and parts[3] == "generate":
+            if parts[4] == "status":
+                job_id = (query.get("job_id") or [""])[0]
+                job = _advance_research_job(job_id)
+                if job is None:
+                    self._send_json(404, {"ok": False, "error": "job not found"})
+                    return
+                self._send_json(200, {
+                    "ok": True,
+                    "job_id": job["job_id"],
+                    "done": job["done"],
+                    "total": job["total"],
+                    "status": job["status"],
+                    "errors": job.get("errors") or [],
+                    "generated": [],
+                    "request_ids": [],
+                })
+                return
+
         if len(parts) == 5 and parts[1] == "api" and parts[2] == "ingest":
             job_id = parts[3]
             action = parts[4]
@@ -288,6 +539,32 @@ class MockHandler(BaseHTTPRequestHandler):
             })
             return
 
+        if path == "/api/research/generate":
+            payload = self._read_json_body()
+            missing = _ensure_research_missing()
+            targets = list(missing.get("missing") or [])
+            poh_ids = payload.get("poh_ids")
+            if isinstance(poh_ids, list) and poh_ids:
+                by_id = {
+                    str(entry.get("poh_id")): entry
+                    for entry in targets
+                    if isinstance(entry, dict)
+                }
+                targets = [
+                    by_id.get(str(poh_id)) or {"poh_id": str(poh_id), "label": str(poh_id)}
+                    for poh_id in poh_ids
+                ]
+            elif isinstance(payload.get("book_sha"), str) and payload.get("book_sha").strip():
+                targets = targets[:2]
+            job_id = _start_research_job(targets)
+            self._send_json(202, {
+                "ok": True,
+                "job_id": job_id,
+                "total": len(targets),
+                "status_url": f"/api/research/generate/status?job_id={job_id}",
+            })
+            return
+
         self.send_error(404, "Not Found")
 
 
@@ -299,6 +576,8 @@ def main() -> None:
     server = ThreadingHTTPServer((host, port), MockHandler)
     print(f"Mock UI server: http://{host}:{port}/mockup/lab.html")
     print(f"Ingest con pannello lab: http://{host}:{port}/index.html?mock=1")
+    print(f"Ricerca mock: http://{host}:{port}/ricerca.html?mock=1")
+    print(f"Admin research mock: http://{host}:{port}/admin.html?mock=1")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

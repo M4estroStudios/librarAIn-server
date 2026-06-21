@@ -80,11 +80,14 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 #out { display: none; margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #2d2d2d; border: 1px solid #454545; font-size: 0.8rem; white-space: pre-wrap; }
 #out.show { display: block; }
 #out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
+.mock-banner { display: none; margin: 0 auto 1rem; max-width: 42rem; padding: 0.55rem 0.85rem; border-radius: 8px; background: #1a3a34; border: 1px solid #4ec9b0; color: #b8f0e8; font-size: 0.82rem; }
+body.research-mock-active .mock-banner { display: block; }
 </style>
 </head>
 <body>
 <div id="hero" class="hero">
   <p class="nav" style="text-align:left;max-width:42rem;margin:0 auto 0.5rem;"><a href="/">Ingestione</a> · <a href="/admin.html">Admin</a> · Ricerca</p>
+  <p class="mock-banner" id="mock-banner">Modalità mock attiva — risultati e articoli simulati, nessuna pipeline reale.</p>
   <h1 class="logo">librarAIn <span style="color:#4ec9b0;font-weight:500;">Ricerca</span></h1>
   <form id="search-form" class="search-row" role="search">
     <input type="search" id="q" name="q" placeholder="Cerca negli articoli generati…" autocomplete="off" minlength="2" required>
@@ -111,6 +114,9 @@ function setApiToken(token) {
 }
 
 async function apiFetch(url, options) {
+  if (window.__librarainResearchMock && window.__librarainResearchMock.isEnabled()) {
+    return window.__librarainResearchMock.apiFetch(url, options);
+  }
   const opts = Object.assign({ headers: {} }, options || {});
   const token = apiToken();
   if (token) opts.headers["X-API-Token"] = token;
@@ -202,6 +208,11 @@ document.getElementById("search-form").addEventListener("submit", function (ev) 
     runSearch(q).catch(function (err) { showOut(String(err), true); });
   }
 })();
+</script>
+<script type="module">
+import * as researchMock from "/mockup/research-mock.js";
+window.__librarainResearchMock = researchMock;
+researchMock.loadSavedEnabled();
 </script>
 </body>
 </html>

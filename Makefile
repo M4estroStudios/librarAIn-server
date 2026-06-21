@@ -9,7 +9,7 @@ VENV_PYTHON = $(firstword $(wildcard venv/Scripts/python.exe venv/bin/python.exe
 # Preferisce il Python del venv se presente (dopo setup-env).
 PYTHON ?= $(if $(VENV_PYTHON),$(VENV_PYTHON),$(PY))
 
-.PHONY: check-python setup-env finish-env install-torch test lint clean-pycache run-server
+.PHONY: check-python setup-env finish-env install-torch test lint clean-pycache run-server run-mock-server
 
 check-python:
 	$(PY) -c "import sys; sys.exit('Python 3.11+ required (see pyproject.toml requires-python)' if sys.version_info < (3, 11) else 0)"
@@ -38,6 +38,9 @@ lint:
 
 run-server:
 	"$(PYTHON)" -m src.api.ingest_http_server
+
+run-mock-server:
+	"$(PYTHON)" web/mockup/server.py
 
 clean-pycache:
 	"$(PYTHON)" -c "import pathlib, shutil; [shutil.rmtree(path, ignore_errors=True) for path in pathlib.Path('.').rglob('__pycache__')]"

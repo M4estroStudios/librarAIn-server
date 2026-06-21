@@ -1,0 +1,34 @@
+{
+  "articles": {
+    "marco-polo": {
+      "poh_id": "marco-polo",
+      "title": "Marco Polo",
+      "snippet": "Marco Polo Marco Polo fu un mercante e esploratore veneziano. Le sue memorie descrivono il viaggio verso la Corte di Kubilai Khan…",
+      "url": "/articolo/marco-polo.html",
+      "request_id": "mock-research-marco-polo",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-06-21T12:00:00+00:00"
+    },
+    "pirro": {
+      "poh_id": "pirro",
+      "title": "Pirro",
+      "snippet": "Pirro Pirro I re dell'Epiro condusse campagne in Italia e in Sicilia contro Roma. Le fonti ricordano le vittorie costose note come vittorie di Pirro…",
+      "url": "/articolo/pirro.html",
+      "request_id": "mock-research-pirro",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-06-21T12:05:00+00:00"
+    },
+    "acerra": {
+      "poh_id": "acerra",
+      "title": "Materiale insufficiente",
+      "snippet": "Materiale insufficiente La biblioteca indicizzata non contiene pagine candidate sufficienti per rispondere alla query con fonti verificabili. Query: Acerra",
+      "url": "/articolo/acerra.html",
+      "request_id": "mock-research-acerra",
+      "skipped_llm": true,
+      "no_material": true,
+      "generated_at": "2026-06-21T12:10:00+00:00"
+    }
+  }
+}

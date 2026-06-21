@@ -36,10 +36,10 @@
 | `src/search/article_llm.py` + `prompts/article_prompt.md` | ✅ presente (F2-T5) | Article Generation LLM: passi `a`+`b`, articolo Markdown in italiano con link `source:`; template fisso se nessuna pagina di contesto |
 | `src/search/poh_links_llm.py` + `prompts/poh_links_prompt.md` | ✅ presente (F2-T6) | POH link pass LLM: passo `c`, link `[…](poh:…)`; `build_poh_candidates` da INDEX + lookup + scan articolo; skip se materiale insufficiente o zero candidati |
 | `src/search/timeline_llm.py` + `prompts/timeline_prompt.md` | ✅ presente (F2-T7) | Timeline pass LLM: passo `d`, sezione `## Cronologia` tabella GFM; vincolata a `timeline_candidates` di F2-T3b; skip LLM su articolo no-material |
-| `src/search/article_catalog.py` + `research_handlers.py` | ⚠️ scaffold → F2-T8 | catalogo articoli POH + `POST /api/research/generate`; oggi stub HTML; da F2-T8 il pulsante Admin **Genera articoli mancanti** (`web/admin.html`) invocherà `research_runner` per ogni POH senza articolo |
-| `web/admin.html` | ✅ presente (scaffold) | sezione **Genera articoli mancanti**; da F2-T8 avvio forzato batch della pipeline query (passi `a`–`d`) sui POH mancanti, non più stub |
+| `src/search/article_catalog.py` + `research_handlers.py` | ✅ presente (F2-T8) | catalogo articoli POH + endpoint HTTP (`submit`, `{id}`, `{id}/article`, `generate`); Admin **Genera articoli mancanti** → `research_runner` per ogni POH senza articolo |
+| `web/admin.html` | ✅ presente (F2-T8) | sezione **Genera articoli mancanti**; avvio batch pipeline query (passi `a`–`d`) sui POH mancanti via `POST /api/research/generate` |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ⚠️ parziale | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline d ✅ (F2-T7); orchestrazione/postprocess F2-T8+ |
+| `src/search/` (pipeline query) | ✅ presente (F2-T8) | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline d ✅ (F2-T7); postprocess + `research_runner` ✅ (F2-T8); audit DB F2-T9+ |
 | Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -378,8 +378,8 @@ src/search/
 ├── article_llm.py         # F2-T5 ✅
 ├── poh_links_llm.py       # F2-T6 ✅
 ├── timeline_llm.py        # F2-T7 ✅
-├── postprocess.py         # F2-T8: parser/validator link + tabella
-├── research_runner.py     # orchestrazione job (specchio di ingest_pipeline_runner)
+├── postprocess.py         # F2-T8 ✅: parser/validator link + tabella
+├── research_runner.py     # F2-T8 ✅: orchestrazione job (specchio di ingest_pipeline_runner)
 └── prompts/
     ├── article_prompt.md
     ├── poh_links_prompt.md
@@ -508,13 +508,12 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
 - [x] **F2-T7** — Timeline pass (`timeline_prompt.md` + `timeline_llm.py`): passo `d`, sezione
   `## Cronologia` vincolata ai `timeline_candidates` di F2-T3b; skip LLM su articolo no-material.
   *(Opus)*
-- [ ] **F2-T8** — Aggregatore Markdown finale + post-validatore (link `source:`/`poh:`, tabella
+- [x] **F2-T8** — Aggregatore Markdown finale + post-validatore (link `source:`/`poh:`, tabella
   GFM, sostituzione `*[[fonte non verificabile]]*`) + persistenza su disco
   (`data/research/<request_id>.md`) + endpoint HTTP (`submit`, `{id}`, `{id}/article`) + job
   registry `research` + dedup TTL; **cablaggio Admin** (`web/admin.html` →
   `POST /api/research/generate`): pulsante **Genera articoli mancanti** invoca `research_runner`
-  per ogni POH senza articolo (query sintetica = `canonical_label`, `poh` impostato), sostituendo
-  lo stub HTML attuale. *(Sonnet)*
+  per ogni POH senza articolo (query sintetica = `canonical_label`, `poh` impostato). *(Sonnet)*
 - [ ] **F2-T9** — Migration `research_runs` + audit contesto (libri/pagine/soggetti) +
   `bind_log_context` nella run. *(Sonnet)*
 - [ ] **F2-T10** — E2E ricerca: 2 libri ingestiti + query con POH secondario; verifica automatica
