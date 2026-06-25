@@ -42,6 +42,7 @@ ProgressReporter = Callable[[dict[str, Any]], None]
 
 @dataclass(frozen=True)
 class ResearchContextAudit:
+    context_books_loaded: dict[str, list[int]]
     context_books: dict[str, list[int]]
     subjects_matched: list[dict[str, Any]]
 
@@ -243,6 +244,10 @@ async def run_research_async(
         relevant_loaded.setdefault(page.source_sha256, set()).add(page.aligned_page)
 
     audit = ResearchContextAudit(
+        context_books_loaded={
+            sha: sorted(pages)
+            for sha, pages in sorted(pages_result.loaded_pages.items())
+        },
         context_books={
             sha: sorted(pages) for sha, pages in sorted(relevant_loaded.items())
         },

@@ -12,6 +12,7 @@ from src.models.polyindex_index import PolyindexIndexSubjectEntry
 from src.models.settings import Settings
 from src.search.postprocess import markdown_to_article_html
 from src.search.research_runner import (
+    ResearchRunResult,
     build_poh_research_request,
     run_research,
 )
@@ -278,7 +279,7 @@ def generate_article_for_poh(
     request_id: str,
     reporter=None,
     publish_no_material: bool = True,
-) -> dict[str, Any]:
+) -> tuple[dict[str, Any], ResearchRunResult]:
     subjects = list_index_subjects(data_root)
     entry = subjects.get(poh_id)
     if entry is None:
@@ -303,7 +304,7 @@ def generate_article_for_poh(
         markdown=result.markdown,
         request_id=request_id,
         skipped_llm=result.skipped_llm,
-    )
+    ), result
 
 
 def resolve_article_file(data_root: Path, article_name: str) -> Path | None:

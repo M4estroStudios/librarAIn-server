@@ -383,7 +383,7 @@ Log(INFO_LOG_LEVEL, "dettaglio pagina", {"page": 12}, json=True, to_file=True)
 - ~~T18.5(a–d)~~ **rimandato** (v2.0 / on-demand): refactor HTTP FastAPI + upload streaming + `/artifacts`.
 - ~~T21(b)~~ **rimandato** con T18.5: E2E HTTP submit→poll→artifacts (FastAPI TestClient).
 - **T27**: checkpoint daily/on-demand DB + polyindex.
-- **F2 — Ricerca (passi manoscritto a–d)**: **F2-T1..F2-T8 (✅ completati)**; **F2-T9..F2-T10** da fare (dettaglio in [`PRD_research.md`](PRD_research.md) §5.1).
+- **F2 — Ricerca (passi manoscritto a–d)**: **F2-T1..F2-T9 (✅ completati)**; **F2-T10** da fare (dettaglio in [`PRD_research.md`](PRD_research.md) §5.1).
 
 **v1.1**:
 - UI ricerca (`web/search.html`).
@@ -417,7 +417,7 @@ Differenze chiave rispetto al README attuale (richieste da questo PRD):
 - **T14** — **presente**: `orchestrator.py`, `retry.py`, `errors.py`, `rate_limit.py`, `pipeline_runs.py`.
 - Ingest HTTP — **presente**: `ingest_http_server.py` + `ingest_form.py` + `ingest_pipeline_runner.run_full_pipeline` (orchestrator completo); `resolve_aligned_pdf_path_for_stage1` in `pdf_alignment.py`.
 - `src/ingestion/polyindex/` — **presente**: T23 (`toc_json.py`), T24 (`index_md_parser.py`), T25 (`subject_matcher.py`), T26 (`index_json.py`), T-EXT (`time_index.py`, `time_index_llm.py`).
-- `src/search/` — **presente** (F2-T1..F2-T8: schema, lookup, expansion, time lookup, loader, LLM passi a–d, postprocess, `research_runner`, catalogo + HTTP research; audit DB F2-T9+ assente).
+- `src/search/` — **presente** (F2-T1..F2-T9: schema, lookup, expansion, time lookup, loader, LLM passi a–d, postprocess, `research_runner`, catalogo + HTTP research, audit `research_runs`).
 - `data/db/biblioteca.csv` (SQLite) — **presente** (`Settings.sqlite_path`).
 - `src/core/checkpoints.py` — **assente** (T27).
 - `web/index.html` — **presente**; allineato al runner completo.
@@ -522,7 +522,7 @@ Legenda: `[x]` completata, `[ ]` da fare, `[~]` in corso, `[⏸]` **rimandata** 
 - [x] **F2-T6 (NUOVO)** — POH link pass LLM (`poh_links_prompt.md` + `poh_links_llm.py`): passo `c`. *(Opus)*
 - [x] **F2-T7 (NUOVO)** — Timeline pass LLM (`timeline_prompt.md` + `timeline_llm.py`): passo `d`, sezione `## Cronologia` tabella GFM. *(Opus)*
 - [x] **F2-T8 (NUOVO)** — Aggregatore Markdown finale + post-validatore link/tabellare + persistenza su disco (`data/research/<request_id>.md`) + endpoint HTTP (`POST /api/research/submit`, `GET /{id}`, `GET /{id}/article`) + job registry `research`; cablaggio Admin **Genera articoli mancanti** → `research_runner`. *(Sonnet)*
-- [ ] **F2-T9 (NUOVO)** — Tabella `research_runs` + audit pagine/soggetti usati; propagazione `request_id` nei log. *(Sonnet)*
+- [x] **F2-T9 (NUOVO)** — Tabella `research_runs` + audit pagine caricate/soggetti usati; propagazione `request_id` nei log. *(Sonnet)*
 - [ ] **F2-T10 (NUOVO)** — E2E ricerca: 2 libri ingestiti + query che richiede POH secondario + verifica `poh:` + `## Cronologia` + `source:`. *(Sonnet)*
 
 ### Fase 2 — Ricerca (v1.1 e oltre)

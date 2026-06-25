@@ -13,6 +13,7 @@ from unittest.mock import patch
 from src.api.ingest_http_server import build_ingest_server
 from src.models.polyindex_index import PolyindexIndexDocument, PolyindexIndexSubjectEntry
 from src.models.settings import Settings
+from src.persistence.research_runs import get_research_run_by_request_id
 
 
 class _ServerHarness:
@@ -140,10 +141,20 @@ class ResearchHttpTests(unittest.TestCase):
         self.assertEqual(snap["status"], "succeeded")
         _, article = self.harness.get_json(f"/api/research/{request_id}/article")
         self.assertIn("markdown", article)
+        sqlite_path = str(self.harness.data_root / "db" / "biblioteca.db")
+        run_row = get_research_run_by_request_id(sqlite_path, request_id)
+        self.assertIsNotNone(run_row)
+        assert run_row is not None
+        self.assertEqual(run_row["status"], "succeeded")
+        self.assertEqual(run_row["poh_id"], "subj_alpha")
+        self.assertIsNotNone(run_row["finished_at"])
 
     def test_generate_search_and_article_page(self) -> None:
         article_path = self.harness.data_root / "research" / "articles" / "subj_alpha.html"
         article_md_path = self.harness.data_root / "research" / "articles" / "subj_alpha.md"
+
+        from src.search.postprocess import PostprocessResult
+        from src.search.research_runner import ResearchContextAudit, ResearchRunResult
 
         def fake_generate_article_for_poh(data_root, poh_id, *, settings, request_id, reporter=None, publish_no_material=True):
             article_path.parent.mkdir(parents=True, exist_ok=True)
@@ -167,7 +178,7 @@ class ResearchHttpTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            return {
+            catalog_result = {
                 "poh_id": poh_id,
                 "title": "Alpha Test",
                 "url": "/articolo/subj_alpha.html",
@@ -176,6 +187,17 @@ class ResearchHttpTests(unittest.TestCase):
                 "markdown_path": str(article_md_path),
                 "skipped_llm": False,
             }
+            research_result = ResearchRunResult(
+                markdown="# Alpha Test",
+                markdown_path=str(article_md_path),
+                postprocess=PostprocessResult(markdown="# Alpha Test"),
+                audit=ResearchContextAudit(
+                    context_books_loaded={"abc123": [1, 2]},
+                    context_books={"abc123": [1]},
+                    subjects_matched=[{"canonical_id": poh_id, "method": "exact"}],
+                ),
+            )
+            return catalog_result, research_result
 
         with patch(
             "src.api.research_handlers.generate_article_for_poh",
@@ -242,7 +264,7 @@ class ResearchHttpTests(unittest.TestCase):
                 }
             ),
             request_id="test-req-beta",
-        )
+        )[0]
         self.assertTrue(result["url"].startswith("/articolo/"))
         path = Path(result["path"])
         self.assertTrue(path.is_file())

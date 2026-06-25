@@ -39,8 +39,8 @@
 | `src/search/article_catalog.py` + `research_handlers.py` | ✅ presente (F2-T8) | catalogo articoli POH + endpoint HTTP (`submit`, `{id}`, `{id}/article`, `generate`); Admin **Genera articoli mancanti** → `research_runner` per ogni POH senza articolo |
 | `web/admin.html` | ✅ presente (F2-T8) | sezione **Genera articoli mancanti**; avvio batch pipeline query (passi `a`–`d`) sui POH mancanti via `POST /api/research/generate` |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ✅ presente (F2-T8) | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline d ✅ (F2-T7); postprocess + `research_runner` ✅ (F2-T8); audit DB F2-T9+ |
-| Tabella `research_runs` | ❌ assente | migration dedicata (F2-T9) |
+| `src/search/` (pipeline query) | ✅ presente (F2-T9) | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline d ✅ (F2-T7); postprocess + `research_runner` ✅ (F2-T8); audit DB ✅ (F2-T9) |
+| Tabella `research_runs` | ✅ presente (F2-T9) | migration `005` + audit permanente libri/pagine caricate, soggetti matchati, citazioni |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
 solo LLM. `TIME_INDEX.json` fornisce un pre-filtro deterministico `{anno/data → libri/pagine}`
@@ -514,8 +514,9 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
   registry `research` + dedup TTL; **cablaggio Admin** (`web/admin.html` →
   `POST /api/research/generate`): pulsante **Genera articoli mancanti** invoca `research_runner`
   per ogni POH senza articolo (query sintetica = `canonical_label`, `poh` impostato). *(Sonnet)*
-- [ ] **F2-T9** — Migration `research_runs` + audit contesto (libri/pagine/soggetti) +
-  `bind_log_context` nella run. *(Sonnet)*
+- [x] **F2-T9** — Migration `research_runs` + audit contesto (libri/pagine caricate dal loader,
+  soggetti matchati) + `bind_log_context` nella run; lifecycle `accepted` → `running` →
+  `succeeded`/`failed`. *(Sonnet)*
 - [ ] **F2-T10** — E2E ricerca: 2 libri ingestiti + query con POH secondario; verifica automatica
   `poh:` + `## Cronologia` valida + `source:` risolti + riga `research_runs`. Gate di uscita MVP
   (criteri in §3.3). *(Sonnet)*

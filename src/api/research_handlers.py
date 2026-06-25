@@ -9,8 +9,14 @@ from pathlib import Path
 from typing import Any, Callable
 
 from src.api.job_registry import JobRegistry
-from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
+from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, bind_log_context, reset_log_context
 from src.models.settings import Settings
+from src.persistence.research_runs import (
+    create_research_run_accepted,
+    mark_research_run_failed,
+    mark_research_run_running,
+    mark_research_run_succeeded,
+)
 from src.search.article_catalog import (
     generate_article_for_poh,
     list_ingested_books,
@@ -26,6 +32,7 @@ from src.search.research_runner import (
     RESEARCH_PIPELINE_VERSION,
     ResearchConcurrencyLimiter,
     ResearchDedupIndex,
+    ResearchRunResult,
     build_article_response,
     compute_dedup_key,
     persist_query_markdown,
@@ -119,6 +126,49 @@ def _tail_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return events[-_MAX_EVENTS:]
 
 
+def _record_research_run_accepted(
+    settings: Settings,
+    *,
+    request_id: str,
+    query: str,
+    poh_id: str | None = None,
+    poh_label: str | None = None,
+) -> None:
+    poh = None
+    if poh_id or poh_label:
+        from src.search.request_schema import ResearchPoh
+
+        poh = ResearchPoh(
+            id=poh_id or "",
+            label=poh_label or poh_id or "",
+        )
+    create_research_run_accepted(
+        settings.sqlite_path,
+        request_id=request_id,
+        query=query,
+        poh=poh,
+        pipeline_version=RESEARCH_PIPELINE_VERSION,
+    )
+
+
+def _record_research_run_succeeded(settings: Settings, result: ResearchRunResult, *, request_id: str) -> None:
+    mark_research_run_succeeded(
+        settings.sqlite_path,
+        request_id=request_id,
+        context_books=result.audit.context_books_loaded,
+        subjects_matched=result.audit.subjects_matched,
+        citations_count=len(result.postprocess.citations),
+    )
+
+
+def _record_research_run_failed(settings: Settings, *, request_id: str, last_error: str) -> None:
+    mark_research_run_failed(
+        settings.sqlite_path,
+        request_id=request_id,
+        last_error=last_error,
+    )
+
+
 def _start_research_worker(
     *,
     registry: JobRegistry,
@@ -135,11 +185,13 @@ def _start_research_worker(
             registry.emit(request_id, event)
 
         log_fields: dict[str, str] = {"research_subject": "(unknown)"}
+        request_token, _sha_token = bind_log_context(request_id=request_id)
         try:
             registry.emit(
                 request_id,
                 {"phase": "research", "status": "started"},
             )
+            mark_research_run_running(settings.sqlite_path, request_id=request_id)
             request = validate_research_request(payload)
             log_fields = query_log_fields(request.query, request.poh)
             Log(
@@ -156,6 +208,7 @@ def _start_research_worker(
             )
             markdown_path = persist_query_markdown(data_root, request_id, result.markdown)
             result.markdown_path = str(markdown_path)
+            _record_research_run_succeeded(settings, result, request_id=request_id)
             article_payload = build_article_response(result)
             article_payload["audit"] = {
                 "context_books": result.audit.context_books,
@@ -173,6 +226,7 @@ def _start_research_worker(
                 dedup_index.register(dedup_key, request_id)
         except ValueError as exc:
             detail = _validation_error_response(exc)
+            _record_research_run_failed(settings, request_id=request_id, last_error=detail["error"])
             registry.emit(
                 request_id,
                 {
@@ -187,6 +241,7 @@ def _start_research_worker(
                 f"research worker failed: {log_fields['research_subject']}",
                 {"request_id": request_id, "error": str(exc), **log_fields},
             )
+            _record_research_run_failed(settings, request_id=request_id, last_error=str(exc))
             registry.emit(
                 request_id,
                 {
@@ -196,6 +251,7 @@ def _start_research_worker(
                 },
             )
         finally:
+            reset_log_context(request_token, None)
             concurrency_limiter.release()
 
     threading.Thread(
@@ -417,6 +473,13 @@ def build_research_routes(
                 job_kind="research",
                 pipeline_version=RESEARCH_PIPELINE_VERSION,
             )
+            _record_research_run_accepted(
+                settings,
+                request_id=request_id,
+                query=request.query,
+                poh_id=request.poh.id if request.poh else None,
+                poh_label=request.poh.label if request.poh else None,
+            )
             _start_research_worker(
                 registry=registry,
                 dedup_index=dedup_index,
@@ -504,6 +567,13 @@ def build_research_routes(
                         job_kind="research",
                         pipeline_version=RESEARCH_PIPELINE_VERSION,
                     )
+                    _record_research_run_accepted(
+                        settings,
+                        request_id=request_id,
+                        query=poh_label,
+                        poh_id=poh_id,
+                        poh_label=poh_label,
+                    )
                     registry.emit(
                         request_id,
                         {"phase": "queue", "status": "waiting"},
@@ -513,14 +583,16 @@ def build_research_routes(
                     def reporter(event: dict[str, Any], *, rid: str = request_id) -> None:
                         registry.emit(rid, event)
 
+                    request_token, _sha_token = bind_log_context(request_id=request_id)
                     try:
                         registry.emit(request_id, {"phase": "research", "status": "started"})
+                        mark_research_run_running(settings.sqlite_path, request_id=request_id)
                         Log(
                             INFO_LOG_LEVEL,
                             f"research batch item started: {poh_label} ({poh_id})",
                             {"job_id": job_id, "request_id": request_id, "poh_id": poh_id, "poh_label": poh_label},
                         )
-                        result = generate_article_for_poh(
+                        catalog_result, research_result = generate_article_for_poh(
                             data_root,
                             poh_id,
                             settings=settings,
@@ -528,15 +600,16 @@ def build_research_routes(
                             reporter=reporter,
                             publish_no_material=False,
                         )
+                        _record_research_run_succeeded(settings, research_result, request_id=request_id)
                         registry.emit(
                             request_id,
                             {
                                 "phase": "research",
                                 "status": "succeeded",
-                                "result": {"poh_id": poh_id, "url": result["url"]},
+                                "result": {"poh_id": poh_id, "url": catalog_result["url"]},
                             },
                         )
-                        batch_registry.append_generated(job_id, result)
+                        batch_registry.append_generated(job_id, catalog_result)
                         Log(
                             INFO_LOG_LEVEL,
                             f"research batch item completed: {poh_label} ({poh_id})",
@@ -545,10 +618,11 @@ def build_research_routes(
                                 "request_id": request_id,
                                 "poh_id": poh_id,
                                 "poh_label": poh_label,
-                                "url": result["url"],
+                                "url": catalog_result["url"],
                             },
                         )
                     except Exception as exc:
+                        _record_research_run_failed(settings, request_id=request_id, last_error=str(exc))
                         registry.emit(
                             request_id,
                             {
@@ -573,6 +647,7 @@ def build_research_routes(
                             },
                         )
                     finally:
+                        reset_log_context(request_token, None)
                         concurrency_limiter.release()
                 snapshot = batch_registry.get(job_id)
                 errors = len(snapshot["errors"]) if snapshot else 0
