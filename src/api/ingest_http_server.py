@@ -933,16 +933,17 @@ def build_ingest_server(
                 )
                 return
             with uploaded.path.open("rb") as pdf_handle:
-                if pdf_handle.read(4) != b"%PDF":
-                    uploaded.path.unlink(missing_ok=True)
-                    Log(WARNING_LOG_LEVEL, "ingest submit rejected: not a PDF (magic bytes)")
-                    _send_validation_error(
-                        self,
-                        IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                        "uploaded file is not a PDF",
-                        "pdf_file",
-                    )
-                    return
+                pdf_magic = pdf_handle.read(4)
+            if pdf_magic != b"%PDF":
+                uploaded.path.unlink(missing_ok=True)
+                Log(WARNING_LOG_LEVEL, "ingest submit rejected: not a PDF (magic bytes)")
+                _send_validation_error(
+                    self,
+                    IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                    "uploaded file is not a PDF",
+                    "pdf_file",
+                )
+                return
 
             saved_path = uploaded.path.with_name(
                 f"{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"

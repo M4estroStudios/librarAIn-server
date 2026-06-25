@@ -39,7 +39,7 @@
 | `src/search/article_catalog.py` + `research_handlers.py` | ✅ presente (F2-T8) | catalogo articoli POH + endpoint HTTP (`submit`, `{id}`, `{id}/article`, `generate`); Admin **Genera articoli mancanti** → `research_runner` per ogni POH senza articolo |
 | `web/admin.html` | ✅ presente (F2-T8) | sezione **Genera articoli mancanti**; avvio batch pipeline query (passi `a`–`d`) sui POH mancanti via `POST /api/research/generate` |
 | `web/ricerca.html` | ⚠️ scaffold | ricerca su catalogo articoli; non equivale a F2-T11 (`search.html`) |
-| `src/search/` (pipeline query) | ✅ presente (F2-T9) | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline d ✅ (F2-T7); postprocess + `research_runner` ✅ (F2-T8); audit DB ✅ (F2-T9) |
+| `src/search/` (pipeline query) | ✅ presente (F2-T10) | lookup ✅ (F2-T2); expansion ✅ (F2-T3); time lookup ✅ (F2-T3b); loader ✅ (F2-T4); article a+b ✅ (F2-T5); poh links c ✅ (F2-T6); timeline d ✅ (F2-T7); postprocess + `research_runner` ✅ (F2-T8); audit DB ✅ (F2-T9); smoke E2E ✅ (F2-T10) |
 | Tabella `research_runs` | ✅ presente (F2-T9) | migration `005` + audit permanente libri/pagine caricate, soggetti matchati, citazioni |
 
 **Aggiornamento chiave rispetto a PRD-Fase1**: il passo `d` (cronologia) non è più demandato al
@@ -517,9 +517,9 @@ T27 (checkpoint) e T31 (E2E cross-book) restano su PRD-Fase1 e non bloccano l'av
 - [x] **F2-T9** — Migration `research_runs` + audit contesto (libri/pagine caricate dal loader,
   soggetti matchati) + `bind_log_context` nella run; lifecycle `accepted` → `running` →
   `succeeded`/`failed`. *(Sonnet)*
-- [ ] **F2-T10** — E2E ricerca: 2 libri ingestiti + query con POH secondario; verifica automatica
-  `poh:` + `## Cronologia` valida + `source:` risolti + riga `research_runs`. Gate di uscita MVP
-  (criteri in §3.3). *(Sonnet)*
+- [x] **F2-T10** — E2E ricerca: 2 libri ingestiti + 5 query mock (≥1 con POH secondario); verifica
+  automatica `poh:` + `## Cronologia` valida + `source:` risolti + riga `research_runs`. Gate di
+  uscita MVP (criteri in §3.3); suite `tests/test_research_e2e.py`. *(Sonnet)*
 
 Ordine consigliato: F2-T1 → F2-T2/F2-T3/F2-T3b/F2-T4 (parallelizzabili) → F2-T5 → F2-T6/F2-T7 →
 F2-T8 → F2-T9 → F2-T10.

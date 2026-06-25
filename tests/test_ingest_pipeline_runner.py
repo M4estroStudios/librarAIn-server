@@ -40,6 +40,9 @@ def _make_enriched(sha: str = SHA) -> MagicMock:
     m.source_sha256 = sha
     m.request.request_id = REQUEST_ID
     m.request.schema_version = "1.0"
+    m.request.notes = None
+    m.request.page_notes = None
+    m.request.index_notes = None
     m.request.reicat = ReicatMetadata.model_validate(
         {"titolo": "Book", "autore": ["Author One"]}
     )

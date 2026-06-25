@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import fcntl
+import sys
 import tempfile
 import threading
 import time
@@ -8,6 +8,11 @@ import unittest
 from pathlib import Path
 
 from src.ingestion.polyindex.file_lock import exclusive_file_lock, polyindex_dir_lock
+
+if sys.platform == "win32":
+    import msvcrt
+else:
+    import fcntl
 
 
 class TestPolyindexFileLock(unittest.TestCase):
@@ -42,6 +47,7 @@ class TestPolyindexFileLock(unittest.TestCase):
         t2.join()
         self.assertEqual(order, ["held", "acquired"])
 
+    @unittest.skipIf(sys.platform == "win32", "non-blocking flock peer check is Unix-specific")
     def test_exclusive_file_lock_blocks_nonblocking_peer(self) -> None:
         lock_path = self.tmp / ".test.lock"
         peer_blocked = threading.Event()
@@ -55,12 +61,21 @@ class TestPolyindexFileLock(unittest.TestCase):
         def peer() -> None:
             release.wait()
             with lock_path.open("a+b") as handle:
+                fd = handle.fileno()
+                if sys.platform == "win32":
+                    try:
+                        msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+                    except OSError:
+                        peer_blocked.set()
+                        return
+                    msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+                    return
                 try:
-                    fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
                 except BlockingIOError:
                     peer_blocked.set()
                     return
-                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+                fcntl.flock(fd, fcntl.LOCK_UN)
 
         holder_thread = threading.Thread(target=holder)
         peer_thread = threading.Thread(target=peer)

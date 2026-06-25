@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-import fcntl
 import io
 import json
+import sys
 import tempfile
 import unittest
 from contextlib import redirect_stdout
@@ -15,6 +15,11 @@ from src.ingestion.tmp_cleanup import (
     cleanup_tmp_after_success,
 )
 from src.models.settings import Settings
+
+if sys.platform == "win32":
+    import msvcrt
+else:
+    import fcntl
 
 SHA = "cafebabe" * 8
 
@@ -95,10 +100,16 @@ class TestTmpCleanup(unittest.TestCase):
         settings = _settings(str(self.data_root), tmp_keep=False)
 
         with locked_tmp.open("rb") as handle:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            fd = handle.fileno()
+            if sys.platform == "win32":
+                msvcrt.locking(fd, msvcrt.LK_LOCK, 1)
+            else:
+                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
             buffer = io.StringIO()
             with redirect_stdout(buffer):
                 result = cleanup_tmp_after_success(SHA, settings)
+            if sys.platform == "win32":
+                msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
 
         self.assertTrue(result.skipped)
         self.assertEqual(result.reason, SKIP_REASON_LOCKED)

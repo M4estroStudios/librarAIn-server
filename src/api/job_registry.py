@@ -81,7 +81,7 @@ class JobRegistry:
         ]
         for state in finished:
             assert state.finished_at_monotonic is not None
-            if now - state.finished_at_monotonic > self._ttl_seconds:
+            if now - state.finished_at_monotonic >= self._ttl_seconds:
                 del self._jobs[state.job_id]
 
         remaining = [
