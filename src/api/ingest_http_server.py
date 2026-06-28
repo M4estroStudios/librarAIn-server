@@ -12,7 +12,9 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+from src.search.article_catalog import research_status_summary
 from src.api.chat_completions_handler import handle_chat_completions
+from src.api.system_preflight import evaluate_preflight, normalize_preflight_operation
 from src.api.ingest_form import (
     InvalidPagesSpec,
     InvalidRangeField,
@@ -307,6 +309,60 @@ def build_ingest_server(
             query = urllib.parse.parse_qs(parsed.query)
 
             if research_try_get(self, path, query):
+                return
+
+            if path == "/api/system/preflight":
+                if not self._require_auth(query):
+                    return
+                operation_raw = (query.get("operation", [""])[0] or "").strip()
+                operation = normalize_preflight_operation(operation_raw)
+                if operation is None:
+                    _send_json(
+                        self,
+                        400,
+                        {"ok": False, "error": "invalid operation", "operation": operation_raw},
+                    )
+                    return
+                result = evaluate_preflight(settings, operation)
+                _send_json(self, 200, {"ok": result["ok"], **result})
+                return
+
+            if path == "/api/system/status":
+                if not self._require_auth(query):
+                    return
+                from src.ingestion.pipeline.gpu_vram import collect_gpu_vram_snapshots
+                from src.api.system_preflight import _list_lmstudio_models
+
+                snapshots = collect_gpu_vram_snapshots(gpu_device="all")
+                models_payload, lm_root = _list_lmstudio_models(settings)
+                vram = [
+                    {
+                        "device_index": s.device_index,
+                        "used_gb": round(s.used_gb, 2),
+                        "free_gb": round(s.free_gb, 2),
+                        "total_gb": round(s.total_gb, 2),
+                    }
+                    for s in snapshots
+                ]
+                loaded = [
+                    m.get("key") or m.get("display_name")
+                    for m in models_payload
+                    if m.get("loaded_instances")
+                ]
+                research_summary = research_status_summary(data_root)
+                active_jobs = registry.running_job_count() + research_batch_registry.running_count()
+                _send_json(
+                    self,
+                    200,
+                    {
+                        "ok": True,
+                        "vram": vram,
+                        "loaded_models": loaded,
+                        "lmstudio_root": lm_root,
+                        "active_jobs": active_jobs,
+                        "research": research_summary,
+                    },
+                )
                 return
 
             if path == "/api/system/jobs":
