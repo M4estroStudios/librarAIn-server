@@ -19,6 +19,7 @@ from src.api.ingest_form import (
     parse_multipart_form_stream,
 )
 from src.api.ingest_pipeline_runner import run_full_pipeline
+from src.api.ingest_pipeline_runner_glm import run_glm_ingest_pipeline
 from src.api.job_registry import JobRegistry
 from src.api.research_handlers import ResearchBatchRegistry, build_research_routes
 from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
@@ -36,7 +37,13 @@ from src.persistence.book_page_preview import (
     load_page_transcript,
     save_page_transcript,
 )
-from src.persistence.book_page_repair import PageRepairError, run_book_gaps_repair, run_book_page_repair
+from src.persistence.book_page_repair import (
+    PageRepairError,
+    normalize_repair_pipeline_mode,
+    repair_global_step_count,
+    run_book_gaps_repair,
+    run_book_page_repair,
+)
 from src.core.config import ConfigurationError, load_settings
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
@@ -588,6 +595,7 @@ def build_ingest_server(
             source_sha256 = payload.get("source_sha256")
             aligned_page = payload.get("aligned_page")
             missing_in = payload.get("missing_in")
+            pipeline_mode = normalize_repair_pipeline_mode(payload.get("pipeline_mode"))
             if not isinstance(source_sha256, str) or not source_sha256.strip():
                 _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
                 return
@@ -620,7 +628,10 @@ def build_ingest_server(
                     ))
                     job_semaphore.acquire()
                 try:
-                    registry.set_global_total(job_id, 3)
+                    registry.set_global_total(
+                        job_id,
+                        repair_global_step_count(1, pipeline_mode=pipeline_mode),
+                    )
                     result = run_book_page_repair(
                         data_root,
                         settings,
@@ -629,6 +640,7 @@ def build_ingest_server(
                         missing_in=stages_hint,
                         request_id=job_id,
                         progress=reporter,
+                        pipeline_mode=pipeline_mode,
                     )
                     registry.emit(job_id, make_event(
                         "page_repair",
@@ -681,6 +693,7 @@ def build_ingest_server(
                 return
             source_sha256 = payload.get("source_sha256")
             gap_pages = payload.get("gap_pages")
+            pipeline_mode = normalize_repair_pipeline_mode(payload.get("pipeline_mode"))
             if not isinstance(source_sha256, str) or not source_sha256.strip():
                 _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
                 return
@@ -723,7 +736,10 @@ def build_ingest_server(
                     job_semaphore.acquire()
                 try:
                     aligned_count = len({entry["aligned"] for entry in gap_payload})
-                    registry.set_global_total(job_id, max(aligned_count * 3, 1))
+                    registry.set_global_total(
+                        job_id,
+                        repair_global_step_count(aligned_count, pipeline_mode=pipeline_mode),
+                    )
                     result = run_book_gaps_repair(
                         data_root,
                         settings,
@@ -731,6 +747,7 @@ def build_ingest_server(
                         gap_payload,
                         request_id=job_id,
                         progress=reporter,
+                        pipeline_mode=pipeline_mode,
                     )
                     registry.emit(job_id, make_event(
                         "gaps_repair",
@@ -860,9 +877,15 @@ def build_ingest_server(
                     return
                 self._handle_book_gaps_repair()
                 return
-            if parsed.path != "/api/ingest/submit":
+            if parsed.path not in ("/api/ingest/submit", "/api/ingest2/submit"):
                 self.send_error(404, "Not Found")
                 return
+            pipeline_runner = (
+                run_glm_ingest_pipeline
+                if parsed.path == "/api/ingest2/submit"
+                else run_full_pipeline
+            )
+            ocr_backend = "glm" if parsed.path == "/api/ingest2/submit" else "easyocr"
             if not self._require_auth():
                 return
 
@@ -953,7 +976,11 @@ def build_ingest_server(
                 {"path": str(saved_path), "bytes": uploaded.size})
 
             try:
-                require_gpu_vram_at_pipeline_start(settings, skip_vision_editor=False)
+                require_gpu_vram_at_pipeline_start(
+                    settings,
+                    skip_vision_editor=False,
+                    ocr_backend=ocr_backend,
+                )
             except IngestInputValidationException as exc:
                 saved_path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest submit blocked by gpu vram preflight",
@@ -984,7 +1011,7 @@ def build_ingest_server(
                     ))
                     job_semaphore.acquire()
                 try:
-                    run_full_pipeline(
+                    pipeline_runner(
                         ingest_payload,
                         saved_path,
                         settings,

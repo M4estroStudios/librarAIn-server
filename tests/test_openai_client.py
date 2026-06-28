@@ -4,7 +4,14 @@ import asyncio
 import unittest
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from src.core.errors import PermanentError, TransientError
+from openai import BadRequestError
+
+from src.core.errors import (
+    PermanentError,
+    TransientError,
+    classify_openai_exception,
+    is_transient_local_model_error,
+)
 from src.core.openai_client import (
     _client_states,
     _cached_clients,
@@ -42,6 +49,35 @@ def _make_response(content: str) -> MagicMock:
 
 def _run(coro: object) -> object:
     return asyncio.run(coro)  # type: ignore[arg-type]
+
+
+class TestClassifyOpenAIException(unittest.TestCase):
+    def test_model_reloaded_is_transient(self) -> None:
+        exc = BadRequestError(
+            "Error code: 400 - {'error': 'Model reloaded.'}",
+            response=MagicMock(),
+            body={"error": "Model reloaded."},
+        )
+        self.assertTrue(is_transient_local_model_error(exc))
+        self.assertIs(classify_openai_exception(exc), TransientError)
+
+    def test_model_crashed_is_transient(self) -> None:
+        exc = BadRequestError(
+            "Error code: 400 - {'error': 'The model has crashed without additional information. (Exit code: 1)'}",
+            response=MagicMock(),
+            body={"error": "The model has crashed without additional information. (Exit code: 1)"},
+        )
+        self.assertTrue(is_transient_local_model_error(exc))
+        self.assertIs(classify_openai_exception(exc), TransientError)
+
+    def test_other_bad_request_stays_permanent(self) -> None:
+        exc = BadRequestError(
+            "Error code: 400 - {'error': 'invalid image'}",
+            response=MagicMock(),
+            body={"error": "invalid image"},
+        )
+        self.assertFalse(is_transient_local_model_error(exc))
+        self.assertIs(classify_openai_exception(exc), PermanentError)
 
 
 class TestBuildOpenAIClient(unittest.TestCase):
@@ -114,6 +150,19 @@ class TestChatCompletionWithRetry(unittest.TestCase):
         mock_create = MagicMock(
             side_effect=[TransientError("rate limit"), _make_response("ok")]
         )
+        with patch("asyncio.sleep", new=AsyncMock()):
+            result = self._call(client, mock_create)
+        self.assertEqual(result, "ok")
+        self.assertEqual(mock_create.call_count, 2)
+
+    def test_model_reloaded_bad_request_retries(self) -> None:
+        client = self._build_client(retry=2)
+        reloaded = BadRequestError(
+            "Error code: 400 - {'error': 'Model reloaded.'}",
+            response=MagicMock(),
+            body={"error": "Model reloaded."},
+        )
+        mock_create = MagicMock(side_effect=[reloaded, _make_response("ok")])
         with patch("asyncio.sleep", new=AsyncMock()):
             result = self._call(client, mock_create)
         self.assertEqual(result, "ok")

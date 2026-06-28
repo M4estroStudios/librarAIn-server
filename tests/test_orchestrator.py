@@ -89,6 +89,7 @@ def _settings(data_root: str, max_parallel: int = 3) -> MagicMock:
     settings.matcher_use_ai = True
     settings.matcher_llm_model = None
     settings.openai_provider = "local"
+    settings.lm_studio_swap_models = False
     settings.gpu_vram_check_enabled = False
     settings.gpu_vram_max_used_gb = 4.0
     settings.time_index_use_llm = True

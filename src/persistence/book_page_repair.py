@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 from uuid import uuid4
 
 from src.core.hashing import compute_file_sha256
@@ -14,6 +14,8 @@ from src.ingestion.orchestrator import (
     OrchestratorStageError,
     _build_pipeline_context,
     _prepare_page_jobs,
+    _run_editor_phase_only,
+    _run_glm_ocr_phase,
     _run_render_phase,
     _run_stage1_phase,
     _run_vision_editor_phases,
@@ -51,6 +53,23 @@ class PageRepairError(ValueError):
 
 
 _REPAIR_STAGE_ORDER = ("stage1OCR", "stage2Vision", "stage3Editor", "output")
+RepairPipelineMode = Literal["classic", "glm_ocr"]
+
+
+def normalize_repair_pipeline_mode(value: object) -> RepairPipelineMode:
+    mode = str(value or "classic").strip().lower().replace("-", "_")
+    if mode in {"glm", "glm_ocr"}:
+        return "glm_ocr"
+    return "classic"
+
+
+def repair_global_step_count(
+    page_count: int,
+    *,
+    pipeline_mode: RepairPipelineMode,
+) -> int:
+    stages_per_page = 2 if pipeline_mode == "glm_ocr" else 3
+    return max(page_count * stages_per_page, 1)
 
 
 def infer_repair_entry_stage(missing_in: list[str]) -> str:
@@ -270,6 +289,7 @@ async def _run_repair_async(
     entry_stage: str,
     progress: ProgressReporter | None,
     single_page: bool,
+    pipeline_mode: RepairPipelineMode = "classic",
 ) -> dict[str, Any]:
     slug = str(manifest.get("slug") or _slugify(enriched.request.reicat.title))
     data_root = Path(settings.data_root)
@@ -309,10 +329,14 @@ async def _run_repair_async(
     _run_render_phase(ctx)
     page_jobs = _prepare_page_jobs(ctx)
     try:
-        stage1_result = await _run_stage1_phase(ctx, page_jobs)
-        stage2_result, stage3_result = await _run_vision_editor_phases(
-            ctx, stage1_result, page_jobs
-        )
+        if pipeline_mode == "glm_ocr":
+            stage1_result, stage2_result = await _run_glm_ocr_phase(ctx, page_jobs)
+            stage3_result = await _run_editor_phase_only(ctx, stage2_result, page_jobs)
+        else:
+            stage1_result = await _run_stage1_phase(ctx, page_jobs)
+            stage2_result, stage3_result = await _run_vision_editor_phases(
+                ctx, stage1_result, page_jobs
+            )
     except OrchestratorStageError as exc:
         raise PageRepairError(str(exc.cause)) from exc
     if not stage3_result.pages:
@@ -343,6 +367,7 @@ async def _run_repair_async(
         "source_sha256": enriched.source_sha256,
         "aligned_pages": aligned_pages,
         "entry_stage": entry_stage,
+        "pipeline_mode": pipeline_mode,
         "stage1_pages": len(stage1_result.pages),
         "stage2_pages": len(stage2_result.pages),
         "stage3_pages": len(stage3_result.pages),
@@ -362,6 +387,7 @@ def run_book_page_repair(
     missing_in: list[str] | None = None,
     request_id: str = "",
     progress: ProgressReporter | None = None,
+    pipeline_mode: RepairPipelineMode | object = "classic",
 ) -> dict[str, Any]:
     if aligned_page < 1:
         raise PageRepairError("aligned_page must be positive")
@@ -378,11 +404,13 @@ def run_book_page_repair(
     original_page = resolve_original_page(manifest, useful_full, aligned_page)
     useful_pages = filter_useful_pages_to_single(useful_full, original_page)
     entry_stage = infer_repair_entry_stage(missing_in or list(STAGE_DIRS))
+    resolved_mode = normalize_repair_pipeline_mode(pipeline_mode)
     require_gpu_vram_at_pipeline_start(
         settings,
         skip_vision_editor=False,
         single_page=True,
         entry_stage=entry_stage,
+        ocr_backend="glm" if resolved_mode == "glm_ocr" else "easyocr",
     )
     repair_request_id = request_id or str(uuid4())
     if progress is not None:
@@ -407,6 +435,7 @@ def run_book_page_repair(
             entry_stage=entry_stage,
             progress=progress,
             single_page=True,
+            pipeline_mode=resolved_mode,
         )
     )
     if progress is not None:
@@ -431,6 +460,7 @@ def run_book_gaps_repair(
     *,
     request_id: str = "",
     progress: ProgressReporter | None = None,
+    pipeline_mode: RepairPipelineMode | object = "classic",
 ) -> dict[str, Any]:
     if not gap_pages:
         raise PageRepairError("gap_pages must not be empty")
@@ -457,11 +487,13 @@ def run_book_gaps_repair(
     useful_full = build_useful_pages_enumeration(enriched, None)
     useful_pages = filter_useful_pages_to_aligned(useful_full, aligned_pages)
     entry_stage = infer_gaps_repair_entry_stage(gap_pages)
+    resolved_mode = normalize_repair_pipeline_mode(pipeline_mode)
     require_gpu_vram_at_pipeline_start(
         settings,
         skip_vision_editor=False,
         single_page=False,
         entry_stage=entry_stage,
+        ocr_backend="glm" if resolved_mode == "glm_ocr" else "easyocr",
     )
     repair_request_id = request_id or str(uuid4())
     if progress is not None:
@@ -485,6 +517,7 @@ def run_book_gaps_repair(
             entry_stage=entry_stage,
             progress=progress,
             single_page=False,
+            pipeline_mode=resolved_mode,
         )
     )
     data_root_path = Path(settings.data_root)

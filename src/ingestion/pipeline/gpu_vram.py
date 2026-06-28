@@ -21,6 +21,7 @@ class GpuVramSnapshot:
     device_index: int
     used_bytes: int
     total_bytes: int
+    free_bytes_override: int | None = None
 
     @property
     def used_gb(self) -> float:
@@ -32,6 +33,8 @@ class GpuVramSnapshot:
 
     @property
     def free_bytes(self) -> int:
+        if self.free_bytes_override is not None:
+            return max(0, self.free_bytes_override)
         return max(0, self.total_bytes - self.used_bytes)
 
     @property
@@ -88,7 +91,7 @@ def _collect_gpu_vram_via_nvidia_smi() -> list[GpuVramSnapshot] | None:
         proc = subprocess.run(
             [
                 "nvidia-smi",
-                "--query-gpu=index,memory.used,memory.total",
+                "--query-gpu=index,memory.used,memory.free,memory.total",
                 "--format=csv,noheader,nounits",
             ],
             capture_output=True,
@@ -103,12 +106,13 @@ def _collect_gpu_vram_via_nvidia_smi() -> list[GpuVramSnapshot] | None:
     snapshots: list[GpuVramSnapshot] = []
     for line in proc.stdout.strip().splitlines():
         parts = [part.strip() for part in line.split(",")]
-        if len(parts) < 3:
+        if len(parts) < 4:
             continue
         try:
             index = int(parts[0])
             used_mib = float(parts[1])
-            total_mib = float(parts[2])
+            free_mib = float(parts[2])
+            total_mib = float(parts[3])
         except ValueError:
             continue
         snapshots.append(
@@ -116,6 +120,7 @@ def _collect_gpu_vram_via_nvidia_smi() -> list[GpuVramSnapshot] | None:
                 device_index=index,
                 used_bytes=int(used_mib * _MIB),
                 total_bytes=int(total_mib * _MIB),
+                free_bytes_override=int(free_mib * _MIB),
             )
         )
     return snapshots or None
@@ -407,6 +412,7 @@ def require_gpu_vram_at_pipeline_start(
     skip_vision_editor: bool,
     single_page: bool = False,
     entry_stage: str | None = None,
+    ocr_backend: Literal["easyocr", "glm"] = "easyocr",
 ) -> None:
     if not bool(getattr(settings, "gpu_vram_check_enabled", True)):
         return
@@ -414,8 +420,12 @@ def require_gpu_vram_at_pipeline_start(
     if per_instance_gb <= 0:
         return
     if entry_stage is None:
-        needs_ocr = bool(getattr(settings, "ocr_use_gpu", False))
-        needs_llm = not skip_vision_editor and getattr(settings, "openai_provider", "") == "local"
+        if ocr_backend == "glm":
+            needs_ocr = False
+            needs_llm = getattr(settings, "openai_provider", "") == "local"
+        else:
+            needs_ocr = bool(getattr(settings, "ocr_use_gpu", False))
+            needs_llm = not skip_vision_editor and getattr(settings, "openai_provider", "") == "local"
     else:
         needs_ocr = bool(getattr(settings, "ocr_use_gpu", False)) and entry_stage in _REPAIR_ENTRY_NEEDS_OCR
         needs_llm = (

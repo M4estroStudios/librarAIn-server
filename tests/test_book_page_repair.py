@@ -14,9 +14,11 @@ from src.persistence.book_page_repair import (
     build_enriched_from_manifest,
     filter_useful_pages_to_aligned,
     filter_useful_pages_to_single,
-    infer_repair_entry_stage,
     infer_gaps_repair_entry_stage,
+    infer_repair_entry_stage,
     merge_repaired_page_into_output,
+    normalize_repair_pipeline_mode,
+    repair_global_step_count,
     resolve_original_page,
     run_book_gaps_repair,
     run_book_page_repair,
@@ -74,6 +76,16 @@ class TestBookPageRepair(unittest.TestCase):
             "stage2Vision",
         )
         self.assertEqual(infer_repair_entry_stage(["output"]), "output")
+
+    def test_normalize_repair_pipeline_mode(self) -> None:
+        self.assertEqual(normalize_repair_pipeline_mode("glm_ocr"), "glm_ocr")
+        self.assertEqual(normalize_repair_pipeline_mode("glm-ocr"), "glm_ocr")
+        self.assertEqual(normalize_repair_pipeline_mode(None), "classic")
+
+    def test_repair_global_step_count(self) -> None:
+        self.assertEqual(repair_global_step_count(4, pipeline_mode="classic"), 12)
+        self.assertEqual(repair_global_step_count(4, pipeline_mode="glm_ocr"), 8)
+        self.assertEqual(repair_global_step_count(0, pipeline_mode="glm_ocr"), 1)
 
     def test_infer_gaps_repair_entry_stage(self) -> None:
         gap_pages = [
@@ -242,7 +254,43 @@ class TestBookPageRepair(unittest.TestCase):
         mock_gpu.assert_called_once()
         self.assertTrue(mock_gpu.call_args.kwargs.get("single_page"))
         self.assertEqual(mock_gpu.call_args.kwargs.get("entry_stage"), "stage2Vision")
+        self.assertEqual(mock_gpu.call_args.kwargs.get("ocr_backend"), "easyocr")
         mock_pending.assert_called_once_with(self.data_root, sha, 2)
+
+    @patch("src.persistence.book_page_repair._run_repair_async")
+    @patch("src.persistence.book_page_repair.require_gpu_vram_at_pipeline_start")
+    @patch("src.persistence.book_page_repair.mark_page_pending_review")
+    def test_run_book_page_repair_glm_mode(
+        self,
+        mock_pending,
+        mock_gpu,
+        run_async,
+    ) -> None:
+        sha = "h" * 64
+        processed = self.data_root / "input" / "processed"
+        processed.mkdir(parents=True, exist_ok=True)
+        (processed / f"{sha}.pdf").write_bytes(_minimal_pdf_bytes(2))
+        _write_manifest(
+            self.data_root,
+            sha,
+            pages=[{"aligned": 1, "original": 1}, {"aligned": 2, "original": 2}],
+        )
+
+        async def _fake_async(*args, **kwargs):
+            return {"aligned_page": args[4][0], "pipeline_mode": "glm_ocr"}
+
+        run_async.side_effect = _fake_async
+        settings = type("S", (), {"data_root": str(self.data_root), "ocr_use_gpu": False})()
+        run_book_page_repair(
+            self.data_root,
+            settings,  # type: ignore[arg-type]
+            sha,
+            2,
+            missing_in=["stage2Vision", "output"],
+            pipeline_mode="glm_ocr",
+        )
+        self.assertEqual(run_async.call_args.kwargs.get("pipeline_mode"), "glm_ocr")
+        self.assertEqual(mock_gpu.call_args.kwargs.get("ocr_backend"), "glm")
 
     @patch("src.persistence.book_page_repair._run_repair_async")
     @patch("src.persistence.book_page_repair.require_gpu_vram_at_pipeline_start")

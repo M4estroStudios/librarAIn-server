@@ -1,0 +1,4027 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ingestione libro (GLM OCR) — librarAIn</title>
+<script>
+(function (global) {
+  function pageLabel() {
+    var title = (document.title || "").split("\u2014")[0].trim();
+    return title || global.location.pathname || "web";
+  }
+
+  function formatLine(level, message, params) {
+    var line = "[" + new Date().toISOString() + "][" + level + "][" + pageLabel() + "] " + message;
+    if (params && typeof params === "object" && Object.keys(params).length) {
+      line += " | " + JSON.stringify(params);
+    }
+    return line;
+  }
+
+  function write(level, consoleFn, message, params) {
+    var line = formatLine(level, message, params);
+    consoleFn(line);
+    if (params && params.error instanceof Error) {
+      consoleFn(params.error);
+    }
+    return line;
+  }
+
+  function fromError(err) {
+    if (err instanceof Error) {
+      return { message: err.message, error: err };
+    }
+    return { message: String(err) };
+  }
+
+  var log = {
+    error: function (message, params) {
+      return write("ERROR", global.console.error.bind(global.console), message, params);
+    },
+    warn: function (message, params) {
+      return write("WARNING", global.console.warn.bind(global.console), message, params);
+    },
+    info: function (message, params) {
+      return write("INFO", global.console.info.bind(global.console), message, params);
+    },
+    debug: function (message, params) {
+      return write("DEBUG", global.console.debug.bind(global.console), message, params);
+    },
+    reportError: function (context, err) {
+      var params = fromError(err);
+      return log.error(context, params);
+    },
+    logHttpFailure: function (url, status, detail) {
+      var level = status >= 500 ? "error" : "warn";
+      return log[level]("api request failed", { url: url, status: status, error: detail });
+    },
+  };
+
+  global.LibrarAInLog = log;
+
+  global.addEventListener("error", function (ev) {
+    log.error("uncaught error", {
+      message: ev.message,
+      source: ev.filename,
+      line: ev.lineno,
+      col: ev.colno,
+      error: ev.error instanceof Error ? ev.error : undefined,
+    });
+  });
+
+  global.addEventListener("unhandledrejection", function (ev) {
+    log.reportError("unhandled rejection", ev.reason);
+  });
+})(window);
+
+</script>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.45;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 64rem; padding: 1.5rem 1rem 3rem; }
+.pdf-dropzone { position: relative; display: flex; align-items: center; justify-content: center; min-height: 14rem; margin-bottom: 0.5rem; border: 2px dashed #555; border-radius: 14px; background: #252526; transition: border-color 0.15s ease, background 0.15s ease; }
+.pdf-dropzone.is-dragover { border-color: #4ec9b0; background: rgba(78, 201, 176, 0.06); }
+.pdf-dropzone-input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1; }
+.pdf-dropzone-inner { pointer-events: none; text-align: center; padding: 2rem 1.5rem; max-width: 22rem; }
+.pdf-dropzone-icon { display: inline-flex; align-items: center; justify-content: center; width: 3.25rem; height: 3.25rem; margin-bottom: 0.85rem; border-radius: 10px; background: #3c3c3c; color: #4ec9b0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
+.pdf-dropzone-title { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: #e8e8e8; }
+.pdf-dropzone-hint { margin: 0; font-size: 0.82rem; color: #9d9d9d; line-height: 1.4; }
+.pdf-workspace { display: grid; gap: 0.85rem; }
+.pdf-workspace-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem; padding: 0.65rem 0.85rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
+.pdf-workspace-file { display: grid; gap: 0.1rem; min-width: 0; }
+.pdf-workspace-file-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: #9d9d9d; }
+.pdf-workspace-file-name { font-size: 0.88rem; color: #e8e8e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: min(48vw, 36rem); }
+.pdf-viewer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  background: #1a1a1a;
+  border-bottom: 1px solid #3e3e3e;
+}
+.pdf-viewer-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.42rem 0.7rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: #252526;
+  color: #cccccc;
+  cursor: pointer;
+}
+.pdf-viewer-tool:hover { background: #2f2f30; }
+.pdf-viewer-tool.is-active { color: #e8e8e8; }
+.pdf-viewer-tool[data-viewer-mode="exclude"].is-active { border-color: var(--mark-remove, #d44a4a); background: rgba(212, 74, 74, 0.12); }
+.pdf-viewer-tool[data-viewer-mode="toc"].is-active { border-color: var(--mark-toc, #3d8eef); background: rgba(61, 142, 239, 0.12); }
+.pdf-viewer-tool[data-viewer-mode="index"].is-active { border-color: var(--mark-index, #b88bff); background: rgba(184, 139, 255, 0.12); }
+.pdf-viewer-tool[data-viewer-mode="reicat"].is-active { border-color: var(--mark-reicat, #e6c229); background: rgba(230, 194, 41, 0.12); }
+.pdf-viewer-tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+}
+.pdf-viewer-tool-icon svg { display: block; width: 100%; height: 100%; }
+.pdf-viewer-tool-label { white-space: nowrap; }
+.pdf-viewer-reset {
+  margin-left: auto;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.42rem 0.7rem;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+.pdf-viewer-mode-panel { margin: 0; }
+.pdf-viewer-mode-hint { margin: 0.35rem 0 0; font-size: 0.78rem; color: #9d9d9d; }
+.pdf-workspace-hint-label { margin-top: 0.15rem; }
+.ingest-form-details { display: grid; gap: 1.1rem; margin-top: 0.35rem; }
+.ingest-form-details.hidden { display: none; }
+.reicat-suggest-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem; margin: 0 0 0.75rem; }
+.reicat-suggest-row .hint { margin: 0; }
+:root {
+  --mark-remove: #d44a4a;
+  --mark-toc: #3d8eef;
+  --mark-index: #b88bff;
+  --mark-reicat: #e6c229;
+}
+.page-picker-thumb.is-excluded { border-color: var(--mark-remove); box-shadow: 0 0 0 1px var(--mark-remove); }
+.page-picker-thumb.is-disabled { opacity: 0.38; cursor: not-allowed; }
+.page-picker-thumb-mark {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  overflow: visible;
+  background: none;
+}
+.page-picker-thumb-mark.hidden { display: none; }
+.page-picker-thumb-mark-toc {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0.06rem 0.1rem 0 0;
+}
+.page-picker-thumb-mark-toc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(100% 0, 30% 0, 100% 30%);
+  background: var(--mark-toc);
+  z-index: -1;
+}
+.page-picker-thumb-mark-index {
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 0 0.06rem 0.1rem;
+}
+.page-picker-thumb-mark-index::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 100%, 0 70%, 70% 100%);
+  background: var(--mark-index);
+  z-index: -1;
+}
+.page-picker-thumb-mark-toc span {
+  font-size: 18cqi;
+}
+.page-picker-thumb-mark-index span {
+  font-size: 13.5cqi;
+}
+.page-picker-thumb-mark-reicat {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0;
+  clip-path: polygon(100% 100%, 70% 100%, 100% 30%);
+  overflow: hidden;
+}
+.page-picker-thumb-mark-reicat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--mark-reicat);
+  z-index: 0;
+}
+.page-picker-thumb-mark span {
+  position: relative;
+  z-index: 1;
+  font-weight: 800;
+  color: #fff;
+  text-transform: lowercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+.page-picker-thumb-mark-reicat span {
+  position: relative;
+  z-index: 1;
+  font-size: 2.1cqi;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: -0.08em;
+  line-height: 0.58;
+  margin: 0 4% 5% 0;
+  max-height: 52%;
+  max-width: 15%;
+  overflow: hidden;
+}
+.page-picker-body { min-height: 22rem; }
+.page-picker-grid-wrap { max-height: 36rem; }
+#pdf-viewer-panel { margin-top: 0; }
+h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
+p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
+form { display: grid; gap: 1.1rem; }
+fieldset { border: 1px solid #3e3e3e; border-radius: 10px; padding: 0.9rem 1rem 1rem; background: #252526; }
+legend { padding: 0 0.35rem; font-weight: 600; font-size: 0.95rem; color: #e8e8e8; }
+label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #cccccc; }
+input, textarea { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
+input::placeholder, textarea::placeholder { color: #848484; }
+textarea { min-height: 4.5rem; resize: vertical; }
+.grid-2 { display: grid; gap: 0.75rem; }
+@media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+button { font: inherit; padding: 0.55rem 1rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
+button:hover:not(:disabled) { background: #ffffff; }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+.hint { font-size: 0.8rem; color: #9d9d9d; }
+code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0.4em; border-radius: 6px; }
+#out { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #2d2d2d; color: #d4d4d4; border: 1px solid #454545; font-size: 0.8rem; white-space: pre-wrap; word-break: break-word; min-height: 3rem; display: none; }
+#out.show { display: block; }
+#out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
+small.req { display: inline; color: #f08080; }
+strong { color: #e8e8e8; }
+a { color: #4ec9b0; }
+.nav { font-size: 0.85rem; margin-bottom: 1rem; }
+#progress { display: none; margin-top: 1rem; padding: 0.9rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
+#progress.show { display: block; }
+#progress-alert {
+  display: none;
+  margin-bottom: 0.85rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: #3a2020;
+  color: #f0c0c0;
+  border: 1px solid #6b3535;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+#progress-alert.show { display: block; }
+#progress-alert.is-success {
+  background: #1a2e24;
+  color: #b8f0d8;
+  border-color: #2d6b4f;
+}
+.progress-row {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr) 9rem 3.25rem;
+  gap: 0.35rem 0.65rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.82rem;
+}
+.progress-row:last-child { margin-bottom: 0; }
+.progress-row.global-row {
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.65rem;
+  border-bottom: 1px solid #3e3e3e;
+}
+.progress-label { color: #e8e8e8; font-weight: 600; min-width: 0; }
+.progress-label.active { color: #4ec9b0; }
+.progress-label.done { color: #6a9955; }
+.progress-label.failed { color: #f48771; }
+.progress-time { color: #9d9d9d; font-size: 0.75rem; white-space: nowrap; text-align: right; }
+.progress-row progress {
+  width: 100%;
+  min-width: 0;
+  height: 9px;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #3c3c3c;
+  border: none;
+}
+.progress-row progress::-webkit-progress-bar { background: #3c3c3c; border-radius: 4px; }
+.progress-row progress::-webkit-progress-value { background: #4ec9b0; border-radius: 4px; transition: width 0.25s ease; }
+.progress-row progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
+.progress-stats { color: #9d9d9d; font-size: 0.78rem; white-space: nowrap; text-align: right; }
+.ingest-section.is-hidden { display: none; }
+#ingest-pages-panel { display: none; margin-top: 1rem; }
+#ingest-pages-panel.show { display: block; }
+.ingest-section { margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #3e3e3e; }
+.ingest-section h3 { margin: 0 0 0.55rem; font-size: 0.88rem; color: #e8e8e8; }
+.ingest-section-stats { font-size: 0.78rem; color: #9d9d9d; margin-bottom: 0.55rem; }
+.ingest-section-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.55rem; }
+button.secondary { background: #3c3c3c; color: #e8e8e8; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button.review-btn { background: #2f5a48; color: #e8e8e8; }
+button.review-btn:hover:not(:disabled) { background: #3a6b55; }
+.ingest-review-card { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; padding: 0.65rem 0.75rem; border-radius: 8px; background: #252526; border: 1px solid #3e3e3e; }
+.ingest-review-card p { margin: 0; flex: 1 1 12rem; font-size: 0.78rem; color: #b8b8b8; line-height: 1.35; }
+.audit-pages-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 0.35rem; --audit-btn-h: 2rem; --audit-row-h: 2rem; }
+.audit-pages-table col.audit-col-page { width: 14%; }
+.audit-pages-table col.audit-col-status { width: 30%; }
+.audit-pages-table col.audit-col-actions { width: 56%; }
+.audit-repair-cell { display: flex; align-items: flex-end; gap: 0.35rem; min-height: var(--audit-row-h); width: 100%; box-sizing: border-box; flex-wrap: wrap; }
+.audit-repair-stack { display: flex; flex-direction: column; align-items: stretch; gap: 0.25rem; width: min(100%, 14rem); min-width: 0; box-sizing: border-box; }
+.audit-repair-status-row { display: none; flex-direction: column; gap: 0.2rem; }
+.audit-repair-stack.is-active .audit-repair-status-row { display: flex; }
+.audit-repair-status-label { font-size: 0.68rem; color: #4ec9b0; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 14rem; }
+.audit-repair-status-label.is-error { color: #f0a0a0; }
+.audit-repair-inline-bar { height: 0.25rem; border-radius: 999px; background: #3c3c3c; overflow: hidden; }
+.audit-repair-inline-fill { height: 100%; width: 0%; background: #4ec9b0; transition: width 0.25s ease; }
+tr.audit-row-repairing { background: rgba(78, 201, 176, 0.07); }
+.audit-repair-btn { font: inherit; font-size: 0.68rem; font-weight: 600; height: var(--audit-btn-h); width: 100%; min-width: 0; padding: 0 0.35rem; box-sizing: border-box; border-radius: 8px; border: 0; background: #2f5a48; color: #e8e8e8; cursor: pointer; white-space: nowrap; }
+.audit-repair-btn:hover:not(:disabled) { background: #3a6b55; }
+.audit-repair-btn:disabled { opacity: 0.85; cursor: not-allowed; }
+.audit-repair-btn.is-running { background: #264a3a; }
+.audit-repair-all-stack { display: flex; flex-direction: column; align-items: stretch; gap: 0.25rem; width: min(100%, 18rem); min-width: 0; box-sizing: border-box; }
+.audit-repair-all-status { display: none; flex-direction: column; gap: 0.2rem; }
+.audit-repair-all-stack.is-active .audit-repair-all-status { display: flex; }
+.audit-repair-all-stage-label { font-size: 0.68rem; color: #4ec9b0; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.audit-repair-all-stage-label.is-error { color: #f0a0a0; }
+.audit-repair-all-pages { display: flex; gap: 2px; height: 0.35rem; border-radius: 4px; overflow: hidden; background: #3c3c3c; }
+.audit-repair-all-overall-bar { height: 0.25rem; border-radius: 999px; background: #3c3c3c; overflow: hidden; }
+.audit-repair-all-overall-fill { height: 100%; width: 0%; background: #4ec9b0; transition: width 0.25s ease; }
+.audit-repair-all-page-seg { flex: 1 1 0; min-width: 0; background: #4a4a4a; transition: background 0.15s ease; }
+.audit-repair-all-page-seg.is-active { background: #4ec9b0; }
+.audit-repair-all-page-seg.is-done { background: #2f7f6d; }
+.audit-repair-all-page-seg.is-skipped { background: #666; }
+.audit-pages-footer-row td { border-bottom: 0; padding-top: 0.55rem; }
+.repair-progress-panel { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 1900; width: min(92vw, 36rem); padding: 0.75rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #4ec9b0; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); box-sizing: border-box; }
+.repair-progress-panel.hidden { display: none; }
+.repair-progress-panel.is-error { border-color: #c56b6b; }
+.repair-progress-panel.is-error .repair-progress-title, .repair-progress-panel.is-error .repair-progress-phase { color: #f0a0a0; }
+.repair-progress-title { font-size: 0.78rem; font-weight: 600; color: #4ec9b0; margin-bottom: 0.25rem; }
+.repair-progress-phase { font-size: 0.85rem; color: #e8e8e8; margin-bottom: 0.15rem; }
+.repair-progress-detail { font-size: 0.72rem; color: #b8b8b8; min-height: 1rem; margin-bottom: 0.45rem; }
+.repair-progress-bar { height: 0.35rem; border-radius: 999px; background: #3c3c3c; overflow: hidden; }
+.repair-progress-fill { height: 100%; width: 0%; background: #4ec9b0; transition: width 0.25s ease; }
+#ingest-debug-panel { position: fixed; right: 1rem; bottom: 1rem; z-index: 8000; max-width: 16rem; }
+#ingest-debug-panel .ingest-debug-inner { background: #252526; border: 1px solid #555; border-radius: 12px; padding: 0.75rem; font-size: 0.8rem; }
+#ingest-debug-panel summary { cursor: pointer; font-weight: 600; color: #e8e8e8; }
+body.ingest-mock-active #ingest-debug-panel .ingest-debug-inner { border-color: #4ec9b0; }
+.ingest-debug-mock-toggle { margin: 0; color: #e8e8e8; cursor: pointer; }
+.ingest-debug-mock-toggle input { width: 1rem; height: 1rem; margin: 0; accent-color: #4ec9b0; }
+#ingest-debug-mock-hint { margin: 0 0 0.55rem; font-size: 0.72rem; line-height: 1.35; }
+.ingest-debug-lab-actions { display: grid; gap: 0.35rem; margin-top: 0.35rem; }
+.ingest-debug-lab-actions button { font: inherit; font-size: 0.72rem; font-weight: 600; padding: 0.4rem 0.55rem; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; cursor: pointer; text-align: left; }
+.ingest-debug-lab-actions button:hover:not(:disabled) { background: #4a4a4a; }
+.ingest-debug-lab-actions button:disabled { opacity: 0.55; cursor: not-allowed; }
+.ingest-debug-log { margin: 0.55rem 0 0; padding: 0.45rem 0.5rem; min-height: 2.5rem; max-height: 7rem; overflow: auto; border-radius: 6px; background: #1a1a1a; border: 1px solid #3e3e3e; font-family: ui-monospace, monospace; font-size: 0.65rem; line-height: 1.35; color: #b8b8b8; white-space: pre-wrap; word-break: break-word; }
+#ingest-debug-details[open] .ingest-debug-log:empty::before { content: "Log Lab…"; color: #666; }
+.ingest-debug-log.has-error { color: #f48771; border-color: #c95050; }
+.audit-pages-table th, .audit-pages-table td { padding: 0.35rem 0.5rem; vertical-align: middle; border-bottom: 1px solid #2a2a2a; font-size: 0.78rem; }
+.audit-pages-table th { color: #9d9d9d; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; text-align: left; }
+.audit-page-controls { display: flex; align-items: center; gap: 0.35rem; }
+.audit-page-num { font-family: ui-monospace, monospace; color: #e8e8e8; }
+.audit-view-btn { width: var(--audit-btn-h); height: var(--audit-btn-h); padding: 0; font: inherit; font-size: 0.78rem; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; cursor: pointer; }
+.audit-view-btn:hover:not(:disabled) { background: #4a4a4a; }
+.audit-status-wait { color: #9d9d9d; }
+.audit-status-failed { color: #f48771; }
+.audit-status-gap { color: #f0a060; }
+tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
+.page-preview-overlay { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; box-sizing: border-box; }
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.68); cursor: pointer; }
+.page-preview-dialog { position: relative; z-index: 1; width: min(95vw, 920px); max-height: 92vh; display: flex; flex-direction: column; background: #1e1e1e; border: 1px solid #454545; border-radius: 12px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45); overflow: hidden; }
+.page-preview-close { position: absolute; top: 0.55rem; right: 0.55rem; z-index: 2; width: 2rem; height: 2rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.15rem; cursor: pointer; }
+.page-preview-title { margin: 0; padding: 0.85rem 3rem 0.65rem 1rem; font-size: 1rem; font-weight: 600; color: #e8e8e8; border-bottom: 1px solid #2a2a2a; }
+.page-preview-body { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; box-sizing: border-box; min-height: 0; }
+.page-preview-nav { flex: 0 0 auto; width: 2.5rem; height: 2.5rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.25rem; cursor: pointer; }
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+.page-preview-nav.hidden { visibility: hidden; pointer-events: none; }
+.page-preview-img-wrap { flex: 1 1 auto; min-width: 0; max-height: calc(92vh - 5.5rem); display: flex; align-items: center; justify-content: center; overflow: auto; }
+.page-preview-img { display: block; max-width: 100%; max-height: calc(92vh - 5.5rem); background: #fff; }
+.page-review-dialog { width: min(98vw, 1480px); }
+.page-review-body { display: flex; align-items: stretch; gap: 0.75rem; padding: 1rem; box-sizing: border-box; min-height: 0; }
+.page-review-panels { flex: 1 1 auto; min-width: 0; display: flex; justify-content: center; align-items: flex-start; gap: 0.75rem; }
+.page-review-pane { flex: 0 0 auto; }
+.page-review-frame { box-sizing: border-box; border: 1px solid #454545; border-radius: 4px; background: #fff; overflow: hidden; display: flex; flex-direction: column; }
+.page-review-img-wrap { width: 100%; height: 100%; overflow: hidden; line-height: 0; }
+.page-review-img { display: block; width: 100%; height: 100%; object-fit: fill; background: #fff; }
+.page-review-text { display: block; flex: 1 1 auto; width: 100%; height: 100%; min-height: 0; margin: 0; padding: 0.65rem; box-sizing: border-box; border: 0; outline: none; resize: none; overflow: auto; background: transparent; color: #111; font-family: ui-monospace, monospace; font-size: 0.72rem; line-height: 1.35; white-space: pre-wrap; word-break: break-word; }
+.page-review-meta { margin: 0; padding: 0.35rem 1rem 0; font-size: 0.72rem; color: #9d9d9d; }
+.page-review-toolbar { display: flex; gap: 0.45rem; padding: 0 1rem 0.55rem; align-items: center; min-height: 1.85rem; }
+.page-review-toolbar .hidden { display: none; }
+.page-review-toolbar button { font: inherit; font-size: 0.72rem; font-weight: 600; height: 1.85rem; padding: 0 0.65rem; border: 0; border-radius: 8px; cursor: pointer; }
+.page-review-save { background: #2f5a48; color: #e8e8e8; }
+.page-review-save:hover:not(:disabled) { background: #3a6b55; }
+.page-review-reset { background: #3c3c3c; color: #e8e8e8; }
+.page-review-reset:hover:not(:disabled) { background: #4a4a4a; }
+.page-review-toolbar button:disabled { opacity: 0.45; cursor: not-allowed; }
+.page-review-confirmed-label { font-size: 0.78rem; font-weight: 600; color: #4ec9b0; }
+.page-review-confirmed-label.hidden { display: none; }
+.page-picker-panel { display: none; margin-top: 0.75rem; border: 1px solid #454545; border-radius: 10px; background: #1e1e1e; overflow: hidden; }
+.page-picker-panel.show { display: block; }
+.page-picker-panel.is-loading { opacity: 0.85; }
+.page-picker-toolbar { padding: 0.65rem 0.85rem; border-bottom: 1px solid #3e3e3e; background: #252526; }
+.page-picker-toolbar label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #cccccc; margin: 0; }
+.page-picker-toolbar input { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
+.page-picker-toolbar-meta { margin-top: 0.35rem; font-size: 0.75rem; color: #9d9d9d; }
+.page-picker-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 0.75rem; padding: 0.75rem; min-height: 18rem; }
+@media (max-width: 760px) { .page-picker-body { grid-template-columns: 1fr; } }
+.page-picker-grid-wrap { min-width: 0; max-height: 28rem; overflow: auto; border: 1px solid #3e3e3e; border-radius: 8px; background: #252526; padding: 0.55rem; }
+.page-picker-grid-wrap.is-rendering .page-picker-grid { display: none; }
+.page-picker-progress { display: none; padding: 2.5rem 1rem; text-align: center; }
+.page-picker-grid-wrap.is-rendering .page-picker-progress { display: block; }
+.page-picker-grid-wrap.is-rendering-progress .page-picker-progress {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: -0.55rem -0.55rem 0.55rem;
+  padding: 0.65rem 0.55rem 0.75rem;
+  background: rgba(37, 37, 38, 0.96);
+  border-bottom: 1px solid #3e3e3e;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.42);
+}
+.page-picker-grid-wrap.is-rendering-progress .page-picker-progress-label { margin-bottom: 0.45rem; }
+.page-picker-progress-label { font-size: 0.82rem; color: #e8e8e8; margin-bottom: 0.65rem; }
+.page-picker-progress progress { width: 100%; height: 10px; border-radius: 4px; appearance: none; -webkit-appearance: none; background: #3c3c3c; border: none; }
+.page-picker-progress progress::-webkit-progress-bar { background: #3c3c3c; border-radius: 4px; }
+.page-picker-progress progress::-webkit-progress-value { background: #4ec9b0; border-radius: 4px; }
+.page-picker-progress progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
+.page-picker-progress-stats { margin-top: 0.45rem; font-size: 0.75rem; color: #9d9d9d; }
+.page-picker-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.45rem; }
+.page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 6px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; container-type: inline-size; }
+.page-picker-thumb.is-selected { border-color: #4ec9b0; box-shadow: 0 0 0 1px #4ec9b0; }
+.page-picker-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.page-picker-thumb-num { position: absolute; left: 0.2rem; top: 0.2rem; z-index: 2; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
+.page-picker-detail { min-width: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.page-picker-detail-label { font-size: 0.82rem; color: #e8e8e8; font-weight: 600; }
+.page-picker-detail-img-wrap { flex: 1 1 auto; min-height: 12rem; display: flex; align-items: center; justify-content: center; overflow: auto; background: #fff; border-radius: 6px; }
+.page-picker-detail-img-wrap img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+.page-picker-detail-empty { font-size: 0.78rem; color: #9d9d9d; text-align: center; padding: 2rem 0.75rem; }
+.hidden { display: none !important; }
+body.embed-mode { max-width: none; padding: 0; margin: 0; background: #252526; }
+body.embed-mode .embed-hide,
+body.embed-mode #ingest-debug-panel { display: none !important; }
+body.embed-mode form { gap: 0; }
+body.embed-mode fieldset { border: 0; border-top: 1px solid #3e3e3e; border-radius: 0; padding: 1rem 0; margin: 0; background: transparent; }
+body.embed-mode fieldset:first-of-type { border-top: 0; padding-top: 0; }
+body.embed-mode legend { padding: 0; margin-bottom: 0.5rem; }
+body.embed-mode #progress { border: 0; background: transparent; padding: 0.85rem 0 0; margin-top: 0.85rem; border-top: 1px solid #3e3e3e; border-radius: 0; }
+body.embed-mode #progress-alert { border-radius: 8px; }
+body.embed-mode #out { border: 0; background: transparent; padding: 0.75rem 0 0; margin-top: 0.75rem; border-top: 1px solid #3e3e3e; border-radius: 0; min-height: 0; }
+body.embed-mode #out.err { background: rgba(58, 32, 32, 0.45); padding: 0.65rem 0.75rem; border: 0; border-radius: 8px; margin-top: 0.75rem; }
+body.embed-mode .ingest-section { border: 0; background: transparent; padding: 0.85rem 0; border-top: 1px solid #3e3e3e; border-radius: 0; margin-top: 0; }
+body.embed-mode .ingest-review-card { border: 0; background: transparent; padding: 0.5rem 0; border-radius: 0; }
+body.embed-mode .page-picker-panel { border: 0; background: transparent; border-radius: 0; margin-top: 0.65rem; }
+body.embed-mode .page-picker-toolbar { border: 0; background: transparent; padding: 0; }
+body.embed-mode .page-picker-grid-wrap { border: 0; background: transparent; padding: 0.55rem 0; border-radius: 0; }
+body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid #3e3e3e; }
+body.embed-mode .pdf-dropzone { min-height: 11rem; }
+body.embed-mode .pdf-workspace-bar { background: transparent; border: 0; padding: 0; }
+body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
+</style>
+</head>
+<body>
+<script>
+(function () {
+  if (new URLSearchParams(location.search).get("embed") === "1") {
+    document.body.classList.add("embed-mode");
+  }
+})();
+</script>
+<p class="nav embed-hide">Ingestione GLM OCR · <a href="/index.html">Pipeline classica</a> · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a></p>
+<h1 class="embed-hide">Ingestione libro (GLM OCR)</h1>
+<p class="lead embed-hide">Pipeline GLM-OCR: carica il PDF, seleziona esclusioni, TOC e indice nel visualizzatore, poi completa i metadati REICAT.</p>
+
+<form id="ingest-form">
+  <div id="pdf-dropzone" class="pdf-dropzone" aria-label="Carica PDF">
+    <input type="file" id="pdf-file-input" class="pdf-dropzone-input" name="pdf_file" accept="application/pdf,.pdf" required>
+    <div class="pdf-dropzone-inner">
+      <div class="pdf-dropzone-icon" aria-hidden="true">PDF</div>
+      <p class="pdf-dropzone-title">Trascina qui il PDF</p>
+      <p class="pdf-dropzone-hint">oppure clicca per sfogliare · un documento per ingestione</p>
+    </div>
+  </div>
+
+  <div id="pdf-workspace" class="pdf-workspace hidden">
+    <div class="pdf-workspace-bar">
+      <div class="pdf-workspace-file">
+        <span class="pdf-workspace-file-label">Documento</span>
+        <span id="pdf-file-name" class="pdf-workspace-file-name">—</span>
+      </div>
+      <button type="button" id="pdf-change-btn" class="secondary">Cambia PDF</button>
+    </div>
+
+    <div id="pdf-viewer-panel" class="page-picker-panel show" aria-live="polite">
+      <div class="pdf-viewer-tools" role="toolbar" aria-label="Strumenti selezione pagine">
+        <button type="button" class="pdf-viewer-tool is-active" data-viewer-mode="exclude" title="Pagine da rimuovere — contorno rosso, non sovrapponibili a TOC e indice" aria-label="Pagine da rimuovere">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#d44a4a" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8M16 8l-8 8"/></svg></span>
+          <span class="pdf-viewer-tool-label">Rimuovi</span>
+        </button>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="toc" title="Table of Content — triangolo in alto a destra con etichetta toc" aria-label="Table of Content">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2.2"><path d="M5 7h14M5 12h10M5 17h12"/><path fill="#3d8eef" stroke="none" d="M18 3h4v4l-4-4z" opacity="0.85"/></svg></span>
+          <span class="pdf-viewer-tool-label">TOC</span>
+        </button>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="index" title="Indice analitico — triangolo in basso a sinistra con etichetta index" aria-label="Indice analitico">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#b88bff" stroke-width="2.2"><path d="M4 6h16M4 11h16M4 16h10"/><path fill="#b88bff" stroke="none" d="M3 18h5v4l-5-4z" opacity="0.85"/></svg></span>
+          <span class="pdf-viewer-tool-label">Indice</span>
+        </button>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="reicat" title="Metadati REICAT — triangolo giallo in basso a destra con etichetta reicat" aria-label="Metadati REICAT">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2.2"><path d="M4 6h16M4 11h16M4 16h10"/><path fill="#e6c229" stroke="none" d="M21 18h-5v4l5-4z" opacity="0.85"/></svg></span>
+          <span class="pdf-viewer-tool-label">REICAT</span>
+        </button>
+        <button type="button" id="viewer-reset-btn" class="pdf-viewer-reset secondary" title="Azzera rimozioni, TOC, indice e REICAT">Reset selezioni</button>
+      </div>
+      <div class="page-picker-toolbar">
+        <div class="pdf-viewer-mode-panel" data-viewer-mode-panel="exclude">
+          <label>Pagine da escludere dall’elaborazione
+            <input type="text" name="pages_to_remove" id="pages-to-remove-input" placeholder="1, 2, 10-15, 22" autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Clicca le miniature per escludere pagine dall’OCR. Intervalli contigui: <code>prima-ultima</code>.</p>
+        </div>
+        <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="toc">
+          <label><span>Pagine del Table of Content <small class="req">*</small></span>
+            <input type="text" name="toc_range" id="toc-range-input" placeholder="11-18" required autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine escluse non sono selezionabili.</p>
+        </div>
+        <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="index">
+          <label><span>Pagine dell’indice analitico <small class="req">*</small></span>
+            <input type="text" name="index_range" id="index-range-input" placeholder="301-324" required autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine escluse non sono selezionabili.</p>
+        </div>
+        <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="reicat">
+          <label>Pagine per metadati REICAT
+            <input type="text" name="reicat_pages" id="reicat-pages-input" placeholder="es. 1-3, 5, 280-285" autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Clicca le miniature per selezionare le pagine editoriali. Vision cercherà ogni campo REICAT in tutte le pagine selezionate. Sovrapponibile con TOC e indice.</p>
+          <p class="reicat-suggest-row">
+            <button type="button" id="reicat-suggest-btn" class="secondary">Compila metadati (Vision)</button>
+            <span class="hint" id="reicat-suggest-status"></span>
+          </p>
+        </div>
+        <div class="page-picker-toolbar-meta" id="pdf-viewer-meta">—</div>
+      </div>
+      <div class="page-picker-body">
+        <div class="page-picker-grid-wrap" id="page-picker-grid-wrap">
+          <div class="page-picker-progress" id="page-picker-progress">
+            <div class="page-picker-progress-label">Rendering pagine…</div>
+            <progress id="page-picker-progress-bar" value="0" max="1"></progress>
+            <div class="page-picker-progress-stats" id="page-picker-progress-stats">0 / 0</div>
+          </div>
+          <div class="page-picker-grid" id="page-picker-grid"></div>
+        </div>
+        <div class="page-picker-detail">
+          <div class="page-picker-detail-label">Anteprima — pagina <span id="page-picker-detail-num">—</span></div>
+          <div class="page-picker-detail-img-wrap" id="page-picker-detail-wrap">
+            <div class="page-picker-detail-empty" id="page-picker-detail-empty">Seleziona una pagina nella griglia o modifica il campo sopra.</div>
+            <img id="page-picker-detail-img" class="hidden" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <label class="pdf-workspace-hint-label">Codice o etichetta opzionale del libro
+      <input type="text" name="book_id_hint" placeholder="es. collana-2024-verdi" autocomplete="off">
+    </label>
+    <p class="hint" style="margin:0;">Slug, sigla o codice da catalogo utile in log o integrazioni.</p>
+  </div>
+
+  <div id="ingest-form-details" class="ingest-form-details hidden">
+  <fieldset>
+    <legend>Metadati bibliografici (REICAT)</legend>
+    <label><span>Titolo <small class="req">*</small></span>
+      <input type="text" name="titolo" required>
+    </label>
+    <div class="grid-2">
+      <label>Sottotitolo
+        <input type="text" name="sottotitolo">
+      </label>
+      <label>Complementi del titolo
+        <input type="text" name="complementi_del_titolo">
+      </label>
+    </div>
+    <label><span>Autori (separati da virgola) <small class="req">*</small></span>
+      <input type="text" name="autore" placeholder="Nome Cognome, Altro Autore" required>
+    </label>
+    <div class="grid-2">
+      <label>Curatori (virgola)
+        <input type="text" name="curatore">
+      </label>
+      <label>Traduttori (virgola)
+        <input type="text" name="traduttore">
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Numero edizione
+        <input type="text" name="numero_edizione">
+      </label>
+      <label>Anno di pubblicazione
+        <input type="number" name="anno_di_pubblicazione" min="0">
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Tipo di pubblicazione
+        <input type="text" name="tipo_di_pubblicazione">
+      </label>
+      <label>Luogo di pubblicazione
+        <input type="text" name="luogo_di_pubblicazione">
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Editore
+        <input type="text" name="editore">
+      </label>
+      <label>Numero pagine
+        <input type="number" name="numero_pagine" min="1">
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Titolo collana
+        <input type="text" name="titolo_collana">
+      </label>
+      <label>Numero nella collana
+        <input type="text" name="numero_nella_collana">
+      </label>
+    </div>
+    <label>ISBN
+      <input type="text" name="isbn">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Note per i modelli</legend>
+    <p class="hint">Testo facoltativo aggiunto al system prompt di Vision, Editor, raffinamento TOC/INDEX e subject matcher per questo libro.</p>
+    <label>Note generali
+      <textarea name="notes" placeholder="es. conservare le abbreviazioni latine; non normalizzare i nomi propri storici"></textarea>
+    </label>
+    <label>Note sulla formattazione dell'INDICE analitico
+      <textarea name="index_notes" placeholder="es. i lemmi sono in maiuscoletto; i rimandi usano 'v.' invece di 'vedi'; i numeri in corsivo indicano le illustrazioni"></textarea>
+    </label>
+    <p class="hint" style="margin:0.25rem 0 0;">Aggiunte al prompt del raffinamento INDEX e del subject matcher.</p>
+    <label>Note sulla formattazione delle pagine
+      <textarea name="page_notes" placeholder="es. note a piè di pagina; titolo del capitolo nell'intestazione; numero di pagina in basso al centro (non confonderlo con le date)"></textarea>
+    </label>
+    <p class="hint" style="margin:0.25rem 0 0;">Aggiunte al prompt di Vision ed Editor (es. note a lato/a piè/a fronte, nome libro e capitolo, posizione del numero di pagina).</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Opzioni</legend>
+    <label class="hint" style="display:flex; gap:0.45rem; align-items:center;">
+      <input type="hidden" name="force_metadata_update_on_duplicate_hash" value="false">
+      <input type="checkbox" name="force_metadata_update_on_duplicate_hash" value="true" checked>
+      Se il file PDF è già stato elaborato in passato (stesso contenuto), aggiorna comunque i metadati inviati ora senza rifare l’OCR
+    </label>
+  </fieldset>
+
+  <div class="actions">
+    <button type="submit" id="submit-btn">Invia validazione</button>
+  </div>
+  </div>
+</form>
+
+<div id="progress" role="status" aria-live="polite">
+  <div id="progress-alert" role="alert"></div>
+  <div class="progress-row global-row" id="progress-global-row">
+    <span class="progress-label" id="global-label">Totale</span>
+    <progress id="progress-bar-global" value="0" max="100"></progress>
+    <span class="progress-stats" id="global-stats">0% (0/0)</span>
+    <span class="progress-time" id="global-time"></span>
+  </div>
+  <div id="phase-rows"></div>
+  <div id="ingest-pages-panel">
+    <div class="ingest-section" id="ingest-processed-section">
+      <h3>Review trascrizioni</h3>
+      <div class="ingest-section-stats" id="ingest-processed-stats">Nessuna pagina ancora.</div>
+      <div class="ingest-review-card">
+        <p>Confronta immagine e testo pagina per pagina, conferma le correzioni. Usa le frecce nel dialogo per scorrere tutte le pagine elaborate.</p>
+        <button type="button" class="review-btn" id="ingest-review-all-btn" disabled>Apri review</button>
+      </div>
+    </div>
+    <div class="ingest-section" id="ingest-pending-section">
+      <h3>Ripara pagine incomplete</h3>
+      <div class="ingest-section-stats" id="ingest-pending-stats">Nessuna pagina in attesa.</div>
+      <div id="ingest-pending-table-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+
+<div id="page-review-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-review-backdrop"></div>
+  <div class="page-preview-dialog page-review-dialog" role="dialog" aria-modal="true" aria-labelledby="page-review-title">
+    <button type="button" class="page-preview-close" id="page-review-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-review-title">Review</h2>
+    <p class="page-review-meta" id="page-review-meta"></p>
+    <div class="page-review-toolbar" id="page-review-toolbar">
+      <button type="button" class="page-review-save" id="page-review-confirm-page">Conferma pagina</button>
+      <button type="button" class="page-review-save" id="page-review-confirm-all">Conferma tutto</button>
+      <button type="button" class="page-review-reset" id="page-review-reset" disabled>Reset pagina</button>
+      <span class="page-review-confirmed-label hidden" id="page-review-confirmed-label">Confermato</span>
+    </div>
+    <div class="page-review-body">
+      <button type="button" class="page-preview-nav" id="page-review-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-review-panels">
+        <div class="page-review-pane">
+          <div class="page-review-frame" id="page-review-img-frame">
+            <div class="page-review-img-wrap">
+              <img class="page-review-img" id="page-review-img" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="page-review-pane">
+          <div class="page-review-frame" id="page-review-text-frame">
+            <textarea class="page-review-text" id="page-review-text" spellcheck="false"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="page-preview-nav" id="page-review-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+
+<div id="repair-progress-panel" class="repair-progress-panel hidden" aria-live="polite">
+  <div class="repair-progress-title">Riparazione pagina (GLM OCR)</div>
+  <div class="repair-progress-phase" id="repair-progress-phase">Avvio…</div>
+  <div class="repair-progress-detail" id="repair-progress-detail"></div>
+  <div class="repair-progress-bar"><div class="repair-progress-fill" id="repair-progress-fill"></div></div>
+</div>
+
+<pre id="out" aria-live="polite"></pre>
+
+<aside id="ingest-debug-panel" class="ingest-debug-panel" aria-label="Lab debug">
+  <details id="ingest-debug-details" class="ingest-debug-inner">
+    <summary>Mock lab</summary>
+    <div id="ingest-debug-panel-body" class="ingest-debug-panel-body">
+      <label class="hint ingest-debug-mock-toggle" for="ingest-debug-mock" style="display:flex;gap:0.35rem;align-items:center;margin-top:0.5rem;">
+        <input type="checkbox" id="ingest-debug-mock">
+        Demo mock
+      </label>
+      <p id="ingest-debug-mock-hint" class="hint">Attiva mock per provare review e riparazione senza pipeline.</p>
+      <div id="ingest-debug-lab-actions" class="ingest-debug-lab-actions">
+        <button type="button" data-scenario="partial">Ingest parziale</button>
+        <button type="button" data-scenario="done">Ingest completo</button>
+        <button type="button" data-scenario="audit">Solo lacune audit</button>
+        <button type="button" data-scenario="reset">Reset progresso</button>
+      </div>
+      <pre id="ingest-debug-log" class="ingest-debug-log" aria-live="polite"></pre>
+    </div>
+  </details>
+</aside>
+
+<script>
+window.__librarainMockFixtures = {"audit.json":{"ok":true,"books":[{"source_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","title":"Libro mock — Storia di Roma","slug":"storia-mock","expected_page_count":20,"has_manifest":true,"complete":false,"stages":{"stage1OCR":{"present_count":20,"missing_count":0,"missing":[]},"stage2Vision":{"present_count":18,"missing_count":2,"missing":[7,14]},"stage3Editor":{"present_count":16,"missing_count":4,"missing":[3,7,12,14]},"output":{"present_count":15,"missing_count":5,"missing":[3,7,12,14,19]}},"missing_pages":[{"aligned":3,"missing_in":["stage3Editor","output"]},{"aligned":7,"missing_in":["stage2Vision","stage3Editor","output"]},{"aligned":12,"missing_in":["stage3Editor","output"]},{"aligned":14,"missing_in":["stage2Vision","stage3Editor","output"]},{"aligned":19,"missing_in":["output"]}],"excluded_aligned_pages":[],"viewer_pages":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"pending_review_pages":[5,8,11]}],"summary":{"book_count":1,"books_with_gaps":1,"books_complete":0,"total_pages_with_gaps":5}},"sse-ingest-done.json":[{"phase":"validation","status":"completed","source_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},{"phase":"gate_hash","status":"completed"},{"phase":"pdf_alignment","status":"completed"},{"phase":"page_enumeration","status":"completed","aligned_useful_pages":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"phase":"pipeline","status":"pipeline_total","global_total":60,"global_step":0},{"phase":"stage1_ocr","status":"started","page_total":20},{"phase":"stage1_ocr","status":"completed","page_total":20},{"phase":"stage2_vision","status":"started","page_total":20},{"phase":"stage2_vision","status":"completed","page_total":20},{"phase":"stage3_editor","status":"started","page_total":20},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":1,"page_index":1,"page_total":20,"global_step":41,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":2,"page_index":2,"page_total":20,"global_step":42,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":3,"page_index":3,"page_total":20,"global_step":43,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":4,"page_index":4,"page_total":20,"global_step":44,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":5,"page_index":5,"page_total":20,"global_step":45,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":6,"page_index":6,"page_total":20,"global_step":46,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":7,"page_index":7,"page_total":20,"global_step":47,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":8,"page_index":8,"page_total":20,"global_step":48,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":9,"page_index":9,"page_total":20,"global_step":49,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":10,"page_index":10,"page_total":20,"global_step":50,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":11,"page_index":11,"page_total":20,"global_step":51,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":12,"page_index":12,"page_total":20,"global_step":52,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":13,"page_index":13,"page_total":20,"global_step":53,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":14,"page_index":14,"page_total":20,"global_step":54,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":15,"page_index":15,"page_total":20,"global_step":55,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":16,"page_index":16,"page_total":20,"global_step":56,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":17,"page_index":17,"page_total":20,"global_step":57,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":18,"page_index":18,"page_total":20,"global_step":58,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":19,"page_index":19,"page_total":20,"global_step":59,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":20,"page_index":20,"page_total":20,"global_step":60,"global_total":60},{"phase":"stage3_editor","status":"completed","page_total":20},{"phase":"polyindex_toc","status":"completed"},{"phase":"polyindex_index","status":"completed"},{"phase":"time_index","status":"completed"}],"sse-ingest-partial.json":[{"phase":"validation","status":"completed","source_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},{"phase":"gate_hash","status":"completed"},{"phase":"pdf_alignment","status":"completed"},{"phase":"page_enumeration","status":"completed","aligned_useful_pages":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"phase":"pipeline","status":"pipeline_total","global_total":60,"global_step":0},{"phase":"stage1_ocr","status":"started","page_total":20},{"phase":"stage1_ocr","status":"completed","page_total":20},{"phase":"stage2_vision","status":"started","page_total":20},{"phase":"stage2_vision","status":"completed","page_total":20},{"phase":"stage3_editor","status":"started","page_total":20},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":1,"page_index":1,"page_total":20,"global_step":41,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":2,"page_index":2,"page_total":20,"global_step":42,"global_total":60},{"phase":"stage3_editor","status":"page_failed","aligned_page":3,"page_index":3,"page_total":20,"message":"Mock: editor leak note operatore"},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":4,"page_index":4,"page_total":20,"global_step":44,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":5,"page_index":5,"page_total":20,"global_step":45,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":6,"page_index":6,"page_total":20,"global_step":46,"global_total":60},{"phase":"stage3_editor","status":"page_failed","aligned_page":7,"page_index":7,"page_total":20,"message":"Mock: timeout vision"},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":8,"page_index":8,"page_total":20,"global_step":48,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":9,"page_index":9,"page_total":20,"global_step":49,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":10,"page_index":10,"page_total":20,"global_step":50,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":11,"page_index":11,"page_total":20,"global_step":51,"global_total":60},{"phase":"stage3_editor","status":"page_progress","counts_as_step":true,"aligned_page":12,"page_index":12,"page_total":20,"global_step":52,"global_total":60}],"sse-repair-all.json":[{"phase":"gaps_repair","status":"started","global_step":0,"global_total":9},{"phase":"pipeline","status":"pipeline_total","global_total":9,"global_step":0},{"phase":"stage2_vision","status":"started","aligned_page":7},{"phase":"stage2_vision","status":"page_progress","aligned_page":7,"global_step":1,"global_total":9},{"phase":"stage2_vision","status":"completed","aligned_page":7,"global_step":2,"global_total":9},{"phase":"stage3_editor","status":"started","aligned_page":3},{"phase":"stage3_editor","status":"page_progress","aligned_page":3,"global_step":3,"global_total":9},{"phase":"stage3_editor","status":"completed","aligned_page":3,"global_step":4,"global_total":9},{"phase":"stage3_editor","status":"started","aligned_page":7},{"phase":"stage3_editor","status":"page_progress","aligned_page":7,"global_step":5,"global_total":9},{"phase":"stage3_editor","status":"completed","aligned_page":7,"global_step":6,"global_total":9},{"phase":"stage3_editor","status":"started","aligned_page":12},{"phase":"stage3_editor","status":"page_progress","aligned_page":12,"global_step":7,"global_total":9},{"phase":"stage3_editor","status":"completed","aligned_page":12,"global_step":8,"global_total":9},{"phase":"stage3_editor","status":"started","aligned_page":14},{"phase":"stage3_editor","status":"page_progress","aligned_page":14,"global_step":9,"global_total":9},{"phase":"gaps_repair","status":"completed","global_step":9,"global_total":9}],"sse-repair-page.json":[{"phase":"page_repair","status":"started","aligned_page":7,"global_step":0,"global_total":3},{"phase":"stage1_ocr","status":"page_skipped","aligned_page":7,"global_step":1,"global_total":3},{"phase":"stage2_vision","status":"started","aligned_page":7,"global_step":1,"global_total":3},{"phase":"stage2_vision","status":"page_progress","aligned_page":7,"global_step":2,"global_total":3},{"phase":"stage2_vision","status":"completed","aligned_page":7,"global_step":2,"global_total":3},{"phase":"stage3_editor","status":"started","aligned_page":7,"global_step":2,"global_total":3},{"phase":"stage3_editor","status":"page_progress","aligned_page":7,"global_step":3,"global_total":3},{"phase":"stage3_editor","status":"completed","aligned_page":7,"global_step":3,"global_total":3},{"phase":"page_repair","status":"completed","aligned_page":7,"global_step":3,"global_total":3}],"transcripts.json":{"default":{"stage":"stage3Editor","producer_model":"mock-model","text":"Contenuto mock della pagina.\n\nParagrafo di esempio per la review side-by-side con l'anteprima immagine."},"pages":{"1":"# Pagina 1\n\n**PRESENTAZIONE**\n\nTesto introduttivo del libro mock.","3":"## Operator notes\n\nQuesto blocco simula una pagina corrotta (solo note).","5":"# Capitolo I\n\nLe origini leggendarie di Roma secondo il mock.","7":"# Pagina 7\n\nTrascrizione incompleta — prova **Prova a sistemare**.","8":"# Pagina 8\n\nTesto in attesa di conferma review.","11":"# Pagina 11\n\nAltra pagina in pending review.","12":"# Sommario parziale\n\nCapitolo I .... 12\nCapitolo II .... 24","15":"# Pagina 15\n\nContenuto normale per scorrere la review."}}};
+</script>
+<script type="text/plain" id="ingest-mock-inline-src">const MOCK_SHA = "a".repeat(64);
+const FIXTURE_BASE = "/mockup/fixtures/";
+const STORAGE_KEY = "librarainIngestDebugMock";
+
+let enabled = false;
+const transcriptOverrides = new Map();
+const renderUrlCache = new Map();
+let auditState = null;
+let repairContext = null;
+
+function jsonResponse(payload, status) {
+  return new Response(JSON.stringify(payload), {
+    status: status || 200,
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+  });
+}
+
+async function loadFixture(name) {
+  if (window.__librarainMockFixtures && window.__librarainMockFixtures[name]) {
+    return JSON.parse(JSON.stringify(window.__librarainMockFixtures[name]));
+  }
+  const res = await fetch(FIXTURE_BASE + name);
+  if (!res.ok) {
+    if (window.__librarainMockFixtures && window.__librarainMockFixtures[name]) {
+      return JSON.parse(JSON.stringify(window.__librarainMockFixtures[name]));
+    }
+    throw new Error("Fixture " + name + " non trovato");
+  }
+  return res.json();
+}
+
+function pageSvgDataUrl(aligned) {
+  if (renderUrlCache.has(aligned)) return renderUrlCache.get(aligned);
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="640" viewBox="0 0 480 640">' +
+    '<rect width="480" height="640" fill="#f5f5f0"/>' +
+    '<rect x="24" y="24" width="432" height="592" fill="#fff" stroke="#333" stroke-width="2"/>' +
+    '<text x="240" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#222">' +
+    "Pagina mock " + aligned +
+    "</text>" +
+    '<text x="240" y="170" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#666">' +
+    "librarAIn mock</text></svg>";
+  const url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  renderUrlCache.set(aligned, url);
+  return url;
+}
+
+function transcriptForPage(aligned, transcripts) {
+  if (transcriptOverrides.has(aligned)) {
+    return transcriptOverrides.get(aligned);
+  }
+  const pages = transcripts.pages || {};
+  if (Object.prototype.hasOwnProperty.call(pages, String(aligned))) {
+    return pages[String(aligned)];
+  }
+  const fallback = transcripts.default || {};
+  return fallback.text || "Testo mock pagina " + aligned + ".";
+}
+
+function parsePath(url) {
+  try {
+    return new URL(url, location.origin).pathname;
+  } catch {
+    return String(url || "").split("?")[0];
+  }
+}
+
+function resetAuditState() {
+  auditState = null;
+  repairContext = null;
+  transcriptOverrides.clear();
+}
+
+async function ensureAuditState() {
+  if (!auditState) {
+    auditState = await loadFixture("audit.json");
+  }
+  return auditState;
+}
+
+function findAuditBook(payload, sha) {
+  const target = String(sha || MOCK_SHA).trim().toLowerCase();
+  return (payload.books || []).find(function (book) {
+    return String(book.source_sha256 || "").toLowerCase() === target;
+  }) || null;
+}
+
+function syncBookStageCounts(book) {
+  const expected = book.expected_page_count || (book.viewer_pages || []).length;
+  Object.keys(book.stages || {}).forEach(function (key) {
+    const stage = book.stages[key];
+    const missing = Array.isArray(stage.missing) ? stage.missing : [];
+    stage.missing = missing;
+    stage.missing_count = missing.length;
+    stage.present_count = Math.max(0, expected - missing.length);
+  });
+  book.complete = !(book.missing_pages || []).length;
+}
+
+function syncAuditSummary(payload) {
+  const books = payload.books || [];
+  let totalGaps = 0;
+  let withGaps = 0;
+  books.forEach(function (book) {
+    const count = (book.missing_pages || []).length;
+    totalGaps += count;
+    if (count > 0) withGaps += 1;
+  });
+  payload.summary = Object.assign({}, payload.summary || {}, {
+    book_count: books.length,
+    books_with_gaps: withGaps,
+    books_complete: books.length - withGaps,
+    total_pages_with_gaps: totalGaps,
+  });
+}
+
+function markPageRepaired(sha, aligned) {
+  if (!auditState || typeof aligned !== "number") return;
+  const book = findAuditBook(auditState, sha);
+  if (!book) return;
+  book.missing_pages = (book.missing_pages || []).filter(function (entry) {
+    return entry.aligned !== aligned;
+  });
+  Object.keys(book.stages || {}).forEach(function (key) {
+    const stage = book.stages[key];
+    if (Array.isArray(stage.missing)) {
+      stage.missing = stage.missing.filter(function (page) { return page !== aligned; });
+    }
+  });
+  syncBookStageCounts(book);
+  if ((book.pending_review_pages || []).indexOf(aligned) < 0) {
+    book.pending_review_pages = (book.pending_review_pages || []).concat([aligned]).sort(function (a, b) {
+      return a - b;
+    });
+  }
+  syncAuditSummary(auditState);
+}
+
+function markPageReviewConfirmed(sha, aligned) {
+  aligned = parseInt(aligned, 10);
+  if (!auditState || !Number.isFinite(aligned) || aligned < 1) return;
+  const book = findAuditBook(auditState, sha);
+  if (!book) return;
+  book.pending_review_pages = (book.pending_review_pages || []).filter(function (page) {
+    return page !== aligned;
+  });
+  const output = book.stages && book.stages.output;
+  if (output && Array.isArray(output.missing)) {
+    output.missing = output.missing.filter(function (page) { return page !== aligned; });
+  }
+  syncBookStageCounts(book);
+  syncAuditSummary(auditState);
+}
+
+function patchRepairEvents(events, alignedPage) {
+  if (typeof alignedPage !== "number") return events;
+  return events.map(function (ev) {
+    if (ev.aligned_page == null) return ev;
+    return Object.assign({}, ev, { aligned_page: alignedPage });
+  });
+}
+
+function finishRepairContext() {
+  if (!repairContext) return;
+  if (repairContext.type === "page") {
+    markPageRepaired(repairContext.sha, repairContext.aligned);
+  } else if (repairContext.type === "all") {
+    repairContext.alignedPages.forEach(function (aligned) {
+      markPageRepaired(repairContext.sha, aligned);
+    });
+  }
+  repairContext = null;
+}
+
+function isEnabled() {
+  return enabled;
+}
+
+function setEnabled(next) {
+  enabled = !!next;
+  try {
+    if (enabled) localStorage.setItem(STORAGE_KEY, "1");
+    else localStorage.removeItem(STORAGE_KEY);
+  } catch {}
+  document.body.classList.toggle("ingest-mock-active", enabled);
+  window.dispatchEvent(new CustomEvent("librarain-mock-mode", { detail: { enabled } }));
+}
+
+function loadSavedEnabled() {
+  try {
+    if (localStorage.getItem(STORAGE_KEY) === "1") setEnabled(true);
+  } catch {}
+  if (new URLSearchParams(location.search).get("mock") === "1") setEnabled(true);
+}
+
+function pageRenderUrl(alignedPage) {
+  return pageSvgDataUrl(alignedPage);
+}
+
+async function apiFetch(url, options) {
+  const path = parsePath(url);
+  const method = ((options && options.method) || "GET").toUpperCase();
+
+  if (path === "/api/admin/book-pages-audit" && method === "GET") {
+    const payload = JSON.parse(JSON.stringify(await ensureAuditState()));
+    const params = new URL(url, location.origin).searchParams;
+    const shaFilter = (params.get("source_sha256") || "").trim().toLowerCase();
+    if (shaFilter && payload.books) {
+      return jsonResponse(Object.assign({}, payload, {
+        books: payload.books.filter(function (book) {
+          return String(book.source_sha256 || "").toLowerCase() === shaFilter;
+        }),
+      }));
+    }
+    return jsonResponse(payload);
+  }
+
+  if (path === "/api/admin/book-pages/transcript" && method === "GET") {
+    const params = new URL(url, location.origin).searchParams;
+    const aligned = parseInt(params.get("aligned_page") || "0", 10);
+    const transcripts = await loadFixture("transcripts.json");
+    const fallback = transcripts.default || {};
+    const text = transcriptForPage(aligned, transcripts);
+    return jsonResponse({
+      ok: true,
+      source_sha256: MOCK_SHA,
+      aligned_page: aligned,
+      stage: fallback.stage || "stage3Editor",
+      text: text,
+      producer_model: fallback.producer_model || "mock-model",
+    });
+  }
+
+  if (path === "/api/admin/book-pages/transcript/confirm" && method === "POST") {
+    const body = JSON.parse(String(options.body || "{}"));
+    const aligned = parseInt(body.aligned_page, 10);
+    if (!Number.isFinite(aligned) || aligned < 1) {
+      return jsonResponse({ ok: false, error: "aligned_page must be a positive integer" }, 400);
+    }
+    const text = typeof body.text === "string" ? body.text : "";
+    transcriptOverrides.set(aligned, text);
+    markPageReviewConfirmed(body.source_sha256 || MOCK_SHA, aligned);
+    return jsonResponse({ ok: true, result: { aligned_page: aligned } });
+  }
+
+  if (path === "/api/admin/book-pages/repair" && method === "POST") {
+    const body = JSON.parse(String(options.body || "{}"));
+    repairContext = {
+      type: "page",
+      sha: body.source_sha256 || MOCK_SHA,
+      aligned: body.aligned_page,
+    };
+    return jsonResponse({
+      ok: true,
+      job_id: "mock-repair-page",
+      events_url: "mock://fixture/sse-repair-page.json",
+    }, 202);
+  }
+
+  if (path === "/api/admin/book-pages/repair-all" && method === "POST") {
+    const body = JSON.parse(String(options.body || "{}"));
+    repairContext = {
+      type: "all",
+      sha: body.source_sha256 || MOCK_SHA,
+      alignedPages: (body.gap_pages || []).map(function (entry) {
+        return entry.aligned;
+      }).filter(function (aligned) {
+        return typeof aligned === "number" && aligned > 0;
+      }),
+    };
+    return jsonResponse({
+      ok: true,
+      job_id: "mock-repair-all",
+      events_url: "mock://fixture/sse-repair-all.json",
+    }, 202);
+  }
+
+  if (path === "/api/ingest/submit" && method === "POST") {
+    return jsonResponse({
+      ok: true,
+      job_id: "mock-ingest",
+      events_url: "mock://fixture/sse-ingest-partial.json",
+    }, 202);
+  }
+
+  if (path === "/api/ingest2/submit" && method === "POST") {
+    return jsonResponse({
+      ok: true,
+      job_id: "mock-ingest-glm",
+      events_url: "mock://fixture/sse-ingest-partial.json",
+    }, 202);
+  }
+
+  return jsonResponse({ ok: false, error: "Mock non implementato per " + path }, 501);
+}
+
+async function watchRepairSse(eventsUrl, onEvent) {
+  if (!String(eventsUrl || "").startsWith("mock://fixture/")) {
+    throw new Error("URL SSE mock non valido");
+  }
+  const name = eventsUrl.replace("mock://fixture/", "");
+  let events = await loadFixture(name);
+  if (repairContext && repairContext.type === "page") {
+    events = patchRepairEvents(events, repairContext.aligned);
+  }
+  for (let i = 0; i < events.length; i++) {
+    onEvent(events[i]);
+    await new Promise(function (resolve) { setTimeout(resolve, 80); });
+  }
+  onEvent({ status: "done", result: { ok: true, mock: true } });
+  finishRepairContext();
+}
+
+async function loadScenarioFixture(name) {
+  return loadFixture(name);
+}
+
+window.__librarainMock = {
+  isEnabled: isEnabled,
+  setEnabled: setEnabled,
+  loadSavedEnabled: loadSavedEnabled,
+  resetAuditState: resetAuditState,
+  pageRenderUrl: pageRenderUrl,
+  apiFetch: apiFetch,
+  watchRepairSse: watchRepairSse,
+  loadScenarioFixture: loadScenarioFixture,
+  MOCK_SHA: MOCK_SHA,
+};
+</script>
+<script type="text/plain" id="ingest-lab-inline-src">const mock = window.__librarainMock;
+const EVENT_MS = 70;
+const LAB_WAIT_MS = 8000;
+
+let labApi = null;
+let running = false;
+
+function sleep(ms) {
+  return new Promise(function (resolve) { setTimeout(resolve, ms); });
+}
+
+function labLog(message) {
+  if (labApi && labApi.labLog) {
+    labApi.labLog(message);
+    return;
+  }
+  if (window.LibrarAInLog) window.LibrarAInLog.info(message, { sink: "lab" });
+}
+
+function waitForLab() {
+  if (labApi) return Promise.resolve(labApi);
+  if (window.__librarainIngestLab) {
+    labApi = window.__librarainIngestLab;
+    return Promise.resolve(labApi);
+  }
+  return new Promise(function (resolve, reject) {
+    const timer = setTimeout(function () {
+      window.removeEventListener("librarain-ingest-ready", onReady);
+      reject(new Error("UI ingest non pronta (ricarica la pagina)"));
+    }, LAB_WAIT_MS);
+    function onReady() {
+      clearTimeout(timer);
+      labApi = window.__librarainIngestLab || null;
+      if (!labApi) {
+        reject(new Error("API Lab mancante"));
+        return;
+      }
+      resolve(labApi);
+    }
+    window.addEventListener("librarain-ingest-ready", onReady, { once: true });
+  });
+}
+
+function syncMockCheckbox() {
+  const mockInput = document.getElementById("ingest-debug-mock");
+  if (mockInput) mockInput.checked = mock.isEnabled();
+}
+
+function syncSubmitButton() {
+  const submit = document.getElementById("submit-btn");
+  const hint = document.getElementById("ingest-debug-mock-hint");
+  if (!submit) return;
+  if (mock.isEnabled()) {
+    submit.disabled = true;
+    submit.title = "Disabilitato in modalità mock — usa i comandi Lab";
+    if (hint) hint.textContent = "Mock attivo: API finte e ingest reale disabilitato.";
+  } else {
+    submit.disabled = false;
+    submit.title = "";
+    if (hint) hint.textContent = "I comandi Lab attivano mock automaticamente. Spunta mock solo per review/repair manuali.";
+  }
+}
+
+function ensureMockEnabled() {
+  if (!mock.isEnabled()) {
+    mock.setEnabled(true);
+    syncMockCheckbox();
+    syncSubmitButton();
+    labLog("Mock attivato automaticamente.");
+  }
+}
+
+function setLabRunning(active) {
+  running = active;
+  const actions = document.getElementById("ingest-debug-lab-actions");
+  if (!actions) return;
+  actions.querySelectorAll("button").forEach(function (btn) {
+    btn.disabled = active;
+  });
+}
+
+async function playEvents(lab, fixtureName, label, finishUi) {
+  labLog("Avvio scenario: " + label + "…");
+  const events = await mock.loadScenarioFixture(fixtureName);
+  lab.startProgress();
+  if (lab.clearProgressAlert) lab.clearProgressAlert();
+  for (let i = 0; i < events.length; i++) {
+    lab.handleEvent(events[i]);
+    await sleep(EVENT_MS);
+  }
+  if (finishUi) {
+    await lab.refreshAudit();
+    if (lab.applyMockAuditPagesState) lab.applyMockAuditPagesState();
+    if (lab.finishIngestUi) lab.finishIngestUi();
+  }
+  labLog("Scenario completato: " + label + ".");
+}
+
+async function runAuditOnly(lab) {
+  labLog("Avvio scenario: solo lacune audit…");
+  await playEvents(lab, "sse-ingest-done.json", "solo lacune audit", false);
+  await lab.refreshAudit();
+  if (lab.applyMockAuditPagesState) lab.applyMockAuditPagesState();
+  if (lab.finishIngestUi) lab.finishIngestUi();
+  labLog("Scenario completato: lacune audit caricate.");
+}
+
+async function runScenario(scenario) {
+  ensureMockEnabled();
+  setLabRunning(true);
+  try {
+    const lab = await waitForLab();
+    if (scenario === "partial") {
+      await playEvents(lab, "sse-ingest-partial.json", "ingest parziale", false);
+      return;
+    }
+    if (scenario === "done") {
+      if (mock.resetAuditState) mock.resetAuditState();
+      await playEvents(lab, "sse-ingest-done.json", "ingest completo", true);
+      return;
+    }
+    if (scenario === "audit") {
+      if (mock.resetAuditState) mock.resetAuditState();
+      await runAuditOnly(lab);
+      return;
+    }
+    if (scenario === "reset") {
+      if (mock.resetAuditState) mock.resetAuditState();
+      lab.resetProgress();
+      if (lab.clearProgressAlert) lab.clearProgressAlert();
+      labLog("Progresso azzerato.");
+    }
+  } finally {
+    setLabRunning(false);
+  }
+}
+
+function initPanel() {
+  const panel = document.getElementById("ingest-debug-panel");
+  const details = document.getElementById("ingest-debug-details");
+  const body = document.getElementById("ingest-debug-panel-body");
+  const mockInput = document.getElementById("ingest-debug-mock");
+  const actions = document.getElementById("ingest-debug-lab-actions");
+  if (!panel || !details || !body || !mockInput || !actions) return;
+
+  mock.loadSavedEnabled();
+  syncMockCheckbox();
+  syncSubmitButton();
+  labApi = window.__librarainIngestLab || null;
+
+  if (new URLSearchParams(location.search).get("mock") === "1") {
+    if (labApi && labApi.openLabPanel) labApi.openLabPanel();
+    mock.setEnabled(true);
+    syncMockCheckbox();
+    syncSubmitButton();
+    labLog("Pannello Lab aperto (mock=1).");
+  }
+
+  mockInput.addEventListener("change", function () {
+    mock.setEnabled(mockInput.checked);
+    syncSubmitButton();
+    labLog(mockInput.checked ? "Mock attivato manualmente." : "Mock disattivato.");
+  });
+
+  window.addEventListener("librarain-mock-mode", function () {
+    syncMockCheckbox();
+    syncSubmitButton();
+  });
+
+  actions.addEventListener("click", function (event) {
+    const btn = event.target.closest("button[data-scenario]");
+    if (!btn || running) return;
+    const scenario = btn.getAttribute("data-scenario");
+    labLog("Comando: " + btn.textContent.trim() + "…");
+    runScenario(scenario).catch(function (err) {
+      if (labApi && labApi.labLogError) labApi.labLogError(String(err && err.message ? err.message : err));
+      else labLog("Errore: " + String(err && err.message ? err.message : err));
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("lab scenario failed", err);
+    });
+  });
+}
+
+window.addEventListener("librarain-ingest-ready", function () {
+  labApi = window.__librarainIngestLab || null;
+}, { once: true });
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initPanel);
+} else {
+  initPanel();
+}
+</script>
+<script type="module">
+(function () {
+  const PDFJS_ESM =
+    "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs";
+  const PDFJS_WORKER =
+    "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs";
+
+  let pdfJsModulePromise = null;
+  async function pdfJs() {
+    if (!pdfJsModulePromise)
+      pdfJsModulePromise = import(PDFJS_ESM).then((mod) => {
+        mod.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
+        return mod;
+      });
+    return pdfJsModulePromise;
+  }
+
+  function parsePagesSpec(raw) {
+    var s = String(raw || "").trim();
+    if (!s) return [];
+    var pieces = s.replace(/;/g, ",").split(",");
+    var set = {};
+    function add(page) { set[page] = true; }
+    for (var i = 0; i < pieces.length; i++) {
+      var piece = pieces[i].trim();
+      if (!piece) continue;
+      if (piece.indexOf("-") >= 0) {
+        var sep = piece.indexOf("-");
+        var left = piece.slice(0, sep).trim();
+        var right = piece.slice(sep + 1).trim();
+        var start = parseInt(left, 10);
+        var end = parseInt(right, 10);
+        if (isNaN(start) || isNaN(end))
+          throw new Error('numero non valido in "' + piece + '" nel campo delle pagine');
+        if (start < 1 || end < 1) throw new Error("le pagine devono essere >= 1");
+        if (start > end) throw new Error("nell'intervallo x-y deve essere x <= y");
+        for (var p = start; p <= end; p++) add(p);
+      } else {
+        var n = parseInt(piece, 10);
+        if (isNaN(n)) throw new Error('numero pagina non valido: "' + piece + '"');
+        if (n < 1) throw new Error("le pagine devono essere >= 1");
+        add(n);
+      }
+    }
+    return Object.keys(set).map(function (k) { return parseInt(k, 10); }).sort(function (a, b) { return a - b; });
+  }
+
+  function pagesToSpec(sortedPages) {
+    if (!sortedPages.length) return "";
+    var parts = [];
+    var start = sortedPages[0];
+    var prev = sortedPages[0];
+    for (var i = 1; i <= sortedPages.length; i++) {
+      var cur = sortedPages[i];
+      if (i < sortedPages.length && cur === prev + 1) {
+        prev = cur;
+        continue;
+      }
+      parts.push(start === prev ? String(start) : start + "-" + prev);
+      if (i < sortedPages.length) {
+        start = cur;
+        prev = cur;
+      }
+    }
+    return parts.join(", ");
+  }
+
+  function tryParsePagesSpec(raw) {
+    try {
+      return parsePagesSpec(raw);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  var pdfDropzone = document.getElementById("pdf-dropzone");
+  var pdfWorkspace = document.getElementById("pdf-workspace");
+  var ingestFormDetails = document.getElementById("ingest-form-details");
+  var pdfFileName = document.getElementById("pdf-file-name");
+  var pdfFileInput = document.getElementById("pdf-file-input");
+  var pdfChangeBtn = document.getElementById("pdf-change-btn");
+  var pdfViewerMeta = document.getElementById("pdf-viewer-meta");
+  var viewerMode = "exclude";
+  var viewerModeButtons = document.querySelectorAll(".pdf-viewer-tool");
+  var viewerModePanels = document.querySelectorAll("[data-viewer-mode-panel]");
+  var pagesToRemoveInput = document.getElementById("pages-to-remove-input");
+  var pagePickerGrid = document.getElementById("page-picker-grid");
+  var pagePickerGridWrap = document.getElementById("page-picker-grid-wrap");
+  var pagePickerProgressBar = document.getElementById("page-picker-progress-bar");
+  var pagePickerProgressStats = document.getElementById("page-picker-progress-stats");
+  var pagePickerDetailNum = document.getElementById("page-picker-detail-num");
+  var pagePickerDetailWrap = document.getElementById("page-picker-detail-wrap");
+  var pagePickerDetailEmpty = document.getElementById("page-picker-detail-empty");
+  var pagePickerDetailImg = document.getElementById("page-picker-detail-img");
+  var pagePickerState = {
+    loadGen: 0,
+    pdfDoc: null,
+    pdfFile: null,
+    numPages: 0,
+    selected: {},
+    lastSelected: null,
+    thumbUrls: {},
+    detailCache: {},
+    syncing: false,
+  };
+
+  function showPdfWorkspace(file) {
+    pdfDropzone.classList.add("hidden");
+    pdfWorkspace.classList.remove("hidden");
+    ingestFormDetails.classList.remove("hidden");
+    pdfFileName.textContent = file && file.name ? file.name : "—";
+  }
+
+  function showPdfDropzone() {
+    pdfDropzone.classList.remove("hidden");
+    pdfWorkspace.classList.add("hidden");
+    ingestFormDetails.classList.add("hidden");
+  }
+
+  function viewerLastSelected(mode) {
+    if (mode === "toc") return tocPagePickerState.lastSelected;
+    if (mode === "index") return indexPagePickerState.lastSelected;
+    if (mode === "reicat") return reicatPagePickerState.lastSelected;
+    return pagePickerState.lastSelected;
+  }
+
+  var VIEWER_TOOL_LABELS = { exclude: "Rimuovi", toc: "TOC", index: "Indice", reicat: "REICAT" };
+
+  function setViewerMode(mode) {
+    if (mode !== "exclude" && mode !== "toc" && mode !== "index" && mode !== "reicat") return;
+    viewerMode = mode;
+    for (var i = 0; i < viewerModeButtons.length; i++) {
+      var btn = viewerModeButtons[i];
+      var active = btn.dataset.viewerMode === mode;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    }
+    for (var j = 0; j < viewerModePanels.length; j++) {
+      var panel = viewerModePanels[j];
+      panel.classList.toggle("hidden", panel.dataset.viewerModePanel !== mode);
+    }
+    refreshViewerThumbUi();
+    renderPagePickerDetail(viewerLastSelected(mode));
+  }
+
+  for (var vm = 0; vm < viewerModeButtons.length; vm++) {
+    viewerModeButtons[vm].addEventListener("click", function () {
+      setViewerMode(this.dataset.viewerMode);
+    });
+  }
+
+  function selectedPagesList() {
+    return Object.keys(pagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function updateViewerMeta() {
+    if (!pagePickerState.numPages) {
+      pdfViewerMeta.textContent = "—";
+      return;
+    }
+    var excludedCount = selectedPagesList().length;
+    var tocCount = tocSelectedPagesList().length;
+    var indexCount = indexSelectedPagesList().length;
+    var reicatCount = reicatSelectedPagesList().length;
+    pdfViewerMeta.textContent =
+      "Strumento: " + (VIEWER_TOOL_LABELS[viewerMode] || viewerMode) +
+      " · " + pagePickerState.numPages + " pagine · " +
+      excludedCount + " rimosse · " + tocCount + " TOC · " + indexCount + " indice · " + reicatCount + " REICAT";
+  }
+
+  function refreshViewerThumbUi() {
+    var excluded = getExcludedPagesSet();
+    var buttons = pagePickerGrid.querySelectorAll(".page-picker-thumb");
+    for (var i = 0; i < buttons.length; i++) {
+      var btn = buttons[i];
+      var pageNum = parseInt(btn.dataset.page, 10);
+      var isExcluded = !!excluded[pageNum];
+      var hasToc = !!tocPagePickerState.selected[pageNum];
+      var hasIndex = !!indexPagePickerState.selected[pageNum];
+      var hasReicat = !!reicatPagePickerState.selected[pageNum];
+      btn.classList.toggle("is-excluded", isExcluded);
+      var tocMark = btn.querySelector(".page-picker-thumb-mark-toc");
+      var indexMark = btn.querySelector(".page-picker-thumb-mark-index");
+      var reicatMark = btn.querySelector(".page-picker-thumb-mark-reicat");
+      if (tocMark) tocMark.classList.toggle("hidden", !hasToc);
+      if (indexMark) indexMark.classList.toggle("hidden", !hasIndex);
+      if (reicatMark) reicatMark.classList.toggle("hidden", !hasReicat);
+      var disabled = viewerMode !== "exclude" && isExcluded;
+      btn.classList.toggle("is-disabled", disabled);
+      btn.disabled = disabled;
+    }
+    updateViewerMeta();
+  }
+
+  function syncPagePickerFieldFromSelection() {
+    if (pagePickerState.syncing) return;
+    pagePickerState.syncing = true;
+    pagesToRemoveInput.value = pagesToSpec(selectedPagesList());
+    pagePickerState.syncing = false;
+    refreshFilteredRangePickers();
+  }
+
+  function syncPagePickerSelectionFromField() {
+    if (pagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(pagesToRemoveInput.value);
+    pagePickerState.syncing = true;
+    pagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) pagePickerState.selected[parsed[i]] = true;
+      pagePickerState.lastSelected = parsed.length ? parsed[parsed.length - 1] : null;
+    } else if (!String(pagesToRemoveInput.value || "").trim()) {
+      pagePickerState.lastSelected = null;
+    }
+    pagePickerState.syncing = false;
+    refreshViewerThumbUi();
+    renderPagePickerDetail(pagePickerState.lastSelected);
+    refreshFilteredRangePickers();
+  }
+
+  function getExcludedPagesList() {
+    return selectedPagesList();
+  }
+
+  function getExcludedPagesSet() {
+    var set = {};
+    var list = getExcludedPagesList();
+    for (var i = 0; i < list.length; i++) set[list[i]] = true;
+    return set;
+  }
+
+  function getPickerAvailablePages() {
+    if (!pagePickerState.numPages) return [];
+    var excluded = getExcludedPagesSet();
+    var pages = [];
+    for (var p = 1; p <= pagePickerState.numPages; p++) {
+      if (!excluded[p]) pages.push(p);
+    }
+    return pages;
+  }
+
+  function refreshFilteredRangePickers() {
+    reconcileTocSelection();
+    reconcileIndexSelection();
+    reconcileReicatSelection();
+    refreshViewerThumbUi();
+  }
+
+  var tocRangeInput = document.getElementById("toc-range-input");
+  var tocPagePickerState = {
+    selected: {},
+    lastSelected: null,
+    syncing: false,
+  };
+
+  function tocSelectedPagesList() {
+    return Object.keys(tocPagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function syncTocPagePickerFieldFromSelection() {
+    if (tocPagePickerState.syncing) return;
+    tocPagePickerState.syncing = true;
+    tocRangeInput.value = pagesToSpec(tocSelectedPagesList());
+    tocPagePickerState.syncing = false;
+  }
+
+  function syncTocPagePickerSelectionFromField() {
+    if (tocPagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(tocRangeInput.value);
+    var excluded = getExcludedPagesSet();
+    tocPagePickerState.syncing = true;
+    tocPagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) {
+        if (!excluded[parsed[i]]) tocPagePickerState.selected[parsed[i]] = true;
+      }
+      var selected = tocSelectedPagesList();
+      tocPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
+    } else if (!String(tocRangeInput.value || "").trim()) {
+      tocPagePickerState.lastSelected = null;
+    }
+    tocPagePickerState.syncing = false;
+    refreshViewerThumbUi();
+    if (viewerMode === "toc") renderPagePickerDetail(tocPagePickerState.lastSelected);
+  }
+
+  function toggleTocPagePickerSelection(pageNum) {
+    var excluded = getExcludedPagesSet();
+    if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
+    if (tocPagePickerState.selected[pageNum]) delete tocPagePickerState.selected[pageNum];
+    else tocPagePickerState.selected[pageNum] = true;
+    tocPagePickerState.lastSelected = pageNum;
+    refreshViewerThumbUi();
+    syncTocPagePickerFieldFromSelection();
+    renderPagePickerDetail(pageNum);
+  }
+
+  function resetTocPagePicker() {
+    tocPagePickerState.selected = {};
+    tocPagePickerState.lastSelected = null;
+    if (viewerMode === "toc") renderPagePickerDetail(null);
+  }
+
+  function reconcileTocSelection() {
+    if (!pagePickerState.numPages) {
+      resetTocPagePicker();
+      return;
+    }
+    var excluded = getExcludedPagesSet();
+    var selected = tocSelectedPagesList().filter(function (p) { return !excluded[p]; });
+    tocPagePickerState.selected = {};
+    for (var i = 0; i < selected.length; i++) tocPagePickerState.selected[selected[i]] = true;
+    if (selected.length) tocPagePickerState.lastSelected = selected[selected.length - 1];
+    else if (tocPagePickerState.lastSelected && excluded[tocPagePickerState.lastSelected]) {
+      tocPagePickerState.lastSelected = null;
+    }
+    syncTocPagePickerFieldFromSelection();
+  }
+
+  var indexRangeInput = document.getElementById("index-range-input");
+  var indexPagePickerState = {
+    selected: {},
+    lastSelected: null,
+    syncing: false,
+  };
+
+  function indexSelectedPagesList() {
+    return Object.keys(indexPagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function syncIndexPagePickerFieldFromSelection() {
+    if (indexPagePickerState.syncing) return;
+    indexPagePickerState.syncing = true;
+    indexRangeInput.value = pagesToSpec(indexSelectedPagesList());
+    indexPagePickerState.syncing = false;
+  }
+
+  function syncIndexPagePickerSelectionFromField() {
+    if (indexPagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(indexRangeInput.value);
+    var excluded = getExcludedPagesSet();
+    indexPagePickerState.syncing = true;
+    indexPagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) {
+        if (!excluded[parsed[i]]) indexPagePickerState.selected[parsed[i]] = true;
+      }
+      var selected = indexSelectedPagesList();
+      indexPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
+    } else if (!String(indexRangeInput.value || "").trim()) {
+      indexPagePickerState.lastSelected = null;
+    }
+    indexPagePickerState.syncing = false;
+    refreshViewerThumbUi();
+    if (viewerMode === "index") renderPagePickerDetail(indexPagePickerState.lastSelected);
+  }
+
+  function toggleIndexPagePickerSelection(pageNum) {
+    var excluded = getExcludedPagesSet();
+    if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
+    if (indexPagePickerState.selected[pageNum]) delete indexPagePickerState.selected[pageNum];
+    else indexPagePickerState.selected[pageNum] = true;
+    indexPagePickerState.lastSelected = pageNum;
+    refreshViewerThumbUi();
+    syncIndexPagePickerFieldFromSelection();
+    renderPagePickerDetail(pageNum);
+  }
+
+  function resetIndexPagePicker() {
+    indexPagePickerState.selected = {};
+    indexPagePickerState.lastSelected = null;
+    if (viewerMode === "index") renderPagePickerDetail(null);
+  }
+
+  function reconcileIndexSelection() {
+    if (!pagePickerState.numPages) {
+      resetIndexPagePicker();
+      return;
+    }
+    var excluded = getExcludedPagesSet();
+    var selected = indexSelectedPagesList().filter(function (p) { return !excluded[p]; });
+    indexPagePickerState.selected = {};
+    for (var i = 0; i < selected.length; i++) indexPagePickerState.selected[selected[i]] = true;
+    if (selected.length) indexPagePickerState.lastSelected = selected[selected.length - 1];
+    else if (indexPagePickerState.lastSelected && excluded[indexPagePickerState.lastSelected]) {
+      indexPagePickerState.lastSelected = null;
+    }
+    syncIndexPagePickerFieldFromSelection();
+  }
+
+  var reicatPagesInput = document.getElementById("reicat-pages-input");
+  var reicatSuggestBtn = document.getElementById("reicat-suggest-btn");
+  var reicatSuggestStatus = document.getElementById("reicat-suggest-status");
+  var reicatPagePickerState = {
+    selected: {},
+    lastSelected: null,
+    syncing: false,
+  };
+
+  function reicatSelectedPagesList() {
+    return Object.keys(reicatPagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function syncReicatPagePickerFieldFromSelection() {
+    if (reicatPagePickerState.syncing) return;
+    reicatPagePickerState.syncing = true;
+    reicatPagesInput.value = pagesToSpec(reicatSelectedPagesList());
+    reicatPagePickerState.syncing = false;
+  }
+
+  function syncReicatPagePickerSelectionFromField() {
+    if (reicatPagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(reicatPagesInput.value);
+    var excluded = getExcludedPagesSet();
+    reicatPagePickerState.syncing = true;
+    reicatPagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) {
+        if (!excluded[parsed[i]]) reicatPagePickerState.selected[parsed[i]] = true;
+      }
+      var selected = reicatSelectedPagesList();
+      reicatPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
+    } else if (!String(reicatPagesInput.value || "").trim()) {
+      reicatPagePickerState.lastSelected = null;
+    }
+    reicatPagePickerState.syncing = false;
+    refreshViewerThumbUi();
+    if (viewerMode === "reicat") renderPagePickerDetail(reicatPagePickerState.lastSelected);
+  }
+
+  function toggleReicatPagePickerSelection(pageNum) {
+    var excluded = getExcludedPagesSet();
+    if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
+    if (reicatPagePickerState.selected[pageNum]) delete reicatPagePickerState.selected[pageNum];
+    else reicatPagePickerState.selected[pageNum] = true;
+    reicatPagePickerState.lastSelected = pageNum;
+    refreshViewerThumbUi();
+    syncReicatPagePickerFieldFromSelection();
+    renderPagePickerDetail(pageNum);
+  }
+
+  function resetReicatPagePicker() {
+    reicatPagePickerState.selected = {};
+    reicatPagePickerState.lastSelected = null;
+    if (reicatPagesInput) reicatPagesInput.value = "";
+    refreshViewerThumbUi();
+    if (viewerMode === "reicat") renderPagePickerDetail(null);
+  }
+
+  function resetAllViewerSelections() {
+    pagePickerState.selected = {};
+    pagePickerState.lastSelected = null;
+    pagesToRemoveInput.value = "";
+    tocPagePickerState.selected = {};
+    tocPagePickerState.lastSelected = null;
+    tocRangeInput.value = "";
+    indexPagePickerState.selected = {};
+    indexPagePickerState.lastSelected = null;
+    indexRangeInput.value = "";
+    resetReicatPagePicker();
+    setReicatSuggestStatus("");
+    refreshViewerThumbUi();
+    renderPagePickerDetail(null);
+  }
+
+  function reconcileReicatSelection() {
+    if (!pagePickerState.numPages) {
+      resetReicatPagePicker();
+      return;
+    }
+    var excluded = getExcludedPagesSet();
+    var selected = reicatSelectedPagesList().filter(function (p) { return !excluded[p]; });
+    reicatPagePickerState.selected = {};
+    for (var i = 0; i < selected.length; i++) reicatPagePickerState.selected[selected[i]] = true;
+    if (selected.length) reicatPagePickerState.lastSelected = selected[selected.length - 1];
+    else if (reicatPagePickerState.lastSelected && excluded[reicatPagePickerState.lastSelected]) {
+      reicatPagePickerState.lastSelected = null;
+    }
+    syncReicatPagePickerFieldFromSelection();
+  }
+
+  function makeFallbackThumb(pageNum) {
+    return "data:image/svg+xml," + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="160" viewBox="0 0 120 160">' +
+      '<rect width="120" height="160" fill="#f0f0f0"/>' +
+      '<text x="60" y="84" text-anchor="middle" font-size="14" fill="#666">' + pageNum + "</text></svg>"
+    );
+  }
+
+  var PDF_THUMB_SCALE = 0.22;
+  var PDF_DETAIL_SCALE = 1.1;
+  var PDF_THUMB_JPEG_QUALITY = 0.82;
+  var PDF_DETAIL_JPEG_QUALITY = 0.88;
+  var PDF_RAM_BUDGET_RATIO = 0.75;
+
+  function pdfPhysicalCpuCount() {
+    var n = navigator.hardwareConcurrency;
+    if (typeof n !== "number" || n < 1) return 1;
+    return Math.floor(n);
+  }
+
+  function pdfRamBudgetBytes() {
+    var gb = navigator.deviceMemory;
+    if (typeof gb !== "number" || gb < 0.25) gb = 4;
+    return Math.floor(gb * 1024 * 1024 * 1024 * PDF_RAM_BUDGET_RATIO);
+  }
+
+  function pdfConcurrentRenderBudgetBytes() {
+    return Math.min(
+      pdfRamBudgetBytes(),
+      pdfPhysicalCpuCount() * 48 * 1024 * 1024
+    );
+  }
+
+  var pdfRenderSlots = 0;
+  var pdfRenderSlotWaiters = [];
+
+  function pdfAcquireRenderSlot() {
+    var maxSlots = pdfPhysicalCpuCount();
+    if (pdfRenderSlots < maxSlots) {
+      pdfRenderSlots += 1;
+      return Promise.resolve();
+    }
+    return new Promise(function (resolve) {
+      pdfRenderSlotWaiters.push(resolve);
+    });
+  }
+
+  function pdfReleaseRenderSlot() {
+    if (pdfRenderSlotWaiters.length) {
+      pdfRenderSlotWaiters.shift()();
+      return;
+    }
+    pdfRenderSlots = Math.max(0, pdfRenderSlots - 1);
+  }
+
+  async function pdfWithRenderSlot(fn) {
+    await pdfAcquireRenderSlot();
+    try {
+      return await fn();
+    } finally {
+      pdfReleaseRenderSlot();
+    }
+  }
+
+  function pdfEstimateRenderBytes(width, height) {
+    var w = Math.max(1, Math.ceil(width));
+    var h = Math.max(1, Math.ceil(height));
+    var raw = w * h * 4;
+    return raw + Math.floor(raw * 0.35);
+  }
+
+  async function renderPdfPageCanvasToDataUrl(page, viewport, jpegQuality) {
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d", { alpha: false });
+    if (!ctx) throw new Error("canvas 2d non disponibile");
+    canvas.width = Math.max(1, Math.ceil(viewport.width));
+    canvas.height = Math.max(1, Math.ceil(viewport.height));
+    await page.render({ canvasContext: ctx, viewport: viewport, intent: "print" }).promise;
+    return canvas.toDataURL("image/jpeg", jpegQuality);
+  }
+
+  async function renderPdfPageToDataUrl(pdfDoc, pageNum, scale, jpegQuality) {
+    return pdfWithRenderSlot(async function () {
+      var page = await pdfDoc.getPage(pageNum);
+      try {
+        var viewport = page.getViewport({ scale: scale });
+        return await renderPdfPageCanvasToDataUrl(page, viewport, jpegQuality);
+      } finally {
+        page.cleanup();
+      }
+    });
+  }
+
+  var PDF_THUMB_MEMORY_ESTIMATE = 512 * 1024;
+
+  async function renderPdfPagesInParallel(pdfDoc, pageNums, scale, jpegQuality, opts) {
+    var loadGen = opts.loadGen;
+    var onProgress = opts.onProgress || function () {};
+    var onPage = opts.onPage || function () {};
+    var total = pageNums.length;
+    if (!total) return { cancelled: false, done: 0 };
+
+    var budget = pdfConcurrentRenderBudgetBytes();
+    var queue = pageNums.slice();
+    var done = 0;
+    var inFlightEst = 0;
+    var cancelled = false;
+
+    function checkCancelled() {
+      if (loadGen !== pagePickerState.loadGen) {
+        cancelled = true;
+        return true;
+      }
+      return false;
+    }
+
+    function canStart(extraBytes) {
+      return inFlightEst + extraBytes <= budget;
+    }
+
+    async function worker() {
+      while (!cancelled) {
+        if (checkCancelled()) break;
+        while (!canStart(PDF_THUMB_MEMORY_ESTIMATE) && !cancelled) {
+          await new Promise(function (r) { setTimeout(r, 50); });
+        }
+        if (checkCancelled()) break;
+        if (!queue.length) break;
+
+        var pageNum = queue.shift();
+        inFlightEst += PDF_THUMB_MEMORY_ESTIMATE;
+        try {
+          await pdfWithRenderSlot(async function () {
+            var page = await pdfDoc.getPage(pageNum);
+            try {
+              var viewport = page.getViewport({ scale: scale });
+              var url = await renderPdfPageCanvasToDataUrl(page, viewport, jpegQuality);
+              onPage(pageNum, url);
+            } finally {
+              page.cleanup();
+            }
+          });
+        } catch (err) {
+          onPage(pageNum, null, err);
+        } finally {
+          inFlightEst -= PDF_THUMB_MEMORY_ESTIMATE;
+          done++;
+          onProgress(done, total);
+        }
+      }
+    }
+
+    var workers = [];
+    for (var i = 0; i < pdfPhysicalCpuCount(); i++) workers.push(worker());
+    await Promise.all(workers);
+    return { cancelled: cancelled, done: done };
+  }
+
+  async function renderPdfThumbsParallel(pdfDoc, pageNums, loadGen, onProgress, onThumbReady) {
+    return renderPdfPagesInParallel(
+      pdfDoc,
+      pageNums,
+      PDF_THUMB_SCALE,
+      PDF_THUMB_JPEG_QUALITY,
+      {
+        loadGen: loadGen,
+        onProgress: onProgress,
+        onPage: function (pageNum, url) {
+          var thumbUrl = url || makeFallbackThumb(pageNum);
+          pagePickerState.thumbUrls[pageNum] = thumbUrl;
+          if (onThumbReady) onThumbReady(pageNum, thumbUrl);
+        },
+      }
+    );
+  }
+
+  function setPagePickerRenderProgress(done, total) {
+    pagePickerProgressBar.max = total || 1;
+    pagePickerProgressBar.value = done;
+    pagePickerProgressStats.textContent = done + " / " + total;
+  }
+
+  function buildPagePickerGrid(thumbs) {
+    pagePickerGrid.innerHTML = "";
+    for (var i = 0; i < thumbs.length; i++) {
+      var item = thumbs[i];
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "page-picker-thumb";
+      btn.dataset.page = String(item.pageNum);
+      btn.title = "Pagina " + item.pageNum;
+      var img = document.createElement("img");
+      img.alt = "Pagina " + item.pageNum;
+      img.src = item.thumbUrl;
+      var numEl = document.createElement("span");
+      numEl.className = "page-picker-thumb-num";
+      numEl.textContent = String(item.pageNum);
+      var tocMark = document.createElement("span");
+      tocMark.className = "page-picker-thumb-mark page-picker-thumb-mark-toc hidden";
+      tocMark.innerHTML = "<span>toc</span>";
+      var indexMark = document.createElement("span");
+      indexMark.className = "page-picker-thumb-mark page-picker-thumb-mark-index hidden";
+      indexMark.innerHTML = "<span>index</span>";
+      var reicatMark = document.createElement("span");
+      reicatMark.className = "page-picker-thumb-mark page-picker-thumb-mark-reicat hidden";
+      reicatMark.innerHTML = "<span>reicat</span>";
+      btn.appendChild(img);
+      btn.appendChild(numEl);
+      btn.appendChild(tocMark);
+      btn.appendChild(indexMark);
+      btn.appendChild(reicatMark);
+      btn.addEventListener("click", function () {
+        toggleViewerThumb(parseInt(this.dataset.page, 10));
+      });
+      pagePickerGrid.appendChild(btn);
+    }
+    refreshViewerThumbUi();
+  }
+
+  function isDetailPageStillRelevant(pageNum) {
+    if (viewerMode === "toc") return tocPagePickerState.lastSelected === pageNum;
+    if (viewerMode === "index") return indexPagePickerState.lastSelected === pageNum;
+    if (viewerMode === "reicat") return reicatPagePickerState.lastSelected === pageNum;
+    return pagePickerState.lastSelected === pageNum;
+  }
+
+  async function renderPagePickerDetail(pageNum) {
+    if (!pageNum || !pagePickerState.pdfDoc || pageNum < 1 || pageNum > pagePickerState.numPages) {
+      pagePickerDetailNum.textContent = "—";
+      pagePickerDetailImg.classList.add("hidden");
+      pagePickerDetailEmpty.textContent = "Seleziona una pagina nella griglia o modifica il campo sopra.";
+      pagePickerDetailEmpty.classList.remove("hidden");
+      pagePickerDetailImg.removeAttribute("src");
+      return;
+    }
+    pagePickerDetailNum.textContent = String(pageNum);
+    pagePickerDetailEmpty.classList.add("hidden");
+    pagePickerDetailImg.classList.remove("hidden");
+    if (pagePickerState.detailCache[pageNum]) {
+      pagePickerDetailImg.src = pagePickerState.detailCache[pageNum];
+      return;
+    }
+    pagePickerDetailImg.removeAttribute("src");
+    try {
+      var url = await renderPdfPageToDataUrl(
+        pagePickerState.pdfDoc, pageNum, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
+      );
+      pagePickerState.detailCache[pageNum] = url;
+      if (isDetailPageStillRelevant(pageNum)) pagePickerDetailImg.src = url;
+    } catch (_) {
+      pagePickerDetailEmpty.textContent = "Anteprima non disponibile per la pagina " + pageNum + ".";
+      pagePickerDetailEmpty.classList.remove("hidden");
+      pagePickerDetailImg.classList.add("hidden");
+    }
+  }
+
+  function toggleViewerThumb(pageNum) {
+    if (viewerMode === "toc") toggleTocPagePickerSelection(pageNum);
+    else if (viewerMode === "index") toggleIndexPagePickerSelection(pageNum);
+    else if (viewerMode === "reicat") toggleReicatPagePickerSelection(pageNum);
+    else togglePagePickerSelection(pageNum);
+  }
+
+  function togglePagePickerSelection(pageNum) {
+    if (pageNum < 1 || pageNum > pagePickerState.numPages) return;
+    if (pagePickerState.selected[pageNum]) {
+      delete pagePickerState.selected[pageNum];
+    } else {
+      pagePickerState.selected[pageNum] = true;
+      if (tocPagePickerState.selected[pageNum]) {
+        delete tocPagePickerState.selected[pageNum];
+        syncTocPagePickerFieldFromSelection();
+      }
+      if (indexPagePickerState.selected[pageNum]) {
+        delete indexPagePickerState.selected[pageNum];
+        syncIndexPagePickerFieldFromSelection();
+      }
+      if (reicatPagePickerState.selected[pageNum]) {
+        delete reicatPagePickerState.selected[pageNum];
+        syncReicatPagePickerFieldFromSelection();
+      }
+    }
+    pagePickerState.lastSelected = pageNum;
+    refreshViewerThumbUi();
+    syncPagePickerFieldFromSelection();
+    renderPagePickerDetail(pageNum);
+  }
+
+  function resetPagePickerState() {
+    pagePickerState.loadGen += 1;
+    pagePickerState.pdfDoc = null;
+    pagePickerState.pdfFile = null;
+    pagePickerState.numPages = 0;
+    pagePickerState.selected = {};
+    pagePickerState.lastSelected = null;
+    pagePickerState.thumbUrls = {};
+    pagePickerState.detailCache = {};
+    pagePickerGrid.innerHTML = "";
+    pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
+    setPagePickerRenderProgress(0, 0);
+    renderPagePickerDetail(null);
+    updateViewerMeta();
+    resetAllViewerSelections();
+    setViewerMode("exclude");
+  }
+
+  function resetPagePicker() {
+    resetPagePickerState();
+    showPdfDropzone();
+    if (pdfFileInput) pdfFileInput.value = "";
+  }
+
+  async function loadPagePickerFromFile(file) {
+    if (!file || !file.size) return;
+    resetPagePickerState();
+    pagePickerState.pdfFile = file;
+    showPdfWorkspace(file);
+    var loadGen = pagePickerState.loadGen;
+    pagePickerGridWrap.classList.add("is-rendering");
+    pdfViewerMeta.textContent = "Caricamento PDF…";
+    try {
+      var mod = await pdfJs();
+      var buf = await file.arrayBuffer();
+      var pdfDoc = await mod.getDocument({ data: buf }).promise;
+      if (loadGen !== pagePickerState.loadGen) return;
+      pagePickerState.pdfDoc = pdfDoc;
+      pagePickerState.numPages = pdfDoc.numPages;
+      syncPagePickerSelectionFromField();
+      var allPageNums = [];
+      for (var pn = 1; pn <= pdfDoc.numPages; pn++) allPageNums.push(pn);
+      var initialThumbs = [];
+      for (var initPn = 1; initPn <= pdfDoc.numPages; initPn++) {
+        initialThumbs.push({ pageNum: initPn, thumbUrl: makeFallbackThumb(initPn) });
+      }
+      buildPagePickerGrid(initialThumbs);
+      pagePickerGridWrap.classList.remove("is-rendering");
+      pagePickerGridWrap.classList.add("is-rendering-progress");
+      setPagePickerRenderProgress(0, allPageNums.length);
+      var batchRender = await renderPdfThumbsParallel(
+        pdfDoc,
+        allPageNums,
+        loadGen,
+        setPagePickerRenderProgress,
+        function (pageNum, thumbUrl) {
+          var btn = pagePickerGrid.querySelector('.page-picker-thumb[data-page="' + pageNum + '"]');
+          if (btn) {
+            var img = btn.querySelector("img");
+            if (img) img.src = thumbUrl;
+          }
+        }
+      );
+      pagePickerGridWrap.classList.remove("is-rendering-progress");
+      if (loadGen !== pagePickerState.loadGen || batchRender.cancelled) return;
+      refreshViewerThumbUi();
+      if (viewerLastSelected(viewerMode)) renderPagePickerDetail(viewerLastSelected(viewerMode));
+      refreshFilteredRangePickers();
+    } catch (err) {
+      if (loadGen !== pagePickerState.loadGen) return;
+      pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
+      pdfViewerMeta.textContent = "Anteprima non disponibile: " + String(err && err.message ? err.message : err);
+    }
+  }
+
+  function assignPdfFile(file) {
+    if (!file || file.type !== "application/pdf") return false;
+    var dt = new DataTransfer();
+    dt.items.add(file);
+    pdfFileInput.files = dt.files;
+    loadPagePickerFromFile(file);
+    return true;
+  }
+
+  pdfDropzone.addEventListener("dragover", function (event) {
+    event.preventDefault();
+    pdfDropzone.classList.add("is-dragover");
+  });
+  pdfDropzone.addEventListener("dragleave", function () {
+    pdfDropzone.classList.remove("is-dragover");
+  });
+  pdfDropzone.addEventListener("drop", function (event) {
+    event.preventDefault();
+    pdfDropzone.classList.remove("is-dragover");
+    var file = event.dataTransfer.files && event.dataTransfer.files[0];
+    assignPdfFile(file);
+  });
+  pdfFileInput.addEventListener("change", function (event) {
+    var file = event.target.files && event.target.files.length ? event.target.files[0] : null;
+    if (file) loadPagePickerFromFile(file);
+  });
+  pdfChangeBtn.addEventListener("click", function () {
+    resetPagePicker();
+  });
+
+  pagesToRemoveInput.addEventListener("input", syncPagePickerSelectionFromField);
+  pagesToRemoveInput.addEventListener("change", syncPagePickerSelectionFromField);
+  tocRangeInput.addEventListener("input", syncTocPagePickerSelectionFromField);
+  tocRangeInput.addEventListener("change", syncTocPagePickerSelectionFromField);
+  indexRangeInput.addEventListener("input", syncIndexPagePickerSelectionFromField);
+  indexRangeInput.addEventListener("change", syncIndexPagePickerSelectionFromField);
+  reicatPagesInput.addEventListener("input", syncReicatPagePickerSelectionFromField);
+  reicatPagesInput.addEventListener("change", syncReicatPagePickerSelectionFromField);
+
+  function contiguousBounds(sortedUnique) {
+    if (sortedUnique.length === 0) throw new Error("valore obbligatorio");
+    var lo = sortedUnique[0];
+    var hi = sortedUnique[sortedUnique.length - 1];
+    if (hi - lo + 1 !== sortedUnique.length) throw new Error("deve essere un solo intervallo contiguo di pagine");
+    return { start: lo, end: hi };
+  }
+
+  function overlapsRange(removedSorted, rs, re) {
+    var j = 0;
+    for (var p = rs; p <= re; p++) {
+      while (j < removedSorted.length && removedSorted[j] < p) j++;
+      if (j < removedSorted.length && removedSorted[j] === p) return true;
+    }
+    return false;
+  }
+
+  function assertPagesWithin(total, sortedList, ctx) {
+    for (var i = 0; i < sortedList.length; i++) {
+      var p = sortedList[i];
+      if (p > total)
+        throw new Error(ctx + ": pagina " + p + " oltre la fine del PDF (" + total + ").");
+    }
+  }
+
+  function validateClientPdfPages(refs) {
+    var removedExpanded = refs.removedExpanded;
+    var toc = contiguousBounds(parsePagesSpec(refs.tocRaw));
+    var idx = contiguousBounds(parsePagesSpec(refs.indexRaw));
+    assertPagesWithin(refs.numPages, removedExpanded, "Pagine da escludere");
+    assertPagesWithin(refs.numPages, [toc.start, toc.end], "Table of Content");
+    assertPagesWithin(refs.numPages, [idx.start, idx.end], "Indice analitico");
+    if (overlapsRange(removedExpanded, toc.start, toc.end))
+      throw new Error("le pagine da escludere non possono ricadere nell'intervallo del Table of Content");
+    if (overlapsRange(removedExpanded, idx.start, idx.end))
+      throw new Error("le pagine da escludere non possono ricadere nell'indice analitico");
+    return null;
+  }
+
+  var form = document.getElementById("ingest-form");
+  var out = document.getElementById("out");
+  var btn = document.getElementById("submit-btn");
+
+  function setReicatSuggestStatus(text) {
+    if (reicatSuggestStatus) reicatSuggestStatus.textContent = text || "";
+  }
+
+  function applyReicatSuggestion(reicat) {
+    if (!reicat || typeof reicat !== "object") return;
+    function setField(name, value) {
+      var el = form.elements[name];
+      if (!el) return;
+      el.value = value == null ? "" : String(value);
+    }
+    function setListField(name, value) {
+      if (Array.isArray(value)) setField(name, value.join(", "));
+      else setField(name, value == null ? "" : String(value));
+    }
+    setField("titolo", reicat.titolo);
+    setField("sottotitolo", reicat.sottotitolo);
+    setField("complementi_del_titolo", reicat.complementi_del_titolo);
+    setListField("autore", reicat.autore);
+    setListField("curatore", reicat.curatore);
+    setListField("traduttore", reicat.traduttore);
+    setField("numero_edizione", reicat.numero_edizione);
+    if (reicat.anno_di_pubblicazione != null) setField("anno_di_pubblicazione", reicat.anno_di_pubblicazione);
+    else setField("anno_di_pubblicazione", "");
+    setField("tipo_di_pubblicazione", reicat.tipo_di_pubblicazione);
+    setField("luogo_di_pubblicazione", reicat.luogo_di_pubblicazione);
+    setField("editore", reicat.editore);
+    if (reicat.numero_pagine != null) setField("numero_pagine", reicat.numero_pagine);
+    else setField("numero_pagine", "");
+    setField("titolo_collana", reicat.titolo_collana);
+    setField("numero_nella_collana", reicat.numero_nella_collana);
+    setField("isbn", reicat.isbn);
+  }
+
+  if (reicatSuggestBtn) {
+    reicatSuggestBtn.addEventListener("click", async function () {
+      if (window.__librarainMock && window.__librarainMock.isEnabled()) {
+        setReicatSuggestStatus("Disabilitato in modalità mock.");
+        return;
+      }
+      var file = pagePickerState.pdfFile;
+      if (!file || !file.size) {
+        setReicatSuggestStatus("Carica prima un PDF.");
+        return;
+      }
+      var reicatPages = reicatSelectedPagesList();
+      if (!reicatPages.length) {
+        setReicatSuggestStatus("Seleziona almeno una pagina REICAT.");
+        return;
+      }
+      reicatSuggestBtn.disabled = true;
+      setReicatSuggestStatus("Analisi Vision in corso su " + reicatPages.length + " pagine…");
+      try {
+        var fd = new FormData();
+        fd.append("pdf_file", file, file.name || "upload.pdf");
+        fd.append("reicat_pages", pagesToSpec(reicatPages));
+        var headers = apiToken() ? { "X-API-Token": apiToken() } : {};
+        var res = await fetch("/api/ingest/reicat-suggest", { method: "POST", body: fd, headers: headers });
+        if (res.status === 401) {
+          var newToken = promptApiToken();
+          if (!newToken) throw new Error("Autenticazione richiesta.");
+          res = await fetch("/api/ingest/reicat-suggest", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
+        }
+        var data = await res.json().catch(function () { return {}; });
+        if (!res.ok || !data.ok) throw new Error(data.error || data.message || ("HTTP " + res.status));
+        applyReicatSuggestion(data.reicat);
+        setReicatSuggestStatus("Bozza compilata (" + reicatPages.length + " pagine). Verifica i campi.");
+      } catch (err) {
+        setReicatSuggestStatus(String(err && err.message ? err.message : err));
+      } finally {
+        reicatSuggestBtn.disabled = false;
+      }
+    });
+  }
+
+  var viewerResetBtn = document.getElementById("viewer-reset-btn");
+  if (viewerResetBtn) {
+    viewerResetBtn.addEventListener("click", function () {
+      resetAllViewerSelections();
+    });
+  }
+
+  var progressBox = document.getElementById("progress");
+  var progressAlertEl = document.getElementById("progress-alert");
+  var progressBarGlobal = document.getElementById("progress-bar-global");
+  var globalTimeEl = document.getElementById("global-time");
+  var globalStatsEl = document.getElementById("global-stats");
+  var phaseRowsEl = document.getElementById("phase-rows");
+  var ingestPagesPanel = document.getElementById("ingest-pages-panel");
+  var ingestProcessedSection = document.getElementById("ingest-processed-section");
+  var ingestPendingSection = document.getElementById("ingest-pending-section");
+  var ingestProcessedStats = document.getElementById("ingest-processed-stats");
+  var ingestReviewAllBtn = document.getElementById("ingest-review-all-btn");
+  var ingestPendingStats = document.getElementById("ingest-pending-stats");
+  var ingestPendingTableWrap = document.getElementById("ingest-pending-table-wrap");
+  var repairProgressPanel = document.getElementById("repair-progress-panel");
+  var repairProgressPhase = document.getElementById("repair-progress-phase");
+  var repairProgressDetail = document.getElementById("repair-progress-detail");
+  var repairProgressFill = document.getElementById("repair-progress-fill");
+  var ingestDebugPanel = document.getElementById("ingest-debug-panel");
+  var ingestDebugDetails = document.getElementById("ingest-debug-details");
+  var ingestDebugLogEl = document.getElementById("ingest-debug-log");
+
+  function openLabPanel() {
+    if (ingestDebugDetails) ingestDebugDetails.open = true;
+  }
+
+  function labLog(message, options) {
+    if (window.LibrarAInLog) window.LibrarAInLog.info(message, { sink: "lab" });
+    var line = new Date().toLocaleTimeString("it-IT") + " — " + message;
+    if (ingestDebugLogEl) {
+      ingestDebugLogEl.classList.remove("has-error");
+      ingestDebugLogEl.textContent = (ingestDebugLogEl.textContent ? ingestDebugLogEl.textContent + "\n" : "") + line;
+      ingestDebugLogEl.scrollTop = ingestDebugLogEl.scrollHeight;
+    }
+    if (!options || options.open !== false) openLabPanel();
+  }
+
+  function labLogError(message) {
+    if (window.LibrarAInLog) window.LibrarAInLog.error(message, { sink: "lab" });
+    var line = new Date().toLocaleTimeString("it-IT") + " — " + message;
+    if (ingestDebugLogEl) {
+      ingestDebugLogEl.classList.add("has-error");
+      ingestDebugLogEl.textContent = (ingestDebugLogEl.textContent ? ingestDebugLogEl.textContent + "\n" : "") + line;
+      ingestDebugLogEl.scrollTop = ingestDebugLogEl.scrollHeight;
+    }
+    openLabPanel();
+  }
+
+  var ingestDebugLabActions = document.getElementById("ingest-debug-lab-actions");
+  if (ingestDebugLabActions) {
+    ingestDebugLabActions.addEventListener("click", function (event) {
+      var btn = event.target.closest("button[data-scenario]");
+      if (!btn || window.__librarainMock) return;
+      labLogError("Lab non pronto — riavvia il server (make run-server) e ricarica la pagina.");
+    });
+  }
+
+  var ingestPagesState = {
+    sourceSha256: "",
+    jobId: "",
+    expectedPages: [],
+    processedPages: [],
+    failedPages: {},
+    auditBook: null,
+    jobComplete: false,
+    uiPhase: "idle",
+  };
+  var ingestAuditTimer = null;
+
+  var STAGE_LABELS = {
+    stage1OCR: "Stage1 OCR",
+    stage2Vision: "Stage2 Vision",
+    stage3Editor: "Stage3 Editor",
+    output: "Output",
+  };
+
+  var REPAIR_PHASE_LABELS = {
+    page_repair: "Preparazione",
+    gaps_repair: "Riparazione lacune",
+    stage1_glm_ocr: "GLM OCR",
+    stage1_ocr: "GLM OCR",
+    stage2_vision: "GLM OCR",
+    stage3_editor: "Stage 3 — Editor",
+    queue: "In coda",
+    pipeline: "Pipeline",
+  };
+  var INGEST_REPAIR_PIPELINE_MODE = "glm_ocr";
+  var REPAIR_STAGE_PHASES = ["stage1_glm_ocr", "stage3_editor"];
+  var activeRowRepairUI = null;
+  var activeBulkRepairUI = null;
+
+  var FAILED_PHASE_TO_MISSING = {
+    stage1_glm_ocr: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
+    stage1_ocr: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
+    stage2_vision: ["stage2Vision", "stage3Editor", "output"],
+    stage3_editor: ["stage3Editor", "output"],
+    render: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
+    pipeline: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
+  };
+
+  function resetIngestPagesState() {
+    if (ingestAuditTimer) {
+      clearTimeout(ingestAuditTimer);
+      ingestAuditTimer = null;
+    }
+    ingestPagesState = {
+      sourceSha256: "",
+      expectedPages: [],
+      processedPages: [],
+      failedPages: {},
+      auditBook: null,
+      jobComplete: false,
+      uiPhase: "idle",
+    };
+    ingestPagesPanel.classList.remove("show");
+    renderIngestPagesSections();
+  }
+
+  function sortedUniquePages(list) {
+    var set = {};
+    for (var i = 0; i < list.length; i++) set[list[i]] = true;
+    return Object.keys(set).map(function (k) { return parseInt(k, 10); }).sort(function (a, b) { return a - b; });
+  }
+
+  function addProcessedPage(aligned) {
+    if (!aligned || aligned < 1) return;
+    if (ingestPagesState.processedPages.indexOf(aligned) >= 0) return;
+    ingestPagesState.processedPages.push(aligned);
+    ingestPagesState.processedPages.sort(function (a, b) { return a - b; });
+    delete ingestPagesState.failedPages[aligned];
+  }
+
+  function noteFailedPage(phase, aligned) {
+    if (!aligned || aligned < 1) return;
+    ingestPagesState.failedPages[aligned] = phase || "pipeline";
+  }
+
+  function finishIngestUi() {
+    ingestPagesState.uiPhase = "finished";
+    ingestPagesState.jobComplete = true;
+    if (globalTotal > 0) globalStep = globalTotal;
+    renderAllProgress();
+    scheduleIngestAuditRefresh();
+    renderIngestPagesSections();
+    if (window.parent !== window) {
+      try {
+        window.parent.postMessage(
+          {
+            type: "librarain-ingest-done",
+            job_id: ingestPagesState.jobId || "",
+            source_sha256: ingestPagesState.sourceSha256 || "",
+          },
+          "*"
+        );
+      } catch (_) {}
+    }
+  }
+
+  function applyMockAuditPagesState() {
+    var book = ingestPagesState.auditBook;
+    if (!book) return;
+    if (Array.isArray(book.viewer_pages) && book.viewer_pages.length) {
+      ingestPagesState.expectedPages = sortedUniquePages(book.viewer_pages);
+    }
+    var stage3Missing = {};
+    var stage3 = book.stages && book.stages.stage3Editor;
+    if (stage3 && Array.isArray(stage3.missing)) {
+      stage3.missing.forEach(function (p) { stage3Missing[p] = true; });
+    }
+    ingestPagesState.processedPages = sortedUniquePages(
+      ingestPagesState.expectedPages.filter(function (p) { return !stage3Missing[p]; })
+    );
+    ingestPagesState.failedPages = {};
+    renderIngestPagesSections();
+  }
+
+  function markIngestJobComplete() {
+    finishIngestUi();
+  }
+
+  function scheduleIngestAuditRefresh() {
+    if (!ingestPagesState.sourceSha256) return;
+    if (ingestAuditTimer) clearTimeout(ingestAuditTimer);
+    ingestAuditTimer = setTimeout(function () {
+      ingestAuditTimer = null;
+      refreshIngestAudit().catch(function (err) {
+        if (window.LibrarAInLog) window.LibrarAInLog.reportError("refresh ingest audit failed", err);
+      });
+    }, 800);
+  }
+
+  async function apiFetch(url, options) {
+    if (window.__librarainMock && window.__librarainMock.isEnabled()) {
+      return window.__librarainMock.apiFetch(url, options);
+    }
+    var opts = options || {};
+    opts.headers = Object.assign({}, opts.headers || {});
+    var token = apiToken();
+    if (token) opts.headers["X-API-Token"] = token;
+    var res = await fetch(url, opts);
+    if (res.status === 401) {
+      var entered = promptApiToken();
+      if (entered) {
+        opts.headers["X-API-Token"] = entered;
+        res = await fetch(url, opts);
+      }
+    }
+    if (!res.ok && window.LibrarAInLog) {
+      window.LibrarAInLog.logHttpFailure(String(url), res.status);
+    }
+    return res;
+  }
+
+  async function refreshIngestAudit() {
+    if (!ingestPagesState.sourceSha256) return;
+    var params = new URLSearchParams({ source_sha256: ingestPagesState.sourceSha256 });
+    var res = await apiFetch("/api/admin/book-pages-audit?" + params.toString());
+    var data = await res.json();
+    if (!res.ok || !data.ok) return;
+    ingestPagesState.auditBook = (data.books && data.books.length) ? data.books[0] : null;
+    renderIngestPagesSections();
+  }
+
+  function buildPendingEntries() {
+    var byPage = {};
+    var expected = ingestPagesState.expectedPages.slice();
+    var processedSet = {};
+    for (var i = 0; i < ingestPagesState.processedPages.length; i++) {
+      processedSet[ingestPagesState.processedPages[i]] = true;
+    }
+    for (i = 0; i < expected.length; i++) {
+      var aligned = expected[i];
+      if (processedSet[aligned]) continue;
+      byPage[aligned] = {
+        aligned: aligned,
+        kind: ingestPagesState.failedPages[aligned] ? "failed" : "waiting",
+        missing_in: [],
+        failedPhase: ingestPagesState.failedPages[aligned] || "",
+        pendingReview: false,
+      };
+    }
+    var book = ingestPagesState.auditBook;
+    if (book) {
+      for (i = 0; i < (book.missing_pages || []).length; i++) {
+        var entry = book.missing_pages[i];
+        if (byPage[entry.aligned]) {
+          byPage[entry.aligned].kind = "gap";
+          byPage[entry.aligned].missing_in = entry.missing_in || [];
+        } else {
+          byPage[entry.aligned] = {
+            aligned: entry.aligned,
+            kind: "gap",
+            missing_in: entry.missing_in || [],
+            failedPhase: "",
+            pendingReview: false,
+          };
+        }
+      }
+      for (i = 0; i < (book.pending_review_pages || []).length; i++) {
+        aligned = book.pending_review_pages[i];
+        if (byPage[aligned]) {
+          byPage[aligned].pendingReview = true;
+          if (byPage[aligned].kind === "waiting") byPage[aligned].kind = "review";
+        } else {
+          byPage[aligned] = {
+            aligned: aligned,
+            kind: "review",
+            missing_in: [],
+            failedPhase: "",
+            pendingReview: true,
+          };
+        }
+      }
+    }
+    return Object.keys(byPage).map(function (k) { return byPage[k]; }).sort(function (a, b) { return a.aligned - b.aligned; });
+  }
+
+  function repairMissingInForRow(row) {
+    if (row.missing_in && row.missing_in.length) return row.missing_in.slice();
+    if (row.kind === "failed" && row.failedPhase) {
+      return (FAILED_PHASE_TO_MISSING[row.failedPhase] || ["stage1OCR", "stage2Vision", "stage3Editor", "output"]).slice();
+    }
+    return [];
+  }
+
+  function repairablePendingEntries(pending) {
+    return pending.filter(function (row) { return repairMissingInForRow(row).length > 0; });
+  }
+
+  function formatRepairPhaseLabel(ev, includePage) {
+    var phase = ev.phase || "";
+    var status = ev.status || "";
+    var label = REPAIR_PHASE_LABELS[phase] || phase || "In corso";
+    if (status === "page_skipped") label += " (riuso cache)";
+    else if (status === "started") label += "…";
+    else if (status === "completed" || status === "done") label += " ✓";
+    if (includePage && ev.aligned_page) label = "Pagina " + ev.aligned_page + " — " + label;
+    return label;
+  }
+
+  function repairProgressPercent(ev) {
+    if (typeof ev.global_step === "number" && typeof ev.global_total === "number" && ev.global_total > 0) {
+      return Math.round((ev.global_step / ev.global_total) * 100);
+    }
+    return null;
+  }
+
+  function clearActiveRowRepairUI() {
+    if (!activeRowRepairUI) return;
+    activeRowRepairUI.reset();
+    activeRowRepairUI = null;
+  }
+
+  function clearActiveBulkRepairUI() {
+    if (!activeBulkRepairUI) return;
+    activeBulkRepairUI.reset();
+    activeBulkRepairUI = null;
+  }
+
+  function showRepairProgress(sourceSha256, alignedPage) {
+    repairProgressPanel.classList.remove("hidden", "is-error");
+    repairProgressPhase.textContent = "Pagina " + alignedPage + " — avvio…";
+    repairProgressDetail.textContent = sourceSha256.slice(0, 16) + "…";
+    repairProgressFill.style.width = "0%";
+  }
+
+  function formatRepairErrorMessage(err) {
+    var text = String((err && err.message) || err || "Riparazione fallita");
+    if (text.charAt(0) === "{") {
+      try {
+        var parsed = JSON.parse(text);
+        if (parsed.message) return parsed.message;
+      } catch (e) {}
+    }
+    return text;
+  }
+
+  function showRepairProgressError(message) {
+    repairProgressPanel.classList.remove("hidden");
+    repairProgressPanel.classList.add("is-error");
+    repairProgressPhase.textContent = "Riparazione non riuscita";
+    repairProgressDetail.textContent = message;
+    repairProgressFill.style.width = "0%";
+  }
+
+  function hideRepairProgress() {
+    repairProgressPanel.classList.add("hidden");
+    repairProgressPanel.classList.remove("is-error");
+  }
+
+  function updateRepairProgress(ev) {
+    if (activeBulkRepairUI) {
+      activeBulkRepairUI.update(ev);
+      return;
+    }
+    repairProgressPhase.textContent = formatRepairPhaseLabel(ev, true);
+    var bits = [];
+    if (ev.message) bits.push(ev.message);
+    if (ev.entry_stage) bits.push("entry: " + ev.entry_stage);
+    var percent = repairProgressPercent(ev);
+    if (percent !== null && typeof ev.global_step === "number" && typeof ev.global_total === "number") {
+      bits.push(ev.global_step + " / " + ev.global_total);
+      repairProgressFill.style.width = percent + "%";
+    }
+    repairProgressDetail.textContent = bits.join(" · ");
+    if (activeRowRepairUI) activeRowRepairUI.update(ev);
+    if (activeBulkRepairUI) activeBulkRepairUI.update(ev);
+  }
+
+  function watchRepairJobViaSSE(eventsUrl) {
+    if (window.__librarainMock && window.__librarainMock.isEnabled() && String(eventsUrl || "").indexOf("mock://") === 0) {
+      return window.__librarainMock.watchRepairSse(eventsUrl, updateRepairProgress);
+    }
+    return new Promise(function (resolve, reject) {
+      var es = new EventSource(withToken(eventsUrl));
+      var settled = false;
+      function finish(fn, value) {
+        if (settled) return;
+        settled = true;
+        es.close();
+        fn(value);
+      }
+      function handleMessage(event) {
+        var data;
+        try {
+          data = JSON.parse(event.data);
+        } catch (e) {
+          return;
+        }
+        updateRepairProgress(data);
+        if (data.status === "done") finish(resolve, data);
+        if (data.status === "error") {
+          var err = new Error(data.message || "Riparazione fallita");
+          err.code = data.code || "";
+          finish(reject, err);
+        }
+      }
+      [
+        "started", "progress", "page_progress", "page_skipped",
+        "completed", "failed", "pipeline_total", "page_repair",
+      ].forEach(function (name) {
+        es.addEventListener(name, handleMessage);
+      });
+      es.addEventListener("done", handleMessage);
+      es.addEventListener("error", handleMessage);
+      es.onerror = function () { finish(reject, new Error("Connessione SSE interrotta")); };
+    });
+  }
+
+  async function submitRepairIngestPage(sourceSha256, alignedPage, missingIn) {
+    showRepairProgress(sourceSha256, alignedPage);
+    showProgressAlert("Riparazione pagina " + alignedPage + " avviata…");
+    var res = await apiFetch("/api/admin/book-pages/repair", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_sha256: sourceSha256,
+        aligned_page: alignedPage,
+        missing_in: missingIn,
+        pipeline_mode: INGEST_REPAIR_PIPELINE_MODE,
+      }),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.ok) {
+      hideRepairProgress();
+      throw new Error(data.error || "Avvio riparazione fallito");
+    }
+    if (data.events_url) {
+      await watchRepairJobViaSSE(data.events_url);
+    } else if (data.job_id) {
+      await watchRepairJobViaSSE("/api/ingest/" + encodeURIComponent(data.job_id) + "/events");
+    }
+    hideRepairProgress();
+    clearActiveRowRepairUI();
+    clearActiveBulkRepairUI();
+    showProgressAlert("Riparazione pagina " + alignedPage + " completata. Apri Review per confermare il testo.");
+    await refreshIngestAudit();
+    applyMockAuditPagesState();
+  }
+
+  async function submitRepairAllIngestPages(sourceSha256, gapEntries) {
+    showProgressAlert("Riparazione di " + gapEntries.length + " pagine avviata…");
+    var res = await apiFetch("/api/admin/book-pages/repair-all", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_sha256: sourceSha256,
+        pipeline_mode: INGEST_REPAIR_PIPELINE_MODE,
+        gap_pages: gapEntries.map(function (entry) {
+          return {
+            aligned: entry.aligned,
+            missing_in: repairMissingInForRow(entry),
+          };
+        }),
+      }),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.ok) {
+      throw new Error(data.error || "Avvio riparazione fallito");
+    }
+    if (data.events_url) {
+      await watchRepairJobViaSSE(data.events_url);
+    } else if (data.job_id) {
+      await watchRepairJobViaSSE("/api/ingest/" + encodeURIComponent(data.job_id) + "/events");
+    }
+    clearActiveBulkRepairUI();
+    showProgressAlert(
+      "Riparazione completata per " + gapEntries.length + " pagine. Apri Review per confermare i testi."
+    );
+    await refreshIngestAudit();
+    applyMockAuditPagesState();
+  }
+
+  function createRepairAction(sourceSha256, alignedPage, missingIn) {
+    var stack = document.createElement("div");
+    stack.className = "audit-repair-stack";
+    var statusRow = document.createElement("div");
+    statusRow.className = "audit-repair-status-row";
+    var statusLabel = document.createElement("span");
+    statusLabel.className = "audit-repair-status-label";
+    statusLabel.textContent = "Avvio…";
+    var barWrap = document.createElement("div");
+    barWrap.className = "audit-repair-inline-bar";
+    var barFill = document.createElement("div");
+    barFill.className = "audit-repair-inline-fill";
+    barWrap.appendChild(barFill);
+    statusRow.append(statusLabel, barWrap);
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "audit-repair-btn";
+    btn.textContent = "GLM OCR";
+    function rowEl() { return stack.closest("tr"); }
+    function setRunning(active) {
+      stack.classList.toggle("is-active", active);
+      btn.classList.toggle("is-running", active);
+      var row = rowEl();
+      if (row) row.classList.toggle("audit-row-repairing", active);
+    }
+    function updateRow(ev) {
+      statusLabel.textContent = formatRepairPhaseLabel(ev, false);
+      var percent = repairProgressPercent(ev);
+      if (percent !== null) barFill.style.width = percent + "%";
+      var short = formatRepairPhaseLabel(ev, false).replace(" (riuso cache)", "");
+      btn.textContent = short.length > 18 ? "In corso…" : short;
+    }
+    function showRowError(message) {
+      setRunning(true);
+      statusLabel.textContent = message;
+      statusLabel.classList.add("is-error");
+      barFill.style.width = "0%";
+      btn.disabled = false;
+      btn.textContent = "Riprova";
+    }
+    function resetRow() {
+      setRunning(false);
+      statusLabel.textContent = "";
+      statusLabel.classList.remove("is-error");
+      barFill.style.width = "0%";
+      btn.disabled = false;
+      btn.textContent = "GLM OCR";
+    }
+    btn.addEventListener("click", function () {
+      statusLabel.classList.remove("is-error");
+      btn.disabled = true;
+      btn.textContent = "Avvio…";
+      setRunning(true);
+      statusLabel.textContent = "Avvio…";
+      barFill.style.width = "0%";
+      activeRowRepairUI = { update: updateRow, reset: resetRow, showError: showRowError };
+      submitRepairIngestPage(sourceSha256, alignedPage, missingIn).catch(function (err) {
+        var msg = formatRepairErrorMessage(err);
+        showRepairProgressError(msg);
+        if (activeRowRepairUI) activeRowRepairUI.showError(msg);
+        showProgressAlert(msg);
+      });
+    });
+    stack.append(statusRow, btn);
+    return stack;
+  }
+
+  function createRepairAllAction(sourceSha256, gapEntries) {
+    var stack = document.createElement("div");
+    stack.className = "audit-repair-all-stack";
+    var status = document.createElement("div");
+    status.className = "audit-repair-all-status";
+    var stageLabel = document.createElement("span");
+    stageLabel.className = "audit-repair-all-stage-label";
+    var pagesBar = document.createElement("div");
+    pagesBar.className = "audit-repair-all-pages";
+    var overallBarWrap = document.createElement("div");
+    overallBarWrap.className = "audit-repair-all-overall-bar";
+    var overallFill = document.createElement("div");
+    overallFill.className = "audit-repair-all-overall-fill";
+    overallBarWrap.appendChild(overallFill);
+    status.append(stageLabel, pagesBar, overallBarWrap);
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "audit-repair-btn";
+    btn.textContent = "GLM OCR tutto";
+    var alignedPages = gapEntries.map(function (entry) { return entry.aligned; }).sort(function (a, b) { return a - b; });
+    var pageSegs = {};
+    for (var s = 0; s < alignedPages.length; s++) {
+      var aligned = alignedPages[s];
+      var seg = document.createElement("div");
+      seg.className = "audit-repair-all-page-seg";
+      seg.title = "Pagina " + aligned;
+      pagesBar.appendChild(seg);
+      pageSegs[aligned] = seg;
+    }
+    var currentPhase = "";
+    var overallTotal = alignedPages.length * REPAIR_STAGE_PHASES.length;
+    function resetPageSegs() {
+      Object.keys(pageSegs).forEach(function (key) {
+        pageSegs[key].className = "audit-repair-all-page-seg";
+      });
+    }
+    function updateOverall(ev) {
+      if (ev.status === "pipeline_total" && typeof ev.global_total === "number" && ev.global_total > 0) {
+        overallTotal = ev.global_total;
+      }
+      var percent = repairProgressPercent(ev);
+      if (percent !== null) {
+        overallFill.style.width = percent + "%";
+        return;
+      }
+      if (typeof ev.global_step === "number" && overallTotal > 0) {
+        overallFill.style.width = Math.round((ev.global_step / overallTotal) * 100) + "%";
+      }
+    }
+    function updateBulk(ev) {
+      updateOverall(ev);
+      var phase = ev.phase || "";
+      if (REPAIR_STAGE_PHASES.indexOf(phase) >= 0 && ev.status === "started" && phase !== currentPhase) {
+        currentPhase = phase;
+        resetPageSegs();
+      }
+      if (REPAIR_STAGE_PHASES.indexOf(phase) >= 0 || phase === "gaps_repair" || phase === "queue" || phase === "pipeline") {
+        stageLabel.textContent = formatRepairPhaseLabel(ev, false);
+      }
+      if (typeof ev.aligned_page === "number" && pageSegs[ev.aligned_page]) {
+        var seg = pageSegs[ev.aligned_page];
+        if (ev.status === "page_skipped") seg.className = "audit-repair-all-page-seg is-skipped";
+        else if (ev.status === "page_progress" || ev.status === "completed") seg.className = "audit-repair-all-page-seg is-done";
+        else if (ev.status === "started" || ev.status === "progress") seg.className = "audit-repair-all-page-seg is-active";
+      }
+    }
+    function setRunning(active) {
+      stack.classList.toggle("is-active", active);
+      btn.classList.toggle("is-running", active);
+    }
+    function showError(message) {
+      setRunning(true);
+      stageLabel.textContent = message;
+      stageLabel.classList.add("is-error");
+      overallFill.style.width = "0%";
+      btn.disabled = false;
+      btn.textContent = "Riprova";
+    }
+    function resetBulk() {
+      setRunning(false);
+      currentPhase = "";
+      stageLabel.textContent = "";
+      stageLabel.classList.remove("is-error");
+      overallFill.style.width = "0%";
+      resetPageSegs();
+      btn.disabled = false;
+      btn.textContent = "GLM OCR tutto";
+    }
+    btn.addEventListener("click", function () {
+      stageLabel.classList.remove("is-error");
+      btn.disabled = true;
+      btn.textContent = "Avvio…";
+      setRunning(true);
+      stageLabel.textContent = "Avvio…";
+      overallFill.style.width = "0%";
+      resetPageSegs();
+      activeBulkRepairUI = { update: updateBulk, reset: resetBulk, showError: showError };
+      submitRepairAllIngestPages(sourceSha256, gapEntries).catch(function (err) {
+        var msg = formatRepairErrorMessage(err);
+        if (activeBulkRepairUI) activeBulkRepairUI.showError(msg);
+        showProgressAlert(msg);
+      });
+    });
+    stack.append(status, btn);
+    return stack;
+  }
+
+  function createIconButton(label, title, onClick) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "audit-view-btn";
+    btn.textContent = label;
+    btn.title = title;
+    btn.addEventListener("click", function (event) {
+      event.preventDefault();
+      onClick();
+    });
+    return btn;
+  }
+
+  function createPagePreviewAction(sourceSha256, alignedPage, viewerPages) {
+    return createIconButton("▣", "Visualizza pagina", function () {
+      openPagePreview(sourceSha256, alignedPage, viewerPages);
+    });
+  }
+
+  function createPageReviewAction(sourceSha256, alignedPage, reviewPages) {
+    return createIconButton("⎘", "Review immagine + testo", function () {
+      openPageReview(sourceSha256, alignedPage, reviewPages.length ? reviewPages : [alignedPage]);
+    });
+  }
+
+  function renderIngestPagesSections() {
+    if (ingestPagesState.uiPhase !== "finished") {
+      ingestPagesPanel.classList.remove("show");
+      return;
+    }
+
+    var processed = ingestPagesState.processedPages.slice();
+    var pendingReview = pendingReviewPagesFromAudit();
+    var pending = buildPendingEntries();
+    var repairable = repairablePendingEntries(pending);
+    var hasPages = processed.length || pending.length || pendingReview.length || ingestPagesState.expectedPages.length;
+    ingestPagesPanel.classList.toggle("show", progressBox.classList.contains("show") && hasPages);
+
+    if (ingestProcessedSection) ingestProcessedSection.classList.toggle("is-hidden", pendingReview.length === 0);
+    if (ingestPendingSection) ingestPendingSection.classList.toggle("is-hidden", pending.length === 0);
+
+    ingestProcessedStats.textContent = pendingReview.length
+      ? pendingReview.length + " pagin" + (pendingReview.length === 1 ? "a" : "e") + " in attesa di review"
+      : "Nessuna pagina ancora.";
+    ingestReviewAllBtn.disabled = pendingReview.length === 0;
+
+    ingestPendingStats.textContent = pending.length
+      ? pending.length + " pagin" + (pending.length === 1 ? "a" : "e") + " da completare o riparare"
+      : (ingestPagesState.expectedPages.length ? "Tutte le pagine attese risultano elaborate." : "Nessuna pagina in attesa.");
+    ingestPendingTableWrap.innerHTML = "";
+    if (!pending.length) return;
+
+    var table = document.createElement("table");
+    table.className = "audit-pages-table";
+    var colgroup = document.createElement("colgroup");
+    ["audit-col-page", "audit-col-status", "audit-col-actions"].forEach(function (cls) {
+      var col = document.createElement("col");
+      col.className = cls;
+      colgroup.appendChild(col);
+    });
+    table.appendChild(colgroup);
+    var thead = document.createElement("thead");
+    var headTr = document.createElement("tr");
+    ["Pagina", "Stato", "Azioni"].forEach(function (text) {
+      var th = document.createElement("th");
+      th.textContent = text;
+      headTr.appendChild(th);
+    });
+    thead.appendChild(headTr);
+    table.appendChild(thead);
+    var tbody = document.createElement("tbody");
+    var viewerPages = (ingestPagesState.auditBook && ingestPagesState.auditBook.viewer_pages) || pending.map(function (e) { return e.aligned; });
+    var reviewPages = (ingestPagesState.auditBook && ingestPagesState.auditBook.pending_review_pages) || [];
+    var i;
+    for (i = 0; i < pending.length; i++) {
+      var row = pending[i];
+      var missingIn = repairMissingInForRow(row);
+      var tr = document.createElement("tr");
+      if (row.pendingReview) tr.classList.add("audit-row-pending-review");
+      var tdPage = document.createElement("td");
+      var controls = document.createElement("div");
+      controls.className = "audit-page-controls";
+      var pageNumEl = document.createElement("span");
+      pageNumEl.className = "audit-page-num";
+      pageNumEl.textContent = String(row.aligned);
+      controls.appendChild(pageNumEl);
+      if (ingestPagesState.sourceSha256) {
+        controls.appendChild(createPagePreviewAction(ingestPagesState.sourceSha256, row.aligned, viewerPages));
+      }
+      tdPage.appendChild(controls);
+      var tdStatus = document.createElement("td");
+      if (row.kind === "waiting") {
+        tdStatus.innerHTML = '<span class="audit-status-wait">In attesa</span>';
+      } else if (row.kind === "failed") {
+        tdStatus.innerHTML = '<span class="audit-status-failed">Errore (' + (row.failedPhase || "pipeline") + ")</span>";
+      } else if (row.missing_in.length) {
+        tdStatus.innerHTML = '<span class="audit-status-gap">Mancante in: ' + row.missing_in.map(function (s) { return STAGE_LABELS[s] || s; }).join(", ") + "</span>";
+      } else if (row.pendingReview) {
+        tdStatus.innerHTML = '<span class="audit-status-gap">In review</span>';
+      } else {
+        tdStatus.innerHTML = '<span class="audit-status-wait">Non elaborata</span>';
+      }
+      var tdActions = document.createElement("td");
+      var actionWrap = document.createElement("div");
+      actionWrap.className = "audit-repair-cell";
+      if (ingestPagesState.sourceSha256 && missingIn.length) {
+        actionWrap.appendChild(createRepairAction(ingestPagesState.sourceSha256, row.aligned, missingIn));
+      }
+      if (ingestPagesState.sourceSha256 && (row.pendingReview || row.kind === "review")) {
+        actionWrap.appendChild(createPageReviewAction(ingestPagesState.sourceSha256, row.aligned, reviewPages));
+      }
+      tdActions.appendChild(actionWrap);
+      tr.append(tdPage, tdStatus, tdActions);
+      tbody.appendChild(tr);
+    }
+    if (repairable.length > 1 && ingestPagesState.sourceSha256) {
+      var footTr = document.createElement("tr");
+      footTr.className = "audit-pages-footer-row";
+      var tdFootPage = document.createElement("td");
+      var tdFootStatus = document.createElement("td");
+      var tdFootActions = document.createElement("td");
+      tdFootActions.appendChild(createRepairAllAction(ingestPagesState.sourceSha256, repairable));
+      footTr.append(tdFootPage, tdFootStatus, tdFootActions);
+      tbody.appendChild(footTr);
+    }
+    table.appendChild(tbody);
+    ingestPendingTableWrap.appendChild(table);
+  }
+
+  var pagePreviewOverlay = document.getElementById("page-preview-overlay");
+  var pagePreviewTitle = document.getElementById("page-preview-title");
+  var pagePreviewImg = document.getElementById("page-preview-img");
+  var pagePreviewPrev = document.getElementById("page-preview-prev");
+  var pagePreviewNext = document.getElementById("page-preview-next");
+  var pagePreviewState = { sha: "", pages: [], index: 0 };
+
+  var pageReviewOverlay = document.getElementById("page-review-overlay");
+  var pageReviewTitle = document.getElementById("page-review-title");
+  var pageReviewMeta = document.getElementById("page-review-meta");
+  var pageReviewImg = document.getElementById("page-review-img");
+  var pageReviewImgFrame = document.getElementById("page-review-img-frame");
+  var pageReviewTextFrame = document.getElementById("page-review-text-frame");
+  var pageReviewText = document.getElementById("page-review-text");
+  var pageReviewConfirmPage = document.getElementById("page-review-confirm-page");
+  var pageReviewConfirmAll = document.getElementById("page-review-confirm-all");
+  var pageReviewReset = document.getElementById("page-review-reset");
+  var pageReviewConfirmedLabel = document.getElementById("page-review-confirmed-label");
+  var pageReviewPrev = document.getElementById("page-review-prev");
+  var pageReviewNext = document.getElementById("page-review-next");
+  var pageReviewState = { sha: "", pages: [], index: 0, baselineText: "", stage: "" };
+  var pageReviewLoadGen = 0;
+  var pageReviewDimCache = {};
+
+  function pagePreviewUrl(sourceSha256, alignedPage) {
+    if (window.__librarainMock && window.__librarainMock.isEnabled()) {
+      return window.__librarainMock.pageRenderUrl(alignedPage);
+    }
+    var params = new URLSearchParams({
+      source_sha256: sourceSha256,
+      aligned_page: String(alignedPage),
+    });
+    var token = apiToken();
+    if (token) params.set("token", token);
+    return "/api/admin/book-pages/render?" + params.toString();
+  }
+
+  function reviewDimCacheKey(sha, aligned) {
+    return sha + "|" + aligned;
+  }
+
+  function applyReviewFrameSizes(w, h) {
+    var ws = w + "px";
+    var hs = h + "px";
+    pageReviewImgFrame.style.width = ws;
+    pageReviewImgFrame.style.height = hs;
+    pageReviewTextFrame.style.width = ws;
+    pageReviewTextFrame.style.height = hs;
+  }
+
+  function computeReviewFrameSize(nw, nh) {
+    var panels = pageReviewOverlay.querySelector(".page-review-panels");
+    var maxH = Math.min(Math.max(280, window.innerHeight * 0.92 - 160), 860);
+    var panelsWidth = panels.clientWidth || Math.min(window.innerWidth * 0.92, 1480) - 120;
+    var maxW = Math.max(200, panelsWidth / 2 - 6);
+    var h = maxH;
+    var w = (h * nw) / nh;
+    if (w > maxW) {
+      w = maxW;
+      h = (w * nh) / nw;
+    }
+    return { w: Math.round(w), h: Math.round(h) };
+  }
+
+  function isPageReviewDirty() {
+    return pageReviewText.value !== pageReviewState.baselineText;
+  }
+
+  function updatePageReviewResetState() {
+    pageReviewReset.disabled = !isPageReviewDirty();
+  }
+
+  function setPageReviewToolbarConfirmed(confirmed) {
+    pageReviewConfirmPage.classList.toggle("hidden", confirmed);
+    pageReviewConfirmAll.classList.toggle("hidden", confirmed);
+    pageReviewReset.classList.toggle("hidden", confirmed);
+    pageReviewConfirmedLabel.classList.toggle("hidden", !confirmed);
+    pageReviewText.readOnly = confirmed;
+    if (confirmed) {
+      pageReviewConfirmPage.disabled = false;
+      pageReviewConfirmAll.disabled = false;
+      pageReviewReset.disabled = true;
+    }
+  }
+
+  function setPageReviewConfirmBusy(busy) {
+    pageReviewConfirmPage.disabled = busy;
+    pageReviewConfirmAll.disabled = busy;
+    if (busy) pageReviewReset.disabled = true;
+    else updatePageReviewResetState();
+  }
+
+  function syncPageReviewNav() {
+    var solo = pageReviewState.pages.length <= 1;
+    pageReviewPrev.classList.toggle("hidden", solo);
+    pageReviewNext.classList.toggle("hidden", solo);
+  }
+
+  function syncReviewFrameSizes(nw, nh) {
+    var naturalW = nw || pageReviewImg.naturalWidth;
+    var naturalH = nh || pageReviewImg.naturalHeight;
+    if (!naturalW || !naturalH) return;
+    var size = computeReviewFrameSize(naturalW, naturalH);
+    applyReviewFrameSizes(size.w, size.h);
+    var aligned = pageReviewState.pages[pageReviewState.index];
+    if (aligned != null) pageReviewDimCache[reviewDimCacheKey(pageReviewState.sha, aligned)] = size;
+  }
+
+  function refreshPagePreview() {
+    var aligned = pagePreviewState.pages[pagePreviewState.index];
+    pagePreviewTitle.textContent = "Pagina " + aligned;
+    pagePreviewImg.alt = "Pagina " + aligned;
+    pagePreviewPrev.disabled = pagePreviewState.index <= 0;
+    pagePreviewNext.disabled = pagePreviewState.index >= pagePreviewState.pages.length - 1;
+    pagePreviewImg.src = pagePreviewUrl(pagePreviewState.sha, aligned);
+  }
+
+  function openPagePreview(sourceSha256, alignedPage, viewerPages) {
+    var pages = Array.isArray(viewerPages) && viewerPages.length ? viewerPages.slice() : [alignedPage];
+    var index = pages.indexOf(alignedPage);
+    if (index < 0) {
+      pages.push(alignedPage);
+      pages.sort(function (a, b) { return a - b; });
+      index = pages.indexOf(alignedPage);
+    }
+    pagePreviewState = { sha: sourceSha256, pages: pages, index: index };
+    pagePreviewOverlay.classList.remove("hidden");
+    pagePreviewOverlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    refreshPagePreview();
+  }
+
+  function closePagePreview() {
+    pagePreviewOverlay.classList.add("hidden");
+    pagePreviewOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    pagePreviewImg.removeAttribute("src");
+  }
+
+  async function refreshPageReview() {
+    setPageReviewToolbarConfirmed(false);
+    var aligned = pageReviewState.pages[pageReviewState.index];
+    var loadGen = ++pageReviewLoadGen;
+    pageReviewText.readOnly = true;
+    setPageReviewConfirmBusy(true);
+    pageReviewTitle.textContent = "Review — Pagina " + aligned;
+    pageReviewMeta.textContent = "Caricamento testo…";
+    pageReviewText.value = "";
+    pageReviewState.baselineText = "";
+    syncPageReviewNav();
+    pageReviewPrev.disabled = pageReviewState.index <= 0;
+    pageReviewNext.disabled = pageReviewState.index >= pageReviewState.pages.length - 1;
+    var dimKey = reviewDimCacheKey(pageReviewState.sha, aligned);
+    if (pageReviewDimCache[dimKey]) applyReviewFrameSizes(pageReviewDimCache[dimKey].w, pageReviewDimCache[dimKey].h);
+    var imgUrl = pagePreviewUrl(pageReviewState.sha, aligned);
+    var preload = new Image();
+    preload.onload = function () {
+      if (loadGen !== pageReviewLoadGen) return;
+      var size = computeReviewFrameSize(preload.naturalWidth, preload.naturalHeight);
+      applyReviewFrameSizes(size.w, size.h);
+      pageReviewDimCache[dimKey] = size;
+      pageReviewImg.src = imgUrl;
+    };
+    preload.src = imgUrl;
+    try {
+      var params = new URLSearchParams({
+        source_sha256: pageReviewState.sha,
+        aligned_page: String(aligned),
+      });
+      var res = await apiFetch("/api/admin/book-pages/transcript?" + params.toString());
+      if (loadGen !== pageReviewLoadGen) return;
+      var data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.error || "Testo non disponibile");
+      pageReviewText.value = data.text || "";
+      pageReviewState.baselineText = pageReviewText.value;
+      pageReviewState.stage = data.stage || "";
+      var modelHint = data.producer_model ? " · modello " + data.producer_model : "";
+      pageReviewMeta.textContent = "Fonte: " + (pageReviewState.stage || "sconosciuta") + modelHint;
+    } catch (err) {
+      if (loadGen !== pageReviewLoadGen) return;
+      pageReviewMeta.textContent = String(err.message || err);
+    }
+    pageReviewText.readOnly = false;
+    setPageReviewConfirmBusy(false);
+  }
+
+  function openPageReview(sourceSha256, alignedPage, reviewPages) {
+    var pages = Array.isArray(reviewPages) && reviewPages.length ? reviewPages.slice() : [alignedPage];
+    var index = pages.indexOf(alignedPage);
+    if (index < 0) {
+      pages.push(alignedPage);
+      pages.sort(function (a, b) { return a - b; });
+      index = pages.indexOf(alignedPage);
+    }
+    pageReviewState = { sha: sourceSha256, pages: pages, index: index, baselineText: "", stage: "" };
+    pageReviewOverlay.classList.remove("hidden");
+    pageReviewOverlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    refreshPageReview();
+  }
+
+  function closePageReview() {
+    if (isPageReviewDirty() && !window.confirm("Ci sono modifiche non salvate. Scartarle?")) return;
+    pageReviewOverlay.classList.add("hidden");
+    pageReviewOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    pageReviewImg.removeAttribute("src");
+    pageReviewImgFrame.style.width = "";
+    pageReviewImgFrame.style.height = "";
+    pageReviewTextFrame.style.width = "";
+    pageReviewTextFrame.style.height = "";
+    pageReviewText.value = "";
+    setPageReviewToolbarConfirmed(false);
+  }
+
+  async function changePageReviewIndex(nextIndex) {
+    if (isPageReviewDirty() && !window.confirm("Ci sono modifiche non salvate. Scartarle?")) return;
+    pageReviewState.index = nextIndex;
+    await refreshPageReview();
+  }
+
+  async function postPageReviewConfirm(aligned, text) {
+    var res = await apiFetch("/api/admin/book-pages/transcript/confirm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_sha256: pageReviewState.sha,
+        aligned_page: aligned,
+        text: text,
+      }),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || "Conferma fallita");
+    return data;
+  }
+
+  async function confirmPageReviewText() {
+    var aligned = pageReviewState.pages[pageReviewState.index];
+    var confirmedIndex = pageReviewState.index;
+    setPageReviewConfirmBusy(true);
+    try {
+      await postPageReviewConfirm(aligned, pageReviewText.value);
+      pageReviewState.baselineText = pageReviewText.value;
+      pageReviewMeta.textContent = "Scritto in stage3 e output";
+      setPageReviewToolbarConfirmed(true);
+      await refreshIngestAudit();
+      applyMockAuditPagesState();
+      var remaining = pendingReviewPagesFromAudit();
+      if (!remaining.length) {
+        closePageReview();
+        notifyReviewConfirmed(1);
+        return;
+      }
+      pageReviewState.pages = remaining;
+      pageReviewState.index = Math.min(confirmedIndex, remaining.length - 1);
+      await refreshPageReview();
+    } catch (err) {
+      throw err;
+    } finally {
+      setPageReviewConfirmBusy(false);
+    }
+  }
+
+  function pendingReviewPagesFromAudit() {
+    var book = ingestPagesState.auditBook;
+    return book && Array.isArray(book.pending_review_pages) ? book.pending_review_pages.slice() : [];
+  }
+
+  async function confirmAllPageReviewTexts() {
+    if (isPageReviewDirty() && !window.confirm("La pagina corrente ha modifiche non salvate. Confermarla e procedere con tutte le altre?")) return;
+    setPageReviewConfirmBusy(true);
+    try {
+      await refreshIngestAudit();
+      var pages = pendingReviewPagesFromAudit();
+      if (!pages.length) {
+        applyMockAuditPagesState();
+        closePageReview();
+        if (!buildPendingEntries().length) {
+          showProgressSuccessAlert("Operazione completata: tutte le pagine sono elaborate e le trascrizioni validate.");
+        } else {
+          clearProgressAlert();
+        }
+        return;
+      }
+      var confirmedCount = pages.length;
+      var currentAligned = pageReviewState.pages[pageReviewState.index];
+      var i;
+      for (i = 0; i < pages.length; i++) {
+        var aligned = pages[i];
+        var text;
+        if (aligned === currentAligned) {
+          text = pageReviewText.value;
+        } else {
+          var params = new URLSearchParams({
+            source_sha256: pageReviewState.sha,
+            aligned_page: String(aligned),
+          });
+          var res = await apiFetch("/api/admin/book-pages/transcript?" + params.toString());
+          var data = await res.json();
+          if (!res.ok || !data.ok) throw new Error(data.error || "Testo non disponibile per pagina " + aligned);
+          text = data.text || "";
+        }
+        await postPageReviewConfirm(aligned, text);
+      }
+      pageReviewState.baselineText = pageReviewText.value;
+      await refreshIngestAudit();
+      applyMockAuditPagesState();
+      closePageReview();
+      notifyReviewConfirmed(confirmedCount);
+    } catch (err) {
+      pageReviewMeta.textContent = String(err.message || err);
+      throw err;
+    } finally {
+      setPageReviewConfirmBusy(false);
+    }
+  }
+
+  ingestReviewAllBtn.addEventListener("click", function () {
+    if (!ingestPagesState.sourceSha256) return;
+    var pendingReview = pendingReviewPagesFromAudit();
+    if (!pendingReview.length) return;
+    openPageReview(ingestPagesState.sourceSha256, pendingReview[0], pendingReview);
+  });
+
+  pagePreviewPrev.addEventListener("click", function () {
+    if (pagePreviewState.index <= 0) return;
+    pagePreviewState.index -= 1;
+    refreshPagePreview();
+  });
+  pagePreviewNext.addEventListener("click", function () {
+    if (pagePreviewState.index >= pagePreviewState.pages.length - 1) return;
+    pagePreviewState.index += 1;
+    refreshPagePreview();
+  });
+  document.getElementById("page-preview-close").addEventListener("click", closePagePreview);
+  document.getElementById("page-preview-backdrop").addEventListener("click", closePagePreview);
+  pagePreviewOverlay.querySelector(".page-preview-dialog").addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+
+  pageReviewImg.addEventListener("load", function () { syncReviewFrameSizes(); });
+  pageReviewText.addEventListener("input", updatePageReviewResetState);
+  pageReviewConfirmPage.addEventListener("click", function () {
+    confirmPageReviewText().catch(function (err) {
+      show("err", String(err.message || err));
+    });
+  });
+  pageReviewConfirmAll.addEventListener("click", function () {
+    confirmAllPageReviewTexts().catch(function (err) {
+      show("err", String(err.message || err));
+    });
+  });
+  pageReviewReset.addEventListener("click", function () {
+    pageReviewText.value = pageReviewState.baselineText;
+    updatePageReviewResetState();
+  });
+  pageReviewPrev.addEventListener("click", function () {
+    if (pageReviewState.index <= 0) return;
+    changePageReviewIndex(pageReviewState.index - 1);
+  });
+  pageReviewNext.addEventListener("click", function () {
+    if (pageReviewState.index >= pageReviewState.pages.length - 1) return;
+    changePageReviewIndex(pageReviewState.index + 1);
+  });
+  document.getElementById("page-review-close").addEventListener("click", closePageReview);
+  document.getElementById("page-review-backdrop").addEventListener("click", closePageReview);
+  pageReviewOverlay.querySelector(".page-preview-dialog").addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+    if (!pagePreviewOverlay.classList.contains("hidden")) closePagePreview();
+    else if (!pageReviewOverlay.classList.contains("hidden")) closePageReview();
+  });
+  window.addEventListener("resize", function () {
+    if (!pageReviewOverlay.classList.contains("hidden")) syncReviewFrameSizes();
+  });
+
+  function handleIngestPageEvent(ev) {
+    if (ev.phase === "validation" && ev.status === "completed" && ev.source_sha256) {
+      ingestPagesState.sourceSha256 = String(ev.source_sha256).trim().toLowerCase();
+    }
+    if (ev.phase === "page_enumeration" && ev.status === "completed" && ev.aligned_useful_pages) {
+      ingestPagesState.expectedPages = sortedUniquePages(ev.aligned_useful_pages);
+    }
+    if (ev.status === "page_failed" && ev.aligned_page) {
+      noteFailedPage(ev.phase, ev.aligned_page);
+    }
+    if (ev.phase === "stage3_editor" && (ev.status === "page_progress" || ev.status === "page_skipped") && ev.aligned_page) {
+      addProcessedPage(ev.aligned_page);
+      if (ingestPagesState.jobComplete) scheduleIngestAuditRefresh();
+    }
+    renderIngestPagesSections();
+  }
+
+  function applyResultPagesState(result) {
+    if (!result || typeof result !== "object") return;
+    var enriched = result.enriched || {};
+    if (enriched.source_sha256) ingestPagesState.sourceSha256 = String(enriched.source_sha256).trim().toLowerCase();
+    var enumeration = result.useful_pages_enumeration || {};
+    if (enumeration.original_page_to_aligned_page && enumeration.useful_original_pages) {
+      ingestPagesState.expectedPages = sortedUniquePages(
+        enumeration.useful_original_pages.map(function (orig) {
+          return enumeration.original_page_to_aligned_page[orig];
+        })
+      );
+    }
+    var stage3 = result.stage3;
+    if (stage3 && Array.isArray(stage3.pages)) {
+      ingestPagesState.processedPages = sortedUniquePages(stage3.pages.map(function (p) { return p.aligned_page; }));
+    }
+    renderIngestPagesSections();
+  }
+
+  var elapsedSeconds = 0;
+  var phaseDurations = {};
+  var globalStep = 0;
+  var globalTotal = 0;
+  var phaseState = {};
+  var phaseDom = {};
+
+  var PHASE_ORDER = [
+    "validation", "gate_hash", "pdf_alignment", "page_enumeration",
+    "stage1_glm_ocr", "stage3_editor",
+    "polyindex_toc", "polyindex_index", "time_index",
+  ];
+
+  var PHASE_LABELS = {
+    validation: "Validazione",
+    gate_hash: "Hash gate",
+    pdf_alignment: "Allineamento PDF",
+    page_enumeration: "Enumerazione pagine",
+    stage1_glm_ocr: "GLM OCR (OCR+Vision)",
+    stage1_ocr: "GLM OCR (OCR+Vision)",
+    stage2_vision: "GLM OCR (OCR+Vision)",
+    stage3_editor: "Stage 3 Editor",
+    polyindex_toc: "Polyindex TOC.json",
+    polyindex_index: "Polyindex INDEX.json",
+    time_index: "Polyindex TIME_INDEX.json",
+  };
+
+  function formatDuration(sec) {
+    var s = Math.max(0, Math.round(Number(sec) || 0));
+    if (s < 60) return s + " s";
+    var m = Math.floor(s / 60);
+    var r = s % 60;
+    return m + " min " + r + " s";
+  }
+
+  function formatPercent(done, total) {
+    if (!total) return 0;
+    return Math.min(100, Math.round((done / total) * 100));
+  }
+
+  function formatStatsLine(done, total, etaMs) {
+    var pct = formatPercent(done, total);
+    var line = pct + "% (" + done + "/" + total + ")";
+    if (etaMs != null && etaMs > 0) line += " (~" + formatDuration(etaMs / 1000) + ")";
+    return line;
+  }
+
+  function freshPhaseState() {
+    return {
+      done: 0,
+      total: 1,
+      status: "pending",
+      stepTimes: [],
+      phaseStartMs: null,
+      lastStepMs: null,
+    };
+  }
+
+  function buildPhaseRows() {
+    phaseRowsEl.innerHTML = "";
+    phaseDom = {};
+    PHASE_ORDER.forEach(function (phase) {
+      var row = document.createElement("div");
+      row.className = "progress-row";
+      row.dataset.phase = phase;
+      row.innerHTML =
+        '<span class="progress-label" data-role="label"></span>' +
+        '<progress value="0" max="1" data-role="bar"></progress>' +
+        '<span class="progress-stats" data-role="stats"></span>' +
+        '<span class="progress-time" data-role="time"></span>';
+      phaseRowsEl.appendChild(row);
+      phaseDom[phase] = {
+        row: row,
+        label: row.querySelector('[data-role="label"]'),
+        time: row.querySelector('[data-role="time"]'),
+        bar: row.querySelector('[data-role="bar"]'),
+        stats: row.querySelector('[data-role="stats"]'),
+      };
+      phaseDom[phase].label.textContent = PHASE_LABELS[phase] || phase;
+    });
+  }
+
+  function phaseElapsedSeconds(phase) {
+    var st = phaseState[phase];
+    if (!st) return null;
+    if (st.status === "done" || st.status === "failed") {
+      return phaseDurations[phase] != null ? phaseDurations[phase] : null;
+    }
+    if (st.status === "active" && st.phaseStartMs != null) {
+      return (Date.now() - st.phaseStartMs) / 1000;
+    }
+    return null;
+  }
+
+  function phaseEtaMs(phase) {
+    var st = phaseState[phase];
+    if (!st || st.status !== "active" || st.done >= st.total || !st.stepTimes.length) return null;
+    var avg = st.stepTimes.reduce(function (a, b) { return a + b; }, 0) / st.stepTimes.length;
+    return avg * (st.total - st.done);
+  }
+
+  function recordPhaseStep(phase) {
+    var st = phaseState[phase];
+    if (!st) return;
+    var now = Date.now();
+    var delta = st.lastStepMs != null ? now - st.lastStepMs : (st.phaseStartMs != null ? now - st.phaseStartMs : 0);
+    if (delta > 0) st.stepTimes.push(delta);
+    st.lastStepMs = now;
+    st.done += 1;
+  }
+
+  function renderPhaseRow(phase) {
+    var dom = phaseDom[phase];
+    var st = phaseState[phase];
+    if (!dom || !st) return;
+    dom.label.className = "progress-label" + (st.status === "active" ? " active" : st.status === "done" ? " done" : st.status === "failed" ? " failed" : "");
+    var elapsed = phaseElapsedSeconds(phase);
+    dom.time.textContent = elapsed != null ? "(" + formatDuration(elapsed) + ")" : "";
+    dom.bar.max = st.total || 1;
+    dom.bar.value = Math.min(st.done, st.total || 1);
+    var eta = phaseEtaMs(phase);
+    dom.stats.textContent = formatStatsLine(st.done, st.total, eta);
+  }
+
+  function renderGlobalRow() {
+    progressBarGlobal.max = globalTotal || 1;
+    progressBarGlobal.value = globalStep;
+    globalTimeEl.textContent = elapsedSeconds > 0 ? "(" + formatDuration(elapsedSeconds) + ")" : "";
+    globalStatsEl.textContent = formatStatsLine(globalStep, globalTotal, null);
+  }
+
+  function renderAllProgress() {
+    renderGlobalRow();
+    PHASE_ORDER.forEach(renderPhaseRow);
+  }
+
+  function applyTimingFields(ev) {
+    if (ev.elapsed_seconds != null) elapsedSeconds = ev.elapsed_seconds;
+    var phase = ev.phase;
+    if (phase && ev.phase_duration_seconds != null) {
+      phaseDurations[phase] = ev.phase_duration_seconds;
+    }
+    if (ev.timing && ev.timing.phases) {
+      Object.keys(ev.timing.phases).forEach(function (ph) {
+        phaseDurations[ph] = ev.timing.phases[ph];
+      });
+      if (ev.timing.total_seconds != null) elapsedSeconds = ev.timing.total_seconds;
+    }
+    renderAllProgress();
+  }
+
+  function clearProgressAlert() {
+    progressAlertEl.textContent = "";
+    progressAlertEl.classList.remove("show", "is-success");
+  }
+
+  function showProgressSuccessAlert(message) {
+    if (window.LibrarAInLog) window.LibrarAInLog.info(message, { sink: "progress" });
+    progressAlertEl.textContent = message;
+    progressAlertEl.classList.add("show", "is-success");
+    progressBox.classList.add("show");
+  }
+
+  function notifyReviewConfirmed(confirmedCount) {
+    var pending = buildPendingEntries();
+    var stillInReview = pendingReviewPagesFromAudit().length;
+    if (stillInReview) {
+      clearProgressAlert();
+      return;
+    }
+    if (!pending.length) {
+      showProgressSuccessAlert("Operazione completata: tutte le pagine sono elaborate e le trascrizioni validate.");
+      return;
+    }
+    if (confirmedCount === 1) {
+      showProgressSuccessAlert("Review confermata: la trascrizione è stata validata.");
+      return;
+    }
+    showProgressSuccessAlert("Review confermata: " + confirmedCount + " trascrizioni validate con successo.");
+  }
+
+  function showProgressAlert(message) {
+    if (window.LibrarAInLog) window.LibrarAInLog.warn(message, { sink: "progress" });
+    progressAlertEl.classList.remove("is-success");
+    progressAlertEl.textContent = message;
+    progressAlertEl.classList.add("show");
+    progressBox.classList.add("show");
+  }
+
+  function resetProgress() {
+    progressBox.classList.remove("show");
+    clearProgressAlert();
+    resetIngestPagesState();
+    globalStep = 0;
+    globalTotal = 0;
+    elapsedSeconds = 0;
+    phaseDurations = {};
+    phaseState = {};
+    PHASE_ORDER.forEach(function (ph) {
+      phaseState[ph] = freshPhaseState();
+    });
+    buildPhaseRows();
+    renderAllProgress();
+  }
+
+  function show(kind, payload) {
+    var text = typeof payload === "string" ? payload : JSON.stringify(payload, null, 2);
+    if (kind === "err" && window.LibrarAInLog) window.LibrarAInLog.error(text, { sink: "out" });
+    if (kind === "err" && progressBox.classList.contains("show")) {
+      showProgressAlert(text);
+      out.classList.remove("show", "err");
+      return;
+    }
+    out.textContent = text;
+    out.classList.add("show");
+    out.classList.toggle("err", kind === "err");
+  }
+
+  function startProgress() {
+    resetProgress();
+    ingestPagesState.uiPhase = "running";
+    progressBox.classList.add("show");
+    out.classList.remove("show", "err");
+  }
+
+  function handleEvent(ev) {
+    handleIngestPageEvent(ev);
+    var phase = ev.phase;
+    var status = ev.status;
+    if (ev.elapsed_seconds != null) elapsedSeconds = ev.elapsed_seconds;
+
+    if (status === "pipeline_total") {
+      globalTotal = ev.global_total || 0;
+      globalStep = 0;
+      renderAllProgress();
+      return;
+    }
+
+    if (ev.global_step != null && ev.global_total != null) {
+      globalStep = ev.global_step;
+      globalTotal = ev.global_total;
+    }
+
+    if (phase && phaseState[phase]) {
+      var st = phaseState[phase];
+
+      if (status === "started") {
+        st.status = "active";
+        st.phaseStartMs = Date.now();
+        st.lastStepMs = null;
+        st.stepTimes = [];
+        st.done = 0;
+        if (ev.page_total != null && ev.page_total > 0) st.total = ev.page_total;
+      }
+
+      if (status === "page_progress" || status === "page_skipped" || status === "page_failed") {
+        if (ev.page_total != null && ev.page_total > 0) st.total = ev.page_total;
+        recordPhaseStep(phase);
+      }
+
+      if (status === "completed") {
+        st.status = "done";
+        if (ev.page_total != null && ev.page_total > 0) {
+          st.total = ev.page_total;
+          st.done = ev.page_total;
+        } else if (ev.rendered_page_count != null) {
+          st.total = ev.rendered_page_count;
+          st.done = ev.rendered_page_count;
+        } else if (st.done < st.total) {
+          st.done = st.total;
+        }
+        if (ev.phase_duration_seconds != null) phaseDurations[phase] = ev.phase_duration_seconds;
+      }
+
+      if (status === "failed") {
+        st.status = "failed";
+        if (ev.phase_duration_seconds != null) phaseDurations[phase] = ev.phase_duration_seconds;
+      }
+    }
+
+    if (phase && ev.phase_duration_seconds != null) phaseDurations[phase] = ev.phase_duration_seconds;
+    if (ev.timing && ev.timing.phases) {
+      Object.keys(ev.timing.phases).forEach(function (ph) {
+        phaseDurations[ph] = ev.timing.phases[ph];
+      });
+      if (ev.timing.total_seconds != null) elapsedSeconds = ev.timing.total_seconds;
+    }
+
+    renderAllProgress();
+  }
+
+  function apiToken() {
+    return (localStorage.getItem("librarainApiToken") || "").trim();
+  }
+
+  function promptApiToken() {
+    var token = prompt("Il server richiede un token API (INGEST_API_TOKEN):");
+    if (token && token.trim()) {
+      localStorage.setItem("librarainApiToken", token.trim());
+      return token.trim();
+    }
+    return "";
+  }
+
+  function withToken(url) {
+    var token = apiToken();
+    if (!token) return url;
+    return url + (url.indexOf("?") >= 0 ? "&" : "?") + "token=" + encodeURIComponent(token);
+  }
+
+  function connectSSE(eventsUrl) {
+    var es = new EventSource(withToken(eventsUrl));
+    var TERMINAL = new Set(["done", "error"]);
+
+    function onMessage(e) {
+      var ev;
+      try { ev = JSON.parse(e.data); } catch (_) { return; }
+      handleEvent(ev);
+    }
+
+    function onDone(e) {
+      var ev;
+      try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+      applyTimingFields(ev);
+      var result = ev.result || ev;
+      if (result && result.timing) applyTimingFields({ timing: result.timing });
+      applyResultPagesState(result);
+      markIngestJobComplete();
+      show("ok", result);
+      if (globalTotal > 0) globalStep = globalTotal;
+      renderAllProgress();
+      es.close();
+      btn.disabled = false;
+    }
+
+    function onError(e) {
+      var ev;
+      try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+      showProgressAlert(ev.message || String(ev));
+      markIngestJobComplete();
+      es.close();
+      btn.disabled = false;
+    }
+
+    function onSSEError() {
+      showProgressAlert("Connessione SSE interrotta inaspettatamente.");
+      es.close();
+      btn.disabled = false;
+    }
+
+    var eventTypes = ["started", "progress", "page_progress", "page_skipped",
+                      "page_failed", "completed", "failed", "pipeline_total"];
+    eventTypes.forEach(function (t) { es.addEventListener(t, onMessage); });
+    es.addEventListener("done", onDone);
+    es.addEventListener("error", onError);
+    es.onerror = onSSEError;
+  }
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    if (window.__librarainMock && window.__librarainMock.isEnabled()) {
+      showProgressAlert("Modalità mock attiva: usa i comandi nel pannello Lab.");
+      return;
+    }
+    btn.disabled = true;
+    startProgress();
+
+    try {
+      var fileInput = form.querySelector('[name="pdf_file"]');
+      var file = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0] : null;
+      if (!file || !file.size) throw new Error("Seleziona un file PDF.");
+
+      var pagesRemoveRaw = form.querySelector('[name="pages_to_remove"]') && form.querySelector('[name="pages_to_remove"]').value;
+      var tocRaw = form.querySelector('[name="toc_range"]').value.trim();
+      var indexRaw = form.querySelector('[name="index_range"]').value.trim();
+      var removedExpanded = parsePagesSpec(pagesRemoveRaw);
+
+      try {
+        var mod = await pdfJs();
+        var buf = await file.arrayBuffer();
+        var pdf = await mod.getDocument({ data: buf }).promise;
+        var numPages = pdf.numPages;
+        validateClientPdfPages({ numPages: numPages, removedExpanded: removedExpanded, tocRaw: tocRaw, indexRaw: indexRaw });
+      } catch (preErr) {
+        throw new Error("Verifica sul PDF prima dell'invio:\n\n" + String(preErr && preErr.message ? preErr.message : preErr) + "\n\n(Invio al server annullato.)");
+      }
+
+      var fd = new FormData(form);
+      var submitHeaders = apiToken() ? { "X-API-Token": apiToken() } : {};
+      var res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: submitHeaders });
+      if (res.status === 401) {
+        var newToken = promptApiToken();
+        if (newToken) {
+          res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
+        }
+      }
+      var data;
+      try { data = await res.json(); } catch (_) { data = { ok: false, error: "risposta non JSON" }; }
+
+      if (!res.ok) {
+        var msg = data.error || (data.errors && data.errors.message) || JSON.stringify(data);
+        showProgressAlert(msg);
+        btn.disabled = false;
+        return;
+      }
+
+      connectSSE(data.events_url);
+      ingestPagesState.jobId = data.job_id || "";
+      if (window.parent !== window) {
+        try {
+          window.parent.postMessage(
+            {
+              type: "librarain-ingest-started",
+              job_id: data.job_id || "",
+              events_url: data.events_url || "",
+              status_url: data.status_url || "",
+            },
+            "*"
+          );
+        } catch (_) {}
+      }
+    } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest submit failed", err);
+      if (progressBox.classList.contains("show")) {
+        showProgressAlert(String(err.message || err));
+      } else {
+        show("err", String(err.message || err));
+      }
+      btn.disabled = false;
+    }
+  });
+
+  window.__librarainIngestLab = {
+    startProgress: startProgress,
+    resetProgress: resetProgress,
+    handleEvent: handleEvent,
+    refreshAudit: function () { return refreshIngestAudit(); },
+    markIngestJobComplete: markIngestJobComplete,
+    finishIngestUi: finishIngestUi,
+    applyMockAuditPagesState: applyMockAuditPagesState,
+    showProgressAlert: showProgressAlert,
+    clearProgressAlert: clearProgressAlert,
+    labLog: labLog,
+    labLogError: labLogError,
+    openLabPanel: openLabPanel,
+  };
+  window.dispatchEvent(new Event("librarain-ingest-ready"));
+
+  function importInlineModule(elementId) {
+    var el = document.getElementById(elementId);
+    if (!el || !el.textContent) return Promise.reject(new Error("inline module " + elementId + " missing"));
+    return import(URL.createObjectURL(new Blob([el.textContent], { type: "text/javascript" })));
+  }
+
+  function bootIngestLab() {
+    import("/mockup/client-mock.js").then(function (mock) {
+      window.__librarainMock = mock;
+      return import("/mockup/ingest-debug.js");
+    }).catch(function (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.warn("Lab remoto non disponibile, uso bundle inline", { error: String(err && err.message ? err.message : err) });
+      return importInlineModule("ingest-mock-inline-src").then(function () {
+        return importInlineModule("ingest-lab-inline-src");
+      });
+    }).catch(function (err) {
+      labLogError("Lab non avviato: " + String(err && err.message ? err.message : err));
+    });
+  }
+
+  bootIngestLab();
+
+  function reportEmbedHeight() {
+    if (!document.body.classList.contains("embed-mode")) return;
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight
+    );
+    parent.postMessage({ type: "librarain-embed-height", source: "ingest", height: height }, "*");
+  }
+  if (document.body.classList.contains("embed-mode")) {
+    window.addEventListener("load", reportEmbedHeight);
+    if (typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(reportEmbedHeight).observe(document.body);
+    }
+  }
+})();
+</script>
+</body>
+</html>

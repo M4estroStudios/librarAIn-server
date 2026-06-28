@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Protocol, runtime_checkable
+from typing import Any, Literal, Protocol, runtime_checkable
 
 from src.core.log import (
     INFO_LOG_LEVEL,
@@ -12,9 +12,14 @@ from src.core.log import (
     log_stage_block_async,
     reset_log_context,
 )
-from src.core.lmstudio_models import swap_lmstudio_vision_to_editor
+from src.core.lmstudio_models import (
+    swap_lmstudio_model_to_editor,
+    swap_lmstudio_vision_to_editor,
+    unload_lmstudio_model,
+)
 from src.core.openai_client import build_openai_client
 from src.core.text import slugify as _slugify
+from src.ingestion.pipeline.glm_ocr_stage import resolve_glm_ocr_model, run_glm_ocr_combined_stage
 from src.ingestion.pipeline.stage1 import Stage1Result, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
@@ -301,6 +306,107 @@ def _prepare_page_jobs(ctx: PipelineContext) -> list[PageJob]:
         },
     )
     return page_jobs
+
+
+PipelineMode = Literal["classic", "glm_ocr"]
+
+
+async def _run_glm_ocr_phase(
+    ctx: PipelineContext,
+    page_jobs: list[PageJob],
+) -> tuple[Stage1Result, Stage2Result]:
+    _publish_event(
+        ctx.registry,
+        ctx.request_id,
+        stage="stage1_glm_ocr",
+        message="glm ocr combined batch started",
+        payload={"page_count": len(page_jobs)},
+    )
+    ctx.openai_client = build_openai_client(ctx.settings)
+    combined = await run_glm_ocr_combined_stage(
+        ctx.enriched,
+        ctx.alignment,
+        ctx.useful_pages,
+        ctx.settings,
+        ctx.openai_client,
+        request_id=ctx.request_id,
+        progress=ctx.progress,
+        prompt_notes=ctx.page_prompt_notes,
+    )
+    _sync_page_jobs_from_stage1(page_jobs, combined.stage1)
+    for job in page_jobs:
+        if job.status == PAGE_STATUS_STAGE1:
+            job.status = PAGE_STATUS_STAGE2
+    ctx.counters["completed"] = len(combined.stage1.pages)
+    ctx.counters["failed"] = len(page_jobs) - ctx.counters["completed"]
+    _publish_event(
+        ctx.registry,
+        ctx.request_id,
+        stage="stage1_glm_ocr",
+        message="glm ocr combined batch completed",
+        payload={
+            "pages_written": len(combined.stage1.pages),
+            "failed": len(page_jobs) - len(combined.stage1.pages),
+        },
+    )
+    return combined.stage1, combined.stage2
+
+
+def _orchestrator_result_skip_after_glm_ocr(
+    ctx: PipelineContext,
+    page_jobs: list[PageJob],
+    stage1_result: Stage1Result,
+    stage2_result: Stage2Result,
+) -> OrchestratorResult:
+    glm_model = resolve_glm_ocr_model(ctx.settings)
+    if glm_model:
+        unload_lmstudio_model(ctx.settings, glm_model)
+    completed_count = ctx.counters["completed"]
+    failed_count = ctx.counters["failed"]
+    _publish_event(
+        ctx.registry,
+        ctx.request_id,
+        stage="pipeline",
+        message="page pipeline completed (editor skipped after glm ocr)",
+        payload={
+            "completed_count": completed_count,
+            "failed_count": failed_count,
+            "rendered_page_count": ctx.render_page_total,
+        },
+    )
+    return OrchestratorResult(
+        page_jobs=page_jobs,
+        rendered_page_count=ctx.render_page_total,
+        stage1_result=stage1_result,
+        stage2_result=stage2_result,
+        completed_count=completed_count,
+        failed_count=failed_count,
+    )
+
+
+async def _run_editor_phase_only(
+    ctx: PipelineContext,
+    stage2_result: Stage2Result,
+    page_jobs: list[PageJob],
+) -> Stage3Result:
+    if ctx.openai_client is None:
+        ctx.openai_client = build_openai_client(ctx.settings)
+    glm_model = resolve_glm_ocr_model(ctx.settings)
+    swap_lmstudio_model_to_editor(ctx.settings, from_model=glm_model)
+    try:
+        stage3_result = await run_stage3_editor(
+            stage2_result,
+            ctx.source_sha256,
+            ctx.settings,
+            ctx.openai_client,
+            request_id=ctx.request_id,
+            progress=ctx.progress,
+            prompt_notes=ctx.page_prompt_notes,
+        )
+    except Exception as exc:
+        raise OrchestratorStageError("stage3_editor", exc) from exc
+    _sync_page_jobs_from_stage3(page_jobs, stage3_result)
+    return stage3_result
 
 
 async def _run_stage1_phase(
@@ -670,6 +776,7 @@ async def run_pipeline(
     *,
     progress: ProgressReporter | None = None,
     skip_vision_editor: bool = False,
+    pipeline_mode: PipelineMode = "classic",
 ) -> OrchestratorResult:
     sqlite_path_str = str(sqlite_path)
     source_sha256 = enriched.source_sha256
@@ -700,6 +807,7 @@ async def run_pipeline(
                     "event": "begin",
                     "max_parallel": settings.max_parallel_request,
                     "skip_vision_editor": skip_vision_editor,
+                    "pipeline_mode": pipeline_mode,
                 },
             )
             try:
@@ -716,6 +824,7 @@ async def run_pipeline(
                     progress=progress,
                     skip_vision_editor=skip_vision_editor,
                     counters=counters,
+                    pipeline_mode=pipeline_mode,
                 )
             except (OrchestratorStageError, Exception) as exc:
                 mark_pipeline_run_finished(
@@ -763,6 +872,10 @@ async def run_pipeline(
                     "failed_count": result.failed_count,
                 },
             )
+            if result.stage3_result is not None:
+                editor_model = (settings.editor_model or "").strip()
+                if editor_model:
+                    unload_lmstudio_model(settings, editor_model)
             return result
     finally:
         reset_log_context(request_token, sha_token)
@@ -782,6 +895,7 @@ async def _run_pipeline_body(
     progress: ProgressReporter | None,
     skip_vision_editor: bool,
     counters: dict[str, int],
+    pipeline_mode: PipelineMode = "classic",
 ) -> OrchestratorResult:
     ctx = _build_pipeline_context(
         enriched,
@@ -799,6 +913,25 @@ async def _run_pipeline_body(
     )
     _run_render_phase(ctx)
     page_jobs = _prepare_page_jobs(ctx)
+    if pipeline_mode == "glm_ocr":
+        stage1_result, stage2_result = await _run_glm_ocr_phase(ctx, page_jobs)
+        if ctx.skip_vision_editor:
+            return _orchestrator_result_skip_after_glm_ocr(
+                ctx, page_jobs, stage1_result, stage2_result
+            )
+        stage3_result = await _run_editor_phase_only(ctx, stage2_result, page_jobs)
+        book_output = _run_output_writer_phase(ctx, stage3_result)
+        toc_md_path, index_md_path = await _run_book_artifact_phases(ctx, book_output)
+        await _run_polyindex_phases(ctx, book_output, toc_md_path, index_md_path)
+        return _finalize_pipeline_result(
+            ctx,
+            page_jobs,
+            stage1_result,
+            stage2_result,
+            stage3_result,
+            book_output,
+        )
+
     stage1_result = await _run_stage1_phase(ctx, page_jobs)
     if ctx.skip_vision_editor:
         return _orchestrator_result_skip_vision_editor(ctx, page_jobs, stage1_result)

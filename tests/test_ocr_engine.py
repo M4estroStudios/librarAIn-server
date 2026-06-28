@@ -185,7 +185,7 @@ class OCRPageEngineProtocolTests(unittest.TestCase):
         from src.ingestion.pipeline.gpu_vram import _collect_gpu_vram_via_nvidia_smi
 
         proc = MagicMock()
-        proc.stdout = "0, 9277, 24564\n1, 17965, 24576\n"
+        proc.stdout = "0, 9277, 15287, 24564\n1, 17965, 6611, 24576\n"
         with patch("src.ingestion.pipeline.gpu_vram.shutil.which", return_value="/usr/bin/nvidia-smi"), patch(
             "src.ingestion.pipeline.gpu_vram.subprocess.run", return_value=proc
         ):
@@ -193,6 +193,7 @@ class OCRPageEngineProtocolTests(unittest.TestCase):
         self.assertIsNotNone(snapshots)
         assert snapshots is not None
         self.assertEqual(len(snapshots), 2)
+        self.assertAlmostEqual(snapshots[0].free_gb, 15287 / 1024, places=1)
         self.assertAlmostEqual(snapshots[1].used_gb, 17965 / 1024, places=1)
 
 

@@ -50,6 +50,7 @@ class Settings(BaseModel):
     openai_base_url: str | None = Field(default=None, alias="OPENAI_BASE_URL")
     openai_api_key: str | None = Field(default=None, alias="OPENAI_API_KEY")
     vision_model: str | None = Field(default=None, alias="VISION_MODEL")
+    glm_ocr_model: str | None = Field(default=None, alias="GLM_OCR_MODEL")
     editor_model: str | None = Field(default=None, alias="EDITOR_MODEL")
     max_parallel_request: int = Field(default=2, gt=0, alias="MAX_PARALLEL_REQUEST")
     timeout_seconds: int = Field(default=120, gt=0, alias="TIMEOUT_SECONDS")
@@ -192,6 +193,8 @@ class Settings(BaseModel):
             self.openai_api_key = self.openai_api_key.strip() or None
         if self.vision_model is not None:
             self.vision_model = self.vision_model.strip() or None
+        if self.glm_ocr_model is not None:
+            self.glm_ocr_model = self.glm_ocr_model.strip() or None
         if self.editor_model is not None:
             self.editor_model = self.editor_model.strip() or None
         self.matcher_embedding_model = self.matcher_embedding_model.strip()

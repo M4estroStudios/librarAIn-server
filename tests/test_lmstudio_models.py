@@ -5,9 +5,12 @@ from unittest.mock import MagicMock, patch
 
 from src.core.lmstudio_models import (
     _find_loaded_instance_ids,
+    ensure_lmstudio_model_loaded,
     lmstudio_api_root,
     should_swap_lmstudio_models,
+    swap_lmstudio_model_to_editor,
     swap_lmstudio_vision_to_editor,
+    unload_lmstudio_model,
 )
 
 
@@ -59,6 +62,39 @@ class TestLmStudioHelpers(unittest.TestCase):
             ["org/vision-model"],
         )
 
+    def test_find_loaded_matches_variant_config_to_base_instance(self) -> None:
+        payload = {
+            "models": [
+                {
+                    "key": "qwen/qwen3.6-27b-mtp",
+                    "selected_variant": "qwen/qwen3.6-27b-mtp@q6_k",
+                    "variants": ["qwen/qwen3.6-27b-mtp@q6_k", "qwen/qwen3.6-27b-mtp@q8_0"],
+                    "loaded_instances": [{"id": "qwen/qwen3.6-27b-mtp"}],
+                }
+            ]
+        }
+        self.assertEqual(
+            _find_loaded_instance_ids(payload, "qwen3.6-27b-mtp@q6_k"),
+            ["qwen/qwen3.6-27b-mtp"],
+        )
+
+    def test_resolve_lmstudio_model_key_strips_variant(self) -> None:
+        from src.core.lmstudio_models import _resolve_lmstudio_model_key
+
+        payload = {
+            "models": [
+                {
+                    "key": "qwen/qwen3.6-27b-mtp",
+                    "variants": ["qwen/qwen3.6-27b-mtp@q6_k"],
+                    "selected_variant": "qwen/qwen3.6-27b-mtp@q6_k",
+                }
+            ]
+        }
+        self.assertEqual(
+            _resolve_lmstudio_model_key(payload, "qwen3.6-27b-mtp@q6_k"),
+            "qwen/qwen3.6-27b-mtp",
+        )
+
 
 class TestSwapLmStudioModels(unittest.TestCase):
     def test_swap_noop_when_disabled(self) -> None:
@@ -75,6 +111,92 @@ class TestSwapLmStudioModels(unittest.TestCase):
         self.assertEqual(mock_request.call_count, 3)
         self.assertIn("/models/unload", mock_request.call_args_list[1].args[1])
         self.assertIn("/models/load", mock_request.call_args_list[2].args[1])
+
+    @patch("src.core.lmstudio_models._request_json")
+    def test_swap_from_model_unloads_glm_when_vision_equals_editor(self, mock_request: MagicMock) -> None:
+        mock_request.side_effect = [
+            {
+                "models": [
+                    {
+                        "key": "org/glm-ocr",
+                        "loaded_instances": [{"id": "org/glm-ocr"}],
+                    }
+                ]
+            },
+            {"instance_id": "org/glm-ocr"},
+            {"status": "loaded", "instance_id": "org/editor-model"},
+        ]
+        swap_lmstudio_model_to_editor(
+            _settings(vision_model="org/editor-model", editor_model="org/editor-model"),
+            from_model="org/glm-ocr",
+        )
+        self.assertEqual(mock_request.call_count, 3)
+        self.assertIn("/models/unload", mock_request.call_args_list[1].args[1])
+        self.assertIn("/models/load", mock_request.call_args_list[2].args[1])
+
+
+class TestUnloadLmStudioModel(unittest.TestCase):
+    @patch("src.core.lmstudio_models._request_json")
+    def test_unload_loaded_model(self, mock_request: MagicMock) -> None:
+        mock_request.side_effect = [
+            {
+                "models": [
+                    {
+                        "key": "org/glm-ocr",
+                        "loaded_instances": [{"id": "org/glm-ocr"}],
+                    }
+                ]
+            },
+            {"instance_id": "org/glm-ocr"},
+        ]
+        unloaded = unload_lmstudio_model(_settings(), "org/glm-ocr")
+        self.assertEqual(unloaded, 1)
+        self.assertIn("/models/unload", mock_request.call_args_list[1].args[1])
+    @patch("src.core.lmstudio_models._load_model")
+    @patch("src.core.lmstudio_models._request_json")
+    def test_ensure_loads_when_not_loaded(self, request_json, load_model) -> None:
+        request_json.return_value = {"models": []}
+        load_model.return_value = {"status": "loaded", "instance_id": "inst-1"}
+        from src.models.settings import Settings
+
+        settings = Settings.model_validate(
+            {
+                "DATA_ROOT": "data",
+                "OPENAI_PROVIDER": "local",
+                "OPENAI_BASE_URL": "http://127.0.0.1:1234/v1",
+                "RESEARCH_MODEL": "research-model",
+            }
+        )
+        ensure_lmstudio_model_loaded(settings, "research-model")
+        load_model.assert_called_once_with(
+            "http://127.0.0.1:1234",
+            "research-model",
+            settings,
+        )
+
+    @patch("src.core.lmstudio_models._load_model")
+    @patch("src.core.lmstudio_models._request_json")
+    def test_ensure_skips_when_loaded(self, request_json, load_model) -> None:
+        request_json.return_value = {
+            "models": [
+                {
+                    "key": "research-model",
+                    "loaded_instances": [{"id": "inst-1"}],
+                }
+            ]
+        }
+        from src.models.settings import Settings
+
+        settings = Settings.model_validate(
+            {
+                "DATA_ROOT": "data",
+                "OPENAI_PROVIDER": "local",
+                "OPENAI_BASE_URL": "http://127.0.0.1:1234/v1",
+                "RESEARCH_MODEL": "research-model",
+            }
+        )
+        ensure_lmstudio_model_loaded(settings, "research-model")
+        load_model.assert_not_called()
 
 
 if __name__ == "__main__":
