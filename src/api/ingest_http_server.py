@@ -20,6 +20,8 @@ from src.api.ingest_form import (
 )
 from src.api.ingest_pipeline_runner import run_full_pipeline
 from src.api.ingest_pipeline_runner_glm import run_glm_ingest_pipeline
+from src.api.ingest_form import _parse_pages_spec
+from src.api.reicat_vision_suggest import suggest_reicat_metadata
 from src.api.job_registry import JobRegistry
 from src.api.research_handlers import ResearchBatchRegistry, build_research_routes
 from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
@@ -585,6 +587,81 @@ def build_ingest_server(
                 {"source_sha256": source_sha256[:16], "aligned_page": aligned_page})
             _send_json(self, 200, {"ok": True, "result": result})
 
+        def _handle_reicat_suggest(self) -> None:
+            content_type = self.headers.get("Content-Type") or ""
+            part_path = data_root / "input" / "raw" / f".upload_{secrets.token_hex(8)}.part"
+            try:
+                content_length = _request_content_length(self)
+                parsed = parse_multipart_form_stream(
+                    self.rfile,
+                    content_type,
+                    content_length=content_length,
+                    max_bytes=max_upload,
+                    pdf_part_path=part_path,
+                )
+            except (ValueError, OSError) as exc:
+                part_path.unlink(missing_ok=True)
+                _send_json(self, 400, {"ok": False, "error": f"multipart form could not be parsed: {exc}"})
+                return
+
+            uploaded = parsed.pdf
+            if uploaded is None:
+                part_path.unlink(missing_ok=True)
+                _send_json(self, 400, {"ok": False, "error": "pdf_file upload is required"})
+                return
+            if uploaded.size == 0:
+                uploaded.path.unlink(missing_ok=True)
+                _send_json(self, 400, {"ok": False, "error": "empty PDF upload"})
+                return
+            with uploaded.path.open("rb") as pdf_handle:
+                pdf_magic = pdf_handle.read(4)
+            if pdf_magic != b"%PDF":
+                uploaded.path.unlink(missing_ok=True)
+                _send_json(self, 400, {"ok": False, "error": "uploaded file is not a PDF"})
+                return
+
+            saved_path = uploaded.path.with_name(
+                f"{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
+            )
+            uploaded.path.rename(saved_path)
+            pages_one_based: list[int] | None = None
+            reicat_pages_raw = (parsed.text_fields.get("reicat_pages") or "").strip()
+            if reicat_pages_raw:
+                try:
+                    pages_one_based = _parse_pages_spec(reicat_pages_raw)
+                except ValueError as exc:
+                    saved_path.unlink(missing_ok=True)
+                    _send_json(self, 400, {"ok": False, "error": str(exc)})
+                    return
+            try:
+                result = suggest_reicat_metadata(
+                    saved_path,
+                    settings,
+                    pages_one_based=pages_one_based,
+                )
+            except IngestInputValidationException as exc:
+                saved_path.unlink(missing_ok=True)
+                _send_validation_error(
+                    self,
+                    exc.detail.code,
+                    exc.detail.message,
+                    exc.detail.field,
+                )
+                return
+            except ValueError as exc:
+                saved_path.unlink(missing_ok=True)
+                _send_json(self, 400, {"ok": False, "error": str(exc)})
+                return
+            except Exception as exc:
+                saved_path.unlink(missing_ok=True)
+                Log(ERROR_LOG_LEVEL, "reicat suggest handler failed", {"error": str(exc)})
+                _send_json(self, 500, {"ok": False, "error": str(exc)})
+                return
+            finally:
+                saved_path.unlink(missing_ok=True)
+
+            _send_json(self, 200, {"ok": True, **result})
+
         def _handle_book_page_repair(self) -> None:
             try:
                 body = _read_body(self, 1024 * 1024)
@@ -877,6 +954,11 @@ def build_ingest_server(
                     return
                 self._handle_book_gaps_repair()
                 return
+            if parsed.path == "/api/ingest/reicat-suggest":
+                if not self._require_auth():
+                    return
+                self._handle_reicat_suggest()
+                return
             if parsed.path not in ("/api/ingest/submit", "/api/ingest2/submit"):
                 self.send_error(404, "Not Found")
                 return
@@ -1000,6 +1082,23 @@ def build_ingest_server(
             def _worker() -> None:
                 def reporter(ev: dict) -> None:
                     registry.emit(job_id, ev)
+
+                reicat = ingest_payload.get("reicat")
+                book_title = None
+                if isinstance(reicat, dict):
+                    book_title = str(reicat.get("titolo") or "").strip() or None
+                if not book_title:
+                    book_title = str(ingest_payload.get("titolo") or "").strip() or None
+                registry.emit(
+                    job_id,
+                    make_event(
+                        "pipeline",
+                        "started",
+                        titolo=book_title,
+                        book_title=book_title,
+                        message=book_title or "Avvio ingestione libro",
+                    ),
+                )
 
                 acquired = job_semaphore.acquire(blocking=False)
                 if not acquired:
