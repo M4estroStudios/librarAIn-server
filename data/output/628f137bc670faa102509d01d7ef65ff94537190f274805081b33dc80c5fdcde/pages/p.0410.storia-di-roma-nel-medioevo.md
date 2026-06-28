@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+stito di vecchi creditori del Comune, e con risorse ottenute previo pegno dei tesori delle chiese di San Paolo, San Gregorio al Celio, San Saba, Santa Maria sull’Aventino e i Santi Quattro Coronati. I prestatori anche in questo caso non sono grandi banchieri ma piccoli risparmiatori.
+
+Il denaro è restituito a Parigi dopo che il re l’ha impegnato per organizzare la conquista del Regno, nel 1267. Nel 1271-1272 allorché Carlo è eletto ancora senatore di Roma, chiede un nuovo prestito ai mercanti romani, fra cui si annovera Leonardo dei Cenci de’ Turri, proprietario di un magazzino situato al terraneo della torre dei Conti. Leonardo presta 600 libbre di provisini – una cifra davvero ragguardevole – facendosi concedere in cambio il diritto sulla dogana del sale.
+
+Nel 1272 Leonardo de’ Cenci e il figlio Pietro prestano a Carlo ancora 2500 libbre di provisini contro garanzia su taluni beni del regno. Nello stesso anno Leonardo offrirà altre 3000 once d’oro agli ambasciatori senesi. Elementi come questo personaggio assicurano pertanto con la loro consistenza economica la vita del Comune di Roma.
+
+La città è allora governata da uno o due senatori: al di sotto sono collocati il *camerarius*, il fisico ovvero un medico-chirurgo che fa le funzioni di ufficiale sanitario, un amministratore fiscale, otto giudici palatini, gli amministratori di giustizia che costituiscono l’*assectamentum*, aiutati da 12 notai, 10 scrivani, 3 banditori a cavallo, 2 ostiari, 4 portieri, 2 trombettieri, 1 campanaro, 1 chierico, 1 maresciallo, 2 cavalieri, 40 scudieri, da 30 a 50 torrieri a cavallo con i loro famigli. Vi è poi l’organizzazione della Grascia conferita a un *super grassarius* e ai *grasserii*, ai quali spetta di compiere requisizioni nel *Districtus* onde raccogliere il vettovagliamento necessario.
+
+Il Comune conta allora circa 150 dipendenti ai quali si aggiungono i componenti del *Consilium generale* e del *Consilium speciale* che aiutano i senatori nell’elaborazione delle leggi. Infine vi sono i consoli delle arti e, dopo il 1255, i caporioni.
+
+I giudici di Santa Martina devono, secondo le norme, sottoporre a controllo e verifica l’operato di senatori e podestà uscenti. I Comuni del *Districtus* hanno l’obbligo di obbedire agli ordini del *Sequimentum*, ossia del Comune romano cui devono concedere un certo numero di armati, inviare rappresentanti al *Parlamentum* o all’*Assectamentum* capitolino, partecipare ai giochi e alle processioni cittadine, uniformare il sistema dei pesi e misure a quello romano.
+
+La cosa più gravosa appare però l’obbligo per i Comuni del *Districtus* di commercia solo con Roma. Per questo vi saranno guerre con Tivoli, Terracina, Viterbo, Rispampani, Corneto. In special modo i Cornetani, nei pressi del mare, vogliono rimanere liberi di vendere il loro grano a Pisa e Genova che possono entrambe pagarlo di più, mentre si rifiutano di svenderlo a Roma che lo pretende a prezzo minore.
+
+La vittoria angioina pare destinata a riportare il sereno sul Mezzogiorno d’Italia e a Roma, invece gli eventi prendono una diversa piega. L’acquisto della corona del regno di Sicilia pone infatti re Carlo in una nuova posizione politica verso la Chiesa che gli richiede subito la restituzione della carica senatoriale, temendo che il doppio incarico possa pesare negativamente su Roma al pari di quanto è accaduto ai tempi di Federico II.
+
+Carlo cerca di resistere alle richieste, ma Clemente lo obbliga a lasciare il senatorato che sarà suddiviso tra due candidati. A un certo punto diviene senatore Enrico di Castiglia e nell’amministrazione capitolina si registra un’alternanza di

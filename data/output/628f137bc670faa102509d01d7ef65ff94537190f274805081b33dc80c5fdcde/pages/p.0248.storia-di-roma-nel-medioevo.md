@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+raccolta di fondi dei fedeli destinati a Roma: intendiamo riferirci al famoso «obolo» di San Pietro, ovvero al celebre *Peter's penny*. Inoltre non mancano appositi lasciti devoluti anch'essi ai poveri e ai diseredati dell’Urbe. Al momento del trapasso poi i fedeli devolvono in forma sempre maggiore risorse per la salvezza della loro anima – *pro remedio animae* – direttamente affidate alla Chiesa, alle tombe degli apostoli, ai *cemeteria* e ai nuovi edifici di culto.
+
+I commercianti in special modo, con le suddette *donationes pro remedio animae*, pentitisi dei loro guadagni non sempre trasparenti, fanno pervenire alla Chiesa terre, immobili, oggetti preziosi provenienti da ogni parte del mondo. La ricchezza ecclesiastica si consoliderà pertanto nel IX secolo grazie alla massiccia presenza di fedeli in Roma e specialmente grazie alla loro devozione.
+
+Il *Liber pontificalis* ci informa ad esempio che nell'846, allorché i Saraceni invaderanno le basiliche di San Paolo e di San Pietro, porteranno via una discreta quantità di oggetti sacri preziosi, presenti in misura notevole per quei tempi e derivanti dalla munificenza dei visitatori d'oltralpe, scesi fino a Roma per frequentarne i luoghi santi.
+
+Il furto saraceno colpisce indubbiamente la Chiesa ma il *Liber pontificalis* sottolinea che la defrauderà solo in minima parte in quanto il maggior numero delle ricchezze, collocate in modo da essere difficilmente asportabili, resta nascosto nelle sue nicchie e nei suoi altari di origine.
+
+La parte più ampia della ricchezza di Roma e delle sue chiese si mantiene pertanto inalterata; così tanto per fare un esempio, non saranno trafugati i doni inviati da Carlo Magno e rimasti al loro posto nel corso dei secoli anche molto dopo le invasioni musulmane.
+
+Il *Liber* precisa inoltre che dall'Ottocento in poi, in seguito all'elezione carolingia, quasi tutte le chiese romane vengono arricchite di lasciti preziosi, in buona parte utilizzati per l'ornamento e l'abbellimento delle fondazioni stesse, ma in qualche misura impegnati per le spese dei restauri e anche per effettuare nuove costruzioni.
+
+La preziosa fonte da noi citata non dice se e da qual fondo siano derivati anche taluni finanziamenti per la costruzione delle mura Leonine, ma dobbiamo ritenere che Leone IV, concreto e pronto a decisioni drastiche pur di completare l'importante opera in tempi record, non deve aver troppo esitato di fronte a un'ipotesi che spoglia forse di qualche loro ricchezza i templi, ma rende finalmente sicura e inattaccabile la Città Eterna.
+
+Il tesoro delle chiese romane è in quel secolo invero abbondante: oltre all'oro e all'argento vengono menzionati molti oggetti in avorio, in ebano, in pietre dure e in ambra. Abbondano poi le perle, le corniole, i lapislazzuli, i crisopazi, mentre, seppure in misura minore, anche i diamanti si aggiungono per rendere più vistoso e completo il tesoro dei pontefici. Queste sono pertanto le maggiori fonti di entrata che nel secolo in cui nasce il Sacro Romano Impero renderanno complessivamente possibili spese anche ingenti per l'incremento e la conservazione del patrimonio edilizio cittadino.
+
+L'innegabile abilità organizzativa ed economica dei pontefici del IX secolo va quindi messa in rapporto con la ripresa della città, ma nasce almeno parzialmente da quella che chiameremo una sorta di “rendita di posizione” dell'Urbe, una situazione che pone Roma al centro della vicenda religiosa e politica: con Costantino e Teodosio, poi con Odoacre, con Teoderico, con Giustiniano, con Gregorio Magno, infine con i Carolingi e i pontefici da considerarsi in certo modo i fautori della loro programmata, irresistibile ascesa da connettersi con la ri-

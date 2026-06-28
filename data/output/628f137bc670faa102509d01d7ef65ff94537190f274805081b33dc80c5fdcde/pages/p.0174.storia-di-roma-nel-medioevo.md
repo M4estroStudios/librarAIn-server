@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Stefano II pontefice
+
+Pur senza accettare incondizionatamente la tesi di Henri Pirenne in base alla quale solo fra l’VIII e il IX secolo si effettuerebbe il passaggio tra l’età antica e la medievale, allorché in seguito alla pressione araba sull’Occidente si genera un quasi generale spostamento di dinastie e di centri di potere politico ed economico verso nord (per esempio ai Merovingi, di estrazione meridionale, in Francia proprio allora si sostituiranno i Maggiordomi di Austrasia), si deve tuttavia riconoscere che in particolare nell’VIII secolo si registrano sensibili, concrete modificazioni in quel senso.
+
+Anche a Roma infatti si abbandoneranno i sempre più difficili contatti con l’impero bizantino e quelli altrettanto travagliati e mutevoli con il regno longobardo, mentre si darà vita a un’alleanza organica fra il papato e una potenza situata più a nord come il regno franco. Con l’evangelizzazione delle terre settentrionali del continente si darà poi luogo a una sottolineatura sempre più occidentale della Chiesa.
+
+La grandezza di Gregorio III e di Zaccaria, e in genere dei pontefici dell’VIII secolo, sta appunto nel fatto che essi comprendono l’opportunità di sganciare la Città eterna da una politica modesta, quasi asfittica, basata sul controllo di interessi locali, giocata, per così dire, di rimessa, per avviarla verso scelte spirituali e politiche di respiro assai maggiore, originali e coraggiose; per condurla all’attuazione di un disegno politico che, saltando a più pari gli scomodi alleati e avversari vicini, punta su alleanze e forze arrivate di recente da zone lontane, sul palcoscenico della storia come lo sono i Franchi.
+
+Proprio tale opzione infatti permetterà alla Chiesa romana, tramite i nuovi vescovati istituiti a mano a mano nelle terre del nord guadagnate alla fede, di assumere il controllo del settore nord-occidentale del continente, dei Frisoni, dei Sassoni aggregati gradualmente a Roma e poi, mediante l’intesa con Pipino e con Carlo Magno, le consentirà di serrare in una morsa il regno longobardo, manifestosi incapace di creare un differente costruttivo rapporto con la Città eterna e la Chiesa.
+
+Anche Stefano II, romano, è un politico e un diplomatico di razza (752-757). Di nobile famiglia, dopo l’elezione egli riuscirà a concludere una pace quarantennale con Astolfo. Tuttavia dopo quattro mesi la tregua è interrotta a causa delle pretese longobarde di estendere la giurisdizione reale su città ex bizantine e ormai papali e per la richiesta di un tributo annuo che i Romani avrebbero dovuto corrispondere al regno di Pavia.
+
+Di qui e dalle più che altro verbali e poco efficaci rivendicazioni bizantine, Stefano trarrà allora il convincimento relativo alla validità del suo progetto di alleanza con i Franchi. In particolare questa volta l’accordo produrrà effetti concreti mutando in via di diritto e di fatto lo status di Roma. E ciò in quanto pur

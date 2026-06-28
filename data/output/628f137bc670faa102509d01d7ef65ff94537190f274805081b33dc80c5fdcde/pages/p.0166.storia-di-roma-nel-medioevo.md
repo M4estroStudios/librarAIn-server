@@ -1,0 +1,12 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+San Bonifacio riceve dal pontefice Gregorio II i poteri ecclesiastici per l'evangelizzazione della Germania (affresco di H. Hess).
+
+Altri interventi, all'apparenza modesti ma di indubbia utilità, vengono inoltre da lui riservati a monasteri romani, a ospizi per poveri, vecchi e pellegrini e a edifici di spettanza diaconale utilizzati per attività varie, di carattere a volte religioso, ma pure economico-sociale.
+
+Tutto induce insomma a ritenere che il deciso, vigile impegno papale contribuisca a porre Roma in una situazione relativamente più tranquilla e ancora più legata all'amministrazione ecclesiastica, pronta nell'VIII secolo ad assorbire quasi ogni iniziativa. In quegli anni, per fare qualche esempio, il papa non si limita soltanto a predisporre interventi di edilizia religiosa e civile, ma pone mano a una lunga sequela di lavori pubblici, ripara le condutture e gli acquedotti, continuando ad attingere ampiamente ai bilanci delle diaconie, anche per opere di normale amministrazione e di ingegneria civile.
+
+Nel frattempo in città si promuoverà una specie di “rivoluzione” antibizantina alla quale contribuisce il decreto dell’imperatore Leone III l'Isaurico (725), destinato a colpire pesantemente le finanze dello Stato della Chiesa in ambito civile ma specialmente religioso.
+
+Leone, appena salito al trono, respinge infatti gli Arabi, giunti fin sotto le mura di Costantinopoli (717-718) e per ciò affronta spese ingenti che compromettono la sorte delle già provate casse imperiali. Ciò spiega pertanto i suoi provvedimenti così esosi e volti a colpire indiscriminatamente popolazioni e governanti molto lontani dal Bosforo, i quali, come lo stesso pontefice, non si rendono conto dell’importanza dell’impegno bizantino, teso a mantenere lontano dall’Occidente, quindi dalla stessa Roma, il pericolo arabo che sarebbe stato, qualora non respinto, esiziale per l’intera cristianità.
+
+Al decreto mal compreso e obiettivamente ingiusto se non letto, come testé accennato, in un’ottica che nell'VIII secolo è per forza di cose estranea alla mentalità e all’ideologia del pontefice, della Chiesa e dell’Occidente tutto, Gregorio si oppone fermamente; allora il duca Basilio e altre personalità esarcali si accordano con il duca romano Marino, per impadronirsi del pontefice e tradurlo prigioniero a Costantinopoli. In altri termini si intende rispolverare il vecchio copione eseguito nel secolo precedente nei riguardi di Martino I o, ancora prima, con i papi Silverio e Vigilio.
