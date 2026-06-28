@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard lab — librarAIn</title>
+<link rel="stylesheet" href="/dashboard/dashboard.css">
+<script src="/log.js"></script>
+</head>
+<body>
+<header id="dash-header">
+  <strong>librarAIn Dashboard</strong>
+  <span class="hint"><a href="/index.html">Ingest</a> · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a></span>
+</header>
+
+<section class="section open" id="section-search">
+  <button type="button" class="section-toggle">▼ Ricerca</button>
+  <div class="section-body">
+    <div class="toggle-row">
+      <button type="button" id="mode-google" class="active">Google</button>
+      <button type="button" id="mode-perplexity">Perplexity</button>
+    </div>
+    <div id="panel-google">
+      <form id="google-form" class="search-bar">
+        <input type="search" id="google-q" name="q" placeholder="Cerca negli articoli e POH…" autocomplete="off">
+        <button type="submit">Cerca</button>
+      </form>
+      <div id="google-results"></div>
+      <button type="button" id="google-cta" class="secondary hidden">Non hai trovato quello che cerchi? Fornisci una fonte per generare nuovi articoli</button>
+    </div>
+    <div id="panel-perplexity" class="hidden">
+      <div class="perplexity-options hint">
+        <label><input type="checkbox" id="show-tool-calls"> Mostra tool calls</label>
+        <label><input type="checkbox" id="show-thinking"> Mostra thinking</label>
+      </div>
+      <div id="chat-messages" class="chat-box"></div>
+      <form id="chat-form" class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="Domanda in linguaggio naturale…" autocomplete="off">
+        <button type="submit">Invia</button>
+      </form>
+      <button type="button" id="perplexity-cta" class="secondary">Fornisci fonte (nota ingest da chat)</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="section-ingest">
+  <button type="button" class="section-toggle">▶ Ingestione</button>
+  <div class="section-body">
+    <div class="context-note-block hidden" id="context-note-block">
+      <label class="context-note-label" for="context-note">Nota contesto (operatore)</label>
+      <div class="context-note-field">
+        <textarea id="context-note" placeholder="Query o contesto dalla ricerca…"></textarea>
+        <button type="button" id="context-note-copy" class="context-note-copy" title="Copia negli appunti" aria-label="Copia negli appunti">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <label class="ingest-option hint">
+      <input type="checkbox" id="generate-articles-checkbox">
+      Dopo ingest: controlla POH simili e genera/aggiorna articoli
+    </label>
+    <div class="embed-host embed-host--ingest">
+      <iframe
+        id="ingest-frame"
+        class="section-embed"
+        title="Form ingestione completo"
+        src="/index.html?embed=1"
+      ></iframe>
+    </div>
+  <div id="ingest-poh-overlap-notice" class="ingest-notice hint hidden"></div>
+  <div id="ingest-poh-list"></div>
+  </div>
+</section>
+
+<section class="section" id="section-admin">
+  <button type="button" class="section-toggle">▶ Amministrazione</button>
+  <div class="section-body section-body--embed">
+    <div class="embed-host">
+      <iframe
+        id="admin-frame"
+        class="section-embed"
+        title="Admin biblioteca"
+        src="/admin.html?embed=1"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<div id="gate-overlay">
+  <div id="gate-panel">
+    <h2>Risorse insufficienti</h2>
+    <p id="gate-message"></p>
+    <button type="button" id="gate-retry">Ricontrolla risorse</button>
+  </div>
+</div>
+
+<aside id="mock-panel">
+  <details class="mock-inner">
+    <summary>Mock lab</summary>
+    <label class="hint" style="display:flex;gap:0.35rem;align-items:center;margin-top:0.5rem;">
+      <input type="checkbox" id="mock-enabled"> Demo mock
+    </label>
+    <select id="mock-scenario" style="width:100%;margin-top:0.35rem;"></select>
+  </details>
+</aside>
+
+<script type="module" src="/dashboard/main.js"></script>
+</body>
+</html>

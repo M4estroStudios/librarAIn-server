@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "overlaps": [
+    {
+      "poh_id": "poh_nuovo_romolo",
+      "label": "Romolo e Remo",
+      "has_article": false,
+      "similar_to": [
+        {
+          "poh_id": "subj_alpha",
+          "label": "Alpha Test",
+          "similarity": 0.91,
+          "has_article": true,
+          "url": "/articolo/subj_alpha.html"
+        }
+      ]
+    }
+  ],
+  "count": 1
+}

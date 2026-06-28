@@ -4,215 +4,458 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ricerca — librarAIn</title>
-<script>
-(function (global) {
-  function pageLabel() {
-    var title = (document.title || "").split("\u2014")[0].trim();
-    return title || global.location.pathname || "web";
-  }
-  function formatLine(level, message, params) {
-    var line = "[" + new Date().toISOString() + "][" + level + "][" + pageLabel() + "] " + message;
-    if (params && typeof params === "object" && Object.keys(params).length) line += " | " + JSON.stringify(params);
-    return line;
-  }
-  function write(level, consoleFn, message, params) {
-    var line = formatLine(level, message, params);
-    consoleFn(line);
-    if (params && params.error instanceof Error) consoleFn(params.error);
-    return line;
-  }
-  function fromError(err) {
-    if (err instanceof Error) return { message: err.message, error: err };
-    return { message: String(err) };
-  }
-  var log = {
-    error: function (message, params) { return write("ERROR", global.console.error.bind(global.console), message, params); },
-    warn: function (message, params) { return write("WARNING", global.console.warn.bind(global.console), message, params); },
-    info: function (message, params) { return write("INFO", global.console.info.bind(global.console), message, params); },
-    debug: function (message, params) { return write("DEBUG", global.console.debug.bind(global.console), message, params); },
-    reportError: function (context, err) { return log.error(context, fromError(err)); },
-    logHttpFailure: function (url, status, detail) {
-      var level = status >= 500 ? "error" : "warn";
-      return log[level]("api request failed", { url: url, status: status, error: detail });
-    },
-  };
-  global.LibrarAInLog = log;
-  global.addEventListener("error", function (ev) {
-    log.error("uncaught error", { message: ev.message, source: ev.filename, line: ev.lineno, col: ev.colno, error: ev.error instanceof Error ? ev.error : undefined });
-  });
-  global.addEventListener("unhandledrejection", function (ev) { log.reportError("unhandled rejection", ev.reason); });
-})(window);
-</script>
+<script src="/log.js"></script>
 <style>
 :root {
   color-scheme: dark;
   font-family: system-ui, sans-serif;
+  font-size: 1.125rem;
   line-height: 1.45;
   color: #d4d4d4;
   background: #1e1e1e;
+  --section-gap: 1.25rem;
 }
 body { margin: 0; min-height: 100vh; }
 a { color: #8ab4f8; text-decoration: none; }
 a:hover { text-decoration: underline; }
-.wrap { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.wrap {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .wrap.compact { padding-top: 0.75rem; }
-.nav { font-size: 0.85rem; margin-bottom: 1rem; }
+.wrap.chat-mode {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  padding-bottom: 0.85rem;
+}
+.nav { font-size: 0.95rem; text-align: left; flex: 1; min-width: 0; margin: 0; line-height: 1.35; }
 .nav a { color: #4ec9b0; }
-.hero { text-align: center; padding: 4rem 1rem 2rem; }
-.hero.compact { padding: 0.5rem 0 1rem; text-align: left; }
-.logo { font-size: 2rem; font-weight: 700; color: #e8e8e8; letter-spacing: -0.02em; margin: 0 0 1.5rem; }
-.hero.compact .logo { font-size: 1.2rem; margin: 0 0 0.75rem; }
-.search-row { display: flex; gap: 0.5rem; max-width: 36rem; margin: 0 auto; }
-.hero.compact .search-row { margin: 0; max-width: none; }
-#q { flex: 1; font: inherit; padding: 0.65rem 1rem; border-radius: 24px; border: 1px solid #454545; background: #252526; color: #e8e8e8; }
-#q:focus { outline: 2px solid #4ec9b0; border-color: transparent; }
-button { font: inherit; padding: 0.55rem 1.1rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: var(--section-gap);
+  flex-shrink: 0;
+}
+#mock-panel { max-width: 16rem; flex-shrink: 0; margin: 0; z-index: 1; }
+.wrap.chat-mode .top-bar { order: 0; margin-bottom: var(--section-gap); }
+#mock-panel .mock-inner { background: #252526; border: 1px solid #555; border-radius: 12px; padding: 0.75rem; font-size: 0.8rem; line-height: 1.35; }
+#mock-panel summary { cursor: pointer; font-weight: 600; color: #e8e8e8; line-height: 1.35; list-style: none; }
+#mock-panel summary::-webkit-details-marker { display: none; }
+.landing-stack {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  min-height: 0;
+}
+.wrap.compact:not(.chat-mode) .landing-stack {
+  flex: none;
+  justify-content: flex-start;
+  gap: var(--section-gap);
+}
+.wrap.chat-mode .landing-stack {
+  flex: none;
+  order: 3;
+  gap: 0;
+}
+.landing-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+}
+.wrap.compact:not(.chat-mode) .landing-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.wrap.chat-mode .landing-logo { display: none; }
+.logo { font-size: 2.75rem; font-weight: 700; color: #e8e8e8; letter-spacing: -0.02em; margin: 0; }
+.wrap.compact:not(.chat-mode) .logo { font-size: 1.45rem; }
+.brand-compact { display: none; margin-bottom: var(--section-gap); }
+.wrap.chat-mode .brand-compact {
+  display: block;
+  order: 1;
+  flex-shrink: 0;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.logo-link { color: inherit; text-decoration: none; }
+.logo-link:hover { text-decoration: none; opacity: 0.9; }
+.logo-link span { color: #4ec9b0; font-weight: 500; }
+.chat-thread {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.25rem 0 1rem;
+}
+.wrap:not(.chat-mode) .chat-thread.hidden { display: none !important; }
+.wrap.chat-mode .chat-thread { order: 2; }
+#main {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+.wrap.chat-mode #main { display: none; }
+.wrap.compact:not(.chat-mode) #main { order: 4; margin-top: var(--section-gap); }
+.composer { flex-shrink: 0; width: 100%; }
+.wrap.chat-mode .composer {
+  padding-top: 0.85rem;
+  border-top: 1px solid #3e3e3e;
+}
+.chat-options { margin-bottom: 0.55rem; }
+.search-row { width: 100%; }
+.search-shell {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 3.2rem;
+  border-radius: 999px;
+  border: 1px solid #454545;
+  background: #252526;
+  padding: 0.2rem 0.3rem 0.2rem 1.2rem;
+  box-sizing: border-box;
+}
+.search-shell:has(#google-q:focus) { outline: 2px solid #4ec9b0; border-color: transparent; }
+.search-shell.ai-mode:not(:has(#google-q:focus)) { border-color: #3d8f7f; }
+#google-q {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  padding: 0.6rem 0.5rem 0.6rem 0;
+  border: 0;
+  background: transparent;
+  color: #e8e8e8;
+  margin: 0;
+}
+#google-q:focus { outline: none; }
+.search-actions {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  flex-shrink: 0;
+  gap: 0;
+  height: 2.9rem;
+}
+.search-icon-btn, .search-submit {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #b8b8b8;
+  cursor: pointer;
+  line-height: 0;
+}
+.search-icon-btn:focus, .search-submit:focus { outline: none; }
+.search-icon-btn:focus-visible, .search-submit:focus-visible {
+  outline: 2px solid #4ec9b0;
+  outline-offset: 1px;
+}
+.search-icon-btn:hover:not(:disabled),
+.search-submit:hover:not(:disabled) { background: rgba(78, 201, 176, 0.14); color: #4ec9b0; }
+.search-icon-btn.active { background: rgba(78, 201, 176, 0.2); color: #4ec9b0; }
+.search-icon-btn svg, .search-submit svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+  flex-shrink: 0;
+}
+button { font: inherit; font-size: 1.05rem; padding: 0.7rem 1.25rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
 button:hover:not(:disabled) { background: #ffffff; }
 button:disabled { opacity: 0.55; cursor: not-allowed; }
-.hint { font-size: 0.8rem; color: #9d9d9d; }
-#results-meta { font-size: 0.85rem; color: #9d9d9d; margin: 1.25rem 0 0.75rem; }
-.result { margin-bottom: 1.35rem; }
-.result h3 { margin: 0 0 0.15rem; font-size: 1.15rem; font-weight: 400; }
-.result .url { font-size: 0.82rem; color: #6a9955; margin-bottom: 0.2rem; word-break: break-all; }
-.result .snippet { font-size: 0.9rem; color: #b8b8b8; }
-#empty { display: none; margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; font-size: 0.88rem; }
+button.secondary { background: #3c3c3c; color: #e8e8e8; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button.search-icon-btn, button.search-submit { background: transparent; color: #b8b8b8; padding: 0; font-weight: 400; border-radius: 50%; }
+button.search-icon-btn:hover:not(:disabled),
+button.search-submit:hover:not(:disabled) { background: rgba(78, 201, 176, 0.14); color: #4ec9b0; }
+button.search-icon-btn.active { background: rgba(78, 201, 176, 0.2); color: #4ec9b0; }
+.hint { font-size: 0.95rem; color: #9d9d9d; }
+#results-meta { font-size: 1rem; color: #9d9d9d; margin: 0; }
+#google-results { display: flex; flex-direction: column; gap: var(--section-gap); }
+.result-item { margin: 0; }
+.result-item h3 { margin: 0 0 0.15rem; font-size: 1.35rem; font-weight: 400; }
+.poh-card { padding: 0.65rem; margin: 0; border-radius: 8px; background: #252526; border: 1px solid #454545; }
+.poh-card .badge { font-size: 0.85rem; color: #f0a060; }
+#empty { display: none; padding: 0.75rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; font-size: 1rem; margin: 0; }
 #empty.show { display: block; }
-#out { display: none; margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #2d2d2d; border: 1px solid #454545; font-size: 0.8rem; white-space: pre-wrap; }
-#out.show { display: block; }
-#out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
-.mock-banner { display: none; margin: 0 auto 1rem; max-width: 42rem; padding: 0.55rem 0.85rem; border-radius: 8px; background: #1a3a34; border: 1px solid #4ec9b0; color: #b8f0e8; font-size: 0.82rem; }
-body.research-mock-active .mock-banner { display: block; }
+#google-cta { width: 100%; text-align: left; font-size: 1rem; font-weight: 500; margin: 0; }
+.hidden { display: none !important; }
+#chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 0;
+}
+.chat-msg {
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 92%;
+}
+.chat-msg.user {
+  align-self: flex-end;
+  max-width: 88%;
+  padding: 0.75rem 1rem;
+  border-radius: 18px 18px 4px 18px;
+  background: #2a3d38;
+  color: #d8ebe6;
+}
+.chat-msg.assistant {
+  align-self: flex-start;
+  padding: 0.75rem 1rem;
+  border-radius: 18px 18px 18px 4px;
+  background: #252526;
+  border: 1px solid #3e3e3e;
+  color: #d4d4d4;
+}
+.chat-answer { color: inherit; }
+.citation { color: #4ec9b0; }
+.chat-debug-panel { margin-bottom: 0.55rem; padding: 0.45rem 0.6rem; border-radius: 8px; background: #181818; border: 1px solid #3a3a3a; font-size: 0.85rem; }
+.chat-debug-panel summary { cursor: pointer; color: #9d9d9d; font-weight: 600; }
+.chat-debug-body { margin: 0; white-space: pre-wrap; word-break: break-word; color: #a8a8a8; font-family: ui-monospace, monospace; font-size: 0.78rem; }
+.perplexity-options { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+.perplexity-options label { display: inline-flex; gap: 0.35rem; align-items: center; cursor: pointer; }
+#perplexity-cta { margin-top: 0.25rem; width: 100%; text-align: left; font-size: 0.95rem; font-weight: 500; }
+#gate-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.82); display: none; align-items: center; justify-content: center; z-index: 9000; }
+#gate-overlay.show { display: flex; }
+#gate-panel { max-width: 28rem; padding: 1.5rem; background: #252526; border-radius: 12px; border: 1px solid #555; text-align: center; }
 </style>
 </head>
 <body>
-<div id="hero" class="hero">
-  <p class="nav" style="text-align:left;max-width:42rem;margin:0 auto 0.5rem;"><a href="/">Ingestione</a> · <a href="/admin.html">Admin</a> · Ricerca</p>
-  <p class="mock-banner" id="mock-banner">Modalità mock attiva — risultati e articoli simulati, nessuna pipeline reale.</p>
-  <h1 class="logo">librarAIn <span style="color:#4ec9b0;font-weight:500;">Ricerca</span></h1>
-  <form id="search-form" class="search-row" role="search">
-    <input type="search" id="q" name="q" placeholder="Cerca negli articoli generati…" autocomplete="off" minlength="2" required>
-    <button type="submit">Cerca</button>
-  </form>
+<div class="wrap" id="page">
+<div class="top-bar">
+  <p class="nav"><a href="/">Ingestione</a> · <a href="/admin.html">Admin</a> · <a href="/dashboard">Dashboard</a></p>
+  <aside id="mock-panel">
+    <details class="mock-inner">
+      <summary>Mock lab</summary>
+      <label class="hint" style="display:flex;gap:0.35rem;align-items:center;margin-top:0.5rem;">
+        <input type="checkbox" id="mock-enabled"> Demo mock
+      </label>
+      <select id="mock-scenario" style="width:100%;margin-top:0.35rem;"></select>
+    </details>
+  </aside>
 </div>
 
-<div class="wrap" id="main">
+<div id="brand-compact" class="brand-compact">
+  <a href="/ricerca.html" class="logo-link">librarAIn <span>Ricerca</span></a>
+</div>
+
+<div id="landing-stack" class="landing-stack">
+  <div id="landing-logo" class="landing-logo">
+    <h1 class="logo"><a href="/ricerca.html" class="logo-link">librarAIn <span>Ricerca</span></a></h1>
+  </div>
+
+  <div id="composer" class="composer">
+    <div id="chat-options" class="perplexity-options hint chat-options hidden">
+      <label><input type="checkbox" id="show-tool-calls"> Mostra tool calls</label>
+      <label><input type="checkbox" id="show-thinking"> Mostra thinking</label>
+    </div>
+    <form id="google-form" class="search-row" role="search">
+      <div class="search-shell">
+        <input type="search" id="google-q" name="q" placeholder="Cerca negli articoli e POH…" autocomplete="off" minlength="2" required>
+        <div class="search-actions">
+          <button type="button" id="mode-ai" class="search-icon-btn" aria-label="Attiva ricerca AI" aria-pressed="false" title="Ricerca AI">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 4.5 13.2 8.4 17 9.6 13.2 10.8 12 14.7 10.8 10.8 7 9.6 10.8 8.4z"></path>
+              <path d="M19 5h.01M19 19h.01"></path>
+            </svg>
+          </button>
+          <button type="submit" class="search-submit" aria-label="Invia">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M20 20l-3.5-3.5"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="chat-thread" class="chat-thread hidden">
+  <div id="chat-messages"></div>
+  <button type="button" id="perplexity-cta" class="secondary hidden">Fornisci fonte (nota ingest da chat)</button>
+</div>
+
+<div id="main">
   <div id="results-meta"></div>
-  <div id="results"></div>
-  <div id="empty">Nessun risultato. Prova altri termini o genera gli articoli da <a href="/admin.html">Admin</a>.</div>
-  <div id="out"></div>
+  <div id="google-results"></div>
+  <div id="empty">Nessun risultato. Prova altri termini o <a href="/dashboard">fornisci una fonte via ingest</a>.</div>
+  <button type="button" id="google-cta" class="secondary hidden">Non hai trovato quello che cerchi? Fornisci una fonte per generare nuovi articoli</button>
 </div>
 
-<script>
-const TOKEN_KEY = "librarAIn_api_token";
+</div>
 
-function apiToken() {
-  return sessionStorage.getItem(TOKEN_KEY) || "";
+<div id="gate-overlay">
+  <div id="gate-panel">
+    <h2>Risorse insufficienti</h2>
+    <p id="gate-message"></p>
+    <button type="button" id="gate-retry">Ricontrolla risorse</button>
+  </div>
+</div>
+
+<script type="module">
+import { initGate } from "/dashboard/gate.js";
+import { initGoogleSearch } from "/dashboard/search-google.js";
+import { initPerplexitySearch, sendMessage } from "/dashboard/search-perplexity.js";
+import { initMock } from "/dashboard/mock.js";
+import { setMockEnabled, setMockScenario } from "/dashboard/api.js";
+
+const PENDING_CONTEXT_KEY = "librarainPendingContextNote";
+const AI_MODE_KEY = "librarainRicercaAiMode";
+const GOOGLE_PLACEHOLDER = "Cerca negli articoli e POH…";
+const AI_PLACEHOLDER = "Scrivi un messaggio…";
+const CHAT_PLACEHOLDER = "Scrivi un messaggio…";
+
+let aiMode = false;
+let chatActive = false;
+const page = document.getElementById("page");
+const searchInput = document.getElementById("google-q");
+const searchShell = document.querySelector(".search-shell");
+const aiBtn = document.getElementById("mode-ai");
+const chatThread = document.getElementById("chat-thread");
+const chatOptions = document.getElementById("chat-options");
+const perplexityCta = document.getElementById("perplexity-cta");
+const chatMessages = document.getElementById("chat-messages");
+
+function scrollChatToEnd() {
+  if (chatThread) chatThread.scrollTop = chatThread.scrollHeight;
 }
 
-function setApiToken(token) {
-  if (token) sessionStorage.setItem(TOKEN_KEY, token);
-}
-
-async function apiFetch(url, options) {
-  if (window.__librarainResearchMock && window.__librarainResearchMock.isEnabled()) {
-    return window.__librarainResearchMock.apiFetch(url, options);
+function armAiMode(on) {
+  aiMode = !!on;
+  try {
+    sessionStorage.setItem(AI_MODE_KEY, aiMode ? "1" : "0");
+  } catch {}
+  aiBtn?.classList.toggle("active", aiMode || chatActive);
+  aiBtn?.setAttribute("aria-pressed", aiMode || chatActive ? "true" : "false");
+  searchShell?.classList.toggle("ai-mode", aiMode || chatActive);
+  if (!chatActive && searchInput) {
+    searchInput.placeholder = aiMode ? AI_PLACEHOLDER : GOOGLE_PLACEHOLDER;
+    if (aiMode) searchInput.removeAttribute("minlength");
+    else searchInput.setAttribute("minlength", "2");
   }
-  const opts = Object.assign({ headers: {} }, options || {});
-  const token = apiToken();
-  if (token) opts.headers["X-API-Token"] = token;
-  let res = await fetch(url, opts);
-  if (res.status === 401 && !token) {
-    const entered = prompt("Il server richiede un token API (INGEST_API_TOKEN):");
-    if (entered && entered.trim()) {
-      setApiToken(entered.trim());
-      opts.headers["X-API-Token"] = entered.trim();
-      res = await fetch(url, opts);
-    }
+}
+
+function enterChatMode() {
+  if (chatActive) return;
+  chatActive = true;
+  aiMode = true;
+  page?.classList.add("chat-mode", "compact");
+  chatThread?.classList.remove("hidden");
+  chatOptions?.classList.remove("hidden");
+  if (searchInput) {
+    searchInput.placeholder = CHAT_PLACEHOLDER;
+    searchInput.removeAttribute("minlength");
   }
-  if (!res.ok && window.LibrarAInLog) {
-    window.LibrarAInLog.logHttpFailure(String(url), res.status);
+  armAiMode(true);
+  scrollChatToEnd();
+  searchInput?.focus();
+}
+
+function compactForGoogle() {
+  page?.classList.add("compact");
+}
+
+function updateUrlForMode(q) {
+  const url = new URL(location.href);
+  if (chatActive || aiMode) {
+    url.searchParams.set("ai", "1");
+    if (q) url.searchParams.set("q", q);
+    else url.searchParams.delete("q");
+  } else {
+    url.searchParams.delete("ai");
+    if (q) url.searchParams.set("q", q);
+    else url.searchParams.delete("q");
   }
-  return res;
+  history.pushState({}, "", url);
 }
 
-function showOut(text, isErr) {
-  if (isErr && window.LibrarAInLog) window.LibrarAInLog.error(text, { sink: "out" });
-  const el = document.getElementById("out");
-  el.textContent = text;
-  el.className = "show" + (isErr ? " err" : "");
-}
-
-function originUrl(path) {
-  return window.location.origin + path;
-}
-
-function renderResults(query, items) {
-  const meta = document.getElementById("results-meta");
-  const box = document.getElementById("results");
-  const empty = document.getElementById("empty");
-  const hero = document.getElementById("hero");
-  hero.classList.add("compact");
-  document.getElementById("main").classList.add("compact");
-  if (!items.length) {
-    meta.textContent = "";
-    box.innerHTML = "";
-    empty.classList.add("show");
-    return;
-  }
-  empty.classList.remove("show");
-  meta.textContent = "Circa " + items.length + " risultati per \"" + query + "\"";
-  box.innerHTML = items.map(function (item) {
-  const href = item.url;
-  return (
-    '<article class="result">' +
-    '<h3><a href="' + href + '">' + escapeHtml(item.title) + "</a></h3>" +
-    '<div class="url">' + escapeHtml(originUrl(href)) + "</div>" +
-    '<p class="snippet">' + escapeHtml(item.snippet || "") + "</p>" +
-    "</article>"
-  );
-  }).join("");
-}
-
-function escapeHtml(s) {
-  return String(s)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-async function runSearch(q) {
-  const res = await apiFetch("/api/research/search?q=" + encodeURIComponent(q));
-  const data = await res.json();
-  if (!res.ok || !data.ok) {
-    showOut(data.error || "Ricerca fallita", true);
-    return;
-  }
-  document.getElementById("q").value = q;
-  renderResults(data.query, data.results || []);
-  history.replaceState(null, "", "?q=" + encodeURIComponent(q));
-}
-
-document.getElementById("search-form").addEventListener("submit", function (ev) {
-  ev.preventDefault();
-  const q = document.getElementById("q").value.trim();
-  if (q.length < 2) return;
-  runSearch(q).catch(function (err) { showOut(String(err), true); });
+aiBtn?.addEventListener("click", () => {
+  if (chatActive) return;
+  armAiMode(!aiMode);
+  updateUrlForMode((searchInput && searchInput.value || "").trim());
+  searchInput?.focus();
+  aiBtn?.blur();
 });
 
-(async function init() {
-  const params = new URLSearchParams(window.location.search);
-  const q = (params.get("q") || "").trim();
-  if (q.length >= 2) {
-    document.getElementById("q").value = q;
-    runSearch(q).catch(function (err) { showOut(String(err), true); });
-  }
-})();
-</script>
-<script type="module">
-import * as researchMock from "/mockup/research-mock.js";
-window.__librarainResearchMock = researchMock;
-researchMock.loadSavedEnabled();
+window.__librarainDashboard = {
+  openIngestWithContext(text) {
+    try {
+      sessionStorage.setItem(PENDING_CONTEXT_KEY, text || "");
+    } catch {}
+    window.location.href = "/dashboard";
+  },
+};
+
+if (new URLSearchParams(location.search).get("mock") === "1") {
+  setMockEnabled(true);
+  setMockScenario("ricerca-google-hit");
+}
+
+try {
+  if (sessionStorage.getItem(AI_MODE_KEY) === "1") armAiMode(true);
+} catch {}
+if (new URLSearchParams(location.search).get("ai") === "1") armAiMode(true);
+
+initGate();
+initPerplexitySearch();
+initGoogleSearch({
+  metaEl: "results-meta",
+  emptyEl: "empty",
+  getSearchMode: () => ((chatActive || aiMode) ? "perplexity" : "google"),
+  onPerplexitySubmit(q) {
+    if (!q) return;
+    enterChatMode();
+    updateUrlForMode(q);
+    sendMessage(q);
+    if (searchInput) searchInput.value = "";
+    perplexityCta?.classList.remove("hidden");
+    scrollChatToEnd();
+  },
+  onSearchStart() {
+    compactForGoogle();
+  },
+});
+initMock();
+
+if (chatMessages) {
+  const chatObserver = new MutationObserver(() => {
+    scrollChatToEnd();
+    if (perplexityCta && chatMessages.childElementCount > 0) {
+      perplexityCta.classList.remove("hidden");
+    }
+  });
+  chatObserver.observe(chatMessages, { childList: true, subtree: true });
+}
 </script>
 </body>
 </html>

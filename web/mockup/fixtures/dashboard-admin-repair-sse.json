@@ -1,0 +1,6 @@
+event: progress
+data: {"phase":"repair","status":"progress","message":"mock repair pagina 12"}
+
+event: done
+data: {"status":"done","message":"repair mock completato"}
+

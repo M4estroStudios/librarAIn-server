@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "subjects": [
+    {
+      "canonical_id": "subj_alpha",
+      "canonical_label": "Alpha Test",
+      "book_count": 2,
+      "aliases": ["Alfa"]
+    },
+    {
+      "canonical_id": "subj_beta",
+      "canonical_label": "Beta Test",
+      "book_count": 2,
+      "aliases": []
+    }
+  ]
+}

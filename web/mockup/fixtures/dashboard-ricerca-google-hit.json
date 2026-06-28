@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "query": "alpha",
+  "results": [
+    {
+      "poh_id": "subj_alpha",
+      "label": "Alpha Test",
+      "title": "Alpha Test",
+      "snippet": "Snippet mock alpha",
+      "has_article": true,
+      "url": "/articolo/subj_alpha.html"
+    }
+  ],
+  "count": 1
+}

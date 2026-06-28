@@ -144,11 +144,11 @@ async function runScenario(scenario) {
 
 function initPanel() {
   const panel = document.getElementById("ingest-debug-panel");
-  const toggle = document.getElementById("ingest-debug-panel-toggle");
+  const details = document.getElementById("ingest-debug-details");
   const body = document.getElementById("ingest-debug-panel-body");
   const mockInput = document.getElementById("ingest-debug-mock");
   const actions = document.getElementById("ingest-debug-lab-actions");
-  if (!panel || !toggle || !body || !mockInput || !actions) return;
+  if (!panel || !details || !body || !mockInput || !actions) return;
 
   mock.loadSavedEnabled();
   syncMockCheckbox();
@@ -186,16 +186,12 @@ function initPanel() {
       if (window.LibrarAInLog) window.LibrarAInLog.reportError("lab scenario failed", err);
     });
   });
-
-  labApi = window.__librarainIngestLab || null;
-  if (labApi) labLog("Lab pronto.");
 }
 
 window.__librarainMock = mock;
 
 window.addEventListener("librarain-ingest-ready", function () {
   labApi = window.__librarainIngestLab || null;
-  labLog("UI ingest collegata al Lab.");
 }, { once: true });
 
 if (document.readyState === "loading") {

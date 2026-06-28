@@ -1,0 +1,6 @@
+event: progress
+data: {"phase":"stage1OCR","status":"progress","message":"mock ingest 50%"}
+
+event: done
+data: {"status":"done","source_sha256":"abc123mock","message":"completato"}
+

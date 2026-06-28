@@ -53,8 +53,14 @@ from src.persistence.book_page_repair import (
 from src.core.config import ConfigurationError, load_settings
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
-from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, make_event
+from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
 from src.models.request import IngestInputErrorCode, IngestInputValidationError, IngestInputValidationException
+
+_CLIENT_DISCONNECT_ERRORS = (
+    ConnectionAbortedError,
+    ConnectionResetError,
+    BrokenPipeError,
+)
 
 
 def _repo_root() -> Path:
@@ -105,7 +111,7 @@ def _send_json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> No
     handler.end_headers()
     try:
         handler.wfile.write(body)
-    except (BrokenPipeError, ConnectionResetError, OSError):
+    except _CLIENT_DISCONNECT_ERRORS:
         pass
 
 
@@ -140,7 +146,7 @@ def _sse_write(handler: BaseHTTPRequestHandler, event_name: str, data: Any) -> b
         handler.wfile.write(line.encode("utf-8"))
         handler.wfile.flush()
         return True
-    except (BrokenPipeError, ConnectionResetError, OSError):
+    except _CLIENT_DISCONNECT_ERRORS:
         return False
 
 
@@ -248,6 +254,12 @@ def build_ingest_server(
     class IngestHandler(BaseHTTPRequestHandler):
         server_version = "librarAIn-ingest-http/1.0"
 
+        def handle_one_request(self) -> None:
+            try:
+                super().handle_one_request()
+            except _CLIENT_DISCONNECT_ERRORS:
+                pass
+
         def log_message(self, format: str, *args: Any) -> None:
             if len(args) < 2:
                 return
@@ -310,6 +322,42 @@ def build_ingest_server(
 
             if research_try_get(self, path, query):
                 return
+
+            if path in ("/dashboard", "/dashboard.html"):
+                dash_file = web_dir / "dashboard.html"
+                if not dash_file.exists():
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
+                        {"path": str(dash_file)})
+                    _send_json(self, 500, {"ok": False, "error": "web/dashboard.html missing"})
+                    return
+                _send_bytes(self, 200, dash_file.read_bytes(), "text/html; charset=utf-8")
+                return
+
+            if path.startswith("/dashboard/"):
+                rel = path[len("/dashboard/") :].lstrip("/")
+                if rel and ".." not in rel.replace("\\", "/"):
+                    dash_root = (web_dir / "dashboard").resolve()
+                    asset = (dash_root / rel).resolve()
+                    try:
+                        asset.relative_to(dash_root)
+                    except ValueError:
+                        pass
+                    else:
+                        if asset.is_file():
+                            types = {
+                                ".html": "text/html; charset=utf-8",
+                                ".js": "text/javascript; charset=utf-8",
+                                ".json": "application/json; charset=utf-8",
+                                ".css": "text/css; charset=utf-8",
+                                ".svg": "image/svg+xml",
+                            }
+                            _send_bytes(
+                                self,
+                                200,
+                                asset.read_bytes(),
+                                types.get(asset.suffix.lower(), "application/octet-stream"),
+                            )
+                            return
 
             if path == "/api/system/preflight":
                 if not self._require_auth(query):
@@ -426,6 +474,16 @@ def build_ingest_server(
                 if not self._require_auth(query):
                     return
                 self._handle_system_job_events(parts[4])
+                return
+
+            if path in ("/index2.html",):
+                index2_file = web_dir / "index2.html"
+                if not index2_file.exists():
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
+                        {"path": str(index2_file)})
+                    _send_json(self, 500, {"ok": False, "error": "web/index2.html missing"})
+                    return
+                _send_bytes(self, 200, index2_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
             if path in ("/", "/index.html"):
@@ -844,6 +902,22 @@ def build_ingest_server(
                         job_id,
                         repair_global_step_count(1, pipeline_mode=pipeline_mode),
                     )
+                    registry.emit(
+                        job_id,
+                        make_event(
+                            "page_repair",
+                            STATUS_STARTED,
+                            source_sha256=sha,
+                            aligned_page=aligned_page,
+                            missing_in=stages_hint,
+                            pipeline_mode=pipeline_mode,
+                            message=(
+                                "Riparazione lacune: " + ", ".join(stages_hint)
+                                if stages_hint
+                                else f"Riparazione pagina {aligned_page}"
+                            ),
+                        ),
+                    )
                     result = run_book_page_repair(
                         data_root,
                         settings,
@@ -951,6 +1025,16 @@ def build_ingest_server(
                     registry.set_global_total(
                         job_id,
                         repair_global_step_count(aligned_count, pipeline_mode=pipeline_mode),
+                    )
+                    registry.emit(
+                        job_id,
+                        make_event(
+                            "gaps_repair",
+                            STATUS_STARTED,
+                            source_sha256=sha,
+                            pipeline_mode=pipeline_mode,
+                            message=f"Riparazione {aligned_count} pagine con lacune",
+                        ),
                     )
                     result = run_book_gaps_repair(
                         data_root,

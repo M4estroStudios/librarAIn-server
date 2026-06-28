@@ -85,6 +85,16 @@ librarAIn-server/ # radice repository
 - `src/core/config.py` legge solo `.env` / `example.env`.
 - `data/` non contiene codice, solo artefatti runtime.
 - `web/index.html` resta il punto unico di input per l'ingest; `web/admin.html` per il merge manuale dei soggetti POH tra libri.
+- `GET /dashboard` — dashboard lab unificata (`web/dashboard.html`): ricerca Google/Perplexity, ingest (`index.html?embed=1`), admin (`admin.html?embed=1`), gate preflight, mock lab. Parità funzionale con `index.html`, `admin.html`, `ricerca.html`.
+
+### Dashboard lab (`/dashboard`)
+
+- **Preflight**: `GET /api/system/preflight?operation=` (`ingest`, `research`, `research-merge`, `repair`, `repair-all`, `chat` alias di `research`) — verifica VRAM e, se serve, carica il modello LM Studio richiesto.
+- **Panoramica sistema** (in Admin): `GET /api/system/status` — VRAM, modelli caricati, job attivi, conteggi research.
+- **Ricerca**: `GET /api/research/search?q=…` sull'indice POH — articoli pubblicati e POH senza articolo nello stesso risultato.
+- **Chat Perplexity**: `POST /api/chat/completions` (OpenAI-compatible, `stream: true`) con tool `search`, `readSource`, `offerArticleGeneration`.
+- **Merge articolo**: `POST /api/research/merge-article` integra materiale nuovo libro in articolo esistente.
+- **Mock**: fixture in `web/mockup/fixtures/dashboard-*.json`; toggle nella tendina mock della dashboard.
 
 ## Setup e comandi
 

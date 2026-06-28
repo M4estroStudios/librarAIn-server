@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "message": "VRAM GPU insufficiente per research (mock)",
+  "operation": "research",
+  "vram": [{"device_index": 0, "used_gb": 23.0, "total_gb": 24.0, "free_gb": 1.0}],
+  "loaded_models": [],
+  "required_model": "gpt-4.1-mini"
+}

@@ -1,0 +1,15 @@
+data: {"librarain":{"type":"thinking","content":"Cerco nel catalogo POH…","round":0}}
+
+data: {"librarain":{"type":"tool_call","status":"start","name":"search","arguments":"{\"query\":\"alpha\",\"n\":5}","round":0}}
+
+data: {"librarain":{"type":"tool_call","status":"result","name":"search","arguments":"{\"query\":\"alpha\",\"n\":5}","result":"{\"count\":1,\"results\":[{\"poh_id\":\"subj_alpha\",\"label\":\"Alpha Test\"}]}","round":0}}
+
+data: {"librarain":{"type":"thinking","content":"Ho trovato un articolo rilevante.","stream":true}}
+
+data: {"choices":[{"delta":{"content":"Risposta mock con citazione "}}]}
+
+data: {"choices":[{"delta":{"content":"[Alpha](poh:subj_alpha)"}}]}
+
+data: {"choices":[{"delta":{},"finish_reason":"stop"}]}
+
+data: [DONE]

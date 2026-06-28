@@ -213,25 +213,20 @@ tr.audit-row-repairing { background: rgba(78, 201, 176, 0.07); }
 .repair-progress-detail { font-size: 0.72rem; color: #b8b8b8; min-height: 1rem; margin-bottom: 0.45rem; }
 .repair-progress-bar { height: 0.35rem; border-radius: 999px; background: #3c3c3c; overflow: hidden; }
 .repair-progress-fill { height: 100%; width: 0%; background: #4ec9b0; transition: width 0.25s ease; }
-.ingest-debug-panel { position: fixed; right: 1rem; bottom: 1rem; z-index: 3000; width: min(92vw, 17rem); border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); font-size: 0.78rem; }
-.ingest-debug-panel.is-open { border-color: #4ec9b0; }
-.ingest-debug-panel-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 0; padding: 0.55rem 0.75rem; border: 0; border-radius: 10px; background: transparent; color: #4ec9b0; font: inherit; font-size: 0.82rem; font-weight: 700; cursor: pointer; text-align: left; }
-.ingest-debug-panel.is-open .ingest-debug-panel-toggle { border-radius: 10px 10px 0 0; border-bottom: 1px solid #3e3e3e; }
-.ingest-debug-panel-toggle::after { content: "▸"; color: #9d9d9d; transition: transform 0.15s ease; }
-.ingest-debug-panel.is-open .ingest-debug-panel-toggle::after { transform: rotate(90deg); }
-.ingest-debug-panel-body { padding: 0.65rem 0.75rem 0.75rem; }
-.ingest-debug-panel-body[hidden] { display: none; }
-.ingest-debug-mock-toggle { display: flex; align-items: center; gap: 0.45rem; margin: 0 0 0.45rem; color: #e8e8e8; cursor: pointer; }
+#ingest-debug-panel { position: fixed; right: 1rem; bottom: 1rem; z-index: 8000; max-width: 16rem; }
+#ingest-debug-panel .ingest-debug-inner { background: #252526; border: 1px solid #555; border-radius: 12px; padding: 0.75rem; font-size: 0.8rem; }
+#ingest-debug-panel summary { cursor: pointer; font-weight: 600; color: #e8e8e8; }
+body.ingest-mock-active #ingest-debug-panel .ingest-debug-inner { border-color: #4ec9b0; }
+.ingest-debug-mock-toggle { margin: 0; color: #e8e8e8; cursor: pointer; }
 .ingest-debug-mock-toggle input { width: 1rem; height: 1rem; margin: 0; accent-color: #4ec9b0; }
 #ingest-debug-mock-hint { margin: 0 0 0.55rem; font-size: 0.72rem; line-height: 1.35; }
-.ingest-debug-lab-actions { display: grid; gap: 0.35rem; }
+.ingest-debug-lab-actions { display: grid; gap: 0.35rem; margin-top: 0.35rem; }
 .ingest-debug-lab-actions button { font: inherit; font-size: 0.72rem; font-weight: 600; padding: 0.4rem 0.55rem; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; cursor: pointer; text-align: left; }
 .ingest-debug-lab-actions button:hover:not(:disabled) { background: #4a4a4a; }
 .ingest-debug-lab-actions button:disabled { opacity: 0.55; cursor: not-allowed; }
 .ingest-debug-log { margin: 0.55rem 0 0; padding: 0.45rem 0.5rem; min-height: 2.5rem; max-height: 7rem; overflow: auto; border-radius: 6px; background: #1a1a1a; border: 1px solid #3e3e3e; font-family: ui-monospace, monospace; font-size: 0.65rem; line-height: 1.35; color: #b8b8b8; white-space: pre-wrap; word-break: break-word; }
-.ingest-debug-panel.is-open .ingest-debug-log:empty::before { content: "Log Lab…"; color: #666; }
+#ingest-debug-details[open] .ingest-debug-log:empty::before { content: "Log Lab…"; color: #666; }
 .ingest-debug-log.has-error { color: #f48771; border-color: #c95050; }
-body.ingest-mock-active .ingest-debug-panel { border-color: #4ec9b0; }
 .audit-pages-table th, .audit-pages-table td { padding: 0.35rem 0.5rem; vertical-align: middle; border-bottom: 1px solid #2a2a2a; font-size: 0.78rem; }
 .audit-pages-table th { color: #9d9d9d; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; text-align: left; }
 .audit-page-controls { display: flex; align-items: center; gap: 0.35rem; }
@@ -287,6 +282,18 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-grid-wrap.is-rendering .page-picker-grid { display: none; }
 .page-picker-progress { display: none; padding: 2.5rem 1rem; text-align: center; }
 .page-picker-grid-wrap.is-rendering .page-picker-progress { display: block; }
+.page-picker-grid-wrap.is-rendering-progress .page-picker-progress {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: -0.55rem -0.55rem 0.55rem;
+  padding: 0.65rem 0.55rem 0.75rem;
+  background: rgba(37, 37, 38, 0.96);
+  border-bottom: 1px solid #3e3e3e;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.42);
+}
+.page-picker-grid-wrap.is-rendering-progress .page-picker-progress-label { margin-bottom: 0.45rem; }
 .page-picker-progress-label { font-size: 0.82rem; color: #e8e8e8; margin-bottom: 0.65rem; }
 .page-picker-progress progress { width: 100%; height: 10px; border-radius: 4px; appearance: none; -webkit-appearance: none; background: #3c3c3c; border: none; }
 .page-picker-progress progress::-webkit-progress-bar { background: #3c3c3c; border-radius: 4px; }
@@ -304,12 +311,36 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-detail-img-wrap img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
 .page-picker-detail-empty { font-size: 0.78rem; color: #9d9d9d; text-align: center; padding: 2rem 0.75rem; }
 .hidden { display: none !important; }
+body.embed-mode { max-width: none; padding: 0; margin: 0; background: #252526; }
+body.embed-mode .embed-hide,
+body.embed-mode #ingest-debug-panel { display: none !important; }
+body.embed-mode form { gap: 0; }
+body.embed-mode fieldset { border: 0; border-top: 1px solid #3e3e3e; border-radius: 0; padding: 1rem 0; margin: 0; background: transparent; }
+body.embed-mode fieldset:first-of-type { border-top: 0; padding-top: 0; }
+body.embed-mode legend { padding: 0; margin-bottom: 0.5rem; }
+body.embed-mode #progress { border: 0; background: transparent; padding: 0.85rem 0 0; margin-top: 0.85rem; border-top: 1px solid #3e3e3e; border-radius: 0; }
+body.embed-mode #progress-alert { border-radius: 8px; }
+body.embed-mode #out { border: 0; background: transparent; padding: 0.75rem 0 0; margin-top: 0.75rem; border-top: 1px solid #3e3e3e; border-radius: 0; min-height: 0; }
+body.embed-mode #out.err { background: rgba(58, 32, 32, 0.45); padding: 0.65rem 0.75rem; border: 0; border-radius: 8px; margin-top: 0.75rem; }
+body.embed-mode .ingest-section { border: 0; background: transparent; padding: 0.85rem 0; border-top: 1px solid #3e3e3e; border-radius: 0; margin-top: 0; }
+body.embed-mode .ingest-review-card { border: 0; background: transparent; padding: 0.5rem 0; border-radius: 0; }
+body.embed-mode .page-picker-panel { border: 0; background: transparent; border-radius: 0; margin-top: 0.65rem; }
+body.embed-mode .page-picker-toolbar { border: 0; background: transparent; padding: 0; }
+body.embed-mode .page-picker-grid-wrap { border: 0; background: transparent; padding: 0.55rem 0; border-radius: 0; }
+body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid #3e3e3e; }
 </style>
 </head>
 <body>
-<p class="nav">Ingestione · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a></p>
-<h1>Ingestione libro</h1>
-<p class="lead">Carica il PDF: compare un’anteprima pagina per pagina per scegliere visivamente le esclusioni. Indica anche dove si trovano, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT.</p>
+<script>
+(function () {
+  if (new URLSearchParams(location.search).get("embed") === "1") {
+    document.body.classList.add("embed-mode");
+  }
+})();
+</script>
+<p class="nav embed-hide">Ingestione · <a href="/index2.html">GLM OCR</a> · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a></p>
+<h1 class="embed-hide">Ingestione libro</h1>
+<p class="lead embed-hide">Carica il PDF: compare un’anteprima pagina per pagina per scegliere visivamente le esclusioni. Indica anche dove si trovono, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT.</p>
 
 <form id="ingest-form">
   <fieldset>
@@ -587,21 +618,23 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 <pre id="out" aria-live="polite"></pre>
 
 <aside id="ingest-debug-panel" class="ingest-debug-panel" aria-label="Lab debug">
-  <button type="button" id="ingest-debug-panel-toggle" class="ingest-debug-panel-toggle" aria-expanded="false" aria-controls="ingest-debug-panel-body">Lab</button>
-  <div id="ingest-debug-panel-body" class="ingest-debug-panel-body" hidden>
-    <label class="ingest-debug-mock-toggle" for="ingest-debug-mock">
-      <input type="checkbox" id="ingest-debug-mock">
-      Modalità mock
-    </label>
-    <p id="ingest-debug-mock-hint" class="hint">Attiva mock per provare review e riparazione senza pipeline.</p>
-    <div id="ingest-debug-lab-actions" class="ingest-debug-lab-actions">
-      <button type="button" data-scenario="partial">Ingest parziale</button>
-      <button type="button" data-scenario="done">Ingest completo</button>
-      <button type="button" data-scenario="audit">Solo lacune audit</button>
-      <button type="button" data-scenario="reset">Reset progresso</button>
+  <details id="ingest-debug-details" class="ingest-debug-inner">
+    <summary>Mock lab</summary>
+    <div id="ingest-debug-panel-body" class="ingest-debug-panel-body">
+      <label class="hint ingest-debug-mock-toggle" for="ingest-debug-mock" style="display:flex;gap:0.35rem;align-items:center;margin-top:0.5rem;">
+        <input type="checkbox" id="ingest-debug-mock">
+        Demo mock
+      </label>
+      <p id="ingest-debug-mock-hint" class="hint">Attiva mock per provare review e riparazione senza pipeline.</p>
+      <div id="ingest-debug-lab-actions" class="ingest-debug-lab-actions">
+        <button type="button" data-scenario="partial">Ingest parziale</button>
+        <button type="button" data-scenario="done">Ingest completo</button>
+        <button type="button" data-scenario="audit">Solo lacune audit</button>
+        <button type="button" data-scenario="reset">Reset progresso</button>
+      </div>
+      <pre id="ingest-debug-log" class="ingest-debug-log" aria-live="polite"></pre>
     </div>
-    <pre id="ingest-debug-log" class="ingest-debug-log" aria-live="polite"></pre>
-  </div>
+  </details>
 </aside>
 
 <script>
@@ -1067,11 +1100,11 @@ async function runScenario(scenario) {
 
 function initPanel() {
   const panel = document.getElementById("ingest-debug-panel");
-  const toggle = document.getElementById("ingest-debug-panel-toggle");
+  const details = document.getElementById("ingest-debug-details");
   const body = document.getElementById("ingest-debug-panel-body");
   const mockInput = document.getElementById("ingest-debug-mock");
   const actions = document.getElementById("ingest-debug-lab-actions");
-  if (!panel || !toggle || !body || !mockInput || !actions) return;
+  if (!panel || !details || !body || !mockInput || !actions) return;
 
   mock.loadSavedEnabled();
   syncMockCheckbox();
@@ -1108,14 +1141,10 @@ function initPanel() {
       if (window.LibrarAInLog) window.LibrarAInLog.reportError("lab scenario failed", err);
     });
   });
-
-  labApi = window.__librarainIngestLab || null;
-  if (labApi) labLog("Lab pronto (inline).");
 }
 
 window.addEventListener("librarain-ingest-ready", function () {
   labApi = window.__librarainIngestLab || null;
-  labLog("UI ingest collegata al Lab (inline).");
 }, { once: true });
 
 if (document.readyState === "loading") {
@@ -1425,7 +1454,9 @@ if (document.readyState === "loading") {
     }
     tocPagePickerDetailImg.removeAttribute("src");
     try {
-      var url = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 1.1);
+      var url = await renderPdfPageToDataUrl(
+        pagePickerState.pdfDoc, pageNum, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
+      );
       tocPagePickerState.detailCache[pageNum] = url;
       if (tocPagePickerState.lastSelected === pageNum) tocPagePickerDetailImg.src = url;
     } catch (_) {
@@ -1452,7 +1483,7 @@ if (document.readyState === "loading") {
     tocPagePickerState.detailCache = {};
     tocPagePickerState.rendering = false;
     tocPagePickerGrid.innerHTML = "";
-    tocPagePickerGridWrap.classList.remove("is-rendering");
+    tocPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
     setTocPagePickerRenderProgress(0, 0);
     tocPagePickerPanel.classList.remove("show", "is-loading");
     renderTocPagePickerDetail(null);
@@ -1485,7 +1516,7 @@ if (document.readyState === "loading") {
 
     tocPagePickerPanel.classList.add("show");
     if (!available.length) {
-      tocPagePickerGridWrap.classList.remove("is-rendering");
+      tocPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
       tocPagePickerGrid.innerHTML = "";
       tocPagePickerMeta.textContent = "Nessuna pagina disponibile: tutte risultano escluse.";
       renderTocPagePickerDetail(null);
@@ -1503,19 +1534,12 @@ if (document.readyState === "loading") {
 
     if (pending.length) {
       tocPagePickerState.rendering = true;
-      tocPagePickerGridWrap.classList.add("is-rendering");
+      tocPagePickerGridWrap.classList.add("is-rendering-progress");
       setTocPagePickerRenderProgress(0, pending.length);
-      for (i = 0; i < pending.length; i++) {
-        if (loadGen !== pagePickerState.loadGen) return;
-        pageNum = pending[i];
-        try {
-          pagePickerState.thumbUrls[pageNum] = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 0.22);
-        } catch (_) {
-          pagePickerState.thumbUrls[pageNum] = makeFallbackThumb(pageNum);
-        }
-        setTocPagePickerRenderProgress(i + 1, pending.length);
-      }
-      if (loadGen !== pagePickerState.loadGen) return;
+      var tocRender = await renderPdfThumbsParallel(
+        pagePickerState.pdfDoc, pending, loadGen, setTocPagePickerRenderProgress
+      );
+      if (loadGen !== pagePickerState.loadGen || tocRender.cancelled) return;
       tocPagePickerState.rendering = false;
     }
 
@@ -1528,7 +1552,7 @@ if (document.readyState === "loading") {
       });
     }
     buildTocPagePickerGrid(thumbs);
-    tocPagePickerGridWrap.classList.remove("is-rendering");
+    tocPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
     syncTocPagePickerSelectionFromField();
     syncTocPagePickerFieldFromSelection();
     if (tocPagePickerState.lastSelected) renderTocPagePickerDetail(tocPagePickerState.lastSelected);
@@ -1659,7 +1683,9 @@ if (document.readyState === "loading") {
     }
     indexPagePickerDetailImg.removeAttribute("src");
     try {
-      var url = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 1.1);
+      var url = await renderPdfPageToDataUrl(
+        pagePickerState.pdfDoc, pageNum, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
+      );
       indexPagePickerState.detailCache[pageNum] = url;
       if (indexPagePickerState.lastSelected === pageNum) indexPagePickerDetailImg.src = url;
     } catch (_) {
@@ -1686,7 +1712,7 @@ if (document.readyState === "loading") {
     indexPagePickerState.detailCache = {};
     indexPagePickerState.rendering = false;
     indexPagePickerGrid.innerHTML = "";
-    indexPagePickerGridWrap.classList.remove("is-rendering");
+    indexPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
     setIndexPagePickerRenderProgress(0, 0);
     indexPagePickerPanel.classList.remove("show", "is-loading");
     renderIndexPagePickerDetail(null);
@@ -1711,7 +1737,7 @@ if (document.readyState === "loading") {
 
     indexPagePickerPanel.classList.add("show");
     if (!available.length) {
-      indexPagePickerGridWrap.classList.remove("is-rendering");
+      indexPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
       indexPagePickerGrid.innerHTML = "";
       indexPagePickerMeta.textContent = "Nessuna pagina disponibile: tutte risultano escluse.";
       renderIndexPagePickerDetail(null);
@@ -1729,19 +1755,12 @@ if (document.readyState === "loading") {
 
     if (pending.length) {
       indexPagePickerState.rendering = true;
-      indexPagePickerGridWrap.classList.add("is-rendering");
+      indexPagePickerGridWrap.classList.add("is-rendering-progress");
       setIndexPagePickerRenderProgress(0, pending.length);
-      for (i = 0; i < pending.length; i++) {
-        if (loadGen !== pagePickerState.loadGen) return;
-        pageNum = pending[i];
-        try {
-          pagePickerState.thumbUrls[pageNum] = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 0.22);
-        } catch (_) {
-          pagePickerState.thumbUrls[pageNum] = makeFallbackThumb(pageNum);
-        }
-        setIndexPagePickerRenderProgress(i + 1, pending.length);
-      }
-      if (loadGen !== pagePickerState.loadGen) return;
+      var indexRender = await renderPdfThumbsParallel(
+        pagePickerState.pdfDoc, pending, loadGen, setIndexPagePickerRenderProgress
+      );
+      if (loadGen !== pagePickerState.loadGen || indexRender.cancelled) return;
       indexPagePickerState.rendering = false;
     }
 
@@ -1754,22 +1773,178 @@ if (document.readyState === "loading") {
       });
     }
     buildIndexPagePickerGrid(thumbs);
-    indexPagePickerGridWrap.classList.remove("is-rendering");
+    indexPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
     syncIndexPagePickerSelectionFromField();
     syncIndexPagePickerFieldFromSelection();
     if (indexPagePickerState.lastSelected) renderIndexPagePickerDetail(indexPagePickerState.lastSelected);
   }
 
-  async function renderPdfPageToDataUrl(pdfDoc, pageNum, scale) {
-    var page = await pdfDoc.getPage(pageNum);
-    var viewport = page.getViewport({ scale: scale });
+  var PDF_THUMB_SCALE = 0.22;
+  var PDF_DETAIL_SCALE = 1.1;
+  var PDF_THUMB_JPEG_QUALITY = 0.82;
+  var PDF_DETAIL_JPEG_QUALITY = 0.88;
+  var PDF_RAM_BUDGET_RATIO = 0.75;
+
+  function pdfPhysicalCpuCount() {
+    var n = navigator.hardwareConcurrency;
+    if (typeof n !== "number" || n < 1) return 1;
+    return Math.floor(n);
+  }
+
+  function pdfRamBudgetBytes() {
+    var gb = navigator.deviceMemory;
+    if (typeof gb !== "number" || gb < 0.25) gb = 4;
+    return Math.floor(gb * 1024 * 1024 * 1024 * PDF_RAM_BUDGET_RATIO);
+  }
+
+  function pdfConcurrentRenderBudgetBytes() {
+    return Math.min(
+      pdfRamBudgetBytes(),
+      pdfPhysicalCpuCount() * 48 * 1024 * 1024
+    );
+  }
+
+  var pdfRenderSlots = 0;
+  var pdfRenderSlotWaiters = [];
+
+  function pdfAcquireRenderSlot() {
+    var maxSlots = pdfPhysicalCpuCount();
+    if (pdfRenderSlots < maxSlots) {
+      pdfRenderSlots += 1;
+      return Promise.resolve();
+    }
+    return new Promise(function (resolve) {
+      pdfRenderSlotWaiters.push(resolve);
+    });
+  }
+
+  function pdfReleaseRenderSlot() {
+    if (pdfRenderSlotWaiters.length) {
+      pdfRenderSlotWaiters.shift()();
+      return;
+    }
+    pdfRenderSlots = Math.max(0, pdfRenderSlots - 1);
+  }
+
+  async function pdfWithRenderSlot(fn) {
+    await pdfAcquireRenderSlot();
+    try {
+      return await fn();
+    } finally {
+      pdfReleaseRenderSlot();
+    }
+  }
+
+  function pdfEstimateRenderBytes(width, height) {
+    var w = Math.max(1, Math.ceil(width));
+    var h = Math.max(1, Math.ceil(height));
+    var raw = w * h * 4;
+    return raw + Math.floor(raw * 0.35);
+  }
+
+  async function renderPdfPageCanvasToDataUrl(page, viewport, jpegQuality) {
     var canvas = document.createElement("canvas");
     var ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) throw new Error("canvas 2d non disponibile");
     canvas.width = Math.max(1, Math.ceil(viewport.width));
     canvas.height = Math.max(1, Math.ceil(viewport.height));
     await page.render({ canvasContext: ctx, viewport: viewport, intent: "print" }).promise;
-    return canvas.toDataURL("image/png");
+    return canvas.toDataURL("image/jpeg", jpegQuality);
+  }
+
+  async function renderPdfPageToDataUrl(pdfDoc, pageNum, scale, jpegQuality) {
+    return pdfWithRenderSlot(async function () {
+      var page = await pdfDoc.getPage(pageNum);
+      try {
+        var viewport = page.getViewport({ scale: scale });
+        return await renderPdfPageCanvasToDataUrl(page, viewport, jpegQuality);
+      } finally {
+        page.cleanup();
+      }
+    });
+  }
+
+  var PDF_THUMB_MEMORY_ESTIMATE = 512 * 1024;
+
+  async function renderPdfPagesInParallel(pdfDoc, pageNums, scale, jpegQuality, opts) {
+    var loadGen = opts.loadGen;
+    var onProgress = opts.onProgress || function () {};
+    var onPage = opts.onPage || function () {};
+    var total = pageNums.length;
+    if (!total) return { cancelled: false, done: 0 };
+
+    var budget = pdfConcurrentRenderBudgetBytes();
+    var queue = pageNums.slice();
+    var done = 0;
+    var inFlightEst = 0;
+    var cancelled = false;
+
+    function checkCancelled() {
+      if (loadGen !== pagePickerState.loadGen) {
+        cancelled = true;
+        return true;
+      }
+      return false;
+    }
+
+    function canStart(extraBytes) {
+      return inFlightEst + extraBytes <= budget;
+    }
+
+    async function worker() {
+      while (!cancelled) {
+        if (checkCancelled()) break;
+        while (!canStart(PDF_THUMB_MEMORY_ESTIMATE) && !cancelled) {
+          await new Promise(function (r) { setTimeout(r, 50); });
+        }
+        if (checkCancelled()) break;
+        if (!queue.length) break;
+
+        var pageNum = queue.shift();
+        inFlightEst += PDF_THUMB_MEMORY_ESTIMATE;
+        try {
+          await pdfWithRenderSlot(async function () {
+            var page = await pdfDoc.getPage(pageNum);
+            try {
+              var viewport = page.getViewport({ scale: scale });
+              var url = await renderPdfPageCanvasToDataUrl(page, viewport, jpegQuality);
+              onPage(pageNum, url);
+            } finally {
+              page.cleanup();
+            }
+          });
+        } catch (err) {
+          onPage(pageNum, null, err);
+        } finally {
+          inFlightEst -= PDF_THUMB_MEMORY_ESTIMATE;
+          done++;
+          onProgress(done, total);
+        }
+      }
+    }
+
+    var workers = [];
+    for (var i = 0; i < pdfPhysicalCpuCount(); i++) workers.push(worker());
+    await Promise.all(workers);
+    return { cancelled: cancelled, done: done };
+  }
+
+  async function renderPdfThumbsParallel(pdfDoc, pageNums, loadGen, onProgress, onThumbReady) {
+    return renderPdfPagesInParallel(
+      pdfDoc,
+      pageNums,
+      PDF_THUMB_SCALE,
+      PDF_THUMB_JPEG_QUALITY,
+      {
+        loadGen: loadGen,
+        onProgress: onProgress,
+        onPage: function (pageNum, url) {
+          var thumbUrl = url || makeFallbackThumb(pageNum);
+          pagePickerState.thumbUrls[pageNum] = thumbUrl;
+          if (onThumbReady) onThumbReady(pageNum, thumbUrl);
+        },
+      }
+    );
   }
 
   function setPagePickerRenderProgress(done, total) {
@@ -1821,7 +1996,9 @@ if (document.readyState === "loading") {
     }
     pagePickerDetailImg.removeAttribute("src");
     try {
-      var url = await renderPdfPageToDataUrl(pagePickerState.pdfDoc, pageNum, 1.1);
+      var url = await renderPdfPageToDataUrl(
+        pagePickerState.pdfDoc, pageNum, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
+      );
       pagePickerState.detailCache[pageNum] = url;
       if (pagePickerState.lastSelected === pageNum) pagePickerDetailImg.src = url;
     } catch (_) {
@@ -1850,7 +2027,7 @@ if (document.readyState === "loading") {
     pagePickerState.thumbUrls = {};
     pagePickerState.detailCache = {};
     pagePickerGrid.innerHTML = "";
-    pagePickerGridWrap.classList.remove("is-rendering");
+    pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
     setPagePickerRenderProgress(0, 0);
     pagePickerPanel.classList.remove("show", "is-loading");
     renderPagePickerDetail(null);
@@ -1874,33 +2051,38 @@ if (document.readyState === "loading") {
       pagePickerState.pdfDoc = pdfDoc;
       pagePickerState.numPages = pdfDoc.numPages;
       syncPagePickerSelectionFromField();
-      setPagePickerRenderProgress(0, pdfDoc.numPages);
-      var thumbs = [];
-      for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-        if (loadGen !== pagePickerState.loadGen) return;
-        try {
-          var thumbUrl = await renderPdfPageToDataUrl(pdfDoc, pageNum, 0.22);
-          if (loadGen !== pagePickerState.loadGen) return;
-          pagePickerState.thumbUrls[pageNum] = thumbUrl;
-          thumbs.push({ pageNum: pageNum, thumbUrl: thumbUrl });
-        } catch (thumbErr) {
-          thumbs.push({
-            pageNum: pageNum,
-            thumbUrl: makeFallbackThumb(pageNum),
-          });
-        }
-        setPagePickerRenderProgress(pageNum, pdfDoc.numPages);
+      var allPageNums = [];
+      for (var pn = 1; pn <= pdfDoc.numPages; pn++) allPageNums.push(pn);
+      var initialThumbs = [];
+      for (var initPn = 1; initPn <= pdfDoc.numPages; initPn++) {
+        initialThumbs.push({ pageNum: initPn, thumbUrl: makeFallbackThumb(initPn) });
       }
-      if (loadGen !== pagePickerState.loadGen) return;
-      buildPagePickerGrid(thumbs);
+      buildPagePickerGrid(initialThumbs);
       pagePickerGridWrap.classList.remove("is-rendering");
+      pagePickerGridWrap.classList.add("is-rendering-progress");
       pagePickerPanel.classList.remove("is-loading");
+      setPagePickerRenderProgress(0, allPageNums.length);
+      var batchRender = await renderPdfThumbsParallel(
+        pdfDoc,
+        allPageNums,
+        loadGen,
+        setPagePickerRenderProgress,
+        function (pageNum, thumbUrl) {
+          var btn = pagePickerGrid.querySelector('.page-picker-thumb[data-page="' + pageNum + '"]');
+          if (btn) {
+            var img = btn.querySelector("img");
+            if (img) img.src = thumbUrl;
+          }
+        }
+      );
+      pagePickerGridWrap.classList.remove("is-rendering-progress");
+      if (loadGen !== pagePickerState.loadGen || batchRender.cancelled) return;
       updatePagePickerMeta();
       if (pagePickerState.lastSelected) renderPagePickerDetail(pagePickerState.lastSelected);
       await refreshFilteredRangePickers();
     } catch (err) {
       if (loadGen !== pagePickerState.loadGen) return;
-      pagePickerGridWrap.classList.remove("is-rendering");
+      pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
       pagePickerPanel.classList.remove("is-loading");
       pagePickerMeta.textContent = "Anteprima non disponibile: " + String(err && err.message ? err.message : err);
     }
@@ -1978,18 +2160,14 @@ if (document.readyState === "loading") {
   var repairProgressDetail = document.getElementById("repair-progress-detail");
   var repairProgressFill = document.getElementById("repair-progress-fill");
   var ingestDebugPanel = document.getElementById("ingest-debug-panel");
-  var ingestDebugPanelToggle = document.getElementById("ingest-debug-panel-toggle");
-  var ingestDebugPanelBody = document.getElementById("ingest-debug-panel-body");
+  var ingestDebugDetails = document.getElementById("ingest-debug-details");
   var ingestDebugLogEl = document.getElementById("ingest-debug-log");
 
   function openLabPanel() {
-    if (!ingestDebugPanelBody || !ingestDebugPanel || !ingestDebugPanelToggle) return;
-    ingestDebugPanelBody.hidden = false;
-    ingestDebugPanelToggle.setAttribute("aria-expanded", "true");
-    ingestDebugPanel.classList.add("is-open");
+    if (ingestDebugDetails) ingestDebugDetails.open = true;
   }
 
-  function labLog(message) {
+  function labLog(message, options) {
     if (window.LibrarAInLog) window.LibrarAInLog.info(message, { sink: "lab" });
     var line = new Date().toLocaleTimeString("it-IT") + " — " + message;
     if (ingestDebugLogEl) {
@@ -1997,7 +2175,7 @@ if (document.readyState === "loading") {
       ingestDebugLogEl.textContent = (ingestDebugLogEl.textContent ? ingestDebugLogEl.textContent + "\n" : "") + line;
       ingestDebugLogEl.scrollTop = ingestDebugLogEl.scrollHeight;
     }
-    openLabPanel();
+    if (!options || options.open !== false) openLabPanel();
   }
 
   function labLogError(message) {
@@ -2011,16 +2189,6 @@ if (document.readyState === "loading") {
     openLabPanel();
   }
 
-  if (ingestDebugPanelToggle && ingestDebugPanelBody && ingestDebugPanel) {
-    ingestDebugPanelToggle.addEventListener("click", function () {
-      var open = ingestDebugPanelBody.hidden;
-      ingestDebugPanelBody.hidden = !open;
-      ingestDebugPanelToggle.setAttribute("aria-expanded", open ? "true" : "false");
-      ingestDebugPanel.classList.toggle("is-open", open);
-      if (open) labLog("Pannello Lab aperto.");
-    });
-  }
-
   var ingestDebugLabActions = document.getElementById("ingest-debug-lab-actions");
   if (ingestDebugLabActions) {
     ingestDebugLabActions.addEventListener("click", function (event) {
@@ -2032,6 +2200,7 @@ if (document.readyState === "loading") {
 
   var ingestPagesState = {
     sourceSha256: "",
+    jobId: "",
     expectedPages: [],
     processedPages: [],
     failedPages: {},
@@ -2113,6 +2282,18 @@ if (document.readyState === "loading") {
     renderAllProgress();
     scheduleIngestAuditRefresh();
     renderIngestPagesSections();
+    if (window.parent !== window) {
+      try {
+        window.parent.postMessage(
+          {
+            type: "librarain-ingest-done",
+            job_id: ingestPagesState.jobId || "",
+            source_sha256: ingestPagesState.sourceSha256 || "",
+          },
+          "*"
+        );
+      } catch (_) {}
+    }
   }
 
   function applyMockAuditPagesState() {
@@ -3551,6 +3732,20 @@ if (document.readyState === "loading") {
       }
 
       connectSSE(data.events_url);
+      ingestPagesState.jobId = data.job_id || "";
+      if (window.parent !== window) {
+        try {
+          window.parent.postMessage(
+            {
+              type: "librarain-ingest-started",
+              job_id: data.job_id || "",
+              events_url: data.events_url || "",
+              status_url: data.status_url || "",
+            },
+            "*"
+          );
+        } catch (_) {}
+      }
     } catch (err) {
       if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest submit failed", err);
       if (progressBox.classList.contains("show")) {
@@ -3599,6 +3794,22 @@ if (document.readyState === "loading") {
   }
 
   bootIngestLab();
+
+  function reportEmbedHeight() {
+    if (!document.body.classList.contains("embed-mode")) return;
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight
+    );
+    parent.postMessage({ type: "librarain-embed-height", source: "ingest", height: height }, "*");
+  }
+  if (document.body.classList.contains("embed-mode")) {
+    window.addEventListener("load", reportEmbedHeight);
+    if (typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(reportEmbedHeight).observe(document.body);
+    }
+  }
 })();
 </script>
 </body>
