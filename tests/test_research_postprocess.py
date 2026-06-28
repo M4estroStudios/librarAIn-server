@@ -133,6 +133,40 @@ Testo.
         )
         self.assertIn('class="notice"', html)
 
+    def test_fonti_section_appended_at_end(self) -> None:
+        (self.data_root / "output" / "abc123" / "manifest.json").write_text(
+            json.dumps(
+                {
+                    "source_sha256": "abc123",
+                    "slug": "libro-a",
+                    "reicat": {"titolo": "Libro A"},
+                    "pages": [{"aligned": 112, "file": "pages/p.0112.md"}],
+                }
+            ),
+            encoding="utf-8",
+        )
+        markdown = (
+            "# Articolo\n\n"
+            "Testo [fonte](source:abc123:aligned:112).\n\n"
+            "## Cronologia\n\n"
+            "| Periodo | Evento | Fonti |\n"
+            "|---------|--------|-------|\n"
+            "| 1200 | Primo | [f](source:abc123:aligned:112) |\n"
+        )
+        result = postprocess_markdown(
+            markdown,
+            data_root=self.data_root,
+            index_document=self.index,
+            request_id="req5",
+        )
+        self.assertIn("## Fonti", result.markdown)
+        self.assertTrue(result.markdown.strip().endswith(
+            "- [Libro A, p. 112](source:abc123:aligned:112)"
+        ))
+        html = markdown_to_article_html("Articolo", result.markdown)
+        self.assertIn("<h2>Fonti</h2>", html)
+        self.assertIn('href="source:abc123:aligned:112"', html)
+
 
 if __name__ == "__main__":
     unittest.main()

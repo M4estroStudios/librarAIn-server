@@ -23,6 +23,7 @@ _SOURCE_URL_PATTERN = re.compile(
 )
 _CRONOLOGIA_HEADER = "## Cronologia"
 _ANNOTAZIONI_HEADER = "## Annotazioni"
+_FONTI_HEADER = "## Fonti"
 _TABLE_ROW_PATTERN = re.compile(r"^\|(.+)\|\s*$")
 _UNVERIFIABLE = "*[[fonte non verificabile]]*"
 _PERIOD_YEAR_PATTERN = re.compile(r"(\d{3,4})")
@@ -63,10 +64,12 @@ class PostprocessResult:
 @dataclass(frozen=True)
 class _ManifestIndex:
     pages_by_book: dict[str, set[int]]
+    book_titles: dict[str, str] = field(default_factory=dict)
 
 
 def _load_manifest_index(data_root: Path) -> _ManifestIndex:
     pages_by_book: dict[str, set[int]] = {}
+    book_titles: dict[str, str] = {}
     output_dir = data_root / "output"
     if not output_dir.is_dir():
         return _ManifestIndex(pages_by_book=pages_by_book)
@@ -90,7 +93,11 @@ def _load_manifest_index(data_root: Path) -> _ManifestIndex:
                 if isinstance(entry, dict) and isinstance(entry.get("aligned"), int):
                     aligned.add(entry["aligned"])
         pages_by_book[sha] = aligned
-    return _ManifestIndex(pages_by_book=pages_by_book)
+        reicat = raw.get("reicat") if isinstance(raw.get("reicat"), dict) else {}
+        title = reicat.get("titolo") or reicat.get("title") or raw.get("slug")
+        if title:
+            book_titles[sha] = str(title)
+    return _ManifestIndex(pages_by_book=pages_by_book, book_titles=book_titles)
 
 
 def _is_valid_source(url: str, manifest: _ManifestIndex) -> tuple[bool, str | None, int | None]:
@@ -238,6 +245,34 @@ def _strip_annotazioni_section(markdown: str) -> str:
     return markdown[:idx].rstrip() + suffix[rest_start:].lstrip("\n")
 
 
+def _strip_fonti_section(markdown: str) -> str:
+    idx = markdown.find(_FONTI_HEADER)
+    if idx < 0:
+        return markdown
+    return markdown[:idx].rstrip() + "\n"
+
+
+def _book_title(manifest: _ManifestIndex, source_sha256: str) -> str:
+    return manifest.book_titles.get(source_sha256, source_sha256[:16] + "…")
+
+
+def _append_fonti_section(
+    markdown: str,
+    citations: list[CitationRecord],
+    manifest: _ManifestIndex,
+) -> str:
+    if not citations:
+        return markdown
+    body = _strip_fonti_section(markdown).rstrip()
+    lines = [_FONTI_HEADER, ""]
+    for cite in citations:
+        title = _book_title(manifest, cite.source_sha256)
+        label = f"{title}, p. {cite.aligned_page}"
+        url = f"source:{cite.source_sha256}:aligned:{cite.aligned_page}"
+        lines.append(f"- [{label}]({url})")
+    return body + "\n\n" + "\n".join(lines) + "\n"
+
+
 def _process_cronologia_section(
     markdown: str,
     *,
@@ -350,6 +385,7 @@ def postprocess_markdown(
         without_annotazioni,
         request_id=request_id,
     )
+    final_markdown = _append_fonti_section(final_markdown, citations, manifest)
 
     pohs_referenced = sorted(
         poh_map.values(),

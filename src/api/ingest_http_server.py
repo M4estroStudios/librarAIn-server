@@ -12,6 +12,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+from src.api.chat_completions_handler import handle_chat_completions
 from src.api.ingest_form import (
     InvalidPagesSpec,
     InvalidRangeField,
@@ -27,6 +28,7 @@ from src.api.research_handlers import ResearchBatchRegistry, build_research_rout
 from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
+    get_polyindex_subject,
     list_multibook_subjects,
     merge_polyindex_subjects,
 )
@@ -307,6 +309,69 @@ def build_ingest_server(
             if research_try_get(self, path, query):
                 return
 
+            if path == "/api/system/jobs":
+                if not self._require_auth(query):
+                    return
+                include_finished = (query.get("include_finished", ["0"])[0] or "0").lower() in (
+                    "1",
+                    "true",
+                    "yes",
+                )
+                try:
+                    limit = min(100, max(1, int(query.get("limit", ["30"])[0] or 30)))
+                except ValueError:
+                    limit = 30
+                jobs = registry.list_jobs(include_finished=include_finished, limit=limit)
+                jobs += research_batch_registry.list_jobs(
+                    include_finished=include_finished,
+                    limit=limit,
+                )
+                jobs.sort(key=lambda item: item.get("updated_at") or "", reverse=True)
+                jobs.sort(key=lambda item: 0 if item.get("is_active") else 1)
+                jobs = jobs[:limit]
+                active_count = sum(1 for job in jobs if job.get("is_active"))
+                _send_json(
+                    self,
+                    200,
+                    {
+                        "ok": True,
+                        "jobs": jobs,
+                        "active_jobs": active_count,
+                    },
+                )
+                return
+
+            parts = path.split("/")
+            if (
+                len(parts) == 5
+                and parts[1] == "api"
+                and parts[2] == "system"
+                and parts[3] == "jobs"
+            ):
+                if not self._require_auth(query):
+                    return
+                job_id = parts[4]
+                summary = registry.get_job_summary(job_id)
+                if summary is None:
+                    summary = research_batch_registry.get_job_summary(job_id)
+                if summary is None:
+                    _send_json(self, 404, {"ok": False, "error": "job not found"})
+                    return
+                _send_json(self, 200, {"ok": True, "job": summary})
+                return
+
+            if (
+                len(parts) == 6
+                and parts[1] == "api"
+                and parts[2] == "system"
+                and parts[3] == "jobs"
+                and parts[5] == "events"
+            ):
+                if not self._require_auth(query):
+                    return
+                self._handle_system_job_events(parts[4])
+                return
+
             if path in ("/", "/index.html"):
                 index_file = web_dir / "index.html"
                 if not index_file.exists():
@@ -376,6 +441,20 @@ def build_ingest_server(
                     data_root / "polyindex", min_books=max(1, min_books)
                 )
                 _send_json(self, 200, {"ok": True, "subjects": subjects})
+                return
+
+            if path == "/api/admin/subject":
+                if not self._require_auth(query):
+                    return
+                canonical_id = (query.get("canonical_id") or [""])[0].strip()
+                if not canonical_id:
+                    _send_json(self, 400, {"ok": False, "error": "canonical_id is required"})
+                    return
+                subject = get_polyindex_subject(data_root / "polyindex", canonical_id)
+                if subject is None:
+                    _send_json(self, 404, {"ok": False, "error": "subject not found"})
+                    return
+                _send_json(self, 200, {"ok": True, "subject": subject})
                 return
 
             if path == "/api/admin/book-pages-audit":
@@ -875,6 +954,39 @@ def build_ingest_server(
                 return
             _send_json(self, 200, {"ok": True, **snapshot})
 
+        def _handle_system_job_events(self, job_id: str) -> None:
+            snapshot = registry.get_status(job_id)
+            if snapshot is None:
+                _send_json(self, 404, {"ok": False, "error": "job not found"})
+                return
+
+            last_seq_raw = self.headers.get("Last-Event-ID", "-1")
+            try:
+                last_seq = int(last_seq_raw)
+            except ValueError:
+                last_seq = -1
+
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream; charset=utf-8")
+            self.send_header("Cache-Control", "no-cache")
+            self.send_header("Connection", "keep-alive")
+            self.send_header("X-Accel-Buffering", "no")
+            self.end_headers()
+
+            job_kind = snapshot.get("job_kind")
+            if job_kind == "research":
+                terminal_statuses = {"succeeded", "failed"}
+            else:
+                terminal_statuses = {STATUS_DONE, STATUS_ERROR}
+
+            for ev in registry.subscribe(job_id, last_seq=last_seq):
+                event_name = ev.get("status", "progress")
+                ok = _sse_write(self, event_name, ev)
+                if not ok:
+                    break
+                if event_name in terminal_statuses:
+                    break
+
         def _handle_events(self, job_id: str) -> None:
             snapshot = registry.get_status(job_id)
             if snapshot is None:
@@ -910,6 +1022,17 @@ def build_ingest_server(
 
         def do_POST(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
+            if parsed.path == "/api/chat/completions":
+                if not self._require_auth():
+                    return
+                handle_chat_completions(
+                    self,
+                    data_root=data_root,
+                    settings=settings,
+                    read_json_body=_read_body,
+                    send_json=_send_json,
+                )
+                return
             if parsed.path.startswith("/api/research/"):
                 try:
                     if research_try_post(self, parsed.path):

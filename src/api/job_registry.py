@@ -206,6 +206,54 @@ class JobRegistry:
                 payload["last_error"] = state.error
             return payload
 
+    def running_job_count(self) -> int:
+        with self._lock:
+            return sum(
+                1
+                for state in self._jobs.values()
+                if state.status not in _TERMINAL_STATUSES
+            )
+
+    def list_active_jobs(self) -> list[dict[str, Any]]:
+        return self.list_jobs(include_finished=False)
+
+    def list_jobs(
+        self,
+        *,
+        limit: int = 50,
+        include_finished: bool = True,
+    ) -> list[dict[str, Any]]:
+        with self._lock:
+            selected: list[JobState] = []
+            for state in self._jobs.values():
+                if state.status in _TERMINAL_STATUSES and not include_finished:
+                    continue
+                selected.append(state)
+            selected.sort(key=lambda item: item.updated_at, reverse=True)
+            selected.sort(
+                key=lambda item: 0 if item.status not in _TERMINAL_STATUSES else 1
+            )
+            summaries: list[dict[str, Any]] = []
+            for state in selected:
+                if state.status in _TERMINAL_STATUSES and not include_finished:
+                    continue
+                if state.job_kind == "research":
+                    summaries.append(summarize_research_job_state(state))
+                else:
+                    summaries.append(summarize_job_state(state))
+                if len(summaries) >= max(1, limit):
+                    break
+            return summaries
+
+    def get_job_summary(self, job_id: str) -> dict[str, Any] | None:
+        with self._lock:
+            state = self._jobs.get(job_id)
+            if state is None:
+                return None
+            if state.job_kind == "research":
+                return summarize_research_job_state(state)
+            return summarize_job_state(state)
+
     def subscribe(
         self, job_id: str, last_seq: int = -1
     ) -> Generator[dict[str, Any], None, None]:
@@ -258,3 +306,475 @@ class JobRegistry:
                         st._subscribers.remove(q)
                     except ValueError:
                         pass
+
+
+_INGEST_PHASE_ORDER = [
+    "validation",
+    "gate_hash",
+    "pdf_alignment",
+    "page_enumeration",
+    "render",
+    "stage1_ocr",
+    "stage2_vision",
+    "stage3_editor",
+    "polyindex_toc",
+    "polyindex_index",
+    "time_index",
+]
+_REPAIR_PHASE_ORDER = [
+    "page_repair",
+    "gaps_repair",
+    "stage1_ocr",
+    "stage2_vision",
+    "stage3_editor",
+]
+_RESEARCH_PHASE_ORDER = [
+    "queue",
+    "research_prefilter",
+    "research_article",
+    "research_poh_links",
+    "research_timeline",
+    "research_postprocess",
+    "research",
+]
+_PREFILTER_STEP_ORDER = [
+    "subject_match",
+    "toc_expansion",
+    "time_index",
+    "merge_candidates",
+    "load_pages",
+    "relevance_filter",
+]
+_PREFILTER_STEP_FIELDS = frozenset(
+    {
+        "subject_pages",
+        "subject_books",
+        "matches",
+        "ai_used",
+        "degraded",
+        "pages_before",
+        "pages_after",
+        "pages_added",
+        "expanded_chapters",
+        "unknown_pages",
+        "books_dropped",
+        "output_books",
+        "matched_labels",
+        "fallback_labels",
+        "timeline_candidates",
+        "candidate_pages",
+        "loaded_pages",
+        "loaded_books",
+        "input_pages",
+        "kept_pages",
+        "dropped_pages",
+        "expansion_added",
+        "time_added",
+        "merge_added",
+    }
+)
+_PAGE_STEP_STATUSES = frozenset(
+    {"page_progress", "page_skipped", "page_failed", "progress"}
+)
+_ACTIVITY_STATUSES = frozenset(
+    {"started", "progress", "page_progress", "page_skipped", "page_failed", "waiting"}
+)
+_PHASE_LABELS = {
+    "validation": "Validazione metadati",
+    "gate_hash": "Controllo hash",
+    "pdf_alignment": "Allineamento PDF",
+    "page_enumeration": "Enumerazione pagine",
+    "render": "Render PDF",
+    "stage1_ocr": "Stage 1 — OCR",
+    "stage2_vision": "Stage 2 — Vision",
+    "stage3_editor": "Stage 3 — Editor",
+    "polyindex_toc": "Polyindex TOC",
+    "polyindex_index": "Polyindex INDEX",
+    "time_index": "Polyindex TIME_INDEX",
+    "page_repair": "Preparazione riparazione",
+    "gaps_repair": "Riparazione lacune",
+    "queue": "In coda",
+    "research_prefilter": "Prefiltro contesto",
+    "research_article": "Generazione articolo",
+    "research_poh_links": "Link POH nell'articolo",
+    "research_timeline": "Cronologia",
+    "research_postprocess": "Post-process articolo",
+    "research": "Pipeline research",
+    "research_batch": "Generazione batch articoli",
+    "pipeline": "Pipeline",
+}
+
+
+def _clip_text(text: str, limit: int = 96) -> str:
+    stripped = str(text or "").strip()
+    if len(stripped) <= limit:
+        return stripped
+    return stripped[: limit - 1] + "…"
+
+
+def _current_activity(events: list[dict[str, Any]]) -> tuple[str | None, str | None, str | None]:
+    for ev in reversed(events):
+        phase = ev.get("phase")
+        status = ev.get("status")
+        if not phase or phase == "pipeline":
+            continue
+        if status not in _ACTIVITY_STATUSES:
+            continue
+        parts: list[str] = []
+        if ev.get("aligned_page") is not None:
+            parts.append(f"pagina {ev['aligned_page']}")
+        missing = ev.get("missing_in")
+        if isinstance(missing, list) and missing:
+            parts.append("lacune: " + ", ".join(str(item) for item in missing))
+        if ev.get("message"):
+            parts.append(str(ev["message"]))
+        if ev.get("prefilter_step"):
+            parts.append(str(ev["prefilter_step"]).replace("_", " "))
+        label = _PHASE_LABELS.get(str(phase), str(phase))
+        return str(phase), label, " · ".join(parts) if parts else None
+    return None, None, None
+
+
+def _extract_job_context(state: JobState) -> dict[str, Any]:
+    ctx: dict[str, Any] = {
+        "poh_id": None,
+        "poh_label": None,
+        "query": None,
+        "book_title": None,
+        "source_sha256": None,
+        "aligned_page": None,
+        "missing_in": None,
+    }
+    for ev in state.events:
+        if ev.get("poh_label"):
+            ctx["poh_label"] = str(ev["poh_label"]).strip()
+        if ev.get("poh_id"):
+            ctx["poh_id"] = str(ev["poh_id"]).strip()
+        if ev.get("query"):
+            ctx["query"] = str(ev["query"]).strip()
+        for title_field in ("book_title", "titolo"):
+            if ev.get(title_field):
+                ctx["book_title"] = str(ev[title_field]).strip()
+        if ev.get("source_sha256"):
+            ctx["source_sha256"] = str(ev["source_sha256"]).strip().lower()
+        if ev.get("aligned_page") is not None:
+            ctx["aligned_page"] = ev["aligned_page"]
+        if ev.get("missing_in"):
+            ctx["missing_in"] = ev["missing_in"]
+        result = ev.get("result")
+        if isinstance(result, dict):
+            if result.get("poh_id") and not ctx["poh_id"]:
+                ctx["poh_id"] = str(result["poh_id"]).strip()
+    phase, phase_label, activity_detail = _current_activity(state.events)
+    ctx["current_phase"] = phase
+    ctx["current_phase_label"] = phase_label
+    ctx["activity_detail"] = activity_detail
+    return ctx
+
+
+def _is_repair_job(state: JobState) -> bool:
+    return any(
+        ev.get("phase") in {"page_repair", "gaps_repair"} for ev in state.events
+    )
+
+
+def _build_job_headline(state: JobState, ctx: dict[str, Any]) -> tuple[str, str | None, str | None]:
+    poh_label = ctx.get("poh_label")
+    poh_id = ctx.get("poh_id")
+    query = ctx.get("query")
+    activity = ctx.get("activity_detail")
+    phase_label = ctx.get("current_phase_label")
+
+    if state.job_kind == "research" or set(_RESEARCH_PHASE_ORDER).intersection(
+        {ev.get("phase") for ev in state.events}
+    ):
+        if poh_label:
+            title = f"Articolo: {poh_label}"
+            subtitle_parts: list[str] = []
+            if poh_id and poh_id != poh_label:
+                subtitle_parts.append(f"POH {poh_id}")
+            if query and query != poh_label:
+                subtitle_parts.append(f"Ricerca: {_clip_text(query)}")
+            subtitle = " · ".join(subtitle_parts) if subtitle_parts else None
+        elif query:
+            title = f"Research: {_clip_text(query)}"
+            subtitle = f"POH {poh_id}" if poh_id else None
+        else:
+            title = "Generazione articolo"
+            subtitle = f"POH {poh_id}" if poh_id else None
+        detail = activity or phase_label
+        return title, subtitle, detail
+
+    if _is_repair_job(state):
+        sha = ctx.get("source_sha256")
+        sha_hint = f"{sha[:16]}…" if sha else None
+        if any(ev.get("phase") == "gaps_repair" for ev in state.events):
+            title = "Riparazione lacune libro"
+        else:
+            page = ctx.get("aligned_page")
+            title = f"Riparazione pagina {page}" if page is not None else "Riparazione pagina"
+        subtitle = sha_hint
+        detail = activity or phase_label
+        return title, subtitle, detail
+
+    book_title = ctx.get("book_title")
+    sha = ctx.get("source_sha256")
+    sha_hint = f"{sha[:16]}…" if sha else None
+    if book_title:
+        title = f"Ingest: {_clip_text(book_title, 72)}"
+        subtitle = sha_hint or "Pipeline OCR, vision e polyindex"
+    elif sha_hint:
+        title = "Ingestione libro"
+        subtitle = sha_hint
+    else:
+        title = "Ingestione libro"
+        subtitle = "Avvio pipeline"
+    detail = activity or phase_label
+    return title, subtitle, detail
+
+
+def _job_public_fields(state: JobState) -> dict[str, Any]:
+    ctx = _extract_job_context(state)
+    title, subtitle, detail = _build_job_headline(state, ctx)
+    return {
+        "title": title,
+        "subtitle": subtitle,
+        "detail": detail,
+        "poh_id": ctx.get("poh_id"),
+        "poh_label": ctx.get("poh_label"),
+        "query": ctx.get("query"),
+        "book_title": ctx.get("book_title"),
+        "source_sha256": ctx.get("source_sha256"),
+        "aligned_page": ctx.get("aligned_page"),
+        "current_phase": ctx.get("current_phase"),
+        "current_phase_label": ctx.get("current_phase_label"),
+    }
+
+
+def _phase_order_for_job(state: JobState) -> list[str]:
+    phases = {ev.get("phase") for ev in state.events if ev.get("phase")}
+    if phases.intersection({"page_repair", "gaps_repair"}):
+        return _REPAIR_PHASE_ORDER
+    if state.job_kind == "research" or phases.intersection(set(_RESEARCH_PHASE_ORDER)):
+        return _RESEARCH_PHASE_ORDER
+    return _INGEST_PHASE_ORDER
+
+
+def _phase_detail_from_event(ev: dict[str, Any]) -> str | None:
+    phase = ev.get("phase")
+    status = ev.get("status")
+    if not phase:
+        return None
+    if status == "failed" and ev.get("message"):
+        return str(ev["message"])
+    if phase == "research_article" and status == "started":
+        pages = ev.get("input_pages")
+        books = ev.get("context_books")
+        if pages is not None:
+            book_part = f" · {books} libri" if books is not None else ""
+            return f"{pages} pag. in contesto{book_part}"
+    if phase == "research_poh_links" and status == "started":
+        candidates = ev.get("candidates")
+        if candidates is not None:
+            return f"{candidates} candidati POH"
+    if phase == "research_timeline" and status == "started":
+        candidates = ev.get("timeline_candidates")
+        if candidates is not None:
+            return f"{candidates} candidati cronologia"
+    if status != "completed":
+        return None
+    if phase == "research_prefilter":
+        pages = ev.get("pages")
+        dropped = ev.get("dropped_pages", 0)
+        if pages is not None:
+            return f"{pages} pag. finali · {dropped} scartate nel filtro"
+    if phase == "research_article":
+        if ev.get("skipped_llm"):
+            return "LLM non chiamato (nessun materiale)"
+        parts: list[str] = []
+        if ev.get("input_pages") is not None:
+            parts.append(f"{ev['input_pages']} pag.")
+        if ev.get("markdown_chars") is not None:
+            parts.append(f"{ev['markdown_chars']} caratteri")
+        return " · ".join(parts) if parts else None
+    if phase == "research_poh_links":
+        if ev.get("skipped_llm"):
+            return "LLM non chiamato"
+        if ev.get("candidates") is not None:
+            return f"{ev['candidates']} candidati elaborati"
+    if phase == "research_timeline":
+        if ev.get("skipped_llm"):
+            return "LLM non chiamato"
+        if ev.get("timeline_candidates") is not None:
+            return f"{ev['timeline_candidates']} candidati temporali"
+    if phase == "research_postprocess":
+        parts: list[str] = []
+        if ev.get("citations") is not None:
+            parts.append(f"{ev['citations']} citazioni")
+        if ev.get("poh_links") is not None:
+            parts.append(f"{ev['poh_links']} POH")
+        if ev.get("timeline_rows") is not None:
+            parts.append(f"{ev['timeline_rows']} righe cronologia")
+        return " · ".join(parts) if parts else None
+    if phase == "polyindex_index":
+        parts: list[str] = []
+        if ev.get("n_match") is not None:
+            parts.append(f"{ev['n_match']} match")
+        if ev.get("n_new") is not None:
+            parts.append(f"{ev['n_new']} nuovi")
+        if ev.get("n_alias") is not None:
+            parts.append(f"{ev['n_alias']} alias")
+        return " · ".join(parts) if parts else None
+    if phase == "page_enumeration" and ev.get("n_pages") is not None:
+        return f"{ev['n_pages']} pagine utili"
+    if phase == "pdf_alignment":
+        if ev.get("skipped"):
+            return "saltato"
+        if ev.get("aligned_useful_pages"):
+            return f"{len(ev['aligned_useful_pages'])} pagine allineate"
+    if ev.get("message"):
+        return str(ev["message"])
+    return None
+
+
+def _summarize_prefilter_steps(
+    events: list[dict[str, Any]],
+    *,
+    prefilter_active: bool = False,
+) -> list[dict[str, Any]]:
+    by_step: dict[str, dict[str, Any]] = {}
+    for ev in events:
+        if ev.get("phase") != "research_prefilter":
+            continue
+        step_id = ev.get("prefilter_step")
+        if not step_id:
+            continue
+        step_key = str(step_id)
+        item = by_step.setdefault(step_key, {"step": step_key, "status": "pending"})
+        if ev.get("status") == "progress":
+            item["status"] = "done"
+        for field in _PREFILTER_STEP_FIELDS:
+            if field in ev:
+                item[field] = ev[field]
+    if not by_step:
+        return []
+    ordered: list[dict[str, Any]] = []
+    for step_id in _PREFILTER_STEP_ORDER:
+        if step_id in by_step:
+            ordered.append(by_step[step_id])
+        elif prefilter_active:
+            ordered.append({"step": step_id, "status": "pending"})
+    for step_id, item in by_step.items():
+        if step_id not in _PREFILTER_STEP_ORDER:
+            ordered.append(item)
+    if prefilter_active:
+        for step in ordered:
+            if step.get("status") == "pending":
+                step["status"] = "active"
+                break
+    return ordered
+
+
+def _summarize_phases(events: list[dict[str, Any]], phase_order: list[str]) -> list[dict[str, Any]]:
+    states: dict[str, dict[str, Any]] = {
+        phase: {"phase": phase, "status": "pending", "done": 0, "total": 1}
+        for phase in phase_order
+    }
+    for ev in events:
+        phase = ev.get("phase")
+        status = ev.get("status")
+        if not phase or phase == "pipeline" or phase not in states:
+            continue
+        item = states[phase]
+        page_total = ev.get("page_total")
+        if status == "started":
+            item["status"] = "active"
+            item["done"] = 0
+            if page_total:
+                item["total"] = max(1, int(page_total))
+            detail = _phase_detail_from_event(ev)
+            if detail:
+                item["detail"] = detail
+        elif status in _PAGE_STEP_STATUSES:
+            item["status"] = "active"
+            item["done"] = min(item["done"] + 1, int(item["total"]))
+            if page_total:
+                item["total"] = max(1, int(page_total))
+        elif status == "completed":
+            item["status"] = "done"
+            rendered = ev.get("rendered_page_count")
+            if page_total:
+                item["total"] = max(1, int(page_total))
+                item["done"] = item["total"]
+            elif rendered is not None:
+                item["total"] = max(1, int(rendered))
+                item["done"] = item["total"]
+            elif item["done"] < item["total"]:
+                item["done"] = item["total"]
+            detail = _phase_detail_from_event(ev)
+            if detail:
+                item["detail"] = detail
+        elif status == "failed":
+            item["status"] = "failed"
+            detail = _phase_detail_from_event(ev)
+            if detail:
+                item["detail"] = detail
+        elif status == "waiting":
+            item["status"] = "active"
+    prefilter_active = states.get("research_prefilter", {}).get("status") == "active"
+    prefilter_steps = _summarize_prefilter_steps(events, prefilter_active=prefilter_active)
+    if prefilter_steps and "research_prefilter" in states:
+        states["research_prefilter"]["steps"] = prefilter_steps
+    return [states[phase] for phase in phase_order]
+
+
+def summarize_job_state(state: JobState) -> dict[str, Any]:
+    phase_order = _phase_order_for_job(state)
+    phases = _summarize_phases(state.events, phase_order)
+    public = _job_public_fields(state)
+    payload: dict[str, Any] = {
+        "job_id": state.job_id,
+        "job_kind": state.job_kind,
+        "status": state.status,
+        "is_active": state.status not in _TERMINAL_STATUSES,
+        "error": state.error,
+        **public,
+        "global_step": state.global_step,
+        "global_total": state.global_total,
+        "phases": phases,
+        "created_at": state.created_at,
+        "updated_at": state.updated_at,
+        "status_url": f"/api/ingest/{state.job_id}/status",
+        "events_url": f"/api/ingest/{state.job_id}/events",
+        "system_status_url": f"/api/system/jobs/{state.job_id}",
+        "system_events_url": f"/api/system/jobs/{state.job_id}/events",
+    }
+    prefilter_steps = _summarize_prefilter_steps(
+        state.events,
+        prefilter_active=any(
+            ev.get("phase") == "research_prefilter"
+            and ev.get("status") == "started"
+            for ev in state.events
+        )
+        and not any(
+            ev.get("phase") == "research_prefilter"
+            and ev.get("status") == "completed"
+            for ev in state.events
+        ),
+    )
+    if prefilter_steps:
+        payload["prefilter_steps"] = prefilter_steps
+    return payload
+
+
+def summarize_research_job_state(state: JobState) -> dict[str, Any]:
+    payload = summarize_job_state(state)
+    payload["status_url"] = f"/api/research/{state.job_id}"
+    payload["events_url"] = f"/api/research/{state.job_id}/events"
+    payload["system_status_url"] = f"/api/system/jobs/{state.job_id}"
+    payload["system_events_url"] = f"/api/system/jobs/{state.job_id}/events"
+    if state.status == "succeeded" and isinstance(state.result, dict):
+        url = state.result.get("url")
+        if url:
+            payload["article_url"] = url
+    return payload

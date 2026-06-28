@@ -10,6 +10,7 @@ from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
     _apply_decision,
     _revalidate_decision,
+    get_polyindex_subject,
     list_multibook_subjects,
     merge_polyindex_subjects,
     sort_polyindex_index_file,
@@ -272,6 +273,12 @@ class TestPolyindexIndex(unittest.TestCase):
         self.assertEqual(multibook[0]["canonical_id"], "augusto")
         self.assertEqual(multibook[0]["book_count"], 2)
         self.assertEqual(multibook[0]["books"][0]["title"], "Libro A")
+
+        detail = get_polyindex_subject(self.polyindex_dir, "ottaviano")
+        self.assertIsNotNone(detail)
+        assert detail is not None
+        self.assertEqual(detail["canonical_label"], "Ottaviano")
+        self.assertEqual(detail["books"][SHA_B]["aligned_pages"], [11])
 
         result = merge_polyindex_subjects(
             self.polyindex_dir, "augusto", ["ottaviano"]

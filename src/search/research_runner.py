@@ -33,9 +33,18 @@ PHASE_POH_LINKS = "research_poh_links"
 PHASE_TIMELINE = "research_timeline"
 PHASE_POSTPROCESS = "research_postprocess"
 STATUS_STARTED = "started"
+STATUS_PROGRESS = "progress"
 STATUS_COMPLETED = "completed"
 STATUS_SUCCEEDED = "succeeded"
 STATUS_FAILED = "failed"
+
+PREFILTER_STEP_SUBJECT = "subject_match"
+PREFILTER_STEP_TOC = "toc_expansion"
+PREFILTER_STEP_TIME = "time_index"
+PREFILTER_STEP_MERGE = "merge_candidates"
+PREFILTER_STEP_LOAD = "load_pages"
+PREFILTER_STEP_FILTER = "relevance_filter"
+PREFILTER_STEP_COUNT = 6
 
 ProgressReporter = Callable[[dict[str, Any]], None]
 
@@ -136,6 +145,37 @@ def _merge_page_maps(*maps: dict[str, list[int]]) -> dict[str, list[int]]:
     return {sha: sorted(page_set) for sha, page_set in sorted(merged.items())}
 
 
+def _count_books(page_map: dict[str, list[int]]) -> int:
+    return len(page_map)
+
+
+def _count_pages(page_map: dict[str, list[int]]) -> int:
+    return sum(len(pages) for pages in page_map.values())
+
+
+def _pages_added(before: dict[str, list[int]], after: dict[str, list[int]]) -> int:
+    before_set: dict[str, set[int]] = {
+        sha: set(pages) for sha, pages in before.items()
+    }
+    added = 0
+    for sha, pages in after.items():
+        known = before_set.get(sha, set())
+        added += sum(1 for page in pages if page not in known)
+    return added
+
+
+def _subject_matches_payload(matches: list[Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "canonical_id": match.canonical_id,
+            "canonical_label": match.canonical_label,
+            "method": match.method,
+            "similarity": match.similarity,
+        }
+        for match in matches
+    ]
+
+
 def _polyindex_empty(data_root: Path) -> bool:
     index_path = data_root / "polyindex" / "INDEX.json"
     if not index_path.is_file():
@@ -175,7 +215,14 @@ async def run_research_async(
     toc_document = PolyindexTocDocument.load_file(polyindex_dir / "TOC.json")
     time_index = load_time_index(polyindex_dir / "TIME_INDEX.json")
 
-    _emit(reporter, _research_event(PHASE_PREFILTER, STATUS_STARTED))
+    _emit(
+        reporter,
+        _research_event(
+            PHASE_PREFILTER,
+            STATUS_STARTED,
+            page_total=PREFILTER_STEP_COUNT,
+        ),
+    )
     client = build_openai_client(settings)
 
     subject_result = lookup_subjects(
@@ -187,6 +234,22 @@ async def run_research_async(
         settings,
         request_id,
     )
+    subject_pages = _count_pages(subject_result.pages)
+    subject_books = _count_books(subject_result.pages)
+    _emit(
+        reporter,
+        _research_event(
+            PHASE_PREFILTER,
+            STATUS_PROGRESS,
+            prefilter_step=PREFILTER_STEP_SUBJECT,
+            subject_pages=subject_pages,
+            subject_books=subject_books,
+            matches=_subject_matches_payload(subject_result.matches),
+            ai_used=subject_result.ai_used,
+            degraded=subject_result.degraded,
+        ),
+    )
+
     expanded = expand_chapters(
         subject_result.pages,
         toc_document,
@@ -194,6 +257,24 @@ async def run_research_async(
         max_pages_per_book=request.options.max_pages_per_book,
         request_id=request_id,
     )
+    expanded_pages = _count_pages(expanded.pages)
+    expansion_added = max(0, expanded_pages - subject_pages)
+    _emit(
+        reporter,
+        _research_event(
+            PHASE_PREFILTER,
+            STATUS_PROGRESS,
+            prefilter_step=PREFILTER_STEP_TOC,
+            pages_before=subject_pages,
+            pages_after=expanded_pages,
+            pages_added=expansion_added,
+            expanded_chapters=expanded.expanded_chapters,
+            unknown_pages=expanded.unknown_pages,
+            books_dropped=expanded.books_dropped,
+            output_books=_count_books(expanded.pages),
+        ),
+    )
+
     time_result = lookup_time(
         request.query,
         request.poh,
@@ -201,7 +282,39 @@ async def run_research_async(
         time_index,
         request_id=request_id,
     )
+    time_pages = _count_pages(time_result.pages)
+    time_added = _pages_added(expanded.pages, time_result.pages)
+    _emit(
+        reporter,
+        _research_event(
+            PHASE_PREFILTER,
+            STATUS_PROGRESS,
+            prefilter_step=PREFILTER_STEP_TIME,
+            pages_before=expanded_pages,
+            pages_after=time_pages,
+            pages_added=time_added,
+            matched_labels=time_result.matched_labels,
+            fallback_labels=time_result.fallback_labels,
+            timeline_candidates=len(time_result.timeline_candidates),
+        ),
+    )
+
     candidate_pages = _merge_page_maps(subject_result.pages, time_result.pages)
+    merged_pages = _count_pages(candidate_pages)
+    merge_added = _pages_added(time_result.pages, candidate_pages)
+    _emit(
+        reporter,
+        _research_event(
+            PHASE_PREFILTER,
+            STATUS_PROGRESS,
+            prefilter_step=PREFILTER_STEP_MERGE,
+            pages_before=time_pages,
+            pages_after=merged_pages,
+            pages_added=merge_added,
+            output_books=_count_books(candidate_pages),
+        ),
+    )
+
     pages_result = load_pages(
         candidate_pages,
         data_root,
@@ -209,6 +322,19 @@ async def run_research_async(
         max_pages_per_book=request.options.max_pages_per_book,
         request_id=request_id,
     )
+    loaded_pages = len(pages_result.pages)
+    _emit(
+        reporter,
+        _research_event(
+            PHASE_PREFILTER,
+            STATUS_PROGRESS,
+            prefilter_step=PREFILTER_STEP_LOAD,
+            candidate_pages=merged_pages,
+            loaded_pages=loaded_pages,
+            loaded_books=len(pages_result.loaded_pages),
+        ),
+    )
+
     relevant_pages = filter_relevant_pages(
         pages_result.pages,
         query=request.query,
@@ -232,10 +358,27 @@ async def run_research_async(
         reporter,
         _research_event(
             PHASE_PREFILTER,
+            STATUS_PROGRESS,
+            prefilter_step=PREFILTER_STEP_FILTER,
+            input_pages=loaded_pages,
+            kept_pages=len(relevant_pages),
+            dropped_pages=dropped_pages,
+        ),
+    )
+    _emit(
+        reporter,
+        _research_event(
+            PHASE_PREFILTER,
             STATUS_COMPLETED,
+            page_total=PREFILTER_STEP_COUNT,
             books=len(pages_result.loaded_pages),
             pages=len(relevant_pages),
             dropped_pages=dropped_pages,
+            subject_pages=subject_pages,
+            expansion_added=expansion_added,
+            time_added=time_added,
+            merge_added=merge_added,
+            loaded_pages=loaded_pages,
         ),
     )
 
@@ -262,7 +405,7 @@ async def run_research_async(
         ],
     )
 
-    _emit(reporter, _research_event(PHASE_ARTICLE, STATUS_STARTED))
+    _emit(reporter, _research_event(PHASE_ARTICLE, STATUS_STARTED, input_pages=len(relevant_pages), context_books=len(relevant_loaded)))
     article_result = await generate_article(
         query=request.query,
         pages=relevant_pages,
@@ -277,6 +420,8 @@ async def run_research_async(
             PHASE_ARTICLE,
             STATUS_COMPLETED,
             skipped_llm=article_result.skipped_llm,
+            input_pages=len(relevant_pages),
+            markdown_chars=len(article_result.markdown),
         ),
     )
 
@@ -287,7 +432,10 @@ async def run_research_async(
         query=request.query,
     )
 
-    _emit(reporter, _research_event(PHASE_POH_LINKS, STATUS_STARTED))
+    _emit(
+        reporter,
+        _research_event(PHASE_POH_LINKS, STATUS_STARTED, candidates=len(poh_candidates)),
+    )
     poh_result = await add_poh_links(
         query=request.query,
         article_markdown=article_result.markdown,
@@ -303,10 +451,18 @@ async def run_research_async(
             PHASE_POH_LINKS,
             STATUS_COMPLETED,
             skipped_llm=poh_result.skipped_llm,
+            candidates=len(poh_candidates),
         ),
     )
 
-    _emit(reporter, _research_event(PHASE_TIMELINE, STATUS_STARTED))
+    _emit(
+        reporter,
+        _research_event(
+            PHASE_TIMELINE,
+            STATUS_STARTED,
+            timeline_candidates=len(time_result.timeline_candidates),
+        ),
+    )
     timeline_result = await add_timeline(
         query=request.query,
         article_markdown=poh_result.markdown,
@@ -323,6 +479,7 @@ async def run_research_async(
             PHASE_TIMELINE,
             STATUS_COMPLETED,
             skipped_llm=timeline_result.skipped_llm,
+            timeline_candidates=len(time_result.timeline_candidates),
         ),
     )
 
@@ -339,6 +496,8 @@ async def run_research_async(
             PHASE_POSTPROCESS,
             STATUS_COMPLETED,
             citations=len(postprocessed.citations),
+            poh_links=len(postprocessed.pohs_referenced),
+            timeline_rows=len(postprocessed.timeline_rows),
         ),
     )
 

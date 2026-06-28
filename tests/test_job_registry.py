@@ -103,6 +103,98 @@ class TestJobRegistryEviction(unittest.TestCase):
         registry.create_job()
         self.assertIsNotNone(registry.get_status(running))
 
+    def test_list_active_jobs_summarizes_phases(self) -> None:
+        registry = JobRegistry()
+        job_id = registry.create_job()
+        registry.set_global_total(job_id, 3)
+        registry.emit(job_id, make_event("page_repair", "started", aligned_page=7, source_sha256="a" * 64))
+        registry.emit(job_id, make_event("stage2_vision", "started", page_total=1))
+        registry.emit(
+            job_id,
+            make_event("stage2_vision", "page_progress", counts_as_step=True, page_total=1),
+        )
+        jobs = registry.list_active_jobs()
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual(jobs[0]["job_id"], job_id)
+        self.assertIn("Riparazione pagina 7", jobs[0]["title"])
+        self.assertEqual(jobs[0]["global_step"], 1)
+        self.assertEqual(jobs[0]["global_total"], 3)
+        phase_names = [phase["phase"] for phase in jobs[0]["phases"]]
+        self.assertIn("page_repair", phase_names)
+        self.assertIn("stage2_vision", phase_names)
+
+    def test_list_active_jobs_research_headline(self) -> None:
+        registry = JobRegistry()
+        job_id = registry.create_job(job_kind="research")
+        registry.emit(
+            job_id,
+            {
+                "phase": "research",
+                "status": "progress",
+                "query": "Battaglia di Cannae",
+                "poh_id": "subj_hannibal",
+                "poh_label": "Annibale",
+                "message": "Annibale",
+            },
+        )
+        registry.emit(job_id, make_event("research_article", "started"))
+        jobs = registry.list_active_jobs()
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual(jobs[0]["title"], "Articolo: Annibale")
+        self.assertIn("subj_hannibal", jobs[0]["subtitle"] or "")
+        self.assertEqual(jobs[0]["poh_label"], "Annibale")
+
+    def test_list_active_jobs_prefilter_steps(self) -> None:
+        registry = JobRegistry()
+        job_id = registry.create_job(job_kind="research")
+        registry.emit(
+            job_id,
+            {
+                "phase": "research_prefilter",
+                "status": "started",
+                "page_total": 6,
+            },
+        )
+        registry.emit(
+            job_id,
+            {
+                "phase": "research_prefilter",
+                "status": "progress",
+                "prefilter_step": "subject_match",
+                "subject_pages": 12,
+                "subject_books": 2,
+                "matches": [
+                    {
+                        "canonical_id": "annibale",
+                        "canonical_label": "Annibale",
+                        "method": "poh_id",
+                    }
+                ],
+            },
+        )
+        registry.emit(
+            job_id,
+            {
+                "phase": "research_prefilter",
+                "status": "progress",
+                "prefilter_step": "toc_expansion",
+                "pages_before": 12,
+                "pages_after": 28,
+                "pages_added": 16,
+                "expanded_chapters": 3,
+            },
+        )
+        jobs = registry.list_active_jobs()
+        self.assertEqual(len(jobs), 1)
+        steps = jobs[0]["prefilter_steps"]
+        self.assertEqual(len(steps), 6)
+        self.assertEqual(steps[0]["step"], "subject_match")
+        self.assertEqual(steps[0]["subject_pages"], 12)
+        self.assertEqual(steps[1]["pages_added"], 16)
+        pf_phase = next(p for p in jobs[0]["phases"] if p["phase"] == "research_prefilter")
+        self.assertEqual(pf_phase["steps"][2]["step"], "time_index")
+        self.assertEqual(pf_phase["steps"][2]["status"], "active")
+
     def test_finished_jobs_capped(self) -> None:
         registry = JobRegistry(ttl_seconds=3600.0, max_finished_jobs=2)
         finished: list[str] = []

@@ -251,6 +251,16 @@ class TestIngestAuth(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(payload["subjects"], [])
 
+    def test_admin_subject_detail_requires_token(self) -> None:
+        status, _ = self.server.request("/api/admin/subject?canonical_id=foo")
+        self.assertEqual(status, 401)
+        status, payload = self.server.request(
+            "/api/admin/subject?canonical_id=foo",
+            headers={"X-API-Token": self.TOKEN},
+        )
+        self.assertEqual(status, 404)
+        self.assertFalse(payload["ok"])
+
     def test_admin_book_pages_audit_requires_token(self) -> None:
         status, _ = self.server.request("/api/admin/book-pages-audit")
         self.assertEqual(status, 401)
@@ -379,6 +389,44 @@ class TestJobQueueing(unittest.TestCase):
                     break
                 time.sleep(0.05)
             self.assertEqual(job["status"], "done")
+
+
+class TestSystemJobsEndpoint(unittest.TestCase):
+    def setUp(self) -> None:
+        self.server = _ServerHarness()
+
+    def tearDown(self) -> None:
+        self.server.close()
+
+    def test_system_jobs_lists_running_job(self) -> None:
+        job_id = self.server.registry.create_job()
+        self.server.registry.set_global_total(job_id, 2)
+        self.server.registry.emit(job_id, make_event("validation", "started"))
+        status, payload = self.server.request("/api/system/jobs")
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["active_jobs"], 1)
+        self.assertEqual(payload["jobs"][0]["job_id"], job_id)
+        self.assertIn("validation", [phase["phase"] for phase in payload["jobs"][0]["phases"]])
+
+    def test_system_job_detail(self) -> None:
+        job_id = self.server.registry.create_job(job_kind="research")
+        self.server.registry.emit(
+            job_id,
+            {
+                "phase": "research_prefilter",
+                "status": "progress",
+                "prefilter_step": "subject_match",
+                "subject_pages": 5,
+                "subject_books": 1,
+            },
+        )
+        status, payload = self.server.request(f"/api/system/jobs/{job_id}")
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["job"]["job_id"], job_id)
+        self.assertIn("prefilter_steps", payload["job"])
+        self.assertEqual(payload["job"]["system_events_url"], f"/api/system/jobs/{job_id}/events")
 
 
 if __name__ == "__main__":

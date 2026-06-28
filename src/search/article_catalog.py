@@ -123,6 +123,8 @@ def _is_no_material_entry(meta: object) -> bool:
 def _article_is_complete(data_root: Path, poh_id: str, meta: object) -> bool:
     if not _article_file(data_root, poh_id).is_file():
         return False
+    if not _article_markdown_file(data_root, poh_id).is_file():
+        return False
     return not _is_no_material_entry(meta)
 
 
@@ -157,21 +159,67 @@ def list_missing_articles(
 
 
 def research_status_summary(data_root: Path) -> dict[str, int]:
+    from src.search.article_health_audit import audit_articles_health
+
+    audit = audit_articles_health(data_root)
+    return {
+        "total_subjects": audit["total_subjects"],
+        "articles_count": audit["complete_count"],
+        "missing_count": audit["missing_count"],
+        "issues_count": audit["issues_count"],
+        "affected_poh_count": audit["affected_poh_count"],
+    }
+
+
+def search_poh_catalog(data_root: Path, query: str, *, limit: int = 20) -> list[dict[str, Any]]:
+    q = _normalize_search(query)
+    if not q:
+        return []
     subjects = list_index_subjects(data_root)
     catalog = _load_catalog(data_root)
     articles = catalog.get("articles", {})
     if not isinstance(articles, dict):
         articles = {}
-    article_count = sum(
-        1
-        for poh_id, meta in articles.items()
-        if _article_is_complete(data_root, str(poh_id), meta)
-    )
-    return {
-        "total_subjects": len(subjects),
-        "articles_count": article_count,
-        "missing_count": max(0, len(subjects) - article_count),
-    }
+    hits: list[tuple[int, dict[str, Any]]] = []
+    for poh_id, entry in subjects.items():
+        title = entry.canonical_label
+        alias_blob = " ".join(entry.aliases)
+        haystack = _normalize_search(f"{title} {alias_blob} {poh_id}")
+        if q not in haystack:
+            tokens = [token for token in q.split() if len(token) >= 2]
+            if not tokens or not all(token in haystack for token in tokens):
+                continue
+        meta = articles.get(poh_id)
+        if _is_no_material_entry(meta):
+            continue
+        has_article = _article_is_complete(data_root, poh_id, meta)
+        score = 0
+        if _normalize_search(title).startswith(q):
+            score += 100
+        if q in _normalize_search(title):
+            score += 50
+        if q in haystack:
+            score += 10
+        snippet = ""
+        if isinstance(meta, dict) and meta.get("snippet"):
+            snippet = str(meta.get("snippet"))
+        hits.append(
+            (
+                score,
+                {
+                    "poh_id": poh_id,
+                    "label": title,
+                    "title": title,
+                    "snippet": snippet,
+                    "has_article": has_article,
+                    "url": _article_url(poh_id) if has_article else None,
+                    "aliases": list(entry.aliases),
+                    "book_count": len(entry.books),
+                },
+            )
+        )
+    hits.sort(key=lambda item: (-item[0], str(item[1]["label"]).casefold()))
+    return [item[1] for item in hits[:limit]]
 
 
 def search_articles(data_root: Path, query: str, *, limit: int = 20) -> list[dict[str, Any]]:

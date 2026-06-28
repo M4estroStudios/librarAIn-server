@@ -25,6 +25,7 @@ from src.models.polyindex_index import (
     PolyindexIndexDocument,
     PolyindexIndexSubjectEntry,
 )
+from src.search.poh_time_range import lookup_poh_time_range
 from src.models.request import UsefulPagesEnumeration
 from src.models.settings import Settings
 
@@ -224,10 +225,41 @@ def list_multibook_subjects(
                 "aliases": list(entry.aliases),
                 "book_count": len(entry.books),
                 "books": book_summaries,
+                "time_range": lookup_poh_time_range(
+                    polyindex_dir, canonical_id, entry.canonical_label
+                ),
             }
         )
     result.sort(key=lambda item: (-item["book_count"], str(item["canonical_label"]).casefold()))
     return result
+
+
+def get_polyindex_subject(polyindex_dir: Path, canonical_id: str) -> dict[str, Any] | None:
+    index_path = polyindex_dir / "INDEX.json"
+    document = PolyindexIndexDocument.load_file(index_path)
+    entry = document.subjects.get(canonical_id)
+    if entry is None:
+        return None
+    books: dict[str, Any] = {}
+    for sha, book in sorted(entry.books.items()):
+        books[sha] = {
+            "source_sha256": sha,
+            "title": book.title,
+            "slug": book.slug,
+            "aligned_pages": list(book.aligned_pages),
+            "original_pages": list(book.original_pages),
+            "page_count": len(book.aligned_pages),
+        }
+    return {
+        "canonical_id": canonical_id,
+        "canonical_label": entry.canonical_label,
+        "aliases": list(entry.aliases),
+        "book_count": len(entry.books),
+        "books": books,
+        "time_range": lookup_poh_time_range(
+            polyindex_dir, canonical_id, entry.canonical_label
+        ),
+    }
 
 
 class SubjectMergeError(ValueError):
