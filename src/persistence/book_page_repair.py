@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import sqlite3
 from pathlib import Path
 from typing import Any, Literal
 from uuid import uuid4
@@ -45,7 +46,9 @@ from src.persistence.book_page_exclude import (
     load_book_exclusions,
 )
 from src.persistence.book_page_preview import mark_page_pending_review
-from src.persistence.book_pages_audit import STAGE_DIRS, _load_manifest
+from src.persistence.book_page_exclude import _resolve_slug
+from src.persistence.book_pages_audit import STAGE_DIRS, _discover_aligned_from_dir, _load_manifest
+from src.persistence.pipeline_runs import _sqlite_connection, reicat_alias_snapshot_from_row
 
 
 class PageRepairError(ValueError):
@@ -116,6 +119,71 @@ def _count_pdf_pages(pdf_path: Path) -> int:
     from pypdf import PdfReader
 
     return len(PdfReader(str(pdf_path), strict=False).pages)
+
+
+def _load_book_sqlite_row(sqlite_path: str, source_sha256: str) -> sqlite3.Row | None:
+    sha = source_sha256.strip().lower()
+    try:
+        with _sqlite_connection(sqlite_path) as conn:
+            conn.row_factory = sqlite3.Row
+            return conn.execute(
+                "SELECT * FROM books WHERE source_sha256 = ?",
+                (sha,),
+            ).fetchone()
+    except sqlite3.Error:
+        return None
+
+
+def _discover_max_aligned_page(data_root: Path, source_sha256: str) -> int:
+    sha = source_sha256.strip().lower()
+    tmp_root = data_root / "tmp" / sha
+    found: set[int] = set()
+    for stage_name in ("stage1OCR", "stage2Vision", "stage3Editor"):
+        found |= _discover_aligned_from_dir(tmp_root / stage_name)
+    found |= _discover_aligned_from_dir(data_root / "output" / sha / "pages")
+    return max(found) if found else 0
+
+
+def load_manifest_for_repair(
+    data_root: Path,
+    source_sha256: str,
+    sqlite_path: str | None = None,
+) -> dict[str, Any]:
+    sha = source_sha256.strip().lower()
+    manifest_path = data_root / "output" / sha / "manifest.json"
+    manifest = _load_manifest(manifest_path)
+    if manifest is not None:
+        return manifest
+    if not sqlite_path:
+        raise PageRepairError("manifest not found for book")
+    row = _load_book_sqlite_row(sqlite_path, sha)
+    if row is None:
+        raise PageRepairError("manifest not found for book")
+    slug = _resolve_slug(data_root, sha, None)
+    if not slug:
+        raise PageRepairError("book slug not found")
+    aligned_count = _discover_max_aligned_page(data_root, sha)
+    if aligned_count < 1:
+        raise PageRepairError("no staged pages found for book")
+    try:
+        original_count = _count_pdf_pages(_resolve_source_pdf(data_root, sha))
+    except PageRepairError:
+        original_count = aligned_count
+    excluded_aligned, pages_to_remove = load_book_exclusions(data_root, sha, manifest=None)
+    manifest_data: dict[str, Any] = {
+        "source_sha256": sha,
+        "slug": slug,
+        "original_page_count": original_count,
+        "aligned_page_count": aligned_count,
+        "pages": [],
+        "reicat": reicat_alias_snapshot_from_row(row),
+        "pipeline_version": str(row["schema_version"]),
+    }
+    if excluded_aligned:
+        manifest_data["excluded_aligned_pages"] = excluded_aligned
+    if pages_to_remove:
+        manifest_data["pages_to_remove"] = pages_to_remove
+    return manifest_data
 
 
 def build_enriched_from_manifest(
@@ -392,10 +460,9 @@ def run_book_page_repair(
     if aligned_page < 1:
         raise PageRepairError("aligned_page must be positive")
     sha = source_sha256.strip().lower()
-    manifest_path = data_root / "output" / sha / "manifest.json"
-    manifest = _load_manifest(manifest_path)
-    if manifest is None:
-        raise PageRepairError("manifest not found for book")
+    manifest = load_manifest_for_repair(
+        data_root, sha, getattr(settings, "sqlite_path", None)
+    )
     excluded, _ = load_book_exclusions(data_root, sha, manifest=manifest)
     if aligned_page in set(excluded):
         raise PageRepairError(f"page {aligned_page} is excluded")
@@ -474,10 +541,9 @@ def run_book_gaps_repair(
             raise PageRepairError("each gap page must have a positive aligned integer")
         aligned_pages.append(aligned)
     aligned_pages = sorted(set(aligned_pages))
-    manifest_path = data_root / "output" / sha / "manifest.json"
-    manifest = _load_manifest(manifest_path)
-    if manifest is None:
-        raise PageRepairError("manifest not found for book")
+    manifest = load_manifest_for_repair(
+        data_root, sha, getattr(settings, "sqlite_path", None)
+    )
     excluded, _ = load_book_exclusions(data_root, sha, manifest=manifest)
     excluded_set = set(excluded)
     for aligned_page in aligned_pages:

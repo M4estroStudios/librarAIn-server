@@ -16,6 +16,7 @@ from src.persistence.book_page_repair import (
     filter_useful_pages_to_single,
     infer_gaps_repair_entry_stage,
     infer_repair_entry_stage,
+    load_manifest_for_repair,
     merge_repaired_page_into_output,
     normalize_repair_pipeline_mode,
     repair_global_step_count,
@@ -26,6 +27,7 @@ from src.persistence.book_page_repair import (
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pipeline.stage3 import Stage3PageResult, Stage3Result
 from src.models.request import PageRange, UsefulPagesEnumeration
+from src.persistence.book_sqlite import init_books_schema, insert_book_minimal
 
 
 def _minimal_pdf_bytes(num_pages: int) -> bytes:
@@ -97,6 +99,30 @@ class TestBookPageRepair(unittest.TestCase):
             infer_gaps_repair_entry_stage([{"aligned": 3, "missing_in": ["output"]}]),
             "output",
         )
+
+    def test_load_manifest_for_repair_bootstraps_from_sqlite_and_tmp(self) -> None:
+        sha = "e" * 64
+        sqlite_path = self.data_root / "biblioteca.db"
+        init_books_schema(str(sqlite_path))
+        insert_book_minimal(
+            str(sqlite_path),
+            sha,
+            "1.0",
+            "Libro Bootstrap",
+            '["Autore"]',
+        )
+        processed = self.data_root / "input" / "processed"
+        processed.mkdir(parents=True, exist_ok=True)
+        (processed / f"{sha}.pdf").write_bytes(_minimal_pdf_bytes(3))
+        stage2_dir = self.data_root / "tmp" / sha / "stage2Vision"
+        stage2_dir.mkdir(parents=True, exist_ok=True)
+        (stage2_dir / "p.0001.libro-bootstrap.md").write_text("# p1\n", encoding="utf-8")
+        (stage2_dir / "p.0002.libro-bootstrap.md").write_text("# p2\n", encoding="utf-8")
+        manifest = load_manifest_for_repair(self.data_root, sha, str(sqlite_path))
+        self.assertEqual(manifest["slug"], "libro-bootstrap")
+        self.assertEqual(manifest["aligned_page_count"], 2)
+        self.assertEqual(manifest["reicat"]["titolo"], "Libro Bootstrap")
+        self.assertEqual(manifest["pages"], [])
 
     def test_build_enriched_from_manifest_uses_processed_pdf(self) -> None:
         sha = "a" * 64
