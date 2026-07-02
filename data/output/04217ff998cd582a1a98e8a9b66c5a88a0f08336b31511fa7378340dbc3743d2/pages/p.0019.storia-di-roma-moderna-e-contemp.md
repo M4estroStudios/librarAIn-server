@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Nei primi anni del pontificato Clemente VII promosse la cultura e le arti, arricchì la Biblioteca vaticana di manoscritti e di libri, coltivò amichevoli rapporti con Erasmo da Rotterdam e Francesco Guicciardini, al quale affidò carichi diplomatici e di governo, diede udienza a Niccolò Machiavelli che gli presentò gli otto libri delle *Istorie fiorentine* e ottenne benevola considerazione per il suo progetto di una milizia nazionale. Si interessò alla riforma del calendario e si appassionò alle teorie copernicane che nel 1533 si fece spiegare da un dotto tedesco.
+
+Favorì tra i poeti Jacopo Sannazaro, Giangiorgio Trissino e, malgrado le loro licenze, Pietro Bembo, Agnolo Fiorenzuola e perfino Pietro Aretino. Nel 1525 fece completare da Giulio Romano e da Francesco Penni la decorazione della sala di Costantino in Vaticano; aiutò Sebastiano Luciani che, per il lucroso ufficio di piombatore conferitogli nel 1531, divenne noto con il nome di Sebastiano del Piombo; Giovanni da Udine; Benvenuto Cellini, che nominò incisore alla Zecca di Roma; Raffaello da Montelupo, che scolpì in pietra il nuovo angelo di Castel Sant’Angelo in sostituzione di quello bronzeo distrutto da un fulmine.
+
+A Michelangelo Buonarroti, del quale pazientemente sopportava il difficile carattere, il papa commissionò a Firenze le cappelle medicee in San Lorenzo e lavori nella Biblioteca laurenziana, perdonò l’adesione alla Repubblica fiorentina e a Roma suggerì il tema del *Giudizio universale* per gli affreschi della Cappella Sistina.
+
+Per il Giubileo del 1525 Clemente VII fece eseguire restauri e abbellimenti di molte chiese romane e migliorò la viabilità cittadina creando i due bracci simmetrici del Tridente a Piazza del Popolo, con il completamento della via Leonina (poi detta di Ripetta) e l’apertura della via detta inizialmente Clementina.
+
+A sinistra: pianta della basilica di San Pietro con lo stato dei lavori nel 1536 (disegno di Martino von Heemskerck); a destra: progetto di San Pietro in Vaticano di Antonio da Sangallo il Giovane del 1534-1546.

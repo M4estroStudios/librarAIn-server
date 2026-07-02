@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+LA POLITICA ESTERA
+
+Nei rapporti con gli altri Stati Pio V adottò una politica di rigorosa difesa dei diritti giurisdizionali della Chiesa e di intransigenza assoluta riguardo al protestantesimo. Nel 1568 pubblicò una nuova versione della bolla *In coena Domini* per riaffermare il medievale principio della supremazia papale sui popoli e sui regni, provocando gravi contrasti con i governi e soprattutto con quelli della Spagna e dei possedimenti spagnoli in Italia, dove Filippo II ancora si arrogava privilegi in Sicilia come erede dei normanni.
+
+Gravi difficoltà e ritardi si ebbero ancora per l'attuazione dei decreti tridentini, poiché molti Stati volevano decidere in proposito con piena autonomia.
+
+Per la lotta che divampava in Francia tra cattolici e ugonotti, tra i quali la reggente Caterina de' Medici si destreggiava per salvare la monarchia, Pio V durante la terza guerra di religione inviò nel 1569 un corpo di spedizione di 14.000 fanti e 1.000 cavalieri che, unitosi a Massa con il contingente toscano di 1.000 fanti e 100 cavalieri, raggiunse tardi in Francia la zona di operazioni, ma in tempo per dare un decisivo contributo il 3 ottobre nella battaglia di Moncontour, dove gli ugonotti furono sgominati e lasciarono sul terreno una decina di migliaia di morti.
+
+A Roma la notizia della vittoria fu accolta con grandi manifestazioni di esultanza: le campane suonarono per tre giorni, la città fu attraversata da processioni di ringraziamento e 37 stendardi presi al nemico furono solennemente riposti in Laterano. Con grande dispetto di Pio V il successo militare non poté essere adeguatamente sfruttato nella pace di San Germano del 1570 a causa dell'ambigua politica della reggente.
+
+Gravi contrasti sorsero tra la Santa Sede e l'imperatore Massimiliano II, sia per l'applicazione dei deliberati conciliari sia per le concessioni da lui fatte ai protestanti, e si giunse alla rottura delle relazioni quando Pio V concesse a Cosimo I de' Medici il titolo granducale, ufficialmente per la fondazione dell'ordine militare di Santo Stefano, ma in realtà in riconoscimento dei favori ricevuti. Con un grande seguito Cosimo I giunse a Roma il 15 febbraio 1569 e prese alloggio nella villa di Giulio III; il 3 marzo fu celebrata con grande solennità nella Cappella Sistina la cerimonia dell'incoronazione. Protestarono i duchi di Ferrara e di Mantova, e Massimiliano II, che considerava Firenze, Siena e Pisa feudi imperiali, vide l'incoronazione come una violazione dei suoi diritti e un'offesa personale. La controversia fu composta soltanto nel 1576 con il pagamento di una forte somma di denaro all'imperatore da parte di Francesco Maria I, successore di Cosimo.
+
+Nei Paesi Bassi, dove i Gueux, nobili portavoce dei calvinisti, avevano guidato una violenta ribellione contro le imposizioni di Filippo II abbandonandosi a persecuzioni feroci dei cattolici, Pio V invitò il sovrano spagnolo a intervenire con la forza e il re mandò il duca d'Alba che instaurò nel 1567 una dittatura militare spargendo il terrore tra la popolazione con le sue soldataglie.
+
+Nella speranza di riguadagnare l'Inghilterra alla Chiesa, Pio V appoggiò la cattolica Maria Stuart, regina di Scozia, ma questa, per la pressione dei protestanti e per la sua discutibile condotta privata, fu costretta ad abdicare e a

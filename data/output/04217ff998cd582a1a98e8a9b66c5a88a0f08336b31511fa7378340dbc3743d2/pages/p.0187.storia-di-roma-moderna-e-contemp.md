@@ -1,0 +1,8 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Il GOVERNO DELLA CHIESA
+
+Profondamente pio, grande canonista e teologo e abile diplomatico, dotato di un’intelligenza pratica e aperta che gli consentiva di affrontare anche problemi estranei alla sua preparazione specifica, Benedetto XIV instancabilmente svolse un’intensa e proficua attività a favore della Chiesa, dello Stato ecclesiastico e della città di Roma affermandosi come il maggiore papa del suo secolo.
+
+Come a Bologna, anche a Roma acquistò una grande popolarità per il carattere franco, semplice, faceto, per i quotidiani contatti con la popolazione nelle sue passeggiate e per i motti di spirito che lo resero presto proverbiale. Escluse ogni atteggiamento nepotistico, giungendo perfino al punto di negare aiuti alla sua impoverita famiglia, si circondò di collaboratori preparati e integri; nominò segretario di Stato l’eccellente cardinale Silvio Valenti Gonzaga, della cui preziosa opera si valse operando con lui in strettissima collaborazione. Gli fu assai affezionato tanto che, quando nel 1751 Valenti Gonzaga fu colpito da apoplessia, lo sostituì personalmente nelle sue mansioni sperando in una sua guarigione e soltanto cinque anni dopo, quando il segretario di Stato morì, nominò il suo successore che fu il cardinale Alberico Archinto.
+
+Benedetto XIV identificò chiaramente nella decadenza spirituale della Chiesa la causa profonda della crisi dello Stato sul quale essa si ripercuoteva nel

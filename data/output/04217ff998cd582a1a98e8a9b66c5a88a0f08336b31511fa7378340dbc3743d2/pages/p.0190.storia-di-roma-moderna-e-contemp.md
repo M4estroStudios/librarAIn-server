@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+LE RELAZIONI INTERNAZIONALI
+
+L'elezione di papa Lambertini coincise con lo scoppio della guerra di successione austriaca che per otto anni insanguinò l'intera Europa. Fu provocata alla morte dell'imperatore Carlo VI nel 1740 dalla successione al trono della figlia Maria Teresa, subito contestata da Carlo Alberto di Wittelsbach, elettore di Baviera, che pose la propria candidatura con il nome di Carlo VII. Con la Baviera si alleò Federico II di Prussia, che scatenò la guerra invadendo la Slesia, possesso austriaco, e a lui si affiancarono la Spagna, che ambiva al possesso della Lombardia destinandola a Filippo di Borbone, e la Francia, mentre Maria Teresa trovò soltanto un debole appoggio da parte dell'Inghilterra e della Sassonia.
+
+In Italia Carlo Emanuele III di Savoia, dapprima avverso all'Austria, si schierò a fianco dell'impero quando vide che spagnoli e napoletani stavano per invadere la Lombardia alla quale egli stesso mirava. Come quasi tutti gli altri Stati italiani, la Santa Sede riconobbe il diritto ereditario di Maria Teresa, disposto dalla prammatica sanzione imperiale del 1713, proclamò la propria neutralità nella speranza di evitare il passaggio di truppe straniere, poi dichiarò di voler favorire l'elezione al trono imperiale che fosse più vantaggiosa per la Chiesa e infine nel 1742, piegandosi alle pressioni spagnole, riconobbe come legittima l'elezione di Carlo VII.
+
+Tuttavia nel 1743 la guerra fu combattuta in Italia e nell'autunno di quell'anno, nonostante le proteste del pontefice, i belligeranti posero i loro accampamenti invernali in territorio pontificio: gli austriaci presso Bologna e gli spagnoli, giunti attraverso la Toscana, presso Pesaro e Rimini.
+
+Nella primavera del 1744 un esercito di 26.000 austriaci al comando del generale Lobkowitz raggiunse dapprima Monterotondo; il generale fu ricevuto privatamente dal papa e poi si attestò nella zona dei Castelli Romani per controllare le due vie d'accesso da Napoli, mentre Carlo di Borbone con 24.000 uomini prese posizione a Velletri.
+
+A Roma la situazione divenne quanto mai precaria poiché alle devastazioni in Romagna e nelle Marche, che avevano interrotto l'afflusso di rendite e di forniture alla capitale, si aggiunsero i saccheggi del Lazio che lasciarono Roma priva di approvvigionamenti.
+
+In agosto gli austriaci conquistarono Velletri ove lo stesso Borbone corse il rischio di cadere prigioniero, ma poco dopo ne furono ricacciati dai napoletani e fino all'autunno i due eserciti ripresero a fronteggiarsi mantenendo le precedenti posizioni. In ottobre a Lobkowitz fu ordinato di ritirarsi per correre in aiuto del re di Sardegna che stava per essere sopraffatto dagli eserciti francese e spagnolo.
+
+Il 10 novembre gli austriaci lasciarono i Castelli, passarono sotto le mura di Roma e superarono il Tevere a ponte Milvio e su un ponte di barche. I napoletani li inseguirono, si accamparono tra ponte Milvio e porta Pia, ma le artiglierie nemiche impedirono loro di passare oltre il fiume. Il 3 novembre re Carlo fece il suo ingresso a Roma con il suo seguito e fu accolto festosamente dalla popolazione come un trionfatore. Fu ricevuto dal papa nella Kaffeehaus dei giardini del Quirinale, poi visitò San Pietro e il Laterano e la sera tornò

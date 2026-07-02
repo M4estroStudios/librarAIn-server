@@ -1,0 +1,4 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+IL RITORNO DI PIO IX A ROMA IL 12 APRILE 1850
+
+L'evento è raccontato da San Giovanni Bosco nel suo libro *La storia d'Italia raccontata alla gioventù*. «Sparsa la notizia che Pio IX era per far ritorno alla sua sede, tutti i suoi Stati si prepararono a una grande festa; moltissimi illustri personaggi da vari paesi della cristianità si recarono in quella santa città, che divenne ingombra di carrozze e di forestieri, tutti là accorsi per assistere e cooperare alla grande solennità. Ciò produsse straordinaria allegria pei Romani, perché così vedevano rifiorire il commercio e ripopolarsi le loro contrade. Il sommo pontefice volle passare a Napoli, e di là prese il cammino per Roma. Quel viaggio, miei cari amici, fu quale si conveniva».

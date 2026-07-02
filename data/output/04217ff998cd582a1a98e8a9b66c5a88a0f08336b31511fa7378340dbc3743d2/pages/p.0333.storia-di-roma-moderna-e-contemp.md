@@ -1,0 +1,4 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Vittorio Emanuele III in una fotografia giovanile.
+
+Ma del re il decreto per lo stato d'assedio, in vista del quale erano stati fatti presidiare dall'esercito i punti chiave della città. Ma Vittorio Emanuele III si rifiutò di firmare il decreto e la città restò aperta all'invasione delle squadre fasciste, le quali, su ordine di Benito Mussolini, nel frattempo erano entrate in oltre centomila da porta del Popolo, provenienti dalla Campagna Romana, da Santa Marinella, Monterotondo e Tivoli. Sfilarono per le strade e si radunarono nelle piazze principali, come piazza Barberini, sotto l’Hotel Bristol,

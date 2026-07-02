@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+giovinetti dell’aristocrazia romana, vestiti di seta viola, seguivano Carlo V i cardinali a cavallo a due a due, e la guardia imperiale di duecento uomini chiudeva il corteo.
+
+Questo percorse l’Appia, passò davanti alle terme di Caracalla e al Settizonio e sotto gli archi di Costantino e di Tito, attraverso il Foro e, uscendo dall’arco di Settimio Severo e girando intorno al colle capitolino, raggiunse la piazza di San Marco dove era stato eretto da Sangallo il Giovane un arco trionfale ornato di statue e pitture. Percorse le vie Papale e dei Banchi, il corteo per il ponte di Castel Sant’Angelo attraverso Borgo e fu in piazza San Pietro salutato dal rombo delle artiglierie di Castello.
+
+Davanti alla basilica Carlo V scese da cavallo e presentò il rituale omaggio al pontefice che lo aspettava nel portico. Insieme entrarono in San Pietro per assistere a una funzione religiosa e si recarono nella sala Regia e nella cappella di Nicolò V dove il papa prese congedo e l’imperatore fu accompagnato nell’alloggio predisposto nella Curia innocenziana.
+
+Il giorno dopo ebbe luogo un colloquio segreto di sei ore tra Carlo V e Paolo III e l'imperatore offrì in dono al papa un diamante del valore di 12.000 scudi che poi sarà montato in un anello dal Cellini. Senza risultato Carlo V tentò di rinnovare la lega del 1532 anche offrendo larghi favori a Pierluigi e a suo figlio Ottavio poiché il papa fu incrollabile nella sua neutralità.
+
+Tuttavia Paolo III non ottenne che Carlo V si accordasse con Francesco I di Valois sulla questione del ducato di Milano che era stato devoluto all’impero dopo la morte di Francesco II Sforza. Furono conclusi accordi su talune controversie e per l’Ungheria e fu fissata per l’anno seguente a Mantova l’apertura del concilio ecumenico.
+
+A Roma Carlo V visitò con il suo seguito chiese e antichi monumenti, concedendosi tra l’altro anche la contemplazione della città dall’alto del Pantheon, fece il pellegrinaggio delle Sette Chiese e assistette alle funzioni della settimana Santa e la domenica di Pasqua al pontificale. In quei giorni gli giunse la notizia che Francesco I, chiesta invano l’investitura del Milanese per il suo secondogenito Enrico, aveva invaso e annesso alla Francia lo Stato sabaudo. Il 17 aprile, lunedì di Pasqua, Carlo V si precipitò inaspettatamente nella sala dei Paramenti dove il papa era in riunione con i cardinali e gli oratori, e pronunciò in spagnolo un violento discorso di un’ora e mezza.
+
+Esaltò quanto aveva fatto per la pace e rinfacciò a Francesco I le sue responsabilità per la guerra, propose come alternativa al conflitto un duello con il re a bordo di una nave per dirimere ogni differenza ponendo come posta da parte sua Milano e da parte dell’altro la Borgogna.
+
+L’aggressiva requisitoria fu poi moderata nella trascrizione stampata e con un chiarimento verbale dello stesso Carlo V il giorno successivo davanti ai rappresentanti della Francia ma non attenuò la gravità dell’incidente. Il 18 aprile Carlo V partì con le sue truppe che a Roma avevano tenuto un comportamento ineccepibile.
+
+All’offensiva di Francesco I l’imperatore reagì attaccando il nemico dalle Fiandre e invadendo con l’aiuto di Genova la Provenza e furono frustrati i tenaci tentativi del papa per la pace. Soltanto l’anno dopo, la fame, le malattie e la strenua resistenza di Marsiglia costrinsero gli imperiali a ritirarsi. Nel 1537 i turchi prepararono un grande attacco contro l’Occidente e il Barbarossa ven-

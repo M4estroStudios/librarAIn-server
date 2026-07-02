@@ -1,0 +1,14 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+IL TRIONFO DELLA RESTAURAZIONE: GREGORIO XIII E SISTO V
+
+GREGORIO XIII
+
+La vacanza della Santa Sede dopo la morte di Pio V fu breve e tranquilla e il conclave, iniziato il 12 maggio 1572, si concluse ventiquattr’ore dopo con l’elezione del settantenne cardinale Boncompagni, universalmente stimato per probità, dottrina e competenza. Il cardinale Alessandro Farnese, nonostante l’opposizione di alcuni principi italiani e soprattutto di Cosimo I de’ Medici, aveva ripresentato la propria candidatura ma il veto di Filippo II, recatogli in conclave dal viceré di Napoli cardinale Granvella, lo convinse a ritirarla e ad accordarsi con il cardinale Michele Bonelli sul nome del Boncompagni. Il nuovo papa, che prese il nome di Gregorio XIII, fu accolto con soddisfazione dai romani che temevano l’elezione di un rigoroso «teatino».
+
+Ugo Boncompagni era nato il 10 gennaio 1502 a Bologna dove il padre si era arricchito con il commercio riuscendo anche a costruirsi un palazzo vicino a San Petronio. Ugo si laureò in giurisprudenza nella sua città, in quella università fu docente di diritto e tra i suoi allievi ebbe anche Alessandro Farnese e Pole. Nel 1539 dovette lasciare l’insegnamento e si trasferì a Roma presso il suo antico maestro cardinale Parisio che lo introdusse in Curia. Paolo III lo nominò giudice collaterale del senatore di Roma, poi abbreviatore di parco maggiore e referendario di entrambe le segnature. Nel 1546 Boncompagni fece parte della legazione vaticana del Concilio di Trento guidata dal cardinale Ciocchi del Monte ma, quando questi fu eletto papa con il nome di Giulio III, fu escluso dalla Curia e si ritirò nella sua casa di Parione dedicandosi agli studi.
+
+Paolo IV si valse del suo talento di giurista per affiancarlo come consultore al nipote Carlo Carafa anche nelle missioni diplomatiche in Francia e nei Paesi Bassi. Il Boncompagni non fu travolto dalla caduta dei Carafa ma conservò la fiducia di Pio IV e fu chiamato alla Consulta al servizio del cardinale Carlo Borromeo, la cui frequentazione e il santo esempio indussero in lui, tendenzialmente mondano e padre celibe di un figlio, un profondo cambiamento interiore e di costumi. Nel 1558 ebbe il vescovado di Vieste, dal 1561 fu di nuovo per due anni al Concilio di Trento e nel 1565 ebbe la porpora con il titolo di San Sisto.
+
+Fu assai stimato da Pio V che lo incluse tra i *correctores* incaricati di redigere la nuova edizione del *Corpus juris canonici*.
+
+Nel suo primo concistoro Gregorio XIII espose i punti principali del suo programma di governo: riconferma degli aiuti alla Lega santa per la guerra con—

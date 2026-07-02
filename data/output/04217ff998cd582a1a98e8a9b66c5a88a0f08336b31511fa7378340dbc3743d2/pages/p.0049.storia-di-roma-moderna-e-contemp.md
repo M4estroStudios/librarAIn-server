@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+cludersi da un lato con i rioni di Trastevere e Ripa e dall’altro con quelli di Regola e di Sant’Angelo. Leone X aveva promosso lo sviluppo del quartiere della nazione fiorentina verso il sito della nuova chiesa in costruzione di San Giovanni dei Fiorentini, da dove un nuovo ponte avrebbe stabilito il collegamento con Borgo.
+
+Nel 1543 con il papa Farnese il progetto del ponte fu escluso e con inizio dalla piazza di Ponte Sant’Angelo fu creato un tridente affiancando a via del Banco di Santo Spirito due nuove vie: la via Paola per il collegamento con via Giulia a destra e la via di Panico a sinistra.
+
+Da palazzo Farnese e via Giulia fu attuato il collegamento con piazza Navona, dove era stato trasferito già da mezzo secolo il pubblico mercato capitolino e intorno alla quale gravitavano gli interessi della nazione spagnola e di quella tedesca; a nord della piazza una nuova strada portò a Sant’Apollinare. Intorno al Pantheon furono rettificate e pavimentate a mattoni le vie di Torre Argentina e dei Cestari e collegate con via della Palombella.
+
+Una nuova via fu tracciata tra lo scomparso convento di Santa Maria in Via e Monte Citorio e, proseguendo con la via degli Uffici del Vicario, favorì il percorso tra la piazza di Ponte e la zona collinare del rione Colonna e il riassetto urbano dei settori settentrionale e orientale della città, ancora quasi disabitati. Nel 1544 fu aperta la via Trinitatis, la più importante delle nuove vie che sulla direttrice aperta verso il Pincio aveva inizio da piazza Nicosia e, proseguendo per le attuali vie del Clementino, di Fontanella Borghese e dei Condotti, giungeva a Trinità dei Monti. Su questa via fu impostata tutta la successiva pianificazione di Campo Marzio e la via Trinitatis rimarrà una delle vie più significative del Rinascimento romano con ben più felice destino della declassata via Giulia.
+
+In questo quadro si inserì anche il completamento dei lavori iniziati da Clemente VII per la via che si chiamò prima Clementina, poi Paolina Trifaria e oggi del Babuino.
+
+Furono ampliate la piazza dei Santi Apostoli e la piazza di San Marco, dalla quale la rettificata via Lata raggiungeva, oltre l’Arco del Portogallo e attraverso la zona quasi disabitata di Augusta e degli Ortacci, la massiccia porta Flaminia.
+
+Dalla sua residenza di palazzo Barbo, poi di Venezia, Paolo III fece costruire prima in legno e poi in pietra un ponte per raggiungere la chiesa di Santa Maria degli Aracoeli e in alto sul colle edificò, accanto al monastero dei francescani, la Torre, una massiccia costruzione merlata più una rocca che un palazzo. Doveva essere una residenza nei mesi caldi, ma duplicava il dispositivo del Corridoio e di Castel Sant’Angelo per garantire un sicuro rifugio al pontefice.
+
+Nel 1537 Paolo III incaricò Michelangelo di studiare un riassetto del Campidoglio e l’artista gli presentò il progetto che prevedeva l’accesso al colle da settentrione, a causa della mutata posizione del centro della città: una piazza con il palazzo Senatorio in fondo e due palazzi laterali leggermente obliqui per poter utilizzare l’esistente palazzo dei Conservatori opportunamente ristrutturato.
+
+Il progetto fu subito approvato; nel 1538 fu trasferito nella piazza il monumento di Marco Aurelio che era sopravvissuto nella piazza del Patriarchio lateranense perché si credeva raffigurasse l’imperatore cristiano Costantino, e sulla balaustra che delimitava la piazza furono installate le statue dei Dioscuri rinvenute.

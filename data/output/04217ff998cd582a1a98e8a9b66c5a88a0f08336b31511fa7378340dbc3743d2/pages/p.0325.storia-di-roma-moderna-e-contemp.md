@@ -1,0 +1,18 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Ma trionfa anche lo spettacolo dei grandi teatri dove sono esaltati eccezionali scrittori come Gabriele D’Annunzio con *La nave*, un successo del 1908 all’Argentina, e Sem Benelli con *La maschera di Bruto* del 1909 sempre all’Argentina.
+
+Un fenomeno particolare è poi quello del cinema, che comincia ad avere spazio in speciali locali, facendo concorrenza ai teatri; così nasce il cinema Moderno in piazza dell’Esedra e s’inaugura nel 1913 il primo cinema all’aperto. Fa epoca la proiezione al Costanzi del film *Cabiria* di Giovanni Pastrone, realizzato con ingenti mezzi e innovazioni tecniche; per la stesura delle didascalie D’Annunzio ha un compenso di 50.000 franchi.
+
+La Roma di Nathan segna in definitiva un’epoca in tutti i campi, ma solo in una circostanza non riesce a essere efficace, nella politica dei calmieri, anche se tenacemente perseguita dal sindaco, che trovò, tra l’altro, gravi resistenze nell’applicazione del tassametro alle vetture pubbliche dei cavalli, le cosiddette botticelle.
+
+Così, nella rivista satirica «La Turlupineide», una vignetta faceva cantare al sindaco, inglese di nascita, che si presentava sulla scena in tenuta da turista, un famoso e noto ritornello: «Il tassametro alla bótte / ho cercato d’applicar; / dopo lunghe e varie lotte / ci dovetti rinunciar».
+
+Nel giugno 1914 il Blocco Popolare di Nathan perde le elezioni; subentra l’Unione cattolica e i moderati con Prospero Colonna, che sarà sindaco per la terza volta. È il primo frutto del patto Gentiloni siglato nell’ottobre 1913 tra cattolici e liberali fortemente voluto da Pio X, che muore il 3 settembre 1914. E Roma così ha anche un nuovo papa; è il cardinale Giacomo Della Chiesa che assume il nome di Benedetto XV.
+
+**LA PRIMA MISS ROMA**
+
+Tra le numerose manifestazioni indette nel contesto della mostra etnografica di piazza d’Armi del 1911, ci fu anche l’elezione della «Reginetta di Roma», ovvero la prima Miss Roma della storia. 18 le partecipanti in rappresentanza dei 18 rioni. L’età delle ragazze era tra i 15 e i 25 anni, provenienti dal ceto popolare o borghese, con una provata moralità e il consenso dei genitori.
+
+Il concorso iniziò un pomeriggio di metà settembre con una fastosa cerimonia ricordata dalla *Illustrazione Italiana*: «Alle 16,30 si presentarono alla sommità della scalinata del Foro delle regioni dapprima i tamburini e i trombettieri, poi i paggi e i valletti, tutti in costume seicentesco e si schieraron ai lati della scalea; quindi il senatore di Roma (un portiere del Campidoglio), anch’egli in costume seicentesco con una ricca fascia di ermellino, dopo un breve discorso, presentò al pubblico le principesse, che a una a una, accompagnate dalle damigelle, si avanzaron sui primi scali. Le principesse furono accolte da vivissimi applausi! Si formò un corteo diciotto berline celesti adorne di fiori e riccamente addobbate, su ciascuna delle quali prese posto una principessa con le damigelle». 
+
+Seguirono nei giorni successivi vari scrutini e dopo tre votazioni, ai primi di ottobre, fu proclamata reginetta Palmira Ceccani, rappresentante di Trastevere; vinse con 5326 voti contro i 3398 di Cesira Fanelli di Borgo e i 3328 di Ida Bastianelli di Monti. Il concorso fu fortemente criticato dalle «suffragette» romane riunite nel Consiglio nazionale delle donne italiane e, a nome loro, la contessa Spalletti dichiarò: «Il consiglio, che tanto si preoccupa di rialzare la coscienza femminile e di promuoverne lo sviluppo morale, aveva già, in una assemblea del giugno scorso, anticipatamente protestato contro la nomina in Roma di una regina del mercato».
