@@ -30,9 +30,13 @@ from src.api.research_handlers import ResearchBatchRegistry, build_research_rout
 from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
+    SubjectUpdateError,
     get_polyindex_subject,
     list_multibook_subjects,
     merge_polyindex_subjects,
+    remove_polyindex_subject_book,
+    update_polyindex_subject_metadata,
+    update_polyindex_subject_pages,
 )
 from src.persistence.book_pages_audit import audit_all_books
 from src.persistence.book_page_exclude import PageExcludeError, exclude_book_page
@@ -693,6 +697,119 @@ def build_ingest_server(
                 {"target_id": target_id, "source_count": len(source_ids)})
             _send_json(self, 200, {"ok": True, "result": result})
 
+        def _handle_subject_update(self) -> None:
+            try:
+                body = _read_body(self, 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            canonical_id = payload.get("canonical_id")
+            if not isinstance(canonical_id, str) or not canonical_id.strip():
+                _send_json(self, 400, {"ok": False, "error": "canonical_id is required"})
+                return
+            aliases = payload.get("aliases")
+            if aliases is not None and (
+                not isinstance(aliases, list) or not all(isinstance(item, str) for item in aliases)
+            ):
+                _send_json(self, 400, {"ok": False, "error": "aliases must be a list of strings"})
+                return
+            time_range = payload.get("time_range")
+            if time_range is not None and not isinstance(time_range, str):
+                _send_json(self, 400, {"ok": False, "error": "time_range must be a string"})
+                return
+            clear_time_range = payload.get("clear_time_range") is True
+            try:
+                subject = update_polyindex_subject_metadata(
+                    data_root / "polyindex",
+                    canonical_id.strip(),
+                    aliases=aliases,
+                    time_range=time_range,
+                    clear_time_range=clear_time_range,
+                )
+            except SubjectUpdateError as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc)})
+                return
+            _send_json(self, 200, {"ok": True, "subject": subject})
+
+        def _handle_subject_pages(self) -> None:
+            try:
+                body = _read_body(self, 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            canonical_id = payload.get("canonical_id")
+            source_sha256 = payload.get("source_sha256")
+            if not isinstance(canonical_id, str) or not canonical_id.strip():
+                _send_json(self, 400, {"ok": False, "error": "canonical_id is required"})
+                return
+            if not isinstance(source_sha256, str) or not source_sha256.strip():
+                _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                return
+            add_pages = payload.get("add_pages")
+            remove_pages = payload.get("remove_pages")
+            if add_pages is not None and (
+                not isinstance(add_pages, list)
+                or not all(isinstance(page, int) for page in add_pages)
+            ):
+                _send_json(self, 400, {"ok": False, "error": "add_pages must be a list of integers"})
+                return
+            if remove_pages is not None and (
+                not isinstance(remove_pages, list)
+                or not all(isinstance(page, int) for page in remove_pages)
+            ):
+                _send_json(self, 400, {"ok": False, "error": "remove_pages must be a list of integers"})
+                return
+            book_title = payload.get("book_title")
+            book_slug = payload.get("book_slug")
+            if book_title is not None and not isinstance(book_title, str):
+                _send_json(self, 400, {"ok": False, "error": "book_title must be a string"})
+                return
+            if book_slug is not None and not isinstance(book_slug, str):
+                _send_json(self, 400, {"ok": False, "error": "book_slug must be a string"})
+                return
+            try:
+                subject = update_polyindex_subject_pages(
+                    data_root / "polyindex",
+                    canonical_id.strip(),
+                    source_sha256.strip(),
+                    add_pages=add_pages,
+                    remove_pages=remove_pages,
+                    book_title=book_title,
+                    book_slug=book_slug,
+                )
+            except (SubjectUpdateError, ValueError) as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc)})
+                return
+            _send_json(self, 200, {"ok": True, "subject": subject})
+
+        def _handle_subject_book_remove(self) -> None:
+            try:
+                body = _read_body(self, 1024 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError) as exc:
+                _send_json(self, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return
+            canonical_id = payload.get("canonical_id")
+            source_sha256 = payload.get("source_sha256")
+            if not isinstance(canonical_id, str) or not canonical_id.strip():
+                _send_json(self, 400, {"ok": False, "error": "canonical_id is required"})
+                return
+            if not isinstance(source_sha256, str) or not source_sha256.strip():
+                _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
+                return
+            try:
+                subject = remove_polyindex_subject_book(
+                    data_root / "polyindex",
+                    canonical_id.strip(),
+                    source_sha256.strip(),
+                )
+            except SubjectUpdateError as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc)})
+                return
+            _send_json(self, 200, {"ok": True, "subject": subject})
+
         def _handle_book_page_exclude(self) -> None:
             try:
                 body = _read_body(self, 1024 * 1024)
@@ -1191,6 +1308,21 @@ def build_ingest_server(
                 if not self._require_auth():
                     return
                 self._handle_subjects_merge()
+                return
+            if parsed.path == "/api/admin/subject/update":
+                if not self._require_auth():
+                    return
+                self._handle_subject_update()
+                return
+            if parsed.path == "/api/admin/subject/pages":
+                if not self._require_auth():
+                    return
+                self._handle_subject_pages()
+                return
+            if parsed.path == "/api/admin/subject/book/remove":
+                if not self._require_auth():
+                    return
+                self._handle_subject_book_remove()
                 return
             if parsed.path == "/api/admin/book-pages/exclude":
                 if not self._require_auth():

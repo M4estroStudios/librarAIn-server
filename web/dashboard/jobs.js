@@ -21,6 +21,7 @@ const JOB_PHASE_LABELS = {
   page_enumeration: "Enumerazione pagine",
   render: "Render PDF",
   stage1_ocr: "Stage 1 OCR",
+  stage1_glm_ocr: "Stage 1 — GLM OCR",
   stage2_vision: "Stage 2 Vision",
   stage3_editor: "Stage 3 Editor",
   polyindex_toc: "Polyindex TOC.json",
@@ -300,6 +301,74 @@ function renderPrefilterSteps(steps) {
   return html;
 }
 
+function jobPhaseLabel(phase, fallback) {
+  return JOB_PHASE_LABELS[phase] || fallback || phase || "Fase";
+}
+
+function resolveGlmOcrPhase(job) {
+  const phases = Array.isArray(job.phases) ? job.phases : [];
+  const renderPhase = phases.find((p) => p.phase === "render");
+  const enumPhase = phases.find((p) => p.phase === "page_enumeration");
+  let pageTotal = renderPhase?.total || renderPhase?.done || 0;
+  if (!pageTotal && enumPhase?.detail) {
+    const match = String(enumPhase.detail).match(/(\d+)/);
+    if (match) pageTotal = parseInt(match[1], 10);
+  }
+  pageTotal = Math.max(1, pageTotal || 1);
+  const globalStep = job.global_step || 0;
+  const globalTotal = job.global_total || 0;
+  const pageStages =
+    globalTotal > 0 && pageTotal > 0
+      ? Math.max(1, Math.round((globalTotal - 1) / pageTotal))
+      : 2;
+  const prefix = Math.max(0, globalTotal - pageTotal * pageStages);
+  const done = Math.min(
+    pageTotal,
+    Math.max(0, Math.floor((globalStep - prefix) / pageStages))
+  );
+  return {
+    phase: "stage1_glm_ocr",
+    status: job.is_active ? "active" : "done",
+    done,
+    total: pageTotal,
+    detail: job.detail || null,
+  };
+}
+
+function jobUsesGlmOcrPipeline(job) {
+  if (job.current_phase === "stage1_glm_ocr") return true;
+  const phases = Array.isArray(job.phases) ? job.phases : [];
+  if (phases.some((p) => p.phase === "stage1_glm_ocr")) return true;
+  const renderDone = phases.some((p) => p.phase === "render" && p.status === "done");
+  const classicPending = phases.some(
+    (p) =>
+      (p.phase === "stage1_ocr" || p.phase === "stage2_vision" || p.phase === "stage3_editor") &&
+      p.status === "pending" &&
+      (p.done || 0) === 0
+  );
+  return renderDone && classicPending && job.is_active;
+}
+
+function normalizeJobPhases(job) {
+  let phases = Array.isArray(job.phases) ? job.phases.slice() : [];
+  if (!jobUsesGlmOcrPipeline(job)) return phases;
+  phases = phases.filter(
+    (p) => !["stage1_ocr", "stage2_vision", "stage3_editor"].includes(p.phase)
+  );
+  const glmPhase = resolveGlmOcrPhase(job);
+  const existing = phases.find((p) => p.phase === "stage1_glm_ocr");
+  if (existing) {
+    if ((existing.done || 0) === 0 && existing.status === "pending") {
+      Object.assign(existing, glmPhase);
+    }
+  } else {
+    const insertAt = phases.findIndex((p) => p.phase === "render");
+    if (insertAt >= 0) phases.splice(insertAt + 1, 0, glmPhase);
+    else phases.push(glmPhase);
+  }
+  return phases;
+}
+
 function renderJobProgressRow(label, done, total, status, globalRow) {
   const max = Math.max(1, total || 1);
   const value = Math.min(done || 0, max);
@@ -328,7 +397,7 @@ function renderJobProgressRow(label, done, total, status, globalRow) {
 }
 
 function renderPhaseBlock(phase) {
-  const label = JOB_PHASE_LABELS[phase.phase] || phase.phase || "Fase";
+  const label = jobPhaseLabel(phase.phase, phase.phase);
   let html = renderJobProgressRow(label, phase.done, phase.total, phase.status, false);
   if (phase.detail) {
     html +=
@@ -341,7 +410,7 @@ function renderActiveJobCard(job) {
   const kind = JOB_KIND_LABELS[job.job_kind] || job.job_kind || "Job";
   const globalStep = typeof job.global_step === "number" ? job.global_step : 0;
   const globalTotal = typeof job.global_total === "number" ? job.global_total : 0;
-  const phases = Array.isArray(job.phases) ? job.phases : [];
+  const phases = normalizeJobPhases(job);
   const visiblePhases = phases.filter(function (phase, index) {
     if (phase.status !== "pending") return true;
     const prev = phases[index - 1];
@@ -369,7 +438,10 @@ function renderActiveJobCard(job) {
   if (job.subtitle) {
     html += '<div class="active-job-subtitle">' + escapeHtml(job.subtitle) + "</div>";
   }
-  const detail = job.detail || job.current_phase_label;
+  const detail =
+    job.detail ||
+    jobPhaseLabel(job.current_phase, job.current_phase_label) ||
+    job.current_phase_label;
   if (detail) {
     html += '<div class="active-job-detail">' + escapeHtml(detail) + "</div>";
   }

@@ -8,14 +8,18 @@ from unittest.mock import MagicMock
 
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
+    SubjectUpdateError,
     _apply_decision,
     _revalidate_decision,
     get_polyindex_subject,
     list_multibook_subjects,
     merge_polyindex_subjects,
+    remove_polyindex_subject_book,
     sort_polyindex_index_file,
     sorted_polyindex_index_bytes,
     sync_polyindex_index_from_book,
+    update_polyindex_subject_metadata,
+    update_polyindex_subject_pages,
 )
 from src.ingestion.polyindex.index_md_parser import RawSubject
 from src.ingestion.polyindex.subject_matcher import MatchDecision
@@ -297,6 +301,72 @@ class TestPolyindexIndex(unittest.TestCase):
             merge_polyindex_subjects(self.polyindex_dir, "augusto", ["inesistente"])
         with self.assertRaises(SubjectMergeError):
             merge_polyindex_subjects(self.polyindex_dir, "augusto", ["augusto"])
+
+    def test_update_subject_metadata_and_pages(self) -> None:
+        index_path = self.polyindex_dir / "INDEX.json"
+        index_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": "1.0",
+                    "subjects": {
+                        "augusto": {
+                            "canonical_label": "Augusto",
+                            "aliases": ["Ottaviano"],
+                            "books": {
+                                SHA_A: {
+                                    "title": "Libro A",
+                                    "slug": "libro-a",
+                                    "aligned_pages": [3, 5],
+                                    "original_pages": [3, 5],
+                                }
+                            },
+                        }
+                    },
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        updated = update_polyindex_subject_metadata(
+            self.polyindex_dir,
+            "augusto",
+            aliases=["Imperatore Augusto", "Ottaviano"],
+            time_range="63-14",
+        )
+        self.assertEqual(updated["aliases"], ["Imperatore Augusto", "Ottaviano"])
+        self.assertEqual(updated["time_range"], "63-14")
+
+        pages_updated = update_polyindex_subject_pages(
+            self.polyindex_dir,
+            "augusto",
+            SHA_A,
+            add_pages=[7],
+            remove_pages=[5],
+        )
+        self.assertEqual(pages_updated["books"][SHA_A]["aligned_pages"], [3, 7])
+
+        pages_updated = update_polyindex_subject_pages(
+            self.polyindex_dir,
+            "augusto",
+            SHA_B,
+            add_pages=[2],
+            book_title="Libro B",
+            book_slug="libro-b",
+        )
+        self.assertEqual(pages_updated["books"][SHA_B]["aligned_pages"], [2])
+        self.assertEqual(pages_updated["books"][SHA_B]["title"], "Libro B")
+
+        removed = remove_polyindex_subject_book(self.polyindex_dir, "augusto", SHA_B)
+        self.assertNotIn(SHA_B, removed["books"])
+
+        unchanged = update_polyindex_subject_pages(
+            self.polyindex_dir,
+            "augusto",
+            SHA_A,
+            remove_pages=[99],
+        )
+        self.assertEqual(unchanged["books"][SHA_A]["aligned_pages"], [3, 7])
 
     def test_sort_polyindex_index_file_reorders_subjects(self) -> None:
         index_path = self.polyindex_dir / "INDEX.json"

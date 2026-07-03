@@ -872,26 +872,190 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
 .poh-gen-matches li button.selected { background: #2a3d38; color: #4ec9b0; }
 .poh-row-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .poh-row-actions button { font-size: 0.78rem; padding: 0.25rem 0.55rem; }
-.polyindex-dialog { width: min(95vw, 52rem); }
+.polyindex-dialog { width: min(95vw, 920px); }
+.polyindex-title {
+  display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap;
+}
+.polyindex-title-chip {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.72rem; font-weight: 400; color: #d4d4d4;
+  border: 1px solid #454545; border-radius: 6px; padding: 0.15rem 0.2rem 0.15rem 0.45rem;
+  background: #141414; line-height: 1.3;
+}
+.polyindex-title-chip.is-label { font-size: 1.08rem; font-weight: 700; color: #e8e8e8; }
+.polyindex-title-chip-text { white-space: nowrap; }
+.polyindex-title-chip-copy {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.45rem; height: 1.45rem; padding: 0;
+  border: 1px solid #555; border-radius: 4px; background: transparent;
+  color: #c8c8c8; cursor: pointer; flex: 0 0 auto;
+}
+.polyindex-title-chip-copy:hover { background: #2a2a2a; color: #fff; }
+.polyindex-title-chip-copy svg { width: 0.82rem; height: 0.82rem; display: block; }
 .polyindex-body {
   padding: 0 1rem 1rem;
   overflow: auto;
-  max-height: calc(92vh - 4rem);
+  flex: 1 1 auto;
+  min-height: 0;
   font-size: 0.82rem;
 }
-.polyindex-body pre {
-  margin: 0.5rem 0 0;
-  padding: 0.75rem;
-  border-radius: 8px;
-  background: #141414;
-  border: 1px solid #333;
-  overflow: auto;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-size: 0.78rem;
-  color: #c8c8c8;
-}
+.hidden { display: none !important; }
 .polyindex-meta { color: #9d9d9d; margin: 0.35rem 0 0.75rem; line-height: 1.45; }
+.polyindex-field { margin: 0 0 0.55rem; }
+.polyindex-row {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.55rem; min-width: 0;
+}
+.polyindex-row.is-top { align-items: flex-start; }
+.polyindex-row-label {
+  flex: 0 0 4.8rem; color: #9d9d9d; font-size: 0.78rem; line-height: 1.35;
+}
+.polyindex-row.is-top .polyindex-row-label { padding-top: 0.35rem; }
+.polyindex-row-value { flex: 1 1 auto; min-width: 0; color: #e8e8e8; }
+.polyindex-field label { display: block; color: #9d9d9d; margin-bottom: 0.2rem; font-size: 0.78rem; }
+.polyindex-field input[type="text"],
+.polyindex-period-row input[type="text"] {
+  width: 100%; box-sizing: border-box; padding: 0.35rem 0.5rem;
+  border: 1px solid #454545; border-radius: 6px; background: #141414; color: #e8e8e8; font: inherit;
+}
+.polyindex-period-row {
+  display: flex; align-items: center; gap: 0.45rem; min-width: 0;
+}
+.polyindex-period-row input[type="text"] { flex: 1 1 auto; min-width: 0; }
+.polyindex-aliases {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;
+  border: 1px solid #454545; border-radius: 6px; padding: 0.35rem 0.45rem;
+  background: #141414; min-height: 2.1rem; box-sizing: border-box;
+}
+.polyindex-alias-chip {
+  display: inline-flex; align-items: center; gap: 0.2rem;
+  border: 1px solid #555; border-radius: 6px; padding: 0.1rem 0.15rem 0.1rem 0.4rem;
+  background: #1e1e1e; font-size: 0.78rem; color: #d4d4d4; line-height: 1.3;
+}
+.polyindex-alias-chip-text { white-space: nowrap; }
+.polyindex-alias-chip-remove {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.2rem; height: 1.2rem; padding: 0;
+  border: 1px solid #555; border-radius: 4px; background: transparent;
+  color: #c8c8c8; cursor: pointer; flex: 0 0 auto; font: inherit; font-size: 0.85rem; line-height: 1;
+}
+.polyindex-alias-chip-remove:hover { background: #3a2828; color: #f0a0a0; border-color: #7a4040; }
+.polyindex-alias-input {
+  flex: 1 1 6rem; min-width: 4rem; border: 0; background: transparent;
+  color: #e8e8e8; font: inherit; font-size: 0.82rem; padding: 0.15rem 0; outline: none;
+}
+.polyindex-alias-input::placeholder { color: #666; }
+.polyindex-inline-btn {
+  flex: 0 0 auto; font: inherit; font-size: 0.75rem; padding: 0.25rem 0.5rem;
+  border: 0; border-radius: 6px; background: #3c3c3c; color: #e8e8e8; cursor: pointer;
+}
+.polyindex-inline-btn:hover { background: #4a4a4a; }
+.polyindex-inline-btn.danger { background: #5a3030; }
+.polyindex-inline-btn.danger:hover { background: #6a3838; }
+.polyindex-inline-btn.primary { background: #2f5a48; }
+.polyindex-inline-btn.primary:hover { background: #3a6b55; }
+.polyindex-books { border-top: 1px solid #333; padding-top: 0.65rem; }
+.polyindex-books h3 { margin: 0 0 0.5rem; font-size: 0.85rem; font-weight: 600; color: #d4d4d4; }
+.polyindex-book {
+  border: 1px solid #333; border-radius: 8px; margin-bottom: 0.45rem; background: #181818;
+}
+.polyindex-book summary {
+  padding: 0.45rem 0.55rem; cursor: pointer; list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+}
+.polyindex-book summary::-webkit-details-marker { display: none; }
+.polyindex-book-chevron {
+  flex: 0 0 auto; color: #9d9d9d; font-size: 0.72rem; line-height: 1;
+  transition: transform 0.15s ease; transform: rotate(0deg);
+}
+.polyindex-book[open] > summary .polyindex-book-chevron { transform: rotate(90deg); }
+.polyindex-book-title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.polyindex-book-body { padding: 0 0.55rem 0.55rem; }
+#polyindex-overlay .page-picker-panel { display: block; margin-top: 0; border: 1px solid #454545; border-radius: 10px; background: #1e1e1e; overflow: hidden; }
+#polyindex-overlay .page-picker-panel.hidden { display: none; }
+#polyindex-overlay .page-picker-panel.is-loading { opacity: 0.85; }
+#polyindex-overlay .page-picker-toolbar {
+  display: flex; align-items: center; justify-content: flex-start; gap: 0.65rem; flex-wrap: wrap;
+  padding: 0.65rem 0.85rem; border-bottom: 1px solid #3e3e3e; background: #252526;
+}
+#polyindex-overlay .page-picker-toolbar-meta { margin-top: 0; font-size: 0.75rem; color: #9d9d9d; flex: 0 0 auto; }
+#polyindex-overlay .page-picker-toolbar-actions { display: flex; gap: 0.35rem; flex-wrap: wrap; flex: 0 0 auto; align-items: center; }
+#polyindex-overlay .page-picker-body {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.75rem;
+  padding: 0.75rem; height: calc(92vh - 13rem); min-height: 20rem; max-height: calc(92vh - 13rem);
+  align-items: stretch; box-sizing: border-box;
+}
+#polyindex-overlay .page-picker-grid-wrap {
+  min-width: 0; height: 100%; max-height: 100%;
+  overflow: auto; border: 1px solid #3e3e3e; border-radius: 8px; background: #252526; padding: 0.55rem; box-sizing: border-box;
+}
+#polyindex-overlay .page-picker-grid-wrap.is-loading .page-picker-grid { display: none; }
+#polyindex-overlay .page-picker-grid-wrap.is-loading .page-picker-progress { display: block; }
+#polyindex-overlay .page-picker-progress { display: none; padding: 2.5rem 1rem; text-align: center; }
+#polyindex-overlay .page-picker-progress-label { font-size: 0.82rem; color: #e8e8e8; margin-bottom: 0.65rem; }
+#polyindex-overlay .page-picker-progress progress { width: 100%; height: 10px; border-radius: 4px; appearance: none; -webkit-appearance: none; background: #3c3c3c; border: none; }
+#polyindex-overlay .page-picker-progress progress::-webkit-progress-bar { background: #3c3c3c; border-radius: 4px; }
+#polyindex-overlay .page-picker-progress progress::-webkit-progress-value { background: #4ec9b0; border-radius: 4px; }
+#polyindex-overlay .page-picker-progress progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
+#polyindex-overlay .page-picker-progress-stats { margin-top: 0.45rem; font-size: 0.75rem; color: #9d9d9d; }
+#polyindex-overlay .page-picker-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.45rem; }
+#polyindex-overlay .page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 6px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; }
+#polyindex-overlay .page-picker-thumb.is-selected { border-color: #4ec9b0; box-shadow: 0 0 0 1px #4ec9b0; }
+#polyindex-overlay .page-picker-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+#polyindex-overlay .page-picker-thumb-num { position: absolute; left: 0.2rem; top: 0.2rem; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
+#polyindex-overlay .page-picker-detail {
+  min-width: 0; min-height: 0; height: 100%; max-height: 100%;
+  display: flex; flex-direction: column; gap: 0.45rem; box-sizing: border-box;
+}
+#polyindex-overlay .page-picker-detail-label { font-size: 0.82rem; color: #e8e8e8; font-weight: 600; flex: 0 0 auto; }
+#polyindex-overlay .page-picker-detail-img-wrap {
+  position: relative; flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; background: #fff; border-radius: 6px;
+}
+#polyindex-overlay .page-picker-detail-img-wrap img {
+  display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;
+}
+#polyindex-overlay .page-picker-detail-empty {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; color: #9d9d9d; text-align: center; padding: 2rem 0.75rem; box-sizing: border-box;
+}
+#polyindex-overlay .polyindex-lock-btn {
+  position: absolute; top: 0.35rem; right: 0.35rem; z-index: 2;
+  width: 1.75rem; height: 1.75rem; padding: 0; border: 0; border-radius: 6px;
+  background: rgba(60, 60, 60, 0.92); color: #e8e8e8; font-size: 0.95rem; cursor: pointer;
+}
+#polyindex-overlay .polyindex-unlocked-head .polyindex-lock-btn {
+  position: static; background: #3c3c3c;
+}
+#polyindex-overlay .polyindex-unlocked-head .polyindex-lock-btn:hover { background: #4a4a4a; }
+.polyindex-browse.hidden { display: none; }
+.polyindex-unlocked { display: flex; flex-direction: column; gap: 0.45rem; min-height: min(36rem, calc(92vh - 12rem)); }
+.polyindex-unlocked.hidden { display: none; }
+.polyindex-unlocked-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; color: #9d9d9d; font-size: 0.78rem; }
+.polyindex-unlocked-panels { flex: 1 1 auto; min-height: 0; justify-content: center; }
+.polyindex-unlocked-toolbar { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.polyindex-picker-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; padding: 0 0.75rem 0.75rem; }
+.polyindex-add-book { margin-top: 0.55rem; padding-top: 0.55rem; border-top: 1px solid #333; }
+.polyindex-add-book.hidden { display: none; }
+.polyindex-book-search {
+  width: 100%; box-sizing: border-box; padding: 0.35rem 0.5rem; margin-bottom: 0.35rem;
+  border: 1px solid #454545; border-radius: 6px; background: #141414; color: #e8e8e8; font: inherit;
+}
+.polyindex-book-pick-list { max-height: 8rem; overflow: auto; border: 1px solid #333; border-radius: 6px; }
+.polyindex-book-pick-list button {
+  display: block; width: 100%; text-align: left; padding: 0.4rem 0.55rem;
+  border: 0; border-bottom: 1px solid #2a2a2a; background: transparent; color: #d4d4d4; cursor: pointer; font: inherit;
+}
+.polyindex-book-pick-list button:hover { background: #2a2a2a; }
+.polyindex-book-pick-list button:last-child { border-bottom: 0; }
+.polyindex-status { font-size: 0.75rem; color: #9d9d9d; margin-top: 0.35rem; min-height: 1rem; }
+.polyindex-status.err { color: #f0a0a0; }
+.polyindex-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;
+  padding: 0.65rem 1rem; border-top: 1px solid #3e3e3e; background: #252526; flex: 0 0 auto;
+}
+.polyindex-footer-hint { font-size: 0.75rem; color: #9d9d9d; }
+.polyindex-footer-hint.is-dirty { color: #d7ba7d; }
+.polyindex-footer-actions { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-left: auto; }
 #progress-poh-gen { display: none; margin-bottom: 0.75rem; padding: 0.75rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #454545; font-size: 0.85rem; white-space: pre-wrap; }
 #progress-poh-gen.show { display: block; }
 </style>
@@ -1018,8 +1182,15 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   <div class="page-preview-backdrop" id="polyindex-backdrop"></div>
   <div class="page-preview-dialog polyindex-dialog" role="dialog" aria-modal="true" aria-labelledby="polyindex-title">
     <button type="button" class="page-preview-close" id="polyindex-close" title="Chiudi">×</button>
-    <h2 class="page-preview-title" id="polyindex-title">Polyindex</h2>
+    <h2 class="page-preview-title polyindex-title" id="polyindex-title">Polyindex</h2>
     <div class="polyindex-body" id="polyindex-body">Caricamento…</div>
+    <div class="polyindex-footer" id="polyindex-footer">
+      <span class="polyindex-footer-hint" id="polyindex-dirty-hint"></span>
+      <div class="polyindex-footer-actions">
+        <button type="button" class="polyindex-inline-btn" id="polyindex-discard-all" disabled>Annulla modifiche</button>
+        <button type="button" class="polyindex-inline-btn primary" id="polyindex-confirm-all" disabled>Conferma modifiche</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1220,43 +1391,75 @@ async function searchPohForGenerate(query) {
   if (results.length === 1) setPohGenSelected(results[0]);
 }
 
+function polyindexTitleCopyIcon() {
+  return (
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>' +
+    '<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>'
+  );
+}
+
+function polyindexTitleChip(text, options) {
+  const opts = options || {};
+  const chipClass = "polyindex-title-chip" + (opts.bold ? " is-label" : "");
+  const display = opts.prefix ? opts.prefix + text : text;
+  const copyTitle = opts.copyTitle || "Copia";
+  return (
+    '<span class="' + chipClass + '">' +
+    '<span class="polyindex-title-chip-text">' + escapeHtml(display) + "</span>" +
+    '<button type="button" class="polyindex-title-chip-copy" data-copy-text="' + escapeHtml(text) + '" title="' + escapeHtml(copyTitle) + '" aria-label="' + escapeHtml(copyTitle) + '">' +
+    polyindexTitleCopyIcon() + "</button></span>"
+  );
+}
+
+function wirePolyindexTitleCopyButtons(titleEl) {
+  titleEl.querySelectorAll(".polyindex-title-chip-copy").forEach((copyBtn) => {
+    copyBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const value = copyBtn.getAttribute("data-copy-text") || "";
+      const defaultTitle = copyBtn.getAttribute("aria-label") || "Copia";
+      navigator.clipboard.writeText(value).then(() => {
+        copyBtn.title = "Copiato!";
+        setTimeout(() => { copyBtn.title = defaultTitle; }, 1500);
+      }).catch(() => {
+        copyBtn.title = "Copia fallita";
+        setTimeout(() => { copyBtn.title = defaultTitle; }, 1500);
+      });
+    });
+  });
+}
+
+function setPolyindexTitle(label, canonicalId) {
+  const titleEl = document.getElementById("polyindex-title");
+  const displayLabel = label || canonicalId || "";
+  const idText = canonicalId || "";
+  let html = "";
+  if (displayLabel) {
+    html += polyindexTitleChip(displayLabel, { bold: true, copyTitle: "Copia etichetta" });
+  }
+  if (idText && idText !== displayLabel) {
+    html += polyindexTitleChip(idText, { prefix: "id: ", copyTitle: "Copia ID" });
+  }
+  titleEl.innerHTML = html;
+  wirePolyindexTitleCopyButtons(titleEl);
+}
+
 function openPolyindexOverlay(canonicalId, label) {
   const overlay = document.getElementById("polyindex-overlay");
-  const titleEl = document.getElementById("polyindex-title");
   const bodyEl = document.getElementById("polyindex-body");
-  titleEl.textContent = label || canonicalId;
+  setPolyindexTitle(label, canonicalId);
   bodyEl.textContent = "Caricamento…";
   overlay.classList.remove("hidden");
   overlay.setAttribute("aria-hidden", "false");
-  apiFetch("/api/admin/subject?canonical_id=" + encodeURIComponent(canonicalId))
-    .then(async (res) => {
-      const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || "dettaglio non disponibile");
-      const subject = data.subject || {};
-      const aliasText = (subject.aliases || []).length
-        ? (subject.aliases || []).join(", ")
-        : "(nessuno)";
-      const books = subject.books || {};
-      const bookLines = Object.values(books).map((book) => {
-        const name = book.title || book.slug || String(book.source_sha256 || "").slice(0, 12) + "…";
-        const pages = Array.isArray(book.aligned_pages) ? book.aligned_pages.join(", ") : "";
-        return "• " + name + " — " + (book.page_count || 0) + " pag. [" + pages + "]";
-      });
-      bodyEl.innerHTML =
-        '<p class="polyindex-meta"><strong>ID:</strong> <code>' + escapeHtml(subject.canonical_id || canonicalId) + "</code></p>" +
-        '<p class="polyindex-meta"><strong>Etichetta:</strong> ' + escapeHtml(subject.canonical_label || "") + "</p>" +
-        '<p class="polyindex-meta"><strong>Alias:</strong> ' + escapeHtml(aliasText) + "</p>" +
-        '<p class="polyindex-meta"><strong>Periodo:</strong> ' + escapeHtml(subject.time_range || "—") + "</p>" +
-        '<p class="polyindex-meta"><strong>Libri (' + escapeHtml(String(subject.book_count || 0)) + "):</strong></p>" +
-        '<p class="polyindex-meta">' + (bookLines.length ? escapeHtml(bookLines.join("\n")).replace(/\n/g, "<br>") : "—") + "</p>" +
-        "<pre>" + escapeHtml(JSON.stringify(subject, null, 2)) + "</pre>";
-    })
-    .catch((err) => {
-      bodyEl.textContent = "Errore: " + err.message;
-    });
+  loadPolyindexEditor(canonicalId, label).catch((err) => {
+    bodyEl.textContent = "Errore: " + err.message;
+  });
 }
 
 function closePolyindexOverlay() {
+  if (polyindexState.dirty) {
+    if (!window.confirm("Ci sono modifiche non salvate. Chiudere senza salvare?")) return;
+  }
   const overlay = document.getElementById("polyindex-overlay");
   overlay.classList.add("hidden");
   overlay.setAttribute("aria-hidden", "true");
@@ -1471,6 +1674,10 @@ pohGenBtnEl.addEventListener("click", () => {
 });
 document.getElementById("polyindex-close").addEventListener("click", closePolyindexOverlay);
 document.getElementById("polyindex-backdrop").addEventListener("click", closePolyindexOverlay);
+document.getElementById("polyindex-confirm-all").addEventListener("click", () => {
+  confirmPolyindexAllChanges().catch((err) => setPolyindexStatus(err.message, true));
+});
+document.getElementById("polyindex-discard-all").addEventListener("click", discardPolyindexChanges);
 
 async function loadArticleStatus() {
   const res = await apiFetch("/api/research/status");
@@ -1654,6 +1861,1083 @@ function pagePreviewUrl(sourceSha256, alignedPage) {
   const token = apiToken();
   if (token) params.set("token", token);
   return "/api/admin/book-pages/render?" + params.toString();
+}
+
+const polyindexBodyEl = document.getElementById("polyindex-body");
+const polyindexState = {
+  canonicalId: "",
+  subject: null,
+  savedSubject: null,
+  pendingAliases: [],
+  aliasDraft: "",
+  pendingTimeRange: "",
+  pendingTranscripts: {},
+  pendingBookChanges: { removed: new Set(), pages: {} },
+  dirty: false,
+  ingestedBooks: [],
+  bookView: {},
+};
+
+function resetPolyindexPendingBookChanges() {
+  polyindexState.pendingBookChanges = { removed: new Set(), pages: {} };
+}
+
+function normalizePolyindexSha(sha) {
+  return String(sha || "").trim().toLowerCase();
+}
+
+function trackPolyindexPageChange(sha, addPages, removePages, bookMeta) {
+  sha = normalizePolyindexSha(sha);
+  const savedBooks = polyindexState.savedSubject?.books || {};
+  const savedPages = new Set(savedBooks[sha]?.aligned_pages || []);
+  const changes = polyindexState.pendingBookChanges;
+  if (changes.removed.has(sha)) changes.removed.delete(sha);
+  if (!changes.pages[sha]) {
+    changes.pages[sha] = { add: new Set(), remove: new Set(), bookMeta: null };
+  }
+  const op = changes.pages[sha];
+  addPages.forEach((page) => {
+    op.remove.delete(page);
+    if (!savedPages.has(page)) op.add.add(page);
+  });
+  removePages.forEach((page) => {
+    op.add.delete(page);
+    if (savedPages.has(page)) op.remove.add(page);
+  });
+  if (bookMeta) {
+    op.bookMeta = {
+      book_title: bookMeta.book_title || bookMeta.title || "",
+      book_slug: bookMeta.book_slug || bookMeta.slug || "",
+    };
+  }
+  if (!op.add.size && !op.remove.size && savedBooks[sha]) delete changes.pages[sha];
+}
+
+function hasPendingPolyindexBookChanges() {
+  const changes = polyindexState.pendingBookChanges;
+  return changes.removed.size > 0 || Object.keys(changes.pages).length > 0;
+}
+
+function polyindexBookLabel(book) {
+  return book.title || book.slug || String(book.source_sha256 || "").slice(0, 12) + "…";
+}
+
+function resetPolyindexBookView(sha) {
+  polyindexState.bookView[sha] = {
+    activePage: null,
+    lockOpen: false,
+    baselineText: "",
+    transcriptDirty: false,
+    pickerMode: null,
+    pickerSelected: {},
+    viewerPages: null,
+  };
+}
+
+function polyindexView(sha) {
+  if (!polyindexState.bookView[sha]) resetPolyindexBookView(sha);
+  return polyindexState.bookView[sha];
+}
+
+async function fetchPolyindexSubject(canonicalId) {
+  const res = await apiFetch("/api/admin/subject?canonical_id=" + encodeURIComponent(canonicalId));
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error(data.error || "dettaglio non disponibile");
+  return data.subject || {};
+}
+
+function normalizePolyindexSubjectBooks(subject) {
+  if (!subject?.books) return;
+  const normalized = {};
+  for (const [sha, book] of Object.entries(subject.books)) {
+    const key = normalizePolyindexSha(sha);
+    normalized[key] = Object.assign({}, book, { source_sha256: key });
+  }
+  subject.books = normalized;
+}
+
+async function loadPolyindexEditor(canonicalId, label) {
+  polyindexState.canonicalId = canonicalId;
+  const subject = await fetchPolyindexSubject(canonicalId);
+  normalizePolyindexSubjectBooks(subject);
+  polyindexState.subject = subject;
+  polyindexState.savedSubject = JSON.parse(JSON.stringify(subject));
+  polyindexState.pendingAliases = (subject.aliases || []).slice();
+  polyindexState.aliasDraft = "";
+  polyindexState.pendingTimeRange = subject.time_range || "";
+  polyindexState.pendingTranscripts = {};
+  resetPolyindexPendingBookChanges();
+  polyindexState.dirty = false;
+  polyindexState.bookView = {};
+  if (!polyindexState.ingestedBooks.length) {
+    const booksRes = await apiFetch("/api/research/books");
+    const booksData = await booksRes.json();
+    if (booksData.ok) polyindexState.ingestedBooks = booksData.books || [];
+  }
+  setPolyindexTitle(subject.canonical_label || label, subject.canonical_id || canonicalId);
+  syncPolyindexSaveButtons();
+  renderPolyindexEditor();
+}
+
+function setPolyindexStatus(message, isError) {
+  const el = document.getElementById("polyindex-status");
+  if (!el) return;
+  el.textContent = message || "";
+  el.classList.toggle("err", Boolean(isError));
+}
+
+function markPolyindexDirty() {
+  polyindexState.dirty = true;
+  syncPolyindexSaveButtons();
+}
+
+function syncPolyindexSaveButtons() {
+  const confirmBtn = document.getElementById("polyindex-confirm-all");
+  const discardBtn = document.getElementById("polyindex-discard-all");
+  const hintEl = document.getElementById("polyindex-dirty-hint");
+  if (confirmBtn) confirmBtn.disabled = !polyindexState.dirty;
+  if (discardBtn) discardBtn.disabled = !polyindexState.dirty;
+  if (hintEl) {
+    hintEl.textContent = polyindexState.dirty ? "Modifiche locali in sospeso" : "";
+    hintEl.classList.toggle("is-dirty", polyindexState.dirty);
+  }
+}
+
+function addPolyindexAlias(alias) {
+  const text = alias.trim();
+  if (!text) return "empty";
+  const canonical = (polyindexState.subject?.canonical_label || "").trim();
+  if (canonical && text.toLowerCase() === canonical.toLowerCase()) return "canonical";
+  const exists = polyindexState.pendingAliases.some((item) => item.toLowerCase() === text.toLowerCase());
+  if (exists) return "duplicate";
+  polyindexState.pendingAliases.push(text);
+  return "added";
+}
+
+function syncPolyindexAliasInput(focus) {
+  const input = document.querySelector("#polyindex-aliases .polyindex-alias-input");
+  if (!input) return;
+  input.value = polyindexState.aliasDraft || "";
+  if (focus) {
+    input.focus();
+    const len = input.value.length;
+    input.setSelectionRange(len, len);
+  }
+}
+
+function commitPolyindexAliasDraft(options) {
+  const opts = options || {};
+  const token = (opts.token != null ? opts.token : polyindexState.aliasDraft).trim();
+  polyindexState.aliasDraft = opts.rest != null ? opts.rest : "";
+  if (!token) {
+    syncPolyindexAliasInput(true);
+    return;
+  }
+  const result = addPolyindexAlias(token);
+  if (result === "added") {
+    markPolyindexDirty();
+    renderPolyindexAliasEditor(true);
+    return;
+  }
+  syncPolyindexAliasInput(true);
+  if (opts.notifyDuplicate === false) return;
+  if (result === "canonical") {
+    setPolyindexStatus("Non puoi usare l'etichetta come alias.", true);
+  } else if (result === "duplicate") {
+    setPolyindexStatus("", false);
+  }
+}
+
+function tryCommitPolyindexAliasInput(input) {
+  const val = input.value;
+  polyindexState.aliasDraft = val;
+  const match = val.match(/^(.+?)(\s{2,})([\s\S]*)$/);
+  if (!match) return;
+  commitPolyindexAliasDraft({
+    token: match[1],
+    rest: (match[3] || "").replace(/^\s+/, ""),
+    notifyDuplicate: true,
+  });
+}
+
+function handlePolyindexAliasKeydown(event, input) {
+  polyindexState.aliasDraft = input.value;
+  if (event.key === "Enter" || event.code === "NumpadEnter") {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    commitPolyindexAliasDraft({ token: input.value, rest: "", notifyDuplicate: true });
+    return;
+  }
+  if (event.key !== " " && event.code !== "Space") return;
+  const pos = input.selectionStart;
+  const end = input.selectionEnd;
+  if (pos !== end || pos < 1) return;
+  if (input.value.charAt(pos - 1) !== " ") return;
+  event.preventDefault();
+  const before = input.value.slice(0, pos).replace(/\s+$/, "");
+  const after = input.value.slice(pos).replace(/^\s+/, "");
+  commitPolyindexAliasDraft({ token: before, rest: after, notifyDuplicate: true });
+}
+
+function renderPolyindexAliasEditor(preserveFocus) {
+  const host = document.getElementById("polyindex-aliases");
+  if (!host) return;
+  host.innerHTML = "";
+  polyindexState.pendingAliases.forEach((alias, index) => {
+    const chip = document.createElement("span");
+    chip.className = "polyindex-alias-chip";
+    const text = document.createElement("span");
+    text.className = "polyindex-alias-chip-text";
+    text.textContent = alias;
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "polyindex-alias-chip-remove";
+    removeBtn.textContent = "×";
+    removeBtn.title = "Rimuovi alias";
+    removeBtn.setAttribute("aria-label", "Rimuovi alias");
+    removeBtn.addEventListener("click", () => {
+      polyindexState.pendingAliases.splice(index, 1);
+      markPolyindexDirty();
+      renderPolyindexAliasEditor(true);
+    });
+    chip.appendChild(text);
+    chip.appendChild(removeBtn);
+    host.appendChild(chip);
+  });
+  const input = document.createElement("input");
+  input.type = "text";
+  input.className = "polyindex-alias-input";
+  input.placeholder = "Scrivi alias (case insensitive), doppio spazio o Invio per aggiungere";
+  input.value = polyindexState.aliasDraft || "";
+  input.addEventListener("input", () => {
+    polyindexState.aliasDraft = input.value;
+    tryCommitPolyindexAliasInput(input);
+  });
+  input.addEventListener("keydown", (event) => handlePolyindexAliasKeydown(event, input));
+  input.addEventListener("keyup", (event) => {
+    if (event.key === "Enter" || event.code === "NumpadEnter") {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+    }
+  });
+  host.appendChild(input);
+  if (preserveFocus) {
+    input.focus();
+    const len = input.value.length;
+    input.setSelectionRange(len, len);
+  }
+}
+
+function renderPolyindexEditor() {
+  const subject = polyindexState.subject || {};
+  polyindexBodyEl.innerHTML =
+    '<div class="polyindex-row is-top"><span class="polyindex-row-label">Alias</span>' +
+    '<div class="polyindex-row-value">' +
+    '<div id="polyindex-aliases" class="polyindex-aliases"></div>' +
+    "</div></div>" +
+    '<div class="polyindex-row"><span class="polyindex-row-label">Periodo</span>' +
+    '<div class="polyindex-row-value polyindex-period-row">' +
+    '<input type="text" id="polyindex-time-range" placeholder="es. 1254-1324">' +
+    "</div></div>" +
+    '<div class="polyindex-books"><h3>Libri</h3><div id="polyindex-book-list"></div>' +
+    '<button type="button" class="polyindex-inline-btn" id="polyindex-add-book-toggle">+ Aggiungi libro</button>' +
+    '<div class="polyindex-add-book hidden" id="polyindex-add-book-panel">' +
+    '<input type="search" class="polyindex-book-search" id="polyindex-book-search" placeholder="Cerca libro ingestito…">' +
+    '<div class="polyindex-book-pick-list" id="polyindex-book-pick-list"></div></div></div>' +
+    '<div class="polyindex-status" id="polyindex-status"></div>';
+
+  renderPolyindexAliasEditor();
+  const timeInput = document.getElementById("polyindex-time-range");
+  timeInput.value = polyindexState.pendingTimeRange;
+  timeInput.addEventListener("input", () => {
+    polyindexState.pendingTimeRange = timeInput.value;
+    markPolyindexDirty();
+  });
+
+  document.getElementById("polyindex-add-book-toggle").addEventListener("click", () => {
+    const panel = document.getElementById("polyindex-add-book-panel");
+    panel.classList.toggle("hidden");
+    if (!panel.classList.contains("hidden")) renderPolyindexBookPickList("");
+  });
+  document.getElementById("polyindex-book-search").addEventListener("input", (event) => {
+    renderPolyindexBookPickList(event.target.value);
+  });
+
+  renderPolyindexBooks();
+}
+
+function renderPolyindexBooks() {
+  const host = document.getElementById("polyindex-book-list");
+  if (!host) return;
+  host.innerHTML = "";
+  const books = polyindexState.subject?.books || {};
+  const entries = Object.entries(books).sort((a, b) =>
+    polyindexBookLabel(a[1]).localeCompare(polyindexBookLabel(b[1]), "it")
+  );
+  if (!entries.length) {
+    host.textContent = "Nessun libro collegato.";
+    return;
+  }
+  for (const [sha, book] of entries) {
+    host.appendChild(buildPolyindexBookDetails(sha, book));
+  }
+}
+
+function buildPolyindexBookDetails(sha, book) {
+  const details = document.createElement("details");
+  details.className = "polyindex-book";
+  details.open = polyindexState.bookView[sha]?.detailsOpen === true;
+  const summary = document.createElement("summary");
+  const chevron = document.createElement("span");
+  chevron.className = "polyindex-book-chevron";
+  chevron.setAttribute("aria-hidden", "true");
+  chevron.textContent = "▸";
+  const title = document.createElement("span");
+  title.className = "polyindex-book-title";
+  title.textContent = polyindexBookLabel(book) + " (" + (book.page_count || 0) + " pag.)";
+  const removeBookBtn = document.createElement("button");
+  removeBookBtn.type = "button";
+  removeBookBtn.className = "polyindex-inline-btn danger";
+  removeBookBtn.textContent = "Rimuovi libro";
+  removeBookBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (!window.confirm("Rimuovere tutte le pagine di questo libro dal POH?")) return;
+    polyindexRemoveBookLocal(sha);
+  });
+  summary.appendChild(chevron);
+  summary.appendChild(title);
+  summary.appendChild(removeBookBtn);
+  details.appendChild(summary);
+
+  const body = document.createElement("div");
+  body.className = "polyindex-book-body";
+  body.dataset.bookSha = sha;
+  details.appendChild(body);
+  details.addEventListener("toggle", () => {
+    polyindexView(sha).detailsOpen = details.open;
+    if (details.open) renderPolyindexBookBody(sha, book, body);
+  });
+  if (details.open) renderPolyindexBookBody(sha, book, body);
+  return details;
+}
+
+function polyindexPickerPrefix(scope, sha) {
+  return scope + "-" + sha;
+}
+
+function polyindexPagePickerBodyHtml(prefix, includeLock) {
+  const lockHtml = includeLock
+    ? '<button type="button" class="polyindex-lock-btn" id="' + prefix + '-lock" title="Modifica trascrizione">🔒</button>'
+    : "";
+  return (
+    '<div class="page-picker-body">' +
+    '<div class="page-picker-grid-wrap" id="' + prefix + '-grid-wrap">' +
+    '<div class="page-picker-progress" id="' + prefix + '-progress">' +
+    '<div class="page-picker-progress-label">Caricamento pagine…</div>' +
+    '<progress id="' + prefix + '-progress-bar" value="0" max="1"></progress>' +
+    '<div class="page-picker-progress-stats" id="' + prefix + '-progress-stats"></div>' +
+    '</div>' +
+    '<div class="page-picker-grid" id="' + prefix + '-grid"></div>' +
+    '</div>' +
+    '<div class="page-picker-detail">' +
+    '<div class="page-picker-detail-label">Anteprima — pagina <span id="' + prefix + '-detail-num">—</span></div>' +
+    '<div class="page-picker-detail-img-wrap" id="' + prefix + '-detail-wrap">' +
+    lockHtml +
+    '<div class="page-picker-detail-empty" id="' + prefix + '-detail-empty">Seleziona una pagina nella griglia o modifica il campo sopra.</div>' +
+    '<img id="' + prefix + '-detail-img" class="hidden" alt="">' +
+    '</div></div></div>'
+  );
+}
+
+function refreshPolyindexPickerGridSelection(gridEl, selectedMap, activePage, pickMode) {
+  gridEl.querySelectorAll(".page-picker-thumb").forEach((btn) => {
+    const page = parseInt(btn.dataset.page, 10);
+    const selected = pickMode ? Boolean(selectedMap[page]) : page === activePage;
+    btn.classList.toggle("is-selected", selected);
+  });
+}
+
+function setPolyindexPickerDetail(prefix, sha, pageNum) {
+  const numEl = document.getElementById(prefix + "-detail-num");
+  const imgEl = document.getElementById(prefix + "-detail-img");
+  const emptyEl = document.getElementById(prefix + "-detail-empty");
+  if (!numEl || !imgEl || !emptyEl) return;
+  if (!pageNum) {
+    numEl.textContent = "—";
+    imgEl.classList.add("hidden");
+    emptyEl.classList.remove("hidden");
+    imgEl.removeAttribute("src");
+    return;
+  }
+  numEl.textContent = String(pageNum);
+  emptyEl.classList.add("hidden");
+  imgEl.classList.remove("hidden");
+  imgEl.src = pagePreviewUrl(sha, pageNum);
+}
+
+function fillPolyindexPickerGrid(gridEl, sha, pageNumbers, onClick) {
+  gridEl.innerHTML = "";
+  pageNumbers.forEach((pageNum) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "page-picker-thumb";
+    btn.dataset.page = String(pageNum);
+    btn.title = "Pagina " + pageNum;
+    const img = document.createElement("img");
+    img.alt = "Pagina " + pageNum;
+    img.loading = "lazy";
+    img.src = pagePreviewUrl(sha, pageNum);
+    const numEl = document.createElement("span");
+    numEl.className = "page-picker-thumb-num";
+    numEl.textContent = String(pageNum);
+    btn.appendChild(img);
+    btn.appendChild(numEl);
+    btn.addEventListener("click", () => onClick(pageNum));
+    gridEl.appendChild(btn);
+  });
+}
+
+function updatePolyindexPickerMeta(prefix, pageCount, selectedCount, pickMode) {
+  const metaEl = document.getElementById(prefix + "-meta");
+  if (!metaEl) return;
+  if (pickMode) {
+    metaEl.textContent =
+      pageCount + " pagine nel PDF · " +
+      selectedCount + " selezionat" + (selectedCount === 1 ? "a" : "e");
+    return;
+  }
+  metaEl.textContent = pageCount + " pagin" + (pageCount === 1 ? "a collegata" : "e collegate");
+}
+
+function computePolyindexReviewFrameSize(panelsEl, nw, nh) {
+  const maxH = Math.min(Math.max(280, window.innerHeight * 0.92 - 200), 720);
+  const panelsWidth = panelsEl ? panelsEl.clientWidth : Math.min(window.innerWidth * 0.95, 832);
+  const maxW = Math.max(160, panelsWidth / 2 - 8);
+  let h = maxH;
+  let w = (h * nw) / nh;
+  if (w > maxW) {
+    w = maxW;
+    h = (w * nh) / nw;
+  }
+  return { w: Math.round(w), h: Math.round(h) };
+}
+
+function applyPolyindexReviewFrameSizes(imgFrame, textFrame, w, h) {
+  const ws = w + "px";
+  const hs = h + "px";
+  imgFrame.style.width = ws;
+  imgFrame.style.height = hs;
+  textFrame.style.width = ws;
+  textFrame.style.height = hs;
+}
+
+function syncPolyindexUnlockedFrameSizes(sha) {
+  const panelsEl = document.getElementById("polyindex-unlocked-panels-" + sha);
+  const imgEl = document.getElementById("polyindex-unlocked-img-" + sha);
+  const imgFrame = document.getElementById("polyindex-unlocked-img-frame-" + sha);
+  const textFrame = document.getElementById("polyindex-unlocked-text-frame-" + sha);
+  if (!panelsEl || !imgEl || !imgFrame || !textFrame) return;
+  const nw = imgEl.naturalWidth;
+  const nh = imgEl.naturalHeight;
+  if (!nw || !nh) return;
+  const { w, h } = computePolyindexReviewFrameSize(panelsEl, nw, nh);
+  applyPolyindexReviewFrameSizes(imgFrame, textFrame, w, h);
+}
+
+async function loadPolyindexViewerPages(sha, view) {
+  if (view.viewerPages) return view.viewerPages;
+  const res = await apiFetch("/api/admin/book-pages-audit?source_sha256=" + encodeURIComponent(sha));
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error(data.error || "Audit libro non disponibile");
+  view.viewerPages = (data.books || [])[0]?.viewer_pages || [];
+  return view.viewerPages;
+}
+
+async function mountPolyindexPagePicker(prefix, sha, pageNumbers, view, pickMode) {
+  const wrapEl = document.getElementById(prefix + "-grid-wrap");
+  const grid = document.getElementById(prefix + "-grid");
+  if (!wrapEl || !grid) return;
+  wrapEl.classList.add("is-loading");
+  await new Promise((resolve) => requestAnimationFrame(resolve));
+  fillPolyindexPickerGrid(grid, sha, pageNumbers, (pageNum) => {
+    if (pickMode) {
+      if (view.pickerSelected[pageNum]) delete view.pickerSelected[pageNum];
+      else view.pickerSelected[pageNum] = true;
+      refreshPolyindexPickerGridSelection(
+        grid,
+        view.pickerSelected,
+        view.activePage,
+        true
+      );
+      setPolyindexPickerDetail(prefix, sha, pageNum);
+      updatePolyindexPickerMeta(
+        prefix,
+        pageNumbers.length,
+        Object.keys(view.pickerSelected).length,
+        true
+      );
+      return;
+    }
+    view.activePage = pageNum;
+    refreshPolyindexPickerGridSelection(grid, view.pickerSelected, view.activePage, false);
+    setPolyindexPickerDetail(prefix, sha, pageNum);
+  });
+  wrapEl.classList.remove("is-loading");
+  refreshPolyindexPickerGridSelection(
+    grid,
+    view.pickerSelected,
+    view.activePage,
+    pickMode
+  );
+  const detailPage = pickMode
+    ? (Object.keys(view.pickerSelected).map((p) => parseInt(p, 10)).sort((a, b) => a - b).pop() || view.activePage)
+    : view.activePage;
+  setPolyindexPickerDetail(prefix, sha, detailPage);
+  updatePolyindexPickerMeta(
+    prefix,
+    pageNumbers.length,
+    pickMode ? Object.keys(view.pickerSelected).length : 0,
+    pickMode
+  );
+}
+
+function renderPolyindexBookBody(sha, book, host) {
+  const view = polyindexView(sha);
+  const pages = Array.isArray(book.aligned_pages) ? book.aligned_pages.slice().sort((a, b) => a - b) : [];
+  if (!view.activePage && pages.length) view.activePage = pages[0];
+  if (view.activePage && !pages.includes(view.activePage)) view.activePage = pages[0] || null;
+
+  const browsePrefix = polyindexPickerPrefix("polyindex-browse", sha);
+  const pickerPrefix = polyindexPickerPrefix("polyindex-picker", sha);
+  const pickerHidden = view.pickerMode !== "add-page" ? " hidden" : "";
+
+  host.innerHTML =
+    '<div class="polyindex-browse' + (view.lockOpen ? " hidden" : "") + '" id="polyindex-browse-' + sha + '">' +
+    '<div class="page-picker-panel show">' +
+    '<div class="page-picker-toolbar">' +
+    '<div class="page-picker-toolbar-meta" id="' + browsePrefix + '-meta"></div>' +
+    '<div class="page-picker-toolbar-actions">' +
+    '<button type="button" class="polyindex-inline-btn" id="polyindex-add-page-' + sha + '">+ Aggiungi pagina</button>' +
+    '<button type="button" class="polyindex-inline-btn danger" id="polyindex-remove-page-' + sha + '">Rimuovi pagina corrente</button>' +
+    "</div></div>" +
+    polyindexPagePickerBodyHtml(browsePrefix, true) +
+    "</div></div>" +
+    '<div class="polyindex-unlocked' + (view.lockOpen ? "" : " hidden") + '" id="polyindex-unlocked-' + sha + '">' +
+    '<div class="polyindex-unlocked-head">' +
+    '<span>Pagina <strong id="polyindex-unlocked-page-' + sha + '">—</strong> — modifica trascrizione</span>' +
+    '<button type="button" class="polyindex-lock-btn" id="polyindex-unlocked-lock-' + sha + '" title="Chiudi modifica">🔓</button>' +
+    "</div>" +
+    '<div class="page-review-panels polyindex-unlocked-panels" id="polyindex-unlocked-panels-' + sha + '">' +
+    '<div class="page-review-pane"><div class="page-review-frame" id="polyindex-unlocked-img-frame-' + sha + '">' +
+    '<div class="page-review-img-wrap"><img class="page-review-img" id="polyindex-unlocked-img-' + sha + '" alt=""></div></div></div>' +
+    '<div class="page-review-pane"><div class="page-review-frame" id="polyindex-unlocked-text-frame-' + sha + '">' +
+    '<textarea class="page-review-text" id="polyindex-transcript-' + sha + '" spellcheck="false"></textarea>' +
+    "</div></div></div>" +
+    '<div class="polyindex-unlocked-toolbar">' +
+    '<button type="button" class="polyindex-inline-btn primary" id="polyindex-transcript-save-' + sha + '">Conferma modifica</button>' +
+    '<button type="button" class="polyindex-inline-btn" id="polyindex-transcript-reset-' + sha + '">Reset</button>' +
+    '<button type="button" class="polyindex-inline-btn hidden" id="polyindex-transcript-verify-' + sha + '">Verifica articoli</button>' +
+    "</div></div>" +
+    '<div class="page-picker-panel' + pickerHidden + '" id="polyindex-picker-' + sha + '">' +
+    '<div class="page-picker-toolbar"><div class="page-picker-toolbar-meta" id="' + pickerPrefix + '-meta"></div></div>' +
+    polyindexPagePickerBodyHtml(pickerPrefix, false) +
+    '<div class="polyindex-picker-actions">' +
+    '<button type="button" class="polyindex-inline-btn primary" id="polyindex-picker-confirm-' + sha + '">Aggiungi pagine selezionate</button>' +
+    '<button type="button" class="polyindex-inline-btn" id="polyindex-picker-cancel-' + sha + '">Annulla</button>' +
+    "</div></div>";
+
+  if (!view.lockOpen) {
+    const browseGrid = document.getElementById(browsePrefix + "-grid");
+    if (pages.length && browseGrid) {
+      fillPolyindexPickerGrid(browseGrid, sha, pages, (pageNum) => {
+        view.activePage = pageNum;
+        refreshPolyindexPickerGridSelection(browseGrid, view.pickerSelected, view.activePage, false);
+        setPolyindexPickerDetail(browsePrefix, sha, pageNum);
+      });
+      refreshPolyindexPickerGridSelection(browseGrid, view.pickerSelected, view.activePage, false);
+      setPolyindexPickerDetail(browsePrefix, sha, view.activePage);
+      updatePolyindexPickerMeta(browsePrefix, pages.length, 0, false);
+    } else {
+      updatePolyindexPickerMeta(browsePrefix, 0, 0, false);
+    }
+  }
+
+  const transcriptEl = document.getElementById("polyindex-transcript-" + sha);
+  const verifyBtn = document.getElementById("polyindex-transcript-verify-" + sha);
+  const unlockedImg = document.getElementById("polyindex-unlocked-img-" + sha);
+  const unlockedPageEl = document.getElementById("polyindex-unlocked-page-" + sha);
+
+  if (view.lockOpen && view.activePage && unlockedImg) {
+    unlockedPageEl.textContent = String(view.activePage);
+    unlockedImg.src = pagePreviewUrl(sha, view.activePage);
+    unlockedImg.onload = () => syncPolyindexUnlockedFrameSizes(sha);
+    if (unlockedImg.complete) syncPolyindexUnlockedFrameSizes(sha);
+    loadPolyindexTranscript(sha, view.activePage, transcriptEl, view, verifyBtn).catch((err) => {
+      transcriptEl.value = "";
+      view.baselineText = "";
+      setPolyindexStatus(err.message, true);
+    });
+  }
+
+  const openLockBrowse = document.getElementById(browsePrefix + "-lock");
+  if (openLockBrowse) {
+    openLockBrowse.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (!view.activePage) return;
+      if (!window.confirm("Stai per modificare la trascrizione di questa pagina. Continuare?")) return;
+      view.lockOpen = true;
+      renderPolyindexBookBody(sha, book, host);
+    });
+  }
+
+  const closeLockBtn = document.getElementById("polyindex-unlocked-lock-" + sha);
+  if (closeLockBtn) {
+    closeLockBtn.addEventListener("click", () => {
+      view.lockOpen = false;
+      renderPolyindexBookBody(sha, book, host);
+    });
+  }
+
+  if (transcriptEl) {
+    transcriptEl.addEventListener("input", () => {
+      view.transcriptDirty = transcriptEl.value !== view.baselineText;
+      document.getElementById("polyindex-transcript-reset-" + sha).disabled = !view.transcriptDirty;
+      verifyBtn.classList.add("hidden");
+      const key = sha + ":" + view.activePage;
+      const entry = polyindexState.pendingTranscripts[key];
+      const serverBaseline = entry?.serverBaseline;
+      if (serverBaseline !== undefined && transcriptEl.value !== serverBaseline) markPolyindexDirty();
+    });
+  }
+
+  document.getElementById("polyindex-transcript-reset-" + sha)?.addEventListener("click", () => {
+    transcriptEl.value = view.baselineText;
+    view.transcriptDirty = false;
+    document.getElementById("polyindex-transcript-reset-" + sha).disabled = true;
+    verifyBtn.classList.add("hidden");
+  });
+
+  document.getElementById("polyindex-transcript-save-" + sha)?.addEventListener("click", () => {
+    confirmPolyindexTranscriptLocal(sha, view.activePage, transcriptEl.value, view, verifyBtn);
+  });
+
+  verifyBtn?.addEventListener("click", () => {
+    runPolyindexArticleVerifyLocal(sha, view.activePage);
+  });
+
+  document.getElementById("polyindex-add-page-" + sha).addEventListener("click", () => {
+    openPolyindexPagePicker(sha, "add-page", host, book).catch((err) => setPolyindexStatus(err.message, true));
+  });
+  document.getElementById("polyindex-remove-page-" + sha).addEventListener("click", () => {
+    if (!view.activePage) return;
+    if (!window.confirm("Rimuovere la pagina " + view.activePage + " da questo POH?")) return;
+    polyindexApplyPagesLocal(sha, [], [view.activePage]);
+  });
+  document.getElementById("polyindex-picker-cancel-" + sha).addEventListener("click", () => {
+    view.pickerMode = null;
+    view.pickerSelected = {};
+    document.getElementById("polyindex-picker-" + sha).classList.add("hidden");
+  });
+  document.getElementById("polyindex-picker-confirm-" + sha).addEventListener("click", () => {
+    const selected = Object.keys(view.pickerSelected).map((page) => parseInt(page, 10)).filter((page) => page > 0);
+    if (!selected.length) {
+      setPolyindexStatus("Seleziona almeno una pagina.", true);
+      return;
+    }
+    const meta = polyindexState.ingestedBooks.find((item) => item.source_sha256 === sha) || book;
+    polyindexApplyPagesLocal(sha, selected, [], {
+      book_title: meta.title || book.title,
+      book_slug: meta.slug || book.slug,
+    });
+  });
+}
+
+async function loadPolyindexTranscript(sha, alignedPage, textarea, view, verifyBtn) {
+  if (!alignedPage) return;
+  const key = sha + ":" + alignedPage;
+  textarea.value = "";
+  view.baselineText = "";
+  view.transcriptDirty = false;
+  verifyBtn.classList.add("hidden");
+  const params = new URLSearchParams({ source_sha256: sha, aligned_page: String(alignedPage) });
+  const res = await apiFetch("/api/admin/book-pages/transcript?" + params.toString());
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error(data.error || "Trascrizione non disponibile");
+  const serverText = data.text || "";
+  let entry = polyindexState.pendingTranscripts[key];
+  if (!entry) {
+    entry = { serverBaseline: serverText };
+    polyindexState.pendingTranscripts[key] = entry;
+  } else if (entry.serverBaseline === undefined) {
+    entry.serverBaseline = serverText;
+  }
+  const displayText = entry.pendingText != null ? entry.pendingText : serverText;
+  textarea.value = displayText;
+  view.baselineText = entry.pendingText != null ? entry.pendingText : serverText;
+  view.transcriptDirty = false;
+  verifyBtn.classList.toggle("hidden", !entry.pendingText || entry.pendingText === entry.serverBaseline);
+  textarea.readOnly = !view.lockOpen;
+}
+
+function confirmPolyindexTranscriptLocal(sha, alignedPage, text, view, verifyBtn) {
+  const key = sha + ":" + alignedPage;
+  const entry = polyindexState.pendingTranscripts[key] || { serverBaseline: view.baselineText || "" };
+  entry.pendingText = text;
+  polyindexState.pendingTranscripts[key] = entry;
+  view.baselineText = text;
+  view.transcriptDirty = false;
+  const resetBtn = document.getElementById("polyindex-transcript-reset-" + sha);
+  if (resetBtn) resetBtn.disabled = true;
+  verifyBtn.classList.toggle("hidden", text === entry.serverBaseline);
+  if (text === entry.serverBaseline) entry.wantsVerify = false;
+  markPolyindexDirty();
+  setPolyindexStatus("Trascrizione registrata localmente.");
+}
+
+function runPolyindexArticleVerifyLocal(sha, alignedPage) {
+  const key = sha + ":" + alignedPage;
+  const entry = polyindexState.pendingTranscripts[key] || { serverBaseline: "" };
+  entry.wantsVerify = true;
+  polyindexState.pendingTranscripts[key] = entry;
+  markPolyindexDirty();
+  setPolyindexStatus("Verifica articoli programmata al salvataggio del POH.");
+}
+
+function collectPendingTranscriptSaves() {
+  const saves = [];
+  const seen = new Set();
+  for (const [key, entry] of Object.entries(polyindexState.pendingTranscripts)) {
+    if (entry.pendingText == null || entry.pendingText === entry.serverBaseline) continue;
+    const sep = key.indexOf(":");
+    const sha = key.slice(0, sep);
+    const page = parseInt(key.slice(sep + 1), 10);
+    saves.push({ sha, page, text: entry.pendingText, wantsVerify: Boolean(entry.wantsVerify) });
+    seen.add(key);
+  }
+  document.querySelectorAll("[id^='polyindex-transcript-']").forEach((el) => {
+    const sha = el.id.replace("polyindex-transcript-", "");
+    const view = polyindexView(sha);
+    if (!view.lockOpen || !view.transcriptDirty || !view.activePage) return;
+    const key = sha + ":" + view.activePage;
+    if (seen.has(key)) return;
+    saves.push({ sha, page: view.activePage, text: el.value, wantsVerify: false });
+  });
+  return saves;
+}
+
+function polyindexApplyPagesLocal(sha, addPages, removePages, bookMeta) {
+  sha = normalizePolyindexSha(sha);
+  const subject = polyindexState.subject;
+  if (!subject.books) subject.books = {};
+  let book = subject.books[sha];
+  if (!book && addPages.length) {
+    book = {
+      source_sha256: sha,
+      title: bookMeta?.book_title || bookMeta?.title || "",
+      slug: bookMeta?.book_slug || bookMeta?.slug || "",
+      aligned_pages: [],
+      page_count: 0,
+    };
+    subject.books[sha] = book;
+  }
+  if (!book) return;
+  const pages = new Set(Array.isArray(book.aligned_pages) ? book.aligned_pages : []);
+  removePages.forEach((page) => pages.delete(page));
+  addPages.forEach((page) => pages.add(page));
+  const sorted = Array.from(pages).sort((a, b) => a - b);
+  if (!sorted.length) {
+    delete subject.books[sha];
+    delete polyindexState.bookView[sha];
+    delete polyindexState.pendingBookChanges.pages[sha];
+    if ((polyindexState.savedSubject?.books || {})[sha]) {
+      polyindexState.pendingBookChanges.removed.add(sha);
+    }
+  } else {
+    book.aligned_pages = sorted;
+    book.page_count = sorted.length;
+    if (bookMeta?.book_title || bookMeta?.title) book.title = bookMeta.book_title || bookMeta.title;
+    if (bookMeta?.book_slug || bookMeta?.slug) book.slug = bookMeta.book_slug || bookMeta.slug;
+    trackPolyindexPageChange(sha, addPages, removePages, bookMeta);
+  }
+  const view = polyindexView(sha);
+  view.pickerMode = null;
+  view.pickerSelected = {};
+  if (view.activePage && !sorted.includes(view.activePage)) view.activePage = sorted[0] || null;
+  markPolyindexDirty();
+  setPolyindexStatus("Modifica registrata localmente. Conferma il POH per salvare sul server.");
+  renderPolyindexEditor();
+  const panel = document.getElementById("polyindex-add-book-panel");
+  if (panel) panel.classList.add("hidden");
+}
+
+function polyindexRemoveBookLocal(sha, options) {
+  const opts = options || {};
+  sha = normalizePolyindexSha(sha);
+  const savedBooks = polyindexState.savedSubject?.books || {};
+  if (polyindexState.subject?.books) delete polyindexState.subject.books[sha];
+  delete polyindexState.bookView[sha];
+  delete polyindexState.pendingBookChanges.pages[sha];
+  if (savedBooks[sha]) polyindexState.pendingBookChanges.removed.add(sha);
+  markPolyindexDirty();
+  if (opts.skipRender) return;
+  setPolyindexStatus("Libro rimosso localmente. Conferma il POH per salvare sul server.");
+  renderPolyindexEditor();
+}
+
+function discardPolyindexChanges() {
+  if (!polyindexState.dirty) return;
+  if (!window.confirm("Annullare tutte le modifiche locali?")) return;
+  polyindexState.subject = JSON.parse(JSON.stringify(polyindexState.savedSubject));
+  polyindexState.pendingAliases = (polyindexState.savedSubject?.aliases || []).slice();
+  polyindexState.pendingTimeRange = polyindexState.savedSubject?.time_range || "";
+  polyindexState.aliasDraft = "";
+  polyindexState.pendingTranscripts = {};
+  resetPolyindexPendingBookChanges();
+  polyindexState.dirty = false;
+  polyindexState.bookView = {};
+  syncPolyindexSaveButtons();
+  renderPolyindexEditor();
+  setPolyindexStatus("Modifiche annullate.");
+}
+
+async function confirmPolyindexTranscriptApi(sha, alignedPage, text) {
+  const res = await apiFetch("/api/admin/book-pages/transcript/confirm", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ source_sha256: sha, aligned_page: alignedPage, text: text }),
+  });
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error(data.error || "Conferma fallita");
+}
+
+async function runPolyindexArticleVerifyApi(sha, alignedPage) {
+  const res = await apiFetch("/api/admin/book-pages/repair", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      source_sha256: sha,
+      aligned_page: alignedPage,
+      missing_in: ["stage3Editor"],
+      pipeline_mode: "classic",
+    }),
+  });
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error(data.error || "Verifica fallita");
+  if (data.events_url) await watchRepairJobViaSSE(data.events_url);
+}
+
+async function savePolyindexMetadataApi(aliases, timeRange) {
+  const res = await apiFetch("/api/admin/subject/update", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      canonical_id: polyindexState.canonicalId,
+      aliases: aliases,
+      time_range: timeRange,
+      clear_time_range: !timeRange,
+    }),
+  });
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error(data.error || "Salvataggio fallito");
+}
+
+async function polyindexModifyPagesApi(sha, addPages, removePages, bookMeta) {
+  const body = {
+    canonical_id: polyindexState.canonicalId,
+    source_sha256: sha,
+    add_pages: addPages,
+    remove_pages: removePages,
+  };
+  if (bookMeta) {
+    if (bookMeta.book_title) body.book_title = bookMeta.book_title;
+    if (bookMeta.book_slug) body.book_slug = bookMeta.book_slug;
+    if (bookMeta.title) body.book_title = bookMeta.title;
+    if (bookMeta.slug) body.book_slug = bookMeta.slug;
+  }
+  const res = await apiFetch("/api/admin/subject/pages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error(data.error || "Aggiornamento pagine fallito");
+}
+
+async function polyindexRemoveBookApi(sha) {
+  const res = await apiFetch("/api/admin/subject/book/remove", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ canonical_id: polyindexState.canonicalId, source_sha256: sha }),
+  });
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error(data.error || "Rimozione libro fallita");
+}
+
+async function confirmPolyindexAllChanges() {
+  if (!polyindexState.dirty) return;
+  const confirmBtn = document.getElementById("polyindex-confirm-all");
+  const discardBtn = document.getElementById("polyindex-discard-all");
+  if (confirmBtn) confirmBtn.disabled = true;
+  if (discardBtn) discardBtn.disabled = true;
+  try {
+    if (polyindexState.aliasDraft.trim()) {
+      commitPolyindexAliasDraft({ token: polyindexState.aliasDraft, rest: "", notifyDuplicate: false });
+    }
+    const saved = polyindexState.savedSubject || {};
+    const savedBooks = saved.books || {};
+    const aliases = polyindexState.pendingAliases.map((alias) => alias.trim()).filter(Boolean);
+    const timeRange = polyindexState.pendingTimeRange.trim();
+    const savedAliases = (saved.aliases || []).slice();
+    const savedTime = saved.time_range || "";
+    const metadataChanged =
+      JSON.stringify(aliases) !== JSON.stringify(savedAliases) || timeRange !== savedTime;
+
+    if (metadataChanged) {
+      setPolyindexStatus("Salvataggio alias e periodo…");
+      await savePolyindexMetadataApi(aliases, timeRange);
+    }
+
+    if (hasPendingPolyindexBookChanges()) {
+      const changes = polyindexState.pendingBookChanges;
+      for (const sha of changes.removed) {
+        if (!savedBooks[sha]) continue;
+        setPolyindexStatus("Rimozione libro…");
+        await polyindexRemoveBookApi(sha);
+      }
+      for (const [sha, op] of Object.entries(changes.pages)) {
+        if (changes.removed.has(sha)) continue;
+        const add = [...op.add];
+        const remove = [...op.remove];
+        if (!add.length && !remove.length) continue;
+        setPolyindexStatus("Aggiornamento pagine…");
+        await polyindexModifyPagesApi(sha, add, remove, savedBooks[sha] ? null : op.bookMeta);
+      }
+    }
+
+    const transcriptSaves = collectPendingTranscriptSaves();
+    for (const item of transcriptSaves) {
+      setPolyindexStatus("Salvataggio trascrizione pagina " + item.page + "…");
+      await confirmPolyindexTranscriptApi(item.sha, item.page, item.text);
+      if (item.wantsVerify) {
+        setPolyindexStatus("Verifica articoli pagina " + item.page + "…");
+        await runPolyindexArticleVerifyApi(item.sha, item.page);
+      }
+    }
+
+    const subject = await fetchPolyindexSubject(polyindexState.canonicalId);
+    polyindexState.subject = subject;
+    polyindexState.savedSubject = JSON.parse(JSON.stringify(subject));
+    polyindexState.pendingAliases = (subject.aliases || []).slice();
+    polyindexState.pendingTimeRange = subject.time_range || "";
+    polyindexState.aliasDraft = "";
+    polyindexState.pendingTranscripts = {};
+    resetPolyindexPendingBookChanges();
+    polyindexState.dirty = false;
+    polyindexState.bookView = {};
+    renderPolyindexEditor();
+    setPolyindexStatus("Modifiche salvate sul server.");
+  } finally {
+    syncPolyindexSaveButtons();
+  }
+}
+
+async function openPolyindexPagePicker(sha, mode, host, book) {
+  const view = polyindexView(sha);
+  view.pickerMode = mode;
+  view.pickerSelected = {};
+  const pickerPrefix = polyindexPickerPrefix("polyindex-picker", sha);
+  const picker = document.getElementById("polyindex-picker-" + sha);
+  if (!picker) {
+    renderPolyindexBookBody(sha, book, host);
+    return openPolyindexPagePicker(sha, mode, host, book);
+  }
+  picker.classList.remove("hidden");
+  try {
+    const viewerPages = await loadPolyindexViewerPages(sha, view);
+    const linked = new Set((polyindexState.subject?.books?.[sha]?.aligned_pages) || []);
+    const available = viewerPages.filter((page) => !linked.has(page));
+    await mountPolyindexPagePicker(pickerPrefix, sha, available, view, true);
+  } catch (err) {
+    setPolyindexStatus(err.message, true);
+  }
+}
+
+function renderPolyindexBookPickList(query) {
+  const host = document.getElementById("polyindex-book-pick-list");
+  if (!host) return;
+  const linked = new Set(Object.keys(polyindexState.subject?.books || {}));
+  const needle = (query || "").trim().toLowerCase();
+  const candidates = polyindexState.ingestedBooks.filter((book) => {
+    if (linked.has(book.source_sha256)) return false;
+    if (!needle) return true;
+    const hay = [book.title, book.slug, book.source_sha256].filter(Boolean).join(" ").toLowerCase();
+    return hay.includes(needle);
+  });
+  host.innerHTML = "";
+  if (!candidates.length) {
+    host.textContent = needle ? "Nessun libro trovato." : "Tutti i libri ingestiti sono già collegati.";
+    return;
+  }
+  candidates.forEach((book) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = polyindexBookLabel(book) + " (" + (book.page_count || "?") + " pp.)";
+    btn.addEventListener("click", () => {
+      startPolyindexAddBook(book).catch((err) => setPolyindexStatus(err.message, true));
+    });
+    host.appendChild(btn);
+  });
+}
+
+async function startPolyindexAddBook(book) {
+  const sha = book.source_sha256;
+  resetPolyindexBookView(sha);
+  const view = polyindexView(sha);
+  view.pickerMode = "add-book";
+  view.pickerSelected = {};
+  const prefix = "polyindex-add-book";
+  const panel = document.getElementById("polyindex-add-book-panel");
+  panel.classList.remove("hidden");
+  panel.innerHTML =
+    '<p style="margin:0 0 0.35rem;color:#9d9d9d;">Seleziona pagine per <strong>' + escapeHtml(polyindexBookLabel(book)) + "</strong></p>" +
+    '<div class="page-picker-panel show">' +
+    '<div class="page-picker-toolbar"><div class="page-picker-toolbar-meta" id="' + prefix + '-meta"></div></div>' +
+    polyindexPagePickerBodyHtml(prefix, false) +
+    '<div class="polyindex-picker-actions">' +
+    '<button type="button" class="polyindex-inline-btn primary" id="polyindex-add-book-confirm">Aggiungi al POH</button>' +
+    '<button type="button" class="polyindex-inline-btn" id="polyindex-add-book-cancel">Annulla</button></div></div>';
+  try {
+    const viewerPages = await loadPolyindexViewerPages(sha, view);
+    if (!viewerPages.length) {
+      document.getElementById(prefix + "-grid-wrap").classList.remove("is-loading");
+      document.getElementById(prefix + "-grid").textContent = "Nessuna pagina disponibile per questo libro.";
+      return;
+    }
+    await mountPolyindexPagePicker(prefix, sha, viewerPages, view, true);
+  } catch (err) {
+    setPolyindexStatus(err.message, true);
+    return;
+  }
+  document.getElementById("polyindex-add-book-confirm").addEventListener("click", () => {
+    const selected = Object.keys(view.pickerSelected).map((page) => parseInt(page, 10)).filter((page) => page > 0);
+    if (!selected.length) {
+      setPolyindexStatus("Seleziona almeno una pagina.", true);
+      return;
+    }
+    polyindexApplyPagesLocal(sha, selected, [], book);
+  });
+  document.getElementById("polyindex-add-book-cancel").addEventListener("click", () => {
+    panel.classList.add("hidden");
+    panel.innerHTML =
+      '<input type="search" class="polyindex-book-search" id="polyindex-book-search" placeholder="Cerca libro ingestito…">' +
+      '<div class="polyindex-book-pick-list" id="polyindex-book-pick-list"></div>';
+    document.getElementById("polyindex-book-search").addEventListener("input", (event) => {
+      renderPolyindexBookPickList(event.target.value);
+    });
+  });
 }
 
 function refreshPagePreview() {

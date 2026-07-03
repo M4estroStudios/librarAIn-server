@@ -22,6 +22,7 @@ from src.ingestion.polyindex.subject_matcher import (
 )
 from src.models.polyindex_index import (
     SCHEMA_VERSION,
+    PolyindexIndexBookEntry,
     PolyindexIndexDocument,
     PolyindexIndexSubjectEntry,
 )
@@ -194,6 +195,17 @@ def update_polyindex_index(
     return index_path, stats
 
 
+def _resolve_subject_time_range(
+    polyindex_dir: Path,
+    canonical_id: str,
+    entry: PolyindexIndexSubjectEntry,
+) -> str | None:
+    stored = (entry.time_range or "").strip()
+    if stored:
+        return stored
+    return lookup_poh_time_range(polyindex_dir, canonical_id, entry.canonical_label)
+
+
 def list_multibook_subjects(
     polyindex_dir: Path,
     *,
@@ -225,8 +237,8 @@ def list_multibook_subjects(
                 "aliases": list(entry.aliases),
                 "book_count": len(entry.books),
                 "books": book_summaries,
-                "time_range": lookup_poh_time_range(
-                    polyindex_dir, canonical_id, entry.canonical_label
+                "time_range": _resolve_subject_time_range(
+                    polyindex_dir, canonical_id, entry
                 ),
             }
         )
@@ -256,14 +268,124 @@ def get_polyindex_subject(polyindex_dir: Path, canonical_id: str) -> dict[str, A
         "aliases": list(entry.aliases),
         "book_count": len(entry.books),
         "books": books,
-        "time_range": lookup_poh_time_range(
-            polyindex_dir, canonical_id, entry.canonical_label
+        "time_range": _resolve_subject_time_range(
+            polyindex_dir, canonical_id, entry
         ),
     }
 
 
 class SubjectMergeError(ValueError):
     pass
+
+
+class SubjectUpdateError(ValueError):
+    pass
+
+
+def _load_subject_entry(
+    document: PolyindexIndexDocument,
+    canonical_id: str,
+) -> PolyindexIndexSubjectEntry:
+    entry = document.subjects.get(canonical_id)
+    if entry is None:
+        raise SubjectUpdateError(f"subject not found: {canonical_id}")
+    return entry
+
+
+def update_polyindex_subject_metadata(
+    polyindex_dir: Path,
+    canonical_id: str,
+    *,
+    aliases: list[str] | None = None,
+    time_range: str | None = None,
+    clear_time_range: bool = False,
+) -> dict[str, Any]:
+    index_path = polyindex_dir / "INDEX.json"
+    with polyindex_dir_lock(polyindex_dir, ".index.lock"):
+        if not index_path.is_file():
+            raise SubjectUpdateError("INDEX.json not found")
+        document = PolyindexIndexDocument.load_file(index_path)
+        entry = _load_subject_entry(document, canonical_id)
+        if aliases is not None:
+            entry.set_aliases(aliases)
+        if clear_time_range:
+            entry.time_range = None
+        elif time_range is not None:
+            cleaned = time_range.strip()
+            entry.time_range = cleaned or None
+        document.write_atomic(index_path, sort_document=True)
+    return get_polyindex_subject(polyindex_dir, canonical_id) or {}
+
+
+def update_polyindex_subject_pages(
+    polyindex_dir: Path,
+    canonical_id: str,
+    source_sha256: str,
+    *,
+    add_pages: list[int] | None = None,
+    remove_pages: list[int] | None = None,
+    book_title: str | None = None,
+    book_slug: str | None = None,
+) -> dict[str, Any]:
+    sha = source_sha256.strip().lower()
+    if not sha:
+        raise SubjectUpdateError("source_sha256 is required")
+    to_add = sorted({int(page) for page in (add_pages or []) if int(page) > 0})
+    to_remove = sorted({int(page) for page in (remove_pages or []) if int(page) > 0})
+    if not to_add and not to_remove:
+        raise SubjectUpdateError("add_pages or remove_pages is required")
+
+    index_path = polyindex_dir / "INDEX.json"
+    with polyindex_dir_lock(polyindex_dir, ".index.lock"):
+        if not index_path.is_file():
+            raise SubjectUpdateError("INDEX.json not found")
+        document = PolyindexIndexDocument.load_file(index_path)
+        entry = _load_subject_entry(document, canonical_id)
+        book = entry.books.get(sha)
+        if book is None and to_remove:
+            raise SubjectUpdateError(f"book not linked to subject: {sha}")
+        if book is None:
+            book = PolyindexIndexBookEntry()
+            entry.books[sha] = book
+        for aligned_page in to_remove:
+            book.remove_aligned_page(aligned_page)
+        if to_add:
+            book.merge_pages(
+                to_add,
+                to_add,
+                title=book_title,
+                slug=book_slug,
+            )
+        if not book.aligned_pages:
+            entry.books.pop(sha, None)
+        document.write_atomic(index_path, sort_document=True)
+    result = get_polyindex_subject(polyindex_dir, canonical_id)
+    if result is None:
+        raise SubjectUpdateError(f"subject not found after update: {canonical_id}")
+    return result
+
+
+def remove_polyindex_subject_book(
+    polyindex_dir: Path,
+    canonical_id: str,
+    source_sha256: str,
+) -> dict[str, Any]:
+    sha = source_sha256.strip().lower()
+    if not sha:
+        raise SubjectUpdateError("source_sha256 is required")
+    index_path = polyindex_dir / "INDEX.json"
+    with polyindex_dir_lock(polyindex_dir, ".index.lock"):
+        if not index_path.is_file():
+            raise SubjectUpdateError("INDEX.json not found")
+        document = PolyindexIndexDocument.load_file(index_path)
+        entry = _load_subject_entry(document, canonical_id)
+        if not entry.remove_book(sha):
+            raise SubjectUpdateError(f"book not linked to subject: {sha}")
+        document.write_atomic(index_path, sort_document=True)
+    result = get_polyindex_subject(polyindex_dir, canonical_id)
+    if result is None:
+        raise SubjectUpdateError(f"subject not found after update: {canonical_id}")
+    return result
 
 
 def merge_polyindex_subjects(

@@ -31,6 +31,14 @@ class PolyindexIndexBookEntry(BaseModel):
     aligned_pages: list[int] = Field(default_factory=list)
     original_pages: list[int] = Field(default_factory=list)
 
+    def remove_aligned_page(self, aligned_page: int) -> bool:
+        if aligned_page not in self.aligned_pages:
+            return False
+        self.aligned_pages = [page for page in self.aligned_pages if page != aligned_page]
+        if aligned_page in self.original_pages:
+            self.original_pages = [page for page in self.original_pages if page != aligned_page]
+        return True
+
     def merge_pages(
         self,
         aligned_pages: list[int],
@@ -60,7 +68,26 @@ class PolyindexIndexSubjectEntry(BaseModel):
 
     canonical_label: str
     aliases: list[str] = Field(default_factory=list)
+    time_range: str | None = None
     books: dict[str, PolyindexIndexBookEntry] = Field(default_factory=dict)
+
+    def set_aliases(self, aliases: list[str]) -> None:
+        cleaned: list[str] = []
+        seen: set[str] = set()
+        canonical = self.canonical_label.strip().casefold()
+        for alias in aliases:
+            text = alias.strip()
+            if not text or text.casefold() == canonical:
+                continue
+            key = text.casefold()
+            if key in seen:
+                continue
+            seen.add(key)
+            cleaned.append(text)
+        self.aliases = cleaned
+
+    def remove_book(self, source_sha256: str) -> bool:
+        return self.books.pop(source_sha256, None) is not None
 
     def ensure_alias(self, alias_label: str) -> None:
         if alias_label.strip() == self.canonical_label.strip():

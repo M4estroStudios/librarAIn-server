@@ -261,6 +261,41 @@ class TestIngestAuth(unittest.TestCase):
         self.assertEqual(status, 404)
         self.assertFalse(payload["ok"])
 
+    def test_admin_subject_update_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/subject/update",
+            method="POST",
+            body=json.dumps({"canonical_id": "foo", "aliases": []}).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        self.assertEqual(status, 401)
+
+    def test_admin_subject_pages_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/subject/pages",
+            method="POST",
+            body=json.dumps(
+                {
+                    "canonical_id": "foo",
+                    "source_sha256": "a" * 64,
+                    "add_pages": [1],
+                }
+            ).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        self.assertEqual(status, 401)
+
+    def test_admin_subject_book_remove_requires_token(self) -> None:
+        status, _ = self.server.request(
+            "/api/admin/subject/book/remove",
+            method="POST",
+            body=json.dumps(
+                {"canonical_id": "foo", "source_sha256": "a" * 64}
+            ).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        self.assertEqual(status, 401)
+
     def test_admin_book_pages_audit_requires_token(self) -> None:
         status, _ = self.server.request("/api/admin/book-pages-audit")
         self.assertEqual(status, 401)

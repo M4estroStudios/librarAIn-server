@@ -321,6 +321,17 @@ _INGEST_PHASE_ORDER = [
     "polyindex_index",
     "time_index",
 ]
+_GLM_INGEST_PHASE_ORDER = [
+    "validation",
+    "gate_hash",
+    "pdf_alignment",
+    "page_enumeration",
+    "render",
+    "stage1_glm_ocr",
+    "polyindex_toc",
+    "polyindex_index",
+    "time_index",
+]
 _REPAIR_PHASE_ORDER = [
     "page_repair",
     "gaps_repair",
@@ -386,6 +397,7 @@ _PHASE_LABELS = {
     "page_enumeration": "Enumerazione pagine",
     "render": "Render PDF",
     "stage1_ocr": "Stage 1 — OCR",
+    "stage1_glm_ocr": "Stage 1 — GLM OCR",
     "stage2_vision": "Stage 2 — Vision",
     "stage3_editor": "Stage 3 — Editor",
     "polyindex_toc": "Polyindex TOC",
@@ -557,6 +569,8 @@ def _phase_order_for_job(state: JobState) -> list[str]:
         return _REPAIR_PHASE_ORDER
     if state.job_kind == "research" or phases.intersection(set(_RESEARCH_PHASE_ORDER)):
         return _RESEARCH_PHASE_ORDER
+    if "stage1_glm_ocr" in phases:
+        return _GLM_INGEST_PHASE_ORDER
     return _INGEST_PHASE_ORDER
 
 
