@@ -40,15 +40,19 @@ def _hash_embedding(text: str, dim: int = 8) -> list[float]:
 
 class FakeEmbeddings:
     def __init__(self) -> None:
-        self.calls: list[str] = []
+        self.calls: list[str | list[str]] = []
 
-    def create(self, *, model: str, input: str) -> MagicMock:
+    def create(self, *, model: str, input: str | list[str]) -> MagicMock:
         del model
+        texts = input if isinstance(input, list) else [input]
         self.calls.append(input)
-        item = MagicMock()
-        item.embedding = _hash_embedding(input)
         response = MagicMock()
-        response.data = [item]
+        response.data = []
+        for index, text in enumerate(texts):
+            item = MagicMock()
+            item.index = index
+            item.embedding = _hash_embedding(text)
+            response.data.append(item)
         return response
 
 

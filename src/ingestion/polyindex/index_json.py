@@ -19,6 +19,7 @@ from src.ingestion.polyindex.subject_matcher import (
     allocate_canonical_id,
     find_exact_canonical,
     match_subject,
+    prefetch_matcher_embeddings_for_book,
 )
 from src.models.polyindex_index import (
     SCHEMA_VERSION,
@@ -148,16 +149,27 @@ def update_polyindex_index(
     with polyindex_dir_lock(polyindex_dir, ".index.lock"):
         snapshot = PolyindexIndexDocument.load_file(index_path)
 
+    matcher_state = snapshot.as_matcher_state()
+    embedding_cache = prefetch_matcher_embeddings_for_book(
+        raw_subjects,
+        matcher_state,
+        client,
+        sqlite_path,
+        settings,
+        request_id,
+    )
+
     decisions: list[tuple[RawSubject, MatchDecision]] = []
     for raw_subject in raw_subjects:
         decision = match_subject(
             raw_subject,
-            snapshot.as_matcher_state(),
+            matcher_state,
             client,
             sqlite_path,
             settings,
             request_id,
             prompt_notes=prompt_notes,
+            embedding_cache=embedding_cache,
         )
         _apply_decision(
             snapshot,

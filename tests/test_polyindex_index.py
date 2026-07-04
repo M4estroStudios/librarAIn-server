@@ -57,14 +57,18 @@ def _write_index_md(path: Path, lines: list[str]) -> None:
 
 
 class FakeEmbeddings:
-    def create(self, *, model: str, input: str) -> MagicMock:
+    def create(self, *, model: str, input: str | list[str]) -> MagicMock:
         del model
-        digest = sum(ord(c) for c in input) % 97
-        vector = [float((digest + i) % 13) / 13.0 for i in range(8)]
-        item = MagicMock()
-        item.embedding = vector
+        texts = input if isinstance(input, list) else [input]
         response = MagicMock()
-        response.data = [item]
+        response.data = []
+        for index, text in enumerate(texts):
+            digest = sum(ord(c) for c in text) % 97
+            vector = [float((digest + i) % 13) / 13.0 for i in range(8)]
+            item = MagicMock()
+            item.index = index
+            item.embedding = vector
+            response.data.append(item)
         return response
 
 

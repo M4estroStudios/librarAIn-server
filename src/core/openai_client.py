@@ -124,14 +124,26 @@ def _embedding_vector_from_response(data: Any) -> list[float]:
 
 
 def _embedding_create(client: openai.OpenAI, *, model: str, text: str) -> list[float]:
+    return _embeddings_create(client, model=model, texts=[text])[0]
+
+
+def _embeddings_create(
+    client: openai.OpenAI,
+    *,
+    model: str,
+    texts: list[str],
+) -> list[list[float]]:
+    if not texts:
+        return []
     try:
-        response = client.embeddings.create(model=model, input=text)
+        response = client.embeddings.create(model=model, input=texts)
     except openai.OpenAIError as exc:
         raise classify_openai_exception(exc)(str(exc)) from exc
     except Exception as exc:
         classify_openai_exception(exc)
         raise
-    return _embedding_vector_from_response(response.data[0].embedding)
+    data = sorted(response.data, key=lambda item: int(getattr(item, "index", 0)))
+    return [_embedding_vector_from_response(item.embedding) for item in data]
 
 
 def _log_chat_attempt(

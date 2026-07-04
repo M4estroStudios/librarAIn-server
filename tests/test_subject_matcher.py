@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 from src.ingestion.polyindex.index_md_parser import RawSubject, normalize_label
-from src.ingestion.polyindex.subject_matcher import _parse_llm_same_response, match_subject
+from src.ingestion.polyindex.subject_matcher import _parse_llm_same_response, match_subject, prefetch_matcher_embeddings_for_book
 from src.models.settings import Settings
 
 
@@ -34,15 +34,19 @@ def _hash_embedding(text: str, dim: int = 8) -> list[float]:
 
 class FakeEmbeddings:
     def __init__(self) -> None:
-        self.calls: list[str] = []
+        self.calls: list[str | list[str]] = []
 
-    def create(self, *, model: str, input: str) -> MagicMock:
+    def create(self, *, model: str, input: str | list[str]) -> MagicMock:
         del model
+        texts = input if isinstance(input, list) else [input]
         self.calls.append(input)
-        item = MagicMock()
-        item.embedding = _hash_embedding(input)
         response = MagicMock()
-        response.data = [item]
+        response.data = []
+        for index, text in enumerate(texts):
+            item = MagicMock()
+            item.index = index
+            item.embedding = _hash_embedding(text)
+            response.data.append(item)
         return response
 
 
@@ -216,6 +220,33 @@ class TestSubjectMatcher(unittest.TestCase):
         same, reason = parsed
         self.assertTrue(same)
         self.assertIn("toponimo", reason)
+
+    @patch("src.ingestion.polyindex.subject_matcher._cosine_similarity", return_value=0.88)
+    def test_prefetch_batches_embeddings_for_stage2(self, _mock_sim: MagicMock) -> None:
+        state = _state_with_canonical("roma", "Roma antica")
+        state["subjects"]["milano"] = {
+            "canonical_label": "Milano",
+            "aliases": [],
+            "books": {},
+        }
+        client = _fake_client({"Roma|Roma antica": True})
+        raw_subjects = [
+            RawSubject("Roma", [5], [5]),
+            RawSubject("Milano moderna", [6], [6]),
+        ]
+        settings = _settings(str(self.data_root))
+        cache = prefetch_matcher_embeddings_for_book(
+            raw_subjects,
+            state,
+            client,
+            self.sqlite_path,
+            settings,
+            "req-batch",
+        )
+        self.assertIn("Roma", cache)
+        batch_calls = [call for call in client.embeddings.calls if isinstance(call, list)]
+        self.assertEqual(len(batch_calls), 1)
+        self.assertGreaterEqual(len(batch_calls[0]), 2)
 
     @patch("src.ingestion.polyindex.subject_matcher._cosine_similarity", return_value=0.88)
     def test_unparseable_llm_does_not_crash(self, _mock_sim: MagicMock) -> None:

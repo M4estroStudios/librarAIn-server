@@ -22,6 +22,7 @@ from src.core.openai_client import (
 from src.core.openai_client_sync import (
     chat_completion_with_retry_sync,
     embedding_with_retry_sync,
+    embeddings_batch_with_retry_sync,
 )
 
 
@@ -296,6 +297,32 @@ class TestEmbeddingWithRetrySync(unittest.TestCase):
             stage="subject_matcher_embedding",
         )
         self.assertEqual(vector, [0.1, 0.2, 0.3])
+
+    def test_batch_success_first_attempt(self) -> None:
+        client = build_openai_client(_make_settings())
+
+        def _create(*, model: str, input: list[str]) -> MagicMock:
+            del model
+            response = MagicMock()
+            response.data = []
+            for index, text in enumerate(input):
+                item = MagicMock()
+                item.index = index
+                item.embedding = [float(index), 0.2, 0.3]
+                del text
+                response.data.append(item)
+            return response
+
+        client.embeddings.create = MagicMock(side_effect=_create)  # type: ignore[attr-defined]
+        vectors = embeddings_batch_with_retry_sync(
+            client,  # type: ignore[arg-type]
+            model="text-embedding-3-small",
+            texts=["Roma", "Milano"],
+            request_id="req-embed-batch",
+            stage="subject_matcher_embedding",
+        )
+        self.assertEqual(vectors, [[0.0, 0.2, 0.3], [1.0, 0.2, 0.3]])
+        self.assertEqual(client.embeddings.create.call_count, 1)
 
 
 class TestChatCompletionReasoningParams(unittest.TestCase):

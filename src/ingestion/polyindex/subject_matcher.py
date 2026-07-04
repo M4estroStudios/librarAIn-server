@@ -13,16 +13,15 @@ from src.core.log import Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt
 from src.core.openai_client_sync import (
     chat_completion_with_retry_sync,
-    embedding_with_retry_sync,
 )
 from src.core.text import slugify as _slugify
 from src.ingestion.polyindex.index_md_parser import RawSubject, normalize_label
-from src.models.settings import Settings
-from src.persistence.subject_matcher_sqlite import (
-    get_subject_embedding,
-    insert_subject_match_audit,
-    set_subject_embedding,
+from src.ingestion.polyindex.subject_matcher_embeddings import (
+    prefetch_matcher_embedding_vectors,
+    resolve_subject_embedding_vectors,
 )
+from src.models.settings import Settings
+from src.persistence.subject_matcher_sqlite import insert_subject_match_audit
 
 _PROMPT_PATH = (
     Path(__file__).resolve().parent / "prompts" / "subject_matcher_prompt.md"
@@ -31,9 +30,7 @@ _FUZZY_BORDERLINE_SCORE = 90
 _LLM_LOW_SIM = 0.82
 _LLM_HIGH_SIM = 0.92
 _TOP_K = 10
-_EMBEDDING_DIM_FALLBACK = 64
 _MATCHER_LLM_MAX_TOKENS = 256
-_STAGE_EMBEDDING = "subject_matcher_embedding"
 _STAGE_LLM = "subject_matcher_llm"
 
 
@@ -117,22 +114,6 @@ def _cosine_similarity(a: list[float], b: list[float]) -> float:
     if norm_a == 0.0 or norm_b == 0.0:
         return 0.0
     return dot / (norm_a * norm_b)
-
-
-def _fetch_embedding(
-    client: object,
-    model: str,
-    text: str,
-    *,
-    request_id: str,
-) -> list[float]:
-    return embedding_with_retry_sync(
-        client,  # type: ignore[arg-type]
-        model=model,
-        text=text,
-        request_id=request_id,
-        stage=_STAGE_EMBEDDING,
-    )
 
 
 def _load_matcher_system_prompt() -> str:
@@ -262,25 +243,6 @@ def _canonical_label_for_id(
     return canonical_id
 
 
-def _get_or_create_canonical_embedding(
-    client: object,
-    sqlite_path: str,
-    settings: Settings,
-    subjects: dict[str, dict[str, Any]],
-    canonical_id: str,
-    *,
-    request_id: str,
-) -> list[float]:
-    model = settings.matcher_embedding_model
-    cached = get_subject_embedding(sqlite_path, canonical_id, model)
-    if cached is not None:
-        return cached
-    label = _canonical_label_for_id(subjects, canonical_id)
-    vector = _fetch_embedding(client, model, label, request_id=request_id)
-    set_subject_embedding(sqlite_path, canonical_id, label, vector, model)
-    return vector
-
-
 def _allocate_canonical_id(
     subjects: dict[str, dict[str, Any]], normalized: str
 ) -> str:
@@ -314,9 +276,9 @@ def _stage2_match(
     request_id: str,
     *,
     prompt_notes: str | None = None,
+    embedding_cache: dict[str, list[float]] | None = None,
 ) -> MatchDecision:
     normalized = normalize_label(raw_subject.raw_label)
-    model = settings.matcher_embedding_model
     candidate_ids = _lexical_top_k(subjects, normalized, _TOP_K)
     if not candidate_ids:
         return MatchDecision(
@@ -325,22 +287,23 @@ def _stage2_match(
             ai_used=False,
         )
 
-    raw_vector = _fetch_embedding(
-        client, model, raw_subject.raw_label, request_id=request_id
+    raw_vector, candidate_vectors = resolve_subject_embedding_vectors(
+        client,
+        sqlite_path,
+        settings,
+        subjects,
+        raw_subject.raw_label,
+        candidate_ids,
+        request_id=request_id,
+        embedding_cache=embedding_cache,
+        canonical_label_for_id=_canonical_label_for_id,
     )
     best_id: str | None = None
     best_sim = -1.0
     for canonical_id in candidate_ids:
-        if canonical_id not in subjects:
+        candidate_vector = candidate_vectors.get(canonical_id)
+        if candidate_vector is None:
             continue
-        candidate_vector = _get_or_create_canonical_embedding(
-            client,
-            sqlite_path,
-            settings,
-            subjects,
-            canonical_id,
-            request_id=request_id,
-        )
         sim = _cosine_similarity(raw_vector, candidate_vector)
         if sim > best_sim:
             best_sim = sim
@@ -417,6 +380,30 @@ def allocate_canonical_id(
     return _allocate_canonical_id(subjects, normalized)
 
 
+def prefetch_matcher_embeddings_for_book(
+    raw_subjects: list[RawSubject],
+    polyindex_state: dict[str, Any],
+    client: object,
+    sqlite_path: str,
+    settings: Settings,
+    request_id: str,
+) -> dict[str, list[float]]:
+    return prefetch_matcher_embedding_vectors(
+        raw_subjects,
+        polyindex_state,
+        client,
+        sqlite_path,
+        settings,
+        request_id,
+        subjects_map=_subjects_map,
+        find_exact_canonical=_find_exact_canonical,
+        fuzzy_borderline_candidates=_fuzzy_borderline_candidates,
+        lexical_top_k=_lexical_top_k,
+        canonical_label_for_id=_canonical_label_for_id,
+        top_k=_TOP_K,
+    )
+
+
 def match_subject(
     raw_subject: RawSubject,
     polyindex_state: dict[str, Any],
@@ -426,6 +413,7 @@ def match_subject(
     request_id: str,
     *,
     prompt_notes: str | None = None,
+    embedding_cache: dict[str, list[float]] | None = None,
 ) -> MatchDecision:
     subjects = _subjects_map(polyindex_state)
     normalized = normalize_label(raw_subject.raw_label)
@@ -469,6 +457,7 @@ def match_subject(
                     settings,
                     request_id,
                     prompt_notes=prompt_notes,
+                    embedding_cache=embedding_cache,
                 )
             else:
                 decision = MatchDecision(

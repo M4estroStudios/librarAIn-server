@@ -10,7 +10,7 @@ from src.core.openai_client import (
     _PERMANENT_ERRORS,
     _TRANSIENT_ERRORS,
     _chat_completion_create,
-    _embedding_create,
+    _embeddings_create,
     _log_chat_attempt,
     _log_chat_outcome,
     _resolve_client_state,
@@ -152,18 +152,82 @@ def chat_completion_with_retry_sync(
         raise
 
 
-def embedding_with_retry_sync(
+def _embedding_api_call(
     client: openai.OpenAI,
     *,
     model: str,
-    text: str,
+    texts: list[str],
     request_id: str,
     stage: str,
-) -> list[float]:
+    attempt: int,
+    token_bucket: object | None,
+) -> list[list[float]]:
+    if token_bucket is not None:
+        Log(INFO_LOG_LEVEL, "embedding rate limiter wait begin", {"attempt": attempt})
+        token_bucket.acquire_blocking()  # type: ignore[union-attr]
+        Log(INFO_LOG_LEVEL, "embedding rate limiter wait done", {"attempt": attempt})
+    try:
+        vectors = _embeddings_create(client, model=model, texts=texts)
+        Log(
+            INFO_LOG_LEVEL,
+            "embedding success",
+            {
+                "request_id": request_id,
+                "stage": stage,
+                "model": model,
+                "attempt": attempt,
+                "outcome": "success",
+                "batch_size": len(texts),
+            },
+        )
+        return vectors
+    except _PERMANENT_ERRORS as exc:
+        Log(
+            ERROR_LOG_LEVEL,
+            "embedding permanent error",
+            {
+                "request_id": request_id,
+                "stage": stage,
+                "model": model,
+                "attempt": attempt,
+                "outcome": "permanent_error",
+                "error": repr(exc),
+            },
+        )
+        raise
+    except _TRANSIENT_ERRORS as exc:
+        Log(
+            WARNING_LOG_LEVEL,
+            "embedding transient error",
+            {
+                "request_id": request_id,
+                "stage": stage,
+                "model": model,
+                "attempt": attempt,
+                "outcome": "transient_error",
+                "error": repr(exc),
+            },
+        )
+        raise
+    except Exception as exc:
+        classify_openai_exception(exc)
+        raise
+
+
+def embeddings_batch_with_retry_sync(
+    client: openai.OpenAI,
+    *,
+    model: str,
+    texts: list[str],
+    request_id: str,
+    stage: str,
+) -> list[list[float]]:
+    if not texts:
+        return []
     max_attempts, token_bucket = _resolve_client_state(client)
     attempt_counter = 0
 
-    def _attempt() -> list[float]:
+    def _attempt() -> list[list[float]]:
         nonlocal attempt_counter
         attempt = attempt_counter
         attempt_counter += 1
@@ -174,55 +238,15 @@ def embedding_with_retry_sync(
             model=model,
             request_id=request_id,
         )
-        if token_bucket is not None:
-            Log(INFO_LOG_LEVEL, "embedding rate limiter wait begin", {"attempt": attempt})
-            token_bucket.acquire_blocking()
-            Log(INFO_LOG_LEVEL, "embedding rate limiter wait done", {"attempt": attempt})
-        try:
-            vector = _embedding_create(client, model=model, text=text)
-            Log(
-                INFO_LOG_LEVEL,
-                "embedding success",
-                {
-                    "request_id": request_id,
-                    "stage": stage,
-                    "model": model,
-                    "attempt": attempt,
-                    "outcome": "success",
-                },
-            )
-            return vector
-        except _PERMANENT_ERRORS as exc:
-            Log(
-                ERROR_LOG_LEVEL,
-                "embedding permanent error",
-                {
-                    "request_id": request_id,
-                    "stage": stage,
-                    "model": model,
-                    "attempt": attempt,
-                    "outcome": "permanent_error",
-                    "error": repr(exc),
-                },
-            )
-            raise
-        except _TRANSIENT_ERRORS as exc:
-            Log(
-                WARNING_LOG_LEVEL,
-                "embedding transient error",
-                {
-                    "request_id": request_id,
-                    "stage": stage,
-                    "model": model,
-                    "attempt": attempt,
-                    "outcome": "transient_error",
-                    "error": repr(exc),
-                },
-            )
-            raise
-        except Exception as exc:
-            classify_openai_exception(exc)
-            raise
+        return _embedding_api_call(
+            client,
+            model=model,
+            texts=texts,
+            request_id=request_id,
+            stage=stage,
+            attempt=attempt,
+            token_bucket=token_bucket,
+        )
 
     return retry_sync(
         _attempt,
@@ -231,3 +255,20 @@ def embedding_with_retry_sync(
         retry_on=_TRANSIENT_ERRORS,
         giveup_on=_PERMANENT_ERRORS,
     )
+
+
+def embedding_with_retry_sync(
+    client: openai.OpenAI,
+    *,
+    model: str,
+    text: str,
+    request_id: str,
+    stage: str,
+) -> list[float]:
+    return embeddings_batch_with_retry_sync(
+        client,
+        model=model,
+        texts=[text],
+        request_id=request_id,
+        stage=stage,
+    )[0]
