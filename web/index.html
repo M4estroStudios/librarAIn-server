@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ingestione libro — librarAIn</title>
+<title>Ingestione libro (GLM OCR) — librarAIn</title>
 <script>
 (function (global) {
   function pageLabel() {
@@ -84,7 +84,175 @@
   color: #d4d4d4;
   background: #1e1e1e;
 }
-body { margin: 0 auto; max-width: 52rem; padding: 1.5rem 1rem 3rem; }
+body { margin: 0 auto; max-width: 64rem; padding: 1.5rem 1rem 3rem; }
+.pdf-dropzone { position: relative; display: flex; align-items: center; justify-content: center; min-height: 14rem; margin-bottom: 0.5rem; border: 2px dashed #555; border-radius: 14px; background: #252526; transition: border-color 0.15s ease, background 0.15s ease; }
+.pdf-dropzone.is-dragover { border-color: #4ec9b0; background: rgba(78, 201, 176, 0.06); }
+.pdf-dropzone-input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1; }
+.pdf-dropzone-inner { pointer-events: none; text-align: center; padding: 2rem 1.5rem; max-width: 22rem; }
+.pdf-dropzone-icon { display: inline-flex; align-items: center; justify-content: center; width: 3.25rem; height: 3.25rem; margin-bottom: 0.85rem; border-radius: 10px; background: #3c3c3c; color: #4ec9b0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
+.pdf-dropzone-title { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: #e8e8e8; }
+.pdf-dropzone-hint { margin: 0; font-size: 0.82rem; color: #9d9d9d; line-height: 1.4; }
+.pdf-workspace { display: grid; gap: 0.85rem; }
+.pdf-workspace-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem; padding: 0.65rem 0.85rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
+.pdf-workspace-file { display: grid; gap: 0.1rem; min-width: 0; }
+.pdf-workspace-file-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: #9d9d9d; }
+.pdf-workspace-file-name { font-size: 0.88rem; color: #e8e8e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: min(48vw, 36rem); }
+.pdf-viewer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  background: #1a1a1a;
+  border-bottom: 1px solid #3e3e3e;
+}
+.pdf-viewer-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.42rem 0.7rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: #252526;
+  color: #cccccc;
+  cursor: pointer;
+}
+.pdf-viewer-tool:hover { background: #2f2f30; }
+.pdf-viewer-tool.is-active { color: #e8e8e8; }
+.pdf-viewer-tool[data-viewer-mode="exclude"].is-active { border-color: var(--mark-remove, #d44a4a); background: rgba(212, 74, 74, 0.12); }
+.pdf-viewer-tool[data-viewer-mode="toc"].is-active { border-color: var(--mark-toc, #3d8eef); background: rgba(61, 142, 239, 0.12); }
+.pdf-viewer-tool[data-viewer-mode="index"].is-active { border-color: var(--mark-index, #b88bff); background: rgba(184, 139, 255, 0.12); }
+.pdf-viewer-tool[data-viewer-mode="reicat"].is-active { border-color: var(--mark-reicat, #e6c229); background: rgba(230, 194, 41, 0.12); }
+.pdf-viewer-tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+}
+.pdf-viewer-tool-icon svg { display: block; width: 100%; height: 100%; }
+.pdf-viewer-tool-label { white-space: nowrap; }
+.pdf-viewer-reset {
+  margin-left: auto;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.42rem 0.7rem;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+.pdf-viewer-mode-panel { margin: 0; }
+.pdf-viewer-mode-hint { margin: 0.35rem 0 0; font-size: 0.78rem; color: #9d9d9d; }
+.pdf-workspace-hint-label { margin-top: 0.15rem; }
+.ingest-form-details { display: grid; gap: 1.1rem; margin-top: 0.35rem; }
+.ingest-form-details.hidden { display: none; }
+.reicat-suggest-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem; margin: 0 0 0.75rem; }
+.reicat-suggest-row .hint { margin: 0; }
+:root {
+  --mark-remove: #d44a4a;
+  --mark-toc: #3d8eef;
+  --mark-index: #b88bff;
+  --mark-reicat: #e6c229;
+}
+.page-picker-thumb.is-excluded { border-color: var(--mark-remove); box-shadow: 0 0 0 1px var(--mark-remove); }
+.page-picker-thumb.is-disabled { opacity: 0.38; cursor: not-allowed; }
+.page-picker-thumb-mark {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  overflow: visible;
+  background: none;
+}
+.page-picker-thumb-mark.hidden { display: none; }
+.page-picker-thumb-mark-toc {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0.06rem 0.1rem 0 0;
+}
+.page-picker-thumb-mark-toc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(100% 0, 30% 0, 100% 30%);
+  background: var(--mark-toc);
+  z-index: -1;
+}
+.page-picker-thumb-mark-index {
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 0 0.06rem 0.1rem;
+}
+.page-picker-thumb-mark-index::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 100%, 0 70%, 70% 100%);
+  background: var(--mark-index);
+  z-index: -1;
+}
+.page-picker-thumb-mark-toc span {
+  font-size: 18cqi;
+}
+.page-picker-thumb-mark-index span {
+  font-size: 13.5cqi;
+}
+.page-picker-thumb-mark-reicat {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0;
+  clip-path: polygon(100% 100%, 70% 100%, 100% 30%);
+  overflow: hidden;
+}
+.page-picker-thumb-mark-reicat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--mark-reicat);
+  z-index: 0;
+}
+.page-picker-thumb-mark span {
+  position: relative;
+  z-index: 1;
+  font-weight: 800;
+  color: #fff;
+  text-transform: lowercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+.page-picker-thumb-mark-reicat span {
+  position: relative;
+  z-index: 1;
+  font-size: 2.1cqi;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: -0.08em;
+  line-height: 0.58;
+  margin: 0 4% 5% 0;
+  max-height: 52%;
+  max-width: 15%;
+  overflow: hidden;
+}
+.page-picker-body { min-height: 22rem; }
+.page-picker-grid-wrap { max-height: 36rem; }
+#pdf-viewer-panel { margin-top: 0; }
 h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
 p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
 form { display: grid; gap: 1.1rem; }
@@ -286,7 +454,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
   display: block;
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 5;
   margin: -0.55rem -0.55rem 0.55rem;
   padding: 0.65rem 0.55rem 0.75rem;
   background: rgba(37, 37, 38, 0.96);
@@ -301,10 +469,10 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-progress progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
 .page-picker-progress-stats { margin-top: 0.45rem; font-size: 0.75rem; color: #9d9d9d; }
 .page-picker-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.45rem; }
-.page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 6px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; }
+.page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 6px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; container-type: inline-size; }
 .page-picker-thumb.is-selected { border-color: #4ec9b0; box-shadow: 0 0 0 1px #4ec9b0; }
 .page-picker-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
-.page-picker-thumb-num { position: absolute; left: 0.2rem; top: 0.2rem; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
+.page-picker-thumb-num { position: absolute; left: 0.2rem; top: 0.2rem; z-index: 2; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
 .page-picker-detail { min-width: 0; display: flex; flex-direction: column; gap: 0.45rem; }
 .page-picker-detail-label { font-size: 0.82rem; color: #e8e8e8; font-weight: 600; }
 .page-picker-detail-img-wrap { flex: 1 1 auto; min-height: 12rem; display: flex; align-items: center; justify-content: center; overflow: auto; background: #fff; border-radius: 6px; }
@@ -328,6 +496,9 @@ body.embed-mode .page-picker-panel { border: 0; background: transparent; border-
 body.embed-mode .page-picker-toolbar { border: 0; background: transparent; padding: 0; }
 body.embed-mode .page-picker-grid-wrap { border: 0; background: transparent; padding: 0.55rem 0; border-radius: 0; }
 body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid #3e3e3e; }
+body.embed-mode .pdf-dropzone { min-height: 11rem; }
+body.embed-mode .pdf-workspace-bar { background: transparent; border: 0; padding: 0; }
+body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
 </style>
 </head>
 <body>
@@ -338,27 +509,79 @@ body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem;
   }
 })();
 </script>
-<p class="nav embed-hide">Ingestione · <a href="/index2.html">GLM OCR</a> · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a></p>
-<h1 class="embed-hide">Ingestione libro</h1>
-<p class="lead embed-hide">Carica il PDF: compare un’anteprima pagina per pagina per scegliere visivamente le esclusioni. Indica anche dove si trovono, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT.</p>
+<p class="nav embed-hide">Ingestione GLM OCR · <a href="/index2.html">Pipeline classica</a> · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a></p>
+<h1 class="embed-hide">Ingestione libro (GLM OCR)</h1>
+<p class="lead embed-hide">Pipeline GLM-OCR: carica il PDF, seleziona esclusioni, TOC e indice nel visualizzatore, poi completa i metadati REICAT.</p>
 
 <form id="ingest-form">
-  <fieldset>
-    <legend>File PDF, nome interno e pagine da escludere</legend>
-    <p class="hint">Il documento si invia solo tramite upload. L’etichetta interna è facoltativa e non sostituisce i metadati REICAT. Le pagine da escludere usano la numerazione del PDF.</p>
-    <label><span>PDF da elaborare <small class="req">*</small></span>
-      <input type="file" name="pdf_file" accept="application/pdf,.pdf" required>
-    </label>
-    <label>Codice o etichetta opzionale del libro
-      <input type="text" name="book_id_hint" placeholder="es. collana-2024-verdi" autocomplete="off">
-    </label>
-    <p class="hint" style="margin:0.25rem 0 0;">Per l’etichetta: slug, sigla o codice da catalogo utile in log o integrazioni.</p>
-    <div id="page-picker-panel" class="page-picker-panel" aria-live="polite">
+  <div id="pdf-dropzone" class="pdf-dropzone" aria-label="Carica PDF">
+    <input type="file" id="pdf-file-input" class="pdf-dropzone-input" name="pdf_file" accept="application/pdf,.pdf" required>
+    <div class="pdf-dropzone-inner">
+      <div class="pdf-dropzone-icon" aria-hidden="true">PDF</div>
+      <p class="pdf-dropzone-title">Trascina qui il PDF</p>
+      <p class="pdf-dropzone-hint">oppure clicca per sfogliare · un documento per ingestione</p>
+    </div>
+  </div>
+
+  <div id="pdf-workspace" class="pdf-workspace hidden">
+    <div class="pdf-workspace-bar">
+      <div class="pdf-workspace-file">
+        <span class="pdf-workspace-file-label">Documento</span>
+        <span id="pdf-file-name" class="pdf-workspace-file-name">—</span>
+      </div>
+      <button type="button" id="pdf-change-btn" class="secondary">Cambia PDF</button>
+    </div>
+
+    <div id="pdf-viewer-panel" class="page-picker-panel show" aria-live="polite">
+      <div class="pdf-viewer-tools" role="toolbar" aria-label="Strumenti selezione pagine">
+        <button type="button" class="pdf-viewer-tool is-active" data-viewer-mode="exclude" title="Pagine da rimuovere — contorno rosso, non sovrapponibili a TOC e indice" aria-label="Pagine da rimuovere">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#d44a4a" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8M16 8l-8 8"/></svg></span>
+          <span class="pdf-viewer-tool-label">Rimuovi</span>
+        </button>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="toc" title="Table of Content — triangolo in alto a destra con etichetta toc" aria-label="Table of Content">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2.2"><path d="M5 7h14M5 12h10M5 17h12"/><path fill="#3d8eef" stroke="none" d="M18 3h4v4l-4-4z" opacity="0.85"/></svg></span>
+          <span class="pdf-viewer-tool-label">TOC</span>
+        </button>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="index" title="Indice analitico — triangolo in basso a sinistra con etichetta index" aria-label="Indice analitico">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#b88bff" stroke-width="2.2"><path d="M4 6h16M4 11h16M4 16h10"/><path fill="#b88bff" stroke="none" d="M3 18h5v4l-5-4z" opacity="0.85"/></svg></span>
+          <span class="pdf-viewer-tool-label">Indice</span>
+        </button>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="reicat" title="Metadati REICAT — triangolo giallo in basso a destra con etichetta reicat" aria-label="Metadati REICAT">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2.2"><path d="M4 6h16M4 11h16M4 16h10"/><path fill="#e6c229" stroke="none" d="M21 18h-5v4l5-4z" opacity="0.85"/></svg></span>
+          <span class="pdf-viewer-tool-label">REICAT</span>
+        </button>
+        <button type="button" id="viewer-reset-btn" class="pdf-viewer-reset secondary" title="Azzera rimozioni, TOC, indice e REICAT">Reset selezioni</button>
+      </div>
       <div class="page-picker-toolbar">
-        <label>Pagine da escludere dall’elaborazione
-          <input type="text" name="pages_to_remove" id="pages-to-remove-input" placeholder="1, 2, 10-15, 22" autocomplete="off">
-        </label>
-        <div class="page-picker-toolbar-meta" id="page-picker-meta">Seleziona un PDF per caricare l’anteprima pagine.</div>
+        <div class="pdf-viewer-mode-panel" data-viewer-mode-panel="exclude">
+          <label>Pagine da escludere dall’elaborazione
+            <input type="text" name="pages_to_remove" id="pages-to-remove-input" placeholder="1, 2, 10-15, 22" autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Clicca le miniature per escludere pagine dall’OCR. Intervalli contigui: <code>prima-ultima</code>.</p>
+        </div>
+        <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="toc">
+          <label><span>Pagine del Table of Content <small class="req">*</small></span>
+            <input type="text" name="toc_range" id="toc-range-input" placeholder="11-18" required autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine escluse non sono selezionabili.</p>
+        </div>
+        <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="index">
+          <label><span>Pagine dell’indice analitico <small class="req">*</small></span>
+            <input type="text" name="index_range" id="index-range-input" placeholder="301-324" required autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine escluse non sono selezionabili.</p>
+        </div>
+        <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="reicat">
+          <label>Pagine per metadati REICAT
+            <input type="text" name="reicat_pages" id="reicat-pages-input" placeholder="es. 1-3, 5, 280-285" autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Clicca le miniature per selezionare le pagine editoriali. Vision cercherà ogni campo REICAT in tutte le pagine selezionate. Sovrapponibile con TOC e indice.</p>
+          <p class="reicat-suggest-row">
+            <button type="button" id="reicat-suggest-btn" class="secondary">Compila metadati (Vision)</button>
+            <span class="hint" id="reicat-suggest-status"></span>
+          </p>
+        </div>
+        <div class="page-picker-toolbar-meta" id="pdf-viewer-meta">—</div>
       </div>
       <div class="page-picker-body">
         <div class="page-picker-grid-wrap" id="page-picker-grid-wrap">
@@ -372,77 +595,20 @@ body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem;
         <div class="page-picker-detail">
           <div class="page-picker-detail-label">Anteprima — pagina <span id="page-picker-detail-num">—</span></div>
           <div class="page-picker-detail-img-wrap" id="page-picker-detail-wrap">
-            <div class="page-picker-detail-empty" id="page-picker-detail-empty">Seleziona una pagina nella griglia o scrivi il numero nel campo sopra.</div>
+            <div class="page-picker-detail-empty" id="page-picker-detail-empty">Seleziona una pagina nella griglia o modifica il campo sopra.</div>
             <img id="page-picker-detail-img" class="hidden" alt="">
           </div>
         </div>
       </div>
     </div>
-    <p class="hint" style="margin:0.35rem 0 0;">Clicca le miniature per escludere pagine; intervalli contigui compaiono come <code>prima-ultima</code>. Puoi anche digitare direttamente nel campo.</p>
-  </fieldset>
 
-  <fieldset>
-    <legend>Table of Content</legend>
-    <p class="hint">Scegli visivamente le pagine del sommario oppure indica un intervallo contiguo nel campo. Le pagine già escluse sopra non compaiono qui. Deve essere <strong>un solo blocco contiguo</strong> (es. <code>11-18</code>).</p>
-    <div id="toc-page-picker-panel" class="page-picker-panel" aria-live="polite">
-      <div class="page-picker-toolbar">
-        <label><span>Pagine del Table of Content <small class="req">*</small></span>
-          <input type="text" name="toc_range" id="toc-range-input" placeholder="11-18" required autocomplete="off">
-        </label>
-        <div class="page-picker-toolbar-meta" id="toc-page-picker-meta">Disponibile dopo il caricamento del PDF.</div>
-      </div>
-      <div class="page-picker-body">
-        <div class="page-picker-grid-wrap" id="toc-page-picker-grid-wrap">
-          <div class="page-picker-progress" id="toc-page-picker-progress">
-            <div class="page-picker-progress-label">Rendering pagine…</div>
-            <progress id="toc-page-picker-progress-bar" value="0" max="1"></progress>
-            <div class="page-picker-progress-stats" id="toc-page-picker-progress-stats">0 / 0</div>
-          </div>
-          <div class="page-picker-grid" id="toc-page-picker-grid"></div>
-        </div>
-        <div class="page-picker-detail">
-          <div class="page-picker-detail-label">Anteprima — pagina <span id="toc-page-picker-detail-num">—</span></div>
-          <div class="page-picker-detail-img-wrap" id="toc-page-picker-detail-wrap">
-            <div class="page-picker-detail-empty" id="toc-page-picker-detail-empty">Seleziona una pagina nella griglia o scrivi l’intervallo nel campo sopra.</div>
-            <img id="toc-page-picker-detail-img" class="hidden" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="hint" style="margin:0.35rem 0 0;">Clicca le miniature del TOC; intervalli contigui compaiono come <code>prima-ultima</code>.</p>
-  </fieldset>
+    <label class="pdf-workspace-hint-label">Codice o etichetta opzionale del libro
+      <input type="text" name="book_id_hint" placeholder="es. collana-2024-verdi" autocomplete="off">
+    </label>
+    <p class="hint" style="margin:0;">Slug, sigla o codice da catalogo utile in log o integrazioni.</p>
+  </div>
 
-  <fieldset>
-    <legend>Indice analitico</legend>
-    <p class="hint">Scegli visivamente le pagine dell’indice analitico oppure indica un intervallo contiguo nel campo. Le pagine già escluse sopra non compaiono qui. Deve essere <strong>un solo blocco contiguo</strong> (es. <code>301-324</code>).</p>
-    <div id="index-page-picker-panel" class="page-picker-panel" aria-live="polite">
-      <div class="page-picker-toolbar">
-        <label><span>Pagine dell’indice analitico <small class="req">*</small></span>
-          <input type="text" name="index_range" id="index-range-input" placeholder="301-324" required autocomplete="off">
-        </label>
-        <div class="page-picker-toolbar-meta" id="index-page-picker-meta">Disponibile dopo il caricamento del PDF.</div>
-      </div>
-      <div class="page-picker-body">
-        <div class="page-picker-grid-wrap" id="index-page-picker-grid-wrap">
-          <div class="page-picker-progress" id="index-page-picker-progress">
-            <div class="page-picker-progress-label">Rendering pagine…</div>
-            <progress id="index-page-picker-progress-bar" value="0" max="1"></progress>
-            <div class="page-picker-progress-stats" id="index-page-picker-progress-stats">0 / 0</div>
-          </div>
-          <div class="page-picker-grid" id="index-page-picker-grid"></div>
-        </div>
-        <div class="page-picker-detail">
-          <div class="page-picker-detail-label">Anteprima — pagina <span id="index-page-picker-detail-num">—</span></div>
-          <div class="page-picker-detail-img-wrap" id="index-page-picker-detail-wrap">
-            <div class="page-picker-detail-empty" id="index-page-picker-detail-empty">Seleziona una pagina nella griglia o scrivi l’intervallo nel campo sopra.</div>
-            <img id="index-page-picker-detail-img" class="hidden" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="hint" style="margin:0.35rem 0 0;">Clicca le miniature dell’indice; intervalli contigui compaiono come <code>prima-ultima</code>.</p>
-  </fieldset>
-
+  <div id="ingest-form-details" class="ingest-form-details hidden">
   <fieldset>
     <legend>Metadati bibliografici (REICAT)</legend>
     <label><span>Titolo <small class="req">*</small></span>
@@ -532,6 +698,7 @@ body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem;
   <div class="actions">
     <button type="submit" id="submit-btn">Invia validazione</button>
   </div>
+  </div>
 </form>
 
 <div id="progress" role="status" aria-live="polite">
@@ -609,7 +776,7 @@ body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem;
 </div>
 
 <div id="repair-progress-panel" class="repair-progress-panel hidden" aria-live="polite">
-  <div class="repair-progress-title">Riparazione pagina</div>
+  <div class="repair-progress-title">Riparazione pagina (GLM OCR)</div>
   <div class="repair-progress-phase" id="repair-progress-phase">Avvio…</div>
   <div class="repair-progress-detail" id="repair-progress-detail"></div>
   <div class="repair-progress-bar"><div class="repair-progress-fill" id="repair-progress-fill"></div></div>
@@ -925,6 +1092,14 @@ async function apiFetch(url, options) {
     }, 202);
   }
 
+  if (path === "/api/ingest2/submit" && method === "POST") {
+    return jsonResponse({
+      ok: true,
+      job_id: "mock-ingest-glm",
+      events_url: "mock://fixture/sse-ingest-partial.json",
+    }, 202);
+  }
+
   return jsonResponse({ ok: false, error: "Mock non implementato per " + path }, 501);
 }
 
@@ -1228,9 +1403,17 @@ if (document.readyState === "loading") {
     }
   }
 
-  var pagePickerPanel = document.getElementById("page-picker-panel");
+  var pdfDropzone = document.getElementById("pdf-dropzone");
+  var pdfWorkspace = document.getElementById("pdf-workspace");
+  var ingestFormDetails = document.getElementById("ingest-form-details");
+  var pdfFileName = document.getElementById("pdf-file-name");
+  var pdfFileInput = document.getElementById("pdf-file-input");
+  var pdfChangeBtn = document.getElementById("pdf-change-btn");
+  var pdfViewerMeta = document.getElementById("pdf-viewer-meta");
+  var viewerMode = "exclude";
+  var viewerModeButtons = document.querySelectorAll(".pdf-viewer-tool");
+  var viewerModePanels = document.querySelectorAll("[data-viewer-mode-panel]");
   var pagesToRemoveInput = document.getElementById("pages-to-remove-input");
-  var pagePickerMeta = document.getElementById("page-picker-meta");
   var pagePickerGrid = document.getElementById("page-picker-grid");
   var pagePickerGridWrap = document.getElementById("page-picker-grid-wrap");
   var pagePickerProgressBar = document.getElementById("page-picker-progress-bar");
@@ -1242,6 +1425,7 @@ if (document.readyState === "loading") {
   var pagePickerState = {
     loadGen: 0,
     pdfDoc: null,
+    pdfFile: null,
     numPages: 0,
     selected: {},
     lastSelected: null,
@@ -1250,6 +1434,51 @@ if (document.readyState === "loading") {
     syncing: false,
   };
 
+  function showPdfWorkspace(file) {
+    pdfDropzone.classList.add("hidden");
+    pdfWorkspace.classList.remove("hidden");
+    ingestFormDetails.classList.remove("hidden");
+    pdfFileName.textContent = file && file.name ? file.name : "—";
+  }
+
+  function showPdfDropzone() {
+    pdfDropzone.classList.remove("hidden");
+    pdfWorkspace.classList.add("hidden");
+    ingestFormDetails.classList.add("hidden");
+  }
+
+  function viewerLastSelected(mode) {
+    if (mode === "toc") return tocPagePickerState.lastSelected;
+    if (mode === "index") return indexPagePickerState.lastSelected;
+    if (mode === "reicat") return reicatPagePickerState.lastSelected;
+    return pagePickerState.lastSelected;
+  }
+
+  var VIEWER_TOOL_LABELS = { exclude: "Rimuovi", toc: "TOC", index: "Indice", reicat: "REICAT" };
+
+  function setViewerMode(mode) {
+    if (mode !== "exclude" && mode !== "toc" && mode !== "index" && mode !== "reicat") return;
+    viewerMode = mode;
+    for (var i = 0; i < viewerModeButtons.length; i++) {
+      var btn = viewerModeButtons[i];
+      var active = btn.dataset.viewerMode === mode;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    }
+    for (var j = 0; j < viewerModePanels.length; j++) {
+      var panel = viewerModePanels[j];
+      panel.classList.toggle("hidden", panel.dataset.viewerModePanel !== mode);
+    }
+    refreshViewerThumbUi();
+    renderPagePickerDetail(viewerLastSelected(mode));
+  }
+
+  for (var vm = 0; vm < viewerModeButtons.length; vm++) {
+    viewerModeButtons[vm].addEventListener("click", function () {
+      setViewerMode(this.dataset.viewerMode);
+    });
+  }
+
   function selectedPagesList() {
     return Object.keys(pagePickerState.selected)
       .map(function (k) { return parseInt(k, 10); })
@@ -1257,25 +1486,43 @@ if (document.readyState === "loading") {
       .sort(function (a, b) { return a - b; });
   }
 
-  function updatePagePickerMeta() {
+  function updateViewerMeta() {
     if (!pagePickerState.numPages) {
-      pagePickerMeta.textContent = "Seleziona un PDF per caricare l’anteprima pagine.";
+      pdfViewerMeta.textContent = "—";
       return;
     }
-    var selectedCount = selectedPagesList().length;
-    pagePickerMeta.textContent =
-      pagePickerState.numPages + " pagine nel PDF · " +
-      selectedCount + " selezionat" + (selectedCount === 1 ? "a" : "e") + " da escludere";
+    var excludedCount = selectedPagesList().length;
+    var tocCount = tocSelectedPagesList().length;
+    var indexCount = indexSelectedPagesList().length;
+    var reicatCount = reicatSelectedPagesList().length;
+    pdfViewerMeta.textContent =
+      "Strumento: " + (VIEWER_TOOL_LABELS[viewerMode] || viewerMode) +
+      " · " + pagePickerState.numPages + " pagine · " +
+      excludedCount + " rimosse · " + tocCount + " TOC · " + indexCount + " indice · " + reicatCount + " REICAT";
   }
 
-  function refreshPagePickerSelectionUi() {
+  function refreshViewerThumbUi() {
+    var excluded = getExcludedPagesSet();
     var buttons = pagePickerGrid.querySelectorAll(".page-picker-thumb");
     for (var i = 0; i < buttons.length; i++) {
       var btn = buttons[i];
       var pageNum = parseInt(btn.dataset.page, 10);
-      btn.classList.toggle("is-selected", !!pagePickerState.selected[pageNum]);
+      var isExcluded = !!excluded[pageNum];
+      var hasToc = !!tocPagePickerState.selected[pageNum];
+      var hasIndex = !!indexPagePickerState.selected[pageNum];
+      var hasReicat = !!reicatPagePickerState.selected[pageNum];
+      btn.classList.toggle("is-excluded", isExcluded);
+      var tocMark = btn.querySelector(".page-picker-thumb-mark-toc");
+      var indexMark = btn.querySelector(".page-picker-thumb-mark-index");
+      var reicatMark = btn.querySelector(".page-picker-thumb-mark-reicat");
+      if (tocMark) tocMark.classList.toggle("hidden", !hasToc);
+      if (indexMark) indexMark.classList.toggle("hidden", !hasIndex);
+      if (reicatMark) reicatMark.classList.toggle("hidden", !hasReicat);
+      var disabled = viewerMode !== "exclude" && isExcluded;
+      btn.classList.toggle("is-disabled", disabled);
+      btn.disabled = disabled;
     }
-    updatePagePickerMeta();
+    updateViewerMeta();
   }
 
   function syncPagePickerFieldFromSelection() {
@@ -1298,7 +1545,7 @@ if (document.readyState === "loading") {
       pagePickerState.lastSelected = null;
     }
     pagePickerState.syncing = false;
-    refreshPagePickerSelectionUi();
+    refreshViewerThumbUi();
     renderPagePickerDetail(pagePickerState.lastSelected);
     refreshFilteredRangePickers();
   }
@@ -1325,26 +1572,17 @@ if (document.readyState === "loading") {
   }
 
   function refreshFilteredRangePickers() {
-    refreshTocPagePicker();
-    refreshIndexPagePicker();
+    reconcileTocSelection();
+    reconcileIndexSelection();
+    reconcileReicatSelection();
+    refreshViewerThumbUi();
   }
 
-  var tocPagePickerPanel = document.getElementById("toc-page-picker-panel");
   var tocRangeInput = document.getElementById("toc-range-input");
-  var tocPagePickerMeta = document.getElementById("toc-page-picker-meta");
-  var tocPagePickerGrid = document.getElementById("toc-page-picker-grid");
-  var tocPagePickerGridWrap = document.getElementById("toc-page-picker-grid-wrap");
-  var tocPagePickerProgressBar = document.getElementById("toc-page-picker-progress-bar");
-  var tocPagePickerProgressStats = document.getElementById("toc-page-picker-progress-stats");
-  var tocPagePickerDetailNum = document.getElementById("toc-page-picker-detail-num");
-  var tocPagePickerDetailEmpty = document.getElementById("toc-page-picker-detail-empty");
-  var tocPagePickerDetailImg = document.getElementById("toc-page-picker-detail-img");
   var tocPagePickerState = {
     selected: {},
     lastSelected: null,
-    detailCache: {},
     syncing: false,
-    rendering: false,
   };
 
   function tocSelectedPagesList() {
@@ -1352,30 +1590,6 @@ if (document.readyState === "loading") {
       .map(function (k) { return parseInt(k, 10); })
       .filter(function (p) { return p >= 1; })
       .sort(function (a, b) { return a - b; });
-  }
-
-  function updateTocPagePickerMeta() {
-    var available = getPickerAvailablePages();
-    if (!pagePickerState.numPages) {
-      tocPagePickerMeta.textContent = "Disponibile dopo il caricamento del PDF.";
-      return;
-    }
-    var excludedCount = getExcludedPagesList().length;
-    var selectedCount = tocSelectedPagesList().length;
-    tocPagePickerMeta.textContent =
-      available.length + " pagine disponibili" +
-      (excludedCount ? " (" + excludedCount + " escluse)" : "") +
-      " · " + selectedCount + " selezionat" + (selectedCount === 1 ? "a" : "e") + " per il TOC";
-  }
-
-  function refreshTocPagePickerSelectionUi() {
-    var buttons = tocPagePickerGrid.querySelectorAll(".page-picker-thumb");
-    for (var i = 0; i < buttons.length; i++) {
-      var btn = buttons[i];
-      var pageNum = parseInt(btn.dataset.page, 10);
-      btn.classList.toggle("is-selected", !!tocPagePickerState.selected[pageNum]);
-    }
-    updateTocPagePickerMeta();
   }
 
   function syncTocPagePickerFieldFromSelection() {
@@ -1401,69 +1615,8 @@ if (document.readyState === "loading") {
       tocPagePickerState.lastSelected = null;
     }
     tocPagePickerState.syncing = false;
-    refreshTocPagePickerSelectionUi();
-    renderTocPagePickerDetail(tocPagePickerState.lastSelected);
-  }
-
-  function setTocPagePickerRenderProgress(done, total) {
-    tocPagePickerProgressBar.max = total || 1;
-    tocPagePickerProgressBar.value = done;
-    tocPagePickerProgressStats.textContent = done + " / " + total;
-  }
-
-  function buildTocPagePickerGrid(thumbs) {
-    tocPagePickerGrid.innerHTML = "";
-    for (var i = 0; i < thumbs.length; i++) {
-      var item = thumbs[i];
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "page-picker-thumb";
-      btn.dataset.page = String(item.pageNum);
-      btn.title = "Pagina " + item.pageNum;
-      var img = document.createElement("img");
-      img.alt = "Pagina " + item.pageNum;
-      img.src = item.thumbUrl;
-      var numEl = document.createElement("span");
-      numEl.className = "page-picker-thumb-num";
-      numEl.textContent = String(item.pageNum);
-      btn.appendChild(img);
-      btn.appendChild(numEl);
-      btn.addEventListener("click", function () {
-        toggleTocPagePickerSelection(parseInt(this.dataset.page, 10));
-      });
-      tocPagePickerGrid.appendChild(btn);
-    }
-    refreshTocPagePickerSelectionUi();
-  }
-
-  async function renderTocPagePickerDetail(pageNum) {
-    if (!pageNum || !pagePickerState.pdfDoc || pageNum < 1 || pageNum > pagePickerState.numPages) {
-      tocPagePickerDetailNum.textContent = "—";
-      tocPagePickerDetailImg.classList.add("hidden");
-      tocPagePickerDetailEmpty.textContent = "Seleziona una pagina nella griglia o scrivi l’intervallo nel campo sopra.";
-      tocPagePickerDetailEmpty.classList.remove("hidden");
-      tocPagePickerDetailImg.removeAttribute("src");
-      return;
-    }
-    tocPagePickerDetailNum.textContent = String(pageNum);
-    tocPagePickerDetailEmpty.classList.add("hidden");
-    tocPagePickerDetailImg.classList.remove("hidden");
-    if (tocPagePickerState.detailCache[pageNum]) {
-      tocPagePickerDetailImg.src = tocPagePickerState.detailCache[pageNum];
-      return;
-    }
-    tocPagePickerDetailImg.removeAttribute("src");
-    try {
-      var url = await renderPdfPageToDataUrl(
-        pagePickerState.pdfDoc, pageNum, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
-      );
-      tocPagePickerState.detailCache[pageNum] = url;
-      if (tocPagePickerState.lastSelected === pageNum) tocPagePickerDetailImg.src = url;
-    } catch (_) {
-      tocPagePickerDetailEmpty.textContent = "Anteprima non disponibile per la pagina " + pageNum + ".";
-      tocPagePickerDetailEmpty.classList.remove("hidden");
-      tocPagePickerDetailImg.classList.add("hidden");
-    }
+    refreshViewerThumbUi();
+    if (viewerMode === "toc") renderPagePickerDetail(tocPagePickerState.lastSelected);
   }
 
   function toggleTocPagePickerSelection(pageNum) {
@@ -1472,39 +1625,22 @@ if (document.readyState === "loading") {
     if (tocPagePickerState.selected[pageNum]) delete tocPagePickerState.selected[pageNum];
     else tocPagePickerState.selected[pageNum] = true;
     tocPagePickerState.lastSelected = pageNum;
-    refreshTocPagePickerSelectionUi();
+    refreshViewerThumbUi();
     syncTocPagePickerFieldFromSelection();
-    renderTocPagePickerDetail(pageNum);
+    renderPagePickerDetail(pageNum);
   }
 
   function resetTocPagePicker() {
     tocPagePickerState.selected = {};
     tocPagePickerState.lastSelected = null;
-    tocPagePickerState.detailCache = {};
-    tocPagePickerState.rendering = false;
-    tocPagePickerGrid.innerHTML = "";
-    tocPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
-    setTocPagePickerRenderProgress(0, 0);
-    tocPagePickerPanel.classList.remove("show", "is-loading");
-    renderTocPagePickerDetail(null);
-    updateTocPagePickerMeta();
+    if (viewerMode === "toc") renderPagePickerDetail(null);
   }
 
-  function makeFallbackThumb(pageNum) {
-    return "data:image/svg+xml," + encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="160" viewBox="0 0 120 160">' +
-      '<rect width="120" height="160" fill="#f0f0f0"/>' +
-      '<text x="60" y="84" text-anchor="middle" font-size="14" fill="#666">' + pageNum + "</text></svg>"
-    );
-  }
-
-  async function refreshTocPagePicker() {
-    if (!pagePickerState.pdfDoc || !pagePickerState.numPages) {
+  function reconcileTocSelection() {
+    if (!pagePickerState.numPages) {
       resetTocPagePicker();
       return;
     }
-    var loadGen = pagePickerState.loadGen;
-    var available = getPickerAvailablePages();
     var excluded = getExcludedPagesSet();
     var selected = tocSelectedPagesList().filter(function (p) { return !excluded[p]; });
     tocPagePickerState.selected = {};
@@ -1513,67 +1649,14 @@ if (document.readyState === "loading") {
     else if (tocPagePickerState.lastSelected && excluded[tocPagePickerState.lastSelected]) {
       tocPagePickerState.lastSelected = null;
     }
-
-    tocPagePickerPanel.classList.add("show");
-    if (!available.length) {
-      tocPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
-      tocPagePickerGrid.innerHTML = "";
-      tocPagePickerMeta.textContent = "Nessuna pagina disponibile: tutte risultano escluse.";
-      renderTocPagePickerDetail(null);
-      return;
-    }
-
-    var pending = [];
-    var i;
-    var pageNum;
-    for (i = 0; i < available.length; i++) {
-      pageNum = available[i];
-      if (pagePickerState.thumbUrls[pageNum]) continue;
-      pending.push(pageNum);
-    }
-
-    if (pending.length) {
-      tocPagePickerState.rendering = true;
-      tocPagePickerGridWrap.classList.add("is-rendering-progress");
-      setTocPagePickerRenderProgress(0, pending.length);
-      var tocRender = await renderPdfThumbsParallel(
-        pagePickerState.pdfDoc, pending, loadGen, setTocPagePickerRenderProgress
-      );
-      if (loadGen !== pagePickerState.loadGen || tocRender.cancelled) return;
-      tocPagePickerState.rendering = false;
-    }
-
-    var thumbs = [];
-    for (i = 0; i < available.length; i++) {
-      pageNum = available[i];
-      thumbs.push({
-        pageNum: pageNum,
-        thumbUrl: pagePickerState.thumbUrls[pageNum] || makeFallbackThumb(pageNum),
-      });
-    }
-    buildTocPagePickerGrid(thumbs);
-    tocPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
-    syncTocPagePickerSelectionFromField();
     syncTocPagePickerFieldFromSelection();
-    if (tocPagePickerState.lastSelected) renderTocPagePickerDetail(tocPagePickerState.lastSelected);
   }
 
-  var indexPagePickerPanel = document.getElementById("index-page-picker-panel");
   var indexRangeInput = document.getElementById("index-range-input");
-  var indexPagePickerMeta = document.getElementById("index-page-picker-meta");
-  var indexPagePickerGrid = document.getElementById("index-page-picker-grid");
-  var indexPagePickerGridWrap = document.getElementById("index-page-picker-grid-wrap");
-  var indexPagePickerProgressBar = document.getElementById("index-page-picker-progress-bar");
-  var indexPagePickerProgressStats = document.getElementById("index-page-picker-progress-stats");
-  var indexPagePickerDetailNum = document.getElementById("index-page-picker-detail-num");
-  var indexPagePickerDetailEmpty = document.getElementById("index-page-picker-detail-empty");
-  var indexPagePickerDetailImg = document.getElementById("index-page-picker-detail-img");
   var indexPagePickerState = {
     selected: {},
     lastSelected: null,
-    detailCache: {},
     syncing: false,
-    rendering: false,
   };
 
   function indexSelectedPagesList() {
@@ -1581,30 +1664,6 @@ if (document.readyState === "loading") {
       .map(function (k) { return parseInt(k, 10); })
       .filter(function (p) { return p >= 1; })
       .sort(function (a, b) { return a - b; });
-  }
-
-  function updateIndexPagePickerMeta() {
-    var available = getPickerAvailablePages();
-    if (!pagePickerState.numPages) {
-      indexPagePickerMeta.textContent = "Disponibile dopo il caricamento del PDF.";
-      return;
-    }
-    var excludedCount = getExcludedPagesList().length;
-    var selectedCount = indexSelectedPagesList().length;
-    indexPagePickerMeta.textContent =
-      available.length + " pagine disponibili" +
-      (excludedCount ? " (" + excludedCount + " escluse)" : "") +
-      " · " + selectedCount + " selezionat" + (selectedCount === 1 ? "a" : "e") + " per l’indice";
-  }
-
-  function refreshIndexPagePickerSelectionUi() {
-    var buttons = indexPagePickerGrid.querySelectorAll(".page-picker-thumb");
-    for (var i = 0; i < buttons.length; i++) {
-      var btn = buttons[i];
-      var pageNum = parseInt(btn.dataset.page, 10);
-      btn.classList.toggle("is-selected", !!indexPagePickerState.selected[pageNum]);
-    }
-    updateIndexPagePickerMeta();
   }
 
   function syncIndexPagePickerFieldFromSelection() {
@@ -1630,69 +1689,8 @@ if (document.readyState === "loading") {
       indexPagePickerState.lastSelected = null;
     }
     indexPagePickerState.syncing = false;
-    refreshIndexPagePickerSelectionUi();
-    renderIndexPagePickerDetail(indexPagePickerState.lastSelected);
-  }
-
-  function setIndexPagePickerRenderProgress(done, total) {
-    indexPagePickerProgressBar.max = total || 1;
-    indexPagePickerProgressBar.value = done;
-    indexPagePickerProgressStats.textContent = done + " / " + total;
-  }
-
-  function buildIndexPagePickerGrid(thumbs) {
-    indexPagePickerGrid.innerHTML = "";
-    for (var i = 0; i < thumbs.length; i++) {
-      var item = thumbs[i];
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "page-picker-thumb";
-      btn.dataset.page = String(item.pageNum);
-      btn.title = "Pagina " + item.pageNum;
-      var img = document.createElement("img");
-      img.alt = "Pagina " + item.pageNum;
-      img.src = item.thumbUrl;
-      var numEl = document.createElement("span");
-      numEl.className = "page-picker-thumb-num";
-      numEl.textContent = String(item.pageNum);
-      btn.appendChild(img);
-      btn.appendChild(numEl);
-      btn.addEventListener("click", function () {
-        toggleIndexPagePickerSelection(parseInt(this.dataset.page, 10));
-      });
-      indexPagePickerGrid.appendChild(btn);
-    }
-    refreshIndexPagePickerSelectionUi();
-  }
-
-  async function renderIndexPagePickerDetail(pageNum) {
-    if (!pageNum || !pagePickerState.pdfDoc || pageNum < 1 || pageNum > pagePickerState.numPages) {
-      indexPagePickerDetailNum.textContent = "—";
-      indexPagePickerDetailImg.classList.add("hidden");
-      indexPagePickerDetailEmpty.textContent = "Seleziona una pagina nella griglia o scrivi l’intervallo nel campo sopra.";
-      indexPagePickerDetailEmpty.classList.remove("hidden");
-      indexPagePickerDetailImg.removeAttribute("src");
-      return;
-    }
-    indexPagePickerDetailNum.textContent = String(pageNum);
-    indexPagePickerDetailEmpty.classList.add("hidden");
-    indexPagePickerDetailImg.classList.remove("hidden");
-    if (indexPagePickerState.detailCache[pageNum]) {
-      indexPagePickerDetailImg.src = indexPagePickerState.detailCache[pageNum];
-      return;
-    }
-    indexPagePickerDetailImg.removeAttribute("src");
-    try {
-      var url = await renderPdfPageToDataUrl(
-        pagePickerState.pdfDoc, pageNum, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
-      );
-      indexPagePickerState.detailCache[pageNum] = url;
-      if (indexPagePickerState.lastSelected === pageNum) indexPagePickerDetailImg.src = url;
-    } catch (_) {
-      indexPagePickerDetailEmpty.textContent = "Anteprima non disponibile per la pagina " + pageNum + ".";
-      indexPagePickerDetailEmpty.classList.remove("hidden");
-      indexPagePickerDetailImg.classList.add("hidden");
-    }
+    refreshViewerThumbUi();
+    if (viewerMode === "index") renderPagePickerDetail(indexPagePickerState.lastSelected);
   }
 
   function toggleIndexPagePickerSelection(pageNum) {
@@ -1701,31 +1699,22 @@ if (document.readyState === "loading") {
     if (indexPagePickerState.selected[pageNum]) delete indexPagePickerState.selected[pageNum];
     else indexPagePickerState.selected[pageNum] = true;
     indexPagePickerState.lastSelected = pageNum;
-    refreshIndexPagePickerSelectionUi();
+    refreshViewerThumbUi();
     syncIndexPagePickerFieldFromSelection();
-    renderIndexPagePickerDetail(pageNum);
+    renderPagePickerDetail(pageNum);
   }
 
   function resetIndexPagePicker() {
     indexPagePickerState.selected = {};
     indexPagePickerState.lastSelected = null;
-    indexPagePickerState.detailCache = {};
-    indexPagePickerState.rendering = false;
-    indexPagePickerGrid.innerHTML = "";
-    indexPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
-    setIndexPagePickerRenderProgress(0, 0);
-    indexPagePickerPanel.classList.remove("show", "is-loading");
-    renderIndexPagePickerDetail(null);
-    updateIndexPagePickerMeta();
+    if (viewerMode === "index") renderPagePickerDetail(null);
   }
 
-  async function refreshIndexPagePicker() {
-    if (!pagePickerState.pdfDoc || !pagePickerState.numPages) {
+  function reconcileIndexSelection() {
+    if (!pagePickerState.numPages) {
       resetIndexPagePicker();
       return;
     }
-    var loadGen = pagePickerState.loadGen;
-    var available = getPickerAvailablePages();
     var excluded = getExcludedPagesSet();
     var selected = indexSelectedPagesList().filter(function (p) { return !excluded[p]; });
     indexPagePickerState.selected = {};
@@ -1734,49 +1723,109 @@ if (document.readyState === "loading") {
     else if (indexPagePickerState.lastSelected && excluded[indexPagePickerState.lastSelected]) {
       indexPagePickerState.lastSelected = null;
     }
+    syncIndexPagePickerFieldFromSelection();
+  }
 
-    indexPagePickerPanel.classList.add("show");
-    if (!available.length) {
-      indexPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
-      indexPagePickerGrid.innerHTML = "";
-      indexPagePickerMeta.textContent = "Nessuna pagina disponibile: tutte risultano escluse.";
-      renderIndexPagePickerDetail(null);
+  var reicatPagesInput = document.getElementById("reicat-pages-input");
+  var reicatSuggestBtn = document.getElementById("reicat-suggest-btn");
+  var reicatSuggestStatus = document.getElementById("reicat-suggest-status");
+  var reicatPagePickerState = {
+    selected: {},
+    lastSelected: null,
+    syncing: false,
+  };
+
+  function reicatSelectedPagesList() {
+    return Object.keys(reicatPagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function syncReicatPagePickerFieldFromSelection() {
+    if (reicatPagePickerState.syncing) return;
+    reicatPagePickerState.syncing = true;
+    reicatPagesInput.value = pagesToSpec(reicatSelectedPagesList());
+    reicatPagePickerState.syncing = false;
+  }
+
+  function syncReicatPagePickerSelectionFromField() {
+    if (reicatPagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(reicatPagesInput.value);
+    var excluded = getExcludedPagesSet();
+    reicatPagePickerState.syncing = true;
+    reicatPagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) {
+        if (!excluded[parsed[i]]) reicatPagePickerState.selected[parsed[i]] = true;
+      }
+      var selected = reicatSelectedPagesList();
+      reicatPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
+    } else if (!String(reicatPagesInput.value || "").trim()) {
+      reicatPagePickerState.lastSelected = null;
+    }
+    reicatPagePickerState.syncing = false;
+    refreshViewerThumbUi();
+    if (viewerMode === "reicat") renderPagePickerDetail(reicatPagePickerState.lastSelected);
+  }
+
+  function toggleReicatPagePickerSelection(pageNum) {
+    var excluded = getExcludedPagesSet();
+    if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
+    if (reicatPagePickerState.selected[pageNum]) delete reicatPagePickerState.selected[pageNum];
+    else reicatPagePickerState.selected[pageNum] = true;
+    reicatPagePickerState.lastSelected = pageNum;
+    refreshViewerThumbUi();
+    syncReicatPagePickerFieldFromSelection();
+    renderPagePickerDetail(pageNum);
+  }
+
+  function resetReicatPagePicker() {
+    reicatPagePickerState.selected = {};
+    reicatPagePickerState.lastSelected = null;
+    if (reicatPagesInput) reicatPagesInput.value = "";
+    refreshViewerThumbUi();
+    if (viewerMode === "reicat") renderPagePickerDetail(null);
+  }
+
+  function resetAllViewerSelections() {
+    pagePickerState.selected = {};
+    pagePickerState.lastSelected = null;
+    pagesToRemoveInput.value = "";
+    tocPagePickerState.selected = {};
+    tocPagePickerState.lastSelected = null;
+    tocRangeInput.value = "";
+    indexPagePickerState.selected = {};
+    indexPagePickerState.lastSelected = null;
+    indexRangeInput.value = "";
+    resetReicatPagePicker();
+    setReicatSuggestStatus("");
+    refreshViewerThumbUi();
+    renderPagePickerDetail(null);
+  }
+
+  function reconcileReicatSelection() {
+    if (!pagePickerState.numPages) {
+      resetReicatPagePicker();
       return;
     }
-
-    var pending = [];
-    var i;
-    var pageNum;
-    for (i = 0; i < available.length; i++) {
-      pageNum = available[i];
-      if (pagePickerState.thumbUrls[pageNum]) continue;
-      pending.push(pageNum);
+    var excluded = getExcludedPagesSet();
+    var selected = reicatSelectedPagesList().filter(function (p) { return !excluded[p]; });
+    reicatPagePickerState.selected = {};
+    for (var i = 0; i < selected.length; i++) reicatPagePickerState.selected[selected[i]] = true;
+    if (selected.length) reicatPagePickerState.lastSelected = selected[selected.length - 1];
+    else if (reicatPagePickerState.lastSelected && excluded[reicatPagePickerState.lastSelected]) {
+      reicatPagePickerState.lastSelected = null;
     }
+    syncReicatPagePickerFieldFromSelection();
+  }
 
-    if (pending.length) {
-      indexPagePickerState.rendering = true;
-      indexPagePickerGridWrap.classList.add("is-rendering-progress");
-      setIndexPagePickerRenderProgress(0, pending.length);
-      var indexRender = await renderPdfThumbsParallel(
-        pagePickerState.pdfDoc, pending, loadGen, setIndexPagePickerRenderProgress
-      );
-      if (loadGen !== pagePickerState.loadGen || indexRender.cancelled) return;
-      indexPagePickerState.rendering = false;
-    }
-
-    var thumbs = [];
-    for (i = 0; i < available.length; i++) {
-      pageNum = available[i];
-      thumbs.push({
-        pageNum: pageNum,
-        thumbUrl: pagePickerState.thumbUrls[pageNum] || makeFallbackThumb(pageNum),
-      });
-    }
-    buildIndexPagePickerGrid(thumbs);
-    indexPagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
-    syncIndexPagePickerSelectionFromField();
-    syncIndexPagePickerFieldFromSelection();
-    if (indexPagePickerState.lastSelected) renderIndexPagePickerDetail(indexPagePickerState.lastSelected);
+  function makeFallbackThumb(pageNum) {
+    return "data:image/svg+xml," + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="160" viewBox="0 0 120 160">' +
+      '<rect width="120" height="160" fill="#f0f0f0"/>' +
+      '<text x="60" y="84" text-anchor="middle" font-size="14" fill="#666">' + pageNum + "</text></svg>"
+    );
   }
 
   var PDF_THUMB_SCALE = 0.22;
@@ -1968,21 +2017,40 @@ if (document.readyState === "loading") {
       var numEl = document.createElement("span");
       numEl.className = "page-picker-thumb-num";
       numEl.textContent = String(item.pageNum);
+      var tocMark = document.createElement("span");
+      tocMark.className = "page-picker-thumb-mark page-picker-thumb-mark-toc hidden";
+      tocMark.innerHTML = "<span>toc</span>";
+      var indexMark = document.createElement("span");
+      indexMark.className = "page-picker-thumb-mark page-picker-thumb-mark-index hidden";
+      indexMark.innerHTML = "<span>index</span>";
+      var reicatMark = document.createElement("span");
+      reicatMark.className = "page-picker-thumb-mark page-picker-thumb-mark-reicat hidden";
+      reicatMark.innerHTML = "<span>reicat</span>";
       btn.appendChild(img);
       btn.appendChild(numEl);
+      btn.appendChild(tocMark);
+      btn.appendChild(indexMark);
+      btn.appendChild(reicatMark);
       btn.addEventListener("click", function () {
-        togglePagePickerSelection(parseInt(this.dataset.page, 10));
+        toggleViewerThumb(parseInt(this.dataset.page, 10));
       });
       pagePickerGrid.appendChild(btn);
     }
-    refreshPagePickerSelectionUi();
+    refreshViewerThumbUi();
+  }
+
+  function isDetailPageStillRelevant(pageNum) {
+    if (viewerMode === "toc") return tocPagePickerState.lastSelected === pageNum;
+    if (viewerMode === "index") return indexPagePickerState.lastSelected === pageNum;
+    if (viewerMode === "reicat") return reicatPagePickerState.lastSelected === pageNum;
+    return pagePickerState.lastSelected === pageNum;
   }
 
   async function renderPagePickerDetail(pageNum) {
     if (!pageNum || !pagePickerState.pdfDoc || pageNum < 1 || pageNum > pagePickerState.numPages) {
       pagePickerDetailNum.textContent = "—";
       pagePickerDetailImg.classList.add("hidden");
-      pagePickerDetailEmpty.textContent = "Seleziona una pagina nella griglia o scrivi il numero nel campo sopra.";
+      pagePickerDetailEmpty.textContent = "Seleziona una pagina nella griglia o modifica il campo sopra.";
       pagePickerDetailEmpty.classList.remove("hidden");
       pagePickerDetailImg.removeAttribute("src");
       return;
@@ -2000,7 +2068,7 @@ if (document.readyState === "loading") {
         pagePickerState.pdfDoc, pageNum, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
       );
       pagePickerState.detailCache[pageNum] = url;
-      if (pagePickerState.lastSelected === pageNum) pagePickerDetailImg.src = url;
+      if (isDetailPageStillRelevant(pageNum)) pagePickerDetailImg.src = url;
     } catch (_) {
       pagePickerDetailEmpty.textContent = "Anteprima non disponibile per la pagina " + pageNum + ".";
       pagePickerDetailEmpty.classList.remove("hidden");
@@ -2008,19 +2076,42 @@ if (document.readyState === "loading") {
     }
   }
 
+  function toggleViewerThumb(pageNum) {
+    if (viewerMode === "toc") toggleTocPagePickerSelection(pageNum);
+    else if (viewerMode === "index") toggleIndexPagePickerSelection(pageNum);
+    else if (viewerMode === "reicat") toggleReicatPagePickerSelection(pageNum);
+    else togglePagePickerSelection(pageNum);
+  }
+
   function togglePagePickerSelection(pageNum) {
     if (pageNum < 1 || pageNum > pagePickerState.numPages) return;
-    if (pagePickerState.selected[pageNum]) delete pagePickerState.selected[pageNum];
-    else pagePickerState.selected[pageNum] = true;
+    if (pagePickerState.selected[pageNum]) {
+      delete pagePickerState.selected[pageNum];
+    } else {
+      pagePickerState.selected[pageNum] = true;
+      if (tocPagePickerState.selected[pageNum]) {
+        delete tocPagePickerState.selected[pageNum];
+        syncTocPagePickerFieldFromSelection();
+      }
+      if (indexPagePickerState.selected[pageNum]) {
+        delete indexPagePickerState.selected[pageNum];
+        syncIndexPagePickerFieldFromSelection();
+      }
+      if (reicatPagePickerState.selected[pageNum]) {
+        delete reicatPagePickerState.selected[pageNum];
+        syncReicatPagePickerFieldFromSelection();
+      }
+    }
     pagePickerState.lastSelected = pageNum;
-    refreshPagePickerSelectionUi();
+    refreshViewerThumbUi();
     syncPagePickerFieldFromSelection();
     renderPagePickerDetail(pageNum);
   }
 
-  function resetPagePicker() {
+  function resetPagePickerState() {
     pagePickerState.loadGen += 1;
     pagePickerState.pdfDoc = null;
+    pagePickerState.pdfFile = null;
     pagePickerState.numPages = 0;
     pagePickerState.selected = {};
     pagePickerState.lastSelected = null;
@@ -2029,20 +2120,26 @@ if (document.readyState === "loading") {
     pagePickerGrid.innerHTML = "";
     pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
     setPagePickerRenderProgress(0, 0);
-    pagePickerPanel.classList.remove("show", "is-loading");
     renderPagePickerDetail(null);
-    updatePagePickerMeta();
-    resetTocPagePicker();
-    resetIndexPagePicker();
+    updateViewerMeta();
+    resetAllViewerSelections();
+    setViewerMode("exclude");
+  }
+
+  function resetPagePicker() {
+    resetPagePickerState();
+    showPdfDropzone();
+    if (pdfFileInput) pdfFileInput.value = "";
   }
 
   async function loadPagePickerFromFile(file) {
-    resetPagePicker();
     if (!file || !file.size) return;
+    resetPagePickerState();
+    pagePickerState.pdfFile = file;
+    showPdfWorkspace(file);
     var loadGen = pagePickerState.loadGen;
-    pagePickerPanel.classList.add("show", "is-loading");
     pagePickerGridWrap.classList.add("is-rendering");
-    pagePickerMeta.textContent = "Caricamento PDF…";
+    pdfViewerMeta.textContent = "Caricamento PDF…";
     try {
       var mod = await pdfJs();
       var buf = await file.arrayBuffer();
@@ -2060,7 +2157,6 @@ if (document.readyState === "loading") {
       buildPagePickerGrid(initialThumbs);
       pagePickerGridWrap.classList.remove("is-rendering");
       pagePickerGridWrap.classList.add("is-rendering-progress");
-      pagePickerPanel.classList.remove("is-loading");
       setPagePickerRenderProgress(0, allPageNums.length);
       var batchRender = await renderPdfThumbsParallel(
         pdfDoc,
@@ -2077,16 +2173,45 @@ if (document.readyState === "loading") {
       );
       pagePickerGridWrap.classList.remove("is-rendering-progress");
       if (loadGen !== pagePickerState.loadGen || batchRender.cancelled) return;
-      updatePagePickerMeta();
-      if (pagePickerState.lastSelected) renderPagePickerDetail(pagePickerState.lastSelected);
-      await refreshFilteredRangePickers();
+      refreshViewerThumbUi();
+      if (viewerLastSelected(viewerMode)) renderPagePickerDetail(viewerLastSelected(viewerMode));
+      refreshFilteredRangePickers();
     } catch (err) {
       if (loadGen !== pagePickerState.loadGen) return;
       pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
-      pagePickerPanel.classList.remove("is-loading");
-      pagePickerMeta.textContent = "Anteprima non disponibile: " + String(err && err.message ? err.message : err);
+      pdfViewerMeta.textContent = "Anteprima non disponibile: " + String(err && err.message ? err.message : err);
     }
   }
+
+  function assignPdfFile(file) {
+    if (!file || file.type !== "application/pdf") return false;
+    var dt = new DataTransfer();
+    dt.items.add(file);
+    pdfFileInput.files = dt.files;
+    loadPagePickerFromFile(file);
+    return true;
+  }
+
+  pdfDropzone.addEventListener("dragover", function (event) {
+    event.preventDefault();
+    pdfDropzone.classList.add("is-dragover");
+  });
+  pdfDropzone.addEventListener("dragleave", function () {
+    pdfDropzone.classList.remove("is-dragover");
+  });
+  pdfDropzone.addEventListener("drop", function (event) {
+    event.preventDefault();
+    pdfDropzone.classList.remove("is-dragover");
+    var file = event.dataTransfer.files && event.dataTransfer.files[0];
+    assignPdfFile(file);
+  });
+  pdfFileInput.addEventListener("change", function (event) {
+    var file = event.target.files && event.target.files.length ? event.target.files[0] : null;
+    if (file) loadPagePickerFromFile(file);
+  });
+  pdfChangeBtn.addEventListener("click", function () {
+    resetPagePicker();
+  });
 
   pagesToRemoveInput.addEventListener("input", syncPagePickerSelectionFromField);
   pagesToRemoveInput.addEventListener("change", syncPagePickerSelectionFromField);
@@ -2094,6 +2219,8 @@ if (document.readyState === "loading") {
   tocRangeInput.addEventListener("change", syncTocPagePickerSelectionFromField);
   indexRangeInput.addEventListener("input", syncIndexPagePickerSelectionFromField);
   indexRangeInput.addEventListener("change", syncIndexPagePickerSelectionFromField);
+  reicatPagesInput.addEventListener("input", syncReicatPagePickerSelectionFromField);
+  reicatPagesInput.addEventListener("change", syncReicatPagePickerSelectionFromField);
 
   function contiguousBounds(sortedUnique) {
     if (sortedUnique.length === 0) throw new Error("valore obbligatorio");
@@ -2135,13 +2262,91 @@ if (document.readyState === "loading") {
   }
 
   var form = document.getElementById("ingest-form");
-  form.querySelector('[name="pdf_file"]').addEventListener("change", function (event) {
-    var input = event.target;
-    var file = input.files && input.files.length ? input.files[0] : null;
-    loadPagePickerFromFile(file);
-  });
   var out = document.getElementById("out");
   var btn = document.getElementById("submit-btn");
+
+  function setReicatSuggestStatus(text) {
+    if (reicatSuggestStatus) reicatSuggestStatus.textContent = text || "";
+  }
+
+  function applyReicatSuggestion(reicat) {
+    if (!reicat || typeof reicat !== "object") return;
+    function setField(name, value) {
+      var el = form.elements[name];
+      if (!el) return;
+      el.value = value == null ? "" : String(value);
+    }
+    function setListField(name, value) {
+      if (Array.isArray(value)) setField(name, value.join(", "));
+      else setField(name, value == null ? "" : String(value));
+    }
+    setField("titolo", reicat.titolo);
+    setField("sottotitolo", reicat.sottotitolo);
+    setField("complementi_del_titolo", reicat.complementi_del_titolo);
+    setListField("autore", reicat.autore);
+    setListField("curatore", reicat.curatore);
+    setListField("traduttore", reicat.traduttore);
+    setField("numero_edizione", reicat.numero_edizione);
+    if (reicat.anno_di_pubblicazione != null) setField("anno_di_pubblicazione", reicat.anno_di_pubblicazione);
+    else setField("anno_di_pubblicazione", "");
+    setField("tipo_di_pubblicazione", reicat.tipo_di_pubblicazione);
+    setField("luogo_di_pubblicazione", reicat.luogo_di_pubblicazione);
+    setField("editore", reicat.editore);
+    if (reicat.numero_pagine != null) setField("numero_pagine", reicat.numero_pagine);
+    else setField("numero_pagine", "");
+    setField("titolo_collana", reicat.titolo_collana);
+    setField("numero_nella_collana", reicat.numero_nella_collana);
+    setField("isbn", reicat.isbn);
+  }
+
+  if (reicatSuggestBtn) {
+    reicatSuggestBtn.addEventListener("click", async function () {
+      if (window.__librarainMock && window.__librarainMock.isEnabled()) {
+        setReicatSuggestStatus("Disabilitato in modalità mock.");
+        return;
+      }
+      var file = pagePickerState.pdfFile;
+      if (!file || !file.size) {
+        setReicatSuggestStatus("Carica prima un PDF.");
+        return;
+      }
+      var reicatPages = reicatSelectedPagesList();
+      if (!reicatPages.length) {
+        setReicatSuggestStatus("Seleziona almeno una pagina REICAT.");
+        return;
+      }
+      reicatSuggestBtn.disabled = true;
+      setReicatSuggestStatus("Analisi Vision in corso su " + reicatPages.length + " pagine…");
+      try {
+        var fd = new FormData();
+        fd.append("pdf_file", file, file.name || "upload.pdf");
+        fd.append("reicat_pages", pagesToSpec(reicatPages));
+        var headers = apiToken() ? { "X-API-Token": apiToken() } : {};
+        var res = await fetch("/api/ingest/reicat-suggest", { method: "POST", body: fd, headers: headers });
+        if (res.status === 401) {
+          var newToken = promptApiToken();
+          if (!newToken) throw new Error("Autenticazione richiesta.");
+          res = await fetch("/api/ingest/reicat-suggest", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
+        }
+        var data = await res.json().catch(function () { return {}; });
+        if (!res.ok || !data.ok) throw new Error(data.error || data.message || ("HTTP " + res.status));
+        applyReicatSuggestion(data.reicat);
+        setReicatSuggestStatus("Bozza compilata (" + reicatPages.length + " pagine). Verifica i campi.");
+      } catch (err) {
+        setReicatSuggestStatus(String(err && err.message ? err.message : err));
+      } finally {
+        reicatSuggestBtn.disabled = false;
+      }
+    });
+  }
+
+  var viewerResetBtn = document.getElementById("viewer-reset-btn");
+  if (viewerResetBtn) {
+    viewerResetBtn.addEventListener("click", function () {
+      resetAllViewerSelections();
+    });
+  }
+
   var progressBox = document.getElementById("progress");
   var progressAlertEl = document.getElementById("progress-alert");
   var progressBarGlobal = document.getElementById("progress-bar-global");
@@ -2220,17 +2425,20 @@ if (document.readyState === "loading") {
   var REPAIR_PHASE_LABELS = {
     page_repair: "Preparazione",
     gaps_repair: "Riparazione lacune",
-    stage1_ocr: "Stage 1 — OCR",
-    stage2_vision: "Stage 2 — Vision",
+    stage1_glm_ocr: "GLM OCR",
+    stage1_ocr: "GLM OCR",
+    stage2_vision: "GLM OCR",
     stage3_editor: "Stage 3 — Editor",
     queue: "In coda",
     pipeline: "Pipeline",
   };
-  var REPAIR_STAGE_PHASES = ["stage1_ocr", "stage2_vision", "stage3_editor"];
+  var INGEST_REPAIR_PIPELINE_MODE = "glm_ocr";
+  var REPAIR_STAGE_PHASES = ["stage1_glm_ocr", "stage3_editor"];
   var activeRowRepairUI = null;
   var activeBulkRepairUI = null;
 
   var FAILED_PHASE_TO_MISSING = {
+    stage1_glm_ocr: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
     stage1_ocr: ["stage1OCR", "stage2Vision", "stage3Editor", "output"],
     stage2_vision: ["stage2Vision", "stage3Editor", "output"],
     stage3_editor: ["stage3Editor", "output"],
@@ -2557,6 +2765,7 @@ if (document.readyState === "loading") {
         source_sha256: sourceSha256,
         aligned_page: alignedPage,
         missing_in: missingIn,
+        pipeline_mode: INGEST_REPAIR_PIPELINE_MODE,
       }),
     });
     var data = await res.json();
@@ -2584,6 +2793,7 @@ if (document.readyState === "loading") {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         source_sha256: sourceSha256,
+        pipeline_mode: INGEST_REPAIR_PIPELINE_MODE,
         gap_pages: gapEntries.map(function (entry) {
           return {
             aligned: entry.aligned,
@@ -2626,7 +2836,7 @@ if (document.readyState === "loading") {
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "audit-repair-btn";
-    btn.textContent = "Prova a sistemare";
+    btn.textContent = "GLM OCR";
     function rowEl() { return stack.closest("tr"); }
     function setRunning(active) {
       stack.classList.toggle("is-active", active);
@@ -2655,7 +2865,7 @@ if (document.readyState === "loading") {
       statusLabel.classList.remove("is-error");
       barFill.style.width = "0%";
       btn.disabled = false;
-      btn.textContent = "Prova a sistemare";
+      btn.textContent = "GLM OCR";
     }
     btn.addEventListener("click", function () {
       statusLabel.classList.remove("is-error");
@@ -2694,7 +2904,7 @@ if (document.readyState === "loading") {
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "audit-repair-btn";
-    btn.textContent = "Prova a sistemare tutto";
+    btn.textContent = "GLM OCR tutto";
     var alignedPages = gapEntries.map(function (entry) { return entry.aligned; }).sort(function (a, b) { return a - b; });
     var pageSegs = {};
     for (var s = 0; s < alignedPages.length; s++) {
@@ -2762,7 +2972,7 @@ if (document.readyState === "loading") {
       overallFill.style.width = "0%";
       resetPageSegs();
       btn.disabled = false;
-      btn.textContent = "Prova a sistemare tutto";
+      btn.textContent = "GLM OCR tutto";
     }
     btn.addEventListener("click", function () {
       stageLabel.classList.remove("is-error");
@@ -3335,7 +3545,7 @@ if (document.readyState === "loading") {
 
   var PHASE_ORDER = [
     "validation", "gate_hash", "pdf_alignment", "page_enumeration",
-    "stage1_ocr", "stage2_vision", "stage3_editor",
+    "stage1_glm_ocr", "stage3_editor",
     "polyindex_toc", "polyindex_index", "time_index",
   ];
 
@@ -3344,8 +3554,9 @@ if (document.readyState === "loading") {
     gate_hash: "Hash gate",
     pdf_alignment: "Allineamento PDF",
     page_enumeration: "Enumerazione pagine",
-    stage1_ocr: "Stage 1 OCR",
-    stage2_vision: "Stage 2 Vision",
+    stage1_glm_ocr: "GLM OCR (OCR+Vision)",
+    stage1_ocr: "GLM OCR (OCR+Vision)",
+    stage2_vision: "GLM OCR (OCR+Vision)",
     stage3_editor: "Stage 3 Editor",
     polyindex_toc: "Polyindex TOC.json",
     polyindex_index: "Polyindex INDEX.json",
@@ -3714,11 +3925,11 @@ if (document.readyState === "loading") {
 
       var fd = new FormData(form);
       var submitHeaders = apiToken() ? { "X-API-Token": apiToken() } : {};
-      var res = await fetch("/api/ingest/submit", { method: "POST", body: fd, headers: submitHeaders });
+      var res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: submitHeaders });
       if (res.status === 401) {
         var newToken = promptApiToken();
         if (newToken) {
-          res = await fetch("/api/ingest/submit", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
+          res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
         }
       }
       var data;
