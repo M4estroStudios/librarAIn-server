@@ -516,6 +516,12 @@ def build_ingest_server(
                     _send_bytes(self, 200, log_js.read_bytes(), "text/javascript; charset=utf-8")
                     return
 
+            if path == "/article-source-viewer.js":
+                viewer_js = web_dir / "article-source-viewer.js"
+                if viewer_js.is_file():
+                    _send_bytes(self, 200, viewer_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
             if path == "/mockup/lab.html":
                 self.send_response(302)
                 self.send_header("Location", "/index.html?mock=1")

@@ -18,12 +18,16 @@ class PagePreviewError(ValueError):
     pass
 
 
-def _aligned_pdf_path(data_root: Path, source_sha256: str) -> Path:
+def get_aligned_pdf_path(data_root: Path, source_sha256: str) -> Path:
     sha = source_sha256.strip().lower()
     candidate = data_root / "input" / "processed" / f"{sha}.pdf"
     if not candidate.is_file():
         raise PagePreviewError(f"aligned pdf not found for book {sha[:16]}…")
     return candidate
+
+
+def _aligned_pdf_path(data_root: Path, source_sha256: str) -> Path:
+    return get_aligned_pdf_path(data_root, source_sha256)
 
 
 def _render_png_path(data_root: Path, source_sha256: str, aligned_page: int) -> Path:

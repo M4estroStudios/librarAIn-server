@@ -18,6 +18,8 @@ from src.persistence.research_runs import (
     mark_research_run_succeeded,
 )
 from src.search.article_health_audit import audit_articles_health
+from src.persistence.book_page_preview import PagePreviewError, ensure_page_render_png
+from src.persistence.book_pages_audit import audit_book
 from src.search.article_catalog import (
     generate_article_for_poh,
     list_ingested_books,
@@ -485,6 +487,49 @@ def build_research_routes(
                 send_json(handler, 500, {"ok": False, "error": "web/ricerca.html missing"})
                 return True
             send_bytes(handler, 200, page.read_bytes(), "text/html; charset=utf-8")
+            return True
+
+        if path == "/api/research/book-pages/render":
+            source_sha256 = (query.get("source_sha256") or [""])[0].strip()
+            aligned_raw = (query.get("aligned_page") or [""])[0].strip()
+            if not source_sha256:
+                send_json(handler, 400, {"ok": False, "error": "source_sha256 is required"})
+                return True
+            try:
+                aligned_page = int(aligned_raw)
+            except ValueError:
+                send_json(handler, 400, {"ok": False, "error": "aligned_page must be an integer"})
+                return True
+            if aligned_page < 1:
+                send_json(handler, 400, {"ok": False, "error": "aligned_page must be positive"})
+                return True
+            try:
+                png_path = ensure_page_render_png(data_root, source_sha256, aligned_page)
+            except PagePreviewError as exc:
+                send_json(handler, 400, {"ok": False, "error": str(exc)})
+                return True
+            send_bytes(handler, 200, png_path.read_bytes(), "image/png")
+            return True
+
+        if path == "/api/research/books/meta":
+            source_sha256 = (query.get("source_sha256") or [""])[0].strip()
+            if not source_sha256:
+                send_json(handler, 400, {"ok": False, "error": "source_sha256 is required"})
+                return True
+            entry = audit_book(data_root, source_sha256)
+            if entry is None:
+                send_json(handler, 404, {"ok": False, "error": "book not found"})
+                return True
+            send_json(
+                handler,
+                200,
+                {
+                    "ok": True,
+                    "source_sha256": entry["source_sha256"],
+                    "title": entry["title"],
+                    "viewer_pages": entry["viewer_pages"],
+                },
+            )
             return True
 
         if path.startswith("/articolo/") and path.endswith(".html"):

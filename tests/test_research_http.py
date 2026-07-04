@@ -6,6 +6,7 @@ import threading
 import time
 import unittest
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 from unittest.mock import patch
@@ -111,6 +112,42 @@ class ResearchHttpTests(unittest.TestCase):
         self.assertIn("Cerca negli articoli e POH", html)
         self.assertIn("/dashboard/search-google.js", html)
         self.assertIn('id="google-form"', html)
+
+    def test_article_source_viewer_js_served(self) -> None:
+        req = urllib.request.Request(self.harness.url("/article-source-viewer.js"))
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            body = resp.read().decode("utf-8")
+        self.assertEqual(resp.status, 200)
+        self.assertIn("page-preview-overlay", body)
+
+    def test_research_book_page_render_open_without_token(self) -> None:
+        sha = "abc123"
+        data_root = self.harness.data_root
+        png_path = data_root / "tmp" / sha / "render" / "p.0001.png"
+        png_path.parent.mkdir(parents=True, exist_ok=True)
+        png_path.write_bytes(b"\x89PNG\r\n\x1a\ncontent")
+        processed = data_root / "input" / "processed"
+        processed.mkdir(parents=True, exist_ok=True)
+        (processed / f"{sha}.pdf").write_bytes(b"%PDF-1.4\n")
+        req = urllib.request.Request(
+            self.harness.url(
+                "/api/research/book-pages/render?"
+                + urllib.parse.urlencode({"source_sha256": sha, "aligned_page": "1"})
+            )
+        )
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            self.assertEqual(resp.status, 200)
+            self.assertEqual(resp.headers["Content-Type"], "image/png")
+            self.assertEqual(resp.read()[:8], b"\x89PNG\r\n\x1a\n")
+
+    def test_research_books_meta_open_without_token(self) -> None:
+        status, payload = self.harness.get_json(
+            "/api/research/books/meta?source_sha256=abc123"
+        )
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["title"], "Libro A")
+        self.assertEqual(payload["viewer_pages"], [1])
 
     def test_admin_page_research_generation_section(self) -> None:
         req = urllib.request.Request(self.harness.url("/admin.html"))

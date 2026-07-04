@@ -166,6 +166,8 @@ Testo.
         html = markdown_to_article_html("Articolo", result.markdown)
         self.assertIn("<h2>Fonti</h2>", html)
         self.assertIn('href="source:abc123:aligned:112"', html)
+        self.assertIn("page-preview-overlay", html)
+        self.assertIn("/article-source-viewer.js", html)
 
 
 if __name__ == "__main__":

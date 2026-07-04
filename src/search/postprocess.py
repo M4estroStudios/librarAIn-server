@@ -446,12 +446,127 @@ th, td {{ border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top;
 th {{ background: #2d2d2d; color: #e8e8e8; }}
 .nav {{ margin-bottom: 1.2rem; font-size: 0.9rem; }}
 ul {{ margin: 0.5rem 0 1rem; padding-left: 1.4rem; }}
+a[href^="source:"] {{ cursor: pointer; }}
+.page-preview-overlay {{
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}}
+.page-preview-overlay.hidden {{ display: none; }}
+.page-preview-backdrop {{
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}}
+.page-preview-dialog {{
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}}
+.page-preview-close {{
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}}
+.page-preview-close:hover {{ background: #4a4a4a; }}
+.page-preview-title {{
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}}
+.page-preview-body {{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}}
+.page-preview-nav {{
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}}
+.page-preview-nav:hover:not(:disabled) {{ background: #4a4a4a; }}
+.page-preview-nav:disabled {{
+  opacity: 0.35;
+  cursor: not-allowed;
+}}
+.page-preview-img-wrap {{
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}}
+.page-preview-img {{
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}}
 </style>
 </head>
 <body>
 <p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
 <h1>{safe_title}</h1>
 {notice}{body}
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
 </body>
 </html>
 """
