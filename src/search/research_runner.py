@@ -21,12 +21,12 @@ from src.search.chapter_expansion import expand_chapters
 from src.search.page_relevance import filter_relevant_pages
 from src.search.pages_loader import load_pages
 from src.search.poh_links_llm import (
-    POH_LINK_CHUNK_STEPS,
     _CHUNK_OVERLAP,
     _CHUNK_SIZE,
     add_poh_links,
     chunk_article_text,
     discover_poh_link_tasks,
+    link_paragraph_count,
     poh_link_phase_total,
 )
 from src.search.postprocess import PostprocessResult, postprocess_markdown
@@ -207,9 +207,9 @@ def _research_global_total(
     collect_total: int,
     filter_total: int,
     poh_chunk_count: int,
-    poh_link_task_count: int = 0,
+    poh_link_paragraph_count: int = 0,
 ) -> int:
-    poh_total = poh_link_phase_total(poh_chunk_count, poh_link_task_count)
+    poh_total = poh_link_phase_total(poh_chunk_count, poh_link_paragraph_count)
     return collect_total + filter_total + 1 + poh_total + 1 + 2
 
 
@@ -226,9 +226,9 @@ def _research_plan_totals(
     collect_total: int,
     filter_total: int,
     poh_chunk_count: int,
-    poh_link_task_count: int = 0,
+    poh_link_paragraph_count: int = 0,
 ) -> dict[str, int]:
-    poh_total = poh_link_phase_total(poh_chunk_count, poh_link_task_count)
+    poh_total = poh_link_phase_total(poh_chunk_count, poh_link_paragraph_count)
     return {
         PHASE_COLLECT: max(1, collect_total),
         PHASE_FILTER: max(1, filter_total),
@@ -552,12 +552,13 @@ async def run_research_async(
         reporter=reporter,
     )
     link_task_count = len(link_tasks)
-    poh_phase_total = poh_link_phase_total(poh_chunk_count, link_task_count)
+    link_paragraphs = link_paragraph_count(link_tasks)
+    poh_phase_total = poh_link_phase_total(poh_chunk_count, link_paragraphs)
     plan_totals = _research_plan_totals(
         collect_total=collect_total,
         filter_total=filter_total,
         poh_chunk_count=poh_chunk_count,
-        poh_link_task_count=link_task_count,
+        poh_link_paragraph_count=link_paragraphs,
     )
     _emit(reporter, _research_plan_event(plan_totals))
     if set_global_total is not None:
@@ -566,7 +567,7 @@ async def run_research_async(
                 collect_total=max(1, collect_total),
                 filter_total=filter_total,
                 poh_chunk_count=poh_chunk_count,
-                poh_link_task_count=link_task_count,
+                poh_link_paragraph_count=link_paragraphs,
             )
         )
     _emit(
@@ -577,6 +578,7 @@ async def run_research_async(
             page_total=poh_phase_total,
             chunk_count=poh_chunk_count,
             link_tasks=link_task_count,
+            link_paragraphs=link_paragraphs,
         ),
     )
     poh_result = await add_poh_links(
@@ -601,6 +603,7 @@ async def run_research_async(
             skipped_llm=poh_result.skipped_llm,
             candidates=len(link_tasks),
             link_tasks=link_task_count,
+            link_paragraphs=link_paragraphs,
             chunk_count=poh_chunk_count,
         ),
     )

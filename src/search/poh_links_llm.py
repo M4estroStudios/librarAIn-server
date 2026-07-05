@@ -36,7 +36,7 @@ _MAX_COMPLETION_TOKENS = 8192
 _CHUNK_SIZE = 500
 _CHUNK_OVERLAP = 100
 _TOP_K_PER_CHUNK = 10
-POH_LINK_CHUNK_STEPS = 1 + _TOP_K_PER_CHUNK
+POH_LINK_DISCOVERY_STEPS_PER_CHUNK = 1
 _PROMPT_PATH = Path(__file__).resolve().parent / "prompts" / "poh_links_prompt.md"
 _WORD_CHAR = re.compile(r"\w", re.UNICODE)
 
@@ -77,8 +77,9 @@ def load_poh_links_prompt() -> str:
     return _PROMPT_PATH.read_text(encoding="utf-8").strip()
 
 
-def poh_link_phase_total(chunk_count: int, link_task_count: int) -> int:
-    return max(1, chunk_count * POH_LINK_CHUNK_STEPS + link_task_count)
+def poh_link_phase_total(chunk_count: int, link_paragraph_count: int) -> int:
+    discovery_steps = chunk_count * POH_LINK_DISCOVERY_STEPS_PER_CHUNK
+    return max(1, discovery_steps + link_paragraph_count)
 
 
 def _trim_partial_word_start(text: str, start: int, end: int) -> int:
@@ -301,7 +302,7 @@ def build_poh_link_tasks(
 def build_poh_links_paragraph_payload(
     *,
     query: str,
-    subject: PohLinkTask,
+    subjects: list[PohLinkTask],
     paragraph_markdown: str,
     poh: ResearchPoh | None,
     is_lead_paragraph: bool,
@@ -309,11 +310,14 @@ def build_poh_links_paragraph_payload(
     return {
         "query": query.strip(),
         "primary_poh": _primary_poh_payload(poh),
-        "subject": {
-            "id": subject.poh_id,
-            "label": subject.label,
-            "aliases": list(subject.aliases),
-        },
+        "subjects": [
+            {
+                "id": subject.poh_id,
+                "label": subject.label,
+                "aliases": list(subject.aliases),
+            }
+            for subject in subjects
+        ],
         "paragraph_markdown": paragraph_markdown,
         "is_lead_paragraph": is_lead_paragraph,
     }
@@ -375,16 +379,6 @@ async def discover_poh_link_tasks(
             embedding_index,
             top_k=_TOP_K_PER_CHUNK,
         )
-        for _poh_id, _similarity in top_matches:
-            if reporter is not None:
-                reporter(
-                    {
-                        "phase": "research_poh_links",
-                        "status": "progress",
-                        "counts_as_step": True,
-                        "poh_step": "chunk_hit",
-                    }
-                )
         return [(poh_id, start, similarity) for poh_id, similarity in top_matches]
 
     for chunk_hits in await asyncio.gather(
@@ -411,13 +405,14 @@ async def discover_poh_link_tasks(
     return tasks
 
 
-async def _link_subject_in_paragraph(
+async def _link_paragraph_subjects(
     *,
     query: str,
-    task: PohLinkTask,
+    paragraph_tasks: list[PohLinkTask],
     paragraph_markdown: str,
+    paragraph_index: int,
+    lead_index: int | None,
     poh: ResearchPoh | None,
-    is_lead_paragraph: bool,
     client: openai.OpenAI,
     settings: Settings,
     request_id: str,
@@ -425,14 +420,17 @@ async def _link_subject_in_paragraph(
     model: str,
     reporter: ProgressReporter | None = None,
 ) -> str:
+    if not paragraph_tasks:
+        return paragraph_markdown
+    is_lead = lead_index is not None and paragraph_index == lead_index
     system_prompt = build_system_prompt(load_poh_links_prompt(), prompt_notes)
     user_message = json.dumps(
         build_poh_links_paragraph_payload(
             query=query,
-            subject=task,
+            subjects=paragraph_tasks,
             paragraph_markdown=paragraph_markdown,
             poh=poh,
-            is_lead_paragraph=is_lead_paragraph,
+            is_lead_paragraph=is_lead,
         ),
         ensure_ascii=False,
     )
@@ -447,7 +445,7 @@ async def _link_subject_in_paragraph(
         max_tokens=_MAX_COMPLETION_TOKENS,
         request_id=request_id,
         stage=_STAGE,
-        page=task.paragraph_index,
+        page=paragraph_index,
         reasoning_effort=settings.reasoning_effort_research,
         reasoning_enable_thinking=settings.reasoning_enable_thinking_research,
     )
@@ -459,6 +457,8 @@ async def _link_subject_in_paragraph(
                 "status": "progress",
                 "counts_as_step": True,
                 "poh_step": "link_apply",
+                "paragraph_index": paragraph_index,
+                "subject_count": len(paragraph_tasks),
             }
         )
     return linked
@@ -483,6 +483,10 @@ def group_link_tasks_by_paragraph(
     return grouped
 
 
+def link_paragraph_count(tasks: list[PohLinkTask]) -> int:
+    return len(group_link_tasks_by_paragraph(tasks))
+
+
 async def _link_subjects_in_paragraph(
     *,
     query: str,
@@ -498,22 +502,20 @@ async def _link_subjects_in_paragraph(
     model: str,
     reporter: ProgressReporter | None = None,
 ) -> tuple[int, str]:
-    current = initial_paragraph
-    is_lead = lead_index is not None and paragraph_index == lead_index
-    for task in paragraph_tasks:
-        current = await _link_subject_in_paragraph(
-            query=query,
-            task=task,
-            paragraph_markdown=current,
-            poh=poh,
-            is_lead_paragraph=is_lead,
-            client=client,
-            settings=settings,
-            request_id=request_id,
-            prompt_notes=prompt_notes,
-            model=model,
-            reporter=reporter,
-        )
+    current = await _link_paragraph_subjects(
+        query=query,
+        paragraph_tasks=paragraph_tasks,
+        paragraph_markdown=initial_paragraph,
+        paragraph_index=paragraph_index,
+        lead_index=lead_index,
+        poh=poh,
+        client=client,
+        settings=settings,
+        request_id=request_id,
+        prompt_notes=prompt_notes,
+        model=model,
+        reporter=reporter,
+    )
     return paragraph_index, current
 
 
@@ -640,6 +642,7 @@ async def add_poh_links(
             "stage": _STAGE,
             "model": model,
             "task_count": len(tasks),
+            "paragraph_link_count": link_paragraph_count(tasks),
             "paragraph_count": len(paragraphs),
             "max_parallel": settings.max_parallel_request,
             **log_fields,
@@ -669,6 +672,7 @@ async def add_poh_links(
             "stage": _STAGE,
             "model": model,
             "task_count": len(tasks),
+            "paragraph_link_count": link_paragraph_count(tasks),
             "markdown_chars": len(markdown),
             "markdown_preview": safe_text(markdown),
             **log_fields,

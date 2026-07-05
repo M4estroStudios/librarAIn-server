@@ -114,6 +114,22 @@ def get_subject_embedding(
     return unpack_embedding_vector(bytes(row[0]))
 
 
+def embedded_canonical_ids_for_model(sqlite_path: str, model: str) -> set[str]:
+    init_subject_matcher_schema(sqlite_path)
+    try:
+        with _sqlite_connection(sqlite_path) as conn:
+            rows = conn.execute(
+                """
+                SELECT canonical_id FROM subject_embeddings
+                WHERE model = ?
+                """,
+                (model,),
+            ).fetchall()
+    except sqlite3.Error as exc:
+        raise RuntimeError("unable to list embedded canonical ids") from exc
+    return {str(row[0]) for row in rows}
+
+
 def set_subject_embedding(
     sqlite_path: str,
     canonical_id: str,

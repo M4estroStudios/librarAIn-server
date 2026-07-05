@@ -115,6 +115,12 @@ class TestPohLinksChunking(unittest.TestCase):
         self.assertEqual([task.poh_id for task in grouped[1]], ["a", "c"])
         self.assertEqual([task.poh_id for task in grouped[2]], ["b"])
 
+    def test_poh_link_phase_total_counts_chunks_and_paragraphs(self) -> None:
+        from src.search.poh_links_llm import poh_link_phase_total
+
+        self.assertEqual(poh_link_phase_total(10, 4), 14)
+        self.assertEqual(poh_link_phase_total(0, 0), 1)
+
     def test_apply_paragraph_updates_replaces_only_target_blocks(self) -> None:
         article = "# Titolo\n\nVecchio.\n\nAltro."
         paragraphs = split_article_paragraphs(article)
@@ -141,12 +147,12 @@ class TestPohLinksHelpers(unittest.TestCase):
         )
         payload = build_poh_links_paragraph_payload(
             query="tema",
-            subject=task,
+            subjects=[task],
             paragraph_markdown="Testo.",
             poh=ResearchPoh(id="marco-polo", label="Marco Polo"),
             is_lead_paragraph=False,
         )
-        self.assertEqual(payload["subject"]["id"], "kublai-khan")
+        self.assertEqual(payload["subjects"][0]["id"], "kublai-khan")
         self.assertFalse(payload["is_lead_paragraph"])
 
 
@@ -225,7 +231,7 @@ class TestAddPohLinks(unittest.TestCase):
         self.assertEqual(result.markdown, article)
         client.chat.completions.create.assert_not_called()
 
-    def test_calls_llm_per_subject_with_paragraph_payload(self) -> None:
+    def test_calls_llm_once_per_paragraph_with_all_subjects(self) -> None:
         article = "# Marco Polo\n\nMarco Polo viaggiò in Cina."
         linked = "Marco Polo incontrò [Kublai Khan](poh:kublai-khan) in Cina."
         client = _fake_client(linked)
@@ -259,8 +265,37 @@ class TestAddPohLinks(unittest.TestCase):
         messages = kwargs["messages"]
         self.assertEqual(messages[0]["content"], load_poh_links_prompt())
         user_payload = json.loads(messages[1]["content"])
-        self.assertEqual(user_payload["subject"]["id"], "kublai-khan")
+        self.assertEqual(user_payload["subjects"][0]["id"], "kublai-khan")
         self.assertIn("Marco Polo", user_payload["paragraph_markdown"])
+
+    def test_calls_llm_once_when_multiple_subjects_share_paragraph(self) -> None:
+        article = "# Titolo\n\nKublai e Marco Polo viaggiarono."
+        client = _fake_client("Secondo con [Kublai Khan](poh:kublai-khan) e [Marco Polo](poh:marco-polo).")
+        tasks = [
+            PohLinkTask("kublai-khan", "Kublai Khan", (), 1, 10, 0.9),
+            PohLinkTask("marco-polo", "Marco Polo", (), 1, 30, 0.8),
+        ]
+        asyncio.run(
+            add_poh_links(
+                query="tema",
+                article_markdown=article,
+                document=_doc(
+                    {
+                        "kublai-khan": _subject("Kublai Khan", [1]),
+                        "marco-polo": _subject("Marco Polo", [2]),
+                    }
+                ),
+                client=client,
+                settings=_settings(),
+                link_tasks=tasks,
+                request_id="req-batch",
+            )
+        )
+        client.chat.completions.create.assert_called_once()
+        user_payload = json.loads(
+            client.chat.completions.create.call_args.kwargs["messages"][1]["content"]
+        )
+        self.assertEqual(len(user_payload["subjects"]), 2)
 
     def test_calls_llm_in_parallel_across_paragraphs(self) -> None:
         article = "# Titolo\n\nPrimo con Kublai.\n\nSecondo con Marco Polo."

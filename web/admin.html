@@ -164,6 +164,8 @@ button.secondary:hover:not(:disabled) { background: #4a4a4a; }
 .prefilter-step.active .prefilter-step-label { color: #4ec9b0; }
 #progress-gen { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #454545; font-size: 0.85rem; white-space: pre-wrap; }
 #progress-gen.show { display: block; }
+#progress-embeddings { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #454545; font-size: 0.85rem; white-space: pre-wrap; }
+#progress-embeddings.show { display: block; }
 code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0.4em; border-radius: 6px; }
 table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
 th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid #333; vertical-align: top; }
@@ -1258,6 +1260,16 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   <p class="hint" id="research-mock-hint" style="display:none;">Modalità mock research attiva (<code>?mock=1</code>): generazione simulata senza LLM.</p>
 </div>
 
+<div class="panel hidden" id="embeddings-panel">
+  <h2>Embedding soggetti</h2>
+  <p class="hint">Vettori per il match semantico (<code>MATCHER_EMBEDDING_MODEL</code>) rispetto a <code>INDEX.json</code>.</p>
+  <div class="stats" id="embeddings-stats">Caricamento…</div>
+  <div class="panel-row">
+    <button type="button" id="embeddings-generate">Genera embedding mancanti</button>
+  </div>
+  <div id="progress-embeddings"></div>
+</div>
+
 <div class="panel admin-poh-panel">
   <h2>POH multi-libro</h2>
   <p class="hint">Soggetti presenti in più libri. Seleziona voci duplicate, scegli la canonica e uniscile.</p>
@@ -1852,6 +1864,96 @@ async function loadArticleStatus() {
     data.articles_count + " articoli su " + data.total_subjects + " soggetti — " +
     data.missing_count + " ancora da generare";
 }
+
+async function loadEmbeddingsStatus() {
+  const panel = document.getElementById("embeddings-panel");
+  const stats = document.getElementById("embeddings-stats");
+  const res = await apiFetch("/api/admin/embeddings/status");
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || "embeddings status failed");
+  if (!data.missing_count) {
+    panel.classList.add("hidden");
+    return;
+  }
+  panel.classList.remove("hidden");
+  stats.textContent =
+    data.embedded_count + " / " + data.total_subjects + " presenti — " +
+    data.missing_count + " da generare (" + data.model + ")";
+}
+
+function watchEmbeddingsJobViaSSE(eventsUrl) {
+  return new Promise((resolve, reject) => {
+    const box = document.getElementById("progress-embeddings");
+    box.classList.add("show");
+    const es = new EventSource(eventsUrl);
+    let settled = false;
+    function finish(fn, value) {
+      if (settled) return;
+      settled = true;
+      es.close();
+      fn(value);
+    }
+    function handleMessage(event) {
+      let data;
+      try {
+        data = JSON.parse(event.data);
+      } catch {
+        return;
+      }
+      if (data.phase === "subject_embeddings") {
+        if (data.message) box.textContent = data.message;
+        else if (data.done != null && data.total != null) {
+          box.textContent = "Embedding " + data.done + " / " + data.total;
+        }
+      }
+      if (data.status === "done") finish(resolve, data);
+      if (data.status === "error") {
+        finish(reject, new Error(data.message || "Generazione embedding fallita"));
+      }
+    }
+    ["started", "progress", "subject_embeddings", "done", "error"].forEach((name) => {
+      es.addEventListener(name, handleMessage);
+    });
+    es.onerror = () => finish(reject, new Error("Connessione SSE interrotta"));
+  });
+}
+
+async function startEmbeddingsGenerate() {
+  const btn = document.getElementById("embeddings-generate");
+  const box = document.getElementById("progress-embeddings");
+  btn.disabled = true;
+  box.classList.add("show");
+  box.textContent = "Avvio…";
+  try {
+    const res = await apiFetch("/api/admin/embeddings/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || "Avvio embedding fallito");
+    if (data.skipped) {
+      box.textContent = "Nessun embedding da generare.";
+      await loadEmbeddingsStatus();
+      return;
+    }
+    const eventsUrl = data.events_url ||
+      ("/api/ingest/" + encodeURIComponent(data.job_id) + "/events");
+    await watchEmbeddingsJobViaSSE(eventsUrl);
+    box.textContent = "Embedding completati.";
+    await loadEmbeddingsStatus();
+    window.postMessage({ type: "librarain-jobs-refresh" }, "*");
+  } catch (err) {
+    box.textContent = String(err.message || err);
+    showOut(String(err.message || err), true);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+document.getElementById("embeddings-generate").addEventListener("click", () => {
+  startEmbeddingsGenerate().catch((err) => showOut(String(err), true));
+});
 
 async function loadBooks() {
   const res = await apiFetch("/api/research/books");
@@ -4139,6 +4241,7 @@ document.getElementById("pages-audit-only-gaps").addEventListener("change", rend
 load();
 loadPagesAudit().catch((err) => showOut(String(err), true));
 loadArticleStatus().catch((err) => showOut(String(err), true));
+loadEmbeddingsStatus().catch((err) => showOut(String(err), true));
 loadBooks().catch((err) => showOut(String(err), true));
 refreshSystemOverview();
 setInterval(refreshSystemOverview, 15000);

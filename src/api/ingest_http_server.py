@@ -13,6 +13,10 @@ from pathlib import Path
 from typing import Any
 
 from src.search.article_catalog import research_status_summary
+from src.api.admin_embeddings import (
+    try_handle_admin_embeddings_get,
+    try_handle_admin_embeddings_post,
+)
 from src.api.chat_completions_handler import handle_chat_completions
 from src.api.system_preflight import evaluate_preflight, normalize_preflight_operation
 from src.api.ingest_form import (
@@ -647,6 +651,16 @@ def build_ingest_server(
                         if book["source_sha256"] == sha_filter
                     ]
                 _send_json(self, 200, {"ok": True, **report})
+                return
+
+            if try_handle_admin_embeddings_get(
+                path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                send_json=_send_json,
+                require_auth=lambda: self._require_auth(query),
+            ):
                 return
 
             if path == "/api/admin/book-pages/render":
@@ -1411,6 +1425,17 @@ def build_ingest_server(
                 if not self._require_auth():
                     return
                 self._handle_book_gaps_repair()
+                return
+            if try_handle_admin_embeddings_post(
+                parsed.path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                registry=registry,
+                job_semaphore=job_semaphore,
+                send_json=_send_json,
+                require_auth=self._require_auth,
+            ):
                 return
             if parsed.path == "/api/ingest/reicat-suggest":
                 if not self._require_auth():
