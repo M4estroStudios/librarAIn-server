@@ -340,13 +340,28 @@ function renderPhaseBlock(phase) {
   return html;
 }
 
-function renderActiveJobCard(job) {
+function collectBatchChildIds() {
+  const childIds = new Set();
+  jobsById.forEach(function (job) {
+    if (job.job_kind !== "research_batch" || !Array.isArray(job.request_ids)) return;
+    job.request_ids.forEach(function (id) {
+      childIds.add(id);
+    });
+  });
+  return childIds;
+}
+
+function renderActiveJobCard(job, options) {
+  const nested = options && options.nested;
   const kind = JOB_KIND_LABELS[job.job_kind] || job.job_kind || "Job";
   const globalStep = typeof job.global_step === "number" ? job.global_step : 0;
   const globalTotal = typeof job.global_total === "number" ? job.global_total : 0;
   const visiblePhases = resolveJobPhases(job);
   const cardClass =
-    "active-job-card" + (job.is_active ? "" : " job-finished") + (job.error ? " job-failed" : "");
+    "active-job-card" +
+    (nested ? " active-job-card-nested" : "") +
+    (job.is_active ? "" : " job-finished") +
+    (job.error ? " job-failed" : "");
   let html =
     '<div class="' +
     cardClass +
@@ -396,20 +411,23 @@ function renderActiveJobCard(job) {
       escapeHtml(articleHref) +
       '" target="_blank" rel="noopener">Apri articolo</a></div>';
   }
-  if (job.job_kind === "research_batch" && job.request_ids && job.request_ids.length) {
-    html +=
-      '<div class="active-job-batch-children hint">' +
-      escapeHtml(job.request_ids.length + " sotto-job research tracciati") +
-      "</div>";
+  if (!nested && job.job_kind === "research_batch" && job.request_ids && job.request_ids.length) {
+    html += '<div class="active-job-batch-children">';
+    job.request_ids.forEach(function (childId) {
+      const child = jobsById.get(childId);
+      if (child) html += renderActiveJobCard(child, { nested: true });
+    });
+    html += "</div>";
   }
   html += "</div>";
   return html;
 }
 
 function countActiveJobs() {
+  const batchChildIds = collectBatchChildIds();
   let n = 0;
-  jobsById.forEach((job) => {
-    if (job.is_active) n += 1;
+  jobsById.forEach(function (job) {
+    if (job.is_active && !batchChildIds.has(job.job_id)) n += 1;
   });
   return n;
 }
@@ -417,7 +435,12 @@ function countActiveJobs() {
 function renderJobs() {
   const root = getJobsRoot();
   if (!root) return;
-  const jobs = Array.from(jobsById.values()).sort(function (a, b) {
+  const batchChildIds = collectBatchChildIds();
+  const jobs = Array.from(jobsById.values())
+    .filter(function (job) {
+      return !batchChildIds.has(job.job_id);
+    })
+    .sort(function (a, b) {
     const aActive = a.is_active ? 0 : 1;
     const bActive = b.is_active ? 0 : 1;
     if (aActive !== bActive) return aActive - bActive;
