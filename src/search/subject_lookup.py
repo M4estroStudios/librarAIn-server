@@ -6,8 +6,9 @@ from dataclasses import dataclass
 
 from src.core.log import INFO_LOG_LEVEL, WARNING_LOG_LEVEL, Log
 from src.core.openai_client_sync import embedding_with_retry_sync
+from src.core.parallel import parallel_map
 from src.ingestion.polyindex.index_md_parser import normalize_label
-from src.models.polyindex_index import PolyindexIndexDocument
+from src.models.polyindex_index import PolyindexIndexDocument, PolyindexIndexSubjectEntry
 from src.models.settings import Settings
 from src.persistence.subject_matcher_sqlite import (
     get_subject_embedding,
@@ -155,9 +156,17 @@ def _semantic_matches(
 
     matches: list[SubjectMatch] = []
     degraded = False
-    for canonical_id, entry in document.subjects.items():
-        if canonical_id in already_matched:
-            continue
+
+    candidates = [
+        (canonical_id, entry)
+        for canonical_id, entry in document.subjects.items()
+        if canonical_id not in already_matched
+    ]
+
+    def _score_candidate(
+        item: tuple[str, PolyindexIndexSubjectEntry],
+    ) -> tuple[SubjectMatch | None, str | None]:
+        canonical_id, entry = item
         try:
             candidate_vector = _canonical_embedding(
                 client,
@@ -168,27 +177,35 @@ def _semantic_matches(
                 request_id=request_id,
             )
         except Exception as exc:  # noqa: BLE001
+            return None, repr(exc)
+        similarity = _cosine_similarity(query_vector, candidate_vector)
+        if similarity < threshold:
+            return None, None
+        return (
+            SubjectMatch(
+                canonical_id=canonical_id,
+                canonical_label=entry.canonical_label,
+                method=METHOD_SEMANTIC,
+                similarity=similarity,
+            ),
+            None,
+        )
+
+    for match, error in parallel_map(_score_candidate, candidates):
+        if error is not None:
             Log(
                 WARNING_LOG_LEVEL,
                 "research subject lookup canonical embedding failed",
                 {
                     "request_id": request_id,
-                    "canonical_id": canonical_id,
-                    "error": repr(exc),
+                    "error": error,
                 },
             )
             degraded = True
             break
-        similarity = _cosine_similarity(query_vector, candidate_vector)
-        if similarity >= threshold:
-            matches.append(
-                SubjectMatch(
-                    canonical_id=canonical_id,
-                    canonical_label=entry.canonical_label,
-                    method=METHOD_SEMANTIC,
-                    similarity=similarity,
-                )
-            )
+        if match is not None:
+            matches.append(match)
+
     matches.sort(key=lambda item: (-(item.similarity or 0.0), item.canonical_id))
     return matches, degraded
 
@@ -203,8 +220,10 @@ def _aggregate_pages(
         if entry is None:
             continue
         for source_sha256, book in entry.books.items():
+            if not book.aligned_pages:
+                continue
             pages.setdefault(source_sha256, set()).update(book.aligned_pages)
-    return {sha: sorted(page_set) for sha, page_set in sorted(pages.items())}
+    return {sha: sorted(page_set) for sha, page_set in sorted(pages.items()) if page_set}
 
 
 def lookup_subjects(

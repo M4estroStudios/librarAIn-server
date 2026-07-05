@@ -54,6 +54,9 @@ class Settings(BaseModel):
     editor_model: str | None = Field(default=None, alias="EDITOR_MODEL")
     max_parallel_request: int = Field(default=2, gt=0, alias="MAX_PARALLEL_REQUEST")
     timeout_seconds: int = Field(default=120, gt=0, alias="TIMEOUT_SECONDS")
+    research_timeout_seconds: int = Field(
+        default=3600, gt=0, alias="RESEARCH_TIMEOUT_SECONDS"
+    )
     retry_attempts: int = Field(default=2, ge=0, alias="RETRY_ATTEMPTS")
     rate_limit_per_minute: int = Field(default=60, gt=0, alias="RATE_LIMIT_PER_MINUTE")
     page_range_per_thread: int = Field(

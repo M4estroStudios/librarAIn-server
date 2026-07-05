@@ -31,9 +31,13 @@
     info: function (message, params) { return write("INFO", global.console.info.bind(global.console), message, params); },
     debug: function (message, params) { return write("DEBUG", global.console.debug.bind(global.console), message, params); },
     reportError: function (context, err) { return log.error(context, fromError(err)); },
-    logHttpFailure: function (url, status, detail) {
+    logHttpFailure: function (method, url, status) {
       var level = status >= 500 ? "error" : "warn";
-      return log[level]("api request failed", { url: url, status: status, error: detail });
+      return log[level]("http", { method: method || "GET", path: url, status: status });
+    },
+    logHttpDone: function (method, url, status) {
+      var level = status >= 500 ? "error" : status >= 400 ? "warn" : "info";
+      return log[level]("http", { method: method, path: url, status: status });
     },
   };
   global.LibrarAInLog = log;
@@ -1316,7 +1320,7 @@ async function apiFetch(url, options) {
     }
   }
   if (!res.ok && window.LibrarAInLog) {
-    window.LibrarAInLog.logHttpFailure(String(url), res.status);
+    window.LibrarAInLog.logHttpDone((opts.method || "GET").toUpperCase(), String(url), res.status);
   }
   return res;
 }

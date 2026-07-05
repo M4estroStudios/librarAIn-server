@@ -91,6 +91,7 @@ def chat_completion_with_retry_sync(
                 temperature=temperature,
                 max_tokens=max_tokens,
                 extra_body=extra_body,
+                stage=stage,
             )
             Log(
                 INFO_LOG_LEVEL,

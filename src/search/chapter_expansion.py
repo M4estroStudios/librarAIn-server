@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from src.core.log import INFO_LOG_LEVEL, Log
+from src.core.parallel import parallel_map
 from src.models.polyindex_toc import PolyindexTocBookEntry, PolyindexTocChapter, PolyindexTocDocument
 from src.search.request_schema import DEFAULT_MAX_BOOKS, DEFAULT_MAX_PAGES_PER_BOOK
 
@@ -71,6 +72,15 @@ def _trim_book_pages(original: list[int], expanded: set[int], max_pages_per_book
     return sorted(merged[:max_pages_per_book])
 
 
+def _expand_selected_book(
+    item: tuple[str, list[int], PolyindexTocBookEntry | None, int],
+) -> tuple[str, list[int], int, int]:
+    source_sha256, candidates, book_entry, max_pages_per_book = item
+    expanded, expanded_chapters, unknown_pages = _expand_book_pages(book_entry, candidates)
+    trimmed = _trim_book_pages(candidates, expanded, max_pages_per_book)
+    return source_sha256, trimmed, expanded_chapters, unknown_pages
+
+
 def expand_chapters(
     candidate_pages: dict[str, list[int]],
     toc: PolyindexTocDocument,
@@ -98,10 +108,14 @@ def expand_chapters(
     total_expanded_chapters = 0
     total_unknown_pages = 0
 
-    for source_sha256, candidates in selected_books:
-        book_entry = toc.books.get(source_sha256)
-        expanded, expanded_chapters, unknown_pages = _expand_book_pages(book_entry, candidates)
-        trimmed = _trim_book_pages(candidates, expanded, max_pages_per_book)
+    expansion_items = [
+        (source_sha256, candidates, toc.books.get(source_sha256), max_pages_per_book)
+        for source_sha256, candidates in selected_books
+    ]
+    for source_sha256, trimmed, expanded_chapters, unknown_pages in parallel_map(
+        _expand_selected_book,
+        expansion_items,
+    ):
         if trimmed:
             result_pages[source_sha256] = trimmed
         total_expanded_chapters += expanded_chapters

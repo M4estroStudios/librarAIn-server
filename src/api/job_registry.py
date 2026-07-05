@@ -111,18 +111,22 @@ class JobRegistry:
         return job_id
 
     def set_global_total(self, job_id: str, total: int) -> None:
-        """Declare the total number of countable work-steps for the job.
+        """Declare or update the total number of countable work-steps for the job.
 
-        Must be called once, after the useful-page count is known.  Emits a
-        ``pipeline_total`` event so clients can initialise their progress bars.
+        Emits a ``pipeline_total`` event when the total is first set or changes
+        so clients can update their progress bars.
         """
         with self._lock:
             state = self._jobs[job_id]
+            previous = state.global_total
             state.global_total = total
+            if previous == total:
+                return
             ev: dict[str, Any] = {
                 "phase": "pipeline",
                 "status": "pipeline_total",
                 "global_total": total,
+                "global_step": state.global_step,
                 "counts_as_step": False,
                 "ts": datetime.now(timezone.utc).isoformat(),
                 "seq": len(state.events),
@@ -339,51 +343,15 @@ _REPAIR_PHASE_ORDER = [
     "stage2_vision",
     "stage3_editor",
 ]
-_RESEARCH_PHASE_ORDER = [
-    "queue",
-    "research_prefilter",
+_RESEARCH_DISPLAY_PHASE_ORDER = [
+    "research_collect",
+    "research_filter",
     "research_article",
     "research_poh_links",
     "research_timeline",
-    "research_postprocess",
-    "research",
+    "research_verify",
 ]
-_PREFILTER_STEP_ORDER = [
-    "subject_match",
-    "toc_expansion",
-    "time_index",
-    "merge_candidates",
-    "load_pages",
-    "relevance_filter",
-]
-_PREFILTER_STEP_FIELDS = frozenset(
-    {
-        "subject_pages",
-        "subject_books",
-        "matches",
-        "ai_used",
-        "degraded",
-        "pages_before",
-        "pages_after",
-        "pages_added",
-        "expanded_chapters",
-        "unknown_pages",
-        "books_dropped",
-        "output_books",
-        "matched_labels",
-        "fallback_labels",
-        "timeline_candidates",
-        "candidate_pages",
-        "loaded_pages",
-        "loaded_books",
-        "input_pages",
-        "kept_pages",
-        "dropped_pages",
-        "expansion_added",
-        "time_added",
-        "merge_added",
-    }
-)
+_RESEARCH_INTERNAL_PHASES = frozenset({"queue", "research", "pipeline"})
 _PAGE_STEP_STATUSES = frozenset(
     {"page_progress", "page_skipped", "page_failed", "progress"}
 )
@@ -406,11 +374,15 @@ _PHASE_LABELS = {
     "page_repair": "Preparazione riparazione",
     "gaps_repair": "Riparazione lacune",
     "queue": "In coda",
-    "research_prefilter": "Prefiltro contesto",
-    "research_article": "Generazione articolo",
-    "research_poh_links": "Link POH nell'articolo",
+    "research_collect": "Raccolta fonti",
+    "research_filter": "Sfoltimento fonti",
+    "research_article": "Generazione bozza",
+    "research_poh_links": "Collegamenti POH",
     "research_timeline": "Cronologia",
+    "research_verify": "Verifica",
+    "research_prefilter": "Prefiltro contesto",
     "research_postprocess": "Post-process articolo",
+    "research_finalize": "Revisione finale",
     "research": "Pipeline research",
     "research_batch": "Generazione batch articoli",
     "pipeline": "Pipeline",
@@ -428,7 +400,7 @@ def _current_activity(events: list[dict[str, Any]]) -> tuple[str | None, str | N
     for ev in reversed(events):
         phase = ev.get("phase")
         status = ev.get("status")
-        if not phase or phase == "pipeline":
+        if not phase or phase in _RESEARCH_INTERNAL_PHASES:
             continue
         if status not in _ACTIVITY_STATUSES:
             continue
@@ -497,9 +469,7 @@ def _build_job_headline(state: JobState, ctx: dict[str, Any]) -> tuple[str, str 
     activity = ctx.get("activity_detail")
     phase_label = ctx.get("current_phase_label")
 
-    if state.job_kind == "research" or set(_RESEARCH_PHASE_ORDER).intersection(
-        {ev.get("phase") for ev in state.events}
-    ):
+    if state.job_kind == "research" or _is_research_job(state):
         if poh_label:
             title = f"Articolo: {poh_label}"
             subtitle_parts: list[str] = []
@@ -563,12 +533,36 @@ def _job_public_fields(state: JobState) -> dict[str, Any]:
     }
 
 
+def _is_research_job(state: JobState) -> bool:
+    if state.job_kind == "research":
+        return True
+    phases = {ev.get("phase") for ev in state.events if ev.get("phase")}
+    return bool(phases.intersection(set(_RESEARCH_DISPLAY_PHASE_ORDER) | {"research_prefilter"}))
+
+
+def _latest_research_plan_totals(events: list[dict[str, Any]]) -> dict[str, int]:
+    for ev in reversed(events):
+        if ev.get("phase") != "research" or ev.get("status") != "plan":
+            continue
+        totals = ev.get("phase_totals")
+        if not isinstance(totals, dict):
+            continue
+        parsed: dict[str, int] = {}
+        for phase_id, total in totals.items():
+            key = str(phase_id)
+            if key in _RESEARCH_DISPLAY_PHASE_ORDER:
+                parsed[key] = max(1, int(total))
+        if parsed:
+            return parsed
+    return {}
+
+
 def _phase_order_for_job(state: JobState) -> list[str]:
+    if _is_research_job(state):
+        return _RESEARCH_DISPLAY_PHASE_ORDER
     phases = {ev.get("phase") for ev in state.events if ev.get("phase")}
     if phases.intersection({"page_repair", "gaps_repair"}):
         return _REPAIR_PHASE_ORDER
-    if state.job_kind == "research" or phases.intersection(set(_RESEARCH_PHASE_ORDER)):
-        return _RESEARCH_PHASE_ORDER
     if "stage1_glm_ocr" in phases:
         return _GLM_INGEST_PHASE_ORDER
     return _INGEST_PHASE_ORDER
@@ -587,21 +581,35 @@ def _phase_detail_from_event(ev: dict[str, Any]) -> str | None:
         if pages is not None:
             book_part = f" · {books} libri" if books is not None else ""
             return f"{pages} pag. in contesto{book_part}"
+    if phase == "research_collect" and status == "started":
+        subject_pages = ev.get("subject_pages")
+        time_pages = ev.get("time_pages")
+        if subject_pages is not None and time_pages is not None:
+            return f"{subject_pages} pag. soggetto · {time_pages} pag. temporali"
     if phase == "research_poh_links" and status == "started":
-        candidates = ev.get("candidates")
-        if candidates is not None:
-            return f"{candidates} candidati POH"
+        chunk_count = ev.get("chunk_count")
+        link_tasks = ev.get("link_tasks")
+        if chunk_count is not None and link_tasks is not None:
+            return f"{chunk_count} chunk · {link_tasks} link da applicare"
+        if chunk_count is not None:
+            return f"{chunk_count} chunk · discovery in corso"
     if phase == "research_timeline" and status == "started":
         candidates = ev.get("timeline_candidates")
         if candidates is not None:
             return f"{candidates} candidati cronologia"
     if status != "completed":
         return None
-    if phase == "research_prefilter":
-        pages = ev.get("pages")
+    if phase == "research_collect":
+        subject_pages = ev.get("subject_pages")
+        time_pages = ev.get("time_pages")
+        loaded = ev.get("loaded_pages")
+        if loaded is not None:
+            return f"{loaded} pag. caricate · {subject_pages or 0}+{time_pages or 0} candidate"
+    if phase == "research_filter":
+        kept = ev.get("kept_pages")
         dropped = ev.get("dropped_pages", 0)
-        if pages is not None:
-            return f"{pages} pag. finali · {dropped} scartate nel filtro"
+        if kept is not None:
+            return f"{kept} tenute · {dropped} scartate"
     if phase == "research_article":
         if ev.get("skipped_llm"):
             return "LLM non chiamato (nessun materiale)"
@@ -614,13 +622,33 @@ def _phase_detail_from_event(ev: dict[str, Any]) -> str | None:
     if phase == "research_poh_links":
         if ev.get("skipped_llm"):
             return "LLM non chiamato"
-        if ev.get("candidates") is not None:
-            return f"{ev['candidates']} candidati elaborati"
+        chunk_count = ev.get("chunk_count")
+        link_tasks = ev.get("link_tasks")
+        if chunk_count is not None and link_tasks is not None:
+            return f"{chunk_count} chunk · {link_tasks} link applicati"
+        if chunk_count is not None:
+            return f"{chunk_count} chunk elaborati"
     if phase == "research_timeline":
         if ev.get("skipped_llm"):
             return "LLM non chiamato"
         if ev.get("timeline_candidates") is not None:
             return f"{ev['timeline_candidates']} candidati temporali"
+    if phase == "research_verify":
+        parts: list[str] = []
+        if ev.get("citations") is not None:
+            parts.append(f"{ev['citations']} citazioni")
+        if ev.get("poh_links") is not None:
+            parts.append(f"{ev['poh_links']} POH")
+        if ev.get("timeline_rows") is not None:
+            parts.append(f"{ev['timeline_rows']} righe cronologia")
+        if ev.get("skipped_llm"):
+            parts.append("revisione LLM saltata")
+        return " · ".join(parts) if parts else None
+    if phase == "research_prefilter":
+        pages = ev.get("pages")
+        dropped = ev.get("dropped_pages", 0)
+        if pages is not None:
+            return f"{pages} pag. finali · {dropped} scartate nel filtro"
     if phase == "research_postprocess":
         parts: list[str] = []
         if ev.get("citations") is not None:
@@ -651,47 +679,15 @@ def _phase_detail_from_event(ev: dict[str, Any]) -> str | None:
     return None
 
 
-def _summarize_prefilter_steps(
-    events: list[dict[str, Any]],
-    *,
-    prefilter_active: bool = False,
-) -> list[dict[str, Any]]:
-    by_step: dict[str, dict[str, Any]] = {}
-    for ev in events:
-        if ev.get("phase") != "research_prefilter":
-            continue
-        step_id = ev.get("prefilter_step")
-        if not step_id:
-            continue
-        step_key = str(step_id)
-        item = by_step.setdefault(step_key, {"step": step_key, "status": "pending"})
-        if ev.get("status") == "progress":
-            item["status"] = "done"
-        for field in _PREFILTER_STEP_FIELDS:
-            if field in ev:
-                item[field] = ev[field]
-    if not by_step:
-        return []
-    ordered: list[dict[str, Any]] = []
-    for step_id in _PREFILTER_STEP_ORDER:
-        if step_id in by_step:
-            ordered.append(by_step[step_id])
-        elif prefilter_active:
-            ordered.append({"step": step_id, "status": "pending"})
-    for step_id, item in by_step.items():
-        if step_id not in _PREFILTER_STEP_ORDER:
-            ordered.append(item)
-    if prefilter_active:
-        for step in ordered:
-            if step.get("status") == "pending":
-                step["status"] = "active"
-                break
-    return ordered
-
-
 def _summarize_phases(events: list[dict[str, Any]], phase_order: list[str]) -> list[dict[str, Any]]:
+    plan_totals = _latest_research_plan_totals(events)
     states: dict[str, dict[str, Any]] = {
-        phase: {"phase": phase, "status": "pending", "done": 0, "total": 1}
+        phase: {
+            "phase": phase,
+            "status": "pending",
+            "done": 0,
+            "total": plan_totals.get(phase, 1),
+        }
         for phase in phase_order
     }
     for ev in events:
@@ -735,10 +731,11 @@ def _summarize_phases(events: list[dict[str, Any]], phase_order: list[str]) -> l
                 item["detail"] = detail
         elif status == "waiting":
             item["status"] = "active"
-    prefilter_active = states.get("research_prefilter", {}).get("status") == "active"
-    prefilter_steps = _summarize_prefilter_steps(events, prefilter_active=prefilter_active)
-    if prefilter_steps and "research_prefilter" in states:
-        states["research_prefilter"]["steps"] = prefilter_steps
+            detail = _phase_detail_from_event(ev)
+            if detail:
+                item["detail"] = detail
+            elif ev.get("message"):
+                item["detail"] = str(ev["message"])
     return [states[phase] for phase in phase_order]
 
 
@@ -763,21 +760,9 @@ def summarize_job_state(state: JobState) -> dict[str, Any]:
         "system_status_url": f"/api/system/jobs/{state.job_id}",
         "system_events_url": f"/api/system/jobs/{state.job_id}/events",
     }
-    prefilter_steps = _summarize_prefilter_steps(
-        state.events,
-        prefilter_active=any(
-            ev.get("phase") == "research_prefilter"
-            and ev.get("status") == "started"
-            for ev in state.events
-        )
-        and not any(
-            ev.get("phase") == "research_prefilter"
-            and ev.get("status") == "completed"
-            for ev in state.events
-        ),
-    )
-    if prefilter_steps:
-        payload["prefilter_steps"] = prefilter_steps
+    plan_totals = _latest_research_plan_totals(state.events)
+    if plan_totals:
+        payload["research_phase_totals"] = plan_totals
     return payload
 
 

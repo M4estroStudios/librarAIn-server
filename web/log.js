@@ -45,9 +45,13 @@
       var params = fromError(err);
       return log.error(context, params);
     },
-    logHttpFailure: function (url, status, detail) {
+    logHttpFailure: function (method, url, status) {
       var level = status >= 500 ? "error" : "warn";
-      return log[level]("api request failed", { url: url, status: status, error: detail });
+      return log[level]("http", { method: method || "GET", path: url, status: status });
+    },
+    logHttpDone: function (method, url, status) {
+      var level = status >= 500 ? "error" : status >= 400 ? "warn" : "info";
+      return log[level]("http", { method: method, path: url, status: status });
     },
   };
 

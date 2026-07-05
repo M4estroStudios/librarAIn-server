@@ -5,10 +5,10 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from src.core.log import INFO_LOG_LEVEL, WARNING_LOG_LEVEL, Log
+from src.core.parallel import parallel_map
 from src.ingestion.markdown_artifacts import clean_markdown_channel_artifacts
 from src.search.request_schema import DEFAULT_MAX_BOOKS, DEFAULT_MAX_PAGES_PER_BOOK
 
-DEFAULT_MAX_CHARS_PER_PAGE = 12000
 _TRUNCATION_SUFFIX = "\n\n[… contenuto troncato …]\n"
 
 
@@ -113,14 +113,111 @@ def _load_manifest(output_dir: Path) -> _BookManifest | None:
 def _load_page_markdown(
     page_path: Path,
     *,
-    max_chars_per_page: int,
+    max_chars_per_page: int | None,
 ) -> tuple[str, bool]:
     try:
         raw_text = page_path.read_text(encoding="utf-8")
     except OSError:
         return "", False
     normalized = _normalize_markdown(raw_text)
+    if max_chars_per_page is None or max_chars_per_page <= 0:
+        return normalized, False
     return _truncate_markdown(normalized, max_chars_per_page)
+
+
+@dataclass(frozen=True)
+class _BookLoadRequest:
+    source_sha256: str
+    aligned_pages: list[int]
+    data_root: Path
+    max_chars_per_page: int | None
+    request_id: str
+
+
+@dataclass(frozen=True)
+class _BookLoadResult:
+    source_sha256: str
+    pages: list[LoadedPage]
+    loaded_page_numbers: list[int]
+    missing_pages: int
+    truncated_pages: int
+    total_chars: int
+    manifest_missing: bool
+
+
+def _load_aligned_page(
+    item: tuple[_BookManifest, int, int],
+) -> tuple[LoadedPage | None, int, int, bool]:
+    manifest, aligned_page, max_chars_per_page = item
+    page_path = manifest.aligned_to_file.get(aligned_page)
+    if page_path is None or not page_path.is_file():
+        return None, 1, 0, False
+    markdown, truncated = _load_page_markdown(
+        page_path,
+        max_chars_per_page=max_chars_per_page,
+    )
+    truncated_count = 1 if truncated else 0
+    return (
+        LoadedPage(
+            source_sha256=manifest.source_sha256,
+            aligned_page=aligned_page,
+            book_title=manifest.title,
+            book_slug=manifest.slug,
+            markdown=markdown,
+            truncated=truncated,
+        ),
+        0,
+        len(markdown),
+        truncated_count > 0,
+    )
+
+
+def _load_book_pages(request: _BookLoadRequest) -> _BookLoadResult:
+    output_dir = request.data_root / "output" / request.source_sha256
+    manifest = _load_manifest(output_dir)
+    if manifest is None:
+        return _BookLoadResult(
+            source_sha256=request.source_sha256,
+            pages=[],
+            loaded_page_numbers=[],
+            missing_pages=len(request.aligned_pages),
+            truncated_pages=0,
+            total_chars=0,
+            manifest_missing=True,
+        )
+
+    page_items = [
+        (manifest, aligned_page, request.max_chars_per_page)
+        for aligned_page in request.aligned_pages
+    ]
+    page_results = parallel_map(_load_aligned_page, page_items)
+
+    pages: list[LoadedPage] = []
+    loaded_page_numbers: list[int] = []
+    missing_pages = 0
+    truncated_pages = 0
+    total_chars = 0
+    for page, missing, chars, truncated in page_results:
+        if missing:
+            missing_pages += missing
+            continue
+        if page is None:
+            continue
+        if truncated:
+            truncated_pages += 1
+        pages.append(page)
+        loaded_page_numbers.append(page.aligned_page)
+        total_chars += chars
+
+    return _BookLoadResult(
+        source_sha256=manifest.source_sha256,
+        pages=pages,
+        loaded_page_numbers=loaded_page_numbers,
+        missing_pages=missing_pages,
+        truncated_pages=truncated_pages,
+        total_chars=total_chars,
+        manifest_missing=False,
+    )
 
 
 def load_pages(
@@ -129,7 +226,7 @@ def load_pages(
     *,
     max_books: int = DEFAULT_MAX_BOOKS,
     max_pages_per_book: int = DEFAULT_MAX_PAGES_PER_BOOK,
-    max_chars_per_page: int = DEFAULT_MAX_CHARS_PER_PAGE,
+    max_chars_per_page: int | None = None,
     request_id: str = "",
 ) -> PagesLoadResult:
     if not candidate_pages:
@@ -177,71 +274,56 @@ def load_pages(
     truncated_pages = 0
     total_chars = 0
 
-    for source_sha256 in sorted(selected_pages):
-        aligned_pages = selected_pages[source_sha256]
-        output_dir = data_root / "output" / source_sha256
-        manifest = _load_manifest(output_dir)
-        if manifest is None:
-            missing_pages += len(aligned_pages)
+    book_requests = [
+        _BookLoadRequest(
+            source_sha256=source_sha256,
+            aligned_pages=selected_pages[source_sha256],
+            data_root=data_root,
+            max_chars_per_page=max_chars_per_page,
+            request_id=request_id,
+        )
+        for source_sha256 in sorted(selected_pages)
+    ]
+    book_results = parallel_map(_load_book_pages, book_requests)
+
+    for book_result in book_results:
+        if book_result.manifest_missing:
             Log(
                 WARNING_LOG_LEVEL,
                 "research pages loader manifest missing",
                 {
                     "request_id": request_id,
-                    "source_sha256": source_sha256,
-                    "aligned_pages": aligned_pages,
+                    "source_sha256": book_result.source_sha256,
+                    "aligned_pages": selected_pages.get(book_result.source_sha256, []),
                 },
             )
-            continue
-
-        book_loaded: list[int] = []
-        for aligned_page in aligned_pages:
-            page_path = manifest.aligned_to_file.get(aligned_page)
-            if page_path is None or not page_path.is_file():
-                missing_pages += 1
-                Log(
-                    WARNING_LOG_LEVEL,
-                    "research pages loader page missing",
-                    {
-                        "request_id": request_id,
-                        "source_sha256": source_sha256,
-                        "aligned_page": aligned_page,
-                    },
-                )
-                continue
-
-            markdown, truncated = _load_page_markdown(
-                page_path,
-                max_chars_per_page=max_chars_per_page,
+        elif book_result.missing_pages:
+            Log(
+                WARNING_LOG_LEVEL,
+                "research pages loader page missing",
+                {
+                    "request_id": request_id,
+                    "source_sha256": book_result.source_sha256,
+                    "missing_pages": book_result.missing_pages,
+                },
             )
-            if truncated:
-                truncated_pages += 1
-                Log(
-                    WARNING_LOG_LEVEL,
-                    "research pages loader page truncated",
-                    {
-                        "request_id": request_id,
-                        "source_sha256": source_sha256,
-                        "aligned_page": aligned_page,
-                        "max_chars_per_page": max_chars_per_page,
-                    },
-                )
-
-            loaded.append(
-                LoadedPage(
-                    source_sha256=manifest.source_sha256,
-                    aligned_page=aligned_page,
-                    book_title=manifest.title,
-                    book_slug=manifest.slug,
-                    markdown=markdown,
-                    truncated=truncated,
-                )
+        if book_result.truncated_pages:
+            Log(
+                WARNING_LOG_LEVEL,
+                "research pages loader page truncated",
+                {
+                    "request_id": request_id,
+                    "source_sha256": book_result.source_sha256,
+                    "truncated_pages": book_result.truncated_pages,
+                    "max_chars_per_page": max_chars_per_page,
+                },
             )
-            book_loaded.append(aligned_page)
-            total_chars += len(markdown)
-
-        if book_loaded:
-            loaded_pages[manifest.source_sha256] = book_loaded
+        missing_pages += book_result.missing_pages
+        truncated_pages += book_result.truncated_pages
+        total_chars += book_result.total_chars
+        loaded.extend(book_result.pages)
+        if book_result.loaded_page_numbers:
+            loaded_pages[book_result.source_sha256] = book_result.loaded_page_numbers
 
     Log(
         INFO_LOG_LEVEL,

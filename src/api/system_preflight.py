@@ -5,7 +5,7 @@ import urllib.error
 from typing import Any, Literal
 
 from src.core.lmstudio_models import _find_loaded_instance_ids, ensure_lmstudio_model_loaded, lmstudio_api_root
-from src.core.log import INFO_LOG_LEVEL, Log
+from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.ingestion.pipeline.gpu_vram import (
     _LLM_LOAD_MIN_FREE_GB,
     _MODEL_LOADED_USED_THRESHOLD_GB,
@@ -232,6 +232,17 @@ def evaluate_preflight(settings: Settings, operation: str) -> dict[str, Any]:
     message = " · ".join(parts) if ok else next((p for p in parts if "insufficient" in p.lower() or "impossibile" in p.lower() or not vram_ok or not model_ok), parts[0])
     if not ok:
         message = model_msg if not model_ok else vram_msg
+    Log(
+        INFO_LOG_LEVEL if ok else WARNING_LOG_LEVEL,
+        "preflight evaluated",
+        {
+            "operation": operation,
+            "ok": ok,
+            "required_model": required_model,
+            "vram_ok": vram_ok,
+            "model_ok": model_ok,
+        },
+    )
     loaded_models = [
         {
             "key": m.get("key"),

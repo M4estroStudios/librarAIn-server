@@ -139,6 +139,7 @@ def _request_json(
     body: dict[str, Any] | None = None,
     timeout_seconds: float,
 ) -> dict[str, Any]:
+    url_path = urlparse(url).path
     data = None
     headers = {"Accept": "application/json"}
     if api_key:
@@ -147,8 +148,20 @@ def _request_json(
         data = json.dumps(body).encode("utf-8")
         headers["Content-Type"] = "application/json"
     req = urllib.request.Request(url, data=data, headers=headers, method=method)
-    with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
-        raw = resp.read().decode("utf-8")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
+            raw = resp.read().decode("utf-8")
+            status = int(getattr(resp, "status", 200))
+    except urllib.error.HTTPError as exc:
+        Log(
+            WARNING_LOG_LEVEL,
+            "http outbound",
+            {"method": method, "path": url_path, "status": exc.code},
+        )
+        raise
+    except urllib.error.URLError:
+        raise
+    Log(INFO_LOG_LEVEL, "http outbound", {"method": method, "path": url_path, "status": status})
     if not raw.strip():
         return {}
     parsed = json.loads(raw)

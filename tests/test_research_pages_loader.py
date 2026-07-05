@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from src.search.pages_loader import DEFAULT_MAX_CHARS_PER_PAGE, load_pages
+from src.search.pages_loader import load_pages
 
 
 def _write_book(
@@ -191,8 +191,20 @@ class TestPagesLoader(unittest.TestCase):
         self.assertEqual(list(result.loaded_pages.keys()), [sha_many])
         self.assertEqual(result.books_dropped, 1)
 
-    def test_default_max_chars_constant(self) -> None:
-        self.assertGreater(DEFAULT_MAX_CHARS_PER_PAGE, 0)
+    def test_default_loads_full_page_without_truncation(self) -> None:
+        sha = "h" * 64
+        long_text = "y" * 50000
+        _write_book(
+            self.data_root,
+            sha,
+            slug="libro",
+            title="Libro",
+            pages={1: long_text},
+        )
+        result = load_pages({sha: [1]}, self.data_root, request_id="req-10")
+        self.assertEqual(result.truncated_pages, 0)
+        self.assertFalse(result.pages[0].truncated)
+        self.assertEqual(len(result.pages[0].markdown), 50000)
 
 
 if __name__ == "__main__":

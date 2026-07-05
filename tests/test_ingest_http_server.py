@@ -449,18 +449,21 @@ class TestSystemJobsEndpoint(unittest.TestCase):
         self.server.registry.emit(
             job_id,
             {
-                "phase": "research_prefilter",
-                "status": "progress",
-                "prefilter_step": "subject_match",
+                "phase": "research_collect",
+                "status": "started",
+                "page_total": 8,
                 "subject_pages": 5,
-                "subject_books": 1,
+                "time_pages": 3,
             },
         )
         status, payload = self.server.request(f"/api/system/jobs/{job_id}")
         self.assertEqual(status, 200)
         self.assertTrue(payload["ok"])
         self.assertEqual(payload["job"]["job_id"], job_id)
-        self.assertIn("prefilter_steps", payload["job"])
+        collect_phase = next(
+            p for p in payload["job"]["phases"] if p["phase"] == "research_collect"
+        )
+        self.assertEqual(collect_phase["total"], 8)
         self.assertEqual(payload["job"]["system_events_url"], f"/api/system/jobs/{job_id}/events")
 
 

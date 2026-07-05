@@ -61,13 +61,25 @@ export function restoreMockState() {
 }
 
 export async function apiFetch(url, options = {}) {
+  const method = (options.method || "GET").toUpperCase();
   const headers = new Headers(options.headers || {});
   const token = apiToken();
   if (token) headers.set("X-API-Token", token);
   if (mockEnabled && mockScenario) {
     headers.set("X-Mock-Scenario", mockScenario);
   }
-  const res = await fetch(url, { ...options, headers });
+  let res;
+  try {
+    res = await fetch(url, { ...options, headers });
+  } catch (err) {
+    if (window.LibrarAInLog) {
+      window.LibrarAInLog.reportError("http request network error", err);
+    }
+    throw err;
+  }
+  if (window.LibrarAInLog && (method !== "GET" || !res.ok)) {
+    window.LibrarAInLog.logHttpDone(method, url, res.status);
+  }
   if (res.status === 401 && !options._retried) {
     const newToken = promptApiToken();
     if (newToken) {
@@ -85,7 +97,6 @@ export async function apiJson(url, options = {}) {
   } catch {}
   if (!res.ok) {
     const err = data.error || data.message || res.statusText;
-    if (window.LibrarAInLog) window.LibrarAInLog.logHttpFailure(url, res.status, err);
     throw new Error(err);
   }
   return data;

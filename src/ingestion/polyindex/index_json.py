@@ -42,6 +42,8 @@ def sort_polyindex_index_file(index_path: Path) -> bool:
     with polyindex_dir_lock(index_path.parent, ".index.lock"):
         raw = index_path.read_bytes()
         document = PolyindexIndexDocument.load_file(index_path)
+        for entry in document.subjects.values():
+            entry.prune_empty_books()
         content = document.to_json_bytes(sort_document=True)
         if content == raw:
             return False
@@ -230,10 +232,13 @@ def list_multibook_subjects(
 
     result: list[dict[str, Any]] = []
     for canonical_id, entry in document.subjects.items():
-        if len(entry.books) < min_books:
+        linked_books = {
+            sha: book for sha, book in entry.books.items() if book.aligned_pages
+        }
+        if len(linked_books) < min_books:
             continue
         book_summaries = []
-        for sha, book in sorted(entry.books.items()):
+        for sha, book in sorted(linked_books.items()):
             book_summaries.append(
                 {
                     "source_sha256": sha,
@@ -247,7 +252,7 @@ def list_multibook_subjects(
                 "canonical_id": canonical_id,
                 "canonical_label": entry.canonical_label,
                 "aliases": list(entry.aliases),
-                "book_count": len(entry.books),
+                "book_count": len(linked_books),
                 "books": book_summaries,
                 "time_range": _resolve_subject_time_range(
                     polyindex_dir, canonical_id, entry
@@ -266,6 +271,8 @@ def get_polyindex_subject(polyindex_dir: Path, canonical_id: str) -> dict[str, A
         return None
     books: dict[str, Any] = {}
     for sha, book in sorted(entry.books.items()):
+        if not book.aligned_pages:
+            continue
         books[sha] = {
             "source_sha256": sha,
             "title": book.title,
@@ -278,7 +285,7 @@ def get_polyindex_subject(polyindex_dir: Path, canonical_id: str) -> dict[str, A
         "canonical_id": canonical_id,
         "canonical_label": entry.canonical_label,
         "aliases": list(entry.aliases),
-        "book_count": len(entry.books),
+        "book_count": len(books),
         "books": books,
         "time_range": _resolve_subject_time_range(
             polyindex_dir, canonical_id, entry
@@ -442,6 +449,7 @@ def merge_polyindex_subjects(
                 )
             del document.subjects[source_id]
 
+        target.prune_empty_books()
         document.write_atomic(index_path, sort_document=True)
 
     Log(

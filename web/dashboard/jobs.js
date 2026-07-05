@@ -12,6 +12,8 @@ const SSE_EVENT_TYPES = [
   "failed",
   "pipeline_total",
   "waiting",
+  "plan",
+  "info",
 ];
 
 const JOB_PHASE_LABELS = {
@@ -30,11 +32,15 @@ const JOB_PHASE_LABELS = {
   page_repair: "Preparazione riparazione",
   gaps_repair: "Riparazione lacune",
   queue: "In coda",
+  research_collect: "Raccolta fonti",
+  research_filter: "Sfoltimento fonti",
+  research_article: "Generazione bozza",
+  research_poh_links: "Collegamenti POH",
+  research_timeline: "Cronologia",
+  research_verify: "Verifica",
   research_prefilter: "Prefiltro research",
-  research_article: "Articolo",
-  research_poh_links: "Link POH",
-  research_timeline: "Timeline",
   research_postprocess: "Post-process",
+  research_finalize: "Revisione finale",
   research: "Research",
   research_batch: "Generazione articoli",
 };
@@ -45,14 +51,14 @@ const JOB_KIND_LABELS = {
   research_batch: "Batch articoli",
 };
 
-const PREFILTER_STEP_LABELS = {
-  subject_match: "Match INDEX",
-  toc_expansion: "Espansione TOC",
-  time_index: "TIME_INDEX",
-  merge_candidates: "Unione candidati",
-  load_pages: "Caricamento testi",
-  relevance_filter: "Filtro rilevanza",
-};
+const RESEARCH_DISPLAY_PHASES = [
+  "research_collect",
+  "research_filter",
+  "research_article",
+  "research_poh_links",
+  "research_timeline",
+  "research_verify",
+];
 
 const jobsById = new Map();
 const sseConnections = new Map();
@@ -154,6 +160,7 @@ function connectJobSSE(job) {
   sseConnections.set(jobId, es);
   const handler = () => scheduleRefetch(jobId);
   SSE_EVENT_TYPES.forEach((type) => es.addEventListener(type, handler));
+  es.onmessage = handler;
   es.addEventListener("done", handler);
   es.addEventListener("succeeded", handler);
   es.addEventListener("failed", handler);
@@ -182,127 +189,51 @@ function formatJobStatsLine(done, total) {
   return formatJobPercent(done, total) + "% (" + done + "/" + total + ")";
 }
 
-function formatPrefilterMatchDetail(step) {
-  const matches = Array.isArray(step.matches) ? step.matches : [];
-  if (!matches.length) return "nessun soggetto matchato";
-  return matches
-    .map(function (m) {
-      let line = m.canonical_label || m.canonical_id || "?";
-      if (m.method) line += " (" + m.method + ")";
-      if (m.similarity != null) line += " " + Math.round(Number(m.similarity) * 100) + "%";
-      return line;
-    })
-    .join(", ");
-}
-
-function formatPrefilterStepDetail(step) {
-  const id = step.step || step.prefilter_step || "";
-  switch (id) {
-    case "subject_match": {
-      const degraded = step.degraded ? " · ricerca degradata" : "";
-      const ai = step.ai_used ? " · AI" : "";
-      return (
-        (step.subject_pages || 0) +
-        " pag. in " +
-        (step.subject_books || 0) +
-        " libri" +
-        ai +
-        degraded +
-        " · " +
-        formatPrefilterMatchDetail(step)
-      );
-    }
-    case "toc_expansion": {
-      let toc =
-        "+" +
-        (step.pages_added || 0) +
-        " pag. (" +
-        (step.pages_before || 0) +
-        "→" +
-        (step.pages_after || 0) +
-        ")";
-      if (step.expanded_chapters) toc += " · " + step.expanded_chapters + " capitoli espansi";
-      if (step.books_dropped) toc += " · " + step.books_dropped + " libri scartati";
-      return toc;
-    }
-    case "time_index": {
-      if (!step.pages_added && !step.matched_labels) return "nessun arricchimento temporale";
-      let time =
-        "+" +
-        (step.pages_added || 0) +
-        " pag. (" +
-        (step.pages_before || 0) +
-        "→" +
-        (step.pages_after || 0) +
-        ")";
-      if (step.matched_labels) time += " · " + step.matched_labels + " label temporali";
-      if (step.fallback_labels) time += " · " + step.fallback_labels + " fallback";
-      return time;
-    }
-    case "merge_candidates":
-      if (!step.pages_added) {
-        return (step.pages_after || 0) + " pag. candidate (nessuna nuova dall'unione)";
-      }
-      return (
-        "+" +
-        (step.pages_added || 0) +
-        " pag. (" +
-        (step.pages_before || 0) +
-        "→" +
-        (step.pages_after || 0) +
-        ")"
-      );
-    case "load_pages":
-      return (
-        (step.loaded_pages || 0) +
-        "/" +
-        (step.candidate_pages || 0) +
-        " pag. caricati · " +
-        (step.loaded_books || 0) +
-        " libri"
-      );
-    case "relevance_filter":
-      return (
-        (step.kept_pages || 0) +
-        " tenute · " +
-        (step.dropped_pages || 0) +
-        " scartate (su " +
-        (step.input_pages || 0) +
-        ")"
-      );
-    default:
-      return step.message || "";
-  }
-}
-
-function renderPrefilterSteps(steps) {
-  if (!steps || !steps.length) return "";
-  let html = '<div class="active-job-prefilter-steps">';
-  steps.forEach(function (step) {
-    const label = PREFILTER_STEP_LABELS[step.step] || step.step || "Step";
-    const detail =
-      formatPrefilterStepDetail(step) ||
-      (step.status === "active" ? "in corso…" : step.status === "pending" ? "—" : "");
-    const statusClass =
-      step.status === "done" ? " done" : step.status === "active" ? " active" : "";
-    html +=
-      '<div class="prefilter-step' +
-      statusClass +
-      '">' +
-      '<span class="prefilter-step-label">' +
-      escapeHtml(label) +
-      "</span>" +
-      '<span class="prefilter-step-detail">' +
-      escapeHtml(detail) +
-      "</span>" +
-      "</div>";
-  });
-  html += "</div>";
-  return html;
-}
-
 function jobPhaseLabel(phase, fallback) {
   return JOB_PHASE_LABELS[phase] || fallback || phase || "Fase";
+}
+
+function isResearchArticleJob(job) {
+  if (job.job_kind === "research") return true;
+  const phases = Array.isArray(job.phases) ? job.phases : [];
+  return phases.some(function (phase) {
+    return RESEARCH_DISPLAY_PHASES.indexOf(phase.phase) >= 0;
+  });
+}
+
+function resolveResearchPhases(job) {
+  const phases = normalizeJobPhases(job);
+  const byPhase = new Map(phases.map(function (phase) {
+    return [phase.phase, phase];
+  }));
+  const planTotals = job.research_phase_totals || {};
+  return RESEARCH_DISPLAY_PHASES.map(function (phaseId) {
+    const existing = byPhase.get(phaseId);
+    if (existing) {
+      if (planTotals[phaseId] && (!existing.total || existing.total === 1)) {
+        return Object.assign({}, existing, { total: planTotals[phaseId] });
+      }
+      return existing;
+    }
+    return {
+      phase: phaseId,
+      status: "pending",
+      done: 0,
+      total: planTotals[phaseId] || 1,
+    };
+  });
+}
+
+function resolveJobPhases(job) {
+  if (isResearchArticleJob(job)) {
+    return resolveResearchPhases(job);
+  }
+  const phases = normalizeJobPhases(job);
+  return phases.filter(function (phase, index) {
+    if (phase.status !== "pending") return true;
+    const prev = phases[index - 1];
+    return prev && (prev.status === "active" || prev.status === "done");
+  });
 }
 
 function resolveGlmOcrPhase(job) {
@@ -399,9 +330,12 @@ function renderJobProgressRow(label, done, total, status, globalRow) {
 function renderPhaseBlock(phase) {
   const label = jobPhaseLabel(phase.phase, phase.phase);
   let html = renderJobProgressRow(label, phase.done, phase.total, phase.status, false);
-  if (phase.detail) {
+  const detail =
+    phase.detail ||
+    (phase.status === "active" ? "in corso…" : "");
+  if (detail) {
     html +=
-      '<div class="job-phase-detail">' + escapeHtml(phase.detail) + "</div>";
+      '<div class="job-phase-detail">' + escapeHtml(detail) + "</div>";
   }
   return html;
 }
@@ -410,12 +344,7 @@ function renderActiveJobCard(job) {
   const kind = JOB_KIND_LABELS[job.job_kind] || job.job_kind || "Job";
   const globalStep = typeof job.global_step === "number" ? job.global_step : 0;
   const globalTotal = typeof job.global_total === "number" ? job.global_total : 0;
-  const phases = normalizeJobPhases(job);
-  const visiblePhases = phases.filter(function (phase, index) {
-    if (phase.status !== "pending") return true;
-    const prev = phases[index - 1];
-    return prev && (prev.status === "active" || prev.status === "done");
-  });
+  const visiblePhases = resolveJobPhases(job);
   const cardClass =
     "active-job-card" + (job.is_active ? "" : " job-finished") + (job.error ? " job-failed" : "");
   let html =
@@ -457,17 +386,6 @@ function renderActiveJobCard(job) {
       html += renderPhaseBlock(phase);
     });
     html += "</div>";
-  }
-  const prefilterSteps =
-    job.prefilter_steps ||
-    (function () {
-      const pf = phases.find(function (p) {
-        return p.phase === "research_prefilter";
-      });
-      return pf && pf.steps ? pf.steps : null;
-    })();
-  if (prefilterSteps && prefilterSteps.length) {
-    html += renderPrefilterSteps(prefilterSteps);
   }
   const articleHref =
     job.article_url ||
@@ -571,5 +489,7 @@ export function initActiveJobs() {
   const watched = loadWatched();
   watched.forEach((item) => ensureJobWatched(item.job_id));
   refreshJobsList();
-  window.setInterval(refreshJobsList, 8000);
+  window.setInterval(function () {
+    refreshJobsList();
+  }, 3000);
 }

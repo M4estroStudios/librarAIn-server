@@ -9,7 +9,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from src.api.ingest_http_server import build_ingest_server
 from src.models.polyindex_index import PolyindexIndexDocument, PolyindexIndexSubjectEntry
@@ -164,18 +164,24 @@ class ResearchHttpTests(unittest.TestCase):
         self.assertEqual(missing["count"], 2)
 
     def test_submit_and_status(self) -> None:
-        status, accepted = self.harness.post_json(
-            "/api/research/submit",
-            {"query": "Alpha Test", "poh": {"label": "Alpha Test", "id": "subj_alpha"}},
-        )
-        self.assertEqual(status, 202)
-        request_id = accepted["request_id"]
-        self.assertTrue(request_id)
-        for _ in range(50):
-            _, snap = self.harness.get_json(f"/api/research/{request_id}")
-            if snap.get("status") in ("succeeded", "failed"):
-                break
-            time.sleep(0.1)
+        from tests.test_research_e2e import _build_fake_openai_client
+
+        with patch(
+            "src.search.research_runner.build_openai_client",
+            return_value=_build_fake_openai_client(),
+        ):
+            status, accepted = self.harness.post_json(
+                "/api/research/submit",
+                {"query": "Alpha Test", "poh": {"label": "Alpha Test", "id": "subj_alpha"}},
+            )
+            self.assertEqual(status, 202)
+            request_id = accepted["request_id"]
+            self.assertTrue(request_id)
+            for _ in range(50):
+                _, snap = self.harness.get_json(f"/api/research/{request_id}")
+                if snap.get("status") in ("succeeded", "failed"):
+                    break
+                time.sleep(0.1)
         self.assertEqual(snap["status"], "succeeded")
         _, article = self.harness.get_json(f"/api/research/{request_id}/article")
         self.assertIn("markdown", article)
@@ -290,19 +296,24 @@ class ResearchHttpTests(unittest.TestCase):
 
     def test_generate_article_for_poh_writes_file(self) -> None:
         from src.search.article_catalog import generate_article_for_poh
+        from tests.test_research_e2e import _build_fake_openai_client
 
-        result = generate_article_for_poh(
-            self.harness.data_root,
-            "subj_beta",
-            settings=Settings.model_validate(
-                {
-                    "DATA_ROOT": str(self.harness.data_root),
-                    "OPENAI_PROVIDER": "local",
-                    "MATCHER_USE_AI": False,
-                }
-            ),
-            request_id="test-req-beta",
-        )[0]
+        with patch(
+            "src.search.research_runner.build_openai_client",
+            return_value=_build_fake_openai_client(),
+        ):
+            result = generate_article_for_poh(
+                self.harness.data_root,
+                "subj_beta",
+                settings=Settings.model_validate(
+                    {
+                        "DATA_ROOT": str(self.harness.data_root),
+                        "OPENAI_PROVIDER": "local",
+                        "MATCHER_USE_AI": False,
+                    }
+                ),
+                request_id="test-req-beta",
+            )[0]
         self.assertTrue(result["url"].startswith("/articolo/"))
         path = Path(result["path"])
         self.assertTrue(path.is_file())

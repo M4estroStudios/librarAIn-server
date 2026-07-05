@@ -32,6 +32,7 @@ def _make_settings(
     rate_limit: int = 60,
     retry: int = 2,
     timeout: int = 10,
+    research_timeout: int = 3600,
 ) -> MagicMock:
     s = MagicMock()
     s.openai_base_url = base_url
@@ -39,6 +40,8 @@ def _make_settings(
     s.rate_limit_per_minute = rate_limit
     s.retry_attempts = retry
     s.timeout_seconds = timeout
+    s.research_timeout_seconds = research_timeout
+    s.max_parallel_request = 8
     return s
 
 
@@ -111,6 +114,8 @@ class TestBuildOpenAIClient(unittest.TestCase):
         state = _client_states.get(client)
         self.assertIsNotNone(state)
         self.assertEqual(state.retry_attempts, 5)
+        self.assertIsNotNone(state.thread_pool)
+        self.assertEqual(state.thread_pool._max_workers, settings.max_parallel_request)
 
 
 class TestChatCompletionWithRetry(unittest.TestCase):
@@ -273,6 +278,23 @@ class TestChatCompletionWithRetrySync(unittest.TestCase):
             result = self._call(client, mock_create)
         self.assertEqual(result, "ok")
         self.assertEqual(mock_create.call_count, 2)
+
+    def test_research_stage_uses_research_timeout_and_no_max_tokens(self) -> None:
+        client = build_openai_client(_make_settings(timeout=10, research_timeout=3600))
+        mock_create = MagicMock(return_value=_make_response("ok"))
+        client.chat.completions.create = mock_create  # type: ignore[attr-defined]
+        chat_completion_with_retry_sync(
+            client,  # type: ignore[arg-type]
+            model="gpt-4",
+            messages=[{"role": "user", "content": "hi"}],
+            max_tokens=100,
+            request_id="req-research-timeout",
+            stage="research_article",
+            page=0,
+        )
+        kwargs = mock_create.call_args.kwargs
+        self.assertEqual(kwargs["timeout"], 3600.0)
+        self.assertNotIn("max_tokens", kwargs)
 
 
 class TestEmbeddingWithRetrySync(unittest.TestCase):

@@ -7,6 +7,7 @@ from html import escape
 from pathlib import Path
 
 from src.core.log import INFO_LOG_LEVEL, WARNING_LOG_LEVEL, Log
+from src.core.parallel import parallel_map
 from src.models.polyindex_index import PolyindexIndexDocument
 
 _SOURCE_LINK_PATTERN = re.compile(
@@ -67,36 +68,44 @@ class _ManifestIndex:
     book_titles: dict[str, str] = field(default_factory=dict)
 
 
+def _load_book_manifest_entry(book_dir: Path) -> tuple[str, set[int], str | None] | None:
+    if not book_dir.is_dir():
+        return None
+    manifest_path = book_dir / "manifest.json"
+    if not manifest_path.is_file():
+        return None
+    try:
+        raw = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    if not isinstance(raw, dict):
+        return None
+    sha = str(raw.get("source_sha256") or book_dir.name)
+    aligned: set[int] = set()
+    pages = raw.get("pages")
+    if isinstance(pages, list):
+        for entry in pages:
+            if isinstance(entry, dict) and isinstance(entry.get("aligned"), int):
+                aligned.add(entry["aligned"])
+    reicat = raw.get("reicat") if isinstance(raw.get("reicat"), dict) else {}
+    title = reicat.get("titolo") or reicat.get("title") or raw.get("slug")
+    return sha, aligned, str(title) if title else None
+
+
 def _load_manifest_index(data_root: Path) -> _ManifestIndex:
     pages_by_book: dict[str, set[int]] = {}
     book_titles: dict[str, str] = {}
     output_dir = data_root / "output"
     if not output_dir.is_dir():
         return _ManifestIndex(pages_by_book=pages_by_book)
-    for book_dir in output_dir.iterdir():
-        if not book_dir.is_dir():
+    book_dirs = [book_dir for book_dir in output_dir.iterdir() if book_dir.is_dir()]
+    for entry in parallel_map(_load_book_manifest_entry, book_dirs):
+        if entry is None:
             continue
-        manifest_path = book_dir / "manifest.json"
-        if not manifest_path.is_file():
-            continue
-        try:
-            raw = json.loads(manifest_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            continue
-        if not isinstance(raw, dict):
-            continue
-        sha = str(raw.get("source_sha256") or book_dir.name)
-        aligned: set[int] = set()
-        pages = raw.get("pages")
-        if isinstance(pages, list):
-            for entry in pages:
-                if isinstance(entry, dict) and isinstance(entry.get("aligned"), int):
-                    aligned.add(entry["aligned"])
+        sha, aligned, title = entry
         pages_by_book[sha] = aligned
-        reicat = raw.get("reicat") if isinstance(raw.get("reicat"), dict) else {}
-        title = reicat.get("titolo") or reicat.get("title") or raw.get("slug")
         if title:
-            book_titles[sha] = str(title)
+            book_titles[sha] = title
     return _ManifestIndex(pages_by_book=pages_by_book, book_titles=book_titles)
 
 
@@ -121,38 +130,129 @@ def _is_valid_poh(url: str, known_ids: set[str]) -> tuple[bool, str]:
     return False, poh_id
 
 
+@dataclass(frozen=True)
+class _SourceLinkDecision:
+    start: int
+    end: int
+    replacement: str
+    citation: CitationRecord | None
+    invalid: bool
+    url: str
+
+
+@dataclass(frozen=True)
+class _PohLinkDecision:
+    start: int
+    end: int
+    replacement: str
+    poh_id: str | None
+    label: str
+    invalid: bool
+    url: str
+
+
+def _validate_source_link(
+    item: tuple[int, int, str, str, _ManifestIndex],
+) -> _SourceLinkDecision:
+    start, end, label, url, manifest = item
+    valid, sha, page = _is_valid_source(url, manifest)
+    if not valid or sha is None or page is None:
+        return _SourceLinkDecision(
+            start=start,
+            end=end,
+            replacement=_UNVERIFIABLE,
+            citation=None,
+            invalid=True,
+            url=url,
+        )
+    citation = CitationRecord(
+        source_sha256=sha,
+        aligned_page=page,
+        label=label.strip() or f"p.{page}",
+    )
+    return _SourceLinkDecision(
+        start=start,
+        end=end,
+        replacement=f"[{label}]({url})",
+        citation=citation,
+        invalid=False,
+        url=url,
+    )
+
+
+def _validate_poh_link(
+    item: tuple[int, int, str, str, set[str]],
+) -> _PohLinkDecision:
+    start, end, label, url, known_ids = item
+    valid, poh_id = _is_valid_poh(url, known_ids)
+    if not valid:
+        return _PohLinkDecision(
+            start=start,
+            end=end,
+            replacement=label,
+            poh_id=poh_id,
+            label=label,
+            invalid=True,
+            url=url,
+        )
+    return _PohLinkDecision(
+        start=start,
+        end=end,
+        replacement=f"[{label}]({url})",
+        poh_id=poh_id,
+        label=label.strip() or poh_id,
+        invalid=False,
+        url=url,
+    )
+
+
+def _apply_span_replacements(
+    markdown: str,
+    decisions: list[tuple[int, int, str]],
+) -> str:
+    if not decisions:
+        return markdown
+    updated = markdown
+    for start, end, replacement in sorted(decisions, key=lambda item: item[0], reverse=True):
+        updated = updated[:start] + replacement + updated[end:]
+    return updated
+
+
 def _replace_source_links(
     markdown: str,
     manifest: _ManifestIndex,
     *,
     request_id: str,
 ) -> tuple[str, list[CitationRecord], int]:
+    matches = [
+        (match.start(), match.end(), match.group(1), match.group(2))
+        for match in _SOURCE_LINK_PATTERN.finditer(markdown)
+    ]
+    if not matches:
+        return markdown, [], 0
+
+    decisions = parallel_map(
+        _validate_source_link,
+        [(start, end, label, url, manifest) for start, end, label, url in matches],
+    )
     citations: dict[tuple[str, int], CitationRecord] = {}
     invalid = 0
-
-    def replacer(match: re.Match[str]) -> str:
-        nonlocal invalid
-        label = match.group(1)
-        url = match.group(2)
-        valid, sha, page = _is_valid_source(url, manifest)
-        if not valid or sha is None or page is None:
+    replacements: list[tuple[int, int, str]] = []
+    for decision in decisions:
+        if decision.invalid:
             invalid += 1
             Log(
                 WARNING_LOG_LEVEL,
                 "research postprocess invalid source link removed",
-                {"request_id": request_id, "url": url},
+                {"request_id": request_id, "url": decision.url},
             )
-            return _UNVERIFIABLE
-        key = (sha, page)
-        if key not in citations:
-            citations[key] = CitationRecord(
-                source_sha256=sha,
-                aligned_page=page,
-                label=label.strip() or f"p.{page}",
-            )
-        return match.group(0)
+        elif decision.citation is not None:
+            key = (decision.citation.source_sha256, decision.citation.aligned_page)
+            if key not in citations:
+                citations[key] = decision.citation
+        replacements.append((decision.start, decision.end, decision.replacement))
 
-    cleaned = _SOURCE_LINK_PATTERN.sub(replacer, markdown)
+    cleaned = _apply_span_replacements(markdown, replacements)
     return cleaned, sorted(
         citations.values(),
         key=lambda item: (item.source_sha256, item.aligned_page),
@@ -165,39 +265,50 @@ def _replace_poh_links(
     *,
     request_id: str,
 ) -> tuple[str, dict[str, PohReferenceRecord], int]:
+    matches = [
+        (match.start(), match.end(), match.group(1), match.group(2))
+        for match in _POH_LINK_PATTERN.finditer(markdown)
+    ]
+    if not matches:
+        return markdown, {}, 0
+
+    decisions = parallel_map(
+        _validate_poh_link,
+        [(start, end, label, url, known_ids) for start, end, label, url in matches],
+    )
     counts: dict[str, PohReferenceRecord] = {}
     invalid = 0
-
-    def replacer(match: re.Match[str]) -> str:
-        nonlocal invalid
-        label = match.group(1)
-        url = match.group(2)
-        valid, poh_id = _is_valid_poh(url, known_ids)
-        if not valid:
+    replacements: list[tuple[int, int, str]] = []
+    for decision in decisions:
+        if decision.invalid:
             invalid += 1
             Log(
                 WARNING_LOG_LEVEL,
                 "research postprocess invalid poh link removed",
-                {"request_id": request_id, "url": url, "poh_id": poh_id},
+                {
+                    "request_id": request_id,
+                    "url": decision.url,
+                    "poh_id": decision.poh_id,
+                },
             )
-            return label
-        full_id = f"poh:{poh_id}"
-        existing = counts.get(full_id)
-        if existing is None:
-            counts[full_id] = PohReferenceRecord(
-                poh_id=poh_id,
-                label=label.strip() or poh_id,
-                linked_from_count=1,
-            )
-        else:
-            counts[full_id] = PohReferenceRecord(
-                poh_id=existing.poh_id,
-                label=existing.label,
-                linked_from_count=existing.linked_from_count + 1,
-            )
-        return match.group(0)
+        elif decision.poh_id is not None:
+            full_id = f"poh:{decision.poh_id}"
+            existing = counts.get(full_id)
+            if existing is None:
+                counts[full_id] = PohReferenceRecord(
+                    poh_id=decision.poh_id,
+                    label=decision.label,
+                    linked_from_count=1,
+                )
+            else:
+                counts[full_id] = PohReferenceRecord(
+                    poh_id=existing.poh_id,
+                    label=existing.label,
+                    linked_from_count=existing.linked_from_count + 1,
+                )
+        replacements.append((decision.start, decision.end, decision.replacement))
 
-    cleaned = _POH_LINK_PATTERN.sub(replacer, markdown)
+    cleaned = _apply_span_replacements(markdown, replacements)
     return cleaned, counts, invalid
 
 

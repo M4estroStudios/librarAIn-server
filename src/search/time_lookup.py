@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from src.core.log import INFO_LOG_LEVEL, Log
+from src.core.parallel import parallel_map
 from src.ingestion.polyindex.time_index import extract_time_references
 from src.search.request_schema import ResearchPoh
 
@@ -194,6 +195,60 @@ def _merge_enriched_pages(
     return merged
 
 
+@dataclass(frozen=True)
+class _TimeLabelLookup:
+    label: str
+    pages: dict[str, list[int]]
+    fallback_count: int
+
+
+def _resolve_period_range(
+    item: tuple[str, str, str, dict[str, Any]],
+) -> _TimeLabelLookup | None:
+    label, start, end, years_section = item
+    start_pages, start_fallback = _resolve_with_fallback(years_section, start, None)
+    end_pages, end_fallback = _resolve_with_fallback(years_section, end, start)
+    combined: dict[str, list[int]] = {}
+    _merge_book_pages(combined, start_pages)
+    _merge_book_pages(combined, end_pages)
+    if not combined:
+        return None
+    fallback_count = int(start_fallback) + int(end_fallback)
+    return _TimeLabelLookup(label=label, pages=combined, fallback_count=fallback_count)
+
+
+def _resolve_year_label(
+    item: tuple[str, dict[str, Any]],
+) -> _TimeLabelLookup | None:
+    year_label, years_section = item
+    pages, used_fallback = _resolve_with_fallback(years_section, year_label, None)
+    if not pages:
+        return None
+    return _TimeLabelLookup(
+        label=year_label,
+        pages=pages,
+        fallback_count=int(used_fallback),
+    )
+
+
+def _resolve_date_label(
+    item: tuple[str, dict[str, Any], dict[str, Any]],
+) -> _TimeLabelLookup | None:
+    date_label, dates_section, years_section = item
+    pages, used_fallback = _resolve_date_pages(
+        dates_section,
+        years_section,
+        date_label,
+    )
+    if not pages:
+        return None
+    return _TimeLabelLookup(
+        label=date_label,
+        pages=pages,
+        fallback_count=int(used_fallback),
+    )
+
+
 def lookup_time(
     query: str,
     poh: ResearchPoh | None,
@@ -232,42 +287,26 @@ def lookup_time(
     matched_labels = 0
     fallback_labels = 0
 
-    for label, start, end in period_ranges:
-        start_pages, start_fallback = _resolve_with_fallback(years_section, start, None)
-        end_pages, end_fallback = _resolve_with_fallback(years_section, end, start)
-        combined: dict[str, list[int]] = {}
-        _merge_book_pages(combined, start_pages)
-        _merge_book_pages(combined, end_pages)
-        if combined:
-            matched_labels += 1
-            if end_fallback:
-                fallback_labels += 1
-            if start_fallback:
-                fallback_labels += 1
-            _merge_book_pages(enriched, combined)
-            _append_timeline_candidates(timeline, label, combined)
+    period_hits = parallel_map(
+        _resolve_period_range,
+        [(label, start, end, years_section) for label, start, end in period_ranges],
+    )
+    year_hits = parallel_map(
+        _resolve_year_label,
+        [(year_label, years_section) for year_label in standalone_years],
+    )
+    date_hits = parallel_map(
+        _resolve_date_label,
+        [(date_label, dates_section, years_section) for date_label in standalone_dates],
+    )
 
-    for year_label in standalone_years:
-        pages, used_fallback = _resolve_with_fallback(years_section, year_label, None)
-        if pages:
-            matched_labels += 1
-            if used_fallback:
-                fallback_labels += 1
-            _merge_book_pages(enriched, pages)
-            _append_timeline_candidates(timeline, year_label, pages)
-
-    for date_label in standalone_dates:
-        pages, used_fallback = _resolve_date_pages(
-            dates_section,
-            years_section,
-            date_label,
-        )
-        if pages:
-            matched_labels += 1
-            if used_fallback:
-                fallback_labels += 1
-            _merge_book_pages(enriched, pages)
-            _append_timeline_candidates(timeline, date_label, pages)
+    for lookup in (*period_hits, *year_hits, *date_hits):
+        if lookup is None:
+            continue
+        matched_labels += 1
+        fallback_labels += lookup.fallback_count
+        _merge_book_pages(enriched, lookup.pages)
+        _append_timeline_candidates(timeline, lookup.label, lookup.pages)
 
     merged_pages = _merge_enriched_pages(candidate_pages, enriched)
 

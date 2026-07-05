@@ -407,6 +407,31 @@ class TestPolyindexIndex(unittest.TestCase):
             sorted_polyindex_index_bytes(data),
         )
 
+    def test_sort_polyindex_index_file_prunes_empty_books(self) -> None:
+        index_path = self.polyindex_dir / "INDEX.json"
+        document = PolyindexIndexDocument(
+            subjects={
+                "venezia": PolyindexIndexSubjectEntry(
+                    canonical_label="Venezia",
+                    books={
+                        SHA_A: PolyindexIndexBookEntry(
+                            title="Libro",
+                            aligned_pages=[],
+                        ),
+                        SHA_B: PolyindexIndexBookEntry(aligned_pages=[2]),
+                    },
+                )
+            }
+        )
+        document.write_atomic(index_path, sort_document=False)
+        self.assertTrue(sort_polyindex_index_file(index_path))
+        subject = get_polyindex_subject(self.polyindex_dir, "venezia")
+        self.assertIsNotNone(subject)
+        assert subject is not None
+        self.assertNotIn(SHA_A, subject["books"])
+        self.assertIn(SHA_B, subject["books"])
+        self.assertEqual(subject["book_count"], 1)
+
 
 class TestPolyindexIndexDecisionHelpers(unittest.TestCase):
     def test_apply_decision_new_creates_subject(self) -> None:
@@ -472,6 +497,30 @@ class TestPolyindexIndexDecisionHelpers(unittest.TestCase):
         entry = document.subjects["venezia"]
         self.assertIn("Laguna", entry.aliases)
         self.assertEqual(entry.books[SHA_A].aligned_pages, [1, 3])
+
+    def test_apply_decision_alias_without_pages_does_not_link_book(self) -> None:
+        document = PolyindexIndexDocument(
+            subjects={
+                "altro": PolyindexIndexSubjectEntry(canonical_label="Altro Lemma"),
+            }
+        )
+        raw = RawSubject(
+            raw_label="Lemma",
+            aligned_pages=[],
+            original_pages=[],
+            alias_of="Altro Lemma",
+        )
+        _apply_decision(
+            document,
+            raw,
+            MatchDecision(action="alias", canonical_id="altro"),
+            SHA_A,
+            book_title="Libro",
+            book_slug="libro",
+        )
+        entry = document.subjects["altro"]
+        self.assertIn("Lemma", entry.aliases)
+        self.assertNotIn(SHA_A, entry.books)
 
     def test_revalidate_match_keeps_existing_canonical(self) -> None:
         document = PolyindexIndexDocument(

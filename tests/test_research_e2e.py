@@ -217,10 +217,34 @@ def _build_e2e_fixture(data_root: Path) -> None:
     )
 
 
+def _hash_embedding(text: str, *, size: int = 16) -> list[float]:
+    import hashlib
+
+    digest = hashlib.sha256(text.encode("utf-8")).digest()
+    values = [float(digest[index % len(digest)]) for index in range(size)]
+    norm = sum(value * value for value in values) ** 0.5 or 1.0
+    return [value / norm for value in values]
+
+
+class _E2eFakeEmbeddings:
+    def create(self, *, model: str, input: str | list[str]) -> MagicMock:
+        del model
+        texts = input if isinstance(input, list) else [input]
+        response = MagicMock()
+        response.data = []
+        for index, text in enumerate(texts):
+            item = MagicMock()
+            item.index = index
+            item.embedding = _hash_embedding(text)
+            response.data.append(item)
+        return response
+
+
 class _E2eResearchLlmClient:
     def __init__(self) -> None:
         self.chat = MagicMock()
         self.chat.completions.create.side_effect = self._create_completion
+        self.embeddings = _E2eFakeEmbeddings()
 
     def _first_page_ref(self, pages: list[dict[str, object]]) -> tuple[str, int]:
         if not pages:
@@ -245,14 +269,17 @@ class _E2eResearchLlmClient:
 
     def _poh_response(self, user_message: str) -> str:
         payload = json.loads(user_message)
-        article = str(payload.get("article_markdown") or "")
-        if "Kublai Khan" in article and "poh:kublai-khan" not in article:
-            article = article.replace(
-                "Kublai Khan",
-                "[Kublai Khan](poh:kublai-khan)",
-                1,
-            )
-        return article
+        paragraph = str(payload.get("paragraph_markdown") or payload.get("article_markdown") or "")
+        subject = payload.get("subject") or {}
+        label = str(subject.get("label") or "")
+        poh_id = str(subject.get("id") or "")
+        if label and poh_id and label in paragraph and f"poh:{poh_id}" not in paragraph:
+            paragraph = paragraph.replace(label, f"[{label}](poh:{poh_id})", 1)
+        return paragraph
+
+    def _finalize_response(self, user_message: str) -> str:
+        payload = json.loads(user_message)
+        return str(payload.get("enriched_markdown") or payload.get("draft_markdown") or "")
 
     def _timeline_response(self, user_message: str) -> str:
         payload = json.loads(user_message)
@@ -278,8 +305,10 @@ class _E2eResearchLlmClient:
         user = str(messages[1]["content"])
         if "passo d" in system:
             content = self._timeline_response(user)
-        elif "passo c" in system:
+        elif "singolo paragrafo" in system or "passo c" in system:
             content = self._poh_response(user)
+        elif "versione definitiva" in system:
+            content = self._finalize_response(user)
         elif "stile Wikipedia" in system or load_article_prompt()[:24] in system:
             content = self._article_response(user)
         else:
@@ -293,6 +322,7 @@ def _build_fake_openai_client() -> MagicMock:
     inner = _E2eResearchLlmClient()
     client = MagicMock()
     client.chat = inner.chat
+    client.embeddings = inner.embeddings
     _client_states[client] = _ClientState(
         token_bucket=AsyncTokenBucket(60),
         retry_attempts=0,

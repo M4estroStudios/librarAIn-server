@@ -95,6 +95,12 @@ class PolyindexIndexSubjectEntry(BaseModel):
         if alias_label not in self.aliases:
             self.aliases.append(alias_label)
 
+    def prune_empty_books(self) -> int:
+        empty_shas = [sha for sha, book in self.books.items() if not book.aligned_pages]
+        for sha in empty_shas:
+            del self.books[sha]
+        return len(empty_shas)
+
     def merge_book_pages(
         self,
         source_sha256: str,
@@ -104,6 +110,8 @@ class PolyindexIndexSubjectEntry(BaseModel):
         book_title: str | None = None,
         book_slug: str | None = None,
     ) -> None:
+        if not aligned_pages and not original_pages:
+            return
         existing = self.books.get(source_sha256)
         if existing is None:
             existing = PolyindexIndexBookEntry()
@@ -156,6 +164,7 @@ class PolyindexIndexDocument(BaseModel):
         sorted_subjects: dict[str, PolyindexIndexSubjectEntry] = {}
         for canonical_id, entry in sorted(self.subjects.items(), key=sort_key):
             sorted_entry = entry.model_copy(deep=True)
+            sorted_entry.prune_empty_books()
             sorted_entry.aliases = sorted(
                 sorted_entry.aliases,
                 key=lambda alias: _normalize_label_for_sort(alias),

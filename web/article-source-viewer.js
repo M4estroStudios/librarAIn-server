@@ -27,9 +27,18 @@ function pagePreviewUrl(sourceSha256, alignedPage) {
 
 async function loadViewerPages(sha) {
   if (viewerPagesCache.has(sha)) return viewerPagesCache.get(sha);
-  const res = await fetch(
-    "/api/research/books/meta?source_sha256=" + encodeURIComponent(sha)
-  );
+  const url = "/api/research/books/meta?source_sha256=" + encodeURIComponent(sha);
+  let res;
+  try {
+    res = await fetch(url);
+  } catch (err) {
+    if (window.LibrarAInLog) window.LibrarAInLog.reportError("book meta fetch failed", err);
+    return [];
+  }
+  if (!res.ok) {
+    if (window.LibrarAInLog) window.LibrarAInLog.logHttpFailure("GET", url, res.status);
+    return [];
+  }
   const data = await res.json();
   const pages = data.ok && Array.isArray(data.viewer_pages) ? data.viewer_pages : [];
   viewerPagesCache.set(sha, pages);

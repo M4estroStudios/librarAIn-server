@@ -57,7 +57,7 @@ def list_poh_overlaps(
     book_poh_ids = [
         poh_id
         for poh_id, entry in subjects.items()
-        if book_sha_norm in entry.books
+        if book_sha_norm in entry.books and entry.books[book_sha_norm].aligned_pages
     ]
     overlaps: list[dict[str, Any]] = []
     for poh_id in book_poh_ids:

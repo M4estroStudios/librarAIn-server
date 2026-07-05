@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import asyncio
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Callable, TypeVar
 from weakref import WeakKeyDictionary
 
 import openai
@@ -33,12 +34,17 @@ _PERMANENT_ERRORS: tuple[type[Exception], ...] = (
 )
 
 _cached_clients: dict[tuple[str | None, str | None], openai.OpenAI] = {}
+_USE_CLIENT_TIMEOUT = object()
+_RESEARCH_CHAT_STAGE_PREFIX = "research_"
+_F = TypeVar("_F", bound=Callable[..., Any])
 
 
 @dataclass
 class _ClientState:
     token_bucket: AsyncTokenBucket
     retry_attempts: int
+    research_timeout_seconds: float = 3600.0
+    thread_pool: ThreadPoolExecutor | None = None
 
 
 _client_states: WeakKeyDictionary[openai.OpenAI, _ClientState] = WeakKeyDictionary()
@@ -74,6 +80,8 @@ def build_openai_client(settings: Settings) -> openai.OpenAI:
         _client_states[client] = _ClientState(
             token_bucket=get_token_bucket(id(client), settings.rate_limit_per_minute),
             retry_attempts=settings.retry_attempts,
+            research_timeout_seconds=float(settings.research_timeout_seconds),
+            thread_pool=ThreadPoolExecutor(max_workers=settings.max_parallel_request),
         )
     return _cached_clients[key]
 
@@ -87,6 +95,40 @@ def _resolve_client_state(
     return max_attempts, token_bucket
 
 
+async def run_in_client_thread_pool(
+    client: openai.OpenAI,
+    func: _F,
+    /,
+    *args: Any,
+    **kwargs: Any,
+) -> Any:
+    state = _client_states.get(client)
+    if state is not None and state.thread_pool is not None:
+        loop = asyncio.get_running_loop()
+        return await loop.run_in_executor(
+            state.thread_pool,
+            lambda: func(*args, **kwargs),
+        )
+    return await asyncio.to_thread(func, *args, **kwargs)
+
+
+def _resolve_chat_timeout(
+    stage: str, timeout: object, client: openai.OpenAI
+) -> object:
+    if timeout is not _USE_CLIENT_TIMEOUT:
+        return timeout
+    if stage.startswith(_RESEARCH_CHAT_STAGE_PREFIX):
+        state = _client_states.get(client)
+        if state is not None:
+            return state.research_timeout_seconds
+        return 3600.0
+    return _USE_CLIENT_TIMEOUT
+
+
+def _omit_max_tokens_for_stage(stage: str) -> bool:
+    return stage.startswith(_RESEARCH_CHAT_STAGE_PREFIX)
+
+
 def _chat_completion_create(
     client: openai.OpenAI,
     *,
@@ -95,15 +137,21 @@ def _chat_completion_create(
     temperature: float,
     max_tokens: int,
     extra_body: dict[str, Any] | None,
+    stage: str = "",
+    timeout: object = _USE_CLIENT_TIMEOUT,
 ) -> str:
     create_kwargs: dict[str, Any] = {
         "model": model,
         "messages": messages,
         "temperature": temperature,
-        "max_tokens": max_tokens,
     }
+    if not _omit_max_tokens_for_stage(stage):
+        create_kwargs["max_tokens"] = max_tokens
     if extra_body is not None:
         create_kwargs["extra_body"] = extra_body
+    resolved_timeout = _resolve_chat_timeout(stage, timeout, client)
+    if resolved_timeout is not _USE_CLIENT_TIMEOUT:
+        create_kwargs["timeout"] = resolved_timeout
     try:
         response = client.chat.completions.create(**create_kwargs)
     except openai.OpenAIError as exc:
@@ -242,7 +290,8 @@ async def chat_completion_with_retry(
                 "chat_completion API thread invoke begin",
                 {"attempt": attempt, "stage": stage, "page": page},
             )
-            content = await asyncio.to_thread(
+            content = await run_in_client_thread_pool(
+                client,
                 _chat_completion_create,
                 client,
                 model=model,
@@ -250,6 +299,7 @@ async def chat_completion_with_retry(
                 temperature=temperature,
                 max_tokens=max_tokens,
                 extra_body=extra_body,
+                stage=stage,
             )
             Log(
                 INFO_LOG_LEVEL,

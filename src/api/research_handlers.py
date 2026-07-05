@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from src.search.poh_overlap import list_poh_overlaps
-from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, bind_log_context, reset_log_context
+from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, bind_log_context, reset_log_context
 from src.models.settings import Settings
 from src.persistence.research_runs import (
     create_research_run_accepted,
@@ -189,8 +189,9 @@ class ResearchBatchRegistry:
         if current_phase:
             phase_labels = {
                 "research": "Pipeline research",
-                "research_article": "Generazione articolo",
-                "research_prefilter": "Prefiltro contesto",
+                "research_article": "Generazione bozza",
+                "research_collect": "Raccolta fonti",
+                "research_filter": "Sfoltimento fonti",
             }
             phase_label = phase_labels.get(str(current_phase), str(current_phase))
             detail = (detail + " · " if detail else "") + phase_label
@@ -317,7 +318,7 @@ def _start_research_worker(
                 request_id,
                 {
                     "phase": "research",
-                    "status": "progress",
+                    "status": "info",
                     "query": request.query,
                     "poh_id": request.poh.id if request.poh else None,
                     "poh_label": request.poh.label if request.poh else None,
@@ -335,6 +336,7 @@ def _start_research_worker(
                 settings=settings,
                 request_id=request_id,
                 reporter=reporter,
+                set_global_total=lambda total: registry.set_global_total(request_id, total),
             )
             markdown_path = persist_query_markdown(data_root, request_id, result.markdown)
             result.markdown_path = str(markdown_path)
@@ -596,6 +598,7 @@ def build_research_routes(
                 send_json(handler, 400, {"ok": False, "error": "query must be at least 2 characters"})
                 return True
             results = search_poh_catalog(data_root, q)
+            Log(INFO_LOG_LEVEL, "research catalog search", {"query": q, "count": len(results)})
             send_json(handler, 200, {"ok": True, "query": q, "results": results, "count": len(results)})
             return True
 
@@ -658,6 +661,11 @@ def build_research_routes(
                 dedup_key = compute_dedup_key(request, index_path=index_path)
                 existing = dedup_index.lookup(dedup_key)
                 if existing is not None:
+                    Log(
+                        INFO_LOG_LEVEL,
+                        "research submit deduplicated",
+                        {"existing_request_id": existing, "dedup_key": dedup_key},
+                    )
                     send_json(
                         handler,
                         202,
@@ -674,6 +682,7 @@ def build_research_routes(
                     return True
 
             if not concurrency_limiter.try_acquire():
+                Log(WARNING_LOG_LEVEL, "research submit queue full", {"query": request.query})
                 send_json(handler, 429, {"error": "research queue full"})
                 return True
 
@@ -697,6 +706,16 @@ def build_research_routes(
                 payload=payload,
                 dedup_key=dedup_key,
                 concurrency_limiter=concurrency_limiter,
+            )
+            Log(
+                INFO_LOG_LEVEL,
+                "research submit accepted",
+                {
+                    "request_id": request_id,
+                    "query": request.query,
+                    "poh_id": request.poh.id if request.poh else None,
+                    "dedup": bool(dedup_key),
+                },
             )
             send_json(handler, 202, {
                 "request_id": request_id,
@@ -834,7 +853,7 @@ def build_research_routes(
                             request_id,
                             {
                                 "phase": "research",
-                                "status": "progress",
+                                "status": "info",
                                 "query": poh_label,
                                 "poh_id": poh_id,
                                 "poh_label": poh_label,

@@ -63,6 +63,34 @@ def unpack_embedding_vector(blob: bytes) -> list[float]:
     return list(struct.unpack(f"{count}f", blob))
 
 
+def list_subject_embeddings(
+    sqlite_path: str, model: str
+) -> list[tuple[str, str, list[float]]]:
+    init_subject_matcher_schema(sqlite_path)
+    try:
+        with _sqlite_connection(sqlite_path) as conn:
+            rows = conn.execute(
+                """
+                SELECT canonical_id, label, embedding, model
+                FROM subject_embeddings
+                WHERE model = ?
+                ORDER BY canonical_id
+                """,
+                (model,),
+            ).fetchall()
+    except sqlite3.Error as exc:
+        raise RuntimeError("unable to list subject embeddings") from exc
+    result: list[tuple[str, str, list[float]]] = []
+    for row in rows:
+        canonical_id = str(row[0])
+        label = str(row[1])
+        stored_model = str(row[3])
+        if stored_model != model:
+            continue
+        result.append((canonical_id, label, unpack_embedding_vector(bytes(row[2]))))
+    return result
+
+
 def get_subject_embedding(
     sqlite_path: str, canonical_id: str, model: str
 ) -> list[float] | None:

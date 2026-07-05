@@ -117,6 +117,16 @@ def handle_chat_completions(
     if tools is None:
         tools = CHAT_TOOL_DEFINITIONS
     tool_choice = payload.get("tool_choice", "auto")
+    Log(
+        INFO_LOG_LEVEL,
+        "chat completions request",
+        {
+            "model": model,
+            "stream": stream,
+            "message_count": len(messages),
+            "has_tools": bool(tools),
+        },
+    )
 
     try:
         ensure_lmstudio_model_loaded(settings, model)

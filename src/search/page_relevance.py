@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Callable
 
+from src.core.parallel import parallel_map
 from src.ingestion.polyindex.index_md_parser import normalize_label
 from src.models.polyindex_index import PolyindexIndexDocument
 from src.search.pages_loader import LoadedPage
@@ -66,8 +68,26 @@ def filter_relevant_pages(
     query: str,
     poh: ResearchPoh | None,
     document: PolyindexIndexDocument,
+    on_page_checked: Callable[[], None] | None = None,
 ) -> list[LoadedPage]:
     terms = collect_subject_terms(query, poh, document)
     if not terms:
+        if on_page_checked is not None:
+            for _ in pages:
+                on_page_checked()
         return list(pages)
-    return [page for page in pages if page_mentions_subject(page.markdown, terms)]
+
+    def _keep_if_relevant(page: LoadedPage) -> LoadedPage | None:
+        if page_mentions_subject(page.markdown, terms):
+            return page
+        return None
+
+    kept = [
+        page
+        for page in parallel_map(_keep_if_relevant, pages)
+        if page is not None
+    ]
+    if on_page_checked is not None:
+        for _ in pages:
+            on_page_checked()
+    return kept

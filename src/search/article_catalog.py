@@ -144,14 +144,16 @@ def list_missing_articles(
         meta = articles.get(poh_id)
         if _article_is_complete(data_root, poh_id, meta):
             continue
-        if book_sha_norm and book_sha_norm not in entry.books:
+        if book_sha_norm and (
+            book_sha_norm not in entry.books or not entry.books[book_sha_norm].aligned_pages
+        ):
             continue
         missing.append(
             {
                 "poh_id": poh_id,
                 "label": entry.canonical_label,
                 "aliases": list(entry.aliases),
-                "book_count": len(entry.books),
+                "book_count": sum(1 for book in entry.books.values() if book.aligned_pages),
             }
         )
     missing.sort(key=lambda item: str(item["label"]).casefold())
@@ -214,7 +216,7 @@ def search_poh_catalog(data_root: Path, query: str, *, limit: int = 20) -> list[
                     "has_article": has_article,
                     "url": _article_url(poh_id) if has_article else None,
                     "aliases": list(entry.aliases),
-                    "book_count": len(entry.books),
+                    "book_count": sum(1 for book in entry.books.values() if book.aligned_pages),
                 },
             )
         )

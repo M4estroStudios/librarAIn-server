@@ -144,56 +144,46 @@ class TestJobRegistryEviction(unittest.TestCase):
         self.assertIn("subj_hannibal", jobs[0]["subtitle"] or "")
         self.assertEqual(jobs[0]["poh_label"], "Annibale")
 
-    def test_list_active_jobs_prefilter_steps(self) -> None:
+    def test_list_active_jobs_research_phases(self) -> None:
         registry = JobRegistry()
         job_id = registry.create_job(job_kind="research")
         registry.emit(
             job_id,
             {
-                "phase": "research_prefilter",
+                "phase": "research_collect",
                 "status": "started",
-                "page_total": 6,
-            },
-        )
-        registry.emit(
-            job_id,
-            {
-                "phase": "research_prefilter",
-                "status": "progress",
-                "prefilter_step": "subject_match",
+                "page_total": 15,
                 "subject_pages": 12,
-                "subject_books": 2,
-                "matches": [
-                    {
-                        "canonical_id": "annibale",
-                        "canonical_label": "Annibale",
-                        "method": "poh_id",
-                    }
-                ],
+                "time_pages": 3,
             },
         )
+        for _ in range(5):
+            registry.emit(
+                job_id,
+                {
+                    "phase": "research_collect",
+                    "status": "progress",
+                    "counts_as_step": True,
+                    "page_total": 15,
+                },
+            )
         registry.emit(
             job_id,
             {
-                "phase": "research_prefilter",
-                "status": "progress",
-                "prefilter_step": "toc_expansion",
-                "pages_before": 12,
-                "pages_after": 28,
-                "pages_added": 16,
-                "expanded_chapters": 3,
+                "phase": "research_collect",
+                "status": "completed",
+                "page_total": 15,
+                "subject_pages": 12,
+                "time_pages": 3,
+                "loaded_pages": 5,
             },
         )
         jobs = registry.list_active_jobs()
         self.assertEqual(len(jobs), 1)
-        steps = jobs[0]["prefilter_steps"]
-        self.assertEqual(len(steps), 6)
-        self.assertEqual(steps[0]["step"], "subject_match")
-        self.assertEqual(steps[0]["subject_pages"], 12)
-        self.assertEqual(steps[1]["pages_added"], 16)
-        pf_phase = next(p for p in jobs[0]["phases"] if p["phase"] == "research_prefilter")
-        self.assertEqual(pf_phase["steps"][2]["step"], "time_index")
-        self.assertEqual(pf_phase["steps"][2]["status"], "active")
+        collect_phase = next(p for p in jobs[0]["phases"] if p["phase"] == "research_collect")
+        self.assertEqual(collect_phase["total"], 15)
+        self.assertEqual(collect_phase["done"], 15)
+        self.assertEqual(collect_phase["status"], "done")
 
     def test_finished_jobs_capped(self) -> None:
         registry = JobRegistry(ttl_seconds=3600.0, max_finished_jobs=2)

@@ -55,7 +55,7 @@ from src.persistence.book_page_repair import (
     run_book_page_repair,
 )
 from src.core.config import ConfigurationError, load_settings
-from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
+from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
 from src.models.request import IngestInputErrorCode, IngestInputValidationError, IngestInputValidationException
@@ -95,19 +95,44 @@ def _request_content_length(handler: BaseHTTPRequestHandler) -> int:
     return int(length_header)
 
 
-def _send_json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> None:
+def _is_api_path(path: str) -> bool:
+    return path.startswith("/api/")
+
+
+_WEB_PAGE_ALIASES = frozenset({
+    "/",
+    "/index.html",
+    "/index2.html",
+    "/dashboard",
+    "/dashboard.html",
+    "/admin",
+    "/admin.html",
+    "/ricerca",
+    "/ricerca.html",
+})
+
+
+def _is_web_page_visit(path: str) -> bool:
+    if path in _WEB_PAGE_ALIASES:
+        return True
+    return path.endswith(".html")
+
+
+def _http_inbound_log_level(path: str, status: int, method: str) -> int:
+    if status >= 500:
+        return ERROR_LOG_LEVEL
     if status >= 400:
-        path = urllib.parse.urlparse(handler.path).path
-        detail: str | None = None
-        if isinstance(payload, dict):
-            raw = payload.get("error") or payload.get("message")
-            if raw is not None:
-                detail = str(raw)
-        Log(
-            ERROR_LOG_LEVEL if status >= 500 else WARNING_LOG_LEVEL,
-            "http json response",
-            {"path": path, "status": status, "error": detail or str(payload)[:200]},
-        )
+        return WARNING_LOG_LEVEL
+    if _is_web_page_visit(path):
+        return INFO_LOG_LEVEL
+    if _is_api_path(path):
+        if method.upper() == "GET":
+            return DEBUG_LOG_LEVEL
+        return INFO_LOG_LEVEL
+    return DEBUG_LOG_LEVEL
+
+
+def _send_json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> None:
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     handler.send_response(status)
     handler.send_header("Content-Type", "application/json; charset=utf-8")
@@ -274,25 +299,14 @@ def build_ingest_server(
             path = urllib.parse.urlparse(self.path).path
             if path.endswith("/events"):
                 return
-            if status < 400:
-                return
+            message = "http page visit" if _is_web_page_visit(path) else "http"
             Log(
-                ERROR_LOG_LEVEL if status >= 500 else WARNING_LOG_LEVEL,
-                "http request failed",
-                {
-                    "path": path,
-                    "status": status,
-                    "request": str(args[0])[:200],
-                },
+                _http_inbound_log_level(path, status, self.command),
+                message,
+                {"method": self.command, "path": path, "status": status},
             )
 
         def send_error(self, code: int, message: str | None = None, explain: str | None = None) -> None:
-            path = urllib.parse.urlparse(self.path).path
-            Log(
-                ERROR_LOG_LEVEL if code >= 500 else WARNING_LOG_LEVEL,
-                "http error response",
-                {"path": path, "status": code, "message": message or explain or ""},
-            )
             super().send_error(code, message, explain)
 
         def _is_authorized(self, query: dict[str, list[str]] | None = None) -> bool:
