@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Augusto — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Augusto</h1>
+<p>Augusto (Gaio Giulio Cesare <a href="poh:ottavio">Ottaviano</a>) fu il primo imperatore romano e la figura che pose fine alle guerre civili della tarda Repubblica, consolidando un nuovo assetto politico attraverso una precisa strategia di propaganda religiosa e un vasto programma edilizio<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:108">affermazione del ruolo politico familiare, pp. 108</a>. Le testimonianze disponibili evidenziano come la sua azione abbia profondamente segnato l&#x27;urbanistica e il simbolismo della capitale, lasciando un&#x27;eredità che influenzò Roma fino alle trasformazioni moderne<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:30">eredità urbanistica e simbolica, pp. 30</a>.</p>
+<h2>Propaganda politica e religiosa</h2>
+<p>Per consolidare il proprio potere, Ottaviano sviluppò una propaganda mirata a contrapporsi al rivale Marco Antonio. Mentre quest&#x27;ultimo si associava a Dioniso-Bacco, evocando un&#x27;immagine di caos e influenze orientali, Augusto propose <a href="poh:apollo">Apollo</a> come divinità dell&#x27;ordine e dell&#x27;armonia<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:269">contrapposizione divina tra i triumviri, pp. 269</a>. Dopo la battaglia di Nauloco (36 a.C.), l&#x27;erede di Cesare dedicò un tempio ad <a href="poh:apollo">Apollo</a> sul Palatino, acquisendo numerose case per realizzarlo<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:269">dedica del tempio palatino, pp. 269</a>. L&#x27;edificio, interamente in marmo lunense, era circondato da un portico delle Danaidi e ospitava due biblioteche; nella base della statua del dio erano custoditi i Libri Sibillini<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:269">caratteristiche architettoniche e sacrali, pp. 269</a>. La scelta del luogo non fu casuale, poiché in quell&#x27;area i Romani collocavano la mitica <a href="poh:roma">Roma</a> &quot;quadrata&quot; di <a href="poh:romolo">Romolo</a>, creando un&#x27;unione inscindibile tra passato, presente e futuro sotto il nuovo signore della città<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:269">significato sacro dell&#x27;ubicazione, pp. 269</a>.</p>
+<h2>Il Foro di Augusto e l&#x27;affermazione dinastica</h2>
+<p>Per affermare apertamente il ruolo politico suo e della sua famiglia alla guida della società romana, Augusto fece erigere il proprio foro<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:108">funzione politica del complesso, pp. 108</a>. L&#x27;impianto, lungo 125 metri e largo 118, era separato dalla popolare Suburra da un possente muro in blocchi di peperino e travertino, volto a proteggere il sito dagli incendi e a isolare idealmente uno spazio nobile<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:108">dimensioni e protezione muraria, pp. 108</a>. Al centro sorgeva il tempio di <a href="poh:marte-ultore">Marte Ultore</a>, dedicato al dio vendicatore della morte di <a href="poh:cesare">Giulio Cesare</a><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:108">dedica a Marte Vendicatore, pp. 108</a>. All&#x27;interno della cella erano collocati i simulacri di Marte barbato e armato, Venere con Eros e <a href="poh:cesare">Giulio Cesare</a>: la presenza di Venere sottolineava il legame della gens Giulia con Enea e i mitici fondatori Romolo e Remo, mentre Marte celebrava la vendetta dei congiurati<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:108">statue e simbolismo genealogico, pp. 108</a>. Gli ingressi antichi conducevano sotto due archi onorari dedicati a <a href="poh:druso-minore">Druso Minore</a> e Germanico, figli di figure chiave della dinastia<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:108">archi onorari familiari, pp. 108</a>.</p>
+<h2>Mausoleo, memoria storica e trasformazioni urbane</h2>
+<p>Il mausoleo di Augusto divenne un punto di riferimento simbolico per i secoli successivi. Un obelisco, originariamente posto davanti al suo ingresso insieme a un gemello (oggi sul Quirinale), rafforzava la tematica imperiale-solare del primo dei Giulio-Claudi<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:100">obelisco e simbologia solare, pp. 100</a>. La struttura fu citata anche in contesti storiografici successivi, come nell&#x27;episodio narrato su Nerone, il quale udì una voce dal mausoleo che lo chiamava, interpretata come annuncio della sua fine<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:63">profezia riferita a Nerone, pp. 63</a>. Nel Medioevo, Roma stessa continuò a essere ricordata come la &quot;città di Augusto&quot;, simbolo secolare della forza politica e militare dell&#x27;impero<a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:54">memoria medievale dell&#x27;Urbe, pp. 54</a>. Con l&#x27;Unità d&#x27;Italia e il periodo fascista, la memoria augustea subì drastici interventi urbanistici: la creazione di Piazza Augusto Imperatore comportò lo spazzamento via di un intero quartiere per isolare il mausoleo<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:30">distruzione del quartiere circostante, pp. 30</a>. I resti del Foro di Augusto furono in parte inglobati o demoliti per le nuove arterie, mentre alcuni ambienti romani e frammenti architettonici vennero recuperati e esposti nell&#x27;antiquarium allestito nelle antiche taberne<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:107">recupero e antiquarium moderno, pp. 107</a>.</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>476 d.C.</td><td>Depoimento di Romolo Augustolo e fine formale dell&#x27;Impero romano d&#x27;Occidente, dopo il quale Roma mantiene intatta la sua struttura urbana.</td><td><a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:54">Fine dell&#x27;impero occidentale</a></td></tr>
+<tr><td>1946</td><td>Realizzazione della moderna chiesa di San Giovanni nei Fori Imperiali per conservare le opere salvate dalle demolizioni fasciste.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:107">Chiesa di S. Giovanni</a></td></tr>
+<tr><td>36 a.C.</td><td>Battaglia di Nauloco e successiva dedica del tempio ad Apollo sul Palatino da parte di Ottaviano, simbolo dell&#x27;ordine augusteo.</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:269">Battaglia di Nauloco e tempio di Apollo</a></td></tr>
+<tr><td>37 a.C.</td><td>Incontro di Taranto tra Antonio e Ottaviano per prolungare il triumvirato e riorganizzare le province imperiali.</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:269">Incontro di Taranto</a></td></tr>
+<tr><td>43 a.C.</td><td>Assedio di Modena da parte di Marco Antonio contro Decimo Bruto, preludio alle guerre civili successive al cesaricidio.</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:264">Guerra di Modena</a></td></tr>
+<tr><td>Anni Trenta (XX sec.)</td><td>Demolizione della chiesa e del monastero basiliano nell&#x27;area dei Fori Imperiali per la sistemazione archeologica dell&#x27;area.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:107">Sistemazione dei Fori</a></td></tr>
+<tr><td>V secolo</td><td>Assedio di Roma da parte degli Ostrogoti guidati da Alarico, che minaccia la città simbolo dell&#x27;impero.</td><td><a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:54">Assedio di Alarico</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:30">I rioni di Roma, p. 30</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:63">I rioni di Roma, p. 63</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:100">I rioni di Roma, p. 100</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:107">I rioni di Roma, p. 107</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:108">I rioni di Roma, p. 108</a></li><li><a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:54">Storia di Roma nel Medioevo, p. 54</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:264">Storia di Roma Antica, p. 264</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:269">Storia di Roma Antica, p. 269</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

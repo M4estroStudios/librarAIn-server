@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+No al tempio furono costruiti i portici destinati ad offrire ricovero a quei malati che si sottoponevano alla pratica dell’*incubatio*.
+
+Essa consisteva nel passare la notte dormendo sotto i portici dopo alcuni giorni di purificazione e di digiuno e, quindi, al risveglio, nel raccontare ai sacerdoti i sogni avuti. L’interpretazione di questi sogni permetteva ai sacerdoti di operare una diagnosi del male, spesso di giungere ad una terapia consigliata e talvolta ad una premonizione dell’esito della malattia stessa.
+
+Certamente Sigmund Freud avrebbe visitato con molto interesse questo santuario! Sull’isola i romani, poi, costruirono altri templi minori: uno dedicato a Faunus, che proteggeva le partorienti, e un altro a Veiove che garantiva i giuramenti. Esistevano poi piccoli sacelli dedicati a Semo Sancus, Iuppiter Iurarius e infine a Bellona insulensis e, ovviamente, al dio Tevere.
+
+I Romani chiamavano l’isola *insula intra duos pontes* e, sia sotto la suggestione delle antiche leggende, sia per la sua forma naturalmente allungata, ornarono le due estremità dell’isola con una riproduzione marmorea della prua e della poppa di una nave, immaginando così l’isola stessa come una vera e propria nave di pietra.
+
+Ma se la forma di nave fa immaginare l’isola come proiettata nella corrente del fiume, in realtà l’isola stessa segnò, fin dal XIV secolo a.C., il luogo di un facile guado del fiume da una sponda all’altra, lungo quella via commerciale, già esistente nella preistoria, che collegava a pochi chilometri dal mare l'Etruria meridionale con i popoli latini e, oltre, con la Campania. Fu proprio l’esistenza di questa via commerciale, sfruttata poi dai Greci di Campania e dagli Etruschi, a fare sì che l’isola costituisse quel facile punto di passaggio del Tevere accanto al quale non poteva non sorgere quel centro abitato da chi, originario del luogo, aveva interesse a controllare i passaggi del fiume, unendo alla tradizionale attività agricolo-pastorizia quella commerciale.
+
+E non a caso proprio di fronte all’isola, sulla sponda sinistra, sarebbe sorto il primo e più antico porto di Roma dove, secondo il mito, sarebbe sbarcato Enea.
+
+Questo porto restò sempre in funzione, anche se la sua attività non può essere paragonata a quella del porto maggiore del Testaccio; con il trasferimento della capitale dell’impero a Costantinopoli e soprattutto durante il V secolo d.C., la zona del porto Tiberino fu contraddistinta dalla presenza dei Greci di Bisanzio. È da supporre che la fine del paganesimo, le invasioni barbariche, la guerra gotica e la diminuita manutenzione di quanto costruito portarono gli edifici antichi dell’isola ad un’inevitabile decadenza, tanto che verso l’anno Mille l'imperatore Ottone III, presente a Roma per affermare l’autorità del Sacro Romano Impero ormai germanico nei confronti della supremazia pontificia, edificò sul luogo del tempio di Esculapio una chiesa.
+
+Questa chiesa Ottone III la dedicò ad un suo amico martirizzato a Danzica, S. Adalberto, le cui reliquie giunsero a Roma dalla cattedrale di Griesen. A queste reliquie furono aggiunte quelle dei martiri Paolo, Esuberanzio, Marcello e Sabino e infine, portate dall’isola di Lipari e dopo una sosta a Benevento, quelle di S.

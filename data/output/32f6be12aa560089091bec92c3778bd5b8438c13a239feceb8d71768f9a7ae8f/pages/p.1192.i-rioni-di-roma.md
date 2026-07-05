@@ -1,0 +1,6 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+La facciata di S. Balbina in un'incisione settecentesca.
+
+Ebbe durante il pontificato di Sisto V (1585-1590) fatti apportare dal cardinal Pompeo Arrigoni e, poco dopo, alla fine del Seicento, Anastasio Fontebuoni dipinse l'abside su incarico di papa Clemente VIII. Intorno alla fine del Seicento, la chiesa venne affidata alla congregazione dei Pii Operai, che la ressero per quasi cento anni, fino al 1798 quando la chiesa fu messa all'asta. Al Pontificio Istituto agrario per fanciulli abbandonati vennero ceduti alcuni orti annessi alla chiesa, insieme al convento, mentre la stessa chiesa restò al capitolo vaticano. Il convento passò poi a sede di un istituto di correzione di minorenni e quindi divenne, dedicato a S. Margherita, luogo dove venivano accolte le donne peccatrici che si erano pentite. Adesso, retto dalle suore del Terz'Ordine di S. Francesco dei SS. Cuori, è divenuto un ospizio per persone anziane. Un ultimo restauro la chiesa lo ebbe intorno al 1930, diretto da Antonio Muñoz, e si trattò di un restauro in cui furono ripristinate le architetture antiche eliminando ogni successiva vicissitudine.
+
+La facciata, sopraelevata su una modesta gradinata, è in laterizio e presenta nella parte inferiore un portico coperto da un tetto, e

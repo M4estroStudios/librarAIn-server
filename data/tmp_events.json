@@ -1,0 +1,678 @@
+event: waiting
+data: {"phase": "queue", "status": "waiting", "ts": "2026-07-04T23:28:51.380367+00:00", "seq": 0}
+
+event: started
+data: {"phase": "research", "status": "started", "ts": "2026-07-04T23:28:51.380367+00:00", "seq": 1}
+
+event: info
+data: {"phase": "research", "status": "info", "query": "augusto", "poh_id": "augusto", "poh_label": "augusto", "message": "Generazione articolo per augusto", "ts": "2026-07-04T23:28:51.380367+00:00", "seq": 2}
+
+event: started
+data: {"phase": "research_collect", "status": "started", "page_total": 24, "subject_pages": 24, "time_pages": 0, "ts": "2026-07-04T23:28:56.803827+00:00", "seq": 3}
+
+event: plan
+data: {"phase": "research", "status": "plan", "phase_totals": {"research_collect": 24, "research_filter": 59, "research_article": 1, "research_poh_links": 12, "research_timeline": 1, "research_verify": 2}, "counts_as_step": false, "ts": "2026-07-04T23:28:56.803827+00:00", "seq": 4}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 5, "global_step": 1, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 6, "global_step": 2, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 7, "global_step": 3, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 8, "global_step": 4, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 9, "global_step": 5, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 10, "global_step": 6, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 11, "global_step": 7, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 12, "global_step": 8, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 13, "global_step": 9, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 14, "global_step": 10, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 15, "global_step": 11, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 16, "global_step": 12, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 17, "global_step": 13, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 18, "global_step": 14, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 19, "global_step": 15, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 20, "global_step": 16, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 21, "global_step": 17, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 22, "global_step": 18, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 23, "global_step": 19, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 24, "global_step": 20, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 25, "global_step": 21, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 26, "global_step": 22, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 27, "global_step": 23, "global_total": null}
+
+event: progress
+data: {"phase": "research_collect", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 28, "global_step": 24, "global_total": null}
+
+event: completed
+data: {"phase": "research_collect", "status": "completed", "page_total": 24, "subject_pages": 24, "time_pages": 0, "loaded_pages": 24, "merged_pages": 59, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 29}
+
+event: started
+data: {"phase": "research_filter", "status": "started", "page_total": 24, "ts": "2026-07-04T23:28:56.824993+00:00", "seq": 30}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 31, "global_step": 25, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 32, "global_step": 26, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 33, "global_step": 27, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 34, "global_step": 28, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 35, "global_step": 29, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 36, "global_step": 30, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 37, "global_step": 31, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 38, "global_step": 32, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 39, "global_step": 33, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 40, "global_step": 34, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 41, "global_step": 35, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 42, "global_step": 36, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 43, "global_step": 37, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 44, "global_step": 38, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 45, "global_step": 39, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 46, "global_step": 40, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 47, "global_step": 41, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 48, "global_step": 42, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 49, "global_step": 43, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 50, "global_step": 44, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 51, "global_step": 45, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 52, "global_step": 46, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 53, "global_step": 47, "global_total": null}
+
+event: progress
+data: {"phase": "research_filter", "status": "progress", "counts_as_step": true, "page_total": 24, "ts": "2026-07-04T23:28:56.840993+00:00", "seq": 54, "global_step": 48, "global_total": null}
+
+event: completed
+data: {"phase": "research_filter", "status": "completed", "page_total": 24, "input_pages": 24, "kept_pages": 11, "dropped_pages": 13, "ts": "2026-07-04T23:28:56.841992+00:00", "seq": 55}
+
+event: plan
+data: {"phase": "research", "status": "plan", "phase_totals": {"research_collect": 24, "research_filter": 24, "research_article": 1, "research_poh_links": 2124, "research_timeline": 1, "research_verify": 2}, "counts_as_step": false, "ts": "2026-07-04T23:28:56.841992+00:00", "seq": 56}
+
+event: started
+data: {"phase": "research_article", "status": "started", "page_total": 1, "input_pages": 11, "context_books": 3, "ts": "2026-07-04T23:28:56.841992+00:00", "seq": 57}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "ts": "2026-07-04T23:28:56.841992+00:00", "seq": 58}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:29:11.861533+00:00", "seq": 59}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:29:26.870992+00:00", "seq": 60}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:29:41.877875+00:00", "seq": 61}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:29:56.887749+00:00", "seq": 62}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:30:11.894015+00:00", "seq": 63}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:30:26.906763+00:00", "seq": 64}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:30:41.912100+00:00", "seq": 65}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:30:56.925970+00:00", "seq": 66}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:31:11.932862+00:00", "seq": 67}
+
+event: waiting
+data: {"phase": "research_article", "status": "waiting", "message": "Generazione bozza con il modello…", "counts_as_step": false, "ts": "2026-07-04T23:31:26.943197+00:00", "seq": 68}
+
+event: plan
+data: {"phase": "research", "status": "plan", "phase_totals": {"research_collect": 24, "research_filter": 24, "research_article": 1, "research_poh_links": 155, "research_timeline": 1, "research_verify": 2}, "counts_as_step": false, "ts": "2026-07-04T23:31:41.305203+00:00", "seq": 69}
+
+event: completed
+data: {"phase": "research_article", "status": "completed", "counts_as_step": true, "page_total": 1, "skipped_llm": false, "input_pages": 11, "markdown_chars": 5381, "ts": "2026-07-04T23:31:41.305203+00:00", "seq": 70, "global_step": 49, "global_total": null}
+
+event: started
+data: {"phase": "research_poh_links", "status": "started", "page_total": 155, "chunk_count": 14, "ts": "2026-07-04T23:31:41.305203+00:00", "seq": 71}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:51.558426+00:00", "seq": 72, "global_step": 50, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 73, "global_step": 51, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 74, "global_step": 52, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 75, "global_step": 53, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 76, "global_step": 54, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 77, "global_step": 55, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 78, "global_step": 56, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 79, "global_step": 57, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 80, "global_step": 58, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 81, "global_step": 59, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:51.933740+00:00", "seq": 82, "global_step": 60, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:51.998351+00:00", "seq": 83, "global_step": 61, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 84, "global_step": 62, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 85, "global_step": 63, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 86, "global_step": 64, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 87, "global_step": 65, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 88, "global_step": 66, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 89, "global_step": 67, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 90, "global_step": 68, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 91, "global_step": 69, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 92, "global_step": 70, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.368397+00:00", "seq": 93, "global_step": 71, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:52.439137+00:00", "seq": 94, "global_step": 72, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 95, "global_step": 73, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 96, "global_step": 74, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 97, "global_step": 75, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 98, "global_step": 76, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 99, "global_step": 77, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 100, "global_step": 78, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 101, "global_step": 79, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 102, "global_step": 80, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 103, "global_step": 81, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:52.803200+00:00", "seq": 104, "global_step": 82, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:52.873759+00:00", "seq": 105, "global_step": 83, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 106, "global_step": 84, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 107, "global_step": 85, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 108, "global_step": 86, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 109, "global_step": 87, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 110, "global_step": 88, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 111, "global_step": 89, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 112, "global_step": 90, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 113, "global_step": 91, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 114, "global_step": 92, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.266409+00:00", "seq": 115, "global_step": 93, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:53.338746+00:00", "seq": 116, "global_step": 94, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 117, "global_step": 95, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 118, "global_step": 96, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 119, "global_step": 97, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 120, "global_step": 98, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 121, "global_step": 99, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 122, "global_step": 100, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 123, "global_step": 101, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 124, "global_step": 102, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 125, "global_step": 103, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:53.686027+00:00", "seq": 126, "global_step": 104, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:53.755486+00:00", "seq": 127, "global_step": 105, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 128, "global_step": 106, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 129, "global_step": 107, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 130, "global_step": 108, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 131, "global_step": 109, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 132, "global_step": 110, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 133, "global_step": 111, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 134, "global_step": 112, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 135, "global_step": 113, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 136, "global_step": 114, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.135275+00:00", "seq": 137, "global_step": 115, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:54.205318+00:00", "seq": 138, "global_step": 116, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 139, "global_step": 117, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 140, "global_step": 118, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 141, "global_step": 119, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 142, "global_step": 120, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 143, "global_step": 121, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 144, "global_step": 122, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 145, "global_step": 123, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 146, "global_step": 124, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 147, "global_step": 125, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:54.591980+00:00", "seq": 148, "global_step": 126, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:54.657619+00:00", "seq": 149, "global_step": 127, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 150, "global_step": 128, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 151, "global_step": 129, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 152, "global_step": 130, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 153, "global_step": 131, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 154, "global_step": 132, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 155, "global_step": 133, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 156, "global_step": 134, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 157, "global_step": 135, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 158, "global_step": 136, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.011549+00:00", "seq": 159, "global_step": 137, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:55.076592+00:00", "seq": 160, "global_step": 138, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 161, "global_step": 139, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 162, "global_step": 140, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 163, "global_step": 141, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 164, "global_step": 142, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 165, "global_step": 143, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 166, "global_step": 144, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 167, "global_step": 145, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 168, "global_step": 146, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 169, "global_step": 147, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.440493+00:00", "seq": 170, "global_step": 148, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:55.508878+00:00", "seq": 171, "global_step": 149, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 172, "global_step": 150, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 173, "global_step": 151, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 174, "global_step": 152, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 175, "global_step": 153, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 176, "global_step": 154, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 177, "global_step": 155, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 178, "global_step": 156, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 179, "global_step": 157, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 180, "global_step": 158, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:55.891213+00:00", "seq": 181, "global_step": 159, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:55.962564+00:00", "seq": 182, "global_step": 160, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 183, "global_step": 161, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 184, "global_step": 162, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 185, "global_step": 163, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 186, "global_step": 164, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 187, "global_step": 165, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 188, "global_step": 166, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 189, "global_step": 167, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 190, "global_step": 168, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 191, "global_step": 169, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.416473+00:00", "seq": 192, "global_step": 170, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:56.481091+00:00", "seq": 193, "global_step": 171, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 194, "global_step": 172, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 195, "global_step": 173, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 196, "global_step": 174, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 197, "global_step": 175, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 198, "global_step": 176, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 199, "global_step": 177, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 200, "global_step": 178, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 201, "global_step": 179, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 202, "global_step": 180, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:56.852701+00:00", "seq": 203, "global_step": 181, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:56.919195+00:00", "seq": 204, "global_step": 182, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 205, "global_step": 183, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 206, "global_step": 184, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 207, "global_step": 185, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 208, "global_step": 186, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 209, "global_step": 187, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 210, "global_step": 188, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 211, "global_step": 189, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 212, "global_step": 190, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 213, "global_step": 191, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.277124+00:00", "seq": 214, "global_step": 192, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_embedding", "ts": "2026-07-04T23:31:57.346085+00:00", "seq": 215, "global_step": 193, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 216, "global_step": 194, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 217, "global_step": 195, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 218, "global_step": 196, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 219, "global_step": 197, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 220, "global_step": 198, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 221, "global_step": 199, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 222, "global_step": 200, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 223, "global_step": 201, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 224, "global_step": 202, "global_total": null}
+
+event: progress
+data: {"phase": "research_poh_links", "status": "progress", "counts_as_step": true, "poh_step": "chunk_hit", "ts": "2026-07-04T23:31:57.715453+00:00", "seq": 225, "global_step": 203, "global_total": null}
+

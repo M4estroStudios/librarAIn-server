@@ -1,0 +1,4 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+elevato e più dignitoso, anche realizzando feste grandiose e improntate ad un certo fasto e continuando quelle antiche. Col passare degli anni piazza Navona fu sempre più frequentata dal popolo che in essa si riversava volentieri. Quando fu aperto il corso Vittorio, quindici anni dopo la presa di Roma, nuova linfa vitale fluì nella piazza.
+
+Anche in altre strade fin dal Quattrocento cominciavano a sorgere bei palazzi come quello del conte Girolamo Riario (poi Altemps), presso Tor Sanguigna, e dei Mellini all’Anima, per restare solo nell’ambito del nostro rione. Certamente, se i palazzi erano ben concepiti, decorosi e grandiosi, le vie erano ristrette, sia perché vi era un limitatissimo movimento, sia per evitare il sole d’estate, ma nello stesso tempo notevoli in proporzione erano gli spazi scoperti nell’interno degli edifici, sì che questi respi-

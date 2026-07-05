@@ -1,0 +1,24 @@
+{
+  "articles": {
+    "civita-castellana": {
+      "poh_id": "civita-castellana",
+      "title": "Materiale insufficiente",
+      "snippet": "Materiale insufficiente La biblioteca indicizzata non contiene pagine candidate sufficienti per rispondere alla query con fonti verificabili. Query: Civita Castellana",
+      "url": "/articolo/civita-castellana.html",
+      "request_id": "5b694d7d86494ca7846c78d90e8233c3",
+      "skipped_llm": true,
+      "no_material": true,
+      "generated_at": "2026-07-02T20:13:10.609075+00:00"
+    },
+    "augusto": {
+      "poh_id": "augusto",
+      "title": "Augusto",
+      "snippet": "Augusto Augusto (Gaio Giulio Cesare Ottaviano) fu il primo imperatore romano e la figura che pose fine alle guerre civili della tarda Repubblica, consolidando un nuovo assetto pol…",
+      "url": "/articolo/augusto.html",
+      "request_id": "af2985ecb2db4c1b9a6acd41e6395c63",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-05T00:32:25.263574+00:00"
+    }
+  }
+}
