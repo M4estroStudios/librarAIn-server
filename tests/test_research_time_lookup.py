@@ -1,7 +1,15 @@
 from __future__ import annotations
 
+import json
+import tempfile
 import unittest
+from pathlib import Path
 
+from src.search.poh_time_range import (
+    clear_poh_time_range_cache,
+    get_poh_time_range_index,
+    lookup_poh_time_range,
+)
 from src.search.request_schema import ResearchPoh
 from src.search.time_lookup import lookup_time
 
@@ -139,6 +147,80 @@ class TestTimeLookup(unittest.TestCase):
         )
         self.assertEqual(result.pages[SHA], [10, 50])
         self.assertEqual(result.pages[other_sha], [70])
+
+
+class TestPohTimeRangeLookup(unittest.TestCase):
+    def setUp(self) -> None:
+        clear_poh_time_range_cache()
+        self.tmp = tempfile.TemporaryDirectory()
+        self.polyindex_dir = Path(self.tmp.name) / "polyindex"
+        self.polyindex_dir.mkdir(parents=True)
+
+    def tearDown(self) -> None:
+        clear_poh_time_range_cache()
+        self.tmp.cleanup()
+
+    def _write_time_index(self, payload: dict) -> None:
+        path = self.polyindex_dir / "TIME_INDEX.json"
+        path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+    def test_lookup_by_subject_list(self) -> None:
+        self._write_time_index(
+            {
+                "schema_version": "1.0",
+                "years": {
+                    "63": {"subjects": ["augusto"]},
+                    "14": {"subjects": ["tiberio"]},
+                },
+            }
+        )
+        self.assertEqual(lookup_poh_time_range(self.polyindex_dir, "augusto", "Augusto"), "63")
+
+    def test_lookup_by_pages_map(self) -> None:
+        self._write_time_index(
+            {
+                "schema_version": "1.0",
+                "years": {
+                    "1271": {"pages": {"book-a": {"marco-polo": [10]}}},
+                },
+            }
+        )
+        self.assertEqual(
+            lookup_poh_time_range(self.polyindex_dir, "marco-polo", "Marco Polo"),
+            "1271",
+        )
+
+    def test_lookup_label_fallback(self) -> None:
+        self._write_time_index(
+            {
+                "schema_version": "1.0",
+                "years": {"1848": {"subjects": []}},
+            }
+        )
+        self.assertEqual(
+            lookup_poh_time_range(self.polyindex_dir, "unknown", "eventi nel 1848"),
+            "1848",
+        )
+
+    def test_index_is_cached_until_mtime_changes(self) -> None:
+        self._write_time_index(
+            {
+                "schema_version": "1.0",
+                "years": {"100": {"subjects": ["alpha"]}},
+            }
+        )
+        first = get_poh_time_range_index(self.polyindex_dir)
+        second = get_poh_time_range_index(self.polyindex_dir)
+        self.assertIs(first, second)
+        self._write_time_index(
+            {
+                "schema_version": "1.0",
+                "years": {"200": {"subjects": ["beta"]}},
+            }
+        )
+        third = get_poh_time_range_index(self.polyindex_dir)
+        self.assertIsNot(first, third)
+        self.assertEqual(third.lookup("beta", "Beta"), "200")
 
 
 if __name__ == "__main__":

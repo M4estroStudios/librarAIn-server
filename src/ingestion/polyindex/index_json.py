@@ -27,7 +27,7 @@ from src.models.polyindex_index import (
     PolyindexIndexDocument,
     PolyindexIndexSubjectEntry,
 )
-from src.search.poh_time_range import lookup_poh_time_range
+from src.search.poh_time_range import PohTimeRangeIndex, get_poh_time_range_index
 from src.models.request import UsefulPagesEnumeration
 from src.models.settings import Settings
 
@@ -213,11 +213,14 @@ def _resolve_subject_time_range(
     polyindex_dir: Path,
     canonical_id: str,
     entry: PolyindexIndexSubjectEntry,
+    *,
+    time_range_index: PohTimeRangeIndex | None = None,
 ) -> str | None:
     stored = (entry.time_range or "").strip()
     if stored:
         return stored
-    return lookup_poh_time_range(polyindex_dir, canonical_id, entry.canonical_label)
+    index = time_range_index or get_poh_time_range_index(polyindex_dir)
+    return index.lookup(canonical_id, entry.canonical_label)
 
 
 def list_multibook_subjects(
@@ -230,6 +233,7 @@ def list_multibook_subjects(
     if not document.subjects:
         return []
 
+    time_range_index = get_poh_time_range_index(polyindex_dir)
     result: list[dict[str, Any]] = []
     for canonical_id, entry in document.subjects.items():
         linked_books = {
@@ -255,7 +259,10 @@ def list_multibook_subjects(
                 "book_count": len(linked_books),
                 "books": book_summaries,
                 "time_range": _resolve_subject_time_range(
-                    polyindex_dir, canonical_id, entry
+                    polyindex_dir,
+                    canonical_id,
+                    entry,
+                    time_range_index=time_range_index,
                 ),
             }
         )
@@ -288,7 +295,10 @@ def get_polyindex_subject(polyindex_dir: Path, canonical_id: str) -> dict[str, A
         "book_count": len(books),
         "books": books,
         "time_range": _resolve_subject_time_range(
-            polyindex_dir, canonical_id, entry
+            polyindex_dir,
+            canonical_id,
+            entry,
+            time_range_index=get_poh_time_range_index(polyindex_dir),
         ),
     }
 
