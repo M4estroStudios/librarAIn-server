@@ -874,6 +874,36 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
 .poh-gen-matches li button:hover { background: #2d2d2d; }
 .poh-gen-matches li + li button { border-top: 1px solid #333; }
 .poh-gen-matches li button.selected { background: #2a3d38; color: #4ec9b0; }
+.poh-book-filter { position: relative; flex: 1 1 14rem; min-width: 12rem; max-width: 22rem; }
+.poh-book-filter-field { position: relative; }
+.poh-book-filter-field input[type="search"] { width: 100%; box-sizing: border-box; flex: none; min-width: 0; }
+.poh-book-dropdown {
+  position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 0.25rem);
+  max-height: 10rem; overflow: auto; background: #252526; border: 1px solid #454545;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.poh-book-dropdown.hidden { display: none; }
+.poh-book-dropdown button {
+  display: flex; align-items: center; gap: 0.45rem; width: 100%; padding: 0.45rem 0.65rem;
+  border: 0; border-bottom: 1px solid #333; background: transparent; color: #ddd;
+  text-align: left; cursor: pointer; font: inherit;
+}
+.poh-book-dropdown button:last-child { border-bottom: 0; }
+.poh-book-dropdown button:hover { background: #2d2d2d; }
+.poh-book-dropdown button.is-selected { background: #2a3d38; color: #4ec9b0; }
+.poh-book-dropdown button[disabled] { color: #888; cursor: default; }
+.poh-book-chips-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: -0.35rem 0 0.75rem; min-height: 0; }
+.poh-book-chips-row:empty { display: none; }
+.poh-book-chip {
+  display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.15rem 0.45rem;
+  border-radius: 999px; background: #2a3d38; color: #c8ece4; font-size: 0.78rem;
+}
+.poh-book-chip-remove {
+  border: 0; background: transparent; color: inherit; cursor: pointer; padding: 0; line-height: 1;
+  font-size: 0.95rem;
+}
+.poh-book-chip-remove:hover { color: #fff; }
+.admin-poh-toolbar { align-items: flex-start; }
 .poh-row-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .poh-row-actions button { font-size: 0.78rem; padding: 0.25rem 0.55rem; }
 .polyindex-dialog { width: min(95vw, 920px); }
@@ -1220,13 +1250,22 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   </div>
   <ul id="poh-gen-matches" class="poh-gen-matches hidden" aria-label="Risultati ricerca POH"></ul>
   <div id="progress-poh-gen"></div>
-  <div class="toolbar">
+  <div class="admin-poh-filters">
+  <div class="toolbar admin-poh-toolbar">
   <input type="search" id="search" placeholder="Filtra per etichetta o alias…">
+  <div class="poh-book-filter" id="poh-book-filter">
+    <div class="poh-book-filter-field">
+      <input type="search" id="poh-book-search" placeholder="Filtra per libro…" autocomplete="off" aria-controls="poh-book-dropdown" aria-expanded="false">
+      <div id="poh-book-dropdown" class="poh-book-dropdown hidden" role="listbox" aria-label="Libri"></div>
+    </div>
+  </div>
   <label class="hint">Min libri
     <input type="number" id="min-books" value="2" min="1">
   </label>
   <button id="reload">Ricarica</button>
   <span class="hint" id="count"></span>
+</div>
+<div id="poh-book-chips" class="poh-book-chips-row"></div>
 </div>
 
 <table>
@@ -1333,6 +1372,10 @@ const mergeBar = document.getElementById("merge-bar");
 const targetEl = document.getElementById("target");
 const selCountEl = document.getElementById("sel-count");
 const countEl = document.getElementById("count");
+const pohBookSearchEl = document.getElementById("poh-book-search");
+const pohBookDropdownEl = document.getElementById("poh-book-dropdown");
+const pohBookChipsEl = document.getElementById("poh-book-chips");
+const pohBookFilter = { books: [], selected: new Set() };
 const pohGenSearchEl = document.getElementById("poh-gen-search");
 const pohGenBtnEl = document.getElementById("poh-gen-btn");
 const pohGenMatchesEl = document.getElementById("poh-gen-matches");
@@ -1504,9 +1547,95 @@ function bookSummary(books) {
     .join(" · ");
 }
 
+function pohBookLabel(book) {
+  return book.title || book.slug || String(book.source_sha256 || "").slice(0, 12) + "…";
+}
+
+function setPohBookDropdownOpen(open) {
+  pohBookDropdownEl.classList.toggle("hidden", !open);
+  pohBookSearchEl.setAttribute("aria-expanded", open ? "true" : "false");
+}
+
+function renderPohBookChips() {
+  pohBookChipsEl.innerHTML = "";
+  const selectedBooks = pohBookFilter.books.filter((book) => pohBookFilter.selected.has(book.source_sha256));
+  for (const book of selectedBooks) {
+    const chip = document.createElement("span");
+    chip.className = "poh-book-chip";
+    const label = document.createElement("span");
+    label.textContent = pohBookLabel(book);
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "poh-book-chip-remove";
+    removeBtn.setAttribute("aria-label", "Rimuovi " + pohBookLabel(book));
+    removeBtn.textContent = "×";
+    removeBtn.addEventListener("click", () => {
+      pohBookFilter.selected.delete(book.source_sha256);
+      renderPohBookChips();
+      renderPohBookDropdown(pohBookSearchEl.value);
+      render();
+    });
+    chip.append(label, removeBtn);
+    pohBookChipsEl.appendChild(chip);
+  }
+}
+
+function renderPohBookDropdown(query) {
+  const needle = String(query || "").trim().toLowerCase();
+  const candidates = pohBookFilter.books.filter((book) => {
+    if (!needle) return true;
+    const hay = [book.title, book.slug, book.source_sha256].filter(Boolean).join(" ").toLowerCase();
+    return hay.includes(needle);
+  });
+  pohBookDropdownEl.innerHTML = "";
+  if (!pohBookFilter.books.length) {
+    const empty = document.createElement("button");
+    empty.type = "button";
+    empty.disabled = true;
+    empty.textContent = "Nessun libro ingestito.";
+    pohBookDropdownEl.appendChild(empty);
+    return;
+  }
+  if (!candidates.length) {
+    const empty = document.createElement("button");
+    empty.type = "button";
+    empty.disabled = true;
+    empty.textContent = "Nessun libro trovato.";
+    pohBookDropdownEl.appendChild(empty);
+    return;
+  }
+  for (const book of candidates) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.role = "option";
+    const selected = pohBookFilter.selected.has(book.source_sha256);
+    btn.classList.toggle("is-selected", selected);
+    btn.setAttribute("aria-selected", selected ? "true" : "false");
+    btn.textContent = pohBookLabel(book) + " (" + (book.page_count || "?") + " pp.)";
+    btn.addEventListener("click", () => {
+      if (pohBookFilter.selected.has(book.source_sha256)) pohBookFilter.selected.delete(book.source_sha256);
+      else pohBookFilter.selected.add(book.source_sha256);
+      renderPohBookChips();
+      renderPohBookDropdown(pohBookSearchEl.value);
+      render();
+    });
+    pohBookDropdownEl.appendChild(btn);
+  }
+}
+
+function subjectMatchesPohBookFilter(subject) {
+  if (!pohBookFilter.selected.size) return true;
+  const linked = new Set((subject.books || []).map((book) => book.source_sha256));
+  for (const sha of pohBookFilter.selected) {
+    if (linked.has(sha)) return true;
+  }
+  return false;
+}
+
 function render() {
   const query = searchEl.value.trim().toLowerCase();
   const visible = subjects.filter((s) => {
+    if (!subjectMatchesPohBookFilter(s)) return false;
     if (!query) return true;
     const hay = [s.canonical_label, ...(s.aliases || [])].join(" ").toLowerCase();
     return hay.includes(query);
@@ -1520,7 +1649,9 @@ function render() {
     td.colSpan = 5;
     const minBooks = Math.max(1, parseInt(minBooksEl.value, 10) || 2);
     td.textContent = subjects.length
-      ? "Nessun soggetto corrisponde al filtro."
+      ? (pohBookFilter.selected.size
+        ? "Nessun soggetto corrisponde ai libri selezionati."
+        : "Nessun soggetto corrisponde al filtro.")
       : `Nessun soggetto in almeno ${minBooks} libri. Prova ad abbassare «Min libri».`;
     tr.appendChild(td);
     rowsEl.appendChild(tr);
@@ -1661,6 +1792,19 @@ document.getElementById("clear-sel").addEventListener("click", () => {
 document.getElementById("reload").addEventListener("click", load);
 searchEl.addEventListener("input", render);
 minBooksEl.addEventListener("change", load);
+pohBookSearchEl.addEventListener("focus", () => {
+  renderPohBookDropdown(pohBookSearchEl.value);
+  setPohBookDropdownOpen(true);
+});
+pohBookSearchEl.addEventListener("input", () => {
+  renderPohBookDropdown(pohBookSearchEl.value);
+  setPohBookDropdownOpen(true);
+});
+document.addEventListener("click", (event) => {
+  if (!document.getElementById("poh-book-filter").contains(event.target)) {
+    setPohBookDropdownOpen(false);
+  }
+});
 
 pohGenSearchEl.addEventListener("input", () => {
   clearTimeout(pohGenSearchTimer);
@@ -1696,16 +1840,23 @@ async function loadBooks() {
   const res = await apiFetch("/api/research/books");
   const data = await res.json();
   if (!data.ok) throw new Error(data.error || "books failed");
+  const books = data.books || [];
+  pohBookFilter.books = books;
+  for (const sha of [...pohBookFilter.selected]) {
+    if (!books.some((book) => book.source_sha256 === sha)) pohBookFilter.selected.delete(sha);
+  }
+  renderPohBookChips();
+  renderPohBookDropdown(pohBookSearchEl.value);
   const sel = document.getElementById("book-select");
   sel.innerHTML = '<option value="">— libro —</option>';
-  for (const b of data.books || []) {
+  for (const b of books) {
     const opt = document.createElement("option");
     opt.value = b.source_sha256;
-    opt.textContent = (b.title || b.slug || b.source_sha256.slice(0, 12) + "…") +
-      " (" + b.page_count + " pp.)";
+    opt.textContent = pohBookLabel(b) + " (" + b.page_count + " pp.)";
     sel.appendChild(opt);
   }
-  document.getElementById("gen-book").disabled = !(data.books || []).length;
+  document.getElementById("gen-book").disabled = !books.length;
+  render();
 }
 
 async function pollGenerate(jobId, progressId) {
