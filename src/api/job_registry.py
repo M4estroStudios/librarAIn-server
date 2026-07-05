@@ -7,6 +7,8 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any, Generator
 
+from src.api.job_display import job_display_label, job_display_status
+
 _INGEST_TERMINAL_STATUSES = frozenset({"done", "error"})
 _RESEARCH_TERMINAL_STATUSES = frozenset({"succeeded", "failed"})
 _TERMINAL_STATUSES = _INGEST_TERMINAL_STATUSES | _RESEARCH_TERMINAL_STATUSES
@@ -98,13 +100,17 @@ class JobRegistry:
     def create_job(
         self,
         *,
+        job_id: str | None = None,
         job_kind: str = "ingest",
         pipeline_version: str | None = None,
     ) -> str:
         """Allocate a new job and return its opaque job_id."""
-        job_id = uuid.uuid4().hex
+        if job_id is None:
+            job_id = uuid.uuid4().hex
         with self._lock:
             self._evict_finished_locked()
+            if job_id in self._jobs:
+                raise ValueError(f"job_id already exists: {job_id}")
             state = JobState(job_id, job_kind=job_kind)
             state.pipeline_version = pipeline_version
             self._jobs[job_id] = state
@@ -373,6 +379,7 @@ _PHASE_LABELS = {
     "time_index": "Polyindex TIME_INDEX",
     "page_repair": "Preparazione riparazione",
     "gaps_repair": "Riparazione lacune",
+    "subject_embeddings": "Embedding soggetti",
     "queue": "In coda",
     "research_collect": "Raccolta fonti",
     "research_filter": "Sfoltimento fonti",
@@ -623,9 +630,12 @@ def _phase_detail_from_event(ev: dict[str, Any]) -> str | None:
         if ev.get("skipped_llm"):
             return "LLM non chiamato"
         chunk_count = ev.get("chunk_count")
+        link_paragraphs = ev.get("link_paragraphs")
         link_tasks = ev.get("link_tasks")
+        if chunk_count is not None and link_paragraphs is not None:
+            return f"{chunk_count} chunk · {link_paragraphs} paragrafi linkati"
         if chunk_count is not None and link_tasks is not None:
-            return f"{chunk_count} chunk · {link_tasks} link applicati"
+            return f"{chunk_count} chunk · {link_tasks} candidati"
         if chunk_count is not None:
             return f"{chunk_count} chunk elaborati"
     if phase == "research_timeline":
@@ -747,6 +757,10 @@ def summarize_job_state(state: JobState) -> dict[str, Any]:
         "job_id": state.job_id,
         "job_kind": state.job_kind,
         "status": state.status,
+        "display_status": job_display_status(state.status, state.events),
+        "display_status_label": job_display_label(
+            job_display_status(state.status, state.events)
+        ),
         "is_active": state.status not in _TERMINAL_STATUSES,
         "error": state.error,
         **public,

@@ -21,6 +21,17 @@ class TestJobRegistryBasics(unittest.TestCase):
         registry = JobRegistry()
         self.assertIsNone(registry.get_status("missing"))
 
+    def test_create_job_with_explicit_id(self) -> None:
+        registry = JobRegistry()
+        job_id = registry.create_job(job_id="a" * 64)
+        self.assertEqual(registry.get_status(job_id)["job_id"], "a" * 64)
+
+    def test_create_job_rejects_duplicate_id(self) -> None:
+        registry = JobRegistry()
+        job_id = registry.create_job(job_id="b" * 64)
+        with self.assertRaises(ValueError):
+            registry.create_job(job_id=job_id)
+
     def test_emit_updates_status_and_steps(self) -> None:
         registry = JobRegistry()
         job_id = registry.create_job()

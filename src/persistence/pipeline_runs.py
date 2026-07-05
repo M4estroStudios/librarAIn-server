@@ -155,6 +155,35 @@ def get_pipeline_run_by_request_id(
     return dict(row)
 
 
+def list_pipeline_runs(
+    sqlite_path: str,
+    *,
+    limit: int = 200,
+) -> list[dict[str, Any]]:
+    from src.persistence.book_sqlite import init_books_schema
+
+    init_books_schema(sqlite_path)
+    cap = max(1, min(limit, 500))
+    try:
+        with _sqlite_connection(sqlite_path) as conn:
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute(
+                """
+                SELECT
+                    pr.*,
+                    b.title AS book_title
+                FROM pipeline_runs pr
+                LEFT JOIN books b ON b.source_sha256 = pr.source_sha256
+                ORDER BY pr.started_at DESC
+                LIMIT ?
+                """,
+                (cap,),
+            ).fetchall()
+    except sqlite3.Error as exc:
+        raise RuntimeError("unable to list pipeline runs") from exc
+    return [dict(row) for row in rows]
+
+
 def reicat_alias_snapshot(meta: ReicatMetadata) -> dict[str, Any]:
     return meta.model_dump(mode="json", exclude_none=True, by_alias=True)
 

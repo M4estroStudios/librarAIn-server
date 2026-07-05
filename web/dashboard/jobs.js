@@ -300,6 +300,21 @@ function normalizeJobPhases(job) {
   return phases;
 }
 
+function renderStageSegmentsBar(segments) {
+  if (!Array.isArray(segments) || !segments.length) return "";
+  const parts = segments.map(function (segment) {
+    const status = segment.status || "pending";
+    return '<span class="stage-segment stage-segment-' + escapeHtml(status) + '" title="' + escapeHtml(jobPhaseLabel(segment.phase, segment.phase)) + '"></span>';
+  });
+  const done = segments.filter(function (s) { return s.status === "done"; }).length;
+  return (
+    '<div class="stage-segments-bar" aria-label="Progresso stage ' + done + '/' + segments.length + '">' +
+    parts.join("") +
+    '<span class="stage-segments-label">' + done + "/" + segments.length + " stage</span>" +
+    "</div>"
+  );
+}
+
 function renderJobProgressRow(label, done, total, status, globalRow) {
   const max = Math.max(1, total || 1);
   const value = Math.min(done || 0, max);
@@ -353,21 +368,19 @@ function collectBatchChildIds() {
 
 function renderActiveJobCard(job, options) {
   const nested = options && options.nested;
+  const isBatch = !nested && job.job_kind === "research_batch";
   const kind = JOB_KIND_LABELS[job.job_kind] || job.job_kind || "Job";
   const globalStep = typeof job.global_step === "number" ? job.global_step : 0;
   const globalTotal = typeof job.global_total === "number" ? job.global_total : 0;
   const visiblePhases = resolveJobPhases(job);
+  const stageSegments = Array.isArray(job.stage_segments) ? job.stage_segments : [];
   const cardClass =
     "active-job-card" +
     (nested ? " active-job-card-nested" : "") +
+    (isBatch ? " active-job-card-batch" : "") +
     (job.is_active ? "" : " job-finished") +
     (job.error ? " job-failed" : "");
-  let html =
-    '<div class="' +
-    cardClass +
-    '" data-job-id="' +
-    escapeHtml(job.job_id || "") +
-    '">' +
+  let inner =
     '<div class="active-job-header">' +
     '<span class="active-job-title">' +
     escapeHtml(job.title || kind) +
@@ -375,52 +388,70 @@ function renderActiveJobCard(job, options) {
     '<span class="active-job-meta">' +
     escapeHtml(kind) +
     " · " +
-    escapeHtml(job.status || "running") +
-  (job.is_active ? " · live" : "") +
+    escapeHtml(job.display_status_label || job.status || "running") +
+    (job.is_active ? " · live" : "") +
     "</span>" +
     "</div>";
   if (job.subtitle) {
-    html += '<div class="active-job-subtitle">' + escapeHtml(job.subtitle) + "</div>";
+    inner += '<div class="active-job-subtitle">' + escapeHtml(job.subtitle) + "</div>";
   }
   const detail =
     job.detail ||
     jobPhaseLabel(job.current_phase, job.current_phase_label) ||
     job.current_phase_label;
-  if (detail) {
-    html += '<div class="active-job-detail">' + escapeHtml(detail) + "</div>";
+  if (detail && !isBatch) {
+    inner += '<div class="active-job-detail">' + escapeHtml(detail) + "</div>";
   }
   if (job.error) {
-    html += '<div class="active-job-error">' + escapeHtml(job.error) + "</div>";
+    inner += '<div class="active-job-error">' + escapeHtml(job.error) + "</div>";
   }
-  if (globalTotal > 0) {
-    html += renderJobProgressRow("Totale", globalStep, globalTotal, job.is_active ? "active" : "done", true);
+  if (isBatch && stageSegments.length) {
+    inner += renderStageSegmentsBar(stageSegments);
+  } else if (globalTotal > 0 && !isBatch) {
+    inner += renderJobProgressRow("Totale", globalStep, globalTotal, job.is_active ? "active" : "done", true);
   }
-  if (visiblePhases.length) {
-    html += '<div class="active-job-phases">';
+  if (visiblePhases.length && !isBatch) {
+    inner += '<div class="active-job-phases">';
     visiblePhases.forEach(function (phase) {
-      html += renderPhaseBlock(phase);
+      inner += renderPhaseBlock(phase);
     });
-    html += "</div>";
+    inner += "</div>";
   }
   const articleHref =
     job.article_url ||
     (job.poh_id && job.status === "succeeded" ? articleUrl(job.poh_id) : null);
   if (articleHref) {
-    html +=
+    inner +=
       '<div class="active-job-actions"><a href="' +
       escapeHtml(articleHref) +
       '" target="_blank" rel="noopener">Apri articolo</a></div>';
   }
-  if (!nested && job.job_kind === "research_batch" && job.request_ids && job.request_ids.length) {
-    html += '<div class="active-job-batch-children">';
-    job.request_ids.forEach(function (childId) {
-      const child = jobsById.get(childId);
-      if (child) html += renderActiveJobCard(child, { nested: true });
-    });
-    html += "</div>";
+
+  if (isBatch) {
+    return (
+      '<details class="batch-job-details' + (job.is_active ? "" : " batch-job-finished") + '" data-job-id="' + escapeHtml(job.job_id || "") + '">' +
+      "<summary>" + inner + "</summary>" +
+      (job.request_ids && job.request_ids.length
+        ? '<div class="batch-job-expanded">' +
+          job.request_ids.map(function (childId) {
+            const child = jobsById.get(childId);
+            return child ? renderActiveJobCard(child, { nested: true }) : "";
+          }).join("") +
+          "</div>"
+        : "") +
+      "</details>"
+    );
   }
-  html += "</div>";
-  return html;
+
+  return (
+    '<div class="' +
+    cardClass +
+    '" data-job-id="' +
+    escapeHtml(job.job_id || "") +
+    '">' +
+    inner +
+    "</div>"
+  );
 }
 
 function countActiveJobs() {
@@ -471,7 +502,7 @@ async function refreshJobsList() {
   const watched = loadWatched();
   const watchedIds = new Set(watched.map((item) => item.job_id));
   try {
-    const data = await apiJson("/api/system/jobs?limit=30");
+    const data = await apiJson("/api/system/jobs?limit=30&include_finished=1");
     const activeJobs = data.jobs || [];
     const keepIds = new Set(watchedIds);
     activeJobs.forEach((job) => keepIds.add(job.job_id));

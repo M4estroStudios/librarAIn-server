@@ -147,3 +147,16 @@ textarea { min-height: 4rem; resize: vertical; }
 .active-job-card-nested:first-child { margin-top: 0; }
 .active-job-card-nested .active-job-header { margin-bottom: 0.45rem; }
 .active-job-card-nested .active-job-title { font-size: 0.82rem; }
+.batch-job-details { margin-top: 0.65rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #3e3e3e; }
+.batch-job-details:first-child { margin-top: 0.35rem; }
+.batch-job-details > summary { list-style: none; cursor: pointer; padding: 0.85rem 1rem; }
+.batch-job-details > summary::-webkit-details-marker { display: none; }
+.batch-job-details > summary .active-job-header { margin-bottom: 0.45rem; }
+.batch-job-expanded { padding: 0 1rem 0.85rem; border-top: 1px solid #333; }
+.stage-segments-bar { display: flex; flex-wrap: nowrap; gap: 2px; align-items: center; margin-top: 0.35rem; }
+.stage-segment { flex: 1 1 0; min-width: 4px; height: 8px; border-radius: 2px; background: #3c3c3c; }
+.stage-segment-done { background: #6a9955; }
+.stage-segment-active { background: #4ec9b0; }
+.stage-segment-failed { background: #f48771; }
+.stage-segment-pending { background: #3c3c3c; }
+.stage-segments-label { flex: 0 0 auto; margin-left: 0.5rem; font-size: 0.74rem; color: #9d9d9d; white-space: nowrap; }

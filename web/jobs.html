@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job — librarAIn</title>
+<script src="/log.js"></script>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0; min-height: 100vh; }
+a { color: #4ec9b0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 72rem; margin: 0 auto; padding: 1.25rem 1rem 3rem; box-sizing: border-box; }
+.nav { font-size: 0.9rem; margin-bottom: 1rem; color: #9d9d9d; }
+h1 { font-size: 1.35rem; margin: 0 0 0.35rem; color: #e8e8e8; }
+.lead { color: #9d9d9d; font-size: 0.9rem; margin: 0 0 1.25rem; }
+.panel { background: #252526; border: 1px solid #3e3e3e; border-radius: 10px; padding: 1rem 1.1rem; margin-bottom: 1.25rem; }
+.panel h2 { font-size: 1rem; margin: 0 0 0.75rem; color: #e8e8e8; }
+.filters { display: flex; flex-wrap: wrap; gap: 0.65rem 1rem; align-items: flex-end; margin-bottom: 0.85rem; }
+.filters label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.78rem; color: #9d9d9d; }
+.filters input { background: #1e1e1e; border: 1px solid #555; color: #e8e8e8; border-radius: 6px; padding: 0.4rem 0.55rem; min-width: 10rem; font-size: 0.88rem; }
+.filters button { background: #0e639c; color: #fff; border: none; border-radius: 6px; padding: 0.45rem 0.85rem; cursor: pointer; font-size: 0.88rem; }
+.filters button.secondary { background: #3c3c3c; }
+table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+th, td { text-align: left; padding: 0.5rem 0.45rem; border-bottom: 1px solid #333; vertical-align: top; }
+th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
+.mono { font-family: ui-monospace, monospace; font-size: 0.76rem; word-break: break-all; }
+.status-pill { display: inline-block; padding: 0.12rem 0.45rem; border-radius: 999px; font-size: 0.74rem; border: 1px solid #444; }
+.status-in_coda { color: #dcdcaa; border-color: #6a6a3a; }
+.status-in_pausa { color: #ce9178; border-color: #6a4a3a; }
+.status-in_corso { color: #4ec9b0; border-color: #2a6a5a; }
+.status-completato { color: #6a9955; border-color: #3a5a3a; }
+.status-errore { color: #f48771; border-color: #6a3a3a; }
+.status-interrotto { color: #b8b8b8; border-color: #555; }
+.hint { color: #9d9d9d; font-size: 0.82rem; }
+.empty { color: #9d9d9d; font-size: 0.85rem; padding: 0.5rem 0; }
+#active-jobs-root { margin-top: 0.35rem; }
+</style>
+<link rel="stylesheet" href="/dashboard/dashboard.css">
+</head>
+<body>
+<div class="wrap">
+  <p class="nav"><a href="/">Ingestione</a> · <a href="/admin.html">Admin</a> · <a href="/dashboard">Dashboard</a> · <a href="/ricerca.html">Ricerca</a> · Job</p>
+  <h1>Job</h1>
+  <p class="lead">Storico ingest e research, con job attivi e batch temporanei in tempo reale.</p>
+
+  <div class="panel">
+    <h2 id="active-jobs-heading">Attivi ora</h2>
+    <p class="hint">I batch articoli sono temporanei: comprimi per vedere solo la barra stage complessiva.</p>
+    <div id="active-jobs-root"><div class="active-jobs-empty">Caricamento…</div></div>
+  </div>
+
+  <div class="panel">
+    <h2>Storico</h2>
+    <form id="history-filters" class="filters">
+      <label>Libro / POH
+        <input type="search" id="filter-book" name="book" placeholder="titolo o POH" autocomplete="off">
+      </label>
+      <label>ID
+        <input type="search" id="filter-id" name="id" placeholder="job id o sha" autocomplete="off">
+      </label>
+      <label>Data
+        <input type="date" id="filter-date" name="date">
+      </label>
+      <button type="submit">Filtra</button>
+      <button type="button" class="secondary" id="filter-reset">Reset</button>
+    </form>
+    <div id="history-meta" class="hint"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Stato</th>
+          <th>Libro / titolo</th>
+          <th>Tipo</th>
+          <th>ID</th>
+          <th>Avviato</th>
+          <th>Aggiornato</th>
+        </tr>
+      </thead>
+      <tbody id="history-body">
+        <tr><td colspan="6" class="empty">Caricamento…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script type="module">
+import { apiJson, apiToken, promptApiToken } from "/dashboard/api.js";
+import { initActiveJobs } from "/dashboard/jobs.js";
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function formatTs(iso) {
+  if (!iso) return "—";
+  try {
+    return new Date(iso).toLocaleString("it-IT");
+  } catch {
+    return iso;
+  }
+}
+
+const KIND_LABELS = {
+  ingest: "Ingest",
+  research: "Research",
+  research_batch: "Batch",
+};
+
+async function loadHistory() {
+  const book = document.getElementById("filter-book").value.trim();
+  const id = document.getElementById("filter-id").value.trim();
+  const date = document.getElementById("filter-date").value;
+  const params = new URLSearchParams();
+  if (book) params.set("book", book);
+  if (id) params.set("id", id);
+  if (date) params.set("date", date);
+  params.set("limit", "200");
+  const body = document.getElementById("history-body");
+  const meta = document.getElementById("history-meta");
+  try {
+    const data = await apiJson("/api/system/jobs/history?" + params.toString());
+    const jobs = (data.jobs || []).filter(function (job) {
+      return job.job_kind !== "research_batch";
+    });
+    meta.textContent = jobs.length + " risultati";
+    if (!jobs.length) {
+      body.innerHTML = '<tr><td colspan="6" class="empty">Nessun job trovato.</td></tr>';
+      return;
+    }
+    body.innerHTML = jobs.map(function (job) {
+      const display = job.display_status || "in_coda";
+      const label = job.display_status_label || display;
+      const bookLabel =
+        job.book_title ||
+        job.poh_label ||
+        job.poh_id ||
+        job.title ||
+        "—";
+      const kind = KIND_LABELS[job.job_kind] || job.job_kind || "—";
+      const err = job.error ? '<div class="hint">' + escapeHtml(job.error) + "</div>" : "";
+      return (
+        "<tr>" +
+        '<td><span class="status-pill status-' + escapeHtml(display) + '">' + escapeHtml(label) + "</span>" + err + "</td>" +
+        "<td>" + escapeHtml(bookLabel) + "</td>" +
+        "<td>" + escapeHtml(kind) + "</td>" +
+        '<td class="mono">' + escapeHtml(job.job_id || "") + "</td>" +
+        "<td>" + escapeHtml(formatTs(job.created_at)) + "</td>" +
+        "<td>" + escapeHtml(formatTs(job.updated_at)) + "</td>" +
+        "</tr>"
+      );
+    }).join("");
+  } catch (err) {
+    body.innerHTML = '<tr><td colspan="6" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
+    meta.textContent = "";
+  }
+}
+
+document.getElementById("history-filters").addEventListener("submit", function (event) {
+  event.preventDefault();
+  loadHistory();
+});
+document.getElementById("filter-reset").addEventListener("click", function () {
+  document.getElementById("filter-book").value = "";
+  document.getElementById("filter-id").value = "";
+  document.getElementById("filter-date").value = "";
+  loadHistory();
+});
+
+if (!apiToken()) promptApiToken();
+initActiveJobs();
+loadHistory();
+window.setInterval(loadHistory, 8000);
+</script>
+</body>
+</html>

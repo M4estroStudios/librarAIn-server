@@ -129,6 +129,19 @@ button.secondary:hover:not(:disabled) { background: #4a4a4a; }
 .active-job-card-nested:first-child { margin-top: 0; }
 .active-job-card-nested .active-job-header { margin-bottom: 0.45rem; }
 .active-job-card-nested .active-job-title { font-size: 0.82rem; }
+.batch-job-details { margin-top: 0.65rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #3e3e3e; }
+.batch-job-details:first-child { margin-top: 0.35rem; }
+.batch-job-details > summary { list-style: none; cursor: pointer; padding: 0.85rem 1rem; }
+.batch-job-details > summary::-webkit-details-marker { display: none; }
+.batch-job-details > summary .active-job-header { margin-bottom: 0.45rem; }
+.batch-job-expanded { padding: 0 1rem 0.85rem; border-top: 1px solid #333; }
+.stage-segments-bar { display: flex; flex-wrap: nowrap; gap: 2px; align-items: center; margin-top: 0.35rem; }
+.stage-segment { flex: 1 1 0; min-width: 4px; height: 8px; border-radius: 2px; background: #3c3c3c; }
+.stage-segment-done { background: #6a9955; }
+.stage-segment-active { background: #4ec9b0; }
+.stage-segment-failed { background: #f48771; }
+.stage-segment-pending { background: #3c3c3c; }
+.stage-segments-label { flex: 0 0 auto; margin-left: 0.5rem; font-size: 0.74rem; color: #9d9d9d; white-space: nowrap; }
 .active-job-prefilter-steps {
   margin-top: 0.55rem;
   padding: 0.55rem 0.65rem;
@@ -1106,7 +1119,7 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   }
 })();
 </script>
-<p class="nav embed-hide"><a href="/">Ingestione</a> · Admin · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a></p>
+<p class="nav embed-hide"><a href="/">Ingestione</a> · Admin · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a> · <a href="/jobs.html">Job</a></p>
 <h1 class="embed-hide">Admin — POH multi-libro</h1>
 <p class="lead embed-hide">Soggetti (POH) presenti in più libri in <code>data/polyindex/INDEX.json</code>. Seleziona due o più voci che indicano la stessa entità (es. <em>Augusto</em>, <em>Ottaviano</em>, <em>Imperatore Augusto</em>), scegli la voce canonica e uniscile. Le etichette delle voci assorbite diventano alias della voce canonica.</p>
 
@@ -1118,7 +1131,7 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
 
 <div class="panel active-jobs-panel">
   <h2 id="active-jobs-heading">Job</h2>
-  <p class="hint">Ingest, riparazioni e articoli in corso. I job avviati in questa sessione restano visibili finché non chiudi la pagina.</p>
+  <p class="hint">Ingest, riparazioni e articoli in corso. <a href="/jobs.html">Storico completo e filtri</a>.</p>
   <div id="active-jobs-root"><div class="active-jobs-empty">Caricamento…</div></div>
 </div>
 

@@ -182,3 +182,29 @@ def get_research_run_by_request_id(
     if row is None:
         return None
     return dict(row)
+
+
+def list_research_runs(
+    sqlite_path: str,
+    *,
+    limit: int = 200,
+) -> list[dict[str, Any]]:
+    from src.persistence.book_sqlite import init_books_schema
+
+    init_books_schema(sqlite_path)
+    cap = max(1, min(limit, 500))
+    try:
+        with _sqlite_connection(sqlite_path) as conn:
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute(
+                """
+                SELECT *
+                FROM research_runs
+                ORDER BY started_at DESC
+                LIMIT ?
+                """,
+                (cap,),
+            ).fetchall()
+    except sqlite3.Error as exc:
+        raise RuntimeError("unable to list research runs") from exc
+    return [dict(row) for row in rows]

@@ -25,6 +25,7 @@ from src.api.ingest_pipeline_runner import run_full_pipeline
 from src.api.ingest_pipeline_runner_glm import run_glm_ingest_pipeline
 from src.api.ingest_form import _parse_pages_spec
 from src.api.reicat_vision_suggest import suggest_reicat_metadata
+from src.api.job_history import list_active_jobs_with_batches, list_job_history
 from src.api.job_registry import JobRegistry
 from src.api.research_handlers import ResearchBatchRegistry, build_research_routes
 from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
@@ -55,6 +56,7 @@ from src.persistence.book_page_repair import (
     run_book_page_repair,
 )
 from src.core.config import ConfigurationError, load_settings
+from src.core.hashing import new_job_id
 from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
@@ -109,6 +111,8 @@ _WEB_PAGE_ALIASES = frozenset({
     "/admin.html",
     "/ricerca",
     "/ricerca.html",
+    "/jobs",
+    "/jobs.html",
 })
 
 
@@ -237,6 +241,13 @@ def _stop_existing_server_processes(port: int) -> None:
             "stopped existing ingest server process(es)",
             {"port": port, "pids": stopped},
         )
+
+
+def _settings_sqlite_path(settings: Any) -> str:
+    sqlite_path = getattr(settings, "sqlite_path", None)
+    if sqlite_path:
+        return str(sqlite_path)
+    return str(Path(settings.data_root) / "db" / "biblioteca.db")
 
 
 def build_ingest_server(
@@ -431,6 +442,28 @@ def build_ingest_server(
                 )
                 return
 
+            if path == "/api/system/jobs/history":
+                if not self._require_auth(query):
+                    return
+                book = (query.get("book", [""])[0] or "").strip()
+                job_id_filter = (query.get("id", [""])[0] or "").strip()
+                date_filter = (query.get("date", [""])[0] or "").strip()
+                try:
+                    limit = min(500, max(1, int(query.get("limit", ["200"])[0] or 200)))
+                except ValueError:
+                    limit = 200
+                jobs = list_job_history(
+                    sqlite_path=_settings_sqlite_path(settings),
+                    registry=registry,
+                    batch_registry=research_batch_registry,
+                    book=book,
+                    job_id=job_id_filter,
+                    date=date_filter,
+                    limit=limit,
+                )
+                _send_json(self, 200, {"ok": True, "jobs": jobs, "count": len(jobs)})
+                return
+
             if path == "/api/system/jobs":
                 if not self._require_auth(query):
                     return
@@ -443,14 +476,12 @@ def build_ingest_server(
                     limit = min(100, max(1, int(query.get("limit", ["30"])[0] or 30)))
                 except ValueError:
                     limit = 30
-                jobs = registry.list_jobs(include_finished=include_finished, limit=limit)
-                jobs += research_batch_registry.list_jobs(
-                    include_finished=include_finished,
+                jobs = list_active_jobs_with_batches(
+                    registry=registry,
+                    batch_registry=research_batch_registry,
                     limit=limit,
+                    include_finished=include_finished,
                 )
-                jobs.sort(key=lambda item: item.get("updated_at") or "", reverse=True)
-                jobs.sort(key=lambda item: 0 if item.get("is_active") else 1)
-                jobs = jobs[:limit]
                 active_count = sum(1 for job in jobs if job.get("is_active"))
                 _send_json(
                     self,
@@ -512,6 +543,16 @@ def build_ingest_server(
                     _send_json(self, 500, {"ok": False, "error": "web/index.html missing"})
                     return
                 _send_bytes(self, 200, index_file.read_bytes(), "text/html; charset=utf-8")
+                return
+
+            if path in ("/jobs", "/jobs.html"):
+                jobs_file = web_dir / "jobs.html"
+                if not jobs_file.exists():
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
+                        {"path": str(jobs_file)})
+                    _send_json(self, 500, {"ok": False, "error": "web/jobs.html missing"})
+                    return
+                _send_bytes(self, 200, jobs_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
             if path in ("/admin", "/admin.html"):
@@ -1015,10 +1056,11 @@ def build_ingest_server(
             ):
                 _send_json(self, 400, {"ok": False, "error": "missing_in must be a list of strings"})
                 return
-            job_id = registry.create_job()
+            sha = source_sha256.strip()
+            job_id, _started_at = new_job_id(f"{sha[:16]}_repair_p{aligned_page}")
+            registry.create_job(job_id=job_id)
             status_url = f"/api/ingest/{job_id}/status"
             events_url = f"/api/ingest/{job_id}/events"
-            sha = source_sha256.strip()
             stages_hint = missing_in if isinstance(missing_in, list) else []
 
             def _worker() -> None:
@@ -1138,10 +1180,11 @@ def build_ingest_server(
                 ):
                     _send_json(self, 400, {"ok": False, "error": "missing_in must be a list of strings"})
                     return
-            job_id = registry.create_job()
+            sha = source_sha256.strip()
+            job_id, _started_at = new_job_id(f"{sha[:16]}_gaps_repair")
+            registry.create_job(job_id=job_id)
             status_url = f"/api/ingest/{job_id}/status"
             events_url = f"/api/ingest/{job_id}/events"
-            sha = source_sha256.strip()
             gap_payload = gap_pages
 
             def _worker() -> None:
@@ -1490,7 +1533,9 @@ def build_ingest_server(
                 )
                 return
 
-            job_id = registry.create_job()
+            pdf_stem = Path(uploaded.filename or "upload.pdf").stem
+            job_id, _started_at = new_job_id(pdf_stem)
+            registry.create_job(job_id=job_id)
             events_url = f"/api/ingest/{job_id}/events"
             status_url = f"/api/ingest/{job_id}/status"
 

@@ -466,6 +466,13 @@ class TestSystemJobsEndpoint(unittest.TestCase):
         self.assertEqual(collect_phase["total"], 8)
         self.assertEqual(payload["job"]["system_events_url"], f"/api/system/jobs/{job_id}/events")
 
+    def test_system_jobs_history_endpoint(self) -> None:
+        status, payload = self.server.request("/api/system/jobs/history?limit=10")
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertIn("jobs", payload)
+        self.assertIsInstance(payload["jobs"], list)
+
 
 if __name__ == "__main__":
     unittest.main()

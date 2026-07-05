@@ -8,6 +8,8 @@ from http.server import BaseHTTPRequestHandler
 from pathlib import Path
 from typing import Any, Callable
 
+from src.api.job_display import job_display_label, job_display_status
+from src.core.hashing import new_job_id
 from src.search.poh_overlap import list_poh_overlaps
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, bind_log_context, reset_log_context
 from src.models.settings import Settings
@@ -203,6 +205,8 @@ class ResearchBatchRegistry:
             "job_id": job["job_id"],
             "job_kind": "research_batch",
             "status": job["status"],
+            "display_status": job_display_status(job["status"]),
+            "display_status_label": job_display_label(job_display_status(job["status"])),
             "is_active": job["status"] == "running",
             "title": title,
             "subtitle": subtitle,
@@ -229,6 +233,12 @@ class ResearchBatchRegistry:
             "events_url": None,
             "system_status_url": f"/api/system/jobs/{job['job_id']}",
         }
+
+
+def _research_job_stem(*, poh_id: str | None, query: str) -> str:
+    if poh_id:
+        return poh_id
+    return query_log_fields(query, None)["query_hash"][:32]
 
 
 def _validation_error_response(exc: ValueError) -> dict[str, Any]:
@@ -686,7 +696,14 @@ def build_research_routes(
                 send_json(handler, 429, {"error": "research queue full"})
                 return True
 
-            request_id = registry.create_job(
+            request_id, _started_at = new_job_id(
+                _research_job_stem(
+                    poh_id=request.poh.id if request.poh else None,
+                    query=request.query,
+                )
+            )
+            registry.create_job(
+                job_id=request_id,
                 job_kind="research",
                 pipeline_version=RESEARCH_PIPELINE_VERSION,
             )
@@ -826,7 +843,9 @@ def build_research_routes(
                         poh_label=poh_label,
                         current_phase="research",
                     )
-                    request_id = registry.create_job(
+                    request_id, _started_at = new_job_id(_research_job_stem(poh_id=poh_id, query=poh_label))
+                    registry.create_job(
+                        job_id=request_id,
                         job_kind="research",
                         pipeline_version=RESEARCH_PIPELINE_VERSION,
                     )
