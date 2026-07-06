@@ -36,6 +36,11 @@ def _parse_env_file(env_path: Path) -> dict[str, str]:
     return parsed
 
 
+def get_env(key: str, default: str = "", *, env_file: str = ".env") -> str:
+    file_values = _parse_env_file(Path(env_file))
+    return os.environ.get(key, file_values.get(key, default))
+
+
 def _format_settings_validation_error(exc: ValidationError) -> str:
     missing: list[str] = []
     invalid: list[str] = []

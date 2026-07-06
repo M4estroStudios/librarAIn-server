@@ -1570,6 +1570,75 @@ if (document.readyState === "loading") {
     item.snapshot = captureFormSnapshot();
   }
 
+  function clearBibliographicFormFields() {
+    var elements = form.elements;
+    for (var i = 0; i < elements.length; i++) {
+      var el = elements[i];
+      if (!el.name || el.name === "pdf_file") continue;
+      if (el.type === "checkbox") {
+        el.checked = el.name === "force_metadata_update_on_duplicate_hash" && el.value === "true";
+      } else {
+        el.value = "";
+      }
+    }
+  }
+
+  function queueItemLabel(item, position) {
+    return position + "/" + ingestQueue.length + " («" + (item.fileName || "PDF") + "»)";
+  }
+
+  function validateQueueItemConfigured(item, position) {
+    var label = queueItemLabel(item, position);
+    if (!item.snapshot) {
+      throw new Error(
+        "Libro " + label + " non configurato: apri ogni PDF nella coda e compila titolo, autori, TOC e indice."
+      );
+    }
+    var fields = item.snapshot.fields || {};
+    if (!String(fields.titolo || "").trim()) {
+      throw new Error("Libro " + label + ": titolo obbligatorio mancante.");
+    }
+    if (!String(fields.autore || "").trim()) {
+      throw new Error("Libro " + label + ": autore obbligatorio mancante.");
+    }
+    if (!String(fields.toc_range || "").trim()) {
+      throw new Error("Libro " + label + ": intervallo TOC obbligatorio mancante.");
+    }
+    if (!String(fields.index_range || "").trim()) {
+      throw new Error("Libro " + label + ": intervallo indice obbligatorio mancante.");
+    }
+  }
+
+  async function validateIngestQueueConfigured() {
+    if (ingestQueue.length <= 1) return;
+    snapshotCurrentItem();
+    for (var i = 0; i < ingestQueue.length; i++) {
+      validateQueueItemConfigured(ingestQueue[i], i + 1);
+    }
+    for (var j = 0; j < ingestQueue.length; j++) {
+      var item = ingestQueue[j];
+      var snap = item.snapshot;
+      if (!snap) continue;
+      if (!item.pickerCache) item.pickerCache = createPickerCache();
+      var cache = item.pickerCache;
+      if (!cache.pdfDoc) await waitPickerCacheDoc(cache);
+      var snapFields = snap.fields || {};
+      try {
+        validateClientPdfPages({
+          numPages: cache.numPages,
+          removedExpanded: parsePagesSpec(String(snapFields.pages_to_remove || "")),
+          tocRaw: String(snapFields.toc_range || "").trim(),
+          indexRaw: String(snapFields.index_range || "").trim(),
+        });
+      } catch (preErr) {
+        throw new Error(
+          "Libro " + queueItemLabel(item, j + 1) + ":\n" +
+          String(preErr && preErr.message ? preErr.message : preErr)
+        );
+      }
+    }
+  }
+
   function queueItemStatusLabel(status) {
     if (status === "done") return "Completato";
     if (status === "error") return "Errore";
@@ -1617,9 +1686,7 @@ if (document.readyState === "loading") {
     await displayQueueItemPicker(item);
     if (item.snapshot) applyFormSnapshot(item.snapshot);
     else {
-      pagePickerState.selected = {};
-      pagePickerState.lastSelected = null;
-      pagesToRemoveInput.value = "";
+      clearBibliographicFormFields();
       resetAllViewerSelections();
       refreshViewerThumbUi();
     }
@@ -1732,7 +1799,12 @@ if (document.readyState === "loading") {
 
   async function ingestAllQueued() {
     if (ingestAllRunning || ingestQueue.length <= 1) return;
-    snapshotCurrentItem();
+    try {
+      await validateIngestQueueConfigured();
+    } catch (err) {
+      show("err", String(err && err.message ? err.message : err));
+      return;
+    }
     ingestAllRunning = true;
     renderQueueBar();
     btn.disabled = true;
