@@ -63,6 +63,7 @@ const RESEARCH_DISPLAY_PHASES = [
 const jobsById = new Map();
 const sseConnections = new Map();
 const refetchTimers = new Map();
+let jobsApiOptions = {};
 
 function escapeHtml(s) {
   return String(s)
@@ -121,7 +122,7 @@ function notifyJobsRefresh() {
 
 async function fetchJobSummary(jobId) {
   try {
-    const data = await apiJson("/api/system/jobs/" + encodeURIComponent(jobId));
+    const data = await apiJson("/api/system/jobs/" + encodeURIComponent(jobId), jobsApiOptions);
     return data.job || null;
   } catch {
     return null;
@@ -493,7 +494,8 @@ function updateJobsHeading(activeCount) {
   let suffix = "";
   if (activeCount > 0) suffix = " (" + activeCount + " attivi)";
   else if (total > 0) suffix = " (" + total + ")";
-  heading.textContent = "Job" + suffix;
+  const base = heading.dataset.baseTitle || "Job";
+  heading.textContent = base + suffix;
 }
 
 async function refreshJobsList() {
@@ -502,7 +504,7 @@ async function refreshJobsList() {
   const watched = loadWatched();
   const watchedIds = new Set(watched.map((item) => item.job_id));
   try {
-    const data = await apiJson("/api/system/jobs?limit=30&include_finished=1");
+    const data = await apiJson("/api/system/jobs?limit=30&include_finished=1", jobsApiOptions);
     const activeJobs = data.jobs || [];
     const keepIds = new Set(watchedIds);
     activeJobs.forEach((job) => keepIds.add(job.job_id));
@@ -535,8 +537,9 @@ async function refreshJobsList() {
   }
 }
 
-export function initActiveJobs() {
+export function initActiveJobs(options = {}) {
   if (!getJobsRoot()) return;
+  jobsApiOptions = options.noAuthPrompt ? { noAuthPrompt: true } : {};
   window.addEventListener("message", (event) => {
     if (event.data && event.data.type === "librarain-jobs-refresh") refreshJobsList();
   });

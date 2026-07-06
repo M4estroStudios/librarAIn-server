@@ -1595,13 +1595,22 @@ def build_ingest_server(
                     ))
                     job_semaphore.acquire()
                 try:
-                    pipeline_runner(
+                    pipeline_result = pipeline_runner(
                         ingest_payload,
                         saved_path,
                         settings,
                         reporter=reporter,
                         set_global_total=lambda total: registry.set_global_total(job_id, total),
                     )
+                    timing = (
+                        pipeline_result.get("timing")
+                        if isinstance(pipeline_result, dict)
+                        else None
+                    )
+                    done_fields: dict[str, Any] = {"result": job_id}
+                    if timing:
+                        done_fields["timing"] = timing
+                    registry.emit(job_id, make_event("pipeline", STATUS_DONE, **done_fields))
                 except IngestInputValidationException:
                     pass
                 except Exception as exc:

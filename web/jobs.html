@@ -52,7 +52,7 @@ th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
   <p class="lead">Storico ingest e research, con job attivi e batch temporanei in tempo reale.</p>
 
   <div class="panel">
-    <h2 id="active-jobs-heading">Attivi ora</h2>
+    <h2 id="active-jobs-heading" data-base-title="Attivi ora">Attivi ora</h2>
     <p class="hint">I batch articoli sono temporanei: comprimi per vedere solo la barra stage complessiva.</p>
     <div id="active-jobs-root"><div class="active-jobs-empty">Caricamento…</div></div>
   </div>
@@ -92,7 +92,7 @@ th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
 </div>
 
 <script type="module">
-import { apiJson, apiToken, promptApiToken } from "/dashboard/api.js";
+import { apiJson } from "/dashboard/api.js";
 import { initActiveJobs } from "/dashboard/jobs.js";
 
 function escapeHtml(s) {
@@ -130,7 +130,7 @@ async function loadHistory() {
   const body = document.getElementById("history-body");
   const meta = document.getElementById("history-meta");
   try {
-    const data = await apiJson("/api/system/jobs/history?" + params.toString());
+    const data = await apiJson("/api/system/jobs/history?" + params.toString(), { noAuthPrompt: true });
     const jobs = (data.jobs || []).filter(function (job) {
       return job.job_kind !== "research_batch";
     });
@@ -178,8 +178,7 @@ document.getElementById("filter-reset").addEventListener("click", function () {
   loadHistory();
 });
 
-if (!apiToken()) promptApiToken();
-initActiveJobs();
+initActiveJobs({ noAuthPrompt: true });
 loadHistory();
 window.setInterval(loadHistory, 8000);
 </script>

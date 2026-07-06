@@ -266,7 +266,7 @@ class TestHappyPath(unittest.TestCase):
         self.assertIn(("stage1_ocr", "started"), ps)
         self.assertIn(("stage1_ocr", "completed"), ps)
         self.assertNotIn(("stage1_ocr", "done"), ps)
-        self.assertIn(("stage3_editor", "done"), ps)
+        self.assertIn(("stage3_editor", "completed"), ps)
 
         morch.assert_called_once()
         self.assertIsNotNone(morch.call_args.kwargs.get("progress"))
@@ -278,28 +278,26 @@ class TestHappyPath(unittest.TestCase):
             return -1
 
         self.assertLess(idx("stage1_ocr", "started"), idx("stage1_ocr", "completed"))
-        self.assertLess(idx("stage1_ocr", "completed"), idx("stage3_editor", "done"))
+        self.assertLess(idx("stage1_ocr", "completed"), idx("stage3_editor", "completed"))
 
     @patch(_P_ORCH, new_callable=AsyncMock)
     @patch(_P_ENUM)
     @patch(_P_ALIGN)
     @patch(_P_GATE)
     @patch(_P_VALIDATE)
-    def test_stage3_editor_done_carries_full_payload(
+    def test_stage3_editor_completed_without_full_payload(
         self, mv, mg, ma, me, morch
     ) -> None:
         self._run(mv, mg, ma, me, morch)
         done_evs = [
             e for e in self.events
-            if e.get("phase") == PHASE_STAGE3_EDITOR and e.get("status") == STATUS_DONE
+            if e.get("phase") == PHASE_STAGE3_EDITOR
+            and e.get("status") == STATUS_COMPLETED
+            and "timing" in e
         ]
         self.assertEqual(len(done_evs), 1)
-        result_payload = done_evs[0]["result"]
-        self.assertIn("stage1", result_payload)
-        self.assertIn("stage2", result_payload)
-        self.assertIn("stage3", result_payload)
-        self.assertIsNotNone(result_payload["stage2"])
-        self.assertIsNotNone(result_payload["stage3"])
+        self.assertNotIn("result", done_evs[0])
+        self.assertIn("timing", done_evs[0])
 
     @patch(_P_ORCH, new_callable=AsyncMock)
     @patch(_P_ENUM)
@@ -384,7 +382,7 @@ class TestSkipDuplicate(unittest.TestCase):
     @patch(_P_ALIGN)
     @patch(_P_GATE)
     @patch(_P_VALIDATE)
-    def test_stage1_ocr_done_terminates_pipeline_when_skipped(
+    def test_stage1_ocr_completed_when_pipeline_skipped(
         self, mv, mg, ma, me, morch
     ) -> None:
         mv.return_value = _make_enriched()
@@ -398,13 +396,14 @@ class TestSkipDuplicate(unittest.TestCase):
             reporter=self._reporter, set_global_total=None,
         )
 
-        done_evs = [
+        terminal_evs = [
             e for e in self.events
-            if e.get("phase") == PHASE_STAGE1_OCR and e.get("status") == STATUS_DONE
+            if e.get("phase") == PHASE_STAGE1_OCR
+            and e.get("status") == STATUS_COMPLETED
+            and "timing" in e
         ]
-        self.assertEqual(len(done_evs), 1)
-        self.assertIsNone(done_evs[0]["result"]["stage2"])
-        self.assertIsNone(done_evs[0]["result"]["stage3"])
+        self.assertEqual(len(terminal_evs), 1)
+        self.assertNotIn("result", terminal_evs[0])
 
 
 class TestCacheHit(unittest.TestCase):

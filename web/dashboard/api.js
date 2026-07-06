@@ -80,7 +80,7 @@ export async function apiFetch(url, options = {}) {
   if (window.LibrarAInLog && (method !== "GET" || !res.ok)) {
     window.LibrarAInLog.logHttpDone(method, url, res.status);
   }
-  if (res.status === 401 && !options._retried) {
+  if (res.status === 401 && !options._retried && !options.noAuthPrompt) {
     const newToken = promptApiToken();
     if (newToken) {
       return apiFetch(url, { ...options, _retried: true });

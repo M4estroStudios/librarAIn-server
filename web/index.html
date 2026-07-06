@@ -96,6 +96,24 @@ body { margin: 0 auto; max-width: 64rem; padding: 1.5rem 1rem 3rem; }
 .pdf-dropzone-icon { display: inline-flex; align-items: center; justify-content: center; width: 3.25rem; height: 3.25rem; margin-bottom: 0.85rem; border-radius: 10px; background: #3c3c3c; color: #4ec9b0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
 .pdf-dropzone-title { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: #e8e8e8; }
 .pdf-dropzone-hint { margin: 0; font-size: 0.82rem; color: #9d9d9d; line-height: 1.4; }
+.ingest-queue-bar { position: sticky; top: 0; z-index: 200; margin: 0 0 1rem; padding: 0.55rem 0.75rem; border-radius: 10px; background: #2d2d30; border: 3px solid #4ec9b0; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45); }
+.ingest-queue-bar.hidden { display: none; }
+.ingest-queue-bar-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.65rem; }
+.ingest-queue-nav-btn { font: inherit; font-size: 1.1rem; line-height: 1; font-weight: 700; width: 2rem; height: 2rem; padding: 0; border-radius: 8px; border: 1px solid #555; background: #3c3c3c; color: #e8e8e8; cursor: pointer; }
+.ingest-queue-nav-btn:hover:not(:disabled) { background: #4a4a4a; }
+.ingest-queue-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.ingest-queue-pos-wrap { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; color: #9d9d9d; }
+.ingest-queue-pos-input { width: 2.6rem; font: inherit; font-size: 0.88rem; font-weight: 600; text-align: center; padding: 0.28rem 0.35rem; border-radius: 6px; border: 1px solid #555; background: #1e1e1e; color: #e8e8e8; }
+.ingest-queue-pos-confirm { font: inherit; font-size: 0.76rem; font-weight: 600; padding: 0.32rem 0.55rem; border-radius: 6px; border: 1px solid #555; background: #3c3c3c; color: #cccccc; cursor: pointer; }
+.ingest-queue-pos-confirm:hover:not(:disabled) { background: #4a4a4a; }
+.ingest-queue-name { flex: 1 1 8rem; min-width: 0; font-size: 0.84rem; color: #e8e8e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ingest-queue-status { font-size: 0.76rem; color: #9d9d9d; white-space: nowrap; }
+.ingest-queue-status.is-done { color: #6a9955; }
+.ingest-queue-status.is-error { color: #f48771; }
+.ingest-queue-status.is-running { color: #4ec9b0; }
+.ingest-queue-ingest-all { margin-left: auto; font: inherit; font-size: 0.82rem; font-weight: 600; padding: 0.42rem 0.8rem; border-radius: 8px; border: 0; background: #0e639c; color: #fff; cursor: pointer; white-space: nowrap; }
+.ingest-queue-ingest-all:hover:not(:disabled) { background: #1177bb; }
+.ingest-queue-ingest-all:disabled { opacity: 0.45; cursor: not-allowed; }
 .pdf-workspace { display: grid; gap: 0.85rem; }
 .pdf-workspace-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem; padding: 0.65rem 0.85rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
 .pdf-workspace-file { display: grid; gap: 0.1rem; min-width: 0; }
@@ -517,13 +535,28 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
 <h1 class="embed-hide">Ingestione libro (GLM OCR)</h1>
 <p class="lead embed-hide">Pipeline GLM-OCR: carica il PDF, seleziona esclusioni, TOC e indice nel visualizzatore, poi completa i metadati REICAT.</p>
 
+<div id="ingest-queue-bar" class="ingest-queue-bar hidden" aria-label="Coda ingestione">
+  <div class="ingest-queue-bar-inner">
+    <button type="button" id="ingest-queue-prev" class="ingest-queue-nav-btn" aria-label="Libro precedente" title="Precedente">‹</button>
+    <span class="ingest-queue-pos-wrap">
+      <input type="number" id="ingest-queue-pos" class="ingest-queue-pos-input" min="1" value="1" aria-label="Posizione in coda">
+      <span>/ <span id="ingest-queue-total">1</span></span>
+    </span>
+    <button type="button" id="ingest-queue-pos-confirm" class="ingest-queue-pos-confirm" title="Conferma nuova posizione">↵</button>
+    <button type="button" id="ingest-queue-next" class="ingest-queue-nav-btn" aria-label="Libro successivo" title="Successivo">›</button>
+    <span id="ingest-queue-name" class="ingest-queue-name">—</span>
+    <span id="ingest-queue-status" class="ingest-queue-status"></span>
+    <button type="button" id="ingest-queue-ingest-all" class="ingest-queue-ingest-all">Ingesta tutti</button>
+  </div>
+</div>
+
 <form id="ingest-form">
   <div id="pdf-dropzone" class="pdf-dropzone" aria-label="Carica PDF">
-    <input type="file" id="pdf-file-input" class="pdf-dropzone-input" name="pdf_file" accept="application/pdf,.pdf" required>
+    <input type="file" id="pdf-file-input" class="pdf-dropzone-input" name="pdf_file" accept="application/pdf,.pdf" multiple required>
     <div class="pdf-dropzone-inner">
       <div class="pdf-dropzone-icon" aria-hidden="true">PDF</div>
-      <p class="pdf-dropzone-title">Trascina qui il PDF</p>
-      <p class="pdf-dropzone-hint">oppure clicca per sfogliare · un documento per ingestione</p>
+      <p class="pdf-dropzone-title">Trascina qui PDF o cartella</p>
+      <p class="pdf-dropzone-hint">clicca per uno o più PDF (Ctrl/Shift)</p>
     </div>
   </div>
 
@@ -1438,6 +1471,319 @@ if (document.readyState === "loading") {
     syncing: false,
   };
 
+  var ingestQueue = [];
+  var currentQueueIndex = 0;
+  var nextQueueItemId = 1;
+  var queueNavLock = false;
+  var ingestAllRunning = false;
+  var ingestQueueBar = document.getElementById("ingest-queue-bar");
+  var ingestQueuePrev = document.getElementById("ingest-queue-prev");
+  var ingestQueueNext = document.getElementById("ingest-queue-next");
+  var ingestQueuePos = document.getElementById("ingest-queue-pos");
+  var ingestQueuePosConfirm = document.getElementById("ingest-queue-pos-confirm");
+  var ingestQueueTotal = document.getElementById("ingest-queue-total");
+  var ingestQueueName = document.getElementById("ingest-queue-name");
+  var ingestQueueStatus = document.getElementById("ingest-queue-status");
+  var ingestQueueIngestAll = document.getElementById("ingest-queue-ingest-all");
+
+  function isPdfFile(file) {
+    return file && (file.type === "application/pdf" || /\.pdf$/i.test(file.name || ""));
+  }
+
+  function filterPdfFiles(files) {
+    return Array.from(files || []).filter(isPdfFile).sort(function (a, b) {
+      return String(a.name || "").localeCompare(String(b.name || ""), "it");
+    });
+  }
+
+  function clearIngestQueue() {
+    ingestQueue.forEach(function (item) {
+      if (item.pickerCache) item.pickerCache.loadGen += 1;
+    });
+    ingestQueue = [];
+    currentQueueIndex = 0;
+    renderQueueBar();
+  }
+
+  function captureFormSnapshot() {
+    var fields = {};
+    var elements = form.elements;
+    for (var i = 0; i < elements.length; i++) {
+      var el = elements[i];
+      if (!el.name || el.name === "pdf_file") continue;
+      if (el.type === "checkbox") fields[el.name] = el.checked;
+      else fields[el.name] = el.value;
+    }
+    return {
+      fields: fields,
+      excludeSelected: Object.assign({}, pagePickerState.selected),
+      excludeLastSelected: pagePickerState.lastSelected,
+      tocSelected: Object.assign({}, tocPagePickerState.selected),
+      tocLastSelected: tocPagePickerState.lastSelected,
+      indexSelected: Object.assign({}, indexPagePickerState.selected),
+      indexLastSelected: indexPagePickerState.lastSelected,
+      reicatSelected: Object.assign({}, reicatPagePickerState.selected),
+      reicatLastSelected: reicatPagePickerState.lastSelected,
+      viewerMode: viewerMode,
+    };
+  }
+
+  function applyFormSnapshot(snap) {
+    if (!snap) return;
+    var fields = snap.fields || {};
+    for (var name in fields) {
+      if (!Object.prototype.hasOwnProperty.call(fields, name)) continue;
+      var el = form.elements[name];
+      if (!el) continue;
+      if (el.type === "checkbox") el.checked = !!fields[name];
+      else el.value = fields[name] == null ? "" : String(fields[name]);
+    }
+    pagePickerState.syncing = true;
+    pagePickerState.selected = Object.assign({}, snap.excludeSelected || {});
+    pagePickerState.lastSelected = snap.excludeLastSelected || null;
+    pagePickerState.syncing = false;
+    tocPagePickerState.syncing = true;
+    tocPagePickerState.selected = Object.assign({}, snap.tocSelected || {});
+    tocPagePickerState.lastSelected = snap.tocLastSelected || null;
+    tocPagePickerState.syncing = false;
+    indexPagePickerState.syncing = true;
+    indexPagePickerState.selected = Object.assign({}, snap.indexSelected || {});
+    indexPagePickerState.lastSelected = snap.indexLastSelected || null;
+    indexPagePickerState.syncing = false;
+    reicatPagePickerState.syncing = true;
+    reicatPagePickerState.selected = Object.assign({}, snap.reicatSelected || {});
+    reicatPagePickerState.lastSelected = snap.reicatLastSelected || null;
+    reicatPagePickerState.syncing = false;
+    pagesToRemoveInput.value = pagesToSpec(selectedPagesList());
+    tocRangeInput.value = pagesToSpec(tocSelectedPagesList());
+    indexRangeInput.value = pagesToSpec(indexSelectedPagesList());
+    reicatPagesInput.value = pagesToSpec(reicatSelectedPagesList());
+    setViewerMode(snap.viewerMode || "exclude");
+    refreshViewerThumbUi();
+    renderPagePickerDetail(viewerLastSelected(viewerMode));
+  }
+
+  function snapshotCurrentItem() {
+    if (queueNavLock || !ingestQueue.length) return;
+    var item = ingestQueue[currentQueueIndex];
+    if (!item) return;
+    item.snapshot = captureFormSnapshot();
+  }
+
+  function queueItemStatusLabel(status) {
+    if (status === "done") return "Completato";
+    if (status === "error") return "Errore";
+    if (status === "submitting") return "In invio…";
+    if (status === "running") return "In corso…";
+    return "In attesa";
+  }
+
+  function renderQueueBar() {
+    if (!ingestQueueBar) return;
+    var multi = ingestQueue.length > 1;
+    ingestQueueBar.classList.toggle("hidden", !multi);
+    if (!multi) return;
+    var item = ingestQueue[currentQueueIndex];
+    if (ingestQueuePos) ingestQueuePos.value = String(currentQueueIndex + 1);
+    if (ingestQueuePos) ingestQueuePos.max = String(ingestQueue.length);
+    if (ingestQueueTotal) ingestQueueTotal.textContent = String(ingestQueue.length);
+    if (ingestQueueName) ingestQueueName.textContent = item ? item.fileName : "—";
+    if (ingestQueueStatus) {
+      ingestQueueStatus.textContent = item ? queueItemStatusLabel(item.status) : "";
+      ingestQueueStatus.className = "ingest-queue-status" +
+        (item && item.status === "done" ? " is-done" : "") +
+        (item && item.status === "error" ? " is-error" : "") +
+        (item && (item.status === "submitting" || item.status === "running") ? " is-running" : "");
+    }
+    var navDisabled = ingestAllRunning;
+    if (ingestQueuePrev) ingestQueuePrev.disabled = navDisabled || currentQueueIndex <= 0;
+    if (ingestQueueNext) ingestQueueNext.disabled = navDisabled || currentQueueIndex >= ingestQueue.length - 1;
+    if (ingestQueuePos) ingestQueuePos.disabled = navDisabled;
+    if (ingestQueuePosConfirm) ingestQueuePosConfirm.disabled = navDisabled;
+    if (ingestQueueIngestAll) {
+      var pending = ingestQueue.some(function (q) { return q.status === "pending" || q.status === "error"; });
+      ingestQueueIngestAll.disabled = ingestAllRunning || !pending;
+    }
+    if (document.body.classList.contains("embed-mode") && typeof reportEmbedHeight === "function") reportEmbedHeight();
+  }
+
+  async function restoreQueueItem(index) {
+    if (index < 0 || index >= ingestQueue.length) return;
+    queueNavLock = true;
+    currentQueueIndex = index;
+    renderQueueBar();
+    var item = ingestQueue[index];
+    startQueueItemPreload(item);
+    await displayQueueItemPicker(item);
+    if (item.snapshot) applyFormSnapshot(item.snapshot);
+    else {
+      pagePickerState.selected = {};
+      pagePickerState.lastSelected = null;
+      pagesToRemoveInput.value = "";
+      resetAllViewerSelections();
+      refreshViewerThumbUi();
+    }
+    queueNavLock = false;
+    renderQueueBar();
+  }
+
+  function navigateQueue(delta) {
+    if (ingestAllRunning || ingestQueue.length <= 1) return;
+    snapshotCurrentItem();
+    var next = currentQueueIndex + delta;
+    if (next < 0 || next >= ingestQueue.length) return;
+    restoreQueueItem(next);
+  }
+
+  function confirmQueuePosition() {
+    if (ingestAllRunning || !ingestQueue.length || !ingestQueuePos) return;
+    snapshotCurrentItem();
+    var newPos = parseInt(ingestQueuePos.value, 10);
+    var oldPos = currentQueueIndex + 1;
+    if (isNaN(newPos) || newPos < 1 || newPos > ingestQueue.length) {
+      ingestQueuePos.value = String(oldPos);
+      return;
+    }
+    if (newPos === oldPos) return;
+    var otherIdx = newPos - 1;
+    var temp = ingestQueue[currentQueueIndex];
+    ingestQueue[currentQueueIndex] = ingestQueue[otherIdx];
+    ingestQueue[otherIdx] = temp;
+    restoreQueueItem(otherIdx);
+  }
+
+  function loadPdfQueueFromFiles(files) {
+    var pdfs = filterPdfFiles(files);
+    if (!pdfs.length) {
+      show("err", "Nessun PDF trovato nella selezione.");
+      return;
+    }
+    if (pdfs.length === 1) {
+      clearIngestQueue();
+      assignPdfFile(pdfs[0]);
+      return;
+    }
+    if (ingestQueue.length) snapshotCurrentItem();
+    clearIngestQueue();
+    pdfs.forEach(function (file) {
+      ingestQueue.push({
+        id: nextQueueItemId++,
+        file: file,
+        fileName: file.name,
+        status: "pending",
+        error: null,
+        snapshot: null,
+        pickerCache: null,
+      });
+    });
+    ingestQueue.forEach(function (item) {
+      startQueueItemPreload(item);
+    });
+    restoreQueueItem(0);
+  }
+
+  function readAllDirectoryEntries(reader) {
+    return new Promise(function (resolve, reject) {
+      var entries = [];
+      function readBatch() {
+        reader.readEntries(function (batch) {
+          if (!batch.length) {
+            resolve(entries);
+            return;
+          }
+          entries = entries.concat(Array.from(batch));
+          readBatch();
+        }, reject);
+      }
+      readBatch();
+    });
+  }
+
+  async function collectPdfFilesFromEntry(entry) {
+    if (!entry) return [];
+    if (entry.isFile) {
+      return new Promise(function (resolve) {
+        entry.file(function (file) {
+          resolve(isPdfFile(file) ? [file] : []);
+        }, function () { resolve([]); });
+      });
+    }
+    if (!entry.isDirectory) return [];
+    var reader = entry.createReader();
+    var children = await readAllDirectoryEntries(reader);
+    var nested = await Promise.all(children.map(collectPdfFilesFromEntry));
+    return nested.reduce(function (acc, part) { return acc.concat(part); }, []);
+  }
+
+  async function collectPdfFilesFromDataTransfer(dt) {
+    if (dt.items && dt.items.length) {
+      var entries = [];
+      for (var i = 0; i < dt.items.length; i++) {
+        var entry = dt.items[i].webkitGetAsEntry && dt.items[i].webkitGetAsEntry();
+        if (entry) entries.push(entry);
+      }
+      if (entries.length) {
+        var nested = await Promise.all(entries.map(collectPdfFilesFromEntry));
+        return filterPdfFiles(nested.reduce(function (acc, part) { return acc.concat(part); }, []));
+      }
+    }
+    return filterPdfFiles(dt.files);
+  }
+
+  async function ingestAllQueued() {
+    if (ingestAllRunning || ingestQueue.length <= 1) return;
+    snapshotCurrentItem();
+    ingestAllRunning = true;
+    renderQueueBar();
+    btn.disabled = true;
+    for (var i = 0; i < ingestQueue.length; i++) {
+      var item = ingestQueue[i];
+      if (item.status === "done") continue;
+      currentQueueIndex = i;
+      await restoreQueueItem(i);
+      item.status = "submitting";
+      renderQueueBar();
+      startProgress();
+      try {
+        await submitCurrentIngest();
+        item.status = "done";
+        item.error = null;
+      } catch (err) {
+        item.status = "error";
+        item.error = String(err && err.message ? err.message : err);
+        renderQueueBar();
+        break;
+      }
+      renderQueueBar();
+    }
+    ingestAllRunning = false;
+    btn.disabled = false;
+    renderQueueBar();
+  }
+
+  if (ingestQueuePrev) ingestQueuePrev.addEventListener("click", function () { navigateQueue(-1); });
+  if (ingestQueueNext) ingestQueueNext.addEventListener("click", function () { navigateQueue(1); });
+  if (ingestQueuePosConfirm) ingestQueuePosConfirm.addEventListener("click", confirmQueuePosition);
+  if (ingestQueuePos) {
+    ingestQueuePos.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        confirmQueuePosition();
+      }
+    });
+  }
+  if (ingestQueueIngestAll) {
+    ingestQueueIngestAll.addEventListener("click", function () {
+      ingestAllQueued().catch(function (err) {
+        ingestAllRunning = false;
+        btn.disabled = false;
+        renderQueueBar();
+        if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest all failed", err);
+        showProgressAlert(String(err && err.message ? err.message : err));
+      });
+    });
+  }
+
   function showPdfWorkspace(file) {
     pdfDropzone.classList.add("hidden");
     pdfWorkspace.classList.remove("hidden");
@@ -1933,7 +2279,11 @@ if (document.readyState === "loading") {
     var cancelled = false;
 
     function checkCancelled() {
-      if (loadGen !== pagePickerState.loadGen) {
+      if (opts.isCancelled && opts.isCancelled()) {
+        cancelled = true;
+        return true;
+      }
+      if (opts.loadGen != null && loadGen !== pagePickerState.loadGen) {
         cancelled = true;
         return true;
       }
@@ -1982,22 +2332,172 @@ if (document.readyState === "loading") {
     return { cancelled: cancelled, done: done };
   }
 
-  async function renderPdfThumbsParallel(pdfDoc, pageNums, loadGen, onProgress, onThumbReady) {
+  async function renderPdfThumbsParallel(pdfDoc, pageNums, loadGen, onProgress, onThumbReady, extraOpts) {
+    var renderOpts = {
+      loadGen: loadGen,
+      onProgress: onProgress,
+      onPage: function (pageNum, url) {
+        var thumbUrl = url || makeFallbackThumb(pageNum);
+        if (extraOpts && extraOpts.thumbStore) extraOpts.thumbStore[pageNum] = thumbUrl;
+        else pagePickerState.thumbUrls[pageNum] = thumbUrl;
+        if (onThumbReady) onThumbReady(pageNum, thumbUrl);
+      },
+    };
+    if (extraOpts && extraOpts.isCancelled) renderOpts.isCancelled = extraOpts.isCancelled;
     return renderPdfPagesInParallel(
       pdfDoc,
       pageNums,
       PDF_THUMB_SCALE,
       PDF_THUMB_JPEG_QUALITY,
-      {
-        loadGen: loadGen,
-        onProgress: onProgress,
-        onPage: function (pageNum, url) {
-          var thumbUrl = url || makeFallbackThumb(pageNum);
-          pagePickerState.thumbUrls[pageNum] = thumbUrl;
-          if (onThumbReady) onThumbReady(pageNum, thumbUrl);
-        },
-      }
+      renderOpts
     );
+  }
+
+  function createPickerCache() {
+    return {
+      loadGen: 1,
+      pdfDoc: null,
+      numPages: 0,
+      thumbUrls: {},
+      detailCache: {},
+      renderDone: 0,
+      renderTotal: 0,
+      rendering: false,
+      preloadStarted: false,
+      error: null,
+    };
+  }
+
+  function isQueueItemActive(item) {
+    return ingestQueue.length > 1 && ingestQueue[currentQueueIndex] === item;
+  }
+
+  function updatePickerThumbInGrid(pageNum, thumbUrl) {
+    var btn = pagePickerGrid.querySelector('.page-picker-thumb[data-page="' + pageNum + '"]');
+    if (!btn) return;
+    var img = btn.querySelector("img");
+    if (img) img.src = thumbUrl;
+  }
+
+  function applyPickerCacheToDisplay(item) {
+    var cache = item.pickerCache;
+    if (!cache || !cache.pdfDoc) return;
+    pagePickerState.pdfDoc = cache.pdfDoc;
+    pagePickerState.numPages = cache.numPages;
+    pagePickerState.thumbUrls = cache.thumbUrls;
+    pagePickerState.detailCache = cache.detailCache;
+    pagePickerState.pdfFile = item.file;
+    var initialThumbs = [];
+    for (var pn = 1; pn <= cache.numPages; pn++) {
+      initialThumbs.push({
+        pageNum: pn,
+        thumbUrl: cache.thumbUrls[pn] || makeFallbackThumb(pn),
+      });
+    }
+    buildPagePickerGrid(initialThumbs);
+    pagePickerGridWrap.classList.remove("is-rendering");
+    if (cache.rendering) {
+      pagePickerGridWrap.classList.add("is-rendering-progress");
+      setPagePickerRenderProgress(cache.renderDone || 0, cache.renderTotal || cache.numPages);
+    } else {
+      pagePickerGridWrap.classList.remove("is-rendering-progress");
+      setPagePickerRenderProgress(cache.renderTotal || cache.numPages, cache.renderTotal || cache.numPages);
+    }
+    refreshViewerThumbUi();
+    if (viewerLastSelected(viewerMode)) renderPagePickerDetail(viewerLastSelected(viewerMode));
+    refreshFilteredRangePickers();
+    updateViewerMeta();
+  }
+
+  async function waitPickerCacheDoc(cache) {
+    var deadline = Date.now() + 120000;
+    while (!cache.pdfDoc && !cache.error && cache.preloadStarted && Date.now() < deadline) {
+      await new Promise(function (resolve) { setTimeout(resolve, 40); });
+    }
+    if (cache.error) throw new Error(cache.error);
+    if (!cache.pdfDoc) throw new Error("Timeout caricamento PDF.");
+  }
+
+  async function displayQueueItemPicker(item) {
+    if (!item || !item.file) return;
+    pagePickerState.loadGen += 1;
+    var displayGen = pagePickerState.loadGen;
+    pagePickerState.pdfFile = item.file;
+    showPdfWorkspace(item.file);
+    var dt = new DataTransfer();
+    dt.items.add(item.file);
+    pdfFileInput.files = dt.files;
+    if (!item.pickerCache) item.pickerCache = createPickerCache();
+    var cache = item.pickerCache;
+    pagePickerGridWrap.classList.add("is-rendering");
+    pdfViewerMeta.textContent = "Caricamento PDF…";
+    pagePickerGrid.innerHTML = "";
+    try {
+      if (!cache.pdfDoc) await waitPickerCacheDoc(cache);
+      if (displayGen !== pagePickerState.loadGen) return;
+      applyPickerCacheToDisplay(item);
+    } catch (err) {
+      if (displayGen !== pagePickerState.loadGen) return;
+      pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
+      pdfViewerMeta.textContent = "Anteprima non disponibile: " + String(err && err.message ? err.message : err);
+    }
+  }
+
+  function startQueueItemPreload(item) {
+    if (!item || !item.file) return;
+    if (!item.pickerCache) item.pickerCache = createPickerCache();
+    var cache = item.pickerCache;
+    if (cache.preloadStarted) return;
+    cache.preloadStarted = true;
+    cache.rendering = true;
+    var cacheLoadGen = cache.loadGen;
+
+    (async function () {
+      try {
+        var mod = await pdfJs();
+        var buf = await item.file.arrayBuffer();
+        var pdfDoc = await mod.getDocument({ data: buf }).promise;
+        if (cache.loadGen !== cacheLoadGen) return;
+        cache.pdfDoc = pdfDoc;
+        cache.numPages = pdfDoc.numPages;
+        cache.renderTotal = pdfDoc.numPages;
+        cache.renderDone = 0;
+        if (isQueueItemActive(item)) applyPickerCacheToDisplay(item);
+        var allPageNums = [];
+        for (var pn = 1; pn <= pdfDoc.numPages; pn++) allPageNums.push(pn);
+        await renderPdfThumbsParallel(
+          pdfDoc,
+          allPageNums,
+          null,
+          function (done, total) {
+            cache.renderDone = done;
+            if (isQueueItemActive(item)) setPagePickerRenderProgress(done, total);
+          },
+          function (pageNum, thumbUrl) {
+            cache.thumbUrls[pageNum] = thumbUrl;
+            if (isQueueItemActive(item)) updatePickerThumbInGrid(pageNum, thumbUrl);
+          },
+          {
+            isCancelled: function () { return cache.loadGen !== cacheLoadGen; },
+            thumbStore: cache.thumbUrls,
+          }
+        );
+        if (cache.loadGen !== cacheLoadGen) return;
+        cache.rendering = false;
+        if (isQueueItemActive(item)) {
+          pagePickerGridWrap.classList.remove("is-rendering-progress");
+          refreshViewerThumbUi();
+        }
+      } catch (err) {
+        if (cache.loadGen !== cacheLoadGen) return;
+        cache.error = String(err && err.message ? err.message : err);
+        cache.rendering = false;
+        if (isQueueItemActive(item)) {
+          pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
+          pdfViewerMeta.textContent = "Anteprima non disponibile: " + cache.error;
+        }
+      }
+    })();
   }
 
   function setPagePickerRenderProgress(done, total) {
@@ -2132,6 +2632,7 @@ if (document.readyState === "loading") {
 
   function resetPagePicker() {
     resetPagePickerState();
+    clearIngestQueue();
     showPdfDropzone();
     if (pdfFileInput) pdfFileInput.value = "";
   }
@@ -2206,12 +2707,32 @@ if (document.readyState === "loading") {
   pdfDropzone.addEventListener("drop", function (event) {
     event.preventDefault();
     pdfDropzone.classList.remove("is-dragover");
-    var file = event.dataTransfer.files && event.dataTransfer.files[0];
-    assignPdfFile(file);
+    collectPdfFilesFromDataTransfer(event.dataTransfer).then(function (pdfs) {
+      if (pdfs.length > 1) {
+        loadPdfQueueFromFiles(pdfs);
+        return;
+      }
+      if (pdfs.length === 1) {
+        clearIngestQueue();
+        assignPdfFile(pdfs[0]);
+        return;
+      }
+      var file = event.dataTransfer.files && event.dataTransfer.files[0];
+      assignPdfFile(file);
+    }).catch(function (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("folder drop failed", err);
+      show("err", String(err && err.message ? err.message : err));
+    });
   });
   pdfFileInput.addEventListener("change", function (event) {
-    var file = event.target.files && event.target.files.length ? event.target.files[0] : null;
-    if (file) loadPagePickerFromFile(file);
+    var files = event.target.files;
+    if (!files || !files.length) return;
+    if (files.length > 1) {
+      loadPdfQueueFromFiles(files);
+      return;
+    }
+    clearIngestQueue();
+    loadPagePickerFromFile(files[0]);
   });
   pdfChangeBtn.addEventListener("click", function () {
     resetPagePicker();
@@ -3850,52 +4371,144 @@ if (document.readyState === "loading") {
     return url + (url.indexOf("?") >= 0 ? "&" : "?") + "token=" + encodeURIComponent(token);
   }
 
+  function ingestDoneDisplay(ev) {
+    var result = ev.result;
+    if (typeof result === "string" && result) return result;
+    if (result && typeof result === "object" && result.job_id) return String(result.job_id);
+    return ingestPagesState.jobId || ev.job_id || "";
+  }
+
+  function releaseSubmitButton() {
+    if (!ingestAllRunning) btn.disabled = false;
+  }
+
+  function markQueueItemFromJob(status) {
+    if (!ingestQueue.length) return;
+    var item = ingestQueue[currentQueueIndex];
+    if (!item) return;
+    item.status = status;
+    renderQueueBar();
+  }
+
   function connectSSE(eventsUrl) {
-    var es = new EventSource(withToken(eventsUrl));
-    var TERMINAL = new Set(["done", "error"]);
+    return new Promise(function (resolve, reject) {
+      var es = new EventSource(withToken(eventsUrl));
+      var settled = false;
 
-    function onMessage(e) {
-      var ev;
-      try { ev = JSON.parse(e.data); } catch (_) { return; }
-      handleEvent(ev);
+      function finish(err, result) {
+        if (settled) return;
+        settled = true;
+        es.close();
+        if (err) reject(err);
+        else resolve(result);
+      }
+
+      function onMessage(e) {
+        var ev;
+        try { ev = JSON.parse(e.data); } catch (_) { return; }
+        handleEvent(ev);
+      }
+
+      function onDone(e) {
+        var ev;
+        try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+        applyTimingFields(ev);
+        var result = ev.result;
+        if (result && typeof result === "object" && result.timing) applyTimingFields({ timing: result.timing });
+        if (result && typeof result === "object") applyResultPagesState(result);
+        markIngestJobComplete();
+        show("ok", ingestDoneDisplay(ev) || result || ev);
+        if (globalTotal > 0) globalStep = globalTotal;
+        renderAllProgress();
+        markQueueItemFromJob("done");
+        releaseSubmitButton();
+        finish(null, ev);
+      }
+
+      function onError(e) {
+        var ev;
+        try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+        var msg = ev.message || String(ev);
+        showProgressAlert(msg);
+        markIngestJobComplete();
+        markQueueItemFromJob("error");
+        releaseSubmitButton();
+        finish(new Error(msg));
+      }
+
+      function onSSEError() {
+        var msg = "Connessione SSE interrotta inaspettatamente.";
+        showProgressAlert(msg);
+        markQueueItemFromJob("error");
+        releaseSubmitButton();
+        finish(new Error(msg));
+      }
+
+      var eventTypes = ["started", "progress", "page_progress", "page_skipped",
+                        "page_failed", "completed", "failed", "pipeline_total"];
+      eventTypes.forEach(function (t) { es.addEventListener(t, onMessage); });
+      es.addEventListener("done", onDone);
+      es.addEventListener("error", onError);
+      es.onerror = onSSEError;
+    });
+  }
+
+  async function submitCurrentIngest() {
+    if (ingestQueue.length) snapshotCurrentItem();
+
+    var fileInput = form.querySelector('[name="pdf_file"]');
+    var file = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0] : null;
+    if (!file || !file.size) throw new Error("Seleziona un file PDF.");
+
+    var pagesRemoveRaw = form.querySelector('[name="pages_to_remove"]') && form.querySelector('[name="pages_to_remove"]').value;
+    var tocRaw = form.querySelector('[name="toc_range"]').value.trim();
+    var indexRaw = form.querySelector('[name="index_range"]').value.trim();
+    var removedExpanded = parsePagesSpec(pagesRemoveRaw);
+
+    try {
+      var mod = await pdfJs();
+      var buf = await file.arrayBuffer();
+      var pdf = await mod.getDocument({ data: buf }).promise;
+      var numPages = pdf.numPages;
+      validateClientPdfPages({ numPages: numPages, removedExpanded: removedExpanded, tocRaw: tocRaw, indexRaw: indexRaw });
+    } catch (preErr) {
+      throw new Error("Verifica sul PDF prima dell'invio:\n\n" + String(preErr && preErr.message ? preErr.message : preErr) + "\n\n(Invio al server annullato.)");
     }
 
-    function onDone(e) {
-      var ev;
-      try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
-      applyTimingFields(ev);
-      var result = ev.result || ev;
-      if (result && result.timing) applyTimingFields({ timing: result.timing });
-      applyResultPagesState(result);
-      markIngestJobComplete();
-      show("ok", result);
-      if (globalTotal > 0) globalStep = globalTotal;
-      renderAllProgress();
-      es.close();
-      btn.disabled = false;
+    var fd = new FormData(form);
+    var submitHeaders = apiToken() ? { "X-API-Token": apiToken() } : {};
+    var res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: submitHeaders });
+    if (res.status === 401) {
+      var newToken = promptApiToken();
+      if (newToken) {
+        res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
+      }
+    }
+    var data;
+    try { data = await res.json(); } catch (_) { data = { ok: false, error: "risposta non JSON" }; }
+
+    if (!res.ok) {
+      var msg = data.error || (data.errors && data.errors.message) || JSON.stringify(data);
+      throw new Error(msg);
     }
 
-    function onError(e) {
-      var ev;
-      try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
-      showProgressAlert(ev.message || String(ev));
-      markIngestJobComplete();
-      es.close();
-      btn.disabled = false;
+    ingestPagesState.jobId = data.job_id || "";
+    markQueueItemFromJob("running");
+    if (window.parent !== window) {
+      try {
+        window.parent.postMessage(
+          {
+            type: "librarain-ingest-started",
+            job_id: data.job_id || "",
+            events_url: data.events_url || "",
+            status_url: data.status_url || "",
+          },
+          "*"
+        );
+      } catch (_) {}
     }
 
-    function onSSEError() {
-      showProgressAlert("Connessione SSE interrotta inaspettatamente.");
-      es.close();
-      btn.disabled = false;
-    }
-
-    var eventTypes = ["started", "progress", "page_progress", "page_skipped",
-                      "page_failed", "completed", "failed", "pipeline_total"];
-    eventTypes.forEach(function (t) { es.addEventListener(t, onMessage); });
-    es.addEventListener("done", onDone);
-    es.addEventListener("error", onError);
-    es.onerror = onSSEError;
+    await connectSSE(data.events_url);
   }
 
   form.addEventListener("submit", async function (event) {
@@ -3908,59 +4521,7 @@ if (document.readyState === "loading") {
     startProgress();
 
     try {
-      var fileInput = form.querySelector('[name="pdf_file"]');
-      var file = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0] : null;
-      if (!file || !file.size) throw new Error("Seleziona un file PDF.");
-
-      var pagesRemoveRaw = form.querySelector('[name="pages_to_remove"]') && form.querySelector('[name="pages_to_remove"]').value;
-      var tocRaw = form.querySelector('[name="toc_range"]').value.trim();
-      var indexRaw = form.querySelector('[name="index_range"]').value.trim();
-      var removedExpanded = parsePagesSpec(pagesRemoveRaw);
-
-      try {
-        var mod = await pdfJs();
-        var buf = await file.arrayBuffer();
-        var pdf = await mod.getDocument({ data: buf }).promise;
-        var numPages = pdf.numPages;
-        validateClientPdfPages({ numPages: numPages, removedExpanded: removedExpanded, tocRaw: tocRaw, indexRaw: indexRaw });
-      } catch (preErr) {
-        throw new Error("Verifica sul PDF prima dell'invio:\n\n" + String(preErr && preErr.message ? preErr.message : preErr) + "\n\n(Invio al server annullato.)");
-      }
-
-      var fd = new FormData(form);
-      var submitHeaders = apiToken() ? { "X-API-Token": apiToken() } : {};
-      var res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: submitHeaders });
-      if (res.status === 401) {
-        var newToken = promptApiToken();
-        if (newToken) {
-          res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
-        }
-      }
-      var data;
-      try { data = await res.json(); } catch (_) { data = { ok: false, error: "risposta non JSON" }; }
-
-      if (!res.ok) {
-        var msg = data.error || (data.errors && data.errors.message) || JSON.stringify(data);
-        showProgressAlert(msg);
-        btn.disabled = false;
-        return;
-      }
-
-      connectSSE(data.events_url);
-      ingestPagesState.jobId = data.job_id || "";
-      if (window.parent !== window) {
-        try {
-          window.parent.postMessage(
-            {
-              type: "librarain-ingest-started",
-              job_id: data.job_id || "",
-              events_url: data.events_url || "",
-              status_url: data.status_url || "",
-            },
-            "*"
-          );
-        } catch (_) {}
-      }
+      await submitCurrentIngest();
     } catch (err) {
       if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest submit failed", err);
       if (progressBox.classList.contains("show")) {
@@ -3968,7 +4529,8 @@ if (document.readyState === "loading") {
       } else {
         show("err", String(err.message || err));
       }
-      btn.disabled = false;
+      markQueueItemFromJob("error");
+      releaseSubmitButton();
     }
   });
 
