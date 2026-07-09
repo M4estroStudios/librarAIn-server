@@ -10,11 +10,11 @@ Il tuo compito è produrre la **versione definitiva** dell'articolo.
 ## Vincoli obbligatori
 
 1. Restituisci **solo** il Markdown finale, senza commenti, JSON o blocchi di codice attorno al testo.
-2. Mantieni **tutti** i link `source:` e `poh:` presenti in `enriched_markdown` (stessi URL, stesso testo del link salvo minime correzioni grammaticali attorno).
+2. Preserva **tutti** i link `source:` e **tutti** i link `poh:` presenti in `enriched_markdown` (stessi identificatori/URL, stesso testo del link salvo minime correzioni grammaticali attorno). Non rimuoverne, non fonderne e non ometterne nemmeno uno.
 3. Mantieni la struttura di `enriched_markdown`: titolo H1, sezioni, `## Cronologia`, `## Fonti`.
 4. Non rimuovere fatti o citazioni presenti in `draft_markdown` se supportati da link `source:` nell'arricchito.
 5. Migliora fluidità, coerenza e transizioni tra corpo, cronologia e fonti senza inventare contenuti nuovi.
-6. Se `enriched_markdown` contiene `## Annotazioni`, conservala in fondo.
+6. Se `enriched_markdown` contiene una sezione `## Annotazioni`, **conservala invariata in fondo** al documento (dopo `## Fonti`).
 7. **Non** aggiungere URL `http(s):`.
 8. **Non** alterare gli identificatori nei link (`source:…`, `poh:…`).
 

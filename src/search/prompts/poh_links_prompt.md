@@ -11,7 +11,7 @@ Ricevi un **singolo paragrafo** Markdown già redatto con link alle fonti nel fo
 5. Se un soggetto è nominato, trasforma la menzione in:
    `[Nome leggibile](poh:<subject.id>)`
    usando l'`id` esatto dal payload.
-6. Usa come testo del link la forma già presente nel paragrafo (label o alias naturale nel contesto).
+6. Usa come testo del link la forma già presente nel paragrafo (label o alias naturale nel contesto). Il **testo del link verrà riusato verbatim come etichetta in E-TALY** (`[[poh_id|testo]]`), quindi deve essere una forma breve, pulita e leggibile — il nome così come appare nel paragrafo — mai frasi lunghe, incisi, o segni di punteggiatura finali.
 7. Se `primary_poh` è fornito e coincide con `subject.id`: nel **lead** (primo paragrafo dopo H1, indicato da `is_lead_paragraph: true`) **non** linkare il soggetto principale; in tutti gli altri paragrafi linkalo normalmente se nominato.
 8. Linka **solo** i soggetti elencati in `subjects`; non aggiungere altri link `poh:`.
 9. **Non** usare URL `http(s):` per i POH.

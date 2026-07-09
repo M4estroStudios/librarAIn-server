@@ -18,6 +18,7 @@ from src.api.admin_embeddings import (
     try_handle_admin_embeddings_post,
 )
 from src.api.chat_completions_handler import handle_chat_completions
+from src.api.etaly_export_handler import build_etaly_export_routes
 from src.api.system_preflight import evaluate_preflight, normalize_preflight_operation
 from src.api.ingest_form import (
     InvalidPagesSpec,
@@ -281,6 +282,15 @@ def build_ingest_server(
     research_concurrency = ResearchConcurrencyLimiter(max_concurrent_research)
     job_semaphore = threading.Semaphore(max_concurrent_jobs)
 
+    etaly_try_get, etaly_try_post = build_etaly_export_routes(
+        data_root=data_root,
+        web_dir=web_dir,
+        settings=settings,
+        send_json=_send_json,
+        send_bytes=_send_bytes,
+        read_json_body=_read_body,
+    )
+
     research_try_get, research_try_post = build_research_routes(
         data_root=data_root,
         web_dir=web_dir,
@@ -352,6 +362,9 @@ def build_ingest_server(
             parsed = urllib.parse.urlparse(self.path)
             path = parsed.path
             query = urllib.parse.parse_qs(parsed.query)
+
+            if etaly_try_get(self, path, query):
+                return
 
             if research_try_get(self, path, query):
                 return
@@ -1366,6 +1379,20 @@ def build_ingest_server(
                     read_json_body=_read_body,
                     send_json=_send_json,
                 )
+                return
+            if parsed.path.startswith("/api/etaly/"):
+                try:
+                    if etaly_try_post(self, parsed.path):
+                        return
+                except Exception as exc:
+                    Log(
+                        ERROR_LOG_LEVEL,
+                        "etaly export POST handler crashed",
+                        {"path": parsed.path, "error": str(exc)},
+                    )
+                    _send_json(self, 500, {"ok": False, "error": str(exc)})
+                    return
+                _send_json(self, 404, {"ok": False, "error": "not found"})
                 return
             if parsed.path.startswith("/api/research/"):
                 try:

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export E-TALY — librarAIn</title>
+<style>
+:root { color-scheme: dark; font-family: system-ui, sans-serif; line-height: 1.45; color: #d4d4d4; background: #1e1e1e; }
+body { margin: 0 auto; max-width: 68rem; padding: 1.5rem 1rem 3rem; }
+h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
+p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
+.nav { font-size: 0.85rem; margin-bottom: 1rem; }
+a { color: #4ec9b0; }
+button { font: inherit; padding: 0.45rem 0.85rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
+button:hover:not(:disabled) { background: #fff; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.secondary { background: #3c3c3c; color: #e8e8e8; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-bottom: 1rem; }
+.panel { margin-bottom: 1.5rem; padding: 1rem; border-radius: 12px; background: #252526; border: 1px solid #3e3e3e; }
+.panel h2 { font-size: 0.95rem; margin: 0 0 0.75rem; color: #e8e8e8; }
+table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+th, td { text-align: left; padding: 0.45rem 0.5rem; border-bottom: 1px solid #3a3a3a; vertical-align: middle; }
+th { color: #9d9d9d; font-weight: 600; }
+.badge { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; }
+.badge.resolved { background: #23402f; color: #6dd39e; }
+.badge.pending { background: #4a3a22; color: #e0b060; }
+.muted { color: #9d9d9d; font-size: 0.8rem; }
+input[type="text"], input[type="number"], select, textarea { font: inherit; padding: 0.4rem 0.5rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
+input[type="text"], textarea { width: 100%; box-sizing: border-box; }
+label { display: block; font-size: 0.78rem; color: #9d9d9d; margin: 0.5rem 0 0.2rem; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 0.75rem; }
+.timeline-row { display: grid; grid-template-columns: 7rem 1fr auto; gap: 0.4rem; margin-bottom: 0.35rem; align-items: center; }
+.out { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 0.8rem; background: #161616; border: 1px solid #3a3a3a; border-radius: 8px; padding: 0.75rem; margin-top: 0.75rem; }
+.out.error { border-color: #7a3b3b; color: #f0a0a0; }
+.out.ok { border-color: #3b6a4a; color: #a0e0b0; }
+.hidden { display: none; }
+.row-actions { display: flex; gap: 0.4rem; }
+</style>
+</head>
+<body>
+<p class="nav"><a href="/">Ingestione</a> · <a href="/admin">Admin</a> · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a> · Export E-TALY</p>
+<h1>Proposta export E-TALY</h1>
+<p class="lead">Elenca i POH generati, propone i metadati (LLM), conferma il mapping verso E-TALY e scarica il bundle <code>.zip</code>. Nessun dato viene mai scritto in E-TALY: il bundle è solo un download.</p>
+
+<div class="toolbar">
+  <button id="reload-btn">Ricarica elenco</button>
+  <button id="build-btn" class="secondary" disabled>Scarica bundle dei selezionati</button>
+  <span class="muted" id="sel-count">0 selezionati</span>
+</div>
+
+<div class="panel">
+  <h2>POH generati</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:2rem;"></th>
+        <th>Titolo</th>
+        <th>Slug</th>
+        <th>Mapping</th>
+        <th>Proposta</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody id="rows"><tr><td colspan="6" class="muted">Caricamento…</td></tr></tbody>
+  </table>
+  <div id="list-out" class="out hidden"></div>
+</div>
+
+<div id="editor" class="panel hidden">
+  <h2>Proposta metadati — <span id="editor-slug"></span></h2>
+  <div class="grid2">
+    <div>
+      <label>Tipo POH</label>
+      <select id="ed-tipo">
+        <option value="p">p — persona</option>
+        <option value="o">o — organizzazione</option>
+        <option value="m">m — monumento/luogo</option>
+      </select>
+    </div>
+    <div>
+      <label>poh_id (vuoto = nuovo id assegnato)</label>
+      <input type="text" id="ed-pohid" placeholder="es. poh_p0123 oppure vuoto">
+    </div>
+  </div>
+  <label>Nome</label>
+  <input type="text" id="ed-name">
+
+  <label>Timeline (max 5)</label>
+  <div id="ed-timeline"></div>
+  <button class="secondary" id="ed-add-row" type="button">+ evento</button>
+
+  <div id="ed-geo" class="hidden">
+    <div class="grid2">
+      <div><label>lat</label><input type="number" id="ed-lat" step="any"></div>
+      <div><label>lon</label><input type="number" id="ed-lon" step="any"></div>
+      <div><label>region</label><input type="text" id="ed-region"></div>
+      <div><label>category</label><input type="text" id="ed-category"></div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:0.5rem;">
+    <div><label>wiki_title</label><input type="text" id="ed-wikititle"></div>
+    <div><label>wiki_url</label><input type="text" id="ed-wikiurl"></div>
+  </div>
+
+  <div class="toolbar" style="margin-top:1rem;">
+    <button id="ed-confirm" type="button">Conferma mapping</button>
+    <button id="ed-close" class="secondary" type="button">Chiudi</button>
+  </div>
+  <div id="editor-out" class="out hidden"></div>
+</div>
+
+<script>
+function apiToken() { return (localStorage.getItem("librarainApiToken") || "").trim(); }
+async function apiFetch(url, options) {
+  const opts = options || {};
+  opts.headers = Object.assign({}, opts.headers || {});
+  const token = apiToken();
+  if (token) opts.headers["X-API-Token"] = token;
+  let res = await fetch(url, opts);
+  if (res.status === 401) {
+    const entered = prompt("Il server richiede un token API (INGEST_API_TOKEN):");
+    if (entered && entered.trim()) {
+      localStorage.setItem("librarainApiToken", entered.trim());
+      opts.headers["X-API-Token"] = entered.trim();
+      res = await fetch(url, opts);
+    }
+  }
+  return res;
+}
+function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+const rowsEl = document.getElementById("rows");
+const listOut = document.getElementById("list-out");
+const buildBtn = document.getElementById("build-btn");
+const selCount = document.getElementById("sel-count");
+const editor = document.getElementById("editor");
+const state = { items: [], selected: new Set(), editing: null };
+
+function showListOut(msg, kind) {
+  listOut.textContent = msg;
+  listOut.className = "out" + (kind ? " " + kind : "");
+  listOut.classList.remove("hidden");
+}
+
+function refreshSelection() {
+  const resolved = state.items.filter((it) => it.mapping.status === "resolved").map((it) => it.slug);
+  for (const slug of Array.from(state.selected)) {
+    if (!resolved.includes(slug)) state.selected.delete(slug);
+  }
+  selCount.textContent = state.selected.size + " selezionati";
+  buildBtn.disabled = state.selected.size === 0;
+}
+
+function renderRows() {
+  if (!state.items.length) {
+    rowsEl.innerHTML = '<tr><td colspan="6" class="muted">Nessun articolo generato trovato.</td></tr>';
+    refreshSelection();
+    return;
+  }
+  rowsEl.innerHTML = "";
+  for (const it of state.items) {
+    const tr = document.createElement("tr");
+    const resolved = it.mapping.status === "resolved";
+    const mapTxt = resolved
+      ? esc(it.mapping.poh_id || "?") + " (" + esc(it.mapping.poh_type || "?") + ")"
+      : "pending" + (it.mapping.score != null ? " · score " + Number(it.mapping.score).toFixed(2) : "");
+    tr.innerHTML =
+      '<td><input type="checkbox" ' + (resolved ? "" : "disabled") + (state.selected.has(it.slug) ? " checked" : "") + '></td>' +
+      "<td>" + esc(it.title) + "</td>" +
+      '<td class="muted">' + esc(it.slug) + "</td>" +
+      '<td><span class="badge ' + (resolved ? "resolved" : "pending") + '">' + mapTxt + "</span></td>" +
+      "<td>" + (it.has_metadata_proposal ? "sì" : "—") + "</td>" +
+      '<td class="row-actions"><button class="secondary" data-act="propose">Proponi</button></td>';
+    const cb = tr.querySelector('input[type="checkbox"]');
+    cb.addEventListener("change", () => {
+      if (cb.checked) state.selected.add(it.slug); else state.selected.delete(it.slug);
+      refreshSelection();
+    });
+    tr.querySelector('[data-act="propose"]').addEventListener("click", () => propose(it));
+    rowsEl.appendChild(tr);
+  }
+  refreshSelection();
+}
+
+async function loadList() {
+  rowsEl.innerHTML = '<tr><td colspan="6" class="muted">Caricamento…</td></tr>';
+  try {
+    const res = await apiFetch("/api/etaly/export/list");
+    const data = await res.json();
+    if (!res.ok || !data.ok) { showListOut(data.error || ("HTTP " + res.status), "error"); return; }
+    listOut.classList.add("hidden");
+    state.items = data.items || [];
+    renderRows();
+  } catch (err) {
+    showListOut("Errore di rete: " + err.message, "error");
+  }
+}
+
+function timelineRowHtml(anno, evento) {
+  const div = document.createElement("div");
+  div.className = "timeline-row";
+  div.innerHTML =
+    '<input type="text" class="tl-anno" placeholder="1271 / 509 a.C." value="' + esc(anno) + '">' +
+    '<input type="text" class="tl-evento" value="' + esc(evento) + '">' +
+    '<button class="secondary tl-del" type="button">×</button>';
+  div.querySelector(".tl-del").addEventListener("click", () => div.remove());
+  return div;
+}
+
+function propose(item) {
+  state.editing = item;
+  editor.classList.remove("hidden");
+  document.getElementById("editor-slug").textContent = item.slug;
+  document.getElementById("ed-name").value = item.title || "";
+  document.getElementById("ed-pohid").value = item.mapping.poh_id || "";
+  document.getElementById("ed-tipo").value = item.mapping.poh_type || "p";
+  document.getElementById("ed-timeline").innerHTML = "";
+  toggleGeo();
+  const out = document.getElementById("editor-out");
+  out.textContent = "Proposta LLM in corso…";
+  out.className = "out";
+  out.classList.remove("hidden");
+  editor.scrollIntoView({ behavior: "smooth" });
+  runPropose(item.slug, out);
+}
+
+async function runPropose(slug, out) {
+  try {
+    const res = await apiFetch("/api/etaly/export/propose", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slug }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) { out.textContent = data.error || ("HTTP " + res.status); out.className = "out error"; return; }
+    const p = data.proposal || {};
+    document.getElementById("ed-tipo").value = p.tipo || "p";
+    if (p.name) document.getElementById("ed-name").value = p.name;
+    const tl = document.getElementById("ed-timeline");
+    tl.innerHTML = "";
+    for (const ev of (p.timeline || [])) tl.appendChild(timelineRowHtml(ev.anno, ev.evento));
+    if (p.geo_hint && (p.geo_hint.lat != null || p.geo_hint.lon != null)) {
+      document.getElementById("ed-lat").value = p.geo_hint.lat != null ? p.geo_hint.lat : "";
+      document.getElementById("ed-lon").value = p.geo_hint.lon != null ? p.geo_hint.lon : "";
+    }
+    toggleGeo();
+    out.textContent = "Proposta pronta. Rivedi e conferma.";
+    out.className = "out ok";
+  } catch (err) {
+    out.textContent = "Errore di rete: " + err.message;
+    out.className = "out error";
+  }
+}
+
+function toggleGeo() {
+  const isM = document.getElementById("ed-tipo").value === "m";
+  document.getElementById("ed-geo").classList.toggle("hidden", !isM);
+}
+
+function collectTimeline() {
+  const rows = document.querySelectorAll("#ed-timeline .timeline-row");
+  const out = [];
+  for (const r of rows) {
+    const anno = r.querySelector(".tl-anno").value.trim();
+    const evento = r.querySelector(".tl-evento").value.trim();
+    if (anno && evento) out.push({ anno, evento });
+  }
+  return out;
+}
+
+async function confirmMapping() {
+  const item = state.editing;
+  if (!item) return;
+  const out = document.getElementById("editor-out");
+  const tipo = document.getElementById("ed-tipo").value;
+  const body = {
+    slug: item.slug,
+    poh_type: tipo,
+    name: document.getElementById("ed-name").value.trim(),
+    poh_id: document.getElementById("ed-pohid").value.trim() || undefined,
+    timeline: collectTimeline(),
+    wiki_title: document.getElementById("ed-wikititle").value.trim() || undefined,
+    wiki_url: document.getElementById("ed-wikiurl").value.trim() || undefined,
+  };
+  if (tipo === "m") {
+    body.geo = {
+      lat: document.getElementById("ed-lat").value.trim() || undefined,
+      lon: document.getElementById("ed-lon").value.trim() || undefined,
+      region: document.getElementById("ed-region").value.trim() || undefined,
+      category: document.getElementById("ed-category").value.trim() || undefined,
+    };
+  }
+  out.textContent = "Conferma in corso…";
+  out.className = "out";
+  out.classList.remove("hidden");
+  try {
+    const res = await apiFetch("/api/etaly/export/confirm", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) { out.textContent = data.error || ("HTTP " + res.status); out.className = "out error"; return; }
+    out.textContent = "Mapping confermato: " + data.poh_id + " (" + data.poh_type + ")";
+    out.className = "out ok";
+    await loadList();
+  } catch (err) {
+    out.textContent = "Errore di rete: " + err.message;
+    out.className = "out error";
+  }
+}
+
+async function buildBundle() {
+  const slugs = Array.from(state.selected);
+  if (!slugs.length) return;
+  buildBtn.disabled = true;
+  showListOut("Costruzione bundle in corso…", null);
+  try {
+    const res = await apiFetch("/api/etaly/export/build", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slugs }),
+    });
+    if (!res.ok) {
+      let msg;
+      try {
+        const data = await res.json();
+        msg = (data.error || ("HTTP " + res.status));
+        if (data.report) msg += "\n\n" + data.report;
+        if (data.unresolved_slugs) msg += "\n\nSlug non risolti: " + data.unresolved_slugs.join(", ");
+      } catch (e) { msg = "HTTP " + res.status; }
+      showListOut(msg, "error");
+      return;
+    }
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "etaly_export.zip";
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    showListOut("Bundle scaricato (" + slugs.length + " POH).", "ok");
+  } catch (err) {
+    showListOut("Errore di rete: " + err.message, "error");
+  } finally {
+    refreshSelection();
+  }
+}
+
+document.getElementById("reload-btn").addEventListener("click", loadList);
+document.getElementById("build-btn").addEventListener("click", buildBundle);
+document.getElementById("ed-add-row").addEventListener("click", () => {
+  document.getElementById("ed-timeline").appendChild(timelineRowHtml("", ""));
+});
+document.getElementById("ed-tipo").addEventListener("change", toggleGeo);
+document.getElementById("ed-confirm").addEventListener("click", confirmMapping);
+document.getElementById("ed-close").addEventListener("click", () => {
+  editor.classList.add("hidden"); state.editing = null;
+});
+loadList();
+</script>
+</body>
+</html>
