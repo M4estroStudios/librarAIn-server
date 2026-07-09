@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaticano — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Vaticano</h1>
+<p>Il Vaticano è un&#x27;area storica di Roma storicamente consolidata come centro religioso della Cristianità cattolica e sede ufficiale dei papi, caratterizzata da una lunga dialettica urbanistica con le altre parti della città. Fin dalle origini cristiane si impose come polo d&#x27;attrazione opposto a <a href="poh:laterani">Laterano</a>, per poi affermarsi definitivamente a partire dal XV secolo come residenza papale e simbolo della <em>res publica christiana</em> <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:7">testo descrittivo breve, p. 7</a>.</p>
+<h2>Le origini e la bipolarità con il Laterano</h2>
+<p>Costantino fondò la cattedrale e il palazzo vescovile al Laterano su terreni imperiali fuori dalle mura, mentre la devozione popolare si concentrò sin dai primi secoli sulla tomba di S. Pietro in Vaticano, anch&#x27;essa esterna al perimetro murario ma posta in direzione opposta <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:7">testo descrittivo breve, p. 7</a>. Per secoli Laterano e Vaticano rappresentarono i due poli d&#x27;attrazione della Roma cristiana, mantenendo un antagonismo che fu risolto soltanto nel Quattrocento <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:7">testo descrittivo breve, p. 7</a>.</p>
+<h2>La trasformazione rinascimentale e la residenza papale</h2>
+<p>Il passaggio al Rinascimento segna l&#x27;inizio di un lungo periodo di trasformazioni urbane operate dai papi dal XV al XIX secolo, che portarono alla distruzione dell&#x27;agglomerato medievale e all&#x27;impostazione della Roma papale <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">testo descrittivo breve, p. 15</a>. Con <a href="poh:niccolo-v">Niccolò V</a> (1447-1455) fu avviato il primo programma intenzionale di interventi edilizi e viari per esprimere la grandezza della Santa Romana Chiesa <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">testo descrittivo breve, p. 15</a>. Il pontefice ingrandì la basilica di S. Pietro, abbellì il palazzo papale in Vaticano, ampliò e restaurò le mura vaticane, rinnovò l&#x27;impianto viario della Città leonina attorno a Castel S. Angelo e consolidò il castello con nuove torri <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">testo descrittivo breve, p. 15</a>.</p>
+<p>Con Niccolò V si concluse un processo urbano avviato da Innocenzo III e ripreso da Niccolò III e Bonifacio VIII, attraverso il quale la città vaticana divenne la residenza ufficiale dei papi <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">testo descrittivo breve, p. 15</a>. Il complesso lateranense, pur mantenendo S. Giovanni come antica cattedrale dei vescovi di Roma, fu esautorato e surclassato dal complesso vaticano <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">testo descrittivo breve, p. 15</a>. Per Niccolò V il Vaticano doveva rappresentare il luogo simbolico della <em>res publica christiana</em>, mentre Roma fungeva da capitale del nuovo principato pontificio <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:16">testo descrittivo breve, p. 16</a>. La piccola cinta vaticana racchiudeva un insediamento che fungeva da centro religioso dal raggio d&#x27;attrazione europeo, in rapporto inverso rispetto alla grande cerchia aureliana <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">testo descrittivo breve, p. 15</a>. Si segnala che le fonti indicano un avvio del processo da parte di Innocenzo III agli inizi del XX secolo, data cronologicamente incoerente con il pontificato medievale del papa, ma riportata testualmente nel documento di riferimento <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">testo descrittivo breve, p. 15</a>.</p>
+<h2>L&#x27;assetto territoriale e le trasformazioni amministrative</h2>
+<p>La nuova importanza del Vaticano fu confermata con Gregorio XIII, che costruì la reggia del Quirinale destinata a diventare residenza definitiva del pontefice per il potere temporale <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">testo descrittivo breve, p. 21</a>. Alla vecchia bipolarità Vaticano-Laterano si sostituì così la nuova bipolarità Vaticano-Quirinale, dove il primo rimase centro della Cristianità cattolica e il secondo capitale pontificia <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">testo descrittivo breve, p. 21</a>. <a href="poh:sisto-v">Sisto V</a>, nel 1586, riconobbe la situazione di fatto creando un quattordicesimo rione con <a href="poh:borgo">Borgo</a>, separandolo da <a href="poh:ponte">Ponte</a> <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">testo descrittivo breve, p. 21</a>. Durante l&#x27;occupazione francese, la riorganizzazione amministrativa del 1798 istituì una circoscrizione denominata Vaticano (<a href="poh:borgo">Borgo</a>), mentre in epoca napoleonica le Giustizie di pace accorparono <a href="poh:ponte">Ponte</a> e <a href="poh:borgo">Borgo</a> <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:24">testo descrittivo breve, p. 24</a>.</p>
+<h2>Contesti storici e culturali</h2>
+<p>In epoca antica l&#x27;area vaticana fu già teatro di interventi imperiali; dopo un grande incendio, Nerone predispose rifugi per centinaia di migliaia di sinistrati nei giardini del Vaticano e nel Campo Marzio <a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:317">testo descrittivo breve, p. 317</a>. Nel corso dei secoli il Vaticano accolse importanti tesori e opere d&#x27;arte, come l&#x27;argenteria e la lucerna bronzea del VII-VIII secolo conservate nei Musei Vaticani <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:53">testo descrittivo breve, p. 53</a>, e fu la destinazione di capolavori quali l&#x27;Apollo del Belvedere, precedentemente custodito da Giulio III <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:71">testo descrittivo breve, p. 71</a>. Il legame storico tra i due poli della città era inoltre scandito dal percorso del cortège papale, che dallo Stradone collegava il Vaticano alla basilica Lateranense <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:53">testo descrittivo breve, p. 53</a>.</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>1447–1455</td><td>Niccolò V avvia il primo programma di interventi edilizi e consolida la residenza papale a Vaticano.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">Testo p. 15</a></td></tr>
+<tr><td>1586</td><td>Sisto V istituisce formalmente il quattordicesimo rione, separando Borgo da Ponte.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">Testo p. 21</a></td></tr>
+<tr><td>1798</td><td>L&#x27;amministrazione giacobina istituisce la circoscrizione amministrativa denominata Vaticano.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:24">Testo p. 24</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:7">I rioni di Roma, p. 7</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:15">I rioni di Roma, p. 15</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:16">I rioni di Roma, p. 16</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">I rioni di Roma, p. 21</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:24">I rioni di Roma, p. 24</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:53">I rioni di Roma, p. 53</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:71">I rioni di Roma, p. 71</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:317">Storia di Roma Antica, p. 317</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

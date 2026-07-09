@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "entries": {
+    "augusto": {
+      "slug": "augusto",
+      "poh_id": null,
+      "poh_type": null,
+      "name": "Augusto",
+      "wikidata_qid": null,
+      "source": "auto",
+      "status": "pending",
+      "score": null,
+      "confirmed_by": null,
+      "confirmed_at": null
+    },
+    "vaticano": {
+      "slug": "vaticano",
+      "poh_id": "poh_m9990",
+      "poh_type": "m",
+      "name": "Vaticano",
+      "wikidata_qid": null,
+      "source": "manual",
+      "status": "resolved",
+      "score": null,
+      "confirmed_by": "operator",
+      "confirmed_at": "2026-07-09T19:04:35.003973+00:00"
+    },
+    "borgo": {
+      "slug": "borgo",
+      "poh_id": "poh_m1889",
+      "poh_type": "m",
+      "name": "Borgo (rione di Roma)",
+      "wikidata_qid": null,
+      "source": "manual",
+      "status": "resolved",
+      "score": null,
+      "confirmed_by": "operator",
+      "confirmed_at": "2026-07-09T21:20:00.000000+00:00"
+    },
+    "laterani": {
+      "slug": "laterani",
+      "poh_id": "poh_m0013",
+      "poh_type": "m",
+      "name": "Basilica di San Giovanni in Laterano",
+      "wikidata_qid": null,
+      "source": "manual",
+      "status": "resolved",
+      "score": null,
+      "confirmed_by": "operator",
+      "confirmed_at": "2026-07-09T21:20:00.000000+00:00"
+    },
+    "niccolo-v": {
+      "slug": "niccolo-v",
+      "poh_id": "poh_p1759",
+      "poh_type": "p",
+      "name": "Papa Niccolò V",
+      "wikidata_qid": null,
+      "source": "manual",
+      "status": "resolved",
+      "score": null,
+      "confirmed_by": "operator",
+      "confirmed_at": "2026-07-09T21:20:00.000000+00:00"
+    },
+    "ponte": {
+      "slug": "ponte",
+      "poh_id": "poh_m0992",
+      "poh_type": "m",
+      "name": "Ponte (rione di Roma)",
+      "wikidata_qid": null,
+      "source": "manual",
+      "status": "resolved",
+      "score": null,
+      "confirmed_by": "operator",
+      "confirmed_at": "2026-07-09T21:20:00.000000+00:00"
+    },
+    "sisto-v": {
+      "slug": "sisto-v",
+      "poh_id": "poh_p0024",
+      "poh_type": "p",
+      "name": "papa Sisto V",
+      "wikidata_qid": null,
+      "source": "manual",
+      "status": "resolved",
+      "score": null,
+      "confirmed_by": "operator",
+      "confirmed_at": "2026-07-09T21:20:00.000000+00:00"
+    }
+  },
+  "counters": {
+    "p": 0,
+    "o": 0,
+    "m": 0
+  }
+}

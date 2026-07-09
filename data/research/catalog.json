@@ -19,6 +19,16 @@
       "skipped_llm": false,
       "no_material": false,
       "generated_at": "2026-07-05T00:32:25.263574+00:00"
+    },
+    "vaticano": {
+      "poh_id": "vaticano",
+      "title": "Vaticano",
+      "snippet": "Vaticano Il Vaticano è un'area storica di Roma storicamente consolidata come centro religioso della Cristianità cattolica e sede ufficiale dei papi, caratterizzata da una lunga di…",
+      "url": "/articolo/vaticano.html",
+      "request_id": "386c8365a9ed66b1f496accf2fc6719fa2f1f6000cc784db968da7a222597c2b",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-09T18:52:58.016949+00:00"
     }
   }
 }

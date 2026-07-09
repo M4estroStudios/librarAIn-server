@@ -154,6 +154,12 @@ class TestProposalParsing(unittest.TestCase):
         self.assertEqual(len(merged), 5)
         self.assertEqual(count_usable_timeline(merged), 5)
 
+    def test_merge_timeline_sorts_chronologically(self) -> None:
+        existing = [{"anno": "1680", "evento": "Morte"}]
+        extra = [{"anno": "1598", "evento": "Nascita"}]
+        merged = merge_timeline(existing, extra)
+        self.assertEqual([item["anno"] for item in merged], ["1598", "1680"])
+
 
 class TestConfirmParsing(unittest.TestCase):
     def test_missing_slug(self) -> None:

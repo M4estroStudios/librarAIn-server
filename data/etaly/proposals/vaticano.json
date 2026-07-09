@@ -1,0 +1,20 @@
+{
+  "slug": "vaticano",
+  "poh_id": "poh_m9990",
+  "poh_type": "m",
+  "name": "Vaticano",
+  "timeline": [],
+  "geo": {
+    "lat": 41.9038,
+    "lon": 12.453,
+    "region": "region",
+    "category": "cittadella",
+    "poi_id": null
+  },
+  "wiki_title": "Vaticano",
+  "wiki_url": "vaticano",
+  "wikidata_qid": null,
+  "time_range": null,
+  "confirmed_at": "2026-07-09T19:04:35.003973+00:00",
+  "confirmed_by": "operator"
+}

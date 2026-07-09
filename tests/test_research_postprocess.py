@@ -75,6 +75,39 @@ class ResearchPostprocessTests(unittest.TestCase):
         self.assertEqual(result.timeline_rows[0].period, "1200")
         self.assertEqual(result.timeline_rows[1].period, "1400")
 
+    def test_cronologia_reorders_bce_and_mixed_labels(self) -> None:
+        markdown = """# Articolo
+
+## Cronologia
+
+| Periodo | Evento | Fonti |
+|---------|--------|-------|
+| 476 d.C. | Fine impero | [f](source:abc123:aligned:112) |
+| 1946 | Dopoguerra | [f](source:abc123:aligned:112) |
+| 36 a.C. | Nauloco | [f](source:abc123:aligned:112) |
+| 43 a.C. | Modena | [f](source:abc123:aligned:112) |
+| V secolo | Alarico | [f](source:abc123:aligned:112) |
+| Anni Trenta (XX sec.) | Fori | [f](source:abc123:aligned:112) |
+"""
+        result = postprocess_markdown(
+            markdown,
+            data_root=self.data_root,
+            index_document=self.index,
+            request_id="req2b",
+        )
+        periods = [row.period for row in result.timeline_rows]
+        self.assertEqual(
+            periods,
+            [
+                "43 a.C.",
+                "36 a.C.",
+                "V secolo",
+                "476 d.C.",
+                "Anni Trenta (XX sec.)",
+                "1946",
+            ],
+        )
+
     def test_valid_poh_link_kept(self) -> None:
         markdown = "Vedi [Marco Polo](poh:marco-polo)."
         result = postprocess_markdown(

@@ -356,6 +356,7 @@ def merge_timeline(
         merged.append(item)
         if len(merged) >= _MAX_TIMELINE_ENTRIES:
             break
+    merged.sort(key=lambda item: _anno_to_year(item.get("anno")) or 999999)
     return merged
 
 
@@ -528,6 +529,7 @@ def _normalize_confirm_timeline(timeline: list[dict[str, Any]]) -> list[dict[str
         if year is None or not isinstance(evento, str) or not evento.strip():
             continue
         normalized.append({"anno": year, "evento": evento.strip()})
+    normalized.sort(key=lambda item: int(item["anno"]))
     return normalized
 
 
