@@ -160,7 +160,6 @@ class TestIngestSubmit(unittest.TestCase):
             self.assertTrue(Path(saved_path).is_file())
             self.assertEqual(payload["reicat"]["titolo"], "Storia di Roma")
             set_global_total(1)
-            reporter(make_event("pipeline", "done", result={"ok": True}))
             pipeline_done.set()
             return {"ok": True}
 
@@ -182,7 +181,7 @@ class TestIngestSubmit(unittest.TestCase):
                 time.sleep(0.05)
             self.assertEqual(status_code, 200)
             self.assertEqual(job["status"], "done")
-            self.assertEqual(job["result"], {"ok": True})
+            self.assertEqual(job["result"], job_id)
 
     def test_submit_without_pdf_rejected(self) -> None:
         status, payload = self.server.submit(pdf_bytes=None)
@@ -393,7 +392,6 @@ class TestJobQueueing(unittest.TestCase):
         def slow_pipeline(payload, saved_path, settings, *, reporter, set_global_total):
             first_started.set()
             release_first.wait(timeout=15)
-            reporter(make_event("pipeline", "done", result={}))
             return {}
 
         with patch(_P_PIPELINE, side_effect=slow_pipeline):

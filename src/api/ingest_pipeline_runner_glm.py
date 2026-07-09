@@ -23,7 +23,6 @@ from src.ingestion.progress import (
     PHASE_VALIDATION,
     PipelineTiming,
     STATUS_COMPLETED,
-    STATUS_DONE,
     STATUS_STARTED,
     ProgressReporter,
     make_event,
@@ -231,8 +230,7 @@ def run_glm_ingest_pipeline(
             reporter,
             make_event(
                 PHASE_STAGE1_GLM_OCR,
-                STATUS_DONE,
-                result=payload_out,
+                STATUS_COMPLETED,
                 timing=payload_out["timing"],
             ),
         )
@@ -250,8 +248,7 @@ def run_glm_ingest_pipeline(
         reporter,
         make_event(
             PHASE_STAGE3_EDITOR,
-            STATUS_DONE,
-            result=payload_out,
+            STATUS_COMPLETED,
             timing=payload_out["timing"],
         ),
     )

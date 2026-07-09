@@ -41,7 +41,7 @@ class JobState:
         self.status: str = "accepted" if job_kind == "research" else "queued"
         self.pipeline_version: str | None = None
         self.events: list[dict[str, Any]] = []
-        self.result: dict[str, Any] | None = None
+        self.result: Any | None = None
         self.error: str | None = None
         self.created_at = now
         self.updated_at = now

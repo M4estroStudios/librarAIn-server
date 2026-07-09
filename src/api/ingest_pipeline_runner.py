@@ -23,7 +23,6 @@ from src.ingestion.progress import (
     PHASE_VALIDATION,
     PipelineTiming,
     STATUS_COMPLETED,
-    STATUS_DONE,
     STATUS_ERROR,
     STATUS_STARTED,
     ProgressReporter,
@@ -250,7 +249,7 @@ def run_full_pipeline(
     if ingest_gate_phase.pipeline_skipped:
         payload_out = _build_payload(None, None)
         _emit(reporter, make_event(
-            PHASE_STAGE1_OCR, STATUS_DONE, result=payload_out, timing=payload_out["timing"]
+            PHASE_STAGE1_OCR, STATUS_COMPLETED, timing=payload_out["timing"]
         ))
         Log(INFO_LOG_LEVEL, "pipeline completed (pipeline_skipped)",
             {"source_sha256": enriched.source_sha256[:16],
@@ -276,7 +275,7 @@ def run_full_pipeline(
         stage3_result.model_dump(mode="json"),
     )
     _emit(reporter, make_event(
-        PHASE_STAGE3_EDITOR, STATUS_DONE, result=payload_out, timing=payload_out["timing"]
+        PHASE_STAGE3_EDITOR, STATUS_COMPLETED, timing=payload_out["timing"]
     ))
 
     Log(INFO_LOG_LEVEL, "pipeline completed",

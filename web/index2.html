@@ -3639,6 +3639,13 @@ if (document.readyState === "loading") {
     return url + (url.indexOf("?") >= 0 ? "&" : "?") + "token=" + encodeURIComponent(token);
   }
 
+  function ingestDoneDisplay(ev) {
+    var result = ev.result;
+    if (typeof result === "string" && result) return result;
+    if (result && typeof result === "object" && result.job_id) return String(result.job_id);
+    return ingestPagesState.jobId || ev.job_id || "";
+  }
+
   function connectSSE(eventsUrl) {
     var es = new EventSource(withToken(eventsUrl));
     var TERMINAL = new Set(["done", "error"]);
@@ -3653,11 +3660,11 @@ if (document.readyState === "loading") {
       var ev;
       try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
       applyTimingFields(ev);
-      var result = ev.result || ev;
-      if (result && result.timing) applyTimingFields({ timing: result.timing });
-      applyResultPagesState(result);
+      var result = ev.result;
+      if (result && typeof result === "object" && result.timing) applyTimingFields({ timing: result.timing });
+      if (result && typeof result === "object") applyResultPagesState(result);
       markIngestJobComplete();
-      show("ok", result);
+      show("ok", ingestDoneDisplay(ev) || result || ev);
       if (globalTotal > 0) globalStep = globalTotal;
       renderAllProgress();
       es.close();

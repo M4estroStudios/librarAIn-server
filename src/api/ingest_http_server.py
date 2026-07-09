@@ -60,7 +60,7 @@ from src.persistence.book_page_repair import (
     run_book_gaps_repair,
     run_book_page_repair,
 )
-from src.core.config import ConfigurationError, load_settings
+from src.core.config import ConfigurationError, get_env, load_settings
 from src.core.hashing import new_job_id
 from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
@@ -1622,13 +1622,22 @@ def build_ingest_server(
                     ))
                     job_semaphore.acquire()
                 try:
-                    pipeline_runner(
+                    pipeline_result = pipeline_runner(
                         ingest_payload,
                         saved_path,
                         settings,
                         reporter=reporter,
                         set_global_total=lambda total: registry.set_global_total(job_id, total),
                     )
+                    timing = (
+                        pipeline_result.get("timing")
+                        if isinstance(pipeline_result, dict)
+                        else None
+                    )
+                    done_fields: dict[str, Any] = {"result": job_id}
+                    if timing:
+                        done_fields["timing"] = timing
+                    registry.emit(job_id, make_event("pipeline", STATUS_DONE, **done_fields))
                 except IngestInputValidationException:
                     pass
                 except Exception as exc:
@@ -1666,16 +1675,16 @@ def run_ingest_http_server() -> None:
         Log(ERROR_LOG_LEVEL, "ingest server configuration failed", {"error": str(exc)})
         raise SystemExit(str(exc)) from exc
 
-    host = os.environ.get("INGEST_HTTP_HOST", "127.0.0.1")
-    port = int(os.environ.get("INGEST_HTTP_PORT", "8765"))
-    max_upload = int(os.environ.get("INGEST_MAX_UPLOAD_BYTES", str(512 * 1024 * 1024)))
-    api_token = os.environ.get("INGEST_API_TOKEN", "").strip()
-    max_concurrent_jobs = max(1, int(os.environ.get("INGEST_MAX_CONCURRENT_JOBS", "1")))
+    host = get_env("INGEST_HTTP_HOST", "127.0.0.1")
+    port = int(get_env("INGEST_HTTP_PORT", "8765"))
+    max_upload = int(get_env("INGEST_MAX_UPLOAD_BYTES", str(512 * 1024 * 1024)))
+    api_token = get_env("INGEST_API_TOKEN", "").strip()
+    max_concurrent_jobs = max(1, int(get_env("INGEST_MAX_CONCURRENT_JOBS", "1")))
     max_concurrent_research = max(
-        1, int(os.environ.get("RESEARCH_MAX_CONCURRENT_JOBS", "1"))
+        1, int(get_env("RESEARCH_MAX_CONCURRENT_JOBS", "1"))
     )
     research_dedup_ttl_seconds = float(
-        os.environ.get("RESEARCH_DEDUP_TTL_SECONDS", "3600")
+        get_env("RESEARCH_DEDUP_TTL_SECONDS", "3600")
     )
 
     if host not in ("127.0.0.1", "localhost") and not api_token:
