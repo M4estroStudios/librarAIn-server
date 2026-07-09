@@ -135,8 +135,7 @@ La configurazione runtime centralizzata è gestita da:
 - `MATCHER_EMBEDDING_MODEL`, `MATCHER_LLM_MODEL`, `MATCHER_SIMILARITY_THRESHOLD`, `MATCHER_USE_AI` (subject matching POH in `INDEX.json`)
 - `TIME_INDEX_LLM_MODEL` (default `None`; fallback: `MATCHER_LLM_MODEL` → `EDITOR_MODEL` → `gpt-4.1-mini`)
 - `TIME_INDEX_USE_LLM` (default `true`; se `false`, estrazione temporale solo regex)
-- `INGEST_HTTP_HOST` (default `127.0.0.1`), `INGEST_HTTP_PORT` (default `8765`)
-- `INGEST_API_TOKEN` (opzionale; se impostato, richiesto su tutti gli endpoint `/api/*`)
+- `INGEST_HTTP_PORT` (default `8765`; il server ascolta solo su `127.0.0.1`)
 - `INGEST_MAX_CONCURRENT_JOBS` (default `1`; job extra restano in coda)
 - `INGEST_MAX_UPLOAD_BYTES` (default 512 MiB)
 
@@ -330,10 +329,6 @@ Gli eventi con `counts_as_step: true` includono `global_step` e `global_total`. 
 curl -N http://127.0.0.1:8765/api/ingest/<job_id>/events
 curl -s http://127.0.0.1:8765/api/ingest/<job_id>/status | jq '{status,global_step,global_total}'
 ```
-
-### Autenticazione API
-
-Se `INGEST_API_TOKEN` è impostato, tutti gli endpoint `/api/*` richiedono il token via header `X-API-Token`, `Authorization: Bearer <token>` o query `?token=`. Le pagine statiche (`/`, `/admin`) restano aperte; la UI salva il token in `localStorage`.
 
 ### Admin POH — `/admin`
 

@@ -2918,13 +2918,7 @@ if (document.readyState === "loading") {
         var fd = new FormData();
         fd.append("pdf_file", file, file.name || "upload.pdf");
         fd.append("reicat_pages", pagesToSpec(reicatPages));
-        var headers = apiToken() ? { "X-API-Token": apiToken() } : {};
-        var res = await fetch("/api/ingest/reicat-suggest", { method: "POST", body: fd, headers: headers });
-        if (res.status === 401) {
-          var newToken = promptApiToken();
-          if (!newToken) throw new Error("Autenticazione richiesta.");
-          res = await fetch("/api/ingest/reicat-suggest", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
-        }
+        var res = await fetch("/api/ingest/reicat-suggest", { method: "POST", body: fd });
         var data = await res.json().catch(function () { return {}; });
         if (!res.ok || !data.ok) throw new Error(data.error || data.message || ("HTTP " + res.status));
         applyReicatSuggestion(data.reicat);
@@ -3140,16 +3134,7 @@ if (document.readyState === "loading") {
     }
     var opts = options || {};
     opts.headers = Object.assign({}, opts.headers || {});
-    var token = apiToken();
-    if (token) opts.headers["X-API-Token"] = token;
     var res = await fetch(url, opts);
-    if (res.status === 401) {
-      var entered = promptApiToken();
-      if (entered) {
-        opts.headers["X-API-Token"] = entered;
-        res = await fetch(url, opts);
-      }
-    }
     if (!res.ok && window.LibrarAInLog) {
       window.LibrarAInLog.logHttpDone((opts.method || "GET").toUpperCase(), String(url), res.status);
     }
@@ -3317,7 +3302,7 @@ if (document.readyState === "loading") {
       return window.__librarainMock.watchRepairSse(eventsUrl, updateRepairProgress);
     }
     return new Promise(function (resolve, reject) {
-      var es = new EventSource(withToken(eventsUrl));
+      var es = new EventSource(eventsUrl);
       var settled = false;
       function finish(fn, value) {
         if (settled) return;
@@ -3751,8 +3736,6 @@ if (document.readyState === "loading") {
       source_sha256: sourceSha256,
       aligned_page: String(alignedPage),
     });
-    var token = apiToken();
-    if (token) params.set("token", token);
     return "/api/admin/book-pages/render?" + params.toString();
   }
 
@@ -4424,25 +4407,6 @@ if (document.readyState === "loading") {
     renderAllProgress();
   }
 
-  function apiToken() {
-    return (localStorage.getItem("librarainApiToken") || "").trim();
-  }
-
-  function promptApiToken() {
-    var token = prompt("Il server richiede un token API (INGEST_API_TOKEN):");
-    if (token && token.trim()) {
-      localStorage.setItem("librarainApiToken", token.trim());
-      return token.trim();
-    }
-    return "";
-  }
-
-  function withToken(url) {
-    var token = apiToken();
-    if (!token) return url;
-    return url + (url.indexOf("?") >= 0 ? "&" : "?") + "token=" + encodeURIComponent(token);
-  }
-
   function ingestDoneDisplay(ev) {
     var result = ev.result;
     if (typeof result === "string" && result) return result;
@@ -4464,7 +4428,7 @@ if (document.readyState === "loading") {
 
   function connectSSE(eventsUrl) {
     return new Promise(function (resolve, reject) {
-      var es = new EventSource(withToken(eventsUrl));
+      var es = new EventSource(eventsUrl);
       var settled = false;
 
       function finish(err, result) {
@@ -4548,14 +4512,7 @@ if (document.readyState === "loading") {
     }
 
     var fd = new FormData(form);
-    var submitHeaders = apiToken() ? { "X-API-Token": apiToken() } : {};
-    var res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: submitHeaders });
-    if (res.status === 401) {
-      var newToken = promptApiToken();
-      if (newToken) {
-        res = await fetch("/api/ingest2/submit", { method: "POST", body: fd, headers: { "X-API-Token": newToken } });
-      }
-    }
+    var res = await fetch("/api/ingest2/submit", { method: "POST", body: fd });
     var data;
     try { data = await res.json(); } catch (_) { data = { ok: false, error: "risposta non JSON" }; }
 

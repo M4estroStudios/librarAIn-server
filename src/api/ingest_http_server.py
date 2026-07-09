@@ -261,7 +261,6 @@ def build_ingest_server(
     host: str = "127.0.0.1",
     port: int = 0,
     max_upload: int = 512 * 1024 * 1024,
-    api_token: str = "",
     max_concurrent_jobs: int = 1,
     max_concurrent_research: int = 1,
     research_dedup_ttl_seconds: float = 3600.0,
@@ -334,29 +333,6 @@ def build_ingest_server(
         def send_error(self, code: int, message: str | None = None, explain: str | None = None) -> None:
             super().send_error(code, message, explain)
 
-        def _is_authorized(self, query: dict[str, list[str]] | None = None) -> bool:
-            """API token check. A no-op when INGEST_API_TOKEN is unset."""
-            if not api_token:
-                return True
-            header = self.headers.get("X-API-Token", "")
-            if header and secrets.compare_digest(header, api_token):
-                return True
-            auth = self.headers.get("Authorization", "")
-            if auth.startswith("Bearer ") and secrets.compare_digest(
-                auth.removeprefix("Bearer ").strip(), api_token
-            ):
-                return True
-            if query:
-                for candidate in query.get("token", []):
-                    if secrets.compare_digest(candidate, api_token):
-                        return True
-            return False
-
-        def _require_auth(self, query: dict[str, list[str]] | None = None) -> bool:
-            if self._is_authorized(query):
-                return True
-            _send_json(self, 401, {"ok": False, "error": "unauthorized"})
-            return False
 
         def do_GET(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
@@ -406,8 +382,6 @@ def build_ingest_server(
                             return
 
             if path == "/api/system/preflight":
-                if not self._require_auth(query):
-                    return
                 operation_raw = (query.get("operation", [""])[0] or "").strip()
                 operation = normalize_preflight_operation(operation_raw)
                 if operation is None:
@@ -422,8 +396,6 @@ def build_ingest_server(
                 return
 
             if path == "/api/system/status":
-                if not self._require_auth(query):
-                    return
                 from src.ingestion.pipeline.gpu_vram import collect_gpu_vram_snapshots
                 from src.api.system_preflight import _list_lmstudio_models
 
@@ -460,8 +432,6 @@ def build_ingest_server(
                 return
 
             if path == "/api/system/jobs/history":
-                if not self._require_auth(query):
-                    return
                 book = (query.get("book", [""])[0] or "").strip()
                 job_id_filter = (query.get("id", [""])[0] or "").strip()
                 date_filter = (query.get("date", [""])[0] or "").strip()
@@ -482,8 +452,6 @@ def build_ingest_server(
                 return
 
             if path == "/api/system/jobs":
-                if not self._require_auth(query):
-                    return
                 include_finished = (query.get("include_finished", ["0"])[0] or "0").lower() in (
                     "1",
                     "true",
@@ -518,8 +486,6 @@ def build_ingest_server(
                 and parts[2] == "system"
                 and parts[3] == "jobs"
             ):
-                if not self._require_auth(query):
-                    return
                 job_id = parts[4]
                 summary = registry.get_job_summary(job_id)
                 if summary is None:
@@ -537,8 +503,6 @@ def build_ingest_server(
                 and parts[3] == "jobs"
                 and parts[5] == "events"
             ):
-                if not self._require_auth(query):
-                    return
                 self._handle_system_job_events(parts[4])
                 return
 
@@ -627,8 +591,6 @@ def build_ingest_server(
                             return
 
             if path == "/api/admin/subjects":
-                if not self._require_auth(query):
-                    return
                 try:
                     min_books = int(query.get("min_books", ["2"])[0])
                 except ValueError:
@@ -640,8 +602,6 @@ def build_ingest_server(
                 return
 
             if path == "/api/admin/subject":
-                if not self._require_auth(query):
-                    return
                 canonical_id = (query.get("canonical_id") or [""])[0].strip()
                 if not canonical_id:
                     _send_json(self, 400, {"ok": False, "error": "canonical_id is required"})
@@ -654,8 +614,6 @@ def build_ingest_server(
                 return
 
             if path == "/api/admin/book-pages-audit":
-                if not self._require_auth(query):
-                    return
                 report = audit_all_books(data_root)
                 sha_filter = (query.get("source_sha256") or [""])[0].strip().lower()
                 if sha_filter:
@@ -672,13 +630,10 @@ def build_ingest_server(
                 data_root=data_root,
                 settings=settings,
                 send_json=_send_json,
-                require_auth=lambda: self._require_auth(query),
             ):
                 return
 
             if path == "/api/admin/book-pages/render":
-                if not self._require_auth(query):
-                    return
                 source_sha256 = (query.get("source_sha256") or [""])[0].strip()
                 aligned_raw = (query.get("aligned_page") or [""])[0].strip()
                 if not source_sha256:
@@ -703,8 +658,6 @@ def build_ingest_server(
                 return
 
             if path == "/api/admin/book-pages/transcript":
-                if not self._require_auth(query):
-                    return
                 source_sha256 = (query.get("source_sha256") or [""])[0].strip()
                 aligned_raw = (query.get("aligned_page") or [""])[0].strip()
                 if not source_sha256:
@@ -745,8 +698,6 @@ def build_ingest_server(
 
             parts = path.split("/")
             if len(parts) == 5 and parts[1] == "api" and parts[2] == "ingest" and parts[4] in ("events", "status"):
-                if not self._require_auth(urllib.parse.parse_qs(parsed.query)):
-                    return
                 job_id = parts[3]
                 action = parts[4]
                 if action == "events":
@@ -1370,8 +1321,6 @@ def build_ingest_server(
         def do_POST(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
             if parsed.path == "/api/chat/completions":
-                if not self._require_auth():
-                    return
                 handle_chat_completions(
                     self,
                     data_root=data_root,
@@ -1409,48 +1358,30 @@ def build_ingest_server(
                 _send_json(self, 404, {"ok": False, "error": "not found"})
                 return
             if parsed.path == "/api/admin/subjects/merge":
-                if not self._require_auth():
-                    return
                 self._handle_subjects_merge()
                 return
             if parsed.path == "/api/admin/subject/update":
-                if not self._require_auth():
-                    return
                 self._handle_subject_update()
                 return
             if parsed.path == "/api/admin/subject/pages":
-                if not self._require_auth():
-                    return
                 self._handle_subject_pages()
                 return
             if parsed.path == "/api/admin/subject/book/remove":
-                if not self._require_auth():
-                    return
                 self._handle_subject_book_remove()
                 return
             if parsed.path == "/api/admin/book-pages/exclude":
-                if not self._require_auth():
-                    return
                 self._handle_book_page_exclude()
                 return
             if parsed.path == "/api/admin/book-pages/transcript/confirm":
-                if not self._require_auth():
-                    return
                 self._handle_book_page_transcript_confirm()
                 return
             if parsed.path == "/api/admin/book-pages/transcript":
-                if not self._require_auth():
-                    return
                 self._handle_book_page_transcript_save()
                 return
             if parsed.path == "/api/admin/book-pages/repair":
-                if not self._require_auth():
-                    return
                 self._handle_book_page_repair()
                 return
             if parsed.path == "/api/admin/book-pages/repair-all":
-                if not self._require_auth():
-                    return
                 self._handle_book_gaps_repair()
                 return
             if try_handle_admin_embeddings_post(
@@ -1461,12 +1392,9 @@ def build_ingest_server(
                 registry=registry,
                 job_semaphore=job_semaphore,
                 send_json=_send_json,
-                require_auth=self._require_auth,
             ):
                 return
             if parsed.path == "/api/ingest/reicat-suggest":
-                if not self._require_auth():
-                    return
                 self._handle_reicat_suggest()
                 return
             if parsed.path not in ("/api/ingest/submit", "/api/ingest2/submit"):
@@ -1478,8 +1406,6 @@ def build_ingest_server(
                 else run_full_pipeline
             )
             ocr_backend = "glm" if parsed.path == "/api/ingest2/submit" else "easyocr"
-            if not self._require_auth():
-                return
 
             content_type = self.headers.get("Content-Type") or ""
             part_path = data_root / "input" / "raw" / f".upload_{secrets.token_hex(8)}.part"
@@ -1675,10 +1601,9 @@ def run_ingest_http_server() -> None:
         Log(ERROR_LOG_LEVEL, "ingest server configuration failed", {"error": str(exc)})
         raise SystemExit(str(exc)) from exc
 
-    host = get_env("INGEST_HTTP_HOST", "127.0.0.1")
+    host = "127.0.0.1"
     port = int(get_env("INGEST_HTTP_PORT", "8765"))
     max_upload = int(get_env("INGEST_MAX_UPLOAD_BYTES", str(512 * 1024 * 1024)))
-    api_token = get_env("INGEST_API_TOKEN", "").strip()
     max_concurrent_jobs = max(1, int(get_env("INGEST_MAX_CONCURRENT_JOBS", "1")))
     max_concurrent_research = max(
         1, int(get_env("RESEARCH_MAX_CONCURRENT_JOBS", "1"))
@@ -1687,14 +1612,6 @@ def run_ingest_http_server() -> None:
         get_env("RESEARCH_DEDUP_TTL_SECONDS", "3600")
     )
 
-    if host not in ("127.0.0.1", "localhost") and not api_token:
-        Log(
-            WARNING_LOG_LEVEL,
-            "ingest server bound to a non-loopback address WITHOUT auth token; "
-            "set INGEST_API_TOKEN to protect the API",
-            {"host": host},
-        )
-
     _stop_existing_server_processes(port)
 
     httpd, _registry = build_ingest_server(
@@ -1702,7 +1619,6 @@ def run_ingest_http_server() -> None:
         host=host,
         port=port,
         max_upload=max_upload,
-        api_token=api_token,
         max_concurrent_jobs=max_concurrent_jobs,
         max_concurrent_research=max_concurrent_research,
         research_dedup_ttl_seconds=research_dedup_ttl_seconds,

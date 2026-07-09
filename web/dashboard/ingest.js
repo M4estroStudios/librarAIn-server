@@ -31,19 +31,7 @@ export function initIngest() {
       postIngestPohFlow(data.source_sha256);
     }
   });
-  syncApiTokenToIframe();
   initEmbedFrameListener("ingest-frame", "ingest");
-  const frame = document.getElementById("ingest-frame");
-  if (frame) {
-    frame.addEventListener("load", syncApiTokenToIframe);
-  }
-}
-
-function syncApiTokenToIframe() {
-  try {
-    const token = localStorage.getItem("librarainApiToken") || sessionStorage.getItem("librarainApiToken") || "";
-    if (token) localStorage.setItem("librarainApiToken", token);
-  } catch {}
 }
 
 export function setContextNote(text) {

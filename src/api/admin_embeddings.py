@@ -23,8 +23,7 @@ def try_handle_admin_embeddings_get(
     *,
     data_root: Path,
     settings: Settings,
-    send_json: SendJson,
-    require_auth: Callable[[], bool],
+    send_json: SendJson
 ) -> bool:
     if path != "/api/admin/embeddings/status":
         return False
@@ -53,14 +52,10 @@ def try_handle_admin_embeddings_post(
     settings: Settings,
     registry: JobRegistry,
     job_semaphore: threading.Semaphore,
-    send_json: SendJson,
-    require_auth: Callable[[], bool],
+    send_json: SendJson
 ) -> bool:
     if path != "/api/admin/embeddings/generate":
         return False
-    if not require_auth():
-        return True
-
     status = embedding_backfill_status(data_root / "polyindex", settings)
     if status.missing_count == 0:
         send_json(

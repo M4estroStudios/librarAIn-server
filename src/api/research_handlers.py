@@ -490,9 +490,6 @@ def build_research_routes(
                 break
 
     def try_get(handler: BaseHTTPRequestHandler, path: str, query: dict[str, list[str]]) -> bool:
-        require_auth = getattr(handler, "_require_auth", None)
-        if require_auth is None:
-            return False
         if path in ("/ricerca", "/ricerca.html"):
             page = web_dir / "ricerca.html"
             if not page.is_file():
@@ -563,35 +560,25 @@ def build_research_routes(
             return True
 
         if path == "/api/research/books":
-            if not require_auth(query):
-                return True
             send_json(handler, 200, {"ok": True, "books": list_ingested_books(data_root)})
             return True
 
         if path == "/api/research/status":
-            if not require_auth(query):
-                return True
             send_json(handler, 200, {"ok": True, **research_status_summary(data_root)})
             return True
 
         if path == "/api/research/missing":
-            if not require_auth(query):
-                return True
             book_sha = query.get("book_sha", [None])[0]
             missing = list_missing_articles(data_root, book_sha=book_sha)
             send_json(handler, 200, {"ok": True, "missing": missing, "count": len(missing)})
             return True
 
         if path == "/api/research/articles/audit":
-            if not require_auth(query):
-                return True
             audit = audit_articles_health(data_root)
             send_json(handler, 200, {"ok": True, **audit})
             return True
 
         if path == "/api/research/poh-overlaps":
-            if not require_auth(query):
-                return True
             book_sha = (query.get("book_sha", [""])[0] or "").strip()
             if not book_sha:
                 send_json(handler, 400, {"ok": False, "error": "book_sha is required"})
@@ -601,8 +588,6 @@ def build_research_routes(
             return True
 
         if path == "/api/research/search":
-            if not require_auth(query):
-                return True
             q = (query.get("q", [""])[0] or "").strip()
             if len(q) < 2:
                 send_json(handler, 400, {"ok": False, "error": "query must be at least 2 characters"})
@@ -615,8 +600,6 @@ def build_research_routes(
         parts = path.split("/")
         if len(parts) == 5 and parts[1] == "api" and parts[2] == "research" and parts[3] == "generate":
             if parts[4] == "status":
-                if not require_auth(query):
-                    return True
                 job_id = query.get("job_id", [""])[0]
                 snapshot = batch_registry.get(job_id)
                 if snapshot is None:
@@ -627,32 +610,23 @@ def build_research_routes(
 
         if len(parts) == 4 and parts[1] == "api" and parts[2] == "research":
             request_id = parts[3]
-            if not require_auth(query):
-                return True
             _handle_research_status(handler, request_id)
             return True
 
         if len(parts) == 5 and parts[1] == "api" and parts[2] == "research" and parts[4] == "article":
             request_id = parts[3]
-            if not require_auth(query):
-                return True
             _handle_research_article(handler, request_id)
             return True
 
         if len(parts) == 5 and parts[1] == "api" and parts[2] == "research" and parts[4] == "events":
             request_id = parts[3]
-            if not require_auth(query):
-                return True
             _handle_research_events(handler, request_id)
             return True
 
         return False
 
     def try_post(handler: BaseHTTPRequestHandler, path: str) -> bool:
-        require_auth = getattr(handler, "_require_auth", None)
         if path == "/api/research/submit":
-            if require_auth is None or not require_auth():
-                return require_auth is not None
             try:
                 body = read_json_body(handler, 1024 * 1024)
                 payload = json.loads(body.decode("utf-8"))
@@ -745,8 +719,6 @@ def build_research_routes(
             return True
 
         if path == "/api/research/merge-article":
-            if require_auth is None or not require_auth():
-                return require_auth is not None
             try:
                 body = read_json_body(handler, 8 * 1024 * 1024)
                 payload = json.loads(body.decode("utf-8"))
@@ -768,8 +740,6 @@ def build_research_routes(
 
         if path != "/api/research/generate":
             return False
-        if require_auth is None or not require_auth():
-            return require_auth is not None
         try:
             body = read_json_body(handler, 1024 * 1024)
             payload = json.loads(body.decode("utf-8"))

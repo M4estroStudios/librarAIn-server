@@ -112,22 +112,10 @@ label { display: block; font-size: 0.78rem; color: #9d9d9d; margin: 0.5rem 0 0.2
 </div>
 
 <script>
-function apiToken() { return (localStorage.getItem("librarainApiToken") || "").trim(); }
 async function apiFetch(url, options) {
   const opts = options || {};
   opts.headers = Object.assign({}, opts.headers || {});
-  const token = apiToken();
-  if (token) opts.headers["X-API-Token"] = token;
-  let res = await fetch(url, opts);
-  if (res.status === 401) {
-    const entered = prompt("Il server richiede un token API (INGEST_API_TOKEN):");
-    if (entered && entered.trim()) {
-      localStorage.setItem("librarainApiToken", entered.trim());
-      opts.headers["X-API-Token"] = entered.trim();
-      res = await fetch(url, opts);
-    }
-  }
-  return res;
+  return fetch(url, opts);
 }
 function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
 

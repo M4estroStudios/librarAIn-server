@@ -53,7 +53,7 @@ _FORM_FIELDS = {
 
 
 class _ServerHarness:
-    def __init__(self, api_token: str = "", max_concurrent_jobs: int = 1) -> None:
+    def __init__(self, max_concurrent_jobs: int = 1) -> None:
         self._tmp = tempfile.TemporaryDirectory()
         settings = SimpleNamespace(
             data_root=self._tmp.name,
@@ -65,7 +65,6 @@ class _ServerHarness:
             settings,
             host="127.0.0.1",
             port=0,
-            api_token=api_token,
             max_concurrent_jobs=max_concurrent_jobs,
         )
         self.port = self.httpd.server_address[1]
@@ -205,120 +204,10 @@ class TestIngestSubmit(unittest.TestCase):
         self.assertEqual(status, 404)
 
 
-class TestIngestAuth(unittest.TestCase):
-    TOKEN = "sekret-token"
-
+class TestAdminBookPageRender(unittest.TestCase):
     def setUp(self) -> None:
-        self.server = _ServerHarness(api_token=self.TOKEN)
+        self.server = _ServerHarness()
         self.addCleanup(self.server.close)
-
-    def test_submit_without_token_unauthorized(self) -> None:
-        status, payload = self.server.submit()
-        self.assertEqual(status, 401)
-        self.assertFalse(payload.get("ok", False))
-
-    def test_submit_with_header_token_accepted(self) -> None:
-        with patch(_P_PIPELINE, return_value={"ok": True}):
-            status, payload = self.server.submit(
-                headers={"X-API-Token": self.TOKEN}
-            )
-        self.assertEqual(status, 202)
-        self.assertTrue(payload["ok"])
-
-    def test_submit_with_bearer_token_accepted(self) -> None:
-        with patch(_P_PIPELINE, return_value={"ok": True}):
-            status, payload = self.server.submit(
-                headers={"Authorization": f"Bearer {self.TOKEN}"}
-            )
-        self.assertEqual(status, 202)
-
-    def test_status_with_query_token_accepted(self) -> None:
-        with patch(_P_PIPELINE, return_value={"ok": True}):
-            _, payload = self.server.submit(headers={"X-API-Token": self.TOKEN})
-        job_id = payload["job_id"]
-        status, _ = self.server.request(
-            f"/api/ingest/{job_id}/status?token={self.TOKEN}"
-        )
-        self.assertEqual(status, 200)
-
-    def test_admin_subjects_requires_token(self) -> None:
-        status, _ = self.server.request("/api/admin/subjects")
-        self.assertEqual(status, 401)
-        status, payload = self.server.request(
-            "/api/admin/subjects", headers={"X-API-Token": self.TOKEN}
-        )
-        self.assertEqual(status, 200)
-        self.assertEqual(payload["subjects"], [])
-
-    def test_admin_subject_detail_requires_token(self) -> None:
-        status, _ = self.server.request("/api/admin/subject?canonical_id=foo")
-        self.assertEqual(status, 401)
-        status, payload = self.server.request(
-            "/api/admin/subject?canonical_id=foo",
-            headers={"X-API-Token": self.TOKEN},
-        )
-        self.assertEqual(status, 404)
-        self.assertFalse(payload["ok"])
-
-    def test_admin_subject_update_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/subject/update",
-            method="POST",
-            body=json.dumps({"canonical_id": "foo", "aliases": []}).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-        )
-        self.assertEqual(status, 401)
-
-    def test_admin_subject_pages_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/subject/pages",
-            method="POST",
-            body=json.dumps(
-                {
-                    "canonical_id": "foo",
-                    "source_sha256": "a" * 64,
-                    "add_pages": [1],
-                }
-            ).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-        )
-        self.assertEqual(status, 401)
-
-    def test_admin_subject_book_remove_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/subject/book/remove",
-            method="POST",
-            body=json.dumps(
-                {"canonical_id": "foo", "source_sha256": "a" * 64}
-            ).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-        )
-        self.assertEqual(status, 401)
-
-    def test_admin_book_pages_audit_requires_token(self) -> None:
-        status, _ = self.server.request("/api/admin/book-pages-audit")
-        self.assertEqual(status, 401)
-        status, payload = self.server.request(
-            "/api/admin/book-pages-audit", headers={"X-API-Token": self.TOKEN}
-        )
-        self.assertEqual(status, 200)
-        self.assertTrue(payload["ok"])
-        self.assertEqual(payload["summary"]["book_count"], 0)
-
-    def test_admin_book_page_exclude_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/book-pages/exclude",
-            method="POST",
-            body=json.dumps({"source_sha256": "a" * 64, "aligned_page": 1}).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-        )
-        self.assertEqual(status, 401)
-
-    def test_admin_book_page_render_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/book-pages/render?source_sha256=" + "a" * 64 + "&aligned_page=1"
-        )
-        self.assertEqual(status, 401)
 
     def test_admin_book_page_render_returns_png(self) -> None:
         sha = "f" * 64
@@ -334,50 +223,12 @@ class TestIngestAuth(unittest.TestCase):
                 "/api/admin/book-pages/render?"
                 + urllib.parse.urlencode({"source_sha256": sha, "aligned_page": "1"})
             ),
-            headers={"X-API-Token": self.TOKEN},
         )
         with urllib.request.urlopen(req, timeout=10) as resp:
             self.assertEqual(resp.status, 200)
             self.assertEqual(resp.headers["Content-Type"], "image/png")
             body = resp.read()
         self.assertEqual(body[:8], b"\x89PNG\r\n\x1a\n")
-
-    def test_admin_book_page_repair_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/book-pages/repair",
-            method="POST",
-            body=json.dumps({"source_sha256": "a" * 64, "aligned_page": 1}).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-        )
-        self.assertEqual(status, 401)
-
-    def test_admin_book_page_transcript_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/book-pages/transcript?source_sha256=" + "a" * 64 + "&aligned_page=1"
-        )
-        self.assertEqual(status, 401)
-
-    def test_admin_book_page_transcript_post_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/book-pages/transcript",
-            method="POST",
-            body=json.dumps({"source_sha256": "a" * 64, "aligned_page": 1, "text": "x"}).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-        )
-        self.assertEqual(status, 401)
-
-    def test_admin_book_page_transcript_confirm_requires_token(self) -> None:
-        status, _ = self.server.request(
-            "/api/admin/book-pages/transcript/confirm",
-            method="POST",
-            body=json.dumps({"source_sha256": "a" * 64, "aligned_page": 1, "text": "x"}).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-        )
-        self.assertEqual(status, 401)
-
-    def test_health_open_without_token(self) -> None:
-        status, _ = self.server.request("/health")
-        self.assertEqual(status, 200)
 
 
 class TestJobQueueing(unittest.TestCase):

@@ -756,7 +756,6 @@ def build_etaly_export_routes(
         return shared_registry
 
     def try_get(handler: BaseHTTPRequestHandler, path: str, query: dict[str, list[str]]) -> bool:
-        require_auth = getattr(handler, "_require_auth", None)
         if path in ("/etaly-export", "/etaly-export.html", "/etaly_export.html"):
             page = web_dir / "etaly_export.html"
             if not page.is_file():
@@ -766,8 +765,6 @@ def build_etaly_export_routes(
             return True
 
         if path == "/api/etaly/export/list":
-            if require_auth is None or not require_auth(query):
-                return require_auth is not None
             try:
                 items = build_export_list(data_root, _registry())
             except Exception as exc:  # noqa: BLE001 - report as 500, keep server alive
@@ -895,7 +892,6 @@ def build_etaly_export_routes(
         )
 
     def try_post(handler: BaseHTTPRequestHandler, path: str) -> bool:
-        require_auth = getattr(handler, "_require_auth", None)
         routes = {
             "/api/etaly/export/propose": _handle_propose,
             "/api/etaly/export/confirm": _handle_confirm,
@@ -904,8 +900,6 @@ def build_etaly_export_routes(
         handler_fn = routes.get(path)
         if handler_fn is None:
             return False
-        if require_auth is None or not require_auth():
-            return require_auth is not None
         handler_fn(handler)
         return True
 

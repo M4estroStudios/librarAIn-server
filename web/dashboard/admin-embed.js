@@ -11,23 +11,13 @@ export function initEmbedFrameListener(frameId, source) {
 }
 
 export function initAdmin() {
-  syncApiToken();
   initEmbedFrameListener("admin-frame", "admin");
   const frame = document.getElementById("admin-frame");
   if (frame) {
-    frame.addEventListener("load", syncApiToken);
     window.addEventListener("message", (event) => {
       if (event.data && event.data.type === "librarain-jobs-refresh") {
         frame.contentWindow?.postMessage({ type: "librarain-jobs-refresh" }, "*");
       }
     });
   }
-}
-
-function syncApiToken() {
-  try {
-    const token =
-      localStorage.getItem("librarainApiToken") || sessionStorage.getItem("librarainApiToken") || "";
-    if (token) localStorage.setItem("librarainApiToken", token);
-  } catch {}
 }

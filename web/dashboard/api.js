@@ -1,33 +1,11 @@
-const TOKEN_KEY = "librarainApiToken";
-let mockScenario = null;
+const mockScenario = null;
 let mockEnabled = false;
-
-export function apiToken() {
-  try {
-    return localStorage.getItem(TOKEN_KEY) || sessionStorage.getItem(TOKEN_KEY) || "";
-  } catch {
-    return "";
-  }
-}
-
-export function setApiToken(token) {
-  try {
-    localStorage.setItem(TOKEN_KEY, token);
-    sessionStorage.setItem(TOKEN_KEY, token);
-  } catch {}
-}
 
 export function articleUrl(pohId, basePath) {
   const path = basePath || `/articolo/${encodeURIComponent(pohId)}.html`;
   if (!isMockEnabled() || !mockScenario) return path;
   const sep = path.includes("?") ? "&" : "?";
   return `${path}${sep}mock=${encodeURIComponent(mockScenario)}`;
-}
-
-export function promptApiToken() {
-  const t = prompt("Token API (INGEST_API_TOKEN):", apiToken());
-  if (t) setApiToken(t.trim());
-  return apiToken();
 }
 
 export function getMockScenario() {
@@ -63,8 +41,6 @@ export function restoreMockState() {
 export async function apiFetch(url, options = {}) {
   const method = (options.method || "GET").toUpperCase();
   const headers = new Headers(options.headers || {});
-  const token = apiToken();
-  if (token) headers.set("X-API-Token", token);
   if (mockEnabled && mockScenario) {
     headers.set("X-Mock-Scenario", mockScenario);
   }
@@ -79,12 +55,6 @@ export async function apiFetch(url, options = {}) {
   }
   if (window.LibrarAInLog && (method !== "GET" || !res.ok)) {
     window.LibrarAInLog.logHttpDone(method, url, res.status);
-  }
-  if (res.status === 401 && !options._retried && !options.noAuthPrompt) {
-    const newToken = promptApiToken();
-    if (newToken) {
-      return apiFetch(url, { ...options, _retried: true });
-    }
   }
   return res;
 }

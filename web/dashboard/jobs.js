@@ -1,4 +1,4 @@
-import { apiJson, apiToken, articleUrl } from "./api.js";
+import { apiJson, articleUrl } from "./api.js";
 
 const WATCHED_KEY = "librarainDashboardWatchedJobs";
 const TERMINAL = new Set(["done", "error", "succeeded", "failed"]);
@@ -71,12 +71,6 @@ function escapeHtml(s) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
-}
-
-function urlWithToken(url) {
-  const token = apiToken();
-  if (!token || !url) return url;
-  return url + (url.indexOf("?") >= 0 ? "&" : "?") + "token=" + encodeURIComponent(token);
 }
 
 function loadWatched() {
@@ -157,7 +151,7 @@ function connectJobSSE(job) {
   if (sseConnections.has(jobId) || TERMINAL.has(job.status)) return;
   const eventsUrl = job.system_events_url || job.events_url;
   if (!eventsUrl) return;
-  const es = new EventSource(urlWithToken(eventsUrl));
+  const es = new EventSource(eventsUrl);
   sseConnections.set(jobId, es);
   const handler = () => scheduleRefetch(jobId);
   SSE_EVENT_TYPES.forEach((type) => es.addEventListener(type, handler));
