@@ -329,7 +329,7 @@ def parse_timeline_fill(raw_text: str) -> list[dict[str, Any]]:
 
 
 def _anno_to_year(value: Any) -> int | None:
-    """Normalize an ``anno`` (int or ``"YYYY[ a.C.]"`` string) to a signed year key."""
+    """Normalize an ``anno`` (int or period string) to a signed year key."""
     if isinstance(value, bool):
         return None
     if isinstance(value, int):

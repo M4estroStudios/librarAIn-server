@@ -8,10 +8,10 @@ Ricevi un articolo Markdown già finalizzato, i relativi metadati bibliografici 
 2. L'oggetto JSON deve contenere **esattamente** queste chiavi, senza aggiungerne o ometterne alcuna: `tipo`, `name`, `timeline`, `geo_hint`.
 3. `tipo`: una **sola** lettera tra `"p"` (persona), `"o"` (organizzazione/istituzione), `"m"` (monumento/luogo edificato). Nessun altro valore è ammesso.
 4. `name`: il nome da mostrare (forma breve, canonica, in italiano). In assenza di indicazioni migliori, usa il titolo H1 dell'articolo. Non inventare denominazioni non supportate dalle fonti.
-5. `timeline`: un array di **al massimo 5** oggetti, ciascuno nella forma `{ "anno": "<YYYY|YYYY a.C.|YYYY d.C.>", "evento": "<breve testo IT>" }`.
+5. `timeline`: un array di **al massimo 5** oggetti, ciascuno nella forma `{ "anno": "<YYYY|YYYY/MM|YYYY/MM/DD>", "evento": "<breve testo IT>" }`.
    - Ordina gli eventi cronologicamente (dal più antico al più recente).
    - Includi **solo** eventi salienti, ricavati **esclusivamente** dall'articolo e dalle sue fonti.
-   - Il campo `anno` deve rispettare uno dei formati indicati (`"1271"`, `"1295 a.C."`, `"476 d.C."`).
+   - Il campo `anno` deve rispettare uno dei formati indicati (`"1271"`, `"-36"`, `"1447/03"`, `"-43/01/01"`). Gli anni a.C. usano `YYYY` negativo.
    - **Non** inventare date: usa solo date presenti testualmente nell'articolo o nelle fonti. Se non ci sono eventi datati ammissibili, restituisci un array vuoto `[]`.
 6. `geo_hint`: un oggetto `{ "lat": <num|null>, "lon": <num|null>, "note": "<str|null>" }`.
    - Popola `lat`/`lon` **solo** se il soggetto è un monumento/luogo (`tipo` = `"m"`) e le coordinate sono supportate dall'articolo o dalle fonti.

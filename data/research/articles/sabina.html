@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sabina — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Sabina</h1>
+<p>La denominazione di <strong>Sabina</strong> indica principalmente un&#x27;antica regione geografica dell&#x27;Italia centrale e, in ambito religioso, una matrona romana martire il cui nome è legato alla celebre basilica aventina a Roma <a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:29">regione e agiografia, pp. 29</a><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:814">matrona e basilica, pp. 814</a>.</p>
+<h2>Territorio e popolazione sabina</h2>
+<p>L&#x27;area storicamente nota come Sabina si estendeva a oriente di Roma ed era attraversata da percorsi antichi fondamentali per i commerci e la transumanza, tra cui la via Salaria che sfruttava la valle del fiume per collegare le saline di Ostia alle zone interne <a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:29">via maestra commerciale, pp. 29</a>. Gli abitanti nativi, gli irriducibili Sabini, furono progressivamente sottomessi all&#x27;espansione romana, un processo che si consolidò con le campagne di Manio Curio Dentato nel 290 a.C. <a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:154">domita dei nemici, pp. 154</a>. Dalla loro cultura fu assimilata la divinità <a href="poh:feronia">Feronia</a>, trasferita a Roma e oggetto di una dedica templare <a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:154">divinità sabina, pp. 154</a>. In epoca medievale il territorio di Sabina fu oggetto di concessioni feudali pontificie, come quando Ottone I e la famiglia Crescenzi ne disposero a favore dei discendenti della sorella Stefania <a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:291">feudo medievale, pp. 291</a>.</p>
+<h2>Santa Sabina e la basilica aventina</h2>
+<p>Nel contesto agiografico romano, Santa Sabina era una matrona di Avezzano che subì il martirio per decapitazione durante l&#x27;impero di Vespasiano o di Adriano, dopo essere stata convertita al cristianesimo dalla sua schiava Serafia <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:814">matrona di Avezzano, pp. 814</a>. La basilica di Santa Sabina, situata sul colle Aventino, fu fondata nel 425 da S. Pietro d’Illiria sotto il pontificato di papa Clestino I e i lavori proseguirono con papa Sisto III <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:814">fondazione della chiesa, pp. 814</a>. Nel XIII secolo papa Onorio III assegnò l&#x27;edificio all&#x27;ordine domenicano, che lo gestisce tuttora <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:814">concessione ai domenicani, pp. 814</a>. La chiesa fu inoltre sede del conclave del 1288 che elesse papa Nicolò IV <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:815">conclave del 1288, pp. 815</a>. Sotto l&#x27;edificio si conservano resti archeologici di grande rilievo, tra cui tratti delle mura serviane, case repubblicane e augustee, un santuario della dea egizia Iside del II secolo d.C. e una domus del III-IV secolo che la tradizione collega alla famiglia di Santa Sabina <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:815">scavi archeologici, pp. 815</a>.</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>-290</td><td>Domita dei Sabini da parte di Manio Curio Dentato e trasferimento della divinità Feronia a Roma</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:154">domita dei nemici, pp. 154</a></td></tr>
+<tr><td>410</td><td>Sacco devastante dell&#x27;Aventino da parte dei Goti guidati da Alarico</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:802">sacco dei Goti, p. 802</a></td></tr>
+<tr><td>425</td><td>Fondazione della basilica di Santa Sabina sul colle Aventino per opera di Pietro d&#x27;Illiria</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:814">fondazione della chiesa, p. 814</a></td></tr>
+<tr><td>970</td><td>Concessione feudale del territorio sabino da parte del pontefice alla sorella Stefania</td><td><a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:291">feudo medievale, p. 291</a></td></tr>
+<tr><td>1288</td><td>Svolgimento del conclave nella basilica che elegge papa Nicolò IV</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:815">conclave del 1288, p. 815</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:802">I rioni di Roma, p. 802</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:814">I rioni di Roma, p. 814</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:815">I rioni di Roma, p. 815</a></li><li><a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:291">Storia di Roma nel Medioevo, p. 291</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:29">Storia di Roma Antica, p. 29</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:154">Storia di Roma Antica, p. 154</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

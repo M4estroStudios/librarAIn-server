@@ -12,10 +12,10 @@ optional pre-fixed timeline) is passed in explicitly via :class:`ApprovedMetadat
 BCE (``a.C.``) years
 --------------------
 E-TALY frontmatter timeline keys are integer years. There is no dedicated era flag,
-so a ``NNNN a.C.`` period is represented as the **negative** integer ``-NNNN`` (e.g.
-``509 a.C.`` -> key ``-509``). Because E-TALY support for negative year keys is not
-guaranteed, every BCE entry also appends a ``warnings`` note so the reviewer can audit
-it. The adapter never crashes on BCE input.
+so a BCE year is represented as a **negative** integer in the ``Periodo`` label
+(e.g. ``-509`` or ``-509/01/01`` for 509 a.C.). Because E-TALY support for negative
+year keys is not guaranteed, every BCE entry also appends a ``warnings`` note so the
+reviewer can audit it. The adapter never crashes on BCE input.
 
 Hard gate (decision D-09)
 -------------------------
@@ -54,10 +54,9 @@ _WIKILINK_RE = re.compile(r"\[\[([^\]|]+)\|([^\]]+)\]\]")
 _H1_RE = re.compile(r"^\s*#\s+(.*?)\s*$", re.MULTILINE)
 # A GFM table data/separator row.
 _TABLE_ROW_RE = re.compile(r"^\s*\|.*\|\s*$")
-# First run of digits inside a period cell.
-_YEAR_RE = re.compile(r"(\d{1,4})")
-# ``a.C.`` / ``aC`` / ``a C`` era marker (Italian "avanti Cristo").
-_BCE_RE = re.compile(r"\ba\.?\s*c\.?", re.IGNORECASE)
+_PERIOD_YEAR_RE = re.compile(r"^(-?\d{1,4})$")
+_PERIOD_YEAR_MONTH_RE = re.compile(r"^(-?\d{1,4})/(\d{1,2})$")
+_PERIOD_YEAR_MONTH_DAY_RE = re.compile(r"^(-?\d{1,4})/(\d{1,2})/(\d{1,2})$")
 
 _CRONOLOGIA_HEADER = "## Cronologia"
 _ANNOTAZIONI_HEADER = "## Annotazioni"
@@ -187,19 +186,47 @@ def extract_cited_pages(markdown: str) -> set[tuple[str, int]]:
 
 
 # --- Transformation 3: Cronologia -> timeline -------------------------------
+def is_valid_period(period: str) -> bool:
+    """Return whether ``period`` matches an allowed ``Periodo`` label format."""
+    text = period.strip()
+    return bool(
+        _PERIOD_YEAR_RE.match(text)
+        or _PERIOD_YEAR_MONTH_RE.match(text)
+        or _PERIOD_YEAR_MONTH_DAY_RE.match(text)
+    )
+
+
+def period_sort_key(period: str) -> tuple[int, int, int, str]:
+    """Sort key for chronological ordering of allowed ``Periodo`` labels."""
+    text = period.strip()
+    match = _PERIOD_YEAR_MONTH_DAY_RE.match(text)
+    if match is not None:
+        return (
+            int(match.group(1)),
+            int(match.group(2)),
+            int(match.group(3)),
+            text.casefold(),
+        )
+    match = _PERIOD_YEAR_MONTH_RE.match(text)
+    if match is not None:
+        return (int(match.group(1)), int(match.group(2)), 0, text.casefold())
+    match = _PERIOD_YEAR_RE.match(text)
+    if match is not None:
+        return (int(match.group(1)), 0, 0, text.casefold())
+    return (999999, 99, 99, text.casefold())
+
+
 def normalize_year(period: str) -> tuple[int | None, bool]:
     """Normalize a ``Periodo`` cell to ``(year_key, is_bce)``.
 
-    Accepts ``YYYY`` and ``YYYY d.C.`` as positive years and ``YYYY a.C.`` as a negative
-    year key. Returns ``(None, False)`` when no year can be parsed (never raises).
+    Accepts only ``YYYY``, ``YYYY/MM`` and ``YYYY/MM/DD``. BCE years use a negative
+    ``YYYY`` (e.g. ``-36``). Returns ``(None, False)`` when the label is invalid.
     """
     text = period.strip()
-    match = _YEAR_RE.search(text)
-    if match is None:
+    if not is_valid_period(text):
         return None, False
-    year = int(match.group(1))
-    is_bce = _BCE_RE.search(text) is not None
-    return (-year if is_bce else year), is_bce
+    year = int(text.split("/", 1)[0])
+    return year, year < 0
 
 
 def _parse_cronologia_rows(markdown: str) -> list[tuple[str, str]]:

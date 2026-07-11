@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agrippina — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Agrippina</h1>
+<p>Nel contesto delle pagine consultate, il nome Agrippina designa più figure femminili appartenenti alla cerchia augustea e alla dinastia giulio-claudia[1]. Le fonti menzionano principalmente una figlia di Augusto e Marco Agrippa, un&#x27;omonima coniuge dell&#x27;imperatore Tiberio, nonché la moglie del generale Germanico. La coesistenza di queste personalità nello stesso ambiente storico rende ambigua l&#x27;identificazione univoca senza ulteriori specificazioni cronologiche o biografiche[2].</p>
+<h2>Origini familiari</h2>
+<p>Agrippina è una delle cinque figlie nate dall&#x27;unione tra Giulia, figlia di Augusto, e Marco Agrippa, dopo che il primo aveva combinato queste seconde nozze nel 23 a.C. in seguito alla morte del cugino Marco Claudio Marcello[3]. Da questa unione nascono tre maschi, Gaio, Lucio e Agrippa Postumo, e due femmine, Giulia e Agrippina[4].</p>
+<h2>Figure omonime e legami dinastici</h2>
+<p>Le pagine riportano la presenza di un&#x27;altra donna chiamata Vipsania Agrippina, figlia della prima moglie di Marco Agrippa, che in seguito sposa Tiberio da cui ha un figlio, Druso Minore[5]. Si registra inoltre il ruolo di una terza Agrippina, coniuge del generale Germanico, attiva nelle vicende orientali e nella successione augustea. L&#x27;assenza di distinzioni anagrafiche precise nel testo fornito impedisce di stabilire con certezza se le menzioni si riferiscano alla stessa persona o a figure diverse[6].</p>
+<h2>Il ritorno da Oriente e le esequie</h2>
+<p>Durante la spedizione in Siria, la moglie di <a href="poh:germanico">Germanico</a> è coinvolta in una rivalità politica con Plancina contro il governatore Gneo Calpurnio Pisone. Dopo la morte del marito, avvenuta sotto il sospetto di avvelenamento, Agrippina compie un viaggio attraverso il Mediterraneo in pieno inverno per sbarcare a Brindisi insieme alle ceneri del defunto[7]. Il corteo funebre risale lungo la via Appia e, giunto a Terracina, viene accolto dal cugino Druso, figlio di <a href="poh:tiberio">Tiberio</a>. Durante le esequie si registrano manifestazioni di dolore eccessive da parte dei presenti, mentre risultano assenti l&#x27;imperatrice Livia, il console <a href="poh:tiberio">Tiberio</a> e la madre Antonia[8]. La vicenda è accompagnata dalla circolazione di voci che attribuiscono a <a href="poh:tiberio">Tiberio</a> una presunta responsabilità nella scomparsa di <a href="poh:germanico">Germanico</a>[9].</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>-23</td><td>Nozze tra Giulia e Marco Agrippa, nascita di Agrippina</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:287">Storia di Roma Antica</a></td></tr>
+<tr><td>9</td><td>Morte di Druso Minore in Germania durante una campagna militare</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:295">Storia di Roma Antica</a></td></tr>
+<tr><td>21</td><td>Tiberio eletto console insieme al figlio Druso</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:297">Storia di Roma Antica</a></td></tr>
+<tr><td>64</td><td>Grande incendio e interventi edilizi di Nerone sul palazzo imperiale</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:297">Storia di Roma Antica</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:287">Storia di Roma Antica, p. 287</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:295">Storia di Roma Antica, p. 295</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:297">Storia di Roma Antica, p. 297</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

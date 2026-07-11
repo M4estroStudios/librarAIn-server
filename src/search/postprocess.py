@@ -8,7 +8,7 @@ from pathlib import Path
 
 from src.core.log import INFO_LOG_LEVEL, WARNING_LOG_LEVEL, Log
 from src.core.parallel import parallel_map
-from src.export.etaly_adapter import normalize_year
+from src.export.etaly_adapter import is_valid_period, period_sort_key
 from src.models.polyindex_index import PolyindexIndexDocument
 
 _SOURCE_LINK_PATTERN = re.compile(
@@ -29,23 +29,6 @@ _FONTI_HEADER = "## Fonti"
 _TABLE_ROW_PATTERN = re.compile(r"^\|(.+)\|\s*$")
 _UNVERIFIABLE = "*[[fonte non verificabile]]*"
 _INLINE_LINK_PATTERN = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
-_ROMAN_CENTURY_RE = re.compile(r"\b([IVXLCDM]+)\s*secolo\b", re.IGNORECASE)
-_DECADE_CENTURY_RE = re.compile(
-    r"anni\s+(venti|trenta|quaranta|cinquanta|sessanta|settanta|ottanta|novanta)\s*\([^)]*([IVXLCDM]+)\s*sec",
-    re.IGNORECASE,
-)
-_DECADE_OFFSETS = {
-    "venti": 20,
-    "trenta": 30,
-    "quaranta": 40,
-    "cinquanta": 50,
-    "sessanta": 60,
-    "settanta": 70,
-    "ottanta": 80,
-    "novanta": 90,
-}
-
-
 @dataclass(frozen=True)
 class CitationRecord:
     source_sha256: str
@@ -327,41 +310,6 @@ def _replace_poh_links(
     return cleaned, counts, invalid
 
 
-def _roman_to_int(value: str) -> int | None:
-    total = 0
-    previous = 0
-    for char in reversed(value.upper()):
-        current = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}.get(char)
-        if current is None:
-            return None
-        if current < previous:
-            total -= current
-        else:
-            total += current
-            previous = current
-    return total
-
-
-def _period_sort_key(period: str) -> tuple[int, str]:
-    year, _is_bce = normalize_year(period)
-    if year is not None:
-        return (year, period.casefold())
-    decade_match = _DECADE_CENTURY_RE.search(period)
-    if decade_match is not None:
-        decade = _DECADE_OFFSETS.get(decade_match.group(1).casefold())
-        century = _roman_to_int(decade_match.group(2))
-        if decade is not None and century is not None:
-            return ((century - 1) * 100 + decade, period.casefold())
-    century_match = _ROMAN_CENTURY_RE.search(period)
-    if century_match is not None:
-        century = _roman_to_int(century_match.group(1))
-        if century is not None:
-            is_bce = re.search(r"\ba\.?\s*c\.?", period, flags=re.IGNORECASE) is not None
-            anchor = (century - 1) * 100 + 1
-            return ((-century * 100 if is_bce else anchor), period.casefold())
-    return (999999, period.casefold())
-
-
 def _split_table_row(line: str) -> list[str] | None:
     match = _TABLE_ROW_PATTERN.match(line.strip())
     if match is None:
@@ -477,9 +425,17 @@ def _process_cronologia_section(
             continue
         if len(cells) != 3:
             continue
+        period = cells[0]
+        if not is_valid_period(period):
+            Log(
+                WARNING_LOG_LEVEL,
+                "research postprocess cronologia row dropped (invalid period)",
+                {"request_id": request_id, "period": period},
+            )
+            continue
         data_rows.append(cells)
 
-    sorted_rows = sorted(data_rows, key=lambda row: _period_sort_key(row[0]))
+    sorted_rows = sorted(data_rows, key=lambda row: period_sort_key(row[0]))
     if sorted_rows != data_rows:
         Log(
             INFO_LOG_LEVEL,

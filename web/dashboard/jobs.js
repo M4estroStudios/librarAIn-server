@@ -295,21 +295,6 @@ function normalizeJobPhases(job) {
   return phases;
 }
 
-function renderStageSegmentsBar(segments) {
-  if (!Array.isArray(segments) || !segments.length) return "";
-  const parts = segments.map(function (segment) {
-    const status = segment.status || "pending";
-    return '<span class="stage-segment stage-segment-' + escapeHtml(status) + '" title="' + escapeHtml(jobPhaseLabel(segment.phase, segment.phase)) + '"></span>';
-  });
-  const done = segments.filter(function (s) { return s.status === "done"; }).length;
-  return (
-    '<div class="stage-segments-bar" aria-label="Progresso stage ' + done + '/' + segments.length + '">' +
-    parts.join("") +
-    '<span class="stage-segments-label">' + done + "/" + segments.length + " stage</span>" +
-    "</div>"
-  );
-}
-
 function renderJobProgressRow(label, done, total, status, globalRow) {
   const max = Math.max(1, total || 1);
   const value = Math.min(done || 0, max);
@@ -368,7 +353,6 @@ function renderActiveJobCard(job, options) {
   const globalStep = typeof job.global_step === "number" ? job.global_step : 0;
   const globalTotal = typeof job.global_total === "number" ? job.global_total : 0;
   const visiblePhases = resolveJobPhases(job);
-  const stageSegments = Array.isArray(job.stage_segments) ? job.stage_segments : [];
   const cardClass =
     "active-job-card" +
     (nested ? " active-job-card-nested" : "") +
@@ -400,9 +384,7 @@ function renderActiveJobCard(job, options) {
   if (job.error) {
     inner += '<div class="active-job-error">' + escapeHtml(job.error) + "</div>";
   }
-  if (isBatch && stageSegments.length) {
-    inner += renderStageSegmentsBar(stageSegments);
-  } else if (globalTotal > 0 && !isBatch) {
+  if (globalTotal > 0) {
     inner += renderJobProgressRow("Totale", globalStep, globalTotal, job.is_active ? "active" : "done", true);
   }
   if (visiblePhases.length && !isBatch) {
@@ -417,9 +399,9 @@ function renderActiveJobCard(job, options) {
     (job.poh_id && job.status === "succeeded" ? articleUrl(job.poh_id) : null);
   if (articleHref) {
     inner +=
-      '<div class="active-job-actions"><a href="' +
+      '<div class="active-job-actions"><button type="button" class="secondary active-job-open" data-href="' +
       escapeHtml(articleHref) +
-      '" target="_blank" rel="noopener">Apri articolo</a></div>';
+      '">Apri articolo</button></div>';
   }
 
   if (isBatch) {
@@ -532,8 +514,15 @@ async function refreshJobsList() {
 }
 
 export function initActiveJobs(options = {}) {
-  if (!getJobsRoot()) return;
+  const root = getJobsRoot();
+  if (!root) return;
   jobsApiOptions = options.noAuthPrompt ? { noAuthPrompt: true } : {};
+  root.addEventListener("click", (event) => {
+    const btn = event.target.closest(".active-job-open");
+    if (!btn) return;
+    const href = btn.getAttribute("data-href");
+    if (href) window.open(href, "_blank", "noopener,noreferrer");
+  });
   window.addEventListener("message", (event) => {
     if (event.data && event.data.type === "librarain-jobs-refresh") refreshJobsList();
   });

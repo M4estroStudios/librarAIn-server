@@ -4,6 +4,7 @@ import unittest
 
 from src.api.job_display import (
     build_batch_stage_segments,
+    enrich_batch_summary,
     job_display_label,
     job_display_status,
 )
@@ -60,6 +61,18 @@ class TestJobDisplayStatus(unittest.TestCase):
         self.assertEqual(len(segments), 5)
         self.assertEqual(segments[0]["status"], "done")
         self.assertEqual(segments[1]["status"], "active")
+
+    def test_enrich_batch_summary_preserves_article_progress(self) -> None:
+        batch = {
+            "job_kind": "research_batch",
+            "global_step": 2,
+            "global_total": 5,
+            "phases": [{"phase": "research_batch", "status": "active", "done": 2, "total": 5}],
+        }
+        enriched = enrich_batch_summary(batch, [{"phases": [{"phase": "research_collect", "status": "done"}]}])
+        self.assertEqual(enriched["global_step"], 2)
+        self.assertEqual(enriched["global_total"], 5)
+        self.assertNotIn("stage_segments", enriched)
 
 
 if __name__ == "__main__":

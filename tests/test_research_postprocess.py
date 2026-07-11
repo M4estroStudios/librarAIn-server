@@ -75,19 +75,20 @@ class ResearchPostprocessTests(unittest.TestCase):
         self.assertEqual(result.timeline_rows[0].period, "1200")
         self.assertEqual(result.timeline_rows[1].period, "1400")
 
-    def test_cronologia_reorders_bce_and_mixed_labels(self) -> None:
+    def test_cronologia_reorders_bce_and_drops_invalid_periods(self) -> None:
         markdown = """# Articolo
 
 ## Cronologia
 
 | Periodo | Evento | Fonti |
 |---------|--------|-------|
-| 476 d.C. | Fine impero | [f](source:abc123:aligned:112) |
+| 476 | Fine impero | [f](source:abc123:aligned:112) |
 | 1946 | Dopoguerra | [f](source:abc123:aligned:112) |
-| 36 a.C. | Nauloco | [f](source:abc123:aligned:112) |
-| 43 a.C. | Modena | [f](source:abc123:aligned:112) |
+| -36 | Nauloco | [f](source:abc123:aligned:112) |
+| -43 | Modena | [f](source:abc123:aligned:112) |
 | V secolo | Alarico | [f](source:abc123:aligned:112) |
 | Anni Trenta (XX sec.) | Fori | [f](source:abc123:aligned:112) |
+| 36 a.C. | Scartato | [f](source:abc123:aligned:112) |
 """
         result = postprocess_markdown(
             markdown,
@@ -99,14 +100,32 @@ class ResearchPostprocessTests(unittest.TestCase):
         self.assertEqual(
             periods,
             [
-                "43 a.C.",
-                "36 a.C.",
-                "V secolo",
-                "476 d.C.",
-                "Anni Trenta (XX sec.)",
+                "-43",
+                "-36",
+                "476",
                 "1946",
             ],
         )
+
+    def test_cronologia_sorts_year_month_day(self) -> None:
+        markdown = """# Articolo
+
+## Cronologia
+
+| Periodo | Evento | Fonti |
+|---------|--------|-------|
+| 1946/07/11 | Evento recente | [f](source:abc123:aligned:112) |
+| 1946/03/01 | Evento primaverile | [f](source:abc123:aligned:112) |
+| 1946 | Solo anno | [f](source:abc123:aligned:112) |
+"""
+        result = postprocess_markdown(
+            markdown,
+            data_root=self.data_root,
+            index_document=self.index,
+            request_id="req2c",
+        )
+        periods = [row.period for row in result.timeline_rows]
+        self.assertEqual(periods, ["1946", "1946/03/01", "1946/07/11"])
 
     def test_valid_poh_link_kept(self) -> None:
         markdown = "Vedi [Marco Polo](poh:marco-polo)."

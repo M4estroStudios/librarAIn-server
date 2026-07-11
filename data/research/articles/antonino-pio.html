@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antonino Pio — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Antonino Pio</h1>
+<p>Antonino Pio fu un imperatore romano la cui memoria fu celebrata nella capitale attraverso specifici monumenti onorari, tra cui una celebre colonna in granito dedicata a lui e alla moglie Faustina Maggiore dopo la loro divinizzazione<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">1</a>. La struttura, eretta tra il 105 e il 106 d.C. su iniziativa dei figli adottivi <a href="poh:marco-aurelio">Marco Aurelio</a> e Lucio Vero, fu a lungo un punto di riferimento urbano nel rione Colonna prima di essere progressivamente smantellata per fornire materiale lapideo al restauro di altri monumenti<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">2</a>. Le fonti disponibili si concentrano esclusivamente sulle vicende archeologiche e urbanistiche del monumento eretto in suo onore, non fornendo elementi biografici generali sull&#x27;imperatore.</p>
+<h2>La colonna onoraria e la base decorata</h2>
+<p>La <a href="poh:colonna">colonna</a>, alta 14,75 metri senza la base e realizzata in granito liscio, fu voluta durante il prefetto d&#x27;Egitto Dioscuro e con architetto Aristide<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">3</a>. La base, di dimensioni 2,47 × 3,38 metri, presentava sul lato principale un&#x27;iscrizione dedicatoria posta da Marco Aurelio e Lucio Vero in onore del padre divinizzato<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">4</a>. Sul lato opposto era raffigurata la dea Roma seduta che assiste all&#x27;apoteosi della coppia imperiale, Antonino Pio e Faustina Maggiore, trasportati da un&#x27;aquila affiancata dal genio della Aeternitas; in basso si trova la personificazione del <a href="poh:campo-marzio">Campo Marzio</a><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">5</a>. Le altre due facce della base erano ornate dalla rappresentazione di una <em>decursio</em> funebre, ovvero un carosello rituale di cavalieri e soldati<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:203">6</a>. Oggi il basamento è conservato nel cortile delle Corazze dei musei Vaticani<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:203">7</a>.</p>
+<h2>Vicende archeologiche e frammentazione</h2>
+<p>La colonna era nota già dal 1555, poiché si trovava sepolta nel giardino di un privato, mentre la base rimase nascosta fino al 1703<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">8</a>. Su ordine di papa Innocenzo XII, che intendeva collocare il monumento davanti alla Curia Innocenziana, furono avviati scavi che permisero la scoperta della base e l&#x27;estrazione del fusto, impresa completata con successo nel 1705 dopo i tentativi falliti dell&#x27;anno precedente<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">9</a>. Durante le operazioni di estrazione e trasporto si verificarono due lesioni al fusto, che indussero ignoti a incidere sul granito la frase «Trinum et Unum»<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">10</a>.</p>
+<p>Nel 1759 la colonna fu colpita da un incendio e progressivamente dimenticata<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">11</a>. Quando papa Pio VI decise di erigere al centro della piazza di <a href="poh:montecitorio">Montecitorio</a> l&#x27;obelisco di Psammetico II, originariamente usato come gnomone dell&#x27;Orologio Solare augusteo, fece segare in lastre i frammenti della colonna di Antonino Pio per riutilizzarne il materiale nel restauro del monumento<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:233">12</a>. La base, invece, fu spostata tra il 1789 e il 1792 nei musei Vaticani<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">13</a>. Di conseguenza, la colonna cessò di esistere come struttura autonoma, continuando a vivere materialmente solo nell&#x27;obelisco restaurato<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">14</a>.</p>
+<h2>Confusioni storiche e toponomastica</h2>
+<p>La presenza della colonna di Antonino Pio generò nel medioevo una nota confusione monumentale. La celebre colonna di Marco Aurelio, eretta dopo il 193 d.C., fu infatti indicata nelle iscrizioni pontificie come dedicata ad Antonino Pio<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:201">15</a>. Da questo errore derivò il toponimo medioevale di <em>columna Antonini</em>, che si estese all&#x27;area circostante e diede origine al nome del rione Colonna, attivo già prima del secolo XII<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:201">16</a>. La memoria dell&#x27;erezione della colonna di Antonino Pio fu inoltre tramandata attraverso una nota pasquinata che menzionava il capomastro Nicola Zabaglia, figura storica considerata il fondatore del corpo dei sampietrini<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:1155">17</a>.</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>106</td><td>Erezione della colonna onoraria dedicata ad Antonino Pio e Faustina Maggiore.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">P. 234</a></td></tr>
+<tr><td>1703</td><td>Scoperta della base decorata durante gli scavi voluti da Innocenzo XII.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">P. 234</a></td></tr>
+<tr><td>1705</td><td>Completamento dell&#x27;estrazione del fusto della colonna.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">P. 234</a></td></tr>
+<tr><td>1786</td><td>Utilizzo dei frammenti della colonna per il restauro e la collocazione dell&#x27;obelisco di Psammetico II a Montecitorio.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:233">P. 233</a></td></tr>
+<tr><td>1792</td><td>Trasferimento della base nei Musei Vaticani, dove è tuttora conservata.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">P. 234</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:201">I rioni di Roma, p. 201</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:203">I rioni di Roma, p. 203</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:233">I rioni di Roma, p. 233</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:234">I rioni di Roma, p. 234</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:1155">I rioni di Roma, p. 1155</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

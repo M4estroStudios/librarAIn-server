@@ -35,7 +35,7 @@ Vedi anche [Roma](poh:roma-slug) e una terza fonte [rif3](source:112233:aligned:
 | 1625 | Baldacchino di San Pietro | |
 | 1650 | Fontana dei Fiumi | |
 | 1680 | Morte a Roma | |
-| 509 a.C. | Evento antico | |
+| -509 | Evento antico | |
 
 ## Annotazioni
 
@@ -149,9 +149,23 @@ class TestSanitize(EtalyAdapterTestBase):
 class TestUnitHelpers(EtalyAdapterTestBase):
     def test_normalize_year(self) -> None:
         self.assertEqual(normalize_year("1598"), (1598, False))
-        self.assertEqual(normalize_year("1680 d.C."), (1680, False))
-        self.assertEqual(normalize_year("509 a.C."), (-509, True))
+        self.assertEqual(normalize_year("1680/12"), (1680, False))
+        self.assertEqual(normalize_year("1680/12/25"), (1680, False))
+        self.assertEqual(normalize_year("-509"), (-509, True))
+        self.assertEqual(normalize_year("-43/01/01"), (-43, True))
+        self.assertEqual(normalize_year("509 a.C."), (None, False))
         self.assertEqual(normalize_year("epoca imprecisata"), (None, False))
+
+    def test_is_valid_period(self) -> None:
+        from src.export.etaly_adapter import is_valid_period
+
+        self.assertTrue(is_valid_period("1946"))
+        self.assertTrue(is_valid_period("-36"))
+        self.assertTrue(is_valid_period("1447/03"))
+        self.assertTrue(is_valid_period("-43/01/01"))
+        self.assertFalse(is_valid_period("36 a.C."))
+        self.assertFalse(is_valid_period("V secolo"))
+        self.assertFalse(is_valid_period("1271–1295"))
 
     def test_rewrite_poh_links_reports_unresolved(self) -> None:
         text = "[A](poh:bernini-slug) [B](poh:nope)"

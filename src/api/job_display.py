@@ -65,22 +65,5 @@ def enrich_batch_summary(
     batch: dict[str, Any],
     child_jobs: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    segments = build_batch_stage_segments(child_jobs)
-    payload = dict(batch)
-    payload["stage_segments"] = segments
-    total = len(segments)
-    done = sum(1 for segment in segments if segment["status"] == "done")
-    active = any(segment["status"] == "active" for segment in segments)
-    payload["global_step"] = done
-    payload["global_total"] = max(1, total)
-    if total:
-        payload["phases"] = [
-            {
-                "phase": "research_batch",
-                "status": "active" if active and batch.get("is_active") else "done",
-                "done": done,
-                "total": total,
-                "detail": f"{done}/{total} stage",
-            }
-        ]
-    return payload
+    del child_jobs
+    return dict(batch)

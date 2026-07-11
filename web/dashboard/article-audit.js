@@ -35,6 +35,33 @@ function renderSummary(audit) {
   return parts.join(" · ");
 }
 
+function renderArticleOpenButton(href) {
+  return (
+    '<button type="button" class="secondary article-audit-open" data-href="' +
+    escapeHtml(href) +
+    '">Apri articolo</button>'
+  );
+}
+
+function wireArticleOpenButtons(root) {
+  root.querySelectorAll(".article-audit-open").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const href = btn.getAttribute("data-href");
+      if (href) window.open(href, "_blank", "noopener,noreferrer");
+    });
+  });
+}
+
+function renderRegenButton(item) {
+  return (
+    '<button type="button" class="secondary article-audit-regen" data-poh-id="' +
+    escapeHtml(item.poh_id) +
+    '" data-label="' +
+    escapeHtml(item.label || item.poh_id) +
+    '">Rigenera</button>'
+  );
+}
+
 function renderGeneratedRow(item) {
   const href = articleUrl(item.poh_id, item.url);
   let status = item.ok ? "Completo" : item.no_material ? "Materiale insufficiente" : "Con problemi";
@@ -49,9 +76,9 @@ function renderGeneratedRow(item) {
     escapeHtml(status) +
     "</div>" +
     '<div class="article-audit-row-actions">' +
-    '<a href="' +
-    escapeHtml(href) +
-    '" target="_blank" rel="noopener">Apri</a>' +
+    renderArticleOpenButton(href) +
+    " " +
+    renderRegenButton(item) +
     "</div></div>";
   return html;
 }
@@ -96,18 +123,10 @@ function renderIssueRow(item) {
     "</div>" +
     '<div class="article-audit-row-actions">';
   if (item.url || item.issue !== "orphan_file") {
-    html +=
-      '<a href="' +
-      escapeHtml(href) +
-      '" target="_blank" rel="noopener">Apri</a> ';
+    html += renderArticleOpenButton(href) + " ";
   }
   if (item.issue === "missing" || item.issue === "no_material" || item.issue === "damaged" || item.issue === "incomplete" || item.issue === "content_mismatch" || item.issue === "markdown_missing" || item.issue === "empty_file") {
-    html +=
-      '<button type="button" class="secondary article-audit-regen" data-poh-id="' +
-      escapeHtml(item.poh_id) +
-      '" data-label="' +
-      escapeHtml(item.label || item.poh_id) +
-      '">Rigenera</button>';
+    html += renderRegenButton(item);
   }
   html += "</div></div>";
   return html;
@@ -140,6 +159,7 @@ function renderAudit(audit) {
     html += '<div class="article-audit-ok">Nessun problema tra gli articoli generati.</div>';
   }
   root.innerHTML = html;
+  wireArticleOpenButtons(root);
   root.querySelectorAll(".article-audit-regen").forEach((btn) => {
     btn.addEventListener("click", () => regenerateArticle(btn));
   });

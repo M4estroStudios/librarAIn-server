@@ -12,7 +12,12 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
-from src.search.article_catalog import research_status_summary
+from src.search.article_catalog import (
+    _article_is_complete,
+    _article_url,
+    _load_catalog,
+    research_status_summary,
+)
 from src.api.admin_embeddings import (
     try_handle_admin_embeddings_get,
     try_handle_admin_embeddings_post,
@@ -598,6 +603,16 @@ def build_ingest_server(
                 subjects = list_multibook_subjects(
                     data_root / "polyindex", min_books=max(1, min_books)
                 )
+                catalog = _load_catalog(data_root)
+                articles = catalog.get("articles", {})
+                if not isinstance(articles, dict):
+                    articles = {}
+                for subject in subjects:
+                    poh_id = str(subject.get("canonical_id") or "")
+                    meta = articles.get(poh_id)
+                    has_article = _article_is_complete(data_root, poh_id, meta)
+                    subject["has_article"] = has_article
+                    subject["url"] = _article_url(poh_id) if has_article else None
                 _send_json(self, 200, {"ok": True, "subjects": subjects})
                 return
 

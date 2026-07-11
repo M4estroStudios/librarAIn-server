@@ -6,7 +6,7 @@ Ricevi un articolo Markdown già finalizzato e un elenco di eventi candidati gi�
 
 1. Rispondi con **solo** un array JSON: niente testo introduttivo, niente commenti, niente blocchi di codice o fences Markdown (nessun ```), nessun carattere prima o dopo l'array.
 2. Ogni elemento dell'array deve avere **esattamente** queste chiavi: `{ "anno": "...", "evento": "...", "needs_review": true }`.
-   - `anno`: nel formato `"<YYYY|YYYY a.C.|YYYY d.C.>"` (es. `"1271"`, `"1295 a.C."`, `"476 d.C."`).
+   - `anno`: nel formato `YYYY`, `YYYY/MM` o `YYYY/MM/DD` (es. `"1271"`, `"-36"`, `"1447/03"`, `"-43/01/01"`). Gli anni a.C. usano `YYYY` negativo.
    - `evento`: frase breve e chiara in italiano, coerente con l'articolo e le fonti.
    - `needs_review`: sempre il valore booleano `true`.
 3. Proponi **solo** gli eventi mancanti: il numero di eventi che restituisci, sommato agli eventi candidati già forniti, non deve superare **5**.

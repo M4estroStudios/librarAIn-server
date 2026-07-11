@@ -123,7 +123,7 @@ button.secondary:hover:not(:disabled) { background: #4a4a4a; }
 .active-job-card.job-failed { border-color: #8b3a3a; }
 .active-job-error { font-size: 0.78rem; color: #f48771; margin-bottom: 0.5rem; line-height: 1.35; }
 .active-job-actions { margin-top: 0.55rem; font-size: 0.8rem; }
-.active-job-actions a { color: #4ec9b0; }
+.active-job-actions button { font-size: 0.78rem; padding: 0.2rem 0.55rem; }
 .active-job-batch-children { margin-top: 0.55rem; padding-left: 0.65rem; border-left: 2px solid #3e3e3e; }
 .active-job-card-nested { margin-top: 0.45rem; padding: 0.65rem 0.75rem; background: #252526; border-color: #333; }
 .active-job-card-nested:first-child { margin-top: 0; }
@@ -836,6 +836,8 @@ details.book-audit { margin-top: 0.35rem; font-size: 0.78rem; color: #9d9d9d; }
 details.book-audit summary { cursor: pointer; color: #4ec9b0; }
 #merge-bar { position: sticky; bottom: 0; display: none; gap: 0.7rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; padding: 0.8rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
 #merge-bar.show { display: flex; }
+#merge-bar .merge-bar-merge-group { display: inline-flex; gap: 0.7rem; align-items: center; flex-wrap: wrap; }
+#merge-bar .merge-bar-merge-group.hidden { display: none; }
 #merge-bar select { font: inherit; padding: 0.4rem 0.5rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; max-width: 22rem; }
 #out { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; background: #2d2d2d; color: #d4d4d4; border: 1px solid #454545; font-size: 0.8rem; white-space: pre-wrap; word-break: break-word; display: none; }
 #out.show { display: block; }
@@ -862,8 +864,7 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
 .article-audit-row-title { font-size: 0.82rem; color: #e8e8e8; }
 .article-audit-row-title code { font-size: 0.75rem; color: #9d9d9d; }
 .article-audit-row-detail { font-size: 0.76rem; color: #9d9d9d; margin-top: 0.2rem; line-height: 1.35; }
-.article-audit-row-actions { margin-top: 0.35rem; font-size: 0.78rem; }
-.article-audit-row-actions a { color: #4ec9b0; margin-right: 0.5rem; }
+.article-audit-row-actions { margin-top: 0.35rem; font-size: 0.78rem; display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
 .article-audit-row-actions button { font-size: 0.78rem; padding: 0.2rem 0.55rem; }
 .poh-gen-row { margin-bottom: 0.5rem; }
 .poh-gen-row input[type="search"] { flex: 1; min-width: 12rem; }
@@ -1273,12 +1274,6 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
 <div class="panel admin-poh-panel">
   <h2>POH multi-libro</h2>
   <p class="hint">Soggetti presenti in più libri. Seleziona voci duplicate, scegli la canonica e uniscile.</p>
-  <div class="panel-row poh-gen-row">
-    <input type="search" id="poh-gen-search" placeholder="Cerca POH per generare articolo…" autocomplete="off">
-    <button type="button" id="poh-gen-btn" disabled>Genera articolo</button>
-  </div>
-  <ul id="poh-gen-matches" class="poh-gen-matches hidden" aria-label="Risultati ricerca POH"></ul>
-  <div id="progress-poh-gen"></div>
   <div class="admin-poh-filters">
   <div class="toolbar admin-poh-toolbar">
   <input type="search" id="search" placeholder="Filtra per etichetta o alias…">
@@ -1291,11 +1286,19 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   <label class="hint">Min libri
     <input type="number" id="min-books" value="2" min="1">
   </label>
+  <label class="hint">Articolo
+    <select id="poh-article-filter" aria-label="Filtra per articolo generato">
+      <option value="all" selected>Tutti</option>
+      <option value="generated">Con articolo</option>
+      <option value="missing">Senza articolo</option>
+    </select>
+  </label>
   <button id="reload">Ricarica</button>
   <span class="hint" id="count"></span>
 </div>
 <div id="poh-book-chips" class="poh-book-chips-row"></div>
 </div>
+<div id="progress-poh-gen"></div>
 
 <table>
   <thead>
@@ -1311,11 +1314,15 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
 </table>
 
 <div id="merge-bar">
-  <span class="hint"><span id="sel-count">0</span> selezionati — canonico:</span>
-  <select id="target"></select>
-  <button class="danger" id="do-merge">Unisci nei selezionati</button>
-  <button id="clear-sel">Annulla selezione</button>
-  </div>
+  <span class="hint"><span id="sel-count">0</span> selezionati</span>
+  <button type="button" id="gen-selected" class="secondary" disabled>Genera selezionati</button>
+  <span id="merge-bar-merge-group" class="merge-bar-merge-group hidden">
+    <span class="hint">— canonico:</span>
+    <select id="target"></select>
+    <button class="danger" id="do-merge">Unisci nei selezionati</button>
+  </span>
+  <button type="button" id="clear-sel">Annulla selezione</button>
+</div>
 </div>
 
 <div id="out"></div>
@@ -1383,7 +1390,10 @@ const rowsEl = document.getElementById("rows");
 const outEl = document.getElementById("out");
 const searchEl = document.getElementById("search");
 const minBooksEl = document.getElementById("min-books");
+const articleFilterEl = document.getElementById("poh-article-filter");
 const mergeBar = document.getElementById("merge-bar");
+const genSelectedBtn = document.getElementById("gen-selected");
+const mergeBarMergeGroup = document.getElementById("merge-bar-merge-group");
 const targetEl = document.getElementById("target");
 const selCountEl = document.getElementById("sel-count");
 const countEl = document.getElementById("count");
@@ -1391,68 +1401,6 @@ const pohBookSearchEl = document.getElementById("poh-book-search");
 const pohBookDropdownEl = document.getElementById("poh-book-dropdown");
 const pohBookChipsEl = document.getElementById("poh-book-chips");
 const pohBookFilter = { books: [], selected: new Set() };
-const pohGenSearchEl = document.getElementById("poh-gen-search");
-const pohGenBtnEl = document.getElementById("poh-gen-btn");
-const pohGenMatchesEl = document.getElementById("poh-gen-matches");
-let pohGenSelected = null;
-let pohGenSearchTimer = null;
-
-function setPohGenSelected(item) {
-  pohGenSelected = item;
-  pohGenBtnEl.disabled = !item;
-  for (const btn of pohGenMatchesEl.querySelectorAll("button")) {
-    btn.classList.toggle("selected", item && btn.dataset.pohId === item.poh_id);
-  }
-}
-
-function hidePohGenMatches() {
-  pohGenMatchesEl.classList.add("hidden");
-  pohGenMatchesEl.innerHTML = "";
-}
-
-async function searchPohForGenerate(query) {
-  const q = String(query || "").trim();
-  if (q.length < 2) {
-    hidePohGenMatches();
-    setPohGenSelected(null);
-    return;
-  }
-  const res = await apiFetch("/api/research/search?q=" + encodeURIComponent(q));
-  const data = await res.json();
-  if (!res.ok || !data.ok) throw new Error(data.error || "ricerca fallita");
-  const results = data.results || [];
-  pohGenMatchesEl.innerHTML = "";
-  if (!results.length) {
-    pohGenMatchesEl.classList.remove("hidden");
-    const li = document.createElement("li");
-    const empty = document.createElement("button");
-    empty.type = "button";
-    empty.disabled = true;
-    empty.textContent = "Nessun POH trovato.";
-    li.appendChild(empty);
-    pohGenMatchesEl.appendChild(li);
-    setPohGenSelected(null);
-    return;
-  }
-  for (const item of results) {
-    const li = document.createElement("li");
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.dataset.pohId = item.poh_id;
-    const articleHint = item.has_article ? " · articolo presente" : " · articolo mancante";
-    btn.textContent = (item.label || item.poh_id) + " (" + item.poh_id + ")" + articleHint;
-    btn.addEventListener("click", () => {
-      setPohGenSelected(item);
-      pohGenSearchEl.value = item.label || item.poh_id;
-      hidePohGenMatches();
-    });
-    li.appendChild(btn);
-    pohGenMatchesEl.appendChild(li);
-  }
-  pohGenMatchesEl.classList.remove("hidden");
-  if (results.length === 1) setPohGenSelected(results[0]);
-}
-
 function polyindexTitleCopyIcon() {
   return (
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
@@ -1647,10 +1595,18 @@ function subjectMatchesPohBookFilter(subject) {
   return false;
 }
 
+function subjectMatchesArticleFilter(subject) {
+  const mode = articleFilterEl ? articleFilterEl.value : "all";
+  if (mode === "generated") return Boolean(subject.has_article);
+  if (mode === "missing") return !subject.has_article;
+  return true;
+}
+
 function render() {
   const query = searchEl.value.trim().toLowerCase();
   const visible = subjects.filter((s) => {
     if (!subjectMatchesPohBookFilter(s)) return false;
+    if (!subjectMatchesArticleFilter(s)) return false;
     if (!query) return true;
     const hay = [s.canonical_label, ...(s.aliases || [])].join(" ").toLowerCase();
     return hay.includes(query);
@@ -1663,11 +1619,22 @@ function render() {
     const td = document.createElement("td");
     td.colSpan = 5;
     const minBooks = Math.max(1, parseInt(minBooksEl.value, 10) || 2);
-    td.textContent = subjects.length
-      ? (pohBookFilter.selected.size
-        ? "Nessun soggetto corrisponde ai libri selezionati."
-        : "Nessun soggetto corrisponde al filtro.")
-      : `Nessun soggetto in almeno ${minBooks} libri. Prova ad abbassare «Min libri».`;
+    const articleMode = articleFilterEl ? articleFilterEl.value : "all";
+    let emptyMessage = `Nessun soggetto in almeno ${minBooks} libri. Prova ad abbassare «Min libri».`;
+    if (subjects.length) {
+      if (pohBookFilter.selected.size) {
+        emptyMessage = "Nessun soggetto corrisponde ai libri selezionati.";
+      } else if (articleMode === "generated") {
+        emptyMessage = "Nessun soggetto con articolo generato.";
+      } else if (articleMode === "missing") {
+        emptyMessage = "Nessun soggetto senza articolo.";
+      } else if (query) {
+        emptyMessage = "Nessun soggetto corrisponde al filtro.";
+      } else {
+        emptyMessage = "Nessun soggetto corrisponde ai filtri attivi.";
+      }
+    }
+    td.textContent = emptyMessage;
     tr.appendChild(td);
     rowsEl.appendChild(tr);
     updateMergeBar();
@@ -1719,17 +1686,29 @@ function render() {
     polyBtn.addEventListener("click", () => {
       openPolyindexOverlay(s.canonical_id, s.canonical_label || s.canonical_id);
     });
-    const genBtn = document.createElement("button");
-    genBtn.type = "button";
-    genBtn.className = "secondary";
-    genBtn.textContent = "Genera";
-    genBtn.addEventListener("click", () => {
-      const label = s.canonical_label || s.canonical_id;
-      if (!confirm('Generare articolo per "' + label + '"?')) return;
-      startGenerate({ poh_ids: [s.canonical_id] }, "progress-poh-gen")
-        .catch((err) => showOut(String(err), true));
-    });
-    actionsWrap.append(polyBtn, genBtn);
+    actionsWrap.append(polyBtn);
+    if (s.has_article && s.url) {
+      const openBtn = document.createElement("button");
+      openBtn.type = "button";
+      openBtn.className = "secondary";
+      openBtn.textContent = "Apri articolo";
+      openBtn.addEventListener("click", () => {
+        window.open(s.url, "_blank", "noopener,noreferrer");
+      });
+      actionsWrap.append(openBtn);
+    } else {
+      const genBtn = document.createElement("button");
+      genBtn.type = "button";
+      genBtn.className = "secondary";
+      genBtn.textContent = "Genera";
+      genBtn.addEventListener("click", () => {
+        const label = s.canonical_label || s.canonical_id;
+        if (!confirm('Generare articolo per "' + label + '"?')) return;
+        startGenerate({ poh_ids: [s.canonical_id] }, "progress-poh-gen")
+          .catch((err) => showOut(String(err), true));
+      });
+      actionsWrap.append(genBtn);
+    }
     tdActions.appendChild(actionsWrap);
 
     tr.append(tdCheck, tdLabel, tdCount, tdBooks, tdActions);
@@ -1751,8 +1730,16 @@ function reportEmbedHeight() {
 window.reportEmbedHeight = reportEmbedHeight;
 
 function updateMergeBar() {
-  selCountEl.textContent = String(selected.size);
-  mergeBar.classList.toggle("show", selected.size >= 2);
+  const count = selected.size;
+  selCountEl.textContent = String(count);
+  mergeBar.classList.toggle("show", count >= 1);
+  if (genSelectedBtn) {
+    genSelectedBtn.disabled = count < 1;
+    genSelectedBtn.textContent = count === 1 ? "Genera selezionato" : "Genera selezionati (" + count + ")";
+  }
+  if (mergeBarMergeGroup) {
+    mergeBarMergeGroup.classList.toggle("hidden", count < 2);
+  }
   targetEl.innerHTML = "";
   for (const id of selected) {
     const subject = subjects.find((s) => s.canonical_id === id);
@@ -1807,6 +1794,7 @@ document.getElementById("clear-sel").addEventListener("click", () => {
 document.getElementById("reload").addEventListener("click", load);
 searchEl.addEventListener("input", render);
 minBooksEl.addEventListener("change", load);
+if (articleFilterEl) articleFilterEl.addEventListener("change", render);
 pohBookSearchEl.addEventListener("focus", () => {
   renderPohBookDropdown(pohBookSearchEl.value);
   setPohBookDropdownOpen(true);
@@ -1821,20 +1809,6 @@ document.addEventListener("click", (event) => {
   }
 });
 
-pohGenSearchEl.addEventListener("input", () => {
-  clearTimeout(pohGenSearchTimer);
-  const query = pohGenSearchEl.value;
-  pohGenSearchTimer = setTimeout(() => {
-    searchPohForGenerate(query).catch((err) => showOut(String(err), true));
-  }, 280);
-});
-pohGenBtnEl.addEventListener("click", () => {
-  if (!pohGenSelected) return;
-  const label = pohGenSelected.label || pohGenSelected.poh_id;
-  if (!confirm('Generare articolo per "' + label + '"?')) return;
-  startGenerate({ poh_ids: [pohGenSelected.poh_id] }, "progress-poh-gen")
-    .catch((err) => showOut(String(err), true));
-});
 document.getElementById("polyindex-close").addEventListener("click", closePolyindexOverlay);
 document.getElementById("polyindex-backdrop").addEventListener("click", closePolyindexOverlay);
 document.getElementById("polyindex-confirm-all").addEventListener("click", () => {
@@ -1979,7 +1953,11 @@ async function pollGenerate(jobId, progressId) {
       if (data.errors && data.errors.length) {
         box.textContent += "\nErrori: " + data.errors.map((e) => e.poh_id + ": " + e.error).join("; ");
       }
-      await loadArticleStatus();
+      if (progressId === "progress-poh-gen") {
+        await load();
+      } else {
+        await loadArticleStatus();
+      }
       return;
     }
     await new Promise((r) => setTimeout(r, 800));
@@ -2028,6 +2006,27 @@ document.getElementById("gen-book").addEventListener("click", () => {
   const sha = document.getElementById("book-select").value;
   if (!sha) return;
   startGenerate({ book_sha: sha }).catch((err) => showOut(String(err), true));
+});
+
+genSelectedBtn.addEventListener("click", () => {
+  const ids = [...selected];
+  if (!ids.length) return;
+  const lines = ids.map((id) => {
+    const subject = subjects.find((s) => s.canonical_id === id);
+    const label = subject ? (subject.canonical_label || id) : id;
+    const suffix = subject && subject.has_article ? " (rigenera)" : "";
+    return "• " + label + suffix;
+  });
+  const regenCount = ids.filter((id) => {
+    const subject = subjects.find((s) => s.canonical_id === id);
+    return subject && subject.has_article;
+  }).length;
+  let message = "Generare " + ids.length + " articolo/i?\n\n" + lines.join("\n");
+  if (regenCount) {
+    message += "\n\n" + regenCount + " hanno già un articolo e verranno rigenerati.";
+  }
+  if (!confirm(message)) return;
+  startGenerate({ poh_ids: ids }, "progress-poh-gen").catch((err) => showOut(String(err), true));
 });
 
 let pagesAuditBooks = [];

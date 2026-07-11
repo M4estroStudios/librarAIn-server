@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agrippa — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Agrippa</h1>
+<p>Marco Vipsanio Agrippa (Arpino, 63 a.C. – 12 a.C.) è stato un generale, statista e architetto romano, noto come il più fedele collaboratore di Augusto<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:287">1</a>. La sua figura spazia tra il comando militare, la magistratura edilizia e la gestione della successione dinastica giulio-claudia<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:287">2</a>. Fu promotore di una vasta opera di rinnovamento urbano a Roma, in particolare nel Campo Marzio, dove fece realizzare terme, acquedotti, portici e il Pantheon<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:264">3</a>.</p>
+<h2>Origini e carriera militare</h2>
+<p>Il suo cognome «Agrippa» deriva dalla modalità del parto podalico, definito in epoca antica come agrippino<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">1</a>. Dopo aver partecipato alla guerra contro Perugia e ottenuto la pretura con il governo della Gallia, si distinse per le vittorie navali contro Sesto Pompeo, venendo nominato console<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">2</a>. Per tutta la vita mantenne un carattere modesto, rifiutando più volte l&#x27;onore del trionfo<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">1</a>. In seguito fu inviato come proconsole nelle province orientali, dove morì nel 12 a.C. all&#x27;età di cinquantuno anni<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">2</a>. Oltre alle attività militari e politiche, fu autore di orazioni e memorie<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">1</a>.</p>
+<h2>Edilità pubblica e trasformazioni urbane</h2>
+<p>Nominato edile, Agrippa si impegnò in prima persona nella sistemazione del Campo Marzio e nel restauro di strade ed edifici pubblici a proprie spese<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">1</a>. Tra le sue opere principali figurano il completamento dei Saepta Julia, voluti da Giulio Cesare, l&#x27;innalzamento del portico di Nettuno e la costruzione di un ponte sul Tevere che da lui prese nome<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">2</a>. Nel 25 a.C. fece erigere le Terme di Agrippa, completate nel 19 a.C., alimentate dall&#x27;<a href="poh:acqua-vergine">Acquedotto Vergine</a> e caratterizzate da una grande sala circolare del diametro di venticinque metri<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:534">3</a>. L&#x27;impianto termale ospitava celebri statue, tra cui l&#x27;Apoxyómenos di Lisippo, ed era affiancato dal Nemus Thermarum e dallo Stagnum Agrippae, un laghetto artificiale utilizzato per feste e cerimonie<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:534">1</a>. La sua attività edilizia si estese anche alla realizzazione del Pantheon e alla sistemazione di acquedotti e cloache<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:264">2</a>. Nel portico Vipsania fece esporre la prima carta geografica dell&#x27;Impero romano, nota come orbis pictus<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">1</a>. Sul piano sociale, distribuì olio e sale ai cittadini più poveri, rese gratuiti i bagni pubblici e finanziò gratuitamente barbieri e spettacoli teatrali<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">2</a>.</p>
+<h2>Vita privata e ruolo dinastico</h2>
+<p>Agrippa fu legato strettamente alla dinastia augustea attraverso matrimonii politici. Dapprima sposò Vipsania Agrippina, figlia del primo marito di Marco Agrippa, dalla quale ebbe un figlio, Druso Minore<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:295">1</a>. Nel 23 a.C., dopo la morte di <a href="poh:marcello">Marcello</a>, <a href="poh:augusto">Augusto</a> ne dispose il matrimonio con la figlia <a href="poh:giulia">Giulia</a>, vedova dello stesso <a href="poh:marcello">Marcello</a> e in precedenza già coniuge di Marco Agrippa<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:287">2</a>. Da questa unione nacquero cinque figli: Gaio, Lucio, Agrippina, <a href="poh:giulia">Giulia</a> e Agrippa Postumo<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:287">1</a>. La scelta dinastica fu talvolta fonte di tensioni: Agrippa si ritirò temporaneamente a Lesbo in seguito alle nozze di <a href="poh:giulia">Giulia</a> con Marco Claudio Marcello, ma successivamente tornò al fianco dell&#x27;imperatore e alla famiglia<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">2</a>. I nomi di Agrippa e dei suoi figli ricorrono nelle Res Gestae Divi Augusti esclusivamente in relazione a onori pubblici e disposizioni statali<a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:293">1</a>.</p>
+<h2>Testimonianze archeologiche</h2>
+<p>Le vestigia delle opere agrippiane sono ancora riconoscibili nel tessuto urbano romano. Le Terme di Agrippa, restaurate successivamente da Adriano e Costanzo, occupavano un&#x27;area vasta tra corso Vittorio Emanuele II e via di S. Chiara<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:534">1</a>. I resti della grande sala circolare sono visibili per metà lungo via dell&#x27;Arco della <a href="poh:ciambella">Ciambella</a><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:534">2</a>. Il complesso termale, insieme al Pantheon e ai Saepta Julia, contribuì a trasformare il rione in un centro monumentale di primaria importanza, dove le rovine antiche divennero in seguito fondamenta per costruzioni di età posteriore<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:498">1</a>.</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>-63</td><td>Nascita ad Arpino</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">Nascita</a></td></tr>
+<tr><td>-25</td><td>Inizio costruzione delle Terme di Agrippa</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:534">Terme</a></td></tr>
+<tr><td>-23</td><td>Matrimonio con Giulia, figlia di Augusto</td><td><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:287">Matrimonio</a></td></tr>
+<tr><td>-19</td><td>Completamento delle Terme di Agrippa</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:534">Terme</a></td></tr>
+<tr><td>-12</td><td>Morte nelle province orientali</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">Morte</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:264">I rioni di Roma, p. 264</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:498">I rioni di Roma, p. 498</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:534">I rioni di Roma, p. 534</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:535">I rioni di Roma, p. 535</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:287">Storia di Roma Antica, p. 287</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:293">Storia di Roma Antica, p. 293</a></li><li><a href="source:a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd:aligned:295">Storia di Roma Antica, p. 295</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

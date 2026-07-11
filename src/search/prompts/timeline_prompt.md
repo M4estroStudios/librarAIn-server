@@ -17,7 +17,11 @@ Ricevi un articolo Markdown già redatto (passi a+b+c) con link `source:` e `poh
    `[testo breve](source:<source_sha256>:aligned:<p>)`
    usando valori da `timeline_candidates` o da `pages`. Se l'evento deriva solo da contesto già citato nella riga precedente, puoi usare `—` (massimo una riga consecutiva).
 9. Colonna `Evento`: frase chiara in italiano, coerente con l'articolo e le fonti; niente supposizioni.
-10. Etichette `Periodo` **parsabili come anno**: usa esclusivamente le forme `YYYY` (es. `"1271"`), `YYYY a.C.` (es. `"1295 a.C."`), `YYYY d.C.` (es. `"476 d.C."`) o range `YYYY–YYYY` (es. `"1271–1295"`). Non usare date con giorno/mese (es. non `"15 agosto 1271"`): riduci sempre all'anno.
+10. Etichette `Periodo`: usa **esclusivamente** uno di questi formati:
+    - `YYYY` (es. `1271`, `-36` per anni a.C. con anno negativo)
+    - `YYYY/MM` (es. `1447/03`, `-37/04`)
+    - `YYYY/MM/DD` (es. `476/09/04`, `-43/01/01`)
+    Vietati testi liberi, secoli romani, range (`1271–1295`), suffissi `a.C.`/`d.C.` e date in prosa.
     - Privilegia gli **eventi più salienti**: un passo successivo conserva al massimo 5 righe, quindi seleziona quelli di maggior rilievo per la query, ma **elencali sempre in ordine cronologico crescente** (regola 5).
 11. Se non ci sono date ammissibili, aggiungi comunque `## Cronologia` con una sola riga esplicativa e `—` in `Fonti`, oppure una tabella vuota con solo l'header (tre colonne).
 12. **Non** usare Mermaid, HTML o altre sezioni oltre a `## Cronologia`.

@@ -12,11 +12,14 @@ export function renderPohCard(poh, options = {}) {
   const actions = document.createElement("div");
   actions.style.marginTop = "0.5rem";
   if (hasArticle && poh.url) {
-    const link = document.createElement("a");
-    link.href = articleUrl(poh.poh_id, poh.url);
-    link.textContent = "Apri articolo";
-    link.target = "_blank";
-    actions.appendChild(link);
+    const openBtn = document.createElement("button");
+    openBtn.type = "button";
+    openBtn.className = "secondary";
+    openBtn.textContent = "Apri articolo";
+    openBtn.addEventListener("click", () => {
+      window.open(articleUrl(poh.poh_id, poh.url), "_blank", "noopener,noreferrer");
+    });
+    actions.appendChild(openBtn);
   } else {
     const badge = document.createElement("span");
     badge.className = "badge";

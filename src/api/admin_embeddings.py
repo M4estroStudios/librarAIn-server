@@ -27,8 +27,6 @@ def try_handle_admin_embeddings_get(
 ) -> bool:
     if path != "/api/admin/embeddings/status":
         return False
-    if not require_auth():
-        return True
     status = embedding_backfill_status(data_root / "polyindex", settings)
     send_json(
         handler,
