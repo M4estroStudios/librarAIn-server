@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pincio — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Pincio</h1>
+<p>Il Pincio è una delle <a href="poh:collina">colline</a> storiche di Roma, situata nel Campo Marzio, che ha condizionato la viabilità e l&#x27;assetto urbanistico della città fin dal Rinascimento <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">testo descrittivo breve, p. 19</a>. Già in epoca moderna la sua area fu interessata dalla diffusione delle ville, affiancando il Quirinale, l&#x27;Esquilino, il Palatino, il Celio, il Gianicolo e Monte Mario come poli di un nuovo tipo di insediamento signorile <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">testo descrittivo breve, p. 19</a>.</p>
+<h2>Integrazione viaria e confini storici</h2>
+<p>La collocazione del <a href="poh:pincio">Pincio</a> ha influenzato la tracciatura di importanti assi stradali. Il secondo settore del Rione Colonna sale verso le pendici del <a href="poh:pincio">Pincio</a> attraverso la via di Porta Pinciana e la via Francesco Crispi <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:201">testo descrittivo breve, p. 201</a>. Nel <a href="poh:campo-marzio">Campo Marzio</a>, la traversa della Trinità univa il monte <a href="poh:pincio">Pincio</a> al porto della Posterula, poi noto come Ripetta, integrandosi nel reticolo viario del Tridente <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:267">testo descrittivo breve, p. 267</a>. Successivamente, la via Felice collegò direttamente il monte <a href="poh:pincio">Pincio</a> al Laterano, passando per S. Maria Maggiore e innestandosi sull&#x27;asse pedemontano del Tridente tramite un ripido viale alberato e la scalinata della <a href="poh:trinita-dei-monti">Trinità de&#x27; Monti</a> <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:268">testo descrittivo breve, p. 268</a>. I confini del rione <a href="poh:campo-marzio">Campo Marzio</a>, stabiliti nel 1744, partivano dal muro contiguo a porta Pinciana e seguivano la via di Porta Pinciana e la via Francesco Crispi <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:268">testo descrittivo breve, p. 268</a>.</p>
+<h2>Giardini e interventi artistici</h2>
+<p>L&#x27;area del Pincio fu oggetto di interventi di abbellimento e sistemazione. Ascanio Savorgnan di Brazzà, ispettore generale delle belle arti e conservatore capitolino, curò la sistemazione dei giardini capitolini e di quelli del Pincio <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:164">testo descrittivo breve, p. 164</a>. Nello stesso contesto, scolpì la statua con «<a href="poh:mose">Mosè</a> salvato dalle acque», destinata alla fontana che si trova al Pincio <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:164">testo descrittivo breve, p. 164</a>.</p>
+<h2>Toponomastica, accessi e infrastrutture</h2>
+<p>La chiesa di Trinità de&#x27; Monti è storicamente indicata nelle iscrizioni sulla scalinata e sull&#x27;edificio stesso come «in monte Pincio» <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:278">testo descrittivo breve, p. 278</a>. L&#x27;accesso dalla piazza di Spagna (allora detta di Francia) al convento annesso alla chiesa era originariamente impervio; già nel 1660 il cardinale Mazarino tentò di risolvere il problema, ma fu solo con un lascito del nobile francese Etienne Gueffier che si realizzò la scalinata per superare i ventidue metri di dislivello e facilitare la salita sul Pincio <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:271">testo descrittivo breve, p. 271</a>. Sottostante all&#x27;area, il sistema idrico dell&#x27;<a href="poh:acqua-vergine">Acqua Vergine</a> prevedeva un deposito detto «bottino» situato sotto il monte Pincio; da questo punto partivano le condutture sotterranee verso piazza di Spagna <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:269">testo descrittivo breve, p. 269</a>. I resti di tale struttura furono demoliti nel 1902 per consentire la costruzione di uno degli ascensori che conducevano ai giardini <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:269">testo descrittivo breve, p. 269</a>.</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>1513</td><td>Avvio della realizzazione degli assi viari verso il Pincio, tra cui la via Leonina</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:267">Via Leonina</a></td></tr>
+<tr><td>1660</td><td>Tentativo del cardinale Mazarino di risolvere l&#x27;impervio accesso al convento della Trinità de&#x27; Monti sul Pincio</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:271">Accesso scalinata</a></td></tr>
+<tr><td>1744</td><td>Definizione dei confini del rione Campo Marzio a partire da porta Pinciana</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:268">Confini rione</a></td></tr>
+<tr><td>1902</td><td>Demolizione del deposito idrico &quot;bottino&quot; sotto il Pincio per la costruzione di un ascensore ai giardini</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:269">Bottino</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">I rioni di Roma, p. 19</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:164">I rioni di Roma, p. 164</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:201">I rioni di Roma, p. 201</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:267">I rioni di Roma, p. 267</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:268">I rioni di Roma, p. 268</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:269">I rioni di Roma, p. 269</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:271">I rioni di Roma, p. 271</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:278">I rioni di Roma, p. 278</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

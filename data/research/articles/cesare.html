@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cesare — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Cesare</h1>
+<p>Giulio Cesare fu una figura decisiva nella trasformazione politica e urbanistica di Roma antica, in particolare nell&#x27;area del Foro Romano. Alla sua morte si concluse quella che viene definita l’età cesariana dell’area forense, segnando la transizione verso il sistema imperiale e l’avvio della storia di Roma come città dei sudditi governata da un imperatore-padre <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">la Roma dei sudditi e dell’imperatore-padre aveva definitivamente iniziato la sua storia, pp. 692</a>.</p>
+<h2>Divinizzazione e legittimazione del potere</h2>
+<p>Il processo di divinizzazione di Cesare rappresentò un punto di svolta per la legittimazione del potere politico a Roma. Egli divenne il primo romano a ricevere tale onore, inaugurando un modello monarchico di ascendenza divina di matrice orientale che fu adottato e sviluppato da Augusto per consolidare il proprio regime dinastico <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">Giulio Cesare nel 29 a.C. fu così il primo romano ad essere divinizzato... pp. 692</a>. Nel corso del suo governo, Cesare attuò anche importanti provvedimenti economici e sociali, tra cui un condono fiscale consistente nella distruzione dei registri dei debiti cittadini verso lo Stato <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:690">l&#x27;imperatore brucia i registri dei debiti dei cittadini verso lo Stato... pp. 690</a> e l’istituzione di prestiti agricoli a basso interesse, finalizzati al sostentamento alimentare della popolazione <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:690">l&#x27;imperatore istituisce prestiti agricoli a basso interesse... pp. 690</a>.</p>
+<h2>Trasformazione urbanistica del Foro Romano</h2>
+<p>L’intervento urbanistico di <a href="poh:cesare">Cesare</a> nell’area centrale del Foro Romano fu monumentale e ridefinì topograficamente e idealmente lo spazio pubblico. Egli promosse la costruzione della nuova Curia, del Forum Iulium (Foro di <a href="poh:cesare">Cesare</a>) e dei rostri, opere che chiusero l&#x27;età cesariana con la sua morte ma furono poi completate da <a href="poh:augusto">Augusto</a> <a href="poh:cesare">Topograficamente ed anche idealmente, questo tempio... [Cesare</a> così, anche dopo morto, metteva il suo sigillo al progetto di trasformazione del Foro stesso. pp. 692](source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692). La sua eredità edilizia fu fondamentale per la successiva fase augustea, che ne portò a compimento i progetti di ampliamento degli spazi pubblici <a href="poh:augusto">La presa del potere da parte di [Augusto</a> segnò una nuova fase edilizia... pp. 692](source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692).</p>
+<h2>Tempio del [Divo Giulio](poh:divo-giulio) e Rostra</h2>
+<p>Al centro della sua opera di monumentalizzazione sorse il tempio al <a href="poh:divo-giulio">Divo Giulio</a>, collocato a sud dell’area centrale del Foro Romano. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">Topograficamente ed anche idealmente, questo tempio... pp. 692</a> Il tempio chiudeva idealmente la facciata della Regia e presentava un podio in opera cementizia con blocchi di tufo, che sul lato frontale si ritirava a formare un emiciclo <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">Sulla fronte il podio non è rettilineo ma si ritira al centro in un emiciclo... pp. 692</a>. Al centro di questo emiciclo fu eretto un altare circolare nel punto esatto in cui era stata allestita la pira funebre del dittatore, e alcune fonti tradizionali ipotizzano che le sue ceneri possano essere ancora conservate sotto i resti dell’altare <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">eretto sul punto esatto dove arse la pira del grande dittatore... pp. 692</a>. All’interno della cella era custodita una statua del dittatore, la cui testa era sormontata dalla stella <em>sidus Iulium</em>, simbolo dell’avvenuta apoteosi e dell’iscrizione di Cesare tra gli dei celesti <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">All’interno del tempio, nella cella, fu posta la statua di Cesare... pp. 692</a>.</p>
+<p>Il recinto sacro era fiancheggiato dalla <em>porticus Iulia</em> e, di fronte ad esso, fu innalzata una nuova tribuna oratoria nota come <em>Rostra ad Divi Iulii</em> <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">davanti venne costruita un’altra tribuna... pp. 692</a>. I rostri di Cesare si fronteggiavano con quelli di Augusto sui lati brevi dell’area forense, delimitati dai lati lunghi dalla basilica Emilia, dalla Curia e dalla basilica Giulia <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">Così i rostri di Cesare e quelli di Augusto si fronteggiavano... pp. 692</a>.</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>-29</td><td>Divinificazione di Giulio Cesare, primo romano a ricevere tale onore</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">Divinificazione</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:690">I rioni di Roma, p. 690</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:692">I rioni di Roma, p. 692</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

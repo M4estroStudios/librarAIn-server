@@ -131,10 +131,24 @@ button.secondary:hover:not(:disabled) { background: #4a4a4a; }
 .active-job-card-nested .active-job-title { font-size: 0.82rem; }
 .batch-job-details { margin-top: 0.65rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #3e3e3e; }
 .batch-job-details:first-child { margin-top: 0.35rem; }
-.batch-job-details > summary { list-style: none; cursor: pointer; padding: 0.85rem 1rem; }
-.batch-job-details > summary::-webkit-details-marker { display: none; }
-.batch-job-details > summary .active-job-header { margin-bottom: 0.45rem; }
-.batch-job-expanded { padding: 0 1rem 0.85rem; border-top: 1px solid #333; }
+.batch-job-summary { display: flex; gap: 0.55rem; align-items: flex-start; padding: 0.85rem 1rem; cursor: pointer; }
+.batch-job-summary-body { flex: 1 1 auto; min-width: 0; }
+button.batch-job-toggle { flex: 0 0 auto; margin-top: 0.1rem; width: 1.65rem; height: 1.65rem; padding: 0; border-radius: 6px; border: 1px solid #454545; background: #3c3c3c; color: #4ec9b0; font-size: 0.72rem; line-height: 1; cursor: pointer; font-weight: 600; }
+button.batch-job-toggle:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
+.batch-job-expanded { display: none; padding: 0 1rem 0.85rem; border-top: 1px solid #333; }
+.batch-job-details.batch-job-open .batch-job-expanded { display: block; }
+.batch-job-summary progress { pointer-events: none; }
+.batch-job-completed { margin-top: 0.55rem; }
+.batch-job-current { margin-top: 0; margin-bottom: 0.35rem; }
+.active-job-batch-current { font-size: 0.84rem; color: #e8e8e8; margin: 0.15rem 0 0.45rem; line-height: 1.35; }
+.active-job-batch-current-label { font-size: 0.72rem; font-weight: 600; color: #4ec9b0; text-transform: uppercase; letter-spacing: 0.03em; }
+.batch-child-compact { display: flex; flex-wrap: wrap; gap: 0.35rem 0.65rem; align-items: center; padding: 0.45rem 0.55rem; margin-bottom: 0.35rem; border-radius: 8px; background: #252526; border: 1px solid #333; font-size: 0.78rem; }
+.batch-child-compact:last-child { margin-bottom: 0; }
+.batch-child-compact-title { flex: 1 1 8rem; min-width: 0; color: #d4d4d4; font-weight: 600; }
+.batch-child-compact-meta { color: #6a9955; font-size: 0.74rem; }
+.batch-child-compact.failed .batch-child-compact-meta { color: #f48771; }
+.batch-child-compact-open { font-size: 0.72rem; padding: 0.15rem 0.45rem; }
+.batch-child-compact-error { flex: 1 0 100%; font-size: 0.72rem; color: #f48771; line-height: 1.3; }
 .stage-segments-bar { display: flex; flex-wrap: nowrap; gap: 2px; align-items: center; margin-top: 0.35rem; }
 .stage-segment { flex: 1 1 0; min-width: 4px; height: 8px; border-radius: 2px; background: #3c3c3c; }
 .stage-segment-done { background: #6a9955; }
@@ -1993,6 +2007,9 @@ async function startGenerate(body, progressId) {
     progressEl.textContent = data.message || "Nessun articolo da generare.";
     await loadArticleStatus();
     return;
+  }
+  if (window.librarAInTrackJob) {
+    window.librarAInTrackJob(data.job_id, { job_kind: "research_batch" });
   }
   await pollGenerate(data.job_id, progressId);
 }
@@ -4230,8 +4247,9 @@ if (document.body.classList.contains("embed-mode")) {
 }
 </script>
 <script type="module">
-import { initActiveJobs } from "/dashboard/jobs.js";
+import { initActiveJobs, trackJob } from "/dashboard/jobs.js";
 import { initArticleAudit } from "/dashboard/article-audit.js";
+window.librarAInTrackJob = trackJob;
 initActiveJobs();
 initArticleAudit();
 </script>

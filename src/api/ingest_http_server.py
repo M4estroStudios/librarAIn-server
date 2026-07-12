@@ -37,7 +37,8 @@ from src.api.ingest_form import _parse_pages_spec
 from src.api.reicat_vision_suggest import suggest_reicat_metadata
 from src.api.job_history import list_active_jobs_with_batches, list_job_history
 from src.api.job_registry import JobRegistry
-from src.api.research_handlers import ResearchBatchRegistry, build_research_routes
+from src.api.research_batch_registry import ResearchBatchRegistry
+from src.api.research_handlers import build_research_routes
 from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
@@ -135,6 +136,13 @@ def _is_web_page_visit(path: str) -> bool:
 def _http_inbound_log_level(path: str, status: int, method: str) -> int:
     if status >= 500:
         return ERROR_LOG_LEVEL
+    if (
+        status == 404
+        and method.upper() == "GET"
+        and path.startswith("/api/system/jobs/")
+        and path.count("/") == 4
+    ):
+        return DEBUG_LOG_LEVEL
     if status >= 400:
         return WARNING_LOG_LEVEL
     if _is_web_page_visit(path):
@@ -281,7 +289,8 @@ def build_ingest_server(
     max_concurrent_jobs = max(1, max_concurrent_jobs)
 
     registry = JobRegistry()
-    research_batch_registry = ResearchBatchRegistry()
+    research_batch_registry = ResearchBatchRegistry(data_root)
+    research_batch_registry.recover_interrupted_from_catalog()
     research_dedup_index = ResearchDedupIndex(ttl_seconds=research_dedup_ttl_seconds)
     research_concurrency = ResearchConcurrencyLimiter(max_concurrent_research)
     job_semaphore = threading.Semaphore(max_concurrent_jobs)

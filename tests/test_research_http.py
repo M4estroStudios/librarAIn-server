@@ -244,7 +244,7 @@ class ResearchHttpTests(unittest.TestCase):
             return catalog_result, research_result
 
         with patch(
-            "src.api.research_handlers.generate_article_for_poh",
+            "src.api.research_batch_worker.generate_article_for_poh",
             side_effect=fake_generate_article_for_poh,
         ):
             status, accepted = self.harness.post_json("/api/research/generate", {"poh_ids": ["subj_alpha"]})

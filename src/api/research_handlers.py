@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import json
 import threading
-import uuid
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler
 from pathlib import Path
 from typing import Any, Callable
 
 from src.api.job_display import job_display_label, job_display_status
+from src.api.research_batch_registry import ResearchBatchRegistry
+from src.api.research_batch_worker import spawn_research_batch_worker
 from src.core.hashing import new_job_id
 from src.search.poh_overlap import list_poh_overlaps
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, bind_log_context, reset_log_context
@@ -23,7 +24,6 @@ from src.search.article_health_audit import audit_articles_health
 from src.persistence.book_page_preview import PagePreviewError, ensure_page_render_png
 from src.persistence.book_pages_audit import audit_book
 from src.search.article_catalog import (
-    generate_article_for_poh,
     list_ingested_books,
     list_missing_articles,
     research_status_summary,
@@ -49,190 +49,6 @@ SendBytes = Callable[[BaseHTTPRequestHandler, int, bytes, str], None]
 SseWrite = Callable[[BaseHTTPRequestHandler, str, Any], bool]
 _RESEARCH_TERMINAL = frozenset({"succeeded", "failed"})
 _MAX_EVENTS = 50
-
-
-class ResearchBatchRegistry:
-    def __init__(self) -> None:
-        self._lock = threading.Lock()
-        self._jobs: dict[str, dict[str, Any]] = {}
-
-    def create(self, *, total: int) -> str:
-        job_id = str(uuid.uuid4())
-        now = datetime.now(timezone.utc).isoformat()
-        with self._lock:
-            self._jobs[job_id] = {
-                "job_id": job_id,
-                "status": "running",
-                "total": total,
-                "done": 0,
-                "generated": [],
-                "errors": [],
-                "request_ids": [],
-                "created_at": now,
-                "updated_at": now,
-            }
-        return job_id
-
-    def set_total(self, job_id: str, total: int) -> None:
-        with self._lock:
-            job = self._jobs.get(job_id)
-            if job is None:
-                return
-            job["total"] = total
-            job["updated_at"] = datetime.now(timezone.utc).isoformat()
-
-    def set_targets_preview(self, job_id: str, preview: str) -> None:
-        with self._lock:
-            job = self._jobs.get(job_id)
-            if job is None:
-                return
-            job["targets_preview"] = preview
-            job["updated_at"] = datetime.now(timezone.utc).isoformat()
-
-    def set_current(
-        self,
-        job_id: str,
-        *,
-        poh_id: str | None = None,
-        poh_label: str | None = None,
-        current_phase: str | None = None,
-    ) -> None:
-        with self._lock:
-            job = self._jobs.get(job_id)
-            if job is None:
-                return
-            job["current_poh_id"] = poh_id
-            job["current_poh_label"] = poh_label
-            job["current_phase"] = current_phase
-            job["updated_at"] = datetime.now(timezone.utc).isoformat()
-
-    def append_generated(self, job_id: str, item: dict[str, Any]) -> None:
-        with self._lock:
-            job = self._jobs.get(job_id)
-            if job is None:
-                return
-            job["generated"].append(item)
-            request_id = item.get("request_id")
-            if request_id:
-                job["request_ids"].append(request_id)
-            job["done"] = len(job["generated"]) + len(job["errors"])
-            job["updated_at"] = datetime.now(timezone.utc).isoformat()
-
-    def append_error(self, job_id: str, item: dict[str, Any]) -> None:
-        with self._lock:
-            job = self._jobs.get(job_id)
-            if job is None:
-                return
-            job["errors"].append(item)
-            job["done"] = len(job["generated"]) + len(job["errors"])
-            job["updated_at"] = datetime.now(timezone.utc).isoformat()
-
-    def finish(self, job_id: str, status: str) -> None:
-        with self._lock:
-            job = self._jobs.get(job_id)
-            if job is None:
-                return
-            job["status"] = status
-            job["updated_at"] = datetime.now(timezone.utc).isoformat()
-
-    def get(self, job_id: str) -> dict[str, Any] | None:
-        with self._lock:
-            job = self._jobs.get(job_id)
-            return dict(job) if job else None
-
-    def running_count(self) -> int:
-        with self._lock:
-            return sum(1 for job in self._jobs.values() if job["status"] == "running")
-
-    def list_active_jobs(self) -> list[dict[str, Any]]:
-        return self.list_jobs(include_finished=False)
-
-    def list_jobs(
-        self,
-        *,
-        limit: int = 50,
-        include_finished: bool = True,
-    ) -> list[dict[str, Any]]:
-        with self._lock:
-            jobs = list(self._jobs.values())
-        jobs.sort(key=lambda item: item["updated_at"], reverse=True)
-        jobs.sort(key=lambda item: 0 if item["status"] == "running" else 1)
-        summaries: list[dict[str, Any]] = []
-        for job in jobs:
-            if job["status"] != "running" and not include_finished:
-                continue
-            summaries.append(self._summarize_job(job))
-            if len(summaries) >= max(1, limit):
-                break
-        return summaries
-
-    def get_job_summary(self, job_id: str) -> dict[str, Any] | None:
-        with self._lock:
-            job = self._jobs.get(job_id)
-            if job is None:
-                return None
-            return self._summarize_job(job)
-
-    def _summarize_job(self, job: dict[str, Any]) -> dict[str, Any]:
-        total = max(1, int(job.get("total") or 1))
-        done = int(job.get("done") or 0)
-        current_label = str(job.get("current_poh_label") or "").strip()
-        current_id = str(job.get("current_poh_id") or "").strip()
-        preview = str(job.get("targets_preview") or "").strip()
-        if current_label:
-            title = f"Articolo: {current_label}"
-            subtitle = f"POH {current_id}" if current_id and current_id != current_label else None
-            detail = f"Progresso batch {done}/{total}"
-        else:
-            title = f"Generazione articoli ({done}/{total})"
-            subtitle = preview or None
-            detail = "In attesa del prossimo POH" if done < total else None
-        current_phase = job.get("current_phase")
-        if current_phase:
-            phase_labels = {
-                "research": "Pipeline research",
-                "research_article": "Generazione bozza",
-                "research_collect": "Raccolta fonti",
-                "research_filter": "Sfoltimento fonti",
-            }
-            phase_label = phase_labels.get(str(current_phase), str(current_phase))
-            detail = (detail + " · " if detail else "") + phase_label
-        errors = job.get("errors") or []
-        generated = job.get("generated") or []
-        if errors and job["status"] != "running":
-            detail = (detail + " · " if detail else "") + f"{len(errors)} errori"
-        return {
-            "job_id": job["job_id"],
-            "job_kind": "research_batch",
-            "status": job["status"],
-            "display_status": job_display_status(job["status"]),
-            "display_status_label": job_display_label(job_display_status(job["status"])),
-            "is_active": job["status"] == "running",
-            "title": title,
-            "subtitle": subtitle,
-            "detail": detail,
-            "poh_id": current_id or None,
-            "poh_label": current_label or None,
-            "global_step": done,
-            "global_total": total,
-            "phases": [
-                {
-                    "phase": "research_batch",
-                    "status": "active" if done < total and job["status"] == "running" else "done",
-                    "done": done,
-                    "total": total,
-                    "detail": f"{len(generated)} ok · {len(errors)} errori" if done else None,
-                }
-            ],
-            "batch_generated": len(generated),
-            "batch_errors": len(errors),
-            "request_ids": list(job.get("request_ids") or []),
-            "created_at": job["created_at"],
-            "updated_at": job["updated_at"],
-            "status_url": f"/api/research/generate/status?job_id={job['job_id']}",
-            "events_url": None,
-            "system_status_url": f"/api/system/jobs/{job['job_id']}",
-        }
 
 
 def _research_job_stem(*, poh_id: str | None, query: str) -> str:
@@ -738,6 +554,62 @@ def build_research_routes(
                 send_json(handler, 500, {"ok": False, "error": str(exc)})
             return True
 
+        if path == "/api/research/generate/resume":
+            try:
+                body = read_json_body(handler, 64 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError, json.JSONDecodeError) as exc:
+                send_json(handler, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return True
+            job_id = str(payload.get("job_id") or "").strip()
+            if not job_id:
+                send_json(handler, 400, {"ok": False, "error": "job_id is required"})
+                return True
+            if not batch_registry.resume(job_id):
+                send_json(handler, 404, {"ok": False, "error": "interrupted batch not found"})
+                return True
+            send_json(
+                handler,
+                202,
+                {
+                    "ok": True,
+                    "job_id": job_id,
+                    "resumed": True,
+                    "status_url": f"/api/research/generate/status?job_id={job_id}",
+                },
+            )
+            spawn_research_batch_worker(
+                job_id,
+                data_root=data_root,
+                settings=settings,
+                registry=registry,
+                batch_registry=batch_registry,
+                concurrency_limiter=concurrency_limiter,
+                record_accepted=_record_research_run_accepted,
+                record_succeeded=_record_research_run_succeeded,
+                record_failed=_record_research_run_failed,
+                research_job_stem=_research_job_stem,
+                resume=True,
+            )
+            return True
+
+        if path == "/api/research/generate/abort":
+            try:
+                body = read_json_body(handler, 64 * 1024)
+                payload = json.loads(body.decode("utf-8"))
+            except (ValueError, OSError, json.JSONDecodeError) as exc:
+                send_json(handler, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
+                return True
+            job_id = str(payload.get("job_id") or "").strip()
+            if not job_id:
+                send_json(handler, 400, {"ok": False, "error": "job_id is required"})
+                return True
+            if not batch_registry.abort(job_id):
+                send_json(handler, 404, {"ok": False, "error": "interrupted batch not found"})
+                return True
+            send_json(handler, 200, {"ok": True, "job_id": job_id, "status": "aborted"})
+            return True
+
         if path != "/api/research/generate":
             return False
         try:
@@ -758,7 +630,11 @@ def build_research_routes(
             send_json(handler, 400, {"ok": False, "error": "poh_ids must be a list of strings"})
             return True
 
-        job_id = batch_registry.create(total=0)
+        job_id = batch_registry.create(
+            total=0,
+            book_sha=book_sha.strip() if isinstance(book_sha, str) and book_sha.strip() else None,
+            poh_ids=poh_ids,
+        )
         send_json(
             handler,
             202,
@@ -769,180 +645,21 @@ def build_research_routes(
                 "status_url": f"/api/research/generate/status?job_id={job_id}",
             },
         )
-
-        def _worker() -> None:
-            try:
-                if poh_ids:
-                    targets = [{"poh_id": pid} for pid in poh_ids]
-                else:
-                    missing = list_missing_articles(
-                        data_root,
-                        book_sha=book_sha.strip() if isinstance(book_sha, str) and book_sha.strip() else None,
-                    )
-                    targets = [{"poh_id": item["poh_id"], "label": item["label"]} for item in missing]
-
-                if not targets:
-                    batch_registry.set_total(job_id, 0)
-                    batch_registry.finish(job_id, "succeeded")
-                    return
-
-                batch_registry.set_total(job_id, len(targets))
-                target_preview = ", ".join(
-                    f"{item.get('label') or item['poh_id']} ({item['poh_id']})"
-                    for item in targets[:5]
-                )
-                if len(targets) > 5:
-                    target_preview += f", +{len(targets) - 5} more"
-                batch_registry.set_targets_preview(job_id, target_preview)
-                Log(
-                    INFO_LOG_LEVEL,
-                    f"research batch started: {len(targets)} article(s)",
-                    {
-                        "job_id": job_id,
-                        "total": len(targets),
-                        "target_preview": target_preview,
-                    },
-                )
-
-                for item in targets:
-                    poh_id = str(item["poh_id"])
-                    poh_label = str(item.get("label") or poh_id)
-                    batch_registry.set_current(
-                        job_id,
-                        poh_id=poh_id,
-                        poh_label=poh_label,
-                        current_phase="research",
-                    )
-                    request_id, _started_at = new_job_id(_research_job_stem(poh_id=poh_id, query=poh_label))
-                    registry.create_job(
-                        job_id=request_id,
-                        job_kind="research",
-                        pipeline_version=RESEARCH_PIPELINE_VERSION,
-                    )
-                    _record_research_run_accepted(
-                        settings,
-                        request_id=request_id,
-                        query=poh_label,
-                        poh_id=poh_id,
-                        poh_label=poh_label,
-                    )
-                    registry.emit(
-                        request_id,
-                        {"phase": "queue", "status": "waiting"},
-                    )
-                    concurrency_limiter.acquire()
-
-                    def reporter(event: dict[str, Any], *, rid: str = request_id) -> None:
-                        registry.emit(rid, event)
-
-                    request_token, _sha_token = bind_log_context(request_id=request_id)
-                    try:
-                        registry.emit(request_id, {"phase": "research", "status": "started"})
-                        registry.emit(
-                            request_id,
-                            {
-                                "phase": "research",
-                                "status": "info",
-                                "query": poh_label,
-                                "poh_id": poh_id,
-                                "poh_label": poh_label,
-                                "message": f"Generazione articolo per {poh_label}",
-                            },
-                        )
-                        mark_research_run_running(settings.sqlite_path, request_id=request_id)
-                        Log(
-                            INFO_LOG_LEVEL,
-                            f"research batch item started: {poh_label} ({poh_id})",
-                            {"job_id": job_id, "request_id": request_id, "poh_id": poh_id, "poh_label": poh_label},
-                        )
-                        catalog_result, research_result = generate_article_for_poh(
-                            data_root,
-                            poh_id,
-                            settings=settings,
-                            request_id=request_id,
-                            reporter=reporter,
-                        )
-                        _record_research_run_succeeded(settings, research_result, request_id=request_id)
-                        registry.emit(
-                            request_id,
-                            {
-                                "phase": "research",
-                                "status": "succeeded",
-                                "result": {
-                                    "poh_id": poh_id,
-                                    "url": catalog_result["url"],
-                                    "skipped_llm": catalog_result.get("skipped_llm"),
-                                    "no_material": catalog_result.get("no_material"),
-                                },
-                            },
-                        )
-                        batch_registry.append_generated(job_id, catalog_result)
-                        if catalog_result.get("no_material") or research_result.skipped_llm:
-                            Log(
-                                INFO_LOG_LEVEL,
-                                f"research batch item no material: {poh_label} ({poh_id})",
-                                {
-                                    "job_id": job_id,
-                                    "request_id": request_id,
-                                    "poh_id": poh_id,
-                                    "poh_label": poh_label,
-                                    "url": catalog_result["url"],
-                                },
-                            )
-                        else:
-                            Log(
-                                INFO_LOG_LEVEL,
-                                f"research batch item completed: {poh_label} ({poh_id})",
-                                {
-                                    "job_id": job_id,
-                                    "request_id": request_id,
-                                    "poh_id": poh_id,
-                                    "poh_label": poh_label,
-                                    "url": catalog_result["url"],
-                                },
-                            )
-                    except Exception as exc:
-                        _record_research_run_failed(settings, request_id=request_id, last_error=str(exc))
-                        registry.emit(
-                            request_id,
-                            {
-                                "phase": "research",
-                                "status": "failed",
-                                "message": str(exc),
-                            },
-                        )
-                        batch_registry.append_error(
-                            job_id,
-                            {"poh_id": poh_id, "request_id": request_id, "error": str(exc)},
-                        )
-                        Log(
-                            ERROR_LOG_LEVEL,
-                            f"research batch item failed: {poh_label} ({poh_id})",
-                            {
-                                "job_id": job_id,
-                                "request_id": request_id,
-                                "poh_id": poh_id,
-                                "poh_label": poh_label,
-                                "error": str(exc),
-                            },
-                        )
-                    finally:
-                        reset_log_context(request_token, None)
-                        concurrency_limiter.release()
-                snapshot = batch_registry.get(job_id)
-                errors = len(snapshot["errors"]) if snapshot else 0
-                status = "failed" if errors else "succeeded"
-                batch_registry.finish(job_id, status)
-            except Exception as exc:
-                Log(ERROR_LOG_LEVEL, "research batch worker failed", {"job_id": job_id, "error": str(exc)})
-                batch_registry.append_error(job_id, {"error": str(exc)})
-                batch_registry.finish(job_id, "failed")
-
-        threading.Thread(
-            target=_worker,
-            daemon=True,
-            name=f"research-batch-{job_id[:8]}",
-        ).start()
+        spawn_research_batch_worker(
+            job_id,
+            data_root=data_root,
+            settings=settings,
+            registry=registry,
+            batch_registry=batch_registry,
+            concurrency_limiter=concurrency_limiter,
+            record_accepted=_record_research_run_accepted,
+            record_succeeded=_record_research_run_succeeded,
+            record_failed=_record_research_run_failed,
+            research_job_stem=_research_job_stem,
+            resume=False,
+            book_sha=book_sha.strip() if isinstance(book_sha, str) and book_sha.strip() else None,
+            poh_ids=poh_ids,
+        )
         return True
 
     return try_get, try_post

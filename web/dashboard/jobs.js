@@ -1,6 +1,7 @@
 import { apiJson, articleUrl } from "./api.js";
 
 const WATCHED_KEY = "librarainDashboardWatchedJobs";
+const MISSING_KEY = "librarainDashboardMissingJobs";
 const TERMINAL = new Set(["done", "error", "succeeded", "failed"]);
 const SSE_EVENT_TYPES = [
   "started",
@@ -63,7 +64,33 @@ const RESEARCH_DISPLAY_PHASES = [
 const jobsById = new Map();
 const sseConnections = new Map();
 const refetchTimers = new Map();
+const expandedBatchIds = new Set();
+const missingJobIds = new Set(loadMissingJobIds());
 let jobsApiOptions = {};
+let jobsUiBound = false;
+
+function loadMissingJobIds() {
+  try {
+    const raw = sessionStorage.getItem(MISSING_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter(Boolean) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveMissingJobIds() {
+  try {
+    sessionStorage.setItem(MISSING_KEY, JSON.stringify(Array.from(missingJobIds).slice(0, 200)));
+  } catch {}
+}
+
+function rememberMissingJob(jobId) {
+  if (!jobId || missingJobIds.has(jobId)) return;
+  missingJobIds.add(jobId);
+  saveMissingJobIds();
+}
 
 function escapeHtml(s) {
   return String(s)
@@ -90,13 +117,26 @@ function saveWatched(items) {
   } catch {}
 }
 
-export function trackJob(jobId, meta = {}) {
+function forgetWatchedJob(jobId) {
+  if (!jobId) return;
+  const watched = loadWatched().filter(function (item) {
+    return item.job_id !== jobId;
+  });
+  saveWatched(watched);
+  jobsById.delete(jobId);
+  disconnectJobSSE(jobId);
+}
+
+function rememberWatchedJob(jobId, meta) {
   if (!jobId) return;
   const watched = loadWatched();
-  if (!watched.some((item) => item.job_id === jobId)) {
-    watched.unshift({ job_id: jobId, ...meta, tracked_at: Date.now() });
-    saveWatched(watched);
-  }
+  if (watched.some((item) => item.job_id === jobId)) return;
+  watched.unshift({ job_id: jobId, ...meta, tracked_at: Date.now() });
+  saveWatched(watched);
+}
+
+export function trackJob(jobId, meta = {}) {
+  rememberWatchedJob(jobId, meta);
   ensureJobWatched(jobId);
   notifyJobsRefresh();
 }
@@ -115,15 +155,19 @@ function notifyJobsRefresh() {
 }
 
 async function fetchJobSummary(jobId) {
+  if (!jobId || missingJobIds.has(jobId)) return null;
   try {
     const data = await apiJson("/api/system/jobs/" + encodeURIComponent(jobId), jobsApiOptions);
     return data.job || null;
   } catch {
+    rememberMissingJob(jobId);
+    forgetWatchedJob(jobId);
     return null;
   }
 }
 
 function ensureJobWatched(jobId) {
+  if (!jobId || missingJobIds.has(jobId)) return;
   fetchJobSummary(jobId).then((job) => {
     if (!job) return;
     jobsById.set(jobId, job);
@@ -335,15 +379,280 @@ function renderPhaseBlock(phase) {
   return html;
 }
 
+function isBatchChildJob(jobId) {
+  if (!jobId) return false;
+  let found = false;
+  jobsById.forEach(function (job) {
+    if (job.job_kind !== "research_batch") return;
+    if (job.current_request_id === jobId) found = true;
+    (job.request_ids || []).forEach(function (id) {
+      if (id === jobId) found = true;
+    });
+  });
+  return found;
+}
+
 function collectBatchChildIds() {
   const childIds = new Set();
   jobsById.forEach(function (job) {
-    if (job.job_kind !== "research_batch" || !Array.isArray(job.request_ids)) return;
-    job.request_ids.forEach(function (id) {
+    if (job.job_kind !== "research_batch") return;
+    (job.request_ids || []).forEach(function (id) {
       childIds.add(id);
     });
+    if (job.current_request_id) childIds.add(job.current_request_id);
   });
   return childIds;
+}
+
+function toggleBatchExpanded(jobId) {
+  if (!jobId) return;
+  if (expandedBatchIds.has(jobId)) expandedBatchIds.delete(jobId);
+  else expandedBatchIds.add(jobId);
+  renderJobs();
+}
+
+async function resumeBatch(jobId) {
+  if (!jobId) return;
+  await apiJson("/api/research/generate/resume", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ job_id: jobId }),
+  });
+  trackJob(jobId, { job_kind: "research_batch" });
+  expandedBatchIds.add(jobId);
+  await refreshJobsList();
+}
+
+async function abortBatch(jobId) {
+  if (!jobId) return;
+  if (!window.confirm("Annullare questo batch in sospeso? Non potrai riprenderlo.")) return;
+  const job = jobsById.get(jobId);
+  if (job) {
+    (job.request_ids || []).forEach(function (id) {
+      rememberMissingJob(id);
+    });
+    if (job.current_request_id) rememberMissingJob(job.current_request_id);
+  }
+  await apiJson("/api/research/generate/abort", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ job_id: jobId }),
+  });
+  forgetWatchedJob(jobId);
+  expandedBatchIds.delete(jobId);
+  jobsById.delete(jobId);
+  disconnectJobSSE(jobId);
+  await refreshJobsList();
+}
+
+function handleJobsRootClick(event) {
+  const root = getJobsRoot();
+  if (!root || !root.contains(event.target)) return;
+  const resumeBtn = event.target.closest("[data-batch-resume]");
+  if (resumeBtn) {
+    event.preventDefault();
+    event.stopPropagation();
+    resumeBatch(resumeBtn.getAttribute("data-batch-resume")).catch(function () {});
+    return;
+  }
+  const abortBtn = event.target.closest("[data-batch-abort]");
+  if (abortBtn) {
+    event.preventDefault();
+    event.stopPropagation();
+    abortBatch(abortBtn.getAttribute("data-batch-abort")).catch(function () {});
+    return;
+  }
+  const toggle = event.target.closest("[data-batch-toggle]");
+  if (toggle) {
+    event.preventDefault();
+    event.stopPropagation();
+    toggleBatchExpanded(toggle.getAttribute("data-batch-toggle"));
+    return;
+  }
+  const summary = event.target.closest(".batch-job-summary");
+  if (summary && !event.target.closest(".active-job-open")) {
+    event.preventDefault();
+    toggleBatchExpanded(summary.getAttribute("data-batch-id"));
+    return;
+  }
+  const btn = event.target.closest(".active-job-open");
+  if (!btn) return;
+  const href = btn.getAttribute("data-href");
+  if (href) window.open(href, "_blank", "noopener,noreferrer");
+}
+
+function resolveBatchCurrentChild(job) {
+  const currentId = job.current_request_id;
+  if (currentId) {
+    const child = jobsById.get(currentId);
+    if (child) return child;
+  }
+  const requestIds = job.request_ids || [];
+  for (let i = requestIds.length - 1; i >= 0; i -= 1) {
+    const child = jobsById.get(requestIds[i]);
+    if (child && child.is_active) return child;
+  }
+  return null;
+}
+
+function renderBatchChildCompact(job) {
+  const title = job.title || job.poh_label || job.poh_id || "Articolo";
+  const statusLabel = job.display_status_label || job.status || "completato";
+  const statusClass = job.error ? " failed" : " done";
+  let html =
+    '<div class="batch-child-compact' +
+    statusClass +
+    '" data-job-id="' +
+    escapeHtml(job.job_id || "") +
+    '">' +
+    '<span class="batch-child-compact-title">' +
+    escapeHtml(title) +
+    "</span>" +
+    '<span class="batch-child-compact-meta">' +
+    escapeHtml(statusLabel) +
+    "</span>";
+  const articleHref =
+    job.article_url ||
+    (job.poh_id && (job.status === "succeeded" || job.status === "done") ? articleUrl(job.poh_id) : null);
+  if (articleHref) {
+    html +=
+      '<button type="button" class="secondary active-job-open batch-child-compact-open" data-href="' +
+      escapeHtml(articleHref) +
+      '">Apri</button>';
+  }
+  if (job.error) {
+    html += '<div class="batch-child-compact-error">' + escapeHtml(job.error) + "</div>";
+  }
+  html += "</div>";
+  return html;
+}
+
+function renderBatchSummaryContent(job) {
+  const kind = JOB_KIND_LABELS[job.job_kind] || job.job_kind || "Job";
+  const globalStep = typeof job.global_step === "number" ? job.global_step : 0;
+  const globalTotal = typeof job.global_total === "number" ? job.global_total : 0;
+  const currentLabel = job.poh_label || job.title || "";
+  let inner =
+    '<div class="active-job-header">' +
+    '<span class="active-job-title">' +
+    escapeHtml(kind) +
+    "</span>" +
+    '<span class="active-job-meta">' +
+    escapeHtml(job.display_status_label || job.status || "running") +
+    (job.is_active ? " · live" : "") +
+    "</span>" +
+    "</div>";
+  if (currentLabel) {
+    inner +=
+      '<div class="active-job-batch-current">' +
+      '<span class="active-job-batch-current-label">In corso</span> ' +
+      escapeHtml(currentLabel.replace(/^Articolo:\s*/i, "")) +
+      "</div>";
+  }
+  if (job.subtitle) {
+    inner += '<div class="active-job-subtitle">' + escapeHtml(job.subtitle) + "</div>";
+  }
+  const detail =
+    job.detail ||
+    jobPhaseLabel(job.current_phase, job.current_phase_label) ||
+    job.current_phase_label;
+  if (detail) {
+    inner += '<div class="active-job-detail">' + escapeHtml(detail) + "</div>";
+  }
+  if (globalTotal > 0) {
+    inner += renderJobProgressRow("Articoli", globalStep, globalTotal, job.is_active ? "active" : "done", true);
+  }
+  if (job.resumable || job.status === "interrupted") {
+    inner +=
+      '<div class="active-job-actions">' +
+      '<button type="button" class="secondary batch-job-resume" data-batch-resume="' +
+      escapeHtml(job.job_id || "") +
+      '">Riprendi batch</button>' +
+      '<button type="button" class="secondary batch-job-abort" data-batch-abort="' +
+      escapeHtml(job.job_id || "") +
+      '">Annulla batch</button>' +
+      "</div>";
+  }
+  return inner;
+}
+
+function renderBatchCurrentPlaceholder(job) {
+  const label = (job.poh_label || job.title || "Articolo").replace(/^Articolo:\s*/i, "");
+  let html =
+    '<div class="active-job-card active-job-card-nested batch-job-current-placeholder">' +
+    '<div class="active-job-header">' +
+    '<span class="active-job-title">' +
+    escapeHtml(label) +
+    "</span>" +
+    '<span class="active-job-meta">Caricamento fasi…</span>' +
+    "</div>";
+  if (job.detail) {
+    html += '<div class="active-job-detail">' + escapeHtml(job.detail) + "</div>";
+  }
+  html += "</div>";
+  return html;
+}
+
+function renderBatchExpandedContent(job) {
+  const requestIds = job.request_ids || [];
+  const currentId = job.current_request_id || null;
+  const completedIds = requestIds.filter(function (id) {
+    return id !== currentId;
+  });
+  let html = "";
+  const currentChild = resolveBatchCurrentChild(job);
+  if (currentChild && job.is_active) {
+    html += '<div class="batch-job-current">' + renderActiveJobCard(currentChild, { nested: true }) + "</div>";
+  } else if (job.is_active) {
+    if (job.current_request_id && !jobsById.has(job.current_request_id)) {
+      ensureJobWatched(job.current_request_id);
+    }
+    html += '<div class="batch-job-current">' + renderBatchCurrentPlaceholder(job) + "</div>";
+  }
+  if (completedIds.length) {
+    html += '<div class="batch-job-completed">';
+    completedIds.forEach(function (childId) {
+      const child = jobsById.get(childId);
+      if (child) html += renderBatchChildCompact(child);
+    });
+    html += "</div>";
+  }
+  if (!html) {
+    html = '<div class="active-jobs-empty">Nessun articolo nel batch ancora.</div>';
+  }
+  return html;
+}
+
+function renderBatchJobCard(job) {
+  const expanded = expandedBatchIds.has(job.job_id);
+  return (
+    '<div class="batch-job-details' +
+    (expanded ? " batch-job-open" : "") +
+    (job.is_active ? "" : " batch-job-finished") +
+    '" data-job-id="' +
+    escapeHtml(job.job_id || "") +
+    '">' +
+    '<div class="batch-job-summary" data-batch-id="' +
+    escapeHtml(job.job_id || "") +
+    '">' +
+    '<button type="button" class="secondary batch-job-toggle" data-batch-toggle="' +
+    escapeHtml(job.job_id || "") +
+    '" aria-expanded="' +
+    (expanded ? "true" : "false") +
+    '" aria-label="' +
+    (expanded ? "Comprimi batch" : "Espandi batch") +
+    '">' +
+    (expanded ? "▼" : "▶") +
+    "</button>" +
+    '<div class="batch-job-summary-body">' +
+    renderBatchSummaryContent(job) +
+    "</div>" +
+    "</div>" +
+    '<div class="batch-job-expanded">' +
+    renderBatchExpandedContent(job) +
+    "</div>" +
+    "</div>"
+  );
 }
 
 function renderActiveJobCard(job, options) {
@@ -405,19 +714,7 @@ function renderActiveJobCard(job, options) {
   }
 
   if (isBatch) {
-    return (
-      '<details class="batch-job-details' + (job.is_active ? "" : " batch-job-finished") + '" data-job-id="' + escapeHtml(job.job_id || "") + '">' +
-      "<summary>" + inner + "</summary>" +
-      (job.request_ids && job.request_ids.length
-        ? '<div class="batch-job-expanded">' +
-          job.request_ids.map(function (childId) {
-            const child = jobsById.get(childId);
-            return child ? renderActiveJobCard(child, { nested: true }) : "";
-          }).join("") +
-          "</div>"
-        : "") +
-      "</details>"
-    );
+    return renderBatchJobCard(job);
   }
 
   return (
@@ -443,24 +740,24 @@ function countActiveJobs() {
 function renderJobs() {
   const root = getJobsRoot();
   if (!root) return;
-  const batchChildIds = collectBatchChildIds();
   const jobs = Array.from(jobsById.values())
     .filter(function (job) {
-      return !batchChildIds.has(job.job_id);
+      if (job.job_kind === "research_batch") {
+        return job.is_active || job.status === "interrupted" || job.resumable;
+      }
+      if (!job.is_active) return false;
+      return !isBatchChildJob(job.job_id);
     })
     .sort(function (a, b) {
-    const aActive = a.is_active ? 0 : 1;
-    const bActive = b.is_active ? 0 : 1;
-    if (aActive !== bActive) return aActive - bActive;
     return String(b.updated_at || "").localeCompare(String(a.updated_at || ""));
   });
   if (!jobs.length) {
-    root.innerHTML = '<div class="active-jobs-empty">Nessun job in questa sessione.</div>';
+    root.innerHTML = '<div class="active-jobs-empty">Nessun job attivo in questa sessione.</div>';
   } else {
     root.innerHTML = jobs.map(renderActiveJobCard).join("");
   }
   updateJobsHeading(countActiveJobs());
-  notifyJobsRefresh();
+  if (typeof window.reportEmbedHeight === "function") window.reportEmbedHeight();
 }
 
 function updateJobsHeading(activeCount) {
@@ -480,7 +777,7 @@ async function refreshJobsList() {
   const watched = loadWatched();
   const watchedIds = new Set(watched.map((item) => item.job_id));
   try {
-    const data = await apiJson("/api/system/jobs?limit=30&include_finished=1", jobsApiOptions);
+    const data = await apiJson("/api/system/jobs?limit=30&include_finished=0", jobsApiOptions);
     const activeJobs = data.jobs || [];
     const keepIds = new Set(watchedIds);
     activeJobs.forEach((job) => keepIds.add(job.job_id));
@@ -495,14 +792,21 @@ async function refreshJobsList() {
     for (const job of activeJobs) {
       jobsById.set(job.job_id, job);
       if (job.is_active) connectJobSSE(job);
-      const childIds = job.request_ids || [];
-      childIds.forEach((id) => {
-        watchedIds.add(id);
-        if (!jobsById.has(id)) ensureJobWatched(id);
-      });
+      if (job.job_kind === "research_batch" && (job.is_active || job.status === "interrupted")) {
+        rememberWatchedJob(job.job_id, { job_kind: "research_batch" });
+      }
+      if (job.job_kind === "research_batch" && job.is_active) {
+        const childIds = (job.request_ids || []).slice();
+        if (job.current_request_id) childIds.push(job.current_request_id);
+        childIds.forEach((id) => {
+          if (missingJobIds.has(id)) return;
+          if (!jobsById.has(id)) ensureJobWatched(id);
+        });
+      }
     }
 
     for (const item of watched) {
+      if (missingJobIds.has(item.job_id)) continue;
       if (!jobsById.has(item.job_id)) ensureJobWatched(item.job_id);
     }
     renderJobs();
@@ -517,12 +821,10 @@ export function initActiveJobs(options = {}) {
   const root = getJobsRoot();
   if (!root) return;
   jobsApiOptions = options.noAuthPrompt ? { noAuthPrompt: true } : {};
-  root.addEventListener("click", (event) => {
-    const btn = event.target.closest(".active-job-open");
-    if (!btn) return;
-    const href = btn.getAttribute("data-href");
-    if (href) window.open(href, "_blank", "noopener,noreferrer");
-  });
+  if (!jobsUiBound) {
+    jobsUiBound = true;
+    document.addEventListener("click", handleJobsRootClick, true);
+  }
   window.addEventListener("message", (event) => {
     if (event.data && event.data.type === "librarain-jobs-refresh") refreshJobsList();
   });

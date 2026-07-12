@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gianicolo — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Gianicolo</h1>
+<p>Il Gianicolo è uno dei colli storici di Roma, situato sulla sponda sinistra del Tevere. Fin dall&#x27;epoca tardo-antica rivestì un&#x27;importanza strategica per la difesa urbana e, a partire dal XVI secolo, fu progressivamente valorizzato come sede di ville signorili e come punto panoramico privilegiato sulla città. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">Diffusione delle ville sui colli romani, pp. 19</a> <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:447">Inclusione nelle fortificazioni tardo-imperiali, pp. 447</a></p>
+<h2>Storia antica e fortificazioni</h2>
+<p>Nel 272 dell&#x27;era attuale, l&#x27;imperatore Aureliano fece costruire le mura della città superando il fiume Tevere per abbracciare nella difesa sia Trastevere che la sommità del Gianicolo. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:447">Costruzione delle mura aureliane, pp. 447</a> Tale intervento difensivo partiva dalla zona dell&#x27;attuale lungotevere dei Tebaldi e proseguiva sull&#x27;altra sponda, rendendo il colle un baluardo fondamentale per la protezione della riva sinistra.</p>
+<h2>Evoluzione urbana e fruizione panoramica</h2>
+<p>Tra il XVI e il XVII secolo si diffuse l&#x27;uso di costruire ville sui colli interni o esterni alla cerchia muraria, tra cui Quirinale, Esquilino, Palatino, Pincio, Celio, Gianicolo e Monte Mario. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">Sviluppo degli insediamenti signorili, pp. 19</a> Questa tendenza avviò un nuovo tipo di insediamento signorile che sarebbe diventato la base per successive lottizzazioni moderne. Nel tempo, il colle si è affermato come uno dei punti panoramici più suggestivi di Roma; da diverse terrazze e monumenti centrali, come il Vittoriano o il Parco degli aranci, è possibile ammirarlo insieme a <a href="poh:s-pietro-in-montorio">S. Pietro in Montorio</a> e al complesso del S. Michele. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:640">Panorama dal Vittoriano, pp. 640</a> <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:818">Vista dal Parco degli aranci, pp. 818</a></p>
+<h2>Segnaletica storica e orologio</h2>
+<p>Il Gianicolo ha storicamente svolto una funzione precisa nella segnalazione del tempo agli abitanti di Roma. Fin dal XVIII secolo, un cannocchiale era puntato dal colle per individuare il momento esatto per dare fuoco alle micce di un famoso cannone che annunciava lo scoccare delle 12 in punto. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:599">Uso del cannocchiale per l&#x27;orologio, pp. 599</a> Dopo essere stato spostato a Monte Mario nel 1903, il cannone fu sistemato definitivamente sul Gianicolo nel 1904, rimanendovi ancor oggi. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:646">Sistemazione del cannone sul colle, pp. 646</a></p>
+<h2>Toponomastica e percorsi</h2>
+<p>Il nome del colle è rimasto saldamente legato alla toponomastica e alla viabilità circostante. La denominazione Gianicolense identifica il lungotevere sulla sponda sinistra, mentre la passeggiata che porta al colle fu arricchita nel Novecento con la ricollocazione di un prospetto architettonico michelangiolesco, salvato dalla demolizione. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:634">Ricollocazione del prospetto, pp. 634</a> <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:818">Intitolazione del lungotevere, pp. 818</a></p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>272</td><td>Costruzione delle mura aureliane che includono la sommità del Gianicolo nel circuito difensivo urbano.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:447">Costruzione mura</a></td></tr>
+<tr><td>1903</td><td>Trasferimento del cannone per il segnale orario dal Campidoglio a Monte Mario.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:646">Trasferimento cannone</a></td></tr>
+<tr><td>1904</td><td>Sistemazione definitiva del cannone sul Gianicolo per la segnalazione delle dodici in punto.</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:646">Sistemazione cannone</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">I rioni di Roma, p. 19</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:447">I rioni di Roma, p. 447</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:599">I rioni di Roma, p. 599</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:634">I rioni di Roma, p. 634</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:640">I rioni di Roma, p. 640</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:646">I rioni di Roma, p. 646</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:818">I rioni di Roma, p. 818</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

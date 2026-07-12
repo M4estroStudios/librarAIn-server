@@ -68,6 +68,23 @@ class TestArticleCatalogAudit(unittest.TestCase):
         hannibal = next(item for item in generated if item["poh_id"] == "hannibal")
         self.assertTrue(hannibal["ok"])
 
+    def test_partition_batch_targets_skips_complete(self) -> None:
+        from src.search.article_catalog import partition_batch_targets, resolve_batch_targets
+
+        publish_poh_article(
+            self.data_root,
+            poh_id="hannibal",
+            title="Annibale",
+            markdown="# Annibale\n\n" + ("Contenuto enciclopedico verificabile. " * 20),
+            request_id="req-ok",
+        )
+        targets = resolve_batch_targets(self.data_root)
+        completed, pending = partition_batch_targets(self.data_root, targets)
+        self.assertEqual([item["poh_id"] for item in completed], ["hannibal"])
+        self.assertTrue(all(item["poh_id"] != "hannibal" for item in pending))
+        self.assertTrue(any(item["poh_id"] == "empty_poh" for item in pending))
+        self.assertTrue(completed[0].get("resumed"))
+
     def test_audit_reports_no_material(self) -> None:
         publish_poh_article(
             self.data_root,

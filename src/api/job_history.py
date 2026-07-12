@@ -5,7 +5,7 @@ from typing import Any
 
 from src.api.job_display import job_display_label, job_display_status
 from src.api.job_registry import JobRegistry
-from src.api.research_handlers import ResearchBatchRegistry
+from src.api.research_batch_registry import ResearchBatchRegistry
 from src.persistence.pipeline_runs import list_pipeline_runs
 from src.persistence.research_runs import list_research_runs
 

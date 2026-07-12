@@ -10,10 +10,15 @@ _DISPLAY_LABELS = {
     "completato": "Completato",
     "errore": "Errore",
     "interrotto": "Interrotto",
+    "annullato": "Annullato",
 }
 
 
 def job_display_status(status: str, events: list[dict[str, Any]] | None = None) -> str:
+    if status == "interrupted":
+        return "interrotto"
+    if status == "aborted":
+        return "annullato"
     if status in ("done", "succeeded"):
         return "completato"
     if status in ("error", "failed"):

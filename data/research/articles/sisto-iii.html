@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sisto III — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Sisto III</h1>
+<p>Sisto III non viene menzionato né trattato nei testi forniti a supporto della presente redazione. Le pagine consultate si concentrano esclusivamente su sviluppi storici e urbanistici del rione Celio a Roma tra il IX e il Seicento, nonché sul pontificato di Callisto III Borgia nel XV secolo `<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:1109">Riferimenti storici e urbanistici, pp. 1109</a>`. Di conseguenza, non è possibile fornire una descrizione enciclopedica della figura papale basata esclusivamente sulle fonti disponibili.</p>
+<h2>Contenuto delle fonti fornite</h2>
+<p>Il primo documento analizza la storia del rione Celio, evidenziando interventi religiosi e urbanistici avvenuti tra il IX e il XIII secolo. Si ricorda la diaconia di S. Maria in Domnica voluta da Pasquale I nell’817 e la chiesa dei Quattro Ss. Coronati canonizzati da Leone IV nell’855 `<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:1109">Interventi religiosi e urbanistici, pp. 1109</a>`. Viene inoltre citato l’impulso dato a <a href="poh:s-giovanni-a-porta-latina">S. Giovanni a Porta Latina</a> da Adriano I attorno al 770 e la costruzione dell’abbazia di <a href="poh:s-tommaso-in-formis">S. Tommaso in Formis</a> per opera di Innocenzo III nel 1210 `<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:1109">Riferimenti ad Adriano I e Innocenzo III, pp. 1109</a>`. Il testo descrive poi la trasformazione della zona nel Seicento, con particolare riferimento alla vigna detta della <a href="poh:navicella">Navicella</a>, successivamente divenuta Villa <a href="poh:celimontana">Celimontana</a> `<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:1109">Trasformazioni seicentesche e Villa Celimontana, pp. 1109</a>`.</p>
+<p>Il secondo documento si focalizza invece sul pontificato di Callisto III <a href="poh:borgia">Borgia</a>, succeduto a Niccolò V nel 1455 `<a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:507">Successione al soglio pontificio, pp. 507</a>`. L’autore sottolinea come il nuovo pontefice abbia favorito i propri parenti spagnoli, assegnando loro cariche di rilievo e governi in diverse città del Patrimonio di San Pietro `<a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:507">Nomine nepotistiche e governi, pp. 507</a>`. Vengono inoltre citati i successivi papi legati alla famiglia <a href="poh:borgia">Borgia</a>, come Luigi Giovanni de Mila legato di Bologna e Rodrigo <a href="poh:borgia">Borgia</a>, futuro Alessandro VI, legato della Marca `<a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:507">Figure borgiane e tensioni familiari, pp. 507</a>`. Il testo accenna anche alle tensioni tra le famiglie <a href="poh:orsini">Orsini</a> e Colonna e alla politica estera del papa, orientata verso una crociata contro i Turchi `<a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:507">Politica estera e crociata, pp. 507</a>`.</p>
+<h2>Valutazione delle fonti</h2>
+<p>Alla luce di quanto esposto, le pagine fornite risultano insufficienti per trattare la figura di Sisto III. I testi disponibili non contengono riferimenti al pontefice del V secolo né ai suoi interventi ecclesiastici o urbanistici `<a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:1109">Assenza di riferimenti a Sisto III, pp. 1109</a>`. Per una trattazione enciclopedica completa di Sisto III sarà necessario integrare il materiale con documenti specifici sul suo pontificato (432–440), sulla Basilica di Santa Maria Maggiore e sui conflitti dottrinali dell’epoca `<a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:507">Insufficienza documentale, pp. 507</a>`.</p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:1109">I rioni di Roma, p. 1109</a></li><li><a href="source:628f137bc670faa102509d01d7ef65ff94537190f274805081b33dc80c5fdcde:aligned:507">Storia di Roma nel Medioevo, p. 507</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>

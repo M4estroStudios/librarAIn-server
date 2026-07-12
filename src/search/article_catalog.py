@@ -160,6 +160,88 @@ def list_missing_articles(
     return missing
 
 
+def list_batch_scope_targets(
+    data_root: Path,
+    *,
+    book_sha: str | None = None,
+) -> list[dict[str, Any]]:
+    subjects = list_index_subjects(data_root)
+    book_sha_norm = book_sha.strip() if book_sha else None
+    targets: list[dict[str, Any]] = []
+    for poh_id, entry in subjects.items():
+        if book_sha_norm and (
+            book_sha_norm not in entry.books or not entry.books[book_sha_norm].aligned_pages
+        ):
+            continue
+        targets.append(
+            {
+                "poh_id": poh_id,
+                "label": entry.canonical_label,
+            }
+        )
+    targets.sort(key=lambda item: str(item["label"]).casefold())
+    return targets
+
+
+def resolve_batch_targets(
+    data_root: Path,
+    *,
+    book_sha: str | None = None,
+    poh_ids: list[str] | None = None,
+) -> list[dict[str, Any]]:
+    if poh_ids:
+        subjects = list_index_subjects(data_root)
+        targets: list[dict[str, Any]] = []
+        for pid in poh_ids:
+            poh_id = str(pid)
+            entry = subjects.get(poh_id)
+            label = entry.canonical_label if entry else poh_id
+            targets.append({"poh_id": poh_id, "label": label})
+        return targets
+    return list_batch_scope_targets(data_root, book_sha=book_sha)
+
+
+def partition_batch_targets(
+    data_root: Path,
+    targets: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    catalog = _load_catalog(data_root)
+    articles = catalog.get("articles", {})
+    if not isinstance(articles, dict):
+        articles = {}
+    completed: list[dict[str, Any]] = []
+    pending: list[dict[str, Any]] = []
+    for item in targets:
+        poh_id = str(item["poh_id"])
+        label = str(item.get("label") or poh_id)
+        meta = articles.get(poh_id)
+        if _article_is_complete(data_root, poh_id, meta):
+            if isinstance(meta, dict):
+                completed.append(
+                    {
+                        "poh_id": poh_id,
+                        "title": meta.get("title") or label,
+                        "url": meta.get("url") or _article_url(poh_id),
+                        "request_id": meta.get("request_id"),
+                        "skipped_llm": meta.get("skipped_llm"),
+                        "no_material": meta.get("no_material"),
+                        "resumed": True,
+                    }
+                )
+            else:
+                completed.append(
+                    {
+                        "poh_id": poh_id,
+                        "title": label,
+                        "url": _article_url(poh_id),
+                        "resumed": True,
+                    }
+                )
+            continue
+        pending.append({"poh_id": poh_id, "label": label})
+    return completed, pending
+
+
 def research_status_summary(data_root: Path) -> dict[str, int]:
     from src.search.article_health_audit import audit_articles_health
 

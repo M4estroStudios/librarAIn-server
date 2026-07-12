@@ -149,6 +149,156 @@
       "skipped_llm": false,
       "no_material": false,
       "generated_at": "2026-07-11T02:47:44.155318+00:00"
+    },
+    "paolo": {
+      "poh_id": "paolo",
+      "title": "Materiale insufficiente",
+      "snippet": "Materiale insufficiente La biblioteca indicizzata non contiene pagine candidate sufficienti per rispondere alla query con fonti verificabili. Query: Paolo",
+      "url": "/articolo/paolo.html",
+      "request_id": "60badf5e3e600c6b841ea1d95a482464a4075af851b68c04b4f9180cbe5693d1",
+      "skipped_llm": true,
+      "no_material": true,
+      "generated_at": "2026-07-11T14:50:14.418408+00:00"
+    },
+    "albano": {
+      "poh_id": "albano",
+      "title": "Albano",
+      "snippet": "Monte Albano e Colli Albani nella tradizione romana arcaica Il termine Albano , nel contesto della storia antica, indica principalmente il monte Albano e l'area dei Colli Albani,…",
+      "url": "/articolo/albano.html",
+      "request_id": "5103267a7ca0fb16aa4f5cbc36926c953124310dd8aff38ef705e927c867029d",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T14:54:30.156313+00:00"
+    },
+    "apollo": {
+      "poh_id": "apollo",
+      "title": "Apollo",
+      "snippet": "Teatro Apollo (Roma) Il Teatro Apollo fu un edificio teatrale situato nel rione Ponte di Roma, lungo il lungotevere tiberino. La sua apertura segnò un momento di particolare splen…",
+      "url": "/articolo/apollo.html",
+      "request_id": "6a6ddbf03c2814238ee6d922f8ed5842f217cf1b6939a7e9f3ea28dea93e55a5",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T15:01:30.531419+00:00"
+    },
+    "cesare": {
+      "poh_id": "cesare",
+      "title": "Cesare",
+      "snippet": "Cesare (Giulio Cesare) Giulio Cesare fu una figura decisiva nella trasformazione politica e urbanistica di Roma antica, in particolare nell'area del Foro Romano. Alla sua morte si…",
+      "url": "/articolo/cesare.html",
+      "request_id": "919bb4d71fc9449171f397bb65d9510e1ae2f8a7deeb730780c65ce58c593f11",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T15:11:57.336029+00:00"
+    },
+    "diocleziano": {
+      "poh_id": "diocleziano",
+      "title": "Diocleziano",
+      "snippet": "Diocleziano Diocleziano fu un imperatore romano attivo agli albori del IV secolo della era volgare, celebre per le incisive riforme fiscali volte a riorganizzare lo Stato e contra…",
+      "url": "/articolo/diocleziano.html",
+      "request_id": "ca171b215747c136186f5f0bdb0b02ccc47f66a9f029435b51e96709ab3e8b75",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T15:21:48.567642+00:00"
+    },
+    "gianicolo": {
+      "poh_id": "gianicolo",
+      "title": "Gianicolo",
+      "snippet": "Gianicolo Il Gianicolo è uno dei colli storici di Roma, situato sulla sponda sinistra del Tevere. Fin dall'epoca tardo-antica rivestì un'importanza strategica per la difesa urbana…",
+      "url": "/articolo/gianicolo.html",
+      "request_id": "12e480f99d8dd6f9c971d446e67a081e3a83f36f49813e3fb36a0fe256cffd80",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T15:31:22.427736+00:00"
+    },
+    "giunone": {
+      "poh_id": "giunone",
+      "title": "Giunone",
+      "snippet": "Giunone Giunone è una divinità della religione romana la cui presenza nelle fonti disponibili si lega principalmente alla topografia sacra del Campidoglio e a specifici epiteti le…",
+      "url": "/articolo/giunone.html",
+      "request_id": "9f0d26bdad780a77143c674d5f40b6cdd75b3405ca8da1b8ff8437d8b4e76922",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T15:37:39.229281+00:00"
+    },
+    "laterani": {
+      "poh_id": "laterani",
+      "title": "Materiale insufficiente",
+      "snippet": "Materiale insufficiente La biblioteca indicizzata non contiene pagine candidate sufficienti per rispondere alla query con fonti verificabili. Query: Laterani",
+      "url": "/articolo/laterani.html",
+      "request_id": "92e58a1214df9e62215af3e284ea79cc16a204d956fac567f484a1e66ba35c40",
+      "skipped_llm": true,
+      "no_material": true,
+      "generated_at": "2026-07-11T15:39:00.286448+00:00"
+    },
+    "marco-aurelio": {
+      "poh_id": "marco-aurelio",
+      "title": "Marco Aurelio",
+      "snippet": "Marco Aurelio Marco Aurelio Cesare fu imperatore romano dal 161 al 180 d.C., governando inizialmente in diarchia con Lucio Vero e successivamente da solo[32f6be...]. Filosofo segu…",
+      "url": "/articolo/marco-aurelio.html",
+      "request_id": "26defd6062b6f73098aed19c34045b9f80ab0613123d859282040195c00fbcb9",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T15:49:20.188206+00:00"
+    },
+    "mercurio": {
+      "poh_id": "mercurio",
+      "title": "Mercurio",
+      "snippet": "Mercurio nella Roma antica Mercurio è una divinità venerata nell'antichità romana, la cui presenza nel panorama religioso e urbano della città è attestata principalmente in relazi…",
+      "url": "/articolo/mercurio.html",
+      "request_id": "b56e9ca881389ff246cb32d186fd657d9fd7e757541dde538607b5df97e2c4c2",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T15:59:19.845051+00:00"
+    },
+    "minerva": {
+      "poh_id": "minerva",
+      "title": "Minerva",
+      "snippet": "Minerva Minerva è una divinità dell'antico mondo romano il cui culto e la cui memoria urbana sono testimoniati da specifici templi, toponimi e monumenti pubblici. Nell'architettur…",
+      "url": "/articolo/minerva.html",
+      "request_id": "9eea92bb6d91d6106d2327612b5fa106dc0009dcf4934c74aee768a5e5dd8ae6",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T16:06:15.941654+00:00"
+    },
+    "pincio": {
+      "poh_id": "pincio",
+      "title": "Pincio",
+      "snippet": "Pincio Il Pincio è una delle colline storiche di Roma, situata nel Campo Marzio, che ha condizionato la viabilità e l'assetto urbanistico della città fin dal Rinascimento testo de…",
+      "url": "/articolo/pincio.html",
+      "request_id": "71c8854245e9b970adf3a7dedd6d5d11160ca0a6d3f1ca698b8533188ae07c70",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T16:15:55.409725+00:00"
+    },
+    "quinto-aurelio": {
+      "poh_id": "quinto-aurelio",
+      "title": "Materiale insufficiente",
+      "snippet": "Materiale insufficiente La biblioteca indicizzata non contiene pagine candidate sufficienti per rispondere alla query con fonti verificabili. Query: Quinto Aurelio",
+      "url": "/articolo/quinto-aurelio.html",
+      "request_id": "da358e3b3c12987828b675876127179a41083d6b9e367b4a1ca7b2362598f025",
+      "skipped_llm": true,
+      "no_material": true,
+      "generated_at": "2026-07-11T16:17:20.410984+00:00"
+    },
+    "quirinale": {
+      "poh_id": "quirinale",
+      "title": "Quirinale",
+      "snippet": "Quirinale Il Quirinale è uno dei colli storici di Roma, originariamente legato al culto del dio sabino Semo Sancus e divenuto in epoca moderna la sede definitiva della residenza p…",
+      "url": "/articolo/quirinale.html",
+      "request_id": "855332de807781e2b3ea66957f84f5af6181736c902e828d5cd44135e3bd5602",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T16:28:15.659411+00:00"
+    },
+    "sisto-iii": {
+      "poh_id": "sisto-iii",
+      "title": "Sisto III",
+      "snippet": "Sisto III Sisto III non viene menzionato né trattato nei testi forniti a supporto della presente redazione. Le pagine consultate si concentrano esclusivamente su sviluppi storici…",
+      "url": "/articolo/sisto-iii.html",
+      "request_id": "443ddd9222762b119519aa9c8fbf6f70c7c99601c50995f328aabe5a3dee9a3b",
+      "skipped_llm": false,
+      "no_material": false,
+      "generated_at": "2026-07-11T16:36:21.143867+00:00"
     }
   }
 }

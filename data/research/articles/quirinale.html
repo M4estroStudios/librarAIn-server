@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quirinale — librarAIn</title>
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0 auto; max-width: 46rem; padding: 1.5rem 1rem 3rem; }
+a { color: #4ec9b0; word-break: break-word; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; color: #e8e8e8; }
+h2 { font-size: 1.1rem; margin: 1.5rem 0 0.6rem; color: #e8e8e8; }
+p, li { color: #c8c8c8; }
+.notice { color: #f0ad4e; font-size: 0.95rem; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+th, td { border: 1px solid #444; padding: 0.45rem 0.55rem; vertical-align: top; }
+th { background: #2d2d2d; color: #e8e8e8; }
+.nav { margin-bottom: 1.2rem; font-size: 0.9rem; }
+ul { margin: 0.5rem 0 1rem; padding-left: 1.4rem; }
+a[href^="source:"] { cursor: pointer; }
+.page-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  cursor: pointer;
+}
+.page-preview-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(95vw, 920px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border: 1px solid #454545;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.page-preview-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-close:hover { background: #4a4a4a; }
+.page-preview-title {
+  margin: 0;
+  padding: 0.85rem 3rem 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  border-bottom: 1px solid #2a2a2a;
+}
+.page-preview-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+.page-preview-nav {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #3c3c3c;
+  color: #e8e8e8;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.page-preview-img-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(92vh - 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.page-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 5.5rem);
+  height: auto;
+  width: auto;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<p class="nav"><a href="/ricerca.html">← Ricerca</a></p>
+<h1>Quirinale</h1>
+<p>Il Quirinale è uno dei colli storici di Roma, originariamente legato al culto del dio sabino <a href="poh:semo-sancus">Semo Sancus</a> e divenuto in epoca moderna la sede definitiva della residenza papale per il potere temporale. La sua evoluzione topografica e urbanistica ha influenzato profondamente i rioni limitrofi, segnando il passaggio da un assetto medievale a una configurazione rinascimentale e contemporanea. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">Tracce del culto sabino e sviluppo urbano, pp. 19</a></p>
+<h2>Topografia antica e inserimento nel tessuto urbano</h2>
+<p>In epoca romana, il colle fu sede di un tempio dedicato a Semo Sancus, divinità sabina venerata sul Quirinale e garante dell&#x27;osservanza dei giuramenti. Presso la sua area sorgeva la porta Sanqualis, collegata alle antiche mura serviane e alla cinta successiva all&#x27;incendio gallico del 390 a.C., il cui percorso coincideva con l&#x27;aggere più antico della città. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:116">Tempio di Semo Sancus e porte antiche, pp. 116</a></p>
+<p>La conformazione del colle fu profondamente modificata durante il principato di Traiano. Per la costruzione del foro traianeo e dei contigui Mercati di Traiano, l&#x27;architetto <a href="poh:apollodoro-di-damasco">Apollodoro di Damasco</a> intervenne sul terreno tagliando quella porzione nota come sella, che univa il <a href="poh:quirinale">Quirinale</a> al Campidoglio. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:112">Interventi traianei sulla topografia, pp. 112</a> Questi lavori di sbancamento e la disposizione dei magazzini lungo il taglio compiuto sul colle <a href="poh:quirinale">Quirinale</a> ridefinirono i rapporti spaziali con la Velia, la Suburra e la valle del Foro Romano. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:114">Mercati di Traiano e riassetto viario, pp. 114</a></p>
+<p>Storicamente, il Quirinale apparteneva al rione Monti, che comprendeva anche l&#x27;Esquilino e il Viminale. I confini tradizionali del rione includevano già in epoca moderna la via del Quirinale e piazza del Quirinale, delineando un perimetro che si estendeva fino a porta di S. Giovanni e al Colosseo. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:35">Appartenenza al rione Monti, pp. 35</a></p>
+<h2>La reggia papale e la nuova bipolarità urbana</h2>
+<p>Nel corso della seconda metà del XVI secolo, il Quirinale assunse un ruolo politico centrale con l&#x27;edificazione della reggia voluta da Gregorio XIII (1572-1585). L&#x27;edificio fu successivamente ingrandito e divenne la residenza definitiva del pontefice, quale detentore del potere temporale. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">Reggia di Gregorio XIII, pp. 21</a></p>
+<p>Questo trasferimento segnò il superamento della tradizionale bipolarità tra Vaticano e Laterano, sostituendola con una nuova configurazione urbana basata sul binomio Vaticano-Quirinale. Il primo manteneva il ruolo di centro spirituale della Cristianità cattolica, mentre il secondo affermava la propria centralità amministrativa nella capitale pontificia. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">Nuova bipolarità papale, pp. 21</a></p>
+<p>La presenza della corte papale favorì la lenta costruzione di una Roma moderna e la crescita delle ville urbane nelle zone collinari dei rioni <a href="poh:colonna">Colonna</a>, Trevi e Monti. Già agli inizi del Cinquecento, sotto i papi Medici Leone X e Clemente VII, si stava diffondendo l&#x27;uso delle residenze signorili sui colli interni ed esterni, avviando un tipo di insediamento che avrebbe costituito la base per le successive lottizzazioni moderne. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">Diffusione delle ville collinari, pp. 19</a></p>
+<h2>Trasformazioni moderne e monumenti</h2>
+<p>Nell&#x27;Ottocento, le opere di risanamento e ampliamento della capitale italiana modificarono nuovamente il rapporto tra il colle e il tessuto circostante. La realizzazione di via Nazionale comportò la perdita di gran parte del giardino della Villa Aldobrandini verso il Quirinale, mentre l&#x27;arteria divenne un asse di collegamento simbolico e materiale tra il vecchio centro storico e le nuove zone periferiche. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:119">Via Nazionale e riqualificazione ottocentesca, pp. 119</a> Lungo questa strada si sviluppò un&#x27;importante presenza alberghiera, tra cui l&#x27;albergo del Quirinale, che rifletteva la vocazione residenziale e turistica dell&#x27;area. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:119">Alberghi e vita urbana, pp. 119</a></p>
+<p>Sul colle si conservano inoltre importanti riferimenti monumentali di epoca imperiale, come l&#x27;obelisco di granito collocato a Monte Cavallo. Questo monumento, gemello di un altro esemplare, originariamente sorgeva davanti al mausoleo di Augusto per rafforzare la tematica imperiale-solare della dinastia giulio-claudia, prima di essere trasferito nella sua posizione attuale sul Quirinale. <a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:100">Monumenti e obelischi, pp. 100</a></p>
+<h2>Cronologia</h2>
+<table>
+<tr><th>Periodo</th><th>Evento</th><th>Fonti</th></tr>
+<tr><td>-390</td><td>Incendio gallico e rafforzamento della cinta muraria serviana presso la porta Sanqualis sul Quirinale</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:116">Mura serviane e porta Sanqualis</a></td></tr>
+<tr><td>107</td><td>Inizio dei lavori per il foro traianeo e sbancamento della sella del Quirinale ad opera di Apollodoro di Damasco</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:112">Interventi traianei sulla topografia</a></td></tr>
+<tr><td>357</td><td>Visita di Costanzo II al Foro di Traiano e ammirazione per le sue strutture sul colle</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:112">Interventi traianei sulla topografia</a></td></tr>
+<tr><td>1572</td><td>Avvio della costruzione della reggia papale voluta da Gregorio XIII sul Quirinale</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">Reggia di Gregorio XIII</a></td></tr>
+<tr><td>1600</td><td>Acquisizione della villa sul Quirinale da parte degli Aldobrandini e avvio di importanti interventi giardiniere</td><td><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:119">Via Nazionale e riqualificazione ottocentesca</a></td></tr>
+</table>
+<h2>Fonti</h2>
+<ul><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:19">I rioni di Roma, p. 19</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:21">I rioni di Roma, p. 21</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:35">I rioni di Roma, p. 35</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:100">I rioni di Roma, p. 100</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:112">I rioni di Roma, p. 112</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:114">I rioni di Roma, p. 114</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:116">I rioni di Roma, p. 116</a></li><li><a href="source:32f6be12aa560089091bec92c3778bd5b8438c13a239feceb8d71768f9a7ae8f:aligned:119">I rioni di Roma, p. 119</a></li></ul>
+<div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="page-preview-backdrop"></div>
+  <div class="page-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="page-preview-title">
+    <button type="button" class="page-preview-close" id="page-preview-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="page-preview-title">Pagina</h2>
+    <div class="page-preview-body">
+      <button type="button" class="page-preview-nav" id="page-preview-prev" title="Pagina precedente">&lt;</button>
+      <div class="page-preview-img-wrap">
+        <img class="page-preview-img" id="page-preview-img" alt="">
+      </div>
+      <button type="button" class="page-preview-nav" id="page-preview-next" title="Pagina successiva">&gt;</button>
+    </div>
+  </div>
+</div>
+<script src="/article-source-viewer.js"></script>
+</body>
+</html>
