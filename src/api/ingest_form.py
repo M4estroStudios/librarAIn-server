@@ -87,6 +87,7 @@ class StreamedPdfUpload:
 class StreamedMultipartForm:
     text_fields: dict[str, str]
     pdf: StreamedPdfUpload | None
+    volume_pdfs: tuple[StreamedPdfUpload, ...] = ()
 
 
 class _MultipartStreamParser:
@@ -234,6 +235,7 @@ class _MultipartStreamParser:
 
         text_fields: dict[str, str] = {}
         pdf_upload: StreamedPdfUpload | None = None
+        volume_uploads: list[StreamedPdfUpload] = []
 
         while True:
             if self._buffer.startswith(self._closing):
@@ -243,12 +245,38 @@ class _MultipartStreamParser:
             if not field_name:
                 continue
             if filename is not None:
-                size = self._stream_file_part(pdf_part_path)
-                pdf_upload = StreamedPdfUpload(
+                if field_name == "pdf_file":
+                    upload_path = pdf_part_path
+                elif field_name.startswith("pdf_volume_"):
+                    upload_path = pdf_part_path.parent / (
+                        f"{pdf_part_path.stem}_{field_name}{pdf_part_path.suffix}"
+                    )
+                else:
+                    self._stream_file_part(pdf_part_path.parent / (
+                        f"{pdf_part_path.stem}_ignored_{field_name}{pdf_part_path.suffix}"
+                    ))
+                    if self._buffer.startswith(b"\r\n"):
+                        self._consume(2)
+                    if self._buffer.startswith(self._closing):
+                        self._consume(len(self._closing))
+                        break
+                    if not self._buffer.startswith(self._dash_boundary):
+                        self._drop_through(self._part_sep)
+                    else:
+                        self._consume(len(self._dash_boundary))
+                        if self._buffer.startswith(b"\r\n"):
+                            self._consume(2)
+                    continue
+                size = self._stream_file_part(upload_path)
+                upload = StreamedPdfUpload(
                     filename=filename or None,
-                    path=pdf_part_path,
+                    path=upload_path,
                     size=size,
                 )
+                if field_name == "pdf_file":
+                    pdf_upload = upload
+                else:
+                    volume_uploads.append(upload)
             else:
                 payload = self._read_text_part()
                 text_fields[field_name] = payload.decode("utf-8")
@@ -271,7 +299,12 @@ class _MultipartStreamParser:
             if len(leftover) != drain:
                 raise ValueError("unexpected end of request body")
 
-        return StreamedMultipartForm(text_fields=text_fields, pdf=pdf_upload)
+        volume_uploads.sort(key=lambda item: item.path.name)
+        return StreamedMultipartForm(
+            text_fields=text_fields,
+            pdf=pdf_upload,
+            volume_pdfs=tuple(volume_uploads),
+        )
 
 
 def parse_multipart_form_stream(

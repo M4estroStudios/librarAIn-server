@@ -130,6 +130,19 @@ def embedded_canonical_ids_for_model(sqlite_path: str, model: str) -> set[str]:
     return {str(row[0]) for row in rows}
 
 
+def delete_subject_embedding(sqlite_path: str, canonical_id: str) -> bool:
+    init_subject_matcher_schema(sqlite_path)
+    try:
+        with _sqlite_connection(sqlite_path) as conn:
+            cursor = conn.execute(
+                "DELETE FROM subject_embeddings WHERE canonical_id = ?",
+                (canonical_id,),
+            )
+            return cursor.rowcount > 0
+    except sqlite3.Error as exc:
+        raise RuntimeError("unable to delete subject embedding") from exc
+
+
 def set_subject_embedding(
     sqlite_path: str,
     canonical_id: str,

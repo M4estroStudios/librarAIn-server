@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -311,6 +312,10 @@ class SubjectUpdateError(ValueError):
     pass
 
 
+class SubjectDeleteError(ValueError):
+    pass
+
+
 def _load_subject_entry(
     document: PolyindexIndexDocument,
     canonical_id: str,
@@ -477,6 +482,132 @@ def merge_polyindex_subjects(
         "aliases": list(target.aliases),
         "book_count": len(target.books),
         "merged_source_ids": cleaned_sources,
+    }
+
+
+def _scrub_subject_from_time_index(polyindex_dir: Path, canonical_id: str) -> int:
+    time_index_path = polyindex_dir / "TIME_INDEX.json"
+    if not time_index_path.is_file():
+        return 0
+    removed = 0
+    with polyindex_dir_lock(polyindex_dir, ".time_index.lock"):
+        try:
+            raw = json.loads(time_index_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return 0
+        if not isinstance(raw, dict):
+            return 0
+        for section_name in ("years", "dates"):
+            section = raw.get(section_name)
+            if not isinstance(section, dict):
+                continue
+            for entry in section.values():
+                if not isinstance(entry, dict):
+                    continue
+                subjects = entry.get("subjects")
+                if not isinstance(subjects, list):
+                    continue
+                filtered = [
+                    item
+                    for item in subjects
+                    if not (isinstance(item, str) and item == canonical_id)
+                ]
+                if len(filtered) != len(subjects):
+                    removed += len(subjects) - len(filtered)
+                    entry["subjects"] = filtered
+        if removed:
+            tmp_path = time_index_path.with_name(time_index_path.name + ".tmp")
+            try:
+                tmp_path.write_bytes(
+                    json.dumps(raw, ensure_ascii=False, indent=2).encode("utf-8")
+                )
+                os.replace(tmp_path, time_index_path)
+            finally:
+                if tmp_path.is_file():
+                    tmp_path.unlink(missing_ok=True)
+    return removed
+
+
+def _remove_research_article_assets(data_root: Path, canonical_id: str) -> dict[str, Any]:
+    from src.search.article_catalog import (
+        _article_file,
+        _article_markdown_file,
+        _catalog_path,
+        _load_catalog,
+        _save_catalog,
+    )
+
+    removed_files: list[str] = []
+    for path in (_article_file(data_root, canonical_id), _article_markdown_file(data_root, canonical_id)):
+        if path.is_file():
+            path.unlink()
+            removed_files.append(path.name)
+    catalog = _load_catalog(data_root)
+    articles = catalog.get("articles")
+    catalog_removed = False
+    if isinstance(articles, dict) and canonical_id in articles:
+        del articles[canonical_id]
+        catalog_removed = True
+        if _catalog_path(data_root).is_file() or catalog.get("articles"):
+            _save_catalog(data_root, catalog)
+    return {
+        "removed_files": removed_files,
+        "catalog_removed": catalog_removed,
+    }
+
+
+def delete_polyindex_subject(
+    polyindex_dir: Path,
+    canonical_id: str,
+    *,
+    data_root: Path | None = None,
+    sqlite_path: str | None = None,
+) -> dict[str, Any]:
+    subject_id = canonical_id.strip()
+    if not subject_id:
+        raise SubjectDeleteError("canonical_id is required")
+
+    index_path = polyindex_dir / "INDEX.json"
+    removed_label = subject_id
+    with polyindex_dir_lock(polyindex_dir, ".index.lock"):
+        if not index_path.is_file():
+            raise SubjectDeleteError("INDEX.json not found")
+        document = PolyindexIndexDocument.load_file(index_path)
+        entry = document.subjects.get(subject_id)
+        if entry is None:
+            raise SubjectDeleteError(f"subject not found: {subject_id}")
+        removed_label = entry.canonical_label
+        del document.subjects[subject_id]
+        document.write_atomic(index_path, sort_document=True)
+
+    time_refs_removed = _scrub_subject_from_time_index(polyindex_dir, subject_id)
+
+    embedding_removed = False
+    if sqlite_path:
+        from src.persistence.subject_matcher_sqlite import delete_subject_embedding
+
+        embedding_removed = delete_subject_embedding(sqlite_path, subject_id)
+
+    root = data_root if data_root is not None else polyindex_dir.parent
+    article_cleanup = _remove_research_article_assets(root, subject_id)
+
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex subject deleted",
+        {
+            "canonical_id": subject_id,
+            "canonical_label": removed_label,
+            "time_refs_removed": time_refs_removed,
+            "embedding_removed": embedding_removed,
+            "article_cleanup": article_cleanup,
+        },
+    )
+    return {
+        "canonical_id": subject_id,
+        "canonical_label": removed_label,
+        "time_refs_removed": time_refs_removed,
+        "embedding_removed": embedding_removed,
+        "article_cleanup": article_cleanup,
     }
 
 

@@ -62,6 +62,29 @@ def _write_aligned_pdf_chunk(
     return chunk_order, str(chunk_file)
 
 
+def merge_pdf_paths(source_paths: list[Path], target_path: Path) -> int:
+    if not source_paths:
+        raise ValueError("merge_pdf_paths requires at least one source PDF")
+    merger = PdfWriter()
+    for source_path in source_paths:
+        reader = PdfReader(str(source_path), strict=False)
+        for page_index in range(len(reader.pages)):
+            merger.add_page(reader.pages[page_index])
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with target_path.open("wb") as sink:
+            merger.write(sink)
+    except OSError as exc:
+        raise ValueError(
+            IngestInputValidationError(
+                code=IngestInputErrorCode.PDF_ALIGNMENT_FAILED,
+                message=f"unable to write merged pdf: {exc}",
+                field=None,
+            ).model_dump_json()
+        ) from exc
+    return len(merger.pages)
+
+
 def _merge_chunk_pdf_paths(chunk_paths_ordered: list[str], target_path: Path) -> None:
     merger = PdfWriter()
     for path_str in chunk_paths_ordered:

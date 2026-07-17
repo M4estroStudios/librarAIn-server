@@ -127,6 +127,31 @@ class TestParseMultipartFormStream(unittest.TestCase):
                     pdf_part_path=Path(tmp) / "x.part",
                 )
 
+    def test_stream_parser_collects_volume_pdfs(self) -> None:
+        boundary = "volumeboundary1"
+        body = _multipart_body(
+            {**_BASE_FIELDS, "volume_merge": "1"},
+            {
+                "pdf_file": ("vol1.pdf", b"%PDF-v1"),
+                "pdf_volume_1": ("vol2.pdf", b"%PDF-v2"),
+                "pdf_volume_2": ("vol3.pdf", b"%PDF-v3"),
+            },
+            boundary,
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            pdf_path = Path(tmp) / "upload.part"
+            parsed = parse_multipart_form_stream(
+                BytesIO(body),
+                f"multipart/form-data; boundary={boundary}",
+                content_length=len(body),
+                max_bytes=len(body) + 1,
+                pdf_part_path=pdf_path,
+            )
+            assert parsed.pdf is not None
+            self.assertEqual(len(parsed.volume_pdfs), 2)
+            self.assertEqual(parsed.volume_pdfs[0].path.read_bytes(), b"%PDF-v2")
+            self.assertEqual(parsed.volume_pdfs[1].path.read_bytes(), b"%PDF-v3")
+
 
 class TestParsePagesSpec(unittest.TestCase):
     def test_single_and_ranges(self) -> None:

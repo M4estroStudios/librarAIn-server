@@ -323,5 +323,172 @@ class TestSystemJobsEndpoint(unittest.TestCase):
         self.assertIsInstance(payload["jobs"], list)
 
 
+class TestAdminSubjectDedupAndDelete(unittest.TestCase):
+    def setUp(self) -> None:
+        self.server = _ServerHarness()
+        self.addCleanup(self.server.close)
+        self.data_root = Path(self.server._tmp.name)
+        self.polyindex_dir = self.data_root / "polyindex"
+        self.polyindex_dir.mkdir(parents=True)
+        sha = "c" * 64
+        (self.polyindex_dir / "INDEX.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": "1.0",
+                    "subjects": {
+                        "augusto": {
+                            "canonical_label": "Augusto",
+                            "aliases": [],
+                            "books": {
+                                sha: {
+                                    "title": "Libro",
+                                    "slug": "libro",
+                                    "aligned_pages": [1],
+                                    "original_pages": [1],
+                                }
+                            },
+                        },
+                        "ottaviano": {
+                            "canonical_label": "Ottaviano",
+                            "aliases": ["Augusto"],
+                            "books": {
+                                sha: {
+                                    "title": "Libro",
+                                    "slug": "libro",
+                                    "aligned_pages": [2],
+                                    "original_pages": [2],
+                                }
+                            },
+                        },
+                    },
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+    def test_suggestions_empty_then_dismiss_and_delete(self) -> None:
+        status, payload = self.server.request("/api/admin/subjects/dedup/suggestions")
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["clusters"], [])
+
+        suggestions_path = self.polyindex_dir / "admin_dedup_suggestions.json"
+        suggestions_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": "1.0",
+                    "scanned_at": "2026-01-01T00:00:00+00:00",
+                    "clusters": [
+                        {
+                            "cluster_key": "augusto|ottaviano",
+                            "suggested_target_id": "augusto",
+                            "score": 0.95,
+                            "methods": ["fuzzy"],
+                            "llm_reasons": [],
+                            "members": [
+                                {
+                                    "canonical_id": "augusto",
+                                    "canonical_label": "Augusto",
+                                    "aliases": [],
+                                    "book_count": 1,
+                                    "has_article": False,
+                                },
+                                {
+                                    "canonical_id": "ottaviano",
+                                    "canonical_label": "Ottaviano",
+                                    "aliases": ["Augusto"],
+                                    "book_count": 1,
+                                    "has_article": False,
+                                },
+                            ],
+                        }
+                    ],
+                    "stats": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        status, payload = self.server.request("/api/admin/subjects/dedup/suggestions")
+        self.assertEqual(status, 200)
+        self.assertEqual(len(payload["clusters"]), 1)
+
+        body = json.dumps({"cluster_key": "augusto|ottaviano"}).encode("utf-8")
+        status, payload = self.server.request(
+            "/api/admin/subjects/dedup/dismiss",
+            method="POST",
+            body=body,
+            headers={"Content-Type": "application/json", "Content-Length": str(len(body))},
+        )
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["suggestions"]["clusters"], [])
+
+        delete_body = json.dumps({"canonical_id": "ottaviano"}).encode("utf-8")
+        status, payload = self.server.request(
+            "/api/admin/subject/delete",
+            method="POST",
+            body=delete_body,
+            headers={
+                "Content-Type": "application/json",
+                "Content-Length": str(len(delete_body)),
+            },
+        )
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["result"]["canonical_id"], "ottaviano")
+        index = json.loads((self.polyindex_dir / "INDEX.json").read_text(encoding="utf-8"))
+        self.assertNotIn("ottaviano", index["subjects"])
+        self.assertIn("augusto", index["subjects"])
+
+        missing_body = json.dumps({"canonical_id": "inesistente"}).encode("utf-8")
+        status, payload = self.server.request(
+            "/api/admin/subject/delete",
+            method="POST",
+            body=missing_body,
+            headers={
+                "Content-Type": "application/json",
+                "Content-Length": str(len(missing_body)),
+            },
+        )
+        self.assertEqual(status, 404)
+        self.assertFalse(payload["ok"])
+
+    def test_dedup_scan_starts_job(self) -> None:
+        def fake_scan(*args, **kwargs):
+            progress = kwargs.get("progress")
+            if progress is not None:
+                progress(make_event("subject_dedup", "started", message="scan"))
+                progress(make_event("subject_dedup", "done", clusters=0, message="ok"))
+            return {
+                "schema_version": "1.0",
+                "scanned_at": "2026-01-01T00:00:00+00:00",
+                "clusters": [],
+                "stats": {},
+            }
+
+        body = b"{}"
+        with patch(
+            "src.api.admin_subject_dedup.run_subject_dedup_scan",
+            side_effect=fake_scan,
+        ):
+            status, payload = self.server.request(
+                "/api/admin/subjects/dedup/scan",
+                method="POST",
+                body=body,
+                headers={"Content-Type": "application/json", "Content-Length": str(len(body))},
+            )
+            self.assertEqual(status, 202)
+            self.assertTrue(payload["ok"])
+            job_id = payload["job_id"]
+            deadline = time.monotonic() + 10
+            while time.monotonic() < deadline:
+                _, job = self.server.request(f"/api/ingest/{job_id}/status")
+                if job.get("status") == "done":
+                    break
+                time.sleep(0.05)
+            self.assertEqual(job["status"], "done")
+
+
 if __name__ == "__main__":
     unittest.main()

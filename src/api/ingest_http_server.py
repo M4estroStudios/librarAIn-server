@@ -22,6 +22,10 @@ from src.api.admin_embeddings import (
     try_handle_admin_embeddings_get,
     try_handle_admin_embeddings_post,
 )
+from src.api.admin_subject_dedup import (
+    try_handle_admin_subject_dedup_get,
+    try_handle_admin_subject_dedup_post,
+)
 from src.api.chat_completions_handler import handle_chat_completions
 from src.api.etaly_export_handler import build_etaly_export_routes
 from src.api.system_preflight import evaluate_preflight, normalize_preflight_operation
@@ -69,6 +73,7 @@ from src.persistence.book_page_repair import (
 from src.core.config import ConfigurationError, get_env, load_settings
 from src.core.hashing import new_job_id
 from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
+from src.ingestion.pdf_alignment import merge_pdf_paths
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
 from src.models.request import IngestInputErrorCode, IngestInputValidationError, IngestInputValidationException
@@ -653,6 +658,13 @@ def build_ingest_server(
                 self,
                 data_root=data_root,
                 settings=settings,
+                send_json=_send_json,
+            ):
+                return
+            if try_handle_admin_subject_dedup_get(
+                path,
+                self,
+                data_root=data_root,
                 send_json=_send_json,
             ):
                 return
@@ -1418,6 +1430,18 @@ def build_ingest_server(
                 send_json=_send_json,
             ):
                 return
+            if try_handle_admin_subject_dedup_post(
+                parsed.path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                registry=registry,
+                job_semaphore=job_semaphore,
+                send_json=_send_json,
+                read_body=_read_body,
+                sqlite_path=_settings_sqlite_path(settings),
+            ):
+                return
             if parsed.path == "/api/ingest/reicat-suggest":
                 self._handle_reicat_suggest()
                 return
@@ -1514,8 +1538,59 @@ def build_ingest_server(
                 f"{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
             )
             uploaded.path.rename(saved_path)
+            volume_paths: list[Path] = []
+            for volume_upload in parsed.volume_pdfs:
+                volume_saved = volume_upload.path.with_name(
+                    f"{secrets.token_hex(6)}_{_safe_filename(volume_upload.filename or 'volume.pdf')}"
+                )
+                volume_upload.path.rename(volume_saved)
+                volume_paths.append(volume_saved)
+            volume_merge = text_fields.get("volume_merge", "").strip().lower() in (
+                "1",
+                "true",
+                "yes",
+            )
+            if volume_merge and volume_paths:
+                merged_path = saved_path.with_name(
+                    f"merged_{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
+                )
+                try:
+                    merged_pages = merge_pdf_paths([saved_path, *volume_paths], merged_path)
+                except ValueError as exc:
+                    saved_path.unlink(missing_ok=True)
+                    for volume_path in volume_paths:
+                        volume_path.unlink(missing_ok=True)
+                    Log(WARNING_LOG_LEVEL, "ingest volume merge failed", {"error": str(exc)})
+                    _send_validation_error(
+                        self,
+                        IngestInputErrorCode.PDF_ALIGNMENT_FAILED,
+                        str(exc),
+                        "pdf_file",
+                    )
+                    return
+                saved_path.unlink(missing_ok=True)
+                for volume_path in volume_paths:
+                    volume_path.unlink(missing_ok=True)
+                saved_path = merged_path
+                Log(
+                    INFO_LOG_LEVEL,
+                    "ingest volume PDFs merged",
+                    {"path": str(saved_path), "pages": merged_pages, "volumes": len(volume_paths) + 1},
+                )
+            elif volume_paths:
+                for volume_path in volume_paths:
+                    volume_path.unlink(missing_ok=True)
+                saved_path.unlink(missing_ok=True)
+                Log(WARNING_LOG_LEVEL, "ingest submit rejected: volume PDFs without volume_merge flag")
+                _send_validation_error(
+                    self,
+                    IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                    "extra volume PDFs require volume_merge=1",
+                    "pdf_file",
+                )
+                return
             Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
-                {"path": str(saved_path), "bytes": uploaded.size})
+                {"path": str(saved_path), "bytes": saved_path.stat().st_size})
 
             try:
                 require_gpu_vram_at_pipeline_start(
