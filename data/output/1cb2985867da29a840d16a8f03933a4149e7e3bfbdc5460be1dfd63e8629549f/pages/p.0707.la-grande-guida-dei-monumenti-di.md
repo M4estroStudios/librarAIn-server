@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+tivo ospizio, ebbe questa chiesa dieci anni dopo da papa Paolo iv.
+Fu allora che mutò nome, poiché era chiamata prima San Benedetto de Arenula, e anche San Benedetto de turre pertondata, mentre lo Spezi vi riconosce anche la chiesa di San Benedetto Scottorum, rifacendosi agli Scotti, emigrati da Piacenza a Roma nel xv secolo.
+Essa venne però ricostruita, con l’aggiunta della cupola, tra il 1603 e il 1616 da Giovanni Paolo Maggi; nel 1723 Francesco De Sanctis eresse la facciata, ornata dalle Statue dei quattro Evangelisti, opera del Bernardino Ludovisi. All’interno, pregevoli opere d’arte del Beni, del Borgognone e del Cavalier d’Arpino, e un gruppo statuario San Matteo e l’Angelo, involontaria causa della commissione al Caravaggio del suo mirabile quadro dello stesso soggetto. La scultura è opera di Jacob Cobaert, che vi lavorò trent’anni su commissione del cardinal Contarelli che lo voleva porre in San Luigi de’ Francesi. Allorché la statua fu finita, non piacque ai parenti del cardinale, nel frattempo morto, ed essi la rifiutaron; così la statua finì alla Trinità dei Pellegrini, mentre San Luigi de’ Francesi ebbe un capolavoro del Caravaggio. Nell’ospizio annesso alla chiesa dal 1625 morì Goffredo Mameli. Nella chiesa il 28 maggio di ogni anno si celebra la funzione che rievoca lo spirito di carità dell’arciconfraternita. L’annesso ospizio fu un punto di assistenza per i pellegrini a Roma durante gli Anni Santi dal 1550 al 1825; demolito in gran parte nel 1940, restano alcuni locali utilizzati per altri scopi civili.
+
+Trionfale (Via, QQ XIV Trionfale, XV Della Vittoria e XXVII Primavalle, e Zone dell’Agro Romano)
+
+Madonna del Rosario
+
+È al n. 175. Edificata nel 1628 nella vigna dell’erudito Giovan Vittorio de Rossi, arcade con il nome di Giano Nicio Eritro, fu ampliata nel 1651 da Camillo Arcucci. Abbandonata poi per lungo tempo, fu restaurata da Clemente xi Albani nel 1715 e quindi ceduta all’ordine fiorentino dei Domenicani di San Marco; Benedetto xiii, che aveva particolarmente cara la solitaria località, fece rinnovare

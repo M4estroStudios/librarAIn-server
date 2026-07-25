@@ -1,0 +1,8 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Palazzo Massimo di Pirro
+
+È al n. 145. L’edificio fu costruito per Angelo Massimo da Giovanni Mangone di Caravaggio, allievo di Antonio da Sangallo, nella stessa periodo in cui veniva eretta la residenza dei Massimo “alle Colonne”. Fu chiamato “di Pirro”, da una statua di Marte con corazza ornata di elefanti venuta alla luce nei lavori di fondazione del palazzo e identificata erroneamente con un ritratto di Pirro re dell’Epiro. La statua, venduta nel 1738 a Clemente xii, è oggi ai Musei capitolini. Il palazzo nell’Ottocento fu collegato al confinante “alle Colonne” da Camillo Carlo Alberto Massimo, che nel 1874 fece sopraelevare la costruzione ed eseguire vari restauri. Così la facciata si presenta divisa in tre ordini di finestre, con un ammezzato tra il primo e il secondo piano. Al centro apre un grande portale architravato, ma agli estremi vi sono altri due piccoli portali anch’essi architravati. Il cortile è diviso in tre ordini lungo tre lati, e in due sulla parete di fronte; sul lato dell’ingresso, due pilastri con lesene doriche sorreggono tre arcate con fregio a metope decorate. Al primo piano, una loggia murata a colonne ioniche con tre finestre architravate. Dal lato sinistro del cortile si accede ad una chiostrina con portico a colonne ioniche.
+
+Palazzo Sora
+
+È al n. 217. È un altro dei “falsi architettonici” che caratterizzano molti edifici pseudoantichi del corso Vittorio Emanuele II. Questo rifà il verso all’originale quattrocentesco fatto costruire da Urbano Fieschi, conte di Lavagna, e ampliato dal fratello, il cardinale Nicola Fieschi ai primi del Cinquecento, che per ingrandire l’edi-

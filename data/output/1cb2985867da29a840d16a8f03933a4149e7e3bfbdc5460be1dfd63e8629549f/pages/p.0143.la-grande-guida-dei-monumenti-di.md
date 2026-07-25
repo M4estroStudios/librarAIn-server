@@ -1,0 +1,8 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Caffarella (Via della, Q IX Appio Latino)
+
+Parco della Caffarella
+
+L'ingresso è sulla via all'incrocio con via de Bildt; altri ingressi sono su via Latina, all'incrocio con via di Vigna Fabbri, su vicolo di Sant’Urbano e su via Appia Pignatelli. Prende nome dalla famiglia Caffarelli (v.) alla quale appartenne dal xvi secolo, ma anticamente era una villa, il Pago Triopio ed era di proprietà di Erode Attico e sua moglie Annia Regilla. Di essa fanno parte un Ninfeo, costituito da un vano rettangolare con grande nicchia sul fondo e altre minori sui lati, e il Mausoleo di Anna Regilla a forma di tempietto con trabeazione a mensole e timpano; questo fu ritenuta tradizionalmente dedicato alla divinità chiamata Redicolo, che avrebbe convinto Annibale a non assalire Roma, e soprannominato pertanto Tempio del Dio Redicolo. Divenuto una casa colonica e quindi Molino della Caffarella, oggi è privatizzato e recintato. Un'altra tradizione sorta nel Settecento indicava il luogo come Bosco sacro di Egeria; la nina che avrebbe ispirato il re Numa Pompilio, quando questi elaborava la legislazione di Roma; del presunto bosco sulla collina sono rimasti pochi lecci e tanto basta a mantenere in vita la credenza popolare. A ridosso di questa è la Fonte dell’Acqua Santa Egeria (v. via dell’Almone).
+
+Caffarelli Famiglia nobile presente a Roma dalla seconda metà del xii secolo, quando Bartolomeo e Stefano risultano essere senatori. L'albero genealogico di questo casato era diviso in più rami e i suoi componenti sono stati sempre esponenti della vita pubblica romana. Tra

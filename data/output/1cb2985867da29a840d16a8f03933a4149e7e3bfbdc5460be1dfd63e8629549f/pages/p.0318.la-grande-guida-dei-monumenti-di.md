@@ -1,0 +1,8 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+L'Arco di Settimio Severo in un'illustrazione di fine Ottocento.
+
+pio. Nel Medioevo fu soprannominato l’Arco delle Sette Lucerne in riferimento al candelabro a sette bracci e fu l’orgoglio dei Frangipane che l’incorporarono nelle loro fortezze; fu isolato, solo in parte, sotto Sisto iv e venne liberato completamente solo nel 1821 da Giuseppe Valadier che ne completò in travertino le parti che erano andate perdute.
+
+Basilica di Massenzio
+
+È nel Foro Romano. Fu costruita tra gli anni 306 e 312, al posto di grandi magazzini e del portico della Domus Aurea, dall'imperatore Massenzio e completata con qualche importante modifica da Costantino, donde anche il nome di Basilica di Costantino. L'ingresso originario era verso il Colosseo, e immetteva in un atrio stretto e allungato dal quale si passava in un’aula di m 60 per 80 divisa in tre navate, ognuna coperta da una grande volta a crociera, di cui quella centrale era coperta con altre tre volte a crociera e quelle laterali erano ripartite in tre campate intercomunicanti, coperte a botte e decorate a cassettoni. La navata centrale terminava in una profonda abside. Al centro della navata settentrionale si apriva un’altra grande abside preceduta da una coppia di colonne e con le pareti ornate da nicchie per statue in quadrate da colonnine su mensoloni scolpiti. In corrispondenza di quest’abside, sul lato opposto meridionale, fu aperto sotto Costantino il nuovo ingresso alla basilica costituito da un avancorpo sostenuto da quattro colonne preceduto da una gradinata centrale. Di fronte a questo ingresso fu costruita una nuova abside, destinata al tribunale, separata dal pubblico per mezzo di una balaustra. Qui era una statua colossale di Costantino, le

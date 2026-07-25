@@ -1,0 +1,8 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+G.B. Falda, la chiesa di Sant'Ignazio.
+
+risulta abitata dal beato Angelo Baldinucci, un predicatore della Campagna romana; una seconda da san Giovanni Berchmans dal 1618 al 1621; una terza dal venerabile Abramo Giorgi, martire in Etiopia nel 1595. Le stanze propriamente legate a san Luigi sono: una cappella, dove il giovane pronunciò i voti il 25 novembre 1587; una sagrestia con un crocifisso usato da Luigi prima di diventare gesuita; una Cappella detta di San Luigi, inaugurata il 21 giugno 1714 con suppellettili dell'infermeria dove il giovane mori; e una grande sala di ricreazione dei giovani studenti gesuiti, nella quale evidentemente anche Luigi passò parte del suo tempo.
+
+Biblioteca Casanatense
+
+È al n. 52 della via. L'edificio fa parte dell’antico convento dei Domenicani, ovvero del cosiddetto “Edificio del Noviziato dei Domenicani” costruito da Paolo Maruscelli a spese del cardinal Antonio Barberini, protettore dell’ordine, tra il 1638 e il 1641: lo rivela la scritta sul cantonale tra piazza San Macuto e via di Sant'Ignazio: «Urbani VIII / Pont. Opt. Max Anno XVIII», ovvero nel 1641. Ma già nel 1698 una parte del noviziato era stata trasformata in biblioteca, quando il cardinale Casanate elargì un fondo di 160.000 scudi per l’istituzione di una grande biblioteca di uso pubblico; e così fu ristrutturato l'edificio secondo un progetto di Antonio Maria Borioni, che completò i lavori nel 1725. Il palazzo dopo il 1870 divenne proprietà dello Stato italiano e modificato nel 1905, particolarmente sul lato di via del Seminario, divenendo sede del

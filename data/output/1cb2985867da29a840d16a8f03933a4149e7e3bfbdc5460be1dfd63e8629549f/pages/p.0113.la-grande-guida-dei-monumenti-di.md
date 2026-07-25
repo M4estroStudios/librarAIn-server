@@ -1,0 +1,16 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+silico e nel cortile interno, limitato da portici. Sul cantonale a lesene ad angolo con via San Niccolò da Tolentino, lo stemma dei monaci con un cartiglio e la scritta «Talis est Magnus Basilius».
+
+Nel 1874 il complesso fu requisito dallo Stato italiano e i monaci furono temporaneamente allontanati; successivamente parte dei locali passò al Comune di Roma, che vi insediò una scuola per elettricisti della Fondazione Marco Besso (v. largo di Torre Argentina) e altri uffici, ma una parte tornò ai Basiliani per l’alloggio di alcuni seminaristi e la sede della procura generale dell’Ordine. All’interno della chiesa si conserva la memoria del cardinal Bessarione (1402-72) e di altri prelati basiliani.
+
+Battisti Cesare (Via, R Il Trevi)
+
+Palazzo Valentini
+
+È al n. 119. L’edificio risale al 1590, quando fu realizzato il progetto di Fra Domenico Paganelli da Firenze per il cardinale Michele Bonelli, che aveva acquistato dai Boncompagni nel 1585 l’originario palazzo costruito sulla stessa area ai primi del Cinquecento per la famiglia Zambeccari. Fu demolito e venne edificato questo nuovo palazzo a struttura parallelepipeda con le facciate racchiuse tra angolature e bugnato; questo però assunse un aspetto definitivo solo nella prima metà del Seicento, quando fu in parte demolito e ricostruito da Francesco Paparelli per il nuovo proprietario, il cardinale Renato Imperiali, che tra l’altro lo arricchì di una notevole biblioteca. Nel Settecento la proprietà passò alla famiglia Valentini e vi fu eretto il prospetto neoclassico verso il Foro di Traiano ad opera di Filippo Navone; i Valentini vi raccolsero un’importante pinacoteca, abitandovi fino al 1870, quando il palazzo fu acquistato dallo Stato italiano: attualmente è sede della Prefettura di Roma e del Consiglio provinciale del Lazio. L’aspetto attuale dell’edificio è frutto di un radicale restauro compiuto nel 1878 da Luigi Gabet, che snaturò in parte il carattere tardorinascimentale della costruzione. Ha in ogni caso una facciata grandiosa con quel superbo portale sul breve rialzo del terreno, tra due colonne ioniche sovrastate dall’ampio balcone, sul quale apre la finestra centrale del primo piano, e affiancate da finestre architravate e inferriate. Le finestre dei due piani poggiano su alte strisce marcapiano: al primo architravate con timpani alternativamente curvi e triangolari, al secondo con semplice cornice. Il grande cornicione è coronato da un’elegante balaustra. Ampio il cortile interno, ricco di antiche statue, e molto il nobile scalone.
+
+Belle Arti (Viale delle, Q III Pinciano)
+
+Palazzo delle Belle Arti
+
+È al n. 131. Questo edificio fu realizzato nel 1911 nel contesto della grande esposizione del 1911 per il cinquantenario dell’unità d’Italia su progetto di Cesare Bazzani e ampliato nel 1933, diventando sede della GALLERIA NAZIONALE D’ARTE MODERNA; ingrandito nel 1967 ad opera di Luigi Cosenza, nel 1994 è stato restaurato e rinnovato in un’ala del complesso. Ha una facciata classicheggiante con un tipico gusto floreale; imponente il portico con le colonne bi-

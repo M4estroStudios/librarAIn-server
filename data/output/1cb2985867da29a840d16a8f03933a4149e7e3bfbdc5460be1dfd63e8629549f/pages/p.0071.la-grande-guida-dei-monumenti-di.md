@@ -1,0 +1,8 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Palazzo Muti Bussi
+
+È al n. 2 della piazza. Questo palazzo fu costruito per Orazio Muti da Giacomo Della Porta nella seconda metà del Cinquecento, ma fu completato e modificato in gran parte da Giovanni Antonio De Rossi nel 1642. Il palazzo ha una pianta pentagonale delimitata dalle vie San Venanzio, San Marco e d’Aracoeli, dal vicolo Astalli e dalla piazza d’Aracoeli; ma apre su sei facciate, perché l’angolo su via d’Aracoeli è smussato. L’edificio è a tre piani, oltre il pianterreno, e ognuno sviluppa ventiquattro finestre, architravate al primo, architravate con decori al secondo, a cornici semplici al terzo. Al pianterreno, una serie di finestre architravate e inferriate su davanzali retti da mensole sovrastanti le finestrelle dello scantinato. Importante il portale su piazza d’Aracoeli, con cartiglio ornato da teste di leone e mazze decussate, simboli araldici dei Muti vantando un’origine antica che si faceva risalire al leggendario Muzio Scevola; per questo avevano uno stemma con duemazze incrociate e l’impresa della mano sul fuoco sopra il motto «Non uritur», ovvero “Non si brucia”. L'atrio immette in un ampio cortile a esedra con fregi; statue antiche ornano le nicchie della scalinata. Quando ai primi dell’Ottocento Cecilia Muti sposò Giulio Bussi, della famiglia originaria di Orvieto, i nomi dei casati si unificaron in Muti Bussi con titoli di duchi, conti e marchesi fino all’estinzione nel 1972.
+
+Santa Maria in Aracoeli
+
+Sorge a fronte della piazza, in cima ad una scalinata. L’origine di questa basilica è legata alla leggenda che avrebbe dato origine al

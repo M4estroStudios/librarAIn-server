@@ -1,0 +1,12 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Santa Maria delle Grazie
+
+È sulla piazza. Moderna chiesa a tre navate costruita su progetto di Tullio Rossi nel 1940, ha ereditato il titolo della scomparsa Santa Maria delle Grazie fuori Porta Angelica, e con esso le preziose opere artistiche, come l’edicola ottocentesca con l’icona della Madonna delle Grazie di scuola bizantina del xII secolo, alcune lapidi e una pala della Madonna in trono con Bambino e san Francesco d’Assisi attribuita a Carlo Maratta. Parrocchia dal 1941, è affidata al clero secolare romano.
+
+Maria in Cappella (Vicolo di Santa, R XIII Trastevere)
+
+È nella piazza omonima nel rione Trastevere. Antichissima chiesa del 1090, era detta ad Pineam ed è diventata “in Cappella” a causa di un’erronea lettura delle parole «que appella(tur)» della terza riga dell’epigrafe; da “que appella” si arrivò a “cappella”. Secondo altri, si dovrebbe accennare al ricordo che la chiesa era inizialmente una cappella; e ancora, potrebbe derivare da “cupella”, in quanto i Barilari, ovvero i fabbricanti di barilotti o cupelle, ottennero nel 1540 questa chiesa dalle monache di Tor de’ Specchi per la loro confraternita. Nonostante uno sgradevole restauro dell’Ottocento, si può considerare intatta nelle sue forme altoromaniche (xI secolo): la facciatina attuale, opera di Andrea Busiri Vici, ha fatto scomparire gli affreschi della facciata medievale, visibili in un acquerello di Achille Pinelli. Essa è affiancata da un campanile romanico; e l’interno, semplicissimo, è a tre navate diviise da colonne architravate.
+
+Maria in Monticelli (Via di Santa, R VII Regola)
+
+È al n. 28. Chiesa antichissima, è così denominata per essere stata costruita su di un rialzo di terreno, il “monticello”, elevato in modo che nelle maggiori inondazioni di Roma la chiesa fosse illesa dalle acque. Non se ne conosce il primitivo architetto: Innocenzo II la consacrò nel 1143, ma oggi quasi più nulla si conserva dell’antico tempio; il coro cosmatesco non esiste più e le colonne originarie furono rivestite da pilastri durante un restauro di Clemente xI. Lo Stato temporale delle chiese di Roma cita questa chiesa malridotta nel 1666 poiché della cappella di Sant’Antonio «s’è persa l’entrata né c’è chi l’officia», mentre le finestre «ci calano» e il piccolo cimitero ha una porta e altro, «le quali cose tutte hanno bisogno di rimedio». I rimedi vennero e la chiesa poté sopravvive fino ai nostri giorni. Fu anche detta Santa Maria in Monticelli de Arenula, come rileviamo dai Regesti di Urbano IV. Ricostruita per Cle-

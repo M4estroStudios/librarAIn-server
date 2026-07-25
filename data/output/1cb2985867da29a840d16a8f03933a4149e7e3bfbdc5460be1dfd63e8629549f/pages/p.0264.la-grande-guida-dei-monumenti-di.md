@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+La chiesa dei Santi Ambrogio e Carlo al Corso in un'incisione settecentesca di G. Vasi.
+
+Omodei. L'interno ha una ricchissima decorazione a stucco su disegno di Pietro da Cortona, mentre la pala d'altare rappresentante la Gloria dei santi Ambrogio e Carlo è di Carlo Maratta. In una nicchia dietro l'altare del deambulatorio è il ricco reliquiario del cuore di san Carlo, che fu trasportato a Roma e riposto nella chiesa con una solenne cerimonia nel 1614. Nelle nicchie delle navate laterali, statue di santi di Francesco Cavallini (1677-82) e nell'antisagrestia, Crocifissione del Borgognone. La tribuna su piazza Augusto Imperatore ha assunto una fisionomia diversa dalle origini, quando intorno alla chiesa gravitava un intero quartiere, demolito tra il 1934 e il 1940 per l'isolamento del Mausoleo di Augusto nella piazza. Nei vani di due finestre cieche due epigrafi latine esaltano il pontificato di Pio XI, che compi gli studi presso il seminario dell'arciconfraternita e celebrò la sua prima messa nella chiesa nel 1879; ai lati della tribuna, su piazza Augusto imperatore, due statue gigantesche dei santi Ambrogio e Carlo, opera rispettivamente di Arturo Dazzi e Attilio Selva.
+
+Cosimato (Piazza San, R XIII Trastevere)
+
+San Cosimato
+
+La chiesa è a ridosso di un ex monastero, oggi ospedale Regina Margherita. É dedicata ai Santi Cosma e Damiano, unificati in Cosimato (corruzione trasteverina dei due nomi in uno solo), e ai santi Benedetto ed Emerenziana, che non sono peraltro mai segnalati nel titolo completo della chiesa. Alla chiesa si accede dal numero 76 della piazza, attraverso due chiostri dell'antico monastero, che portano ad un atrio antistante il portale quattrocentesco della facciata rinascimentale. Risale al X secolo, ma fu riedificata da Sisto IV nel 1475, finché venne ristrutturata nel 1731. All'altar maggiore c'è un dipinto veneratissimo del XIII secolo raffigurante una Madonna col Bambino, sul quale si tramanda una storia leggendaria. Origina-

@@ -1,0 +1,6 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Domus Aurea (Via e viale della, R I Monti)
+
+Domus Aurea
+
+È il palazzo imperiale che Nerone si costruì dopo l’incendio di Roma del 64 e si estendeva dalle pendici del Celio e del Palatino fino all’Oppio e l’Esquilino su un’area di un miglio quadrato e che orgogliosamente chiamò Dorato. Ne abbiamo una notizia particolare da Tacito e Svetonio: «Il suo vestibolo era tale da contenere il Colosso di 120 piedi (35 metri circa) che lo raffigurava; era tanto ampio che aveva un triplo colonnato di un miglio; poi un lago, come un mare, circondato da edifici che simulavano una città; e inoltre da tratti di campagna con campi, vigne e pascoli e boschi, popolati da una moltitudine di ogni genere di animali domestici e feroci. Nelle restanti parti del palazzo tutto era rivestito con oro e adornato con gemme e madreperle; le sale da pranzo con soffitti a pannelli eburnei girevoli, in modo da far piovere dall’alto fiori, e forniti di condotti per diffondere profumi; la principale sala da banchetto era rotonda e girava continuamente giorno e notte, come l’universo; bagni alimentati da acque marine o sulfuree». Degli 80 ettari di edifici e giardini, che coprivano circa un quarto della antica

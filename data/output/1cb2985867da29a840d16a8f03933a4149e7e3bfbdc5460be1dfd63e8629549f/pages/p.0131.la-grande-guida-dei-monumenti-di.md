@@ -1,0 +1,8 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Brancaccio (Largo, RXV Esquilino)
+
+Palazzo Brancaccio
+
+È al n. 82. Fu costruito sull’area delle vigne dei Gesuiti, dove sorgeva anche la chiesa di Santa Maria della Purificazione, per i Brancaccio, famiglia di origine napoletana, un ramo dei quali risulta già presente a Roma nel Quattrocento. L’edificio fu eretto per iniziativa di Mary Elizabeth Field, principessa di Brancaccio, tra il 1892 e il 1895 su progetto di Luca Carimini, e in pratica venne realizato dopo la morte dell’architetto. Sorse nel contesto di una villa, che fu però espropriata tra il 1932 e il 1934 per la sistemazione archeologica delle Sette Sale (v. via delle Sette Sale); il verde rigoglioso privato così si ridusse ad una esigua porzione di giardino. Il palazzo, che ebbe lavori di ristrutturazione tra il 1909 e il 1912 a cura di Francesco Gai, ha la caratteristica linea neoquattrocentesca del Carimini, con numerosi elementi romani e gotici, in una linea architettonica piuttosto eclettica. Il grande portale a tre ingressi sul largo immette in un vestibolo con grosse colonne che attraversa l’edificio fino al giardino. Le facciate sulle vie del Monte Oppio e Merulana sono caratterizzate da pseudoserliane con grandi finestre.
+
+Nel complesso edilizio è ricavato il TEATRO BRANCACCIO: inaugurato nel 1916 come teatro Morgana, fu utilizzato per un certo periodo come cinema. Restaurato, è tornato ad essere teatro nel 1978. Nel palazzo ha sede, con ingresso a via Merulana 248, l’ISIAO-Istituto Italiano per l’Africa e l'Oriente. Fondato nel 1906, ha assorbito l’Ismeo, ovvero Istituto Italiano per il Medio Oriente: fondato nel 1933 con lo scopo di diffondere la cultura orientale e favo-

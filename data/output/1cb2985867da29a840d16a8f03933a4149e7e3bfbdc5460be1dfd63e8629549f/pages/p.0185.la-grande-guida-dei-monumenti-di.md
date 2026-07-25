@@ -1,0 +1,4 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Il Mausoleo di Adriano, trasformato in Castel Sant'Angelo, in un'incisione del 1557.
+
+rozia e il nipote Alberico, e funziona anche come prigione, uso che verrà mantenuto anche dai papi e dal governo italiano fino al 1901. Nella seconda metà del secolo il castello passa in mano ai Crescenzi, che lo posseggono per un secolo, rafforzandolo ulteriormente, tanto da imporre alla costruzione il loro nome. Fu chiamato *Castrum Crescentii*, nome che lo identificò a lungo, anche dopo il passaggio della proprietà ai Pierleoni e quindi agli Orsini, dalla metà del xiii secolo, quando il papa di questa famiglia, Niccolò III realizza il Passetto (v. via dei Corridori), che collega il castello al Vaticano. Il Corridoio di Borgo costituisce una sorta di *longa manus* dei papi sulla fortezza, tanto che nel 1367 le chiavi di castello vengo-

@@ -1,0 +1,9 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+gue di san Pantaleo che, in occasione della festa del 27 luglio, si metterebbe a bollire. Fondata nel 1216, fu detta de Petracarolis, appellativo che sembra provenire dall’esservi nelle vicinanze una di quelle pietre sulle quali si svolgeva il mercato delle derrate e in particolare del pesce; Carolus doveva essere il mercante che l’aveva in appalto. Più volte restaurata, fu rinnovata da Antonio De Rossi nel 1621, su richiesta di san Giuseppe Calasanzio (1556-1648), che ebbe annessa la casa per i suoi Scolopi. La facciata è del 1808, opera di Giuseppe Valadier per conto di Giovanni Torlonia. Vi è la tomba di san Giuseppe Calasanzio in porfido; nel passetto che conduce alla sagrestia è la tomba di Laudomia, figlia di Brancaleone, uno dei tredici italiani della disfida di Barletta, e la lapide è l’unica in Roma che faccia esplicito riferimento alla celebre disfida. Annessa alla chiesa è la casa degli Scolopi (v. piazza dei Massimi).
+
+Paolo (Ponte San, Q X Ostiense)
+È sul Trevere, costruito tra il 1907 e il 1910, in sostituzione del Ponte dell’Industria (v.); a tre arcate, con arcatelle laterali, sostiene il passaggio delle linee ferroviarie per Fiumicino, Civitavecchia, Pisa, Genova e Viterbo. È lungo m 101 e largo m 12,80.
+
+Paolo alla Regola (Via, R VII Regola)
+San Paolo alla Regola
+È al n. 6. Si vuole per tradizione che sia stata costruita sull’abitazione dell’apostolo Paolo, martire a Roma tra il 64 e il 67; nell’interno, restaurata dal Muñoz nel 1930, si conserva la sua stanza trasformata in cappella ed è antichissima, benché rifatta del tutto nel 1613 per opera di G.B. Bergonzoni. La facciata fu completata nel 1721 da Giuseppe Sardi, su disegno di Giacomo Cioli. Popolarmente è chiamata San Paolino. Sull’altar maggiore è murata una lapide datata 1096 della demolita chiesa di San Cesareo, quasi accanto, e della quale San

@@ -1,0 +1,56 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Indice dei luoghi e delle cose notevoli
+
+Palazzi
+- Bernini, 439-440
+- Bonaparte, 726-727
+- Boncompagni Cerasi, 99-100
+- Bonelli, 496
+- Borghese, 306-307
+- Borghese per gli ospiti, 306
+- Borromeo, 496
+- Brancaccio, 131-132
+- Braschi, 516-518
+- Caetani, 129-130
+- Caffarelli Stoppani Vidoni, 752-753
+- Capizucchi, 163
+- Capranica, 172-173
+- Cardelli, 177
+- Carpegna, 29
+- Cenci Bolognetti, 212
+- Cenci Bolognetti, 350
+- Cenci, 450
+- Cesi, 237-238
+- Chigi, 226-228
+- Clementi, 341
+- Colonna, 50
+- Corsini, 401-402
+- De Cupis, 470
+- degli Ambasciatori, 442
+- dei Congressi, 387
+- dei Conservatori, 157-159
+- dei Convertendi, 238-239
+- dei Penitenzieri, 239
+- dei Propilei, 561
+- dei Santi Apostoli, 52
+- del Banco di Santo Spirito, 104
+- Del Bufalo, 275
+- Del Bufalo Niccolini Ferrajoli, 229
+- del Collegio Ghislieri, 371-372
+- del Collegio Nazareno, 474-475
+- del Collegio Romano, 221-224
+- del Collegio Urbano "de Propaganda Fide", 712
+- del Commendatore dell'ospedale di Santo Spirito, 651-654
+- del Coni, 310
+- del Convento dei Minimi di Calabria, 340
+- del Convento delle Mantellate, 340-341
+- Del Gallo, 337
+- del Governo Vecchio, 377
+- Del Grillo Nicolis de Robilant, 276-277
+- del Messaggero, 708
+- del Ministero dei Lavori Pubblici, 589
+- del Ministero dei Trasporti e della Navigazione, 270
+- del Ministero del Tesoro, Bilancio e Programmazione Economica, 733-734
+- del Ministero delle Comunicazioni, 38
+- del Ministero di Grazia e Giustizia, 82
+- del Ministero per gli Affari Regionali, 671

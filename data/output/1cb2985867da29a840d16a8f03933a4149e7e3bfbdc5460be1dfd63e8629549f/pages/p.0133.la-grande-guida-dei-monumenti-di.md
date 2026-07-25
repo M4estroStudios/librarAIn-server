@@ -1,0 +1,6 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Il Casino Borghese, nell’omonima villa, in un’incisione di G. Vasi.
+
+carono il piano dell’intera villa e spazzarono via la sontuosità seicentesca che caratterizzava questo palazzo, per imporre una sobrietà che finì per rivelarsi uno squallore. Statue, busti e bassorilievi furono asportati e venduti dal principe Camillo a Napoleone nel 1807 per un totale di 523 pezzi. Le poche sculture che adornano oggi la base della facciata principale non sono infatti quelle di allora, ma vennero portate qui alla fine dell’Ottocento dalla Casina dell’Orologio, dove aveva sede la raccolta di famiglia proveniente da Gabi. Tra queste, due statue corazzate con testa-ritratto raffiguranti Lucio Vero e Marco Aurelio.
+
+Intorno ai quattro lati del palazzo vi erano dei giardini segreti, recintati da alti muri non più esistenti, dove si coltivavano piante esotiche. Il piazzale Scipione Borghese è costituito in pratica dal GIARDINO DI VENERE, così detto dalla Fontana di Venere che è al centro: una vasca circolare con una fitta scogliera centrale, sulla quale è appunto una statua della dea, copia della Venere Medicea. Nella recinzione del giardino si susseguono statue di eroi e dèi, alternate a doli; tra gli altri un sarcofago con figura di Dioniso e un satiro e
