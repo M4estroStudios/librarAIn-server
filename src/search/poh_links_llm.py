@@ -7,8 +7,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable
 
-ProgressReporter = Callable[[dict[str, Any]], None]
-
 import openai
 
 from src.core.log import INFO_LOG_LEVEL, Log, safe_text
@@ -29,6 +27,8 @@ from src.search.article_llm import (
 )
 from src.search.request_schema import ResearchPoh
 from src.search.subject_lookup import _cosine_similarity
+
+ProgressReporter = Callable[[dict[str, Any]], None]
 
 _STAGE = "research_poh_links"
 _STAGE_EMBEDDING = "research_poh_links_embedding"

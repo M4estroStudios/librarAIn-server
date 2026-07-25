@@ -138,6 +138,7 @@ def _make_settings(data_root: str, vision_model: str = "test-model", editor_mode
     s.time_index_llm_model = None
     s.time_index_use_llm = True
     s.openai_provider = "local"
+    s.openai_base_url = None
     s.gpu_vram_check_enabled = False
     s.gpu_vram_max_used_gb = 4.0
     s.max_parallel_request = 2

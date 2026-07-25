@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from src.core.hashing import compute_file_sha256
+from src.core.hashing import compute_file_sha256, validate_source_sha256
 from src.ingestion.pipeline.render import _render_pdf_page_to_png
 from src.ingestion.pipeline.md_cache import stage_md_cached_model, write_stage_md
 from src.persistence.book_pages_audit import _load_manifest, _stage_page_path
@@ -18,8 +18,15 @@ class PagePreviewError(ValueError):
     pass
 
 
+def _safe_sha(source_sha256: str) -> str:
+    try:
+        return validate_source_sha256(source_sha256)
+    except ValueError as exc:
+        raise PagePreviewError(str(exc)) from exc
+
+
 def get_aligned_pdf_path(data_root: Path, source_sha256: str) -> Path:
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     candidate = data_root / "input" / "processed" / f"{sha}.pdf"
     if not candidate.is_file():
         raise PagePreviewError(f"aligned pdf not found for book {sha[:16]}…")
@@ -31,7 +38,7 @@ def _aligned_pdf_path(data_root: Path, source_sha256: str) -> Path:
 
 
 def _render_png_path(data_root: Path, source_sha256: str, aligned_page: int) -> Path:
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     return data_root / "tmp" / sha / "render" / f"p.{aligned_page:04d}.png"
 
 
@@ -44,7 +51,7 @@ def ensure_page_render_png(
 ) -> Path:
     if aligned_page < 1:
         raise PagePreviewError("aligned_page must be positive")
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     pdf_path = _aligned_pdf_path(data_root, sha)
     png_path = _render_png_path(data_root, sha, aligned_page)
     if png_path.is_file() and png_path.stat().st_size > 0:
@@ -66,7 +73,7 @@ def ensure_page_render_png(
 
 
 def _book_slug(data_root: Path, source_sha256: str) -> str:
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     manifest = _load_manifest(data_root / "output" / sha / "manifest.json")
     if manifest:
         slug = str(manifest.get("slug") or "").strip()
@@ -93,7 +100,7 @@ def _resolve_page_transcript_path(
 ) -> tuple[Path, str]:
     if aligned_page < 1:
         raise PagePreviewError("aligned_page must be positive")
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     slug = _book_slug(data_root, sha)
     for stage_key in _TRANSCRIPT_STAGE_ORDER:
         path = _stage_page_path(data_root, sha, slug, stage_key, aligned_page)
@@ -107,7 +114,7 @@ def _default_transcript_path(
     source_sha256: str,
     aligned_page: int,
 ) -> tuple[Path, str]:
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     slug = _book_slug(data_root, sha)
     return (
         _stage_page_path(data_root, sha, slug, "stage1OCR", aligned_page),
@@ -191,7 +198,7 @@ def save_page_transcript(
 
 
 def _review_pending_path(data_root: Path, source_sha256: str) -> Path:
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     return data_root / "tmp" / sha / _REVIEW_PENDING_FILE
 
 
@@ -275,7 +282,7 @@ def confirm_page_transcript(
         raise PagePreviewError("aligned_page must be positive")
     if not isinstance(text, str):
         raise PagePreviewError("text must be a string")
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     manifest_path = data_root / "output" / sha / "manifest.json"
     manifest = _load_manifest(manifest_path)
     if manifest is None:

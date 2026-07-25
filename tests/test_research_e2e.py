@@ -270,11 +270,15 @@ class _E2eResearchLlmClient:
     def _poh_response(self, user_message: str) -> str:
         payload = json.loads(user_message)
         paragraph = str(payload.get("paragraph_markdown") or payload.get("article_markdown") or "")
-        subject = payload.get("subject") or {}
-        label = str(subject.get("label") or "")
-        poh_id = str(subject.get("id") or "")
-        if label and poh_id and label in paragraph and f"poh:{poh_id}" not in paragraph:
-            paragraph = paragraph.replace(label, f"[{label}](poh:{poh_id})", 1)
+        primary = payload.get("primary_poh") or {}
+        primary_id = str(primary.get("id") or "")
+        for subject in payload.get("subjects") or []:
+            label = str(subject.get("label") or "")
+            poh_id = str(subject.get("id") or "")
+            if not label or not poh_id or poh_id == primary_id:
+                continue
+            if label in paragraph and f"poh:{poh_id}" not in paragraph:
+                paragraph = paragraph.replace(label, f"[{label}](poh:{poh_id})", 1)
         return paragraph
 
     def _finalize_response(self, user_message: str) -> str:

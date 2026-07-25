@@ -15,6 +15,18 @@ def new_job_id(stem: str) -> tuple[str, str]:
     return compute_job_id(stem, started_at), started_at
 
 
+_HEX_CHARS = frozenset("0123456789abcdef")
+
+
+def validate_source_sha256(source_sha256: str) -> str:
+    normalized = str(source_sha256).strip().lower()
+    if len(normalized) != 64:
+        raise ValueError("source_sha256 must be a 64-char hex digest")
+    if any(char not in _HEX_CHARS for char in normalized):
+        raise ValueError("source_sha256 must be a valid hex digest")
+    return normalized
+
+
 def compute_file_sha256(file_path: Path, chunk_size: int = 1024 * 1024) -> str:
     hasher = hashlib.sha256()
     with file_path.open("rb") as source_file:

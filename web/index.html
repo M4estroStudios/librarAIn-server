@@ -114,6 +114,20 @@ body { margin: 0 auto; max-width: 64rem; padding: 1.5rem 1rem 3rem; }
 .ingest-queue-ingest-all { margin-left: auto; font: inherit; font-size: 0.82rem; font-weight: 600; padding: 0.42rem 0.8rem; border-radius: 8px; border: 0; background: #0e639c; color: #fff; cursor: pointer; white-space: nowrap; }
 .ingest-queue-ingest-all:hover:not(:disabled) { background: #1177bb; }
 .ingest-queue-ingest-all:disabled { opacity: 0.45; cursor: not-allowed; }
+.ingest-queue-merge-btn { font: inherit; font-size: 0.82rem; font-weight: 600; padding: 0.42rem 0.8rem; border-radius: 8px; border: 1px solid #555; background: #3c3c3c; color: #e8e8e8; cursor: pointer; white-space: nowrap; }
+.ingest-queue-merge-btn:hover:not(:disabled) { background: #4a4a4a; }
+.ingest-queue-merge-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.ingest-queue-merge-btn.hidden { display: none; }
+.ingest-queue-merge-apply { font: inherit; font-size: 0.82rem; font-weight: 600; padding: 0.42rem 0.65rem; border-radius: 8px; border: 0; background: #4ec9b0; color: #1e1e1e; cursor: pointer; white-space: nowrap; }
+.ingest-queue-merge-apply.hidden { display: none; }
+.ingest-queue-merge-cancel { font: inherit; font-size: 0.82rem; font-weight: 600; padding: 0.42rem 0.65rem; border-radius: 8px; border: 1px solid #555; background: #3c3c3c; color: #cccccc; cursor: pointer; white-space: nowrap; }
+.ingest-queue-merge-cancel.hidden { display: none; }
+.ingest-queue-merge-checks { display: flex; flex-wrap: wrap; gap: 0.35rem 0.55rem; width: 100%; padding-top: 0.35rem; border-top: 1px solid #444; }
+.ingest-queue-merge-checks.hidden { display: none; }
+.ingest-queue-merge-check { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.78rem; color: #cccccc; cursor: pointer; }
+.ingest-queue-merge-check input { margin: 0; }
+.page-picker-thumb.is-volume-start { box-shadow: inset 0 3px 0 #4ec9b0; }
+.page-picker-thumb-volume-label { position: absolute; top: 2px; left: 2px; z-index: 2; font-size: 0.58rem; font-weight: 700; line-height: 1; padding: 0.12rem 0.22rem; border-radius: 3px; background: rgba(78, 201, 176, 0.92); color: #1e1e1e; pointer-events: none; }
 .pdf-workspace { display: grid; gap: 0.85rem; }
 .pdf-workspace-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem; padding: 0.65rem 0.85rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
 .pdf-workspace-file { display: grid; gap: 0.1rem; min-width: 0; }
@@ -546,8 +560,12 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
     <button type="button" id="ingest-queue-next" class="ingest-queue-nav-btn" aria-label="Libro successivo" title="Successivo">›</button>
     <span id="ingest-queue-name" class="ingest-queue-name">—</span>
     <span id="ingest-queue-status" class="ingest-queue-status"></span>
+    <button type="button" id="ingest-queue-merge-btn" class="ingest-queue-merge-btn">Unisci volumi…</button>
+    <button type="button" id="ingest-queue-merge-apply" class="ingest-queue-merge-apply hidden">Conferma unione</button>
+    <button type="button" id="ingest-queue-merge-cancel" class="ingest-queue-merge-cancel hidden">Annulla</button>
     <button type="button" id="ingest-queue-ingest-all" class="ingest-queue-ingest-all">Ingesta tutti</button>
   </div>
+  <div id="ingest-queue-merge-checks" class="ingest-queue-merge-checks hidden" aria-label="Seleziona volumi da unire"></div>
 </div>
 
 <form id="ingest-form">
@@ -1464,6 +1482,10 @@ if (document.readyState === "loading") {
     pdfDoc: null,
     pdfFile: null,
     numPages: 0,
+    stacked: false,
+    stackedSources: null,
+    stackedPageMap: null,
+    volumeStarts: null,
     selected: {},
     lastSelected: null,
     thumbUrls: {},
@@ -1485,6 +1507,11 @@ if (document.readyState === "loading") {
   var ingestQueueName = document.getElementById("ingest-queue-name");
   var ingestQueueStatus = document.getElementById("ingest-queue-status");
   var ingestQueueIngestAll = document.getElementById("ingest-queue-ingest-all");
+  var ingestQueueMergeBtn = document.getElementById("ingest-queue-merge-btn");
+  var ingestQueueMergeApply = document.getElementById("ingest-queue-merge-apply");
+  var ingestQueueMergeCancel = document.getElementById("ingest-queue-merge-cancel");
+  var ingestQueueMergeChecks = document.getElementById("ingest-queue-merge-checks");
+  var queueMergeMode = false;
 
   function isPdfFile(file) {
     return file && (file.type === "application/pdf" || /\.pdf$/i.test(file.name || ""));
@@ -1502,6 +1529,7 @@ if (document.readyState === "loading") {
     });
     ingestQueue = [];
     currentQueueIndex = 0;
+    setQueueMergeMode(false);
     renderQueueBar();
   }
 
@@ -1584,7 +1612,120 @@ if (document.readyState === "loading") {
   }
 
   function queueItemLabel(item, position) {
+    if (item.mergeSources && item.mergeSources.length > 1) {
+      return position + "/" + ingestQueue.length + " (" + item.mergeSources.length + " volumi uniti)";
+    }
     return position + "/" + ingestQueue.length + " («" + (item.fileName || "PDF") + "»)";
+  }
+
+  function getQueueItemSources(item) {
+    if (item && item.mergeSources && item.mergeSources.length) return item.mergeSources;
+    if (item && item.file) return [{ file: item.file, fileName: item.fileName || item.file.name || "PDF" }];
+    return [];
+  }
+
+  function isMergedQueueItem(item) {
+    return !!(item && item.mergeSources && item.mergeSources.length > 1);
+  }
+
+  function buildStackedPageMapFromSources(sourceStates) {
+    var pageMap = [];
+    var volumeStarts = {};
+    var offset = 0;
+    for (var si = 0; si < sourceStates.length; si++) {
+      sourceStates[si].pageOffset = offset;
+      volumeStarts[offset + 1] = sourceStates[si].fileName || ("Vol " + (si + 1));
+      for (var lp = 1; lp <= sourceStates[si].numPages; lp++) {
+        pageMap.push({ sourceIdx: si, localPage: lp, globalPage: offset + lp });
+      }
+      offset += sourceStates[si].numPages;
+    }
+    return { pageMap: pageMap, totalPages: offset, volumeStarts: volumeStarts };
+  }
+
+  function resolveStackedPage(cache, globalPage) {
+    if (!cache || !cache.stacked || !cache.pageMap) return null;
+    var ref = cache.pageMap[globalPage - 1];
+    if (!ref) return null;
+    var source = cache.sources[ref.sourceIdx];
+    if (!source || !source.pdfDoc) return null;
+    return { pdfDoc: source.pdfDoc, localPage: ref.localPage, sourceIdx: ref.sourceIdx, fileName: source.fileName };
+  }
+
+  function renderQueueMergeChecks() {
+    if (!ingestQueueMergeChecks) return;
+    ingestQueueMergeChecks.innerHTML = "";
+    if (!queueMergeMode || ingestQueue.length <= 1) {
+      ingestQueueMergeChecks.classList.add("hidden");
+      return;
+    }
+    ingestQueueMergeChecks.classList.remove("hidden");
+    for (var i = 0; i < ingestQueue.length; i++) {
+      (function (idx) {
+        var item = ingestQueue[idx];
+        if (isMergedQueueItem(item)) return;
+        var label = document.createElement("label");
+        label.className = "ingest-queue-merge-check";
+        var cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = true;
+        cb.dataset.queueIndex = String(idx);
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode((idx + 1) + ". " + (item.fileName || "PDF")));
+        ingestQueueMergeChecks.appendChild(label);
+      })(i);
+    }
+  }
+
+  function setQueueMergeMode(enabled) {
+    queueMergeMode = !!enabled;
+    if (ingestQueueMergeBtn) ingestQueueMergeBtn.classList.toggle("hidden", queueMergeMode);
+    if (ingestQueueMergeApply) ingestQueueMergeApply.classList.toggle("hidden", !queueMergeMode);
+    if (ingestQueueMergeCancel) ingestQueueMergeCancel.classList.toggle("hidden", !queueMergeMode);
+    renderQueueMergeChecks();
+    renderQueueBar();
+  }
+
+  function applyQueueMergeSelection() {
+    if (!ingestQueueMergeChecks) return;
+    var selected = [];
+    var checks = ingestQueueMergeChecks.querySelectorAll("input[type=checkbox]");
+    for (var i = 0; i < checks.length; i++) {
+      if (!checks[i].checked) continue;
+      selected.push(parseInt(checks[i].dataset.queueIndex, 10));
+    }
+    selected.sort(function (a, b) { return a - b; });
+    if (selected.length < 2) {
+      show("err", "Seleziona almeno 2 volumi da unire.");
+      return;
+    }
+    for (var j = 0; j < selected.length; j++) {
+      if (isMergedQueueItem(ingestQueue[selected[j]])) {
+        show("err", "Un volume già unito non può essere incluso di nuovo.");
+        return;
+      }
+    }
+    snapshotCurrentItem();
+    var sources = selected.map(function (idx) {
+      var item = ingestQueue[idx];
+      return { file: item.file, fileName: item.fileName || item.file.name || "PDF" };
+    });
+    var mergedItem = {
+      id: nextQueueItemId++,
+      file: sources[0].file,
+      fileName: sources.map(function (s) { return s.fileName; }).join(" + "),
+      mergeSources: sources,
+      status: "pending",
+      error: null,
+      snapshot: null,
+      pickerCache: null,
+    };
+    var insertAt = selected[0];
+    for (var k = selected.length - 1; k >= 0; k--) ingestQueue.splice(selected[k], 1);
+    ingestQueue.splice(insertAt, 0, mergedItem);
+    setQueueMergeMode(false);
+    startQueueItemPreload(mergedItem);
+    restoreQueueItem(insertAt);
   }
 
   function validateQueueItemConfigured(item, position) {
@@ -1673,6 +1814,12 @@ if (document.readyState === "loading") {
       var pending = ingestQueue.some(function (q) { return q.status === "pending" || q.status === "error"; });
       ingestQueueIngestAll.disabled = ingestAllRunning || !pending;
     }
+    if (ingestQueueMergeBtn) {
+      ingestQueueMergeBtn.disabled = ingestAllRunning || queueMergeMode || ingestQueue.length <= 1;
+    }
+    if (ingestQueueMergeApply) ingestQueueMergeApply.disabled = ingestAllRunning;
+    if (ingestQueueMergeCancel) ingestQueueMergeCancel.disabled = ingestAllRunning;
+    renderQueueMergeChecks();
     if (document.body.classList.contains("embed-mode") && typeof reportEmbedHeight === "function") reportEmbedHeight();
   }
 
@@ -1855,12 +2002,28 @@ if (document.readyState === "loading") {
       });
     });
   }
+  if (ingestQueueMergeBtn) {
+    ingestQueueMergeBtn.addEventListener("click", function () {
+      if (ingestAllRunning || ingestQueue.length <= 1) return;
+      setQueueMergeMode(true);
+    });
+  }
+  if (ingestQueueMergeApply) {
+    ingestQueueMergeApply.addEventListener("click", function () {
+      applyQueueMergeSelection();
+    });
+  }
+  if (ingestQueueMergeCancel) {
+    ingestQueueMergeCancel.addEventListener("click", function () {
+      setQueueMergeMode(false);
+    });
+  }
 
-  function showPdfWorkspace(file) {
+  function showPdfWorkspace(file, displayName) {
     pdfDropzone.classList.add("hidden");
     pdfWorkspace.classList.remove("hidden");
     ingestFormDetails.classList.remove("hidden");
-    pdfFileName.textContent = file && file.name ? file.name : "—";
+    pdfFileName.textContent = displayName || (file && file.name ? file.name : "—");
   }
 
   function showPdfDropzone() {
@@ -1917,9 +2080,13 @@ if (document.readyState === "loading") {
     var tocCount = tocSelectedPagesList().length;
     var indexCount = indexSelectedPagesList().length;
     var reicatCount = reicatSelectedPagesList().length;
+    var volumeInfo = "";
+    if (pagePickerState.stacked && pagePickerState.stackedSources) {
+      volumeInfo = " · " + pagePickerState.stackedSources.length + " volumi impilati";
+    }
     pdfViewerMeta.textContent =
       "Strumento: " + (VIEWER_TOOL_LABELS[viewerMode] || viewerMode) +
-      " · " + pagePickerState.numPages + " pagine · " +
+      " · " + pagePickerState.numPages + " pagine" + volumeInfo + " · " +
       excludedCount + " rimosse · " + tocCount + " TOC · " + indexCount + " indice · " + reicatCount + " REICAT";
   }
 
@@ -2453,8 +2620,12 @@ if (document.readyState === "loading") {
 
   function applyPickerCacheToDisplay(item) {
     var cache = item.pickerCache;
-    if (!cache || !cache.pdfDoc) return;
-    pagePickerState.pdfDoc = cache.pdfDoc;
+    if (!cache || (!cache.pdfDoc && !(cache.stacked && cache.sources && cache.sources.length))) return;
+    pagePickerState.stacked = !!cache.stacked;
+    pagePickerState.stackedSources = cache.stacked ? cache.sources : null;
+    pagePickerState.stackedPageMap = cache.stacked ? cache.pageMap : null;
+    pagePickerState.volumeStarts = cache.stacked ? cache.volumeStarts : null;
+    pagePickerState.pdfDoc = cache.stacked ? cache.sources[0].pdfDoc : cache.pdfDoc;
     pagePickerState.numPages = cache.numPages;
     pagePickerState.thumbUrls = cache.thumbUrls;
     pagePickerState.detailCache = cache.detailCache;
@@ -2464,6 +2635,7 @@ if (document.readyState === "loading") {
       initialThumbs.push({
         pageNum: pn,
         thumbUrl: cache.thumbUrls[pn] || makeFallbackThumb(pn),
+        volumeLabel: cache.volumeStarts && cache.volumeStarts[pn] ? cache.volumeStarts[pn] : null,
       });
     }
     buildPagePickerGrid(initialThumbs);
@@ -2483,10 +2655,21 @@ if (document.readyState === "loading") {
 
   async function waitPickerCacheDoc(cache) {
     var deadline = Date.now() + 120000;
-    while (!cache.pdfDoc && !cache.error && cache.preloadStarted && Date.now() < deadline) {
+    while (
+      !cache.error &&
+      cache.preloadStarted &&
+      Date.now() < deadline &&
+      !(cache.pdfDoc || (cache.stacked && cache.sources && cache.sources.every(function (s) { return s.pdfDoc; })))
+    ) {
       await new Promise(function (resolve) { setTimeout(resolve, 40); });
     }
     if (cache.error) throw new Error(cache.error);
+    if (cache.stacked) {
+      if (!cache.sources || !cache.sources.length || !cache.sources.every(function (s) { return s.pdfDoc; })) {
+        throw new Error("Timeout caricamento PDF impilati.");
+      }
+      return;
+    }
     if (!cache.pdfDoc) throw new Error("Timeout caricamento PDF.");
   }
 
@@ -2495,7 +2678,7 @@ if (document.readyState === "loading") {
     pagePickerState.loadGen += 1;
     var displayGen = pagePickerState.loadGen;
     pagePickerState.pdfFile = item.file;
-    showPdfWorkspace(item.file);
+    showPdfWorkspace(item.file, item.fileName);
     var dt = new DataTransfer();
     dt.items.add(item.file);
     pdfFileInput.files = dt.files;
@@ -2505,7 +2688,7 @@ if (document.readyState === "loading") {
     pdfViewerMeta.textContent = "Caricamento PDF…";
     pagePickerGrid.innerHTML = "";
     try {
-      if (!cache.pdfDoc) await waitPickerCacheDoc(cache);
+      if (!cache.pdfDoc && !(cache.stacked && cache.sources && cache.sources.length)) await waitPickerCacheDoc(cache);
       if (displayGen !== pagePickerState.loadGen) return;
       applyPickerCacheToDisplay(item);
     } catch (err) {
@@ -2515,8 +2698,54 @@ if (document.readyState === "loading") {
     }
   }
 
+  async function renderStackedPdfThumbsParallel(cache, onProgress, onThumbReady, extraOpts) {
+    var loadGen = extraOpts && extraOpts.loadGen;
+    var isCancelled = extraOpts && extraOpts.isCancelled;
+    var entries = cache.pageMap || [];
+    var total = entries.length;
+    if (!total) return { cancelled: false, done: 0 };
+    var done = 0;
+    var cancelled = false;
+    for (var i = 0; i < entries.length; i++) {
+      if (isCancelled && isCancelled()) {
+        cancelled = true;
+        break;
+      }
+      if (loadGen != null && cache.loadGen !== loadGen) {
+        cancelled = true;
+        break;
+      }
+      var ref = entries[i];
+      var source = cache.sources[ref.sourceIdx];
+      try {
+        await pdfWithRenderSlot(async function () {
+          var page = await source.pdfDoc.getPage(ref.localPage);
+          try {
+            var viewport = page.getViewport({ scale: PDF_THUMB_SCALE });
+            var url = await renderPdfPageCanvasToDataUrl(page, viewport, PDF_THUMB_JPEG_QUALITY);
+            cache.thumbUrls[ref.globalPage] = url;
+            if (onThumbReady) onThumbReady(ref.globalPage, url);
+          } finally {
+            page.cleanup();
+          }
+        });
+      } catch (err) {
+        var fallback = makeFallbackThumb(ref.globalPage);
+        cache.thumbUrls[ref.globalPage] = fallback;
+        if (onThumbReady) onThumbReady(ref.globalPage, fallback, err);
+      }
+      done++;
+      if (onProgress) onProgress(done, total);
+    }
+    return { cancelled: cancelled, done: done };
+  }
+
   function startQueueItemPreload(item) {
     if (!item || !item.file) return;
+    if (isMergedQueueItem(item)) {
+      startStackedQueueItemPreload(item);
+      return;
+    }
     if (!item.pickerCache) item.pickerCache = createPickerCache();
     var cache = item.pickerCache;
     if (cache.preloadStarted) return;
@@ -2572,6 +2801,74 @@ if (document.readyState === "loading") {
     })();
   }
 
+  function startStackedQueueItemPreload(item) {
+    if (!item || !item.mergeSources || item.mergeSources.length < 2) return;
+    if (!item.pickerCache) item.pickerCache = createPickerCache();
+    var cache = item.pickerCache;
+    if (cache.preloadStarted) return;
+    cache.preloadStarted = true;
+    cache.rendering = true;
+    cache.stacked = true;
+    var cacheLoadGen = cache.loadGen;
+
+    (async function () {
+      try {
+        var mod = await pdfJs();
+        var sourceStates = [];
+        for (var si = 0; si < item.mergeSources.length; si++) {
+          var src = item.mergeSources[si];
+          var buf = await src.file.arrayBuffer();
+          var pdfDoc = await mod.getDocument({ data: buf }).promise;
+          sourceStates.push({
+            file: src.file,
+            fileName: src.fileName || src.file.name || ("Volume " + (si + 1)),
+            pdfDoc: pdfDoc,
+            numPages: pdfDoc.numPages,
+            pageOffset: 0,
+          });
+        }
+        if (cache.loadGen !== cacheLoadGen) return;
+        var stacked = buildStackedPageMapFromSources(sourceStates);
+        cache.sources = sourceStates;
+        cache.pageMap = stacked.pageMap;
+        cache.volumeStarts = stacked.volumeStarts;
+        cache.numPages = stacked.totalPages;
+        cache.pdfDoc = sourceStates[0].pdfDoc;
+        cache.renderTotal = stacked.totalPages;
+        cache.renderDone = 0;
+        if (isQueueItemActive(item)) applyPickerCacheToDisplay(item);
+        await renderStackedPdfThumbsParallel(
+          cache,
+          function (done, total) {
+            cache.renderDone = done;
+            if (isQueueItemActive(item)) setPagePickerRenderProgress(done, total);
+          },
+          function (pageNum, thumbUrl) {
+            if (isQueueItemActive(item)) updatePickerThumbInGrid(pageNum, thumbUrl);
+          },
+          {
+            loadGen: cacheLoadGen,
+            isCancelled: function () { return cache.loadGen !== cacheLoadGen; },
+          }
+        );
+        if (cache.loadGen !== cacheLoadGen) return;
+        cache.rendering = false;
+        if (isQueueItemActive(item)) {
+          pagePickerGridWrap.classList.remove("is-rendering-progress");
+          refreshViewerThumbUi();
+        }
+      } catch (err) {
+        if (cache.loadGen !== cacheLoadGen) return;
+        cache.error = String(err && err.message ? err.message : err);
+        cache.rendering = false;
+        if (isQueueItemActive(item)) {
+          pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
+          pdfViewerMeta.textContent = "Anteprima non disponibile: " + cache.error;
+        }
+      }
+    })();
+  }
+
   function setPagePickerRenderProgress(done, total) {
     pagePickerProgressBar.max = total || 1;
     pagePickerProgressBar.value = done;
@@ -2585,14 +2882,21 @@ if (document.readyState === "loading") {
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "page-picker-thumb";
+      if (item.volumeLabel) btn.classList.add("is-volume-start");
       btn.dataset.page = String(item.pageNum);
-      btn.title = "Pagina " + item.pageNum;
+      btn.title = "Pagina " + item.pageNum + (item.volumeLabel ? " · " + item.volumeLabel : "");
       var img = document.createElement("img");
       img.alt = "Pagina " + item.pageNum;
       img.src = item.thumbUrl;
       var numEl = document.createElement("span");
       numEl.className = "page-picker-thumb-num";
       numEl.textContent = String(item.pageNum);
+      if (item.volumeLabel) {
+        var volEl = document.createElement("span");
+        volEl.className = "page-picker-thumb-volume-label";
+        volEl.textContent = item.volumeLabel;
+        btn.appendChild(volEl);
+      }
       var tocMark = document.createElement("span");
       tocMark.className = "page-picker-thumb-mark page-picker-thumb-mark-toc hidden";
       tocMark.innerHTML = "<span>toc</span>";
@@ -2640,8 +2944,19 @@ if (document.readyState === "loading") {
     }
     pagePickerDetailImg.removeAttribute("src");
     try {
+      var pdfDoc = pagePickerState.pdfDoc;
+      var localPage = pageNum;
+      if (pagePickerState.stacked && pagePickerState.stackedPageMap) {
+        var activeItem = ingestQueue.length ? ingestQueue[currentQueueIndex] : null;
+        var stackedCache = activeItem && activeItem.pickerCache ? activeItem.pickerCache : null;
+        var resolved = resolveStackedPage(stackedCache, pageNum);
+        if (resolved) {
+          pdfDoc = resolved.pdfDoc;
+          localPage = resolved.localPage;
+        }
+      }
       var url = await renderPdfPageToDataUrl(
-        pagePickerState.pdfDoc, pageNum, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
+        pdfDoc, localPage, PDF_DETAIL_SCALE, PDF_DETAIL_JPEG_QUALITY
       );
       pagePickerState.detailCache[pageNum] = url;
       if (isDetailPageStillRelevant(pageNum)) pagePickerDetailImg.src = url;
@@ -2689,6 +3004,10 @@ if (document.readyState === "loading") {
     pagePickerState.pdfDoc = null;
     pagePickerState.pdfFile = null;
     pagePickerState.numPages = 0;
+    pagePickerState.stacked = false;
+    pagePickerState.stackedSources = null;
+    pagePickerState.stackedPageMap = null;
+    pagePickerState.volumeStarts = null;
     pagePickerState.selected = {};
     pagePickerState.lastSelected = null;
     pagePickerState.thumbUrls = {};
@@ -4492,6 +4811,8 @@ if (document.readyState === "loading") {
   async function submitCurrentIngest() {
     if (ingestQueue.length) snapshotCurrentItem();
 
+    var activeItem = ingestQueue.length ? ingestQueue[currentQueueIndex] : null;
+    var mergeSources = activeItem && isMergedQueueItem(activeItem) ? activeItem.mergeSources : null;
     var fileInput = form.querySelector('[name="pdf_file"]');
     var file = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0] : null;
     if (!file || !file.size) throw new Error("Seleziona un file PDF.");
@@ -4502,16 +4823,39 @@ if (document.readyState === "loading") {
     var removedExpanded = parsePagesSpec(pagesRemoveRaw);
 
     try {
-      var mod = await pdfJs();
-      var buf = await file.arrayBuffer();
-      var pdf = await mod.getDocument({ data: buf }).promise;
-      var numPages = pdf.numPages;
+      var numPages = pagePickerState.numPages;
+      if (!numPages) {
+        var mod = await pdfJs();
+        if (mergeSources) {
+          numPages = 0;
+          for (var mi = 0; mi < mergeSources.length; mi++) {
+            var mBuf = await mergeSources[mi].file.arrayBuffer();
+            var mPdf = await mod.getDocument({ data: mBuf }).promise;
+            numPages += mPdf.numPages;
+          }
+        } else {
+          var buf = await file.arrayBuffer();
+          var pdf = await mod.getDocument({ data: buf }).promise;
+          numPages = pdf.numPages;
+        }
+      }
       validateClientPdfPages({ numPages: numPages, removedExpanded: removedExpanded, tocRaw: tocRaw, indexRaw: indexRaw });
     } catch (preErr) {
       throw new Error("Verifica sul PDF prima dell'invio:\n\n" + String(preErr && preErr.message ? preErr.message : preErr) + "\n\n(Invio al server annullato.)");
     }
 
     var fd = new FormData(form);
+    if (mergeSources && mergeSources.length > 1) {
+      fd.set("volume_merge", "1");
+      fd.set("pdf_file", mergeSources[0].file, mergeSources[0].fileName || mergeSources[0].file.name || "volume-1.pdf");
+      for (var vi = 1; vi < mergeSources.length; vi++) {
+        fd.append(
+          "pdf_volume_" + vi,
+          mergeSources[vi].file,
+          mergeSources[vi].fileName || mergeSources[vi].file.name || ("volume-" + (vi + 1) + ".pdf")
+        );
+      }
+    }
     var res = await fetch("/api/ingest2/submit", { method: "POST", body: fd });
     var data;
     try { data = await res.json(); } catch (_) { data = { ok: false, error: "risposta non JSON" }; }

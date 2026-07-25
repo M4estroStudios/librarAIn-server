@@ -180,6 +180,50 @@ button.batch-job-toggle:hover:not(:disabled) { background: #4a4a4a; color: #e8e8
 #progress-gen.show { display: block; }
 #progress-embeddings { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #454545; font-size: 0.85rem; white-space: pre-wrap; }
 #progress-embeddings.show { display: block; }
+#progress-dedup { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #454545; font-size: 0.85rem; white-space: pre-wrap; }
+#progress-dedup.show { display: block; }
+.dedup-cluster {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  background: #1e1e1e;
+  border: 1px solid #3e3e3e;
+}
+.dedup-cluster-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  align-items: center;
+  margin-bottom: 0.55rem;
+}
+.dedup-cluster-score { font-size: 0.78rem; color: #4ec9b0; }
+.dedup-cluster-methods { font-size: 0.75rem; color: #9d9d9d; }
+.dedup-cluster-reason { font-size: 0.78rem; color: #b8b8b8; margin: 0 0 0.55rem; }
+.dedup-members { list-style: none; margin: 0 0 0.65rem; padding: 0; }
+.dedup-members li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  border-top: 1px solid #2e2e2e;
+  font-size: 0.84rem;
+}
+.dedup-members li:first-child { border-top: 0; }
+.dedup-member-label { color: #e8e8e8; font-weight: 600; }
+.dedup-member-meta { color: #9d9d9d; font-size: 0.78rem; }
+.dedup-cluster-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.dedup-cluster-actions select {
+  font: inherit;
+  padding: 0.4rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #454545;
+  background: #252526;
+  color: #e8e8e8;
+  max-width: 22rem;
+}
+.dedup-empty { font-size: 0.82rem; color: #9d9d9d; margin-top: 0.5rem; }
+.poh-row-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0.4em; border-radius: 6px; }
 table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
 th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid #333; vertical-align: top; }
@@ -1285,9 +1329,21 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   <div id="progress-embeddings"></div>
 </div>
 
+<div class="panel" id="dedup-panel">
+  <h2>Proposte duplicati</h2>
+  <p class="hint">Scansione AI su <em>tutti</em> i soggetti in <code>INDEX.json</code> (embedding + fuzzy; LLM solo in fascia ambigua). Conferma per unire, rifiuta per non riproporre. L’eliminazione resta manuale dalla tabella sotto.</p>
+  <div class="panel-row">
+    <button type="button" id="dedup-scan">Scansiona duplicati</button>
+    <button type="button" id="dedup-reload" class="secondary">Ricarica proposte</button>
+    <span class="stats" id="dedup-stats">Nessuna scansione recente.</span>
+  </div>
+  <div id="progress-dedup"></div>
+  <div id="dedup-clusters"><div class="dedup-empty">Caricamento proposte…</div></div>
+</div>
+
 <div class="panel admin-poh-panel">
   <h2>POH multi-libro</h2>
-  <p class="hint">Soggetti presenti in più libri. Seleziona voci duplicate, scegli la canonica e uniscile.</p>
+  <p class="hint">Soggetti presenti in più libri. Seleziona voci duplicate, scegli la canonica e uniscile. La scansione AI sopra considera anche i soggetti in un solo libro.</p>
   <div class="admin-poh-filters">
   <div class="toolbar admin-poh-toolbar">
   <input type="search" id="search" placeholder="Filtra per etichetta o alias…">
@@ -1723,6 +1779,15 @@ function render() {
       });
       actionsWrap.append(genBtn);
     }
+    const delBtn = document.createElement("button");
+    delBtn.type = "button";
+    delBtn.className = "danger";
+    delBtn.textContent = "Elimina";
+    delBtn.addEventListener("click", () => {
+      deleteSubject(s.canonical_id, s.canonical_label || s.canonical_id)
+        .catch((err) => showOut(String(err), true));
+    });
+    actionsWrap.append(delBtn);
     tdActions.appendChild(actionsWrap);
 
     tr.append(tdCheck, tdLabel, tdCount, tdBooks, tdActions);
@@ -1927,6 +1992,263 @@ async function startEmbeddingsGenerate() {
 
 document.getElementById("embeddings-generate").addEventListener("click", () => {
   startEmbeddingsGenerate().catch((err) => showOut(String(err), true));
+});
+
+async function deleteSubject(canonicalId, label) {
+  if (!confirm(
+    'Eliminare definitivamente il soggetto "' + label + '" (' + canonicalId + ')?\n\n' +
+    "Verranno rimossi anche articolo e embedding collegati. Operazione irreversibile."
+  )) {
+    return;
+  }
+  const res = await apiFetch("/api/admin/subject/delete", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ canonical_id: canonicalId }),
+  });
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || "delete failed");
+  showOut('Soggetto eliminato: "' + (data.result.canonical_label || canonicalId) + '"');
+  selected.delete(canonicalId);
+  await Promise.all([load(), loadDedupSuggestions(), loadArticleStatus()]);
+}
+
+function renderDedupClusters(payload) {
+  const root = document.getElementById("dedup-clusters");
+  const statsEl = document.getElementById("dedup-stats");
+  const clusters = (payload && payload.clusters) || [];
+  const stats = (payload && payload.stats) || {};
+  if (payload && payload.scanned_at) {
+    statsEl.textContent =
+      clusters.length + " proposte aperte · scansione " + payload.scanned_at +
+      (stats.edges != null ? " · " + stats.edges + " archi" : "") +
+      (stats.llm_calls != null ? " · LLM " + stats.llm_calls : "");
+  } else {
+    statsEl.textContent = clusters.length
+      ? clusters.length + " proposte aperte"
+      : "Nessuna scansione recente.";
+  }
+  root.innerHTML = "";
+  if (!clusters.length) {
+    const empty = document.createElement("div");
+    empty.className = "dedup-empty";
+    empty.textContent = payload && payload.scanned_at
+      ? "Nessuna proposta aperta. Avvia una nuova scansione o abbassa la soglia."
+      : "Nessuna proposta salvata. Premi «Scansiona duplicati».";
+    root.appendChild(empty);
+    reportEmbedHeight();
+    return;
+  }
+  for (const cluster of clusters) {
+    const card = document.createElement("div");
+    card.className = "dedup-cluster";
+    const header = document.createElement("div");
+    header.className = "dedup-cluster-header";
+    const score = document.createElement("span");
+    score.className = "dedup-cluster-score";
+    score.textContent = "score " + (cluster.score != null ? cluster.score : "—");
+    const methods = document.createElement("span");
+    methods.className = "dedup-cluster-methods";
+    methods.textContent = (cluster.methods || []).join(", ") || "—";
+    header.append(score, methods);
+    card.appendChild(header);
+    if (cluster.llm_reasons && cluster.llm_reasons.length) {
+      const reason = document.createElement("p");
+      reason.className = "dedup-cluster-reason";
+      reason.textContent = cluster.llm_reasons.join(" · ");
+      card.appendChild(reason);
+    }
+    const list = document.createElement("ul");
+    list.className = "dedup-members";
+    for (const member of cluster.members || []) {
+      const li = document.createElement("li");
+      const label = document.createElement("span");
+      label.className = "dedup-member-label";
+      label.textContent = member.canonical_label || member.canonical_id;
+      const meta = document.createElement("span");
+      meta.className = "dedup-member-meta";
+      const aliasText = (member.aliases && member.aliases.length)
+        ? " · alias: " + member.aliases.join(", ")
+        : "";
+      meta.textContent =
+        (member.book_count || 0) + " libri" +
+        (member.has_article ? " · articolo" : "") +
+        aliasText;
+      li.append(label, meta);
+      list.appendChild(li);
+    }
+    card.appendChild(list);
+    const actions = document.createElement("div");
+    actions.className = "dedup-cluster-actions";
+    const targetSel = document.createElement("select");
+    targetSel.setAttribute("aria-label", "Soggetto canonico");
+    for (const member of cluster.members || []) {
+      const opt = document.createElement("option");
+      opt.value = member.canonical_id;
+      opt.textContent = member.canonical_label || member.canonical_id;
+      if (member.canonical_id === cluster.suggested_target_id) opt.selected = true;
+      targetSel.appendChild(opt);
+    }
+    const confirmBtn = document.createElement("button");
+    confirmBtn.type = "button";
+    confirmBtn.className = "danger";
+    confirmBtn.textContent = "Conferma unione";
+    confirmBtn.addEventListener("click", () => {
+      confirmDedupCluster(cluster, targetSel.value).catch((err) => showOut(String(err), true));
+    });
+    const rejectBtn = document.createElement("button");
+    rejectBtn.type = "button";
+    rejectBtn.className = "secondary";
+    rejectBtn.textContent = "Rifiuta";
+    rejectBtn.addEventListener("click", () => {
+      dismissDedupCluster(cluster).catch((err) => showOut(String(err), true));
+    });
+    actions.append(targetSel, confirmBtn, rejectBtn);
+    card.appendChild(actions);
+    root.appendChild(card);
+  }
+  reportEmbedHeight();
+}
+
+async function loadDedupSuggestions() {
+  const root = document.getElementById("dedup-clusters");
+  try {
+    const res = await apiFetch("/api/admin/subjects/dedup/suggestions");
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || "suggestions failed");
+    renderDedupClusters(data);
+  } catch (err) {
+    root.innerHTML = "";
+    const empty = document.createElement("div");
+    empty.className = "dedup-empty";
+    empty.textContent = "Errore caricamento proposte: " + err.message;
+    root.appendChild(empty);
+  }
+}
+
+function watchDedupJobViaSSE(eventsUrl) {
+  return new Promise((resolve, reject) => {
+    const box = document.getElementById("progress-dedup");
+    box.classList.add("show");
+    const es = new EventSource(eventsUrl);
+    let settled = false;
+    function finish(fn, value) {
+      if (settled) return;
+      settled = true;
+      es.close();
+      fn(value);
+    }
+    function handleMessage(event) {
+      let data;
+      try {
+        data = JSON.parse(event.data);
+      } catch {
+        return;
+      }
+      if (data.phase === "subject_dedup") {
+        if (data.message) box.textContent = data.message;
+        else if (data.done != null && data.total != null) {
+          box.textContent = "Confronti " + data.done + "/" + data.total;
+        }
+      }
+      if (data.status === "done") finish(resolve, data);
+      if (data.status === "error") {
+        finish(reject, new Error(data.message || "Scansione dedup fallita"));
+      }
+    }
+    ["started", "progress", "done", "error"].forEach((name) => {
+      es.addEventListener(name, handleMessage);
+    });
+    es.onerror = () => finish(reject, new Error("SSE dedup interrotto"));
+  });
+}
+
+async function startDedupScan() {
+  const btn = document.getElementById("dedup-scan");
+  const box = document.getElementById("progress-dedup");
+  btn.disabled = true;
+  box.classList.add("show");
+  box.textContent = "Avvio scansione…";
+  try {
+    const res = await apiFetch("/api/admin/subjects/dedup/scan", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || "Avvio scan fallito");
+    const eventsUrl = data.events_url ||
+      ("/api/ingest/" + encodeURIComponent(data.job_id) + "/events");
+    await watchDedupJobViaSSE(eventsUrl);
+    box.textContent = "Scansione completata.";
+    await loadDedupSuggestions();
+    window.postMessage({ type: "librarain-jobs-refresh" }, "*");
+  } catch (err) {
+    box.textContent = String(err.message || err);
+    showOut(String(err.message || err), true);
+  } finally {
+    btn.disabled = false;
+    reportEmbedHeight();
+  }
+}
+
+async function confirmDedupCluster(cluster, targetId) {
+  const members = (cluster.members || []).map((m) => m.canonical_id).filter(Boolean);
+  const sourceIds = members.filter((id) => id !== targetId);
+  if (!targetId || !sourceIds.length) return;
+  const target = (cluster.members || []).find((m) => m.canonical_id === targetId);
+  const targetName = target ? target.canonical_label : targetId;
+  const preview = (cluster.members || []).map((m) => "• " + (m.canonical_label || m.canonical_id)).join("\n");
+  if (!confirm(
+    'Unire ' + sourceIds.length + ' soggetti in "' + targetName + '"?\n\n' + preview + "\n\nL'operazione modifica INDEX.json."
+  )) {
+    return;
+  }
+  const res = await apiFetch("/api/admin/subjects/merge", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ target_id: targetId, source_ids: sourceIds }),
+  });
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || "merge failed");
+  await apiFetch("/api/admin/subjects/dedup/dismiss", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      cluster_key: cluster.cluster_key,
+      member_ids: members,
+    }),
+  });
+  showOut(
+    'Merge completato in "' + data.result.canonical_label + '" — ' +
+    data.result.merged_source_ids.length + " voci assorbite."
+  );
+  await Promise.all([load(), loadDedupSuggestions(), loadArticleStatus()]);
+}
+
+async function dismissDedupCluster(cluster) {
+  const members = (cluster.members || []).map((m) => m.canonical_id).filter(Boolean);
+  if (!confirm("Rifiutare questo cluster? Non verrà riproposto nelle prossime scansioni.")) {
+    return;
+  }
+  const res = await apiFetch("/api/admin/subjects/dedup/dismiss", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      cluster_key: cluster.cluster_key,
+      member_ids: members,
+    }),
+  });
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || "dismiss failed");
+  renderDedupClusters(data.suggestions || { clusters: [] });
+}
+
+document.getElementById("dedup-scan").addEventListener("click", () => {
+  startDedupScan().catch((err) => showOut(String(err), true));
+});
+document.getElementById("dedup-reload").addEventListener("click", () => {
+  loadDedupSuggestions().catch((err) => showOut(String(err), true));
 });
 
 async function loadBooks() {
@@ -4236,6 +4558,7 @@ load();
 loadPagesAudit().catch((err) => showOut(String(err), true));
 loadArticleStatus().catch((err) => showOut(String(err), true));
 loadEmbeddingsStatus().catch((err) => showOut(String(err), true));
+loadDedupSuggestions().catch((err) => showOut(String(err), true));
 loadBooks().catch((err) => showOut(String(err), true));
 refreshSystemOverview();
 setInterval(refreshSystemOverview, 15000);

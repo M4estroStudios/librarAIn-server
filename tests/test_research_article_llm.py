@@ -2,9 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
-import tempfile
 import unittest
-from pathlib import Path
 from unittest.mock import MagicMock
 
 from src.core.openai_client import _ClientState, _client_states

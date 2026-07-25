@@ -11,14 +11,13 @@ from pydantic import BaseModel
 
 from src.core.errors import PermanentError, TransientError
 from src.core.hashing import compute_file_sha256
-from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
+from src.core.log import ERROR_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
 from src.core.retry import retry_async
 from src.core.text import slugify
 from src.ingestion.markdown_artifacts import finalize_vision_page_output
 from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
 from src.ingestion.pipeline.md_cache import read_stage_md, write_stage_md
-from src.ingestion.pipeline.render import _render_pdf_page_to_png
 from src.ingestion.pipeline.stage1 import (
     Stage1PageResult,
     Stage1Result,

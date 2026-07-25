@@ -9,7 +9,7 @@ from src.api.ingest_pipeline_runner import (
     _emit_error,
     _extract_validation_error,
 )
-from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
+from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.ingestion.orchestrator import NullOrchestratorRegistry, OrchestratorStageError, run_pipeline
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pdf_alignment import maybe_run_pdf_alignment

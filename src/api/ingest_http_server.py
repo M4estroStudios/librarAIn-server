@@ -106,6 +106,22 @@ def _read_body(handler: BaseHTTPRequestHandler, max_bytes: int) -> bytes:
     return handler.rfile.read(length)
 
 
+_SAME_ORIGIN_FETCH_SITES = frozenset({"same-origin", "none"})
+
+
+def _is_cross_origin_request(handler: BaseHTTPRequestHandler) -> bool:
+    fetch_site = (handler.headers.get("Sec-Fetch-Site") or "").strip().lower()
+    if fetch_site and fetch_site not in _SAME_ORIGIN_FETCH_SITES:
+        return True
+    origin = (handler.headers.get("Origin") or "").strip()
+    if not origin:
+        return False
+    if origin.lower() == "null":
+        return True
+    host = (handler.headers.get("Host") or "").strip().lower()
+    return urllib.parse.urlparse(origin).netloc.lower() != host
+
+
 def _request_content_length(handler: BaseHTTPRequestHandler) -> int:
     length_header = handler.headers.get("Content-Length")
     if not length_header:
@@ -1356,6 +1372,17 @@ def build_ingest_server(
 
         def do_POST(self) -> None:
             parsed = urllib.parse.urlparse(self.path)
+            if _is_cross_origin_request(self):
+                Log(
+                    WARNING_LOG_LEVEL,
+                    "cross-origin POST rejected",
+                    {
+                        "path": parsed.path,
+                        "origin": (self.headers.get("Origin") or "")[:120],
+                    },
+                )
+                _send_json(self, 403, {"ok": False, "error": "cross-origin request rejected"})
+                return
             if parsed.path == "/api/chat/completions":
                 handle_chat_completions(
                     self,

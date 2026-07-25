@@ -5,7 +5,7 @@ import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 
-from src.core.hashing import compute_file_sha256
+from src.core.hashing import compute_file_sha256, validate_source_sha256
 from src.persistence.pipeline_runs import (
     _sqlite_connection,
     ensure_pipeline_runs_table,
@@ -49,13 +49,7 @@ def _utc_now_iso() -> str:
 
 
 def _validate_source_sha256(source_sha256: str) -> str:
-    normalized = source_sha256.strip().lower()
-    if len(normalized) != 64:
-        raise ValueError("source_sha256 must be a 64-char hex digest")
-    hex_chars = set("0123456789abcdef")
-    if any(char not in hex_chars for char in normalized):
-        raise ValueError("source_sha256 must be a valid hex digest")
-    return normalized
+    return validate_source_sha256(source_sha256)
 
 
 def _existing_table_columns(conn: sqlite3.Connection, table_name: str) -> set[str]:

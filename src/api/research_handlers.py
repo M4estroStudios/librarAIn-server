@@ -2,14 +2,13 @@ from __future__ import annotations
 
 import json
 import threading
-from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler
 from pathlib import Path
-from typing import Any, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
-from src.api.job_display import job_display_label, job_display_status
 from src.api.research_batch_registry import ResearchBatchRegistry
 from src.api.research_batch_worker import spawn_research_batch_worker
+from src.api.research_merge_article import handle_merge_article_request
 from src.core.hashing import new_job_id
 from src.search.poh_overlap import list_poh_overlaps
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, bind_log_context, reset_log_context
@@ -43,6 +42,9 @@ from src.search.research_runner import (
     persist_query_markdown,
     run_research,
 )
+
+if TYPE_CHECKING:
+    from src.api.job_registry import JobRegistry
 
 SendJson = Callable[[BaseHTTPRequestHandler, int, Any], None]
 SendBytes = Callable[[BaseHTTPRequestHandler, int, bytes, str], None]

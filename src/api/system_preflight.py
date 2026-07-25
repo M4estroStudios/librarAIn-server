@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import urllib.error
 from typing import Any, Literal
 
 from src.core.lmstudio_models import _find_loaded_instance_ids, ensure_lmstudio_model_loaded, lmstudio_api_root

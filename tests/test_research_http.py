@@ -9,7 +9,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 from src.api.ingest_http_server import build_ingest_server
 from src.models.polyindex_index import PolyindexIndexDocument, PolyindexIndexSubjectEntry
@@ -28,21 +28,21 @@ class _ServerHarness:
                 "subj_alpha": PolyindexIndexSubjectEntry(
                     canonical_label="Alpha Test",
                     aliases=["Alfa"],
-                    books={"abc123": {"title": "Libro A", "slug": "libro-a", "aligned_pages": [1, 2]}},
+                    books={"abc1230000000000000000000000000000000000000000000000000000000000": {"title": "Libro A", "slug": "libro-a", "aligned_pages": [1, 2]}},
                 ),
                 "subj_beta": PolyindexIndexSubjectEntry(
                     canonical_label="Beta Test",
-                    books={"abc123": {"title": "Libro A", "slug": "libro-a", "aligned_pages": [3]}},
+                    books={"abc1230000000000000000000000000000000000000000000000000000000000": {"title": "Libro A", "slug": "libro-a", "aligned_pages": [3]}},
                 ),
             }
         )
         (polyindex / "INDEX.json").write_bytes(doc.to_json_bytes())
-        output = self.data_root / "output" / "abc123"
+        output = self.data_root / "output" / "abc1230000000000000000000000000000000000000000000000000000000000"
         output.mkdir(parents=True)
         (output / "manifest.json").write_text(
             json.dumps(
                 {
-                    "source_sha256": "abc123",
+                    "source_sha256": "abc1230000000000000000000000000000000000000000000000000000000000",
                     "slug": "libro-a",
                     "pages": [{"aligned": 1}],
                     "reicat": {"titolo": "Libro A"},
@@ -121,7 +121,7 @@ class ResearchHttpTests(unittest.TestCase):
         self.assertIn("page-preview-overlay", body)
 
     def test_research_book_page_render_open_without_token(self) -> None:
-        sha = "abc123"
+        sha = "abc1230000000000000000000000000000000000000000000000000000000000"
         data_root = self.harness.data_root
         png_path = data_root / "tmp" / sha / "render" / "p.0001.png"
         png_path.parent.mkdir(parents=True, exist_ok=True)
@@ -142,7 +142,7 @@ class ResearchHttpTests(unittest.TestCase):
 
     def test_research_books_meta_open_without_token(self) -> None:
         status, payload = self.harness.get_json(
-            "/api/research/books/meta?source_sha256=abc123"
+            "/api/research/books/meta?source_sha256=abc1230000000000000000000000000000000000000000000000000000000000"
         )
         self.assertEqual(status, 200)
         self.assertTrue(payload["ok"])
@@ -236,8 +236,8 @@ class ResearchHttpTests(unittest.TestCase):
                 markdown_path=str(article_md_path),
                 postprocess=PostprocessResult(markdown="# Alpha Test"),
                 audit=ResearchContextAudit(
-                    context_books_loaded={"abc123": [1, 2]},
-                    context_books={"abc123": [1]},
+                    context_books_loaded={"abc1230000000000000000000000000000000000000000000000000000000000": [1, 2]},
+                    context_books={"abc1230000000000000000000000000000000000000000000000000000000000": [1]},
                     subjects_matched=[{"canonical_id": poh_id, "method": "exact"}],
                 ),
             )

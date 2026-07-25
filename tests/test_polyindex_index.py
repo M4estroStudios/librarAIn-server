@@ -8,7 +8,6 @@ from unittest.mock import MagicMock
 
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
-    SubjectUpdateError,
     _apply_decision,
     _revalidate_decision,
     get_polyindex_subject,

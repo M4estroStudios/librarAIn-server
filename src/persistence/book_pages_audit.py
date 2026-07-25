@@ -5,6 +5,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from src.core.hashing import validate_source_sha256
+
 _PAGE_NUM_RE = re.compile(r"^p\.(\d{4})\.")
 
 STAGE_DIRS: dict[str, tuple[str, str]] = {
@@ -31,6 +33,7 @@ def load_excluded_aligned_pages(
     *,
     manifest: dict[str, Any] | None = None,
 ) -> list[int]:
+    source_sha256 = validate_source_sha256(source_sha256)
     if manifest is None:
         manifest = _load_manifest(data_root / "output" / source_sha256 / "manifest.json")
     if manifest:
@@ -68,6 +71,7 @@ def _stage_page_path(
     aligned: int,
 ) -> Path:
     root_kind, suffix = STAGE_DIRS[stage_key]
+    source_sha256 = validate_source_sha256(source_sha256)
     stem = f"p.{aligned:04d}.{slug}{suffix}"
     if root_kind == "tmp":
         subdir = {
@@ -184,6 +188,10 @@ def audit_book(
     *,
     manifest: dict[str, Any] | None = None,
 ) -> dict[str, Any] | None:
+    try:
+        source_sha256 = validate_source_sha256(source_sha256)
+    except ValueError:
+        return None
     output_dir = data_root / "output" / source_sha256
     manifest_path = output_dir / "manifest.json"
     if manifest is None and manifest_path.is_file():
@@ -248,16 +256,17 @@ def audit_book(
 
 def _discover_book_shas(data_root: Path) -> set[str]:
     shas: set[str] = set()
-    output_dir = data_root / "output"
-    if output_dir.is_dir():
-        for book_dir in output_dir.iterdir():
-            if book_dir.is_dir():
-                shas.add(book_dir.name)
-    tmp_dir = data_root / "tmp"
-    if tmp_dir.is_dir():
-        for book_dir in tmp_dir.iterdir():
-            if book_dir.is_dir():
-                shas.add(book_dir.name)
+    for root_name in ("output", "tmp"):
+        root_dir = data_root / root_name
+        if not root_dir.is_dir():
+            continue
+        for book_dir in root_dir.iterdir():
+            if not book_dir.is_dir():
+                continue
+            try:
+                shas.add(validate_source_sha256(book_dir.name))
+            except ValueError:
+                continue
     return shas
 
 

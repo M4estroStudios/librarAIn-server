@@ -5,11 +5,11 @@ import hashlib
 import json
 import threading
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable
 
-from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
+from src.core.log import INFO_LOG_LEVEL, Log
 from src.core.openai_client import build_openai_client
 from src.models.polyindex_index import PolyindexIndexDocument
 from src.models.polyindex_toc import PolyindexTocDocument
@@ -322,8 +322,6 @@ async def run_research_async(
         settings,
         request_id,
     )
-    subject_pages = _count_pages(subject_result.pages)
-
     expanded = expand_chapters(
         subject_result.pages,
         toc_document,
@@ -341,7 +339,6 @@ async def run_research_async(
         time_index,
         request_id=request_id,
     )
-    time_pages = _count_pages(time_result.pages)
     collect_time_pages = _pages_added(expanded.pages, time_result.pages)
     collect_total = collect_subject_pages + collect_time_pages
 

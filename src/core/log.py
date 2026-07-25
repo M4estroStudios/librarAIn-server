@@ -160,6 +160,17 @@ def _serialize_log_record(record: dict[str, Any]) -> str:
     return json.dumps(record, ensure_ascii=False, default=str)
 
 
+def _write_stdout(text: str) -> None:
+    try:
+        print(text, file=sys.stdout, flush=True)
+        return
+    except UnicodeEncodeError:
+        pass
+    encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
+    downgraded = text.encode(encoding, errors="replace").decode(encoding, errors="replace")
+    print(downgraded, file=sys.stdout, flush=True)
+
+
 def _append_log_file(record: dict[str, Any]) -> None:
     day = datetime.now().astimezone().date().isoformat()
     path = _LOG_DIR / f"{day}.log"
@@ -234,7 +245,7 @@ def Log(
         fileColored = colorFn(file)
         logMessage = f"[{date}][{logType}][{fileColored}][{callerColored}] {messageColored}"
 
-    print(logMessage, file=sys.stdout, flush=True)
+    _write_stdout(logMessage)
 
     record = _build_log_record(currentLogLevel, message, parameters, file, line, callerName)
     if to_file:

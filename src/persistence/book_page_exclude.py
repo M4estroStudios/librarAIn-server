@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 from typing import Any
 
+from src.core.hashing import validate_source_sha256
 from src.ingestion.pdf_alignment import build_page_removal_mapping
 from src.ingestion.polyindex.file_lock import polyindex_dir_lock
 from src.models.polyindex_index import PolyindexIndexDocument
@@ -20,12 +21,19 @@ class PageExcludeError(ValueError):
     pass
 
 
+def _safe_sha(source_sha256: str) -> str:
+    try:
+        return validate_source_sha256(source_sha256)
+    except ValueError as exc:
+        raise PageExcludeError(str(exc)) from exc
+
+
 def _exclude_config_path(data_root: Path, source_sha256: str) -> Path:
-    return data_root / "tmp" / source_sha256 / "exclude_config.json"
+    return data_root / "tmp" / _safe_sha(source_sha256) / "exclude_config.json"
 
 
 def _manifest_path(data_root: Path, source_sha256: str) -> Path:
-    return data_root / "output" / source_sha256 / "manifest.json"
+    return data_root / "output" / _safe_sha(source_sha256) / "manifest.json"
 
 
 def _atomic_write_json(path: Path, payload: dict[str, Any]) -> None:
@@ -313,7 +321,7 @@ def exclude_book_page(
     source_sha256: str,
     aligned_page: int,
 ) -> dict[str, Any]:
-    sha = source_sha256.strip().lower()
+    sha = _safe_sha(source_sha256)
     if aligned_page < 1:
         raise PageExcludeError("aligned_page must be positive")
     manifest_path = _manifest_path(data_root, sha)

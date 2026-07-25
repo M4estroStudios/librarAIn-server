@@ -7,7 +7,7 @@ from typing import Any, Callable
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.core.openai_client import build_openai_client
 from src.ingestion.polyindex.subject_matcher_embeddings import fetch_embeddings_parallel
-from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_PROGRESS, STATUS_STARTED, make_event
+from src.ingestion.progress import STATUS_DONE, STATUS_PROGRESS, STATUS_STARTED, make_event
 from src.models.polyindex_index import PolyindexIndexDocument
 from src.models.settings import Settings
 from src.persistence.subject_matcher_sqlite import (

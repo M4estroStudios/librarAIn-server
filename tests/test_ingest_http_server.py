@@ -490,5 +490,103 @@ class TestAdminSubjectDedupAndDelete(unittest.TestCase):
             self.assertEqual(job["status"], "done")
 
 
+class TestCrossOriginGuard(unittest.TestCase):
+    def setUp(self) -> None:
+        self.server = _ServerHarness()
+        self.addCleanup(self.server.close)
+
+    def _post(self, headers: dict[str, str]) -> tuple[int, dict]:
+        body = b"{}"
+        all_headers = {"Content-Type": "application/json", "Content-Length": str(len(body))}
+        all_headers.update(headers)
+        return self.server.request(
+            "/api/admin/subjects/dedup/scan",
+            method="POST",
+            body=body,
+            headers=all_headers,
+        )
+
+    def test_cross_origin_header_rejected(self) -> None:
+        status, payload = self._post({"Origin": "https://evil.example"})
+        self.assertEqual(status, 403)
+        self.assertIn("cross-origin", str(payload.get("error")))
+
+    def test_cross_site_fetch_metadata_rejected(self) -> None:
+        status, _ = self._post({"Sec-Fetch-Site": "cross-site"})
+        self.assertEqual(status, 403)
+
+    def test_opaque_origin_rejected(self) -> None:
+        status, _ = self._post({"Origin": "null"})
+        self.assertEqual(status, 403)
+
+    def test_same_origin_allowed(self) -> None:
+        origin = f"http://127.0.0.1:{self.server.port}"
+        with patch(
+            "src.api.admin_subject_dedup.run_subject_dedup_scan",
+            return_value={"schema_version": "1.0", "clusters": [], "stats": {}},
+        ):
+            status, _ = self._post({"Origin": origin, "Sec-Fetch-Site": "same-origin"})
+        self.assertNotEqual(status, 403)
+
+    def test_request_without_origin_allowed(self) -> None:
+        with patch(
+            "src.api.admin_subject_dedup.run_subject_dedup_scan",
+            return_value={"schema_version": "1.0", "clusters": [], "stats": {}},
+        ):
+            status, _ = self._post({})
+        self.assertNotEqual(status, 403)
+
+
+class TestSourceShaTraversal(unittest.TestCase):
+    def setUp(self) -> None:
+        self.server = _ServerHarness()
+        self.addCleanup(self.server.close)
+
+    def test_render_rejects_traversal(self) -> None:
+        sha = urllib.parse.quote("../../../../Windows/Temp/evil", safe="")
+        status, payload = self.server.request(
+            f"/api/admin/book-pages/render?source_sha256={sha}&aligned_page=1"
+        )
+        self.assertEqual(status, 400)
+        self.assertIn("hex digest", str(payload.get("error")))
+
+    def test_transcript_rejects_traversal(self) -> None:
+        sha = urllib.parse.quote("../../../../Windows/Temp/evil", safe="")
+        status, payload = self.server.request(
+            f"/api/admin/book-pages/transcript?source_sha256={sha}&aligned_page=1"
+        )
+        self.assertEqual(status, 400)
+        self.assertIn("hex digest", str(payload.get("error")))
+
+    def test_transcript_save_rejects_traversal_and_writes_nothing(self) -> None:
+        payload_body = json.dumps(
+            {
+                "source_sha256": "../../../../Windows/Temp/evil",
+                "aligned_page": 1,
+                "text": "pwned",
+            }
+        ).encode("utf-8")
+        status, payload = self.server.request(
+            "/api/admin/book-pages/transcript",
+            method="POST",
+            body=payload_body,
+            headers={
+                "Content-Type": "application/json",
+                "Content-Length": str(len(payload_body)),
+            },
+        )
+        self.assertEqual(status, 400)
+        self.assertIn("hex digest", str(payload.get("error")))
+        escaped = Path(self.server._tmp.name).parent / "Windows"
+        self.assertFalse(escaped.exists())
+
+    def test_short_hex_sha_rejected(self) -> None:
+        status, payload = self.server.request(
+            "/api/admin/book-pages/render?source_sha256=abc123&aligned_page=1"
+        )
+        self.assertEqual(status, 400)
+        self.assertIn("64-char", str(payload.get("error")))
+
+
 if __name__ == "__main__":
     unittest.main()

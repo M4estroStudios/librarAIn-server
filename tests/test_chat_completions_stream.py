@@ -19,7 +19,6 @@ class ChatStreamTests(unittest.TestCase):
     def test_stream_forwards_chunks(self, build_client_mock, _ensure_model) -> None:
         chunk = MagicMock()
         chunk.choices = [MagicMock(delta=MagicMock(role=None, content="Hi"), finish_reason=None)]
-        stream_resp = iter([chunk])
         client = MagicMock()
         msg = MagicMock()
         msg.tool_calls = None
