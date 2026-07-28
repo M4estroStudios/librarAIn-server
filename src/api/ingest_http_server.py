@@ -355,14 +355,16 @@ def build_ingest_server(
                 status = int(str(args[1]))
             except ValueError:
                 return
-            path = urllib.parse.urlparse(self.path).path
+            raw_path = getattr(self, "path", "") or ""
+            path = urllib.parse.urlparse(raw_path).path
             if path.endswith("/events"):
                 return
+            command = getattr(self, "command", None) or ""
             message = "http page visit" if _is_web_page_visit(path) else "http"
             Log(
-                _http_inbound_log_level(path, status, self.command),
+                _http_inbound_log_level(path, status, command),
                 message,
-                {"method": self.command, "path": path, "status": status},
+                {"method": command or None, "path": path or None, "status": status},
             )
 
         def send_error(self, code: int, message: str | None = None, explain: str | None = None) -> None:
@@ -1727,7 +1729,7 @@ def run_ingest_http_server() -> None:
         Log(ERROR_LOG_LEVEL, "ingest server configuration failed", {"error": str(exc)})
         raise SystemExit(str(exc)) from exc
 
-    host = "127.0.0.1"
+    host = (get_env("INGEST_HTTP_HOST", "127.0.0.1") or "127.0.0.1").strip()
     port = int(get_env("INGEST_HTTP_PORT", "8765"))
     max_upload = int(get_env("INGEST_MAX_UPLOAD_BYTES", str(512 * 1024 * 1024)))
     max_concurrent_jobs = max(1, int(get_env("INGEST_MAX_CONCURRENT_JOBS", "1")))
