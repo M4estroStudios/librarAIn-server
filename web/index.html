@@ -1721,7 +1721,12 @@ if (document.readyState === "loading") {
       pickerCache: null,
     };
     var insertAt = selected[0];
-    for (var k = selected.length - 1; k >= 0; k--) ingestQueue.splice(selected[k], 1);
+    for (var k = selected.length - 1; k >= 0; k--) {
+      var removed = ingestQueue[selected[k]];
+      // Stop orphaned thumb renders so they don't contend for pdfRenderSlots.
+      if (removed && removed.pickerCache) removed.pickerCache.loadGen += 1;
+      ingestQueue.splice(selected[k], 1);
+    }
     ingestQueue.splice(insertAt, 0, mergedItem);
     setQueueMergeMode(false);
     startQueueItemPreload(mergedItem);
@@ -2608,7 +2613,9 @@ if (document.readyState === "loading") {
   }
 
   function isQueueItemActive(item) {
-    return ingestQueue.length > 1 && ingestQueue[currentQueueIndex] === item;
+    // Also true with a single queue item (e.g. after merging all volumes into one).
+    // Requiring length > 1 left stacked thumb updates stuck on numbered placeholders.
+    return !!item && ingestQueue[currentQueueIndex] === item;
   }
 
   function updatePickerThumbInGrid(pageNum, thumbUrl) {
