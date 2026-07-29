@@ -108,7 +108,7 @@ def _list_lmstudio_models(settings: Settings) -> tuple[list[dict[str, Any]], str
             )
         return models, root
     except (urllib.error.URLError, OSError, json.JSONDecodeError, ValueError) as exc:
-        Log(INFO_LOG_LEVEL, "preflight lmstudio list failed", {"error": repr(exc)})
+        Log(INFO_LOG_LEVEL, "preflight lmstudio list models failed", {"error": repr(exc)})
         return [], root
 
 

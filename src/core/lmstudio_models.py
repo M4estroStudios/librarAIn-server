@@ -155,13 +155,23 @@ def _request_json(
     except urllib.error.HTTPError as exc:
         Log(
             WARNING_LOG_LEVEL,
-            "http outbound",
+            "lmstudio http request returned error",
             {"method": method, "path": url_path, "status": exc.code},
         )
         raise
-    except urllib.error.URLError:
+    except urllib.error.URLError as exc:
+        reason = getattr(exc, "reason", exc)
+        Log(
+            ERROR_LOG_LEVEL,
+            "lmstudio http connection failed",
+            {"method": method, "path": url_path, "error": repr(exc), "reason": str(reason)},
+        )
         raise
-    Log(INFO_LOG_LEVEL, "http outbound", {"method": method, "path": url_path, "status": status})
+    Log(
+        INFO_LOG_LEVEL,
+        "lmstudio http request completed",
+        {"method": method, "path": url_path, "status": status},
+    )
     if not raw.strip():
         return {}
     parsed = json.loads(raw)

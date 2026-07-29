@@ -185,7 +185,7 @@ def handle_chat_completions(
         try:
             response = client.chat.completions.create(**create_kwargs)
         except Exception as exc:
-            Log(ERROR_LOG_LEVEL, "chat completions API error", {"error": str(exc)})
+            Log(ERROR_LOG_LEVEL, "chat completions API call failed", {"error": str(exc)})
             if sse_started:
                 emit_event({"type": "error", "message": str(exc)})
                 _sse_done(handler)
@@ -259,7 +259,7 @@ def handle_chat_completions(
             try:
                 stream_resp = client.chat.completions.create(**create_kwargs)
             except Exception as exc:
-                Log(ERROR_LOG_LEVEL, "chat completions stream error", {"error": str(exc)})
+                Log(ERROR_LOG_LEVEL, "chat completions stream create failed", {"error": str(exc)})
                 emit_event({"type": "error", "message": str(exc)})
                 _sse_done(handler)
                 return

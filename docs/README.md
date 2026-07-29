@@ -21,7 +21,7 @@ Questa cartella è la fonte di verità aggiornata al codice. I PRD in root (`PRD
 | [persistence.md](persistence.md) | SQLite e tabelle |
 | [scripts.md](scripts.md) | Utility CLI in `scripts/` |
 | [security.md](security.md) | Modello di sicurezza attuale |
-| [operations.md](operations.md) | Job, SSE, preflight, backup, troubleshooting |
+| [operations.md](operations.md) | Job, SSE, preflight, backup, troubleshooting, regole logging |
 
 ## Avvio rapido
 

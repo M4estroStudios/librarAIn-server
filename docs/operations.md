@@ -47,10 +47,26 @@ python -m scripts.backfill_books_from_manifest --dry-run
 | Ingest skip immediato | Hash già in `books` (gate); usare opzioni force metadata se serve solo aggiornare REICAT |
 | Errori VRAM / preflight fail | Chiudere modelli LM Studio, abbassare `GPU_VRAM_MAX_USED_GB`, un job alla volta |
 | Unicode / log strani su Windows | Logger sostituisce char non rappresentabili su console; i file log sono UTF-8 |
+| Warning `http request returned error` su `/nav.css` | Asset statico non servito (path/status nei params) |
 | Articolo senza link POH | Embeddings mancanti / soglia matcher; lanciare backfill embeddings |
 | Gap pagine in admin | Repair pagina o repair-all; verificare exclude |
 | `database is locked` | Ridurre concorrenza; evitare script lunghi in parallelo al server |
 | Merge-article 500 | Verificare che il server sia aggiornato (handler richiede import corretto) |
+
+## Logging
+
+La libreria (`src/core/log.py`) è volutamente sottile: livello, messaggio, params opzionali, file/line/caller automatici.
+
+**Regola obbligatoria:** ogni `Log(...)` usa un messaggio **statico, specifico e autoreferenziale**. Il testo identifica l'evento e non cambia a runtime; i valori variabili (method, path, status, job_id, model, errore, …) stanno **solo** in `params`. Non interpolare f-string nel messaggio.
+
+Esempi:
+
+- male: `"http"` (troppo generico)
+- male: `f"ingest http server listening on http://{host}:{port}"` (valori nel messaggio)
+- bene: `"ingest http server listening"` + `{"url": "http://…"}`
+- bene: `"http request returned error"` + `{"method": "GET", "path": "/nav.css", "status": 404}`
+
+Se un punto critico fallisce senza log, o con un messaggio generico/dinamico, va corretto nello stesso PR del comportamento.
 
 ## Test e qualità
 

@@ -202,6 +202,13 @@ def Log(
     json: bool = False,
     to_file: bool = False,
 ) -> str | None:
+    """Emit one log line. The library stays thin by design; callers own clarity.
+
+    `message` must be a static, specific, self-referential event label: stable
+    text that identifies what happened without interpolating runtime values.
+    Put method, path, status, job_id, model, error, and other identities in
+    `params` only. Do not embed dynamic values in the message string.
+    """
     global GLOBAL_LOG_LEVEL, _globalLogLevelInitialized
 
     if not _globalLogLevelInitialized:
@@ -258,13 +265,13 @@ def Log(
 @asynccontextmanager
 async def log_stage_block_async(stage_name: str) -> AsyncIterator[None]:
     start = time.perf_counter()
-    Log(INFO_LOG_LEVEL, "stage start", {"stage": stage_name, "event": "start"})
+    Log(INFO_LOG_LEVEL, "pipeline stage start", {"stage": stage_name, "event": "start"})
     try:
         yield
     finally:
         duration_ms = int((time.perf_counter() - start) * 1000)
         Log(
             INFO_LOG_LEVEL,
-            "stage end",
+            "pipeline stage end",
             {"stage": stage_name, "event": "end", "duration_ms": duration_ms},
         )

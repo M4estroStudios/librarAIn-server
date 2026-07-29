@@ -552,7 +552,7 @@ def build_research_routes(
             except ValueError as exc:
                 send_json(handler, 400, {"ok": False, "error": str(exc)})
             except Exception as exc:
-                Log(ERROR_LOG_LEVEL, "merge article failed", {"error": str(exc)})
+                Log(ERROR_LOG_LEVEL, "research merge-article failed", {"error": str(exc), "request_id": request_id})
                 send_json(handler, 500, {"ok": False, "error": str(exc)})
             return True
 

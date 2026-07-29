@@ -31,7 +31,7 @@ src/
 
 - `ingestion/` non importa `api/`.
 - `api/` orchestra e smista; la logica di dominio sta in `ingestion/`, `search/`, `persistence/`.
-- `core/` è infrastruttura sottile (config, log, client HTTP LLM).
+- `core/` è infrastruttura sottile (config, log, client HTTP LLM). I messaggi `Log(...)` devono essere specifici e autoreferenziali: vedi [operations.md](operations.md#logging).
 - Esistono dipendenze crociate miti tra `ingestion/polyindex` e `search/` (catalogo articoli, time lookup): vanno trattate con cautela nei refactor.
 
 ## Flusso end-to-end

@@ -175,6 +175,18 @@ def _http_inbound_log_level(path: str, status: int, method: str) -> int:
     return DEBUG_LOG_LEVEL
 
 
+def _http_inbound_log_message(method: str, path: str, status: int) -> str:
+    if not method and not path:
+        return "http malformed request rejected"
+    if status >= 400:
+        if _is_web_page_visit(path):
+            return "http page visit returned error"
+        return "http request returned error"
+    if _is_web_page_visit(path):
+        return "http page visit served"
+    return "http request completed"
+
+
 def _send_json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> None:
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     handler.send_response(status)
@@ -360,10 +372,9 @@ def build_ingest_server(
             if path.endswith("/events"):
                 return
             command = getattr(self, "command", None) or ""
-            message = "http page visit" if _is_web_page_visit(path) else "http"
             Log(
                 _http_inbound_log_level(path, status, command),
-                message,
+                _http_inbound_log_message(command, path, status),
                 {"method": command or None, "path": path or None, "status": status},
             )
 
