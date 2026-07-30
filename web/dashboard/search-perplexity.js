@@ -185,6 +185,7 @@ export async function sendMessage(text) {
       body: JSON.stringify({
         messages: messages.slice(-20),
         stream: true,
+        compute_mode: (document.getElementById("compute-mode") || {}).value || "local",
       }),
     });
     if (!res.ok) {

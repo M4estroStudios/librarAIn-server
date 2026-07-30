@@ -26,7 +26,9 @@ def lmstudio_api_root(settings: Settings) -> str | None:
 def should_swap_lmstudio_models(settings: Settings) -> bool:
     if not settings.lm_studio_swap_models:
         return False
-    if settings.openai_provider != "local":
+    from src.core.openai_client import get_compute_mode  # noqa: PLC0415
+
+    if get_compute_mode() != "local":
         return False
     if not lmstudio_api_root(settings):
         return False

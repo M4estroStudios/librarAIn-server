@@ -4,6 +4,8 @@ from enum import Enum
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from src.models.settings import ComputeMode, normalize_compute_mode
+
 QUERY_MIN_LENGTH = 3
 QUERY_MAX_LENGTH = 2000
 DEFAULT_MAX_BOOKS = 5
@@ -91,6 +93,7 @@ class ResearchRequest(BaseModel):
     query: str = Field(min_length=QUERY_MIN_LENGTH, max_length=QUERY_MAX_LENGTH)
     poh: ResearchPoh | None = None
     options: ResearchOptions = Field(default_factory=ResearchOptions)
+    compute_mode: ComputeMode = "local"
 
     @field_validator("query", mode="before")
     @classmethod
@@ -98,6 +101,18 @@ class ResearchRequest(BaseModel):
         if value is None:
             return value
         return str(value).strip()
+
+    @field_validator("compute_mode", mode="before")
+    @classmethod
+    def parse_compute_mode(cls, value: object) -> ComputeMode:
+        try:
+            return normalize_compute_mode(value)
+        except ValueError as exc:
+            raise _validation_error(
+                code=ResearchInputErrorCode.INPUT_SCHEMA_INVALID,
+                message=str(exc),
+                field="compute_mode",
+            ) from exc
 
     @model_validator(mode="after")
     def validate_query_bounds(self) -> ResearchRequest:

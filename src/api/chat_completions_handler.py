@@ -8,9 +8,14 @@ from typing import Any, Callable
 
 from src.api.chat_tools import CHAT_TOOL_DEFINITIONS, execute_chat_tool
 from src.core.lmstudio_models import ensure_lmstudio_model_loaded
-from src.core.openai_client import build_openai_client, build_chat_completion_extra_body
+from src.core.openai_client import (
+    build_openai_client,
+    build_chat_completion_extra_body,
+    get_compute_mode,
+    use_compute_mode,
+)
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
-from src.models.settings import Settings
+from src.models.settings import Settings, normalize_compute_mode
 from src.search.article_llm import research_model
 
 SendJson = Callable[[BaseHTTPRequestHandler, int, Any], None]
@@ -112,221 +117,247 @@ def handle_chat_completions(
         return
 
     stream = bool(payload.get("stream"))
-    model = _resolve_chat_model(settings, payload.get("model"))
-    tools = payload.get("tools")
-    if tools is None:
-        tools = CHAT_TOOL_DEFINITIONS
-    tool_choice = payload.get("tool_choice", "auto")
-    Log(
-        INFO_LOG_LEVEL,
-        "chat completions request",
-        {
-            "model": model,
-            "stream": stream,
-            "message_count": len(messages),
-            "has_tools": bool(tools),
-        },
-    )
-
     try:
-        ensure_lmstudio_model_loaded(settings, model)
-    except RuntimeError as exc:
-        send_json(handler, 503, {"error": str(exc)})
+        compute_mode = normalize_compute_mode(payload.get("compute_mode"))
+    except ValueError as exc:
+        send_json(handler, 400, {"error": str(exc), "field": "compute_mode"})
         return
-
-    client = build_openai_client(settings)
-    extra_body = build_chat_completion_extra_body(
-        reasoning_effort=settings.reasoning_effort_research,
-        reasoning_enable_thinking=settings.reasoning_enable_thinking_research,
-    )
-    working_messages = list(messages)
-    completion_id = f"chatcmpl-{uuid.uuid4().hex[:24]}"
-    created = int(__import__("time").time())
-    sse_started = False
-
-    def start_sse() -> None:
-        nonlocal sse_started
-        if sse_started:
+    if compute_mode == "cloud":
+        missing_cloud = settings.missing_cloud_config(job_kind="chat")
+        if missing_cloud:
+            send_json(
+                handler,
+                400,
+                {
+                    "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                    "field": "compute_mode",
+                },
+            )
             return
-        handler.send_response(200)
-        handler.send_header("Content-Type", "text/event-stream; charset=utf-8")
-        handler.send_header("Cache-Control", "no-cache")
-        handler.send_header("Connection", "keep-alive")
-        handler.send_header("X-Accel-Buffering", "no")
-        handler.end_headers()
-        sse_started = True
 
-    def emit_event(event: dict[str, Any]) -> bool:
-        if not stream:
-            return True
-        start_sse()
-        return _emit_librarain_event(
-            handler,
-            completion_id=completion_id,
-            created=created,
-            model=model,
-            event=event,
+    compute_ctx = use_compute_mode(compute_mode, settings)
+    compute_ctx.__enter__()
+    try:
+        job_settings = settings.for_compute_mode(compute_mode)
+        model = _resolve_chat_model(job_settings, payload.get("model"))
+        tools = payload.get("tools")
+        if tools is None:
+            tools = CHAT_TOOL_DEFINITIONS
+        tool_choice = payload.get("tool_choice", "auto")
+        Log(
+            INFO_LOG_LEVEL,
+            "chat completions request",
+            {
+                "model": model,
+                "stream": stream,
+                "message_count": len(messages),
+                "has_tools": bool(tools),
+                "compute_mode": compute_mode,
+            },
         )
 
-    for round_idx in range(_MAX_TOOL_ROUNDS):
-        create_kwargs: dict[str, Any] = {
-            "model": model,
-            "messages": working_messages,
-            "temperature": settings.research_temperature,
-            "max_tokens": 4096,
-            "stream": False,
-        }
-        if extra_body:
-            create_kwargs["extra_body"] = extra_body
-        if tools:
-            create_kwargs["tools"] = tools
-            create_kwargs["tool_choice"] = tool_choice
+        if get_compute_mode() == "local":
+            try:
+                ensure_lmstudio_model_loaded(job_settings, model)
+            except RuntimeError as exc:
+                send_json(handler, 503, {"error": str(exc)})
+                return
 
-        try:
-            response = client.chat.completions.create(**create_kwargs)
-        except Exception as exc:
-            Log(ERROR_LOG_LEVEL, "chat completions API call failed", {"error": str(exc)})
+        client = build_openai_client(job_settings)
+        extra_body = build_chat_completion_extra_body(
+            reasoning_effort=job_settings.reasoning_effort_research,
+            reasoning_enable_thinking=job_settings.reasoning_enable_thinking_research,
+        )
+        working_messages = list(messages)
+        completion_id = f"chatcmpl-{uuid.uuid4().hex[:24]}"
+        created = int(__import__("time").time())
+        sse_started = False
+
+        def start_sse() -> None:
+            nonlocal sse_started
             if sse_started:
-                emit_event({"type": "error", "message": str(exc)})
-                _sse_done(handler)
-            else:
-                send_json(handler, 502, {"error": str(exc)})
-            return
+                return
+            handler.send_response(200)
+            handler.send_header("Content-Type", "text/event-stream; charset=utf-8")
+            handler.send_header("Cache-Control", "no-cache")
+            handler.send_header("Connection", "keep-alive")
+            handler.send_header("X-Accel-Buffering", "no")
+            handler.end_headers()
+            sse_started = True
 
-        choice = response.choices[0]
-        message = choice.message
-        tool_calls = message.tool_calls or []
-
-        if tool_calls:
-            thinking = _message_thinking(message)
-            if thinking:
-                emit_event({"type": "thinking", "content": thinking, "round": round_idx})
-            working_messages.append(
-                {
-                    "role": "assistant",
-                    "content": message.content or "",
-                    "tool_calls": [
-                        {
-                            "id": tc.id,
-                            "type": "function",
-                            "function": {
-                                "name": tc.function.name,
-                                "arguments": tc.function.arguments or "{}",
-                            },
-                        }
-                        for tc in tool_calls
-                    ],
-                }
+        def emit_event(event: dict[str, Any]) -> bool:
+            if not stream:
+                return True
+            start_sse()
+            return _emit_librarain_event(
+                handler,
+                completion_id=completion_id,
+                created=created,
+                model=model,
+                event=event,
             )
-            for tc in tool_calls:
-                name = tc.function.name
-                args = tc.function.arguments or "{}"
-                if not emit_event(
-                    {
-                        "type": "tool_call",
-                        "status": "start",
-                        "name": name,
-                        "arguments": args,
-                        "round": round_idx,
-                    }
-                ):
-                    return
-                result = execute_chat_tool(data_root, name, args)
-                if not emit_event(
-                    {
-                        "type": "tool_call",
-                        "status": "result",
-                        "name": name,
-                        "arguments": args,
-                        "result": _preview_tool_result(result),
-                        "round": round_idx,
-                    }
-                ):
-                    return
+
+        for round_idx in range(_MAX_TOOL_ROUNDS):
+            create_kwargs: dict[str, Any] = {
+                "model": model,
+                "messages": working_messages,
+                "temperature": job_settings.research_temperature,
+                "max_tokens": 4096,
+                "stream": False,
+            }
+            if extra_body:
+                create_kwargs["extra_body"] = extra_body
+            if tools:
+                create_kwargs["tools"] = tools
+                create_kwargs["tool_choice"] = tool_choice
+
+            try:
+                response = client.chat.completions.create(**create_kwargs)
+            except Exception as exc:
+                Log(ERROR_LOG_LEVEL, "chat completions API call failed", {"error": str(exc)})
+                if sse_started:
+                    emit_event({"type": "error", "message": str(exc)})
+                    _sse_done(handler)
+                else:
+                    send_json(handler, 502, {"error": str(exc)})
+                return
+
+            choice = response.choices[0]
+            message = choice.message
+            tool_calls = message.tool_calls or []
+
+            if tool_calls:
+                thinking = _message_thinking(message)
+                if thinking:
+                    emit_event({"type": "thinking", "content": thinking, "round": round_idx})
                 working_messages.append(
                     {
-                        "role": "tool",
-                        "tool_call_id": tc.id,
-                        "content": result,
+                        "role": "assistant",
+                        "content": message.content or "",
+                        "tool_calls": [
+                            {
+                                "id": tc.id,
+                                "type": "function",
+                                "function": {
+                                    "name": tc.function.name,
+                                    "arguments": tc.function.arguments or "{}",
+                                },
+                            }
+                            for tc in tool_calls
+                        ],
                     }
                 )
-            continue
+                for tc in tool_calls:
+                    name = tc.function.name
+                    args = tc.function.arguments or "{}"
+                    if not emit_event(
+                        {
+                            "type": "tool_call",
+                            "status": "start",
+                            "name": name,
+                            "arguments": args,
+                            "round": round_idx,
+                        }
+                    ):
+                        return
+                    result = execute_chat_tool(data_root, name, args)
+                    if not emit_event(
+                        {
+                            "type": "tool_call",
+                            "status": "result",
+                            "name": name,
+                            "arguments": args,
+                            "result": _preview_tool_result(result),
+                            "round": round_idx,
+                        }
+                    ):
+                        return
+                    working_messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": tc.id,
+                            "content": result,
+                        }
+                    )
+                continue
 
-        content = message.content or ""
-        if stream:
-            start_sse()
-            create_kwargs["stream"] = True
-            try:
-                stream_resp = client.chat.completions.create(**create_kwargs)
-            except Exception as exc:
-                Log(ERROR_LOG_LEVEL, "chat completions stream create failed", {"error": str(exc)})
-                emit_event({"type": "error", "message": str(exc)})
-                _sse_done(handler)
-                return
-            role_sent = False
-            for chunk in stream_resp:
-                if not chunk.choices:
-                    continue
-                delta = chunk.choices[0].delta
-                content_delta, thinking_delta = _delta_content_and_thinking(delta)
-                if thinking_delta and not emit_event({"type": "thinking", "content": thinking_delta, "stream": True}):
+            content = message.content or ""
+            if stream:
+                start_sse()
+                create_kwargs["stream"] = True
+                try:
+                    stream_resp = client.chat.completions.create(**create_kwargs)
+                except Exception as exc:
+                    Log(ERROR_LOG_LEVEL, "chat completions stream create failed", {"error": str(exc)})
+                    emit_event({"type": "error", "message": str(exc)})
+                    _sse_done(handler)
                     return
-                payload_delta: dict[str, Any] = {}
-                if delta.role and not role_sent:
-                    payload_delta["role"] = delta.role
-                    role_sent = True
-                if content_delta:
-                    payload_delta["content"] = content_delta
-                if not payload_delta:
-                    continue
-                chunk_payload = {
+                role_sent = False
+                for chunk in stream_resp:
+                    if not chunk.choices:
+                        continue
+                    delta = chunk.choices[0].delta
+                    content_delta, thinking_delta = _delta_content_and_thinking(delta)
+                    if thinking_delta and not emit_event({"type": "thinking", "content": thinking_delta, "stream": True}):
+                        return
+                    payload_delta: dict[str, Any] = {}
+                    if delta.role and not role_sent:
+                        payload_delta["role"] = delta.role
+                        role_sent = True
+                    if content_delta:
+                        payload_delta["content"] = content_delta
+                    if not payload_delta:
+                        continue
+                    chunk_payload = {
+                        "id": completion_id,
+                        "object": "chat.completion.chunk",
+                        "created": created,
+                        "model": model,
+                        "choices": [
+                            {
+                                "index": 0,
+                                "delta": payload_delta,
+                                "finish_reason": None,
+                            }
+                        ],
+                    }
+                    if not _sse_chunk(handler, chunk_payload):
+                        return
+                finish_payload = {
                     "id": completion_id,
                     "object": "chat.completion.chunk",
+                    "created": created,
+                    "model": model,
+                    "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}],
+                }
+                _sse_chunk(handler, finish_payload)
+                _sse_done(handler)
+                Log(INFO_LOG_LEVEL, "chat completions stream done", {"rounds": round_idx + 1})
+                return
+
+            send_json(
+                handler,
+                200,
+                {
+                    "id": completion_id,
+                    "object": "chat.completion",
                     "created": created,
                     "model": model,
                     "choices": [
                         {
                             "index": 0,
-                            "delta": payload_delta,
-                            "finish_reason": None,
+                            "message": {"role": "assistant", "content": content},
+                            "finish_reason": "stop",
                         }
                     ],
-                }
-                if not _sse_chunk(handler, chunk_payload):
-                    return
-            finish_payload = {
-                "id": completion_id,
-                "object": "chat.completion.chunk",
-                "created": created,
-                "model": model,
-                "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}],
-            }
-            _sse_chunk(handler, finish_payload)
-            _sse_done(handler)
-            Log(INFO_LOG_LEVEL, "chat completions stream done", {"rounds": round_idx + 1})
+                },
+            )
             return
 
-        send_json(
-            handler,
-            200,
-            {
-                "id": completion_id,
-                "object": "chat.completion",
-                "created": created,
-                "model": model,
-                "choices": [
-                    {
-                        "index": 0,
-                        "message": {"role": "assistant", "content": content},
-                        "finish_reason": "stop",
-                    }
-                ],
-            },
-        )
-        return
-
-    if sse_started:
-        emit_event({"type": "error", "message": "tool loop exceeded max rounds"})
-        _sse_done(handler)
-    else:
-        send_json(handler, 500, {"error": "tool loop exceeded max rounds"})
+        if sse_started:
+            emit_event({"type": "error", "message": "tool loop exceeded max rounds"})
+            _sse_done(handler)
+        else:
+            send_json(handler, 500, {"error": "tool loop exceeded max rounds"})
+    finally:
+        compute_ctx.__exit__(None, None, None)

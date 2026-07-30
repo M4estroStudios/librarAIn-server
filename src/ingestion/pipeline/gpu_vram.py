@@ -386,7 +386,9 @@ def _operation_needs_vram_check(settings: Settings, operation: GpuVramOperation)
         return False
     if operation == "ocr":
         return bool(getattr(settings, "ocr_use_gpu", False))
-    return getattr(settings, "openai_provider", "") == "local"
+    from src.core.openai_client import get_compute_mode  # noqa: PLC0415
+
+    return get_compute_mode() == "local"
 
 
 def require_gpu_vram(settings: Settings, operation: GpuVramOperation) -> None:
@@ -422,15 +424,21 @@ def require_gpu_vram_at_pipeline_start(
     if entry_stage is None:
         if ocr_backend == "glm":
             needs_ocr = False
-            needs_llm = getattr(settings, "openai_provider", "") == "local"
+            from src.core.openai_client import get_compute_mode  # noqa: PLC0415
+
+            needs_llm = get_compute_mode() == "local"
         else:
             needs_ocr = bool(getattr(settings, "ocr_use_gpu", False))
-            needs_llm = not skip_vision_editor and getattr(settings, "openai_provider", "") == "local"
+            from src.core.openai_client import get_compute_mode  # noqa: PLC0415
+
+            needs_llm = not skip_vision_editor and get_compute_mode() == "local"
     else:
+        from src.core.openai_client import get_compute_mode  # noqa: PLC0415
+
         needs_ocr = bool(getattr(settings, "ocr_use_gpu", False)) and entry_stage in _REPAIR_ENTRY_NEEDS_OCR
         needs_llm = (
             not skip_vision_editor
-            and getattr(settings, "openai_provider", "") == "local"
+            and get_compute_mode() == "local"
             and entry_stage in _REPAIR_ENTRY_NEEDS_LLM
         )
     if not needs_ocr and not needs_llm:

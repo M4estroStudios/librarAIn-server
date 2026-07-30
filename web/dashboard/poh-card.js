@@ -62,6 +62,7 @@ export async function generateArticle(pohId, label) {
       query,
       poh: { id: pohId, label: query },
       options: { dedup: true },
+      compute_mode: (document.getElementById("compute-mode") || {}).value || "local",
     }),
   });
   const jobId = data.request_id || data.job_id;

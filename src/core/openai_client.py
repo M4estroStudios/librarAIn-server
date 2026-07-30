@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import contextmanager
+from contextvars import ContextVar
 from dataclasses import dataclass
-from typing import Any, Callable, TypeVar
+from typing import Any, Callable, Iterator, Literal, TypeVar
 from weakref import WeakKeyDictionary
 
 import openai
@@ -19,7 +21,7 @@ from src.core.errors import PermanentError, TransientError, classify_openai_exce
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.rate_limit import AsyncTokenBucket, get_token_bucket
 from src.core.retry import retry_async
-from src.models.settings import Settings
+from src.models.settings import ComputeMode, Settings, normalize_compute_mode
 
 _TRANSIENT_ERRORS: tuple[type[Exception], ...] = (
     TransientError,
@@ -37,6 +39,13 @@ _cached_clients: dict[tuple[str | None, str | None], openai.OpenAI] = {}
 _USE_CLIENT_TIMEOUT = object()
 _RESEARCH_CHAT_STAGE_PREFIX = "research_"
 _F = TypeVar("_F", bound=Callable[..., Any])
+_ClientPurpose = Literal["chat", "embedding"]
+_compute_mode_var: ContextVar[ComputeMode] = ContextVar(
+    "librarain_compute_mode", default="local"
+)
+_job_settings_var: ContextVar[Settings | None] = ContextVar(
+    "librarain_job_settings", default=None
+)
 
 
 @dataclass
@@ -48,6 +57,39 @@ class _ClientState:
 
 
 _client_states: WeakKeyDictionary[openai.OpenAI, _ClientState] = WeakKeyDictionary()
+
+
+def get_compute_mode() -> ComputeMode:
+    return _compute_mode_var.get()
+
+
+def get_job_settings() -> Settings | None:
+    return _job_settings_var.get()
+
+
+@contextmanager
+def use_compute_mode(
+    mode: ComputeMode | str | None,
+    settings: Settings | None = None,
+) -> Iterator[ComputeMode]:
+    normalized = normalize_compute_mode(mode)
+    mode_token = _compute_mode_var.set(normalized)
+    settings_token = _job_settings_var.set(settings)
+    try:
+        yield normalized
+    finally:
+        _compute_mode_var.reset(mode_token)
+        _job_settings_var.reset(settings_token)
+
+
+def resolve_embedding_client(
+    client: openai.OpenAI,
+    settings: Settings | None = None,
+) -> openai.OpenAI:
+    base = settings or get_job_settings()
+    if base is None or get_compute_mode() == "local":
+        return client
+    return build_openai_client(base, compute_mode="local", purpose="embedding")
 
 
 def build_chat_completion_extra_body(
@@ -63,17 +105,45 @@ def build_chat_completion_extra_body(
     return extra or None
 
 
-def build_openai_client(settings: Settings) -> openai.OpenAI:
-    key = (settings.openai_base_url, settings.openai_api_key)
+def _endpoint_for_purpose(
+    settings: Settings,
+    *,
+    purpose: _ClientPurpose,
+    compute_mode: ComputeMode,
+) -> tuple[str | None, str | None]:
+    if purpose == "embedding" or compute_mode == "local":
+        return settings.openai_base_url, settings.openai_api_key
+    return settings.openai_cloud_base_url, settings.openai_cloud_api_key
+
+
+def build_openai_client(
+    settings: Settings,
+    *,
+    compute_mode: ComputeMode | str | None = None,
+    purpose: _ClientPurpose = "chat",
+) -> openai.OpenAI:
+    mode = (
+        normalize_compute_mode(compute_mode)
+        if compute_mode is not None
+        else get_compute_mode()
+    )
+    base_url, api_key = _endpoint_for_purpose(
+        settings, purpose=purpose, compute_mode=mode
+    )
+    key = (base_url, api_key)
     if key not in _cached_clients:
         Log(
             INFO_LOG_LEVEL,
             "OpenAI client instantiated",
-            {"base_url": settings.openai_base_url or ""},
+            {
+                "base_url": base_url or "",
+                "compute_mode": mode,
+                "purpose": purpose,
+            },
         )
         client = openai.OpenAI(
-            base_url=settings.openai_base_url,
-            api_key=settings.openai_api_key or "dummy",
+            base_url=base_url,
+            api_key=api_key or "dummy",
             timeout=float(settings.timeout_seconds),
         )
         _cached_clients[key] = client

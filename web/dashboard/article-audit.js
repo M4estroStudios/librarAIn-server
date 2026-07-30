@@ -179,6 +179,7 @@ async function regenerateArticle(btn) {
         query: label,
         poh: { id: pohId, label },
         options: { dedup: false },
+        compute_mode: (document.getElementById("compute-mode") || {}).value || "local",
       }),
     });
     const jobId = data.request_id || data.job_id;

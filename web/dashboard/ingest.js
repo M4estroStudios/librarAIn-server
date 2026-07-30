@@ -140,6 +140,7 @@ async function generateNewArticle(poh) {
       query: poh.label,
       poh: { id: poh.poh_id, label: poh.label },
       options: { dedup: true },
+      compute_mode: (document.getElementById("compute-mode") || {}).value || "local",
     }),
   });
   const jobId = data.request_id || data.job_id;

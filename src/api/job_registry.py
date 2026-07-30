@@ -26,6 +26,7 @@ class JobState:
         "result",
         "error",
         "pipeline_version",
+        "compute_mode",
         "created_at",
         "updated_at",
         "finished_at_monotonic",
@@ -34,12 +35,19 @@ class JobState:
         "_subscribers",
     )
 
-    def __init__(self, job_id: str, *, job_kind: str = "ingest") -> None:
+    def __init__(
+        self,
+        job_id: str,
+        *,
+        job_kind: str = "ingest",
+        compute_mode: str = "local",
+    ) -> None:
         now = datetime.now(timezone.utc).isoformat()
         self.job_id = job_id
         self.job_kind = job_kind
         self.status: str = "accepted" if job_kind == "research" else "queued"
         self.pipeline_version: str | None = None
+        self.compute_mode: str = compute_mode
         self.events: list[dict[str, Any]] = []
         self.result: Any | None = None
         self.error: str | None = None
@@ -103,6 +111,7 @@ class JobRegistry:
         job_id: str | None = None,
         job_kind: str = "ingest",
         pipeline_version: str | None = None,
+        compute_mode: str = "local",
     ) -> str:
         """Allocate a new job and return its opaque job_id."""
         if job_id is None:
@@ -111,7 +120,7 @@ class JobRegistry:
             self._evict_finished_locked()
             if job_id in self._jobs:
                 raise ValueError(f"job_id already exists: {job_id}")
-            state = JobState(job_id, job_kind=job_kind)
+            state = JobState(job_id, job_kind=job_kind, compute_mode=compute_mode)
             state.pipeline_version = pipeline_version
             self._jobs[job_id] = state
         return job_id
@@ -202,6 +211,7 @@ class JobRegistry:
                 "job_id": state.job_id,
                 "job_kind": state.job_kind,
                 "status": state.status,
+                "compute_mode": state.compute_mode,
                 "global_step": state.global_step,
                 "global_total": state.global_total,
                 "events": list(state.events),
@@ -330,6 +340,7 @@ _INGEST_PHASE_ORDER = [
     "polyindex_toc",
     "polyindex_index",
     "time_index",
+    "polyindex_biblio",
 ]
 _GLM_INGEST_PHASE_ORDER = [
     "validation",
@@ -341,6 +352,7 @@ _GLM_INGEST_PHASE_ORDER = [
     "polyindex_toc",
     "polyindex_index",
     "time_index",
+    "polyindex_biblio",
 ]
 _REPAIR_PHASE_ORDER = [
     "page_repair",
@@ -348,6 +360,7 @@ _REPAIR_PHASE_ORDER = [
     "stage1_ocr",
     "stage2_vision",
     "stage3_editor",
+    "polyindex_biblio",
 ]
 _RESEARCH_DISPLAY_PHASE_ORDER = [
     "research_collect",
@@ -377,6 +390,7 @@ _PHASE_LABELS = {
     "polyindex_toc": "Polyindex TOC",
     "polyindex_index": "Polyindex INDEX",
     "time_index": "Polyindex TIME_INDEX",
+    "polyindex_biblio": "Polyindex BIBLIO",
     "page_repair": "Preparazione riparazione",
     "gaps_repair": "Riparazione lacune",
     "subject_embeddings": "Embedding soggetti",
@@ -537,6 +551,7 @@ def _job_public_fields(state: JobState) -> dict[str, Any]:
         "aligned_page": ctx.get("aligned_page"),
         "current_phase": ctx.get("current_phase"),
         "current_phase_label": ctx.get("current_phase_label"),
+        "compute_mode": state.compute_mode,
     }
 
 

@@ -77,7 +77,7 @@ class GlmOcrCombinedResult(BaseModel):
 
 
 def resolve_glm_ocr_model(settings: Settings) -> str:
-    explicit = (settings.glm_ocr_model or "").strip()
+    explicit = (settings.ocrvision_model or settings.glm_ocr_model or "").strip()
     if explicit:
         return explicit
     return (settings.vision_model or "").strip()
@@ -380,7 +380,7 @@ async def run_glm_ocr_combined_stage(
         raise IngestInputValidationException(
             IngestInputValidationError(
                 code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                message="GLM_OCR_MODEL or VISION_MODEL must be configured",
+                message="OCRVISION_MODEL or VISION_MODEL must be configured",
             )
         )
 

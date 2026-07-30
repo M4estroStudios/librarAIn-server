@@ -1,11 +1,46 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Literal
+from typing import Literal, Sequence
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 ReasoningEffort = Literal["minimal", "low", "medium", "high"]
+ComputeMode = Literal["local", "cloud"]
+ChatModelRole = Literal[
+    "vision",
+    "ocrvision",
+    "editor",
+    "research",
+    "matcher_llm",
+    "time_index_llm",
+]
+
+_CHAT_MODEL_ATTRS: dict[ChatModelRole, tuple[str, str]] = {
+    "vision": ("vision_model", "vision_cloud_model"),
+    "ocrvision": ("ocrvision_model", "ocrvision_cloud_model"),
+    "editor": ("editor_model", "editor_cloud_model"),
+    "research": ("research_model", "research_cloud_model"),
+    "matcher_llm": ("matcher_llm_model", "matcher_llm_cloud_model"),
+    "time_index_llm": ("time_index_llm_model", "time_index_llm_cloud_model"),
+}
+
+JOB_CHAT_ROLES: dict[str, tuple[ChatModelRole, ...]] = {
+    "ingest": ("vision", "editor", "matcher_llm", "time_index_llm", "ocrvision"),
+    "ingest_glm": ("ocrvision", "editor", "matcher_llm", "time_index_llm"),
+    "research": ("research", "editor", "matcher_llm"),
+    "biblio": ("ocrvision",),
+    "reicat": ("vision",),
+    "repair": ("vision", "editor", "ocrvision"),
+    "chat": ("research", "editor", "matcher_llm"),
+    "merge_article": ("research", "editor", "matcher_llm"),
+    "etaly": ("research", "editor", "matcher_llm"),
+    "subject_dedup": ("matcher_llm", "editor"),
+}
+
+JOB_NEEDS_EMBEDDINGS: frozenset[str] = frozenset(
+    {"ingest", "ingest_glm", "research", "subject_dedup", "embeddings"}
+)
 
 _REASONING_EFFORT_OFF = {"none", "off", "false", "0", "no", "disabled"}
 _REASONING_EFFORT_ALLOWED: tuple[ReasoningEffort, ...] = (
@@ -14,6 +49,24 @@ _REASONING_EFFORT_ALLOWED: tuple[ReasoningEffort, ...] = (
     "medium",
     "high",
 )
+
+
+def normalize_compute_mode(raw: object) -> ComputeMode:
+    if raw is None:
+        return "local"
+    text = str(raw).strip().lower()
+    if not text:
+        return "local"
+    if text in ("local", "cloud"):
+        return text  # type: ignore[return-value]
+    raise ValueError('compute_mode must be "local" or "cloud"')
+
+
+def parse_compute_mode_field(raw: object) -> ComputeMode:
+    try:
+        return normalize_compute_mode(raw)
+    except ValueError as exc:
+        raise ValueError(str(exc)) from exc
 
 
 def _parse_reasoning_effort(v: object, env_name: str) -> ReasoningEffort | None:
@@ -49,9 +102,15 @@ class Settings(BaseModel):
     openai_provider: Literal["local", "remote"] = Field(alias="OPENAI_PROVIDER")
     openai_base_url: str | None = Field(default=None, alias="OPENAI_BASE_URL")
     openai_api_key: str | None = Field(default=None, alias="OPENAI_API_KEY")
+    openai_cloud_base_url: str | None = Field(default=None, alias="OPENAI_CLOUD_BASE_URL")
+    openai_cloud_api_key: str | None = Field(default=None, alias="OPENAI_CLOUD_API_KEY")
     vision_model: str | None = Field(default=None, alias="VISION_MODEL")
+    vision_cloud_model: str | None = Field(default=None, alias="VISION_CLOUD_MODEL")
+    ocrvision_model: str | None = Field(default=None, alias="OCRVISION_MODEL")
+    ocrvision_cloud_model: str | None = Field(default=None, alias="OCRVISION_CLOUD_MODEL")
     glm_ocr_model: str | None = Field(default=None, alias="GLM_OCR_MODEL")
     editor_model: str | None = Field(default=None, alias="EDITOR_MODEL")
+    editor_cloud_model: str | None = Field(default=None, alias="EDITOR_CLOUD_MODEL")
     max_parallel_request: int = Field(default=2, gt=0, alias="MAX_PARALLEL_REQUEST")
     timeout_seconds: int = Field(default=120, gt=0, alias="TIMEOUT_SECONDS")
     research_timeout_seconds: int = Field(
@@ -87,13 +146,20 @@ class Settings(BaseModel):
         default="text-embedding-3-small", alias="MATCHER_EMBEDDING_MODEL"
     )
     matcher_llm_model: str | None = Field(default=None, alias="MATCHER_LLM_MODEL")
+    matcher_llm_cloud_model: str | None = Field(
+        default=None, alias="MATCHER_LLM_CLOUD_MODEL"
+    )
     matcher_similarity_threshold: float = Field(
         default=0.86, ge=0.0, le=1.0, alias="MATCHER_SIMILARITY_THRESHOLD"
     )
     matcher_use_ai: bool = Field(default=True, alias="MATCHER_USE_AI")
     time_index_llm_model: str | None = Field(default=None, alias="TIME_INDEX_LLM_MODEL")
+    time_index_llm_cloud_model: str | None = Field(
+        default=None, alias="TIME_INDEX_LLM_CLOUD_MODEL"
+    )
     time_index_use_llm: bool = Field(default=True, alias="TIME_INDEX_USE_LLM")
     research_model: str | None = Field(default=None, alias="RESEARCH_MODEL")
+    research_cloud_model: str | None = Field(default=None, alias="RESEARCH_CLOUD_MODEL")
     research_temperature: float = Field(default=0.3, ge=0.0, le=2.0, alias="RESEARCH_TEMPERATURE")
     reasoning_effort_research: ReasoningEffort | None = Field(
         default=None, alias="REASONING_EFFORT_RESEARCH"
@@ -190,25 +256,34 @@ class Settings(BaseModel):
         if not self.data_root:
             raise ValueError("DATA_ROOT must be non-empty")
 
-        if self.openai_base_url is not None:
-            self.openai_base_url = self.openai_base_url.strip() or None
-        if self.openai_api_key is not None:
-            self.openai_api_key = self.openai_api_key.strip() or None
-        if self.vision_model is not None:
-            self.vision_model = self.vision_model.strip() or None
-        if self.glm_ocr_model is not None:
-            self.glm_ocr_model = self.glm_ocr_model.strip() or None
-        if self.editor_model is not None:
-            self.editor_model = self.editor_model.strip() or None
+        def _strip_optional(value: str | None) -> str | None:
+            if value is None:
+                return None
+            return value.strip() or None
+
+        self.openai_base_url = _strip_optional(self.openai_base_url)
+        self.openai_api_key = _strip_optional(self.openai_api_key)
+        self.openai_cloud_base_url = _strip_optional(self.openai_cloud_base_url)
+        self.openai_cloud_api_key = _strip_optional(self.openai_cloud_api_key)
+        self.vision_model = _strip_optional(self.vision_model)
+        self.vision_cloud_model = _strip_optional(self.vision_cloud_model)
+        self.ocrvision_model = _strip_optional(self.ocrvision_model)
+        self.ocrvision_cloud_model = _strip_optional(self.ocrvision_cloud_model)
+        self.glm_ocr_model = _strip_optional(self.glm_ocr_model)
+        self.editor_model = _strip_optional(self.editor_model)
+        self.editor_cloud_model = _strip_optional(self.editor_cloud_model)
         self.matcher_embedding_model = self.matcher_embedding_model.strip()
         if not self.matcher_embedding_model:
             raise ValueError("MATCHER_EMBEDDING_MODEL must be non-empty")
-        if self.matcher_llm_model is not None:
-            self.matcher_llm_model = self.matcher_llm_model.strip() or None
-        if self.time_index_llm_model is not None:
-            self.time_index_llm_model = self.time_index_llm_model.strip() or None
-        if self.research_model is not None:
-            self.research_model = self.research_model.strip() or None
+        self.matcher_llm_model = _strip_optional(self.matcher_llm_model)
+        self.matcher_llm_cloud_model = _strip_optional(self.matcher_llm_cloud_model)
+        self.time_index_llm_model = _strip_optional(self.time_index_llm_model)
+        self.time_index_llm_cloud_model = _strip_optional(self.time_index_llm_cloud_model)
+        self.research_model = _strip_optional(self.research_model)
+        self.research_cloud_model = _strip_optional(self.research_cloud_model)
+
+        if not self.ocrvision_model and self.glm_ocr_model:
+            self.ocrvision_model = self.glm_ocr_model
 
         if self.openai_provider == "remote":
             missing_fields: list[str] = []
@@ -221,3 +296,93 @@ class Settings(BaseModel):
                     "OPENAI_PROVIDER=remote requires: " + ", ".join(missing_fields)
                 )
         return self
+
+    def cloud_endpoint_configured(self) -> bool:
+        return bool(self.openai_cloud_base_url and self.openai_cloud_api_key)
+
+    def missing_cloud_config(
+        self,
+        *,
+        job_kind: str,
+        chat_roles: Sequence[ChatModelRole] | None = None,
+        needs_embeddings: bool | None = None,
+    ) -> list[str]:
+        del chat_roles
+        check_embeddings = (
+            bool(needs_embeddings)
+            if needs_embeddings is not None
+            else job_kind in JOB_NEEDS_EMBEDDINGS
+        )
+        missing: list[str] = []
+        if not self.openai_cloud_base_url:
+            missing.append("OPENAI_CLOUD_BASE_URL")
+        if not self.openai_cloud_api_key:
+            missing.append("OPENAI_CLOUD_API_KEY")
+
+        def _require_any(cloud_attrs: Sequence[str]) -> None:
+            if any(getattr(self, attr) for attr in cloud_attrs):
+                return
+            field = Settings.model_fields[cloud_attrs[0]]
+            missing.append(str(field.alias or cloud_attrs[0]))
+
+        if job_kind in {"ingest", "repair"}:
+            _require_any(("vision_cloud_model",))
+            _require_any(("editor_cloud_model",))
+        elif job_kind == "ingest_glm":
+            _require_any(("ocrvision_cloud_model",))
+            _require_any(("editor_cloud_model",))
+        elif job_kind in {"research", "chat", "merge_article", "etaly"}:
+            _require_any(
+                ("research_cloud_model", "editor_cloud_model", "matcher_llm_cloud_model")
+            )
+        elif job_kind == "biblio":
+            _require_any(("ocrvision_cloud_model",))
+        elif job_kind == "reicat":
+            _require_any(("vision_cloud_model",))
+        elif job_kind == "subject_dedup":
+            _require_any(("matcher_llm_cloud_model", "editor_cloud_model"))
+        else:
+            for role in JOB_CHAT_ROLES.get(job_kind, ()):
+                _local_attr, cloud_attr = _CHAT_MODEL_ATTRS[role]
+                if getattr(self, cloud_attr):
+                    continue
+                field = Settings.model_fields[cloud_attr]
+                missing.append(str(field.alias or cloud_attr))
+
+        if check_embeddings:
+            if not self.openai_base_url:
+                missing.append("OPENAI_BASE_URL")
+            if not self.matcher_embedding_model:
+                missing.append("MATCHER_EMBEDDING_MODEL")
+        return missing
+
+    def for_compute_mode(self, mode: ComputeMode) -> "Settings":
+        if mode == "local":
+            return self
+        updates: dict[str, str | None] = {}
+        for local_attr, cloud_attr in _CHAT_MODEL_ATTRS.values():
+            cloud_value = getattr(self, cloud_attr)
+            if cloud_value:
+                updates[local_attr] = cloud_value
+        if self.ocrvision_cloud_model:
+            updates["glm_ocr_model"] = self.ocrvision_cloud_model
+        if not updates:
+            return self
+        return self.model_copy(update=updates)
+
+    def cloud_config_warning_message(self) -> str | None:
+        missing = []
+        if not self.openai_cloud_base_url:
+            missing.append("OPENAI_CLOUD_BASE_URL")
+        if not self.openai_cloud_api_key:
+            missing.append("OPENAI_CLOUD_API_KEY")
+        for _local_attr, cloud_attr in _CHAT_MODEL_ATTRS.values():
+            if not getattr(self, cloud_attr):
+                field = Settings.model_fields[cloud_attr]
+                missing.append(str(field.alias or cloud_attr))
+        if not missing:
+            return None
+        return (
+            "Cloud compute is not fully configured; set these env vars to enable "
+            "compute_mode=cloud: " + ", ".join(missing)
+        )

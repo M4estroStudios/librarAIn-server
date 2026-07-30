@@ -5,7 +5,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from src.core.log import ERROR_LOG_LEVEL, Log
+from src.core.log import ERROR_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.models.settings import Settings
 
 
@@ -77,8 +77,23 @@ def load_settings(env_file: str = ".env") -> Settings:
     merged_values = {**file_values, **os.environ}
 
     try:
-        return Settings.model_validate(merged_values)
+        settings = Settings.model_validate(merged_values)
     except ValidationError as exc:
         msg = _format_settings_validation_error(exc)
         Log(ERROR_LOG_LEVEL, "settings validation failed", {"error": msg})
         raise ConfigurationError(msg) from exc
+
+    if not str(merged_values.get("OCRVISION_MODEL") or "").strip() and str(
+        merged_values.get("GLM_OCR_MODEL") or ""
+    ).strip():
+        Log(
+            WARNING_LOG_LEVEL,
+            "GLM_OCR_MODEL is deprecated; use OCRVISION_MODEL",
+            {"fallback": settings.ocrvision_model or ""},
+        )
+
+    cloud_warning = settings.cloud_config_warning_message()
+    if cloud_warning:
+        Log(WARNING_LOG_LEVEL, cloud_warning, {})
+
+    return settings

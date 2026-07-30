@@ -15,6 +15,7 @@ from src.core.openai_client import (
     _log_chat_outcome,
     _resolve_client_state,
     build_chat_completion_extra_body,
+    resolve_embedding_client,
 )
 from src.core.retry import retry_sync
 
@@ -225,7 +226,8 @@ def embeddings_batch_with_retry_sync(
 ) -> list[list[float]]:
     if not texts:
         return []
-    max_attempts, token_bucket = _resolve_client_state(client)
+    embed_client = resolve_embedding_client(client)
+    max_attempts, token_bucket = _resolve_client_state(embed_client)
     attempt_counter = 0
 
     def _attempt() -> list[list[float]]:
@@ -240,7 +242,7 @@ def embeddings_batch_with_retry_sync(
             request_id=request_id,
         )
         return _embedding_api_call(
-            client,
+            embed_client,
             model=model,
             texts=texts,
             request_id=request_id,

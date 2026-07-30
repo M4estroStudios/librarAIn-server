@@ -10,8 +10,8 @@ from src.api.research_batch_registry import ResearchBatchRegistry
 from src.api.research_batch_worker import spawn_research_batch_worker
 from src.api.research_merge_article import handle_merge_article_request
 from src.core.hashing import new_job_id
-from src.search.poh_overlap import list_poh_overlaps
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, bind_log_context, reset_log_context
+from src.core.openai_client import use_compute_mode
 from src.models.settings import Settings
 from src.persistence.research_runs import (
     create_research_run_accepted,
@@ -30,6 +30,7 @@ from src.search.article_catalog import (
     search_poh_catalog,
 )
 from src.search.article_llm import query_log_fields
+from src.search.poh_overlap import list_poh_overlaps
 from src.search.request_schema import ResearchInputValidationError
 from src.search.request_validation import validate_research_request
 from src.search.research_runner import (
@@ -158,14 +159,17 @@ def _start_research_worker(
                 f"research worker started: {log_fields['research_subject']}",
                 {"request_id": request_id, **log_fields},
             )
-            result = run_research(
-                request,
-                data_root=data_root,
-                settings=settings,
-                request_id=request_id,
-                reporter=reporter,
-                set_global_total=lambda total: registry.set_global_total(request_id, total),
-            )
+            compute_mode = request.compute_mode
+            with use_compute_mode(compute_mode, settings):
+                job_settings = settings.for_compute_mode(compute_mode)
+                result = run_research(
+                    request,
+                    data_root=data_root,
+                    settings=job_settings,
+                    request_id=request_id,
+                    reporter=reporter,
+                    set_global_total=lambda total: registry.set_global_total(request_id, total),
+                )
             markdown_path = persist_query_markdown(data_root, request_id, result.markdown)
             result.markdown_path = str(markdown_path)
             _record_research_run_succeeded(settings, result, request_id=request_id)
@@ -457,6 +461,19 @@ def build_research_routes(
                 send_json(handler, 400, _validation_error_response(exc))
                 return True
 
+            if request.compute_mode == "cloud":
+                missing_cloud = settings.missing_cloud_config(job_kind="research")
+                if missing_cloud:
+                    send_json(
+                        handler,
+                        400,
+                        {
+                            "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                            "field": "compute_mode",
+                        },
+                    )
+                    return True
+
             index_path = data_root / "polyindex" / "INDEX.json"
             dedup_key: str | None = None
             if request.options.dedup:
@@ -498,6 +515,7 @@ def build_research_routes(
                 job_id=request_id,
                 job_kind="research",
                 pipeline_version=RESEARCH_PIPELINE_VERSION,
+                compute_mode=request.compute_mode,
             )
             _record_research_run_accepted(
                 settings,
