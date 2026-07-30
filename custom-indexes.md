@@ -27,6 +27,35 @@ A **global polyindex JSON** that can improve search by unifying the *same kind o
 - Mapping everything into TOC / INDEX / TIME_INDEX
 - Shipping the “+” tools surface
 
+## Candidate types
+
+Inventory from editorial practice and from books under `data/input/raw` (via TOC/output). Excludes types already handled: TOC / analytic INDEX / BIBLIO / TIME_INDEX.
+
+- Chronology / chronistory (date → event)
+- Name index
+- Place / toponym index
+- Combined names-and-places index
+- Notable things / topics / phenomena index
+- Appendix (container for supplementary material)
+- Onomastic lists in appendix (emperors, popes, artists, mayors, etc.)
+- Institutional / technical lists (urban plans, offices, roles…)
+- Itineraries / guided routes
+- Nota al testo / reading notes / typographic legend
+- Glossary (term → definition)
+- Abbreviations and symbols list
+- Illustrations index
+- Plates index
+- Tables / figures / maps index
+- Iconographic sources list
+- Documentary appendices (texts, norms, excerpts, documents)
+- Data appendices (tables, statistics, extended charts)
+- Afterword (postfazione)
+- Endnotes list (if grouped at volume end)
+- Genre-specific indexes (works, cited authors as a corpus, directors, etc.)
+- Genealogies / dynastic trees
+- Repertories / entry catalogs (monument sheets, bio sheets outside main body)
+- Concordances / systematic cross-references between entries
+
 ## Suggested later envelope (draft only — validate on a real PDF)
 
 ```json
