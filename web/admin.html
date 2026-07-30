@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin POH — librarAIn</title>
+<title>Admin — librarAIn</title>
+<link rel="stylesheet" href="/nav.css">
 <script>
 (function (global) {
   function pageLabel() {
@@ -55,7 +56,8 @@
   color: #d4d4d4;
   background: #1e1e1e;
 }
-body { margin: 0 auto; max-width: 64rem; padding: 1.5rem 1rem 3rem; }
+body { margin: 0; padding: 0; }
+.app-shell { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; box-sizing: border-box; }
 h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
 p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-bottom: 1rem; }
@@ -69,7 +71,6 @@ button.danger { background: #c95050; color: #fff; }
 button.secondary { background: #3c3c3c; color: #e8e8e8; }
 button.secondary:hover:not(:disabled) { background: #4a4a4a; }
 .hint { font-size: 0.8rem; color: #9d9d9d; }
-.nav { font-size: 0.85rem; margin-bottom: 1rem; }
 .panel { margin-bottom: 1.5rem; padding: 1rem; border-radius: 12px; background: #252526; border: 1px solid #3e3e3e; }
 .panel h2 { font-size: 0.95rem; margin: 0 0 0.75rem; color: #e8e8e8; }
 .panel-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 0.75rem; }
@@ -902,12 +903,10 @@ details.book-audit summary { cursor: pointer; color: #4ec9b0; }
 #out.err { background: #3a2020; color: #f0c0c0; border-color: #6b3535; }
 a { color: #4ec9b0; }
 body.embed-mode { max-width: none; padding: 0; margin: 0; background: #252526; }
+body.embed-mode .app-shell { max-width: none; padding: 0; margin: 0; }
 body.embed-mode .embed-hide { display: none !important; }
 body.embed-mode .panel { background: transparent; border: 0; padding: 0 1rem 1.25rem; margin-bottom: 0; border-radius: 0; }
 body.embed-mode .panel h2 { padding-top: 0.25rem; }
-body.embed-mode .system-overview-panel { border-bottom: 1px solid #3e3e3e; padding-bottom: 1rem; margin-bottom: 0.5rem; }
-body.embed-mode .panel:first-of-type { padding-top: 1rem; }
-body.embed-mode .admin-poh-panel { border-top: 1px solid #3e3e3e; }
 body.embed-mode #merge-bar { position: static; border: 0; background: transparent; padding: 0.75rem 0 0; border-radius: 0; margin-top: 0.5rem; }
 body.embed-mode #out { border: 0; background: transparent; padding: 0.5rem 0 0; margin-top: 0.5rem; border-top: 1px solid #3e3e3e; border-radius: 0; }
 body.embed-mode #out.err { background: rgba(58, 32, 32, 0.45); padding: 0.65rem 0.75rem; border: 0; border-radius: 8px; }
@@ -1170,6 +1169,128 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
 .polyindex-footer-actions { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-left: auto; }
 #progress-poh-gen { display: none; margin-bottom: 0.75rem; padding: 0.75rem 1rem; border-radius: 10px; background: #1e1e1e; border: 1px solid #454545; font-size: 0.85rem; white-space: pre-wrap; }
 #progress-poh-gen.show { display: block; }
+.admin-section-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  margin-bottom: 1rem;
+  background: #1a1a1a;
+  border: 1px solid #3e3e3e;
+  border-radius: 10px;
+}
+.admin-section-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.42rem 0.7rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: #252526;
+  color: #cccccc;
+  cursor: pointer;
+}
+.admin-section-tool:hover { background: #2f2f30; color: #e8e8e8; }
+.admin-section-tool.is-active { color: #e8e8e8; }
+button.admin-section-tool:hover:not(:disabled) { background: #2f2f30; color: #e8e8e8; }
+.admin-section-tool[data-admin-section="sistema"].is-active { border-color: #4ec9b0; background: rgba(78, 201, 176, 0.12); }
+.admin-section-tool[data-admin-section="articoli"].is-active { border-color: #3d8eef; background: rgba(61, 142, 239, 0.12); }
+.admin-section-tool[data-admin-section="pagine"].is-active { border-color: #b88bff; background: rgba(184, 139, 255, 0.12); }
+.admin-section-tool[data-admin-section="poh"].is-active { border-color: #e6c229; background: rgba(230, 194, 41, 0.12); }
+.admin-section-tool[data-admin-section="biblio"].is-active { border-color: #4ec9b0; background: rgba(78, 201, 176, 0.12); }
+button.admin-section-tool[data-admin-section="sistema"].is-active:hover:not(:disabled) { background: rgba(78, 201, 176, 0.18); }
+button.admin-section-tool[data-admin-section="articoli"].is-active:hover:not(:disabled) { background: rgba(61, 142, 239, 0.18); }
+button.admin-section-tool[data-admin-section="pagine"].is-active:hover:not(:disabled) { background: rgba(184, 139, 255, 0.18); }
+button.admin-section-tool[data-admin-section="poh"].is-active:hover:not(:disabled) { background: rgba(230, 194, 41, 0.18); }
+button.admin-section-tool[data-admin-section="biblio"].is-active:hover:not(:disabled) { background: rgba(78, 201, 176, 0.18); }
+.admin-section-tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+}
+.admin-section-tool-icon svg { display: block; width: 100%; height: 100%; }
+.admin-section-tool-label { white-space: nowrap; }
+.admin-section.hidden { display: none !important; }
+.admin-prompt-panel .admin-prompt-group-tools,
+.admin-prompt-panel .admin-prompt-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.55rem;
+}
+.admin-prompt-panel .admin-prompt-tools { margin-bottom: 0.65rem; }
+.admin-prompt-tool {
+  display: inline-flex;
+  align-items: center;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: #1e1e1e;
+  color: #cccccc;
+  cursor: pointer;
+}
+button.admin-prompt-tool:hover:not(:disabled) { background: #2f2f30; color: #e8e8e8; }
+.admin-prompt-tool.is-active { color: #e8e8e8; border-color: #4ec9b0; background: rgba(78, 201, 176, 0.12); }
+.admin-prompt-tool[data-prompt-group="ingest"].is-active,
+.admin-prompt-tool[data-prompt-id].is-active[data-prompt-group="ingest"] { border-color: #3d8eef; background: rgba(61, 142, 239, 0.12); }
+.admin-prompt-tool[data-prompt-group="polyindex"].is-active { border-color: #b88bff; background: rgba(184, 139, 255, 0.12); }
+.admin-prompt-tool[data-prompt-group="research"].is-active { border-color: #e6c229; background: rgba(230, 194, 41, 0.12); }
+.admin-prompt-tool[data-prompt-group="export"].is-active { border-color: #4ec9b0; background: rgba(78, 201, 176, 0.12); }
+.admin-prompt-meta { font-size: 0.75rem; color: #9d9d9d; margin: 0 0 0.45rem; word-break: break-all; }
+#admin-prompt-editor {
+  width: 100%;
+  min-height: 14rem;
+  box-sizing: border-box;
+  font: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #454545;
+  background: #1e1e1e;
+  color: #e8e8e8;
+  resize: vertical;
+}
+.admin-prompt-instance.hidden { display: none !important; }
+.admin-prompt-instance textarea.admin-prompt-editor {
+  width: 100%;
+  min-height: 14rem;
+  box-sizing: border-box;
+  font: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #454545;
+  background: #1e1e1e;
+  color: #e8e8e8;
+  resize: vertical;
+}
+.admin-prompt-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.65rem; }
+#admin-prompt-status { font-size: 0.78rem; color: #9d9d9d; }
+#admin-prompt-status.is-err { color: #f0a0a0; }
+#admin-prompt-status.is-ok { color: #6a9955; }
+body.embed-mode .admin-section-tools {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid #3e3e3e;
+  border-radius: 0;
+  background: #1a1a1a;
+}
+body.embed-mode .admin-section .panel:first-child { padding-top: 1rem; }
+body.embed-mode .system-overview-panel { border-bottom: 1px solid #3e3e3e; padding-bottom: 1rem; margin-bottom: 0.5rem; }
+body.embed-mode .admin-poh-panel { border-top: 1px solid #3e3e3e; }
 </style>
 </head>
 <body>
@@ -1180,14 +1301,52 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   }
 })();
 </script>
-<p class="nav embed-hide"><a href="/">Ingestione</a> · Admin · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a> · <a href="/jobs.html">Job</a> · <a href="/etaly-export">Export E-TALY</a></p>
-<h1 class="embed-hide">Admin — POH multi-libro</h1>
-<p class="lead embed-hide">Soggetti (POH) presenti in più libri in <code>data/polyindex/INDEX.json</code>. Seleziona due o più voci che indicano la stessa entità (es. <em>Augusto</em>, <em>Ottaviano</em>, <em>Imperatore Augusto</em>), scegli la voce canonica e uniscile. Le etichette delle voci assorbite diventano alias della voce canonica.</p>
+<p class="app-nav embed-hide">Admin · <a href="/biblio">Biblio</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<div class="app-shell">
+<h1 class="embed-hide">Admin</h1>
+<p class="lead embed-hide">Panoramica sistema, articoli, pagine, POH e strumenti di manutenzione.</p>
 
+<div class="admin-section-tools" role="toolbar" aria-label="Sezioni admin">
+  <button type="button" class="admin-section-tool is-active" data-admin-section="sistema" title="Panoramica e job attivi" aria-label="Sistema">
+    <span class="admin-section-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#4ec9b0" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+    <span class="admin-section-tool-label">Sistema</span>
+  </button>
+  <button type="button" class="admin-section-tool" data-admin-section="articoli" title="Controllo e generazione articoli" aria-label="Articoli">
+    <span class="admin-section-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2.2"><path d="M6 4h9l3 3v13H6z"/><path d="M15 4v3h3M8 11h8M8 15h6"/></svg></span>
+    <span class="admin-section-tool-label">Articoli</span>
+  </button>
+  <button type="button" class="admin-section-tool" data-admin-section="pagine" title="Audit pagine mancanti" aria-label="Pagine">
+    <span class="admin-section-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#b88bff" stroke-width="2.2"><path d="M5 4h10l4 4v12H5z"/><path d="M15 4v4h4M8 13h8M8 17h5"/></svg></span>
+    <span class="admin-section-tool-label">Pagine</span>
+  </button>
+  <button type="button" class="admin-section-tool" data-admin-section="poh" title="POH multi-libro e duplicati" aria-label="POH">
+    <span class="admin-section-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2.2"><circle cx="8" cy="10" r="3"/><circle cx="16" cy="10" r="3"/><path d="M3 19c1-2.5 3-4 5-4s4 1.5 5 4M11 19c1-2.5 3-4 5-4s4 1.5 5 4"/></svg></span>
+    <span class="admin-section-tool-label">POH</span>
+  </button>
+  <button type="button" class="admin-section-tool hidden" id="admin-section-biblio-btn" data-admin-section="biblio" title="Estrazione bibliografia" aria-label="Biblio">
+    <span class="admin-section-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#4ec9b0" stroke-width="2.2"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>
+    <span class="admin-section-tool-label">Biblio</span>
+  </button>
+</div>
+
+<div class="admin-section" data-admin-section="sistema">
 <div class="panel system-overview-panel">
   <h2>Panoramica sistema</h2>
   <p class="hint">VRAM, modelli LM Studio, job attivi e stato articoli research.</p>
   <div class="system-overview-stats" id="system-overview-stats">Caricamento…</div>
+</div>
+
+<div class="panel admin-prompt-panel">
+  <h2>System prompt</h2>
+  <p class="hint">Un editor per ogni prompt base (ingest, polyindex, research, export). La toolbar cambia istanza; i testi sono precaricati dal file <code>.md</code>.</p>
+  <div class="admin-prompt-group-tools" id="admin-prompt-group-tools" role="toolbar" aria-label="Gruppi prompt"></div>
+  <div class="admin-prompt-tools" id="admin-prompt-tools" role="toolbar" aria-label="Prompt del gruppo"></div>
+  <div id="admin-prompt-instances"></div>
+  <div class="admin-prompt-actions">
+    <button type="button" id="admin-prompt-save" disabled>Salva</button>
+    <button type="button" id="admin-prompt-reload" class="secondary" disabled>Ricarica</button>
+    <span id="admin-prompt-status"></span>
+  </div>
 </div>
 
 <div class="panel active-jobs-panel">
@@ -1195,7 +1354,9 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   <p class="hint">Ingest, riparazioni e articoli in corso. <a href="/jobs.html">Storico completo e filtri</a>.</p>
   <div id="active-jobs-root"><div class="active-jobs-empty">Caricamento…</div></div>
 </div>
+</div>
 
+<div class="admin-section hidden" data-admin-section="articoli">
 <div class="panel">
   <h2>Controllo articoli</h2>
   <p class="hint">Articoli già generati (HTML e markdown): elenco e verifica di stub, file danneggiati o scollegati dal catalogo.</p>
@@ -1205,6 +1366,31 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
   <div id="article-audit-root"><div class="active-jobs-empty">Caricamento…</div></div>
 </div>
 
+<div class="panel">
+  <h2>Genera articoli mancanti</h2>
+  <p class="hint">Un articolo HTML per ogni soggetto in <code>INDEX.json</code> senza file in <code>data/research/articles/</code>.</p>
+  <div class="stats" id="article-stats">Caricamento stato…</div>
+  <div class="panel-row">
+    <button type="button" id="gen-all">Genera tutti i mancanti</button>
+    <select id="book-select"><option value="">— libro —</option></select>
+    <button type="button" id="gen-book" class="secondary" disabled>Genera per libro</button>
+  </div>
+  <div id="progress-gen"></div>
+  <p class="hint" id="research-mock-hint" style="display:none;">Modalità mock research attiva (<code>?mock=1</code>): generazione simulata senza LLM.</p>
+</div>
+
+<div class="panel hidden" id="embeddings-panel">
+  <h2>Embedding soggetti</h2>
+  <p class="hint">Vettori per il match semantico (<code>MATCHER_EMBEDDING_MODEL</code>) rispetto a <code>INDEX.json</code>.</p>
+  <div class="stats" id="embeddings-stats">Caricamento…</div>
+  <div class="panel-row">
+    <button type="button" id="embeddings-generate">Genera embedding mancanti</button>
+  </div>
+  <div id="progress-embeddings"></div>
+</div>
+</div>
+
+<div class="admin-section hidden" data-admin-section="pagine">
 <div class="panel">
   <h2>Pagine mancanti per libro</h2>
   <p class="hint">Scansione di <code>data/output/</code> e <code>data/tmp/</code>: per ogni libro verifica stage1 OCR, stage2 Vision, stage3 Editor e pagine in output.</p>
@@ -1234,6 +1420,93 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
     </thead>
     <tbody id="pages-audit-rows"></tbody>
   </table>
+</div>
+</div>
+
+<div class="admin-section hidden" data-admin-section="poh">
+<div class="panel" id="dedup-panel">
+  <h2>Proposte duplicati</h2>
+  <p class="hint">Scansione AI su <em>tutti</em> i soggetti in <code>INDEX.json</code> (embedding + fuzzy; LLM solo in fascia ambigua). Conferma per unire, rifiuta per non riproporre. L’eliminazione resta manuale dalla tabella sotto.</p>
+  <div class="panel-row">
+    <button type="button" id="dedup-scan">Scansiona duplicati</button>
+    <button type="button" id="dedup-reload" class="secondary">Ricarica proposte</button>
+    <span class="stats" id="dedup-stats">Nessuna scansione recente.</span>
+  </div>
+  <div id="progress-dedup"></div>
+  <div id="dedup-clusters"><div class="dedup-empty">Caricamento proposte…</div></div>
+</div>
+
+<div class="panel admin-poh-panel">
+  <h2>POH multi-libro</h2>
+  <p class="hint">Soggetti presenti in più libri. Seleziona voci duplicate, scegli la canonica e uniscile. La scansione AI sopra considera anche i soggetti in un solo libro.</p>
+  <div class="admin-poh-filters">
+  <div class="toolbar admin-poh-toolbar">
+  <input type="search" id="search" placeholder="Filtra per etichetta o alias…">
+  <div class="poh-book-filter" id="poh-book-filter">
+    <div class="poh-book-filter-field">
+      <input type="search" id="poh-book-search" placeholder="Filtra per libro…" autocomplete="off" aria-controls="poh-book-dropdown" aria-expanded="false">
+      <div id="poh-book-dropdown" class="poh-book-dropdown hidden" role="listbox" aria-label="Libri"></div>
+    </div>
+  </div>
+  <label class="hint">Min libri
+    <input type="number" id="min-books" value="2" min="1">
+  </label>
+  <label class="hint">Articolo
+    <select id="poh-article-filter" aria-label="Filtra per articolo generato">
+      <option value="all" selected>Tutti</option>
+      <option value="generated">Con articolo</option>
+      <option value="missing">Senza articolo</option>
+    </select>
+  </label>
+  <button id="reload">Ricarica</button>
+  <span class="hint" id="count"></span>
+</div>
+<div id="poh-book-chips" class="poh-book-chips-row"></div>
+</div>
+<div id="progress-poh-gen"></div>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Soggetto</th>
+      <th>Libri</th>
+      <th>Presente in</th>
+      <th>Azioni</th>
+    </tr>
+  </thead>
+  <tbody id="rows"></tbody>
+</table>
+
+<div id="merge-bar">
+  <span class="hint"><span id="sel-count">0</span> selezionati</span>
+  <button type="button" id="gen-selected" class="secondary" disabled>Genera selezionati</button>
+  <span id="merge-bar-merge-group" class="merge-bar-merge-group hidden">
+    <span class="hint">— canonico:</span>
+    <select id="target"></select>
+    <button class="danger" id="do-merge">Unisci nei selezionati</button>
+  </span>
+  <button type="button" id="clear-sel">Annulla selezione</button>
+</div>
+</div>
+</div>
+
+<div class="admin-section hidden" data-admin-section="biblio" id="admin-biblio-section">
+<div class="panel" id="admin-biblio-panel">
+  <h2>Bibliografia</h2>
+  <p class="hint">Libri già ingestiti su cui puoi estrarre la bibliografia (pagine output presenti). Oppure apri la pagina dedicata: <a href="/biblio#run">Biblio → Estrai</a>.</p>
+  <div class="panel-row">
+    <button type="button" id="admin-biblio-reload" class="secondary">Ricarica libri</button>
+    <span class="stats" id="admin-biblio-count"></span>
+  </div>
+  <div id="admin-biblio-list" style="margin-top:0.75rem"></div>
+  <div class="panel-row" id="admin-biblio-run-row" style="display:none;margin-top:0.75rem">
+    <strong id="admin-biblio-selected"></strong>
+    <input type="text" id="admin-biblio-range" placeholder="range es. 240-255" style="width:9rem">
+    <button type="button" id="admin-biblio-run">Avvia estrazione</button>
+    <span class="hint" id="admin-biblio-status"></span>
+  </div>
+</div>
 </div>
 
 <div id="page-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
@@ -1304,95 +1577,6 @@ body.embed-mode .admin-empty-row td { padding: 0.75rem 0; color: #9d9d9d; font-s
       </div>
     </div>
   </div>
-</div>
-
-<div class="panel">
-  <h2>Genera articoli mancanti</h2>
-  <p class="hint">Un articolo HTML per ogni soggetto in <code>INDEX.json</code> senza file in <code>data/research/articles/</code>.</p>
-  <div class="stats" id="article-stats">Caricamento stato…</div>
-  <div class="panel-row">
-    <button type="button" id="gen-all">Genera tutti i mancanti</button>
-    <select id="book-select"><option value="">— libro —</option></select>
-    <button type="button" id="gen-book" class="secondary" disabled>Genera per libro</button>
-  </div>
-  <div id="progress-gen"></div>
-  <p class="hint" id="research-mock-hint" style="display:none;">Modalità mock research attiva (<code>?mock=1</code>): generazione simulata senza LLM.</p>
-</div>
-
-<div class="panel hidden" id="embeddings-panel">
-  <h2>Embedding soggetti</h2>
-  <p class="hint">Vettori per il match semantico (<code>MATCHER_EMBEDDING_MODEL</code>) rispetto a <code>INDEX.json</code>.</p>
-  <div class="stats" id="embeddings-stats">Caricamento…</div>
-  <div class="panel-row">
-    <button type="button" id="embeddings-generate">Genera embedding mancanti</button>
-  </div>
-  <div id="progress-embeddings"></div>
-</div>
-
-<div class="panel" id="dedup-panel">
-  <h2>Proposte duplicati</h2>
-  <p class="hint">Scansione AI su <em>tutti</em> i soggetti in <code>INDEX.json</code> (embedding + fuzzy; LLM solo in fascia ambigua). Conferma per unire, rifiuta per non riproporre. L’eliminazione resta manuale dalla tabella sotto.</p>
-  <div class="panel-row">
-    <button type="button" id="dedup-scan">Scansiona duplicati</button>
-    <button type="button" id="dedup-reload" class="secondary">Ricarica proposte</button>
-    <span class="stats" id="dedup-stats">Nessuna scansione recente.</span>
-  </div>
-  <div id="progress-dedup"></div>
-  <div id="dedup-clusters"><div class="dedup-empty">Caricamento proposte…</div></div>
-</div>
-
-<div class="panel admin-poh-panel">
-  <h2>POH multi-libro</h2>
-  <p class="hint">Soggetti presenti in più libri. Seleziona voci duplicate, scegli la canonica e uniscile. La scansione AI sopra considera anche i soggetti in un solo libro.</p>
-  <div class="admin-poh-filters">
-  <div class="toolbar admin-poh-toolbar">
-  <input type="search" id="search" placeholder="Filtra per etichetta o alias…">
-  <div class="poh-book-filter" id="poh-book-filter">
-    <div class="poh-book-filter-field">
-      <input type="search" id="poh-book-search" placeholder="Filtra per libro…" autocomplete="off" aria-controls="poh-book-dropdown" aria-expanded="false">
-      <div id="poh-book-dropdown" class="poh-book-dropdown hidden" role="listbox" aria-label="Libri"></div>
-    </div>
-  </div>
-  <label class="hint">Min libri
-    <input type="number" id="min-books" value="2" min="1">
-  </label>
-  <label class="hint">Articolo
-    <select id="poh-article-filter" aria-label="Filtra per articolo generato">
-      <option value="all" selected>Tutti</option>
-      <option value="generated">Con articolo</option>
-      <option value="missing">Senza articolo</option>
-    </select>
-  </label>
-  <button id="reload">Ricarica</button>
-  <span class="hint" id="count"></span>
-</div>
-<div id="poh-book-chips" class="poh-book-chips-row"></div>
-</div>
-<div id="progress-poh-gen"></div>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Soggetto</th>
-      <th>Libri</th>
-      <th>Presente in</th>
-      <th>Azioni</th>
-    </tr>
-  </thead>
-  <tbody id="rows"></tbody>
-</table>
-
-<div id="merge-bar">
-  <span class="hint"><span id="sel-count">0</span> selezionati</span>
-  <button type="button" id="gen-selected" class="secondary" disabled>Genera selezionati</button>
-  <span id="merge-bar-merge-group" class="merge-bar-merge-group hidden">
-    <span class="hint">— canonico:</span>
-    <select id="target"></select>
-    <button class="danger" id="do-merge">Unisci nei selezionati</button>
-  </span>
-  <button type="button" id="clear-sel">Annulla selezione</button>
-</div>
 </div>
 
 <div id="out"></div>
@@ -4554,6 +4738,376 @@ document.getElementById("pages-audit-reload").addEventListener("click", () => {
 });
 document.getElementById("pages-audit-only-gaps").addEventListener("change", renderPagesAudit);
 
+const ADMIN_BIBLIO_EXTRACT_ENABLED = false;
+
+const ADMIN_SECTIONS = ["sistema", "articoli", "pagine", "poh", "biblio"];
+
+function setAdminSection(name) {
+  const target = ADMIN_SECTIONS.indexOf(name) >= 0 ? name : "sistema";
+  if (target === "biblio" && !ADMIN_BIBLIO_EXTRACT_ENABLED) {
+    return setAdminSection("sistema");
+  }
+  document.querySelectorAll(".admin-section-tool[data-admin-section]").forEach(function (btn) {
+    btn.classList.toggle("is-active", btn.getAttribute("data-admin-section") === target);
+  });
+  document.querySelectorAll(".admin-section[data-admin-section]").forEach(function (panel) {
+    panel.classList.toggle("hidden", panel.getAttribute("data-admin-section") !== target);
+  });
+  if (location.hash.replace(/^#/, "") !== target) {
+    history.replaceState(null, "", "#" + target);
+  }
+  if (typeof reportEmbedHeight === "function") reportEmbedHeight();
+}
+
+(function initAdminSections() {
+  const biblioBtn = document.getElementById("admin-section-biblio-btn");
+  if (biblioBtn) biblioBtn.classList.toggle("hidden", !ADMIN_BIBLIO_EXTRACT_ENABLED);
+  document.querySelectorAll(".admin-section-tool[data-admin-section]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      setAdminSection(btn.getAttribute("data-admin-section"));
+    });
+  });
+  const fromHash = (location.hash || "").replace(/^#/, "");
+  setAdminSection(fromHash || "sistema");
+  window.addEventListener("hashchange", function () {
+    setAdminSection((location.hash || "").replace(/^#/, "") || "sistema");
+  });
+})();
+
+(function initAdminPromptEditor() {
+  const groupTools = document.getElementById("admin-prompt-group-tools");
+  const promptTools = document.getElementById("admin-prompt-tools");
+  const instancesEl = document.getElementById("admin-prompt-instances");
+  const saveBtn = document.getElementById("admin-prompt-save");
+  const reloadBtn = document.getElementById("admin-prompt-reload");
+  const statusEl = document.getElementById("admin-prompt-status");
+  if (!groupTools || !promptTools || !instancesEl || !saveBtn || !reloadBtn) return;
+
+  const state = {
+    prompts: [],
+    groups: [],
+    groupId: "",
+    promptId: "",
+    instances: {},
+  };
+
+  function setStatus(text, kind) {
+    statusEl.textContent = text || "";
+    statusEl.classList.toggle("is-err", kind === "err");
+    statusEl.classList.toggle("is-ok", kind === "ok");
+  }
+
+  async function readJson(res) {
+    const raw = await res.text();
+    try {
+      return JSON.parse(raw);
+    } catch (err) {
+      throw new Error(
+        res.status === 404
+          ? "API prompt non trovata (404). Riavvia il server."
+          : "Risposta non JSON (HTTP " + res.status + ")"
+      );
+    }
+  }
+
+  function currentInstance() {
+    return state.instances[state.promptId] || null;
+  }
+
+  function markDirty(promptId, dirty) {
+    const inst = state.instances[promptId];
+    if (!inst) return;
+    inst.dirty = !!dirty;
+    if (promptId === state.promptId && statusEl.classList.contains("is-ok")) setStatus("");
+  }
+
+  function showActiveInstance() {
+    Object.keys(state.instances).forEach(function (id) {
+      const inst = state.instances[id];
+      const sameGroup = inst.meta.group === state.groupId;
+      inst.root.classList.toggle("hidden", !sameGroup || id !== state.promptId);
+    });
+    const active = currentInstance();
+    const ready = !!(active && !active.error);
+    saveBtn.disabled = !ready;
+    reloadBtn.disabled = !ready;
+    if (active && active.error) setStatus(active.error, "err");
+    else if (!statusEl.classList.contains("is-err")) setStatus(active && active.dirty ? "Modifiche non salvate" : "");
+    if (typeof reportEmbedHeight === "function") reportEmbedHeight();
+  }
+
+  function renderGroups() {
+    groupTools.innerHTML = "";
+    state.groups.forEach(function (group) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "admin-prompt-tool" + (group.id === state.groupId ? " is-active" : "");
+      btn.setAttribute("data-prompt-group", group.id);
+      btn.textContent = group.label;
+      btn.addEventListener("click", function () {
+        if (group.id === state.groupId) return;
+        state.groupId = group.id;
+        const first = state.prompts.find(function (p) { return p.group === group.id; });
+        state.promptId = first ? first.id : "";
+        renderGroups();
+        renderPromptTools();
+        showActiveInstance();
+      });
+      groupTools.appendChild(btn);
+    });
+  }
+
+  function renderPromptTools() {
+    promptTools.innerHTML = "";
+    state.prompts.filter(function (p) { return p.group === state.groupId; }).forEach(function (prompt) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "admin-prompt-tool" + (prompt.id === state.promptId ? " is-active" : "");
+      btn.setAttribute("data-prompt-id", prompt.id);
+      btn.setAttribute("data-prompt-group", prompt.group);
+      btn.textContent = prompt.label + (state.instances[prompt.id] && state.instances[prompt.id].dirty ? " *" : "");
+      btn.title = prompt.relpath;
+      btn.addEventListener("click", function () {
+        if (prompt.id === state.promptId) return;
+        state.promptId = prompt.id;
+        renderPromptTools();
+        showActiveInstance();
+      });
+      promptTools.appendChild(btn);
+    });
+  }
+
+  function buildInstances() {
+    instancesEl.innerHTML = "";
+    state.instances = {};
+    state.prompts.forEach(function (prompt) {
+      const root = document.createElement("div");
+      root.className = "admin-prompt-instance hidden";
+      root.setAttribute("data-prompt-id", prompt.id);
+      const meta = document.createElement("div");
+      meta.className = "admin-prompt-meta";
+      meta.textContent = prompt.label + " · " + prompt.relpath;
+      const editor = document.createElement("textarea");
+      editor.className = "admin-prompt-editor";
+      editor.spellcheck = false;
+      editor.value = prompt.content || "";
+      if (prompt.error) editor.placeholder = prompt.error;
+      editor.addEventListener("input", function () {
+        markDirty(prompt.id, editor.value !== (state.instances[prompt.id].saved || ""));
+        renderPromptTools();
+      });
+      root.appendChild(meta);
+      root.appendChild(editor);
+      instancesEl.appendChild(root);
+      state.instances[prompt.id] = {
+        meta: prompt,
+        root: root,
+        editor: editor,
+        saved: prompt.content || "",
+        dirty: false,
+        error: prompt.error || "",
+      };
+    });
+  }
+
+  async function saveActive() {
+    const inst = currentInstance();
+    if (!inst) return;
+    saveBtn.disabled = true;
+    setStatus("Salvataggio…");
+    try {
+      const res = await apiFetch("/api/admin/prompts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: inst.meta.id, content: inst.editor.value }),
+      });
+      const data = await readJson(res);
+      if (!res.ok || !data.ok) throw new Error(data.error || "salvataggio fallito");
+      inst.editor.value = data.content || inst.editor.value;
+      inst.saved = inst.editor.value;
+      inst.dirty = false;
+      inst.error = "";
+      setStatus("Salvato", "ok");
+      renderPromptTools();
+    } catch (err) {
+      setStatus(String(err.message || err), "err");
+    } finally {
+      saveBtn.disabled = false;
+    }
+  }
+
+  async function reloadActive() {
+    const inst = currentInstance();
+    if (!inst) return;
+    if (inst.dirty && !window.confirm("Scartare le modifiche non salvate?")) return;
+    reloadBtn.disabled = true;
+    setStatus("Ricarica…");
+    try {
+      const res = await apiFetch("/api/admin/prompts?id=" + encodeURIComponent(inst.meta.id));
+      const data = await readJson(res);
+      if (!res.ok || !data.ok) throw new Error(data.error || "ricarica fallita");
+      inst.editor.value = data.content || "";
+      inst.saved = inst.editor.value;
+      inst.dirty = false;
+      inst.error = "";
+      setStatus("");
+      renderPromptTools();
+    } catch (err) {
+      setStatus(String(err.message || err), "err");
+    } finally {
+      reloadBtn.disabled = false;
+      showActiveInstance();
+    }
+  }
+
+  saveBtn.addEventListener("click", function () {
+    saveActive().catch(function (err) { setStatus(String(err.message || err), "err"); });
+  });
+  reloadBtn.addEventListener("click", function () {
+    reloadActive().catch(function (err) { setStatus(String(err.message || err), "err"); });
+  });
+
+  setStatus("Caricamento prompt…");
+  apiFetch("/api/admin/prompts")
+    .then(function (res) {
+      return readJson(res).then(function (data) { return { res: res, data: data }; });
+    })
+    .then(function (pack) {
+      if (!pack.res.ok || !pack.data.ok) throw new Error(pack.data.error || "catalogo prompt non disponibile");
+      state.prompts = pack.data.prompts || [];
+      state.groups = pack.data.groups || [];
+      if (!state.groups.length && state.prompts.length) {
+        const seen = {};
+        state.groups = state.prompts.reduce(function (acc, p) {
+          if (seen[p.group]) return acc;
+          seen[p.group] = true;
+          acc.push({ id: p.group, label: p.group_label || p.group });
+          return acc;
+        }, []);
+      }
+      state.groupId = state.groups[0] ? state.groups[0].id : "";
+      const first = state.prompts.find(function (p) { return p.group === state.groupId; });
+      state.promptId = first ? first.id : "";
+      buildInstances();
+      renderGroups();
+      renderPromptTools();
+      showActiveInstance();
+      setStatus(state.prompts.length ? "" : "Nessun prompt");
+    })
+    .catch(function (err) {
+      setStatus(String(err.message || err), "err");
+    });
+})();
+
+let adminBiblioBooks = [];
+let adminBiblioSelected = null;
+
+function renderAdminBiblioList() {
+  if (!ADMIN_BIBLIO_EXTRACT_ENABLED) return;
+  const list = document.getElementById("admin-biblio-list");
+  const count = document.getElementById("admin-biblio-count");
+  if (!list) return;
+  count.textContent = adminBiblioBooks.length + " idonei";
+  if (!adminBiblioBooks.length) {
+    list.innerHTML = "<p class='hint'>Nessun libro con pagine output.</p>";
+    return;
+  }
+  list.innerHTML = adminBiblioBooks.map((book) => {
+    const selected = adminBiblioSelected && adminBiblioSelected.source_sha256 === book.source_sha256;
+    const status = book.has_biblio
+      ? (book.biblio_entry_count + " voci")
+      : "non estratto";
+    const range = book.biblio_range ? (book.biblio_range.start + "-" + book.biblio_range.end) : "—";
+    return (
+      "<div class='panel' style='padding:0.65rem;margin:0 0 0.45rem;cursor:pointer;" +
+      (selected ? "border-color:#4ec9b0;" : "") + "' data-sha='" + escapeHtml(book.source_sha256) + "'>" +
+      "<div><strong>" + escapeHtml(book.title || "") + "</strong> · " + escapeHtml(status) + " · range " + escapeHtml(range) + "</div>" +
+      "<div class='hint'>" + escapeHtml(book.source_sha256) + " · " + escapeHtml(String(book.output_pages || 0)) + " pag. output</div></div>"
+    );
+  }).join("");
+  list.querySelectorAll("[data-sha]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const sha = el.getAttribute("data-sha");
+      adminBiblioSelected = adminBiblioBooks.find((b) => b.source_sha256 === sha) || null;
+      const row = document.getElementById("admin-biblio-run-row");
+      row.style.display = adminBiblioSelected ? "flex" : "none";
+      document.getElementById("admin-biblio-selected").textContent = adminBiblioSelected
+        ? (adminBiblioSelected.title || adminBiblioSelected.source_sha256.slice(0, 12))
+        : "";
+      const rangeInput = document.getElementById("admin-biblio-range");
+      if (adminBiblioSelected && adminBiblioSelected.biblio_range && !rangeInput.value.trim()) {
+        rangeInput.value = adminBiblioSelected.biblio_range.start + "-" + adminBiblioSelected.biblio_range.end;
+      }
+      document.getElementById("admin-biblio-status").textContent = "";
+      renderAdminBiblioList();
+    });
+  });
+}
+
+async function loadAdminBiblioCandidates() {
+  if (!ADMIN_BIBLIO_EXTRACT_ENABLED) return;
+  const res = await apiFetch("/api/admin/biblio/candidates");
+  const text = await res.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch (_) {
+    throw new Error(
+      res.ok
+        ? "Risposta biblio non JSON"
+        : ("API biblio non disponibile (HTTP " + res.status + "). Riavvia il server.")
+    );
+  }
+  if (!data.ok) throw new Error(data.error || "biblio candidates failed");
+  adminBiblioBooks = (data.books || []).filter((b) => b.eligible);
+  renderAdminBiblioList();
+}
+
+const adminBiblioReload = document.getElementById("admin-biblio-reload");
+if (ADMIN_BIBLIO_EXTRACT_ENABLED && adminBiblioReload) {
+  adminBiblioReload.addEventListener("click", () => {
+    loadAdminBiblioCandidates().catch((err) => showOut(String(err), true));
+  });
+}
+const adminBiblioRun = document.getElementById("admin-biblio-run");
+if (ADMIN_BIBLIO_EXTRACT_ENABLED && adminBiblioRun) {
+  adminBiblioRun.addEventListener("click", async () => {
+    const status = document.getElementById("admin-biblio-status");
+    if (!adminBiblioSelected) {
+      status.textContent = "Seleziona un libro.";
+      return;
+    }
+    const range = document.getElementById("admin-biblio-range").value.trim();
+    const match = range.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (!match) {
+      status.textContent = "Range start-end obbligatorio.";
+      return;
+    }
+    status.textContent = "Avvio…";
+    const res = await apiFetch("/api/admin/biblio/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_sha256: adminBiblioSelected.source_sha256,
+        biblio_range: { start: parseInt(match[1], 10), end: parseInt(match[2], 10) },
+        compute_mode: (document.getElementById("admin-biblio-compute-mode") || document.getElementById("compute-mode") || {}).value || "local",
+      }),
+    });
+    const data = await res.json();
+    status.textContent = data.ok ? ("Job " + data.job_id) : (data.error || "errore");
+    if (data.ok) loadAdminBiblioCandidates().catch(() => {});
+  });
+}
+if (ADMIN_BIBLIO_EXTRACT_ENABLED) {
+  loadAdminBiblioCandidates().catch((err) => {
+    const count = document.getElementById("admin-biblio-count");
+    const list = document.getElementById("admin-biblio-list");
+    if (count) count.textContent = "";
+    if (list) list.innerHTML = "<p class='hint'>" + escapeHtml(String(err.message || err)) + "</p>";
+  });
+}
+
+
 load();
 loadPagesAudit().catch((err) => showOut(String(err), true));
 loadArticleStatus().catch((err) => showOut(String(err), true));
@@ -4590,5 +5144,6 @@ window.addEventListener("librarain-research-mock-mode", function (ev) {
   }
 });
 </script>
+</div>
 </body>
 </html>

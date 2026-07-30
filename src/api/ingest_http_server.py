@@ -26,8 +26,11 @@ from src.api.admin_subject_dedup import (
     try_handle_admin_subject_dedup_get,
     try_handle_admin_subject_dedup_post,
 )
+from src.api.biblio_http import try_handle_biblio_get, try_handle_biblio_post
 from src.api.chat_completions_handler import handle_chat_completions
 from src.api.etaly_export_handler import build_etaly_export_routes
+from src.api.page_guidance_http import try_handle_page_guidance_post
+from src.api.prompts_http import try_handle_prompts_get, try_handle_prompts_post
 from src.api.system_preflight import evaluate_preflight, normalize_preflight_operation
 from src.api.ingest_form import (
     InvalidPagesSpec,
@@ -39,7 +42,11 @@ from src.api.ingest_pipeline_runner import run_full_pipeline
 from src.api.ingest_pipeline_runner_glm import run_glm_ingest_pipeline
 from src.api.ingest_form import _parse_pages_spec
 from src.api.reicat_vision_suggest import suggest_reicat_metadata
-from src.api.job_history import list_active_jobs_with_batches, list_job_history
+from src.api.job_history import (
+    list_active_jobs_with_batches,
+    list_job_history,
+    try_handle_job_retry_post,
+)
 from src.api.job_registry import JobRegistry
 from src.api.research_batch_registry import ResearchBatchRegistry
 from src.api.research_handlers import build_research_routes
@@ -73,6 +80,8 @@ from src.persistence.book_page_repair import (
 from src.core.config import ConfigurationError, get_env, load_settings
 from src.core.hashing import new_job_id
 from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
+from src.core.openai_client import use_compute_mode
+from src.models.settings import normalize_compute_mode
 from src.ingestion.pdf_alignment import merge_pdf_paths
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
@@ -135,12 +144,15 @@ def _is_api_path(path: str) -> bool:
 
 _WEB_PAGE_ALIASES = frozenset({
     "/",
+    "/ingest",
     "/index.html",
     "/index2.html",
     "/dashboard",
     "/dashboard.html",
     "/admin",
     "/admin.html",
+    "/biblio",
+    "/biblio.html",
     "/ricerca",
     "/ricerca.html",
     "/jobs",
@@ -564,7 +576,7 @@ def build_ingest_server(
                 _send_bytes(self, 200, index2_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
-            if path in ("/", "/index.html"):
+            if path in ("/ingest", "/index.html"):
                 index_file = web_dir / "index.html"
                 if not index_file.exists():
                     Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
@@ -584,7 +596,7 @@ def build_ingest_server(
                 _send_bytes(self, 200, jobs_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
-            if path in ("/admin", "/admin.html"):
+            if path in ("/", "/admin", "/admin.html"):
                 admin_file = web_dir / "admin.html"
                 if not admin_file.exists():
                     Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
@@ -594,10 +606,26 @@ def build_ingest_server(
                 _send_bytes(self, 200, admin_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
+            if path in ("/biblio", "/biblio.html"):
+                biblio_file = web_dir / "biblio.html"
+                if not biblio_file.exists():
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
+                        {"path": str(biblio_file)})
+                    _send_json(self, 500, {"ok": False, "error": "web/biblio.html missing"})
+                    return
+                _send_bytes(self, 200, biblio_file.read_bytes(), "text/html; charset=utf-8")
+                return
+
             if path == "/log.js":
                 log_js = web_dir / "log.js"
                 if log_js.is_file():
                     _send_bytes(self, 200, log_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
+            if path == "/nav.css":
+                nav_css = web_dir / "nav.css"
+                if nav_css.is_file():
+                    _send_bytes(self, 200, nav_css.read_bytes(), "text/css; charset=utf-8")
                     return
 
             if path == "/article-source-viewer.js":
@@ -608,7 +636,7 @@ def build_ingest_server(
 
             if path == "/mockup/lab.html":
                 self.send_response(302)
-                self.send_header("Location", "/index.html?mock=1")
+                self.send_header("Location", "/ingest?mock=1")
                 self.end_headers()
                 return
 
@@ -691,6 +719,21 @@ def build_ingest_server(
             ):
                 return
             if try_handle_admin_subject_dedup_get(
+                path,
+                self,
+                data_root=data_root,
+                send_json=_send_json,
+            ):
+                return
+            if try_handle_prompts_get(
+                path,
+                self,
+                query=query,
+                repo_root=repo_root,
+                send_json=_send_json,
+            ):
+                return
+            if try_handle_biblio_get(
                 path,
                 self,
                 data_root=data_root,
@@ -1048,11 +1091,35 @@ def build_ingest_server(
                     _send_json(self, 400, {"ok": False, "error": str(exc)})
                     return
             try:
-                result = suggest_reicat_metadata(
-                    saved_path,
-                    settings,
-                    pages_one_based=pages_one_based,
+                compute_mode = normalize_compute_mode(
+                    parsed.text_fields.get("compute_mode")
                 )
+            except ValueError as exc:
+                saved_path.unlink(missing_ok=True)
+                _send_json(self, 400, {"ok": False, "error": str(exc), "field": "compute_mode"})
+                return
+            if compute_mode == "cloud":
+                missing_cloud = settings.missing_cloud_config(job_kind="reicat")
+                if missing_cloud:
+                    saved_path.unlink(missing_ok=True)
+                    _send_json(
+                        self,
+                        400,
+                        {
+                            "ok": False,
+                            "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                            "field": "compute_mode",
+                        },
+                    )
+                    return
+            try:
+                with use_compute_mode(compute_mode, settings):
+                    job_settings = settings.for_compute_mode(compute_mode)
+                    result = suggest_reicat_metadata(
+                        saved_path,
+                        job_settings,
+                        pages_one_based=pages_one_based,
+                    )
             except IngestInputValidationException as exc:
                 saved_path.unlink(missing_ok=True)
                 _send_validation_error(
@@ -1100,8 +1167,26 @@ def build_ingest_server(
                 _send_json(self, 400, {"ok": False, "error": "missing_in must be a list of strings"})
                 return
             sha = source_sha256.strip()
+            try:
+                compute_mode = normalize_compute_mode(payload.get("compute_mode"))
+            except ValueError as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc), "field": "compute_mode"})
+                return
+            if compute_mode == "cloud":
+                missing_cloud = settings.missing_cloud_config(job_kind="repair")
+                if missing_cloud:
+                    _send_json(
+                        self,
+                        400,
+                        {
+                            "ok": False,
+                            "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                            "field": "compute_mode",
+                        },
+                    )
+                    return
             job_id, _started_at = new_job_id(f"{sha[:16]}_repair_p{aligned_page}")
-            registry.create_job(job_id=job_id)
+            registry.create_job(job_id=job_id, compute_mode=compute_mode)
             status_url = f"/api/ingest/{job_id}/status"
             events_url = f"/api/ingest/{job_id}/events"
             stages_hint = missing_in if isinstance(missing_in, list) else []
@@ -1133,6 +1218,7 @@ def build_ingest_server(
                             aligned_page=aligned_page,
                             missing_in=stages_hint,
                             pipeline_mode=pipeline_mode,
+                            compute_mode=compute_mode,
                             message=(
                                 "Riparazione lacune: " + ", ".join(stages_hint)
                                 if stages_hint
@@ -1140,16 +1226,18 @@ def build_ingest_server(
                             ),
                         ),
                     )
-                    result = run_book_page_repair(
-                        data_root,
-                        settings,
-                        sha,
-                        aligned_page,
-                        missing_in=stages_hint,
-                        request_id=job_id,
-                        progress=reporter,
-                        pipeline_mode=pipeline_mode,
-                    )
+                    with use_compute_mode(compute_mode, settings):
+                        job_settings = settings.for_compute_mode(compute_mode)
+                        result = run_book_page_repair(
+                            data_root,
+                            job_settings,
+                            sha,
+                            aligned_page,
+                            missing_in=stages_hint,
+                            request_id=job_id,
+                            progress=reporter,
+                            pipeline_mode=pipeline_mode,
+                        )
                     registry.emit(job_id, make_event(
                         "page_repair",
                         STATUS_DONE,
@@ -1224,8 +1312,26 @@ def build_ingest_server(
                     _send_json(self, 400, {"ok": False, "error": "missing_in must be a list of strings"})
                     return
             sha = source_sha256.strip()
+            try:
+                compute_mode = normalize_compute_mode(payload.get("compute_mode"))
+            except ValueError as exc:
+                _send_json(self, 400, {"ok": False, "error": str(exc), "field": "compute_mode"})
+                return
+            if compute_mode == "cloud":
+                missing_cloud = settings.missing_cloud_config(job_kind="repair")
+                if missing_cloud:
+                    _send_json(
+                        self,
+                        400,
+                        {
+                            "ok": False,
+                            "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                            "field": "compute_mode",
+                        },
+                    )
+                    return
             job_id, _started_at = new_job_id(f"{sha[:16]}_gaps_repair")
-            registry.create_job(job_id=job_id)
+            registry.create_job(job_id=job_id, compute_mode=compute_mode)
             status_url = f"/api/ingest/{job_id}/status"
             events_url = f"/api/ingest/{job_id}/events"
             gap_payload = gap_pages
@@ -1256,18 +1362,21 @@ def build_ingest_server(
                             STATUS_STARTED,
                             source_sha256=sha,
                             pipeline_mode=pipeline_mode,
+                            compute_mode=compute_mode,
                             message=f"Riparazione {aligned_count} pagine con lacune",
                         ),
                     )
-                    result = run_book_gaps_repair(
-                        data_root,
-                        settings,
-                        sha,
-                        gap_payload,
-                        request_id=job_id,
-                        progress=reporter,
-                        pipeline_mode=pipeline_mode,
-                    )
+                    with use_compute_mode(compute_mode, settings):
+                        job_settings = settings.for_compute_mode(compute_mode)
+                        result = run_book_gaps_repair(
+                            data_root,
+                            job_settings,
+                            sha,
+                            gap_payload,
+                            request_id=job_id,
+                            progress=reporter,
+                            pipeline_mode=pipeline_mode,
+                        )
                     registry.emit(job_id, make_event(
                         "gaps_repair",
                         STATUS_DONE,
@@ -1460,6 +1569,18 @@ def build_ingest_server(
             if parsed.path == "/api/admin/book-pages/repair-all":
                 self._handle_book_gaps_repair()
                 return
+            if try_handle_job_retry_post(
+                parsed.path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                registry=registry,
+                job_semaphore=job_semaphore,
+                max_concurrent_jobs=max_concurrent_jobs,
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
             if try_handle_admin_embeddings_post(
                 parsed.path,
                 self,
@@ -1480,6 +1601,37 @@ def build_ingest_server(
                 send_json=_send_json,
                 read_body=_read_body,
                 sqlite_path=_settings_sqlite_path(settings),
+            ):
+                return
+            if try_handle_prompts_post(
+                parsed.path,
+                self,
+                repo_root=repo_root,
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
+            if try_handle_biblio_post(
+                parsed.path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                registry=registry,
+                job_semaphore=job_semaphore,
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
+            if try_handle_page_guidance_post(
+                parsed.path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                send_json=_send_json,
+                parse_multipart=parse_multipart_form_stream,
+                request_content_length=_request_content_length,
+                max_upload=max_upload,
+                safe_filename=_safe_filename,
             ):
                 return
             if parsed.path == "/api/ingest/reicat-suggest":
@@ -1545,6 +1697,33 @@ def build_ingest_server(
                     self, IngestInputErrorCode.INPUT_SCHEMA_INVALID, str(exc), "payload"
                 )
                 return
+
+            try:
+                compute_mode = normalize_compute_mode(ingest_payload.get("compute_mode"))
+            except ValueError as exc:
+                if parsed.pdf is not None:
+                    parsed.pdf.path.unlink(missing_ok=True)
+                _send_validation_error(
+                    self,
+                    IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                    str(exc),
+                    "compute_mode",
+                )
+                return
+            ingest_payload["compute_mode"] = compute_mode
+            cloud_job_kind = "ingest_glm" if ocr_backend == "glm" else "ingest"
+            if compute_mode == "cloud":
+                missing_cloud = settings.missing_cloud_config(job_kind=cloud_job_kind)
+                if missing_cloud:
+                    if parsed.pdf is not None:
+                        parsed.pdf.path.unlink(missing_ok=True)
+                    _send_validation_error(
+                        self,
+                        IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                        "cloud compute requires: " + ", ".join(missing_cloud),
+                        "compute_mode",
+                    )
+                    return
 
             uploaded = parsed.pdf
             if uploaded is None:
@@ -1633,11 +1812,12 @@ def build_ingest_server(
                 {"path": str(saved_path), "bytes": saved_path.stat().st_size})
 
             try:
-                require_gpu_vram_at_pipeline_start(
-                    settings,
-                    skip_vision_editor=False,
-                    ocr_backend=ocr_backend,
-                )
+                with use_compute_mode(compute_mode, settings):
+                    require_gpu_vram_at_pipeline_start(
+                        settings,
+                        skip_vision_editor=False,
+                        ocr_backend=ocr_backend,
+                    )
             except IngestInputValidationException as exc:
                 saved_path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest submit blocked by gpu vram preflight",
@@ -1652,7 +1832,7 @@ def build_ingest_server(
 
             pdf_stem = Path(uploaded.filename or "upload.pdf").stem
             job_id, _started_at = new_job_id(pdf_stem)
-            registry.create_job(job_id=job_id)
+            registry.create_job(job_id=job_id, compute_mode=compute_mode)
             events_url = f"/api/ingest/{job_id}/events"
             status_url = f"/api/ingest/{job_id}/status"
 
@@ -1674,6 +1854,7 @@ def build_ingest_server(
                         titolo=book_title,
                         book_title=book_title,
                         message=book_title or "Avvio ingestione libro",
+                        compute_mode=compute_mode,
                     ),
                 )
 
@@ -1687,13 +1868,15 @@ def build_ingest_server(
                     ))
                     job_semaphore.acquire()
                 try:
-                    pipeline_result = pipeline_runner(
-                        ingest_payload,
-                        saved_path,
-                        settings,
-                        reporter=reporter,
-                        set_global_total=lambda total: registry.set_global_total(job_id, total),
-                    )
+                    with use_compute_mode(compute_mode, settings):
+                        job_settings = settings.for_compute_mode(compute_mode)
+                        pipeline_result = pipeline_runner(
+                            ingest_payload,
+                            saved_path,
+                            job_settings,
+                            reporter=reporter,
+                            set_global_total=lambda total: registry.set_global_total(job_id, total),
+                        )
                     timing = (
                         pipeline_result.get("timing")
                         if isinstance(pipeline_result, dict)
