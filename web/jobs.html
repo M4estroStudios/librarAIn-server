@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Job — librarAIn</title>
 <script src="/log.js"></script>
+<link rel="stylesheet" href="/nav.css">
 <style>
 :root {
   color-scheme: dark;
@@ -14,11 +15,10 @@
   color: #d4d4d4;
   background: #1e1e1e;
 }
-body { margin: 0; min-height: 100vh; }
+body { margin: 0; min-height: 100vh; padding: 0; }
 a { color: #4ec9b0; text-decoration: none; }
 a:hover { text-decoration: underline; }
 .wrap { max-width: 72rem; margin: 0 auto; padding: 1.25rem 1rem 3rem; box-sizing: border-box; }
-.nav { font-size: 0.9rem; margin-bottom: 1rem; color: #9d9d9d; }
 h1 { font-size: 1.35rem; margin: 0 0 0.35rem; color: #e8e8e8; }
 .lead { color: #9d9d9d; font-size: 0.9rem; margin: 0 0 1.25rem; }
 .panel { background: #252526; border: 1px solid #3e3e3e; border-radius: 10px; padding: 1rem 1.1rem; margin-bottom: 1.25rem; }
@@ -42,12 +42,15 @@ th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
 .hint { color: #9d9d9d; font-size: 0.82rem; }
 .empty { color: #9d9d9d; font-size: 0.85rem; padding: 0.5rem 0; }
 #active-jobs-root { margin-top: 0.35rem; }
+button.retry-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.55rem; cursor: pointer; font-size: 0.76rem; margin-top: 0.35rem; }
+button.retry-job:hover { background: #0e639c; border-color: #0e639c; }
+button.retry-job:disabled { opacity: 0.55; cursor: default; }
 </style>
 <link rel="stylesheet" href="/dashboard/dashboard.css">
 </head>
 <body>
+<p class="app-nav"><a href="/">Admin</a> · <a href="/biblio">Biblio</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · Job | <a href="/etaly-export">e-taly</a></p>
 <div class="wrap">
-  <p class="nav"><a href="/">Ingestione</a> · <a href="/admin.html">Admin</a> · <a href="/dashboard">Dashboard</a> · <a href="/ricerca.html">Ricerca</a> · Job</p>
   <h1>Job</h1>
   <p class="lead">Storico ingest e research, con job attivi e batch temporanei in tempo reale.</p>
 
@@ -82,10 +85,11 @@ th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
           <th>ID</th>
           <th>Avviato</th>
           <th>Aggiornato</th>
+          <th></th>
         </tr>
       </thead>
       <tbody id="history-body">
-        <tr><td colspan="6" class="empty">Caricamento…</td></tr>
+        <tr><td colspan="7" class="empty">Caricamento…</td></tr>
       </tbody>
     </table>
   </div>
@@ -118,6 +122,50 @@ const KIND_LABELS = {
   research_batch: "Batch",
 };
 
+async function retryJob(job, button) {
+  if (!job || !job.job_id) return;
+  button.disabled = true;
+  button.textContent = "Avvio…";
+  try {
+    if (job.job_kind === "research") {
+      const query = job.query || job.poh_id || job.title || "";
+      const pohId = job.poh_id || "";
+      const payload = {
+        query,
+        options: { dedup: false },
+        compute_mode: job.compute_mode || "local",
+      };
+      if (pohId) {
+        payload.poh = { id: pohId, label: query || pohId };
+      }
+      await apiJson("/api/research/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        noAuthPrompt: true,
+      });
+    } else if (job.job_kind === "ingest") {
+      await apiJson("/api/system/jobs/retry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ job_id: job.job_id }),
+        noAuthPrompt: true,
+      });
+    } else {
+      throw new Error("tipo job non rilanciabile");
+    }
+    button.textContent = "Avviato";
+    loadHistory();
+  } catch (err) {
+    button.disabled = false;
+    button.textContent = "Rilancia";
+    if (window.LibrarAInLog) {
+      window.LibrarAInLog.reportError("job retry failed", err);
+    }
+    alert("Rilancio fallito: " + (err.message || err));
+  }
+}
+
 async function loadHistory() {
   const book = document.getElementById("filter-book").value.trim();
   const id = document.getElementById("filter-id").value.trim();
@@ -136,7 +184,7 @@ async function loadHistory() {
     });
     meta.textContent = jobs.length + " risultati";
     if (!jobs.length) {
-      body.innerHTML = '<tr><td colspan="6" class="empty">Nessun job trovato.</td></tr>';
+      body.innerHTML = '<tr><td colspan="7" class="empty">Nessun job trovato.</td></tr>';
       return;
     }
     body.innerHTML = jobs.map(function (job) {
@@ -150,6 +198,14 @@ async function loadHistory() {
         "—";
       const kind = KIND_LABELS[job.job_kind] || job.job_kind || "—";
       const err = job.error ? '<div class="hint">' + escapeHtml(job.error) + "</div>" : "";
+      const canRetry =
+        display === "errore" &&
+        (job.job_kind === "research" || job.job_kind === "ingest");
+      const actions = canRetry
+        ? '<button type="button" class="retry-job" data-retry-job="' +
+          escapeHtml(job.job_id || "") +
+          '">Rilancia</button>'
+        : "";
       return (
         "<tr>" +
         '<td><span class="status-pill status-' + escapeHtml(display) + '">' + escapeHtml(label) + "</span>" + err + "</td>" +
@@ -158,11 +214,21 @@ async function loadHistory() {
         '<td class="mono">' + escapeHtml(job.job_id || "") + "</td>" +
         "<td>" + escapeHtml(formatTs(job.created_at)) + "</td>" +
         "<td>" + escapeHtml(formatTs(job.updated_at)) + "</td>" +
+        "<td>" + actions + "</td>" +
         "</tr>"
       );
     }).join("");
+    body.querySelectorAll("[data-retry-job]").forEach(function (btn) {
+      const jobId = btn.getAttribute("data-retry-job");
+      const job = jobs.find(function (item) {
+        return item.job_id === jobId;
+      });
+      btn.addEventListener("click", function () {
+        retryJob(job, btn);
+      });
+    });
   } catch (err) {
-    body.innerHTML = '<tr><td colspan="6" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
+    body.innerHTML = '<tr><td colspan="7" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
     meta.textContent = "";
   }
 }

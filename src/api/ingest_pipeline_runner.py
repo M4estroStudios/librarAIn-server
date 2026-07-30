@@ -206,7 +206,7 @@ def run_full_pipeline(
             else PHASE_STAGE3_EDITOR
         )
         Log(ERROR_LOG_LEVEL, "pipeline orchestrator stage failed",
-            {"error": str(exc.cause), "phase": phase})
+            {"error": str(exc.cause), "phase": phase, "stage": exc.stage})
         _emit_error(reporter, phase, err_detail["message"],
                     code=err_detail.get("code"), field=err_detail.get("field"))
         raise exc.cause from exc
@@ -218,7 +218,7 @@ def run_full_pipeline(
         raise
     except Exception as exc:
         err_detail = _extract_validation_error(exc)
-        Log(ERROR_LOG_LEVEL, "pipeline orchestrator failed", {"error": str(exc)})
+        Log(ERROR_LOG_LEVEL, "pipeline orchestrator unhandled error", {"error": str(exc)})
         _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
                     code=err_detail.get("code"), field=err_detail.get("field"))
         raise
@@ -283,6 +283,150 @@ def run_full_pipeline(
          "stage1_pages": len(stage1_result.pages),
          "stage2_pages": len(stage2_result.pages),
          "stage3_pages": len(stage3_result.pages)})
+    return payload_out
+
+
+def run_resume_pipeline_from_sha(
+    data_root: Path,
+    settings: Settings,
+    source_sha256: str,
+    reporter: ProgressReporter | None,
+    set_global_total: Callable[[int], None] | None,
+    *,
+    request_id: str,
+) -> dict[str, Any]:
+    """Resume ingest from PDF/manifest/book already on disk, skipping the hash gate."""
+    from src.models.request import IngestGatePhaseResult, SourceHashGateResult, SourceHashGateStatus
+    from src.persistence.book_page_repair import (
+        PageRepairError,
+        build_enriched_from_manifest,
+        load_manifest_for_repair,
+    )
+
+    sha = source_sha256.strip().lower()
+    timing = PipelineTiming()
+    reporter = timed_progress_reporter(reporter, timing)
+    _emit(reporter, make_event(PHASE_VALIDATION, STATUS_STARTED))
+    try:
+        manifest = load_manifest_for_repair(data_root, sha, settings.sqlite_path)
+        enriched = build_enriched_from_manifest(data_root, manifest)
+    except PageRepairError as exc:
+        _emit_error(reporter, PHASE_VALIDATION, str(exc))
+        raise
+    _emit(
+        reporter,
+        make_event(PHASE_VALIDATION, STATUS_COMPLETED, source_sha256=enriched.source_sha256),
+    )
+    ingest_gate_phase = IngestGatePhaseResult(
+        gate=SourceHashGateResult(
+            status=SourceHashGateStatus.DUPLICATE_SOURCE_HASH,
+            source_sha256=sha,
+            should_skip_pipeline=False,
+        ),
+        pipeline_skipped=False,
+    )
+    _emit(
+        reporter,
+        make_event(
+            PHASE_GATE_HASH,
+            STATUS_COMPLETED,
+            pipeline_skipped=False,
+            gate_status=ingest_gate_phase.gate.status.value,
+            resumed=True,
+        ),
+    )
+    try:
+        require_gpu_vram_at_pipeline_start(settings, skip_vision_editor=False)
+    except IngestInputValidationException as exc:
+        err_detail = _extract_validation_error(exc)
+        _emit_error(
+            reporter,
+            PHASE_STAGE1_OCR,
+            err_detail["message"],
+            code=err_detail.get("code"),
+            field=err_detail.get("field"),
+        )
+        raise
+    _emit(reporter, make_event(PHASE_PDF_ALIGNMENT, STATUS_STARTED, will_run=True))
+    try:
+        pdf_alignment = maybe_run_pdf_alignment(
+            enriched,
+            ingest_gate_phase,
+            settings.processed_pdf_input_dir,
+            page_range_per_thread=settings.page_range_per_thread,
+        )
+    except (ValueError, IngestInputValidationException) as exc:
+        err_detail = _extract_validation_error(exc)
+        _emit_error(
+            reporter,
+            PHASE_PDF_ALIGNMENT,
+            err_detail["message"],
+            code=err_detail.get("code"),
+            field=err_detail.get("field"),
+        )
+        raise
+    _emit(
+        reporter,
+        make_event(PHASE_PDF_ALIGNMENT, STATUS_COMPLETED, counts_as_step=True, skipped=pdf_alignment is None),
+    )
+    _emit(reporter, make_event(PHASE_PAGE_ENUMERATION, STATUS_STARTED))
+    try:
+        useful_pages_enumeration = build_useful_pages_enumeration(enriched, pdf_alignment)
+    except (ValueError, IngestInputValidationException) as exc:
+        err_detail = _extract_validation_error(exc)
+        _emit_error(
+            reporter,
+            PHASE_PAGE_ENUMERATION,
+            err_detail["message"],
+            code=err_detail.get("code"),
+            field=err_detail.get("field"),
+        )
+        raise
+    n_pages = len(useful_pages_enumeration.useful_original_pages)
+    _emit(reporter, make_event(PHASE_PAGE_ENUMERATION, STATUS_COMPLETED, n_pages=n_pages))
+    if set_global_total is not None:
+        set_global_total(1 + n_pages * _ACTIVE_PAGE_STAGES)
+    try:
+        orchestrator_result = asyncio.run(
+            run_pipeline(
+                enriched,
+                pdf_alignment,
+                useful_pages_enumeration,
+                settings,
+                settings.sqlite_path,
+                NullOrchestratorRegistry(),
+                request_id,
+                progress=reporter,
+                skip_vision_editor=False,
+            )
+        )
+    except OrchestratorStageError as exc:
+        err_detail = _extract_validation_error(exc.cause)
+        phase = PHASE_STAGE2_VISION if exc.stage == "stage2_vision" else PHASE_STAGE3_EDITOR
+        _emit_error(reporter, phase, err_detail["message"], code=err_detail.get("code"), field=err_detail.get("field"))
+        raise exc.cause from exc
+    except (ValueError, IngestInputValidationException) as exc:
+        err_detail = _extract_validation_error(exc)
+        _emit_error(
+            reporter,
+            PHASE_STAGE1_OCR,
+            err_detail["message"],
+            code=err_detail.get("code"),
+            field=err_detail.get("field"),
+        )
+        raise
+    stage2_result = orchestrator_result.stage2_result
+    stage3_result = orchestrator_result.stage3_result
+    payload_out = {
+        "ok": True,
+        "resumed": True,
+        "source_sha256": enriched.source_sha256,
+        "stage1_pages": len(orchestrator_result.stage1_result.pages),
+        "stage2_pages": len(stage2_result.pages) if stage2_result else 0,
+        "stage3_pages": len(stage3_result.pages) if stage3_result else 0,
+        "timing": timing.summary(),
+    }
+    _emit(reporter, make_event(PHASE_STAGE3_EDITOR, STATUS_COMPLETED, timing=payload_out["timing"]))
     return payload_out
 
 
