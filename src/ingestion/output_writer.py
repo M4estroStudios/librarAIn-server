@@ -127,6 +127,8 @@ def materialize_book_pages(
         "pipeline_version": enriched.request.schema_version,
         "generated_at": _utc_now_iso(),
     }
+    if enriched.request.biblio_range is not None:
+        manifest_data["biblio_range"] = enriched.request.biblio_range.model_dump()
 
     should_write_manifest = True
     if manifest_path.is_file() and not pages_written:

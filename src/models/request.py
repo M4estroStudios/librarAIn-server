@@ -121,9 +121,11 @@ class IngestRequest(BaseModel):
     notes: str | None = None
     index_notes: str | None = None
     page_notes: str | None = None
+    ai_page_guidance: str | None = None
     pages_to_remove: list[int]
     toc_range: PageRange
     index_range: PageRange
+    biblio_range: PageRange | None = None
     reicat: ReicatMetadata
     options: IngestOptions = Field(default_factory=IngestOptions)
 
@@ -140,6 +142,8 @@ class IngestRequest(BaseModel):
             self.index_notes = self.index_notes.strip() or None
         if self.page_notes is not None:
             self.page_notes = self.page_notes.strip() or None
+        if self.ai_page_guidance is not None:
+            self.ai_page_guidance = self.ai_page_guidance.strip() or None
 
         normalized_pages = sorted(set(self.pages_to_remove))
         if any(page < 1 for page in normalized_pages):
@@ -153,6 +157,10 @@ class IngestRequest(BaseModel):
         index_overlap = removed_pages.intersection(self.index_range.as_set())
         if index_overlap:
             raise ValueError("pages_to_remove intersects index_range")
+        if self.biblio_range is not None:
+            biblio_overlap = removed_pages.intersection(self.biblio_range.as_set())
+            if biblio_overlap:
+                raise ValueError("pages_to_remove intersects biblio_range")
         return self
 
 
@@ -200,3 +208,4 @@ class UsefulPagesEnumeration(BaseModel):
     aligned_page_to_original_page: dict[int, int]
     toc_range_aligned: PageRange
     index_range_aligned: PageRange
+    biblio_range_aligned: PageRange | None = None

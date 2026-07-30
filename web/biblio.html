@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biblio — librarAIn</title>
+<link rel="stylesheet" href="/nav.css">
+<style>
+:root { color-scheme: dark; font-family: system-ui, sans-serif; color: #d4d4d4; background: #1e1e1e; }
+body { margin: 0; }
+.app-shell { max-width: 72rem; margin: 0 auto; padding: 1.25rem 1rem 2.5rem; }
+h1 { font-size: 1.3rem; margin: 0 0 0.25rem; color: #e8e8e8; }
+.lead { margin: 0 0 1rem; color: #a0a0a0; font-size: 0.92rem; }
+.tabs { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.tab { font: inherit; padding: 0.45rem 0.85rem; border-radius: 8px; border: 1px solid #454545; background: #252526; color: #d4d4d4; cursor: pointer; }
+.tab.is-active { background: #e8e8e8; color: #1e1e1e; border-color: #e8e8e8; font-weight: 600; }
+.panel { display: none; }
+.panel.is-active { display: block; }
+.row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; }
+input, select, button, textarea { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #252526; color: #e8e8e8; }
+button { background: #e8e8e8; color: #1e1e1e; border: 0; font-weight: 600; cursor: pointer; }
+button.secondary { background: #3c3c3c; color: #e8e8e8; }
+button.danger { background: #c95050; color: #fff; }
+.hint { font-size: 0.8rem; color: #9d9d9d; }
+.card { padding: 0.85rem; border: 1px solid #3e3e3e; border-radius: 10px; background: #252526; margin-bottom: 0.65rem; }
+.card h3 { margin: 0 0 0.35rem; font-size: 0.95rem; color: #e8e8e8; }
+.meta { font-size: 0.78rem; color: #9d9d9d; word-break: break-all; }
+.related { margin-top: 0.45rem; font-size: 0.85rem; }
+#graph-wrap { position: relative; height: min(70vh, 640px); border: 1px solid #3e3e3e; border-radius: 12px; background: #141414; overflow: hidden; }
+#graph-canvas { width: 100%; height: 100%; display: block; cursor: grab; }
+#graph-detail { position: absolute; right: 0.75rem; top: 0.75rem; width: min(18rem, 45%); max-height: calc(100% - 1.5rem); overflow: auto; padding: 0.75rem; border-radius: 10px; background: rgba(30,30,30,0.92); border: 1px solid #454545; font-size: 0.85rem; }
+.status { margin-top: 0.5rem; font-size: 0.82rem; color: #9d9d9d; }
+</style>
+</head>
+<body>
+<p class="app-nav"><a href="/">Admin</a> · Biblio · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<div class="app-shell">
+  <h1>Bibliografia</h1>
+  <p class="lead">Lookup, triage voci incomplete e grafo citazioni.</p>
+  <div class="tabs">
+    <button type="button" class="tab is-active" data-tab="search">Lookup</button>
+    <button type="button" class="tab" data-tab="review">Review</button>
+    <button type="button" class="tab" data-tab="graph">Grafo</button>
+    <button type="button" class="tab" data-tab="run" hidden>Estrai</button>
+  </div>
+
+  <section class="panel is-active" id="panel-search">
+    <div class="row">
+      <input id="q-authors" placeholder="Autore" style="min-width:10rem;flex:1">
+      <input id="q-title" placeholder="Titolo" style="min-width:10rem;flex:1">
+      <input id="q-year" placeholder="Anno" style="width:6rem">
+      <input id="q-id" placeholder="Id hash" style="min-width:12rem;flex:1">
+      <select id="q-mode">
+        <option value="cita">cita</option>
+        <option value="citato_da">citato da</option>
+      </select>
+      <button type="button" id="btn-search">Cerca</button>
+    </div>
+    <p class="hint">Modalità: cosa cita il nodo / da chi è citato.</p>
+    <div id="search-results"></div>
+  </section>
+
+  <section class="panel" id="panel-review">
+    <div class="row">
+      <button type="button" class="secondary" id="btn-review-reload">Ricarica coda</button>
+      <span class="hint" id="review-count"></span>
+    </div>
+    <div id="review-list"></div>
+  </section>
+
+  <section class="panel" id="panel-graph">
+    <div class="row">
+      <button type="button" class="secondary" id="btn-graph-reload">Ricarica grafo</button>
+      <span class="hint">Trascina per pan, rotella per zoom, click sul nodo per dettagli.</span>
+    </div>
+    <div id="graph-wrap">
+      <canvas id="graph-canvas"></canvas>
+      <div id="graph-detail">Nessun nodo selezionato.</div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-run" hidden>
+    <div class="row">
+      <button type="button" class="secondary" id="btn-candidates-reload">Ricarica libri</button>
+      <input id="candidates-filter" placeholder="Filtra per titolo…" style="flex:1;min-width:12rem">
+      <span class="hint" id="candidates-count"></span>
+    </div>
+    <p class="hint">Libri già ingestiti con pagine in output. Seleziona, indica il range bibliografia (pagine originali) e avvia.</p>
+    <div id="candidates-list"></div>
+    <div class="card" id="run-selected-card" style="display:none;margin-top:0.75rem">
+      <h3 id="run-selected-title">—</h3>
+      <div class="meta" id="run-selected-meta"></div>
+      <div class="row" style="margin-top:0.6rem">
+        <input id="run-range" placeholder="range es. 240-255" style="width:10rem">
+        <label class="compute-mode-toggle">AI
+          <select id="run-compute-mode">
+            <option value="local" selected>Local</option>
+            <option value="cloud">Cloud</option>
+          </select>
+        </label>
+        <button type="button" id="btn-run">Avvia estrazione</button>
+      </div>
+      <div class="status" id="run-status"></div>
+    </div>
+  </section>
+</div>
+<script>
+(function () {
+  var BIBLIO_EXTRACT_ENABLED = false;
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+  function labelOf(node) {
+    if (!node) return "(sconosciuto)";
+    var y = node.year == null ? "?" : node.year;
+    return (node.authors || "?") + " — " + (node.title || "?") + " (" + y + ")";
+  }
+  document.querySelectorAll(".tab").forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      document.querySelectorAll(".tab").forEach(function (t) { t.classList.remove("is-active"); });
+      document.querySelectorAll(".panel").forEach(function (p) { p.classList.remove("is-active"); });
+      tab.classList.add("is-active");
+      document.getElementById("panel-" + tab.dataset.tab).classList.add("is-active");
+      if (tab.dataset.tab === "graph") loadGraph();
+      if (tab.dataset.tab === "review") loadReview();
+      if (tab.dataset.tab === "run" && BIBLIO_EXTRACT_ENABLED) loadCandidates();
+    });
+  });
+
+  var candidatesCache = [];
+  var selectedCandidate = null;
+
+  function renderCandidates() {
+    if (!BIBLIO_EXTRACT_ENABLED) return;
+    var filter = (document.getElementById("candidates-filter").value || "").trim().toLowerCase();
+    var list = document.getElementById("candidates-list");
+    var filtered = candidatesCache.filter(function (book) {
+      if (!filter) return true;
+      var blob = ((book.title || "") + " " + (book.authors || "") + " " + (book.source_sha256 || "")).toLowerCase();
+      return blob.indexOf(filter) >= 0;
+    });
+    document.getElementById("candidates-count").textContent = filtered.length + " libri";
+    if (!filtered.length) {
+      list.innerHTML = "<p class='hint'>Nessun libro idoneo.</p>";
+      return;
+    }
+    list.innerHTML = filtered.map(function (book) {
+      var rangeLabel = book.biblio_range
+        ? ("range " + book.biblio_range.start + "-" + book.biblio_range.end)
+        : "senza range";
+      var status = book.has_biblio
+        ? (book.biblio_entry_count + " voci · " + rangeLabel)
+        : ("mai estratto · " + rangeLabel);
+      var selected = selectedCandidate && selectedCandidate.source_sha256 === book.source_sha256;
+      return "<div class='card' data-sha='" + esc(book.source_sha256) + "' style='" +
+        (selected ? "border-color:#4ec9b0;" : "") + "cursor:pointer'>" +
+        "<h3>" + esc(book.title) + "</h3>" +
+        "<div class='meta'>" + esc(book.authors || "—") +
+        (book.year != null ? " · " + esc(book.year) : "") +
+        " · " + esc(book.output_pages) + " pagine output" +
+        (book.complete ? " · completo" : " · con lacune") + "</div>" +
+        "<div class='hint'>" + esc(status) + "</div>" +
+        "<div class='meta'>" + esc(book.source_sha256) + "</div></div>";
+    }).join("");
+    list.querySelectorAll(".card").forEach(function (card) {
+      card.addEventListener("click", function () {
+        var sha = card.getAttribute("data-sha");
+        selectedCandidate = candidatesCache.find(function (b) { return b.source_sha256 === sha; }) || null;
+        showSelectedCandidate();
+        renderCandidates();
+      });
+    });
+  }
+
+  function showSelectedCandidate() {
+    var card = document.getElementById("run-selected-card");
+    if (!selectedCandidate) {
+      card.style.display = "none";
+      return;
+    }
+    card.style.display = "block";
+    document.getElementById("run-selected-title").textContent = selectedCandidate.title || "—";
+    document.getElementById("run-selected-meta").textContent = selectedCandidate.source_sha256;
+    var rangeInput = document.getElementById("run-range");
+    if (selectedCandidate.biblio_range && !rangeInput.value.trim()) {
+      rangeInput.value = selectedCandidate.biblio_range.start + "-" + selectedCandidate.biblio_range.end;
+    }
+    document.getElementById("run-status").textContent = "";
+  }
+
+  function loadCandidates() {
+    if (!BIBLIO_EXTRACT_ENABLED) return;
+    fetch("/api/admin/biblio/candidates")
+      .then(function (r) { return r.text().then(function (text) { return { r: r, text: text }; }); })
+      .then(function (pack) {
+        var data;
+        try { data = JSON.parse(pack.text); }
+        catch (_) {
+          throw new Error(pack.r.ok ? "Risposta non JSON" : ("API non disponibile (HTTP " + pack.r.status + "). Riavvia il server."));
+        }
+        candidatesCache = (data.books || []).filter(function (b) { return b.eligible; });
+        renderCandidates();
+      })
+      .catch(function (err) {
+        document.getElementById("candidates-list").innerHTML = "<p class='hint'>" + esc(err.message || err) + "</p>";
+      });
+  }
+  if (BIBLIO_EXTRACT_ENABLED) {
+    document.getElementById("btn-candidates-reload").addEventListener("click", loadCandidates);
+    document.getElementById("candidates-filter").addEventListener("input", renderCandidates);
+  }
+
+  document.getElementById("btn-search").addEventListener("click", function () {
+    var params = new URLSearchParams({
+      authors: document.getElementById("q-authors").value.trim(),
+      title: document.getElementById("q-title").value.trim(),
+      year: document.getElementById("q-year").value.trim(),
+      id: document.getElementById("q-id").value.trim(),
+      mode: document.getElementById("q-mode").value
+    });
+    fetch("/api/admin/biblio/search?" + params.toString())
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var box = document.getElementById("search-results");
+        if (!data.ok) { box.innerHTML = "<p class='hint'>" + esc(data.error || "errore") + "</p>"; return; }
+        if (!data.results.length) { box.innerHTML = "<p class='hint'>Nessun risultato.</p>"; return; }
+        box.innerHTML = data.results.map(function (item) {
+          var related = (item.related || []).map(function (rel) {
+            return "<div>• " + esc(labelOf(rel.node)) + " <span class='meta'>p. " + esc((rel.aligned_pages || []).join(", ")) + "</span></div>";
+          }).join("") || "<div class='hint'>Nessun collegamento.</div>";
+          return "<div class='card'><h3>" + esc(labelOf(item.node)) + "</h3>" +
+            "<div class='meta'>" + esc(item.id) + (item.node && item.node.in_corpus ? " · corpus" : "") + "</div>" +
+            "<div class='related'><strong>" + esc(item.mode) + "</strong>" + related + "</div></div>";
+        }).join("");
+      })
+      .catch(function (err) {
+        document.getElementById("search-results").innerHTML = "<p class='hint'>" + esc(err) + "</p>";
+      });
+  });
+
+  function loadReview() {
+    fetch("/api/admin/biblio/review").then(function (r) { return r.json(); }).then(function (data) {
+      document.getElementById("review-count").textContent = (data.count || 0) + " voci";
+      var list = document.getElementById("review-list");
+      if (!data.items || !data.items.length) { list.innerHTML = "<p class='hint'>Coda vuota.</p>"; return; }
+      list.innerHTML = data.items.map(function (item, idx) {
+        return "<div class='card' data-idx='" + idx + "'>" +
+          "<h3>pagina " + esc(item.aligned_page) + (item.line != null ? ", riga " + esc(item.line) : "") + "</h3>" +
+          "<div class='meta'>" + esc(item.source_sha256) + "</div>" +
+          "<div class='hint'>" + esc(item.raw || "") + "</div>" +
+          "<div class='row' style='margin-top:0.5rem'>" +
+          "<input data-f='authors' placeholder='autori' value='" + esc(item.authors || "") + "'>" +
+          "<input data-f='title' placeholder='titolo' value='" + esc(item.title || "") + "'>" +
+          "<input data-f='year' placeholder='anno' value='" + esc(item.year == null ? "" : item.year) + "' style='width:5rem'>" +
+          "<input data-f='link' placeholder='link_to_id (opz.)' style='flex:1;min-width:10rem'>" +
+          "</div>" +
+          "<div class='row'>" +
+          "<button type='button' data-act='resolve'>Salva</button>" +
+          "<button type='button' class='danger' data-act='discard'>Scarta</button>" +
+          "</div></div>";
+      }).join("");
+      list.querySelectorAll(".card").forEach(function (card, idx) {
+        var item = data.items[idx];
+        card.querySelector("[data-act='discard']").addEventListener("click", function () {
+          fetch("/api/admin/biblio/review/discard", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ source_sha256: item.source_sha256, aligned_page: item.aligned_page, line: item.line, raw: item.raw })
+          }).then(function () { loadReview(); });
+        });
+        card.querySelector("[data-act='resolve']").addEventListener("click", function () {
+          var payload = {
+            source_sha256: item.source_sha256,
+            aligned_page: item.aligned_page,
+            line: item.line,
+            raw: item.raw,
+            authors: card.querySelector("[data-f='authors']").value,
+            title: card.querySelector("[data-f='title']").value,
+            year: card.querySelector("[data-f='year']").value,
+            link_to_id: card.querySelector("[data-f='link']").value || null
+          };
+          fetch("/api/admin/biblio/review/resolve", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          }).then(function (r) { return r.json(); }).then(function () { loadReview(); });
+        });
+      });
+    });
+  }
+  document.getElementById("btn-review-reload").addEventListener("click", loadReview);
+
+  var graphState = { nodes: [], edges: [], positions: {}, selected: null, scale: 1, ox: 0, oy: 0, drag: null };
+  function loadGraph() {
+    fetch("/api/admin/biblio/graph").then(function (r) { return r.json(); }).then(function (data) {
+      graphState.nodes = data.nodes || [];
+      graphState.edges = data.edges || [];
+      var wrap = document.getElementById("graph-wrap");
+      var cx = wrap.clientWidth / 2, cy = wrap.clientHeight / 2;
+      graphState.positions = {};
+      graphState.nodes.forEach(function (n, i) {
+        var a = (i / Math.max(graphState.nodes.length, 1)) * Math.PI * 2;
+        var r = 40 + (i % 7) * 28;
+        graphState.positions[n.id] = { x: cx + Math.cos(a) * r * 3, y: cy + Math.sin(a) * r * 2.2 };
+      });
+      drawGraph();
+    });
+  }
+  function drawGraph() {
+    var canvas = document.getElementById("graph-canvas");
+    var wrap = document.getElementById("graph-wrap");
+    canvas.width = wrap.clientWidth; canvas.height = wrap.clientHeight;
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.translate(graphState.ox, graphState.oy);
+    ctx.scale(graphState.scale, graphState.scale);
+    ctx.strokeStyle = "#5a5a5a";
+    ctx.lineWidth = 1 / graphState.scale;
+    graphState.edges.forEach(function (e) {
+      var a = graphState.positions[e.from], b = graphState.positions[e.to];
+      if (!a || !b) return;
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    });
+    graphState.nodes.forEach(function (n) {
+      var p = graphState.positions[n.id]; if (!p) return;
+      ctx.beginPath();
+      ctx.fillStyle = n.id === graphState.selected ? "#4ec9b0" : (n.in_corpus ? "#3d8eef" : "#c9a14a");
+      ctx.arc(p.x, p.y, n.in_corpus ? 8 : 6, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.restore();
+  }
+  function hitNode(mx, my) {
+    var x = (mx - graphState.ox) / graphState.scale;
+    var y = (my - graphState.oy) / graphState.scale;
+    for (var i = 0; i < graphState.nodes.length; i++) {
+      var n = graphState.nodes[i], p = graphState.positions[n.id];
+      if (!p) continue;
+      var dx = p.x - x, dy = p.y - y;
+      if (dx * dx + dy * dy <= 100) return n;
+    }
+    return null;
+  }
+  (function bindGraph() {
+    var canvas = document.getElementById("graph-canvas");
+    canvas.addEventListener("mousedown", function (ev) {
+      var rect = canvas.getBoundingClientRect();
+      var mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
+      var node = hitNode(mx, my);
+      if (node) {
+        graphState.selected = node.id;
+        document.getElementById("graph-detail").innerHTML =
+          "<strong>" + esc(labelOf(node)) + "</strong>" +
+          "<div class='meta'>" + esc(node.id) + "</div>" +
+          "<div>" + (node.in_corpus ? "In corpus" : "Solo citato") + "</div>" +
+          "<pre style='white-space:pre-wrap;font-size:0.75rem'>" + esc(JSON.stringify(node.extras || {}, null, 2)) + "</pre>";
+        drawGraph();
+        return;
+      }
+      graphState.drag = { x: mx, y: my, ox: graphState.ox, oy: graphState.oy };
+    });
+    window.addEventListener("mousemove", function (ev) {
+      if (!graphState.drag) return;
+      var rect = canvas.getBoundingClientRect();
+      var mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
+      graphState.ox = graphState.drag.ox + (mx - graphState.drag.x);
+      graphState.oy = graphState.drag.oy + (my - graphState.drag.y);
+      drawGraph();
+    });
+    window.addEventListener("mouseup", function () { graphState.drag = null; });
+    canvas.addEventListener("wheel", function (ev) {
+      ev.preventDefault();
+      var factor = ev.deltaY < 0 ? 1.1 : 0.9;
+      graphState.scale = Math.max(0.3, Math.min(3, graphState.scale * factor));
+      drawGraph();
+    }, { passive: false });
+    document.getElementById("btn-graph-reload").addEventListener("click", loadGraph);
+    window.addEventListener("resize", drawGraph);
+  })();
+
+  if (BIBLIO_EXTRACT_ENABLED) {
+    document.getElementById("btn-run").addEventListener("click", function () {
+      var status = document.getElementById("run-status");
+      if (!selectedCandidate) { status.textContent = "Seleziona un libro."; return; }
+      var range = document.getElementById("run-range").value.trim();
+      var m = range.match(/^(\d+)\s*-\s*(\d+)$/);
+      if (!m) { status.textContent = "Range obbligatorio, formato start-end."; return; }
+      status.textContent = "Avvio…";
+      fetch("/api/admin/biblio/run", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source_sha256: selectedCandidate.source_sha256,
+          biblio_range: { start: parseInt(m[1], 10), end: parseInt(m[2], 10) },
+          compute_mode: (document.getElementById("run-compute-mode") || {}).value || "local"
+        })
+      }).then(function (r) { return r.json(); }).then(function (data) {
+        status.textContent = data.ok
+          ? ("Job avviato: " + data.job_id + " — vedi /jobs")
+          : ("Errore: " + (data.error || ""));
+        if (data.ok) loadCandidates();
+      }).catch(function (err) { status.textContent = String(err); });
+    });
+
+    if (location.hash === "#run") {
+      var runTab = document.querySelector('.tab[data-tab="run"]');
+      if (runTab) runTab.click();
+    }
+  }
+})();
+</script>
+</body>
+</html>

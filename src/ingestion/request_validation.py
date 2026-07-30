@@ -99,6 +99,30 @@ def _validate_page_refs_within_pdf(request: IngestRequest, pdf_page_count: int) 
                 field="index_range",
             ).model_dump_json()
         )
+    br = request.biblio_range
+    if br is not None:
+        if br.start > pdf_page_count:
+            raise ValueError(
+                IngestInputValidationError(
+                    code=IngestInputErrorCode.PAGES_INVALID,
+                    message=(
+                        f"biblio_range start {br.start} exceeds pdf "
+                        f"page count ({pdf_page_count})"
+                    ),
+                    field="biblio_range",
+                ).model_dump_json()
+            )
+        if br.end > pdf_page_count:
+            raise ValueError(
+                IngestInputValidationError(
+                    code=IngestInputErrorCode.PAGES_INVALID,
+                    message=(
+                        f"biblio_range end {br.end} exceeds pdf "
+                        f"page count ({pdf_page_count})"
+                    ),
+                    field="biblio_range",
+                ).model_dump_json()
+            )
 
 
 def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:

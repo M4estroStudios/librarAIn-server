@@ -399,8 +399,13 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
     pages_raw = fields.get("pages_to_remove", "").strip()
     toc_spec = fields.get("toc_range", "").strip()
     index_spec = fields.get("index_range", "").strip()
+    biblio_spec = fields.get("biblio_range", "").strip()
     toc_start, toc_end = _parse_contiguous_range_field(toc_spec, "toc_range")
     index_start, index_end = _parse_contiguous_range_field(index_spec, "index_range")
+    biblio_range_payload = None
+    if biblio_spec:
+        biblio_start, biblio_end = _parse_contiguous_range_field(biblio_spec, "biblio_range")
+        biblio_range_payload = {"start": biblio_start, "end": biblio_end}
 
     reicat_payload: dict[str, Any] = {
         "titolo": fields.get("titolo", "").strip(),
@@ -452,6 +457,7 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
     notes_raw = fields.get("notes", "").strip()
     index_notes_raw = fields.get("index_notes", "").strip()
     page_notes_raw = fields.get("page_notes", "").strip()
+    ai_page_guidance_raw = fields.get("ai_page_guidance", "").strip()
     force_meta = fields.get("force_metadata_update_on_duplicate_hash")
     if force_meta is None:
         force_flag = True
@@ -466,6 +472,11 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
         "reicat": reicat_payload,
         "options": {"force_metadata_update_on_duplicate_hash": force_flag},
     }
+    compute_mode_raw = fields.get("compute_mode", "").strip()
+    if compute_mode_raw:
+        ingest_payload["compute_mode"] = compute_mode_raw
+    if biblio_range_payload is not None:
+        ingest_payload["biblio_range"] = biblio_range_payload
     if book_id_hint_raw:
         ingest_payload["book_id_hint"] = book_id_hint_raw
     if notes_raw:
@@ -474,4 +485,6 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
         ingest_payload["index_notes"] = index_notes_raw
     if page_notes_raw:
         ingest_payload["page_notes"] = page_notes_raw
+    if ai_page_guidance_raw:
+        ingest_payload["ai_page_guidance"] = ai_page_guidance_raw
     return ingest_payload

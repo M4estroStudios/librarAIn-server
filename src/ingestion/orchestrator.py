@@ -24,6 +24,7 @@ from src.ingestion.pipeline.stage1 import Stage1Result, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
+from src.ingestion.polyindex.biblio_json import sync_polyindex_biblio_from_book
 from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
 from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
 from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
@@ -33,6 +34,7 @@ from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
 from src.ingestion.output_writer import BookOutput, materialize_book_pages
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import (
+    PHASE_POLYINDEX_BIBLIO,
     PHASE_POLYINDEX_INDEX,
     PHASE_POLYINDEX_TOC,
     PHASE_RENDER,
@@ -266,7 +268,11 @@ def _build_pipeline_context(
         counters=counters,
         source_sha256=enriched.source_sha256,
         prompt_notes=prompt_notes,
-        page_prompt_notes=_combine_notes(prompt_notes, enriched.request.page_notes),
+        page_prompt_notes=_combine_notes(
+            prompt_notes,
+            enriched.request.page_notes,
+            enriched.request.ai_page_guidance,
+        ),
         index_prompt_notes=_combine_notes(prompt_notes, enriched.request.index_notes),
         render_page_total=len(useful_pages.useful_original_pages),
         polyindex_dir=data_root / "polyindex",
@@ -726,6 +732,40 @@ async def _run_polyindex_phases(
             "time_index_path": str(time_index_path),
             "n_years": time_index_stats["n_years"],
             "n_dates": time_index_stats["n_dates"],
+        },
+    )
+
+    _progress_started(ctx, PHASE_POLYINDEX_BIBLIO)
+    biblio_json_path, biblio_stats, biblio_payload = await sync_polyindex_biblio_from_book(
+        ctx.polyindex_dir,
+        ctx.source_sha256,
+        book_output,
+        ctx.useful_pages,
+        client=ctx.openai_client,
+        settings=ctx.settings,
+        reicat=ctx.enriched.request.reicat,
+        request_id=ctx.request_id,
+        prompt_notes=ctx.page_prompt_notes,
+        biblio_range_original=ctx.enriched.request.biblio_range,
+    )
+    _progress_completed(
+        ctx,
+        PHASE_POLYINDEX_BIBLIO,
+        biblio_json_path=str(biblio_json_path),
+        n_entries=biblio_stats["n_entries"],
+        n_review=biblio_stats["n_review"],
+        empty=bool(biblio_payload.get("empty")),
+    )
+    _publish_event(
+        ctx.registry,
+        ctx.request_id,
+        stage="polyindex_biblio",
+        message="polyindex_biblio completed",
+        payload={
+            "biblio_json_path": str(biblio_json_path),
+            "n_entries": biblio_stats["n_entries"],
+            "n_review": biblio_stats["n_review"],
+            "empty": bool(biblio_payload.get("empty")),
         },
     )
 

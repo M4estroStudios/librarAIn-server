@@ -190,16 +190,19 @@ class TestBuildIngestPayload(unittest.TestCase):
         fields["notes"] = "nota generale"
         fields["index_notes"] = "nota indice"
         fields["page_notes"] = "nota pagine"
+        fields["ai_page_guidance"] = "append AI"
         payload = build_ingest_payload_from_form(fields)
         self.assertEqual(payload["notes"], "nota generale")
         self.assertEqual(payload["index_notes"], "nota indice")
         self.assertEqual(payload["page_notes"], "nota pagine")
+        self.assertEqual(payload["ai_page_guidance"], "append AI")
 
     def test_empty_notes_omitted(self) -> None:
         payload = build_ingest_payload_from_form(dict(_BASE_FIELDS))
         self.assertNotIn("notes", payload)
         self.assertNotIn("index_notes", payload)
         self.assertNotIn("page_notes", payload)
+        self.assertNotIn("ai_page_guidance", payload)
 
     def test_missing_toc_range_raises(self) -> None:
         fields = dict(_BASE_FIELDS)

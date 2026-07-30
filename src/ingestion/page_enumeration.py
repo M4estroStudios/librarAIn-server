@@ -118,6 +118,13 @@ def build_useful_pages_enumeration(
         enriched.request.index_range, analytic_o2a
     )
     Log(INFO_LOG_LEVEL, "useful pages project index_range to aligned done")
+    biblio_aligned = None
+    if enriched.request.biblio_range is not None:
+        Log(INFO_LOG_LEVEL, "useful pages project biblio_range to aligned begin")
+        biblio_aligned = _project_interval_to_aligned(
+            enriched.request.biblio_range, analytic_o2a
+        )
+        Log(INFO_LOG_LEVEL, "useful pages project biblio_range to aligned done")
 
     useful_original_sorted = sorted(analytic_o2a.keys())
 
@@ -130,6 +137,7 @@ def build_useful_pages_enumeration(
         aligned_page_to_original_page=analytic_a2o,
         toc_range_aligned=toc_aligned,
         index_range_aligned=index_aligned,
+        biblio_range_aligned=biblio_aligned,
     )
     Log(
         INFO_LOG_LEVEL,

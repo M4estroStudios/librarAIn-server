@@ -7,6 +7,7 @@ from typing import Any
 
 from src.core.hashing import validate_source_sha256
 from src.ingestion.pdf_alignment import build_page_removal_mapping
+from src.ingestion.polyindex.biblio_json import purge_biblio_aligned_page
 from src.ingestion.polyindex.file_lock import polyindex_dir_lock
 from src.models.polyindex_index import PolyindexIndexDocument
 from src.persistence.book_pages_audit import (
@@ -314,6 +315,7 @@ def _purge_polyindex_page(
                         dates, source_sha256, aligned_page, original_page
                     )
                 _atomic_write_json(time_index_path, raw)
+    purge_biblio_aligned_page(polyindex_dir, source_sha256, aligned_page)
 
 
 def exclude_book_page(
