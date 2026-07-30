@@ -1,0 +1,155 @@
+.pdf-viewer-tool[data-viewer-mode="annotate"].is-active,
+#annotate-tool-btn.is-active {
+  border-color: #f0a030;
+  background: rgba(240, 160, 48, 0.14);
+  color: #e8e8e8;
+}
+
+#annotate-primitive-switch {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  margin-left: 0.35rem;
+}
+
+#annotate-primitive-switch.hidden {
+  display: none;
+}
+
+#annotate-primitive-switch button {
+  border: 1px solid #555;
+  background: #2a2a2a;
+  color: #ddd;
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+
+#annotate-primitive-switch button.is-active {
+  border-color: #f0a030;
+  background: rgba(240, 160, 48, 0.16);
+}
+
+.page-picker-detail-img-wrap {
+  position: relative;
+}
+
+#annotate-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.annotate-name-input {
+  position: absolute;
+  z-index: 3;
+  width: 7.5rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  border: 1px solid #f0a030;
+  border-radius: 3px;
+  background: rgba(20, 20, 20, 0.92);
+  color: #fff;
+  font-size: 0.72rem;
+  line-height: 1.2;
+}
+
+.annotate-name-input.hidden {
+  display: none;
+}
+
+.mention-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.4rem;
+}
+
+.mention-chips.is-empty {
+  display: none;
+}
+
+.mention-chip {
+  border: 1px solid #5a5a5a;
+  background: #2f2f30;
+  color: #e8e8e8;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.mention-chip small {
+  margin-left: 0.35rem;
+  color: #9d9d9d;
+}
+
+.mention-chip:hover {
+  border-color: #f0a030;
+  background: rgba(240, 160, 48, 0.14);
+}
+
+.mention-selector {
+  position: absolute;
+  z-index: 40;
+  max-height: 12rem;
+  overflow: auto;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #1f1f1f;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  padding: 0.25rem;
+}
+
+.mention-selector.hidden {
+  display: none;
+}
+
+.mention-option {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #e8e8e8;
+  text-align: left;
+  padding: 0.4rem 0.55rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+.mention-option span {
+  color: #9d9d9d;
+  font-size: 0.72rem;
+}
+
+.mention-option.is-active,
+.mention-option:hover {
+  background: rgba(240, 160, 48, 0.16);
+}
+
+.ai-counsel-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.55rem 0 0.35rem;
+}
+
+.ai-counsel-row .hint {
+  margin: 0;
+}
+
+textarea[name="ai_page_guidance"] {
+  min-height: 7rem;
+}
+
+.compute-mode-top {
+  margin: 0 0 0.75rem;
+}
