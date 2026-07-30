@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ingestione libro — librarAIn</title>
+<link rel="stylesheet" href="/nav.css">
 <script>
 (function (global) {
   function pageLabel() {
@@ -88,7 +89,8 @@
   color: #d4d4d4;
   background: #1e1e1e;
 }
-body { margin: 0 auto; max-width: 52rem; padding: 1.5rem 1rem 3rem; }
+body { margin: 0; padding: 0; }
+.app-shell { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; box-sizing: border-box; }
 h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
 p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
 form { display: grid; gap: 1.1rem; }
@@ -112,7 +114,6 @@ code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0
 small.req { display: inline; color: #f08080; }
 strong { color: #e8e8e8; }
 a { color: #4ec9b0; }
-.nav { font-size: 0.85rem; margin-bottom: 1rem; }
 #progress { display: none; margin-top: 1rem; padding: 0.9rem 1rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
 #progress.show { display: block; }
 #progress-alert {
@@ -316,6 +317,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-detail-empty { font-size: 0.78rem; color: #9d9d9d; text-align: center; padding: 2rem 0.75rem; }
 .hidden { display: none !important; }
 body.embed-mode { max-width: none; padding: 0; margin: 0; background: #252526; }
+body.embed-mode .app-shell { max-width: none; padding: 0; margin: 0; }
 body.embed-mode .embed-hide,
 body.embed-mode #ingest-debug-panel { display: none !important; }
 body.embed-mode form { gap: 0; }
@@ -342,7 +344,8 @@ body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem;
   }
 })();
 </script>
-<p class="nav embed-hide">Ingestione · <a href="/index.html">GLM OCR</a> · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a></p>
+<p class="app-nav embed-hide"><a href="/">Admin</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<div class="app-shell">
 <h1 class="embed-hide">Ingestione libro</h1>
 <p class="lead embed-hide">Carica il PDF: compare un’anteprima pagina per pagina per scegliere visivamente le esclusioni. Indica anche dove si trovono, nel numerale del documento, il sommario dei capitoli e l’indice analitico finale. I metadati sotto sono quelli previsti dal modello REICAT.</p>
 
@@ -526,6 +529,12 @@ body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem;
 
   <fieldset>
     <legend>Opzioni</legend>
+    <label class="compute-mode-toggle">Computazione AI
+      <select name="compute_mode" id="compute-mode">
+        <option value="local" selected>Local</option>
+        <option value="cloud">Cloud</option>
+      </select>
+    </label>
     <label class="hint" style="display:flex; gap:0.45rem; align-items:center;">
       <input type="hidden" name="force_metadata_update_on_duplicate_hash" value="false">
       <input type="checkbox" name="force_metadata_update_on_duplicate_hash" value="true" checked>
@@ -3786,5 +3795,6 @@ if (document.readyState === "loading") {
   }
 })();
 </script>
+</div>
 </body>
 </html>

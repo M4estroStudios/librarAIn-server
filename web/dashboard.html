@@ -4,13 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard lab — librarAIn</title>
+<link rel="stylesheet" href="/nav.css">
 <link rel="stylesheet" href="/dashboard/dashboard.css">
 <script src="/log.js"></script>
 </head>
 <body>
+<p class="app-nav"><a href="/">Admin</a> · <a href="/biblio">Biblio</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<div class="app-shell">
 <header id="dash-header">
   <strong>librarAIn Dashboard</strong>
-  <span class="hint"><a href="/index.html">Ingest</a> · <a href="/admin.html">Admin</a> · <a href="/ricerca.html">Ricerca</a> · <a href="/jobs.html">Job</a></span>
+  <label class="compute-mode-toggle">Computazione AI
+    <select id="compute-mode">
+      <option value="local" selected>Local</option>
+      <option value="cloud">Cloud</option>
+    </select>
+  </label>
 </header>
 
 <section class="section open" id="section-search">
@@ -67,7 +75,7 @@
         id="ingest-frame"
         class="section-embed"
         title="Form ingestione completo"
-        src="/index.html?embed=1"
+        src="/ingest?embed=1"
       ></iframe>
     </div>
   <div id="ingest-poh-overlap-notice" class="ingest-notice hint hidden"></div>
@@ -83,7 +91,7 @@
         id="admin-frame"
         class="section-embed"
         title="Admin biblioteca"
-        src="/admin.html?embed=1"
+        src="/?embed=1"
       ></iframe>
     </div>
   </div>
@@ -108,5 +116,6 @@
 </aside>
 
 <script type="module" src="/dashboard/main.js"></script>
+</div>
 </body>
 </html>

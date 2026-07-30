@@ -300,11 +300,11 @@ class MockHandler(BaseHTTPRequestHandler):
         path = parsed.path
         query = urllib.parse.parse_qs(parsed.query)
 
-        if path in ("/", "/index.html"):
-            self._serve_static("index.html")
-            return
-        if path == "/admin.html":
+        if path in ("/", "/admin", "/admin.html"):
             self._serve_static("admin.html")
+            return
+        if path in ("/ingest", "/index.html"):
+            self._serve_static("index.html")
             return
         if path in ("/ricerca.html", "/ricerca"):
             self._serve_static("ricerca.html")
@@ -575,9 +575,9 @@ def main() -> None:
     port = int(os.environ.get("MOCK_HTTP_PORT", str(DEFAULT_PORT)))
     server = ThreadingHTTPServer((host, port), MockHandler)
     print(f"Mock UI server: http://{host}:{port}/mockup/lab.html")
-    print(f"Ingest con pannello lab: http://{host}:{port}/index.html?mock=1")
+    print(f"Ingest con pannello lab: http://{host}:{port}/ingest?mock=1")
     print(f"Ricerca mock: http://{host}:{port}/ricerca.html?mock=1")
-    print(f"Admin research mock: http://{host}:{port}/admin.html?mock=1")
+    print(f"Admin research mock: http://{host}:{port}/?mock=1")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

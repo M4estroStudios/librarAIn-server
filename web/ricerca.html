@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ricerca — librarAIn</title>
 <script src="/log.js"></script>
+<link rel="stylesheet" href="/nav.css">
 <style>
 :root {
   color-scheme: dark;
@@ -15,16 +16,16 @@
   background: #1e1e1e;
   --section-gap: 1.25rem;
 }
-body { margin: 0; min-height: 100vh; }
-a { color: #8ab4f8; text-decoration: none; }
-a:hover { text-decoration: underline; }
+body { margin: 0; min-height: 100vh; padding: 0; }
+.wrap a { color: #8ab4f8; text-decoration: none; }
+.wrap a:hover { text-decoration: underline; }
 .wrap {
   max-width: 48rem;
   margin: 0 auto;
   padding: 1.5rem 1rem 3rem;
   width: 100%;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: calc(100vh - 46px);
   display: flex;
   flex-direction: column;
 }
@@ -35,14 +36,12 @@ a:hover { text-decoration: underline; }
   overflow: hidden;
   padding-bottom: 0.85rem;
 }
-.nav { font-size: 0.95rem; text-align: left; flex: 1; min-width: 0; margin: 0; line-height: 1.35; }
-.nav a { color: #4ec9b0; }
 .top-bar {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 0.75rem 1rem;
   margin-bottom: var(--section-gap);
   flex-shrink: 0;
@@ -250,9 +249,9 @@ button.search-icon-btn.active { background: rgba(78, 201, 176, 0.2); color: #4ec
 </style>
 </head>
 <body>
+<p class="app-nav"><a href="/">Admin</a> · <a href="/biblio">Biblio</a> · <a href="/ingest">Ingestione</a> · Ricerca · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
 <div class="wrap" id="page">
 <div class="top-bar">
-  <p class="nav"><a href="/">Ingestione</a> · <a href="/admin.html">Admin</a> · <a href="/dashboard">Dashboard</a></p>
   <aside id="mock-panel">
     <details class="mock-inner">
       <summary>Mock lab</summary>

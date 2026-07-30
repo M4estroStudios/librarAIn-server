@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Export E-TALY — librarAIn</title>
+<link rel="stylesheet" href="/nav.css">
 <style>
 :root { color-scheme: dark; font-family: system-ui, sans-serif; line-height: 1.45; color: #d4d4d4; background: #1e1e1e; }
-body { margin: 0 auto; max-width: 68rem; padding: 1.5rem 1rem 3rem; }
+body { margin: 0; padding: 0; }
+.app-shell { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; box-sizing: border-box; }
 h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
 p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
-.nav { font-size: 0.85rem; margin-bottom: 1rem; }
 a { color: #4ec9b0; }
 button { font: inherit; padding: 0.45rem 0.85rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
 button:hover:not(:disabled) { background: #fff; }
@@ -39,7 +40,8 @@ label { display: block; font-size: 0.78rem; color: #9d9d9d; margin: 0.5rem 0 0.2
 </style>
 </head>
 <body>
-<p class="nav"><a href="/">Ingestione</a> · <a href="/admin">Admin</a> · <a href="/ricerca.html">Ricerca</a> · <a href="/dashboard">Dashboard</a> · Export E-TALY</p>
+<p class="app-nav"><a href="/">Admin</a> · <a href="/biblio">Biblio</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | e-taly</p>
+<div class="app-shell">
 <h1>Proposta export E-TALY</h1>
 <p class="lead">Elenca i POH generati, propone i metadati (LLM), conferma il mapping verso E-TALY e scarica il bundle <code>.zip</code>. Nessun dato viene mai scritto in E-TALY: il bundle è solo un download.</p>
 
@@ -345,5 +347,6 @@ document.getElementById("ed-close").addEventListener("click", () => {
 });
 loadList();
 </script>
+</div>
 </body>
 </html>

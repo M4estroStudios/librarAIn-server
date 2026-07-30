@@ -5,7 +5,8 @@
   color: #d4d4d4;
   background: #1e1e1e;
 }
-body { margin: 0 auto; max-width: 72rem; padding: 1rem 1rem 4rem; }
+body { margin: 0; padding: 0; }
+.app-shell { max-width: 72rem; margin: 0 auto; padding: 1rem 1rem 4rem; box-sizing: border-box; }
 a { color: #4ec9b0; }
 button { font: inherit; padding: 0.45rem 0.9rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
 button:hover:not(:disabled) { background: #fff; }

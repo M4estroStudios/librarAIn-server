@@ -1,0 +1,49 @@
+.app-nav {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 12px 24px;
+  background: #252526;
+  border-bottom: 1px solid #3e3e3e;
+  text-align: left;
+  font-family: system-ui, sans-serif;
+  font-size: 13.6px;
+  line-height: 1.45;
+  color: #9d9d9d;
+}
+.app-nav a,
+.app-nav a:link,
+.app-nav a:visited,
+.app-nav a:hover,
+.app-nav a:active {
+  color: #4ec9b0;
+  text-decoration: none;
+}
+.app-nav a:hover {
+  text-decoration: underline;
+}
+
+.compute-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 12px;
+  font-size: 13px;
+  color: #c8c8c8;
+}
+
+.compute-mode-toggle select {
+  min-width: 110px;
+  padding: 6px 10px;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  font: inherit;
+}
+
+.compute-mode-toggle[data-mode="cloud"] select {
+  border-color: #4ec9b0;
+  color: #4ec9b0;
+}
