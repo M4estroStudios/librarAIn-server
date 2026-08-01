@@ -48,6 +48,7 @@ export function createPageGuidanceController(bridge) {
   const switchEl = document.getElementById("annotate-primitive-switch");
   const canvas = document.getElementById("annotate-canvas");
   const guidanceField = document.querySelector('[name="ai_page_guidance"]');
+  const notesFieldset = document.getElementById("model-notes-fieldset");
   if (!btn || !canvas || !switchEl) return null;
   const ctx = canvas.getContext("2d");
 
@@ -65,6 +66,7 @@ export function createPageGuidanceController(bridge) {
     btn.classList.toggle("is-active", state.active);
     switchEl.classList.toggle("hidden", !state.active);
     canvas.classList.toggle("hidden", !state.active);
+    if (notesFieldset) notesFieldset.classList.toggle("hidden", !state.active);
     if (state.active) redraw();
     else {
       state.selectedId = null;

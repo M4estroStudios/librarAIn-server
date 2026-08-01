@@ -165,6 +165,7 @@ body { margin: 0; padding: 0; }
 .pdf-viewer-tool[data-viewer-mode="index"].is-active { border-color: var(--mark-index, #b88bff); background: rgba(184, 139, 255, 0.12); }
 .pdf-viewer-tool[data-viewer-mode="biblio"].is-active { border-color: var(--mark-biblio, #4ec9b0); background: rgba(78, 201, 176, 0.12); }
 .pdf-viewer-tool[data-viewer-mode="reicat"].is-active { border-color: var(--mark-reicat, #e6c229); background: rgba(230, 194, 41, 0.12); }
+.pdf-viewer-tool[data-viewer-mode="appendix"].is-active { border-color: var(--mark-appendix, #22ff66); background: rgba(34, 255, 102, 0.12); }
 .pdf-viewer-tool-icon {
   display: inline-flex;
   align-items: center;
@@ -223,8 +224,10 @@ details.reicat-metadata[open] > summary::before { transform: rotate(90deg); }
   --mark-index: #b88bff;
   --mark-biblio: #4ec9b0;
   --mark-reicat: #e6c229;
+  --mark-appendix: #22ff66;
 }
 .page-picker-thumb.is-excluded { border-color: var(--mark-remove); box-shadow: 0 0 0 1px var(--mark-remove); }
+.page-picker-thumb.is-appendix { border-color: var(--mark-appendix); box-shadow: 0 0 0 1px var(--mark-appendix); }
 .page-picker-thumb.is-disabled { opacity: 0.38; cursor: not-allowed; }
 .page-picker-thumb-mark {
   position: absolute;
@@ -507,6 +510,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .validation-preview-meta { margin: 0; padding: 0.35rem 1rem 0.55rem; font-size: 0.72rem; color: #9d9d9d; }
 .validation-preview-img-wrap { position: relative; }
 .validation-preview-frame { position: relative; display: inline-block; line-height: 0; max-width: 100%; background: #fff; }
+.validation-preview-frame.is-appendix { outline: 3px solid var(--mark-appendix, #22ff66); outline-offset: 2px; }
 .validation-preview-frame .page-preview-img { max-height: calc(92vh - 9.5rem); }
 .validation-preview-frame .page-picker-thumb-mark-toc span { font-size: 1.35rem; }
 .validation-preview-frame .page-picker-thumb-mark-index span { font-size: 1.05rem; }
@@ -543,7 +547,21 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-toolbar-meta { margin-top: 0.35rem; font-size: 0.75rem; color: #9d9d9d; }
 .page-picker-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 0.75rem; padding: 0.75rem; min-height: 18rem; }
 @media (max-width: 760px) { .page-picker-body { grid-template-columns: 1fr; } }
-.page-picker-grid-wrap { min-width: 0; max-height: 28rem; overflow: auto; border: 1px solid #3e3e3e; border-radius: 8px; background: #252526; padding: 0.55rem; }
+.page-picker-grid-wrap { min-width: 0; max-height: 28rem; overflow: auto; border: 1px solid #3e3e3e; border-radius: 8px; background: #252526; padding: 0.55rem; position: relative; }
+.page-picker-grid-wrap.is-marquee-selecting { cursor: crosshair; user-select: none; -webkit-user-select: none; }
+.page-picker-grid-wrap.is-marquee-selecting .page-picker-thumb { cursor: crosshair; }
+.page-picker-grid-content { position: relative; }
+.page-picker-marquee {
+  position: absolute;
+  pointer-events: none;
+  z-index: 60;
+  display: none;
+  border: 1.5px solid #4ec9b0;
+  background: rgba(78, 201, 176, 0.16);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.page-picker-marquee.is-visible { display: block; }
 .page-picker-grid-wrap.is-rendering .page-picker-grid { display: none; }
 .page-picker-progress { display: none; padding: 2.5rem 1rem; text-align: center; }
 .page-picker-grid-wrap.is-rendering .page-picker-progress { display: block; }
@@ -685,15 +703,15 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
           <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2.2"><path d="M4 6h16M4 11h16M4 16h10"/><path fill="#e6c229" stroke="none" d="M21 18h-5v4l5-4z" opacity="0.85"/></svg></span>
           <span class="pdf-viewer-tool-label">REICAT</span>
         </button>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="appendix" title="Appendici — contorno verde acceso, PDF separato in raw_appendix" aria-label="Appendici">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#22ff66" stroke-width="2.2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg></span>
+          <span class="pdf-viewer-tool-label">Appendici</span>
+        </button>
         <button type="button" id="annotate-tool-btn" class="pdf-viewer-tool" title="Annota primitive visuali (bbox / point-trail)" aria-label="Annota">
           <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#f0a030" stroke-width="2.2"><rect x="4" y="5" width="10" height="8" rx="1"/><circle cx="17" cy="16" r="2.5"/><path d="M8 17h6"/></svg></span>
           <span class="pdf-viewer-tool-label">Annota</span>
         </button>
-        <span id="annotate-primitive-switch" class="hidden" role="group" aria-label="Primitiva annotazione">
-          <button type="button" data-annotate-tool="bbox" class="is-active">Bounding box</button>
-          <button type="button" data-annotate-tool="point_trail">Point / trail</button>
-        </span>
-        <button type="button" id="viewer-reset-btn" class="pdf-viewer-reset secondary" title="Azzera rimozioni, TOC, indice e REICAT">Reset selezioni</button>
+        <button type="button" id="viewer-reset-btn" class="pdf-viewer-reset secondary" title="Azzera rimozioni, TOC, indice, REICAT e appendici">Reset selezioni</button>
       </div>
       <div class="page-picker-toolbar">
         <div class="pdf-viewer-mode-panel" data-viewer-mode-panel="exclude">
@@ -726,6 +744,12 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
           </label>
           <p class="hint pdf-viewer-mode-hint">Clicca le miniature per selezionare le pagine editoriali. Vision cercherà ogni campo REICAT in tutte le pagine selezionate. Sovrapponibile con TOC e indice.</p>
         </div>
+        <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="appendix">
+          <label>Pagine appendice (PDF separato)
+            <input type="text" name="appendix_pages" id="appendix-pages-input" placeholder="es. 250-260, 280, 300-305" autocomplete="off">
+          </label>
+          <p class="hint pdf-viewer-mode-hint">Selezione libera. Al submit crea <code>raw_appendix/appendix_&lt;nome-pdf&gt;.pdf</code> senza altri processi. Contorno verde, senza triangolo.</p>
+        </div>
         <div class="page-picker-toolbar-meta" id="pdf-viewer-meta">—</div>
       </div>
       <div class="page-picker-body">
@@ -735,13 +759,20 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
             <progress id="page-picker-progress-bar" value="0" max="1"></progress>
             <div class="page-picker-progress-stats" id="page-picker-progress-stats">0 / 0</div>
           </div>
-          <div class="page-picker-grid" id="page-picker-grid"></div>
+          <div class="page-picker-grid-content" id="page-picker-grid-content">
+            <div class="page-picker-grid" id="page-picker-grid"></div>
+            <div class="page-picker-marquee" id="page-picker-marquee" aria-hidden="true"></div>
+          </div>
         </div>
         <div class="page-picker-detail">
           <div class="page-picker-detail-label">Anteprima — pagina <span id="page-picker-detail-num">—</span></div>
           <div class="page-picker-detail-body">
             <button type="button" class="page-picker-detail-nav" id="page-picker-detail-prev" title="Pagina precedente (←)" aria-label="Pagina precedente" disabled>&lt;</button>
             <div class="page-picker-detail-img-wrap" id="page-picker-detail-wrap">
+              <div id="annotate-primitive-switch" class="annotate-preview-tools hidden" role="group" aria-label="Primitiva annotazione">
+                <button type="button" data-annotate-tool="bbox" class="is-active">Bounding box</button>
+                <button type="button" data-annotate-tool="point_trail">Point / trail</button>
+              </div>
               <div class="page-picker-detail-empty" id="page-picker-detail-empty">Clic sinistro per selezionare, destro per anteprima. Frecce ← → per scorrere.</div>
               <img id="page-picker-detail-img" class="hidden" alt="">
               <canvas id="annotate-canvas" class="hidden" aria-label="Canvas annotazioni"></canvas>
@@ -824,7 +855,7 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
     </label>
   </details>
 
-  <fieldset>
+  <fieldset id="model-notes-fieldset" class="hidden">
     <legend>Note per i modelli</legend>
     <p class="hint">Testo facoltativo aggiunto al system prompt di Vision, Editor, raffinamento TOC/INDEX e subject matcher per questo libro.</p>
     <label>Note generali
@@ -1604,6 +1635,8 @@ if (document.readyState === "loading") {
   var pagesToRemoveInput = document.getElementById("pages-to-remove-input");
   var pagePickerGrid = document.getElementById("page-picker-grid");
   var pagePickerGridWrap = document.getElementById("page-picker-grid-wrap");
+  var pagePickerGridContent = document.getElementById("page-picker-grid-content");
+  var pagePickerMarquee = document.getElementById("page-picker-marquee");
   var pagePickerProgressBar = document.getElementById("page-picker-progress-bar");
   var pagePickerProgressStats = document.getElementById("page-picker-progress-stats");
   var pagePickerDetailNum = document.getElementById("page-picker-detail-num");
@@ -1720,6 +1753,8 @@ if (document.readyState === "loading") {
       indexLastSelected: indexPagePickerState.lastSelected,
       reicatSelected: Object.assign({}, reicatPagePickerState.selected),
       reicatLastSelected: reicatPagePickerState.lastSelected,
+      appendixSelected: Object.assign({}, appendixPagePickerState.selected),
+      appendixLastSelected: appendixPagePickerState.lastSelected,
       viewerMode: viewerMode,
     };
   }
@@ -1750,10 +1785,15 @@ if (document.readyState === "loading") {
     reicatPagePickerState.selected = Object.assign({}, snap.reicatSelected || {});
     reicatPagePickerState.lastSelected = snap.reicatLastSelected || null;
     reicatPagePickerState.syncing = false;
+    appendixPagePickerState.syncing = true;
+    appendixPagePickerState.selected = Object.assign({}, snap.appendixSelected || {});
+    appendixPagePickerState.lastSelected = snap.appendixLastSelected || null;
+    appendixPagePickerState.syncing = false;
     pagesToRemoveInput.value = pagesToSpec(selectedPagesList());
     tocRangeInput.value = pagesToSpec(tocSelectedPagesList());
     indexRangeInput.value = pagesToSpec(indexSelectedPagesList());
     reicatPagesInput.value = pagesToSpec(reicatSelectedPagesList());
+    if (appendixPagesInput) appendixPagesInput.value = pagesToSpec(appendixSelectedPagesList());
     setViewerMode(snap.viewerMode || "exclude");
     refreshViewerThumbUi();
     renderPagePickerDetail(detailPageToShow(viewerMode));
@@ -2210,6 +2250,7 @@ if (document.readyState === "loading") {
     if (mode === "index") return indexPagePickerState.lastSelected;
     if (mode === "biblio") return biblioPagePickerState.lastSelected;
     if (mode === "reicat") return reicatPagePickerState.lastSelected;
+    if (mode === "appendix") return appendixPagePickerState.lastSelected;
     return pagePickerState.lastSelected;
   }
 
@@ -2220,7 +2261,7 @@ if (document.readyState === "loading") {
     return null;
   }
 
-  var VIEWER_TOOL_LABELS = { exclude: "Rimuovi", toc: "TOC", index: "Indice", biblio: "Biblio", reicat: "REICAT" };
+  var VIEWER_TOOL_LABELS = { exclude: "Rimuovi", toc: "TOC", index: "Indice", biblio: "Biblio", reicat: "REICAT", appendix: "Appendici" };
   var reicatMetadataFieldset = document.getElementById("reicat-metadata-fieldset");
   var reicatTitoloInput = document.getElementById("reicat-titolo-input");
   var reicatAutoreInput = document.getElementById("reicat-autore-input");
@@ -2243,7 +2284,7 @@ if (document.readyState === "loading") {
   }
 
   function setViewerMode(mode) {
-    if (mode !== "exclude" && mode !== "toc" && mode !== "index" && mode !== "biblio" && mode !== "reicat") return;
+    if (mode !== "exclude" && mode !== "toc" && mode !== "index" && mode !== "biblio" && mode !== "reicat" && mode !== "appendix") return;
     if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.setActive === "function") {
       window.__librarainPageGuidance.setActive(false);
     }
@@ -2293,6 +2334,7 @@ if (document.readyState === "loading") {
     var indexCount = indexSelectedPagesList().length;
     var biblioCount = (typeof biblioSelectedPagesList === "function") ? biblioSelectedPagesList().length : 0;
     var reicatCount = reicatSelectedPagesList().length;
+    var appendixCount = (typeof appendixSelectedPagesList === "function") ? appendixSelectedPagesList().length : 0;
     var volumeInfo = "";
     if (pagePickerState.stacked && pagePickerState.stackedSources) {
       volumeInfo = " · " + pagePickerState.stackedSources.length + " volumi impilati";
@@ -2300,7 +2342,7 @@ if (document.readyState === "loading") {
     pdfViewerMeta.textContent =
       "Strumento: " + (VIEWER_TOOL_LABELS[viewerMode] || viewerMode) +
       " · " + pagePickerState.numPages + " pagine" + volumeInfo + " · " +
-      excludedCount + " rimosse · " + tocCount + " TOC · " + indexCount + " indice · " + biblioCount + " biblio · " + reicatCount + " REICAT";
+      excludedCount + " rimosse · " + tocCount + " TOC · " + indexCount + " indice · " + biblioCount + " biblio · " + reicatCount + " REICAT · " + appendixCount + " appendici";
   }
 
   function refreshViewerThumbUi() {
@@ -2314,7 +2356,9 @@ if (document.readyState === "loading") {
       var hasIndex = !!indexPagePickerState.selected[pageNum];
       var hasBiblio = !!(biblioPagePickerState && biblioPagePickerState.selected[pageNum]);
       var hasReicat = !!reicatPagePickerState.selected[pageNum];
+      var hasAppendix = !!(appendixPagePickerState && appendixPagePickerState.selected[pageNum]);
       btn.classList.toggle("is-excluded", isExcluded);
+      btn.classList.toggle("is-appendix", hasAppendix && !isExcluded);
       var tocMark = btn.querySelector(".page-picker-thumb-mark-toc");
       var indexMark = btn.querySelector(".page-picker-thumb-mark-index");
       var biblioMark = btn.querySelector(".page-picker-thumb-mark-biblio");
@@ -2381,6 +2425,7 @@ if (document.readyState === "loading") {
     reconcileIndexSelection();
     reconcileBiblioSelection();
     reconcileReicatSelection();
+    reconcileAppendixSelection();
     refreshViewerThumbUi();
   }
 
@@ -2685,6 +2730,7 @@ if (document.readyState === "loading") {
     indexPagePickerState.lastSelected = null;
     indexRangeInput.value = "";
     resetReicatPagePicker();
+    resetAppendixPagePicker();
     setReicatSuggestStatus("");
     refreshViewerThumbUi();
     renderPagePickerDetail(null);
@@ -2705,6 +2751,82 @@ if (document.readyState === "loading") {
       reicatPagePickerState.lastSelected = null;
     }
     syncReicatPagePickerFieldFromSelection();
+  }
+
+  var appendixPagesInput = document.getElementById("appendix-pages-input");
+  var appendixPagePickerState = {
+    selected: {},
+    lastSelected: null,
+    syncing: false,
+  };
+
+  function appendixSelectedPagesList() {
+    return Object.keys(appendixPagePickerState.selected)
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function syncAppendixPagePickerFieldFromSelection() {
+    if (!appendixPagesInput || appendixPagePickerState.syncing) return;
+    appendixPagePickerState.syncing = true;
+    appendixPagesInput.value = pagesToSpec(appendixSelectedPagesList());
+    appendixPagePickerState.syncing = false;
+  }
+
+  function syncAppendixPagePickerSelectionFromField() {
+    if (!appendixPagesInput || appendixPagePickerState.syncing) return;
+    var parsed = tryParsePagesSpec(appendixPagesInput.value);
+    var excluded = getExcludedPagesSet();
+    appendixPagePickerState.syncing = true;
+    appendixPagePickerState.selected = {};
+    if (parsed) {
+      for (var i = 0; i < parsed.length; i++) {
+        if (!excluded[parsed[i]]) appendixPagePickerState.selected[parsed[i]] = true;
+      }
+      var selected = appendixSelectedPagesList();
+      appendixPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
+    } else if (!String(appendixPagesInput.value || "").trim()) {
+      appendixPagePickerState.lastSelected = null;
+    }
+    appendixPagePickerState.syncing = false;
+    refreshViewerThumbUi();
+    if (viewerMode === "appendix") renderPagePickerDetail(appendixPagePickerState.lastSelected);
+  }
+
+  function toggleAppendixPagePickerSelection(pageNum) {
+    var excluded = getExcludedPagesSet();
+    if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
+    if (appendixPagePickerState.selected[pageNum]) delete appendixPagePickerState.selected[pageNum];
+    else appendixPagePickerState.selected[pageNum] = true;
+    appendixPagePickerState.lastSelected = pageNum;
+    refreshViewerThumbUi();
+    syncAppendixPagePickerFieldFromSelection();
+    renderPagePickerDetail(pageNum);
+  }
+
+  function resetAppendixPagePicker() {
+    appendixPagePickerState.selected = {};
+    appendixPagePickerState.lastSelected = null;
+    if (appendixPagesInput) appendixPagesInput.value = "";
+    refreshViewerThumbUi();
+    if (viewerMode === "appendix") renderPagePickerDetail(null);
+  }
+
+  function reconcileAppendixSelection() {
+    if (!pagePickerState.numPages) {
+      resetAppendixPagePicker();
+      return;
+    }
+    var excluded = getExcludedPagesSet();
+    var selected = appendixSelectedPagesList().filter(function (p) { return !excluded[p]; });
+    appendixPagePickerState.selected = {};
+    for (var i = 0; i < selected.length; i++) appendixPagePickerState.selected[selected[i]] = true;
+    if (selected.length) appendixPagePickerState.lastSelected = selected[selected.length - 1];
+    else if (appendixPagePickerState.lastSelected && excluded[appendixPagePickerState.lastSelected]) {
+      appendixPagePickerState.lastSelected = null;
+    }
+    syncAppendixPagePickerFieldFromSelection();
   }
 
   function makeFallbackThumb(pageNum) {
@@ -3184,10 +3306,11 @@ if (document.readyState === "loading") {
       btn.className = "page-picker-thumb";
       if (item.volumeLabel) btn.classList.add("is-volume-start");
       btn.dataset.page = String(item.pageNum);
-      btn.title = "Pagina " + item.pageNum + (item.volumeLabel ? " · " + item.volumeLabel : "") + " · sinistro: seleziona · destro: anteprima";
+      btn.title = "Pagina " + item.pageNum + (item.volumeLabel ? " · " + item.volumeLabel : "") + " · sinistro: seleziona / trascina: rettangolo · destro: anteprima";
       var img = document.createElement("img");
       img.alt = "Pagina " + item.pageNum;
       img.src = item.thumbUrl;
+      img.draggable = false;
       var numEl = document.createElement("span");
       numEl.className = "page-picker-thumb-num";
       numEl.textContent = String(item.pageNum);
@@ -3215,7 +3338,12 @@ if (document.readyState === "loading") {
       btn.appendChild(indexMark);
       btn.appendChild(biblioMark);
       btn.appendChild(reicatMark);
-      btn.addEventListener("click", function () {
+      btn.addEventListener("click", function (event) {
+        if (marqueeState.suppressClick) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
         if (this.classList.contains("is-disabled")) return;
         toggleViewerThumb(parseInt(this.dataset.page, 10));
       });
@@ -3359,7 +3487,359 @@ if (document.readyState === "loading") {
     else if (viewerMode === "index") toggleIndexPagePickerSelection(pageNum);
     else if (viewerMode === "biblio") toggleBiblioPagePickerSelection(pageNum);
     else if (viewerMode === "reicat") toggleReicatPagePickerSelection(pageNum);
+    else if (viewerMode === "appendix") toggleAppendixPagePickerSelection(pageNum);
     else togglePagePickerSelection(pageNum);
+  }
+
+  var MARQUEE_DRAG_THRESHOLD_PX = 5;
+  var MARQUEE_MODE_COLORS = {
+    exclude: { border: "#d44a4a", fill: "rgba(212, 74, 74, 0.16)" },
+    toc: { border: "#3d8eef", fill: "rgba(61, 142, 239, 0.16)" },
+    index: { border: "#b88bff", fill: "rgba(184, 139, 255, 0.16)" },
+    biblio: { border: "#4ec9b0", fill: "rgba(78, 201, 176, 0.16)" },
+    reicat: { border: "#e6c229", fill: "rgba(230, 194, 41, 0.16)" },
+    appendix: { border: "#22ff66", fill: "rgba(34, 255, 102, 0.16)" },
+  };
+  var marqueeState = {
+    active: false,
+    dragging: false,
+    suppressClick: false,
+    pointerId: null,
+    clientX: 0,
+    clientY: 0,
+    startX: 0,
+    startY: 0,
+    currentX: 0,
+    currentY: 0,
+    startPage: null,
+    wantSelected: true,
+    snapshot: null,
+    lastHitPage: null,
+    dirty: false,
+    scrollRaf: 0,
+  };
+
+  function isMarqueeSelectionEnabled() {
+    if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.isActive === "function" && window.__librarainPageGuidance.isActive()) {
+      return false;
+    }
+    return viewerMode === "exclude" || viewerMode === "toc" || viewerMode === "index" || viewerMode === "biblio" || viewerMode === "reicat" || viewerMode === "appendix";
+  }
+
+  function isPageSelectedInViewerMode(pageNum) {
+    if (viewerMode === "toc") return !!tocPagePickerState.selected[pageNum];
+    if (viewerMode === "index") return !!indexPagePickerState.selected[pageNum];
+    if (viewerMode === "biblio") return !!(biblioPagePickerState && biblioPagePickerState.selected[pageNum]);
+    if (viewerMode === "reicat") return !!reicatPagePickerState.selected[pageNum];
+    if (viewerMode === "appendix") return !!(appendixPagePickerState && appendixPagePickerState.selected[pageNum]);
+    return !!pagePickerState.selected[pageNum];
+  }
+
+  function isPageSelectableInViewerMode(pageNum) {
+    if (pageNum < 1 || pageNum > pagePickerState.numPages) return false;
+    if (viewerMode === "exclude") return true;
+    return !getExcludedPagesSet()[pageNum];
+  }
+
+  function setPageSelectedInViewerMode(pageNum, wantSelected) {
+    if (!isPageSelectableInViewerMode(pageNum)) return false;
+    if (viewerMode === "toc") {
+      if (wantSelected) tocPagePickerState.selected[pageNum] = true;
+      else delete tocPagePickerState.selected[pageNum];
+      tocPagePickerState.lastSelected = pageNum;
+      return true;
+    }
+    if (viewerMode === "index") {
+      if (wantSelected) indexPagePickerState.selected[pageNum] = true;
+      else delete indexPagePickerState.selected[pageNum];
+      indexPagePickerState.lastSelected = pageNum;
+      return true;
+    }
+    if (viewerMode === "biblio") {
+      if (wantSelected) biblioPagePickerState.selected[pageNum] = true;
+      else delete biblioPagePickerState.selected[pageNum];
+      biblioPagePickerState.lastSelected = pageNum;
+      return true;
+    }
+    if (viewerMode === "reicat") {
+      if (wantSelected) reicatPagePickerState.selected[pageNum] = true;
+      else delete reicatPagePickerState.selected[pageNum];
+      reicatPagePickerState.lastSelected = pageNum;
+      return true;
+    }
+    if (viewerMode === "appendix") {
+      if (wantSelected) appendixPagePickerState.selected[pageNum] = true;
+      else delete appendixPagePickerState.selected[pageNum];
+      appendixPagePickerState.lastSelected = pageNum;
+      return true;
+    }
+    if (wantSelected) {
+      pagePickerState.selected[pageNum] = true;
+      if (tocPagePickerState.selected[pageNum]) delete tocPagePickerState.selected[pageNum];
+      if (indexPagePickerState.selected[pageNum]) delete indexPagePickerState.selected[pageNum];
+      if (reicatPagePickerState.selected[pageNum]) delete reicatPagePickerState.selected[pageNum];
+      if (appendixPagePickerState.selected[pageNum]) delete appendixPagePickerState.selected[pageNum];
+    } else {
+      delete pagePickerState.selected[pageNum];
+    }
+    pagePickerState.lastSelected = pageNum;
+    return true;
+  }
+
+  function syncViewerModeFieldFromSelection() {
+    if (viewerMode === "toc") syncTocPagePickerFieldFromSelection();
+    else if (viewerMode === "index") syncIndexPagePickerFieldFromSelection();
+    else if (viewerMode === "biblio") syncBiblioPagePickerFieldFromSelection();
+    else if (viewerMode === "reicat") syncReicatPagePickerFieldFromSelection();
+    else if (viewerMode === "appendix") syncAppendixPagePickerFieldFromSelection();
+    else syncPagePickerFieldFromSelection();
+  }
+
+  function finalizeMarqueeFieldSync() {
+    if (viewerMode === "exclude") {
+      syncTocPagePickerFieldFromSelection();
+      syncIndexPagePickerFieldFromSelection();
+      syncReicatPagePickerFieldFromSelection();
+      syncAppendixPagePickerFieldFromSelection();
+    }
+    syncViewerModeFieldFromSelection();
+  }
+
+  function snapshotViewerSelections() {
+    return {
+      exclude: Object.assign({}, pagePickerState.selected),
+      toc: Object.assign({}, tocPagePickerState.selected),
+      index: Object.assign({}, indexPagePickerState.selected),
+      biblio: Object.assign({}, biblioPagePickerState.selected),
+      reicat: Object.assign({}, reicatPagePickerState.selected),
+      appendix: Object.assign({}, appendixPagePickerState.selected),
+    };
+  }
+
+  function restoreViewerSelections(snapshot) {
+    if (!snapshot) return;
+    pagePickerState.selected = Object.assign({}, snapshot.exclude);
+    tocPagePickerState.selected = Object.assign({}, snapshot.toc);
+    indexPagePickerState.selected = Object.assign({}, snapshot.index);
+    biblioPagePickerState.selected = Object.assign({}, snapshot.biblio);
+    reicatPagePickerState.selected = Object.assign({}, snapshot.reicat);
+    appendixPagePickerState.selected = Object.assign({}, snapshot.appendix);
+  }
+
+  function pointerToContentPoint(clientX, clientY) {
+    var contentEl = pagePickerGridContent || pagePickerGrid;
+    var contentRect = contentEl.getBoundingClientRect();
+    return {
+      x: clientX - contentRect.left,
+      y: clientY - contentRect.top,
+    };
+  }
+
+  function syncMarqueeCurrentFromClient() {
+    var point = pointerToContentPoint(marqueeState.clientX, marqueeState.clientY);
+    marqueeState.currentX = point.x;
+    marqueeState.currentY = point.y;
+  }
+
+  function marqueeContentRect() {
+    return {
+      left: Math.min(marqueeState.startX, marqueeState.currentX),
+      top: Math.min(marqueeState.startY, marqueeState.currentY),
+      right: Math.max(marqueeState.startX, marqueeState.currentX),
+      bottom: Math.max(marqueeState.startY, marqueeState.currentY),
+    };
+  }
+
+  function updateMarqueeOverlay() {
+    if (!pagePickerMarquee) return;
+    var colors = MARQUEE_MODE_COLORS[viewerMode] || MARQUEE_MODE_COLORS.biblio;
+    var rect = marqueeContentRect();
+    pagePickerMarquee.style.borderColor = colors.border;
+    pagePickerMarquee.style.background = colors.fill;
+    pagePickerMarquee.style.left = rect.left + "px";
+    pagePickerMarquee.style.top = rect.top + "px";
+    pagePickerMarquee.style.width = Math.max(1, rect.right - rect.left) + "px";
+    pagePickerMarquee.style.height = Math.max(1, rect.bottom - rect.top) + "px";
+    pagePickerMarquee.classList.toggle("is-visible", marqueeState.dragging);
+  }
+
+  function rectsIntersect(a, b) {
+    return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+  }
+
+  function thumbContentRect(btn, contentRect) {
+    var br = btn.getBoundingClientRect();
+    return {
+      left: br.left - contentRect.left,
+      top: br.top - contentRect.top,
+      right: br.right - contentRect.left,
+      bottom: br.bottom - contentRect.top,
+    };
+  }
+
+  function applyMarqueeHitsLive() {
+    restoreViewerSelections(marqueeState.snapshot);
+    var rect = marqueeContentRect();
+    var contentEl = pagePickerGridContent || pagePickerGrid;
+    var contentRect = contentEl.getBoundingClientRect();
+    var buttons = pagePickerGrid.querySelectorAll(".page-picker-thumb");
+    var lastHit = null;
+    var any = false;
+    for (var i = 0; i < buttons.length; i++) {
+      var btn = buttons[i];
+      var pageNum = parseInt(btn.dataset.page, 10);
+      if (!isPageSelectableInViewerMode(pageNum)) continue;
+      if (!rectsIntersect(rect, thumbContentRect(btn, contentRect))) continue;
+      if (setPageSelectedInViewerMode(pageNum, marqueeState.wantSelected)) {
+        any = true;
+        lastHit = pageNum;
+      }
+    }
+    marqueeState.dirty = any;
+    marqueeState.lastHitPage = lastHit;
+    refreshViewerThumbUi();
+  }
+
+  function stopMarqueeAutoScroll() {
+    if (marqueeState.scrollRaf) {
+      cancelAnimationFrame(marqueeState.scrollRaf);
+      marqueeState.scrollRaf = 0;
+    }
+  }
+
+  function tickMarqueeAutoScroll() {
+    marqueeState.scrollRaf = 0;
+    if (!marqueeState.active || !marqueeState.dragging) return;
+    var wrapRect = pagePickerGridWrap.getBoundingClientRect();
+    var edge = 36;
+    var step = 28;
+    var dy = 0;
+    if (marqueeState.clientY < wrapRect.top + edge) dy = -step;
+    else if (marqueeState.clientY > wrapRect.bottom - edge) dy = step;
+    if (dy) {
+      var before = pagePickerGridWrap.scrollTop;
+      pagePickerGridWrap.scrollTop = before + dy;
+      if (pagePickerGridWrap.scrollTop !== before) {
+        syncMarqueeCurrentFromClient();
+        updateMarqueeOverlay();
+        applyMarqueeHitsLive();
+      }
+    }
+    marqueeState.scrollRaf = requestAnimationFrame(tickMarqueeAutoScroll);
+  }
+
+  function endMarqueeSelection(commit) {
+    stopMarqueeAutoScroll();
+    if (!marqueeState.active) return;
+    var didDrag = marqueeState.dragging;
+    var startPage = marqueeState.startPage;
+    var lastHit = marqueeState.lastHitPage;
+    var dirty = marqueeState.dirty;
+    marqueeState.active = false;
+    marqueeState.dragging = false;
+    marqueeState.pointerId = null;
+    marqueeState.snapshot = null;
+    marqueeState.lastHitPage = null;
+    marqueeState.dirty = false;
+    pagePickerGridWrap.classList.remove("is-marquee-selecting");
+    if (pagePickerMarquee) pagePickerMarquee.classList.remove("is-visible");
+    if (!commit) return;
+    marqueeState.suppressClick = true;
+    setTimeout(function () { marqueeState.suppressClick = false; }, 0);
+    if (!didDrag) {
+      if (startPage) toggleViewerThumb(startPage);
+      return;
+    }
+    if (dirty) {
+      finalizeMarqueeFieldSync();
+      refreshViewerThumbUi();
+      if (lastHit != null) renderPagePickerDetail(lastHit);
+    }
+  }
+
+  function onMarqueePointerDown(event) {
+    if (event.button !== 0 || event.pointerType === "touch" && event.isPrimary === false) return;
+    if (!isMarqueeSelectionEnabled()) return;
+    var thumb = event.target.closest ? event.target.closest(".page-picker-thumb") : null;
+    if (!thumb || !pagePickerGrid.contains(thumb)) return;
+    if (thumb.classList.contains("is-disabled")) return;
+    var pageNum = parseInt(thumb.dataset.page, 10);
+    if (!isPageSelectableInViewerMode(pageNum)) return;
+    event.preventDefault();
+    var startPoint = pointerToContentPoint(event.clientX, event.clientY);
+    marqueeState.active = true;
+    marqueeState.dragging = false;
+    marqueeState.suppressClick = false;
+    marqueeState.pointerId = event.pointerId;
+    marqueeState.clientX = event.clientX;
+    marqueeState.clientY = event.clientY;
+    marqueeState.startX = startPoint.x;
+    marqueeState.startY = startPoint.y;
+    marqueeState.currentX = startPoint.x;
+    marqueeState.currentY = startPoint.y;
+    marqueeState.startPage = pageNum;
+    marqueeState.wantSelected = !isPageSelectedInViewerMode(pageNum);
+    marqueeState.snapshot = snapshotViewerSelections();
+    marqueeState.lastHitPage = null;
+    marqueeState.dirty = false;
+    pagePickerGridWrap.classList.add("is-marquee-selecting");
+    if (pagePickerGridWrap.setPointerCapture) {
+      try { pagePickerGridWrap.setPointerCapture(event.pointerId); } catch (_) {}
+    }
+  }
+
+  function onMarqueePointerMove(event) {
+    if (!marqueeState.active || (marqueeState.pointerId != null && event.pointerId !== marqueeState.pointerId)) return;
+    marqueeState.clientX = event.clientX;
+    marqueeState.clientY = event.clientY;
+    syncMarqueeCurrentFromClient();
+    var dx = marqueeState.currentX - marqueeState.startX;
+    var dy = marqueeState.currentY - marqueeState.startY;
+    if (!marqueeState.dragging && (dx * dx + dy * dy) >= MARQUEE_DRAG_THRESHOLD_PX * MARQUEE_DRAG_THRESHOLD_PX) {
+      marqueeState.dragging = true;
+      updateMarqueeOverlay();
+      applyMarqueeHitsLive();
+      if (!marqueeState.scrollRaf) marqueeState.scrollRaf = requestAnimationFrame(tickMarqueeAutoScroll);
+    }
+    if (!marqueeState.dragging) return;
+    event.preventDefault();
+    updateMarqueeOverlay();
+    applyMarqueeHitsLive();
+  }
+
+  function onMarqueePointerUp(event) {
+    if (!marqueeState.active || (marqueeState.pointerId != null && event.pointerId !== marqueeState.pointerId)) return;
+    var pointerId = marqueeState.pointerId;
+    endMarqueeSelection(true);
+    if (pagePickerGridWrap.releasePointerCapture && pointerId != null) {
+      try { pagePickerGridWrap.releasePointerCapture(pointerId); } catch (_) {}
+    }
+  }
+
+  function onMarqueePointerCancel(event) {
+    if (!marqueeState.active || (marqueeState.pointerId != null && event.pointerId !== marqueeState.pointerId)) return;
+    if (marqueeState.dragging && marqueeState.dirty) endMarqueeSelection(true);
+    else {
+      restoreViewerSelections(marqueeState.snapshot);
+      refreshViewerThumbUi();
+      endMarqueeSelection(false);
+    }
+  }
+
+  if (pagePickerGridWrap) {
+    pagePickerGridWrap.addEventListener("pointerdown", onMarqueePointerDown);
+    pagePickerGridWrap.addEventListener("pointermove", onMarqueePointerMove);
+    pagePickerGridWrap.addEventListener("pointerup", onMarqueePointerUp);
+    pagePickerGridWrap.addEventListener("pointercancel", onMarqueePointerCancel);
+    pagePickerGridWrap.addEventListener("lostpointercapture", function () {
+      if (!marqueeState.active) return;
+      if (marqueeState.dragging && marqueeState.dirty) endMarqueeSelection(true);
+      else {
+        restoreViewerSelections(marqueeState.snapshot);
+        refreshViewerThumbUi();
+        endMarqueeSelection(false);
+      }
+    });
   }
 
   function togglePagePickerSelection(pageNum) {
@@ -3379,6 +3859,10 @@ if (document.readyState === "loading") {
       if (reicatPagePickerState.selected[pageNum]) {
         delete reicatPagePickerState.selected[pageNum];
         syncReicatPagePickerFieldFromSelection();
+      }
+      if (appendixPagePickerState.selected[pageNum]) {
+        delete appendixPagePickerState.selected[pageNum];
+        syncAppendixPagePickerFieldFromSelection();
       }
     }
     pagePickerState.lastSelected = pageNum;
@@ -3532,6 +4016,10 @@ if (document.readyState === "loading") {
   }
   reicatPagesInput.addEventListener("input", syncReicatPagePickerSelectionFromField);
   reicatPagesInput.addEventListener("change", syncReicatPagePickerSelectionFromField);
+  if (appendixPagesInput) {
+    appendixPagesInput.addEventListener("input", syncAppendixPagePickerSelectionFromField);
+    appendixPagesInput.addEventListener("change", syncAppendixPagePickerSelectionFromField);
+  }
 
   function contiguousBounds(sortedUnique) {
     if (sortedUnique.length === 0) throw new Error("valore obbligatorio");
@@ -4439,6 +4927,7 @@ if (document.readyState === "loading") {
   var validationPreviewMarkIndex = document.getElementById("validation-preview-mark-index");
   var validationPreviewMarkBiblio = document.getElementById("validation-preview-mark-biblio");
   var validationPreviewMarkReicat = document.getElementById("validation-preview-mark-reicat");
+  var validationPreviewFrame = document.getElementById("validation-preview-frame");
   var validationPreviewApprove = document.getElementById("validation-preview-approve");
   var validationPreviewBack = document.getElementById("validation-preview-back");
   var validationPreviewState = { entries: [], index: 0, loadGen: 0 };
@@ -4457,6 +4946,7 @@ if (document.readyState === "loading") {
         index: !!indexPagePickerState.selected[p],
         biblio: !!(biblioPagePickerState && biblioPagePickerState.selected[p]),
         reicat: !!reicatPagePickerState.selected[p],
+        appendix: !!(appendixPagePickerState && appendixPagePickerState.selected[p]),
       });
     }
     return entries;
@@ -4468,6 +4958,7 @@ if (document.readyState === "loading") {
     if (entry.index) bits.push("Indice");
     if (entry.biblio) bits.push("Biblio");
     if (entry.reicat) bits.push("REICAT");
+    if (entry.appendix) bits.push("Appendici");
     return bits;
   }
 
@@ -4490,6 +4981,7 @@ if (document.readyState === "loading") {
     validationPreviewMarkIndex.classList.toggle("hidden", !entry.index);
     validationPreviewMarkBiblio.classList.toggle("hidden", !entry.biblio);
     validationPreviewMarkReicat.classList.toggle("hidden", !entry.reicat);
+    if (validationPreviewFrame) validationPreviewFrame.classList.toggle("is-appendix", !!entry.appendix);
     try {
       var url = await ensureDetailCached(entry.original);
       if (loadGen !== validationPreviewState.loadGen) return;

@@ -14,6 +14,7 @@ from src.ingestion.pdf_alignment import (
     _alignment_chunk_specs,
     build_aligned_pdf,
     build_page_removal_mapping,
+    extract_pages_to_pdf,
     maybe_run_pdf_alignment,
     resolve_aligned_pdf_path_for_stage1,
 )
@@ -292,6 +293,16 @@ class PdfAlignmentTests(unittest.TestCase):
                 page_range_per_thread=DEFAULT_PAGE_RANGE_PER_THREAD,
             )
             self.assertTrue(resolved.is_file())
+
+    def test_extract_pages_to_pdf_preserves_order(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            source = Path(tmp_dir) / "book.pdf"
+            source.write_bytes(_minimal_pdf_bytes(5))
+            target = Path(tmp_dir) / "raw_appendix" / "appendix_book.pdf"
+            count = extract_pages_to_pdf(source, [5, 2, 4], target)
+            self.assertEqual(count, 3)
+            self.assertTrue(target.is_file())
+            self.assertEqual(len(PdfReader(str(target)).pages), 3)
 
 
 if __name__ == "__main__":

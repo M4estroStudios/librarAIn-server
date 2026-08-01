@@ -85,6 +85,29 @@ def merge_pdf_paths(source_paths: list[Path], target_path: Path) -> int:
     return len(merger.pages)
 
 
+def extract_pages_to_pdf(
+    source_path: Path, pages_one_based: list[int], target_path: Path
+) -> int:
+    if not pages_one_based:
+        raise ValueError("extract_pages_to_pdf requires at least one page")
+    reader = PdfReader(str(source_path), strict=False)
+    page_count = len(reader.pages)
+    writer = PdfWriter()
+    for page in pages_one_based:
+        if page < 1 or page > page_count:
+            raise ValueError(
+                f"appendix page {page} out of range (pdf has {page_count} pages)"
+            )
+        writer.add_page(reader.pages[page - 1])
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with target_path.open("wb") as sink:
+            writer.write(sink)
+    except OSError as exc:
+        raise ValueError(f"unable to write appendix pdf: {exc}") from exc
+    return len(writer.pages)
+
+
 def _merge_chunk_pdf_paths(chunk_paths_ordered: list[str], target_path: Path) -> None:
     merger = PdfWriter()
     for path_str in chunk_paths_ordered:

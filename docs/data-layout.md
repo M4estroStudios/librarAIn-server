@@ -10,6 +10,7 @@ data/
 │   └── biblioteca.db              # SQLite: books, runs, embeddings
 ├── input/
 │   ├── raw/                       # PDF originali caricati dall'operatore
+│   ├── raw_appendix/              # PDF appendici estratte (appendix_<nome>.pdf)
 │   └── processed/
 │       └── <source_sha256>.pdf    # PDF allineato (pagine rimosse)
 ├── output/

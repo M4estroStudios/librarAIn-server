@@ -82,7 +82,7 @@ from src.core.hashing import new_job_id
 from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.core.openai_client import use_compute_mode
 from src.models.settings import normalize_compute_mode
-from src.ingestion.pdf_alignment import merge_pdf_paths
+from src.ingestion.pdf_alignment import extract_pages_to_pdf, merge_pdf_paths
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
 from src.models.request import IngestInputErrorCode, IngestInputValidationError, IngestInputValidationException
@@ -1811,6 +1811,57 @@ def build_ingest_server(
             Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
                 {"path": str(saved_path), "bytes": saved_path.stat().st_size})
 
+            appendix_path: Path | None = None
+            appendix_pages_raw = (text_fields.get("appendix_pages") or "").strip()
+            if appendix_pages_raw:
+                try:
+                    appendix_pages = _parse_pages_spec(appendix_pages_raw)
+                except InvalidPagesSpec as exc:
+                    saved_path.unlink(missing_ok=True)
+                    Log(WARNING_LOG_LEVEL, "ingest appendix pages invalid", {"error": str(exc)})
+                    _send_validation_error(
+                        self,
+                        IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                        str(exc),
+                        "appendix_pages",
+                    )
+                    return
+                if appendix_pages:
+                    appendix_stem = Path(
+                        _safe_filename(uploaded.filename or "upload.pdf")
+                    ).stem or "upload"
+                    appendix_path = (
+                        data_root / "input" / "raw_appendix" / f"appendix_{appendix_stem}.pdf"
+                    )
+                    try:
+                        appendix_count = extract_pages_to_pdf(
+                            saved_path, appendix_pages, appendix_path
+                        )
+                    except ValueError as exc:
+                        saved_path.unlink(missing_ok=True)
+                        appendix_path.unlink(missing_ok=True)
+                        Log(
+                            WARNING_LOG_LEVEL,
+                            "ingest appendix pdf extract failed",
+                            {"error": str(exc)},
+                        )
+                        _send_validation_error(
+                            self,
+                            IngestInputErrorCode.PDF_ALIGNMENT_FAILED,
+                            str(exc),
+                            "appendix_pages",
+                        )
+                        return
+                    Log(
+                        INFO_LOG_LEVEL,
+                        "ingest appendix PDF saved",
+                        {
+                            "path": str(appendix_path),
+                            "pages": appendix_count,
+                            "bytes": appendix_path.stat().st_size,
+                        },
+                    )
+
             try:
                 with use_compute_mode(compute_mode, settings):
                     require_gpu_vram_at_pipeline_start(
@@ -1820,6 +1871,8 @@ def build_ingest_server(
                     )
             except IngestInputValidationException as exc:
                 saved_path.unlink(missing_ok=True)
+                if appendix_path is not None:
+                    appendix_path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest submit blocked by gpu vram preflight",
                     {"error": exc.detail.message})
                 _send_validation_error(
