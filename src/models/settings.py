@@ -370,8 +370,8 @@ class Settings(BaseModel):
             return self
         return self.model_copy(update=updates)
 
-    def cloud_config_warning_message(self) -> str | None:
-        missing = []
+    def cloud_config_missing_env_vars(self) -> list[str]:
+        missing: list[str] = []
         if not self.openai_cloud_base_url:
             missing.append("OPENAI_CLOUD_BASE_URL")
         if not self.openai_cloud_api_key:
@@ -380,9 +380,4 @@ class Settings(BaseModel):
             if not getattr(self, cloud_attr):
                 field = Settings.model_fields[cloud_attr]
                 missing.append(str(field.alias or cloud_attr))
-        if not missing:
-            return None
-        return (
-            "Cloud compute is not fully configured; set these env vars to enable "
-            "compute_mode=cloud: " + ", ".join(missing)
-        )
+        return missing

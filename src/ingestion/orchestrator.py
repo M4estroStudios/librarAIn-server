@@ -24,6 +24,7 @@ from src.ingestion.pipeline.stage1 import Stage1Result, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
+from src.ingestion.index_cross_links import apply_index_cross_links
 from src.ingestion.polyindex.biblio_json import sync_polyindex_biblio_from_book
 from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
 from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
@@ -286,14 +287,6 @@ def _run_render_phase(ctx: PipelineContext) -> None:
         ctx.request_id,
         stage="render",
         message="render deferred to stage1 (useful pages only)",
-    )
-    _progress_completed(ctx, PHASE_RENDER, rendered_page_count=ctx.render_page_total)
-    _publish_event(
-        ctx.registry,
-        ctx.request_id,
-        stage="render",
-        message="render phase completed (lazy)",
-        payload={"rendered_page_count": ctx.render_page_total},
     )
 
 
@@ -635,6 +628,33 @@ async def _run_index_refine_phase(ctx: PipelineContext, index_md_path: Path) -> 
     return index_md_path
 
 
+async def _run_index_cross_links_phase(
+    ctx: PipelineContext,
+    book_output: BookOutput,
+    index_md_path: Path,
+) -> Path:
+    try:
+        stats = await apply_index_cross_links(
+            index_md_path,
+            book_output,
+            ctx.useful_pages,
+            client=ctx.openai_client,
+            settings=ctx.settings,
+            request_id=ctx.request_id,
+        )
+    except Exception as exc:
+        raise OrchestratorStageError("index_cross_links", exc) from exc
+    _run_book_md_builder(ctx, book_output)
+    _publish_event(
+        ctx.registry,
+        ctx.request_id,
+        stage="index_cross_links",
+        message="index_cross_links completed",
+        payload=stats,
+    )
+    return index_md_path
+
+
 async def _run_book_artifact_phases(
     ctx: PipelineContext,
     book_output: BookOutput,
@@ -644,6 +664,7 @@ async def _run_book_artifact_phases(
     toc_md_path = await _run_toc_refine_phase(ctx, toc_md_path)
     index_md_path = _run_index_md_builder(ctx, book_output)
     index_md_path = await _run_index_refine_phase(ctx, index_md_path)
+    index_md_path = await _run_index_cross_links_phase(ctx, book_output, index_md_path)
     return toc_md_path, index_md_path
 
 

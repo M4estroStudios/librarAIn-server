@@ -33,7 +33,7 @@ from src.models.request import IngestInputValidationException
 from src.models.settings import Settings
 from src.persistence.book_sqlite import run_ingest_gate_phase
 
-_GLM_ACTIVE_PAGE_STAGES = 2
+_GLM_ACTIVE_PAGE_STAGES = 3
 
 
 def run_glm_ingest_pipeline(

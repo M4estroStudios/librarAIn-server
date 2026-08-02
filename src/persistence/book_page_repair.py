@@ -71,7 +71,7 @@ def repair_global_step_count(
     *,
     pipeline_mode: RepairPipelineMode,
 ) -> int:
-    stages_per_page = 2 if pipeline_mode == "glm_ocr" else 3
+    stages_per_page = 3 if pipeline_mode == "glm_ocr" else 4
     return max(page_count * stages_per_page, 1)
 
 

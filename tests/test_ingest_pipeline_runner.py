@@ -246,12 +246,12 @@ class TestHappyPath(unittest.TestCase):
     @patch(_P_ALIGN)
     @patch(_P_GATE)
     @patch(_P_VALIDATE)
-    def test_set_global_total_alignment_plus_2x3(
+    def test_set_global_total_alignment_plus_2x4(
         self, mv, mg, ma, me, morch
     ) -> None:
         set_total = MagicMock()
         self._run(mv, mg, ma, me, morch, set_total=set_total)
-        set_total.assert_called_once_with(7)
+        set_total.assert_called_once_with(9)
 
     @patch(_P_ORCH, new_callable=AsyncMock)
     @patch(_P_ENUM)

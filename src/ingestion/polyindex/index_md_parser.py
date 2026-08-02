@@ -51,6 +51,15 @@ def _collapse_whitespace(text: str) -> str:
     return " ".join(text.split())
 
 
+_INDEX_ANCHOR_PATTERN = re.compile(r'<a id="idx-[^"]*"></a>')
+_INDEX_PAGE_LINK_PATTERN = re.compile(r"\[(\d+)\]\([^)]+\)")
+
+
+def strip_index_cross_link_markup(text: str) -> str:
+    text = _INDEX_ANCHOR_PATTERN.sub("", text)
+    return _INDEX_PAGE_LINK_PATTERN.sub(r"\1", text)
+
+
 def _light_normalize_label(raw: str) -> str:
     return _collapse_whitespace(raw.strip())
 
@@ -245,7 +254,7 @@ def parse_index_md_with_skipped(
     skipped: list[SkippedIndexLine] = []
 
     for line in text.splitlines():
-        stripped = line.strip()
+        stripped = strip_index_cross_link_markup(line).strip()
         if _is_skippable_index_line(stripped):
             continue
 

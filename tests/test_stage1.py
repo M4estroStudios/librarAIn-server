@@ -362,6 +362,33 @@ class Stage1OcrTests(unittest.TestCase):
             self.assertLessEqual(engine.max_seen, 4)
             self.assertGreater(engine.max_seen, 1)
 
+    def test_render_emits_per_page_progress_events(self) -> None:
+        events: list[dict] = []
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pdf = root / "aligned.pdf"
+            pdf.write_bytes(_pdf_bytes(3))
+            settings = _settings(str(root / "data"))
+            enum = _enumeration([1, 2, 3], {1: 1, 2: 2, 3: 3})
+            engine = FakeEngine({1: "a", 2: "b", 3: "c"})
+            _run_ocr(
+                pdf,
+                "deadbeef",
+                enum,
+                settings,
+                engine,
+                reicat=_reicat("Progress Book"),
+                progress=events.append,
+            )
+
+        render_events = [e for e in events if e.get("phase") == "render"]
+        statuses = [e["status"] for e in render_events]
+        self.assertEqual(statuses[0], "started")
+        self.assertEqual(statuses.count("page_progress"), 3)
+        self.assertEqual(statuses[-1], "completed")
+        self.assertTrue(all(e.get("counts_as_step") for e in render_events if e["status"] == "page_progress"))
+
 
 class RunStage1IngestStepTests(unittest.TestCase):
     def test_run_stage1_ingest_step_resolves_pdf_and_writes_txt(self) -> None:

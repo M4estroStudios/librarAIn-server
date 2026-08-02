@@ -422,16 +422,13 @@ async def run_glm_ocr_combined_stage(
         for w in glm_work
     ]
 
-    def _emit_render_progress(event: dict) -> None:
-        _emit_progress({**event, "phase": PHASE_STAGE1_GLM_OCR})
-
     render_failures_raw = await _render_stage1_pages_sequential(
         ocr_work,
         aligned_path,
         render_source_sha256,
         request_id=request_id,
         page_total=page_total,
-        emit_progress=_emit_render_progress,
+        emit_progress=_emit_progress,
     )
     render_failures = {
         idx: _GlmOcrOutcome(page_index=out.page_index, failed=True, error=out.error)

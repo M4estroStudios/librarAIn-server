@@ -85,8 +85,8 @@ class TestBookPageRepair(unittest.TestCase):
         self.assertEqual(normalize_repair_pipeline_mode(None), "classic")
 
     def test_repair_global_step_count(self) -> None:
-        self.assertEqual(repair_global_step_count(4, pipeline_mode="classic"), 12)
-        self.assertEqual(repair_global_step_count(4, pipeline_mode="glm_ocr"), 8)
+        self.assertEqual(repair_global_step_count(4, pipeline_mode="classic"), 16)
+        self.assertEqual(repair_global_step_count(4, pipeline_mode="glm_ocr"), 12)
         self.assertEqual(repair_global_step_count(0, pipeline_mode="glm_ocr"), 1)
 
     def test_infer_gaps_repair_entry_stage(self) -> None:

@@ -92,8 +92,15 @@ def load_settings(env_file: str = ".env") -> Settings:
             {"fallback": settings.ocrvision_model or ""},
         )
 
-    cloud_warning = settings.cloud_config_warning_message()
-    if cloud_warning:
-        Log(WARNING_LOG_LEVEL, cloud_warning, {})
+    missing_cloud_env = settings.cloud_config_missing_env_vars()
+    if missing_cloud_env:
+        Log(
+            WARNING_LOG_LEVEL,
+            "cloud compute is not fully configured",
+            {
+                "missing_env": missing_cloud_env,
+                "required_for": "compute_mode=cloud",
+            },
+        )
 
     return settings

@@ -34,7 +34,7 @@ from src.persistence.book_sqlite import run_ingest_gate_phase
 from src.models.request import IngestInputValidationError, IngestInputValidationException
 from src.models.settings import Settings
 
-_ACTIVE_PAGE_STAGES = 3
+_ACTIVE_PAGE_STAGES = 4
 
 
 def _emit(reporter: ProgressReporter | None, event: dict[str, Any]) -> None:

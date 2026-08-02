@@ -5503,8 +5503,8 @@ if (document.readyState === "loading") {
 
   var PHASE_ORDER = [
     "validation", "gate_hash", "pdf_alignment", "page_enumeration",
-    "stage1_glm_ocr", "stage3_editor",
-    "polyindex_toc", "polyindex_index", "time_index",
+    "render", "stage1_glm_ocr", "stage3_editor",
+    "polyindex_toc", "polyindex_index", "time_index", "polyindex_biblio",
   ];
 
   var PHASE_LABELS = {
@@ -5512,6 +5512,7 @@ if (document.readyState === "loading") {
     gate_hash: "Hash gate",
     pdf_alignment: "Allineamento PDF",
     page_enumeration: "Enumerazione pagine",
+    render: "Render PDF",
     stage1_glm_ocr: "GLM OCR (OCR+Vision)",
     stage1_ocr: "GLM OCR (OCR+Vision)",
     stage2_vision: "GLM OCR (OCR+Vision)",
@@ -5519,6 +5520,7 @@ if (document.readyState === "loading") {
     polyindex_toc: "Polyindex TOC.json",
     polyindex_index: "Polyindex INDEX.json",
     time_index: "Polyindex TIME_INDEX.json",
+    polyindex_biblio: "Polyindex BIBLIO.json",
   };
 
   function formatDuration(sec) {

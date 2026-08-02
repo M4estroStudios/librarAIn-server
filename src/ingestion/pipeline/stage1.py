@@ -11,6 +11,7 @@ from src.ingestion.pipeline.engine import EasyOCRPageEngine, OCRPageEngine
 from src.core.hashing import compute_file_sha256
 from src.ingestion.pipeline.render import _render_pdf_page_to_png
 from src.ingestion.progress import (
+    PHASE_RENDER,
     PHASE_STAGE1_OCR,
     STATUS_COMPLETED,
     STATUS_FAILED,
@@ -167,12 +168,21 @@ async def _render_stage1_pages_sequential(
 ) -> dict[int, _Stage1PageOutcome]:
     render_failures: dict[int, _Stage1PageOutcome] = {}
     if not ocr_work:
+        emit_progress(make_event(
+            PHASE_RENDER,
+            STATUS_COMPLETED,
+            page_total=page_total,
+            rendered_page_count=page_total,
+            skipped=True,
+        ))
         return render_failures
 
+    render_total = len(ocr_work)
+    emit_progress(make_event(PHASE_RENDER, STATUS_STARTED, page_total=render_total))
     Log(
         INFO_LOG_LEVEL,
         "stage1 PDF render phase begin",
-        {"request_id": request_id, "pages_to_render": len(ocr_work)},
+        {"request_id": request_id, "pages_to_render": render_total},
     )
     for work in ocr_work:
         try:
@@ -184,6 +194,15 @@ async def _render_stage1_pages_sequential(
                 dpi=200,
                 source_sha256=render_source_sha256,
             )
+            emit_progress(make_event(
+                PHASE_RENDER,
+                STATUS_PAGE_PROGRESS,
+                counts_as_step=True,
+                page_index=work.page_index,
+                page_total=render_total,
+                aligned_page=work.aligned,
+                original_page=work.orig,
+            ))
         except Exception as exc:
             Log(
                 WARNING_LOG_LEVEL,
@@ -196,11 +215,11 @@ async def _render_stage1_pages_sequential(
                 },
             )
             emit_progress(make_event(
-                PHASE_STAGE1_OCR,
+                PHASE_RENDER,
                 STATUS_PAGE_FAILED,
                 counts_as_step=True,
                 page_index=work.page_index,
-                page_total=page_total,
+                page_total=render_total,
                 aligned_page=work.aligned,
                 original_page=work.orig,
                 error=str(exc),
@@ -211,12 +230,18 @@ async def _render_stage1_pages_sequential(
                 failed=True,
                 error=str(exc),
             )
+    emit_progress(make_event(
+        PHASE_RENDER,
+        STATUS_COMPLETED,
+        page_total=render_total,
+        rendered_page_count=render_total,
+    ))
     Log(
         INFO_LOG_LEVEL,
         "stage1 PDF render phase done",
         {
             "request_id": request_id,
-            "pages_to_render": len(ocr_work),
+            "pages_to_render": render_total,
             "render_failures": len(render_failures),
         },
     )
