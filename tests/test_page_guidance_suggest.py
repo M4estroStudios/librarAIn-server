@@ -1,8 +1,11 @@
 import unittest
+from pathlib import Path
 from random import Random
+from unittest.mock import MagicMock, patch
 
 from PIL import Image
 
+from src.api.page_guidance_http import ensure_ingest_ai_page_guidance
 from src.api.page_guidance_suggest import (
     choose_sample_pages,
     flatten_annotations_on_image,
@@ -65,6 +68,52 @@ class FlattenAnnotationsTests(unittest.TestCase):
         )
         self.assertEqual(out.size, (200, 300))
         self.assertEqual(out.mode, "RGB")
+
+
+class EnsureIngestAiPageGuidanceTests(unittest.TestCase):
+    def test_keeps_existing_guidance(self) -> None:
+        payload = {"ai_page_guidance": "  already there  "}
+        ensure_ingest_ai_page_guidance(
+            Path("unused.pdf"),
+            MagicMock(),
+            payload,
+            {"notes": "ignored"},
+        )
+        self.assertEqual(payload["ai_page_guidance"], "already there")
+
+    def test_generates_when_missing(self) -> None:
+        payload: dict = {}
+        with patch(
+            "src.api.page_guidance_http.suggest_page_guidance",
+            return_value={"guidance": "generated tip"},
+        ) as mock_suggest:
+            ensure_ingest_ai_page_guidance(
+                Path("book.pdf"),
+                MagicMock(),
+                payload,
+                {
+                    "notes": "general",
+                    "index_notes": "index",
+                    "page_notes": "pages",
+                    "annotations_json": '[{"page":1,"elements":[]}]',
+                },
+            )
+        self.assertEqual(payload["ai_page_guidance"], "generated tip")
+        mock_suggest.assert_called_once()
+        kwargs = mock_suggest.call_args.kwargs
+        self.assertEqual(kwargs["notes"], "general")
+        self.assertEqual(kwargs["index_notes"], "index")
+        self.assertEqual(kwargs["page_notes"], "pages")
+        self.assertEqual(kwargs["annotations"], [{"page": 1, "elements": []}])
+
+    def test_rejects_invalid_annotations_json(self) -> None:
+        with self.assertRaises(ValueError):
+            ensure_ingest_ai_page_guidance(
+                Path("book.pdf"),
+                MagicMock(),
+                {},
+                {"annotations_json": "{bad"},
+            )
 
 
 if __name__ == "__main__":

@@ -7,8 +7,10 @@ from typing import Any
 import openai
 from pydantic import BaseModel
 
+from src.core.errors import ShutdownRequested, raise_if_shutdown
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
+from src.core.parallel import gather_cancellable
 from src.ingestion.pipeline.md_cache import (
     read_stage_md as _read_stage_md,
     write_stage_md as _write_stage_md,
@@ -176,6 +178,7 @@ async def run_stage3_editor(
     async def _process_page(page_index: int, s2_page: Stage2PageResult) -> tuple[Stage3PageResult | None, bool]:
         nonlocal last_error
         async with sem:
+            raise_if_shutdown()
             Log(
                 INFO_LOG_LEVEL,
                 "stage3 page iteration begin",
@@ -250,6 +253,8 @@ async def run_stage3_editor(
                     settings=settings,
                     prompt_notes=prompt_notes,
                 )
+            except ShutdownRequested:
+                raise
             except Exception as exc:
                 last_error = str(exc)
                 Log(
@@ -284,6 +289,7 @@ async def run_stage3_editor(
             )
             stage3_char_count = len(finalized)
             char_delta = stage3_char_count - stage2_char_count
+            raise_if_shutdown()
             _write_stage_md(md_path, model, finalized)
             if progress is not None:
                 progress(make_event(
@@ -308,7 +314,7 @@ async def run_stage3_editor(
                 False,
             )
 
-    outcomes = await asyncio.gather(
+    outcomes = await gather_cancellable(
         *(
             _process_page(page_index, s2_page)
             for page_index, s2_page in enumerate(stage2_result.pages, start=1)

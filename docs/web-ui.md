@@ -49,5 +49,5 @@ Il server di produzione serve anche `/mockup/*` come statici: utili in lab, non 
 ## Note operative UI
 
 - Modalità embed: `?embed=1` nasconde chrome e comunica altezza al parent via `postMessage`.
-- I form ingest accettano note separate (`notes`, `index_notes`, `page_notes`).
+- I form ingest accettano note operatore (`notes`, `index_notes`, `page_notes`) e annotazioni solo come input del consiglio AI; all'ingest va `ai_page_guidance` (generato a mano o auto al submit).
 - Job lunghi: preferire SSE (`events`) allo polling aggressivo di `/status`.

@@ -7,20 +7,25 @@ from pathlib import Path
 from typing import Any, Literal
 from uuid import uuid4
 
+from src.core.errors import ShutdownRequested
 from src.core.hashing import compute_file_sha256
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.core.text import slugify as _slugify
 from src.ingestion.orchestrator import (
     NullOrchestratorRegistry,
     OrchestratorStageError,
+    PipelineContext,
     _build_pipeline_context,
     _prepare_page_jobs,
+    _run_book_artifact_phases,
     _run_editor_phase_only,
     _run_glm_ocr_phase,
+    _run_polyindex_phases,
     _run_render_phase,
     _run_stage1_phase,
     _run_vision_editor_phases,
 )
+from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.pipeline.stage3 import Stage3Result
@@ -66,13 +71,157 @@ def normalize_repair_pipeline_mode(value: object) -> RepairPipelineMode:
     return "classic"
 
 
+def resolve_resume_pipeline_mode(settings: Settings) -> RepairPipelineMode:
+    from src.ingestion.pipeline.glm_ocr_stage import resolve_glm_ocr_model
+
+    if resolve_glm_ocr_model(settings):
+        return "glm_ocr"
+    return "classic"
+
+
+_REPAIR_INDEX_PHASE_STEPS = 4
+
+
 def repair_global_step_count(
     page_count: int,
     *,
     pipeline_mode: RepairPipelineMode,
+    include_index_phases: bool = False,
 ) -> int:
-    stages_per_page = 3 if pipeline_mode == "glm_ocr" else 4
-    return max(page_count * stages_per_page, 1)
+    stages_per_page = 2 if pipeline_mode == "glm_ocr" else 3
+    extra = _REPAIR_INDEX_PHASE_STEPS if include_index_phases else 0
+    return max(page_count * stages_per_page + extra, 1)
+
+
+def build_repair_progress_baseline(
+    audit: dict[str, Any],
+    *,
+    pipeline_mode: RepairPipelineMode,
+) -> dict[str, Any]:
+    """Book-level done/total for repair UI, including pages already on disk."""
+    expected = max(1, int(audit.get("expected_page_count") or 0))
+    stages = audit.get("stages") if isinstance(audit.get("stages"), dict) else {}
+
+    def _present(stage_key: str) -> int:
+        entry = stages.get(stage_key)
+        if not isinstance(entry, dict):
+            return 0
+        return max(0, min(expected, int(entry.get("present_count") or 0)))
+
+    missing_pages = audit.get("missing_pages")
+    missing_count = len(missing_pages) if isinstance(missing_pages, list) else 0
+    gaps_done = max(0, expected - missing_count)
+    if pipeline_mode == "glm_ocr":
+        glm_done = min(_present("stage1OCR"), _present("stage2Vision"))
+        phase_baselines = (
+            ("stage1_glm_ocr", glm_done),
+            ("stage3_editor", _present("stage3Editor")),
+        )
+    else:
+        phase_baselines = (
+            ("stage1_ocr", _present("stage1OCR")),
+            ("stage2_vision", _present("stage2Vision")),
+            ("stage3_editor", _present("stage3Editor")),
+        )
+    done_steps = sum(done for _phase, done in phase_baselines)
+    total_steps = repair_global_step_count(
+        expected,
+        pipeline_mode=pipeline_mode,
+        include_index_phases=True,
+    )
+    events = [
+        {
+            "phase": "gaps_repair",
+            "status": "baseline",
+            "done": gaps_done,
+            "page_total": expected,
+            "counts_as_step": False,
+        }
+    ]
+    for phase, done in phase_baselines:
+        events.append(
+            {
+                "phase": phase,
+                "status": "baseline",
+                "done": done,
+                "page_total": expected,
+                "counts_as_step": False,
+            }
+        )
+    return {
+        "expected_page_count": expected,
+        "done_steps": min(done_steps, total_steps),
+        "total_steps": total_steps,
+        "events": events,
+    }
+
+
+def _book_output_from_manifest(
+    data_root: Path,
+    source_sha256: str,
+    manifest: dict[str, Any],
+) -> BookOutput:
+    sha = source_sha256.strip().lower()
+    slug = str(manifest.get("slug") or "")
+    output_dir = data_root / "output" / sha
+    pages: list[BookPageOutput] = []
+    raw_pages = manifest.get("pages")
+    if isinstance(raw_pages, list):
+        for entry in raw_pages:
+            if not isinstance(entry, dict):
+                continue
+            aligned = entry.get("aligned")
+            original = entry.get("original")
+            rel = entry.get("file")
+            if not isinstance(aligned, int) or not isinstance(original, int):
+                continue
+            if not isinstance(rel, str) or not rel.strip():
+                continue
+            pages.append(
+                BookPageOutput(
+                    aligned=aligned,
+                    original=original,
+                    file=output_dir / rel,
+                )
+            )
+    return BookOutput(
+        output_dir=output_dir,
+        manifest_path=output_dir / "manifest.json",
+        slug=slug,
+        pages=sorted(pages, key=lambda page: page.aligned),
+    )
+
+
+async def _run_repair_index_phases(
+    ctx: PipelineContext,
+    enriched: EnrichedIngestRequest,
+    data_root: Path,
+    source_sha256: str,
+) -> None:
+    from src.core.openai_client import build_openai_client
+
+    manifest_path = data_root / "output" / source_sha256.strip().lower() / "manifest.json"
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise PageRepairError(f"unable to reload manifest for index rebuild: {exc}") from exc
+    if not isinstance(manifest, dict):
+        raise PageRepairError("manifest for index rebuild must be an object")
+    full_useful = build_useful_pages_enumeration(enriched, None)
+    ctx.useful_pages = full_useful
+    ctx.render_page_total = len(full_useful.useful_original_pages)
+    if ctx.openai_client is None:
+        ctx.openai_client = build_openai_client(ctx.settings)
+    book_output = _book_output_from_manifest(data_root, source_sha256, manifest)
+    if not book_output.pages:
+        raise PageRepairError("no output pages available for index rebuild")
+    try:
+        toc_md_path, index_md_path = await _run_book_artifact_phases(ctx, book_output)
+        await _run_polyindex_phases(ctx, book_output, toc_md_path, index_md_path)
+    except OrchestratorStageError as exc:
+        raise PageRepairError(str(exc.cause)) from exc
+    except ShutdownRequested:
+        raise
 
 
 def infer_repair_entry_stage(missing_in: list[str]) -> str:
@@ -382,18 +531,6 @@ async def _run_repair_async(
         skip_vision_editor=False,
         counters={"completed": 0, "failed": 0},
     )
-    if progress is not None:
-        progress(
-            make_event(
-                PHASE_STAGE3_EDITOR,
-                STATUS_STARTED,
-                aligned_page=aligned_pages[0] if len(aligned_pages) == 1 else None,
-                aligned_pages=aligned_pages,
-                page_count=len(aligned_pages),
-                entry_stage=entry_stage,
-                resilient_skip=True,
-            )
-        )
     _run_render_phase(ctx)
     page_jobs = _prepare_page_jobs(ctx)
     try:
@@ -431,6 +568,13 @@ async def _run_repair_async(
                 result=merge_result,
             )
         )
+    if not single_page:
+        await _run_repair_index_phases(
+            ctx,
+            enriched,
+            data_root,
+            enriched.source_sha256,
+        )
     result: dict[str, Any] = {
         "source_sha256": enriched.source_sha256,
         "aligned_pages": aligned_pages,
@@ -439,6 +583,7 @@ async def _run_repair_async(
         "stage1_pages": len(stage1_result.pages),
         "stage2_pages": len(stage2_result.pages),
         "stage3_pages": len(stage3_result.pages),
+        "index_phases": not single_page,
         **merge_result,
     }
     if len(aligned_pages) == 1:

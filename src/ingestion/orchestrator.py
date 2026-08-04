@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal, Protocol, runtime_checkable
 
+from src.core.errors import ShutdownRequested, raise_if_shutdown
 from src.core.log import (
     INFO_LOG_LEVEL,
     Log,
@@ -61,17 +62,6 @@ PAGE_STATUS_COMPLETED = "completed"
 PAGE_STATUS_FAILED = "failed"
 
 _TMP_SUBDIRS = ("stage1OCR", "stage2Vision", "stage3Editor", "stage4TocIndexRefine")
-
-
-def _combine_notes(*parts: str | None) -> str | None:
-    cleaned = [
-        part.strip()
-        for part in parts
-        if isinstance(part, str) and part.strip()
-    ]
-    if not cleaned:
-        return None
-    return "\n\n".join(cleaned)
 
 
 class OrchestratorStageError(Exception):
@@ -253,7 +243,7 @@ def _build_pipeline_context(
     skip_vision_editor: bool,
     counters: dict[str, int],
 ) -> PipelineContext:
-    prompt_notes = enriched.request.notes
+    guidance = (enriched.request.ai_page_guidance or "").strip() or None
     return PipelineContext(
         enriched=enriched,
         alignment=alignment,
@@ -268,13 +258,9 @@ def _build_pipeline_context(
         skip_vision_editor=skip_vision_editor,
         counters=counters,
         source_sha256=enriched.source_sha256,
-        prompt_notes=prompt_notes,
-        page_prompt_notes=_combine_notes(
-            prompt_notes,
-            enriched.request.page_notes,
-            enriched.request.ai_page_guidance,
-        ),
-        index_prompt_notes=_combine_notes(prompt_notes, enriched.request.index_notes),
+        prompt_notes=guidance,
+        page_prompt_notes=guidance,
+        index_prompt_notes=guidance,
         render_page_total=len(useful_pages.useful_original_pages),
         polyindex_dir=data_root / "polyindex",
     )
@@ -475,6 +461,7 @@ async def _run_vision_editor_phases(
     stage1_result: Stage1Result,
     page_jobs: list[PageJob],
 ) -> tuple[Stage2Result, Stage3Result]:
+    raise_if_shutdown()
     ctx.openai_client = build_openai_client(ctx.settings)
     try:
         stage2_result = await run_stage2_vision(
@@ -486,12 +473,15 @@ async def _run_vision_editor_phases(
             progress=ctx.progress,
             prompt_notes=ctx.page_prompt_notes,
         )
+    except ShutdownRequested:
+        raise
     except Exception as exc:
         raise OrchestratorStageError("stage2_vision", exc) from exc
     for job in page_jobs:
         if job.status == PAGE_STATUS_STAGE2:
             job.status = PAGE_STATUS_STAGE3
 
+    raise_if_shutdown()
     swap_lmstudio_vision_to_editor(ctx.settings)
 
     try:
@@ -504,6 +494,8 @@ async def _run_vision_editor_phases(
             progress=ctx.progress,
             prompt_notes=ctx.page_prompt_notes,
         )
+    except ShutdownRequested:
+        raise
     except Exception as exc:
         raise OrchestratorStageError("stage3_editor", exc) from exc
     _sync_page_jobs_from_stage3(page_jobs, stage3_result)
@@ -887,6 +879,13 @@ async def run_pipeline(
                     counters=counters,
                     pipeline_mode=pipeline_mode,
                 )
+            except ShutdownRequested:
+                Log(
+                    INFO_LOG_LEVEL,
+                    "orchestrator interrupted by shutdown",
+                    {"request_id": request_id, "source_sha256": source_sha256[:16]},
+                )
+                raise
             except (OrchestratorStageError, Exception) as exc:
                 mark_pipeline_run_finished(
                     sqlite_path_str,

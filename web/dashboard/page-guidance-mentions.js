@@ -28,8 +28,40 @@ function ensureChipRows() {
     row.className = "mention-chips";
     row.setAttribute("data-mention-chips", field);
     row.setAttribute("aria-label", "Annotazioni @ per " + field);
-    label.insertBefore(row, textarea);
+    const anchor = textarea.closest(".mention-editor") || textarea;
+    label.insertBefore(row, anchor);
   });
+}
+
+function ensureHighlightEditor(textarea) {
+  if (!textarea || textarea.closest(".mention-editor")) return;
+  const wrap = document.createElement("div");
+  wrap.className = "mention-editor";
+  textarea.parentNode.insertBefore(wrap, textarea);
+  const backdrop = document.createElement("div");
+  backdrop.className = "mention-backdrop";
+  backdrop.setAttribute("aria-hidden", "true");
+  wrap.appendChild(backdrop);
+  wrap.appendChild(textarea);
+}
+
+function renderMentionHighlight(textarea) {
+  if (!textarea) return;
+  ensureHighlightEditor(textarea);
+  const backdrop = textarea.parentElement && textarea.parentElement.querySelector(".mention-backdrop");
+  if (!backdrop) return;
+  const value = String(textarea.value || "");
+  const html = escapeHtml(value).replace(/@([\w.\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]+)/g, '<span class="mention-in-text">@$1</span>');
+  backdrop.innerHTML = (html || "&nbsp;") + (value.endsWith("\n") ? "<br>" : "");
+  backdrop.scrollTop = textarea.scrollTop;
+  backdrop.scrollLeft = textarea.scrollLeft;
+}
+
+function syncMentionScroll(textarea) {
+  const backdrop = textarea && textarea.parentElement && textarea.parentElement.querySelector(".mention-backdrop");
+  if (!backdrop) return;
+  backdrop.scrollTop = textarea.scrollTop;
+  backdrop.scrollLeft = textarea.scrollLeft;
 }
 
 function createMentionMenu() {
@@ -189,8 +221,11 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
     const textarea = document.querySelector('textarea[name="' + field + '"]');
     if (!textarea || textarea.dataset.mentionBound === "1") return;
     textarea.dataset.mentionBound = "1";
+    ensureHighlightEditor(textarea);
+    renderMentionHighlight(textarea);
 
     textarea.addEventListener("input", function () {
+      renderMentionHighlight(textarea);
       const mention = detectMention(textarea);
       if (!mention) {
         if (activeField === field) hideMenu();
@@ -201,6 +236,7 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
       activeQuery = mention.query;
       showMenu(textarea, filterItems(field, mention.query), textarea.getBoundingClientRect());
     });
+    textarea.addEventListener("scroll", function () { syncMentionScroll(textarea); });
 
     textarea.addEventListener("keydown", function (ev) {
       if (menu.classList.contains("hidden") || activeField !== field) return;
@@ -265,5 +301,16 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
   }
 
   renderChips();
-  return { refresh: renderChips, hideMenu: hideMenu };
+  SECTION_FIELDS.forEach(function (field) {
+    renderMentionHighlight(document.querySelector('textarea[name="' + field + '"]'));
+  });
+  return {
+    refresh: function () {
+      renderChips();
+      SECTION_FIELDS.forEach(function (field) {
+        renderMentionHighlight(document.querySelector('textarea[name="' + field + '"]'));
+      });
+    },
+    hideMenu: hideMenu,
+  };
 }

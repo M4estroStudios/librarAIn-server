@@ -104,7 +104,7 @@ textarea { min-height: 4.5rem; resize: vertical; }
 @media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
 button { font: inherit; padding: 0.55rem 1rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
-button:hover:not(:disabled) { background: #ffffff; }
+:where(button):hover:not(:disabled) { background: #ffffff; color: #1e1e1e; }
 button:disabled { opacity: 0.55; cursor: not-allowed; }
 .hint { font-size: 0.8rem; color: #9d9d9d; }
 code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0.4em; border-radius: 6px; }
@@ -174,7 +174,7 @@ a { color: #4ec9b0; }
 .ingest-section-stats { font-size: 0.78rem; color: #9d9d9d; margin-bottom: 0.55rem; }
 .ingest-section-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.55rem; }
 button.secondary { background: #3c3c3c; color: #e8e8e8; }
-button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
 button.review-btn { background: #2f5a48; color: #e8e8e8; }
 button.review-btn:hover:not(:disabled) { background: #3a6b55; }
 .ingest-review-card { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; padding: 0.65rem 0.75rem; border-radius: 8px; background: #252526; border: 1px solid #3e3e3e; }
@@ -3360,6 +3360,7 @@ if (document.readyState === "loading") {
     var s = Math.max(0, Math.round(Number(sec) || 0));
     if (s < 60) return s + " s";
     var m = Math.floor(s / 60);
+    if (m >= 10) return m + " min";
     var r = s % 60;
     return m + " min " + r + " s";
   }

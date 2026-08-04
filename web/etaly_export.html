@@ -13,10 +13,10 @@ h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
 p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
 a { color: #4ec9b0; }
 button { font: inherit; padding: 0.45rem 0.85rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
-button:hover:not(:disabled) { background: #fff; }
+:where(button):hover:not(:disabled) { background: #fff; color: #1e1e1e; }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
 button.secondary { background: #3c3c3c; color: #e8e8e8; }
-button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-bottom: 1rem; }
 .panel { margin-bottom: 1.5rem; padding: 1rem; border-radius: 12px; background: #252526; border: 1px solid #3e3e3e; }
 .panel h2 { font-size: 0.95rem; margin: 0 0 0.75rem; color: #e8e8e8; }

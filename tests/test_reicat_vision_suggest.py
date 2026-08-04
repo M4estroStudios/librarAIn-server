@@ -1,7 +1,12 @@
+import asyncio
 import unittest
+from unittest.mock import AsyncMock, MagicMock, patch
+
+from PIL import Image
 
 from src.api.reicat_vision_suggest import (
     _extract_json_object,
+    _suggest_with_vision,
     default_reicat_page_indices,
     normalize_reicat_suggestion,
     reicat_page_sets,
@@ -67,6 +72,41 @@ class ReicatSuggestionNormalizeTests(unittest.TestCase):
         )
         self.assertEqual(payload["titolo"], "Libro")
         self.assertEqual(payload["autore"], ["A"])
+
+
+class ReicatEmptyFallbackTests(unittest.TestCase):
+    def test_retries_with_thinking_disabled_after_empty(self) -> None:
+        lead = Image.new("RGB", (40, 40), (255, 255, 255))
+        settings = MagicMock()
+        settings.reasoning_effort_vision = "low"
+        settings.reasoning_enable_thinking_vision = True
+        calls: list[tuple[object, object]] = []
+
+        async def fake_chat(*_args: object, **kwargs: object) -> str:
+            calls.append((kwargs.get("reasoning_effort"), kwargs.get("reasoning_enable_thinking")))
+            if len(calls) == 1:
+                raise ValueError("Empty response from model")
+            return '{"titolo": "Ok", "autore": ["A"]}'
+
+        with patch(
+            "src.api.reicat_vision_suggest.chat_completion_with_retry",
+            new=AsyncMock(side_effect=fake_chat),
+        ):
+            result = asyncio.run(
+                _suggest_with_vision(
+                    MagicMock(),
+                    model="vision",
+                    settings=settings,
+                    lead_image=lead,
+                    tail_image=None,
+                    lead_pages=[0],
+                    tail_pages=[],
+                )
+            )
+        self.assertEqual(result["titolo"], "Ok")
+        self.assertEqual(len(calls), 2)
+        self.assertEqual(calls[0], ("low", True))
+        self.assertEqual(calls[1], (None, False))
 
 
 if __name__ == "__main__":

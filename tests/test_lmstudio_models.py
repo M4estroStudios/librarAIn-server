@@ -105,12 +105,45 @@ class TestSwapLmStudioModels(unittest.TestCase):
         mock_request.side_effect = [
             {"models": [{"key": "org/vision-model", "loaded_instances": [{"id": "org/vision-model"}]}]},
             {"instance_id": "org/vision-model"},
+            {"models": []},
             {"status": "loaded", "instance_id": "org/editor-model"},
+        ]
+        swap_lmstudio_vision_to_editor(_settings())
+        self.assertEqual(mock_request.call_count, 4)
+        self.assertIn("/models/unload", mock_request.call_args_list[1].args[1])
+        self.assertIn("/models/load", mock_request.call_args_list[3].args[1])
+
+    @patch("src.core.lmstudio_models._request_json")
+    def test_swap_skips_editor_load_when_already_loaded(self, mock_request: MagicMock) -> None:
+        mock_request.side_effect = [
+            {
+                "models": [
+                    {
+                        "key": "org/vision-model",
+                        "loaded_instances": [{"id": "org/vision-model"}],
+                    },
+                    {
+                        "key": "org/editor-model",
+                        "loaded_instances": [{"id": "org/editor-model"}],
+                    },
+                ]
+            },
+            {"instance_id": "org/vision-model"},
+            {
+                "models": [
+                    {
+                        "key": "org/editor-model",
+                        "loaded_instances": [{"id": "org/editor-model"}],
+                    }
+                ]
+            },
         ]
         swap_lmstudio_vision_to_editor(_settings())
         self.assertEqual(mock_request.call_count, 3)
         self.assertIn("/models/unload", mock_request.call_args_list[1].args[1])
-        self.assertIn("/models/load", mock_request.call_args_list[2].args[1])
+        self.assertTrue(
+            all("/models/load" not in call.args[1] for call in mock_request.call_args_list)
+        )
 
     @patch("src.core.lmstudio_models._request_json")
     def test_swap_from_model_unloads_glm_when_vision_equals_editor(self, mock_request: MagicMock) -> None:
@@ -124,15 +157,16 @@ class TestSwapLmStudioModels(unittest.TestCase):
                 ]
             },
             {"instance_id": "org/glm-ocr"},
+            {"models": []},
             {"status": "loaded", "instance_id": "org/editor-model"},
         ]
         swap_lmstudio_model_to_editor(
             _settings(vision_model="org/editor-model", editor_model="org/editor-model"),
             from_model="org/glm-ocr",
         )
-        self.assertEqual(mock_request.call_count, 3)
+        self.assertEqual(mock_request.call_count, 4)
         self.assertIn("/models/unload", mock_request.call_args_list[1].args[1])
-        self.assertIn("/models/load", mock_request.call_args_list[2].args[1])
+        self.assertIn("/models/load", mock_request.call_args_list[3].args[1])
 
 
 class TestUnloadLmStudioModel(unittest.TestCase):

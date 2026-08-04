@@ -27,6 +27,7 @@ STATUS_PAGE_FAILED = "page_failed"
 STATUS_COMPLETED = "completed"
 STATUS_FAILED = "failed"
 STATUS_PIPELINE_TOTAL = "pipeline_total"
+STATUS_BASELINE = "baseline"
 STATUS_DONE = "done"
 STATUS_ERROR = "error"
 

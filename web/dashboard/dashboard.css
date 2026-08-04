@@ -9,10 +9,10 @@ body { margin: 0; padding: 0; }
 .app-shell { max-width: 72rem; margin: 0 auto; padding: 1rem 1rem 4rem; box-sizing: border-box; }
 a { color: #4ec9b0; }
 button { font: inherit; padding: 0.45rem 0.9rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
-button:hover:not(:disabled) { background: #fff; }
+:where(button):hover:not(:disabled) { background: #fff; color: #1e1e1e; }
 button:disabled { opacity: 0.55; cursor: not-allowed; }
 button.secondary { background: #3c3c3c; color: #e8e8e8; }
-button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
 input, textarea, select { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
 textarea { min-height: 4rem; resize: vertical; }
 .context-note-block { margin-bottom: 0.75rem; }
@@ -27,7 +27,7 @@ textarea { min-height: 4rem; resize: vertical; }
 #dash-header { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 12px; background: #252526; border: 1px solid #3e3e3e; font-size: 0.82rem; }
 .section { margin-bottom: 0.75rem; border-radius: 12px; background: #252526; border: 1px solid #3e3e3e; }
 .section > button.section-toggle { width: 100%; text-align: left; padding: 0.85rem 1rem; background: transparent; color: #e8e8e8; font-size: 1rem; border-radius: 12px; }
-.section > button.section-toggle:hover { background: #2d2d2d; }
+.section > button.section-toggle:hover { background: #2d2d2d; color: #e8e8e8; }
 .section-body { padding: 0 1rem 1rem; display: none; }
 .section.open .section-body { display: block; }
 .section.open > button.section-toggle { border-bottom: 1px solid #3e3e3e; margin-bottom: 0.75rem; }

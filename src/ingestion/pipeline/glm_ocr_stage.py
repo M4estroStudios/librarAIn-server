@@ -9,10 +9,11 @@ from typing import Any
 import openai
 from pydantic import BaseModel
 
-from src.core.errors import PermanentError, TransientError
+from src.core.errors import PermanentError, ShutdownRequested, TransientError, raise_if_shutdown
 from src.core.hashing import compute_file_sha256
 from src.core.log import ERROR_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
+from src.core.parallel import gather_cancellable
 from src.core.retry import retry_async
 from src.core.text import slugify
 from src.ingestion.markdown_artifacts import finalize_vision_page_output
@@ -225,7 +226,10 @@ async def _glm_ocr_pages_parallel(
 
     async def _process_one(item: _GlmOcrWork) -> _GlmOcrOutcome:
         async with sem:
+            raise_if_shutdown()
+
             async def _call_model() -> str:
+                raise_if_shutdown()
                 try:
                     return await transcribe_with_glm_ocr(
                         client,
@@ -238,6 +242,8 @@ async def _glm_ocr_pages_parallel(
                     )
                 except PermanentError:
                     raise
+                except ShutdownRequested:
+                    raise
                 except Exception as exc:
                     raise TransientError(str(exc)) from exc
 
@@ -246,8 +252,10 @@ async def _glm_ocr_pages_parallel(
                     _call_model,
                     max_attempts=settings.retry_attempts,
                     retry_on=(TransientError,),
-                    giveup_on=(PermanentError,),
+                    giveup_on=(PermanentError, ShutdownRequested),
                 )
+            except ShutdownRequested:
+                raise
             except Exception as exc:
                 Log(
                     WARNING_LOG_LEVEL,
@@ -273,6 +281,7 @@ async def _glm_ocr_pages_parallel(
                 return _GlmOcrOutcome(page_index=item.page_index, failed=True, error=str(exc))
 
             finalized = finalize_vision_page_output(raw, prompt_notes)
+            raise_if_shutdown()
             write_stage_md(item.md_path, model, finalized)
             item.txt_path.write_text(finalized, encoding="utf-8")
             emit_progress(make_event(
@@ -301,7 +310,7 @@ async def _glm_ocr_pages_parallel(
                 ),
             )
 
-    return list(await asyncio.gather(*(_process_one(item) for item in pending)))
+    return list(await gather_cancellable(*(_process_one(item) for item in pending)))
 
 
 def _aggregate_glm_outcomes(outcomes: list[_GlmOcrOutcome]) -> GlmOcrCombinedResult:

@@ -12,7 +12,7 @@ from typing import Any
 import openai
 from PIL import Image, ImageDraw
 
-from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
+from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, WARNING_LOG_LEVEL, Log
 from src.core.openai_client import build_openai_client, chat_completion_with_retry
 from src.ingestion.pipeline.gpu_vram import require_gpu_vram
 from src.ingestion.pipeline.render import render_pdf_page_to_png
@@ -257,41 +257,73 @@ async def _suggest_with_vision(
     if lead_image is None and tail_image is None:
         raise ValueError("no pages available for REICAT suggestion")
 
-    selected_pages = sorted(set(lead_pages + tail_pages))
-    user_parts: list[dict[str, Any]] = [
-        {
-            "type": "text",
-            "text": (
-                "Le immagini seguono sono collage delle pagine selezionate per i metadati REICAT. "
-                f"Pagine da analizzare tutte (1-based): {', '.join(str(p + 1) for p in selected_pages) or 'nessuna'}. "
-                "Per ogni campo REICAT cerca in TUTTE queste pagine, non solo nella prima."
-            ),
-        }
+    rounds: list[tuple[Any, bool | None, Image.Image | None, Image.Image | None, list[int], list[int]]] = [
+        (
+            settings.reasoning_effort_vision,
+            settings.reasoning_enable_thinking_vision,
+            lead_image,
+            tail_image,
+            lead_pages,
+            tail_pages,
+        ),
+        (None, False, lead_image, tail_image, lead_pages, tail_pages),
     ]
-    if lead_image is not None:
-        label = "Collage pagine:" if tail_image is None else "Collage pagine (gruppo 1):"
-        user_parts.append({"type": "text", "text": label})
-        user_parts.append({"type": "image_url", "image_url": {"url": _image_to_data_url(lead_image)}})
-    if tail_image is not None:
-        user_parts.append({"type": "text", "text": "Collage pagine (gruppo 2):"})
-        user_parts.append({"type": "image_url", "image_url": {"url": _image_to_data_url(tail_image)}})
+    if tail_image is not None and lead_image is not None:
+        rounds.append((None, False, lead_image, None, lead_pages, []))
 
-    content = await chat_completion_with_retry(
-        client,
-        model=model,
-        messages=[
-            {"role": "system", "content": _load_reicat_prompt()},
-            {"role": "user", "content": user_parts},
-        ],
-        temperature=0.1,
-        max_tokens=2048,
-        request_id="reicat-suggest",
-        stage="reicat_vision",
-        page=0,
-        reasoning_effort=settings.reasoning_effort_vision,
-        reasoning_enable_thinking=settings.reasoning_enable_thinking_vision,
-    )
-    return normalize_reicat_suggestion(_extract_json_object(content))
+    last_empty: Exception | None = None
+    for round_index, (effort, thinking, lead, tail, lead_p, tail_p) in enumerate(rounds):
+        selected_pages = sorted(set(lead_p + tail_p))
+        user_parts: list[dict[str, Any]] = [
+            {
+                "type": "text",
+                "text": (
+                    "Le immagini seguono sono collage delle pagine selezionate per i metadati REICAT. "
+                    f"Pagine da analizzare tutte (1-based): {', '.join(str(p + 1) for p in selected_pages) or 'nessuna'}. "
+                    "Per ogni campo REICAT cerca in TUTTE queste pagine, non solo nella prima."
+                ),
+            }
+        ]
+        if lead is not None:
+            label = "Collage pagine:" if tail is None else "Collage pagine (gruppo 1):"
+            user_parts.append({"type": "text", "text": label})
+            user_parts.append({"type": "image_url", "image_url": {"url": _image_to_data_url(lead)}})
+        if tail is not None:
+            user_parts.append({"type": "text", "text": "Collage pagine (gruppo 2):"})
+            user_parts.append({"type": "image_url", "image_url": {"url": _image_to_data_url(tail)}})
+        try:
+            content = await chat_completion_with_retry(
+                client,
+                model=model,
+                messages=[
+                    {"role": "system", "content": _load_reicat_prompt()},
+                    {"role": "user", "content": user_parts},
+                ],
+                temperature=0.1,
+                max_tokens=2048,
+                request_id="reicat-suggest",
+                stage="reicat_vision",
+                page=0,
+                reasoning_effort=effort,
+                reasoning_enable_thinking=thinking,
+            )
+            return normalize_reicat_suggestion(_extract_json_object(content))
+        except ValueError as exc:
+            if "Empty response from model" not in str(exc):
+                raise
+            last_empty = exc
+            Log(
+                WARNING_LOG_LEVEL,
+                "reicat vision empty response, trying fallback round",
+                {
+                    "round": round_index,
+                    "rounds": len(rounds),
+                    "thinking": thinking,
+                    "tail_images": tail is not None,
+                },
+            )
+    assert last_empty is not None
+    raise last_empty
 
 
 async def suggest_reicat_metadata_async(

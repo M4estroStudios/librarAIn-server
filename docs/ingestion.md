@@ -93,9 +93,9 @@ Eventi tipici: `pipeline_total`, `started`/`completed`/`error` per fase, `page_p
 
 | Campo form | Dove arriva |
 |------------|-------------|
-| `notes` | Combinato con le note specifiche di fase |
-| `index_notes` | Refine TOC/INDEX, matcher POH, TIME_INDEX |
-| `page_notes` | Vision, Editor, TIME_INDEX |
+| `notes` / `index_notes` / `page_notes` | Solo input per generare `ai_page_guidance` (manuale o auto al submit) |
+| `ai_page_guidance` | Unico testo aggiunto ai system prompt LLM dell'ingest (Vision/GLM/Editor, refine TOC/INDEX, matcher, TIME_INDEX, biblio) |
+| `annotations_json` | Solo per generazione consiglio AI (immagini annotate + sample); non entra nella pipeline pagina |
 
 ## Repair e manutenzione post-ingest
 

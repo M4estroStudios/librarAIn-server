@@ -117,6 +117,26 @@ class TestBuildOpenAIClient(unittest.TestCase):
         self.assertIsNotNone(state.thread_pool)
         self.assertEqual(state.thread_pool._max_workers, settings.max_parallel_request)
 
+    def test_abandon_openai_client_pools_closes_client_and_drops_joins(self) -> None:
+        import concurrent.futures.thread as futures_thread
+
+        from src.core.openai_client import abandon_openai_client_pools
+
+        client = build_openai_client(_make_settings())
+        state = _client_states.get(client)
+        assert state is not None and state.thread_pool is not None
+        pool = state.thread_pool
+        pool.submit(lambda: None).result(timeout=2)
+        self.assertTrue(pool._threads)
+        for thread in list(pool._threads):
+            self.assertIn(thread, futures_thread._threads_queues)
+        abandon_openai_client_pools()
+        self.assertTrue(client.is_closed)
+        self.assertNotIn(client, _client_states)
+        self.assertEqual(_cached_clients, {})
+        for thread in list(pool._threads):
+            self.assertNotIn(thread, futures_thread._threads_queues)
+
 
 class TestChatCompletionWithRetry(unittest.TestCase):
     def setUp(self) -> None:
@@ -376,6 +396,35 @@ class TestChatCompletionReasoningParams(unittest.TestCase):
             kwargs["extra_body"],
             {"reasoning": {"effort": "low"}, "enable_thinking": False},
         )
+
+
+class TestChatCompletionEmptyContent(unittest.TestCase):
+    def setUp(self) -> None:
+        _cached_clients.clear()
+
+    def tearDown(self) -> None:
+        _cached_clients.clear()
+
+    def test_uses_reasoning_content_when_content_empty(self) -> None:
+        settings = _make_settings(retry=0)
+        client = build_openai_client(settings)
+        resp = MagicMock()
+        resp.choices[0].message.content = ""
+        resp.choices[0].message.reasoning_content = "  recovered text  "
+        resp.choices[0].message.text = None
+        client.chat.completions.create = MagicMock(return_value=resp)  # type: ignore[attr-defined]
+        content = _run(
+            chat_completion_with_retry(
+                client,  # type: ignore[arg-type]
+                model="gpt-4",
+                messages=[{"role": "user", "content": "hi"}],
+                max_tokens=100,
+                request_id="req-empty",
+                stage="test",
+                page=1,
+            )
+        )
+        self.assertEqual(content, "  recovered text  ")
 
 
 if __name__ == "__main__":

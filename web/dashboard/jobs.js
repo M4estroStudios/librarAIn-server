@@ -24,12 +24,13 @@ const JOB_PHASE_LABELS = {
   page_enumeration: "Enumerazione pagine",
   render: "Render PDF",
   stage1_ocr: "Stage 1 OCR",
-  stage1_glm_ocr: "Stage 1 — GLM OCR",
+  stage1_glm_ocr: "Stage 1+2 — OCR + Vision",
   stage2_vision: "Stage 2 Vision",
   stage3_editor: "Stage 3 Editor",
   polyindex_toc: "Polyindex TOC.json",
   polyindex_index: "Polyindex INDEX.json",
   time_index: "Polyindex TIME_INDEX.json",
+  polyindex_biblio: "Polyindex BIBLIO.json",
   page_repair: "Preparazione riparazione",
   gaps_repair: "Riparazione lacune",
   queue: "In coda",
@@ -263,13 +264,26 @@ function resolveResearchPhases(job) {
   });
 }
 
+const POLYINDEX_PHASES = new Set([
+  "polyindex_toc",
+  "polyindex_index",
+  "time_index",
+  "polyindex_biblio",
+]);
+
 function resolveJobPhases(job) {
   if (isResearchArticleJob(job)) {
     return resolveResearchPhases(job);
   }
   const phases = normalizeJobPhases(job);
+  const stage3 = phases.find(function (phase) {
+    return phase.phase === "stage3_editor";
+  });
+  const showAllPolyindex =
+    !!stage3 && (stage3.status === "active" || stage3.status === "done");
   return phases.filter(function (phase, index) {
     if (phase.status !== "pending") return true;
+    if (showAllPolyindex && POLYINDEX_PHASES.has(phase.phase)) return true;
     const prev = phases[index - 1];
     return prev && (prev.status === "active" || prev.status === "done");
   });
@@ -308,22 +322,14 @@ function resolveGlmOcrPhase(job) {
 function jobUsesGlmOcrPipeline(job) {
   if (job.current_phase === "stage1_glm_ocr") return true;
   const phases = Array.isArray(job.phases) ? job.phases : [];
-  if (phases.some((p) => p.phase === "stage1_glm_ocr")) return true;
-  const renderDone = phases.some((p) => p.phase === "render" && p.status === "done");
-  const classicPending = phases.some(
-    (p) =>
-      (p.phase === "stage1_ocr" || p.phase === "stage2_vision" || p.phase === "stage3_editor") &&
-      p.status === "pending" &&
-      (p.done || 0) === 0
-  );
-  return renderDone && classicPending && job.is_active;
+  return phases.some((p) => p.phase === "stage1_glm_ocr");
 }
 
 function normalizeJobPhases(job) {
   let phases = Array.isArray(job.phases) ? job.phases.slice() : [];
   if (!jobUsesGlmOcrPipeline(job)) return phases;
   phases = phases.filter(
-    (p) => !["stage1_ocr", "stage2_vision", "stage3_editor"].includes(p.phase)
+    (p) => !["stage1_ocr", "stage2_vision"].includes(p.phase)
   );
   const glmPhase = resolveGlmOcrPhase(job);
   const existing = phases.find((p) => p.phase === "stage1_glm_ocr");
@@ -334,7 +340,11 @@ function normalizeJobPhases(job) {
   } else {
     const insertAt = phases.findIndex((p) => p.phase === "render");
     if (insertAt >= 0) phases.splice(insertAt + 1, 0, glmPhase);
-    else phases.push(glmPhase);
+    else {
+      const editorAt = phases.findIndex((p) => p.phase === "stage3_editor");
+      if (editorAt >= 0) phases.splice(editorAt, 0, glmPhase);
+      else phases.push(glmPhase);
+    }
   }
   return phases;
 }
@@ -754,7 +764,14 @@ function renderJobs() {
   if (!jobs.length) {
     root.innerHTML = '<div class="active-jobs-empty">Nessun job attivo in questa sessione.</div>';
   } else {
-    root.innerHTML = jobs.map(renderActiveJobCard).join("");
+    try {
+      root.innerHTML = jobs.map(renderActiveJobCard).join("");
+    } catch (err) {
+      root.innerHTML =
+        '<div class="active-jobs-empty">Errore rendering job: ' +
+        escapeHtml(err && err.message ? err.message : err) +
+        "</div>";
+    }
   }
   updateJobsHeading(countActiveJobs());
   if (typeof window.reportEmbedHeight === "function") window.reportEmbedHeight();

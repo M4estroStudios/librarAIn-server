@@ -11,6 +11,38 @@ from src.core.openai_client import use_compute_mode
 from src.models.settings import Settings, normalize_compute_mode
 
 
+def ensure_ingest_ai_page_guidance(
+    pdf_path: Path,
+    settings: Settings,
+    ingest_payload: dict[str, Any],
+    text_fields: dict[str, str],
+) -> None:
+    existing = ingest_payload.get("ai_page_guidance")
+    if isinstance(existing, str) and existing.strip():
+        ingest_payload["ai_page_guidance"] = existing.strip()
+        return
+
+    try:
+        annotations = json.loads(text_fields.get("annotations_json") or "[]")
+    except json.JSONDecodeError as exc:
+        raise ValueError("annotations_json must be valid JSON") from exc
+    if not isinstance(annotations, list):
+        raise ValueError("annotations_json must be a JSON array")
+
+    result = suggest_page_guidance(
+        pdf_path,
+        settings,
+        notes=(text_fields.get("notes") or "").strip(),
+        index_notes=(text_fields.get("index_notes") or "").strip(),
+        page_notes=(text_fields.get("page_notes") or "").strip(),
+        annotations=annotations,
+    )
+    guidance = str(result.get("guidance") or "").strip()
+    if not guidance:
+        raise ValueError("page guidance suggestion returned empty text")
+    ingest_payload["ai_page_guidance"] = guidance
+
+
 def _parse_page_list(raw: str) -> list[int]:
     text = (raw or "").strip()
     if not text:

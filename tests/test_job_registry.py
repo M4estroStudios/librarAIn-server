@@ -207,6 +207,78 @@ class TestJobRegistryEviction(unittest.TestCase):
         remaining = [j for j in finished if registry.get_status(j) is not None]
         self.assertLessEqual(len(remaining), 2)
 
+    def test_glm_ingest_phases_include_stage3_editor(self) -> None:
+        registry = JobRegistry()
+        job_id = registry.create_job()
+        registry.emit(job_id, make_event("render", "completed", rendered_page_count=3))
+        registry.emit(job_id, make_event("stage1_glm_ocr", "started", page_total=3))
+        jobs = registry.list_active_jobs()
+        self.assertEqual(len(jobs), 1)
+        phase_ids = [p["phase"] for p in jobs[0]["phases"]]
+        self.assertIn("stage1_glm_ocr", phase_ids)
+        self.assertIn("stage3_editor", phase_ids)
+        self.assertLess(phase_ids.index("stage1_glm_ocr"), phase_ids.index("stage3_editor"))
+
+    def test_glm_gaps_repair_uses_glm_phase_order(self) -> None:
+        registry = JobRegistry()
+        job_id = registry.create_job()
+        registry.set_global_progress(job_id, step=5, total=10)
+        registry.emit(
+            job_id,
+            make_event("stage1_glm_ocr", "baseline", done=2, page_total=5),
+        )
+        registry.emit(
+            job_id,
+            make_event("stage3_editor", "baseline", done=1, page_total=5),
+        )
+        registry.emit(job_id, make_event("gaps_repair", "started", page_total=5))
+        registry.emit(job_id, make_event("stage1_glm_ocr", "started", page_total=3))
+        for _ in range(3):
+            registry.emit(
+                job_id,
+                make_event(
+                    "stage1_glm_ocr",
+                    "page_skipped",
+                    counts_as_step=False,
+                    page_total=3,
+                ),
+            )
+        registry.emit(job_id, make_event("stage1_glm_ocr", "completed"))
+        registry.emit(job_id, make_event("stage3_editor", "started", page_total=3))
+        registry.emit(
+            job_id,
+            make_event(
+                "stage3_editor",
+                "page_progress",
+                counts_as_step=True,
+                page_total=3,
+            ),
+        )
+        jobs = registry.list_active_jobs()
+        self.assertEqual(len(jobs), 1)
+        phase_ids = [p["phase"] for p in jobs[0]["phases"]]
+        self.assertIn("stage1_glm_ocr", phase_ids)
+        self.assertIn("stage3_editor", phase_ids)
+        self.assertNotIn("stage1_ocr", phase_ids)
+        self.assertNotIn("stage2_vision", phase_ids)
+        for index_phase in (
+            "polyindex_toc",
+            "polyindex_index",
+            "time_index",
+            "polyindex_biblio",
+        ):
+            self.assertIn(index_phase, phase_ids)
+        glm_phase = next(p for p in jobs[0]["phases"] if p["phase"] == "stage1_glm_ocr")
+        self.assertEqual(glm_phase["status"], "done")
+        self.assertEqual(glm_phase["done"], 5)
+        self.assertEqual(glm_phase["total"], 5)
+        editor = next(p for p in jobs[0]["phases"] if p["phase"] == "stage3_editor")
+        self.assertEqual(editor["done"], 2)
+        self.assertEqual(editor["total"], 5)
+        self.assertEqual(editor["status"], "active")
+        self.assertEqual(jobs[0]["global_step"], 6)
+        self.assertEqual(jobs[0]["global_total"], 10)
+
 
 if __name__ == "__main__":
     unittest.main()

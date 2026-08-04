@@ -31,8 +31,9 @@ from src.models.request import (
     ReicatMetadata,
     UsefulPagesEnumeration,
 )
-from src.core.errors import PermanentError, TransientError
+from src.core.errors import PermanentError, ShutdownRequested, TransientError, raise_if_shutdown
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
+from src.core.parallel import gather_cancellable
 from src.core.retry import retry_async
 from src.models.settings import Settings
 
@@ -271,6 +272,7 @@ async def _ocr_stage1_pages_parallel(
 
     async def _ocr_one(work: _Stage1OcrWork) -> _Stage1PageOutcome:
         async with sem:
+            raise_if_shutdown()
             Log(
                 INFO_LOG_LEVEL,
                 "stage1 page OCR begin",
@@ -278,6 +280,7 @@ async def _ocr_stage1_pages_parallel(
             )
 
             async def _ocr_page() -> str:
+                raise_if_shutdown()
                 try:
                     return await asyncio.to_thread(
                         engine.ocr_page,
@@ -285,6 +288,8 @@ async def _ocr_stage1_pages_parallel(
                         lang=settings.ocr_languages,
                     )
                 except PermanentError:
+                    raise
+                except ShutdownRequested:
                     raise
                 except Exception as exc:
                     raise TransientError(str(exc)) from exc
@@ -294,8 +299,10 @@ async def _ocr_stage1_pages_parallel(
                     _ocr_page,
                     max_attempts=settings.retry_attempts,
                     retry_on=(TransientError,),
-                    giveup_on=(PermanentError,),
+                    giveup_on=(PermanentError, ShutdownRequested),
                 )
+            except ShutdownRequested:
+                raise
             except Exception as exc:
                 Log(
                     WARNING_LOG_LEVEL,
@@ -324,6 +331,7 @@ async def _ocr_stage1_pages_parallel(
                     error=str(exc),
                 )
 
+            raise_if_shutdown()
             work.txt_path.write_text(text, encoding="utf-8")
             emit_progress(make_event(
                 PHASE_STAGE1_OCR,
@@ -350,7 +358,7 @@ async def _ocr_stage1_pages_parallel(
                 ),
             )
 
-    return list(await asyncio.gather(*(_ocr_one(work) for work in pending)))
+    return list(await gather_cancellable(*(_ocr_one(work) for work in pending)))
 
 
 def _aggregate_stage1_outcomes(outcomes: list[_Stage1PageOutcome]) -> tuple[

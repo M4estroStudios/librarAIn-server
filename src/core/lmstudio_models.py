@@ -342,13 +342,7 @@ def swap_lmstudio_model_to_editor(
         raise RuntimeError(f"LM Studio list models failed: {exc}") from exc
 
     unloaded = _unload_loaded_model_instances(root, listed, source, settings)
-
-    try:
-        load_key = _resolve_lmstudio_model_key(listed, editor)
-        load_result = _load_model(root, load_key, settings)
-    except urllib.error.URLError as exc:
-        Log(ERROR_LOG_LEVEL, "lmstudio editor load failed", {"editor_model": editor, "error": repr(exc)})
-        raise RuntimeError(f"LM Studio load failed for {editor}: {exc}") from exc
+    ensure_lmstudio_model_loaded(settings, editor)
 
     Log(
         INFO_LOG_LEVEL,
@@ -357,8 +351,6 @@ def swap_lmstudio_model_to_editor(
             "from_model": source,
             "editor_model": editor,
             "unloaded_instances": unloaded,
-            "load_status": load_result.get("status"),
-            "load_instance_id": load_result.get("instance_id"),
         },
     )
 

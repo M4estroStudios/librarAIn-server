@@ -65,11 +65,11 @@ input[type="search"], input[type="number"] { font: inherit; padding: 0.45rem 0.5
 input[type="search"] { flex: 1; min-width: 14rem; }
 input[type="number"] { width: 5rem; }
 button { font: inherit; padding: 0.5rem 0.95rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
-button:hover:not(:disabled) { background: #ffffff; }
+:where(button):hover:not(:disabled) { background: #ffffff; color: #1e1e1e; }
 button:disabled { opacity: 0.55; cursor: not-allowed; }
 button.danger { background: #c95050; color: #fff; }
 button.secondary { background: #3c3c3c; color: #e8e8e8; }
-button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
 .hint { font-size: 0.8rem; color: #9d9d9d; }
 .panel { margin-bottom: 1.5rem; padding: 1rem; border-radius: 12px; background: #252526; border: 1px solid #3e3e3e; }
 .panel h2 { font-size: 0.95rem; margin: 0 0 0.75rem; color: #e8e8e8; }
@@ -4031,7 +4031,7 @@ const repairProgressFill = document.getElementById("repair-progress-fill");
 const REPAIR_PHASE_LABELS = {
   page_repair: "Preparazione",
   gaps_repair: "Riparazione lacune",
-  stage1_glm_ocr: "GLM OCR",
+  stage1_glm_ocr: "OCR + Vision",
   stage1_ocr: "Stage 1 — OCR",
   stage2_vision: "Stage 2 — Vision",
   stage3_editor: "Stage 3 — Editor",
@@ -4250,7 +4250,7 @@ function createRepairAction(sourceSha256, alignedPage, missingIn, pipelineMode) 
   const btn = document.createElement("button");
   btn.type = "button";
   btn.className = "audit-repair-btn" + (mode === "glm_ocr" ? " secondary" : "");
-  btn.textContent = mode === "glm_ocr" ? "GLM OCR" : "Prova a sistemare";
+  btn.textContent = mode === "glm_ocr" ? "OCR + Vision" : "Prova a sistemare";
 
   const rowEl = () => stack.closest("tr");
 
@@ -4284,7 +4284,7 @@ function createRepairAction(sourceSha256, alignedPage, missingIn, pipelineMode) 
     statusLabel.classList.remove("is-error");
     barFill.style.width = "0%";
     btn.disabled = false;
-    btn.textContent = mode === "glm_ocr" ? "GLM OCR" : "Prova a sistemare";
+    btn.textContent = mode === "glm_ocr" ? "OCR + Vision" : "Prova a sistemare";
   }
 
   btn.addEventListener("mousedown", auditClickGuard(() => {}));
@@ -4333,7 +4333,7 @@ function createRepairAllAction(sourceSha256, gapEntries, pipelineMode) {
   const btn = document.createElement("button");
   btn.type = "button";
   btn.className = "audit-repair-btn" + (mode === "glm_ocr" ? " secondary" : "");
-  btn.textContent = mode === "glm_ocr" ? "GLM OCR tutto" : "Prova a sistemare tutto";
+  btn.textContent = mode === "glm_ocr" ? "OCR + Vision tutto" : "Prova a sistemare tutto";
 
   const alignedPages = gapEntries.map((entry) => entry.aligned).sort((a, b) => a - b);
   const pageSegs = new Map();
@@ -4413,7 +4413,7 @@ function createRepairAllAction(sourceSha256, gapEntries, pipelineMode) {
     overallFill.style.width = "0%";
     resetPageSegs();
     btn.disabled = false;
-    btn.textContent = mode === "glm_ocr" ? "GLM OCR tutto" : "Prova a sistemare tutto";
+    btn.textContent = mode === "glm_ocr" ? "OCR + Vision tutto" : "Prova a sistemare tutto";
   }
 
   btn.addEventListener("mousedown", auditClickGuard(() => {}));

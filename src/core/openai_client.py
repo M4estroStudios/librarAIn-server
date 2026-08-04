@@ -17,7 +17,7 @@ from openai import (
     RateLimitError,
 )
 
-from src.core.errors import PermanentError, TransientError, classify_openai_exception
+from src.core.errors import PermanentError, ShutdownRequested, TransientError, classify_openai_exception, raise_if_shutdown
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.rate_limit import AsyncTokenBucket, get_token_bucket
 from src.core.retry import retry_async
@@ -114,6 +114,41 @@ def _endpoint_for_purpose(
     if purpose == "embedding" or compute_mode == "local":
         return settings.openai_base_url, settings.openai_api_key
     return settings.openai_cloud_base_url, settings.openai_cloud_api_key
+
+
+def abandon_openai_client_pools() -> None:
+    """Abort in-flight LLM HTTP and release client thread pools on shutdown.
+
+    Closing the OpenAI/httpx client interrupts outstanding requests. Pool threads
+    are then dropped from the ``concurrent.futures`` atexit ``join`` list so the
+    process can exit without waiting for stranded workers.
+    """
+    import concurrent.futures.thread as futures_thread
+
+    clients = list(_cached_clients.values())
+    _cached_clients.clear()
+    for client in clients:
+        state = _client_states.pop(client, None)
+        try:
+            if not getattr(client, "is_closed", False):
+                client.close()
+        except Exception as exc:
+            Log(
+                WARNING_LOG_LEVEL,
+                "openai client close on shutdown failed",
+                {"error": str(exc)},
+            )
+        pool = state.thread_pool if state is not None else None
+        if pool is None:
+            continue
+        if state is not None:
+            state.thread_pool = None
+        try:
+            pool.shutdown(wait=False, cancel_futures=True)
+        except TypeError:
+            pool.shutdown(wait=False)
+        for thread in list(getattr(pool, "_threads", ())):
+            futures_thread._threads_queues.pop(thread, None)
 
 
 def build_openai_client(
@@ -229,7 +264,24 @@ def _chat_completion_create(
     except Exception as exc:
         classify_openai_exception(exc)
         raise
-    content = response.choices[0].message.content
+    message = response.choices[0].message
+    content = message.content
+    if isinstance(content, list):
+        parts: list[str] = []
+        for item in content:
+            if isinstance(item, str) and item.strip():
+                parts.append(item.strip())
+            elif isinstance(item, dict):
+                text = item.get("text")
+                if isinstance(text, str) and text.strip():
+                    parts.append(text.strip())
+        content = "\n".join(parts) if parts else None
+    if not content or not str(content).strip():
+        for attr in ("reasoning_content", "text"):
+            alt = getattr(message, attr, None)
+            if isinstance(alt, str) and alt.strip():
+                content = alt
+                break
     if not content or not str(content).strip():
         raise TransientError("Empty response from model")
     return str(content)
@@ -338,6 +390,7 @@ async def chat_completion_with_retry(
 
     async def _attempt() -> str:
         nonlocal attempt_counter
+        raise_if_shutdown()
         attempt = attempt_counter
         attempt_counter += 1
         _log_chat_attempt(
@@ -354,6 +407,7 @@ async def chat_completion_with_retry(
             Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait begin", {"attempt": attempt})
             await token_bucket.acquire()
             Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait done", {"attempt": attempt})
+        raise_if_shutdown()
         try:
             Log(
                 INFO_LOG_LEVEL,
@@ -413,6 +467,8 @@ async def chat_completion_with_retry(
                 error=repr(exc),
             )
             raise
+        except ShutdownRequested:
+            raise
         except Exception as exc:
             classify_openai_exception(exc)
             raise
@@ -423,7 +479,7 @@ async def chat_completion_with_retry(
             max_attempts=max_attempts,
             base_delay=1.0,
             retry_on=_TRANSIENT_ERRORS,
-            giveup_on=_PERMANENT_ERRORS,
+            giveup_on=_PERMANENT_ERRORS + (ShutdownRequested,),
         )
     except TransientError as exc:
         if "Empty response from model" in str(exc):

@@ -27,7 +27,9 @@ h1 { font-size: 1.35rem; margin: 0 0 0.35rem; color: #e8e8e8; }
 .filters label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.78rem; color: #9d9d9d; }
 .filters input { background: #1e1e1e; border: 1px solid #555; color: #e8e8e8; border-radius: 6px; padding: 0.4rem 0.55rem; min-width: 10rem; font-size: 0.88rem; }
 .filters button { background: #0e639c; color: #fff; border: none; border-radius: 6px; padding: 0.45rem 0.85rem; cursor: pointer; font-size: 0.88rem; }
-.filters button.secondary { background: #3c3c3c; }
+.filters button:hover:not(:disabled) { background: #1177bb; color: #fff; }
+.filters button.secondary { background: #3c3c3c; color: #e8e8e8; }
+.filters button.secondary:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
 table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
 th, td { text-align: left; padding: 0.5rem 0.45rem; border-bottom: 1px solid #333; vertical-align: top; }
 th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
@@ -45,6 +47,12 @@ th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
 button.retry-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.55rem; cursor: pointer; font-size: 0.76rem; margin-top: 0.35rem; }
 button.retry-job:hover { background: #0e639c; border-color: #0e639c; }
 button.retry-job:disabled { opacity: 0.55; cursor: default; }
+button.resume-job, button.terminate-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.55rem; cursor: pointer; font-size: 0.76rem; margin-top: 0.35rem; margin-right: 0.3rem; }
+button.resume-job:hover { background: #0e639c; border-color: #0e639c; }
+button.terminate-job:hover { background: #a1260d; border-color: #a1260d; }
+button.resume-job:disabled, button.terminate-job:disabled { opacity: 0.55; cursor: default; }
+.status-pill.status-interrotto { background: #5a4a1a; color: #f0d78c; }
+.status-pill.status-annullato { background: #3c3c3c; color: #b0b0b0; }
 </style>
 <link rel="stylesheet" href="/dashboard/dashboard.css">
 </head>
@@ -110,7 +118,18 @@ function escapeHtml(s) {
 function formatTs(iso) {
   if (!iso) return "—";
   try {
-    return new Date(iso).toLocaleString("it-IT");
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return iso;
+    const ageMs = Date.now() - d.getTime();
+    const opts = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
+    if (!(ageMs > 10 * 60 * 1000)) opts.second = "2-digit";
+    return d.toLocaleString("it-IT", opts);
   } catch {
     return iso;
   }
@@ -166,6 +185,76 @@ async function retryJob(job, button) {
   }
 }
 
+async function resumeInterruptedJob(job, button) {
+  if (!job || !job.job_id) return;
+  button.disabled = true;
+  const row = button.closest("td");
+  if (row) {
+    row.querySelectorAll("button").forEach(function (btn) {
+      btn.disabled = true;
+    });
+  }
+  button.textContent = "Avvio…";
+  try {
+    await apiJson("/api/system/jobs/resume", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ job_id: job.job_id }),
+      noAuthPrompt: true,
+    });
+    button.textContent = "Avviato";
+    loadHistory();
+  } catch (err) {
+    if (row) {
+      row.querySelectorAll("button").forEach(function (btn) {
+        btn.disabled = false;
+      });
+    } else {
+      button.disabled = false;
+    }
+    button.textContent = "Riprendi";
+    if (window.LibrarAInLog) {
+      window.LibrarAInLog.reportError("job resume failed", err);
+    }
+    alert("Ripresa fallita: " + (err.message || err));
+  }
+}
+
+async function terminateInterruptedJob(job, button) {
+  if (!job || !job.job_id) return;
+  if (!window.confirm("Segnare questo job come terminato? Non riprenderà da solo.")) return;
+  button.disabled = true;
+  const row = button.closest("td");
+  if (row) {
+    row.querySelectorAll("button").forEach(function (btn) {
+      btn.disabled = true;
+    });
+  }
+  button.textContent = "…";
+  try {
+    await apiJson("/api/system/jobs/terminate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ job_id: job.job_id }),
+      noAuthPrompt: true,
+    });
+    loadHistory();
+  } catch (err) {
+    if (row) {
+      row.querySelectorAll("button").forEach(function (btn) {
+        btn.disabled = false;
+      });
+    } else {
+      button.disabled = false;
+    }
+    button.textContent = "Termina";
+    if (window.LibrarAInLog) {
+      window.LibrarAInLog.reportError("job terminate failed", err);
+    }
+    alert("Terminazione fallita: " + (err.message || err));
+  }
+}
+
 async function loadHistory() {
   const book = document.getElementById("filter-book").value.trim();
   const id = document.getElementById("filter-id").value.trim();
@@ -201,11 +290,27 @@ async function loadHistory() {
       const canRetry =
         display === "errore" &&
         (job.job_kind === "research" || job.job_kind === "ingest");
-      const actions = canRetry
-        ? '<button type="button" class="retry-job" data-retry-job="' +
+      const canResume = job.job_kind === "ingest" && (job.resumable || display === "interrotto");
+      const canTerminate = job.job_kind === "ingest" && (job.terminable || display === "interrotto");
+      let actions = "";
+      if (canResume) {
+        actions +=
+          '<button type="button" class="resume-job" data-resume-job="' +
           escapeHtml(job.job_id || "") +
-          '">Rilancia</button>'
-        : "";
+          '">Riprendi</button>';
+      }
+      if (canTerminate) {
+        actions +=
+          '<button type="button" class="terminate-job" data-terminate-job="' +
+          escapeHtml(job.job_id || "") +
+          '">Termina</button>';
+      }
+      if (canRetry) {
+        actions +=
+          '<button type="button" class="retry-job" data-retry-job="' +
+          escapeHtml(job.job_id || "") +
+          '">Rilancia</button>';
+      }
       return (
         "<tr>" +
         '<td><span class="status-pill status-' + escapeHtml(display) + '">' + escapeHtml(label) + "</span>" + err + "</td>" +
@@ -225,6 +330,24 @@ async function loadHistory() {
       });
       btn.addEventListener("click", function () {
         retryJob(job, btn);
+      });
+    });
+    body.querySelectorAll("[data-resume-job]").forEach(function (btn) {
+      const jobId = btn.getAttribute("data-resume-job");
+      const job = jobs.find(function (item) {
+        return item.job_id === jobId;
+      });
+      btn.addEventListener("click", function () {
+        resumeInterruptedJob(job, btn);
+      });
+    });
+    body.querySelectorAll("[data-terminate-job]").forEach(function (btn) {
+      const jobId = btn.getAttribute("data-terminate-job");
+      const job = jobs.find(function (item) {
+        return item.job_id === jobId;
+      });
+      btn.addEventListener("click", function () {
+        terminateInterruptedJob(job, btn);
       });
     });
   } catch (err) {

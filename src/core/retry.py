@@ -6,7 +6,7 @@ import time
 from collections.abc import Awaitable, Callable
 from typing import TypeVar
 
-from src.core.errors import PermanentError, TransientError
+from src.core.errors import PermanentError, ShutdownRequested, TransientError
 
 T = TypeVar("T")
 
@@ -19,7 +19,7 @@ def retry_sync(
     max_delay: float = 10.0,
     jitter: bool = True,
     retry_on: tuple[type[Exception], ...] = (TransientError,),
-    giveup_on: tuple[type[Exception], ...] = (PermanentError,),
+    giveup_on: tuple[type[Exception], ...] = (PermanentError, ShutdownRequested),
 ) -> T:
     """Synchronous twin of retry_async, for blocking call sites."""
     last_exc: Exception | None = None
@@ -48,7 +48,7 @@ async def retry_async(
     max_delay: float = 10.0,
     jitter: bool = True,
     retry_on: tuple[type[Exception], ...] = (TransientError,),
-    giveup_on: tuple[type[Exception], ...] = (PermanentError,),
+    giveup_on: tuple[type[Exception], ...] = (PermanentError, ShutdownRequested),
 ) -> T:
     last_exc: Exception | None = None
     for attempt in range(max_attempts):

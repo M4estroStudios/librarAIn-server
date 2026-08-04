@@ -33,6 +33,7 @@ class JobState:
         "global_total",
         "global_step",
         "_subscribers",
+        "_summary_cache",
     )
 
     def __init__(
@@ -57,6 +58,27 @@ class JobState:
         self.global_total: int | None = None
         self.global_step: int = 0
         self._subscribers: list[queue.Queue[dict[str, Any]]] = []
+        self._summary_cache: dict[str, Any] | None = None
+
+
+def _clone_state_for_summary(state: JobState) -> JobState:
+    clone = JobState(state.job_id, job_kind=state.job_kind, compute_mode=state.compute_mode)
+    clone.status = state.status
+    clone.pipeline_version = state.pipeline_version
+    clone.events = list(state.events)
+    clone.result = state.result
+    clone.error = state.error
+    clone.created_at = state.created_at
+    clone.updated_at = state.updated_at
+    clone.global_total = state.global_total
+    clone.global_step = state.global_step
+    return clone
+
+
+def _summarize_cloned_state(state: JobState) -> dict[str, Any]:
+    if state.job_kind == "research":
+        return summarize_research_job_state(state)
+    return summarize_job_state(state)
 
 
 class JobRegistry:
@@ -135,12 +157,33 @@ class JobRegistry:
             state = self._jobs[job_id]
             previous = state.global_total
             state.global_total = total
+            state._summary_cache = None
             if previous == total:
                 return
             ev: dict[str, Any] = {
                 "phase": "pipeline",
                 "status": "pipeline_total",
                 "global_total": total,
+                "global_step": state.global_step,
+                "counts_as_step": False,
+                "ts": datetime.now(timezone.utc).isoformat(),
+                "seq": len(state.events),
+            }
+            state.events.append(ev)
+            state.updated_at = ev["ts"]
+            for q in state._subscribers:
+                q.put(ev)
+
+    def set_global_progress(self, job_id: str, *, step: int, total: int) -> None:
+        with self._lock:
+            state = self._jobs[job_id]
+            state.global_total = max(1, int(total))
+            state.global_step = max(0, min(int(step), state.global_total))
+            state._summary_cache = None
+            ev: dict[str, Any] = {
+                "phase": "pipeline",
+                "status": "pipeline_total",
+                "global_total": state.global_total,
                 "global_step": state.global_step,
                 "counts_as_step": False,
                 "ts": datetime.now(timezone.utc).isoformat(),
@@ -160,6 +203,7 @@ class JobRegistry:
         """
         with self._lock:
             state = self._jobs[job_id]
+            state._summary_cache = None
             now = datetime.now(timezone.utc).isoformat()
             ev = dict(event)
             ev["ts"] = now
@@ -253,26 +297,45 @@ class JobRegistry:
             selected.sort(
                 key=lambda item: 0 if item.status not in _TERMINAL_STATUSES else 1
             )
-            summaries: list[dict[str, Any]] = []
+            work: list[tuple[str, dict[str, Any] | JobState]] = []
             for state in selected:
                 if state.status in _TERMINAL_STATUSES and not include_finished:
                     continue
-                if state.job_kind == "research":
-                    summaries.append(summarize_research_job_state(state))
+                if state._summary_cache is not None:
+                    work.append(("cache", state._summary_cache))
                 else:
-                    summaries.append(summarize_job_state(state))
-                if len(summaries) >= max(1, limit):
+                    work.append(("snap", _clone_state_for_summary(state)))
+                if len(work) >= max(1, limit):
                     break
-            return summaries
+        summaries: list[dict[str, Any]] = []
+        for kind, payload in work:
+            if kind == "cache":
+                assert isinstance(payload, dict)
+                summaries.append(payload)
+                continue
+            assert isinstance(payload, JobState)
+            summary = _summarize_cloned_state(payload)
+            with self._lock:
+                live = self._jobs.get(payload.job_id)
+                if live is not None and live.updated_at == payload.updated_at:
+                    live._summary_cache = summary
+            summaries.append(summary)
+        return summaries
 
     def get_job_summary(self, job_id: str) -> dict[str, Any] | None:
         with self._lock:
             state = self._jobs.get(job_id)
             if state is None:
                 return None
-            if state.job_kind == "research":
-                return summarize_research_job_state(state)
-            return summarize_job_state(state)
+            if state._summary_cache is not None:
+                return state._summary_cache
+            snap = _clone_state_for_summary(state)
+        summary = _summarize_cloned_state(snap)
+        with self._lock:
+            live = self._jobs.get(job_id)
+            if live is not None and live.updated_at == snap.updated_at:
+                live._summary_cache = summary
+        return summary
 
     def subscribe(
         self, job_id: str, last_seq: int = -1
@@ -349,6 +412,7 @@ _GLM_INGEST_PHASE_ORDER = [
     "page_enumeration",
     "render",
     "stage1_glm_ocr",
+    "stage3_editor",
     "polyindex_toc",
     "polyindex_index",
     "time_index",
@@ -360,6 +424,19 @@ _REPAIR_PHASE_ORDER = [
     "stage1_ocr",
     "stage2_vision",
     "stage3_editor",
+    "polyindex_toc",
+    "polyindex_index",
+    "time_index",
+    "polyindex_biblio",
+]
+_GLM_REPAIR_PHASE_ORDER = [
+    "page_repair",
+    "gaps_repair",
+    "stage1_glm_ocr",
+    "stage3_editor",
+    "polyindex_toc",
+    "polyindex_index",
+    "time_index",
     "polyindex_biblio",
 ]
 _RESEARCH_DISPLAY_PHASE_ORDER = [
@@ -384,7 +461,7 @@ _PHASE_LABELS = {
     "page_enumeration": "Enumerazione pagine",
     "render": "Render PDF",
     "stage1_ocr": "Stage 1 — OCR",
-    "stage1_glm_ocr": "Stage 1 — GLM OCR",
+    "stage1_glm_ocr": "Stage 1+2 — GLM OCR",
     "stage2_vision": "Stage 2 — Vision",
     "stage3_editor": "Stage 3 — Editor",
     "polyindex_toc": "Polyindex TOC",
@@ -583,7 +660,10 @@ def _phase_order_for_job(state: JobState) -> list[str]:
     if _is_research_job(state):
         return _RESEARCH_DISPLAY_PHASE_ORDER
     phases = {ev.get("phase") for ev in state.events if ev.get("phase")}
-    if phases.intersection({"page_repair", "gaps_repair"}):
+    is_repair = bool(phases.intersection({"page_repair", "gaps_repair"}))
+    if is_repair and "stage1_glm_ocr" in phases:
+        return _GLM_REPAIR_PHASE_ORDER
+    if is_repair:
         return _REPAIR_PHASE_ORDER
     if "stage1_glm_ocr" in phases:
         return _GLM_INGEST_PHASE_ORDER
@@ -712,6 +792,7 @@ def _summarize_phases(events: list[dict[str, Any]], phase_order: list[str]) -> l
             "status": "pending",
             "done": 0,
             "total": plan_totals.get(phase, 1),
+            "baseline_done": 0,
         }
         for phase in phase_order
     }
@@ -722,30 +803,43 @@ def _summarize_phases(events: list[dict[str, Any]], phase_order: list[str]) -> l
             continue
         item = states[phase]
         page_total = ev.get("page_total")
-        if status == "started":
-            item["status"] = "active"
-            item["done"] = 0
+        if status == "baseline":
             if page_total:
                 item["total"] = max(1, int(page_total))
+            done = ev.get("done")
+            if done is not None:
+                item["baseline_done"] = max(0, min(int(done), int(item["total"])))
+                item["done"] = item["baseline_done"]
+            if item["done"] >= int(item["total"]):
+                item["status"] = "done"
+            detail = _phase_detail_from_event(ev)
+            if detail:
+                item["detail"] = detail
+        elif status == "started":
+            item["status"] = "active"
+            if page_total:
+                item["total"] = max(int(item["total"]), 1, int(page_total))
+            item["done"] = max(int(item["done"]), int(item.get("baseline_done") or 0))
             detail = _phase_detail_from_event(ev)
             if detail:
                 item["detail"] = detail
         elif status in _PAGE_STEP_STATUSES:
             item["status"] = "active"
-            item["done"] = min(item["done"] + 1, int(item["total"]))
             if page_total:
-                item["total"] = max(1, int(page_total))
-        elif status == "completed":
+                item["total"] = max(int(item["total"]), 1, int(page_total))
+            # Skips of pages already on disk are reflected by baseline_done.
+            if status == "page_skipped" and int(item.get("baseline_done") or 0) > 0:
+                item["done"] = max(int(item["done"]), int(item["baseline_done"]))
+            else:
+                item["done"] = min(int(item["done"]) + 1, int(item["total"]))
+        elif status in ("completed", "done"):
             item["status"] = "done"
             rendered = ev.get("rendered_page_count")
             if page_total:
-                item["total"] = max(1, int(page_total))
-                item["done"] = item["total"]
-            elif rendered is not None:
-                item["total"] = max(1, int(rendered))
-                item["done"] = item["total"]
-            elif item["done"] < item["total"]:
-                item["done"] = item["total"]
+                item["total"] = max(int(item["total"]), 1, int(page_total))
+            if rendered is not None:
+                item["total"] = max(int(item["total"]), 1, int(rendered))
+            item["done"] = max(int(item["done"]), int(item["total"]))
             detail = _phase_detail_from_event(ev)
             if detail:
                 item["detail"] = detail
@@ -761,6 +855,8 @@ def _summarize_phases(events: list[dict[str, Any]], phase_order: list[str]) -> l
                 item["detail"] = detail
             elif ev.get("message"):
                 item["detail"] = str(ev["message"])
+    for item in states.values():
+        item.pop("baseline_done", None)
     return [states[phase] for phase in phase_order]
 
 

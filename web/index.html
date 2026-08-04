@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ingestione libro (GLM OCR) — librarAIn</title>
+<title>Ingestione libro — librarAIn</title>
 <link rel="stylesheet" href="/nav.css">
 <link rel="stylesheet" href="/dashboard/page-guidance.css">
 <script>
@@ -130,7 +130,7 @@ body { margin: 0; padding: 0; }
 .ingest-queue-merge-check { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.78rem; color: #cccccc; cursor: pointer; }
 .ingest-queue-merge-check input { margin: 0; }
 .page-picker-thumb.is-volume-start { box-shadow: inset 0 3px 0 #4ec9b0; }
-.page-picker-thumb-volume-label { position: absolute; top: 2px; left: 2px; z-index: 2; font-size: 0.58rem; font-weight: 700; line-height: 1; padding: 0.12rem 0.22rem; border-radius: 3px; background: rgba(78, 201, 176, 0.92); color: #1e1e1e; pointer-events: none; }
+.page-picker-thumb-volume-label { position: absolute; top: 2px; right: 2px; z-index: 2; font-size: 0.58rem; font-weight: 700; line-height: 1; padding: 0.12rem 0.22rem; border-radius: 3px; background: rgba(78, 201, 176, 0.92); color: #1e1e1e; pointer-events: none; }
 .pdf-workspace { display: grid; gap: 0.85rem; }
 .pdf-workspace-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem; padding: 0.65rem 0.85rem; border-radius: 10px; background: #252526; border: 1px solid #3e3e3e; }
 .pdf-workspace-file { display: grid; gap: 0.1rem; min-width: 0; }
@@ -188,7 +188,37 @@ body { margin: 0; padding: 0; }
 }
 .pdf-viewer-mode-panel { margin: 0; }
 .pdf-viewer-mode-hint { margin: 0.35rem 0 0; font-size: 0.78rem; color: #9d9d9d; }
-.pdf-workspace-hint-label { margin-top: 0.15rem; }
+.pdf-workspace-hint-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  background: #252526;
+  border: 1px solid #3e3e3e;
+}
+.pdf-workspace-hint-card-title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #e8e8e8;
+}
+.pdf-workspace-hint-card .hint {
+  margin: 0;
+  font-size: 0.74rem;
+  color: #9d9d9d;
+}
+.pdf-workspace-hint-card label {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  font-size: 0.72rem;
+  color: #b8b8b8;
+}
+.pdf-workspace-hint-card input {
+  width: 100%;
+  max-width: 28rem;
+  box-sizing: border-box;
+}
 .ingest-form-details { display: grid; gap: 1.1rem; margin-top: 0.35rem; }
 .ingest-form-details.hidden { display: none; }
 .reicat-suggest-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem; margin: 0 0 0.75rem; }
@@ -229,115 +259,51 @@ details.reicat-metadata[open] > summary::before { transform: rotate(90deg); }
 .page-picker-thumb.is-excluded { border-color: var(--mark-remove); box-shadow: 0 0 0 1px var(--mark-remove); }
 .page-picker-thumb.is-appendix { border-color: var(--mark-appendix); box-shadow: 0 0 0 1px var(--mark-appendix); }
 .page-picker-thumb.is-disabled { opacity: 0.38; cursor: not-allowed; }
-.page-picker-thumb-mark {
+.page-picker-thumb-marks {
   position: absolute;
+  top: 0.12rem;
+  left: 0.12rem;
+  right: 0.12rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.12rem;
+  pointer-events: none;
+  width: auto;
+  box-sizing: border-box;
+}
+.page-picker-thumb-mark {
+  position: relative;
   pointer-events: none;
   z-index: 1;
-  display: flex;
-  overflow: visible;
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 calc((100% - 0.36rem) / 4);
+  width: calc((100% - 0.36rem) / 4);
+  height: auto;
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  max-height: none;
+  padding: 0.14rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.62);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .page-picker-thumb-mark.hidden { display: none; }
-.page-picker-thumb-mark-toc {
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 0.06rem 0.1rem 0 0;
-}
-.page-picker-thumb-mark-toc::before {
-  content: "";
+.page-picker-thumb-mark svg { display: block; width: 100%; height: 100%; }
+.page-picker-thumb-mark-annotate {
   position: absolute;
-  inset: 0;
-  clip-path: polygon(100% 0, 30% 0, 100% 30%);
-  background: var(--mark-toc);
-  z-index: -1;
-}
-.page-picker-thumb-mark-index {
-  left: 0;
-  bottom: 0;
-  right: 0;
-  top: 0;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 0 0 0.06rem 0.1rem;
-}
-.page-picker-thumb-mark-index::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(0 100%, 0 70%, 70% 100%);
-  background: var(--mark-index);
-  z-index: -1;
-}
-.page-picker-thumb-mark-toc span {
-  font-size: 18cqi;
-}
-.page-picker-thumb-mark-index span {
-  font-size: 13.5cqi;
-}
-.page-picker-thumb-mark-biblio {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 1.05rem 0 0 0.12rem;
-}
-.page-picker-thumb-mark-biblio::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(0 0, 72% 0, 0 34%);
-  background: var(--mark-biblio);
-  z-index: -1;
-}
-.page-picker-thumb-mark-biblio span {
-  font-size: 11cqi;
-}
-.page-picker-thumb-mark-reicat {
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 0;
-  clip-path: polygon(100% 100%, 70% 100%, 100% 30%);
-  overflow: hidden;
-}
-.page-picker-thumb-mark-reicat::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--mark-reicat);
-  z-index: 0;
-}
-.page-picker-thumb-mark span {
-  position: relative;
-  z-index: 1;
-  font-weight: 800;
-  color: #fff;
-  text-transform: lowercase;
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
-}
-.page-picker-thumb-mark-reicat span {
-  position: relative;
-  z-index: 1;
-  font-size: 2.1cqi;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  letter-spacing: -0.08em;
-  line-height: 0.58;
-  margin: 0 4% 5% 0;
-  max-height: 52%;
-  max-width: 15%;
-  overflow: hidden;
+  left: 0.15rem;
+  bottom: 0.15rem;
+  top: auto;
+  right: auto;
+  z-index: 2;
 }
 .page-picker-body { min-height: 22rem; }
 .page-picker-grid-wrap { max-height: 36rem; }
@@ -355,7 +321,7 @@ textarea { min-height: 4.5rem; resize: vertical; }
 @media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
 button { font: inherit; padding: 0.55rem 1rem; border-radius: 8px; border: 0; background: #e8e8e8; color: #1e1e1e; font-weight: 600; cursor: pointer; }
-button:hover:not(:disabled) { background: #ffffff; }
+:where(button):hover:not(:disabled) { background: #ffffff; color: #1e1e1e; }
 button:disabled { opacity: 0.55; cursor: not-allowed; }
 .hint { font-size: 0.8rem; color: #9d9d9d; }
 code { font-size: 0.85em; background: #3c3c3c; color: #d4d4d4; padding: 0.12em 0.4em; border-radius: 6px; }
@@ -425,7 +391,7 @@ a { color: #4ec9b0; }
 .ingest-section-stats { font-size: 0.78rem; color: #9d9d9d; margin-bottom: 0.55rem; }
 .ingest-section-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.55rem; }
 button.secondary { background: #3c3c3c; color: #e8e8e8; }
-button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
 button.review-btn { background: #2f5a48; color: #e8e8e8; }
 button.review-btn:hover:not(:disabled) { background: #3a6b55; }
 .ingest-review-card { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; padding: 0.65rem 0.75rem; border-radius: 8px; background: #252526; border: 1px solid #3e3e3e; }
@@ -512,10 +478,9 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .validation-preview-frame { position: relative; display: inline-block; line-height: 0; max-width: 100%; background: #fff; }
 .validation-preview-frame.is-appendix { outline: 3px solid var(--mark-appendix, #22ff66); outline-offset: 2px; }
 .validation-preview-frame .page-preview-img { max-height: calc(92vh - 9.5rem); }
-.validation-preview-frame .page-picker-thumb-mark-toc span { font-size: 1.35rem; }
-.validation-preview-frame .page-picker-thumb-mark-index span { font-size: 1.05rem; }
-.validation-preview-frame .page-picker-thumb-mark-biblio span { font-size: 0.95rem; }
-.validation-preview-frame .page-picker-thumb-mark-reicat span { font-size: 0.72rem; max-height: 42%; margin: 0 3% 4% 0; }
+.validation-preview-frame .page-picker-thumb-marks { top: 0.45rem; left: 0.45rem; gap: 0.28rem; }
+.validation-preview-frame .page-picker-thumb-mark { width: 1.55rem; height: 1.55rem; max-width: none; max-height: none; min-width: 0; min-height: 0; padding: 0.2rem; border-radius: 5px; }
+.validation-preview-frame .page-picker-thumb-mark-annotate { left: 0.45rem; bottom: 0.45rem; }
 .validation-preview-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; justify-content: flex-end; padding: 0.75rem 1rem 1rem; border-top: 1px solid #2a2a2a; }
 .validation-preview-approve { background: #2f5a48; color: #e8e8e8; }
 .validation-preview-approve:hover:not(:disabled) { background: #3a6b55; }
@@ -587,16 +552,16 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 6px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; container-type: inline-size; }
 .page-picker-thumb.is-selected { border-color: #4ec9b0; box-shadow: 0 0 0 1px #4ec9b0; }
 .page-picker-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
-.page-picker-thumb-num { position: absolute; left: 0.2rem; top: 0.2rem; z-index: 2; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
-.page-picker-detail { min-width: 0; display: flex; flex-direction: column; gap: 0.45rem; }
-.page-picker-detail-label { font-size: 0.82rem; color: #e8e8e8; font-weight: 600; }
-.page-picker-detail-body { display: flex; align-items: center; gap: 0.45rem; flex: 1 1 auto; min-height: 12rem; }
-.page-picker-detail-nav { flex: 0 0 auto; width: 2.25rem; height: 2.25rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.15rem; cursor: pointer; }
+.page-picker-thumb-num { position: absolute; right: 0.2rem; bottom: 0.2rem; z-index: 2; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
+.page-picker-detail { min-width: 0; height: 28rem; display: flex; flex-direction: column; gap: 0.45rem; box-sizing: border-box; }
+.page-picker-detail-label { flex: 0 0 auto; font-size: 0.82rem; color: #e8e8e8; font-weight: 600; }
+.page-picker-detail-body { display: flex; align-items: stretch; gap: 0.45rem; flex: 1 1 auto; min-height: 0; }
+.page-picker-detail-nav { flex: 0 0 auto; align-self: center; width: 2.25rem; height: 2.25rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.15rem; cursor: pointer; }
 .page-picker-detail-nav:hover:not(:disabled) { background: #4a4a4a; }
 .page-picker-detail-nav:disabled { opacity: 0.35; cursor: not-allowed; }
-.page-picker-detail-img-wrap { flex: 1 1 auto; min-width: 0; min-height: 12rem; display: flex; align-items: center; justify-content: center; overflow: auto; background: #fff; border-radius: 6px; }
-.page-picker-detail-img-wrap img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
-.page-picker-detail-empty { font-size: 0.78rem; color: #9d9d9d; text-align: center; padding: 2rem 0.75rem; }
+.page-picker-detail-img-wrap { position: relative; flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden; background: #1e1e1e; border-radius: 6px; }
+.page-picker-detail-img-wrap img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.page-picker-detail-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; font-size: 0.78rem; color: #9d9d9d; text-align: center; padding: 2rem 0.75rem; box-sizing: border-box; }
 .hidden { display: none !important; }
 body.embed-mode { max-width: none; padding: 0; margin: 0; background: #252526; }
 body.embed-mode .app-shell { max-width: none; padding: 0; margin: 0; }
@@ -621,6 +586,7 @@ body.embed-mode .page-picker-grid-wrap { border: 0; background: transparent; pad
 body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid #3e3e3e; }
 body.embed-mode .pdf-dropzone { min-height: 11rem; }
 body.embed-mode .pdf-workspace-bar { background: transparent; border: 0; padding: 0; }
+body.embed-mode .pdf-workspace-hint-card { background: transparent; border: 0; border-top: 1px solid #3e3e3e; border-radius: 0; padding: 0.75rem 0; }
 body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
 </style>
 </head>
@@ -634,8 +600,8 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
 </script>
 <p class="app-nav embed-hide"><a href="/">Admin</a> · <a href="/biblio">Biblio</a> · Ingestione · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
 <div class="app-shell">
-<h1 class="embed-hide">Ingestione libro (GLM OCR)</h1>
-<p class="lead embed-hide">Pipeline GLM-OCR: carica il PDF, seleziona esclusioni, TOC e indice nel visualizzatore, poi completa i metadati REICAT.</p>
+<h1 class="embed-hide">Ingestione libro</h1>
+<p class="lead embed-hide">Carica il PDF, seleziona esclusioni, TOC e indice nel visualizzatore, poi completa i metadati REICAT.</p>
 
 <div id="ingest-queue-bar" class="ingest-queue-bar hidden" aria-label="Coda ingestione">
   <div class="ingest-queue-bar-inner">
@@ -681,34 +647,42 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
       <button type="button" id="pdf-change-btn" class="secondary">Cambia PDF</button>
     </div>
 
+    <div class="pdf-workspace-hint-card">
+      <p class="pdf-workspace-hint-card-title">Codice o etichetta opzionale</p>
+      <p class="hint">Slug, sigla o codice da catalogo utile in log o integrazioni.</p>
+      <label>
+        <input type="text" name="book_id_hint" placeholder="es. collana-2024-verdi" autocomplete="off">
+      </label>
+    </div>
+
     <div id="pdf-viewer-panel" class="page-picker-panel show" aria-live="polite">
       <div class="pdf-viewer-tools" role="toolbar" aria-label="Strumenti selezione pagine">
-        <button type="button" class="pdf-viewer-tool is-active" data-viewer-mode="exclude" title="Pagine da rimuovere — contorno rosso, non sovrapponibili a TOC e indice" aria-label="Pagine da rimuovere">
-          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#d44a4a" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8M16 8l-8 8"/></svg></span>
+        <button type="button" class="pdf-viewer-tool is-active" data-viewer-mode="exclude" title="Pagine da rimuovere — contorno rosso, non sovrapponibili a TOC, indice, biblio e appendici" aria-label="Pagine da rimuovere">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#d44a4a" stroke-width="2"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12l6 6M16 12l-6 6"/></svg></span>
           <span class="pdf-viewer-tool-label">Rimuovi</span>
         </button>
-        <button type="button" class="pdf-viewer-tool" data-viewer-mode="toc" title="Table of Content — triangolo in alto a destra con etichetta toc" aria-label="Table of Content">
-          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2.2"><path d="M5 7h14M5 12h10M5 17h12"/><path fill="#3d8eef" stroke="none" d="M18 3h4v4l-4-4z" opacity="0.85"/></svg></span>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="toc" title="Table of Content — icona in alto a sinistra sulla miniatura" aria-label="Table of Content">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2"><path d="M5 6h3M5 12h3M5 18h3"/><path d="M11 6h8M11 12h6M11 18h7"/><circle cx="6.5" cy="6" r="1.2" fill="#3d8eef" stroke="none"/><circle cx="6.5" cy="12" r="1.2" fill="#3d8eef" stroke="none"/><circle cx="6.5" cy="18" r="1.2" fill="#3d8eef" stroke="none"/></svg></span>
           <span class="pdf-viewer-tool-label">TOC</span>
         </button>
-        <button type="button" class="pdf-viewer-tool" data-viewer-mode="index" title="Indice analitico — triangolo in basso a sinistra con etichetta index" aria-label="Indice analitico">
-          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#b88bff" stroke-width="2.2"><path d="M4 6h16M4 11h16M4 16h10"/><path fill="#b88bff" stroke="none" d="M3 18h5v4l-5-4z" opacity="0.85"/></svg></span>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="index" title="Indice analitico — icona in alto a sinistra sulla miniatura" aria-label="Indice analitico">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#b88bff" stroke-width="2"><path d="M5 6h9M5 12h11M5 18h8"/><path d="M17 5l2 2-2 2M19 15l-2 2 2 2"/><path d="M19 7v2M17 17h2"/></svg></span>
           <span class="pdf-viewer-tool-label">Indice</span>
         </button>
-        <button type="button" class="pdf-viewer-tool" data-viewer-mode="biblio" title="Bibliografia — range opzionale" aria-label="Bibliografia">
-          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#4ec9b0" stroke-width="2.2"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="biblio" title="Bibliografia — icona in alto a sinistra sulla miniatura" aria-label="Bibliografia">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#4ec9b0" stroke-width="2"><path d="M5 4v16"/><path d="M5 5c2.5-1 5.5-1 8 0s5.5 1 8 0v12c-2.5 1-5.5 1-8 0s-5.5-1-8 0"/><path d="M13 5v12"/></svg></span>
           <span class="pdf-viewer-tool-label">Biblio</span>
         </button>
-        <button type="button" class="pdf-viewer-tool" data-viewer-mode="reicat" title="Metadati REICAT — triangolo giallo in basso a destra con etichetta reicat" aria-label="Metadati REICAT">
-          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2.2"><path d="M4 6h16M4 11h16M4 16h10"/><path fill="#e6c229" stroke="none" d="M21 18h-5v4l5-4z" opacity="0.85"/></svg></span>
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="reicat" title="Metadati REICAT — icona in alto a sinistra sulla miniatura" aria-label="Metadati REICAT">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M14 10h4M14 14h4M7 16h4"/></svg></span>
           <span class="pdf-viewer-tool-label">REICAT</span>
         </button>
         <button type="button" class="pdf-viewer-tool" data-viewer-mode="appendix" title="Appendici — contorno verde acceso, PDF separato in raw_appendix" aria-label="Appendici">
-          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#22ff66" stroke-width="2.2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg></span>
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#22ff66" stroke-width="2"><path d="M8 4h6l4 4v12H8z"/><path d="M14 4v4h4"/><path d="M5 9v11h9"/><path d="M11 14h4M13 12v4"/></svg></span>
           <span class="pdf-viewer-tool-label">Appendici</span>
         </button>
-        <button type="button" id="annotate-tool-btn" class="pdf-viewer-tool" title="Annota primitive visuali (bbox / point-trail)" aria-label="Annota">
-          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#f0a030" stroke-width="2.2"><rect x="4" y="5" width="10" height="8" rx="1"/><circle cx="17" cy="16" r="2.5"/><path d="M8 17h6"/></svg></span>
+        <button type="button" id="annotate-tool-btn" class="pdf-viewer-tool" title="Annota primitive visuali (bbox / point / trail) — icona in basso a sinistra sulla miniatura" aria-label="Annota">
+          <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#f0a030" stroke-width="2"><path d="M14.5 4.5l5 5L9 20H4v-5L14.5 4.5z"/><path d="M13 6l5 5"/></svg></span>
           <span class="pdf-viewer-tool-label">Annota</span>
         </button>
         <button type="button" id="viewer-reset-btn" class="pdf-viewer-reset secondary" title="Azzera rimozioni, TOC, indice, REICAT e appendici">Reset selezioni</button>
@@ -724,31 +698,31 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
           <label><span>Pagine del Table of Content <small class="req">*</small></span>
             <input type="text" name="toc_range" id="toc-range-input" placeholder="11-18" required autocomplete="off">
           </label>
-          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine escluse non sono selezionabili.</p>
+          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine già in indice, biblio o appendici non sono selezionabili. Le pagine escluse non sono selezionabili.</p>
         </div>
         <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="index">
           <label><span>Pagine dell’indice analitico <small class="req">*</small></span>
             <input type="text" name="index_range" id="index-range-input" placeholder="301-324" required autocomplete="off">
           </label>
-          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine escluse non sono selezionabili.</p>
+          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine già in TOC, biblio o appendici non sono selezionabili. Le pagine escluse non sono selezionabili.</p>
         </div>
         <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="biblio">
           <label>Pagine della bibliografia (opzionale)
             <input type="text" name="biblio_range" id="biblio-range-input" placeholder="240-255" autocomplete="off">
           </label>
-          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Se assente il libro resta solo come nodo corpus.</p>
+          <p class="hint pdf-viewer-mode-hint">Un solo blocco contiguo. Le pagine già in TOC, indice o appendici non sono selezionabili. Se assente il libro resta solo come nodo corpus.</p>
         </div>
         <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="reicat">
           <label>Pagine per metadati REICAT
             <input type="text" name="reicat_pages" id="reicat-pages-input" placeholder="es. 1-3, 5, 280-285" autocomplete="off">
           </label>
-          <p class="hint pdf-viewer-mode-hint">Clicca le miniature per selezionare le pagine editoriali. Vision cercherà ogni campo REICAT in tutte le pagine selezionate. Sovrapponibile con TOC e indice.</p>
+          <p class="hint pdf-viewer-mode-hint">Clicca le miniature per selezionare le pagine editoriali. Vision cercherà ogni campo REICAT in tutte le pagine selezionate. Sovrapponibile con TOC, indice, biblio e appendici.</p>
         </div>
         <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="appendix">
           <label>Pagine appendice (PDF separato)
             <input type="text" name="appendix_pages" id="appendix-pages-input" placeholder="es. 250-260, 280, 300-305" autocomplete="off">
           </label>
-          <p class="hint pdf-viewer-mode-hint">Selezione libera. Al submit crea <code>raw_appendix/appendix_&lt;nome-pdf&gt;.pdf</code> senza altri processi. Contorno verde, senza triangolo.</p>
+          <p class="hint pdf-viewer-mode-hint">Al submit crea <code>raw_appendix/appendix_&lt;nome-pdf&gt;.pdf</code>. Contorno verde. Le pagine già in TOC, indice o biblio non sono selezionabili.</p>
         </div>
         <div class="page-picker-toolbar-meta" id="pdf-viewer-meta">—</div>
       </div>
@@ -766,13 +740,15 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
         </div>
         <div class="page-picker-detail">
           <div class="page-picker-detail-label">Anteprima — pagina <span id="page-picker-detail-num">—</span></div>
+          <div id="annotate-primitive-switch" class="annotate-preview-tools hidden" role="group" aria-label="Primitiva annotazione">
+            <button type="button" data-annotate-tool="bbox" class="is-active" title="Bounding box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="6" width="14" height="12" rx="1" stroke-dasharray="3 2"/></svg><span>Box</span></button>
+            <button type="button" data-annotate-tool="point" title="Point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/></svg><span>Point</span></button>
+            <button type="button" data-annotate-tool="trail" title="Trail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 17L10 8l4 5 5-9"/><circle cx="5" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="10" cy="8" r="1.6" fill="currentColor" stroke="none"/><circle cx="14" cy="13" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="4" r="1.6" fill="currentColor" stroke="none"/></svg><span>Trail</span></button>
+            <button type="button" data-annotate-action="reset-page" title="Reset annotazioni della pagina corrente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.2-5.5"/><path d="M4 4v5h5"/></svg><span>Reset</span></button>
+          </div>
           <div class="page-picker-detail-body">
             <button type="button" class="page-picker-detail-nav" id="page-picker-detail-prev" title="Pagina precedente (←)" aria-label="Pagina precedente" disabled>&lt;</button>
             <div class="page-picker-detail-img-wrap" id="page-picker-detail-wrap">
-              <div id="annotate-primitive-switch" class="annotate-preview-tools hidden" role="group" aria-label="Primitiva annotazione">
-                <button type="button" data-annotate-tool="bbox" class="is-active">Bounding box</button>
-                <button type="button" data-annotate-tool="point_trail">Point / trail</button>
-              </div>
               <div class="page-picker-detail-empty" id="page-picker-detail-empty">Clic sinistro per selezionare, destro per anteprima. Frecce ← → per scorrere.</div>
               <img id="page-picker-detail-img" class="hidden" alt="">
               <canvas id="annotate-canvas" class="hidden" aria-label="Canvas annotazioni"></canvas>
@@ -783,10 +759,6 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
       </div>
     </div>
 
-    <label class="pdf-workspace-hint-label">Codice o etichetta opzionale del libro
-      <input type="text" name="book_id_hint" placeholder="es. collana-2024-verdi" autocomplete="off">
-    </label>
-    <p class="hint" style="margin:0;">Slug, sigla o codice da catalogo utile in log o integrazioni.</p>
   </div>
 
   <div id="ingest-form-details" class="ingest-form-details hidden">
@@ -857,25 +829,25 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
 
   <fieldset id="model-notes-fieldset" class="hidden">
     <legend>Note per i modelli</legend>
-    <p class="hint">Testo facoltativo aggiunto al system prompt di Vision, Editor, raffinamento TOC/INDEX e subject matcher per questo libro.</p>
+    <p class="hint">Le note operatore e le annotazioni servono solo a generare il consiglio AI. All'ingest i modelli ricevono soltanto il testo del consiglio.</p>
     <label>Note generali
       <textarea name="notes" placeholder="es. conservare le abbreviazioni latine; non normalizzare i nomi propri storici"></textarea>
     </label>
-    <p class="hint" style="margin:0.25rem 0 0;">Include anche annotazioni sulle pagine TOC/bibliografia. Digita @ per richiamarle.</p>
+    <p class="hint" style="margin:0.25rem 0 0;">Contesto per il consiglio AI (anche TOC/bibliografia). Digita @ per richiamare le annotazioni.</p>
     <label>Note sulla formattazione dell'INDICE analitico
       <textarea name="index_notes" placeholder="es. i lemmi sono in maiuscoletto; i rimandi usano 'v.' invece di 'vedi'; i numeri in corsivo indicano le illustrazioni"></textarea>
     </label>
-    <p class="hint" style="margin:0.25rem 0 0;">Aggiunte al prompt del raffinamento INDEX e del subject matcher. Digita @ per le annotazioni sulle pagine indice.</p>
+    <p class="hint" style="margin:0.25rem 0 0;">Contesto indice per il consiglio AI. Digita @ per le annotazioni sulle pagine indice.</p>
     <label>Note sulla formattazione delle pagine
       <textarea name="page_notes" placeholder="es. note a piè di pagina; titolo del capitolo nell'intestazione; numero di pagina in basso al centro (non confonderlo con le date)"></textarea>
     </label>
-    <p class="hint" style="margin:0.25rem 0 0;">Aggiunte al prompt di Vision ed Editor. Digita @ per le annotazioni sulle pagine di contenuto.</p>
+    <p class="hint" style="margin:0.25rem 0 0;">Contesto pagine per il consiglio AI. Digita @ per le annotazioni sulle pagine di contenuto.</p>
     <div class="ai-counsel-row">
       <button type="button" id="ai-counsel-btn" class="secondary">Consiglio dell'AI</button>
       <span class="hint" id="ai-counsel-status"></span>
     </div>
-    <label>Consiglio AI (append system prompt pagine)
-      <textarea name="ai_page_guidance" id="ai-page-guidance" placeholder="Generato dal consiglio AI; modificabile. Viene unito al prompt Vision/GLM OCR."></textarea>
+    <label>Consiglio AI (system prompt pagine)
+      <textarea name="ai_page_guidance" id="ai-page-guidance" placeholder="Generato dal consiglio AI (o automaticamente al submit se vuoto); modificabile. Solo questo testo va ai modelli Vision/OCR/Editor."></textarea>
     </label>
   </fieldset>
 
@@ -946,10 +918,13 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
       <div class="page-preview-img-wrap validation-preview-img-wrap">
         <div class="validation-preview-frame" id="validation-preview-frame">
           <img class="page-preview-img" id="validation-preview-img" alt="">
-          <span class="page-picker-thumb-mark page-picker-thumb-mark-toc hidden" id="validation-preview-mark-toc"><span>toc</span></span>
-          <span class="page-picker-thumb-mark page-picker-thumb-mark-index hidden" id="validation-preview-mark-index"><span>index</span></span>
-          <span class="page-picker-thumb-mark page-picker-thumb-mark-biblio hidden" id="validation-preview-mark-biblio"><span>biblio</span></span>
-          <span class="page-picker-thumb-mark page-picker-thumb-mark-reicat hidden" id="validation-preview-mark-reicat"><span>reicat</span></span>
+          <span class="page-picker-thumb-marks" aria-hidden="true">
+            <span class="page-picker-thumb-mark page-picker-thumb-mark-toc hidden" id="validation-preview-mark-toc"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2"><path d="M5 6h3M5 12h3M5 18h3"/><path d="M11 6h8M11 12h6M11 18h7"/><circle cx="6.5" cy="6" r="1.2" fill="#3d8eef" stroke="none"/><circle cx="6.5" cy="12" r="1.2" fill="#3d8eef" stroke="none"/><circle cx="6.5" cy="18" r="1.2" fill="#3d8eef" stroke="none"/></svg></span>
+            <span class="page-picker-thumb-mark page-picker-thumb-mark-index hidden" id="validation-preview-mark-index"><svg viewBox="0 0 24 24" fill="none" stroke="#b88bff" stroke-width="2"><path d="M5 6h9M5 12h11M5 18h8"/><path d="M17 5l2 2-2 2M19 15l-2 2 2 2"/><path d="M19 7v2M17 17h2"/></svg></span>
+            <span class="page-picker-thumb-mark page-picker-thumb-mark-biblio hidden" id="validation-preview-mark-biblio"><svg viewBox="0 0 24 24" fill="none" stroke="#4ec9b0" stroke-width="2"><path d="M5 4v16"/><path d="M5 5c2.5-1 5.5-1 8 0s5.5 1 8 0v12c-2.5 1-5.5 1-8 0s-5.5-1-8 0"/><path d="M13 5v12"/></svg></span>
+            <span class="page-picker-thumb-mark page-picker-thumb-mark-reicat hidden" id="validation-preview-mark-reicat"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M14 10h4M14 14h4M7 16h4"/></svg></span>
+          </span>
+          <span class="page-picker-thumb-mark page-picker-thumb-mark-annotate hidden" id="validation-preview-mark-annotate"><svg viewBox="0 0 24 24" fill="none" stroke="#f0a030" stroke-width="2"><path d="M14.5 4.5l5 5L9 20H4v-5L14.5 4.5z"/><path d="M13 6l5 5"/></svg></span>
         </div>
       </div>
       <button type="button" class="page-preview-nav" id="validation-preview-next" title="Pagina successiva">&gt;</button>
@@ -995,7 +970,7 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
 </div>
 
 <div id="repair-progress-panel" class="repair-progress-panel hidden" aria-live="polite">
-  <div class="repair-progress-title">Riparazione pagina (GLM OCR)</div>
+  <div class="repair-progress-title">Riparazione pagina</div>
   <div class="repair-progress-phase" id="repair-progress-phase">Avvio…</div>
   <div class="repair-progress-detail" id="repair-progress-detail"></div>
   <div class="repair-progress-bar"><div class="repair-progress-fill" id="repair-progress-fill"></div></div>
@@ -1751,6 +1726,8 @@ if (document.readyState === "loading") {
       tocLastSelected: tocPagePickerState.lastSelected,
       indexSelected: Object.assign({}, indexPagePickerState.selected),
       indexLastSelected: indexPagePickerState.lastSelected,
+      biblioSelected: Object.assign({}, biblioPagePickerState.selected),
+      biblioLastSelected: biblioPagePickerState.lastSelected,
       reicatSelected: Object.assign({}, reicatPagePickerState.selected),
       reicatLastSelected: reicatPagePickerState.lastSelected,
       appendixSelected: Object.assign({}, appendixPagePickerState.selected),
@@ -1764,6 +1741,7 @@ if (document.readyState === "loading") {
     var fields = snap.fields || {};
     for (var name in fields) {
       if (!Object.prototype.hasOwnProperty.call(fields, name)) continue;
+      if (name === "book_id_hint") continue;
       var el = form.elements[name];
       if (!el) continue;
       if (el.type === "checkbox") el.checked = !!fields[name];
@@ -1781,6 +1759,10 @@ if (document.readyState === "loading") {
     indexPagePickerState.selected = Object.assign({}, snap.indexSelected || {});
     indexPagePickerState.lastSelected = snap.indexLastSelected || null;
     indexPagePickerState.syncing = false;
+    biblioPagePickerState.syncing = true;
+    biblioPagePickerState.selected = Object.assign({}, snap.biblioSelected || {});
+    biblioPagePickerState.lastSelected = snap.biblioLastSelected || null;
+    biblioPagePickerState.syncing = false;
     reicatPagePickerState.syncing = true;
     reicatPagePickerState.selected = Object.assign({}, snap.reicatSelected || {});
     reicatPagePickerState.lastSelected = snap.reicatLastSelected || null;
@@ -1792,9 +1774,12 @@ if (document.readyState === "loading") {
     pagesToRemoveInput.value = pagesToSpec(selectedPagesList());
     tocRangeInput.value = pagesToSpec(tocSelectedPagesList());
     indexRangeInput.value = pagesToSpec(indexSelectedPagesList());
+    if (biblioRangeInput) biblioRangeInput.value = pagesToSpec(biblioSelectedPagesList());
     reicatPagesInput.value = pagesToSpec(reicatSelectedPagesList());
     if (appendixPagesInput) appendixPagesInput.value = pagesToSpec(appendixSelectedPagesList());
     setViewerMode(snap.viewerMode || "exclude");
+    sanitizeExclusiveIndexOverlaps();
+    syncExclusiveIndexFields();
     refreshViewerThumbUi();
     renderPagePickerDetail(detailPageToShow(viewerMode));
   }
@@ -1810,7 +1795,7 @@ if (document.readyState === "loading") {
     var elements = form.elements;
     for (var i = 0; i < elements.length; i++) {
       var el = elements[i];
-      if (!el.name || el.name === "pdf_file") continue;
+      if (!el.name || el.name === "pdf_file" || el.name === "book_id_hint" || el.name === "compute_mode") continue;
       if (el.type === "checkbox") {
         el.checked = el.name === "force_metadata_update_on_duplicate_hash" && el.value === "true";
       } else {
@@ -2301,7 +2286,12 @@ if (document.readyState === "loading") {
     }
     syncReicatMetadataVisibility(mode);
     refreshViewerThumbUi();
-    renderPagePickerDetail(detailPageToShow(mode));
+    var keepPage = pagePickerDetailPage;
+    if (keepPage != null && pagePickerState.numPages && keepPage >= 1 && keepPage <= pagePickerState.numPages) {
+      renderPagePickerDetail(keepPage);
+    } else {
+      renderPagePickerDetail(detailPageToShow(mode));
+    }
   }
 
   for (var vm = 0; vm < viewerModeButtons.length; vm++) {
@@ -2345,6 +2335,32 @@ if (document.readyState === "loading") {
       excludedCount + " rimosse · " + tocCount + " TOC · " + indexCount + " indice · " + biblioCount + " biblio · " + reicatCount + " REICAT · " + appendixCount + " appendici";
   }
 
+  function pageHasAnnotations(pageNum) {
+    var pg = window.__librarainPageGuidance;
+    if (!pg || typeof pg.getAnnotations !== "function") return false;
+    var list = pg.getAnnotations() || [];
+    for (var i = 0; i < list.length; i++) {
+      if (Number(list[i].page) === Number(pageNum)) return true;
+    }
+    return false;
+  }
+
+  function thumbMarkSvg(kind) {
+    if (kind === "toc") return '<svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2"><path d="M5 6h3M5 12h3M5 18h3"/><path d="M11 6h8M11 12h6M11 18h7"/><circle cx="6.5" cy="6" r="1.2" fill="#3d8eef" stroke="none"/><circle cx="6.5" cy="12" r="1.2" fill="#3d8eef" stroke="none"/><circle cx="6.5" cy="18" r="1.2" fill="#3d8eef" stroke="none"/></svg>';
+    if (kind === "index") return '<svg viewBox="0 0 24 24" fill="none" stroke="#b88bff" stroke-width="2"><path d="M5 6h9M5 12h11M5 18h8"/><path d="M17 5l2 2-2 2M19 15l-2 2 2 2"/><path d="M19 7v2M17 17h2"/></svg>';
+    if (kind === "biblio") return '<svg viewBox="0 0 24 24" fill="none" stroke="#4ec9b0" stroke-width="2"><path d="M5 4v16"/><path d="M5 5c2.5-1 5.5-1 8 0s5.5 1 8 0v12c-2.5 1-5.5 1-8 0s-5.5-1-8 0"/><path d="M13 5v12"/></svg>';
+    if (kind === "reicat") return '<svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M14 10h4M14 14h4M7 16h4"/></svg>';
+    if (kind === "annotate") return '<svg viewBox="0 0 24 24" fill="none" stroke="#f0a030" stroke-width="2"><path d="M14.5 4.5l5 5L9 20H4v-5L14.5 4.5z"/><path d="M13 6l5 5"/></svg>';
+    return "";
+  }
+
+  function createThumbMark(kind) {
+    var el = document.createElement("span");
+    el.className = "page-picker-thumb-mark page-picker-thumb-mark-" + kind + " hidden";
+    el.innerHTML = thumbMarkSvg(kind);
+    return el;
+  }
+
   function refreshViewerThumbUi() {
     var excluded = getExcludedPagesSet();
     var buttons = pagePickerGrid.querySelectorAll(".page-picker-thumb");
@@ -2357,17 +2373,21 @@ if (document.readyState === "loading") {
       var hasBiblio = !!(biblioPagePickerState && biblioPagePickerState.selected[pageNum]);
       var hasReicat = !!reicatPagePickerState.selected[pageNum];
       var hasAppendix = !!(appendixPagePickerState && appendixPagePickerState.selected[pageNum]);
+      var hasAnnotate = pageHasAnnotations(pageNum);
       btn.classList.toggle("is-excluded", isExcluded);
       btn.classList.toggle("is-appendix", hasAppendix && !isExcluded);
       var tocMark = btn.querySelector(".page-picker-thumb-mark-toc");
       var indexMark = btn.querySelector(".page-picker-thumb-mark-index");
       var biblioMark = btn.querySelector(".page-picker-thumb-mark-biblio");
       var reicatMark = btn.querySelector(".page-picker-thumb-mark-reicat");
+      var annotateMark = btn.querySelector(".page-picker-thumb-mark-annotate");
       if (tocMark) tocMark.classList.toggle("hidden", !hasToc);
       if (indexMark) indexMark.classList.toggle("hidden", !hasIndex);
       if (biblioMark) biblioMark.classList.toggle("hidden", !hasBiblio);
       if (reicatMark) reicatMark.classList.toggle("hidden", !hasReicat);
-      var disabled = viewerMode !== "exclude" && isExcluded;
+      if (annotateMark) annotateMark.classList.toggle("hidden", !hasAnnotate);
+      var blockedExclusive = (viewerMode === "toc" || viewerMode === "index" || viewerMode === "biblio" || viewerMode === "appendix") && isExclusiveIndexBlocked(pageNum, viewerMode);
+      var disabled = (viewerMode !== "exclude" && isExcluded) || blockedExclusive;
       btn.classList.toggle("is-disabled", disabled);
       btn.setAttribute("aria-disabled", disabled ? "true" : "false");
     }
@@ -2459,7 +2479,7 @@ if (document.readyState === "loading") {
     tocPagePickerState.selected = {};
     if (parsed) {
       for (var i = 0; i < parsed.length; i++) {
-        if (!excluded[parsed[i]]) tocPagePickerState.selected[parsed[i]] = true;
+        if (!excluded[parsed[i]] && !isExclusiveIndexBlocked(parsed[i], "toc")) tocPagePickerState.selected[parsed[i]] = true;
       }
       var selected = tocSelectedPagesList();
       tocPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
@@ -2469,14 +2489,17 @@ if (document.readyState === "loading") {
     tocPagePickerState.syncing = false;
     refreshViewerThumbUi();
     if (viewerMode === "toc") renderPagePickerDetail(tocPagePickerState.lastSelected);
-    notifyPageGuidanceRangesChange();
+    syncTocPagePickerFieldFromSelection();
   }
 
   function toggleTocPagePickerSelection(pageNum) {
     var excluded = getExcludedPagesSet();
     if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
     if (tocPagePickerState.selected[pageNum]) delete tocPagePickerState.selected[pageNum];
-    else tocPagePickerState.selected[pageNum] = true;
+    else {
+      if (isExclusiveIndexBlocked(pageNum, "toc")) return;
+      tocPagePickerState.selected[pageNum] = true;
+    }
     tocPagePickerState.lastSelected = pageNum;
     refreshViewerThumbUi();
     syncTocPagePickerFieldFromSelection();
@@ -2535,7 +2558,7 @@ if (document.readyState === "loading") {
     indexPagePickerState.selected = {};
     if (parsed) {
       for (var i = 0; i < parsed.length; i++) {
-        if (!excluded[parsed[i]]) indexPagePickerState.selected[parsed[i]] = true;
+        if (!excluded[parsed[i]] && !isExclusiveIndexBlocked(parsed[i], "index")) indexPagePickerState.selected[parsed[i]] = true;
       }
       var selected = indexSelectedPagesList();
       indexPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
@@ -2545,14 +2568,17 @@ if (document.readyState === "loading") {
     indexPagePickerState.syncing = false;
     refreshViewerThumbUi();
     if (viewerMode === "index") renderPagePickerDetail(indexPagePickerState.lastSelected);
-    notifyPageGuidanceRangesChange();
+    syncIndexPagePickerFieldFromSelection();
   }
 
   function toggleIndexPagePickerSelection(pageNum) {
     var excluded = getExcludedPagesSet();
     if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
     if (indexPagePickerState.selected[pageNum]) delete indexPagePickerState.selected[pageNum];
-    else indexPagePickerState.selected[pageNum] = true;
+    else {
+      if (isExclusiveIndexBlocked(pageNum, "index")) return;
+      indexPagePickerState.selected[pageNum] = true;
+    }
     indexPagePickerState.lastSelected = pageNum;
     refreshViewerThumbUi();
     syncIndexPagePickerFieldFromSelection();
@@ -2611,7 +2637,7 @@ if (document.readyState === "loading") {
     biblioPagePickerState.selected = {};
     if (parsed) {
       for (var i = 0; i < parsed.length; i++) {
-        if (!excluded[parsed[i]]) biblioPagePickerState.selected[parsed[i]] = true;
+        if (!excluded[parsed[i]] && !isExclusiveIndexBlocked(parsed[i], "biblio")) biblioPagePickerState.selected[parsed[i]] = true;
       }
       var selected = biblioSelectedPagesList();
       biblioPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
@@ -2621,14 +2647,17 @@ if (document.readyState === "loading") {
     biblioPagePickerState.syncing = false;
     refreshViewerThumbUi();
     if (viewerMode === "biblio") renderPagePickerDetail(biblioPagePickerState.lastSelected);
-    notifyPageGuidanceRangesChange();
+    syncBiblioPagePickerFieldFromSelection();
   }
 
   function toggleBiblioPagePickerSelection(pageNum) {
     var excluded = getExcludedPagesSet();
     if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
     if (biblioPagePickerState.selected[pageNum]) delete biblioPagePickerState.selected[pageNum];
-    else biblioPagePickerState.selected[pageNum] = true;
+    else {
+      if (isExclusiveIndexBlocked(pageNum, "biblio")) return;
+      biblioPagePickerState.selected[pageNum] = true;
+    }
     biblioPagePickerState.lastSelected = pageNum;
     refreshViewerThumbUi();
     syncBiblioPagePickerFieldFromSelection();
@@ -2666,6 +2695,46 @@ if (document.readyState === "loading") {
     syncing: false,
   };
 
+  function exclusiveIndexOwner(pageNum) {
+    if (tocPagePickerState.selected[pageNum]) return "toc";
+    if (indexPagePickerState.selected[pageNum]) return "index";
+    if (biblioPagePickerState.selected[pageNum]) return "biblio";
+    if (appendixPagePickerState && appendixPagePickerState.selected[pageNum]) return "appendix";
+    return null;
+  }
+
+  function isExclusiveIndexBlocked(pageNum, mode) {
+    var owner = exclusiveIndexOwner(pageNum);
+    return !!(owner && owner !== mode);
+  }
+
+  function syncExclusiveIndexFields() {
+    syncTocPagePickerFieldFromSelection();
+    syncIndexPagePickerFieldFromSelection();
+    syncBiblioPagePickerFieldFromSelection();
+    syncAppendixPagePickerFieldFromSelection();
+  }
+
+  function sanitizeExclusiveIndexOverlaps() {
+    var counts = {};
+    function bump(pages) {
+      for (var i = 0; i < pages.length; i++) counts[pages[i]] = (counts[pages[i]] || 0) + 1;
+    }
+    bump(tocSelectedPagesList());
+    bump(indexSelectedPagesList());
+    bump(biblioSelectedPagesList());
+    bump(appendixSelectedPagesList());
+    function strip(state) {
+      Object.keys(state.selected).forEach(function (key) {
+        if (counts[key] > 1) delete state.selected[key];
+      });
+    }
+    strip(tocPagePickerState);
+    strip(indexPagePickerState);
+    strip(biblioPagePickerState);
+    strip(appendixPagePickerState);
+  }
+
   function reicatSelectedPagesList() {
     return Object.keys(reicatPagePickerState.selected)
       .map(function (k) { return parseInt(k, 10); })
@@ -2698,6 +2767,7 @@ if (document.readyState === "loading") {
     reicatPagePickerState.syncing = false;
     refreshViewerThumbUi();
     if (viewerMode === "reicat") renderPagePickerDetail(reicatPagePickerState.lastSelected);
+    syncReicatPagePickerFieldFromSelection();
   }
 
   function toggleReicatPagePickerSelection(pageNum) {
@@ -2782,7 +2852,7 @@ if (document.readyState === "loading") {
     appendixPagePickerState.selected = {};
     if (parsed) {
       for (var i = 0; i < parsed.length; i++) {
-        if (!excluded[parsed[i]]) appendixPagePickerState.selected[parsed[i]] = true;
+        if (!excluded[parsed[i]] && !isExclusiveIndexBlocked(parsed[i], "appendix")) appendixPagePickerState.selected[parsed[i]] = true;
       }
       var selected = appendixSelectedPagesList();
       appendixPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
@@ -2792,13 +2862,17 @@ if (document.readyState === "loading") {
     appendixPagePickerState.syncing = false;
     refreshViewerThumbUi();
     if (viewerMode === "appendix") renderPagePickerDetail(appendixPagePickerState.lastSelected);
+    syncAppendixPagePickerFieldFromSelection();
   }
 
   function toggleAppendixPagePickerSelection(pageNum) {
     var excluded = getExcludedPagesSet();
     if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
     if (appendixPagePickerState.selected[pageNum]) delete appendixPagePickerState.selected[pageNum];
-    else appendixPagePickerState.selected[pageNum] = true;
+    else {
+      if (isExclusiveIndexBlocked(pageNum, "appendix")) return;
+      appendixPagePickerState.selected[pageNum] = true;
+    }
     appendixPagePickerState.lastSelected = pageNum;
     refreshViewerThumbUi();
     syncAppendixPagePickerFieldFromSelection();
@@ -3320,24 +3394,17 @@ if (document.readyState === "loading") {
         volEl.textContent = item.volumeLabel;
         btn.appendChild(volEl);
       }
-      var tocMark = document.createElement("span");
-      tocMark.className = "page-picker-thumb-mark page-picker-thumb-mark-toc hidden";
-      tocMark.innerHTML = "<span>toc</span>";
-      var indexMark = document.createElement("span");
-      indexMark.className = "page-picker-thumb-mark page-picker-thumb-mark-index hidden";
-      indexMark.innerHTML = "<span>index</span>";
-      var biblioMark = document.createElement("span");
-      biblioMark.className = "page-picker-thumb-mark page-picker-thumb-mark-biblio hidden";
-      biblioMark.innerHTML = "<span>biblio</span>";
-      var reicatMark = document.createElement("span");
-      reicatMark.className = "page-picker-thumb-mark page-picker-thumb-mark-reicat hidden";
-      reicatMark.innerHTML = "<span>reicat</span>";
+      var marks = document.createElement("span");
+      marks.className = "page-picker-thumb-marks";
+      marks.setAttribute("aria-hidden", "true");
+      marks.appendChild(createThumbMark("toc"));
+      marks.appendChild(createThumbMark("index"));
+      marks.appendChild(createThumbMark("biblio"));
+      marks.appendChild(createThumbMark("reicat"));
       btn.appendChild(img);
       btn.appendChild(numEl);
-      btn.appendChild(tocMark);
-      btn.appendChild(indexMark);
-      btn.appendChild(biblioMark);
-      btn.appendChild(reicatMark);
+      btn.appendChild(marks);
+      btn.appendChild(createThumbMark("annotate"));
       btn.addEventListener("click", function (event) {
         if (marqueeState.suppressClick) {
           event.preventDefault();
@@ -3538,11 +3605,15 @@ if (document.readyState === "loading") {
   function isPageSelectableInViewerMode(pageNum) {
     if (pageNum < 1 || pageNum > pagePickerState.numPages) return false;
     if (viewerMode === "exclude") return true;
-    return !getExcludedPagesSet()[pageNum];
+    if (getExcludedPagesSet()[pageNum]) return false;
+    if ((viewerMode === "toc" || viewerMode === "index" || viewerMode === "biblio" || viewerMode === "appendix") && isExclusiveIndexBlocked(pageNum, viewerMode)) return false;
+    return true;
   }
 
   function setPageSelectedInViewerMode(pageNum, wantSelected) {
-    if (!isPageSelectableInViewerMode(pageNum)) return false;
+    if (wantSelected && !isPageSelectableInViewerMode(pageNum)) return false;
+    if (!wantSelected && (pageNum < 1 || pageNum > pagePickerState.numPages)) return false;
+    if (!wantSelected && viewerMode !== "exclude" && getExcludedPagesSet()[pageNum]) return false;
     if (viewerMode === "toc") {
       if (wantSelected) tocPagePickerState.selected[pageNum] = true;
       else delete tocPagePickerState.selected[pageNum];
@@ -3577,6 +3648,7 @@ if (document.readyState === "loading") {
       pagePickerState.selected[pageNum] = true;
       if (tocPagePickerState.selected[pageNum]) delete tocPagePickerState.selected[pageNum];
       if (indexPagePickerState.selected[pageNum]) delete indexPagePickerState.selected[pageNum];
+      if (biblioPagePickerState.selected[pageNum]) delete biblioPagePickerState.selected[pageNum];
       if (reicatPagePickerState.selected[pageNum]) delete reicatPagePickerState.selected[pageNum];
       if (appendixPagePickerState.selected[pageNum]) delete appendixPagePickerState.selected[pageNum];
     } else {
@@ -3597,10 +3669,14 @@ if (document.readyState === "loading") {
 
   function finalizeMarqueeFieldSync() {
     if (viewerMode === "exclude") {
-      syncTocPagePickerFieldFromSelection();
-      syncIndexPagePickerFieldFromSelection();
+      syncExclusiveIndexFields();
       syncReicatPagePickerFieldFromSelection();
-      syncAppendixPagePickerFieldFromSelection();
+      syncPagePickerFieldFromSelection();
+      return;
+    }
+    if (viewerMode === "toc" || viewerMode === "index" || viewerMode === "biblio" || viewerMode === "appendix") {
+      syncExclusiveIndexFields();
+      return;
     }
     syncViewerModeFieldFromSelection();
   }
@@ -3688,8 +3764,12 @@ if (document.readyState === "loading") {
     for (var i = 0; i < buttons.length; i++) {
       var btn = buttons[i];
       var pageNum = parseInt(btn.dataset.page, 10);
-      if (!isPageSelectableInViewerMode(pageNum)) continue;
       if (!rectsIntersect(rect, thumbContentRect(btn, contentRect))) continue;
+      if (marqueeState.wantSelected) {
+        if (!isPageSelectableInViewerMode(pageNum)) continue;
+      } else if (!isPageSelectedInViewerMode(pageNum)) {
+        continue;
+      }
       if (setPageSelectedInViewerMode(pageNum, marqueeState.wantSelected)) {
         any = true;
         lastHit = pageNum;
@@ -3848,18 +3928,12 @@ if (document.readyState === "loading") {
       delete pagePickerState.selected[pageNum];
     } else {
       pagePickerState.selected[pageNum] = true;
-      if (tocPagePickerState.selected[pageNum]) {
-        delete tocPagePickerState.selected[pageNum];
-        syncTocPagePickerFieldFromSelection();
-      }
-      if (indexPagePickerState.selected[pageNum]) {
-        delete indexPagePickerState.selected[pageNum];
-        syncIndexPagePickerFieldFromSelection();
-      }
-      if (reicatPagePickerState.selected[pageNum]) {
-        delete reicatPagePickerState.selected[pageNum];
-        syncReicatPagePickerFieldFromSelection();
-      }
+      var clearedExclusive = !!(tocPagePickerState.selected[pageNum] || indexPagePickerState.selected[pageNum] || biblioPagePickerState.selected[pageNum] || reicatPagePickerState.selected[pageNum]);
+      if (tocPagePickerState.selected[pageNum]) delete tocPagePickerState.selected[pageNum];
+      if (indexPagePickerState.selected[pageNum]) delete indexPagePickerState.selected[pageNum];
+      if (biblioPagePickerState.selected[pageNum]) delete biblioPagePickerState.selected[pageNum];
+      if (reicatPagePickerState.selected[pageNum]) delete reicatPagePickerState.selected[pageNum];
+      if (clearedExclusive) syncExclusiveIndexFields();
       if (appendixPagePickerState.selected[pageNum]) {
         delete appendixPagePickerState.selected[pageNum];
         syncAppendixPagePickerFieldFromSelection();
@@ -4220,9 +4294,9 @@ if (document.readyState === "loading") {
   var REPAIR_PHASE_LABELS = {
     page_repair: "Preparazione",
     gaps_repair: "Riparazione lacune",
-    stage1_glm_ocr: "GLM OCR",
-    stage1_ocr: "GLM OCR",
-    stage2_vision: "GLM OCR",
+    stage1_glm_ocr: "OCR + Vision",
+    stage1_ocr: "OCR + Vision",
+    stage2_vision: "OCR + Vision",
     stage3_editor: "Stage 3 — Editor",
     queue: "In coda",
     pipeline: "Pipeline",
@@ -4624,7 +4698,7 @@ if (document.readyState === "loading") {
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "audit-repair-btn";
-    btn.textContent = "GLM OCR";
+    btn.textContent = "OCR + Vision";
     function rowEl() { return stack.closest("tr"); }
     function setRunning(active) {
       stack.classList.toggle("is-active", active);
@@ -4653,7 +4727,7 @@ if (document.readyState === "loading") {
       statusLabel.classList.remove("is-error");
       barFill.style.width = "0%";
       btn.disabled = false;
-      btn.textContent = "GLM OCR";
+      btn.textContent = "OCR + Vision";
     }
     btn.addEventListener("click", function () {
       statusLabel.classList.remove("is-error");
@@ -4692,7 +4766,7 @@ if (document.readyState === "loading") {
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "audit-repair-btn";
-    btn.textContent = "GLM OCR tutto";
+    btn.textContent = "OCR + Vision tutto";
     var alignedPages = gapEntries.map(function (entry) { return entry.aligned; }).sort(function (a, b) { return a - b; });
     var pageSegs = {};
     for (var s = 0; s < alignedPages.length; s++) {
@@ -4760,7 +4834,7 @@ if (document.readyState === "loading") {
       overallFill.style.width = "0%";
       resetPageSegs();
       btn.disabled = false;
-      btn.textContent = "GLM OCR tutto";
+      btn.textContent = "OCR + Vision tutto";
     }
     btn.addEventListener("click", function () {
       stageLabel.classList.remove("is-error");
@@ -4927,6 +5001,7 @@ if (document.readyState === "loading") {
   var validationPreviewMarkIndex = document.getElementById("validation-preview-mark-index");
   var validationPreviewMarkBiblio = document.getElementById("validation-preview-mark-biblio");
   var validationPreviewMarkReicat = document.getElementById("validation-preview-mark-reicat");
+  var validationPreviewMarkAnnotate = document.getElementById("validation-preview-mark-annotate");
   var validationPreviewFrame = document.getElementById("validation-preview-frame");
   var validationPreviewApprove = document.getElementById("validation-preview-approve");
   var validationPreviewBack = document.getElementById("validation-preview-back");
@@ -4947,6 +5022,7 @@ if (document.readyState === "loading") {
         biblio: !!(biblioPagePickerState && biblioPagePickerState.selected[p]),
         reicat: !!reicatPagePickerState.selected[p],
         appendix: !!(appendixPagePickerState && appendixPagePickerState.selected[p]),
+        annotate: pageHasAnnotations(p),
       });
     }
     return entries;
@@ -4959,6 +5035,7 @@ if (document.readyState === "loading") {
     if (entry.biblio) bits.push("Biblio");
     if (entry.reicat) bits.push("REICAT");
     if (entry.appendix) bits.push("Appendici");
+    if (entry.annotate) bits.push("Annota");
     return bits;
   }
 
@@ -4981,6 +5058,7 @@ if (document.readyState === "loading") {
     validationPreviewMarkIndex.classList.toggle("hidden", !entry.index);
     validationPreviewMarkBiblio.classList.toggle("hidden", !entry.biblio);
     validationPreviewMarkReicat.classList.toggle("hidden", !entry.reicat);
+    if (validationPreviewMarkAnnotate) validationPreviewMarkAnnotate.classList.toggle("hidden", !entry.annotate);
     if (validationPreviewFrame) validationPreviewFrame.classList.toggle("is-appendix", !!entry.appendix);
     try {
       var url = await ensureDetailCached(entry.original);
@@ -5513,9 +5591,9 @@ if (document.readyState === "loading") {
     pdf_alignment: "Allineamento PDF",
     page_enumeration: "Enumerazione pagine",
     render: "Render PDF",
-    stage1_glm_ocr: "GLM OCR (OCR+Vision)",
-    stage1_ocr: "GLM OCR (OCR+Vision)",
-    stage2_vision: "GLM OCR (OCR+Vision)",
+    stage1_glm_ocr: "OCR + Vision",
+    stage1_ocr: "OCR + Vision",
+    stage2_vision: "OCR + Vision",
     stage3_editor: "Stage 3 Editor",
     polyindex_toc: "Polyindex TOC.json",
     polyindex_index: "Polyindex INDEX.json",
@@ -5527,6 +5605,7 @@ if (document.readyState === "loading") {
     var s = Math.max(0, Math.round(Number(sec) || 0));
     if (s < 60) return s + " s";
     var m = Math.floor(s / 60);
+    if (m >= 10) return m + " min";
     var r = s % 60;
     return m + " min " + r + " s";
   }
@@ -5906,6 +5985,9 @@ if (document.readyState === "loading") {
     }
 
     var fd = new FormData(form);
+    if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.getAnnotations === "function") {
+      fd.set("annotations_json", JSON.stringify(window.__librarainPageGuidance.getAnnotations()));
+    }
     if (mergeSources && mergeSources.length > 1) {
       fd.set("volume_merge", "1");
       fd.set("pdf_file", mergeSources[0].file, mergeSources[0].fileName || mergeSources[0].file.name || "volume-1.pdf");
@@ -5998,7 +6080,12 @@ if (document.readyState === "loading") {
   };
   import("/dashboard/page-guidance-boot.js").then(function (mod) {
     if (mod && typeof mod.bootPageGuidance === "function") {
-      mod.bootPageGuidance(window.LibrarAInPageGuidanceBridge);
+      Promise.resolve(mod.bootPageGuidance(window.LibrarAInPageGuidanceBridge)).then(function (controller) {
+        if (controller && typeof controller.onAnnotationsChange === "function") {
+          controller.onAnnotationsChange(function () { refreshViewerThumbUi(); });
+        }
+        refreshViewerThumbUi();
+      });
     }
   }).catch(function (err) {
     if (window.LibrarAInLog) {

@@ -85,9 +85,36 @@ class TestBookPageRepair(unittest.TestCase):
         self.assertEqual(normalize_repair_pipeline_mode(None), "classic")
 
     def test_repair_global_step_count(self) -> None:
-        self.assertEqual(repair_global_step_count(4, pipeline_mode="classic"), 16)
-        self.assertEqual(repair_global_step_count(4, pipeline_mode="glm_ocr"), 12)
+        self.assertEqual(repair_global_step_count(4, pipeline_mode="classic"), 12)
+        self.assertEqual(repair_global_step_count(4, pipeline_mode="glm_ocr"), 8)
         self.assertEqual(repair_global_step_count(0, pipeline_mode="glm_ocr"), 1)
+        self.assertEqual(
+            repair_global_step_count(4, pipeline_mode="glm_ocr", include_index_phases=True),
+            12,
+        )
+
+    def test_build_repair_progress_baseline_includes_done_pages(self) -> None:
+        from src.persistence.book_page_repair import build_repair_progress_baseline
+
+        audit = {
+            "expected_page_count": 800,
+            "missing_pages": [{"aligned": i, "missing_in": ["stage3Editor"]} for i in range(1, 201)],
+            "stages": {
+                "stage1OCR": {"present_count": 800},
+                "stage2Vision": {"present_count": 790},
+                "stage3Editor": {"present_count": 600},
+                "output": {"present_count": 580},
+            },
+        }
+        baseline = build_repair_progress_baseline(audit, pipeline_mode="glm_ocr")
+        self.assertEqual(baseline["expected_page_count"], 800)
+        self.assertEqual(baseline["done_steps"], 790 + 600)
+        self.assertEqual(baseline["total_steps"], 800 * 2 + 4)
+        by_phase = {ev["phase"]: ev for ev in baseline["events"]}
+        self.assertEqual(by_phase["stage1_glm_ocr"]["done"], 790)
+        self.assertEqual(by_phase["stage1_glm_ocr"]["page_total"], 800)
+        self.assertEqual(by_phase["stage3_editor"]["done"], 600)
+        self.assertEqual(by_phase["gaps_repair"]["done"], 600)
 
     def test_infer_gaps_repair_entry_stage(self) -> None:
         gap_pages = [

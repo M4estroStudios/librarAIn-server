@@ -29,7 +29,10 @@ from src.api.admin_subject_dedup import (
 from src.api.biblio_http import try_handle_biblio_get, try_handle_biblio_post
 from src.api.chat_completions_handler import handle_chat_completions
 from src.api.etaly_export_handler import build_etaly_export_routes
-from src.api.page_guidance_http import try_handle_page_guidance_post
+from src.api.page_guidance_http import (
+    ensure_ingest_ai_page_guidance,
+    try_handle_page_guidance_post,
+)
 from src.api.prompts_http import try_handle_prompts_get, try_handle_prompts_post
 from src.api.system_preflight import evaluate_preflight, normalize_preflight_operation
 from src.api.ingest_form import (
@@ -45,11 +48,14 @@ from src.api.reicat_vision_suggest import suggest_reicat_metadata
 from src.api.job_history import (
     list_active_jobs_with_batches,
     list_job_history,
+    try_handle_job_resume_post,
     try_handle_job_retry_post,
+    try_handle_job_terminate_post,
 )
 from src.api.job_registry import JobRegistry
 from src.api.research_batch_registry import ResearchBatchRegistry
 from src.api.research_handlers import build_research_routes
+from src.core.errors import ShutdownRequested, request_shutdown
 from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
@@ -61,7 +67,7 @@ from src.ingestion.polyindex.index_json import (
     update_polyindex_subject_metadata,
     update_polyindex_subject_pages,
 )
-from src.persistence.book_pages_audit import audit_all_books
+from src.persistence.book_pages_audit import audit_all_books, audit_book
 from src.persistence.book_page_exclude import PageExcludeError, exclude_book_page
 from src.persistence.book_page_preview import (
     PagePreviewError,
@@ -72,6 +78,7 @@ from src.persistence.book_page_preview import (
 )
 from src.persistence.book_page_repair import (
     PageRepairError,
+    build_repair_progress_baseline,
     normalize_repair_pipeline_mode,
     repair_global_step_count,
     run_book_gaps_repair,
@@ -507,6 +514,7 @@ def build_ingest_server(
                     job_id=job_id_filter,
                     date=date_filter,
                     limit=limit,
+                    data_root=Path(settings.data_root),
                 )
                 _send_json(self, 200, {"ok": True, "jobs": jobs, "count": len(jobs)})
                 return
@@ -1338,7 +1346,10 @@ def build_ingest_server(
 
             def _worker() -> None:
                 def reporter(ev: dict) -> None:
-                    registry.emit(job_id, ev)
+                    payload = dict(ev)
+                    if payload.get("status") == "page_skipped":
+                        payload["counts_as_step"] = False
+                    registry.emit(job_id, payload)
 
                 acquired = job_semaphore.acquire(blocking=False)
                 if not acquired:
@@ -1351,10 +1362,18 @@ def build_ingest_server(
                     job_semaphore.acquire()
                 try:
                     aligned_count = len({entry["aligned"] for entry in gap_payload})
-                    registry.set_global_total(
-                        job_id,
-                        repair_global_step_count(aligned_count, pipeline_mode=pipeline_mode),
+                    book_audit = audit_book(data_root, sha) or {}
+                    baseline = build_repair_progress_baseline(
+                        book_audit if isinstance(book_audit, dict) else {},
+                        pipeline_mode=pipeline_mode,
                     )
+                    registry.set_global_progress(
+                        job_id,
+                        step=int(baseline["done_steps"]),
+                        total=int(baseline["total_steps"]),
+                    )
+                    for baseline_ev in baseline["events"]:
+                        registry.emit(job_id, dict(baseline_ev))
                     registry.emit(
                         job_id,
                         make_event(
@@ -1364,6 +1383,7 @@ def build_ingest_server(
                             pipeline_mode=pipeline_mode,
                             compute_mode=compute_mode,
                             message=f"Riparazione {aligned_count} pagine con lacune",
+                            page_total=int(baseline["expected_page_count"]),
                         ),
                     )
                     with use_compute_mode(compute_mode, settings):
@@ -1577,6 +1597,26 @@ def build_ingest_server(
                 registry=registry,
                 job_semaphore=job_semaphore,
                 max_concurrent_jobs=max_concurrent_jobs,
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
+            if try_handle_job_resume_post(
+                parsed.path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                registry=registry,
+                job_semaphore=job_semaphore,
+                max_concurrent_jobs=max_concurrent_jobs,
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
+            if try_handle_job_terminate_post(
+                parsed.path,
+                self,
+                settings=settings,
                 send_json=_send_json,
                 read_body=_read_body,
             ):
@@ -1811,6 +1851,43 @@ def build_ingest_server(
             Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
                 {"path": str(saved_path), "bytes": saved_path.stat().st_size})
 
+            try:
+                with use_compute_mode(compute_mode, settings):
+                    job_settings = settings.for_compute_mode(compute_mode)
+                    ensure_ingest_ai_page_guidance(
+                        saved_path,
+                        job_settings,
+                        ingest_payload,
+                        text_fields,
+                    )
+            except ValueError as exc:
+                saved_path.unlink(missing_ok=True)
+                Log(
+                    WARNING_LOG_LEVEL,
+                    "ingest page guidance ensure failed",
+                    {"error": str(exc)},
+                )
+                _send_validation_error(
+                    self,
+                    IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                    str(exc),
+                    "ai_page_guidance",
+                )
+                return
+            except Exception as exc:
+                saved_path.unlink(missing_ok=True)
+                Log(
+                    ERROR_LOG_LEVEL,
+                    "ingest page guidance ensure crashed",
+                    {"error": str(exc)},
+                )
+                _send_json(
+                    self,
+                    500,
+                    {"ok": False, "error": f"page guidance generation failed: {exc}"},
+                )
+                return
+
             appendix_path: Path | None = None
             appendix_pages_raw = (text_fields.get("appendix_pages") or "").strip()
             if appendix_pages_raw:
@@ -1939,6 +2016,12 @@ def build_ingest_server(
                     if timing:
                         done_fields["timing"] = timing
                     registry.emit(job_id, make_event("pipeline", STATUS_DONE, **done_fields))
+                except ShutdownRequested:
+                    Log(
+                        INFO_LOG_LEVEL,
+                        "ingest pipeline interrupted by shutdown",
+                        {"job_id": job_id},
+                    )
                 except IngestInputValidationException:
                     pass
                 except Exception as exc:
@@ -1999,10 +2082,29 @@ def run_ingest_http_server() -> None:
         research_dedup_ttl_seconds=research_dedup_ttl_seconds,
     )
     Log(INFO_LOG_LEVEL, "ingest http server listening", {"url": f"http://{host}:{port}"})
+
+    def _on_shutdown_signal(signum: int, _frame: object) -> None:
+        Log(
+            INFO_LOG_LEVEL,
+            "ingest http server shutdown signal",
+            {"signum": signum},
+        )
+        request_shutdown()
+        threading.Thread(target=httpd.shutdown, daemon=True, name="httpd-shutdown").start()
+
+    signal.signal(signal.SIGINT, _on_shutdown_signal)
+    if hasattr(signal, "SIGTERM"):
+        signal.signal(signal.SIGTERM, _on_shutdown_signal)
+
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
+        request_shutdown()
         Log(INFO_LOG_LEVEL, "ingest http server shutdown requested")
+    finally:
+        request_shutdown()
+        httpd.server_close()
+        Log(INFO_LOG_LEVEL, "ingest http server stopped")
 
 
 if __name__ == "__main__":

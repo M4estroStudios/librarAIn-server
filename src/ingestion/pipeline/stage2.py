@@ -8,8 +8,10 @@ from typing import Any
 import openai
 from pydantic import BaseModel
 
+from src.core.errors import ShutdownRequested, raise_if_shutdown
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
+from src.core.parallel import gather_cancellable
 from src.ingestion.pipeline.stage1 import Stage1PageResult, Stage1Result
 from src.ingestion.progress import (
     PHASE_STAGE2_VISION,
@@ -29,7 +31,6 @@ _PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 VISION_PROMPT_FILE = _PROMPTS_DIR / "vision_prompt.md"
 _MAX_COMPLETION_TOKENS = 4096
 
-# Backwards-compatible aliases; new code should import from md_cache.
 _read_stage_md = read_stage_md
 _write_stage_md = write_stage_md
 
@@ -168,6 +169,7 @@ async def run_stage2_vision(
     async def _process_page(page_index: int, s1_page: Stage1PageResult) -> tuple[Stage2PageResult | None, bool]:
         nonlocal last_error
         async with sem:
+            raise_if_shutdown()
             Log(
                 INFO_LOG_LEVEL,
                 "stage2 page iteration begin",
@@ -229,6 +231,8 @@ async def run_stage2_vision(
                     settings=settings,
                     prompt_notes=prompt_notes,
                 )
+            except ShutdownRequested:
+                raise
             except Exception as exc:
                 last_error = str(exc)
                 Log(
@@ -255,6 +259,7 @@ async def run_stage2_vision(
                 return None, False
 
             finalized = finalize_vision_page_output(refined, prompt_notes)
+            raise_if_shutdown()
             _write_stage_md(md_path, model, finalized)
             if progress is not None:
                 progress(make_event(
@@ -277,7 +282,7 @@ async def run_stage2_vision(
                 False,
             )
 
-    outcomes = await asyncio.gather(
+    outcomes = await gather_cancellable(
         *(
             _process_page(page_index, s1_page)
             for page_index, s1_page in enumerate(stage1_result.pages, start=1)

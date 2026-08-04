@@ -4,6 +4,7 @@ import asyncio
 from pathlib import Path
 from typing import Any, Callable
 
+from src.core.errors import ShutdownRequested
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.orchestrator import (
@@ -17,6 +18,7 @@ from src.ingestion.progress import (
     PHASE_GATE_HASH,
     PHASE_PAGE_ENUMERATION,
     PHASE_PDF_ALIGNMENT,
+    PHASE_STAGE1_GLM_OCR,
     PHASE_STAGE1_OCR,
     PHASE_STAGE2_VISION,
     PHASE_STAGE3_EDITOR,
@@ -216,6 +218,8 @@ def run_full_pipeline(
         _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
                     code=err_detail.get("code"), field=err_detail.get("field"))
         raise
+    except ShutdownRequested:
+        raise
     except Exception as exc:
         err_detail = _extract_validation_error(exc)
         Log(ERROR_LOG_LEVEL, "pipeline orchestrator unhandled error", {"error": str(exc)})
@@ -294,6 +298,7 @@ def run_resume_pipeline_from_sha(
     set_global_total: Callable[[int], None] | None,
     *,
     request_id: str,
+    pipeline_mode: str = "classic",
 ) -> dict[str, Any]:
     """Resume ingest from PDF/manifest/book already on disk, skipping the hash gate."""
     from src.models.request import IngestGatePhaseResult, SourceHashGateResult, SourceHashGateStatus
@@ -301,8 +306,11 @@ def run_resume_pipeline_from_sha(
         PageRepairError,
         build_enriched_from_manifest,
         load_manifest_for_repair,
+        normalize_repair_pipeline_mode,
     )
 
+    resolved_mode = normalize_repair_pipeline_mode(pipeline_mode)
+    page_stages = 3 if resolved_mode == "glm_ocr" else _ACTIVE_PAGE_STAGES
     sha = source_sha256.strip().lower()
     timing = PipelineTiming()
     reporter = timed_progress_reporter(reporter, timing)
@@ -333,10 +341,15 @@ def run_resume_pipeline_from_sha(
             pipeline_skipped=False,
             gate_status=ingest_gate_phase.gate.status.value,
             resumed=True,
+            pipeline_mode=resolved_mode,
         ),
     )
     try:
-        require_gpu_vram_at_pipeline_start(settings, skip_vision_editor=False)
+        require_gpu_vram_at_pipeline_start(
+            settings,
+            skip_vision_editor=False,
+            ocr_backend="glm" if resolved_mode == "glm_ocr" else "easyocr",
+        )
     except IngestInputValidationException as exc:
         err_detail = _extract_validation_error(exc)
         _emit_error(
@@ -385,7 +398,7 @@ def run_resume_pipeline_from_sha(
     n_pages = len(useful_pages_enumeration.useful_original_pages)
     _emit(reporter, make_event(PHASE_PAGE_ENUMERATION, STATUS_COMPLETED, n_pages=n_pages))
     if set_global_total is not None:
-        set_global_total(1 + n_pages * _ACTIVE_PAGE_STAGES)
+        set_global_total(1 + n_pages * page_stages)
     try:
         orchestrator_result = asyncio.run(
             run_pipeline(
@@ -398,11 +411,15 @@ def run_resume_pipeline_from_sha(
                 request_id,
                 progress=reporter,
                 skip_vision_editor=False,
+                pipeline_mode=resolved_mode,
             )
         )
     except OrchestratorStageError as exc:
         err_detail = _extract_validation_error(exc.cause)
-        phase = PHASE_STAGE2_VISION if exc.stage == "stage2_vision" else PHASE_STAGE3_EDITOR
+        if resolved_mode == "glm_ocr":
+            phase = PHASE_STAGE1_GLM_OCR if exc.stage == "stage1_glm_ocr" else PHASE_STAGE3_EDITOR
+        else:
+            phase = PHASE_STAGE2_VISION if exc.stage == "stage2_vision" else PHASE_STAGE3_EDITOR
         _emit_error(reporter, phase, err_detail["message"], code=err_detail.get("code"), field=err_detail.get("field"))
         raise exc.cause from exc
     except (ValueError, IngestInputValidationException) as exc:
@@ -420,6 +437,7 @@ def run_resume_pipeline_from_sha(
     payload_out = {
         "ok": True,
         "resumed": True,
+        "pipeline_mode": resolved_mode,
         "source_sha256": enriched.source_sha256,
         "stage1_pages": len(orchestrator_result.stage1_result.pages),
         "stage2_pages": len(stage2_result.pages) if stage2_result else 0,

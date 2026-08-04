@@ -1,31 +1,30 @@
 from __future__ import annotations
 
-import json
-import threading
 from datetime import datetime
-from http.server import BaseHTTPRequestHandler
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
+from src.api.job_control import (
+    pipeline_run_can_resume,
+    try_handle_job_resume_post,
+    try_handle_job_retry_post,
+    try_handle_job_terminate_post,
+)
 from src.api.job_display import job_display_label, job_display_status
 from src.api.job_registry import JobRegistry
 from src.api.research_batch_registry import ResearchBatchRegistry
-from src.core.hashing import new_job_id
-from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
-from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
-from src.models.request import IngestInputValidationException
-from src.models.settings import Settings
-from src.persistence.book_page_repair import (
-    PageRepairError,
-    repair_global_step_count,
-    run_book_gaps_repair,
-)
-from src.persistence.book_pages_audit import audit_book
-from src.persistence.pipeline_runs import get_pipeline_run_by_request_id, list_pipeline_runs
+from src.persistence.pipeline_runs import list_pipeline_runs
 from src.persistence.research_runs import list_research_runs
 
-SendJson = Callable[[BaseHTTPRequestHandler, int, dict[str, Any]], None]
-ReadBody = Callable[[BaseHTTPRequestHandler, int], bytes]
+_INTERRUPTED_PIPELINE_STATUSES = frozenset({"running", "accepted", "queued"})
+
+__all__ = [
+    "list_active_jobs_with_batches",
+    "list_job_history",
+    "try_handle_job_resume_post",
+    "try_handle_job_retry_post",
+    "try_handle_job_terminate_post",
+]
 
 
 def _parse_date_prefix(value: str) -> str | None:
@@ -55,17 +54,25 @@ def _historical_display_status(status: str, finished_at: Any) -> str:
         return "completato"
     if status in ("error", "failed"):
         return "errore"
-    if not finished_at and status in ("running", "accepted", "queued"):
+    if status == "aborted":
+        return "annullato"
+    if not finished_at and status in _INTERRUPTED_PIPELINE_STATUSES:
         return "interrotto"
     return job_display_status(status)
 
 
-def _history_row_from_pipeline(row: dict[str, Any]) -> dict[str, Any]:
+def _history_row_from_pipeline(
+    row: dict[str, Any],
+    *,
+    data_root: Path | None = None,
+) -> dict[str, Any]:
     status = str(row.get("status") or "")
     finished_at = row.get("finished_at")
     display = _historical_display_status(status, finished_at)
     book_title = row.get("book_title")
     sha = str(row.get("source_sha256") or "")
+    interrupted = display == "interrotto"
+    resumable = interrupted or pipeline_run_can_resume(row, data_root)
     return {
         "job_id": row.get("request_id"),
         "job_kind": "ingest",
@@ -82,6 +89,8 @@ def _history_row_from_pipeline(row: dict[str, Any]) -> dict[str, Any]:
         "is_active": False,
         "is_batch": False,
         "is_historical": True,
+        "resumable": resumable,
+        "terminable": interrupted,
     }
 
 
@@ -134,16 +143,18 @@ def list_job_history(
     date: str = "",
     limit: int = 200,
     include_active: bool = False,
+    data_root: Path | None = None,
 ) -> list[dict[str, Any]]:
     book_filter = book.strip().lower()
     id_filter = job_id.strip().lower()
     date_prefix = _parse_date_prefix(date)
     cap = max(1, min(limit, 500))
+    root = data_root if data_root is not None else Path(sqlite_path).resolve().parent
 
     by_id: dict[str, dict[str, Any]] = {}
 
     for row in list_pipeline_runs(sqlite_path, limit=cap * 2):
-        item = _history_row_from_pipeline(row)
+        item = _history_row_from_pipeline(row, data_root=root)
         by_id[str(item["job_id"])] = item
 
     for row in list_research_runs(sqlite_path, limit=cap * 2):
@@ -207,160 +218,3 @@ def list_active_jobs_with_batches(
     all_jobs.sort(key=lambda item: str(item.get("updated_at") or ""), reverse=True)
     all_jobs.sort(key=lambda item: 0 if item.get("is_active") else 1)
     return all_jobs[:limit]
-
-
-def try_handle_job_retry_post(
-    path: str,
-    handler: BaseHTTPRequestHandler,
-    *,
-    data_root: Path,
-    settings: Settings,
-    registry: JobRegistry,
-    job_semaphore: threading.Semaphore,
-    max_concurrent_jobs: int,
-    send_json: SendJson,
-    read_body: ReadBody,
-) -> bool:
-    if path != "/api/system/jobs/retry":
-        return False
-    try:
-        body = read_body(handler, 64 * 1024)
-        payload = json.loads(body.decode("utf-8"))
-    except (ValueError, OSError, json.JSONDecodeError) as exc:
-        send_json(handler, 400, {"ok": False, "error": f"invalid JSON body: {exc}"})
-        return True
-    job_id = str(payload.get("job_id") or "").strip()
-    if not job_id:
-        send_json(handler, 400, {"ok": False, "error": "job_id is required"})
-        return True
-    run = get_pipeline_run_by_request_id(settings.sqlite_path, job_id)
-    if run is None:
-        send_json(handler, 404, {"ok": False, "error": "ingest job not found"})
-        return True
-    if str(run.get("status") or "") not in {"failed", "error"}:
-        send_json(handler, 409, {"ok": False, "error": "only failed ingest jobs can be retried"})
-        return True
-    sha = str(run.get("source_sha256") or "").strip().lower()
-    if not sha:
-        send_json(handler, 409, {"ok": False, "error": "failed job has no source_sha256"})
-        return True
-    audit = audit_book(data_root, sha)
-    gap_pages = audit.get("missing_pages") if isinstance(audit, dict) else None
-    use_gaps = isinstance(gap_pages, list) and len(gap_pages) > 0
-    new_id, _started_at = new_job_id(f"{sha[:16]}_retry")
-    registry.create_job(job_id=new_id)
-    status_url = f"/api/ingest/{new_id}/status"
-    events_url = f"/api/ingest/{new_id}/events"
-
-    def _worker() -> None:
-        def reporter(ev: dict[str, Any]) -> None:
-            registry.emit(new_id, ev)
-
-        acquired = job_semaphore.acquire(blocking=False)
-        if not acquired:
-            registry.emit(
-                new_id,
-                make_event(
-                    "queue",
-                    "progress",
-                    message="waiting for a free ingest slot",
-                    max_concurrent_jobs=max_concurrent_jobs,
-                ),
-            )
-            job_semaphore.acquire()
-        try:
-            if use_gaps:
-                aligned_count = len({entry["aligned"] for entry in gap_pages})
-                registry.set_global_total(
-                    new_id,
-                    repair_global_step_count(aligned_count, pipeline_mode="classic"),
-                )
-                registry.emit(
-                    new_id,
-                    make_event(
-                        "gaps_repair",
-                        STATUS_STARTED,
-                        source_sha256=sha,
-                        message=f"Rilancio: riparazione {aligned_count} pagine",
-                        retry_of=job_id,
-                    ),
-                )
-                result = run_book_gaps_repair(
-                    data_root,
-                    settings,
-                    sha,
-                    gap_pages,
-                    request_id=new_id,
-                    progress=reporter,
-                    pipeline_mode="classic",
-                )
-                registry.emit(new_id, make_event("gaps_repair", STATUS_DONE, result=result))
-            else:
-                from src.api.ingest_pipeline_runner import run_resume_pipeline_from_sha
-
-                registry.emit(
-                    new_id,
-                    make_event(
-                        "pipeline",
-                        STATUS_STARTED,
-                        source_sha256=sha,
-                        message="Rilancio ingest dallo stato disponibile",
-                        retry_of=job_id,
-                    ),
-                )
-                result = run_resume_pipeline_from_sha(
-                    data_root,
-                    settings,
-                    sha,
-                    reporter,
-                    lambda total: registry.set_global_total(new_id, total),
-                    request_id=new_id,
-                )
-                registry.emit(new_id, make_event("pipeline", STATUS_DONE, result=result))
-        except PageRepairError as exc:
-            registry.emit(new_id, make_event("pipeline", STATUS_ERROR, message=str(exc)))
-        except IngestInputValidationException as exc:
-            registry.emit(
-                new_id,
-                make_event(
-                    "pipeline",
-                    STATUS_ERROR,
-                    message=exc.detail.message,
-                    code=exc.detail.code.value,
-                    field=exc.detail.field,
-                ),
-            )
-        except Exception as exc:
-            Log(
-                ERROR_LOG_LEVEL,
-                "ingest job retry worker error",
-                {"job_id": new_id, "retry_of": job_id, "error": str(exc)},
-            )
-            registry.emit(new_id, make_event("pipeline", STATUS_ERROR, message=str(exc)))
-        finally:
-            job_semaphore.release()
-
-    threading.Thread(target=_worker, daemon=True, name=f"retry-{new_id[:8]}").start()
-    Log(
-        INFO_LOG_LEVEL,
-        "ingest job retry started",
-        {
-            "job_id": new_id,
-            "retry_of": job_id,
-            "source_sha256": sha[:16],
-            "mode": "gaps_repair" if use_gaps else "resume",
-        },
-    )
-    send_json(
-        handler,
-        202,
-        {
-            "ok": True,
-            "job_id": new_id,
-            "retry_of": job_id,
-            "mode": "gaps_repair" if use_gaps else "resume",
-            "status_url": status_url,
-            "events_url": events_url,
-        },
-    )
-    return True

@@ -7,14 +7,12 @@
 
 #annotate-primitive-switch,
 .annotate-preview-tools {
-  position: absolute;
-  top: 0.45rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
   display: inline-flex;
+  flex: 0 0 auto;
+  align-self: center;
   gap: 0.35rem;
   align-items: center;
+  margin: 0 0 0.35rem;
   padding: 0.28rem;
   border-radius: 8px;
   background: rgba(30, 30, 30, 0.88);
@@ -24,11 +22,16 @@
 
 #annotate-primitive-switch.hidden,
 .annotate-preview-tools.hidden {
-  display: none;
+  display: inline-flex !important;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 #annotate-primitive-switch button,
 .annotate-preview-tools button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   border: 1px solid #555;
   background: #2a2a2a;
   color: #ddd;
@@ -37,15 +40,28 @@
   cursor: pointer;
   font-size: 0.78rem;
 }
+#annotate-primitive-switch button svg,
+.annotate-preview-tools button svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: 0 0 auto;
+  display: block;
+}
 
 #annotate-primitive-switch button.is-active,
 .annotate-preview-tools button.is-active {
   border-color: #f0a030;
   background: rgba(240, 160, 48, 0.16);
 }
-
-.page-picker-detail-img-wrap {
-  position: relative;
+#annotate-primitive-switch button[data-annotate-action="reset-page"],
+.annotate-preview-tools button[data-annotate-action="reset-page"] {
+  border-color: #8a4444;
+  color: #f0b0b0;
+}
+#annotate-primitive-switch button[data-annotate-action="reset-page"]:hover:not(:disabled),
+.annotate-preview-tools button[data-annotate-action="reset-page"]:hover:not(:disabled) {
+  background: rgba(212, 74, 74, 0.18);
+  color: #ffd0d0;
 }
 
 #annotate-canvas {
@@ -73,6 +89,47 @@
 
 .annotate-name-input.hidden {
   display: none;
+}
+
+.mention-editor {
+  position: relative;
+  display: block;
+}
+.mention-editor .mention-backdrop {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #1e1e1e;
+  color: #e8e8e8;
+  font: inherit;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow: hidden;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.mention-editor textarea {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  color: transparent;
+  caret-color: #e8e8e8;
+  background: transparent;
+  line-height: 1.35;
+}
+.mention-editor textarea::placeholder {
+  color: #848484;
+}
+.mention-in-text {
+  color: #f0a030;
+  background: rgba(240, 160, 48, 0.18);
+  border-radius: 3px;
 }
 
 .mention-chips {
@@ -143,8 +200,10 @@
 }
 
 .mention-option.is-active,
+button.mention-option:hover:not(:disabled),
 .mention-option:hover {
   background: rgba(240, 160, 48, 0.16);
+  color: #e8e8e8;
 }
 
 .ai-counsel-row {
