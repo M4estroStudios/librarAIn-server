@@ -43,12 +43,16 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
         biblio_range = None
         authors = None
         year = None
+        original_page_count = None
         if manifest_path.is_file():
             try:
                 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             except (json.JSONDecodeError, OSError):
                 manifest = {}
             if isinstance(manifest, dict):
+                opc = manifest.get("original_page_count")
+                if isinstance(opc, int) and opc > 0:
+                    original_page_count = opc
                 raw_range = manifest.get("biblio_range")
                 if isinstance(raw_range, dict):
                     start = raw_range.get("start")
@@ -83,6 +87,7 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
                 "authors": authors,
                 "year": year,
                 "expected_page_count": book.get("expected_page_count"),
+                "original_page_count": original_page_count,
                 "complete": bool(book.get("complete")),
                 "output_pages": output_present,
                 "eligible": output_present > 0,
@@ -226,7 +231,7 @@ def try_handle_biblio_post(
                 return True
 
         job_id, _ = new_job_id(f"{source_sha256[:16]}_biblio")
-        registry.create_job(job_id=job_id, compute_mode=compute_mode)
+        registry.create_job(job_id=job_id, job_kind="biblio", compute_mode=compute_mode)
 
         def _worker() -> None:
             acquired = job_semaphore.acquire(blocking=False)

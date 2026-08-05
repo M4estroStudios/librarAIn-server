@@ -67,13 +67,14 @@ from src.ingestion.polyindex.index_json import (
     update_polyindex_subject_metadata,
     update_polyindex_subject_pages,
 )
-from src.persistence.book_pages_audit import audit_all_books, audit_book
+from src.persistence.book_pages_audit import _load_manifest, audit_all_books, audit_book
 from src.persistence.book_page_exclude import PageExcludeError, exclude_book_page
 from src.persistence.book_page_preview import (
     PagePreviewError,
     confirm_page_transcript,
     ensure_page_render_png,
     load_page_transcript,
+    resolve_aligned_page_from_original,
     save_page_transcript,
 )
 from src.persistence.book_page_repair import (
@@ -229,6 +230,35 @@ def _send_bytes(
     handler.send_header("Content-Length", str(len(content)))
     handler.end_headers()
     handler.wfile.write(content)
+
+
+def _aligned_page_from_query(
+    data_root: Path,
+    source_sha256: str,
+    query: dict[str, list[str]],
+) -> int:
+    aligned_raw = (query.get("aligned_page") or [""])[0].strip()
+    original_raw = (query.get("original_page") or [""])[0].strip()
+    if original_raw:
+        try:
+            original_page = int(original_raw)
+        except ValueError as exc:
+            raise PagePreviewError("original_page must be an integer") from exc
+        if original_page < 1:
+            raise PagePreviewError("original_page must be positive")
+        manifest = _load_manifest(data_root / "output" / source_sha256 / "manifest.json")
+        if manifest is None:
+            raise PagePreviewError("manifest not found for book")
+        return resolve_aligned_page_from_original(manifest, original_page)
+    if aligned_raw:
+        try:
+            aligned_page = int(aligned_raw)
+        except ValueError as exc:
+            raise PagePreviewError("aligned_page must be an integer") from exc
+        if aligned_page < 1:
+            raise PagePreviewError("aligned_page must be positive")
+        return aligned_page
+    raise PagePreviewError("aligned_page or original_page is required")
 
 
 def _send_validation_error(
@@ -751,19 +781,11 @@ def build_ingest_server(
 
             if path == "/api/admin/book-pages/render":
                 source_sha256 = (query.get("source_sha256") or [""])[0].strip()
-                aligned_raw = (query.get("aligned_page") or [""])[0].strip()
                 if not source_sha256:
                     _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
                     return
                 try:
-                    aligned_page = int(aligned_raw)
-                except ValueError:
-                    _send_json(self, 400, {"ok": False, "error": "aligned_page must be an integer"})
-                    return
-                if aligned_page < 1:
-                    _send_json(self, 400, {"ok": False, "error": "aligned_page must be positive"})
-                    return
-                try:
+                    aligned_page = _aligned_page_from_query(data_root, source_sha256, query)
                     png_path = ensure_page_render_png(
                         data_root, source_sha256, aligned_page
                     )
@@ -775,19 +797,11 @@ def build_ingest_server(
 
             if path == "/api/admin/book-pages/transcript":
                 source_sha256 = (query.get("source_sha256") or [""])[0].strip()
-                aligned_raw = (query.get("aligned_page") or [""])[0].strip()
                 if not source_sha256:
                     _send_json(self, 400, {"ok": False, "error": "source_sha256 is required"})
                     return
                 try:
-                    aligned_page = int(aligned_raw)
-                except ValueError:
-                    _send_json(self, 400, {"ok": False, "error": "aligned_page must be an integer"})
-                    return
-                if aligned_page < 1:
-                    _send_json(self, 400, {"ok": False, "error": "aligned_page must be positive"})
-                    return
-                try:
+                    aligned_page = _aligned_page_from_query(data_root, source_sha256, query)
                     text, stage_key, producer_model = load_page_transcript(
                         data_root, source_sha256, aligned_page
                     )
@@ -1194,9 +1208,11 @@ def build_ingest_server(
                     )
                     return
             job_id, _started_at = new_job_id(f"{sha[:16]}_repair_p{aligned_page}")
-            registry.create_job(job_id=job_id, compute_mode=compute_mode)
+            registry.create_job(job_id=job_id, job_kind="repair", compute_mode=compute_mode)
             status_url = f"/api/ingest/{job_id}/status"
             events_url = f"/api/ingest/{job_id}/events"
+            system_status_url = f"/api/system/jobs/{job_id}"
+            system_events_url = f"/api/system/jobs/{job_id}/events"
             stages_hint = missing_in if isinstance(missing_in, list) else []
 
             def _worker() -> None:
@@ -1286,6 +1302,8 @@ def build_ingest_server(
                 "job_id": job_id,
                 "status_url": status_url,
                 "events_url": events_url,
+                "system_status_url": system_status_url,
+                "system_events_url": system_events_url,
             })
 
         def _handle_book_gaps_repair(self) -> None:
@@ -1339,9 +1357,11 @@ def build_ingest_server(
                     )
                     return
             job_id, _started_at = new_job_id(f"{sha[:16]}_gaps_repair")
-            registry.create_job(job_id=job_id, compute_mode=compute_mode)
+            registry.create_job(job_id=job_id, job_kind="repair", compute_mode=compute_mode)
             status_url = f"/api/ingest/{job_id}/status"
             events_url = f"/api/ingest/{job_id}/events"
+            system_status_url = f"/api/system/jobs/{job_id}"
+            system_events_url = f"/api/system/jobs/{job_id}/events"
             gap_payload = gap_pages
 
             def _worker() -> None:
@@ -1437,6 +1457,8 @@ def build_ingest_server(
                 "job_id": job_id,
                 "status_url": status_url,
                 "events_url": events_url,
+                "system_status_url": system_status_url,
+                "system_events_url": system_events_url,
             })
 
         def _handle_status(self, job_id: str) -> None:

@@ -272,6 +272,30 @@ def _resolve_original_page(manifest: dict[str, Any], aligned_page: int) -> int:
     return aligned_page
 
 
+def resolve_aligned_page_from_original(manifest: dict[str, Any], original_page: int) -> int:
+    if original_page < 1:
+        raise PagePreviewError("original_page must be positive")
+    pages = manifest.get("pages")
+    if isinstance(pages, list):
+        for entry in pages:
+            if not isinstance(entry, dict):
+                continue
+            original = entry.get("original")
+            aligned = entry.get("aligned")
+            if original == original_page and isinstance(aligned, int) and aligned > 0:
+                return aligned
+    original_count = manifest.get("original_page_count")
+    aligned_count = manifest.get("aligned_page_count")
+    if (
+        isinstance(original_count, int)
+        and isinstance(aligned_count, int)
+        and original_count == aligned_count
+        and 1 <= original_page <= original_count
+    ):
+        return original_page
+    raise PagePreviewError(f"original page {original_page} not found in manifest")
+
+
 def confirm_page_transcript(
     data_root: Path,
     source_sha256: str,

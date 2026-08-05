@@ -555,6 +555,8 @@ def _extract_job_context(state: JobState) -> dict[str, Any]:
 
 
 def _is_repair_job(state: JobState) -> bool:
+    if state.job_kind == "repair":
+        return True
     return any(
         ev.get("phase") in {"page_repair", "gaps_repair"} for ev in state.events
     )
@@ -585,7 +587,7 @@ def _build_job_headline(state: JobState, ctx: dict[str, Any]) -> tuple[str, str 
         detail = activity or phase_label
         return title, subtitle, detail
 
-    if _is_repair_job(state):
+    if state.job_kind == "repair" or _is_repair_job(state):
         sha = ctx.get("source_sha256")
         sha_hint = f"{sha[:16]}…" if sha else None
         if any(ev.get("phase") == "gaps_repair" for ev in state.events):
@@ -660,7 +662,9 @@ def _phase_order_for_job(state: JobState) -> list[str]:
     if _is_research_job(state):
         return _RESEARCH_DISPLAY_PHASE_ORDER
     phases = {ev.get("phase") for ev in state.events if ev.get("phase")}
-    is_repair = bool(phases.intersection({"page_repair", "gaps_repair"}))
+    is_repair = state.job_kind == "repair" or bool(
+        phases.intersection({"page_repair", "gaps_repair"})
+    )
     if is_repair and "stage1_glm_ocr" in phases:
         return _GLM_REPAIR_PHASE_ORDER
     if is_repair:

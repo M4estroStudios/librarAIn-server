@@ -29,7 +29,7 @@ JOB_CHAT_ROLES: dict[str, tuple[ChatModelRole, ...]] = {
     "ingest": ("vision", "editor", "matcher_llm", "time_index_llm", "ocrvision"),
     "ingest_glm": ("ocrvision", "editor", "matcher_llm", "time_index_llm"),
     "research": ("research", "editor", "matcher_llm"),
-    "biblio": ("ocrvision",),
+    "biblio": ("editor", "matcher_llm", "time_index_llm"),
     "reicat": ("vision",),
     "repair": ("vision", "editor", "ocrvision"),
     "chat": ("research", "editor", "matcher_llm"),
@@ -336,7 +336,7 @@ class Settings(BaseModel):
                 ("research_cloud_model", "editor_cloud_model", "matcher_llm_cloud_model")
             )
         elif job_kind == "biblio":
-            _require_any(("ocrvision_cloud_model",))
+            _require_any(("editor_cloud_model", "matcher_llm_cloud_model"))
         elif job_kind == "reicat":
             _require_any(("vision_cloud_model",))
         elif job_kind == "subject_dedup":

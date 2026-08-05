@@ -12,7 +12,12 @@ from src.core.openai_client import build_openai_client
 from src.ingestion.biblio_hash import compute_biblio_id
 from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.ingestion.pdf_alignment import build_page_removal_mapping
-from src.ingestion.polyindex.biblio_json import sync_polyindex_biblio_from_book
+from src.ingestion.polyindex.biblio_json import (
+    ensure_polyindex_biblio_from_outputs,
+    ensure_polyindex_corpus_from_outputs,
+    reconcile_polyindex_biblio_nodes,
+    sync_polyindex_biblio_from_book,
+)
 from src.ingestion.polyindex.file_lock import polyindex_dir_lock
 from src.models.polyindex_biblio import (
     BiblioCitation,
@@ -35,7 +40,14 @@ def _polyindex_path(data_root: Path) -> Path:
 
 
 def load_biblio_document(data_root: Path) -> PolyindexBiblioDocument:
-    return PolyindexBiblioDocument.load_file(_polyindex_path(data_root))
+    ensure_polyindex_corpus_from_outputs(data_root)
+    ensure_polyindex_biblio_from_outputs(data_root)
+    path = _polyindex_path(data_root)
+    with polyindex_dir_lock(path.parent, ".biblio.lock"):
+        document = PolyindexBiblioDocument.load_file(path)
+        if reconcile_polyindex_biblio_nodes(document):
+            document.write_atomic(path, sort_document=True)
+        return document
 
 
 def search_biblio(

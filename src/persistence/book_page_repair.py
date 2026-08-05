@@ -65,10 +65,10 @@ RepairPipelineMode = Literal["classic", "glm_ocr"]
 
 
 def normalize_repair_pipeline_mode(value: object) -> RepairPipelineMode:
-    mode = str(value or "classic").strip().lower().replace("-", "_")
-    if mode in {"glm", "glm_ocr"}:
-        return "glm_ocr"
-    return "classic"
+    mode = str(value or "glm_ocr").strip().lower().replace("-", "_")
+    if mode in {"classic", "easyocr"}:
+        return "classic"
+    return "glm_ocr"
 
 
 def resolve_resume_pipeline_mode(settings: Settings) -> RepairPipelineMode:

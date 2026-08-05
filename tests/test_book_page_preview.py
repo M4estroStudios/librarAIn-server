@@ -16,6 +16,7 @@ from src.persistence.book_page_preview import (
     list_pending_review_pages,
     load_page_transcript,
     mark_page_pending_review,
+    resolve_aligned_page_from_original,
     save_page_transcript,
 )
 
@@ -65,6 +66,33 @@ class TestBookPagePreview(unittest.TestCase):
         sha = "e" * 64
         with self.assertRaises(PagePreviewError):
             ensure_page_render_png(self.data_root, sha, 1)
+
+    def test_resolve_aligned_page_from_original_uses_manifest_pages(self) -> None:
+        manifest = {
+            "original_page_count": 5,
+            "aligned_page_count": 4,
+            "pages": [
+                {"aligned": 1, "original": 1},
+                {"aligned": 2, "original": 3},
+                {"aligned": 3, "original": 4},
+                {"aligned": 4, "original": 5},
+            ],
+        }
+        self.assertEqual(resolve_aligned_page_from_original(manifest, 3), 2)
+        self.assertEqual(resolve_aligned_page_from_original(manifest, 1), 1)
+
+    def test_resolve_aligned_page_from_original_identity_when_counts_match(self) -> None:
+        manifest = {"original_page_count": 10, "aligned_page_count": 10}
+        self.assertEqual(resolve_aligned_page_from_original(manifest, 7), 7)
+
+    def test_resolve_aligned_page_from_original_missing_raises(self) -> None:
+        manifest = {
+            "original_page_count": 5,
+            "aligned_page_count": 4,
+            "pages": [{"aligned": 1, "original": 1}],
+        }
+        with self.assertRaises(PagePreviewError):
+            resolve_aligned_page_from_original(manifest, 99)
 
     def test_load_page_transcript_prefers_stage3(self) -> None:
         sha = "f" * 64

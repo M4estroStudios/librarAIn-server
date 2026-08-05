@@ -73,7 +73,7 @@ def _start_ingest_continue_job(
     gap_pages = audit.get("missing_pages") if isinstance(audit, dict) else None
     use_gaps = isinstance(gap_pages, list) and len(gap_pages) > 0
     new_id, _started_at = new_job_id(f"{sha[:16]}_{action_label}")
-    registry.create_job(job_id=new_id)
+    registry.create_job(job_id=new_id, job_kind="repair")
     status_url = f"/api/ingest/{new_id}/status"
     events_url = f"/api/ingest/{new_id}/events"
     mode = "gaps_repair" if use_gaps else "resume"

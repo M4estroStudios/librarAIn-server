@@ -8,7 +8,7 @@ from typing import Any
 
 import openai
 
-from src.core.log import Log, WARNING_LOG_LEVEL
+from src.core.log import Log, INFO_LOG_LEVEL, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
 from src.ingestion.biblio_hash import (
     compute_biblio_id,
@@ -32,7 +32,7 @@ def _optional_model_name(value: object) -> str | None:
 
 
 def _biblio_llm_model(settings: Settings) -> str:
-    for attr in ("ocrvision_model", "glm_ocr_model", "vision_model"):
+    for attr in ("editor_model", "matcher_llm_model", "time_index_llm_model", "research_model", "ocrvision_model", "glm_ocr_model", "vision_model"):
         model = _optional_model_name(getattr(settings, attr, None))
         if model:
             return model
@@ -110,6 +110,71 @@ def _coerce_year(value: object) -> int | None:
         return None
 
 
+_PLACE_TAIL_RE = re.compile(r"^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\s'.-]{0,47}$")
+_TITLE_TAIL_PATTERNS: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r",\s*a cura di\s+(.+)$", re.IGNORECASE), "curators"),
+    (re.compile(r",\s*(?:a\s+)?ed\.?\s+(?:di\s+)?(.+)$", re.IGNORECASE), "editor"),
+    (re.compile(r",\s*(\d+\s*voll\.?)$", re.IGNORECASE), "volumes"),
+    (re.compile(r",\s*vol\.?\s*(\d+(?:-\d+)?)$", re.IGNORECASE), "volume"),
+    (re.compile(r",\s*pp\.?\s*(.+)$", re.IGNORECASE), "pages"),
+    (re.compile(r",\s*trad\.?\s+(?:di\s+)?(.+)$", re.IGNORECASE), "translator"),
+    (re.compile(r",\s*introd\.?\s+(?:di\s+)?(.+)$", re.IGNORECASE), "introduction_by"),
+]
+
+
+def _strip_author_prefix(title: str, authors: str) -> str:
+    authors_clean = authors.strip()
+    if not authors_clean or authors_clean == "unknown":
+        return title.strip()
+    title_clean = title.strip()
+    for sep in (", ", " — ", " - "):
+        prefix = authors_clean + sep
+        if title_clean.casefold().startswith(prefix.casefold()):
+            return title_clean[len(prefix) :].strip()
+    return title_clean
+
+
+def _refine_biblio_fields(
+    authors: str,
+    title: str,
+    extras: dict[str, Any],
+) -> tuple[str, str, dict[str, Any]]:
+    merged_extras = dict(extras)
+    refined_title = _strip_author_prefix(title, authors)
+    changed = True
+    while changed:
+        changed = False
+        for pattern, key in _TITLE_TAIL_PATTERNS:
+            match = pattern.search(refined_title)
+            if not match:
+                continue
+            value = match.group(1).strip()
+            if value:
+                merged_extras.setdefault(key, value)
+            refined_title = refined_title[: match.start()].strip().rstrip(",")
+            changed = True
+            break
+    refined_title = refined_title.strip() or title.strip() or "unknown"
+    return authors, refined_title, merged_extras
+
+
+def _extract_publication_place(title_part: str, extras: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+    work = title_part.strip()
+    merged_extras = dict(extras)
+    if "," not in work:
+        return work, merged_extras
+    maybe_title, maybe_place = work.rsplit(",", 1)
+    maybe_place = maybe_place.strip()
+    if (
+        maybe_place
+        and _PLACE_TAIL_RE.match(maybe_place)
+        and not re.search(r"\d", maybe_place)
+    ):
+        merged_extras.setdefault("publication_place", maybe_place)
+        work = maybe_title.strip() or work
+    return work, merged_extras
+
+
 def _normalize_entry(raw_entry: dict[str, Any]) -> dict[str, Any] | None:
     authors = raw_entry.get("authors")
     if authors is None:
@@ -133,6 +198,7 @@ def _normalize_entry(raw_entry: dict[str, Any]) -> dict[str, Any] | None:
     raw = str(raw_text).strip() if raw_text is not None else None
     extras_raw = raw_entry.get("extras")
     extras = dict(extras_raw) if isinstance(extras_raw, dict) else {}
+    authors, title, extras = _refine_biblio_fields(authors, title, extras)
     entry_id, authors_norm, title_norm, year_norm = compute_biblio_id(authors, title, year)
     return {
         "id": entry_id,
@@ -147,6 +213,64 @@ def _normalize_entry(raw_entry: dict[str, Any]) -> dict[str, Any] | None:
         or title_norm == "unknown"
         or year_norm == "unknown",
     }
+
+
+def normalize_biblio_entry(raw_entry: dict[str, Any]) -> dict[str, Any] | None:
+    return _normalize_entry(raw_entry)
+
+
+_YEAR_TAIL_RE = re.compile(
+    r"^(?P<body>.+?)\s+(?P<year>(?:1[0-9]{3}|20[0-9]{2})(?:-[0-9]{2,4})?)\.\s*$"
+)
+
+
+def _clean_biblio_page_lines(text: str) -> list[tuple[int, str]]:
+    lines_out: list[tuple[int, str]] = []
+    for raw in text.splitlines():
+        line = re.sub(r"<!--.*?-->", "", raw).strip()
+        if not line:
+            continue
+        if line.casefold().startswith("bibliografia"):
+            continue
+        lines_out.append((len(lines_out) + 1, line))
+    return lines_out
+
+
+def parse_biblio_lines_fallback(text: str) -> list[dict[str, Any]]:
+    entries: list[dict[str, Any]] = []
+    last_authors = "unknown"
+    for line_num, line in _clean_biblio_page_lines(text):
+        match = _YEAR_TAIL_RE.match(line)
+        if not match:
+            continue
+        body = match.group("body").strip().rstrip(",")
+        year = _coerce_year(match.group("year"))
+        upper = body.upper()
+        if upper.startswith("ID.") or upper.startswith("ID,"):
+            authors = last_authors
+            title_part = body[2:].lstrip("., ")
+        else:
+            parts = body.split(",", 1)
+            if len(parts) < 2:
+                continue
+            authors = parts[0].strip()
+            title_part = parts[1].strip()
+            last_authors = authors
+        extras: dict[str, Any] = {}
+        title, extras = _extract_publication_place(title_part, extras)
+        normalized = _normalize_entry(
+            {
+                "authors": authors,
+                "title": title,
+                "year": year,
+                "line": line_num,
+                "raw": line,
+                "extras": extras,
+            }
+        )
+        if normalized is not None:
+            entries.append(normalized)
+    return entries
 
 
 def parse_biblio_llm_response(content: str) -> list[dict[str, Any]] | None:
@@ -258,8 +382,41 @@ async def extract_biblio_entries_for_page(
         request_id=request_id,
         stage="biblio",
         page=aligned_page,
+        reasoning_enable_thinking=False,
     )
     parsed = parse_biblio_llm_response(content)
+    if parsed is None:
+        content = await chat_completion_with_retry(
+            client,
+            model=model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_content},
+                {"role": "assistant", "content": content},
+                {
+                    "role": "user",
+                    "content": (
+                        'Risposta non valida: serve solo JSON con chiave "entries", '
+                        "senza markdown né spiegazioni."
+                    ),
+                },
+            ],
+            temperature=0.0,
+            max_tokens=_MAX_COMPLETION_TOKENS,
+            request_id=request_id,
+            stage="biblio",
+            page=aligned_page,
+            reasoning_enable_thinking=False,
+        )
+        parsed = parse_biblio_llm_response(content)
+    if parsed is None:
+        parsed = parse_biblio_lines_fallback(text)
+        if parsed:
+            Log(
+                INFO_LOG_LEVEL,
+                "biblio line parser fallback used",
+                {"request_id": request_id, "aligned_page": aligned_page, "entries": len(parsed)},
+            )
     if parsed is None:
         Log(
             WARNING_LOG_LEVEL,

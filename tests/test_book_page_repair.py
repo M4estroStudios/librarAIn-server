@@ -82,7 +82,7 @@ class TestBookPageRepair(unittest.TestCase):
     def test_normalize_repair_pipeline_mode(self) -> None:
         self.assertEqual(normalize_repair_pipeline_mode("glm_ocr"), "glm_ocr")
         self.assertEqual(normalize_repair_pipeline_mode("glm-ocr"), "glm_ocr")
-        self.assertEqual(normalize_repair_pipeline_mode(None), "classic")
+        self.assertEqual(normalize_repair_pipeline_mode(None), "glm_ocr")
 
     def test_repair_global_step_count(self) -> None:
         self.assertEqual(repair_global_step_count(4, pipeline_mode="classic"), 12)

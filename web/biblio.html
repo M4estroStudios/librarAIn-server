@@ -30,8 +30,68 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 .related { margin-top: 0.45rem; font-size: 0.85rem; }
 #graph-wrap { position: relative; height: min(70vh, 640px); border: 1px solid #3e3e3e; border-radius: 12px; background: #141414; overflow: hidden; }
 #graph-canvas { width: 100%; height: 100%; display: block; cursor: grab; }
-#graph-detail { position: absolute; right: 0.75rem; top: 0.75rem; width: min(18rem, 45%); max-height: calc(100% - 1.5rem); overflow: auto; padding: 0.75rem; border-radius: 10px; background: rgba(30,30,30,0.92); border: 1px solid #454545; font-size: 0.85rem; }
+#graph-tooltip { position: absolute; z-index: 3; pointer-events: none; padding: 0.28rem 0.5rem; border-radius: 6px; background: rgba(20,20,20,0.94); border: 1px solid #454545; font-size: 0.78rem; color: #e8e8e8; max-width: min(18rem, 70vw); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 4px 14px rgba(0,0,0,0.35); }
+#graph-detail { position: absolute; right: 0.75rem; top: 0.75rem; width: min(22rem, 50%); max-height: calc(100% - 1.5rem); overflow: auto; padding: 0.75rem; border-radius: 10px; background: rgba(30,30,30,0.92); border: 1px solid #454545; font-size: 0.85rem; }
+#graph-detail .graph-detail-title { margin: 0 0 0.45rem; font-size: 0.95rem; font-weight: 600; line-height: 1.35; color: #e8e8e8; }
+#graph-detail .graph-detail-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.55rem; }
+#graph-detail .graph-detail-badge { display: inline-block; font-size: 0.72rem; padding: 0.14rem 0.45rem; border-radius: 999px; background: #333; color: #bdbdbd; }
+#graph-detail .graph-detail-badge.is-corpus { background: #1e3a5f; color: #9ec5ff; }
+#graph-detail .graph-detail-badge.is-cited { background: #4a3a1a; color: #e8c96a; }
+#graph-detail .graph-detail-row { display: flex; gap: 0.55rem; margin-bottom: 0.32rem; font-size: 0.8rem; line-height: 1.35; }
+#graph-detail .graph-detail-label { flex: 0 0 5.75rem; color: #9d9d9d; }
+#graph-detail .graph-detail-value { flex: 1; min-width: 0; color: #e8e8e8; word-break: break-word; }
+#graph-detail .graph-detail-section { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid #3a3a3a; }
+#graph-detail .graph-detail-section-title { margin: 0 0 0.4rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; color: #8a8a8a; }
+#graph-detail .graph-detail-link { margin-bottom: 0.28rem; font-size: 0.78rem; color: #d4d4d4; }
+#graph-detail .graph-detail-link .meta { display: block; margin-top: 0.08rem; }
 .status { margin-top: 0.5rem; font-size: 0.82rem; color: #9d9d9d; }
+.page-preview-overlay { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; box-sizing: border-box; }
+.page-preview-overlay.hidden { display: none; }
+.page-preview-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.68); cursor: pointer; }
+.page-preview-dialog { position: relative; z-index: 1; width: min(95vw, 920px); max-height: 92vh; display: flex; flex-direction: column; background: #1e1e1e; border: 1px solid #454545; border-radius: 12px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45); overflow: hidden; }
+.biblio-book-dialog { width: min(98vw, 1600px); height: min(96vh, 100%); max-height: 96vh; }
+.page-preview-close { position: absolute; top: 0.55rem; right: 0.55rem; z-index: 2; width: 2rem; height: 2rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.15rem; cursor: pointer; }
+.page-preview-title { margin: 0; padding: 0.85rem 3rem 0.65rem 1rem; font-size: 1rem; font-weight: 600; color: #e8e8e8; border-bottom: 1px solid #2a2a2a; flex: 0 0 auto; }
+.biblio-book-meta { margin: 0; padding: 0.35rem 1rem 0.55rem; font-size: 0.82rem; color: #9d9d9d; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; flex: 0 0 auto; }
+.biblio-book-meta-spacer { flex: 1 1 auto; min-width: 0.5rem; }
+.biblio-edit-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; padding: 0 1rem 0.65rem; border-bottom: 1px solid #2a2a2a; flex: 0 0 auto; }
+.biblio-edit-bar.hidden { display: none; }
+.biblio-edit-tabs { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.biblio-edit-tabs button { font: inherit; padding: 0.32rem 0.65rem; border-radius: 8px; border: 1px solid #454545; background: #252526; color: #d4d4d4; cursor: pointer; font-weight: 500; }
+.biblio-edit-tabs button.is-active { background: #e8e8e8; color: #1e1e1e; border-color: #e8e8e8; font-weight: 600; }
+.biblio-edit-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.biblio-edit-actions.hidden { display: none; }
+.biblio-annotate-tools { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.biblio-annotate-tools.hidden { display: none; }
+.biblio-annotate-tools button { font: inherit; padding: 0.32rem 0.65rem; border-radius: 8px; border: 1px solid #454545; background: #252526; color: #d4d4d4; cursor: pointer; font-weight: 500; }
+.biblio-annotate-tools button.is-active { background: #3d5a2e; color: #d8f0c8; border-color: #5a8a42; }
+.biblio-extract-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; padding: 0 1rem 0.65rem; border-bottom: 1px solid #2a2a2a; flex: 0 0 auto; }
+.biblio-extract-row.hidden { display: none; }
+.biblio-extract-row input { width: 9rem; }
+.biblio-extract-row .status { margin: 0; flex: 1 1 8rem; min-width: 0; }
+.page-review-body { display: flex; align-items: stretch; gap: 0.75rem; padding: 1rem; box-sizing: border-box; min-height: 0; flex: 1 1 auto; overflow: hidden; }
+.page-review-panels { flex: 1 1 auto; min-width: 0; min-height: 0; height: 100%; display: flex; justify-content: center; align-items: flex-start; gap: 0.75rem; }
+.biblio-preview-img-pane { align-self: flex-start; }
+.biblio-preview-text-pane { align-self: stretch; min-height: 0; height: 100%; display: flex; }
+.biblio-preview-text-pane .biblio-book-text-frame { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+.page-review-pane { flex: 1 1 0; min-width: 0; min-height: 0; display: flex; }
+.page-review-frame { box-sizing: border-box; border: 1px solid #454545; border-radius: 4px; background: #fff; overflow: hidden; display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+.biblio-preview-img-pane .page-review-frame { flex: 0 0 auto; }
+.biblio-book-text-frame { background: #252526; }
+.page-review-img-wrap { position: relative; width: 100%; height: 100%; min-height: 0; overflow: hidden; line-height: 0; display: flex; align-items: center; justify-content: center; }
+.page-review-img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; background: #fff; }
+#biblio-annotate-canvas { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 2; }
+#biblio-annotate-canvas.is-active { pointer-events: auto; cursor: crosshair; }
+.biblio-book-text { display: block; flex: 1 1 auto; width: 100%; height: 100%; min-height: 0; max-height: 100%; margin: 0; padding: 0.65rem; box-sizing: border-box; border: 0; outline: none; resize: none; overflow-x: hidden; overflow-y: scroll; background: transparent; color: #d4d4d4; font-family: ui-monospace, monospace; font-size: 0.72rem; line-height: 1.35; white-space: pre-wrap; word-break: break-word; }
+.biblio-book-text:read-only { cursor: default; }
+.biblio-book-text-empty { margin: 0; padding: 0.65rem; font-size: 0.78rem; color: #9d9d9d; }
+.biblio-img-empty { margin: 0; padding: 1rem; font-size: 0.78rem; color: #9d9d9d; text-align: center; }
+.page-preview-nav { flex: 0 0 auto; align-self: center; width: 2.5rem; height: 2.5rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.25rem; cursor: pointer; }
+.page-preview-nav:hover:not(:disabled) { background: #4a4a4a; }
+.page-preview-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+.biblio-preview-page-input { width: 4rem; padding: 0.2rem 0.35rem; font: inherit; border-radius: 6px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
+.hidden { display: none !important; }
+@media (max-width: 900px) { .page-review-panels { flex-direction: column; } .page-review-pane { flex: 1 1 auto; } }
 </style>
 </head>
 <body>
@@ -43,7 +103,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     <button type="button" class="tab is-active" data-tab="search">Lookup</button>
     <button type="button" class="tab" data-tab="review">Review</button>
     <button type="button" class="tab" data-tab="graph">Grafo</button>
-    <button type="button" class="tab" data-tab="run" hidden>Estrai</button>
+    <button type="button" class="tab" data-tab="run">Libri</button>
   </div>
 
   <section class="panel is-active" id="panel-search">
@@ -58,7 +118,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       </select>
       <button type="button" id="btn-search">Cerca</button>
     </div>
-    <p class="hint">Modalità: cosa cita il nodo / da chi è citato.</p>
+    <p class="hint">All'apertura mostra tutti i nodi del polyindex; filtra e premi Cerca. Modalità: cosa cita il nodo / da chi è citato.</p>
     <div id="search-results"></div>
   </section>
 
@@ -77,11 +137,12 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     </div>
     <div id="graph-wrap">
       <canvas id="graph-canvas"></canvas>
+      <div id="graph-tooltip" class="hidden"></div>
       <div id="graph-detail">Nessun nodo selezionato.</div>
     </div>
   </section>
 
-  <section class="panel" id="panel-run" hidden>
+  <section class="panel" id="panel-run">
     <div class="row">
       <button type="button" class="secondary" id="btn-candidates-reload">Ricarica libri</button>
       <input id="candidates-filter" placeholder="Filtra per titolo…" style="flex:1;min-width:12rem">
@@ -89,26 +150,77 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     </div>
     <p class="hint">Libri già ingestiti con pagine in output. Seleziona, indica il range bibliografia (pagine originali) e avvia.</p>
     <div id="candidates-list"></div>
-    <div class="card" id="run-selected-card" style="display:none;margin-top:0.75rem">
-      <h3 id="run-selected-title">—</h3>
-      <div class="meta" id="run-selected-meta"></div>
-      <div class="row" style="margin-top:0.6rem">
-        <input id="run-range" placeholder="range es. 240-255" style="width:10rem">
-        <label class="compute-mode-toggle">AI
-          <select id="run-compute-mode">
-            <option value="local" selected>Local</option>
-            <option value="cloud">Cloud</option>
-          </select>
-        </label>
-        <button type="button" id="btn-run">Avvia estrazione</button>
-      </div>
-      <div class="status" id="run-status"></div>
-    </div>
   </section>
+</div>
+
+<div id="biblio-book-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="biblio-book-backdrop"></div>
+  <div class="page-preview-dialog biblio-book-dialog" role="dialog" aria-modal="true" aria-labelledby="run-selected-title">
+    <button type="button" class="page-preview-close" id="biblio-panel-close" title="Chiudi">×</button>
+    <h2 class="page-preview-title" id="run-selected-title">—</h2>
+    <p class="biblio-book-meta">
+      Pag. orig.
+      <input type="number" id="biblio-preview-page-input" class="biblio-preview-page-input" min="1" aria-label="Pagina originale">
+      <span>/ <span id="biblio-preview-page-max">—</span></span>
+      <span class="biblio-book-meta-spacer"></span>
+      <button type="button" class="secondary" id="biblio-btn-edit">Modifica</button>
+    </p>
+    <div class="biblio-edit-bar hidden" id="biblio-edit-bar">
+      <div class="biblio-edit-tabs" role="tablist" aria-label="Strumenti modifica">
+        <button type="button" class="is-active" data-biblio-tool="transcript">Trascrizione</button>
+        <button type="button" data-biblio-tool="extract">Estrazione</button>
+        <button type="button" data-biblio-tool="annotate">Annotazioni</button>
+      </div>
+      <div class="biblio-edit-actions" id="biblio-transcript-actions">
+        <button type="button" id="biblio-transcript-save">Salva</button>
+        <button type="button" class="secondary" id="biblio-transcript-reset">Annulla</button>
+      </div>
+      <div class="biblio-annotate-tools hidden" id="biblio-annotate-tools">
+        <button type="button" class="is-active" data-biblio-annot="bbox">Box</button>
+        <button type="button" data-biblio-annot="point">Point</button>
+        <button type="button" data-biblio-annot="reset">Reset pagina</button>
+      </div>
+      <span class="status hint" id="biblio-edit-status"></span>
+      <span class="biblio-book-meta-spacer"></span>
+      <button type="button" class="secondary" id="biblio-btn-done-edit">Fine modifica</button>
+    </div>
+    <div class="biblio-extract-row hidden" id="biblio-extract-row">
+      <input id="run-range" placeholder="range es. 240-255">
+      <label class="compute-mode-toggle">AI
+        <select id="run-compute-mode">
+          <option value="local" selected>Local</option>
+          <option value="cloud">Cloud</option>
+        </select>
+      </label>
+      <button type="button" id="btn-run">Avvia estrazione</button>
+      <span class="status hint" id="run-status"></span>
+    </div>
+    <div class="page-review-body">
+      <button type="button" class="page-preview-nav" id="biblio-preview-prev" title="Pagina precedente" aria-label="Pagina precedente" disabled>&lt;</button>
+      <div class="page-review-panels" id="biblio-preview-panels">
+        <div class="page-review-pane biblio-preview-img-pane">
+          <div class="page-review-frame" id="biblio-preview-img-frame">
+            <div class="page-review-img-wrap" id="biblio-preview-img-wrap">
+              <img class="page-review-img hidden" id="biblio-preview-img" alt="">
+              <canvas id="biblio-annotate-canvas" class="hidden" aria-label="Canvas annotazioni"></canvas>
+              <p class="biblio-img-empty hidden" id="biblio-preview-empty">Anteprima non disponibile.</p>
+            </div>
+          </div>
+        </div>
+        <div class="page-review-pane biblio-preview-text-pane">
+          <div class="page-review-frame biblio-book-text-frame" id="biblio-preview-text-frame">
+            <p class="biblio-book-text-empty" id="biblio-preview-text-empty">Trascrizione della pagina corrente.</p>
+            <textarea class="biblio-book-text hidden" id="biblio-preview-text" readonly spellcheck="false"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="page-preview-nav" id="biblio-preview-next" title="Pagina successiva" aria-label="Pagina successiva" disabled>&gt;</button>
+    </div>
+  </div>
 </div>
 <script>
 (function () {
-  var BIBLIO_EXTRACT_ENABLED = false;
+  var BIBLIO_EXTRACT_ENABLED = true;
   function esc(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -127,12 +239,407 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       document.getElementById("panel-" + tab.dataset.tab).classList.add("is-active");
       if (tab.dataset.tab === "graph") loadGraph();
       if (tab.dataset.tab === "review") loadReview();
+      if (tab.dataset.tab === "search") runSearch();
       if (tab.dataset.tab === "run" && BIBLIO_EXTRACT_ENABLED) loadCandidates();
     });
   });
 
   var candidatesCache = [];
   var selectedCandidate = null;
+  var biblioPreviewPage = null;
+  var biblioPreviewAlignedPage = null;
+  var biblioPreviewLoadGen = 0;
+  var biblioLastSelectedSha = null;
+  var biblioEditMode = false;
+  var biblioEditTool = "transcript";
+  var biblioTranscriptBaseline = "";
+  var biblioAnnotStore = {};
+  var biblioAnnotTool = "bbox";
+  var biblioAnnotDraft = null;
+  var biblioAnnotDrag = null;
+
+  function setBiblioEditStatus(msg) {
+    document.getElementById("biblio-edit-status").textContent = msg || "";
+  }
+
+  function biblioAnnotStorageKey() {
+    return selectedCandidate ? ("biblio-annot:" + selectedCandidate.source_sha256) : "";
+  }
+
+  function loadBiblioAnnotStore() {
+    biblioAnnotStore = {};
+    var key = biblioAnnotStorageKey();
+    if (!key) return;
+    try {
+      var raw = localStorage.getItem(key);
+      if (raw) biblioAnnotStore = JSON.parse(raw) || {};
+    } catch (_) {
+      biblioAnnotStore = {};
+    }
+  }
+
+  function saveBiblioAnnotStore() {
+    var key = biblioAnnotStorageKey();
+    if (!key) return;
+    try {
+      localStorage.setItem(key, JSON.stringify(biblioAnnotStore));
+    } catch (_) {}
+  }
+
+  function biblioAnnotPageKey(pageNum) {
+    return String(pageNum || "");
+  }
+
+  function biblioAnnotElements(pageNum) {
+    var bucket = biblioAnnotStore[biblioAnnotPageKey(pageNum)];
+    return Array.isArray(bucket) ? bucket : [];
+  }
+
+  function biblioNormCoord(value, max) {
+    return Math.max(0, Math.min(999, Math.round((value / Math.max(max - 1, 1)) * 999)));
+  }
+
+  function syncBiblioPanelHeights() {
+    var body = document.querySelector("#biblio-book-overlay .page-review-body");
+    var imgFrame = document.getElementById("biblio-preview-img-frame");
+    var textFrame = document.getElementById("biblio-preview-text-frame");
+    var panels = document.getElementById("biblio-preview-panels");
+    var img = document.getElementById("biblio-preview-img");
+    if (!body || !textFrame || !panels) return;
+    var height = body.clientHeight;
+    if (height < 120) {
+      var dialog = document.querySelector("#biblio-book-overlay .biblio-book-dialog");
+      if (dialog) height = dialog.clientHeight - 168;
+    }
+    height = Math.max(200, height);
+    panels.style.height = height + "px";
+    textFrame.style.height = height + "px";
+    if (imgFrame) {
+      var paneWidth = Math.max(200, Math.floor((panels.clientWidth - 12) / 2));
+      if (img && img.naturalWidth && img.naturalHeight && !img.classList.contains("hidden")) {
+        var fitHeight = Math.round(paneWidth * (img.naturalHeight / img.naturalWidth));
+        imgFrame.style.height = Math.min(height, fitHeight) + "px";
+      } else {
+        imgFrame.style.height = height + "px";
+      }
+    }
+    syncBiblioAnnotCanvas();
+  }
+
+  function syncBiblioAnnotCanvas() {
+    var canvas = document.getElementById("biblio-annotate-canvas");
+    var img = document.getElementById("biblio-preview-img");
+    var wrap = document.getElementById("biblio-preview-img-wrap");
+    if (!canvas || !img || !wrap || img.classList.contains("hidden") || !img.naturalWidth) return;
+    var rect = img.getBoundingClientRect();
+    var wrapRect = wrap.getBoundingClientRect();
+    var w = Math.max(1, Math.round(rect.width));
+    var h = Math.max(1, Math.round(rect.height));
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+    }
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    canvas.style.left = Math.round(rect.left - wrapRect.left + wrap.scrollLeft) + "px";
+    canvas.style.top = Math.round(rect.top - wrapRect.top + wrap.scrollTop) + "px";
+    redrawBiblioAnnotCanvas();
+  }
+
+  function redrawBiblioAnnotCanvas() {
+    var canvas = document.getElementById("biblio-annotate-canvas");
+    var img = document.getElementById("biblio-preview-img");
+    if (!canvas || !img || !biblioPreviewPage) return;
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (canvas.classList.contains("hidden")) return;
+    var nw = img.naturalWidth;
+    var nh = img.naturalHeight;
+    var cw = canvas.width;
+    var ch = canvas.height;
+    function fromNorm(nx, ny) {
+      return [(nx / 999) * Math.max(cw - 1, 1), (ny / 999) * Math.max(ch - 1, 1)];
+    }
+    biblioAnnotElements(biblioPreviewPage).forEach(function (el) {
+      ctx.strokeStyle = el.type === "point" ? "#2878dc" : "#dc3c3c";
+      ctx.fillStyle = el.type === "point" ? "#2878dc" : "rgba(220,60,60,0.12)";
+      ctx.lineWidth = 2;
+      if (el.type === "point" && el.box && el.box.length >= 2) {
+        var p = fromNorm(el.box[0], el.box[1]);
+        ctx.beginPath();
+        ctx.arc(p[0], p[1], 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      } else if (el.box && el.box.length >= 4) {
+        var a = fromNorm(el.box[0], el.box[1]);
+        var b = fromNorm(el.box[2], el.box[3]);
+        var x = Math.min(a[0], b[0]);
+        var y = Math.min(a[1], b[1]);
+        var w = Math.abs(b[0] - a[0]);
+        var h = Math.abs(b[1] - a[1]);
+        ctx.fillRect(x, y, w, h);
+        ctx.strokeRect(x, y, w, h);
+      }
+    });
+    if (biblioAnnotDraft && biblioAnnotDraft.box) {
+      ctx.strokeStyle = "#ffd166";
+      ctx.lineWidth = 2;
+      var d = biblioAnnotDraft.box;
+      var p1 = fromNorm(d[0], d[1]);
+      var p2 = fromNorm(d[2], d[3]);
+      ctx.strokeRect(Math.min(p1[0], p2[0]), Math.min(p1[1], p2[1]), Math.abs(p2[0] - p1[0]), Math.abs(p2[1] - p2[1]));
+    }
+  }
+
+  function setBiblioEditTool(tool) {
+    biblioEditTool = tool;
+    document.querySelectorAll("[data-biblio-tool]").forEach(function (btn) {
+      btn.classList.toggle("is-active", btn.getAttribute("data-biblio-tool") === tool);
+    });
+    document.getElementById("biblio-transcript-actions").classList.toggle("hidden", tool !== "transcript");
+    document.getElementById("biblio-annotate-tools").classList.toggle("hidden", tool !== "annotate");
+    document.getElementById("biblio-extract-row").classList.toggle("hidden", !biblioEditMode || tool !== "extract");
+    var canvas = document.getElementById("biblio-annotate-canvas");
+    var textEl = document.getElementById("biblio-preview-text");
+    var annotateOn = biblioEditMode && tool === "annotate";
+    canvas.classList.toggle("hidden", !annotateOn);
+    canvas.classList.toggle("is-active", annotateOn);
+    if (textEl) textEl.readOnly = !biblioEditMode;
+    if (annotateOn) syncBiblioAnnotCanvas();
+    else redrawBiblioAnnotCanvas();
+  }
+
+  function setBiblioEditMode(on) {
+    biblioEditMode = !!on;
+    document.getElementById("biblio-btn-edit").classList.toggle("hidden", biblioEditMode);
+    document.getElementById("biblio-edit-bar").classList.toggle("hidden", !biblioEditMode);
+    document.getElementById("biblio-extract-row").classList.toggle("hidden", !biblioEditMode || biblioEditTool !== "extract");
+    var textEl = document.getElementById("biblio-preview-text");
+    if (textEl) textEl.readOnly = !biblioEditMode;
+    if (!biblioEditMode) {
+      biblioAnnotDraft = null;
+      document.getElementById("biblio-annotate-canvas").classList.add("hidden");
+      setBiblioEditStatus("");
+    } else {
+      setBiblioEditTool(biblioEditTool || "transcript");
+    }
+    requestAnimationFrame(syncBiblioPanelHeights);
+  }
+
+  function updateBiblioTranscriptActions() {
+    var textEl = document.getElementById("biblio-preview-text");
+    var dirty = biblioEditMode && textEl && textEl.value !== biblioTranscriptBaseline;
+    document.getElementById("biblio-transcript-reset").disabled = !dirty;
+  }
+
+  function saveBiblioTranscript() {
+    if (!selectedCandidate || !biblioPreviewAlignedPage) {
+      setBiblioEditStatus("Pagina non pronta.");
+      return;
+    }
+    var textEl = document.getElementById("biblio-preview-text");
+    setBiblioEditStatus("Salvataggio…");
+    fetch("/api/admin/book-pages/transcript/confirm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_sha256: selectedCandidate.source_sha256,
+        aligned_page: biblioPreviewAlignedPage,
+        text: textEl.value
+      })
+    }).then(function (r) { return r.json(); }).then(function (data) {
+      if (!data.ok) throw new Error(data.error || "Salvataggio fallito");
+      biblioTranscriptBaseline = textEl.value;
+      updateBiblioTranscriptActions();
+      setBiblioEditStatus("Trascrizione salvata.");
+    }).catch(function (err) {
+      setBiblioEditStatus(String(err.message || err));
+    });
+  }
+
+  function bindBiblioAnnotCanvas() {
+    var canvas = document.getElementById("biblio-annotate-canvas");
+    var img = document.getElementById("biblio-preview-img");
+    if (!canvas || canvas.dataset.bound) return;
+    canvas.dataset.bound = "1";
+    function canvasPoint(ev) {
+      var rect = canvas.getBoundingClientRect();
+      var x = ev.clientX - rect.left;
+      var y = ev.clientY - rect.top;
+      return [
+        biblioNormCoord(x, canvas.width),
+        biblioNormCoord(y, canvas.height)
+      ];
+    }
+    canvas.addEventListener("mousedown", function (ev) {
+      if (!biblioEditMode || biblioEditTool !== "annotate") return;
+      ev.preventDefault();
+      var pt = canvasPoint(ev);
+      if (biblioAnnotTool === "point") {
+        var key = biblioAnnotPageKey(biblioPreviewPage);
+        var list = biblioAnnotElements(biblioPreviewPage).slice();
+        list.push({ id: "p_" + Date.now(), type: "point", name: "", box: pt.concat(pt) });
+        biblioAnnotStore[key] = list;
+        saveBiblioAnnotStore();
+        redrawBiblioAnnotCanvas();
+        return;
+      }
+      biblioAnnotDrag = { start: pt, current: pt };
+      biblioAnnotDraft = { box: pt.concat(pt) };
+      redrawBiblioAnnotCanvas();
+    });
+    window.addEventListener("mousemove", function (ev) {
+      if (!biblioAnnotDrag) return;
+      biblioAnnotDrag.current = canvasPoint(ev);
+      var s = biblioAnnotDrag.start;
+      var c = biblioAnnotDrag.current;
+      biblioAnnotDraft = { box: [s[0], s[1], c[0], c[1]] };
+      redrawBiblioAnnotCanvas();
+    });
+    window.addEventListener("mouseup", function () {
+      if (!biblioAnnotDrag) return;
+      var s = biblioAnnotDrag.start;
+      var c = biblioAnnotDrag.current;
+      biblioAnnotDrag = null;
+      biblioAnnotDraft = null;
+      if (Math.abs(c[0] - s[0]) < 4 && Math.abs(c[1] - s[1]) < 4) return;
+      var key = biblioAnnotPageKey(biblioPreviewPage);
+      var list = biblioAnnotElements(biblioPreviewPage).slice();
+      list.push({ id: "b_" + Date.now(), type: "bbox", name: "", box: [s[0], s[1], c[0], c[1]] });
+      biblioAnnotStore[key] = list;
+      saveBiblioAnnotStore();
+      redrawBiblioAnnotCanvas();
+    });
+    document.querySelectorAll("[data-biblio-annot]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var action = btn.getAttribute("data-biblio-annot");
+        if (action === "reset") {
+          if (!biblioPreviewPage) return;
+          delete biblioAnnotStore[biblioAnnotPageKey(biblioPreviewPage)];
+          saveBiblioAnnotStore();
+          redrawBiblioAnnotCanvas();
+          return;
+        }
+        biblioAnnotTool = action;
+        document.querySelectorAll("[data-biblio-annot]").forEach(function (el) {
+          if (el.getAttribute("data-biblio-annot") === "reset") return;
+          el.classList.toggle("is-active", el.getAttribute("data-biblio-annot") === action);
+        });
+      });
+    });
+  }
+
+  function biblioPreviewMaxPage() {
+    if (!selectedCandidate) return 1;
+    return selectedCandidate.original_page_count || selectedCandidate.expected_page_count || 1;
+  }
+
+  function biblioPageQueryParams(originalPage) {
+    return new URLSearchParams({
+      source_sha256: selectedCandidate.source_sha256,
+      original_page: String(originalPage)
+    });
+  }
+
+  function biblioPreviewUrl(originalPage) {
+    return "/api/admin/book-pages/render?" + biblioPageQueryParams(originalPage).toString();
+  }
+
+  function syncBiblioPreviewNav() {
+    var max = biblioPreviewMaxPage();
+    var has = selectedCandidate && biblioPreviewPage != null;
+    document.getElementById("biblio-preview-prev").disabled = !has || biblioPreviewPage <= 1;
+    document.getElementById("biblio-preview-next").disabled = !has || biblioPreviewPage >= max;
+    document.getElementById("biblio-preview-page-max").textContent = has ? String(max) : "—";
+    var inp = document.getElementById("biblio-preview-page-input");
+    if (has && document.activeElement !== inp) inp.value = String(biblioPreviewPage);
+  }
+
+  function loadBiblioTranscript(pageNum, loadGen) {
+    var textEl = document.getElementById("biblio-preview-text");
+    var emptyEl = document.getElementById("biblio-preview-text-empty");
+    if (!selectedCandidate || !pageNum) {
+      biblioPreviewAlignedPage = null;
+      biblioTranscriptBaseline = "";
+      textEl.classList.add("hidden");
+      emptyEl.classList.remove("hidden");
+      emptyEl.textContent = "Trascrizione della pagina corrente.";
+      textEl.value = "";
+      updateBiblioTranscriptActions();
+      return;
+    }
+    emptyEl.textContent = "Caricamento trascrizione…";
+    emptyEl.classList.remove("hidden");
+    textEl.classList.add("hidden");
+    fetch("/api/admin/book-pages/transcript?" + biblioPageQueryParams(pageNum).toString())
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (loadGen !== biblioPreviewLoadGen) return;
+        if (!data.ok || data.text == null) {
+          biblioPreviewAlignedPage = null;
+          emptyEl.textContent = data.error || "Trascrizione non disponibile.";
+          emptyEl.classList.remove("hidden");
+          textEl.classList.add("hidden");
+          return;
+        }
+        biblioPreviewAlignedPage = data.aligned_page || null;
+        biblioTranscriptBaseline = data.text || "";
+        textEl.value = biblioTranscriptBaseline;
+        textEl.classList.remove("hidden");
+        emptyEl.classList.add("hidden");
+        textEl.readOnly = !biblioEditMode;
+        updateBiblioTranscriptActions();
+      })
+      .catch(function (err) {
+        if (loadGen !== biblioPreviewLoadGen) return;
+        biblioPreviewAlignedPage = null;
+        emptyEl.textContent = String(err);
+        emptyEl.classList.remove("hidden");
+        textEl.classList.add("hidden");
+      });
+  }
+
+  function renderBiblioPreview(pageNum) {
+    var img = document.getElementById("biblio-preview-img");
+    var empty = document.getElementById("biblio-preview-empty");
+    if (!selectedCandidate || !pageNum) {
+      biblioPreviewPage = null;
+      biblioPreviewLoadGen += 1;
+      img.classList.add("hidden");
+      empty.classList.remove("hidden");
+      empty.textContent = "Seleziona un libro.";
+      img.removeAttribute("src");
+      loadBiblioTranscript(null, biblioPreviewLoadGen);
+      syncBiblioPreviewNav();
+      return;
+    }
+    var max = biblioPreviewMaxPage();
+    pageNum = Math.max(1, Math.min(max, pageNum));
+    biblioPreviewPage = pageNum;
+    biblioPreviewLoadGen += 1;
+    var loadGen = biblioPreviewLoadGen;
+    empty.classList.add("hidden");
+    img.classList.remove("hidden");
+    img.onerror = function () {
+      if (loadGen !== biblioPreviewLoadGen) return;
+      empty.textContent = "Anteprima non disponibile per la pagina " + pageNum + ".";
+      empty.classList.remove("hidden");
+      img.classList.add("hidden");
+    };
+    img.onload = function () {
+      if (loadGen !== biblioPreviewLoadGen) return;
+      empty.classList.add("hidden");
+      img.classList.remove("hidden");
+      requestAnimationFrame(function () {
+        syncBiblioPanelHeights();
+        redrawBiblioAnnotCanvas();
+      });
+    };
+    img.src = biblioPreviewUrl(pageNum);
+    loadBiblioTranscript(pageNum, loadGen);
+    syncBiblioPreviewNav();
+    redrawBiblioAnnotCanvas();
+  }
 
   function renderCandidates() {
     if (!BIBLIO_EXTRACT_ENABLED) return;
@@ -176,20 +683,46 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     });
   }
 
+  function closeBiblioPanel() {
+    selectedCandidate = null;
+    biblioLastSelectedSha = null;
+    setBiblioEditMode(false);
+    biblioEditTool = "transcript";
+    var overlay = document.getElementById("biblio-book-overlay");
+    overlay.classList.add("hidden");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    renderBiblioPreview(null);
+    renderCandidates();
+  }
+
   function showSelectedCandidate() {
-    var card = document.getElementById("run-selected-card");
+    var overlay = document.getElementById("biblio-book-overlay");
     if (!selectedCandidate) {
-      card.style.display = "none";
+      closeBiblioPanel();
       return;
     }
-    card.style.display = "block";
+    overlay.classList.remove("hidden");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
     document.getElementById("run-selected-title").textContent = selectedCandidate.title || "—";
-    document.getElementById("run-selected-meta").textContent = selectedCandidate.source_sha256;
     var rangeInput = document.getElementById("run-range");
-    if (selectedCandidate.biblio_range && !rangeInput.value.trim()) {
-      rangeInput.value = selectedCandidate.biblio_range.start + "-" + selectedCandidate.biblio_range.end;
+    if (selectedCandidate.source_sha256 !== biblioLastSelectedSha) {
+      biblioLastSelectedSha = selectedCandidate.source_sha256;
+      rangeInput.value = selectedCandidate.biblio_range
+        ? (selectedCandidate.biblio_range.start + "-" + selectedCandidate.biblio_range.end)
+        : "";
     }
     document.getElementById("run-status").textContent = "";
+    loadBiblioAnnotStore();
+    setBiblioEditMode(false);
+    biblioEditTool = "transcript";
+    document.querySelectorAll("[data-biblio-tool]").forEach(function (btn) {
+      btn.classList.toggle("is-active", btn.getAttribute("data-biblio-tool") === "transcript");
+    });
+    var startPage = selectedCandidate.biblio_range ? selectedCandidate.biblio_range.start : 1;
+    renderBiblioPreview(startPage);
+    requestAnimationFrame(syncBiblioPanelHeights);
   }
 
   function loadCandidates() {
@@ -212,9 +745,73 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   if (BIBLIO_EXTRACT_ENABLED) {
     document.getElementById("btn-candidates-reload").addEventListener("click", loadCandidates);
     document.getElementById("candidates-filter").addEventListener("input", renderCandidates);
+    document.getElementById("biblio-panel-close").addEventListener("click", closeBiblioPanel);
+    document.getElementById("biblio-book-backdrop").addEventListener("click", closeBiblioPanel);
+    document.getElementById("biblio-btn-edit").addEventListener("click", function () {
+      if (!selectedCandidate) return;
+      setBiblioEditMode(true);
+      setBiblioEditTool("transcript");
+    });
+    document.getElementById("biblio-btn-done-edit").addEventListener("click", function () {
+      setBiblioEditMode(false);
+    });
+    document.querySelectorAll("[data-biblio-tool]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setBiblioEditTool(btn.getAttribute("data-biblio-tool") || "transcript");
+      });
+    });
+    document.getElementById("biblio-transcript-save").addEventListener("click", saveBiblioTranscript);
+    document.getElementById("biblio-transcript-reset").addEventListener("click", function () {
+      var textEl = document.getElementById("biblio-preview-text");
+      textEl.value = biblioTranscriptBaseline;
+      updateBiblioTranscriptActions();
+      setBiblioEditStatus("");
+    });
+    document.getElementById("biblio-preview-text").addEventListener("input", updateBiblioTranscriptActions);
+    bindBiblioAnnotCanvas();
+    window.addEventListener("resize", function () {
+      if (selectedCandidate) requestAnimationFrame(syncBiblioPanelHeights);
+    });
+    document.getElementById("biblio-book-overlay").querySelector(".page-preview-dialog").addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && selectedCandidate) closeBiblioPanel();
+    });
+    document.getElementById("biblio-preview-prev").addEventListener("click", function () {
+      if (biblioPreviewPage > 1) renderBiblioPreview(biblioPreviewPage - 1);
+    });
+    document.getElementById("biblio-preview-next").addEventListener("click", function () {
+      if (biblioPreviewPage < biblioPreviewMaxPage()) renderBiblioPreview(biblioPreviewPage + 1);
+    });
+    var biblioPreviewInput = document.getElementById("biblio-preview-page-input");
+    biblioPreviewInput.addEventListener("change", function () {
+      var v = parseInt(biblioPreviewInput.value, 10);
+      if (!isNaN(v) && selectedCandidate) renderBiblioPreview(v);
+    });
+    biblioPreviewInput.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter") {
+        ev.preventDefault();
+        biblioPreviewInput.dispatchEvent(new Event("change"));
+      }
+    });
   }
 
-  document.getElementById("btn-search").addEventListener("click", function () {
+  function renderSearchResults(data) {
+    var box = document.getElementById("search-results");
+    if (!data.ok) { box.innerHTML = "<p class='hint'>" + esc(data.error || "errore") + "</p>"; return; }
+    if (!data.results.length) { box.innerHTML = "<p class='hint'>Nessun risultato.</p>"; return; }
+    box.innerHTML = data.results.map(function (item) {
+      var related = (item.related || []).map(function (rel) {
+        return "<div>• " + esc(labelOf(rel.node)) + " <span class='meta'>p. " + esc((rel.aligned_pages || []).join(", ")) + "</span></div>";
+      }).join("") || "<div class='hint'>Nessun collegamento.</div>";
+      return "<div class='card'><h3>" + esc(labelOf(item.node)) + "</h3>" +
+        "<div class='meta'>" + esc(item.id) + (item.node && item.node.in_corpus ? " · corpus" : "") + "</div>" +
+        "<div class='related'><strong>" + esc(item.mode) + "</strong>" + related + "</div></div>";
+    }).join("");
+  }
+
+  function runSearch() {
     var params = new URLSearchParams({
       authors: document.getElementById("q-authors").value.trim(),
       title: document.getElementById("q-title").value.trim(),
@@ -224,23 +821,15 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     });
     fetch("/api/admin/biblio/search?" + params.toString())
       .then(function (r) { return r.json(); })
-      .then(function (data) {
-        var box = document.getElementById("search-results");
-        if (!data.ok) { box.innerHTML = "<p class='hint'>" + esc(data.error || "errore") + "</p>"; return; }
-        if (!data.results.length) { box.innerHTML = "<p class='hint'>Nessun risultato.</p>"; return; }
-        box.innerHTML = data.results.map(function (item) {
-          var related = (item.related || []).map(function (rel) {
-            return "<div>• " + esc(labelOf(rel.node)) + " <span class='meta'>p. " + esc((rel.aligned_pages || []).join(", ")) + "</span></div>";
-          }).join("") || "<div class='hint'>Nessun collegamento.</div>";
-          return "<div class='card'><h3>" + esc(labelOf(item.node)) + "</h3>" +
-            "<div class='meta'>" + esc(item.id) + (item.node && item.node.in_corpus ? " · corpus" : "") + "</div>" +
-            "<div class='related'><strong>" + esc(item.mode) + "</strong>" + related + "</div></div>";
-        }).join("");
-      })
+      .then(renderSearchResults)
       .catch(function (err) {
         document.getElementById("search-results").innerHTML = "<p class='hint'>" + esc(err) + "</p>";
       });
-  });
+  }
+
+  document.getElementById("btn-search").addEventListener("click", runSearch);
+  document.getElementById("q-mode").addEventListener("change", runSearch);
+  runSearch();
 
   function loadReview() {
     fetch("/api/admin/biblio/review").then(function (r) { return r.json(); }).then(function (data) {
@@ -292,19 +881,191 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   }
   document.getElementById("btn-review-reload").addEventListener("click", loadReview);
 
-  var graphState = { nodes: [], edges: [], positions: {}, selected: null, scale: 1, ox: 0, oy: 0, drag: null };
+  var graphState = { nodes: [], edges: [], positions: {}, selected: null, hovered: null, scale: 1, ox: 0, oy: 0, drag: null };
+
+  function graphNodeShortLabel(node) {
+    var title = (node.title || "").trim();
+    if (title) return title.length > 56 ? title.slice(0, 53) + "…" : title;
+    return labelOf(node);
+  }
+
+  var GRAPH_EXTRA_LABELS = {
+    curators: "Curatori",
+    editor: "A cura di",
+    publication_place: "Luogo",
+    publisher: "Editore",
+    volumes: "Volumi",
+    volume: "Volume",
+    pages: "Pagine",
+    translator: "Traduttore",
+    introduction_by: "Introduzione di",
+    subtitle: "Sottotitolo",
+    isbn: "ISBN",
+    edition_number: "Edizione"
+  };
+  var GRAPH_EXTRA_ORDER = [
+    "subtitle", "curators", "editor", "publication_place", "publisher",
+    "volumes", "volume", "pages", "translator", "introduction_by", "isbn", "edition_number"
+  ];
+
+  function graphExtraLabel(key) {
+    return GRAPH_EXTRA_LABELS[key] || key.replace(/_/g, " ");
+  }
+
+  function graphFieldValue(value) {
+    if (value == null || value === "") return "—";
+    if (Array.isArray(value)) return value.map(function (part) { return String(part); }).join(", ");
+    return String(value);
+  }
+
+  function graphNodeById(id) {
+    for (var i = 0; i < graphState.nodes.length; i++) {
+      if (graphState.nodes[i].id === id) return graphState.nodes[i];
+    }
+    return null;
+  }
+
+  function graphDetailRow(label, value) {
+    return "<div class='graph-detail-row'><div class='graph-detail-label'>" + esc(label) + "</div>" +
+      "<div class='graph-detail-value'>" + esc(value) + "</div></div>";
+  }
+
+  function graphRelationLines(edges, pickId) {
+    return edges.map(function (edge) {
+      var other = graphNodeById(pickId(edge));
+      var pages = (edge.aligned_pages || []).length ? "p. " + edge.aligned_pages.join(", ") : "";
+      return "<div class='graph-detail-link'>" + esc(graphNodeShortLabel(other) || "?") +
+        (pages ? "<span class='meta'>" + esc(pages) + "</span>" : "") + "</div>";
+    }).join("");
+  }
+
+  function renderGraphDetail(node) {
+    var box = document.getElementById("graph-detail");
+    if (!node) {
+      box.textContent = "Nessun nodo selezionato.";
+      return;
+    }
+    var badges = "<div class='graph-detail-badges'>" +
+      "<span class='graph-detail-badge " + (node.in_corpus ? "is-corpus" : "is-cited") + "'>" +
+      esc(node.in_corpus ? "In corpus" : "Solo citato") + "</span>";
+    if (node.incomplete) badges += "<span class='graph-detail-badge'>Incompleto</span>";
+    badges += "</div>";
+    var html = badges +
+      "<h3 class='graph-detail-title'>" + esc(node.title || "?") + "</h3>" +
+      graphDetailRow("Autori", node.authors || "—") +
+      graphDetailRow("Anno", node.year == null ? "—" : node.year);
+    var extras = node.extras && typeof node.extras === "object" ? node.extras : {};
+    var extraKeys = Object.keys(extras).filter(function (key) {
+      return extras[key] != null && extras[key] !== "" && !(Array.isArray(extras[key]) && !extras[key].length);
+    });
+    extraKeys.sort(function (a, b) {
+      var ai = GRAPH_EXTRA_ORDER.indexOf(a);
+      var bi = GRAPH_EXTRA_ORDER.indexOf(b);
+      if (ai === -1) ai = 999;
+      if (bi === -1) bi = 999;
+      if (ai !== bi) return ai - bi;
+      return a.localeCompare(b, "it");
+    });
+    if (extraKeys.length) {
+      html += "<div class='graph-detail-section'><div class='graph-detail-section-title'>Metadati</div>";
+      extraKeys.forEach(function (key) {
+        html += graphDetailRow(graphExtraLabel(key), graphFieldValue(extras[key]));
+      });
+      html += "</div>";
+    }
+    var citedBy = [];
+    var cites = [];
+    graphState.edges.forEach(function (edge) {
+      if (edge.to === node.id) citedBy.push(edge);
+      if (edge.from === node.id) cites.push(edge);
+    });
+    if (citedBy.length || cites.length) {
+      html += "<div class='graph-detail-section'><div class='graph-detail-section-title'>Collegamenti</div>";
+      if (citedBy.length) {
+        html += "<div class='graph-detail-row'><div class='graph-detail-label'>Citato da</div><div class='graph-detail-value'>" +
+          graphRelationLines(citedBy, function (edge) { return edge.from; }) + "</div></div>";
+      }
+      if (cites.length) {
+        html += "<div class='graph-detail-row'><div class='graph-detail-label'>Cita</div><div class='graph-detail-value'>" +
+          graphRelationLines(cites, function (edge) { return edge.to; }) + "</div></div>";
+      }
+      html += "</div>";
+    }
+    box.innerHTML = html;
+  }
+
+  function updateGraphTooltip(node, mx, my) {
+    var tip = document.getElementById("graph-tooltip");
+    if (!node) {
+      tip.classList.add("hidden");
+      return;
+    }
+    tip.textContent = graphNodeShortLabel(node);
+    tip.classList.remove("hidden");
+    var wrap = document.getElementById("graph-wrap");
+    var maxLeft = Math.max(0, wrap.clientWidth - tip.offsetWidth - 8);
+    var maxTop = Math.max(0, wrap.clientHeight - tip.offsetHeight - 8);
+    tip.style.left = Math.min(mx + 12, maxLeft) + "px";
+    tip.style.top = Math.min(my + 12, maxTop) + "px";
+  }
+  function layoutGraphNodes() {
+    var count = graphState.nodes.length;
+    graphState.positions = {};
+    if (!count) return;
+    var perRing = 14;
+    graphState.nodes.forEach(function (n, i) {
+      var ring = Math.floor(i / perRing);
+      var idx = i % perRing;
+      var countInRing = Math.min(perRing, count - ring * perRing);
+      var angle = (idx / Math.max(countInRing, 1)) * Math.PI * 2 + ring * 0.35;
+      var radius = 42 + ring * 52;
+      graphState.positions[n.id] = {
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius * 0.82
+      };
+    });
+  }
+
+  function fitGraphView() {
+    var wrap = document.getElementById("graph-wrap");
+    var w = wrap.clientWidth;
+    var h = wrap.clientHeight;
+    if (!graphState.nodes.length || w < 1 || h < 1) {
+      graphState.scale = 1;
+      graphState.ox = 0;
+      graphState.oy = 0;
+      return;
+    }
+    var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    graphState.nodes.forEach(function (n) {
+      var p = graphState.positions[n.id];
+      if (!p) return;
+      var pad = n.in_corpus ? 14 : 12;
+      minX = Math.min(minX, p.x - pad);
+      minY = Math.min(minY, p.y - pad);
+      maxX = Math.max(maxX, p.x + pad);
+      maxY = Math.max(maxY, p.y + pad);
+    });
+    var bw = Math.max(maxX - minX, 1);
+    var bh = Math.max(maxY - minY, 1);
+    var padding = 52;
+    graphState.scale = Math.max(0.12, Math.min(2.5, Math.min((w - padding * 2) / bw, (h - padding * 2) / bh)));
+    var cx = (minX + maxX) / 2;
+    var cy = (minY + maxY) / 2;
+    graphState.ox = w / 2 - cx * graphState.scale;
+    graphState.oy = h / 2 - cy * graphState.scale;
+  }
+
   function loadGraph() {
     fetch("/api/admin/biblio/graph").then(function (r) { return r.json(); }).then(function (data) {
       graphState.nodes = data.nodes || [];
       graphState.edges = data.edges || [];
-      var wrap = document.getElementById("graph-wrap");
-      var cx = wrap.clientWidth / 2, cy = wrap.clientHeight / 2;
-      graphState.positions = {};
-      graphState.nodes.forEach(function (n, i) {
-        var a = (i / Math.max(graphState.nodes.length, 1)) * Math.PI * 2;
-        var r = 40 + (i % 7) * 28;
-        graphState.positions[n.id] = { x: cx + Math.cos(a) * r * 3, y: cy + Math.sin(a) * r * 2.2 };
-      });
+      graphState.selected = null;
+      graphState.hovered = null;
+      document.getElementById("graph-detail").textContent = "Nessun nodo selezionato.";
+      updateGraphTooltip(null, 0, 0);
+      layoutGraphNodes();
+      fitGraphView();
       drawGraph();
     });
   }
@@ -327,9 +1088,15 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     graphState.nodes.forEach(function (n) {
       var p = graphState.positions[n.id]; if (!p) return;
       ctx.beginPath();
-      ctx.fillStyle = n.id === graphState.selected ? "#4ec9b0" : (n.in_corpus ? "#3d8eef" : "#c9a14a");
+      var active = n.id === graphState.selected || n.id === graphState.hovered;
+      ctx.fillStyle = n.id === graphState.selected ? "#4ec9b0" : (n.id === graphState.hovered ? "#6ed9c6" : (n.in_corpus ? "#3d8eef" : "#c9a14a"));
       ctx.arc(p.x, p.y, n.in_corpus ? 8 : 6, 0, Math.PI * 2);
       ctx.fill();
+      if (active) {
+        ctx.strokeStyle = "#e8e8e8";
+        ctx.lineWidth = 1.5 / graphState.scale;
+        ctx.stroke();
+      }
     });
     ctx.restore();
   }
@@ -346,21 +1113,36 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   }
   (function bindGraph() {
     var canvas = document.getElementById("graph-canvas");
+    function graphPointer(mx, my) {
+      if (graphState.drag) return;
+      var node = hitNode(mx, my);
+      graphState.hovered = node ? node.id : null;
+      canvas.style.cursor = node ? "pointer" : "grab";
+      updateGraphTooltip(node, mx, my);
+      drawGraph();
+    }
+    canvas.addEventListener("mousemove", function (ev) {
+      var rect = canvas.getBoundingClientRect();
+      graphPointer(ev.clientX - rect.left, ev.clientY - rect.top);
+    });
+    canvas.addEventListener("mouseleave", function () {
+      graphState.hovered = null;
+      canvas.style.cursor = "grab";
+      updateGraphTooltip(null, 0, 0);
+      drawGraph();
+    });
     canvas.addEventListener("mousedown", function (ev) {
       var rect = canvas.getBoundingClientRect();
       var mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
       var node = hitNode(mx, my);
       if (node) {
         graphState.selected = node.id;
-        document.getElementById("graph-detail").innerHTML =
-          "<strong>" + esc(labelOf(node)) + "</strong>" +
-          "<div class='meta'>" + esc(node.id) + "</div>" +
-          "<div>" + (node.in_corpus ? "In corpus" : "Solo citato") + "</div>" +
-          "<pre style='white-space:pre-wrap;font-size:0.75rem'>" + esc(JSON.stringify(node.extras || {}, null, 2)) + "</pre>";
+        renderGraphDetail(node);
         drawGraph();
         return;
       }
       graphState.drag = { x: mx, y: my, ox: graphState.ox, oy: graphState.oy };
+      canvas.style.cursor = "grabbing";
     });
     window.addEventListener("mousemove", function (ev) {
       if (!graphState.drag) return;
@@ -370,7 +1152,11 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       graphState.oy = graphState.drag.oy + (my - graphState.drag.y);
       drawGraph();
     });
-    window.addEventListener("mouseup", function () { graphState.drag = null; });
+    window.addEventListener("mouseup", function () {
+      if (!graphState.drag) return;
+      graphState.drag = null;
+      canvas.style.cursor = graphState.hovered ? "pointer" : "grab";
+    });
     canvas.addEventListener("wheel", function (ev) {
       ev.preventDefault();
       var factor = ev.deltaY < 0 ? 1.1 : 0.9;
@@ -378,7 +1164,10 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       drawGraph();
     }, { passive: false });
     document.getElementById("btn-graph-reload").addEventListener("click", loadGraph);
-    window.addEventListener("resize", drawGraph);
+    window.addEventListener("resize", function () {
+      fitGraphView();
+      drawGraph();
+    });
   })();
 
   if (BIBLIO_EXTRACT_ENABLED) {
@@ -400,6 +1189,9 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         status.textContent = data.ok
           ? ("Job avviato: " + data.job_id + " — vedi /jobs")
           : ("Errore: " + (data.error || ""));
+        if (data.ok && window.librarAInTrackJob) {
+          window.librarAInTrackJob(data.job_id, { job_kind: "biblio" });
+        }
         if (data.ok) loadCandidates();
       }).catch(function (err) { status.textContent = String(err); });
     });
@@ -410,6 +1202,10 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     }
   }
 })();
+</script>
+<script type="module">
+import { trackJob } from "/dashboard/jobs.js";
+window.librarAInTrackJob = trackJob;
 </script>
 </body>
 </html>

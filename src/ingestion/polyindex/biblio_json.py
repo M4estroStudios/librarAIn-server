@@ -8,7 +8,7 @@ import openai
 
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.ingestion.biblio_hash import compute_biblio_id
-from src.ingestion.biblio_llm import extract_biblio_entries_for_page
+from src.ingestion.biblio_llm import extract_biblio_entries_for_page, normalize_biblio_entry
 from src.ingestion.output_writer import BookOutput, _atomic_write_bytes
 from src.ingestion.polyindex.file_lock import polyindex_dir_lock
 from src.models.polyindex_biblio import (
@@ -76,6 +76,112 @@ def load_book_biblio(path: Path) -> dict[str, Any]:
     except (json.JSONDecodeError, OSError):
         return {}
     return raw if isinstance(raw, dict) else {}
+
+
+def normalize_book_biblio_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    normalized_entries: list[dict[str, Any]] = []
+    for item in payload.get("entries") or []:
+        if not isinstance(item, dict):
+            continue
+        normalized = normalize_biblio_entry(item)
+        if normalized is None:
+            continue
+        for key in ("aligned_page", "original_page", "raw"):
+            if key in item:
+                normalized[key] = item[key]
+        normalized_entries.append(normalized)
+    payload = dict(payload)
+    payload["entries"] = normalized_entries
+    normalized_review: list[dict[str, Any]] = []
+    for item in payload.get("review_queue") or []:
+        if not isinstance(item, dict):
+            continue
+        normalized = normalize_biblio_entry(item)
+        if normalized is None:
+            continue
+        review_item = dict(item)
+        review_item["authors"] = normalized["authors"]
+        review_item["title"] = normalized["title"]
+        review_item["year"] = normalized["year"]
+        review_item["extras"] = normalized["extras"]
+        normalized_review.append(review_item)
+    payload["review_queue"] = normalized_review
+    return payload
+
+
+def reconcile_polyindex_biblio_nodes(document: PolyindexBiblioDocument) -> bool:
+    id_map: dict[str, str] = {}
+    replacements: dict[str, tuple[str, BiblioNode]] = {}
+    for old_id, node in list(document.nodes.items()):
+        normalized = normalize_biblio_entry(
+            {
+                "authors": node.authors,
+                "title": node.title,
+                "year": node.year,
+                "extras": dict(node.extras),
+            }
+        )
+        if normalized is None:
+            continue
+        new_id = normalized["id"]
+        new_node = BiblioNode(
+            authors=normalized["authors"],
+            title=normalized["title"],
+            year=normalized["year"],
+            extras=normalized["extras"],
+            in_corpus=node.in_corpus,
+            source_sha256=node.source_sha256,
+            slug=node.slug,
+            incomplete=bool(normalized["incomplete"]),
+        )
+        unchanged = (
+            new_id == old_id
+            and new_node.title == node.title
+            and new_node.authors == node.authors
+            and new_node.extras == node.extras
+            and new_node.incomplete == node.incomplete
+        )
+        if unchanged:
+            continue
+        if new_id != old_id:
+            id_map[old_id] = new_id
+        replacements[old_id] = (new_id, new_node)
+    if not replacements:
+        return False
+    for old_id in replacements:
+        document.nodes.pop(old_id, None)
+    for _old_id, (new_id, new_node) in replacements.items():
+        existing = document.nodes.get(new_id)
+        if existing is None:
+            document.nodes[new_id] = new_node
+            continue
+        existing.authors = new_node.authors
+        existing.title = new_node.title
+        existing.year = new_node.year
+        existing.extras = new_node.extras
+        existing.incomplete = new_node.incomplete
+        if new_node.in_corpus:
+            existing.in_corpus = True
+        if new_node.source_sha256:
+            existing.source_sha256 = new_node.source_sha256
+        if new_node.slug:
+            existing.slug = new_node.slug
+    for citation in document.citations:
+        if citation.from_id in id_map:
+            citation.from_id = id_map[citation.from_id]
+        if citation.to_id in id_map:
+            citation.to_id = id_map[citation.to_id]
+    seen: set[tuple[str, str, str]] = set()
+    deduped: list[BiblioCitation] = []
+    for citation in document.citations:
+        key = (citation.from_id, citation.to_id, citation.source_sha256)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(citation)
+    document.citations = deduped
+    document.prune_orphan_nodes()
+    return True
 
 
 async def build_book_biblio_from_pages(
@@ -175,6 +281,7 @@ def sync_polyindex_biblio_from_book_payload(
     payload: dict[str, Any],
 ) -> tuple[Path, dict[str, int]]:
     path = polyindex_dir / "BIBLIO.json"
+    payload = normalize_book_biblio_payload(payload)
     with polyindex_dir_lock(polyindex_dir, ".biblio.lock"):
         document = PolyindexBiblioDocument.load_file(path)
         document.purge_source_citations(source_sha256)
@@ -272,6 +379,89 @@ async def sync_polyindex_biblio_from_book(
         polyindex_dir, source_sha256, payload
     )
     return path, stats, payload
+
+
+def ensure_polyindex_corpus_from_outputs(data_root: Path) -> None:
+    output_root = data_root / "output"
+    if not output_root.is_dir():
+        return
+    polyindex_dir = data_root / "polyindex"
+    path = polyindex_dir / "BIBLIO.json"
+    pending: list[tuple[str, BiblioNode]] = []
+    for book_dir in sorted(output_root.iterdir()):
+        if not book_dir.is_dir():
+            continue
+        source_sha256 = book_dir.name
+        biblio_path = book_dir / "BIBLIO.json"
+        if biblio_path.is_file():
+            payload = load_book_biblio(biblio_path)
+            corpus_raw = payload.get("corpus_node")
+            corpus_id = str(payload.get("node_id") or "")
+            if corpus_id and isinstance(corpus_raw, dict):
+                pending.append((corpus_id, BiblioNode.model_validate(corpus_raw)))
+                continue
+        manifest_path = book_dir / "manifest.json"
+        if not manifest_path.is_file():
+            continue
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        if not isinstance(manifest, dict):
+            continue
+        reicat_raw = manifest.get("reicat")
+        if not isinstance(reicat_raw, dict):
+            continue
+        try:
+            reicat = ReicatMetadata.model_validate(reicat_raw)
+        except Exception:
+            continue
+        slug = str(manifest.get("slug") or "") or None
+        node_id, node = corpus_node_from_reicat(
+            reicat,
+            source_sha256=source_sha256,
+            slug=slug,
+        )
+        pending.append((node_id, node))
+    if not pending:
+        return
+    with polyindex_dir_lock(polyindex_dir, ".biblio.lock"):
+        document = PolyindexBiblioDocument.load_file(path)
+        changed = False
+        for node_id, node in pending:
+            existing = document.nodes.get(node_id)
+            if existing is None or node.in_corpus:
+                document.upsert_node(node_id, node)
+                changed = True
+        if changed:
+            document.write_atomic(path, sort_document=True)
+
+
+def ensure_polyindex_biblio_from_outputs(data_root: Path) -> None:
+    output_root = data_root / "output"
+    if not output_root.is_dir():
+        return
+    polyindex_dir = data_root / "polyindex"
+    path = polyindex_dir / "BIBLIO.json"
+    document = PolyindexBiblioDocument.load_file(path)
+    for book_dir in sorted(output_root.iterdir()):
+        if not book_dir.is_dir():
+            continue
+        source_sha256 = book_dir.name
+        biblio_path = book_dir / "BIBLIO.json"
+        if not biblio_path.is_file():
+            continue
+        payload = load_book_biblio(biblio_path)
+        entries = payload.get("entries")
+        if not isinstance(entries, list) or not entries:
+            continue
+        has_citations = any(
+            citation.source_sha256 == source_sha256 for citation in document.citations
+        )
+        if has_citations:
+            continue
+        sync_polyindex_biblio_from_book_payload(polyindex_dir, source_sha256, payload)
+        document = PolyindexBiblioDocument.load_file(path)
 
 
 def ensure_corpus_node_only(
