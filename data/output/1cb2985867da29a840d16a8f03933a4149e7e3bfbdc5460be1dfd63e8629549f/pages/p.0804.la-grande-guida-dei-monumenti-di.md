@@ -1,0 +1,46 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Indice dei luoghi e delle cose notevoli
+
+Musei
+- Chiaramonti in Vaticano, 717-718
+- Civico di Zoologia, 35
+- Comunale di Villa Doria Pamphilj, 89
+- Criminologico, 373
+- d'Arte Ebraica, 203
+- d'Arte Sacra del palazzo della Minerva, 446
+- degli Scavi di Ostia Antica, 508
+- del Casino dei Principi di Villa Torlonia, 492
+- del Corso, 252
+- del Presepio, 687
+- del Servizio Geologico d'Italia, 677
+- della Casina delle Civette di Villa Torlonia, 491
+- della Civiltà Romana, 33
+- della Rocca del Borgo di Ostia Antica, 499
+- della via Ostiense, 599
+- delle Anime del Purgatorio, 613-614
+- delle Cere di piazza Santi Apostoli, 50
+- delle Fosse Ardeatine, 80
+- delle Tradizioni Popolari, 417
+- di Palazzo Ruspoli, 258
+- di Roma di Palazzo Braschi, 518
+- di Roma in Trastevere, 285
+- di San Pancrazio, 513
+- di San Paolo fuori le Mura, 506
+- di Sant'Eligio dei Ferrari, 360
+- di Santa Maria dell'Orto, 45
+- di Zoologia, 196
+- Garibaldino di Porta San Pancrazio, 598
+- Gregoriano Egizio in Vaticano, 718
+- Gregoriano Etrusco in Vaticano, 718
+- Gregoriano Profano in Vaticano, 718
+- Mario Praz, 764
+- Missionario Etnologico in Vaticano, 718-719
+- Napoleonico, 764
+- Nazionale d'Arte Orientale, 132
+- Nazionale degli Strumenti Musicali, 267
+- Nazionale del palazzo di Venezia, 729
+- Nazionale dell'Alto Medioevo, 417
+- Nazionale di Castel Sant'Angelo, 189
+- Nazionale di Villa Giulia, 743
+- Nazionale Preistorico-Etnografico L. Pigorini, 417
+- Nazionale Romano a Palazzo Massimo alle

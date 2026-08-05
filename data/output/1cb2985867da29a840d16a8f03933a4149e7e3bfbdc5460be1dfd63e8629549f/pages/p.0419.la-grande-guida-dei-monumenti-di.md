@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Palazzo Maccarani Odescalchi
 
-È al n. 19. Questo grandioso palazzo della prima metà del Seicento, che sorge in piazza Margana, fu costruito per i Maccarani, oriundi di Milano e presenti a Roma dall’xì secolo, imparentati con numerosi nobili famiglie, come i Cesi e i Visconti. Nella seconda metà del Seicento lo acquistò Livio Odescalchi e suo nipote monsignor Tommaso Odescalchi utilizzò parte dell’edificio per accogliervi un gruppo di fanciulle uscite dall’ospizio di Santa Galla, ma l’opera si fuse poi con l'Istituto del San Michele. Singolare il cortile con numerose iscrizioni; sul fondo, un grazioso ninfeo con protome leonina e, sulla parete sinistra, un sarcofago strigilato un tempo usato come fontana. Il palazzo è sede della rappresentanza diplomatica permanente presso la Fao.
+È al n. 19. Questo grandioso palazzo della prima metà del Seicento, che sorge in piazza Margana, fu costruito per i Maccarani, oriundi di Milano e presenti a Roma dall’xì secolo, imparentati con numerosi nobili famiglie, come i Cesi e i Visconti. Nella seconda metà del Seicento lo acquistò Livio Odescalchi e suo nipote monsignor Tommaso Odescalchi utilizzò parte dell’edificio per accogliervi un gruppo di fanciulle uscite dall’ospizio di Santa Galla, ma l’opera si fuse poi con l’Istituto del San Michele. Singolare il cortile con numerose iscrizioni; sul fondo, un grazioso ninfeo con protome leonina e, sulla parete sinistra, un sarcofago strigilato un tempo usato come fontana. Il palazzo è sede della rappresentanza diplomatica permanente presso la Fao.
 
 Margutta (Via, R IV Campo Marzio)
 

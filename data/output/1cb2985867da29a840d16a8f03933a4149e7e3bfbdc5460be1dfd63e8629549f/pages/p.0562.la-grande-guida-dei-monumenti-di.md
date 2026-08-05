@@ -1,20 +1,4 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Pio V (Largo San, Q XIII Aurelio)
+San Pietro in Montorio in un’incisione di G.B. Falda.
 
-San Pio v
-
-È sul largo. Questa chiesa, dedicata al papa Pio v (1566-72), è stata costruita nel 1952 su progetto di Tullio Rossi e presenta un aspetto armonico che ripete quello di tipo basilicale. Il mosaico di Joseph Stracota sul portale è un'eccellente introduzione alla preziosa decorazione interna, che si avvale, tra l'altro, di un Crocifisso di Francesco Nagni, una Via Crucis di Angelo Biancini, un Angelo in gesso di Duilio Cambellotti e una statua di Santa Caterina da Siena di Antonio Berti.
-
-Pio XII (Piazza, R XIV Borgo)
-
-Palazzi dei Propilei
-
-Delimitano la piazza. Sono i due edifici dei porticati detti “propilei” che inquadrano la vista di San Pietro come due avancorpi simmetrici, concludendo la via della Conciliazione (v.) e costituendo un punto di accesso al colonnato di piazza San Pietro (v.). Sono costituiti da due gallerie sovrapposte, secondo una descrizione di Laura Gigli, «scandite da tre file di aperture rettangolari con cornici e balaustri in travertino, intervallate da altri pilastri a cortina, che si ergono e acquistano slancio da sedili, pure in travertino, uguali a quelli che costituiscono la base degli obelischi di via della Conciliazione». Sull’architrave di ambedue è la scritta «Pius XII Pont. Max. / Anno Jubilaei MCML».
-
-I palazzi addossati ai propilei, costruiti su progetto di Marcello Piacentini e Attilio Spaccarelli, sviluppano su quattro piani, coronati da balaustre, e aprono con due solenni portali in travertino dal timpano spezzato con emblemi pontificici. Proprietà della Santa Sede, ospitano uffici di congregazioni e la sala stampa del Vaticano. Un’epigrafe sul palazzo di destra ricorda la dedica della piazza a Pio XII.
-
-Piscinula (Piazza in, R XIII Trastevere)
-
-Case Mattei Nuñez Celsia di Vegliasco
-
-Sono ai nn. 9-10. Queste case quattrocentesche del ramo dei Mattei di Trastevere furono realizzate inglobando antichi edifici di proprietà del casato. Le tracce più antiche si rivelano nelle finestre centinate e a crociera, nelle bifore e nel porticetto con una colonna medievale e una loggia. Il complesso è frutto di sovrastrutture e modifiche attuate nell’arco di cinque secoli. In queste case abitò nel 1414 Giovanni Mattei, che difese il cardinale legato Giacomo Isolani contro un governo popolare guidato da Pietro di Matuzzo. Ma la posizione filopontificia dei Mattei mutò settant’anni dopo, nel 1484, quando Paolo Mattei appoggì i Colonna contro gli Orsini legati a Sisto iv; allora il papa ordinò il saccheggio degli edifici. Nel 1555 queste case furono lo scenario di quella tragedia fa-
+tirio della crocifissione tra il 64 e il 67 sul Gianicolo. Nell’appellativo Montorio dovrebbe esserci una corruzione di mons Aureus, termine con cui veniva identificato il Gianicolo anticamente, mentre la consacrazione a Pietro rievoca l’infondata tradizione che riteneva l’apostolo crocifisso sul Gianicolo anziché sul Vaticano. Una prima chiesa fu eretta nel ix secolo, ma venne completamente ricostruita tra il 1481 e il 1500 su commissione di Ferdinando II d’Aragona; nel 1626 vi entrarono i frati Minori che fecero edificare il convento. Gravi furono i danni provocati dai bombardamenti dei francesi nel 1849, così che il campanile originario fu quasi completamente ricostruito. Nella chiesa è la tomba di Beatrice Cenci, qui tumulata l’11 settembre 1599, ma non ebbe alcun’epigrafe, come avveniva per tutti i giustiziati, per cui non si sa con certezza dove fu sepolta, anche se per tradizione si fa riferimento ai gradini dell’altar maggiore. Secondo la leggenda, la sua salma non avrebbe avuto pace durante l’occupazione francese del 1798; un giacobino avrebbe saccheggiato la chiesa e, avendo visto il teschio di Beatrice deposto su un piatto d’argento all’interno di una teca, avrebbe non solo rubato il vassoio, ma si sarebbe divertito a prendere a calci la testa facendola finire chissà dove. Nel primo chiostro del convento è il famoso TEMPIETTO DEL BRAMANTE, un capolavoro di armonia architettonica, costruito proprio sul punto dove si riteneva che Pietro fosse stato crocifisso: infatti nella cripta, alla quale si accede lungo una doppia rampa di scale berniniana, è il foro nel quale sarebbe stata conficcata la croce. Un’ala del convento

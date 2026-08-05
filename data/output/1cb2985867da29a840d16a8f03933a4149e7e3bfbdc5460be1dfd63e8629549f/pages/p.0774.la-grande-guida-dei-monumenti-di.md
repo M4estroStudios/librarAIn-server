@@ -1,34 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-I papi costruttori
+ze che hanno pini altruisti ricchi di resina, di pollini e di sogni. Macché uscire... macché andare ad un concerto, ad una conferenza, ad una mostra... macché andare a prendere un tè da un’amica blasonata protettrice delle belle arti. La mia finestra è all’angolo. I miei occhi spaziano sulle belle mura pinciane e sulla villa Borghese, dove l’anima di Paolina scende dal Limbo, spinta da dolce nostalgia». Il Flora è diventato l’albergo degli diplomatici e parlamentari, non-ché di turisti in gruppo.
 
-Niccolò v (1447-55). Restauro delle Mura Aureliane e Leonine; fortificazione di Castel Sant'Angelo; restauro dell’Acquedotto Vergine; costruzione del Torrione Niccolino in Vaticano, ad opera di Bernardo Rossellino, con la Cappella Niccolina affrescata dal Beato Angelico.
+**Albergo Majestic**
 
-Paolo II (1464-71). Inizio della costruzione del Palazzo San Marco (poi di Venezia), proseguito dal nipote, il cardinale Marco Barbo, e del Palazzetto di San Marco.
+È al n. 54. È stato costruito nel 1896 da Gaetano Koch in uno stile neorinascimentale, tipico del grande architetto romano, ed è caratterizzato dall’andamento curvilineo della facciata, che segue il corso della strada. Di grande effetto i tre balconcini semicircolari sovrapposti sull’angolo dell’avancorpo dell’edificio. È stato restaurato nel 1946, all’indomani della sua “occupazione” da parte delle forze armate canadesi. All’interno, splendidi gli affreschi a tempera del 1900 di Domenico Bruschi sulla volta del salone principale e al primo piano, con le Allegorie della glorificazione di Roma e di casa Savoia: sono stati restaurati nel 1990. L’arredamento interno completamente rinnovato, tra tende e parati di eccellente qualità, è opera dell’architetto Gianni Sturchio.
 
-Sisto IV (1471-84). Allargamento e pavimentazione delle vie Recta (poi dei Coronari) e Florea (poi del Pellegrino); costruzione del Ponte Sisto, della Cappella Sistina e della prima sede della Biblioteca Vaticana; restauro di Santa Maria del Popolo e dell’ospedale di Santo Spirito; inizio della costruzione di Palazzo Nardini.
+**Chiesa dei Cappuccini**
 
-Alessandro VI (1492-1503). Apertura di Borgo Nuovo e della via Sancta (poi della Lungara); costruzione della Torre dei Borgia, affrescata da Pinturicchio, e dello Studium Urbis.
+È al n. 27. Il suo titolo originale è Santa Maria della Immacolata Concezione, ma è popolarmente nota con il riferimento ai Cappuccini ai quali è affidata. Fu costruita per volere del cardinale Antonio Barberini nel 1626, che quando morì non volle essere sepolto in un grande sarcofago: preferi una semplice lastra di marmo davanti all’altar maggiore con lo scabro epitaffio latino: «Hic iacet pulvis, cinis et nihil» (“Qui è deposta polvere, cenere e nient’altro”). È peraltro in linea con lo spirito macabro che caratterizza le cinque CAPPELLE SOTTERRANEE della chiesa decorate con ossa e teschi di 4000 frati cappuccini morti; provengono dal vecchio cenobio di San Nicolò de’ Porcis, che era sulle falde del Quirinale, oggi chiesa di Santa Croce e San Bonaventura alla Pilotta, e il trasporto delle ossa fu eseguito con trecento viaggi di carrette tra il 1627 e il 1631. La terra che ricopre il pavimento sarebbe stata trasportata dalla Terra Santa. Una scritta all’uscita riconferma lo spirito cimiteriale: «Sei ciò che fummo. Sarai ciò che siamo». Numerosi i capolavori pittorici, tra i quali San Francesco riceve le Stimmate e Morte di San Francesco del Domenichino e San Francesco orante del Caravaggio.
 
-Giulio II (1503-13). Apertura della via Giulia; volta della Cappella Sistina affrescata da Michelangelo; inizio della ricostruzione di San Pietro e degli affreschi delle Stanze di Raffaello con le Logge.
+**Palazzo Margherita**
 
-Leone X (1513-21). Costruzione di San Giovanni dei Fiorentini; completamento delle Logge di Raffaello e proseguimento degli affreschi delle Stanze; apertura della via Leonina (poi via di Ripetta).
-
-Clemente VII (1523-34). Proseguimento della costruzione di San Pietro; costruzione del cortile di San Damaso; apertura della via Clementina (poi via del Babuino).
-
-Paolo III (1534-49). Ristrutturazione delle mura con i Bastioni del Sangallo; costruzione della porta e della chiesa di Santo Spirito; affresco del Giudizio Universale di Michelangelo nella Cappella Sistina; proseguimento della costruzione di San Pietro; definizione della piazza del Campidoglio; inizio di Palazzo Farnese; apertura delle vie Paola e di Panico con il “canale di Ponte” al centro (ossia la via dei Banchi, oggi del Banco di Santo Spirito).
-
-Giulio III (1550-55). Costruzione della Villa Giulia.
-
-Pio IV (1560-65). Costruzione di Santa Maria degli Angeli; apertura della Porta Pia e della via Pia (poi del Quirinale); costruzione del Casino di Pio IV in Vaticano; apertura di Borgo Pio.
-
-Pio V (1566-72). Costruzione dell’appartamento in Vaticano con tre cappelle; costruzione del Palazzo del Sant’Uffizio.
-
-Gregorio XIII (1572-85). Apertura delle vie Gregoriana (poi detta Merulana), Ferratella (per il collegamento tra le basiliche di San Sebastiano e San Paolo), Margutta e la via Gregoriana da Capo le Case a Trinità dei Monti; costruzione della Galleria delle Carte Geografiche in Vaticano, del Collegio Romano e del nuovo Studium Urbis; proseguimento della costruzione di San Pietro, al Campidoglio; inizio del Palazzo del Quirinale; fontana in piazza della Rotonda.
-
-Sisto V (1585-90). Completamento della cupola di San Pietro; erezione degli obelischi a San Pietro, San Giovanni in Laterano, Santa Maria Maggiore e piazza del Popolo; restauro della Colonna di Marco Aurelio; costruzione dei Palazzi del Vaticano, del Laterano e ricostruzione della Scala Santa con il Sancta Sanctorum; continuazione del Palazzo del Quirinale; Acquedotto Felice con Fontana-mostra del Mosè a Termini; apertura delle vie di San Giovanni in Laterano, Panisperna e Strada Felice (lunga 2787 m, da Trinità dei Monti a Santa Croce in Gerusalemme, poi frammentata e indicata solo nel primo tratto come via Sistina); costruzione della Biblioteca Apostolica Vaticana.
-
-Gregorio XIV (1590-91). Erezione della lanterna sopra la cupola di San Pietro.
-
-Paolo V (1605-21). Facciata di San Pietro; erezione della fontana di Carlo Maderno in piazza San Pietro; apertura delle vie San Francesco a Ripa, dell’Umiltà, della Mercede e Paolina; risanamento del rione Trastevere; Acquedotto Paolo con la Fontana-mostra del Gianicolo e il Fontanone di via Giulia; rinnovamento del Porto di Ripetta.
-
-Urbano VIII (1623-44). Ampliamento della piazza del Quirinale; restauro di Castel Sant’Angelo; cinta muraria gianicolense; erezione del baldacchino bronzeo in
+È al n. 119A. Attualmente sede dell’Ambasciata degli Stati Uniti d’America, deve il suo popolare nome alla regina d’Italia Margherita di Savoia (Torino 1851-Bordighera, Imperia 1926), che vi andò ad abitare dopo la morte di Umberto I, alla vigilia di Natale del 1900. Fu fatto costruire da Rodolfo Boncompagni Ludovisi e venne chiamato Palazzo Piombino, dal principato della loro famiglia; il palazzo infatti fu costruito, perché l’omonimo costruito dai Boncompagni Ludovisi a piazza Colonna era stato espropriato. Il lungo edificio fu progettato da Gaetano Koch e realizzato tra il 1886

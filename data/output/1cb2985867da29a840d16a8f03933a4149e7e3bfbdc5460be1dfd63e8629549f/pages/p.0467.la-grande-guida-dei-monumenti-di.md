@@ -1,2 +1,44 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-visato notevolmente l’originario assetto, sopralevandolo e aggiungendo due corpi alla facciata. Probabilmente l’edificio originale terminava con il fregio dorico e la balaustra ancora esistente, costituita da un solo piano, fu ingrandita nel Seicento, assumendo una pianta a forma di L. A quell’epoca risale la successione di finestre sormontate da tondi con busti antichi e intervallata da plinti con statue, nonché la facciata a valle fino alla balaustra. Notevole nell’edificio la SALA DEL MOSAICO cosiddetta perché conserva nel pavimento un bel mosaico d’epoca romana, che ha volta decorata da Andrea Lilli (1620 ca.) con al centro la Primavera che riceve il vaso con i fiori da Apollo tra figure di Stagioni. Grandissima nel passato era la fama dei giardini Mattei, non tanto per la vegetazione in sé quanto per la ricchezza dei marmi antichi, soprattutto bassorilievi, tanto è vero che la sua visita era quasi un obbligo per i viaggiatori e nello stesso tempo uno dei luoghi prediletti dalla nobiltà per i suoi intrattenimenti. Il giardino è legato anche all’apostolato di san Filippo Neri: era consuetudine infatti farvi una sosta ricreativa, durante il pellegrinaggio alle Sette Chiese, pratica religiosa divulgata del santò, la quale, specie il giovedi santo, vedeva la partecipazione di migliaia di fedeli. A sinistra del viale d’ingresso è l’OBELISCO, proveniente da Eliopoli, dove era dedicato al Sole dal faraone Ramesse II; fu trasportato a Roma in epoca imperiale e posto nel tempio di Iside Capitolina, e successivamente ai piedi dell’Aracoeli. Fu donato al duca Ciriaco Mattei nel 1528 dal senato di Roma per le sue benemerenze; la sua erezione nella villa comportò un incidente: le corde che sostenevano il monolito, mentre veniva deposto sul piedistallo, cedettero stritolando a un operaio braccio e mano, che restarono sotto l’obelisco. Sembra che il povero invalido fu risarcito con una pensione e una casa. L’obelisco misura m 2,682, ma con il basamento e un’aggiunta di granito arriva a m 12,236. Nell’Ottocento il casino ebbe due corpi a squadra e la facciata di nord-ovest a due piani con portico centrale di tre archi e finestre più piccole
+PIANO DELLA COLLANA
+
+CLAUDIO RENDINA
+LE GRANDI FAMIGLIE DI ROMA (VOLUME PRIMO)
+
+CLAUDIO RENDINA
+LE GRANDI FAMIGLIE DI ROMA (VOLUME SECONDO)
+
+CARPANETO - CERCHIAI - GRIFONE - MANODORI
+
+QUERCIOLI - RENDINA
+
+I QUARTIERI DI ROMA (VOLUME PRIMO)
+
+CARPANETO - CERCHIAI - GRIFONE - MANODORI
+
+QUERCIOLI - RENDINA - SCRUGLI
+
+I QUARTIERI DI ROMA (VOLUME SECONDO)
+
+CLAUDIO RENDINA
+LA GRANDE GUIDA DEI MONUMENTI DI ROMA (VOLUME PRIMO)
+
+CLAUDIO RENDINA
+LA GRANDE GUIDA DEI MONUMENTI DI ROMA (VOLUME SECONDO)
+
+ALESSANDRO TAGLIOLINI
+I Giardini di Roma
+
+MAURO QUERCIOLI
+LE TORRI DI ROMA
+
+GABRILE LE LA PORTA - FRANCESCO FANTASIA
+ROMA MAGICA E MISTERIOSA
+
+ANDREA FREDIANI
+GLI ASSEDI DI ROMA
+
+BARTOLOMEO ROSSETTI
+I BULLI DI ROMA
+
+ARMando RAVAGLIO
+ROMA A PASSEGGIO

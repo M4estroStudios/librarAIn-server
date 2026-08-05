@@ -1,2 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-al seguito di Alessandro Farnese; e al primo piano, infatti, aveva fatto eseguire un affresco, non più esistente, che illustrava la conquista di Anversa nel 1585. Nel 1608 lo acquistò Orazio Caetani, ma nel 1621 vi abitò in affitto il cardinale Michelangelo Tonti, che lo acquistò nel 1622 lasciandolo in eredità agli Scolopi per insediarvi il Collegio Nazareno. Gli Scolopi poterono averlo nel 1630, ma non avevano i soldi per mantenerlo e dovettero affittarlo; così, vi abitarono i Bolognetti e Francesco Albizi. Mentre il Nazareno vagò da una sede all’altra fino al 1689, quando la questione dell’eredità si risolse completamente. Allora l’edificio venne ampliato in una serie di lavori affidati a Sebastiano Cipriani ed effettuati tra il 1698 e il 1712. Fu in sostanza aggiunta la parte su via del Tritone, con la facciata che sviluppa su tre piani di dieci finestre ciascuno sulla via del Nazareno e tre nella parte sul Tritone, dove presenta un ampio finestrone centinato in alto. Sopra il cornicione, una sopraelevazione ottocentesca. La facciata cinquecentesca su via del Nazareno ha tre piani con un portale a bugne sovrastato da un balcone con tre mensole, delle quali la centrale presenta una testa di leone con un anello nelle fauci, l’elemento dell’emblema dei Maurelli. Dalla parte di via Sant’Andrea delle Fratte fu costruito il teatro, tramutato poi tra il 1869 e il 1872 in CAPPELLA, con affreschi di Giovanni Gagliardi e Francesco Grandi. Al primo piano c’è una notevole galleria di busti antichi e dipinti di ritratti di cardinali.
+Navi (Lungotevere delle, Q I Flaminio)
+
+Palazzo della Marina
+
+Questo edificio appositamente costruito per il Ministero della Marina si affaccia sul lungotevere delle Navi, tra le vie Azuni e Filangieri, con una facciata posteriore sul piazale della Marina. Fu costruito su un progetto di Giulio Magni elaborato nel 1913 e con inizio dei lavori nel 1914, interrotti per lo scoppio della guerra, ultimati nel 1928. È il tipico edificio grandioso di stile eclettico con imponente ingresso nella facciata sul lungotevere, a tre fornici con colonne ioniche timpanate sovrastati da tre finestroni di identica struttura architettonica. Tra i tre portali sono collocate le colossali ancore delle corazzate austro-ungariche Viribus Unitis e Tegethoff affondate durante la prima guerra mondiale.
+
+Navicella (Via della, R XIX Celio)
+
+Fontana della Navicella
+
+È la fontana davanti alla chiesa di Santa Maria in Domnica. Sorge su un piedistallo ed è costituita da una scultura in marmo che riproduce, in miniatura, un’antica barca, probabilmente come ex voito di un marinaio pagano scampato ad un naufragio; fu rinvenuta nel Colosseo e restaurata per volere di Leone x nel 1513, tanto che vi fece incidere sopra il proprio stemma. Solo nel 1931 fu utilizzata come fontana.
+
+Santa Maria in Domnica
+
+È al n. 10 nel rione. Questa basilica prende nome dai praedia dominica ovvero le aree di pertinenza imperiale sulle quali fu costruita la chiesa, probabilmente nel VII secolo; il luogo pubblico era la caserma della Quinta Coorte dei Vigili. Rifatta da papa Pasquale i verso l’820, epoca alla quale risalgono i mosaici dell’arco trionfale e dell’abside, fu in gran parte ricostruita da Leone x. Caratteristico il soffitto della navata centrale a cassettoni intagliati e dorati rifatto nel 1566 dal cardinale Ferdinando de’ Medici; nei riquadri più piccoli sono a rilievo i simboli ispirati alle litanie mariane.
+
+Villa Celimontana
+
+È al n. 12. Fu costruita tra il 1581 e il 1586 per Ciriaco Mattei su progetto di Giacomo Del Duca, ma nei numerosi passaggi di proprietà il CASINO, situato presso un terrazzamento, venne trasformato più volte fino alla ristrutturazione ottocentesca che ha tra-

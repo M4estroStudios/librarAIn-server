@@ -1,2 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-logico, ora Servizio Geologico d’Italia, con relativo museo, fu iniziato nel 1873 da Raffaele Canevari. A lui si devono le due facciate su largo Santa Susanna, mentre quella principale, che affaccia su un cortile del contiguo Ministero dell’Agricoltura, è opera di un architetto che aiutò il Canevari nel terminare l’edificio, ma del quale si ignora il nome. Caratterizza la facciata la costruzione a travi metalliche, con le ampie vetrate sui tre piani scandite da pilastri e fasce marcapiano. Nel museo sono raccolti i materiali frutto di campagne geologiche, partite nelle sezioni litomarmologica, mineralogica e paleontologica nei tre piani. Dispone di una BIBLIOTECA specializzata in geologia e paleontologia con 80.000 volumi, 40.000 carte geografiche e 800 periodici, oltre a 2500 riviste d’epoca. Il Museo ha ricchissime collezioni, ripartite per regioni, di rocce, fossili, marmi e molluschi dal Paleozoico al Neozoico per un totale di 100.000 esemplari.
+Spada d’Orlando (Vicolo della, R III Colonna)
+
+Colonne del Tempio di Matidia
+
+Del tempio costruito da Adriano in onore della suocera Matidia, madre dell’imperatrice Sabina, morta nel 119 d.C., resta un tronco di colonna cipollino che sbuca dall’asfalto nel vicolo. La colonna, secondo una leggenda, sarebbe stata ridotta così da un colpo di spada di Orlando, paladino di Carlo Magno. Altre due colonne sono inglobate nella casa al n. 97 dell’adiacente piazza Capranica.
+
+Spagna (Piazza di, RR III Colonna e IV Campo Marzio)
+
+Babington’s Tea Rooms
+
+È al n. 23, sulla sinistra della scalinata. Questa “sala da tè” risale al 1896 e fu aperta da due signorine anglosassoni, Anna Maria Babington e Isabel Cargill, provenienti rispettivamente dal Derbyshire e dalla Nuova Zelanda. Mentre il nome al locale venne da Anna Maria, che morì in Svizzera nel 1929, la sua gestione fu tenuta dalla discendenza della Cargill, che nel 1902 sposò il pittore Gaspare da Pozzo; la loro figlia, Dorothy, sposò il conte Bedini Jacobini e così l’impresa proseguì nell’ambito della stessa famiglia. Tradizionale anche il personale, sempre femminile, che venne considerato fin dal-
+
+La scalinata e la chiesa di Trinità del Monti a piazza di Spagna in una stampa di fine Ottocento.

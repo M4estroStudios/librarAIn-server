@@ -1,4 +1,6 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
+Santa Maria in Trastevere nel Seicento in un’incisione di G.B. Falda.
+
 Trento di Pasquale Cati e, all’altare, la preziosa tavola del VII secolo detta Madonna della Clemenza. Nella navata sinistra, CAPPELLA AVILA, con la cupola fantasiosa di Antonio Gherardi, e la tomba di Innocenzo II. Una curiosità è costituita da una piccola nicchia in fondo alla navata destra: vi sono custoditi pesi e catene che, secondo la tradizione, furono utilizzati per il supplizio dei martiri. La basilica fu utilizzata durante l’Anno Santo del 1625, del 1700 per soli 8 giorni, e del 1825 per lucrare il giubileo in sostituzione di quella di San Paolo fuori le Mura, che restava chiusa per epidemie nella Campagna romana le prime due volte e per l’incendio che l’aveva quasi interamente distrutta, la terza volta.
 
 Maria Liberatrice (Piazza di Santa, R XX Testaccio)

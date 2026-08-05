@@ -7,7 +7,7 @@ Buozzi Bruno (Viale, Q III Pinciano)
 
 Casa del Girasole
 
-È al n. 64. Questo edificio è stato costruito nel 1950 da Luigi Moretti ed è considerato un capolavoro dell’architettura del dopoguerra. Sviluppa su un pianterreno, un piano rialzato, tre piani con due alloggi per piano, l’attico e il superattico arretrato rispetto al fronte principale. Prende nome dalle ampie superficie vetrate della facciata con la profonda incisione tra i due blocchi del fabbricato, che consentono un’illuminazione di tutti i piani di accesso agli alloggi fino a dilatarsi in corrispondenza dell’atrio d’ingresso.
+È al n. 64. Questo edificio è stato costruito nel 1950 da Luigi Moretti ed è considerato un capolavoro dell’architettura del dopoguerra. Sviluppa su un pianterreno, un piano rialzato, tre piani con due alloggi per piano, l’attico e il superattico arretrato rispetto al fronte principale. Prende nome dalle ampie superfici vetrate della facciata con la profonda incisione tra i due blocchi del fabbricato, che consentono un’illuminazione di tutti i piani di accesso agli alloggi fino a dilatarsi in corrispondenza dell’atrio d’ingresso.
 
 Istituto Austriaco di Cultura in Italia
 

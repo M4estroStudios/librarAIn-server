@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Fontana dei Tritoni
 
-È su un lato della piazza. Volata dal papa Clemente xi Albani in occasione della sistemazione della piazza ai primi del Settecento, fu ideata da Carlo Bizzaccheri che si ispirò allo stemma Albani con stella a otto punte per la vasca, disponendo sui bordi quattro mascheroni, che furono rimossi nell'Ottocento. Al centro della vasca un complesso di massi di travertino, opera dello scultore Filippo Bai, sul quale furono posti due tritoni con le code intrecciate, realizzati da Francesco Moratti. Sul catino, tre piccoli monti sovrastati da una stella a otto punte.
+È su un lato della piazza. Volata dal papa Clemente xi Albani in occasione della sistemazione della piazza ai primi del Settecento, fu ideata da Carlo Bizzaccheri che si ispirò allo stemma Albani con stella a otto punte per la vasca, disponendo sui bordi quattro mascheroni, che furono rimossi nell'Ottocento. Al centro della vasca un complesso di massi di travertino, opera dello sculture Filippo Bai, sul quale furono posti due tritoni con le code intrecciate, realizzati da Francesco Moratti. Sul catino, tre piccoli monti sovrastati da una stella a otto punte.
 
 Palazzo della Pantanella
 

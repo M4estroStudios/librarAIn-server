@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Santa Maria dell’Anima
 
-le, di sicura influenza bramantesca. Durante l’occupazione francese di Roma fu ridotta a fienile e scuderia, finché divenne prima propietà austriaca e poi da Pio ix restituita al culto e alla sua originaria destinazione. La facciata è attribuita a Giuliano da Sangallo, mentre è sicuramente opera del Sansovino il gruppo della Madonna con le anime oranti, posto sul timpano del portale di mezzo. Interessante il caratteristico campanile dalla guglia ricoperta di piccoli dischi di ceramica. All’interno, tomba di Adriano vi; nel presbiterio, Sacra famiglia e santi di Giulio Romano; nella volta della navata mediana Santi di Ludovico Seitz. Nella sagrestia, una Assunta di Giovanni Francesco Romanelli.
+le, di sicura influenza bramantesca. Durante l’occupazione francese se di Roma fu ridotta a fienile e scuderia, finché divenne prima proprietà austriaca e poi da Pio ix restituita al culto e alla sua originaria destinazione. La facciata è attribuita a Giuliano da Sangallo, mentre è sicuramente opera del Sansovino il gruppo della Madonna con le anime oranti, posto sul timpano del portale di mezzo. Interessante il caratteristico campanile dalla guglia ricoperta di piccoli dischi di ceramica. All’interno, tomba di Adriano vi; nel presbiterio, Sacra famiglia e santi di Giulio Romano; nella volta della navata mediana Santi di Ludovico Seitz. Nella sagrestia, una Assunta di Giovanni Francesco Romanelli.
 
 Annunziatella (Vicolo dell’, Q XX Ardeatino)
 

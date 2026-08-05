@@ -1,6 +1,4 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-le, cunicoli, stanzette si susseguono illuminate da affreschi del III secolo d.C. Vi appaiono eleganti figure e deliziosi amorini che scivolano in barca sul mare o sul lago; altrove motivi geometrici o splendidi uccelli e animaletti. L’oratorio ha finite incrostazioni marmoree ed è collegato all’antico triclinium dove gira sulla parete un fregio con geni alati che sostengono festoni di fiori. Nell’antico tablinum, che è in fondo all’oratorio, si sale una scaletta che porta alla Confessio, minuscola stanzetta integralmente affrescata ma con raffigurazioni non ancora chiare nel loro significato. Sulla parete di fondo di questo piccolo ambiente si apre la fenestella Confessionis, piccola apertura che si affaccia su un pozzo, da dove furono estratte le reliquie dei santi.
-
 Giovanni in Laterano (Piazza di San, RR I Monti e XV Esquilino)
 
 Battistero Lateranense

@@ -13,4 +13,4 @@ Banchi Vecchi (Via dei, RR V Ponte, VI Parione, VII Regola)
 
 Palazzo Sforza Cesarini
 
-È al n. 118. La struttura più antica di questo bel palazzo risale al 1462, quando fu costruito per Rodrigo Borgia, nominato dallo zio, il papa Callisto III, vicecancelliere di Santa Romana Chiesa. Quando divenne papa anch’egli con il nome di Alessandro vi, lasciò il
+È al n. 118. La struttura più antica di questo bel palazzo risale al 1462, quando fu costruito per Rodrigo Borgia, nominato dallo zio, il papa Callisto III, vicecancelliere di Santa Romana Chiesa. Quando divenne papa anch’egli con il nome di Alessandro VI, lasciò il

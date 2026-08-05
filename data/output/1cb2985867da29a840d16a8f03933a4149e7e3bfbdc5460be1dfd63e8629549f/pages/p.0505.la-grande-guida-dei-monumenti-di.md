@@ -1,2 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-La basilica di San Paolo in un'incisione ottocentesca.
+Villa Torlonia
+
+il 1930 da Cesare Picchiani su disegni di Cambellotti, Paschetto e Bottazzi. Sono anche esposti disegni e bozzetti che documentano l’arte della vetrata a Roma e le tecniche decorative dello stile liberty. Nel 2002 è stato istituito il MUSEO DEL CASINO DEI PRINCIPI all’interno del casino: vi si conserva quanto sopravvissuto alla superba collezione d’arte antica dei Torlonia, ovvero 50 sculture in marmo, gesso e travertino con i lavori dello scultore Bartolomeo Cavaceppi e 3 rilievi in gesso di Antonio Canova.
+
+Nomentano (Ponte, Q XVI Monte Sacro)
+
+È il ponte sull’Aniene a fronte della via Nomentana e a monte del Ponte Tazio (v.). Il nome lo ha da antichissimi tempi. Pare sia legato addirittura alla famosa secessione della plebe e all’apologo di Menenio Agrippa; è sensz’altro il più caratteristico dei ponti romani, capace di attirare l’attenzione di numerosi pittori che lo hanno ritratto dal Settecento ad oggi. Nel Medioevo era detto popolarmente Lamentano e anche Lamentato. Questo ponte, che costituiva il secondo punto di transito sull’Aniene, a nord-est di Roma, fu interamente ricostruito nel 552 da Narsete, tre anni dopo cioè la sua distruzione da parte di Totila che lasciava Roma per conquistare la Sicilia, la Sardegna e la Corsica. Ulteriori restauri furono compiuti sotto il pontificato di Niccolò v come testimonia anche uno stemma del papa, affisso nella torre di difesa del ponte. Le principali vicende medievali del Ponte Nomentano si riducono a due occupazioni: la prima, nel 1433, ad opera di Nicolò Fortebraccio e l’altra, nel 1485, da parte di Paolo Orsini. Quest’ultimo avvenimento culminò con la sconfitta degli oc-

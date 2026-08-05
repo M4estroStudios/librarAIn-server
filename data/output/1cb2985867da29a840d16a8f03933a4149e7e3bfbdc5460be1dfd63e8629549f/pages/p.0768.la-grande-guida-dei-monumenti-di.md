@@ -1,50 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-846 Scorreria dei Saraceni a Roma.
-852 Nascita della Città Leonina con la cinta muraria.
-880-932 Roma sotto il dominio di Teodora e poi di sua figlia Marozia.
-961-1002 Roma sotto il controllo degli Ottoni; dittatura di Giovanni Crescenzo. Roma ha 30.000 abitanti.
-1084 I Normanni di Roberto il Guiscardo saccheggiano Roma.
-1108 Ricostruzione di San Clemente.
-1140 Restauro di Santa Maria in Trastevere.
-1144 Rinásce il Comune di Roma con Arnaldo da Brescia.
-1220 Federico II incoronato imperatore da Onorio III.
-1232 Completamento del chiostro di San Giovanni in Laterano.
-1285-93 Si rinnovano le basiliche di San Paolo fuori le Mura e Santa Cecilia in Trastevere.
-1300 Primo Anno Santo proclamato da Bonifacio vIII. Roma ha 20.000 abitanti.
-1303 Fondazione dell'università La Sapienza.
-1309 Clemente v trasferisce la Santa Sede ad Avignone.
-1347 Cola di Rienzo tribuno della Repubblica romana. Roma ha 17.000 abitanti.
-1354 Morte di Cola di Rienzo.
-1377 Gregorio xi riporta la Santa Sede a Roma.
-1378-1417 Scisma d'Occidente, da Urbano vi a Martino v.
-1420-1519 Ricostruzione della città. Tra l'altro, affreschi di Masolino a San Clemente, del Beato Angelico nella Cappella Niccolina in Vaticano, inizio della nuova basilica di San Pietro, affreschi della Cappella Sistina, nuovo Palazzo Apostolico, decorazione delle Stanze vaticane, costruzione della Farnesina, nuova sistemazione del Campidoglio. Apertura delle grandi strade da Borgo a via Giulia e via della Lungara. Roma ha 50.000 abitanti.
-1527 Sacco di Roma dei Lanzichenecchi di Carlo v. Roma ha 32.000 abitanti.
-1538 Sulla piazza del Campidoglio è collocata la statua equestre di Marco Aurelio.
-1555 Viene istituito il Ghetto.
-1568 Costruzione della chiesa del Gesù.
-1584 Fondazione dell'Accademia di Santa Cecilia.
-1585-90 Sisto v apre nuove strade e installa gli obelischi. Roma ha 90.000 abitanti.
-1600 È messo al rogo Giordano Bruno.
-1603 Fondazione dell'Accademia dei Lincei.
-1614 Fondazione della Biblioteca Angelica, la prima pubblica di Roma.
-1626 Consacrazione della nuova basilica di San Pietro.
-1633 Galileo condannato per eresia.
-1638-67 Esplosione del barocco: da San Carlino e Sant'Agnese a Sant'Andrea al Quirinale e al colonnato di San Pietro. Roma ha 120.000 abitanti.
-1690 È fondata l'Accademia dell'Arcadia.
-1703 Ricostruzione del Porto di Ripetta.
-1726 Nasce la scalinata di Trinità dei Monti.
-1732-62 Costruzione di Fontana di Trevi.
-1734 Si apre il Palazzo Nuovo del Campidoglio, primo museo pubblico.
-1743 Rifforma urbanistica: compaiono le targhe dei rioni.
-1798-99 Occupazione francese di Roma e proclamazione della Repubblica giacobina: Pio vi muore in esilio. Roma ha 150.000 abitanti.
-1809-14 Nuova occupazione francese di Roma. Roma ha 117.000 abitanti.
-1814-46 Governo reazionario a Roma da Pio vi a Gregorio xvi.
-1846 Avvento di Pio ix, salutato come papa liberale.
-1848-49 Moti rivoluzionari; Pio ix fugge e nasce la Repubblica romana; suo anientamento da parte dei francesi. Roma ha 150.000 abitanti.
-1850-70 Ultimi 20 anni di Roma pontificia sotto Pio ix. Il 20 settembre 1870 le truppe del generale Cadorna occupano Roma. Roma ha 220.000 abitanti.
-1872 Inizio della costruzione dei nuovi rioni Castro Pretorio, Testaccio, Celio ed Esquilino.
-1873 Primo piano regolatore di Roma capitale.
-1874 Inaugurazione della Stazione Termini.
-1877 È aperta la via Nazionale.
-1878 Muoiono Vittorio Emanuele ii e Pio ix il nuovo re Umberto i darà l'impronta alla Roma fine secolo.
-1885 Prima pietra del Vittoriano.
+ficio fece abbattere alcune case limitrofe e probabilmente una torre. Che il progetto fosse del Bramante non è certo, ma la struttura era comunque di grande effetto, a tre piani e fiancheggiata da due torri. E poi, ospiti illustri dei Fieschi dettero onore al palazzo, come il cardinale Giovan Angelo de’ Medici, prima di essere eletto papa con il nome di Pio iv. I Fieschi lo vendettero a metà del Cinquecento ai Savelli, proprietari di un altro edificio confinante, ma già nel 1579 veniva acquistato da Gregorio xiii per il figlio Giacomo Boncompagni, duca di Sora, che venne ad abitarvi dal 1585. Da allora il palazzo si chiamò Sora, e divenne per quasi due secoli un centro di vita intellettuale e mondana: dal salotto del duca Giacomo, frequentato da poeti e artisti, e in onore del quale il notaro Cristoforo Castelletti compose una commedia, Le stravaganze d’amore (la prima in cui compare un personaggio che parla in dialetto romanesco), all’Accademia dei Quiriti fondata qui nel 1711 da Gian Vincenzo Gravina. Nell’Ottocento fu la decadenza: lo incamerò lo Stato Pontificio e nel 1830 venne adibito a caserma, come ricorda il Belli in nota al sonetto Nunziata e ’r Caporale del 14 febbraio: «Il Palazzo già dei Duchi di Sora serve ora di caserma». Nel 1845 minacciava addirittura di crollare e fu eseguito un restauro radicale, durante il quale furono anche rinvenuti due pavimenti in mosaico trasferiti al Museo Lateranense. Ma fu in fondo un restauro inutile: passato allo Stato italiano dopo il 1870, si arrivò alla demolizione della parte che doveva aprirsi sulla nuova arteria. Si ebbe il taglio di un terzo dell’edificio e quindi la ricostruzione “in copia” con una nuova facciata sull’attuale corso Vittorio Emanuele II. Si salvò il portale e parte del cortile, nonché la facciata su via Sora. Divenuto proprietà del Comune nel 1892 ospitò il liceo Terenzio Mamiani, cedendo poi in seguito il posto all' "Istituto tecnico commerciale Vincenzo Gioberti", che ancora qui si trova.
+
+Vittorio Emanuele II (Piazza, R XV Esquilino)
+
+Ninfeo di Alessandro Severo
+
+È nei giardini della piazza. Realizzato nel 226 come fontana-mostra dell’Acquedotto Claudio (v. viale Appio Claudio), ristrutturato dall’imperatore Alessandro Severo (222-235); consisteva in un alto basamento a pianta trapezoidale preceduto sulla fronte (verso Santa Maria Maggiore) da un bacino e sormontato da una facciata con una grande nicchia, nella quale doveva essere una statua, fiancheggiata da due archi (parzialmente superstite quello di sinistra) entro i quali erano collocati due trofei d’armi marmorei (i cosidetti Trofei di Mario): databili all’età di Domiziano, ed evidentemente provenienti da un altro monumento, i due trofei sono oggi sulla balaustra di piazza del Campidoglio (v.), dove furono fatti trasferire da papa Sisto v nel 1589.
+
+Porta Magica
+
+È nei giardini della piazza. Risale alla villa proprietà del marchese Massimiliano Palombara (1614-85), che aveva l’ingresso sulla via Felice, attuale via Napoleone III, e fu abbattuta per la costruzione della piazza Vittorio Emanuele II e del rione Esquilino. La villa aveva una palazzina con un giardino segreto dove era questa porta, che

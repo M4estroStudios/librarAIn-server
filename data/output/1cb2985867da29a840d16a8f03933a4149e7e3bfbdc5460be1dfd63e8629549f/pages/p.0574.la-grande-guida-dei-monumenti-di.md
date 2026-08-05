@@ -1,4 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Ponte Sant’Angelo come appariva all’inizio del xvi secolo, con le due cappelline poi rimosse nel 1535.
+Pio V (Largo San, Q XIII Aurelio)
 
-VIII (1294-1303) nel 1300. Allora il ponte era diviso in due per lungo, da una fila di bottegucce semifatiscenti che consentivano però di arginare e disciplinare la gran folla di pellegrini che giungeva alla basilica di San Pietro. Dante Alighieri lo ricorda in alcuni versi del suo Inferno (xviii, 31-33): «che dall’un lato tutti hanno la fronte / verso ’l castello e vanno a Santo Pietro / dall’altra sponda vanno verso il monte». Le botteghe furono bruciate dall’antipapa Giovanni xxiii un secolo e mezzo dopo. Ai tempi di Niccolò v il ponte era coperto da un loggiato costruito da Leon Battista Alberti e più tardi, nel 1488 circa, iniziò la triste storia di esposizione quasi permanente di giustizia. Infatti, le sue spallette ospiteranno spesso le teste dei decapitati nella contigua piazza (detta appunto di Ponte) e non di rado ciondoleranno, dalle forche issate sul ponte, gli impiccati. Da ciò i romani chiameranno semplicemente Ponte il Sant’Angelo così come chiamano Fiume il Tevere, ovvero ponte e fiume per eccellenza. Sulla testata erano due cappelline dalle quali durante il Sacco del 1527 i Lanzichenecchi sparavano su Castello; Clemente VII nel 1535 le sostitui con due statue di San Pietro (del Lorenzetto) e di San Paolo (di Paolo Taccone) tuttora in loco. Quest’ultima divide con G.G. Belli, nel suo monumento-fontanta della piazza a lui dedicato, il destino di vedersi ogni tanto privare della spada, come il poeta del basstone, da parte di ignoti “collezionisti”. Famosa una “pasquinata” legata alle due statue nel 1581, essendo papa Sisto v. Il severissimo papa aveva fatto arrestare e giustizia un tale Blaschi di
+San Pio v
+
+È sul largo. Questa chiesa, dedicata al papa Pio v (1566-72), è stata costruita nel 1952 su progetto di Tullio Rossi e presenta un aspetto armonico che ripete quello di tipo basilicale. Il mosaico di Joseph Stracota sul portale è un'eccellente introduzione alla preziosa decorazione interna, che si avvale, tra l'altro, di un Crocifisso di Francesco Nagni, una Via Crucis di Angelo Biancini, un Angelo in gesso di Duilio Cambellotti e una statua di Santa Caterina da Siena di Antonio Berti.
+
+Pio XII (Piazza, R XIV Borgo)
+
+Palazzi dei Propilei
+
+Delimitano la piazza. Sono i due edifici dei porticati detti “propilei” che inquadrano la vista di San Pietro come due avancorpi simmetrici, concludendo la via della Conciliazione (v.) e costituendo un punto di accesso al colonnato di piazza San Pietro (v.). Sono costituiti da due gallerie sovrapposte, secondo una descrizione di Laura Gigli, «scandite da tre file di aperture rettangolari con cornici e balaustri in travertino, intervallate da altri pilastri a cortina, che si ergono e acquistano slancio da sedili, pure in travertino, uguali a quelli che costituiscono la base degli obelischi di via della Conciliazione». Sull’architrave di ambedue è la scritta «Pius XII Pont. Max. / Anno Jubilaei MCML».
+
+I palazzi addossati ai propilei, costruiti su progetto di Marcello Piacentini e Attilio Spaccarelli, sviluppano su quattro piani, coronati da balaustre, e aprono con due solenni portali in travertino dal timpano spezzato con emblemi pontifici. Proprietà della Santa Sede, ospitano uffici di congregazioni e la sala stampa del Vaticano. Un’epigrafe sul palazzo di destra ricorda la dedica della piazza a Pio XII.
+
+Piscinula (Piazza in, R XIII Trastevere)
+
+Case Mattei Nuñez Celsia di Vegliasco
+
+Sono ai nn. 9-10. Queste case quattrocentesche del ramo dei Mattei di Trastevere furono realizzate inglobando antichi edifici di proprietà del casato. Le tracce più antiche si rivelano nelle finestre centinate e a crociera, nelle bifore e nel porticetto con una colonna medievale e una loggia. Il complesso è frutto di sovrastrutture e modifiche attuate nell’arco di cinque secoli. In queste case abitò nel 1414 Giovanni Mattei, che difese il cardinale legato Giacomo Isolani contro un governo popolare guidato da Pietro di Matuzzo. Ma la posizione filopontificia dei Mattei mutò settant’anni dopo, nel 1484, quando Paolo Mattei appoggiò i Colonna contro gli Orsini legati a Sisto iv; allora il papa ordinò il saccheggio degli edifici. Nel 1555 queste case furono lo scenario di quella tragedia fa-

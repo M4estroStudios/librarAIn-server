@@ -1,2 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-dino è forse pertinente ad un ippodromo privato che l'imperatore Aureliano si era fatto costruire nell'area degli Horti Sallustiani. Questi sono stati rinvenuti nel primo tratto della via XX Settembre, mentre resti di una probabile cisterna, con due ambienti paralleli e comunicanti per la presenza di pilastri e con volte a crociera, si rinvennero nel 1879 nei pressi del Ministero delle Finanze ed attribuita anch'essa ai giardini sallustiani. Altri resti, questa

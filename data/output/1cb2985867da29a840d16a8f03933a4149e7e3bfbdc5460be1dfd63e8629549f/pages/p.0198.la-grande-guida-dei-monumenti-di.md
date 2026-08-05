@@ -7,7 +7,7 @@ Chiesa Evangelica Valdese
 
 Monumento a Cavour
 
-È al centro della piazza, nel giardino. È costituito dalla statua bronzea in piedi dello statista Camillo Benso, conte di Cavour (1810-61), sopra un basamento con quattro gruppi allegorici; due donne raffiguranti l’Italia e Roma e, posteriormente ad esse, un leone coronato simboleggiante il popolo, a guardia dell’urna del plebiscito sulla quale posa una bandiera; sugli altri due lati, due giovani nudi raffiguranti il Pensiero e l’Azione. Opera di Stefano Galletti, fu inaugurato il 22 settembre 1895. Il Giardino fu realizzato nel 1909 con la messa a dimora delle palme da dattero del deserto e delle Canarie vendute al Comune di Roma dal Comune di Ventimiglia, che le dovette sradicare per ampliare la stazione ferroviaria; vi sorgono anche pini, oleandri e melograni.
+È al centro della piazza, nel giardino. È costituito dalla statua bronzea in piedi dello statista Camillo Benso, conte di Cavour (1810-61), sopra un basamento con quattro gruppi allegorici; due donne raffiguranti l’Italia e Roma e, posteriormente ad esse, un leone coronato simboleggiante il popolo, a guardia dell’urna del plebiscito sulla quale posa una bandiera; sugli altri due lati, due giovani nu di raffiguranti il Pensiero e l’Azione. Opera di Stefano Galletti, fu inaugurato il 22 settembre 1895. Il Giardino fu realizzato nel 1909 con la messa a dimora delle palme da dattero del deserto e delle Canarie vendute al Comune di Roma dal Comune di Ventimiglia, che le dovette sradicare per ampliare la stazione ferroviaria; vi sorgono anche pini, oleandri e melograni.
 
 Palazzo di Giustizia
 

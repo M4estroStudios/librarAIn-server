@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+  "slug": "la-grande-guida-dei-monumenti-di",
+  "node_id": "a214998c065c0f976484e244758792df9c1eb9bb3beed722c9b90019b22c3dcf",
+  "corpus_node": {
+    "authors": "vari",
+    "title": "La Grande Guida dei Monumenti di Roma",
+    "year": null,
+    "extras": {},
+    "in_corpus": true,
+    "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+    "slug": "la-grande-guida-dei-monumenti-di",
+    "incomplete": true
+  },
+  "biblio_range_original": null,
+  "biblio_range_aligned": null,
+  "entries": [],
+  "review_queue": [],
+  "empty": false
+}

@@ -1,8 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-IL VITTORIANO
-
-Sorge in piazza Venezia; è il Monumento a Vittorio Emanuele II che, come tale, fu ideato nel 1878 e iniziato nel 1885 su progetto di Giuseppe Sacconi. Data la complessità dell’opera e il protrarsi dei lavori, dopo la morte del progettista, il monumento fu completato da Gaetano Koch, Manfredo Manfredi e Pio Piacentini; venne inaugurato nel 1911 da Vittorio Emanuele III, anche se la parte decorativa non era terminata. Inoltre il monumento venne rimodellato, in seguito alla tumulazione, nel 1921, del Milite Ignoto (la salma di un italiano sconosciuto, caduto nella prima guerra mondiale), e l’evento gli dette la qualifica di Altare della Patria; inaugurato nuovamente nel 1925, fu definitivamente realizzato nel 1927 nel suo aspetto esterno, mentre gli ambienti interni furono completati solo nel 1935.
-
-È in calcare di botticino, molto bianco e abbagliante, un po’ contrastante con il tipico travertino dei monumenti romani; ed è stato spesso criticato per l’aspetto, tanto da essere paragonato di volta in volta a una torta nuziale, a una macchina da scrivere, a un calamaio, a una dentiera, a un catafalco. È in ogni caso il monumento più fotografato della città. Tutte le sculture hanno dimensioni colossali, prima fra tutte la Statua equestre di Vittorio Emanuele II di Enrico Chiaradia, completata da Emilio Gallori. Un’opera gigantesca, tanto che quando uscì dalla fonderia e fu posta il loco, venne offerto un pranzo servito dentro la pancia del cavallo illuminato da lampadine e vi presero posto 21 persone.
-
-Vertebra metallica della statua equestre del monumento a Vittorio Emanuele II, così come fu progettata dallo scultore Chiaradia.

@@ -1,6 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Monte Cenci (Piazza, R VII Regola)
+**Monte Cenci (Piazza, R VII Regola)**
 
-Palazzo Cenci
+**Palazzo Cenci**
 
 È ai nn. 17-20-21. I vari edifici che lo costituiscono sono stati realizzati nel corso dei secoli, iniziando nel Cinquecento, quando sul Monte Cenci, che prese appunto nome da questa antica famiglia baronale romana, furono acquistate e demolite alcune case dei Crescenzi. Probabilmente il tutto avvenne a seguito di lotte medievali, se già nella seconda metà del Trecento i Cenci sono segnalati sul monte con un balneum e una torre. Il palazzo assunse in ogni caso lo stato attuale tra il 1570 e il 1585 ad opera di quel Francesco, intorno al quale si scatenò la famosa tragedia familiare. La facciata principale sulla piazetta presenta al pianterreno due portali a sesto semicircolare incorniciati da bugne rustiche, uno dei quali è sormontato da un rilievo romano con testa di medusa (n. 20). Li sovrasta una costruzione a mattoni terminante con una loggetta cinquecentesca. La parte posteriore del palazzo sulla piazzza dei Cenci e la via Beatrice Cenci presenta al pianterreno (al n. 7A della via) un arco sormontato da una loggia e finestra incorniciata con stucchi settecenteschi; la sopraelevazione è ottocentesca. Il coronamento del terzo piano è costituito da un fregio con le mezzelune dei Cenci e le aquile dei Lante, in ricordo del matrimonio di Ludovico Cenci con Laura Lante nel 1575. Fa parte del complesso edilizio il cinquecentesco PALAZZETTO CENCI, che si affaccia sulla piazza dei Cenci (al n. 26); è collegato al palazzo mediante un arco, il cosiddetto ARCO DEI CENCI. Notevole il cortile del palazzetto, porticato su due lati con il motivo della serliana su colonne doriche; lo sovrasta una loggia chiusa con colonne ioniche e il simbolo della mezzaluna.
+
+G.B. Falda, la chiesa di Santa Rita in Campitelli nell’originale ubicazione al piedi della scalinata dell’Aracoelli.

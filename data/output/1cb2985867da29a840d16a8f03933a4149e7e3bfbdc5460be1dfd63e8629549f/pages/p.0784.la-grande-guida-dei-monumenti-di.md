@@ -1,52 +1,22 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-DE SANCTIS L.-BIAMONTE G., Le catacombe di Roma, Roma 1997.
-D'ONOFRIO C., Gli obelischi di Roma, Roma 1963.
-ID., Il Tevere e Roma, Roma 1969.
-ESCOBAR M., Le chiese sconosciute di Roma, Roma 1988.
-FRUTAZ A.P., Le piante di Roma, Roma 1962.
-GALASSI PALUZZI C., La Basilica di S. Pietro, Bologna 1975.
-GALLAVOTTI CAVALLERO D., Palazzi di Roma dal XIV al XX secolo, Roma 1989.
-HINZEN-BOHLEN B.-SORGES J., Roma, Roma 2001.
-HOFFMANN P., Le ville di Roma e dei dintorni, Roma 2001.
-INSOLERA I., Roma, Bari 1980.
-LEFEVRE R., Palazzo Chigi, Roma 1972.
-ID., Villa Madama, Roma 1973.
-LOMBARDI F., Palazzi, palazzetti, Case 1200-1870, Roma 1991.
-ID., Roma Chiese, Conventi, Chiostri 313-1925, Roma 1993.
-ID., Le piazze storiche di Roma esistenti e scomparse, Roma 2001.
-MALIZIA G., Le statue di Roma, Roma 1990.
-ID., Gli archi di Roma, Roma 1994.
-ID., Le piazze di Roma, Roma 2000.
-ID., Le scalinate di Roma, Roma 2001.
-MANDILLO F., I cortili di Roma, Roma 1960.
-MANODORI A., Anfiteatri, circhi e stadi di Roma, Roma 1982.
-MARONI LUMBROSO M.-MARTINI A., Le Confraternite romane nelle loro chiese, Roma 1963.
-NICOLINI R., L'architettura di Roma capitale. Roma 1870-1970, Roma 1971.
-PARADISI D., I colli di Roma, Roma 1998.
-POCINO W., Le fontane di Roma, Roma 1996.
-PORTOGHESI P., Roma barocca, Roma 1966.
-ID., Architettura del Rinascimento a Roma, Roma 1968.
-QUARONI L., Immagine di Roma, Bari 1975.
-QUERCIOLI M., Le mura e le porte di Roma, Roma 1982.
-ID., Le torri di Roma, Roma 1985.
-QUILICI GIGLI S., Roma fuori le mura, Roma 1980.
-RAVAGLIOLI A., Vedere e capire Roma, Roma 1980.
-REMIDDI G.-GRECO A.-BONAVITA A.-FERRI P., Il Moderno attraverso Roma, Roma 2000.
-RENDINA C., I papi. Storia e segreti, Roma 1983.
-ID., I palazzi di Roma, 3 voll., Roma 1992-93.
-ID., Il Vaticano. Storia e segreti, Roma 1986.
-ID., Guida insolita ai misteri, ai segreti, alle leggende e alle curiosità di Roma, Roma 1998.
-ID., Le chiese di Roma, Roma 2000.
-ID., Storia insolita di Roma, Roma 2001.
-ROSSI P.O., Roma. Guida all'architettura moderna. 1909-1991, Bari 1991.
-SANFILIPPO M., Le tre città di Roma, Bari 1993.
-SEVERI S., I teatri di Roma, Roma 1989.
-SGARBI V., Dizionario dei monumenti italiani e dei loro autori. Roma: dal Rinascimento ai giorni nostri (apparati e ricerche dei G. Bosello), Milano 1991.
-SIMONETTI R., Vetera et Nova, Roma 1998.
-SQUADRILLI T., Vicende e monumenti di Roma, Roma 1961.
-SPARTÀ S., I campanili di Roma, Roma 1983.
-SPOTO S., Misteri e segreti di Ostia antica, Roma 1995.
-STACCIOLI R. A., Roma entro le mura, Roma 1979.
-TAGLIOLINI A., I giardini di Roma, Roma 1980.
-VENTUROLI M., La Patria di marmo, Roma 1995.
-ZEPPEGNO L., I Rioni di Roma, Roma 1978.
+II. Da Pigna a Trevi: piazza della Maddalena con la chiesa - Piazza Sant’Ignazio con la chiesa e le case dei Burrò - Biblioteca Casanatense - Chiesa delle Santissime Stimmate di San Francesco - Palazzo Altieri - Palazzo d'Aste Bonaparte e via del Corso con Palazzi Doria Pamphilj e Sciarra Colonna, chiesa di Santa Maria in via Lata e di San Marcello - Piazza Santi Apostoli con la basilica e i Palazzi Odescalchi e Colonna - Chiesa del SS. Nome di Maria e piazza Trevi con la fontana e la chiesa dei Santi Vincenzo e Anastasio;
+
+IV. Da Monte al Celio, all’Esquilino e al Laternao: giro delle chiese di Santa Caterina e Magnanapoli, di Sant’Agata dei Goti, dei Santi Domenico e Sisto, di Santa Francesca Romana e dei Santi Cosma e Damiano al Foro Romano, di San Gregorio Magno, di San Sisto Vecchio, di San Martino ai Monti e di Santa Bibiana, e giro delle basiliche di San Giovanni in Laterano, Santa Croce in Gerusalemme e Santa Maria Maggiore;
+
+V. Da Quirinale a Trevi: piazza del Quirinale con i Palazzi del Quirinale e della Consulta - la Villa Rospigliosi Pallavicini, le chiese di Sant’Andrea al Quirinale, di San Carlo alle Quattro Fontane, di Santa Maria della Vittoria, di Santa Susanna, di San Niccolò da Tolentino - piazza Barberini con il Palazzo Barberini, le Fontane del Tritone e delle Alpi - Chiesa di Santa Maria della Concezione in via Veneto;
+
+VI. Campo Marzio: Chiese di Santa Maria dei Miracoli e di Santa Maria in Montesanto - Chiese dei Santi Ambrogio e Carlo, di San Rocco, Palazzo Borghese - piazza San Lorenzo in Lucina con la chiesa e Palazzo Fiano, piazza di Montecitorio con il palazzo - piazza Colonna con Palazzo Chigi - Chiesa di Santa Maria in Via e di San Silvestro - via Capo le Case con i Palazzi Bernini e chiesa di Sant’Andrea delle Fratte - piazza di Spagna con i Palazzi di Propaganda Fide e Spagna, Fontana della Barcaccia, Scalinata di Trinità dei Monti.
+
+**Roma umbertina**
+
+È il periodo in cui regnò Umberto i quindi i ventitré anni tra il 1878 e il 1900, ma in senso ampio si parla di Roma umbertina per gli ultimi tre decenni dell’Ottocento, quando si attuò una grandioso rinnovamento della città fin dalla sua elevazione al ruolo di capitale e con Umberto già da principe assurto a simbolo di quel rinnovamento nell’immagine culturale di Roma. Emblematico è il primo itinerario suggerito, mentre la dislocazione di altre testimonianze dell’epoca è sparsa nella città e risulta ardua ad essere continuativa nel secondo, che in realtà contiene più punti di riferimento da raccontare:
+
+1. Il centro storico. Partendo da via Veneto per l’Hotel Majestic e il Palazzo Balestra, ora Banca Nazionale del Lavoro, a largo Santa Susanna con l’Ufficio Geologico e il Grand Hotel in via V.E. Orlando. Via Nazionale con la successiva via Quattro Novembre: dagli edifici di piazza della Repubblica, con al centro la Fontana delle Naiadi, alla chiesa di St. Paul, all’angolo con via Napoli; il Palazzo delle Esposizioni ad angolo con via Milano, dove apre il Traforo. Quindi la Banca d’Italia al n. 91 e, su via IV Novembre, al n. 100 la Casa Ruboli. Al n. 144 non c’è più il Teatro Nazionale, che era considerato un capolavoro, là dove ora è il Palazzo dell’Inaill, stranamente simile nella struttura. All’angolo con piazza Santi Apostoli, la nuova al di Palazzo Colonna, e di fronte, in fondo a via dei Fornari, la canonica di Santa Maria in Loreto di Lucca Carimini. A piazza Venezia, il Vittoriano. Lungo via del Corso, al n. 320, il Palazzo della Cassa di Risparmio (ora Banca di Roma); il rinnovato Palazzo Sciarra Colonna di Carbognano con la Galleria Sciarra in via Minghetti fino al Palazzo dei Grandi Magazzini “Alle città d’Italia”, ora la Rinascente. Il Palazzo delle Poste a piazza San Silvestro;
+
+II. Via Merulana: Palazzo Brancaccio e le chiese di Sant’Antonio da Padova e di Sant’Alfonso dei Liguori - Piazza Vittorio Emanuele II - Ex Collegio Massimo in piazza dei Cinquecento a Termini, ora sede del Museo Nazionale Romano - I Ministeri della Difesa, dell’Agricoltura e delle Finanze in via Venti Settembre - Il Policlinico, poi dedicato a Umberto I.
+
+**Roma fascista**
+
+È il periodo tra il 1922 e il 1942, tradizionalmente indicato come il ventennio degli sventramenti e delle borgate; ma è anche un periodo molto vitale da un punto di vista architettonico, con la creazione di numerosi centri urbani nuovi, alcuni critici in parte ancora oggi. Non è possibile definire un itinerario continuo, data la distribuzione a macchia d’olio delle nuove costruzioni, e i punti di visita vanno raccordati:
+
+1. Centro storico. Via dei Fori Imperiali, già via dell’Impero, e al via del Teatro di Marcello, già via del Mare, fino a Bocca della Verità, con gli edifici del Comune - Corso del Rinascimento con la nuova facciata delle chiese della Nostra Signora

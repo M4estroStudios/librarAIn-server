@@ -1,17 +1,6 @@
 # INDEX — righe scartate dal parser
 
 Sorgente: INDEX.md
-Totale scartate: 12
+Totale scartate: 1
 
-- [no_label_pages_separator] Casali
-- [no_label_pages_separator] Caserme
-- [no_label_pages_separator] Casine
-- [no_label_pages_separator] Casini
-- [no_label_pages_separator] Castelli
-- [no_label_pages_separator] Catacombe
-- [no_label_pages_separator] Chiese e basiliche
-- [all_pages_out_of_mapping] - Nostra Signora del Sacro Cuore, 469-470
-- [all_pages_out_of_mapping] De Cupis, 470
-- [all_pages_out_of_mapping] Nazareno, 478
-- [all_pages_out_of_mapping] Quirinale, 479
-- [all_pages_out_of_mapping] Sant'Agnese in Agone, 472-474
+- [no_label_pages_separator] Dire Roma significa automaticamente far riferimento al suo assetto monumentale, dalle memorie archeologiche alle basiliche paleocristiane, dalle chiese rinascimentali e barocche alle dimore nobiliari, dalle statue alle fontane. Ma Roma monumentale è costituita anche da tutti quegli elementi ambientali che sono certe vie e piazze, antiche e moderne, tra ponti, gallerie e mura; le ville e i giardini, in un'esaltazione del verde tra casali e palazzine; i musei e le gallerie d'arte, tra capolavori di scultura e pittura; i teatri e gli stadi; fino agli infiniti sotterranei, tra catacombe e ipogei. Questa guida pertanto risponde prima di tutto al fine di evidenziare la monumentalità di Roma al di là di quello che è scontato, quindi recuperare i particolari della sua grandezza urbanistica facendo leva anche sugli artefici di certe grandiose costruzioni, che sono in primo luogo i mecenati ovvero i committenti, come imperatori, papi, nobili famiglie, e naturalmente i suoi realizzatori, gli artisti, che sono architetti, scultori e pittori, ma anche artigiani e operai. In questo senso la guida è una rivisitazione di Roma a vari livelli, artistici, religiosi, folclorici e, perché no?, sentimentali, alla riscoperta di una città vista da diverse angolature e testimonianze, che siano disposte a rinnovarne la conoscenza.

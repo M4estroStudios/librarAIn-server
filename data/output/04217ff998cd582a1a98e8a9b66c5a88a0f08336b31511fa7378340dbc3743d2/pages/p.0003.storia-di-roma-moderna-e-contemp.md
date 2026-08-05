@@ -1,8 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-DI BENEDETTO - CLAUDIO RENDINA
-
-STORIA DI ROMA MODERNA E CONTEMPORANEA
-
-Newton & Compton Editori
-
-NEWTON & COMPTON EDITORI

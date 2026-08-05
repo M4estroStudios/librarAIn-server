@@ -1,6 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-Il GOVERNO DELLO STATO ECCLESIASTICO
-
-Per provvedere alle ingenti esigenze finanziarie relative alle sue iniziative politico-religiose e alla realizzazione delle grandi opere progettate per Roma e per lo Stato ecclesiastico, Gregorio XIII impegnò il suo talento di amministratore e di giurista. Non voleva imporre nuove tasse, non approvava la vendita di rendite e di uffici e non aveva fiducia nel sistema dei Monti e perciò studiò nuove soluzioni. Soppresse i privilegi goduti dai veneziani e fece pagare le tasse agli stranieri residenti nello Stato ecclesiastico come ai suoi sudditi. Fece propria la geniale proposta del commissario camerale Rodolfo Bonfiglioli di riesaminare la posizione degli usufruttuari di diritti feudali per verificarne anche la legittimità.
-
-Si scoprirono numerosissimi illeciti, in gran parte originati nel tempo da negligenza e corruzione dell'amministrazione, e fu disposto di procedere al ricupero di quanto era dovuto allo Stato ricorrendo a mezzi giudiziari e anche alla forza se venisse opposta resistenza.

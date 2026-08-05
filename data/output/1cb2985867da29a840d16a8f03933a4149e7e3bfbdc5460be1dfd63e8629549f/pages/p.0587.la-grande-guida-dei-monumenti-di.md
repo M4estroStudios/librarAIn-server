@@ -1,2 +1,4 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Porta Praenestina, oggi Maggiore, in un'incisione di Luigi Rossini.
+Ponte Sisto (Via di, R XIII Trastevere)
+
+Questo ponte collega piazza Trilussa, in Trastevere, a piazza San Giovanni della Malva. L'attuale nome questo ponte lo ebbe nel 1475, quando il papa Sisto iv lo restaurò. Prima si chiamava Pons Antoninus e probabilmente risaliva ad Antonino Caracalla; poi divenne Valentiniano, dall'imperatore Valentiniano che nel 327 lo ricostruì. Nel Medioevo fu chiamato in Onda dalla vicina chiesa di San Salvatore in Onda, ma anche Ponte Rotto, perché un’inondazione lo aveva travolto e distrutto nel 792. La vera storia di questo ponte incomincia pertanto con la sua ricostruzione ad opera di Sisto iv; architetto dell'opera fu Baccio Pontelli, che incorporò nella prima arcata, quella verso Trastevere, gli avanzi romani del Ponte Aurelio. Consta di quattro archi e al centro ha un grosso foro rotondo che i romani chiamano “occhialone”; funzionava, al tempo delle piene, da idrometro e quando l’acqua lo superava c’era di che preoccu-

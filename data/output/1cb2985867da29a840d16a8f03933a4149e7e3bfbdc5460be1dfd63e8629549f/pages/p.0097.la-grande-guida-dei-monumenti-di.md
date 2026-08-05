@@ -3,7 +3,7 @@ Babuino (Via del, R IV Campo Marzio)
 
 All Saints
 
-È al n. 153. Chiesa evangelica inglese di Ognissanti, è stata costruita nel 1882 sul luogo dove un tempo era il convento della chiesa di Gesù e Maria (v. via del Corso). Il progetto era dell’architetto George Street, ma la chiesa fu costruita solo dopo la sua morte dagli italiani Pio Barucci e Vincenzo Cannizzaro, che peraltro non rispettaron il disegno originale del campanile. È un valido esempio di gotich revival, specialmente nella facciata, mentre l’interno a tre navate, a parte le crociere goticizzanti del presbiterio e del coro, ha qualcosa di romanico nell’alternarsi dei pilastri quadri con le colonne e nelle finestre a tutto sesto.
+È al n. 153. Chiesa evangelica inglese di Ognissanti, è stata costruita nel 1882 sul luogo dove un tempo era il convento della chiesa di Gesù e Maria (v. via del Corso). Il progetto era dell’architetto George Street, ma la chiesa fu costruita solo dopo la sua morte dagli italiani Pio Barucci e Vincenzo Cannizzaro, che peraltro non rispettarono il disegno originale del campanile. È un valido esempio di gotich revival, specialmente nella facciata, mentre l’interno a tre navate, a parte le crociere goticizzanti del presbiterio e del coro, ha qualcosa di romanico nell’alternarsi dei pilastri quadri con le colonne e nelle finestre a tutto sesto.
 
 Babuino
 

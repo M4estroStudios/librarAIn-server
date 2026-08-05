@@ -1,7 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-CERCHIAI - MAINARDIS - MANODORI
-MATERA - ZACCARIA
-
-# STORIA DI ROMA ANTICA
-
-NEWTON & COMPTON EDITORI - BIBLIOTECA DE Il Messaggero

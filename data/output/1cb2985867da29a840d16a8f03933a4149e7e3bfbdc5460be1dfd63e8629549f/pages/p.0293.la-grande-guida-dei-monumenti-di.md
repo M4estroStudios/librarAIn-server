@@ -1,6 +1,4 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-F
-
 Fanti Manfredo (Piazza, R XV Esquilino)
 
 Palazzo dell’Acquario Romano

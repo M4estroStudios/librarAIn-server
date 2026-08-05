@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Un portale sul quale è l’edicola della Pietà. Nell’interno, una Decollazione del Battista di Aureliano Milani e, sulla volta a botte Maria con Gesù morto e i santi Alessandro, Bartolomeo e Agnese, affresco di Emilio Retrosi del 1904.
+un portale sul quale è l’edicola della Pietà. Nell’interno, una Decollazione del Battista di Aureliano Milani e, sulla volta a botte Maria con Gesù morto e i santi Alessandro, Bartolomeo e Agnese, affresco di Emilio Retrosi del 1904.
 
 Colonnette (Via delle, R IV Campo Marzio)
 

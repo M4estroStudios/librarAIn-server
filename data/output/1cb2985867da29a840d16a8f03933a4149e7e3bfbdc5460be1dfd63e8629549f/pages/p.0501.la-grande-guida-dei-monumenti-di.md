@@ -1,2 +1,2 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Hendrick van Cleef, veduta del borgo di Ostia Antica.
+L'interno del mausoleo di Santa Costanza in un'incisione settecentesca di G.B. Piranesi.

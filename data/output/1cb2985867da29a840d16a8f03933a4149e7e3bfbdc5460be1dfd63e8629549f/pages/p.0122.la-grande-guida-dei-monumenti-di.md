@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Santa Maria in Cosmedin, ancora con la facciata settecentesca, in un'incisione di fine Ottocento.
+Santa Maria in Cosmedin, ancora con la facciata settecentesa, in un'incisione di fine Ottocento.
 
 co dell’Epifania, proveniente da un distrutto oratorio dell’antica basilica di San Pietro. È officiata con rito greco-melchita.
 

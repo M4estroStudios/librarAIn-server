@@ -1,2 +1,138 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Annotazioni
+Indice dei luoghi e delle cose notevoli
+
+Chiese e basiliche
+- San Nicola dei Lorenesi, 301
+- San Nicola dei Prefetti, 614
+- San Nicola di Bari, 60
+- San Nicola in Carcere, 678-679
+- San Pancrazio, 513
+- San Pantaleo, 518-519
+- San Paolo alla Regola, 519-520
+- San Paolo alle Tre Fontane, 695
+- San Paolo entro le Mura, 480-481
+- San Paolo fuori le Mura, 502-506
+- San Patrizio, 126
+- San Pietro in Carcere, 83
+- San Pietro in Montorio, 548-550
+- San Pietro in Vaticano, 530-541
+- San Pietro in Vincoli, 551-554
+- San Pio v, 561
+- San Primo a Gabii, 616
+- San Roberto Bellarmino, 710-711
+- San Rocco, 639-640
+- San Saba, 645
+- San Salvatore in Campo, 649-650
+- San Salvatore in Lauro, 650
+- San Salvatore in Onda, 526
+- San Saturnino, 96
+- San Sebastiano al Palatino, 329
+- San Sebastiano fuori le Mura, 58-60
+- San Silvestro al Quirinale, 729-730
+- San Silvestro in Capite, 659-660
+- San Sisto Vecchio, 494
+- San Teodoro, 681
+- San Tommaso ai Cenci, 213
+- San Tommaso di Canterbury, 449
+- San Tommaso in Formis, 520
+- San Tommaso in Parione, 520-521
+- San Valentino, 348
+- San Vitale, 481-482
+- Sant'Agata, 361-362
+- Sant'Agata dei Goti, 437
+- Sant'Agnese fuori le Mura, 484-485
+- Sant'Agnese in Agone, 472-474
+- Sant'Agostino, 34-35
+- Sant'Alessandro, 485-486
+- Sant'Alfonso all'Esquilino, 440
+- Sant'Ambrogio della Massima, 38
+- Sant'Anastasia, 39
+- Sant'Andrea a Ponte Milvio, 177
+- Sant'Andrea al Quirinale, 630-631
+- Sant'Andrea apostolo, 182
+- Sant'Andrea della Valle, 40-41
+- Sant'Andrea delle Fratte, 41-42
+- Sant'Angelo in Pescheria, 44
+- Sant'Anselmo all'Aventino, 196
+- Sant'Antonio abate, 177-178
+- Sant'Antonio da Padova, 440
+- Sant'Antonio da Padova, 56-57
+- Sant'Antonio da Padova, 84
+- Sant'Antonio dei Portoghesi, 612
+- Sant'Apollinare, 49
+- Sant'Atanasio, 115
+- Sant'Atanasio dei Greci, 100-101
+- Sant'Aurea del Borgo di Ostia Antica, 499
+- Sant'Egidio, 285
+- Sant'Elena, 180
+- Sant'Eligio degli Orefici, 286
+- Sant'Eligio dei Ferrari, 359-360
+- Sant'Eugenio, 114-115
+- Sant'Eusebio, 758
+- Sant'Eustachio in platana, 291-292
+- Sant'Ignazio, 382-383
+- Sant'Ignazio di Antiochia, 384
+- Sant'Ippolito, 385
+- Sant'Isidoro, 83
+- Sant'Ivo alla Sapienza, 635
+- Sant'Ivo dei Bretoni, 152-153
+- Sant'Omobono, 387
+- Sant'Onofrio, 495
+- Sant'Urbano, 144
+- Santa Balbina, 101
+- Santa Bibiana, 357-358
+- Santa Brigida a Campo de Fiori, 299
+- Santa Caterina a Magnanapoli, 412-413
+- Santa Caterina da Siena, 375-376
+- Santa Caterina dei Funari, 341-342
+- Santa Caterina della Rota, 195-196
+- Santa Cecilia in Trastevere, 201-203
+- Santa Chiara, 205
+- Santa Costanza, 486
+- Santa Croce, 632
+- Santa Croce delle Scalette, 400
+- Santa Croce in Gerusalemme, 270-271
+- Santa Dorotea, 283-284
+- Santa Francesca Cabrini, 431
+- Santa Francesca Romana, 329
+- Santa Galla, 506
+- Santa Lucia del Gonfalone, 104
+- Santa Madonna del Rosario, 706-707
+- Santa Margherita, 49-50
+- Santa Maria ad Martyres, v. Pantheon
+- Santa Maria Addolorata, 139-140
+- Santa Maria degli Angeli, 633-634
+- Santa Maria dei Miracoli, 579
+- Santa Maria del Buon Viaggio, 637
+- Santa Maria del Popolo, 578-579
+- Santa Maria del Priorato, 197
+- Santa Maria del Suffragio, 376
+- Santa Maria dell'Anima, 45-46
+- Santa Maria dell'Immacolata all'Esquilino, 286
+- Santa Maria dell'Orazione e Morte, 376
+- Santa Maria dell'Orto, 44-45
+- Santa Maria della Consolazione, 248
+- Santa Maria della Luce, 404-405
+- Santa Maria della Pace, 78-79
+- Santa Maria della Pietà, 236
+- Santa Maria della Scala, 654-655
+- Santa Maria della Vittoria, 734-735
+- Santa Maria delle Grazie, 420
+- Santa Maria delle Grazie alle Fornaci, 420
+- Santa Maria di Loreto al Foro Traiano, 411
+- Santa Maria in Aquiro, 174
+- Santa Maria in Aracoeli, 71-77
+- Santa Maria in Campomarzo, 165-166
+- Santa Maria in Cappella, 420
+- Santa Maria in Cosmedin, 121-122
+- Santa Maria in Domnica, 465
+- Santa Maria in Monserrato, 448-449
+- Santa Maria in Monte Santo, 579
+- Santa Maria in Campitelli, 163-164
+- Santa Maria in Traspontina, 242
+- Santa Maria in Trastevere, 424-425
+- Santa Maria in Trivio, 271-272
+- Santa Maria in Vallicella, 206
+- Santa Maria in via Lata, 261
+- Santa Maria in Via, 209
+- Santa Maria Liberatrice, 423

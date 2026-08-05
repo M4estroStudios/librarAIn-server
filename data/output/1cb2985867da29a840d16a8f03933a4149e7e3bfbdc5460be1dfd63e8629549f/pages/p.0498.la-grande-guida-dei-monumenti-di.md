@@ -1,20 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-fanotrofio e collegio per fanciulle. Furono allora compiuti lavori di ristrutturazione dell’intero fabbricato. Risale all’epoca la facciata sulla via divenuta unitaria su ognuno dei tre palazzi, con due ordini di finestre a cornici semplici poggiate su fascia marcapiano e un grande portale bugnato seicentesco al pianterreno di Palazzo Gori, mentre gli altri due edifici presentano due semplici portaletti. L’edificio è tuttora sede della casa generalizia delle Suore di Santa Dorotea della Beata Frassinetti, con annessi convitto e scuole.
+Sant’Agnese fuori le Mura in un’illustrazione di fine Ottocento.
 
-Oratorio (Piazza dell’, R II Trevi)
+fino al iv. La chiesa è a 3 navate, divise da colonne antiche di recupero dai bellissimi capitelli corinzi; al piano soprastante corrono i matronei, con colonne del vii secolo, mentre il soffitto a cassettoni, in legno dorato, è opera del 1606. Un restauro del 1855 circa è il motivo degli affreschi tardo-puristi nella navata centrale e nell’abside, opera tra gli altri di Pietro Gagliardi. Nel catino absidale è lo splendido mosaico dell’epoca di Onorio i, uno dei più eletti esempi di quest’arte in Roma, dove si staglia al centro la stilizzazione silhouette di Sant’Agnese, con ai piedi i simboli del martirio, ai lati i pontefici Simmaco e Onorio, quest’ultimo col modello della chiesa nelle mani, tutte le figure emergenti dall’abbacinante fondo oro. Bellissimo anche il rivestimento marmoreo dell’abside, di cipollino spartito da paraste di porfido. Il ciborio secentesco, retto da colonne antiche di porfido, riutilizzate, copre l’altare, sotto il quale sono i resti delle sante A. ed Emerenziana. Sopra l’altare, statua di Sant’Agnese, opera del 1605 di Nicolas Cordier, che la esegui aggiungendo a un torso di scultura antica di alabastro la testa, le mani e la veste di bronzo dorato, uno dei più splendidi esempi di “restauro-riutilizzo” archeologico, e al tempo stesso di scultura tardomanieristica romana. Il 12 aprile 1855 nella basilica si verificò un evento miracoloso; durante una visita di Pio ix, si ebbe lo sprofondamento della canonica e il papa ne uscì incolume con tutto il suo seguito. In una stanza adattata a cappella un affresco di Domenico Toietti del 1858 rievoca L’evento miracoloso occorso a Pio ix, che fu occasione della festa delle Luminarie, celebrata annualmente il 12 aprile fino al 1870.
 
-Santissimo Crocifisso
-È al n. 70. È un oratorio edificato da Giacomo Della Porta nel 1568, ed è all’interno completamente affrescato sul soffitto e sulle pareti con pitture di Paris Nogari, Cesare Nebbia e Giovanni De Vecchi. Era celebre la processione del Crocifisso organizzata dall’Arciconfraternita del Santissimo Crocifisso dall’oratorio fino a San Pietro in Vaticano; si svolgeva la sera del Giovedì Santo utilizzando una serie di macchine appositamente costruite.
-
-Orlando Vittorio Emanuele (Via, R XVIII Castro Pretorio)
-
-Hotel St. Regis
-Fino all’11 gennaio 2000 si chiamava Grand Hotel. Tradizionalmente considerato l’albergo più elegante di Roma, fu costruito nel 1894 su progetto di Giulio Podesti, e ha avuto fin dalle origini ospiti ilustri, dai principi russi ai lord inglesi, da famosi scrittori come Zola e Tolstoj alle famiglie nobili italiane, quali Mazzarino, Florio, Rospigliosi. I saloni divennero un punto d’incontro della società del primo Novecento e fu semplice fioraia all’entrata dell’albergo Lina Cavalieri giovanissima, ma negli stessi saloni apprezzata cantante per la prima volta, con tanta fortuna conseguente. Fu poi punto di riferimento di tanti uomini politici, a cominciare da Benito Mussolini, che vi alloggio dall’autunno del 1922 al 12 febbraio 1923, oltre ai generali nazisti e, di seguito, Ferruccio Parri con il Comitato di Liberazione e il maresciallo Badoglio quando passò le consegne del governo a Bonomi. Una curiosità infine è che in un cortile adiacente a via Venti Settembre una pianta di vite riesce a far maturare uva per 250 chili nella buona stagione e questo consente all’hotel di avere una produzione di vino, l’Adornetto, per non più di cento bottiglie, riservata in esclusiva ai clienti dell’albergo.
-
-Colonna del Gemellaggio
-È nel giardinetto antistante l’hotel St. Regis. Eretta nel 1961, rievoca nel nome il gemellaggio tra Roma e Parigi; in cima vi è infatti una caravella bronzea, simbolo della capitale francese.
-
-Orologio (Piazza dell’, R VI Parione)
-
-Palazzo Bennicelli
-È al n. 7. L’origine di questo palazzo risale al 1660, quando Borromini iniziò i lavori facendo piazza pulita delle esistenti costruzioni nella zona; la commissione era di monsignor Virginio Spada, commendatore del Banço di Santo Spirito, che voleva destina-
+Sant’Alessandro
+È al n. 1291. Questa chiesa sorge sul luogo dove venne scoperto casualmente nel 1854 il cimitero con la scomparsa basilica di Sant’Alessandro (v.). La costruzione della nuova chiesa voluta da

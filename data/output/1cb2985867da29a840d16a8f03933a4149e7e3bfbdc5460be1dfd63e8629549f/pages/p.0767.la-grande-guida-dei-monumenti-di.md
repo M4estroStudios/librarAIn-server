@@ -1,35 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Cronistoria di Roma
+Palazzo Massimo di Pirro
 
-753 a.C. Fondazione di Roma.
-753-509 Periodo dei re. Istituzione del calendario. Costruzione della Cloaca Massima e del Foro. Erezione delle Mura Serviane intorno ai sette colli.
-509 Istituzione della Repubblica.
-508-507 Guerra contro gli Etruschi.
-493 Vittoria dei Romani sui Latini al Lago Regillo; costruzione del Tempio di Castore e Polluce nel Foro.
-394 Roma assoggetta la città etrusca di Veio e domina sul Lazio.
-390 Roma è invasa dai Galli di Brenno; la libera Furio Camillo mettendo in fuga i Galli.
-380 Ricostruzione delle mura.
-380-350 Ristabilimento del primato di Roma sul Lazio.
-343-295 Guerre sannitiche. Apertura della via Appia e costruzione dell’Acquedotto Appio.
-282-272 Guerra tarentina.
-264 Dominio di Roma sulla penisola dalla linea Pisa-Rimini fino alla Calabria.
-264-146 Guerre puniche. Conquista di Sicilia, Sardegna e Corsica, della Grecia e di parte della Spagna.
-146-44 Tentativi di riforme con i Gracchi e guerra sociale tra Roma e gli Italici. Guerre civili: Mario e Silla; Cesare e Pompeo. Conquiste di Spagna, Gallia e Asia Minore. Roma ha 100.000 abitanti.
-44 a.C. - 14 d.C. Contesa del potere tra Marco Antonio e Ottaviano. Nasce l’Impero: Ottaviano Augusto primo imperatore.
-14-68 Roma sotto la dinastia giulio-claudia. Prima persecuzione dei cristiani con Nerone.
-69-96 Roma sotto la dinastia dei Flavi. Costruzione del Colosseo.
-96-138 L’Impero da Nerva ad Adriano.
-138-192 L’Impero sotto gli Antonini.
-193-235 L’Impero sotto i Severi. Assegnata la cittadinanza romana a tutti gli abitanti dell’Impero. Costruzione delle Terme di Caracalla.
-235-284 Crisi dell’Impero Romano, con creazione di governi autonomi nelle province. Costruzione delle Mura Aureliane.
-284-337 L’Impero da Diocleziano a Costantino: divisione e riunificazione del territorio. Battaglia di Ponte Milvio ed Editto di Milano con libertà di culto nel l’Impero. Costruzione delle prime basiliche romane. Roma ha oltre un milione di abitanti.
-395 Divisione definitiva tra Impero d’Occidente e d’Oriente.
-410 I Visigoti di Alarico saccheggiano Roma.
-455 I Vandali di Genserico saccheggiano Roma.
-476 Fine dell’Impero Romano d’Occidente.
-493-554 Roma sotto i Goti; guerra tra Goti e Bizantini; i Goti di Totila saccheggiano Roma; Roma bizantina. Roma ha 120.000 abitanti.
-590-604 Papa Gregorio Magno rafforza il papato.
-608 Trasformazione del Pantheon in basilica cristiana.
-725 Fondazione dell’ospizio di Santo Spirito in Sassia.
-752 Donazione di Pipino III il Breve e inizio dello Stato pontificio. Roma ha 60.000 abitanti.
-800 Incoronazione di Carlo Magno in San Pietro: nasce il Sacro Romano Impero. Roma ha 40.000 abitanti.
+È al n. 145. L’edificio fu costruito per Angelo Massimo da Giovanni Mangone di Caravaggio, allievo di Antonio da Sangallo, nella stessa periodo in cui veniva eretta la residenza dei Massimo “alle Colonne”. Fu chiamato “di Pirro”, da una statua di Marte con corazza ornata di elefanti venuta alla luce nei lavori di fondazione del palazzo e identificata erroneamente con un ritratto di Pirro re dell’Epiro. La statua, venduta nel 1738 a Clemente xii, è oggi ai Musei capitolini. Il palazzo nell’Ottocento fu collegato al confinante “alle Colonne” da Camillo Carlo Alberto Massimo, che nel 1874 fece sopraelevare la costruzione ed eseguire vari restauri. Così la facciata si presenta divisa in tre ordini di finestre, con un ammezzato tra il primo e il secondo piano. Al centro apre un grande portale architravato, ma agli estremi vi sono altri due piccoli portali anch’essi architravati. Il cortile è diviso in tre ordini lungo tre lati, e in due sulla parete di fronte; sul lato dell’ingresso, due pilastri con lesene doriche sorreggono tre arcate con fregio a metope decorate. Al primo piano, una loggia murata a colonne ioniche con tre finestre architravate. Dal lato sinistro del cortile si accede ad una chiostrina con portico a colonne ioniche.
+
+Palazzo Sora
+
+È al n. 217. È un altro dei “falsi architettonici” che caratterizzano molti edifici pseudoantichi del corso Vittorio Emanuele II. Questo rifà il verso all’originale quattrocentesco fatto costruire da Urbano Fieschi, conte di Lavagna, e ampliato dal fratello, il cardinale Nicola Fieschi ai primi del Cinquecento, che per ingrandire l’edi-

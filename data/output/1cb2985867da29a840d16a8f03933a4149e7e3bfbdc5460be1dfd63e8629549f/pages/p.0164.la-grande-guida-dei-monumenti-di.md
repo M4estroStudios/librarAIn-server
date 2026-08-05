@@ -1,5 +1,4 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Campo Barbarico (Via di, Q VIII, Tuscolano)
 Campo Barbarico
 
 È uno spazio trapezoidale a monte del punto in cui s’intersecano tra loro gli acquedotti Marcio e Claudio; il nome gli viene dal fatto che nell’assedio di Roma del 539 da parte dei Goti di Totila, questi, per controllare le vie di accesso alla città tenuta da Belisario costruirono proprio qui un campo trincerato, utilizzando la particolare configurazione degli acquedotti e chiudendo con pietre e terra le luci dei loro archi. A fronte della località sorge Tor Fiscale (v. via di Torre del Fiscale).

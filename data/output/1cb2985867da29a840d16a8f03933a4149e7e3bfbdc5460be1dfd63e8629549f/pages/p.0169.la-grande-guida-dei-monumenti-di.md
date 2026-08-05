@@ -6,5 +6,5 @@ Capo di Ferro (Piazza e Via, R VII Regola)
 Palazzetto Spada
 È al n. 7 della via. Questo palazzetto venne costruito intorno al 1540 per Tiberio e Domenico Capodiferro, della nobile famiglia romana, probabilmente su progetto di Baldassarre Peruzzi. Dopo il 1566 l’edificio venne ristrutturato, pur mantenendo la facciata originale a mattoni con le parti sporgenti in peperino, e assunse grande eleganza in una bella architettura rinascimentale. Apre al pianterreno con un possente portale architravato ad arco bugnato a raggiera, probabilmente opera di Ottaviano Mascherino. È collegato al Palazzo Spada mediante una casa quattrocentesca.
 
-Palazzo Spada
+Palazzetto Spada
 È al n. 13 della piazza. La struttura originaria di questo maestoso palazzo, una delle costruzioni più deliziose del barocco romano, ri-

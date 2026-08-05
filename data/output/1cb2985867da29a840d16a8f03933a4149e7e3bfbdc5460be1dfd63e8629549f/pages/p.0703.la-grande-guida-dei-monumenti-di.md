@@ -1,0 +1,4 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Area Sacra dell’Argentina, planimetria generale.
+
+sua vittoria sui Cartaginesi alla battaglia delle Egadi durante la prima guerra punica; ristrutturato nel i secolo a.C., ha ancora le colonne su un podio e una gradinata davanti alla quale sono i resti dell’altare. Tra il Tempio di Giuturna e quello della Fortuna sono gli avanzi di un edificio in laterizio costruito in periodo tardo repubblicano, probabilmente la sede degli Uffici per la tutela degli Acquedotti. Al di là del Tempio di Giuturna sono i resti con alcune colonne scanalate di un’ala del PORTICUS MINUCIA VETUS, un quadriportico che circondava tutta l'“area sacra” costruito dal console Marco Minucio Rufo dopo il suo trionfo del 107 a.C. sugli Scordisci. Sotto al terrapieno moderno sono gli avanzi del PORTICO HECATO-STYLUM, cioè “delle cento colonne”, costruito nella seconda metà del i secolo a.C. Ai piedi del terrapieno, i resti di una monumenta-

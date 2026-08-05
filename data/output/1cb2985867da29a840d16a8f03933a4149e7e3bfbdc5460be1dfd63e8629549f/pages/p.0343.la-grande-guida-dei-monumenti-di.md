@@ -1,10 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Galimberti Duccio (Via, Q XIV Trionfale)
+
 Santa Paola Romana
 
 È al n. 9. È dedicata alla santa romana, che fu al seguito di san Girolamo a Betlemme, dove morì nel 404. Parrocchia dal 1951, affidata al clero diocesano romano, è stata costruita su progetto di Silvio Casadori. Notevole il portale bronzeo, opera dello scultore Capri Otti (1954-), inaugurata nel 2001; all’interno una Via Crucis in bronzo di Giaroli.
 
 Gallicano (Via di San, R XIII Trastevere)
+
 Ospedale San Gallicano
 
 È al n. 25A. Il nome preciso è di Santa Maria e San Gallicano, e la struttura originaria di questo edificio risale al 1729, quando fu costruito su progetto di Filippo Raguzzini appositamente per l’ospedale di San Gallicano, fondato dal papa Benedetto xiii; l’istituzione ospedaliera era stata precedentemente organizzata dal sacerdote don Emilio Lami per le malattie cutanee in una casa dei Mattei presso la chiesa di San Benedetto in Piscinula, presa in affitto grazie all’aiuto finanziario del cardinale Pietro Marcellino Corradini. Quella casa-ospizio fu lasciata quando appunto venne ultimato il nuovo edificio, con tanto di bolla pontificia di fondazione del complesso dedicato a Santa Maria e San Gallicano; il Corradini fu nominato protettore dell’ospedale e il Lami priore. Alla cura dei malati erano addetti sette religiosi dell’ordine dei Padri Pii Operai della Madonna dei Monti e, dal 1826, le Oblate per le donne. Nel 1754 Benedetto xiv fece costruire da Costantino Fiaschetti un grande salone per dividere i ragazzi dagli adulti; la corsia, tuttora esistente, è di minor lunghezza ed è chiamata Sala di Benedetto xiv. Altri lavori furono fatti eseguire da Leone xii nel 1826 con una grande Sala anatomica e da Pio viii nel 1829 con l’istituzione di una spezieria per unguenti e pomate, divenuta l’attuale farmacia, nonché due cimiteri per i defunti dell’ospedale, che caddero in disuso nel 1837, quando fu istituito il cimitero del Verano. Ancora oggi l’ospedale è in attività ed è specializzato per le malattie della pelle. È popolarmente chiamato “L’ospedalone”, con il suo prospetto lungo 160 metri e alto 9, diviso in due da una lunga balconata e decorato con stucchi geometrici separati da paraste. Al centro è inserita la chiesa di San Gallicano, costituita da un fornice incassato tra pilastri su un alto zoccolo, opera di Filippo Raguzzini del 1725. Un’epi-

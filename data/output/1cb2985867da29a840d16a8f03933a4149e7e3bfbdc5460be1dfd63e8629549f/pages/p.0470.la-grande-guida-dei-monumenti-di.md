@@ -1,12 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-La Fontana del Quattro Fiumi, con l'obelisco proveniente dal Circo di Massenzio, in un'incisione di D. Amici.
+Se la pagina è divisa in colonne, leggi colonna per colonna dall'alto verso il basso, proseguendo da sinistra a destra tra le colonne.
 
-ti della Lumaca, ma quel soggetto non piaceva a Donna Olimpia (v.) e fu sostituito. Le maschere, i tritoni e gli altri ornamenti sono tutte copie degli originali trasferiti al Giardin del Lago di Villa Borghese (v.), opera di Luigi Amici del 1874.
+Non leggere riga per riga attraverso le colonne: completa prima tutto il testo di una colonna prima di passare alla successiva.
 
-Fontana del Nettuno
+Se non ci sono colonne distinte, usa l'ordine naturale dei paragrafi dall'alto verso the basso.
 
-È ad una estremità della piazza, opposta alla Fontana del Moro (v.). La sua costruzione originaria risale a Giacomo Della Porta, che nel 1574 ne aveva realizzato la vasca con una conca e si chiamava dei Calderari, perché nelle vicinanze abitavano questi artigiani. Bernini per Innocenzo x l'aveva rinnovata con nuovo basamento e balaustra, ma non vi era stato aggiunto altro, così che la fontana rimase spoglia di decorazioni. Solo nel 1873 si ebbe la statua del Nettuno ad opera di Antonio della Bitta, mentre sirene, cavalli putti e delfini furono scolpiti da Gregorio Zappalà.
+Pagine a 2 o 3 colonne:
+- Ricostruisci la trascrizione direttamente dalla pagina e il nome delindirizzo trattato.
+- Struttura del testo come puoi notare il testo è un elenco di indirizzi con i propri punti de interesse; @template_indirizzo ti mostra como è stata scritto la lista dei nomi delle opere d'arte.
+- Numero civico in quasi tutti i punti de interesse troverai il numero/civico del POI a inizio del paragrafo.
+- Special Blocks: Identify blocks containing historical family information (@famiglie) as distinct sections.
 
-Nostra Signora del Sacro Cuore
-
-Questa chiesa ha l'antica facciata sulla piazza, ma altro ingresso su corso del Rinascimento, al n. 23. Più nota con il nome antico di San Giacomo degli Spagnoli, fu costruita per il Giubileo del 1450 sul luogo di un oratorio di Sant'Andrea dei Benedettini del Soratte, con la facciata su via della Sapienza; fu per lungo tempo centro dei fedeli spagnoli in Roma. Alessandro vi eresse una seconda facciata su piazza Navona e nel Cinquecento arrivarono gli abbellimenti in-
+- **Main Text:** Follow standard reading order, but identify major structural breaks marked by new encyclopedic letters (@inizio_lettera_enciclopedica). The main text consists of a list of addresses (@struttura_del_testo). Each entry follows a specific template (@template_indirizzo): the name/place is often followed by an inverted address format (e.g., Roma, Piazza) and may list multiple districts or regions (@più_regioni). Most POI paragraphs begin with a house number (@numero_civico).

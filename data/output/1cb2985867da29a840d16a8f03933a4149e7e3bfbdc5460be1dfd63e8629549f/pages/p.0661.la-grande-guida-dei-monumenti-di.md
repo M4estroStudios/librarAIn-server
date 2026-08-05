@@ -1,10 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-G. Vasi, San Silvestro in Capite.
+Villa Albani Torlonia
 
-gettata nel 1680 da Carlo Rainaldi e completata da altri, per essere terminata da Domenico De Rossi. La grande volta a botte è dipinta con una composizione di Giacinto Brandi raffigurante L'Empireo con l'Assunta del 1683; la cupola ovale è stata dipinta nel 1690 dal Pomarancio. Il convento fu proprietario della colonna di Marco Aurelio e ancora oggi si può leggere, nel portico della chiesa, una lunghissima epigrafe del 1119, relativa a questo possesso, nella quale la colonna è erroneamente indicata come Antonina. I monaci, prima greci e poi benedettini, rimasero nel convento fino al 1277, quando la chiesa passò alle Clarisse; questa, rifatta sotto Clemente VII, assunse la definitiva attuale forma sotto Clemente XI conservando tuttavia il solito atrio porticato, caratteristico delle antiche basiliche, e l'antico campanileto. Il convento fu soppresso nel secolo scorso, tranne una piccolissima parte rimasta per i padri Pallottini, ai quali è affidata la chiesa; il resto fu adattato prima a Ministero dei Lavori Pubblici e poi a Palazzo delle Poste (v.). È la chiesa nazione degli Inglesi.
+gherita Guazzi, tre nobildonne romane, la contessa Bolognetti e le marchese Patrizi e Grimaldi, che allietavano le serate del cardinale, in compagnia degli altri porporati de Bernis e York. Il casino è stato costruito non come edificio a sé stante, isolato nel parco, ma nel contesto di un vasto complesso di giardini e delle altre costruzioni, dall’APPARTAMENTO DELLA LEDA, imitazione di un complesso termale antico, al BILIARDO e al porticato ad emiciclo con una saletta detta CANOPO o Caffè e per questo definita Caffehaus. Quando, nel 1868, la villa fu acquistata da Alessandro Torlonia per 700.000 scudi, il principe fece realizzare diversi lavori di restauro e sulla facciata fu incisa a lettere di bronzo la scritta: «Alexander Albani Vir eminentissimus instruxit et ornavit / Alexander Torlonia vir princeps in melius restituit» (“L’eminentissimo signor Alessandro Albani costrui e adornò, / il principe Alessandro Torlonia restaurò al meglio”). E aumentò la galleria di dipinti, sculture e rilievi, costituita dalla collezione Albani e incrementata da quella Torlonia: notevoli gli affreschi della fine del iv secolo a.C. staccati dalla tomba François di Vulci, rappresentanti scene mitologiche greche e di storia etrusco-romana, il rilievo di Antinoo, dalla Villa Adriana. Tra i dipinti, opere di Tintoretto, Giulio Romano, Guercino, Vanvitelli, Perugino, Pannini. Nella villa il 20 settembre 1870 fu firmato l’atto di capitolazione di Roma: il generale Raffaele Cadorna per l’Italia e il generale Hermann Kanzler per il papa.
 
-Simeone (Piazza di San, R V Ponte)
+Salerno (Piazza, Q V Nomentano)
 
-Fontana della piazza
+Monumento a Guido Baccelli
 
-È stata realizzata dallo scalpellino Pietro Gucci su disegno di Giacomo Della porta nel 1589. La volle Gregorio xiii con un semplice catino per piazza Montanara e successivamente ingrandita con la sovrapposizione di un altro catino su un balaustro con quattro mascheroni; fu sostituita nel 1829 con un’altra vasca dove furono inseriti gli stemmi dei Conservatori del Campidoglio, come tuttora è. Nel 1932, quando la piazza Montanara fu abbattuta per l’apertura della via del Mare, la fontana fu trasferita nel Giardino degli Aranci all’Aventino, finché nel 1973 fu definitivamente sistemata dove ora si trova, a fronte del Palazzo Lancellotti nella confinante piazza Lancellotti (v.).
+È al centro della piazza. Dedicato a Guido Baccelli (1832-1916), che fu ministro dell’Agricoltura e promotore della Passeggiata Archeologica (v. piazza di Porta Capena), è opera di Attilio Selva, che lo realizzò nel 1931 in uno stile architettonico richiesto dalle esigenze del regime.
+
+Santi Sette Fondatori
+
+È in piazza Salerno 4 nel quartiere Nomentano. Questa chiesa a pianta dodecagonale è stata costruita su progetto di Alberto Tonelli del 1946; già parrocchia dal 1935, è affidata ai Servi di Maria, ovvero i Serviti che l’hanno dedicata ai sette fondatori del loro ordine. Sono i sette Laudesi, ovvero “devoti alla Madonna”, tutti fiorentini che ebbero nel 1233, tutti insieme, una visione della Madonna: Bonfiglio Monaldi, Manetto dell’Antella, Bonaggiunta Manetti, Amadio degli Amidei, Uguccione degli Uguccioni, Sostegno dei Sostegni e Alessio Falconieri. In precedenza la chiesa era denominata del Perpetuo Suffragio, in riferimento al SACRARIO DEI CADUTI delle due guerre mondiali abitanti nella zona, sul quale l’edificio religioso fu costruito. In questo senso la chiesa è “tempio nazionale”.
+
+Sallustio (Piazza, R XVII Sallustiano)
+
+Horti Sallustiani
+
+Al centro della piazza a 14 m di profondità dal fondo stradale sono i resti di questa villa appartenuta allo storico Gaio Sallustio Cri-

@@ -1,0 +1,10 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Paolina Borghese lasciò la villa a Napoleone Luigi, figlio di suo fratello Luigi, e a sua moglie Carlotta; ma nel 1827 i due sposi fece uno scambio con Zenaide, moglie di Carlo Luciano Bonaparte, principe di Canino, che venne ad abitare a Roma e cedette loro la sua villa di Monte San Quirico presso Lucca. Alla morte di Zenaide, avvenuta nel 1854, la proprietà passò a suo figlio, monsignor Luciano, che la donò quattro anni dopo al fratello Napoleone Carlo Bonaparte; questi vi abitò con la moglie Cristina Ruspoli e la villa da allora si chiamò Bonaparte. Subì non pochi danni durante il fatidico 20 settembre 1870 e nel 1884 fu in parte lottizzata. Cristina Ruspoli seguitò a viverci anche dopo la morte del marito, avvenuta nel 1899, e finì per venderla nel 1907 all’ambasciatore prussiano Otto von Muhlberg, che fece restaurare il casino dall’architetto Wille. E la villa restò alla Germania fino alla seconda guerra mondiale, finché nel 1951 l’acquistò la Francia che ne fece la sede dell’Ambasciata presso la Santa Sede.
+
+Verano (Piazzale del, Q VI Tiburtino)
+
+Cimitero monumentale del Verano
+
+È il cimitero che sorge a destra e dietro la basilica di San Lorenzo fuori le Mura. Il nome deriva dall’antico campo dei Verani, gens senatoria proprietaria di questo territorio dal periodo repubblicano, nel quale furono aperte in epoca paleocristiana delle catacombe. Luogo di sepoltura fin dall’antichità e come tale “camposanto” e aquesto fine definitivamente adibito dai primi dell’Ottocento. Sorge a destra e dietro la basilica di San Lorenzo fuori le Mura. Fu istituito sotto l’amministrazione francese in applicazione dell’editto di Saint-Cloud del 1804, che imponeva le sepolture fuori delle mura; iniziato su un progetto di Giuseppe Valadier tra il 1807 e il 1812, fu continuato sotto Gregorio xvi e Pio ix a opera di Virginio Vespignani, ma il monumentale ingresso fu completato solo nel 1880.
+
+È un quadriportico adornato da quattro statue che rappresentano il

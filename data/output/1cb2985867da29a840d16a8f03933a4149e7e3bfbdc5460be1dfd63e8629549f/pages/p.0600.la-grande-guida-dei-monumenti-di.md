@@ -1,5 +1,15 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Sul quale si affaccia un bel tabernacolo medievale con l’immagine di San Pietro. Era in origine unita alla basilica di San Paolo da un lungo portico coperto oggi non più esistente e ha vissuto anch’essa la sua parte di storia romana: nel 549, vede entrare i Goti devastatori, nel 1407 accoglie re Ladislao, ma tre anni dopo è teatro di uno scontro cruento fra lo stesso Ladislao e i romani; nel 1522 vede entrare in Roma Adriano vi appena eletto papa.
+Porta Maggiore
 
-Museo della via Ostiense
-È all’interno della Porta San Paolo (v.) e fu istituito nel 1954: raccoglie plastici, calchi, stampe e fotografie che si riferiscono alla via Ostiense. Caratteristici i grandi plastici di Ostia e del porto di Traiano di Fiumicino. Vi sono conservati il bassorilievo e l’iscrizione relativi della Cappella della Separazione, davanti alla quale san Pietro e san Paolo si sarebbero separati prima di andare al martirio; si trovava originariamente nella zona dove ora sono i Mercati Generali, e fu smontata e ricostruita su un altro lato della via nel 1562, ma venne distrutta nel 1910 per esigenze urbanistiche. Il testo dell’epigrafe è curioso per la forma dialettale in cui è scritto, riportando le parole che i due apostoli si sarebbero scambiati: «In questo luoco si separorno s. Pietro et s. Pauolo / Andando al martirio et disse Pauolo a Pietro / “La pace sia con teco fundamento della chiesa / Et pastore di tutti li agnelli di Christo” / Et Pietro a Pauolo “Va in pace predicator / De buoni et guida de la salute de giusti”».
+TRMANIC PONTIF MAXIM
+VIVI PATER PATRIAE
+T OVE VOTA CERVLEBIT CVRTA MILL XXXXV
+NITIA TAI APENSA IN VRBEM PERDVC CVR
+PRAVA DETROITO VELO IT DESI PATPAIR
+BEREVGLIA ADNO CLADDETROITO TERMISS DI LAFS
+VMSAMILENSA VRBHOSSTLVII
+
+VS VS PONTIF EX MASIM MVS PATRIAE GENGORCOS VIII
+TOP XXII PATER PATRIAE GENGORCOS VIII
+ELPOSTEA A DIVO VESPAIAN PATER SVOVENRES
+ESENT NOVA TORI AGEDDVCGENDS SVA IMP CVR

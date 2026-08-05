@@ -1,4 +1,3 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Lo scalone di Palazzo Braschi in un disegno di P. Letarouilly.
-
-l’Urbe. Nel dopoguerra fu occupato dagli sfollati e fortemente danneggiato; restaurato dal Genio Civile, fu assegnato al Comune di Roma, che ne fece la sede del Museo di Roma. Il palazzo si eleva su una pianta trapezoidale tra piazza e via di San Pantaleo, via Pasquino, piazza Navona e via della Cuccagna, con diversi portoni; il principale è quello su piazza San Pantaleo, adorno di un Borea che soffia su un giglio, elemento araldico dei Braschi, ed è sormontato da una balconata poggiante su due colonne di cipollino, sulla quale affacciano le cinque finestre del primo piano, nonché le prime delle due facciate laterali. All’angolo con piazza Pasquino e piazza Navona si vedono due stemmi di Pio vi e del nipote Luigi, che furono scalpellati dai francesi nel 1798. Monumentale anche l’ingresso su via di San Pantaleo con colonne che sorreggono un balcone; un altro balcone è sull’angolo verso la statua di Pasquino. Dal portale di piazza San Pantaleo si accede al cortile di ispirazione vanvitelliana: è rettangolare, bugnato al pianterreno e all’ammezzato, con finestre architravate; sul cornicione, una terrazza con balconata.
+San Paolo
+fuori le Mura

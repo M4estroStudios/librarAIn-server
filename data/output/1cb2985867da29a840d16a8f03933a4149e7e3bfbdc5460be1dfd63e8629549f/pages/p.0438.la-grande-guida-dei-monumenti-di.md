@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Villa Aldobrandini
 
-zi timpani. Si apre, al di là del portale, il giardino inferiore con i resti di un ninfeo; alla destra del portale, su via Panisperna, il basso fabbricato a grandi arcate, costruito intorno al 1920 da Clemente Busiri Vici; ad angolo con via Mazzarino, un edificio simile costruito da Marcello Piacentini. Infine, su via Mazzarino, ad angolo, un ingresso costruito nel 1938 da Cesare Valle, che permette di accedere dall’esterno alla parte superiore del giardino. Non ci sono più i grandi capolavori di un tempo, tra i quali il celebre affresco romano del I secolo d.C. scoperto sull’Esquilino e che prese il nome di Noze Aldobrandini, venduto a Pio VII per 10.000 scudi. L’edificio principale accoglie attualmente l'Istituto internazionale per l’unificazione del diritto privato; il resto del complesso con il giardino è diventato dal maggio 1992 parco pubblico.
+zi timpani. Si apre, al di là del portale, il giardino inferiore con i resti di un ninfeo; alla destra del portale, su via Panisperna, il basso fabbricato a grandi arcate, costruito intorno al 1920 da Clemente Busiri Vici; ad angolo con via Mazzarino, un edificio simile costruito da Marcello Piacentini. Infine, su via Mazzarino, ad angolo, un ingresso costruito nel 1938 da Cesare Valle, che permette di accedere dall'esterno alla parte superiore del giardino. Non ci sono più i grandi capolavori di un tempo, tra i quali il celebre affresco romano del 1 secolo d.C. scoperto sull’Esquilino e che prese il nome di Nozze Aldobrandini, venduto a Pio vii per 10.000 sciudi. L’edificio principale accoglie attualmente l'Istituto internazionale per l’unificazione del diritto privato; il resto del complesso con il giardino è diventato dal maggio 1992 parco pubblico.
 
 Mazzini Giuseppe (Ponte, R VII Regola)
 
@@ -9,7 +9,7 @@ Mazzini Giuseppe (Ponte, R VII Regola)
 
 Monumento a Virgilio
 
-È all’altezza del Ponte Mazzini, su lungotevere dei Tebaldi, realizzato con il complesso scolastico a lui intitolato nel 1939. In bronzo, è opera di V. Fiordigiglio.
+È all’altezza del Ponte Mazzini, su lungotevere dei Tebaldi, realizzato con il complesso scolastico a lui intitolato nel 1939. In bronzo, è opera di v. Fiordigiglio.
 
 Mazzini Giuseppe (Viale, Q XV Della Vittoria)
 

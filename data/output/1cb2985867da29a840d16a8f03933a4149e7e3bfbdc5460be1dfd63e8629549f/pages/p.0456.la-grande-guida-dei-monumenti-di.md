@@ -4,7 +4,6 @@ La Fontana dell’Acqua Paola nel cortile di Palazzo Taverna in un’incisione d
 di Bartolomeo Neri, canonico dei Santi Celso e Giuliano, morto nel 1667, ma i lavori vennero completati nel 1676 su progetto di Pietro Passalacqua e l’ardito e originale arcone del presbiterio fu aggiunto nel Settecento dal De Dominicis.
 
 Venne consacrata da Benedetto xiii soltanto nel 1728, anche se da vent’anni era già eretta a parrocchia.
-
 Fu affidata ai Gerolamini, fino al 1933, quando passò agli Scolopi.
 
 Monte Giordano (Via di, R V Ponte)

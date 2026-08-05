@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Teatro Rossini
 
-chivio e biblioteca della Congregazione della Carità, ma successivamente furono ridotti a magazzino. Negli anni Cinquanta l’atto-re Checco Durante lo ristrutturò realizzando un palcoscenico e una sala per 200 spettatori; e qui agli la Compagnia del Tetro Comico Romano, che è stata mantenuta in vita anche dopo la morte dell’attore con i suoi eredi e quindi con Alfiero Alfieri.
+chivio e biblioteca della Congregazione della Carità, ma successivamente furono ridotti a magazzino. Negli anni Cinquanta l’atto-re Checco Durante lo ristrutturò realizzando un palcoscenico e una sala per 200 spettatori; e qui agi la Compagnia del Tetro Comico Romano, che è stata mantenuta in vita anche dopo la morte dell’attore con i suoi eredi e quindi con Alfiero Alfieri.
 
 Chiesa Nuova (Piazza della, R VI Parione)
 

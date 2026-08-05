@@ -5,8 +5,8 @@ Giolitti Giovanni (Via, R XVIII Castro Pretorio)
 
 Archi di Santa Bibiana
 
-È il tunnel sottostante i binari della ferrovia posto dietro la chiesa di Santa Bibiana (v.), tra le vie Giolitti e di Porta San Lorenzo (v.); è così chiamato perché prima della completa copertura per l’ampliamento del piazale ferroviario, esisteva solamente una serie di archi di sovrapassaggio delle singole linee.
+È il tunnel sottostante i binari della ferrovia posto dietro la chiesa di Santa Bibiana (v.), tra le vie Giolitti e di Porta San Lorenzo (v.); è così chiamato perché prima della completa copertura per l’ampliamento del piazzale ferroviario, esisteva solamente una serie di archi di sovrapassaggio delle singole linee.
 
 Santa Bibiana
 
-È al n. 154 nel rione Esquilino. È una basilica dedicata alla leggendaria martire del IV secolo, rievocata in un proverbio popolare: «Si ppiove pe’ Santa Bibiana, piove quaranta ggiorni e ’na settimana» e aggiunge: «Si se n’accorgheno li parenti, piove puro pe’ antri venti», precisazione che fa riferimento ai genitori Flaviano e Defrosa e alla sorella Demetria, anch’essi martiri. La basilica, costruita nel v secolo, per volere di papa Simplicio, sui resti di 11.266
+È al n. 154 nel rione Esquilino. È una basilica dedicata alla leggendaria martire del IV secolo, rievocata in un proverbio popolare: «Si ppove pe’ Santa Bibiana, piove quaranta ggiorni e ’na settimana» e aggiunge: «Si se n’accorgheno li parenti, piove puro pe’ antri venti», precisazione che fa riferimento ai genitori Flaviano e Defrosa e alla sorella Demetria, anch’essi martiri. La basilica, costruita nel v secolo, per volere di papa Simplicio, sui resti di 11.266

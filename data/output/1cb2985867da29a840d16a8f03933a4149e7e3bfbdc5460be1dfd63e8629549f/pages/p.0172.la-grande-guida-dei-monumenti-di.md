@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Palazzo Capranica
+Capranica (Piazza, R III Colonna)
 
 Palazzo Capranica
 

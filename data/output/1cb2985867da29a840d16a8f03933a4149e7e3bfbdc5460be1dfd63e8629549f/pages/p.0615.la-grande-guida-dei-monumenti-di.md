@@ -1,14 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-La chiesetta di San Nicola dei Prefetti in un'incisione di G. Vasi.
+Porta San Sebastiano (Via di, RR XIX Celio e XXI San Saba)
 
-dei defunti; ne trovò in Francia, Germania, Belgio e Italia e li raccolse, costituendo così questo piccolo museo. Tra le tante reliquie, una tavoletta di legno bruciata da un segno di croce e dalla mano del defunto padre Panzini, abate di Mantova, nel 1731; la fodera di un cuscino con l'impronta dell'indice di una mano di suor Maria di San Luigi Gonzaga, suora di Bastia, presso Perugia, morta di tisi nel 1894.
+La Porta San Sebastiano è la più grande delle porte della cerchia aureliana e si chiamava Appia, dalla via Appia Antica (v.) che da qui usciva, ma in epoca cristiana ha assunto il nome della basilica che è sulla via consolare. Ricostruita da Onorio all’inizio del v secolo, fu restaurata da Belisario e Narsete: la zona centrale, sovra-stata da una serie di archetti bizantini, è affiancata da due torri, in alto cilindriche e merlate, e in basso quadrate. Nell’interno si trova un’iscizione del 1327 con la figura dell’arcangelo san Michele, che celebra la vittoria dei romani sul re Roberto d’Angio; sulla chiave di volta, una sigla in greco e una croce all’interno di un cerchio.
 
-Prefetti (Via dei, R IV Campo Marzio)
-San Nicola dei Prefetti
+Arco di Druso
 
-È al n. 34. Detta, per le sue ridotte dimensioni San Nicolino, questa chiesa ebbe fin dalle origini l'appellativo con il quale è conosciuta. Probabilmente la chiesa lo ebbe dalla vicinanza con l'area del Palazzo di Vico; infatti questa famiglia ebbe la carica della Prefettura urbana. Un ameno copista antico la chiama dei Profeti, ma nel suo interno non conserva nemmeno un'immagine di profeta; conserva invece una tela della Vergine che era posta in origine nel vicino botteghino del Lotto. Fu tra quelle che nel 1796 mossero miracolosamente gli occhi e la reessa della gente per giocare i numeri era tale, che fu ritenuto cosa saggia trasferire il quadro nella vicina chiesa, dove è ancora. La chiesa risale a papa Zaccaria (742-52) che ne fece concessione alle suore in Campo Marzio. Papa Pio v Ghislieri l'affidò successivamente (nel 1568) ai Domenicani di Santa Sabina quale ospizio, e nel 1725 Benedetto xiii Orsini ne modificò l'aspetto originario; in seguito l'architetto Belloni curò il suo ingrandimento, essendo oramai proprietà della Confraternita della Croce, nel 1860.
-
-Prenestina (Via, QQ VI Tiburtino e VII Prenestino-Labicano)
-Basilica neopitagorica
-
-È al n. 7 della via. Il soprannome le è stato dato perché, in base alle decorazioni, si presume che fosse luogo di culto della setta reli-
+È a ridosso della Porta San Sebastiano. È improprio il riferimento a Druso (15 a.C.-23 d.C.), figlio dell’imperatore Tiberio; in realtà si tratta di un fornice del passaggio sull’Appia Antica dell’acquedotto alimentatore delle Terme di Caracalla, poi utilizzato come controporta nel complesso del cortile fortificato, costruito per rafforzare le difese delle mura. L'arco è in quadrato da due colonne su un alto plinto e con capitelli compositi sormontati da un architrave al di sopra del quale si eleva il massiccio attico decorato con un timpano triangolare al cui interno correva lo speco dell’acquedotto.

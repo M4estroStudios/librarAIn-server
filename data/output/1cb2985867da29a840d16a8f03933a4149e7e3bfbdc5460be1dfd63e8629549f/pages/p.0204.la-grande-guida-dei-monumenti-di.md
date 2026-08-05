@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Monastero dei Padri Olivetani
 
-edificio, risultando un autentico fondale scenografico. Il propettto, in un gioco architettonico di pieni e vuoti, si sviluppa tra le finestre di varia geometria e le due porte laterali, tutte incorniciate a stucco con i gigli farnesiani: il simbolo della mano che caratterizza il coronamento arcuato, al centro del motivo ad oculi del cornicione, lo ha fatto soprannominare “Mano di Cicerone”. L’edificio, monastero di Padri Benedettini Olivetani, della congregazione costituite nel 1313 a Monte Olivetano Maggiore, presso Siena, è annesso alla limitrofa basilica di Sant’Anastasia (v. piazza Sant’Anastasia).
+edificio, risultando un autentico fondale scenografico. Il propettto, in un gioco architettonico di pieni e vuoti, si sviluppa tra le finestre di varia geometria e le due porte laterali, tutte incorniciate a stucco con i gigli farnesiani: il simbolo della mano che caratterizza il coronamento arcuato, al centro del motivo ad oculi del cornicione, lo ha fatto soprannominare “Mano di Cicerone”. L’edificio, monastero di Padri Benedettini Olivetani, della congregazione costituita nel 1313 a Monte Olivetano Maggiore, presso Siena, è annesso alla limitrofa basilica di Sant’Anastasia (v. piazza Sant’Anastasia).
 
 Cervantes Miguel (Piazzale, Q III Pinciano)
 

@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Arco di Travertino (Via dell', Q VIII Tuscolano)
+Arco di Travertino
 
 L’Arco di Travertino consiste in un’arcuazione dell’Acquedotto Claudio (v. Parco degli Acquedotti in via Appio Claudio), che ha preso nome dalla pietra usata per la sua costruzione.
 

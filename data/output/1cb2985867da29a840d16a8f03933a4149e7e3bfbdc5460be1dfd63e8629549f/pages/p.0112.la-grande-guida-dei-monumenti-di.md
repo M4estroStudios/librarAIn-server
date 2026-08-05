@@ -1,10 +1,11 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
+San Bartolomeo all’Isola
+
 San Bartolomeo all’Isola in un’incisione di G. Vasi.
 
 sa palla di cannone, che qui cadde durante l’assedio dei francesi alla Repubblica romana nel giugno del 1849; la chiesa era in quel momento piena di gente, che restò miracolosamente illesa. E così la palla è soprannominata “del miracolo”. A sinistra della chiesa è la CAPPELLA DELL’ADDOLORATA assegnata alla confraternita dei Sacconi Rossi; nel vasto stanzone sotterraneo i membri della confraternita raccoglievano i miseri resti degli annegati e delle persone uccise da briganti, che giacevano abbandonati e insepolti, e li seppellivano qui. Questo cimitero sotterraneo presenta una curiosa decorazione a ossami che lo collega ai sottotranei della chiesa dell’Orazione e Morte in via Giulia (v.) e dei Cappuccini in via Veneto 4 (v.).
 
 Basilio (Via di San, RR II Trevi e XVI Ludovisi)
-
 San Basilio
 
 È al n. 51. Questo complesso edilizio dedicato al santo di Cesarea, vescovo e dottore della Chiesa, che fondò l’ordine dei Basiliani, risale al 1660, quando l’Ordine Basiliano Italiano, organizzato da Gregorio xiii nel 1579 acquistò una casa di proprietà di un certo Giovanni Paolo Vespignani, che divenne il convento dei monaci. Poi, tra il 1680 e il 1682, a fianco vi fu costruita la chiesa, finché si ampliò il complesso conventuale grazie al procuratore del l’Ordine Pietro Menniti. Furono acquistati altri immobili verso via San Niccolò da Tolentino, e vennero trasformati riuniti alla chiesa e alla vecchia casa, secondo un progetto di Carlo Francesco Bizzaccheri, ma i lavori procedettero lentamente. In gran parte realizzati nel 1706, furono portati avanti fino a metà del XVIII secolo, ma probabilmente il progetto originario troppo costoso non fu mai definitivamente realizato. Anche se ristrutturato nel XX secolo, il complesso ha mantenuto la sua impronta conventuale originaria, a tre piani con finestre a cornici semplici. Tipiche restano le linee architettoniche nei due fabbricati contigui di via del Ba-

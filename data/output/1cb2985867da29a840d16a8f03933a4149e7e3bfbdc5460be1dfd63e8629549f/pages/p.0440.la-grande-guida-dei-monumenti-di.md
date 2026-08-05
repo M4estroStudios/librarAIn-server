@@ -17,4 +17,4 @@ Mignanelli (Piazza, R IV Campo Marzio)
 
 Palazzo Mignanelli
 
-È al n. 22, a fronte di piazza di Spagna. Il palazzo risale ad una costruzione fine Cinquecento della famiglia Gabrielli, che in seguito al matrimonio tra Maria Gabrielli e Girolamo Mignanelli nel 1615 passò ai Mignanelli, originari di Siena, che dettero nome al palazzo, alla piazza e alla rampa. Era stato edificato sulla zona ove erano gli antichi Horti Luculliani, con un terzo piano incompleto e così restò con i Mignanelli e i Gentileschi subentrati dopo il 1870. Soltanto nel 1887 fu terminato da Andrea Busiri Vici, con un rinno-
+È al n. 22, a fronte di piazza di Spagna. Il palazzo risale ad una costruzione fine Cinquecento della famiglia Gabrielli, che in seguito al matrimonio tra Maria Gabrielli e Girolamo Mignanelli nel 1615 passò ai Mignanelli, originari di Siena, che dettero nome al palazzo, alla piazza e alla rampa. Era stato edificato sulla zona ove erano gli antichi Horti Luculliani, con un terzo piano incompleto e così restò con i Mignanelli

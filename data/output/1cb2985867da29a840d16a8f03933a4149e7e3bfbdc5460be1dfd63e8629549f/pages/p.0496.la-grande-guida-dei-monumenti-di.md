@@ -1,12 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Onofrio (Piazza e Via di Sant', R XIII Trastevere)
+San Nicola da Tolentino in un'incisione di G.B. Falda.
 
-Sant’Onofrio
+Nervi P. L. (Piazzale, Q XXXII, Europa)
 
-È al n. 2 della piazza. Dedicata al martire del IV secolo patrono dei tessitori, sorge al termine della salita, preceduta da una caratteristica scalinata. La chiesa fu costruita nel 1439 sull’area dell’oratorio fondato vent’anni prima dal beato Nicola da Forca Palena; fu completata nel Cinquecento e restaurata nel 1946. Vi è annesso un CONVENTO nel quale Torquato Tasso (1544-95) visse gli ultimi anni; il poeta è sepolto nella prima cappella di sinistra della chiesa, ma il Monumento funebre del Tasso è del 1875, opera di Giuseppe Fabris, mentre risale al 1608 il monumento al Tasso, nella stessa cappella, commissionato dal cardinale Bonifacio Bevilacqua. Risale al Seicento la tomba di Bartolomeo Ariete con una lapide curiosa, che è una sorta di rebus astrologico: «Bartolomeo Ariete, abbattuto da un colpo d’ariete il giorno 149° innanzi al segno dell’Ariete»; fu fatta incidere dal figlio di Bartolomeo, anche per essere d’aiuto «a coloro che il Fato in tal modo arieterà». Sulla porta della Cappella della Madonna del Rosario, Sibille di Agostino Tassi. La chiesa ha tre campane e la più piccola è detta la Campana del Tasso, perché accompagnò gli ultimi momenti di vita del poeta, seguitando a suonare fino alla morte avvenuta il 25 aprile 1595; rischio di essere fusa dai garibaldini per fabbricare artiglieria, durante la difesa della Repubblica del 1849, ma Garibaldi la risparmiò di fronte alla disperazione del superiore del convento.
+Torre Novecento
 
-Le tre stanze, dove il Tasso visse e morì la vigilia dell’incoronazione in Campidoglio con l’alloro poetico, costituiscono il MUSEO TASSIANO, dove sono conservati manoscritti e antiche edizioni delle sue opere, la maschera funebre e la pietra tombale che indicava nella chiesa il luogo della sepoltura prima dell’erezione del monumento. Il complesso è sotto la tutela dell’Ordine Equestre del Santo Sepolcro di Gerusalemme.
+È al centro della piazza. Scultura a forma di obelisco alta 21 metri, sulla quale sono incisi emblemi in riferimento ad eventi del Novecento. Opera di Arnaldo Pomodoro, è stata inaugurata il 23 ottobre 2004.
 
-Ospedale del Bambin Gesù
+Nicola da Tolentino (Salita di San, RR II Trevi e XVII Sallustiano)
 
-È al n. 4 della piazza. L’ospedale è stato costruito sull’area appartenente al convento di Sant’Onofrio, divenuta proprietà comunale dal 1921 e della Santa Sede dal 1924 con tutto il complesso sanitario. L’istituzione dell’ospedale risale al 1869, quando fu fondato a via delle Zoccolette su iniziativa della duchessa Arabella Fits-James, moglie del marchese Salviati, per assistere i bambini poveri ammalati; in questa zona venne trasferito tra il 1879 e il 1887. I lo-
+San Nicola da Tolentino
+
+È al n. 17 della salita. È dedicata al santo marchigiano morto a Tolentino (1245-1305). Edificata alla fine del Cinquecento ma rifatta appena cinquant'anni dopo a spese dei Pamphilj su disegni del Baratta, ebbe così la nuova facciata nel 1670, realizzata da Filippo Buzio ma con la regia di Alessandro Algardi. Questi disegnò anche gli altari, ispirati ad un monumentalismo classicheggiante; l'altar maggiore presenta in una nicchia un gruppo di statue raffiguranti la Visione di san Nicola da Tolentino con la Vergine, sant'Agostino e santa Monica. La cupola è affrescata nella calotta con grandi effetti prospettici da Giovanni Colli e Filippo Gherardi. Notevoli la CAPPELLA GAVOTTI di Pietro da Cortona, con statue di Antonio Raggi ed Ercole Ferrata, e la riproduzione, nella prima cappella di sinistra, del Santo Sepolcro di Gerusalemme; questo proviene da Santa Maria Egiziaca (v. piazza Bocca della Verità). Vi si officia in rito armeno.
+
+Nicosia (Piazza, R IV Campo Marzio)
+
+Fontana della piazza
+
+Fu realizzata su disegno di Giacomo Della Porta nel 1572 per volere del papa gregorio xiii (1572-85) per essere collocata in piazza del Popolo; era costituita da una vasca ottagonale di marmo con quattro delfini, opera dello scalpellino Giovanni Leminard e con le insegne araldiche dei Boncompagni. Nel 1575 Della Porta la ridisegnò, volendola arricchire di quattro tritoni, che furono appositamente scolpiti da Simone Moschino, Taddeo Landini, Giacobbe Silla Longhi ed Egidio della Riviera de Molines; ma le sculture fini-

@@ -9,4 +9,4 @@ Roma, Casella postale 6214
 www.newtoncompton.com
 
 Fotocomposizione: GI Grafica Internazionale, Roma
-Stampato nell’aprile 2006 dalla Legatoria del Sud s.r.l., Ariccia (Roma)
+Stampato nell'aprile 2006 dalla Legatoria del Sud s.r.l., Ariccia (Roma)

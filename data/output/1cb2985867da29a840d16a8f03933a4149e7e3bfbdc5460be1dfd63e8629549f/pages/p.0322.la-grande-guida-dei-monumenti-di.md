@@ -9,7 +9,7 @@ Basilica Giulia
 
 Casa di Augusto
 
-È sul Palatino. Fu fatta costruire da Ottaviano nel 36 a.C., ampliando la casa dell’oratore Ortensio, ma dopo un incendio del 3 d.C. fu ri-dificata. Lo scavo ha riportato alla luce lo studiolo, nel quale è stato riconosciuto il luogo in cui l’imperatore si ritirava «per stare appartato e senza essere disturbato», come scrive Svetonio, «che egli chiamava “Siracusa” o “laboratorio”». Ma Augusto abitò probabilmente anche nella Casa di Livia (v.);
+È sul Palatino. Fu fatta costruire da Ottaviano nel 36 a.C., ampliando la casa dell’oratore Ortensio, ma dopo un incendio del 3 d.C. fu riedificata. Lo scavo ha riportato alla luce lo studiolo, nel quale è stato riconosciuto il luogo in cui l’imperatore si ritirava «per stare appartato e senza essere disturbato», come scrive Svetonio, «che egli chiamava “Siracusa” o “laboratorio”». Ma Augusto abitò probabilmente anche nella Casa di Livia (v.).
 
 Casa di Livia
 

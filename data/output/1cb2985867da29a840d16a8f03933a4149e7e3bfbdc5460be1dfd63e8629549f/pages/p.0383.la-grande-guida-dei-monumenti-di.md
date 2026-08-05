@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 G.B. Falda, la chiesa di Sant'Ignazio.
 
-risulta abitata dal beato Angelo Baldinucci, un predicatore della Campagna romana; una seconda da san Giovanni Berchmans dal 1618 al 1621; una terza dal venerabile Abramo Giorgi, martire in Etiopia nel 1595. Le stanze propriamente legate a san Luigi sono: una cappella, dove il giovane pronunciò i voti il 25 novembre 1587; una sagrestia con un crocifisso usato da Luigi prima di diventare gesuita; una Cappella detta di San Luigi, inaugurata il 21 giugno 1714 con suppellettili dell'infermeria dove il giovane mori; e una grande sala di ricreazione dei giovani studenti gesuiti, nella quale evidentemente anche Luigi passò parte del suo tempo.
+risulta abitata dal beato Angelo Baldinucci, un predicatore della Campagna romana; una seconda da san Giovanni Berchmans dal 1618 al 1621; una terza dal venerabile Abramo Giorgi, martire in Etiopia nel 1595. Le stanze propriamente legate a san Luigi sono: una cappella, dove il giovane pronunciò i voti il 25 novembre 1587; una sagrestia con un crocifisso usato da Luigi prima di diventare gesuita; una Cappella detta di San Luigi, inaugurata il 21 giugno 1714 con suppellettili dell'infermeria dove il giovane morì; e una grande sala di ricreazione dei giovani studenti gesuiti, nella quale evidentemente anche Luigi passò parte del suo tempo.
 
 Biblioteca Casanatense
 

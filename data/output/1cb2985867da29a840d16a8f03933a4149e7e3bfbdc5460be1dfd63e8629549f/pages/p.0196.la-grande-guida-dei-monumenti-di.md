@@ -13,7 +13,7 @@ Cavalieri di Malta (Piazza dei, R XII Ripa)
 
 Sant’Anselmo all’Aventino
 
-È al n. 5. Dedicata al santo di Aosta, fu costruita su progetto dell’abate belga Ildebrando de Hemptine e di Francesco Vespignani tra il 1892 e il 1896. In stile romanico-lombardo, con facciata a finta galleria con tre monofore, ha pianta basilicale a tre navate con absidi decorate a mosaico. Nell’annesso monastero, mosaico raffigurante il Mito di Orfeo, proveniente dalla casa di Lucilla Pactumeia (ii-iii secolo), i cui resti sono nei sotterranei. Durante le celebrazioni liturgiche i padri Benedettini offrono suggestive esecuzioni di canti gregoriani.
+È al n. 5. Dedicata al santo di Aosta, fu costruita su progetto dell’abate belga Ildebrando de Hemptine e di Francesco Vespignani tra il 1892 e il 1896. In stile romanico-lombardo, con facciata a finta galleria con tre monofore, ha pianta basilicale a tre navate con absidi decorate a mosaico. Nell’annesso monastero, mosaico raffigurante il Mito di Orfeo, proveniente dalla casa di Lucilla Pactumeia (II-III secolo), i cui resti sono nei sotterranei. Durante le celebrazioni liturgiche i padri Benedettini offrono suggestive esecuzioni di canti gregoriani.
 
 Villa dei Cavalieri di Malta
 

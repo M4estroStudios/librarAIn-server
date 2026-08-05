@@ -7,7 +7,7 @@ Eligio (Via di Sant’, R Vll Regola)
 
 Sant’Eligio degli Orefici
 
-È in via Sant’Eligio, nel rione Regola. L’Università degli Orefici e Argentieri volle onorare il proprio collega e patrono (Limoges 588-660), erigendli questa chiesina, su disegno di Raffaello, nel 1514. La cupola fu finita più tardi e l’urbinate si ispirò al Bramante per San Pietro: così che molti ritennero la chiesa opera di questo artista. Nel 1601 la chiesa minacciava il crolo per cui fu ricostruita e l’anno dopo Flaminio Ponzio l’arricchi della facciata. Sull’altar maggiore è conservato un frammento del capo di sant’Eligio. Nei pennacchi delle cappelle laterali, Sibille di Giovanni Francesco Romanelli; nell’abside affreschi raffiguranti la Santissima Trinità e Madonna con Bambino e santi di Matteo da Lecce e Profeti e apostoli di Taddeo Zuccari.
+È in via Sant’Eligio, nel rione Regola. L’Università degli Orefici e Argentieri volle onorare il proprio collega e patrono (Limoges 588-660), erigendogli questa chiesina, su disegno di Raffaello, nel 1514. La cupola fu finita più tardi e l’urbinate si ispirò al Bramante per San Pietro: così che molti ritennero la chiesa opera di questo artista. Nel 1601 la chiesa minacciava il crollo per cui fu ricostruita e l’anno dopo Flaminio Ponzio l’arricchi della facciata. Sull’altar maggiore è conservato un frammento del capo di sant’Eligio. Nei pennacchi delle capelle laterali, Sibille di Giovanni Francesco Romanelli; nell’abside affreschi raffiguranti la Santissima Trinità e Madonna con Bambino e santi di Matteo da Lecce e Profeti e apostoli di Taddeo Zuccari.
 
 Emanuele Filiberto (Via, R XV Esquillino)
 

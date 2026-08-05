@@ -1,0 +1,160 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+Indice dei luoghi e delle cose notevoli
+
+Palazzi
+- Bernini, 439-440
+- Bonaparte, 726-727
+- Boncompagni Cerasi, 99-100
+- Bonelli, 496
+- Borghese, 306-307
+- Borghese per gli ospiti, 306
+- Borromeo, 496
+- Brancaccio, 131-132
+- Braschi, 516-518
+- Caetani, 129-130
+- Caffarelli Stoppani Vidoni, 752-753
+- Capizucchi, 163
+- Capranica, 172-173
+- Cardelli, 177
+- Carpegna, 29
+- Cenci Bolognetti, 212
+- Cenci Bolognetti, 350
+- Cenci, 450
+- Cesi, 237-238
+- Chigi, 226-228
+- Clementi, 341
+- Colonna, 50
+- Corsini, 401-402
+- De Cupis, 470
+- degli Ambasciatori, 442
+- dei Congressi, 387
+- dei Conservatori, 157-159
+- dei Convertendi, 238-239
+- dei Penitenzieri, 239
+- dei Propilei, 561
+- dei Santi Apostoli, 52
+- del Banco di Santo Spirito, 104
+- Del Bufalo, 275
+- Del Bufalo Niccolini Ferrajoli, 229
+- del Collegio Ghislieri, 371-372
+- del Collegio Nazareno, 474-475
+- del Collegio Romano, 221-224
+- del Collegio Urbano "de Propaganda Fide", 712
+- del Commendatore dell'ospedale di Santo Spirito, 651-654
+- del Coni, 310
+- del Convento dei Minimi di Calabria, 340
+- del Convento delle Mantellate, 340-341
+- Del Gallo, 337
+- del Governo Vecchio, 377
+- Del Grillo Nicolis de Robilant, 276-277
+- del Messaggero, 708
+- del Ministero dei Lavori Pubblici, 589
+- del Ministero dei Trasporti e della Navigazione, 270
+- del Ministero del Tesoro, Bilancio e Programmazione Economica, 733-734
+- del Ministero delle Comunicazioni, 38
+- del Ministero di Grazia e Giustizia, 82
+- del Ministero per gli Affari Regionali, 671
+- del Ministero per le Politiche Agricole e Forestali, 734
+- del Monastero di Santa Chiara, 78
+- del Monte di Pietà, 454-455
+- del Parco di Castel Fusano, 183
+- del Pio Istituto Rivaldi, 236
+- del Quirinale, 625-629
+- del Ragno, 442
+- del Rettorato della Città Universitaria
+- del Sant'Uffizio, 710
+- del Servizio Geologico d'Italia, 676-677
+- del Viminale, 750-751
+- dell'Accademia di Belle Arti, 639
+- dell'Accademia di Romania, 279
+- dell'Accademia Ecclesiastica, 445-446
+- dell'Acea, 502
+- dell'Acquario Romano, 293
+- dell'Aeronautica, 711
+- dell'Ambasciata di Gran Bretagna, 733
+- dell'Anagrafe, 525
+- dell'Apollinare, 48-49
+- dell'Avvocatura Generale dello Stato, 610-611
+- dell'Enciclopedia Italiana, 287-288
+- dell'Eni, 436
+- dell'Ente Eur, 217
+- dell'Esedra, 633
+- dell'Esposizione, 417
+- dell'ex Radio Vaticana dei Giardini Vaticani, 546
+- dell'Hotel Minerva, 446-447
+- dell'Ina, 240
+- dell'Inail, 621-622
+- dell'Inps, 482
+- dell'Istituto Poligrafico e Zecca dello Stato, 739-740
+- dell'Istituto Romano San Michele, 636-638
+- dell'Istituto San Giuseppe De Merode, 655
+- dell'Ordine Teutonico, 432
+- dell'Università Gregoriana, 555
+- della Banca d'Italia, 479
+- della Camera di Commercio, 527
+- della Cancelleria, 167-168
+- della Casa Generalizia degli Scolopi, 433
+- della Cassa di Risparmio, 251-252
+- della Civiltà del Lavoro, 243
+- della Confindustria, 84
+- della Consulta, 624-625
+- della Curia Generalizia dei Redentoristi, 440
+- della Dataria Apostolica, 273-274
+- della Deutsche Bank, 708
+- della ex Birra Peroni, 35-36
+- della Facoltà d'Ingegneria, 288
+- della Fao, 683
+- della Farnesina ai Baullari, 751-752
+- della Farnesina, 310-311
+- della Foresteria, 311
+- della Galleria Colonna, 229-230
+- della Manifattura Pontificia dei Tabacchi, 433-434
+- della Marina, 465
+- della Minerva, 446
+- della Pantanella, 121
+- Della Porta Negroni Caffarelli, 246
+- della Posta Centrale, 659
+- della Pubblica Istruzione, 693
+- della Rai, 438-439
+- della Sapienza, 289-290
+- della Villa dei Cavalieri di Malta, 197
+- della Villa della Farnesina, 402-403
+- delle Assicurazioni Generali di Venezia, 729
+- delle Belle Arti, 113-114
+- delle Carceri Nuove, 372-373
+- delle Caserme di viale delle Milizie, 441
+- delle Esposizioni, 480
+- delle Scienze, 417
+- delle Scuderie del Quirinale, 629
+- delle Tradizioni Popolari, 417
+- dello Iusm, 311
+- dello Smom, 246-247
+- dello Sport, 670
+- di Domiziano, 324-328
+- di Firenze, 302-303
+- di Giacomo Mattei, 435
+- di Giustizia, 198-199
+- di Monte Savello, 459-460
+- di Montecitorio, 451-454
+- di Pio iv, 303-304
+- di Propaganda Fide, 668-669
+- di San Callisto, 424
+- di Spagna, 667-668
+- di Villa Giulia, 743
+- di Villa Madama, 747-748
+- di Villa Medici, 705
+- di Villa Pallavicini Rospigliosi, 731-732
+- di Villa Torlonia, 487
+- di Villa Wolkonsky, 749
+- Doria Pamphilj, 252-254
+- Episcopale del Borgo di Ostia Antica, 499
+- ex Ina, 482
+- Falconieri, 373-374
+- Fani Pecci Blunt, 68-69
+- Farnese, 294-298
+- Fusconi Pighini del Gallo di Roccagiovine, 293-294
+- Gabrielli Borromeo, 656-657
+- Gaddi Cesi, 32
+- Gambirasi, 512
+- Giolitti, 200
+- Giori, 496

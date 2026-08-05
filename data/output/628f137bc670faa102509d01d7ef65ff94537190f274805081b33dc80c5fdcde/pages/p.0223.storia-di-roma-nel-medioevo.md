@@ -1,4 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-tempi del trasferimento in Oriente di Costantino. Equali caratteristiche possiede una sala del palazzo imperiale costantinopolitano, edificata in quello stesso periodo. Un triclinio ancora più ampio, situato nel palazzo del Laterano fra l'800 e l'850, imita anch’esso la residenza degli imperatori d'Oriente.
-
-Talune testimonianze scritte e figurate di epoche precedenti alla demolizione del primo patriarchio lateranense danno un’idea piuttosto completa sugli ambienti predisposti da papa Leone III e restaurati da Leone IV. Il triclinio maggiore ha una lunghezza di sessantotto metri, risulta collocato al piano d’onore del palazzo ed è sede dei banchetti ufficiali. Lì per esempio avrà luogo il grande convito organizzato dopo l’incoronazione di Carlo Magno. Nell’abside e nelle nicchie semicircolari, disposte ai lati del salone, si trovano tavoli e divani.

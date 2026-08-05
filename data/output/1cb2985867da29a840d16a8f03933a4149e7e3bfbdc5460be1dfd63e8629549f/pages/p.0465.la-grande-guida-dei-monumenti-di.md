@@ -1,12 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Impaginazione e ricerca iconografica: Alberto Tagliaferri e Valerio Varriale
+# Trascrivi fedelmente il testo visibile nella pagina.
 
-Prima edizione: aprile 2006
-© 2002 Newton & Compton editori s.r.l.
-© 2006 Newton Compton editori s.r.l.
-Roma, Casella postale 6214
+Non inventare contenuti, non tradurre, mantieni la formattazione markdown minima.
 
-www.newtoncompton.com
+## 1. Reading Order & Structure
 
-Fotocomposizione: GI Grafica Internazionale, Roma
-Stampa nell’aprile 2006 dalla Legatoria del Sud s.r.l., Ariccia (Roma)
+- **Main Text:** Follow standard reading order, but identify major structural breaks marked by new encyclopedic letters (@struttura_del_testo). Each entry follows a specific template (@template_indirizzo): the name/place is often followed by an inverted address format (e.g., Roma, Piazza) and may list multiple districts or regions (@più_regioni). Most POI paragraphs begin with a house number (@numero_civico).

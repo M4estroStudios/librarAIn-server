@@ -1,14 +1,10 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-per i suoi interventi nei processi contro Giordano Bruno e Galileo Galilei. Questa chiesa fu costruita tra il 1932 e il 1933 su progetto di Clemente Busiri Vici; è a navata unica, con facciata a capanna contenuta tra due basse torri ottagonali coperte a tetto sopra la cella campanaria. La cortina a mattoni ricopre tutto l’edificio. La Via Crucis è di Corrado Vigni; le vetrate che illustrano la Vita di san Roberto sono su cartoni di Alessandra Busiri Olsoufieff. I mosaici alle pareti sono di Renato Tomassi; l’altar maggiore fu donato da Beniamino Gigli. La chiesa è affidata come parrocchia, fin dalla sua istituzione, ai Gesuiti. Ora è gestita dal clero secolare.
+Trinità dei Monti (Piazza e viale, R IV Campo Marzio)
 
-Università (Viale dell’, Q VI Tiburtino)
+**Fontana della palla**
 
-Palazzo dell’Aeronautica
+È sul viale, a fronte della Villa Medici. Fu realizzata verso il 1589 da Annibale Lippi per il cardinale Ferdinando de’ Medici: è costituita da una semplice rotonda di raccolta, con lo zampillo d’acqua che fuoriesce da una palla di cannone. E su questa palla si è diffusa una curiosa leggenda; si dice che Cristina di Svezia, avendo intenzione di svegliare uno dei suoi ammiratori residente a Villa Medici, il pittore Charles Errand, usò un modo piuttosto stravagante, tirandogli una cannonata. E la palla del cannone, che colpì il portone della villa, fini per decorare la fontana.
 
-È al n. 4. Questo edificio è stato costruito su progetto dell’ingegner Marino e, per la parte tecnica, del colonnello del Genio Aeronautico Crugnola: fu inaugurato nel 1931. Costituito da quattro corpi angolari e due centrali, apre sulla facciata principale con tre grandi arcate che immettono nell’atrio; molti ambienti sono decorati e il più interessante è il cosiddetto «salone degli eroi» dove sono raccolti i busti dei caduti per l’aeronautica.
+**Hotel Hassler-Villa Medici**
 
-Urbana (Via, R I Monti)
-
-Santa Pudenziana
-
-È al n. 160. È una delle più antiche basiliche di Roma. Secondo la leggenda fu fatta costruire nel 145 da Pio i nel luogo dove sorgevava la casa del senatore Pudente, su richiesta delle figlie Pudenziana e Prassede (v. Santa Prassede), in ricordo dell’ospitalità che qui ebbe san Pietro. Peraltro l’altar maggiore della chiesa poggia su un sarcofago nel quale è conservata una tavola di legno sulla quale san Pietro avrebbe celebrato la messa. In realtà fu fondata su un edificio termale del II secolo (le cosiddette Terme di Novato) e non do-
+È al n. 6 della piazza. Fu costruito nel 1885 sull’area del demolito Palazzo Santarelli dallo svizzero Albert Hassler, che gli dette il nome. Ma era un albergo di seconda categoria e solo nel 1944 ebbe l’aspetto attuale con una completa ristrutturazione effettuata dal nuovo proprietario, un altro svizzero, Oscar Wirth, padre dell’attuale proprietario Roberto E. Wirth. Già dagli anni Trenta invece l’albergo Hassler aveva avuto il secondo nome di Villa Medici, aggiunto per volere di Mussolini, che non tollerava “esterismi”. E nel nuovo albergo, con l’incantevole vista dal roof garden, risiedette proprio dal 1944 l’“Air Transport Command” statunitense, in una vera e propria “occupazione” durata ben tre anni. Dagli anni Cinquanta l’albergo assunse un aspetto elitario con ospiti illustri proprio nel campo politico, con numerosi capi di Stato come Truman e Kennedy, Trudeau e Peron, Giscard d’Estaing e i reali di Svezia e Danimarca. Ma vi risiedettero anche personalità del mondo artistico e

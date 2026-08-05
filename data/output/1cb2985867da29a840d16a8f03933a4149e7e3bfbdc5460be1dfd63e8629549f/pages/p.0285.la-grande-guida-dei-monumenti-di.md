@@ -3,13 +3,13 @@ Egidio (Piazza Sant', R XIII Trastevere)
 
 Sant'Egidio
 
-È al n. 3A. Dedicata a Sant’Egidio, benedettino del viii secolo, nativo della Provenza, patrono degli storpi e dei mendicanti, è stata costruita nel 1630 sull’area dove sorgeva la chiesa dei Santi Crispino e Crispiniano, all’angolo del convento delle Carmelitane Scalze, auspice Filippo Colonna che volle dedicarla anche alla Madonna del Carmelo, come tuttora si legge sopra la porta d’ingresso. Notevoli, all’interno, il monumento funebre di Veronica Rondinini Origo di Carlo Fontana e un Sant’Egidio del Pomarancio. Collegata alla chiesa è la comunità di Sant’Egidio; è nata a Roma nel 1968 per iniziativa di Andrea Riccardi, caratterizzandosi sin dall’inizio per l’attività di evangelizzazione e la vicinanza ai poveri, motivi per cui, dal 1986, è stata riconosciuta dalla Santa Sede come “associazione pubblica laicale della Chiesa cattolica”. L’ex convento ospita il Museo di Roma (v.).
+È al n. 3A. Dedicata a Sant’Egidio, benedettino del viii secolo, nativo della Provenza, patrono degli storpi e dei mendicanti, è stata costruita nel 1630 sull’area dove sorgeva la chiesa dei Santi Crispino e Crispiniano, all’angolo del convento delle Carmelitane Scalze, auspice Filippo Colonna che volle dedicarla anche alla Madonna del Carmelo, come tuttora si legge sopra la porta d’ingresso. Notevoli, all’interno, il monumento funebre di Veronica Rondinini Origo di Carlo Fontana e un Sant’Egidio del Pomarancio. Collegata alla chiesa è la comunità di Sant’Egidio; è nata a Roma nel 1968 per iniziativa di Andrea Riccardi, caratterizzandosi sin dall’inizio per l’attività di evangelizzazione e la vicinanza ai poveri, motivivi per cui, dal 1986, è stata riconosciuta dalla Santa Sede come “associazione pubblica laicale della Chiesa cattolica”. L’ex convento ospita il Museo di Roma (v.).
 
 Museo di Roma in Trastevere
 
 È al n. 1. Dal 1976 fu sistemato in alcuni locali dell’ex convento delle Carmelitane Scalze come “Museo del Folclore e dei Poeti Romaneschi”, diventando poi una sezione del Museo di Roma (v. piazza San Pantaleo). Espone costumi folcloristici, ricostruzioni di scene di vita di tutti i giorni nella Campagna romana e quadri di feste popolari; ha anche raccolte di stampe e acquerelli, tra i quali alcuni di E. Roesler Franz. Tra gli ambienti ricostruiti, lo studio di Trilussa. Ha una Biblioteca fondata nel 1983 con delibera comunale; contiene 3000 volumi sulla vita sociale, le feste di popolo e tradizioni dal Seicento all’Ottocento.
 
-Einaudi Luigi (Viale, R XVIII Castro Pretorio)
+Einaudi Luigi (Viale, R XIII Castro Pretorio)
 
 Obelisco di Dogali
 

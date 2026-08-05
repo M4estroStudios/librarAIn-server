@@ -1,4 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Villa Pallavicini Rospigliosi
+Il gruppo marmoreo del «Laocoonte», capolavoro della scultura ellenistica, conservato nel Cortile Ottagono del Musei Vaticani.
 
-È al n. 43. La villa è cinta da un muro lungo la via Ventiquattro Maggio, nell’area racchiusa sugli altri tre lati dalle vie Mazzarino, Nazionale e della Consulta; è in pratica la parte alta del colle Quirinale dove anticamente sorgevano le Terme di Costantino. La sua costruzione risale ai primissimi anni del Seicento e fu voluta dal cardinale Scipione Borghese Caffarelli, nipote del papa Paolo V. Si cominciò dal palazzo nel 1605 su progetto di Flaminio Ponzio, portato avanti dal 1613 da Carlo Maderno. Giovanni Vasanzio sistemò invece il giardino su tre terrazzamenti digradanti verso l’attuale largo Magnanapoli, ciascuno con un casino: un primo con un casino dell’Aurora; un secondo con la grande Fontana del Teatro e una loggia detta delle Muse, affrescata da Agostino Tassi; una terza con un altro casino, andato distrutto per l’apertura della via Nazionale, e i cui affreschi di Ludovico Cardi sono ora al Museo del Palazzo Braschi. Le costruzioni erano appena ultimate che la villa fu venduta
+st’ultimo sono le famose statue Augusto di Prima Porta, il Nilo e il Doriforo.
+10. MUSEO GREGORIANO EGIZIO Fondato da Gregorio xvi nel 1839, è ordinato in dieci sale che contengono mummie, sarcofagi, statue.
+11. MUSEO GREGORIANO ETRUSCO Fondato da Gregorio xvi nel 1837, ha la celeberrima statua del Marte di Todi, un bronzo della fine del v secolo a.C. a grandezza naturale. Si erge tra i preziosi reperti archeologici in gran parte frutto degli scavi della prima metà dell’Ottocento nell’Etruria meridionale, tra i quali un autentico tesoro è quello della famosa Tomba Regolini Galassi di Cerveteri venuta alla luce intatta nel 1836.
+12. MUSEO GREGORIANO PROFANO È stato trasferito nel 1970 dal Laterano, dove era stato fondato nel 1844 da Gregorio xvi, in un’ala eretta da Fausto e Lucio Passarelli. Contiene sculture romane, are, urne funerarie e reperti epigrafici.
+13. MUSEO MISSIONARIO ETNOLOGICO Fondato da Pio xi nel 1926 in

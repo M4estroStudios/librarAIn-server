@@ -6,7 +6,9 @@ Nuñez Oriundi di Spagna e insigniti del titolo di marchesi da Augusto II di Pol
 Caterina della Rota (Piazza di Santa, R VII Regola)
 
 Palazzo Mastrozzi Graziosi
+
 È al n. 91, ad angolo con via Monserrato. Questo palazzo risale alla fine del Seicento, quando fu costruito per la famiglia Mastrozzi, passando successivamente ai Graziosi. L’edificio, che inglobò la parte estrema del complesso della Corte Savella, apre sulla piazza a pianterreno con un portale tra due colonne di marmo scanalate, con la facciata che sviluppa in un ammezzato e tre piani. Cornicione a coronamento e balcone ad angolo con mensole; due lesene a tutta altezza decorano il cantonale.
 
 Santa Caterina della Rota
+
 È sulla piazza, ad angolo con via San Girolamo della Carità. La chiesa, dedicata a Santa Caterina d’Alessandria, con il titolo fa riferi

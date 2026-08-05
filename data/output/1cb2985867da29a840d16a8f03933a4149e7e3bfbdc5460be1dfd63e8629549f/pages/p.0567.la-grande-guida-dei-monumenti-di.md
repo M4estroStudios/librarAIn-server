@@ -1,0 +1,2 @@
+<!-- librarain:model=gemma-4-26b-a4b-it -->
+ci e donata nel 1856 dal cardinal Clarelli alla basilica. L'urna viene mostrata ai fedeli il primo agosto nel corso di una solenne cerimonia religiosa. Altra caratteristica della basilica è il grande MAUSOLEO DI GIULIO II, opera concepita e realizzata in gran parte da Michelangelo, tra il 1513 e il 1516, e terminata nelle sculture delle nicchie (Lia e Rachele) da Raffaello di Montelupo e dai discepoli nelle altre, anche se da alcuni è stata attribuita a Michelangelo

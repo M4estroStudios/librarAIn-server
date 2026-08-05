@@ -1,2 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-L'interno del mausoleo di Santa Costanza in un'incisione settecentesca di G.B. Piranesi.
+Sant’Agnese in Agone
+
+ciata della chiesa come per ripararsi da un crollo, quasi scongiurando la statua della santa di fare attenzione; ma la statua di Agnese, con la mano sul petto sembra garantirgli che, in fede sua, la costruzione del Borromini non crollerà. Nella chiesa si conserva il piccolo Teschio di Agnese che fu donato da Pio x nel 1908: lo stesso papa lo depose nel reliquiario donato alla chiesa dal cardinal Rampolla.
+
+Stabilimenti Spagnoli
+
+Sono ai nn. 90-109. Istuti di assistenza creati da Alessandro vi per gli spagnoli residenti a Roma o di passaggio nella città; erano disposti nei due complessi di edifici su piazza Navona a destra e sinistra della chiesa di San Giacomo degli Spagnoli, ora di Nostra Signora del Sacro Cuore (v.). Vennero però completamente trasformati nella prima metà del Settecento sotto il pontificato di Clemente xII, costituendo un unico complesso edificio, articolato nella facciata da alcuni mignanelli sparsi un po’ a caso; il cornicione di coronamento dà continuità alla costruzione, in parte alterata dalla sopraevazione ottocentesca. Si distingue, in particolare, al civico 93, un bel portale bugnato sovrastato da un balcone e dallo stemma di Castiglia; tra la fine del Cinquecento e il 1646 fu la sede dell’ambasciatore di Spagna. Sui portali, un balcone con l’insegna dell’ospizio di San Giacomo degli Spagnoli, la conchiglia dei pellegrini, che ritorna al 104 nel grande balcone sovrastante il portale architravato con lo stemma di Castiglia. La sopraevazione e i restauri importanti risalgono al 1870, come è indicato in due punti della facciata; ma è stato effettuato anche un restauro recentemente. Al civico 106, al pianterreno, apre un portaletto ad arco bugnato con una conchiglia in chiave, altra insegna dell’ospizio.
+
+Stadio di Domiziano
+
+Lo stadio venne costruito da Domiziano intorno all’85 d.C. per essere destinato ai giochi e alle gare atleticiche di tradizione greca del Certamen Capitolinum istituito dall’imperatore nell’86 in onore di Giove Capitolino. Era lungo m 275 e largo 106 m su un’arena di m 240 per 65 circa ed era capace di 30.000 posti. Se ne può delineare la struttura sulla piazza Navona, che si estende sull’area dell’arena mentre gli edifici occupano l’area delle gradinate. Di uno dei tre ingressi restano avanzi nelle cantine della casa a destra della chiesa di Sant’Agnese, mentre nei sotterrane della stessa chiesa sono visibili altri resti delle

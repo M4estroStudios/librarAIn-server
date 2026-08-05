@@ -1,9 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-le necessarie espropriazioni. È chiaro che dove erano state tracciate delle vie (alcune già esistenti entro la villa Ludovisi) si imponeva una sollecita costruzione di edifici che le fiancheggiassero, per non lasciare la desolante visione di quelle zone inedificate nell'interno delle mura, e perciò gli spazi liberi furono ben presto occupati dall’ingordigia delle ditte costruttrici. I confini in poco volger di anni furono così stabiliti: via Vittorio Veneto - via S. Isidoro - via degli Artisti - via Francesco Crispi - via di Porta Pinciana - porta Pinciana - mura urbane - via Piave - via Calabria - via Boncompagni - via Lucullo - via di S. Basilio - via Vittorio Veneto. La superficie è di 325.150 e la popolazione residente ammonta a 27.619 unità. Lo stemma del rione Ludovisi è rosso a tre bande d’oro ritirate nel capo e un dragone d’oro reciso in punta.
-
-**Primo itinerario**
-Mura Aureliane - porta Pinciana - via Campania - via Sicilia - via Lucania - via Romagna - via Sardegna - via Veneto - via Liguria - via degli Artisti - via Ludovisi - via Lombardia - via Lazio.
-
-Percorriamo le belle strade del rione, tutte bene squadrate, ampie, luminose, con negozi ben messi, eleganti alberghi di prim’ordine e chiese di un certo interesse artistico.
-
-La prima visione che ci fa tornare indietro nel tempo è quella della lunga cinta delle mura aureliane, che limitano l’altrettanto lunga via Campania dalla porta Pinciana a via Piave. La porta, aperta, in corrispondenza della via Salaria vetus, è del tipo delle porte secondarie e fu sistemata da Onorio (384-423), ingrandendo una posterula del tempo di Aureliano. La fiancheggiano due torri semicircolari costruite dal generale dei Bizantini Belisario per difendersi dai Goti, ha un arco in travertino in cui si notano una croce greca esternamente ed una latina internamente e è munita di un attico in mattoni. Il nome le deriva dalla gens Pincia

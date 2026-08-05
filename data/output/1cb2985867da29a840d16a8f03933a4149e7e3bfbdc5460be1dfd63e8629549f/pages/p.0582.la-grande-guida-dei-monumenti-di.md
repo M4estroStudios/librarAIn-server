@@ -1,12 +1,10 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Porta Furba (Via di, Q VIII Tuscolano)
+Ponte Quattro Capi (Via di, R XII Ripa)
 
-Fontana di Porta Furba
+Collega l’Isola Tiberina alla riva sinistra del Trevere. Il suo nome è Fabricio ed è l’unico ponte antico conservato nella sua integrità: fu costruito nel 62 a.C. da Lucio Fabricio curator viarum, come indica l’iscrizione incisa sulle due facce; è a due fornici, oltre a uno piccolo al centro. È detto anche Ponte Quattro Capi dalle erme quadricipiti che sono poste sulla balaustra e che risalgono al restauro fatto al tempo di Sisto v (1585-90), facendo capo a una leggenda.
 
-È addossata alla cosiddetta PORTA FURBA, in realtà una grande arcata dell’Acquedotto Felice (v. via dell’Acquedotto Felice), dal cui termine latino forma deriva il nome come corruzione di Forma Urbis.
+Il restauro fu compiuto da quattro architetti, che durante i lavori litigaron tra loro, con grande scandalo. A lavoro ultimato Sisto v li condannò alla decapitazione per l’indegno comportamento professionale e, a quanto si racconta, volle ricordarli facendo disporre su ognuna delle due balaustre del ponte quattro teste riproducenti il loro ritratto. In realtà sono antiche erme di Giano bifronte. È lungo m 57,30 e largo m 5,60.
 
-La fontana risale al 1586, quando fu costruita sotto Sisto v (1585-90) da Domenico Fontana, come ricorda una lapide posta sull’arcata. Fu ricostruita nel 1733 sotto Clemente xii dal presidente delle Acque Felice Passerino, come ricorda la lapide. È caratterizzata d un mascherone alato che versa acqua dentro una conchiglia, dalla quale ricade in una vasca centinata insieme a quella che esce da due bocche laterali. In alto lo stemma Corsini di papa Clemente xii.
+Ponte Rotto (Via di, R XII Ripa)
 
-Porta Latina (Via di, R XIX Celio)
-
-La Porta Latina è nelle Mura Aureliane e prese nome dall’omonima via consolare. Chiusa, ovvero murata, nel 1827, fu riaperta nel 1911. Ad un solo fornice, ristretto al tempo di Onorio rispetto a quello aureliano, è fiancheggiata da due torri, delle quali è originaria quella di sinistra, mentre quella di destra, quadrata, che ingloba l’originale, è di epoca medievale. Nell’attico in travertino, rialzato al tempo di Onorio, si aprivano le solite cinque piccole finestre ad arco corrispondenti alla camera di manovra della saracinesca e
+Prende nome dal troncone dell’antico ponte che fiancheggia il nuovo Ponte Palatino (v.) indicato nei secoli con nomi diversi e anticamente detto Emilio. Secondo la tradizione il più antico nome di questo ponte, quanto di esso rimane, fu Ponte Emilio Lepido, da Manio Emilio Lepido che lo costruì nel 179 a.C. insieme a Fulvio Nobiliore con piloni di pietra e carreggiata in legno; nel 142 a.C. fu completato in pietra da Publio Scipione Emiliano e Lucio Mummio. Il primo restauro lo ebbe sotto Augusto e fu soprannominato Ponte Massimo in omaggio all’imperatore e perché era il più grande dei ponti di Roma. Questo nome gli restò fino all’872, quando Giovanni vIII trasformò il tempio romano della vicina zona di Campo Boario in chiesa cristiana di Santa Maria Egiziaca e si chiamò Ponte Santa Maria, con il contorno di una leggenda. Una statua della Madonna rubata e gettata nel Trevere sarebbe riapparsa miraco-

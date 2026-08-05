@@ -1,16 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Uffizio (Piazza Sant', R XIV Borgo)
+La chiesa dei Santi Vincenzo e Anastasio, con la Fontana di Trevi prima degli interventi settecenteschi, in un’incisione di G.B. Falda.
 
-Palazzo del Sant’Uffizio
+La vana ricerca l'Istituto di Studi Romani appose nella chiesa una lapide in ricordo, a testimonianza del fatto che Pinelli era stato veramente sepolto «In questa chiesa il iv aprile MDCCCxxv». Il mistero resta.
 
-Il palazzo si affaccia sul territorio italiano, ma gode di extraterritorialità. È sulla piazza omonima e presenta una facciata del 1925 addossata all’edificio che ospitò appunto il Santo Uffizio, ora Congregazione per la Dottrina della Fede, dal 1566, per volontà di Pio v. L’edificio deriva dal Palazzo Pucci, costruito dopo il 1514 tra la chiesa del cimitero Teutonico e la scomparsa caserma dei Cavalleggeri, sull’area creatas dall’abbattimento di un gruppo di vecchie case vendute dal principe Costantino di Macedonia; dopo la morte dei tre cardinali della famiglia, Lorenzo, Antonio e Roberto che vi abitarono, i Pucci di Firenze, eredi per due terzi dei beni del Borgo, vendettero il palazzo per 6000 scudi alla Santa Sede. Questa ampliò e adattò gli ambienti per sistemarvi le carceri del famoso tribunale, che il 2 settembre del 1566 furono solennemente inaugurate fra salve d’artiglieria. Il porticato e il cortile originari vennero mantenuti, ma il portone fu rinforzato da lamine di ferro e difese ai lati da feritoie per archibugi; al di sopra del portone correva una fila di finestre e sugli angoli due sovracorpi a mo’ di torrette quadrangolari. Su questo lato avevano le loro abitazioni i funzionari del tribunale, mentre le celle, esposte verso San Pietro, avevano aperture irregolari chiuse da robuste inferriate. L'attuale costruzione, specialmente nei rifacimenti dell’ultimo secolo, ha perso molto della sua arcigna prestanza, si è in fondo imborghesita, e più che altro ha qualcosa della fortezza nel robusto portone con il grande arco sovrastante.
+Trilussa (Piazza, R XIII Trastevere)
 
-Umberto I (Traforo, RR I Monti e Il Trevi)
+Fontana dell’Acqua Paola
 
-Lungo 347 m, aperto sotto i giardini del Quirinale, collega la via omonima a via Milano. L’opera fu compiuta nel 1905 su progetto dell’architetto Alessandro Viviani; la sistemazione meridionale dell’ingresso fu opera di Pio Piacentini e Giulio Podesti. La volta della galleria era originariamente rivestita con piastrelle della Richard Ginori.
+Chiamata anche Fontanone di Ponte Sisto, perché sorge a fronte di questo ponte (v. piazza di Ponte Sisto), risale al 1613, quando fu realizzata su disegno di Giovanni Vasanzio da Giovanni Fontana. Fontana mostra dell’Acquedotto Paolo, qui deviato dal fontanone su via Garibaldi (v.), originariamente era collocata alla fine di via Giulia, a ridosso dell’ex Ospizio dei Mendicanti, ma per l’apertura del lungotevere fu spostata in questa piazza nel 1898. Nella fase di distacco dal muro molti parti si ruppero e la fontana fu per metà ricostruita ad opera di Angelo Vescovali; per consentirne la vista dalla parte opposta del ponte fu sopraelevata su quindici gradini, che compensarono anche il dislivello stradale.
 
-Ungheria (Piazza, Q Il Parioli)
+Monumento a Trilussa
 
-San Roberto Bellarmino
-
-È sulla piazza. È dedicata al santo cardinale gesuita Roberto Bellarmino (1542-1621), direttore della Biblioteca Vaticana e famoso
+È nella piazza, sul lato destro rispetto alla Fontana dell’Acqua Paola. Realizzato dallo scultore Lorenzo Ferri e inaugurato il 21 dicembre 1954, rappresenta il poeta, scrisse Ceccarius all’epoca, «nell’atteggiamento caratteristico di quando recitava accompagnando con un lento movimento della bella mano cosiddetta michelangiolesca l’armoniosa cadenza dei versi». Sulla facciata del basamento sono incisi i suoi versi: «Mentre me leggo er solito giornale / spaparacchiato all’ombra d’un pajaro, / vedo un porco e je dico: – Addio, maiale! – / Vedo un ciuccio e je dico: – Addio, somaro! – / Forse ste bestie nun me capiranno, / ma provo armeno la soddisfazione / de poté diii’ le cose come stanno / senza paura de fini in prigione».

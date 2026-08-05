@@ -1,48 +1,70 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Gli artisti della Roma monumentale
+846 Scorreria dei Saraceni a Roma.
+852 Nascita della Città Leonina con la cinta muraria.
+880–93 Roma sotto il dominio di Teodora e poi di sua figlia Marozia.
+961–1002 Roma sotto il controllo degli Ottoni; dittatura di Giovanni Crescenzo. Roma ha 30.000 abitanti.
 
-Marcello Piacentini
+1084 I Normanni di Roberto il Guiscardo saccheggiano Roma.
+1108 Ricostruzione di San Clemente.
+1140 Restauro di Santa Maria in Trastevere.
+1144 Rinásce il Comune di Roma con Arnaldo da Brescia.
+1220 Federico II incoronato imperatore da Onorio III.
+1232 Completamento del chiostro di San Giovanni in Laterano.
+1285–93 Si rinnovano le basiliche di San Paolo fuori le Mura e Santa Cecilia in Trastevere.
 
-Pietro da Cortona
+1300 Primo Anno Santo proclamato da Bonifacio VIII. Roma ha 20.000 abitanti.
+1303 Fondazione dell'università La Sapienza.
+1309 Clemente V trasferisce la Santa Sede ad Avignone.
+1347 Cola di Rienzo tribuno della Repubblica romana. Roma ha 17.000 abitanti.
+1354 Morte di Cola di Rienzo.
+1377 Gregorio XI riporta la Santa Sede a Roma.
+1378–1417 Scisma d'Occidente, da Urbano VI a Martino V.
 
-Via San Nicola da Tolentino: Chiesa di San Nicola da Tolentino (Cappella Gavotti, 1663-69);
-Piazza Barberini: Palazzo Barberini (*Trionfo della Divina Provvidenza*, 1632-39);
-Via del Quirinale: Palazzo del Quirinale (decorazione della Galleria, 1655);
-Via del Corso: Chiesa di Santa Maria in via Lata (facciata e campanile, 1658-62);
-Chiesa dei Santi Ambrogio e Carlo (costruzione di tribuna, tamburo e cupola e supervisione per la decorazione, 1665-69);
-Piazza Navona: Palazzo Pamphilj (decorazione della Galleria di Donna Olimpia con le *Gesta di Enea*, 1651);
-Piazza Santa Maria della Pace (Chiesa di Santa Maria della Pace: restauro interno, facciata e pronao, con sistemazione della piazzetta, 1656-58);
-Corso Vittorio Emanuele II: Chiesa Nuova (decorazione della volta della sagrestia, 1633; decorazione della volta della cupola, 1648-51; affresco della tribuna, 1655; affresco della volta a botte della navata principale, 1664-65);
-Piazza Mattei: Palazzo Mattei di Giove (decorazione della volta della Galleria, 1622-24);
-Piazza del Gesù: Chiesa del Gesù (altare del transetto destro dedicato a San Francesco Saverio, 1674-78);
-Foro Romano: Chiesa dei Santi Luca e Martina (chiesa e cupola, 1641-50);
-Piazza San Pietro: Basilica di San Pietro (decorazione e stucco delle navate laterali, 1652-66);
-Via Giolitti: Chiesa di Santa Bibiana (ciclo di affreschi nella parete sinistra della navata principale, 1624-26).
+1420–1519 Ricostruzione della città. Tra l'altro, affreschi di Masolino a San Clemente, del Beato Angelico nella Cappella Niccolina in Vaticano, inizio della nuova basilica di San Pietro, affreschi della Cappella Sistina, nuovo Palazzo Apostolico, decorazione delle Stanze vaticane, costruzione della Farnesina, nuova sistemazione del Campidoglio. Apertura delle grandi strade da Borgo a via Giulia e via della Lungara. Roma ha 50.000 abitanti.
 
-Dipinti di Pietro da Cortona si trovano sparsi per la città: al Palazzo dei Conservatori in Campidoglio, alla Pinacoteca Vaticana, alla Galleria Borghese, alla Galleria Doria Pamphilj, alla Galleria Corsini. E inoltre nelle chiese: presbiterio di San Giovanni dei Fiorentini; pala dell’altar maggiore di San Carlo ai Catinari; il *Martirio di san Lorenzo* a San Lorenzo in Miranda, la pala d’altare a Sant'Ivo alla Sapienza; la *Natività* a San Salvatore in Lauro; la *Trinità* nella Cappella del Santissimo Sacramento nella basilica di San Pietro.
+1527 Sacco di Roma dei Lanzichenecchi di Carlo V. Roma ha 32.000 abitanti.
+1538 Sulla piazza del Campidoglio è collocata la statua equestre di Marco Aurelio.
 
-Giulio Podesti
+1555 Viene istituito il Ghetto.
+1568 Costruzione della chiesa del Gesù.
+1584 Fondazione dell'Accademia di Santa Cecilia.
 
-Piazza Vittorio Emanuele II: Edifici sui lati maggiori della piazza (1882-85);
-Viale del Policlinico: Policlinico Umberto I (1886-1903);
-Via V.E. Orlando: Grand Hotel, poi Saint Régis (1890-91).
+1585–90 Sisto V apre nuove strade e installa gli obelischi. Roma ha 90.000 abitanti.
 
-Paolo Portoghesi
+1600 È messo al rogo Giordano Bruno.
+1603 Fondazione dell'Accademia dei Lincei.
+1614 Fondazione della Biblioteca Angelica, la prima pubblica di Roma.
+1626 Consacrazione della nuova basilica di San Pietro.
+1633 Galileo condannato per eresia.
 
-Via della Moschea: Moschea e Centro Culturale Islamico (con V. Gigliotti, 1974-89);
-Piazza della Minerva: Hotel Minerva (ristrutturazione, 1988-91).
+1638–67 Esplosione del barocco: da San Carlino e Sant'Agnese a Sant'Andrea al Quirinale e al colonnato di San Pietro. Roma ha 120.000 abitanti.
 
-Raffaello
+1690 È fondata l'Accademia dell'Arcadia.
+1703 Ricostruzione del Porto di Ripetta.
+1726 Nasce la scalinata di Trinità dei Monti.
 
-Viale Vaticano: Palazzi Apostolici Vaticani (Stanze e Logge di Raffaello, 1514-20);
-Piazza del Popolo: Santa Maria del Popolo (Cappella Chigi e cartoni dei mosaici della cupola, 1516);
-Piazza Sant’Agostino: Chiesa di Sant’Agostino (*Profeta Isaia*, 1514);
-Piazza Santa Maria della Pace: Chiesa di Santa Maria della Pace (*Sibille*, 1514);
-Via della Lungara: Villa della Farnesina (affreschi della Sala della Galatea, 1513-14);
-Numerosi dipinti di Raffaello sono sparsi in musei e gallerie: Pinacoteca Vaticana (con una sala tutta dedicata a lui), Galleria Borghese (*Deposizione, Ritratto di uomo con unicorno*), Galleria Nazionale di Arte Antica di Palazzo Barberini (*Fornarina*), Galleria dell’Accademia di San Luca.
+1732–62 Costruzione di Fontana di Trevi.
 
-Giuseppe Sacconi
+1734 Si apre il Palazzo Nuovo del Campidoglio, primo museo pubblico.
 
-Piazza Venezia: Vittoriano (1885-1911);
-Palazzo delle Assicurazioni Generali (1900-11, con A. Manassei e G. Cirilli);
-Via Ostiense: Quadriportico della faccia di San Paolo (con G. Calderini, 1890-1910).
+1743 Rifforma urbanistica: compaiono le targhe dei rioni.
+
+1798–99 Occupazione francese di Roma e proclamazione della Repubblica giacobina: Pio VI muore in esilio. Roma ha 150.000 abitanti.
+
+1809–14 Nuova occupazione francese di Roma. Roma ha 117.000 abitanti.
+
+1814–46 Governo reazionario a Roma da Pio VI a Gregorio XVI.
+
+1846 Avvento di Pio IX, salutato come papa liberale.
+
+1848–49 Moti rivoluzionari; Pio IX fugge e nasce la Repubblica romana; suo anientamento da parte dei francesi. Roma ha 150.000 abitanti.
+
+1850–70 Ultimi 20 anni di Roma pontificia sotto Pio IX. Il 20 settembre 1870 le truppe del generale Cadorna occupano Roma. Roma ha 220.000 abitanti.
+
+1872 Inizio della costruzione dei nuovi rioni Castro Pretorio, Testaccio, Celio ed Esquilino.
+
+1873 Primo piano regolatore di Roma capitale.
+1874 Inaugurazione della Stazione Termini.
+1877 È aperta la via Nazionale.
+1878 Muoiono Vittorio Emanuele II e Pio IX il nuovo re Umberto I darà l'impronta alla Roma fine secolo.
+1885 Prima pietra del Vittoriano.
