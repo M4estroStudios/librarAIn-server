@@ -259,7 +259,7 @@ async def extract_time_references_for_page(
     source_sha256: str = "",
     book_slug: str = "",
 ) -> tuple[set[str], set[str], bool]:
-    from src.ingestion.polyindex.time_index import extract_time_references
+    from src.ingestion.polyindex.time_extract import extract_time_references
 
     regex_years, regex_dates = extract_time_references(text)
     if client is None or settings is None or not settings.time_index_use_llm:

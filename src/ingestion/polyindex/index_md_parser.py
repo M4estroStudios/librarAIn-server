@@ -51,13 +51,14 @@ def _collapse_whitespace(text: str) -> str:
     return " ".join(text.split())
 
 
-_INDEX_ANCHOR_PATTERN = re.compile(r'<a id="idx-[^"]*"></a>')
-_INDEX_PAGE_LINK_PATTERN = re.compile(r"\[(\d+)\]\([^)]+\)")
+_INDEX_ANCHOR_PATTERN = re.compile(r'<a id="[^"]*"></a>')
+_INDEX_MD_LINK_PATTERN = re.compile(r"\[([^\]]+)\]\([^)]+\)")
+_NON_URL_SAFE = re.compile(r"[^a-z0-9]+")
 
 
 def strip_index_cross_link_markup(text: str) -> str:
     text = _INDEX_ANCHOR_PATTERN.sub("", text)
-    return _INDEX_PAGE_LINK_PATTERN.sub(r"\1", text)
+    return _INDEX_MD_LINK_PATTERN.sub(r"\1", text)
 
 
 def _light_normalize_label(raw: str) -> str:
@@ -68,7 +69,8 @@ def normalize_label(raw: str) -> str:
     text = _collapse_whitespace(raw.strip()).lower()
     decomposed = unicodedata.normalize("NFKD", text)
     without_marks = "".join(char for char in decomposed if not unicodedata.combining(char))
-    return without_marks.rstrip(".,;:!?")
+    cleaned = without_marks.rstrip(".,;:!?")
+    return _NON_URL_SAFE.sub("-", cleaned).strip("-")
 
 
 def _expand_page_range(start: int, end: int) -> list[int]:

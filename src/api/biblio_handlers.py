@@ -408,6 +408,10 @@ def run_biblio_only_job(
         )
     )
     manifest["biblio_range"] = biblio_range.model_dump()
+    manifest["biblio_range_aligned"] = {
+        "start": start_aligned,
+        "end": end_aligned,
+    }
     book_output.manifest_path.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

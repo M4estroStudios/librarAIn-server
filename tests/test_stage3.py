@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import MagicMock
 
 from src.core.rate_limit import AsyncTokenBucket
-from src.core.openai_client import _ClientState, _client_states
+from src.core.openai_client import _ClientState, _client_states, build_system_prompt
 from src.ingestion.pipeline.stage2 import Stage2PageResult, Stage2Result
 from src.ingestion.pipeline.stage2 import _read_stage_md
 from src.ingestion.pipeline.stage3 import (
@@ -16,6 +16,7 @@ from src.ingestion.pipeline.stage3 import (
     refine_with_editor,
     run_stage3_editor,
 )
+from src.models.request import build_md_formatting_block
 
 SHA = "deadbeef"
 
@@ -90,7 +91,10 @@ class TestRefineWithEditor(unittest.TestCase):
         )
         messages = client.chat.completions.create.call_args.kwargs["messages"]
         self.assertEqual(messages[0]["role"], "system")
-        self.assertEqual(messages[0]["content"], _load_editor_prompt())
+        self.assertEqual(
+            messages[0]["content"],
+            build_system_prompt(_load_editor_prompt(), None, md_formatting=build_md_formatting_block()),
+        )
 
     def test_user_message_is_stage2_md(self) -> None:
         client = _fake_client()
@@ -218,6 +222,17 @@ class TestRunStage3Editor(unittest.TestCase):
         for p in result.pages:
             self.assertEqual(p.char_count, 2)
             self.assertEqual(p.char_delta, 2 - p.stage2_char_count)
+
+    def test_extracts_gallery_captions_from_editor_output(self) -> None:
+        settings = _settings(self.data_root)
+        client = _fake_client("Corpo\n\n> Veduta del Colosseo\n\nFine\n")
+        result = asyncio.run(
+            run_stage3_editor(self.stage2_result, SHA, settings, client)
+        )
+        self.assertEqual(result.gallery_entry_count, 2)
+        self.assertEqual(result.gallery_page_count, 2)
+        for page in result.pages:
+            self.assertEqual(page.gallery_captions, ["Veduta del Colosseo"])
 
     def test_operator_notes_leak_falls_back_to_stage2(self) -> None:
         notes = "A pagine 395-402 del pdf trovi una Cronologia con Anno - Eventi."

@@ -29,6 +29,7 @@ from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.pipeline.stage3 import Stage3Result
+from src.ingestion.polyindex.gallery_index import sync_gallery_index_from_book
 from src.ingestion.progress import (
     PHASE_STAGE3_EDITOR,
     STATUS_COMPLETED,
@@ -216,8 +217,9 @@ async def _run_repair_index_phases(
     if not book_output.pages:
         raise PageRepairError("no output pages available for index rebuild")
     try:
-        toc_md_path, index_md_path = await _run_book_artifact_phases(ctx, book_output)
-        await _run_polyindex_phases(ctx, book_output, toc_md_path, index_md_path)
+        toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
+        sync_gallery_index_from_book(book_output, request_id=ctx.request_id)
+        await _run_polyindex_phases(ctx, book_output, toc_md_path)
     except OrchestratorStageError as exc:
         raise PageRepairError(str(exc.cause)) from exc
     except ShutdownRequested:

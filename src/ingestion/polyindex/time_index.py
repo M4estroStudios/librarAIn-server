@@ -3,7 +3,6 @@ from __future__ import annotations
 import asyncio
 import json
 import os
-import re
 from pathlib import Path
 from typing import Any
 
@@ -12,121 +11,40 @@ import openai
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.ingestion.polyindex.file_lock import polyindex_dir_lock
+from src.ingestion.polyindex.time_extract import (
+    _year_sort_key,
+    extract_time_references,
+)
 from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
 from src.models.settings import Settings
 
 SCHEMA_VERSION = "1.0"
 
-_MONTHS = (
-    "gennaio",
-    "febbraio",
-    "marzo",
-    "aprile",
-    "maggio",
-    "giugno",
-    "luglio",
-    "agosto",
-    "settembre",
-    "ottobre",
-    "novembre",
-    "dicembre",
-)
-
-_ERA_SUFFIX = r"(?:a|d)\.\s*C\."
-
-_DATE_PATTERN = re.compile(
-    r"\b(?P<day>[1-9]\d?)\s*°?\s+(?P<month>" + "|".join(_MONTHS) + r")"
-    r"(?:\s+(?P<year>\d{1,4})\s*(?P<era>" + _ERA_SUFFIX + r")?)?\b",
-    re.IGNORECASE,
-)
-
-_YEAR_WITH_ERA_PATTERN = re.compile(
-    r"\b(?P<year>\d{1,4})\s*(?P<era>" + _ERA_SUFFIX + r")",
-    re.IGNORECASE,
-)
-
-_BARE_YEAR_PATTERN = re.compile(
-    r"(?<![\d.])\b(?P<year>\d{3,4})\b(?!\s*" + _ERA_SUFFIX + r")"
-)
-_PAGE_REF_BEFORE = re.compile(
-    r"(?:\bpp?\.|\bpagg?\.)\s*[\d\s,.\u2013\u2014-]*$", re.IGNORECASE
-)
-
-_BARE_YEAR_MIN = 100
-_BARE_YEAR_MAX = 2099
+__all__ = [
+    "SCHEMA_VERSION",
+    "book_time_index_json_path",
+    "extract_time_references",
+    "sync_time_index_from_book",
+    "sync_time_index_from_book_async",
+]
 
 
-def _normalize_era(era_raw: str | None) -> str | None:
-    if not era_raw:
-        return None
-    compact = era_raw.replace(" ", "").lower()
-    return "a.C." if compact.startswith("a") else "d.C."
-
-
-def _year_label(year: int, era: str | None) -> str:
-    if era:
-        return f"{year} {era}"
-    return str(year)
-
-
-def _year_sort_key(label: str) -> tuple[int, int]:
-    match = re.match(r"^(\d+)(?:\s+(a\.C\.))?$", label)
-    if match is None:
-        return (1, 10**6)
-    value = int(match.group(1))
-    if match.group(2):
-        return (0, -value)
-    return (1, value)
-
-
-def extract_time_references(text: str) -> tuple[set[str], set[str]]:
-    """Extract year labels and date labels from a page of text."""
-    years: set[str] = set()
-    dates: set[str] = set()
-
-    date_spans: list[tuple[int, int]] = []
-    for match in _DATE_PATTERN.finditer(text):
-        day = int(match.group("day"))
-        if day < 1 or day > 31:
-            continue
-        month = match.group("month").lower()
-        year_raw = match.group("year")
-        era = _normalize_era(match.group("era"))
-        if year_raw:
-            year = int(year_raw)
-            label = f"{day} {month} {_year_label(year, era)}"
-            years.add(_year_label(year, era))
-        else:
-            label = f"{day} {month}"
-        dates.add(label)
-        date_spans.append(match.span())
-
-    def _inside_date(start: int, end: int) -> bool:
-        return any(start >= s and end <= e for s, e in date_spans)
-
-    for match in _YEAR_WITH_ERA_PATTERN.finditer(text):
-        if _inside_date(*match.span()):
-            continue
-        year = int(match.group("year"))
-        if year < 1:
-            continue
-        years.add(_year_label(year, _normalize_era(match.group("era"))))
-
-    for match in _BARE_YEAR_PATTERN.finditer(text):
-        if _inside_date(*match.span()):
-            continue
-        year = int(match.group("year"))
-        if year < _BARE_YEAR_MIN or year > _BARE_YEAR_MAX:
-            continue
-        if _PAGE_REF_BEFORE.search(text[: match.start()]):
-            continue
-        years.add(str(year))
-
-    return years, dates
+def book_time_index_json_path(output_dir: Path, slug: str) -> Path:
+    return output_dir / f"TIME_INDEX_{slug}.json"
 
 
 def _empty_time_index_document() -> dict[str, object]:
     return {"schema_version": SCHEMA_VERSION, "years": {}, "dates": {}}
+
+
+def _empty_book_time_index_document() -> dict[str, object]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "years": {},
+        "dates": {},
+        "page_years": {},
+        "page_dates": {},
+    }
 
 
 def _atomic_write_json(dest: Path, payload: dict[str, object]) -> None:
@@ -139,6 +57,106 @@ def _atomic_write_json(dest: Path, payload: dict[str, object]) -> None:
     finally:
         if tmp_path.is_file():
             tmp_path.unlink(missing_ok=True)
+
+
+def _merge_local_entry_pages(
+    section: dict[str, Any],
+    label: str,
+    aligned_page: int,
+    original_page: int,
+) -> None:
+    entry = section.get(label)
+    if not isinstance(entry, dict):
+        entry = {"aligned_pages": [], "original_pages": []}
+        section[label] = entry
+    aligned = entry.setdefault("aligned_pages", [])
+    original = entry.setdefault("original_pages", [])
+    if not isinstance(aligned, list):
+        aligned = []
+        entry["aligned_pages"] = aligned
+    if not isinstance(original, list):
+        original = []
+        entry["original_pages"] = original
+    if aligned_page not in aligned:
+        aligned.append(aligned_page)
+    if original_page not in original:
+        original.append(original_page)
+
+
+def _append_page_labels(
+    page_map: dict[str, list[str]],
+    aligned_page: int,
+    labels: set[str],
+) -> None:
+    if not labels:
+        return
+    key = str(aligned_page)
+    existing = page_map.get(key)
+    if not isinstance(existing, list):
+        existing = []
+        page_map[key] = existing
+    for label in sorted(labels):
+        if label not in existing:
+            existing.append(label)
+
+
+def _sort_book_time_index_document(document: dict[str, object]) -> dict[str, object]:
+    years = document.get("years")
+    if isinstance(years, dict):
+        document["years"] = {
+            label: years[label] for label in sorted(years, key=_year_sort_key)
+        }
+    dates = document.get("dates")
+    if isinstance(dates, dict):
+        document["dates"] = {label: dates[label] for label in sorted(dates)}
+    for section_name in ("years", "dates"):
+        section = document.get(section_name)
+        if not isinstance(section, dict):
+            continue
+        for entry in section.values():
+            if not isinstance(entry, dict):
+                continue
+            if isinstance(entry.get("aligned_pages"), list):
+                entry["aligned_pages"] = sorted(set(entry["aligned_pages"]))
+            if isinstance(entry.get("original_pages"), list):
+                entry["original_pages"] = sorted(set(entry["original_pages"]))
+    for map_name in ("page_years", "page_dates"):
+        page_map = document.get(map_name)
+        if not isinstance(page_map, dict):
+            continue
+        document[map_name] = {
+            page: sorted(set(labels)) if isinstance(labels, list) else []
+            for page, labels in sorted(
+                page_map.items(), key=lambda item: int(item[0]) if str(item[0]).isdigit() else 10**9
+            )
+        }
+    return document
+
+
+def _build_book_time_index_document(
+    page_refs: list[tuple[int, int, set[str], set[str]]],
+) -> dict[str, object]:
+    document = _empty_book_time_index_document()
+    years_section = document["years"]
+    dates_section = document["dates"]
+    page_years = document["page_years"]
+    page_dates = document["page_dates"]
+    assert isinstance(years_section, dict)
+    assert isinstance(dates_section, dict)
+    assert isinstance(page_years, dict)
+    assert isinstance(page_dates, dict)
+    for aligned_page, original_page, years, dates in page_refs:
+        for year_label in years:
+            _merge_local_entry_pages(
+                years_section, year_label, aligned_page, original_page
+            )
+        for date_label in dates:
+            _merge_local_entry_pages(
+                dates_section, date_label, aligned_page, original_page
+            )
+        _append_page_labels(page_years, aligned_page, years)
+        _append_page_labels(page_dates, aligned_page, dates)
+    return _sort_book_time_index_document(document)
 
 
 def _merge_entry_pages(
@@ -230,7 +248,7 @@ def sync_time_index_from_book(
     client: openai.OpenAI | None = None,
     settings: Settings | None = None,
     prompt_notes: str | None = None,
-) -> tuple[Path, dict[str, int]]:
+) -> tuple[Path, dict[str, Any]]:
     return asyncio.run(
         sync_time_index_from_book_async(
             polyindex_dir,
@@ -255,8 +273,11 @@ async def sync_time_index_from_book_async(
     client: openai.OpenAI | None = None,
     settings: Settings | None = None,
     prompt_notes: str | None = None,
-) -> tuple[Path, dict[str, int]]:
+) -> tuple[Path, dict[str, Any]]:
     time_index_path = polyindex_dir / "TIME_INDEX.json"
+    book_time_index_path = book_time_index_json_path(
+        book_output.output_dir, book_output.slug
+    )
 
     page_refs: list[tuple[int, int, set[str], set[str]]] = []
     llm_pages = 0
@@ -295,6 +316,9 @@ async def sync_time_index_from_book_async(
         page_refs.append((aligned_page, original_page, years, dates))
         if used_llm:
             llm_pages += 1
+
+    book_document = _build_book_time_index_document(page_refs)
+    _atomic_write_json(book_time_index_path, book_document)
 
     with polyindex_dir_lock(polyindex_dir, ".time_index.lock"):
         if time_index_path.is_file():
@@ -341,23 +365,14 @@ async def sync_time_index_from_book_async(
 
         _atomic_write_json(time_index_path, _sort_time_index_document(document))
 
+    local_years = book_document.get("years")
+    local_dates = book_document.get("dates")
     stats = {
-        "n_years": sum(
-            1
-            for entry in years_section.values()
-            if isinstance(entry, dict)
-            and isinstance(entry.get("books"), dict)
-            and source_sha256 in entry["books"]
-        ),
-        "n_dates": sum(
-            1
-            for entry in dates_section.values()
-            if isinstance(entry, dict)
-            and isinstance(entry.get("books"), dict)
-            and source_sha256 in entry["books"]
-        ),
+        "n_years": len(local_years) if isinstance(local_years, dict) else 0,
+        "n_dates": len(local_dates) if isinstance(local_dates, dict) else 0,
         "n_pages_scanned": len(book_output.pages),
         "n_llm_pages": llm_pages,
+        "book_time_index_path": str(book_time_index_path),
     }
     Log(
         INFO_LOG_LEVEL,

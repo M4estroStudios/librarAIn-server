@@ -157,7 +157,7 @@ class Settings(BaseModel):
     time_index_llm_cloud_model: str | None = Field(
         default=None, alias="TIME_INDEX_LLM_CLOUD_MODEL"
     )
-    time_index_use_llm: bool = Field(default=True, alias="TIME_INDEX_USE_LLM")
+    time_index_use_llm: bool = Field(default=False, alias="TIME_INDEX_USE_LLM")
     research_model: str | None = Field(default=None, alias="RESEARCH_MODEL")
     research_cloud_model: str | None = Field(default=None, alias="RESEARCH_CLOUD_MODEL")
     research_temperature: float = Field(default=0.3, ge=0.0, le=2.0, alias="RESEARCH_TEMPERATURE")

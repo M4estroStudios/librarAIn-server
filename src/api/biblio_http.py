@@ -15,10 +15,11 @@ from src.api.biblio_handlers import (
     search_biblio,
     update_biblio_node,
 )
-from src.core.hashing import new_job_id
+from src.api.biblio_polyindex_jobs import try_handle_polyindex_run_post
+from src.core.hashing import new_job_id, validate_source_sha256
 from src.core.openai_client import use_compute_mode
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
-from src.models.request import PageRange
+from src.models.request import PageRange, ReicatMetadata
 from src.models.settings import Settings, normalize_compute_mode
 
 
@@ -100,13 +101,105 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
     return {"ok": True, "count": len(books_out), "books": books_out}
 
 
-def try_handle_biblio_get(path: str, handler, *, data_root: Path, send_json) -> bool:
+_BOOK_ARTIFACT_FILES = {
+    "manifest": "manifest.json",
+    "toc": "TOC.md",
+    "index": "INDEX.md",
+    "biblio": "BIBLIO.json",
+}
+
+
+def read_book_artifact(data_root: Path, source_sha256: str, kind: str) -> dict[str, Any]:
+    try:
+        sha = validate_source_sha256(source_sha256)
+    except ValueError as exc:
+        return {"ok": False, "error": str(exc)}
+    key = (kind or "").strip().lower()
+    filename = _BOOK_ARTIFACT_FILES.get(key)
+    if not filename:
+        return {"ok": False, "error": "unknown artifact kind"}
+    path = data_root / "output" / sha / filename
+    if not path.is_file():
+        return {"ok": False, "error": "file not found", "name": filename}
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        return {"ok": False, "error": str(exc), "name": filename}
+    data: Any = None
+    if key in ("manifest", "biblio"):
+        try:
+            data = json.loads(text)
+            text = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
+        except json.JSONDecodeError:
+            data = None
+    return {"ok": True, "kind": key, "name": filename, "text": text, "data": data}
+
+
+def update_manifest_reicat(
+    data_root: Path, source_sha256: str, reicat_payload: dict[str, Any]
+) -> dict[str, Any]:
+    from datetime import datetime, timezone
+
+    try:
+        sha = validate_source_sha256(source_sha256)
+    except ValueError as exc:
+        return {"ok": False, "error": str(exc)}
+    manifest_path = data_root / "output" / sha / "manifest.json"
+    if not manifest_path.is_file():
+        return {"ok": False, "error": "manifest not found"}
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        return {"ok": False, "error": f"unable to read manifest: {exc}"}
+    if not isinstance(manifest, dict):
+        return {"ok": False, "error": "invalid manifest"}
+    try:
+        reicat = ReicatMetadata.model_validate(reicat_payload)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+    manifest["reicat"] = reicat.model_dump(by_alias=True)
+    manifest["generated_at"] = datetime.now(timezone.utc).isoformat()
+    try:
+        manifest_path.write_text(
+            json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+    except OSError as exc:
+        return {"ok": False, "error": f"unable to write manifest: {exc}"}
+    return {
+        "ok": True,
+        "source_sha256": sha,
+        "reicat": manifest["reicat"],
+        "manifest": manifest,
+    }
+
+
+def try_handle_biblio_get(
+    path: str,
+    handler,
+    *,
+    data_root: Path,
+    send_json,
+    query: dict[str, list[str]] | None = None,
+) -> bool:
     parsed = urlparse(path if "://" in path else f"http://x{path}")
     route = parsed.path
-    query = parse_qs(parsed.query)
+    if query is None:
+        query = parse_qs(parsed.query)
 
     if route == "/api/admin/biblio/candidates":
         send_json(handler, 200, list_biblio_candidates(data_root))
+        return True
+    if route == "/api/admin/biblio/artifact":
+        send_json(
+            handler,
+            200,
+            read_book_artifact(
+                data_root,
+                (query.get("source_sha256") or [""])[0],
+                (query.get("kind") or [""])[0],
+            ),
+        )
         return True
     if route == "/api/admin/biblio/search":
         mode = (query.get("mode") or ["cita"])[0].strip() or "cita"
@@ -195,6 +288,23 @@ def try_handle_biblio_post(
                 extras=payload.get("extras") if isinstance(payload.get("extras"), dict) else None,
             )
             send_json(handler, 200, result)
+        except Exception as exc:
+            send_json(handler, 400, {"ok": False, "error": str(exc)})
+        return True
+
+    if path == "/api/admin/biblio/reicat/update":
+        try:
+            payload = json.loads(read_body(handler, 1024 * 1024).decode("utf-8"))
+            reicat_raw = payload.get("reicat")
+            if not isinstance(reicat_raw, dict):
+                send_json(handler, 400, {"ok": False, "error": "reicat object is required"})
+                return True
+            result = update_manifest_reicat(
+                data_root,
+                str(payload.get("source_sha256") or ""),
+                reicat_raw,
+            )
+            send_json(handler, 200 if result.get("ok") else 400, result)
         except Exception as exc:
             send_json(handler, 400, {"ok": False, "error": str(exc)})
         return True
@@ -295,6 +405,18 @@ def try_handle_biblio_post(
                 "events_url": f"/api/ingest/{job_id}/events",
             },
         )
+        return True
+
+    if try_handle_polyindex_run_post(
+        path,
+        handler,
+        data_root=data_root,
+        settings=settings,
+        registry=registry,
+        job_semaphore=job_semaphore,
+        send_json=send_json,
+        read_body=read_body,
+    ):
         return True
 
     return False

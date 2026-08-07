@@ -25,19 +25,23 @@ from src.ingestion.pipeline.stage1 import Stage1Result, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
-from src.ingestion.index_cross_links import apply_index_cross_links
+from src.ingestion.index_cross_links import apply_index_cross_links, book_index_json_path
 from src.ingestion.polyindex.biblio_json import sync_polyindex_biblio_from_book
-from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
+from src.ingestion.polyindex.gallery_index import write_gallery_index
 from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
-from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
+from src.ingestion.polyindex.toc_json import parse_chapters_from_toc_md, sync_polyindex_toc_from_book
 from src.ingestion.toc_builder import build_toc_md
 from src.ingestion.tmp_cleanup import cleanup_tmp_after_success
 from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
-from src.ingestion.output_writer import BookOutput, materialize_book_pages
+from src.ingestion.output_writer import (
+    BookOutput,
+    load_book_index_document,
+    materialize_book_pages,
+    stamp_page_metadata,
+)
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import (
     PHASE_POLYINDEX_BIBLIO,
-    PHASE_POLYINDEX_INDEX,
     PHASE_POLYINDEX_TOC,
     PHASE_RENDER,
     PHASE_TIME_INDEX,
@@ -50,6 +54,7 @@ from src.models.request import (
     EnrichedIngestRequest,
     PdfAlignmentResult,
     UsefulPagesEnumeration,
+    build_md_formatting_block,
 )
 from src.models.settings import Settings
 from src.persistence.pipeline_runs import create_pipeline_run, mark_pipeline_run_finished
@@ -133,6 +138,7 @@ class PipelineContext:
     prompt_notes: str | None
     page_prompt_notes: str | None
     index_prompt_notes: str | None
+    md_formatting_block: str
     render_page_total: int
     polyindex_dir: Path
     openai_client: Any | None = field(default=None, repr=False)
@@ -261,6 +267,7 @@ def _build_pipeline_context(
         prompt_notes=guidance,
         page_prompt_notes=guidance,
         index_prompt_notes=guidance,
+        md_formatting_block=build_md_formatting_block(enriched.request.md_formatting),
         render_page_total=len(useful_pages.useful_original_pages),
         polyindex_dir=data_root / "polyindex",
     )
@@ -317,6 +324,7 @@ async def _run_glm_ocr_phase(
         request_id=ctx.request_id,
         progress=ctx.progress,
         prompt_notes=ctx.page_prompt_notes,
+        md_formatting=ctx.md_formatting_block,
     )
     _sync_page_jobs_from_stage1(page_jobs, combined.stage1)
     for job in page_jobs:
@@ -387,6 +395,7 @@ async def _run_editor_phase_only(
             request_id=ctx.request_id,
             progress=ctx.progress,
             prompt_notes=ctx.page_prompt_notes,
+            md_formatting=ctx.md_formatting_block,
         )
     except Exception as exc:
         raise OrchestratorStageError("stage3_editor", exc) from exc
@@ -472,6 +481,7 @@ async def _run_vision_editor_phases(
             request_id=ctx.request_id,
             progress=ctx.progress,
             prompt_notes=ctx.page_prompt_notes,
+            md_formatting=ctx.md_formatting_block,
         )
     except ShutdownRequested:
         raise
@@ -493,6 +503,7 @@ async def _run_vision_editor_phases(
             request_id=ctx.request_id,
             progress=ctx.progress,
             prompt_notes=ctx.page_prompt_notes,
+            md_formatting=ctx.md_formatting_block,
         )
     except ShutdownRequested:
         raise
@@ -514,6 +525,15 @@ def _run_output_writer_phase(
         ctx.settings,
         request_id=ctx.request_id,
     )
+    gallery_path, gallery_stats = write_gallery_index(
+        book_output.output_dir,
+        book_output.slug,
+        [
+            (page.aligned_page, page.original_page, page.gallery_captions)
+            for page in stage3_result.pages
+        ],
+        request_id=ctx.request_id,
+    )
     _publish_event(
         ctx.registry,
         ctx.request_id,
@@ -522,6 +542,9 @@ def _run_output_writer_phase(
         payload={
             "page_count": len(book_output.pages),
             "manifest_path": str(book_output.manifest_path),
+            "gallery_index_path": str(gallery_path),
+            "gallery_n_entries": gallery_stats["n_entries"],
+            "gallery_n_pages": gallery_stats["n_pages"],
         },
     )
     return book_output
@@ -647,6 +670,30 @@ async def _run_index_cross_links_phase(
     return index_md_path
 
 
+def _run_page_metadata_phase(
+    ctx: PipelineContext,
+    book_output: BookOutput,
+    toc_md_path: Path,
+) -> None:
+    chapters = parse_chapters_from_toc_md(toc_md_path, ctx.useful_pages)
+    index_document = load_book_index_document(
+        book_index_json_path(book_output.output_dir, book_output.slug)
+    )
+    stats = stamp_page_metadata(
+        book_output,
+        chapters,
+        index_document,
+        request_id=ctx.request_id,
+    )
+    _publish_event(
+        ctx.registry,
+        ctx.request_id,
+        stage="page_metadata",
+        message="page_metadata completed",
+        payload=stats,
+    )
+
+
 async def _run_book_artifact_phases(
     ctx: PipelineContext,
     book_output: BookOutput,
@@ -657,6 +704,7 @@ async def _run_book_artifact_phases(
     index_md_path = _run_index_md_builder(ctx, book_output)
     index_md_path = await _run_index_refine_phase(ctx, index_md_path)
     index_md_path = await _run_index_cross_links_phase(ctx, book_output, index_md_path)
+    _run_page_metadata_phase(ctx, book_output, toc_md_path)
     return toc_md_path, index_md_path
 
 
@@ -664,7 +712,6 @@ async def _run_polyindex_phases(
     ctx: PipelineContext,
     book_output: BookOutput,
     toc_md_path: Path,
-    index_md_path: Path,
 ) -> None:
     _progress_started(ctx, PHASE_POLYINDEX_TOC)
     toc_json_path = sync_polyindex_toc_from_book(
@@ -683,41 +730,6 @@ async def _run_polyindex_phases(
         payload={"toc_json_path": str(toc_json_path)},
     )
 
-    _progress_started(ctx, PHASE_POLYINDEX_INDEX)
-    index_json_path, index_stats = sync_polyindex_index_from_book(
-        ctx.polyindex_dir,
-        ctx.source_sha256,
-        index_md_path,
-        ctx.useful_pages,
-        ctx.openai_client,
-        ctx.settings.sqlite_path,
-        ctx.settings,
-        ctx.request_id,
-        prompt_notes=ctx.index_prompt_notes,
-        book_title=ctx.enriched.request.reicat.title,
-        book_slug=book_output.slug,
-    )
-    _progress_completed(
-        ctx,
-        PHASE_POLYINDEX_INDEX,
-        index_json_path=str(index_json_path),
-        n_new=index_stats["n_new"],
-        n_match=index_stats["n_match"],
-        n_alias=index_stats["n_alias"],
-    )
-    _publish_event(
-        ctx.registry,
-        ctx.request_id,
-        stage="polyindex_index",
-        message="polyindex_index completed",
-        payload={
-            "index_json_path": str(index_json_path),
-            "n_new": index_stats["n_new"],
-            "n_match": index_stats["n_match"],
-            "n_alias": index_stats["n_alias"],
-        },
-    )
-
     _progress_started(ctx, PHASE_TIME_INDEX)
     time_index_path, time_index_stats = await sync_time_index_from_book_async(
         ctx.polyindex_dir,
@@ -733,6 +745,7 @@ async def _run_polyindex_phases(
         ctx,
         PHASE_TIME_INDEX,
         time_index_path=str(time_index_path),
+        book_time_index_path=time_index_stats.get("book_time_index_path"),
         n_years=time_index_stats["n_years"],
         n_dates=time_index_stats["n_dates"],
     )
@@ -743,6 +756,7 @@ async def _run_polyindex_phases(
         message="time_index completed",
         payload={
             "time_index_path": str(time_index_path),
+            "book_time_index_path": time_index_stats.get("book_time_index_path"),
             "n_years": time_index_stats["n_years"],
             "n_dates": time_index_stats["n_dates"],
         },
@@ -981,8 +995,8 @@ async def _run_pipeline_body(
             )
         stage3_result = await _run_editor_phase_only(ctx, stage2_result, page_jobs)
         book_output = _run_output_writer_phase(ctx, stage3_result)
-        toc_md_path, index_md_path = await _run_book_artifact_phases(ctx, book_output)
-        await _run_polyindex_phases(ctx, book_output, toc_md_path, index_md_path)
+        toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
+        await _run_polyindex_phases(ctx, book_output, toc_md_path)
         return _finalize_pipeline_result(
             ctx,
             page_jobs,
@@ -1002,8 +1016,8 @@ async def _run_pipeline_body(
         page_jobs,
     )
     book_output = _run_output_writer_phase(ctx, stage3_result)
-    toc_md_path, index_md_path = await _run_book_artifact_phases(ctx, book_output)
-    await _run_polyindex_phases(ctx, book_output, toc_md_path, index_md_path)
+    toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
+    await _run_polyindex_phases(ctx, book_output, toc_md_path)
     return _finalize_pipeline_result(
         ctx,
         page_jobs,

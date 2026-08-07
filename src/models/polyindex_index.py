@@ -124,6 +124,43 @@ class PolyindexIndexSubjectEntry(BaseModel):
         )
 
 
+class BookIndexSubjectEntry(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    canonical_label: str
+    aliases: list[str] = Field(default_factory=list)
+    time_range: str | None = None
+    aligned_pages: list[int] = Field(default_factory=list)
+    original_pages: list[int] = Field(default_factory=list)
+    global_ref: str | None = None
+
+
+class BookIndexDocument(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    schema_version: PolyindexIndexSchemaVersion = SCHEMA_VERSION
+    subjects: dict[str, BookIndexSubjectEntry] = Field(default_factory=dict)
+    page_subjects: dict[str, list[str]] = Field(default_factory=dict)
+
+    def to_json_bytes(self) -> bytes:
+        return json.dumps(
+            self.model_dump(mode="json"),
+            ensure_ascii=False,
+            indent=2,
+        ).encode("utf-8")
+
+    def write_atomic(self, path: Path) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        content = self.to_json_bytes()
+        tmp_path = path.with_name(path.name + ".tmp")
+        try:
+            tmp_path.write_bytes(content)
+            os.replace(tmp_path, path)
+        finally:
+            if tmp_path.is_file():
+                tmp_path.unlink(missing_ok=True)
+
+
 class PolyindexIndexDocument(BaseModel):
     model_config = ConfigDict(extra="ignore")
 

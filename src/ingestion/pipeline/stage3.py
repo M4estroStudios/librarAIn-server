@@ -10,6 +10,7 @@ from pydantic import BaseModel
 from src.core.errors import ShutdownRequested, raise_if_shutdown
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
+from src.models.request import build_md_formatting_block
 from src.core.parallel import gather_cancellable
 from src.ingestion.pipeline.md_cache import (
     read_stage_md as _read_stage_md,
@@ -80,9 +81,11 @@ async def refine_with_editor(
     settings: Settings,
     temperature: float = 0.1,
     prompt_notes: str | None = None,
+    md_formatting: str | None = None,
 ) -> str:
     Log(INFO_LOG_LEVEL, "stage3 refine_with_editor load prompt file begin", {"request_id": request_id})
-    system_text = build_system_prompt(_load_editor_prompt(), prompt_notes)
+    formatting = md_formatting if md_formatting is not None else build_md_formatting_block()
+    system_text = build_system_prompt(_load_editor_prompt(), prompt_notes, md_formatting=formatting)
     Log(
         INFO_LOG_LEVEL,
         "stage3 refine_with_editor load prompt file done",
@@ -126,6 +129,7 @@ class Stage3PageResult(BaseModel):
     char_count: int
     stage2_char_count: int
     char_delta: int
+    gallery_captions: list[str] = []
 
 
 class Stage3Result(BaseModel):
@@ -133,6 +137,8 @@ class Stage3Result(BaseModel):
     skipped_existing: int
     missing: list[int]
     last_error: str | None = None
+    gallery_entry_count: int = 0
+    gallery_page_count: int = 0
 
 
 async def run_stage3_editor(
@@ -145,7 +151,10 @@ async def run_stage3_editor(
     force_recompute: bool = False,
     progress: ProgressReporter | None = None,
     prompt_notes: str | None = None,
+    md_formatting: str | None = None,
 ) -> Stage3Result:
+    from src.ingestion.polyindex.gallery_index import extract_gallery_captions
+
     data_root = Path(settings.data_root)
     stage3_dir = data_root / "tmp" / source_sha256 / "stage3Editor"
     stage3_dir.mkdir(parents=True, exist_ok=True)
@@ -174,6 +183,23 @@ async def run_stage3_editor(
 
     if progress is not None:
         progress(make_event(PHASE_STAGE3_EDITOR, STATUS_STARTED, page_total=page_total))
+
+    def _page_result(
+        s2_page: Stage2PageResult,
+        *,
+        md_path: Path,
+        finalized: str,
+        stage2_char_count: int,
+    ) -> Stage3PageResult:
+        return Stage3PageResult(
+            aligned_page=s2_page.aligned_page,
+            original_page=s2_page.original_page,
+            md_path=str(md_path),
+            char_count=len(finalized),
+            stage2_char_count=stage2_char_count,
+            char_delta=len(finalized) - stage2_char_count,
+            gallery_captions=extract_gallery_captions(finalized),
+        )
 
     async def _process_page(page_index: int, s2_page: Stage2PageResult) -> tuple[Stage3PageResult | None, bool]:
         nonlocal last_error
@@ -205,7 +231,6 @@ async def run_stage3_editor(
                     )
                     if finalized != cached:
                         _write_stage_md(md_path, model, finalized)
-                    char_delta = len(finalized) - stage2_char_count
                     Log(
                         INFO_LOG_LEVEL,
                         "stage3 page skip editor using existing md",
@@ -229,13 +254,11 @@ async def run_stage3_editor(
                             char_count=len(finalized),
                         ))
                     return (
-                        Stage3PageResult(
-                            aligned_page=s2_page.aligned_page,
-                            original_page=s2_page.original_page,
-                            md_path=str(md_path),
-                            char_count=len(finalized),
+                        _page_result(
+                            s2_page,
+                            md_path=md_path,
+                            finalized=finalized,
                             stage2_char_count=stage2_char_count,
-                            char_delta=char_delta,
                         ),
                         True,
                     )
@@ -252,6 +275,7 @@ async def run_stage3_editor(
                     page=s2_page.aligned_page,
                     settings=settings,
                     prompt_notes=prompt_notes,
+                    md_formatting=md_formatting,
                 )
             except ShutdownRequested:
                 raise
@@ -287,8 +311,6 @@ async def run_stage3_editor(
                 request_id=request_id,
                 aligned_page=s2_page.aligned_page,
             )
-            stage3_char_count = len(finalized)
-            char_delta = stage3_char_count - stage2_char_count
             raise_if_shutdown()
             _write_stage_md(md_path, model, finalized)
             if progress is not None:
@@ -300,16 +322,14 @@ async def run_stage3_editor(
                     page_total=page_total,
                     aligned_page=s2_page.aligned_page,
                     original_page=s2_page.original_page,
-                    char_count=stage3_char_count,
+                    char_count=len(finalized),
                 ))
             return (
-                Stage3PageResult(
-                    aligned_page=s2_page.aligned_page,
-                    original_page=s2_page.original_page,
-                    md_path=str(md_path),
-                    char_count=stage3_char_count,
+                _page_result(
+                    s2_page,
+                    md_path=md_path,
+                    finalized=finalized,
                     stage2_char_count=stage2_char_count,
-                    char_delta=char_delta,
                 ),
                 False,
             )
@@ -330,6 +350,8 @@ async def run_stage3_editor(
                 skipped_existing += 1
 
     pages.sort(key=lambda p: p.aligned_page)
+    gallery_entry_count = sum(len(page.gallery_captions) for page in pages)
+    gallery_page_count = sum(1 for page in pages if page.gallery_captions)
 
     Log(
         INFO_LOG_LEVEL,
@@ -338,6 +360,8 @@ async def run_stage3_editor(
             "request_id": request_id,
             "pages_written": len(pages),
             "skipped_existing": skipped_existing,
+            "gallery_entry_count": gallery_entry_count,
+            "gallery_page_count": gallery_page_count,
         },
     )
 
@@ -347,6 +371,8 @@ async def run_stage3_editor(
             STATUS_COMPLETED,
             pages_written=len(pages),
             skipped_existing=skipped_existing,
+            gallery_entry_count=gallery_entry_count,
+            gallery_page_count=gallery_page_count,
         ))
 
     return Stage3Result(
@@ -354,4 +380,6 @@ async def run_stage3_editor(
         skipped_existing=skipped_existing,
         missing=[],
         last_error=last_error,
+        gallery_entry_count=gallery_entry_count,
+        gallery_page_count=gallery_page_count,
     )

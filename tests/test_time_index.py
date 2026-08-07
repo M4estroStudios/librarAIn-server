@@ -8,6 +8,7 @@ from unittest.mock import AsyncMock, patch
 
 from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.ingestion.polyindex.time_index import (
+    book_time_index_json_path,
     extract_time_references,
     sync_time_index_from_book,
 )
@@ -67,7 +68,7 @@ class TestExtractTimeReferencesForPage(unittest.IsolatedAsyncioTestCase):
                 aligned_page=3,
             )
         self.assertTrue(used_llm)
-        self.assertEqual(years, {"1848", "Quattrocento"})
+        self.assertEqual(years, {"1848", "Quattrocento", "inizi del Quattrocento"})
         self.assertEqual(dates, set())
 
     async def test_regex_only_when_llm_disabled(self) -> None:
@@ -137,9 +138,61 @@ class TestExtractTimeReferences(unittest.TestCase):
         years, _ = extract_time_references("Si veda p. 1234 e pp. 456-789.")
         self.assertEqual(years, set())
 
+    def test_civic_and_measure_numbers_excluded(self) -> None:
+        years, _ = extract_time_references(
+            "Il palazzo al n. 149; lungo 1045 metri e con 600 posti."
+        )
+        self.assertEqual(years, set())
+
     def test_out_of_range_numbers_excluded(self) -> None:
         years, _ = extract_time_references("Erano 50 uomini e 2500 cavalli.")
         self.assertEqual(years, set())
+
+    def test_month_year_and_month_range(self) -> None:
+        years, dates = extract_time_references(
+            "Nel marzo del 1848 e poi tra marzo-aprile 1849."
+        )
+        self.assertIn("1848", years)
+        self.assertIn("1849", years)
+        self.assertIn("marzo 1848", dates)
+        self.assertIn("marzo–aprile 1849", dates)
+        self.assertIn("aprile 1849", dates)
+
+    def test_year_range_expanded(self) -> None:
+        years, _ = extract_time_references("Il periodo 1585-90 fu critico.")
+        self.assertEqual(years, {"1585", "1586", "1587", "1588", "1589", "1590"})
+
+    def test_centuries_periods_and_adjectives(self) -> None:
+        years, _ = extract_time_references(
+            "Agli inizi del Quattrocento e nel xvi secolo. "
+            "La facciata ottocentesca risale al Medioevo e alla fine Ottocento."
+        )
+        self.assertIn("inizi del Quattrocento", years)
+        self.assertIn("xvi secolo", years)
+        self.assertIn("Ottocento", years)
+        self.assertIn("fine Ottocento", years)
+        self.assertIn("Medioevo", years)
+
+    def test_inverted_digit_century_and_extra_periods(self) -> None:
+        years, _ = extract_time_references(
+            "Nel secolo xi e nel 14 secolo. "
+            "Il tardo Seicento e il Barocco; inizio dell'età imperiale."
+        )
+        self.assertIn("xi secolo", years)
+        self.assertIn("xiv secolo", years)
+        self.assertIn("tardo Seicento", years)
+        self.assertIn("Barocco", years)
+        self.assertIn("età imperiale", years)
+
+    def test_day_range_and_primo(self) -> None:
+        years, dates = extract_time_references(
+            "Dal 15 al 27 settembre 1590 e il primo maggio."
+        )
+        self.assertIn("1590", years)
+        self.assertIn("15–27 settembre 1590", dates)
+        self.assertIn("15 settembre 1590", dates)
+        self.assertIn("27 settembre 1590", dates)
+        self.assertIn("1 maggio", dates)
 
 
 class TestSyncTimeIndexFromBook(unittest.TestCase):
@@ -196,6 +249,17 @@ class TestSyncTimeIndexFromBook(unittest.TestCase):
             data["dates"]["12 marzo 1848"]["books"][SHA_A]["aligned_pages"], [2]
         )
 
+        book_path = book_time_index_json_path(book.output_dir, book.slug)
+        self.assertEqual(stats["book_time_index_path"], str(book_path))
+        self.assertTrue(book_path.is_file())
+        local = json.loads(book_path.read_text(encoding="utf-8"))
+        self.assertEqual(local["years"]["1848"]["aligned_pages"], [1, 2])
+        self.assertEqual(local["dates"]["12 marzo 1848"]["aligned_pages"], [2])
+        self.assertEqual(local["page_years"]["1"], ["1848"])
+        self.assertEqual(local["page_years"]["2"], ["1848"])
+        self.assertEqual(local["page_dates"]["2"], ["12 marzo 1848"])
+        self.assertNotIn("books", local["years"]["1848"])
+
     def test_second_book_merges_and_rerun_is_idempotent(self) -> None:
         book_a = self._make_book(SHA_A, "libro-a", {1: "Nel 1848."})
         book_b = self._make_book(SHA_B, "libro-b", {5: "Era il 1848 anche qui."})
@@ -238,7 +302,7 @@ class TestSyncTimeIndexFromBook(unittest.TestCase):
         data = json.loads(path.read_text(encoding="utf-8"))
         self.assertEqual(list(data["years"].keys()), ["44 a.C.", "324", "1848"])
 
-    def test_llm_only_year_appears_in_index(self) -> None:
+    def test_period_from_regex_and_llm_merge_in_index(self) -> None:
         book = self._make_book(
             SHA_A,
             "libro-a",
@@ -256,7 +320,26 @@ class TestSyncTimeIndexFromBook(unittest.TestCase):
                 client=object(),
                 settings=_settings(),
             )
-        self.assertEqual(stats["n_years"], 1)
+        self.assertEqual(stats["n_years"], 2)
         self.assertEqual(stats["n_llm_pages"], 1)
         data = json.loads(path.read_text(encoding="utf-8"))
         self.assertIn("Quattrocento", data["years"])
+        self.assertIn("inizi del Quattrocento", data["years"])
+
+    def test_regex_alone_indexes_century_period(self) -> None:
+        book = self._make_book(
+            SHA_A,
+            "libro-a",
+            {1: "Agli inizi del Quattrocento la città prosperò."},
+        )
+        path, stats = sync_time_index_from_book(
+            self.polyindex_dir,
+            SHA_A,
+            book,
+            book_title="Libro A",
+            settings=_settings(TIME_INDEX_USE_LLM=False),
+        )
+        self.assertEqual(stats["n_years"], 1)
+        self.assertEqual(stats["n_llm_pages"], 0)
+        data = json.loads(path.read_text(encoding="utf-8"))
+        self.assertIn("inizi del Quattrocento", data["years"])

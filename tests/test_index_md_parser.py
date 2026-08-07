@@ -116,6 +116,7 @@ class TestParseIndexMd(unittest.TestCase):
     def test_normalize_label_strips_accents_and_punctuation(self) -> None:
         self.assertEqual(normalize_label("  Città,  "), "citta")
         self.assertEqual(normalize_label("République."), "republique")
+        self.assertEqual(normalize_label("Marco Polo"), "marco-polo")
 
         index_path = _write_index(self.tmp, ["Città, 5"])
         subjects = parse_index_md(index_path, _enumeration(page_count=10))

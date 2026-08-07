@@ -28,8 +28,11 @@ _P_BUILD_BOOK = "src.ingestion.orchestrator.build_book_md"
 _P_BUILD_TOC = "src.ingestion.orchestrator.build_toc_md"
 _P_BUILD_INDEX = "src.ingestion.orchestrator.build_index_md"
 _P_SYNC_POLYINDEX_TOC = "src.ingestion.orchestrator.sync_polyindex_toc_from_book"
-_P_SYNC_POLYINDEX_INDEX = "src.ingestion.orchestrator.sync_polyindex_index_from_book"
 _P_SYNC_TIME_INDEX = "src.ingestion.orchestrator.sync_time_index_from_book_async"
+_P_WRITE_GALLERY_INDEX = "src.ingestion.orchestrator.write_gallery_index"
+_P_SYNC_POLYINDEX_BIBLIO = "src.ingestion.orchestrator.sync_polyindex_biblio_from_book"
+_P_APPLY_INDEX_CROSS_LINKS = "src.ingestion.orchestrator.apply_index_cross_links"
+_P_PAGE_METADATA_PHASE = "src.ingestion.orchestrator._run_page_metadata_phase"
 
 
 def _patch_time_index():
@@ -42,6 +45,52 @@ def _patch_time_index():
             )
         ),
     )
+
+
+def _patch_gallery_index():
+    return patch(
+        _P_WRITE_GALLERY_INDEX,
+        new=MagicMock(
+            return_value=(
+                Path("/tmp/GALLERY_INDEX_demo.json"),
+                {
+                    "n_entries": 0,
+                    "n_pages": 0,
+                    "gallery_index_path": "/tmp/GALLERY_INDEX_demo.json",
+                },
+            )
+        ),
+    )
+
+
+def _patch_polyindex_biblio():
+    return patch(
+        _P_SYNC_POLYINDEX_BIBLIO,
+        new=AsyncMock(
+            return_value=(
+                Path("/tmp/BIBLIO.json"),
+                {"n_entries": 0, "n_review": 0},
+                {"empty": True},
+            )
+        ),
+    )
+
+
+def _patch_index_artifacts():
+    return patch(
+        _P_APPLY_INDEX_CROSS_LINKS,
+        new=AsyncMock(return_value={"n_success": 0, "n_failed": 0}),
+    )
+
+
+def _patch_page_metadata_phase():
+    return patch(_P_PAGE_METADATA_PHASE, new=MagicMock())
+
+
+def _write_minimal_toc_md(path: Path) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("# TOC — Test Book\n\nCapitolo I 1\n", encoding="utf-8")
+    return path
 _P_REFINE_TOC = "src.ingestion.orchestrator.refine_toc_md"
 _P_REFINE_INDEX = "src.ingestion.orchestrator.refine_index_md"
 _P_CLIENT = "src.ingestion.orchestrator.build_openai_client"
@@ -130,8 +179,11 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
+    @_patch_page_metadata_phase()
+    @_patch_index_artifacts()
+    @_patch_polyindex_biblio()
+    @_patch_gallery_index()
     @_patch_time_index()
-    @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -158,7 +210,6 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_refine_toc: AsyncMock,
         mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
-        mock_sync_polyindex_index: MagicMock,
     ) -> None:
         mock_stage1.return_value = _stage1_result(PAGE_COUNT)
         stage3_pages = [MagicMock(aligned_page=i) for i in range(1, PAGE_COUNT + 1)]
@@ -167,13 +218,9 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         mock_output.return_value = MagicMock(pages=[MagicMock()] * PAGE_COUNT, manifest_path=Path("/tmp/manifest.json"))
         mock_client.return_value = MagicMock()
         mock_build_book.return_value = self.tmp / "book.md"
-        mock_build_toc.return_value = self.tmp / "TOC.md"
+        mock_build_toc.return_value = _write_minimal_toc_md(self.tmp / "TOC.md")
         mock_build_index.return_value = self.tmp / "INDEX.md"
         mock_sync_polyindex_toc.return_value = Path(self.data_root) / "polyindex" / "TOC.json"
-        mock_sync_polyindex_index.return_value = (
-            Path(self.data_root) / "polyindex" / "INDEX.json",
-            {"n_new": 0, "n_match": 0, "n_alias": 0},
-        )
 
         async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
             del args, kwargs
@@ -194,11 +241,10 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
             )
         )
 
-        mock_build_book.assert_called_once()
+        self.assertEqual(mock_build_book.call_count, 2)
         mock_build_toc.assert_called_once()
         mock_build_index.assert_called_once()
         mock_sync_polyindex_toc.assert_called_once()
-        mock_sync_polyindex_index.assert_called_once()
         mock_stage1.assert_awaited_once()
         mock_stage2.assert_awaited_once()
         mock_stage3.assert_awaited_once()
@@ -243,11 +289,20 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         del args, kwargs
         self.call_log.append("stage3")
         result = MagicMock()
-        result.pages = [MagicMock(aligned_page=1)]
+        result.pages = [
+            MagicMock(
+                aligned_page=1,
+                original_page=1,
+                gallery_captions=[],
+            )
+        ]
         return result
 
+    @_patch_page_metadata_phase()
+    @_patch_index_artifacts()
+    @_patch_polyindex_biblio()
+    @_patch_gallery_index()
     @_patch_time_index()
-    @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -274,7 +329,6 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_refine_toc: AsyncMock,
         mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
-        mock_sync_polyindex_index: MagicMock,
     ) -> None:
         mock_stage1.side_effect = self._stage1_side_effect
         mock_stage2.side_effect = self._stage2
@@ -282,13 +336,9 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         mock_output.return_value = MagicMock(pages=[MagicMock()], manifest_path=Path("/tmp/manifest.json"))
         mock_client.return_value = MagicMock()
         mock_build_book.return_value = self.tmp / "book.md"
-        mock_build_toc.return_value = self.tmp / "TOC.md"
+        mock_build_toc.return_value = _write_minimal_toc_md(self.tmp / "TOC.md")
         mock_build_index.return_value = self.tmp / "INDEX.md"
         mock_sync_polyindex_toc.return_value = Path(self.data_root) / "polyindex" / "TOC.json"
-        mock_sync_polyindex_index.return_value = (
-            Path(self.data_root) / "polyindex" / "INDEX.json",
-            {"n_new": 0, "n_match": 0, "n_alias": 0},
-        )
 
         async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
             del args, kwargs
@@ -340,7 +390,7 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
     def _toc_md_side_effect(self, *args, **kwargs) -> Path:
         del args, kwargs
         self.builder_call_order.append("toc_md")
-        return self.tmp / "TOC.md"
+        return _write_minimal_toc_md(self.tmp / "TOC.md")
 
     def _index_md_side_effect(self, *args, **kwargs) -> Path:
         del args, kwargs
@@ -352,16 +402,11 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         self.builder_call_order.append("polyindex_toc")
         return Path(self.data_root) / "polyindex" / "TOC.json"
 
-    def _polyindex_index_side_effect(self, *args, **kwargs) -> tuple[Path, dict[str, int]]:
-        del args, kwargs
-        self.builder_call_order.append("polyindex_index")
-        return (
-            Path(self.data_root) / "polyindex" / "INDEX.json",
-            {"n_new": 0, "n_match": 0, "n_alias": 0},
-        )
-
+    @_patch_page_metadata_phase()
+    @_patch_index_artifacts()
+    @_patch_polyindex_biblio()
+    @_patch_gallery_index()
     @_patch_time_index()
-    @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -388,7 +433,6 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         mock_refine_toc: AsyncMock,
         mock_refine_index: AsyncMock,
         mock_sync_polyindex_toc: MagicMock,
-        mock_sync_polyindex_index: MagicMock,
     ) -> None:
         mock_stage1.return_value = _stage1_result(1)
         mock_stage2.return_value = MagicMock(pages=[])
@@ -409,7 +453,6 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         mock_refine_toc.side_effect = _refine_passthrough
         mock_refine_index.side_effect = _refine_passthrough
         mock_sync_polyindex_toc.side_effect = self._polyindex_toc_side_effect
-        mock_sync_polyindex_index.side_effect = self._polyindex_index_side_effect
 
         useful_pages = _enumeration(page_count=1)
 
@@ -425,7 +468,8 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
             )
         )
 
-        mock_build_book.assert_called_once_with(book_output, useful_pages)
+        self.assertEqual(mock_build_book.call_count, 2)
+        mock_build_book.assert_called_with(book_output, useful_pages)
         mock_build_toc.assert_called_once_with(book_output, useful_pages)
         mock_build_index.assert_called_once_with(book_output, useful_pages)
         mock_sync_polyindex_toc.assert_called_once_with(
@@ -435,12 +479,11 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
             self.tmp / "TOC.md",
             useful_pages,
         )
-        mock_sync_polyindex_index.assert_called_once()
         mock_refine_toc.assert_awaited_once()
         mock_refine_index.assert_awaited_once()
         self.assertEqual(
             self.builder_call_order,
-            ["book_md", "toc_md", "index_md", "polyindex_toc", "polyindex_index"],
+            ["book_md", "toc_md", "index_md", "book_md", "polyindex_toc"],
         )
         toc_events = [event for event in self.registry.events if event.stage == "toc_builder"]
         self.assertEqual(len(toc_events), 1)
@@ -456,13 +499,13 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
             polyindex_toc_events[0].payload,
             {"toc_json_path": str(Path(self.data_root) / "polyindex" / "TOC.json")},
         )
-        polyindex_index_events = [
-            event for event in self.registry.events if event.stage == "polyindex_index"
+        output_events = [
+            event for event in self.registry.events if event.stage == "output_writer"
         ]
-        self.assertEqual(len(polyindex_index_events), 1)
+        self.assertEqual(len(output_events), 1)
         self.assertEqual(
-            polyindex_index_events[0].payload["index_json_path"],
-            str(Path(self.data_root) / "polyindex" / "INDEX.json"),
+            Path(str(output_events[0].payload.get("gallery_index_path"))),
+            Path("/tmp/GALLERY_INDEX_demo.json"),
         )
 
 
@@ -512,8 +555,11 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         del book_output, useful_pages
         return self.toc_md_path
 
+    @_patch_page_metadata_phase()
+    @_patch_index_artifacts()
+    @_patch_polyindex_biblio()
+    @_patch_gallery_index()
     @_patch_time_index()
-    @patch(_P_SYNC_POLYINDEX_INDEX)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
     @patch(_P_BUILD_INDEX)
@@ -538,7 +584,6 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         mock_build_index: MagicMock,
         mock_refine_toc: AsyncMock,
         mock_refine_index: AsyncMock,
-        mock_sync_polyindex_index: MagicMock,
     ) -> None:
         mock_stage1.return_value = _stage1_result(1)
         mock_stage2.return_value = MagicMock(pages=[])
@@ -548,10 +593,6 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         mock_build_book.return_value = self.output_dir / "test-book.md"
         mock_build_toc.side_effect = self._toc_md_side_effect
         mock_build_index.return_value = self.output_dir / "INDEX.md"
-        mock_sync_polyindex_index.return_value = (
-            self.data_root / "polyindex" / "INDEX.json",
-            {"n_new": 0, "n_match": 0, "n_alias": 0},
-        )
 
         async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
             del args, kwargs
@@ -574,7 +615,6 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
             )
         )
 
-        mock_sync_polyindex_index.assert_called_once()
         toc_json_path = self.data_root / "polyindex" / "TOC.json"
         self.assertTrue(toc_json_path.is_file())
 
