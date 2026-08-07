@@ -2,7 +2,7 @@
   "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
   "slug": "la-grande-guida-dei-monumenti-di",
   "original_page_count": 816,
-  "aligned_page_count": 816,
+  "aligned_page_count": 814,
   "pages": [
     {
       "aligned": 1,
@@ -1920,6 +1920,11 @@
       "file": "pages/p.0383.la-grande-guida-dei-monumenti-di.md"
     },
     {
+      "aligned": 384,
+      "original": 384,
+      "file": "pages/p.0384.la-grande-guida-dei-monumenti-di.md"
+    },
+    {
       "aligned": 385,
       "original": 385,
       "file": "pages/p.0385.la-grande-guida-dei-monumenti-di.md"
@@ -2743,6 +2748,11 @@
       "aligned": 549,
       "original": 549,
       "file": "pages/p.0549.la-grande-guida-dei-monumenti-di.md"
+    },
+    {
+      "aligned": 550,
+      "original": 550,
+      "file": "pages/p.0550.la-grande-guida-dei-monumenti-di.md"
     },
     {
       "aligned": 551,
@@ -3935,6 +3945,11 @@
       "file": "pages/p.0788.la-grande-guida-dei-monumenti-di.md"
     },
     {
+      "aligned": 789,
+      "original": 789,
+      "file": "pages/p.0789.la-grande-guida-dei-monumenti-di.md"
+    },
+    {
       "aligned": 790,
       "original": 790,
       "file": "pages/p.0790.la-grande-guida-dei-monumenti-di.md"
@@ -4080,5 +4095,17 @@
     "isbn": null
   },
   "pipeline_version": "1.0",
-  "generated_at": "2026-08-04T13:52:40.458093+00:00"
+  "generated_at": "2026-08-06T14:39:40.890246+00:00",
+  "biblio_range": {
+    "start": 795,
+    "end": 796
+  },
+  "pages_to_remove": [
+    815,
+    816
+  ],
+  "biblio_range_aligned": {
+    "start": 795,
+    "end": 796
+  }
 }
