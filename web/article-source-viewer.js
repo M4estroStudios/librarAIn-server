@@ -52,6 +52,7 @@ function refreshPagePreview() {
   pagePreviewPrev.disabled = pagePreviewState.index <= 0;
   pagePreviewNext.disabled = pagePreviewState.index >= pagePreviewState.pages.length - 1;
   pagePreviewImg.src = pagePreviewUrl(pagePreviewState.sha, aligned);
+  if (window.LibrarAInPageZoom) window.LibrarAInPageZoom.scan(pagePreviewOverlay);
 }
 
 function openPagePreview(sourceSha256, alignedPage, viewerPages) {

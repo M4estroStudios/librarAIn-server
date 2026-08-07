@@ -220,6 +220,7 @@ Testo.
         self.assertIn('href="source:abc123:aligned:112"', html)
         self.assertIn("page-preview-overlay", html)
         self.assertIn("/article-source-viewer.js", html)
+        self.assertIn("/page-zoom.js", html)
 
 
 if __name__ == "__main__":

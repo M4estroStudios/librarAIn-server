@@ -672,6 +672,7 @@ a[href^="source:"] {{ cursor: pointer; }}
     </div>
   </div>
 </div>
+<script src="/page-zoom.js"></script>
 <script src="/article-source-viewer.js"></script>
 </body>
 </html>

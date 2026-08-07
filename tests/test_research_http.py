@@ -120,6 +120,20 @@ class ResearchHttpTests(unittest.TestCase):
         self.assertEqual(resp.status, 200)
         self.assertIn("page-preview-overlay", body)
 
+    def test_page_zoom_js_served(self) -> None:
+        req = urllib.request.Request(self.harness.url("/page-zoom.js"))
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            body = resp.read().decode("utf-8")
+        self.assertEqual(resp.status, 200)
+        self.assertIn("LibrarAInPageZoom", body)
+
+    def test_transcript_highlight_js_served(self) -> None:
+        req = urllib.request.Request(self.harness.url("/transcript-highlight.js"))
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            body = resp.read().decode("utf-8")
+        self.assertEqual(resp.status, 200)
+        self.assertIn("LibrarAInTranscriptHighlight", body)
+
     def test_research_book_page_render_open_without_token(self) -> None:
         sha = "abc1230000000000000000000000000000000000000000000000000000000000"
         data_root = self.harness.data_root
