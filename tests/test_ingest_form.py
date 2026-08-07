@@ -203,6 +203,17 @@ class TestBuildIngestPayload(unittest.TestCase):
         self.assertNotIn("index_notes", payload)
         self.assertNotIn("page_notes", payload)
         self.assertNotIn("ai_page_guidance", payload)
+        self.assertNotIn("md_formatting", payload)
+
+    def test_md_formatting_fields_propagated(self) -> None:
+        fields = dict(_BASE_FIELDS)
+        fields["md_h1"] = "custom h1"
+        fields["md_captions"] = "custom captions"
+        payload = build_ingest_payload_from_form(fields)
+        self.assertEqual(
+            payload["md_formatting"],
+            {"md_h1": "custom h1", "md_captions": "custom captions"},
+        )
 
     def test_missing_toc_range_raises(self) -> None:
         fields = dict(_BASE_FIELDS)

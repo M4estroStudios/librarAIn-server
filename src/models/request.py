@@ -113,6 +113,55 @@ class IngestOptions(BaseModel):
     force_metadata_update_on_duplicate_hash: bool = True
 
 
+DEFAULT_MD_H1 = "Usa `#` solo per i titoli di capitolo o voce principale della pagina (es. nome del monumento o inizio capitolo)."
+DEFAULT_MD_H2_H3 = "Usa `##` e `###` per le intestazioni interne tipograficamente evidenti (sottosezioni, sottotitoli)."
+DEFAULT_MD_MAX_HEADING = "Non usare heading oltre `###`."
+DEFAULT_MD_CAPTIONS = "Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `>`."
+DEFAULT_MD_WORK_TITLES = "I titoli delle opere d'arte, letterarie o musicali citati nel testo vanno in italics (`*...*` o `_..._`)."
+DEFAULT_MD_NO_INVENT = "Non inventare titoli o didascalie: applica la formattazione solo a elementi tipograficamente evidenti nella pagina."
+
+MD_FORMATTING_FIELD_DEFAULTS: dict[str, str] = {
+    "md_h1": DEFAULT_MD_H1,
+    "md_h2_h3": DEFAULT_MD_H2_H3,
+    "md_max_heading": DEFAULT_MD_MAX_HEADING,
+    "md_captions": DEFAULT_MD_CAPTIONS,
+    "md_work_titles": DEFAULT_MD_WORK_TITLES,
+    "md_no_invent": DEFAULT_MD_NO_INVENT,
+}
+
+
+class MdFormattingRules(BaseModel):
+    md_h1: str | None = None
+    md_h2_h3: str | None = None
+    md_max_heading: str | None = None
+    md_captions: str | None = None
+    md_work_titles: str | None = None
+    md_no_invent: str | None = None
+
+    @model_validator(mode="after")
+    def normalize_fields(self) -> "MdFormattingRules":
+        for field_name in MD_FORMATTING_FIELD_DEFAULTS:
+            value = getattr(self, field_name)
+            if value is not None:
+                setattr(self, field_name, value.strip() or None)
+        return self
+
+    def resolved(self) -> dict[str, str]:
+        return {
+            field_name: (getattr(self, field_name) or "").strip() or default
+            for field_name, default in MD_FORMATTING_FIELD_DEFAULTS.items()
+        }
+
+    def as_prompt_block(self) -> str:
+        resolved = self.resolved()
+        lines = [resolved[name] for name in MD_FORMATTING_FIELD_DEFAULTS]
+        return "Formattazione markdown:\n" + "\n".join(f"- {line}" for line in lines)
+
+
+def build_md_formatting_block(rules: MdFormattingRules | None = None) -> str:
+    return (rules or MdFormattingRules()).as_prompt_block()
+
+
 class IngestRequest(BaseModel):
     schema_version: Literal["1.0"] = "1.0"
     request_id: str = Field(default_factory=lambda: str(uuid4()))
@@ -122,6 +171,7 @@ class IngestRequest(BaseModel):
     index_notes: str | None = None
     page_notes: str | None = None
     ai_page_guidance: str | None = None
+    md_formatting: MdFormattingRules = Field(default_factory=MdFormattingRules)
     pages_to_remove: list[int]
     toc_range: PageRange
     index_range: PageRange

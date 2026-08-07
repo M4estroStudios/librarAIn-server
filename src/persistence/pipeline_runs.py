@@ -31,6 +31,11 @@ def _sqlite_connection(path: str):
         conn.close()
 
 
+def _pipeline_runs_columns(conn: sqlite3.Connection) -> set[str]:
+    rows = conn.execute("PRAGMA table_info(pipeline_runs)").fetchall()
+    return {str(row[1]) for row in rows}
+
+
 def ensure_pipeline_runs_table(conn: sqlite3.Connection) -> None:
     conn.execute(
         """
@@ -45,10 +50,36 @@ def ensure_pipeline_runs_table(conn: sqlite3.Connection) -> None:
             last_error TEXT,
             total_pages INTEGER,
             succeeded_pages INTEGER,
-            failed_pages INTEGER
+            failed_pages INTEGER,
+            timing_json TEXT
         )
         """
     )
+    if "timing_json" not in _pipeline_runs_columns(conn):
+        conn.execute("ALTER TABLE pipeline_runs ADD COLUMN timing_json TEXT")
+
+
+def _serialize_timing(timing: dict[str, Any] | None) -> str | None:
+    if timing is None:
+        return None
+    if not isinstance(timing, dict):
+        return None
+    return json.dumps(timing, ensure_ascii=False, sort_keys=True)
+
+
+def _decode_pipeline_run_row(row: sqlite3.Row | dict[str, Any]) -> dict[str, Any]:
+    data = dict(row)
+    raw = data.pop("timing_json", None)
+    timing: dict[str, Any] | None = None
+    if isinstance(raw, str) and raw.strip():
+        try:
+            parsed = json.loads(raw)
+        except json.JSONDecodeError:
+            parsed = None
+        if isinstance(parsed, dict):
+            timing = parsed
+    data["timing"] = timing
+    return data
 
 
 def create_pipeline_run(
@@ -110,31 +141,80 @@ def mark_pipeline_run_finished(
     succeeded_pages: int,
     failed_pages: int,
     last_error: str | None = None,
+    timing: dict[str, Any] | None = None,
 ) -> None:
     now_iso = _utc_now_iso()
+    timing_json = _serialize_timing(timing)
     try:
         with _sqlite_connection(sqlite_path) as conn:
-            conn.execute(
-                """
-                UPDATE pipeline_runs
-                SET finished_at = ?,
-                    status = ?,
-                    succeeded_pages = ?,
-                    failed_pages = ?,
-                    last_error = ?
-                WHERE request_id = ?
-                """,
-                (
-                    now_iso,
-                    status,
-                    succeeded_pages,
-                    failed_pages,
-                    last_error,
-                    request_id,
-                ),
-            )
+            if timing_json is None:
+                conn.execute(
+                    """
+                    UPDATE pipeline_runs
+                    SET finished_at = ?,
+                        status = ?,
+                        succeeded_pages = ?,
+                        failed_pages = ?,
+                        last_error = ?
+                    WHERE request_id = ?
+                    """,
+                    (
+                        now_iso,
+                        status,
+                        succeeded_pages,
+                        failed_pages,
+                        last_error,
+                        request_id,
+                    ),
+                )
+            else:
+                conn.execute(
+                    """
+                    UPDATE pipeline_runs
+                    SET finished_at = ?,
+                        status = ?,
+                        succeeded_pages = ?,
+                        failed_pages = ?,
+                        last_error = ?,
+                        timing_json = ?
+                    WHERE request_id = ?
+                    """,
+                    (
+                        now_iso,
+                        status,
+                        succeeded_pages,
+                        failed_pages,
+                        last_error,
+                        timing_json,
+                        request_id,
+                    ),
+                )
     except sqlite3.Error as exc:
         raise RuntimeError("unable to mark pipeline run finished") from exc
+
+
+def save_pipeline_run_timing(
+    sqlite_path: str,
+    *,
+    request_id: str,
+    timing: dict[str, Any],
+) -> bool:
+    timing_json = _serialize_timing(timing)
+    if timing_json is None:
+        return False
+    try:
+        with _sqlite_connection(sqlite_path) as conn:
+            cursor = conn.execute(
+                """
+                UPDATE pipeline_runs
+                SET timing_json = ?
+                WHERE request_id = ?
+                """,
+                (timing_json, request_id),
+            )
+            return cursor.rowcount > 0
+    except sqlite3.Error as exc:
+        raise RuntimeError("unable to save pipeline run timing") from exc
 
 
 def get_pipeline_run_by_request_id(
@@ -152,7 +232,7 @@ def get_pipeline_run_by_request_id(
         raise RuntimeError("unable to read pipeline run") from exc
     if row is None:
         return None
-    return dict(row)
+    return _decode_pipeline_run_row(row)
 
 
 def list_pipeline_runs(
@@ -181,7 +261,7 @@ def list_pipeline_runs(
             ).fetchall()
     except sqlite3.Error as exc:
         raise RuntimeError("unable to list pipeline runs") from exc
-    return [dict(row) for row in rows]
+    return [_decode_pipeline_run_row(row) for row in rows]
 
 
 def reicat_alias_snapshot(meta: ReicatMetadata) -> dict[str, Any]:

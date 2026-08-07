@@ -6,6 +6,8 @@
 <title>Ingestione libro — librarAIn</title>
 <link rel="stylesheet" href="/nav.css">
 <link rel="stylesheet" href="/dashboard/page-guidance.css">
+<script src="/page-zoom.js"></script>
+<script src="/transcript-highlight.js"></script>
 <script>
 (function (global) {
   function pageLabel() {
@@ -305,8 +307,8 @@ details.reicat-metadata[open] > summary::before { transform: rotate(90deg); }
   right: auto;
   z-index: 2;
 }
-.page-picker-body { min-height: 22rem; }
-.page-picker-grid-wrap { max-height: 36rem; }
+.page-picker-body { min-height: 32rem; }
+.page-picker-grid-wrap { max-height: 40rem; }
 #pdf-viewer-panel { margin-top: 0; }
 h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
 p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
@@ -510,9 +512,9 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-toolbar label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #cccccc; margin: 0; }
 .page-picker-toolbar input { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
 .page-picker-toolbar-meta { margin-top: 0.35rem; font-size: 0.75rem; color: #9d9d9d; }
-.page-picker-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 0.75rem; padding: 0.75rem; min-height: 18rem; }
+.page-picker-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 0.75rem; padding: 0.75rem; min-height: 32rem; }
 @media (max-width: 760px) { .page-picker-body { grid-template-columns: 1fr; } }
-.page-picker-grid-wrap { min-width: 0; max-height: 28rem; overflow: auto; border: 1px solid #3e3e3e; border-radius: 8px; background: #252526; padding: 0.55rem; position: relative; }
+.page-picker-grid-wrap { min-width: 0; max-height: 40rem; overflow: auto; border: 1px solid #3e3e3e; border-radius: 8px; background: #252526; padding: 0.55rem; position: relative; }
 .page-picker-grid-wrap.is-marquee-selecting { cursor: crosshair; user-select: none; -webkit-user-select: none; }
 .page-picker-grid-wrap.is-marquee-selecting .page-picker-thumb { cursor: crosshair; }
 .page-picker-grid-content { position: relative; }
@@ -553,7 +555,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-thumb.is-selected { border-color: #4ec9b0; box-shadow: 0 0 0 1px #4ec9b0; }
 .page-picker-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
 .page-picker-thumb-num { position: absolute; right: 0.2rem; bottom: 0.2rem; z-index: 2; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
-.page-picker-detail { min-width: 0; height: 28rem; display: flex; flex-direction: column; gap: 0.45rem; box-sizing: border-box; }
+.page-picker-detail { min-width: 0; height: 40rem; display: flex; flex-direction: column; gap: 0.45rem; box-sizing: border-box; }
 .page-picker-detail-label { flex: 0 0 auto; font-size: 0.82rem; color: #e8e8e8; font-weight: 600; }
 .page-picker-detail-body { display: flex; align-items: stretch; gap: 0.45rem; flex: 1 1 auto; min-height: 0; }
 .page-picker-detail-nav { flex: 0 0 auto; align-self: center; width: 2.25rem; height: 2.25rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.15rem; cursor: pointer; }
@@ -598,7 +600,7 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
   }
 })();
 </script>
-<p class="app-nav embed-hide"><a href="/">Admin</a> · <a href="/biblio">Biblio</a> · Ingestione · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<p class="app-nav embed-hide"><a href="/">Admin</a> · <a href="/biblioteca">Biblioteca</a> · Ingestione · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
 <div class="app-shell">
 <h1 class="embed-hide">Ingestione libro</h1>
 <p class="lead embed-hide">Carica il PDF, seleziona esclusioni, TOC e indice nel visualizzatore, poi completa i metadati REICAT.</p>
@@ -826,6 +828,29 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
       <input type="text" name="isbn">
     </label>
   </details>
+
+  <fieldset>
+    <legend>Formattazione Markdown del libro</legend>
+    <p class="hint">Regole MD iniettate nei prompt Vision/OCR/Editor. Se lasci vuoto un campo viene usato il default. Non fanno parte del consiglio AI.</p>
+    <label>Heading H1 (<code>#</code>)
+      <textarea name="md_h1">Usa `#` solo per i titoli di capitolo o voce principale della pagina (es. nome del monumento o inizio capitolo).</textarea>
+    </label>
+    <label>Heading H2/H3 (<code>##</code> / <code>###</code>)
+      <textarea name="md_h2_h3">Usa `##` e `###` per le intestazioni interne tipograficamente evidenti (sottosezioni, sottotitoli).</textarea>
+    </label>
+    <label>Livello massimo heading
+      <textarea name="md_max_heading">Non usare heading oltre `###`.</textarea>
+    </label>
+    <label>Didascalie immagini
+      <textarea name="md_captions">Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `&gt;`.</textarea>
+    </label>
+    <label>Titoli di opere
+      <textarea name="md_work_titles">I titoli delle opere d'arte, letterarie o musicali citati nel testo vanno in italics (`*...*` o `_..._`).</textarea>
+    </label>
+    <label>Non inventare titoli/didascalie
+      <textarea name="md_no_invent">Non inventare titoli o didascalie: applica la formattazione solo a elementi tipograficamente evidenti nella pagina.</textarea>
+    </label>
+  </fieldset>
 
   <fieldset id="model-notes-fieldset" class="hidden">
     <legend>Note per i modelli</legend>

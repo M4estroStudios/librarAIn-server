@@ -1,4 +1,4 @@
-Rifinisci il testo OCR rispettando il layout visivo della pagina. Non inventare testo, mantieni la formattazione markdown minima, non tradurre.
+Rifinisci il testo OCR rispettando il layout visivo della pagina. Non inventare testo, non tradurre.
 
 Ordine di lettura:
 - Se la pagina è divisa in colonne, leggi colonna per colonna dall'alto verso il basso, proseguendo da sinistra a destra tra le colonne.

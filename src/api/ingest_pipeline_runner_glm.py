@@ -8,6 +8,7 @@ from src.api.ingest_pipeline_runner import (
     _emit,
     _emit_error,
     _extract_validation_error,
+    persist_pipeline_timing,
 )
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.ingestion.orchestrator import NullOrchestratorRegistry, OrchestratorStageError, run_pipeline
@@ -166,36 +167,40 @@ def run_glm_ingest_pipeline(
     if set_global_total is not None:
         set_global_total(total_steps)
 
+    request_id = enriched.request.request_id
     try:
-        orchestrator_result = asyncio.run(
-            run_pipeline(
-                enriched,
-                pdf_alignment,
-                useful_pages_enumeration,
-                settings,
-                settings.sqlite_path,
-                NullOrchestratorRegistry(),
-                enriched.request.request_id,
-                progress=reporter,
-                skip_vision_editor=ingest_gate_phase.pipeline_skipped,
-                pipeline_mode="glm_ocr",
+        try:
+            orchestrator_result = asyncio.run(
+                run_pipeline(
+                    enriched,
+                    pdf_alignment,
+                    useful_pages_enumeration,
+                    settings,
+                    settings.sqlite_path,
+                    NullOrchestratorRegistry(),
+                    request_id,
+                    progress=reporter,
+                    skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+                    pipeline_mode="glm_ocr",
+                )
             )
-        )
-    except OrchestratorStageError as exc:
-        err_detail = _extract_validation_error(exc.cause)
-        _emit_error(reporter, PHASE_STAGE3_EDITOR, err_detail["message"],
-                    code=err_detail.get("code"), field=err_detail.get("field"))
-        raise exc.cause from exc
-    except (ValueError, IngestInputValidationException) as exc:
-        err_detail = _extract_validation_error(exc)
-        _emit_error(reporter, PHASE_STAGE1_GLM_OCR, err_detail["message"],
-                    code=err_detail.get("code"), field=err_detail.get("field"))
-        raise
-    except Exception as exc:
-        err_detail = _extract_validation_error(exc)
-        _emit_error(reporter, PHASE_STAGE1_GLM_OCR, err_detail["message"],
-                    code=err_detail.get("code"), field=err_detail.get("field"))
-        raise
+        except OrchestratorStageError as exc:
+            err_detail = _extract_validation_error(exc.cause)
+            _emit_error(reporter, PHASE_STAGE3_EDITOR, err_detail["message"],
+                        code=err_detail.get("code"), field=err_detail.get("field"))
+            raise exc.cause from exc
+        except (ValueError, IngestInputValidationException) as exc:
+            err_detail = _extract_validation_error(exc)
+            _emit_error(reporter, PHASE_STAGE1_GLM_OCR, err_detail["message"],
+                        code=err_detail.get("code"), field=err_detail.get("field"))
+            raise
+        except Exception as exc:
+            err_detail = _extract_validation_error(exc)
+            _emit_error(reporter, PHASE_STAGE1_GLM_OCR, err_detail["message"],
+                        code=err_detail.get("code"), field=err_detail.get("field"))
+            raise
+    finally:
+        persist_pipeline_timing(settings, request_id, timing)
 
     stage1_result = orchestrator_result.stage1_result
     stage2_result = orchestrator_result.stage2_result
@@ -234,6 +239,7 @@ def run_glm_ingest_pipeline(
                 timing=payload_out["timing"],
             ),
         )
+        persist_pipeline_timing(settings, request_id, timing)
         return payload_out
 
     stage3_result = orchestrator_result.stage3_result
@@ -252,4 +258,5 @@ def run_glm_ingest_pipeline(
             timing=payload_out["timing"],
         ),
     )
+    persist_pipeline_timing(settings, request_id, timing)
     return payload_out

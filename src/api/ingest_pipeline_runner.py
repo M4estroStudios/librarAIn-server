@@ -64,6 +64,27 @@ def _emit_error(
     )
 
 
+def persist_pipeline_timing(
+    settings: Settings,
+    request_id: str,
+    timing: PipelineTiming,
+) -> None:
+    from src.persistence.pipeline_runs import save_pipeline_run_timing
+
+    try:
+        save_pipeline_run_timing(
+            settings.sqlite_path,
+            request_id=request_id,
+            timing=timing.summary(),
+        )
+    except Exception as exc:
+        Log(
+            WARNING_LOG_LEVEL,
+            "pipeline timing persist failed",
+            {"request_id": request_id, "error": repr(exc)},
+        )
+
+
 def run_full_pipeline(
     ingest_payload: dict[str, Any],
     saved_pdf_path: Path,
@@ -186,46 +207,50 @@ def run_full_pipeline(
         set_global_total(total_steps)
 
     Log(INFO_LOG_LEVEL, "pipeline run_pipeline begin")
+    request_id = enriched.request.request_id
     try:
-        orchestrator_result = asyncio.run(
-            run_pipeline(
-                enriched,
-                pdf_alignment,
-                useful_pages_enumeration,
-                settings,
-                settings.sqlite_path,
-                NullOrchestratorRegistry(),
-                enriched.request.request_id,
-                progress=reporter,
-                skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+        try:
+            orchestrator_result = asyncio.run(
+                run_pipeline(
+                    enriched,
+                    pdf_alignment,
+                    useful_pages_enumeration,
+                    settings,
+                    settings.sqlite_path,
+                    NullOrchestratorRegistry(),
+                    request_id,
+                    progress=reporter,
+                    skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+                )
             )
-        )
-    except OrchestratorStageError as exc:
-        err_detail = _extract_validation_error(exc.cause)
-        phase = (
-            PHASE_STAGE2_VISION
-            if exc.stage == "stage2_vision"
-            else PHASE_STAGE3_EDITOR
-        )
-        Log(ERROR_LOG_LEVEL, "pipeline orchestrator stage failed",
-            {"error": str(exc.cause), "phase": phase, "stage": exc.stage})
-        _emit_error(reporter, phase, err_detail["message"],
-                    code=err_detail.get("code"), field=err_detail.get("field"))
-        raise exc.cause from exc
-    except (ValueError, IngestInputValidationException) as exc:
-        err_detail = _extract_validation_error(exc)
-        Log(WARNING_LOG_LEVEL, "pipeline orchestrator failed", {"error": str(exc)})
-        _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
-                    code=err_detail.get("code"), field=err_detail.get("field"))
-        raise
-    except ShutdownRequested:
-        raise
-    except Exception as exc:
-        err_detail = _extract_validation_error(exc)
-        Log(ERROR_LOG_LEVEL, "pipeline orchestrator unhandled error", {"error": str(exc)})
-        _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
-                    code=err_detail.get("code"), field=err_detail.get("field"))
-        raise
+        except OrchestratorStageError as exc:
+            err_detail = _extract_validation_error(exc.cause)
+            phase = (
+                PHASE_STAGE2_VISION
+                if exc.stage == "stage2_vision"
+                else PHASE_STAGE3_EDITOR
+            )
+            Log(ERROR_LOG_LEVEL, "pipeline orchestrator stage failed",
+                {"error": str(exc.cause), "phase": phase, "stage": exc.stage})
+            _emit_error(reporter, phase, err_detail["message"],
+                        code=err_detail.get("code"), field=err_detail.get("field"))
+            raise exc.cause from exc
+        except (ValueError, IngestInputValidationException) as exc:
+            err_detail = _extract_validation_error(exc)
+            Log(WARNING_LOG_LEVEL, "pipeline orchestrator failed", {"error": str(exc)})
+            _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
+                        code=err_detail.get("code"), field=err_detail.get("field"))
+            raise
+        except ShutdownRequested:
+            raise
+        except Exception as exc:
+            err_detail = _extract_validation_error(exc)
+            Log(ERROR_LOG_LEVEL, "pipeline orchestrator unhandled error", {"error": str(exc)})
+            _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
+                        code=err_detail.get("code"), field=err_detail.get("field"))
+            raise
+    finally:
+        persist_pipeline_timing(settings, request_id, timing)
 
     stage1_result = orchestrator_result.stage1_result
     Log(INFO_LOG_LEVEL, "pipeline run_pipeline done",
@@ -255,6 +280,7 @@ def run_full_pipeline(
         _emit(reporter, make_event(
             PHASE_STAGE1_OCR, STATUS_COMPLETED, timing=payload_out["timing"]
         ))
+        persist_pipeline_timing(settings, request_id, timing)
         Log(INFO_LOG_LEVEL, "pipeline completed (pipeline_skipped)",
             {"source_sha256": enriched.source_sha256[:16],
              "stage1_pages": len(stage1_result.pages)})
@@ -281,6 +307,7 @@ def run_full_pipeline(
     _emit(reporter, make_event(
         PHASE_STAGE3_EDITOR, STATUS_COMPLETED, timing=payload_out["timing"]
     ))
+    persist_pipeline_timing(settings, request_id, timing)
 
     Log(INFO_LOG_LEVEL, "pipeline completed",
         {"source_sha256": enriched.source_sha256[:16],
@@ -400,38 +427,41 @@ def run_resume_pipeline_from_sha(
     if set_global_total is not None:
         set_global_total(1 + n_pages * page_stages)
     try:
-        orchestrator_result = asyncio.run(
-            run_pipeline(
-                enriched,
-                pdf_alignment,
-                useful_pages_enumeration,
-                settings,
-                settings.sqlite_path,
-                NullOrchestratorRegistry(),
-                request_id,
-                progress=reporter,
-                skip_vision_editor=False,
-                pipeline_mode=resolved_mode,
+        try:
+            orchestrator_result = asyncio.run(
+                run_pipeline(
+                    enriched,
+                    pdf_alignment,
+                    useful_pages_enumeration,
+                    settings,
+                    settings.sqlite_path,
+                    NullOrchestratorRegistry(),
+                    request_id,
+                    progress=reporter,
+                    skip_vision_editor=False,
+                    pipeline_mode=resolved_mode,
+                )
             )
-        )
-    except OrchestratorStageError as exc:
-        err_detail = _extract_validation_error(exc.cause)
-        if resolved_mode == "glm_ocr":
-            phase = PHASE_STAGE1_GLM_OCR if exc.stage == "stage1_glm_ocr" else PHASE_STAGE3_EDITOR
-        else:
-            phase = PHASE_STAGE2_VISION if exc.stage == "stage2_vision" else PHASE_STAGE3_EDITOR
-        _emit_error(reporter, phase, err_detail["message"], code=err_detail.get("code"), field=err_detail.get("field"))
-        raise exc.cause from exc
-    except (ValueError, IngestInputValidationException) as exc:
-        err_detail = _extract_validation_error(exc)
-        _emit_error(
-            reporter,
-            PHASE_STAGE1_OCR,
-            err_detail["message"],
-            code=err_detail.get("code"),
-            field=err_detail.get("field"),
-        )
-        raise
+        except OrchestratorStageError as exc:
+            err_detail = _extract_validation_error(exc.cause)
+            if resolved_mode == "glm_ocr":
+                phase = PHASE_STAGE1_GLM_OCR if exc.stage == "stage1_glm_ocr" else PHASE_STAGE3_EDITOR
+            else:
+                phase = PHASE_STAGE2_VISION if exc.stage == "stage2_vision" else PHASE_STAGE3_EDITOR
+            _emit_error(reporter, phase, err_detail["message"], code=err_detail.get("code"), field=err_detail.get("field"))
+            raise exc.cause from exc
+        except (ValueError, IngestInputValidationException) as exc:
+            err_detail = _extract_validation_error(exc)
+            _emit_error(
+                reporter,
+                PHASE_STAGE1_OCR,
+                err_detail["message"],
+                code=err_detail.get("code"),
+                field=err_detail.get("field"),
+            )
+            raise
+    finally:
+        persist_pipeline_timing(settings, request_id, timing)
     stage2_result = orchestrator_result.stage2_result
     stage3_result = orchestrator_result.stage3_result
     payload_out = {
@@ -445,6 +475,7 @@ def run_resume_pipeline_from_sha(
         "timing": timing.summary(),
     }
     _emit(reporter, make_event(PHASE_STAGE3_EDITOR, STATUS_COMPLETED, timing=payload_out["timing"]))
+    persist_pipeline_timing(settings, request_id, timing)
     return payload_out
 
 

@@ -23,7 +23,16 @@ from src.persistence.book_sqlite import (
     source_hash_gate,
     upsert_book_reicat,
 )
-from src.models.request import IngestInputErrorCode, SourceHashGateStatus
+from src.models.request import (
+    DEFAULT_MD_H1,
+    IngestInputErrorCode,
+    IngestRequest,
+    MdFormattingRules,
+    PageRange,
+    ReicatMetadata,
+    SourceHashGateStatus,
+    build_md_formatting_block,
+)
 
 
 def _minimal_pdf_bytes(num_pages: int) -> bytes:
@@ -54,6 +63,34 @@ def _valid_payload(source_pdf_path: str, *, pdf_pages: int) -> dict:
         },
         "options": {"force_metadata_update_on_duplicate_hash": True},
     }
+
+
+class MdFormattingRulesTests(unittest.TestCase):
+    def test_defaults_when_unspecified(self) -> None:
+        rules = MdFormattingRules()
+        resolved = rules.resolved()
+        self.assertEqual(resolved["md_h1"], DEFAULT_MD_H1)
+        block = build_md_formatting_block(rules)
+        self.assertTrue(block.startswith("Formattazione markdown:"))
+        self.assertIn(DEFAULT_MD_H1, block)
+
+    def test_override_single_rule(self) -> None:
+        rules = MdFormattingRules(md_h1="solo titoli capitolo")
+        resolved = rules.resolved()
+        self.assertEqual(resolved["md_h1"], "solo titoli capitolo")
+        self.assertEqual(resolved["md_max_heading"], "Non usare heading oltre `###`.")
+
+    def test_ingest_request_embeds_md_formatting(self) -> None:
+        req = IngestRequest(
+            source_pdf_path="/tmp/book.pdf",
+            pages_to_remove=[],
+            toc_range=PageRange(start=1, end=1),
+            index_range=PageRange(start=2, end=2),
+            reicat=ReicatMetadata.model_validate({"titolo": "T", "autore": ["A"]}),
+            md_formatting={"md_captions": "caption custom"},
+        )
+        self.assertEqual(req.md_formatting.resolved()["md_captions"], "caption custom")
+        self.assertEqual(req.md_formatting.resolved()["md_h1"], DEFAULT_MD_H1)
 
 
 class RequestValidationTests(unittest.TestCase):

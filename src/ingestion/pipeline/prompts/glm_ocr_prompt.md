@@ -1,4 +1,4 @@
-Trascrivi fedelmente il testo visibile nella pagina. Non inventare contenuti, non tradurre, mantieni la formattazione markdown minima.
+Trascrivi fedelmente il testo visibile nella pagina. Non inventare contenuti, non tradurre.
 
 Ordine di lettura:
 - Se la pagina è divisa in colonne, leggi colonna per colonna dall'alto verso il basso, proseguendo da sinistra a destra tra le colonne.

@@ -458,6 +458,19 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
     index_notes_raw = fields.get("index_notes", "").strip()
     page_notes_raw = fields.get("page_notes", "").strip()
     ai_page_guidance_raw = fields.get("ai_page_guidance", "").strip()
+    md_formatting_keys = (
+        "md_h1",
+        "md_h2_h3",
+        "md_max_heading",
+        "md_captions",
+        "md_work_titles",
+        "md_no_invent",
+    )
+    md_formatting_payload = {
+        key: fields.get(key, "").strip()
+        for key in md_formatting_keys
+        if fields.get(key, "").strip()
+    }
     force_meta = fields.get("force_metadata_update_on_duplicate_hash")
     if force_meta is None:
         force_flag = True
@@ -487,4 +500,6 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
         ingest_payload["page_notes"] = page_notes_raw
     if ai_page_guidance_raw:
         ingest_payload["ai_page_guidance"] = ai_page_guidance_raw
+    if md_formatting_payload:
+        ingest_payload["md_formatting"] = md_formatting_payload
     return ingest_payload

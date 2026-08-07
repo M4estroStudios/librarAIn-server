@@ -73,6 +73,7 @@ def _history_row_from_pipeline(
     sha = str(row.get("source_sha256") or "")
     interrupted = display == "interrotto"
     resumable = interrupted or pipeline_run_can_resume(row, data_root)
+    timing = row.get("timing")
     return {
         "job_id": row.get("request_id"),
         "job_kind": "ingest",
@@ -86,6 +87,7 @@ def _history_row_from_pipeline(
         "created_at": row.get("started_at"),
         "updated_at": row.get("finished_at") or row.get("started_at"),
         "error": row.get("last_error"),
+        "timing": timing if isinstance(timing, dict) else None,
         "is_active": False,
         "is_batch": False,
         "is_historical": True,

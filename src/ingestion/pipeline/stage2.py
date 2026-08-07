@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from src.core.errors import ShutdownRequested, raise_if_shutdown
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
+from src.models.request import build_md_formatting_block
 from src.core.parallel import gather_cancellable
 from src.ingestion.pipeline.stage1 import Stage1PageResult, Stage1Result
 from src.ingestion.progress import (
@@ -64,9 +65,11 @@ async def refine_with_vision(
     settings: Settings,
     temperature: float = 0.1,
     prompt_notes: str | None = None,
+    md_formatting: str | None = None,
 ) -> str:
     Log(INFO_LOG_LEVEL, "stage2 refine_with_vision load prompt file begin", {"request_id": request_id})
-    system_text = build_system_prompt(_load_vision_prompt(), prompt_notes)
+    formatting = md_formatting if md_formatting is not None else build_md_formatting_block()
+    system_text = build_system_prompt(_load_vision_prompt(), prompt_notes, md_formatting=formatting)
     Log(
         INFO_LOG_LEVEL,
         "stage2 refine_with_vision load prompt file done",
@@ -140,6 +143,7 @@ async def run_stage2_vision(
     force_recompute: bool = False,
     progress: ProgressReporter | None = None,
     prompt_notes: str | None = None,
+    md_formatting: str | None = None,
 ) -> Stage2Result:
     data_root = Path(settings.data_root)
     stage2_dir = data_root / "tmp" / source_sha256 / "stage2Vision"
@@ -230,6 +234,7 @@ async def run_stage2_vision(
                     page=s1_page.aligned_page,
                     settings=settings,
                     prompt_notes=prompt_notes,
+                    md_formatting=md_formatting,
                 )
             except ShutdownRequested:
                 raise

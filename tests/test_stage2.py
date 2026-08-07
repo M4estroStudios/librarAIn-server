@@ -9,6 +9,7 @@ from unittest.mock import MagicMock
 
 from src.core.rate_limit import AsyncTokenBucket
 from src.core.openai_client import _ClientState, _client_states, build_system_prompt
+from src.models.request import build_md_formatting_block
 from src.ingestion.pipeline.stage1 import Stage1PageResult, Stage1Result
 from src.ingestion.pipeline.stage2 import (
     Stage2Result,
@@ -99,7 +100,10 @@ class TestRefineWithVision(unittest.TestCase):
         )
         messages = client.chat.completions.create.call_args.kwargs["messages"]
         self.assertEqual(messages[0]["role"], "system")
-        self.assertEqual(messages[0]["content"], _load_vision_prompt())
+        self.assertEqual(
+            messages[0]["content"],
+            build_system_prompt(_load_vision_prompt(), None, md_formatting=build_md_formatting_block()),
+        )
 
     def test_system_message_appends_operator_notes(self) -> None:
         client = _fake_client()
@@ -118,7 +122,10 @@ class TestRefineWithVision(unittest.TestCase):
             )
         )
         messages = client.chat.completions.create.call_args.kwargs["messages"]
-        self.assertEqual(messages[0]["content"], build_system_prompt(_load_vision_prompt(), notes))
+        self.assertEqual(
+            messages[0]["content"],
+            build_system_prompt(_load_vision_prompt(), notes, md_formatting=build_md_formatting_block()),
+        )
 
     def test_user_message_contains_text_and_image(self) -> None:
         png_bytes = b"\x89PNG\xfake"

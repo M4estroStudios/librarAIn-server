@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ingestione libro — librarAIn</title>
 <link rel="stylesheet" href="/nav.css">
+<script src="/page-zoom.js"></script>
+<script src="/transcript-highlight.js"></script>
 <script>
 (function (global) {
   function pageLabel() {
@@ -508,6 +510,29 @@ body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem;
     </div>
     <label>ISBN
       <input type="text" name="isbn">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Formattazione Markdown del libro</legend>
+    <p class="hint">Regole MD iniettate nei prompt Vision/OCR/Editor. Se lasci vuoto un campo viene usato il default. Non fanno parte del consiglio AI.</p>
+    <label>Heading H1 (<code>#</code>)
+      <textarea name="md_h1">Usa `#` solo per i titoli di capitolo o voce principale della pagina (es. nome del monumento o inizio capitolo).</textarea>
+    </label>
+    <label>Heading H2/H3 (<code>##</code> / <code>###</code>)
+      <textarea name="md_h2_h3">Usa `##` e `###` per le intestazioni interne tipograficamente evidenti (sottosezioni, sottotitoli).</textarea>
+    </label>
+    <label>Livello massimo heading
+      <textarea name="md_max_heading">Non usare heading oltre `###`.</textarea>
+    </label>
+    <label>Didascalie immagini
+      <textarea name="md_captions">Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `&gt;`.</textarea>
+    </label>
+    <label>Titoli di opere
+      <textarea name="md_work_titles">I titoli delle opere d'arte, letterarie o musicali citati nel testo vanno in italics (`*...*` o `_..._`).</textarea>
+    </label>
+    <label>Non inventare titoli/didascalie
+      <textarea name="md_no_invent">Non inventare titoli o didascalie: applica la formattazione solo a elementi tipograficamente evidenti nella pagina.</textarea>
     </label>
   </fieldset>
 

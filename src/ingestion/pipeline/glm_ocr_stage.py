@@ -13,6 +13,7 @@ from src.core.errors import PermanentError, ShutdownRequested, TransientError, r
 from src.core.hashing import compute_file_sha256
 from src.core.log import ERROR_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
+from src.models.request import build_md_formatting_block
 from src.core.parallel import gather_cancellable
 from src.core.retry import retry_async
 from src.core.text import slugify
@@ -97,8 +98,10 @@ async def transcribe_with_glm_ocr(
     page: int,
     settings: Settings,
     prompt_notes: str | None = None,
+    md_formatting: str | None = None,
 ) -> str:
-    system_text = build_system_prompt(_load_glm_ocr_prompt(), prompt_notes)
+    formatting = md_formatting if md_formatting is not None else build_md_formatting_block()
+    system_text = build_system_prompt(_load_glm_ocr_prompt(), prompt_notes, md_formatting=formatting)
     image_bytes = Path(page_image_path).read_bytes()
     b64 = base64.b64encode(image_bytes).decode("ascii")
     messages: list[dict[str, Any]] = [
@@ -218,6 +221,7 @@ async def _glm_ocr_pages_parallel(
     request_id: str,
     page_total: int,
     prompt_notes: str | None,
+    md_formatting: str | None,
     emit_progress,
 ) -> list[_GlmOcrOutcome]:
     pending = [item for item in work if item.page_index not in render_failures]
@@ -239,6 +243,7 @@ async def _glm_ocr_pages_parallel(
                         page=item.aligned,
                         settings=settings,
                         prompt_notes=prompt_notes,
+                        md_formatting=md_formatting,
                     )
                 except PermanentError:
                     raise
@@ -368,6 +373,7 @@ async def run_glm_ocr_combined_stage(
     force_recompute: bool = False,
     progress: ProgressReporter | None = None,
     prompt_notes: str | None = None,
+    md_formatting: str | None = None,
 ) -> GlmOcrCombinedResult:
     aligned_path = resolve_aligned_pdf_path_for_stage1(
         enriched,
@@ -453,6 +459,7 @@ async def run_glm_ocr_combined_stage(
         request_id=request_id,
         page_total=page_total,
         prompt_notes=prompt_notes,
+        md_formatting=md_formatting,
         emit_progress=_emit_progress,
     )
     outcomes = settled + list(render_failures.values()) + glm_outcomes

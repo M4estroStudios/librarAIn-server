@@ -29,6 +29,7 @@ _MIGRATIONS: list[tuple[str, str]] = [
     ("003", "pipeline_runs table"),
     ("004", "subject_embeddings and subject_match_audit tables"),
     ("005", "research_runs table"),
+    ("006", "pipeline_runs timing_json"),
 ]
 
 _BOOK_OPTIONAL_DDL: list[tuple[str, str]] = [
