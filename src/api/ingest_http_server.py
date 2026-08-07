@@ -34,6 +34,10 @@ from src.api.page_guidance_http import (
     try_handle_page_guidance_post,
 )
 from src.api.prompts_http import try_handle_prompts_get, try_handle_prompts_post
+from src.api.project_status_http import (
+    try_handle_project_status_get,
+    try_handle_project_status_put,
+)
 from src.api.system_preflight import evaluate_preflight, normalize_preflight_operation
 from src.api.ingest_form import (
     InvalidPagesSpec,
@@ -159,6 +163,8 @@ _WEB_PAGE_ALIASES = frozenset({
     "/dashboard.html",
     "/admin",
     "/admin.html",
+    "/biblioteca",
+    "/biblioteca.html",
     "/biblio",
     "/biblio.html",
     "/ricerca",
@@ -644,14 +650,19 @@ def build_ingest_server(
                 _send_bytes(self, 200, admin_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
-            if path in ("/biblio", "/biblio.html"):
-                biblio_file = web_dir / "biblio.html"
-                if not biblio_file.exists():
-                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
-                        {"path": str(biblio_file)})
-                    _send_json(self, 500, {"ok": False, "error": "web/biblio.html missing"})
+            if path in ("/biblioteca", "/biblioteca.html", "/biblio", "/biblio.html"):
+                if path in ("/biblio", "/biblio.html"):
+                    self.send_response(302)
+                    self.send_header("Location", "/biblioteca")
+                    self.end_headers()
                     return
-                _send_bytes(self, 200, biblio_file.read_bytes(), "text/html; charset=utf-8")
+                biblioteca_file = web_dir / "biblioteca.html"
+                if not biblioteca_file.exists():
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
+                        {"path": str(biblioteca_file)})
+                    _send_json(self, 500, {"ok": False, "error": "web/biblioteca.html missing"})
+                    return
+                _send_bytes(self, 200, biblioteca_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
             if path == "/log.js":
@@ -670,6 +681,24 @@ def build_ingest_server(
                 viewer_js = web_dir / "article-source-viewer.js"
                 if viewer_js.is_file():
                     _send_bytes(self, 200, viewer_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
+            if path == "/page-zoom.js":
+                page_zoom_js = web_dir / "page-zoom.js"
+                if page_zoom_js.is_file():
+                    _send_bytes(self, 200, page_zoom_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
+            if path == "/biblioteca-book.js":
+                biblio_book_js = web_dir / "biblioteca-book.js"
+                if biblio_book_js.is_file():
+                    _send_bytes(self, 200, biblio_book_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
+            if path == "/transcript-highlight.js":
+                transcript_hl_js = web_dir / "transcript-highlight.js"
+                if transcript_hl_js.is_file():
+                    _send_bytes(self, 200, transcript_hl_js.read_bytes(), "text/javascript; charset=utf-8")
                     return
 
             if path == "/mockup/lab.html":
@@ -756,6 +785,18 @@ def build_ingest_server(
                 send_json=_send_json,
             ):
                 return
+            if try_handle_project_status_get(
+                path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                registry=registry,
+                research_batch_registry=research_batch_registry,
+                sqlite_path=_settings_sqlite_path(settings),
+                send_json=_send_json,
+                query=query,
+            ):
+                return
             if try_handle_admin_subject_dedup_get(
                 path,
                 self,
@@ -768,6 +809,7 @@ def build_ingest_server(
                 self,
                 query=query,
                 repo_root=repo_root,
+                data_root=data_root,
                 send_json=_send_json,
             ):
                 return
@@ -776,6 +818,7 @@ def build_ingest_server(
                 self,
                 data_root=data_root,
                 send_json=_send_json,
+                query=query,
             ):
                 return
 
@@ -1533,6 +1576,33 @@ def build_ingest_server(
                     break
 
             Log(INFO_LOG_LEVEL, "SSE subscriber done", {"job_id": job_id})
+
+        def do_PUT(self) -> None:
+            parsed = urllib.parse.urlparse(self.path)
+            if _is_cross_origin_request(self):
+                Log(
+                    WARNING_LOG_LEVEL,
+                    "cross-origin PUT rejected",
+                    {
+                        "path": parsed.path,
+                        "origin": (self.headers.get("Origin") or "")[:120],
+                    },
+                )
+                _send_json(self, 403, {"ok": False, "error": "cross-origin request rejected"})
+                return
+            if try_handle_project_status_put(
+                parsed.path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                registry=registry,
+                research_batch_registry=research_batch_registry,
+                sqlite_path=_settings_sqlite_path(settings),
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
+            self.send_error(404, "Not Found")
 
         def do_POST(self) -> None:
             parsed = urllib.parse.urlparse(self.path)

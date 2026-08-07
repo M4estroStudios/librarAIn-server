@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admin — librarAIn</title>
 <link rel="stylesheet" href="/nav.css">
+<script src="/page-zoom.js"></script>
+<script src="/transcript-highlight.js"></script>
 <script>
 (function (global) {
   function pageLabel() {
@@ -237,6 +239,11 @@ tr.selected td { background: #1f3330; }
 .bookcount { color: #4ec9b0; font-weight: 700; }
 .gap { color: #f0a060; font-weight: 600; }
 .ok-badge { color: #4ec9b0; font-weight: 600; }
+.status-pill { display: inline-block; padding: 0.12rem 0.45rem; border-radius: 999px; font-size: 0.74rem; border: 1px solid #444; }
+.status-pill.status-completato { color: #6a9955; border-color: #3a5a3a; }
+.status-pill.status-in_pausa { color: #ce9178; border-color: #6a4a3a; }
+.status-pill.status-errore { color: #f48771; border-color: #6a3a3a; }
+#prompt-doctor-root details.book-audit { margin-top: 0.55rem; }
 .stage-missing { font-size: 0.78rem; color: #b8b8b8; margin-top: 0.2rem; }
 .stage-missing span { color: #f0a060; }
 #pages-audit-table { table-layout: fixed; }
@@ -1178,11 +1185,150 @@ button.admin-section-tool:hover:not(:disabled) { background: #2f2f30; color: #e8
 .admin-section-tool[data-admin-section="pagine"].is-active { border-color: #b88bff; background: rgba(184, 139, 255, 0.12); }
 .admin-section-tool[data-admin-section="poh"].is-active { border-color: #e6c229; background: rgba(230, 194, 41, 0.12); }
 .admin-section-tool[data-admin-section="biblio"].is-active { border-color: #4ec9b0; background: rgba(78, 201, 176, 0.12); }
+.admin-section-tool[data-admin-section="status"].is-active { border-color: #dcdcaa; background: rgba(220, 220, 170, 0.12); }
 button.admin-section-tool[data-admin-section="sistema"].is-active:hover:not(:disabled) { background: rgba(78, 201, 176, 0.18); }
+button.admin-section-tool[data-admin-section="status"].is-active:hover:not(:disabled) { background: rgba(220, 220, 170, 0.18); }
 button.admin-section-tool[data-admin-section="articoli"].is-active:hover:not(:disabled) { background: rgba(61, 142, 239, 0.18); }
 button.admin-section-tool[data-admin-section="pagine"].is-active:hover:not(:disabled) { background: rgba(184, 139, 255, 0.18); }
 button.admin-section-tool[data-admin-section="poh"].is-active:hover:not(:disabled) { background: rgba(230, 194, 41, 0.18); }
 button.admin-section-tool[data-admin-section="biblio"].is-active:hover:not(:disabled) { background: rgba(78, 201, 176, 0.18); }
+.project-status-layout { display: flex; flex-direction: column; gap: 1rem; }
+.project-status-main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem); gap: 1rem; align-items: start; }
+@media (max-width: 960px) { .project-status-main { grid-template-columns: 1fr; } }
+.project-status-tree {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem; line-height: 1.45; background: #1e1e1e; border: 1px solid #3e3e3e;
+  border-radius: 10px; padding: 0.55rem 0.35rem; max-height: 34rem; overflow: auto;
+}
+.project-status-row {
+  display: flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.4rem; border-radius: 6px; cursor: pointer; user-select: none;
+}
+.project-status-row:hover { background: #2a2d2e; }
+.project-status-row.is-selected { background: rgba(220, 220, 170, 0.14); outline: 1px solid rgba(220, 220, 170, 0.35); }
+.project-status-twist { width: 1rem; color: #9d9d9d; flex: 0 0 auto; text-align: center; }
+.project-status-label { flex: 1 1 auto; min-width: 0; color: #e8e8e8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.project-status-badge {
+  flex: 0 0 auto; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.02em;
+  padding: 0.12rem 0.42rem; border-radius: 999px; border: 1px solid transparent; white-space: nowrap;
+}
+.ps-ok { color: #1e3a2f; background: #4ec9b0; border-color: #3db89f; }
+.ps-partial { color: #3a2e12; background: #e6c229; border-color: #c9a81d; }
+.ps-untested { color: #1f1f1f; background: #9d9d9d; border-color: #888; }
+.ps-needs_change { color: #0f2744; background: #3d8eef; border-color: #2f78d4; }
+.ps-broken { color: #fff; background: #f14c4c; border-color: #d63b3b; }
+.ps-deprecated { color: #ddd; background: #6b5b95; border-color: #56487a; text-decoration: line-through; }
+.project-status-panel {
+  background: #1e1e1e; border: 1px solid #3e3e3e; border-radius: 10px; padding: 0.85rem 1rem; min-height: 12rem;
+}
+.project-status-panel h3 { margin: 0 0 0.65rem; font-size: 0.95rem; }
+.project-status-panel label { display: block; margin: 0.45rem 0 0.2rem; color: #9d9d9d; font-size: 0.78rem; }
+.project-status-panel input, .project-status-panel select, .project-status-panel textarea {
+  width: 100%; box-sizing: border-box; background: #252526; color: #e8e8e8; border: 1px solid #454545;
+  border-radius: 6px; padding: 0.4rem 0.5rem; font: inherit;
+}
+.project-status-panel textarea { min-height: 5rem; resize: vertical; }
+.project-status-panel-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+.project-status-panel .hint { margin-top: 0.55rem; }
+.project-status-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.75rem; }
+.project-status-stat-card {
+  background: #1e1e1e; border: 1px solid #3e3e3e; border-radius: 10px; padding: 0.75rem 0.9rem;
+}
+.project-status-stat-card h3 { margin: 0 0 0.45rem; font-size: 0.86rem; color: #dcdcaa; }
+.project-status-stat-card dl { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 0.75rem; font-size: 0.8rem; }
+.project-status-stat-card dt { color: #9d9d9d; }
+.project-status-stat-card dd { margin: 0; color: #e8e8e8; text-align: right; }
+.project-status-runs { margin: 0.35rem 0 0; padding-left: 1.1rem; color: #cccccc; font-size: 0.75rem; }
+.project-status-toolbar { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin-bottom: 0.65rem; }
+.project-status-toolbar #project-status-msg { color: #9d9d9d; font-size: 0.8rem; }
+.project-status-prio {
+  flex: 0 0 auto; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em;
+  padding: 0.1rem 0.38rem; border-radius: 999px; border: 1px solid transparent; white-space: nowrap;
+}
+.pp-critical { color: #fff; background: #c23b3b; border-color: #a82f2f; }
+.pp-high { color: #3a2e12; background: #e6a023; border-color: #c98a16; }
+.pp-medium { color: #0f2744; background: #5b9bd5; border-color: #4584bc; }
+.pp-low { color: #1f1f1f; background: #a0a0a0; border-color: #888; }
+.project-status-kanban-wrap {
+  margin: 0 0 1.1rem; max-width: 100%; overflow: hidden;
+}
+.project-status-kanban {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; width: 100%;
+}
+@media (max-width: 900px) {
+  .project-status-kanban { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .project-status-kanban { grid-template-columns: minmax(0, 1fr); }
+}
+.project-status-kanban-col {
+  background: #1e1e1e; border: 1px solid #3e3e3e; border-radius: 10px; min-height: 9.5rem;
+  display: flex; flex-direction: column; overflow: hidden; min-width: 0;
+}
+.project-status-kanban-col[data-ps-prio-col="critical"] { border-top: 3px solid #c23b3b; }
+.project-status-kanban-col[data-ps-prio-col="high"] { border-top: 3px solid #e6a023; }
+.project-status-kanban-col[data-ps-prio-col="medium"] { border-top: 3px solid #5b9bd5; }
+.project-status-kanban-col[data-ps-prio-col="low"] { border-top: 3px solid #9d9d9d; }
+.project-status-kanban-col.is-dragover {
+  border-color: #dcdcaa; background: rgba(220, 220, 170, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(220, 220, 170, 0.25);
+}
+.project-status-kanban-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.4rem;
+  padding: 0.5rem 0.7rem; border-bottom: 1px solid #333; font-size: 0.78rem; font-weight: 700;
+  color: #e8e8e8; text-transform: lowercase; background: #252526;
+}
+.project-status-kanban-count {
+  min-width: 1.35rem; height: 1.35rem; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; background: #333; color: #cfcfcf; font-weight: 700; font-size: 0.7rem;
+}
+.project-status-kanban-cards {
+  padding: 0.5rem; display: flex; flex-direction: column; gap: 0.2rem; flex: 1 1 auto; min-height: 6rem;
+}
+.project-status-kanban-drop {
+  height: 0.35rem; border-radius: 4px; margin: 0.05rem 0; transition: height 0.08s ease, background 0.08s ease;
+}
+.project-status-kanban-drop.is-active {
+  height: 0.7rem; background: rgba(220, 220, 170, 0.35);
+}
+.project-status-kanban-card {
+  background: #2a2a2b; border: 1px solid #454545; border-radius: 8px; padding: 0.55rem 0.6rem;
+  cursor: grab; display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; max-width: 100%;
+}
+.project-status-kanban-card:active { cursor: grabbing; }
+.project-status-kanban-card:hover { border-color: #6a6a6a; background: #303031; }
+.project-status-kanban-card.is-selected {
+  border-color: #dcdcaa; background: rgba(220, 220, 170, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(220, 220, 170, 0.2);
+}
+.project-status-kanban-crumb {
+  font-size: 0.68rem; color: #8a8a8a; line-height: 1.3;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.project-status-kanban-title {
+  font-size: 0.82rem; font-weight: 650; color: #f0f0f0; line-height: 1.3;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.project-status-kanban-card-meta {
+  display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; justify-content: space-between; min-width: 0;
+}
+.project-status-kanban-card select,
+.project-status-kanban-card select:focus,
+.project-status-kanban-card select:focus-visible {
+  flex: 1 1 auto; margin: 0; min-width: 0; max-width: 100%;
+  background: #1e1e1e; color: #e8e8e8; border: 1px solid #555;
+  border-radius: 6px; font: inherit; font-size: 0.7rem; font-weight: 600;
+  padding: 0.22rem 1.4rem 0.22rem 0.4rem; line-height: 1.2;
+  outline: none; box-shadow: none;
+  appearance: none; -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #b0b0b0 50%), linear-gradient(135deg, #b0b0b0 50%, transparent 50%);
+  background-position: calc(100% - 12px) calc(50% - 2px), calc(100% - 7px) calc(50% - 2px);
+  background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+}
+.project-status-kanban-card select:hover { border-color: #888; }
+.project-status-kanban-card select:focus { border-color: #dcdcaa; }
+.project-status-kanban-empty {
+  color: #666; font-size: 0.74rem; padding: 0.85rem 0.35rem; text-align: center; margin: auto 0;
+}
 .admin-section-tool-icon {
   display: inline-flex;
   align-items: center;
@@ -1278,7 +1424,7 @@ body.embed-mode .admin-poh-panel { border-top: 1px solid #3e3e3e; }
   }
 })();
 </script>
-<p class="app-nav embed-hide">Admin · <a href="/biblio">Biblio</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<p class="app-nav embed-hide">Admin · <a href="/biblioteca">Biblioteca</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
 <div class="app-shell">
 <h1 class="embed-hide">Admin</h1>
 <p class="lead embed-hide">Panoramica sistema, articoli, pagine, POH e strumenti di manutenzione.</p>
@@ -1287,6 +1433,10 @@ body.embed-mode .admin-poh-panel { border-top: 1px solid #3e3e3e; }
   <button type="button" class="admin-section-tool is-active" data-admin-section="sistema" title="Panoramica e job attivi" aria-label="Sistema">
     <span class="admin-section-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#4ec9b0" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
     <span class="admin-section-tool-label">Sistema</span>
+  </button>
+  <button type="button" class="admin-section-tool" data-admin-section="status" title="Stato progetto e checklist" aria-label="Status">
+    <span class="admin-section-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#dcdcaa" stroke-width="2.2"><path d="M4 6h16M4 12h10M4 18h13"/><circle cx="19" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
+    <span class="admin-section-tool-label">Status</span>
   </button>
   <button type="button" class="admin-section-tool" data-admin-section="articoli" title="Controllo e generazione articoli" aria-label="Articoli">
     <span class="admin-section-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2.2"><path d="M6 4h9l3 3v13H6z"/><path d="M15 4v3h3M8 11h8M8 15h6"/></svg></span>
@@ -1326,10 +1476,57 @@ body.embed-mode .admin-poh-panel { border-top: 1px solid #3e3e3e; }
   </div>
 </div>
 
+<div class="panel">
+  <h2>Doctor prompt</h2>
+  <p class="hint">Confronta gli snapshot salvati in <code>output/&lt;sha&gt;/prompts/</code> con i system prompt correnti del repo (ingest + polyindex).</p>
+  <div class="panel-row">
+    <label class="hint">SHA libro
+      <input type="search" id="prompt-doctor-sha" placeholder="opzionale: filtra un libro" autocomplete="off" style="min-width:18rem">
+    </label>
+    <button type="button" id="prompt-doctor-run">Verifica</button>
+    <label class="hint"><input type="checkbox" id="prompt-doctor-only-issues" checked> Solo problemi</label>
+  </div>
+  <div class="stats" id="prompt-doctor-stats">Pronto.</div>
+  <div id="prompt-doctor-root"></div>
+</div>
+
 <div class="panel active-jobs-panel">
   <h2 id="active-jobs-heading">Job</h2>
   <p class="hint">Ingest, riparazioni e articoli in corso. <a href="/jobs.html">Storico completo e filtri</a>.</p>
   <div id="active-jobs-root"><div class="active-jobs-empty">Caricamento…</div></div>
+</div>
+</div>
+
+<div class="admin-section hidden" data-admin-section="status">
+<div class="panel">
+  <h2>Status progetto</h2>
+  <p class="hint">Checklist curata (albero) e aggregazioni economiche dai dati. File: <code>data/project_status.json</code>.</p>
+  <div class="project-status-toolbar">
+    <button type="button" id="project-status-reload" class="secondary">Ricarica tree</button>
+    <button type="button" id="project-status-save">Salva</button>
+    <span id="project-status-msg">Caricamento…</span>
+  </div>
+  <h3 style="margin:0 0 0.35rem;font-size:0.95rem;">Priorità</h3>
+  <p class="hint" style="margin-top:0">Solo nodi con priorità. Click card → tree; drag o select per cambiare priorità.</p>
+  <div class="project-status-kanban-wrap">
+    <div id="project-status-kanban" class="project-status-kanban" aria-label="Kanban priorità"></div>
+  </div>
+  <div class="project-status-layout">
+    <div class="project-status-main">
+      <div id="project-status-tree" class="project-status-tree" aria-label="Albero stato progetto"></div>
+      <div id="project-status-panel" class="project-status-panel">
+        <p class="hint">Seleziona un nodo nel tree.</p>
+      </div>
+    </div>
+    <div>
+      <div class="project-status-toolbar" style="margin-bottom:0.55rem">
+        <h2 style="margin:0;font-size:1rem;flex:1 1 auto">Dati e statistiche</h2>
+        <button type="button" id="project-status-stats-refresh" class="secondary">Ricalcola stats</button>
+        <span id="project-status-stats-msg" class="hint" style="margin:0"></span>
+      </div>
+      <div id="project-status-stats" class="project-status-stats"></div>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -1471,7 +1668,7 @@ body.embed-mode .admin-poh-panel { border-top: 1px solid #3e3e3e; }
 <div class="admin-section hidden" data-admin-section="biblio" id="admin-biblio-section">
 <div class="panel" id="admin-biblio-panel">
   <h2>Bibliografia</h2>
-  <p class="hint">Libri già ingestiti su cui puoi estrarre la bibliografia (pagine output presenti). Oppure apri la pagina dedicata: <a href="/biblio#run">Biblio → Estrai</a>.</p>
+  <p class="hint">Libri già ingestiti su cui puoi estrarre la bibliografia (pagine output presenti). Oppure apri la pagina dedicata: <a href="/biblioteca">Biblioteca</a>.</p>
   <div class="panel-row">
     <button type="button" id="admin-biblio-reload" class="secondary">Ricarica libri</button>
     <span class="stats" id="admin-biblio-count"></span>
@@ -3226,6 +3423,9 @@ function renderPolyindexBookBody(sha, book, host) {
   const verifyBtn = document.getElementById("polyindex-transcript-verify-" + sha);
   const unlockedImg = document.getElementById("polyindex-unlocked-img-" + sha);
   const unlockedPageEl = document.getElementById("polyindex-unlocked-page-" + sha);
+  if (transcriptEl && window.LibrarAInTranscriptHighlight) {
+    window.LibrarAInTranscriptHighlight.attach(transcriptEl);
+  }
 
   if (view.lockOpen && view.activePage && unlockedImg) {
     unlockedPageEl.textContent = String(view.activePage);
@@ -4709,7 +4909,607 @@ document.getElementById("pages-audit-only-gaps").addEventListener("change", rend
 
 const ADMIN_BIBLIO_EXTRACT_ENABLED = true;
 
-const ADMIN_SECTIONS = ["sistema", "articoli", "pagine", "poh", "biblio"];
+const PROJECT_STATUS_LABELS = {
+  ok: "funzionante",
+  partial: "parzialmente funzionante",
+  untested: "non testato",
+  needs_change: "da cambiare",
+  broken: "rotto",
+  deprecated: "deprecato"
+};
+
+const PROJECT_PRIORITY_ORDER = ["critical", "high", "medium", "low"];
+const PROJECT_PRIORITY_LABELS = {
+  critical: "critica",
+  high: "alta",
+  medium: "media",
+  low: "bassa"
+};
+
+let projectStatusTree = null;
+let projectStatusStats = null;
+let projectStatusSelectedPath = null;
+let projectStatusExpanded = {};
+let projectStatusDirty = false;
+let projectStatusLoaded = false;
+let projectStatusDragPath = null;
+
+function projectStatusSlug(label) {
+  const base = String(label || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+  return base || "node";
+}
+
+function projectStatusUniqueId(base, siblings) {
+  const used = {};
+  (siblings || []).forEach(function (n) { if (n && n.id) used[n.id] = true; });
+  let id = base || "node";
+  if (!used[id]) return id;
+  let n = 2;
+  while (used[id + "_" + n]) n += 1;
+  return id + "_" + n;
+}
+
+function projectStatusGetNode(path) {
+  if (!projectStatusTree || !path || !path.length) return null;
+  let list = projectStatusTree.roots;
+  let node = null;
+  for (let i = 0; i < path.length; i++) {
+    node = (list || [])[path[i]];
+    if (!node) return null;
+    list = node.children;
+  }
+  return node;
+}
+
+function projectStatusGetParent(path) {
+  if (!path || path.length < 2) return null;
+  return projectStatusGetNode(path.slice(0, -1));
+}
+
+function projectStatusPathKey(path) {
+  return (path || []).join(".");
+}
+
+function projectStatusSetMsg(text, isError) {
+  const el = document.getElementById("project-status-msg");
+  if (!el) return;
+  el.textContent = text || "";
+  el.style.color = isError ? "#f14c4c" : "#9d9d9d";
+}
+
+function renderProjectStatusBadge(status) {
+  const key = PROJECT_STATUS_LABELS[status] ? status : "untested";
+  return '<span class="project-status-badge ps-' + key + '">' + PROJECT_STATUS_LABELS[key] + "</span>";
+}
+
+function renderProjectPriorityBadge(priority) {
+  if (!PROJECT_PRIORITY_LABELS[priority]) return "";
+  return '<span class="project-status-prio pp-' + priority + '">' + PROJECT_PRIORITY_LABELS[priority] + "</span>";
+}
+
+function projectStatusPriorityOptions(selected, includeEmpty) {
+  let html = includeEmpty
+    ? '<option value=""' + (!selected ? " selected" : "") + ">— nessuna —</option>"
+    : "";
+  PROJECT_PRIORITY_ORDER.forEach(function (key) {
+    html += '<option value="' + key + '"' + (selected === key ? " selected" : "") + ">" +
+      PROJECT_PRIORITY_LABELS[key] + "</option>";
+  });
+  return html;
+}
+
+function collectProjectStatusPriorityItems() {
+  const items = [];
+  if (!projectStatusTree) return items;
+  function walk(nodes, indexPath, labelPath) {
+    (nodes || []).forEach(function (node, idx) {
+      const p = indexPath.concat([idx]);
+      const labels = labelPath.concat([node.label || node.id || ""]);
+      if (PROJECT_PRIORITY_LABELS[node.priority]) {
+        items.push({ path: p, labels: labels, node: node });
+      }
+      if (Array.isArray(node.children) && node.children.length) {
+        walk(node.children, p, labels);
+      }
+    });
+  }
+  walk(projectStatusTree.roots || [], [], []);
+  items.sort(function (a, b) {
+    const ao = Number(a.node.priority_order) || 0;
+    const bo = Number(b.node.priority_order) || 0;
+    if (ao !== bo) return ao - bo;
+    return String(a.node.label || "").localeCompare(String(b.node.label || ""), "it");
+  });
+  return items;
+}
+
+function selectProjectStatusPath(path, opts) {
+  const options = opts || {};
+  if (!path || !path.length) return;
+  for (let i = 0; i < path.length - 1; i++) {
+    projectStatusExpanded[projectStatusPathKey(path.slice(0, i + 1))] = true;
+  }
+  projectStatusSelectedPath = path.slice();
+  renderProjectStatusKanban();
+  renderProjectStatusTree();
+  renderProjectStatusPanel();
+  if (options.scrollTree !== false) {
+    const key = projectStatusPathKey(path);
+    const row = document.querySelector('.project-status-row[data-ps-path="' + key + '"]');
+    if (row && row.scrollIntoView) row.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+}
+
+function placeProjectStatusInKanban(path, priority, insertAt) {
+  const node = projectStatusGetNode(path);
+  if (!node) return;
+  const next = PROJECT_PRIORITY_LABELS[priority] ? priority : "";
+  const fromKey = projectStatusPathKey(path);
+  if (!next) {
+    node.priority = "";
+    node.priority_order = 0;
+    node.updated_at = new Date().toISOString();
+    projectStatusDirty = true;
+    selectProjectStatusPath(path, { scrollTree: true });
+    saveProjectStatus({ skipApply: true }).catch(function (err) { projectStatusSetMsg(String(err), true); });
+    return;
+  }
+  const sameColumn = collectProjectStatusPriorityItems().filter(function (item) {
+    return item.node.priority === next;
+  });
+  const oldIndex = sameColumn.findIndex(function (item) {
+    return projectStatusPathKey(item.path) === fromKey;
+  });
+  const column = sameColumn.filter(function (item) {
+    return projectStatusPathKey(item.path) !== fromKey;
+  });
+  let idx = column.length;
+  if (typeof insertAt === "number" && !Number.isNaN(insertAt)) {
+    idx = insertAt;
+    if (oldIndex >= 0 && oldIndex < insertAt) idx -= 1;
+    idx = Math.max(0, Math.min(column.length, idx));
+  }
+  node.priority = next;
+  column.splice(idx, 0, { path: path, node: node, labels: [] });
+  column.forEach(function (item, order) {
+    item.node.priority_order = order;
+    item.node.updated_at = new Date().toISOString();
+  });
+  projectStatusDirty = true;
+  selectProjectStatusPath(path, { scrollTree: true });
+  saveProjectStatus({ skipApply: true }).catch(function (err) { projectStatusSetMsg(String(err), true); });
+}
+
+function setProjectStatusPriority(path, priority) {
+  placeProjectStatusInKanban(path, priority, null);
+}
+
+function renderProjectStatusKanban() {
+  const root = document.getElementById("project-status-kanban");
+  if (!root) return;
+  if (!projectStatusTree) {
+    root.innerHTML = "";
+    return;
+  }
+  const items = collectProjectStatusPriorityItems();
+  const byPrio = {};
+  PROJECT_PRIORITY_ORDER.forEach(function (key) { byPrio[key] = []; });
+  items.forEach(function (item) {
+    if (byPrio[item.node.priority]) byPrio[item.node.priority].push(item);
+  });
+  const selectedKey = projectStatusPathKey(projectStatusSelectedPath);
+  root.innerHTML = PROJECT_PRIORITY_ORDER.map(function (prio) {
+    const cards = byPrio[prio];
+    let cardsHtml = '<div class="project-status-kanban-drop" data-ps-drop-prio="' + prio + '" data-ps-drop-index="0"></div>';
+    if (cards.length) {
+      cardsHtml += cards.map(function (item, cardIndex) {
+        const key = projectStatusPathKey(item.path);
+        const selected = key === selectedKey;
+        const labels = item.labels || [];
+        const leaf = labels.length ? labels[labels.length - 1] : (item.node.label || item.node.id || "");
+        const crumb = labels.length > 1 ? labels.slice(0, -1).join(" / ") : "";
+        return '<div class="project-status-kanban-card' + (selected ? " is-selected" : "") + '" draggable="true" data-ps-path="' + key + '">' +
+          (crumb ? '<div class="project-status-kanban-crumb">' + escapeHtml(crumb) + "</div>" : "") +
+          '<div class="project-status-kanban-title">' + escapeHtml(leaf) + "</div>" +
+          '<div class="project-status-kanban-card-meta">' +
+            renderProjectStatusBadge(item.node.status) +
+            '<select data-ps-prio-select="' + key + '" title="Priorità" aria-label="Priorità">' +
+              projectStatusPriorityOptions(item.node.priority, true) +
+            "</select>" +
+          "</div>" +
+        "</div>" +
+        '<div class="project-status-kanban-drop" data-ps-drop-prio="' + prio + '" data-ps-drop-index="' + (cardIndex + 1) + '"></div>';
+      }).join("");
+    } else {
+      cardsHtml += '<div class="project-status-kanban-empty">Vuoto</div>';
+    }
+    return '<div class="project-status-kanban-col" data-ps-prio-col="' + prio + '">' +
+      '<div class="project-status-kanban-head"><span>' + PROJECT_PRIORITY_LABELS[prio] +
+      '</span><span class="project-status-kanban-count">' + cards.length + "</span></div>" +
+      '<div class="project-status-kanban-cards">' + cardsHtml + "</div></div>";
+  }).join("");
+
+  function clearDropHints() {
+    root.querySelectorAll(".project-status-kanban-drop.is-active").forEach(function (el) {
+      el.classList.remove("is-active");
+    });
+    root.querySelectorAll(".project-status-kanban-col.is-dragover").forEach(function (el) {
+      el.classList.remove("is-dragover");
+    });
+  }
+
+  root.querySelectorAll(".project-status-kanban-card").forEach(function (card) {
+    card.addEventListener("click", function (ev) {
+      if (ev.target && ev.target.tagName === "SELECT") return;
+      const path = card.getAttribute("data-ps-path").split(".").map(Number);
+      selectProjectStatusPath(path);
+    });
+    card.addEventListener("dragstart", function (ev) {
+      projectStatusDragPath = card.getAttribute("data-ps-path");
+      if (ev.dataTransfer) {
+        ev.dataTransfer.setData("text/plain", projectStatusDragPath);
+        ev.dataTransfer.effectAllowed = "move";
+      }
+    });
+    card.addEventListener("dragend", function () {
+      projectStatusDragPath = null;
+      clearDropHints();
+    });
+  });
+  root.querySelectorAll("[data-ps-prio-select]").forEach(function (sel) {
+    sel.addEventListener("click", function (ev) { ev.stopPropagation(); });
+    sel.addEventListener("change", function () {
+      const path = sel.getAttribute("data-ps-prio-select").split(".").map(Number);
+      placeProjectStatusInKanban(path, sel.value, null);
+    });
+  });
+  root.querySelectorAll(".project-status-kanban-drop").forEach(function (zone) {
+    zone.addEventListener("dragover", function (ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      clearDropHints();
+      zone.classList.add("is-active");
+      const col = zone.closest(".project-status-kanban-col");
+      if (col) col.classList.add("is-dragover");
+      if (ev.dataTransfer) ev.dataTransfer.dropEffect = "move";
+    });
+    zone.addEventListener("dragleave", function () {
+      zone.classList.remove("is-active");
+    });
+    zone.addEventListener("drop", function (ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      clearDropHints();
+      const key = projectStatusDragPath || (ev.dataTransfer && ev.dataTransfer.getData("text/plain"));
+      if (!key) return;
+      const prio = zone.getAttribute("data-ps-drop-prio");
+      const insertAt = Number(zone.getAttribute("data-ps-drop-index") || "0");
+      placeProjectStatusInKanban(key.split(".").map(Number), prio, insertAt);
+    });
+  });
+  root.querySelectorAll(".project-status-kanban-col").forEach(function (col) {
+    col.addEventListener("dragover", function (ev) {
+      if (ev.target && ev.target.classList && ev.target.classList.contains("project-status-kanban-drop")) return;
+      ev.preventDefault();
+      col.classList.add("is-dragover");
+      if (ev.dataTransfer) ev.dataTransfer.dropEffect = "move";
+    });
+    col.addEventListener("dragleave", function (ev) {
+      if (!col.contains(ev.relatedTarget)) col.classList.remove("is-dragover");
+    });
+    col.addEventListener("drop", function (ev) {
+      if (ev.target && ev.target.classList && ev.target.classList.contains("project-status-kanban-drop")) return;
+      ev.preventDefault();
+      clearDropHints();
+      const key = projectStatusDragPath || (ev.dataTransfer && ev.dataTransfer.getData("text/plain"));
+      if (!key) return;
+      placeProjectStatusInKanban(key.split(".").map(Number), col.getAttribute("data-ps-prio-col"), null);
+    });
+  });
+}
+
+function renderProjectStatusTree() {
+  const root = document.getElementById("project-status-tree");
+  if (!root || !projectStatusTree) return;
+  const parts = [];
+  function walk(nodes, path, depth) {
+    (nodes || []).forEach(function (node, idx) {
+      const p = path.concat([idx]);
+      const key = projectStatusPathKey(p);
+      const kids = Array.isArray(node.children) ? node.children : [];
+      const hasKids = kids.length > 0;
+      const expanded = projectStatusExpanded[key] !== false;
+      const selected = projectStatusPathKey(projectStatusSelectedPath) === key;
+      parts.push(
+        '<div class="project-status-row' + (selected ? " is-selected" : "") + '" data-ps-path="' + key + '" style="padding-left:' + (0.4 + depth * 1.1) + 'rem">' +
+          '<span class="project-status-twist" data-ps-twist="' + key + '">' + (hasKids ? (expanded ? "▾" : "▸") : "·") + "</span>" +
+          '<span class="project-status-label">' + escapeHtml(node.label || node.id || "") + "</span>" +
+          renderProjectPriorityBadge(node.priority) +
+          renderProjectStatusBadge(node.status) +
+        "</div>"
+      );
+      if (hasKids && expanded) walk(kids, p, depth + 1);
+    });
+  }
+  walk(projectStatusTree.roots || [], [], 0);
+  root.innerHTML = parts.join("") || '<div class="hint" style="padding:0.5rem">Albero vuoto.</div>';
+  root.querySelectorAll(".project-status-row").forEach(function (row) {
+    row.addEventListener("click", function (ev) {
+      const key = row.getAttribute("data-ps-path");
+      const path = key.split(".").map(Number);
+      if (ev.target && ev.target.getAttribute("data-ps-twist") != null) {
+        if (projectStatusExpanded[key] === false) projectStatusExpanded[key] = true;
+        else projectStatusExpanded[key] = false;
+        renderProjectStatusTree();
+        return;
+      }
+      selectProjectStatusPath(path, { scrollTree: false });
+    });
+  });
+}
+
+function renderProjectStatusPanel() {
+  const panel = document.getElementById("project-status-panel");
+  if (!panel) return;
+  const node = projectStatusGetNode(projectStatusSelectedPath);
+  if (!node) {
+    panel.innerHTML = '<p class="hint">Seleziona un nodo nel tree.</p>';
+    return;
+  }
+  const isRoot = projectStatusSelectedPath.length === 1;
+  const statusOpts = Object.keys(PROJECT_STATUS_LABELS).map(function (key) {
+    return '<option value="' + key + '"' + (node.status === key ? " selected" : "") + ">" + PROJECT_STATUS_LABELS[key] + "</option>";
+  }).join("");
+  panel.innerHTML =
+    "<h3>" + escapeHtml(node.label || node.id) + "</h3>" +
+    '<label>Label<input id="ps-edit-label" type="text" value="' + escapeHtml(node.label || "") + '"' + (isRoot ? " disabled" : "") + "></label>" +
+    '<label>Id<input id="ps-edit-id" type="text" value="' + escapeHtml(node.id || "") + '"' + (isRoot ? " disabled" : "") + "></label>" +
+    '<label>Stato<select id="ps-edit-status">' + statusOpts + "</select></label>" +
+    '<label>Priorità<select id="ps-edit-priority">' + projectStatusPriorityOptions(node.priority || "", true) + "</select></label>" +
+    '<label>Descrizione<textarea id="ps-edit-description">' + escapeHtml(node.description || "") + "</textarea></label>" +
+    '<label>Note<textarea id="ps-edit-notes">' + escapeHtml(node.notes || "") + "</textarea></label>" +
+    '<div class="project-status-panel-actions">' +
+      '<button type="button" id="ps-apply">Applica</button>' +
+      '<button type="button" id="ps-add-child" class="secondary">Aggiungi figlio</button>' +
+      (isRoot ? "" : '<button type="button" id="ps-move-up" class="secondary">Su</button>') +
+      (isRoot ? "" : '<button type="button" id="ps-move-down" class="secondary">Giù</button>') +
+      (isRoot ? "" : '<button type="button" id="ps-delete" class="secondary">Elimina</button>') +
+    "</div>" +
+    '<p class="hint">Applica scrive subito su <code>data/project_status.json</code>.</p>';
+  const applyBtn = document.getElementById("ps-apply");
+  const addBtn = document.getElementById("ps-add-child");
+  const upBtn = document.getElementById("ps-move-up");
+  const downBtn = document.getElementById("ps-move-down");
+  const delBtn = document.getElementById("ps-delete");
+  if (applyBtn) applyBtn.addEventListener("click", function () {
+    applyProjectStatusEdits();
+    saveProjectStatus().catch(function (err) { projectStatusSetMsg(String(err), true); });
+  });
+  if (addBtn) addBtn.addEventListener("click", addProjectStatusChild);
+  if (upBtn) upBtn.addEventListener("click", function () { moveProjectStatusNode(-1); });
+  if (downBtn) downBtn.addEventListener("click", function () { moveProjectStatusNode(1); });
+  if (delBtn) delBtn.addEventListener("click", deleteProjectStatusNode);
+}
+
+function applyProjectStatusEdits() {
+  const node = projectStatusGetNode(projectStatusSelectedPath);
+  if (!node) return false;
+  const isRoot = projectStatusSelectedPath.length === 1;
+  const labelEl = document.getElementById("ps-edit-label");
+  const idEl = document.getElementById("ps-edit-id");
+  const statusEl = document.getElementById("ps-edit-status");
+  const priorityEl = document.getElementById("ps-edit-priority");
+  const descriptionEl = document.getElementById("ps-edit-description");
+  const notesEl = document.getElementById("ps-edit-notes");
+  if (!isRoot && labelEl) node.label = labelEl.value.trim() || node.label;
+  if (!isRoot && idEl) {
+    const parent = projectStatusGetParent(projectStatusSelectedPath);
+    const siblings = parent ? parent.children : projectStatusTree.roots;
+    const idx = projectStatusSelectedPath[projectStatusSelectedPath.length - 1];
+    const others = siblings.filter(function (_, i) { return i !== idx; });
+    node.id = projectStatusUniqueId(projectStatusSlug(idEl.value || node.label), others);
+  }
+  if (statusEl) node.status = PROJECT_STATUS_LABELS[statusEl.value] ? statusEl.value : "untested";
+  if (descriptionEl) node.description = descriptionEl.value;
+  if (notesEl) node.notes = notesEl.value;
+  node.updated_at = new Date().toISOString();
+  projectStatusDirty = true;
+  if (priorityEl) {
+    const nextPrio = PROJECT_PRIORITY_LABELS[priorityEl.value] ? priorityEl.value : "";
+    if ((node.priority || "") !== nextPrio) {
+      placeProjectStatusInKanban(projectStatusSelectedPath, nextPrio, null);
+      return true;
+    }
+  }
+  renderProjectStatusKanban();
+  renderProjectStatusTree();
+  renderProjectStatusPanel();
+  return true;
+}
+
+function addProjectStatusChild() {
+  const node = projectStatusGetNode(projectStatusSelectedPath);
+  if (!node) return;
+  if (!Array.isArray(node.children)) node.children = [];
+  const id = projectStatusUniqueId("nuovo_nodo", node.children);
+  node.children.push({ id: id, label: "Nuovo nodo", status: "untested", priority: "", description: "", notes: "", updated_at: new Date().toISOString(), children: [] });
+  projectStatusExpanded[projectStatusPathKey(projectStatusSelectedPath)] = true;
+  projectStatusSelectedPath = projectStatusSelectedPath.concat([node.children.length - 1]);
+  projectStatusDirty = true;
+  renderProjectStatusKanban();
+  renderProjectStatusTree();
+  renderProjectStatusPanel();
+  saveProjectStatus({ skipApply: true }).catch(function (err) { projectStatusSetMsg(String(err), true); });
+}
+
+function moveProjectStatusNode(delta) {
+  if (!projectStatusSelectedPath || projectStatusSelectedPath.length < 2) return;
+  const parent = projectStatusGetParent(projectStatusSelectedPath);
+  if (!parent || !Array.isArray(parent.children)) return;
+  const idx = projectStatusSelectedPath[projectStatusSelectedPath.length - 1];
+  const next = idx + delta;
+  if (next < 0 || next >= parent.children.length) return;
+  const tmp = parent.children[idx];
+  parent.children[idx] = parent.children[next];
+  parent.children[next] = tmp;
+  projectStatusSelectedPath = projectStatusSelectedPath.slice(0, -1).concat([next]);
+  projectStatusDirty = true;
+  renderProjectStatusKanban();
+  renderProjectStatusTree();
+  renderProjectStatusPanel();
+  saveProjectStatus({ skipApply: true }).catch(function (err) { projectStatusSetMsg(String(err), true); });
+}
+
+function deleteProjectStatusNode() {
+  if (!projectStatusSelectedPath || projectStatusSelectedPath.length < 2) return;
+  const node = projectStatusGetNode(projectStatusSelectedPath);
+  if (!node) return;
+  if (!window.confirm("Eliminare \"" + (node.label || node.id) + "\" e tutti i discendenti?")) return;
+  const parent = projectStatusGetParent(projectStatusSelectedPath);
+  const idx = projectStatusSelectedPath[projectStatusSelectedPath.length - 1];
+  parent.children.splice(idx, 1);
+  projectStatusSelectedPath = projectStatusSelectedPath.slice(0, -1);
+  projectStatusDirty = true;
+  renderProjectStatusKanban();
+  renderProjectStatusTree();
+  renderProjectStatusPanel();
+  saveProjectStatus({ skipApply: true }).catch(function (err) { projectStatusSetMsg(String(err), true); });
+}
+
+function renderProjectStatusStats() {
+  const root = document.getElementById("project-status-stats");
+  if (!root) return;
+  const s = projectStatusStats || {};
+  const books = s.books || {};
+  const research = s.research || {};
+  const poly = s.polyindex || {};
+  const runtime = s.runtime || {};
+  const checklist = s.checklist || {};
+  const runs = Array.isArray(s.pipeline_runs) ? s.pipeline_runs : [];
+  function card(title, rows) {
+    return '<div class="project-status-stat-card"><h3>' + title + "</h3><dl>" +
+      rows.map(function (r) { return "<dt>" + r[0] + "</dt><dd>" + r[1] + "</dd>"; }).join("") +
+      "</dl></div>";
+  }
+  function val(v) { return v == null || v === "" ? "—" : String(v); }
+  const checkRows = Object.keys(PROJECT_STATUS_LABELS).map(function (k) {
+    return [PROJECT_STATUS_LABELS[k], val(checklist[k] || 0)];
+  });
+  const files = poly.files || {};
+  const runHtml = runs.length
+    ? '<ul class="project-status-runs">' + runs.slice(0, 8).map(function (r) {
+        return "<li>" + escapeHtml(String(r.status || "?")) + " · " + escapeHtml(String(r.book_title || r.source_sha256 || "").slice(0, 40)) + " · " + escapeHtml(String(r.started_at || "")) + "</li>";
+      }).join("") + "</ul>"
+    : '<p class="hint">Nessun run recente.</p>';
+  root.innerHTML =
+    card("Libri / pagine", [
+      ["Libri", val(books.book_count)],
+      ["Completi", val(books.books_complete)],
+      ["Con gap", val(books.books_with_gaps)],
+      ["Pagine con gap", val(books.total_pages_with_gaps)]
+    ]) +
+    card("Research", [
+      ["Subjects", val(research.total_subjects)],
+      ["Articoli", val(research.articles_count)],
+      ["Mancanti", val(research.missing_count)],
+      ["Issues", val(research.issues_count)],
+      ["POH affected", val(research.affected_poh_count)]
+    ]) +
+    card("Polyindex", [
+      ["INDEX subjects", val(poly.index_subjects)],
+      ["TOC books", val(poly.toc_books)],
+      ["BIBLIO nodes", val(poly.biblio_nodes)],
+      ["TIME years+dates", val(poly.time_index_entries)],
+      ["File presenti", Object.keys(files).filter(function (k) { return files[k]; }).length + "/" + Object.keys(files).length]
+    ]) +
+    card("Runtime", [
+      ["Job attivi", val(runtime.active_jobs)],
+      ["Modelli loaded", Array.isArray(runtime.loaded_models) ? runtime.loaded_models.length : "—"],
+      ["VRAM GPU", Array.isArray(runtime.vram) ? runtime.vram.length : "—"]
+    ]) +
+    card("Checklist", checkRows) +
+    '<div class="project-status-stat-card"><h3>Pipeline runs</h3>' + runHtml +
+      '<p class="hint"><a href="/jobs.html">Apri Job</a> · <a href="#pagine">Pagine</a> · <a href="#articoli">Articoli</a></p></div>';
+}
+
+function projectStatusStatsSetMsg(text, isError) {
+  const el = document.getElementById("project-status-stats-msg");
+  if (!el) return;
+  el.textContent = text || "";
+  el.style.color = isError ? "#f14c4c" : "#9d9d9d";
+}
+
+async function loadProjectStatus() {
+  projectStatusSetMsg("Caricamento…");
+  const res = await fetch("/api/admin/project-status");
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error((data && data.error) || "load failed");
+  projectStatusTree = data.tree || { version: 1, roots: [] };
+  projectStatusDirty = false;
+  projectStatusLoaded = true;
+  if (!projectStatusSelectedPath) projectStatusSelectedPath = [0];
+  renderProjectStatusKanban();
+  renderProjectStatusTree();
+  renderProjectStatusPanel();
+  projectStatusSetMsg("Tree pronto" + (projectStatusTree.updated_at ? " · " + projectStatusTree.updated_at : ""));
+  loadProjectStatusStats(false).catch(function (err) {
+    projectStatusStatsSetMsg(String(err), true);
+  });
+}
+
+async function loadProjectStatusStats(refresh) {
+  projectStatusStatsSetMsg(refresh ? "Ricalcolo…" : "Stats…");
+  const url = "/api/admin/project-status/stats" + (refresh ? "?refresh=1" : "");
+  const res = await fetch(url);
+  const data = await res.json();
+  if (!res.ok || !data.ok) throw new Error((data && data.error) || "stats failed");
+  projectStatusStats = data.stats || {};
+  renderProjectStatusStats();
+  const stamp = data.computed_at ? String(data.computed_at) : "";
+  projectStatusStatsSetMsg(
+    (data.cached ? "Cache" : "Fresche") + (stamp ? " · " + stamp : "")
+  );
+}
+
+async function saveProjectStatus(opts) {
+  if (!projectStatusTree) return;
+  const options = opts || {};
+  if (!options.skipApply) applyProjectStatusEdits();
+  projectStatusSetMsg("Salvataggio…");
+  const res = await fetch("/api/admin/project-status", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(projectStatusTree)
+  });
+  let data = null;
+  try { data = await res.json(); } catch (_err) { data = null; }
+  if (!res.ok || !data || !data.ok) {
+    throw new Error((data && data.error) || ("save failed (" + res.status + ")"));
+  }
+  projectStatusTree = data.tree || projectStatusTree;
+  projectStatusDirty = false;
+  renderProjectStatusKanban();
+  renderProjectStatusTree();
+  renderProjectStatusPanel();
+  projectStatusSetMsg("Salvato · " + (projectStatusTree.updated_at || ""));
+}
+
+(function initProjectStatus() {
+  const reload = document.getElementById("project-status-reload");
+  const save = document.getElementById("project-status-save");
+  const statsRefresh = document.getElementById("project-status-stats-refresh");
+  if (reload) reload.addEventListener("click", function () {
+    loadProjectStatus().catch(function (err) { projectStatusSetMsg(String(err), true); });
+  });
+  if (save) save.addEventListener("click", function () {
+    saveProjectStatus().catch(function (err) { projectStatusSetMsg(String(err), true); });
+  });
+  if (statsRefresh) statsRefresh.addEventListener("click", function () {
+    loadProjectStatusStats(true).catch(function (err) { projectStatusStatsSetMsg(String(err), true); });
+  });
+})();
+
+const ADMIN_SECTIONS = ["sistema", "status", "articoli", "pagine", "poh", "biblio"];
 
 function setAdminSection(name) {
   const target = ADMIN_SECTIONS.indexOf(name) >= 0 ? name : "sistema";
@@ -4724,6 +5524,9 @@ function setAdminSection(name) {
   });
   if (location.hash.replace(/^#/, "") !== target) {
     history.replaceState(null, "", "#" + target);
+  }
+  if (target === "status" && typeof loadProjectStatus === "function") {
+    loadProjectStatus().catch(function (err) { console.error(err); });
   }
   if (typeof reportEmbedHeight === "function") reportEmbedHeight();
 }
@@ -4741,6 +5544,97 @@ function setAdminSection(name) {
   window.addEventListener("hashchange", function () {
     setAdminSection((location.hash || "").replace(/^#/, "") || "sistema");
   });
+})();
+
+(function initPromptDoctor() {
+  const runBtn = document.getElementById("prompt-doctor-run");
+  const shaInput = document.getElementById("prompt-doctor-sha");
+  const onlyIssues = document.getElementById("prompt-doctor-only-issues");
+  const statsEl = document.getElementById("prompt-doctor-stats");
+  const rootEl = document.getElementById("prompt-doctor-root");
+  if (!runBtn || !statsEl || !rootEl) return;
+
+  const STATUS_LABEL = {
+    ok: "ok",
+    drift: "drift",
+    missing: "mancante",
+    corrupt: "corrotto",
+    missing_snapshot: "snapshot assente",
+    missing_current: "file assente",
+    corrupt_snapshot: "snapshot corrotto",
+  };
+
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  async function runDoctor() {
+    statsEl.textContent = "Verifica in corso…";
+    rootEl.innerHTML = "";
+    const sha = (shaInput && shaInput.value || "").trim();
+    const url = "/api/admin/prompts/doctor" + (sha ? ("?source_sha256=" + encodeURIComponent(sha)) : "");
+    const res = await apiFetch(url);
+    const data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || "doctor fallito");
+    const summary = data.summary || {};
+    statsEl.textContent =
+      (summary.book_count || 0) + " libri — " +
+      (summary.books_ok || 0) + " ok, " +
+      (summary.books_drift || 0) + " drift, " +
+      (summary.books_missing || 0) + " mancanti, " +
+      (summary.books_corrupt || 0) + " corrotti";
+    let books = data.books || [];
+    if (onlyIssues && onlyIssues.checked) {
+      books = books.filter(function (book) { return book.status !== "ok"; });
+    }
+    if (!books.length) {
+      rootEl.innerHTML = '<p class="hint">Nessun problema da mostrare.</p>';
+      return;
+    }
+    rootEl.innerHTML = books.map(function (book) {
+      const items = (book.items || []).map(function (item) {
+        return (
+          "<tr>" +
+          "<td>" + escapeHtml(item.label || item.id) + "</td>" +
+          '<td><span class="status-pill status-' + escapeHtml(item.status === "ok" ? "completato" : (item.status === "drift" ? "in_pausa" : "errore")) + '">' +
+          escapeHtml(STATUS_LABEL[item.status] || item.status) +
+          "</span></td>" +
+          '<td class="mono">' + escapeHtml((item.saved_sha256 || "").slice(0, 12)) + "</td>" +
+          '<td class="mono">' + escapeHtml((item.current_sha256 || "").slice(0, 12)) + "</td>" +
+          "</tr>"
+        );
+      }).join("");
+      return (
+        '<details class="book-audit" ' + (book.status === "ok" ? "" : "open") + ">" +
+        "<summary><strong>" + escapeHtml(book.book_title || book.source_sha256.slice(0, 16)) +
+        '</strong> · <span class="status-pill status-' +
+        escapeHtml(book.status === "ok" ? "completato" : (book.status === "drift" ? "in_pausa" : "errore")) +
+        '">' + escapeHtml(STATUS_LABEL[book.status] || book.status) +
+        '</span> · <span class="mono">' + escapeHtml(book.source_sha256) + "</span></summary>" +
+        (items
+          ? '<table style="margin-top:0.5rem"><thead><tr><th>Prompt</th><th>Stato</th><th>Salvato</th><th>Corrente</th></tr></thead><tbody>' +
+            items + "</tbody></table>"
+          : '<p class="hint">Nessuno snapshot salvato per questo libro.</p>') +
+        "</details>"
+      );
+    }).join("");
+  }
+
+  runBtn.addEventListener("click", function () {
+    runDoctor().catch(function (err) {
+      statsEl.textContent = String(err.message || err);
+      rootEl.innerHTML = "";
+    });
+  });
+  if (onlyIssues) {
+    onlyIssues.addEventListener("change", function () {
+      if (rootEl.innerHTML) runBtn.click();
+    });
+  }
 })();
 
 (function initAdminPromptEditor() {

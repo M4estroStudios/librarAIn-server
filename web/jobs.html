@@ -47,17 +47,20 @@ th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
 button.retry-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.55rem; cursor: pointer; font-size: 0.76rem; margin-top: 0.35rem; }
 button.retry-job:hover { background: #0e639c; border-color: #0e639c; }
 button.retry-job:disabled { opacity: 0.55; cursor: default; }
-button.resume-job, button.terminate-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.55rem; cursor: pointer; font-size: 0.76rem; margin-top: 0.35rem; margin-right: 0.3rem; }
+button.resume-job, button.terminate-job, button.doctor-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.55rem; cursor: pointer; font-size: 0.76rem; margin-top: 0.35rem; margin-right: 0.3rem; }
 button.resume-job:hover { background: #0e639c; border-color: #0e639c; }
 button.terminate-job:hover { background: #a1260d; border-color: #a1260d; }
-button.resume-job:disabled, button.terminate-job:disabled { opacity: 0.55; cursor: default; }
+button.doctor-job:hover { background: #0e639c; border-color: #0e639c; }
+button.resume-job:disabled, button.terminate-job:disabled, button.doctor-job:disabled { opacity: 0.55; cursor: default; }
+#prompt-doctor-result { margin-top: 0.75rem; font-size: 0.82rem; }
+#prompt-doctor-result .status-pill { margin-right: 0.35rem; }
 .status-pill.status-interrotto { background: #5a4a1a; color: #f0d78c; }
 .status-pill.status-annullato { background: #3c3c3c; color: #b0b0b0; }
 </style>
 <link rel="stylesheet" href="/dashboard/dashboard.css">
 </head>
 <body>
-<p class="app-nav"><a href="/">Admin</a> · <a href="/biblio">Biblio</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · Job | <a href="/etaly-export">e-taly</a></p>
+<p class="app-nav"><a href="/">Admin</a> · <a href="/biblioteca">Biblioteca</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · Job | <a href="/etaly-export">e-taly</a></p>
 <div class="wrap">
   <h1>Job</h1>
   <p class="lead">Storico ingest e research, con job attivi e batch temporanei in tempo reale.</p>
@@ -84,6 +87,7 @@ button.resume-job:disabled, button.terminate-job:disabled { opacity: 0.55; curso
       <button type="button" class="secondary" id="filter-reset">Reset</button>
     </form>
     <div id="history-meta" class="hint"></div>
+    <div id="prompt-doctor-result" class="hint" hidden></div>
     <table>
       <thead>
         <tr>
@@ -140,6 +144,57 @@ const KIND_LABELS = {
   research: "Research",
   research_batch: "Batch",
 };
+
+const DOCTOR_STATUS_LABEL = {
+  ok: "ok",
+  drift: "drift",
+  missing: "mancante",
+  corrupt: "corrotto",
+};
+
+async function runPromptDoctor(sha, button) {
+  if (!sha) return;
+  const out = document.getElementById("prompt-doctor-result");
+  if (button) button.disabled = true;
+  if (out) {
+    out.hidden = false;
+    out.textContent = "Doctor prompt in corso…";
+  }
+  try {
+    const data = await apiJson(
+      "/api/admin/prompts/doctor?source_sha256=" + encodeURIComponent(sha),
+      { noAuthPrompt: true }
+    );
+    const book = (data.books || [])[0] || {};
+    const status = book.status || "missing";
+    const summary = book.summary || {};
+    const title = book.book_title || sha.slice(0, 16);
+    if (out) {
+      out.innerHTML =
+        '<span class="status-pill status-' +
+        escapeHtml(status === "ok" ? "completato" : status === "drift" ? "in_pausa" : "errore") +
+        '">' +
+        escapeHtml(DOCTOR_STATUS_LABEL[status] || status) +
+        "</span>" +
+        "<strong>" +
+        escapeHtml(title) +
+        "</strong> · " +
+        (summary.ok || 0) +
+        " ok, " +
+        (summary.drift || 0) +
+        " drift, " +
+        (summary.missing || 0) +
+        " mancanti · <span class=\"mono\">" +
+        escapeHtml(sha) +
+        "</span>" +
+        ' · <a href="/admin.html#sistema">Apri in admin</a>';
+    }
+  } catch (err) {
+    if (out) out.textContent = "Doctor fallito: " + (err.message || err);
+  } finally {
+    if (button) button.disabled = false;
+  }
+}
 
 async function retryJob(job, button) {
   if (!job || !job.job_id) return;
@@ -292,6 +347,7 @@ async function loadHistory() {
         (job.job_kind === "research" || job.job_kind === "ingest");
       const canResume = job.job_kind === "ingest" && (job.resumable || display === "interrotto");
       const canTerminate = job.job_kind === "ingest" && (job.terminable || display === "interrotto");
+      const canDoctor = job.job_kind === "ingest" && !!job.source_sha256;
       let actions = "";
       if (canResume) {
         actions +=
@@ -310,6 +366,12 @@ async function loadHistory() {
           '<button type="button" class="retry-job" data-retry-job="' +
           escapeHtml(job.job_id || "") +
           '">Rilancia</button>';
+      }
+      if (canDoctor) {
+        actions +=
+          '<button type="button" class="doctor-job" data-doctor-sha="' +
+          escapeHtml(job.source_sha256 || "") +
+          '">Doctor prompt</button>';
       }
       return (
         "<tr>" +
@@ -348,6 +410,12 @@ async function loadHistory() {
       });
       btn.addEventListener("click", function () {
         terminateInterruptedJob(job, btn);
+      });
+    });
+    body.querySelectorAll("[data-doctor-sha]").forEach(function (btn) {
+      const sha = btn.getAttribute("data-doctor-sha") || "";
+      btn.addEventListener("click", function () {
+        runPromptDoctor(sha, btn);
       });
     });
   } catch (err) {
