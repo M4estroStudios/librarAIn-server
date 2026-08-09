@@ -62,6 +62,7 @@ export function createPageGuidanceController(bridge) {
   const canvas = document.getElementById("annotate-canvas");
   const guidanceField = document.querySelector('[name="ai_page_guidance"]');
   const notesFieldset = document.getElementById("model-notes-fieldset");
+  const mdFormattingFieldset = document.getElementById("md-formatting-fieldset");
   if (!btn || !canvas || !switchEl) return null;
   const ctx = canvas.getContext("2d");
   let drag = null;
@@ -101,14 +102,16 @@ export function createPageGuidanceController(bridge) {
   }
 
   function syncNotesFieldset() {
-    if (!notesFieldset) return;
     const show = shouldShowNotes();
-    notesFieldset.classList.toggle("hidden", !show);
-    const ta = notesFieldset.querySelector("textarea");
-    if (ta) {
-      ta.readOnly = false;
-      ta.disabled = false;
+    if (notesFieldset) {
+      notesFieldset.classList.toggle("hidden", !show);
+      const ta = notesFieldset.querySelector("textarea");
+      if (ta) {
+        ta.readOnly = false;
+        ta.disabled = false;
+      }
     }
+    if (mdFormattingFieldset) mdFormattingFieldset.classList.toggle("hidden", !show);
   }
 
   function setActive(on) {

@@ -319,6 +319,7 @@ label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #cccccc; }
 input, textarea { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
 input::placeholder, textarea::placeholder { color: #848484; }
 textarea { min-height: 4.5rem; resize: vertical; }
+#md-formatting-fieldset textarea { min-height: 2.5rem; }
 .grid-2 { display: grid; gap: 0.75rem; }
 @media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
@@ -829,13 +830,13 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
     </label>
   </details>
 
-  <fieldset>
+  <fieldset id="md-formatting-fieldset" class="hidden">
     <legend>Formattazione Markdown del libro</legend>
     <p class="hint">Regole MD iniettate nei prompt Vision/OCR/Editor. Se lasci vuoto un campo viene usato il default. Non fanno parte del consiglio AI.</p>
-    <label>Heading H1 (<code>#</code>)
+    <label>Heading H1
       <textarea name="md_h1">Usa `#` solo per i titoli di capitolo o voce principale della pagina (es. nome del monumento o inizio capitolo).</textarea>
     </label>
-    <label>Heading H2/H3 (<code>##</code> / <code>###</code>)
+    <label>Heading H2/H3
       <textarea name="md_h2_h3">Usa `##` e `###` per le intestazioni interne tipograficamente evidenti (sottosezioni, sottotitoli).</textarea>
     </label>
     <label>Livello massimo heading
