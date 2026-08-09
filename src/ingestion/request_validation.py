@@ -5,7 +5,7 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from src.core.hashing import compute_file_sha256
-from src.core.log import INFO_LOG_LEVEL, Log
+from src.core.log import INFO_LOG_LEVEL, WARNING_LOG_LEVEL, Log
 from src.models.request import (
     EnrichedIngestRequest,
     IngestInputErrorCode,
@@ -125,20 +125,45 @@ def _validate_page_refs_within_pdf(request: IngestRequest, pdf_page_count: int) 
             )
 
 
+def _validation_error_summary(exc: ValidationError) -> tuple[str, str | None]:
+    errors = exc.errors()
+    if not errors:
+        return "input payload does not match IngestRequest schema", "payload"
+    first = errors[0]
+    loc = first.get("loc") or ()
+    field = ".".join(str(part) for part in loc) or "payload"
+    detail = str(first.get("msg") or "invalid value").strip()
+    if detail.lower().startswith("value error, "):
+        detail = detail[13:].strip()
+    if field == "payload" and detail:
+        message = f"input payload does not match IngestRequest schema: {detail}"
+    else:
+        message = f"input payload does not match IngestRequest schema: {field}: {detail}"
+    return message, field
+
+
 def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
     Log(
         INFO_LOG_LEVEL,
         "ingest request validation starting",
         {"source_pdf_path": str(payload.get("source_pdf_path", ""))[:120]},
     )
+    payload = dict(payload)
+    payload.pop("compute_mode", None)
     try:
         request = IngestRequest.model_validate(payload)
     except ValidationError as exc:
+        message, field = _validation_error_summary(exc)
+        Log(
+            WARNING_LOG_LEVEL,
+            "ingest request schema validation failed",
+            {"error": message, "errors": exc.errors()},
+        )
         raise ValueError(
             IngestInputValidationError(
                 code=IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                message="input payload does not match IngestRequest schema",
-                field="payload",
+                message=message,
+                field=field,
             ).model_dump_json()
         ) from exc
     Log(INFO_LOG_LEVEL, "ingest validation IngestRequest model_validate done")

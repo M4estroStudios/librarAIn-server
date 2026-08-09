@@ -6,6 +6,7 @@ from typing import Any
 
 from src.api.job_control import (
     pipeline_run_can_resume,
+    try_handle_job_cancel_post,
     try_handle_job_resume_post,
     try_handle_job_retry_post,
     try_handle_job_terminate_post,
@@ -21,6 +22,7 @@ _INTERRUPTED_PIPELINE_STATUSES = frozenset({"running", "accepted", "queued"})
 __all__ = [
     "list_active_jobs_with_batches",
     "list_job_history",
+    "try_handle_job_cancel_post",
     "try_handle_job_resume_post",
     "try_handle_job_retry_post",
     "try_handle_job_terminate_post",

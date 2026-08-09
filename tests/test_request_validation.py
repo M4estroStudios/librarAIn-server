@@ -130,7 +130,8 @@ class RequestValidationTests(unittest.TestCase):
             validate_and_enrich_request(payload)
         error_payload = json.loads(str(ctx.exception))
         self.assertEqual(error_payload["code"], IngestInputErrorCode.INPUT_SCHEMA_INVALID.value)
-        self.assertEqual(error_payload["field"], "payload")
+        self.assertIn("toc_range", error_payload["message"])
+        self.assertTrue(str(error_payload["field"]).startswith("toc_range"))
 
     def test_validate_and_enrich_request_missing_pdf(self) -> None:
         payload = _valid_payload("/tmp/this-file-does-not-exist.pdf", pdf_pages=130)

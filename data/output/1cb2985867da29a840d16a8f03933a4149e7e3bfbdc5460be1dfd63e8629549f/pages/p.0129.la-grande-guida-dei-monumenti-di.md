@@ -1,4 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-Palazzo [Caetani](Caetani)
-
-È al n. 32. Il palazzo faceva parte della cosiddetta “isola dei Mattei” insieme agli altri edifici che fanno quadrato tra le vie [Caetani](Caetani), Paganica, dei Funari e delle Botteghe Oscure, dove appunto questo si affaccia. Costruito nel 1564 per Alessandro Mattei, su un progetto attribuito a Bartolomeo Ammannati, ma verosimamente da accreditare a Nanni di Baccio Bigio, fu ereditato da Ciriaco Mattei, ma venduto poi dal duca Girolamo al marchese Pianetti, con possibilità di riscatto; il che avvenne nel 1673. Dieci anni dopo fu definitivamente venduto ai Negroni, dai quali passò nel 1753 al marchese Durazzo. Nel 1760 cambiò ancora proprietà: fu acquistato dal cardinale Fabrizio Serbelloni, finché i suoi eredi lo vendettero nel 1776 ai [Caetani](Caetani), duchi di Sermoneta e principi di Teano. L’edificio ha il fianco destro su via [Caetani](Caetani) e la facciata principale su via

@@ -217,8 +217,9 @@ class ResearchBatchRegistry:
     def abort(self, job_id: str) -> bool:
         with self._lock:
             job = self._jobs.get(job_id)
-            if job is None or job.get("status") != "interrupted":
+            if job is None or job.get("status") not in ("interrupted", "running"):
                 return False
+            current_request_id = str(job.get("current_request_id") or "").strip() or None
             job["status"] = "aborted"
             job["current_poh_id"] = None
             job["current_poh_label"] = None
@@ -226,7 +227,14 @@ class ResearchBatchRegistry:
             job["current_request_id"] = None
             self._touch(job)
             self._persist_locked()
-            return True
+        if current_request_id:
+            try:
+                from src.core.errors import request_job_cancel
+
+                request_job_cancel(current_request_id)
+            except Exception:
+                pass
+        return True
 
     def get(self, job_id: str) -> dict[str, Any] | None:
         with self._lock:

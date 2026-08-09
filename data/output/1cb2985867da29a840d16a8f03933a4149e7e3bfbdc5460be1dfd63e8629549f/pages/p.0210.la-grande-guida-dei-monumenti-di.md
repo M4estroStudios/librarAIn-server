@@ -1,8 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-Palazzo Massimo alle Terme
-
-È al n. 3. Il palazzo fu costruito da Camillo Castrucci tra il 1883 e il 1886 sull’area dove sorgeva il palazzo di Sisto v alle Terme, ultimo edificio ad essere demolito della grande Villa Peretti Montalto, che si estendeva nella zona e che era divenuta proprietà della famiglia Massimo. Tutta la proprietà era stata sottoposta ad esproprio, gradatamente attuato, per la costruzione della Stazione Termini. Ai Massimo restavano in pratica solo 8000 mq, sui quali fu costruito il nuovo edificio, che fu trasformato dal gesuita Massimiliano Massimo in istituto scolastico, il Collegio Massimo. Sviluppa su quattro facciate ben proporzionate e armoniche nelle singole parti stagliate dalle fasce marcapiano tra le finestre modellate in vario stile, timpanate e a cornice, e ben delimitate dai cantonali bugnati. Il collegio si è trasferito all’Eur e l’edificio è stato ristrutturato ed è divenuto una sede del MUSEO NAZIONALE ROMANO: vi sono esposti ritratti di personaggi storici (tra i quali Augusto pontefice massimo), sculture di residenze imperiali (come la Fanciulla di Anzio) e statue atletiche (come il Discobolo Lancellotti), sarcofagi, affreschi staccati dalla Villa di Livia e dalla Villa della Farnesina, e una vasta raccolta di monete e gemme.
-
-Stazione Termini
-
-Si affaccia sulla piazza. Il nome è una deformazione dell’antica parola thermae, che ricorda le antiche Terme di Diocleziano sull’altro fronte della piazza. Il centro del sistema ferroviario di Roma è sorto il 7 luglio 1856 con la linea Roma-Frascati, ma la nascita della stazione risale al 1860, quando fu presentato a Pio ix un progetto

@@ -10,11 +10,13 @@ from unittest.mock import MagicMock, patch
 from src.api.job_control import (
     pipeline_run_can_resume,
     pipeline_run_is_interrupted,
+    try_handle_job_cancel_post,
     try_handle_job_resume_post,
     try_handle_job_terminate_post,
 )
 from src.api.job_history import _historical_display_status, _history_row_from_pipeline
 from src.api.job_registry import JobRegistry
+from src.core.errors import ShutdownRequested, is_job_cancel_requested, job_cancel_scope, raise_if_shutdown, reset_shutdown_for_tests
 from src.persistence.book_sqlite import init_books_schema
 from src.persistence.pipeline_runs import (
     create_pipeline_run,
@@ -261,6 +263,73 @@ class TestInterruptedJobControl(unittest.TestCase):
             assert finished is not None
             self.assertEqual(finished["status"], "aborted")
             self.assertIn("resumed as new-job-id", str(finished["last_error"]))
+
+    def test_cancel_requests_active_job_stop(self) -> None:
+        reset_shutdown_for_tests()
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            sqlite_path = str(Path(tmp_dir) / "biblioteca.db")
+            init_books_schema(sqlite_path)
+            create_pipeline_run(
+                sqlite_path,
+                request_id=REQUEST_ID,
+                source_sha256=SHA,
+                pipeline_version="1.0",
+                total_pages=10,
+            )
+            registry = JobRegistry()
+            registry.create_job(job_id=REQUEST_ID)
+            settings = MagicMock()
+            settings.sqlite_path = sqlite_path
+            responses: list[tuple[int, dict]] = []
+
+            def send_json(_handler, status, payload):
+                responses.append((status, payload))
+
+            def read_body(_handler, _limit):
+                return json.dumps({"job_id": REQUEST_ID}).encode("utf-8")
+
+            handled = try_handle_job_cancel_post(
+                "/api/system/jobs/cancel",
+                _FakeHandler(),
+                settings=settings,
+                registry=registry,
+                send_json=send_json,
+                read_body=read_body,
+            )
+            self.assertTrue(handled)
+            self.assertEqual(responses[0][0], 200)
+            self.assertEqual(responses[0][1]["status"], "cancel_requested")
+            self.assertTrue(is_job_cancel_requested(REQUEST_ID))
+            finished = get_pipeline_run_by_request_id(sqlite_path, REQUEST_ID)
+            assert finished is not None
+            self.assertEqual(finished["status"], "aborted")
+            with job_cancel_scope(REQUEST_ID):
+                with self.assertRaises(ShutdownRequested):
+                    raise_if_shutdown()
+            reset_shutdown_for_tests()
+
+    def test_cancel_rejects_missing_active_job(self) -> None:
+        reset_shutdown_for_tests()
+        settings = MagicMock()
+        settings.sqlite_path = ":memory:"
+        responses: list[tuple[int, dict]] = []
+
+        def send_json(_handler, status, payload):
+            responses.append((status, payload))
+
+        def read_body(_handler, _limit):
+            return json.dumps({"job_id": "missing-job"}).encode("utf-8")
+
+        handled = try_handle_job_cancel_post(
+            "/api/system/jobs/cancel",
+            _FakeHandler(),
+            settings=settings,
+            registry=JobRegistry(),
+            send_json=send_json,
+            read_body=read_body,
+        )
+        self.assertTrue(handled)
+        self.assertEqual(responses[0][0], 404)
 
 
 if __name__ == "__main__":

@@ -572,11 +572,28 @@ export function createPageGuidanceController(bridge) {
   function annotationsPayload() {
     return Object.keys(state.pages).map(Number).filter(function (page) { return (state.pages[page] || []).length > 0; }).sort(function (a, b) { return a - b; }).map(function (page) { return { page: page, elements: (state.pages[page] || []).slice() }; });
   }
+  function setAnnotations(pages) {
+    const next = {};
+    (Array.isArray(pages) ? pages : []).forEach(function (item) {
+      if (!item || typeof item !== "object") return;
+      const page = Number(item.page);
+      if (!(page >= 1)) return;
+      const elements = Array.isArray(item.elements) ? item.elements.slice() : [];
+      if (elements.length) next[page] = elements;
+    });
+    state.pages = next;
+    state.selectedId = null;
+    state.draft = null;
+    clearTrailDraft();
+    notifyAnnotationsChange();
+    redraw();
+  }
   window.addEventListener("resize", function () { redraw(); });
   syncCanvasChrome();
   syncNotesFieldset();
   return {
     getAnnotations: annotationsPayload,
+    setAnnotations: setAnnotations,
     setActive: setActive,
     isActive: function () { return !!state.active; },
     removeAnnotation: removeAnnotation,

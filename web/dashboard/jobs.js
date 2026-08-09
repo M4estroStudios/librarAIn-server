@@ -473,7 +473,7 @@ async function resumeBatch(jobId) {
 
 async function abortBatch(jobId) {
   if (!jobId) return;
-  if (!window.confirm("Annullare questo batch in sospeso? Non potrai riprenderlo.")) return;
+  if (!window.confirm("Annullare questo batch? L'operazione verrà interrotta.")) return;
   const job = jobsById.get(jobId);
   if (job) {
     (job.request_ids || []).forEach(function (id) {
@@ -481,10 +481,11 @@ async function abortBatch(jobId) {
     });
     if (job.current_request_id) rememberMissingJob(job.current_request_id);
   }
-  await apiJson("/api/research/generate/abort", {
+  await apiJson("/api/system/jobs/cancel", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ job_id: jobId }),
+    ...(jobsApiOptions || {}),
   });
   forgetWatchedJob(jobId);
   expandedBatchIds.delete(jobId);
@@ -493,9 +494,41 @@ async function abortBatch(jobId) {
   await refreshJobsList();
 }
 
+async function cancelActiveJob(jobId, button) {
+  if (!jobId) return;
+  if (!window.confirm("Terminare il lavoro attuale? L'operazione verrà interrotta e non riprenderà da sola.")) return;
+  if (button) {
+    button.disabled = true;
+    button.textContent = "…";
+  }
+  try {
+    await apiJson("/api/system/jobs/cancel", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ job_id: jobId }),
+      ...(jobsApiOptions || {}),
+    });
+    await refreshJobsList();
+  } catch (err) {
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Termina";
+    }
+    if (window.LibrarAInLog) window.LibrarAInLog.reportError("job cancel failed", err);
+    alert("Terminazione fallita: " + (err && err.message ? err.message : err));
+  }
+}
+
 function handleJobsRootClick(event) {
   const root = getJobsRoot();
   if (!root || !root.contains(event.target)) return;
+  const cancelBtn = event.target.closest("[data-job-cancel]");
+  if (cancelBtn) {
+    event.preventDefault();
+    event.stopPropagation();
+    cancelActiveJob(cancelBtn.getAttribute("data-job-cancel"), cancelBtn).catch(function () {});
+    return;
+  }
   const resumeBtn = event.target.closest("[data-batch-resume]");
   if (resumeBtn) {
     event.preventDefault();
@@ -614,7 +647,14 @@ function renderBatchSummaryContent(job) {
   if (globalTotal > 0) {
     inner += renderJobProgressRow("Articoli", globalStep, globalTotal, job.is_active ? "active" : "done", true);
   }
-  if (job.resumable || job.status === "interrupted") {
+  if (job.is_active) {
+    inner +=
+      '<div class="active-job-actions">' +
+      '<button type="button" class="secondary" data-job-cancel="' +
+      escapeHtml(job.job_id || "") +
+      '">Termina</button>' +
+      "</div>";
+  } else if (job.resumable || job.status === "interrupted") {
     inner +=
       '<div class="active-job-actions">' +
       '<button type="button" class="secondary batch-job-resume" data-batch-resume="' +
@@ -760,11 +800,21 @@ function renderActiveJobCard(job, options) {
   const articleHref =
     job.article_url ||
     (job.poh_id && job.status === "succeeded" ? articleUrl(job.poh_id) : null);
+  let actionsHtml = "";
+  if (job.is_active && !nested) {
+    actionsHtml +=
+      '<button type="button" class="secondary" data-job-cancel="' +
+      escapeHtml(job.job_id || "") +
+      '">Termina</button>';
+  }
   if (articleHref) {
-    inner +=
-      '<div class="active-job-actions"><button type="button" class="secondary active-job-open" data-href="' +
+    actionsHtml +=
+      '<button type="button" class="secondary active-job-open" data-href="' +
       escapeHtml(articleHref) +
-      '">Apri articolo</button></div>';
+      '">Apri articolo</button>';
+  }
+  if (actionsHtml) {
+    inner += '<div class="active-job-actions">' + actionsHtml + "</div>";
   }
 
   if (isBatch) {

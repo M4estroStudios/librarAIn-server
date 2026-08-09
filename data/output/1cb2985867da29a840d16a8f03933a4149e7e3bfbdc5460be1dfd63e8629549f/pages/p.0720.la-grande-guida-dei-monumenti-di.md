@@ -1,6 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-nata al papa da Ferdinando II di Napoli per il suo ritorno a Roma nel 1850. Ci sono poi le portantine: da quelle usate da Pio IX per passare da un piano all’altro del palazzo a una in damasco rosso donata a Leone XIII nel 1887 in occasione del suo genetliaco sacerdotale.
-
-19. PINACOTECA VATICANA È nell’edificio appositamente fatto costruire da Pio XI su progetto di Luca Beltrami nel 1932, ma la sua istituzione risale alla seconda metà del Settecento con Pio VI. Vi è illustrato lo svolgimento della pittura italiana dall’XI al XVIII secolo. Emblematicamente storico per l’istituzione della Biblioteca Vaticana è l’affresco di Melozzo da Forlì del 1477, raffigurante Sisto IV che nomina il Platina prefetto della biblioteca, già su una parete della Biblioteca Apostolica Vaticana e trasportato su tela al tempo di Leone XII.
-
-20. SALA DELLE NOZZE ALDOBRANDINE È una sala appositamente istituita per il famoso affresco delle Nozze Aldobrandine trovato nel 1605 presso l’Arco di Gallieno sull’Esquilino e quindi conservato nella Villa Aldobrandini a via Nazionale (v.) e dal 1818 è qui: eseguito alla fine del I secolo a.C. raffigura i preparativi per le nozze di Alessandro Magno con Rossane. Nella sala sono altri affreschi antichi e un mosaico del III

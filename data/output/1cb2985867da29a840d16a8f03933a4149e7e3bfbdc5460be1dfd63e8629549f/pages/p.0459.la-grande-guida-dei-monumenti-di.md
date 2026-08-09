@@ -1,4 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-Monte [Savello](Savello) (Via di, R XI Sant'Angelo)
-
-Il Monte [Savello](Savello) è il piccolo colle formatosi nel corso del tempo sulla cavea del Teatro di Marcello, soprannominato Monte [Savello](Savello) dal fortilizio che i nobili Fabi vi fecero costruire e che passò poi ai Savelli nel 1361, autorizzandoli così a dargli il proprio nome. I Savelli abbatterono il fortilizio, ma fecero addirittura costruire sul teatro un intero PALAZZO nel 1517 da Baldassarre Peruzzi. Nel 1712, alla morte di Giulio Savelli, ultimo della nobile famiglia, il palazzo passò in eredità agli Sforza Cesarini che lo vendettero alla Congregazione dei Baroni, dalla quale l'acquistò Domenico Orsini duca di Gravina, nella seconda metà del Settecento. E gli Orsini riedificaron il complesso in un insieme di fabbricati disposti attorno alla vetta del piccolo colle: e il palazzo ebbe, fino alla fine

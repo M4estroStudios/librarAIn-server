@@ -31,6 +31,9 @@ from src.api.chat_completions_handler import handle_chat_completions
 from src.api.etaly_export_handler import build_etaly_export_routes
 from src.api.page_guidance_http import (
     ensure_ingest_ai_page_guidance,
+    persist_ingest_notes_for_pdf,
+    resolve_ingest_ui_state,
+    try_handle_ingest_notes_get,
     try_handle_page_guidance_post,
 )
 from src.api.prompts_http import try_handle_prompts_get, try_handle_prompts_post
@@ -54,12 +57,13 @@ from src.api.job_history import (
     list_job_history,
     try_handle_job_resume_post,
     try_handle_job_retry_post,
+    try_handle_job_cancel_post,
     try_handle_job_terminate_post,
 )
 from src.api.job_registry import JobRegistry
 from src.api.research_batch_registry import ResearchBatchRegistry
 from src.api.research_handlers import build_research_routes
-from src.core.errors import ShutdownRequested, request_shutdown
+from src.core.errors import ShutdownRequested, job_cancel_scope, request_shutdown
 from src.search.research_runner import ResearchConcurrencyLimiter, ResearchDedupIndex
 from src.ingestion.polyindex.index_json import (
     SubjectMergeError,
@@ -90,7 +94,7 @@ from src.persistence.book_page_repair import (
     run_book_page_repair,
 )
 from src.core.config import ConfigurationError, get_env, load_settings
-from src.core.hashing import new_job_id
+from src.core.hashing import compute_file_sha256, new_job_id
 from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
 from src.core.openai_client import use_compute_mode
 from src.models.settings import normalize_compute_mode
@@ -446,6 +450,15 @@ def build_ingest_server(
                 return
 
             if research_try_get(self, path, query):
+                return
+
+            if try_handle_ingest_notes_get(
+                path,
+                self,
+                query,
+                settings=settings,
+                send_json=_send_json,
+            ):
                 return
 
             if path in ("/dashboard", "/dashboard.html"):
@@ -1109,6 +1122,45 @@ def build_ingest_server(
                 {"source_sha256": source_sha256[:16], "aligned_page": aligned_page})
             _send_json(self, 200, {"ok": True, "result": result})
 
+        def _handle_ingest_notes_lookup_post(self) -> None:
+            content_type = self.headers.get("Content-Type") or ""
+            part_path = data_root / "input" / "raw" / f".notes_{secrets.token_hex(8)}.part"
+            try:
+                parsed = parse_multipart_form_stream(
+                    self.rfile,
+                    content_type,
+                    content_length=_request_content_length(self),
+                    max_bytes=max_upload,
+                    pdf_part_path=part_path,
+                )
+            except (ValueError, OSError) as exc:
+                part_path.unlink(missing_ok=True)
+                _send_json(self, 400, {"ok": False, "error": f"multipart form could not be parsed: {exc}"})
+                return
+            uploaded = parsed.pdf
+            if uploaded is None or uploaded.size == 0:
+                part_path.unlink(missing_ok=True)
+                if uploaded is not None:
+                    uploaded.path.unlink(missing_ok=True)
+                _send_json(self, 400, {"ok": False, "error": "pdf_file upload is required"})
+                return
+            try:
+                digest = compute_file_sha256(uploaded.path)
+                state = resolve_ingest_ui_state(settings.sqlite_path, digest)
+                _send_json(
+                    self,
+                    200,
+                    {
+                        "ok": True,
+                        "found": state is not None,
+                        "source_sha256": digest,
+                        "state": state,
+                    },
+                )
+            finally:
+                uploaded.path.unlink(missing_ok=True)
+                part_path.unlink(missing_ok=True)
+
         def _handle_reicat_suggest(self) -> None:
             content_type = self.headers.get("Content-Type") or ""
             part_path = data_root / "input" / "raw" / f".upload_{secrets.token_hex(8)}.part"
@@ -1713,6 +1765,16 @@ def build_ingest_server(
                 read_body=_read_body,
             ):
                 return
+            if try_handle_job_cancel_post(
+                parsed.path,
+                self,
+                settings=settings,
+                registry=registry,
+                research_batch_registry=research_batch_registry,
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
             if try_handle_admin_embeddings_post(
                 parsed.path,
                 self,
@@ -1765,6 +1827,9 @@ def build_ingest_server(
                 max_upload=max_upload,
                 safe_filename=_safe_filename,
             ):
+                return
+            if parsed.path == "/api/ingest/notes-state":
+                self._handle_ingest_notes_lookup_post()
                 return
             if parsed.path == "/api/ingest/reicat-suggest":
                 self._handle_reicat_suggest()
@@ -1901,7 +1966,20 @@ def build_ingest_server(
                 "true",
                 "yes",
             )
+            notes_alias_shas: list[str] = []
             if volume_merge and volume_paths:
+                try:
+                    notes_alias_shas = [
+                        compute_file_sha256(saved_path),
+                        *[compute_file_sha256(path) for path in volume_paths],
+                    ]
+                except OSError as exc:
+                    Log(
+                        WARNING_LOG_LEVEL,
+                        "ingest volume alias hash failed",
+                        {"error": str(exc)},
+                    )
+                    notes_alias_shas = []
                 merged_path = saved_path.with_name(
                     f"merged_{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
                 )
@@ -1943,6 +2021,14 @@ def build_ingest_server(
             Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
                 {"path": str(saved_path), "bytes": saved_path.stat().st_size})
 
+            notes_source_sha256 = persist_ingest_notes_for_pdf(
+                settings.sqlite_path,
+                saved_path,
+                text_fields,
+                ingest_payload,
+                alias_shas=notes_alias_shas,
+            )
+
             try:
                 with use_compute_mode(compute_mode, settings):
                     job_settings = settings.for_compute_mode(compute_mode)
@@ -1979,6 +2065,14 @@ def build_ingest_server(
                     {"ok": False, "error": f"page guidance generation failed: {exc}"},
                 )
                 return
+
+            notes_source_sha256 = persist_ingest_notes_for_pdf(
+                settings.sqlite_path,
+                saved_path,
+                text_fields,
+                ingest_payload,
+                alias_shas=notes_alias_shas,
+            ) or notes_source_sha256
 
             appendix_path: Path | None = None
             appendix_pages_raw = (text_fields.get("appendix_pages") or "").strip()
@@ -2090,30 +2184,43 @@ def build_ingest_server(
                     ))
                     job_semaphore.acquire()
                 try:
-                    with use_compute_mode(compute_mode, settings):
-                        job_settings = settings.for_compute_mode(compute_mode)
-                        pipeline_result = pipeline_runner(
-                            ingest_payload,
-                            saved_path,
-                            job_settings,
-                            reporter=reporter,
-                            set_global_total=lambda total: registry.set_global_total(job_id, total),
+                    with job_cancel_scope(job_id):
+                        ingest_payload["request_id"] = job_id
+                        with use_compute_mode(compute_mode, settings):
+                            job_settings = settings.for_compute_mode(compute_mode)
+                            pipeline_result = pipeline_runner(
+                                ingest_payload,
+                                saved_path,
+                                job_settings,
+                                reporter=reporter,
+                                set_global_total=lambda total: registry.set_global_total(job_id, total),
+                            )
+                        timing = (
+                            pipeline_result.get("timing")
+                            if isinstance(pipeline_result, dict)
+                            else None
                         )
-                    timing = (
-                        pipeline_result.get("timing")
-                        if isinstance(pipeline_result, dict)
-                        else None
-                    )
-                    done_fields: dict[str, Any] = {"result": job_id}
-                    if timing:
-                        done_fields["timing"] = timing
-                    registry.emit(job_id, make_event("pipeline", STATUS_DONE, **done_fields))
-                except ShutdownRequested:
-                    Log(
-                        INFO_LOG_LEVEL,
-                        "ingest pipeline interrupted by shutdown",
-                        {"job_id": job_id},
-                    )
+                        done_fields: dict[str, Any] = {"result": job_id}
+                        if timing:
+                            done_fields["timing"] = timing
+                        registry.emit(job_id, make_event("pipeline", STATUS_DONE, **done_fields))
+                except ShutdownRequested as shutdown_exc:
+                    if "cancelled by user" in str(shutdown_exc):
+                        registry.emit(
+                            job_id,
+                            make_event("pipeline", STATUS_ERROR, message="terminated by user"),
+                        )
+                        Log(
+                            INFO_LOG_LEVEL,
+                            "ingest pipeline cancelled by operator",
+                            {"job_id": job_id},
+                        )
+                    else:
+                        Log(
+                            INFO_LOG_LEVEL,
+                            "ingest pipeline interrupted by shutdown",
+                            {"job_id": job_id},
+                        )
                 except IngestInputValidationException:
                     pass
                 except Exception as exc:
@@ -2132,12 +2239,15 @@ def build_ingest_server(
 
             Log(INFO_LOG_LEVEL, "ingest job started",
                 {"job_id": job_id, "events_url": events_url})
-            _send_json(self, 202, {
+            response_body: dict[str, Any] = {
                 "ok": True,
                 "job_id": job_id,
                 "events_url": events_url,
                 "status_url": status_url,
-            })
+            }
+            if notes_source_sha256:
+                response_body["source_sha256"] = notes_source_sha256
+            _send_json(self, 202, response_body)
 
     httpd = ExclusiveThreadingHTTPServer((host, port), IngestHandler)
     return httpd, registry

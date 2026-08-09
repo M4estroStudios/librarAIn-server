@@ -8,7 +8,12 @@ from typing import Any, Callable
 
 from src.api.job_registry import JobRegistry
 from src.core.hashing import new_job_id
-from src.core.errors import ShutdownRequested
+from src.core.errors import (
+    ShutdownRequested,
+    is_job_cancel_requested,
+    job_cancel_scope,
+    request_job_cancel,
+)
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
 from src.models.request import IngestInputValidationException
@@ -111,65 +116,66 @@ def _start_ingest_continue_job(
         finish_error: str | None = None
         succeeded_pages = 0
         try:
-            pipeline_mode = resolve_resume_pipeline_mode(settings)
-            if use_gaps:
-                baseline = build_repair_progress_baseline(audit, pipeline_mode=pipeline_mode)
-                registry.set_global_progress(
-                    new_id,
-                    step=int(baseline["done_steps"]),
-                    total=int(baseline["total_steps"]),
-                )
-                for baseline_ev in baseline["events"]:
-                    registry.emit(new_id, dict(baseline_ev))
-                registry.emit(
-                    new_id,
-                    make_event(
-                        "gaps_repair",
-                        STATUS_STARTED,
-                        source_sha256=sha,
-                        message=f"{action_label}: riparazione {aligned_count} pagine",
-                        retry_of=job_id,
+            with job_cancel_scope(new_id):
+                pipeline_mode = resolve_resume_pipeline_mode(settings)
+                if use_gaps:
+                    baseline = build_repair_progress_baseline(audit, pipeline_mode=pipeline_mode)
+                    registry.set_global_progress(
+                        new_id,
+                        step=int(baseline["done_steps"]),
+                        total=int(baseline["total_steps"]),
+                    )
+                    for baseline_ev in baseline["events"]:
+                        registry.emit(new_id, dict(baseline_ev))
+                    registry.emit(
+                        new_id,
+                        make_event(
+                            "gaps_repair",
+                            STATUS_STARTED,
+                            source_sha256=sha,
+                            message=f"{action_label}: riparazione {aligned_count} pagine",
+                            retry_of=job_id,
+                            pipeline_mode=pipeline_mode,
+                            page_total=int(baseline["expected_page_count"]),
+                        ),
+                    )
+                    result = run_book_gaps_repair(
+                        data_root,
+                        settings,
+                        sha,
+                        gap_pages,
+                        request_id=new_id,
+                        progress=reporter,
                         pipeline_mode=pipeline_mode,
-                        page_total=int(baseline["expected_page_count"]),
-                    ),
-                )
-                result = run_book_gaps_repair(
-                    data_root,
-                    settings,
-                    sha,
-                    gap_pages,
-                    request_id=new_id,
-                    progress=reporter,
-                    pipeline_mode=pipeline_mode,
-                )
-                registry.emit(new_id, make_event("gaps_repair", STATUS_DONE, result=result))
-                written = result.get("aligned_pages_written") if isinstance(result, dict) else None
-                succeeded_pages = len(written) if isinstance(written, list) else aligned_count
-                finish_status = "succeeded"
-            else:
-                from src.api.ingest_pipeline_runner import run_resume_pipeline_from_sha
+                    )
+                    registry.emit(new_id, make_event("gaps_repair", STATUS_DONE, result=result))
+                    written = result.get("aligned_pages_written") if isinstance(result, dict) else None
+                    succeeded_pages = len(written) if isinstance(written, list) else aligned_count
+                    finish_status = "succeeded"
+                else:
+                    from src.api.ingest_pipeline_runner import run_resume_pipeline_from_sha
 
-                registry.emit(
-                    new_id,
-                    make_event(
-                        "pipeline",
-                        STATUS_STARTED,
-                        source_sha256=sha,
-                        message=f"{action_label}: ripresa dallo stato disponibile",
-                        retry_of=job_id,
+                    registry.emit(
+                        new_id,
+                        make_event(
+                            "pipeline",
+                            STATUS_STARTED,
+                            source_sha256=sha,
+                            message=f"{action_label}: ripresa dallo stato disponibile",
+                            retry_of=job_id,
+                            pipeline_mode=pipeline_mode,
+                        ),
+                    )
+                    result = run_resume_pipeline_from_sha(
+                        data_root,
+                        settings,
+                        sha,
+                        reporter,
+                        lambda total: registry.set_global_total(new_id, total),
+                        request_id=new_id,
                         pipeline_mode=pipeline_mode,
-                    ),
-                )
-                result = run_resume_pipeline_from_sha(
-                    data_root,
-                    settings,
-                    sha,
-                    reporter,
-                    lambda total: registry.set_global_total(new_id, total),
-                    request_id=new_id,
-                    pipeline_mode=pipeline_mode,
-                )
-                registry.emit(new_id, make_event("pipeline", STATUS_DONE, result=result))
+                    )
+                    registry.emit(new_id, make_event("pipeline", STATUS_DONE, result=result))
         except PageRepairError as exc:
             finish_status = "failed"
             finish_error = str(exc)
@@ -187,12 +193,25 @@ def _start_ingest_continue_job(
                     field=exc.detail.field,
                 ),
             )
-        except ShutdownRequested:
-            Log(
-                INFO_LOG_LEVEL,
-                "ingest continue interrupted by shutdown",
-                {"job_id": new_id, "retry_of": job_id},
-            )
+        except ShutdownRequested as shutdown_exc:
+            if "cancelled by user" in str(shutdown_exc):
+                finish_status = "aborted"
+                finish_error = "terminated by user"
+                registry.emit(
+                    new_id,
+                    make_event("pipeline", STATUS_ERROR, message="terminated by user"),
+                )
+                Log(
+                    INFO_LOG_LEVEL,
+                    "ingest continue cancelled by operator",
+                    {"job_id": new_id, "retry_of": job_id},
+                )
+            else:
+                Log(
+                    INFO_LOG_LEVEL,
+                    "ingest continue interrupted by shutdown",
+                    {"job_id": new_id, "retry_of": job_id},
+                )
         except Exception as exc:
             finish_status = "failed"
             finish_error = str(exc)
@@ -396,4 +415,69 @@ def try_handle_job_terminate_post(
     )
     Log(INFO_LOG_LEVEL, "ingest job terminated", {"job_id": job_id})
     send_json(handler, 200, {"ok": True, "job_id": job_id, "status": "aborted"})
+    return True
+
+
+def try_handle_job_cancel_post(
+    path: str,
+    handler: BaseHTTPRequestHandler,
+    *,
+    settings: Settings,
+    registry: JobRegistry,
+    research_batch_registry: Any | None = None,
+    send_json: SendJson,
+    read_body: ReadBody,
+) -> bool:
+    if path != "/api/system/jobs/cancel":
+        return False
+    job_id = _read_job_id_payload(handler, send_json=send_json, read_body=read_body)
+    if job_id is None:
+        return True
+
+    if research_batch_registry is not None:
+        batch = research_batch_registry.get(job_id)
+        if batch is not None:
+            if not research_batch_registry.abort(job_id):
+                send_json(handler, 409, {"ok": False, "error": "batch is not cancellable"})
+                return True
+            Log(INFO_LOG_LEVEL, "research batch cancelled", {"job_id": job_id})
+            send_json(handler, 200, {"ok": True, "job_id": job_id, "status": "aborted"})
+            return True
+
+    status = registry.get_status(job_id)
+    if status is None:
+        send_json(handler, 404, {"ok": False, "error": "active job not found"})
+        return True
+    job_status = str(status.get("status") or "")
+    if job_status in {"done", "error", "succeeded", "failed"}:
+        send_json(handler, 409, {"ok": False, "error": "job is already finished"})
+        return True
+
+    request_job_cancel(job_id)
+    registry.emit(
+        job_id,
+        make_event("pipeline", "progress", message="terminazione richiesta dall'operatore"),
+    )
+    run = get_pipeline_run_by_request_id(settings.sqlite_path, job_id)
+    if run is not None and not run.get("finished_at"):
+        mark_pipeline_run_finished(
+            settings.sqlite_path,
+            request_id=job_id,
+            status="aborted",
+            succeeded_pages=int(run.get("succeeded_pages") or 0),
+            failed_pages=int(run.get("failed_pages") or 0),
+            last_error="terminated by user",
+        )
+    Log(INFO_LOG_LEVEL, "job cancel requested", {"job_id": job_id, "job_kind": status.get("job_kind")})
+    send_json(handler, 200, {"ok": True, "job_id": job_id, "status": "cancel_requested"})
+    return True
+
+
+def finalize_job_if_cancelled(registry: JobRegistry, job_id: str) -> bool:
+    if not is_job_cancel_requested(job_id):
+        return False
+    registry.emit(
+        job_id,
+        make_event("pipeline", STATUS_ERROR, message="terminated by user"),
+    )
     return True

@@ -1,3 +1,4 @@
+import tempfile
 import unittest
 from pathlib import Path
 from random import Random
@@ -5,7 +6,13 @@ from unittest.mock import MagicMock, patch
 
 from PIL import Image
 
-from src.api.page_guidance_http import ensure_ingest_ai_page_guidance
+from src.api.page_guidance_http import (
+    ensure_ingest_ai_page_guidance,
+    load_ingest_notes_state,
+    persist_ingest_notes_for_pdf,
+    resolve_ingest_ui_state,
+    save_ingest_notes_state,
+)
 from src.api.page_guidance_suggest import (
     choose_sample_pages,
     flatten_annotations_on_image,
@@ -114,6 +121,102 @@ class EnsureIngestAiPageGuidanceTests(unittest.TestCase):
                 {},
                 {"annotations_json": "{bad"},
             )
+
+
+class IngestNotesStatePersistenceTests(unittest.TestCase):
+    def test_save_and_load_roundtrip(self) -> None:
+        sha = "a" * 64
+        state = {
+            "notes": "toc tip",
+            "index_notes": "index tip",
+            "page_notes": "page tip",
+            "ai_page_guidance": "guidance",
+            "pages_to_remove": "1,2",
+            "toc_range": "11-18",
+            "index_range": "301-324",
+            "biblio_range": "240-255",
+            "reicat_pages": "1-3",
+            "appendix_pages": "280,300-305",
+            "titolo": "La Grande Guida",
+            "autore": "Claudio Rendina",
+            "editore": "Newton",
+            "annotations": [
+                {
+                    "page": 2,
+                    "elements": [
+                        {
+                            "id": "bbox_1",
+                            "type": "bbox",
+                            "name": "bbox1",
+                            "coords": [10, 20, 30, 40],
+                        }
+                    ],
+                }
+            ],
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            save_ingest_notes_state(str(db), sha, state)
+            loaded = load_ingest_notes_state(str(db), sha)
+        self.assertIsNotNone(loaded)
+        assert loaded is not None
+        self.assertEqual(loaded["notes"], "toc tip")
+        self.assertEqual(loaded["index_notes"], "index tip")
+        self.assertEqual(loaded["page_notes"], "page tip")
+        self.assertEqual(loaded["ai_page_guidance"], "guidance")
+        self.assertEqual(loaded["pages_to_remove"], "1,2")
+        self.assertEqual(loaded["toc_range"], "11-18")
+        self.assertEqual(loaded["index_range"], "301-324")
+        self.assertEqual(loaded["biblio_range"], "240-255")
+        self.assertEqual(loaded["reicat_pages"], "1-3")
+        self.assertEqual(loaded["appendix_pages"], "280,300-305")
+        self.assertEqual(loaded["titolo"], "La Grande Guida")
+        self.assertEqual(loaded["autore"], "Claudio Rendina")
+        self.assertEqual(loaded["editore"], "Newton")
+        self.assertEqual(loaded["annotations"][0]["page"], 2)
+        self.assertEqual(loaded["annotations"][0]["elements"][0]["type"], "bbox")
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            save_ingest_notes_state(str(db), sha, state)
+            resolved = resolve_ingest_ui_state(str(db), sha)
+        self.assertIsNotNone(resolved)
+        assert resolved is not None
+        self.assertEqual(resolved["titolo"], "La Grande Guida")
+
+    def test_missing_returns_none(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            self.assertIsNone(load_ingest_notes_state(str(db), "b" * 64))
+            self.assertIsNone(resolve_ingest_ui_state(str(db), "b" * 64))
+
+    def test_persist_writes_alias_shas(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pdf = root / "book.pdf"
+            pdf.write_bytes(b"%PDF-1.4 alias-persist-test\n%%EOF\n")
+            db = root / "biblioteca.db"
+            alias = "c" * 64
+            digest = persist_ingest_notes_for_pdf(
+                str(db),
+                pdf,
+                {
+                    "titolo": "Alias Book",
+                    "autore": "Tester",
+                    "toc_range": "2-3",
+                    "index_range": "4-5",
+                    "annotations_json": "[]",
+                },
+                {"ai_page_guidance": "tip"},
+                alias_shas=[alias],
+            )
+            self.assertIsNotNone(digest)
+            loaded_main = load_ingest_notes_state(str(db), str(digest))
+            loaded_alias = load_ingest_notes_state(str(db), alias)
+        self.assertIsNotNone(loaded_main)
+        self.assertIsNotNone(loaded_alias)
+        assert loaded_alias is not None
+        self.assertEqual(loaded_alias["titolo"], "Alias Book")
+        self.assertEqual(loaded_alias["ai_page_guidance"], "tip")
 
 
 if __name__ == "__main__":

@@ -1,2 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-Scoperto nel 1866 a 8 metri di profondità, ha al centro un bacino di fontana esagonale e sul fondo un lararium, ovvero una cappella dedicata al Genio della caserma. «Numerosi altri graffiti», scrive R.A. Staccioli, «scoperti sulle pareti dell’atrio e spesso databili a un periodo compreso tra il 215 e il 245 d.C., menzionano ripetutamente torce di sego e milites sebaciarii con evidente allusione alle funzioni di sor

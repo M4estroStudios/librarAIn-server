@@ -1,8 +1,0 @@
-<!-- librarain:model=gemma-4-26b-a4b-it -->
-Villa [del Bosco Parrasio](<del Bosco Parrasio>)
-
-dei soci defunti; la loro disposizione richiama quella dei colombari nelle necropoli romane. Sul ripiano intermedio del Bosco, all’ombra di un gigantesco pino, si può ammirare una finta grotta con fontana dal carattere decisamente rustico pastorale. Nel ripiano inferiore infine il tono diventa più aulico per la presenza di una grande edicola di marmo che racchiude un’iscrizione del 1726 che ricorda la donazione del re Giovanni v del Portogallo. Si può notare, incisa nel marmo, l’insegna dell’Accademia con la siringa a sette canne di Pan, mentre nella decorazione della cornice risalta un bel mascherone. Tutto l’insieme è arricchito dalla presenza di maestosi lauri, che tanto si addicono ai poeti, da mirti, magnolie, cipressi, pini, ma anche da glicini, oleandri ed edere. La villa è affittata, ma agli Arcadi è permesso di riunirsi nel Bosco una volta l’anno.
-
-Accademia [Letteraria dell’Arcadia](<Letteraria dell’Arcadia>)
-
-Nel 1690, durante una riunione di letterati che avevano fatto parte del circolo di Cristina di Svezia (1626-89), uno di essi, il senese Agostino Taia, avendo sentito recitare alcuni componimenti pastorali, se ne usci con questa frase: «Mi sembra che noi oggi abbiamo rinnovato l’Arcadia». Alludeva alla regione della Grecia anticamente popolata dai pastori, ma quella frase ebbe fortuna. I presenti convennero di costituire un’accademia con quel nome e con lo scopo di riportare la poesia alla semplificità dell’ispirazione antica. L’accademia venne istituita con un complesso di norme e riti: ogni accademico prese un nome da pastore greco, l’insegna fu la siringa di Pan, l’archivio delle poesie e dei documenti fu chiamato “
