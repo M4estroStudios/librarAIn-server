@@ -9,6 +9,20 @@ function uid(prefix) {
   return prefix + "_" + Math.random().toString(36).slice(2, 9);
 }
 
+function nextDefaultAnnotationName(type, elements, exceptId) {
+  const prefix = String(type || "bbox");
+  const used = Object.create(null);
+  const re = new RegExp("^" + prefix.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(\\d+)$", "i");
+  (elements || []).forEach(function (el) {
+    if (!el || (exceptId && el.id === exceptId)) return;
+    const m = String(el.name || "").trim().match(re);
+    if (m) used[Number(m[1])] = true;
+  });
+  let n = 1;
+  while (used[n]) n += 1;
+  return prefix + n;
+}
+
 function clamp(n, lo, hi) {
   return Math.max(lo, Math.min(hi, n));
 }
@@ -39,6 +53,7 @@ export function createPageGuidanceController(bridge) {
   };
   const annotationListeners = [];
   function notifyAnnotationsChange() {
+    syncNotesFieldset();
     annotationListeners.forEach(function (cb) { try { cb(); } catch (_) {} });
   }
 
@@ -56,7 +71,45 @@ export function createPageGuidanceController(bridge) {
     return state.pages[page];
   }
 
+  function defaultNameFor(type, page, exceptId) {
+    return nextDefaultAnnotationName(type, pageMap(page), exceptId);
+  }
+
   function clearTrailDraft() { state.trailPoints = null; state.trailCursor = null; }
+
+  function currentPageHasElements() {
+    const page = bridge.getDetailPage();
+    if (!(page >= 1)) return false;
+    return !!(state.pages[page] && state.pages[page].length);
+  }
+
+  function syncCanvasChrome() {
+    const showCanvas = !!state.active || currentPageHasElements();
+    canvas.classList.toggle("hidden", !showCanvas);
+    canvas.classList.toggle("is-preview", showCanvas && !state.active);
+    canvas.style.pointerEvents = state.active ? "auto" : "none";
+    canvas.style.cursor = state.active ? "crosshair" : "default";
+  }
+
+  function pageHasTextAnnotations(page) {
+    return typeof bridge.hasTextAnnotations === "function" && !!bridge.hasTextAnnotations(page);
+  }
+
+  function shouldShowNotes() {
+    const page = bridge.getDetailPage();
+    return !!state.active || currentPageHasElements() || pageHasTextAnnotations(page);
+  }
+
+  function syncNotesFieldset() {
+    if (!notesFieldset) return;
+    const show = shouldShowNotes();
+    notesFieldset.classList.toggle("hidden", !show);
+    const ta = notesFieldset.querySelector("textarea");
+    if (ta) {
+      ta.readOnly = false;
+      ta.disabled = false;
+    }
+  }
 
   function setActive(on) {
     const next = !!on;
@@ -64,15 +117,16 @@ export function createPageGuidanceController(bridge) {
     state.active = next;
     btn.classList.toggle("is-active", state.active);
     switchEl.classList.toggle("hidden", !state.active);
-    canvas.classList.toggle("hidden", !state.active);
-    if (notesFieldset) notesFieldset.classList.toggle("hidden", !state.active);
     if (state.active) redraw();
     else {
       state.selectedId = null;
       state.draft = null;
       clearTrailDraft();
       hideNameInput();
+      redraw();
     }
+    syncCanvasChrome();
+    syncNotesFieldset();
   }
 
   function setTool(tool) {
@@ -164,29 +218,36 @@ export function createPageGuidanceController(bridge) {
   }
 
   function redraw(syncInput) {
-    if (!state.active || !syncCanvasSize()) {
+    const page = bridge.getDetailPage();
+    const list = page >= 1 ? (state.pages[page] || []) : [];
+    const canDraw = !!state.active || list.length > 0;
+    if (!canDraw || !syncCanvasSize()) {
       hideNameInput();
+      syncCanvasChrome();
       return;
     }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const page = bridge.getDetailPage();
     if (!page) {
       hideNameInput();
+      syncCanvasChrome();
       return;
     }
-    const list = pageMap(page);
     list.forEach(function (el) {
-      drawElement(el, canvas.width, canvas.height, el.id === state.selectedId);
+      drawElement(el, canvas.width, canvas.height, state.active && el.id === state.selectedId);
     });
-    if (state.draft && state.draft.type === "bbox") {
+    if (state.active && state.draft && state.draft.type === "bbox") {
       drawElement(state.draft, canvas.width, canvas.height, true);
     }
-    if (state.trailPoints && state.trailPoints.length) {
+    if (state.active && state.trailPoints && state.trailPoints.length) {
       const preview = state.trailPoints.slice();
       if (state.trailCursor) preview.push(state.trailCursor);
       drawElement({ type: "trail", name: "…", coords: preview }, canvas.width, canvas.height, true);
     }
-    if (syncInput === false) return;
+    syncCanvasChrome();
+    if (!state.active || syncInput === false) {
+      if (!state.active) hideNameInput();
+      return;
+    }
     const selected = list.find(function (el) {
       return el.id === state.selectedId;
     });
@@ -233,19 +294,48 @@ export function createPageGuidanceController(bridge) {
     return null;
   }
 
+  function removeAnnotation(page, id) {
+    const pageNum = Number(page);
+    const elementId = String(id || "");
+    if (!(pageNum >= 1) || !elementId) return false;
+    const list = pageMap(pageNum);
+    const next = list.filter(function (el) { return String(el.id) !== elementId; });
+    if (next.length === list.length) return false;
+    if (next.length) state.pages[pageNum] = next;
+    else delete state.pages[pageNum];
+    if (state.selectedId === elementId) {
+      state.selectedId = null;
+      hideNameInput();
+    }
+    notifyAnnotationsChange();
+    if (state.active) redraw();
+    return true;
+  }
+
   function deleteSelected() {
     const page = bridge.getDetailPage();
     if (!page || !state.selectedId) return false;
-    state.pages[page] = pageMap(page).filter(function (el) { return el.id !== state.selectedId; });
-    state.selectedId = null; hideNameInput(); redraw(); notifyAnnotationsChange();
-    return true;
+    return removeAnnotation(page, state.selectedId);
   }
 
   function resetPage() {
     const page = bridge.getDetailPage();
     if (!page) return;
-    state.pages[page] = []; state.selectedId = null; state.draft = null; clearTrailDraft();
-    hideNameInput(); redraw(); notifyAnnotationsChange();
+    clearPageAnnotations(page);
+  }
+
+  function clearPageAnnotations(page) {
+    const pageNum = Number(page);
+    if (!(pageNum >= 1)) return;
+    delete state.pages[pageNum];
+    if (Number(bridge.getDetailPage()) === pageNum) {
+      state.selectedId = null;
+      state.draft = null;
+      clearTrailDraft();
+      hideNameInput();
+    }
+    redraw();
+    notifyAnnotationsChange();
   }
 
   const nameInput = document.createElement("input");
@@ -294,7 +384,8 @@ export function createPageGuidanceController(bridge) {
       return item.id === state.selectedId;
     });
     if (!el) return;
-    el.name = String(nameInput.value || "").trim() || el.type;
+    const typed = String(nameInput.value || "").trim();
+    el.name = typed || defaultNameFor(el.type, page, el.id);
     redraw(false);
     notifyAnnotationsChange();
   });
@@ -328,7 +419,7 @@ export function createPageGuidanceController(bridge) {
       redraw();
       return;
     }
-    const el = { id: uid("trail"), type: "trail", name: "trail", coords: state.trailPoints.slice() };
+    const el = { id: uid("trail"), type: "trail", name: defaultNameFor("trail", page), coords: state.trailPoints.slice() };
     pageMap(page).push(el);
     clearTrailDraft();
     promptRename(el);
@@ -365,13 +456,13 @@ export function createPageGuidanceController(bridge) {
     state.selectedId = null;
     if (state.tool === "bbox") {
       const a = toDeepSeek(pt[0], pt[1], canvas.width, canvas.height);
-      state.draft = { id: uid("bbox"), type: "bbox", name: "bbox", coords: [a[0], a[1], a[0], a[1]] };
+      state.draft = { id: uid("bbox"), type: "bbox", name: defaultNameFor("bbox", page), coords: [a[0], a[1], a[0], a[1]] };
       drag = { mode: "bbox", start: pt };
     } else if (state.tool === "point") {
       const el = {
         id: uid("point"),
         type: "point",
-        name: "point",
+        name: defaultNameFor("point", page),
         coords: toDeepSeek(pt[0], pt[1], canvas.width, canvas.height),
       };
       pageMap(page).push(el);
@@ -466,20 +557,29 @@ export function createPageGuidanceController(bridge) {
     if (tool) setTool(tool.getAttribute("data-annotate-tool"));
   });
   setTool("bbox");
-  bridge.onDetailChange(function () { if (state.active) redraw(); });
+  bridge.onDetailChange(function () {
+    redraw();
+    syncNotesFieldset();
+  });
   bridge.onPdfReset(function () {
     state.pages = {}; state.selectedId = null; state.draft = null; clearTrailDraft();
     if (guidanceField) guidanceField.value = "";
     setActive(false); notifyAnnotationsChange();
   });
   function annotationsPayload() {
-    return Object.keys(state.pages).map(Number).filter(function (page) { return pageMap(page).length > 0; }).sort(function (a, b) { return a - b; }).map(function (page) { return { page: page, elements: pageMap(page) }; });
+    return Object.keys(state.pages).map(Number).filter(function (page) { return (state.pages[page] || []).length > 0; }).sort(function (a, b) { return a - b; }).map(function (page) { return { page: page, elements: (state.pages[page] || []).slice() }; });
   }
-  window.addEventListener("resize", function () { if (state.active) redraw(); });
+  window.addEventListener("resize", function () { redraw(); });
+  syncCanvasChrome();
+  syncNotesFieldset();
   return {
     getAnnotations: annotationsPayload,
     setActive: setActive,
     isActive: function () { return !!state.active; },
+    removeAnnotation: removeAnnotation,
+    clearPageAnnotations: clearPageAnnotations,
+    redraw: redraw,
+    syncNotesFieldset: syncNotesFieldset,
     onAnnotationsChange: function (cb) { if (typeof cb === "function") annotationListeners.push(cb); },
   };
 }

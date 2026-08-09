@@ -119,6 +119,7 @@ DEFAULT_MD_MAX_HEADING = "Non usare heading oltre `###`."
 DEFAULT_MD_CAPTIONS = "Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `>`."
 DEFAULT_MD_WORK_TITLES = "I titoli delle opere d'arte, letterarie o musicali citati nel testo vanno in italics (`*...*` o `_..._`)."
 DEFAULT_MD_NO_INVENT = "Non inventare titoli o didascalie: applica la formattazione solo a elementi tipograficamente evidenti nella pagina."
+DEFAULT_MD_LINE_BREAKS = "Rispetta le righe tipografiche della pagina: una riga stampata = una riga Markdown. Non rifondere i paragrafi in un'unica riga lunga (il MD non ha limite di larghezza). Non spezzare le parole tra righe: ricomponi le sillabazioni a capo togliendo il trattino di fine riga."
 
 MD_FORMATTING_FIELD_DEFAULTS: dict[str, str] = {
     "md_h1": DEFAULT_MD_H1,
@@ -127,6 +128,7 @@ MD_FORMATTING_FIELD_DEFAULTS: dict[str, str] = {
     "md_captions": DEFAULT_MD_CAPTIONS,
     "md_work_titles": DEFAULT_MD_WORK_TITLES,
     "md_no_invent": DEFAULT_MD_NO_INVENT,
+    "md_line_breaks": DEFAULT_MD_LINE_BREAKS,
 }
 
 
@@ -137,6 +139,7 @@ class MdFormattingRules(BaseModel):
     md_captions: str | None = None
     md_work_titles: str | None = None
     md_no_invent: str | None = None
+    md_line_breaks: str | None = None
 
     @model_validator(mode="after")
     def normalize_fields(self) -> "MdFormattingRules":

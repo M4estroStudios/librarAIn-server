@@ -51,7 +51,15 @@ export async function bootPageGuidance(bridge) {
   try {
     const mentions = await import("/dashboard/page-guidance-mentions.js");
     if (mentions && typeof mentions.bootPageGuidanceMentions === "function") {
-      const ui = mentions.bootPageGuidanceMentions(bridge, controller.getAnnotations);
+      const ui = mentions.bootPageGuidanceMentions(
+        bridge,
+        controller.getAnnotations,
+        function (page, id) {
+          if (typeof controller.removeAnnotation === "function") {
+            controller.removeAnnotation(page, id);
+          }
+        }
+      );
       controller.onAnnotationsChange(function () {
         if (ui && typeof ui.refresh === "function") ui.refresh();
       });

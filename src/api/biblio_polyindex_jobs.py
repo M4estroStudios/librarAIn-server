@@ -17,11 +17,16 @@ from src.api.biblio_handlers import (
 from src.core.hashing import new_job_id, validate_source_sha256
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.core.openai_client import build_openai_client, use_compute_mode
+from src.ingestion.book_md_builder import build_book_md
+from src.ingestion.index_builder import build_index_md
+from src.ingestion.index_cross_links import apply_index_cross_links
 from src.ingestion.pdf_alignment import build_page_removal_mapping
 from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
 from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
 from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
+from src.ingestion.toc_builder import build_toc_md
+from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
 from src.models.request import PageRange, UsefulPagesEnumeration
 from src.models.settings import Settings, normalize_compute_mode
 from src.persistence.book_page_exclude import load_book_exclusions
@@ -97,10 +102,60 @@ def _load_book_context(data_root: Path, source_sha256: str) -> dict[str, Any]:
     }
 
 
-def _require_md(path: Path, label: str) -> Path:
-    if not path.is_file():
-        raise BiblioJobError(f"{label} not found: {path.name}")
-    return path
+def _refine_cache_dir(data_root: Path, source_sha256: str) -> Path:
+    return Path(data_root) / "tmp" / source_sha256 / "polyindexRefine"
+
+
+async def _regenerate_toc_md(
+    ctx: dict[str, Any],
+    *,
+    data_root: Path,
+    client: openai.OpenAI,
+    settings: Settings,
+    request_id: str,
+    prompt_notes: str | None,
+) -> Path:
+    toc_md = build_toc_md(ctx["book_output"], ctx["useful"])
+    return await refine_toc_md(
+        toc_md,
+        client,
+        settings,
+        source_sha256=ctx["sha"],
+        request_id=request_id,
+        cache_dir=_refine_cache_dir(data_root, ctx["sha"]),
+        prompt_notes=prompt_notes,
+    )
+
+
+async def _regenerate_index_md(
+    ctx: dict[str, Any],
+    *,
+    data_root: Path,
+    client: openai.OpenAI,
+    settings: Settings,
+    request_id: str,
+    prompt_notes: str | None,
+) -> Path:
+    index_md = build_index_md(ctx["book_output"], ctx["useful"])
+    index_md = await refine_index_md(
+        index_md,
+        client,
+        settings,
+        source_sha256=ctx["sha"],
+        request_id=request_id,
+        cache_dir=_refine_cache_dir(data_root, ctx["sha"]),
+        prompt_notes=prompt_notes,
+    )
+    await apply_index_cross_links(
+        index_md,
+        ctx["book_output"],
+        ctx["useful"],
+        client=client,
+        settings=settings,
+        request_id=request_id,
+    )
+    build_book_md(ctx["book_output"], ctx["useful"])
+    return index_md
 
 
 def run_polyindex_toc_job(
@@ -108,11 +163,23 @@ def run_polyindex_toc_job(
     settings: Settings,
     source_sha256: str,
     *,
+    client: openai.OpenAI | None = None,
     request_id: str = "",
+    prompt_notes: str | None = None,
 ) -> dict[str, Any]:
-    del settings
     ctx = _load_book_context(data_root, source_sha256)
-    toc_md = _require_md(ctx["book_output"].output_dir / "TOC.md", "TOC.md")
+    openai_client = client or build_openai_client(settings)
+    rid = request_id or ctx["sha"]
+    toc_md = _run_async(
+        _regenerate_toc_md(
+            ctx,
+            data_root=data_root,
+            client=openai_client,
+            settings=settings,
+            request_id=rid,
+            prompt_notes=prompt_notes,
+        )
+    )
     path = sync_polyindex_toc_from_book(
         data_root / "polyindex",
         ctx["sha"],
@@ -120,8 +187,22 @@ def run_polyindex_toc_job(
         toc_md,
         ctx["useful"],
     )
-    Log(INFO_LOG_LEVEL, "polyindex toc-only job completed", {"source_sha256": ctx["sha"][:16], "path": str(path)})
-    return {"ok": True, "stage": "polyindex_toc", "source_sha256": ctx["sha"], "toc_json_path": str(path)}
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex toc-only job completed",
+        {
+            "source_sha256": ctx["sha"][:16],
+            "toc_md_path": str(toc_md),
+            "path": str(path),
+        },
+    )
+    return {
+        "ok": True,
+        "stage": "polyindex_toc",
+        "source_sha256": ctx["sha"],
+        "toc_md_path": str(toc_md),
+        "toc_json_path": str(path),
+    }
 
 
 def run_polyindex_index_job(
@@ -134,8 +215,20 @@ def run_polyindex_index_job(
     prompt_notes: str | None = None,
 ) -> dict[str, Any]:
     ctx = _load_book_context(data_root, source_sha256)
-    index_md = _require_md(ctx["book_output"].output_dir / "INDEX.md", "INDEX.md")
     openai_client = client or build_openai_client(settings)
+    rid = request_id or ctx["sha"]
+    index_md = _run_async(
+        _regenerate_index_md(
+            ctx,
+            data_root=data_root,
+            client=openai_client,
+            settings=settings,
+            request_id=rid,
+            prompt_notes=prompt_notes,
+        )
+    )
+    reicat = ctx["manifest"].get("reicat") if isinstance(ctx["manifest"].get("reicat"), dict) else {}
+    book_title = str(reicat.get("title") or reicat.get("titolo") or "") or None
     path, stats = sync_polyindex_index_from_book(
         data_root / "polyindex",
         ctx["sha"],
@@ -144,13 +237,20 @@ def run_polyindex_index_job(
         openai_client,
         settings.sqlite_path,
         settings,
-        request_id or ctx["sha"],
+        rid,
         prompt_notes=prompt_notes,
-        book_title=str((ctx["manifest"].get("reicat") or {}).get("title") or "") or None,
+        book_title=book_title,
         book_slug=ctx["book_output"].slug,
     )
     Log(INFO_LOG_LEVEL, "polyindex index-only job completed", {"source_sha256": ctx["sha"][:16], **stats})
-    return {"ok": True, "stage": "polyindex_index", "source_sha256": ctx["sha"], "index_json_path": str(path), **stats}
+    return {
+        "ok": True,
+        "stage": "polyindex_index",
+        "source_sha256": ctx["sha"],
+        "index_md_path": str(index_md),
+        "index_json_path": str(path),
+        **stats,
+    }
 
 
 def run_polyindex_time_index_job(
@@ -209,7 +309,14 @@ def run_polyindex_stage_job(
             "stage must be one of: " + ", ".join(sorted(POLYINDEX_RERUN_STAGES))
         )
     if stage_key == "polyindex_toc":
-        return run_polyindex_toc_job(data_root, settings, source_sha256, request_id=request_id)
+        return run_polyindex_toc_job(
+            data_root,
+            settings,
+            source_sha256,
+            client=client,
+            request_id=request_id,
+            prompt_notes=prompt_notes,
+        )
     if stage_key == "polyindex_index":
         return run_polyindex_index_job(
             data_root,

@@ -465,6 +465,7 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
         "md_captions",
         "md_work_titles",
         "md_no_invent",
+        "md_line_breaks",
     )
     md_formatting_payload = {
         key: fields.get(key, "").strip()

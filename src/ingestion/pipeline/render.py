@@ -12,6 +12,7 @@ from src.core.hashing import compute_file_sha256
 from src.core.log import INFO_LOG_LEVEL, Log
 
 PNG_RENDERER_MARKER_VERSION = 1
+DEFAULT_RENDER_DPI = 250
 
 _pdfium_lock_guard = threading.Lock()
 _pdfium_locks: dict[str, threading.Lock] = {}
@@ -185,7 +186,7 @@ def _render_pdf_page_to_png(
 
 
 def render_pdf_page_to_png(
-    pdf_path: Path, page_index_zero: int, target_path: Path, *, dpi: int = 200
+    pdf_path: Path, page_index_zero: int, target_path: Path, *, dpi: int = DEFAULT_RENDER_DPI
 ) -> Path:
     pdf_path = Path(pdf_path)
     target_path = Path(target_path)

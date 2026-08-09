@@ -25,6 +25,7 @@ from src.persistence.book_sqlite import (
 )
 from src.models.request import (
     DEFAULT_MD_H1,
+    DEFAULT_MD_LINE_BREAKS,
     IngestInputErrorCode,
     IngestRequest,
     MdFormattingRules,
@@ -70,9 +71,11 @@ class MdFormattingRulesTests(unittest.TestCase):
         rules = MdFormattingRules()
         resolved = rules.resolved()
         self.assertEqual(resolved["md_h1"], DEFAULT_MD_H1)
+        self.assertEqual(resolved["md_line_breaks"], DEFAULT_MD_LINE_BREAKS)
         block = build_md_formatting_block(rules)
         self.assertTrue(block.startswith("Formattazione markdown:"))
         self.assertIn(DEFAULT_MD_H1, block)
+        self.assertIn(DEFAULT_MD_LINE_BREAKS, block)
 
     def test_override_single_rule(self) -> None:
         rules = MdFormattingRules(md_h1="solo titoli capitolo")

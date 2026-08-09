@@ -323,6 +323,8 @@ def exclude_book_page(
     source_sha256: str,
     aligned_page: int,
 ) -> dict[str, Any]:
+    from src.persistence.book_page_realign import compact_book_alignment
+
     sha = _safe_sha(source_sha256)
     if aligned_page < 1:
         raise PageExcludeError("aligned_page must be positive")
@@ -334,6 +336,14 @@ def exclude_book_page(
     slug = _resolve_slug(data_root, sha, manifest)
     if not slug:
         raise PageExcludeError("book slug not found")
+    pages = manifest.get("pages") if manifest else None
+    page_aligneds: set[int] = set()
+    if isinstance(pages, list):
+        for entry in pages:
+            if isinstance(entry, dict) and isinstance(entry.get("aligned"), int):
+                page_aligneds.add(int(entry["aligned"]))
+    if page_aligneds and aligned_page not in page_aligneds:
+        raise PageExcludeError(f"page {aligned_page} not found in manifest")
     original_page = _resolve_original_page(
         aligned_page,
         manifest=manifest,
@@ -341,23 +351,32 @@ def exclude_book_page(
         data_root=data_root,
         source_sha256=sha,
     )
-    excluded_aligned = sorted(set(excluded_aligned + [aligned_page]))
-    if original_page is not None:
-        pages_to_remove = sorted(set(pages_to_remove + [original_page]))
-    _save_exclusions(
-        data_root,
-        sha,
-        manifest=manifest,
-        excluded_aligned=excluded_aligned,
-        pages_to_remove=pages_to_remove,
-    )
+    if original_page is None:
+        raise PageExcludeError(f"original page for aligned {aligned_page} not found")
+    if original_page in pages_to_remove:
+        raise PageExcludeError(f"page {aligned_page} is already excluded")
+    pages_to_remove = sorted(set(pages_to_remove + [original_page]))
+    if manifest is not None:
+        manifest["pages_to_remove"] = pages_to_remove
+        if isinstance(manifest.get("pages"), list):
+            manifest["pages"] = [
+                entry
+                for entry in manifest["pages"]
+                if not (
+                    isinstance(entry, dict)
+                    and entry.get("aligned") == aligned_page
+                )
+            ]
+        _atomic_write_json(manifest_path, manifest)
     deleted_files = _delete_page_artifacts(data_root, sha, slug, aligned_page)
     _purge_polyindex_page(data_root, sha, aligned_page, original_page)
+    compacted = compact_book_alignment(data_root, sha)
     return {
         "source_sha256": sha,
         "aligned_page": aligned_page,
         "original_page": original_page,
-        "excluded_aligned_pages": excluded_aligned,
-        "pages_to_remove": pages_to_remove,
+        "excluded_aligned_pages": [],
+        "pages_to_remove": compacted["pages_to_remove"],
+        "aligned_page_count": compacted["aligned_page_count"],
         "deleted_files": deleted_files,
     }

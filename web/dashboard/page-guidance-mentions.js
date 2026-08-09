@@ -75,7 +75,56 @@ function createMentionMenu() {
   return menu;
 }
 
-export function bootPageGuidanceMentions(bridge, getAnnotations) {
+function getTextareaCaretRect(textarea, index) {
+  if (!textarea) return null;
+  const pos = Math.max(0, Math.min(Number(index) || 0, (textarea.value || "").length));
+  const style = window.getComputedStyle(textarea);
+  const mirror = document.createElement("div");
+  const props = [
+    "boxSizing", "width", "height", "overflowX", "overflowY",
+    "borderTopWidth", "borderRightWidth", "borderBottomWidth", "borderLeftWidth",
+    "paddingTop", "paddingRight", "paddingBottom", "paddingLeft",
+    "fontStyle", "fontVariant", "fontWeight", "fontStretch", "fontSize", "fontSizeAdjust",
+    "lineHeight", "fontFamily", "textAlign", "textTransform", "textIndent",
+    "textDecoration", "letterSpacing", "wordSpacing", "tabSize", "whiteSpace", "wordBreak",
+    "overflowWrap", "wordWrap",
+  ];
+  mirror.setAttribute("aria-hidden", "true");
+  mirror.style.position = "absolute";
+  mirror.style.visibility = "hidden";
+  mirror.style.top = "0";
+  mirror.style.left = "-9999px";
+  mirror.style.pointerEvents = "none";
+  mirror.style.whiteSpace = "pre-wrap";
+  mirror.style.wordWrap = "break-word";
+  props.forEach(function (prop) {
+    mirror.style[prop] = style[prop];
+  });
+  mirror.style.width = textarea.clientWidth + "px";
+  mirror.style.height = "auto";
+  mirror.style.overflow = "hidden";
+  const value = textarea.value || "";
+  mirror.textContent = value.slice(0, pos);
+  const marker = document.createElement("span");
+  marker.textContent = value.slice(pos) || ".";
+  mirror.appendChild(marker);
+  document.body.appendChild(mirror);
+  const taRect = textarea.getBoundingClientRect();
+  const markerRect = marker.getBoundingClientRect();
+  const mirrorRect = mirror.getBoundingClientRect();
+  const lineHeight = parseFloat(style.lineHeight) || (parseFloat(style.fontSize) * 1.35) || 16;
+  const top = taRect.top + (markerRect.top - mirrorRect.top) - textarea.scrollTop;
+  const left = taRect.left + (markerRect.left - mirrorRect.left) - textarea.scrollLeft;
+  document.body.removeChild(mirror);
+  return {
+    top: top,
+    left: left,
+    bottom: top + lineHeight,
+    height: lineHeight,
+  };
+}
+
+export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotation) {
   ensureChipRows();
   const menu = createMentionMenu();
   let activeField = null;
@@ -91,19 +140,41 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
     return "page_notes";
   }
 
+  function currentDetailPage() {
+    if (typeof bridge.getDetailPage !== "function") return null;
+    const page = Number(bridge.getDetailPage());
+    return page >= 1 ? page : null;
+  }
+
   function itemsForSection(section) {
     const payload = typeof getAnnotations === "function" ? getAnnotations() : [];
+    const onlyPage = currentDetailPage();
     const out = [];
     payload.forEach(function (pageItem) {
       const sectionName = sectionOfPage(pageItem.page);
       if (sectionName !== section) return;
+      if (onlyPage != null && Number(pageItem.page) !== onlyPage) return;
       (pageItem.elements || []).forEach(function (el) {
+        const lineStart = Number(el.lineStart);
+        const lineEnd = Number(el.lineEnd);
+        const charStart = Number(el.start);
+        const charEnd = Number(el.end);
+        let meta = "p." + pageItem.page;
+        if (el.type === "text" && lineStart >= 1) {
+          meta = lineStart === lineEnd || !(lineEnd >= 1)
+            ? "r." + lineStart
+            : "r." + lineStart + "-" + lineEnd;
+          if (Number.isFinite(charStart) && Number.isFinite(charEnd) && charEnd >= charStart) {
+            meta += " · c." + charStart + "-" + charEnd;
+          }
+        }
         out.push({
           page: pageItem.page,
           id: el.id,
           name: el.name || el.type,
           type: el.type,
           token: mentionToken(el.name || el.type),
+          meta: meta,
         });
       });
     });
@@ -116,31 +187,57 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
       const row = document.querySelector('[data-mention-chips="' + field + '"]');
       if (!row) return;
       const items = itemsForSection(field);
+      row.innerHTML = "";
       if (!items.length) {
-        row.innerHTML = "";
         row.classList.add("is-empty");
         return;
       }
       row.classList.remove("is-empty");
-      row.innerHTML = items
-        .map(function (item) {
-          return (
-            '<button type="button" class="mention-chip" data-field="' +
-            field +
-            '" data-token="' +
-            escapeHtml(item.token) +
-            '" title="p.' +
-            item.page +
-            " · " +
-            escapeHtml(item.type) +
-            '">@' +
-            escapeHtml(item.token) +
-            "<small>p." +
-            item.page +
-            "</small></button>"
-          );
-        })
-        .join("");
+      items.forEach(function (item) {
+        const chip = document.createElement("div");
+        chip.className = "mention-chip";
+        chip.setAttribute("data-field", field);
+        chip.setAttribute("data-token", item.token || "");
+        chip.setAttribute("data-page", String(item.page));
+        chip.setAttribute("data-id", String(item.id || ""));
+        chip.title = item.meta + " · " + (item.type || "");
+
+        const label = document.createElement("button");
+        label.type = "button";
+        label.className = "mention-chip-label";
+        label.innerHTML = "@" + escapeHtml(item.token) + "<small>" + escapeHtml(item.meta) + "</small>";
+        label.addEventListener("click", function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          const textarea = document.querySelector('textarea[name="' + field + '"]');
+          if (!textarea || !item.token) return;
+          const start = textarea.selectionStart != null ? textarea.selectionStart : textarea.value.length;
+          insertToken(textarea, start, start, item.token);
+        });
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "mention-chip-remove";
+        remove.title = "Elimina";
+        remove.setAttribute("aria-label", "Elimina");
+        remove.textContent = "×";
+        remove.addEventListener("mousedown", function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+        });
+        remove.addEventListener("click", function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (typeof removeAnnotation === "function" && item.page >= 1 && item.id) {
+            removeAnnotation(item.page, item.id, item.token);
+          }
+          renderChips();
+        });
+
+        chip.appendChild(label);
+        chip.appendChild(remove);
+        row.appendChild(chip);
+      });
     });
   }
 
@@ -166,7 +263,7 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
     textarea.dispatchEvent(new Event("input", { bubbles: true }));
   }
 
-  function showMenu(textarea, items, rectAnchor) {
+  function showMenu(textarea, items, atIndex) {
     currentItems = items;
     if (!items.length) {
       hideMenu();
@@ -182,8 +279,8 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
           idx +
           '">@' +
           escapeHtml(item.token) +
-          "<span>p." +
-          item.page +
+          "<span>" +
+          escapeHtml(item.meta || ("p." + item.page)) +
           " · " +
           escapeHtml(item.type) +
           "</span></button>"
@@ -191,10 +288,21 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
       })
       .join("");
     menu.classList.remove("hidden");
-    const rect = rectAnchor || textarea.getBoundingClientRect();
-    menu.style.left = Math.round(rect.left + window.scrollX) + "px";
-    menu.style.top = Math.round(rect.bottom + window.scrollY + 4) + "px";
-    menu.style.minWidth = Math.max(180, Math.round(rect.width * 0.45)) + "px";
+    const caretIndex = Number.isFinite(atIndex) ? atIndex : activeStart;
+    const caret = getTextareaCaretRect(textarea, caretIndex >= 0 ? caretIndex : (textarea.selectionStart || 0));
+    const taRect = textarea.getBoundingClientRect();
+    let left = caret ? caret.left : taRect.left;
+    let top = caret ? caret.bottom + 4 : taRect.bottom + 4;
+    menu.style.minWidth = "180px";
+    const menuWidth = Math.max(180, menu.offsetWidth || 180);
+    const menuHeight = Math.max(40, menu.offsetHeight || 40);
+    if (left + menuWidth > window.innerWidth - 8) left = Math.max(8, window.innerWidth - menuWidth - 8);
+    if (left < 8) left = 8;
+    if (top + menuHeight > window.innerHeight - 8) {
+      top = Math.max(8, (caret ? caret.top : taRect.top) - menuHeight - 4);
+    }
+    menu.style.left = Math.round(left) + "px";
+    menu.style.top = Math.round(top) + "px";
   }
 
   function filterItems(section, query) {
@@ -234,20 +342,25 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
       activeField = field;
       activeStart = mention.start;
       activeQuery = mention.query;
-      showMenu(textarea, filterItems(field, mention.query), textarea.getBoundingClientRect());
+      showMenu(textarea, filterItems(field, mention.query), mention.start);
     });
-    textarea.addEventListener("scroll", function () { syncMentionScroll(textarea); });
+    textarea.addEventListener("scroll", function () {
+      syncMentionScroll(textarea);
+      if (!menu.classList.contains("hidden") && activeField === field && activeStart >= 0) {
+        showMenu(textarea, currentItems, activeStart);
+      }
+    });
 
     textarea.addEventListener("keydown", function (ev) {
       if (menu.classList.contains("hidden") || activeField !== field) return;
       if (ev.key === "ArrowDown") {
         ev.preventDefault();
         highlight = (highlight + 1) % currentItems.length;
-        showMenu(textarea, currentItems, textarea.getBoundingClientRect());
+        showMenu(textarea, currentItems, activeStart);
       } else if (ev.key === "ArrowUp") {
         ev.preventDefault();
         highlight = (highlight - 1 + currentItems.length) % currentItems.length;
-        showMenu(textarea, currentItems, textarea.getBoundingClientRect());
+        showMenu(textarea, currentItems, activeStart);
       } else if (ev.key === "Enter" || ev.key === "Tab") {
         if (!currentItems.length) return;
         ev.preventDefault();
@@ -270,7 +383,9 @@ export function bootPageGuidanceMentions(bridge, getAnnotations) {
   SECTION_FIELDS.forEach(bindTextarea);
 
   document.addEventListener("click", function (ev) {
-    const chip = ev.target.closest(".mention-chip");
+    if (ev.target.closest(".mention-chip-remove")) return;
+    const label = ev.target.closest(".mention-chip-label");
+    const chip = label && label.closest(".mention-chip");
     if (chip) {
       const field = chip.getAttribute("data-field");
       const token = chip.getAttribute("data-token") || "";

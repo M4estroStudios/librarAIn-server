@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
 from src.ingestion.pipeline.engine import EasyOCRPageEngine, OCRPageEngine
 from src.core.hashing import compute_file_sha256
-from src.ingestion.pipeline.render import _render_pdf_page_to_png
+from src.ingestion.pipeline.render import DEFAULT_RENDER_DPI, _render_pdf_page_to_png
 from src.ingestion.progress import (
     PHASE_RENDER,
     PHASE_STAGE1_OCR,
@@ -192,7 +192,7 @@ async def _render_stage1_pages_sequential(
                 aligned_pdf_path,
                 work.aligned - 1,
                 work.png_path,
-                dpi=200,
+                dpi=DEFAULT_RENDER_DPI,
                 source_sha256=render_source_sha256,
             )
             emit_progress(make_event(

@@ -13,6 +13,19 @@ _INGEST_TERMINAL_STATUSES = frozenset({"done", "error"})
 _RESEARCH_TERMINAL_STATUSES = frozenset({"succeeded", "failed"})
 _TERMINAL_STATUSES = _INGEST_TERMINAL_STATUSES | _RESEARCH_TERMINAL_STATUSES
 
+
+def _resolve_terminal_timing(
+    existing: Any,
+    *,
+    total_seconds: float,
+) -> dict[str, Any]:
+    if isinstance(existing, dict):
+        timing = dict(existing)
+        if "total_seconds" not in timing:
+            timing["total_seconds"] = total_seconds
+        return timing
+    return {"total_seconds": total_seconds}
+
 DEFAULT_JOB_TTL_SECONDS = 2 * 60 * 60
 DEFAULT_MAX_FINISHED_JOBS = 200
 
@@ -29,7 +42,9 @@ class JobState:
         "compute_mode",
         "created_at",
         "updated_at",
+        "created_at_monotonic",
         "finished_at_monotonic",
+        "timing",
         "global_total",
         "global_step",
         "_subscribers",
@@ -54,7 +69,9 @@ class JobState:
         self.error: str | None = None
         self.created_at = now
         self.updated_at = now
+        self.created_at_monotonic = time.monotonic()
         self.finished_at_monotonic: float | None = None
+        self.timing: dict[str, Any] | None = None
         self.global_total: int | None = None
         self.global_step: int = 0
         self._subscribers: list[queue.Queue[dict[str, Any]]] = []
@@ -70,6 +87,9 @@ def _clone_state_for_summary(state: JobState) -> JobState:
     clone.error = state.error
     clone.created_at = state.created_at
     clone.updated_at = state.updated_at
+    clone.created_at_monotonic = state.created_at_monotonic
+    clone.finished_at_monotonic = state.finished_at_monotonic
+    clone.timing = dict(state.timing) if isinstance(state.timing, dict) else state.timing
     clone.global_total = state.global_total
     clone.global_step = state.global_step
     return clone
@@ -215,22 +235,24 @@ class JobRegistry:
                 ev["global_total"] = state.global_total
 
             status = ev.get("status", "")
-            if status == "done":
-                state.status = "done"
-                state.result = ev.get("result")
+            if status in _TERMINAL_STATUSES:
+                total_seconds = round(time.monotonic() - state.created_at_monotonic, 2)
+                timing = _resolve_terminal_timing(ev.get("timing"), total_seconds=total_seconds)
+                ev["timing"] = timing
+                state.timing = timing
                 state.finished_at_monotonic = time.monotonic()
-            elif status == "error":
-                state.status = "error"
-                state.error = ev.get("message")
-                state.finished_at_monotonic = time.monotonic()
-            elif status == "succeeded":
-                state.status = "succeeded"
-                state.result = ev.get("result")
-                state.finished_at_monotonic = time.monotonic()
-            elif status == "failed":
-                state.status = "failed"
-                state.error = ev.get("message")
-                state.finished_at_monotonic = time.monotonic()
+                if status == "done":
+                    state.status = "done"
+                    state.result = ev.get("result")
+                elif status == "error":
+                    state.status = "error"
+                    state.error = ev.get("message")
+                elif status == "succeeded":
+                    state.status = "succeeded"
+                    state.result = ev.get("result")
+                elif status == "failed":
+                    state.status = "failed"
+                    state.error = ev.get("message")
             elif status == "started":
                 if state.job_kind == "research" and state.status == "accepted":
                     state.status = "running"
@@ -261,6 +283,7 @@ class JobRegistry:
                 "events": list(state.events),
                 "result": state.result,
                 "error": state.error,
+                "timing": state.timing,
                 "created_at": state.created_at,
                 "updated_at": state.updated_at,
             }
@@ -468,6 +491,7 @@ _PHASE_LABELS = {
     "polyindex_index": "Polyindex INDEX",
     "time_index": "Polyindex TIME_INDEX",
     "polyindex_biblio": "Polyindex BIBLIO",
+    "biblio_apply": "Biblioteca — Applica modifiche",
     "page_repair": "Preparazione riparazione",
     "gaps_repair": "Riparazione lacune",
     "subject_embeddings": "Embedding soggetti",
@@ -882,6 +906,7 @@ def summarize_job_state(state: JobState) -> dict[str, Any]:
         "global_step": state.global_step,
         "global_total": state.global_total,
         "phases": phases,
+        "timing": state.timing,
         "created_at": state.created_at,
         "updated_at": state.updated_at,
         "status_url": f"/api/ingest/{state.job_id}/status",

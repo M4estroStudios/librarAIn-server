@@ -96,12 +96,13 @@ button.resume-job:disabled, button.terminate-job:disabled, button.doctor-job:dis
           <th>Tipo</th>
           <th>ID</th>
           <th>Avviato</th>
+          <th>Durata</th>
           <th>Aggiornato</th>
           <th></th>
         </tr>
       </thead>
       <tbody id="history-body">
-        <tr><td colspan="7" class="empty">Caricamento…</td></tr>
+        <tr><td colspan="8" class="empty">Caricamento…</td></tr>
       </tbody>
     </table>
   </div>
@@ -137,6 +138,33 @@ function formatTs(iso) {
   } catch {
     return iso;
   }
+}
+
+function formatDurationSeconds(totalSeconds) {
+  if (totalSeconds == null || !Number.isFinite(Number(totalSeconds)) || Number(totalSeconds) < 0) {
+    return "—";
+  }
+  const sec = Math.round(Number(totalSeconds));
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  if (h > 0) {
+    return h + "h " + String(m).padStart(2, "0") + "m " + String(s).padStart(2, "0") + "s";
+  }
+  if (m > 0) return m + "m " + String(s).padStart(2, "0") + "s";
+  return s + "s";
+}
+
+function jobDurationLabel(job) {
+  const timing = job && job.timing;
+  if (timing && typeof timing.total_seconds === "number") {
+    return formatDurationSeconds(timing.total_seconds);
+  }
+  if (!job || !job.created_at || !job.updated_at) return "—";
+  const start = Date.parse(job.created_at);
+  const end = Date.parse(job.updated_at);
+  if (Number.isNaN(start) || Number.isNaN(end) || end < start) return "—";
+  return formatDurationSeconds((end - start) / 1000);
 }
 
 const KIND_LABELS = {
@@ -328,7 +356,7 @@ async function loadHistory() {
     });
     meta.textContent = jobs.length + " risultati";
     if (!jobs.length) {
-      body.innerHTML = '<tr><td colspan="7" class="empty">Nessun job trovato.</td></tr>';
+      body.innerHTML = '<tr><td colspan="8" class="empty">Nessun job trovato.</td></tr>';
       return;
     }
     body.innerHTML = jobs.map(function (job) {
@@ -380,6 +408,7 @@ async function loadHistory() {
         "<td>" + escapeHtml(kind) + "</td>" +
         '<td class="mono">' + escapeHtml(job.job_id || "") + "</td>" +
         "<td>" + escapeHtml(formatTs(job.created_at)) + "</td>" +
+        "<td>" + escapeHtml(jobDurationLabel(job)) + "</td>" +
         "<td>" + escapeHtml(formatTs(job.updated_at)) + "</td>" +
         "<td>" + actions + "</td>" +
         "</tr>"
@@ -419,7 +448,7 @@ async function loadHistory() {
       });
     });
   } catch (err) {
-    body.innerHTML = '<tr><td colspan="7" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
+    body.innerHTML = '<tr><td colspan="8" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
     meta.textContent = "";
   }
 }

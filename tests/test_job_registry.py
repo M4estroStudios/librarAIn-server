@@ -56,6 +56,11 @@ class TestJobRegistryBasics(unittest.TestCase):
         assert status is not None
         self.assertEqual(status["status"], "done")
         self.assertEqual(status["result"], {"book": "x"})
+        timing = status["timing"]
+        assert isinstance(timing, dict)
+        self.assertIn("total_seconds", timing)
+        self.assertGreaterEqual(timing["total_seconds"], 0)
+        self.assertEqual(status["events"][-1]["timing"]["total_seconds"], timing["total_seconds"])
 
     def test_terminal_error_event(self) -> None:
         registry = JobRegistry()
@@ -65,6 +70,26 @@ class TestJobRegistryBasics(unittest.TestCase):
         assert status is not None
         self.assertEqual(status["status"], "error")
         self.assertEqual(status["error"], "boom")
+        timing = status["timing"]
+        assert isinstance(timing, dict)
+        self.assertIn("total_seconds", timing)
+
+    def test_terminal_preserves_existing_timing_total(self) -> None:
+        registry = JobRegistry()
+        job_id = registry.create_job()
+        registry.emit(
+            job_id,
+            make_event(
+                "pipeline",
+                "done",
+                result={},
+                timing={"total_seconds": 12.5, "phases": {"stage1_ocr": 9.0}},
+            ),
+        )
+        status = registry.get_status(job_id)
+        assert status is not None
+        self.assertEqual(status["timing"]["total_seconds"], 12.5)
+        self.assertEqual(status["timing"]["phases"]["stage1_ocr"], 9.0)
 
 
 class TestJobRegistrySubscribe(unittest.TestCase):

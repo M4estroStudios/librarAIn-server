@@ -5,11 +5,10 @@ from pathlib import Path
 from typing import Any
 
 from src.core.hashing import compute_file_sha256, validate_source_sha256
-from src.ingestion.pipeline.render import _render_pdf_page_to_png
+from src.ingestion.pipeline.render import DEFAULT_RENDER_DPI, _render_pdf_page_to_png
 from src.ingestion.pipeline.md_cache import stage_md_cached_model, write_stage_md
 from src.persistence.book_pages_audit import _load_manifest, _stage_page_path
 
-DEFAULT_RENDER_DPI = 200
 _TRANSCRIPT_STAGE_ORDER = ("stage3Editor", "output", "stage1OCR")
 _REVIEW_PENDING_FILE = "review_pending.json"
 

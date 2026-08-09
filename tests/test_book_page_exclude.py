@@ -73,8 +73,8 @@ class TestBookPageExclude(unittest.TestCase):
             self.sha,
             slug="libro",
             title="Libro",
-            original_page_count=10,
-            pages={1: 1, 2: 3, 3: 4},
+            original_page_count=3,
+            pages={1: 1, 2: 2, 3: 3},
         )
         tmp_root = self.data_root / "tmp" / self.sha
         render_dir = tmp_root / "render"
@@ -82,22 +82,32 @@ class TestBookPageExclude(unittest.TestCase):
         (render_dir / "p.0002.png").write_bytes(b"png")
         result = exclude_book_page(self.data_root, self.sha, 2)
         self.assertEqual(result["aligned_page"], 2)
-        self.assertEqual(result["original_page"], 3)
+        self.assertEqual(result["original_page"], 2)
         manifest = json.loads(
             (self.data_root / "output" / self.sha / "manifest.json").read_text(
                 encoding="utf-8"
             )
         )
-        self.assertEqual(manifest["excluded_aligned_pages"], [2])
-        self.assertEqual(manifest["pages_to_remove"], [3])
+        self.assertEqual(manifest["excluded_aligned_pages"], [])
+        self.assertEqual(manifest["pages_to_remove"], [2])
+        self.assertEqual(manifest["aligned_page_count"], 2)
         self.assertEqual(len(manifest["pages"]), 2)
-        self.assertFalse((tmp_root / "stage1OCR" / "p.0002.libro.txt").is_file())
-        self.assertFalse((self.data_root / "output" / self.sha / "pages" / "p.0002.libro.md").is_file())
+        self.assertEqual(
+            [entry["aligned"] for entry in manifest["pages"]],
+            [1, 2],
+        )
+        self.assertEqual(manifest["pages"][1]["original"], 3)
+        self.assertTrue((self.data_root / "output" / self.sha / "pages" / "p.0002.libro.md").is_file())
+        self.assertEqual(
+            (self.data_root / "output" / self.sha / "pages" / "p.0002.libro.md").read_text(encoding="utf-8"),
+            "page 3\n",
+        )
+        self.assertFalse((tmp_root / "stage1OCR" / "p.0003.libro.txt").is_file())
         excluded_aligned, pages_to_remove = load_book_exclusions(
             self.data_root, self.sha, manifest=manifest
         )
-        self.assertEqual(excluded_aligned, [2])
-        self.assertEqual(pages_to_remove, [3])
+        self.assertEqual(excluded_aligned, [])
+        self.assertEqual(pages_to_remove, [2])
 
     def test_audit_skips_excluded_pages(self) -> None:
         _write_book(
@@ -105,7 +115,7 @@ class TestBookPageExclude(unittest.TestCase):
             self.sha,
             slug="libro",
             title="Libro",
-            original_page_count=5,
+            original_page_count=2,
             pages={1: 1, 2: 2},
         )
         tmp_root = self.data_root / "tmp" / self.sha
@@ -118,6 +128,7 @@ class TestBookPageExclude(unittest.TestCase):
         after = audit_book(self.data_root, self.sha)
         assert after is not None
         self.assertEqual(after["missing_pages"], [])
+        self.assertEqual(after["viewer_pages"], [1])
 
     def test_exclude_twice_raises(self) -> None:
         _write_book(
@@ -125,7 +136,7 @@ class TestBookPageExclude(unittest.TestCase):
             self.sha,
             slug="libro",
             title="Libro",
-            original_page_count=5,
+            original_page_count=2,
             pages={1: 1, 2: 2},
         )
         exclude_book_page(self.data_root, self.sha, 2)

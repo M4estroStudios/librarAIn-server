@@ -25,6 +25,8 @@ from src.models.settings import Settings, normalize_compute_mode
 
 def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
     from src.persistence.book_pages_audit import audit_all_books
+    from src.persistence.polyindex_conflicts import count_conflicts_for_book
+    from src.persistence.polyindex_deprecated import count_deprecated_for_book
 
     report = audit_all_books(data_root)
     books_out: list[dict[str, Any]] = []
@@ -45,6 +47,8 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
         authors = None
         year = None
         original_page_count = None
+        aligned_page_count = None
+        pages_to_remove: list[int] = []
         if manifest_path.is_file():
             try:
                 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -54,6 +58,18 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
                 opc = manifest.get("original_page_count")
                 if isinstance(opc, int) and opc > 0:
                     original_page_count = opc
+                apc = manifest.get("aligned_page_count")
+                if isinstance(apc, int) and apc > 0:
+                    aligned_page_count = apc
+                raw_removed = manifest.get("pages_to_remove")
+                if isinstance(raw_removed, list):
+                    pages_to_remove = sorted(
+                        {
+                            int(page)
+                            for page in raw_removed
+                            if isinstance(page, int) and page > 0
+                        }
+                    )
                 raw_range = manifest.get("biblio_range")
                 if isinstance(raw_range, dict):
                     start = raw_range.get("start")
@@ -89,12 +105,16 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
                 "year": year,
                 "expected_page_count": book.get("expected_page_count"),
                 "original_page_count": original_page_count,
+                "aligned_page_count": aligned_page_count,
+                "pages_to_remove": pages_to_remove,
                 "complete": bool(book.get("complete")),
                 "output_pages": output_present,
                 "eligible": output_present > 0,
                 "has_biblio": biblio_path.is_file(),
                 "biblio_entry_count": entry_count,
                 "biblio_range": biblio_range,
+                "deprecated_count": count_deprecated_for_book(data_root, sha),
+                "conflicts_count": count_conflicts_for_book(data_root, sha),
             }
         )
     books_out.sort(key=lambda item: str(item.get("title") or "").casefold())
@@ -190,6 +210,26 @@ def try_handle_biblio_get(
     if route == "/api/admin/biblio/candidates":
         send_json(handler, 200, list_biblio_candidates(data_root))
         return True
+    if route == "/api/admin/biblio/deprecated":
+        from src.persistence.polyindex_deprecated import list_deprecated_items
+
+        sha = (query.get("source_sha256") or [""])[0].strip()
+        items = list_deprecated_items(data_root, source_sha256=sha or None)
+        send_json(
+            handler,
+            200,
+            {
+                "ok": True,
+                "source_sha256": sha or None,
+                "count": len(items),
+                "items": items,
+            },
+        )
+        return True
+    from src.api.biblio_apply_http import try_handle_biblio_apply_get
+
+    if try_handle_biblio_apply_get(route, handler, data_root=data_root, send_json=send_json, query=query):
+        return True
     if route == "/api/admin/biblio/artifact":
         send_json(
             handler,
@@ -241,6 +281,58 @@ def try_handle_biblio_post(
     send_json,
     read_body,
 ) -> bool:
+    if path == "/api/admin/biblio/deprecated/delete":
+        try:
+            from src.persistence.polyindex_deprecated import delete_deprecated_item
+
+            payload = json.loads(read_body(handler, 1024 * 1024).decode("utf-8"))
+            result = delete_deprecated_item(data_root, str(payload.get("id") or ""))
+            send_json(handler, 200 if result.get("ok") else 404, result)
+        except Exception as exc:
+            send_json(handler, 400, {"ok": False, "error": str(exc)})
+        return True
+
+    from src.api.biblio_apply_http import try_handle_biblio_apply_post
+
+    if try_handle_biblio_apply_post(
+        path,
+        handler,
+        data_root=data_root,
+        settings=settings,
+        registry=registry,
+        job_semaphore=job_semaphore,
+        send_json=send_json,
+        read_body=read_body,
+    ):
+        return True
+
+    if path == "/api/admin/biblio/indices/refresh":
+        try:
+            from src.ingestion.polyindex.page_index_refresh import refresh_polyindex_for_pages
+
+            payload = json.loads(read_body(handler, 1024 * 1024).decode("utf-8"))
+            pages_raw = payload.get("aligned_pages") or []
+            if not isinstance(pages_raw, list):
+                send_json(handler, 400, {"ok": False, "error": "aligned_pages must be a list"})
+                return True
+            aligned_pages = [int(page) for page in pages_raw if int(page) > 0]
+            compute_mode = normalize_compute_mode(payload.get("compute_mode"))
+            with use_compute_mode(compute_mode, settings):
+                job_settings = settings.for_compute_mode(compute_mode)
+                result = refresh_polyindex_for_pages(
+                    data_root,
+                    job_settings,
+                    str(payload.get("source_sha256") or ""),
+                    aligned_pages,
+                    prompt_notes=str(payload["prompt_notes"])
+                    if isinstance(payload.get("prompt_notes"), str)
+                    else None,
+                )
+            send_json(handler, 200 if result.get("ok") else 400, result)
+        except Exception as exc:
+            send_json(handler, 400, {"ok": False, "error": str(exc)})
+        return True
+
     if path == "/api/admin/biblio/review/discard":
         try:
             payload = json.loads(read_body(handler, 1024 * 1024).decode("utf-8"))

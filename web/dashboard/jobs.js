@@ -231,6 +231,42 @@ function formatJobStatsLine(done, total) {
   return formatJobPercent(done, total) + "% (" + done + "/" + total + ")";
 }
 
+function formatDurationSeconds(totalSeconds) {
+  if (totalSeconds == null || !Number.isFinite(Number(totalSeconds)) || Number(totalSeconds) < 0) {
+    return "";
+  }
+  const sec = Math.round(Number(totalSeconds));
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  if (h > 0) {
+    return h + "h " + String(m).padStart(2, "0") + "m " + String(s).padStart(2, "0") + "s";
+  }
+  if (m > 0) return m + "m " + String(s).padStart(2, "0") + "s";
+  return s + "s";
+}
+
+function jobDurationSeconds(job) {
+  if (!job) return null;
+  const timing = job.timing;
+  if (timing && typeof timing.total_seconds === "number") {
+    return timing.total_seconds;
+  }
+  if (!job.created_at) return null;
+  const start = Date.parse(job.created_at);
+  if (Number.isNaN(start)) return null;
+  let end = Date.now();
+  if (!job.is_active && job.updated_at) {
+    const finished = Date.parse(job.updated_at);
+    if (!Number.isNaN(finished)) end = finished;
+  }
+  return Math.max(0, (end - start) / 1000);
+}
+
+function jobDurationLabel(job) {
+  return formatDurationSeconds(jobDurationSeconds(job));
+}
+
 function jobPhaseLabel(phase, fallback) {
   return JOB_PHASE_LABELS[phase] || fallback || phase || "Fase";
 }
@@ -511,6 +547,7 @@ function renderBatchChildCompact(job) {
   const title = job.title || job.poh_label || job.poh_id || "Articolo";
   const statusLabel = job.display_status_label || job.status || "completato";
   const statusClass = job.error ? " failed" : " done";
+  const duration = jobDurationLabel(job);
   let html =
     '<div class="batch-child-compact' +
     statusClass +
@@ -522,6 +559,7 @@ function renderBatchChildCompact(job) {
     "</span>" +
     '<span class="batch-child-compact-meta">' +
     escapeHtml(statusLabel) +
+    (duration ? " · " + escapeHtml(duration) : "") +
     "</span>";
   const articleHref =
     job.article_url ||
@@ -544,6 +582,7 @@ function renderBatchSummaryContent(job) {
   const globalStep = typeof job.global_step === "number" ? job.global_step : 0;
   const globalTotal = typeof job.global_total === "number" ? job.global_total : 0;
   const currentLabel = job.poh_label || job.title || "";
+  const duration = jobDurationLabel(job);
   let inner =
     '<div class="active-job-header">' +
     '<span class="active-job-title">' +
@@ -552,6 +591,7 @@ function renderBatchSummaryContent(job) {
     '<span class="active-job-meta">' +
     escapeHtml(job.display_status_label || job.status || "running") +
     (job.is_active ? " · live" : "") +
+    (duration ? " · " + escapeHtml(duration) : "") +
     "</span>" +
     "</div>";
   if (currentLabel) {
@@ -674,6 +714,7 @@ function renderActiveJobCard(job, options) {
   const globalStep = typeof job.global_step === "number" ? job.global_step : 0;
   const globalTotal = typeof job.global_total === "number" ? job.global_total : 0;
   const visiblePhases = resolveJobPhases(job);
+  const duration = jobDurationLabel(job);
   const cardClass =
     "active-job-card" +
     (nested ? " active-job-card-nested" : "") +
@@ -690,6 +731,7 @@ function renderActiveJobCard(job, options) {
     " · " +
     escapeHtml(job.display_status_label || job.status || "running") +
     (job.is_active ? " · live" : "") +
+    (duration ? " · " + escapeHtml(duration) : "") +
     "</span>" +
     "</div>";
   if (job.subtitle) {

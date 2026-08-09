@@ -49,6 +49,20 @@ def _matches_date(started_at: str | None, date_prefix: str | None) -> bool:
     return started_at.startswith(date_prefix)
 
 
+def _timing_from_bounds(started_at: Any, finished_at: Any) -> dict[str, float] | None:
+    if not started_at or not finished_at:
+        return None
+    try:
+        start = datetime.fromisoformat(str(started_at).replace("Z", "+00:00"))
+        end = datetime.fromisoformat(str(finished_at).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    total_seconds = round((end - start).total_seconds(), 2)
+    if total_seconds < 0:
+        return None
+    return {"total_seconds": total_seconds}
+
+
 def _historical_display_status(status: str, finished_at: Any) -> str:
     if status in ("done", "succeeded", "completed"):
         return "completato"
@@ -73,7 +87,13 @@ def _history_row_from_pipeline(
     sha = str(row.get("source_sha256") or "")
     interrupted = display == "interrotto"
     resumable = interrupted or pipeline_run_can_resume(row, data_root)
-    timing = row.get("timing")
+    timing = row.get("timing") if isinstance(row.get("timing"), dict) else None
+    if timing is None:
+        timing = _timing_from_bounds(row.get("started_at"), finished_at)
+    elif "total_seconds" not in timing:
+        fallback = _timing_from_bounds(row.get("started_at"), finished_at)
+        if fallback is not None:
+            timing = {**timing, **fallback}
     return {
         "job_id": row.get("request_id"),
         "job_kind": "ingest",
@@ -87,7 +107,7 @@ def _history_row_from_pipeline(
         "created_at": row.get("started_at"),
         "updated_at": row.get("finished_at") or row.get("started_at"),
         "error": row.get("last_error"),
-        "timing": timing if isinstance(timing, dict) else None,
+        "timing": timing,
         "is_active": False,
         "is_batch": False,
         "is_historical": True,
@@ -117,6 +137,7 @@ def _history_row_from_research(row: dict[str, Any]) -> dict[str, Any]:
         "created_at": row.get("started_at"),
         "updated_at": row.get("finished_at") or row.get("started_at"),
         "error": row.get("last_error"),
+        "timing": _timing_from_bounds(row.get("started_at"), finished_at),
         "is_active": False,
         "is_batch": False,
         "is_historical": True,

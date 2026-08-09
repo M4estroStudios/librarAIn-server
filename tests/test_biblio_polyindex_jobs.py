@@ -4,7 +4,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
 from src.api.biblio_handlers import BiblioJobError
 from src.api.biblio_polyindex_jobs import (
@@ -24,6 +24,7 @@ def _write_book(root: Path, *, with_toc: bool = True, with_index: bool = True) -
     pages = out / "pages"
     pages.mkdir(parents=True)
     (pages / "p.0001.book.md").write_text("# page\n", encoding="utf-8")
+    (pages / "p.0002.book.md").write_text("Soggetto — 1\n", encoding="utf-8")
     manifest = {
         "slug": "book",
         "original_page_count": 2,
@@ -68,19 +69,56 @@ class BiblioPolyindexJobsTests(unittest.TestCase):
         with self.assertRaises(BiblioJobError):
             run_polyindex_stage_job(self.root, self.settings, SHA, "stage1_ocr")
 
-    def test_toc_requires_md(self) -> None:
-        _write_book(self.root, with_toc=False)
-        with self.assertRaises(BiblioJobError):
-            run_polyindex_toc_job(self.root, self.settings, SHA)
+    @patch("src.api.biblio_polyindex_jobs.sync_polyindex_toc_from_book")
+    @patch("src.api.biblio_polyindex_jobs.refine_toc_md", new_callable=AsyncMock)
+    def test_toc_regenerates_md_even_if_missing(
+        self, refine_toc: AsyncMock, sync_toc: MagicMock
+    ) -> None:
+        out = _write_book(self.root, with_toc=False)
+        refine_toc.side_effect = lambda path, *args, **kwargs: path
+        sync_toc.return_value = self.root / "polyindex" / "TOC.json"
+        result = run_polyindex_toc_job(self.root, self.settings, SHA)
+        self.assertTrue(result["ok"])
+        self.assertTrue((out / "TOC.md").is_file())
+        refine_toc.assert_awaited()
+        sync_toc.assert_called_once()
 
     @patch("src.api.biblio_polyindex_jobs.sync_polyindex_toc_from_book")
-    def test_toc_job_ok(self, sync_toc: MagicMock) -> None:
-        _write_book(self.root)
+    @patch("src.api.biblio_polyindex_jobs.refine_toc_md", new_callable=AsyncMock)
+    def test_toc_job_ok(self, refine_toc: AsyncMock, sync_toc: MagicMock) -> None:
+        out = _write_book(self.root)
+        (out / "TOC.md").write_text("# TOC stale\n", encoding="utf-8")
+        refine_toc.side_effect = lambda path, *args, **kwargs: path
         sync_toc.return_value = self.root / "polyindex" / "TOC.json"
         result = run_polyindex_stage_job(self.root, self.settings, SHA, "polyindex_toc")
         self.assertTrue(result["ok"])
         self.assertEqual(result["stage"], "polyindex_toc")
         sync_toc.assert_called_once()
+        self.assertIn("# TOC — Demo", (out / "TOC.md").read_text(encoding="utf-8"))
+
+    @patch("src.api.biblio_polyindex_jobs.sync_polyindex_index_from_book")
+    @patch("src.api.biblio_polyindex_jobs.build_book_md")
+    @patch("src.api.biblio_polyindex_jobs.apply_index_cross_links", new_callable=AsyncMock)
+    @patch("src.api.biblio_polyindex_jobs.refine_index_md", new_callable=AsyncMock)
+    def test_index_regenerates_md(
+        self,
+        refine_index: AsyncMock,
+        cross_links: AsyncMock,
+        build_book: MagicMock,
+        sync_index: MagicMock,
+    ) -> None:
+        out = _write_book(self.root, with_index=False)
+        refine_index.side_effect = lambda path, *args, **kwargs: path
+        cross_links.return_value = {}
+        sync_index.return_value = (self.root / "polyindex" / "INDEX.json", {"n_subjects": 1})
+        result = run_polyindex_stage_job(self.root, self.settings, SHA, "polyindex_index")
+        self.assertTrue(result["ok"])
+        self.assertTrue((out / "INDEX.md").is_file())
+        self.assertIn("# INDEX — Demo", (out / "INDEX.md").read_text(encoding="utf-8"))
+        refine_index.assert_awaited()
+        cross_links.assert_awaited()
+        build_book.assert_called_once()
+        sync_index.assert_called_once()
 
     @patch("src.api.biblio_polyindex_jobs.run_biblio_only_job")
     def test_biblio_requires_range(self, run_biblio: MagicMock) -> None:

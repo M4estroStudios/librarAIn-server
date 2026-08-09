@@ -72,6 +72,10 @@
   cursor: crosshair;
   touch-action: none;
 }
+#annotate-canvas.is-preview {
+  cursor: default;
+  pointer-events: none;
+}
 
 .annotate-name-input {
   position: absolute;
@@ -144,18 +148,54 @@
 }
 
 .mention-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
   border: 1px solid #5a5a5a;
   background: #2f2f30;
   color: #e8e8e8;
   border-radius: 999px;
-  padding: 0.15rem 0.55rem;
+  padding: 0.1rem 0.2rem 0.1rem 0.45rem;
   font-size: 0.75rem;
+}
+
+.mention-chip-label {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0.05rem 0.2rem;
   cursor: pointer;
+  border-radius: 999px;
 }
 
 .mention-chip small {
   margin-left: 0.35rem;
   color: #9d9d9d;
+}
+
+.mention-chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #bdbdbd;
+  font-size: 0.95rem;
+  line-height: 1;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.mention-chip-remove:hover {
+  background: rgba(201, 80, 80, 0.28);
+  color: #f0a0a0;
 }
 
 .mention-chip:hover {
@@ -164,8 +204,8 @@
 }
 
 .mention-selector {
-  position: absolute;
-  z-index: 40;
+  position: fixed;
+  z-index: 2300;
   max-height: 12rem;
   overflow: auto;
   border: 1px solid #555;
