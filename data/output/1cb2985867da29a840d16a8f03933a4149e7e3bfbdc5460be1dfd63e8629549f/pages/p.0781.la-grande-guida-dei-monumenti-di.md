@@ -1,64 +1,34 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Cronistoria di Roma
+I piani regolatori di Roma
 
-1893 Scoppia lo scandalo della Banca Romana.
-1900 Roma ha 600.000 abitanti.
-1902 Villa Borghese parco pubblico.
-1907-13 È sindaco di Roma Ernesto Nathan.
-1911 Si inaugura il Palazzo delle Belle Arti.
-1912 Nasce l’ACEA.
-1922 Marcia su Roma; Mussolini primo ministro.
-1925 Istituzione del governatorato di Roma.
-1926-32 È rimessa in luce l’Area Sacra dell’Argentina. Si progetta il Foro Mussolini, poi Italico.
-1929 Patti Lateranensi. Nasce la Città del Vaticano.
-1931 Roma ha un milione di abitanti.
-1933 Apertura di via dell’Impero, ora dei Fori Imperiali.
-1936 Abbattuta la Spina di Borgo.
-1937-39 Sorge Cinecittà.
-1943 Bombardamenti aerei su Roma “città aperta” sotto i tedeschi.
-1944 Eccidio tedesco alle Fosse Ardeatine (24 marzo). Liberazione della città da parte degli alleati. Roma ha 1.600.000 abitanti.
-1950 Inaugurazione della nuova Stazione Termini e nuovo aeroporto a Fiumicino. Anno Santo della riconciliazione.
-1957 Il Trattato di Roma dallì via al Mercato Comune Europeo.
-1960 Giochi della xvII Olimpiade. Nuovi impianti sportivi e nuova viabilità. Gli abitanti sono 2.000.000.
-1962-65 Celebrazione del Concilio Vaticano II. Roma ha 2.650.000 abitanti.
-1975-85 Terrorismo a Roma. Tra le varie vittime, Aldo Morö. Attentato a Giovanni Paolo II.
+1873. Primo Piano Regolatore della città redatto da Alessandro Viviani: saturazione del centro storico e sventramenti per la sua espansione.
 
-1990 Mondiali di calcio.
-1991 22 gennaio. Enciclicla Centesimus annus di Giovanni Paolo II.
-17 aprile. Settimo governo Andreotti.
-26 ottobre. È istituita la Divisione Nazionale Antimafia.
-1992 Marzo-aprile. “Tangentopoli” capitolina con denunce e arresti per corruzione di funzionari e impiegati del Comune.
-25 maggio. È elettro presidente della Repubblica Oscar Luigi Scalfaro.
-4 luglio. Governo di Giuliano Amato.
-1993 20 aprile. Dimissioni di Carraro da sindaco di Roma e commissariato di Alessandro Voci.
-28 aprile. Governo di Carlo Azeglio Ciampi.
-14 maggio. Esplosione di una bomba in via Fauro.
-27 luglio. Autobombe danneggiano la basilica di San Giovanni in Laterano e la chiesa di San Giorgio al Velabro.
-5 ottobre. Enciclicla Veritatis splendor di Giovanni Paolo II.
-6 dicembre. Francesco Rutelli è elettro sindaco di Roma.
+1883. Variante del Piano redatta da Alessandro Viviani: realizzazione di via Cavour, Traforo, corso Vittorio Emanuele II, via del Tritone, via Tomacelli, via Arenula e via Zanardelli.
 
-1994 11 maggio. Governo di Silvio Berlusconi.
-10 novembre. Lettera apostolica Tertio Millennio adveniente di Giovanni Paolo II, che preannuncia l’Anno Santo del 2000.
+1909. Secondo Piano Regolatore redatto da Edmondo San Just di Teulada: ridefinizione del centro storico convergente su piazza Colonna e identificazione di aree industriali tra la via Ostiense e il Tevere, con la realizzazione dei Mercati Generali, e la designazione dell’area per la futura Città universitaria.
 
-1995 17 gennaio. Governo di Lamberto Dini.
-31 marzo. Enciclicla Evangelium vitae di Giovanni Paolo II.
-31 maggio. Enciclicla Ut unum sint di Giovanni Paolo II.
-21 giugno. Inaugurazione della Moschea.
+1916. Istituzione di una prima Commissione per l’urbanistica, presieduta da Gustavo Giovannoni, che sancisce la tutela del centro storico e condanna gli sventramenti.
 
-1996 18 maggio. Governo di Romano Prodi.
-15 dicembre. Scontri tra polizia e studenti all’università La Sapienza.
+1923. Seconda Commissione per l’Urbanistica, con Gustavo Giovannoni e Marcello Piacentini, che completa i lavori nel 1924, approvati successivamente dal Governatorato di Roma fino all'entrata in vigore di un nuovo Piano Regolatore. Si attuano però nuovi sventramenti alle pendici del Campidoglio.
 
-1997 9 maggio. È assassinata all’università La Sapienza la studentessa Marta Russo.
-28 giugno. Riapre la Galleria Borghese.
-16 novembre. Francesco Rutelli è elettro sindaco di Roma per la seconda volta.
-31 dicembre. La popolazione risulta di 2.653.245 abitanti.
+1931. Terzo Piano Regolatore, redatto da una Commissione presieduta dal principe Francesco Boncompagni Ludovisi, governatore di Roma. Si progetta di spostare verso oriente il baricentro di Roma, con l’isolamento dei monumenti antichi: si ha l’apertura di via Barberini, corso del Rinascimento e via dei Fori Imperiali. Gli sventramenti portano alla creazione di borgate rurali periferiche.
 
-1998 26 maggio. Viene comunicato il calendario ufficiale dell’Anno Santo 2000.
-15 ottobre. Enciclicla Fides et Ratio di Giovanni Paolo II.
-21 ottobre. Primo governo di Massimo D’Alema.
-29 ottobre. Bolla di Giovanni Paolo II d’indizione dell’Anno Santo 2000.
-16 dicembre. 21 morti per il crollo di una palazzina al Portuense.
-31 dicembre. Giovanni Paolo II celebra la Giornata Mondiale della Pace.
+1942. Variante del Piano Regolatore redatta da una nuova Commissione: si attua lo spostamento del baricentro cittadino con la creazione dell’E42 e delle zone residenziali di Monteverde e Parioli, nonché l’ampliamento sulla via Nomentana. Viene ridisegnato l’assetto viario con il progetto della prima linea metropolitana.
 
-1999 13 maggio. Carlo Azeglio Ciampi è elettro presidente della Repubblica.
-20 maggio. Assassinato dalle Brigate Rosse Massimo D’Antona, consigliere del ministro del Lavoro.
+1959. Piano Regolatore “della Giunta” capitolina, che ricalca in parte uno schema elaborato da una Commissione di 80 membri tra il 1954 e il 1959, ma che la Giunta aveva respino; viene attuata una serie di lavori per le Olimpiadi del 1960, ma nel 1961 il Consiglio Superiore dei Lavori Pubblici esprime parere sfavorevole sul Piano della Giunta.
+
+1962. Una nuova Commissione presenta un nuovo Piano che prevede modifiche nel settore meridionale della città e insediamenti sulla via Pontina.
+
+1967. Variante del Piano con suddivisione della città in 13 zone edilizie.
+
+1964. Primo Piano per l’Edilizia Economica.
+
+1967. Attuazione della divisione di Roma in 13 zone e sua approvazione nel 1971.
+
+1974. Seconda Variante del Piano.
+
+1978. Terza Variante del Piano.
+
+1988. Secondo Piano per l’Edilizia Economica. Organizzazione di un consorzio per la realizzazione del Sistema Direzionale Orientale.
+
+1991. Con l’approvazione della legge speciale per “Roma capitale” vengono finanziati lo SDO, il Parco archeologico dell’Appia Antica e dei Fori, il prolungamento della linea B della metropolitana, l’Auditorium e il Palazzo dei Congressi del L’Eur.

@@ -89,8 +89,8 @@
       "broken": 0,
       "deprecated": 1,
       "needs_change": 1,
-      "ok": 25,
-      "partial": 21,
+      "ok": 24,
+      "partial": 22,
       "untested": 4
     }
   }

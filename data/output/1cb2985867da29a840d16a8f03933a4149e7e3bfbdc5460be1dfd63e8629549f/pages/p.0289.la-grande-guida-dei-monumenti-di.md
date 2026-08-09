@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Eustachio (Piazza Sant', R VIII Sant'Eustachio)
 
-Palazzo della Sapienza
+Palazzo [della Sapienza](<della Sapienza>)
 
 È al n. 33, e si sviluppa su corso del Rinascimento, con altro ingresso al n. 40. Il nome di questo edificio rievoca quello dell’antica università romana fondata da Bonifacio viii nel 1303, che qui ebbe la sede principale dal tempo di Eugenio iv fino al 1935. Il nucleo originario del complesso è costituito da alcune sale del lato sud-occidentale, realizzate su progetto di Andrea da Firenze tra il 1492 e il 1497; Leone x vi aggiunse una cappella e due cortili, ma Pio iv fece ricostruire tutto l’edificio.
 

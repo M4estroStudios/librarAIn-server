@@ -1,8 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Ponte Milvio
+Porta Furba (Via di, Q VIII Tuscolano)
 
-Ponte Milvio
+Fontana di Porta Furba
 
-Sorge sul Tevere, a fronte del piazzale. Fu costruito nel 109 a.C. dal censore Marco Emilio Scauro sulla base di uno precedente già detto Milvio da un edile della gens Molvia. Dal 120 d.C. il ponte, forse per la sua elasticità, venne chiamato “Mollo”, e a questo nome tennero dietro nel Medioevo “Molbio” e “Mole”. Restaurato più volte nei secoli, nel 1805 fu rinnovato da Giuseppe Valadier, che tolse due ponti levatoi in legno, esistenti fin dal vi secolo d.C. per frenare le invasioni, e li sostituì con archi in muratura, dando anche all’ingresso del torrione la forma di arco. Nel 1849 i garibaldini distrusero una parte dell’arco e la pavimentazione nel tentativo di ritardare l’avanzata dei francesi, e con Pio IX si ebbe un nuovo restauro, opera di Francesco Azzurri, con la sua struttura a sei arcate in muratura, per 132 metri di lunghezza e una larghezza di metri 15,50. Sulla testata meridionale dal 1731 era stata posta la statua in marmo di San Giovanni Nepomuceno, protettore dai pericoli di annegamento, scolpita da Agostino Cornacchini, e nel 1840 era stata collocata quella dell’Immacolata, scolpita da Domenico Piggiani. Sulla testata settentrionale nel 1825 furono poste due statue di Francesco Mochi raffiguranti il Battista nell’atto di battezzare Gesù; furono tolte nel 1956 e conservate nel Museo di Roma di Palazzo Braschi. Chiuso al traffico veicolare nel 1951, è riservato solo al transito pedonale. È lungo m 180 e largo m 6,5.
+È addossata alla cosiddetta PORTA FURBA, in realtà una grande arcata dell’Acquedotto Felice (v. via dell’Acquedotto Felice), dal cui termine latino forma deriva il nome come corruzione di Forma Urbis.
 
-Ponte Milvio In un’Incisione di G. Vasi.
+La fontana risale al 1586, quando fu costruita sotto Sisto v (1585-90) da Domenico Fontana, come ricorda una lapide posta sull’arcata. Fu ricostruita nel 1733 sotto Clemente xii dal presidente delle Acque Felice Passerino, come ricorda la lapide. È caratterizzata d un mascherone alato che versa acqua dentro una conchiglia, dalla quale ricade in una vasca centinata insieme a quella che esce da due bocche laterali. In alto lo stemma Corsini di papa Clemente xii.
+
+Porta Latina (Via di, R XIX Celio)
+
+La Porta Latina è nelle Mura Aureliane e prese nome dall’omonima via consolare. Chiusa, ovvero murata, nel 1827, fu riaperta nel 1911. Ad un solo fornice, ristretto al tempo di Onorio rispetto a quello aureliano, è fiancheggiata da due torri, delle quali è originaria quella di sinistra, mentre quella di destra, quadrata, che ingloba l’originale, è di epoca medievale. Nell’attico in travertino, rialzato al tempo di Onorio, si aprivano le solite cinque piccole finestre ad arco corrispondenti alla camera di manovra della saracinesca e

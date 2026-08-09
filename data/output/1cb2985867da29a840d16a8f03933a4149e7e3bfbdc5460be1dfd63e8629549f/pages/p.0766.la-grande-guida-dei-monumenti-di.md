@@ -1,8 +1,19 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Ta Tavole Prenestine, il famoso calendario di Verrio Flacco, rinvenuto dal cardinale a Palestrina. Alla sua morte ereditò tutto il cugino, conte Alessandro, e da questi passò alla famiglia cremonese dei Vidoni-Soresina, imparentati con gli Schinchinelli; nel 1816 il cardinale Pietro Vidoni fece restaurare l’edificio e decorare altri ambienti. Alla sua morte, nel 1830, il palazzo passò ad un altro ramo dei Vidoni, i conti Soranzo Vidoni e vi furono ospiti o affittuari illustri. Nel 1853 Gioacchino Pecci, arcivescovo di Perugia e poi papa con il nome di Leone XIII; nel 1856 la regina di Spagna Maria Cristina di Borbone; nel 1884 monsignor Giuseppe Sarto, poi papa con nome di Pio X. Nel 1886 il palazzo fu venduto a Carlo Giustiniani Bandini, duca di Mondragone, che provvedette ad altri sostanziali lavori; infatti, essendo nel frattempo iniziata l’apertura del corso Vittorio Emanuele II, si dovette provvedere ad un nuovo prospetto del palazzo sulla parte posteriore e laterale, ovvero sulla attuale piazza Vidoni e sul corso, ove fu aperto l’altro ingresso che ora è quello principale. Le facciate, eseguite da Francesco Settimi, che sopraelevò anche l’edificio e creò una scala nobile, si presentano in uno stile cinquecentesco che non è riuscito a dare unità al complesso, trovando un punto di collegamento solo nel cornicione di coronamento a mensole. E nel palazzo trovò posto anche la statua dell’Abate Luigi (v.), essendo scomparso il “suo” vicolo; ma in seguito fu spostata a Palazzo Chigi, finché finì dove è ora, in piazza Vidoni, a fianco a Sant’Andrea della Valle (v.). Il palazzo nel 1903 fu acquistato dal conte Filippo Vitali, che fece eseguire altri restauri, e da lui passò al marchese Giorgio Guglielmi di Vulci; dopo un decennio divenne proprietario lo Stato italiano e quindi il Partito Nazionale Fascista che vi insediò la sua segreteria. Attualmente è sede del Dipartimento della Funzione Pubblica della Presidenza del Consiglio dei Ministri.
+# Cronistoria di Roma
 
-Palazzo Massimo alle Colonne
-
-È al n. 151. Appartiene, dalle origini, ai principi Massimo, ricostruito tra il 1532 e il 1536 da Baldassarre Peruzzi sui resti di un edificio del Quattrocento distrutto durante il Sacco del 1527. La convessa facciata con un portico sottostante il piano nobile e altri due piani,
-
-G. Vasl, Palazzo Massimo alle Colonne.
+753 a.C. Fondazione di Roma.
+753-509 Periodo dei re. Istituzione del calendario. Costruzione della Cloaca Massima e del Foro. Erezione delle Mura Serviane intorno ai sette colli.
+509 Istituzione della Repubblica.
+508-507 Guerra contro gli Etruschi.
+493 Vittoria dei Romani sui Latini al Lago Regillo; costruzione del Tempio di Castore e Polluce nel Foro.
+394 Roma assoggetta la città etrusca di Veio e domina sul Lazio.
+390 Roma è invasa dai Galli di Brenno; la libera Furio Camillo mettendo in fuga i Galli.
+380 Ricostruzione delle mura.
+380-350 Ristabilimento del primato di Roma sul Lazio.
+343-295 Guerre sannitiche. Apertura della via Appia e costruzione dell’Acquedotto Appio.
+282-272 Guerra tarentina.
+264 Dominio di Roma sulla penisola dalla linea Pisa-Rimini fino alla Calabria.
+264-146 Guerre puniche. Conquista di Sicilia, Sardegna e Corsica, della Grecia e di parte della Spagna.
+146-44 Tentativi di riforme con i Gracchi e guerra sociale tra Roma e gli Italici. Guerre civili: Mario e Silla; Cesare e Pompeo. Conquiste di Spagna, Gallia e Asia Minore. Roma ha 100.000 abitanti.
+44 a.C.-14 d.C. Contesa del potere tra Marco Antonio e Ottaviano. Nasce l’Impero: Ottaviano Augusto primo imperatore.
+14-68 Roma sotto la din

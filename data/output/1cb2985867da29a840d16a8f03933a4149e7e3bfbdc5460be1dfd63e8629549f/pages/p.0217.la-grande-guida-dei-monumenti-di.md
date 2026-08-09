@@ -13,12 +13,12 @@ Il Ninfeo, che faceva parte della Domus Aurea (v. viale della Domus Aurea), fu i
 
 Claudio (Piazza San, R III Colonna)
 
-Santi Claudio e Andrea dei Borgognoni
+[Santi Claudio e Andrea dei Borgognoni](<Santi Claudio e Andrea dei Borgognoni>)
 
 È nella piazza, ad angolo con via del Pozzetto. Dedicata a Claudio, martire del III secolo, e Andrea apostolo, fu costruita nel 1729 per la comunità romana dei Borgognoni, su un oratorio, da Antoine Dérizet; le statue di Andrea e Claudio sulla facciata sono rispettivamente di Luc-François Breton e Grandjacquet. Nell’interno, all’altar maggiore L'Eterno, affresco di Antonio Bicchierai, con due angeli adoranti di scuola berniniana. Vi si tiene la “adorazione per petua” dell’Eucarestia, e anticamente la chiesa era legata ad una indulgenza speciale per chi avesse pregato per il re di Francia.
 
 Clemente (Piazza di San, R I Monti)
 
-San Clemente
+[San Clemente](<San Clemente>)
 
 Si affaccia sulla piazza omonima, ma vi si accede dalla via di San Giovanni in Laterano. La base di questa basilica è una casa del III secolo, forse quella di papa Clemente i al quale è dedicata e martire nel Chersoneso nel 97. Su di essa fu costruita una basilica nel

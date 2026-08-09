@@ -1,14 +1,4 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Piazza dell'Orologio in un'incisione di G.B. Falda.
+**Sepolcreto Ostiense**
 
-re l’edificio a sede del banco, nonostante il parere contrario dell’istituto bancario, che ritenve la zona troppo lontana dal centro degli affari. Alla morte del monsignore, nel 1662, l’opposizione dei ministri del Banco ebbe la meglio: il Banco ebbe la sua sede ai Banchi Vecchi e il marchese Orazio Spada fu costretto ad acquistare l’edificio, oltreutto incompiuto per la somma di 25.649 scudi e impiegarne altri 35.000 per far ultimare i lavori a Borromini. Il palazzo fu così terminato, ma il suo aspetto durò solo due secoli, perché alla fine dell’Ottocento i nuovi proprietari, i conti Bennicelli, lo fezero completamente trasformare dall’architetto Gaetano Koch con una sopraelevazione. Elegante il portale, tra due coppie di colonne, con un possente avancorpo dell’edificio fino al ricco cornicione, sopra il quale sorge l’attico. Tracce seicentesche sono rimaste solo nel cortile.
-
-**Torre dell'Orologio**
-
-Costruita da Borromini nel 1648, si eleva sopra un corpo di fabbrica sporgente, coronato da cippi con stelle araldiche di bronzo a 24 punte; fu un completamento dell’Oratorio dei Filippini (v. piazza della Chiesa Nuova). In vetta, il castello per le campane a volute di ferro battuto. Il meccanismo dell’orologio fu realizzato da Gasparro Alberti, ma è stato poi trasferito al Museo di Roma. Sotto il quadrante dell’orologio, un bel mosaico su disegno di Pietro da Cortona, rappresentante la Madonna della Vallicella.
-
-**Ostiense (Circonvallazione, piazzale e via, Q X Ostiense e Zone dell’Agro Romano)**
-
-**Borgo di Ostia Antica**
-
-È al km 21,5 della via. Borgo medievale sorto presso gli Scavi di Ostia Antica (v.), nella zona dell’Agro Romano chiamata Ostia Antica. Le prime case furono costruite a ridosso dell’antica città dal-
+È sulla via, a fronte della basilica di San Paolo. Vasta necropoli sviluppati dal 1 secolo a.C. al 1v d.C. e nella quale fu sepolto san Paolo, a cura della matrona Lucina: è visibile in parte da una tettoia al centro della via e a ridosso dello strapiombo in tufo detto Roccia di San Paolo. Una credenza popolare vuole che due profeti, Enoch ed Elia, attendessero l’Anticristo per combatterlo. La credenza ha ispirato al Belli un sonetto nel quale Enoch ed Elia diventano romanescamente *Er Nocchilia*: «Come saranno ar monno terminate / Le cose ch’ha creato Gesucristo, / Se vederà uscì ffora l’Anticristo / Predicanno a le gente aridunate. / Poi pe combatte co sta brutta arpia / Tornerà da la bùcia de San Pàvolo / Doppo tanti mill’anni, er Nocchilia. / E appena uscito da l’inferno er diavolo / A spartisse la gente cor Messia, / Resterà er monno pe sseme de cavolo». Vi si annoverano vari colombari, tombe gentilizie e sepolture individuali; notevole il sepolcro di *Livia Nebris*, il cui nome è iscritto nell’attico, sovrastante cornici laterizie e stipiti in travertino. Grande il colombario della *gens Pontia*; ha all’interno le pareti laterali scandite da nicchie semicircolari, mentre la parete di fondo ha una edicoletta poggiante su un podio con un dipinto e un pozzo.

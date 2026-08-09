@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Santi Biagio e Carlo ai Catinari
+[Santi Biagio e Carlo ai Catinari](<Santi Biagio e Carlo ai Catinari>)
 
 1638. Splendida la cupola, su un tamburo in cotto, ultimata dal Rosati nel 1620.
 

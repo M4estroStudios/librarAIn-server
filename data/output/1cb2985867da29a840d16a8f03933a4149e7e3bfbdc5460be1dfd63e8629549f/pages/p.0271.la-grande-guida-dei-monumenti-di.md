@@ -9,6 +9,6 @@ Palazzo del Ministero dei Trasporti e della Navigazione
 
 Crociferi (Piazza dei, R Il Trevi)
 
-Santa Maria in Trivio
+[Santa Maria in Trivio](<Santa Maria in Trivio>)
 
 È al n. 49. Chiamata anticamente Santa Maria in Sinodo cioè in Sinodochio ovvero, in un ospizio costruito da Belisario, secondo quanto si legge nel Liber Pontificalis, è legata al grande generale vincitore dei Goti. Anzi, secondo una lapide del secolo xii, fu edificata da Belisario stesso: «Hanc vir patricius Vilisarius urbis amicus / ob culpae veniam condidit ecclesiam / hanc hic circo pedem sacram qui ponis in aedem / ut miseretur eum saepe precare deum / janua haec est templi domino defensa potenti». L'“ob culpae veniam” allude alla deposizione di papa Silverio, voluta dall’imperatrice Teodora, ma messa in atto da Belisario, che mostra di esser pentito; la chiesetta sarebbe quindi l’ex voto espiatorio. Nel 1300 sostituisce al nome “in Sinodochio” quello del luogo ove ancora sorge, il Trivio o Trejo; era stata chiamata anche in Fonticana, in Fornicata e in Arcora, appellativi tutti attinenti ai grandi archi dell’Acqua Vergine con la quale era alimentato il vascone con tre bocche che, prima del capolavoro del Salvi, era la Fontana di Trevi. L’edificio

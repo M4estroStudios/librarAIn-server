@@ -1,4 +1,15 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-**Primoli**
+Gli artisti della Roma monumentale
 
-Famiglia nobile della provincia romana, originaria della Sabina, dove possedeva in campagna oltre 1200 ettari, entro nella nobiltà cittadina nel 1816 con Luigi, che ottenne da Pio vi il titolo di conte di Foglia e acquistò a Roma il palazzo (v.). Suo figlio Pietro (1820-83) dette ancora più lustro alla famiglia sposando nel 1848 la principessa Carlotta Bonaparte e da questo matrimonio nacquero tre figli: Giuseppe (1851-1927), Napoleone (1855-82) e Luigi (1858-1925). I Primoli dal 1852 vissero a Parigi alla corte di Napoleone III e così i tre giovani furono educati con il principe ereditario, avendo poi modo di conoscere letterati e artisti che ebbero sicuramente un peso determinante sulle loro aspirazioni artistiche. Che si concretizzaron a Roma, dove i Primoli vennero ad abitare dopo la caduta dell'impero, raccogliendo quadri, libri e ricordi vari di letterati e della famiglia Bonaparte e accogliendo nel loro salotto scrittori e artisti come D’Annunzio e Matilde Serao, Michetti e Sartorio. Morti Pietro e Napoleone, Giuseppe e Luigi si dedicaron alla fotografia che concepirono come un’arte chiamandola “fotografomania”; una passione che li portò a fissare su migliaia di lastre la vita che si svolgeva intorno a loro. Iscritti ambedue alla prima associazione fotografica italiana, quella degli Amatori di Fotografia in Roma, partecipano a diverse mostre, ma soltanto gli studi di Silvio Negro e Lamberto Vitali hanno rivelato la loro opera al grande pubblico negli ultimi cinquant’anni.
+Domenico Fontana
+
+Gaetano Koch
+Piazza Vittorio Emanuele II: sistermazione urbanistica (G. Podesti 1880-85);
+Via Vittorio Veneto: Palazzo Margherita (1886-95);
+Via Nazionale: Banca d'Italia (1886-1903);
+Piazza della Repubblica: Edifici dell'Esedra (1888-98);
+Via Vittorio Veneto: Albergo Majestic (1896).
+
+Carlo Maderno
+Piazza San Bernardo: Chiesa di Santa Susanna (facciata, 1603); Chiesa di Santa Maria della Vittoria (progetto e interno, 1608-20);
+Piazza del Quirinale: Palazzo del Quirinale (modellamento dell’angolo sulla piazza, portale principale e Cappella Paolina, 161

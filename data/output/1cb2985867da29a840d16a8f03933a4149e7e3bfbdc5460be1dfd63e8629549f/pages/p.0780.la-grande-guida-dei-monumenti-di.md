@@ -1,70 +1,45 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-846 Scorreria dei Saraceni a Roma.
-852 Nascita della Città Leonina con la cinta muraria.
-880–93 Roma sotto il dominio di Teodora e poi di sua figlia Marozia.
-961–1002 Roma sotto il controllo degli Ottoni; dittatura di Giovanni Crescenzo. Roma ha 30.000 abitanti.
+# Antonio da Sangallo il Giovane
 
-1084 I Normanni di Roberto il Guiscardo saccheggiano Roma.
-1108 Ricostruzione di San Clemente.
-1140 Restauro di Santa Maria in Trastevere.
-1144 Rinásce il Comune di Roma con Arnaldo da Brescia.
-1220 Federico II incoronato imperatore da Onorio III.
-1232 Completamento del chiostro di San Giovanni in Laterano.
-1285–93 Si rinnovano le basiliche di San Paolo fuori le Mura e Santa Cecilia in Trastevere.
+Via del Banco di Santo Spirito n. 31: Palazzo della Zecca, 1513;
+Piazza Farnese: Palazzo Farnese (costruzione della maggior parte dell’edificio, 1514-46);
+Corso Vittorio Emanuele II n. 168: Palazzo della Farnesina ai Baullari, 1523;
+Via dei Coronari: Immagine di Ponte (ad angolo con vicolo Domizio), 1523;
+Via delle Coppelle n. 35: Palazzo Baldassini, 1514-25;
+Piazza Santa Maria della Pace: Chiesa di Santa Maria della Pace (Cappella Cesi, 1525);
+Piazza della Minerva: Chiesa di Santa Maria sopra Minerva (Sepolcri di Leone x e Clemente VII, 1536-41);
+Piazza San Pietro: Palazzi Apostolici Vaticani (Sala Regia e Cappella Paolina, 1540);
+Sono del Sangallo anche i due Bastioni delle mura: Ardeatino (detto del Sangallo) del 1542 e Aventino (detto di Paolo III o la Colonnella) del 1537-40;
 
-1300 Primo Anno Santo proclamato da Bonifacio VIII. Roma ha 20.000 abitanti.
-1303 Fondazione dell'università La Sapienza.
-1309 Clemente V trasferisce la Santa Sede ad Avignone.
-1347 Cola di Rienzo tribuno della Repubblica romana. Roma ha 17.000 abitanti.
-1354 Morte di Cola di Rienzo.
-1377 Gregorio XI riporta la Santa Sede a Roma.
-1378–1417 Scisma d'Occidente, da Urbano VI a Martino V.
+# Giuseppe Valadier
 
-1420–1519 Ricostruzione della città. Tra l'altro, affreschi di Masolino a San Clemente, del Beato Angelico nella Cappella Niccolina in Vaticano, inizio della nuova basilica di San Pietro, affreschi della Cappella Sistina, nuovo Palazzo Apostolico, decorazione delle Stanze vaticane, costruzione della Farnesina, nuova sistemazione del Campidoglio. Apertura delle grandi strade da Borgo a via Giulia e via della Lungara. Roma ha 50.000 abitanti.
+Ponte Milvio: realizzazione della nuova torre di guardia (1805);
+Via Flaminia: Cappella di Sant’Andrea presso il Ponte Milvio (restauro), Tempietto di Sant’Andrea (restauro) 1805-1806; Villa Poniatowski (1800-10);
+Piazza del Popolo: realizzazione del nuovo assetto della piazza con gli emicicli e le Fontane dei Leoni, e i quattro edifici angolari della piazza (1810-20);
+Pincio: passeggiata, tracciato dei giardini e Casina Valadier (1810-20);
+Via del Babuino: Palazzo Lucernari (al n. 9, successivamente trasformato in Hotel de Russie, poi sede Rai);
+Via di Ripetta: chiesa di San Rocco (facciata), 1834;
+Via Vittoria: Palazzo Poniatowski (ai nn. 45-67), 1800-1802;
+Corso Vittorio Emanuele II: chiesa di San Pantaleo (restauro e facciata), 1806;
+Piazza San Pietro: basilica di San Pietro (collocazione del campanone e dei due orologi ai lati della facciata), 1786-88.
 
-1527 Sacco di Roma dei Lanzichenecchi di Carlo V. Roma ha 32.000 abitanti.
-1538 Sulla piazza del Campidoglio è collocata la statua equestre di Marco Aurelio.
+# I sindaci di Roma
 
-1555 Viene istituito il Ghetto.
-1568 Costruzione della chiesa del Gesù.
-1584 Fondazione dell'Accademia di Santa Cecilia.
-
-1585–90 Sisto V apre nuove strade e installa gli obelischi. Roma ha 90.000 abitanti.
-
-1600 È messo al rogo Giordano Bruno.
-1603 Fondazione dell'Accademia dei Lincei.
-1614 Fondazione della Biblioteca Angelica, la prima pubblica di Roma.
-1626 Consacrazione della nuova basilica di San Pietro.
-1633 Galileo condannato per eresia.
-
-1638–67 Esplosione del barocco: da San Carlino e Sant'Agnese a Sant'Andrea al Quirinale e al colonnato di San Pietro. Roma ha 120.000 abitanti.
-
-1690 È fondata l'Accademia dell'Arcadia.
-1703 Ricostruzione del Porto di Ripetta.
-1726 Nasce la scalinata di Trinità dei Monti.
-
-1732–62 Costruzione di Fontana di Trevi.
-
-1734 Si apre il Palazzo Nuovo del Campidoglio, primo museo pubblico.
-
-1743 Rifforma urbanistica: compaiono le targhe dei rioni.
-
-1798–99 Occupazione francese di Roma e proclamazione della Repubblica giacobina: Pio VI muore in esilio. Roma ha 150.000 abitanti.
-
-1809–14 Nuova occupazione francese di Roma. Roma ha 117.000 abitanti.
-
-1814–46 Governo reazionario a Roma da Pio VI a Gregorio XVI.
-
-1846 Avvento di Pio IX, salutato come papa liberale.
-
-1848–49 Moti rivoluzionari; Pio IX fugge e nasce la Repubblica romana; suo anientamento da parte dei francesi. Roma ha 150.000 abitanti.
-
-1850–70 Ultimi 20 anni di Roma pontificia sotto Pio IX. Il 20 settembre 1870 le truppe del generale Cadorna occupano Roma. Roma ha 220.000 abitanti.
-
-1872 Inizio della costruzione dei nuovi rioni Castro Pretorio, Testaccio, Celio ed Esquilino.
-
-1873 Primo piano regolatore di Roma capitale.
-1874 Inaugurazione della Stazione Termini.
-1877 È aperta la via Nazionale.
-1878 Muoiono Vittorio Emanuele II e Pio IX il nuovo re Umberto I darà l'impronta alla Roma fine secolo.
-1885 Prima pietra del Vittoriano.
+Francesco Pallavicini, 16 maggio-20 ottobre 1871
+Luigi Pianciani 29 luglio 1873-16 luglio 1874
+Pietro Venturi 2 gennaio 1875-6 novembre 1877
+Emanuele Ruspoli 30 giugno 1878-19 luglio 1880
+Luigi Pianciani, 12 ottobre 1881-4 maggio 1882
+Leopoldo Torlonia, 10 aprile-30 dicembre 1887
+Alessandro Guiccioli, 30 dicembre 1888-9 novembre 1889
+Augusto Armellini, 28 novembre 1889-25 giugno 1890
+Onorato Caetani di Sermoneta, 25 dicembre 1890-19 ottobre 1892
+Emanuele Ruspoli, 14 novembre 1892-30 giugno 1895
+Emanuele Ruspoli, 1 luglio 1895-30 giugno 1899
+Emanuele Ruspoli, 1 luglio 1899-14 novembre 1899
+Prospero Colonna, 21 dicembre 1899-20 ottobre 1902
+Prospero Colonna, 23 ottobre 1902-20 ottobre 1904
+Enrico Cruciani Aliprandi, 10 luglio 1905-6 agosto 1907
+Ernesto Nathan, 25 novembre 1907-28 novembre 1911
+Ernesto Nathan, 29 novembre 1911-4 dicembre 1913
+Prospero Colonna, 6 luglio 1914

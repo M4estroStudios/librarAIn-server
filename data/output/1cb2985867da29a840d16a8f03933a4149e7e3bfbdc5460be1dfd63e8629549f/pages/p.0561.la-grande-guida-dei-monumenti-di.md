@@ -1,16 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Santa Sabina
+Pio V (Largo San, Q XIII Aurelio)
 
-vata, protetto da un vetro, di fronte al portale di legno. Si racconta che da questo arancio santa Caterina abbia ricavato le cinque arance che donò, candite, a papa Urbano vi. Ora è secco, ma fa ancora frutti attraverso un altro albero sorto miracolosamente su di esso. Poi c’è la rotonda pietra nera, che è in realtà il peso di un’antica bilancia romana, che il diavolo avrebbe scagliato contro san Domenico mentre pregava sulla lastra marmorea che copriva le ossa di alcuni martiri; non lo colpì, ma la pietra tombale si spaccò in più di venti pezzi, come la si vede oggi ricomposta su una colonna tortile, a sinistra della porta d’ingresso. Va peraltro detto che non fu il diavolo, ma l’architetto Domenico Fontana, durante il restauro del 1587, a ridurre la lapide in frammenti, che furono recuperati e ricomposti più tardi. Nel catino, Cristo tra gli apostoli di Taddeo Zuccari; nella navata destra la Cappella di San Giacinto con Trionfo ed episodi della vita del santo di Federico Zuccari; nella navata sinistra la Cappella di Santa Caterina con la Madonna del Rosario del Sassoferrato.
+San Pio v
 
-Pietro e Paolo (Piazzale dei Santi, Q XXXII Europa)
+È sul largo. Questa chiesa, dedicata al papa Pio v (1566-72), è stata costruita nel 1952 su progetto di Tullio Rossi e presenta un aspetto armonico che ripete quello di tipo basilicale. Il mosaico di Joseph Stracota sul portale è un'eccellente introduzione alla preziosa decorazione interna, che si avvale, tra l'altro, di un Crocifisso di Francesco Nagni, una Via Crucis di Angelo Biancini, un Angelo in gesso di Duilio Cambellotti e una statua di Santa Caterina da Siena di Antonio Berti.
 
-Santi Pietro e Paolo
+Pio XII (Piazza, R XIV Borgo)
 
-È sul piazzaale omonimo nel quartiere Europa. Dedicata ai patroni di Roma, è stata costruita tra il 1937 e il 1941 su progetto di Arnaldo Foschini e Costantino Vetriani, ma ultimata soltanto nel 1952; è parrocchia dal 1958 affidata ai Frati Minori Conventuali della provincia di Padova. L’edificio è stato costruito nel luogo dove preesisteva una chiesetta dedicata ai Santi apostoli e che era di proprietà dell’Arciconfraternita della Santissima Trinità dei Pellegrini; la sua collocazione e il suo aspetto grandioso rientrava nel progetto iniziale dell’Ente Autonomo Esposizione Universale E 42 e a questo fine si mirò sia nella struttura architettonica che nelle decorazioni interne, per le quali furono incaricati gli artisti maggiori di quel tempo. La cupola, che raggiunge l’altezza di 72 m con un diametro di 28 m, è la terza, tra quelle romane, dopo quelle di San Pietro e San Giovanni Bosco; sulla cuspid del lanternino un angelo di bronzo, opera di Carmelo Abate. Ai lati della croce, al centro della facciata, sono due grandi angeli di Federico Papi e nei quattro nicchioni degli avancorpi sono racchiuse sculture di Alessandro Monteleone, Giovanni Prini, Carlo Pini e Venanzo Crocetti. Il portone di bronzo è di Giovanni Prini. Nell’interno i grandi bassorilievi dei quattro evangelisti di Enrico Castelli e Francesco Coccia, i due amboni in bronzo di Duilio Cambellotti, il Crocifisso sull’altar maggiore di Giuseppe Graziosi e gli sportelli bronzei del tabernacolo di Ernesto Vighi. Completano lo sfarzo artistico di questa chiesa le due grandi statue ai lati della scalea d’accesso al piazale; quella di San Pietro è di Domenico Ponzi; quella di San Paolo di Francesco Nagni.
+Palazzi dei Propilei
 
-Pietro in Montorio (Piazza San, R XXXII Trastevere)
+Delimitano la piazza. Sono i due edifici dei porticati detti “propilei” che inquadrano la vista di San Pietro come due avancorpi simmetrici, concludendo la via della Conciliazione (v.) e costituendo un punto di accesso al colonnato di piazza San Pietro (v.). Sono costituiti da due gallerie sovrapposte, secondo una descrizione di Laura Gigli, «scandite da tre file di aperture rettangolari con cornici e balaustri in travertino, intervallate da altri pilastri a cortina, che si ergono e acquistano slancio da sedili, pure in travertino, uguali a quelli che costituiscono la base degli obelischi di via della Conciliazione». Sull’architrave di ambedue è la scritta «Pius XII Pont. Max. / Anno Jubilaei MCML».
 
-San Pietro in Montorio
+I palazzi addossati ai propilei, costruiti su progetto di Marcello Piacentini e Attilio Spaccarelli, sviluppano su quattro piani, coronati da balaustre, e aprono con due solenni portali in travertino dal timpano spezzato con emblemi pontifici. Proprietà della Santa Sede, ospitano uffici di congregazioni e la sala stampa del Vaticano. Un’epigrafe sul palazzo di destra ricorda la dedica della piazza a Pio XII.
 
-È sulla piazza. È dedicata a San Pietro apostolo, che secondo una tradizione risultata destituita di fondamento, avrebbe subito il mar-
+Piscinula (Piazza in, R XIII Trastevere)
+
+Case Mattei Nuñez Celsia di Vegliasco
+
+Sono ai nn. 9-10. Queste case quattrocentesche del ramo dei Mattei di Trastevere furono realizzate inglobando antichi edifici di proprietà del casato. Le tracce più antiche si rivelano nelle finestre centinate e a crociera, nelle bifore e nel porticetto con una colonna medievale e una loggia. Il complesso è frutto di sovrastrutture e modifiche attuate nell’arco di cinque secoli. In queste case abitò nel 1414 Giovanni Mattei, che difese il cardinale legato Giacomo Isolani contro un governo popolare guidato da Pietro di Matuzzo. Ma la posizione filopontificia dei Mattei mutò settant’anni dopo, nel 1484, quando Paolo Mattei appoggiò i Colonna contro gli Orsini legati a Sisto iv; allora il papa ordinò il saccheggio degli edifici. Nel 1555 queste case furono lo scenario di quella tragedia fa-

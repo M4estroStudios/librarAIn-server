@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-San Giovanni della Malva nel suo aspetto settecentesco in un’incisione di G. Vasi.
+[San Giovanni della Malva](<San Giovanni della Malva>) nel suo aspetto settecentesco in un’incisione di G. Vasi.
 
 ché in totale stato di disfacimento, fu progettata da Giacomo Moraldi e benemerita della costruzione fu la baronessa Anna Grazioli. È a croce greca con cupola semisferica, preceduta da un atrio separato dalla chiesa da due colonne corinzie che sostengono la cantoria: all’altar maggiore pala d’altare con la Madonna tra i santi Giovanni Battista e Evangelista di pittore ignoto del Settecento. La chiesa, dove un tempo si radunava la Compagnia dei Beccamorti, è affidata con i locali annessi alle Suore Missionarie Figlie di Gesù Crocifisso, che vi tengono uno studentato e un pensionato.
 

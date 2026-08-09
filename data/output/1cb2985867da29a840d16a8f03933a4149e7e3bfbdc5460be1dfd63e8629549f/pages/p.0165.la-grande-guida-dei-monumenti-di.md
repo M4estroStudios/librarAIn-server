@@ -7,4 +7,4 @@ Santa Maria in Campomarzio
 
 È al n. 45. Risale all’viii secolo, quando alcune monache Basiliane fuggirono da Costantinopoli con il cadavere di san Gregorio Nazianzeno e altre sue reliquie, e papa Zaccaria concesse loro questa chiesa, collegato alla quale le monache costruirono il loro monastero. Peraltro il corpo di san Gregorio nel 1580 fu traslato in Va-
 
-Il monumento a Giordano Bruno a Campo de' Fiori.
+Il monumento [a Giordano Bruno](<a Giordano Bruno>) a Campo de' Fiori.

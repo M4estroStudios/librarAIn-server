@@ -5,6 +5,6 @@ Del Grillo Famiglia originaria di Gubbio, insignita del titolo marchionale e sta
 
 De Nicola Enrico (Via, R XVIII Castro Pretorio)
 
-Terme di Diocleziano
+Terme [di Diocleziano](<di Diocleziano>)
 
 L’ingresso è al n. 74. Costruite dall’imperatore Caio Aurelio Valerio Diocleziano (284-305). Tra il 298 e il 306, erano estese per un rettangolo di 376 metri per 361, occupando l’area compresa tra le

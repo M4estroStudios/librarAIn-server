@@ -1,14 +1,10 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Policlinico (Viale del, Q V Nomentano)
+L'obelisco di piazza del Popolo con la chlesa di Santa Maria del Miracoll in un’incisione del 1839 di D. Amici.
 
-Policlinico Umberto 1
+Porta del Popolo
 
-È lungo il viale al quale da il nome. Il grande complesso ospedaliero fu costruito tra il 1886 e il 1902 su progetto di Giulio Podesti con la collaborazione di Edgardo Negri, sviluppandosi attualmente in 49 edifici, tra cui 21 cliniche, una cappella e due padiglioni per uffici e biblioteca. Il padiglione centrale è a due piani oltre il pianoterra, con finestre architravate e portico sopraelevato: sotto il cornicione, la scritta «Anno / Policlinico Umberto 1 / MDCCCXCIII».
+Antica porta delle Mura Aureliane con il nome di Flaminia, collega il piazzale Flaminio alla piazza del Popolo (v.) e per questo fu denominata del Popolo e munita di due torri da Sisto IV; Pio IV la fece ricostruire da Nanni di Baccio Bigio nella facciata esterna che da sul piazzale Flaminio, mentre il prospetto su quella del Popolo venne risistemato dal Bernini per incarico di Alessandro VII in occasione dell’arrivo a Roma di Cristina di Svezia, come ricorda l’iscrizione «Felici faustoque ingressui, 23 dicembre 1655». I due fornici laterali furono aperti solo nel 1879, quando vennero demolite le due torri di difesa.
 
-L'atrio ha colonne doriche su un’alta base, con il busto di re Umberto 1 al centro. Tutto il complesso ospedaliero è stato ricostruito nel secondo dopoguerra e in pratica molte delle originarie strutture sono scomparse; restano i padiglioni di patologia medica e pediatria; molto pochi i superstiti passaggi a pensilina ferroviaria che caratterizzavano i collegamenti tra i padiglioni. Tra gli ultimi reparti ristrutturati, quello di urologia, dalle linee architettoniche quanto mai innovative.
+Santa Maria del Popolo
 
-Poliziano Angelo (Via, R I Monti)
-
-San Giuseppe di Cluny
-
-È al n. 38. È annessa ad un ex noviziato della congregazione delle Suore di Cluny, successivamente trasformato in istituto per orfane e oggi in pensionato. È stata costruita nel 1884 da Luca Carimini,
+È sulla piazza, in prossimità della porta. Edificata, secondo la tradizione, da Pasquale II, a spese del popolo romano, per questo ebbe la denominazione “del Popolo”, passata poi alla piazza. Fu ingrandita da Gregorio IX nel 1227, assumendo l’aspetto attuale sotto Sisto IV nel 1480 su disegno di Baccio Pontelli e Andrea Bregno, ma abbellita infine nel 1660 dal Bernini sotto Alessandro VII. Di grande importanza le opere pittoriche all’interno: nella volta del coro, gli splendidi affreschi del Pinturicchio dell’Incoronazione di Ma-

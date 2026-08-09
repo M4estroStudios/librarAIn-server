@@ -1,6 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Colonna dell’Immacolata
+Il Teatro di Marcello. Incisione tratta da «Roma moderna», xvii secolo.
 
-Sorge sul lato della piazza antistante la piazza Mignanelli. Fu innalzata per celebrare la proclamazione del dogma dell’Immacolata in piazza di Spagna, nella zona antistante il palazzo dell’Ambasciata spagnola, perché la Spagna era stato il paese che maggiormente si era adoperato per la definizione del dogma. Per sostenere la sacra immagine fu scelta una bella colonna in cipollino venato, rinvenuta nel 1777 nel monastero di Santa Maria della Concezione in Campo Marzio; la colonna era però alta soltanto dodici metri, per cui l’architetto Luigi Poletti decise di aumentarne lo slancio sovrapponendo al capitello corinzio un collare marmoreo e po-
+piccole, così si lamentava: «Bbasta, o corpas der forno o de la mo-la / er fatto sta cche la pagnotta ar forno / sce la danno ppiù piccola oggiggiorno / de quella de San Biascio o San Nicola». E la chiesa regionale dei Pugliesi e Lucani.
 
-La Colonna dell’Immacolata a piazza di Spagna in un’illustrazione di fine Ottocento.
+Teatro di Marcello
+
+È sulla via. L'inizio della sua costruzione risale all’epoca di Giulio Cesare, ma fu Augusto a farla terminare, dedicandolo nel 13 a.C. alla memoria del nipote Marco Claudio Marcello. L’edificio sorse sull’area in parte occupata da un lato del Circo Flaminio e inglobò due piccoli templi. A ridosso del teatro i Savelli costruirono la loro fortezza verso la fine del Duecento divenuta nel Cinquecento un palazzo (v. via di Monte Savello), mentre nella parte anteriore furono costruiti piccoli edifici e inserite botteghe; da queste il teatro

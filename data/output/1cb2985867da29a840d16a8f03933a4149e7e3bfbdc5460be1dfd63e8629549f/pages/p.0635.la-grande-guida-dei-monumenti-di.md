@@ -1,9 +1,6 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Il quadrivio delle Quattro Fontane, punto nodale del progetto urbanistico di Sisto v (incisione di G. Vasi).
+Sant’Ivo alla Sapienza
 
-un avancorpo a terrazza e nicchione di grande effetto. Nell’androne a pilastri polistili, volta a crociera e due nicchie con lapidi in memoria dei dipendenti dell’istituto caduti nella prima e seconda guerra mondiale.
-Nel cortile, una statua allegorica, raffigurante un giovane con una fiaccola.
+È al n. 40. Sorge all’interno del cortile del Palazzo della Sapienza (v. piazza Sant’Eustachio), come cappella universitaria, ed è opera di Francesco Borromini, che la realizzazione tra il 1642 e il 1666. La volle papa Urbano VIII e Borromini volle riprodurre questa sua volontà con un’esaltazione dell’emblema della famiglia Barberini, al quale fanno riferimento diversi elementi della chiesa. L’ape araldica barberiniana torna nelle allusioni della pianta, negli spicchi della volta e nella cuspide concepita come un pungiglione. La chiesa assunse il nome del santo bretone Ivo (1253-1303), perché gli avvocati concistoriali che ne avevano patrocinato la costruzione vollero che fosse dedicata al loro protettore. Chiusa nel 1870, fu ridotta a magazzino della Biblioteca Alessandrina, finché venne restaurata nel 1926, riconsacrata e riaperta al pubblico. Nei nicchioni interni della chiesa c’erano un tempo le statue dei dodici apostoli, non belle in verità e che erano statue soprannominate dai romani i “babuini”; vennero abbattute nel Settecento.
 
-Quirinale (Piazza e via del, RR I Monti e Il Trevi)
-
-Il Quirinale è il più alto dei sette colli, raggiungendo un’altezza massima di 60 metri. Stabilmente abitato fin dall’Età del ferro, fu il colle dei Sabini e dal nome della città sabina Cures gli antichi facevano derivare quello di Quirinalis. Pur essendo sede di numerosi templi, divenne zona residenziale con varie ville e le Terme di Costantino, per essere poi abbandonato in epoca medievale. Fu riscoperto nel Cinquecento, quando venne chiamato Monte Cavallo dalle statue dei due colossi Castore e Polluce con i cavalli tornati
+La chiesa di Sant’Ivo, capolavoro di Francesco Borromini.

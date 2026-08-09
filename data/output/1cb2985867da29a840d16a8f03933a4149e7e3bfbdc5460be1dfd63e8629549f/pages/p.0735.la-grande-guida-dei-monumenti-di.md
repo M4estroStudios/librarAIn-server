@@ -1,12 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Velabro (Via del, R XII Ripa)
+Santa Susanna
 
-Arco degli Argentari
+È al n. 14. L’origine della chiesa risale al IV secolo, quando fu costruita su due case appartenute al padre e allo zio di Santa Susanna, martire nel 295, sgozzata davanti alla propria abitazione per aver rifiutato di sposare un pagano propostole dall’imperatore Diocleziano; la moglie dell’imperatore, Serena, avrebbe posto la sua salma in un sarcofago, collocato nelle catacombe di San Callisto. La chiesa, riedificata a navata unica nel 1595 e completata da Carlo Maderno con l’alta facciata nel 1603, all’interno è tutta decorata da affreschi di Baldassarre Croce che raccontano in parallelo le Storie di Santa Susanna e Susanna ebrea. Negli affreschi la cristiana si alterna alla biblica Susanna, sorpresa mentre faceva il bagno nel proprio giardino da due anziani corteggiatori, con tutte le conseguenze che il suo rifiuto portò per le calunnie, dalle quali fu salvata dal profeta Daniele. È la chiesa nazionale degli Usa.
 
-È inserito nel muro esterno sinistro della chiesa di San Giorgio in Velabro (v.). Più che un arco, doveva trattarsi di una porta monumentale dell’antico VELABRO, la zona paludosa bonificata con la costruzione della Cloaca Massima (v.) e aggregata al complesso del Foro Boario (v. piazza Bocca della Verità). Fu costruito nel 204 d.C. in onore dell’imperatore Settimio Severo e della sua famiglia dai cambiavalute e banchieri (argentarii) e dai mercanti della zona. Cosi si legge nell’iscrizione, dove però sono stati cancellati i nomi del figlio dell’imperatore, Geta, e del prefetto del Pretorio, Plauziano, e di sua figlia Plautilla, moglie di Caracalla, l’altro figlio di Settimio Severo; questo perché tutti e tre furono fatti uccidere da Caracalla, quando divenne imperatore.
+Villa Bonaparte
 
-Arco di Giano
-
-È ai piedi della discesa della via. È un grande arco quadrifronte ovvero un quadriportico, là dove Giano non fa riferimento al dio ma al termine latino ianus, che significa passaggio coperto a quattro fronti. Fu eretto nel IV secolo, ai margini orientali del Foro Boario, in onore dell’imperatore Costantino: i quattro piloni rivestiti di marmo sostengono una volta a crociera e sono decorati all’esterno, sopra l’alto zoccolo, da una doppia fila di tre nicchie semicircolari con calottine a conchiglia. Sugli archi sono scolpite le figure, molto rovinate, di Roma e Giunone, sedute, e di Minerva e Cerere, in piedi.
-
-L’Arco degli Argentari al Velabro in un’illustrazione dl fine Ottocento.
+È al n. 23. Sorge sull’area triangolare tra via Venti Settembre e via Piave, un tempo Villa Cicciaporci, con un casino sull’angolo delle due vie, come risulta nella pianta del Tempesta del 1593: nel Settecento la villa fu acquistata dal cardinale Antonio Valenti Gonzaga che fece costruire un nuovo casino e rinnovò la vegetazione con alberi esotici. La costruzione del casino, su progetto di Paolo Posi, vide impegnato anche Giampaolo Pannini nella decorazione

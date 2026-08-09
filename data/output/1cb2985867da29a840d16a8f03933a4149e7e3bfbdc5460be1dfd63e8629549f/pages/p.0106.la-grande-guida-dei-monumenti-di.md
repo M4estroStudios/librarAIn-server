@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Piazza Barberini con la Fontana del Tritone in un’incisione di G.B. Falda.
 
-cipessa Elena, poi regina d’Italia, dai Rockefeller ai Wanderbilt. Ma l’attuale albergo, all’insegna di Bernini Bristol, risale al 1943, opera dell’architetto Ettore Rossi. E l’inizio non fu dei più promettenti, perché venne subito occupato dai nazisti e quindi dall’American Red Cross fino al 1946. Dopo ci volle un adeguato restauro che portò l’albergo sulla cresta dell’onda all’epoca della “dolce vita”; nel suo albo d’oro figurano le celebrità dello spettacolo dagli anni Cinquanta fino agli anni Sessanta. L’albergo tende ad una clientela commerciale, fino ad essere il preferito da molti esponenti del mondo economico.
+cipessa Elena, poi regina d’Italia, dai Rockefeller ai Wanderbilt. Ma l’attuale albergo, all’insegna di [Bernini Bristol](<Bernini Bristol>), risale al 1943, opera dell’architetto Ettore Rossi. E l’inizio non fu dei più promettenti, perché venne subito occupato dai nazisti e quindi dall’American Red Cross fino al 1946. Dopo ci volle un adeguato restauro che portò l’albergo sulla cresta dell’onda all’epoca della “dolce vita”; nel suo albo d’oro figurano le celebrità dello spettacolo dagli anni Cinquanta fino agli anni Sessanta. L’albergo tende ad una clientela commerciale, fino ad essere il preferito da molti esponenti del mondo economico.
 
 Palazzo Barberini
 

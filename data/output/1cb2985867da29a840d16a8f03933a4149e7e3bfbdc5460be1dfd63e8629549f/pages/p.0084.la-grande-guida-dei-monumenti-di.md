@@ -11,15 +11,15 @@ Sant’Antonio da Padova
 
 Astronomia (Viale dell’, Q XXXII Europa)
 
-Palazzo della Confindustria
+Palazzo [della Confindustria](<della Confindustria>)
 È al n. 30. Progettato nel 1958 da Vincenzo Monaco, entrò in fase di realizzazione solo alla fine degli anni Sessanta in una versione in parte modificata dal figlio del progettoista originario, Edoardo Monaco; l’architettura degli interni è di Pier Luigi Spadolini. L’edificio è formato da un corpo principale a parallelepipedo di sei piani e da uno di minori dimensioni alto due piani; la facciata in curtain-wall è realizzata con infissi in alluminio nero opaco e vetri di color marrone, dando a tutto l’edificio un suggestivo aspetto astratto. Nella parte interrata è ricavato un AUDITORIUM, ovvero una grande sala per conferenze con 1000 posti, che fa parte di un più ampio centro congressi.
 
 Aufidio Namusa (Via, Q XXIV Don Bosco)
 
-Torre di Centocelle
-È lungo la via. Anche se circondata da presso dai moderni caseggiati, svetta sulla via quest’alta e bella torre, che nel Medioevo fu detta Tor San Giovanni, per indicare il possesso da parte della basilica lateranense; da questa fu affittata a più riprese ai De Rubeis e agli Astalli nel xv secolo. Il nome di Centocelle compare nel 1523, quando la torre passò, in affitto, ai Capranica e l’origine del nome risale alle Centum Cellae, ovvero gli antichi alloggiamenti della cavalleria romana, che erano presenti nella zona, insieme ad una villa, i cui ruderi furono abbattuti nel 1926, quando venne realizzato l’aeroporto di Centocelle.
+Torre [di Centocelle](<di Centocelle>)
+È lungo la via. Anche se circondata da presso dai moderni caseggiati, svetta sulla via quest’alta e bella torre, che nel Medioevo fu detta Tor San Giovanni, per indicare il possesso da parte della basilica lateranense; da questa fu affittata a più riprese ai De Rubeis e agli Astalli nel xv secolo. Il nome [di Centocelle](<di Centocelle>) compare nel 1523, quando la torre passò, in affitto, ai Capranica e l’origine del nome risale alle Centum Cellae, ovvero gli antichi alloggiamenti della cavalleria romana, che erano presenti nella zona, insieme ad una villa, i cui ruderi furono abbattuti nel 1926, quando venne realizzato l’aeroporto [di Centocelle](<di Centocelle>).
 
 Augusta (Lungotevere in, R IV Campo Marzio)
 
-Ara Pacis Augustae
+[Ara Pacis Augustae](<Ara Pacis Augustae>)
 È sull’area del lungotevere a fronte di via Ripetta (v.) e della piazza Augusto Imperatore (v.). L’Altare della Pace venne realizzato per

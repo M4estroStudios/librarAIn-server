@@ -1,34 +1,150 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-I papi costruttori
+Indice dei luoghi e delle cose notevoli
 
-Niccolò v (1447-55). Restauro delle Mura Aureliane e Leonine; fortificazione di Castel Sant'Angelo; restauro dell’Acquedotto Vergine; costruzione del Torrione Niccolino in Vaticano, ad opera di Bernardo Rossellino, con la Cappella Niccolina affrescata dal Beato Angelico.
+Casali
+- di San Pio v, 179
 
-Paolo II (1464-71). Inizio della costruzione del Palazzo San Marco (poi di Venezia), proseguito dal nipote, il cardinale Marco Barbo, e del Palazzetto di San Marco.
+Caserme
+- dei Carabinieri a Tor di Quinto, 688
+- Giacomo Acqua, 577
 
-Sisto IV (1471-84). Allargamento e pavimentazione delle vie Recta (poi dei Coronari) e Florea (poi del Pellegrino); costruzione del Ponte Sisto, della Cappella Sistina e della prima sede della Biblioteca Vaticana; restauro di Santa Maria del Popolo e dell’ospedale di Santo Spirito; inizio della costruzione di Palazzo Nardini.
+Casine
+- dell'Orologio di Villa Borghese, 135
+- delle Civette di Villa Tortonia, 491
+- delle Rose di Villa Borghese, 135
+- di Pio iv dei Giardini Vaticani, 545-546
+- di Raffaello di Villa Borghese, 135
+- Valadier, 559
 
-Alessandro VI (1492-1503). Apertura di Borgo Nuovo e della via Sancta (poi della Lungara); costruzione della Torre dei Borgia, affrescata da Pinturicchio, e dello Studium Urbis.
+Casini
+- dei Principi di Villa Torlonia, 490-491
+- del Bel Respiro di Villa Doria Pamphilj, 89-91
+- del Cardinale Bessarione, 603
+- dell'Aurora Boncompagni, 391-392
+- dell'Aurora di Villa Pallavicini Rospigliosi, 730
+- dell'Uccelliera di Villa Borghese, 134
+- della Meridiana di Villa Borghese, 134
+- delle Muse di Villa Abamelek, 88
+- di Villa Borghese, 132-133
+- di Villa Mazzanti, 152
+- La Vignola Boccapaduli, 579-580
 
-Giulio II (1503-13). Apertura della via Giulia; volta della Cappella Sistina affrescata da Michelangelo; inizio della ricostruzione di San Pietro e degli affreschi delle Stanze di Raffaello con le Logge.
+Castellaccio Brasini, 304
 
-Leone X (1513-21). Costruzione di San Giovanni dei Fiorentini; completamento delle Logge di Raffaello e proseguimento degli affreschi delle Stanze; apertura della via Leonina (poi via di Ripetta).
+Castelli
+- Caetani all'Isola Tiberina, 299-300
+- Caetani dell'Appia Antica, 60
+- del Borgo di Ostia Antica, 499
+- Sant'Angelo, 184-192
 
-Clemente VII (1523-34). Proseguimento della costruzione di San Pietro; costruzione del cortile di San Damaso; apertura della via Clementina (poi via del Babuino).
+Castra Praetoria, 193
 
-Paolo III (1534-49). Ristrutturazione delle mura con i Bastioni del Sangallo; costruzione della porta e della chiesa di Santo Spirito; affresco del Giudizio Universale di Michelangelo nella Cappella Sistina; proseguimento della costruzione di San Pietro; definizione della piazza del Campidoglio; inizio di Palazzo Farnese; apertura delle vie Paola e di Panico con il “canale di Ponte” al centro (ossia la via dei Banchi, oggi del Banco di Santo Spirito).
+Catacombe
+- al Sepolcro di Lucilio Peto, 646
+- di Novaziano, 632
+- dei Santi Marcellino e Pietro, 181
+- di Calepodio, 179
+- di Domitilla, 657
+- di Generosa, 193-194
+- di Marco e Marcelliano, 81
+- di Massimo e Felicita, 661
+- di Panfilo, 512
+- di Priscilla, 645-646
+- di San Callisto, 60
+- di San Pancrazio, 513
+- di San Sebastiano, 60
+- di San Valentino, 418
+- di Sant'Agnese, 484-485
+- di Santa Ciriaca, 393
+- di Santa Commodilla, 236-237
 
-Giulio III (1550-55). Costruzione della Villa Giulia.
+Cattedra di Pietro a San Pietro in Vaticano, 535
 
-Pio IV (1560-65). Costruzione di Santa Maria degli Angeli; apertura della Porta Pia e della via Pia (poi del Quirinale); costruzione del Casino di Pio IV in Vaticano; apertura di Borgo Pio.
+Cavalcavia del Pincio, 557
+Cavallerizza di Palazzo Doria Pamphilj, 254
+Centro Culturale Islamico, 461
+Centro Don Orione, 151
+Centro Studi Luigi Huetter, 45
+Centro Trasmittente Marcooni dei Giardini Vaticani, 546
 
-Pio V (1566-72). Costruzione dell’appartamento in Vaticano con tre cappelle; costruzione del Palazzo del Sant’Uffizio.
-
-Gregorio XIII (1572-85). Apertura delle vie Gregoriana (poi detta Merulana), Ferratella (per il collegamento tra le basiliche di San Sebastiano e San Paolo), Margutta e la via Gregoriana da Capo le Case a Trinità dei Monti; costruzione della Galleria delle Carte Geografiche in Vaticano, del Collegio Romano e del nuovo Studium Urbis; proseguimento della costruzione di San Pietro, al Campidoglio; inizio del Palazzo del Quirinale; fontana in piazza della Rotonda.
-
-Sisto V (1585-90). Completamento della cupola di San Pietro; erezione degli obelischi a San Pietro, San Giovanni in Laterano, Santa Maria Maggiore e piazza del Popolo; restauro della Colonna di Marco Aurelio; costruzione dei Palazzi del Vaticano, del Laterano e ricostruzione della Scala Santa con il Sancta Sanctorum; continuazione del Palazzo del Quirinale; Acquedotto Felice con Fontana-mostra del Mosè a Termini; apertura delle vie di San Giovanni in Laterano, Panisperna e Strada Felice (lunga 2787 m, da Trinità dei Monti a Santa Croce in Gerusalemme, poi frammentata e indicata solo nel primo tratto come via Sistina); costruzione della Biblioteca Apostolica Vaticana.
-
-Gregorio XIV (1590-91). Erezione della lanterna sopra la cupola di San Pietro.
-
-Paolo V (1605-21). Facciata di San Pietro; erezione della fontana di Carlo Maderno in piazza San Pietro; apertura delle vie San Francesco a Ripa, dell’Umiltà, della Mercede e Paolina; risanamento del rione Trastevere; Acquedotto Paolo con la Fontana-mostra del Gianicolo e il Fontanone di via Giulia; rinnovamento del Porto di Ripetta.
-
-Urbano VIII (1623-44). Ampliamento della piazza del Quirinale; restauro di Castel Sant’Angelo; cinta muraria gianicolense; erezione del baldacchino bronzeo in
+Chiese e basiliche
+- All Saints, 97
+- Basilica delle Catacombe di San Valentino, 418
+- Basilica inferiore di San Clemente, 219
+- dei Cappuccini, 761
+- del Collegio Nazareth, 220-221
+- dei Santi Quattro Coronati, 619
+- della Visitazione e San Francesco di Sales, 340-341
+- Divino Amore a Castel di Leva, 81-82
+- Domine quo vadis?, 61
+- Evangelica Luterana, 659
+- Evangelica Valdese, 198
+- Gesù, 350-351
+- Gesù Buon Pastore, 139
+- Gesù e Maria, 251
+- Gran Madre di Dio, 182
+- Madonna dei Monti, 410
+- Madonna del Divino Amore, 280
+- Madonna dell'Arco Oscuro, 114
+- Natività di Nostro Signor Gesù Cristo, 521
+- Nostra Signora de la Salette, 410-411
+- Nostra Signora del Santissimo Sacramento e Santi Martiri Canadesi, 279
+- Nostra Signora di Coromoto, 493
+- Nostra Signora di Guadalupe, 493
+- Re Magi del Palazzo di Propaganda Fide, 669
+- Sacro Cuore del Suffragio, 613-614
+- Sacro Cuore di Cristo Re, 438
+- Sacro Cuore di Gesù, 431
+- Sacro Cuore di Gesù, 526
+- Sacro Cuore Immacolato di Maria, 288
+- San Bartolomeo all'Isola, 111-112
+- San Basilio, 112-113
+- San Bernardo alle Terme, 116
+- San Biagio della Pagnotta, 375
+- San Bonaventura al Palatino, 328
+- San Callisto, 151
+- San Carlo alle Quattro Fontane, 629-630
+- San Cesareo de Appia, 606
+- San Clemente, 217-220
+- San Cosimato, 264-265
+- San Crisogono, 663-664
+- San Felice da Cantalice, 301
+- San Francesco d'Assisi a Monte Mario, 455-456
+- San Francesco d'Assisi a Ripa Grande, 339
+- San Francesco di Paola, 340
+- San Francesco Saverio alla Garbatella, 654
+- San Francesco Saverio, 176
+- San Gallicano, 343-344
+- San Giacomo in Augusta, 260
+- San Gioacchino, 566
+- San Giorgio in Velabro, 723
+- San Giovanni a Porta Latina, 584
+- San Giovanni Battista de la Salle, 656
+- San Giovanni Battista dei Fiorentini, 29-30
+- San Giovanni Bosco, 359
+- San Giovanni Calibita, 300
+- San Giovanni Decollato dei Fiorentini, 360
+- San Giovanni della Malva, 360-361
+- San Giovanni in Laterano, 593-595
+- San Giovanni in Oleo, 584
+- San Girolamo della Carità, 447-448
+- San Giuseppe a Capo le Case, 265-266
+- San Giuseppe all'Aurelio, 125
+- San Giuseppe alla Lungara, 400
+- San Giuseppe dei Falegnami, 83
+- San Giuseppe di Cluny, 565-566
+- San Gregorio al Celio, 380-381
+- San Gregorio VII, 381
+- San Leone I, 616
+- San Lorenzo fuori le Mura, 392-393
+- San Lorenzo in Damaso, 166-167
+- San Lorenzo in Lucina, 396-397
+- San Lorenzo in Miranda, 328
+- San Lorenzo in Panisperna, 514-515
+- San Luigi dei Francesi, 397-399
+- San Macuto, 406
+- San Marcello al Corso, 260
+- San Marco Evangelista, 415-416
+- San Martino ai Monti, 458
+- San Michele, 637
+- San Nicola da Tolentino, 483

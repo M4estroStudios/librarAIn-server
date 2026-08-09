@@ -1,20 +1,8 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-San Nicola da Tolentino in un'incisione di G.B. Falda.
+Sant'Onofrio in una stampa di fine Ottocento.
 
-Nervi P. L. (Piazzale, Q XXXII, Europa)
+cali originari furono completamente ristrutturati tra il 1926 e il 1930 con l’erezione di nuovi padiglioni e ancora più ricostruiti nel 1960 in un miglioramento generale di tutto il complesso. Attualmente dispone di 600 letti ed è il più importante ospedale pediatrico dell'Italia centro-meridionale.
 
-Torre Novecento
+**Istituto di Santa Dorotea**
 
-È al centro della piazza. Scultura a forma di obelisco alta 21 metri, sulla quale sono incisi emblemi in riferimento ad eventi del Novecento. Opera di Arnaldo Pomodoro, è stata inaugurata il 23 ottobre 2004.
-
-Nicola da Tolentino (Salita di San, RR II Trevi e XVII Sallustiano)
-
-San Nicola da Tolentino
-
-È al n. 17 della salita. È dedicata al santo marchigiano morto a Tolentino (1245-1305). Edificata alla fine del Cinquecento ma rifatta appena cinquant'anni dopo a spese dei Pamphilj su disegni del Baratta, ebbe così la nuova facciata nel 1670, realizzata da Filippo Buzio ma con la regia di Alessandro Algardi. Questi disegnò anche gli altari, ispirati ad un monumentalismo classicheggiante; l'altar maggiore presenta in una nicchia un gruppo di statue raffiguranti la Visione di san Nicola da Tolentino con la Vergine, sant'Agostino e santa Monica. La cupola è affrescata nella calotta con grandi effetti prospettici da Giovanni Colli e Filippo Gherardi. Notevoli la CAPPELLA GAVOTTI di Pietro da Cortona, con statue di Antonio Raggi ed Ercole Ferrata, e la riproduzione, nella prima cappella di sinistra, del Santo Sepolcro di Gerusalemme; questo proviene da Santa Maria Egiziaca (v. piazza Bocca della Verità). Vi si officia in rito armeno.
-
-Nicosia (Piazza, R IV Campo Marzio)
-
-Fontana della piazza
-
-Fu realizzata su disegno di Giacomo Della Porta nel 1572 per volere del papa gregorio xiii (1572-85) per essere collocata in piazza del Popolo; era costituita da una vasca ottagonale di marmo con quattro delfini, opera dello scalpellino Giovanni Leminard e con le insegne araldiche dei Boncompagni. Nel 1575 Della Porta la ridisegnò, volendola arricchire di quattro tritoni, che furono appositamente scolpiti da Simone Moschino, Taddeo Landini, Giacobbe Silla Longhi ed Egidio della Riviera de Molines; ma le sculture fini-
+È al n. 38 della via. Questo edificio seicentesco, che ha un ingresso anche su via del Gianicolo 4A, fu realizzato unificando tre distinti corpi di fabbrica cinquecenteschi che prendono il nome dai rispettivi antichi proprietari. Il PALAZZO GIORI è il più grande. Abitato dagli eredi del cardinale Giori, nel 1733 fu infine venduto al conservatorio di Santa Maria del Rifugio, che lo acquistò grazie alla munificenza del principe Giovanni Battista Pamphilj e di donna Teresa Ludovisi Boncompagni; nel 1768 il cardinale Marcantonio Colonna fondò un monastero di Carmelitane per accogliere le giovani del conservatorio desiderose di prendere il velo; il monastero occupò parte del palazzo e in seguito si estese anche ad altri due palazzi contigui. Il PALAZZO BORROMEO è leggermente più basso del precedente e prende nome dal cardinale Federico Borromeo (1564-1631), il cui agente abitò qui, subentrando a lui il nipote del cardinale, l'abate Federico Borromeo. Quindi fu la sede di un conservatorio di san Francesco Saverio e infine vi s’insediarono le Carmelitane dal 1768. Il PALAZZO BONELLI è l’ultimo edificio del complesso e prende nome dai duchi Bonelli che vi abitarono dal 1636, ai quali subentrarono altre famiglie, come quella dei pittori Giovanni e Pietro Faudover. Nel 1768 vi entrarono le Carmelitane. In pratica tutto il complesso era diventato da quell’anno il monastero di queste suore, e tale restò, come proprietà del conservatorio di Santa Maria del Rifugio, finché nel 1844, per ordine di Gregorio xvi, il complesso fu ceduto a Paola Frassinetti (1809-82), poi beata, che v’insediò la casa generalizia dell’Istituto di Santa Dorotea, con or-

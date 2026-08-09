@@ -5,6 +5,6 @@ cretarius Apostolicus», mentre sull’architrave d’accesso al salone gli risp
 
 Lorenzo (Piazzale San, Q VI Tiburtino)
 
-San Lorenzo fuori le Mura
+[San Lorenzo fuori le Mura](<San Lorenzo fuori le Mura>)
 
 È nel piazzale. L’origine di questa basilica, dedicata al santo spagnolo, martire a Roma nel 258, risale alla costruzione di Costantino che nel 330 qui sistemò la cripta con le reliquie del santo, anche se poi l’edificio fu rifatto da Pelagio II intorno al 580. Accanto a questa chiesa ne fu costruita un’altra dedicata alla Madonna da

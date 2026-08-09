@@ -1,4 +1,12 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-come residenza del patriarca di Roma, cioè il papa; intorno, il battistero, una serie di cappelle, cortili, aule, archi, triclini, dove il pontefice, durante le solennità religiose, riuniva il clero e le rappresentanze popolari. Un complesso unico e compatto, senza soluzione di continuità, tra la basilica e il resto, così da costituire un borgo, dove si svolse tutta la storia pontificia del Medioevo. A ricostruire la basilica pensò nel 910 circa Sergio III, che vi fu sepolto e la basilica divenne dopo di lui una sorta di grande mausoleo, perché vi furono successivamente sepolti ben 7 papi. Giovanni xi (931-35), Agapito II (946-55), Giovanni xii (955-64) e Silvestro II (999-1003), Sergio iv (1009-1112), Alessandro III (1159-81) e Innocenzo III (1198-1216).
+Porta Santo Spirito (Via di, R XIV Borgo)
 
-La basilica nel 1308 fu danneggiata da un violento incendio; i restauri provvisori furono spazzati via da un secondo incendio nel 1361 e allora si arrivò alla completa graduale ricostruzione, fermo restando l’antica abside con i mosaici di Jacopo Torriti e Jacopo da Came-
+La Porta Santo Spirito è tra via dei Penitenzieri e piazza Della Rovere nel rione Borgo. Opera di Antonio da Sangallo il Giovane, è rimasta incompiuta nel 1544; serrata tra due bastioni delle Mura Vaticane, ha quattro colonne mozze fiancheggianti un grande fornice ad arco e nicchie laterali.
+
+Porta Settimiana (Via di, R XIII Trastevere)
+
+La Porta Settimiana è tra via della Lungara e via Garibaldi, nel rione Trastevere. Sorge là dove era la Porta Septimiana, ovvero la terza porta transtiberina delle Mura Aureliane, il cui nome in qualche modo derivava dall'imperatore Settimio Severo; o dalle sue terme o dai giardini di suo figlio Settimio Geta. Sulla porta era un’iscrizione commemorativa di questo imperatore, che fu sostituita da un’altra, in memoria della ricostruzione della porta a cura di Alessandro vi nel 1498. Si mantenne il nome antico, anche se a volte fu corrotto in Settignano, Septimiani e perfino Sotto Giano, perché si trova alle falde del Gianicolo. I Mirabilia davano del nome un’interpretazione fantasiosa, ovvero perché «sette lodi furono fatte ad Augusto».
+
+Portico d'Ottavia (Via del, R XI Sant'Angelo)
+
+Il Portico d'Ottavia è l’edificio, costruito da Augusto fra il 33 e il 23 a.C. e dedicato alla sorella Ottavia, donde il nome. Era un rifacimento del precedente Portico di Metello costruito fra il 146 e

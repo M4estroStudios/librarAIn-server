@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Santa Maria delle Grazie
+[Santa Maria delle Grazie](<Santa Maria delle Grazie>)
 
-È sulla piazza. Moderna chiesa a tre navate costruita su progetto di Tullio Rossi nel 1940, ha ereditato il titolo della scomparsa Santa Maria delle Grazie fuori Porta Angelica, e conesso le preziose opere artistiche, come l’edicola ottocentesca con l’icona della Madonna delle Grazie di scuola bizantina del xii secolo, alcune lapidi e una pala della Madonna in trono con Bambino e san Francesco d’Assisi attribuita a Carlo Maratta. Parrocchia dal 1941, è affidata al clero secolare romano.
+È sulla piazza. Moderna chiesa a tre navate costruita su progetto di Tullio Rossi nel 1940, ha ereditato il titolo della scomparsa [Santa Maria delle Grazie](<Santa Maria delle Grazie>) fuori Porta Angelica, e conesso le preziose opere artistiche, come l’edicola ottocentesca con l’icona della Madonna delle Grazie di scuola bizantina del xii secolo, alcune lapidi e una pala della Madonna in trono con Bambino e san Francesco d’Assisi attribuita a Carlo Maratta. Parrocchia dal 1941, è affidata al clero secolare romano.
 
 Maria in Cappella (Vicolo di Santa, R XIII Trastevere)
 

@@ -3,12 +3,12 @@ no dalla casa di piazza Santa Chiara nel 1574, acquistando il palazzo del princi
 
 Mantellini Giuseppe (Via, Q IX Appio-Latino)
 
-Ipogeo di Trebio Giusto
+Ipogeo [di Trebio Giusto](<di Trebio Giusto>)
 
 Vi si accede dal n. 13. È un sepolcro riferibile ai primi decenni del IV secolo d.C.; è costituito da una serie di gallerie sviluppate su due piani. Consta di una camera quadrata con arcosolio sul fondo; di particolare interesse le pitture che illustrano la vita quotidiana del defunto, con scene di raccolta agricola e di cantieri edili.
 
 Marco (Piazza e via San, R IX Pigna)
 
-Busto di Madama Lucrezia
+Busto di [Madama Lucrezia](<Madama Lucrezia>)
 
-È sulla piazza, all’angolo tra il Palazzetto di Venezia e la basilica di San Marco. Si tratta del busto regalato da Paolo II a Madama Lucrezia d’Alagno (1430-79), amante del re di Napoli Alfonso d’Aragona e, alla morte del sovrano, vissuta a Roma come persona molto pia e animo di benefattrice. Il busto fu posto fin dall’inizio all’incirca dove si trova ora, prendendo nome dalla proprietaria da quando divenne popolarmente una delle statue parlanti della città. Secondo il Winckelmann raffigurerebbe la dea egizia Iside, da come è annodato sul petto il pallio, o una sacerdotessa isiaca, proveniente dal non lontano Iseo Campense; altri hanno pensato che potrebbe raffigurare l’imperatrice Faustina. Le furono affisse le pasquinate (v.) come statua parlante, ma non dette prova di estrema loquacità. Si ricorda che nel 
+È sulla piazza, all’angolo tra il Palazzetto di Venezia e la basilica di San Marco. Si tratta del busto regalato da Paolo II a [Madama Lucrezia](<Madama Lucrezia>) d’Alagno (1430-79), amante del re di Napoli Alfonso d’Aragona e, alla morte del sovrano, vissuta a Roma come persona molto pia e animo di benefattrice. Il busto fu posto fin dall’inizio all’incirca dove si trova ora, prendendo nome dalla proprietaria da quando divenne popolarmente una delle statue parlanti della città. Secondo il Winckelmann raffigurerebbe la dea egizia Iside, da come è annodato sul petto il pallio, o una sacerdotessa isiaca, proveniente dal non lontano Iseo Campense; altri hanno pensato che potrebbe raffigurare l’imperatrice Faustina. Le furono affisse le pasquinate (v.) come statua parlante, ma non dette prova di estrema loquacità. Si ricorda che nel 

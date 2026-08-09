@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 De Rossi Giovanni Battista (Via, Q V Nomentano)
 
-Nostra Signora del Santissimo Sacramento e Santi Martiri Canadesi
+[Nostra Signora del Santissimo Sacramento e Santi Martiri Canadesi](<Nostra Signora del Santissimo Sacramento e Santi Martiri Canadesi>)
 
 È al n. 46. Questa chiesa costruita nel 1955 su progetto di Bruno Apolloni Ghetti, presenta un ricco altar maggiore con ostensorio di Francesco Nagni, sotto un baldacchino con rilievi e Crocifissione di Alfredo Biancini, al quale sono dovuti anche i due amboni. Le vetrate, numerose e grandi, sono di Marcello Avenali e Giuseppe Hajnal; l'edicola di Nostra Signora del Santissimo Sacramento è di Eugenio De Courten.
 
@@ -17,7 +17,7 @@ Statua equestre bronzea dedicata al generale argentino José de San Martín (177
 
 XVII Olimpiade (Viale, Q II Parioli)
 
-Villaggio Olimpico
+[Villaggio Olimpico](<Villaggio Olimpico>)
 
 È il complesso edilizio attraverso dal viale XVII Olimpiade e racchiuso tra il viale Pietro de Coubertin e le vie Venezuela, degli Olimpionici, degli Stati Uniti d’America, Canada.
 
@@ -27,4 +27,4 @@ La realizzazione fu affidata all’Incis, che provide anche alla successiva tras
 
 Tutte le palazzine sono costruite su pilotis distribuiti in 35 ettari di superficie e hanno strutture unificate, dai marciapiedi in cemento alle finestre a nastro verniciate di bianco e cortina di rivestimento color giallo scuro.
 
-«Il Villaggio Olimpico è senza dubbio uno dei migliori quartieri d’iniziativa pubblica realizzati a Roma», secondo un giudizio di P.O. Rossi, con soluzioni coerenti per razionalità e rendimento delle strutture nel tempo.
+«Il [Villaggio Olimpico](<Villaggio Olimpico>) è senza dubbio uno dei migliori quartieri d’iniziativa pubblica realizzati a Roma», secondo un giudizio di P.O. Rossi, con soluzioni coerenti per razionalità e rendimento delle strutture nel tempo.

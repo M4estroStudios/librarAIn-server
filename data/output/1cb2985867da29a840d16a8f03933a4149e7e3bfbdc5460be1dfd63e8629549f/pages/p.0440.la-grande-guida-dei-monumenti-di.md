@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Palazzi Bernini
+Palazzi [Bernini](Bernini)
 
 fronti dell’odiato nemico. Orecchie e pene rimasero a lungo come ornamento dei due palazzi, simbolo di una sfida artistica, finché ogni insegna non venne «sformata per decenza», secondo l'indicazione di una guida turistica d’epoca.
 
@@ -7,7 +7,7 @@ Merulana (Via, R XV Esquilino)
 
 Sant’Alfonso all’Esquilino
 
-È al n. 26. Dedicata a Sant’Alfonso Maria de’ Liguori (1696-1787), il fondatore dell’ordine dei Redentoristi, è un esempio di architettura neogotica, eretta tra il 1855 e il 1859 da George Wigley (1800 ca.-66) sull’area della seicentesca Villa Caetani; fu ristrutturata con ampie modifiche tra il 1898 e il 1900 da Maximilian Schmalzl (1850-1930). Caratteristica la facciata in mattoni e travertino con il rosone all’interno dei un grande arco ogivale: sulle lunette dei tre portali bassorilievi della Madonna, al centro, e di Sant’Alfonso e San Clemente Hofbauer (1751-1820). All’interno, a navata unica, ricca la decorazione con pitture di Eugenio Cisterna (1862-1933): all’altar maggiore la venerata immagine della Madonna del Perpetuo Soccorso, tavola di scuola cretese del Trecento. Annesso alla chiesa è il PALAZZO DELLA CURIA GENERALIZIA DEI REDENTORISTI, costruito in forme neobarocche nel 1934 su progetto di Alessandro Villa.
+È al n. 26. Dedicata a Sant’Alfonso Maria de’ Liguori (1696-1787), il fondatore dell’ordine dei Redentoristi, è un esempio di architettura neogotica, eretta tra il 1855 e il 1859 da George Wigley (1800 ca.-66) sull’area della seicentesca Villa Caetani; fu ristrutturata con ampie modifiche tra il 1898 e il 1900 da Maximilian Schmalzl (1850-1930). Caratteristica la facciata in mattoni e travertino con il rosone all’interno dei un grande arco ogivale: sulle lunette dei tre portali bassorilievi della Madonna, al centro, e di Sant’Alfonso e San Clemente Hofbauer (1751-1820). All’interno, a navata unica, ricca la decorazione con pitture di Eugenio Cisterna (1862-1933): all’altar maggiore la venerata immagine della Madonna del Perpetuo Soccorso, tavola di scuola cretese del Trecento. Annesso alla chiesa è il PALAZZO [DELLA CURIA GENERALIZIA DEI REDENTORISTI](<della Curia Generalizia dei Redentoristi>), costruito in forme neobarocche nel 1934 su progetto di Alessandro Villa.
 
 Sant’Antonio da Padova
 

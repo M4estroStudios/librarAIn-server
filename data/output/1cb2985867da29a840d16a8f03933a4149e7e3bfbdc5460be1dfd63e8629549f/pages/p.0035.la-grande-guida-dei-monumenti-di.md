@@ -8,10 +8,10 @@ Monumento a Giorgio Scanderbeg
 
 Aldrovandi Ulisse (Via, Q III Pinciano)
 
-Museo Civico di Zoologia
+Museo [Civico di Zoologia](<Civico di Zoologia>)
 È al n. 18. Si è originato nel 1804 dalla collezione dell’archiginnasio La Sapienza divenuta “Museo Gabinetto di Zoologia” nel 1853 e museo dell’università La Sapienza, fino a scindersi in tre sezioni nel 1932, due denominate Museo di Zoologia (v. viale dell’Università e via Catone) e questa, rientrante nell’allora Giardino Zoologico e occupante l’attuale sede. Raccoglie più di quattro milioni di pezzi e le prime collezioni naturalistiche risalgono al pontificato di Pio VII; il materiale è diviso in 5 sezioni (entomologica, malacologica, ornitologica, osteologica e dei mammiferi) e distribuito in 18 sale.
 
 Alessandria (Via, Q IV Salario)
 
-Palazzi della ex Birra Peroni
+Palazzi [della ex Birra Peroni](<della ex Birra Peroni>)
 Grande complesso realizzato da Gustavo Giovannoni tra il 1908 e il 1922, esperimentando soluzioni formali innovative che risentivano d’influenze dell’Art Nouveau. Sulla piazza Alessandria, ad angolo tra via Bergamo, via Mantova e via Nizza, gli edifici per la lavorazione della birra, con il sudhaus o sala cotture, con i grandi recipienti in rame per l’ebollizione e la caratteristica torretta ad altaana; sulla via, la fabbrica del gihiaccio; un terzo lotto di edifici era poi tra via Reggio Emilia, via Nizza e via Cagliari. Il complesso è stato abbandonato nel 1971 ed è rimasto per lungo tempo un monumento di archeologia industriale. Restaurato e ristrutturato tra il 1996 e il 1999, è divenuto una sede della GALLERIA COMUNALE D’ARTE MODERNA con una parte destinata al parcheggio e ingresso

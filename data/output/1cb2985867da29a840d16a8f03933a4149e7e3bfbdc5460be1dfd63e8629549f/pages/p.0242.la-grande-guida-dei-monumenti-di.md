@@ -9,7 +9,7 @@ L’edificio termina con un cornicione dal ricco fregio. Sulla facciata dell’e
 
 È stata eretta con alcuni elementi di un’altra originale, nel restauro del 1929.
 
-Santa Maria in Traspontina
+[Santa Maria in Traspontina](<Santa Maria in Traspontina>)
 
 È sulla via ad angolo con borgo Sant’Angelo. L’attuale chiesa, progettata da Giovanni Sallustio Peruzzi nel 1566, continuata dal Mascherino e terminata nel 1637 dal Paparelli, sorge non lontana da dov’era l’omonima demolita. È la chiesa della Compagnia dei Bombardieri di Castello (che vollero infatti la cupola senza tamburo, altrimenti avrebbe impedito il tiro delle bombarde) e conserva la cappella di Santa Barbara, loro protettrice, decorata di elementi militari fin nella balaustra. Caratteristico il campanile, che affaccia sull’omonimo vicolo.
 

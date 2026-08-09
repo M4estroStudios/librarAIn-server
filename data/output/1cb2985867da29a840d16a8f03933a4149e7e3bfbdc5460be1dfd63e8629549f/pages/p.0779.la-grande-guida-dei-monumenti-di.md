@@ -1,19 +1,33 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-# Cronistoria di Roma
+Gli artisti della Roma monumentale
 
-753 a.C. Fondazione di Roma.
-753-509 Periodo dei re. Istituzione del calendario. Costruzione della Cloaca Massima e del Foro. Erezione delle Mura Serviane intorno ai sette colli.
-509 Istituzione della Repubblica.
-508-507 Guerra contro gli Etruschi.
-493 Vittoria dei Romani sui Latini al Lago Regillo; costruzione del Tempio di Castore e Polluce nel Foro.
-394 Roma assoggetta la città etrusca di Veio e domina sul Lazio.
-390 Roma è invasa dai Galli di Brenno; la libera Furio Camillo mettendo in fuga i Galli.
-380 Ricostruzione delle mura.
-380-350 Ristabilimento del primato di Roma sul Lazio.
-343-295 Guerre sannitiche. Apertura della via Appia e costruzione dell’Acquedotto Appio.
-282-272 Guerra tarentina.
-264 Dominio di Roma sulla penisola dalla linea Pisa-Rimini fino alla Calabria.
-264-146 Guerre puniche. Conquista di Sicilia, Sardegna e Corsica, della Grecia e di parte della Spagna.
-146-44 Tentativi di riforme con i Gracchi e guerra sociale tra Roma e gli Italici. Guerre civili: Mario e Silla; Cesare e Pompeo. Conquiste di Spagna, Gallia e Asia Minore. Roma ha 100.000 abitanti.
-44 a.C.-14 d.C. Contesa del potere tra Marco Antonio e Ottaviano. Nasce l’Impero: Ottaviano Augusto primo imperatore.
-14-68 Roma sotto la din
+Marcello Piacentini
+
+Pietro da Cortona
+- Via San Nicola da Tolentino: Chiesa di San Nicola da Tolentino (Cappella Gavotti, 1663-69);
+- Piazza Barberini: Palazzo Barberini (Trionfo della Divina Provvidenza, 1632-39);
+- Via del Quirinale: Palazzo del Quirinale (decorazione della Galleria, 1655);
+- Via del Corso: Chiesa di Santa Maria in via Lata (facciata e campanile, 1658-62);
+- Chiesa dei Santi Ambrogio e Carlo (costruzione di tribuna, tamburo e cupola e supervisione per la decorazione, 1665-69);
+- Piazza Navona: Palazzo Pamphilj (decorazione della Galleria di Donna Olimpia con le Gesta di Enea, 1651);
+- Piazza Santa Maria della Pace (Chiesa di Santa Maria della Pace: restauro interno, facciata e pronao, con sistemazione della piazzetta, 1656-58);
+- Corso Vittorio Emanuele II: Chiesa Nuova (decorazione della volta della sagrestia, 1633; decorazione della volta della cupola, 1648-51; affresco della tribuna, 1655; affresco della volta a botte della navata principale, 1664-65);
+- Piazza Mattei: Palazzo Mattei di Giove (decorazione della volta della Galleria, 1622-24);
+- Piazza del Gesù: Chiesa del Gesù (altare del transetto destro dedicato a San Francesco Saverio, 1674-78);
+- Foro Romano: Chiesa dei Santi Luca e Martina (chiesa e cupola, 1641-50);
+- Piazza San Pietro: Basilica di San Pietro (decorazione e stucco delle navate laterali, 1652-66);
+- Via Giolitti: Chiesa di Santa Bibiana (ciclo di affreschi nella parete sinistra della navata principale, 1624-26).
+
+Dipinti di Pietro da Cortona si trovano sparsi per la città: al Palazzo dei Conservatori in Campidoglio, alla Pinacoteca Vaticana, alla Galleria Borghese, alla Galleria Doria Pamphilj, alla Galleria Corsini. E inoltre nelle chiese: presbiterio di San Giovanni dei Fiorentini; pala dell’altar maggiore di San Carlo ai Catinari; il Martirio di san Lorenzo a San Lorenzo in Miranda, la pala d’altare a Sant'Ivo alla Sapienza; la Natività a San Salvatore in Lauro; la Trinità nella Cappella del Santissimo Sacramento nella basilica di San Pietro.
+
+Giulio Podesti
+- Piazza Vittorio Emanuele II: Edifici sui lati maggiori della piazza (1882-85);
+- Via del Policlinico: Policlinico Umberto I (1886-1903);
+- Via V.E. Orlando: Grand Hotel, poi Saint Régis (1890-91).
+
+Paolo Portoghesi
+- Via della Moschea: Moschea e Centro Culturale Islamico (con V. Gigliotti, 1974-89);
+- Piazza della Minerva: Hotel Minerva (ristrutturazione, 1988-91).
+
+Raffaello
+-

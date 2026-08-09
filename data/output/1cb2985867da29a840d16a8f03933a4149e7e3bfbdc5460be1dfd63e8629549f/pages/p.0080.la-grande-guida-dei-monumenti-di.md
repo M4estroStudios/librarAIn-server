@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Arco di Travertino
+Arco [di Travertino](<di Travertino>)
 
-L’Arco di Travertino consiste in un’arcuazione dell’Acquedotto Claudio (v. Parco degli Acquedotti in via Appio Claudio), che ha preso nome dalla pietra usata per la sua costruzione.
+L’Arco [di Travertino](<di Travertino>) consiste in un’arcuazione dell’Acquedotto Claudio (v. Parco degli Acquedotti in via Appio Claudio), che ha preso nome dalla pietra usata per la sua costruzione.
 
 Parco delle Tombe Latine
 
@@ -9,6 +9,6 @@ Parco delle Tombe Latine
 
 Ardeatina (Via, QQ XX Ardeatino e XXI Giuliano Dalmata, ZZ Torricella, Cecchignola e Castel di Leva)
 
-Mausoleo delle Fosse Ardeatine
+Mausoleo [delle Fosse Ardeatine](<delle Fosse Ardeatine>)
 
-Sorge in un’antica cava di marmo dove, il 24 marzo 1944, vennero trucidati dai tedeschi 335 italiani per rappresaglia all’attentato contro le forze naziste eseguito in via Rasella il giorno prima. La maggior parte delle vittime erano detenute nel braccio tedesco del carcere di Regina Coeli e nella sede del Comando delle ss di via Tasso: ufficiali, professionisti, una dozzina di stranieri, un sacerdote, un ragazzo di 14 anni e 73 ebrei. Si entra da un cancello di bronzo, a traforo di spine, simbolo del martirio, opera di Mirko Basaldella, dopo il quale è posto un gruppo di tre figure in travertino di Francesco Coccia. Le 335 tombe sono raccolte nel Sacrario, realizzato nel 1949 su progetto di Nello Aprile, Cino Calcaprina, Aldo Cardelli, Mario Fiorentino e Giuseppe Perugini. Presso le cave è il MUSEO DELLE FOSSE ARDEATINE: vi sono esposti documenti e cimeli relativi all’occupazione tedesca di Roma, nonché elmetti e armi delle ss e i disegni dell’architetto Giuseppe Perugini per la realizzazione del sacrario.
+Sorge in un’antica cava di marmo dove, il 24 marzo 1944, vennero trucidati dai tedeschi 335 italiani per rappresaglia all’attentato contro le forze naziste eseguito in via Rasella il giorno prima. La maggior parte delle vittime erano detenute nel braccio tedesco del carcere di Regina Coeli e nella sede del Comando delle ss di via Tasso: ufficiali, professionisti, una dozzina di stranieri, un sacerdote, un ragazzo di 14 anni e 73 ebrei. Si entra da un cancello di bronzo, a traforo di spine, simbolo del martirio, opera di Mirko Basaldella, dopo il quale è posto un gruppo di tre figure in travertino di Francesco Coccia. Le 335 tombe sono raccolte nel Sacrario, realizzato nel 1949 su progetto di Nello Aprile, Cino Calcaprina, Aldo Cardelli, Mario Fiorentino e Giuseppe Perugini. Presso le cave è il MUSEO [DELLE FOSSE ARDEATINE](<delle Fosse Ardeatine>): vi sono esposti documenti e cimeli relativi all’occupazione tedesca di Roma, nonché elmetti e armi delle ss e i disegni dell’architetto Giuseppe Perugini per la realizzazione del sacrario.

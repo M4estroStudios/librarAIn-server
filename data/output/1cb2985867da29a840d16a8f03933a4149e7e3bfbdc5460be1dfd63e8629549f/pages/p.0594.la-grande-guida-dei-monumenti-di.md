@@ -1,12 +1,4 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Porta Furba (Via di, Q VIII Tuscolano)
+come residenza del patriarca di Roma, cioè il papa; intorno, il battistero, una serie di cappelle, cortili, aule, archi, triclini, dove il pontefice, durante le solennità religiose, riuniva il clero e le rappresentanze popolari. Un complesso unico e compatto, senza soluzione di continuità, tra la basilica e il resto, così da costituire un borgo, dove si svolse tutta la storia pontificia del Medioevo. A ricostruire la basilica pensò nel 910 circa Sergio III, che vi fu sepolto e la basilica divenne dopo di lui una sorta di grande mausoleo, perché vi furono successivamente sepolti ben 7 papi. Giovanni xi (931-35), Agapito II (946-55), Giovanni xii (955-64) e Silvestro II (999-1003), Sergio iv (1009-1112), Alessandro III (1159-81) e Innocenzo III (1198-1216).
 
-Fontana di Porta Furba
-
-È addossata alla cosiddetta PORTA FURBA, in realtà una grande arcata dell’Acquedotto Felice (v. via dell’Acquedotto Felice), dal cui termine latino forma deriva il nome come corruzione di Forma Urbis.
-
-La fontana risale al 1586, quando fu costruita sotto Sisto v (1585-90) da Domenico Fontana, come ricorda una lapide posta sull’arcata. Fu ricostruita nel 1733 sotto Clemente xii dal presidente delle Acque Felice Passerino, come ricorda la lapide. È caratterizzata d un mascherone alato che versa acqua dentro una conchiglia, dalla quale ricade in una vasca centinata insieme a quella che esce da due bocche laterali. In alto lo stemma Corsini di papa Clemente xii.
-
-Porta Latina (Via di, R XIX Celio)
-
-La Porta Latina è nelle Mura Aureliane e prese nome dall’omonima via consolare. Chiusa, ovvero murata, nel 1827, fu riaperta nel 1911. Ad un solo fornice, ristretto al tempo di Onorio rispetto a quello aureliano, è fiancheggiata da due torri, delle quali è originaria quella di sinistra, mentre quella di destra, quadrata, che ingloba l’originale, è di epoca medievale. Nell’attico in travertino, rialzato al tempo di Onorio, si aprivano le solite cinque piccole finestre ad arco corrispondenti alla camera di manovra della saracinesca e
+La basilica nel 1308 fu danneggiata da un violento incendio; i restauri provvisori furono spazzati via da un secondo incendio nel 1361 e allora si arrivò alla completa graduale ricostruzione, fermo restando l’antica abside con i mosaici di Jacopo Torriti e Jacopo da Came-

@@ -13,6 +13,6 @@ Questa antichissima basilica, collegata al Palazzo dell’Apollinare (v.), è de
 
 **Apollonia (Via di Santa, R XIII Trastevere)**
 
-**Santa Margherita**
+**[Santa Margherita](<Santa Margherita>)**
 
 È al n. 44. Questa chiesa, edificata nel 1288, riedificata nel 1564 da donna Giulia Colonna con monastero, fu rifatta infine nel 1680 dal cardinale Girolamo Gastaldi su disegni di Carlo Fontana. Dedicata

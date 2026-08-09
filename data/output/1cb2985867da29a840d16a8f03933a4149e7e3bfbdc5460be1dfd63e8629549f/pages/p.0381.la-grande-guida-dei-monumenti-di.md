@@ -11,7 +11,7 @@ In memoria, il Giovedì Santo, il papa serviva a questa tavola il pranzo a 13 po
 
 Gregorio VII (Via, Q XIII Aurelio)
 
-San Gregorio VII
-È al n. 6. Dedicata al papa Gregorio VII (1073-1085), è parrocchia dal 1952, affidata ai Frati Minori; è stata costruita nel 1959 su progetto di Mario Paniconi e Giulio Pediconi. Sulla facciata altorilievo con il Sogno di Innocenzo III e Onorio III concede la regola ai Francescani di Luigi Venturini; sul portale San Gregorio VII di Antonio Biggi e, su un lato, Parabola del convito di Alfio Castelli.
+[San Gregorio VII](<San Gregorio VII>)
+È al n. 6. Dedicata al papa Gregorio VII (1073-1085), è parrocchia dal 1952, affidata ai Frati Minori; è stata costruita nel 1959 su progetto di Mario Paniconi e Giulio Pediconi. Sulla facciata altorilievo con il Sogno di Innocenzo III e Onorio III concede la regola ai Francescani di Luigi Venturini; sul portale [San Gregorio VII](<San Gregorio VII>) di Antonio Biggi e, su un lato, Parabola del convito di Alfio Castelli.
 
 All’interno, gruppo pensile in bronzo con il Crocifisso circondato da angeli, la Madonna e san Francesco di Pericle Fazzini; attorno all’altar maggiore, 10 pannelli in affresco di Luigi Montanarini.

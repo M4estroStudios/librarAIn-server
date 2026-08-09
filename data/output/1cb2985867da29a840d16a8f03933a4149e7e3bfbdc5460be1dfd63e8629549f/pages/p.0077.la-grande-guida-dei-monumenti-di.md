@@ -3,6 +3,6 @@ sera, prima di addormentarsi, aveva pregato il Bambino di ispirarlo, e al risveg
 
 Archivi (Piazzale degli, Q XXXII Europa)
 
-Archivio Centrale dello Stato
+Archivio [Centrale dello Stato](<Centrale dello Stato>)
 
 È al n. 26. Nato come Archivio del Regno, ha assunto l’attuale denominazione nel 1953 quando si è distaccato dall’Archivio di Stato di Roma (v. corso del Rinascimento). Si tratta del complesso edilizio costruito tra il 1938 e il 1942 su progetto di Mario De Renzi, Gino Pollini e Luigi Figini e comprendente tre edifici, che furono realizzati per ospitare le mostre delle Forze Armate, delle Comunicazioni e dei Trasporti e quindi dell’Autarchia e della Previdenza e Assicurazione. Raccoglie gli originali di leggi e decreti dello Stato italiano dalle sue origini e i documenti dei ministeri, tranne quelli del Ministero degli Esteri, degli Stati Maggiori militari e degli organi parlamentari. Ha una importante BIBLIOTECA, fondata nel 1953: dispone delle serie complete dei volumi editi dalle amministrazioni centrali e dagli enti statali; raccolta a stampa di tutte le leggi e decreti dello Stato; bollettini ufficiali, annuari e statistiche.

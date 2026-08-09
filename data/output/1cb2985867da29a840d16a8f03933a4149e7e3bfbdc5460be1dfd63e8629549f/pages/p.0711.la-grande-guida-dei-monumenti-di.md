@@ -1,14 +1,14 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-La chiesa dei Santi Vincenzo e Anastasio, con la Fontana di Trevi prima degli interventi settecenteschi, in un’incisione di G.B. Falda.
+per i suoi interventi nei processi contro Giordano Bruno e Galileo Galilei. Questa chiesa fu costruita tra il 1932 e il 1933 su progetto di Clemente Busiri Vici; è a navata unica, con facciata a capanna contenuta tra due basse torri ottagonali coperte a tetto sopra la cella campanaria. La cortina a mattoni ricopre tutto l’edificio. La Via Crucis è di Corrado Vigni; le vetrate che illustrano la Vita di san Roberto sono su cartoni di Alessandra Busiri Olsoufieff. I mosaici alle pareti sono di Renato Tomassi; l’altar maggiore fu donato da Beniamino Gigli. La chiesa è affidata come parrocchia, fin dalla sua istituzione, ai Gesuiti. Ora è gestita dal clero secolare.
 
-La vana ricerca l'Istituto di Studi Romani appose nella chiesa una lapide in ricordo, a testimonianza del fatto che Pinelli era stato veramente sepolto «In questa chiesa il iv aprile MDCCCxxv». Il mistero resta.
+Università (Viale dell’, Q VI Tiburtino)
 
-Trilussa (Piazza, R XIII Trastevere)
+Palazzo dell’Aeronautica
 
-Fontana dell’Acqua Paola
+È al n. 4. Questo edificio è stato costruito su progetto dell’ingegner Marino e, per la parte tecnica, del colonnello del Genio Aeronautico Crugnola: fu inaugurato nel 1931. Costituito da quattro corpi angolari e due centrali, apre sulla facciata principale con tre grandi arcate che immettono nell’atrio; molti ambienti sono decorati e il più interessante è il cosiddetto «salone degli eroi» dove sono raccolti i busti dei caduti per l’aeronautica.
 
-Chiamata anche Fontanone di Ponte Sisto, perché sorge a fronte di questo ponte (v. piazza di Ponte Sisto), risale al 1613, quando fu realizzata su disegno di Giovanni Vasanzio da Giovanni Fontana. Fontana mostra dell’Acquedotto Paolo, qui deviato dal fontanone su via Garibaldi (v.), originariamente era collocata alla fine di via Giulia, a ridosso dell’ex Ospizio dei Mendicanti, ma per l’apertura del lungotevere fu spostata in questa piazza nel 1898. Nella fase di distacco dal muro molti parti si ruppero e la fontana fu per metà ricostruita ad opera di Angelo Vescovali; per consentirne la vista dalla parte opposta del ponte fu sopraelevata su quindici gradini, che compensarono anche il dislivello stradale.
+Urbana (Via, R I Monti)
 
-Monumento a Trilussa
+Santa Pudenziana
 
-È nella piazza, sul lato destro rispetto alla Fontana dell’Acqua Paola. Realizzato dallo scultore Lorenzo Ferri e inaugurato il 21 dicembre 1954, rappresenta il poeta, scrisse Ceccarius all’epoca, «nell’atteggiamento caratteristico di quando recitava accompagnando con un lento movimento della bella mano cosiddetta michelangiolesca l’armoniosa cadenza dei versi». Sulla facciata del basamento sono incisi i suoi versi: «Mentre me leggo er solito giornale / spaparacchiato all’ombra d’un pajaro, / vedo un porco e je dico: – Addio, maiale! – / Vedo un ciuccio e je dico: – Addio, somaro! – / Forse ste bestie nun me capiranno, / ma provo armeno la soddisfazione / de poté diii’ le cose come stanno / senza paura de fini in prigione».
+È al n. 160. È una delle più antiche basiliche di Roma. Secondo la leggenda fu fatta costruire nel 145 da Pio I nel luogo dove sorgeva la casa del senatore Pudente, su richiesta delle figlie Pudenziana e Prassede (v. Santa Prassede), in ricordo dell’ospitalità che qui ebbe san Pietro. Peraltro l’altar maggiore della chiesa poggia su un sarcofago nel quale è conservata una tavola di legno sulla quale san Pietro avrebbe celebrato la messa. In realtà fu fondata su un edificio termale del II secolo (le cosiddette Terme di Novato) e non do-

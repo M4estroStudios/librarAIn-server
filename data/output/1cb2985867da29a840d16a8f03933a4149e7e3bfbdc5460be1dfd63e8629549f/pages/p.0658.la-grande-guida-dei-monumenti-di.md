@@ -1,10 +1,10 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Saba (San, R XXI San Saba)
+**Sette Sale (Via delle, R I Monti)**
 
-La basilica di San Saba è sulla piazza omonima. Antichissima chiesa, ebbe origine nel VII secolo su una casa attribuita a santa Silvia, madre di san Gregorio Magno; scavi recenti hanno posto in luce il primitivo ORATORIO monastico, molto vicino ai luoghi occupati dalla caserma della IV Coorte dei Vigili, fondato dagli stessi discepoli dell'abate Saba (439-532), che vi seppellirono il corpo dell'eremita, che avevano portato con sé. Sul cenobio fu costruita nel x secolo la bella basilica. Per questo motivo fu detto Cella Nova. Il papa Lucio II nel 1145 concesse il monastero ai Cluniacensi, che fecero restaurare la chiesa su esortazione del papa Innocenzo III nel 1200 circa; la caratteristica loggia che riveste la facciata risale al 1436. Ulteriori restauri furono fatti nel 1463, sotto Pio II, e risale a quell'epoca un particolare ufficio liturgico ricordato nel suo diario da Giacomo Gherardi da Volterra; consisteva nella lettura in greco del vangelo durante il pontificale papale nella domenica di Pasqua e il compito era assegnato al priore del monastero. Giulio II concesse nel 1503 la basilica ai monaci Cistercensi, ma Leone x dieci anni dopo l'assegnò ai Canonici Regolari Lateranensi, finché Gregorio XIII dette tutto il complesso nel 1573 al Collegio Germanico Ungarico; subentrarono in pratica i Gesuiti, ai quali tuttora è affidata la parrocchia. I restauri nel 1943 hanno ridato alla chiesa l'antico splendore, evidenziato nel pavimento cosmatesco dell'edificio a tre navate, divise da 14 colonne di marmi provenienti da altre antiche costruzioni. Il corpo di san Saba, rimasto miracolosamente intatto nel luogo della sua originaria sepoltura, fu restituito all'eremo di mar Saba in Palestina, fondato dallo stesso eremita, dopo il Concilio Vaticano II, per testimoniare lo spirito ecumenico della Chiesa.
+Con il nome di **Sette Sale** si fa riferimento alla grandiosa cisterna che Nerone aveva fatto costruire per la sua Domus Aurea e che fu in seguito utilizzata per rifornire d'acqua le Terme di Traiano (v. via delle Terme di Traiano), costruite sulla **domus** neroniana. Fu chiamata nel Medioevo Sette Sale e tale nome restò anche se in seguito, nel 1760, ne furono scoperte altre due e in sostanza divennero nove.
 
-Salaria (Via, QQ II Parioli, III Pinciano, IV Salario, XVII Trieste)
+**VII Coorte (Via della, R XIII Trastevere)**
 
-Catacombe di Priscilla
+**Excubitorium**
 
-Sono al n. 430. I nuclei primitivi di questa catacomba, dedicata alla santa del primo secolo appartenente alla facoltosa famiglia degli Acilii Glabriones, che aveva possedimenti nella zona, risalgono alla fine del II secolo d.C., e ne fanno una delle più antiche di Roma. Si articolano su due piani, dei quali è più antico il superiore, che è quello che si visita normalmente. Si distinguono una CAPPELLA DEL-
+È all'interno del numero civico 9 della via ed è quanto resta dell’antica caserma dei Vigili del Fuoco dell’antica Roma, ed esattamente della vii Coorte, addetta alla sorveglianza di Trastevere e della regione del Circo Flaminio.

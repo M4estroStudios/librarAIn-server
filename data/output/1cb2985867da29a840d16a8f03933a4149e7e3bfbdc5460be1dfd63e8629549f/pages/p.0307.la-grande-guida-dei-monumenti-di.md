@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Palazzo Borghese in un’incisione di A. Specchi.
+Palazzo [Borghese](Borghese) in un’incisione di A. Specchi.
 
-quale si accede alla GALLERIA PRIVATA BORGHESE, sede di mostre d’arte e di antiquariato. La facciata è caratterizzata da due balconate: la prima è coperta da ballatoio e sostenuta da pilastri e colonne doriche, tra persiane chiuse; la seconda, che la sovrasta, è invece un terrazzo a giardino pensile dal quale svetta un albero, lì insolitamente piantato. Nel palazzo si trovava la famosa galleria di dipinti, trasferita nel 1891 a Villa Borghese. Il palazzo è in parte sede di alcuni uffici dell’Ambasciata di Spagna e del CIRCOLO DELLA CACCIA.
+quale si accede alla GALLERIA PRIVATA [BORGHESE](Borghese), sede di mostre d’arte e di antiquariato. La facciata è caratterizzata da due balconate: la prima è coperta da ballatoio e sostenuta da pilastri e colonne doriche, tra persiane chiuse; la seconda, che la sovrasta, è invece un terrazzo a giardino pensile dal quale svetta un albero, lì insolitamente piantato. Nel palazzo si trovava la famosa galleria di dipinti, trasferita nel 1891 a Villa [Borghese](Borghese). Il palazzo è in parte sede di alcuni uffici dell’Ambasciata di Spagna e del CIRCOLO [DELLA CACCIA](<della Caccia>).
 
 Fori Imperiali (Via dei, R I Monti)
 

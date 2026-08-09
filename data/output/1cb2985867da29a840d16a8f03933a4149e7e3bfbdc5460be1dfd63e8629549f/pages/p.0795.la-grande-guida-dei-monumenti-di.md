@@ -1,42 +1,120 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Bibliografia essenziale
+Indice dei luoghi e delle cose notevoli
 
-AA.VV., Guide Rionali di Roma, Roma 1973-98.
-AA.VV., Le strade di Roma, 6 voll., Roma 1987-89.
-AA.VV., Il Foro Italico e lo Stadio Olimpico, a cura di M. Caporilli e F. Simeoni, Roma 1990.
-AA.VV., I rioni e i quartieri di Roma, 8 voll., Roma 1989-91.
-AA.VV., Musei di Roma, Roma 1994.
-AA.VV., Mondo Vaticano, a cura di N. Del re, Roma 1995.
-AA.VV., I quartieri di Roma, Roma 1997.
-AA.VV., Guida TCI. Roma, Milano 1999.
-AA.VV., Via del Corso. Una strada lunga 2000 anni, Roma 1999.
-AA.VV., Enciclopedia di Roma, Milano 1999.
-AA.VV., La grande enciclopedia di Roma, a cura di Claudio Rendina, Roma 2000.
-AA.VV., Guida al verde di Roma, Roma 2000.
-AA.VV., Il Vittoriano, Roma 2002.
-ACCIARESI P., Giuseppe Sacconi e l'opera sua massima, Roma 1911.
-AMADEI E., Le torri di Roma, Roma 1969.
-AMAYDEN T., La storia delle famiglie romane, Roma 1910.
-AMICI C.M., Foro di Traiano: basilica Ulpia e biblioteche, Roma 1982.
-ANGELERI G.-MARIOTTI BIANCHI U., Termini. Dalle botteghe di Farfa al Dinosauro, Roma 1983.
-ARMELLINI M., Le chiese di Roma dal secolo IV al XIX, 2 voll., Roma 1942.
-BELLI BARSALI I., Ville di Roma, Milano 1970.
-BENEVOLO L., Roma oggi, Bari 1977.
-BOCCARDI STORONI P., Guida insolita alla storia, ai segreti, ai monumenti e alle curiosità della basilica di San Pietro, Roma 1999.
-BORGATTI M., Castel Sant'Angelo. Storia e descrizione, Roma 1980.
-BORTOLOTTI L., Roma fuori le mura, Bari 1988.
-BRENGOLA P., Guida di Roma, Roma-Bari 1984.
-CALCI C., Il libro di Roma archeologica, Roma 2000.
-CANEZZA A., Gli arciospedali di Roma nella vita cittadina, nella storia e nel'arte, Roma 1933.
-CARPANETO G., I palazzi di Roma, Roma 1991.
-ID., Le famiglie nobili romane, Roma 1994.
-CASTAGNOLI F., Roma antica. Profilo urbanistico, Roma 1987.
-CECCARIUS, Strada Giulia, Roma 1940.
-CIUCCI G.-DE FEO V., Itinerari per Roma, Vicenza 1985.
-COLETTI A.M., Gli obelischi, storie e leggende, Albano 1927.
-COLINI A.M., Via Appia, Roma 1973.
-CRESTI C.-RENDINA C., Ville e palazzi di Roma, Udine 1998.
-DE GUTTRY I., Guida di Roma moderna, Roma 2001.
-DELLA PERGOLA P., Villa Borghese, Roma 1964.
-DELLI S., Le strade di Roma, Roma 1975.
-ID., I ponti di Roma, Roma 1977.
+Stanze
+- dell'Incendio di Borgo di Raffaello ai Musei Vaticani, 721
+- della Farmacia della Santissima Trinità dei Monti, 702
+- della Presettura della Domus Aurea, 283
+- della Segnatura di Raffaello ai Musei Vaticani, 720
+- delle Prospettive della Santissima Trinità dei Monti, 702
+- delle Rovine della Santissima Trinitità dei Monti, 702
+- di Eliodoro di Raffaello ai Musei Vaticani, 720-721
+- di Giuseppe Calasanzio del Palazzo degli Scolopi, 433
+- di Pio v ai Musei Vaticani, 720
+- di Raffaello in Vaticano, 720-722
+- di San Gregorio a San Gregorio al Celio, 381
+- di San Luigi Gonzaga nel Collegio Romano, 382-383
+- di Sant'Ignazio di Loyola alla Casa Professa dei Gesuiti, 351
+- di Santo Stanislao Kostka a Sant'Andrea al Quirinale, 630-631
+
+Statue parlanti
+- Abate Luigi, 740
+- Babuino, 97
+- Facchino, 390-391
+- Madama Lucrezia, 413-414
+- Marforio, 160
+- Pasquino, 522
+
+Statue
+- degli Angeli di Ponte Sant'Angelo, 574
+- dei Dioscuri con i cavalli del Campidoglio, 156
+- dei Trofei di Mario del Campidoglio, 156
+- del Babuino, 97
+- del Cavallo morente, 439
+- del Discobolo nei Musei Capitolini, 160
+- del Galata morente nei Musei Capitolini, 160
+- del Leone che azzanna un cavallo nel Palazzo dei Conservatori, 159
+- del Mulo "Scodela", 137
+- del Nilo del Palazzo Senatorio, 161
+- del Tevere del Palazzo Senatorio, 161
+- dell'Alpino, 137
+- dell'Afrodite di Cirene, 640
+- dell'Estasi della beata Ludovica Albertoni a San Francesco a Ripa, 340
+- dell'Estasi di Santa Teresa di Santa Maria della Vittoria, 735
+- della Lupa capitolina nel Palazzo dei Conservatori, 159
+
+Tabularium, 153
+
+Teatri antichi
+- degli Scavi di Ostia Antica, 508
+- di Gabii, 616
+- di Marcello, 679-680
+
+Teatri moderni
+- Adriano, 199-200
+- Ambra Jovinelli, 522
+- Argentina, 691-692
+- Brancaccio, 131
+- Capranica, 173
+- dell'Opera, 356-357
+- di Palazzo Altemps, 48
+- di Posa della Scuola Nazionale di Cinema, 709
+- Eliseo, 482
+- Quirino, 259
+- Ridotto dell'Eliseo, 482
+
+Rossini, 205-206
+Salone Margherita, 284
+Sistina, 661-662
+Valle, 680-681
+
+Tempietti
+- del Bramante a San Pietro in Montorio, 549-550
+- di Sant'Andrea, 305
+
+Templi
+- dei Lari Permarini dell'Area Sacra dell'Argentina, 689
+- del Divo Romolo, 331
+- della Fortuna dell'Area Sacra dell'Argentina, 689
+- della Fortuna nell'Area Sacra di Sant'Omobono, 387
+- della Madonna della Guardia dei Giardini Vaticani, 545
+- della Speranza al Foro Oliatorio, 312
+- di Adriano, 528
+- di Antonino e Faustina, 331-332
+- di Antonino e Faustina di Villa Borghese, 135
+- di Apollo Sosiano, 312-313
+- di Apollo, 332-333
+- di Bellona, 313
+- di Bellona degli Scavi di Ostia Antica, 508
+- di Castore e Polluce, 333
+- di Cibele, 333
+- di Cibele degli Scavi di Ostia Antica, 508
+- di Elagabalo, 333
+- di Ercole Vincitore, 122-123
+- di Feronia dell'Area Sacra dell'Argentina, 689
+- di Giano al Foro Oliatorio, 312
+- di Giunone Gabina a Gabii, 616
+- di Giunone Sospita al Foro Oliatorio, 312
+- di Giuturna dell'Area Sacra dell'Argentina, 689
+- di Marte Ultore al Foro di Augusto, 308
+- di Marte, 57
+- di Mater Matuta nell'Area Sacra di Sant'Omobono, 387
+- di Minerva Calcidica, 443
+- di Minerva Medica, 358-359
+- di Portunus, 122
+- di Saturno, 334
+- di Venere e Roma, 334
+- di Venere Genitrice al Foro
+- di Cesare, 308
+- di Vesta, 335
+- Israelita, 203
+
+Terme
+- di Agrippa, 78
+- di Caracalla, 682-683
+- di Diocleziano, 277-278
+- di Tito, 650
+- di Traiano, 683-686
+- Severiane, 235-238
+
+Terrazza del Pincio, 557

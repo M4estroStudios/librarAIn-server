@@ -5,6 +5,6 @@ Si trova alle spalle dell’anfiteatro, a fianco ad una rampa di scale. È la fa
 
 Angelicum (Largo, R I Monti)
 
-Santi Domenico e Sisto
+[Santi Domenico e Sisto](<Santi Domenico e Sisto>)
 
 È al n. 1. Questa chiesa, dedicata al santo fondatore dell’ordine dei Domenicani e al papa Sisto II, è detta anche San Sisto Nuovo, perché sostitutiva dell’antica chiesa detta appunto di San Sisto Vecchio (v. piazzale Numa Pompilio). Sorge al sommo dell’ampia scalinata, che le dà un’eccezionale scenografia; fu costruita, insieme al monastero, tra il 1575 e il 1655 dagli architetti Giacomo Della Porta, Nicola Torriani e Orazio Torriani che si susseguirono nell’opera fino a Vincenzo Della Greca che la terminò. Ricchissimo l’interno, con l’altar maggiore disegnato da Giann Lorenzo Bernini e il famoso gruppo marmoreo Noli me tangere di Antonio Raggi. L’annesso monastero delle Domenicane della Provincia di Lombardia è diven-

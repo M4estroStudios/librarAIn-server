@@ -5,6 +5,6 @@ Foro Olitorio (Via del, R XX Ripa)
 
 Foro Piscario (Via del, R VI Sant’Angelo)
 
-Tempio di Apollo Sosiano
+Tempio [di Apollo Sosiano](<di Apollo Sosiano>)
 
 È a sinistra del Teatro di Marcello (v. via del Teatro di Marcello) quanto resta di questo tempio: tre colonne corinzie e il podio. So-

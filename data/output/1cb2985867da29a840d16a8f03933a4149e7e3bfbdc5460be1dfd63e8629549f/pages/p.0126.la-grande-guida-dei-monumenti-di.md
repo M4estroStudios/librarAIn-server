@@ -17,7 +17,7 @@ Ufficio Postale
 
 Boncompagni (Via, QQ XVI Ludovisi e XVII Sallustiano)
 
-San Patrizio
+[San Patrizio](<San Patrizio>)
 
 È al n. 31. La chiesa, dedicata al santo protettore dell’Irlanda (370-461), fu costruita nel 1908 dall’architetto Aristide Leonori per il Collegio degli Agostiniani Irlandesi che tuttora l’officiano. É di tipo basilicale e stile rinascimentale, con vaga rassomiglianza con la facciata di Santa Maria del Fiore in Firenze. Notevole un resto di affresco raffigurante la Madonna delle Grazie che era prima nella distrutta chiesa di Santa Maria in Posterula.
 

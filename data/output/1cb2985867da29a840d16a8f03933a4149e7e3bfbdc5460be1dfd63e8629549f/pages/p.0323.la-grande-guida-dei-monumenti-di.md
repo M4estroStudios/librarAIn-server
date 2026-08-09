@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 ora staccate per un migliore conservazione e appese in situ. L’ambiente centrale ha un’edicola con una copia di un celebre affresco di Nicia, pittore greco del IV secolo a.C., che raffigura Apollo mentre libera Io, amata da Giove e custodita da Argo, il mostro dai cento occhi. In questa stanza sono stati posti alcuni pezzi di condutture d’acqua sui quali si legge il nome di Iulia Augusta, chiaramente riferito a Livia.
 
-**Colonna di Foca**
+**Colonna [di Foca](<di Foca>)**
 
 È nel Foro Romano, sopra un basamento, dinanzi ai Rostri. Proveniente da un edificio probabilmente del III secolo, nel 608 fu eretta sovrastata da una statua dell’imperatore non più esistente; è alta m 13,60. Fu un omaggio dei romani all’imperatore Foca (602-610), che aveva donato al papa il Pantheon, per farne una chiesa cristiana.
 

@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Il cortile del Palazzo della Dataria Apostolica. Stampa tratta da Edifici antichi e moderni di Roma di G.B. Clpriani (1817).
+Il cortile del Palazzo [della Dataria Apostolica](<della Dataria Apostolica>). Stampa tratta da Edifici antichi e moderni di Roma di G.B. Clpriani (1817).
 
 si trovava sul retro: una lapide con lo stemma di papa Mastai Ferretti ricorda quei lavori. All’epoca risale anche l’edicola con la statua dell’Immacolata, che è sulla facciata, e la triplice arcata con balcone rivolta verso Trevi. Il palazzo è stato venduto nel 1973 all’Ansa e sono state fatte varie trasformazioni all’interno. È rimasto comunque il bel cortile con fontana sul quale è lo stemma del cardinale Mario Mattei, datario nel 1860, anno in cui furono eseguiti i lavori di trasformazione dell’edificio; sopra la fontana, un’altra statua dell’Immacolata. Della costruzione originaria rimane la loggia, restaurata nel 1954, con affresco sulla volta delle Storie di Apollo.
 

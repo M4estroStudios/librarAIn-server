@@ -1,7 +1,7 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Ambrogio (Via di Sant', R XI Sant'Angelo)
 
-Sant'Ambrogio della Massima
+[Sant'Ambrogio della Massima](<Sant'Ambrogio della Massima>)
 
 È al n. 3. Sorge presso il Portico d'Ottavia, e l'appellativo Massima gli deriva dal vicino sbocco della Cloaca Massima nel Tevere (v. via del-Velabro). Fu eretta, secondo la tradizione, sulla casa del santo (334 ca.-397) che vi avrebbe vissuto con la madre e la sorella Marcellina, prima di essere trasferito come console a Milano, dove poi divenne vescovo. La casa fu anche la sede della comunità religiosa della sorella Marcellina, ma successivamente divenne proprietà di tale Maxima che, sotto il pontificato di Leone III, vi fece costruire una chiesa a croce latina con monastero. Ed ebbe poi due diverse denominazioni, Santo Stefano de Maxima e Santa Maria in Formosa; nel Quattrocento il complesso fu ristrutturato con l'originario titolo e vi entrarono le Benedettine.
 

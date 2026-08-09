@@ -15,6 +15,6 @@ Santa Maria dell’Immacolata all’Esquilino
 
 È al n. 129. Questa chiesa cominciò ad essere costruita nel 1896 per i Frati Bigi e fu terminata nel 1914 secondo un progetto degli architetti Cursi e Cortese; è in stile neogotico, a tre navate suddivise da colonne, con vetrate d’epoca. Scioltasi nel 1973 la congregazione dei Frati Bigi, la chiesa è diventata una rettoria della diocesi di Roma.
 
-Villa Astalli
+Villa [Astalli](Astalli)
 
 È al n. 104. Risale alla seconda metà del Seicento, ma non è certo che fin dalle origini esistesse un bosco con giardino e terreni desti-

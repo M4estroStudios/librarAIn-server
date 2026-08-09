@@ -1,9 +1,9 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-rio di san Sebastiano. Il convento fu acquistato da Carlo iv di Spagna come residenza estiva, ma dal 1941 è sede dell’ISTITUTO NAZIONALE DI STUDI ROMANI. Fondato nel 1925 da Carlo Galassi Paluzzi, l’istituto promuove studi, convegni, mostre, indice premi, tra i quali il Certamen Capitolinum, e cura pubblicazioni, tra le quali la collana «Le chiese di Roma» e la rivista «Studi Romani». Ha una Biblioteca ricca di 25.000 volumi di storia, letteratura, archeologia, urbanistica e dialetto di Roma e 1323 periodici; dispone anche di una Fototeca di 27.200 fotografie, 8000 negativi e 14.600 diapositive, e di una raccolta delle piante di Roma e di numerosi disegni di Trilussa (v. piazza Trilussa).
+rio di san Sebastiano. Il convento fu acquistato da Carlo iv di Spagna come residenza estiva, ma dal 1941 è sede [dell’ISTITUTO NAZIONALE DI STUDI ROMANI](<dell’Istituto Nazionale di Studi Romani>). Fondato nel 1925 da Carlo Galassi Paluzzi, l’istituto promuove studi, convegni, mostre, indice premi, tra i quali il Certamen Capitolinum, e cura pubblicazioni, tra le quali la collana «Le chiese di Roma» e la rivista «Studi Romani». Ha una Biblioteca ricca di 25.000 volumi di storia, letteratura, archeologia, urbanistica e dialetto di Roma e 1323 periodici; dispone anche di una Fototeca di 27.200 fotografie, 8000 negativi e 14.600 diapositive, e di una raccolta delle piante di Roma e di numerosi disegni di Trilussa (v. piazza Trilussa).
 
 Alicorni (Largo degli, R XIV Borgo)
 
-Santi Michele e Magno
+[Santi Michele e Magno](<Santi Michele e Magno>)
 
 È sul largo degli Alicorni 21 nel rione Borgo. Quest’antichissima chiesa, che la tradizione attribuisce a Costantino, fu in realtà fondata da Leone III nell’800 circa per i Frisoni e dedicata a San Michele in Sassia come chiesa appunto della nazione tedesca. Restaurata nel XIII secolo, accolse anche le reliquie di san Magno, portate qui da Fondi, e prese anche il secondo appellativo; vi fu aggiunto allora il campanile. Venne poi rimodernata da Carlo Murena nel 1754. Si accede alla chiesa da una ripida rampa, considerata una Scala Santa.
 

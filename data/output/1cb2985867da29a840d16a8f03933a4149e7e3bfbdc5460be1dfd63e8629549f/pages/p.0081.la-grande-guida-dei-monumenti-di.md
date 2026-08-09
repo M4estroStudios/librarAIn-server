@@ -1,9 +1,9 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Catacombe di Marco e Marcelliano
+Catacombe [di Marco e Marcelliano](<di Marco e Marcelliano>)
 
-Sono sulla via Ardeatina, collegate al Cimitero di Santa Balbina (v.); nel 1902 furono qui ritrovati i resti di una piccola basilica a loro dedicata. Vi sono pitture di argomento biblico e sarcofagi a fregio continuo.
+Sono sulla via Ardeatina, collegate al Cimitero [di Santa Balbina](<di Santa Balbina>) (v.); nel 1902 furono qui ritrovati i resti di una piccola basilica a loro dedicata. Vi sono pitture di argomento biblico e sarcofagi a fregio continuo.
 
-Cimitero di Santa Balbina
+Cimitero [di Santa Balbina](<di Santa Balbina>)
 
 È sulla via Ardeatina. Associato nella memoria al vicino cimitero dei santi Marco e Marcelliano (v.), ospitava il santuario del papa Marco e del martire Basileo. È collegato, attraverso un percorso pedonale alla basilica di San Sebastiano (v. via Appia Antica).
 

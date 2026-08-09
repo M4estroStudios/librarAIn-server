@@ -1,22 +1,136 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-II. Da Pigna a Trevi: piazza della Maddalena con la chiesa - Piazza Sant’Ignazio con la chiesa e le case dei Burrò - Biblioteca Casanatense - Chiesa delle Santissime Stimmate di San Francesco - Palazzo Altieri - Palazzo d'Aste Bonaparte e via del Corso con Palazzi Doria Pamphilj e Sciarra Colonna, chiesa di Santa Maria in via Lata e di San Marcello - Piazza Santi Apostoli con la basilica e i Palazzi Odescalchi e Colonna - Chiesa del SS. Nome di Maria e piazza Trevi con la fontana e la chiesa dei Santi Vincenzo e Anastasio;
+Indice dei luoghi e delle cose notevoli
 
-IV. Da Monte al Celio, all’Esquilino e al Laternao: giro delle chiese di Santa Caterina e Magnanapoli, di Sant’Agata dei Goti, dei Santi Domenico e Sisto, di Santa Francesca Romana e dei Santi Cosma e Damiano al Foro Romano, di San Gregorio Magno, di San Sisto Vecchio, di San Martino ai Monti e di Santa Bibiana, e giro delle basiliche di San Giovanni in Laterano, Santa Croce in Gerusalemme e Santa Maria Maggiore;
+L'indice comprende argomenti, luoghi, cose, fatti, istituzioni, opere d'arte e monumenti citati o descritti per complessive 1800 voci. La metà di esse rappresenta gli argumenti principali ai quali è stata riservata una specifica trattazione nella guida; le altre sono relative a riferimenti di carattere secondario, a volte incidentale, ma comunque significativo. Per ogni voce ci si è limitati a formire il riferimento principale, tralasciando l'indicazione degli altri luoghi in cui essa possa aver trovato un richiamo.
 
-V. Da Quirinale a Trevi: piazza del Quirinale con i Palazzi del Quirinale e della Consulta - la Villa Rospigliosi Pallavicini, le chiese di Sant’Andrea al Quirinale, di San Carlo alle Quattro Fontane, di Santa Maria della Vittoria, di Santa Susanna, di San Niccolò da Tolentino - piazza Barberini con il Palazzo Barberini, le Fontane del Tritone e delle Alpi - Chiesa di Santa Maria della Concezione in via Veneto;
+Abbazia delle Tre Fontane, 693-695
+Accademie
+- Americana, 432
+- d'Ungheria, 374
+- di Francia, 705
+- Letteraria dell’Arcadia, 128
+- Nazionale dei Lincei, 404
+- Nazionale di San Luca, 29
+Acquedotti
+- Alsietino, 695
+- Aniene Nuovo, 64
+- Aniene Vecchio, 64
+- Claudio, 65
+- del Peschiera, 288
+- delle Capore, 288
+- Felice, 65
+- Giulio, 65
+- Marcio, 65-68
+- Tepulo, 68
+Acropoli di Gabii, 616
+Aggere Serviano, 209-210
+Alberghi
+- Ambasciatori, 759
+- del Sole, 640-641
+- Excelsior, 759-760
+- Flora, 760-761
+- Majestic, 761
+- Mediterraneo, 200
+- Palace, 759
+- Quirinale, 479
+- Santa Chiara, 204
+Almo Collegio Capranica, 173
+Altare del Sacramento di San Giovanni in Laterano, 595
+Altare della Patria, 723-726
+Anfiteatri
+- Castrense, 267
+- del Gianicolo, 42-43
+- Flavio v. Colosseo
+Angelo di Castel Sant’Angelo, 189
+Annunziatella, 46
+Antico Caffe Greco, 244-246
+Antiquario del Palatino, 317
+Appartamenti
+- Borgia in Vaticano, 714-715
+- dei Principi del Palazzo del Quirinale, 625
+- della Leda di Villa Albani Torlonia, 648
+- Pontificio dei Palazzi Apostolici Vaticani, 542-543
 
-VI. Campo Marzio: Chiese di Santa Maria dei Miracoli e di Santa Maria in Montesanto - Chiese dei Santi Ambrogio e Carlo, di San Rocco, Palazzo Borghese - piazza San Lorenzo in Lucina con la chiesa e Palazzo Fiano, piazza di Montecitorio con il palazzo - piazza Colonna con Palazzo Chigi - Chiesa di Santa Maria in Via e di San Silvestro - via Capo le Case con i Palazzi Bernini e chiesa di Sant’Andrea delle Fratte - piazza di Spagna con i Palazzi di Propaganda Fide e Spagna, Fontana della Barcaccia, Scalinata di Trinità dei Monti.
+Ara Pacis Augustae, 84-85
+Aranciera di Villa Borghese, 135
+Arancio di Santa Sabina, 548-549
+Archivi
+- Caetani, 130
+- Centrale dello Stato, 77
+- Giustiniani Bandini, 130
+Archi
+- degli Argentari, 722
+- dei Cenci, 450
+- dei Pantani, 308
+- dei Quattro Venti di Villa Doria Pamphilj, 89
+- della Ciambella, 78
+- della Pace, 78
+- di Costantino, 231
+- di Dolabella, 520
+- di Druso, 602
+- di Giano, 722
+- di San Lazzaro, 430-431
+- di Santa Bibiana, 357
+- di Settimio Severo, 317
+- di Sisto v, 662
+- di Tito, 317-318
+- di Travertino, 80
+Aree Sacre
+- dell’Argentina, 689-691
+- di Sant’Omobono, 387
+Auditorium
+- del palazzo della Confindustria, 84
+- di Mecenate, 391
+- di via De Coubertin, 274
+Aule
+- Ottagona del Parco dei Gordiani, 615
+- Parlamentare del Palazzo di Montecitorio, 451
+- Senatoria di Palazzo Madama, 407
 
-**Roma umbertina**
+Babington’s Tea Rooms, 665-666
+Basiliche antiche
+- Argentaria al Foro di Cesare, 308
+- di Massenzio, 318-319
+- Emilia, 322
+- Giulia, 322
+- Hilariana, 203
+- Neopitagorica, 614-615
+- Ulpia, 335
+Bastioni
+- dell’Aventino delle Mura Aureliane, 462
+- di Michelangelo delle Mura Vaticane, 463
+- di Sangallo delle Mura Aureliane, 462
+Battistero Lateranense, 363-366
+Biblioteche
+- Angelica, 33-34
+- Apostolica Vaticana, 715
+- Casanatense, 383-384
+- del Museo Barracco, 752
+- del Palazzo del Servizio Geologico d’Italia, 677
+- dell’Accademia dei Lincei, 404
+- dell’Accademia di Romania, 279
+- dell’Accademia Nazionale di San Luca, 29
+- dell’Archivio Centrale dello Stato, 77
+- dell’Enciclopedia Italiana, 288
+- dell’Istituto Nazionale di Studi Romani, 37
+- dell’Istituto Storico Germanico, 87
+- della Scuola Nazionale di Cinema, 709
+- della Siae nella Casa del Burcardo, 676
+- di Palazzo Falconieri, 374
+- Hertziana, 702
+- Lancisiana dell’ospedale di Santo Spirito, 654
+- Nazionale Centrale “Vittorio Emanuele II”, 192-193
+Biliardo di Villa Albani Torlonia, 648
+Bingo Palace, 179-180
+Bioparco, v. Giardino Zoologico
+Bocca della Verità, 120
+Bosco sacro di Egeria, 143
+Braccio di Costantino del Colonnato di San Pietro, 541
+Braccio Nuovo dei Musei Vaticani, 717-718
+Breccia di Porta Pia, 588-589
+Busti
+- del Gianicolo, 354
+- del Pincio, 557-559
 
-È il periodo in cui regnò Umberto i quindi i ventitré anni tra il 1878 e il 1900, ma in senso ampio si parla di Roma umbertina per gli ultimi tre decenni dell’Ottocento, quando si attuò una grandioso rinnovamento della città fin dalla sua elevazione al ruolo di capitale e con Umberto già da principe assurto a simbolo di quel rinnovamento nell’immagine culturale di Roma. Emblematico è il primo itinerario suggerito, mentre la dislocazione di altre testimonianze dell’epoca è sparsa nella città e risulta ardua ad essere continuativa nel secondo, che in realtà contiene più punti di riferimento da raccontare:
-
-1. Il centro storico. Partendo da via Veneto per l’Hotel Majestic e il Palazzo Balestra, ora Banca Nazionale del Lavoro, a largo Santa Susanna con l’Ufficio Geologico e il Grand Hotel in via V.E. Orlando. Via Nazionale con la successiva via Quattro Novembre: dagli edifici di piazza della Repubblica, con al centro la Fontana delle Naiadi, alla chiesa di St. Paul, all’angolo con via Napoli; il Palazzo delle Esposizioni ad angolo con via Milano, dove apre il Traforo. Quindi la Banca d’Italia al n. 91 e, su via IV Novembre, al n. 100 la Casa Ruboli. Al n. 144 non c’è più il Teatro Nazionale, che era considerato un capolavoro, là dove ora è il Palazzo dell’Inaill, stranamente simile nella struttura. All’angolo con piazza Santi Apostoli, la nuova al di Palazzo Colonna, e di fronte, in fondo a via dei Fornari, la canonica di Santa Maria in Loreto di Lucca Carimini. A piazza Venezia, il Vittoriano. Lungo via del Corso, al n. 320, il Palazzo della Cassa di Risparmio (ora Banca di Roma); il rinnovato Palazzo Sciarra Colonna di Carbognano con la Galleria Sciarra in via Minghetti fino al Palazzo dei Grandi Magazzini “Alle città d’Italia”, ora la Rinascente. Il Palazzo delle Poste a piazza San Silvestro;
-
-II. Via Merulana: Palazzo Brancaccio e le chiese di Sant’Antonio da Padova e di Sant’Alfonso dei Liguori - Piazza Vittorio Emanuele II - Ex Collegio Massimo in piazza dei Cinquecento a Termini, ora sede del Museo Nazionale Romano - I Ministeri della Difesa, dell’Agricoltura e delle Finanze in via Venti Settembre - Il Policlinico, poi dedicato a Umberto I.
-
-**Roma fascista**
-
-È il periodo tra il 1922 e il 1942, tradizionalmente indicato come il ventennio degli sventramenti e delle borgate; ma è anche un periodo molto vitale da un punto di vista architettonico, con la creazione di numerosi centri urbani nuovi, alcuni critici in parte ancora oggi. Non è possibile definire un itinerario continuo, data la distribuzione a macchia d’olio delle nuove costruzioni, e i punti di visita vanno raccordati:
-
-1. Centro storico. Via dei Fori Imperiali, già via dell’Impero, e al via del Teatro di Marcello, già via del Mare, fino a Bocca della Verità, con gli edifici del Comune - Corso del Rinascimento con la nuova facciata delle chiese della Nostra Signora
+Camere
+- degli Sposi di Palazzo Zuccari, 701

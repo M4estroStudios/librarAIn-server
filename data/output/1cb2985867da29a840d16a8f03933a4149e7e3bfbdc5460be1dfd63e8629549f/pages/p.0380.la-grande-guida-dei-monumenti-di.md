@@ -3,6 +3,6 @@ ciata su via Gregoriana e via Sistina; su quest’ultima si erge la parte di min
 
 **Gregorio (Piazza di San, R XIX Celio)**
 
-**San Gregorio al Celio**
+**[San Gregorio al Celio](<San Gregorio al Celio>)**
 
 È al n. 1. Sorta nel Medioevo sul luogo della casa di papa Gregorio | (590-604), dove il santo aveva istituito nel 575 un oratorio de-

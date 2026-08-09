@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-La Fontana dell’Acqua Paola nel cortile di Palazzo Taverna in un’incisione di G.B. Falda.
+La Fontana dell’Acqua Paola nel cortile [di Palazzo Taverna](<di Palazzo Taverna>) in un’incisione di G.B. Falda.
 
 di Bartolomeo Neri, canonico dei Santi Celso e Giuliano, morto nel 1667, ma i lavori vennero completati nel 1676 su progetto di Pietro Passalacqua e l’ardito e originale arcone del presbiterio fu aggiunto nel Settecento dal De Dominicis.
 

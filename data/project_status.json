@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-06T19:03:49+00:00",
+  "updated_at": "2026-08-09T16:53:36+00:00",
   "roots": [
     {
       "id": "ingest",
@@ -136,12 +136,12 @@
         {
           "id": "toc_refine",
           "label": "TOC refine",
-          "status": "ok",
+          "status": "partial",
           "priority": "",
           "priority_order": 0,
           "description": "Raffinamento LLM di TOC.md (cache stage4TocIndexRefine).",
           "notes": "",
-          "updated_at": "2026-08-06T18:17:12.736Z",
+          "updated_at": "2026-08-09T16:53:36.232Z",
           "children": []
         },
         {

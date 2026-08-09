@@ -1,14 +1,36 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-ze che hanno pini altruisti ricchi di resina, di pollini e di sogni. Macché uscire... macché andare ad un concerto, ad una conferenza, ad una mostra... macché andare a prendere un tè da un’amica blasonata protettrice delle belle arti. La mia finestra è all’angolo. I miei occhi spaziano sulle belle mura pinciane e sulla villa Borghese, dove l’anima di Paolina scende dal Limbo, spinta da dolce nostalgia». Il Flora è diventato l’albergo degli diplomatici e parlamentari, non-ché di turisti in gruppo.
+San Pietro e delle statue con balconate-reliquiari ai pilastri della cupola; nuova struttura del Palazzo della Sapienza con la chiesa di Sant'Ivo; costruzione della villa di Castel Gandolfo.
 
-**Albergo Majestic**
+**Innocenzo x** (1644-55). Riqualificazione di piazza Navona, con ricostruzione del Palazzo Pamphilj, di Sant’Agnese, ristrutturazione della Fontana del Moro e costruzione della Fontana dei Quattro Fiumi; costruzione del Palazzo Nuovo sul Campidoglio; costruzione delle Carceri di via Giulia.
 
-È al n. 54. È stato costruito nel 1896 da Gaetano Koch in uno stile neorinascimentale, tipico del grande architetto romano, ed è caratterizzato dall’andamento curvilineo della facciata, che segue il corso della strada. Di grande effetto i tre balconcini semicircolari sovrapposti sull’angolo dell’avancorpo dell’edificio. È stato restaurato nel 1946, all’indomani della sua “occupazione” da parte delle forze armate canadesi. All’interno, splendidi gli affreschi a tempera del 1900 di Domenico Bruschi sulla volta del salone principale e al primo piano, con le Allegorie della glorificazione di Roma e di casa Savoia: sono stati restaurati nel 1990. L’arredamento interno completamente rinnovato, tra tende e parati di eccellente qualità, è opera dell’architetto Gianni Sturchio.
+**Alessandro VII** (1655-67). Realizzazione della piazza San Pietro con il colonnato e la fontane di Bernini; custodia della Cattedra di san Pietro nella Gloria del Bernini in San Pietro; abbellimento di Porta del Popolo; inizio costruzione delle chiese di Santa Maria dei Miracoli e di Santa Maria in Montesanto a piazza del Popolo; abbellimento delle sale del Quirinale e di Castel Gandolfo; erezione dell’obelisco in piazza della Minerva; regolarizzazione di via del Corso; sistemazione delle piazze Colonna, di Santa Maria della Pace, di Santa Maria in Trastevere e della Rotonda.
 
-**Chiesa dei Cappuccini**
+**Clemente x** (1670-76). Apertura di via della Chiesa Nuova; ristrutturazione di Ponte Sant’Angelo con i dieci angeli marmorei; costruzione del Palazzo di Montecitorio; inizio della costruzione dell’Istituto di San Michele a Ripa Grande; apertura della via Appia Pignatelli.
 
-È al n. 27. Il suo titolo originale è Santa Maria della Immacolata Concezione, ma è popolarmente nota con il riferimento ai Cappuccini ai quali è affidata. Fu costruita per volere del cardinale Antonio Barberini nel 1626, che quando morì non volle essere sepolto in un grande sarcofago: preferi una semplice lastra di marmo davanti all’altar maggiore con lo scabro epitaffio latino: «Hic iacet pulvis, cinis et nihil» (“Qui è deposta polvere, cenere e nient’altro”). È peraltro in linea con lo spirito macabro che caratterizza le cinque CAPPELLE SOTTERRANEE della chiesa decorate con ossa e teschi di 4000 frati cappuccini morti; provengono dal vecchio cenobio di San Nicolò de’ Porcis, che era sulle falde del Quirinale, oggi chiesa di Santa Croce e San Bonaventura alla Pilotta, e il trasporto delle ossa fu eseguito con trecento viaggi di carrette tra il 1627 e il 1631. La terra che ricopre il pavimento sarebbe stata trasportata dalla Terra Santa. Una scritta all’uscita riconferma lo spirito cimiteriale: «Sei ciò che fummo. Sarai ciò che siamo». Numerosi i capolavori pittorici, tra i quali San Francesco riceve le Stimmate e Morte di San Francesco del Domenichino e San Francesco orante del Caravaggio.
+**Clemente xi** (1700-21). Ricostruzione del Porto di Ripetta; ricostruzione della fontana di piazza della Rotonda con l’obelisco di San Macuto; costruzione dell’acquedotto di Civitavecchia; ampliamento dell’Istituto di San Michele a Ripa Grande; costruzione del viadotto di Civitacastellana.
 
-**Palazzo Margherita**
+**Innocenzo xiii** (1721-24). Inizio della Scalinata di Trinità dei Monti.
 
-È al n. 119A. Attualmente sede dell’Ambasciata degli Stati Uniti d’America, deve il suo popolare nome alla regina d’Italia Margherita di Savoia (Torino 1851-Bordighera, Imperia 1926), che vi andò ad abitare dopo la morte di Umberto I, alla vigilia di Natale del 1900. Fu fatto costruire da Rodolfo Boncompagni Ludovisi e venne chiamato Palazzo Piombino, dal principato della loro famiglia; il palazzo infatti fu costruito, perché l’omonimo costruito dai Boncompagni Ludovisi a piazza Colonna era stato espropriato. Il lungo edificio fu progettato da Gaetano Koch e realizzato tra il 1886
+**Benedetto xiii** (1724-30). Sistemazione di piazza Sant’Ignazio con i palazzetti rococò; completamento della Scalinata di Trinità dei Monti.
+
+**Clemente xii** (1730-40). Inizio della costruzione della Fontana di Trevi; apertura della via Clementina nella Suburra; costruzione del Carcere femminile a San Michele a Ripa; ricostruzione di San Giovanni in Laterano.
+
+**Benedetto xiv** (1740-58). Ingrandimento degli ospedali di Santo Spirito e San Gallicano; costruzione della chiesa di San Marcellino; rinnovamento della facciata di Santa Maria Maggiore; costruzione delle cappelle della Via Crucis nel Colosseo; instituzione del Museo Sacro in Vaticano.
+
+**Clemente xiii** (1758-69). Costruzione della piazza dei Cavalieri di Malta all’Aventino.
+
+**Pio vi** (1775-99). Istituzione del Museo Pio Clementino e del Museo Profano in Vaticano; completamento dell’Istituto di San Michele a Ripa; erezione degli obelischi a Trinità dei Monti, in piazza Montecitorio e al Quirinale; costruzione del Palazzo Braschi; costruzione della Sagrestia di San Pietro.
+
+**Pio viii** (1800-23). Apertura di piazza del Popolo secondo il progetto di Valadier (con le nuove fontane, gli emicici, i palazzi gemelli del tridente, la caserma dei gendarmi pontificici); apertura del piazale del Pincio (con l’erezione dell’obelisco e la Casina Valadier); apertura della piazza Traiana; scavi al Foro Romano; apertura del Museo Chiaramonti in Vaticano.
+
+**Gregorio xvi** (1831-46). Inizio dei lavori di San Paolo fuori le Mura; istituzione dei Musei Gregoriano Egizio e Gregoriano Etrusco in Vaticano e Gregoriano Profano in Laterano (poi al Vaticano); costruzione del cimitero del Verano.
+
+**Pio ix** (1846-78). Costruzione della Porta San Pancrazio e ristrutturazione delle Mura Gianicolensi; costruzione della prima Stazione Termini; costruzione della Manifattura dei Tabacchi nella nuova piazza Mastai a Trastevere; costruzione dell’impiano del Gas al Circo Massimo; costruzione dell’Acquedotto Pio Marcio; costruzione del Ponte in ferro dei Fiorentini; rinnovamento monumentale del Verano; inizio dell’apertura della via Pia (futura via Nazionale); sistemazione definitiva della piazza del Quirinale; costruzioni delle caserne di Castro Pretorio; proseguimento della costruzione di San Paolo fuori le Mura; fondazione del Museo Pio Cristiano in Vaticano.
+
+**Leone xiii** (1878-1903). Ricostruzione dell’abside di San Giovanni in Laterano; completamento della ricostruzione della basilica di San Paolo fuori le Mura.
+
+**Pio xi** (1922-39). Costruzione della Città del Vaticano; istituzione della Pinacoteca Vaticana e del Museo Missionario Etnologico in Laterano; costruzione del Palazzo di San Callisto a Trastevere.
+
+**Pio xii** (1939-58). Ristrutturazione di San Lorenzo in Damaso alla Cancelleria.
+
+**Paolo vi** (1963-78). Costruzione dell’Aula Nervi in Vaticano; istituzione del Museo Storico Vaticano.

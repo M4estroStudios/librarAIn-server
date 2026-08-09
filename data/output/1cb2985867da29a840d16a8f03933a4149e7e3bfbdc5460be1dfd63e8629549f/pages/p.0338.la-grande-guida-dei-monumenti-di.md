@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-**Monte Antenne**
+**Monte [Antenne](Antenne)**
 
 È una collina di forma trapezoidale, alla confluenza del Tevere con l’Aniene, tra la via Salaria e la zona dell’Acqua Acetosa. Anticamente vi sorgeva la piccola città di Antemnae, legata alle origini della storia di Roma per il famoso ratto delle Sabine, perché alcune donne erano in realtà abitanti di questa cittadina che rientrava nel regno sabino di Tito Tazio. Il nome le veniva dalla posizione ante amnem, che Varrone specifica indicando il punto dove l’Aniene si getta nel Trevere. Secondo la tradizione Antemnae fu conquistata da Romolo e dovrebbe essere una di quelle cittadine che dette aiuto ai Tarquini nel loro tentativo di rientrare in Roma. Archeologicamente è stata scoperta nel 1878, con una serie di reperti di cui ben poco resta: ci sono un cunicolo e un pozzo a monte del penultimo tornante di via del Ponte Salario che attraversa la collina. Il complesso infatti andò distrutto per la costruzione del forte (v.).
 

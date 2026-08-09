@@ -1,8 +1,20 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Palazzo De Cupis
+San Nicola da Tolentino in un'incisione di G.B. Falda.
 
-È ai nn. 28-39. L’origine di questo grande complesso cinquecentesco, compreso tra via dei Lorenesi, piazza Navona e via Santa Maria dell’Anima, risale a una casa della seconda metà del Quattrocento appartenuta a Bernardino De Cupis, nella quale abitò anche il cardinale Ascanio Sforza. Il figlio di Bernardino, Giandomenico De Cupis, nel 1520 ingrandì il palazzo inglobandovi alcuni edifici limitrofi. Nel Seicento vi abitarono numerosi cardinali e ambasciatori, tra i quali l’ambasciatore di Spagna, e verso la fine del Settecento la proprietà passò agli Orano, famiglia corsa presente a Roma dal Cinquecento e imparentata con i De Cupis. Al pianterreno si aprirono numerose botteghe, occupate da librai-stampatori come G.B. De Rossi «all’insegna della stampa di rame», che così si distingueva dall’omonimo De Rossi in via della Pace che era «al l’insegna di Parigi». Nel 1729 fu aperto, sempre nei locali al pianterreno, il Teatro Ornani, dal nome del proprietario, il marchese Ornani, che rappresentava marionette. Nel 1748 lo cedette all’impressario Nicola Rigacci e divenne il Teatro Agonale, anche se il Belli nel 1832 lo ricorda ancora come Ornani, quando altretutto aveva di nuovo cambiato proprietario; era di un certo Emiliani e come Teatro Emiliani s’impose nella rappresentazione di un repertorio di tragedie e commedie. La facciata su piazza Navona, un tempo probabilmente decorata ad affresco, sviluppa su tre piani, con un bel balcone in angolo con via dei Lorenesi, sulla quale si apre la parte più antica. Sulla piazza, al pianterreno, una grande porta ad arco bugnato, affiancata da due portali minori e una porta di botttega; su via Santa Maria dell’Anima, al n. 17, un grande portale ad arco bugnato con lo stemma della famiglia De Cupis, un ariete rampante, con le corna e le zampe d’oro.
+Nervi P. L. (Piazzale, Q XXXII, Europa)
 
-Palazzo Pamphilj
+Torre Novecento
 
-La struttura originaria di questo splendido palazzo risale al 1630, quando il cardinale Giovanni Battista Pamphilj fece costruire un edificio in forme tardo cinquecentesche sull’area tra la piazza Navona e via Pasquino, dove i Pamphilj avevano fin dal Quattrocento una serie di case, appositamente demolite per l’erezione del nuo-
+È al centro della piazza. Scultura a forma di obelisco alta 21 metri, sulla quale sono incisi emblemi in riferimento ad eventi del Novecento. Opera di Arnaldo Pomodoro, è stata inaugurata il 23 ottobre 2004.
+
+Nicola da Tolentino (Salita di San, RR II Trevi e XVII Sallustiano)
+
+San Nicola da Tolentino
+
+È al n. 17 della salita. È dedicata al santo marchigiano morto a Tolentino (1245-1305). Edificata alla fine del Cinquecento ma rifatta appena cinquant'anni dopo a spese dei Pamphilj su disegni del Baratta, ebbe così la nuova facciata nel 1670, realizzata da Filippo Buzio ma con la regia di Alessandro Algardi. Questi disegnò anche gli altari, ispirati ad un monumentalismo classicheggiante; l'altar maggiore presenta in una nicchia un gruppo di statue raffiguranti la Visione di san Nicola da Tolentino con la Vergine, sant'Agostino e santa Monica. La cupola è affrescata nella calotta con grandi effetti prospettici da Giovanni Colli e Filippo Gherardi. Notevoli la CAPPELLA GAVOTTI di Pietro da Cortona, con statue di Antonio Raggi ed Ercole Ferrata, e la riproduzione, nella prima cappella di sinistra, del Santo Sepolcro di Gerusalemme; questo proviene da Santa Maria Egiziaca (v. piazza Bocca della Verità). Vi si officia in rito armeno.
+
+Nicosia (Piazza, R IV Campo Marzio)
+
+Fontana della piazza
+
+Fu realizzata su disegno di Giacomo Della Porta nel 1572 per volere del papa gregorio xiii (1572-85) per essere collocata in piazza del Popolo; era costituita da una vasca ottagonale di marmo con quattro delfini, opera dello scalpellino Giovanni Leminard e con le insegne araldiche dei Boncompagni. Nel 1575 Della Porta la ridisegnò, volendola arricchire di quattro tritoni, che furono appositamente scolpiti da Simone Moschino, Taddeo Landini, Giacobbe Silla Longhi ed Egidio della Riviera de Molines; ma le sculture fini-

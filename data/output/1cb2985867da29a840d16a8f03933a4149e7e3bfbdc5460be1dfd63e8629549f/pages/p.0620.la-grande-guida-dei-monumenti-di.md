@@ -1,12 +1,6 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Porta Santo Spirito (Via di, R XIV Borgo)
+Quattro Fontane (Via delle, RR I Monti, Il Trevi, XVIII Castro Pretorio)
 
-La Porta Santo Spirito è tra via dei Penitenzieri e piazza Della Rovere nel rione Borgo. Opera di Antonio da Sangallo il Giovane, è rimasta incompiuta nel 1544; serrata tra due bastioni delle Mura Vaticane, ha quattro colonne mozze fiancheggianti un grande fornice ad arco e nicchie laterali.
+Palazzo Albani Del Drago
 
-Porta Settimiana (Via di, R XIII Trastevere)
-
-La Porta Settimiana è tra via della Lungara e via Garibaldi, nel rione Trastevere. Sorge là dove era la Porta Septimiana, ovvero la terza porta transtiberina delle Mura Aureliane, il cui nome in qualche modo derivava dall'imperatore Settimio Severo; o dalle sue terme o dai giardini di suo figlio Settimio Geta. Sulla porta era un’iscrizione commemorativa di questo imperatore, che fu sostituita da un’altra, in memoria della ricostruzione della porta a cura di Alessandro vi nel 1498. Si mantenne il nome antico, anche se a volte fu corrotto in Settignano, Septimiani e perfino Sotto Giano, perché si trova alle falde del Gianicolo. I Mirabilia davano del nome un’interpretazione fantasiosa, ovvero perché «sette lodi furono fatte ad Augusto».
-
-Portico d'Ottavia (Via del, R XI Sant'Angelo)
-
-Il Portico d'Ottavia è l’edificio, costruito da Augusto fra il 33 e il 23 a.C. e dedicato alla sorella Ottavia, donde il nome. Era un rifacimento del precedente Portico di Metello costruito fra il 146 e
+È al n. 20. Questo palazzo ad angolo tra le vie Venti Settembre e delle Quattro Fontane nasce tra il 1587 e il 1590 come casa di Muzio Mattei; glielo costruisce Domenico Fontana, che cura anche la decorazione dell’angolo tagliato con la fontana dell’Arno (secondo altri dell’Aniene), a fronte delle altre tre dell’incrocio, sottostante le logge dei due piani. Già allora l’ingresso principale era su via delle Quattro Fontane e all’interno vi sono numerose decorazioni in stucco con i simboli araldici dei Mattei. A metà del Seicento il palazzo fu acquistato dal cardinale Francesco Massimo, al quale succedette nel 1677 un altro cardinale, Francesco Merli. Alla sua morte, nel 1707, il palazzo fu acquistato da un terzo porporato, Alessandro Albani e fu allora che l’edificio subì delle modifiche, allungandosi sull’attuale via Venti Settembre (allora strada Felice), grazie all’acquisto di una casa confinante, e la loggia del primo piano diventò una galleria chiusa con affreschi di Giovanni Paolo Pannini. L’opera fu compiuta da Alessandro Specchi, che curò anche la costruzione di una torretta belvedere e il rifinimento del giardino: una serie di costruzioni cariche di simboli araldici degli Albani e con affreschi di Giovanni Odazzi. L’interno si arricchì con splendido patrimonio di statue antiche, che venne poi trasferito nella villa sulla via Salaria. L’imponente biblioteca andò invece per duta nel 1798. Ospite illustre del cardinale Alessandro fu l'ar-

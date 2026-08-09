@@ -1,4 +1,4 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-Sant'Eustachio in platana
+[Sant'Eustachio in platana](<Sant'Eustachio in platana>)
 
 Questa basilica è dedicata al centurione romano Placido (98-117), che una volta battezzato assunse il nome di Eustachio, morendo poi martire con moglie e due figli. Secondo un’antichissima tradizione, l’appellativo in platana deriva da un platano che sarebbe stato piantato nel giardino della casa di Eustachio, sulla quale fu appunto costruita la chiesa. Ricordata peraltro nel 795, ai tempi di Leone III, venne però riedificata sotto Celestino III nel 1195 circa, epoca alla quale rimonta il campanile. Fu completamente ristrutturata tra il 1650 e il 1706 da Cesare Corvara e Gian Battista Contini e tra il 1724 e il 1728 vi furono aggiunti abside e transetto a cura di Antonio Canevari, Niccolò Salvi e Giovanni Domenico Navone. In questa chiesa si adunavano i professori della Sapienza, l’antica università di Roma, e il capitolo di Sant'Eustachio ne conservava l’archivio. Restaurì si sono avuti tra il 1930 e il 1940 e negli anni Novanta del Novecento. La facciata, opera del Crovara, ha una cancellata che

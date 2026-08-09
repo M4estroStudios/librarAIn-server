@@ -1,11 +1,11 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
 Boccea (Via, QQ XIII Aurelio e Primavalle)
 
-San Giuseppe all'Aurelio
+[San Giuseppe all'Aurelio](<San Giuseppe all'Aurelio>)
 
 È al n. 362. Chiesa di stile moderno, costruita nel 1970 su progetto di Ildo Avetta, è affidata come parrocchia alla congregazione degli Oblati di San Giuseppe d'Asti. Da poco tempo custodisce un arazzo rappresentante San Giuseppe con Bambino, iniziato da Francesco Grandi e Pietro Gentili e terminato nel 1915 da Aristide Capanna e Silvio Grossi; proviene dal Laboratorio del Restauro degli Arazzi del Vaticano, dove giaceva abbandonato. In questa chiesa lo storico arazzo è tornato a nuova vita sulla parete dell’abside inserito in un codice miniato aperto ad angolo, opera del ceramista Vasco Nasorri, autore della Via Crucis già esistente nella chiesa.
 
-Santa Sofia
+[Santa Sofia](<Santa Sofia>)
 
 È al n. 478. Dedicata alla santa leggendaria madre delle vergini martiri Fede, Speranza e Carità, uccise sotto l’imperatore Adriano, e che sarebbe morta tre giorni dopo mentre pregava sulla loro tomba. Questa storia, di origine orientale, è stata interpretata come un’esposizione allegorica del culto della Divina Provvidenza, della quale questa chiesa è diventata testimone. Costruita nel 1970, è titolo presbiteriale ed è officiata in rito bizantino-ucraino.
 

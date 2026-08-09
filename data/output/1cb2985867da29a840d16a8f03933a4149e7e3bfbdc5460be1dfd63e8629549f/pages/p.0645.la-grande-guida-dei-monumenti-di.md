@@ -1,17 +1,10 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-R
+Saba (San, R XXI San Saba)
 
-Regina Elena (Viale, Q VI Tiburtino)
-Catacomba di Novaziano
-È al n. 303. Si articola su due livelli, ma il superiore fu distrutto nel 1926 per il prolungamento del viale. Risale alla metà del III secolo d.C., con il nome derivatogli dall’antipapa Novaziano, ucciso nel 258 durante la persecuzione di Valeriano. La catacomba fu ampliata nel IV secolo con altre gallerie, nelle quali si aprono sepolture a loculo e sono stati rinvenuti dei sarcofagi.
+La basilica di San Saba è sulla piazza omonima. Antichissima chiesa, ebbe origine nel VII secolo su una casa attribuita a santa Silvia, madre di san Gregorio Magno; scavi recenti hanno posto in luce il primitivo ORATORIO monastico, molto vicino ai luoghi occupati dalla caserma della IV Coorte dei Vigili, fondato dagli stessi discepoli dell'abate Saba (439-532), che vi seppellirono il corpo dell'eremita, che avevano portato con sé. Sul cenobio fu costruita nel x secolo la bella basilica. Per questo motivo fu detto Cella Nova. Il papa Lucio II nel 1145 concesse il monastero ai Cluniacensi, che fecero restaurare la chiesa su esortazione del papa Innocenzo III nel 1200 circa; la caratteristica loggia che riveste la facciata risale al 1436. Ulteriori restauri furono fatti nel 1463, sotto Pio II, e risale a quell'epoca un particolare ufficio liturgico ricordato nel suo diario da Giacomo Gherardi da Volterra; consisteva nella lettura in greco del vangelo durante il pontificale papale nella domenica di Pasqua e il compito era assegnato al priore del monastero. Giulio II concesse nel 1503 la basilica ai monaci Cistercensi, ma Leone x dieci anni dopo l'assegnò ai Canonici Regolari Lateranensi, finché Gregorio XIII dette tutto il complesso nel 1573 al Collegio Germanico Ungarico; subentrarono in pratica i Gesuiti, ai quali tuttora è affidata la parrocchia. I restauri nel 1943 hanno ridato alla chiesa l'antico splendore, evidenziato nel pavimento cosmatesco dell'edificio a tre navate, divise da 14 colonne di marmi provenienti da altre antiche costruzioni. Il corpo di san Saba, rimasto miracolosamente intatto nel luogo della sua originaria sepoltura, fu restituito all'eremo di mar Saba in Palestina, fondato dallo stesso eremita, dopo il Concilio Vaticano II, per testimoniare lo spirito ecumenico della Chiesa.
 
-Regina Margherita (Ponte, R IV Campo Marzio)
-È sul Tevere e collega lungotevere Michelangelo al lungotevere Arnaldo da Brescia. Progettato dall’architetto Angelo Vescovali a 3 arcate in muratura rivestite di travertino, fu realizzato tra il 1886 e il 1891: è lungo metri 110,10 e largo 20,5.
+Salaria (Via, QQ II Parioli, III Pinciano, IV Salario, XVII Trieste)
 
-Reni Guido (Via, Q I Flaminio)
-Santa Croce
-È al n. 2. La basilica è sorta in occasione delle celebrazioni del sedicesimo centenario dell’editto di Costantino del 313 e per questo costruita nel quartiere presso Ponte Milvio, dove l’imperatore batté Massenzio, è opera di Aristide Leoni; fu inaugurata nel 1913, ma aperta al culto l’anno dopo. Edificio di tipo basilicale, presenta davanti alla facciata un portico su colonne ioniche del tipo di San Lorenzo fuori le Mura, come pure il cornicione incurvato con il mosaico di Biagio Biagetti. L’aspetto romano della costruzione appare anche nel tipico campanile medievale a piani multipli che ricorda quello di Santa Maria in Cosmedin. All’interno, altri mosaici di Biagetti e una Croce in bronzo dorato contenente una reliquia della Santa Croce, Parrocchia dal 1912, è affidata ai padri Stimmatini.
+Catacombe di Priscilla
 
-Repubblica (Piazza della, R XVIII Castro Pretorio)
-Fontana delle Naiadi
-È al centro della piazza. Mostra dell’Acquedotto Pio-Antico Marcio, fu realizzata nel 1900 da Mario Rutelli al posto di una precedente costituita da quattro vasche con leoni sostituiti da quattro ninfe adagiate su mostri acquatici: la Ninfa dei laghi con un cigno, la Ninfa dei fiumi poggiata su un mostro fluviale, la Ninfa degli Oceani che doma il cavallo selvaggio e la Ninfa delle acque sorteranee
+Sono al n. 430. I nuclei primitivi di questa catacomba, dedicata alla santa del primo secolo appartenente alla facoltosa famiglia degli Acilii Glabriones, che aveva possedimenti nella zona, risalgono alla fine del II secolo d.C., e ne fanno una delle più antiche di Roma. Si articolano su due piani, dei quali è più antico il superiore, che è quello che si visita normalmente. Si distinguono una CAPPELLA DEL-

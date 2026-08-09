@@ -3,7 +3,7 @@ bertà quello dovette cedere il suo Caravaggio. I dipinti dei grandi del Seicent
 
 Bravetta (Via, RR V Ponte e VII Regola)
 
-Gesù Buon Pastore
+[Gesù Buon Pastore](<Gesù Buon Pastore>)
 
 È sulla via, con un ingresso in via Fiastra 3. Si tratta del complesso ospedaliero con chiesa costruito nel 1930 da Armando Brasini, che si sviluppa scenograficamente tra guglie, architravi, archi, colonne e cupole michelangiolesche. Una sorta di monumentalismo retorico caratterizza questa costruzione baroccheggiante, frutto di una ispirazione estrosa. Attualmente è sede di diversi istuti scolastici.
 
@@ -15,6 +15,6 @@ Quartiere della Garbatella
 
 Buenos Aires (Piazza, QQ IV Salario e XVII Trieste)
 
-Santa Maria Addolorata
+[Santa Maria Addolorata](<Santa Maria Addolorata>)
 
 È sulla piazza. La chiesa è stata realizzata nel 1919 per la nazione argentina, su progetto di Giuseppe Astorri; questa chiesa pur nella

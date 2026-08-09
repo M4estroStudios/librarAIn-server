@@ -1,5 +1,5 @@
 <!-- librarain:model=gemma-4-26b-a4b-it -->
-La chiesa di San Giuseppe a Capo le Case in un'incisione di G. Vasi.
+La chiesa di [San Giuseppe a Capo le Case](<San Giuseppe a Capo le Case>) in un'incisione di G. Vasi.
 
 tuisce la grata del coro, un tempo coperta da un velo nero, attraverso la quale le suore assistevano alla messa. Dal 1936 la chiesa è sede dell’arciconfraternita del Preziosissimo Sangue. Nel 1870 l’edificio conventuale annesso fu indemaniato e divenne successivamente sede del Museo Industriale e dell’Ente Assistenziale di Roma; ora è una sede della GALLERIA COMUNALE D’ARTE MODERNA E CONTEMPORANEA.
 

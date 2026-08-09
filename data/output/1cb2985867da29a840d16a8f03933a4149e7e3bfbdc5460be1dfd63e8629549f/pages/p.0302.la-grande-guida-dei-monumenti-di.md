@@ -17,6 +17,6 @@ Statua in bronzo sulla sinistra della facciata posteriore del Palazzo del Minist
 
 **Firenze (Piazza, R IV Campo Marzio)**
 
-**Palazzo di Firenze**
+**Palazzo [di Firenze](<di Firenze>)**
 
 È al n. 27. La più antica struttura di questo palazzo risale al 1516, quando Jacopo Cardelli, segretario apostolico in Vaticano, acquistò un ampio appezzamento di terreno nel quale fece costruire la Domus Magna (il vero e proprio Palazzo Cardelli nella piazza omonima) e uno di rappresentanza, chiamato Palatium. Un edificio con poche stanze raccolte intorno ad un cortile a portici, progettato probabilmente dall’architetto Pierino de Gennaris da Caravaggio. Ma dopo il Sacco del 1527 l’edificio si ampliò su due piani e sul retro un grande giardino giungeva al Palazzo Cardelli su via di Ripetta. Alla morte di Jacopo, nel 1530, i figli non potevano, secondo testamento, venderlo, per cui lo affittarono. Vi abitò il cardinale Ridolfo Pio da Carpi e, dal 1547 al 1550 la famosa cortigiana Tullia d’Aragona. Nel 1551 poté essere venduto e lo acquistò
