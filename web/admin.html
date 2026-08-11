@@ -1500,7 +1500,7 @@ body.embed-mode .admin-poh-panel { border-top: 1px solid #3e3e3e; }
 <div class="admin-section hidden" data-admin-section="status">
 <div class="panel">
   <h2>Status progetto</h2>
-  <p class="hint">Checklist curata (albero) e aggregazioni economiche dai dati. File: <code>data/project_status.json</code>.</p>
+  <p class="hint">Checklist curata (albero) e aggregazioni economiche dai dati. File: <code>web/project_status.json</code>.</p>
   <div class="project-status-toolbar">
     <button type="button" id="project-status-reload" class="secondary">Ricarica tree</button>
     <button type="button" id="project-status-save">Salva</button>
@@ -5275,7 +5275,7 @@ function renderProjectStatusPanel() {
       (isRoot ? "" : '<button type="button" id="ps-move-down" class="secondary">Giù</button>') +
       (isRoot ? "" : '<button type="button" id="ps-delete" class="secondary">Elimina</button>') +
     "</div>" +
-    '<p class="hint">Applica scrive subito su <code>data/project_status.json</code>.</p>';
+    '<p class="hint">Applica scrive subito su <code>web/project_status.json</code>.</p>';
   const applyBtn = document.getElementById("ps-apply");
   const addBtn = document.getElementById("ps-add-child");
   const upBtn = document.getElementById("ps-move-up");

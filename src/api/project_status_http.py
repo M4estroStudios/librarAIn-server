@@ -31,8 +31,8 @@ _SLUG_RE = re.compile(r"[^a-z0-9]+")
 _stats_memory: dict[str, Any] = {"data_root": None, "payload": None}
 
 
-def project_status_path(data_root: Path) -> Path:
-    return Path(data_root) / _PROJECT_STATUS_FILENAME
+def project_status_path(web_dir: Path) -> Path:
+    return Path(web_dir) / _PROJECT_STATUS_FILENAME
 
 
 def project_status_stats_cache_path(data_root: Path) -> Path:
@@ -158,8 +158,8 @@ def default_tree() -> dict[str, Any]:
     return {"version": 1, "updated_at": None, "roots": []}
 
 
-def load_project_status(data_root: Path) -> dict[str, Any]:
-    path = project_status_path(data_root)
+def load_project_status(web_dir: Path) -> dict[str, Any]:
+    path = project_status_path(web_dir)
     if not path.is_file():
         return default_tree()
     try:
@@ -169,10 +169,10 @@ def load_project_status(data_root: Path) -> dict[str, Any]:
     return normalize_tree(raw)
 
 
-def save_project_status(data_root: Path, tree: dict[str, Any]) -> dict[str, Any]:
+def save_project_status(web_dir: Path, tree: dict[str, Any]) -> dict[str, Any]:
     normalized = normalize_tree(tree)
     normalized["updated_at"] = _utc_now_iso()
-    path = project_status_path(data_root)
+    path = project_status_path(web_dir)
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(normalized, ensure_ascii=False, indent=2) + "\n"
     tmp = path.with_suffix(".json.tmp")
@@ -398,6 +398,7 @@ def _patch_cached_checklist(data_root: Path, tree: dict[str, Any]) -> None:
 def get_project_stats(
     data_root: Path,
     *,
+    web_dir: Path,
     settings: Any,
     registry: JobRegistry,
     research_batch_registry: ResearchBatchRegistry,
@@ -414,7 +415,7 @@ def get_project_stats(
         if disk is not None:
             _store_stats_payload(data_root, disk)
             return disk
-    tree = load_project_status(data_root)
+    tree = load_project_status(web_dir)
     stats = build_project_stats(
         data_root,
         tree,
@@ -435,6 +436,7 @@ def try_handle_project_status_get(
     handler: BaseHTTPRequestHandler,
     *,
     data_root: Path,
+    web_dir: Path,
     settings: Any,
     registry: JobRegistry,
     research_batch_registry: ResearchBatchRegistry,
@@ -443,7 +445,7 @@ def try_handle_project_status_get(
     query: dict[str, list[str]] | None = None,
 ) -> bool:
     if path == "/api/admin/project-status":
-        tree = load_project_status(data_root)
+        tree = load_project_status(web_dir)
         send_json(handler, 200, {"ok": True, "tree": tree})
         return True
     if path != "/api/admin/project-status/stats":
@@ -453,6 +455,7 @@ def try_handle_project_status_get(
     refresh = refresh_raw in {"1", "true", "yes"}
     payload = get_project_stats(
         data_root,
+        web_dir=web_dir,
         settings=settings,
         registry=registry,
         research_batch_registry=research_batch_registry,
@@ -477,6 +480,7 @@ def try_handle_project_status_put(
     handler: BaseHTTPRequestHandler,
     *,
     data_root: Path,
+    web_dir: Path,
     settings: Any,
     registry: JobRegistry,
     research_batch_registry: ResearchBatchRegistry,
@@ -496,7 +500,7 @@ def try_handle_project_status_put(
         send_json(handler, 400, {"ok": False, "error": "body must be an object"})
         return True
     tree_body = payload.get("tree") if isinstance(payload.get("tree"), dict) else payload
-    tree = save_project_status(data_root, tree_body)
+    tree = save_project_status(web_dir, tree_body)
     _patch_cached_checklist(data_root, tree)
     send_json(handler, 200, {"ok": True, "tree": tree})
     return True

@@ -114,18 +114,18 @@ class NormalizeTreeTests(unittest.TestCase):
 class LoadSaveTests(unittest.TestCase):
     def setUp(self) -> None:
         self._tmp = tempfile.TemporaryDirectory()
-        self.root = Path(self._tmp.name)
+        self.web_dir = Path(self._tmp.name)
 
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
     def test_load_missing_returns_empty(self) -> None:
-        tree = load_project_status(self.root)
+        tree = load_project_status(self.web_dir)
         self.assertEqual(tree["roots"], [])
 
     def test_save_and_load_roundtrip(self) -> None:
         saved = save_project_status(
-            self.root,
+            self.web_dir,
             {
                 "version": 1,
                 "roots": [
@@ -139,9 +139,9 @@ class LoadSaveTests(unittest.TestCase):
                 ],
             },
         )
-        self.assertTrue(project_status_path(self.root).is_file())
+        self.assertTrue(project_status_path(self.web_dir).is_file())
         self.assertIsNotNone(saved["updated_at"])
-        loaded = load_project_status(self.root)
+        loaded = load_project_status(self.web_dir)
         self.assertEqual(loaded["roots"][0]["status"], "partial")
         self.assertEqual(loaded["roots"][0]["notes"], "note")
 
@@ -165,6 +165,10 @@ class HttpHandlerTests(unittest.TestCase):
     def setUp(self) -> None:
         self._tmp = tempfile.TemporaryDirectory()
         self.root = Path(self._tmp.name)
+        self.web_dir = self.root / "web"
+        self.data_root = self.root / "data"
+        self.web_dir.mkdir()
+        self.data_root.mkdir()
         seed = {
             "version": 1,
             "roots": [
@@ -177,7 +181,7 @@ class HttpHandlerTests(unittest.TestCase):
                 }
             ],
         }
-        project_status_path(self.root).write_text(
+        project_status_path(self.web_dir).write_text(
             json.dumps(seed), encoding="utf-8"
         )
         self.responses: list[tuple[int, dict]] = []
@@ -192,21 +196,22 @@ class HttpHandlerTests(unittest.TestCase):
         self.batch = MagicMock()
         self.batch.running_count.return_value = 0
         self.settings = MagicMock()
-        self.settings.data_root = str(self.root)
+        self.settings.data_root = str(self.data_root)
 
     def tearDown(self) -> None:
-        clear_project_status_stats_cache(self.root)
+        clear_project_status_stats_cache(self.data_root)
         self._tmp.cleanup()
 
     def test_get_returns_tree_only(self) -> None:
         handled = try_handle_project_status_get(
             "/api/admin/project-status",
             self.handler,
-            data_root=self.root,
+            data_root=self.data_root,
+            web_dir=self.web_dir,
             settings=self.settings,
             registry=self.registry,
             research_batch_registry=self.batch,
-            sqlite_path=str(self.root / "db" / "biblioteca.db"),
+            sqlite_path=str(self.data_root / "db" / "biblioteca.db"),
             send_json=self.send_json,
         )
         self.assertTrue(handled)
@@ -217,10 +222,11 @@ class HttpHandlerTests(unittest.TestCase):
         self.assertNotIn("stats", payload)
 
     def test_stats_are_cached(self) -> None:
-        clear_project_status_stats_cache(self.root)
-        sqlite_path = str(self.root / "db" / "biblioteca.db")
+        clear_project_status_stats_cache(self.data_root)
+        sqlite_path = str(self.data_root / "db" / "biblioteca.db")
         first = get_project_stats(
-            self.root,
+            self.data_root,
+            web_dir=self.web_dir,
             settings=self.settings,
             registry=self.registry,
             research_batch_registry=self.batch,
@@ -229,7 +235,8 @@ class HttpHandlerTests(unittest.TestCase):
         )
         self.assertFalse(first["cached"])
         second = get_project_stats(
-            self.root,
+            self.data_root,
+            web_dir=self.web_dir,
             settings=self.settings,
             registry=self.registry,
             research_batch_registry=self.batch,
@@ -242,7 +249,8 @@ class HttpHandlerTests(unittest.TestCase):
         handled = try_handle_project_status_get(
             "/api/admin/project-status/stats",
             self.handler,
-            data_root=self.root,
+            data_root=self.data_root,
+            web_dir=self.web_dir,
             settings=self.settings,
             registry=self.registry,
             research_batch_registry=self.batch,
@@ -278,11 +286,12 @@ class HttpHandlerTests(unittest.TestCase):
         handled = try_handle_project_status_put(
             "/api/admin/project-status",
             self.handler,
-            data_root=self.root,
+            data_root=self.data_root,
+            web_dir=self.web_dir,
             settings=self.settings,
             registry=self.registry,
             research_batch_registry=self.batch,
-            sqlite_path=str(self.root / "db" / "biblioteca.db"),
+            sqlite_path=str(self.data_root / "db" / "biblioteca.db"),
             send_json=self.send_json,
             read_body=read_body,
         )
@@ -291,7 +300,7 @@ class HttpHandlerTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(payload["tree"]["roots"][0]["status"], "ok")
         self.assertNotIn("stats", payload)
-        loaded = load_project_status(self.root)
+        loaded = load_project_status(self.web_dir)
         self.assertEqual(loaded["roots"][0]["notes"], "done")
 
 
