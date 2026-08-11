@@ -708,6 +708,18 @@ def build_ingest_server(
                     _send_bytes(self, 200, biblio_book_js.read_bytes(), "text/javascript; charset=utf-8")
                     return
 
+            if path == "/biblioteca-time-collapse.js":
+                biblio_time_collapse_js = web_dir / "biblioteca-time-collapse.js"
+                if biblio_time_collapse_js.is_file():
+                    _send_bytes(self, 200, biblio_time_collapse_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
+            if path == "/biblioteca-time.js":
+                biblio_time_js = web_dir / "biblioteca-time.js"
+                if biblio_time_js.is_file():
+                    _send_bytes(self, 200, biblio_time_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
             if path == "/transcript-highlight.js":
                 transcript_hl_js = web_dir / "transcript-highlight.js"
                 if transcript_hl_js.is_file():

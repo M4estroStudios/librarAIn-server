@@ -11,11 +11,9 @@ import openai
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.ingestion.polyindex.file_lock import polyindex_dir_lock
-from src.ingestion.polyindex.time_extract import (
-    _year_sort_key,
-    extract_time_references,
-)
+from src.ingestion.polyindex.time_extract import extract_time_references
 from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
+from src.ingestion.polyindex.time_sort import _date_sort_key, _year_sort_key
 from src.models.settings import Settings
 
 SCHEMA_VERSION = "1.0"
@@ -64,6 +62,8 @@ def _merge_local_entry_pages(
     label: str,
     aligned_page: int,
     original_page: int,
+    *,
+    via_kinds: list[str] | None = None,
 ) -> None:
     entry = section.get(label)
     if not isinstance(entry, dict):
@@ -81,6 +81,25 @@ def _merge_local_entry_pages(
         aligned.append(aligned_page)
     if original_page not in original:
         original.append(original_page)
+    if via_kinds:
+        via = entry.setdefault("via", {})
+        if not isinstance(via, dict):
+            via = {}
+            entry["via"] = via
+        for kind in via_kinds:
+            pages = via.setdefault(kind, [])
+            if not isinstance(pages, list):
+                pages = []
+                via[kind] = pages
+            if aligned_page not in pages:
+                pages.append(aligned_page)
+    else:
+        direct_pages = entry.setdefault("direct_pages", [])
+        if not isinstance(direct_pages, list):
+            direct_pages = []
+            entry["direct_pages"] = direct_pages
+        if aligned_page not in direct_pages:
+            direct_pages.append(aligned_page)
 
 
 def _append_page_labels(
@@ -108,7 +127,9 @@ def _sort_book_time_index_document(document: dict[str, object]) -> dict[str, obj
         }
     dates = document.get("dates")
     if isinstance(dates, dict):
-        document["dates"] = {label: dates[label] for label in sorted(dates)}
+        document["dates"] = {
+            label: dates[label] for label in sorted(dates, key=_date_sort_key)
+        }
     for section_name in ("years", "dates"):
         section = document.get(section_name)
         if not isinstance(section, dict):
@@ -120,6 +141,18 @@ def _sort_book_time_index_document(document: dict[str, object]) -> dict[str, obj
                 entry["aligned_pages"] = sorted(set(entry["aligned_pages"]))
             if isinstance(entry.get("original_pages"), list):
                 entry["original_pages"] = sorted(set(entry["original_pages"]))
+            if isinstance(entry.get("direct_pages"), list):
+                entry["direct_pages"] = sorted(set(entry["direct_pages"]))
+            via = entry.get("via")
+            if isinstance(via, dict):
+                entry["via"] = {
+                    kind: sorted(set(pages)) if isinstance(pages, list) else []
+                    for kind, pages in sorted(via.items())
+                }
+                if entry.get("direct_pages"):
+                    entry.pop("via", None)
+                elif not entry["via"]:
+                    entry.pop("via", None)
     for map_name in ("page_years", "page_dates"):
         page_map = document.get(map_name)
         if not isinstance(page_map, dict):
@@ -134,7 +167,7 @@ def _sort_book_time_index_document(document: dict[str, object]) -> dict[str, obj
 
 
 def _build_book_time_index_document(
-    page_refs: list[tuple[int, int, set[str], set[str]]],
+    page_refs: list[tuple[int, int, set[str], set[str], dict[str, list[str]]]],
 ) -> dict[str, object]:
     document = _empty_book_time_index_document()
     years_section = document["years"]
@@ -145,10 +178,14 @@ def _build_book_time_index_document(
     assert isinstance(dates_section, dict)
     assert isinstance(page_years, dict)
     assert isinstance(page_dates, dict)
-    for aligned_page, original_page, years, dates in page_refs:
+    for aligned_page, original_page, years, dates, via in page_refs:
         for year_label in years:
             _merge_local_entry_pages(
-                years_section, year_label, aligned_page, original_page
+                years_section,
+                year_label,
+                aligned_page,
+                original_page,
+                via_kinds=via.get(year_label),
             )
         for date_label in dates:
             _merge_local_entry_pages(
@@ -204,7 +241,9 @@ def _sort_time_index_document(document: dict[str, object]) -> dict[str, object]:
         }
     dates = document.get("dates")
     if isinstance(dates, dict):
-        document["dates"] = {label: dates[label] for label in sorted(dates)}
+        document["dates"] = {
+            label: dates[label] for label in sorted(dates, key=_date_sort_key)
+        }
     for section in (document.get("years"), document.get("dates")):
         if not isinstance(section, dict):
             continue
@@ -279,7 +318,7 @@ async def sync_time_index_from_book_async(
         book_output.output_dir, book_output.slug
     )
 
-    page_refs: list[tuple[int, int, set[str], set[str]]] = []
+    page_refs: list[tuple[int, int, set[str], set[str], dict[str, list[str]]]] = []
     llm_pages = 0
     sem = (
         asyncio.Semaphore(settings.max_parallel_request)
@@ -287,12 +326,14 @@ async def sync_time_index_from_book_async(
         else asyncio.Semaphore(1)
     )
 
-    async def _scan_page(page: BookPageOutput) -> tuple[int, int, set[str], set[str], bool] | None:
+    async def _scan_page(
+        page: BookPageOutput,
+    ) -> tuple[int, int, set[str], set[str], dict[str, list[str]], bool] | None:
         if not page.file.is_file():
             return None
         text = page.file.read_text(encoding="utf-8")
         async with sem:
-            years, dates, used_llm = await extract_time_references_for_page(
+            years, dates, via, used_llm = await extract_time_references_for_page(
                 text,
                 client=client,
                 settings=settings,
@@ -304,7 +345,7 @@ async def sync_time_index_from_book_async(
             )
         if not years and not dates:
             return None
-        return page.aligned, page.original, years, dates, used_llm
+        return page.aligned, page.original, years, dates, via, used_llm
 
     scan_results = await asyncio.gather(
         *(_scan_page(page) for page in book_output.pages)
@@ -312,8 +353,8 @@ async def sync_time_index_from_book_async(
     for result in scan_results:
         if result is None:
             continue
-        aligned_page, original_page, years, dates, used_llm = result
-        page_refs.append((aligned_page, original_page, years, dates))
+        aligned_page, original_page, years, dates, via, used_llm = result
+        page_refs.append((aligned_page, original_page, years, dates, via))
         if used_llm:
             llm_pages += 1
 
@@ -341,7 +382,7 @@ async def sync_time_index_from_book_async(
         _purge_book_from_section(years_section, source_sha256)
         _purge_book_from_section(dates_section, source_sha256)
 
-        for aligned_page, original_page, years, dates in page_refs:
+        for aligned_page, original_page, years, dates, _via in page_refs:
             for year_label in years:
                 _merge_entry_pages(
                     years_section,

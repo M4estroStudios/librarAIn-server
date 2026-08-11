@@ -221,7 +221,7 @@ async def _refresh_time_pages_async(
     async def _scan(page: BookPageOutput) -> tuple[BookPageOutput, set[str], set[str], bool]:
         text = page.file.read_text(encoding="utf-8") if page.file.is_file() else ""
         async with sem:
-            years, dates, used_llm = await extract_time_references_for_page(
+            years, dates, _via, used_llm = await extract_time_references_for_page(
                 text,
                 client=client,
                 settings=settings,

@@ -359,6 +359,9 @@
         try { data = JSON.parse(ev.data); } catch (_) { return; }
         var st = data.status || data.event_status;
         if (st === "done" || st === "completed") {
+          if (stage === "time_index" && typeof window.clearBiblioTimeIndexCache === "function") {
+            window.clearBiblioTimeIndexCache();
+          }
           finish((STAGE_LABELS[stage] || stage) + " completato.");
         } else if (st === "error" || st === "failed") {
           finish((STAGE_LABELS[stage] || stage) + " errore: " + (data.message || "fallito"));

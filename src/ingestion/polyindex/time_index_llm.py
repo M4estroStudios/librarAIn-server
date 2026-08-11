@@ -145,7 +145,9 @@ def _normalize_llm_label(label: str) -> str:
         if pattern.search(cleaned):
             cleaned = pattern.sub(month, cleaned)
             break
-    return cleaned
+    cleaned = re.sub(r"\s*d\.\s*C\.?(?!\w)", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\s*a\.\s*C\.?(?!\w)", " a.C.", cleaned, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", cleaned).strip()
 
 
 def _json_candidates_from_llm_content(content: str) -> list[str]:
@@ -258,12 +260,15 @@ async def extract_time_references_for_page(
     prompt_notes: str | None = None,
     source_sha256: str = "",
     book_slug: str = "",
-) -> tuple[set[str], set[str], bool]:
-    from src.ingestion.polyindex.time_extract import extract_time_references
+) -> tuple[set[str], set[str], dict[str, list[str]], bool]:
+    from src.ingestion.polyindex.time_extract import (
+        _drop_bare_years_covered_by_ac,
+        extract_time_references,
+    )
 
-    regex_years, regex_dates = extract_time_references(text)
+    regex_years, regex_dates, via = extract_time_references(text)
     if client is None or settings is None or not settings.time_index_use_llm:
-        return regex_years, regex_dates, False
+        return regex_years, regex_dates, via, False
 
     model = _time_index_llm_model(settings)
     text_hash = _text_sha256(text)
@@ -277,7 +282,9 @@ async def extract_time_references_for_page(
     )
     if cached is not None:
         llm_years, llm_dates = cached
-        return regex_years | llm_years, regex_dates | llm_dates, True
+        years = _drop_bare_years_covered_by_ac(regex_years | llm_years)
+        via = {label: kinds for label, kinds in via.items() if label in years and label not in llm_years}
+        return years, regex_dates | llm_dates, via, True
 
     try:
         llm_years, llm_dates = await extract_time_references_llm(
@@ -298,7 +305,7 @@ async def extract_time_references_for_page(
                 "error": repr(exc),
             },
         )
-        return regex_years, regex_dates, False
+        return regex_years, regex_dates, via, False
 
     if source_sha256:
         _write_time_index_cache(
@@ -309,4 +316,6 @@ async def extract_time_references_for_page(
             years=llm_years,
             dates=llm_dates,
         )
-    return regex_years | llm_years, regex_dates | llm_dates, True
+    years = _drop_bare_years_covered_by_ac(regex_years | llm_years)
+    via = {label: kinds for label, kinds in via.items() if label in years and label not in llm_years}
+    return years, regex_dates | llm_dates, via, True

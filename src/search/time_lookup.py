@@ -259,7 +259,7 @@ def lookup_time(
 ) -> TimeLookupResult:
     search_text = _search_text(query, poh)
     period_ranges = _extract_period_ranges(search_text)
-    years, dates = extract_time_references(search_text)
+    years, dates, _via = extract_time_references(search_text)
     range_year_labels = _year_labels_in_ranges(period_ranges)
     embedded_year_labels = _years_embedded_in_dates(dates)
     standalone_years = sorted(

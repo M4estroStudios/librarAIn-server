@@ -61,14 +61,16 @@ class TestExtractTimeReferencesForPage(unittest.IsolatedAsyncioTestCase):
         ):
             from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
 
-            years, dates, used_llm = await extract_time_references_for_page(
+            years, dates, _via, used_llm = await extract_time_references_for_page(
                 "Nel 1848 e agli inizi del Quattrocento.",
                 client=object(),
                 settings=_settings(),
                 aligned_page=3,
             )
         self.assertTrue(used_llm)
-        self.assertEqual(years, {"1848", "Quattrocento", "inizi del Quattrocento"})
+        self.assertTrue({"1848", "Quattrocento", "inizi del Quattrocento"} <= years)
+        self.assertIn("1400", years)
+        self.assertIn("1424", years)
         self.assertEqual(dates, set())
 
     async def test_regex_only_when_llm_disabled(self) -> None:
@@ -78,7 +80,7 @@ class TestExtractTimeReferencesForPage(unittest.IsolatedAsyncioTestCase):
         ) as mock_llm:
             from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
 
-            years, dates, used_llm = await extract_time_references_for_page(
+            years, dates, _via, used_llm = await extract_time_references_for_page(
                 "Nel 1848.",
                 client=object(),
                 settings=_settings(TIME_INDEX_USE_LLM=False),
@@ -113,43 +115,133 @@ class TestExtractTimeReferencesForPage(unittest.IsolatedAsyncioTestCase):
 
 class TestExtractTimeReferences(unittest.TestCase):
     def test_bare_years_in_plausible_range(self) -> None:
-        years, dates = extract_time_references(
+        years, dates, _via = extract_time_references(
             "Nel 1848 scoppiarono i moti. La basilica fu consacrata nel 324."
         )
         self.assertEqual(years, {"1848", "324"})
         self.assertEqual(dates, set())
 
     def test_years_with_era_suffix(self) -> None:
-        years, _ = extract_time_references(
+        years, _dates, _via = extract_time_references(
             "Cesare morì nel 44 a.C.; Augusto nel 14 d.C."
         )
-        self.assertEqual(years, {"44 a.C.", "14 d.C."})
+        self.assertEqual(years, {"44 a.C.", "14"})
+
+    def test_ac_era_kept_on_dates_and_centuries(self) -> None:
+        years, dates, _via = extract_time_references(
+            "Il 15 marzo 44 a.C.; nel I secolo a.C. e nel xiv secolo."
+        )
+        self.assertIn("44 a.C.", years)
+        self.assertNotIn("44", years)
+        self.assertIn("i secolo a.C.", years)
+        self.assertIn("xiv secolo", years)
+        self.assertIn("15 marzo 44 a.C.", dates)
+
+    def test_shared_ac_era_on_italian_year_range(self) -> None:
+        years, dates, _via = extract_time_references(
+            "Augusto tra il 13 e il 9 a.C.; processione il 4 luglio del 13 a.C."
+        )
+        self.assertTrue(
+            {"13 a.C.", "12 a.C.", "11 a.C.", "10 a.C.", "9 a.C."} <= years
+        )
+        self.assertNotIn("13", years)
+        self.assertNotIn("9", years)
+        self.assertIn("4 luglio 13 a.C.", dates)
+
+    def test_ac_dash_year_range_expands_like_ad(self) -> None:
+        years, _dates, _via = extract_time_references("Guerra dal 412-297 a.C. in Italia.")
+        self.assertIn("412 a.C.", years)
+        self.assertIn("297 a.C.", years)
+        self.assertIn("350 a.C.", years)
+        self.assertEqual(sum(1 for y in years if y.endswith("a.C.")), 412 - 297 + 1)
+        self.assertNotIn("412", years)
+        self.assertNotIn("297", years)
+
+    def test_italian_century_keeps_group_and_expands(self) -> None:
+        years, _dates, _via = extract_time_references("Palazzo del Cinquecento e inizi del Quattrocento.")
+        self.assertIn("Cinquecento", years)
+        self.assertIn("1500", years)
+        self.assertIn("1599", years)
+        self.assertIn("inizi del Quattrocento", years)
+        self.assertIn("1400", years)
+        self.assertIn("1424", years)
+        self.assertNotIn("1425", years)
+
+    def test_roman_century_ac_expands_with_qualifier(self) -> None:
+        years, _dates, _via = extract_time_references("Nella seconda metà del i secolo a.C.")
+        self.assertIn("seconda metà del i secolo a.C.", years)
+        self.assertIn("50 a.C.", years)
+        self.assertIn("1 a.C.", years)
+        self.assertNotIn("51 a.C.", years)
+        self.assertNotIn("100 a.C.", years)
+
+    def test_named_period_keeps_group_and_expands(self) -> None:
+        years, _dates, _via = extract_time_references("Opere dell'età repubblicana a Roma.")
+        self.assertIn("età repubblicana", years)
+        self.assertIn("509 a.C.", years)
+        self.assertIn("27 a.C.", years)
+        self.assertIn("200 a.C.", years)
+
+    def test_inferred_years_expose_via_kinds(self) -> None:
+        years, _dates, via = extract_time_references(
+            "Nel Cinquecento e agli inizi del Quattrocento; età romana."
+        )
+        self.assertNotIn("Cinquecento", via)
+        self.assertIn("secolo", via.get("1550", []))
+        self.assertIn("inizi", via.get("1410", []))
+        self.assertNotIn("1425", via)
+        self.assertIn("età", via.get("100 a.C.", []))
+        self.assertIn("1500", years)
+
+    def test_date_sort_key_is_chronological(self) -> None:
+        from src.ingestion.polyindex.time_extract import _date_sort_key
+
+        labels = [
+            "1 agosto",
+            "12 aprile 1855",
+            "4 luglio 13 a.C.",
+            "1 aprile 1951",
+            "marzo 1848",
+            "10 aprile",
+        ]
+        ordered = sorted(labels, key=_date_sort_key)
+        self.assertEqual(
+            ordered,
+            [
+                "4 luglio 13 a.C.",
+                "marzo 1848",
+                "12 aprile 1855",
+                "1 aprile 1951",
+                "10 aprile",
+                "1 agosto",
+            ],
+        )
 
     def test_full_date_with_year(self) -> None:
-        years, dates = extract_time_references("Il 12 marzo 1848 la città insorse.")
+        years, dates, _via = extract_time_references("Il 12 marzo 1848 la città insorse.")
         self.assertEqual(dates, {"12 marzo 1848"})
         self.assertIn("1848", years)
 
     def test_date_without_year(self) -> None:
-        _, dates = extract_time_references("La festa cade il 1° maggio di ogni anno.")
+        _years, dates, _via = extract_time_references("La festa cade il 1° maggio di ogni anno.")
         self.assertEqual(dates, {"1 maggio"})
 
     def test_page_reference_numbers_excluded(self) -> None:
-        years, _ = extract_time_references("Si veda p. 1234 e pp. 456-789.")
+        years, _dates, _via = extract_time_references("Si veda p. 1234 e pp. 456-789.")
         self.assertEqual(years, set())
 
     def test_civic_and_measure_numbers_excluded(self) -> None:
-        years, _ = extract_time_references(
+        years, _dates, _via = extract_time_references(
             "Il palazzo al n. 149; lungo 1045 metri e con 600 posti."
         )
         self.assertEqual(years, set())
 
     def test_out_of_range_numbers_excluded(self) -> None:
-        years, _ = extract_time_references("Erano 50 uomini e 2500 cavalli.")
+        years, _dates, _via = extract_time_references("Erano 50 uomini e 2500 cavalli.")
         self.assertEqual(years, set())
 
     def test_month_year_and_month_range(self) -> None:
-        years, dates = extract_time_references(
+        years, dates, _via = extract_time_references(
             "Nel marzo del 1848 e poi tra marzo-aprile 1849."
         )
         self.assertIn("1848", years)
@@ -159,11 +251,11 @@ class TestExtractTimeReferences(unittest.TestCase):
         self.assertIn("aprile 1849", dates)
 
     def test_year_range_expanded(self) -> None:
-        years, _ = extract_time_references("Il periodo 1585-90 fu critico.")
+        years, _dates, _via = extract_time_references("Il periodo 1585-90 fu critico.")
         self.assertEqual(years, {"1585", "1586", "1587", "1588", "1589", "1590"})
 
     def test_centuries_periods_and_adjectives(self) -> None:
-        years, _ = extract_time_references(
+        years, _dates, _via = extract_time_references(
             "Agli inizi del Quattrocento e nel xvi secolo. "
             "La facciata ottocentesca risale al Medioevo e alla fine Ottocento."
         )
@@ -174,7 +266,7 @@ class TestExtractTimeReferences(unittest.TestCase):
         self.assertIn("Medioevo", years)
 
     def test_inverted_digit_century_and_extra_periods(self) -> None:
-        years, _ = extract_time_references(
+        years, _dates, _via = extract_time_references(
             "Nel secolo xi e nel 14 secolo. "
             "Il tardo Seicento e il Barocco; inizio dell'età imperiale."
         )
@@ -185,7 +277,7 @@ class TestExtractTimeReferences(unittest.TestCase):
         self.assertIn("età imperiale", years)
 
     def test_day_range_and_primo(self) -> None:
-        years, dates = extract_time_references(
+        years, dates, _via = extract_time_references(
             "Dal 15 al 27 settembre 1590 e il primo maggio."
         )
         self.assertIn("1590", years)
@@ -320,11 +412,13 @@ class TestSyncTimeIndexFromBook(unittest.TestCase):
                 client=object(),
                 settings=_settings(),
             )
-        self.assertEqual(stats["n_years"], 2)
+        self.assertGreaterEqual(stats["n_years"], 2)
         self.assertEqual(stats["n_llm_pages"], 1)
         data = json.loads(path.read_text(encoding="utf-8"))
         self.assertIn("Quattrocento", data["years"])
         self.assertIn("inizi del Quattrocento", data["years"])
+        self.assertIn("1400", data["years"])
+        self.assertIn("1424", data["years"])
 
     def test_regex_alone_indexes_century_period(self) -> None:
         book = self._make_book(
@@ -339,7 +433,9 @@ class TestSyncTimeIndexFromBook(unittest.TestCase):
             book_title="Libro A",
             settings=_settings(TIME_INDEX_USE_LLM=False),
         )
-        self.assertEqual(stats["n_years"], 1)
+        self.assertGreaterEqual(stats["n_years"], 26)
         self.assertEqual(stats["n_llm_pages"], 0)
         data = json.loads(path.read_text(encoding="utf-8"))
         self.assertIn("inizi del Quattrocento", data["years"])
+        self.assertIn("1400", data["years"])
+        self.assertIn("1424", data["years"])

@@ -9,6 +9,8 @@
 <script src="/page-zoom.js"></script>
 <script src="/transcript-highlight.js"></script>
 <script src="/biblioteca-book.js"></script>
+<script src="/biblioteca-time-collapse.js"></script>
+<script src="/biblioteca-time.js"></script>
 <style>
 :root { color-scheme: dark; font-family: system-ui, sans-serif; color: #d4d4d4; background: #1e1e1e; }
 body { margin: 0; }
@@ -127,6 +129,50 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 .manifest-view .manifest-block-head button.primary { background: #e8e8e8; color: #1e1e1e; border-color: #e8e8e8; }
 .manifest-view .manifest-input { width: 100%; box-sizing: border-box; font: inherit; padding: 0.28rem 0.4rem; border-radius: 6px; border: 1px solid #454545; background: #141414; color: #e8e8e8; }
 .manifest-view .manifest-reicat-status { margin: 0.45rem 0 0; font-size: 0.78rem; color: #9d9d9d; }
+.time-index-view { display: flex; flex-direction: column; gap: 0.65rem; min-height: 100%; }
+.time-index-sticky { position: sticky; top: 0; z-index: 2; display: flex; flex-direction: column; gap: 0.45rem; padding-bottom: 0.45rem; background: #252526; border-bottom: 1px solid #3a3a3a; }
+.time-index-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.55rem 1rem; }
+.time-index-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #8a8a8a; }
+.time-index-summary { color: #e8e8e8; font-weight: 600; }
+.time-index-help { margin: 0; font-size: 0.78rem; color: #9d9d9d; line-height: 1.35; }
+.time-index-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; }
+.time-index-filter { flex: 1 1 12rem; min-width: 10rem; font: inherit; padding: 0.32rem 0.5rem; border-radius: 8px; border: 1px solid #454545; background: #141414; color: #e8e8e8; }
+.time-index-period-toggle { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; color: #c8c8c8; white-space: nowrap; cursor: pointer; user-select: none; }
+.time-index-period-toggle input { accent-color: #4ec9b0; }
+.time-index-meta { margin-left: auto; font-size: 0.78rem; color: #9d9d9d; }
+.time-index-list { display: flex; flex-direction: column; gap: 0.35rem; }
+.time-index-label { color: #e8e8e8; font-weight: 600; word-break: break-word; display: flex; flex-direction: column; gap: 0.12rem; min-width: 0; }
+.time-index-label-text { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.time-index-kind { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #8a8a8a; }
+.time-index-ac-badge { display: inline-flex; align-items: center; padding: 0.05rem 0.35rem; border-radius: 999px; border: 1px solid #c9a227; background: #3a3018; color: #e6c35c; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; }
+.time-index-via-badge { display: inline-flex; align-items: center; margin-left: 0.28rem; padding: 0.05rem 0.35rem; border-radius: 999px; border: 1px solid #3d6a7a; background: #1d333b; color: #7ec8db; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em; }
+.time-index-year-row.is-via, .time-index-year.is-via > summary { opacity: 0.92; }
+.time-index-group-head { margin: 0.55rem 0 0.25rem; padding: 0.35rem 0.55rem; border-radius: 8px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.time-index-group-head.is-ac { background: #3a3018; color: #e6c35c; border: 1px solid #5a4a2a; }
+.time-index-group-head.is-dc { margin-top: 1rem; background: #1a2a2a; color: #4ec9b0; border: 1px solid #2a4545; }
+.time-index-group-head.is-undated { margin-top: 1rem; background: #2a2a2a; color: #b5b5b5; border: 1px solid #454545; }
+.time-index-pages { display: flex; flex-wrap: wrap; gap: 0.28rem; justify-content: flex-end; }
+.time-index-page { font: inherit; padding: 0.12rem 0.42rem; border-radius: 999px; border: 1px solid #454545; background: #2a2a2a; color: #4ec9b0; cursor: pointer; font-size: 0.78rem; font-weight: 600; }
+.time-index-page:hover { background: #3a3a3a; border-color: #4ec9b0; }
+.time-index-empty { color: #666; font-size: 0.78rem; }
+.time-index-count { font-size: 0.72rem; font-weight: 600; color: #8a8a8a; }
+.time-index-year-row { display: grid; grid-template-columns: minmax(8rem, 14rem) 1fr; gap: 0.45rem 0.75rem; align-items: start; padding: 0.4rem 0.55rem; border: 1px solid #3a3a3a; border-radius: 8px; background: #1e1e1e; }
+.time-index-year-row.is-ac { border-color: #5a4a2a; background: #242018; }
+.time-index-year-row.is-undated { border-style: dashed; }
+.time-index-year { border: 1px solid #3a3a3a; border-radius: 8px; background: #1e1e1e; overflow: hidden; }
+.time-index-year.is-ac { border-color: #5a4a2a; background: #242018; }
+.time-index-year > summary { display: grid; grid-template-columns: minmax(10rem, 1fr) auto; gap: 0.55rem; align-items: center; padding: 0.45rem 0.65rem; cursor: pointer; list-style: none; }
+.time-index-year > summary::-webkit-details-marker { display: none; }
+.time-index-year-summary-main { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.55rem; min-width: 0; }
+.time-index-year-body { display: flex; flex-direction: column; gap: 0.3rem; padding: 0 0.55rem 0.55rem 1rem; border-top: 1px solid #333; }
+.time-index-month { border: 1px solid #333; border-radius: 8px; background: #181818; }
+.time-index-month > summary { display: flex; align-items: center; justify-content: space-between; gap: 0.55rem; padding: 0.35rem 0.55rem; cursor: pointer; list-style: none; color: #e8e8e8; font-weight: 600; }
+.time-index-month > summary::-webkit-details-marker { display: none; }
+.time-index-month-summary-main { display: inline-flex; align-items: center; gap: 0.45rem; min-width: 0; }
+.time-index-month-name { text-transform: capitalize; }
+.time-index-days { display: flex; flex-direction: column; gap: 0.25rem; padding: 0 0.45rem 0.45rem 0.85rem; }
+.time-index-day-row { display: grid; grid-template-columns: minmax(5rem, 10rem) 1fr; gap: 0.4rem 0.65rem; align-items: start; padding: 0.28rem 0.4rem; border-radius: 6px; background: #141414; }
+.time-index-day-label { color: #e8e8e8; font-weight: 600; }
 .page-review-body { display: flex; align-items: stretch; gap: 0.75rem; padding: 1rem; box-sizing: border-box; min-height: 0; flex: 1 1 auto; overflow: hidden; }
 .page-review-panels { flex: 1 1 auto; min-width: 0; min-height: 0; height: 100%; display: flex; justify-content: stretch; align-items: stretch; gap: 1.25rem; }
 .biblio-preview-img-pane,
@@ -410,6 +456,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         <button type="button" data-biblio-section="manifest">Manifest</button>
         <button type="button" data-biblio-section="toc">TOC</button>
         <button type="button" data-biblio-section="index">Index</button>
+        <button type="button" data-biblio-section="time_index">Time</button>
         <button type="button" data-biblio-section="biblio">Biblio</button>
       </span>
       <span class="biblio-page-counter" data-biblio-chrome="page">
@@ -603,6 +650,8 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   var biblioTranscriptBaseline = "";
   var biblioSection = "libro";
   var biblioArtifactLoadGen = 0;
+  var biblioTimeIndexCache = null;
+  var BIBLIO_TIME_UI_VER = 3;
   var biblioPageGuidance = null;
   var biblioMentionsUi = null;
   var biblioDetailChangeListeners = [];
@@ -1765,16 +1814,77 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     document.getElementById("biblio-artifact-view").innerHTML = "";
   }
 
+  function clearBiblioTimeIndexCache() {
+    biblioTimeIndexCache = null;
+  }
+  window.clearBiblioTimeIndexCache = clearBiblioTimeIndexCache;
+
+  function timeIndexOnOpenPage(page) {
+    if (window.BiblioBookOverlay && typeof window.BiblioBookOverlay.showPage === "function") {
+      window.BiblioBookOverlay.showPage(page);
+    } else {
+      openBiblioPageView(page);
+    }
+  }
+
+  function artifactScrollRoot() {
+    return document.getElementById("biblio-artifact-pane");
+  }
+
+  function stashBiblioTimeIndexScroll() {
+    if (!biblioTimeIndexCache || !selectedCandidate) return;
+    if (biblioTimeIndexCache.sha !== selectedCandidate.source_sha256) return;
+    var pane = artifactScrollRoot();
+    if (pane) biblioTimeIndexCache.scrollTop = pane.scrollTop;
+  }
+
+  function restoreBiblioTimeIndexScroll() {
+    if (!biblioTimeIndexCache) return;
+    var pane = artifactScrollRoot();
+    if (!pane || typeof biblioTimeIndexCache.scrollTop !== "number") return;
+    var top = biblioTimeIndexCache.scrollTop;
+    requestAnimationFrame(function () {
+      pane.scrollTop = top;
+    });
+  }
+
+  function showCachedTimeIndex(viewEl, textEl, emptyEl) {
+    emptyEl.classList.add("hidden");
+    textEl.classList.add("hidden");
+    viewEl.classList.remove("hidden");
+    if (!viewEl.querySelector(".time-index-view")) {
+      if (!window.BiblioTimeIndexView || typeof window.BiblioTimeIndexView.render !== "function") {
+        showArtifactEmpty("Viewer TIME_INDEX non disponibile.");
+        return false;
+      }
+      window.BiblioTimeIndexView.render(viewEl, biblioTimeIndexCache.data, {
+        onOpenPage: timeIndexOnOpenPage
+      });
+    }
+    restoreBiblioTimeIndexScroll();
+    return true;
+  }
+
   function loadBiblioArtifact(kind) {
     var textEl = document.getElementById("biblio-artifact-text");
     var viewEl = document.getElementById("biblio-artifact-view");
     var emptyEl = document.getElementById("biblio-artifact-empty");
-    biblioArtifactLoadGen += 1;
-    var loadGen = biblioArtifactLoadGen;
     if (!selectedCandidate) {
       showArtifactEmpty("Nessun libro selezionato.");
       return;
     }
+    if (
+      kind === "time_index" &&
+      biblioTimeIndexCache &&
+      biblioTimeIndexCache.sha === selectedCandidate.source_sha256 &&
+      biblioTimeIndexCache.data &&
+      biblioTimeIndexCache.uiVer === BIBLIO_TIME_UI_VER
+    ) {
+      showCachedTimeIndex(viewEl, textEl, emptyEl);
+      return;
+    }
+    biblioArtifactLoadGen += 1;
+    var loadGen = biblioArtifactLoadGen;
     emptyEl.textContent = "Caricamento…";
     emptyEl.classList.remove("hidden");
     textEl.classList.add("hidden");
@@ -1798,6 +1908,24 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
           renderManifestView(data.data);
           return;
         }
+        if (kind === "time_index" && data.data && typeof data.data === "object") {
+          textEl.classList.add("hidden");
+          viewEl.classList.remove("hidden");
+          if (window.BiblioTimeIndexView && typeof window.BiblioTimeIndexView.render === "function") {
+            biblioTimeIndexCache = {
+              sha: selectedCandidate.source_sha256,
+              data: data.data,
+              scrollTop: 0,
+              uiVer: BIBLIO_TIME_UI_VER
+            };
+            window.BiblioTimeIndexView.render(viewEl, data.data, {
+              onOpenPage: timeIndexOnOpenPage
+            });
+          } else {
+            showArtifactEmpty("Viewer TIME_INDEX non disponibile.");
+          }
+          return;
+        }
         viewEl.classList.add("hidden");
         viewEl.innerHTML = "";
         textEl.value = data.text || "";
@@ -1810,6 +1938,9 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   }
 
   function setBiblioSection(section) {
+    if (biblioSection === "time_index" && section !== "time_index") {
+      stashBiblioTimeIndexScroll();
+    }
     biblioSection = section || "libro";
     document.querySelectorAll("[data-biblio-section]").forEach(function (btn) {
       btn.classList.toggle("is-active", btn.getAttribute("data-biblio-section") === biblioSection);
@@ -2801,7 +2932,11 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     list.querySelectorAll(".card").forEach(function (card) {
       card.addEventListener("click", function () {
         var sha = card.getAttribute("data-sha");
-        selectedCandidate = candidatesCache.find(function (b) { return b.source_sha256 === sha; }) || null;
+        var next = candidatesCache.find(function (b) { return b.source_sha256 === sha; }) || null;
+        if (!selectedCandidate || !next || selectedCandidate.source_sha256 !== next.source_sha256) {
+          clearBiblioTimeIndexCache();
+        }
+        selectedCandidate = next;
         showSelectedCandidate();
         renderCandidates();
       });
@@ -2825,6 +2960,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     clearPendingTranscripts();
     clearBiblioPipelineNotes();
     setBiblioApplyStatus("");
+    clearBiblioTimeIndexCache();
     selectedCandidate = null;
     biblioLastSelectedSha = null;
     manifestCache = null;
