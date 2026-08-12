@@ -566,7 +566,7 @@ body.embed-mode #ingest-pages-panel { margin-top: 0.85rem; padding-top: 0.85rem;
     <label class="hint" style="display:flex; gap:0.45rem; align-items:center;">
       <input type="hidden" name="force_metadata_update_on_duplicate_hash" value="false">
       <input type="checkbox" name="force_metadata_update_on_duplicate_hash" value="true" checked>
-      Se il file PDF è già stato elaborato in passato (stesso contenuto), aggiorna comunque i metadati inviati ora senza rifare l’OCR
+      Se il file PDF è già in archivio (stesso contenuto), aggiorna i metadati e rilancia la pipeline saltando solo le fasi già completate
     </label>
   </fieldset>
 

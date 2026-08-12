@@ -96,9 +96,15 @@ export function createPageGuidanceController(bridge) {
     return typeof bridge.hasTextAnnotations === "function" && !!bridge.hasTextAnnotations(page);
   }
 
+  function anyPageHasElements() {
+    return Object.keys(state.pages).some(function (key) {
+      return (state.pages[key] || []).length > 0;
+    });
+  }
+
   function shouldShowNotes() {
     const page = bridge.getDetailPage();
-    return !!state.active || currentPageHasElements() || pageHasTextAnnotations(page);
+    return !!state.active || anyPageHasElements() || pageHasTextAnnotations(page);
   }
 
   function syncNotesFieldset() {
@@ -130,6 +136,7 @@ export function createPageGuidanceController(bridge) {
     }
     syncCanvasChrome();
     syncNotesFieldset();
+    if (typeof bridge.onAnnotateModeChange === "function") bridge.onAnnotateModeChange(state.active);
   }
 
   function setTool(tool) {

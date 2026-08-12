@@ -477,6 +477,10 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-preview-img { display: block; max-width: 100%; max-height: calc(92vh - 5.5rem); background: #fff; }
 .validation-preview-dialog { width: min(95vw, 920px); }
 .validation-preview-meta { margin: 0; padding: 0.35rem 1rem 0.55rem; font-size: 0.72rem; color: #9d9d9d; }
+.validation-preview-goto { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin: 0; padding: 0 1rem 0.65rem; }
+.validation-preview-goto label { display: inline-flex; align-items: center; gap: 0.4rem; margin: 0; font-size: 0.78rem; color: #c8c8c8; }
+.validation-preview-goto input[type="number"] { width: 4.5rem; margin: 0; padding: 0.28rem 0.4rem; font-size: 0.82rem; }
+.validation-preview-goto button { margin: 0; padding: 0.28rem 0.7rem; font-size: 0.78rem; }
 .validation-preview-img-wrap { position: relative; }
 .validation-preview-frame { position: relative; display: inline-block; line-height: 0; max-width: 100%; background: #fff; }
 .validation-preview-frame.is-appendix { outline: 3px solid var(--mark-appendix, #22ff66); outline-offset: 2px; }
@@ -885,7 +889,7 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
     <label class="hint" style="display:flex; gap:0.45rem; align-items:center;">
       <input type="hidden" name="force_metadata_update_on_duplicate_hash" value="false">
       <input type="checkbox" name="force_metadata_update_on_duplicate_hash" value="true" checked>
-      Se il file PDF è già stato elaborato in passato (stesso contenuto), aggiorna comunque i metadati inviati ora senza rifare l’OCR
+      Se il file PDF è già in archivio (stesso contenuto), aggiorna i metadati e rilancia la pipeline saltando solo le fasi già completate
     </label>
   </fieldset>
 
@@ -942,6 +946,12 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
     <button type="button" class="page-preview-close" id="validation-preview-close" title="Chiudi">×</button>
     <h2 class="page-preview-title" id="validation-preview-title">Anteprima allineata</h2>
     <p class="validation-preview-meta" id="validation-preview-meta"></p>
+    <div class="validation-preview-goto">
+      <label for="validation-preview-page-input">Vai a pagina allineata
+        <input type="number" id="validation-preview-page-input" min="1" step="1" inputmode="numeric">
+      </label>
+      <button type="button" class="secondary" id="validation-preview-page-go">Vai</button>
+    </div>
     <div class="page-preview-body">
       <button type="button" class="page-preview-nav" id="validation-preview-prev" title="Pagina precedente">&lt;</button>
       <div class="page-preview-img-wrap validation-preview-img-wrap">
@@ -1757,6 +1767,18 @@ if (document.readyState === "loading") {
     "numero_edizione", "anno_di_pubblicazione", "tipo_di_pubblicazione", "luogo_di_pubblicazione",
     "editore", "numero_pagine", "titolo_collana", "numero_nella_collana", "isbn",
   ];
+  function clearLegacyIngestNotesDrafts() {
+    try {
+      var keys = [];
+      var i;
+      for (i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key && key.indexOf(INGEST_NOTES_DRAFT_PREFIX) === 0) keys.push(key);
+      }
+      for (i = 0; i < keys.length; i++) localStorage.removeItem(keys[i]);
+    } catch (_) {}
+  }
+  clearLegacyIngestNotesDrafts();
   function emptyIngestNotesState() {
     return {
       notes: "",
@@ -1798,7 +1820,7 @@ if (document.readyState === "loading") {
   function readIngestNotesDraft(sha) {
     if (!sha) return null;
     try {
-      var raw = localStorage.getItem(INGEST_NOTES_DRAFT_PREFIX + sha);
+      var raw = sessionStorage.getItem(INGEST_NOTES_DRAFT_PREFIX + sha);
       if (!raw) return null;
       var parsed = JSON.parse(raw);
       return parsed && typeof parsed === "object" ? parsed : null;
@@ -1810,10 +1832,10 @@ if (document.readyState === "loading") {
     if (!sha || !state) return;
     try {
       if (!ingestNotesStateHasContent(state)) {
-        localStorage.removeItem(INGEST_NOTES_DRAFT_PREFIX + sha);
+        sessionStorage.removeItem(INGEST_NOTES_DRAFT_PREFIX + sha);
         return;
       }
-      localStorage.setItem(INGEST_NOTES_DRAFT_PREFIX + sha, JSON.stringify(state));
+      sessionStorage.setItem(INGEST_NOTES_DRAFT_PREFIX + sha, JSON.stringify(state));
     } catch (_) {}
   }
   function flushIngestNotesDraft() {
@@ -1890,10 +1912,9 @@ if (document.readyState === "loading") {
         if (opts.clearIfMissing !== false) applyIngestNotesState(emptyIngestNotesState());
         return false;
       }
-      if (ask) {
-        var sourceLabel = hasServer ? "nel database" : "in bozza locale";
+      if (ask && hasServer) {
         var accept = window.confirm(
-          "Per questo PDF risultano già metadati " + sourceLabel + " (REICAT, note, annotazioni e range pagine).\n\nVuoi caricarli?\n\nOK = ricarica i metadati salvati\nAnnulla = apri il libro senza annotazioni né range salvati"
+          "Per questo PDF risultano già metadati nel database (REICAT, note, annotazioni e range pagine).\n\nVuoi caricarli?\n\nOK = ricarica i metadati salvati\nAnnulla = apri il libro senza annotazioni né range salvati"
         );
         if (!accept) {
           applyIngestNotesState(emptyIngestNotesState());
@@ -2694,8 +2715,11 @@ if (document.readyState === "loading") {
       if (biblioMark) biblioMark.classList.toggle("hidden", !hasBiblio);
       if (reicatMark) reicatMark.classList.toggle("hidden", !hasReicat);
       if (annotateMark) annotateMark.classList.toggle("hidden", !hasAnnotate);
-      var blockedExclusive = (viewerMode === "toc" || viewerMode === "index" || viewerMode === "biblio" || viewerMode === "appendix") && isExclusiveIndexBlocked(pageNum, viewerMode);
-      var disabled = (viewerMode !== "exclude" && isExcluded) || blockedExclusive;
+      var annotateActive = window.__librarainPageGuidance && typeof window.__librarainPageGuidance.isActive === "function" && window.__librarainPageGuidance.isActive();
+      var blockedExclusive = !annotateActive && (viewerMode === "toc" || viewerMode === "index" || viewerMode === "biblio" || viewerMode === "appendix") && isExclusiveIndexBlocked(pageNum, viewerMode);
+      var disabled = annotateActive
+        ? isExcluded
+        : ((viewerMode !== "exclude" && isExcluded) || blockedExclusive);
       btn.classList.toggle("is-disabled", disabled);
       btn.setAttribute("aria-disabled", disabled ? "true" : "false");
     }
@@ -5354,7 +5378,24 @@ if (document.readyState === "loading") {
   var validationPreviewFrame = document.getElementById("validation-preview-frame");
   var validationPreviewApprove = document.getElementById("validation-preview-approve");
   var validationPreviewBack = document.getElementById("validation-preview-back");
+  var validationPreviewPageInput = document.getElementById("validation-preview-page-input");
+  var validationPreviewPageGo = document.getElementById("validation-preview-page-go");
   var validationPreviewState = { entries: [], index: 0, loadGen: 0 };
+
+  function goToValidationPreviewAlignedPage(rawValue) {
+    var total = validationPreviewState.entries.length;
+    if (!total) return false;
+    var page = parseInt(rawValue, 10);
+    if (!(page >= 1) || page > total) return false;
+    var nextIndex = page - 1;
+    if (nextIndex === validationPreviewState.index) {
+      if (validationPreviewPageInput) validationPreviewPageInput.value = String(page);
+      return true;
+    }
+    validationPreviewState.index = nextIndex;
+    refreshValidationPreview();
+    return true;
+  }
 
   function buildAlignedValidationEntries() {
     var excluded = getExcludedPagesSet();
@@ -5400,6 +5441,10 @@ if (document.readyState === "loading") {
       "PDF " + entry.original +
       (labels.length ? " · " + labels.join(" · ") : " · nessun marker") +
       " · " + total + " pagine utili (escluse le rimosse)";
+    if (validationPreviewPageInput) {
+      validationPreviewPageInput.max = String(total);
+      validationPreviewPageInput.value = String(entry.aligned);
+    }
     validationPreviewImg.alt = "Pagina allineata " + entry.aligned;
     validationPreviewPrev.disabled = validationPreviewState.index <= 0;
     validationPreviewNext.disabled = validationPreviewState.index >= total - 1;
@@ -5794,6 +5839,29 @@ if (document.readyState === "loading") {
     validationPreviewState.index += 1;
     refreshValidationPreview();
   });
+  if (validationPreviewPageGo) {
+    validationPreviewPageGo.addEventListener("click", function () {
+      if (!goToValidationPreviewAlignedPage(validationPreviewPageInput && validationPreviewPageInput.value)) {
+        var total = validationPreviewState.entries.length;
+        if (validationPreviewPageInput && total) {
+          validationPreviewPageInput.value = String(validationPreviewState.entries[validationPreviewState.index].aligned);
+        }
+      }
+    });
+  }
+  if (validationPreviewPageInput) {
+    validationPreviewPageInput.addEventListener("keydown", function (event) {
+      if (event.key !== "Enter") return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (!goToValidationPreviewAlignedPage(validationPreviewPageInput.value)) {
+        var total = validationPreviewState.entries.length;
+        if (total) {
+          validationPreviewPageInput.value = String(validationPreviewState.entries[validationPreviewState.index].aligned);
+        }
+      }
+    });
+  }
   document.getElementById("validation-preview-close").addEventListener("click", closeValidationPreview);
   document.getElementById("validation-preview-backdrop").addEventListener("click", closeValidationPreview);
   validationPreviewBack.addEventListener("click", closeValidationPreview);
@@ -5860,6 +5928,8 @@ if (document.readyState === "loading") {
     }
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       if (!validationPreviewOverlay.classList.contains("hidden")) {
+        var tag = event.target && event.target.tagName ? event.target.tagName.toLowerCase() : "";
+        if (tag === "input" || tag === "textarea" || tag === "select" || (event.target && event.target.isContentEditable)) return;
         event.preventDefault();
         if (event.key === "ArrowLeft") {
           if (validationPreviewState.index > 0) {
@@ -6426,6 +6496,10 @@ if (document.readyState === "loading") {
         viewerModeButtons[i].classList.remove("is-active");
         viewerModeButtons[i].setAttribute("aria-pressed", "false");
       }
+      refreshViewerThumbUi();
+    },
+    onAnnotateModeChange: function () {
+      refreshViewerThumbUi();
     },
     onDetailChange: function (cb) {
       if (typeof cb === "function") pageGuidanceDetailListeners.push(cb);

@@ -149,14 +149,21 @@
 
 .mention-chip {
   display: inline-flex;
-  align-items: center;
-  gap: 0.15rem;
+  align-items: stretch;
+  gap: 0;
   border: 1px solid #5a5a5a;
   background: #2f2f30;
   color: #e8e8e8;
   border-radius: 999px;
-  padding: 0.1rem 0.2rem 0.1rem 0.45rem;
+  padding: 0;
+  overflow: hidden;
   font-size: 0.75rem;
+  transition: border-color 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+}
+
+.mention-chip.is-current {
+  border-color: #8a6a3a;
+  background: rgba(240, 160, 48, 0.1);
 }
 
 .mention-chip-label {
@@ -166,9 +173,10 @@
   background: transparent;
   color: inherit;
   font: inherit;
-  padding: 0.05rem 0.2rem;
+  padding: 0.22rem 0.35rem 0.22rem 0.55rem;
   cursor: pointer;
-  border-radius: 999px;
+  border-radius: 0;
+  flex: 1 1 auto;
 }
 
 .mention-chip small {
@@ -180,11 +188,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.45rem;
+  min-height: 100%;
   padding: 0;
   border: 0;
-  border-radius: 999px;
+  border-radius: 0;
   background: transparent;
   color: #bdbdbd;
   font-size: 0.95rem;
@@ -193,14 +201,23 @@
   cursor: pointer;
 }
 
-.mention-chip-remove:hover {
-  background: rgba(201, 80, 80, 0.28);
-  color: #f0a0a0;
+.mention-chip:hover,
+.mention-chip:focus-within {
+  border-color: #f0a030;
+  background: rgba(240, 160, 48, 0.16);
+  color: #e8e8e8;
 }
 
-.mention-chip:hover {
-  border-color: #f0a030;
-  background: rgba(240, 160, 48, 0.14);
+.mention-chip .mention-chip-label:hover:not(:disabled),
+.mention-chip .mention-chip-label:focus:not(:disabled) {
+  background: transparent;
+  color: inherit;
+}
+
+.mention-chip .mention-chip-remove:hover:not(:disabled),
+.mention-chip .mention-chip-remove:focus:not(:disabled) {
+  background: rgba(201, 80, 80, 0.32);
+  color: #f0a0a0;
 }
 
 .mention-selector {

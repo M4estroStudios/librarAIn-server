@@ -148,12 +148,11 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
 
   function itemsForSection(section) {
     const payload = typeof getAnnotations === "function" ? getAnnotations() : [];
-    const onlyPage = currentDetailPage();
+    const detailPage = currentDetailPage();
     const out = [];
     payload.forEach(function (pageItem) {
       const sectionName = sectionOfPage(pageItem.page);
       if (sectionName !== section) return;
-      if (onlyPage != null && Number(pageItem.page) !== onlyPage) return;
       (pageItem.elements || []).forEach(function (el) {
         const lineStart = Number(el.lineStart);
         const lineEnd = Number(el.lineEnd);
@@ -161,7 +160,8 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
         const charEnd = Number(el.end);
         let meta = "p." + pageItem.page;
         if (el.type === "text" && lineStart >= 1) {
-          meta = lineStart === lineEnd || !(lineEnd >= 1)
+          meta = "p." + pageItem.page + " · ";
+          meta += lineStart === lineEnd || !(lineEnd >= 1)
             ? "r." + lineStart
             : "r." + lineStart + "-" + lineEnd;
           if (Number.isFinite(charStart) && Number.isFinite(charEnd) && charEnd >= charStart) {
@@ -175,8 +175,14 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
           type: el.type,
           token: mentionToken(el.name || el.type),
           meta: meta,
+          current: detailPage != null && Number(pageItem.page) === detailPage,
         });
       });
+    });
+    out.sort(function (a, b) {
+      if (a.current !== b.current) return a.current ? -1 : 1;
+      if (a.page !== b.page) return a.page - b.page;
+      return String(a.token || "").localeCompare(String(b.token || ""), "it");
     });
     return out;
   }
@@ -195,7 +201,7 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
       row.classList.remove("is-empty");
       items.forEach(function (item) {
         const chip = document.createElement("div");
-        chip.className = "mention-chip";
+        chip.className = "mention-chip" + (item.current ? " is-current" : "");
         chip.setAttribute("data-field", field);
         chip.setAttribute("data-token", item.token || "");
         chip.setAttribute("data-page", String(item.page));
@@ -413,6 +419,11 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
 
   if (typeof bridge.onRangesChange === "function") {
     bridge.onRangesChange(renderChips);
+  }
+  if (typeof bridge.onDetailChange === "function") {
+    bridge.onDetailChange(function () {
+      renderChips();
+    });
   }
 
   renderChips();

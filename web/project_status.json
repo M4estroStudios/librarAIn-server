@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-09T16:53:36+00:00",
+  "updated_at": "2026-08-11T19:53:15+00:00",
   "roots": [
     {
       "id": "ingest",
@@ -81,12 +81,12 @@
         {
           "id": "vision_ocr",
           "label": "Vision OCR",
-          "status": "partial",
+          "status": "ok",
           "priority": "",
           "priority_order": 0,
           "description": "Estrazione testo pagina via modello vision (percorso OCR attuale da mantenere e testare).",
           "notes": "",
-          "updated_at": "2026-08-06T18:16:20.560Z",
+          "updated_at": "2026-08-11T19:53:15.166Z",
           "children": []
         },
         {
@@ -136,12 +136,12 @@
         {
           "id": "toc_refine",
           "label": "TOC refine",
-          "status": "partial",
+          "status": "ok",
           "priority": "",
           "priority_order": 0,
           "description": "Raffinamento LLM di TOC.md (cache stage4TocIndexRefine).",
           "notes": "",
-          "updated_at": "2026-08-09T16:53:36.232Z",
+          "updated_at": "2026-08-11T19:25:52.137Z",
           "children": []
         },
         {
@@ -169,12 +169,12 @@
         {
           "id": "index_cross_links",
           "label": "Index cross-links",
-          "status": "untested",
+          "status": "partial",
           "priority": "",
           "priority_order": 0,
           "description": "Applicazione cross-link soggettoÔåöpagina su INDEX.md e pagine, poi refresh book MD.",
           "notes": "",
-          "updated_at": "2026-08-06T19:03:49.074Z",
+          "updated_at": "2026-08-11T19:25:40.585Z",
           "children": []
         }
       ]
@@ -214,12 +214,12 @@
         {
           "id": "time_index",
           "label": "time_index",
-          "status": "untested",
+          "status": "partial",
           "priority": "",
           "priority_order": 0,
           "description": "Estrazione anni/date dalle pagine libro e sync in TIME_INDEX.json.",
           "notes": "",
-          "updated_at": "2026-08-06T19:03:47.770Z",
+          "updated_at": "2026-08-11T19:50:24.215Z",
           "children": []
         },
         {
@@ -231,6 +231,161 @@
           "description": "Sync BIBLIO.json cross-libro dalla bibliografia del libro.",
           "notes": "",
           "updated_at": "2026-08-06T18:18:39.177Z",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "biblioteca",
+      "label": "Biblioteca",
+      "status": "partial",
+      "priority": "",
+      "priority_order": 0,
+      "description": "Cura post-ingest: libri in output, viewer pagina, apply-changes, lookup e grafo citazioni BIBLIO.",
+      "notes": "",
+      "updated_at": "2026-08-11T19:42:00.000Z",
+      "children": [
+        {
+          "id": "books_list",
+          "label": "Libri",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Tab Libri: candidati ingestiti, filtro titolo, apertura libro e segnali deprecated/conflicts.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "book_viewer",
+          "label": "Book viewer",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Overlay libro: griglia miniature, dettaglio pagina (immagine + trascrizione) e sezioni artefatto.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "transcript_edit",
+          "label": "Transcript edit",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Modifica trascrizione pagina, flag Vision e conferma/reset bozza prima di apply-changes.",
+          "notes": "",
+          "updated_at": "2026-08-11T19:45:19.463Z",
+          "children": []
+        },
+        {
+          "id": "annotations",
+          "label": "Annotations",
+          "status": "partial",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Annotazioni grafiche (bbox/point/trail) e testo, note per-pagina e mention @ nelle note pipeline.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "apply_changes",
+          "label": "Apply changes",
+          "status": "untested",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Job apply-changes: valida note, processa AI pagine pending, conflitti operatore e refresh indici.",
+          "notes": "",
+          "updated_at": "2026-08-11T19:45:40.103Z",
+          "children": []
+        },
+        {
+          "id": "artifacts",
+          "label": "Artifacts",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Viewer sezioni Manifest/TOC/INDEX/TIME/BIBLIO del libro da output.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "reicat_edit",
+          "label": "REICAT edit",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Modifica e salvataggio metadati REICAT nel manifest del libro.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "polyindex_stages",
+          "label": "Polyindex stages",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Rerun da UI degli stage polyindex TOC / INDEX / TIME_INDEX / BIBLIO sul libro corrente.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "lookup",
+          "label": "Lookup",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Tab Lookup: ricerca nodi BIBLIO per autore/titolo/anno/id e relazioni cita/citato_da.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "citation_graph",
+          "label": "Citation graph",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Tab Grafo: visualizzazione interattiva del grafo citazioni BIBLIO.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "review_queue",
+          "label": "Review queue",
+          "status": "untested",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Coda review BIBLIO (resolve/discard) — pannello presente ma nascosto in UI.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "deprecated_refs",
+          "label": "Deprecated refs",
+          "status": "ok",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Elenco e delete dei riferimenti deprecati per libro.",
+          "notes": "",
+          "updated_at": null,
+          "children": []
+        },
+        {
+          "id": "conflicts",
+          "label": "Conflicts",
+          "status": "partial",
+          "priority": "",
+          "priority_order": 0,
+          "description": "Gestione conflitti AI/operatore da apply-changes (lista e delete).",
+          "notes": "",
+          "updated_at": null,
           "children": []
         }
       ]
@@ -479,14 +634,14 @@
           "children": []
         },
         {
-          "id": "biblioteca",
+          "id": "biblioteca_page",
           "label": "Biblioteca",
-          "status": "ok",
+          "status": "partial",
           "priority": "",
           "priority_order": 0,
-          "description": "UI Biblioteca: elenco libri ingestiti e accesso agli artefatti per libro.",
+          "description": "Pagina /biblioteca (dettaglio feature nella radice Biblioteca).",
           "notes": "",
-          "updated_at": "2026-08-06T18:23:14.633Z",
+          "updated_at": "2026-08-11T19:42:00.000Z",
           "children": []
         },
         {
