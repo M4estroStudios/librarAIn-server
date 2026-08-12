@@ -1733,7 +1733,8 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     if (on && biblioSection !== "libro") return;
     biblioEditMode = !!on;
     var showEdit = biblioSection === "libro";
-    document.getElementById("biblio-btn-edit").classList.toggle("hidden", !showEdit || biblioEditMode);
+    var isOverview = window.BiblioBookOverlay && window.BiblioBookOverlay.currentMode && window.BiblioBookOverlay.currentMode() === "overview";
+    document.getElementById("biblio-btn-edit").classList.toggle("hidden", !showEdit || biblioEditMode || isOverview);
     document.getElementById("biblio-transcript-actions").classList.toggle("hidden", !showEdit || !biblioEditMode);
     document.getElementById("biblio-edit-status").classList.toggle("hidden", !showEdit || !biblioEditMode);
     var textEl = document.getElementById("biblio-preview-text");
@@ -2142,6 +2143,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         mdEl.innerHTML = "";
       }
       showCachedTimeIndex(viewEl, textEl, emptyEl);
+      requestAnimationFrame(syncBiblioPanelHeights);
       return;
     }
     biblioArtifactLoadGen += 1;
@@ -2174,6 +2176,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
           viewEl.classList.remove("hidden");
           if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
           renderManifestView(data.data);
+          requestAnimationFrame(syncBiblioPanelHeights);
           return;
         }
         if (kind === "biblio" && data.data && typeof data.data === "object") {
@@ -2182,6 +2185,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
           viewEl.classList.remove("hidden");
           if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
           renderBiblioView(data.data);
+          requestAnimationFrame(syncBiblioPanelHeights);
           return;
         }
         if (kind === "time_index" && data.data && typeof data.data === "object") {
@@ -2199,6 +2203,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
             window.BiblioTimeIndexView.render(viewEl, data.data, {
               onOpenPage: timeIndexOnOpenPage
             });
+            requestAnimationFrame(syncBiblioPanelHeights);
           } else {
             showArtifactEmpty("Viewer TIME_INDEX non disponibile.");
           }
@@ -2220,6 +2225,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
           if (mdEl) mdEl.classList.add("hidden");
           textEl.classList.remove("hidden");
         }
+        requestAnimationFrame(syncBiblioPanelHeights);
       })
       .catch(function (err) {
         if (loadGen !== biblioArtifactLoadGen) return;
@@ -2238,7 +2244,8 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     if (next) next.classList.toggle("hidden", !show);
   }
 
-  function setBiblioSection(section) {
+  function setBiblioSection(section, opts) {
+    opts = opts || {};
     if (biblioSection === "time_index" && section !== "time_index") {
       stashBiblioTimeIndexScroll();
     }
@@ -2246,7 +2253,6 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     document.querySelectorAll("[data-biblio-section]").forEach(function (btn) {
       btn.classList.toggle("is-active", btn.getAttribute("data-biblio-section") === biblioSection);
     });
-    var isOverview = window.BiblioBookOverlay && window.BiblioBookOverlay.currentMode && window.BiblioBookOverlay.currentMode() === "overview";
     var isLibro = biblioSection === "libro";
     document.getElementById("biblio-preview-panels").classList.toggle("hidden", !isLibro);
     document.getElementById("biblio-artifact-pane").classList.toggle("hidden", isLibro);
@@ -2254,8 +2260,29 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     if (biblioSection !== "manifest") reicatEditMode = false;
     if (!isLibro) setBiblioEditMode(false);
     else setBiblioEditMode(biblioEditMode);
-    if (!isLibro && !isOverview) loadBiblioArtifact(biblioSection);
-    requestAnimationFrame(syncBiblioPanelHeights);
+    if (!isLibro && !opts.skipLoad) loadBiblioArtifact(biblioSection);
+    if (!opts.skipLayout) requestAnimationFrame(syncBiblioPanelHeights);
+  }
+
+  function openBiblioSectionFromOverview(section) {
+    var wasOverview = window.BiblioBookOverlay && window.BiblioBookOverlay.currentMode && window.BiblioBookOverlay.currentMode() === "overview";
+    section = section || "libro";
+    if (!wasOverview) {
+      setBiblioSection(section);
+      if (section === "libro") renderBiblioPreview(biblioPreviewPage >= 1 ? biblioPreviewPage : 1);
+      return;
+    }
+    setBiblioEditMode(false);
+    if (window.BiblioBookOverlay && typeof window.BiblioBookOverlay.showPage === "function") {
+      window.BiblioBookOverlay.showPage(biblioPreviewPage >= 1 ? biblioPreviewPage : 1, { skipOpenPage: true });
+    }
+    setBiblioSection(section, { skipLoad: true, skipLayout: true });
+    var pageNum = biblioPreviewPage >= 1 ? biblioPreviewPage : 1;
+    requestAnimationFrame(function () {
+      if (section === "libro") renderBiblioPreview(pageNum);
+      else loadBiblioArtifact(section);
+      requestAnimationFrame(syncBiblioPanelHeights);
+    });
   }
 
   function updateBiblioTranscriptActions() {
@@ -3058,6 +3085,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         }
         updateBiblioTranscriptActions();
         syncDirtyMarkers();
+        requestAnimationFrame(syncBiblioPanelHeights);
       })
       .catch(function (err) {
         if (loadGen !== biblioPreviewLoadGen) return;
@@ -3429,7 +3457,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     document.getElementById("biblio-book-backdrop").addEventListener("click", closeBiblioPanel);
     document.querySelectorAll("[data-biblio-section]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        setBiblioSection(btn.getAttribute("data-biblio-section") || "libro");
+        openBiblioSectionFromOverview(btn.getAttribute("data-biblio-section") || "libro");
       });
     });
     document.getElementById("biblio-artifact-view").addEventListener("click", function (ev) {

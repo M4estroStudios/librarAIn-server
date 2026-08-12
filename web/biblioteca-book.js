@@ -43,18 +43,21 @@
       el.classList.toggle("hidden", !isOverview);
     });
     document.querySelectorAll("[data-biblio-chrome='page']").forEach(function (el) {
-      if (isOverview) el.classList.add("hidden");
-      else if (el.id === "biblio-btn-edit" || el.classList.contains("biblio-page-counter")) return;
-      else el.classList.remove("hidden");
+      if (el.id === "biblio-btn-edit") {
+        if (isOverview) el.classList.add("hidden");
+        return;
+      }
+      if (el.classList.contains("biblio-page-counter")) return;
+      el.classList.remove("hidden");
     });
     if (isOverview) {
-      var editBtn = $("biblio-btn-edit");
       var actions = $("biblio-transcript-actions");
       var status = $("biblio-edit-status");
-      if (editBtn) editBtn.classList.add("hidden");
       if (actions) actions.classList.add("hidden");
       if (status) status.classList.add("hidden");
     }
+    var libroTab = document.querySelector('[data-biblio-section="libro"]');
+    if (libroTab) libroTab.classList.toggle("hidden", isOverview);
     syncClearSelectionBtn();
     if (api && typeof api.onChromeSync === "function") api.onChromeSync();
   }
@@ -239,10 +242,11 @@
     requestAnimationFrame(syncOverviewGridColumns);
   }
 
-  function showPage(pageNum) {
+  function showPage(pageNum, opts) {
+    opts = opts || {};
     mode = "page";
     syncChrome();
-    if (api && typeof api.openPage === "function") api.openPage(pageNum || 1);
+    if (!opts.skipOpenPage && api && typeof api.openPage === "function") api.openPage(pageNum || 1);
     syncChrome();
   }
 
