@@ -32,11 +32,9 @@
           var href = cleanHref(token.href);
           var text = this.parser.parseInline(token.tokens);
           var title = token.title ? ' title="' + escapeAttr(token.title) + '"' : "";
-          var label = String(text || "").replace(/<[^>]*>/g, "").trim();
-          var pageFromLabel = /^\d+$/.test(label) ? parseInt(label, 10) : null;
-          var page = pageFromLabel != null ? pageFromLabel : parseBookPageHref(href);
-          if (page != null) {
-            return '<a href="#" data-biblio-page="' + page + '"' + title + ">" + text + "</a>";
+          var pageFromHref = parseBookPageHref(href);
+          if (pageFromHref != null) {
+            return '<a href="#" data-biblio-page="' + pageFromHref + '"' + title + ">" + text + "</a>";
           }
           if (/^polyindex:/i.test(href)) {
             return '<span class="md-preview-pending" title="Polyindex non risolto"' + title + ">" + text + "</span>";

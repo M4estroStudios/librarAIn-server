@@ -117,7 +117,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 .biblio-artifact-view { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 0.85rem 1rem; box-sizing: border-box; color: #d4d4d4; font-size: 0.88rem; line-height: 1.4; }
 .biblio-artifact-view.hidden { display: none !important; }
 .biblio-md-switch {
-  position: absolute; top: 0.45rem; right: 0.45rem; z-index: 3;
+  position: absolute; top: 0.45rem; right: 1.2rem; z-index: 3;
   display: inline-flex; align-items: center; gap: 0; padding: 0.12rem;
   border-radius: 8px; background: #2a2a2a; border: 1px solid #3e3e3e;
   font-family: ui-monospace, "Cascadia Mono", monospace; font-size: 0.72rem;
@@ -225,6 +225,41 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 .time-index-days { display: flex; flex-direction: column; gap: 0.25rem; padding: 0 0.45rem 0.45rem 0.85rem; }
 .time-index-day-row { display: grid; grid-template-columns: minmax(5rem, 10rem) 1fr; gap: 0.4rem 0.65rem; align-items: start; padding: 0.28rem 0.4rem; border-radius: 6px; background: #141414; }
 .time-index-day-label { color: #e8e8e8; font-weight: 600; }
+.biblio-entries-view { display: flex; flex-direction: column; gap: 0.65rem; min-height: 100%; }
+.biblio-entries-sticky { position: sticky; top: 0; z-index: 2; display: flex; flex-direction: column; gap: 0.45rem; padding-bottom: 0.45rem; background: #252526; border-bottom: 1px solid #3a3a3a; }
+.biblio-entries-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.55rem 1rem; }
+.biblio-entries-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #8a8a8a; }
+.biblio-entries-summary { color: #e8e8e8; font-weight: 600; }
+.biblio-entries-help { margin: 0; font-size: 0.78rem; color: #9d9d9d; line-height: 1.35; }
+.biblio-entries-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; }
+.biblio-entries-filter { flex: 1 1 12rem; min-width: 10rem; font: inherit; padding: 0.32rem 0.5rem; border-radius: 8px; border: 1px solid #454545; background: #141414; color: #e8e8e8; }
+.biblio-entries-meta { margin-left: auto; font-size: 0.78rem; color: #9d9d9d; }
+.biblio-entries-range { display: flex; flex-wrap: wrap; gap: 0.35rem 0.75rem; font-size: 0.78rem; color: #9d9d9d; }
+.biblio-entries-range strong { color: #c8c8c8; font-weight: 600; }
+.biblio-entries-list { display: flex; flex-direction: column; gap: 0.4rem; }
+.biblio-entry-card {
+  display: grid; grid-template-columns: 1fr auto; gap: 0.45rem 0.75rem; align-items: start;
+  padding: 0.55rem 0.7rem; border: 1px solid #3a3a3a; border-radius: 10px; background: #1e1e1e;
+}
+.biblio-entry-card.is-incomplete { border-color: #5a4a2a; background: #242018; }
+.biblio-entry-card.is-unknown { border-style: dashed; }
+.biblio-entry-main { min-width: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+.biblio-entry-authors { font-size: 0.78rem; color: #9d9d9d; }
+.biblio-entry-title { margin: 0; font-size: 0.95rem; font-weight: 600; color: #e8e8e8; font-style: italic; word-break: break-word; }
+.biblio-entry-facts { display: flex; flex-wrap: wrap; gap: 0.28rem; margin-top: 0.15rem; }
+.biblio-entry-chip {
+  display: inline-flex; align-items: center; padding: 0.05rem 0.4rem; border-radius: 999px;
+  border: 1px solid #3e3e3e; background: #2a2a2a; color: #c8c8c8; font-size: 0.7rem; font-weight: 600;
+}
+.biblio-entry-chip.is-warn { border-color: #5a4a2a; background: #3a3018; color: #e6c35c; }
+.biblio-entry-raw { margin: 0.2rem 0 0; font-size: 0.78rem; color: #8a8a8a; line-height: 1.35; word-break: break-word; }
+.biblio-entry-side { display: flex; flex-direction: column; align-items: flex-end; gap: 0.28rem; }
+.biblio-entry-page {
+  font: inherit; padding: 0.12rem 0.42rem; border-radius: 999px; border: 1px solid #454545;
+  background: #2a2a2a; color: #4ec9b0; cursor: pointer; font-size: 0.78rem; font-weight: 600;
+}
+.biblio-entry-page:hover { background: #3a3a3a; border-color: #4ec9b0; }
+.biblio-entries-empty { color: #666; font-size: 0.78rem; margin: 0.35rem 0; }
 .page-review-body { display: flex; align-items: stretch; gap: 0.75rem; padding: 1rem; box-sizing: border-box; min-height: 0; flex: 1 1 auto; overflow: hidden; }
 .page-review-panels { flex: 1 1 auto; min-width: 0; min-height: 0; height: 100%; display: flex; justify-content: stretch; align-items: stretch; gap: 1.25rem; }
 .biblio-preview-img-pane,
@@ -1830,6 +1865,123 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     }
   }
 
+  function biblioRangeLabel(range) {
+    if (!range || range.start == null || range.end == null) return null;
+    return range.start + "–" + range.end;
+  }
+
+  function biblioEntryHaystack(entry) {
+    var extras = (entry && entry.extras && typeof entry.extras === "object") ? entry.extras : {};
+    return [
+      entry && entry.authors,
+      entry && entry.title,
+      entry && entry.year,
+      entry && entry.raw,
+      extras.publication_place,
+      extras.year_range,
+      extras.volumes,
+      extras.curators,
+      entry && entry.aligned_page,
+      entry && entry.original_page
+    ].map(function (v) { return v == null ? "" : String(v); }).join(" ").toLowerCase();
+  }
+
+  function biblioEntryChips(entry) {
+    var extras = (entry && entry.extras && typeof entry.extras === "object") ? entry.extras : {};
+    var chips = [];
+    var yearShown = extras.year_range || entry.year;
+    if (yearShown != null && yearShown !== "") chips.push({ text: String(yearShown) });
+    if (extras.publication_place) chips.push({ text: String(extras.publication_place) });
+    if (extras.volumes) chips.push({ text: String(extras.volumes) });
+    if (extras.curators) chips.push({ text: "a cura di " + extras.curators });
+    if (entry && entry.incomplete) chips.push({ text: "incompleta", warn: true });
+    if (entry && entry.all_unknown) chips.push({ text: "sconosciuta", warn: true });
+    if (!chips.length) return "";
+    return "<div class='biblio-entry-facts'>" + chips.map(function (chip) {
+      return "<span class='biblio-entry-chip" + (chip.warn ? " is-warn" : "") + "'>" + esc(chip.text) + "</span>";
+    }).join("") + "</div>";
+  }
+
+  function biblioEntryCardHtml(entry) {
+    var incomplete = !!(entry && entry.incomplete);
+    var unknown = !!(entry && entry.all_unknown);
+    var authors = (entry && entry.authors) ? String(entry.authors) : "Autore sconosciuto";
+    var title = (entry && entry.title) ? String(entry.title) : "Senza titolo";
+    var raw = (entry && entry.raw) ? String(entry.raw) : "";
+    var pageHtml = "";
+    if (entry && typeof entry.aligned_page === "number") {
+      var titleAttr = "Apri pagina allineata " + entry.aligned_page +
+        (entry.original_page != null ? (" (originale " + entry.original_page + ")") : "");
+      pageHtml = "<button type='button' class='biblio-entry-page' data-biblio-entry-page='" + entry.aligned_page + "' title='" + esc(titleAttr) + "'>p.&nbsp;" + entry.aligned_page + "</button>";
+    }
+    return "<article class='biblio-entry-card" + (incomplete ? " is-incomplete" : "") + (unknown ? " is-unknown" : "") + "'>" +
+      "<div class='biblio-entry-main'>" +
+      "<div class='biblio-entry-authors'>" + esc(authors) + "</div>" +
+      "<h4 class='biblio-entry-title'>" + esc(title) + "</h4>" +
+      biblioEntryChips(entry) +
+      (raw ? ("<p class='biblio-entry-raw'>" + esc(raw) + "</p>") : "") +
+      "</div>" +
+      "<div class='biblio-entry-side'>" + (pageHtml || "<span class='biblio-entries-empty'>—</span>") + "</div>" +
+      "</article>";
+  }
+
+  function renderBiblioEntriesList(state) {
+    var q = (state.query || "").trim().toLowerCase();
+    var filtered = state.entries.filter(function (entry) {
+      return !q || biblioEntryHaystack(entry).indexOf(q) >= 0;
+    });
+    state.listEl.innerHTML = filtered.length
+      ? filtered.map(biblioEntryCardHtml).join("")
+      : ("<p class='biblio-entries-empty'>Nessuna voce" + (q ? " per questo filtro" : "") + ".</p>");
+    state.metaEl.textContent = filtered.length + " / " + state.entries.length + " voci";
+  }
+
+  function renderBiblioView(data) {
+    var view = document.getElementById("biblio-artifact-view");
+    if (!data || typeof data !== "object") {
+      view.innerHTML = "<p class='hint'>Bibliografia non valida.</p>";
+      return;
+    }
+    var entries = Array.isArray(data.entries) ? data.entries : [];
+    var corpus = (data.corpus_node && typeof data.corpus_node === "object") ? data.corpus_node : {};
+    var alignedRange = biblioRangeLabel(data.biblio_range_aligned);
+    var originalRange = biblioRangeLabel(data.biblio_range_original);
+    var incompleteCount = entries.filter(function (e) { return e && e.incomplete; }).length;
+    var bookLabel = corpus.title || (selectedCandidate && selectedCandidate.title) || "Bibliografia";
+    var rangeBits = [];
+    if (alignedRange) rangeBits.push("<span>Pagine allineate <strong>" + esc(alignedRange) + "</strong></span>");
+    if (originalRange) rangeBits.push("<span>Originali <strong>" + esc(originalRange) + "</strong></span>");
+    if (incompleteCount) rangeBits.push("<span>Incomplete <strong>" + incompleteCount + "</strong></span>");
+    view.innerHTML =
+      "<div class='biblio-entries-view'>" +
+      "<div class='biblio-entries-sticky'>" +
+      "<div class='biblio-entries-head'>" +
+      "<span class='biblio-entries-title'>Bibliografia</span>" +
+      "<span class='biblio-entries-summary'>" + esc(bookLabel) + "</span>" +
+      "</div>" +
+      (rangeBits.length ? ("<div class='biblio-entries-range'>" + rangeBits.join("") + "</div>") : "") +
+      "<div class='biblio-entries-toolbar'>" +
+      "<input type='search' class='biblio-entries-filter' id='biblio-entries-filter' placeholder='Filtra autori, titolo, anno…' autocomplete='off'>" +
+      "<span class='biblio-entries-meta' id='biblio-entries-meta'></span>" +
+      "</div>" +
+      "<p class='biblio-entries-help'>Voci estratte da BIBLIO.json. I chip pagina aprono la pagina allineata.</p>" +
+      "</div>" +
+      "<div class='biblio-entries-list' id='biblio-entries-list'></div>" +
+      "</div>";
+    var state = {
+      entries: entries,
+      query: "",
+      listEl: document.getElementById("biblio-entries-list"),
+      metaEl: document.getElementById("biblio-entries-meta"),
+      filterEl: document.getElementById("biblio-entries-filter")
+    };
+    renderBiblioEntriesList(state);
+    state.filterEl.addEventListener("input", function () {
+      state.query = state.filterEl.value || "";
+      renderBiblioEntriesList(state);
+    });
+  }
+
   function renderManifestView(manifest) {
     var view = document.getElementById("biblio-artifact-view");
     if (!manifest || typeof manifest !== "object") {
@@ -2024,6 +2176,14 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
           renderManifestView(data.data);
           return;
         }
+        if (kind === "biblio" && data.data && typeof data.data === "object") {
+          textEl.classList.add("hidden");
+          if (mdEl) mdEl.classList.add("hidden");
+          viewEl.classList.remove("hidden");
+          if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
+          renderBiblioView(data.data);
+          return;
+        }
         if (kind === "time_index" && data.data && typeof data.data === "object") {
           textEl.classList.add("hidden");
           if (mdEl) mdEl.classList.add("hidden");
@@ -2067,6 +2227,17 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       });
   }
 
+  function syncBiblioPageNavChrome() {
+    var isOverview = window.BiblioBookOverlay && window.BiblioBookOverlay.currentMode && window.BiblioBookOverlay.currentMode() === "overview";
+    var show = !isOverview && biblioSection === "libro";
+    var counter = document.querySelector(".biblio-page-counter");
+    if (counter) counter.classList.toggle("hidden", !show);
+    var prev = document.getElementById("biblio-preview-prev");
+    var next = document.getElementById("biblio-preview-next");
+    if (prev) prev.classList.toggle("hidden", !show);
+    if (next) next.classList.toggle("hidden", !show);
+  }
+
   function setBiblioSection(section) {
     if (biblioSection === "time_index" && section !== "time_index") {
       stashBiblioTimeIndexScroll();
@@ -2077,12 +2248,9 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     });
     var isOverview = window.BiblioBookOverlay && window.BiblioBookOverlay.currentMode && window.BiblioBookOverlay.currentMode() === "overview";
     var isLibro = biblioSection === "libro";
-    var showPageCounter = !isOverview && biblioSection !== "manifest";
     document.getElementById("biblio-preview-panels").classList.toggle("hidden", !isLibro);
     document.getElementById("biblio-artifact-pane").classList.toggle("hidden", isLibro);
-    document.querySelector(".biblio-page-counter").classList.toggle("hidden", !showPageCounter);
-    document.getElementById("biblio-preview-prev").classList.toggle("hidden", !showPageCounter);
-    document.getElementById("biblio-preview-next").classList.toggle("hidden", !showPageCounter);
+    syncBiblioPageNavChrome();
     if (biblioSection !== "manifest") reicatEditMode = false;
     if (!isLibro) setBiblioEditMode(false);
     else setBiblioEditMode(biblioEditMode);
@@ -3264,6 +3432,12 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         setBiblioSection(btn.getAttribute("data-biblio-section") || "libro");
       });
     });
+    document.getElementById("biblio-artifact-view").addEventListener("click", function (ev) {
+      var btn = ev.target.closest("[data-biblio-entry-page]");
+      if (!btn) return;
+      var page = parseInt(btn.getAttribute("data-biblio-entry-page") || "", 10);
+      if (!isNaN(page)) timeIndexOnOpenPage(page);
+    });
     document.getElementById("biblio-btn-edit").addEventListener("click", function () {
       if (!selectedCandidate || biblioSection !== "libro") return;
       setBiblioEditMode(true);
@@ -3367,7 +3541,10 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         beforeLeavePage: beforeLeaveBiblioPage,
         isPagePending: isBiblioPagePending,
         isPageNeedsVision: isBiblioPageNeedsVision,
-        onChromeSync: syncPendingApplyBtn
+        onChromeSync: function () {
+          syncPendingApplyBtn();
+          syncBiblioPageNavChrome();
+        }
       });
     }
     bootBiblioPageGuidance();

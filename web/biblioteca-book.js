@@ -44,7 +44,8 @@
     });
     document.querySelectorAll("[data-biblio-chrome='page']").forEach(function (el) {
       if (isOverview) el.classList.add("hidden");
-      else if (el.id !== "biblio-btn-edit") el.classList.remove("hidden");
+      else if (el.id === "biblio-btn-edit" || el.classList.contains("biblio-page-counter")) return;
+      else el.classList.remove("hidden");
     });
     if (isOverview) {
       var editBtn = $("biblio-btn-edit");

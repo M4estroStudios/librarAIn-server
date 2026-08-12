@@ -26,12 +26,14 @@
       "background:rgba(80,140,255,0.38);",
       "}",
       ".transcript-hl-wrap{-webkit-font-smoothing:antialiased;}",
-      ".transcript-hl-wrap{--th-base:#111;--th-caret:#111;--th-h1:#0b7a6a;--th-h2:#1a5fb4;--th-quote:#b86e00;--th-em:#7a3e9d;}",
-      ".transcript-hl-wrap.is-dark{--th-base:#d4d4d4;--th-caret:#e8e8e8;--th-h1:#4ec9b0;--th-h2:#6cb6ff;--th-quote:#dcdcaa;--th-em:#c586c0;}",
+      ".transcript-hl-wrap{--th-base:#111;--th-caret:#111;--th-h1:#0b7a6a;--th-h2:#1a5fb4;--th-h3:#0e7490;--th-quote:#b86e00;--th-em:#7a3e9d;--th-link:#c62828;}",
+      ".transcript-hl-wrap.is-dark{--th-base:#d4d4d4;--th-caret:#e8e8e8;--th-h1:#4ec9b0;--th-h2:#6cb6ff;--th-h3:#22d3ee;--th-quote:#dcdcaa;--th-em:#c586c0;--th-link:#f07178;}",
       ".transcript-hl-backdrop .th-h1{color:var(--th-h1);font-weight:700;}",
       ".transcript-hl-backdrop .th-h2{color:var(--th-h2);font-weight:650;}",
+      ".transcript-hl-backdrop .th-h3{color:var(--th-h3);font-weight:600;}",
       ".transcript-hl-backdrop .th-quote{color:var(--th-quote);}",
       ".transcript-hl-backdrop .th-em{color:var(--th-em);font-style:italic;}",
+      ".transcript-hl-backdrop .th-link{color:var(--th-link);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--th-link) 55%,transparent);}",
       ".biblio-book-text-frame .transcript-hl-backdrop,.biblio-book-text-frame .transcript-hl-wrap>textarea.transcript-hl-input{padding:0.75rem;}",
       ".transcript-hl-wrap:has(>textarea.hidden){display:none!important;}",
     ].join("");
@@ -52,6 +54,9 @@
       })
       .replace(/(^|[^_*])_([^_\n]+)_(?!_)/g, function (_, pre, body) {
         return pre + '<span class="th-em">_' + body + "_</span>";
+      })
+      .replace(/\[([^\]]*)\]\(([^)\n]*)\)/g, function (match, label, href) {
+        return '<span class="th-link">[' + label + "](" + href + ")</span>";
       });
   }
 
@@ -63,7 +68,8 @@
       var line = lines[i];
       var heading = /^(#{1,3})(\s+)(.*)$/.exec(line);
       if (heading) {
-        var cls = heading[1].length === 1 ? "th-h1" : "th-h2";
+        var level = heading[1].length;
+        var cls = level === 1 ? "th-h1" : level === 2 ? "th-h2" : "th-h3";
         out.push(
           '<span class="' + cls + '">' +
             escapeHtml(heading[1] + heading[2]) +
