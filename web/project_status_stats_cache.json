@@ -1,0 +1,185 @@
+{
+  "computed_at": "2026-08-11T19:08:01+00:00",
+  "stats": {
+    "books": {
+      "book_count": 1,
+      "books_with_gaps": 0,
+      "books_complete": 1,
+      "total_pages_with_gaps": 0
+    },
+    "research": {
+      "total_subjects": 0,
+      "articles_count": 0,
+      "missing_count": 0,
+      "issues_count": 0,
+      "affected_poh_count": 0
+    },
+    "polyindex": {
+      "index_subjects": null,
+      "toc_books": 1,
+      "biblio_nodes": 91,
+      "time_index_years": 2116,
+      "time_index_dates": 432,
+      "time_index_entries": 2548,
+      "files": {
+        "INDEX.json": false,
+        "TOC.json": true,
+        "BIBLIO.json": true,
+        "TIME_INDEX.json": true
+      }
+    },
+    "runtime": {
+      "vram": [
+        {
+          "device_index": 0,
+          "used_gb": 1.31,
+          "free_gb": 22.27,
+          "total_gb": 23.99
+        },
+        {
+          "device_index": 1,
+          "used_gb": 0.0,
+          "free_gb": 23.76,
+          "total_gb": 24.0
+        }
+      ],
+      "loaded_models": [],
+      "lmstudio_root": "http://localhost:11111",
+      "active_jobs": 0
+    },
+    "pipeline_runs": [
+      {
+        "request_id": "25f7aade0d291388f74e19ea2f345f16f92a00a4f6f0e3eab785d97abfe6288b",
+        "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+        "status": "succeeded",
+        "started_at": "2026-08-10T22:34:33.191278+00:00",
+        "finished_at": "2026-08-10T23:55:57.307770+00:00",
+        "book_title": "La grande guida dei monumenti di Roma",
+        "page_count": null,
+        "timing": {
+          "phases": {
+            "gate_hash": 0.08,
+            "page_enumeration": 0.0,
+            "pdf_alignment": 6.28,
+            "polyindex_biblio": 95.39,
+            "polyindex_toc": 0.02,
+            "stage1_glm_ocr": 0.02,
+            "stage3_editor": 5.48,
+            "time_index": 3.28,
+            "validation": 0.25
+          },
+          "total_seconds": 4890.88
+        }
+      },
+      {
+        "request_id": "ae1e9dfe23e7365b2d0c43fe694d1842cdfc5feb839d537d64fb413d114a4ff9",
+        "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+        "status": "failed",
+        "started_at": "2026-08-10T20:19:03.508160+00:00",
+        "finished_at": "2026-08-10T21:58:08.042645+00:00",
+        "book_title": "La grande guida dei monumenti di Roma",
+        "page_count": null,
+        "timing": {
+          "phases": {
+            "gate_hash": 0.09,
+            "page_enumeration": 0.0,
+            "pdf_alignment": 7.58,
+            "render": 0.09,
+            "stage1_glm_ocr": 815.17,
+            "stage3_editor": 1.14,
+            "validation": 0.27
+          },
+          "total_seconds": 5952.69
+        }
+      },
+      {
+        "request_id": "91a99a387775661ad1950122f8f7d53b6493cd9500b5059e0a960ad8e4cd1ca6",
+        "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+        "status": "running",
+        "started_at": "2026-08-10T20:12:31.962471+00:00",
+        "finished_at": null,
+        "book_title": "La grande guida dei monumenti di Roma",
+        "page_count": null,
+        "timing": null
+      },
+      {
+        "request_id": "c6181f523e94dfd48d805810262a73fb5c7d7b92f320c7320a6333fbce3855d4",
+        "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+        "status": "failed",
+        "started_at": "2026-08-10T01:39:06.442731+00:00",
+        "finished_at": "2026-08-10T03:12:06.346806+00:00",
+        "book_title": "La grande guida dei monumenti di Roma",
+        "page_count": null,
+        "timing": {
+          "phases": {
+            "gate_hash": 0.08,
+            "page_enumeration": 0.0,
+            "pdf_alignment": 5.62,
+            "render": 7.19,
+            "stage1_glm_ocr": 3607.12,
+            "stage3_editor": 1965.38,
+            "validation": 0.2
+          },
+          "total_seconds": 5585.97
+        }
+      },
+      {
+        "request_id": "ef04a01156ed49ab3ae2dc56869e52052864d8252af6a2a09cbdd5a354efa1aa",
+        "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+        "status": "failed",
+        "started_at": "2026-08-10T01:33:23.450768+00:00",
+        "finished_at": "2026-08-10T01:33:32.060367+00:00",
+        "book_title": "La grande guida dei monumenti di Roma",
+        "page_count": null,
+        "timing": {
+          "phases": {
+            "gate_hash": 0.08,
+            "page_enumeration": 0.0,
+            "pdf_alignment": 5.77,
+            "stage1_glm_ocr": 0.02,
+            "validation": 0.22
+          },
+          "total_seconds": 14.75
+        }
+      },
+      {
+        "request_id": "bce0f83544523a2d15f3a64cc20d4e625e2f5c8166affcc3e01f3b702cca48d8",
+        "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+        "status": "succeeded",
+        "started_at": "2026-08-10T00:19:36.631614+00:00",
+        "finished_at": "2026-08-10T01:03:25.467800+00:00",
+        "book_title": "La grande guida dei monumenti di Roma",
+        "page_count": null,
+        "timing": {
+          "phases": {
+            "gate_hash": 0.08,
+            "page_enumeration": 0.0,
+            "pdf_alignment": 0.0,
+            "render": 589.44,
+            "stage1_glm_ocr": 2623.61,
+            "validation": 0.19
+          },
+          "total_seconds": 2629.27
+        }
+      },
+      {
+        "request_id": "0409755abb0262364f2cd196a3f50db53159bf2967cb1f2b340647053c999cfb",
+        "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+        "status": "running",
+        "started_at": "2026-08-09T23:41:22.241306+00:00",
+        "finished_at": null,
+        "book_title": "La grande guida dei monumenti di Roma",
+        "page_count": null,
+        "timing": null
+      }
+    ],
+    "checklist": {
+      "broken": 0,
+      "deprecated": 1,
+      "needs_change": 1,
+      "ok": 34,
+      "partial": 26,
+      "untested": 4
+    }
+  }
+}
