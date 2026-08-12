@@ -9,7 +9,7 @@ from src.ingestion.pipeline.render import DEFAULT_RENDER_DPI, _render_pdf_page_t
 from src.ingestion.pipeline.md_cache import stage_md_cached_model, write_stage_md
 from src.persistence.book_pages_audit import _load_manifest, _stage_page_path
 
-_TRANSCRIPT_STAGE_ORDER = ("stage3Editor", "output", "stage1OCR")
+_TRANSCRIPT_STAGE_ORDER = ("output", "stage3Editor", "stage1OCR")
 _REVIEW_PENDING_FILE = "review_pending.json"
 
 

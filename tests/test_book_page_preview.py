@@ -94,14 +94,34 @@ class TestBookPagePreview(unittest.TestCase):
         with self.assertRaises(PagePreviewError):
             resolve_aligned_page_from_original(manifest, 99)
 
-    def test_load_page_transcript_prefers_stage3(self) -> None:
+    def test_load_page_transcript_prefers_output_over_stage3(self) -> None:
         sha = "f" * 64
         slug = "libro-test"
         stage1 = self.data_root / "tmp" / sha / "stage1OCR" / f"p.0003.{slug}.txt"
         stage3 = self.data_root / "tmp" / sha / "stage3Editor" / f"p.0003.{slug}.md"
+        output = self.data_root / "output" / sha / "pages" / f"p.0003.{slug}.md"
         stage1.parent.mkdir(parents=True, exist_ok=True)
         stage3.parent.mkdir(parents=True, exist_ok=True)
+        output.parent.mkdir(parents=True, exist_ok=True)
         stage1.write_text("ocr text", encoding="utf-8")
+        stage3.write_text("<!-- librarain:model=gemma-test -->\neditor text", encoding="utf-8")
+        output.write_text("<!-- librarain:model=manual -->\n[linked](p.0099." + slug + ".md)", encoding="utf-8")
+        manifest_dir = self.data_root / "output" / sha
+        manifest_dir.mkdir(parents=True, exist_ok=True)
+        (manifest_dir / "manifest.json").write_text(
+            '{"source_sha256":"' + sha + '","slug":"' + slug + '"}',
+            encoding="utf-8",
+        )
+        text, stage_key, model = load_page_transcript(self.data_root, sha, 3)
+        self.assertIn("[linked]", text)
+        self.assertEqual(stage_key, "output")
+        self.assertEqual(model, "manual")
+
+    def test_load_page_transcript_falls_back_to_stage3(self) -> None:
+        sha = "f1" * 32
+        slug = "libro-test"
+        stage3 = self.data_root / "tmp" / sha / "stage3Editor" / f"p.0003.{slug}.md"
+        stage3.parent.mkdir(parents=True, exist_ok=True)
         stage3.write_text("<!-- librarain:model=gemma-test -->\neditor text", encoding="utf-8")
         manifest_dir = self.data_root / "output" / sha
         manifest_dir.mkdir(parents=True, exist_ok=True)
