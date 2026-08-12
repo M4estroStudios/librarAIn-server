@@ -9,6 +9,7 @@ import subprocess
 import threading
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -95,7 +96,7 @@ from src.persistence.book_page_repair import (
 )
 from src.core.config import ConfigurationError, get_env, load_settings
 from src.core.hashing import compute_file_sha256, new_job_id
-from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit
+from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit, shutdown_log_flush
 from src.core.openai_client import use_compute_mode
 from src.models.settings import normalize_compute_mode
 from src.ingestion.pdf_alignment import extract_pages_to_pdf, merge_pdf_paths
@@ -2274,12 +2275,13 @@ def build_ingest_server(
 
 
 def run_ingest_http_server() -> None:
-    logInit(INFO_LOG_LEVEL)
     try:
         settings = load_settings()
     except ConfigurationError as exc:
-        Log(ERROR_LOG_LEVEL, "ingest server configuration failed", {"error": str(exc)})
+        print(f"ingest server configuration failed: {exc}", file=sys.stderr)
         raise SystemExit(str(exc)) from exc
+
+    logInit(INFO_LOG_LEVEL, log_dir=Path(settings.data_root) / "log")
 
     host = (get_env("INGEST_HTTP_HOST", "127.0.0.1") or "127.0.0.1").strip()
     port = int(get_env("INGEST_HTTP_PORT", "8765"))
@@ -2327,6 +2329,7 @@ def run_ingest_http_server() -> None:
         request_shutdown()
         httpd.server_close()
         Log(INFO_LOG_LEVEL, "ingest http server stopped")
+        shutdown_log_flush()
 
 
 if __name__ == "__main__":

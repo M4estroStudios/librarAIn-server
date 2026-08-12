@@ -19,6 +19,7 @@ from src.ingestion.polyindex.biblio_json import (
     sync_polyindex_biblio_from_book,
 )
 from src.ingestion.polyindex.file_lock import polyindex_dir_lock
+from src.ingestion.progress import ProgressReporter
 from src.models.polyindex_biblio import (
     BiblioCitation,
     BiblioNode,
@@ -361,6 +362,7 @@ def run_biblio_only_job(
     client: openai.OpenAI | None = None,
     request_id: str = "",
     prompt_notes: str | None = None,
+    progress: ProgressReporter | None = None,
 ) -> dict[str, Any]:
     sha = validate_source_sha256(source_sha256)
     book_output = _book_output_from_disk(data_root, sha)
@@ -405,6 +407,7 @@ def run_biblio_only_job(
             request_id=request_id or sha,
             prompt_notes=prompt_notes,
             biblio_range_original=biblio_range,
+            progress=progress,
         )
     )
     manifest["biblio_range"] = biblio_range.model_dump()

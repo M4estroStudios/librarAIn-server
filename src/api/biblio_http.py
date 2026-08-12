@@ -20,7 +20,7 @@ from src.api.biblio_handlers import (
     search_biblio,
     update_biblio_node,
 )
-from src.api.biblio_polyindex_jobs import try_handle_polyindex_run_post
+from src.api.biblio_polyindex_jobs import try_handle_polyindex_preflight_get, try_handle_polyindex_run_post
 from src.core.hashing import new_job_id
 from src.core.openai_client import use_compute_mode
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
@@ -43,6 +43,14 @@ def try_handle_biblio_get(
 
     if route == "/api/admin/biblio/candidates":
         send_json(handler, 200, list_biblio_candidates(data_root))
+        return True
+    if try_handle_polyindex_preflight_get(
+        path,
+        handler,
+        data_root=data_root,
+        send_json=send_json,
+        query=query,
+    ):
         return True
     if route == "/api/admin/biblio/deprecated":
         from src.persistence.polyindex_deprecated import list_deprecated_items
