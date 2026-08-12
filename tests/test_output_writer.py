@@ -171,6 +171,26 @@ class TestMaterializeBookPages(unittest.TestCase):
         self.assertIn("md_no_invent", md_formatting)
         self.assertTrue(md_formatting["md_h1"])
 
+    def test_materialize_strips_stage_model_marker(self) -> None:
+        md_path = self.stage3_dir / f"p.0001.{SLUG}.md"
+        md_path.write_text(
+            "<!-- librarain:model=gpt-test -->\npage 1 content\n",
+            encoding="utf-8",
+        )
+        result = materialize_book_pages(
+            self.stage3_result,
+            _enriched(),
+            SHA,
+            _enumeration(),
+            _settings(self.data_root),
+        )
+        page_path = result.output_dir / "pages" / f"p.0001.{SLUG}.md"
+        text = page_path.read_text(encoding="utf-8")
+        self.assertNotIn("<!-- librarain:model=", text)
+        self.assertEqual(text, "page 1 content\n")
+        stage3_text = md_path.read_text(encoding="utf-8")
+        self.assertIn("<!-- librarain:model=gpt-test -->", stage3_text)
+
     def test_second_call_is_idempotent(self) -> None:
         settings = _settings(self.data_root)
         enriched = _enriched()
@@ -279,14 +299,17 @@ class TestMaterializeBookPages(unittest.TestCase):
         )
 
     def test_materialize_rejects_aligned_count_mismatch(self) -> None:
-        useful = _enumeration()
-        useful = useful.model_copy(update={"aligned_page_count": PAGE_COUNT + 1})
-        with self.assertRaises(ValueError):
+        incomplete = Stage3Result(
+            pages=self.stage3_pages[:-1],
+            skipped_existing=0,
+            missing=[PAGE_COUNT],
+        )
+        with self.assertRaisesRegex(ValueError, r"missing aligned pages: \[5\]"):
             materialize_book_pages(
-                self.stage3_result,
+                incomplete,
                 _enriched(),
                 SHA,
-                useful,
+                _enumeration(),
                 _settings(self.data_root),
             )
 
@@ -358,11 +381,14 @@ class TestStampPageMetadata(unittest.TestCase):
             self.assertIn("index_connections:", text)
             success_block = text.split("success:", 1)[1].split("failed:", 1)[0]
             failed_block = text.split("failed:", 1)[1].split("---", 1)[0]
-            self.assertIn("[]", success_block)
-            self.assertIn('- "Acqua Claudia"', failed_block)
+            self.assertIn("regex:", success_block)
+            self.assertIn("[]", success_block.split("ai:", 1)[0])
+            self.assertIn("ai:", success_block)
+            self.assertIn("regex:", failed_block)
+            self.assertIn('- "Acqua Claudia"', failed_block.split("ai:", 1)[1])
             self.assertNotIn("key:", text)
             self.assertNotIn("label:", text)
-            self.assertIn("<!-- librarain:model=test -->", text)
+            self.assertNotIn("<!-- librarain:model=", text)
             self.assertIn("Testo senza match esplicito.", text)
 
     def test_stamp_splits_success_and_failed(self) -> None:
@@ -372,7 +398,7 @@ class TestStampPageMetadata(unittest.TestCase):
             pages_dir.mkdir()
             page_path = pages_dir / "p.0039.test-book.md"
             page_path.write_text(
-                '<a id="acqua-claudia"></a>[Acqua Claudia](../INDEX.md#acqua-claudia)\n',
+                "[Acqua Claudia](p.0100.test-book.md)\n",
                 encoding="utf-8",
             )
             book = BookOutput(

@@ -9,8 +9,15 @@ import openai
 from src.core.log import INFO_LOG_LEVEL, Log
 from src.ingestion.biblio_hash import compute_biblio_id
 from src.ingestion.biblio_llm import extract_biblio_entries_for_page, normalize_biblio_entry
-from src.ingestion.output_writer import BookOutput, _atomic_write_bytes
+from src.ingestion.output_writer import BookOutput, BookPageOutput, _atomic_write_bytes
 from src.ingestion.polyindex.file_lock import polyindex_dir_lock
+from src.ingestion.progress import (
+    PHASE_POLYINDEX_BIBLIO,
+    STATUS_PAGE_PROGRESS,
+    STATUS_STARTED,
+    ProgressReporter,
+    make_event,
+)
 from src.models.polyindex_biblio import (
     BiblioCitation,
     BiblioNode,
@@ -195,6 +202,7 @@ async def build_book_biblio_from_pages(
     request_id: str = "",
     prompt_notes: str | None = None,
     biblio_range_original: PageRange | None = None,
+    progress: ProgressReporter | None = None,
 ) -> dict[str, Any]:
     corpus_id, corpus_node = corpus_node_from_reicat(
         reicat,
@@ -205,45 +213,80 @@ async def build_book_biblio_from_pages(
     entries: list[dict[str, Any]] = []
     review_queue: list[dict[str, Any]] = []
 
+    def emit(status: str, *, counts_as_step: bool = False, **fields: Any) -> None:
+        if progress is None:
+            return
+        progress(
+            make_event(
+                PHASE_POLYINDEX_BIBLIO,
+                status,
+                counts_as_step=counts_as_step,
+                **fields,
+            )
+        )
+
+    selected: list[BookPageOutput] = []
     if range_aligned is not None:
         selected = sorted(
             (page for page in book_output.pages if page.aligned in range_aligned.as_set()),
             key=lambda page: page.aligned,
         )
-        for page in selected:
-            if not page.file.is_file():
-                raise FileNotFoundError(f"page md not found: {page.file}")
-            text = page.file.read_text(encoding="utf-8")
-            page_entries = await extract_biblio_entries_for_page(
-                text,
-                client=client,
-                settings=settings,
-                request_id=request_id,
-                aligned_page=page.aligned,
-                prompt_notes=prompt_notes,
-                source_sha256=source_sha256,
-                book_slug=book_output.slug,
-            )
-            for item in page_entries:
-                item = dict(item)
-                item["aligned_page"] = page.aligned
-                item["original_page"] = page.original
-                if item.get("all_unknown"):
-                    review_queue.append(
-                        {
-                            "source_sha256": source_sha256,
-                            "aligned_page": page.aligned,
-                            "original_page": page.original,
-                            "line": item.get("line"),
-                            "raw": item.get("raw"),
-                            "authors": item.get("authors") or "unknown",
-                            "title": item.get("title") or "unknown",
-                            "year": item.get("year"),
-                            "extras": item.get("extras") or {},
-                        }
-                    )
-                    continue
-                entries.append(item)
+    page_total = max(1, len(selected))
+    emit(
+        STATUS_STARTED,
+        page_total=page_total,
+        message=f"BIBLIO su {len(selected)} pagine",
+    )
+    if not selected:
+        emit(
+            STATUS_PAGE_PROGRESS,
+            counts_as_step=True,
+            page_index=1,
+            page_total=page_total,
+            message="BIBLIO: nessuna pagina nel range",
+        )
+    for step, page in enumerate(selected, start=1):
+        if not page.file.is_file():
+            raise FileNotFoundError(f"page md not found: {page.file}")
+        text = page.file.read_text(encoding="utf-8")
+        page_entries = await extract_biblio_entries_for_page(
+            text,
+            client=client,
+            settings=settings,
+            request_id=request_id,
+            aligned_page=page.aligned,
+            prompt_notes=prompt_notes,
+            source_sha256=source_sha256,
+            book_slug=book_output.slug,
+        )
+        for item in page_entries:
+            item = dict(item)
+            item["aligned_page"] = page.aligned
+            item["original_page"] = page.original
+            if item.get("all_unknown"):
+                review_queue.append(
+                    {
+                        "source_sha256": source_sha256,
+                        "aligned_page": page.aligned,
+                        "original_page": page.original,
+                        "line": item.get("line"),
+                        "raw": item.get("raw"),
+                        "authors": item.get("authors") or "unknown",
+                        "title": item.get("title") or "unknown",
+                        "year": item.get("year"),
+                        "extras": item.get("extras") or {},
+                    }
+                )
+                continue
+            entries.append(item)
+        emit(
+            STATUS_PAGE_PROGRESS,
+            counts_as_step=True,
+            page_index=step,
+            page_total=page_total,
+            aligned_page=page.aligned,
+            message=f"BIBLIO pagina {page.aligned}",
+        )
 
     payload = {
         "schema_version": "1.0",
@@ -363,6 +406,7 @@ async def sync_polyindex_biblio_from_book(
     request_id: str = "",
     prompt_notes: str | None = None,
     biblio_range_original: PageRange | None = None,
+    progress: ProgressReporter | None = None,
 ) -> tuple[Path, dict[str, int], dict[str, Any]]:
     payload = await build_book_biblio_from_pages(
         book_output,
@@ -374,6 +418,7 @@ async def sync_polyindex_biblio_from_book(
         request_id=request_id,
         prompt_notes=prompt_notes,
         biblio_range_original=biblio_range_original,
+        progress=progress,
     )
     path, stats = sync_polyindex_biblio_from_book_payload(
         polyindex_dir, source_sha256, payload

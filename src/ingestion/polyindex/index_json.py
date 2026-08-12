@@ -148,11 +148,33 @@ def update_polyindex_index(
 ) -> tuple[Path, dict[str, int]]:
     index_path = polyindex_dir / "INDEX.json"
     stats = {"n_new": 0, "n_match": 0, "n_alias": 0}
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex index update start",
+        {
+            "request_id": request_id,
+            "source_sha256": source_sha256[:16],
+            "subject_count": len(raw_subjects),
+            "index_path": str(index_path),
+        },
+    )
 
     with polyindex_dir_lock(polyindex_dir, ".index.lock"):
         snapshot = PolyindexIndexDocument.load_file(index_path)
 
     matcher_state = snapshot.as_matcher_state()
+    existing_subjects = len(matcher_state.get("subjects") or {})
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex index embedding prefetch start",
+        {
+            "request_id": request_id,
+            "source_sha256": source_sha256[:16],
+            "subject_count": len(raw_subjects),
+            "existing_global_subjects": existing_subjects,
+            "embedding_model": settings.matcher_embedding_model,
+        },
+    )
     embedding_cache = prefetch_matcher_embeddings_for_book(
         raw_subjects,
         matcher_state,
@@ -160,6 +182,15 @@ def update_polyindex_index(
         sqlite_path,
         settings,
         request_id,
+    )
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex index embedding prefetch done",
+        {
+            "request_id": request_id,
+            "source_sha256": source_sha256[:16],
+            "embedding_cache_size": len(embedding_cache),
+        },
     )
 
     decisions: list[tuple[RawSubject, MatchDecision]] = []
@@ -184,6 +215,16 @@ def update_polyindex_index(
         )
         decisions.append((raw_subject, decision))
 
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex index matcher pass done",
+        {
+            "request_id": request_id,
+            "source_sha256": source_sha256[:16],
+            "decision_count": len(decisions),
+        },
+    )
+
     with polyindex_dir_lock(polyindex_dir, ".index.lock"):
         document = PolyindexIndexDocument.load_file(index_path)
         document.schema_version = SCHEMA_VERSION
@@ -206,6 +247,17 @@ def update_polyindex_index(
                 stats["n_alias"] += 1
 
         document.write_atomic(index_path, sort_document=True)
+
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex index update done",
+        {
+            "request_id": request_id,
+            "source_sha256": source_sha256[:16],
+            "index_path": str(index_path),
+            **stats,
+        },
+    )
 
     return index_path, stats
 
@@ -625,6 +677,15 @@ def sync_polyindex_index_from_book(
     book_title: str | None = None,
     book_slug: str | None = None,
 ) -> tuple[Path, dict[str, int]]:
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex index sync from book start",
+        {
+            "request_id": request_id,
+            "source_sha256": source_sha256[:16],
+            "index_md_path": str(index_md_path),
+        },
+    )
     raw_subjects, skipped = parse_index_md_with_skipped(
         index_md_path, useful_pages_enumeration
     )

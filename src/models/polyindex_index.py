@@ -132,6 +132,7 @@ class BookIndexSubjectEntry(BaseModel):
     time_range: str | None = None
     aligned_pages: list[int] = Field(default_factory=list)
     original_pages: list[int] = Field(default_factory=list)
+    source_index_page: int | None = None
     global_ref: str | None = None
 
 

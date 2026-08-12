@@ -141,6 +141,71 @@ class BiblioPolyindexJobsTests(unittest.TestCase):
         self.assertEqual(result["stage"], "polyindex_biblio")
         run_biblio.assert_called_once()
 
+    def test_biblio_progress_one_step_per_range_page(self) -> None:
+        import asyncio
+
+        from src.ingestion.output_writer import BookOutput, BookPageOutput
+        from src.ingestion.polyindex.biblio_json import build_book_biblio_from_pages
+        from src.models.request import ReicatMetadata, UsefulPagesEnumeration
+
+        out = _write_book(self.root)
+        pages = [
+            BookPageOutput(aligned=1, original=1, file=out / "pages" / "p.0001.book.md"),
+            BookPageOutput(aligned=2, original=2, file=out / "pages" / "p.0002.book.md"),
+        ]
+        book = BookOutput(
+            output_dir=out,
+            manifest_path=out / "manifest.json",
+            slug="book",
+            pages=pages,
+        )
+        useful = UsefulPagesEnumeration(
+            source_sha256=SHA,
+            original_page_count=2,
+            aligned_page_count=2,
+            useful_original_pages=[1, 2],
+            original_page_to_aligned_page={1: 1, 2: 2},
+            aligned_page_to_original_page={1: 1, 2: 2},
+            toc_range_aligned=PageRange(start=1, end=1),
+            index_range_aligned=PageRange(start=2, end=2),
+            biblio_range_aligned=PageRange(start=1, end=2),
+        )
+        reicat = ReicatMetadata.model_validate(
+            {"title": "Demo", "autore": ["Autore"], "anno_di_pubblicazione": 1900}
+        )
+        events: list[dict] = []
+        with patch(
+            "src.ingestion.polyindex.biblio_json.extract_biblio_entries_for_page",
+            new=AsyncMock(
+                return_value=[
+                    {
+                        "authors": "Rossi",
+                        "title": "Libro",
+                        "year": 1900,
+                        "extras": {},
+                    }
+                ]
+            ),
+        ):
+            asyncio.run(
+                build_book_biblio_from_pages(
+                    book,
+                    useful,
+                    source_sha256=SHA,
+                    client=object(),
+                    settings=self.settings,
+                    reicat=reicat,
+                    progress=events.append,
+                )
+            )
+        started = [e for e in events if e.get("status") == "started"]
+        page_steps = [e for e in events if e.get("status") == "page_progress"]
+        self.assertEqual(len(started), 1)
+        self.assertEqual(started[0]["page_total"], 2)
+        self.assertEqual(len(page_steps), 2)
+        self.assertEqual([e["aligned_page"] for e in page_steps], [1, 2])
+        self.assertTrue(all(e.get("counts_as_step") for e in page_steps))
+
     def test_stage_set_complete(self) -> None:
         self.assertEqual(
             POLYINDEX_RERUN_STAGES,

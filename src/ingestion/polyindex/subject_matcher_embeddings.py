@@ -3,6 +3,7 @@ from __future__ import annotations
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Callable
 
+from src.core.log import INFO_LOG_LEVEL, Log
 from src.core.openai_client_sync import embeddings_batch_with_retry_sync
 from src.ingestion.polyindex.index_md_parser import RawSubject, normalize_label
 from src.models.settings import Settings
@@ -131,12 +132,31 @@ def prefetch_matcher_embedding_vectors(
     if not texts_to_fetch:
         return cache
 
+    Log(
+        INFO_LOG_LEVEL,
+        "subject matcher embedding batch start",
+        {
+            "request_id": request_id,
+            "text_count": len(texts_to_fetch),
+            "model": model,
+            "max_parallel": settings.max_parallel_request,
+        },
+    )
     vectors = fetch_embeddings_parallel(
         client,
         model,
         texts_to_fetch,
         request_id=request_id,
         max_parallel=settings.max_parallel_request,
+    )
+    Log(
+        INFO_LOG_LEVEL,
+        "subject matcher embedding batch done",
+        {
+            "request_id": request_id,
+            "vector_count": len(vectors),
+            "model": model,
+        },
     )
     for text, vector in zip(texts_to_fetch, vectors):
         cache[text] = vector

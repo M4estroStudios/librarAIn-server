@@ -654,6 +654,7 @@ async def _run_index_cross_links_phase(
             client=ctx.openai_client,
             settings=ctx.settings,
             request_id=ctx.request_id,
+            parallel_pages=True,
         )
     except Exception as exc:
         raise OrchestratorStageError("index_cross_links", exc) from exc
@@ -728,7 +729,6 @@ async def _run_polyindex_phases(
         payload={"toc_json_path": str(toc_json_path)},
     )
 
-    _progress_started(ctx, PHASE_TIME_INDEX)
     time_index_path, time_index_stats = await sync_time_index_from_book_async(
         ctx.polyindex_dir,
         ctx.source_sha256,
@@ -738,6 +738,7 @@ async def _run_polyindex_phases(
         client=ctx.openai_client,
         settings=ctx.settings,
         prompt_notes=ctx.page_prompt_notes,
+        progress=ctx.progress,
     )
     _progress_completed(
         ctx,
@@ -760,7 +761,6 @@ async def _run_polyindex_phases(
         },
     )
 
-    _progress_started(ctx, PHASE_POLYINDEX_BIBLIO)
     biblio_json_path, biblio_stats, biblio_payload = await sync_polyindex_biblio_from_book(
         ctx.polyindex_dir,
         ctx.source_sha256,
@@ -772,6 +772,7 @@ async def _run_polyindex_phases(
         request_id=ctx.request_id,
         prompt_notes=ctx.page_prompt_notes,
         biblio_range_original=ctx.enriched.request.biblio_range,
+        progress=ctx.progress,
     )
     _progress_completed(
         ctx,

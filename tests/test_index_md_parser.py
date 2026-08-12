@@ -13,6 +13,8 @@ from src.ingestion.polyindex.index_md_parser import (
     parse_index_md_with_skipped,
     sort_index_md_body,
     write_skipped_lines_report,
+    join_split_index_lines,
+    _try_split_label_and_pages,
 )
 from src.models.request import PageRange, UsefulPagesEnumeration
 
@@ -143,7 +145,7 @@ class TestParseIndexMd(unittest.TestCase):
         mock_log.assert_called_once_with(
             WARNING_LOG_LEVEL,
             "index subject page not in mapping",
-            {"line": "Soggetto, 5, 999", "original_page": 999},
+            {"line": "Soggetto, 5, 999", "aligned_page": 999},
         )
 
     def test_skips_subject_when_all_pages_unmapped(self) -> None:
@@ -164,8 +166,8 @@ class TestParseIndexMd(unittest.TestCase):
         self.assertEqual(len(subjects), 1)
         self.assertEqual(subjects[0].raw_label, "Roma")
 
-    def test_page_offset_maps_to_aligned_pages(self) -> None:
-        index_path = _write_index(self.tmp, ["Milano, 4"])
+    def test_aligned_index_pages_map_to_original(self) -> None:
+        index_path = _write_index(self.tmp, ["Milano, 104"])
         subjects = parse_index_md(index_path, _enumeration(page_count=10, page_offset=100))
 
         self.assertEqual(subjects[0].original_pages, [4])
@@ -185,6 +187,14 @@ class TestParseIndexMd(unittest.TestCase):
         self.assertEqual(len(subjects), 1)
         self.assertEqual(subjects[0].raw_label, "Foro Romano")
         self.assertEqual(subjects[0].original_pages, [7, 9])
+
+    def test_join_split_index_lines_merges_label_and_pages(self) -> None:
+        raw = "Abbazia delle Tre Fontane,\n693-695\nAccademie\n"
+        joined = join_split_index_lines(raw)
+        split = _try_split_label_and_pages("Abbazia delle Tre Fontane, 693-695")
+        self.assertIsNotNone(split)
+        self.assertIn("Abbazia delle Tre Fontane, 693-695", joined)
+        self.assertIn("Accademie", joined)
 
     def test_skipped_lines_are_reported_with_reason(self) -> None:
         index_path = _write_index(

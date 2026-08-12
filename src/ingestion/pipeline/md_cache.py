@@ -23,6 +23,26 @@ def stage_md_cached_model(first_line: str) -> str | None:
     return line[len(MARKER_PREFIX) : -4]
 
 
+def split_stage_md_marker(raw: str) -> tuple[str | None, str]:
+    if not raw.strip():
+        return None, raw
+    if "\n" in raw:
+        first, body = raw.split("\n", 1)
+    else:
+        first, body = raw, ""
+    model = stage_md_cached_model(first.strip())
+    if model is not None:
+        return model, body
+    return None, raw
+
+
+def strip_stage_md_marker(raw: str) -> str:
+    model, body = split_stage_md_marker(raw)
+    if model is not None:
+        return body
+    return raw
+
+
 def read_stage_md(md_path: Path, model: str) -> str | None:
     """Return the cached body if the file was produced by `model`.
 

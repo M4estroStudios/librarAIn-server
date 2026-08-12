@@ -439,3 +439,33 @@ class TestSyncTimeIndexFromBook(unittest.TestCase):
         self.assertIn("inizi del Quattrocento", data["years"])
         self.assertIn("1400", data["years"])
         self.assertIn("1424", data["years"])
+
+    def test_progress_emits_one_step_per_page(self) -> None:
+        book = self._make_book(
+            SHA_A,
+            "libro-a",
+            {
+                1: "Nel 1848 scoppiarono i moti.",
+                2: "Testo senza riferimenti temporali.",
+                3: "Il 12 marzo 1848 la città insorse.",
+            },
+        )
+        events: list[dict] = []
+        path, stats = sync_time_index_from_book(
+            self.polyindex_dir,
+            SHA_A,
+            book,
+            book_title="Libro A",
+            settings=_settings(TIME_INDEX_USE_LLM=False),
+            progress=events.append,
+        )
+        self.assertTrue(path.is_file())
+        self.assertEqual(stats["n_pages_scanned"], 3)
+        started = [e for e in events if e.get("status") == "started"]
+        page_steps = [e for e in events if e.get("status") == "page_progress"]
+        self.assertEqual(len(started), 1)
+        self.assertEqual(started[0]["page_total"], 3)
+        self.assertEqual(len(page_steps), 3)
+        self.assertEqual(page_steps[0]["page_total"], 3)
+        self.assertEqual({e["aligned_page"] for e in page_steps}, {1, 2, 3})
+        self.assertTrue(all(e.get("counts_as_step") for e in page_steps))

@@ -7,6 +7,7 @@ from pathlib import Path
 from src.core.log import INFO_LOG_LEVEL, WARNING_LOG_LEVEL, Log
 from src.core.parallel import parallel_map
 from src.ingestion.markdown_artifacts import clean_markdown_channel_artifacts
+from src.ingestion.pipeline.md_cache import strip_stage_md_marker
 from src.search.request_schema import DEFAULT_MAX_BOOKS, DEFAULT_MAX_PAGES_PER_BOOK
 
 _TRUNCATION_SUFFIX = "\n\n[… contenuto troncato …]\n"
@@ -70,7 +71,7 @@ def _truncate_markdown(text: str, max_chars: int) -> tuple[str, bool]:
 
 
 def _normalize_markdown(text: str) -> str:
-    cleaned = clean_markdown_channel_artifacts(text)
+    cleaned = clean_markdown_channel_artifacts(strip_stage_md_marker(text))
     return cleaned.strip()
 
 

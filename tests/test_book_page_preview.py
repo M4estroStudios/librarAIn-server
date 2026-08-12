@@ -157,7 +157,7 @@ class TestBookPagePreview(unittest.TestCase):
         stage3 = self.data_root / "tmp" / sha / "stage3Editor" / f"p.0002.{slug}.md"
         output = self.data_root / "output" / sha / "pages" / f"p.0002.{slug}.md"
         self.assertEqual(stage3.read_text(encoding="utf-8"), "<!-- librarain:model=manual-review -->\nfinal text")
-        self.assertEqual(output.read_text(encoding="utf-8"), "<!-- librarain:model=manual-review -->\nfinal text")
+        self.assertEqual(output.read_text(encoding="utf-8"), "final text\n")
         self.assertEqual(list_pending_review_pages(self.data_root, sha), [])
         clear_page_pending_review(self.data_root, sha, 99)
 

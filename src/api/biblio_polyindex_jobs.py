@@ -15,16 +15,23 @@ from src.api.biblio_handlers import (
     run_biblio_only_job,
 )
 from src.core.hashing import new_job_id, validate_source_sha256
-from src.core.log import INFO_LOG_LEVEL, Log
+from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
 from src.core.openai_client import build_openai_client, use_compute_mode
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
-from src.ingestion.index_cross_links import apply_index_cross_links
+from src.ingestion.index_cross_links import apply_index_cross_links, book_index_json_path
+from src.ingestion.output_writer import load_book_index_document, stamp_page_metadata
 from src.ingestion.pdf_alignment import build_page_removal_mapping
 from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
 from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
-from src.ingestion.polyindex.toc_json import sync_polyindex_toc_from_book
-from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
+from src.ingestion.polyindex.toc_json import parse_chapters_from_toc_md, sync_polyindex_toc_from_book
+from src.ingestion.progress import (
+    STATUS_DONE,
+    STATUS_ERROR,
+    STATUS_STARTED,
+    ProgressReporter,
+    make_event,
+)
 from src.ingestion.toc_builder import build_toc_md
 from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
 from src.models.request import PageRange, UsefulPagesEnumeration
@@ -42,7 +49,7 @@ POLYINDEX_RERUN_STAGES = frozenset(
 
 STAGE_JOB_KIND = {
     "polyindex_toc": "biblio",
-    "polyindex_index": "ingest",
+    "polyindex_index": "biblio",
     "time_index": "biblio",
     "polyindex_biblio": "biblio",
 }
@@ -135,6 +142,8 @@ async def _regenerate_index_md(
     settings: Settings,
     request_id: str,
     prompt_notes: str | None,
+    progress: ProgressReporter | None = None,
+    max_subjects: int | None = None,
 ) -> Path:
     index_md = build_index_md(ctx["book_output"], ctx["useful"])
     index_md = await refine_index_md(
@@ -153,7 +162,22 @@ async def _regenerate_index_md(
         client=client,
         settings=settings,
         request_id=request_id,
+        progress=progress,
+        max_subjects=max_subjects,
+        parallel_pages=True,
     )
+    toc_md_path = ctx["book_output"].output_dir / "TOC.md"
+    if toc_md_path.is_file():
+        chapters = parse_chapters_from_toc_md(toc_md_path, ctx["useful"])
+        index_document = load_book_index_document(
+            book_index_json_path(ctx["book_output"].output_dir, ctx["book_output"].slug)
+        )
+        stamp_page_metadata(
+            ctx["book_output"],
+            chapters,
+            index_document,
+            request_id=request_id,
+        )
     build_book_md(ctx["book_output"], ctx["useful"])
     return index_md
 
@@ -205,6 +229,58 @@ def run_polyindex_toc_job(
     }
 
 
+def run_index_cross_links_only_job(
+    data_root: Path,
+    settings: Settings,
+    source_sha256: str,
+    *,
+    client: openai.OpenAI | None = None,
+    request_id: str = "",
+    max_subjects: int | None = None,
+    parallel_pages: bool = True,
+    progress: ProgressReporter | None = None,
+) -> dict[str, Any]:
+    ctx = _load_book_context(data_root, source_sha256)
+    index_md = ctx["book_output"].output_dir / "INDEX.md"
+    if not index_md.is_file():
+        raise BiblioJobError("INDEX.md missing")
+    openai_client = client or build_openai_client(settings)
+    rid = request_id or ctx["sha"]
+    stats = _run_async(
+        apply_index_cross_links(
+            index_md,
+            ctx["book_output"],
+            ctx["useful"],
+            client=openai_client,
+            settings=settings,
+            request_id=rid,
+            progress=progress,
+            max_subjects=max_subjects,
+            parallel_pages=parallel_pages,
+        )
+    )
+    Log(
+        INFO_LOG_LEVEL,
+        "index cross links only job completed",
+        {
+            "source_sha256": ctx["sha"][:16],
+            "max_subjects": max_subjects,
+            "parallel_pages": parallel_pages,
+            **stats,
+        },
+    )
+    return {
+        "ok": True,
+        "stage": "polyindex_index",
+        "cross_links_only": True,
+        "source_sha256": ctx["sha"],
+        "index_md_path": str(index_md),
+        "max_subjects": max_subjects,
+        "parallel_pages": parallel_pages,
+        **stats,
+    }
+
+
 def run_polyindex_index_job(
     data_root: Path,
     settings: Settings,
@@ -213,10 +289,17 @@ def run_polyindex_index_job(
     client: openai.OpenAI | None = None,
     request_id: str = "",
     prompt_notes: str | None = None,
+    progress: ProgressReporter | None = None,
+    max_subjects: int | None = None,
 ) -> dict[str, Any]:
     ctx = _load_book_context(data_root, source_sha256)
     openai_client = client or build_openai_client(settings)
     rid = request_id or ctx["sha"]
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex index job regenerate start",
+        {"source_sha256": ctx["sha"][:16], "request_id": rid},
+    )
     index_md = _run_async(
         _regenerate_index_md(
             ctx,
@@ -225,10 +308,21 @@ def run_polyindex_index_job(
             settings=settings,
             request_id=rid,
             prompt_notes=prompt_notes,
+            progress=progress,
+            max_subjects=max_subjects,
         )
     )
     reicat = ctx["manifest"].get("reicat") if isinstance(ctx["manifest"].get("reicat"), dict) else {}
     book_title = str(reicat.get("title") or reicat.get("titolo") or "") or None
+    Log(
+        INFO_LOG_LEVEL,
+        "polyindex index job sync start",
+        {
+            "source_sha256": ctx["sha"][:16],
+            "request_id": rid,
+            "index_md_path": str(index_md),
+        },
+    )
     path, stats = sync_polyindex_index_from_book(
         data_root / "polyindex",
         ctx["sha"],
@@ -261,6 +355,7 @@ def run_polyindex_time_index_job(
     client: openai.OpenAI | None = None,
     request_id: str = "",
     prompt_notes: str | None = None,
+    progress: ProgressReporter | None = None,
 ) -> dict[str, Any]:
     ctx = _load_book_context(data_root, source_sha256)
     openai_client = client or build_openai_client(settings)
@@ -280,6 +375,7 @@ def run_polyindex_time_index_job(
             client=openai_client,
             settings=settings,
             prompt_notes=prompt_notes,
+            progress=progress,
         )
     )
     Log(INFO_LOG_LEVEL, "polyindex time-index-only job completed", {"source_sha256": ctx["sha"][:16], **stats})
@@ -302,6 +398,9 @@ def run_polyindex_stage_job(
     client: openai.OpenAI | None = None,
     request_id: str = "",
     prompt_notes: str | None = None,
+    progress: ProgressReporter | None = None,
+    cross_links_only: bool = False,
+    cross_link_max_subjects: int | None = None,
 ) -> dict[str, Any]:
     stage_key = (stage or "").strip()
     if stage_key not in POLYINDEX_RERUN_STAGES:
@@ -318,6 +417,16 @@ def run_polyindex_stage_job(
             prompt_notes=prompt_notes,
         )
     if stage_key == "polyindex_index":
+        if cross_links_only:
+            return run_index_cross_links_only_job(
+                data_root,
+                settings,
+                source_sha256,
+                client=client,
+                request_id=request_id,
+                max_subjects=cross_link_max_subjects,
+                progress=progress,
+            )
         return run_polyindex_index_job(
             data_root,
             settings,
@@ -325,6 +434,8 @@ def run_polyindex_stage_job(
             client=client,
             request_id=request_id,
             prompt_notes=prompt_notes,
+            progress=progress,
+            max_subjects=cross_link_max_subjects,
         )
     if stage_key == "time_index":
         return run_polyindex_time_index_job(
@@ -334,6 +445,7 @@ def run_polyindex_stage_job(
             client=client,
             request_id=request_id,
             prompt_notes=prompt_notes,
+            progress=progress,
         )
     if biblio_range is None:
         raise BiblioJobError("biblio_range is required for polyindex_biblio")
@@ -345,9 +457,51 @@ def run_polyindex_stage_job(
         client=client,
         request_id=request_id,
         prompt_notes=prompt_notes,
+        progress=progress,
     )
     result["stage"] = "polyindex_biblio"
     return result
+
+
+def try_handle_polyindex_preflight_get(
+    path: str,
+    handler,
+    *,
+    data_root: Path,
+    send_json,
+    query: dict[str, list[str]] | None = None,
+    settings: Settings | None = None,
+) -> bool:
+    from urllib.parse import urlparse
+    from src.ingestion.index_cross_links_preflight import run_index_cross_links_preflight
+
+    route = urlparse(path if "://" in path else f"http://x{path}").path
+    if route != "/api/admin/biblio/polyindex/preflight":
+        return False
+    if query is None:
+        from urllib.parse import parse_qs, urlparse as up
+
+        query = parse_qs(up(path if "://" in path else f"http://x{path}").query)
+    source_sha256 = (query.get("source_sha256") or [""])[0].strip()
+    if not source_sha256:
+        send_json(handler, 400, {"ok": False, "error": "source_sha256 is required"})
+        return True
+    from src.core.config import load_settings
+
+    preflight_settings = settings or load_settings()
+    try:
+        result = _run_async(
+            run_index_cross_links_preflight(
+                data_root,
+                preflight_settings,
+                source_sha256,
+            )
+        )
+    except Exception as exc:
+        send_json(handler, 500, {"ok": False, "error": str(exc)})
+        return True
+    send_json(handler, 200, {"ok": bool(result.get("ok")), **result})
+    return True
 
 
 def try_handle_polyindex_run_post(
@@ -388,6 +542,13 @@ def try_handle_polyindex_run_post(
                 end=int(range_raw.get("end")),
             )
         compute_mode = normalize_compute_mode(payload.get("compute_mode"))
+        cross_links_only = bool(payload.get("cross_links_only"))
+        cross_link_max_subjects_raw = payload.get("cross_link_max_subjects")
+        cross_link_max_subjects = None
+        if cross_link_max_subjects_raw is not None:
+            cross_link_max_subjects = int(cross_link_max_subjects_raw)
+            if cross_link_max_subjects < 1:
+                raise ValueError("cross_link_max_subjects must be >= 1")
     except Exception as exc:
         send_json(handler, 400, {"ok": False, "error": str(exc)})
         return True
@@ -410,6 +571,11 @@ def try_handle_polyindex_run_post(
     job_id, _ = new_job_id(f"{source_sha256[:16]}_{stage}")
     registry.create_job(job_id=job_id, job_kind=job_kind, compute_mode=compute_mode)
 
+    prompt_notes_raw = payload.get("prompt_notes")
+    prompt_notes = str(prompt_notes_raw).strip() if prompt_notes_raw else None
+    if prompt_notes == "":
+        prompt_notes = None
+
     def _poly_worker() -> None:
         acquired = job_semaphore.acquire(blocking=False)
         if not acquired:
@@ -418,6 +584,13 @@ def try_handle_polyindex_run_post(
                 make_event("queue", "progress", message="waiting for a free ingest slot"),
             )
             job_semaphore.acquire()
+
+        def progress(ev: dict[str, Any]) -> None:
+            page_total = ev.get("page_total")
+            if ev.get("status") == STATUS_STARTED and page_total is not None:
+                registry.set_global_total(job_id, max(1, int(page_total)))
+            registry.emit(job_id, ev)
+
         try:
             registry.emit(
                 job_id,
@@ -437,7 +610,12 @@ def try_handle_polyindex_run_post(
                     source_sha256,
                     stage,
                     biblio_range=biblio_range,
+                    client=build_openai_client(job_settings),
                     request_id=job_id,
+                    prompt_notes=prompt_notes,
+                    progress=progress,
+                    cross_links_only=cross_links_only,
+                    cross_link_max_subjects=cross_link_max_subjects,
                 )
             registry.emit(
                 job_id,
@@ -449,6 +627,18 @@ def try_handle_polyindex_run_post(
                 ),
             )
         except Exception as exc:
+            Log(
+                ERROR_LOG_LEVEL,
+                "biblio polyindex job failed",
+                {
+                    "stage": stage,
+                    "job_id": job_id,
+                    "source_sha256": source_sha256[:16],
+                    "compute_mode": compute_mode,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                },
+            )
             registry.emit(
                 job_id,
                 make_event(

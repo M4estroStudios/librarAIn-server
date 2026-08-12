@@ -6,7 +6,11 @@ from typing import Any
 
 from src.core.hashing import compute_file_sha256, validate_source_sha256
 from src.ingestion.pipeline.render import DEFAULT_RENDER_DPI, _render_pdf_page_to_png
-from src.ingestion.pipeline.md_cache import stage_md_cached_model, write_stage_md
+from src.ingestion.pipeline.md_cache import (
+    split_stage_md_marker,
+    stage_md_cached_model,
+    write_stage_md,
+)
 from src.persistence.book_pages_audit import _load_manifest, _stage_page_path
 
 _TRANSCRIPT_STAGE_ORDER = ("output", "stage3Editor", "stage1OCR")
@@ -134,16 +138,8 @@ def _atomic_write_text(path: Path, text: str) -> None:
 
 
 def _split_model_marker(raw: str) -> tuple[str, str | None]:
-    if not raw:
-        return raw, None
-    if "\n" in raw:
-        first, body = raw.split("\n", 1)
-    else:
-        first, body = raw, ""
-    model = stage_md_cached_model(first.strip())
-    if model is not None:
-        return body, model
-    return raw, None
+    model, body = split_stage_md_marker(raw)
+    return body, model
 
 
 def _read_cached_model(path: Path) -> str | None:
@@ -323,7 +319,7 @@ def confirm_page_transcript(
     stage3_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     write_stage_md(stage3_path, model, body)
-    write_stage_md(output_path, model, body)
+    _atomic_write_text(output_path, body)
     from src.ingestion.output_writer import (
         _atomic_write_bytes,
         _manifest_core,

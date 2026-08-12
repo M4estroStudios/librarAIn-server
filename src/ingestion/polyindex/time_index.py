@@ -14,6 +14,13 @@ from src.ingestion.polyindex.file_lock import polyindex_dir_lock
 from src.ingestion.polyindex.time_extract import extract_time_references
 from src.ingestion.polyindex.time_index_llm import extract_time_references_for_page
 from src.ingestion.polyindex.time_sort import _date_sort_key, _year_sort_key
+from src.ingestion.progress import (
+    PHASE_TIME_INDEX,
+    STATUS_PAGE_PROGRESS,
+    STATUS_STARTED,
+    ProgressReporter,
+    make_event,
+)
 from src.models.settings import Settings
 
 SCHEMA_VERSION = "1.0"
@@ -287,6 +294,7 @@ def sync_time_index_from_book(
     client: openai.OpenAI | None = None,
     settings: Settings | None = None,
     prompt_notes: str | None = None,
+    progress: ProgressReporter | None = None,
 ) -> tuple[Path, dict[str, Any]]:
     return asyncio.run(
         sync_time_index_from_book_async(
@@ -298,6 +306,7 @@ def sync_time_index_from_book(
             client=client,
             settings=settings,
             prompt_notes=prompt_notes,
+            progress=progress,
         )
     )
 
@@ -312,10 +321,31 @@ async def sync_time_index_from_book_async(
     client: openai.OpenAI | None = None,
     settings: Settings | None = None,
     prompt_notes: str | None = None,
+    progress: ProgressReporter | None = None,
 ) -> tuple[Path, dict[str, Any]]:
     time_index_path = polyindex_dir / "TIME_INDEX.json"
     book_time_index_path = book_time_index_json_path(
         book_output.output_dir, book_output.slug
+    )
+
+    def emit(status: str, *, counts_as_step: bool = False, **fields: Any) -> None:
+        if progress is None:
+            return
+        progress(
+            make_event(
+                PHASE_TIME_INDEX,
+                status,
+                counts_as_step=counts_as_step,
+                **fields,
+            )
+        )
+
+    pages = list(book_output.pages)
+    page_total = max(1, len(pages))
+    emit(
+        STATUS_STARTED,
+        page_total=page_total,
+        message=f"TIME_INDEX su {len(pages)} pagine",
     )
 
     page_refs: list[tuple[int, int, set[str], set[str], dict[str, list[str]]]] = []
@@ -325,6 +355,8 @@ async def sync_time_index_from_book_async(
         if settings is not None
         else asyncio.Semaphore(1)
     )
+    step = 0
+    step_lock = asyncio.Lock()
 
     async def _scan_page(
         page: BookPageOutput,
@@ -347,9 +379,36 @@ async def sync_time_index_from_book_async(
             return None
         return page.aligned, page.original, years, dates, via, used_llm
 
-    scan_results = await asyncio.gather(
-        *(_scan_page(page) for page in book_output.pages)
-    )
+    async def _guarded(
+        page: BookPageOutput,
+    ) -> tuple[int, int, set[str], set[str], dict[str, list[str]], bool] | None:
+        nonlocal step
+        result = await _scan_page(page)
+        async with step_lock:
+            step += 1
+            emit(
+                STATUS_PAGE_PROGRESS,
+                counts_as_step=True,
+                page_index=step,
+                page_total=page_total,
+                aligned_page=page.aligned,
+                message=f"TIME_INDEX pagina {page.aligned}",
+            )
+        return result
+
+    if not pages:
+        emit(
+            STATUS_PAGE_PROGRESS,
+            counts_as_step=True,
+            page_index=1,
+            page_total=page_total,
+            message="TIME_INDEX: nessuna pagina",
+        )
+        scan_results: list[
+            tuple[int, int, set[str], set[str], dict[str, list[str]], bool] | None
+        ] = []
+    else:
+        scan_results = list(await asyncio.gather(*(_guarded(page) for page in pages)))
     for result in scan_results:
         if result is None:
             continue

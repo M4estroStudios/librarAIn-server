@@ -13,6 +13,7 @@ from src.api.prompts_http import snapshot_book_prompts
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log
 from src.core.text import slugify as _slugify
 from src.ingestion.markdown_artifacts import clean_markdown_channel_artifacts
+from src.ingestion.pipeline.md_cache import strip_stage_md_marker
 from src.ingestion.pipeline.stage3 import Stage3Result
 from src.models.polyindex_index import BookIndexDocument
 from src.models.polyindex_toc import PolyindexTocChapter
@@ -58,7 +59,7 @@ def _atomic_copy_or_skip(source: Path, dest: Path) -> bool:
     if not source.is_file():
         raise FileNotFoundError(f"stage3 md not found: {source}")
     raw_text = source.read_text(encoding="utf-8")
-    cleaned_text = clean_markdown_channel_artifacts(raw_text)
+    cleaned_text = clean_markdown_channel_artifacts(strip_stage_md_marker(raw_text))
     if not cleaned_text.endswith("\n"):
         cleaned_text += "\n"
     content = cleaned_text.encode("utf-8")
@@ -105,7 +106,7 @@ def split_page_frontmatter(text: str) -> tuple[str | None, str]:
 
 def strip_page_frontmatter(text: str) -> str:
     _frontmatter, body = split_page_frontmatter(text)
-    return body
+    return strip_stage_md_marker(body)
 
 
 def _yaml_scalar(value: str) -> str:
@@ -132,8 +133,50 @@ def _find_chapter_for_page(
     return None
 
 
-def _subject_linked_in_body(body: str, key: str) -> bool:
-    return f"INDEX.md#{key}" in body or f'<a id="{key}"></a>' in body
+_SUBJECT_PAGE_LINK = re.compile(
+    r"\[([^\]]+)\]\((?:<)?((?:\.\./)?(?:pages/)?p\.\d{4}\.[^)>]+\.md)(?:>)?\)"
+)
+
+
+def _subject_linked_in_body(body: str, label: str) -> bool:
+    label_cf = " ".join(label.split()).casefold()
+    for match in _SUBJECT_PAGE_LINK.finditer(body):
+        text_cf = " ".join(match.group(1).split()).casefold()
+        if text_cf == label_cf:
+            return True
+    return False
+
+
+def normalize_page_md_href(href: str) -> str:
+    clean = str(href or "").strip().strip("<>")
+    name = Path(clean.replace("\\", "/")).name
+    return name or clean
+
+
+def unwrap_links_to_page_hrefs(body: str, hrefs: set[str] | list[str]) -> str:
+    targets = {normalize_page_md_href(href) for href in hrefs if href}
+    if not targets:
+        return body
+    pieces: list[str] = []
+    cursor = 0
+    for match in _SUBJECT_PAGE_LINK.finditer(body):
+        pieces.append(body[cursor : match.start()])
+        if normalize_page_md_href(match.group(2)) in targets:
+            pieces.append(match.group(1))
+        else:
+            pieces.append(match.group(0))
+        cursor = match.end()
+    pieces.append(body[cursor:])
+    return "".join(pieces)
+
+
+def linked_visible_texts_for_page_href(body: str, href: str) -> list[str]:
+    target = normalize_page_md_href(href)
+    texts: list[str] = []
+    for match in _SUBJECT_PAGE_LINK.finditer(body):
+        if normalize_page_md_href(match.group(2)) == target:
+            texts.append(match.group(1))
+    return texts
 
 
 def _append_connection_entries(lines: list[str], entries: list[str]) -> None:
@@ -144,15 +187,42 @@ def _append_connection_entries(lines: list[str], entries: list[str]) -> None:
         lines.append(f"    - {_yaml_scalar(entry)}")
 
 
+@dataclass
+class IndexConnectionReport:
+    success_regex: list[str]
+    success_ai: list[str]
+    failed_regex: list[str]
+    failed_ai: list[str]
+    regex_resolved_labels: list[str]
+
+    @classmethod
+    def empty(cls) -> IndexConnectionReport:
+        return cls([], [], [], [], [])
+
+
+def _append_connection_bucket(lines: list[str], name: str, entries: list[str]) -> None:
+    lines.append(f"    {name}:")
+    _append_connection_entries(lines, entries)
+
+
 def build_page_frontmatter(
     *,
     aligned_page: int,
     original_page: int,
     chapter_number: str | None,
     chapter_name: str | None,
-    index_success: list[str],
-    index_failed: list[str],
+    index_connections: IndexConnectionReport | None = None,
+    index_success: list[str] | None = None,
+    index_failed: list[str] | None = None,
 ) -> str:
+    if index_connections is None:
+        index_connections = IndexConnectionReport(
+            success_regex=list(index_success or []),
+            success_ai=[],
+            failed_regex=[],
+            failed_ai=list(index_failed or []),
+            regex_resolved_labels=[],
+        )
     lines = [
         _FRONTMATTER_FENCE,
         f"aligned_page: {aligned_page}",
@@ -163,11 +233,54 @@ def build_page_frontmatter(
         lines.append(f"chapter_name: {_yaml_scalar(chapter_name)}")
     lines.append("index_connections:")
     lines.append("  success:")
-    _append_connection_entries(lines, index_success)
+    _append_connection_bucket(lines, "regex", index_connections.success_regex)
+    _append_connection_bucket(lines, "ai", index_connections.success_ai)
     lines.append("  failed:")
-    _append_connection_entries(lines, index_failed)
+    _append_connection_bucket(lines, "regex", index_connections.failed_regex)
+    _append_connection_bucket(lines, "ai", index_connections.failed_ai)
     lines.append(_FRONTMATTER_FENCE)
     return "\n".join(lines) + "\n"
+
+
+def _parse_chapter_fields_from_frontmatter(frontmatter: str | None) -> tuple[str | None, str | None]:
+    if not frontmatter:
+        return None, None
+    chapter_number: str | None = None
+    chapter_name: str | None = None
+    for line in frontmatter.splitlines():
+        if line.startswith("chapter_number:"):
+            raw = line.split(":", 1)[1].strip()
+            try:
+                chapter_number = json.loads(raw)
+            except json.JSONDecodeError:
+                chapter_number = raw.strip('"')
+        elif line.startswith("chapter_name:"):
+            raw = line.split(":", 1)[1].strip()
+            try:
+                chapter_name = json.loads(raw)
+            except json.JSONDecodeError:
+                chapter_name = raw.strip('"')
+    return chapter_number, chapter_name
+
+
+def merge_page_index_connections(
+    original_text: str,
+    *,
+    aligned_page: int,
+    original_page: int,
+    index_connections: IndexConnectionReport,
+) -> str:
+    fm, body = split_page_frontmatter(original_text)
+    chapter_number, chapter_name = _parse_chapter_fields_from_frontmatter(fm)
+    frontmatter = build_page_frontmatter(
+        aligned_page=aligned_page,
+        original_page=original_page,
+        chapter_number=chapter_number,
+        chapter_name=chapter_name,
+        index_connections=index_connections,
+    )
+    body = body if body.endswith("\n") else body + "\n"
+    return frontmatter + body.lstrip("\n")
 
 
 def load_book_index_document(path: Path) -> BookIndexDocument:
@@ -203,22 +316,20 @@ def stamp_page_metadata(
             position, chapter = found
             chapter_number, chapter_name = _chapter_number_and_name(chapter.label, position)
         subject_keys = index_document.page_subjects.get(str(page.aligned), [])
-        index_success: list[str] = []
-        index_failed: list[str] = []
+        index_connections = IndexConnectionReport.empty()
         for key in subject_keys:
             entry = index_document.subjects.get(key)
             label = entry.canonical_label if entry is not None else key
-            if _subject_linked_in_body(body, key):
-                index_success.append(label)
+            if _subject_linked_in_body(body, label):
+                index_connections.success_regex.append(label)
             else:
-                index_failed.append(label)
+                index_connections.failed_ai.append(label)
         frontmatter = build_page_frontmatter(
             aligned_page=page.aligned,
             original_page=page.original,
             chapter_number=chapter_number,
             chapter_name=chapter_name,
-            index_success=index_success,
-            index_failed=index_failed,
+            index_connections=index_connections,
         )
         updated = frontmatter + body
         if not updated.endswith("\n"):
@@ -251,22 +362,31 @@ def materialize_book_pages(
     manifest_path = output_dir / "manifest.json"
 
     sorted_pages = sorted(stage3_result.pages, key=lambda page: page.aligned_page)
-    expected_aligned = int(useful_pages.aligned_page_count)
-    if len(sorted_pages) != expected_aligned:
+    expected_aligned = sorted(
+        useful_pages.original_page_to_aligned_page[orig]
+        for orig in useful_pages.useful_original_pages
+        if orig in useful_pages.original_page_to_aligned_page
+    )
+    got_aligned = {page.aligned_page for page in sorted_pages}
+    missing_aligned = [aligned for aligned in expected_aligned if aligned not in got_aligned]
+    if missing_aligned or len(sorted_pages) != len(expected_aligned):
+        sample = ", ".join(str(p) for p in missing_aligned[:12])
+        more = f" (+{len(missing_aligned) - 12} more)" if len(missing_aligned) > 12 else ""
         Log(
             ERROR_LOG_LEVEL,
-            "output_writer page count mismatch vs aligned_page_count",
+            "output_writer page count mismatch vs useful pages",
             {
                 "request_id": request_id,
                 "source_sha256": source_sha256[:16],
                 "stage3_pages": len(sorted_pages),
-                "aligned_page_count": expected_aligned,
-                "missing_aligned": list(stage3_result.missing or []),
+                "expected_pages": len(expected_aligned),
+                "missing_aligned": missing_aligned[:32],
             },
         )
         raise ValueError(
             "stage3 page count "
-            f"({len(sorted_pages)}) does not match aligned_page_count ({expected_aligned})"
+            f"({len(sorted_pages)}) does not match useful page count ({len(expected_aligned)}); "
+            f"missing aligned pages: [{sample}{more}]"
         )
 
     book_pages: list[BookPageOutput] = []
@@ -314,7 +434,7 @@ def materialize_book_pages(
         "source_sha256": source_sha256,
         "slug": slug,
         "original_page_count": useful_pages.original_page_count,
-        "aligned_page_count": expected_aligned,
+        "aligned_page_count": useful_pages.aligned_page_count,
         "pages_to_remove": list(enriched.request.pages_to_remove),
         "toc_range": enriched.request.toc_range.model_dump(),
         "index_range": enriched.request.index_range.model_dump(),

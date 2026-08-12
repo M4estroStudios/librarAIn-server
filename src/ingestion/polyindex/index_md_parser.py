@@ -119,6 +119,35 @@ def _try_parse_vedi_line(stripped: str) -> tuple[str, str] | None:
     return source, target
 
 
+def join_split_index_lines(text: str) -> str:
+    lines = text.splitlines()
+    if not lines:
+        return text
+    merged: list[str] = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        stripped = strip_index_cross_link_markup(line).strip()
+        if i + 1 < len(lines):
+            next_stripped = strip_index_cross_link_markup(lines[i + 1]).strip()
+            if (
+                stripped.endswith(",")
+                and not re.search(r"\d", stripped)
+                and _parse_original_pages(next_stripped)
+            ):
+                prefix = line[: len(line) - len(line.lstrip())]
+                label = stripped.rstrip(",").strip()
+                merged.append(f"{prefix}{label}, {next_stripped}")
+                i += 2
+                continue
+        merged.append(line)
+        i += 1
+    body = "\n".join(merged)
+    if text.endswith("\n") and not body.endswith("\n"):
+        body += "\n"
+    return body
+
+
 def _try_split_label_and_pages(stripped: str) -> tuple[str, str] | None:
     for separator in (f" {EM_DASH} ", EM_DASH, f" {EN_DASH} ", EN_DASH):
         if separator not in stripped:
@@ -159,21 +188,22 @@ def _try_split_label_and_pages(stripped: str) -> tuple[str, str] | None:
     return None
 
 
-def _map_original_to_aligned(
-    original_pages: list[int],
-    mapping: dict[int, int],
+def _map_index_pages(
+    index_pages: list[int],
+    aligned_to_original: dict[int, int],
     line: str,
 ) -> tuple[list[int], list[int]] | None:
-    original_sorted = _dedupe_sort_pages(original_pages)
+    # INDEX cites aligned pages (post-removal book pagination).
+    aligned_sorted = _dedupe_sort_pages(index_pages)
     original_out: list[int] = []
     aligned_out: list[int] = []
-    for original_page in original_sorted:
-        aligned_page = mapping.get(original_page)
-        if aligned_page is None:
+    for aligned_page in aligned_sorted:
+        original_page = aligned_to_original.get(aligned_page)
+        if original_page is None:
             Log(
                 WARNING_LOG_LEVEL,
                 "index subject page not in mapping",
-                {"line": line, "original_page": original_page},
+                {"line": line, "aligned_page": aligned_page},
             )
             continue
         original_out.append(original_page)
@@ -251,7 +281,7 @@ def parse_index_md_with_skipped(
     useful_pages_enumeration: UsefulPagesEnumeration,
 ) -> tuple[list[RawSubject], list[SkippedIndexLine]]:
     text = index_md_path.read_text(encoding="utf-8")
-    mapping = useful_pages_enumeration.original_page_to_aligned_page
+    mapping = useful_pages_enumeration.aligned_page_to_original_page
     subjects: list[RawSubject] = []
     skipped: list[SkippedIndexLine] = []
 
@@ -282,14 +312,14 @@ def parse_index_md_with_skipped(
             continue
 
         raw_label, pages_part = label_and_pages
-        original_pages = _parse_original_pages(pages_part)
-        if not original_pages:
+        index_pages = _parse_original_pages(pages_part)
+        if not index_pages:
             skipped.append(
                 SkippedIndexLine(line=stripped, reason="no_parsable_pages")
             )
             continue
 
-        mapped = _map_original_to_aligned(original_pages, mapping, stripped)
+        mapped = _map_index_pages(index_pages, mapping, stripped)
         if mapped is None:
             skipped.append(
                 SkippedIndexLine(line=stripped, reason="all_pages_out_of_mapping")
