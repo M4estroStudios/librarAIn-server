@@ -8,6 +8,7 @@ from src.api.ingest_pipeline_runner import (
     _emit,
     _emit_error,
     _extract_validation_error,
+    build_pipeline_skipped_payload,
     persist_pipeline_timing,
 )
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
@@ -88,10 +89,23 @@ def run_glm_ingest_pipeline(
         ),
     )
 
+    request_id = enriched.request.request_id
+    if ingest_gate_phase.pipeline_skipped:
+        if set_global_total is not None:
+            set_global_total(0)
+        payload_out = build_pipeline_skipped_payload(
+            enriched=enriched, ingest_gate_phase=ingest_gate_phase,
+            timing=timing, pipeline_mode="glm_ocr",
+        )
+        persist_pipeline_timing(settings, request_id, timing)
+        Log(INFO_LOG_LEVEL, "glm pipeline completed (pipeline_skipped, metadata only)",
+            {"source_sha256": enriched.source_sha256[:16]})
+        return payload_out
+
     try:
         require_gpu_vram_at_pipeline_start(
             settings,
-            skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+            skip_vision_editor=False,
             ocr_backend="glm",
         )
     except IngestInputValidationException as exc:
@@ -105,13 +119,12 @@ def run_glm_ingest_pipeline(
         )
         raise
 
-    alignment_counts_as_step = not ingest_gate_phase.pipeline_skipped
     _emit(
         reporter,
         make_event(
             PHASE_PDF_ALIGNMENT,
             STATUS_STARTED,
-            will_run=alignment_counts_as_step,
+            will_run=True,
         ),
     )
     try:
@@ -132,7 +145,7 @@ def run_glm_ingest_pipeline(
         make_event(
             PHASE_PDF_ALIGNMENT,
             STATUS_COMPLETED,
-            counts_as_step=alignment_counts_as_step,
+            counts_as_step=True,
             skipped=pdf_alignment is None,
         ),
     )
@@ -161,13 +174,10 @@ def run_glm_ingest_pipeline(
         ),
     )
 
-    page_stages = 1 if ingest_gate_phase.pipeline_skipped else _GLM_ACTIVE_PAGE_STAGES
-    alignment_step = 1 if alignment_counts_as_step else 0
-    total_steps = alignment_step + n_pages * page_stages
+    total_steps = 1 + n_pages * _GLM_ACTIVE_PAGE_STAGES
     if set_global_total is not None:
         set_global_total(total_steps)
 
-    request_id = enriched.request.request_id
     try:
         try:
             orchestrator_result = asyncio.run(
@@ -180,7 +190,7 @@ def run_glm_ingest_pipeline(
                     NullOrchestratorRegistry(),
                     request_id,
                     progress=reporter,
-                    skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+                    skip_vision_editor=False,
                     pipeline_mode="glm_ocr",
                 )
             )
@@ -227,20 +237,6 @@ def run_glm_ingest_pipeline(
             "stage3": stage3_dump,
             "timing": timing.summary(),
         }
-
-    if ingest_gate_phase.pipeline_skipped:
-        stage2_dump = stage2_result.model_dump(mode="json") if stage2_result else None
-        payload_out = _build_payload(stage2_dump, None)
-        _emit(
-            reporter,
-            make_event(
-                PHASE_STAGE1_GLM_OCR,
-                STATUS_COMPLETED,
-                timing=payload_out["timing"],
-            ),
-        )
-        persist_pipeline_timing(settings, request_id, timing)
-        return payload_out
 
     stage3_result = orchestrator_result.stage3_result
     if stage2_result is None or stage3_result is None:

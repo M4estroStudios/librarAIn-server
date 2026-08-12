@@ -85,6 +85,21 @@ def persist_pipeline_timing(
         )
 
 
+def build_pipeline_skipped_payload(
+    *, enriched: Any, ingest_gate_phase: Any, timing: PipelineTiming, pipeline_mode: str | None = None,
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "ok": True, "enriched": enriched.model_dump(mode="json", by_alias=True),
+        "ingest_gate_phase": ingest_gate_phase.model_dump(mode="json", by_alias=True),
+        "pdf_alignment": None, "useful_pages_enumeration": None,
+        "stage1": None, "stage2": None, "stage3": None,
+        "timing": timing.summary(), "pipeline_skipped": True,
+    }
+    if pipeline_mode is not None:
+        payload["pipeline_mode"] = pipeline_mode
+    return payload
+
+
 def run_full_pipeline(
     ingest_payload: dict[str, Any],
     saved_pdf_path: Path,
@@ -92,18 +107,6 @@ def run_full_pipeline(
     reporter: ProgressReporter | None,
     set_global_total: Callable[[int], None] | None,
 ) -> dict[str, Any]:
-    """Run the full ingest pipeline and return the response payload dict.
-
-    Emits structured progress events through *reporter* at every phase.
-    Calls *set_global_total* once the useful-page count is known so the
-    caller's registry can announce the total work units.
-
-    On validation / pipeline errors, emits a terminal ``error`` event and
-    raises ``IngestInputValidationException`` so the caller can clean up.
-
-    Returns the same ``payload_out`` dict that was previously returned
-    directly by the HTTP handler.
-    """
     ingest_payload = dict(ingest_payload)
     ingest_payload["source_pdf_path"] = str(saved_pdf_path)
 
@@ -135,32 +138,32 @@ def run_full_pipeline(
                                pipeline_skipped=ingest_gate_phase.pipeline_skipped,
                                gate_status=ingest_gate_phase.gate.status.value))
 
-    try:
-        require_gpu_vram_at_pipeline_start(
-            settings,
-            skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+    request_id = enriched.request.request_id
+    if ingest_gate_phase.pipeline_skipped:
+        if set_global_total is not None:
+            set_global_total(0)
+        payload_out = build_pipeline_skipped_payload(
+            enriched=enriched, ingest_gate_phase=ingest_gate_phase, timing=timing,
         )
+        persist_pipeline_timing(settings, request_id, timing)
+        Log(INFO_LOG_LEVEL, "pipeline completed (pipeline_skipped, metadata only)",
+            {"source_sha256": enriched.source_sha256[:16]})
+        return payload_out
+
+    try:
+        require_gpu_vram_at_pipeline_start(settings, skip_vision_editor=False)
     except IngestInputValidationException as exc:
         err_detail = _extract_validation_error(exc)
         Log(WARNING_LOG_LEVEL, "pipeline gpu vram preflight failed", {"error": str(exc)})
-        _emit_error(
-            reporter,
-            PHASE_STAGE1_OCR,
-            err_detail["message"],
-            code=err_detail.get("code"),
-            field=err_detail.get("field"),
-        )
+        _emit_error(reporter, PHASE_STAGE1_OCR, err_detail["message"],
+                    code=err_detail.get("code"), field=err_detail.get("field"))
         raise
 
-    alignment_counts_as_step = not ingest_gate_phase.pipeline_skipped
-    _emit(reporter, make_event(PHASE_PDF_ALIGNMENT, STATUS_STARTED,
-                               will_run=alignment_counts_as_step))
+    _emit(reporter, make_event(PHASE_PDF_ALIGNMENT, STATUS_STARTED, will_run=True))
     Log(INFO_LOG_LEVEL, "pipeline maybe_run_pdf_alignment begin")
     try:
         pdf_alignment = maybe_run_pdf_alignment(
-            enriched,
-            ingest_gate_phase,
-            settings.processed_pdf_input_dir,
+            enriched, ingest_gate_phase, settings.processed_pdf_input_dir,
             page_range_per_thread=settings.page_range_per_thread,
         )
     except (ValueError, IngestInputValidationException) as exc:
@@ -173,8 +176,7 @@ def run_full_pipeline(
     Log(INFO_LOG_LEVEL, "pipeline maybe_run_pdf_alignment done",
         {"returned_alignment": pdf_alignment is not None})
     _emit(reporter, make_event(PHASE_PDF_ALIGNMENT, STATUS_COMPLETED,
-                               counts_as_step=alignment_counts_as_step,
-                               skipped=pdf_alignment is None))
+                               counts_as_step=True, skipped=pdf_alignment is None))
 
     _emit(reporter, make_event(PHASE_PAGE_ENUMERATION, STATUS_STARTED))
     Log(INFO_LOG_LEVEL, "pipeline build_useful_pages_enumeration begin",
@@ -195,19 +197,13 @@ def run_full_pipeline(
     )
     Log(INFO_LOG_LEVEL, "pipeline build_useful_pages_enumeration done", {"n_pages": n_pages})
     _emit(reporter, make_event(
-        PHASE_PAGE_ENUMERATION,
-        STATUS_COMPLETED,
-        n_pages=n_pages,
-        aligned_useful_pages=aligned_useful_pages,
+        PHASE_PAGE_ENUMERATION, STATUS_COMPLETED,
+        n_pages=n_pages, aligned_useful_pages=aligned_useful_pages,
     ))
-
-    alignment_step = 1 if alignment_counts_as_step else 0
-    total_steps = alignment_step + n_pages * _ACTIVE_PAGE_STAGES
     if set_global_total is not None:
-        set_global_total(total_steps)
+        set_global_total(1 + n_pages * _ACTIVE_PAGE_STAGES)
 
     Log(INFO_LOG_LEVEL, "pipeline run_pipeline begin")
-    request_id = enriched.request.request_id
     try:
         try:
             orchestrator_result = asyncio.run(
@@ -220,7 +216,7 @@ def run_full_pipeline(
                     NullOrchestratorRegistry(),
                     request_id,
                     progress=reporter,
-                    skip_vision_editor=ingest_gate_phase.pipeline_skipped,
+                    skip_vision_editor=False,
                 )
             )
         except OrchestratorStageError as exc:
@@ -274,17 +270,6 @@ def run_full_pipeline(
             "stage3": stage3_dump,
             "timing": timing.summary(),
         }
-
-    if ingest_gate_phase.pipeline_skipped:
-        payload_out = _build_payload(None, None)
-        _emit(reporter, make_event(
-            PHASE_STAGE1_OCR, STATUS_COMPLETED, timing=payload_out["timing"]
-        ))
-        persist_pipeline_timing(settings, request_id, timing)
-        Log(INFO_LOG_LEVEL, "pipeline completed (pipeline_skipped)",
-            {"source_sha256": enriched.source_sha256[:16],
-             "stage1_pages": len(stage1_result.pages)})
-        return payload_out
 
     stage2_result = orchestrator_result.stage2_result
     stage3_result = orchestrator_result.stage3_result

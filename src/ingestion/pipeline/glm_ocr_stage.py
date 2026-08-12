@@ -35,6 +35,7 @@ from src.ingestion.progress import (
     STATUS_PAGE_SKIPPED,
     STATUS_STARTED,
     ProgressReporter,
+    defer_phase_progress,
     make_event,
 )
 from src.models.request import (
@@ -51,7 +52,6 @@ _PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 _GLM_OCR_PROMPT_FILE = _PROMPTS_DIR / "glm_ocr_prompt.md"
 _MAX_COMPLETION_TOKENS = 4096
 
-
 @dataclass
 class _GlmOcrWork:
     page_index: int
@@ -61,7 +61,6 @@ class _GlmOcrWork:
     md_path: Path
     png_path: Path
 
-
 @dataclass
 class _GlmOcrOutcome:
     page_index: int
@@ -70,24 +69,22 @@ class _GlmOcrOutcome:
     skipped: bool = False
     missing_original: int | None = None
     failed: bool = False
+    failed_aligned: int | None = None
     error: str | None = None
-
 
 class GlmOcrCombinedResult(BaseModel):
     stage1: Stage1Result
     stage2: Stage2Result
 
-
 def resolve_glm_ocr_model(settings: Settings) -> str:
-    explicit = (settings.ocrvision_model or settings.glm_ocr_model or "").strip()
-    if explicit:
-        return explicit
-    return (settings.vision_model or "").strip()
-
+    for attr in ("ocrvision_model", "glm_ocr_model", "vision_model"):
+        value = getattr(settings, attr, None)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return ""
 
 def _load_glm_ocr_prompt() -> str:
     return _GLM_OCR_PROMPT_FILE.read_text(encoding="utf-8").strip()
-
 
 async def transcribe_with_glm_ocr(
     client: openai.OpenAI,
@@ -129,7 +126,6 @@ async def transcribe_with_glm_ocr(
         reasoning_enable_thinking=settings.reasoning_enable_thinking_vision,
     )
 
-
 def _resolve_glm_pages(
     sorted_pages: list[int],
     useful_pages_enumeration: UsefulPagesEnumeration,
@@ -150,14 +146,9 @@ def _resolve_glm_pages(
     for page_index, orig in enumerate(sorted_pages, start=1):
         aligned = useful_pages_enumeration.original_page_to_aligned_page.get(orig)
         if aligned is None:
-            Log(
-                WARNING_LOG_LEVEL,
-                "glm ocr missing aligned page mapping",
-                {"request_id": request_id, "original_page": orig},
-            )
+            Log(WARNING_LOG_LEVEL, "glm ocr missing aligned page mapping", {"request_id": request_id, "original_page": orig})
             settled.append(_GlmOcrOutcome(page_index=page_index, missing_original=orig))
             continue
-
         stem = f"p.{aligned:04d}.{slug}"
         txt_path = ocr_dir / f"{stem}.txt"
         md_path = stage2_dir / f"{stem}.md"
@@ -167,48 +158,21 @@ def _resolve_glm_pages(
                 if not txt_path.is_file() or txt_path.stat().st_size == 0:
                     txt_path.write_text(cached, encoding="utf-8")
                 emit_progress(make_event(
-                    PHASE_STAGE1_GLM_OCR,
-                    STATUS_PAGE_SKIPPED,
-                    counts_as_step=True,
-                    page_index=page_index,
-                    page_total=page_total,
-                    aligned_page=aligned,
-                    original_page=orig,
-                    char_count=len(cached),
+                    PHASE_STAGE1_GLM_OCR, STATUS_PAGE_SKIPPED, counts_as_step=True,
+                    page_index=page_index, page_total=page_total, aligned_page=aligned,
+                    original_page=orig, char_count=len(cached),
                 ))
-                settled.append(
-                    _GlmOcrOutcome(
-                        page_index=page_index,
-                        stage1_page=Stage1PageResult(
-                            aligned_page=aligned,
-                            original_page=orig,
-                            txt_path=str(txt_path),
-                            char_count=len(cached),
-                        ),
-                        stage2_page=Stage2PageResult(
-                            aligned_page=aligned,
-                            original_page=orig,
-                            md_path=str(md_path),
-                            char_count=len(cached),
-                        ),
-                        skipped=True,
-                    )
-                )
+                settled.append(_GlmOcrOutcome(
+                    page_index=page_index, skipped=True,
+                    stage1_page=Stage1PageResult(aligned_page=aligned, original_page=orig, txt_path=str(txt_path), char_count=len(cached)),
+                    stage2_page=Stage2PageResult(aligned_page=aligned, original_page=orig, md_path=str(md_path), char_count=len(cached)),
+                ))
                 continue
-
-        work.append(
-            _GlmOcrWork(
-                page_index=page_index,
-                orig=orig,
-                aligned=aligned,
-                txt_path=txt_path,
-                md_path=md_path,
-                png_path=render_dir / f"p.{aligned:04d}.png",
-            )
-        )
-
+        work.append(_GlmOcrWork(
+            page_index=page_index, orig=orig, aligned=aligned,
+            txt_path=txt_path, md_path=md_path, png_path=render_dir / f"p.{aligned:04d}.png",
+        ))
     return settled, work
-
 
 async def _glm_ocr_pages_parallel(
     work: list[_GlmOcrWork],
@@ -283,7 +247,12 @@ async def _glm_ocr_pages_parallel(
                     error=str(exc),
                     failure="glm_ocr_failed",
                 ))
-                return _GlmOcrOutcome(page_index=item.page_index, failed=True, error=str(exc))
+                return _GlmOcrOutcome(
+                    page_index=item.page_index,
+                    failed=True,
+                    failed_aligned=item.aligned,
+                    error=str(exc),
+                )
 
             finalized = finalize_vision_page_output(raw, prompt_notes)
             raise_if_shutdown()
@@ -317,50 +286,43 @@ async def _glm_ocr_pages_parallel(
 
     return list(await gather_cancellable(*(_process_one(item) for item in pending)))
 
-
-def _aggregate_glm_outcomes(outcomes: list[_GlmOcrOutcome]) -> GlmOcrCombinedResult:
+def _aggregate_glm_outcomes(
+    outcomes: list[_GlmOcrOutcome],
+) -> tuple[GlmOcrCombinedResult, int, int]:
     stage1_pages: list[Stage1PageResult] = []
     stage2_pages: list[Stage2PageResult] = []
     skipped_existing = 0
-    missing: list[int] = []
+    missing_originals: list[int] = []
+    failed_aligned: list[int] = []
     last_error: str | None = None
     total_attempted = 0
     failed_count = 0
-
     for outcome in outcomes:
         if outcome.missing_original is not None:
-            missing.append(outcome.missing_original)
+            missing_originals.append(outcome.missing_original)
             continue
         if outcome.failed:
             total_attempted += 1
             failed_count += 1
             last_error = outcome.error
+            if outcome.failed_aligned is not None:
+                failed_aligned.append(outcome.failed_aligned)
             continue
         if outcome.stage1_page is not None and outcome.stage2_page is not None:
             stage1_pages.append(outcome.stage1_page)
             stage2_pages.append(outcome.stage2_page)
-            if outcome.skipped:
-                skipped_existing += 1
-            else:
-                total_attempted += 1
-
+            skipped_existing += int(outcome.skipped)
+            total_attempted += int(not outcome.skipped)
     stage1_pages.sort(key=lambda p: p.aligned_page)
     stage2_pages.sort(key=lambda p: p.aligned_page)
-    return GlmOcrCombinedResult(
-        stage1=Stage1Result(
-            pages=stage1_pages,
-            skipped_existing=skipped_existing,
-            missing=missing,
-            last_error=last_error,
+    return (
+        GlmOcrCombinedResult(
+            stage1=Stage1Result(pages=stage1_pages, skipped_existing=skipped_existing, missing=missing_originals, last_error=last_error),
+            stage2=Stage2Result(pages=stage2_pages, skipped_existing=skipped_existing, missing=sorted(set(failed_aligned)), last_error=last_error),
         ),
-        stage2=Stage2Result(
-            pages=stage2_pages,
-            skipped_existing=skipped_existing,
-            missing=[],
-            last_error=last_error,
-        ),
-    ), total_attempted, failed_count
-
+        total_attempted,
+        failed_count,
+    )
 
 async def run_glm_ocr_combined_stage(
     enriched: EnrichedIngestRequest,
@@ -407,9 +369,9 @@ async def run_glm_ocr_combined_stage(
         if progress is not None:
             progress(event)
 
-    if progress is not None:
-        progress(make_event(PHASE_STAGE1_GLM_OCR, STATUS_STARTED, page_total=page_total))
-
+    deferred_ocr_events, defer_ocr_progress = defer_phase_progress(
+        PHASE_STAGE1_GLM_OCR, _emit_progress,
+    )
     render_source_sha256 = compute_file_sha256(aligned_path)
     settled, glm_work = _resolve_glm_pages(
         sorted_pages,
@@ -422,7 +384,7 @@ async def run_glm_ocr_combined_stage(
         force_recompute=force_recompute,
         request_id=request_id,
         page_total=page_total,
-        emit_progress=_emit_progress,
+        emit_progress=defer_ocr_progress,
     )
     from src.ingestion.pipeline.stage1 import _Stage1OcrWork
 
@@ -445,10 +407,21 @@ async def run_glm_ocr_combined_stage(
         page_total=page_total,
         emit_progress=_emit_progress,
     )
+    work_by_index = {item.page_index: item for item in ocr_work}
     render_failures = {
-        idx: _GlmOcrOutcome(page_index=out.page_index, failed=True, error=out.error)
+        idx: _GlmOcrOutcome(
+            page_index=out.page_index,
+            failed=True,
+            failed_aligned=(
+                work_by_index[idx].aligned if idx in work_by_index else None
+            ),
+            error=out.error,
+        )
         for idx, out in render_failures_raw.items()
     }
+    _emit_progress(make_event(PHASE_STAGE1_GLM_OCR, STATUS_STARTED, page_total=page_total))
+    for deferred in deferred_ocr_events:
+        _emit_progress(deferred)
     glm_outcomes = await _glm_ocr_pages_parallel(
         glm_work,
         render_failures,
@@ -465,31 +438,40 @@ async def run_glm_ocr_combined_stage(
     outcomes = settled + list(render_failures.values()) + glm_outcomes
     combined, total_attempted, failed_count = _aggregate_glm_outcomes(outcomes)
 
-    if total_attempted > 0 and failed_count / total_attempted >= 0.5:
-        Log(
-            ERROR_LOG_LEVEL,
-            "glm ocr failure threshold exceeded",
-            {
-                "request_id": request_id,
-                "failed": failed_count,
-                "attempted": total_attempted,
-                "last_error": combined.stage1.last_error,
-            },
+    expected_aligned = {
+        useful_pages_enumeration.original_page_to_aligned_page[orig]
+        for orig in useful_pages_enumeration.useful_original_pages
+        if orig in useful_pages_enumeration.original_page_to_aligned_page
+    }
+    missing_aligned = sorted(
+        expected_aligned - {page.aligned_page for page in combined.stage2.pages}
+    )
+    if missing_aligned:
+        combined = GlmOcrCombinedResult(
+            stage1=combined.stage1,
+            stage2=combined.stage2.model_copy(update={"missing": missing_aligned}),
         )
+    if (total_attempted > 0 and failed_count / total_attempted >= 0.5) or missing_aligned:
+        sample = ", ".join(str(p) for p in missing_aligned[:12])
+        more = f" (+{len(missing_aligned) - 12})" if len(missing_aligned) > 12 else ""
+        message = (
+            f"GLM OCR incomplete: {len(missing_aligned)} missing page(s) [{sample}{more}]; last_error={combined.stage1.last_error}"
+            if missing_aligned
+            else f"GLM OCR stage failed on {failed_count}/{total_attempted} pages"
+        )
+        Log(ERROR_LOG_LEVEL, "glm ocr incomplete or failure threshold exceeded", {
+            "request_id": request_id, "failed": failed_count, "attempted": total_attempted,
+            "missing_aligned": missing_aligned[:32], "last_error": combined.stage1.last_error,
+        })
         if progress is not None:
             progress(make_event(
-                PHASE_STAGE1_GLM_OCR,
-                STATUS_FAILED,
-                failed_count=failed_count,
-                attempted=total_attempted,
-                error=combined.stage1.last_error,
+                PHASE_STAGE1_GLM_OCR, STATUS_FAILED, failed_count=failed_count,
+                attempted=total_attempted, missing_aligned=missing_aligned,
+                error=combined.stage1.last_error or message,
             ))
-        raise IngestInputValidationException(
-            IngestInputValidationError(
-                code=IngestInputErrorCode.OCR_STAGE_FAILED,
-                message=f"GLM OCR stage failed on {failed_count}/{total_attempted} pages",
-            )
-        )
+        raise IngestInputValidationException(IngestInputValidationError(
+            code=IngestInputErrorCode.OCR_STAGE_FAILED, message=message,
+        ))
 
     if progress is not None:
         progress(make_event(

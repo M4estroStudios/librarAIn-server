@@ -444,7 +444,7 @@ def run_ingest_gate_phase(
         upsert_result = upsert_book_reicat(enriched, sqlite_path)
         return IngestGatePhaseResult(
             gate=gate,
-            pipeline_skipped=True,
+            pipeline_skipped=False,
             book_upsert=upsert_result,
         )
     audit_id = _duplicate_skip_no_metadata_audit(enriched, sqlite_path)

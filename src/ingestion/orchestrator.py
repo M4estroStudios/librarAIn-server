@@ -43,7 +43,6 @@ from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import (
     PHASE_POLYINDEX_BIBLIO,
     PHASE_POLYINDEX_TOC,
-    PHASE_RENDER,
     PHASE_TIME_INDEX,
     STATUS_COMPLETED,
     STATUS_STARTED,
@@ -274,7 +273,6 @@ def _build_pipeline_context(
 
 
 def _run_render_phase(ctx: PipelineContext) -> None:
-    _progress_started(ctx, PHASE_RENDER, page_total=ctx.render_page_total)
     _publish_event(
         ctx.registry,
         ctx.request_id,

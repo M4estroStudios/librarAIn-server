@@ -49,6 +49,41 @@ def _atomic_write_json(path: Path, payload: dict[str, Any]) -> None:
             tmp.unlink(missing_ok=True)
 
 
+def _pages_to_remove_from_ingest_notes(data_root: Path, source_sha256: str) -> list[int]:
+    db_path = data_root / "db" / "biblioteca.db"
+    if not db_path.is_file():
+        return []
+    try:
+        import sqlite3
+
+        with sqlite3.connect(str(db_path)) as conn:
+            row = conn.execute(
+                "SELECT state_json FROM ingest_notes WHERE source_sha256 = ?",
+                (_safe_sha(source_sha256),),
+            ).fetchone()
+    except (sqlite3.Error, PageExcludeError, OSError):
+        return []
+    if row is None:
+        return []
+    try:
+        parsed = json.loads(str(row[0] or ""))
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(parsed, dict):
+        return []
+    raw = parsed.get("pages_to_remove")
+    if isinstance(raw, list):
+        return _normalize_int_list(raw)
+    if not isinstance(raw, str) or not raw.strip():
+        return []
+    from src.api.ingest_form import InvalidPagesSpec, _parse_pages_spec
+
+    try:
+        return _parse_pages_spec(raw)
+    except InvalidPagesSpec:
+        return []
+
+
 def load_book_exclusions(
     data_root: Path,
     source_sha256: str,
@@ -62,18 +97,17 @@ def load_book_exclusions(
     if manifest:
         return aligned, original
     sidecar = _exclude_config_path(data_root, source_sha256)
-    if not sidecar.is_file():
-        return [], []
-    try:
-        raw = json.loads(sidecar.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return [], []
-    if not isinstance(raw, dict):
-        return [], []
-    return (
-        _normalize_int_list(raw.get("excluded_aligned_pages")),
-        _normalize_int_list(raw.get("pages_to_remove")),
-    )
+    if sidecar.is_file():
+        try:
+            raw = json.loads(sidecar.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            raw = None
+        if isinstance(raw, dict):
+            return (
+                _normalize_int_list(raw.get("excluded_aligned_pages")),
+                _normalize_int_list(raw.get("pages_to_remove")),
+            )
+    return [], _pages_to_remove_from_ingest_notes(data_root, source_sha256)
 
 
 def _aligned_to_original_from_manifest(manifest: dict[str, Any]) -> dict[int, int]:

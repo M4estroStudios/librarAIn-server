@@ -20,6 +20,7 @@ from src.ingestion.progress import (
     STATUS_PAGE_SKIPPED,
     STATUS_STARTED,
     ProgressReporter,
+    defer_phase_progress,
     make_event,
 )
 from src.models.request import (
@@ -478,6 +479,9 @@ async def run_stage1_ocr(
         if progress is not None:
             progress(event)
 
+    deferred_ocr_events, defer_ocr_progress = defer_phase_progress(
+        PHASE_STAGE1_OCR, _emit_progress,
+    )
     Log(
         INFO_LOG_LEVEL,
         "stage1 OCR starting",
@@ -490,9 +494,6 @@ async def run_stage1_ocr(
         },
     )
 
-    if progress is not None:
-        progress(make_event(PHASE_STAGE1_OCR, STATUS_STARTED, page_total=page_total))
-
     render_source_sha256 = compute_file_sha256(aligned_pdf_path)
 
     settled, ocr_work = _resolve_stage1_pages(
@@ -504,7 +505,7 @@ async def run_stage1_ocr(
         force_recompute=force_recompute,
         request_id=request_id,
         page_total=page_total,
-        emit_progress=_emit_progress,
+        emit_progress=defer_ocr_progress,
     )
     render_failures = await _render_stage1_pages_sequential(
         ocr_work,
@@ -514,6 +515,9 @@ async def run_stage1_ocr(
         page_total=page_total,
         emit_progress=_emit_progress,
     )
+    _emit_progress(make_event(PHASE_STAGE1_OCR, STATUS_STARTED, page_total=page_total))
+    for deferred in deferred_ocr_events:
+        _emit_progress(deferred)
     ocr_outcomes = await _ocr_stage1_pages_parallel(
         ocr_work,
         render_failures,

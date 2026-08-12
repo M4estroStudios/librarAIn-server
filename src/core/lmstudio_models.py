@@ -247,6 +247,10 @@ def ensure_lmstudio_model_loaded(settings: Settings, model_name: str) -> None:
 def _lmstudio_management_enabled(settings: Settings) -> bool:
     if not settings.lm_studio_swap_models:
         return False
+    from src.core.openai_client import get_compute_mode  # noqa: PLC0415
+
+    if get_compute_mode() != "local":
+        return False
     if settings.openai_provider != "local":
         return False
     return bool(lmstudio_api_root(settings))

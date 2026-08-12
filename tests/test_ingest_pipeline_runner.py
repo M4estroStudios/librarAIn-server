@@ -314,15 +314,15 @@ class TestHappyPath(unittest.TestCase):
 
 
 class TestSkipDuplicate(unittest.TestCase):
-    """Test 2: pipeline_skipped=True → Stage 2 not invoked, stage2=None."""
+    """pipeline_skipped=True → metadata only, no OCR/render/editor."""
 
     def setUp(self) -> None:
         self._tmp = tempfile.TemporaryDirectory()
         self.tmp = Path(self._tmp.name)
         self.data_root = str(self.tmp / "data")
         self.settings = _make_settings(self.data_root)
-        self.stage1 = _make_stage1_result(self.data_root, n=2)
         self.events: list[dict] = []
+        self.totals: list[int] = []
 
     def tearDown(self) -> None:
         self._tmp.cleanup()
@@ -335,76 +335,53 @@ class TestSkipDuplicate(unittest.TestCase):
     @patch(_P_ALIGN)
     @patch(_P_GATE)
     @patch(_P_VALIDATE)
-    def test_stage2_not_called(
+    def test_orchestrator_not_called(
         self, mv, mg, ma, me, morch
     ) -> None:
         mv.return_value = _make_enriched()
         mg.return_value = _make_gate(pipeline_skipped=True)
-        ma.return_value = None
-        me.return_value = _make_pages_enum(n=2)
-        morch.side_effect = _fake_run_pipeline
 
         result = run_full_pipeline(
             {}, Path(self.tmp / "fake.pdf"), self.settings,
-            reporter=self._reporter, set_global_total=None,
+            reporter=self._reporter, set_global_total=self.totals.append,
         )
 
-        morch.assert_called_once()
-        self.assertTrue(morch.call_args.kwargs.get("skip_vision_editor"))
+        morch.assert_not_called()
+        ma.assert_not_called()
+        me.assert_not_called()
+        self.assertTrue(result["pipeline_skipped"])
+        self.assertIsNone(result["stage1"])
         self.assertIsNone(result["stage2"])
         self.assertIsNone(result["stage3"])
+        self.assertEqual(self.totals, [0])
 
     @patch(_P_ORCH, new_callable=AsyncMock)
     @patch(_P_ENUM)
     @patch(_P_ALIGN)
     @patch(_P_GATE)
     @patch(_P_VALIDATE)
-    def test_no_stage2_vision_events(
+    def test_no_page_stage_events(
         self, mv, mg, ma, me, morch
     ) -> None:
         mv.return_value = _make_enriched()
         mg.return_value = _make_gate(pipeline_skipped=True)
-        ma.return_value = None
-        me.return_value = _make_pages_enum(n=2)
-        morch.side_effect = _fake_run_pipeline
 
         run_full_pipeline(
             {}, Path(self.tmp / "fake.pdf"), self.settings,
             reporter=self._reporter, set_global_total=None,
         )
 
-        stage2_evs = [e for e in self.events if e.get("phase") == PHASE_STAGE2_VISION]
-        self.assertEqual(len(stage2_evs), 0)
-        stage3_evs = [e for e in self.events if e.get("phase") == PHASE_STAGE3_EDITOR]
-        self.assertEqual(len(stage3_evs), 0)
-
-    @patch(_P_ORCH, new_callable=AsyncMock)
-    @patch(_P_ENUM)
-    @patch(_P_ALIGN)
-    @patch(_P_GATE)
-    @patch(_P_VALIDATE)
-    def test_stage1_ocr_completed_when_pipeline_skipped(
-        self, mv, mg, ma, me, morch
-    ) -> None:
-        mv.return_value = _make_enriched()
-        mg.return_value = _make_gate(pipeline_skipped=True)
-        ma.return_value = None
-        me.return_value = _make_pages_enum(n=2)
-        morch.side_effect = _fake_run_pipeline
-
-        run_full_pipeline(
-            {}, Path(self.tmp / "fake.pdf"), self.settings,
-            reporter=self._reporter, set_global_total=None,
-        )
-
-        terminal_evs = [
+        page_phases = {
+            PHASE_STAGE1_OCR, PHASE_STAGE2_VISION, PHASE_STAGE3_EDITOR, "render",
+        }
+        page_evs = [e for e in self.events if e.get("phase") in page_phases]
+        self.assertEqual(len(page_evs), 0)
+        gate_done = [
             e for e in self.events
-            if e.get("phase") == PHASE_STAGE1_OCR
-            and e.get("status") == STATUS_COMPLETED
-            and "timing" in e
+            if e.get("phase") == "gate_hash" and e.get("status") == STATUS_COMPLETED
         ]
-        self.assertEqual(len(terminal_evs), 1)
-        self.assertNotIn("result", terminal_evs[0])
+        self.assertEqual(len(gate_done), 1)
+        self.assertTrue(gate_done[0].get("pipeline_skipped"))
 
 
 class TestCacheHit(unittest.TestCase):

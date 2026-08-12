@@ -448,7 +448,7 @@ class RequestValidationTests(unittest.TestCase):
             self.assertEqual(enriched_second.source_sha256, digest)
             phase = run_ingest_gate_phase(enriched_second, str(sqlite_path))
             self.assertEqual(phase.gate.status, SourceHashGateStatus.DUPLICATE_SOURCE_HASH)
-            self.assertTrue(phase.pipeline_skipped)
+            self.assertFalse(phase.pipeline_skipped)
             assert phase.book_upsert is not None
             self.assertFalse(phase.book_upsert.was_inserted)
             self.assertIsNone(phase.duplicate_skip_audit_row_id)

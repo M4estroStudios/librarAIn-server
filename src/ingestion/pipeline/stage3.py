@@ -350,6 +350,14 @@ async def run_stage3_editor(
                 skipped_existing += 1
 
     pages.sort(key=lambda p: p.aligned_page)
+    got_aligned = {page.aligned_page for page in pages}
+    missing = sorted(
+        {
+            s2_page.aligned_page
+            for s2_page in stage2_result.pages
+            if s2_page.aligned_page not in got_aligned
+        }
+    )
     gallery_entry_count = sum(len(page.gallery_captions) for page in pages)
     gallery_page_count = sum(1 for page in pages if page.gallery_captions)
 
@@ -360,6 +368,7 @@ async def run_stage3_editor(
             "request_id": request_id,
             "pages_written": len(pages),
             "skipped_existing": skipped_existing,
+            "missing_aligned": missing,
             "gallery_entry_count": gallery_entry_count,
             "gallery_page_count": gallery_page_count,
         },
@@ -371,6 +380,7 @@ async def run_stage3_editor(
             STATUS_COMPLETED,
             pages_written=len(pages),
             skipped_existing=skipped_existing,
+            missing_aligned=missing,
             gallery_entry_count=gallery_entry_count,
             gallery_page_count=gallery_page_count,
         ))
@@ -378,7 +388,7 @@ async def run_stage3_editor(
     return Stage3Result(
         pages=pages,
         skipped_existing=skipped_existing,
-        missing=[],
+        missing=missing,
         last_error=last_error,
         gallery_entry_count=gallery_entry_count,
         gallery_page_count=gallery_page_count,

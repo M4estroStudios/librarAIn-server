@@ -43,10 +43,23 @@ class TestLmStudioHelpers(unittest.TestCase):
             )
         )
 
-    def test_should_swap_false_for_remote(self) -> None:
-        self.assertFalse(
-            should_swap_lmstudio_models(_settings(openai_provider="remote"))
-        )
+    def test_should_swap_false_for_cloud_compute_mode(self) -> None:
+        from src.core.openai_client import use_compute_mode
+
+        with use_compute_mode("cloud", _settings()):
+            self.assertFalse(should_swap_lmstudio_models(_settings()))
+
+    def test_swap_skipped_when_compute_mode_cloud(self) -> None:
+        from src.core.openai_client import use_compute_mode
+
+        with use_compute_mode("cloud", _settings()), patch(
+            "src.core.lmstudio_models._request_json"
+        ) as mock_request:
+            swap_lmstudio_model_to_editor(
+                _settings(),
+                from_model="org/glm-ocr",
+            )
+        mock_request.assert_not_called()
 
     def test_find_loaded_instance_ids(self) -> None:
         payload = {

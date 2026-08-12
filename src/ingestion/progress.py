@@ -126,3 +126,18 @@ def timed_progress_reporter(
         reporter(timing.enrich(event))
 
     return _emit
+
+
+def defer_phase_progress(
+    phase: str,
+    emit: ProgressReporter,
+) -> tuple[list[dict[str, Any]], ProgressReporter]:
+    deferred: list[dict[str, Any]] = []
+
+    def _defer(event: dict[str, Any]) -> None:
+        if event.get("phase") == phase:
+            deferred.append(event)
+            return
+        emit(event)
+
+    return deferred, _defer
