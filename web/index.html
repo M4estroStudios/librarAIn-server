@@ -476,6 +476,16 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-preview-img-wrap { flex: 1 1 auto; min-width: 0; max-height: calc(92vh - 5.5rem); display: flex; align-items: center; justify-content: center; overflow: auto; }
 .page-preview-img { display: block; max-width: 100%; max-height: calc(92vh - 5.5rem); background: #fff; }
 .validation-preview-dialog { width: min(95vw, 920px); }
+.validation-preview-dialog > .page-preview-title,
+.validation-preview-dialog > .validation-preview-meta,
+.validation-preview-dialog > .validation-preview-goto,
+.validation-preview-dialog > .validation-preview-actions { flex: 0 0 auto; }
+.validation-preview-dialog .page-preview-body { flex: 1 1 auto; min-height: 0; overflow: hidden; align-items: stretch; }
+.validation-preview-dialog .page-preview-nav { align-self: center; flex-shrink: 0; }
+.validation-preview-dialog .page-zoom-column { flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden; }
+.validation-preview-dialog .page-zoom-viewport { flex: 1 1 auto; min-height: 0; }
+.validation-preview-dialog .page-zoom-controls { flex: 0 0 auto; }
+.validation-preview-dialog .validation-preview-actions { position: relative; z-index: 1; background: #1e1e1e; }
 .validation-preview-meta { margin: 0; padding: 0.35rem 1rem 0.55rem; font-size: 0.72rem; color: #9d9d9d; }
 .validation-preview-goto { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin: 0; padding: 0 1rem 0.65rem; }
 .validation-preview-goto label { display: inline-flex; align-items: center; gap: 0.4rem; margin: 0; font-size: 0.78rem; color: #c8c8c8; }
@@ -5458,6 +5468,10 @@ if (document.readyState === "loading") {
       var url = await ensureDetailCached(entry.original);
       if (loadGen !== validationPreviewState.loadGen) return;
       if (!url) throw new Error("Anteprima non disponibile");
+      validationPreviewImg.onload = function () {
+        if (loadGen !== validationPreviewState.loadGen) return;
+        syncValidationPreviewLayout();
+      };
       validationPreviewImg.src = url;
       prefetchAdjacentDetails(entry.original);
     } catch (err) {
@@ -5473,6 +5487,8 @@ if (document.readyState === "loading") {
     document.body.style.overflow = "";
     validationPreviewState.loadGen += 1;
     validationPreviewImg.removeAttribute("src");
+    var zoomCol = validationPreviewOverlay.querySelector(".page-zoom-column");
+    if (zoomCol) zoomCol.style.height = "";
   }
 
   async function prepareValidationPreviewEntries() {
@@ -5489,6 +5505,29 @@ if (document.readyState === "loading") {
     return entries;
   }
 
+  function syncValidationPreviewLayout() {
+    if (validationPreviewOverlay.classList.contains("hidden")) return;
+    var dialog = validationPreviewOverlay.querySelector(".validation-preview-dialog");
+    var body = dialog && dialog.querySelector(".page-preview-body");
+    var zoomCol = body && body.querySelector(".page-zoom-column");
+    var wrap = validationPreviewOverlay.querySelector(".validation-preview-img-wrap");
+    if (!dialog || !body || !zoomCol) return;
+    var fixed = dialog.querySelectorAll(".page-preview-title, .validation-preview-meta, .validation-preview-goto, .validation-preview-actions");
+    var chromeH = 0;
+    for (var i = 0; i < fixed.length; i++) chromeH += fixed[i].offsetHeight;
+    var bodyStyle = window.getComputedStyle(body);
+    var padY = (parseFloat(bodyStyle.paddingTop) || 0) + (parseFloat(bodyStyle.paddingBottom) || 0);
+    var avail = dialog.clientHeight - chromeH - padY;
+    zoomCol.style.height = Math.max(160, avail) + "px";
+    if (wrap && window.LibrarAInPageZoom && typeof window.LibrarAInPageZoom.attach === "function") {
+      var zoomApi = window.LibrarAInPageZoom.attach(wrap);
+      if (zoomApi) {
+        if (typeof zoomApi.getZoom === "function" && zoomApi.getZoom() <= 1.001 && typeof zoomApi.reset === "function") zoomApi.reset();
+        else if (typeof zoomApi.layout === "function") zoomApi.layout();
+      }
+    }
+  }
+
   async function openValidationPreview() {
     var entries = await prepareValidationPreviewEntries();
     validationPreviewState = { entries: entries, index: 0, loadGen: validationPreviewState.loadGen };
@@ -5496,6 +5535,7 @@ if (document.readyState === "loading") {
     validationPreviewOverlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     await refreshValidationPreview();
+    requestAnimationFrame(syncValidationPreviewLayout);
   }
 
   var pageReviewOverlay = document.getElementById("page-review-overlay");
@@ -5862,6 +5902,15 @@ if (document.readyState === "loading") {
       }
     });
   }
+  var validationPreviewResizeTimer = 0;
+  window.addEventListener("resize", function () {
+    if (validationPreviewOverlay.classList.contains("hidden")) return;
+    if (validationPreviewResizeTimer) return;
+    validationPreviewResizeTimer = window.setTimeout(function () {
+      validationPreviewResizeTimer = 0;
+      syncValidationPreviewLayout();
+    }, 150);
+  });
   document.getElementById("validation-preview-close").addEventListener("click", closeValidationPreview);
   document.getElementById("validation-preview-backdrop").addEventListener("click", closeValidationPreview);
   validationPreviewBack.addEventListener("click", closeValidationPreview);
