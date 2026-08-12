@@ -263,6 +263,14 @@
     document.querySelectorAll("[data-biblio-stage], [data-biblio-stage-toggle]").forEach(function (btn) {
       btn.disabled = !!busy;
     });
+    var computeSel = $("biblio-polyindex-compute-mode");
+    if (computeSel) computeSel.disabled = !!busy;
+  }
+
+  function selectedComputeMode() {
+    var computeSel = $("biblio-polyindex-compute-mode");
+    var mode = computeSel && computeSel.value === "cloud" ? "cloud" : "local";
+    return mode;
   }
 
   function collapseStageCards(exceptStage) {
@@ -298,10 +306,11 @@
       setStageStatus("Nessun libro selezionato.");
       return;
     }
+    var computeMode = selectedComputeMode();
     var body = {
       source_sha256: book.source_sha256,
       stage: stage,
-      compute_mode: "local"
+      compute_mode: computeMode
     };
     if (stage === "polyindex_biblio") {
       if (!book.biblio_range || book.biblio_range.start == null || book.biblio_range.end == null) {
@@ -312,7 +321,7 @@
     }
     runningStage = stage;
     setButtonsBusy(true);
-    setStageStatus("Avvio " + (STAGE_LABELS[stage] || stage) + "…");
+    setStageStatus("Avvio " + (STAGE_LABELS[stage] || stage) + " (" + computeMode + ")…");
     fetch("/api/admin/biblio/polyindex/run", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -358,13 +367,22 @@
         var data;
         try { data = JSON.parse(ev.data); } catch (_) { return; }
         var st = data.status || data.event_status;
+        var label = STAGE_LABELS[stage] || stage;
         if (st === "done" || st === "completed") {
           if (stage === "time_index" && typeof window.clearBiblioTimeIndexCache === "function") {
             window.clearBiblioTimeIndexCache();
           }
-          finish((STAGE_LABELS[stage] || stage) + " completato.");
+          finish(label + " completato.");
         } else if (st === "error" || st === "failed") {
-          finish((STAGE_LABELS[stage] || stage) + " errore: " + (data.message || "fallito"));
+          finish(label + " errore: " + (data.message || "fallito"));
+        } else if (st === "page_progress" || st === "page_skipped" || st === "page_failed") {
+          var idx = data.page_index;
+          var tot = data.page_total;
+          var detail = data.message || (data.aligned_page != null ? ("pag. " + data.aligned_page) : "");
+          var prog = idx != null && tot != null ? (idx + "/" + tot) : "";
+          setStageStatus(label + (prog ? " · " + prog : "") + (detail ? " · " + detail : ""));
+        } else if (st === "started" && data.message) {
+          setStageStatus(label + " · " + data.message);
         }
       };
       es.onerror = function () {

@@ -726,6 +726,12 @@ def build_ingest_server(
                     _send_bytes(self, 200, transcript_hl_js.read_bytes(), "text/javascript; charset=utf-8")
                     return
 
+            if path == "/md-preview.js":
+                md_preview_js = web_dir / "md-preview.js"
+                if md_preview_js.is_file():
+                    _send_bytes(self, 200, md_preview_js.read_bytes(), "text/javascript; charset=utf-8")
+                    return
+
             if path == "/mockup/lab.html":
                 self.send_response(302)
                 self.send_header("Location", "/ingest?mock=1")

@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="/dashboard/page-guidance.css">
 <script src="/page-zoom.js"></script>
 <script src="/transcript-highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@18.0.9/lib/marked.umd.js"></script>
+<script src="/md-preview.js"></script>
 <script src="/biblioteca-book.js"></script>
 <script src="/biblioteca-time-collapse.js"></script>
 <script src="/biblioteca-time.js"></script>
@@ -109,11 +111,61 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 .biblio-unsaved-actions { display: flex; justify-content: flex-end; gap: 0.45rem; }
 .biblio-artifact-pane { flex: 1 1 auto; min-width: 0; min-height: 0; height: 100%; display: flex; }
 .biblio-artifact-pane.hidden { display: none !important; }
-.biblio-artifact-frame { box-sizing: border-box; border: 1px solid #454545; border-radius: 4px; background: #252526; overflow: hidden; display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; height: 100%; width: 100%; }
+.biblio-artifact-frame { box-sizing: border-box; border: 1px solid #454545; border-radius: 4px; background: #252526; overflow: hidden; display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; height: 100%; width: 100%; position: relative; }
 .biblio-artifact-text { display: block; flex: 1 1 auto; width: 100%; height: 100%; min-height: 0; margin: 0; padding: 0.75rem; box-sizing: border-box; border: 0; outline: none; resize: none; overflow: auto; background: transparent; color: #d4d4d4; font-family: ui-monospace, monospace; font-size: 0.72rem; line-height: 1.35; white-space: pre-wrap; word-break: break-word; }
 .biblio-artifact-empty { margin: 0; padding: 0.75rem; font-size: 0.78rem; color: #9d9d9d; }
 .biblio-artifact-view { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 0.85rem 1rem; box-sizing: border-box; color: #d4d4d4; font-size: 0.88rem; line-height: 1.4; }
 .biblio-artifact-view.hidden { display: none !important; }
+.biblio-md-switch {
+  position: absolute; top: 0.45rem; right: 0.45rem; z-index: 3;
+  display: inline-flex; align-items: center; gap: 0; padding: 0.12rem;
+  border-radius: 8px; background: #2a2a2a; border: 1px solid #3e3e3e;
+  font-family: ui-monospace, "Cascadia Mono", monospace; font-size: 0.72rem;
+}
+.biblio-md-switch.hidden { display: none !important; }
+.biblio-md-switch button {
+  font: inherit; padding: 0.22rem 0.55rem; border: 0; border-radius: 6px;
+  background: transparent; color: #c8c8c8; cursor: pointer; font-weight: 500;
+}
+.biblio-md-switch button.is-active { background: #3c3c3c; color: #f0f0f0; }
+.biblio-md-preview {
+  flex: 1 1 auto; min-height: 0; overflow: auto; padding: 0.85rem 1rem;
+  box-sizing: border-box; color: #d4d4d4; font-size: 0.9rem; line-height: 1.5;
+}
+.biblio-md-preview.hidden { display: none !important; }
+.biblio-md-preview > :first-child { margin-top: 0; }
+.biblio-md-preview > :last-child { margin-bottom: 0; }
+.biblio-md-preview h1, .biblio-md-preview h2, .biblio-md-preview h3, .biblio-md-preview h4 {
+  color: #e8e8e8; line-height: 1.3; margin: 1rem 0 0.45rem;
+}
+.biblio-md-preview h1 { font-size: 1.25rem; }
+.biblio-md-preview h2 { font-size: 1.1rem; }
+.biblio-md-preview h3 { font-size: 1rem; }
+.biblio-md-preview p, .biblio-md-preview ul, .biblio-md-preview ol { margin: 0.45rem 0; }
+.biblio-md-preview a { color: #6cb6ff; }
+.biblio-md-preview a[data-biblio-page] { cursor: pointer; text-decoration: underline; }
+.biblio-md-preview .md-preview-pending { color: #9d9d9d; cursor: default; }
+.biblio-md-preview code {
+  font-family: ui-monospace, monospace; font-size: 0.82em;
+  background: #1e1e1e; border: 1px solid #3a3a3a; border-radius: 4px; padding: 0.05rem 0.28rem;
+}
+.biblio-md-preview pre {
+  margin: 0.55rem 0; padding: 0.65rem 0.75rem; overflow: auto;
+  background: #1e1e1e; border: 1px solid #3a3a3a; border-radius: 8px;
+}
+.biblio-md-preview pre code { background: transparent; border: 0; padding: 0; }
+.biblio-md-preview blockquote {
+  margin: 0.55rem 0; padding: 0.2rem 0.75rem; border-left: 3px solid #4ec9b0; color: #bdbdbd;
+}
+.biblio-md-preview table { border-collapse: collapse; margin: 0.55rem 0; width: 100%; font-size: 0.84rem; }
+.biblio-md-preview th, .biblio-md-preview td { border: 1px solid #3a3a3a; padding: 0.28rem 0.45rem; }
+.biblio-md-preview th { background: #1e1e1e; color: #e8e8e8; }
+.biblio-artifact-frame:has(.biblio-md-switch:not(.hidden)) .biblio-md-preview,
+.biblio-book-text-frame:has(.biblio-md-switch:not(.hidden)) .biblio-md-preview { padding-top: 2.5rem; }
+.biblio-artifact-frame:has(.biblio-md-switch:not(.hidden)) .biblio-artifact-text,
+.biblio-book-text-frame:has(.biblio-md-switch:not(.hidden)) .biblio-book-text,
+.biblio-book-text-frame:has(.biblio-md-switch:not(.hidden)) .transcript-hl-backdrop,
+.biblio-book-text-frame:has(.biblio-md-switch:not(.hidden)) .transcript-hl-wrap > textarea.transcript-hl-input { padding-top: 2.5rem; }
 .manifest-view h3 { margin: 0 0 0.55rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #8a8a8a; }
 .manifest-view .manifest-block { margin: 0 0 1.1rem; padding: 0.75rem 0.85rem; border: 1px solid #3a3a3a; border-radius: 10px; background: #1e1e1e; }
 .manifest-view .manifest-title { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: #e8e8e8; }
@@ -209,7 +261,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 .page-review-pane { flex: 1 1 0; min-width: 0; min-height: 0; display: flex; }
 .page-review-frame { box-sizing: border-box; border: 1px solid #454545; border-radius: 4px; background: #fff; overflow: hidden; display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; height: 100%; width: 100%; }
 .biblio-preview-img-pane .page-review-frame { flex: 1 1 auto; min-height: 0; height: auto; max-height: none; background: #141414; }
-.biblio-book-text-frame { background: #252526; }
+.biblio-book-text-frame { background: #252526; position: relative; }
 .biblio-book-text-frame.is-dirty { border-color: #e6c200; box-shadow: 0 0 0 1px rgba(230, 194, 0, 0.35); }
 .page-review-img-wrap { position: relative; box-sizing: border-box; width: 100%; height: 100%; min-height: 0; padding: 0.75rem; overflow: hidden; line-height: 0; display: flex; align-items: center; justify-content: center; }
 .page-review-img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; background: #fff; }
@@ -292,6 +344,15 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 .biblio-overview-stages h3 { margin: 0; font-size: 0.82rem; font-weight: 600; color: #e8e8e8; }
 .biblio-overview-stages .hint { margin: 0; }
 .biblio-overview-stages button { width: 100%; text-align: left; }
+.biblio-polyindex-compute {
+  display: flex; flex-direction: column; gap: 0.28rem; flex: 0 0 auto;
+}
+.biblio-polyindex-compute > span { font-size: 0.72rem; color: #9d9d9d; }
+.biblio-polyindex-compute select {
+  width: 100%; box-sizing: border-box; font: inherit; font-size: 0.78rem;
+  padding: 0.32rem 0.45rem; border-radius: 6px; border: 1px solid #454545;
+  background: #1e1e1e; color: #e8e8e8;
+}
 .biblio-stage-card {
   display: flex; flex-direction: column; gap: 0;
   border: 1px solid #454545; border-radius: 8px; background: #1e1e1e; overflow: hidden; box-sizing: border-box;
@@ -460,8 +521,8 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         <button type="button" data-biblio-section="biblio">Biblio</button>
       </span>
       <span class="biblio-page-counter" data-biblio-chrome="page">
-        <span>Pag. orig.</span>
-        <input type="number" id="biblio-preview-page-input" class="biblio-preview-page-input" min="1" aria-label="Pagina allineata">
+        <span>Pag.</span>
+        <input type="number" id="biblio-preview-page-input" class="biblio-preview-page-input" min="1" aria-label="Pagina libro">
         <span>/ <span id="biblio-preview-page-max">—</span></span>
       </span>
       <button type="button" class="secondary" data-biblio-chrome="page" id="biblio-btn-edit">Modifica</button>
@@ -497,6 +558,13 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       <aside class="biblio-overview-stages" id="biblio-overview-stages" aria-label="Stage polyindex">
         <h3>Stage polyindex</h3>
         <p class="hint">Dopo OCR / Vision / Editor. Avvia un stage sul libro corrente.</p>
+        <label class="biblio-polyindex-compute" for="biblio-polyindex-compute-mode">
+          <span>Computazione AI</span>
+          <select id="biblio-polyindex-compute-mode" name="biblio_polyindex_compute_mode" aria-label="Computazione AI polyindex">
+            <option value="local" selected>Local</option>
+            <option value="cloud">Cloud</option>
+          </select>
+        </label>
         <div class="biblio-stage-card" data-biblio-stage-card="polyindex_toc">
           <button type="button" data-biblio-stage-toggle="polyindex_toc" aria-expanded="false">Polyindex TOC</button>
           <div class="biblio-stage-panel" hidden>
@@ -582,7 +650,12 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         </div>
         <div class="page-review-pane biblio-preview-text-pane" id="biblio-preview-text-pane">
           <div class="page-review-frame biblio-book-text-frame" id="biblio-preview-text-frame">
+            <div class="biblio-md-switch hidden" id="biblio-page-md-switch" role="group" aria-label="Vista markdown pagina">
+              <button type="button" data-md-mode="preview" class="is-active">Preview</button>
+              <button type="button" data-md-mode="source">Source</button>
+            </div>
             <p class="biblio-book-text-empty" id="biblio-preview-text-empty">Trascrizione della pagina corrente.</p>
+            <div class="biblio-md-preview hidden" id="biblio-preview-md"></div>
             <textarea class="biblio-book-text hidden" id="biblio-preview-text" readonly spellcheck="false"></textarea>
           </div>
           <div id="model-notes-fieldset" class="biblio-page-notes-panel hidden">
@@ -594,8 +667,13 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       </div>
       <div class="biblio-artifact-pane hidden" id="biblio-artifact-pane">
         <div class="biblio-artifact-frame" id="biblio-artifact-frame">
+          <div class="biblio-md-switch hidden" id="biblio-artifact-md-switch" role="group" aria-label="Vista markdown artifact">
+            <button type="button" data-md-mode="preview" class="is-active">Preview</button>
+            <button type="button" data-md-mode="source">Source</button>
+          </div>
           <p class="biblio-artifact-empty" id="biblio-artifact-empty">Seleziona una sezione.</p>
           <div class="biblio-artifact-view hidden" id="biblio-artifact-view"></div>
+          <div class="biblio-md-preview hidden" id="biblio-artifact-md"></div>
           <textarea class="biblio-artifact-text hidden" id="biblio-artifact-text" readonly spellcheck="false"></textarea>
         </div>
       </div>
@@ -617,10 +695,36 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 <script>
 (function () {
   var BIBLIO_EXTRACT_ENABLED = true;
+  var BIBLIO_MD_KINDS = { toc: true, index: true };
+  var biblioArtifactMd = null;
+  var biblioPageMd = null;
   function esc(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
+  }
+  function ensureBiblioMdPanes() {
+    if (!window.LibrarAInMdPreview || typeof window.LibrarAInMdPreview.bindPane !== "function") return;
+    if (!biblioArtifactMd) {
+      biblioArtifactMd = window.LibrarAInMdPreview.bindPane({
+        switchEl: document.getElementById("biblio-artifact-md-switch"),
+        sourceEl: document.getElementById("biblio-artifact-text"),
+        previewEl: document.getElementById("biblio-artifact-md"),
+        emptyEl: document.getElementById("biblio-artifact-empty"),
+        defaultMode: "preview",
+        onOpenPage: function (page) { timeIndexOnOpenPage(page); },
+      });
+    }
+    if (!biblioPageMd) {
+      biblioPageMd = window.LibrarAInMdPreview.bindPane({
+        switchEl: document.getElementById("biblio-page-md-switch"),
+        sourceEl: document.getElementById("biblio-preview-text"),
+        previewEl: document.getElementById("biblio-preview-md"),
+        emptyEl: document.getElementById("biblio-preview-text-empty"),
+        defaultMode: "preview",
+        onOpenPage: function (page) { timeIndexOnOpenPage(page); },
+      });
+    }
   }
   function labelOf(node) {
     if (!node) return "(sconosciuto)";
@@ -1599,6 +1703,9 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     document.getElementById("biblio-edit-status").classList.toggle("hidden", !showEdit || !biblioEditMode);
     var textEl = document.getElementById("biblio-preview-text");
     if (textEl) textEl.readOnly = !biblioEditMode;
+    ensureBiblioMdPanes();
+    if (biblioEditMode && biblioPageMd) biblioPageMd.setMode("source");
+    else if (!biblioEditMode && biblioPageMd && biblioPageMd.isEnabled()) biblioPageMd.refresh();
     if (!biblioEditMode) {
       setBiblioEditStatus("");
       if (biblioPageGuidance && typeof biblioPageGuidance.setActive === "function") {
@@ -1729,19 +1836,10 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       view.innerHTML = "<p class='hint'>Manifest non valido.</p>";
       return;
     }
-    manifestCache = manifest;
+    applyManifestCache(manifest);
     var reicat = (manifest.reicat && typeof manifest.reicat === "object") ? manifest.reicat : {};
     var pages = Array.isArray(manifest.pages) ? manifest.pages : [];
     var removed = Array.isArray(manifest.pages_to_remove) ? manifest.pages_to_remove : [];
-    if (selectedCandidate) {
-      selectedCandidate.pages_to_remove = removed.slice();
-      if (typeof manifest.original_page_count === "number" && manifest.original_page_count > 0) {
-        selectedCandidate.original_page_count = manifest.original_page_count;
-      }
-      if (typeof manifest.aligned_page_count === "number" && manifest.aligned_page_count > 0) {
-        selectedCandidate.aligned_page_count = manifest.aligned_page_count;
-      }
-    }
     var misaligned = pages.filter(function (p) {
       return p && p.aligned != null && p.original != null && p.aligned !== p.original;
     }).length;
@@ -1806,12 +1904,16 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   }
 
   function showArtifactEmpty(msg) {
+    ensureBiblioMdPanes();
     document.getElementById("biblio-artifact-empty").textContent = msg || "";
     document.getElementById("biblio-artifact-empty").classList.remove("hidden");
     document.getElementById("biblio-artifact-text").classList.add("hidden");
     document.getElementById("biblio-artifact-view").classList.add("hidden");
+    document.getElementById("biblio-artifact-md").classList.add("hidden");
+    document.getElementById("biblio-artifact-md").innerHTML = "";
     document.getElementById("biblio-artifact-text").value = "";
     document.getElementById("biblio-artifact-view").innerHTML = "";
+    if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
   }
 
   function clearBiblioTimeIndexCache() {
@@ -1866,8 +1968,10 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   }
 
   function loadBiblioArtifact(kind) {
+    ensureBiblioMdPanes();
     var textEl = document.getElementById("biblio-artifact-text");
     var viewEl = document.getElementById("biblio-artifact-view");
+    var mdEl = document.getElementById("biblio-artifact-md");
     var emptyEl = document.getElementById("biblio-artifact-empty");
     if (!selectedCandidate) {
       showArtifactEmpty("Nessun libro selezionato.");
@@ -1880,6 +1984,11 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       biblioTimeIndexCache.data &&
       biblioTimeIndexCache.uiVer === BIBLIO_TIME_UI_VER
     ) {
+      if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
+      if (mdEl) {
+        mdEl.classList.add("hidden");
+        mdEl.innerHTML = "";
+      }
       showCachedTimeIndex(viewEl, textEl, emptyEl);
       return;
     }
@@ -1889,6 +1998,11 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     emptyEl.classList.remove("hidden");
     textEl.classList.add("hidden");
     viewEl.classList.add("hidden");
+    if (mdEl) {
+      mdEl.classList.add("hidden");
+      mdEl.innerHTML = "";
+    }
+    if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
     var params = new URLSearchParams({
       source_sha256: selectedCandidate.source_sha256,
       kind: kind
@@ -1904,13 +2018,17 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         emptyEl.classList.add("hidden");
         if (kind === "manifest" && data.data && typeof data.data === "object") {
           textEl.classList.add("hidden");
+          if (mdEl) mdEl.classList.add("hidden");
           viewEl.classList.remove("hidden");
+          if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
           renderManifestView(data.data);
           return;
         }
         if (kind === "time_index" && data.data && typeof data.data === "object") {
           textEl.classList.add("hidden");
+          if (mdEl) mdEl.classList.add("hidden");
           viewEl.classList.remove("hidden");
+          if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
           if (window.BiblioTimeIndexView && typeof window.BiblioTimeIndexView.render === "function") {
             biblioTimeIndexCache = {
               sha: selectedCandidate.source_sha256,
@@ -1929,7 +2047,19 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         viewEl.classList.add("hidden");
         viewEl.innerHTML = "";
         textEl.value = data.text || "";
-        textEl.classList.remove("hidden");
+        if (BIBLIO_MD_KINDS[kind]) {
+          if (biblioArtifactMd) {
+            biblioArtifactMd.setEnabled(true);
+            biblioArtifactMd.setMode("preview");
+            biblioArtifactMd.refresh();
+          } else {
+            textEl.classList.remove("hidden");
+          }
+        } else {
+          if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
+          if (mdEl) mdEl.classList.add("hidden");
+          textEl.classList.remove("hidden");
+        }
       })
       .catch(function (err) {
         if (loadGen !== biblioArtifactLoadGen) return;
@@ -2615,6 +2745,43 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     return pages;
   }
 
+  function applyManifestCache(manifest) {
+    if (!manifest || typeof manifest !== "object") return null;
+    manifestCache = manifest;
+    if (selectedCandidate) {
+      var removed = Array.isArray(manifest.pages_to_remove) ? manifest.pages_to_remove : [];
+      selectedCandidate.pages_to_remove = removed.slice();
+      if (typeof manifest.original_page_count === "number" && manifest.original_page_count > 0) {
+        selectedCandidate.original_page_count = manifest.original_page_count;
+      }
+      if (typeof manifest.aligned_page_count === "number" && manifest.aligned_page_count > 0) {
+        selectedCandidate.aligned_page_count = manifest.aligned_page_count;
+      }
+    }
+    return manifestCache;
+  }
+
+  function ensureManifestCache() {
+    if (!selectedCandidate) return Promise.resolve(null);
+    if (manifestCache && Array.isArray(manifestCache.pages) && manifestCache.pages.length) {
+      return Promise.resolve(manifestCache);
+    }
+    var params = new URLSearchParams({
+      source_sha256: selectedCandidate.source_sha256,
+      kind: "manifest"
+    });
+    return fetch("/api/admin/biblio/artifact?" + params.toString())
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data && data.ok && data.data && typeof data.data === "object") {
+          applyManifestCache(data.data);
+          syncBiblioPreviewNav();
+        }
+        return manifestCache;
+      })
+      .catch(function () { return manifestCache; });
+  }
+
   function biblioOriginalForAligned(alignedPage) {
     var pages = manifestCache && Array.isArray(manifestCache.pages) ? manifestCache.pages : [];
     for (var i = 0; i < pages.length; i += 1) {
@@ -2660,25 +2827,40 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     document.getElementById("biblio-preview-next").disabled = !has || biblioNextAlignedPage(biblioPreviewPage) == null;
     document.getElementById("biblio-preview-page-max").textContent = has ? String(max) : "—";
     var inp = document.getElementById("biblio-preview-page-input");
-    if (has && document.activeElement !== inp) inp.value = String(biblioPreviewPage);
+    if (has && document.activeElement !== inp) {
+      inp.value = String(biblioPreviewPage);
+      inp.max = String(max);
+    }
   }
 
   function loadBiblioTranscript(pageNum, loadGen) {
+    ensureBiblioMdPanes();
     var textEl = document.getElementById("biblio-preview-text");
     var emptyEl = document.getElementById("biblio-preview-text-empty");
+    var mdEl = document.getElementById("biblio-preview-md");
     if (!selectedCandidate || !pageNum) {
       biblioPreviewAlignedPage = null;
       biblioTranscriptBaseline = "";
       textEl.classList.add("hidden");
+      if (mdEl) {
+        mdEl.classList.add("hidden");
+        mdEl.innerHTML = "";
+      }
       emptyEl.classList.remove("hidden");
       emptyEl.textContent = "Trascrizione della pagina corrente.";
       textEl.value = "";
+      if (biblioPageMd) biblioPageMd.setEnabled(false);
       updateBiblioTranscriptActions();
       return;
     }
     emptyEl.textContent = "Caricamento trascrizione…";
     emptyEl.classList.remove("hidden");
     textEl.classList.add("hidden");
+    if (mdEl) {
+      mdEl.classList.add("hidden");
+      mdEl.innerHTML = "";
+    }
+    if (biblioPageMd) biblioPageMd.setEnabled(false);
     fetch("/api/admin/book-pages/transcript?" + biblioPageQueryParams(pageNum).toString())
       .then(function (r) { return r.json(); })
       .then(function (data) {
@@ -2688,6 +2870,8 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
           emptyEl.textContent = data.error || "Trascrizione non disponibile.";
           emptyEl.classList.remove("hidden");
           textEl.classList.add("hidden");
+          if (mdEl) mdEl.classList.add("hidden");
+          if (biblioPageMd) biblioPageMd.setEnabled(false);
           return;
         }
         biblioPreviewAlignedPage = data.aligned_page || null;
@@ -2695,9 +2879,15 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         var pending = biblioPendingTranscripts[String(pageNum)];
         textEl.value = pending && typeof pending.text === "string" ? pending.text : biblioTranscriptBaseline;
         if (pending && biblioPreviewAlignedPage) pending.aligned_page = biblioPreviewAlignedPage;
-        textEl.classList.remove("hidden");
         emptyEl.classList.add("hidden");
         textEl.readOnly = !biblioEditMode;
+        if (biblioPageMd) {
+          biblioPageMd.setEnabled(true);
+          biblioPageMd.setMode(biblioEditMode ? "source" : "preview");
+          biblioPageMd.refresh();
+        } else {
+          textEl.classList.remove("hidden");
+        }
         updateBiblioTranscriptActions();
         syncDirtyMarkers();
       })
@@ -2707,6 +2897,8 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         emptyEl.textContent = String(err);
         emptyEl.classList.remove("hidden");
         textEl.classList.add("hidden");
+        if (mdEl) mdEl.classList.add("hidden");
+        if (biblioPageMd) biblioPageMd.setEnabled(false);
         syncDirtyMarkers();
       });
   }
@@ -3001,6 +3193,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     biblioLastSelectedSha = nextSha;
     setBiblioEditMode(false);
     setBiblioSection("libro");
+    ensureManifestCache();
     if (window.BiblioBookOverlay && typeof window.BiblioBookOverlay.showOverview === "function") {
       window.BiblioBookOverlay.showOverview();
     } else {
