@@ -14,7 +14,7 @@ from src.api.job_control import (
     try_handle_job_resume_post,
     try_handle_job_terminate_post,
 )
-from src.api.job_history import _historical_display_status, _history_row_from_pipeline
+from src.api.job_history import _historical_display_status, _history_row_from_pipeline, _pipeline_rows_with_book_context
 from src.api.job_registry import JobRegistry
 from src.core.errors import ShutdownRequested, is_job_cancel_requested, job_cancel_scope, raise_if_shutdown, reset_shutdown_for_tests
 from src.persistence.book_sqlite import init_books_schema
@@ -60,6 +60,58 @@ class TestInterruptedJobControl(unittest.TestCase):
         self.assertEqual(row["display_status"], "interrotto")
         self.assertTrue(row["resumable"])
         self.assertTrue(row["terminable"])
+
+    def test_history_row_marks_partial_success_as_error(self) -> None:
+        row = _history_row_from_pipeline(
+            {
+                "request_id": REQUEST_ID,
+                "status": "succeeded",
+                "finished_at": "2026-08-04T10:00:00+00:00",
+                "source_sha256": SHA,
+                "started_at": "2026-08-04T09:00:00+00:00",
+                "book_title": "Libro",
+                "total_pages": 10,
+                "succeeded_pages": 8,
+                "failed_pages": 2,
+                "last_error": None,
+            }
+        )
+        self.assertEqual(row["display_status"], "errore")
+        self.assertIn("2 pagine fallite", row["error"] or "")
+
+    def test_history_row_marks_recovered_after_prior_failure(self) -> None:
+        rows = _pipeline_rows_with_book_context(
+            [
+                {
+                    "request_id": "failed-job",
+                    "status": "failed",
+                    "finished_at": "2026-08-10T21:58:08+00:00",
+                    "started_at": "2026-08-10T20:19:03+00:00",
+                    "source_sha256": SHA,
+                    "book_title": "Libro",
+                    "total_pages": 10,
+                    "succeeded_pages": 10,
+                    "failed_pages": 0,
+                    "last_error": "[WinError 5] Access is denied",
+                },
+                {
+                    "request_id": "ok-job",
+                    "status": "succeeded",
+                    "finished_at": "2026-08-10T23:55:57+00:00",
+                    "started_at": "2026-08-10T22:34:33+00:00",
+                    "source_sha256": SHA,
+                    "book_title": "Libro",
+                    "total_pages": 10,
+                    "succeeded_pages": 10,
+                    "failed_pages": 0,
+                    "last_error": None,
+                },
+            ],
+            data_root=Path("."),
+        )
+        recovered = next(row for row in rows if row["job_id"] == "ok-job")
+        self.assertEqual(recovered["display_status"], "recuperato")
+        self.assertIn("WinError 5", recovered.get("status_note") or "")
 
     def test_aborted_display_status(self) -> None:
         self.assertEqual(

@@ -35,16 +35,16 @@ def project_status_path(web_dir: Path) -> Path:
     return Path(web_dir) / _PROJECT_STATUS_FILENAME
 
 
-def project_status_stats_cache_path(data_root: Path) -> Path:
-    return Path(data_root) / _STATS_CACHE_FILENAME
+def project_status_stats_cache_path(web_dir: Path) -> Path:
+    return Path(web_dir) / _STATS_CACHE_FILENAME
 
 
-def clear_project_status_stats_cache(data_root: Path | None = None) -> None:
+def clear_project_status_stats_cache(web_dir: Path | None = None) -> None:
     with _STATS_CACHE_LOCK:
         _stats_memory["data_root"] = None
         _stats_memory["payload"] = None
-        if data_root is not None:
-            path = project_status_stats_cache_path(data_root)
+        if web_dir is not None:
+            path = project_status_stats_cache_path(web_dir)
             if path.is_file():
                 try:
                     path.unlink()
@@ -334,8 +334,8 @@ def build_project_stats(
     }
 
 
-def _read_stats_disk_cache(data_root: Path) -> dict[str, Any] | None:
-    path = project_status_stats_cache_path(data_root)
+def _read_stats_disk_cache(web_dir: Path) -> dict[str, Any] | None:
+    path = project_status_stats_cache_path(web_dir)
     if not path.is_file():
         return None
     try:
@@ -351,8 +351,8 @@ def _read_stats_disk_cache(data_root: Path) -> dict[str, Any] | None:
     }
 
 
-def _write_stats_disk_cache(data_root: Path, stats: dict[str, Any], computed_at: str) -> None:
-    path = project_status_stats_cache_path(data_root)
+def _write_stats_disk_cache(web_dir: Path, stats: dict[str, Any], computed_at: str) -> None:
+    path = project_status_stats_cache_path(web_dir)
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {"computed_at": computed_at, "stats": stats}
     tmp = path.with_suffix(".json.tmp")
@@ -380,11 +380,11 @@ def _store_stats_payload(data_root: Path, payload: dict[str, Any]) -> None:
         _stats_memory["payload"] = dict(payload)
 
 
-def _patch_cached_checklist(data_root: Path, tree: dict[str, Any]) -> None:
+def _patch_cached_checklist(data_root: Path, web_dir: Path, tree: dict[str, Any]) -> None:
     checklist = count_statuses(list(tree.get("roots") or []))
     payload = _memory_stats_payload(data_root)
     if payload is None:
-        payload = _read_stats_disk_cache(data_root)
+        payload = _read_stats_disk_cache(web_dir)
     if payload is None or not isinstance(payload.get("stats"), dict):
         return
     stats = dict(payload["stats"])
@@ -392,7 +392,7 @@ def _patch_cached_checklist(data_root: Path, tree: dict[str, Any]) -> None:
     computed_at = str(payload.get("computed_at") or _utc_now_iso())
     stored = {"stats": stats, "computed_at": computed_at, "cached": True}
     _store_stats_payload(data_root, stored)
-    _write_stats_disk_cache(data_root, stats, computed_at)
+    _write_stats_disk_cache(web_dir, stats, computed_at)
 
 
 def get_project_stats(
@@ -411,7 +411,7 @@ def get_project_stats(
             out = dict(mem)
             out["cached"] = True
             return out
-        disk = _read_stats_disk_cache(data_root)
+        disk = _read_stats_disk_cache(web_dir)
         if disk is not None:
             _store_stats_payload(data_root, disk)
             return disk
@@ -427,7 +427,7 @@ def get_project_stats(
     computed_at = _utc_now_iso()
     payload = {"stats": stats, "computed_at": computed_at, "cached": False}
     _store_stats_payload(data_root, payload)
-    _write_stats_disk_cache(data_root, stats, computed_at)
+    _write_stats_disk_cache(web_dir, stats, computed_at)
     return payload
 
 
@@ -501,6 +501,6 @@ def try_handle_project_status_put(
         return True
     tree_body = payload.get("tree") if isinstance(payload.get("tree"), dict) else payload
     tree = save_project_status(web_dir, tree_body)
-    _patch_cached_checklist(data_root, tree)
+    _patch_cached_checklist(data_root, web_dir, tree)
     send_json(handler, 200, {"ok": True, "tree": tree})
     return True

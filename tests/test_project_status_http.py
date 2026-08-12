@@ -199,7 +199,7 @@ class HttpHandlerTests(unittest.TestCase):
         self.settings.data_root = str(self.data_root)
 
     def tearDown(self) -> None:
-        clear_project_status_stats_cache(self.data_root)
+        clear_project_status_stats_cache(self.web_dir)
         self._tmp.cleanup()
 
     def test_get_returns_tree_only(self) -> None:
@@ -222,7 +222,7 @@ class HttpHandlerTests(unittest.TestCase):
         self.assertNotIn("stats", payload)
 
     def test_stats_are_cached(self) -> None:
-        clear_project_status_stats_cache(self.data_root)
+        clear_project_status_stats_cache(self.web_dir)
         sqlite_path = str(self.data_root / "db" / "biblioteca.db")
         first = get_project_stats(
             self.data_root,

@@ -41,7 +41,30 @@ class TestJobDisplayStatus(unittest.TestCase):
 
         self.assertEqual(_historical_display_status("running", None), "interrotto")
         self.assertEqual(_historical_display_status("accepted", None), "interrotto")
-        self.assertEqual(_historical_display_status("succeeded", "2026-06-27T00:00:00+00:00"), "completato")
+        self.assertEqual(
+            _historical_display_status(
+                "succeeded",
+                "2026-06-27T00:00:00+00:00",
+            ),
+            "completato",
+        )
+        self.assertEqual(
+            _historical_display_status(
+                "succeeded",
+                "2026-06-27T00:00:00+00:00",
+                failed_pages=2,
+            ),
+            "errore",
+        )
+        self.assertEqual(
+            _historical_display_status(
+                "succeeded",
+                "2026-06-27T00:00:00+00:00",
+                succeeded_pages=7,
+                total_pages=10,
+            ),
+            "errore",
+        )
         self.assertEqual(_historical_display_status("aborted", "2026-06-27T00:00:00+00:00"), "annullato")
 
     def test_batch_stage_segments_sum_phases(self) -> None:

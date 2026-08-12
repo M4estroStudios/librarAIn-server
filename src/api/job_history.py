@@ -65,28 +65,108 @@ def _timing_from_bounds(started_at: Any, finished_at: Any) -> dict[str, float] |
     return {"total_seconds": total_seconds}
 
 
-def _historical_display_status(status: str, finished_at: Any) -> str:
-    if status in ("done", "succeeded", "completed"):
-        return "completato"
+def _parse_iso_datetime(value: Any) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def _book_audit_complete(data_root: Path | None, source_sha256: str) -> bool | None:
+    sha = str(source_sha256 or "").strip().lower()
+    if not sha or data_root is None:
+        return None
+    try:
+        from src.persistence.book_pages_audit import audit_book
+
+        audit = audit_book(data_root, sha)
+    except Exception:
+        return None
+    if not isinstance(audit, dict):
+        return None
+    return bool(audit.get("complete"))
+
+
+def _historical_display_status(
+    status: str,
+    finished_at: Any,
+    *,
+    last_error: str | None = None,
+    failed_pages: int | None = None,
+    succeeded_pages: int | None = None,
+    total_pages: int | None = None,
+) -> str:
     if status in ("error", "failed"):
         return "errore"
     if status == "aborted":
         return "annullato"
     if not finished_at and status in _INTERRUPTED_PIPELINE_STATUSES:
         return "interrotto"
+    if status in ("done", "succeeded", "completed"):
+        if str(last_error or "").strip():
+            return "errore"
+        failed = int(failed_pages or 0)
+        if failed > 0:
+            return "errore"
+        total = int(total_pages or 0)
+        succeeded = int(succeeded_pages or 0)
+        if total > 0 and succeeded < total:
+            return "errore"
+        return "completato"
     return job_display_status(status)
+
+
+def _history_error_message(
+    row: dict[str, Any],
+    *,
+    display_status: str,
+) -> str | None:
+    last_error = row.get("last_error")
+    if last_error:
+        return str(last_error)
+    if display_status != "errore":
+        return None
+    failed_pages = int(row.get("failed_pages") or 0)
+    if failed_pages > 0:
+        return f"{failed_pages} pagine fallite"
+    total_pages = int(row.get("total_pages") or 0)
+    succeeded_pages = int(row.get("succeeded_pages") or 0)
+    if total_pages > 0 and succeeded_pages < total_pages:
+        return f"Completate {succeeded_pages} su {total_pages} pagine"
+    return None
 
 
 def _history_row_from_pipeline(
     row: dict[str, Any],
     *,
     data_root: Path | None = None,
+    prior_failed_error: str | None = None,
+    attempt_number: int | None = None,
+    attempt_total: int | None = None,
 ) -> dict[str, Any]:
     status = str(row.get("status") or "")
     finished_at = row.get("finished_at")
-    display = _historical_display_status(status, finished_at)
-    book_title = row.get("book_title")
+    display = _historical_display_status(
+        status,
+        finished_at,
+        last_error=row.get("last_error"),
+        failed_pages=row.get("failed_pages"),
+        succeeded_pages=row.get("succeeded_pages"),
+        total_pages=row.get("total_pages"),
+    )
     sha = str(row.get("source_sha256") or "")
+    book_complete = _book_audit_complete(data_root, sha)
+    if display == "completato" and book_complete is False:
+        display = "errore"
+    elif (
+        display == "completato"
+        and prior_failed_error
+        and status in ("done", "succeeded", "completed")
+    ):
+        display = "recuperato"
+    book_title = row.get("book_title")
     interrupted = display == "interrotto"
     resumable = interrupted or pipeline_run_can_resume(row, data_root)
     timing = row.get("timing") if isinstance(row.get("timing"), dict) else None
@@ -96,6 +176,14 @@ def _history_row_from_pipeline(
         fallback = _timing_from_bounds(row.get("started_at"), finished_at)
         if fallback is not None:
             timing = {**timing, **fallback}
+    status_note = None
+    if prior_failed_error and display in ("recuperato", "completato"):
+        status_note = "Dopo errore: " + str(prior_failed_error).strip()
+    elif book_complete is False:
+        status_note = "Libro ancora incompleto in biblioteca"
+    error = _history_error_message(row, display_status=display)
+    if not error and display == "errore" and book_complete is False:
+        error = status_note
     return {
         "job_id": row.get("request_id"),
         "job_kind": "ingest",
@@ -108,7 +196,11 @@ def _history_row_from_pipeline(
         "subtitle": f"{sha[:16]}…" if sha else None,
         "created_at": row.get("started_at"),
         "updated_at": row.get("finished_at") or row.get("started_at"),
-        "error": row.get("last_error"),
+        "error": error,
+        "status_note": status_note,
+        "attempt_number": attempt_number,
+        "attempt_total": attempt_total,
+        "book_complete": book_complete,
         "timing": timing,
         "is_active": False,
         "is_batch": False,
@@ -121,7 +213,11 @@ def _history_row_from_pipeline(
 def _history_row_from_research(row: dict[str, Any]) -> dict[str, Any]:
     status = str(row.get("status") or "")
     finished_at = row.get("finished_at")
-    display = _historical_display_status(status, finished_at)
+    display = _historical_display_status(
+        status,
+        finished_at,
+        last_error=row.get("last_error"),
+    )
     poh_id = row.get("poh_id")
     preview = str(row.get("query_preview") or "").strip()
     title = f"Articolo: {poh_id}" if poh_id else f"Research: {preview or 'articolo'}"
@@ -138,7 +234,7 @@ def _history_row_from_research(row: dict[str, Any]) -> dict[str, Any]:
         "subtitle": preview if poh_id and preview and poh_id != preview else None,
         "created_at": row.get("started_at"),
         "updated_at": row.get("finished_at") or row.get("started_at"),
-        "error": row.get("last_error"),
+        "error": _history_error_message(row, display_status=display),
         "timing": _timing_from_bounds(row.get("started_at"), finished_at),
         "is_active": False,
         "is_batch": False,
@@ -156,6 +252,104 @@ def _live_row(summary: dict[str, Any]) -> dict[str, Any]:
     row["is_historical"] = False
     row["is_batch"] = summary.get("job_kind") == "research_batch"
     return row
+
+
+def _should_skip_superseded_running_row(
+    row: dict[str, Any],
+    *,
+    latest_finished_at: datetime | None,
+) -> bool:
+    if latest_finished_at is None:
+        return False
+    if row.get("finished_at"):
+        return False
+    if str(row.get("status") or "") not in _INTERRUPTED_PIPELINE_STATUSES:
+        return False
+    started = _parse_iso_datetime(row.get("started_at"))
+    return started is not None and started <= latest_finished_at
+
+
+def _pipeline_rows_with_book_context(
+    rows: list[dict[str, Any]],
+    *,
+    data_root: Path | None,
+) -> list[dict[str, Any]]:
+    by_sha: dict[str, list[dict[str, Any]]] = {}
+    for row in rows:
+        sha = str(row.get("source_sha256") or "").strip().lower()
+        if not sha:
+            continue
+        by_sha.setdefault(sha, []).append(row)
+
+    latest_finished_at: dict[str, datetime] = {}
+    for sha, group in by_sha.items():
+        best: datetime | None = None
+        for row in group:
+            when = _parse_iso_datetime(row.get("finished_at") or row.get("started_at"))
+            if when is None:
+                continue
+            if best is None or when > best:
+                best = when
+        if best is not None:
+            latest_finished_at[sha] = best
+
+    enriched: list[dict[str, Any]] = []
+    visible_by_sha: dict[str, list[dict[str, Any]]] = {}
+    for row in rows:
+        sha = str(row.get("source_sha256") or "").strip().lower()
+        if _should_skip_superseded_running_row(row, latest_finished_at=latest_finished_at.get(sha)):
+            continue
+        if sha:
+            visible_by_sha.setdefault(sha, []).append(row)
+
+    visible_attempt_no: dict[str, int] = {}
+    visible_attempt_total: dict[str, int] = {}
+    for sha, group in visible_by_sha.items():
+        ordered = sorted(group, key=lambda item: str(item.get("started_at") or ""))
+        visible_attempt_total[sha] = len(ordered)
+        for index, candidate in enumerate(ordered, start=1):
+            visible_attempt_no[str(candidate.get("request_id") or "")] = index
+
+    for row in rows:
+        sha = str(row.get("source_sha256") or "").strip().lower()
+        if _should_skip_superseded_running_row(row, latest_finished_at=latest_finished_at.get(sha)):
+            continue
+        group = by_sha.get(sha, [])
+        ordered = sorted(
+            group,
+            key=lambda item: str(item.get("started_at") or ""),
+        )
+        request_id = str(row.get("request_id") or "")
+        attempt_number = visible_attempt_no.get(request_id)
+        attempt_total = visible_attempt_total.get(sha) if sha else None
+
+        prior_failed_error = None
+        finished_at = _parse_iso_datetime(row.get("finished_at") or row.get("started_at"))
+        if finished_at is not None:
+            latest_prior: datetime | None = None
+            for other in ordered:
+                other_id = str(other.get("request_id") or "")
+                if other_id == str(row.get("request_id") or ""):
+                    continue
+                if str(other.get("status") or "") not in ("failed", "error"):
+                    continue
+                other_when = _parse_iso_datetime(other.get("finished_at") or other.get("started_at"))
+                if other_when is None or other_when >= finished_at:
+                    continue
+                if latest_prior is None or other_when > latest_prior:
+                    latest_prior = other_when
+                    prior_failed_error = str(other.get("last_error") or "tentativo fallito")
+
+        enriched.append(
+            _history_row_from_pipeline(
+                row,
+                data_root=data_root,
+                prior_failed_error=prior_failed_error,
+                attempt_number=attempt_number,
+                attempt_total=attempt_total,
+            )
+        )
+    return enriched
 
 
 def list_job_history(
@@ -178,8 +372,8 @@ def list_job_history(
 
     by_id: dict[str, dict[str, Any]] = {}
 
-    for row in list_pipeline_runs(sqlite_path, limit=cap * 2):
-        item = _history_row_from_pipeline(row, data_root=root)
+    pipeline_rows = list_pipeline_runs(sqlite_path, limit=cap * 2)
+    for item in _pipeline_rows_with_book_context(pipeline_rows, data_root=root):
         by_id[str(item["job_id"])] = item
 
     for row in list_research_runs(sqlite_path, limit=cap * 2):

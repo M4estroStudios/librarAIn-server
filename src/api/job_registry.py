@@ -470,6 +470,15 @@ _RESEARCH_DISPLAY_PHASE_ORDER = [
     "research_timeline",
     "research_verify",
 ]
+_BIBLIO_PHASE_ORDER = [
+    "biblio_apply",
+    "polyindex_toc",
+    "polyindex_index",
+    "time_index",
+    "polyindex_biblio",
+    "gallery_index",
+    "subject_embeddings",
+]
 _RESEARCH_INTERNAL_PHASES = frozenset({"queue", "research", "pipeline"})
 _PAGE_STEP_STATUSES = frozenset(
     {"page_progress", "page_skipped", "page_failed", "progress"}
@@ -693,6 +702,20 @@ def _phase_order_for_job(state: JobState) -> list[str]:
         return _GLM_REPAIR_PHASE_ORDER
     if is_repair:
         return _REPAIR_PHASE_ORDER
+    if state.job_kind == "biblio":
+        ordered = [phase for phase in _BIBLIO_PHASE_ORDER if phase in phases]
+        extras: list[str] = []
+        for ev in state.events:
+            phase = ev.get("phase")
+            if (
+                not phase
+                or phase in ordered
+                or phase in extras
+                or phase in _RESEARCH_INTERNAL_PHASES
+            ):
+                continue
+            extras.append(str(phase))
+        return ordered + extras
     if "stage1_glm_ocr" in phases:
         return _GLM_INGEST_PHASE_ORDER
     return _INGEST_PHASE_ORDER

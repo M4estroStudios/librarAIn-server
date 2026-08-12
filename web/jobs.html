@@ -30,30 +30,58 @@ h1 { font-size: 1.35rem; margin: 0 0 0.35rem; color: #e8e8e8; }
 .filters button:hover:not(:disabled) { background: #1177bb; color: #fff; }
 .filters button.secondary { background: #3c3c3c; color: #e8e8e8; }
 .filters button.secondary:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
-th, td { text-align: left; padding: 0.5rem 0.45rem; border-bottom: 1px solid #333; vertical-align: top; }
-th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; }
-.mono { font-family: ui-monospace, monospace; font-size: 0.76rem; word-break: break-all; }
+.history-table-wrap { overflow-x: auto; margin-top: 0.35rem; }
+.history-table { width: 100%; min-width: 64rem; table-layout: fixed; border-collapse: collapse; font-size: 0.84rem; }
+.history-table th, .history-table td { text-align: left; padding: 0.5rem 0.45rem; border-bottom: 1px solid #333; vertical-align: top; }
+.history-table th { color: #9d9d9d; font-weight: 600; font-size: 0.78rem; white-space: nowrap; }
+.history-table .col-attempt { width: 2.25rem; }
+.history-table .col-status { width: 6.5rem; }
+.history-table .col-title { width: 28%; min-width: 16rem; }
+.history-table .col-kind { width: 4.5rem; }
+.history-table .col-id { width: 8.5rem; }
+.history-table .col-started, .history-table .col-updated { width: 8rem; }
+.history-table .col-duration { width: 5rem; }
+.history-table .col-actions { width: 8.5rem; }
+.history-table .cell-title { line-height: 1.35; word-break: break-word; overflow-wrap: anywhere; }
+.history-table .cell-title .cell-title-main { display: block; }
+.history-table .cell-title .hint { margin-top: 0.2rem; font-size: 0.72rem; }
+.history-table .cell-attempt { color: #9d9d9d; font-size: 0.78rem; text-align: center; font-variant-numeric: tabular-nums; padding-left: 0.2rem; padding-right: 0.2rem; }
+.history-table .cell-id { font-family: ui-monospace, monospace; font-size: 0.72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.history-table .cell-time { font-size: 0.78rem; white-space: nowrap; }
+.history-table .cell-actions { display: flex; flex-wrap: wrap; gap: 0.3rem; justify-content: flex-end; align-items: flex-start; }
+.history-table .cell-actions button { margin: 0; }
+.history-table .status-cell .hint { margin-top: 0.3rem; font-size: 0.72rem; line-height: 1.3; word-break: break-word; }
+.history-table .status-cell-actions { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; }
+button.job-detail-btn { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.2rem 0.5rem; cursor: pointer; font-size: 0.72rem; white-space: nowrap; }
+button.job-detail-btn:hover { background: #4a4a4a; }
+.mono { font-family: ui-monospace, monospace; font-size: 0.76rem; }
 .status-pill { display: inline-block; padding: 0.12rem 0.45rem; border-radius: 999px; font-size: 0.74rem; border: 1px solid #444; }
 .status-in_coda { color: #dcdcaa; border-color: #6a6a3a; }
 .status-in_pausa { color: #ce9178; border-color: #6a4a3a; }
 .status-in_corso { color: #4ec9b0; border-color: #2a6a5a; }
 .status-completato { color: #6a9955; border-color: #3a5a3a; }
+.status-recuperato { color: #dcdcaa; border-color: #6a6a3a; }
 .status-errore { color: #f48771; border-color: #6a3a3a; }
 .status-interrotto { color: #b8b8b8; border-color: #555; }
 .hint { color: #9d9d9d; font-size: 0.82rem; }
 .empty { color: #9d9d9d; font-size: 0.85rem; padding: 0.5rem 0; }
 #active-jobs-root { margin-top: 0.35rem; }
-button.retry-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.55rem; cursor: pointer; font-size: 0.76rem; margin-top: 0.35rem; }
+button.retry-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.2rem 0.5rem; cursor: pointer; font-size: 0.72rem; margin: 0; white-space: nowrap; }
 button.retry-job:hover { background: #0e639c; border-color: #0e639c; }
 button.retry-job:disabled { opacity: 0.55; cursor: default; }
-button.resume-job, button.terminate-job, button.doctor-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.55rem; cursor: pointer; font-size: 0.76rem; margin-top: 0.35rem; margin-right: 0.3rem; }
+button.resume-job, button.terminate-job, button.doctor-job { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.2rem 0.5rem; cursor: pointer; font-size: 0.72rem; margin: 0; white-space: nowrap; }
 button.resume-job:hover { background: #0e639c; border-color: #0e639c; }
 button.terminate-job:hover { background: #a1260d; border-color: #a1260d; }
 button.doctor-job:hover { background: #0e639c; border-color: #0e639c; }
 button.resume-job:disabled, button.terminate-job:disabled, button.doctor-job:disabled { opacity: 0.55; cursor: default; }
-#prompt-doctor-result { margin-top: 0.75rem; font-size: 0.82rem; }
-#prompt-doctor-result .status-pill { margin-right: 0.35rem; }
+#job-detail-dialog { border: 1px solid #555; border-radius: 10px; padding: 0; background: #252526; color: #e8e8e8; max-width: min(42rem, 92vw); width: 100%; }
+#job-detail-dialog::backdrop { background: rgba(0, 0, 0, 0.65); }
+#job-detail-dialog .dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.85rem 1rem; border-bottom: 1px solid #3e3e3e; }
+#job-detail-dialog .dialog-head h3 { margin: 0; font-size: 0.95rem; font-weight: 600; }
+#job-detail-dialog .dialog-body { margin: 0; padding: 0.85rem 1rem 1rem; max-height: 60vh; overflow: auto; white-space: pre-wrap; word-break: break-word; font-family: ui-monospace, monospace; font-size: 0.78rem; line-height: 1.45; color: #d4d4d4; }
+#job-detail-dialog .dialog-meta { padding: 0 1rem 0.85rem; font-size: 0.78rem; color: #9d9d9d; }
+#job-detail-dialog button.dialog-close { background: #3c3c3c; color: #e8e8e8; border: 1px solid #555; border-radius: 6px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.78rem; }
+#job-detail-dialog button.dialog-close:hover { background: #4a4a4a; }
 .status-pill.status-interrotto { background: #5a4a1a; color: #f0d78c; }
 .status-pill.status-annullato { background: #3c3c3c; color: #b0b0b0; }
 </style>
@@ -87,10 +115,30 @@ button.resume-job:disabled, button.terminate-job:disabled, button.doctor-job:dis
       <button type="button" class="secondary" id="filter-reset">Reset</button>
     </form>
     <div id="history-meta" class="hint"></div>
-    <div id="prompt-doctor-result" class="hint" hidden></div>
-    <table>
+    <dialog id="job-detail-dialog" aria-labelledby="job-detail-title">
+      <div class="dialog-head">
+        <h3 id="job-detail-title">Dettaglio</h3>
+        <button type="button" class="dialog-close" id="job-detail-close">Chiudi</button>
+      </div>
+      <div id="job-detail-meta" class="dialog-meta" hidden></div>
+      <pre id="job-detail-body" class="dialog-body"></pre>
+    </dialog>
+    <div class="history-table-wrap">
+    <table class="history-table">
+      <colgroup>
+        <col class="col-attempt">
+        <col class="col-status">
+        <col class="col-title">
+        <col class="col-kind">
+        <col class="col-id">
+        <col class="col-started">
+        <col class="col-duration">
+        <col class="col-updated">
+        <col class="col-actions">
+      </colgroup>
       <thead>
         <tr>
+          <th>#</th>
           <th>Stato</th>
           <th>Libro / titolo</th>
           <th>Tipo</th>
@@ -102,9 +150,10 @@ button.resume-job:disabled, button.terminate-job:disabled, button.doctor-job:dis
         </tr>
       </thead>
       <tbody id="history-body">
-        <tr><td colspan="8" class="empty">Caricamento…</td></tr>
+        <tr><td colspan="9" class="empty">Caricamento…</td></tr>
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 
@@ -147,12 +196,17 @@ function formatDurationSeconds(totalSeconds) {
   const sec = Math.round(Number(totalSeconds));
   const h = Math.floor(sec / 3600);
   const m = Math.floor((sec % 3600) / 60);
-  const s = sec % 60;
   if (h > 0) {
-    return h + "h " + String(m).padStart(2, "0") + "m " + String(s).padStart(2, "0") + "s";
+    return h + "h " + String(m).padStart(2, "0") + "m";
   }
-  if (m > 0) return m + "m " + String(s).padStart(2, "0") + "s";
-  return s + "s";
+  if (m > 0) return m + "m";
+  return "<1m";
+}
+
+function shortenJobId(jobId) {
+  const id = String(jobId || "");
+  if (id.length <= 22) return id;
+  return id.slice(0, 10) + "…" + id.slice(-8);
 }
 
 function jobDurationLabel(job) {
@@ -180,14 +234,52 @@ const DOCTOR_STATUS_LABEL = {
   corrupt: "corrotto",
 };
 
+function getJobDetailDialog() {
+  return document.getElementById("job-detail-dialog");
+}
+
+function openJobDetailDialog(title, body, meta) {
+  const dialog = getJobDetailDialog();
+  const titleEl = document.getElementById("job-detail-title");
+  const bodyEl = document.getElementById("job-detail-body");
+  const metaEl = document.getElementById("job-detail-meta");
+  if (!dialog || !titleEl || !bodyEl) return;
+  titleEl.textContent = title || "Dettaglio";
+  bodyEl.textContent = body || "";
+  if (metaEl) {
+    if (meta) {
+      metaEl.hidden = false;
+      metaEl.textContent = meta;
+    } else {
+      metaEl.hidden = true;
+      metaEl.textContent = "";
+    }
+  }
+  if (typeof dialog.showModal === "function") dialog.showModal();
+}
+
+function jobErrorDetailText(job) {
+  const parts = [];
+  if (job && job.error) parts.push(String(job.error));
+  if (job && job.status_note) parts.push(String(job.status_note));
+  return parts.join("\n\n");
+}
+
+function jobErrorMeta(job) {
+  if (!job) return "";
+  const bits = [];
+  if (job.job_id) bits.push("Job: " + job.job_id);
+  if (job.book_title) bits.push("Libro: " + job.book_title);
+  if (job.attempt_number && job.attempt_total) {
+    bits.push("Tentativo " + job.attempt_number + "/" + job.attempt_total);
+  }
+  return bits.join(" · ");
+}
+
 async function runPromptDoctor(sha, button) {
   if (!sha) return;
-  const out = document.getElementById("prompt-doctor-result");
   if (button) button.disabled = true;
-  if (out) {
-    out.hidden = false;
-    out.textContent = "Doctor prompt in corso…";
-  }
+  openJobDetailDialog("Doctor prompt", "Analisi prompt in corso…");
   try {
     const data = await apiJson(
       "/api/admin/prompts/doctor?source_sha256=" + encodeURIComponent(sha),
@@ -197,28 +289,30 @@ async function runPromptDoctor(sha, button) {
     const status = book.status || "missing";
     const summary = book.summary || {};
     const title = book.book_title || sha.slice(0, 16);
-    if (out) {
-      out.innerHTML =
-        '<span class="status-pill status-' +
-        escapeHtml(status === "ok" ? "completato" : status === "drift" ? "in_pausa" : "errore") +
-        '">' +
-        escapeHtml(DOCTOR_STATUS_LABEL[status] || status) +
-        "</span>" +
-        "<strong>" +
-        escapeHtml(title) +
-        "</strong> · " +
-        (summary.ok || 0) +
-        " ok, " +
-        (summary.drift || 0) +
-        " drift, " +
-        (summary.missing || 0) +
-        " mancanti · <span class=\"mono\">" +
-        escapeHtml(sha) +
-        "</span>" +
-        ' · <a href="/admin.html#sistema">Apri in admin</a>';
+    const lines = [
+      "Stato: " + (DOCTOR_STATUS_LABEL[status] || status),
+      "Libro: " + title,
+      "SHA: " + sha,
+      "",
+      "Ok: " + (summary.ok || 0),
+      "Drift: " + (summary.drift || 0),
+      "Mancanti: " + (summary.missing || 0),
+    ];
+    const items = Array.isArray(book.items) ? book.items : [];
+    if (items.length) {
+      lines.push("", "Prompt:");
+      items.forEach(function (item) {
+        lines.push("- " + String(item.label || item.id || "prompt") + ": " + String(item.status || "?"));
+      });
     }
+    lines.push("", "Dettaglio completo: /admin.html#sistema");
+    openJobDetailDialog(
+      "Doctor prompt",
+      lines.join("\n"),
+      title
+    );
   } catch (err) {
-    if (out) out.textContent = "Doctor fallito: " + (err.message || err);
+    openJobDetailDialog("Doctor prompt", "Doctor fallito:\n\n" + (err.message || err));
   } finally {
     if (button) button.disabled = false;
   }
@@ -356,7 +450,7 @@ async function loadHistory() {
     });
     meta.textContent = jobs.length + " risultati";
     if (!jobs.length) {
-      body.innerHTML = '<tr><td colspan="8" class="empty">Nessun job trovato.</td></tr>';
+      body.innerHTML = '<tr><td colspan="9" class="empty">Nessun job trovato.</td></tr>';
       return;
     }
     body.innerHTML = jobs.map(function (job) {
@@ -369,13 +463,22 @@ async function loadHistory() {
         job.title ||
         "—";
       const kind = KIND_LABELS[job.job_kind] || job.job_kind || "—";
-      const err = job.error ? '<div class="hint">' + escapeHtml(job.error) + "</div>" : "";
+      const errorDetail = jobErrorDetailText(job);
+      const statusActions = errorDetail
+        ? '<div class="status-cell-actions"><button type="button" class="job-detail-btn" data-show-error="' +
+          escapeHtml(job.job_id || "") +
+          '">Vedi errore</button></div>'
+        : "";
+      const bookLabelWithAttempt = '<span class="cell-title-main">' + escapeHtml(bookLabel) + "</span>";
       const canRetry =
         display === "errore" &&
         (job.job_kind === "research" || job.job_kind === "ingest");
       const canResume = job.job_kind === "ingest" && (job.resumable || display === "interrotto");
       const canTerminate = job.job_kind === "ingest" && (job.terminable || display === "interrotto");
-      const canDoctor = job.job_kind === "ingest" && !!job.source_sha256;
+      const canDoctor =
+        job.job_kind === "ingest" &&
+        !!job.source_sha256 &&
+        (display === "completato" || display === "recuperato" || display === "errore");
       let actions = "";
       if (canResume) {
         actions +=
@@ -399,18 +502,24 @@ async function loadHistory() {
         actions +=
           '<button type="button" class="doctor-job" data-doctor-sha="' +
           escapeHtml(job.source_sha256 || "") +
-          '">Doctor prompt</button>';
+          '" title="Verifica prompt salvati per questo libro">Doctor</button>';
       }
+      const jobId = job.job_id || "";
+      const attemptNo =
+        job.attempt_number != null && Number.isFinite(Number(job.attempt_number))
+          ? String(job.attempt_number)
+          : "—";
       return (
         "<tr>" +
-        '<td><span class="status-pill status-' + escapeHtml(display) + '">' + escapeHtml(label) + "</span>" + err + "</td>" +
-        "<td>" + escapeHtml(bookLabel) + "</td>" +
+        '<td class="cell-attempt">' + escapeHtml(attemptNo) + "</td>" +
+        '<td class="status-cell"><span class="status-pill status-' + escapeHtml(display) + '">' + escapeHtml(label) + "</span>" + statusActions + "</td>" +
+        '<td class="cell-title" title="' + escapeHtml(bookLabel) + '">' + bookLabelWithAttempt + "</td>" +
         "<td>" + escapeHtml(kind) + "</td>" +
-        '<td class="mono">' + escapeHtml(job.job_id || "") + "</td>" +
-        "<td>" + escapeHtml(formatTs(job.created_at)) + "</td>" +
+        '<td class="cell-id" title="' + escapeHtml(jobId) + '">' + escapeHtml(shortenJobId(jobId)) + "</td>" +
+        '<td class="cell-time">' + escapeHtml(formatTs(job.created_at)) + "</td>" +
         "<td>" + escapeHtml(jobDurationLabel(job)) + "</td>" +
-        "<td>" + escapeHtml(formatTs(job.updated_at)) + "</td>" +
-        "<td>" + actions + "</td>" +
+        '<td class="cell-time">' + escapeHtml(formatTs(job.updated_at)) + "</td>" +
+        '<td class="cell-actions">' + actions + "</td>" +
         "</tr>"
       );
     }).join("");
@@ -441,6 +550,19 @@ async function loadHistory() {
         terminateInterruptedJob(job, btn);
       });
     });
+    body.querySelectorAll("[data-show-error]").forEach(function (btn) {
+      const jobId = btn.getAttribute("data-show-error");
+      const job = jobs.find(function (item) {
+        return item.job_id === jobId;
+      });
+      btn.addEventListener("click", function () {
+        openJobDetailDialog(
+          "Errore job",
+          jobErrorDetailText(job),
+          jobErrorMeta(job)
+        );
+      });
+    });
     body.querySelectorAll("[data-doctor-sha]").forEach(function (btn) {
       const sha = btn.getAttribute("data-doctor-sha") || "";
       btn.addEventListener("click", function () {
@@ -448,7 +570,7 @@ async function loadHistory() {
       });
     });
   } catch (err) {
-    body.innerHTML = '<tr><td colspan="8" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
+    body.innerHTML = '<tr><td colspan="9" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
     meta.textContent = "";
   }
 }
@@ -463,6 +585,14 @@ document.getElementById("filter-reset").addEventListener("click", function () {
   document.getElementById("filter-date").value = "";
   loadHistory();
 });
+
+const jobDetailClose = document.getElementById("job-detail-close");
+if (jobDetailClose) {
+  jobDetailClose.addEventListener("click", function () {
+    const dialog = getJobDetailDialog();
+    if (dialog) dialog.close();
+  });
+}
 
 initActiveJobs({ noAuthPrompt: true });
 loadHistory();

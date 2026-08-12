@@ -9,6 +9,7 @@ _DISPLAY_LABELS = {
     "in_corso": "In corso",
     "completato": "Completato",
     "errore": "Errore",
+    "recuperato": "Recuperato",
     "interrotto": "Interrotto",
     "annullato": "Annullato",
 }
