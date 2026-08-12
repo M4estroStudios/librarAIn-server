@@ -1,0 +1,30 @@
+---
+aligned_page: 531
+original_page: 546
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Centro Trasmittente Marconi dei Giardini Vaticani"
+    - "dell’ex Radio Vaticana dei Giardini Vaticani"
+    - "di Pio IV dei Giardini Vaticani"
+    - "Santa Sabina"
+    - "Vaticani"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  PIETRO
+  531
+right: |
+  San Pietro
+  in Vaticano
+bottom: ""
+left: ""
+---
+
+> La basilica di San Pietro prima della realizzazione del colonnato in un’incisione di G.B. Falda.
+
+lavori iniziarono nel 1506 per interrompersi nel 1514 alla morte dell’architetto, quando erano stati costruiti i piloni e gli archi per sostenere la cupola. Al Bramante successero, uno di seguito all’altro; Raffaello, Peruzzi e Antonio da Sangallo il Giovane, che erano intenzionati ad un proseguimento della costruzione a croce latina. E invece, nel 1547, subentrò Michelangelo che riprese il progetto di Bramante, ma concentrò la costruzione nella cupola centrale, per la quale adottò una forma a sesto acuto con doppi costoloni. Queste le misure della basilica: lunghezza m 218,7, compreso il portico, che è largo 71 m, alto 20 e profondo 13,5. La navata mediana è larga 26 m e alta 46,1; il transetto è lungo m 154,8. Il diametro del cupolone è di m 42,56 e l’altezza fino alla sommità della croce è di m 136,57. Quanto a capienza, la basilica può contenere 60.000 persone, e per un raffronto si tenga presente che il Duomo di Milano ne può contenere 37.000 e la basilica di San Paolo di Roma 25.000. Gli altari sono 46. Le finestre sono 233, così distribuite: 29 nella navata centrale e nella crociera, 108 nelle navate laterali, nelle cupole e nei cupolini, 16 nel tamburo del cupolone, 32 nel lanternino del cupolone e 48 nella cupola esterna. La *facciata*, larga 114 m e alta 45, con l’ultimo restauro del 1999 si è rivelata colorata con sabbia di fiume e polvere di mattoncino, che ha dato assetto rosso ai lati, che risale all’opera di Maderno intorno al 1614, oltre ad un verde sopra l’arco della loggia, aggiunto nel Settecento. Prospetta sulla scalinata a tre piani con le colossali statue di *San Pietro e San Paolo*, che erano state scolpite nel 1838 per la nuova basilica di San Paolo, ricostruita dopo il disastroso incendio del 1823; fu Pio IX nel marzo del 1847 a volerle qui al posto di altre due di più modeste dimensioni eseguite nel 1462 e ora conservate nella vecchia aula del sinodo. Sull’attico si elevano 13 statue, alte 6 metri, raffiguranti *Gesù, il Battista e undici apostoli*, tranne san Pietro. Ai due lati, caratteristici i *due orologi a mosaico*, costruiti da

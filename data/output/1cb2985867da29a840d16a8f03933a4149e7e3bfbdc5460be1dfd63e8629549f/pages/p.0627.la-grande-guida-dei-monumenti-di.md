@@ -1,0 +1,54 @@
+---
+aligned_page: 627
+original_page: 642
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Pantheon"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  QUIRINALE
+  627
+right: |
+  Palazzo del
+  Quirinale
+bottom: ""
+left: ""
+---
+
+nitivo aspetto attuale intorno al 1740. I GIARDINI DEL QUIRINALE si estendono  
+a ridosso del Palazzo del Quirinale, lungo il colle e al di sopra  
+della Villa Colonna: sono aperti al pubblico solo il pomeriggio del 2  
+giugno, anniversario della proclamazione della Repubblica. Si aprono  
+da una sorta di labirinto con alte spalliere di mortella e sono caratterizzati  
+da una serie di fontane, che fanno corona alla COFFEE HOUSE, padiglione di svago e riposo fatto costruire da Benedetto XIV nel  
+1742. Una meraviglia sono le fontane, anche se ora ridotte soltanto  
+a sei, perché sono scomparse tutte quelle che erano destinate ad alimentare  
+vasi e aiuole. La *Fontana di Caserta* è la più recente; fu fatta costruire da Umberto I di Savoia ed è decorata con tre statue mu-  
+liebri provenienti dal parco della Reggia di Caserta. La *Fontana di*  
+*Apollo* con la statua del dio citaredo, copia romana da Policleto, è addossata al muro che divide il giardino dal cortile della Manica Lun-  
+ga. La *Fontana delle Tartarughe*, che risale al Seicento, è al centro  
+di una spalliera ellittica di alloro e bosso; a metà della Manica Lunga è una fontana ottocentesca fatta costruire da Gregorio XVI, caratterizzata da una tazza di marmo poggiante su un balaustro scannel-  
+lato. In una nicchia ricavata dal muraglione del cortile delle scuderie è la *Fontana delle Cascate*, con rocce di muschio a picco su una  
+vasca; di fianco a questa è il gioiello della *Fontana dell’Organo*. Fatta costruire da Clemente VIII nel 1596, è inserita in una nicchia con  
+una serie di stucchi policromi raffiguranti *Storie della Genesi e di Mosè*, ma anche divinità marine, in uno scenario inconsueto di sacro bi-  
+blico e pagano; originariamente la raffigurazione era ancor più pagana con la decorazione sulla parete di fondo di *Statue di Apollo e*  
+*delle Muse* in atto di suonare strumenti. Infatti la fontana emetteva  
+un suono, di cui si ignora l’ingranaggio tecnico che lo determinava;  
+ma probabilmente la caduta delle acque azionava degli strumenti, provocando l’impressione che a suonare fossero le statue della nicchia.  
+E c’erano anche getti d’acqua che, azionati a sorpresa, bagnavano i  
+presenti. L’organo, fatto costruire da Clemente XI, poteva funzionare meccanicamente, suonato da un musico; era nascosto dietro la porticina sulla parete di fondo della nicchia, ma erano predisposti anche  
+dei rulli, che permettevano di far ascoltare brani del *Nabucco* di Verdi e del *Mosè* di Rossini.  
+Il palazzo è residenza dei papi dal 1592 con Clemente VIII, ininterrottamente fino alla notte del 5 luglio 1808, quando subì l’assalto  
+di 150 soldati francesi e 60 “fiancheggiatori” romani che dovevano arrestare Pio VII: alcuni di loro con il generale Radet compirono una rocambolesca scalata delle mura e penetrarono nel palazzo  
+attraverso una finestra della Manica Lunga di fronte alla chiesa di  
+Sant’Andrea. Una volta dentro i soldati abbatterono diverse porte,  
+ma non dovettero usare le armi, perché gli alabardieri svizzeri non  
+fecero resistenza, secondo quanto era stato loro ordinato dal papa;  
+e Pio VII stesso non reagì, facendosi condurre all’uscita del palazzo dove attendeva un carrozzino che lo deportò a Fontainebleau. E  
+il Quirinale divenne dimora imperiale fino al 1814, quando il papa tornò dall’esilio. In questo palazzo si sono svolti i quattro *conclavi* dell’Ottocento, con la Cappella Paolina utilizzata per le votazioni, mentre gli appartamenti dei cardinali erano sistemati nella Manica Lunga. Il primo si svolse dal 2 al 28 novembre del 1823

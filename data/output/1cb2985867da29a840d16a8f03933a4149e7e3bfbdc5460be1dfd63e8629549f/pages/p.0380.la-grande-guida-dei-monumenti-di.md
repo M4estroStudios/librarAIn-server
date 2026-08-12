@@ -1,0 +1,36 @@
+---
+aligned_page: 380
+original_page: 382
+chapter_number: "3"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "di San Luigi Gonzaga nel Collegio Romano"
+    - "Sant’Ignazio"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  380
+  GREGORIO
+right: ""
+bottom: ""
+left: |
+  Palazzo
+  Tomati
+
+  San Gregorio
+  al Celio
+---
+
+ciata su via Gregoriana e via Sistina; su quest’ultima si erge la parte di minor rappresentanza, che divenne nel 1781 proprietà dell’architetto Camillo Buti. Questi, morendo, lasciò in povertà moglie e figlie che decisero di aprire nel palazzo una pensione; fu la “Casa Buti”, tenuta dalle tre figlie, soprannominate dai clienti le tre Grazie, che sposarono tre ricchi ospiti della pensione risolvendo così i loro problemi. Ma il palazzo ospitò tra il Settecento e l’Ottocento molti rappresentanti del mondo culturale, artistico e scientifico: fu «nido di uccelli migratori», secondo una definizione di Jorgen Hartmann. Tra i più famosi, il filologo Wilhelm von Humboldt che, con la moglie Caroline, aprì il suo salotto agli intellettuali nordici presenti a Roma, come la poetessa Friederike Brun e lo scultore Thorvaldsen. Altro celebre ospite lo scrittore tedesco August Kestner, che vestiva in modo stravagante, da pittore rinascimentale con un cappello alla Dürer; fu lui che promosse un rinnovamento dell’arte tedesca tra gli artisti emigrati a Roma, come i Nazareni. L’archeologo Luigi Canina abitò all’ultimo piano, mentre al primo abitò Giovan Battista Piranesi e, alla sua morte, il figlio Francesco, incisore ed editore delle “vedute” paterne. Il palazzo ha subito una trasformazione nel 1879 per la sistemazione edilizia della zona, assumendo un assetto pseudobarocco.
+
+# Gregorio (Piazza di San, R XIX Celio)
+
+## San Gregorio al Celio
+
+È al n. 1. Sorta nel Medioevo sul luogo della casa di papa Gregorio I (590-604), dove il santo aveva istituito nel 575 un oratorio de-
+
+> San Gregorio al Celio in un’incisione di G.B. Falda.

@@ -1,0 +1,33 @@
+---
+aligned_page: 503
+original_page: 518
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Braschi"
+    - "di Palazzo Braschi"
+    - "di Roma di Palazzo Braschi"
+    - "San Pantaleo"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  OSTIENSE
+  503
+right: |
+  San Paolo
+  fuori le Mura
+bottom: ""
+left: |
+  L’arco trionfale
+  e l’abside
+  di San Paolo in
+  un’illustrazione
+  di fine
+  Ottocento.
+---
+
+parato le grondaie del tetto della navata maggiore, dimenticò di spegnere il fuoco di cui si era servito; le fiamme si propagarono e un buttero, tale Giuseppe Perna, che passava con il suo bestiame, dette l’allarme. Dall’incendio si salvò il CHIOSTRO, opera in parte dei Vassalletto, caratterizzato da archi sostenuti da colonne binate intarsiate, ottagonali e a spirale: l’opera è illustrata da un’iscrizione a lettere azzurre su fondo oro, che scorre su tre lati. I danni erano gravissimi e vi fu chi propose di abbattere quel poco che restava e ricostruire la basilica ex novo; prevalse invece il parere di coloro che vollero mantenere ciò che si era salvato. Leone XII invitò il mondo cattolico a tassarsi per la ricostruzione e stabilì che essa sorgesse com’era e dov’era. Iniziò la ricostruzione l’architetto Belli e alla sua morte continuò i lavori l’architetto Poletti che mantenne l’incarico anche sotto il nuovo papa, Pio IX. Nel 1869 il Poletti muore e l’incarico passa agli architetti Vespignani e Calderini; dopo il 1870, sarà cura del governo italiano portare a termine l’intera ricostruzione. La basilica ricostruita era stata aperta al culto nel 1840 da Gregorio XVI, ma la riconsacrazione ufficiale avvenne quattordici anni dopo, presente Pio IX con cinquanta cardinali, quaranta arcivescovi e novantasette vescovi, i cui nomi sono scolpiti nelle grandi tavole di marmo poste nell’abside. I guai della basilica non erano però finiti: il 23 aprile 1891 lo scoppio della polveriera di Porta Portese frantumò le vetrate a colori eseguite nel 1830 da Antonio Moroni. Benché la basilica sia al-

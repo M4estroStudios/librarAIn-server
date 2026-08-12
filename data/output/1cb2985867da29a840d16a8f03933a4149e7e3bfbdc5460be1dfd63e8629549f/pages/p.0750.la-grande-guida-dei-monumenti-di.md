@@ -1,0 +1,48 @@
+---
+aligned_page: 750
+original_page: 765
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    []
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  750
+  VIMINALE
+right: ""
+bottom: ""
+left: |
+  Viminale
+  Palazzo del
+  Viminale
+---
+
+# VIMINALE
+
+to della Stazione Termini, con l’Esquilino; qui era la porta Viminale, i cui scarsi resti si trovano in un’aiuola di piazza dei Cinquecento. Risale alle mura Serviane, nelle quali il colle fu racchiuso
+in una linea approssimativamente rintracciabile nelle attuali via Goito, via Volturno e via Marsala. Nel periodo compreso tra gli ultimi
+anni della repubblica e i primi dell’impero il colle divenne quartiere residenziale, ospitando un discreto numero di abitazioni civili, di ville e giardini. La divisione augustea delle città assegnò il Viminale alla VI regione, l’*Alta Semita*, accomunata al Quirinale e i
+vasti *horti*. Ma un momento importante per il colle fu la costruzione
+delle Terme di Diocleziano, mentre altra immagine ebbe con i *Castra Praetoria* nelle estreme pendici settentrionali; l’assetto militare del territorio allontanò dal colle i residenti, così che, quando
+Costantino poi distrusse le caserme dei pretoriani, il colle restò in
+parte abbandonato, restando in funzione solo la zona termale. Le
+invasioni dei barbari fecero però il resto; distrutte le condutture degli acquedotti vennero a mancare i rifornimenti idrici sul colle e le
+terme rimasero deserte. Fu allora vitale solo la parte del colle che
+avrebbe formato, con parte dell’antica sottostante Suburra il rione
+Monti. Nel Medioevo all’ombra dei miseri resti degli edifici che avevano testimoniato di fronte al mondo la potenza e la gloria di Roma prosperavano gli orti, si allargavano le distese delle vigne di proprietà degli Strozzi, nella zona attuale via del Viminale, e dei Frangipane, i cui terreni confinanti con quelli dell’altra potente famiglia si stendevano fino all’ultimo tratto dell’odierna via Urbana. Nel
+XVI secolo alcuni papi illuminati tornarono a posare lo sguardo su
+questo colle che sembrava essere stato dimenticato dalla storia; Paolo IV acquistò da privati e da alcune comunità gran parte delle rovine termali, per costruirvi la basilica di Santa Maria degli Angeli, e Sisto V provvide all’apertura di via Panisperna, destinata a congiungere Santa Maria Maggiore con il Foro di Traiano. Ma quello
+che qualificò il Viminale fu la Villa Peretti Montalto, che costituì
+l’elemento di rinnovamento per il colle, con il rinnovo del flusso d’acqua nella zona grazie all’Acqua Felice. Così la storia di questa villa divenne inevitabilmente la storia del colle fino alla metà
+dell’Ottocento, quando il verde gradatamente scomparve, fino alla creazione della stazione Termini, gradualmente ampliatasi, in parallelo alla lottizzazione della zona per una speculazione edilizia che doveva portare alla formazione del rione Castro Pretorio, con il quale infine il colle si identificò.
+
+## Palazzo del Viminale
+
+È nella piazza. Questo complesso edilizio fu costruito come sede
+del Ministero degli Interni (ora denominato Interno) su progetto di
+Manfredo Manfredi e realizzato tra il 1911 e il 1919, con decorazioni e rifiniture completate nel 1921 e la sistemazione del piazzale antistante e delle rampe di accesso nel 1930. Fu eretto su una zona ampia 60.000 metri quadri di proprietà demaniale occupata da giardini e orti tra le vie Depretis, Palermo, Balbo e Milano, opportunamente scavata e spianata dall’ufficio speciale del Genio Civile; se ne ricavò un immenso volume di terriccio, che finì sull’area dove sorse la Città Universitaria, e furono portati alla luce nu-

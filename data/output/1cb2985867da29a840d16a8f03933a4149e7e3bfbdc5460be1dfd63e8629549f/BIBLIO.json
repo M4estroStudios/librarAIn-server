@@ -1,0 +1,1398 @@
+{
+  "schema_version": "1.0",
+  "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+  "slug": "la-grande-guida-dei-monumenti-di",
+  "node_id": "9081c12d5645c0d0d997e041658390e84d0dee27239ec2b70d3d9e0ad086df6d",
+  "corpus_node": {
+    "authors": "Claudio Rendina",
+    "title": "La grande guida dei monumenti di Roma",
+    "year": 2006,
+    "extras": {
+      "publisher": "Newton Compton editori",
+      "publication_place": "Roma"
+    },
+    "in_corpus": true,
+    "source_sha256": "1cb2985867da29a840d16a8f03933a4149e7e3bfbdc5460be1dfd63e8629549f",
+    "slug": "la-grande-guida-dei-monumenti-di",
+    "incomplete": false
+  },
+  "biblio_range_original": {
+    "start": 797,
+    "end": 798
+  },
+  "biblio_range_aligned": {
+    "start": 782,
+    "end": 783
+  },
+  "entries": [
+    {
+      "id": "029df1fbf3a30c1f82d72efda28244fa9ddfa62ec1609dd4738812b82b077bad",
+      "authors": "AA.VV.",
+      "title": "Guide Rionali di Roma",
+      "year": 1973,
+      "line": null,
+      "raw": "AA.VV., *Guide Rionali di Roma*, Roma 1973-98.",
+      "extras": {
+        "publication_place": "Roma",
+        "year_range": "1973-98"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "7f889fd76717b688178f313e56296b6a168ce09fcc2741b331b6e74108094f9c",
+      "authors": "AA.VV.",
+      "title": "Le strade di Roma",
+      "year": 1987,
+      "line": null,
+      "raw": "AA.VV., *Le strade di Roma*, 6 voll., Roma 1987-89.",
+      "extras": {
+        "volumes": "6 voll.",
+        "publication_place": "Roma",
+        "year_range": "1987-89"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "101c7e7e5bdcb62aec411e1a927261ef6d741f3b5b6e9a8ec5772cf995b5cc37",
+      "authors": "AA.VV.",
+      "title": "Il Foro Italico e lo Stadio Olimpico",
+      "year": 1990,
+      "line": null,
+      "raw": "AA.VV., *Il Foro Italico e lo Stadio Olimpico*, a cura di M. Caporilli e F. Simeoni, Roma 1990.",
+      "extras": {
+        "curators": "M. Caporilli, F. Simeoni",
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "d60808204688c5562299a73a18fdf7df3c90af13fc4a0a56f8bf67905a976ff8",
+      "authors": "AA.VV.",
+      "title": "I rioni e i quartieri di Roma",
+      "year": 1989,
+      "line": null,
+      "raw": "AA.VV., *I rioni e i quartieri di Roma*, 8 voll., Roma 1989-91.",
+      "extras": {
+        "volumes": "8 voll.",
+        "publication_place": "Roma",
+        "year_range": "1989-91"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "55ec769ca5903690a8ca853a302ed13de2cebcf1b653b7514c3419719363786f",
+      "authors": "AA.VV.",
+      "title": "Musei di Roma",
+      "year": 1994,
+      "line": null,
+      "raw": "AA.VV., *Musei di Roma*, Roma 1994.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "f488d7e405bceb02da409b604a91b929a4d2f808287f098769c4593c70a577cc",
+      "authors": "AA.VV.",
+      "title": "Mondo Vaticano",
+      "year": 1995,
+      "line": null,
+      "raw": "AA.VV., *Mondo Vaticano*, a cura di N. Del re, Roma 1995.",
+      "extras": {
+        "curators": "N. Del re",
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "7e4a37e5fe3c3e655b407ace40c583be1341894c2cad0b8c73a08b5427330106",
+      "authors": "AA.VV.",
+      "title": "I quartieri di Roma",
+      "year": 1997,
+      "line": null,
+      "raw": "AA.VV., *I quartieri di Roma*, Roma 1997.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "242afe2c3a907409cb4ebbe78ffbf2c33a17d70fe3484d243e488db96d27e2f3",
+      "authors": "AA.VV.",
+      "title": "Guida TCI. Roma",
+      "year": 1999,
+      "line": null,
+      "raw": "AA.VV., *Guida TCI. Roma*, Milano 1999.",
+      "extras": {
+        "publication_place": "Milano"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "573e686bcb8ed894e30d9bb8445b41f694710039f90e5da7474eb0ca2d90a0c5",
+      "authors": "AA.VV.",
+      "title": "Via del Corso. Una strada lunga 2000 anni",
+      "year": 1999,
+      "line": null,
+      "raw": "AA.VV., *Via del Corso. Una strada lunga 2000 anni*, Roma 1999.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "41ce16030667182d10816350264cbea31fa8370959ee1919e7972b40131ee67a",
+      "authors": "AA.VV.",
+      "title": "Enciclopedia di Roma",
+      "year": 1999,
+      "line": null,
+      "raw": "AA.VV., *Enciclopedia di Roma*, Milano 1999.",
+      "extras": {
+        "publication_place": "Milano"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "608db222c4b06889f987fa15ce2af8ce1d1871dce418b38717b228e45c216e0f",
+      "authors": "AA.VV.",
+      "title": "La grande enciclopedia di Roma",
+      "year": 2000,
+      "line": null,
+      "raw": "AA.VV., *La grande enciclopedia di Roma*, a cura di Claudio Rendina, Roma 2000.",
+      "extras": {
+        "curators": "Claudio Rendina",
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "5af8517405c42e4080b0ef5eebae531374affccfdc4cbdf0943efccfe180d191",
+      "authors": "AA.VV.",
+      "title": "Guida al verde di Roma",
+      "year": 2000,
+      "line": null,
+      "raw": "AA.VV., *Guida al verde di Roma*, Roma 2000.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "a745bc3914de25aa10f1c80dcc4d36d2e21730b0e5bd4dfd3b8057bb8cba315d",
+      "authors": "AA.VV.",
+      "title": "Il Vittoriano",
+      "year": 2002,
+      "line": null,
+      "raw": "AA.VV., *Il Vittoriano*, Roma 2002.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "33999f6faab394f80a2115ce61a8ab23c6433c2eb931e8f2d1bbfc09a96c33d8",
+      "authors": "ACCIARESI P.",
+      "title": "Giuseppe Sacconi e l’opera sua massima",
+      "year": 1911,
+      "line": null,
+      "raw": "ACCIARESI P., *Giuseppe Sacconi e l’opera sua massima*, Roma 1911.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "f184be740507b983dc8c38d2fb142466133db595ddb5e71b85e301acf7771f98",
+      "authors": "AMADEI E.",
+      "title": "Le torri di Roma",
+      "year": 1969,
+      "line": null,
+      "raw": "AMADEI E., *Le torri di Roma*, Roma 1969.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "a4233d07093b676271679bcc152473aba3618d796008d6e055c64e092b97794d",
+      "authors": "AMAYDEN T.",
+      "title": "La storia delle famiglie romane",
+      "year": 1910,
+      "line": null,
+      "raw": "AMAYDEN T., *La storia delle famiglie romane*, Roma 1910.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "020195975c08862b1b6367310a0673fe30eff4032a7e501c9f71d37380230de1",
+      "authors": "AMICI C.M.",
+      "title": "Foro di Traiano: basilica Ulpia e biblioteche",
+      "year": 1982,
+      "line": null,
+      "raw": "AMICI C.M., *Foro di Traiano: basilica Ulpia e biblioteche*, Roma 1982.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "9ae483d628c243c8f8c16cdb5ce6b65a32007794c33da1297e323b0b6c6dd115",
+      "authors": "ANGELERI G., MARIOTTI BIANCHI U.",
+      "title": "Termini. Dalle botteghe di Farfa al Dinosauro",
+      "year": 1983,
+      "line": null,
+      "raw": "ANGELERI G.-MARIOTTI BIANCHI U., *Termini. Dalle botteghe di Farfa al Dinosauro*, Roma 1983.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "88d77c3a5641816f080514928be4f69982d04ecbb3de65f38f35f0f9b735d49c",
+      "authors": "ARMELLINI M.",
+      "title": "Le chiese di Roma dal secolo IV al XIX",
+      "year": 1942,
+      "line": null,
+      "raw": "ARMELLINI M., *Le chiese di Roma dal secolo IV al XIX*, 2 voll., Roma 1942.",
+      "extras": {
+        "volumes": "2 voll.",
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "3810a0e616d0de6d60e65fd13fcfbfc0c4f7f3a5043f6fc6e147a3f445840738",
+      "authors": "BELLI BARSALI I.",
+      "title": "Ville di Roma",
+      "year": 1970,
+      "line": null,
+      "raw": "BELLI BARSALI I., *Ville di Roma*, Milano 1970.",
+      "extras": {
+        "publication_place": "Milano"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "cbf976ff55d36182b2d498e92891b0ec2e3d56da693f82dd0b5bb4c09f1ddeff",
+      "authors": "BENEVOLO L.",
+      "title": "Roma oggi",
+      "year": 1977,
+      "line": null,
+      "raw": "BENEVOLO L., *Roma oggi*, Bari 1977.",
+      "extras": {
+        "publication_place": "Bari"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "2f69939c610e07adf4a15d00486dfddf267a88e70a4323b5c602337da5279df7",
+      "authors": "BOCCARDI STORONI P.",
+      "title": "Guida insolita alla storia, ai segreti, ai monumenti e alle curiosità della basilica di San Pietro",
+      "year": 1999,
+      "line": null,
+      "raw": "BOCCARDI STORONI P., *Guida insolita alla storia, ai segreti, ai monumenti e alle curiosità della basilica di San Pietro*, Roma 1999.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "f6a9b617077b90933c911ac4d023e383751b08b4983464a9c6c6747b676789c6",
+      "authors": "BORGATTI M.",
+      "title": "Castel Sant’Angelo. Storia e descrizione",
+      "year": 1980,
+      "line": null,
+      "raw": "BORGATTI M., *Castel Sant’Angelo. Storia e descrizione*, Roma 1980.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "09f3413503c43117608948319b184784619860ed4677327191f583d72d17ae1e",
+      "authors": "BORTOLOTTI L.",
+      "title": "Roma fuori le mura",
+      "year": 1988,
+      "line": null,
+      "raw": "BORTOLOTTI L., *Roma fuori le mura*, Bari 1988.",
+      "extras": {
+        "publication_place": "Bari"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "d2cd85f098c117a7e0edc242964a4e3392bd5546dc67feca86bf8b04c83f3e96",
+      "authors": "BRENGOLA P.",
+      "title": "Guida di Roma",
+      "year": 1984,
+      "line": null,
+      "raw": "BRENGOLA P., *Guida di Roma*, Roma-Bari 1984.",
+      "extras": {
+        "publication_place": "Roma-Bari"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "9ac35e2aa49db4c0f85a16e13ebd77919acdaa5028e6fdf414aa3641f2c3172f",
+      "authors": "CALCI C.",
+      "title": "Il libro di Roma archeologica",
+      "year": 2000,
+      "line": null,
+      "raw": "CALCI C., *Il libro di Roma archeologica*, Roma 2000.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "2e35eb184d2059b4cfea9d8126abde5883d56b845077c7695789251396119b1c",
+      "authors": "CANEZZA A.",
+      "title": "Gli arcispedali di Roma nella vita cittadina, nella storia e nell’arte",
+      "year": 1933,
+      "line": null,
+      "raw": "CANEZZA A., *Gli arcispedali di Roma nella vita cittadina, nella storia e nell’arte*, Roma 1933.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "44d4107843d04591c19060675fb94edc4dc4ba874d5c0f6d5241b9d2c8332e66",
+      "authors": "CARPANETO G.",
+      "title": "I palazzi di Roma",
+      "year": 1991,
+      "line": null,
+      "raw": "CARPANETO G., *I palazzi di Roma*, Roma 1991.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "bb9d81f9c8d29a2ec58db827ea0a5127c75d0e46090de26817b20aa88d1a84d5",
+      "authors": "CARPANETO G.",
+      "title": "Le famiglie nobili romane",
+      "year": 1994,
+      "line": null,
+      "raw": "ID., *Le famiglie nobili romane*, Roma 1994.",
+      "extras": {
+        "id_reference": "CARPANETO G.",
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "552fac35979c42144c4ceab36a60c301bd50a9cd6400741d95ecaf0a7f198dfe",
+      "authors": "CASTAGNOLI F.",
+      "title": "Roma antica. Profilo urbanistico",
+      "year": 1987,
+      "line": null,
+      "raw": "CASTAGNOLI F., *Roma antica. Profilo urbanistico*, Roma 1987.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "230043cd85f44d87ee8a7639c47642031b2b2d6dc198e6479f9ad447ffbf3e94",
+      "authors": "CECCARIUS",
+      "title": "Strada Giulia",
+      "year": 1940,
+      "line": null,
+      "raw": "CECCARIUS, *Strada Giulia*, Roma 1940.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "02e7ebc1935a8f5d68719f9642d942f398646549acdb05b159dea6f1c2f2005f",
+      "authors": "CIUCCI G., DE FEO V.",
+      "title": "Itinerari per Roma",
+      "year": 1985,
+      "line": null,
+      "raw": "CIUCCI G.-DE FEO V., *Itinerari per Roma*, Vicenza 1985.",
+      "extras": {
+        "publication_place": "Vicenza"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "5478aeceeab9b762993dec79373ed5b0f4f8b1d0271086a4726f7f6000cca7f7",
+      "authors": "COLETTI A.M.",
+      "title": "Gli obelischi, storie e leggende",
+      "year": 1927,
+      "line": null,
+      "raw": "COLETTI A.M., *Gli obelischi, storie e leggende*, Albano 1927.",
+      "extras": {
+        "publication_place": "Albano"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "5e7a1387899c04abd17701cdc280ec0969b091477db59c743563b164dec246c4",
+      "authors": "COLINI A.M.",
+      "title": "Via Appia",
+      "year": 1973,
+      "line": null,
+      "raw": "COLINI A.M., *Via Appia*, Roma 1973.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "37d8ca9a9e1bbdd6ce346b99b00e0c6f6d8adb598d5df527d659e8db9843dcd0",
+      "authors": "CRESTI C., RENDINA C.",
+      "title": "Ville e palazzi di Roma",
+      "year": 1998,
+      "line": null,
+      "raw": "CRESTI C.-RENDINA C., *Ville e palazzi di Roma*, Udine 1998.",
+      "extras": {
+        "publication_place": "Udine"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "7f640ffc9381ad9957c75453638880c595ea1fd47006964e9cee836ba040ae87",
+      "authors": "DE GUTTRY I.",
+      "title": "Guida di Roma moderna",
+      "year": 2001,
+      "line": null,
+      "raw": "DE GUTTRY I., *Guida di Roma moderna*, Roma 2001.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "afcd3ac6764be48d4bdb4256ec59a60ddf47bb9d34f4c9a1de476d51b3f8bbfb",
+      "authors": "DELLA PERGOLA P.",
+      "title": "Villa Borghese",
+      "year": 1964,
+      "line": null,
+      "raw": "DELLA PERGOLA P., *Villa Borghese*, Roma 1964.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "ec97820a0751f8f716cb0aec9e98c29d7d60ab38ef233fb1e5157d6161cee472",
+      "authors": "DELLI S.",
+      "title": "Le strade di Roma",
+      "year": 1975,
+      "line": null,
+      "raw": "DELLI S., *Le strade di Roma*, Roma 1975.",
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "f84e491171d82d9ef6d46f5ec15422db2abc657952d6a8cdb0737d1e04c4ef96",
+      "authors": "DELLI S.",
+      "title": "I ponti di Roma",
+      "year": 1977,
+      "line": null,
+      "raw": "ID., *I ponti di Roma*, Roma 1977.",
+      "extras": {
+        "id_reference": "DELLI S.",
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 782,
+      "original_page": 797
+    },
+    {
+      "id": "eee1c792eb667e15e87fde81d34b8bdbe2327be7d0dd434c2d915f99ffa1da93",
+      "authors": "DE SANCTIS L., BIAMONTE G.",
+      "title": "Le catacombe di Roma",
+      "year": 1997,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "079eb8e61d0e92e46d7dd1f95a43acb65b5ddb2c8daf32ede229f5f061ee15a2",
+      "authors": "D’ONOFRIO C.",
+      "title": "Gli obelischi di Roma",
+      "year": 1963,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "2ef3c81336c6256a4c6480920e2959994daeb825958db46a80dad7900524da34",
+      "authors": "D’ONOFRIO C.",
+      "title": "Il Tevere e Roma",
+      "year": 1969,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "00a53ea20e94c5f43ab56128b6c5caba055f51e1541be2c6798fb9d4e109c7a8",
+      "authors": "ESCOBAR M.",
+      "title": "Le chiese sconosciute di Roma",
+      "year": 1988,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "90b38b695f2b971e1771d12dd27118b6df53489a3302cb1d5763a67e5f75c875",
+      "authors": "FRUTAZ A.P.",
+      "title": "Le piante di Roma",
+      "year": 1962,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "fed249c4e25ba427cd9effb40b8562045ff305c050adaf3f0e2155e72d0902cc",
+      "authors": "GALASSI PALUZZI C.",
+      "title": "La Basilica di S. Pietro",
+      "year": 1975,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Bologna"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "66d7ce1aae8b611d076b2dc950570df65cea288ea365fcc7e081bf09b3bc9793",
+      "authors": "GALLAVOTTI CAVALLERO D.",
+      "title": "Palazzi di Roma dal XIV al XX secolo",
+      "year": 1989,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "e9ba097d0d269c683d9604f2a31c12579c02649d07a1d21514cfa4c982bf314a",
+      "authors": "HINZEN-BOHLEN B., SORGES J.",
+      "title": "Roma",
+      "year": 2001,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "76f2e5efbb3fa91c0a3b3cb29e38a1a0a90f54d735c66be22be7a9546bde3a55",
+      "authors": "HOFFMANN P.",
+      "title": "Le ville di Roma e dei dintorni",
+      "year": 2001,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "149eceeaa5d4550aa93fc4a2be8b6132e6a4e027314bd0a6e4378a08c8e9e815",
+      "authors": "INSOLERA I.",
+      "title": "Roma",
+      "year": 1980,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Bari"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "3e71b46654c4457fe4caf974f75c4a22432b9d54204505550f1e639920a3d984",
+      "authors": "LEFEVRE R.",
+      "title": "Palazzo Chigi",
+      "year": 1972,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "bc78dc6d0fd2e0e800e77b93ddc02b641118e4cb1648e9b383269532a510e725",
+      "authors": "LEFEVRE R.",
+      "title": "Villa Madama",
+      "year": 1973,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "56a6e020a234a76ae9c19ce4545a08fc1ba692e6457f90a96e9293223adc2839",
+      "authors": "LOMBARDI F.",
+      "title": "Palazzi, palazzetti, Case 1200-1870",
+      "year": 1991,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "3aa128d81ec90e41fe9fa5fa2d5ccc0cc286098da2122e8e0a68dfc1675f286f",
+      "authors": "LOMBARDI F.",
+      "title": "Roma Chiese, Conventi, Chiostri 313-1925",
+      "year": 1993,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "5025df7b43462313062a4a0d57004b626204a1ac8779fcd39c1d34e8554aab68",
+      "authors": "LOMBARDI F.",
+      "title": "Le piazze storiche di Roma esistenti e scomparse",
+      "year": 2001,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "4ceaf168562775ef25f70f28dc45e2356a060c3eff3a8d53b9386f5415ae6ef0",
+      "authors": "MALIZIA G.",
+      "title": "Le statue di Roma",
+      "year": 1990,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "0cb21caacb47763d62955ff1e6f587bad82161077a25937c523c4b4b36bad444",
+      "authors": "MALIZIA G.",
+      "title": "Gli archi di Roma",
+      "year": 1994,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "290bd9cd80039cd2ee550c7919b7926a491492373a1142f4752235fe9d81c15c",
+      "authors": "MALIZIA G.",
+      "title": "Le piazze di Roma",
+      "year": 2000,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "55257015788e22042668e2a97a588c0ef518a595dd30be77a02245f0da472169",
+      "authors": "MALIZIA G.",
+      "title": "Le scalinate di Roma",
+      "year": 2001,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "8d4b8ac8303fc59ce668445a3dac12b11452b667491e8ed0ce15541f9b54c107",
+      "authors": "MANDILLO F.",
+      "title": "I cortili di Roma",
+      "year": 1960,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "7db0fb35ecce4782ff77ee477726563f9300805dd20351c161883f785883667f",
+      "authors": "MANODORI A.",
+      "title": "Anfiteatri, circhi e stadi di Roma",
+      "year": 1982,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "96d1271ae4cf4d763d302af0bf8679d6c81965a4f77034bf6fbf22e3ead139df",
+      "authors": "MARONI LUMBROSO M., MARTINI A.",
+      "title": "Le Confraternite romane nelle loro chiese",
+      "year": 1963,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "452945863023c16a3fb4a43d125daff69eb48649c952de73db0a8eeeedfe8e15",
+      "authors": "NICOLINI R.",
+      "title": "L’architettura di Roma capitale. Roma 1870-1970",
+      "year": 1971,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "a73aaa51c0695689c71c9eab5acfda9f67987f661d03e8544250aa04da4c6352",
+      "authors": "PARADISI D.",
+      "title": "I colli di Roma",
+      "year": 1998,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "ea5f2adbd5f5ca19112527cca626d04b7f0480eef0e2d7acbaf2f06320354887",
+      "authors": "POCINO W.",
+      "title": "Le fontane di Roma",
+      "year": 1996,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "045a5bb169e3c97e1c786635be9fab86c5818dcd9a4ccb26eb0fb0a9b2dcb9a3",
+      "authors": "PORTOGHESI P.",
+      "title": "Roma barocca",
+      "year": 1966,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "cd46d25b0b7d24bdfa729b879783fde57e6b8fe951fc8b90a755e175121cc1af",
+      "authors": "PORTOGHESI P.",
+      "title": "Architettura del Rinascimento a Roma",
+      "year": 1968,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "d165458abf4e4b05513cb4fbfbbaf00c9c83e5abeb5c3eccbca26f5d03eb2019",
+      "authors": "QUARONI L.",
+      "title": "Immagine di Roma",
+      "year": 1975,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Bari"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "30a6268f89e19e194e7ee21c920809fc86ff3e60475c9daaeed087d0f2e91d0a",
+      "authors": "QUERCIOLI M.",
+      "title": "Le mura e le porte di Roma",
+      "year": 1982,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "47984ccfd257f3bfcc34257e2aa2339c9a92278a7058f7f9241f6c1059a2171e",
+      "authors": "QUERCIOLI M.",
+      "title": "Le torri di Roma",
+      "year": 1985,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "348b7475989c24cd210b53d0b653e3ac090322b75a0be9c1a8a54e7180881389",
+      "authors": "QUILICI GIGLI S.",
+      "title": "Roma fuori le mura",
+      "year": 1980,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "4f339e12a99bf0790b3111b7d7dd7f97ac020b017ad6399514f3d29edc053ee1",
+      "authors": "RAVAGLIOLI A.",
+      "title": "Vedere e capire Roma",
+      "year": 1980,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "0a2487a6d7acba7f3941e1be67b948b77e069923303b83e04a3a037749743e4e",
+      "authors": "REMIDDI G., GRECO A., BONAVITA A., FERRI P.",
+      "title": "Il Moderno attraverso Roma",
+      "year": 2000,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "7203daf17f8596b34cb123a88aa15bc0fe76a0ac682812e8260aad1376161ef6",
+      "authors": "RENDINA C.",
+      "title": "I papi. Storia e segreti",
+      "year": 1983,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "de730d27a2fdf062d33c5bdde9fd66e49692972b004569f8c034be8168b23454",
+      "authors": "RENDINA C.",
+      "title": "I palazzi di Roma",
+      "year": 1992,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma",
+        "volumes": "3 voll.",
+        "year_range": "1992-93"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "987becc228f6ffdd6d1f5393e2a87ae45d7b3e32a5c48f9291a04040e841a221",
+      "authors": "RENDINA C.",
+      "title": "Il Vaticano. Storia e segreti",
+      "year": 1986,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "63235313bb2a83a6ebc64049773fb85f47a3ce5559f88e9502e76f0414cde825",
+      "authors": "RENDINA C.",
+      "title": "Guida insolita ai misteri, ai segreti, alle leggende e alle curiosità di Roma",
+      "year": 1998,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "3a6d5844fcba75154e84a4899ab1559ea5eeaf0426f420aa66df4d5ff403b6a9",
+      "authors": "RENDINA C.",
+      "title": "Le chiese di Roma",
+      "year": 2000,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "fc9e2b84cd0bc8b07853cb1320ccb925fb9f203de34074327302fb1bd6a8f1ab",
+      "authors": "RENDINA C.",
+      "title": "Storia insolita di Roma",
+      "year": 2001,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "00a987b78344939523fc6553ee2ed202b3cbcfeaaae994ca3f7a3415b25a7e2e",
+      "authors": "ROSSI P.O.",
+      "title": "Roma. Guida all’architettura moderna. 1909-1991",
+      "year": 1991,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Bari"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "1aed1a94aa1abb0aafffefb52aef449952367ff6f462443a7e84ebbfb3e7e4bd",
+      "authors": "SANFILIPPO M.",
+      "title": "Le tre città di Roma",
+      "year": 1993,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Bari"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "77cd88f802ba80973e2e6cc60a181c330b6389d535f77a9b66c0fabce9046b01",
+      "authors": "SEVERI S.",
+      "title": "I teatri di Roma",
+      "year": 1989,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "e71fb60a2b0293363c17bb6fde598238bc14d85ab712481e82165ca2dd4d9cc4",
+      "authors": "SGARBI V.",
+      "title": "Dizionario dei monumenti italiani e dei loro autori. Roma: dal Rinascimento ai giorni nostri",
+      "year": 1991,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "curators": [
+          "Bosello G."
+        ],
+        "editorial_note": "apparati e ricerche dei G. Bosello",
+        "publication_place": "Milano"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "682b7198f817ceb1769a4ef6fc12a0bf1454c90a7c231e50ae877ded3028d537",
+      "authors": "SIMONETTI R.",
+      "title": "Vetera et Nova",
+      "year": 1998,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "92151ce65cf65639752406d3b3fcdeb932453117c516e81fc6d06da30724282a",
+      "authors": "SQUADRILLI T.",
+      "title": "Vicende e monumenti di Roma",
+      "year": 1961,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "5332b48ae8cd36ac1f4457e5da17aa2f2bfc85a46e2f28789bf8680f7150d3b9",
+      "authors": "SPARTÀ S.",
+      "title": "I campanili di Roma",
+      "year": 1983,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "b58aab6b13e3e2a32e821ee552b8e1b8508f4c636ea8b5aa48e3b4caab63dff3",
+      "authors": "SPOTO S.",
+      "title": "Misteri e segreti di Ostia antica",
+      "year": 1995,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "8c84d60d35cb4fac201e3aa1fdcd8635d7098863e161d484c1df217b22539736",
+      "authors": "STACCIOLI R. A.",
+      "title": "Roma entro le mura",
+      "year": 1979,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "667201839a371e2abec1837b3cd0eecfa01425cafca5501e5e88c27985d70e07",
+      "authors": "TAGLIOLINI A.",
+      "title": "I giardini di Roma",
+      "year": 1980,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "73137427f69be6ae87ef7e111862402d0936181869b6be85d64e5cec85a5e276",
+      "authors": "VENTUROI M.",
+      "title": "La Patria di marmo",
+      "year": 1995,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    },
+    {
+      "id": "ec541648e49625860a1a3a5daaa398c537e88460f4959b57dda77fc6d3d6499e",
+      "authors": "ZEPPEGNO L.",
+      "title": "I Rioni di Roma",
+      "year": 1978,
+      "line": null,
+      "raw": null,
+      "extras": {
+        "publication_place": "Roma"
+      },
+      "all_unknown": false,
+      "incomplete": false,
+      "aligned_page": 783,
+      "original_page": 798
+    }
+  ],
+  "review_queue": [],
+  "empty": false
+}

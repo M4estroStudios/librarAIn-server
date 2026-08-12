@@ -1,0 +1,76 @@
+---
+aligned_page: 91
+original_page: 93
+chapter_number: "3"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    []
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  AURELIA ANTICA
+  91
+right: |
+  Villa Doria
+  Pamphilj
+bottom: ""
+left: ""
+---
+
+che, in un complesso lavoro di giardinaggio e terrazzamenti; i lavori
+iniziarono nel 1644 e si conclusero nel 1652. Il progetto fu di
+Alessandro Algardi, ma l’esecuzione di Giovanni Francesco Grimaldi; nel
+progetto originario la palazzina aveva due ali laterali arretrate
+rispetto alla facciata e l’edificio avrebbe dominato ancor più
+con un particolare verticalismo sul giardino segreto e sui giardini
+del Teatro. Fu preferito quell’assetto che ora ha, apparentemente
+incompiuto, ma valorizzato con l’inserimento nella facciata dei numerosi
+marmi integrati da restauri seicenteschi, e per valorizzare
+le sculture, costituenti una serie di busti d’imperatori romani, si
+disposero i pezzi di maggior dimensione in alto in larghe zone di muro
+cieche. L’interno è incentrato su un grande salone circolare a cupola
+che riceve luce dall’alto e comprende due piani, su cui gravitano
+le altre stanze; tra queste sono la cappella e il piccolo ambiente
+di pianta ellittica delle scale. Come l’esterno, anche l’interno è ben
+decorato con l’inserzione di statue entro nicchie e pezzi antichi, stucchi
+nelle soprapporte, festoni e targhe sui parapetti delle finestre. Così
+splendidamente decorate sono la *Sala di Flora*, la *Sala del Tesoro di
+Donna Olimpia* al piano più alto e la *Galleria dei Costumi
+romani* al pianterreno. Gli stessi architetti della palazzina disegnarono
+la sistemazione dei giardini; il parterre fu rifatto dopo l’unione
+delle due famiglie Doria e Pamphilj, perché includeva l’aquila dei
+Doria e il giglio dei Pamphilj tra siepi di bosso a taglio ondulato
+che moltiplicavano l’effetto di movimento dei giardini. Queste siepi
+furono eliminate quando il complesso passò allo Stato; peraltro
+anche le statue che ornavano il giardino furono rimosse per vari
+vandalismi che si verificarono non appena la villa fu aperta al
+pubblico. La palazzina dell’Algardi è attualmente sede di rappresentanza
+della Presidenza del Consiglio dei Ministri ed è stata all’interno
+ristrutturata per questa sua funzione nel 1984.
+
+**Pamphilj** Una tradizione farebbe risalire le origini di questa nobile famiglia romana ad un tal Amanzio di Gubbio nel IX secolo. Ma
+soltanto nel XV secolo i Pamphilj con Jacopo e Francesco si trasferirono
+a Roma nel 1461, divenuti ricchi e potenti, ottennero dal-
+l’imperatore Federico III il titolo di conti del Sacro Romano Impero.
+Nel 1470 Antonio, procuratore fiscale alla Camera Apostolica, acquistò
+una casa che affacciava su piazza Pasquino e il figlio Angelo sposò
+Emilia Villini, che gli portò in dote altre case tra piazza Pasquino e
+piazza Navona. Ma l’affermazione di questa famiglia fu determinata
+dall’avvento al trono pontificio nel 1644 di Giovanni Battista con
+il nome di Innocenzo X; a tale elezione non fu certo estranea l’intrigante
+sua cognata Olimpia Maidalchini (v. Donna Olimpia), moglie
+del fratello Pamphilio. A lei e al papa si deve l’arricchimento dei
+Pamphilj, concretizzatosi anche nel palazzo (v.) di piazza Navona e
+nella villa (v.) sul Gianicolo; una ricchezza che si trovò a gestire il
+figlio di Donna Olimpia, Camillo (1622-66), nominato dallo zio
+generale di Santa Romana Chiesa, comandante della flotta pontificia e
+governatore di Borgo. Era stato creato anche cardinal nepote, ma
+Camillo lasciò la porpora per sposare nel 1647 la principessa di
+Rossano, Olimpia Aldobrandini; grazie a tale matrimonio i Pamphilj ebbero
+anche il palazzo (v.) sul Corso, che divenne l’edificio più
+importante del casato. Qui abitarono poi i figli di Camillo, Giovanni
+Battista e il cardinale Benedetto, che proseguirono i lavori dell’edificio,

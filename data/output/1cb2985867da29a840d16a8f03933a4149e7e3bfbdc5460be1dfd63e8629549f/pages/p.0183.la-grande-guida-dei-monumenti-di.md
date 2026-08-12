@@ -1,0 +1,43 @@
+---
+aligned_page: 183
+original_page: 185
+chapter_number: "3"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Sant’Angelo"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  CASTEL FUSANO
+  183
+right: |
+  Veio
+  Parco di
+  Castel Fusano
+bottom: ""
+left: ""
+---
+
+to la quale fu rinvenuta la dea con bambino conservata anch’essa  
+nel Museo di Villa Giulia. Nella zona dei Campetti, è il SANTUARIO DI PORTA CARE risalente forse al 470 a.C. Esso sorge su un terrapieno  
+contraffortato con mura di blocchi di tufo ed entro quest’area sacra,  
+nella quale furono rinvenute numerose terrecotte del VI e del  
+V secolo a.C. Nelle vicinanze sono visibili i resti di cinque *cisterne*  
+con la volta a botte del periodo repubblicano; oggi parzialmente  
+crollate a valle, erano intercomunicanti per garantire l’uguale livello  
+dell’acqua in esse contenute. Non lontano dalla Porta di Portonaccio  
+si trova lo scavo di una delle grandi ville che sorsero nel territorio  
+di Veio agli inizi dell’età imperiale. La VILLA fu costruita tra  
+I secolo a.C. e il I d.C. su un declivio avendo a monte una cisterna,  
+sotto una serie di ambienti aperti verso valle con pavimenti “alla veneziana” e ancor più in basso un ninfeo a esedra con nicchie e un rivestimento di lastre di marmo; davanti al ninfeo erano  
+situati una sala e un impianto termale con mosaici in bianco e nero di scene marine. Esiste poi una NECROPOLI presso la località Riserva del Bagno costituita da tombe ricavate nella roccia: la più importante di quelle finora scoperte è la *Tomba Campana*, così chiamata dal nome del marchese G.P. Campana, banchiere e collezionista, che la scavò nel 1843 per concessione del Camerlengato dell’amministrazione di Santa Romana Chiesa, come si legge nell’iscrizione posta sopra l’ingresso della tomba. Campana la trovò già violata e tuttavia con un corredo di suppellettili in base alle quali e alle pitture la tomba viene datata alla fine del VII secolo a.C.: lo scopritore disse che probabilmente gli scavatori clandestini si erano limitati a sottrarre le oreficerie, ma fu avanzato il sospetto che egli stesso avesse arricchito il sepolcro con reperti provenienti da Cerveteri, dove aveva già lungamente operato, al fine di conferire maggiore importanza al ritrovamento.
+
+# Castel Fusano (Via e piazza di, Q XXXV Lido di Castel Fusano)
+
+## Parco di Castel Fusano
+
+È costituito da una pineta e da macchia mediterranea per una estensione di 1100 ettari. La sua origine risale alla tenuta che fu acquistata dal cardinale Giulio Sacchetti nel 1620; il porporato fece costruire nella prima frazione, detta il Tomboletto, in fondo all’attuale viale Mediterraneo, la casa padronale. Trattandosi di una zona allora aperta ad eventuali assalti dei barbareschi, il PALAZZO, opera di Pietro da Cortona, fu concepito esternamente in forma di fortezza con quattro torri angolari, ma all’interno ebbe un aspetto raffinato, affrescato da Andrea Sacchi, Baldassarre e Francesco Lauri con motivi mitologici e carte geografiche che ricordavano i viaggi di Marcello Sacchetti. La *cappella*, al primo piano, dedicata alle sante Caterina e Maria Maddalena dei Pazzi, protettrici della famiglia Sacchetti fu affrescata da Andrea Sacchi e Andrea Camassei. Giovanni Battista Sacchetti tra il 1658 e il 1685 tentò la colonizzazione della tenuta con rurali fatti venire dalla Toscana, ma il tentativo fallì, perché i contadini morirono di malaria. Fu decisa allora, ai primi del Settecento, la coltivazione del pino domestico all’interno della macchia esistente, secondo un piano graduale e ben

@@ -1,0 +1,44 @@
+---
+aligned_page: 682
+original_page: 697
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "di Trevi"
+    - "Santi Vincenzo e Anastasio a Trevi"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  682
+  TERME DI CARACALLA
+right: ""
+bottom: ""
+left: |
+  Santi Nereo
+  e Achilleo
+
+  Terme di
+  Caracalla
+---
+
+> L’interno della chiesa dei Santi Nereo e Achilleo in un’illustrazione del
+> 1894.
+
+episcopale, tutti ornati da minuti e finissimi mosaici, sono opere medievali dei Cosmati e il candelabro marmoreo è rinascimentale (XV
+secolo). Il mosaico absidale è una splendida creazione di tardo stile bizantino risalente al pontificato di Leone III (795-816): rappresenta la *Trasfigurazione*, l’*Annunciazione* e la *Madonna col Bambino* e con un *Angelo*.
+
+# Terme di Caracalla
+
+L’ingresso è al n. 52. Iniziate dall’imperatore Marco Aurelio Caracalla nel 212, già in funzione nel 217, vennero completate da Elagabalo nel 222 ed ebbero un assetto architettonico definitivo con Alessandro Severo nel 235. Il complesso, che occupa la zona compresa
+tra il viale al quale dà il nome e viale Baccelli, misurava 337 metri
+per 328, ma con le esedre arrivava a 400 metri; la parte centrale misurava 220 metri per 114, raggiungendo i 140 con la sala del *caldarium*. L’acqua che alimentava queste terme proveniva da un ramo dell’Acquedotto Antoniniano che superava l’Appia sull’Arco di Druso
+(v. via di Porta San Sebastiano). I servizi, che si avvalevano di una
+rete sotterranea di grandi ambienti e strade percorribili anche con carri, erano per 1600 persone. Negli stessi sotterranei, poco tempo dopo la costruzione delle terme, venne ricavato un MITREO, che è il più grande di Roma, ma nulla rimane della splendida decorazione originaria. Il grande edificio termale restò in funzione fino al 537, quando i Goti tagliarono gli acquedotti che le alimentavano; dal VII secolo
+tutta l’area fu occupata da un sepolcreto con tombe a fossa e l’impianto venne utilizzato come *xenodochium* con funzioni assistenziali,
+collegato alla chiesa dei Santi Nereo e Achilleo. La zona, abbandonata dal X secolo, divenne una cava inesauribile di materiali da costruzione, e numerosi oggetti di particolare valore artistico vennero destinati ad abbellire piazze e palazzi. Così nel 1561 il duca Cosimo de’ Medici trasportò a Firenze in piazza della Santissima Trinità la
+colonna di granito e nel 1612 le due grandi vasche di granito grigio
+furono collocate da Odoardo Farnese nella piazza antistante il palazzo

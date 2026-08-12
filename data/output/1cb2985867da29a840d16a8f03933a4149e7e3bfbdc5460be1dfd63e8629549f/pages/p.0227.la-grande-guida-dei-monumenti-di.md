@@ -1,0 +1,30 @@
+---
+aligned_page: 227
+original_page: 229
+chapter_number: "3"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Del Bufalo Niccolini Ferrajoli"
+    - "della Galleria Colonna"
+    - "di Cerere"
+    - "di piazza Colonna"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  COLONNA 227
+right: "Palazzo Chigi"
+bottom: ""
+left: ""
+---
+
+> Palazzo Chigi in un’incisione di inizio Settecento di A. Specchi.
+
+suo stemma con i “crescenti” che appaiono anche nella galleria  
+e nei fregi dell’appartamento Aldobrandini, mentre gli stemmi di  
+questi ultimi (sei stelle separate da una banda merlata tre per parte) si trovano anche nella galleria del palazzo. Nel 1630, alla morte del cardinale Deti, come era stato stabilito, il palazzo ritorna ad  
+Olimpia, e nel 1637 lo eredita il figlio, il cardinale Ippolito Aldobrandini, camerlengo di Santa Romana Chiesa. Sarà un’altra Olimpia, la junior, nipote dello zio Ippolito, sposa di Paolo Borghese e  
+poi di Camillo Pamphili, ad entrarne in possesso. In questo decennio (1623-33) seguitano tuttavia i lavori di costruzione dell’angolo sul Corso. A questo punto subentrano i Chigi: infatti, avvalendosi di una disposizione emessa da Gregorio XIV, in virtù della quale era possibile espropriare abitazioni limitrofe ai palazzi con lo scopo d’ingrandirli e migliorare il decoro della città, nel 1659 Domenico Chigi, fratello di papa Alessandro VII, generale di Santa Romana Chiesa, e don Agostino Chigi, figlio di un altro fratello del papa, principe della terra di Farnese e sposo di Virginia Borghese, comprarono l’edificio. I lavori a questo punto procedono speditamente, ad opera di Felice Della Greca fino al 1676 e poi di Giovanni Battista Contini, il quale portò all’unificazione definitiva del complesso che assunse in sostanza il monumentale aspetto odierno. Del prospetto sul Corso la parte centrale risale all’edificio eretto dagli Aldobrandini nel Cinquecento, mentre la parte di sinistra si deve

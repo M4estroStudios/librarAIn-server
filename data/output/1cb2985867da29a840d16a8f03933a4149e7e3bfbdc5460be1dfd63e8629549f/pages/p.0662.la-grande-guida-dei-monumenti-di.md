@@ -1,0 +1,59 @@
+---
+aligned_page: 662
+original_page: 677
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "del Palazzo del Servizio Geologico d’Italia"
+    - "del Servizio Geologico d’Italia"
+    - "del Servizio Geologico d’Italia"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: "662    SISTO V"
+right: ""
+bottom: ""
+left: |
+  Teatro Sistina
+
+  Villa Gentili
+  Dominici
+
+  Hostaria
+  dell’Orso
+---
+
+tro. Nella loro équipe c’era Carmelo Zambardino (detto Bombardino)
+) che è stato per anni il direttore del teatro, poi sostituito da Stefanella Giovannini, ex attrice e figlia di Sandro». Dalla morte di Giovannini (1977) il teatro è gestito dal “Il Sistina s.r.l.”.
+
+# Sisto V (*Piazzale, R XVIII Castro Pretorio*)
+
+## Villa Gentili Dominici
+
+È al n. 1. Questa villa è sorta a ridosso delle Mura Aureliane, inglobando le poderose arcate dell’acquedotto, ricoperte da edera secolare, in una posizione eccezionale, oggi da considerare abusiva,
+che fu sfruttata nel contesto di un verde ben più ampio del giardino che ora la circonda. Infatti una parte della villa fu espropriata
+nel Novecento per la costruzione della caserma di via Marsala. Sorse come proprietà del marchese Filippo Gentili nel 1739, probabilmente su progetto di Filippo Raguzzini, che avrebbe sistemato
+anche il parco. Il portale maggiore, al quale si accede da due rampe di scale, ha nella lunetta un cane, emblema della famiglia Gentili. Inserito nelle mura è il cosiddetto ARCO DI SISTO V, un arco a tre
+fornici dell’Acquedotto Sistino detto anche “delle pere” dagli elementi araldici del papa Peretti. Scavato nelle mura è un elegante
+NINFEO con pregevoli stucchi settecenteschi con un’antica statua di *Ercole*. C’è poi una TORRE con due tondi scultorei raffiguranti la *Prudenza* e la *Vittoria*. Alla morte del marchese Filippo Gentili la proprietà passò alla figlia di una sua nipote, Costanza Sparapani Gentili, Margherita, che, sposando Giuseppe Boccapaduli, donò la proprietà al principe Urbano Del Drago di Biscia che aveva sposato
+una sua figlia adottiva. E la villa restò al Del Drago fino al 1861,
+quando fu venduta nel 1913 alla principessa russa Elia Cheremeteff,
+dalla quale fu venduto a Gustavo Dominici; e i Dominici sono tuttora proprietari della villa.
+
+# Soldati (*Via, R V Ponte*)
+
+## Hostaria dell’Orso
+
+È al n. 25. Antica locanda, oggi ristorante, che risale al Quattrocento,
+e non prima, come infondatamente si diceva indicandola come la
+locanda dove avrebbe alloggiato Dante durante il Giubileo del
+1300. Il nome dell’Orso derivò dal primo proprietario, Baccio dell’Orso,
+oppure da un bassorilievo, sull’angolo della via antistante
+il locale, raffigurante un orso che tiene tra le zampe un altro animale. Nel 1517 è indicata come «la casa di Marco Piccione se fa
+l’hostaria dell’Orso», proprietà dei nobili romani Piccioni. Vi alloggiò Rabelais nel 1534, ma a quanto pare dovette scappare via per
+le cimici che, secondo lui, infestavano la stanza; nel 1554 vi alloggiò
+Mateo Rot, conventuale di Salem; il 30 novembre e primo dicembre 1580 fu la volta di Montaigne. Decadde poi nel Seicento, tanto che vi alloggiarono postiglioni e servi di stalla, perché la locanda serviva come stazione di posta, tanto che Marco Antoine de Gérard Saint-Amant imprecò contro di essa, pur non avendo di meglio dove alloggiare: «Ritorniamo all’osteria / o nell’inferno, per
+dir meglio, / un inferno di cui un vecchio grande orso / è l’infuriato Cerbero… / A farla breve, simile a un melone di Francia, / son

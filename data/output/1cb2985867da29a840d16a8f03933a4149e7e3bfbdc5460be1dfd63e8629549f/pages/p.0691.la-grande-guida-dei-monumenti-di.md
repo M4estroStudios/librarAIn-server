@@ -1,0 +1,57 @@
+---
+aligned_page: 691
+original_page: 706
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Santa Madonna del Rosario"
+    - "Santissima Trinità dei Pellegrini"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  TORRE ARGENTINA
+  691
+right: |
+  Area Sacra
+  dell’Argentina
+  Teatro
+  argentina
+bottom: ""
+left: ""
+---
+
+le LATRINA PUBBLICA di età imperiale, con un muro in mattoni, e quindi,
+dietro il Tempio della Fortuna, quelli di un grande podio che è
+quanto resta della CURIA DI POMPEO, un’esedra utilizzata per le riunioni
+del Senato dove il 15 marzo del 44 a.C. venne ucciso Cesare.
+Dietro il Tempio di Feronia, sono gli avanzi di un’altra LATRINA PUBBLICA.
+
+# Teatro Argentina
+
+È al n. 52. L’edificio fu appositamente costruito come teatro e questa
+funzione ha sempre avuto dal 1731, anno in cui i lavori di edificazione
+furono terminati. Li aveva commissionati il duca Giuseppe
+Sforza Cesarini e il progetto fu di Girolamo Theodoli; la direzione
+dei lavori venne affidata al capomastro Paolo Cappelletti, che
+si mise in società con Nicola Zabaglia, capo degli artigiani meccanici
+della Fabbrica di San Pietro, in una «compagnia sopra l’incavallatura
+per il tetto del teatro Argentina» che vide impegnati ben settanta
+operai. Si chiamò Argentina dalla casa di Giovanni Burcardo,
+sulla quale il maestro delle cerimonie pontificie aveva inciso il
+nome latino della sua città natale, Strasburgo, *Argentoratus*; fu
+inaugurato il 13 gennaio 1732 con l’opera *Berenice* di Domenico
+Sarro. L’interno del teatro era tutto in legno e la sala, per ragioni
+di acustica, era a ferro di cavallo: il Milizia non ne apprezzava la
+qualità («tutto è miseria»), mentre il La Lande lo considerava tra i
+più belli d’Europa e il Dumont ne lodava l’acustica, ponendolo
+alla pari di altri famosi teatri romani. I primi impresari produssero spettacoli
+in prosa con intermezzi musicali, ma dal 1739 la lirica ebbe
+il sopravvento. Singolare poi un’iniziativa che aveva instaurato il
+governatore di Roma in esclusiva per l’Argentina, che considera-
+
+> Sezione trasversale del palcoscenico del teatro Argentina con capriata
+> e dettagli delle macchine sceniche di G.M. Dumont.

@@ -1,0 +1,72 @@
+---
+aligned_page: 577
+original_page: 592
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Malta"
+    - "Pinciana"
+    - "Portese"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  POPOLO
+  577
+right: |
+  Piazza e Porta
+  del Popolo
+
+  Caserma
+  Giacomo
+  Acqua
+
+  Obelisco
+  Flaminio
+bottom: ""
+left: ""
+---
+
+# Santa Maria dei Miracoli (v.) e Santa Maria in Monte Santo (v.).
+
+La piazza fu teatro, in prossimità della Porta del Popolo (v.), delle
+esecuzioni capitali, l’ultima delle quali si svolse nel 1826 per mazzolatura ai danni di un certo Giuseppe Farina, che aveva ucciso un
+prete per rapina. Il 23 novembre 1825 vi furono ghigliottinati i due
+carbonari Angelo Targhini e Leonida Montanari «rei di lesa maestà
+e per ferite con pericolo», come si legge nelle *Annotazioni delle
+Giustizie di Mastro Titta*, che fu il boia che eseguì la condanna;
+li rievoca una lapide su una facciata della caserma Giacomo Acqua
+(v.), nella quale le parole «per volere del papa», che era Leone XII,
+furono soppresse con dello stucco dopo la Conciliazione, ma sono
+riapparse in seguito a una ripulitura della facciata. La piazza è stata anche luogo di festa nell’Ottocento: vi si svolgeva settimanalmente la tombola pubblica; ci si radunava per assistere alla Girandola e altri fuochi artificiali del Pincio il giorno di Pasquetta; da qui
+partiva, durante il carnevale, la corsa dei barberi, cavalli che in origine venivano dalla Barberia; e nel 1891 la piazza fu trasformata
+in stadio per la corsa dei butteri, guardiani di mandrie e di cavalli
+selvatici.
+
+## Caserma Giacomo Acqua
+
+È al n. 6. L’edificio fu costruito tra il 1811 e il 1824 come caserma
+delle milizie pontificie ad opera del capomastro Antonio Lovatti,
+che l’eseguì secondo il progetto della piazza ridisegnata da Giuseppe
+Valadier. E fu in tutto simile alla chiesa antistante di Santa Maria
+del Popolo, della quale ripete l’andamento planimetrico del fianco,
+e con l’erezione di una cupoletta sull’aggetto, uguale a quella
+che Carlo Fontana aveva eretto sulla Cappella Cybo della chiesa
+stessa. Dopo il 20 settembre 1870 la caserma fu occupata dai Carabinieri, in concomitanza con l’uscita dalla stessa dei gendarmi pontifici che si ritirarono all’interno delle mura vaticane. La caserma,
+dedicata al tenente Giacomo Acqua, che era presente alla presa di
+Roma da parte dei “Carabinieri reali”, è sede del comando della Legione dei Carabinieri “Lazio”, dove si coordina l’attività svolta dall’arma nelle cinque province della regione. Una lapide sul fianco
+dell’edificio all’inizio di via Ferdinando di Savoia ricorda la costruzione del complesso sotto il pontificato di Pio VII.
+
+## Obelisco Flaminio
+
+È alto 23,914 m, ma con il basamento raggiunge m 36,430; fu innalzato ad Heliopolis davanti al Tempio del Sole dai faraoni Seti I
+e Ramses II poco prima del 1200 a.C. e fu fatto trasportare a Roma da Augusto, per essere usato come spina nel Circo Massimo.
+Sisto V lo fece erigere qui nel 1589, utilizzando per il piedistallo
+blocchi tolti al Settizonio demolito. Nei geroglifici è scritto: «Il cielo degli dèi è soddisfatto per quello che fece il figlio del Sole Seti
+I dagli spiriti di Eliopoli amato come il sole». Sulle facce del basamento vi sono quattro iscrizioni: in quella verso il Pincio, quasi
+illeggibile a causa di un fulmine cadutovi il 13 agosto 1983, l’obelisco stesso si dice lieto di innalzarsi davanti al sacro tempio di
+colei dal cui seno virginale durante l’impero di Augusto nacque il
+Sole di giustizia; l’opposta, verso il fiume, ricorda Sisto V che volle trasferire l’obelisco dedicandolo alla Santissima Croce; quella ver-

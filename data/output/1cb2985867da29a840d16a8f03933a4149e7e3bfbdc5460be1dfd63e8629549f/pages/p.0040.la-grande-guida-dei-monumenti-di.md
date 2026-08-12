@@ -1,0 +1,62 @@
+---
+aligned_page: 40
+original_page: 42
+chapter_number: "3"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    []
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  40
+  ANDREA DELLA VALLE
+right: ""
+bottom: ""
+left: |
+  Fontana di
+  Scossacavalli
+
+  Sant’Andrea
+  della Valle
+---
+
+> Sant’Andrea della Valle, prima degli sventramenti ottocenteschi, in
+> un’incisione di C. Vasi.
+
+e, dopo essere rimasta per vent’anni nei magazzini comunali, venne
+collocata qui. Fu realizzata da Carlo Maderno su commissione
+di Paolo V. Costruita in travertino, è costituita da una grande vasca
+dal cui centro si eleva una balaustra con quattro mensole a doppie
+volute dove spiccano gli stemmi della famiglia Borghese; sopra un
+catino circolare che raccoglie l’acqua che sgorga da un bocciolo di
+fogliame.
+
+# Sant’Andrea della Valle
+
+Si affaccia sulla piazza alla quale dà il nome, ma l’appellativo
+“della Valle” deriva dalla zona che anticamente era una depressione
+dove si raccoglievano le acque che scendevano dal Quirinale e
+dal Pincio formando un grande stagno. La costruzione della basilica
+iniziò nel 1591 su progetto di Giovan Francesco Grimaldi e Giacomo
+Della Porta, ma fu proseguita da Carlo Maderno, al quale si
+deve la cupola, che è la quarta di Roma per diametro (m 16,10) dopo
+quella di San Pietro (m 42,56), di San Giovanni Bosco al Quadraro
+(diametro m 31) e dei Santi Pietro e Paolo all’Eur (m 28). Il
+lanternino è di Francesco Borromini. La facciata fu elevata nel
+1665 da Carlo Rainaldi, che non riuscì a modificare in tutto il progetto
+del Maderno che non gli piaceva; allora pensò di porre ai lati
+della facciata due angeli. Un primo, che è sulla sinistra, lo scolpì
+Giacomo Antonio Fancelli, ma fu molto criticato, anche dal papa
+Alessandro VII, per cui lo scultore seccato si rifiutò di scolpire l’altro
+facendo sapere al pontefice che se lo voleva se lo poteva fare
+da sé. Così la facciata restò con un solo angelo, dall’ala distesa e
+disposta contro la parete quasi a far da puntello, come fu maliziosamente
+commentato in due versi affissi alla statua di Pasquino (v.
+piazza di Pasquino): «Vorrei volare al pari d’un uccello, / ma qui
+fui posto a fare da puntello». Numerose e splendide le cappelle; la
+più famosa è la CAPPELLA BARBERINI, la prima a sinistra, detta anche
+della Tosca, perché fa da sfondo al melodramma *Tosca* di Giacomo

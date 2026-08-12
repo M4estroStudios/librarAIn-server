@@ -1,0 +1,58 @@
+---
+aligned_page: 402
+original_page: 404
+chapter_number: "3"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "dell’Accademia dei Lincei"
+    - "Nazionale dei Lincei"
+    - "Santa Maria della Luce"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: "402                                      LUNGARA"
+right: ""
+bottom: ""
+left: |
+  Palazzo
+  Corsini
+
+  Villa della
+  Farnesina
+---
+
+il cardinal Fesch e sua sorella Letizia. Nel 1883 Tommaso Corsini vendette il palazzo allo Stato, che v’insediò l’Accademia dei Lincei, alla quale furono donate biblioteca e pinacoteca; il Comune acquistò il bosco retrostante, destinato ad ospitare l’Orto Botanico (v. largo Cristina di Svezia) e la passeggiata del Gianicolo (v.),
+ma il giardino del palazzo fu recintato per separarlo nettamente
+dall’Orto Botanico. Nel palazzo è insediata una sezione della
+GALLERIA D’ARTE ANTICA CORSINI costituita sulla base della pinacoteca Corsini, che conserva principalmente dipinti tra il Trecento
+e il Settecento, tra i quali: *San Giovanni Battista* di Caravaggio,
+*Il Giudizio universale* del Beato Angelico, *Gesù fra i dottori* di
+Luca Giordano, *San Sebastiano curato dagli angeli* di Pieter Paul
+Rubens, *Erminia e Tancredi* di Gaspard Dughet. La BIBLIOTECA
+contiene 506.000 volumi e 9800 periodici e fondi antichi; oltre al
+nucleo originario, custodisce opere della Fondazione Leone Caetani di cultura araba e musulmana.
+
+> Corsini Famiglia originaria di Firenze, che ebbe un primo rappresentante a Roma nella persona di Filippo (1578-1613), grazie all’apertura di un banco in società con i Medici. Ma la fortuna di questa
+> famiglia nella città venne con l’elezione di Lorenzo al soglio pontificio nel 1730 con il nome di Clemente XII; il nipote Bartolomeo (1683-
+> 1752) dal 1731 fu nominato principe romano, con una serie di titoli
+> comprati con il relativo territorio che lo facevano principe di Sismano
+> e duca di Civitella, e fu anche nominato viceré di Sicilia. L’altro nipote, Neri (1685-1770), creato cardinale, fu investito di numerosi affari, dai quali trasse solo interessi finanziari per la famiglia: così fece costruire il palazzo (v.) con la preziosa galleria e la biblioteca. Tra
+> i discendenti si segnalò Tommaso (1767-1856) che fu due volte senatore, nel 1818 e 1847, ma poi, ostile alla Repubblica romana del
+> 1849, riparò per breve tempo a Firenze; rientrato a Roma con Pio IX,
+> partecipò ai lavori della Consulta per le finanze.
+
+# Villa della Farnesina
+
+È al n. 230. La villa fu costruita come residenza del banchiere
+Agostino Chigi su terreni appartenuti ai Farnese, secondo un progetto di Baldassarre Peruzzi tra il 1505 e il 1520. Il ricchissimo Chigi organizzò nella villa e nel palazzo fastosi ricevimenti e banchetti
+durante i quali faceva gettare nel Tevere i piatti d’argento, che però
+i servi recuperavano dalle reti predisposte nelle acque del fiume.
+Uno splendido banchetto fu offerto al papa Leone x in ambienti con
+pareti ricoperte da arazzi e con il pavimento nascosto da pregiati
+tappeti. Il papa rimproverò l’ospite per l’eccessivo sfarzo, ma quello rispose che la sua devota amicizia verso il pontefice era invece
+dimostrata dalla modestia del luogo e sollevò arazzi e tappeti mettendo a nudo le sue stalle. Il Chigi infatti aveva fatto costruire anche delle scuderie sontuose in grado di ospitare cento cavalli e il
+personale addetto; di esse restano poche tracce; venne distrutta anche, per la costruzione dei muraglioni, nel 1879 una loggetta situata
+verso il Tevere. Fu lui inoltre a rendere splendido all’interno il palazzo, impegnando gli artisti più celebri del suo tempo, e i successivi padroni della villa non aggiunsero altro a quanto in sostanza

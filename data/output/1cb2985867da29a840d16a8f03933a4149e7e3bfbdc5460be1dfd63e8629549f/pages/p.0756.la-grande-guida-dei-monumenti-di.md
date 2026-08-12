@@ -1,0 +1,46 @@
+---
+aligned_page: 756
+original_page: 771
+chapter_number: "7"
+chapter_name: "Itinerari storico-artistici"
+index_connections:
+  success:
+    []
+  failed:
+    []
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  756
+  VITTORIO EMANUELE II
+right: |
+  > La Porta Magica
+  > di piazza Vittorio
+  > Emanuele II in
+  > una stampa
+  > d’epoca.
+bottom: ""
+left: "Porta Magica"
+---
+
+ora appare custodita da *due statue di Bes*, il dio egizio dall’aspetto  
+mostruoso, non originari della villa, ma provenienti dagli scavi  
+sul Quirinale dove sorgeva il Tempio di Iside. Sul frontone, gli stipiti,  
+la soglia, l’architrave e il gradino della porta sono rappresentate  
+espressioni enigmatiche in latino, miste di astrologia, mitologia  
+e religione relative ad una formula per la fabbricazione dell’oro,  
+dalla quale è derivato l’appellativo di Porta Magica. L’origine  
+della formula è ovviamente leggendaria. Massimiliano Palombara  
+era amico di astrologi e alchimisti che si riunivano spesso nella sua  
+villa per discutere del mistero dell’occulto, dandosi anche a esperimenti  
+alchemici in un laboratorio apposito. Tra di loro la leggenda  
+vuole che capitò un misterioso personaggio che avrebbe chiesto al  
+marchese un modesto finanziamento e un ambiente adatto per creare  
+la pietra filosofale. Dopo molte ricerche, tutte compiute nel laboratorio,  
+un giorno il personaggio sparì, lasciando, a testimonianza  
+dell’esperimento riuscito, un po’ d’oro e la sua formula segreta  
+incisa sulla porta che nessuno riuscì mai a identificare. Secondo  
+un’altra leggenda sarebbe stato lo stesso marchese a trovare su un  
+antico libro la formula, alla quale per anni si sarebbe applicato, insieme  
+agli amici alchimisti, per interpretarla; alla fine ci avrebbe

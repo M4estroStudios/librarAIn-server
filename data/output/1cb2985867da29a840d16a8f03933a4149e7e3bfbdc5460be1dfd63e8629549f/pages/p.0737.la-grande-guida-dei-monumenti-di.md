@@ -1,0 +1,40 @@
+---
+aligned_page: 737
+original_page: 752
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Barracco"
+    - "Caffarelli Stoppani Vidoni"
+    - "del Museo Barracco"
+    - "della Farnesina ai Baullari"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  VENTI SETTEMBRE
+  737
+right: "Villa Bonaparte"
+bottom: ""
+left: ""
+---
+
+ché il fratello, Giulio Cesare, aveva sposato una Barberini, assumendo
+il cognome della moglie, la villa venne indicata come Barberini; verso
+il 1785 la villa fu affittata al marchese bolognese Giuseppe Zagnoni
+(1729-1803) che vi tenne grandi feste, tra le quali sono particolarmente
+ricordate quelle del 1787 nella satira *Galleria* esprimente le belle
+romane accorse all’Accademia notturna del marchese Zagnoni bolognese
+data nella Villa Barberini a Porta Pia in varie serate estive del 1787.
+La proprietà passò poi al marchese Angelo Andosilla, ma venne
+riacquistata dai Colonna che l’affittarono al cardinale Fabrizio Ruffo,
+tesoriere di Pio VI, e in seguito all’olandese Henry Hope. Nel settembre
+1816 l’acquistò Paolina Borghese, sorella di Napoleone, che vi rimase
+fino al 1824, e la villa si chiamò allora Paolina. Fu lei a far affrescare
+le stanze in aggiunta alla decorazione del Pannini, ma molti dipinti sono
+andati dispersi, come quelli relativi a paesaggi egiziani che ricordavano
+la campagna d’Egitto del fratello; molto bella la tela ad olio del soffitto
+in una stanza al pianterreno, raffigurante *Atalanta e Ippomene*.

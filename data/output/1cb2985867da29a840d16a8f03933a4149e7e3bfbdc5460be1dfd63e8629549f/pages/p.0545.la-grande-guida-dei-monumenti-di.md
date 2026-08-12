@@ -1,0 +1,47 @@
+---
+aligned_page: 545
+original_page: 560
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "a Enrico Toti"
+    - "a Raffaello Sanzio"
+    - "del Pineto"
+    - "Idrocronometro del Pincio"
+    - "Pineta Sacchetti"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  PIETRO
+  545
+right: |
+  Giardini
+  Vaticani
+bottom: ""
+left: ""
+---
+
+*no vescovo di Chalons-sur-Marne che ferma Attila,* donato sempre  
+a Leone XIII nel 1887 dalla diocesi di Châlons-sur-Marne. E c’è anche una cappella, TEMPIO DELLA MADONNA DELLA GUARDIA, con la  
+riproduzione della statua che ricorda nel porto di Genova l’apparizione della Madonna a un contadino; fu donata dai genovesi a Benedetto XV nel 1917. A questa fa pendant la GROTTA DI LOURDES, che  
+si trova su un piazzale al quale ha dato il nome, alla fine del viale  
+dell’Osservatorio. Si tratta della riproduzione della grotta di Massabielle dove nel 1858 la Madonna apparve a Bernadette Soubirous  
+e fu offerta a Leone XIII nel 1902 dal vescovo di Tarbes, diocesi alla quale faceva capo Lourdes. Benedetta dal papa il primo giugno  
+1902, venne però inaugurata da Pio X solo il 28 marzo 1905, quando furono terminati i lavori d’impianto con la sovrapposizione di  
+un campanile gotico in cemento alto 60 m; questo non era in armonia  
+con la grotta e fu abbattuto nel 1933. Nella grotta ammantata di verde sono riprodotti a mosaico i *ritratti di Leone XIII* e del vescovo di  
+*Tarbes*, monsignor Francesco Saverio Schoepfer; vi è poi un altare proveniente dalla grotta di Lourdes e donato a papa Giovanni XXIII  
+dal vescovo di Tarbes e Lourdes nel 1960. Esternamente vi è una  
+*fontanella* sulla quale sono riprodotte le parole rivolte dalla Madonna  
+a Bernadette il 25 febbraio 1858: «Allez boire à la fontaine et vous  
+y laver». Sulla piazza della Grotta di Lourdes, al centro, sorge la  
+statua bronzea di Sant’Austremonio, vescovo di Arvernium (Clermont) del IV secolo e primo vescovo dell’Alvernia; fu donata da un  
+gruppo di fedeli di quella regione francese a Leone XIII nel 1887.  
+La statua è opera dello scultore Mombur e, sulla facciata anteriore, riproduce in bassorilievo *La predicazione della crociata di Urbano II davanti all’immagine di Notre-Dame du Port* patrona dell’Alvernia. Ma l’architettura più bella resta la CASINA DI PIO IV, situata tra il viale del Giardino Quadrato e lo Stradone ai Giardini. I  
+lavori per la sua edificazione iniziarono nel 1558 sotto il papa Paolo IV e si conclusero nel 1563 sotto Pio IV. Autore dell’opera fu l’ar-
+
+> La Casina di Pio IV nei Giardini Vaticani in un’incisione di G. Vasi.

@@ -1,0 +1,33 @@
+---
+aligned_page: 619
+original_page: 634
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Linea Clementina di Santa Maria degli Angeli"
+    - "Santa Maria degli Angeli"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: ""
+right: |
+  Santi Quattro
+  Coronati
+bottom: ""
+left: ""
+---
+
+# Quattro (*Via dei Santi, R XIX Celio*)
+
+## Santi Quattro Coronati
+
+È al n. 20. Misteriosa la dedica di questa chiesa. Secondo un’antichissima  
+tradizione, cinque (o quattro?) scultori si erano rifiutati di  
+scolpire la statua di un idolo pagano, essendo di fede cristiana. Furono  
+perciò condannati al martirio. Ma i quattro soldati (Severo, Severiano, Carpoforo e Vittorino) che dovevano ucciderli si rifiutarono e inoltre non vollero adorare gli idoli. Furono anch’essi, quindi, martirizzati. Sono loro i santi Quattro Coronati, benché in qualche testo si legga la qualifica attribuita invece agli scultori. Resta comunque il fatto che la chiesa è particolarmente venerata dai marmorari e dagli scalpellini di Roma, in ricordo dei loro sfortunati predecessori. Fondata nel IV secolo, rifatta sotto Leone IV nel IX secolo, fu saccheggiata dai Normanni di Roberto il Guiscardo e quindi in gran parte ricostruita all’inizio del XII secolo sotto Pasquale II. In tempi più vicini, Pio IV la restaurò di nuovo e concesse il monastero annesso alle povere orfane trasferitesi qui dall’Isola Tiberina. Fu questo il più antico dei conservatori per zitelle che sorgesse in Roma. Oggi la chiesa sembra una rocca medievale, racchiusa com’è da mura e sormontata da una torre; eppure l’aspetto mistico predomina fin dall’ingresso costituito da un’arcata suggestivamente sovrastata dal basso e originale campanile romanico. Al di là di esso si apre la profonda prospettiva di due cortili, con un doppio portico che precede l’antico portale della chiesa. Le tre navate sono divise da tre antiche colonne che reggono archi asimmetrici; tutto dà una sensazione di povero e in questo consiste il suo fascino. A contrasto, il soffitto in legno del tardo Cinquecento e le decorazioni dell’abside di Giovanni da San Giovanni del 1630 circa: queste raffigurano la storia del *Martirio dei santi Quattro Coronati* e la *Gloria di tutti i santi*. In una piccola cripta si conservano le urne con i cadaveri dei quattro martiri. Dalla navata di sinistra si passa in un  
+CHIOSTRO con decorazioni marmoree, un quadrato festoso di piante e fiori con una bella fontana del XII secolo; sulla sinistra del chiostro, una cappella del IX secolo con scarsi ma preziosi resti di affreschi bizantineggianti. Fa parte del complesso l’ORATORIO DI SAN  
+SILVESTRO, il cui ingresso è sotto il portico del primo cortile esterno alla chiesa; è un ambiente straordinario, un angolo di Medioevo meglio conservato della chiesa stessa. Vi si conservano ancora  
+non solo le 5 antiche maioliche che, formando una croce, decorano il centro della volta, non solo l’intera struttura e gran parte del-

@@ -1,0 +1,34 @@
+---
+aligned_page: 59
+original_page: 61
+chapter_number: "3"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    []
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  APPIA ANTICA
+  59
+right: |
+  Basilica di San
+  Sebastiano
+bottom: ""
+left: ""
+---
+
+base della *Basilica Apostolorum*, e venne istituita anche una festa.
+Quando le reliquie di Sebastiano, martire al tempo di Diocleziano,
+furono trasferite qui, verso il 350, determinarono il nome definitivo
+assegnato anche alle catacombe. La chiesa fu ricostruita per il
+cardinale Scipione Borghese da Flaminio Ponzio e Giovanni Vasanzio
+tra il 1608 e il 1613. L’interno ha un soffitto ligneo di Giovanni
+Vasanzio. Nella CAPPELLA DELLE RELIQUIE c’è la *pietra* con
+le impronte ritenute di Cristo provenienti dalla chiesa del *Domine quo vadis?*, una *freccia* di quelle che colpirono san Sebastiano e la
+*colonna* alla quale fu legato per l’esecuzione della condanna a
+morte. Notevole la CAPPELLA ALBANI, costruita nel 1716 su disegno
+di Carlo Maratta, da Alessandro Specchi, Filippo Barigioni e Car-

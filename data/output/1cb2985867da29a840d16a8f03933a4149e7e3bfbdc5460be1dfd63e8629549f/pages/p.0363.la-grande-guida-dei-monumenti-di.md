@@ -1,0 +1,49 @@
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: "GIOVANNI IN LATERANO    363"
+right: |
+  Santi
+  Giovanni e
+  Paolo al Celio
+
+  [Battistero
+  Lateranense](<Battistero Lateranense>)
+bottom: ""
+left: ""
+---
+
+le, cunicoli, stanzette si susseguono illuminate da affreschi del III
+secolo d.C. Vi appaiono eleganti figure e deliziosi amorini che sci-
+volano in barca sul mare o sul lago; altrove motivi geometrici o splen-
+didi uccelli e animaletti. L’oratorio ha finte incrostazioni marmo-
+ree ed è collegato all’antico *triclinium* dove gira sulla parete un fre-
+gio con geni alati che sostengono festoni di fiori. Nell’antico *tablinum*,
+che è in fondo all’oratorio, si sale una scaletta che porta al-
+la *Confessio*, minuscola stanzetta integralmente affrescata ma con
+raffigurazioni non ancora chiare nel loro significato. Sulla parete
+di fondo di questo piccolo ambiente si apre la *finestella Confessionis*,
+piccola apertura che si affaccia su un pozzo, da dove furono estrat-
+te le reliquie dei santi.
+
+# Giovanni in Laterano (*Piazza di San, RR I Monti e XV
+*Esquilino*)
+
+## [Battistero Lateranense](<Battistero Lateranense>)
+
+Annesso alla basilica, a destra della Loggia delle Benedizioni, sul-
+la parte absidale è il battistero detto *San Giovanni in Fonte*. Fu fat-
+to costruire da Costantino, che lo realizzò dalla trasformazione
+di un ninfeo appartenente ai Laterani, e fu ricostruito da Sisto II (432-
+40), ma prese l’aspetto attuale in gran parte per il restauro fatto da
+Urbano VIII nel 1637. L’interno, a pianta ottagonale, è concentrato
+tutto su un’urna di basalto verde che servì per il battesimo a im-
+mersione e ora è ricoperto di bronzo: leggenda vuole che vi sia sta-
+to battezzato Costantino, che in realtà ebbe il battesimo in punto di
+morte da un vescovo ariano. Intorno si aprono quattro cappelle an-
+tiche: la CAPPELLA DI SANTA RUFFINA o dei Santi Cipriano e Giusti-
+na, corrispondente all’antico nartece del battistero e del quale si ve-
+dono due imponenti colonne di porfido e le marmoree riquadratu-
+re dei portali; la CAPPELLA DI SAN VENANZIO eretta da Giovanni IV
+nel 640; la CAPPELLA DI SAN GIOVANNI EVANGELISTA realizzata da pa-
+
+> Il battistero di San Giovanni in Fonte in un’incisione di G. Vasi.

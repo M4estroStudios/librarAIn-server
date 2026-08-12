@@ -1,0 +1,71 @@
+---
+aligned_page: 273
+original_page: 275
+chapter_number: "3"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "dei Cavalieri di Rodi"
+    - "Del Bufalo"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: "D"
+right: |
+  Villa
+  pontificia
+  della
+  Magliana
+
+  Palazzo
+  della Dataria
+  Apostolica
+bottom: ""
+left: ""
+---
+
+# Dasti Luigi (*Via, Z 40 Magliana Vecchia*)
+
+## Villa pontificia della Magliana
+
+È al nn. 7-14. La costruzione più antica di questo complesso risale
+al 1490 e corrisponde al palazzetto attualmente dislocato sul lato
+meridionale e detto “di Innocenzo VIII”. È questo papa che appunto
+nel 1490 lo fece costruire, come indicano gli stemmi Cybo
+sugli architravi, secondo un progetto di Graziadeo Pichi da Brescia;
+intorno aveva un giardino con mura di cinta coronato di merli, in
+forma di edificio fortificato, rimasto nel successivo ampliamento
+delle costruzioni. Che vennero realizzate, tra il 1505 e il 1510, al
+tempo di Giulio II, ad opera del cardinale Francesco Alidosi, usufruttuario
+della villa. I lavori furono eseguiti da Giuliano da Sangallo,
+ma attuati solo in parte, e al palazzetto di Innocenzo VIII venne
+aggiunto un fabbricato maggiore con un porticato, dove fu eretta
+una cappella su progetto del Bramante. La villa fu poi prediletta
+da Leone X, che trascorreva qui lunghi periodi di riposo allietato
+da buffoni, poetasti e musicanti di corte; e fu lui a far completare
+gli affreschi della Cappella e della “Sala delle Muse”, dove appunto
+si eseguivano concerti e letture poetiche. Dopo Leone x la
+villa fu abbandonata fino a Pio IV, che fece costruire al centro del
+cortile la *fontana*, e Sisto V, che fece restaurare la Sala delle Muse.
+Di nuovo abbandonata, fu a volte affittata, come nel 1638 a Paolo
+Giordano Orsini e nel 1748 a Camillo Rospigliosi. Nel 1957 venne
+acquistata dal Sovrano Militare Ordine di Malta, che l’ha completamente
+ristrutturato finalizzandolo ad una funzione ospedaliera;
+è l’OSPEDALE SAN GIOVANNI BATTISTA.
+
+# Dataria (*Via della, R II Trevi*)
+
+## Palazzo della Dataria Apostolica
+
+È al n. 94. La struttura originaria del palazzo risale alla fine del Cinquecento,
+proprietà del cardinale Orazio Maffei, alla cui morte
+(1609) fu affittato alla Camera Apostolica pontificia e quindi, nel
+1615, venduto per diventare la sede della Dataria Apostolica, l’ufficio
+della Curia che aveva il compito di apporre la data sui documenti
+pontifici e che fu abolito da Paolo VI nel 1968. A questo scopo
+il palazzo fu ristrutturato per volere di Paolo V, come rivela lo
+stemma del papa Borghese e un’iscrizione, tuttora sulla facciata del
+nuovo edificio. Che fu riedificato per volere di Pio IX nel 1860 da
+Andrea Busiri Vici, inglobando l’antico fabbricato e una casa che

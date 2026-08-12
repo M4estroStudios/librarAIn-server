@@ -1,0 +1,42 @@
+---
+aligned_page: 550
+original_page: 565
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Poli"
+    - "San Giuseppe di Cluny"
+    - "Umberto I"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  550
+  PIETRO IN VINCOLI
+right: ""
+bottom: ""
+left: |
+  San Pietro in
+  Montorio
+  
+  Palazzetto
+  detto
+  dei Borgia
+---
+
+è occupata dall’*Accademia spagnola di Storia, Archeologia e Belle Arti*; caratteristico il chiostro rinascimentale ad arcate e il giardino panoramico digradante su via Garibaldi.
+
+# Pietro in Vincoli (*Piazza di San, R I Monti*)
+
+## Palazzetto detto dei Borgia
+
+È al n. 2. La parte più antica di questo palazzetto, inserito dal Settecento nel complesso edilizio dell’ex convento della chiesa di San  
+Francesco di Paola (v. piazza San Francesco di Paola), è costituito dalla torre mozza a base quadrata, risalente al XIII secolo, ma con  
+un coronamento a beccatelli in travertino del Quattrocento. Proprietà  
+dei Margani, ai quali si deve la costruzione del balcone con finestra ad arco nel 1520, ospitò il papa Giulio II nel 1512 di passaggio dal Vaticano al Laterano per presenziare al Concilio ecumenico Lateranense. Di nuovo proprietà Cesarini, fu da questi donato ai Minimi di San Francesco di Paola come parte integrante del convento. Nessun fondamento storico accredita il palazzetto come appartenente alla famiglia del papa Alessandro VI, ovvero all’amante Vannozza Cattanei e ai suoi figli. La fosca muraglia del palazzetto sul versante del *vicus sceleratus*, dove si apre l’arco sulla gradinata, oscuro per il forte dislivello, carico di mistero, ha fomentato fantasie di intrighi e assassinii che furono all’ordine del giorno nella famiglia di papa Alessandro VI. Così da questo palazzo, la notte del 14 giugno 1497, sarebbe uscito il primogenito di Rodrigo Borgia, don Juan, per non tornarvi più, ucciso probabilmente dal fratello Cesare e gettato nel Tevere. Così la “spudorata” Lucrezia avrebbe ucciso in questa casa i suoi amanti dopo averli posseduti, facendoli scrivolare da una botola posta sotto quel romantico balcone. Romantico per Lord Byron che, durante le sue passeggiate notturne, nel 1817, amava soffermarsi, guardare quel balcone e fantasticare: con una ciocca dei biondi capelli di Lucrezia in mano, immaginava la bella figlia di Alessandro affacciata, con la suggestione di tormentose passioni. Pura leggenda: quando quel balcone fu costruito, Lucrezia oltretutto non era più a Roma ma, come moglie di Alfonso d’Este, viveva a Ferrara, dove morì nel 1519.
+
+Borgia Famiglia spagnola originaria di Játiva, in Valencia, da dove  
+venne a Roma Alonso de Borja (1378-1458) che fu papa con il nome di Callisto III e il cognome fu italianizzato in Borgia. Al suo seguito vennero i nipoti Galcerán (morto dopo il 1459), che fu governatore di Civitavecchia, Pedro Luis (1430ca-1458), capitano generale della Chiesa e prefetto di Roma, e Rodrigo (Játiva 1431-Roma 1503) che fu nominato cardinale a soli 25 anni e divenne vicecancelliere della Chiesa romana. Questi si arricchì di lucrosi benefici, così da poter disporre di una rendita principesca ed avere un’amante, la romana Vannozza Cattanei che gli dette quattro figli, ai quali assicurò prestigio una volta eletto papa con il nome di Alessandro VI. Juan (1456-1497), capitano generale dell’esercito pontificio, dal 1488 duca di Gandia in Spagna, ucciso in circostanze misteriose, probabilmente dal fratello Cesare (1457-1507) (v.), con il quale peraltro il casato raggiunse grande potenza; Jofré (1481ca-1516ca), che fu principe di Squillace grazie al matrimonio con Sancia d’Arago-

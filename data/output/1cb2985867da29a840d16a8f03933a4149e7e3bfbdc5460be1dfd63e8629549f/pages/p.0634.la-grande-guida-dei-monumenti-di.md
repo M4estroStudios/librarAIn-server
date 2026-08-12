@@ -1,0 +1,57 @@
+---
+aligned_page: 634
+original_page: 649
+chapter_number: "4"
+chapter_name: "La grande guida dei monumenti di Roma"
+index_connections:
+  success:
+    []
+  failed:
+    - "Horti Sallustiani"
+    - "Maccari"
+    - "San Salvatore in Campo"
+---
+<!-- librarain:model=gpt-5.6-luna -->
+---
+top: |
+  634
+  REPUBBLICA
+right: ""
+bottom: ""
+left: |
+  Santa Maria
+  degli Angeli
+---
+
+> Le Terme di Diocleziano con la basilica di Santa Maria degli Angeli (incisione di G. Vasi).
+
+tra il 1562 e il 1566. Ne venne fuori un ambiente di eccezionale
+dimensione; lungo m 9,80, alto m 28 e largo m 27 e con 8 colonne
+monolitiche di granito rosso orientale di m 13,80, mentre altre
+quattro in muratura furono utilizzate nel passaggio trasversale. Si
+ebbero successivi interventi e il più importante fu nel 1749 quello
+di Luigi Vanvitelli che, dovendo aggiungere una cappella dedicata
+al beato Nicola Albergati, cambiò l’orientamento della basilica
+aprendo l’attuale ingresso in un nicchione del *caldarium* e trasformando,
+di conseguenza, in trasversale la navata retta di Michelangelo.
+Dopo il 1870 gran parte del convento fu indemaniato e adattato
+a sede del museo; nel 1911 fu rimessa in luce la muratura antica
+della facciata e vi fu creato un doppio ingresso arcuato. Nel vestibolo
+sono quattro monumenti funebri: di Carlo Maratta, opera
+di Francesco Maratta, del cardinale Francesco Alciati, opera di G.B.
+Della Porta, di Salvator Rosa, opera di Bernardino Fioriti, e di
+Pietro Tenerani, con busto autoritratto. Nella nicchia di destra del
+passaggio vi è la gigantesca statua di *San Brunone*, fondatore dei
+Certosini, opera di G.A. Houdon: si racconta che Clemente XIV
+(1769-74) passando un giorno davanti a questa statua, pieno di
+ammirazione, abbia esclamato: «È una statua parlante!». Ma subito
+dopo si sarebbe corretto dicendo: «O meglio, parlerebbe se la Regola
+non glielo vietasse!», e questo perché il silenzio è una delle
+norme della Regola dei Certosini. Sul pavimento del braccio destro,
+una grandiosa meridiana, chiamata *Linea Clementina*, da Clemente
+IX che la fece disegnare, con i segni dello Zodiaco e le variazioni
+della stella polare. Vi sono quindi le tombe di tre protagonisti della
+prima guerra mondiale: il presidente del Consiglio dell’epoca *Vittorio
+Emanuele Orlando*, l’ammiraglio *Paolo Thaon de Revel* e il
+maresciallo *Armando Diaz*. Nel presbiterio, *Martirio di san Sebastiano*,
+dipinto ad olio del Domenichino e nell’abside la *tomba di Pio V*.
