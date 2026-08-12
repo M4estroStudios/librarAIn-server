@@ -8,7 +8,7 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from src.core.log import INFO_LOG_LEVEL, Log, bind_log_context, logInit, reset_log_context
+from src.core.log import INFO_LOG_LEVEL, Log, bind_log_context, logInit, reset_log_context, shutdown_log_flush
 from src.ingestion.orchestrator import run_pipeline
 from src.models.request import PageRange, ReicatMetadata, UsefulPagesEnumeration
 
@@ -71,6 +71,7 @@ class TestLoggingPropagation(unittest.TestCase):
         self.sqlite_path = str(self.tmp / "biblioteca.db")
 
     def tearDown(self) -> None:
+        shutdown_log_flush()
         self._tmp.cleanup()
 
     def test_run_pipeline_logs_include_request_id_and_source_sha256(self) -> None:

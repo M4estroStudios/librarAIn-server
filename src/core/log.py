@@ -30,6 +30,11 @@ GLOBAL_LOG_LEVEL = -1
 _globalLogLevelInitialized = False
 _LOG_DIR = Path("./log")
 _file_lock = threading.Lock()
+_file_log_enabled = False
+_log_buffer: list[str] = []
+_flush_interval_seconds = 1800.0
+_flush_stop = threading.Event()
+_flush_thread: threading.Thread | None = None
 
 request_id_var: ContextVar[str | None] = ContextVar("request_id", default=None)
 source_sha256_var: ContextVar[str | None] = ContextVar("source_sha256", default=None)
@@ -171,26 +176,91 @@ def _write_stdout(text: str) -> None:
     print(downgraded, file=sys.stdout, flush=True)
 
 
-def _append_log_file(record: dict[str, Any]) -> None:
+def _enqueue_log_file(record: dict[str, Any]) -> None:
+    line = _serialize_log_record(record) + "\n"
+    with _file_lock:
+        _log_buffer.append(line)
+
+
+def _flush_log_file_buffer() -> int:
+    with _file_lock:
+        if not _log_buffer:
+            return 0
+        lines = list(_log_buffer)
+        _log_buffer.clear()
     day = datetime.now().astimezone().date().isoformat()
     path = _LOG_DIR / f"{day}.log"
     path.parent.mkdir(parents=True, exist_ok=True)
-    line = _serialize_log_record(record) + "\n"
     with _file_lock:
         with path.open("a", encoding="utf-8") as handle:
-            handle.write(line)
+            handle.writelines(lines)
+    return len(lines)
 
 
-def logInit(globalLogLevel: int = INFO_LOG_LEVEL, log_dir: str | Path = "./log") -> None:
-    global GLOBAL_LOG_LEVEL, _globalLogLevelInitialized, _LOG_DIR
+def _periodic_log_flush_worker(interval: float) -> None:
+    while True:
+        if _flush_stop.wait(timeout=interval):
+            break
+        try:
+            _flush_log_file_buffer()
+        except OSError:
+            pass
+
+
+def _start_log_flush_thread(interval: float) -> None:
+    global _flush_thread
+    shutdown_log_flush()
+    _flush_stop.clear()
+    _flush_thread = threading.Thread(
+        target=_periodic_log_flush_worker,
+        args=(interval,),
+        name="log-flush",
+        daemon=True,
+    )
+    _flush_thread.start()
+
+
+def shutdown_log_flush() -> None:
+    global _flush_thread
+    _flush_stop.set()
+    if _flush_thread is not None and _flush_thread.is_alive():
+        _flush_thread.join(timeout=2.0)
+    _flush_thread = None
+    try:
+        _flush_log_file_buffer()
+    except OSError:
+        pass
+
+
+def flush_log_buffer() -> int:
+    return _flush_log_file_buffer()
+
+
+def logInit(
+    globalLogLevel: int = INFO_LOG_LEVEL,
+    log_dir: str | Path = "./log",
+    *,
+    flush_interval_seconds: float = 1800.0,
+) -> None:
+    global GLOBAL_LOG_LEVEL, _globalLogLevelInitialized, _LOG_DIR, _file_log_enabled, _flush_interval_seconds
 
     if globalLogLevel < ERROR_LOG_LEVEL or globalLogLevel > RESULT_LOG_LEVEL:
         raise ValueError("Invalid log level")
 
     GLOBAL_LOG_LEVEL = globalLogLevel
     _LOG_DIR = Path(log_dir)
+    _flush_interval_seconds = max(60.0, float(flush_interval_seconds))
     _globalLogLevelInitialized = True
-    Log(globalLogLevel, "Global log level initialized correctly", {"log_dir": str(_LOG_DIR)})
+    _file_log_enabled = True
+    _start_log_flush_thread(_flush_interval_seconds)
+    Log(
+        globalLogLevel,
+        "Global log level initialized correctly",
+        {
+            "log_dir": str(_LOG_DIR),
+            "flush_interval_seconds": _flush_interval_seconds,
+        },
+    )
 
 
 def Log(
@@ -255,8 +325,10 @@ def Log(
     _write_stdout(logMessage)
 
     record = _build_log_record(currentLogLevel, message, parameters, file, line, callerName)
-    if to_file:
-        _append_log_file(record)
+    if _file_log_enabled or to_file:
+        _enqueue_log_file(record)
+        if to_file or currentLogLevel == ERROR_LOG_LEVEL:
+            _flush_log_file_buffer()
     if json:
         return _serialize_log_record(record)
     return None

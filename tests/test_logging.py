@@ -13,9 +13,11 @@ from src.core.log import (
     INFO_LOG_LEVEL,
     Log,
     bind_log_context,
+    flush_log_buffer,
     logInit,
     reset_log_context,
     safe_text,
+    shutdown_log_flush,
 )
 
 
@@ -26,6 +28,7 @@ class TestLogging(unittest.TestCase):
         logInit(INFO_LOG_LEVEL, log_dir=self.log_dir)
 
     def tearDown(self) -> None:
+        shutdown_log_flush()
         self._tmp.cleanup()
 
     def test_safe_text_truncates_long_values(self) -> None:
@@ -148,6 +151,34 @@ class TestLogging(unittest.TestCase):
         file_record = json.loads(log_path.read_text(encoding="utf-8").strip().splitlines()[-1])
         self.assertEqual(file_record["message"], "dual message")
         self.assertEqual(file_record["stage"], "dual")
+
+    def test_buffered_logs_flush_to_daily_file(self) -> None:
+        with redirect_stdout(io.StringIO()):
+            Log(INFO_LOG_LEVEL, "buffered message", {"stage": "buffer"})
+
+        day = datetime.now().astimezone().date().isoformat()
+        log_path = self.log_dir / f"{day}.log"
+        if log_path.exists():
+            self.assertNotIn("buffered message", log_path.read_text(encoding="utf-8"))
+
+        flushed = flush_log_buffer()
+        self.assertGreater(flushed, 0)
+        record = json.loads(log_path.read_text(encoding="utf-8").strip().splitlines()[-1])
+        self.assertEqual(record["message"], "buffered message")
+        self.assertEqual(record["stage"], "buffer")
+
+    def test_error_log_flushes_buffer_immediately(self) -> None:
+        from src.core.log import ERROR_LOG_LEVEL
+
+        with redirect_stdout(io.StringIO()):
+            Log(INFO_LOG_LEVEL, "before error", {"stage": "pre"})
+            Log(ERROR_LOG_LEVEL, "error flush", {"stage": "err"})
+
+        day = datetime.now().astimezone().date().isoformat()
+        log_path = self.log_dir / f"{day}.log"
+        text = log_path.read_text(encoding="utf-8")
+        self.assertIn("before error", text)
+        self.assertIn("error flush", text)
 
     def test_suppressed_log_does_not_return_json_or_write_file(self) -> None:
         day = datetime.now().astimezone().date().isoformat()
