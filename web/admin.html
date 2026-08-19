@@ -1424,7 +1424,7 @@ body.embed-mode .admin-poh-panel { border-top: 1px solid #3e3e3e; }
   }
 })();
 </script>
-<p class="app-nav embed-hide">Admin · <a href="/biblioteca">Biblioteca</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<p class="app-nav embed-hide">Admin · <a href="/biblioteca">Biblioteca</a> · <a href="/indice">Indice</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
 <div class="app-shell">
 <h1 class="embed-hide">Admin</h1>
 <p class="lead embed-hide">Panoramica sistema, articoli, pagine, POH e strumenti di manutenzione.</p>
@@ -5386,6 +5386,7 @@ function renderProjectStatusStats() {
   const runtime = s.runtime || {};
   const checklist = s.checklist || {};
   const runs = Array.isArray(s.pipeline_runs) ? s.pipeline_runs : [];
+  const llmMetrics = Array.isArray(s.llm_metrics) ? s.llm_metrics : [];
   function card(title, rows) {
     return '<div class="project-status-stat-card"><h3>' + title + "</h3><dl>" +
       rows.map(function (r) { return "<dt>" + r[0] + "</dt><dd>" + r[1] + "</dd>"; }).join("") +
@@ -5401,6 +5402,54 @@ function renderProjectStatusStats() {
         return "<li>" + escapeHtml(String(r.status || "?")) + " · " + escapeHtml(String(r.book_title || r.source_sha256 || "").slice(0, 40)) + " · " + escapeHtml(String(r.started_at || "")) + "</li>";
       }).join("") + "</ul>"
     : '<p class="hint">Nessun run recente.</p>';
+  function metricVal(v, suffix) {
+    return v == null || v === "" ? "—" : String(v) + (suffix || "");
+  }
+  const llmByStage = {};
+  llmMetrics.forEach(function (m) {
+    const stage = String(m.stage || "—");
+    const mode = String(m.compute_mode || "local").toLowerCase() === "cloud" ? "cloud" : "local";
+    if (!llmByStage[stage]) llmByStage[stage] = { local: [], cloud: [] };
+    llmByStage[stage][mode].push(m);
+  });
+  function llmModeCell(items) {
+    if (!items.length) return '<td>—</td>';
+    return '<td>' + items.map(function (m) {
+      const requestedModes = Array.isArray(m.requested_compute_modes) ? m.requested_compute_modes.join("/") : "";
+      const requestedSuffix = requestedModes && requestedModes !== String(m.compute_mode || "")
+        ? " · richiesto " + requestedModes
+        : "";
+      const throughput = m.pages_per_second == null ? m.units_per_second : m.pages_per_second;
+      const throughputLabel = m.pages_per_second == null ? "unità/s" : "pag/s";
+      const processedLabel = m.pages_processed == null ? "unità" : "pagine";
+      const throughputText = m.legacy_cached
+        ? "cache"
+        : metricVal(throughput) + " " + throughputLabel;
+      const p50 = m.successful_latency_ms_p50 == null ? m.latency_ms_p50 : m.successful_latency_ms_p50;
+      const p95 = m.successful_latency_ms_p95 == null ? m.latency_ms_p95 : m.successful_latency_ms_p95;
+      return '<div style="min-width:13rem;margin:0.15rem 0">' +
+        '<strong>' + escapeHtml(String(m.model || "—")) + '</strong>' +
+        '<br><b>' + throughputText + '</b>' +
+        ' · ' + metricVal(m.pages_processed == null ? m.units_processed : m.pages_processed) + ' ' + processedLabel +
+        '<br>p50 ' + metricVal(p50, " ms") + ' · p95 ' + metricVal(p95, " ms") +
+        '<br>OK ' + metricVal(m.success_rate == null ? null : Math.round(m.success_rate * 100) + "%") +
+        ' · retry ' + metricVal(m.retry_rate == null ? null : Math.round(m.retry_rate * 100) + "%") +
+        requestedSuffix +
+        '</div>';
+    }).join("") + '</td>';
+  }
+  const llmStages = Object.keys(llmByStage).sort();
+  const llmHtml = llmMetrics.length
+    ? '<div style="overflow:auto"><table style="margin-top:0.5rem"><thead><tr>' +
+      '<th>Stage</th><th>Local</th><th>Cloud</th>' +
+      '</tr></thead><tbody>' +
+      llmStages.map(function (stage) {
+        return '<tr><td>' + escapeHtml(stage) + '</td>' +
+          llmModeCell(llmByStage[stage].local) +
+          llmModeCell(llmByStage[stage].cloud) + '</tr>';
+      }).join("") +
+      '</tbody></table></div>'
+    : '<p class="hint">Nessuna chiamata LLM telemetrata. I nuovi run popoleranno il confronto.</p>';
   root.innerHTML =
     card("Libri / pagine", [
       ["Libri", val(books.book_count)],
@@ -5429,7 +5478,9 @@ function renderProjectStatusStats() {
     ]) +
     card("Checklist", checkRows) +
     '<div class="project-status-stat-card"><h3>Pipeline runs</h3>' + runHtml +
-      '<p class="hint"><a href="/jobs.html">Apri Job</a> · <a href="#pagine">Pagine</a> · <a href="#articoli">Articoli</a></p></div>';
+      '<p class="hint"><a href="/jobs.html">Apri Job</a> · <a href="#pagine">Pagine</a> · <a href="#articoli">Articoli</a></p></div>' +
+    '<div class="project-status-stat-card"><h3>Performance modelli LLM</h3>' + llmHtml +
+      '<p class="hint">pag/s = pagine completate per secondo di wall time dello stage; p50/p95 = latenza API delle chiamate riuscite; tok/s = token output per secondo API. I retry sono conteggiati separatamente.</p></div>';
 }
 
 function projectStatusStatsSetMsg(text, isError) {
@@ -5464,6 +5515,15 @@ async function loadProjectStatusStats(refresh) {
   const data = await res.json();
   if (!res.ok || !data.ok) throw new Error((data && data.error) || "stats failed");
   projectStatusStats = data.stats || {};
+  try {
+    const metricsRes = await fetch("/api/admin/llm-metrics");
+    const metricsData = await metricsRes.json();
+    if (metricsRes.ok && metricsData && metricsData.ok && Array.isArray(metricsData.metrics)) {
+      projectStatusStats.llm_metrics = metricsData.metrics;
+    }
+  } catch (_err) {
+    // The rest of the status dashboard remains usable if telemetry is unavailable.
+  }
   renderProjectStatusStats();
   const stamp = data.computed_at ? String(data.computed_at) : "";
   projectStatusStatsSetMsg(

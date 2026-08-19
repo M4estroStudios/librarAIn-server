@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
+from uuid import uuid4
 
 import openai
 
@@ -60,6 +61,7 @@ def chat_completion_with_retry_sync(
         reasoning_enable_thinking=reasoning_enable_thinking,
     )
     attempt_counter = 0
+    call_id = uuid4().hex
 
     def _attempt() -> str:
         nonlocal attempt_counter
@@ -93,6 +95,12 @@ def chat_completion_with_retry_sync(
                 max_tokens=max_tokens,
                 extra_body=extra_body,
                 stage=stage,
+                request_id=request_id,
+                page=page,
+                attempt=attempt,
+                call_id=call_id,
+                reasoning_effort=reasoning_effort,
+                reasoning_enable_thinking=reasoning_enable_thinking,
             )
             Log(
                 INFO_LOG_LEVEL,
@@ -163,13 +171,22 @@ def _embedding_api_call(
     stage: str,
     attempt: int,
     token_bucket: object | None,
+    call_id: str,
 ) -> list[list[float]]:
     if token_bucket is not None:
         Log(INFO_LOG_LEVEL, "embedding rate limiter wait begin", {"attempt": attempt})
         token_bucket.acquire_blocking()  # type: ignore[union-attr]
         Log(INFO_LOG_LEVEL, "embedding rate limiter wait done", {"attempt": attempt})
     try:
-        vectors = _embeddings_create(client, model=model, texts=texts)
+        vectors = _embeddings_create(
+            client,
+            model=model,
+            texts=texts,
+            request_id=request_id,
+            stage=stage,
+            attempt=attempt,
+            call_id=call_id,
+        )
         Log(
             INFO_LOG_LEVEL,
             "embedding success",
@@ -229,6 +246,7 @@ def embeddings_batch_with_retry_sync(
     embed_client = resolve_embedding_client(client)
     max_attempts, token_bucket = _resolve_client_state(embed_client)
     attempt_counter = 0
+    call_id = uuid4().hex
 
     def _attempt() -> list[list[float]]:
         nonlocal attempt_counter
@@ -249,6 +267,7 @@ def embeddings_batch_with_retry_sync(
             stage=stage,
             attempt=attempt,
             token_bucket=token_bucket,
+            call_id=call_id,
         )
 
     return retry_sync(

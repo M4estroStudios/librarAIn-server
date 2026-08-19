@@ -14,6 +14,7 @@ from src.api.job_control import (
 from src.api.job_display import job_display_label, job_display_status
 from src.api.job_registry import JobRegistry
 from src.api.research_batch_registry import ResearchBatchRegistry
+from src.persistence.biblio_stage_runs import BIBLIO_STAGE_LABELS, list_biblio_stage_runs
 from src.persistence.pipeline_runs import list_pipeline_runs
 from src.persistence.research_runs import list_research_runs
 
@@ -192,6 +193,7 @@ def _history_row_from_pipeline(
         "display_status_label": job_display_label(display),
         "book_title": book_title,
         "source_sha256": sha or None,
+        "compute_mode": row.get("compute_mode"),
         "title": f"Ingest: {book_title}" if book_title else "Ingestione libro",
         "subtitle": f"{sha[:16]}…" if sha else None,
         "created_at": row.get("started_at"),
@@ -237,6 +239,48 @@ def _history_row_from_research(row: dict[str, Any]) -> dict[str, Any]:
         "error": _history_error_message(row, display_status=display),
         "timing": _timing_from_bounds(row.get("started_at"), finished_at),
         "is_active": False,
+        "is_batch": False,
+        "is_historical": True,
+    }
+
+
+def _history_row_from_biblio_stage(
+    row: dict[str, Any],
+    *,
+    attempt_number: int | None = None,
+    attempt_total: int | None = None,
+) -> dict[str, Any]:
+    status = str(row.get("status") or "")
+    finished_at = row.get("finished_at")
+    display = _historical_display_status(
+        status,
+        finished_at,
+        last_error=row.get("last_error"),
+    )
+    stage = str(row.get("stage") or "")
+    stage_label = BIBLIO_STAGE_LABELS.get(stage, stage or "Polyindex")
+    book_title = row.get("book_title")
+    sha = str(row.get("source_sha256") or "")
+    title = f"{stage_label}: {book_title}" if book_title else stage_label
+    return {
+        "job_id": row.get("request_id"),
+        "job_kind": "biblio",
+        "status": status,
+        "display_status": display,
+        "display_status_label": job_display_label(display),
+        "book_title": book_title,
+        "source_sha256": sha or None,
+        "compute_mode": row.get("compute_mode"),
+        "stage": stage or None,
+        "title": title,
+        "subtitle": f"{sha[:16]}…" if sha else None,
+        "created_at": row.get("started_at"),
+        "updated_at": row.get("finished_at") or row.get("started_at"),
+        "error": _history_error_message(row, display_status=display),
+        "timing": _timing_from_bounds(row.get("started_at"), finished_at),
+        "attempt_number": attempt_number,
+        "attempt_total": attempt_total,
+        "is_active": status in _INTERRUPTED_PIPELINE_STATUSES and not finished_at,
         "is_batch": False,
         "is_historical": True,
     }
@@ -352,6 +396,44 @@ def _pipeline_rows_with_book_context(
     return enriched
 
 
+def _biblio_stage_group_key(row: dict[str, Any]) -> str:
+    sha = str(row.get("source_sha256") or "").strip().lower()
+    stage = str(row.get("stage") or "").strip()
+    if not sha or not stage:
+        return ""
+    return f"{sha}:{stage}"
+
+
+def _biblio_stage_rows_with_attempts(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    by_key: dict[str, list[dict[str, Any]]] = {}
+    for row in rows:
+        key = _biblio_stage_group_key(row)
+        if not key:
+            continue
+        by_key.setdefault(key, []).append(row)
+
+    visible_attempt_no: dict[str, int] = {}
+    visible_attempt_total: dict[str, int] = {}
+    for key, group in by_key.items():
+        ordered = sorted(group, key=lambda item: str(item.get("started_at") or ""))
+        visible_attempt_total[key] = len(ordered)
+        for index, candidate in enumerate(ordered, start=1):
+            visible_attempt_no[str(candidate.get("request_id") or "")] = index
+
+    enriched: list[dict[str, Any]] = []
+    for row in rows:
+        key = _biblio_stage_group_key(row)
+        request_id = str(row.get("request_id") or "")
+        enriched.append(
+            _history_row_from_biblio_stage(
+                row,
+                attempt_number=visible_attempt_no.get(request_id),
+                attempt_total=visible_attempt_total.get(key) if key else None,
+            )
+        )
+    return enriched
+
+
 def list_job_history(
     *,
     sqlite_path: str,
@@ -379,6 +461,9 @@ def list_job_history(
     for row in list_research_runs(sqlite_path, limit=cap * 2):
         item = _history_row_from_research(row)
         by_id[str(item["job_id"])] = item
+
+    for row in _biblio_stage_rows_with_attempts(list_biblio_stage_runs(sqlite_path, limit=cap * 2)):
+        by_id[str(row["job_id"])] = row
 
     if include_active:
         for state_summary in registry.list_jobs(include_finished=True, limit=cap):

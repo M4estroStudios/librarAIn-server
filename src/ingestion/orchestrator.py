@@ -18,17 +18,16 @@ from src.core.lmstudio_models import (
     swap_lmstudio_vision_to_editor,
     unload_lmstudio_model,
 )
-from src.core.openai_client import build_openai_client
+from src.core.openai_client import build_openai_client, get_compute_mode
 from src.core.text import slugify as _slugify
 from src.ingestion.pipeline.glm_ocr_stage import resolve_glm_ocr_model, run_glm_ocr_combined_stage
 from src.ingestion.pipeline.stage1 import Stage1Result, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
-from src.ingestion.index_cross_links import apply_index_cross_links, book_index_json_path
+from src.ingestion.index_cross_links import book_index_json_path
 from src.ingestion.polyindex.biblio_json import sync_polyindex_biblio_from_book
 from src.ingestion.polyindex.gallery_index import write_gallery_index
-from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
 from src.ingestion.polyindex.toc_json import parse_chapters_from_toc_md, sync_polyindex_toc_from_book
 from src.ingestion.toc_builder import build_toc_md
 from src.ingestion.tmp_cleanup import cleanup_tmp_after_success
@@ -43,7 +42,6 @@ from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import (
     PHASE_POLYINDEX_BIBLIO,
     PHASE_POLYINDEX_TOC,
-    PHASE_TIME_INDEX,
     STATUS_COMPLETED,
     STATUS_STARTED,
     ProgressReporter,
@@ -641,34 +639,6 @@ async def _run_index_refine_phase(ctx: PipelineContext, index_md_path: Path) -> 
     return index_md_path
 
 
-async def _run_index_cross_links_phase(
-    ctx: PipelineContext,
-    book_output: BookOutput,
-    index_md_path: Path,
-) -> Path:
-    try:
-        stats = await apply_index_cross_links(
-            index_md_path,
-            book_output,
-            ctx.useful_pages,
-            client=ctx.openai_client,
-            settings=ctx.settings,
-            request_id=ctx.request_id,
-            parallel_pages=True,
-        )
-    except Exception as exc:
-        raise OrchestratorStageError("index_cross_links", exc) from exc
-    _run_book_md_builder(ctx, book_output)
-    _publish_event(
-        ctx.registry,
-        ctx.request_id,
-        stage="index_cross_links",
-        message="index_cross_links completed",
-        payload=stats,
-    )
-    return index_md_path
-
-
 def _run_page_metadata_phase(
     ctx: PipelineContext,
     book_output: BookOutput,
@@ -702,7 +672,7 @@ async def _run_book_artifact_phases(
     toc_md_path = await _run_toc_refine_phase(ctx, toc_md_path)
     index_md_path = _run_index_md_builder(ctx, book_output)
     index_md_path = await _run_index_refine_phase(ctx, index_md_path)
-    index_md_path = await _run_index_cross_links_phase(ctx, book_output, index_md_path)
+    # INDEX_{slug}.json + hyperlink e TIME_INDEX restano alla pagina Indice.
     _run_page_metadata_phase(ctx, book_output, toc_md_path)
     return toc_md_path, index_md_path
 
@@ -727,38 +697,6 @@ async def _run_polyindex_phases(
         stage="polyindex_toc",
         message="polyindex_toc completed",
         payload={"toc_json_path": str(toc_json_path)},
-    )
-
-    time_index_path, time_index_stats = await sync_time_index_from_book_async(
-        ctx.polyindex_dir,
-        ctx.source_sha256,
-        book_output,
-        book_title=ctx.enriched.request.reicat.title,
-        request_id=ctx.request_id,
-        client=ctx.openai_client,
-        settings=ctx.settings,
-        prompt_notes=ctx.page_prompt_notes,
-        progress=ctx.progress,
-    )
-    _progress_completed(
-        ctx,
-        PHASE_TIME_INDEX,
-        time_index_path=str(time_index_path),
-        book_time_index_path=time_index_stats.get("book_time_index_path"),
-        n_years=time_index_stats["n_years"],
-        n_dates=time_index_stats["n_dates"],
-    )
-    _publish_event(
-        ctx.registry,
-        ctx.request_id,
-        stage="time_index",
-        message="time_index completed",
-        payload={
-            "time_index_path": str(time_index_path),
-            "book_time_index_path": time_index_stats.get("book_time_index_path"),
-            "n_years": time_index_stats["n_years"],
-            "n_dates": time_index_stats["n_dates"],
-        },
     )
 
     biblio_json_path, biblio_stats, biblio_payload = await sync_polyindex_biblio_from_book(
@@ -861,6 +799,7 @@ async def run_pipeline(
         source_sha256=source_sha256,
         pipeline_version=enriched.request.schema_version,
         total_pages=len(useful_pages.useful_original_pages),
+        compute_mode=get_compute_mode(),
     )
 
     try:

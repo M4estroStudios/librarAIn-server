@@ -52,6 +52,7 @@ from src.api.ingest_form import (
 from src.api.ingest_pipeline_runner import run_full_pipeline
 from src.api.ingest_pipeline_runner_glm import run_glm_ingest_pipeline
 from src.api.ingest_form import _parse_pages_spec
+from src.api.pdf_upload_storage import find_raw_pdf_by_sha256, upload_staging_path
 from src.api.reicat_vision_suggest import suggest_reicat_metadata
 from src.api.job_history import (
     list_active_jobs_with_batches,
@@ -172,6 +173,8 @@ _WEB_PAGE_ALIASES = frozenset({
     "/biblioteca.html",
     "/biblio",
     "/biblio.html",
+    "/indice",
+    "/indice.html",
     "/ricerca",
     "/ricerca.html",
     "/jobs",
@@ -564,6 +567,7 @@ def build_ingest_server(
                     job_id=job_id_filter,
                     date=date_filter,
                     limit=limit,
+                    include_active=True,
                     data_root=Path(settings.data_root),
                 )
                 _send_json(self, 200, {"ok": True, "jobs": jobs, "count": len(jobs)})
@@ -677,6 +681,16 @@ def build_ingest_server(
                     _send_json(self, 500, {"ok": False, "error": "web/biblioteca.html missing"})
                     return
                 _send_bytes(self, 200, biblioteca_file.read_bytes(), "text/html; charset=utf-8")
+                return
+
+            if path in ("/indice", "/indice.html"):
+                indice_file = web_dir / "indice.html"
+                if not indice_file.exists():
+                    Log(ERROR_LOG_LEVEL, "ingest server static web asset missing",
+                        {"path": str(indice_file)})
+                    _send_json(self, 500, {"ok": False, "error": "web/indice.html missing"})
+                    return
+                _send_bytes(self, 200, indice_file.read_bytes(), "text/html; charset=utf-8")
                 return
 
             if path == "/log.js":
@@ -1144,7 +1158,7 @@ def build_ingest_server(
 
         def _handle_ingest_notes_lookup_post(self) -> None:
             content_type = self.headers.get("Content-Type") or ""
-            part_path = data_root / "input" / "raw" / f".notes_{secrets.token_hex(8)}.part"
+            part_path = upload_staging_path(data_root, "notes")
             try:
                 parsed = parse_multipart_form_stream(
                     self.rfile,
@@ -1183,7 +1197,7 @@ def build_ingest_server(
 
         def _handle_reicat_suggest(self) -> None:
             content_type = self.headers.get("Content-Type") or ""
-            part_path = data_root / "input" / "raw" / f".upload_{secrets.token_hex(8)}.part"
+            part_path = upload_staging_path(data_root)
             try:
                 content_length = _request_content_length(self)
                 parsed = parse_multipart_form_stream(
@@ -1214,10 +1228,18 @@ def build_ingest_server(
                 _send_json(self, 400, {"ok": False, "error": "uploaded file is not a PDF"})
                 return
 
-            saved_path = uploaded.path.with_name(
-                f"{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
-            )
-            uploaded.path.rename(saved_path)
+            digest = compute_file_sha256(uploaded.path)
+            existing_raw_path = find_raw_pdf_by_sha256(data_root, digest)
+            if existing_raw_path is None:
+                saved_path = data_root / "input" / "raw" / (
+                    f"{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
+                )
+                saved_path.parent.mkdir(parents=True, exist_ok=True)
+                uploaded.path.rename(saved_path)
+            else:
+                # Keep the duplicate in staging: the raw PDF is already present,
+                # so this request must not copy or move another file into raw.
+                saved_path = uploaded.path
             pages_one_based: list[int] | None = None
             reicat_pages_raw = (parsed.text_fields.get("reicat_pages") or "").strip()
             if reicat_pages_raw:
@@ -1866,7 +1888,7 @@ def build_ingest_server(
             ocr_backend = "glm" if parsed.path == "/api/ingest2/submit" else "easyocr"
 
             content_type = self.headers.get("Content-Type") or ""
-            part_path = data_root / "input" / "raw" / f".upload_{secrets.token_hex(8)}.part"
+            part_path = upload_staging_path(data_root)
             try:
                 content_length = _request_content_length(self)
                 parsed = parse_multipart_form_stream(
@@ -1971,10 +1993,17 @@ def build_ingest_server(
                 )
                 return
 
-            saved_path = uploaded.path.with_name(
-                f"{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
-            )
-            uploaded.path.rename(saved_path)
+            digest = compute_file_sha256(uploaded.path)
+            existing_raw_path = find_raw_pdf_by_sha256(data_root, digest)
+            if existing_raw_path is None:
+                saved_path = data_root / "input" / "raw" / (
+                    f"{secrets.token_hex(6)}_{_safe_filename(uploaded.filename or 'upload.pdf')}"
+                )
+                saved_path.parent.mkdir(parents=True, exist_ok=True)
+                uploaded.path.rename(saved_path)
+            else:
+                # Keep the duplicate in staging; do not touch input/raw.
+                saved_path = uploaded.path
             volume_paths: list[Path] = []
             for volume_upload in parsed.volume_pdfs:
                 volume_saved = volume_upload.path.with_name(

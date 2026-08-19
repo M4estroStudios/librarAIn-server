@@ -32,6 +32,23 @@ button.secondary:hover:not(:disabled) { background: #4a4a4a; color: #e8e8e8; }
 button.danger { background: #c95050; color: #fff; }
 button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 .hint { font-size: 0.8rem; color: #9d9d9d; }
+/* Modalità Indice/BOOKs: review dedicata alle sole pagine INDEX */
+body.indice-index-mode .app-shell { display: none; }
+body.indice-index-mode .biblio-section-tabs { display: none !important; }
+body.indice-index-mode [data-biblio-stage-card="polyindex_toc"],
+body.indice-index-mode [data-biblio-stage-card="polyindex_biblio"],
+body.indice-index-mode [data-biblio-stage-card="apply_changes"],
+body.indice-index-mode #biblio-pending-pages { display: none !important; }
+body:not(.indice-index-mode) [data-biblio-stage-card="polyindex_index"] { display: none !important; }
+body.indice-index-mode #biblio-pipeline-notes-wrap { display: flex !important; }
+body.indice-index-mode #biblio-book-overlay:not(.hidden) {
+  /* overlay già fullscreen; niente distrazioni */
+}
+body.indice-index-mode .biblio-overview-stages > h3::after {
+  content: " · INDEX";
+  color: #4ec9b0;
+  font-weight: 500;
+}
 .card { padding: 0.85rem; border: 1px solid #3e3e3e; border-radius: 10px; background: #252526; margin-bottom: 0.65rem; }
 .card h3 { margin: 0 0 0.35rem; font-size: 0.95rem; color: #e8e8e8; }
 .meta { font-size: 0.78rem; color: #9d9d9d; word-break: break-all; }
@@ -417,6 +434,18 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   background: #1e1e1e; color: #e8e8e8; font-family: ui-monospace, monospace; font-size: 0.72rem; line-height: 1.35;
 }
 .biblio-stage-status { margin: 0.25rem 0 0; font-size: 0.78rem; color: #9d9d9d; min-height: 2.4rem; }
+.biblio-context-dialog { max-width: min(58rem, 94vw); max-height: 86vh; overflow: auto; }
+.biblio-context-block { margin-top: 0.8rem; padding: 0.7rem; border: 1px solid #3e3e3e; border-radius: 8px; background: #1e1e1e; }
+.biblio-context-block h3 { margin: 0 0 0.45rem; font-size: 0.82rem; }
+.biblio-context-item { padding: 0.55rem 0; border-top: 1px solid #353535; }
+.biblio-context-item:first-child { border-top: 0; padding-top: 0; }
+.biblio-context-item summary { cursor: pointer; color: #e8e8e8; }
+.biblio-context-stage { color: #4ec9b0; font-size: 0.72rem; margin-left: 0.45rem; }
+.biblio-context-text { margin: 0.4rem 0 0; white-space: pre-wrap; word-break: break-word; font: 0.72rem/1.4 ui-monospace, monospace; color: #d4d4d4; }
+.biblio-context-image-strip { display: flex; gap: 0.55rem; overflow-x: auto; padding: 0.45rem 0 0.2rem; scroll-snap-type: x proximity; }
+.biblio-context-image-strip figure { flex: 0 0 min(20rem, 76vw); margin: 0; scroll-snap-align: start; }
+.biblio-context-image-strip img { display: block; width: 100%; max-height: 17rem; object-fit: contain; background: #fff; border-radius: 5px; }
+.biblio-context-image-strip figcaption { margin-top: 0.25rem; color: #9d9d9d; font-size: 0.7rem; text-align: center; }
 .biblio-annotate-slot { display: inline-flex; flex-wrap: nowrap; align-items: center; gap: 0.35rem; flex: 0 0 auto; }
 .biblio-annotate-btn,
 .biblio-vision-btn { display: inline-flex; align-items: center; gap: 0.3rem; }
@@ -462,7 +491,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 </style>
 </head>
 <body>
-<p class="app-nav"><a href="/">Admin</a> · Biblioteca · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<p class="app-nav"><a href="/">Admin</a> · Biblioteca · <a href="/indice">Indice</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
 <div class="app-shell">
   <h1>Biblioteca</h1>
   <p class="lead">Libri ingestiti e cartelle di output; lookup e grafo citazioni.</p>
@@ -554,6 +583,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         <button type="button" data-biblio-section="index">Index</button>
         <button type="button" data-biblio-section="time_index">Time</button>
         <button type="button" data-biblio-section="biblio">Biblio</button>
+        <button type="button" data-biblio-section="context">Contesto AI</button>
       </span>
       <span class="biblio-page-counter" data-biblio-chrome="page">
         <span>Pag.</span>
@@ -592,7 +622,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       <div class="biblio-overview-resizer" id="biblio-overview-resizer" role="separator" aria-orientation="vertical" aria-label="Ridimensiona pannello laterale" tabindex="0"></div>
       <aside class="biblio-overview-stages" id="biblio-overview-stages" aria-label="Stage polyindex">
         <h3>Stage polyindex</h3>
-        <p class="hint">Dopo OCR / Vision / Editor. Avvia un stage sul libro corrente.</p>
+        <p class="hint" id="biblio-stages-hint">Dopo OCR / Vision / Editor. TIME_INDEX e LIBRARY restano in <a href="/indice">Indice</a>.</p>
         <label class="biblio-polyindex-compute" for="biblio-polyindex-compute-mode">
           <span>Computazione AI</span>
           <select id="biblio-polyindex-compute-mode" name="biblio_polyindex_compute_mode" aria-label="Computazione AI polyindex">
@@ -613,27 +643,15 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
           </div>
         </div>
         <div class="biblio-stage-card" data-biblio-stage-card="polyindex_index">
-          <button type="button" data-biblio-stage-toggle="polyindex_index" aria-expanded="false">Polyindex INDEX</button>
+          <button type="button" data-biblio-stage-toggle="polyindex_index" aria-expanded="false">Indice BOOKs</button>
           <div class="biblio-stage-panel" hidden>
             <ul>
-              <li>Rigenera INDEX.md dalle pagine del range</li>
-              <li>Raffina INDEX.md e cross-links via AI</li>
-              <li>Normalizza voci indice nel polyindex</li>
-              <li>Aggiorna polyindex INDEX JSON</li>
+              <li>Passata algoritmica: ricostruisce INDEX.md dal range</li>
+              <li>Passata modello: raffina INDEX.md con le tue note/annotazioni</li>
+              <li>Hyperlink pagine + scrive INDEX_&lt;slug&gt;.json</li>
+              <li>Non aggiorna INDEX.json globale (quello è LIBRARY)</li>
             </ul>
-            <button type="button" data-biblio-stage="polyindex_index">Avvia INDEX</button>
-          </div>
-        </div>
-        <div class="biblio-stage-card" data-biblio-stage-card="time_index">
-          <button type="button" data-biblio-stage-toggle="time_index" aria-expanded="false">Polyindex TIME_INDEX</button>
-          <div class="biblio-stage-panel" hidden>
-            <ul>
-              <li>Scansiona le pagine libro correnti</li>
-              <li>Rigenera TIME_INDEX del libro</li>
-              <li>Estrae tempi/date via AI</li>
-              <li>Aggiorna time_index JSON globale</li>
-            </ul>
-            <button type="button" data-biblio-stage="time_index">Avvia TIME_INDEX</button>
+            <button type="button" data-biblio-stage="polyindex_index">Avvia INDEX libro</button>
           </div>
         </div>
         <div class="biblio-stage-card" data-biblio-stage-card="polyindex_biblio">
@@ -650,8 +668,8 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         </div>
         <div id="biblio-pending-pages" class="biblio-pending-pages hidden" aria-label="Pagine modificate"></div>
         <label class="biblio-pipeline-notes hidden" for="biblio-pipeline-notes" id="biblio-pipeline-notes-wrap">
-          <span>Note pipeline AI</span>
-          <textarea id="biblio-pipeline-notes" name="pipeline_notes" placeholder="Nota generale. Digita @ per pagina, poi - (intera) o un’annotazione." spellcheck="false"></textarea>
+          <span>Note per INDEX / Apply</span>
+          <textarea id="biblio-pipeline-notes" name="pipeline_notes" placeholder="Contesto per il modello (INDEX libro o Apply). Digita @ per pagina, poi - (intera) o un’annotazione." spellcheck="false"></textarea>
         </label>
         <p class="status hint hidden" id="biblio-apply-status"></p>
         <div class="biblio-stage-card hidden" id="biblio-apply-card" data-biblio-stage-card="apply_changes">
@@ -663,7 +681,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
               <li>Vision: immagine originale (+ annotata se presente); altrimenti solo testo</li>
               <li>Note generali sempre; append AI dopo ogni pagina</li>
               <li>Applica modifiche manuali (conflitti → CONFLICTS, vince l’operatore)</li>
-              <li>Aggiorna indici TIME / TOC / INDEX / BIBLIO se pertinenti</li>
+              <li>Aggiorna indici TOC / BIBLIO (e Indice se pertinenti)</li>
             </ul>
             <button type="button" id="biblio-btn-apply-changes">Conferma applicazione</button>
           </div>
@@ -2130,6 +2148,15 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       showArtifactEmpty("Nessun libro selezionato.");
       return;
     }
+    if (kind === "context") {
+      if (biblioArtifactMd) biblioArtifactMd.setEnabled(false);
+      textEl.classList.add("hidden");
+      if (mdEl) mdEl.classList.add("hidden");
+      emptyEl.classList.add("hidden");
+      loadBiblioContext();
+      requestAnimationFrame(syncBiblioPanelHeights);
+      return;
+    }
     if (
       kind === "time_index" &&
       biblioTimeIndexCache &&
@@ -2246,6 +2273,10 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 
   function setBiblioSection(section, opts) {
     opts = opts || {};
+    // Modalità Indice/BOOKs: solo side-by-side «Libro» (PNG|MD), niente artifact Index/TOC/…
+    if (isIndiceBooksMode() && section !== "libro") {
+      section = "libro";
+    }
     if (biblioSection === "time_index" && section !== "time_index") {
       stashBiblioTimeIndexScroll();
     }
@@ -2577,6 +2608,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     if (!card || !btn) return;
     var isOverview = window.BiblioBookOverlay && typeof window.BiblioBookOverlay.currentMode === "function"
       && window.BiblioBookOverlay.currentMode() === "overview";
+    var fromIndice = isIndiceBooksMode();
     var show = isOverview && (hasPendingChanges() || hasBiblioSelectedPages());
     card.classList.toggle("hidden", !show);
     btn.disabled = !!biblioApplyBusy;
@@ -2589,7 +2621,8 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       if (toggle) toggle.setAttribute("aria-expanded", "false");
     }
     var notesWrap = document.getElementById("biblio-pipeline-notes-wrap");
-    if (notesWrap) notesWrap.classList.toggle("hidden", !show);
+    // Note sempre utili in overview per INDEX libro (soprattutto da Indice/BOOKs).
+    if (notesWrap) notesWrap.classList.toggle("hidden", !(isOverview && (show || fromIndice || !!selectedCandidate)));
     syncDirtyMarkers();
     renderPendingPagePills();
     if (!show) {
@@ -2598,6 +2631,113 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     }
     if (!biblioApplyBusy) setBiblioApplyStatus("");
   }
+
+  function isIndiceBooksMode() {
+    try {
+      return new URLSearchParams(location.search).get("from") === "indice";
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function syncIndiceIndexModeChrome() {
+    var on = isIndiceBooksMode();
+    document.body.classList.toggle("indice-index-mode", on);
+    var hint = document.getElementById("biblio-stages-hint");
+    if (hint) {
+      hint.innerHTML = on
+        ? "Review dedicata all’INDEX: solo le pagine del range indice, side-by-side PNG|MD. Annota, scrivi le note, poi <em>Avvia INDEX libro</em>."
+        : "Dopo OCR / Vision / Editor. TIME_INDEX e LIBRARY restano in <a href=\"/indice\">Indice</a>.";
+    }
+    var title = document.getElementById("run-selected-title");
+    if (on && selectedCandidate && title) {
+      var base = selectedCandidate.title || "—";
+      if (title.textContent.indexOf("· INDEX") < 0) {
+        title.textContent = base + " · INDEX";
+      }
+    }
+  }
+
+  function biblioIndexAlignedPages() {
+    if (!manifestCache || typeof manifestCache !== "object") return [];
+    var aligned = manifestCache.index_range_aligned;
+    if (aligned && typeof aligned.start === "number" && typeof aligned.end === "number" && aligned.end >= aligned.start) {
+      var pages = [];
+      for (var p = aligned.start; p <= aligned.end; p += 1) pages.push(p);
+      return pages;
+    }
+    var original = manifestCache.index_range;
+    if (!original || typeof original.start !== "number" || typeof original.end !== "number" || original.end < original.start) {
+      return [];
+    }
+    var byOriginal = Object.create(null);
+    (Array.isArray(manifestCache.pages) ? manifestCache.pages : []).forEach(function (entry) {
+      if (!entry || entry.original == null || entry.aligned == null) return;
+      byOriginal[Number(entry.original)] = Number(entry.aligned);
+    });
+    var out = [];
+    for (var orig = original.start; orig <= original.end; orig += 1) {
+      if (byOriginal[orig] != null) out.push(byOriginal[orig]);
+      else out.push(orig);
+    }
+    return out.filter(function (page, idx, arr) {
+      return page >= 1 && arr.indexOf(page) === idx;
+    }).sort(function (a, b) { return a - b; });
+  }
+
+  function biblioActivePageList() {
+    if (isIndiceBooksMode()) {
+      return biblioIndexAlignedPages();
+    }
+    var max = selectedCandidate
+      ? (selectedCandidate.aligned_page_count || selectedCandidate.expected_page_count || selectedCandidate.original_page_count || 1)
+      : 1;
+    var all = [];
+    for (var page = 1; page <= max; page += 1) all.push(page);
+    return all;
+  }
+
+  function buildSessionPromptNotes() {
+    var parts = [];
+    var pipeline = String((document.getElementById("biblio-pipeline-notes") || {}).value || "").trim();
+    if (pipeline) {
+      parts.push("## Note operatore\n" + pipeline);
+    }
+    var pageKeys = Object.keys(biblioNotesByPage || {}).sort(function (a, b) {
+      return Number(a) - Number(b);
+    });
+    pageKeys.forEach(function (page) {
+      var text = String(biblioNotesByPage[page] || "").trim();
+      if (text) parts.push("## Nota pagina p." + page + "\n" + text);
+    });
+    Object.keys(biblioTextByPage || {}).sort(function (a, b) {
+      return Number(a) - Number(b);
+    }).forEach(function (page) {
+      var items = biblioTextByPage[page] || [];
+      if (!items.length) return;
+      var lines = items.map(function (item, idx) {
+        var name = item && item.name ? item.name : ("text" + (idx + 1));
+        var quote = item && item.text ? String(item.text).trim() : "";
+        return "- @" + name + (quote ?(": " + quote) : "");
+      });
+      parts.push("## Selezioni testo p." + page + "\n" + lines.join("\n"));
+    });
+    if (biblioPageGuidance && typeof biblioPageGuidance.getAnnotations === "function") {
+      (biblioPageGuidance.getAnnotations() || []).forEach(function (item) {
+        var elements = Array.isArray(item.elements) ? item.elements : [];
+        if (!elements.length) return;
+        var lines = elements.map(function (el) {
+          var name = el && el.name ? el.name : (el.type || "annotazione");
+          return "- @" + name + " (" + (el.type || "annotazione") + ")";
+        });
+        parts.push("## Annotazioni grafiche p." + item.page + "\n" + lines.join("\n"));
+      });
+    }
+    return parts.join("\n\n").trim();
+  }
+  window.buildSessionPromptNotes = buildSessionPromptNotes;
+  window.isIndiceBooksMode = isIndiceBooksMode;
+  window.syncIndiceIndexModeChrome = syncIndiceIndexModeChrome;
 
   function clearPendingTranscripts() {
     biblioPendingTranscripts = Object.create(null);
@@ -2934,10 +3074,7 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   }
 
   function biblioListAlignedPages() {
-    var max = biblioPreviewMaxPage();
-    var pages = [];
-    for (var page = 1; page <= max; page += 1) pages.push(page);
-    return pages;
+    return biblioActivePageList();
   }
 
   function applyManifestCache(manifest) {
@@ -2952,6 +3089,10 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
       if (typeof manifest.aligned_page_count === "number" && manifest.aligned_page_count > 0) {
         selectedCandidate.aligned_page_count = manifest.aligned_page_count;
       }
+    }
+    syncBiblioPreviewNav();
+    if (isIndiceBooksMode() && window.BiblioBookOverlay && typeof window.BiblioBookOverlay.renderGrid === "function") {
+      window.BiblioBookOverlay.renderGrid();
     }
     return manifestCache;
   }
@@ -2988,20 +3129,53 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 
   function biblioPreviewMaxPage() {
     if (!selectedCandidate) return 1;
+    if (isIndiceBooksMode()) {
+      var indexPages = biblioIndexAlignedPages();
+      if (indexPages.length) return indexPages[indexPages.length - 1];
+    }
     return selectedCandidate.aligned_page_count || selectedCandidate.expected_page_count || selectedCandidate.original_page_count || 1;
   }
 
   function biblioClampPreviewPage(pageNum) {
-    var max = biblioPreviewMaxPage();
-    return Math.max(1, Math.min(max, Number(pageNum) || 1));
+    var pages = biblioActivePageList();
+    if (!pages.length) return 1;
+    var n = Number(pageNum) || pages[0];
+    if (pages.indexOf(n) >= 0) return n;
+    // nearest page in the active list
+    var best = pages[0];
+    var bestDist = Math.abs(best - n);
+    pages.forEach(function (page) {
+      var dist = Math.abs(page - n);
+      if (dist < bestDist) {
+        best = page;
+        bestDist = dist;
+      }
+    });
+    return best;
   }
 
   function biblioPrevAlignedPage(pageNum) {
-    return pageNum > 1 ? pageNum - 1 : null;
+    var pages = biblioActivePageList();
+    var idx = pages.indexOf(pageNum);
+    if (idx < 0) {
+      for (var i = pages.length - 1; i >= 0; i -= 1) {
+        if (pages[i] < pageNum) return pages[i];
+      }
+      return null;
+    }
+    return idx > 0 ? pages[idx - 1] : null;
   }
 
   function biblioNextAlignedPage(pageNum) {
-    return pageNum < biblioPreviewMaxPage() ? pageNum + 1 : null;
+    var pages = biblioActivePageList();
+    var idx = pages.indexOf(pageNum);
+    if (idx < 0) {
+      for (var j = 0; j < pages.length; j += 1) {
+        if (pages[j] > pageNum) return pages[j];
+      }
+      return null;
+    }
+    return idx < pages.length - 1 ? pages[idx + 1] : null;
   }
 
   function biblioPageQueryParams(alignedPage) {
@@ -3016,15 +3190,24 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
   }
 
   function syncBiblioPreviewNav() {
-    var max = biblioPreviewMaxPage();
+    var pages = biblioActivePageList();
     var has = selectedCandidate && biblioPreviewPage != null;
+    var idx = has ? pages.indexOf(biblioPreviewPage) : -1;
     document.getElementById("biblio-preview-prev").disabled = !has || biblioPrevAlignedPage(biblioPreviewPage) == null;
     document.getElementById("biblio-preview-next").disabled = !has || biblioNextAlignedPage(biblioPreviewPage) == null;
-    document.getElementById("biblio-preview-page-max").textContent = has ? String(max) : "—";
+    var maxLabel = document.getElementById("biblio-preview-page-max");
+    if (isIndiceBooksMode() && pages.length) {
+      maxLabel.textContent = has && idx >= 0
+        ? String(pages.length) + " (p." + biblioPreviewPage + ")"
+        : String(pages.length);
+    } else {
+      maxLabel.textContent = has ? String(biblioPreviewMaxPage()) : "—";
+    }
     var inp = document.getElementById("biblio-preview-page-input");
     if (has && document.activeElement !== inp) {
       inp.value = String(biblioPreviewPage);
-      inp.max = String(max);
+      inp.min = String(pages[0] || 1);
+      inp.max = String(pages.length ? pages[pages.length - 1] : biblioPreviewMaxPage());
     }
   }
 
@@ -3224,6 +3407,79 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     modal.setAttribute("aria-hidden", "true");
   }
 
+  function renderBiblioContext(data) {
+    var view = document.getElementById("biblio-artifact-view");
+    var notes = Array.isArray(data.notes) ? data.notes.slice() : [];
+    var prompts = Array.isArray(data.prompts) ? data.prompts : [];
+    var seen = Object.create(null);
+    notes.forEach(function (item) { seen[item.kind + ":" + (item.page || "")] = true; });
+
+    // Le annotazioni create nella Biblioteca vivono nello stato del controller
+    // finché non viene eseguito Apply: devono comparire anche prima del salvataggio.
+    (getMergedBiblioAnnotations() || []).forEach(function (item) {
+      var page = Number(item.page);
+      var elements = Array.isArray(item.elements) ? item.elements : [];
+      var graphic = elements.filter(function (el) {
+        return el && (el.type === "bbox" || el.type === "point" || el.type === "trail");
+      });
+      if (!(page >= 1) || !graphic.length || seen["session-annotations:" + page]) return;
+      notes.push({
+        kind: "session-annotations",
+        label: "Annotazioni grafiche",
+        stage: "Biblioteca · non applicate",
+        page: page,
+        text: graphic.map(function (el) {
+          var name = el.name ? " " + el.name : "";
+          return String(el.type || "annotazione") + name;
+        }).join(", ")
+      });
+      seen["session-annotations:" + page] = true;
+    });
+
+    // Include edits that have not been sent to the server yet.
+    var pipeline = String((document.getElementById("biblio-pipeline-notes") || {}).value || "").trim();
+    if (pipeline) notes.push({ kind: "session-pipeline", label: "Note pipeline AI (non applicate)", stage: "Applica modifiche", text: pipeline });
+    Object.keys(biblioNotesByPage).forEach(function (page) {
+      var text = String(biblioNotesByPage[page] || "").trim();
+      var key = "page_notes:" + page;
+      if (text && !seen[key]) notes.push({ kind: "session-page", label: "Nota pagina (non applicata)", stage: "Applica modifiche", page: Number(page), text: text });
+    });
+    if (biblioPageGuidance && typeof biblioPageGuidance.getAnnotations === "function") {
+      (biblioPageGuidance.getAnnotations() || []).forEach(function (item) {
+        var elements = Array.isArray(item.elements) ? item.elements : [];
+        if (elements.length && !seen["session-annotations:" + Number(item.page)]) notes.push({ kind: "session-annotations", label: "Annotazioni grafiche (non applicate)", stage: "Applica modifiche", page: item.page, text: elements.length + " elemento/i: " + elements.map(function (el) { return el.type || "annotazione"; }).join(", ") });
+      });
+    }
+    var html = "<div class='biblio-entries-sticky'><div class='biblio-entries-head'><span class='biblio-entries-title'>Contesto applicato</span><span class='biblio-entries-summary'>" + notes.length + " elementi · " + prompts.length + " prompt snapshot</span></div></div>";
+    html += "<div class='biblio-context-block'><h3>Note, annotazioni e page guidance</h3>";
+    html += notes.length ? notes.map(function (item) {
+      var page = item.page ? " · p." + esc(item.page) : "";
+      var image = item.page && selectedCandidate ? "<div class='biblio-context-image-strip'><figure><img loading='lazy' src='" + esc(biblioPreviewUrl(Number(item.page))) + "' alt='Pagina " + esc(item.page) + "'><figcaption>Pagina " + esc(item.page) + "</figcaption></figure></div>" : "";
+      return "<div class='biblio-context-item'><strong>" + esc(item.label || item.kind) + "</strong><span class='biblio-context-stage'>" + esc(item.stage || "—") + page + "</span><p class='biblio-context-text'>" + esc(item.text || "") + "</p>" + image + "</div>";
+    }).join("") : "<p class='hint'>Nessuna nota o annotazione disponibile.</p>";
+    html += "</div><div class='biblio-context-block'><h3>Prompt applicati</h3>";
+    html += prompts.length ? prompts.map(function (item) {
+      return "<details class='biblio-context-item'><summary>" + esc(item.label || item.id) + "<span class='biblio-context-stage'>" + esc(item.stage || item.group || "—") + "</span></summary><p class='biblio-context-text'>" + esc(item.content || "Contenuto snapshot non disponibile.") + "</p></details>";
+    }).join("") : "<p class='hint'>Nessun prompt snapshot disponibile nel manifest.</p>";
+    html += "</div>";
+    view.innerHTML = html;
+  }
+
+  function loadBiblioContext() {
+    var view = document.getElementById("biblio-artifact-view");
+    view.classList.remove("hidden");
+    view.innerHTML = "<p class='hint'>Caricamento contesto…</p>";
+    fetch("/api/admin/biblio/context?source_sha256=" + encodeURIComponent(selectedCandidate.source_sha256))
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data.ok) throw new Error(data.error || "Contesto non disponibile");
+        renderBiblioContext(data);
+      })
+      .catch(function (err) {
+        view.innerHTML = "<p class='hint'>" + esc(String(err.message || err)) + "</p>";
+      });
+  }
+
   function openConflictsModal(sha) {
     var modal = document.getElementById("conflicts-modal");
     modal.classList.remove("hidden");
@@ -3364,6 +3620,9 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     document.body.style.overflow = "";
     renderBiblioPreview(null);
     renderCandidates();
+    if (isIndiceBooksMode()) {
+      location.href = "/indice#books";
+    }
   }
 
   function closeBiblioPanel() {
@@ -3389,14 +3648,18 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     biblioLastSelectedSha = nextSha;
     setBiblioEditMode(false);
     setBiblioSection("libro");
-    ensureManifestCache();
-    if (window.BiblioBookOverlay && typeof window.BiblioBookOverlay.showOverview === "function") {
-      window.BiblioBookOverlay.showOverview();
-    } else {
-      renderBiblioPreview(1);
-      requestAnimationFrame(syncBiblioPanelHeights);
-    }
-    syncPendingApplyBtn();
+    syncIndiceIndexModeChrome();
+    ensureManifestCache().then(function () {
+      syncIndiceIndexModeChrome();
+      if (window.BiblioBookOverlay && typeof window.BiblioBookOverlay.showOverview === "function") {
+        window.BiblioBookOverlay.showOverview();
+      } else {
+        var first = biblioActivePageList()[0] || 1;
+        renderBiblioPreview(first);
+        requestAnimationFrame(syncBiblioPanelHeights);
+      }
+      syncPendingApplyBtn();
+    });
   }
 
   function showSelectedCandidate() {
@@ -3421,14 +3684,17 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
 
   function openBiblioPageView(pageNum) {
     setBiblioEditMode(false);
+    // In modalità Indice/BOOKs la review è sempre side-by-side (come «Libro»),
+    // mai la sola artifact INDEX.md senza PNG.
     setBiblioSection("libro");
-    renderBiblioPreview(pageNum || 1);
+    renderBiblioPreview(pageNum || (biblioActivePageList()[0] || 1));
     requestAnimationFrame(syncBiblioPanelHeights);
   }
 
-  function loadCandidates() {
-    if (!BIBLIO_EXTRACT_ENABLED) return;
-    fetch("/api/admin/biblio/candidates")
+  function loadCandidates(opts) {
+    opts = opts || {};
+    if (!BIBLIO_EXTRACT_ENABLED) return Promise.resolve();
+    return fetch("/api/admin/biblio/candidates")
       .then(function (r) { return r.text().then(function (text) { return { r: r, text: text }; }); })
       .then(function (pack) {
         var data;
@@ -3438,6 +3704,25 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
         }
         candidatesCache = (data.books || []).filter(function (b) { return b.eligible; });
         renderCandidates();
+        if (opts.openSha) {
+          var book = candidatesCache.find(function (b) { return b.source_sha256 === opts.openSha; });
+          if (book) {
+            selectedCandidate = book;
+            showSelectedCandidate();
+            if (opts.focusSection) {
+              setTimeout(function () {
+                if (typeof openBiblioSectionFromOverview === "function") {
+                  openBiblioSectionFromOverview(opts.focusSection);
+                }
+              }, 0);
+            }
+            if (opts.openIndexStage && window.BiblioBookOverlay && typeof window.BiblioBookOverlay.toggleStageCard === "function") {
+              setTimeout(function () {
+                window.BiblioBookOverlay.toggleStageCard("polyindex_index");
+              }, 50);
+            }
+          }
+        }
       })
       .catch(function (err) {
         document.getElementById("candidates-list").innerHTML = "<p class='hint'>" + esc(err.message || err) + "</p>";
@@ -3956,8 +4241,25 @@ button.danger:hover:not(:disabled) { background: #d96060; color: #fff; }
     if (location.hash === "#run" || location.hash === "#libri") {
       var runTab = document.querySelector('.tab[data-tab="run"]');
       if (runTab) runTab.click();
-    } else {
-      loadCandidates();
+    }
+    syncIndiceIndexModeChrome();
+    var bootParams = new URLSearchParams(location.search);
+    var bootSha = (bootParams.get("sha") || bootParams.get("source_sha256") || "").trim();
+    var bootFocus = (bootParams.get("focus") || "").trim();
+    // Da Indice/BOOKs restiamo in overview INDEX (griglia pagine indice + stage),
+    // poi il click pagina apre sempre side-by-side PNG|MD.
+    var focusSection = null;
+    if (bootFocus && bootFocus !== "index") focusSection = bootFocus;
+    loadCandidates({
+      openSha: bootSha || null,
+      focusSection: focusSection,
+      openIndexStage: isIndiceBooksMode() || bootFocus === "index"
+    });
+    if (isIndiceBooksMode()) {
+      var lead = document.querySelector(".lead");
+      if (lead) {
+        lead.innerHTML = 'Modalità <strong>Indice · BOOKs</strong>: solo pagine INDEX, side-by-side PNG|MD, annotazioni e <em>Avvia INDEX libro</em>. Chiudi per tornare a <a href="/indice#books">Indice</a>.';
+      }
     }
   }
 })();

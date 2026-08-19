@@ -177,8 +177,8 @@
       "broken": 0,
       "deprecated": 1,
       "needs_change": 1,
-      "ok": 34,
-      "partial": 26,
+      "ok": 36,
+      "partial": 24,
       "untested": 4
     }
   }

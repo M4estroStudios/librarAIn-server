@@ -51,12 +51,17 @@ def ensure_pipeline_runs_table(conn: sqlite3.Connection) -> None:
             total_pages INTEGER,
             succeeded_pages INTEGER,
             failed_pages INTEGER,
-            timing_json TEXT
+            timing_json TEXT,
+            compute_mode TEXT
         )
         """
     )
     if "timing_json" not in _pipeline_runs_columns(conn):
         conn.execute("ALTER TABLE pipeline_runs ADD COLUMN timing_json TEXT")
+    if "compute_mode" not in _pipeline_runs_columns(conn):
+        # Existing rows have no trustworthy mode information.  Keep them
+        # NULL; new runs receive an explicit mode in create_pipeline_run().
+        conn.execute("ALTER TABLE pipeline_runs ADD COLUMN compute_mode TEXT")
 
 
 def _serialize_timing(timing: dict[str, Any] | None) -> str | None:
@@ -89,6 +94,7 @@ def create_pipeline_run(
     source_sha256: str,
     pipeline_version: str,
     total_pages: int,
+    compute_mode: str = "local",
 ) -> int:
     from src.persistence.book_sqlite import init_books_schema
 
@@ -108,8 +114,9 @@ def create_pipeline_run(
                     last_error,
                     total_pages,
                     succeeded_pages,
-                    failed_pages
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    failed_pages,
+                    compute_mode
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     request_id,
@@ -122,6 +129,7 @@ def create_pipeline_run(
                     total_pages,
                     0,
                     0,
+                    compute_mode,
                 ),
             )
             row_id = cursor.lastrowid

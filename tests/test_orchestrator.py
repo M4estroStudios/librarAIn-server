@@ -28,23 +28,9 @@ _P_BUILD_BOOK = "src.ingestion.orchestrator.build_book_md"
 _P_BUILD_TOC = "src.ingestion.orchestrator.build_toc_md"
 _P_BUILD_INDEX = "src.ingestion.orchestrator.build_index_md"
 _P_SYNC_POLYINDEX_TOC = "src.ingestion.orchestrator.sync_polyindex_toc_from_book"
-_P_SYNC_TIME_INDEX = "src.ingestion.orchestrator.sync_time_index_from_book_async"
 _P_WRITE_GALLERY_INDEX = "src.ingestion.orchestrator.write_gallery_index"
 _P_SYNC_POLYINDEX_BIBLIO = "src.ingestion.orchestrator.sync_polyindex_biblio_from_book"
-_P_APPLY_INDEX_CROSS_LINKS = "src.ingestion.orchestrator.apply_index_cross_links"
 _P_PAGE_METADATA_PHASE = "src.ingestion.orchestrator._run_page_metadata_phase"
-
-
-def _patch_time_index():
-    return patch(
-        _P_SYNC_TIME_INDEX,
-        new=AsyncMock(
-            return_value=(
-                Path("/tmp/TIME_INDEX.json"),
-                {"n_years": 0, "n_dates": 0, "n_pages_scanned": 0, "n_llm_pages": 0},
-            )
-        ),
-    )
 
 
 def _patch_gallery_index():
@@ -73,13 +59,6 @@ def _patch_polyindex_biblio():
                 {"empty": True},
             )
         ),
-    )
-
-
-def _patch_index_artifacts():
-    return patch(
-        _P_APPLY_INDEX_CROSS_LINKS,
-        new=AsyncMock(return_value={"n_success": 0, "n_failed": 0}),
     )
 
 
@@ -180,10 +159,8 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         self._tmp.cleanup()
 
     @_patch_page_metadata_phase()
-    @_patch_index_artifacts()
     @_patch_polyindex_biblio()
     @_patch_gallery_index()
-    @_patch_time_index()
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -241,7 +218,7 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
             )
         )
 
-        self.assertEqual(mock_build_book.call_count, 2)
+        self.assertEqual(mock_build_book.call_count, 1)
         mock_build_toc.assert_called_once()
         mock_build_index.assert_called_once()
         mock_sync_polyindex_toc.assert_called_once()
@@ -253,6 +230,8 @@ class TestOrchestratorUsesPipelineStages(unittest.TestCase):
         self.assertTrue(all(job.status == PAGE_STATUS_COMPLETED for job in result.page_jobs))
         self.assertTrue(any(event.stage == "render" for event in self.registry.events))
         self.assertTrue(any(event.stage == "stage1" for event in self.registry.events))
+        self.assertFalse(any(event.stage == "index_cross_links" for event in self.registry.events))
+        self.assertFalse(any(event.stage == "time_index" for event in self.registry.events))
 
 
 class TestOrchestratorStageOrdering(unittest.TestCase):
@@ -299,10 +278,8 @@ class TestOrchestratorStageOrdering(unittest.TestCase):
         return result
 
     @_patch_page_metadata_phase()
-    @_patch_index_artifacts()
     @_patch_polyindex_biblio()
     @_patch_gallery_index()
-    @_patch_time_index()
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -403,10 +380,8 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         return Path(self.data_root) / "polyindex" / "TOC.json"
 
     @_patch_page_metadata_phase()
-    @_patch_index_artifacts()
     @_patch_polyindex_biblio()
     @_patch_gallery_index()
-    @_patch_time_index()
     @patch(_P_SYNC_POLYINDEX_TOC)
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
@@ -468,7 +443,7 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
             )
         )
 
-        self.assertEqual(mock_build_book.call_count, 2)
+        self.assertEqual(mock_build_book.call_count, 1)
         mock_build_book.assert_called_with(book_output, useful_pages)
         mock_build_toc.assert_called_once_with(book_output, useful_pages)
         mock_build_index.assert_called_once_with(book_output, useful_pages)
@@ -483,7 +458,7 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
         mock_refine_index.assert_awaited_once()
         self.assertEqual(
             self.builder_call_order,
-            ["book_md", "toc_md", "index_md", "book_md", "polyindex_toc"],
+            ["book_md", "toc_md", "index_md", "polyindex_toc"],
         )
         toc_events = [event for event in self.registry.events if event.stage == "toc_builder"]
         self.assertEqual(len(toc_events), 1)
@@ -556,10 +531,8 @@ class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):
         return self.toc_md_path
 
     @_patch_page_metadata_phase()
-    @_patch_index_artifacts()
     @_patch_polyindex_biblio()
     @_patch_gallery_index()
-    @_patch_time_index()
     @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
     @patch(_P_REFINE_TOC, new_callable=AsyncMock)
     @patch(_P_BUILD_INDEX)

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indice — librarAIn</title>
+<script src="/log.js"></script>
+<link rel="stylesheet" href="/nav.css">
+<style>
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+body { margin: 0; min-height: 100vh; padding: 0; }
+a { color: #4ec9b0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 72rem; margin: 0 auto; padding: 1.25rem 1rem 3rem; box-sizing: border-box; }
+h1 { font-size: 1.35rem; margin: 0 0 0.35rem; color: #e8e8e8; }
+.lead { color: #9d9d9d; font-size: 0.9rem; margin: 0 0 1.1rem; }
+.hint { color: #9d9d9d; font-size: 0.82rem; }
+.panel {
+  background: #252526;
+  border: 1px solid #3e3e3e;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.1rem;
+}
+.panel h2 { font-size: 1rem; margin: 0 0 0.55rem; color: #e8e8e8; }
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 1rem;
+}
+.tabs button {
+  background: #2a2a2b;
+  color: #c8c8c8;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+}
+.tabs button:hover:not(:disabled) { background: #333; color: #e8e8e8; }
+.tabs button.is-active {
+  border-color: #4ec9b0;
+  background: rgba(78, 201, 176, 0.12);
+  color: #e8e8e8;
+}
+.tab-panel.hidden { display: none; }
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  align-items: flex-end;
+  margin-bottom: 0.85rem;
+}
+.toolbar label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: #9d9d9d;
+}
+.toolbar select,
+.toolbar input[type="search"] {
+  background: #1e1e1e;
+  border: 1px solid #555;
+  color: #e8e8e8;
+  border-radius: 6px;
+  padding: 0.4rem 0.55rem;
+  min-width: 10rem;
+  font: inherit;
+  font-size: 0.88rem;
+}
+button.primary, button.secondary, button.danger {
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+}
+button.primary { background: #0e639c; color: #fff; }
+button.primary:hover:not(:disabled) { background: #1177bb; }
+button.secondary { background: #3c3c3c; color: #e8e8e8; }
+button.secondary:hover:not(:disabled) { background: #4a4a4a; }
+button:disabled { opacity: 0.55; cursor: default; }
+.status-line {
+  min-height: 1.35rem;
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.84rem;
+  color: #9d9d9d;
+}
+.status-line.err { color: #f48771; }
+.status-line.ok { color: #6a9955; }
+.book-table-wrap { overflow-x: auto; }
+table.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  min-width: 42rem;
+}
+.book-table th, .book-table td {
+  text-align: left;
+  padding: 0.5rem 0.45rem;
+  border-bottom: 1px solid #333;
+  vertical-align: top;
+}
+.book-table th {
+  color: #9d9d9d;
+  font-weight: 600;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.book-table tr.is-clickable { cursor: pointer; }
+.book-table tr.is-clickable:hover td { background: rgba(78, 201, 176, 0.06); }
+.book-table a.book-open {
+  color: #e8e8e8;
+  font-weight: 500;
+  text-decoration: none;
+}
+.book-table a.book-open:hover { color: #4ec9b0; text-decoration: underline; }
+.book-table .sha { font-family: ui-monospace, monospace; font-size: 0.72rem; color: #9d9d9d; }
+.pill {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  border: 1px solid #444;
+  color: #b8b8b8;
+  white-space: nowrap;
+}
+.pill.ok { color: #6a9955; border-color: #3a5a3a; }
+.pill.miss { color: #ce9178; border-color: #6a4a3a; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.actions button { padding: 0.28rem 0.55rem; font-size: 0.78rem; }
+.empty { color: #9d9d9d; font-size: 0.85rem; padding: 0.65rem 0; }
+.library-iframe-wrap {
+  margin-top: 0.85rem;
+  border: 1px solid #3e3e3e;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #252526;
+  min-height: 28rem;
+}
+.library-iframe-wrap iframe {
+  display: block;
+  width: 100%;
+  min-height: 36rem;
+  border: 0;
+  background: #252526;
+}
+.detail-box {
+  margin-top: 0.85rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  background: #1e1e1e;
+}
+.detail-box h3 { margin: 0 0 0.35rem; font-size: 0.92rem; color: #e8e8e8; }
+.detail-box ul { margin: 0.35rem 0 0; padding-left: 1.15rem; font-size: 0.82rem; color: #c8c8c8; }
+.detail-box li + li { margin-top: 0.2rem; }
+</style>
+</head>
+<body>
+<p class="app-nav"><a href="/">Admin</a> · <a href="/biblioteca">Biblioteca</a> · Indice · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
+<div class="wrap">
+  <h1>Indice</h1>
+  <p class="lead">Hyperlink libro, merge in <code>INDEX.json</code> e TIME_INDEX — fuori dall’ingestione automatica.</p>
+
+  <div class="tabs" role="tablist" aria-label="Sottopagine Indice">
+    <button type="button" role="tab" data-tab="books" class="is-active" aria-selected="true">BOOKs</button>
+    <button type="button" role="tab" data-tab="library" aria-selected="false">LIBRARY</button>
+    <button type="button" role="tab" data-tab="time" aria-selected="false">TIME_INDEX</button>
+  </div>
+
+  <section class="tab-panel" id="tab-books" data-tab-panel="books" role="tabpanel">
+    <div class="panel">
+      <h2>Indice per libro</h2>
+      <p class="hint">Clicca un libro: si apre la <strong>review INDEX</strong> (solo pagine del range indice, side-by-side PNG|MD + annotazioni). Poi <em>Avvia INDEX libro</em>. Flusso: algo → modello con le tue note → hyperlink + <code>INDEX_&lt;slug&gt;.json</code>.</p>
+      <div class="toolbar">
+        <label>Filtro
+          <input type="search" id="books-filter" placeholder="Titolo o SHA…" autocomplete="off">
+        </label>
+        <button type="button" class="secondary" id="books-reload">Ricarica</button>
+      </div>
+      <p class="status-line" id="books-status">Caricamento…</p>
+      <div class="book-table-wrap">
+        <table class="book-table">
+          <thead>
+            <tr>
+              <th>Libro</th>
+              <th>INDEX.md</th>
+              <th>INDEX_*.json</th>
+              <th>Soggetti</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="books-rows"></tbody>
+        </table>
+      </div>
+      <div class="detail-box">
+        <h3>Workflow BOOKs</h3>
+        <ul>
+          <li>Apri il libro → griglia pagine → click sulle pagine dell’indice analitico</li>
+          <li>Annota (bbox/point/trail + selezioni testo) e compila le note</li>
+          <li><em>Avvia INDEX libro</em>: algo su INDEX.md, poi modello con il tuo contesto, poi hyperlink</li>
+          <li>Poi in LIBRARY sincronizzi in <code>INDEX.json</code> quando sei soddisfatto</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab-panel hidden" id="tab-library" data-tab-panel="library" role="tabpanel">
+    <div class="panel">
+      <h2>Merge in INDEX.json (LIBRARY)</h2>
+      <p class="hint">Importa i soggetti del libro in <code>data/polyindex/INDEX.json</code> (match / alias / nuovi). Poi gestisci duplicati e POH sotto.</p>
+      <div class="toolbar">
+        <label>Filtro
+          <input type="search" id="library-filter" placeholder="Titolo o SHA…" autocomplete="off">
+        </label>
+        <label>Computazione AI
+          <select id="library-compute-mode" aria-label="Computazione AI LIBRARY">
+            <option value="local" selected>Local</option>
+            <option value="cloud">Cloud</option>
+          </select>
+        </label>
+        <button type="button" class="secondary" id="library-reload">Ricarica</button>
+      </div>
+      <p class="status-line" id="library-status">Caricamento…</p>
+      <div class="book-table-wrap">
+        <table class="book-table">
+          <thead>
+            <tr>
+              <th>Libro</th>
+              <th>INDEX.md</th>
+              <th>INDEX_*.json</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="library-rows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>POH e duplicati</h2>
+      <p class="hint">Stessi strumenti Admin · POH (merge soggetti multi-libro).</p>
+      <div class="library-iframe-wrap">
+        <iframe id="library-poh-frame" title="POH INDEX.json" src="/admin?embed=1#poh" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab-panel hidden" id="tab-time" data-tab-panel="time" role="tabpanel">
+    <div class="panel">
+      <h2>TIME_INDEX</h2>
+      <p class="hint">Estrae date/anni dalle pagine e aggiorna TIME_INDEX del libro + indice temporale globale.</p>
+      <div class="toolbar">
+        <label>Filtro
+          <input type="search" id="time-filter" placeholder="Titolo o SHA…" autocomplete="off">
+        </label>
+        <label>Computazione AI
+          <select id="time-compute-mode" aria-label="Computazione AI TIME_INDEX">
+            <option value="local" selected>Local</option>
+            <option value="cloud">Cloud</option>
+          </select>
+        </label>
+        <button type="button" class="secondary" id="time-reload">Ricarica</button>
+      </div>
+      <p class="status-line" id="time-status">Caricamento…</p>
+      <div class="book-table-wrap">
+        <table class="book-table">
+          <thead>
+            <tr>
+              <th>Libro</th>
+              <th>TIME_INDEX</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="time-rows"></tbody>
+        </table>
+      </div>
+      <div class="detail-box">
+        <h3>Cosa fa «Avvia TIME_INDEX»</h3>
+        <ul>
+          <li>Scansiona le pagine output del libro</li>
+          <li>Scrive <code>TIME_INDEX_&lt;slug&gt;.json</code></li>
+          <li>Aggiorna <code>data/polyindex/TIME_INDEX.json</code></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var books = [];
+  var running = null;
+
+  var STAGE_LABELS = {
+    polyindex_index: "BOOKs",
+    library_index: "LIBRARY",
+    time_index: "TIME_INDEX"
+  };
+
+  function $(id) { return document.getElementById(id); }
+
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function setStatus(el, msg, kind) {
+    if (!el) return;
+    el.textContent = msg || "";
+    el.classList.remove("err", "ok");
+    if (kind) el.classList.add(kind);
+  }
+
+  function pill(ok, okLabel, missLabel) {
+    return '<span class="pill ' + (ok ? "ok" : "miss") + '">' +
+      escapeHtml(ok ? okLabel : missLabel) + "</span>";
+  }
+
+  function bookTitle(book) {
+    return String(book.title || book.slug || book.source_sha256 || "").trim() || "(senza titolo)";
+  }
+
+  function matchesFilter(book, q) {
+    if (!q) return true;
+    var hay = (bookTitle(book) + " " + (book.slug || "") + " " + (book.source_sha256 || "")).toLowerCase();
+    return hay.indexOf(q) >= 0;
+  }
+
+  function setBusy(busy) {
+    document.querySelectorAll("[data-indice-run]").forEach(function (btn) {
+      btn.disabled = !!busy;
+    });
+    ["books-compute-mode", "library-compute-mode", "time-compute-mode"].forEach(function (id) {
+      var el = $(id);
+      if (el) el.disabled = !!busy;
+    });
+  }
+
+  function computeModeFor(tab) {
+    var id = tab === "library" ? "library-compute-mode"
+      : tab === "time" ? "time-compute-mode"
+      : "books-compute-mode";
+    var el = $(id);
+    return el && el.value === "cloud" ? "cloud" : "local";
+  }
+
+  function watchJob(jobId, stage, statusEl) {
+    return new Promise(function (resolve) {
+      var es;
+      try {
+        es = new EventSource("/api/ingest/" + encodeURIComponent(jobId) + "/events");
+      } catch (_) {
+        setStatus(statusEl, STAGE_LABELS[stage] + " avviato (no SSE). Vedi /jobs.", "ok");
+        resolve();
+        return;
+      }
+      var settled = false;
+      function finish(msg, kind) {
+        if (settled) return;
+        settled = true;
+        try { es.close(); } catch (_) {}
+        setStatus(statusEl, msg, kind);
+        resolve();
+      }
+      es.onmessage = function (ev) {
+        var data;
+        try { data = JSON.parse(ev.data); } catch (_) { return; }
+        var status = data.status || "";
+        var phase = data.phase || stage;
+        if (status === "done" || status === "completed") {
+          var result = data.result || {};
+          var extra = "";
+          if (result.n_new != null || result.n_match != null) {
+            extra = " · new " + (result.n_new || 0) +
+              " / match " + (result.n_match || 0) +
+              " / alias " + (result.n_alias || 0);
+          }
+          if (result.n_years != null) {
+            extra = " · anni " + result.n_years + " / date " + (result.n_dates || 0);
+          }
+          finish((STAGE_LABELS[stage] || stage) + " completato" + extra + " · job " + jobId, "ok");
+          return;
+        }
+        if (status === "error" || status === "failed") {
+          finish((STAGE_LABELS[stage] || stage) + " errore: " + (data.message || data.error || "fallito"), "err");
+          return;
+        }
+        if (data.message) {
+          setStatus(statusEl, (STAGE_LABELS[phase] || STAGE_LABELS[stage] || stage) + " · " + data.message);
+        }
+      };
+      es.onerror = function () {
+        finish((STAGE_LABELS[stage] || stage) + " · SSE interrotto. Controlla /jobs · " + jobId, "err");
+      };
+    });
+  }
+
+  function runStage(stage, book, opts) {
+    opts = opts || {};
+    if (running || !book) return;
+    var tab = opts.tab || "books";
+    var statusEl = $(tab + "-status");
+    var body = {
+      source_sha256: book.source_sha256,
+      stage: stage,
+      compute_mode: computeModeFor(tab)
+    };
+    if (stage === "polyindex_index") {
+      body.sync_library = false;
+    }
+    running = stage;
+    setBusy(true);
+    setStatus(statusEl, "Avvio " + (STAGE_LABELS[stage] || stage) + "…");
+    fetch("/api/admin/biblio/polyindex/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    })
+      .then(function (r) { return r.json().then(function (data) { return { r: r, data: data }; }); })
+      .then(function (pack) {
+        if (!pack.r.ok || !pack.data.ok) {
+          throw new Error((pack.data && pack.data.error) || ("HTTP " + pack.r.status));
+        }
+        setStatus(statusEl, (STAGE_LABELS[stage] || stage) + " avviato · job " + pack.data.job_id);
+        return watchJob(pack.data.job_id, stage, statusEl).then(function () {
+          return loadBooks(true);
+        });
+      })
+      .catch(function (err) {
+        setStatus(statusEl, String(err.message || err), "err");
+      })
+      .finally(function () {
+        running = null;
+        setBusy(false);
+      });
+  }
+
+  function openBookReview(sha) {
+    if (!sha) return;
+    location.href = "/biblioteca?sha=" + encodeURIComponent(sha) + "&from=indice&focus=index";
+  }
+
+  function renderBooksRows() {
+    var q = (($("books-filter") || {}).value || "").trim().toLowerCase();
+    var tbody = $("books-rows");
+    if (!tbody) return;
+    var rows = books.filter(function (b) { return matchesFilter(b, q); });
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="5" class="empty">Nessun libro.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(function (book) {
+      var sha = book.source_sha256 || "";
+      return "<tr class=\"is-clickable\" data-open-book=\"" + escapeHtml(sha) + "\">" +
+        "<td><a class=\"book-open\" href=\"/biblioteca?sha=" + encodeURIComponent(sha) +
+        "&from=indice&focus=index\">" + escapeHtml(bookTitle(book)) + "</a>" +
+        "<div class=\"sha\">" + escapeHtml(sha.slice(0, 16)) + "</div></td>" +
+        "<td>" + pill(!!book.has_index_md, "sì", "no") + "</td>" +
+        "<td>" + pill(!!book.has_book_index_json, "sì", "no") + "</td>" +
+        "<td>" + escapeHtml(String(book.book_index_subject_count || 0)) + "</td>" +
+        "<td class=\"actions\"><button type=\"button\" class=\"primary\" data-open-book=\"" +
+        escapeHtml(sha) + "\">Apri e annota</button></td>" +
+        "</tr>";
+    }).join("");
+  }
+
+  function renderLibraryRows() {
+    var q = (($("library-filter") || {}).value || "").trim().toLowerCase();
+    var tbody = $("library-rows");
+    if (!tbody) return;
+    var rows = books.filter(function (b) { return matchesFilter(b, q); });
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="4" class="empty">Nessun libro.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(function (book) {
+      var ready = !!book.has_index_md;
+      return "<tr>" +
+        "<td><div class=\"title\">" + escapeHtml(bookTitle(book)) + "</div>" +
+        "<div class=\"sha\">" + escapeHtml((book.source_sha256 || "").slice(0, 16)) + "</div></td>" +
+        "<td>" + pill(!!book.has_index_md, "sì", "no") + "</td>" +
+        "<td>" + pill(!!book.has_book_index_json, "sì", "no") + "</td>" +
+        "<td class=\"actions\"><button type=\"button\" class=\"primary\" data-indice-run=\"library_index\" data-sha=\"" +
+        escapeHtml(book.source_sha256) + "\" data-tab=\"library\"" +
+        (ready ? "" : " disabled title=\"Serve INDEX.md (esegui BOOKs)\"") +
+        ">Sincronizza LIBRARY</button></td>" +
+        "</tr>";
+    }).join("");
+  }
+
+  function renderTimeRows() {
+    var q = (($("time-filter") || {}).value || "").trim().toLowerCase();
+    var tbody = $("time-rows");
+    if (!tbody) return;
+    var rows = books.filter(function (b) { return matchesFilter(b, q); });
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="3" class="empty">Nessun libro.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(function (book) {
+      return "<tr>" +
+        "<td><div class=\"title\">" + escapeHtml(bookTitle(book)) + "</div>" +
+        "<div class=\"sha\">" + escapeHtml((book.source_sha256 || "").slice(0, 16)) + "</div></td>" +
+        "<td>" + pill(!!book.has_time_index, "presente", "assente") + "</td>" +
+        "<td class=\"actions\"><button type=\"button\" class=\"primary\" data-indice-run=\"time_index\" data-sha=\"" +
+        escapeHtml(book.source_sha256) + "\" data-tab=\"time\">Avvia TIME_INDEX</button></td>" +
+        "</tr>";
+    }).join("");
+  }
+
+  function renderAll() {
+    renderBooksRows();
+    renderLibraryRows();
+    renderTimeRows();
+  }
+
+  function loadBooks(silent) {
+    if (!silent) {
+      setStatus($("books-status"), "Caricamento…");
+      setStatus($("library-status"), "Caricamento…");
+      setStatus($("time-status"), "Caricamento…");
+    }
+    return fetch("/api/admin/biblio/candidates")
+      .then(function (r) { return r.json().then(function (data) { return { r: r, data: data }; }); })
+      .then(function (pack) {
+        if (!pack.r.ok || !pack.data.ok) {
+          throw new Error((pack.data && pack.data.error) || ("HTTP " + pack.r.status));
+        }
+        books = Array.isArray(pack.data.books) ? pack.data.books : [];
+        renderAll();
+        var msg = books.length + " libr" + (books.length === 1 ? "o" : "i");
+        if (!silent) {
+          setStatus($("books-status"), msg, "ok");
+          setStatus($("library-status"), msg, "ok");
+          setStatus($("time-status"), msg, "ok");
+        }
+      })
+      .catch(function (err) {
+        var msg = String(err.message || err);
+        setStatus($("books-status"), msg, "err");
+        setStatus($("library-status"), msg, "err");
+        setStatus($("time-status"), msg, "err");
+      });
+  }
+
+  function setTab(name) {
+    var target = name === "library" || name === "time" ? name : "books";
+    document.querySelectorAll(".tabs [data-tab]").forEach(function (btn) {
+      var on = btn.getAttribute("data-tab") === target;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    document.querySelectorAll("[data-tab-panel]").forEach(function (panel) {
+      panel.classList.toggle("hidden", panel.getAttribute("data-tab-panel") !== target);
+    });
+    if (location.hash.replace(/^#/, "") !== target) {
+      history.replaceState(null, "", "#" + target);
+    }
+  }
+
+  document.querySelectorAll(".tabs [data-tab]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      setTab(btn.getAttribute("data-tab"));
+    });
+  });
+
+  document.addEventListener("click", function (ev) {
+    var openBtn = ev.target.closest("[data-open-book]");
+    if (openBtn) {
+      ev.preventDefault();
+      openBookReview(openBtn.getAttribute("data-open-book"));
+      return;
+    }
+    var btn = ev.target.closest("[data-indice-run]");
+    if (!btn) return;
+    var sha = btn.getAttribute("data-sha");
+    var stage = btn.getAttribute("data-indice-run");
+    var tab = btn.getAttribute("data-tab") || "books";
+    var book = books.find(function (b) { return b.source_sha256 === sha; });
+    if (!book) return;
+    runStage(stage, book, { tab: tab });
+  });
+
+  ["books-filter", "library-filter", "time-filter"].forEach(function (id) {
+    var el = $(id);
+    if (el) el.addEventListener("input", renderAll);
+  });
+  ["books-reload", "library-reload", "time-reload"].forEach(function (id) {
+    var el = $(id);
+    if (el) el.addEventListener("click", function () { loadBooks(false); });
+  });
+
+  window.addEventListener("message", function (ev) {
+    if (!ev.data || ev.data.type !== "librarain-embed-height") return;
+    var frame = $("library-poh-frame");
+    if (!frame) return;
+    var h = Number(ev.data.height) || 0;
+    if (h > 200) frame.style.minHeight = Math.min(h + 24, 2400) + "px";
+  });
+
+  setTab((location.hash || "").replace(/^#/, "") || "books");
+  window.addEventListener("hashchange", function () {
+    setTab((location.hash || "").replace(/^#/, "") || "books");
+  });
+  loadBooks(false);
+})();
+</script>
+</body>
+</html>
