@@ -3,7 +3,7 @@
 
   var STAGE_LABELS = {
     polyindex_toc: "Polyindex TOC",
-    polyindex_index: "Polyindex INDEX",
+    polyindex_index: "Indice BOOKs",
     time_index: "Polyindex TIME_INDEX",
     polyindex_biblio: "Polyindex BIBLIO"
   };
@@ -36,6 +36,7 @@
     var overview = $("biblio-overview-view");
     var pageView = $("biblio-page-view");
     var closeBtn = $("biblio-panel-close");
+    var indiceMode = typeof window.isIndiceBooksMode === "function" && window.isIndiceBooksMode();
     if (overview) overview.classList.toggle("hidden", !isOverview);
     if (pageView) pageView.classList.toggle("hidden", isOverview);
     if (closeBtn) closeBtn.title = isOverview ? "Chiudi" : "Torna alla griglia";
@@ -48,6 +49,11 @@
         return;
       }
       if (el.classList.contains("biblio-page-counter")) return;
+      // In modalità Indice/BOOKs niente tab Manifest/TOC/…: solo counter + edit/annotate.
+      if (el.classList.contains("biblio-section-tabs")) {
+        el.classList.toggle("hidden", !!indiceMode || isOverview);
+        return;
+      }
       el.classList.remove("hidden");
     });
     if (isOverview) {
@@ -57,7 +63,7 @@
       if (status) status.classList.add("hidden");
     }
     var libroTab = document.querySelector('[data-biblio-section="libro"]');
-    if (libroTab) libroTab.classList.toggle("hidden", isOverview);
+    if (libroTab) libroTab.classList.toggle("hidden", isOverview || !!indiceMode);
     syncClearSelectionBtn();
     if (api && typeof api.onChromeSync === "function") api.onChromeSync();
   }
@@ -141,6 +147,10 @@
     }
     var pages = (typeof api.listPages === "function") ? api.listPages() : null;
     if (!Array.isArray(pages) || !pages.length) {
+      if (typeof window.isIndiceBooksMode === "function" && window.isIndiceBooksMode()) {
+        grid.innerHTML = "<p class='hint'>Nessuna pagina INDEX nel manifest (<code>index_range</code> / <code>index_range_aligned</code>).</p>";
+        return;
+      }
       var max = api.maxPage();
       pages = [];
       for (var page = 1; page <= max; page += 1) pages.push(page);
@@ -323,6 +333,18 @@
         return;
       }
       body.biblio_range = book.biblio_range;
+    }
+    if (stage === "polyindex_index") {
+      // INDEX libro: non tocca INDEX.json globale (LIBRARY).
+      body.sync_library = false;
+      var notes = "";
+      if (typeof window.buildSessionPromptNotes === "function") {
+        notes = String(window.buildSessionPromptNotes() || "").trim();
+      } else {
+        var notesEl = $("biblio-pipeline-notes");
+        notes = notesEl ? String(notesEl.value || "").trim() : "";
+      }
+      if (notes) body.prompt_notes = notes;
     }
     runningStage = stage;
     setButtonsBusy(true);
@@ -523,6 +545,7 @@
     currentMode: currentMode,
     renderGrid: renderGrid,
     clearSelection: resetOverlaySelection,
-    getSelectedPages: getSelectedPages
+    getSelectedPages: getSelectedPages,
+    toggleStageCard: toggleStageCard
   };
 })(window);

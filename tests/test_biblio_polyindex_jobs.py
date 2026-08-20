@@ -120,6 +120,46 @@ class BiblioPolyindexJobsTests(unittest.TestCase):
         build_book.assert_called_once()
         sync_index.assert_called_once()
 
+    @patch("src.api.biblio_polyindex_jobs.sync_polyindex_index_from_book")
+    @patch("src.api.biblio_polyindex_jobs.build_book_md")
+    @patch("src.api.biblio_polyindex_jobs.apply_index_cross_links", new_callable=AsyncMock)
+    @patch("src.api.biblio_polyindex_jobs.refine_index_md", new_callable=AsyncMock)
+    def test_index_book_only_skips_library_sync(
+        self,
+        refine_index: AsyncMock,
+        cross_links: AsyncMock,
+        build_book: MagicMock,
+        sync_index: MagicMock,
+    ) -> None:
+        _write_book(self.root)
+        refine_index.side_effect = lambda path, *args, **kwargs: path
+        cross_links.return_value = {}
+        result = run_polyindex_stage_job(
+            self.root,
+            self.settings,
+            SHA,
+            "polyindex_index",
+            sync_library=False,
+        )
+        self.assertTrue(result["ok"])
+        self.assertFalse(result.get("sync_library"))
+        sync_index.assert_not_called()
+        cross_links.assert_awaited()
+        build_book.assert_called_once()
+
+    @patch("src.api.biblio_polyindex_jobs.sync_polyindex_index_from_book")
+    def test_library_index_sync_only(self, sync_index: MagicMock) -> None:
+        _write_book(self.root)
+        sync_index.return_value = (
+            self.root / "polyindex" / "INDEX.json",
+            {"n_new": 1, "n_match": 0, "n_alias": 0},
+        )
+        result = run_polyindex_stage_job(self.root, self.settings, SHA, "library_index")
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["stage"], "library_index")
+        sync_index.assert_called_once()
+        self.assertIn("library_index", POLYINDEX_RERUN_STAGES)
+
     @patch("src.api.biblio_polyindex_jobs.run_biblio_only_job")
     def test_biblio_requires_range(self, run_biblio: MagicMock) -> None:
         _write_book(self.root)
@@ -209,7 +249,13 @@ class BiblioPolyindexJobsTests(unittest.TestCase):
     def test_stage_set_complete(self) -> None:
         self.assertEqual(
             POLYINDEX_RERUN_STAGES,
-            {"polyindex_toc", "polyindex_index", "time_index", "polyindex_biblio"},
+            {
+                "polyindex_toc",
+                "polyindex_index",
+                "library_index",
+                "time_index",
+                "polyindex_biblio",
+            },
         )
 
 

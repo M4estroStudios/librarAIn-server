@@ -9,6 +9,7 @@ from typing import Any, Callable
 
 from src.api.page_guidance_suggest import normalize_annotations, suggest_page_guidance
 from src.core.hashing import compute_file_sha256, validate_source_sha256
+from src.api.pdf_upload_storage import find_raw_pdf_by_sha256, upload_staging_path
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import use_compute_mode
 from src.models.settings import Settings, normalize_compute_mode
@@ -391,7 +392,7 @@ def try_handle_page_guidance_post(
         return False
 
     content_type = handler.headers.get("Content-Type") or ""
-    part_path = data_root / "input" / "raw" / f".upload_{secrets.token_hex(8)}.part"
+    part_path = upload_staging_path(data_root)
     try:
         content_length = request_content_length(handler)
         parsed = parse_multipart(
@@ -422,10 +423,17 @@ def try_handle_page_guidance_post(
         send_json(handler, 400, {"ok": False, "error": "uploaded file is not a PDF"})
         return True
 
-    saved_path = uploaded.path.with_name(
-        f"{secrets.token_hex(6)}_{safe_filename(uploaded.filename or 'upload.pdf')}"
-    )
-    uploaded.path.rename(saved_path)
+    digest = compute_file_sha256(uploaded.path)
+    existing_raw_path = find_raw_pdf_by_sha256(data_root, digest)
+    if existing_raw_path is None:
+        saved_path = data_root / "input" / "raw" / (
+            f"{secrets.token_hex(6)}_{safe_filename(uploaded.filename or 'upload.pdf')}"
+        )
+        saved_path.parent.mkdir(parents=True, exist_ok=True)
+        uploaded.path.rename(saved_path)
+    else:
+        # Keep the duplicate in staging; do not touch input/raw.
+        saved_path = uploaded.path
     fields = parsed.text_fields
 
     try:

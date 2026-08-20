@@ -424,8 +424,6 @@ _INGEST_PHASE_ORDER = [
     "stage2_vision",
     "stage3_editor",
     "polyindex_toc",
-    "polyindex_index",
-    "time_index",
     "polyindex_biblio",
 ]
 _GLM_INGEST_PHASE_ORDER = [
@@ -437,8 +435,6 @@ _GLM_INGEST_PHASE_ORDER = [
     "stage1_glm_ocr",
     "stage3_editor",
     "polyindex_toc",
-    "polyindex_index",
-    "time_index",
     "polyindex_biblio",
 ]
 _REPAIR_PHASE_ORDER = [
@@ -448,8 +444,6 @@ _REPAIR_PHASE_ORDER = [
     "stage2_vision",
     "stage3_editor",
     "polyindex_toc",
-    "polyindex_index",
-    "time_index",
     "polyindex_biblio",
 ]
 _GLM_REPAIR_PHASE_ORDER = [
@@ -458,8 +452,6 @@ _GLM_REPAIR_PHASE_ORDER = [
     "stage1_glm_ocr",
     "stage3_editor",
     "polyindex_toc",
-    "polyindex_index",
-    "time_index",
     "polyindex_biblio",
 ]
 _RESEARCH_DISPLAY_PHASE_ORDER = [
@@ -474,6 +466,7 @@ _BIBLIO_PHASE_ORDER = [
     "biblio_apply",
     "polyindex_toc",
     "polyindex_index",
+    "library_index",
     "time_index",
     "polyindex_biblio",
     "gallery_index",
@@ -497,8 +490,9 @@ _PHASE_LABELS = {
     "stage2_vision": "Stage 2 — Vision",
     "stage3_editor": "Stage 3 — Editor",
     "polyindex_toc": "Polyindex TOC",
-    "polyindex_index": "Polyindex INDEX",
-    "time_index": "Polyindex TIME_INDEX",
+    "polyindex_index": "Indice BOOKs",
+    "library_index": "Indice LIBRARY",
+    "time_index": "Indice TIME_INDEX",
     "polyindex_biblio": "Polyindex BIBLIO",
     "biblio_apply": "Biblioteca — Applica modifiche",
     "page_repair": "Preparazione riparazione",

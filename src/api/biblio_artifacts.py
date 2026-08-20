@@ -35,18 +35,23 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
             continue
         manifest_path = data_root / "output" / sha / "manifest.json"
         biblio_path = data_root / "output" / sha / "BIBLIO.json"
+        index_md_path = data_root / "output" / sha / "INDEX.md"
+        output_dir = data_root / "output" / sha
         biblio_range = None
         authors = None
         year = None
         original_page_count = None
         aligned_page_count = None
         pages_to_remove: list[int] = []
+        slug = book.get("slug")
         if manifest_path.is_file():
             try:
                 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             except (json.JSONDecodeError, OSError):
                 manifest = {}
             if isinstance(manifest, dict):
+                if not slug and manifest.get("slug"):
+                    slug = str(manifest["slug"])
                 opc = manifest.get("original_page_count")
                 if isinstance(opc, int) and opc > 0:
                     original_page_count = opc
@@ -74,6 +79,30 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
                     if isinstance(autores, list):
                         authors = ", ".join(str(a) for a in autores if str(a).strip())
                     year = reicat.get("anno_di_pubblicazione") or reicat.get("publication_year")
+        book_index_json = None
+        if slug:
+            candidate = output_dir / f"INDEX_{slug}.json"
+            if candidate.is_file():
+                book_index_json = candidate
+        if book_index_json is None:
+            matches = sorted(output_dir.glob("INDEX_*.json"))
+            # Prefer INDEX_<slug>.json over GALLERY_INDEX_ / TIME_INDEX_
+            for match in matches:
+                name = match.name
+                if name.startswith("GALLERY_") or name.startswith("TIME_"):
+                    continue
+                if name.startswith("INDEX_"):
+                    book_index_json = match
+                    break
+        has_time_index = _resolve_book_time_index_path(output_dir) is not None
+        book_index_subject_count = 0
+        if book_index_json is not None and book_index_json.is_file():
+            try:
+                raw_index = json.loads(book_index_json.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError):
+                raw_index = {}
+            if isinstance(raw_index, dict) and isinstance(raw_index.get("subjects"), dict):
+                book_index_subject_count = len(raw_index["subjects"])
         entry_count = 0
         if biblio_path.is_file():
             try:
@@ -92,7 +121,7 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
             {
                 "source_sha256": sha,
                 "title": book.get("title") or sha[:16],
-                "slug": book.get("slug"),
+                "slug": slug,
                 "authors": authors,
                 "year": year,
                 "expected_page_count": book.get("expected_page_count"),
@@ -105,6 +134,10 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
                 "has_biblio": biblio_path.is_file(),
                 "biblio_entry_count": entry_count,
                 "biblio_range": biblio_range,
+                "has_index_md": index_md_path.is_file(),
+                "has_book_index_json": book_index_json is not None,
+                "book_index_subject_count": book_index_subject_count,
+                "has_time_index": has_time_index,
                 "deprecated_count": count_deprecated_for_book(data_root, sha),
                 "conflicts_count": count_conflicts_for_book(data_root, sha),
             }
@@ -163,6 +196,92 @@ def read_book_artifact(data_root: Path, source_sha256: str, kind: str) -> dict[s
         except json.JSONDecodeError:
             data = None
     return {"ok": True, "kind": key, "name": filename, "text": text, "data": data}
+
+
+def read_book_context(data_root: Path, source_sha256: str) -> dict[str, Any]:
+    """Return the operator context and prompt snapshots associated with a book."""
+    try:
+        sha = validate_source_sha256(source_sha256)
+    except ValueError as exc:
+        return {"ok": False, "error": str(exc)}
+
+    output_dir = data_root / "output" / sha
+    manifest_path = output_dir / "manifest.json"
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        manifest = {}
+    if not isinstance(manifest, dict):
+        manifest = {}
+
+    # The notes table is shared by ingest and Biblioteca and is keyed by the
+    # source hash, so this also works for books selected from the library.
+    from src.api.page_guidance_http import resolve_ingest_ui_state
+
+    state = resolve_ingest_ui_state(str(data_root / "db" / "biblioteca.db"), sha) or {}
+    notes = []
+    note_fields = (
+        ("notes", "Note generali", "OCR / Vision / Editor"),
+        ("index_notes", "Note indice", "TOC / INDEX"),
+        ("page_notes", "Note pagina", "Vision / OCR / Editor"),
+        ("ai_page_guidance", "Page guidance", "Vision / OCR / Editor"),
+    )
+    for key, label, stage in note_fields:
+        value = str(state.get(key) or "").strip()
+        if value:
+            notes.append({"kind": key, "label": label, "stage": stage, "text": value})
+
+    annotations = state.get("annotations")
+    if isinstance(annotations, list):
+        for item in annotations:
+            if not isinstance(item, dict):
+                continue
+            elements = item.get("elements") if isinstance(item.get("elements"), list) else []
+            if elements:
+                notes.append({
+                    "kind": "annotations",
+                    "label": "Annotazioni grafiche",
+                    "stage": "Vision / OCR / Editor",
+                    "page": item.get("page"),
+                    "text": f"{len(elements)} elemento/i: " + ", ".join(
+                        str(el.get("type") or "annotazione") for el in elements if isinstance(el, dict)
+                    ),
+                })
+
+    stage_by_prompt = {
+        "glm_ocr": "Stage 1 · GLM OCR", "vision": "Stage 2 · Vision",
+        "editor": "Stage 3 · Editor", "page_guidance": "Pre-pipeline · Page guidance",
+        "reicat": "Ingest · REICAT", "toc_refine": "Stage 4 · TOC",
+        "index_refine": "Stage 4 · INDEX", "biblio_extract": "Polyindex · BIBLIO",
+        "subject_matcher": "Polyindex · subject matcher", "time_index": "Polyindex · TIME_INDEX",
+    }
+    prompts = []
+    prompts_used = manifest.get("prompts_used")
+    for item in prompts_used.get("items", []) if isinstance(prompts_used, dict) else []:
+        if not isinstance(item, dict):
+            continue
+        rel_file = str(item.get("file") or "").strip()
+        content = ""
+        if rel_file and (output_dir / rel_file).is_file():
+            try:
+                content = (output_dir / rel_file).read_text(encoding="utf-8")
+            except OSError:
+                content = ""
+        prompt_id = str(item.get("id") or "")
+        prompts.append({
+            "id": prompt_id,
+            "label": str(item.get("label") or prompt_id),
+            "stage": stage_by_prompt.get(prompt_id, str(item.get("group") or "Pipeline")),
+            "group": str(item.get("group") or ""),
+            "content": content,
+        })
+    return {
+        "ok": True,
+        "source_sha256": sha,
+        "updated_at": None,
+        "notes": notes,
+        "prompts": prompts,
+    }
 
 
 def update_manifest_reicat(

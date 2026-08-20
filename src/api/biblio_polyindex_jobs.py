@@ -20,12 +20,14 @@ from src.core.openai_client import build_openai_client, use_compute_mode
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
 from src.ingestion.index_cross_links import apply_index_cross_links, book_index_json_path
-from src.ingestion.output_writer import load_book_index_document, stamp_page_metadata
+from src.ingestion.output_writer import BookOutput, load_book_index_document, stamp_page_metadata
 from src.ingestion.pdf_alignment import build_page_removal_mapping
 from src.ingestion.polyindex.index_json import sync_polyindex_index_from_book
+from src.ingestion.polyindex.index_md_parser import parse_index_md
 from src.ingestion.polyindex.time_index import sync_time_index_from_book_async
 from src.ingestion.polyindex.toc_json import parse_chapters_from_toc_md, sync_polyindex_toc_from_book
 from src.ingestion.progress import (
+    PHASE_POLYINDEX_INDEX,
     STATUS_DONE,
     STATUS_ERROR,
     STATUS_STARTED,
@@ -37,11 +39,17 @@ from src.ingestion.toc_index_refine import refine_index_md, refine_toc_md
 from src.models.request import PageRange, UsefulPagesEnumeration
 from src.models.settings import Settings, normalize_compute_mode
 from src.persistence.book_page_exclude import load_book_exclusions
+from src.persistence.biblio_stage_runs import (
+    create_biblio_stage_run,
+    mark_biblio_stage_run_done,
+    mark_biblio_stage_run_failed,
+)
 
 POLYINDEX_RERUN_STAGES = frozenset(
     {
         "polyindex_toc",
         "polyindex_index",
+        "library_index",
         "time_index",
         "polyindex_biblio",
     }
@@ -50,9 +58,38 @@ POLYINDEX_RERUN_STAGES = frozenset(
 STAGE_JOB_KIND = {
     "polyindex_toc": "biblio",
     "polyindex_index": "biblio",
+    "library_index": "biblio",
     "time_index": "biblio",
     "polyindex_biblio": "biblio",
 }
+
+
+def _estimate_index_cross_link_steps(
+    index_md_path: Path,
+    book_output: BookOutput,
+    useful: UsefulPagesEnumeration,
+    *,
+    max_subjects: int | None = None,
+) -> int:
+    subjects = [s for s in parse_index_md(index_md_path, useful) if s.aligned_pages]
+    if max_subjects is not None and max_subjects > 0:
+        subjects = subjects[:max_subjects]
+    if not subjects:
+        return 1
+    index_set = useful.index_range_aligned.as_set()
+    pages_by = {page.aligned: page for page in book_output.pages}
+    n_index = sum(
+        1
+        for aligned in index_set
+        if (page := pages_by.get(aligned)) is not None and page.file.is_file()
+    )
+    content = {
+        aligned
+        for subject in subjects
+        for aligned in subject.aligned_pages
+        if aligned not in index_set and aligned in pages_by
+    }
+    return max(1, 1 + n_index + len(content))
 
 
 def _aligned_range_from_manifest(
@@ -146,6 +183,20 @@ async def _regenerate_index_md(
     max_subjects: int | None = None,
 ) -> Path:
     index_md = build_index_md(ctx["book_output"], ctx["useful"])
+    if progress is not None:
+        progress(
+            make_event(
+                PHASE_POLYINDEX_INDEX,
+                STATUS_STARTED,
+                page_total=_estimate_index_cross_link_steps(
+                    index_md,
+                    ctx["book_output"],
+                    ctx["useful"],
+                    max_subjects=max_subjects,
+                ),
+                message="Preparazione INDEX…",
+            )
+        )
     index_md = await refine_index_md(
         index_md,
         client,
@@ -291,6 +342,7 @@ def run_polyindex_index_job(
     prompt_notes: str | None = None,
     progress: ProgressReporter | None = None,
     max_subjects: int | None = None,
+    sync_library: bool = True,
 ) -> dict[str, Any]:
     ctx = _load_book_context(data_root, source_sha256)
     openai_client = client or build_openai_client(settings)
@@ -312,6 +364,24 @@ def run_polyindex_index_job(
             max_subjects=max_subjects,
         )
     )
+    result: dict[str, Any] = {
+        "ok": True,
+        "stage": "polyindex_index",
+        "source_sha256": ctx["sha"],
+        "index_md_path": str(index_md),
+        "book_index_json_path": str(
+            book_index_json_path(ctx["book_output"].output_dir, ctx["book_output"].slug)
+        ),
+        "sync_library": bool(sync_library),
+    }
+    if not sync_library:
+        Log(
+            INFO_LOG_LEVEL,
+            "polyindex index book-only job completed",
+            {"source_sha256": ctx["sha"][:16]},
+        )
+        return result
+
     reicat = ctx["manifest"].get("reicat") if isinstance(ctx["manifest"].get("reicat"), dict) else {}
     book_title = str(reicat.get("title") or reicat.get("titolo") or "") or None
     Log(
@@ -337,9 +407,50 @@ def run_polyindex_index_job(
         book_slug=ctx["book_output"].slug,
     )
     Log(INFO_LOG_LEVEL, "polyindex index-only job completed", {"source_sha256": ctx["sha"][:16], **stats})
+    result["index_json_path"] = str(path)
+    result.update(stats)
+    return result
+
+
+def run_library_index_sync_job(
+    data_root: Path,
+    settings: Settings,
+    source_sha256: str,
+    *,
+    client: openai.OpenAI | None = None,
+    request_id: str = "",
+    prompt_notes: str | None = None,
+) -> dict[str, Any]:
+    """Merge book INDEX.md subjects into global data/polyindex/INDEX.json."""
+    ctx = _load_book_context(data_root, source_sha256)
+    index_md = ctx["book_output"].output_dir / "INDEX.md"
+    if not index_md.is_file():
+        raise BiblioJobError("INDEX.md missing — esegui prima BOOKs (indice libro)")
+    openai_client = client or build_openai_client(settings)
+    rid = request_id or ctx["sha"]
+    reicat = ctx["manifest"].get("reicat") if isinstance(ctx["manifest"].get("reicat"), dict) else {}
+    book_title = str(reicat.get("title") or reicat.get("titolo") or "") or None
+    path, stats = sync_polyindex_index_from_book(
+        data_root / "polyindex",
+        ctx["sha"],
+        index_md,
+        ctx["useful"],
+        openai_client,
+        settings.sqlite_path,
+        settings,
+        rid,
+        prompt_notes=prompt_notes,
+        book_title=book_title,
+        book_slug=ctx["book_output"].slug,
+    )
+    Log(
+        INFO_LOG_LEVEL,
+        "library index sync job completed",
+        {"source_sha256": ctx["sha"][:16], **stats},
+    )
     return {
         "ok": True,
-        "stage": "polyindex_index",
+        "stage": "library_index",
         "source_sha256": ctx["sha"],
         "index_md_path": str(index_md),
         "index_json_path": str(path),
@@ -401,6 +512,7 @@ def run_polyindex_stage_job(
     progress: ProgressReporter | None = None,
     cross_links_only: bool = False,
     cross_link_max_subjects: int | None = None,
+    sync_library: bool = True,
 ) -> dict[str, Any]:
     stage_key = (stage or "").strip()
     if stage_key not in POLYINDEX_RERUN_STAGES:
@@ -436,6 +548,16 @@ def run_polyindex_stage_job(
             prompt_notes=prompt_notes,
             progress=progress,
             max_subjects=cross_link_max_subjects,
+            sync_library=sync_library,
+        )
+    if stage_key == "library_index":
+        return run_library_index_sync_job(
+            data_root,
+            settings,
+            source_sha256,
+            client=client,
+            request_id=request_id,
+            prompt_notes=prompt_notes,
         )
     if stage_key == "time_index":
         return run_polyindex_time_index_job(
@@ -543,6 +665,8 @@ def try_handle_polyindex_run_post(
             )
         compute_mode = normalize_compute_mode(payload.get("compute_mode"))
         cross_links_only = bool(payload.get("cross_links_only"))
+        # Default True for backward compat; Indice/BOOKs passa False.
+        sync_library = True if "sync_library" not in payload else bool(payload.get("sync_library"))
         cross_link_max_subjects_raw = payload.get("cross_link_max_subjects")
         cross_link_max_subjects = None
         if cross_link_max_subjects_raw is not None:
@@ -570,6 +694,20 @@ def try_handle_polyindex_run_post(
 
     job_id, _ = new_job_id(f"{source_sha256[:16]}_{stage}")
     registry.create_job(job_id=job_id, job_kind=job_kind, compute_mode=compute_mode)
+    try:
+        create_biblio_stage_run(
+            settings.sqlite_path,
+            request_id=job_id,
+            source_sha256=source_sha256,
+            stage=stage,
+            compute_mode=compute_mode,
+        )
+    except Exception as exc:
+        Log(
+            ERROR_LOG_LEVEL,
+            "biblio stage run persist start failed",
+            {"job_id": job_id, "stage": stage, "error": str(exc)},
+        )
 
     prompt_notes_raw = payload.get("prompt_notes")
     prompt_notes = str(prompt_notes_raw).strip() if prompt_notes_raw else None
@@ -616,6 +754,7 @@ def try_handle_polyindex_run_post(
                     progress=progress,
                     cross_links_only=cross_links_only,
                     cross_link_max_subjects=cross_link_max_subjects,
+                    sync_library=sync_library,
                 )
             registry.emit(
                 job_id,
@@ -626,6 +765,18 @@ def try_handle_polyindex_run_post(
                     result=result,
                 ),
             )
+            try:
+                mark_biblio_stage_run_done(
+                    settings.sqlite_path,
+                    request_id=job_id,
+                    result=result if isinstance(result, dict) else None,
+                )
+            except Exception as persist_exc:
+                Log(
+                    ERROR_LOG_LEVEL,
+                    "biblio stage run persist done failed",
+                    {"job_id": job_id, "stage": stage, "error": str(persist_exc)},
+                )
         except Exception as exc:
             Log(
                 ERROR_LOG_LEVEL,
@@ -648,6 +799,18 @@ def try_handle_polyindex_run_post(
                     message=str(exc),
                 ),
             )
+            try:
+                mark_biblio_stage_run_failed(
+                    settings.sqlite_path,
+                    request_id=job_id,
+                    last_error=str(exc),
+                )
+            except Exception as persist_exc:
+                Log(
+                    ERROR_LOG_LEVEL,
+                    "biblio stage run persist failed failed",
+                    {"job_id": job_id, "stage": stage, "error": str(persist_exc)},
+                )
         finally:
             job_semaphore.release()
 

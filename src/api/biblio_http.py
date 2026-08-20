@@ -8,6 +8,7 @@ from urllib.parse import parse_qs, urlparse
 
 from src.api.biblio_artifacts import (
     list_biblio_candidates,
+    read_book_context,
     read_book_artifact,
     update_manifest_reicat,
 )
@@ -22,10 +23,16 @@ from src.api.biblio_handlers import (
 )
 from src.api.biblio_polyindex_jobs import try_handle_polyindex_preflight_get, try_handle_polyindex_run_post
 from src.core.hashing import new_job_id
+from src.core.log import ERROR_LOG_LEVEL, Log
 from src.core.openai_client import use_compute_mode
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
 from src.models.request import PageRange
 from src.models.settings import Settings, normalize_compute_mode
+from src.persistence.biblio_stage_runs import (
+    create_biblio_stage_run,
+    mark_biblio_stage_run_done,
+    mark_biblio_stage_run_failed,
+)
 
 
 def try_handle_biblio_get(
@@ -81,6 +88,13 @@ def try_handle_biblio_get(
                 (query.get("source_sha256") or [""])[0],
                 (query.get("kind") or [""])[0],
             ),
+        )
+        return True
+    if route == "/api/admin/biblio/context":
+        send_json(
+            handler,
+            200,
+            read_book_context(data_root, (query.get("source_sha256") or [""])[0]),
         )
         return True
     if route == "/api/admin/biblio/search":
@@ -276,6 +290,20 @@ def try_handle_biblio_post(
 
         job_id, _ = new_job_id(f"{source_sha256[:16]}_biblio")
         registry.create_job(job_id=job_id, job_kind="biblio", compute_mode=compute_mode)
+        try:
+            create_biblio_stage_run(
+                settings.sqlite_path,
+                request_id=job_id,
+                source_sha256=source_sha256,
+                stage="polyindex_biblio",
+                compute_mode=compute_mode,
+            )
+        except Exception as exc:
+            Log(
+                ERROR_LOG_LEVEL,
+                "biblio stage run persist start failed",
+                {"job_id": job_id, "stage": "polyindex_biblio", "error": str(exc)},
+            )
 
         def _worker() -> None:
             acquired = job_semaphore.acquire(blocking=False)
@@ -314,6 +342,18 @@ def try_handle_biblio_post(
                         result=result,
                     ),
                 )
+                try:
+                    mark_biblio_stage_run_done(
+                        settings.sqlite_path,
+                        request_id=job_id,
+                        result=result if isinstance(result, dict) else None,
+                    )
+                except Exception as persist_exc:
+                    Log(
+                        ERROR_LOG_LEVEL,
+                        "biblio stage run persist done failed",
+                        {"job_id": job_id, "stage": "polyindex_biblio", "error": str(persist_exc)},
+                    )
             except Exception as exc:
                 registry.emit(
                     job_id,
@@ -324,6 +364,18 @@ def try_handle_biblio_post(
                         message=str(exc),
                     ),
                 )
+                try:
+                    mark_biblio_stage_run_failed(
+                        settings.sqlite_path,
+                        request_id=job_id,
+                        last_error=str(exc),
+                    )
+                except Exception as persist_exc:
+                    Log(
+                        ERROR_LOG_LEVEL,
+                        "biblio stage run persist failed failed",
+                        {"job_id": job_id, "stage": "polyindex_biblio", "error": str(persist_exc)},
+                    )
             finally:
                 job_semaphore.release()
 

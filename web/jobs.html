@@ -39,13 +39,14 @@ h1 { font-size: 1.35rem; margin: 0 0 0.35rem; color: #e8e8e8; }
 .history-table .col-title { width: 28%; min-width: 16rem; }
 .history-table .col-kind { width: 4.5rem; }
 .history-table .col-id { width: 8.5rem; }
-.history-table .col-started, .history-table .col-updated { width: 8rem; }
+.history-table .col-started { width: 8rem; }
 .history-table .col-duration { width: 5rem; }
 .history-table .col-actions { width: 8.5rem; }
 .history-table .cell-title { line-height: 1.35; word-break: break-word; overflow-wrap: anywhere; }
 .history-table .cell-title .cell-title-main { display: block; }
 .history-table .cell-title .hint { margin-top: 0.2rem; font-size: 0.72rem; }
 .history-table .cell-attempt { color: #9d9d9d; font-size: 0.78rem; text-align: center; font-variant-numeric: tabular-nums; padding-left: 0.2rem; padding-right: 0.2rem; }
+.history-table .cell-attempt-biblio { color: #4ec9b0; font-weight: 600; }
 .history-table .cell-id { font-family: ui-monospace, monospace; font-size: 0.72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .history-table .cell-time { font-size: 0.78rem; white-space: nowrap; }
 .history-table .cell-actions { display: flex; flex-wrap: wrap; gap: 0.3rem; justify-content: flex-end; align-items: flex-start; }
@@ -88,7 +89,7 @@ button.resume-job:disabled, button.terminate-job:disabled, button.doctor-job:dis
 <link rel="stylesheet" href="/dashboard/dashboard.css">
 </head>
 <body>
-<p class="app-nav"><a href="/">Admin</a> · <a href="/biblioteca">Biblioteca</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · Job | <a href="/etaly-export">e-taly</a></p>
+<p class="app-nav"><a href="/">Admin</a> · <a href="/biblioteca">Biblioteca</a> · <a href="/indice">Indice</a> · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · Job | <a href="/etaly-export">e-taly</a></p>
 <div class="wrap">
   <h1>Job</h1>
   <p class="lead">Storico ingest e research, con job attivi e batch temporanei in tempo reale.</p>
@@ -133,7 +134,6 @@ button.resume-job:disabled, button.terminate-job:disabled, button.doctor-job:dis
         <col class="col-id">
         <col class="col-started">
         <col class="col-duration">
-        <col class="col-updated">
         <col class="col-actions">
       </colgroup>
       <thead>
@@ -145,12 +145,11 @@ button.resume-job:disabled, button.terminate-job:disabled, button.doctor-job:dis
           <th>ID</th>
           <th>Avviato</th>
           <th>Durata</th>
-          <th>Aggiornato</th>
           <th></th>
         </tr>
       </thead>
       <tbody id="history-body">
-        <tr><td colspan="9" class="empty">Caricamento…</td></tr>
+        <tr><td colspan="8" class="empty">Caricamento…</td></tr>
       </tbody>
     </table>
     </div>
@@ -223,6 +222,7 @@ function jobDurationLabel(job) {
 
 const KIND_LABELS = {
   ingest: "Ingest",
+  biblio: "biblio",
   research: "Research",
   research_batch: "Batch",
 };
@@ -450,7 +450,7 @@ async function loadHistory() {
     });
     meta.textContent = jobs.length + " risultati";
     if (!jobs.length) {
-      body.innerHTML = '<tr><td colspan="9" class="empty">Nessun job trovato.</td></tr>';
+      body.innerHTML = '<tr><td colspan="8" class="empty">Nessun job trovato.</td></tr>';
       return;
     }
     body.innerHTML = jobs.map(function (job) {
@@ -509,16 +509,17 @@ async function loadHistory() {
         job.attempt_number != null && Number.isFinite(Number(job.attempt_number))
           ? String(job.attempt_number)
           : "—";
+      const attemptClass =
+        job.job_kind === "biblio" ? "cell-attempt cell-attempt-biblio" : "cell-attempt";
       return (
         "<tr>" +
-        '<td class="cell-attempt">' + escapeHtml(attemptNo) + "</td>" +
+        '<td class="' + attemptClass + '">' + escapeHtml(attemptNo) + "</td>" +
         '<td class="status-cell"><span class="status-pill status-' + escapeHtml(display) + '">' + escapeHtml(label) + "</span>" + statusActions + "</td>" +
         '<td class="cell-title" title="' + escapeHtml(bookLabel) + '">' + bookLabelWithAttempt + "</td>" +
         "<td>" + escapeHtml(kind) + "</td>" +
         '<td class="cell-id" title="' + escapeHtml(jobId) + '">' + escapeHtml(shortenJobId(jobId)) + "</td>" +
         '<td class="cell-time">' + escapeHtml(formatTs(job.created_at)) + "</td>" +
         "<td>" + escapeHtml(jobDurationLabel(job)) + "</td>" +
-        '<td class="cell-time">' + escapeHtml(formatTs(job.updated_at)) + "</td>" +
         '<td class="cell-actions">' + actions + "</td>" +
         "</tr>"
       );
@@ -570,7 +571,7 @@ async function loadHistory() {
       });
     });
   } catch (err) {
-    body.innerHTML = '<tr><td colspan="9" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
+    body.innerHTML = '<tr><td colspan="8" class="empty">Errore: ' + escapeHtml(err.message) + "</td></tr>";
     meta.textContent = "";
   }
 }

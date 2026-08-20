@@ -1,6 +1,7 @@
 data/input/
 data/tmp/
 data/db/
+data/log/
 data/polyindex/
 backup/
 tempdata/

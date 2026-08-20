@@ -359,7 +359,7 @@ async def apply_index_cross_links(
         page_href(aligned, book_output.slug, from_pages_dir=True)
         for aligned in index_page_set
     }
-    content_base_step = step
+    step_lock = asyncio.Lock()
 
     async def _run_content(aligned: int) -> dict[str, int]:
         return await _link_one_content_page(
@@ -377,23 +377,25 @@ async def apply_index_cross_links(
         sem = asyncio.Semaphore(max(1, int(settings.max_parallel_request)))
 
         async def _guarded(aligned: int) -> tuple[int, dict[str, int]]:
+            nonlocal step
             async with sem:
                 outcome = await _run_content(aligned)
-            return aligned, outcome
-
-        outcomes = await gather_cancellable(*(_guarded(aligned) for aligned in content_pages))
-        for offset, (aligned, outcome) in enumerate(outcomes, start=1):
-            for key in ("regex_links", "llm_links", "unresolved", "pages_updated"):
-                stats[key] = int(stats[key]) + int(outcome[key])
+            async with step_lock:
+                step += 1
+                page_index = step
+                for key in ("regex_links", "llm_links", "unresolved", "pages_updated"):
+                    stats[key] = int(stats[key]) + int(outcome[key])
             emit(
                 STATUS_PAGE_PROGRESS,
                 counts_as_step=True,
-                page_index=content_base_step + offset,
+                page_index=page_index,
                 page_total=page_total,
                 aligned_page=aligned,
                 message=f"Collegamento pagina {aligned}",
             )
-        step = content_base_step + len(content_pages)
+            return aligned, outcome
+
+        await gather_cancellable(*(_guarded(aligned) for aligned in content_pages))
     else:
         for aligned in content_pages:
             outcome = await _run_content(aligned)

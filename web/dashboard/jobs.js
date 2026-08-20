@@ -50,7 +50,7 @@ const JOB_PHASE_LABELS = {
 const JOB_KIND_LABELS = {
   ingest: "Ingest",
   repair: "Riparazione",
-  biblio: "Bibliografia",
+  biblio: "biblio",
   research: "Research",
   research_batch: "Batch articoli",
 };

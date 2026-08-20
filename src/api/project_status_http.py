@@ -11,6 +11,10 @@ from typing import Any, Callable
 from src.api.job_registry import JobRegistry
 from src.api.research_batch_registry import ResearchBatchRegistry
 from src.persistence.book_pages_audit import audit_all_books
+from src.persistence.llm_metrics import (
+    aggregate_legacy_pipeline_stage_metrics,
+    aggregate_llm_call_metrics,
+)
 from src.persistence.pipeline_runs import list_pipeline_runs
 from src.search.article_catalog import research_status_summary
 
@@ -284,12 +288,57 @@ def collect_pipeline_run_stats(sqlite_path: str, *, limit: int = 10) -> list[dic
                 "status": row.get("status"),
                 "started_at": row.get("started_at"),
                 "finished_at": row.get("finished_at"),
+                "compute_mode": row.get("compute_mode"),
                 "book_title": row.get("book_title"),
                 "page_count": row.get("page_count"),
                 "timing": timing if isinstance(timing, dict) else None,
             }
         )
     return out
+
+
+def collect_llm_metrics(
+    sqlite_path: str,
+    *,
+    settings: Any = None,
+    request_id: str | None = None,
+    source_sha256: str | None = None,
+    stage: str | None = None,
+    compute_mode: str | None = None,
+    model: str | None = None,
+    limit: int = 50000,
+) -> list[dict[str, Any]]:
+    try:
+        metrics = aggregate_llm_call_metrics(
+            sqlite_path,
+            request_id=request_id,
+            source_sha256=source_sha256,
+            stage=stage,
+            compute_mode=compute_mode,
+            model=model,
+            limit=limit,
+        )
+        if metrics:
+            return metrics
+        legacy = aggregate_legacy_pipeline_stage_metrics(
+            sqlite_path,
+            settings=settings,
+            limit=limit,
+        )
+        if stage:
+            legacy = [item for item in legacy if item.get("stage") == stage]
+        if compute_mode:
+            legacy = [item for item in legacy if item.get("compute_mode") == compute_mode]
+        if model:
+            legacy = [item for item in legacy if item.get("model") == model]
+        # Legacy pipeline rows are keyed by request only inside their source
+        # timing data; request/source filters are unavailable after aggregation.
+        # Return no legacy rows rather than claiming a filtered match.
+        if request_id or source_sha256:
+            return []
+        return legacy
+    except Exception:
+        return []
 
 
 def build_project_stats(
@@ -330,6 +379,7 @@ def build_project_stats(
         "polyindex": collect_polyindex_stats(data_root),
         "runtime": runtime,
         "pipeline_runs": collect_pipeline_run_stats(sqlite_path, limit=10),
+        "llm_metrics": collect_llm_metrics(sqlite_path, settings=settings),
         "checklist": count_statuses(list(tree.get("roots") or [])),
     }
 
@@ -444,6 +494,32 @@ def try_handle_project_status_get(
     send_json: SendJson,
     query: dict[str, list[str]] | None = None,
 ) -> bool:
+    if path == "/api/admin/llm-metrics":
+        q = query or {}
+        limit_raw = (q.get("limit") or ["50000"])[0]
+        try:
+            limit = max(1, min(int(limit_raw), 100000))
+        except (TypeError, ValueError):
+            send_json(handler, 400, {"ok": False, "error": "limit must be an integer"})
+            return True
+        filters = {
+            key: (q.get(key) or [""])[0].strip() or None
+            for key in ("request_id", "source_sha256", "stage", "compute_mode", "model")
+        }
+        send_json(
+            handler,
+            200,
+            {
+                "ok": True,
+                "metrics": collect_llm_metrics(
+                    sqlite_path,
+                    settings=settings,
+                    limit=limit,
+                    **filters,
+                ),
+            },
+        )
+        return True
     if path == "/api/admin/project-status":
         tree = load_project_status(web_dir)
         send_json(handler, 200, {"ok": True, "tree": tree})
