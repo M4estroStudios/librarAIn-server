@@ -317,8 +317,9 @@ details.reicat-metadata[open] > summary::before { transform: rotate(90deg); }
 #pdf-viewer-panel { margin-top: 0; }
 #pdf-viewer-panel.show { width: 100%; }
 .page-picker-workspace {
-  --page-picker-grid: 9.5rem;
+  --page-picker-grid: 22%;
   --page-picker-center: 1fr;
+  --page-picker-grid-cols: 2;
   display: grid;
   grid-template-columns:
     minmax(5.5rem, var(--page-picker-grid))
@@ -639,7 +640,7 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-progress progress::-webkit-progress-value { background: #4ec9b0; border-radius: 4px; }
 .page-picker-progress progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
 .page-picker-progress-stats { margin-top: 0.45rem; font-size: 0.75rem; color: #9d9d9d; }
-.page-picker-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.28rem; }
+.page-picker-grid { display: grid; grid-template-columns: repeat(var(--page-picker-grid-cols, 2), minmax(0, 1fr)); gap: 0.28rem; }
 .page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 4px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; container-type: inline-size; }
 .page-picker-thumb.is-selected { border-color: #4ec9b0; box-shadow: 0 0 0 1px #4ec9b0; }
 .page-picker-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
@@ -1821,12 +1822,18 @@ if (document.readyState === "loading") {
     function applyCols(gridPx, centerPx) {
       var total = pagePickerWorkspace.getBoundingClientRect().width;
       var usable = Math.max(0, total - SPLITTER_PX * 2);
-      var maxGrid = Math.max(MIN_GRID_PX, usable - MIN_CENTER_PX - MIN_CONTEXT_PX);
+      // Grid column hard-cap: 50% of workspace width.
+      var maxGridByShare = total * 0.5;
+      var maxGrid = Math.max(MIN_GRID_PX, Math.min(maxGridByShare, usable - MIN_CENTER_PX - MIN_CONTEXT_PX));
       var grid = Math.max(MIN_GRID_PX, Math.min(maxGrid, gridPx));
       var maxCenter = Math.max(MIN_CENTER_PX, usable - grid - MIN_CONTEXT_PX);
       var center = Math.max(MIN_CENTER_PX, Math.min(maxCenter, centerPx));
       pagePickerWorkspace.style.setProperty("--page-picker-grid", Math.round(grid) + "px");
       pagePickerWorkspace.style.setProperty("--page-picker-center", Math.round(center) + "px");
+      // Density by share of workspace: ≥40% → 4 cols, ≥30% → 3, else 2.
+      var ratio = total > 0 ? grid / total : 0;
+      var cols = ratio >= 0.4 ? 4 : ratio >= 0.3 ? 3 : 2;
+      pagePickerWorkspace.style.setProperty("--page-picker-grid-cols", String(cols));
       notifyLayout();
     }
 
@@ -1886,6 +1893,13 @@ if (document.readyState === "loading") {
       var w = colWidths();
       if (!(w.total > 0)) return;
       applyCols(w.grid || MIN_GRID_PX, w.center || MIN_CENTER_PX);
+    });
+    window.requestAnimationFrame(function () {
+      var w = colWidths();
+      if (!(w.total > 0)) return;
+      var grid = w.grid > 0 ? w.grid : w.total * 0.22;
+      var center = w.center > 0 ? w.center : Math.max(MIN_CENTER_PX, (w.total - SPLITTER_PX * 2 - grid) * 0.55);
+      applyCols(grid, center);
     });
   })();
   function notifyPageGuidanceDetailChange() {
