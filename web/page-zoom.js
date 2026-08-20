@@ -2,6 +2,8 @@
   var MIN_ZOOM = 1;
   var MAX_ZOOM = 4;
   var ZOOM_STEP = 0.05;
+  /** Ingest page-picker: open at fit (100%) so the full page is visible; zoom via slider / pinch. */
+  var PICKER_INITIAL_ZOOM = 1;
   var SELECTORS = [
     ".page-preview-img-wrap",
     ".page-review-img-wrap",
@@ -18,8 +20,9 @@
     style.textContent = [
       ".page-zoom-column{flex:1 1 auto;min-width:0;min-height:0;display:flex;flex-direction:column;gap:0.35rem;}",
       ".page-review-pane>.page-zoom-column{flex:0 0 auto;}",
+      ".page-picker-detail-body>.page-zoom-column{flex:1 1 auto;min-width:0;min-height:0;}",
       ".page-zoom-viewport{flex:1 1 auto!important;min-width:0;min-height:0;position:relative!important;display:grid!important;place-items:center;overflow:hidden!important;touch-action:none;}",
-      ".page-zoom-viewport.is-zoomed{overflow:auto!important;cursor:default;}",
+      ".page-zoom-viewport.is-zoomed{overflow:auto!important;cursor:grab;}",
       ".page-zoom-viewport.is-panning,.page-zoom-viewport.is-panning *{cursor:grabbing!important;user-select:none;}",
       ".page-zoom-stage{position:relative;line-height:0;flex:0 0 auto;}",
       ".page-zoom-viewport .page-zoom-stage>img,.page-zoom-viewport .page-zoom-stage>.validation-preview-frame{display:block!important;width:100%!important;height:auto!important;max-width:none!important;max-height:none!important;position:relative!important;top:auto!important;left:auto!important;transform:none!important;object-fit:contain!important;aspect-ratio:auto;background:#fff;}",
@@ -32,6 +35,26 @@
       ".page-zoom-controls.hidden{display:none!important;}",
     ].join("");
     document.head.appendChild(style);
+  }
+
+  function isPickerViewport(viewport) {
+    return !!(viewport && viewport.classList && viewport.classList.contains("page-picker-detail-img-wrap"));
+  }
+
+  function initialZoomFor(viewport) {
+    if (!isPickerViewport(viewport)) return MIN_ZOOM;
+    return clamp(PICKER_INITIAL_ZOOM, MIN_ZOOM, MAX_ZOOM);
+  }
+
+  /**
+   * F-004 pan vs annotate (unica regola): se il tool annotate è attivo sul viewport → priorità draw;
+   * altrimenti left-drag fa pan. Nessun modifier (Shift/Alt/…).
+   * Rileva via #annotate-canvas senza is-preview (page-guidance: active ⇒ pointer-events auto).
+   */
+  function annotateDrawActive(viewport) {
+    var canvas = viewport && viewport.querySelector("#annotate-canvas");
+    if (!canvas || canvas.classList.contains("hidden") || canvas.classList.contains("is-preview")) return false;
+    return true;
   }
 
   function clamp(n, lo, hi) {
@@ -109,8 +132,9 @@
     var slider = controls.querySelector("input");
     var valueEl = controls.querySelector(".page-zoom-value");
 
+    var pickerInitial = initialZoomFor(viewport);
     var state = {
-      zoom: MIN_ZOOM,
+      zoom: pickerInitial,
       panning: false,
       panMoved: false,
       startX: 0,
@@ -123,6 +147,11 @@
       fitBaseW: 0,
       fitBaseH: 0,
     };
+
+    function centerScroll() {
+      viewport.scrollLeft = Math.max(0, (viewport.scrollWidth - viewport.clientWidth) / 2);
+      viewport.scrollTop = Math.max(0, (viewport.scrollHeight - viewport.clientHeight) / 2);
+    }
 
     function mediaReady() {
       var media = findMedia(viewport);
@@ -182,13 +211,13 @@
       valueEl.textContent = Math.round(z * 100) + "%";
     }
 
-    function setZoom(next) {
+    function setZoom(next, anchorX, anchorY) {
       var z = clamp(Number(next) || MIN_ZOOM, MIN_ZOOM, MAX_ZOOM);
       z = clamp(Number((Math.round(z / ZOOM_STEP) * ZOOM_STEP).toFixed(2)), MIN_ZOOM, MAX_ZOOM);
       var prev = state.zoom;
       var rect = viewport.getBoundingClientRect();
-      var ax = rect.width / 2;
-      var ay = rect.height / 2;
+      var ax = anchorX != null ? anchorX : rect.width / 2;
+      var ay = anchorY != null ? anchorY : rect.height / 2;
       var contentX = viewport.scrollLeft + ax;
       var contentY = viewport.scrollTop + ay;
       state.zoom = z;
@@ -225,9 +254,10 @@
     function onImgLoad() {
       var media = findMedia(viewport);
       var src = media && media.img ? media.img.getAttribute("src") || "" : "";
-      if (src !== state.lastSrc) {
+      var pageChanged = src !== state.lastSrc;
+      if (pageChanged) {
         state.lastSrc = src;
-        state.zoom = MIN_ZOOM;
+        state.zoom = pickerInitial;
         viewport.scrollLeft = 0;
         viewport.scrollTop = 0;
       }
@@ -236,32 +266,61 @@
       state.appliedW = 0;
       state.appliedH = 0;
       layout();
+      if (pageChanged && !atMinZoom()) centerScroll();
     }
 
     var media = findMedia(viewport);
     if (media && media.img && !media.img._pageZoomBound) {
       media.img._pageZoomBound = true;
+      media.img.draggable = false;
       media.img.addEventListener("load", onImgLoad);
+    }
+    if (media && media.img && media.img.complete && media.img.naturalWidth) {
+      onImgLoad();
     }
 
     slider.addEventListener("input", function () {
       setZoom(slider.value);
     });
 
+    // Scroll alone does not zoom (slider / trackpad pinch). Pinch = wheel+ctrl on most browsers.
+    viewport.addEventListener(
+      "wheel",
+      function (ev) {
+        if (!ev.ctrlKey && !ev.metaKey) return;
+        if (!mediaReady()) return;
+        ev.preventDefault();
+        var rect = viewport.getBoundingClientRect();
+        var ax = ev.clientX - rect.left;
+        var ay = ev.clientY - rect.top;
+        var dy = ev.deltaY;
+        if (ev.deltaMode === 1) dy *= 16;
+        else if (ev.deltaMode === 2) dy *= Math.max(1, viewport.clientHeight);
+        var steps = Math.max(1, Math.min(4, Math.round(Math.abs(dy) / 48) || 1));
+        var next = state.zoom + (dy > 0 ? -ZOOM_STEP : ZOOM_STEP) * steps;
+        setZoom(next, ax, ay);
+      },
+      { passive: false, capture: true }
+    );
+
     viewport.addEventListener(
       "mousedown",
       function (ev) {
-        if (ev.button !== 2) return;
-        if (!atMinZoom()) {
-          ev.preventDefault();
-          state.panning = true;
-          state.panMoved = false;
-          state.startX = ev.clientX;
-          state.startY = ev.clientY;
-          state.startLeft = viewport.scrollLeft;
-          state.startTop = viewport.scrollTop;
-          viewport.classList.add("is-panning");
+        if (atMinZoom()) return;
+        // Left-drag pans only when annotate is idle; right-drag pans always (draw uses button 0).
+        if (ev.button === 0) {
+          if (annotateDrawActive(viewport)) return;
+        } else if (ev.button !== 2) {
+          return;
         }
+        ev.preventDefault();
+        state.panning = true;
+        state.panMoved = false;
+        state.startX = ev.clientX;
+        state.startY = ev.clientY;
+        state.startLeft = viewport.scrollLeft;
+        state.startTop = viewport.scrollTop;
+        viewport.classList.add("is-panning");
       },
       true
     );
@@ -277,7 +336,7 @@
 
     function onUp(ev) {
       if (!state.panning) return;
-      if (ev.button === 2 || ev.buttons === 0) {
+      if (ev.button === 0 || ev.button === 2 || ev.buttons === 0) {
         state.panning = false;
         viewport.classList.remove("is-panning");
       }
@@ -297,6 +356,14 @@
       true
     );
 
+    viewport.addEventListener(
+      "dragstart",
+      function (ev) {
+        ev.preventDefault();
+      },
+      true
+    );
+
     var api = {
       reset: reset,
       setZoom: setZoom,
@@ -312,7 +379,9 @@
       },
     };
     controllers.set(viewport, api);
-    layout();
+    if (!(media && media.img && media.img.complete && media.img.naturalWidth)) {
+      layout();
+    }
     return api;
   }
 

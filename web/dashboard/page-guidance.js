@@ -88,6 +88,7 @@ export function createPageGuidanceController(bridge) {
     const showCanvas = !!state.active || currentPageHasElements();
     canvas.classList.toggle("hidden", !showCanvas);
     canvas.classList.toggle("is-preview", showCanvas && !state.active);
+    // F-004: annotate attivo → draw (pointer-events auto); idle → pan via page-zoom (pointer-events none).
     canvas.style.pointerEvents = state.active ? "auto" : "none";
     canvas.style.cursor = state.active ? "crosshair" : "default";
   }
@@ -103,6 +104,9 @@ export function createPageGuidanceController(bridge) {
   }
 
   function shouldShowNotes() {
+    // Mutual exclusivity with REICAT in the DX context slot.
+    const reicat = document.getElementById("reicat-metadata-fieldset");
+    if (reicat && !reicat.classList.contains("hidden")) return false;
     const page = bridge.getDetailPage();
     return !!state.active || anyPageHasElements() || pageHasTextAnnotations(page);
   }

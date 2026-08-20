@@ -187,12 +187,30 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
     return out;
   }
 
+  function isTokenCited(value, token) {
+    if (!token) return false;
+    return String(value || "").indexOf("@" + token) !== -1;
+  }
+
+  function syncCitedChips(field) {
+    const textarea = document.querySelector('textarea[name="' + field + '"]');
+    const row = document.querySelector('[data-mention-chips="' + field + '"]');
+    if (!row || !textarea) return;
+    const value = String(textarea.value || "");
+    row.querySelectorAll(".mention-chip").forEach(function (chip) {
+      const token = chip.getAttribute("data-token") || "";
+      chip.classList.toggle("is-cited", isTokenCited(value, token));
+    });
+  }
+
   function renderChips() {
     ensureChipRows();
     SECTION_FIELDS.forEach(function (field) {
       const row = document.querySelector('[data-mention-chips="' + field + '"]');
       if (!row) return;
       const items = itemsForSection(field);
+      const textarea = document.querySelector('textarea[name="' + field + '"]');
+      const noteValue = String((textarea && textarea.value) || "");
       row.innerHTML = "";
       if (!items.length) {
         row.classList.add("is-empty");
@@ -201,7 +219,11 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
       row.classList.remove("is-empty");
       items.forEach(function (item) {
         const chip = document.createElement("div");
-        chip.className = "mention-chip" + (item.current ? " is-current" : "");
+        const cited = isTokenCited(noteValue, item.token);
+        chip.className =
+          "mention-chip" +
+          (item.current ? " is-current" : "") +
+          (cited ? " is-cited" : "");
         chip.setAttribute("data-field", field);
         chip.setAttribute("data-token", item.token || "");
         chip.setAttribute("data-page", String(item.page));
@@ -340,6 +362,7 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
 
     textarea.addEventListener("input", function () {
       renderMentionHighlight(textarea);
+      syncCitedChips(field);
       const mention = detectMention(textarea);
       if (!mention) {
         if (activeField === field) hideMenu();

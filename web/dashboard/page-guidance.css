@@ -166,6 +166,27 @@
   background: rgba(240, 160, 48, 0.1);
 }
 
+/* Cited chips (token already in notes): black on white in aggregated row only */
+.mention-chip.is-cited {
+  background: #ffffff;
+  color: #111111;
+  border-color: #1a1a1a;
+}
+
+.mention-chip.is-cited.is-current {
+  background: #ffffff;
+  color: #111111;
+  border-color: #8a6a3a;
+}
+
+.mention-chip.is-cited small {
+  color: #555555;
+}
+
+.mention-chip.is-cited .mention-chip-remove {
+  color: #444444;
+}
+
 .mention-chip-label {
   display: inline-flex;
   align-items: center;
@@ -206,6 +227,13 @@
   border-color: #f0a030;
   background: rgba(240, 160, 48, 0.16);
   color: #e8e8e8;
+}
+
+.mention-chip.is-cited:hover,
+.mention-chip.is-cited:focus-within {
+  background: #ffffff;
+  color: #111111;
+  border-color: #8a6a3a;
 }
 
 .mention-chip .mention-chip-label:hover:not(:disabled),

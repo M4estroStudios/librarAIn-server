@@ -94,6 +94,12 @@
 }
 body { margin: 0; padding: 0; }
 .app-shell { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; box-sizing: border-box; }
+.app-shell:has(#pdf-viewer-panel.show) {
+  max-width: none;
+  width: 100%;
+  padding: 0.5rem 0.6rem 1rem;
+  box-sizing: border-box;
+}
 .pdf-dropzone { position: relative; display: flex; align-items: center; justify-content: center; min-height: 14rem; margin-bottom: 0.5rem; border: 2px dashed #555; border-radius: 14px; background: #252526; transition: border-color 0.15s ease, background 0.15s ease; }
 .pdf-dropzone.is-dragover { border-color: #4ec9b0; background: rgba(78, 201, 176, 0.06); }
 .pdf-dropzone-input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1; }
@@ -307,9 +313,67 @@ details.reicat-metadata[open] > summary::before { transform: rotate(90deg); }
   right: auto;
   z-index: 2;
 }
-.page-picker-body { min-height: 32rem; }
-.page-picker-grid-wrap { max-height: 40rem; }
+.page-picker-body { min-height: 0; }
 #pdf-viewer-panel { margin-top: 0; }
+#pdf-viewer-panel.show { width: 100%; }
+.page-picker-workspace {
+  --page-picker-grid: 9.5rem;
+  --page-picker-center: 1fr;
+  display: grid;
+  grid-template-columns:
+    minmax(5.5rem, var(--page-picker-grid))
+    6px
+    minmax(14rem, var(--page-picker-center))
+    6px
+    minmax(14rem, 1fr);
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+  min-height: 28rem;
+  height: calc(100vh - 7.5rem);
+  overflow: hidden;
+}
+.page-picker-splitter {
+  box-sizing: border-box;
+  width: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #3a3a3a;
+  cursor: col-resize;
+  touch-action: none;
+  align-self: stretch;
+  position: relative;
+  z-index: 2;
+}
+.page-picker-splitter:hover,
+.page-picker-splitter.is-dragging,
+.page-picker-workspace.is-splitting .page-picker-splitter.is-dragging {
+  background: #4ec9b0;
+}
+.page-picker-splitter::after {
+  content: "";
+  position: absolute;
+  inset: -0.35rem -0.45rem;
+}
+.page-picker-context {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-sizing: border-box;
+  padding: 0.35rem 0.45rem 0.45rem 0.25rem;
+}
+.page-picker-context > .reicat-metadata,
+.page-picker-context > #model-notes-fieldset {
+  margin: 0;
+  flex: 0 0 auto;
+}
 h1 { font-size: 1.35rem; margin: 0 0 0.25rem; color: #e8e8e8; }
 p.lead { margin: 0 0 1.25rem; color: #a0a0a0; font-size: 0.95rem; }
 form { display: grid; gap: 1.1rem; }
@@ -527,9 +591,19 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-toolbar label { display: grid; gap: 0.25rem; font-size: 0.85rem; color: #cccccc; margin: 0; }
 .page-picker-toolbar input { font: inherit; padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid #454545; background: #1e1e1e; color: #e8e8e8; }
 .page-picker-toolbar-meta { margin-top: 0.35rem; font-size: 0.75rem; color: #9d9d9d; }
-.page-picker-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 0.75rem; padding: 0.75rem; min-height: 32rem; }
-@media (max-width: 760px) { .page-picker-body { grid-template-columns: 1fr; } }
-.page-picker-grid-wrap { min-width: 0; max-height: 40rem; overflow: auto; border: 1px solid #3e3e3e; border-radius: 8px; background: #252526; padding: 0.55rem; position: relative; }
+.page-picker-body { display: flex; flex-direction: column; gap: 0; padding: 0.25rem 0 0; min-height: 0; width: 100%; }
+.page-picker-grid-wrap {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: auto;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  background: #252526;
+  padding: 0.35rem;
+  position: relative;
+  box-sizing: border-box;
+}
 .page-picker-grid-wrap.is-marquee-selecting { cursor: crosshair; user-select: none; -webkit-user-select: none; }
 .page-picker-grid-wrap.is-marquee-selecting .page-picker-thumb { cursor: crosshair; }
 .page-picker-grid-content { position: relative; }
@@ -552,8 +626,8 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
   position: sticky;
   top: 0;
   z-index: 5;
-  margin: -0.55rem -0.55rem 0.55rem;
-  padding: 0.65rem 0.55rem 0.75rem;
+  margin: -0.35rem -0.35rem 0.45rem;
+  padding: 0.45rem 0.35rem 0.55rem;
   background: rgba(37, 37, 38, 0.96);
   border-bottom: 1px solid #3e3e3e;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.42);
@@ -565,14 +639,24 @@ tr.audit-row-pending-review { background: rgba(78, 201, 176, 0.04); }
 .page-picker-progress progress::-webkit-progress-value { background: #4ec9b0; border-radius: 4px; }
 .page-picker-progress progress::-moz-progress-bar { background: #4ec9b0; border-radius: 4px; }
 .page-picker-progress-stats { margin-top: 0.45rem; font-size: 0.75rem; color: #9d9d9d; }
-.page-picker-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.45rem; }
-.page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 6px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; container-type: inline-size; }
+.page-picker-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.28rem; }
+.page-picker-thumb { position: relative; border: 2px solid transparent; border-radius: 4px; padding: 0; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 3 / 4; container-type: inline-size; }
 .page-picker-thumb.is-selected { border-color: #4ec9b0; box-shadow: 0 0 0 1px #4ec9b0; }
 .page-picker-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; background: #fff; }
 .page-picker-thumb-num { position: absolute; right: 0.2rem; bottom: 0.2rem; z-index: 2; padding: 0.08rem 0.28rem; border-radius: 4px; background: rgba(0, 0, 0, 0.62); color: #fff; font-size: 0.62rem; font-family: ui-monospace, monospace; line-height: 1.2; }
-.page-picker-detail { min-width: 0; height: 40rem; display: flex; flex-direction: column; gap: 0.45rem; box-sizing: border-box; }
+.page-picker-detail {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-sizing: border-box;
+  padding: 0.25rem 0.15rem;
+}
 .page-picker-detail-label { flex: 0 0 auto; font-size: 0.82rem; color: #e8e8e8; font-weight: 600; }
-.page-picker-detail-body { display: flex; align-items: stretch; gap: 0.45rem; flex: 1 1 auto; min-height: 0; }
+.page-picker-detail-body { display: flex; align-items: stretch; gap: 0.35rem; flex: 1 1 auto; min-height: 0; }
 .page-picker-detail-nav { flex: 0 0 auto; align-self: center; width: 2.25rem; height: 2.25rem; padding: 0; border: 0; border-radius: 8px; background: #3c3c3c; color: #e8e8e8; font-size: 1.15rem; cursor: pointer; }
 .page-picker-detail-nav:hover:not(:disabled) { background: #4a4a4a; }
 .page-picker-detail-nav:disabled { opacity: 0.35; cursor: not-allowed; }
@@ -744,33 +828,142 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
         <div class="page-picker-toolbar-meta" id="pdf-viewer-meta">—</div>
       </div>
       <div class="page-picker-body">
-        <div class="page-picker-grid-wrap" id="page-picker-grid-wrap">
-          <div class="page-picker-progress" id="page-picker-progress">
-            <div class="page-picker-progress-label">Rendering pagine…</div>
-            <progress id="page-picker-progress-bar" value="0" max="1"></progress>
-            <div class="page-picker-progress-stats" id="page-picker-progress-stats">0 / 0</div>
-          </div>
-          <div class="page-picker-grid-content" id="page-picker-grid-content">
-            <div class="page-picker-grid" id="page-picker-grid"></div>
-            <div class="page-picker-marquee" id="page-picker-marquee" aria-hidden="true"></div>
-          </div>
-        </div>
-        <div class="page-picker-detail">
-          <div class="page-picker-detail-label">Anteprima — pagina <span id="page-picker-detail-num">—</span></div>
-          <div id="annotate-primitive-switch" class="annotate-preview-tools hidden" role="group" aria-label="Primitiva annotazione">
-            <button type="button" data-annotate-tool="bbox" class="is-active" title="Bounding box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="6" width="14" height="12" rx="1" stroke-dasharray="3 2"/></svg><span>Box</span></button>
-            <button type="button" data-annotate-tool="point" title="Point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/></svg><span>Point</span></button>
-            <button type="button" data-annotate-tool="trail" title="Trail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 17L10 8l4 5 5-9"/><circle cx="5" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="10" cy="8" r="1.6" fill="currentColor" stroke="none"/><circle cx="14" cy="13" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="4" r="1.6" fill="currentColor" stroke="none"/></svg><span>Trail</span></button>
-            <button type="button" data-annotate-action="reset-page" title="Reset annotazioni della pagina corrente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.2-5.5"/><path d="M4 4v5h5"/></svg><span>Reset</span></button>
-          </div>
-          <div class="page-picker-detail-body">
-            <button type="button" class="page-picker-detail-nav" id="page-picker-detail-prev" title="Pagina precedente (←)" aria-label="Pagina precedente" disabled>&lt;</button>
-            <div class="page-picker-detail-img-wrap" id="page-picker-detail-wrap">
-              <div class="page-picker-detail-empty" id="page-picker-detail-empty">Clic sinistro per selezionare, destro per anteprima. Frecce ← → per scorrere.</div>
-              <img id="page-picker-detail-img" class="hidden" alt="">
-              <canvas id="annotate-canvas" class="hidden" aria-label="Canvas annotazioni"></canvas>
+        <div class="page-picker-workspace" id="page-picker-workspace">
+          <div class="page-picker-grid-wrap" id="page-picker-grid-wrap">
+            <div class="page-picker-progress" id="page-picker-progress">
+              <div class="page-picker-progress-label">Rendering pagine…</div>
+              <progress id="page-picker-progress-bar" value="0" max="1"></progress>
+              <div class="page-picker-progress-stats" id="page-picker-progress-stats">0 / 0</div>
             </div>
-            <button type="button" class="page-picker-detail-nav" id="page-picker-detail-next" title="Pagina successiva (→)" aria-label="Pagina successiva" disabled>&gt;</button>
+            <div class="page-picker-grid-content" id="page-picker-grid-content">
+              <div class="page-picker-grid" id="page-picker-grid"></div>
+              <div class="page-picker-marquee" id="page-picker-marquee" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div
+            class="page-picker-splitter"
+            id="page-picker-splitter-left"
+            data-splitter="grid"
+            role="separator"
+            aria-orientation="vertical"
+            aria-label="Ridimensiona griglia e anteprima"
+            tabindex="0"
+          ></div>
+          <div class="page-picker-detail">
+            <div class="page-picker-detail-label">Anteprima — pagina <span id="page-picker-detail-num">—</span></div>
+            <div id="annotate-primitive-switch" class="annotate-preview-tools hidden" role="group" aria-label="Primitiva annotazione">
+              <button type="button" data-annotate-tool="bbox" class="is-active" title="Bounding box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="6" width="14" height="12" rx="1" stroke-dasharray="3 2"/></svg><span>Box</span></button>
+              <button type="button" data-annotate-tool="point" title="Point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/></svg><span>Point</span></button>
+              <button type="button" data-annotate-tool="trail" title="Trail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 17L10 8l4 5 5-9"/><circle cx="5" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="10" cy="8" r="1.6" fill="currentColor" stroke="none"/><circle cx="14" cy="13" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="4" r="1.6" fill="currentColor" stroke="none"/></svg><span>Trail</span></button>
+              <button type="button" data-annotate-action="reset-page" title="Reset annotazioni della pagina corrente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.2-5.5"/><path d="M4 4v5h5"/></svg><span>Reset</span></button>
+            </div>
+            <div class="page-picker-detail-body">
+              <button type="button" class="page-picker-detail-nav" id="page-picker-detail-prev" title="Pagina precedente (←)" aria-label="Pagina precedente" disabled>&lt;</button>
+              <div class="page-picker-detail-img-wrap" id="page-picker-detail-wrap">
+                <div class="page-picker-detail-empty" id="page-picker-detail-empty">Clic sinistro per selezionare, destro per anteprima. Frecce ← → per scorrere.</div>
+                <img id="page-picker-detail-img" class="hidden" alt="">
+                <canvas id="annotate-canvas" class="hidden" aria-label="Canvas annotazioni"></canvas>
+              </div>
+              <button type="button" class="page-picker-detail-nav" id="page-picker-detail-next" title="Pagina successiva (→)" aria-label="Pagina successiva" disabled>&gt;</button>
+            </div>
+          </div>
+          <div
+            class="page-picker-splitter"
+            id="page-picker-splitter-right"
+            data-splitter="center"
+            role="separator"
+            aria-orientation="vertical"
+            aria-label="Ridimensiona anteprima e pannello contestuale"
+            tabindex="0"
+          ></div>
+          <div class="page-picker-context" id="page-picker-context" aria-live="polite">
+            <details id="reicat-metadata-fieldset" class="reicat-metadata hidden" open>
+              <summary>Metadati bibliografici (REICAT)</summary>
+              <p class="reicat-suggest-row">
+                <button type="button" id="reicat-suggest-btn" class="secondary">Compila dati automaticamente con AI</button>
+                <span class="hint" id="reicat-suggest-status"></span>
+              </p>
+              <label><span>Titolo <small class="req">*</small></span>
+                <input type="text" name="titolo" id="reicat-titolo-input">
+              </label>
+              <div class="grid-2">
+                <label>Sottotitolo
+                  <input type="text" name="sottotitolo">
+                </label>
+                <label>Complementi del titolo
+                  <input type="text" name="complementi_del_titolo">
+                </label>
+              </div>
+              <label><span>Autori (separati da virgola) <small class="req">*</small></span>
+                <input type="text" name="autore" id="reicat-autore-input" placeholder="Nome Cognome, Altro Autore">
+              </label>
+              <div class="grid-2">
+                <label>Curatori (virgola)
+                  <input type="text" name="curatore">
+                </label>
+                <label>Traduttori (virgola)
+                  <input type="text" name="traduttore">
+                </label>
+              </div>
+              <div class="grid-2">
+                <label>Numero edizione
+                  <input type="text" name="numero_edizione">
+                </label>
+                <label>Anno di pubblicazione
+                  <input type="number" name="anno_di_pubblicazione" min="0">
+                </label>
+              </div>
+              <div class="grid-2">
+                <label>Tipo di pubblicazione
+                  <input type="text" name="tipo_di_pubblicazione">
+                </label>
+                <label>Luogo di pubblicazione
+                  <input type="text" name="luogo_di_pubblicazione">
+                </label>
+              </div>
+              <div class="grid-2">
+                <label>Editore
+                  <input type="text" name="editore">
+                </label>
+                <label>Numero pagine
+                  <input type="number" name="numero_pagine" min="1">
+                </label>
+              </div>
+              <div class="grid-2">
+                <label>Titolo collana
+                  <input type="text" name="titolo_collana">
+                </label>
+                <label>Numero nella collana
+                  <input type="text" name="numero_nella_collana">
+                </label>
+              </div>
+              <label>ISBN
+                <input type="text" name="isbn">
+              </label>
+            </details>
+            <fieldset id="model-notes-fieldset" class="hidden">
+              <legend>Note per i modelli</legend>
+              <p class="hint">Le note operatore e le annotazioni servono solo a generare il consiglio AI. All'ingest i modelli ricevono soltanto il testo del consiglio.</p>
+              <label>Note generali
+                <textarea name="notes" placeholder="es. conservare le abbreviazioni latine; non normalizzare i nomi propri storici"></textarea>
+              </label>
+              <p class="hint" style="margin:0.25rem 0 0;">Contesto per il consiglio AI (anche TOC/bibliografia). Digita @ per richiamare le annotazioni.</p>
+              <label>Note sulla formattazione dell'INDICE analitico
+                <textarea name="index_notes" placeholder="es. i lemmi sono in maiuscoletto; i rimandi usano 'v.' invece di 'vedi'; i numeri in corsivo indicano le illustrazioni"></textarea>
+              </label>
+              <p class="hint" style="margin:0.25rem 0 0;">Contesto indice per il consiglio AI. Digita @ per le annotazioni sulle pagine indice.</p>
+              <label>Note sulla formattazione delle pagine
+                <textarea name="page_notes" placeholder="es. note a piè di pagina; titolo del capitolo nell'intestazione; numero di pagina in basso al centro (non confonderlo con le date)"></textarea>
+              </label>
+              <p class="hint" style="margin:0.25rem 0 0;">Contesto pagine per il consiglio AI. Digita @ per le annotazioni sulle pagine di contenuto.</p>
+              <div class="ai-counsel-row">
+                <button type="button" id="ai-counsel-btn" class="secondary">Consiglio dell'AI</button>
+                <span class="hint" id="ai-counsel-status"></span>
+              </div>
+              <label>Consiglio AI (system prompt pagine)
+                <textarea name="ai_page_guidance" id="ai-page-guidance" placeholder="Generato dal consiglio AI (o automaticamente al submit se vuoto); modificabile. Solo questo testo va ai modelli Vision/OCR/Editor."></textarea>
+              </label>
+            </fieldset>
           </div>
         </div>
       </div>
@@ -779,71 +972,6 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
   </div>
 
   <div id="ingest-form-details" class="ingest-form-details hidden">
-  <details id="reicat-metadata-fieldset" class="reicat-metadata hidden" open>
-    <summary>Metadati bibliografici (REICAT)</summary>
-    <p class="reicat-suggest-row">
-      <button type="button" id="reicat-suggest-btn" class="secondary">Compila dati automaticamente con AI</button>
-      <span class="hint" id="reicat-suggest-status"></span>
-    </p>
-    <label><span>Titolo <small class="req">*</small></span>
-      <input type="text" name="titolo" id="reicat-titolo-input">
-    </label>
-    <div class="grid-2">
-      <label>Sottotitolo
-        <input type="text" name="sottotitolo">
-      </label>
-      <label>Complementi del titolo
-        <input type="text" name="complementi_del_titolo">
-      </label>
-    </div>
-    <label><span>Autori (separati da virgola) <small class="req">*</small></span>
-      <input type="text" name="autore" id="reicat-autore-input" placeholder="Nome Cognome, Altro Autore">
-    </label>
-    <div class="grid-2">
-      <label>Curatori (virgola)
-        <input type="text" name="curatore">
-      </label>
-      <label>Traduttori (virgola)
-        <input type="text" name="traduttore">
-      </label>
-    </div>
-    <div class="grid-2">
-      <label>Numero edizione
-        <input type="text" name="numero_edizione">
-      </label>
-      <label>Anno di pubblicazione
-        <input type="number" name="anno_di_pubblicazione" min="0">
-      </label>
-    </div>
-    <div class="grid-2">
-      <label>Tipo di pubblicazione
-        <input type="text" name="tipo_di_pubblicazione">
-      </label>
-      <label>Luogo di pubblicazione
-        <input type="text" name="luogo_di_pubblicazione">
-      </label>
-    </div>
-    <div class="grid-2">
-      <label>Editore
-        <input type="text" name="editore">
-      </label>
-      <label>Numero pagine
-        <input type="number" name="numero_pagine" min="1">
-      </label>
-    </div>
-    <div class="grid-2">
-      <label>Titolo collana
-        <input type="text" name="titolo_collana">
-      </label>
-      <label>Numero nella collana
-        <input type="text" name="numero_nella_collana">
-      </label>
-    </div>
-    <label>ISBN
-      <input type="text" name="isbn">
-    </label>
-  </details>
-
   <fieldset id="md-formatting-fieldset" class="hidden">
     <legend>Formattazione Markdown del libro</legend>
     <p class="hint">Regole MD iniettate nei prompt Vision/OCR/Editor. Se lasci vuoto un campo viene usato il default. Non fanno parte del consiglio AI.</p>
@@ -867,30 +995,6 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
     </label>
     <label>Righe tipografiche
       <textarea name="md_line_breaks">Rispetta le righe tipografiche della pagina: una riga stampata = una riga Markdown. Non rifondere i paragrafi in un'unica riga lunga (il MD non ha limite di larghezza). Non spezzare le parole tra righe: ricomponi le sillabazioni a capo togliendo il trattino di fine riga.</textarea>
-    </label>
-  </fieldset>
-
-  <fieldset id="model-notes-fieldset" class="hidden">
-    <legend>Note per i modelli</legend>
-    <p class="hint">Le note operatore e le annotazioni servono solo a generare il consiglio AI. All'ingest i modelli ricevono soltanto il testo del consiglio.</p>
-    <label>Note generali
-      <textarea name="notes" placeholder="es. conservare le abbreviazioni latine; non normalizzare i nomi propri storici"></textarea>
-    </label>
-    <p class="hint" style="margin:0.25rem 0 0;">Contesto per il consiglio AI (anche TOC/bibliografia). Digita @ per richiamare le annotazioni.</p>
-    <label>Note sulla formattazione dell'INDICE analitico
-      <textarea name="index_notes" placeholder="es. i lemmi sono in maiuscoletto; i rimandi usano 'v.' invece di 'vedi'; i numeri in corsivo indicano le illustrazioni"></textarea>
-    </label>
-    <p class="hint" style="margin:0.25rem 0 0;">Contesto indice per il consiglio AI. Digita @ per le annotazioni sulle pagine indice.</p>
-    <label>Note sulla formattazione delle pagine
-      <textarea name="page_notes" placeholder="es. note a piè di pagina; titolo del capitolo nell'intestazione; numero di pagina in basso al centro (non confonderlo con le date)"></textarea>
-    </label>
-    <p class="hint" style="margin:0.25rem 0 0;">Contesto pagine per il consiglio AI. Digita @ per le annotazioni sulle pagine di contenuto.</p>
-    <div class="ai-counsel-row">
-      <button type="button" id="ai-counsel-btn" class="secondary">Consiglio dell'AI</button>
-      <span class="hint" id="ai-counsel-status"></span>
-    </div>
-    <label>Consiglio AI (system prompt pagine)
-      <textarea name="ai_page_guidance" id="ai-page-guidance" placeholder="Generato dal consiglio AI (o automaticamente al submit se vuoto); modificabile. Solo questo testo va ai modelli Vision/OCR/Editor."></textarea>
     </label>
   </fieldset>
 
@@ -1669,10 +1773,121 @@ if (document.readyState === "loading") {
   var pagePickerDetailImg = document.getElementById("page-picker-detail-img");
   var pagePickerDetailPrev = document.getElementById("page-picker-detail-prev");
   var pagePickerDetailNext = document.getElementById("page-picker-detail-next");
+  var pagePickerWorkspace = document.getElementById("page-picker-workspace");
+  var pagePickerSplitterLeft = document.getElementById("page-picker-splitter-left");
+  var pagePickerSplitterRight = document.getElementById("page-picker-splitter-right");
   var pagePickerDetailPage = null;
   var pageGuidanceDetailListeners = [];
   var pageGuidanceResetListeners = [];
   var pageGuidanceRangeListeners = [];
+
+  (function bindPagePickerSplitters() {
+    if (!pagePickerWorkspace || pagePickerWorkspace.dataset.splittersBound === "1") return;
+    pagePickerWorkspace.dataset.splittersBound = "1";
+    var MIN_GRID_PX = 5.5 * 16;
+    var MIN_CENTER_PX = 14 * 16;
+    var MIN_CONTEXT_PX = 14 * 16;
+    var SPLITTER_PX = 6;
+    var active = null;
+    var startX = 0;
+    var startGrid = 0;
+    var startCenter = 0;
+    var resizeRaf = 0;
+
+    function notifyLayout() {
+      if (resizeRaf) return;
+      resizeRaf = window.requestAnimationFrame(function () {
+        resizeRaf = 0;
+        window.dispatchEvent(new Event("resize"));
+      });
+    }
+
+    function clientXOf(ev) {
+      return ev.touches && ev.touches[0] ? ev.touches[0].clientX : ev.clientX;
+    }
+
+    function colWidths() {
+      var grid = pagePickerWorkspace.querySelector(".page-picker-grid-wrap");
+      var detail = pagePickerWorkspace.querySelector(".page-picker-detail");
+      var context = pagePickerWorkspace.querySelector(".page-picker-context");
+      return {
+        grid: grid ? grid.getBoundingClientRect().width : 0,
+        center: detail ? detail.getBoundingClientRect().width : 0,
+        context: context ? context.getBoundingClientRect().width : 0,
+        total: pagePickerWorkspace.getBoundingClientRect().width,
+      };
+    }
+
+    function applyCols(gridPx, centerPx) {
+      var total = pagePickerWorkspace.getBoundingClientRect().width;
+      var usable = Math.max(0, total - SPLITTER_PX * 2);
+      var maxGrid = Math.max(MIN_GRID_PX, usable - MIN_CENTER_PX - MIN_CONTEXT_PX);
+      var grid = Math.max(MIN_GRID_PX, Math.min(maxGrid, gridPx));
+      var maxCenter = Math.max(MIN_CENTER_PX, usable - grid - MIN_CONTEXT_PX);
+      var center = Math.max(MIN_CENTER_PX, Math.min(maxCenter, centerPx));
+      pagePickerWorkspace.style.setProperty("--page-picker-grid", Math.round(grid) + "px");
+      pagePickerWorkspace.style.setProperty("--page-picker-center", Math.round(center) + "px");
+      notifyLayout();
+    }
+
+    function onMove(ev) {
+      if (!active) return;
+      var dx = clientXOf(ev) - startX;
+      if (active === "grid") applyCols(startGrid + dx, startCenter);
+      else applyCols(startGrid, startCenter + dx);
+      ev.preventDefault();
+    }
+
+    function onUp() {
+      if (!active) return;
+      var el = active === "grid" ? pagePickerSplitterLeft : pagePickerSplitterRight;
+      if (el) el.classList.remove("is-dragging");
+      pagePickerWorkspace.classList.remove("is-splitting");
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+      active = null;
+      notifyLayout();
+    }
+
+    function bindSplitter(el, kind) {
+      if (!el || el.dataset.bound === "1") return;
+      el.dataset.bound = "1";
+      function onDown(ev) {
+        var w = colWidths();
+        active = kind;
+        startX = clientXOf(ev);
+        startGrid = w.grid;
+        startCenter = w.center;
+        el.classList.add("is-dragging");
+        pagePickerWorkspace.classList.add("is-splitting");
+        document.body.style.cursor = "col-resize";
+        document.body.style.userSelect = "none";
+        ev.preventDefault();
+      }
+      el.addEventListener("mousedown", onDown);
+      el.addEventListener("touchstart", onDown, { passive: false });
+      el.addEventListener("keydown", function (ev) {
+        if (ev.key !== "ArrowLeft" && ev.key !== "ArrowRight") return;
+        var w = colWidths();
+        var step = ev.key === "ArrowLeft" ? -24 : 24;
+        if (kind === "grid") applyCols(w.grid + step, w.center);
+        else applyCols(w.grid, w.center + step);
+        ev.preventDefault();
+      });
+    }
+
+    bindSplitter(pagePickerSplitterLeft, "grid");
+    bindSplitter(pagePickerSplitterRight, "center");
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("touchmove", onMove, { passive: false });
+    window.addEventListener("mouseup", onUp);
+    window.addEventListener("touchend", onUp);
+    window.addEventListener("resize", function () {
+      var w = colWidths();
+      if (!(w.total > 0)) return;
+      applyCols(w.grid || MIN_GRID_PX, w.center || MIN_CENTER_PX);
+    });
+  })();
   function notifyPageGuidanceDetailChange() {
     for (var i = 0; i < pageGuidanceDetailListeners.length; i++) {
       try { pageGuidanceDetailListeners[i](pagePickerDetailPage); } catch (_) {}
@@ -2604,6 +2819,15 @@ if (document.readyState === "loading") {
     if (reicatAutoreInput) {
       if (show) reicatAutoreInput.setAttribute("required", "");
       else reicatAutoreInput.removeAttribute("required");
+    }
+    // DX slot: REICAT XOR notes — when REICAT is on, force-hide notes; when off, re-sync notes visibility.
+    if (show) {
+      var notesFs = document.getElementById("model-notes-fieldset");
+      var mdFs = document.getElementById("md-formatting-fieldset");
+      if (notesFs) notesFs.classList.add("hidden");
+      if (mdFs) mdFs.classList.add("hidden");
+    } else if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.syncNotesFieldset === "function") {
+      window.__librarainPageGuidance.syncNotesFieldset();
     }
   }
 
@@ -6545,9 +6769,17 @@ if (document.readyState === "loading") {
         viewerModeButtons[i].classList.remove("is-active");
         viewerModeButtons[i].setAttribute("aria-pressed", "false");
       }
+      // Hide REICAT in DX slot so notes can occupy it (mutual exclusivity).
+      if (typeof syncReicatMetadataVisibility === "function") {
+        syncReicatMetadataVisibility("annotate");
+      }
       refreshViewerThumbUi();
     },
-    onAnnotateModeChange: function () {
+    onAnnotateModeChange: function (active) {
+      // Restore REICAT in DX if we left annotate while viewer mode is still reicat.
+      if (!active && viewerMode === "reicat" && typeof syncReicatMetadataVisibility === "function") {
+        syncReicatMetadataVisibility("reicat");
+      }
       refreshViewerThumbUi();
     },
     onDetailChange: function (cb) {
