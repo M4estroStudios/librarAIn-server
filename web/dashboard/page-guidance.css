@@ -20,11 +20,20 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
+.pdf-viewer-tools #annotate-primitive-switch,
+.pdf-viewer-tools .annotate-toolbar-tools {
+  margin: 0;
+  box-shadow: none;
+}
+
 #annotate-primitive-switch.hidden,
 .annotate-preview-tools.hidden {
-  display: inline-flex !important;
-  visibility: hidden;
-  pointer-events: none;
+  display: none !important;
+}
+
+.pdf-viewer-tools #annotate-primitive-switch.hidden,
+.pdf-viewer-tools .annotate-toolbar-tools.hidden {
+  display: none !important;
 }
 
 #annotate-primitive-switch button,
@@ -77,18 +86,83 @@
   pointer-events: none;
 }
 
+.annotate-name-editor {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 11rem;
+  min-width: 9rem;
+  padding: 0.28rem;
+  border: 1px solid #f0a030;
+  border-radius: 4px;
+  background: rgba(20, 20, 20, 0.94);
+  box-sizing: border-box;
+}
+
+.annotate-name-editor.hidden {
+  display: none;
+}
+
+.annotate-name-editor .annotate-name-title,
+.annotate-name-editor .annotate-name-desc {
+  width: 100%;
+  margin: 0;
+  padding: 0.15rem 0.3rem;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background: rgba(12, 12, 12, 0.9);
+  color: #fff;
+  font: inherit;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  resize: none;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-sizing: border-box;
+  field-sizing: content;
+}
+
+.annotate-name-editor .annotate-name-title {
+  min-height: 1.35rem;
+  font-weight: 600;
+  border-color: #8a6a3a;
+}
+
+.annotate-name-editor .annotate-name-desc {
+  min-height: 2.1rem;
+  color: #e0e0e0;
+}
+
+.annotate-name-editor .annotate-name-title:focus,
+.annotate-name-editor .annotate-name-desc:focus {
+  outline: none;
+  border-color: #f0a030;
+}
+
+/* legacy single-field class kept for safety */
 .annotate-name-input {
   position: absolute;
   z-index: 3;
-  width: 7.5rem;
-  height: 1.25rem;
-  padding: 0 0.3rem;
+  width: 8.5rem;
+  min-width: 7.5rem;
+  min-height: 1.35rem;
+  height: auto;
+  padding: 0.15rem 0.3rem;
   border: 1px solid #f0a030;
   border-radius: 3px;
   background: rgba(20, 20, 20, 0.92);
   color: #fff;
+  font: inherit;
   font-size: 0.72rem;
-  line-height: 1.2;
+  line-height: 1.25;
+  resize: none;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .annotate-name-input.hidden {
@@ -161,9 +235,14 @@
   transition: border-color 0.12s ease, background-color 0.12s ease, color 0.12s ease;
 }
 
-.mention-chip.is-current {
+.mention-chip.is-shared:not(.is-cited) {
+  border-color: #6a8a5a;
+  background: rgba(78, 201, 176, 0.12);
+}
+
+.mention-chip.is-shared.is-current:not(.is-cited) {
   border-color: #8a6a3a;
-  background: rgba(240, 160, 48, 0.1);
+  background: rgba(240, 160, 48, 0.12);
 }
 
 /* Cited chips (token already in notes): black on white in aggregated row only */

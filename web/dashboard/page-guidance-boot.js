@@ -58,6 +58,14 @@ export async function bootPageGuidance(bridge) {
           if (typeof controller.removeAnnotation === "function") {
             controller.removeAnnotation(page, id);
           }
+        },
+        {
+          isNameInputActive: function () {
+            return typeof controller.isNameInputActive === "function" && controller.isNameInputActive();
+          },
+          applyNameFromPool: function (token) {
+            return typeof controller.applyNameFromPool === "function" && controller.applyNameFromPool(token);
+          },
         }
       );
       controller.onAnnotationsChange(function () {

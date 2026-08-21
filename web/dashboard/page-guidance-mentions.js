@@ -124,9 +124,10 @@ function getTextareaCaretRect(textarea, index) {
   };
 }
 
-export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotation) {
+export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotation, options) {
   ensureChipRows();
   const menu = createMentionMenu();
+  const opts = options && typeof options === "object" ? options : {};
   let activeField = null;
   let activeQuery = "";
   let activeStart = -1;
@@ -146,40 +147,83 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
     return page >= 1 ? page : null;
   }
 
+  function formatPagesMeta(pages) {
+    const sorted = Array.from(new Set((pages || []).map(Number).filter(function (p) { return p >= 1; }))).sort(function (a, b) {
+      return a - b;
+    });
+    if (!sorted.length) return "";
+    if (sorted.length === 1) return "p." + sorted[0];
+    return "p." + sorted[0] + "-" + sorted[sorted.length - 1];
+  }
+
   function itemsForSection(section) {
     const payload = typeof getAnnotations === "function" ? getAnnotations() : [];
     const detailPage = currentDetailPage();
-    const out = [];
+    const byToken = Object.create(null);
     payload.forEach(function (pageItem) {
       const sectionName = sectionOfPage(pageItem.page);
       if (sectionName !== section) return;
       (pageItem.elements || []).forEach(function (el) {
+        const token = mentionToken(el.name || el.type);
+        if (!token) return;
         const lineStart = Number(el.lineStart);
         const lineEnd = Number(el.lineEnd);
         const charStart = Number(el.start);
         const charEnd = Number(el.end);
-        let meta = "p." + pageItem.page;
+        let singleMeta = "p." + pageItem.page;
         if (el.type === "text" && lineStart >= 1) {
-          meta = "p." + pageItem.page + " · ";
-          meta += lineStart === lineEnd || !(lineEnd >= 1)
+          singleMeta = "p." + pageItem.page + " · ";
+          singleMeta += lineStart === lineEnd || !(lineEnd >= 1)
             ? "r." + lineStart
             : "r." + lineStart + "-" + lineEnd;
           if (Number.isFinite(charStart) && Number.isFinite(charEnd) && charEnd >= charStart) {
-            meta += " · c." + charStart + "-" + charEnd;
+            singleMeta += " · c." + charStart + "-" + charEnd;
           }
         }
-        out.push({
-          page: pageItem.page,
-          id: el.id,
-          name: el.name || el.type,
-          type: el.type,
-          token: mentionToken(el.name || el.type),
-          meta: meta,
-          current: detailPage != null && Number(pageItem.page) === detailPage,
-        });
+        if (!byToken[token]) {
+          byToken[token] = {
+            token: token,
+            name: el.name || el.type,
+            type: el.type,
+            description: String(el.description || "").trim(),
+            pages: [],
+            refs: [],
+            singleMetas: [],
+          };
+        }
+        const group = byToken[token];
+        if (!group.description && String(el.description || "").trim()) {
+          group.description = String(el.description || "").trim();
+        }
+        group.pages.push(pageItem.page);
+        group.refs.push({ page: pageItem.page, id: el.id });
+        group.singleMetas.push(singleMeta);
+        if (detailPage != null && Number(pageItem.page) === detailPage) {
+          group.current = true;
+        }
       });
     });
+    const out = Object.keys(byToken).map(function (token) {
+      const group = byToken[token];
+      const pages = Array.from(new Set(group.pages.map(Number))).sort(function (a, b) { return a - b; });
+      const shared = pages.length > 1;
+      return {
+        token: group.token,
+        name: group.name,
+        type: group.type,
+        description: group.description || "",
+        pages: pages,
+        refs: group.refs,
+        page: pages[0],
+        id: group.refs[0] && group.refs[0].id,
+        shared: shared,
+        current: !!group.current,
+        meta: shared ? formatPagesMeta(pages) : (group.singleMetas[0] || formatPagesMeta(pages)),
+      };
+    });
     out.sort(function (a, b) {
+      // Note condivise multi-pagina in testa
+      if (a.shared !== b.shared) return a.shared ? -1 : 1;
       if (a.current !== b.current) return a.current ? -1 : 1;
       if (a.page !== b.page) return a.page - b.page;
       return String(a.token || "").localeCompare(String(b.token || ""), "it");
@@ -223,22 +267,35 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
         chip.className =
           "mention-chip" +
           (item.current ? " is-current" : "") +
+          (item.shared ? " is-shared" : "") +
           (cited ? " is-cited" : "");
         chip.setAttribute("data-field", field);
         chip.setAttribute("data-token", item.token || "");
         chip.setAttribute("data-page", String(item.page));
         chip.setAttribute("data-id", String(item.id || ""));
-        chip.title = item.meta + " · " + (item.type || "");
+        chip.title = item.meta + " · " + (item.type || "") +
+          (item.description ? " — " + item.description : "");
 
         const label = document.createElement("button");
         label.type = "button";
         label.className = "mention-chip-label";
         label.innerHTML = "@" + escapeHtml(item.token) + "<small>" + escapeHtml(item.meta) + "</small>";
+        label.addEventListener("mousedown", function (ev) {
+          if (typeof opts.isNameInputActive === "function" && opts.isNameInputActive()) {
+            ev.preventDefault();
+          }
+        });
         label.addEventListener("click", function (ev) {
           ev.preventDefault();
           ev.stopPropagation();
+          if (!item.token) return;
+          if (typeof opts.isNameInputActive === "function" && opts.isNameInputActive() &&
+              typeof opts.applyNameFromPool === "function") {
+            opts.applyNameFromPool(item.token);
+            return;
+          }
           const textarea = document.querySelector('textarea[name="' + field + '"]');
-          if (!textarea || !item.token) return;
+          if (!textarea) return;
           const start = textarea.selectionStart != null ? textarea.selectionStart : textarea.value.length;
           insertToken(textarea, start, start, item.token);
         });
@@ -256,8 +313,15 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
         remove.addEventListener("click", function (ev) {
           ev.preventDefault();
           ev.stopPropagation();
-          if (typeof removeAnnotation === "function" && item.page >= 1 && item.id) {
-            removeAnnotation(item.page, item.id, item.token);
+          if (typeof removeAnnotation === "function") {
+            const refs = Array.isArray(item.refs) && item.refs.length
+              ? item.refs
+              : [{ page: item.page, id: item.id }];
+            refs.forEach(function (ref) {
+              if (ref && ref.page >= 1 && ref.id) {
+                removeAnnotation(ref.page, ref.id, item.token);
+              }
+            });
           }
           renderChips();
         });
@@ -418,8 +482,14 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
     if (chip) {
       const field = chip.getAttribute("data-field");
       const token = chip.getAttribute("data-token") || "";
+      if (!token) return;
+      if (typeof opts.isNameInputActive === "function" && opts.isNameInputActive() &&
+          typeof opts.applyNameFromPool === "function") {
+        opts.applyNameFromPool(token);
+        return;
+      }
       const textarea = document.querySelector('textarea[name="' + field + '"]');
-      if (!textarea || !token) return;
+      if (!textarea) return;
       const start = textarea.selectionStart != null ? textarea.selectionStart : textarea.value.length;
       insertToken(textarea, start, start, token);
       return;
@@ -435,7 +505,9 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
       hideMenu();
       return;
     }
-    if (!ev.target.closest("#mention-selector") && !ev.target.closest("textarea[name]")) {
+        if (!ev.target.closest("#mention-selector") && !ev.target.closest("textarea[name]") &&
+            !ev.target.closest(".annotate-name-input") &&
+            !ev.target.closest(".annotate-name-editor")) {
       hideMenu();
     }
   });

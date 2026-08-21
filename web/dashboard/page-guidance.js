@@ -183,7 +183,7 @@ export function createPageGuidanceController(bridge) {
   }
 
   function drawLabel(x, y, text) {
-    const label = String(text || "").trim() || "?";
+    const label = String(text || "").replace(/\s+/g, " ").trim() || "?";
     ctx.font = "11px sans-serif";
     const tw = ctx.measureText(label).width;
     const top = Math.max(0, y - 16);
@@ -352,21 +352,50 @@ export function createPageGuidanceController(bridge) {
     notifyAnnotationsChange();
   }
 
-  const nameInput = document.createElement("input");
-  nameInput.type = "text";
-  nameInput.className = "annotate-name-input hidden";
-  nameInput.maxLength = 64;
-  nameInput.setAttribute("aria-label", "Nome primitiva");
+  const nameEditor = document.createElement("div");
+  nameEditor.className = "annotate-name-editor hidden";
+  nameEditor.setAttribute("role", "group");
+  nameEditor.setAttribute("aria-label", "Titolo e descrizione annotazione");
+
+  const nameInput = document.createElement("textarea");
+  nameInput.rows = 1;
+  nameInput.className = "annotate-name-title";
+  nameInput.maxLength = 80;
+  nameInput.setAttribute("aria-label", "Titolo (tag)");
+  nameInput.setAttribute("placeholder", "Titolo / tag");
+  nameInput.setAttribute("spellcheck", "false");
+
+  const descInput = document.createElement("textarea");
+  descInput.rows = 2;
+  descInput.className = "annotate-name-desc";
+  descInput.maxLength = 500;
+  descInput.setAttribute("aria-label", "Descrizione (istruzioni modello)");
+  descInput.setAttribute("placeholder", "Descrizione / istruzioni modello");
+  descInput.setAttribute("spellcheck", "true");
+
+  nameEditor.appendChild(nameInput);
+  nameEditor.appendChild(descInput);
   const wrap = bridge.getDetailWrapEl();
-  if (wrap) wrap.appendChild(nameInput);
+  if (wrap) wrap.appendChild(nameEditor);
 
   function hideNameInput() {
-    nameInput.classList.add("hidden");
+    nameEditor.classList.add("hidden");
     nameInput.blur();
+    descInput.blur();
   }
 
-  function showNameInputFor(el) {
-    if (!el || !canvas.width || canvas.width < 2) { hideNameInput(); return; }
+  function autosizeField(el, minPx, maxPx) {
+    el.style.height = "auto";
+    const next = Math.max(minPx, Math.min(maxPx, el.scrollHeight));
+    el.style.height = next + "px";
+  }
+
+  function autosizeNameEditor() {
+    autosizeField(nameInput, 22, 72);
+    autosizeField(descInput, 36, 160);
+  }
+
+  function editorAnchorFor(el) {
     const w = canvas.width;
     const h = canvas.height;
     let x = 0;
@@ -385,39 +414,101 @@ export function createPageGuidanceController(bridge) {
       x = p[0];
       y = p[1];
     }
-    nameInput.value = el.name || "";
-    nameInput.classList.remove("hidden");
-    nameInput.style.left = Math.round(canvas.offsetLeft + x) + "px";
-    nameInput.style.top = Math.max(0, Math.round(canvas.offsetTop + y - 22)) + "px";
+    return { x: x, y: y };
   }
 
-  nameInput.addEventListener("input", function () {
+  function showNameInputFor(el) {
+    if (!el || !canvas.width || canvas.width < 2) { hideNameInput(); return; }
+    const anchor = editorAnchorFor(el);
+    const active = document.activeElement;
+    const editingHere = active === nameInput || active === descInput;
+    if (!editingHere) {
+      nameInput.value = el.name || "";
+      descInput.value = el.description || "";
+    }
+    nameEditor.classList.remove("hidden");
+    nameEditor.style.left = Math.round(canvas.offsetLeft + anchor.x) + "px";
+    nameEditor.style.top = Math.max(0, Math.round(canvas.offsetTop + anchor.y - 8)) + "px";
+    autosizeNameEditor();
+  }
+
+  function commitNameFromInput() {
     const page = bridge.getDetailPage();
     if (!page || !state.selectedId) return;
     const el = pageMap(page).find(function (item) {
       return item.id === state.selectedId;
     });
     if (!el) return;
-    const typed = String(nameInput.value || "").trim();
-    el.name = typed || defaultNameFor(el.type, page, el.id);
+    const typed = String(nameInput.value || "");
+    el.name = typed.trim() ? typed : defaultNameFor(el.type, page, el.id);
+    if (!typed.trim()) nameInput.value = el.name;
+    el.description = String(descInput.value || "");
     redraw(false);
     notifyAnnotationsChange();
-  });
-  nameInput.addEventListener("mousedown", function (ev) {
+  }
+
+  function onEditorInput() {
+    commitNameFromInput();
+    autosizeNameEditor();
+  }
+
+  nameInput.addEventListener("input", onEditorInput);
+  descInput.addEventListener("input", onEditorInput);
+  nameEditor.addEventListener("mousedown", function (ev) {
     ev.stopPropagation();
   });
-  nameInput.addEventListener("keydown", function (ev) {
-    if (ev.key === "Delete") {
+  function onEditorKeydown(ev) {
+    ev.stopPropagation();
+    if (ev.key === "Escape") {
       ev.preventDefault();
-      ev.stopPropagation();
-      deleteSelected();
-      return;
+      hideNameInput();
     }
-    if (ev.key !== "Enter" && ev.key !== "Escape" && ev.code !== "NumpadEnter") return;
-    ev.preventDefault();
-    ev.stopPropagation();
-    hideNameInput();
-  });
+  }
+  nameInput.addEventListener("keydown", onEditorKeydown);
+  descInput.addEventListener("keydown", onEditorKeydown);
+
+  function isNameInputActive() {
+    if (nameEditor.classList.contains("hidden")) return false;
+    const active = document.activeElement;
+    return active === nameInput || active === descInput;
+  }
+
+  function applyNameFromPool(token) {
+    const page = bridge.getDetailPage();
+    if (!page || !state.selectedId) return false;
+    const el = pageMap(page).find(function (item) {
+      return item.id === state.selectedId;
+    });
+    if (!el) return false;
+    const name = String(token || "").trim();
+    if (!name) return false;
+    el.name = name;
+    nameInput.value = name;
+    if (!String(el.description || "").trim()) {
+      const tokenKey = name.replace(/\s+/g, "_");
+      Object.keys(state.pages).some(function (pageKey) {
+        return (state.pages[pageKey] || []).some(function (other) {
+          if (!other || other.id === el.id) return false;
+          const otherToken = String(other.name || "").trim().replace(/\s+/g, "_");
+          if (otherToken !== tokenKey) return false;
+          if (!String(other.description || "").trim()) return false;
+          el.description = other.description;
+          descInput.value = el.description;
+          return true;
+        });
+      });
+    } else {
+      descInput.value = el.description || "";
+    }
+    nameEditor.classList.remove("hidden");
+    autosizeNameEditor();
+    redraw(false);
+    notifyAnnotationsChange();
+    nameInput.focus();
+    const len = nameInput.value.length;
+    nameInput.setSelectionRange(len, len);
+    return true;
+  }
 
   function promptRename(el) {
     state.selectedId = el.id;
@@ -543,7 +634,7 @@ export function createPageGuidanceController(bridge) {
   document.addEventListener("keydown", function (ev) {
     if (!state.active) return;
     const tag = (ev.target && ev.target.tagName) || "";
-    if (tag === "INPUT" || tag === "TEXTAREA") return;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
     if (state.trailPoints) {
       if (ev.key === "Enter" || ev.code === "NumpadEnter") {
         ev.preventDefault();
@@ -607,6 +698,8 @@ export function createPageGuidanceController(bridge) {
     setAnnotations: setAnnotations,
     setActive: setActive,
     isActive: function () { return !!state.active; },
+    isNameInputActive: isNameInputActive,
+    applyNameFromPool: applyNameFromPool,
     removeAnnotation: removeAnnotation,
     clearPageAnnotations: clearPageAnnotations,
     redraw: redraw,

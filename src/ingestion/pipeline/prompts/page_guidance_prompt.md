@@ -11,6 +11,7 @@ Rules:
 - Prefer concrete layout rules (headers, footnotes, columns, page numbers, marginalia, captions, typographic line breaks).
 - When relevant, remind the page model to keep one printed line per Markdown line and to rejoin end-of-line hyphenated words without mid-word breaks.
 - If annotations are present, treat labeled primitives as authoritative references the operator mentioned with @names and keep those references explicit.
+- When an annotation includes a `description`, treat that text as operator instructions for that labeled region and carry it into the guidance.
 - If only notes and samples are present, keep the notes primary; add only cautious layout hints from samples and mark what is uncertain.
 - Do not invent bibliographic facts.
 - You may lightly organize notes into short sections, but never sacrifice fidelity for brevity.

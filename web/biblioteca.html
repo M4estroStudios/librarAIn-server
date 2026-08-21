@@ -1683,7 +1683,15 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
         biblioMentionsUi = mentions.bootPageGuidanceMentions(
           bridge,
           getMergedBiblioAnnotations,
-          removeBiblioAnnotation
+          removeBiblioAnnotation,
+          {
+            isNameInputActive: function () {
+              return !!(controller && typeof controller.isNameInputActive === "function" && controller.isNameInputActive());
+            },
+            applyNameFromPool: function (token) {
+              return !!(controller && typeof controller.applyNameFromPool === "function" && controller.applyNameFromPool(token));
+            },
+          }
         );
         controller.onAnnotationsChange(function () {
           refreshBiblioMentions();
