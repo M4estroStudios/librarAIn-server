@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -7,17 +8,26 @@ from unittest.mock import MagicMock, patch
 from PIL import Image
 
 from src.api.page_guidance_http import (
+    _ensure_ingest_notes_table,
+    delete_ingest_draft,
     ensure_ingest_ai_page_guidance,
+    list_ingest_drafts,
     load_ingest_notes_state,
     persist_ingest_notes_for_pdf,
     resolve_ingest_ui_state,
+    save_ingest_draft,
     save_ingest_notes_state,
+    try_handle_ingest_drafts_delete,
+    try_handle_ingest_drafts_get,
+    try_handle_ingest_notes_state_put,
 )
 from src.api.page_guidance_suggest import (
     choose_sample_pages,
     flatten_annotations_on_image,
     normalize_annotations,
 )
+from src.persistence.book_sqlite import init_books_schema, insert_book_minimal
+from src.persistence.pipeline_runs import _sqlite_connection
 
 
 class ChooseSamplePagesTests(unittest.TestCase):
@@ -217,6 +227,270 @@ class IngestNotesStatePersistenceTests(unittest.TestCase):
         assert loaded_alias is not None
         self.assertEqual(loaded_alias["titolo"], "Alias Book")
         self.assertEqual(loaded_alias["ai_page_guidance"], "tip")
+
+
+class IngestDraftsPersistenceTests(unittest.TestCase):
+    def _is_draft(self, db: Path, sha: str) -> int | None:
+        with _sqlite_connection(str(db)) as conn:
+            _ensure_ingest_notes_table(conn)
+            row = conn.execute(
+                "SELECT is_draft FROM ingest_notes WHERE source_sha256 = ?",
+                (sha,),
+            ).fetchone()
+        return None if row is None else int(row[0])
+
+    def test_migration_adds_is_draft_column(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            with _sqlite_connection(str(db)) as conn:
+                conn.execute(
+                    """
+                    CREATE TABLE ingest_notes (
+                        source_sha256 TEXT PRIMARY KEY,
+                        state_json TEXT NOT NULL,
+                        updated_at TEXT NOT NULL
+                    )
+                    """
+                )
+                conn.execute(
+                    "INSERT INTO ingest_notes (source_sha256, state_json, updated_at) VALUES (?, ?, ?)",
+                    ("a" * 64, '{"titolo":"Legacy"}', "2020-01-01T00:00:00+00:00"),
+                )
+            with _sqlite_connection(str(db)) as conn:
+                _ensure_ingest_notes_table(conn)
+                cols = {
+                    str(row[1])
+                    for row in conn.execute("PRAGMA table_info(ingest_notes)").fetchall()
+                }
+                self.assertIn("is_draft", cols)
+                row = conn.execute(
+                    "SELECT is_draft FROM ingest_notes WHERE source_sha256 = ?",
+                    ("a" * 64,),
+                ).fetchone()
+            self.assertEqual(int(row[0]), 0)
+            # Idempotent second call.
+            with _sqlite_connection(str(db)) as conn:
+                _ensure_ingest_notes_table(conn)
+
+    def test_save_list_and_order(self) -> None:
+        sha_old = "a" * 64
+        sha_new = "b" * 64
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            save_ingest_draft(
+                str(db),
+                sha_old,
+                {"titolo": "Vecchio", "notes": "n1"},
+                file_name="old.pdf",
+            )
+            with _sqlite_connection(str(db)) as conn:
+                conn.execute(
+                    "UPDATE ingest_notes SET updated_at = ? WHERE source_sha256 = ?",
+                    ("2020-01-01T00:00:00+00:00", sha_old),
+                )
+            save_ingest_draft(
+                str(db),
+                sha_new,
+                {"titolo": "Nuovo", "notes": "n2"},
+                file_name="new.pdf",
+            )
+            save_ingest_notes_state(
+                str(db),
+                "c" * 64,
+                {"titolo": "Non draft"},
+                is_draft=False,
+            )
+            drafts = list_ingest_drafts(str(db))
+        self.assertEqual(len(drafts), 2)
+        self.assertEqual(drafts[0]["source_sha256"], sha_new)
+        self.assertEqual(drafts[0]["title"], "Nuovo")
+        self.assertEqual(drafts[0]["file_name"], "new.pdf")
+        self.assertEqual(drafts[1]["source_sha256"], sha_old)
+        self.assertEqual(drafts[1]["file_name"], "old.pdf")
+
+    def test_persist_clears_draft_keeps_state(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pdf = root / "book.pdf"
+            pdf.write_bytes(b"%PDF-1.4 draft-clear-test\n%%EOF\n")
+            db = root / "biblioteca.db"
+            from src.core.hashing import compute_file_sha256
+
+            digest = compute_file_sha256(pdf)
+            save_ingest_draft(
+                str(db),
+                digest,
+                {"titolo": "Bozza", "notes": "keep-me", "file_name": "book.pdf"},
+            )
+            self.assertEqual(self._is_draft(db, digest), 1)
+            returned = persist_ingest_notes_for_pdf(
+                str(db),
+                pdf,
+                {
+                    "titolo": "Bozza",
+                    "notes": "keep-me",
+                    "annotations_json": "[]",
+                    "file_name": "book.pdf",
+                },
+                {"ai_page_guidance": "tip"},
+            )
+            self.assertEqual(returned, digest)
+            self.assertEqual(self._is_draft(db, digest), 0)
+            loaded = load_ingest_notes_state(str(db), digest)
+            self.assertIsNotNone(loaded)
+            assert loaded is not None
+            self.assertEqual(loaded["titolo"], "Bozza")
+            self.assertEqual(loaded["notes"], "keep-me")
+            self.assertEqual(list_ingest_drafts(str(db)), [])
+
+    def test_delete_removes_draft_only_row(self) -> None:
+        sha = "d" * 64
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            save_ingest_draft(str(db), sha, {"titolo": "Solo bozza", "notes": "x"})
+            result = delete_ingest_draft(str(db), sha)
+            self.assertTrue(result["removed"])
+            self.assertFalse(result["cleared"])
+            self.assertIsNone(load_ingest_notes_state(str(db), sha))
+            self.assertEqual(list_ingest_drafts(str(db)), [])
+
+    def test_delete_clears_flag_when_book_exists(self) -> None:
+        sha = "e" * 64
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            init_books_schema(str(db))
+            insert_book_minimal(
+                str(db),
+                sha,
+                schema_version="1",
+                title="In Biblioteca",
+                authors_json="[]",
+            )
+            save_ingest_draft(
+                str(db),
+                sha,
+                {"titolo": "In Biblioteca", "notes": "annotazioni utili"},
+            )
+            result = delete_ingest_draft(str(db), sha)
+            self.assertFalse(result["removed"])
+            self.assertTrue(result["cleared"])
+            self.assertEqual(self._is_draft(db, sha), 0)
+            loaded = load_ingest_notes_state(str(db), sha)
+            self.assertIsNotNone(loaded)
+            assert loaded is not None
+            self.assertEqual(loaded["notes"], "annotazioni utili")
+            self.assertEqual(list_ingest_drafts(str(db)), [])
+
+    def test_http_list_save_delete(self) -> None:
+        sha = "f" * 64
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            settings = MagicMock()
+            settings.sqlite_path = str(db)
+            settings.data_root = tmp
+            responses: list[tuple[int, dict]] = []
+
+            def send_json(_handler: object, status: int, payload: dict) -> None:
+                responses.append((status, payload))
+
+            handled = try_handle_ingest_drafts_get(
+                "/api/ingest/drafts",
+                MagicMock(),
+                settings=settings,
+                send_json=send_json,
+            )
+            self.assertTrue(handled)
+            self.assertEqual(responses[-1][0], 200)
+            self.assertEqual(responses[-1][1]["drafts"], [])
+
+            body = json.dumps(
+                {
+                    "source_sha256": sha,
+                    "state": {"titolo": "HTTP Draft", "notes": "via put"},
+                    "file_name": "http.pdf",
+                }
+            ).encode("utf-8")
+            handler = MagicMock()
+            handler.headers = {"Content-Length": str(len(body))}
+            handler.rfile.read.return_value = body
+
+            def read_body(_handler: object, _max: int) -> bytes:
+                return body
+
+            handled = try_handle_ingest_notes_state_put(
+                "/api/ingest/notes-state",
+                handler,
+                settings=settings,
+                send_json=send_json,
+                read_body=read_body,
+            )
+            self.assertTrue(handled)
+            self.assertEqual(responses[-1][0], 200)
+            self.assertTrue(responses[-1][1]["is_draft"])
+            self.assertEqual(responses[-1][1]["source_sha256"], sha)
+
+            handled = try_handle_ingest_drafts_get(
+                "/api/ingest/drafts",
+                MagicMock(),
+                settings=settings,
+                send_json=send_json,
+            )
+            self.assertTrue(handled)
+            drafts = responses[-1][1]["drafts"]
+            self.assertEqual(len(drafts), 1)
+            self.assertEqual(drafts[0]["title"], "HTTP Draft")
+            self.assertEqual(drafts[0]["file_name"], "http.pdf")
+            self.assertFalse(drafts[0].get("has_pdf"))
+
+            # Salva PDF bozza e verifica has_pdf + GET bytes.
+            from src.api.pdf_upload_storage import save_draft_pdf, find_draft_pdf_by_sha256
+            from src.api.page_guidance_http import try_handle_ingest_drafts_pdf_get
+            from src.core.hashing import compute_file_sha256
+
+            pdf_src = Path(tmp) / "sample.pdf"
+            pdf_src.write_bytes(b"%PDF-1.4\n1 0 obj<<>>endobj\ntrailer<<>>\n%%EOF\n")
+            digest = compute_file_sha256(pdf_src)
+            # Re-key under the draft sha used above for simpler assertion path:
+            save_draft_pdf(Path(tmp), sha, pdf_src)
+            self.assertTrue(find_draft_pdf_by_sha256(Path(tmp), sha))
+            handled = try_handle_ingest_drafts_get(
+                "/api/ingest/drafts",
+                MagicMock(),
+                settings=settings,
+                send_json=send_json,
+            )
+            self.assertTrue(handled)
+            self.assertTrue(responses[-1][1]["drafts"][0]["has_pdf"])
+
+            binary: list[tuple[int, bytes, str]] = []
+
+            def send_bytes(_handler: object, status: int, content: bytes, content_type: str) -> None:
+                binary.append((status, content, content_type))
+
+            handled = try_handle_ingest_drafts_pdf_get(
+                "/api/ingest/drafts/pdf",
+                MagicMock(),
+                {"source_sha256": [sha]},
+                settings=settings,
+                send_json=send_json,
+                send_bytes=send_bytes,
+            )
+            self.assertTrue(handled)
+            self.assertEqual(binary[-1][0], 200)
+            self.assertEqual(binary[-1][2], "application/pdf")
+            self.assertTrue(binary[-1][1].startswith(b"%PDF"))
+
+            handled = try_handle_ingest_drafts_delete(
+                "/api/ingest/drafts",
+                MagicMock(),
+                {"source_sha256": [sha]},
+                settings=settings,
+                send_json=send_json,
+            )
+            self.assertTrue(handled)
+            self.assertTrue(responses[-1][1]["removed"])
+            self.assertEqual(list_ingest_drafts(str(db), data_root=tmp), [])
+            self.assertIsNone(find_draft_pdf_by_sha256(Path(tmp), sha))
 
 
 if __name__ == "__main__":

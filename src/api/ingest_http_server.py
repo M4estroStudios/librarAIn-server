@@ -34,7 +34,12 @@ from src.api.page_guidance_http import (
     ensure_ingest_ai_page_guidance,
     persist_ingest_notes_for_pdf,
     resolve_ingest_ui_state,
+    try_handle_ingest_drafts_delete,
+    try_handle_ingest_drafts_get,
+    try_handle_ingest_drafts_pdf_get,
+    try_handle_ingest_drafts_post,
     try_handle_ingest_notes_get,
+    try_handle_ingest_notes_state_put,
     try_handle_page_guidance_post,
 )
 from src.api.prompts_http import try_handle_prompts_get, try_handle_prompts_post
@@ -462,6 +467,24 @@ def build_ingest_server(
                 query,
                 settings=settings,
                 send_json=_send_json,
+            ):
+                return
+
+            if try_handle_ingest_drafts_get(
+                path,
+                self,
+                settings=settings,
+                send_json=_send_json,
+            ):
+                return
+
+            if try_handle_ingest_drafts_pdf_get(
+                path,
+                self,
+                query,
+                settings=settings,
+                send_json=_send_json,
+                send_bytes=_send_bytes,
             ):
                 return
 
@@ -1684,6 +1707,14 @@ def build_ingest_server(
                 )
                 _send_json(self, 403, {"ok": False, "error": "cross-origin request rejected"})
                 return
+            if try_handle_ingest_notes_state_put(
+                parsed.path,
+                self,
+                settings=settings,
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
             if try_handle_project_status_put(
                 parsed.path,
                 self,
@@ -1695,6 +1726,30 @@ def build_ingest_server(
                 sqlite_path=_settings_sqlite_path(settings),
                 send_json=_send_json,
                 read_body=_read_body,
+            ):
+                return
+            self.send_error(404, "Not Found")
+
+        def do_DELETE(self) -> None:
+            parsed = urllib.parse.urlparse(self.path)
+            query = urllib.parse.parse_qs(parsed.query)
+            if _is_cross_origin_request(self):
+                Log(
+                    WARNING_LOG_LEVEL,
+                    "cross-origin DELETE rejected",
+                    {
+                        "path": parsed.path,
+                        "origin": (self.headers.get("Origin") or "")[:120],
+                    },
+                )
+                _send_json(self, 403, {"ok": False, "error": "cross-origin request rejected"})
+                return
+            if try_handle_ingest_drafts_delete(
+                parsed.path,
+                self,
+                query,
+                settings=settings,
+                send_json=_send_json,
             ):
                 return
             self.send_error(404, "Not Found")
@@ -1876,6 +1931,18 @@ def build_ingest_server(
                 return
             if parsed.path == "/api/ingest/reicat-suggest":
                 self._handle_reicat_suggest()
+                return
+            if try_handle_ingest_drafts_post(
+                parsed.path,
+                self,
+                data_root=data_root,
+                settings=settings,
+                send_json=_send_json,
+                parse_multipart=parse_multipart_form_stream,
+                request_content_length=_request_content_length,
+                max_upload=max_upload,
+                safe_filename=_safe_filename,
+            ):
                 return
             if parsed.path not in ("/api/ingest/submit", "/api/ingest2/submit"):
                 self.send_error(404, "Not Found")

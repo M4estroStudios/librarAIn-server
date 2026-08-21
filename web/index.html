@@ -107,6 +107,26 @@ body { margin: 0; padding: 0; }
 .pdf-dropzone-icon { display: inline-flex; align-items: center; justify-content: center; width: 3.25rem; height: 3.25rem; margin-bottom: 0.85rem; border-radius: 10px; background: #3c3c3c; color: #4ec9b0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
 .pdf-dropzone-title { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: #e8e8e8; }
 .pdf-dropzone-hint { margin: 0; font-size: 0.82rem; color: #9d9d9d; line-height: 1.4; }
+.ingest-drafts-home { margin: 0 0 1.25rem; padding: 1rem 1.1rem 1.15rem; border-radius: 12px; border: 1px solid #3e3e3e; background: #252526; }
+.ingest-drafts-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem 1rem; margin-bottom: 0.65rem; }
+.ingest-drafts-title { margin: 0; font-size: 1.05rem; font-weight: 600; color: #e8e8e8; }
+.ingest-drafts-status { margin: 0 0 0.65rem; min-height: 1.2em; }
+.ingest-drafts-status.is-error { color: #f48771; }
+.ingest-drafts-list { display: grid; gap: 0.45rem; }
+.ingest-drafts-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.75rem; padding: 0.65rem 0.75rem; border-radius: 8px; border: 1px solid #3e3e3e; background: #1e1e1e; }
+.ingest-drafts-row-main { flex: 1 1 12rem; min-width: 0; display: grid; gap: 0.15rem; }
+.ingest-drafts-row-title { font-size: 0.92rem; font-weight: 600; color: #e8e8e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ingest-drafts-row-meta { font-size: 0.76rem; color: #9d9d9d; font-family: ui-monospace, monospace; }
+.ingest-drafts-row-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.ingest-drafts-empty { padding: 0.85rem 0.25rem 0.35rem; color: #cccccc; }
+.ingest-drafts-empty p { margin: 0 0 0.35rem; }
+.save-draft-status { margin: 0; font-size: 0.8rem; color: #9d9d9d; min-height: 1.2em; }
+.save-draft-status.is-ok { color: #6a9955; }
+.save-draft-status.is-error { color: #f48771; }
+.pdf-workspace-bar-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; }
+.ingest-upload-banner { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem 0.85rem; margin: 0 0 0.65rem; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1px solid #3e3e3e; background: #2d2d30; }
+.ingest-upload-banner.hidden { display: none; }
+.ingest-upload-hint { margin: 0; flex: 1 1 12rem; }
 .ingest-queue-bar { position: sticky; top: 0; z-index: 200; margin: 0 0 1rem; padding: 0.55rem 0.75rem; border-radius: 10px; background: #2d2d30; border: 3px solid #4ec9b0; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45); }
 .ingest-queue-bar.hidden { display: none; }
 .ingest-queue-bar-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.65rem; }
@@ -724,8 +744,25 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
   <div id="ingest-queue-merge-checks" class="ingest-queue-merge-checks hidden" aria-label="Seleziona volumi da unire"></div>
 </div>
 
+<div id="ingest-drafts-home" class="ingest-drafts-home" aria-label="Bozze attive">
+  <div class="ingest-drafts-header">
+    <h2 class="ingest-drafts-title">Bozze attive</h2>
+    <button type="button" id="ingest-drafts-new-btn">Nuova bozza</button>
+  </div>
+  <p id="ingest-drafts-status" class="ingest-drafts-status hint" aria-live="polite"></p>
+  <div id="ingest-drafts-list" class="ingest-drafts-list" role="list"></div>
+  <div id="ingest-drafts-empty" class="ingest-drafts-empty hidden">
+    <p>Nessuna bozza attiva.</p>
+    <p class="hint">Usa «Nuova bozza» per caricare un PDF e iniziare.</p>
+  </div>
+</div>
+
 <form id="ingest-form">
-  <div id="pdf-dropzone" class="pdf-dropzone" aria-label="Carica PDF">
+  <div id="ingest-upload-banner" class="ingest-upload-banner hidden">
+    <button type="button" id="ingest-upload-back-btn" class="secondary">← Bozze</button>
+    <p id="ingest-upload-hint" class="ingest-upload-hint hint">Carica un PDF per iniziare.</p>
+  </div>
+  <div id="pdf-dropzone" class="pdf-dropzone hidden" aria-label="Carica PDF">
     <input type="file" id="pdf-file-input" class="pdf-dropzone-input" name="pdf_file" accept="application/pdf,.pdf" multiple required>
     <div class="pdf-dropzone-inner">
       <div class="pdf-dropzone-icon" aria-hidden="true">PDF</div>
@@ -746,7 +783,10 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
           <option value="cloud">Cloud</option>
         </select>
       </label>
-      <button type="button" id="pdf-change-btn" class="secondary">Cambia PDF</button>
+      <div class="pdf-workspace-bar-actions">
+        <button type="button" id="pdf-back-to-drafts-btn" class="secondary">Torna alle bozze</button>
+        <button type="button" id="pdf-change-btn" class="secondary">Cambia PDF</button>
+      </div>
     </div>
 
     <div class="pdf-workspace-hint-card">
@@ -1010,6 +1050,8 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
 
   <div class="actions">
     <button type="submit" id="submit-btn">Invia validazione</button>
+    <button type="button" id="save-draft-btn" class="secondary" disabled title="Compila almeno un campo dopo aver caricato il PDF">Salva Bozza</button>
+    <p id="save-draft-status" class="save-draft-status" aria-live="polite"></p>
   </div>
   </div>
 </form>
@@ -1757,6 +1799,21 @@ if (document.readyState === "loading") {
   var pdfFileName = document.getElementById("pdf-file-name");
   var pdfFileInput = document.getElementById("pdf-file-input");
   var pdfChangeBtn = document.getElementById("pdf-change-btn");
+  var ingestDraftsHome = document.getElementById("ingest-drafts-home");
+  var ingestDraftsList = document.getElementById("ingest-drafts-list");
+  var ingestDraftsEmpty = document.getElementById("ingest-drafts-empty");
+  var ingestDraftsStatus = document.getElementById("ingest-drafts-status");
+  var ingestDraftsNewBtn = document.getElementById("ingest-drafts-new-btn");
+  var ingestUploadBanner = document.getElementById("ingest-upload-banner");
+  var ingestUploadBackBtn = document.getElementById("ingest-upload-back-btn");
+  var ingestUploadHint = document.getElementById("ingest-upload-hint");
+  var saveDraftBtn = document.getElementById("save-draft-btn");
+  var saveDraftStatus = document.getElementById("save-draft-status");
+  var pdfBackToDraftsBtn = document.getElementById("pdf-back-to-drafts-btn");
+  var activeDraftsCache = [];
+  var pendingOpenDraftSha = "";
+  var ingestSessionMode = "drafts"; // drafts | upload | workspace
+  var saveDraftBusy = false;
   var pdfViewerMeta = document.getElementById("pdf-viewer-meta");
   var viewerMode = "exclude";
   var viewerModeButtons = document.querySelectorAll(".pdf-viewer-tool[data-viewer-mode]");
@@ -2086,6 +2143,7 @@ if (document.readyState === "loading") {
     writeIngestNotesDraft(currentIngestNotesSha, collectIngestNotesState());
   }
   function scheduleIngestNotesDraftSave() {
+    syncSaveDraftButton();
     if (!currentIngestNotesSha || ingestNotesRestoring) return;
     if (ingestNotesDraftTimer) clearTimeout(ingestNotesDraftTimer);
     ingestNotesDraftTimer = setTimeout(function () {
@@ -2187,6 +2245,9 @@ if (document.readyState === "loading") {
     for (var i = 0; i < pageGuidanceRangeListeners.length; i++) {
       try { pageGuidanceRangeListeners[i](); } catch (_) {}
     }
+    // I range aggiornati dal viewer settano .value senza eventi input:
+    // ricalcola Salva Bozza / draft sessionStorage.
+    if (typeof scheduleIngestNotesDraftSave === "function") scheduleIngestNotesDraftSave();
   }
   function pageGuidanceSectionForPage(page) {
     var p = parseInt(page, 10);
@@ -2594,11 +2655,22 @@ if (document.readyState === "loading") {
       refreshViewerThumbUi();
       try {
         if (item.savedSourceSha256) {
-          await restoreIngestNotesForSha(String(item.savedSourceSha256).toLowerCase(), { ask: true, clearIfMissing: true });
+          var savedSha = String(item.savedSourceSha256).toLowerCase();
+          await restoreIngestNotesForSha(savedSha, {
+            ask: askIngestNotesRestoreForSha(savedSha),
+            clearIfMissing: true,
+          });
         } else if (item.file) {
           var noteBuf = await item.file.arrayBuffer();
-          await restoreIngestNotesForPdfBuffer(noteBuf, { file: item.file, ask: true, clearIfMissing: true });
+          var noteSha = await sha256HexFromBuffer(noteBuf);
+          await restoreIngestNotesForPdfBuffer(noteBuf, {
+            file: item.file,
+            sourceSha256: noteSha,
+            ask: askIngestNotesRestoreForSha(noteSha),
+            clearIfMissing: true,
+          });
         }
+        pendingOpenDraftSha = "";
       } catch (restoreErr) {
         if (window.LibrarAInLog) window.LibrarAInLog.reportError("queue notes restore failed", restoreErr);
       }
@@ -2785,7 +2857,464 @@ if (document.readyState === "loading") {
     });
   }
 
+  function formatDraftUpdatedAt(raw) {
+    var s = String(raw || "").trim();
+    if (!s) return "—";
+    var d = new Date(s);
+    if (isNaN(d.getTime())) return s;
+    try {
+      return d.toLocaleString("it-IT", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    } catch (_) {
+      return s;
+    }
+  }
+
+  function draftDisplayTitle(draft) {
+    var title = String((draft && draft.title) || "").trim();
+    if (title) return title;
+    var fileName = String((draft && draft.file_name) || "").trim();
+    if (fileName) return fileName;
+    return "Senza titolo";
+  }
+
+  function abbreviateSha(sha) {
+    var s = String(sha || "").trim().toLowerCase();
+    if (!s) return "—";
+    return s.length > 12 ? s.slice(0, 12) + "…" : s;
+  }
+
+  function isKnownActiveDraftSha(sha) {
+    var s = String(sha || "").trim().toLowerCase();
+    if (!s) return false;
+    if (pendingOpenDraftSha && pendingOpenDraftSha === s) return true;
+    for (var i = 0; i < activeDraftsCache.length; i++) {
+      if (String(activeDraftsCache[i].source_sha256 || "").toLowerCase() === s) return true;
+    }
+    return false;
+  }
+
+  function askIngestNotesRestoreForSha(sha) {
+    // Bozze attive: ripristino diretto (niente dialog «metadati nel database»).
+    return !isKnownActiveDraftSha(sha);
+  }
+
+  function setIngestDraftsStatus(message, isError) {
+    if (!ingestDraftsStatus) return;
+    ingestDraftsStatus.textContent = message || "";
+    ingestDraftsStatus.classList.toggle("is-error", !!isError);
+  }
+
+  function setSaveDraftStatus(message, kind) {
+    if (!saveDraftStatus) return;
+    saveDraftStatus.textContent = message || "";
+    saveDraftStatus.classList.toggle("is-ok", kind === "ok");
+    saveDraftStatus.classList.toggle("is-error", kind === "error");
+  }
+
+  function formHasIngestDraftContent() {
+    return ingestNotesStateHasContent(collectIngestNotesState());
+  }
+
+  function syncSaveDraftButton() {
+    if (!saveDraftBtn) return;
+    var hasPdf = !!(pagePickerState.pdfFile && pagePickerState.pdfFile.size);
+    var hasContent = formHasIngestDraftContent();
+    var enable = hasPdf && hasContent && !saveDraftBusy;
+    saveDraftBtn.disabled = !enable;
+    if (enable) {
+      saveDraftBtn.title = "Salva bozza sul server (senza lanciare l'ingest)";
+    } else if (!hasPdf) {
+      saveDraftBtn.title = "Carica un PDF per salvare la bozza";
+    } else if (!hasContent) {
+      saveDraftBtn.title = "Compila almeno un campo (es. range indice o titolo) per salvare la bozza";
+    } else {
+      saveDraftBtn.title = "Salvataggio in corso…";
+    }
+  }
+
+  function currentPdfDisplayName() {
+    if (pagePickerState.pdfFile && pagePickerState.pdfFile.name) return String(pagePickerState.pdfFile.name);
+    if (pdfFileName && pdfFileName.textContent && pdfFileName.textContent !== "—") {
+      return String(pdfFileName.textContent).trim();
+    }
+    return "";
+  }
+
+  function ensureDraftTitleOrPrompt(state) {
+    var title = String((state && state.titolo) || "").trim();
+    if (title) return title;
+    var suggested = currentPdfDisplayName().replace(/\.pdf$/i, "").trim();
+    var entered = window.prompt(
+      "Inserisci il titolo del libro per salvare la bozza:",
+      suggested || ""
+    );
+    if (entered == null) return null; // annullato
+    title = String(entered || "").trim();
+    if (!title) {
+      setSaveDraftStatus("Titolo obbligatorio per salvare la bozza.", "error");
+      return null;
+    }
+    var titoloEl = form && form.elements ? form.elements.titolo : null;
+    if (titoloEl) titoloEl.value = title;
+    state.titolo = title;
+    return title;
+  }
+
+  async function ensureCurrentIngestNotesShaFromPdf() {
+    var sha = String(currentIngestNotesSha || "").trim().toLowerCase();
+    if (sha) return sha;
+    var file = pagePickerState.pdfFile;
+    if (!file || !file.size) return "";
+    try {
+      var buf = await file.arrayBuffer();
+      sha = await sha256HexFromBuffer(buf);
+      sha = String(sha || "").trim().toLowerCase();
+      if (sha) currentIngestNotesSha = sha;
+      return sha;
+    } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest draft sha failed", err);
+      return "";
+    }
+  }
+
+  async function saveIngestDraftToServer() {
+    if (!pagePickerState.pdfFile || !pagePickerState.pdfFile.size) {
+      setSaveDraftStatus("Carica un PDF prima di salvare la bozza.", "error");
+      return;
+    }
+    if (!formHasIngestDraftContent()) {
+      setSaveDraftStatus("Compila almeno un campo prima di salvare la bozza.", "error");
+      return;
+    }
+    if (saveDraftBusy) return;
+    saveDraftBusy = true;
+    syncSaveDraftButton();
+    setSaveDraftStatus("Salvataggio bozza (PDF incluso)…", "");
+    flushIngestNotesDraft();
+    try {
+      var state = collectIngestNotesState();
+      var title = ensureDraftTitleOrPrompt(state);
+      if (!title) {
+        setSaveDraftStatus(
+          String((saveDraftStatus && saveDraftStatus.textContent) || "").indexOf("Titolo") === 0
+            ? saveDraftStatus.textContent
+            : "Salvataggio annullato.",
+          String((saveDraftStatus && saveDraftStatus.textContent) || "").indexOf("Titolo") === 0 ? "error" : ""
+        );
+        return;
+      }
+      var fileName = currentPdfDisplayName();
+      var fd = new FormData();
+      fd.append("state_json", JSON.stringify(state));
+      fd.append("file_name", fileName || "draft.pdf");
+      fd.append("titolo", title);
+
+      var activeItem = ingestQueue.length ? ingestQueue[currentQueueIndex] : null;
+      var mergeSources = activeItem && isMergedQueueItem(activeItem) ? activeItem.mergeSources : null;
+      if (mergeSources && mergeSources.length > 1) {
+        fd.append("volume_merge", "1");
+        fd.append(
+          "pdf_file",
+          mergeSources[0].file,
+          mergeSources[0].fileName || mergeSources[0].file.name || "volume-1.pdf"
+        );
+        for (var vi = 1; vi < mergeSources.length; vi++) {
+          fd.append(
+            "pdf_volume_" + vi,
+            mergeSources[vi].file,
+            mergeSources[vi].fileName || mergeSources[vi].file.name || ("volume-" + (vi + 1) + ".pdf")
+          );
+        }
+      } else {
+        fd.append(
+          "pdf_file",
+          pagePickerState.pdfFile,
+          fileName || pagePickerState.pdfFile.name || "draft.pdf"
+        );
+      }
+
+      var res = await fetch("/api/ingest/drafts", { method: "POST", body: fd });
+      var data = await res.json().catch(function () { return {}; });
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || ("HTTP " + res.status));
+      }
+      var sha = String(data.source_sha256 || "").trim().toLowerCase();
+      if (sha) currentIngestNotesSha = sha;
+      setSaveDraftStatus("Bozza salvata (PDF incluso)", "ok");
+      var existing = null;
+      for (var i = 0; i < activeDraftsCache.length; i++) {
+        if (String(activeDraftsCache[i].source_sha256 || "").toLowerCase() === sha) {
+          existing = activeDraftsCache[i];
+          break;
+        }
+      }
+      var entry = {
+        source_sha256: sha,
+        title: title || (existing && existing.title) || "",
+        file_name: fileName || (existing && existing.file_name) || "",
+        updated_at: new Date().toISOString(),
+        has_pdf: true,
+      };
+      if (existing) {
+        existing.title = entry.title;
+        existing.file_name = entry.file_name;
+        existing.updated_at = entry.updated_at;
+        existing.has_pdf = true;
+      } else if (sha) {
+        activeDraftsCache.unshift(entry);
+      }
+    } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest draft save failed", err);
+      setSaveDraftStatus(
+        "Errore salvataggio bozza: " + String(err && err.message ? err.message : err),
+        "error"
+      );
+    } finally {
+      saveDraftBusy = false;
+      syncSaveDraftButton();
+    }
+  }
+
+  function removeActiveDraftFromCache(sha) {
+    var s = String(sha || "").trim().toLowerCase();
+    if (!s) return;
+    activeDraftsCache = activeDraftsCache.filter(function (d) {
+      return String(d.source_sha256 || "").toLowerCase() !== s;
+    });
+  }
+
+  function clearActiveDraftAfterSubmit(sha) {
+    var s = String(sha || currentIngestNotesSha || "").trim().toLowerCase();
+    if (!s) return;
+    removeActiveDraftFromCache(s);
+  }
+
+  async function deleteIngestDraftFromServer(sha) {
+    var s = String(sha || "").trim().toLowerCase();
+    if (!s) return;
+    var ok = window.confirm(
+      "Eliminare la bozza " + abbreviateSha(s) + " dalla lista attiva?\n\n" +
+      "OK = elimina / Annulla = mantieni"
+    );
+    if (!ok) return;
+    setIngestDraftsStatus("Eliminazione…", false);
+    try {
+      var res = await fetch("/api/ingest/drafts?source_sha256=" + encodeURIComponent(s), {
+        method: "DELETE",
+      });
+      var data = await res.json().catch(function () { return {}; });
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || ("HTTP " + res.status));
+      }
+      await fetchIngestDrafts();
+      setIngestDraftsStatus("Bozza eliminata", false);
+    } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest draft delete failed", err);
+      setIngestDraftsStatus(
+        "Impossibile eliminare la bozza (" + String(err && err.message ? err.message : err) + ").",
+        true
+      );
+    }
+  }
+
+
+  async function openIngestDraft(sha, hasPdf, fileName) {
+    var s = String(sha || "").trim().toLowerCase();
+    if (!s) return;
+    if (hasPdf) {
+      setIngestDraftsStatus("Apertura bozza…", false);
+      try {
+        var res = await fetch("/api/ingest/drafts/pdf?source_sha256=" + encodeURIComponent(s));
+        if (!res.ok) {
+          var errData = await res.json().catch(function () { return {}; });
+          throw new Error(errData.error || ("HTTP " + res.status));
+        }
+        var blob = await res.blob();
+        var file = new File([blob], fileName || "draft.pdf", { type: "application/pdf" });
+        pendingOpenDraftSha = s;
+        await loadPagePickerFromFile(file);
+        setIngestDraftsStatus("", false);
+        return;
+      } catch (err) {
+        if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest draft open pdf failed", err);
+        setIngestDraftsStatus(
+          "PDF bozza non disponibile (" + String(err && err.message ? err.message : err) + "). Carica il file manualmente.",
+          true
+        );
+        // fallback upload
+      }
+    }
+    showIngestUploadMode({ pendingOpenDraftSha: s });
+    if (pdfFileInput) {
+      try { pdfFileInput.click(); } catch (_) {}
+    }
+  }
+
+  function returnToIngestDraftsHome() {
+    flushIngestNotesDraft();
+    // Non resetta sessionStorage della tab; reset solo UI workspace.
+    currentIngestNotesSha = "";
+    resetPagePickerState();
+    clearIngestQueue();
+    if (pdfFileInput) pdfFileInput.value = "";
+    setSaveDraftStatus("", "");
+    showIngestDraftsHome();
+    syncSaveDraftButton();
+    fetchIngestDrafts();
+  }
+
+  function rejectDraftOpenHashMismatch(expectedSha, actualSha, fileName) {
+    var msg =
+      "Il PDF caricato non corrisponde alla bozza selezionata. " +
+      "Atteso SHA " + abbreviateSha(expectedSha) +
+      ", ricevuto " + abbreviateSha(actualSha) +
+      (fileName ? " («" + fileName + "»)" : "") +
+      ". Nessuna bozza aperta: resta sulla lista e riprova con lo stesso file.";
+    pendingOpenDraftSha = "";
+    currentIngestNotesSha = "";
+    resetPagePickerState();
+    clearIngestQueue();
+    if (pdfFileInput) pdfFileInput.value = "";
+    showIngestDraftsHome();
+    setIngestDraftsStatus(msg, true);
+    syncSaveDraftButton();
+    if (window.LibrarAInLog) {
+      window.LibrarAInLog.reportError("draft open hash mismatch", {
+        expected: expectedSha,
+        actual: actualSha,
+        fileName: fileName || "",
+      });
+    }
+  }
+
+  function rejectDraftOpenMultiFile() {
+    if (ingestUploadHint) {
+      ingestUploadHint.textContent =
+        "Per aprire la bozza carica un solo PDF (lo stesso file della bozza, SHA " +
+        abbreviateSha(pendingOpenDraftSha) +
+        ").";
+    }
+    if (pdfFileInput) pdfFileInput.value = "";
+  }
+
+  function renderIngestDraftsList(drafts) {
+    activeDraftsCache = Array.isArray(drafts) ? drafts.slice() : [];
+    if (!ingestDraftsList) return;
+    ingestDraftsList.innerHTML = "";
+    var empty = !activeDraftsCache.length;
+    if (ingestDraftsEmpty) ingestDraftsEmpty.classList.toggle("hidden", !empty);
+    if (empty) return;
+    activeDraftsCache.forEach(function (draft) {
+      var sha = String(draft.source_sha256 || "").trim().toLowerCase();
+      var row = document.createElement("div");
+      row.className = "ingest-drafts-row";
+      row.setAttribute("role", "listitem");
+      row.dataset.sourceSha256 = sha;
+
+      var main = document.createElement("div");
+      main.className = "ingest-drafts-row-main";
+      var titleEl = document.createElement("div");
+      titleEl.className = "ingest-drafts-row-title";
+      titleEl.textContent = draftDisplayTitle(draft);
+      var metaEl = document.createElement("div");
+      metaEl.className = "ingest-drafts-row-meta";
+      metaEl.textContent = abbreviateSha(sha) + " · " + formatDraftUpdatedAt(draft.updated_at);
+      main.appendChild(titleEl);
+      main.appendChild(metaEl);
+
+      var actions = document.createElement("div");
+      actions.className = "ingest-drafts-row-actions";
+      var openBtn = document.createElement("button");
+      openBtn.type = "button";
+      openBtn.className = "secondary ingest-draft-open-btn";
+      openBtn.textContent = "Apri";
+      openBtn.dataset.sourceSha256 = sha;
+      openBtn.title = draft.has_pdf ? "Riapri bozza (PDF salvato)" : "Ri-carica il PDF per aprire la bozza";
+      openBtn.dataset.hasPdf = draft.has_pdf ? "1" : "0";
+      openBtn.dataset.fileName = String(draft.file_name || "");
+      actions.appendChild(openBtn);
+      var deleteBtn = document.createElement("button");
+      deleteBtn.type = "button";
+      deleteBtn.className = "secondary ingest-draft-delete-btn";
+      deleteBtn.textContent = "Elimina";
+      deleteBtn.dataset.sourceSha256 = sha;
+      deleteBtn.title = "Rimuovi la bozza dalla lista attiva";
+      actions.appendChild(deleteBtn);
+
+      row.appendChild(main);
+      row.appendChild(actions);
+      ingestDraftsList.appendChild(row);
+    });
+  }
+
+  async function fetchIngestDrafts() {
+    setIngestDraftsStatus("Caricamento bozze…", false);
+    try {
+      var res = await fetch("/api/ingest/drafts");
+      var data = await res.json().catch(function () { return {}; });
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || ("HTTP " + res.status));
+      }
+      renderIngestDraftsList(data.drafts || []);
+      setIngestDraftsStatus(
+        activeDraftsCache.length
+          ? (activeDraftsCache.length === 1 ? "1 bozza attiva" : activeDraftsCache.length + " bozze attive")
+          : "",
+        false
+      );
+      return activeDraftsCache;
+    } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest drafts fetch failed", err);
+      renderIngestDraftsList([]);
+      setIngestDraftsStatus(
+        "Impossibile caricare le bozze (" + String(err && err.message ? err.message : err) + "). Puoi comunque creare una nuova bozza.",
+        true
+      );
+      return [];
+    }
+  }
+
+  function showIngestDraftsHome() {
+    ingestSessionMode = "drafts";
+    pendingOpenDraftSha = "";
+    if (ingestDraftsHome) ingestDraftsHome.classList.remove("hidden");
+    if (ingestUploadBanner) ingestUploadBanner.classList.add("hidden");
+    if (pdfDropzone) pdfDropzone.classList.add("hidden");
+    if (pdfWorkspace) pdfWorkspace.classList.add("hidden");
+    if (ingestFormDetails) ingestFormDetails.classList.add("hidden");
+    if (pdfFileInput) pdfFileInput.value = "";
+  }
+
+  function showIngestUploadMode(options) {
+    var opts = options || {};
+    ingestSessionMode = "upload";
+    pendingOpenDraftSha = String(opts.pendingOpenDraftSha || "").trim().toLowerCase();
+    if (ingestDraftsHome) ingestDraftsHome.classList.add("hidden");
+    if (pdfWorkspace) pdfWorkspace.classList.add("hidden");
+    if (ingestFormDetails) ingestFormDetails.classList.add("hidden");
+    if (pdfDropzone) pdfDropzone.classList.remove("hidden");
+    if (ingestUploadBanner) ingestUploadBanner.classList.remove("hidden");
+    if (ingestUploadHint) {
+      if (pendingOpenDraftSha) {
+        ingestUploadHint.textContent =
+          "Carica lo stesso PDF per aprire la bozza (" + abbreviateSha(pendingOpenDraftSha) + ").";
+      } else {
+        ingestUploadHint.textContent = "Carica un PDF per iniziare una nuova bozza.";
+      }
+    }
+    if (pdfFileInput) pdfFileInput.value = "";
+  }
+
   function showPdfWorkspace(file, displayName) {
+    ingestSessionMode = "workspace";
+    if (ingestDraftsHome) ingestDraftsHome.classList.add("hidden");
+    if (ingestUploadBanner) ingestUploadBanner.classList.add("hidden");
     pdfDropzone.classList.add("hidden");
     pdfWorkspace.classList.remove("hidden");
     ingestFormDetails.classList.remove("hidden");
@@ -2793,10 +3322,56 @@ if (document.readyState === "loading") {
   }
 
   function showPdfDropzone() {
-    pdfDropzone.classList.remove("hidden");
-    pdfWorkspace.classList.add("hidden");
-    ingestFormDetails.classList.add("hidden");
+    // «Cambia PDF» resta in modalità upload (non torna automaticamente alla home bozze).
+    showIngestUploadMode({ pendingOpenDraftSha: pendingOpenDraftSha });
   }
+
+  if (ingestDraftsNewBtn) {
+    ingestDraftsNewBtn.addEventListener("click", function () {
+      showIngestUploadMode({});
+    });
+  }
+  if (ingestUploadBackBtn) {
+    ingestUploadBackBtn.addEventListener("click", function () {
+      showIngestDraftsHome();
+      fetchIngestDrafts();
+    });
+  }
+  if (pdfBackToDraftsBtn) {
+    pdfBackToDraftsBtn.addEventListener("click", function () {
+      returnToIngestDraftsHome();
+    });
+  }
+  if (saveDraftBtn) {
+    saveDraftBtn.addEventListener("click", function () {
+      saveIngestDraftToServer();
+    });
+  }
+  if (ingestDraftsList) {
+    ingestDraftsList.addEventListener("click", function (event) {
+      var deleteBtn = event.target && event.target.closest
+        ? event.target.closest(".ingest-draft-delete-btn")
+        : null;
+      if (deleteBtn) {
+        var deleteSha = String(deleteBtn.dataset.sourceSha256 || "").trim().toLowerCase();
+        if (deleteSha) deleteIngestDraftFromServer(deleteSha);
+        return;
+      }
+      var btn = event.target && event.target.closest
+        ? event.target.closest(".ingest-draft-open-btn")
+        : null;
+      if (!btn) return;
+      var sha = String(btn.dataset.sourceSha256 || "").trim().toLowerCase();
+      if (!sha) return;
+      setIngestDraftsStatus("", false);
+      var hasPdf = btn.dataset.hasPdf === "1";
+      var fileName = String(btn.dataset.fileName || "").trim() || "draft.pdf";
+      openIngestDraft(sha, hasPdf, fileName);
+    });
+  }
+  showIngestDraftsHome();
+  fetchIngestDrafts();
+  syncSaveDraftButton();
 
   function viewerLastSelected(mode) {
     if (mode === "toc") return tocPagePickerState.lastSelected;
@@ -3425,6 +4000,7 @@ if (document.readyState === "loading") {
     appendixPagePickerState.syncing = true;
     appendixPagesInput.value = pagesToSpec(appendixSelectedPagesList());
     appendixPagePickerState.syncing = false;
+    scheduleIngestNotesDraftSave();
   }
 
   function syncAppendixPagePickerSelectionFromField() {
@@ -4559,29 +5135,49 @@ if (document.readyState === "loading") {
     clearIngestQueue();
     showPdfDropzone();
     if (pdfFileInput) pdfFileInput.value = "";
+    setSaveDraftStatus("", "");
+    syncSaveDraftButton();
   }
 
   async function loadPagePickerFromFile(file) {
     if (!file || !file.size) return;
+    var expectedDraftSha = String(pendingOpenDraftSha || "").trim().toLowerCase();
     flushIngestNotesDraft();
     resetPagePickerState();
     pagePickerState.pdfFile = file;
-    showPdfWorkspace(file);
     var loadGen = pagePickerState.loadGen;
-    pagePickerGridWrap.classList.add("is-rendering");
-    pdfViewerMeta.textContent = "Caricamento PDF…";
     try {
-      var mod = await pdfJs();
       var buf = await file.arrayBuffer();
       var sourceSha = await sha256HexFromBuffer(buf);
+      if (loadGen !== pagePickerState.loadGen) return;
+      // F-003: Apri bozza richiede hash esatto; mismatch → errore, resta in lista.
+      if (expectedDraftSha && sourceSha !== expectedDraftSha) {
+        rejectDraftOpenHashMismatch(expectedDraftSha, sourceSha, file.name);
+        return;
+      }
+      showPdfWorkspace(file);
+      pagePickerGridWrap.classList.add("is-rendering");
+      pdfViewerMeta.textContent = "Caricamento PDF…";
       currentIngestNotesSha = sourceSha || "";
+      syncSaveDraftButton();
+      setSaveDraftStatus("", "");
+      var mod = await pdfJs();
       var pdfBytes = new Uint8Array(buf.byteLength);
       pdfBytes.set(new Uint8Array(buf));
       var pdfDoc = await mod.getDocument({ data: pdfBytes }).promise;
       if (loadGen !== pagePickerState.loadGen) return;
       pagePickerState.pdfDoc = pdfDoc;
       pagePickerState.numPages = pdfDoc.numPages;
-      await restoreIngestNotesForPdfBuffer(buf, { sourceSha256: sourceSha, file: file, ask: true, clearIfMissing: true });
+      // Bozza attiva / Apri: ripristino diretto (niente dialog «metadati nel database»).
+      // Post-ingest non-draft: confirm attuale via askIngestNotesRestoreForSha.
+      var askRestore = askIngestNotesRestoreForSha(sourceSha);
+      pendingOpenDraftSha = "";
+      await restoreIngestNotesForPdfBuffer(buf, {
+        sourceSha256: sourceSha,
+        file: file,
+        ask: askRestore,
+        clearIfMissing: true,
+      });
       if (loadGen !== pagePickerState.loadGen) return;
       syncPagePickerSelectionFromField();
       var allPageNums = [];
@@ -4617,6 +5213,19 @@ if (document.readyState === "loading") {
     } catch (err) {
       if (loadGen !== pagePickerState.loadGen) return;
       pagePickerGridWrap.classList.remove("is-rendering", "is-rendering-progress");
+      if (expectedDraftSha && ingestSessionMode !== "workspace") {
+        pendingOpenDraftSha = "";
+        currentIngestNotesSha = "";
+        resetPagePickerState();
+        clearIngestQueue();
+        if (pdfFileInput) pdfFileInput.value = "";
+        showIngestDraftsHome();
+        setIngestDraftsStatus(
+          "Impossibile aprire la bozza: " + String(err && err.message ? err.message : err),
+          true
+        );
+        return;
+      }
       pdfViewerMeta.textContent = "Anteprima non disponibile: " + String(err && err.message ? err.message : err);
     }
   }
@@ -4641,6 +5250,10 @@ if (document.readyState === "loading") {
     event.preventDefault();
     pdfDropzone.classList.remove("is-dragover");
     collectPdfFilesFromDataTransfer(event.dataTransfer).then(function (pdfs) {
+      if (pendingOpenDraftSha && pdfs.length > 1) {
+        rejectDraftOpenMultiFile();
+        return;
+      }
       if (pdfs.length > 1) {
         loadPdfQueueFromFiles(pdfs);
         return;
@@ -4660,6 +5273,10 @@ if (document.readyState === "loading") {
   pdfFileInput.addEventListener("change", function (event) {
     var files = event.target.files;
     if (!files || !files.length) return;
+    if (pendingOpenDraftSha && files.length > 1) {
+      rejectDraftOpenMultiFile();
+      return;
+    }
     if (files.length > 1) {
       loadPdfQueueFromFiles(files);
       return;
@@ -6723,6 +7340,8 @@ if (document.readyState === "loading") {
     if (data.source_sha256 && ingestQueue.length && ingestQueue[currentQueueIndex]) {
       ingestQueue[currentQueueIndex].savedSourceSha256 = String(data.source_sha256).toLowerCase();
     }
+    // Submit accettato: server ha già is_draft=0 — allinea lista UI.
+    clearActiveDraftAfterSubmit(data.source_sha256 || currentIngestNotesSha);
     markQueueItemFromJob("running");
     if (window.parent !== window) {
       try {
