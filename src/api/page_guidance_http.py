@@ -7,6 +7,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
+from src.api.appendix_types import (
+    dump_appendix_sections_json,
+    normalize_appendix_sections,
+    normalize_appendix_splits,
+    pages_to_spec,
+)
 from src.api.page_guidance_suggest import normalize_annotations, suggest_page_guidance
 from src.core.hashing import compute_file_sha256, validate_source_sha256
 from src.api.pdf_upload_storage import (
@@ -54,6 +60,7 @@ _RANGE_FIELD_NAMES = (
     "biblio_range",
     "reicat_pages",
     "appendix_pages",
+    "appendix_sections_json",
 )
 
 _REICAT_FIELD_NAMES = (
@@ -158,6 +165,16 @@ def _merge_reicat_defaults(
     return state
 
 
+def _normalize_appendix_sections_field(state: dict[str, Any]) -> str:
+    raw = state.get("appendix_sections_json")
+    sections = normalize_appendix_sections(raw)
+    if not sections and str(state.get("appendix_pages") or "").strip():
+        # Migrazione soft: un blocco legacy senza tipologia resta solo in appendix_pages.
+        return "[]"
+    splits = normalize_appendix_splits(raw, sections)
+    return dump_appendix_sections_json(sections, splits)
+
+
 def _normalize_ingest_notes_payload(state: dict[str, Any]) -> dict[str, Any]:
     payload = {
         "notes": str(state.get("notes") or "").strip(),
@@ -169,6 +186,14 @@ def _normalize_ingest_notes_payload(state: dict[str, Any]) -> dict[str, Any]:
     }
     payload.update(_range_fields_from_mapping(state))
     payload.update(_reicat_fields_from_mapping(state))
+    sections_json = _normalize_appendix_sections_field(state)
+    payload["appendix_sections_json"] = sections_json
+    sections = normalize_appendix_sections(sections_json)
+    if sections:
+        all_pages: list[int] = []
+        for item in sections:
+            all_pages.extend(int(p) for p in item["pages"])
+        payload["appendix_pages"] = pages_to_spec(all_pages)
     return payload
 
 
@@ -356,12 +381,17 @@ def save_ingest_draft(
     state: dict[str, Any],
     *,
     file_name: str | None = None,
+    data_root: Path | str | None = None,
 ) -> str:
     payload = dict(state)
     if file_name is not None:
         payload["file_name"] = str(file_name).strip()
     digest = save_ingest_notes_state(sqlite_path, source_sha256, payload, is_draft=True)
     Log(INFO_LOG_LEVEL, "ingest draft saved", {"source_sha256": digest[:16]})
+    if data_root is not None:
+        from src.persistence.draft_sync import sync_on_draft_saved
+
+        sync_on_draft_saved(sqlite_path, data_root, digest)
     return digest
 
 
@@ -416,11 +446,17 @@ def delete_ingest_draft(
             Log(INFO_LOG_LEVEL, "ingest draft cleared (book kept)", {"source_sha256": digest[:16]})
             if data_root:
                 delete_draft_pdf(Path(data_root), digest)
+                from src.persistence.draft_sync import sync_on_draft_deleted
+
+                sync_on_draft_deleted(data_root, digest)
             return {"ok": True, "found": True, "removed": False, "cleared": True, "source_sha256": digest}
         conn.execute("DELETE FROM ingest_notes WHERE source_sha256 = ?", (digest,))
         Log(INFO_LOG_LEVEL, "ingest draft row removed", {"source_sha256": digest[:16]})
         if data_root:
             delete_draft_pdf(Path(data_root), digest)
+            from src.persistence.draft_sync import sync_on_draft_deleted
+
+            sync_on_draft_deleted(data_root, digest)
         return {"ok": True, "found": True, "removed": True, "cleared": False, "source_sha256": digest}
 
 
@@ -528,6 +564,7 @@ def try_handle_ingest_notes_state_put(
         digest,
         state,
         file_name=file_name if isinstance(file_name, str) else None,
+        data_root=settings.data_root,
     )
     send_json(
         handler,
@@ -711,7 +748,13 @@ def try_handle_ingest_drafts_post(
             or "draft.pdf"
         ).strip()
         state_obj["file_name"] = file_name
-        save_ingest_draft(settings.sqlite_path, digest, state_obj, file_name=file_name)
+        save_ingest_draft(
+            settings.sqlite_path,
+            digest,
+            state_obj,
+            file_name=file_name,
+            data_root=settings.data_root,
+        )
         send_json(
             handler,
             200,

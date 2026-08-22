@@ -167,6 +167,16 @@ class IngestNotesStatePersistenceTests(unittest.TestCase):
             "biblio_range": "240-255",
             "reicat_pages": "1-3",
             "appendix_pages": "280,300-305",
+            "appendix_sections_json": json.dumps(
+                {
+                    "sections": [
+                        {"type": "Cronologia", "pages": "280"},
+                        {"type": "Glossario", "pages": "280,300-305"},
+                    ],
+                    "splits": {"280": 0.55},
+                },
+                ensure_ascii=False,
+            ),
             "titolo": "La Grande Guida",
             "autore": "Claudio Rendina",
             "editore": "Newton",
@@ -199,7 +209,11 @@ class IngestNotesStatePersistenceTests(unittest.TestCase):
         self.assertEqual(loaded["index_range"], "301-324")
         self.assertEqual(loaded["biblio_range"], "240-255")
         self.assertEqual(loaded["reicat_pages"], "1-3")
-        self.assertEqual(loaded["appendix_pages"], "280,300-305")
+        self.assertEqual(loaded["appendix_pages"], "280, 300-305")
+        self.assertIn("Cronologia", loaded["appendix_sections_json"])
+        self.assertIn("Glossario", loaded["appendix_sections_json"])
+        self.assertIn('"280"', loaded["appendix_sections_json"])
+        self.assertIn("0.55", loaded["appendix_sections_json"])
         self.assertEqual(loaded["titolo"], "La Grande Guida")
         self.assertEqual(loaded["autore"], "Claudio Rendina")
         self.assertEqual(loaded["editore"], "Newton")

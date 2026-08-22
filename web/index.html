@@ -123,6 +123,19 @@ body { margin: 0; padding: 0; }
 .save-draft-status { margin: 0; font-size: 0.8rem; color: #9d9d9d; min-height: 1.2em; }
 .save-draft-status.is-ok { color: #6a9955; }
 .save-draft-status.is-error { color: #f48771; }
+.draft-title-card {
+  width: min(92vw, 420px);
+  padding: 1.15rem 1.25rem 1.2rem;
+  gap: 0.75rem;
+  max-height: none;
+}
+.draft-title-card .page-preview-title { margin: 0; font-size: 1.05rem; }
+.draft-title-card-hint { margin: 0; font-size: 0.82rem; color: #9d9d9d; line-height: 1.35; }
+.draft-title-card label { margin: 0; }
+.draft-title-card input[type="text"] { width: 100%; box-sizing: border-box; }
+.draft-title-card-error { margin: 0; min-height: 1.1em; font-size: 0.78rem; color: #f48771; }
+.draft-title-card-error:empty { display: none; }
+.draft-title-card-actions { display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: flex-end; margin-top: 0.25rem; }
 .pdf-workspace-bar-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; }
 .ingest-upload-banner { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem 0.85rem; margin: 0 0 0.65rem; padding: 0.55rem 0.75rem; border-radius: 8px; border: 1px solid #3e3e3e; background: #2d2d30; }
 .ingest-upload-banner.hidden { display: none; }
@@ -291,6 +304,223 @@ details.reicat-metadata[open] > summary::before { transform: rotate(90deg); }
 }
 .page-picker-thumb.is-excluded { border-color: var(--mark-remove); box-shadow: 0 0 0 1px var(--mark-remove); }
 .page-picker-thumb.is-appendix { border-color: var(--mark-appendix); box-shadow: 0 0 0 1px var(--mark-appendix); }
+.page-picker-thumb-appendix-label {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  z-index: 3;
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1.15;
+  padding: 0.14rem 0.28rem;
+  border-radius: 3px;
+  background: var(--mark-appendix, #22ff66);
+  color: #ffffff;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.page-picker-detail-appendix-label {
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px;
+  background: var(--mark-appendix, #22ff66);
+  color: #ffffff;
+  pointer-events: none;
+  max-width: calc(100% - 1.2rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+.page-picker-detail-appendix-label.hidden { display: none; }
+.page-picker-detail-appendix-label.is-split { display: none; }
+.appendix-split-overlay {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.appendix-split-overlay.hidden { display: none; }
+.appendix-split-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  margin-top: -2px;
+  background: var(--mark-appendix, #22ff66);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 1px 4px rgba(0, 0, 0, 0.35);
+  cursor: ns-resize;
+  pointer-events: auto;
+  touch-action: none;
+}
+.appendix-split-bar::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.35rem;
+  height: 1.35rem;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: var(--mark-appendix, #22ff66);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.appendix-split-bar:hover,
+.appendix-split-bar:focus {
+  height: 6px;
+  margin-top: -3px;
+}
+.appendix-split-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.16rem 0.45rem;
+  border-radius: 4px;
+  background: var(--mark-appendix, #22ff66);
+  color: #ffffff;
+  pointer-events: none;
+  max-width: calc(100% - 0.8rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+.appendix-split-label-above { top: 0.2rem; }
+.appendix-split-label-below { bottom: 0.2rem; }
+.validation-preview-appendix-label {
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px;
+  background: var(--mark-appendix, #22ff66);
+  color: #ffffff;
+  pointer-events: none;
+  max-width: calc(100% - 1.2rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.validation-preview-appendix-label.hidden { display: none; }
+details.appendix-sections {
+  border: 1px solid #3e3e3e;
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem 0.9rem;
+  background: #252526;
+}
+details.appendix-sections.hidden { display: none; }
+details.appendix-sections > summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+details.appendix-sections > summary::-webkit-details-marker { display: none; }
+details.appendix-sections > summary::before {
+  content: "▸";
+  display: inline-block;
+  transition: transform 0.12s ease;
+  color: #22ff66;
+}
+details.appendix-sections[open] > summary { margin-bottom: 0.75rem; }
+details.appendix-sections[open] > summary::before { transform: rotate(90deg); }
+.appendix-type-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0.15rem;
+}
+.appendix-type-chip {
+  border: 1px solid #3a6b4a;
+  background: rgba(34, 255, 102, 0.1);
+  color: #c8f5d4;
+  border-radius: 999px;
+  padding: 0.22rem 0.65rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.appendix-type-chip:hover,
+.appendix-type-chip:focus {
+  background: rgba(34, 255, 102, 0.22);
+  color: #ffffff;
+  border-color: #22ff66;
+}
+.appendix-sections-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.appendix-sections-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  background: #1e1e1e;
+  font-size: 0.8rem;
+  color: #d4d4d4;
+}
+.appendix-sections-list li.is-active {
+  border-color: #22ff66;
+  box-shadow: 0 0 0 1px rgba(34, 255, 102, 0.35);
+}
+.appendix-sections-list .appendix-section-pick {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.appendix-sections-list .appendix-section-type {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0.08rem 0.35rem;
+  border-radius: 3px;
+  background: #22ff66;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.appendix-sections-list .appendix-section-remove {
+  flex: 0 0 auto;
+  padding: 0.2rem 0.45rem;
+  font-size: 0.72rem;
+  background: #3a2020;
+  color: #f0c0c0;
+}
 .page-picker-thumb.is-disabled { opacity: 0.38; cursor: not-allowed; }
 .page-picker-thumb-marks {
   position: absolute;
@@ -396,7 +626,8 @@ details.reicat-metadata[open] > summary::before { transform: rotate(90deg); }
   padding: 0.35rem 0.45rem 0.45rem 0.25rem;
 }
 .page-picker-context > .reicat-metadata,
-.page-picker-context > #model-notes-fieldset {
+.page-picker-context > #model-notes-fieldset,
+.page-picker-context > #appendix-sections-fieldset {
   margin: 0;
   flex: 0 0 auto;
 }
@@ -755,6 +986,10 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
     <button type="button" id="ingest-drafts-new-btn">Nuova bozza</button>
   </div>
   <p id="ingest-drafts-status" class="ingest-drafts-status hint" aria-live="polite"></p>
+  <p class="hint" style="margin:0 0 0.65rem;font-size:0.78rem;line-height:1.35">
+    Laptop → PC potente: dopo «Salva Bozza», sul laptop <code>make drafts-pack</code>;
+    sull’altro PC copia lo ZIP e <code>make drafts-unpack</code> (dettagli in <code>data/sync/README.md</code>).
+  </p>
   <div id="ingest-drafts-list" class="ingest-drafts-list" role="list"></div>
   <div id="ingest-drafts-empty" class="ingest-drafts-empty hidden">
     <p>Nessuna bozza attiva.</p>
@@ -824,7 +1059,7 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
           <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c229" stroke-width="2"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M14 10h4M14 14h4M7 16h4"/></svg></span>
           <span class="pdf-viewer-tool-label">REICAT</span>
         </button>
-        <button type="button" class="pdf-viewer-tool" data-viewer-mode="appendix" title="Appendici — contorno verde acceso, PDF separato in raw_appendix" aria-label="Appendici">
+        <button type="button" class="pdf-viewer-tool" data-viewer-mode="appendix" title="Appendici — range tipizzati, PDF in raw_appendix/…/appendici/<tipo>/" aria-label="Appendici">
           <span class="pdf-viewer-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#22ff66" stroke-width="2"><path d="M8 4h6l4 4v12H8z"/><path d="M14 4v4h4"/><path d="M5 9v11h9"/><path d="M11 14h4M13 12v4"/></svg></span>
           <span class="pdf-viewer-tool-label">Appendici</span>
         </button>
@@ -872,10 +1107,11 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
           <p class="hint pdf-viewer-mode-hint">Clicca le miniature per selezionare le pagine editoriali. Vision cercherà ogni campo REICAT in tutte le pagine selezionate. Sovrapponibile con TOC, indice, biblio e appendici.</p>
         </div>
         <div class="pdf-viewer-mode-panel hidden" data-viewer-mode-panel="appendix">
-          <label>Pagine appendice (PDF separato)
-            <input type="text" name="appendix_pages" id="appendix-pages-input" placeholder="es. 250-260, 280, 300-305" autocomplete="off">
+          <label>Pagine appendice (sezioni tipizzate)
+            <input type="text" name="appendix_pages" id="appendix-pages-input" placeholder="es. 250-260, 280-290" autocomplete="off">
           </label>
-          <p class="hint pdf-viewer-mode-hint">Al submit crea <code>raw_appendix/appendix_&lt;nome-pdf&gt;.pdf</code>. Contorno verde. Le pagine già in TOC, indice o biblio non sono selezionabili.</p>
+          <input type="hidden" name="appendix_sections_json" id="appendix-sections-json" value="[]">
+          <p class="hint pdf-viewer-mode-hint">Seleziona un range per volta e assegna la tipologia nella colonna destra. Le pagine iniziale/finale di un’appendice possono sovrapporsi a un’altra: in anteprima compare una barra verde trascinabile. Al submit: <code>raw_appendix/&lt;pdf&gt;/appendici/&lt;tipo&gt;/appendix.pdf</code>.</p>
         </div>
         <div class="page-picker-toolbar-meta" id="pdf-viewer-meta">—</div>
       </div>
@@ -908,6 +1144,12 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
               <div class="page-picker-detail-img-wrap" id="page-picker-detail-wrap">
                 <div class="page-picker-detail-empty" id="page-picker-detail-empty">Clic sinistro per selezionare, destro per anteprima. Frecce ← → per scorrere.</div>
                 <img id="page-picker-detail-img" class="hidden" alt="">
+                <span id="page-picker-detail-appendix-label" class="page-picker-detail-appendix-label hidden" aria-hidden="true"></span>
+                <div id="page-picker-detail-appendix-split" class="appendix-split-overlay hidden" aria-hidden="true">
+                  <span class="appendix-split-label appendix-split-label-above" id="appendix-split-label-above"></span>
+                  <div class="appendix-split-bar" id="appendix-split-bar" role="slider" tabindex="0" aria-valuemin="8" aria-valuemax="92" aria-valuenow="50" aria-label="Confine verticale tra due appendici"></div>
+                  <span class="appendix-split-label appendix-split-label-below" id="appendix-split-label-below"></span>
+                </div>
                 <canvas id="annotate-canvas" class="hidden" aria-label="Canvas annotazioni"></canvas>
               </div>
               <button type="button" class="page-picker-detail-nav" id="page-picker-detail-next" title="Pagina successiva (→)" aria-label="Pagina successiva" disabled>&gt;</button>
@@ -986,6 +1228,18 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
               <label>ISBN
                 <input type="text" name="isbn">
               </label>
+            </details>
+            <details id="appendix-sections-fieldset" class="appendix-sections hidden" open>
+              <summary>Tipologia appendice</summary>
+              <label>Range selezionato
+                <input type="text" id="appendix-active-range-input" readonly placeholder="Seleziona pagine nella griglia" autocomplete="off">
+              </label>
+              <label>Tipologia
+                <input type="text" id="appendix-type-input" placeholder="es. Cronologia" autocomplete="off">
+              </label>
+              <div class="appendix-type-chips" id="appendix-type-chips" aria-label="Tipologie appendice salvate"></div>
+              <p class="hint">Scegli un suggerimento o digita una nuova tipologia e premi Invio. Le pagine di confine condivise mostrano in anteprima una barra verde trascinabile.</p>
+              <ul class="appendix-sections-list" id="appendix-sections-list" aria-label="Sezioni appendice tipizzate"></ul>
             </details>
             <fieldset id="model-notes-fieldset" class="hidden">
               <legend>Note per i modelli</legend>
@@ -1102,6 +1356,22 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
   </div>
 </div>
 
+<div id="draft-title-overlay" class="page-preview-overlay hidden" aria-hidden="true">
+  <div class="page-preview-backdrop" id="draft-title-backdrop"></div>
+  <div class="page-preview-dialog draft-title-card" role="dialog" aria-modal="true" aria-labelledby="draft-title-heading">
+    <h2 class="page-preview-title" id="draft-title-heading">Titolo della bozza</h2>
+    <p class="draft-title-card-hint">Serve il titolo REICAT per salvare e riconoscere la bozza in elenco. Puoi modificarlo dopo nei metadati.</p>
+    <label>Titolo
+      <input type="text" id="draft-title-input" placeholder="es. Storia di Roma Antica" autocomplete="off">
+    </label>
+    <p id="draft-title-error" class="draft-title-card-error" role="alert"></p>
+    <div class="draft-title-card-actions">
+      <button type="button" id="draft-title-cancel" class="secondary">Annulla</button>
+      <button type="button" id="draft-title-confirm">Salva bozza</button>
+    </div>
+  </div>
+</div>
+
 <div id="validation-preview-overlay" class="page-preview-overlay hidden" aria-hidden="true">
   <div class="page-preview-backdrop" id="validation-preview-backdrop"></div>
   <div class="page-preview-dialog validation-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="validation-preview-title">
@@ -1119,6 +1389,7 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
       <div class="page-preview-img-wrap validation-preview-img-wrap">
         <div class="validation-preview-frame" id="validation-preview-frame">
           <img class="page-preview-img" id="validation-preview-img" alt="">
+          <span id="validation-preview-appendix-label" class="validation-preview-appendix-label hidden" aria-hidden="true"></span>
           <span class="page-picker-thumb-marks" aria-hidden="true">
             <span class="page-picker-thumb-mark page-picker-thumb-mark-toc hidden" id="validation-preview-mark-toc"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8eef" stroke-width="2"><path d="M5 6h3M5 12h3M5 18h3"/><path d="M11 6h8M11 12h6M11 18h7"/><circle cx="6.5" cy="6" r="1.2" fill="#3d8eef" stroke="none"/><circle cx="6.5" cy="12" r="1.2" fill="#3d8eef" stroke="none"/><circle cx="6.5" cy="18" r="1.2" fill="#3d8eef" stroke="none"/></svg></span>
             <span class="page-picker-thumb-mark page-picker-thumb-mark-index hidden" id="validation-preview-mark-index"><svg viewBox="0 0 24 24" fill="none" stroke="#b88bff" stroke-width="2"><path d="M5 6h9M5 12h11M5 18h8"/><path d="M17 5l2 2-2 2M19 15l-2 2 2 2"/><path d="M19 7v2M17 17h2"/></svg></span>
@@ -2002,6 +2273,7 @@ if (document.readyState === "loading") {
       "biblio_range",
       "reicat_pages",
       "appendix_pages",
+      "appendix_sections_json",
     ];
     var reicatFields = [
       "titolo",
@@ -2037,16 +2309,16 @@ if (document.readyState === "loading") {
     }
     for (i = 0; i < reicatFields.length; i++) {
       var reicatName = reicatFields[i];
-      if (!Object.prototype.hasOwnProperty.call(state, reicatName)) continue;
       var reicatEl = formEl.elements[reicatName];
       if (!reicatEl) continue;
-      var reicatVal = state[reicatName];
+      var reicatVal = Object.prototype.hasOwnProperty.call(state, reicatName) ? state[reicatName] : "";
       reicatEl.value = reicatVal == null ? "" : String(reicatVal);
     }
     if (typeof syncTocPagePickerSelectionFromField === "function") syncTocPagePickerSelectionFromField();
     if (typeof syncIndexPagePickerSelectionFromField === "function") syncIndexPagePickerSelectionFromField();
     if (typeof syncBiblioPagePickerSelectionFromField === "function") syncBiblioPagePickerSelectionFromField();
-    if (typeof syncAppendixPagePickerSelectionFromField === "function") syncAppendixPagePickerSelectionFromField();
+    if (typeof restoreAppendixSectionsFromHidden === "function") restoreAppendixSectionsFromHidden();
+    else if (typeof syncAppendixPagePickerSelectionFromField === "function") syncAppendixPagePickerSelectionFromField();
     if (typeof syncReicatPagePickerSelectionFromField === "function") syncReicatPagePickerSelectionFromField();
     if (typeof syncPagePickerSelectionFromField === "function") syncPagePickerSelectionFromField();
     if (typeof sanitizeExclusiveIndexOverlaps === "function") sanitizeExclusiveIndexOverlaps();
@@ -2063,7 +2335,7 @@ if (document.readyState === "loading") {
   var INGEST_NOTES_DRAFT_PREFIX = "librarain.ingestNotes.draft.";
   var INGEST_NOTES_FIELD_NAMES = [
     "notes", "index_notes", "page_notes", "ai_page_guidance",
-    "pages_to_remove", "toc_range", "index_range", "biblio_range", "reicat_pages", "appendix_pages",
+    "pages_to_remove", "toc_range", "index_range", "biblio_range", "reicat_pages", "appendix_pages", "appendix_sections_json",
     "titolo", "sottotitolo", "complementi_del_titolo", "autore", "curatore", "traduttore",
     "numero_edizione", "anno_di_pubblicazione", "tipo_di_pubblicazione", "luogo_di_pubblicazione",
     "editore", "numero_pagine", "titolo_collana", "numero_nella_collana", "isbn",
@@ -2093,6 +2365,22 @@ if (document.readyState === "loading") {
       biblio_range: "",
       reicat_pages: "",
       appendix_pages: "",
+      appendix_sections_json: JSON.stringify({ sections: [], splits: {} }),
+      titolo: "",
+      sottotitolo: "",
+      complementi_del_titolo: "",
+      autore: "",
+      curatore: "",
+      traduttore: "",
+      numero_edizione: "",
+      anno_di_pubblicazione: "",
+      tipo_di_pubblicazione: "",
+      luogo_di_pubblicazione: "",
+      editore: "",
+      numero_pagine: "",
+      titolo_collana: "",
+      numero_nella_collana: "",
+      isbn: "",
     };
   }
   function collectIngestNotesState() {
@@ -2195,6 +2483,12 @@ if (document.readyState === "loading") {
     var opts = options || {};
     var ask = opts.ask !== false;
     if (!sha) return false;
+    // Cambio libro/bozza: azzera subito il form (incl. REICAT) prima del restore,
+    // così i metadati del PDF precedente non restano visibili se lo state nuovo è vuoto.
+    if (currentIngestNotesSha && currentIngestNotesSha !== sha) {
+      currentIngestNotesSha = "";
+      applyIngestNotesState(emptyIngestNotesState());
+    }
     currentIngestNotesSha = sha;
     var draft = readIngestNotesDraft(sha);
     var serverState = null;
@@ -2352,6 +2646,15 @@ if (document.readyState === "loading") {
       reicatLastSelected: reicatPagePickerState.lastSelected,
       appendixSelected: Object.assign({}, appendixPagePickerState.selected),
       appendixLastSelected: appendixPagePickerState.lastSelected,
+      appendixSections: (appendixSectionsState.sections || []).map(function (section) {
+        return {
+          id: section.id,
+          type: section.type,
+          pages: (section.pages || []).slice(),
+        };
+      }),
+      appendixActiveId: appendixSectionsState.activeId,
+      appendixSplits: Object.assign({}, appendixSectionsState.splits || {}),
       viewerMode: viewerMode,
     };
   }
@@ -2391,6 +2694,23 @@ if (document.readyState === "loading") {
     appendixPagePickerState.selected = Object.assign({}, snap.appendixSelected || {});
     appendixPagePickerState.lastSelected = snap.appendixLastSelected || null;
     appendixPagePickerState.syncing = false;
+    if (typeof appendixSectionsState !== "undefined") {
+      appendixSectionsState.sections = Array.isArray(snap.appendixSections)
+        ? snap.appendixSections.map(function (section) {
+            return {
+              id: section.id || newAppendixSectionId(),
+              type: String(section.type || "").trim(),
+              pages: Array.isArray(section.pages) ? section.pages.slice() : [],
+            };
+          }).filter(function (section) {
+            return section.type && section.pages.length;
+          })
+        : [];
+      appendixSectionsState.activeId = snap.appendixActiveId || null;
+      appendixSectionsState.splits = Object.assign({}, snap.appendixSplits || {});
+      if (typeof ensureAppendixSplitsForSharedPages === "function") ensureAppendixSplitsForSharedPages();
+      if (typeof writeAppendixSectionsHidden === "function") writeAppendixSectionsHidden();
+    }
     pagesToRemoveInput.value = pagesToSpec(selectedPagesList());
     tocRangeInput.value = pagesToSpec(tocSelectedPagesList());
     indexRangeInput.value = pagesToSpec(indexSelectedPagesList());
@@ -2404,6 +2724,7 @@ if (document.readyState === "loading") {
     sanitizeExclusiveIndexOverlaps();
     syncExclusiveIndexFields();
     refreshViewerThumbUi();
+    if (typeof refreshAppendixSectionsPanel === "function") refreshAppendixSectionsPanel();
     renderPagePickerDetail(detailPageToShow(viewerMode));
   }
 
@@ -2883,7 +3204,7 @@ if (document.readyState === "loading") {
   function draftDisplayTitle(draft) {
     var title = String((draft && draft.title) || "").trim();
     if (title) return title;
-    var fileName = String((draft && draft.file_name) || "").trim();
+    var fileName = String((draft && draft.file_name) || "").trim().replace(/\.pdf$/i, "");
     if (fileName) return fileName;
     return "Senza titolo";
   }
@@ -2951,14 +3272,94 @@ if (document.readyState === "loading") {
     return "";
   }
 
-  function ensureDraftTitleOrPrompt(state) {
+  var draftTitleOverlay = document.getElementById("draft-title-overlay");
+  var draftTitleInput = document.getElementById("draft-title-input");
+  var draftTitleError = document.getElementById("draft-title-error");
+  var draftTitleConfirm = document.getElementById("draft-title-confirm");
+  var draftTitleCancel = document.getElementById("draft-title-cancel");
+  var draftTitleBackdrop = document.getElementById("draft-title-backdrop");
+  var draftTitlePromptResolver = null;
+
+  function closeDraftTitleFlashcard(result) {
+    if (!draftTitleOverlay) return;
+    draftTitleOverlay.classList.add("hidden");
+    draftTitleOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    var resolve = draftTitlePromptResolver;
+    draftTitlePromptResolver = null;
+    if (typeof resolve === "function") resolve(result == null ? null : result);
+  }
+
+  function openDraftTitleFlashcard(suggested) {
+    return new Promise(function (resolve) {
+      if (!draftTitleOverlay || !draftTitleInput) {
+        resolve(null);
+        return;
+      }
+      if (draftTitlePromptResolver) {
+        closeDraftTitleFlashcard(null);
+      }
+      draftTitlePromptResolver = resolve;
+      if (draftTitleError) draftTitleError.textContent = "";
+      draftTitleInput.value = String(suggested || "").trim();
+      draftTitleOverlay.classList.remove("hidden");
+      draftTitleOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      setTimeout(function () {
+        draftTitleInput.focus();
+        draftTitleInput.select();
+      }, 0);
+    });
+  }
+
+  function bindDraftTitleFlashcard() {
+    if (!draftTitleOverlay || draftTitleOverlay.dataset.bound === "1") return;
+    draftTitleOverlay.dataset.bound = "1";
+    function confirmTitle() {
+      var title = String((draftTitleInput && draftTitleInput.value) || "").trim();
+      if (!title) {
+        if (draftTitleError) draftTitleError.textContent = "Inserisci un titolo per salvare la bozza.";
+        if (draftTitleInput) draftTitleInput.focus();
+        return;
+      }
+      closeDraftTitleFlashcard(title);
+    }
+    if (draftTitleConfirm) draftTitleConfirm.addEventListener("click", confirmTitle);
+    if (draftTitleCancel) {
+      draftTitleCancel.addEventListener("click", function () {
+        closeDraftTitleFlashcard(null);
+      });
+    }
+    if (draftTitleBackdrop) {
+      draftTitleBackdrop.addEventListener("click", function () {
+        closeDraftTitleFlashcard(null);
+      });
+    }
+    if (draftTitleInput) {
+      draftTitleInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          confirmTitle();
+        } else if (event.key === "Escape") {
+          event.preventDefault();
+          closeDraftTitleFlashcard(null);
+        }
+      });
+    }
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+      if (!draftTitleOverlay || draftTitleOverlay.classList.contains("hidden")) return;
+      event.preventDefault();
+      closeDraftTitleFlashcard(null);
+    });
+  }
+  bindDraftTitleFlashcard();
+
+  async function ensureDraftTitleOrPrompt(state) {
     var title = String((state && state.titolo) || "").trim();
     if (title) return title;
     var suggested = currentPdfDisplayName().replace(/\.pdf$/i, "").trim();
-    var entered = window.prompt(
-      "Inserisci il titolo del libro per salvare la bozza:",
-      suggested || ""
-    );
+    var entered = await openDraftTitleFlashcard(suggested);
     if (entered == null) return null; // annullato
     title = String(entered || "").trim();
     if (!title) {
@@ -3000,24 +3401,25 @@ if (document.readyState === "loading") {
     if (saveDraftBusy) return;
     saveDraftBusy = true;
     syncSaveDraftButton();
-    setSaveDraftStatus("Salvataggio bozza (PDF incluso)…", "");
     flushIngestNotesDraft();
     try {
       var state = collectIngestNotesState();
-      var title = ensureDraftTitleOrPrompt(state);
+      if (!String(state.titolo || "").trim()) {
+        setSaveDraftStatus("Inserisci il titolo per salvare la bozza…", "");
+      } else {
+        setSaveDraftStatus("Salvataggio bozza (PDF incluso)…", "");
+      }
+      var title = await ensureDraftTitleOrPrompt(state);
       if (!title) {
-        setSaveDraftStatus(
-          String((saveDraftStatus && saveDraftStatus.textContent) || "").indexOf("Titolo") === 0
-            ? saveDraftStatus.textContent
-            : "Salvataggio annullato.",
-          String((saveDraftStatus && saveDraftStatus.textContent) || "").indexOf("Titolo") === 0 ? "error" : ""
-        );
+        setSaveDraftStatus("Salvataggio annullato: manca il titolo.", "");
         return;
       }
-      var fileName = currentPdfDisplayName();
+      setSaveDraftStatus("Salvataggio bozza (PDF incluso)…", "");
+      var fileName = currentPdfDisplayName() || (pagePickerState.pdfFile && pagePickerState.pdfFile.name) || "draft.pdf";
+      state.file_name = fileName;
       var fd = new FormData();
       fd.append("state_json", JSON.stringify(state));
-      fd.append("file_name", fileName || "draft.pdf");
+      fd.append("file_name", fileName);
       fd.append("titolo", title);
 
       var activeItem = ingestQueue.length ? ingestQueue[currentQueueIndex] : null;
@@ -3414,8 +3816,19 @@ if (document.readyState === "loading") {
       if (show) reicatAutoreInput.setAttribute("required", "");
       else reicatAutoreInput.removeAttribute("required");
     }
-    // DX slot: REICAT XOR notes — when REICAT is on, force-hide notes; when off, re-sync notes visibility.
-    if (show) {
+    var appendixFs = document.getElementById("appendix-sections-fieldset");
+    var showAppendix = mode === "appendix";
+    if (appendixFs) {
+      var appendixWasHidden = appendixFs.classList.contains("hidden");
+      appendixFs.classList.toggle("hidden", !showAppendix);
+      if (showAppendix && appendixWasHidden) appendixFs.open = true;
+      if (showAppendix && typeof refreshAppendixSectionsPanel === "function") {
+        refreshAppendixSectionsPanel();
+        if (typeof ensureAppendixTypesCatalogLoaded === "function") ensureAppendixTypesCatalogLoaded();
+      }
+    }
+    // DX slot: REICAT XOR appendix XOR notes
+    if (show || showAppendix) {
       var notesFs = document.getElementById("model-notes-fieldset");
       var mdFs = document.getElementById("md-formatting-fieldset");
       if (notesFs) notesFs.classList.add("hidden");
@@ -3529,10 +3942,22 @@ if (document.readyState === "loading") {
       var hasIndex = !!indexPagePickerState.selected[pageNum];
       var hasBiblio = !!(biblioPagePickerState && biblioPagePickerState.selected[pageNum]);
       var hasReicat = !!reicatPagePickerState.selected[pageNum];
-      var hasAppendix = !!(appendixPagePickerState && appendixPagePickerState.selected[pageNum]);
+      var hasAppendix = !!(appendixOwnedPagesSet && appendixOwnedPagesSet()[pageNum]);
+      var appendixType = hasAppendix && typeof appendixTypeForPage === "function" ? appendixTypeForPage(pageNum) : "";
       var hasAnnotate = pageHasAnnotations(pageNum);
       btn.classList.toggle("is-excluded", isExcluded);
       btn.classList.toggle("is-appendix", hasAppendix && !isExcluded);
+      var appendixLabel = btn.querySelector(".page-picker-thumb-appendix-label");
+      if (appendixType && !isExcluded) {
+        if (!appendixLabel) {
+          appendixLabel = document.createElement("span");
+          appendixLabel.className = "page-picker-thumb-appendix-label";
+          btn.appendChild(appendixLabel);
+        }
+        appendixLabel.textContent = appendixType;
+      } else if (appendixLabel) {
+        appendixLabel.remove();
+      }
       var tocMark = btn.querySelector(".page-picker-thumb-mark-toc");
       var indexMark = btn.querySelector(".page-picker-thumb-mark-index");
       var biblioMark = btn.querySelector(".page-picker-thumb-mark-biblio");
@@ -3860,6 +4285,7 @@ if (document.readyState === "loading") {
     if (tocPagePickerState.selected[pageNum]) return "toc";
     if (indexPagePickerState.selected[pageNum]) return "index";
     if (biblioPagePickerState.selected[pageNum]) return "biblio";
+    if (appendixOwnedPagesSet && appendixOwnedPagesSet()[pageNum]) return "appendix";
     if (appendixPagePickerState && appendixPagePickerState.selected[pageNum]) return "appendix";
     return null;
   }
@@ -3895,6 +4321,16 @@ if (document.readyState === "loading") {
     strip(indexPagePickerState);
     strip(biblioPagePickerState);
     strip(appendixPagePickerState);
+    if (typeof appendixSectionsState !== "undefined" && appendixSectionsState.sections) {
+      for (var s = 0; s < appendixSectionsState.sections.length; s++) {
+        appendixSectionsState.sections[s].pages = (appendixSectionsState.sections[s].pages || []).filter(function (p) {
+          return !(counts[p] > 1);
+        });
+      }
+      appendixSectionsState.sections = appendixSectionsState.sections.filter(function (sec) {
+        return (sec.pages || []).length > 0;
+      });
+    }
   }
 
   function reicatSelectedPagesList() {
@@ -3987,17 +4423,203 @@ if (document.readyState === "loading") {
   }
 
   var appendixPagesInput = document.getElementById("appendix-pages-input");
+  var appendixSectionsJsonInput = document.getElementById("appendix-sections-json");
+  var appendixActiveRangeInput = document.getElementById("appendix-active-range-input");
+  var appendixTypeInput = document.getElementById("appendix-type-input");
+  var appendixTypeChips = document.getElementById("appendix-type-chips");
+  var appendixSectionsList = document.getElementById("appendix-sections-list");
+  var pagePickerDetailAppendixLabel = document.getElementById("page-picker-detail-appendix-label");
   var appendixPagePickerState = {
     selected: {},
     lastSelected: null,
     syncing: false,
   };
+  var appendixSectionsState = {
+    sections: [],
+    activeId: null,
+    catalog: [],
+    catalogLoaded: false,
+    nextId: 1,
+    splits: {},
+  };
+  var appendixSplitOverlay = document.getElementById("page-picker-detail-appendix-split");
+  var appendixSplitBar = document.getElementById("appendix-split-bar");
+  var appendixSplitLabelAbove = document.getElementById("appendix-split-label-above");
+  var appendixSplitLabelBelow = document.getElementById("appendix-split-label-below");
+  var appendixSplitDrag = {
+    active: false,
+    page: null,
+    pointerId: null,
+  };
 
-  function appendixSelectedPagesList() {
+  function newAppendixSectionId() {
+    var id = "ax" + appendixSectionsState.nextId;
+    appendixSectionsState.nextId += 1;
+    return id;
+  }
+
+  function appendixWorkingPagesList() {
     return Object.keys(appendixPagePickerState.selected)
       .map(function (k) { return parseInt(k, 10); })
       .filter(function (p) { return p >= 1; })
       .sort(function (a, b) { return a - b; });
+  }
+
+  function appendixOwnedPagesSet() {
+    var set = {};
+    var i;
+    var j;
+    for (i = 0; i < appendixSectionsState.sections.length; i++) {
+      var pages = appendixSectionsState.sections[i].pages || [];
+      for (j = 0; j < pages.length; j++) set[pages[j]] = true;
+    }
+    var working = appendixWorkingPagesList();
+    for (i = 0; i < working.length; i++) set[working[i]] = true;
+    return set;
+  }
+
+  function appendixSelectedPagesList() {
+    return Object.keys(appendixOwnedPagesSet())
+      .map(function (k) { return parseInt(k, 10); })
+      .filter(function (p) { return p >= 1; })
+      .sort(function (a, b) { return a - b; });
+  }
+
+  function appendixSectionsForPage(pageNum) {
+    var p = parseInt(pageNum, 10);
+    var out = [];
+    for (var i = 0; i < appendixSectionsState.sections.length; i++) {
+      var section = appendixSectionsState.sections[i];
+      if ((section.pages || []).indexOf(p) >= 0) out.push(section);
+    }
+    return out;
+  }
+
+  function appendixSectionForPage(pageNum) {
+    var owners = appendixSectionsForPage(pageNum);
+    return owners.length ? owners[0] : null;
+  }
+
+  function isAppendixBoundaryPage(pageNum, section) {
+    var pages = (section && section.pages) || [];
+    if (!pages.length) return false;
+    var p = parseInt(pageNum, 10);
+    return pages[0] === p || pages[pages.length - 1] === p;
+  }
+
+  function appendixTypeForPage(pageNum) {
+    var owners = appendixSectionsForPage(pageNum);
+    if (!owners.length) return "";
+    var names = [];
+    for (var i = 0; i < owners.length; i++) {
+      var name = String(owners[i].type || "").trim();
+      if (name && names.indexOf(name) < 0) names.push(name);
+    }
+    return names.join(" · ");
+  }
+
+  function resolveAppendixSplitPair(pageNum) {
+    var owners = appendixSectionsForPage(pageNum);
+    if (owners.length < 2) return null;
+    var p = parseInt(pageNum, 10);
+    var ending = null;
+    var starting = null;
+    var i;
+    for (i = 0; i < owners.length; i++) {
+      var pages = owners[i].pages || [];
+      if (!pages.length) continue;
+      if (pages[pages.length - 1] === p && !ending) ending = owners[i];
+      if (pages[0] === p && !starting) starting = owners[i];
+    }
+    if (ending && starting && ending.id !== starting.id) {
+      return { above: ending, below: starting };
+    }
+    var sorted = owners.slice().sort(function (a, b) {
+      var a0 = (a.pages && a.pages[0]) || 0;
+      var b0 = (b.pages && b.pages[0]) || 0;
+      if (a0 !== b0) return a0 - b0;
+      return String(a.type || "").localeCompare(String(b.type || ""), "it");
+    });
+    return { above: sorted[0], below: sorted[1] };
+  }
+
+  function clampAppendixSplitRatio(ratio) {
+    var value = Number(ratio);
+    if (!(value >= 0) || !(value <= 1)) return 0.5;
+    return Math.min(0.92, Math.max(0.08, value));
+  }
+
+  function getAppendixSplitRatio(pageNum) {
+    var key = String(pageNum);
+    if (Object.prototype.hasOwnProperty.call(appendixSectionsState.splits, key)) {
+      return clampAppendixSplitRatio(appendixSectionsState.splits[key]);
+    }
+    return 0.5;
+  }
+
+  function setAppendixSplitRatio(pageNum, ratio) {
+    var pair = resolveAppendixSplitPair(pageNum);
+    if (!pair) {
+      delete appendixSectionsState.splits[String(pageNum)];
+      return;
+    }
+    appendixSectionsState.splits[String(pageNum)] = clampAppendixSplitRatio(ratio);
+    writeAppendixSectionsHidden();
+    scheduleIngestNotesDraftSave();
+  }
+
+  function ensureAppendixSplitsForSharedPages() {
+    var counts = {};
+    var i;
+    var j;
+    for (i = 0; i < appendixSectionsState.sections.length; i++) {
+      var pages = appendixSectionsState.sections[i].pages || [];
+      for (j = 0; j < pages.length; j++) {
+        counts[pages[j]] = (counts[pages[j]] || 0) + 1;
+      }
+    }
+    var nextSplits = {};
+    Object.keys(counts).forEach(function (key) {
+      if (counts[key] < 2) return;
+      nextSplits[key] = Object.prototype.hasOwnProperty.call(appendixSectionsState.splits, key)
+        ? clampAppendixSplitRatio(appendixSectionsState.splits[key])
+        : 0.5;
+    });
+    appendixSectionsState.splits = nextSplits;
+  }
+
+  function serializeAppendixSections() {
+    ensureAppendixSplitsForSharedPages();
+    return {
+      sections: appendixSectionsState.sections.map(function (section) {
+        return {
+          type: section.type,
+          pages: pagesToSpec(section.pages || []),
+        };
+      }),
+      splits: appendixSectionsState.splits,
+    };
+  }
+
+  function writeAppendixSectionsHidden() {
+    if (!appendixSectionsJsonInput) return;
+    appendixSectionsJsonInput.value = JSON.stringify(serializeAppendixSections());
+  }
+
+  function parseAppendixSectionsPayload(raw) {
+    var parsed = null;
+    if (raw) {
+      try { parsed = JSON.parse(raw); } catch (_) { parsed = null; }
+    }
+    var items = [];
+    var splits = {};
+    if (Array.isArray(parsed)) {
+      items = parsed;
+    } else if (parsed && typeof parsed === "object") {
+      items = Array.isArray(parsed.sections) ? parsed.sections : [];
+      if (parsed.splits && typeof parsed.splits === "object") splits = parsed.splits;
+    }
+    return { items: items, splits: splits };
   }
 
   function syncAppendixPagePickerFieldFromSelection() {
@@ -4005,20 +4627,75 @@ if (document.readyState === "loading") {
     appendixPagePickerState.syncing = true;
     appendixPagesInput.value = pagesToSpec(appendixSelectedPagesList());
     appendixPagePickerState.syncing = false;
+    writeAppendixSectionsHidden();
+    refreshAppendixSectionsPanel();
     scheduleIngestNotesDraftSave();
+  }
+
+  function restoreAppendixSectionsFromHidden() {
+    var raw = appendixSectionsJsonInput ? String(appendixSectionsJsonInput.value || "").trim() : "";
+    var payload = parseAppendixSectionsPayload(raw);
+    appendixSectionsState.sections = [];
+    appendixSectionsState.activeId = null;
+    appendixSectionsState.splits = {};
+    for (var i = 0; i < payload.items.length; i++) {
+      var item = payload.items[i];
+      if (!item || typeof item !== "object") continue;
+      var typeName = String(item.type || "").trim();
+      if (!typeName) continue;
+      var pages = tryParsePagesSpec(String(item.pages || item.pages_spec || ""));
+      if (!pages || !pages.length) continue;
+      appendixSectionsState.sections.push({
+        id: newAppendixSectionId(),
+        type: typeName,
+        pages: pages.slice(),
+      });
+    }
+    Object.keys(payload.splits || {}).forEach(function (key) {
+      var page = parseInt(key, 10);
+      if (!(page >= 1)) return;
+      appendixSectionsState.splits[String(page)] = clampAppendixSplitRatio(payload.splits[key]);
+    });
+    ensureAppendixSplitsForSharedPages();
+    // Legacy: appendix_pages senza sezioni tipizzate → selezione di lavoro senza tipo.
+    if (!appendixSectionsState.sections.length && appendixPagesInput) {
+      var legacy = tryParsePagesSpec(appendixPagesInput.value);
+      appendixPagePickerState.selected = {};
+      if (legacy) {
+        for (var li = 0; li < legacy.length; li++) appendixPagePickerState.selected[legacy[li]] = true;
+        appendixPagePickerState.lastSelected = legacy.length ? legacy[legacy.length - 1] : null;
+      }
+    } else {
+      appendixPagePickerState.selected = {};
+      appendixPagePickerState.lastSelected = null;
+    }
+    writeAppendixSectionsHidden();
+    refreshAppendixSectionsPanel();
+    refreshViewerThumbUi();
+    syncDetailAppendixLabel(pagePickerDetailPage);
   }
 
   function syncAppendixPagePickerSelectionFromField() {
     if (!appendixPagesInput || appendixPagePickerState.syncing) return;
+    // Il campo testo rappresenta l'unione; la fonte tipizzata è appendix_sections_json.
+    // Qui aggiorniamo solo se non ci sono sezioni tipizzate (legacy / editing manuale).
+    if (appendixSectionsState.sections.length) {
+      appendixPagePickerState.syncing = true;
+      appendixPagesInput.value = pagesToSpec(appendixSelectedPagesList());
+      appendixPagePickerState.syncing = false;
+      return;
+    }
     var parsed = tryParsePagesSpec(appendixPagesInput.value);
     var excluded = getExcludedPagesSet();
     appendixPagePickerState.syncing = true;
     appendixPagePickerState.selected = {};
     if (parsed) {
       for (var i = 0; i < parsed.length; i++) {
-        if (!excluded[parsed[i]] && !isExclusiveIndexBlocked(parsed[i], "appendix")) appendixPagePickerState.selected[parsed[i]] = true;
+        if (!excluded[parsed[i]] && !isExclusiveIndexBlocked(parsed[i], "appendix")) {
+          appendixPagePickerState.selected[parsed[i]] = true;
+        }
       }
-      var selected = appendixSelectedPagesList();
+      var selected = appendixWorkingPagesList();
       appendixPagePickerState.lastSelected = selected.length ? selected[selected.length - 1] : null;
     } else if (!String(appendixPagesInput.value || "").trim()) {
       appendixPagePickerState.lastSelected = null;
@@ -4029,12 +4706,366 @@ if (document.readyState === "loading") {
     syncAppendixPagePickerFieldFromSelection();
   }
 
+  function refreshAppendixSectionsPanel() {
+    var working = appendixWorkingPagesList();
+    var rangeSpec = pagesToSpec(working);
+    if (appendixActiveRangeInput) appendixActiveRangeInput.value = rangeSpec;
+    if (appendixTypeInput && document.activeElement !== appendixTypeInput) {
+      var active = null;
+      if (appendixSectionsState.activeId) {
+        for (var i = 0; i < appendixSectionsState.sections.length; i++) {
+          if (appendixSectionsState.sections[i].id === appendixSectionsState.activeId) {
+            active = appendixSectionsState.sections[i];
+            break;
+          }
+        }
+      }
+      appendixTypeInput.value = active && active.type ? active.type : "";
+    }
+    if (appendixTypeChips) {
+      appendixTypeChips.innerHTML = "";
+      var catalog = appendixSectionsState.catalog || [];
+      for (var c = 0; c < catalog.length; c++) {
+        var name = String(catalog[c].name || "").trim();
+        if (!name) continue;
+        var chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "appendix-type-chip";
+        chip.textContent = name;
+        chip.title = "Applica tipologia \"" + name + "\"";
+        chip.addEventListener("click", (function (typeName) {
+          return function () { commitAppendixType(typeName); };
+        })(name));
+        appendixTypeChips.appendChild(chip);
+      }
+      if (!catalog.length) {
+        var emptyHint = document.createElement("span");
+        emptyHint.className = "hint";
+        emptyHint.textContent = "Nessuna tipologia salvata ancora.";
+        appendixTypeChips.appendChild(emptyHint);
+      }
+    }
+    if (appendixSectionsList) {
+      appendixSectionsList.innerHTML = "";
+      for (var s = 0; s < appendixSectionsState.sections.length; s++) {
+        var section = appendixSectionsState.sections[s];
+        var li = document.createElement("li");
+        if (section.id === appendixSectionsState.activeId) li.classList.add("is-active");
+        var pick = document.createElement("button");
+        pick.type = "button";
+        pick.className = "appendix-section-pick";
+        pick.innerHTML =
+          '<span class="appendix-section-type">' + escapeHtmlText(section.type) + "</span>" +
+          '<span>' + escapeHtmlText(pagesToSpec(section.pages || [])) + "</span>";
+        pick.addEventListener("click", (function (sectionId) {
+          return function () { focusAppendixSection(sectionId); };
+        })(section.id));
+        var remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "appendix-section-remove";
+        remove.textContent = "Rimuovi";
+        remove.addEventListener("click", (function (sectionId) {
+          return function () { removeAppendixSection(sectionId); };
+        })(section.id));
+        li.appendChild(pick);
+        li.appendChild(remove);
+        appendixSectionsList.appendChild(li);
+      }
+    }
+    syncDetailAppendixLabel(pagePickerDetailPage);
+  }
+
+  function escapeHtmlText(text) {
+    return String(text || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function focusAppendixSection(sectionId) {
+    var section = null;
+    for (var i = 0; i < appendixSectionsState.sections.length; i++) {
+      if (appendixSectionsState.sections[i].id === sectionId) {
+        section = appendixSectionsState.sections[i];
+        break;
+      }
+    }
+    if (!section) return;
+    appendixSectionsState.activeId = section.id;
+    appendixPagePickerState.selected = {};
+    for (var j = 0; j < section.pages.length; j++) appendixPagePickerState.selected[section.pages[j]] = true;
+    appendixPagePickerState.lastSelected = section.pages.length ? section.pages[section.pages.length - 1] : null;
+    if (appendixTypeInput) appendixTypeInput.value = section.type || "";
+    refreshViewerThumbUi();
+    syncAppendixPagePickerFieldFromSelection();
+    if (appendixPagePickerState.lastSelected) renderPagePickerDetail(appendixPagePickerState.lastSelected);
+    if (appendixTypeInput) appendixTypeInput.focus();
+  }
+
+  function removeAppendixSection(sectionId) {
+    appendixSectionsState.sections = appendixSectionsState.sections.filter(function (s) {
+      return s.id !== sectionId;
+    });
+    ensureAppendixSplitsForSharedPages();
+    if (appendixSectionsState.activeId === sectionId) {
+      appendixSectionsState.activeId = null;
+      appendixPagePickerState.selected = {};
+      appendixPagePickerState.lastSelected = null;
+      if (appendixTypeInput) appendixTypeInput.value = "";
+    }
+    refreshViewerThumbUi();
+    syncAppendixPagePickerFieldFromSelection();
+  }
+
+  function getDetailImageContentRect() {
+    if (!pagePickerDetailWrap || !pagePickerDetailImg || pagePickerDetailImg.classList.contains("hidden")) {
+      return null;
+    }
+    if (!pagePickerDetailImg.naturalWidth) return null;
+    var wrapRect = pagePickerDetailWrap.getBoundingClientRect();
+    var imgRect = pagePickerDetailImg.getBoundingClientRect();
+    if (!(imgRect.width > 0) || !(imgRect.height > 0)) return null;
+    return {
+      left: imgRect.left - wrapRect.left + pagePickerDetailWrap.scrollLeft,
+      top: imgRect.top - wrapRect.top + pagePickerDetailWrap.scrollTop,
+      width: imgRect.width,
+      height: imgRect.height,
+    };
+  }
+
+  function syncDetailAppendixSplit(pageNum) {
+    if (!appendixSplitOverlay || !appendixSplitBar) return;
+    var pair = pageNum ? resolveAppendixSplitPair(pageNum) : null;
+    if (!pair) {
+      appendixSplitOverlay.classList.add("hidden");
+      appendixSplitOverlay.setAttribute("aria-hidden", "true");
+      return;
+    }
+    var rect = getDetailImageContentRect();
+    if (!rect) {
+      appendixSplitOverlay.classList.add("hidden");
+      appendixSplitOverlay.setAttribute("aria-hidden", "true");
+      return;
+    }
+    var ratio = getAppendixSplitRatio(pageNum);
+    appendixSplitOverlay.classList.remove("hidden");
+    appendixSplitOverlay.setAttribute("aria-hidden", "false");
+    appendixSplitOverlay.style.left = rect.left + "px";
+    appendixSplitOverlay.style.top = rect.top + "px";
+    appendixSplitOverlay.style.width = rect.width + "px";
+    appendixSplitOverlay.style.height = rect.height + "px";
+    appendixSplitBar.style.top = (ratio * 100) + "%";
+    appendixSplitBar.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
+    if (appendixSplitLabelAbove) appendixSplitLabelAbove.textContent = pair.above.type || "";
+    if (appendixSplitLabelBelow) appendixSplitLabelBelow.textContent = pair.below.type || "";
+  }
+
+  function syncDetailAppendixLabel(pageNum) {
+    if (!pagePickerDetailAppendixLabel) return;
+    var pair = pageNum ? resolveAppendixSplitPair(pageNum) : null;
+    if (pair) {
+      pagePickerDetailAppendixLabel.classList.add("hidden");
+      pagePickerDetailAppendixLabel.classList.add("is-split");
+      pagePickerDetailAppendixLabel.textContent = "";
+      syncDetailAppendixSplit(pageNum);
+      return;
+    }
+    pagePickerDetailAppendixLabel.classList.remove("is-split");
+    var typeName = pageNum ? appendixTypeForPage(pageNum) : "";
+    if (typeName) {
+      pagePickerDetailAppendixLabel.textContent = typeName;
+      pagePickerDetailAppendixLabel.classList.remove("hidden");
+    } else {
+      pagePickerDetailAppendixLabel.textContent = "";
+      pagePickerDetailAppendixLabel.classList.add("hidden");
+    }
+    syncDetailAppendixSplit(null);
+  }
+
+  function updateAppendixSplitFromClientY(clientY) {
+    if (!appendixSplitDrag.active || !appendixSplitDrag.page) return;
+    var rect = getDetailImageContentRect();
+    if (!rect || !(rect.height > 0)) return;
+    var wrapRect = pagePickerDetailWrap.getBoundingClientRect();
+    var y = clientY - wrapRect.top - rect.top + pagePickerDetailWrap.scrollTop;
+    var ratio = clampAppendixSplitRatio(y / rect.height);
+    setAppendixSplitRatio(appendixSplitDrag.page, ratio);
+    syncDetailAppendixSplit(appendixSplitDrag.page);
+  }
+
+  function bindAppendixSplitInteractions() {
+    if (!appendixSplitBar || appendixSplitBar.dataset.bound === "1") return;
+    appendixSplitBar.dataset.bound = "1";
+    appendixSplitBar.addEventListener("pointerdown", function (event) {
+      if (!pagePickerDetailPage || !resolveAppendixSplitPair(pagePickerDetailPage)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      appendixSplitDrag.active = true;
+      appendixSplitDrag.page = pagePickerDetailPage;
+      appendixSplitDrag.pointerId = event.pointerId;
+      try { appendixSplitBar.setPointerCapture(event.pointerId); } catch (_) {}
+      updateAppendixSplitFromClientY(event.clientY);
+    });
+    appendixSplitBar.addEventListener("pointermove", function (event) {
+      if (!appendixSplitDrag.active) return;
+      if (appendixSplitDrag.pointerId != null && event.pointerId !== appendixSplitDrag.pointerId) return;
+      event.preventDefault();
+      updateAppendixSplitFromClientY(event.clientY);
+    });
+    function endSplitDrag(event) {
+      if (!appendixSplitDrag.active) return;
+      if (appendixSplitDrag.pointerId != null && event && event.pointerId !== appendixSplitDrag.pointerId) return;
+      appendixSplitDrag.active = false;
+      appendixSplitDrag.pointerId = null;
+      if (event && event.pointerId != null) {
+        try { appendixSplitBar.releasePointerCapture(event.pointerId); } catch (_) {}
+      }
+    }
+    appendixSplitBar.addEventListener("pointerup", endSplitDrag);
+    appendixSplitBar.addEventListener("pointercancel", endSplitDrag);
+    appendixSplitBar.addEventListener("keydown", function (event) {
+      if (!pagePickerDetailPage || !resolveAppendixSplitPair(pagePickerDetailPage)) return;
+      var delta = 0;
+      if (event.key === "ArrowUp") delta = -0.02;
+      else if (event.key === "ArrowDown") delta = 0.02;
+      else if (event.key === "Home") {
+        setAppendixSplitRatio(pagePickerDetailPage, 0.08);
+        syncDetailAppendixSplit(pagePickerDetailPage);
+        event.preventDefault();
+        return;
+      } else if (event.key === "End") {
+        setAppendixSplitRatio(pagePickerDetailPage, 0.92);
+        syncDetailAppendixSplit(pagePickerDetailPage);
+        event.preventDefault();
+        return;
+      } else return;
+      event.preventDefault();
+      setAppendixSplitRatio(pagePickerDetailPage, getAppendixSplitRatio(pagePickerDetailPage) + delta);
+      syncDetailAppendixSplit(pagePickerDetailPage);
+    });
+    window.addEventListener("resize", function () {
+      if (pagePickerDetailPage) syncDetailAppendixSplit(pagePickerDetailPage);
+    });
+  }
+  bindAppendixSplitInteractions();
+
+  async function ensureAppendixTypesCatalogLoaded(force) {
+    if (appendixSectionsState.catalogLoaded && !force) return;
+    try {
+      var res = await fetch("/api/ingest/appendix-types");
+      var data = await res.json().catch(function () { return {}; });
+      if (!res.ok || !data.ok) throw new Error(data.error || ("HTTP " + res.status));
+      appendixSectionsState.catalog = Array.isArray(data.items) ? data.items : [];
+      appendixSectionsState.catalogLoaded = true;
+      refreshAppendixSectionsPanel();
+    } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("appendix types catalog failed", err);
+    }
+  }
+
+  async function persistAppendixTypeToCatalog(typeName) {
+    var cleaned = String(typeName || "").trim();
+    if (!cleaned) return;
+    try {
+      var res = await fetch("/api/ingest/appendix-types", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: cleaned }),
+      });
+      var data = await res.json().catch(function () { return {}; });
+      if (!res.ok || !data.ok) throw new Error(data.error || ("HTTP " + res.status));
+      var item = data.item || { name: cleaned };
+      var found = false;
+      for (var i = 0; i < appendixSectionsState.catalog.length; i++) {
+        if (String(appendixSectionsState.catalog[i].name || "").toLowerCase() === String(item.name || "").toLowerCase()) {
+          appendixSectionsState.catalog[i] = item;
+          found = true;
+          break;
+        }
+      }
+      if (!found) appendixSectionsState.catalog.push(item);
+      appendixSectionsState.catalog.sort(function (a, b) {
+        return String(a.name || "").localeCompare(String(b.name || ""), "it", { sensitivity: "base" });
+      });
+      refreshAppendixSectionsPanel();
+    } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("appendix type persist failed", err);
+    }
+  }
+
+  function commitAppendixType(typeName) {
+    var cleaned = String(typeName || "").trim();
+    if (!cleaned) return;
+    var pages = appendixWorkingPagesList();
+    if (!pages.length) {
+      if (appendixTypeInput) appendixTypeInput.focus();
+      return;
+    }
+    // Se si modifica una sezione attiva, sostituiscila; altrimenti conserva overlap
+    // (pagine iniziali/finali condivise con altre appendici).
+    if (appendixSectionsState.activeId) {
+      appendixSectionsState.sections = appendixSectionsState.sections.filter(function (section) {
+        return section.id !== appendixSectionsState.activeId;
+      });
+    }
+    var section = {
+      id: appendixSectionsState.activeId || newAppendixSectionId(),
+      type: cleaned,
+      pages: pages.slice(),
+    };
+    appendixSectionsState.sections.push(section);
+    appendixSectionsState.sections.sort(function (a, b) {
+      return (a.pages[0] || 0) - (b.pages[0] || 0);
+    });
+    ensureAppendixSplitsForSharedPages();
+    appendixSectionsState.activeId = null;
+    appendixPagePickerState.selected = {};
+    appendixPagePickerState.lastSelected = pages[pages.length - 1] || null;
+    if (appendixTypeInput) appendixTypeInput.value = "";
+    persistAppendixTypeToCatalog(cleaned);
+    refreshViewerThumbUi();
+    syncAppendixPagePickerFieldFromSelection();
+    if (appendixPagePickerState.lastSelected) renderPagePickerDetail(appendixPagePickerState.lastSelected);
+  }
+
   function toggleAppendixPagePickerSelection(pageNum) {
     var excluded = getExcludedPagesSet();
     if (pageNum < 1 || pageNum > pagePickerState.numPages || excluded[pageNum]) return;
-    if (appendixPagePickerState.selected[pageNum]) delete appendixPagePickerState.selected[pageNum];
-    else {
+    var owners = appendixSectionsForPage(pageNum);
+    var working = appendixWorkingPagesList();
+    if (owners.length && !appendixPagePickerState.selected[pageNum] && working.length === 0) {
+      // Interno di un’appendice → apri quella sezione; pagina di confine → nuova selezione (overlap).
+      var interiorOnly = owners.every(function (section) {
+        return !isAppendixBoundaryPage(pageNum, section);
+      });
+      if (interiorOnly) {
+        focusAppendixSection(owners[0].id);
+        return;
+      }
+    }
+    if (appendixPagePickerState.selected[pageNum]) {
+      delete appendixPagePickerState.selected[pageNum];
+      if (appendixSectionsState.activeId) {
+        var active = null;
+        for (var i = 0; i < appendixSectionsState.sections.length; i++) {
+          if (appendixSectionsState.sections[i].id === appendixSectionsState.activeId) {
+            active = appendixSectionsState.sections[i];
+            break;
+          }
+        }
+        if (active) {
+          active.pages = (active.pages || []).filter(function (p) { return p !== pageNum; });
+          if (!active.pages.length) removeAppendixSection(active.id);
+          else ensureAppendixSplitsForSharedPages();
+        }
+      }
+    } else {
       if (isExclusiveIndexBlocked(pageNum, "appendix")) return;
+      if (appendixSectionsState.activeId && !owners.length) {
+        appendixSectionsState.activeId = null;
+        if (appendixTypeInput) appendixTypeInput.value = "";
+      }
       appendixPagePickerState.selected[pageNum] = true;
     }
     appendixPagePickerState.lastSelected = pageNum;
@@ -4046,7 +5077,13 @@ if (document.readyState === "loading") {
   function resetAppendixPagePicker() {
     appendixPagePickerState.selected = {};
     appendixPagePickerState.lastSelected = null;
+    appendixSectionsState.sections = [];
+    appendixSectionsState.activeId = null;
+    appendixSectionsState.splits = {};
     if (appendixPagesInput) appendixPagesInput.value = "";
+    if (appendixSectionsJsonInput) appendixSectionsJsonInput.value = JSON.stringify({ sections: [], splits: {} });
+    if (appendixTypeInput) appendixTypeInput.value = "";
+    refreshAppendixSectionsPanel();
     refreshViewerThumbUi();
     if (viewerMode === "appendix") renderPagePickerDetail(null);
   }
@@ -4057,14 +5094,37 @@ if (document.readyState === "loading") {
       return;
     }
     var excluded = getExcludedPagesSet();
-    var selected = appendixSelectedPagesList().filter(function (p) { return !excluded[p]; });
+    var i;
+    for (i = 0; i < appendixSectionsState.sections.length; i++) {
+      appendixSectionsState.sections[i].pages = (appendixSectionsState.sections[i].pages || [])
+        .filter(function (p) { return !excluded[p] && p >= 1 && p <= pagePickerState.numPages; });
+    }
+    appendixSectionsState.sections = appendixSectionsState.sections.filter(function (s) {
+      return (s.pages || []).length > 0;
+    });
+    ensureAppendixSplitsForSharedPages();
+    var selected = appendixWorkingPagesList().filter(function (p) { return !excluded[p]; });
     appendixPagePickerState.selected = {};
-    for (var i = 0; i < selected.length; i++) appendixPagePickerState.selected[selected[i]] = true;
+    for (i = 0; i < selected.length; i++) appendixPagePickerState.selected[selected[i]] = true;
     if (selected.length) appendixPagePickerState.lastSelected = selected[selected.length - 1];
     else if (appendixPagePickerState.lastSelected && excluded[appendixPagePickerState.lastSelected]) {
       appendixPagePickerState.lastSelected = null;
     }
     syncAppendixPagePickerFieldFromSelection();
+  }
+
+  if (appendixTypeInput) {
+    appendixTypeInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        commitAppendixType(appendixTypeInput.value);
+      }
+    });
+    appendixTypeInput.addEventListener("change", function () {
+      if (String(appendixTypeInput.value || "").trim() && appendixWorkingPagesList().length) {
+        commitAppendixType(appendixTypeInput.value);
+      }
+    });
   }
 
   function makeFallbackThumb(pageNum) {
@@ -4665,10 +5725,12 @@ if (document.readyState === "loading") {
   function applyDetailImage(url) {
     if (!url) return;
     if (pagePickerDetailImg.getAttribute("src") === url) {
+      if (typeof syncDetailAppendixLabel === "function") syncDetailAppendixLabel(pagePickerDetailPage);
       notifyPageGuidanceDetailChange();
       return;
     }
     pagePickerDetailImg.onload = function () {
+      if (typeof syncDetailAppendixLabel === "function") syncDetailAppendixLabel(pagePickerDetailPage);
       notifyPageGuidanceDetailChange();
     };
     pagePickerDetailImg.src = url;
@@ -4683,6 +5745,7 @@ if (document.readyState === "loading") {
       pagePickerDetailEmpty.classList.remove("hidden");
       pagePickerDetailImg.removeAttribute("src");
       syncPagePickerDetailNav();
+      if (typeof syncDetailAppendixLabel === "function") syncDetailAppendixLabel(null);
       notifyPageGuidanceDetailChange();
       return;
     }
@@ -4691,6 +5754,7 @@ if (document.readyState === "loading") {
     pagePickerDetailEmpty.classList.add("hidden");
     pagePickerDetailImg.classList.remove("hidden");
     syncPagePickerDetailNav();
+    if (typeof syncDetailAppendixLabel === "function") syncDetailAppendixLabel(pageNum);
     if (pagePickerState.detailCache[pageNum]) {
       applyDetailImage(pagePickerState.detailCache[pageNum]);
       prefetchAdjacentDetails(pageNum);
@@ -5148,6 +6212,9 @@ if (document.readyState === "loading") {
     if (!file || !file.size) return;
     var expectedDraftSha = String(pendingOpenDraftSha || "").trim().toLowerCase();
     flushIngestNotesDraft();
+    // Stacca lo sha corrente prima del clear, così non si riscrive una bozza vuota sul PDF precedente.
+    currentIngestNotesSha = "";
+    applyIngestNotesState(emptyIngestNotesState());
     resetPagePickerState();
     pagePickerState.pdfFile = file;
     var loadGen = pagePickerState.loadGen;
@@ -5306,8 +6373,16 @@ if (document.readyState === "loading") {
   reicatPagesInput.addEventListener("input", syncReicatPagePickerSelectionFromField);
   reicatPagesInput.addEventListener("change", syncReicatPagePickerSelectionFromField);
   if (appendixPagesInput) {
-    appendixPagesInput.addEventListener("input", syncAppendixPagePickerSelectionFromField);
-    appendixPagesInput.addEventListener("change", syncAppendixPagePickerSelectionFromField);
+    appendixPagesInput.addEventListener("input", function () {
+      if (appendixPagePickerState.syncing) return;
+      if (!appendixSectionsState.sections.length) syncAppendixPagePickerSelectionFromField();
+      else syncAppendixPagePickerFieldFromSelection();
+    });
+    appendixPagesInput.addEventListener("change", function () {
+      if (appendixPagePickerState.syncing) return;
+      if (!appendixSectionsState.sections.length) syncAppendixPagePickerSelectionFromField();
+      else syncAppendixPagePickerFieldFromSelection();
+    });
   }
   document.addEventListener("input", function (event) {
     var t = event.target;
@@ -6281,7 +7356,8 @@ if (document.readyState === "loading") {
         index: !!indexPagePickerState.selected[p],
         biblio: !!(biblioPagePickerState && biblioPagePickerState.selected[p]),
         reicat: !!reicatPagePickerState.selected[p],
-        appendix: !!(appendixPagePickerState && appendixPagePickerState.selected[p]),
+        appendix: !!(typeof appendixOwnedPagesSet === "function" && appendixOwnedPagesSet()[p]),
+        appendixType: typeof appendixTypeForPage === "function" ? appendixTypeForPage(p) : "",
         annotate: pageHasAnnotations(p),
       });
     }
@@ -6294,7 +7370,7 @@ if (document.readyState === "loading") {
     if (entry.index) bits.push("Indice");
     if (entry.biblio) bits.push("Biblio");
     if (entry.reicat) bits.push("REICAT");
-    if (entry.appendix) bits.push("Appendici");
+    if (entry.appendix) bits.push(entry.appendixType ? ("Appendici: " + entry.appendixType) : "Appendici");
     if (entry.annotate) bits.push("Annota");
     return bits;
   }
@@ -6324,6 +7400,16 @@ if (document.readyState === "loading") {
     validationPreviewMarkReicat.classList.toggle("hidden", !entry.reicat);
     if (validationPreviewMarkAnnotate) validationPreviewMarkAnnotate.classList.toggle("hidden", !entry.annotate);
     if (validationPreviewFrame) validationPreviewFrame.classList.toggle("is-appendix", !!entry.appendix);
+    var validationAppendixLabel = document.getElementById("validation-preview-appendix-label");
+    if (validationAppendixLabel) {
+      if (entry.appendix && entry.appendixType) {
+        validationAppendixLabel.textContent = entry.appendixType;
+        validationAppendixLabel.classList.remove("hidden");
+      } else {
+        validationAppendixLabel.textContent = "";
+        validationAppendixLabel.classList.add("hidden");
+      }
+    }
     try {
       var url = await ensureDetailCached(entry.original);
       if (loadGen !== validationPreviewState.loadGen) return;

@@ -104,6 +104,8 @@ make setup-env        # crea venv, installa torch (MPS/CUDA/CPU) e dipendenze
 make test             # 256+ test unitari
 make lint             # ruff su src/, tests/, scripts/
 make run-server       # HTTP server su http://127.0.0.1:8765
+make drafts-pack      # ZIP bozze (JSON+PDF) per passaggio laptop → PC potente
+make drafts-unpack    # importa lo ZIP sull’altro PC (vedi data/sync/README.md)
 ```
 
 CI GitHub Actions (`.github/workflows/ci.yml`): lint + test su ogni push/PR.

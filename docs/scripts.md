@@ -38,6 +38,19 @@ Ordina chiavi/voci in `INDEX.json` e negli `INDEX.md` per libro. Supporta `--dry
 
 CLI interattiva per unire range di pagine da PDF diversi in un unico file (utility offline, non collegata all'API).
 
+### `draft_sync`
+
+Esporta/importa bozze ingest tra PC. Preferisci i target Makefile:
+
+```bash
+make drafts-export   # JSON in data/sync/
+make drafts-import   # JSON → SQLite
+make drafts-pack     # ZIP con JSON + PDF
+make drafts-unpack   # ZIP → DB + PDF (argomento ZIP opzionale)
+```
+
+Vedi `data/sync/README.md`. All’avvio di `make run-server` i JSON in `data/sync/` vengono anche importati automaticamente.
+
 ## Quando usarli
 
 | Situazione | Script |
@@ -47,3 +60,4 @@ CLI interattiva per unire range di pagine da PDF diversi in un unico file (utili
 | SQLite non allineato ai manifest | `backfill_books_from_manifest` |
 | Indici disordinati dopo merge manuali | `sort_index_files` |
 | Backup prima di operazioni distruttive | `backup_data` |
+| Passaggio bozze laptop → PC potente | `draft_sync` (`make drafts-pack` / `drafts-unpack`) |

@@ -9,7 +9,7 @@ VENV_PYTHON = $(firstword $(wildcard venv/Scripts/python.exe venv/bin/python.exe
 # Preferisce il Python del venv se presente (dopo setup-env).
 PYTHON ?= $(if $(VENV_PYTHON),$(VENV_PYTHON),$(PY))
 
-.PHONY: check-python setup-env finish-env install-torch test lint clean-pycache run-server run-mock-server
+.PHONY: check-python setup-env finish-env install-torch test lint clean-pycache run-server run-mock-server drafts-export drafts-import drafts-pack drafts-unpack
 
 check-python:
 	$(PY) -c "import sys; sys.exit('Python 3.11+ required (see pyproject.toml requires-python)' if sys.version_info < (3, 11) else 0)"
@@ -41,6 +41,19 @@ run-server:
 
 run-mock-server:
 	"$(PYTHON)" web/mockup/server.py
+
+# Sync bozze laptop ↔ workstation (metadati JSON + ZIP con PDF)
+drafts-export:
+	"$(PYTHON)" -m scripts.draft_sync export
+
+drafts-import:
+	"$(PYTHON)" -m scripts.draft_sync import
+
+drafts-pack:
+	"$(PYTHON)" -m scripts.draft_sync pack
+
+drafts-unpack:
+	"$(PYTHON)" -m scripts.draft_sync unpack
 
 clean-pycache:
 	"$(PYTHON)" -c "import pathlib, shutil; [shutil.rmtree(path, ignore_errors=True) for path in pathlib.Path('.').rglob('__pycache__')]"

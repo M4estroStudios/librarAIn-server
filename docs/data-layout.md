@@ -10,7 +10,11 @@ data/
 │   └── biblioteca.db              # SQLite: books, runs, embeddings
 ├── input/
 │   ├── raw/                       # PDF originali caricati dall'operatore
-│   ├── raw_appendix/              # PDF appendici estratte (appendix_<nome>.pdf)
+│   ├── raw_appendix/              # Appendici estratte tipizzate
+│   │   └── <stem-pdf>/
+│   │       └── appendici/
+│   │           └── <tipologia>/   # es. cronologia/
+│   │               └── appendix.pdf
 │   └── processed/
 │       └── <source_sha256>.pdf    # PDF allineato (pagine rimosse)
 ├── output/
@@ -75,7 +79,9 @@ Vedi [polyindex.md](polyindex.md) e [research.md](research.md).
 
 ## Cosa è in git
 
-Storicamente molti output sotto `data/output/` e `data/research/` sono tracciati. `.gitignore` esclude tipicamente `data/input/`, `data/tmp/`, `data/db/`, `data/polyindex/`, `backup/`. Verificare `.gitignore` prima di aggiungere nuovi alberi.
+- Codice e docs.
+- **`data/sync/`**: metadati bozze (`drafts/*.json`, `appendix_types.json`) per passaggio laptop ↔ workstation. I PDF delle bozze **non** sono in git: usa `make drafts-pack` / `make drafts-unpack` (vedi `data/sync/README.md`).
+- Tipicamente **non** versionati: `data/db/`, `data/input/`, `data/tmp/`, `data/log/`, `data/polyindex/`, output MD di ingest.
 
 ## Backup
 

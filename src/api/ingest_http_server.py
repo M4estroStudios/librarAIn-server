@@ -27,6 +27,14 @@ from src.api.admin_subject_dedup import (
     try_handle_admin_subject_dedup_get,
     try_handle_admin_subject_dedup_post,
 )
+from src.api.appendix_types import (
+    appendix_sections_from_form,
+    extract_typed_appendix_pdfs,
+    try_handle_appendix_types_get,
+    try_handle_appendix_types_post,
+    upsert_appendix_type,
+)
+from src.persistence.draft_sync import bootstrap_draft_sync
 from src.api.biblio_http import try_handle_biblio_get, try_handle_biblio_post
 from src.api.chat_completions_handler import handle_chat_completions
 from src.api.etaly_export_handler import build_etaly_export_routes
@@ -105,7 +113,7 @@ from src.core.hashing import compute_file_sha256, new_job_id
 from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit, shutdown_log_flush
 from src.core.openai_client import use_compute_mode
 from src.models.settings import normalize_compute_mode
-from src.ingestion.pdf_alignment import extract_pages_to_pdf, merge_pdf_paths
+from src.ingestion.pdf_alignment import merge_pdf_paths
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
 from src.models.request import IngestInputErrorCode, IngestInputValidationError, IngestInputValidationException
@@ -466,6 +474,14 @@ def build_ingest_server(
                 self,
                 query,
                 settings=settings,
+                send_json=_send_json,
+            ):
+                return
+
+            if try_handle_appendix_types_get(
+                path,
+                self,
+                sqlite_path=_settings_sqlite_path(settings),
                 send_json=_send_json,
             ):
                 return
@@ -1926,6 +1942,15 @@ def build_ingest_server(
                 safe_filename=_safe_filename,
             ):
                 return
+            if try_handle_appendix_types_post(
+                parsed.path,
+                self,
+                sqlite_path=_settings_sqlite_path(settings),
+                send_json=_send_json,
+                read_body=_read_body,
+                data_root=data_root,
+            ):
+                return
             if parsed.path == "/api/ingest/notes-state":
                 self._handle_ingest_notes_lookup_post()
                 return
@@ -2191,11 +2216,12 @@ def build_ingest_server(
                 alias_shas=notes_alias_shas,
             ) or notes_source_sha256
 
-            appendix_path: Path | None = None
+            appendix_paths: list[Path] = []
+            appendix_sections_raw = (text_fields.get("appendix_sections_json") or "").strip()
             appendix_pages_raw = (text_fields.get("appendix_pages") or "").strip()
-            if appendix_pages_raw:
+            if appendix_sections_raw or appendix_pages_raw:
                 try:
-                    appendix_pages = _parse_pages_spec(appendix_pages_raw)
+                    appendix_sections = appendix_sections_from_form(text_fields)
                 except InvalidPagesSpec as exc:
                     saved_path.unlink(missing_ok=True)
                     Log(WARNING_LOG_LEVEL, "ingest appendix pages invalid", {"error": str(exc)})
@@ -2203,23 +2229,33 @@ def build_ingest_server(
                         self,
                         IngestInputErrorCode.INPUT_SCHEMA_INVALID,
                         str(exc),
-                        "appendix_pages",
+                        "appendix_sections_json" if appendix_sections_raw else "appendix_pages",
                     )
                     return
-                if appendix_pages:
+                if appendix_sections:
                     appendix_stem = Path(
                         _safe_filename(uploaded.filename or "upload.pdf")
                     ).stem or "upload"
-                    appendix_path = (
-                        data_root / "input" / "raw_appendix" / f"appendix_{appendix_stem}.pdf"
-                    )
                     try:
-                        appendix_count = extract_pages_to_pdf(
-                            saved_path, appendix_pages, appendix_path
+                        written = extract_typed_appendix_pdfs(
+                            saved_path,
+                            appendix_sections,
+                            data_root=data_root,
+                            book_stem=appendix_stem,
                         )
+                        for item in written:
+                            appendix_paths.append(Path(item["path"]))
+                            try:
+                                upsert_appendix_type(
+                                    _settings_sqlite_path(settings),
+                                    str(item.get("type") or ""),
+                                )
+                            except ValueError:
+                                pass
                     except ValueError as exc:
                         saved_path.unlink(missing_ok=True)
-                        appendix_path.unlink(missing_ok=True)
+                        for path in appendix_paths:
+                            path.unlink(missing_ok=True)
                         Log(
                             WARNING_LOG_LEVEL,
                             "ingest appendix pdf extract failed",
@@ -2229,16 +2265,23 @@ def build_ingest_server(
                             self,
                             IngestInputErrorCode.PDF_ALIGNMENT_FAILED,
                             str(exc),
-                            "appendix_pages",
+                            "appendix_sections_json" if appendix_sections_raw else "appendix_pages",
                         )
                         return
                     Log(
                         INFO_LOG_LEVEL,
-                        "ingest appendix PDF saved",
+                        "ingest appendix PDFs saved",
                         {
-                            "path": str(appendix_path),
-                            "pages": appendix_count,
-                            "bytes": appendix_path.stat().st_size,
+                            "count": len(written),
+                            "items": [
+                                {
+                                    "type": item.get("type"),
+                                    "slug": item.get("slug"),
+                                    "path": item.get("path"),
+                                    "pages": item.get("page_count"),
+                                }
+                                for item in written
+                            ],
                         },
                     )
 
@@ -2251,8 +2294,8 @@ def build_ingest_server(
                     )
             except IngestInputValidationException as exc:
                 saved_path.unlink(missing_ok=True)
-                if appendix_path is not None:
-                    appendix_path.unlink(missing_ok=True)
+                for path in appendix_paths:
+                    path.unlink(missing_ok=True)
                 Log(WARNING_LOG_LEVEL, "ingest submit blocked by gpu vram preflight",
                     {"error": exc.detail.message})
                 _send_validation_error(
@@ -2389,6 +2432,8 @@ def run_ingest_http_server() -> None:
     research_dedup_ttl_seconds = float(
         get_env("RESEARCH_DEDUP_TTL_SECONDS", "3600")
     )
+
+    bootstrap_draft_sync(settings.sqlite_path, settings.data_root)
 
     _stop_existing_server_processes(port)
 

@@ -104,9 +104,11 @@ export function createPageGuidanceController(bridge) {
   }
 
   function shouldShowNotes() {
-    // Mutual exclusivity with REICAT in the DX context slot.
+    // Mutual exclusivity with REICAT / Appendici in the DX context slot.
     const reicat = document.getElementById("reicat-metadata-fieldset");
     if (reicat && !reicat.classList.contains("hidden")) return false;
+    const appendix = document.getElementById("appendix-sections-fieldset");
+    if (appendix && !appendix.classList.contains("hidden")) return false;
     const page = bridge.getDetailPage();
     return !!state.active || anyPageHasElements() || pageHasTextAnnotations(page);
   }
