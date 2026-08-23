@@ -1,4 +1,7 @@
 const SECTION_FIELDS = ["notes", "index_notes", "page_notes"];
+/** Chars kept in @tokens. Includes # / () so titles like "Capitolo (#)" stay readable; not rendered as Markdown. */
+const MENTION_TOKEN_CHAR_CLASS = "\\w.#()@\\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ";
+const MENTION_IN_TEXT_RE = new RegExp("@([" + MENTION_TOKEN_CHAR_CLASS + "]+)", "g");
 
 function escapeHtml(text) {
   return String(text || "")
@@ -12,7 +15,7 @@ function mentionToken(name) {
   const cleaned = String(name || "")
     .trim()
     .replace(/\s+/g, "_")
-    .replace(/[^\w.@\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]/g, "");
+    .replace(new RegExp("[^" + MENTION_TOKEN_CHAR_CLASS + "]", "g"), "");
   return cleaned || "elemento";
 }
 
@@ -76,7 +79,7 @@ function renderMentionHighlight(textarea) {
   const backdrop = textarea.parentElement && textarea.parentElement.querySelector(".mention-backdrop");
   if (!backdrop) return;
   const value = String(textarea.value || "");
-  const html = escapeHtml(value).replace(/@([\w.\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]+)/g, '<span class="mention-in-text">@$1</span>');
+  const html = escapeHtml(value).replace(MENTION_IN_TEXT_RE, '<span class="mention-in-text">@$1</span>');
   backdrop.innerHTML = (html || "&nbsp;") + (value.endsWith("\n") ? "<br>" : "");
   backdrop.scrollTop = textarea.scrollTop;
   backdrop.scrollLeft = textarea.scrollLeft;

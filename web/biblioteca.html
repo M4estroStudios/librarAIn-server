@@ -872,7 +872,7 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
   }
 
   function pipelineMentionToken(name) {
-    var cleaned = String(name || "").trim().replace(/\s+/g, "_").replace(/[^\w.@\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]/g, "");
+    var cleaned = String(name || "").trim().replace(/\s+/g, "_").replace(/[^\w.#()@\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]/g, "");
     return cleaned || "elemento";
   }
 
@@ -918,7 +918,7 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
       var bd = textarea.parentElement && textarea.parentElement.querySelector(".mention-backdrop");
       if (!bd) return;
       var value = String(textarea.value || "");
-      var html = esc(value).replace(/@([\w.\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]+)/g, '<span class="mention-in-text">@$1</span>');
+      var html = esc(value).replace(/@([\w.#()@\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]+)/g, '<span class="mention-in-text">@$1</span>');
       bd.innerHTML = (html || "&nbsp;") + (value.endsWith("\n") ? "<br>" : "");
       bd.scrollTop = textarea.scrollTop;
       bd.scrollLeft = textarea.scrollLeft;
@@ -1341,7 +1341,7 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
   }
 
   function annotationMentionToken(name) {
-    var cleaned = String(name || "").trim().replace(/\s+/g, "_").replace(/[^\w.@\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]/g, "");
+    var cleaned = String(name || "").trim().replace(/\s+/g, "_").replace(/[^\w.#()@\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]/g, "");
     return cleaned || "elemento";
   }
 
@@ -1349,7 +1349,7 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
     var t = annotationMentionToken(String(token || "").replace(/^@/, ""));
     if (!t) return String(text || "");
     var escTok = escapeRegExp(t);
-    var boundary = "(?![\\w.@\\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ])";
+    var boundary = "(?![\\w.#()@\\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ])";
     var out = String(text || "");
     out = out.replace(new RegExp("@p\\.\\d+\\." + escTok + boundary, "gi"), "");
     out = out.replace(new RegExp("@" + escTok + boundary, "gi"), "");
@@ -1364,7 +1364,7 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
     var backdrop = textarea.parentElement && textarea.parentElement.querySelector(".mention-backdrop");
     if (!backdrop) return;
     var value = String(textarea.value || "");
-    var html = esc(value).replace(/@([\w.\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]+)/g, '<span class="mention-in-text">@$1</span>');
+    var html = esc(value).replace(/@([\w.#()@\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ]+)/g, '<span class="mention-in-text">@$1</span>');
     backdrop.innerHTML = (html || "&nbsp;") + (value.endsWith("\n") ? "<br>" : "");
     backdrop.scrollTop = textarea.scrollTop;
     backdrop.scrollLeft = textarea.scrollLeft;
