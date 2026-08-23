@@ -510,7 +510,7 @@ details.appendix-sections[open] > summary::before { transform: rotate(90deg); }
   padding: 0.08rem 0.35rem;
   border-radius: 3px;
   background: #22ff66;
-  color: #fff;
+  color: #111;
   font-size: 0.72rem;
   font-weight: 700;
 }
@@ -582,12 +582,109 @@ details.appendix-sections[open] > summary::before { transform: rotate(90deg); }
     minmax(14rem, var(--page-picker-center))
     6px
     minmax(14rem, 1fr);
+  /* Row 2 height is driven by --page-picker-tags-row (set on drag); auto = hug chips. */
+  grid-template-rows: minmax(0, 1fr) var(--page-picker-tags-row, auto);
   gap: 0;
   width: 100%;
   min-width: 0;
   min-height: 28rem;
   height: calc(100vh - 7.5rem);
   overflow: hidden;
+}
+.page-picker-workspace > .page-picker-grid-wrap {
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 0;
+  height: 100%;
+  align-self: stretch;
+}
+.page-picker-workspace > .page-picker-splitter[data-splitter="grid"] {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 0;
+  align-self: stretch;
+}
+.page-picker-workspace > .page-picker-detail {
+  grid-column: 3;
+  grid-row: 1;
+  min-height: 0;
+  height: 100%;
+  align-self: stretch;
+}
+.page-picker-workspace > .page-picker-splitter[data-splitter="center"] {
+  grid-column: 4;
+  grid-row: 1 / -1;
+  min-height: 0;
+}
+.page-picker-workspace > .page-picker-context {
+  grid-column: 5;
+  grid-row: 1 / -1;
+  min-height: 0;
+}
+.page-picker-tags-dock {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+  background: #252526;
+  z-index: 3;
+}
+.page-picker-tags-dock.is-empty,
+.page-picker-tags-dock.hidden {
+  display: none;
+}
+.page-picker-tags-splitter {
+  flex: 0 0 6px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #3a3a3a;
+  cursor: row-resize;
+  touch-action: none;
+  position: relative;
+  z-index: 2;
+}
+.page-picker-tags-splitter:hover,
+.page-picker-tags-splitter.is-dragging,
+.page-picker-workspace.is-splitting-tags .page-picker-tags-splitter.is-dragging {
+  background: #4ec9b0;
+}
+.page-picker-tags-splitter::after {
+  content: "";
+  position: absolute;
+  inset: -0.45rem 0;
+}
+.page-picker-tags-dock-inner {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-content: flex-start;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0.35rem 0.45rem 0.45rem;
+  box-sizing: border-box;
+}
+.page-picker-tags-dock .mention-chips {
+  margin: 0;
+}
+.page-picker-tags-dock .mention-chips:not(.is-empty) {
+  display: contents;
 }
 .page-picker-splitter {
   box-sizing: border-box;
@@ -627,6 +724,7 @@ details.appendix-sections[open] > summary::before { transform: rotate(90deg); }
 }
 .page-picker-context > .reicat-metadata,
 .page-picker-context > #model-notes-fieldset,
+.page-picker-context > #md-formatting-fieldset,
 .page-picker-context > #appendix-sections-fieldset {
   margin: 0;
   flex: 0 0 auto;
@@ -1264,6 +1362,46 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
                 <textarea name="ai_page_guidance" id="ai-page-guidance" placeholder="Generato dal consiglio AI (o automaticamente al submit se vuoto); modificabile. Solo questo testo va ai modelli Vision/OCR/Editor."></textarea>
               </label>
             </fieldset>
+            <fieldset id="md-formatting-fieldset" class="hidden">
+              <legend>Formattazione Markdown del libro</legend>
+              <p class="hint">Regole MD iniettate nei prompt Vision/OCR/Editor. Se lasci vuoto un campo viene usato il default. Non fanno parte del consiglio AI.</p>
+              <label>Heading H1
+                <textarea name="md_h1">Usa `#` solo per i titoli di capitolo o voce principale della pagina (es. nome del monumento o inizio capitolo).</textarea>
+              </label>
+              <label>Heading H2/H3
+                <textarea name="md_h2_h3">Usa `##` e `###` per le intestazioni interne tipograficamente evidenti (sottosezioni, sottotitoli).</textarea>
+              </label>
+              <label>Livello massimo heading
+                <textarea name="md_max_heading">Non usare heading oltre `###`.</textarea>
+              </label>
+              <label>Didascalie immagini
+                <textarea name="md_captions">Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `&gt;`.</textarea>
+              </label>
+              <label>Titoli di opere
+                <textarea name="md_work_titles">I titoli delle opere d'arte, letterarie o musicali citati nel testo vanno in italics (`*...*` o `_..._`).</textarea>
+              </label>
+              <label>Non inventare titoli/didascalie
+                <textarea name="md_no_invent">Non inventare titoli o didascalie: applica la formattazione solo a elementi tipograficamente evidenti nella pagina.</textarea>
+              </label>
+              <label>Righe tipografiche
+                <textarea name="md_line_breaks">Rispetta le righe tipografiche della pagina: una riga stampata = una riga Markdown. Non rifondere i paragrafi in un'unica riga lunga (il MD non ha limite di larghezza). Non spezzare le parole tra righe: ricomponi le sillabazioni a capo togliendo il trattino di fine riga.</textarea>
+              </label>
+            </fieldset>
+          </div>
+          <div
+            id="page-picker-tags-dock"
+            class="page-picker-tags-dock is-empty hidden"
+            aria-label="NOTE-TAG annotazioni"
+          >
+            <div
+              class="page-picker-tags-splitter"
+              id="page-picker-tags-splitter"
+              role="separator"
+              aria-orientation="horizontal"
+              aria-label="Ridimensiona pannello NOTE-TAG"
+              tabindex="0"
+            ></div>
+            <div class="page-picker-tags-dock-inner"></div>
           </div>
         </div>
       </div>
@@ -1272,32 +1410,6 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
   </div>
 
   <div id="ingest-form-details" class="ingest-form-details hidden">
-  <fieldset id="md-formatting-fieldset" class="hidden">
-    <legend>Formattazione Markdown del libro</legend>
-    <p class="hint">Regole MD iniettate nei prompt Vision/OCR/Editor. Se lasci vuoto un campo viene usato il default. Non fanno parte del consiglio AI.</p>
-    <label>Heading H1
-      <textarea name="md_h1">Usa `#` solo per i titoli di capitolo o voce principale della pagina (es. nome del monumento o inizio capitolo).</textarea>
-    </label>
-    <label>Heading H2/H3
-      <textarea name="md_h2_h3">Usa `##` e `###` per le intestazioni interne tipograficamente evidenti (sottosezioni, sottotitoli).</textarea>
-    </label>
-    <label>Livello massimo heading
-      <textarea name="md_max_heading">Non usare heading oltre `###`.</textarea>
-    </label>
-    <label>Didascalie immagini
-      <textarea name="md_captions">Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `&gt;`.</textarea>
-    </label>
-    <label>Titoli di opere
-      <textarea name="md_work_titles">I titoli delle opere d'arte, letterarie o musicali citati nel testo vanno in italics (`*...*` o `_..._`).</textarea>
-    </label>
-    <label>Non inventare titoli/didascalie
-      <textarea name="md_no_invent">Non inventare titoli o didascalie: applica la formattazione solo a elementi tipograficamente evidenti nella pagina.</textarea>
-    </label>
-    <label>Righe tipografiche
-      <textarea name="md_line_breaks">Rispetta le righe tipografiche della pagina: una riga stampata = una riga Markdown. Non rifondere i paragrafi in un'unica riga lunga (il MD non ha limite di larghezza). Non spezzare le parole tra righe: ricomponi le sillabazioni a capo togliendo il trattino di fine riga.</textarea>
-    </label>
-  </fieldset>
-
   <fieldset>
     <legend>Opzioni</legend>
     <label class="hint" style="display:flex; gap:0.45rem; align-items:center;">
@@ -2235,6 +2347,107 @@ if (document.readyState === "loading") {
       applyCols(grid, center);
     });
   })();
+
+  (function bindPagePickerTagsSplitter() {
+    var tagsDock = document.getElementById("page-picker-tags-dock");
+    var tagsSplitter = document.getElementById("page-picker-tags-splitter");
+    if (!pagePickerWorkspace || !tagsDock || !tagsSplitter || tagsSplitter.dataset.bound === "1") return;
+    tagsSplitter.dataset.bound = "1";
+    var MIN_TAGS_H = 2.5 * 16;
+    var active = false;
+    var startY = 0;
+    var startH = 0;
+    var resizeRaf = 0;
+
+    function notifyLayout() {
+      if (resizeRaf) return;
+      resizeRaf = window.requestAnimationFrame(function () {
+        resizeRaf = 0;
+        window.dispatchEvent(new Event("resize"));
+      });
+    }
+
+    function clientYOf(ev) {
+      return ev.touches && ev.touches[0] ? ev.touches[0].clientY : ev.clientY;
+    }
+
+    function maxTagsH() {
+      var wsH = pagePickerWorkspace.getBoundingClientRect().height;
+      return Math.max(MIN_TAGS_H, Math.min(wsH * 0.7, wsH - 8 * 16));
+    }
+
+    function clearTagsRow() {
+      pagePickerWorkspace.style.removeProperty("--page-picker-tags-row");
+    }
+
+    function applyTagsH(h) {
+      var clamped = Math.max(MIN_TAGS_H, Math.min(maxTagsH(), h));
+      pagePickerWorkspace.style.setProperty("--page-picker-tags-row", Math.round(clamped) + "px");
+      notifyLayout();
+    }
+
+    function onMove(ev) {
+      if (!active) return;
+      // Drag up → taller tags row; drag down → shorter. Row 1 (grid+preview) fills the rest.
+      var dy = startY - clientYOf(ev);
+      applyTagsH(startH + dy);
+      ev.preventDefault();
+    }
+
+    function onUp() {
+      if (!active) return;
+      tagsSplitter.classList.remove("is-dragging");
+      pagePickerWorkspace.classList.remove("is-splitting-tags");
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+      active = false;
+      notifyLayout();
+    }
+
+    function onDown(ev) {
+      if (tagsDock.classList.contains("hidden") || tagsDock.classList.contains("is-empty")) return;
+      active = true;
+      startY = clientYOf(ev);
+      startH = tagsDock.getBoundingClientRect().height;
+      tagsSplitter.classList.add("is-dragging");
+      pagePickerWorkspace.classList.add("is-splitting-tags");
+      document.body.style.cursor = "row-resize";
+      document.body.style.userSelect = "none";
+      ev.preventDefault();
+    }
+
+    tagsSplitter.addEventListener("mousedown", onDown);
+    tagsSplitter.addEventListener("touchstart", onDown, { passive: false });
+    tagsSplitter.addEventListener("keydown", function (ev) {
+      if (ev.key !== "ArrowUp" && ev.key !== "ArrowDown") return;
+      if (tagsDock.classList.contains("hidden") || tagsDock.classList.contains("is-empty")) return;
+      var cur = tagsDock.getBoundingClientRect().height;
+      var step = ev.key === "ArrowUp" ? 24 : -24;
+      applyTagsH(cur + step);
+      ev.preventDefault();
+    });
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("touchmove", onMove, { passive: false });
+    window.addEventListener("mouseup", onUp);
+    window.addEventListener("touchend", onUp);
+    window.addEventListener("resize", function () {
+      var raw = pagePickerWorkspace.style.getPropertyValue("--page-picker-tags-row");
+      if (!raw) return;
+      var cur = parseFloat(raw);
+      if (!(cur > 0)) return;
+      applyTagsH(cur);
+    });
+
+    // If the dock is hidden, drop the locked row height so row 1 can reclaim space.
+    var mo = new MutationObserver(function () {
+      if (tagsDock.classList.contains("hidden") || tagsDock.classList.contains("is-empty")) {
+        clearTagsRow();
+        notifyLayout();
+      }
+    });
+    mo.observe(tagsDock, { attributes: true, attributeFilter: ["class"] });
+  })();
+
   function notifyPageGuidanceDetailChange() {
     for (var i = 0; i < pageGuidanceDetailListeners.length; i++) {
       try { pageGuidanceDetailListeners[i](pagePickerDetailPage); } catch (_) {}
@@ -3831,8 +4044,10 @@ if (document.readyState === "loading") {
     if (show || showAppendix) {
       var notesFs = document.getElementById("model-notes-fieldset");
       var mdFs = document.getElementById("md-formatting-fieldset");
+      var tagsDock = document.getElementById("page-picker-tags-dock");
       if (notesFs) notesFs.classList.add("hidden");
       if (mdFs) mdFs.classList.add("hidden");
+      if (tagsDock) tagsDock.classList.add("hidden");
     } else if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.syncNotesFieldset === "function") {
       window.__librarainPageGuidance.syncNotesFieldset();
     }

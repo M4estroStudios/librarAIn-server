@@ -17,20 +17,45 @@ function mentionToken(name) {
 }
 
 function ensureChipRows() {
+  const dock = document.getElementById("page-picker-tags-dock");
+  if (!dock) return;
+  let inner = dock.querySelector(".page-picker-tags-dock-inner");
+  if (!inner) {
+    inner = document.createElement("div");
+    inner.className = "page-picker-tags-dock-inner";
+    dock.appendChild(inner);
+  }
   SECTION_FIELDS.forEach(function (field) {
-    const textarea = document.querySelector('textarea[name="' + field + '"]');
-    if (!textarea) return;
-    const label = textarea.closest("label");
-    if (!label) return;
-    let row = label.querySelector('[data-mention-chips="' + field + '"]');
-    if (row) return;
+    let row = document.querySelector('[data-mention-chips="' + field + '"]');
+    if (row) {
+      if (row.parentElement !== inner) inner.appendChild(row);
+      return;
+    }
     row = document.createElement("div");
-    row.className = "mention-chips";
+    row.className = "mention-chips is-empty";
     row.setAttribute("data-mention-chips", field);
     row.setAttribute("aria-label", "Annotazioni @ per " + field);
-    const anchor = textarea.closest(".mention-editor") || textarea;
-    label.insertBefore(row, anchor);
+    inner.appendChild(row);
   });
+}
+
+function syncTagsDockVisibility() {
+  const dock = document.getElementById("page-picker-tags-dock");
+  if (!dock) return;
+  const wasHidden = dock.classList.contains("hidden") || dock.classList.contains("is-empty");
+  const hasChips = !!dock.querySelector(".mention-chip");
+  const notesFs = document.getElementById("model-notes-fieldset");
+  const notesVisible = !!(notesFs && !notesFs.classList.contains("hidden"));
+  dock.classList.toggle("is-empty", !hasChips);
+  dock.classList.toggle("hidden", !hasChips || !notesVisible);
+  const nowHidden = dock.classList.contains("hidden") || dock.classList.contains("is-empty");
+  if (nowHidden) {
+    const ws = document.getElementById("page-picker-workspace");
+    if (ws) ws.style.removeProperty("--page-picker-tags-row");
+  }
+  if (wasHidden !== nowHidden) {
+    window.dispatchEvent(new Event("resize"));
+  }
 }
 
 function ensureHighlightEditor(textarea) {
@@ -331,6 +356,7 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
         row.appendChild(chip);
       });
     });
+    syncTagsDockVisibility();
   }
 
   function hideMenu() {

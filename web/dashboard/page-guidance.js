@@ -124,6 +124,21 @@ export function createPageGuidanceController(bridge) {
       }
     }
     if (mdFormattingFieldset) mdFormattingFieldset.classList.toggle("hidden", !show);
+    const tagsDock = document.getElementById("page-picker-tags-dock");
+    if (tagsDock) {
+      const wasHidden = tagsDock.classList.contains("hidden") || tagsDock.classList.contains("is-empty");
+      const hasChips = !!tagsDock.querySelector(".mention-chip");
+      tagsDock.classList.toggle("is-empty", !hasChips);
+      tagsDock.classList.toggle("hidden", !show || !hasChips);
+      const nowHidden = tagsDock.classList.contains("hidden") || tagsDock.classList.contains("is-empty");
+      if (nowHidden) {
+        const ws = document.getElementById("page-picker-workspace");
+        if (ws) ws.style.removeProperty("--page-picker-tags-row");
+      }
+      if (wasHidden !== nowHidden) {
+        window.dispatchEvent(new Event("resize"));
+      }
+    }
   }
 
   function setActive(on) {
