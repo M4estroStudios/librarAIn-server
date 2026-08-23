@@ -1,6 +1,6 @@
 const SECTION_FIELDS = ["notes", "index_notes", "page_notes"];
-/** Chars kept in @tokens. Includes # / () so titles like "Capitolo (#)" stay readable; not rendered as Markdown. */
-const MENTION_TOKEN_CHAR_CLASS = "\\w.#()@\\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ";
+/** Chars kept in @tokens. Includes # / () / {} so titles like "Capitolo (#)" or "Curiosità ({})" stay readable; not rendered as Markdown. */
+const MENTION_TOKEN_CHAR_CLASS = "\\w.#(){}@\\-àáèéìíòóùúÀÁÈÉÌÍÒÓÙÚ";
 const MENTION_IN_TEXT_RE = new RegExp("@([" + MENTION_TOKEN_CHAR_CLASS + "]+)", "g");
 
 function escapeHtml(text) {

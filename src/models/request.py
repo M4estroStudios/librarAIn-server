@@ -116,9 +116,20 @@ class IngestOptions(BaseModel):
 DEFAULT_MD_H1 = "Usa `#` solo per i titoli di capitolo o voce principale della pagina (es. nome del monumento o inizio capitolo)."
 DEFAULT_MD_H2_H3 = "Usa `##` e `###` per le intestazioni interne tipograficamente evidenti (sottosezioni, sottotitoli)."
 DEFAULT_MD_MAX_HEADING = "Non usare heading oltre `###`."
-DEFAULT_MD_CAPTIONS = "Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `>`."
+DEFAULT_MD_CAPTIONS = "Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `>`. Non usare `>` per riquadri di curiosità o box laterali."
+DEFAULT_MD_ASIDES = (
+    "I riquadri tipografici di digressione (curiosità, box incorniciati scollegati dal flusso del capitolo) "
+    "vanno tra un solo livello di parentesi graffe: una riga `{` all'inizio del riquadro e una riga `}` alla fine. "
+    "Dentro il blocco: etichetta in grassetto all caps il titolo (es. `**I MAMMUTH A ROMA**`), "
+    "poi il testo del box (corsivo se in pagina è in corsivo); "
+    "non usare heading (`#`/`##`/`###`) né blockquote (`>`). Esempio:\n"
+    "`{`\n"
+    "`**TITOLO DEL RIQUADRO**`\n"
+    "`prima riga del testo`\n"
+    "`}`"
+)
 DEFAULT_MD_WORK_TITLES = "I titoli delle opere d'arte, letterarie o musicali citati nel testo vanno in italics (`*...*` o `_..._`)."
-DEFAULT_MD_NO_INVENT = "Non inventare titoli o didascalie: applica la formattazione solo a elementi tipograficamente evidenti nella pagina."
+DEFAULT_MD_NO_INVENT = "Non inventare titoli, didascalie o riquadri: applica la formattazione solo a elementi tipograficamente evidenti nella pagina."
 DEFAULT_MD_LINE_BREAKS = "Rispetta le righe tipografiche della pagina: una riga stampata = una riga Markdown. Non rifondere i paragrafi in un'unica riga lunga (il MD non ha limite di larghezza). Non spezzare le parole tra righe: ricomponi le sillabazioni a capo togliendo il trattino di fine riga."
 
 MD_FORMATTING_FIELD_DEFAULTS: dict[str, str] = {
@@ -126,6 +137,7 @@ MD_FORMATTING_FIELD_DEFAULTS: dict[str, str] = {
     "md_h2_h3": DEFAULT_MD_H2_H3,
     "md_max_heading": DEFAULT_MD_MAX_HEADING,
     "md_captions": DEFAULT_MD_CAPTIONS,
+    "md_asides": DEFAULT_MD_ASIDES,
     "md_work_titles": DEFAULT_MD_WORK_TITLES,
     "md_no_invent": DEFAULT_MD_NO_INVENT,
     "md_line_breaks": DEFAULT_MD_LINE_BREAKS,
@@ -137,6 +149,7 @@ class MdFormattingRules(BaseModel):
     md_h2_h3: str | None = None
     md_max_heading: str | None = None
     md_captions: str | None = None
+    md_asides: str | None = None
     md_work_titles: str | None = None
     md_no_invent: str | None = None
     md_line_breaks: str | None = None

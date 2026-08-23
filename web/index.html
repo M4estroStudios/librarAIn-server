@@ -1375,13 +1375,20 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
                 <textarea name="md_max_heading">Non usare heading oltre `###`.</textarea>
               </label>
               <label>Didascalie immagini
-                <textarea name="md_captions">Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `&gt;`.</textarea>
+                <textarea name="md_captions">Le didascalie e le descrizioni relative alle immagini vanno come blockquote su righe che iniziano con `&gt;`. Non usare `&gt;` per riquadri di curiosità o box laterali.</textarea>
+              </label>
+              <label>Riquadri curiosità / aside
+                <textarea name="md_asides">I riquadri tipografici di digressione (curiosità, box incorniciati scollegati dal flusso del capitolo) vanno tra un solo livello di parentesi graffe: una riga `{` all'inizio del riquadro e una riga `}` alla fine. Dentro il blocco: etichetta in grassetto all caps il titolo (es. `**I MAMMUTH A ROMA**`), poi il testo del box (corsivo se in pagina è in corsivo); non usare heading (`#`/`##`/`###`) né blockquote (`>`). Esempio:
+`{`
+`**TITOLO DEL RIQUADRO**`
+`prima riga del testo`
+`}`</textarea>
               </label>
               <label>Titoli di opere
                 <textarea name="md_work_titles">I titoli delle opere d'arte, letterarie o musicali citati nel testo vanno in italics (`*...*` o `_..._`).</textarea>
               </label>
               <label>Non inventare titoli/didascalie
-                <textarea name="md_no_invent">Non inventare titoli o didascalie: applica la formattazione solo a elementi tipograficamente evidenti nella pagina.</textarea>
+                <textarea name="md_no_invent">Non inventare titoli, didascalie o riquadri: applica la formattazione solo a elementi tipograficamente evidenti nella pagina.</textarea>
               </label>
               <label>Righe tipografiche
                 <textarea name="md_line_breaks">Rispetta le righe tipografiche della pagina: una riga stampata = una riga Markdown. Non rifondere i paragrafi in un'unica riga lunga (il MD non ha limite di larghezza). Non spezzare le parole tra righe: ricomponi le sillabazioni a capo togliendo il trattino di fine riga.</textarea>

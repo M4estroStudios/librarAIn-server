@@ -463,6 +463,7 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
         "md_h2_h3",
         "md_max_heading",
         "md_captions",
+        "md_asides",
         "md_work_titles",
         "md_no_invent",
         "md_line_breaks",
