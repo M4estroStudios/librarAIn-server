@@ -7,6 +7,7 @@ import signal
 import socket
 import subprocess
 import threading
+import time
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import sys
@@ -311,7 +312,10 @@ def _sse_write(handler: BaseHTTPRequestHandler, event_name: str, data: Any) -> b
 
 
 class ExclusiveThreadingHTTPServer(ThreadingHTTPServer):
-    allow_reuse_address = False
+    # On POSIX, SO_REUSEADDR is required to re-bind while old sockets linger in
+    # TIME_WAIT (common after a quick restart). A second live listener still fails.
+    # On Windows, keep the address exclusive so two servers cannot share the port.
+    allow_reuse_address = os.name != "nt"
 
     def server_bind(self) -> None:
         if os.name == "nt" and hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
@@ -336,7 +340,14 @@ def _listening_pids_for_port(port: int) -> set[str]:
         return pids
 
     result = subprocess.run(
-        ["sh", "-c", f"command -v lsof >/dev/null 2>&1 && lsof -ti tcp:{port} || true"],
+        [
+            "sh",
+            "-c",
+            (
+                f"command -v lsof >/dev/null 2>&1 && "
+                f"lsof -nP -iTCP:{port} -sTCP:LISTEN -t 2>/dev/null || true"
+            ),
+        ],
         capture_output=True,
         text=True,
         check=False,
@@ -344,30 +355,123 @@ def _listening_pids_for_port(port: int) -> set[str]:
     return {pid for pid in result.stdout.split() if pid.isdigit()}
 
 
-def _stop_existing_server_processes(port: int) -> None:
-    stopped: list[str] = []
-    for pid in sorted(_listening_pids_for_port(port)):
-        if pid == "0" or pid == str(os.getpid()):
+def _ingest_http_server_pids() -> set[str]:
+    if os.name == "nt":
+        return set()
+    output = subprocess.run(
+        ["ps", "-ax", "-o", "pid=,command="],
+        capture_output=True,
+        text=True,
+        errors="ignore",
+        check=False,
+    ).stdout
+    markers = ("src.api.ingest_http_server", "src/api/ingest_http_server")
+    pids: set[str] = set()
+    for line in output.splitlines():
+        stripped = line.strip()
+        if not stripped:
             continue
-        if os.name == "nt":
-            subprocess.run(
-                ["taskkill", "/PID", pid, "/F"],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                check=False,
-            )
-        else:
-            try:
-                os.kill(int(pid), signal.SIGTERM)
-            except ProcessLookupError:
-                pass
-        stopped.append(pid)
+        pid, _, command = stripped.partition(" ")
+        if pid.isdigit() and any(marker in command for marker in markers):
+            pids.add(pid)
+    return pids
+
+
+def _pid_is_alive(pid: str) -> bool:
+    if not pid.isdigit() or pid == "0":
+        return False
+    if os.name == "nt":
+        output = subprocess.run(
+            ["tasklist", "/FI", f"PID eq {pid}", "/NH"],
+            capture_output=True,
+            text=True,
+            errors="ignore",
+            check=False,
+        ).stdout
+        return pid in output
+    try:
+        os.kill(int(pid), 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except OSError:
+        return False
+    return True
+
+
+def _signal_pid(pid: str, *, force: bool) -> None:
+    if os.name == "nt":
+        subprocess.run(
+            ["taskkill", "/PID", pid, "/F"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        return
+    sig = signal.SIGKILL if force else signal.SIGTERM
+    try:
+        os.kill(int(pid), sig)
+    except ProcessLookupError:
+        pass
+
+
+def _existing_server_pids(port: int) -> set[str]:
+    current = str(os.getpid())
+    pids = _listening_pids_for_port(port) | _ingest_http_server_pids()
+    pids.discard("0")
+    pids.discard(current)
+    return pids
+
+
+def _port_is_bindable(host: str, port: int) -> bool:
+    """True if nothing is actively listening (TIME_WAIT alone is ok with SO_REUSEADDR)."""
+    if _listening_pids_for_port(port):
+        return False
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        if os.name != "nt":
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        sock.bind((host, port))
+    except OSError:
+        return False
+    finally:
+        sock.close()
+    return True
+
+
+def _stop_existing_server_processes(port: int, *, host: str = "127.0.0.1") -> None:
+    stopped = sorted(_existing_server_pids(port))
     if stopped:
+        for pid in stopped:
+            _signal_pid(pid, force=False)
+        deadline = time.monotonic() + 2.0
+        while time.monotonic() < deadline:
+            if not any(_pid_is_alive(pid) for pid in stopped) and not _listening_pids_for_port(port):
+                break
+            time.sleep(0.1)
+        remaining = [pid for pid in stopped if _pid_is_alive(pid)]
+        if remaining:
+            for pid in remaining:
+                _signal_pid(pid, force=True)
+            time.sleep(0.2)
         Log(
             INFO_LOG_LEVEL,
             "stopped existing ingest server process(es)",
             {"port": port, "pids": stopped},
         )
+
+    # Wait until the port is bindable again (listener gone; TIME_WAIT is handled via SO_REUSEADDR).
+    deadline = time.monotonic() + 3.0
+    while time.monotonic() < deadline:
+        if _port_is_bindable(host, port):
+            return
+        leftover = sorted(_existing_server_pids(port))
+        for pid in leftover:
+            _signal_pid(pid, force=True)
+        time.sleep(0.1)
+    if not _port_is_bindable(host, port):
+        raise OSError(f"port {port} still in use after stopping existing server process(es)")
 
 
 def _settings_sqlite_path(settings: Any) -> str:
@@ -2433,9 +2537,13 @@ def run_ingest_http_server() -> None:
         get_env("RESEARCH_DEDUP_TTL_SECONDS", "3600")
     )
 
+    _stop_existing_server_processes(port, host=host)
+
     bootstrap_draft_sync(settings.sqlite_path, settings.data_root)
 
-    _stop_existing_server_processes(port)
+    # Re-check immediately before bind: draft sync can take long enough for a
+    # sibling restart to grab the port, or for a slow shutdown to finish late.
+    _stop_existing_server_processes(port, host=host)
 
     httpd, _registry = build_ingest_server(
         settings,

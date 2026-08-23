@@ -4,6 +4,62 @@ const TRAIL = "#28aa6e";
 const TRAIL_START = "#1ec8ff";
 const TRAIL_END = "#ff7a1a";
 const TOOLS = { bbox: 1, point: 1, trail: 1 };
+/** F-003: system header labels (COPILOT top 15%). Not seeded into chip dock. */
+const TESTATA_PARI = "Testata Pari";
+const TESTATA_DISPARI = "Testata Dispari";
+const TOP_EDGE_FRAC = 0.15;
+/** F-004: max suggestions in body-region COPILOT (top N by page frequency). */
+const COPILOT_BODY_TOP_N = 5;
+
+function mentionTokenLocal(name) {
+  if (typeof mentionToken === "function") return mentionToken(name);
+  return String(name || "").trim().replace(/\s+/g, "_") || "elemento";
+}
+
+function isBboxInTop15(el) {
+  if (!el || el.type !== "bbox" || !el.coords || el.coords.length < 4) return false;
+  const y1 = Number(el.coords[1]);
+  const y2 = Number(el.coords[3]);
+  if (!Number.isFinite(y1) || !Number.isFinite(y2)) return false;
+  return Math.min(y1, y2) / 999 <= TOP_EDGE_FRAC;
+}
+
+function isTestataToken(token) {
+  return token === mentionTokenLocal(TESTATA_PARI) || token === mentionTokenLocal(TESTATA_DISPARI);
+}
+
+/** F-004: top N tags by page frequency, excluding testate. */
+function frequentCopilotLabels(pages) {
+  const pageKeys = Object.keys(pages || {}).filter(function (key) {
+    return (pages[key] || []).length > 0;
+  });
+  const nPages = pageKeys.length;
+  if (!nPages) return [];
+
+  const byToken = Object.create(null);
+  pageKeys.forEach(function (pageKey) {
+    const seenOnPage = Object.create(null);
+    (pages[pageKey] || []).forEach(function (el) {
+      const name = String(el && el.name || "").trim();
+      if (!name) return;
+      const token = mentionTokenLocal(name);
+      if (isTestataToken(token) || seenOnPage[token]) return;
+      seenOnPage[token] = true;
+      if (!byToken[token]) byToken[token] = { name: name, pageCount: 0 };
+      byToken[token].pageCount += 1;
+    });
+  });
+
+  const out = Object.keys(byToken).map(function (token) {
+    const entry = byToken[token];
+    return { name: entry.name, freq: entry.pageCount / nPages };
+  });
+  out.sort(function (a, b) {
+    if (b.freq !== a.freq) return b.freq - a.freq;
+    return String(a.name).localeCompare(String(b.name), "it");
+  });
+  return out.slice(0, COPILOT_BODY_TOP_N).map(function (item) { return item.name; });
+}
 
 function uid(prefix) {
   return prefix + "_" + Math.random().toString(36).slice(2, 9);
@@ -343,6 +399,28 @@ export function createPageGuidanceController(bridge) {
     return true;
   }
 
+  /** F-002: drop annotations left on a page with empty (trim) title. */
+  function removeEmptyNamedOnPage(page) {
+    const pageNum = Number(page);
+    if (!(pageNum >= 1)) return false;
+    const list = state.pages[pageNum];
+    if (!list || !list.length) return false;
+    let removedSelected = false;
+    const next = list.filter(function (el) {
+      if (String(el.name || "").trim() !== "") return true;
+      if (state.selectedId && String(el.id) === String(state.selectedId)) removedSelected = true;
+      return false;
+    });
+    if (next.length === list.length) return false;
+    if (next.length) state.pages[pageNum] = next;
+    else delete state.pages[pageNum];
+    if (removedSelected) {
+      state.selectedId = null;
+      hideNameInput();
+    }
+    return true;
+  }
+
   function deleteSelected() {
     const page = bridge.getDetailPage();
     if (!page || !state.selectedId) return false;
@@ -369,8 +447,139 @@ export function createPageGuidanceController(bridge) {
     notifyAnnotationsChange();
   }
 
+  function clientLog(message, details, level) {
+    const payload = {
+      level: level || "info",
+      message: String(message || "copilot-debug"),
+      ts: new Date().toISOString(),
+      path: String(window.location && window.location.pathname || ""),
+      details: details && typeof details === "object" ? details : { value: details },
+    };
+    try {
+      if (window.LibrarAInLog && typeof window.LibrarAInLog.info === "function") {
+        window.LibrarAInLog[level === "error" ? "error" : level === "warn" ? "warn" : "info"](
+          "copilot-debug: " + payload.message,
+          payload.details
+        );
+      }
+    } catch (_) {}
+    try {
+      const body = JSON.stringify(payload);
+      if (navigator.sendBeacon) {
+        const blob = new Blob([body], { type: "application/json" });
+        navigator.sendBeacon("/api/client-log", blob);
+        return;
+      }
+      fetch("/api/client-log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: body,
+        keepalive: true,
+      }).catch(function () {});
+    } catch (_) {}
+  }
+
+  function describeEl(node) {
+    if (!node || !node.tagName) return null;
+    return {
+      tag: String(node.tagName).toLowerCase(),
+      id: node.id || "",
+      className: typeof node.className === "string" ? node.className.slice(0, 120) : "",
+      copilotLabel: node.getAttribute && node.getAttribute("data-copilot-label") || "",
+    };
+  }
+
+  const chromeLayer = document.createElement("div");
+  chromeLayer.className = "annotate-chrome-layer hidden";
+
+  const copilotPanel = document.createElement("div");
+  copilotPanel.className = "annotate-copilot hidden";
+  copilotPanel.setAttribute("role", "group");
+  copilotPanel.setAttribute("aria-label", "COPILOT");
+
+  const copilotTitle = document.createElement("div");
+  copilotTitle.className = "annotate-copilot-title";
+  copilotTitle.textContent = "COPILOT";
+  copilotPanel.appendChild(copilotTitle);
+
+  const copilotSuggestions = document.createElement("div");
+  copilotSuggestions.className = "annotate-copilot-suggestions";
+  copilotPanel.appendChild(copilotSuggestions);
+
+  function renderCopilotButtons(labels, opts) {
+    const asTestata = !!(opts && opts.testata);
+    copilotSuggestions.textContent = "";
+    clientLog("copilot-render", { labels: labels || [], testata: asTestata });
+    (labels || []).forEach(function (label) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "annotate-copilot-btn";
+      btn.textContent = label;
+      btn.title = (asTestata ? "Testata di pagina · @" : "@") + mentionTokenLocal(label);
+      btn.setAttribute("data-copilot-label", label);
+      // Apply on pointerdown. Do NOT preventDefault on pointerdown: that suppresses
+      // subsequent mouse click events (and was making COPILOT appear dead).
+      btn.addEventListener("pointerdown", function (ev) {
+        if (ev.pointerType === "mouse" && ev.button !== 0) return;
+        ev.stopPropagation();
+        clientLog("copilot-pointerdown", {
+          label: label,
+          pointerType: ev.pointerType || "",
+          button: ev.button,
+          selectedId: state.selectedId || "",
+          nameBefore: nameInput.value || "",
+          underPoint: describeEl(document.elementFromPoint(ev.clientX, ev.clientY)),
+        });
+        const ok = applyNameFromPool(label);
+        clientLog("copilot-apply-result", {
+          label: label,
+          ok: !!ok,
+          selectedId: state.selectedId || "",
+          nameAfter: nameInput.value || "",
+        });
+      });
+      btn.addEventListener("mousedown", function (ev) {
+        // Keep title focused; safe here because apply already ran on pointerdown.
+        ev.preventDefault();
+        ev.stopPropagation();
+        clientLog("copilot-mousedown", { label: label, button: ev.button });
+      });
+      btn.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        clientLog("copilot-click", { label: label });
+      });
+      copilotSuggestions.appendChild(btn);
+    });
+  }
+
+  // Capture-phase probe: if the user clicks near the editor but the target is canvas
+  // (or something else), we see it in the server log.
+  if (!window.__librarainCopilotClickProbe) {
+    window.__librarainCopilotClickProbe = true;
+    document.addEventListener(
+      "pointerdown",
+      function (ev) {
+        const t = ev.target;
+        if (!t || !t.closest) return;
+        if (!t.closest(".annotate-chrome-layer") && !t.closest("#annotate-canvas")) return;
+        clientLog("pointerdown-probe", {
+          target: describeEl(t),
+          closestCopilot: !!t.closest(".annotate-copilot-btn"),
+          closestChrome: !!t.closest(".annotate-chrome-layer"),
+          closestTrash: !!t.closest(".annotate-trash-tab"),
+          closestCanvas: !!t.closest("#annotate-canvas"),
+          underPoint: describeEl(document.elementFromPoint(ev.clientX, ev.clientY)),
+          x: ev.clientX,
+          y: ev.clientY,
+        });
+      },
+      true
+    );
+  }
+
   const nameEditor = document.createElement("div");
-  nameEditor.className = "annotate-name-editor hidden";
+  nameEditor.className = "annotate-name-editor";
   nameEditor.setAttribute("role", "group");
   nameEditor.setAttribute("aria-label", "Titolo e descrizione annotazione");
 
@@ -392,13 +601,62 @@ export function createPageGuidanceController(bridge) {
 
   nameEditor.appendChild(nameInput);
   nameEditor.appendChild(descInput);
+
+  const trashTab = document.createElement("button");
+  trashTab.type = "button";
+  trashTab.className = "annotate-trash-tab";
+  trashTab.setAttribute("aria-label", "Elimina annotazione");
+  trashTab.title = "Elimina annotazione";
+  trashTab.innerHTML =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path fill="currentColor" d="M9 3v1H4v2h16V4h-5V3H9zm2 5v10h2V8h-2zm4 0v10h2V8h-2zM7 8v10h2V8H7zm-2 14h14V7H5v15z"/>' +
+    "</svg>";
+  trashTab.addEventListener("pointerdown", function (ev) {
+    if (ev.pointerType === "mouse" && ev.button !== 0) return;
+    ev.stopPropagation();
+  });
+  trashTab.addEventListener("mousedown", function (ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+  });
+  trashTab.addEventListener("click", function (ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    deleteSelected();
+  });
+
+  chromeLayer.appendChild(copilotPanel);
+  chromeLayer.appendChild(nameEditor);
+  chromeLayer.appendChild(trashTab);
   const wrap = bridge.getDetailWrapEl();
-  if (wrap) wrap.appendChild(nameEditor);
+  if (wrap) wrap.appendChild(chromeLayer);
 
   function hideNameInput() {
-    nameEditor.classList.add("hidden");
+    chromeLayer.classList.add("hidden");
+    copilotPanel.classList.add("hidden");
     nameInput.blur();
     descInput.blur();
+  }
+
+  function syncCopilotFor(el) {
+    // F-003: top 15% → Testata Pari/Dispari. F-004: below → top-5 frequent non-testata tags.
+    // US-4: never seed testate into chip dock.
+    if (isBboxInTop15(el)) {
+      renderCopilotButtons([TESTATA_PARI, TESTATA_DISPARI], { testata: true });
+      copilotPanel.classList.remove("hidden");
+      return;
+    }
+    if (el && el.type === "bbox") {
+      const labels = frequentCopilotLabels(state.pages);
+      if (!labels.length) {
+        copilotPanel.classList.add("hidden");
+        return;
+      }
+      renderCopilotButtons(labels);
+      copilotPanel.classList.remove("hidden");
+      return;
+    }
+    copilotPanel.classList.add("hidden");
   }
 
   function autosizeField(el, minPx, maxPx) {
@@ -412,41 +670,129 @@ export function createPageGuidanceController(bridge) {
     autosizeField(descInput, 36, 160);
   }
 
-  function editorAnchorFor(el) {
+  /** Bbox (or point/trail anchor) in wrap coordinates for chrome layout. */
+  function bboxRectInWrap(el) {
     const w = canvas.width;
     const h = canvas.height;
-    let x = 0;
-    let y = 0;
+    const ox = canvas.offsetLeft;
+    const oy = canvas.offsetTop;
+    let left = ox;
+    let top = oy;
+    let right = ox + 8;
+    let bottom = oy + 8;
     if (el.type === "bbox") {
       const p1 = fromDeepSeek(el.coords[0], el.coords[1], w, h);
       const p2 = fromDeepSeek(el.coords[2], el.coords[3], w, h);
-      x = Math.min(p1[0], p2[0]);
-      y = Math.min(p1[1], p2[1]);
+      left = ox + Math.min(p1[0], p2[0]);
+      top = oy + Math.min(p1[1], p2[1]);
+      right = ox + Math.max(p1[0], p2[0]);
+      bottom = oy + Math.max(p1[1], p2[1]);
     } else if (el.type === "point") {
       const p = fromDeepSeek(el.coords[0], el.coords[1], w, h);
-      x = p[0];
-      y = p[1];
+      left = ox + p[0] - 4;
+      top = oy + p[1] - 4;
+      right = ox + p[0] + 4;
+      bottom = oy + p[1] + 4;
     } else if (el.type === "trail" && el.coords && el.coords[0]) {
       const p = fromDeepSeek(el.coords[0][0], el.coords[0][1], w, h);
-      x = p[0];
-      y = p[1];
+      left = ox + p[0] - 4;
+      top = oy + p[1] - 4;
+      right = ox + p[0] + 4;
+      bottom = oy + p[1] + 4;
     }
-    return { x: x, y: y };
+    return {
+      left: left,
+      top: top,
+      right: right,
+      bottom: bottom,
+      width: Math.max(1, right - left),
+      height: Math.max(1, bottom - top),
+    };
+  }
+
+  function layoutChromeAround(el) {
+    if (!el || chromeLayer.classList.contains("hidden") || !wrap) return;
+    const pad = 4;
+    const gap = 4;
+    const rect = bboxRectInWrap(el);
+    const wrapW = wrap.clientWidth || 0;
+    const wrapH = wrap.clientHeight || 0;
+
+    // Notes: under bbox bottom, left-aligned; flip above if too low.
+    nameEditor.classList.remove("is-flipped-y");
+    const notesW = nameEditor.offsetWidth || 176;
+    const notesH = nameEditor.offsetHeight || 80;
+    let notesLeft = rect.left;
+    let notesTop = rect.bottom + gap;
+    if (notesTop + notesH > wrapH - pad) {
+      notesTop = rect.top - gap - notesH;
+      nameEditor.classList.add("is-flipped-y");
+    }
+    if (notesLeft + notesW > wrapW - pad) notesLeft = wrapW - pad - notesW;
+    if (notesLeft < pad) notesLeft = pad;
+    if (notesTop < pad) notesTop = pad;
+    if (notesTop + notesH > wrapH - pad) notesTop = Math.max(pad, wrapH - pad - notesH);
+    nameEditor.style.left = Math.round(notesLeft) + "px";
+    nameEditor.style.top = Math.round(notesTop) + "px";
+
+    // COPILOT: left of bbox, bottom-aligned; flip to right if too far left.
+    if (!copilotPanel.classList.contains("hidden")) {
+      copilotPanel.classList.remove("is-flipped-x");
+      const cw = copilotPanel.offsetWidth || 120;
+      const ch = copilotPanel.offsetHeight || 60;
+      let copilotLeft = rect.left - gap - cw;
+      let copilotTop = rect.bottom - ch;
+      if (copilotLeft < pad) {
+        copilotLeft = rect.right + gap;
+        copilotPanel.classList.add("is-flipped-x");
+      }
+      if (copilotLeft + cw > wrapW - pad) {
+        copilotLeft = Math.max(pad, wrapW - pad - cw);
+      }
+      if (copilotTop < pad) copilotTop = pad;
+      if (copilotTop + ch > wrapH - pad) {
+        copilotTop = Math.max(pad, wrapH - pad - ch);
+      }
+      copilotPanel.style.left = Math.round(copilotLeft) + "px";
+      copilotPanel.style.top = Math.round(copilotTop) + "px";
+    }
+
+    // Trash tab: top-right of bbox; flip to top-left if too far right.
+    trashTab.classList.remove("is-flipped-x");
+    const tw = trashTab.offsetWidth || 26;
+    const th = trashTab.offsetHeight || 26;
+    let trashLeft = rect.right;
+    let trashTop = rect.top;
+    if (trashLeft + tw > wrapW - pad) {
+      trashLeft = rect.left - tw;
+      trashTab.classList.add("is-flipped-x");
+    }
+    if (trashLeft < pad) trashLeft = pad;
+    if (trashTop < pad) trashTop = pad;
+    if (trashTop + th > wrapH - pad) trashTop = Math.max(pad, wrapH - pad - th);
+    trashTab.style.left = Math.round(trashLeft) + "px";
+    trashTab.style.top = Math.round(trashTop) + "px";
   }
 
   function showNameInputFor(el) {
     if (!el || !canvas.width || canvas.width < 2) { hideNameInput(); return; }
-    const anchor = editorAnchorFor(el);
+    state.selectedId = el.id;
     const active = document.activeElement;
     const editingHere = active === nameInput || active === descInput;
     if (!editingHere) {
       nameInput.value = el.name || "";
       descInput.value = el.description || "";
     }
-    nameEditor.classList.remove("hidden");
-    nameEditor.style.left = Math.round(canvas.offsetLeft + anchor.x) + "px";
-    nameEditor.style.top = Math.max(0, Math.round(canvas.offsetTop + anchor.y - 8)) + "px";
+    chromeLayer.classList.remove("hidden");
+    syncCopilotFor(el);
     autosizeNameEditor();
+    layoutChromeAround(el);
+    // Second pass after paint so offsetWidth/Height reflect real content.
+    window.requestAnimationFrame(function () {
+      if (state.selectedId === el.id && !chromeLayer.classList.contains("hidden")) {
+        layoutChromeAround(el);
+      }
+    });
   }
 
   function commitNameFromInput() {
@@ -457,8 +803,8 @@ export function createPageGuidanceController(bridge) {
     });
     if (!el) return;
     const typed = String(nameInput.value || "");
-    el.name = typed.trim() ? typed : defaultNameFor(el.type, page, el.id);
-    if (!typed.trim()) nameInput.value = el.name;
+    // F-002: empty trim stays empty — do not call defaultNameFor / rewrite nameInput with bboxN.
+    el.name = typed.trim() ? typed : "";
     el.description = String(descInput.value || "");
     redraw(false);
     notifyAnnotationsChange();
@@ -467,11 +813,16 @@ export function createPageGuidanceController(bridge) {
   function onEditorInput() {
     commitNameFromInput();
     autosizeNameEditor();
+    const page = bridge.getDetailPage();
+    const el = page && state.selectedId
+      ? pageMap(page).find(function (item) { return item.id === state.selectedId; })
+      : null;
+    if (el) layoutChromeAround(el);
   }
 
   nameInput.addEventListener("input", onEditorInput);
   descInput.addEventListener("input", onEditorInput);
-  nameEditor.addEventListener("mousedown", function (ev) {
+  chromeLayer.addEventListener("mousedown", function (ev) {
     ev.stopPropagation();
   });
   function onEditorKeydown(ev) {
@@ -485,28 +836,51 @@ export function createPageGuidanceController(bridge) {
   descInput.addEventListener("keydown", onEditorKeydown);
 
   function isNameInputActive() {
-    if (nameEditor.classList.contains("hidden")) return false;
+    if (chromeLayer.classList.contains("hidden")) return false;
     const active = document.activeElement;
     return active === nameInput || active === descInput;
   }
 
   function applyNameFromPool(token) {
     const page = bridge.getDetailPage();
-    if (!page || !state.selectedId) return false;
-    const el = pageMap(page).find(function (item) {
-      return item.id === state.selectedId;
-    });
-    if (!el) return false;
     const name = String(token || "").trim();
-    if (!name) return false;
+    if (!name || !page) {
+      clientLog("applyNameFromPool-bail", { reason: !name ? "empty-name" : "no-page", token: token || "" }, "warn");
+      return false;
+    }
+    let el = state.selectedId
+      ? pageMap(page).find(function (item) { return item.id === state.selectedId; })
+      : null;
+    // Fallback: if selection was lost but the name editor is open, use the only
+    // unnamed (or sole) annotation on the page being edited.
+    if (!el && !chromeLayer.classList.contains("hidden")) {
+      const list = pageMap(page);
+      el = list.find(function (item) { return item && String(item.name || "").trim() === ""; })
+        || (list.length === 1 ? list[0] : null);
+      if (el) state.selectedId = el.id;
+      clientLog("applyNameFromPool-fallback", {
+        found: !!el,
+        id: el && el.id || "",
+        pageAnnCount: list.length,
+      });
+    }
+    if (!el) {
+      clientLog("applyNameFromPool-bail", {
+        reason: "no-el",
+        selectedId: state.selectedId || "",
+        shellHidden: chromeLayer.classList.contains("hidden"),
+        page: page,
+      }, "warn");
+      return false;
+    }
     el.name = name;
     nameInput.value = name;
     if (!String(el.description || "").trim()) {
-      const tokenKey = name.replace(/\s+/g, "_");
+      const tokenKey = mentionTokenLocal(name);
       Object.keys(state.pages).some(function (pageKey) {
         return (state.pages[pageKey] || []).some(function (other) {
           if (!other || other.id === el.id) return false;
-          const otherToken = String(other.name || "").trim().replace(/\s+/g, "_");
+          const otherToken = mentionTokenLocal(other.name);
           if (otherToken !== tokenKey) return false;
           if (!String(other.description || "").trim()) return false;
           el.description = other.description;
@@ -517,13 +891,22 @@ export function createPageGuidanceController(bridge) {
     } else {
       descInput.value = el.description || "";
     }
-    nameEditor.classList.remove("hidden");
+    chromeLayer.classList.remove("hidden");
     autosizeNameEditor();
-    redraw(false);
-    notifyAnnotationsChange();
+    layoutChromeAround(el);
     nameInput.focus();
     const len = nameInput.value.length;
     nameInput.setSelectionRange(len, len);
+    // Defer redraw/chip refresh so we don't rebuild COPILOT buttons mid-click
+    // (that retargets the gesture onto the canvas underneath).
+    window.requestAnimationFrame(function () {
+      if (state.selectedId === el.id) {
+        syncCopilotFor(el);
+        layoutChromeAround(el);
+      }
+      redraw(false);
+      notifyAnnotationsChange();
+    });
     return true;
   }
 
@@ -541,7 +924,8 @@ export function createPageGuidanceController(bridge) {
       redraw();
       return;
     }
-    const el = { id: uid("trail"), type: "trail", name: defaultNameFor("trail", page), coords: state.trailPoints.slice() };
+    // F-002: create with empty name; promptRename opens empty selectable field (no defaultNameFor until user types).
+    const el = { id: uid("trail"), type: "trail", name: "", coords: state.trailPoints.slice() };
     pageMap(page).push(el);
     clearTrailDraft();
     promptRename(el);
@@ -560,17 +944,8 @@ export function createPageGuidanceController(bridge) {
     }
     const hit = hitTest(page, pt[0], pt[1]);
     if (hit && !(state.tool === "trail" && state.trailPoints)) {
+      // Existing shapes: select / rename only — no move or resize drag (F-001).
       state.selectedId = hit.id;
-      if (hit.type === "bbox") {
-        const p2 = fromDeepSeek(hit.coords[2], hit.coords[3], canvas.width, canvas.height);
-        if (Math.hypot(p2[0] - pt[0], p2[1] - pt[1]) <= 10) {
-          drag = { mode: "resize", el: hit, start: pt, origin: hit.coords.slice() };
-        } else {
-          drag = { mode: "move", el: hit, start: pt, origin: JSON.parse(JSON.stringify(hit.coords)) };
-        }
-      } else {
-        drag = { mode: "move", el: hit, start: pt, origin: JSON.parse(JSON.stringify(hit.coords)) };
-      }
       if (ev.detail === 2) promptRename(hit);
       redraw();
       return;
@@ -578,13 +953,14 @@ export function createPageGuidanceController(bridge) {
     state.selectedId = null;
     if (state.tool === "bbox") {
       const a = toDeepSeek(pt[0], pt[1], canvas.width, canvas.height);
-      state.draft = { id: uid("bbox"), type: "bbox", name: defaultNameFor("bbox", page), coords: [a[0], a[1], a[0], a[1]] };
+      // F-002: empty name; rename after draw commit opens empty field.
+      state.draft = { id: uid("bbox"), type: "bbox", name: "", coords: [a[0], a[1], a[0], a[1]] };
       drag = { mode: "bbox", start: pt };
     } else if (state.tool === "point") {
       const el = {
         id: uid("point"),
         type: "point",
-        name: defaultNameFor("point", page),
+        name: "",
         coords: toDeepSeek(pt[0], pt[1], canvas.width, canvas.height),
       };
       pageMap(page).push(el);
@@ -628,7 +1004,7 @@ export function createPageGuidanceController(bridge) {
     redraw();
   });
 
-  canvas.addEventListener("mouseup", function () {
+  function endDrag() {
     if (!drag) return;
     const page = bridge.getDetailPage();
     let mutated = false;
@@ -641,11 +1017,21 @@ export function createPageGuidanceController(bridge) {
       }
       state.draft = null;
     } else if (drag.mode === "move" || drag.mode === "resize") {
+      // Legacy paths: no longer started from mousedown (F-001); clear residual only.
       mutated = true;
     }
     drag = null;
     redraw();
     if (mutated) notifyAnnotationsChange();
+  }
+
+  canvas.addEventListener("mouseup", endDrag);
+  // Release outside canvas must not leave create-draw (or residual) drag stuck to the cursor.
+  window.addEventListener("mouseup", endDrag);
+  canvas.addEventListener("mouseleave", function () {
+    if (!drag) return;
+    // Only clear if pointer left during a residual move/resize; bbox create finishes on window mouseup.
+    if (drag.mode === "move" || drag.mode === "resize") endDrag();
   });
 
   document.addEventListener("keydown", function (ev) {
@@ -679,12 +1065,23 @@ export function createPageGuidanceController(bridge) {
     if (tool) setTool(tool.getAttribute("data-annotate-tool"));
   });
   setTool("bbox");
+  let lastDetailPage = Number(bridge.getDetailPage()) || null;
   bridge.onDetailChange(function () {
+    const left = lastDetailPage;
+    const current = Number(bridge.getDetailPage()) || null;
+    let purged = false;
+    // F-002: leaving a page with trim-empty title deletes that annotation (not on Escape/blur alone).
+    if (left >= 1 && left !== current) {
+      purged = removeEmptyNamedOnPage(left);
+    }
+    lastDetailPage = current;
+    if (purged) notifyAnnotationsChange();
     redraw();
     syncNotesFieldset();
   });
   bridge.onPdfReset(function () {
     state.pages = {}; state.selectedId = null; state.draft = null; clearTrailDraft();
+    lastDetailPage = null;
     if (guidanceField) guidanceField.value = "";
     setActive(false); notifyAnnotationsChange();
   });

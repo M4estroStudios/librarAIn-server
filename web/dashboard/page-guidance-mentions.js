@@ -192,7 +192,10 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
       const sectionName = sectionOfPage(pageItem.page);
       if (sectionName !== section) return;
       (pageItem.elements || []).forEach(function (el) {
-        const token = mentionToken(el.name || el.type);
+        // F-002: empty trim title → no chip / no fallback to type (bboxN ghost).
+        const nameTrim = String(el.name || "").trim();
+        if (!nameTrim) return;
+        const token = mentionToken(nameTrim);
         if (!token) return;
         const lineStart = Number(el.lineStart);
         const lineEnd = Number(el.lineEnd);
@@ -211,7 +214,7 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
         if (!byToken[token]) {
           byToken[token] = {
             token: token,
-            name: el.name || el.type,
+            name: nameTrim,
             type: el.type,
             description: String(el.description || "").trim(),
             pages: [],

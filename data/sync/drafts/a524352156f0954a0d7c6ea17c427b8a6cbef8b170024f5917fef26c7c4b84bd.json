@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source_sha256": "a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd",
-  "updated_at": "2026-08-22T13:36:15.310799+00:00",
+  "updated_at": "2026-08-23T16:24:36.352676+00:00",
   "is_draft": true,
   "has_pdf": true,
   "file_name": "Storia di Roma Antica.pdf",
@@ -11,7 +11,1169 @@
     "index_notes": "",
     "page_notes": "",
     "ai_page_guidance": "",
-    "annotations": [],
+    "annotations": [
+      {
+        "page": 10,
+        "elements": [
+          {
+            "id": "bbox_m4s2ywa",
+            "name": "Capitolo (#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              191,
+              84,
+              824,
+              134
+            ]
+          },
+          {
+            "id": "bbox_9j773eu",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              420,
+              292,
+              581,
+              320
+            ]
+          }
+        ]
+      },
+      {
+        "page": 11,
+        "elements": [
+          {
+            "id": "bbox_mmxwklh",
+            "name": "Header Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              86,
+              41,
+              944,
+              82
+            ]
+          },
+          {
+            "id": "bbox_597z6jp",
+            "name": "Immagine part-page full width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              97,
+              512,
+              910,
+              88
+            ]
+          }
+        ]
+      },
+      {
+        "page": 12,
+        "elements": [
+          {
+            "id": "bbox_r6v1efh",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              94,
+              705,
+              916,
+              946
+            ]
+          },
+          {
+            "id": "bbox_nh0h3n2",
+            "name": "Header dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              85,
+              40,
+              928,
+              71
+            ]
+          }
+        ]
+      },
+      {
+        "page": 13,
+        "elements": [
+          {
+            "id": "bbox_qul0shh",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              264,
+              83,
+              707,
+              123
+            ]
+          },
+          {
+            "id": "bbox_hkl2erg",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              64,
+              28,
+              964,
+              71
+            ]
+          }
+        ]
+      },
+      {
+        "page": 14,
+        "elements": [
+          {
+            "id": "bbox_5uzv555",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              91,
+              38,
+              928,
+              75
+            ]
+          },
+          {
+            "id": "bbox_ez2m7oh",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              363,
+              306,
+              662,
+              336
+            ]
+          },
+          {
+            "id": "bbox_e4tufmz",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              85,
+              529,
+              922,
+              764
+            ]
+          }
+        ]
+      },
+      {
+        "page": 15,
+        "elements": [
+          {
+            "id": "bbox_s7hjogt",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              73,
+              38,
+              920,
+              66
+            ]
+          },
+          {
+            "id": "bbox_45bd2gt",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              79,
+              613,
+              896,
+              856
+            ]
+          },
+          {
+            "id": "bbox_hielfzt",
+            "name": "immagine_part-page_part_width",
+            "description": "PAG PARI\nimmagine allineata a sx, con didascalia in italics sulla dx\n\nPAG DISPARI:\nimmagine allineata a sx, con didascalia in italics sulla sx",
+            "type": "bbox",
+            "coords": [
+              73,
+              73,
+              917,
+              344
+            ]
+          }
+        ]
+      },
+      {
+        "page": 16,
+        "elements": [
+          {
+            "id": "bbox_vqz4flm",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              95,
+              34,
+              925,
+              60
+            ]
+          },
+          {
+            "id": "bbox_hapkjcw",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              245,
+              189,
+              784,
+              223
+            ]
+          },
+          {
+            "id": "bbox_nfgzk3o",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              95,
+              667,
+              922,
+              933
+            ]
+          }
+        ]
+      },
+      {
+        "page": 17,
+        "elements": [
+          {
+            "id": "bbox_pdmnxiv",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              76,
+              30,
+              910,
+              62
+            ]
+          },
+          {
+            "id": "bbox_4mpcvck",
+            "name": "immagine_part-page_part_width",
+            "description": "PAG PARI\nimmagine allineata a sx, con didascalia in italics sulla dx\n\nPAG DISPARI:\nimmagine allineata a sx, con didascalia in italics sulla sx",
+            "type": "bbox",
+            "coords": [
+              75,
+              620,
+              907,
+              931
+            ]
+          }
+        ]
+      },
+      {
+        "page": 18,
+        "elements": [
+          {
+            "id": "bbox_zwvuz9l",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              76,
+              36,
+              958,
+              58
+            ]
+          },
+          {
+            "id": "bbox_98ha0wl",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              423,
+              350,
+              599,
+              378
+            ]
+          },
+          {
+            "id": "bbox_o0sltcr",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              127,
+              732,
+              896,
+              758
+            ]
+          }
+        ]
+      },
+      {
+        "page": 19,
+        "elements": [
+          {
+            "id": "bbox_hmos928",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              79,
+              34,
+              902,
+              64
+            ]
+          },
+          {
+            "id": "bbox_6mw5cwx",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              908,
+              69,
+              73,
+              430
+            ]
+          },
+          {
+            "id": "bbox_98m2idg",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              79,
+              670,
+              899,
+              937
+            ]
+          }
+        ]
+      },
+      {
+        "page": 20,
+        "elements": [
+          {
+            "id": "bbox_roj49fo",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              101,
+              36,
+              928,
+              60
+            ]
+          },
+          {
+            "id": "bbox_xkfk8nr",
+            "name": "immagine_part-page_part_width",
+            "description": "PAG PARI\nimmagine allineata a sx, con didascalia in italics sulla dx\n\nPAG DISPARI:\nimmagine allineata a sx, con didascalia in italics sulla sx",
+            "type": "bbox",
+            "coords": [
+              86,
+              599,
+              943,
+              941
+            ]
+          }
+        ]
+      },
+      {
+        "page": 21,
+        "elements": [
+          {
+            "id": "bbox_et9g6pf",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              83,
+              28,
+              916,
+              64
+            ]
+          },
+          {
+            "id": "bbox_8q0tfnp",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              76,
+              619,
+              895,
+              929
+            ]
+          }
+        ]
+      },
+      {
+        "page": 22,
+        "elements": [
+          {
+            "id": "bbox_c3lyx0w",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              92,
+              36,
+              916,
+              68
+            ]
+          },
+          {
+            "id": "bbox_vs6hzdy",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              83,
+              543,
+              925,
+              937
+            ]
+          }
+        ]
+      },
+      {
+        "page": 23,
+        "elements": [
+          {
+            "id": "bbox_xv4pmms",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              67,
+              28,
+              916,
+              68
+            ]
+          },
+          {
+            "id": "bbox_kj5l9sg",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              910,
+              81,
+              70,
+              115
+            ]
+          },
+          {
+            "id": "bbox_k4oggbi",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              76,
+              571,
+              907,
+              931
+            ]
+          }
+        ]
+      },
+      {
+        "page": 24,
+        "elements": [
+          {
+            "id": "bbox_4sefqom",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              167,
+              64,
+              817,
+              161
+            ]
+          },
+          {
+            "id": "bbox_qidkr1l",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              230,
+              280,
+              772,
+              312
+            ]
+          },
+          {
+            "id": "bbox_fcjkzjw",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              182,
+              684,
+              838,
+              718
+            ]
+          }
+        ]
+      },
+      {
+        "page": 25,
+        "elements": [
+          {
+            "id": "bbox_8erel4a",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              73,
+              30,
+              934,
+              73
+            ]
+          },
+          {
+            "id": "bbox_9geoolp",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              80,
+              438,
+              916,
+              77
+            ]
+          },
+          {
+            "id": "bbox_dgxnra7",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              76,
+              513,
+              901,
+              941
+            ]
+          }
+        ]
+      },
+      {
+        "page": 26,
+        "elements": [
+          {
+            "id": "bbox_m4ztwsn",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              86,
+              40,
+              934,
+              73
+            ]
+          },
+          {
+            "id": "bbox_9e5tquh",
+            "name": "immagine_part-page_part_width",
+            "description": "PAG PARI\nimmagine allineata a sx, con didascalia in italics sulla dx\n\nPAG DISPARI:\nimmagine allineata a sx, con didascalia in italics sulla sx",
+            "type": "bbox",
+            "coords": [
+              80,
+              499,
+              922,
+              945
+            ]
+          }
+        ]
+      },
+      {
+        "page": 27,
+        "elements": [
+          {
+            "id": "bbox_ljsqmxz",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              80,
+              40,
+              916,
+              69
+            ]
+          },
+          {
+            "id": "bbox_qd99q9u",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              83,
+              314,
+              913,
+              73
+            ]
+          },
+          {
+            "id": "bbox_zbat9w8",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              86,
+              541,
+              916,
+              722
+            ]
+          }
+        ]
+      },
+      {
+        "page": 28,
+        "elements": [
+          {
+            "id": "bbox_cumztdw",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              83,
+              54,
+              907,
+              79
+            ]
+          },
+          {
+            "id": "bbox_p85fqto",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              690,
+              207,
+              302,
+              185
+            ]
+          },
+          {
+            "id": "bbox_5dttnap",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              83,
+              422,
+              916,
+              710
+            ]
+          }
+        ]
+      },
+      {
+        "page": 29,
+        "elements": [
+          {
+            "id": "bbox_tgumoyt",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              89,
+              50,
+              931,
+              85
+            ]
+          },
+          {
+            "id": "bbox_jb1cwlv",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              922,
+              559,
+              92,
+              95
+            ]
+          },
+          {
+            "id": "bbox_t7sl0rq",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              95,
+              844,
+              913,
+              563
+            ]
+          }
+        ]
+      },
+      {
+        "page": 30,
+        "elements": [
+          {
+            "id": "bbox_0rafxuo",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              82,
+              48,
+              920,
+              81
+            ]
+          },
+          {
+            "id": "bbox_942xfk1",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              917,
+              157,
+              73,
+              487
+            ]
+          }
+        ]
+      },
+      {
+        "page": 31,
+        "elements": [
+          {
+            "id": "bbox_hag6hix",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              91,
+              36,
+              920,
+              79
+            ]
+          },
+          {
+            "id": "bbox_x990so9",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              91,
+              270,
+              917,
+              83
+            ]
+          },
+          {
+            "id": "bbox_e7q9yh7",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              238,
+              527,
+              779,
+              561
+            ]
+          }
+        ]
+      },
+      {
+        "page": 32,
+        "elements": [
+          {
+            "id": "bbox_onh4xry",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              70,
+              50,
+              910,
+              87
+            ]
+          }
+        ]
+      },
+      {
+        "page": 33,
+        "elements": [
+          {
+            "id": "bbox_15yzyv2",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              86,
+              46,
+              928,
+              83
+            ]
+          },
+          {
+            "id": "bbox_2l0rh5i",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              92,
+              426,
+              934,
+              85
+            ]
+          }
+        ]
+      },
+      {
+        "page": 34,
+        "elements": [
+          {
+            "id": "bbox_1xp4p8m",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              76,
+              151,
+              898,
+              668
+            ]
+          },
+          {
+            "id": "bbox_gofgiaz",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              73,
+              56,
+              931,
+              75
+            ]
+          }
+        ]
+      },
+      {
+        "page": 35,
+        "elements": [
+          {
+            "id": "bbox_arpovuy",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              95,
+              44,
+              913,
+              77
+            ]
+          },
+          {
+            "id": "bbox_jkhjxs3",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              931,
+              525,
+              95,
+              143
+            ]
+          },
+          {
+            "id": "bbox_02wv2zr",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              347,
+              535,
+              684,
+              567
+            ]
+          }
+        ]
+      },
+      {
+        "page": 36,
+        "elements": [
+          {
+            "id": "bbox_m3br0hq",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              76,
+              50,
+              916,
+              75
+            ]
+          },
+          {
+            "id": "bbox_8gmxd3v",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              80,
+              491,
+              910,
+              85
+            ]
+          },
+          {
+            "id": "bbox_atom506",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              86,
+              704,
+              913,
+              951
+            ]
+          }
+        ]
+      },
+      {
+        "page": 37,
+        "elements": [
+          {
+            "id": "bbox_kxwshk7",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              98,
+              46,
+              919,
+              83
+            ]
+          },
+          {
+            "id": "bbox_f04hu9h",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              92,
+              507,
+              916,
+              89
+            ]
+          }
+        ]
+      },
+      {
+        "page": 38,
+        "elements": [
+          {
+            "id": "bbox_gl358pq",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              86,
+              48,
+              934,
+              79
+            ]
+          },
+          {
+            "id": "bbox_fd9mx5e",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              766,
+              95,
+              236,
+              149
+            ]
+          },
+          {
+            "id": "bbox_5vdulkc",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              329,
+              414,
+              687,
+              448
+            ]
+          }
+        ]
+      },
+      {
+        "page": 39,
+        "elements": [
+          {
+            "id": "bbox_367kgt2",
+            "name": "Header_Pari",
+            "description": "sx: numero pagina\ndx: titolo libro",
+            "type": "bbox",
+            "coords": [
+              83,
+              44,
+              910,
+              81
+            ]
+          },
+          {
+            "id": "bbox_znaempd",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              95,
+              830,
+              910,
+              85
+            ]
+          }
+        ]
+      },
+      {
+        "page": 40,
+        "elements": [
+          {
+            "id": "bbox_9xgwhgw",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              83,
+              42,
+              913,
+              77
+            ]
+          },
+          {
+            "id": "bbox_lh37zcw",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              95,
+              324,
+              913,
+              83
+            ]
+          },
+          {
+            "id": "bbox_93b6i51",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              89,
+              493,
+              919,
+              762
+            ]
+          }
+        ]
+      },
+      {
+        "page": 41,
+        "elements": [
+          {
+            "id": "bbox_i57o99r",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              230,
+              73,
+              778,
+              129
+            ]
+          },
+          {
+            "id": "bbox_xa1d00j",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              374,
+              280,
+              636,
+              308
+            ]
+          },
+          {
+            "id": "bbox_dad6cwd",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              95,
+              665,
+              916,
+              947
+            ]
+          }
+        ]
+      },
+      {
+        "page": 42,
+        "elements": [
+          {
+            "id": "bbox_prik07l",
+            "name": "Header_dispari",
+            "description": "sx: titolo del Capitolo\ndx: numero della pagina",
+            "type": "bbox",
+            "coords": [
+              82,
+              48,
+              914,
+              77
+            ]
+          },
+          {
+            "id": "bbox_swjx7c5",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              312,
+              263,
+              710,
+              296
+            ]
+          },
+          {
+            "id": "bbox_y3g3732",
+            "name": "immagine_part-page_part_width",
+            "description": "PAG PARI\nimmagine allineata a sx, con didascalia in italics sulla dx\n\nPAG DISPARI:\nimmagine allineata a sx, con didascalia in italics sulla sx",
+            "type": "bbox",
+            "coords": [
+              79,
+              513,
+              940,
+              981
+            ]
+          }
+        ]
+      }
+    ],
     "file_name": "Storia di Roma Antica.pdf",
     "pages_to_remove": "3-5",
     "toc_range": "417-418",

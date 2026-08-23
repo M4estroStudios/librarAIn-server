@@ -8,8 +8,9 @@ VENV_PYTHON = $(firstword $(wildcard venv/Scripts/python.exe venv/bin/python.exe
 
 # Preferisce il Python del venv se presente (dopo setup-env).
 PYTHON ?= $(if $(VENV_PYTHON),$(VENV_PYTHON),$(PY))
+INGEST_HTTP_PORT ?= 8765
 
-.PHONY: check-python setup-env finish-env install-torch test lint clean-pycache run-server run-mock-server drafts-export drafts-import drafts-pack drafts-unpack
+.PHONY: check-python setup-env finish-env install-torch test lint clean-pycache stop-existing-server run-server run-mock-server drafts-export drafts-import drafts-pack drafts-unpack
 
 check-python:
 	$(PY) -c "import sys; sys.exit('Python 3.11+ required (see pyproject.toml requires-python)' if sys.version_info < (3, 11) else 0)"
@@ -36,7 +37,32 @@ test:
 lint:
 	"$(PYTHON)" -m ruff check src tests scripts
 
-run-server:
+stop-existing-server:
+ifeq ($(OS),Windows_NT)
+	INGEST_HTTP_PORT="$(INGEST_HTTP_PORT)" "$(PYTHON)" -c "exec('''import os, subprocess, time\\nport = int(os.environ.get(\\\"INGEST_HTTP_PORT\\\", \\\"8765\\\"))\\nme = str(os.getpid())\\nfound = set()\\nout = subprocess.run([\\\"netstat\\\", \\\"-ano\\\"], capture_output=True, text=True, errors=\\\"ignore\\\", check=False).stdout\\nfor line in out.splitlines():\\n    parts = line.split()\\n    if len(parts) >= 5 and parts[1].endswith(f\\\":{port}\\\") and parts[3].upper() == \\\"LISTENING\\\":\\n        found.add(parts[-1])\\nfound.discard(\\\"0\\\")\\nfound.discard(me)\\nif not found:\\n    raise SystemExit(0)\\nprint(\\\"Stopping existing ingest server process(es):\\\", \\\", \\\".join(sorted(found)), flush=True)\\nfor pid in found:\\n    subprocess.run([\\\"taskkill\\\", \\\"/PID\\\", pid, \\\"/F\\\"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)\\ntime.sleep(0.5)\\n''')"
+else
+	@echo "Checking for existing ingest servers on port $(INGEST_HTTP_PORT)..."
+	@pids="$$( { command -v pgrep >/dev/null 2>&1 && pgrep -f '[s]rc\.api\.ingest_http_server' 2>/dev/null || true; command -v lsof >/dev/null 2>&1 && lsof -nP -iTCP:$(INGEST_HTTP_PORT) -sTCP:LISTEN -t 2>/dev/null || true; } | tr ' ' '\n' | awk 'NF && $$1 ~ /^[0-9]+$$/' | sort -u | tr '\n' ' ' )"; \
+	if [ -n "$$pids" ]; then \
+		echo "Stopping existing ingest server process(es): $$pids"; \
+		kill $$pids 2>/dev/null || true; \
+		i=0; \
+		while [ $$i -lt 30 ]; do \
+			left="$$( { command -v pgrep >/dev/null 2>&1 && pgrep -f '[s]rc\.api\.ingest_http_server' 2>/dev/null || true; command -v lsof >/dev/null 2>&1 && lsof -nP -iTCP:$(INGEST_HTTP_PORT) -sTCP:LISTEN -t 2>/dev/null || true; } | tr ' ' '\n' | awk 'NF && $$1 ~ /^[0-9]+$$/' | sort -u | tr '\n' ' ' )"; \
+			[ -z "$$left" ] && break; \
+			sleep 0.1; \
+			i=$$((i + 1)); \
+		done; \
+		left="$$( { command -v pgrep >/dev/null 2>&1 && pgrep -f '[s]rc\.api\.ingest_http_server' 2>/dev/null || true; command -v lsof >/dev/null 2>&1 && lsof -nP -iTCP:$(INGEST_HTTP_PORT) -sTCP:LISTEN -t 2>/dev/null || true; } | tr ' ' '\n' | awk 'NF && $$1 ~ /^[0-9]+$$/' | sort -u | tr '\n' ' ' )"; \
+		if [ -n "$$left" ]; then \
+			echo "Force-killing remaining ingest server process(es): $$left"; \
+			kill -9 $$left 2>/dev/null || true; \
+			sleep 0.3; \
+		fi; \
+	fi
+endif
+
+run-server: stop-existing-server
 	"$(PYTHON)" -m src.api.ingest_http_server
 
 run-mock-server:
