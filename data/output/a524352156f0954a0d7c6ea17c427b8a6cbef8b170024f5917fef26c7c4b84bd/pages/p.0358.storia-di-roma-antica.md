@@ -1,0 +1,28 @@
+---
+aligned_page: 358
+original_page: 361
+chapter_number: "23"
+chapter_name: "Dagli Antonini alla dinastia dei Severi (Claudia Cerchiai e Alberto Manodori)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# PUBLIO ELIO PERTINACE
+
+Il giorno dopo, primo gennaio del 193 d.C., i pretoriani acclamaron il nuovo imperatore, Publio Elio Pertinace, cui i senatori indirizzarono il saluto consueto «Noi siamo sicuri finché tu vivrai». Publio Elio Pertinace era figlio di un libertto, Elvio Successo, che gli aveva dato più tardi il sopranome Pertinace perché aveva voluto seguire a tutti i costi il mestiere paterno di commerciante in lana. Era nato in Liguria. Rinunciò all'esercizio di questa attività solo quando gli scarsi guadagni lo obbligarono a entrare nell'esercito e a scegliere la carriera militare. Qui si distinse salendo i vari gradi, da centurione a comandante della flotta in Germania, e infine divenne senatore, familiare di Marco Aurelio e console.
+
+Attraversò alcuni momenti critici, in diverse occasioni per l'accusa di corruzione, ma tanto Marco Aurelio quanto Commodo lo riabilitarono. Alla fine divenne prefetto di Roma e console una seconda volta insieme all'imperatore. Venne a conoscenza della congiura contro Commodo e se ne fece complice.
+
+Dopo l'uccisione dell'imperatore, si recò alla caserma dei pretoriani e parlò a costoro promettendo un particolare donativo.
+
+Fu così che i pretoriani lo acclamaron imperatore. Pertinace aveva poco più di sessant'anni. L'acclamazione fu quindi, prima dell'alba, confermata dal Senato riunito in seduta straordinaria.
+
+Pertinace inaugurò una politica di grande collaborazione e rispetto verso il Senate e provvide a diverse elargizioni di terre a favore della plebe, mentre ridusse le spese militari, provocando il risentimento dell'esercito e inimicandosi

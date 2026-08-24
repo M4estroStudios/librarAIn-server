@@ -1,0 +1,35 @@
+---
+aligned_page: 154
+original_page: 157
+chapter_number: "9"
+chapter_name: "L'egemonia nell'Italia centro-meridionale (Fulvia Mainardis e Claudio Zaccaria)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# LA FORZA E LA DIPLOMAZIA
+
+Per consolidare antiche alleanze e crearne nuove, Roma approfitta di queste vittorie sugli Etruschi e sugli alleati ribelli e anche della breve tregua (304-298) tra la seconda e la terza guerra sannitica.  
+L’espansione romana, infatti, non sfrutta soltanto le campagne militari, ma anche l’attività diplomatica svolge un ruolo notevole.  
+Lo scopo più immediato è quello di sgretolare il fronte dei nemici più vicini a Roma.  
+Così, nell’area umbra, è concluso un foedus con Camerino (310) ed è stretto un rapporto di amicitia con Otricoli (308).
+
+Ma la politica estera romana ha anche prospettive di più largo respiro.  
+Come già detto nel capitolo precedente, la garanzia di poter esercitare liberamente il commercio per mare è assicurata dal terzo trattato con Cartagine (306) e dal trattato con Taranto (303).  
+Anche nell’Etruria i Romani contano sulla collaborazione delle aristocrazie locali e questa direttiva di fondo spiega l’intervento romano ad Arezzo, per domare una rivolta della plebe contro la gens Cilnia filoromana (302).  
+Il controllo sul territorio umbro è rafforzato dalla fondazione della colonia latina di Narni (299); mentre in evidente funzione antigallica, nello stesso anno è concluso un trattato di pace e alleanza con i Piceni e con i Vestini, abitanti nella regione marchigiana.
+
+TUTTI CONTRO ROMA
+
+La crescita della potenza romana spinge di nuovo le popolazioni dell’Italia centrale ad allearsi tra di loro e con i Sanniti.  
+Si tratta di Sabini, Etruschi, Umbri, Galli Sènoni e Pretuzi (questi ultimi sono schiacciati nell’area marchigiana tra i Vestini a sud e i Piceni a nord, entrambi alleati di Roma).  
+La coalizione è guidata dal capo sannita Gellio Egnazio.  
+Con una marcia molto rischiosa attraverso territori in gran parte ostili, Gellio porta il suo esercito fino nel cuo-

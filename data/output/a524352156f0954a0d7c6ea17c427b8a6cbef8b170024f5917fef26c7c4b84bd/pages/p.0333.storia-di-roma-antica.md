@@ -1,0 +1,44 @@
+---
+aligned_page: 333
+original_page: 336
+chapter_number: "21"
+chapter_name: "La dinastia dei Flavii (Claudia Cerchiai e Alberto Manodori)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# GLI HORTI SALLUSTIANI
+
+La zona attualmente compresa tra la via xx Settembre, la via Salaria, le mura Aureliane e via Veneto era, in età romana, un vasto parco di proprietà di Giulio Cesare.
+
+Venne acquistato, alla morte del dittatore, dal ricco patrizio Sallustio, più noto come storico.
+
+Sallustio vi costruì una lussuosissima villa che fu ampliata e abbellita dal nipote, finché finì nelle proprietà dell'imperatore Tiberio, restando così parte integrante del demanio imperiale.
+
+Gli imperatori Vespasiano, Adriano e Aureliano amarono soggiornarivi.
+
+La villa era poi dotata di maneggi e di un ippodromo.
+
+Cadde in completo abbandono dopo il saccheggio di Roma, compiuto da Alarico nel 410 d.C.
+
+Una parte importante della villa è oggi visitabile al centro di piazza Sallustio; si tratta di un grande padiglione di due piani, comprendenti una sala circolare coperta da una cupola che in antico era ornata da stucchi; si tratta di una sala per le cene d'estate, esposta ai freschi venti della sera e costruita in posizione scenografica e panoramica.
+
+Agli Horti Sallustiani apparteneva anche l'obelisco che oggi sorge davanti alla chiesa di Trinità dei Monti, il cui basamento fu scoperto nel 1912 tra via Sardegna e via Sicilia e quindi adoperato per il monumento ai martiri fascisti posto sul Campidoglio.
+
+All'altezza del garage, un criptoportico è stato poi identificato all'altezza del lambasciata degli Stati Uniti e una grande cisterna è venuta alla luce sotto l'Istituto archeologico germanico in via San Nicola da Tolentino.
+
+Agrippa i e sorella di Erode ii, molto vicina alla fede cristiana grazie a un incontro decisivo con l’apostolo Paolo.
+
+Tito, però, sapeva che a Roma l'imperatore non poteva permettersi una consorte orientale; era ancora vivo il ricordo dei legami di Cesare e Antonio con Cleopatra, sentiti dai Romani come un’offesa alla loro storia.
+
+Nonostante avesse una personalità autoritaria e sapese governare con giudizio ed equilibrio, Tito si mostrò rispettoso del Senato, cui restitui una certa influenza politica.
+
+Il suo impero durò solo tre anni, ma lo stesso pri-

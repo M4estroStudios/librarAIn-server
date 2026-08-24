@@ -1,0 +1,26 @@
+---
+aligned_page: 244
+original_page: 247
+chapter_number: "15"
+chapter_name: "Le guerre sociali: Mario e Silla (Fulvia Mainardis e Claudio Zaccaria)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+è ritirato nella sua provincia, la Spagna Citeriore, dove organizza un contro-governo. I consoli dell’82, Gneo Papirio Carbone e Gaio Mario il giovane (figlio di Mario), subiscono ripetute sconfitte. Gli ultimi difensori, tra cui vi è un contingente di Sanniti, tentano la resistenza presso Collina, ma sono travolti e massacrati dai Sillani. La lotta continua per le strade della città, seminando morte e distruzione. I Sanniti fatti prigionieri sono uccisi nel Campo Marzio. Papirio Carbone, che ha tentato di fuggire in Sicilia, è raggiunto da Gneo Pompeo e ucciso con i suoi seguaci. Gaio Mario il giovane trova la morte a Palestrina, dove ha cercato rifugio. La vendetta di Silla è feroce e sistematica. Sono redatte liste di proscrizione (veri e propri bandi) con i nomi di tutti gli avversari: chiunque è autorizzato a uccidere impunemente, ricavandone anzi un compenso. Sono così eliminati, oltre a un numero imprecisato di cittadini (forse circa 10.000), 80 senatori e 1500 cavalieri romani. Le terre dei proscritti sono confiscate e servono per le assegnazioni da dare ai legionari congedati, mentre i loro figli sono esclusi dalle cariche pubbliche.
+
+# LE VENDETTE DEL DITTATORE E DEI SUOI AMICI
+
+Dopo il ritorno di Silla a Roma i massacri si susseguono senza regola. Molti sono eliminati per inimicizia con fautori del dittatore, ai quali è lasciata mano libera come ricompensa per la fedeltà. Alla richiesta di dire quando sarebbero cessati i massacri, chi intendesse castigare e chi risparmiare, Silla immediatamente proscrive 80 persone, senza far avvertire nessun magistrato. Incurante dello sdegno dei concittadini, il giorno dopo proscrive altre 220 persone e quello successivo altrettante. Afferma che proscrive quelli di cui si ricorda, in seguito proscriverà quelli che ha dimenticato. È proscritto chi nasconde un proscritto, anche se si tratta di parenti stretti. Invece chi uccide un proscritto riceve un compenso in denaro: così lo schiavo ammazza il padrone e il figlio ammazza il padre. I mariti sono massacrati nelle braccia delle mogli, i figli nelle braccia delle madri. Molti sono uccisi semplicemente per appropriarsi dei loro beni, tanto che spesso si dice: «Costui lo ha ucciso la sua ricca casa, questi il giardino, quest’altro i suoi bagni caldi». Quinto Aurelio, uomo pacifico e lontano da ogni inimicizia, si reca nel Foro e nella lista dei proscritti legge le proprio nome. Allora esclama: «La mia tenuta di Alba mi perseguita!» e fatti pochi passi è scannato da un tale, che lo ha seguito per appropriarsi della ricompensa.
+
+# LA DITTATURA E LE RIFORME
+
+Dopo la vittoria Silla si preoccupa di legittimare il suo potere. Per l’82 e l’81 si fa eleggere dai comizi centuriati dittatore a tempo indeterminato con poteri amplissimi (il titolo completo suona «dittatore col compito di emanare leggi e di riformare la costituzione»)). Poi riprende il progetto di Druso, esclude i cavalieri dai tribunali e porta il numero dei senatori da 300 a 600, con l’immissione di cavalieri, homines novi e soprattutto di suoi seguaci. Inoltre limita radicalmente il potere dei tribuni della plebe, che in passato erano stati la causa di tanti turbamenti dello Stato. A lungo rimane lettera morta la concessione della cittadinanza agli ex alleati: per molti anni, infatti, non si elegono censori e quindi non possono essere registrati nuovi cittadini. Data l’importanza dell’esercito in armi durante le contese civili, è proibita la presenza di truppe su tutto il territorio della penisola italiana, dal Rubicone e dalla Magra fino allo stretto di Messina. Nell’80 Silla depone la dittatura e si fa

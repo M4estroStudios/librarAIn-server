@@ -1,0 +1,26 @@
+---
+aligned_page: 27
+original_page: 30
+chapter_number: "1"
+chapter_name: "Roma prima di Roma (Vincenzo Matera)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+Il tema dei gemelli o la scoperta del trovatello nei pressi di un fiume o di uno specchio d'acqua (per quest’ultimo aspetto, si pensi ad esempio alla storia biblica di Mosè ritrovato in una cesta di vimini abbandonata sul Nilo).
+
+Non sapremo mai se è esistito un capo, che da solo decide di fondare Roma, di renderla “più grande di Lavinio e di Alba Longa”; siamo invece certi che c’è stato un personaggio (o forse un gruppo di persone) che aveva la funzione e le capacità di scrutare il cielo e di trarre gli auspici, cioè d’interpretare i segnali concreti del consenso o del gradimento degli dèi per la fondazione di una città, la costruzione d’un tempio o di altri edifici pubblici. Infatti il pomerio di una città è sempre stabilito grazie a un rapporto direttto con la divinità.
+
+Quando “Remo” con un salto scavalca il solco che “Romolo” sta tracciando per delimitare la sua città, quest’ultimo lo uccide perché egli ha offeso gli dèi, ha violato una linea sacra, quel confine che permette di distinguere tra la violenza e la pace, tra il nemico e l’amico, tra l’ingiusto e il giusto. Traciare questo confine spetta per definizione al “re” Romolo: il significato più antico e profondo della parola rex è “l’uomo che traccia la linea diritta o retta”. Nella concezione del mondo dei Romani, i confini sono una cosa importantissima, fino al punto di conservarsi “mummificati” per secoli.
+
+Nei pressi del successivo Colosseo c’era uno degli angoli della città quadrata di Romolo; nel vi secolo a.C. in questo stesso punto si incrociaron i confini dei quattro quartieri (o regioni) della suddivisione della città decretata da Servio Tullio; al tempo di Augusto (27 a.C. - 14 d.C.) qui si incontreranno ancora i confini di quattro o cinque circoscrizioni della nuova divisione amministrativa di Roma.
+
+Già prima della costruzione del “muro di Romolo” la città non è circo

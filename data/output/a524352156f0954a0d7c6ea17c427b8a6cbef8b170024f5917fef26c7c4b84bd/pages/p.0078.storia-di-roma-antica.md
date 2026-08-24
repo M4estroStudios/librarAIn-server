@@ -1,0 +1,45 @@
+---
+aligned_page: 78
+original_page: 81
+chapter_number: "4"
+chapter_name: "Un avventuriero etrusco sul trono di Roma (Fulvia Mainardis e Claudio Zaccaria)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# La grande Roma dei tarquini
+
+L'organizzazione dello spazio urbano ed extraurbano comporta una nuova definizione del pomerio romuleo, il limite giuridico-sacrale (vedi il secondo capitolo) è ora ampliato per comprendere anche il Viminale e l'Eschilino.
+
+Servio Tullio porta a termine la straordinaria ristrutturazione dello spazio urbano, iniziata da Tarquinio Prisco: così riorganizza insieme la città fisica e i suoi abitanti.
+Il senso di questa città, quasi “rifondata”, è dato dalle gigantesche mura “serviane”, che circonda l'abitato per una lunghezza di circa 11 km.
+
+## L'ANELLO DELLE MURA SERVIANE
+
+Prima della cinta muraria serviana Roma aveva conosciuto altre forme di fortificazione, come le Carinae e il murus terreus di Anco Marcio.
+Secondo la tradizione Tarquinio aveva costruito il primo muro di pietra, poi inglobato in quello serviano.
+Un tratto ben visibile è quello situato in via del Teatro di Marcello: cinque filari di blocchi quadrati in cappellaccio (un tufo friabile che si estrae dal sottosuolo urbano), inseriti in un muro moderno.
+Qui si apriva la porta Catularia che dava accesso al Campidoglio.
+Dal l'altra parte del colle si apriva la porta Fontinalis, dalla quale partiva il vicus Lautumiarum (le lautumiae erano le cave di pietra) verso il Foro.
+Le mura continuavano poi verso la sella tra Campidoglio e Quirinale, tagliata successivamente dal foro di Traiano.
+Sulla cresta del Quirinale si aprivano la porta Salutaris e la Quirinalis.
+Dopo un percorso in salita le mura giravano verso sud, costituendo la protezione della parte orientale della città, quella maggiormente esposta.
+Qui erano situate la porta Collina (i resti nel Ministero delle finanze), la porta Esquilina (arco di Gallieno) e la porta Viminalis (piazza dei Cinquecento).
+Da questa ultima porta usciva il vicus che andava a formare le vie Nomentana e Salaria.
+Questo tratto delle mura era fortificato anche da un terrapiero (agger) e da una fossa.
+Dopo la porta Viminalis il tratto sicuramente meglio conservato è quello sul fronte della stazione Termini.
+Altre porzioni di mura si vedono in piazza Manfredo Fanti e in via Carlo Alberto, poco lontano dalla porta Esquilina.
+Qui finita anche la parte fortificata dal terrapiero e da questo punto diviene più difficile seguire l'andamento delle mura.
+Altro tratto notevole è quello in viale Aventino, lungo 42 m e alto circa 8.
+L'Aventino era probabilmente incluso nella prima cinta e nel tratto tra il Piccolo e il Grande Aventino si aprivano le porte Naevia, Raudusculana e Lavernalis.
+È pressoché impossibile stabilire quale fosse il percorso tra Aventino e Campidoglio.
+É probabile che le mura corressero parallele al Trevere, includendo il foro Boario dove si trovava la porta Triumphalis, che sostituirà il già noto Tigillum Sororium, come ingresso della città per il comandante vincitore.
+In quest'area erano situate anche la porta Trigemina (vicino a Santa Maria in Cosmedin), la Flumentana (presso l'tempio di Portunus) e la Carmentalis (presso l'area sacra di Sant'Omobono).

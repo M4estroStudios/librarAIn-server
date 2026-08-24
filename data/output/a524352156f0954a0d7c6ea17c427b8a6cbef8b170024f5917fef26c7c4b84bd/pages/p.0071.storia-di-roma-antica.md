@@ -1,0 +1,20 @@
+---
+aligned_page: 71
+original_page: 74
+chapter_number: "4"
+chapter_name: "Un avventuriero etrusco sul trono di Roma (Fulvia Mainardis e Claudio Zaccaria)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# IL TEMPO DELLA CITTÀ: IL NUOVO CALENDARIO
+
+Alla nuova organizzazione della città corrisponde anche la definitiva fissazione del calendario. Come già detto la tradizione attribuisce a Romolo il calendario primitivo di dieci mesi e a Numa quello “scientifico” di dodici mesi lunari. È certo che la dinastia etrusca perfeziona il calendario, fissandolo in una forma che si mantiene inalterata fino alla riforma di Giulio Cesare (il cosiddetto calendario giuliano). Tra i numerosi “calendari” conservatisi, solo quello dipinto di Anzio (scoperto nel 1915) è pregiuliano. Dipinto in rosso e nero, presenta una divisione verticale dei mesi. Luglio e agosto, derivati dai nomi di Caio Giulio Cesare e di Augusto, si chiamano ancora Quintile e Sextile. I giorni della settimana, la nundina, sono segnati in nero, tranne il primo giorno in rosso. Accanto alla lettera di ciascun giorno (dalla A alla H) ci sono alcune sigle: F come fastus o giorno in cui è lecito amministrare la giustizia; N come nefastus, cioè non fastus, o giorno in cui non si può amministrare la giustizia e che diventa un giorno di vacanza. I giorni contrassegnati da NP sono i giorni nefasti ma evidentemente con alcune qualità speciali: i giorni con C, comitialis, sono quelli in cui si possono tenere i comizi o assemblee. Infine i giorni con EN sono endotercisi, cioè divisi in tre parti da un’azione rituale che iniziata al mattino, è poi sospesa, per essere infine terminata la sera. Il giorno è perciò nefastus al mattino e alla sera, fastus durante la pausa. Nel calendario sono indicate in forma abbreviata le divinità e le feste più importanti: ad esempio l’abbreviazione LEMVR (per Lemuria), seguita da una N (nefastus), contraddistingue il 9, l’11, il 13 maggio e indica che in quei giorni si celebrava la festa dei Lemures, gli spettri dei morti che invadono il mondo dei vivi. Accanto alle feste fisse (feriae stativae) ve ne sono anche altre mobili (feriae conceptiva) come le Ambarvalia, le feste dei fratelli Arvali, che non compaiono nel calendario ma sono indicate di anno in anno dai pontefici.

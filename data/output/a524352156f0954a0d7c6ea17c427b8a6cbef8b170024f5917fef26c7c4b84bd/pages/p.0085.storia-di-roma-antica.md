@@ -1,0 +1,38 @@
+---
+aligned_page: 85
+original_page: 88
+chapter_number: "4"
+chapter_name: "Un avventuriero etrusco sul trono di Roma (Fulvia Mainardis e Claudio Zaccaria)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# DONNA LO FECE, DONNA LO DISFECE
+La vita di Servio Tullio è contrassegnata da donne fatali.
+La sua incoronazione regale era stata merito della moglie di Tarquinio Prisco, Tanaquil, esperta nella divinazione che, aveva convinto il marito a partire per Roma e a diventare il re.
+Tanaquil per prima aveva riconosciuto in Servio i segni di un brillante destino.
+In definitiva Tanaquil rappresenta un “doppione umano” della dea Fortuna, protettrice di Servio Tullio.
+In molte delle sue azioni so no adombrate quelle d’una dea che sceglie il re, secondo una tradizione biblica.
+Se una donna fece la sua fortuna, una donna fece la sua rovina. Tullia Minore rappresenta quasi il “doppione negativo” della donna etrusca. È la Fortuna che ha voltato le spalle al suo protetto come racconta una sors, che serviva per le predizioni durante i riti oracolari.
+Su questo ciottolo è inciso un testo latino, che ricorda come la vicenda di Servio e il suo legame con Fortuna fossero ormai divenuti leggenda e quasi proverbio: «Se (mi) obbedisci, non (ti) voglio rovinare: se non (mi) obbedisci, (ricordati che) per opera della Fortuna Servio va (andò) in rovina».
+
+## I LIBRI SIBILLINI
+Durante il regno di Tarquinio il Superbo giunge alla corte del re una straniera decisa a vendergli nove libri contenenti oracoli sibillini (predizioni della Sibilla, la profetessa, di Cuma). Tarquinio la deride cacciandola. La donna allora brucia tre di questi libri.
+Dopo un po’ di tempo ritorna dal sovrano proponendogli i libri rimasti allo stesso prezzo richiesto la prima volta. Ancora una volta Tarquinio la deride e la caccia in malo modo.
+La donna brucia la metà dei libri, tornando dopo alcuni giorni a chiedere il medesimo oro per i tre libri superstiti. Stavolta il re non ride ma comincia a spaventarsi. Chiede consiglio agli auguri che gli predicono una grande sventura per quanto è accaduto e lo invitano ad acquistare immediatamente i libri ancora in possesso della donna.
+Tarquinio obbedisce e predispone che due uomini di nobile origine ne abbiano cura. Da allora in poi i tre testi sacri assunsero un ruolo fondamentale nella vita politica dei Romani, diventando la parola, il consiglio degli dèi nei momenti difficili dello Stato.
+Quando nell’83 a.C.i testi furono bruciati, nonostante l’accuratissima custodia, su decreto del Senato vennero inviati ad Eritre, in Asia, dove si trovava un famoso oracolo, tre messi per copiarli e ricostruire questo patrimonio.
+
+## IL RE TIRANNO
+Tarquinio il Superbo si impadronisce del potere con modalità che contrassegnano tutto il suo regno. La sua vita e le sue azioni corrispondono pienamente all’immagine del tiranno nel mondo greco.
+Uccide suo suocero, impedendo la sepoltura, ed elimina senza scrupoli i suoi rivali: la sua tirannide è “senza legge” e al contrario del suo predecessore “democratico”, condanna la plebe ai “lavori forzati” per il tempio capitolino. Tarquinio il Superbo è l’unico arbitro della sorte di Roma e priva del suo potere il Senato.
+Insicuro in patria, ricerca all’esterno l’appoggio necessario. In questo senso va interpretato il matrimonio tra una delle sue figlie e Ottavio Mamilio di Tusculum. Questa città fortemente etruschizzata diviene il trámite per la sottomissione “diplomatica” dei Latini.
+Senza scrupoli elimina Turno Erdonio,

@@ -1,0 +1,24 @@
+---
+aligned_page: 13
+original_page: 16
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# DA CACCIATORI AD AGRICOLTORI
+
+Fino a circa 7000 anni fa gli abitatori del Lazio erano essenzialmente cacciatori e pescatori: si limitavano a raccogliere le radici, bacche o frutti, per esperienza mangiabili senza sgradevoli conseguenze. La grande svolta avvenne quando gli antichi cacciatori, nomadi o semi-nomadi iniziano ad addomesticare gli animali e gradualmente a coltivare alcune specie di piante; soprattutto quando iniziano a produrre vasellame d’argilla.
+
+Questa vera rivoluzione culturale (la cosiddetta “rivoluzione neolitica”, cioè della “età della pietra nuova”), ha costituito il punto di partenza per la civiltà umana. Ne restano numerose testimonianze, anche se non ricchissime, nel territorio di Roma (di nuovo a Tor Vergata e a Torre Spaccata; a Palidoro, Pyrgi o Santa Severa). Queste testimonianze sono riconducibili a una prima fase, in cui gli utensili di ceramica erano decorati incidendone profondamente le pareti con linee o utilizzando i bordi delle conchiglie per imprimere nell’argilla semplici motivi di tipo geometrico. La fase successiva comincia poco meno di 7000 anni fa. Il ritrovamento archeologico più importante avvenne nella grotta Patrizi, in località Sasso di Furbara, a pochi chilometri dalla spiaggia di Santa Severa. Si tratta di sette sepolture, una delle quali doveva riguardare un personaggio particolarmente importante; in vita doveva aver sofferto di gravi malformazioni dello scheletro e aveva subito la trapanazione del cranio. Collegate alla stessa fase di sviluppo delle sepolture del Sasso di Furbara sono le tracce d’attività umana scoperte nei pressi di Roma a Casale del Pescatore (sulla via Prenestina), mentre di poco più recenti sono quelle del vi millennio a.C., rinvenute a Torre Spaccata, tra la Casilina e la Tuscolana.
+
+## L'ALIMENTAZIONE DEGLI ABITATORI DI PISCINA DI TORRE SPACCATA
+
+Nello scavo di Piscina di Torre Spaccata sono state ritrovate nelle fosse di scarico numerose ossa che mostrano tracce di esposizione al fuoco. Gli specialisti hanno calcolato che l’80% della carne consumata appartiene a bovini, il 13% a caprovini, il 6% a suini e hanno anche determinato l’età degli animali al momento della macellazione: i maiali venivano scannati prima di aver compiuto un anno, i bovini in genere a un anno e mezzo (anche se alcuni capi dovevano aver raggiunto e superrato i tre anni), i caprovini venivano uccisi a tre anni. In queste cifre colpisce da un lato il ruolo di tutto rilievo assolto nell’alimentazione carnea dei bovini, dall’altro esse fanno pensare che l’allevamento di bestiame fosse organizzato basandosi su tecniche piuttosto rozze, poco attente all’incremento degli armenti o delle greggi. Sono state ritrovate anche le ossa di un daino e d’un cervo; la caccia, quindi, contribiva sempre all’alimentazione.

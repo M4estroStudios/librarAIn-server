@@ -1,0 +1,44 @@
+---
+aligned_page: 41
+original_page: 44
+chapter_number: "2"
+chapter_name: "Un fiume, un guado e un crocevia (Vincenzo Matera)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# I ROMANI IMPARANO A SCRIVERE
+
+L'introduzione della scrittura a Roma è attribuita a Evandro, il mitico colonizzatore greco del Palatino.
+La scrittura sarebbe arrivata dal mondo greco nell'xi sec. a.C., quando in realtà essa stava ancora affermandosi in Oriente e in Grecia.
+Il rapido sviluppo di Roma agisce da polo di attrazione per le genti dell'interno e anche per gli intraprendenti commercianti fenici e greci, i quali presso il guado del Tevere trovano il punto di scambio ideale.
+Questi mercanti, insieme agli oggetti da scambiare e da vendere, hanno portato anche idee, culti (come il culto di Ercole) e probabilmente l'alfabeto.
+Il ritrovamento delle più antiche lettere ellenizzanti su un vaso di una tomba della necropoli di Osteria dell'Osa, corrispondente all'antica Gabii, coincide in modo stupefacente con la tradizione.
+Secondo quanto si tramanda Romolo e Remo, educati a Gabii, avrebbe qui appreso la scrittura: Romolo, divenuto re, avrebbe usato ancora quest'alfabeto greco per iscrizioni che celebravano vittorie e definivano trattati.
+Nel vii sec. a.C. questo nuovo strumento, che si va sempre più adattando alla lingua latina, si diffonde in maniera più ampia, acquistando anche una dimensione pubblica.
+Documenti scritti cominciano a comparire con frequenza nei santuari, nei donari, negli spazi destinati alla vita della comunità.
+
+I senatori non hanno particolari poteri. Di solito sono consultati per questioni su cui il solo re avrebbe poi dato il giudizio finale.
+Il Senato è quindi solo un organo consultivo, che può appoggiare il re, senza potersi opporre.
+Certamente anche la divisione del popolo in curie e tribù ha concorso ad aumentare il potere del re a discapito delle famiglie e del Senate.
+I comizi curiati, formati dalle curie riunite insieme, hanno particolari compiti.
+Dal momento che il popolo è il vero depositario del potere, il re dopo la sua elezione riceve dai comizi curiati il sommo potere che gli permette di governare.
+Infine il raggruppamento delle curie facilita il reclutamento dell'esercito: ogni curia deve fornire una centuria di fanti (cento uomini) per un totale di tremila soldati.
+Questo è l'esercito primitivo a cui si aggiungono trecento cavalieri, cento per ciascuna delle tribù.
+Infine i comizi ratificano alcuni atti delle gentes, come una forma particolare di testamento: se un capofamiglia è rimasto privo di eredi, davanti alle curie riunite può nominare un successore, che da quel momento entra a far parte della famiglia del padre adottivo, rinunciando a quella d'origine.
+
+## L'ACCLAMAZIONE POPOLARE
+
+Secondo la tradizione, dopo la sparizione misteriosa di Romolo i patres debono affrontare non pochi problemi per la successione.
+Essi escogitano allora gli citato interregno come soluzione di fortuna per uno Stato rimasto all'improvviso senza guida.
+
+I cento senatori si dividono in dieci decurie (un gruppo di dieci persone), scegliendo da ciascuna di esse un uomo.
+I dieci uomini

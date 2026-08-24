@@ -1,0 +1,20 @@
+---
+aligned_page: 191
+original_page: 194
+chapter_number: "11"
+chapter_name: "Romani e Cartaginesi: è lo scontro (Fulvia Mainardis e Claudio Zaccaria)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# LA GRANDE MADRE E IL TEMPIO SUL PALATINO
+
+Ogni nuova sconfitta è contrassegnata per i Romani da prodigi e strani eventi che turbano la città e le campagne. Uno dei segni più pauosi e stupefacenti del sovverimento del mondo e della difficoltà dello Stato romano è considerata la nascita di neonati di sesso indefinito o androgini: questi sfortunati bambini, numerosi negli anni della guerra punica, sono subito eliminati. Durante la lunga e difficile guerra il responso dei Libri Sibillini richiede l'importazione d'une divinità orientale: la Magna Mater o Cibele, la Grande Madre degli dei. Ambasciatori partono per il regno di Pergamo (situato nell'attuale Turchia), nel cui territorio è situato il santuario di Pessinunte. Il 4 aprile del 204 a.C. Publio Cornelio Scipione Nasica, scelto perché è ritenuto il migliore dei Romani, riporta dall'Asia un pietra nera, simbolo della dea orientale. Questa pietra è accolta nel tempio di Vittoria sul Palatino, finché sullo stesso colle le è dedicato un tempio (10 aprile 191 a.C.). Cibele viene “depurata” dei suoi tratti più scomodi e diventa una divinità patrizia. La sua origine “troiana” (nel regno di Pergamo era inclusa la Troade) consente di accoglierla nel pomerio e addirittura sul Palatino, il cuore della città romulea, perché i Romani cominciano a essere molto sensibili alla loro discendenza mitica e la leggenda sull’origine troiana può costituire un'otima carta, quando le legioni si spingeranno verso la Grecia.

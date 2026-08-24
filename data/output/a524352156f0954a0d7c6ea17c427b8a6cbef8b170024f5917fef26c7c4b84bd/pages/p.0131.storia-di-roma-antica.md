@@ -1,0 +1,38 @@
+---
+aligned_page: 131
+original_page: 134
+chapter_number: "7"
+chapter_name: "Ascesa, caduta e resurrezione di Roma (Fulvia Mainardis e Claudio Zaccaria)"
+index_connections:
+  success:
+    regex:
+    []
+    ai:
+    []
+  failed:
+    regex:
+    []
+    ai:
+    []
+---
+# Il rex sacrorum non abita più qui
+
+La fine della monarchia determina la trasformazione della Regia in un edificio sacro, continuamente restaurato e ricostruito nella forma acquistata dopo la sua distruzione alla fine del vi secolo avanti Cristo.
+Il rex sacrorum repubblicano rappresenta la pallida copia del monarca e conserva solo la funzione religiosa.
+La sua casa non è la Regia, ma la Domus regis sacrorum, che trovasi a est dell’atrium Vestae.
+Presto il rex sacrorum è privato dei suoi poteri in favore del Pontefice massimo, che lo sostituisce nelle funzioni più importanti.
+Quando il “re repubblicano” diviene completamente inutile, la sua casa diventa la Domus Publica, la casa del Pontefice massimo.
+Soltanto con Augusto l’intero complesso è abbandonato e inglobato nella vicina casa delle Vestali.
+
+I flàmini, di origine antichissima (la parola corrisponde al sanscritto brahman, bramino), sono addetti al culto di singoli dei.
+
+Tre di loro (Flames maiores) sono riservati alle divinità pubbliche più antiche: Giove (Flamen Dialis), Marte (Flamen Martialis), Quirino (Flamen Quirinalis).
+Essi sono sottoposti a numerosi obblighi e divieti.
+
+Le Vestali – come detto precedentemente – sono anch’esse sottoposte a restrizioni e a obblighi di vario genere, primo fra tutti quello della verginità, e accudiscono al focolare comune dello Stato.
+Il secondo collegio sacerdotale di Roma è quello degli auguri, che hanno il compito di accertare la volontà degli dei, interpretando i presagi: il volo o il canto degli uccelli, l’appetito dei polli sacri, tuoni e fulmini.
+Depositari della saggezza pubblica, i loro pareri sono vincolanti per i magistrati.
+Essi in pratica possono opporsi a proposte di legge non gradite ai patrizi, facendo rinviare i comizi.
+Solo nel 300 a.C., in base al già citato plebiscito Ogulnio, che porta a nove i membri del collegio, i plebei vi accedono, occupando cinque posti.
+
+Un altro importante collegio è quello dei duoviri sacris faciundis (due sa-
