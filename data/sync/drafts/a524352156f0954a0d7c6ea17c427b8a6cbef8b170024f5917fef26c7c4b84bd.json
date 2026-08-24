@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source_sha256": "a524352156f0954a0d7c6ea17c427b8a6cbef8b170024f5917fef26c7c4b84bd",
-  "updated_at": "2026-08-23T16:24:36.352676+00:00",
+  "updated_at": "2026-08-24T16:56:13.014901+00:00",
   "is_draft": true,
   "has_pdf": true,
   "file_name": "Storia di Roma Antica.pdf",
@@ -1169,6 +1169,2418 @@
               513,
               940,
               981
+            ]
+          }
+        ]
+      },
+      {
+        "page": 43,
+        "elements": [
+          {
+            "id": "bbox_7iasd02",
+            "name": "Testata Pari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              85,
+              40,
+              910,
+              75
+            ]
+          },
+          {
+            "id": "bbox_t46u38p",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              82,
+              446,
+              914,
+              953
+            ]
+          }
+        ]
+      },
+      {
+        "page": 44,
+        "elements": [
+          {
+            "id": "bbox_td6kxb2",
+            "name": "Testata Dispari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              83,
+              53,
+              915,
+              74
+            ]
+          },
+          {
+            "id": "bbox_iqqtcat",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              87,
+              230,
+              908,
+              539
+            ]
+          },
+          {
+            "id": "bbox_ht236v5",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              272,
+              825,
+              727,
+              857
+            ]
+          }
+        ]
+      },
+      {
+        "page": 45,
+        "elements": [
+          {
+            "id": "bbox_38u5p25",
+            "name": "Testata Pari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              64,
+              38,
+              917,
+              75
+            ]
+          },
+          {
+            "id": "bbox_5fb2c3e",
+            "name": "immagine_part-page_part_width",
+            "description": "PAG PARI\nimmagine allineata a sx, con didascalia in italics sulla dx\n\nPAG DISPARI:\nimmagine allineata a sx, con didascalia in italics sulla sx",
+            "type": "bbox",
+            "coords": [
+              59,
+              84,
+              892,
+              436
+            ]
+          },
+          {
+            "id": "bbox_l91shvg",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              57,
+              441,
+              899,
+              671
+            ]
+          }
+        ]
+      },
+      {
+        "page": 46,
+        "elements": [
+          {
+            "id": "bbox_p2lm13s",
+            "name": "Testata Dispari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              79,
+              42,
+              922,
+              81
+            ]
+          },
+          {
+            "id": "bbox_rxtl0xm",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              212,
+              100,
+              802,
+              127
+            ]
+          },
+          {
+            "id": "bbox_7sd3br3",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              88,
+              619,
+              917,
+              954
+            ]
+          }
+        ]
+      },
+      {
+        "page": 47,
+        "elements": [
+          {
+            "id": "bbox_dtj60y9",
+            "name": "Testata Pari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              76,
+              46,
+              911,
+              87
+            ]
+          },
+          {
+            "id": "bbox_y40pwv5",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              76,
+              448,
+              902,
+              87
+            ]
+          },
+          {
+            "id": "bbox_zr703et",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              677,
+              481,
+              285,
+              454
+            ]
+          },
+          {
+            "id": "bbox_mqohkhx",
+            "name": "immagine_part-page_part_width",
+            "description": "PAG PARI\nimmagine allineata a sx, con didascalia in italics sulla dx\n\nPAG DISPARI:\nimmagine allineata a sx, con didascalia in italics sulla sx",
+            "type": "bbox",
+            "coords": [
+              82,
+              961,
+              917,
+              573
+            ]
+          }
+        ]
+      },
+      {
+        "page": 48,
+        "elements": [
+          {
+            "id": "bbox_h0zqne7",
+            "name": "Testata Dispari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              88,
+              38,
+              928,
+              69
+            ]
+          },
+          {
+            "id": "bbox_cyu11gt",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              292,
+              418,
+              723,
+              447
+            ]
+          }
+        ]
+      },
+      {
+        "page": 49,
+        "elements": [
+          {
+            "id": "bbox_zvmgkm2",
+            "name": "Testata Pari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              73,
+              28,
+              905,
+              69
+            ]
+          },
+          {
+            "id": "bbox_d96r1uj",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              85,
+              473,
+              902,
+              75
+            ]
+          },
+          {
+            "id": "bbox_izqm2ej",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              674,
+              485,
+              303,
+              519
+            ]
+          },
+          {
+            "id": "bbox_t9i5f3c",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              288,
+              722,
+              689,
+              760
+            ]
+          }
+        ]
+      },
+      {
+        "page": 50,
+        "elements": [
+          {
+            "id": "bbox_wuasxl4",
+            "name": "Testata Dispari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              97,
+              40,
+              925,
+              66
+            ]
+          },
+          {
+            "id": "bbox_dvbh6vp",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              94,
+              507,
+              927,
+              76
+            ]
+          }
+        ]
+      },
+      {
+        "page": 51,
+        "elements": [
+          {
+            "id": "bbox_kbdndt7",
+            "name": "Testata Pari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              82,
+              32,
+              902,
+              73
+            ]
+          },
+          {
+            "id": "bbox_tilgrn7",
+            "name": "Box_Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              85,
+              418,
+              890,
+              75
+            ]
+          },
+          {
+            "id": "bbox_qri7je2",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              695,
+              505,
+              270,
+              547
+            ]
+          }
+        ]
+      },
+      {
+        "page": 52,
+        "elements": [
+          {
+            "id": "bbox_95vgvvi",
+            "name": "Testata Dispari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              89,
+              40,
+              934,
+              71
+            ]
+          },
+          {
+            "id": "bbox_8o5zefw",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              98,
+              240,
+              936,
+              401
+            ]
+          },
+          {
+            "id": "bbox_huy6f7o",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              101,
+              689,
+              913,
+              882
+            ]
+          },
+          {
+            "id": "bbox_rgevsmg",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              656,
+              486,
+              363,
+              524
+            ]
+          }
+        ]
+      },
+      {
+        "page": 53,
+        "elements": [
+          {
+            "id": "bbox_8u2jkbs",
+            "name": "Testata Pari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              65,
+              38,
+              898,
+              69
+            ]
+          },
+          {
+            "id": "bbox_i6i19g7",
+            "name": "immagine_part-page_part_width",
+            "description": "PAG PARI\nimmagine allineata a sx, con didascalia in italics sulla dx\n\nPAG DISPARI:\nimmagine allineata a sx, con didascalia in italics sulla sx",
+            "type": "bbox",
+            "coords": [
+              74,
+              530,
+              901,
+              75
+            ]
+          },
+          {
+            "id": "bbox_3sudm78",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              895,
+              761,
+              65,
+              550
+            ]
+          }
+        ]
+      },
+      {
+        "page": 54,
+        "elements": [
+          {
+            "id": "bbox_u72tbyv",
+            "name": "Testata Dispari",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              89,
+              40,
+              937,
+              66
+            ]
+          },
+          {
+            "id": "bbox_sh49ox0",
+            "name": "Sezione_(##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              683,
+              80,
+              347,
+              118
+            ]
+          },
+          {
+            "id": "bbox_smc793u",
+            "name": "Sezione (##)",
+            "description": "In questo libro è una separazione contenutistica, legate a specifiche fasi storiche, più o meno cronologicamente ordinate nel libro)",
+            "type": "bbox",
+            "coords": [
+              117,
+              364,
+              895,
+              398
+            ]
+          },
+          {
+            "id": "bbox_33nvbqw",
+            "name": "Box Curiosità",
+            "description": "Titolo all caps sopra, e sotto il contenuto.\nIl tutto in un box rettangolare dai confini neri, largo quanto la colonna di testo normale",
+            "type": "bbox",
+            "coords": [
+              91,
+              609,
+              930,
+              946
+            ]
+          }
+        ]
+      },
+      {
+        "page": 67,
+        "elements": [
+          {
+            "id": "bbox_92andg8",
+            "name": "doppia Box Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              103,
+              75,
+              925,
+              953
+            ]
+          }
+        ]
+      },
+      {
+        "page": 68,
+        "elements": [
+          {
+            "id": "bbox_3aw247p",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              91,
+              85,
+              914,
+              462
+            ]
+          }
+        ]
+      },
+      {
+        "page": 71,
+        "elements": [
+          {
+            "id": "bbox_jv3g42h",
+            "name": "Box Curiosità Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              78,
+              184,
+              908,
+              954
+            ]
+          }
+        ]
+      },
+      {
+        "page": 75,
+        "elements": [
+          {
+            "id": "bbox_sx9z134",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              205,
+              76,
+              781,
+              216
+            ]
+          }
+        ]
+      },
+      {
+        "page": 83,
+        "elements": [
+          {
+            "id": "bbox_ope8q4j",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              88,
+              72,
+              911,
+              852
+            ]
+          }
+        ]
+      },
+      {
+        "page": 87,
+        "elements": [
+          {
+            "id": "bbox_s42so70",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              78,
+              74,
+              898,
+              541
+            ]
+          }
+        ]
+      },
+      {
+        "page": 90,
+        "elements": [
+          {
+            "id": "bbox_qgq33b1",
+            "name": "Immagine part-page full width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              96,
+              497,
+              918,
+              950
+            ]
+          }
+        ]
+      },
+      {
+        "page": 101,
+        "elements": [
+          {
+            "id": "bbox_n6f6dqb",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              81,
+              74,
+              924,
+              507
+            ]
+          }
+        ]
+      },
+      {
+        "page": 107,
+        "elements": [
+          {
+            "id": "bbox_lpwvb6w",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              91,
+              83,
+              908,
+              829
+            ]
+          }
+        ]
+      },
+      {
+        "page": 110,
+        "elements": [
+          {
+            "id": "bbox_vym08w4",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              141,
+              61,
+              883,
+              171
+            ]
+          }
+        ]
+      },
+      {
+        "page": 117,
+        "elements": [
+          {
+            "id": "bbox_6txmma8",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              68,
+              318,
+              901,
+              946
+            ]
+          }
+        ]
+      },
+      {
+        "page": 123,
+        "elements": [
+          {
+            "id": "bbox_lfiy1m0",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              75,
+              333,
+              898,
+              872
+            ]
+          }
+        ]
+      },
+      {
+        "page": 131,
+        "elements": [
+          {
+            "id": "bbox_2u4s1uc",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              91,
+              87,
+              921,
+              804
+            ]
+          }
+        ]
+      },
+      {
+        "page": 137,
+        "elements": [
+          {
+            "id": "bbox_bndo2ux",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              96,
+              89,
+              934,
+              874
+            ]
+          }
+        ]
+      },
+      {
+        "page": 139,
+        "elements": [
+          {
+            "id": "bbox_vomop9g",
+            "name": "Decorazione_di_Fine_Capitolo",
+            "description": "Presente nei capitoli in cui l'ultima pagina non è riempita da contenuti, e c'è dello spazio vuoto a fondo pagina.\nNessuna didascalia",
+            "type": "bbox",
+            "coords": [
+              353,
+              801,
+              642,
+              965
+            ]
+          }
+        ]
+      },
+      {
+        "page": 140,
+        "elements": [
+          {
+            "id": "bbox_yyvlgwy",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              157,
+              59,
+              858,
+              163
+            ]
+          }
+        ]
+      },
+      {
+        "page": 148,
+        "elements": [
+          {
+            "id": "bbox_g8wh6v4",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              107,
+              63,
+              946,
+              946
+            ]
+          }
+        ]
+      },
+      {
+        "page": 150,
+        "elements": [
+          {
+            "id": "bbox_29oe3pv",
+            "name": "Tripla Box curiosità",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              100,
+              123,
+              933,
+              942
+            ]
+          }
+        ]
+      },
+      {
+        "page": 154,
+        "elements": [
+          {
+            "id": "bbox_hx87ojv",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              101,
+              415,
+              924,
+              957
+            ]
+          },
+          {
+            "id": "bbox_vc8x1nv",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "In particolare questa immagine, al top, va dentro al 2o box curiosità (quello bottom)",
+            "type": "bbox",
+            "coords": [
+              81,
+              70,
+              932,
+              969
+            ]
+          }
+        ]
+      },
+      {
+        "page": 156,
+        "elements": [
+          {
+            "id": "bbox_vpz7nt2",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              152,
+              89,
+              847,
+              135
+            ]
+          }
+        ]
+      },
+      {
+        "page": 162,
+        "elements": [
+          {
+            "id": "bbox_q9cd8aq",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              77,
+              968,
+              902,
+              328
+            ]
+          }
+        ]
+      },
+      {
+        "page": 163,
+        "elements": [
+          {
+            "id": "bbox_y9bp9ax",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              84,
+              265,
+              905,
+              961
+            ]
+          }
+        ]
+      },
+      {
+        "page": 168,
+        "elements": [
+          {
+            "id": "bbox_2g6et3g",
+            "name": "Box Curiosità con Tabella",
+            "description": "creare una tabella md per quella sezione",
+            "type": "bbox",
+            "coords": [
+              88,
+              74,
+              911,
+              335
+            ]
+          },
+          {
+            "id": "bbox_hbhhoij",
+            "name": "Decorazione di Fine Capitolo",
+            "description": "Presente nei capitoli in cui l'ultima pagina non è riempita da contenuti, e c'è dello spazio vuoto a fondo pagina.\nNessuna didascalia",
+            "type": "bbox",
+            "coords": [
+              303,
+              557,
+              744,
+              676
+            ]
+          }
+        ]
+      },
+      {
+        "page": 169,
+        "elements": [
+          {
+            "id": "bbox_sp22d9j",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              159,
+              68,
+              857,
+              145
+            ]
+          }
+        ]
+      },
+      {
+        "page": 172,
+        "elements": [
+          {
+            "id": "bbox_1wegjeb",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              85,
+              356,
+              913,
+              969
+            ]
+          }
+        ]
+      },
+      {
+        "page": 177,
+        "elements": [
+          {
+            "id": "bbox_8m0dqmh",
+            "name": "Immagine Full Page",
+            "description": "Con didascalia sotto",
+            "type": "bbox",
+            "coords": [
+              101,
+              73,
+              939,
+              956
+            ]
+          }
+        ]
+      },
+      {
+        "page": 178,
+        "elements": [
+          {
+            "id": "bbox_ecwpnce",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              108,
+              77,
+              939,
+              705
+            ]
+          }
+        ]
+      },
+      {
+        "page": 182,
+        "elements": [
+          {
+            "id": "bbox_8gdvpqx",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              111,
+              828,
+              935,
+              73
+            ]
+          }
+        ]
+      },
+      {
+        "page": 184,
+        "elements": [
+          {
+            "id": "bbox_8eqveb9",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              90,
+              86,
+              932,
+              965
+            ]
+          }
+        ]
+      },
+      {
+        "page": 185,
+        "elements": [
+          {
+            "id": "bbox_zuxhuic",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              80,
+              86,
+              908,
+              612
+            ]
+          },
+          {
+            "id": "bbox_gmn2he6",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              78,
+              306,
+              909,
+              959
+            ]
+          }
+        ]
+      },
+      {
+        "page": 186,
+        "elements": [
+          {
+            "id": "bbox_ea34x0q",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              142,
+              84,
+              857,
+              225
+            ]
+          }
+        ]
+      },
+      {
+        "page": 194,
+        "elements": [
+          {
+            "id": "bbox_7th6u42",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              80,
+              84,
+              908,
+              962
+            ]
+          }
+        ]
+      },
+      {
+        "page": 195,
+        "elements": [
+          {
+            "id": "bbox_bwg1e2w",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              104,
+              73,
+              918,
+              949
+            ]
+          }
+        ]
+      },
+      {
+        "page": 197,
+        "elements": [
+          {
+            "id": "bbox_zxxu6y2",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              77,
+              75,
+              898,
+              953
+            ]
+          }
+        ]
+      },
+      {
+        "page": 199,
+        "elements": [
+          {
+            "id": "bbox_28cxdwz",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              101,
+              75,
+              925,
+              733
+            ]
+          }
+        ]
+      },
+      {
+        "page": 200,
+        "elements": [
+          {
+            "id": "bbox_xzxqbmm",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              94,
+              657,
+              911,
+              73
+            ]
+          }
+        ]
+      },
+      {
+        "page": 202,
+        "elements": [
+          {
+            "id": "bbox_lbap77w",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              80,
+              896,
+              898,
+              77
+            ]
+          }
+        ]
+      },
+      {
+        "page": 203,
+        "elements": [
+          {
+            "id": "bbox_5m0rmvg",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              111,
+              59,
+              894,
+              143
+            ]
+          }
+        ]
+      },
+      {
+        "page": 204,
+        "elements": [
+          {
+            "id": "bbox_1mv1biy",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              80,
+              79,
+              922,
+              958
+            ]
+          }
+        ]
+      },
+      {
+        "page": 208,
+        "elements": [
+          {
+            "id": "bbox_1isztdh",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              92,
+              82,
+              921,
+              949
+            ]
+          }
+        ]
+      },
+      {
+        "page": 211,
+        "elements": [
+          {
+            "id": "bbox_gyh1mk2",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              60,
+              660,
+              897,
+              73
+            ]
+          }
+        ]
+      },
+      {
+        "page": 215,
+        "elements": [
+          {
+            "id": "bbox_pq08pdl",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              66,
+              252,
+              888,
+              956
+            ]
+          }
+        ]
+      },
+      {
+        "page": 216,
+        "elements": [
+          {
+            "id": "bbox_ugzz03l",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              82,
+              81,
+              919,
+              782
+            ]
+          }
+        ]
+      },
+      {
+        "page": 218,
+        "elements": [
+          {
+            "id": "bbox_2ohdh4e",
+            "name": "Box Curiosità w/IMG connessa",
+            "description": "L'immagine è da considerare come interna al Box, nonostante sianograficamente due widget separati",
+            "type": "bbox",
+            "coords": [
+              108,
+              82,
+              942,
+              967
+            ]
+          }
+        ]
+      },
+      {
+        "page": 219,
+        "elements": [
+          {
+            "id": "bbox_5500na5",
+            "name": "Grafico Genealigico",
+            "description": "In questo caso, limitato agli Scipione le cui spogli erano nel sepolcro di famiglia",
+            "type": "bbox",
+            "coords": [
+              74,
+              235,
+              898,
+              516
+            ]
+          }
+        ]
+      },
+      {
+        "page": 221,
+        "elements": [
+          {
+            "id": "bbox_jvojbxp",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "In particolare questa immagine, al top, va dentro al 2o box curiosità (quello bottom)",
+            "type": "bbox",
+            "coords": [
+              85,
+              283,
+              910,
+              959
+            ]
+          }
+        ]
+      },
+      {
+        "page": 226,
+        "elements": [
+          {
+            "id": "bbox_8medhgi",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              75,
+              84,
+              905,
+              704
+            ]
+          },
+          {
+            "id": "bbox_p0upz87",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "In particolare questa immagine, al top, va dentro al 2o box curiosità (quello bottom)",
+            "type": "bbox",
+            "coords": [
+              75,
+              955,
+              900,
+              373
+            ]
+          }
+        ]
+      },
+      {
+        "page": 228,
+        "elements": [
+          {
+            "id": "bbox_8zkuos6",
+            "name": "Box_Curiosità_Sandwitch",
+            "description": "Don't get mistaken by the fact that the sezion_ in_the _middle has a line above and below.\nÈ solo sandwitchata tra 2 box curiosità.\nBtw, puoi distinguerli dal fatto che i titoli all caps sono Left Alligned nei Box, mentre page-centered per le Sezioni",
+            "type": "bbox",
+            "coords": [
+              75,
+              86,
+              916,
+              967
+            ]
+          }
+        ]
+      },
+      {
+        "page": 231,
+        "elements": [
+          {
+            "id": "bbox_640zx9r",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              79,
+              88,
+              905,
+              641
+            ]
+          },
+          {
+            "id": "bbox_ikuxjuo",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              61,
+              960,
+              901,
+              421
+            ]
+          }
+        ]
+      },
+      {
+        "page": 232,
+        "elements": [
+          {
+            "id": "bbox_qt7kc80",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              87,
+              384,
+              919,
+              955
+            ]
+          }
+        ]
+      },
+      {
+        "page": 238,
+        "elements": [
+          {
+            "id": "bbox_f9fr4o3",
+            "name": "Immagine_part-page_full_width",
+            "description": "con didascalia in italics sotto",
+            "type": "bbox",
+            "coords": [
+              101,
+              485,
+              919,
+              76
+            ]
+          }
+        ]
+      },
+      {
+        "page": 239,
+        "elements": [
+          {
+            "id": "bbox_i7unwcp",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              68,
+              76,
+              934,
+              952
+            ]
+          }
+        ]
+      },
+      {
+        "page": 249,
+        "elements": [
+          {
+            "id": "bbox_2e0zatz",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "In particolare questa immagine, al top, va dentro al 2o box curiosità (quello bottom)",
+            "type": "bbox",
+            "coords": [
+              75,
+              289,
+              908,
+              947
+            ]
+          }
+        ]
+      },
+      {
+        "page": 253,
+        "elements": [
+          {
+            "id": "bbox_7h6yakb",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              83,
+              235,
+              901,
+              754
+            ]
+          }
+        ]
+      },
+      {
+        "page": 270,
+        "elements": [
+          {
+            "id": "bbox_7u1ik73",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              101,
+              81,
+              934,
+              965
+            ]
+          }
+        ]
+      },
+      {
+        "page": 271,
+        "elements": [
+          {
+            "id": "bbox_aimslne",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "In particolare questa immagine, al top, va dentro al 2o box curiosità (quello bottom)",
+            "type": "bbox",
+            "coords": [
+              79,
+              81,
+              912,
+              965
+            ]
+          }
+        ]
+      },
+      {
+        "page": 279,
+        "elements": [
+          {
+            "id": "bbox_g2s6qdr",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "In particolare questa immagine, al top, va dentro al 2o box curiosità (quello bottom)",
+            "type": "bbox",
+            "coords": [
+              50,
+              71,
+              885,
+              701
+            ]
+          }
+        ]
+      },
+      {
+        "page": 280,
+        "elements": [
+          {
+            "id": "bbox_3n4jwlk",
+            "name": "doppia_Box_Curiosità",
+            "description": "Due Box Separate, stacked una sopra l'altra",
+            "type": "bbox",
+            "coords": [
+              90,
+              88,
+              941,
+              967
+            ]
+          }
+        ]
+      },
+      {
+        "page": 281,
+        "elements": [
+          {
+            "id": "bbox_74r5tq6",
+            "name": "Decorazione_di_Fine_Capitolo",
+            "description": "Presente nei capitoli in cui l'ultima pagina non è riempita da contenuti, e c'è dello spazio vuoto a fondo pagina.\nNessuna didascalia",
+            "type": "bbox",
+            "coords": [
+              227,
+              720,
+              742,
+              871
+            ]
+          }
+        ]
+      },
+      {
+        "page": 282,
+        "elements": [
+          {
+            "id": "bbox_bp8m7dd",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              97,
+              76,
+              934,
+              142
+            ]
+          }
+        ]
+      },
+      {
+        "page": 283,
+        "elements": [
+          {
+            "id": "bbox_rvfrsl7",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              64,
+              257,
+              912,
+              967
+            ]
+          }
+        ]
+      },
+      {
+        "page": 285,
+        "elements": [
+          {
+            "id": "bbox_1uhodw0",
+            "name": "Immagine Multi-Page (parte 1, sx)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              72,
+              595,
+              999,
+              83
+            ]
+          }
+        ]
+      },
+      {
+        "page": 286,
+        "elements": [
+          {
+            "id": "bbox_2jifkfy",
+            "name": "Immagine Multi-Page (part 2, dx)",
+            "description": "Con didascalia",
+            "type": "bbox",
+            "coords": [
+              2,
+              81,
+              953,
+              583
+            ]
+          }
+        ]
+      },
+      {
+        "page": 287,
+        "elements": [
+          {
+            "id": "bbox_1ems0ea",
+            "name": "Box_Curiosità_wIMG_connessa",
+            "description": "In particolare questa immagine, al top, va dentro al 2o box curiosità (quello bottom)",
+            "type": "bbox",
+            "coords": [
+              85,
+              394,
+              918,
+              941
+            ]
+          }
+        ]
+      },
+      {
+        "page": 297,
+        "elements": [
+          {
+            "id": "bbox_yxh55tr",
+            "name": "Decorazione_di_Fine_Capitolo",
+            "description": "Presente nei capitoli in cui l'ultima pagina non è riempita da contenuti, e c'è dello spazio vuoto a fondo pagina.\nNessuna didascalia",
+            "type": "bbox",
+            "coords": [
+              295,
+              493,
+              640,
+              911
+            ]
+          }
+        ]
+      },
+      {
+        "page": 313,
+        "elements": [
+          {
+            "id": "bbox_xl5iw7m",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              234,
+              71,
+              768,
+              174
+            ]
+          }
+        ]
+      },
+      {
+        "page": 330,
+        "elements": [
+          {
+            "id": "bbox_kx3hz6t",
+            "name": "Capitolo_(#)",
+            "description": "Il massimo livello di Heading.\nLi trovi elencati nel ToC.",
+            "type": "bbox",
+            "coords": [
+              186,
+              78,
+              835,
+              127
+            ]
+          }
+        ]
+      },
+      {
+        "page": 335,
+        "elements": [
+          {
+            "id": "bbox_85i2o7e",
+            "name": "Multipage Box Curiosità (part 1, top)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              75,
+              245,
+              897,
+              960
+            ]
+          }
+        ]
+      },
+      {
+        "page": 336,
+        "elements": [
+          {
+            "id": "bbox_chz5og2",
+            "name": "Multipage Box Curiosità (parte 2 bottom)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              110,
+              457,
+              929,
+              72
+            ]
+          }
+        ]
+      },
+      {
+        "page": 337,
+        "elements": [
+          {
+            "id": "bbox_tk84lox",
+            "name": "Multipage_Box_Curiosità_(part_1_top)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              66,
+              667,
+              897,
+              954
+            ]
+          }
+        ]
+      },
+      {
+        "page": 338,
+        "elements": [
+          {
+            "id": "bbox_izkpg63",
+            "name": "Multipage_Box_Curiosità_(parte_2_bottom)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              86,
+              77,
+              929,
+              962
+            ]
+          }
+        ]
+      },
+      {
+        "page": 359,
+        "elements": [
+          {
+            "id": "bbox_nv5tbxi",
+            "name": "Decorazione_di_Fine_Capitolo",
+            "description": "Presente nei capitoli in cui l'ultima pagina non è riempita da contenuti, e c'è dello spazio vuoto a fondo pagina.\nNessuna didascalia",
+            "type": "bbox",
+            "coords": [
+              364,
+              799,
+              643,
+              964
+            ]
+          }
+        ]
+      },
+      {
+        "page": 378,
+        "elements": [
+          {
+            "id": "bbox_daf2cyb",
+            "name": "Multipage_Box_Curiosità_(part_1_top)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              89,
+              211,
+              918,
+              967
+            ]
+          }
+        ]
+      },
+      {
+        "page": 379,
+        "elements": [
+          {
+            "id": "bbox_usuzsyw",
+            "name": "Multipage_Box_Curiosità_(parte_2_bottom)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              76,
+              559,
+              896,
+              81
+            ]
+          }
+        ]
+      },
+      {
+        "page": 391,
+        "elements": [
+          {
+            "id": "bbox_k9a1hmk",
+            "name": "Immagine_Multi-Page_(parte_1_sx)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              67,
+              75,
+              999,
+              967
+            ]
+          }
+        ]
+      },
+      {
+        "page": 392,
+        "elements": [
+          {
+            "id": "bbox_yaml3bx",
+            "name": "Immagine_Multi-Page_(part_2_dx)",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              925,
+              916,
+              0,
+              90
+            ]
+          }
+        ]
+      },
+      {
+        "page": 393,
+        "elements": [
+          {
+            "id": "bbox_zcw9rpk",
+            "name": "Decorazione_di_Fine_Capitolo",
+            "description": "Presente nei capitoli in cui l'ultima pagina non è riempita da contenuti, e c'è dello spazio vuoto a fondo pagina.\nNessuna didascalia",
+            "type": "bbox",
+            "coords": [
+              357,
+              560,
+              617,
+              738
+            ]
+          }
+        ]
+      },
+      {
+        "page": 394,
+        "elements": [
+          {
+            "id": "bbox_1vzg3xg",
+            "name": "Titolo Appendice",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              236,
+              67,
+              751,
+              164
+            ]
+          },
+          {
+            "id": "trail_h6tu3pe",
+            "name": "Senso di Marcia multicolonna",
+            "description": "Prima colonna: top -> down\n\n--> next colonna: top ->down",
+            "type": "trail",
+            "coords": [
+              [
+                64,
+                494
+              ],
+              [
+                58,
+                966
+              ],
+              [
+                445,
+                964
+              ],
+              [
+                469,
+                539
+              ],
+              [
+                516,
+                539
+              ],
+              [
+                513,
+                966
+              ],
+              [
+                867,
+                966
+              ],
+              [
+                872,
+                968
+              ]
+            ]
+          },
+          {
+            "id": "bbox_34p2mfh",
+            "name": "Introduzione Lista",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              77,
+              286,
+              929,
+              382
+            ]
+          },
+          {
+            "id": "bbox_lnopj6c",
+            "name": "Cronologia su 2 colonne",
+            "description": "Gli anni, che appaiono qui, sono tutti a.C..\nTrascriverli con a.C. in aggiunta a ciascun numero.",
+            "type": "bbox",
+            "coords": [
+              72,
+              378,
+              837,
+              460
+            ]
+          },
+          {
+            "id": "bbox_5mmaxzm",
+            "name": "Cronologia su 2 colonne",
+            "description": "Qui gli anni sono specificati gli a.C.",
+            "type": "bbox",
+            "coords": [
+              56,
+              463,
+              840,
+              948
+            ]
+          },
+          {
+            "id": "bbox_qsxj1t6",
+            "name": "Introduzione Lista",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              899,
+              530,
+              56,
+              469
+            ]
+          },
+          {
+            "id": "trail_83lpql6",
+            "name": "Senso_di_Marcia_multicolonna",
+            "description": "Prima colonna: top -> down\n\n--> next colonna: top ->down",
+            "type": "trail",
+            "coords": [
+              [
+                64,
+                385
+              ],
+              [
+                64,
+                467
+              ],
+              [
+                478,
+                460
+              ],
+              [
+                480,
+                387
+              ],
+              [
+                516,
+                387
+              ],
+              [
+                524,
+                458
+              ],
+              [
+                826,
+                454
+              ],
+              [
+                826,
+                454
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "page": 395,
+        "elements": [
+          {
+            "id": "bbox_9rw0d85",
+            "name": "Titolo_Appendice",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              313,
+              125,
+              697,
+              72
+            ]
+          },
+          {
+            "id": "bbox_cgfcygf",
+            "name": "Cronologia Monocolonna",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              74,
+              274,
+              939,
+              973
+            ]
+          }
+        ]
+      },
+      {
+        "page": 396,
+        "elements": [
+          {
+            "id": "bbox_812gpsc",
+            "name": "Cronologia_Monocolonna",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              85,
+              84,
+              957,
+              964
+            ]
+          }
+        ]
+      },
+      {
+        "page": 397,
+        "elements": [
+          {
+            "id": "bbox_evsxnk5",
+            "name": "Cronologia_Monocolonna",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              80,
+              947,
+              922,
+              69
+            ]
+          }
+        ]
+      },
+      {
+        "page": 398,
+        "elements": [
+          {
+            "id": "bbox_3y2geev",
+            "name": "Cronologia_Monocolonna",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              93,
+              961,
+              935,
+              75
+            ]
+          }
+        ]
+      },
+      {
+        "page": 399,
+        "elements": [
+          {
+            "id": "bbox_fo5obob",
+            "name": "Cronologia_Monocolonna",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              67,
+              78,
+              922,
+              955
+            ]
+          }
+        ]
+      },
+      {
+        "page": 400,
+        "elements": [
+          {
+            "id": "bbox_t6javno",
+            "name": "Cronologia_Monocolonna",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              102,
+              950,
+              966,
+              69
+            ]
+          }
+        ]
+      },
+      {
+        "page": 401,
+        "elements": [
+          {
+            "id": "bbox_z2re9ty",
+            "name": "Cronologia_Monocolonna",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              67,
+              950,
+              909,
+              61
+            ]
+          }
+        ]
+      },
+      {
+        "page": 402,
+        "elements": [
+          {
+            "id": "bbox_6knhf81",
+            "name": "Cronologia_Monocolonna",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              98,
+              923,
+              953,
+              75
+            ]
+          }
+        ]
+      },
+      {
+        "page": 403,
+        "elements": [
+          {
+            "id": "bbox_jd26xtr",
+            "name": "Titolo Indice",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              63,
+              66,
+              914,
+              121
+            ]
+          },
+          {
+            "id": "bbox_ohgyd63",
+            "name": "Indice Analitico a 2 Colonne",
+            "description": "Come puoi vedere, i nomi propri di persone sono Regular, mentre i nomi dei Luoghi sono in Italics.\nMantieni questa cosa.",
+            "type": "bbox",
+            "coords": [
+              76,
+              263,
+              931,
+              961
+            ]
+          }
+        ]
+      },
+      {
+        "page": 404,
+        "elements": [
+          {
+            "id": "bbox_v2o6jxu",
+            "name": "2+ righe di pagine cit",
+            "description": "Se una row di numeri non ha testo alla sua sx (rimanendo all'interno della propria colonna), sono pagine della voce che si trova alla riga superiore",
+            "type": "bbox",
+            "coords": [
+              528,
+              640,
+              928,
+              673
+            ]
+          }
+        ]
+      },
+      {
+        "page": 405,
+        "elements": [
+          {
+            "id": "bbox_0uv89lg",
+            "name": "2_righe_di_pagine_cit",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              84,
+              635,
+              478,
+              670
+            ]
+          },
+          {
+            "id": "bbox_y0xtdvm",
+            "name": "Indice_Analitico_a_2_Colonne",
+            "description": "Come puoi vedere, i nomi propri di persone sono Regular, mentre i nomi dei Luoghi sono in Italics.\nMantieni questa cosa.",
+            "type": "bbox",
+            "coords": [
+              60,
+              944,
+              939,
+              64
+            ]
+          },
+          {
+            "id": "trail_mtjb4up",
+            "name": "Senso_di_Marcia_multicolonna",
+            "description": "Prima colonna: top -> down\n\n--> next colonna: top ->down",
+            "type": "trail",
+            "coords": [
+              [
+                36,
+                73
+              ],
+              [
+                45,
+                944
+              ],
+              [
+                468,
+                948
+              ],
+              [
+                487,
+                76
+              ],
+              [
+                511,
+                83
+              ],
+              [
+                502,
+                957
+              ],
+              [
+                977,
+                951
+              ],
+              [
+                977,
+                951
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "page": 406,
+        "elements": [
+          {
+            "id": "bbox_ciyceuq",
+            "name": "Indice_Analitico_a_2_Colonne",
+            "description": "Come puoi vedere, i nomi propri di persone sono Regular, mentre i nomi dei Luoghi sono in Italics.\nMantieni questa cosa.",
+            "type": "bbox",
+            "coords": [
+              88,
+              951,
+              963,
+              70
+            ]
+          }
+        ]
+      },
+      {
+        "page": 407,
+        "elements": [
+          {
+            "id": "bbox_o49v0dt",
+            "name": "Indice_Analitico_a_2_Colonne",
+            "description": "Come puoi vedere, i nomi propri di persone sono Regular, mentre i nomi dei Luoghi sono in Italics.\nMantieni questa cosa.",
+            "type": "bbox",
+            "coords": [
+              72,
+              953,
+              932,
+              71
+            ]
+          }
+        ]
+      },
+      {
+        "page": 408,
+        "elements": [
+          {
+            "id": "bbox_pzdi8g9",
+            "name": "Indice_Analitico_a_2_Colonne",
+            "description": "Come puoi vedere, i nomi propri di persone sono Regular, mentre i nomi dei Luoghi sono in Italics.\nMantieni questa cosa.",
+            "type": "bbox",
+            "coords": [
+              77,
+              967,
+              937,
+              78
+            ]
+          }
+        ]
+      },
+      {
+        "page": 409,
+        "elements": [
+          {
+            "id": "bbox_71ejb99",
+            "name": "Indice_Analitico_a_2_Colonne",
+            "description": "Come puoi vedere, i nomi propri di persone sono Regular, mentre i nomi dei Luoghi sono in Italics.\nMantieni questa cosa.",
+            "type": "bbox",
+            "coords": [
+              93,
+              956,
+              959,
+              74
+            ]
+          }
+        ]
+      },
+      {
+        "page": 413,
+        "elements": [
+          {
+            "id": "bbox_vllh4ic",
+            "name": "Indice_Analitico_a_2_Colonne",
+            "description": "Come puoi vedere, i nomi propri di persone sono Regular, mentre i nomi dei Luoghi sono in Italics.\nMantieni questa cosa.",
+            "type": "bbox",
+            "coords": [
+              40,
+              963,
+              900,
+              74
+            ]
+          }
+        ]
+      },
+      {
+        "page": 417,
+        "elements": [
+          {
+            "id": "bbox_2gqncrk",
+            "name": "Titolo TOC",
+            "description": "",
+            "type": "bbox",
+            "coords": [
+              395,
+              74,
+              633,
+              131
+            ]
+          },
+          {
+            "id": "bbox_3uaee8i",
+            "name": "TOC 1 colonna",
+            "description": "a sx: pagina iniziale capitolo\na dx: titolo Capitolo (#)\n\nPer il primo numero nell'elenco della pagina, c'è accomando a sinistra una 'p.' per \"pagina\"",
+            "type": "bbox",
+            "coords": [
+              72,
+              271,
+              944,
+              975
+            ]
+          }
+        ]
+      },
+      {
+        "page": 418,
+        "elements": [
+          {
+            "id": "bbox_xxfn7et",
+            "name": "TOC_1_colonna",
+            "description": "a sx: pagina iniziale capitolo\na dx: titolo Capitolo (#)\n\nPer il primo numero nell'elenco della pagina, c'è accomando a sinistra una 'p.' per \"pagina\"",
+            "type": "bbox",
+            "coords": [
+              40,
+              67,
+              916,
+              505
             ]
           }
         ]
