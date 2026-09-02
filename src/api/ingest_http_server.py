@@ -47,8 +47,11 @@ from src.api.page_guidance_http import (
     try_handle_ingest_drafts_get,
     try_handle_ingest_drafts_pdf_get,
     try_handle_ingest_drafts_post,
+    try_handle_ingest_ingested_get,
+    try_handle_ingest_ingested_pdf_get,
     try_handle_ingest_notes_get,
     try_handle_ingest_notes_state_put,
+    try_handle_ingest_reingest_prepare_post,
     try_handle_page_guidance_post,
 )
 from src.api.prompts_http import try_handle_prompts_get, try_handle_prompts_post
@@ -112,8 +115,17 @@ from src.persistence.book_page_repair import (
 from src.core.config import ConfigurationError, get_env, load_settings
 from src.core.hashing import compute_file_sha256, new_job_id
 from src.core.log import DEBUG_LOG_LEVEL, ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL, logInit, shutdown_log_flush
+from src.api.ingest_compute_catalog import try_handle_compute_catalog_get
 from src.core.openai_client import use_compute_mode
-from src.models.settings import normalize_compute_mode
+from src.models.ingest_compute import (
+    CLASSIC_PIPELINE_STEPS,
+    GLM_PIPELINE_STEPS,
+    apply_step_compute,
+    missing_cloud_config_for_plan,
+    plan_needs_local_llm,
+    resolve_ingest_compute_plan,
+    with_step_override,
+)
 from src.ingestion.pdf_alignment import merge_pdf_paths
 from src.ingestion.pipeline.engine import require_gpu_vram_at_pipeline_start
 from src.ingestion.progress import STATUS_DONE, STATUS_ERROR, STATUS_STARTED, make_event
@@ -598,7 +610,25 @@ def build_ingest_server(
             ):
                 return
 
+            if try_handle_ingest_ingested_get(
+                path,
+                self,
+                settings=settings,
+                send_json=_send_json,
+            ):
+                return
+
             if try_handle_ingest_drafts_pdf_get(
+                path,
+                self,
+                query,
+                settings=settings,
+                send_json=_send_json,
+                send_bytes=_send_bytes,
+            ):
+                return
+
+            if try_handle_ingest_ingested_pdf_get(
                 path,
                 self,
                 query,
@@ -643,6 +673,14 @@ def build_ingest_server(
                                 types.get(asset.suffix.lower(), "application/octet-stream"),
                             )
                             return
+
+            if try_handle_compute_catalog_get(
+                path,
+                self,
+                settings=settings,
+                send_json=_send_json,
+            ):
+                return
 
             if path == "/api/system/preflight":
                 operation_raw = (query.get("operation", [""])[0] or "").strip()
@@ -1393,30 +1431,36 @@ def build_ingest_server(
                     _send_json(self, 400, {"ok": False, "error": str(exc)})
                     return
             try:
-                compute_mode = normalize_compute_mode(
-                    parsed.text_fields.get("compute_mode")
+                compute_plan = resolve_ingest_compute_plan(
+                    compute_mode=parsed.text_fields.get("compute_mode"),
+                    compute_plan=parsed.text_fields.get("compute_plan"),
+                )
+                compute_plan = with_step_override(
+                    compute_plan,
+                    "reicat_vision",
+                    model=parsed.text_fields.get("model"),
                 )
             except ValueError as exc:
                 saved_path.unlink(missing_ok=True)
                 _send_json(self, 400, {"ok": False, "error": str(exc), "field": "compute_mode"})
                 return
-            if compute_mode == "cloud":
-                missing_cloud = settings.missing_cloud_config(job_kind="reicat")
-                if missing_cloud:
-                    saved_path.unlink(missing_ok=True)
-                    _send_json(
-                        self,
-                        400,
-                        {
-                            "ok": False,
-                            "error": "cloud compute requires: " + ", ".join(missing_cloud),
-                            "field": "compute_mode",
-                        },
-                    )
-                    return
+            missing_cloud = missing_cloud_config_for_plan(
+                settings, compute_plan, step_ids=("reicat_vision",)
+            )
+            if missing_cloud:
+                saved_path.unlink(missing_ok=True)
+                _send_json(
+                    self,
+                    400,
+                    {
+                        "ok": False,
+                        "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                        "field": "compute_mode",
+                    },
+                )
+                return
             try:
-                with use_compute_mode(compute_mode, settings):
-                    job_settings = settings.for_compute_mode(compute_mode)
+                with apply_step_compute(settings, compute_plan, "reicat_vision") as job_settings:
                     result = suggest_reicat_metadata(
                         saved_path,
                         job_settings,
@@ -1470,23 +1514,33 @@ def build_ingest_server(
                 return
             sha = source_sha256.strip()
             try:
-                compute_mode = normalize_compute_mode(payload.get("compute_mode"))
+                compute_plan = resolve_ingest_compute_plan(
+                    compute_mode=payload.get("compute_mode"),
+                    compute_plan=payload.get("compute_plan"),
+                )
             except ValueError as exc:
                 _send_json(self, 400, {"ok": False, "error": str(exc), "field": "compute_mode"})
                 return
-            if compute_mode == "cloud":
-                missing_cloud = settings.missing_cloud_config(job_kind="repair")
-                if missing_cloud:
-                    _send_json(
-                        self,
-                        400,
-                        {
-                            "ok": False,
-                            "error": "cloud compute requires: " + ", ".join(missing_cloud),
-                            "field": "compute_mode",
-                        },
-                    )
-                    return
+            compute_mode = compute_plan.summary_mode()
+            repair_steps = (
+                ("stage1_glm_ocr", "stage3_editor")
+                if pipeline_mode == "glm_ocr"
+                else ("stage2_vision", "stage3_editor")
+            )
+            missing_cloud = missing_cloud_config_for_plan(
+                settings, compute_plan, step_ids=repair_steps
+            )
+            if missing_cloud:
+                _send_json(
+                    self,
+                    400,
+                    {
+                        "ok": False,
+                        "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                        "field": "compute_mode",
+                    },
+                )
+                return
             job_id, _started_at = new_job_id(f"{sha[:16]}_repair_p{aligned_page}")
             registry.create_job(job_id=job_id, job_kind="repair", compute_mode=compute_mode)
             status_url = f"/api/ingest/{job_id}/status"
@@ -1530,17 +1584,17 @@ def build_ingest_server(
                             ),
                         ),
                     )
-                    with use_compute_mode(compute_mode, settings):
-                        job_settings = settings.for_compute_mode(compute_mode)
+                    with use_compute_mode(compute_plan.default_mode, settings):
                         result = run_book_page_repair(
                             data_root,
-                            job_settings,
+                            settings,
                             sha,
                             aligned_page,
                             missing_in=stages_hint,
                             request_id=job_id,
                             progress=reporter,
                             pipeline_mode=pipeline_mode,
+                            compute_plan=compute_plan,
                         )
                     registry.emit(job_id, make_event(
                         "page_repair",
@@ -1619,23 +1673,31 @@ def build_ingest_server(
                     return
             sha = source_sha256.strip()
             try:
-                compute_mode = normalize_compute_mode(payload.get("compute_mode"))
+                compute_plan = resolve_ingest_compute_plan(
+                    compute_mode=payload.get("compute_mode"),
+                    compute_plan=payload.get("compute_plan"),
+                )
             except ValueError as exc:
                 _send_json(self, 400, {"ok": False, "error": str(exc), "field": "compute_mode"})
                 return
-            if compute_mode == "cloud":
-                missing_cloud = settings.missing_cloud_config(job_kind="repair")
-                if missing_cloud:
-                    _send_json(
-                        self,
-                        400,
-                        {
-                            "ok": False,
-                            "error": "cloud compute requires: " + ", ".join(missing_cloud),
-                            "field": "compute_mode",
-                        },
-                    )
-                    return
+            compute_mode = compute_plan.summary_mode()
+            repair_steps = (
+                GLM_PIPELINE_STEPS if pipeline_mode == "glm_ocr" else CLASSIC_PIPELINE_STEPS
+            )
+            missing_cloud = missing_cloud_config_for_plan(
+                settings, compute_plan, step_ids=repair_steps
+            )
+            if missing_cloud:
+                _send_json(
+                    self,
+                    400,
+                    {
+                        "ok": False,
+                        "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                        "field": "compute_mode",
+                    },
+                )
+                return
             job_id, _started_at = new_job_id(f"{sha[:16]}_gaps_repair")
             registry.create_job(job_id=job_id, job_kind="repair", compute_mode=compute_mode)
             status_url = f"/api/ingest/{job_id}/status"
@@ -1686,16 +1748,16 @@ def build_ingest_server(
                             page_total=int(baseline["expected_page_count"]),
                         ),
                     )
-                    with use_compute_mode(compute_mode, settings):
-                        job_settings = settings.for_compute_mode(compute_mode)
+                    with use_compute_mode(compute_plan.default_mode, settings):
                         result = run_book_gaps_repair(
                             data_root,
-                            job_settings,
+                            settings,
                             sha,
                             gap_payload,
                             request_id=job_id,
                             progress=reporter,
                             pipeline_mode=pipeline_mode,
+                            compute_plan=compute_plan,
                         )
                     registry.emit(job_id, make_event(
                         "gaps_repair",
@@ -2073,6 +2135,14 @@ def build_ingest_server(
                 safe_filename=_safe_filename,
             ):
                 return
+            if try_handle_ingest_reingest_prepare_post(
+                parsed.path,
+                self,
+                settings=settings,
+                send_json=_send_json,
+                read_body=_read_body,
+            ):
+                return
             if parsed.path not in ("/api/ingest/submit", "/api/ingest2/submit"):
                 self.send_error(404, "Not Found")
                 return
@@ -2135,7 +2205,10 @@ def build_ingest_server(
                 return
 
             try:
-                compute_mode = normalize_compute_mode(ingest_payload.get("compute_mode"))
+                compute_plan = resolve_ingest_compute_plan(
+                    compute_mode=ingest_payload.get("compute_mode"),
+                    compute_plan=ingest_payload.get("compute_plan"),
+                )
             except ValueError as exc:
                 if parsed.pdf is not None:
                     parsed.pdf.path.unlink(missing_ok=True)
@@ -2146,20 +2219,28 @@ def build_ingest_server(
                     "compute_mode",
                 )
                 return
-            ingest_payload["compute_mode"] = compute_mode
-            cloud_job_kind = "ingest_glm" if ocr_backend == "glm" else "ingest"
-            if compute_mode == "cloud":
-                missing_cloud = settings.missing_cloud_config(job_kind=cloud_job_kind)
-                if missing_cloud:
-                    if parsed.pdf is not None:
-                        parsed.pdf.path.unlink(missing_ok=True)
-                    _send_validation_error(
-                        self,
-                        IngestInputErrorCode.INPUT_SCHEMA_INVALID,
-                        "cloud compute requires: " + ", ".join(missing_cloud),
-                        "compute_mode",
-                    )
-                    return
+            compute_mode = compute_plan.summary_mode()
+            ingest_payload["compute_mode"] = compute_plan.default_mode
+            ingest_payload["compute_plan"] = compute_plan.to_dict()
+            pipeline_steps = (
+                GLM_PIPELINE_STEPS if ocr_backend == "glm" else CLASSIC_PIPELINE_STEPS
+            )
+            step_ids = list(pipeline_steps)
+            if not str(ingest_payload.get("ai_page_guidance") or "").strip():
+                step_ids.append("page_guidance")
+            missing_cloud = missing_cloud_config_for_plan(
+                settings, compute_plan, step_ids=step_ids
+            )
+            if missing_cloud:
+                if parsed.pdf is not None:
+                    parsed.pdf.path.unlink(missing_ok=True)
+                _send_validation_error(
+                    self,
+                    IngestInputErrorCode.INPUT_SCHEMA_INVALID,
+                    "cloud compute requires: " + ", ".join(missing_cloud),
+                    "compute_mode",
+                )
+                return
 
             uploaded = parsed.pdf
             if uploaded is None:
@@ -2267,17 +2348,21 @@ def build_ingest_server(
             Log(INFO_LOG_LEVEL, "ingest raw PDF saved",
                 {"path": str(saved_path), "bytes": saved_path.stat().st_size})
 
-            notes_source_sha256 = persist_ingest_notes_for_pdf(
-                settings.sqlite_path,
-                saved_path,
-                text_fields,
-                ingest_payload,
-                alias_shas=notes_alias_shas,
+            sqlite_path = _settings_sqlite_path(settings)
+            notes_source_sha256 = (
+                persist_ingest_notes_for_pdf(
+                    sqlite_path,
+                    saved_path,
+                    text_fields,
+                    ingest_payload,
+                    alias_shas=notes_alias_shas,
+                )
+                if sqlite_path
+                else None
             )
 
             try:
-                with use_compute_mode(compute_mode, settings):
-                    job_settings = settings.for_compute_mode(compute_mode)
+                with apply_step_compute(settings, compute_plan, "page_guidance") as job_settings:
                     ensure_ingest_ai_page_guidance(
                         saved_path,
                         job_settings,
@@ -2312,13 +2397,14 @@ def build_ingest_server(
                 )
                 return
 
-            notes_source_sha256 = persist_ingest_notes_for_pdf(
-                settings.sqlite_path,
-                saved_path,
-                text_fields,
-                ingest_payload,
-                alias_shas=notes_alias_shas,
-            ) or notes_source_sha256
+            if sqlite_path:
+                notes_source_sha256 = persist_ingest_notes_for_pdf(
+                    sqlite_path,
+                    saved_path,
+                    text_fields,
+                    ingest_payload,
+                    alias_shas=notes_alias_shas,
+                ) or notes_source_sha256
 
             appendix_paths: list[Path] = []
             appendix_sections_raw = (text_fields.get("appendix_sections_json") or "").strip()
@@ -2390,11 +2476,15 @@ def build_ingest_server(
                     )
 
             try:
-                with use_compute_mode(compute_mode, settings):
+                with use_compute_mode(compute_plan.default_mode, settings):
                     require_gpu_vram_at_pipeline_start(
                         settings,
                         skip_vision_editor=False,
                         ocr_backend=ocr_backend,
+                        needs_local_llm=plan_needs_local_llm(
+                            compute_plan,
+                            "glm_ocr" if ocr_backend == "glm" else "classic",
+                        ),
                     )
             except IngestInputValidationException as exc:
                 saved_path.unlink(missing_ok=True)
@@ -2450,14 +2540,16 @@ def build_ingest_server(
                 try:
                     with job_cancel_scope(job_id):
                         ingest_payload["request_id"] = job_id
-                        with use_compute_mode(compute_mode, settings):
-                            job_settings = settings.for_compute_mode(compute_mode)
+                        with use_compute_mode(compute_plan.default_mode, settings):
                             pipeline_result = pipeline_runner(
                                 ingest_payload,
                                 saved_path,
-                                job_settings,
+                                settings,
                                 reporter=reporter,
-                                set_global_total=lambda total: registry.set_global_total(job_id, total),
+                                set_global_total=lambda total: registry.set_global_total(
+                                    job_id, total
+                                ),
+                                compute_plan=compute_plan,
                             )
                         timing = (
                             pipeline_result.get("timing")

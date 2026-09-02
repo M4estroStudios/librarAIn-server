@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -490,6 +491,15 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
     compute_mode_raw = fields.get("compute_mode", "").strip()
     if compute_mode_raw:
         ingest_payload["compute_mode"] = compute_mode_raw
+    compute_plan_raw = fields.get("compute_plan", "").strip()
+    if compute_plan_raw:
+        try:
+            parsed_plan = json.loads(compute_plan_raw)
+        except json.JSONDecodeError as exc:
+            raise ValueError("compute_plan must be valid JSON") from exc
+        if not isinstance(parsed_plan, dict):
+            raise ValueError("compute_plan must be a JSON object")
+        ingest_payload["compute_plan"] = parsed_plan
     if biblio_range_payload is not None:
         ingest_payload["biblio_range"] = biblio_range_payload
     if book_id_hint_raw:

@@ -626,3 +626,110 @@ class TestOrchestratorMaxParallelFromEnv(unittest.TestCase):
                 settings = load_settings(str(env_path))
 
         self.assertEqual(settings.max_parallel_request, 3)
+
+
+class TestOrchestratorPerStepComputePlan(unittest.TestCase):
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.tmp = Path(self._tmp.name)
+        self.data_root = str(self.tmp / "data")
+        Path(self.data_root).mkdir(parents=True)
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    @_patch_page_metadata_phase()
+    @_patch_polyindex_biblio()
+    @_patch_gallery_index()
+    @patch(_P_SYNC_POLYINDEX_TOC)
+    @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
+    @patch(_P_REFINE_TOC, new_callable=AsyncMock)
+    @patch(_P_BUILD_INDEX)
+    @patch(_P_BUILD_TOC)
+    @patch(_P_BUILD_BOOK)
+    @patch(_P_CLIENT)
+    @patch(_P_OUTPUT)
+    @patch(_P_STAGE3, new_callable=AsyncMock)
+    @patch(_P_STAGE2, new_callable=AsyncMock)
+    @patch(_P_STAGE1, new_callable=AsyncMock)
+    def test_mixed_plan_overlays_models_per_stage(
+        self,
+        mock_stage1: AsyncMock,
+        mock_stage2: AsyncMock,
+        mock_stage3: AsyncMock,
+        mock_output: MagicMock,
+        mock_client: MagicMock,
+        mock_build_book: MagicMock,
+        mock_build_toc: MagicMock,
+        mock_build_index: MagicMock,
+        mock_refine_toc: AsyncMock,
+        mock_refine_index: AsyncMock,
+        mock_sync_polyindex_toc: MagicMock,
+    ) -> None:
+        from src.models.ingest_compute import parse_ingest_compute_plan
+        from src.models.settings import Settings
+
+        settings = Settings.model_validate(
+            {
+                "DATA_ROOT": self.data_root,
+                "OPENAI_PROVIDER": "local",
+                "OPENAI_BASE_URL": "http://127.0.0.1:1234/v1",
+                "OPENAI_CLOUD_BASE_URL": "https://api.example.com/v1",
+                "OPENAI_CLOUD_API_KEY": "cloud-key",
+                "VISION_MODEL": "local-vision",
+                "VISION_CLOUD_MODEL": "cloud-vision",
+                "EDITOR_MODEL": "local-editor",
+                "EDITOR_CLOUD_MODEL": "cloud-editor",
+                "MATCHER_EMBEDDING_MODEL": "text-embedding-3-small",
+                "LM_STUDIO_SWAP_MODELS": False,
+                "GPU_VRAM_CHECK_ENABLED": False,
+            }
+        )
+        plan = parse_ingest_compute_plan(
+            {
+                "default_mode": "local",
+                "steps": {
+                    "stage2_vision": {"compute_mode": "cloud"},
+                    "stage3_editor": {
+                        "compute_mode": "local",
+                        "model": "custom-editor",
+                    },
+                },
+            }
+        )
+        mock_stage1.return_value = _stage1_result(PAGE_COUNT)
+        stage3_pages = [MagicMock(aligned_page=i) for i in range(1, PAGE_COUNT + 1)]
+        mock_stage2.return_value = MagicMock(pages=[])
+        mock_stage3.return_value = MagicMock(pages=stage3_pages)
+        mock_output.return_value = MagicMock(
+            pages=[MagicMock()] * PAGE_COUNT, manifest_path=Path("/tmp/manifest.json")
+        )
+        mock_client.return_value = MagicMock()
+        mock_build_book.return_value = self.tmp / "book.md"
+        mock_build_toc.return_value = _write_minimal_toc_md(self.tmp / "TOC.md")
+        mock_build_index.return_value = self.tmp / "INDEX.md"
+        mock_sync_polyindex_toc.return_value = Path(self.data_root) / "polyindex" / "TOC.json"
+
+        async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
+            del args, kwargs
+            return path
+
+        mock_refine_toc.side_effect = _refine_passthrough
+        mock_refine_index.side_effect = _refine_passthrough
+
+        asyncio.run(
+            run_pipeline(
+                _enriched(),
+                None,
+                _enumeration(),
+                settings,
+                Path(self.data_root) / "db" / "biblioteca.db",
+                InMemoryRegistry(),
+                REQUEST_ID,
+                compute_plan=plan,
+            )
+        )
+        vision_settings = mock_stage2.await_args.args[2]
+        editor_settings = mock_stage3.await_args.args[2]
+        self.assertEqual(vision_settings.vision_model, "cloud-vision")
+        self.assertEqual(editor_settings.editor_model, "custom-editor")

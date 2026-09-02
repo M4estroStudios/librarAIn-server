@@ -44,6 +44,27 @@ def find_draft_pdf_by_sha256(data_root: Path, digest: str) -> Path | None:
     return path if path.is_file() else None
 
 
+def find_processed_pdf_by_sha256(data_root: Path, digest: str) -> Path | None:
+    path = data_root / "input" / "processed" / f"{digest.lower()}.pdf"
+    return path if path.is_file() else None
+
+
+def find_source_pdf_by_sha256(data_root: Path, digest: str) -> Path | None:
+    """Locate a source PDF for an ingested/draft book (drafts → processed → raw)."""
+    sha = digest.strip().lower()
+    if not sha:
+        return None
+    for finder in (
+        find_draft_pdf_by_sha256,
+        find_processed_pdf_by_sha256,
+        find_raw_pdf_by_sha256,
+    ):
+        found = finder(data_root, sha)
+        if found is not None:
+            return found
+    return None
+
+
 def save_draft_pdf(data_root: Path, digest: str, source_path: Path) -> Path:
     """Copy/replace the draft PDF keyed by source SHA-256."""
     dest = draft_pdf_path_for_sha(data_root, digest)

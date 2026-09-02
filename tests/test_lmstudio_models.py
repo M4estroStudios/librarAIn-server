@@ -246,5 +246,76 @@ class TestUnloadLmStudioModel(unittest.TestCase):
         load_model.assert_not_called()
 
 
+class TestTransitionLmstudioModels(unittest.TestCase):
+    @patch("src.core.lmstudio_models.ensure_lmstudio_model_loaded")
+    @patch("src.core.lmstudio_models.unload_lmstudio_model")
+    def test_local_to_cloud_unloads_source(
+        self, unload: MagicMock, load: MagicMock
+    ) -> None:
+        from src.core.lmstudio_models import transition_lmstudio_models
+
+        transition_lmstudio_models(
+            _settings(),
+            from_mode="local",
+            from_model="org/vision-model",
+            to_mode="cloud",
+            to_model="cloud-editor",
+        )
+        unload.assert_called_once()
+        self.assertEqual(unload.call_args.kwargs.get("force"), True)
+        load.assert_not_called()
+
+    @patch("src.core.lmstudio_models.ensure_lmstudio_model_loaded")
+    @patch("src.core.lmstudio_models.unload_lmstudio_model")
+    def test_cloud_to_local_loads_target(
+        self, unload: MagicMock, load: MagicMock
+    ) -> None:
+        from src.core.lmstudio_models import transition_lmstudio_models
+
+        settings = _settings()
+        transition_lmstudio_models(
+            settings,
+            from_mode="cloud",
+            from_model="cloud-vision",
+            to_mode="local",
+            to_model="org/editor-model",
+            to_settings=settings,
+        )
+        unload.assert_not_called()
+        load.assert_called_once()
+
+    @patch("src.core.lmstudio_models.ensure_lmstudio_model_loaded")
+    @patch("src.core.lmstudio_models.unload_lmstudio_model")
+    def test_both_cloud_is_noop(self, unload: MagicMock, load: MagicMock) -> None:
+        from src.core.lmstudio_models import transition_lmstudio_models
+
+        transition_lmstudio_models(
+            _settings(),
+            from_mode="cloud",
+            from_model="cloud-vision",
+            to_mode="cloud",
+            to_model="cloud-editor",
+        )
+        unload.assert_not_called()
+        load.assert_not_called()
+
+    @patch("src.core.lmstudio_models.ensure_lmstudio_model_loaded")
+    @patch("src.core.lmstudio_models.unload_lmstudio_model")
+    def test_local_to_local_swaps_models(self, unload: MagicMock, load: MagicMock) -> None:
+        from src.core.lmstudio_models import transition_lmstudio_models
+
+        settings = _settings()
+        transition_lmstudio_models(
+            settings,
+            from_mode="local",
+            from_model="org/vision-model",
+            to_mode="local",
+            to_model="org/editor-model",
+            to_settings=settings,
+        )
+        unload.assert_called_once()
+        load.assert_called_once()
+
+
 if __name__ == "__main__":
     unittest.main()

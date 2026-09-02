@@ -244,16 +244,22 @@ def ensure_lmstudio_model_loaded(settings: Settings, model_name: str) -> None:
     )
 
 
-def _lmstudio_management_enabled(settings: Settings) -> bool:
+def lmstudio_management_available(settings: Settings) -> bool:
     if not settings.lm_studio_swap_models:
-        return False
-    from src.core.openai_client import get_compute_mode  # noqa: PLC0415
-
-    if get_compute_mode() != "local":
         return False
     if settings.openai_provider != "local":
         return False
     return bool(lmstudio_api_root(settings))
+
+
+def _lmstudio_management_enabled(settings: Settings, *, force: bool = False) -> bool:
+    if not lmstudio_management_available(settings):
+        return False
+    if force:
+        return True
+    from src.core.openai_client import get_compute_mode  # noqa: PLC0415
+
+    return get_compute_mode() == "local"
 
 
 def _unload_loaded_model_instances(
@@ -298,8 +304,10 @@ def _unload_loaded_model_instances(
     return unloaded
 
 
-def unload_lmstudio_model(settings: Settings, model_name: str) -> int:
-    if not _lmstudio_management_enabled(settings):
+def unload_lmstudio_model(
+    settings: Settings, model_name: str, *, force: bool = False
+) -> int:
+    if not _lmstudio_management_enabled(settings, force=force):
         return 0
     source = (model_name or "").strip()
     if not source:
@@ -363,3 +371,23 @@ def swap_lmstudio_vision_to_editor(settings: Settings) -> None:
     if not should_swap_lmstudio_models(settings):
         return
     swap_lmstudio_model_to_editor(settings)
+
+
+def transition_lmstudio_models(
+    settings: Settings,
+    *,
+    from_mode: str | None,
+    from_model: str | None,
+    to_mode: str,
+    to_model: str | None,
+    to_settings: Settings | None = None,
+) -> None:
+    if not lmstudio_management_available(settings):
+        return
+    source = (from_model or "").strip()
+    target = (to_model or "").strip()
+    load_settings = to_settings or settings
+    if from_mode == "local" and source and (to_mode != "local" or source != target):
+        unload_lmstudio_model(settings, source, force=True)
+    if to_mode == "local" and target:
+        ensure_lmstudio_model_loaded(load_settings, target)

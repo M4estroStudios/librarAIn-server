@@ -52,7 +52,8 @@ def ensure_pipeline_runs_table(conn: sqlite3.Connection) -> None:
             succeeded_pages INTEGER,
             failed_pages INTEGER,
             timing_json TEXT,
-            compute_mode TEXT
+            compute_mode TEXT,
+            compute_plan_json TEXT
         )
         """
     )
@@ -62,6 +63,8 @@ def ensure_pipeline_runs_table(conn: sqlite3.Connection) -> None:
         # Existing rows have no trustworthy mode information.  Keep them
         # NULL; new runs receive an explicit mode in create_pipeline_run().
         conn.execute("ALTER TABLE pipeline_runs ADD COLUMN compute_mode TEXT")
+    if "compute_plan_json" not in _pipeline_runs_columns(conn):
+        conn.execute("ALTER TABLE pipeline_runs ADD COLUMN compute_plan_json TEXT")
 
 
 def _serialize_timing(timing: dict[str, Any] | None) -> str | None:
@@ -84,6 +87,16 @@ def _decode_pipeline_run_row(row: sqlite3.Row | dict[str, Any]) -> dict[str, Any
         if isinstance(parsed, dict):
             timing = parsed
     data["timing"] = timing
+    plan_raw = data.pop("compute_plan_json", None)
+    compute_plan: dict[str, Any] | None = None
+    if isinstance(plan_raw, str) and plan_raw.strip():
+        try:
+            parsed_plan = json.loads(plan_raw)
+        except json.JSONDecodeError:
+            parsed_plan = None
+        if isinstance(parsed_plan, dict):
+            compute_plan = parsed_plan
+    data["compute_plan"] = compute_plan
     return data
 
 
@@ -95,11 +108,17 @@ def create_pipeline_run(
     pipeline_version: str,
     total_pages: int,
     compute_mode: str = "local",
+    compute_plan: dict[str, Any] | None = None,
 ) -> int:
     from src.persistence.book_sqlite import init_books_schema
 
     init_books_schema(sqlite_path)
     now_iso = _utc_now_iso()
+    plan_json = (
+        json.dumps(compute_plan, ensure_ascii=False, sort_keys=True)
+        if isinstance(compute_plan, dict)
+        else None
+    )
     try:
         with _sqlite_connection(sqlite_path) as conn:
             cursor = conn.execute(
@@ -115,8 +134,9 @@ def create_pipeline_run(
                     total_pages,
                     succeeded_pages,
                     failed_pages,
-                    compute_mode
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    compute_mode,
+                    compute_plan_json
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     request_id,
@@ -130,6 +150,7 @@ def create_pipeline_run(
                     0,
                     0,
                     compute_mode,
+                    plan_json,
                 ),
             )
             row_id = cursor.lastrowid

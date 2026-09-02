@@ -21,6 +21,16 @@ function wireCounsel(bridge, getAnnotations) {
       const fd = new FormData();
       fd.append("pdf_file", file, file.name || "upload.pdf");
       fd.append("compute_mode", (document.getElementById("compute-mode") || {}).value || "local");
+      var choice = window.LibrarAInIngestCompute && window.LibrarAInIngestCompute.getStepChoice
+        ? window.LibrarAInIngestCompute.getStepChoice("page_guidance")
+        : null;
+      if (choice) {
+        fd.set("compute_mode", choice.compute_mode || "local");
+        if (choice.model) fd.append("model", choice.model);
+      }
+      if (window.LibrarAInIngestCompute && typeof window.LibrarAInIngestCompute.getPlanJson === "function") {
+        fd.append("compute_plan", window.LibrarAInIngestCompute.getPlanJson());
+      }
       fd.append("notes", (document.querySelector('[name="notes"]') || {}).value || "");
       fd.append("index_notes", (document.querySelector('[name="index_notes"]') || {}).value || "");
       fd.append("page_notes", (document.querySelector('[name="page_notes"]') || {}).value || "");

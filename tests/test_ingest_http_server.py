@@ -57,10 +57,12 @@ class _ServerHarness:
         self._tmp = tempfile.TemporaryDirectory()
         settings = SimpleNamespace(
             data_root=self._tmp.name,
+            sqlite_path=str(Path(self._tmp.name) / "biblioteca.db"),
             ocr_use_gpu=False,
             openai_provider="remote",
             gpu_vram_check_enabled=False,
         )
+        settings.for_compute_mode = lambda mode: settings
         self.httpd, self.registry = build_ingest_server(
             settings,
             host="127.0.0.1",
@@ -131,6 +133,16 @@ class TestIngestSubmit(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertTrue(payload["ok"])
 
+    def test_compute_catalog(self) -> None:
+        status, payload = self.server.request("/api/ingest/compute-catalog")
+        self.assertEqual(status, 200)
+        self.assertTrue(payload["ok"])
+        self.assertIn("local", payload)
+        self.assertIn("cloud", payload)
+        self.assertIn("defaults", payload)
+        self.assertTrue(payload["steps"])
+        self.assertEqual(payload["steps"][0]["id"], "page_guidance")
+
     def test_mockup_fixture_served(self) -> None:
         req = urllib.request.Request(self.server.url("/mockup/fixtures/audit.json"))
         with urllib.request.urlopen(req, timeout=10) as resp:
@@ -155,14 +167,17 @@ class TestIngestSubmit(unittest.TestCase):
     def test_submit_returns_202_and_runs_pipeline(self) -> None:
         pipeline_done = threading.Event()
 
-        def fake_pipeline(payload, saved_path, settings, *, reporter, set_global_total):
+        def fake_pipeline(payload, saved_path, settings, *, reporter, set_global_total, **kwargs):
+            del kwargs
             self.assertTrue(Path(saved_path).is_file())
             self.assertEqual(payload["reicat"]["titolo"], "Storia di Roma")
             set_global_total(1)
             pipeline_done.set()
             return {"ok": True}
 
-        with patch(_P_PIPELINE, side_effect=fake_pipeline):
+        with patch(_P_PIPELINE, side_effect=fake_pipeline), patch(
+            "src.api.ingest_http_server.ensure_ingest_ai_page_guidance"
+        ):
             status, payload = self.server.submit()
             self.assertEqual(status, 202)
             self.assertTrue(payload["ok"])
@@ -240,12 +255,15 @@ class TestJobQueueing(unittest.TestCase):
         first_started = threading.Event()
         release_first = threading.Event()
 
-        def slow_pipeline(payload, saved_path, settings, *, reporter, set_global_total):
+        def slow_pipeline(payload, saved_path, settings, *, reporter, set_global_total, **kwargs):
+            del payload, saved_path, settings, reporter, set_global_total, kwargs
             first_started.set()
             release_first.wait(timeout=15)
             return {}
 
-        with patch(_P_PIPELINE, side_effect=slow_pipeline):
+        with patch(_P_PIPELINE, side_effect=slow_pipeline), patch(
+            "src.api.ingest_http_server.ensure_ingest_ai_page_guidance"
+        ):
             _, first = self.server.submit()
             self.assertTrue(first_started.wait(timeout=10))
 

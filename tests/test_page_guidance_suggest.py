@@ -180,6 +180,15 @@ class IngestNotesStatePersistenceTests(unittest.TestCase):
             "titolo": "La Grande Guida",
             "autore": "Claudio Rendina",
             "editore": "Newton",
+            "compute_plan": {
+                "default_mode": "local",
+                "steps": {
+                    "stage3_editor": {
+                        "compute_mode": "cloud",
+                        "model": "gpt-4.1-mini",
+                    }
+                },
+            },
             "annotations": [
                 {
                     "page": 2,
@@ -217,6 +226,7 @@ class IngestNotesStatePersistenceTests(unittest.TestCase):
         self.assertEqual(loaded["titolo"], "La Grande Guida")
         self.assertEqual(loaded["autore"], "Claudio Rendina")
         self.assertEqual(loaded["editore"], "Newton")
+        self.assertIn("stage3_editor", loaded["compute_plan"])
         self.assertEqual(loaded["annotations"][0]["page"], 2)
         self.assertEqual(loaded["annotations"][0]["elements"][0]["type"], "bbox")
         with tempfile.TemporaryDirectory() as tmp:
@@ -525,6 +535,130 @@ class IngestDraftsPersistenceTests(unittest.TestCase):
             self.assertTrue(responses[-1][1]["removed"])
             self.assertEqual(list_ingest_drafts(str(db), data_root=tmp), [])
             self.assertIsNone(find_draft_pdf_by_sha256(Path(tmp), sha))
+
+
+class IngestedBooksReingestTests(unittest.TestCase):
+    def test_list_and_prepare_reingest_keeps_notes(self) -> None:
+        from src.api.page_guidance_http import (
+            list_ingested_books_for_reingest,
+            prepare_book_reingest_from_zero,
+            try_handle_ingest_ingested_get,
+            try_handle_ingest_reingest_prepare_post,
+        )
+        from src.api.pdf_upload_storage import save_draft_pdf
+
+        sha = "a" * 64
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            db = root / "biblioteca.db"
+            out_dir = root / "output" / sha
+            out_dir.mkdir(parents=True)
+            (out_dir / "manifest.json").write_text(
+                json.dumps(
+                    {
+                        "source_sha256": sha,
+                        "slug": "demo-book",
+                        "reicat": {"titolo": "Demo Book"},
+                        "pages": [{"aligned_page": 1}, {"aligned_page": 2}],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            tmp_dir = root / "tmp" / sha / "stage3Editor"
+            tmp_dir.mkdir(parents=True)
+            (tmp_dir / "0001.md").write_text("cached", encoding="utf-8")
+            pdf_src = root / "book.pdf"
+            pdf_src.write_bytes(b"%PDF-1.4\n%%EOF\n")
+            save_draft_pdf(root, sha, pdf_src)
+            save_ingest_notes_state(
+                str(db),
+                sha,
+                {
+                    "titolo": "Demo Book",
+                    "file_name": "book.pdf",
+                    "notes": "keep me",
+                    "annotations": [
+                        {
+                            "page": 1,
+                            "elements": [
+                                {
+                                    "id": "e1",
+                                    "name": "col",
+                                    "type": "bbox",
+                                    "coords": [1, 2, 3, 4],
+                                }
+                            ],
+                        }
+                    ],
+                },
+                is_draft=False,
+            )
+
+            books = list_ingested_books_for_reingest(str(db), root)
+            self.assertEqual(len(books), 1)
+            self.assertEqual(books[0]["source_sha256"], sha)
+            self.assertEqual(books[0]["title"], "Demo Book")
+            self.assertEqual(books[0]["page_count"], 2)
+            self.assertTrue(books[0]["has_output"])
+            self.assertTrue(books[0]["has_pdf"])
+            self.assertEqual(books[0]["annotation_pages"], 1)
+            self.assertEqual(books[0]["annotation_elements"], 1)
+
+            settings = MagicMock()
+            settings.sqlite_path = str(db)
+            settings.data_root = tmp
+            responses: list[tuple[int, dict]] = []
+
+            def send_json(_handler: object, status: int, payload: dict) -> None:
+                responses.append((status, payload))
+
+            handled = try_handle_ingest_ingested_get(
+                "/api/ingest/ingested",
+                MagicMock(),
+                settings=settings,
+                send_json=send_json,
+            )
+            self.assertTrue(handled)
+            self.assertEqual(responses[-1][0], 200)
+            self.assertEqual(len(responses[-1][1]["books"]), 1)
+
+            body = json.dumps({"source_sha256": sha}).encode("utf-8")
+
+            def read_body(_handler: object, _max: int) -> bytes:
+                return body
+
+            handled = try_handle_ingest_reingest_prepare_post(
+                "/api/ingest/ingested/prepare-reingest",
+                MagicMock(),
+                settings=settings,
+                send_json=send_json,
+                read_body=read_body,
+            )
+            self.assertTrue(handled)
+            self.assertEqual(responses[-1][0], 200)
+            self.assertTrue(responses[-1][1]["ok"])
+            self.assertIn(f"output/{sha}", responses[-1][1]["removed"])
+            self.assertIn(f"tmp/{sha}", responses[-1][1]["removed"])
+            self.assertFalse((root / "output" / sha).exists())
+            self.assertFalse((root / "tmp" / sha).exists())
+            notes = load_ingest_notes_state(str(db), sha)
+            self.assertIsNotNone(notes)
+            assert notes is not None
+            self.assertEqual(notes["notes"], "keep me")
+            self.assertEqual(len(notes["annotations"]), 1)
+            from src.persistence.pipeline_runs import _sqlite_connection
+
+            with _sqlite_connection(str(db)) as conn:
+                flag = conn.execute(
+                    "SELECT is_draft FROM ingest_notes WHERE source_sha256 = ?",
+                    (sha,),
+                ).fetchone()[0]
+            self.assertEqual(int(flag), 1)
+            self.assertTrue(responses[-1][1].get("restored_as_draft"))
+            result = prepare_book_reingest_from_zero(root, sha, sqlite_path=str(db))
+            self.assertEqual(result["removed"], [])
+            self.assertTrue(result["has_pdf"])
+            self.assertTrue(result["restored_as_draft"])
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import secrets
+import shutil
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
@@ -19,13 +20,20 @@ from src.api.pdf_upload_storage import (
     delete_draft_pdf,
     find_draft_pdf_by_sha256,
     find_raw_pdf_by_sha256,
+    find_source_pdf_by_sha256,
     save_draft_pdf,
     upload_staging_path,
 )
+from src.search.article_catalog import list_ingested_books
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
-from src.core.openai_client import use_compute_mode
 from src.ingestion.pdf_alignment import merge_pdf_paths
-from src.models.settings import Settings, normalize_compute_mode
+from src.models.settings import Settings
+from src.models.ingest_compute import (
+    apply_step_compute,
+    missing_cloud_config_for_plan,
+    resolve_ingest_compute_plan,
+    with_step_override,
+)
 from src.persistence.pipeline_runs import _sqlite_connection
 
 
@@ -186,6 +194,11 @@ def _normalize_ingest_notes_payload(state: dict[str, Any]) -> dict[str, Any]:
     }
     payload.update(_range_fields_from_mapping(state))
     payload.update(_reicat_fields_from_mapping(state))
+    compute_plan = state.get("compute_plan")
+    if isinstance(compute_plan, dict):
+        payload["compute_plan"] = json.dumps(compute_plan, ensure_ascii=False, sort_keys=True)
+    else:
+        payload["compute_plan"] = str(compute_plan or "").strip()
     sections_json = _normalize_appendix_sections_field(state)
     payload["appendix_sections_json"] = sections_json
     sections = normalize_appendix_sections(sections_json)
@@ -217,6 +230,13 @@ def build_ingest_notes_state(
     }
     state.update(_range_fields_from_mapping(text_fields))
     state.update(_reicat_fields_from_mapping(text_fields))
+    compute_plan = ingest_payload.get("compute_plan")
+    if compute_plan is None:
+        compute_plan = text_fields.get("compute_plan")
+    if isinstance(compute_plan, dict):
+        state["compute_plan"] = json.dumps(compute_plan, ensure_ascii=False, sort_keys=True)
+    else:
+        state["compute_plan"] = str(compute_plan or "").strip()
     return state
 
 
@@ -460,6 +480,216 @@ def delete_ingest_draft(
         return {"ok": True, "found": True, "removed": True, "cleared": False, "source_sha256": digest}
 
 
+def _annotation_counts(state: dict[str, Any] | None) -> tuple[int, int]:
+    if not state:
+        return 0, 0
+    annotations = state.get("annotations")
+    if not isinstance(annotations, list):
+        return 0, 0
+    pages = 0
+    elements = 0
+    for entry in annotations:
+        if not isinstance(entry, dict):
+            continue
+        elems = entry.get("elements")
+        if not isinstance(elems, list) or not elems:
+            continue
+        pages += 1
+        elements += len(elems)
+    return pages, elements
+
+
+def _load_books_catalog_rows(sqlite_path: str) -> dict[str, dict[str, Any]]:
+    db_path = Path(sqlite_path)
+    if not db_path.is_file():
+        return {}
+    out: dict[str, dict[str, Any]] = {}
+    try:
+        with _sqlite_connection(str(db_path)) as conn:
+            rows = conn.execute(
+                """
+                SELECT source_sha256, title, updated_at, last_seen_at
+                FROM books
+                """
+            ).fetchall()
+    except sqlite3.Error:
+        return {}
+    for row in rows:
+        digest = str(row[0] or "").strip().lower()
+        if not digest:
+            continue
+        out[digest] = {
+            "source_sha256": digest,
+            "title": str(row[1] or "").strip(),
+            "updated_at": str(row[3] or row[2] or "").strip(),
+        }
+    return out
+
+
+def _load_ingest_notes_index(
+    sqlite_path: str,
+) -> dict[str, dict[str, Any]]:
+    db_path = Path(sqlite_path)
+    if not db_path.is_file():
+        return {}
+    out: dict[str, dict[str, Any]] = {}
+    try:
+        with _sqlite_connection(str(db_path)) as conn:
+            _ensure_ingest_notes_table(conn)
+            rows = conn.execute(
+                """
+                SELECT source_sha256, state_json, updated_at, is_draft
+                FROM ingest_notes
+                """
+            ).fetchall()
+    except sqlite3.Error:
+        return {}
+    for row in rows:
+        digest = str(row[0] or "").strip().lower()
+        if not digest:
+            continue
+        try:
+            parsed = json.loads(str(row[1] or ""))
+        except json.JSONDecodeError:
+            parsed = None
+        state = parsed if isinstance(parsed, dict) else {}
+        ann_pages, ann_elements = _annotation_counts(state)
+        out[digest] = {
+            "title": str(state.get("titolo") or "").strip(),
+            "file_name": str(state.get("file_name") or "").strip(),
+            "updated_at": str(row[2] or "").strip(),
+            "is_draft": bool(int(row[3] or 0)),
+            "annotation_pages": ann_pages,
+            "annotation_elements": ann_elements,
+            "has_notes": bool(state),
+        }
+    return out
+
+
+def list_ingested_books_for_reingest(
+    sqlite_path: str,
+    data_root: Path | str,
+) -> list[dict[str, Any]]:
+    """Libri già ingeriti (output e/o riga books), con riepilogo annotazioni."""
+    root = Path(data_root)
+    by_sha: dict[str, dict[str, Any]] = {}
+
+    for book in list_ingested_books(root):
+        digest = str(book.get("source_sha256") or "").strip().lower()
+        if not digest:
+            continue
+        by_sha[digest] = {
+            "source_sha256": digest,
+            "title": str(book.get("title") or "").strip(),
+            "slug": str(book.get("slug") or "").strip(),
+            "page_count": int(book.get("page_count") or 0),
+            "has_output": True,
+            "updated_at": "",
+        }
+
+    for digest, row in _load_books_catalog_rows(sqlite_path).items():
+        entry = by_sha.get(digest)
+        if entry is None:
+            by_sha[digest] = {
+                "source_sha256": digest,
+                "title": row["title"],
+                "slug": "",
+                "page_count": 0,
+                "has_output": False,
+                "updated_at": row["updated_at"],
+            }
+        else:
+            if not entry["title"] and row["title"]:
+                entry["title"] = row["title"]
+            if row["updated_at"] and (
+                not entry["updated_at"] or row["updated_at"] > entry["updated_at"]
+            ):
+                entry["updated_at"] = row["updated_at"]
+
+    notes_index = _load_ingest_notes_index(sqlite_path)
+    books: list[dict[str, Any]] = []
+    for digest, entry in by_sha.items():
+        notes = notes_index.get(digest) or {}
+        title = str(notes.get("title") or entry.get("title") or "").strip()
+        file_name = str(notes.get("file_name") or "").strip()
+        updated_at = str(notes.get("updated_at") or entry.get("updated_at") or "").strip()
+        pdf_path = find_source_pdf_by_sha256(root, digest)
+        books.append(
+            {
+                "source_sha256": digest,
+                "title": title,
+                "file_name": file_name,
+                "slug": str(entry.get("slug") or "").strip(),
+                "page_count": int(entry.get("page_count") or 0),
+                "updated_at": updated_at,
+                "has_output": bool(entry.get("has_output")),
+                "has_pdf": pdf_path is not None,
+                "has_notes": bool(notes.get("has_notes")),
+                "annotation_pages": int(notes.get("annotation_pages") or 0),
+                "annotation_elements": int(notes.get("annotation_elements") or 0),
+                "is_draft": bool(notes.get("is_draft")),
+            }
+        )
+
+    books.sort(
+        key=lambda item: (
+            str(item.get("updated_at") or ""),
+            str(item.get("title") or "").casefold(),
+        ),
+        reverse=True,
+    )
+    return books
+
+
+def prepare_book_reingest_from_zero(
+    data_root: Path | str,
+    source_sha256: str,
+    *,
+    sqlite_path: str | None = None,
+) -> dict[str, Any]:
+    """Cancella cache tmp + output del libro, lasciando note/annotazioni e PDF.
+
+    Se esistono note UI, le rimette in bozza attiva così il libro resta recuperabile
+    dalla home anche dopo la cancellazione di ``output/``.
+    """
+    digest = validate_source_sha256(source_sha256)
+    root = Path(data_root)
+    removed: list[str] = []
+    for rel in (f"tmp/{digest}", f"output/{digest}"):
+        target = root / rel
+        if not target.exists():
+            continue
+        if target.is_dir():
+            shutil.rmtree(target)
+        elif target.is_file():
+            target.unlink(missing_ok=True)
+        removed.append(rel)
+    restored_as_draft = False
+    if sqlite_path:
+        existing = load_ingest_notes_state(sqlite_path, digest)
+        if existing is not None:
+            save_ingest_notes_state(sqlite_path, digest, existing, is_draft=True)
+            restored_as_draft = True
+    Log(
+        INFO_LOG_LEVEL,
+        "ingest reingest prepared from zero",
+        {
+            "source_sha256": digest[:16],
+            "removed": removed,
+            "restored_as_draft": restored_as_draft,
+        },
+    )
+    pdf_path = find_source_pdf_by_sha256(root, digest)
+    return {
+        "ok": True,
+        "source_sha256": digest,
+        "removed": removed,
+        "has_pdf": pdf_path is not None,
+        "file_name": pdf_path.name if pdf_path is not None else "",
+        "restored_as_draft": restored_as_draft,
+    }
+
+
 def _ingest_notes_response(sqlite_path: str, digest: str) -> dict[str, Any]:
     state = resolve_ingest_ui_state(sqlite_path, digest)
     return {
@@ -504,6 +734,96 @@ def try_handle_ingest_drafts_get(
         return False
     drafts = list_ingest_drafts(settings.sqlite_path, data_root=settings.data_root)
     send_json(handler, 200, {"ok": True, "drafts": drafts})
+    return True
+
+
+def try_handle_ingest_ingested_get(
+    path: str,
+    handler: Any,
+    *,
+    settings: Settings,
+    send_json: Callable[..., None],
+) -> bool:
+    if path != "/api/ingest/ingested":
+        return False
+    books = list_ingested_books_for_reingest(settings.sqlite_path, settings.data_root)
+    send_json(handler, 200, {"ok": True, "books": books})
+    return True
+
+
+def try_handle_ingest_ingested_pdf_get(
+    path: str,
+    handler: Any,
+    query: dict[str, list[str]],
+    *,
+    settings: Settings,
+    send_json: Callable[..., None],
+    send_bytes: Callable[..., None],
+) -> bool:
+    """GET /api/ingest/ingested/pdf?source_sha256=… — PDF sorgente (draft/processed/raw)."""
+    if path != "/api/ingest/ingested/pdf":
+        return False
+    raw_sha = (query.get("source_sha256") or [""])[0].strip().lower()
+    if not raw_sha:
+        send_json(handler, 400, {"ok": False, "error": "source_sha256 is required"})
+        return True
+    try:
+        digest = validate_source_sha256(raw_sha)
+    except ValueError as exc:
+        send_json(handler, 400, {"ok": False, "error": str(exc)})
+        return True
+    pdf_path = find_source_pdf_by_sha256(Path(settings.data_root), digest)
+    if pdf_path is None:
+        send_json(handler, 404, {"ok": False, "error": "source PDF not found"})
+        return True
+    try:
+        content = pdf_path.read_bytes()
+    except OSError as exc:
+        send_json(handler, 500, {"ok": False, "error": f"cannot read source PDF: {exc}"})
+        return True
+    send_bytes(handler, 200, content, "application/pdf")
+    return True
+
+
+def try_handle_ingest_reingest_prepare_post(
+    path: str,
+    handler: Any,
+    *,
+    settings: Settings,
+    send_json: Callable[..., None],
+    read_body: Callable[..., bytes],
+    max_bytes: int = 64 * 1024,
+) -> bool:
+    """POST /api/ingest/ingested/prepare-reingest — wipe tmp+output per re-ingest da zero."""
+    if path != "/api/ingest/ingested/prepare-reingest":
+        return False
+    try:
+        raw = read_body(handler, max_bytes)
+        payload = json.loads(raw.decode("utf-8") or "{}")
+    except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as exc:
+        send_json(handler, 400, {"ok": False, "error": f"invalid json: {exc}"})
+        return True
+    if not isinstance(payload, dict):
+        send_json(handler, 400, {"ok": False, "error": "body must be an object"})
+        return True
+    raw_sha = str(payload.get("source_sha256") or "").strip().lower()
+    if not raw_sha:
+        send_json(handler, 400, {"ok": False, "error": "source_sha256 is required"})
+        return True
+    try:
+        result = prepare_book_reingest_from_zero(
+            settings.data_root,
+            raw_sha,
+            sqlite_path=settings.sqlite_path,
+        )
+    except ValueError as exc:
+        send_json(handler, 400, {"ok": False, "error": str(exc)})
+        return True
+    except OSError as exc:
+        Log(ERROR_LOG_LEVEL, "reingest prepare failed", {"error": str(exc)})
+        send_json(handler, 500, {"ok": False, "error": f"cannot clear book artifacts: {exc}"})
+        return True
+    send_json(handler, 200, result)
     return True
 
 
@@ -907,26 +1227,35 @@ def try_handle_page_guidance_post(
     fields = parsed.text_fields
 
     try:
-        compute_mode = normalize_compute_mode(fields.get("compute_mode"))
+        compute_plan = resolve_ingest_compute_plan(
+            compute_mode=fields.get("compute_mode"),
+            compute_plan=fields.get("compute_plan"),
+        )
+        compute_plan = with_step_override(
+            compute_plan,
+            "page_guidance",
+            model=fields.get("model"),
+        )
     except ValueError as exc:
         saved_path.unlink(missing_ok=True)
         send_json(handler, 400, {"ok": False, "error": str(exc), "field": "compute_mode"})
         return True
 
-    if compute_mode == "cloud":
-        missing_cloud = settings.missing_cloud_config(job_kind="reicat")
-        if missing_cloud:
-            saved_path.unlink(missing_ok=True)
-            send_json(
-                handler,
-                400,
-                {
-                    "ok": False,
-                    "error": "cloud compute requires: " + ", ".join(missing_cloud),
-                    "field": "compute_mode",
-                },
-            )
-            return True
+    missing_cloud = missing_cloud_config_for_plan(
+        settings, compute_plan, step_ids=("page_guidance",)
+    )
+    if missing_cloud:
+        saved_path.unlink(missing_ok=True)
+        send_json(
+            handler,
+            400,
+            {
+                "ok": False,
+                "error": "cloud compute requires: " + ", ".join(missing_cloud),
+                "field": "compute_mode",
+            },
+        )
+        return True
 
     try:
         annotations = json.loads(fields.get("annotations_json") or "[]")
@@ -943,8 +1272,7 @@ def try_handle_page_guidance_post(
         return True
 
     try:
-        with use_compute_mode(compute_mode, settings):
-            job_settings = settings.for_compute_mode(compute_mode)
+        with apply_step_compute(settings, compute_plan, "page_guidance") as job_settings:
             result = suggest_page_guidance(
                 saved_path,
                 job_settings,

@@ -307,7 +307,6 @@ class Settings(BaseModel):
         chat_roles: Sequence[ChatModelRole] | None = None,
         needs_embeddings: bool | None = None,
     ) -> list[str]:
-        del chat_roles
         check_embeddings = (
             bool(needs_embeddings)
             if needs_embeddings is not None
@@ -324,6 +323,20 @@ class Settings(BaseModel):
                 return
             field = Settings.model_fields[cloud_attrs[0]]
             missing.append(str(field.alias or cloud_attrs[0]))
+
+        if chat_roles is not None:
+            for role in chat_roles:
+                _local_attr, cloud_attr = _CHAT_MODEL_ATTRS[role]
+                if getattr(self, cloud_attr):
+                    continue
+                field = Settings.model_fields[cloud_attr]
+                missing.append(str(field.alias or cloud_attr))
+            if check_embeddings:
+                if not self.openai_base_url:
+                    missing.append("OPENAI_BASE_URL")
+                if not self.matcher_embedding_model:
+                    missing.append("MATCHER_EMBEDDING_MODEL")
+            return missing
 
         if job_kind in {"ingest", "repair"}:
             _require_any(("vision_cloud_model",))

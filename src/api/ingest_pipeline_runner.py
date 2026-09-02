@@ -35,6 +35,7 @@ from src.ingestion.request_validation import validate_and_enrich_request
 from src.persistence.book_sqlite import run_ingest_gate_phase
 from src.models.request import IngestInputValidationError, IngestInputValidationException
 from src.models.settings import Settings
+from src.models.ingest_compute import IngestComputePlan, plan_needs_local_llm
 
 _ACTIVE_PAGE_STAGES = 4
 
@@ -106,6 +107,7 @@ def run_full_pipeline(
     settings: Settings,
     reporter: ProgressReporter | None,
     set_global_total: Callable[[int], None] | None,
+    compute_plan: IngestComputePlan | None = None,
 ) -> dict[str, Any]:
     ingest_payload = dict(ingest_payload)
     ingest_payload["source_pdf_path"] = str(saved_pdf_path)
@@ -151,7 +153,13 @@ def run_full_pipeline(
         return payload_out
 
     try:
-        require_gpu_vram_at_pipeline_start(settings, skip_vision_editor=False)
+        require_gpu_vram_at_pipeline_start(
+            settings,
+            skip_vision_editor=False,
+            needs_local_llm=(
+                plan_needs_local_llm(compute_plan, "classic") if compute_plan is not None else None
+            ),
+        )
     except IngestInputValidationException as exc:
         err_detail = _extract_validation_error(exc)
         Log(WARNING_LOG_LEVEL, "pipeline gpu vram preflight failed", {"error": str(exc)})
@@ -217,6 +225,7 @@ def run_full_pipeline(
                     request_id,
                     progress=reporter,
                     skip_vision_editor=False,
+                    compute_plan=compute_plan,
                 )
             )
         except OrchestratorStageError as exc:
@@ -311,6 +320,7 @@ def run_resume_pipeline_from_sha(
     *,
     request_id: str,
     pipeline_mode: str = "classic",
+    compute_plan: IngestComputePlan | None = None,
 ) -> dict[str, Any]:
     """Resume ingest from PDF/manifest/book already on disk, skipping the hash gate."""
     from src.models.request import IngestGatePhaseResult, SourceHashGateResult, SourceHashGateStatus
@@ -361,6 +371,9 @@ def run_resume_pipeline_from_sha(
             settings,
             skip_vision_editor=False,
             ocr_backend="glm" if resolved_mode == "glm_ocr" else "easyocr",
+            needs_local_llm=(
+                plan_needs_local_llm(compute_plan, resolved_mode) if compute_plan is not None else None
+            ),
         )
     except IngestInputValidationException as exc:
         err_detail = _extract_validation_error(exc)
@@ -425,6 +438,7 @@ def run_resume_pipeline_from_sha(
                     progress=reporter,
                     skip_vision_editor=False,
                     pipeline_mode=resolved_mode,
+                    compute_plan=compute_plan,
                 )
             )
         except OrchestratorStageError as exc:

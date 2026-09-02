@@ -34,7 +34,7 @@ _P_CLIENT = "src.ingestion.orchestrator.build_openai_client"
 
 
 def _make_enriched(sha: str = SHA) -> MagicMock:
-    from src.models.request import ReicatMetadata
+    from src.models.request import MdFormattingRules, PageRange, ReicatMetadata
 
     m = MagicMock()
     m.source_sha256 = sha
@@ -43,6 +43,12 @@ def _make_enriched(sha: str = SHA) -> MagicMock:
     m.request.notes = None
     m.request.page_notes = None
     m.request.index_notes = None
+    m.request.ai_page_guidance = None
+    m.request.pages_to_remove = []
+    m.request.toc_range = PageRange(start=1, end=1)
+    m.request.index_range = PageRange(start=2, end=2)
+    m.request.biblio_range = None
+    m.request.md_formatting = MdFormattingRules()
     m.request.reicat = ReicatMetadata.model_validate(
         {"titolo": "Book", "autore": ["Author One"]}
     )
@@ -156,8 +162,10 @@ async def _fake_run_pipeline(
     *,
     progress=None,
     skip_vision_editor=False,
+    pipeline_mode="classic",
+    compute_plan=None,
 ):
-    del alignment, sqlite_path, registry, request_id
+    del alignment, sqlite_path, registry, request_id, pipeline_mode, compute_plan
     sha = enriched.source_sha256
     n = len(useful_pages.useful_original_pages)
     stage1 = _make_stage1_result(settings.data_root, sha=sha, n=n)

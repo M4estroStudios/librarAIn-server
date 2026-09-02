@@ -16,9 +16,16 @@ from src.core.log import (
 from src.core.lmstudio_models import (
     swap_lmstudio_model_to_editor,
     swap_lmstudio_vision_to_editor,
+    transition_lmstudio_models,
     unload_lmstudio_model,
 )
 from src.core.openai_client import build_openai_client, get_compute_mode
+from src.models.ingest_compute import (
+    IngestComputePlan,
+    apply_step_compute,
+    overlay_settings_for_step,
+    resolved_model_for_step,
+)
 from src.core.text import slugify as _slugify
 from src.ingestion.pipeline.glm_ocr_stage import resolve_glm_ocr_model, run_glm_ocr_combined_stage
 from src.ingestion.pipeline.stage1 import Stage1Result, run_stage1_ingest_step
@@ -139,6 +146,8 @@ class PipelineContext:
     render_page_total: int
     polyindex_dir: Path
     openai_client: Any | None = field(default=None, repr=False)
+    compute_plan: IngestComputePlan | None = None
+    last_llm_step: str | None = None
 
 
 def _utc_now_iso() -> str:
@@ -245,8 +254,12 @@ def _build_pipeline_context(
     progress: ProgressReporter | None,
     skip_vision_editor: bool,
     counters: dict[str, int],
+    compute_plan: IngestComputePlan | None = None,
 ) -> PipelineContext:
-    guidance = (enriched.request.ai_page_guidance or "").strip() or None
+    raw_guidance = getattr(enriched.request, "ai_page_guidance", None)
+    guidance = raw_guidance.strip() if isinstance(raw_guidance, str) else None
+    if not guidance:
+        guidance = None
     return PipelineContext(
         enriched=enriched,
         alignment=alignment,
@@ -267,6 +280,7 @@ def _build_pipeline_context(
         md_formatting_block=build_md_formatting_block(enriched.request.md_formatting),
         render_page_total=len(useful_pages.useful_original_pages),
         polyindex_dir=data_root / "polyindex",
+        compute_plan=compute_plan,
     )
 
 
@@ -296,6 +310,73 @@ def _prepare_page_jobs(ctx: PipelineContext) -> list[PageJob]:
     return page_jobs
 
 
+def _step_settings(ctx: PipelineContext, step_id: str) -> Settings:
+    if ctx.compute_plan is None:
+        return ctx.settings
+    return overlay_settings_for_step(ctx.settings, ctx.compute_plan, step_id)
+
+
+def _transition_to_llm_step(ctx: PipelineContext, step_id: str) -> None:
+    if ctx.compute_plan is None:
+        return
+    to_settings = _step_settings(ctx, step_id)
+    to_mode = ctx.compute_plan.choice(step_id).compute_mode
+    to_model = resolved_model_for_step(to_settings, step_id)
+    from_mode: str | None = None
+    from_model: str | None = None
+    if ctx.last_llm_step:
+        from_settings = _step_settings(ctx, ctx.last_llm_step)
+        from_mode = ctx.compute_plan.choice(ctx.last_llm_step).compute_mode
+        from_model = resolved_model_for_step(from_settings, ctx.last_llm_step)
+    transition_lmstudio_models(
+        ctx.settings,
+        from_mode=from_mode,
+        from_model=from_model,
+        to_mode=to_mode,
+        to_model=to_model,
+        to_settings=to_settings,
+    )
+    ctx.last_llm_step = step_id
+
+
+def _unload_last_local_llm(ctx: PipelineContext) -> None:
+    if ctx.compute_plan is None:
+        return
+    if not ctx.last_llm_step:
+        return
+    last_settings = _step_settings(ctx, ctx.last_llm_step)
+    last_mode = ctx.compute_plan.choice(ctx.last_llm_step).compute_mode
+    last_model = resolved_model_for_step(last_settings, ctx.last_llm_step)
+    if last_mode != "local" or not last_model:
+        return
+    unload_lmstudio_model(ctx.settings, last_model, force=True)
+
+
+class _LlmStep:
+    def __init__(self, ctx: PipelineContext, step_id: str) -> None:
+        self.ctx = ctx
+        self.step_id = step_id
+        self._cm: Any = None
+        self.settings = ctx.settings
+
+    def __enter__(self) -> Settings:
+        ctx = self.ctx
+        if ctx.compute_plan is None:
+            if ctx.openai_client is None:
+                ctx.openai_client = build_openai_client(ctx.settings)
+            self.settings = ctx.settings
+            return self.settings
+        _transition_to_llm_step(ctx, self.step_id)
+        self._cm = apply_step_compute(ctx.settings, ctx.compute_plan, self.step_id)
+        self.settings = self._cm.__enter__()
+        ctx.openai_client = build_openai_client(self.settings)
+        return self.settings
+
+    def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
+        if self._cm is not None:
+            self._cm.__exit__(exc_type, exc, tb)
+
+
 PipelineMode = Literal["classic", "glm_ocr"]
 
 
@@ -310,18 +391,18 @@ async def _run_glm_ocr_phase(
         message="glm ocr combined batch started",
         payload={"page_count": len(page_jobs)},
     )
-    ctx.openai_client = build_openai_client(ctx.settings)
-    combined = await run_glm_ocr_combined_stage(
-        ctx.enriched,
-        ctx.alignment,
-        ctx.useful_pages,
-        ctx.settings,
-        ctx.openai_client,
-        request_id=ctx.request_id,
-        progress=ctx.progress,
-        prompt_notes=ctx.page_prompt_notes,
-        md_formatting=ctx.md_formatting_block,
-    )
+    with _LlmStep(ctx, "stage1_glm_ocr") as step_settings:
+        combined = await run_glm_ocr_combined_stage(
+            ctx.enriched,
+            ctx.alignment,
+            ctx.useful_pages,
+            step_settings,
+            ctx.openai_client,
+            request_id=ctx.request_id,
+            progress=ctx.progress,
+            prompt_notes=ctx.page_prompt_notes,
+            md_formatting=ctx.md_formatting_block,
+        )
     _sync_page_jobs_from_stage1(page_jobs, combined.stage1)
     for job in page_jobs:
         if job.status == PAGE_STATUS_STAGE1:
@@ -347,9 +428,12 @@ def _orchestrator_result_skip_after_glm_ocr(
     stage1_result: Stage1Result,
     stage2_result: Stage2Result,
 ) -> OrchestratorResult:
-    glm_model = resolve_glm_ocr_model(ctx.settings)
-    if glm_model:
-        unload_lmstudio_model(ctx.settings, glm_model)
+    if ctx.compute_plan is not None:
+        _unload_last_local_llm(ctx)
+    else:
+        glm_model = resolve_glm_ocr_model(ctx.settings)
+        if glm_model:
+            unload_lmstudio_model(ctx.settings, glm_model)
     completed_count = ctx.counters["completed"]
     failed_count = ctx.counters["failed"]
     _publish_event(
@@ -378,23 +462,40 @@ async def _run_editor_phase_only(
     stage2_result: Stage2Result,
     page_jobs: list[PageJob],
 ) -> Stage3Result:
-    if ctx.openai_client is None:
-        ctx.openai_client = build_openai_client(ctx.settings)
-    glm_model = resolve_glm_ocr_model(ctx.settings)
-    swap_lmstudio_model_to_editor(ctx.settings, from_model=glm_model)
-    try:
-        stage3_result = await run_stage3_editor(
-            stage2_result,
-            ctx.source_sha256,
-            ctx.settings,
-            ctx.openai_client,
-            request_id=ctx.request_id,
-            progress=ctx.progress,
-            prompt_notes=ctx.page_prompt_notes,
-            md_formatting=ctx.md_formatting_block,
-        )
-    except Exception as exc:
-        raise OrchestratorStageError("stage3_editor", exc) from exc
+    if ctx.compute_plan is None:
+        if ctx.openai_client is None:
+            ctx.openai_client = build_openai_client(ctx.settings)
+        glm_model = resolve_glm_ocr_model(ctx.settings)
+        swap_lmstudio_model_to_editor(ctx.settings, from_model=glm_model)
+        try:
+            stage3_result = await run_stage3_editor(
+                stage2_result,
+                ctx.source_sha256,
+                ctx.settings,
+                ctx.openai_client,
+                request_id=ctx.request_id,
+                progress=ctx.progress,
+                prompt_notes=ctx.page_prompt_notes,
+                md_formatting=ctx.md_formatting_block,
+            )
+        except Exception as exc:
+            raise OrchestratorStageError("stage3_editor", exc) from exc
+        _sync_page_jobs_from_stage3(page_jobs, stage3_result)
+        return stage3_result
+    with _LlmStep(ctx, "stage3_editor") as step_settings:
+        try:
+            stage3_result = await run_stage3_editor(
+                stage2_result,
+                ctx.source_sha256,
+                step_settings,
+                ctx.openai_client,
+                request_id=ctx.request_id,
+                progress=ctx.progress,
+                prompt_notes=ctx.page_prompt_notes,
+                md_formatting=ctx.md_formatting_block,
+            )
+        except Exception as exc:
+            raise OrchestratorStageError("stage3_editor", exc) from exc
     _sync_page_jobs_from_stage3(page_jobs, stage3_result)
     return stage3_result
 
@@ -467,44 +568,85 @@ async def _run_vision_editor_phases(
     page_jobs: list[PageJob],
 ) -> tuple[Stage2Result, Stage3Result]:
     raise_if_shutdown()
-    ctx.openai_client = build_openai_client(ctx.settings)
-    try:
-        stage2_result = await run_stage2_vision(
-            stage1_result,
-            ctx.source_sha256,
-            ctx.settings,
-            ctx.openai_client,
-            request_id=ctx.request_id,
-            progress=ctx.progress,
-            prompt_notes=ctx.page_prompt_notes,
-            md_formatting=ctx.md_formatting_block,
-        )
-    except ShutdownRequested:
-        raise
-    except Exception as exc:
-        raise OrchestratorStageError("stage2_vision", exc) from exc
+    if ctx.compute_plan is None:
+        ctx.openai_client = build_openai_client(ctx.settings)
+        try:
+            stage2_result = await run_stage2_vision(
+                stage1_result,
+                ctx.source_sha256,
+                ctx.settings,
+                ctx.openai_client,
+                request_id=ctx.request_id,
+                progress=ctx.progress,
+                prompt_notes=ctx.page_prompt_notes,
+                md_formatting=ctx.md_formatting_block,
+            )
+        except ShutdownRequested:
+            raise
+        except Exception as exc:
+            raise OrchestratorStageError("stage2_vision", exc) from exc
+        for job in page_jobs:
+            if job.status == PAGE_STATUS_STAGE2:
+                job.status = PAGE_STATUS_STAGE3
+
+        raise_if_shutdown()
+        swap_lmstudio_vision_to_editor(ctx.settings)
+
+        try:
+            stage3_result = await run_stage3_editor(
+                stage2_result,
+                ctx.source_sha256,
+                ctx.settings,
+                ctx.openai_client,
+                request_id=ctx.request_id,
+                progress=ctx.progress,
+                prompt_notes=ctx.page_prompt_notes,
+                md_formatting=ctx.md_formatting_block,
+            )
+        except ShutdownRequested:
+            raise
+        except Exception as exc:
+            raise OrchestratorStageError("stage3_editor", exc) from exc
+        _sync_page_jobs_from_stage3(page_jobs, stage3_result)
+        return stage2_result, stage3_result
+
+    with _LlmStep(ctx, "stage2_vision") as vision_settings:
+        try:
+            stage2_result = await run_stage2_vision(
+                stage1_result,
+                ctx.source_sha256,
+                vision_settings,
+                ctx.openai_client,
+                request_id=ctx.request_id,
+                progress=ctx.progress,
+                prompt_notes=ctx.page_prompt_notes,
+                md_formatting=ctx.md_formatting_block,
+            )
+        except ShutdownRequested:
+            raise
+        except Exception as exc:
+            raise OrchestratorStageError("stage2_vision", exc) from exc
     for job in page_jobs:
         if job.status == PAGE_STATUS_STAGE2:
             job.status = PAGE_STATUS_STAGE3
 
     raise_if_shutdown()
-    swap_lmstudio_vision_to_editor(ctx.settings)
-
-    try:
-        stage3_result = await run_stage3_editor(
-            stage2_result,
-            ctx.source_sha256,
-            ctx.settings,
-            ctx.openai_client,
-            request_id=ctx.request_id,
-            progress=ctx.progress,
-            prompt_notes=ctx.page_prompt_notes,
-            md_formatting=ctx.md_formatting_block,
-        )
-    except ShutdownRequested:
-        raise
-    except Exception as exc:
-        raise OrchestratorStageError("stage3_editor", exc) from exc
+    with _LlmStep(ctx, "stage3_editor") as editor_settings:
+        try:
+            stage3_result = await run_stage3_editor(
+                stage2_result,
+                ctx.source_sha256,
+                editor_settings,
+                ctx.openai_client,
+                request_id=ctx.request_id,
+                progress=ctx.progress,
+                prompt_notes=ctx.page_prompt_notes,
+                md_formatting=ctx.md_formatting_block,
+            )
+        except ShutdownRequested:
+            raise
+        except Exception as exc:
+            raise OrchestratorStageError("stage3_editor", exc) from exc
     _sync_page_jobs_from_stage3(page_jobs, stage3_result)
     return stage2_result, stage3_result
 
@@ -585,16 +727,17 @@ async def _run_toc_refine_phase(ctx: PipelineContext, toc_md_path: Path) -> Path
     toc_refine_cache = ctx.tmp_root / "stage4TocIndexRefine"
     toc_refine_stats: dict[str, int] = {}
     try:
-        toc_md_path = await refine_toc_md(
-            toc_md_path,
-            ctx.openai_client,
-            ctx.settings,
-            source_sha256=ctx.source_sha256,
-            request_id=ctx.request_id,
-            cache_dir=toc_refine_cache,
-            prompt_notes=ctx.prompt_notes,
-            stats=toc_refine_stats,
-        )
+        with _LlmStep(ctx, "toc_refine") as step_settings:
+            toc_md_path = await refine_toc_md(
+                toc_md_path,
+                ctx.openai_client,
+                step_settings,
+                source_sha256=ctx.source_sha256,
+                request_id=ctx.request_id,
+                cache_dir=toc_refine_cache,
+                prompt_notes=ctx.prompt_notes,
+                stats=toc_refine_stats,
+            )
     except Exception as exc:
         raise OrchestratorStageError("toc_refine", exc) from exc
     _publish_event(
@@ -614,16 +757,17 @@ async def _run_index_refine_phase(ctx: PipelineContext, index_md_path: Path) -> 
     toc_refine_cache = ctx.tmp_root / "stage4TocIndexRefine"
     index_refine_stats: dict[str, int] = {}
     try:
-        index_md_path = await refine_index_md(
-            index_md_path,
-            ctx.openai_client,
-            ctx.settings,
-            source_sha256=ctx.source_sha256,
-            request_id=ctx.request_id,
-            cache_dir=toc_refine_cache,
-            prompt_notes=ctx.index_prompt_notes,
-            stats=index_refine_stats,
-        )
+        with _LlmStep(ctx, "index_refine") as step_settings:
+            index_md_path = await refine_index_md(
+                index_md_path,
+                ctx.openai_client,
+                step_settings,
+                source_sha256=ctx.source_sha256,
+                request_id=ctx.request_id,
+                cache_dir=toc_refine_cache,
+                prompt_notes=ctx.index_prompt_notes,
+                stats=index_refine_stats,
+            )
     except Exception as exc:
         raise OrchestratorStageError("index_refine", exc) from exc
     _publish_event(
@@ -699,19 +843,20 @@ async def _run_polyindex_phases(
         payload={"toc_json_path": str(toc_json_path)},
     )
 
-    biblio_json_path, biblio_stats, biblio_payload = await sync_polyindex_biblio_from_book(
-        ctx.polyindex_dir,
-        ctx.source_sha256,
-        book_output,
-        ctx.useful_pages,
-        client=ctx.openai_client,
-        settings=ctx.settings,
-        reicat=ctx.enriched.request.reicat,
-        request_id=ctx.request_id,
-        prompt_notes=ctx.page_prompt_notes,
-        biblio_range_original=ctx.enriched.request.biblio_range,
-        progress=ctx.progress,
-    )
+    with _LlmStep(ctx, "biblio") as step_settings:
+        biblio_json_path, biblio_stats, biblio_payload = await sync_polyindex_biblio_from_book(
+            ctx.polyindex_dir,
+            ctx.source_sha256,
+            book_output,
+            ctx.useful_pages,
+            client=ctx.openai_client,
+            settings=step_settings,
+            reicat=ctx.enriched.request.reicat,
+            request_id=ctx.request_id,
+            prompt_notes=ctx.page_prompt_notes,
+            biblio_range_original=ctx.enriched.request.biblio_range,
+            progress=ctx.progress,
+        )
     _progress_completed(
         ctx,
         PHASE_POLYINDEX_BIBLIO,
@@ -781,6 +926,7 @@ async def run_pipeline(
     progress: ProgressReporter | None = None,
     skip_vision_editor: bool = False,
     pipeline_mode: PipelineMode = "classic",
+    compute_plan: IngestComputePlan | None = None,
 ) -> OrchestratorResult:
     sqlite_path_str = str(sqlite_path)
     source_sha256 = enriched.source_sha256
@@ -799,7 +945,10 @@ async def run_pipeline(
         source_sha256=source_sha256,
         pipeline_version=enriched.request.schema_version,
         total_pages=len(useful_pages.useful_original_pages),
-        compute_mode=get_compute_mode(),
+        compute_mode=(
+            compute_plan.summary_mode() if compute_plan is not None else get_compute_mode()
+        ),
+        compute_plan=compute_plan.to_dict() if compute_plan is not None else None,
     )
 
     try:
@@ -830,6 +979,7 @@ async def run_pipeline(
                     skip_vision_editor=skip_vision_editor,
                     counters=counters,
                     pipeline_mode=pipeline_mode,
+                    compute_plan=compute_plan,
                 )
             except ShutdownRequested:
                 Log(
@@ -884,7 +1034,7 @@ async def run_pipeline(
                     "failed_count": result.failed_count,
                 },
             )
-            if result.stage3_result is not None:
+            if result.stage3_result is not None and compute_plan is None:
                 editor_model = (settings.editor_model or "").strip()
                 if editor_model:
                     unload_lmstudio_model(settings, editor_model)
@@ -908,6 +1058,7 @@ async def _run_pipeline_body(
     skip_vision_editor: bool,
     counters: dict[str, int],
     pipeline_mode: PipelineMode = "classic",
+    compute_plan: IngestComputePlan | None = None,
 ) -> OrchestratorResult:
     ctx = _build_pipeline_context(
         enriched,
@@ -922,6 +1073,7 @@ async def _run_pipeline_body(
         progress=progress,
         skip_vision_editor=skip_vision_editor,
         counters=counters,
+        compute_plan=compute_plan,
     )
     _run_render_phase(ctx)
     page_jobs = _prepare_page_jobs(ctx)
@@ -935,6 +1087,7 @@ async def _run_pipeline_body(
         book_output = _run_output_writer_phase(ctx, stage3_result)
         toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
         await _run_polyindex_phases(ctx, book_output, toc_md_path)
+        _unload_last_local_llm(ctx)
         return _finalize_pipeline_result(
             ctx,
             page_jobs,
@@ -956,6 +1109,7 @@ async def _run_pipeline_body(
     book_output = _run_output_writer_phase(ctx, stage3_result)
     toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
     await _run_polyindex_phases(ctx, book_output, toc_md_path)
+    _unload_last_local_llm(ctx)
     return _finalize_pipeline_result(
         ctx,
         page_jobs,

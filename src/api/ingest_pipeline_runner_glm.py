@@ -33,6 +33,7 @@ from src.ingestion.progress import (
 from src.ingestion.request_validation import validate_and_enrich_request
 from src.models.request import IngestInputValidationException
 from src.models.settings import Settings
+from src.models.ingest_compute import IngestComputePlan, plan_needs_local_llm
 from src.persistence.book_sqlite import run_ingest_gate_phase
 
 _GLM_ACTIVE_PAGE_STAGES = 3
@@ -44,6 +45,7 @@ def run_glm_ingest_pipeline(
     settings: Settings,
     reporter: ProgressReporter | None,
     set_global_total: Callable[[int], None] | None,
+    compute_plan: IngestComputePlan | None = None,
 ) -> dict[str, Any]:
     ingest_payload = dict(ingest_payload)
     ingest_payload["source_pdf_path"] = str(saved_pdf_path)
@@ -107,6 +109,9 @@ def run_glm_ingest_pipeline(
             settings,
             skip_vision_editor=False,
             ocr_backend="glm",
+            needs_local_llm=(
+                plan_needs_local_llm(compute_plan, "glm_ocr") if compute_plan is not None else None
+            ),
         )
     except IngestInputValidationException as exc:
         err_detail = _extract_validation_error(exc)
@@ -192,6 +197,7 @@ def run_glm_ingest_pipeline(
                     progress=reporter,
                     skip_vision_editor=False,
                     pipeline_mode="glm_ocr",
+                    compute_plan=compute_plan,
                 )
             )
         except OrchestratorStageError as exc:

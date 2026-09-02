@@ -120,6 +120,9 @@ body { margin: 0; padding: 0; }
 .ingest-drafts-row-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .ingest-drafts-empty { padding: 0.85rem 0.25rem 0.35rem; color: #cccccc; }
 .ingest-drafts-empty p { margin: 0 0 0.35rem; }
+.ingest-ingested-home { margin: 1.15rem 0 0; padding-top: 1.05rem; border-top: 1px solid #3e3e3e; }
+.ingest-ingested-home .ingest-drafts-title { margin-top: 0; }
+.ingest-ingested-row-meta-extra { color: #b5b5b5; font-family: inherit; }
 .save-draft-status { margin: 0; font-size: 0.8rem; color: #9d9d9d; min-height: 1.2em; }
 .save-draft-status.is-ok { color: #6a9955; }
 .save-draft-status.is-error { color: #f48771; }
@@ -1093,6 +1096,21 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
     <p>Nessuna bozza attiva.</p>
     <p class="hint">Usa «Nuova bozza» per caricare un PDF e iniziare.</p>
   </div>
+
+  <div id="ingest-ingested-home" class="ingest-ingested-home" aria-label="Libri già ingeriti">
+    <div class="ingest-drafts-header">
+      <h2 class="ingest-drafts-title">Libri già ingeriti</h2>
+    </div>
+    <p id="ingest-ingested-status" class="ingest-drafts-status hint" aria-live="polite"></p>
+    <p class="hint" style="margin:0 0 0.65rem;font-size:0.78rem;line-height:1.35">
+      Riapri un libro con REICAT, range e annotazioni salvati, oppure cancella output/cache e
+      <strong>re-ingesta da zero</strong> (le annotazioni restano).
+    </p>
+    <div id="ingest-ingested-list" class="ingest-drafts-list" role="list"></div>
+    <div id="ingest-ingested-empty" class="ingest-drafts-empty hidden">
+      <p>Nessun libro ingerito ancora.</p>
+    </div>
+  </div>
 </div>
 
 <form id="ingest-form">
@@ -1125,6 +1143,14 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
         <button type="button" id="pdf-back-to-drafts-btn" class="secondary">Torna alle bozze</button>
         <button type="button" id="pdf-change-btn" class="secondary">Cambia PDF</button>
       </div>
+    </div>
+    <div id="ingest-compute-plan" class="ingest-compute-plan" aria-label="Modelli AI per fase">
+      <div class="ingest-compute-plan-header">
+        <p class="ingest-compute-plan-title">Modelli per fase</p>
+        <p id="ingest-compute-plan-status" class="ingest-compute-plan-status hint"></p>
+      </div>
+      <div id="ingest-compute-plan-rows" class="ingest-compute-plan-rows"></div>
+      <input type="hidden" name="compute_plan" id="compute-plan" value="">
     </div>
 
     <div class="pdf-workspace-hint-card">
@@ -2199,6 +2225,9 @@ if (document.readyState === "loading") {
   var ingestDraftsEmpty = document.getElementById("ingest-drafts-empty");
   var ingestDraftsStatus = document.getElementById("ingest-drafts-status");
   var ingestDraftsNewBtn = document.getElementById("ingest-drafts-new-btn");
+  var ingestIngestedList = document.getElementById("ingest-ingested-list");
+  var ingestIngestedEmpty = document.getElementById("ingest-ingested-empty");
+  var ingestIngestedStatus = document.getElementById("ingest-ingested-status");
   var ingestUploadBanner = document.getElementById("ingest-upload-banner");
   var ingestUploadBackBtn = document.getElementById("ingest-upload-back-btn");
   var ingestUploadHint = document.getElementById("ingest-upload-hint");
@@ -2206,7 +2235,9 @@ if (document.readyState === "loading") {
   var saveDraftStatus = document.getElementById("save-draft-status");
   var pdfBackToDraftsBtn = document.getElementById("pdf-back-to-drafts-btn");
   var activeDraftsCache = [];
+  var ingestedBooksCache = [];
   var pendingOpenDraftSha = "";
+  var pendingOpenIngestedSha = "";
   var ingestSessionMode = "drafts"; // drafts | upload | workspace
   var saveDraftBusy = false;
   var pdfViewerMeta = document.getElementById("pdf-viewer-meta");
@@ -2569,6 +2600,10 @@ if (document.readyState === "loading") {
       "isbn",
     ];
     var i;
+    var computePlanEl = formEl.elements.compute_plan;
+    if (computePlanEl) {
+      computePlanEl.value = state.compute_plan == null ? "" : String(state.compute_plan);
+    }
     for (i = 0; i < noteFields.length; i++) {
       var name = noteFields[i];
       var el = formEl.elements[name];
@@ -2604,6 +2639,9 @@ if (document.readyState === "loading") {
     if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.setAnnotations === "function") {
       window.__librarainPageGuidance.setAnnotations(state.annotations || []);
     }
+    if (window.LibrarAInIngestCompute && typeof window.LibrarAInIngestCompute.applyFromHidden === "function") {
+      window.LibrarAInIngestCompute.applyFromHidden();
+    }
   }
   var currentIngestNotesSha = "";
   var ingestNotesDraftTimer = null;
@@ -2615,6 +2653,7 @@ if (document.readyState === "loading") {
     "titolo", "sottotitolo", "complementi_del_titolo", "autore", "curatore", "traduttore",
     "numero_edizione", "anno_di_pubblicazione", "tipo_di_pubblicazione", "luogo_di_pubblicazione",
     "editore", "numero_pagine", "titolo_collana", "numero_nella_collana", "isbn",
+    "compute_plan",
   ];
   function clearLegacyIngestNotesDrafts() {
     try {
@@ -2657,6 +2696,7 @@ if (document.readyState === "loading") {
       titolo_collana: "",
       numero_nella_collana: "",
       isbn: "",
+      compute_plan: "",
     };
   }
   function collectIngestNotesState() {
@@ -2674,11 +2714,35 @@ if (document.readyState === "loading") {
     }
     return state;
   }
+  function computePlanHasOverride(raw) {
+    var text = String(raw || "").trim();
+    if (!text) return false;
+    try {
+      var parsed = JSON.parse(text);
+      var steps = parsed && parsed.steps && typeof parsed.steps === "object" ? parsed.steps : {};
+      var def = parsed && parsed.default_mode === "cloud" ? "cloud" : "local";
+      var ids = Object.keys(steps);
+      var i;
+      for (i = 0; i < ids.length; i++) {
+        var step = steps[ids[i]] || {};
+        if ((step.compute_mode || def) !== def) return true;
+        if (step.model) return true;
+      }
+      return false;
+    } catch (_) {
+      return false;
+    }
+  }
   function ingestNotesStateHasContent(state) {
     if (!state || typeof state !== "object") return false;
     var i;
     for (i = 0; i < INGEST_NOTES_FIELD_NAMES.length; i++) {
-      if (String(state[INGEST_NOTES_FIELD_NAMES[i]] || "").trim()) return true;
+      var name = INGEST_NOTES_FIELD_NAMES[i];
+      if (name === "compute_plan") {
+        if (computePlanHasOverride(state.compute_plan)) return true;
+        continue;
+      }
+      if (String(state[name] || "").trim()) return true;
     }
     return Array.isArray(state.annotations) && state.annotations.length > 0;
   }
@@ -2997,6 +3061,9 @@ if (document.readyState === "loading") {
     if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.setAnnotations === "function") {
       window.__librarainPageGuidance.setAnnotations(snap.annotations || []);
     }
+    if (window.LibrarAInIngestCompute && typeof window.LibrarAInIngestCompute.applyFromHidden === "function") {
+      window.LibrarAInIngestCompute.applyFromHidden();
+    }
     sanitizeExclusiveIndexOverlaps();
     syncExclusiveIndexFields();
     refreshViewerThumbUi();
@@ -3015,7 +3082,7 @@ if (document.readyState === "loading") {
     var elements = form.elements;
     for (var i = 0; i < elements.length; i++) {
       var el = elements[i];
-      if (!el.name || el.name === "pdf_file" || el.name === "book_id_hint" || el.name === "compute_mode") continue;
+      if (!el.name || el.name === "pdf_file" || el.name === "book_id_hint" || el.name === "compute_mode" || el.name === "compute_plan") continue;
       if (el.type === "checkbox") {
         el.checked = el.name === "force_metadata_update_on_duplicate_hash" && el.value === "true";
       } else {
@@ -3495,6 +3562,7 @@ if (document.readyState === "loading") {
     var s = String(sha || "").trim().toLowerCase();
     if (!s) return false;
     if (pendingOpenDraftSha && pendingOpenDraftSha === s) return true;
+    if (pendingOpenIngestedSha && pendingOpenIngestedSha === s) return true;
     for (var i = 0; i < activeDraftsCache.length; i++) {
       if (String(activeDraftsCache[i].source_sha256 || "").toLowerCase() === s) return true;
     }
@@ -3502,7 +3570,7 @@ if (document.readyState === "loading") {
   }
 
   function askIngestNotesRestoreForSha(sha) {
-    // Bozze attive: ripristino diretto (niente dialog «metadati nel database»).
+    // Bozze / riapertura libro ingerito: ripristino diretto (niente dialog «metadati nel database»).
     return !isKnownActiveDraftSha(sha);
   }
 
@@ -3510,6 +3578,12 @@ if (document.readyState === "loading") {
     if (!ingestDraftsStatus) return;
     ingestDraftsStatus.textContent = message || "";
     ingestDraftsStatus.classList.toggle("is-error", !!isError);
+  }
+
+  function setIngestIngestedStatus(message, isError) {
+    if (!ingestIngestedStatus) return;
+    ingestIngestedStatus.textContent = message || "";
+    ingestIngestedStatus.classList.toggle("is-error", !!isError);
   }
 
   function setSaveDraftStatus(message, kind) {
@@ -3843,6 +3917,7 @@ if (document.readyState === "loading") {
     flushIngestNotesDraft();
     // Non resetta sessionStorage della tab; reset solo UI workspace.
     currentIngestNotesSha = "";
+    pendingOpenIngestedSha = "";
     resetPagePickerState();
     clearIngestQueue();
     if (pdfFileInput) pdfFileInput.value = "";
@@ -3850,22 +3925,35 @@ if (document.readyState === "loading") {
     showIngestDraftsHome();
     syncSaveDraftButton();
     fetchIngestDrafts();
+    fetchIngestedBooks();
   }
 
   function rejectDraftOpenHashMismatch(expectedSha, actualSha, fileName) {
-    var msg =
-      "Il PDF caricato non corrisponde alla bozza selezionata. " +
-      "Atteso SHA " + abbreviateSha(expectedSha) +
-      ", ricevuto " + abbreviateSha(actualSha) +
-      (fileName ? " («" + fileName + "»)" : "") +
-      ". Nessuna bozza aperta: resta sulla lista e riprova con lo stesso file.";
+    var wasIngested = !!pendingOpenIngestedSha;
+    var msg = wasIngested
+      ? (
+        "Il PDF caricato non corrisponde al libro selezionato. " +
+        "Atteso SHA " + abbreviateSha(expectedSha) +
+        ", ricevuto " + abbreviateSha(actualSha) +
+        (fileName ? " («" + fileName + "»)" : "") +
+        ". Nessun libro aperto: resta sulla lista e riprova con lo stesso file."
+      )
+      : (
+        "Il PDF caricato non corrisponde alla bozza selezionata. " +
+        "Atteso SHA " + abbreviateSha(expectedSha) +
+        ", ricevuto " + abbreviateSha(actualSha) +
+        (fileName ? " («" + fileName + "»)" : "") +
+        ". Nessuna bozza aperta: resta sulla lista e riprova con lo stesso file."
+      );
     pendingOpenDraftSha = "";
+    pendingOpenIngestedSha = "";
     currentIngestNotesSha = "";
     resetPagePickerState();
     clearIngestQueue();
     if (pdfFileInput) pdfFileInput.value = "";
     showIngestDraftsHome();
-    setIngestDraftsStatus(msg, true);
+    if (wasIngested) setIngestIngestedStatus(msg, true);
+    else setIngestDraftsStatus(msg, true);
     syncSaveDraftButton();
     if (window.LibrarAInLog) {
       window.LibrarAInLog.reportError("draft open hash mismatch", {
@@ -3963,9 +4051,179 @@ if (document.readyState === "loading") {
     }
   }
 
+  function ingestedDisplayMeta(book) {
+    var parts = [abbreviateSha(book && book.source_sha256)];
+    if (book && book.page_count) parts.push(book.page_count + " pag.");
+    var annPages = book && book.annotation_pages ? Number(book.annotation_pages) : 0;
+    var annElems = book && book.annotation_elements ? Number(book.annotation_elements) : 0;
+    if (annElems > 0) {
+      parts.push(annElems + " annot." + (annPages ? " su " + annPages + " pag." : ""));
+    } else if (book && book.has_notes) {
+      parts.push("metadati salvati");
+    } else {
+      parts.push("senza annotazioni");
+    }
+    if (book && book.updated_at) parts.push(formatDraftUpdatedAt(book.updated_at));
+    return parts.join(" · ");
+  }
+
+  function renderIngestedBooksList(books) {
+    ingestedBooksCache = Array.isArray(books) ? books.slice() : [];
+    if (!ingestIngestedList) return;
+    ingestIngestedList.innerHTML = "";
+    var empty = !ingestedBooksCache.length;
+    if (ingestIngestedEmpty) ingestIngestedEmpty.classList.toggle("hidden", !empty);
+    if (empty) return;
+    ingestedBooksCache.forEach(function (book) {
+      var sha = String(book.source_sha256 || "").trim().toLowerCase();
+      var row = document.createElement("div");
+      row.className = "ingest-drafts-row";
+      row.setAttribute("role", "listitem");
+      row.dataset.sourceSha256 = sha;
+
+      var main = document.createElement("div");
+      main.className = "ingest-drafts-row-main";
+      var titleEl = document.createElement("div");
+      titleEl.className = "ingest-drafts-row-title";
+      titleEl.textContent = draftDisplayTitle(book);
+      var metaEl = document.createElement("div");
+      metaEl.className = "ingest-drafts-row-meta ingest-ingested-row-meta-extra";
+      metaEl.textContent = ingestedDisplayMeta(book);
+      main.appendChild(titleEl);
+      main.appendChild(metaEl);
+
+      var actions = document.createElement("div");
+      actions.className = "ingest-drafts-row-actions";
+      var openBtn = document.createElement("button");
+      openBtn.type = "button";
+      openBtn.className = "secondary ingest-ingested-open-btn";
+      openBtn.textContent = "Riapri";
+      openBtn.dataset.sourceSha256 = sha;
+      openBtn.dataset.hasPdf = book.has_pdf ? "1" : "0";
+      openBtn.dataset.fileName = String(book.file_name || "");
+      openBtn.title = book.has_pdf
+        ? "Riapri con annotazioni e metadati (senza cancellare l'output)"
+        : "Carica il PDF per ripristinare annotazioni e metadati";
+      actions.appendChild(openBtn);
+      var reingestBtn = document.createElement("button");
+      reingestBtn.type = "button";
+      reingestBtn.className = "ingest-ingested-reingest-btn";
+      reingestBtn.textContent = "Re-ingesta da zero";
+      reingestBtn.dataset.sourceSha256 = sha;
+      reingestBtn.dataset.hasPdf = book.has_pdf ? "1" : "0";
+      reingestBtn.dataset.fileName = String(book.file_name || "");
+      reingestBtn.title = "Cancella output/cache e riapri per un ingest completo da zero";
+      actions.appendChild(reingestBtn);
+
+      row.appendChild(main);
+      row.appendChild(actions);
+      ingestIngestedList.appendChild(row);
+    });
+  }
+
+  async function fetchIngestedBooks() {
+    setIngestIngestedStatus("Caricamento libri ingeriti…", false);
+    try {
+      var res = await fetch("/api/ingest/ingested");
+      var data = await res.json().catch(function () { return {}; });
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || ("HTTP " + res.status));
+      }
+      renderIngestedBooksList(data.books || []);
+      setIngestIngestedStatus(
+        ingestedBooksCache.length
+          ? (ingestedBooksCache.length === 1
+            ? "1 libro ingerito"
+            : ingestedBooksCache.length + " libri ingeriti")
+          : "",
+        false
+      );
+      return ingestedBooksCache;
+    } catch (err) {
+      if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest ingested fetch failed", err);
+      renderIngestedBooksList([]);
+      setIngestIngestedStatus(
+        "Impossibile caricare i libri ingeriti (" +
+          String(err && err.message ? err.message : err) +
+          ").",
+        true
+      );
+      return [];
+    }
+  }
+
+  async function openIngestedBook(sha, hasPdf, fileName, options) {
+    var opts = options || {};
+    var s = String(sha || "").trim().toLowerCase();
+    if (!s) return;
+    pendingOpenIngestedSha = s;
+    pendingOpenDraftSha = s;
+    if (opts.fromZero) {
+      setIngestIngestedStatus("Preparazione re-ingest da zero…", false);
+      try {
+        var prepRes = await fetch("/api/ingest/ingested/prepare-reingest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ source_sha256: s }),
+        });
+        var prepData = await prepRes.json().catch(function () { return {}; });
+        if (!prepRes.ok || !prepData.ok) {
+          throw new Error(prepData.error || ("HTTP " + prepRes.status));
+        }
+        if (typeof prepData.has_pdf === "boolean") hasPdf = prepData.has_pdf;
+        if (prepData.file_name) fileName = prepData.file_name;
+        setIngestIngestedStatus(
+          "Output/cache cancellati. Apertura con annotazioni salvate…",
+          false
+        );
+      } catch (err) {
+        pendingOpenIngestedSha = "";
+        pendingOpenDraftSha = "";
+        if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest prepare reingest failed", err);
+        setIngestIngestedStatus(
+          "Impossibile preparare il re-ingest (" +
+            String(err && err.message ? err.message : err) +
+            ").",
+          true
+        );
+        return;
+      }
+    } else {
+      setIngestIngestedStatus("Apertura libro ingerito…", false);
+    }
+
+    if (hasPdf) {
+      try {
+        var res = await fetch("/api/ingest/ingested/pdf?source_sha256=" + encodeURIComponent(s));
+        if (!res.ok) {
+          var errData = await res.json().catch(function () { return {}; });
+          throw new Error(errData.error || ("HTTP " + res.status));
+        }
+        var blob = await res.blob();
+        var file = new File([blob], fileName || "book.pdf", { type: "application/pdf" });
+        await loadPagePickerFromFile(file);
+        setIngestIngestedStatus("", false);
+        return;
+      } catch (err) {
+        if (window.LibrarAInLog) window.LibrarAInLog.reportError("ingest ingested open pdf failed", err);
+        setIngestIngestedStatus(
+          "PDF non disponibile sul server (" +
+            String(err && err.message ? err.message : err) +
+            "). Carica il file manualmente.",
+          true
+        );
+      }
+    }
+    showIngestUploadMode({ pendingOpenDraftSha: s, pendingOpenIngested: true });
+    if (pdfFileInput) {
+      try { pdfFileInput.click(); } catch (_) {}
+    }
+  }
+
   function showIngestDraftsHome() {
     ingestSessionMode = "drafts";
     pendingOpenDraftSha = "";
+    pendingOpenIngestedSha = "";
     if (ingestDraftsHome) ingestDraftsHome.classList.remove("hidden");
     if (ingestUploadBanner) ingestUploadBanner.classList.add("hidden");
     if (pdfDropzone) pdfDropzone.classList.add("hidden");
@@ -3978,6 +4236,11 @@ if (document.readyState === "loading") {
     var opts = options || {};
     ingestSessionMode = "upload";
     pendingOpenDraftSha = String(opts.pendingOpenDraftSha || "").trim().toLowerCase();
+    pendingOpenIngestedSha = opts.pendingOpenIngested
+      ? pendingOpenDraftSha
+      : (pendingOpenIngestedSha && pendingOpenIngestedSha === pendingOpenDraftSha
+        ? pendingOpenIngestedSha
+        : "");
     if (ingestDraftsHome) ingestDraftsHome.classList.add("hidden");
     if (pdfWorkspace) pdfWorkspace.classList.add("hidden");
     if (ingestFormDetails) ingestFormDetails.classList.add("hidden");
@@ -3985,8 +4248,9 @@ if (document.readyState === "loading") {
     if (ingestUploadBanner) ingestUploadBanner.classList.remove("hidden");
     if (ingestUploadHint) {
       if (pendingOpenDraftSha) {
-        ingestUploadHint.textContent =
-          "Carica lo stesso PDF per aprire la bozza (" + abbreviateSha(pendingOpenDraftSha) + ").";
+        ingestUploadHint.textContent = pendingOpenIngestedSha
+          ? ("Carica lo stesso PDF del libro ingerito (" + abbreviateSha(pendingOpenDraftSha) + ").")
+          : ("Carica lo stesso PDF per aprire la bozza (" + abbreviateSha(pendingOpenDraftSha) + ").");
       } else {
         ingestUploadHint.textContent = "Carica un PDF per iniziare una nuova bozza.";
       }
@@ -4006,7 +4270,10 @@ if (document.readyState === "loading") {
 
   function showPdfDropzone() {
     // «Cambia PDF» resta in modalità upload (non torna automaticamente alla home bozze).
-    showIngestUploadMode({ pendingOpenDraftSha: pendingOpenDraftSha });
+    showIngestUploadMode({
+      pendingOpenDraftSha: pendingOpenDraftSha,
+      pendingOpenIngested: !!pendingOpenIngestedSha,
+    });
   }
 
   if (ingestDraftsNewBtn) {
@@ -4018,6 +4285,7 @@ if (document.readyState === "loading") {
     ingestUploadBackBtn.addEventListener("click", function () {
       showIngestDraftsHome();
       fetchIngestDrafts();
+      fetchIngestedBooks();
     });
   }
   if (pdfBackToDraftsBtn) {
@@ -4052,8 +4320,53 @@ if (document.readyState === "loading") {
       openIngestDraft(sha, hasPdf, fileName);
     });
   }
+  if (ingestIngestedList) {
+    ingestIngestedList.addEventListener("click", function (event) {
+      var reingestBtn = event.target && event.target.closest
+        ? event.target.closest(".ingest-ingested-reingest-btn")
+        : null;
+      if (reingestBtn) {
+        var reSha = String(reingestBtn.dataset.sourceSha256 || "").trim().toLowerCase();
+        if (!reSha) return;
+        var reBook = null;
+        for (var ri = 0; ri < ingestedBooksCache.length; ri++) {
+          if (String(ingestedBooksCache[ri].source_sha256 || "").toLowerCase() === reSha) {
+            reBook = ingestedBooksCache[ri];
+            break;
+          }
+        }
+        var ok = window.confirm(
+          "Re-ingesta da zero «" + draftDisplayTitle(reBook || { source_sha256: reSha }) + "»?\n\n" +
+          "Verranno cancellati output e cache OCR di questo libro.\n" +
+          "REICAT, range e annotazioni restano e verranno ripristinati.\n\n" +
+          "OK = continua / Annulla = mantieni l'output attuale"
+        );
+        if (!ok) return;
+        openIngestedBook(
+          reSha,
+          reingestBtn.dataset.hasPdf === "1",
+          String(reingestBtn.dataset.fileName || "").trim() || "book.pdf",
+          { fromZero: true }
+        );
+        return;
+      }
+      var openBtn = event.target && event.target.closest
+        ? event.target.closest(".ingest-ingested-open-btn")
+        : null;
+      if (!openBtn) return;
+      var openSha = String(openBtn.dataset.sourceSha256 || "").trim().toLowerCase();
+      if (!openSha) return;
+      openIngestedBook(
+        openSha,
+        openBtn.dataset.hasPdf === "1",
+        String(openBtn.dataset.fileName || "").trim() || "book.pdf",
+        { fromZero: false }
+      );
+    });
+  }
   showIngestDraftsHome();
   fetchIngestDrafts();
+  fetchIngestedBooks();
   syncSaveDraftButton();
 
   function viewerLastSelected(mode) {
@@ -6504,18 +6817,20 @@ if (document.readyState === "loading") {
       // F-003: Apri bozza richiede hash esatto; mismatch → errore, resta in lista.
       if (expectedDraftSha && sourceSha !== expectedDraftSha) {
         if (!sourceSha) {
+          var wasIngestedOpen = !!pendingOpenIngestedSha;
           pendingOpenDraftSha = "";
+          pendingOpenIngestedSha = "";
           currentIngestNotesSha = "";
           resetPagePickerState();
           clearIngestQueue();
           if (pdfFileInput) pdfFileInput.value = "";
           showIngestDraftsHome();
-          setIngestDraftsStatus(
+          var shaErr =
             "Impossibile calcolare lo SHA del PDF caricato («" +
             (file.name || "file") +
-            "»). Riprova; se sei in rete locale verifica che il server risponda.",
-            true
-          );
+            "»). Riprova; se sei in rete locale verifica che il server risponda.";
+          if (wasIngestedOpen) setIngestIngestedStatus(shaErr, true);
+          else setIngestDraftsStatus(shaErr, true);
           return;
         }
         rejectDraftOpenHashMismatch(expectedDraftSha, sourceSha, file.name);
@@ -6534,10 +6849,11 @@ if (document.readyState === "loading") {
       if (loadGen !== pagePickerState.loadGen) return;
       pagePickerState.pdfDoc = pdfDoc;
       pagePickerState.numPages = pdfDoc.numPages;
-      // Bozza attiva / Apri: ripristino diretto (niente dialog «metadati nel database»).
-      // Post-ingest non-draft: confirm attuale via askIngestNotesRestoreForSha.
+      // Bozza attiva / libro ingerito: ripristino diretto (niente dialog «metadati nel database»).
+      // Upload nuovo PDF già noto: confirm attuale via askIngestNotesRestoreForSha.
       var askRestore = askIngestNotesRestoreForSha(sourceSha);
       pendingOpenDraftSha = "";
+      pendingOpenIngestedSha = "";
       await restoreIngestNotesForPdfBuffer(buf, {
         sourceSha256: sourceSha,
         file: file,
@@ -6807,7 +7123,14 @@ if (document.readyState === "loading") {
         var fd = new FormData();
         fd.append("pdf_file", file, file.name || "upload.pdf");
         fd.append("reicat_pages", pagesToSpec(reicatPages));
-        fd.append("compute_mode", (document.getElementById("compute-mode") || {}).value || "local");
+        var reicatChoice = window.LibrarAInIngestCompute && window.LibrarAInIngestCompute.getStepChoice
+          ? window.LibrarAInIngestCompute.getStepChoice("reicat_vision")
+          : { compute_mode: (document.getElementById("compute-mode") || {}).value || "local", model: "" };
+        fd.append("compute_mode", reicatChoice.compute_mode || "local");
+        if (reicatChoice.model) fd.append("model", reicatChoice.model);
+        if (window.LibrarAInIngestCompute && typeof window.LibrarAInIngestCompute.getPlanJson === "function") {
+          fd.append("compute_plan", window.LibrarAInIngestCompute.getPlanJson());
+        }
         var res = await fetch("/api/ingest/reicat-suggest", { method: "POST", body: fd });
         var data = await res.json().catch(function () { return {}; });
         if (!res.ok || !data.ok) throw new Error(data.error || data.message || ("HTTP " + res.status));
@@ -7239,6 +7562,9 @@ if (document.readyState === "loading") {
         missing_in: missingIn,
         pipeline_mode: INGEST_REPAIR_PIPELINE_MODE,
         compute_mode: (document.getElementById("compute-mode") || {}).value || "local",
+        compute_plan: window.LibrarAInIngestCompute && typeof window.LibrarAInIngestCompute.getPlan === "function"
+          ? window.LibrarAInIngestCompute.getPlan()
+          : undefined,
       }),
     });
     var data = await res.json();
@@ -7268,6 +7594,9 @@ if (document.readyState === "loading") {
         source_sha256: sourceSha256,
         pipeline_mode: INGEST_REPAIR_PIPELINE_MODE,
         compute_mode: (document.getElementById("compute-mode") || {}).value || "local",
+        compute_plan: window.LibrarAInIngestCompute && typeof window.LibrarAInIngestCompute.getPlan === "function"
+          ? window.LibrarAInIngestCompute.getPlan()
+          : undefined,
         gap_pages: gapEntries.map(function (entry) {
           return {
             aligned: entry.aligned,
@@ -8698,6 +9027,9 @@ if (document.readyState === "loading") {
     }
 
     var fd = new FormData(form);
+    if (window.LibrarAInIngestCompute && typeof window.LibrarAInIngestCompute.getPlanJson === "function") {
+      fd.set("compute_plan", window.LibrarAInIngestCompute.getPlanJson());
+    }
     if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.getAnnotations === "function") {
       fd.set("annotations_json", JSON.stringify(window.__librarainPageGuidance.getAnnotations()));
     }
@@ -8825,6 +9157,232 @@ if (document.readyState === "loading") {
     }
   });
   window.dispatchEvent(new Event("librarain-ingest-ready"));
+
+  (function bootIngestComputePlan() {
+    var GLM_UI_STEPS = [
+      "page_guidance",
+      "reicat_vision",
+      "stage1_glm_ocr",
+      "stage3_editor",
+      "toc_refine",
+      "index_refine",
+      "biblio",
+    ];
+    var modeSelect = document.getElementById("compute-mode");
+    var hidden = document.getElementById("compute-plan");
+    var rowsEl = document.getElementById("ingest-compute-plan-rows");
+    var statusEl = document.getElementById("ingest-compute-plan-status");
+    var toggleEl = document.querySelector(".compute-mode-toggle");
+    var catalog = { local: [], cloud: [], defaults: {}, steps: [] };
+    var applying = false;
+    var stepState = {};
+
+    function defaultMode() {
+      return modeSelect && modeSelect.value === "cloud" ? "cloud" : "local";
+    }
+
+    function stepMeta(stepId) {
+      var list = catalog.steps || [];
+      for (var i = 0; i < list.length; i++) {
+        if (list[i] && list[i].id === stepId) return list[i];
+      }
+      return { id: stepId, label: stepId };
+    }
+
+    function defaultModel(stepId, mode) {
+      var row = (catalog.defaults || {})[stepId] || {};
+      return row[mode] || "";
+    }
+
+    function modelsFor(mode) {
+      return mode === "cloud" ? (catalog.cloud || []) : (catalog.local || []);
+    }
+
+    function ensureStep(stepId) {
+      if (!stepState[stepId]) {
+        stepState[stepId] = { compute_mode: defaultMode(), model: "" };
+      }
+      return stepState[stepId];
+    }
+
+    function syncHidden() {
+      if (!hidden) return;
+      var steps = {};
+      GLM_UI_STEPS.forEach(function (stepId) {
+        var choice = ensureStep(stepId);
+        steps[stepId] = {
+          compute_mode: choice.compute_mode,
+          model: choice.model || null,
+        };
+      });
+      hidden.value = JSON.stringify({
+        default_mode: defaultMode(),
+        steps: steps,
+      });
+    }
+
+    function syncTopLevelVisual() {
+      if (!toggleEl) return;
+      var modes = GLM_UI_STEPS.map(function (stepId) {
+        return ensureStep(stepId).compute_mode;
+      });
+      var unique = modes.filter(function (mode, idx) {
+        return modes.indexOf(mode) === idx;
+      });
+      var mixed = unique.length > 1;
+      toggleEl.setAttribute("data-mixed", mixed ? "1" : "0");
+      toggleEl.setAttribute("data-mode", mixed ? "mixed" : (unique[0] || defaultMode()));
+    }
+
+    function fillModelSelect(select, stepId, mode, selected) {
+      var models = modelsFor(mode);
+      var envDefault = defaultModel(stepId, mode);
+      var seen = {};
+      var html = '<option value="">Default' + (envDefault ? " (" + envDefault + ")" : "") + "</option>";
+      function add(id, label, loaded) {
+        if (!id || seen[id]) return;
+        seen[id] = true;
+        html += '<option value="' + String(id).replace(/"/g, "&quot;") + '"'
+          + (id === selected ? " selected" : "")
+          + ">" + (label || id) + (loaded ? " (caricato)" : "") + "</option>";
+      }
+      if (envDefault) add(envDefault, envDefault, false);
+      if (selected) add(selected, selected, false);
+      models.forEach(function (item) {
+        add(item.id, item.display_name || item.id, !!item.loaded);
+      });
+      select.innerHTML = html;
+      select.value = selected || "";
+    }
+
+    function renderRows() {
+      if (!rowsEl) return;
+      rowsEl.innerHTML = "";
+      GLM_UI_STEPS.forEach(function (stepId) {
+        var choice = ensureStep(stepId);
+        var meta = stepMeta(stepId);
+        var row = document.createElement("div");
+        row.className = "ingest-compute-plan-row";
+        row.setAttribute("data-step", stepId);
+        var name = document.createElement("label");
+        name.textContent = meta.label || stepId;
+        var mode = document.createElement("select");
+        mode.className = "ingest-compute-step-mode";
+        mode.innerHTML = '<option value="local">Local</option><option value="cloud">Cloud</option>';
+        mode.value = choice.compute_mode;
+        var model = document.createElement("select");
+        model.className = "ingest-compute-step-model";
+        fillModelSelect(model, stepId, choice.compute_mode, choice.model);
+        mode.addEventListener("change", function () {
+          if (applying) return;
+          choice.compute_mode = mode.value === "cloud" ? "cloud" : "local";
+          choice.model = "";
+          fillModelSelect(model, stepId, choice.compute_mode, "");
+          syncHidden();
+          syncTopLevelVisual();
+        });
+        model.addEventListener("change", function () {
+          if (applying) return;
+          choice.model = model.value || "";
+          syncHidden();
+        });
+        row.appendChild(name);
+        row.appendChild(mode);
+        row.appendChild(model);
+        rowsEl.appendChild(row);
+      });
+      syncHidden();
+      syncTopLevelVisual();
+    }
+
+    function applyDefaultModeToAll(mode) {
+      applying = true;
+      GLM_UI_STEPS.forEach(function (stepId) {
+        var choice = ensureStep(stepId);
+        choice.compute_mode = mode;
+        choice.model = "";
+      });
+      applying = false;
+      renderRows();
+    }
+
+    function applyFromHidden() {
+      if (!hidden || !hidden.value) {
+        renderRows();
+        return;
+      }
+      try {
+        var parsed = JSON.parse(hidden.value);
+        if (parsed && parsed.steps && typeof parsed.steps === "object") {
+          GLM_UI_STEPS.forEach(function (stepId) {
+            var item = parsed.steps[stepId] || {};
+            stepState[stepId] = {
+              compute_mode: item.compute_mode === "cloud" ? "cloud" : "local",
+              model: item.model || "",
+            };
+          });
+        }
+        if (parsed && parsed.default_mode && modeSelect && !applying) {
+          var unique = GLM_UI_STEPS.map(function (stepId) {
+            return ensureStep(stepId).compute_mode;
+          }).filter(function (mode, idx, arr) {
+            return arr.indexOf(mode) === idx;
+          });
+          if (unique.length === 1) modeSelect.value = unique[0];
+        }
+      } catch (_) {}
+      renderRows();
+    }
+
+    function getPlan() {
+      syncHidden();
+      try {
+        return hidden && hidden.value ? JSON.parse(hidden.value) : {
+          default_mode: defaultMode(),
+          steps: {},
+        };
+      } catch (_) {
+        return { default_mode: defaultMode(), steps: {} };
+      }
+    }
+
+    window.LibrarAInIngestCompute = {
+      getPlan: getPlan,
+      getPlanJson: function () {
+        syncHidden();
+        return (hidden && hidden.value) || JSON.stringify({ default_mode: defaultMode(), steps: {} });
+      },
+      getStepChoice: function (stepId) {
+        var choice = ensureStep(stepId);
+        return { compute_mode: choice.compute_mode, model: choice.model || "" };
+      },
+      applyFromHidden: applyFromHidden,
+    };
+
+    if (modeSelect) {
+      modeSelect.addEventListener("change", function () {
+        if (applying) return;
+        applyDefaultModeToAll(defaultMode());
+      });
+    }
+
+    renderRows();
+    fetch("/api/ingest/compute-catalog")
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data || !data.ok) throw new Error(data && data.error ? data.error : "catalogo non disponibile");
+        catalog = data;
+        if (statusEl) {
+          var localN = (data.local || []).length;
+          var cloudN = (data.cloud || []).length;
+          statusEl.textContent = "Local " + localN + " · Cloud " + cloudN;
+        }
+        renderRows();
+      })
+      .catch(function (err) {
+        if (statusEl) statusEl.textContent = String(err && err.message ? err.message : err);
+      });
+  })();
 
   function importInlineModule(elementId) {
     var el = document.getElementById(elementId);

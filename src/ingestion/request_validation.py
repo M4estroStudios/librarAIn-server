@@ -150,6 +150,7 @@ def validate_and_enrich_request(payload: dict) -> EnrichedIngestRequest:
     )
     payload = dict(payload)
     payload.pop("compute_mode", None)
+    payload.pop("compute_plan", None)
     try:
         request = IngestRequest.model_validate(payload)
     except ValidationError as exc:

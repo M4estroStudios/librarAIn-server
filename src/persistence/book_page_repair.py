@@ -24,6 +24,7 @@ from src.ingestion.orchestrator import (
     _run_render_phase,
     _run_stage1_phase,
     _run_vision_editor_phases,
+    _unload_last_local_llm,
 )
 from src.ingestion.output_writer import BookOutput, BookPageOutput
 from src.ingestion.page_enumeration import build_useful_pages_enumeration
@@ -47,6 +48,7 @@ from src.models.request import (
     UsefulPagesEnumeration,
 )
 from src.models.settings import Settings
+from src.models.ingest_compute import IngestComputePlan, plan_needs_local_llm
 from src.persistence.book_page_exclude import (
     _aligned_to_original_from_manifest,
     load_book_exclusions,
@@ -509,6 +511,7 @@ async def _run_repair_async(
     progress: ProgressReporter | None,
     single_page: bool,
     pipeline_mode: RepairPipelineMode = "classic",
+    compute_plan: IngestComputePlan | None = None,
 ) -> dict[str, Any]:
     slug = str(manifest.get("slug") or _slugify(enriched.request.reicat.title))
     data_root = Path(settings.data_root)
@@ -532,6 +535,7 @@ async def _run_repair_async(
         progress=progress,
         skip_vision_editor=False,
         counters={"completed": 0, "failed": 0},
+        compute_plan=compute_plan,
     )
     _run_render_phase(ctx)
     page_jobs = _prepare_page_jobs(ctx)
@@ -577,6 +581,7 @@ async def _run_repair_async(
             data_root,
             enriched.source_sha256,
         )
+    _unload_last_local_llm(ctx)
     result: dict[str, Any] = {
         "source_sha256": enriched.source_sha256,
         "aligned_pages": aligned_pages,
@@ -603,6 +608,7 @@ def run_book_page_repair(
     request_id: str = "",
     progress: ProgressReporter | None = None,
     pipeline_mode: RepairPipelineMode | object = "classic",
+    compute_plan: IngestComputePlan | None = None,
 ) -> dict[str, Any]:
     if aligned_page < 1:
         raise PageRepairError("aligned_page must be positive")
@@ -625,6 +631,9 @@ def run_book_page_repair(
         single_page=True,
         entry_stage=entry_stage,
         ocr_backend="glm" if resolved_mode == "glm_ocr" else "easyocr",
+        needs_local_llm=(
+            plan_needs_local_llm(compute_plan, resolved_mode) if compute_plan is not None else None
+        ),
     )
     repair_request_id = request_id or str(uuid4())
     if progress is not None:
@@ -650,6 +659,7 @@ def run_book_page_repair(
             progress=progress,
             single_page=True,
             pipeline_mode=resolved_mode,
+            compute_plan=compute_plan,
         )
     )
     if progress is not None:
@@ -675,6 +685,7 @@ def run_book_gaps_repair(
     request_id: str = "",
     progress: ProgressReporter | None = None,
     pipeline_mode: RepairPipelineMode | object = "classic",
+    compute_plan: IngestComputePlan | None = None,
 ) -> dict[str, Any]:
     if not gap_pages:
         raise PageRepairError("gap_pages must not be empty")
@@ -707,6 +718,9 @@ def run_book_gaps_repair(
         single_page=False,
         entry_stage=entry_stage,
         ocr_backend="glm" if resolved_mode == "glm_ocr" else "easyocr",
+        needs_local_llm=(
+            plan_needs_local_llm(compute_plan, resolved_mode) if compute_plan is not None else None
+        ),
     )
     repair_request_id = request_id or str(uuid4())
     if progress is not None:
@@ -731,6 +745,7 @@ def run_book_gaps_repair(
             progress=progress,
             single_page=False,
             pipeline_mode=resolved_mode,
+            compute_plan=compute_plan,
         )
     )
     data_root_path = Path(settings.data_root)
