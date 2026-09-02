@@ -1,0 +1,3 @@
+# LE PRIME PROVINCE ROMANE
+
+Dopo la fine della prima guerra punica, con la conquista della Sicilia, della Sardegna e della Corsica, i Romani estendono il loro dominio anche fuori della penisola italiana. Il modo scelto per controllare questi territori è diverso da quello adottato in Italia. Qui si è fatto ricorso a confische di terre, a fondazione di colonie, ad alleanze; si sono sottoposti i nuovi alleati a obblighi militari. Le isole invece diventano proprietà del popolo romano, veri e propri distretti amministrativi del nascente impero romano. I loro abitanti non sono cittadini o alleati, ma so no sudditi soggetti a tributi e non sono chiamati a servire nell'esercito. Al contrario

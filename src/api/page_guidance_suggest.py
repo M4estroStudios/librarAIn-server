@@ -75,6 +75,7 @@ def normalize_annotations(raw: Any) -> list[dict[str, Any]]:
                         "id": str(el.get("id") or "").strip() or None,
                         "name": name or kind,
                         "description": str(el.get("description") or "").strip(),
+                        "defaultDescription": str(el.get("defaultDescription") or "").strip(),
                         "type": kind,
                         "coords": coords,
                     }

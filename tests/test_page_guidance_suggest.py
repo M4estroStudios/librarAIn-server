@@ -91,6 +91,28 @@ class NormalizeAnnotationsTests(unittest.TestCase):
         self.assertEqual(normalized[0]["elements"][0]["name"], "colonna_dx")
         self.assertEqual(normalized[0]["elements"][0]["description"], "ignora note a piè")
 
+    def test_preserves_default_description(self) -> None:
+        normalized = normalize_annotations(
+            [
+                {
+                    "page": 1,
+                    "elements": [
+                        {
+                            "id": "b1",
+                            "name": "colonna_dx",
+                            "description": "solo questa pagina",
+                            "defaultDescription": "ignora note a piè",
+                            "type": "bbox",
+                            "coords": [10, 20, 100, 80],
+                        },
+                    ],
+                }
+            ]
+        )
+        el = normalized[0]["elements"][0]
+        self.assertEqual(el["description"], "solo questa pagina")
+        self.assertEqual(el["defaultDescription"], "ignora note a piè")
+
 
 class FlattenAnnotationsTests(unittest.TestCase):
     def test_draws_without_error(self) -> None:

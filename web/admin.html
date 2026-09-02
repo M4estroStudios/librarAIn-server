@@ -2278,6 +2278,62 @@ async function loadEmbeddingsStatus() {
     data.missing_count + " da generare (" + data.model + ")";
 }
 
+function sseNamedPayload(event) {
+  const raw = event && event.data;
+  if (typeof raw !== "string" || !raw) return null;
+  try { return JSON.parse(raw); } catch { return null; }
+}
+
+function jobFailureText(payload) {
+  if (!payload || typeof payload !== "object") return "";
+  if (payload.message) return String(payload.message);
+  if (typeof payload.error === "string" && payload.error) return payload.error;
+  const events = payload.events;
+  if (!Array.isArray(events)) return "";
+  for (let i = events.length - 1; i >= 0; i--) {
+    const ev = events[i];
+    if (ev && (ev.status === "error" || ev.status === "failed") && ev.message) {
+      return String(ev.message);
+    }
+  }
+  return "";
+}
+
+function ingestStatusUrlFromEvents(eventsUrl) {
+  const match = String(eventsUrl || "").match(/\/api\/ingest\/([^/?#]+)\/events/);
+  return match ? "/api/ingest/" + match[1] + "/status" : "";
+}
+
+function lookupClosedSseJobFailure(statusUrl) {
+  if (!statusUrl) return Promise.resolve("");
+  let left = 8;
+  function tick() {
+    return fetch(statusUrl).then((res) => res.json()).then((body) => {
+      const msg = jobFailureText(body);
+      if (msg) return msg;
+      if (body && (body.status === "done" || body.status === "succeeded")) return "";
+      left -= 1;
+      if (left <= 0) return "";
+      return new Promise((resolve) => setTimeout(() => resolve(tick()), 120));
+    }).catch(() => "");
+  }
+  return tick();
+}
+
+function bindSseTerminalError(es, eventsUrl, handleMessage, fail) {
+  const statusUrl = ingestStatusUrlFromEvents(eventsUrl);
+  es.addEventListener("error", (event) => {
+    if (sseNamedPayload(event)) {
+      handleMessage(event);
+      return;
+    }
+    es.close();
+    lookupClosedSseJobFailure(statusUrl).then((msg) => {
+      fail(msg || "Connessione SSE interrotta");
+    });
+  });
+}
+
 function watchEmbeddingsJobViaSSE(eventsUrl) {
   return new Promise((resolve, reject) => {
     const box = document.getElementById("progress-embeddings");
@@ -2308,10 +2364,12 @@ function watchEmbeddingsJobViaSSE(eventsUrl) {
         finish(reject, new Error(data.message || "Generazione embedding fallita"));
       }
     }
-    ["started", "progress", "subject_embeddings", "done", "error"].forEach((name) => {
+    ["started", "progress", "subject_embeddings", "done"].forEach((name) => {
       es.addEventListener(name, handleMessage);
     });
-    es.onerror = () => finish(reject, new Error("Connessione SSE interrotta"));
+    bindSseTerminalError(es, eventsUrl, handleMessage, (msg) => {
+      finish(reject, new Error(msg));
+    });
   });
 }
 
@@ -2514,10 +2572,12 @@ function watchDedupJobViaSSE(eventsUrl) {
         finish(reject, new Error(data.message || "Scansione dedup fallita"));
       }
     }
-    ["started", "progress", "done", "error"].forEach((name) => {
+    ["started", "progress", "done"].forEach((name) => {
       es.addEventListener(name, handleMessage);
     });
-    es.onerror = () => finish(reject, new Error("SSE dedup interrotto"));
+    bindSseTerminalError(es, eventsUrl, handleMessage, (msg) => {
+      finish(reject, new Error(msg === "Connessione SSE interrotta" ? "SSE dedup interrotto" : msg));
+    });
   });
 }
 
@@ -4333,8 +4393,9 @@ function watchRepairJobViaSSE(eventsUrl) {
       "completed", "failed", "pipeline_total", "page_repair",
     ].forEach((name) => es.addEventListener(name, handleMessage));
     es.addEventListener("done", handleMessage);
-    es.addEventListener("error", handleMessage);
-    es.onerror = () => finish(reject, new Error("Connessione SSE interrotta"));
+    bindSseTerminalError(es, eventsUrl, handleMessage, (msg) => {
+      finish(reject, new Error(msg));
+    });
   });
 }
 

@@ -16,6 +16,66 @@ function mentionTokenLocal(name) {
   return String(name || "").trim().replace(/\s+/g, "_") || "elemento";
 }
 
+function eachAnnotationEl(pages, fn) {
+  Object.keys(pages || {}).forEach(function (key) {
+    (pages[key] || []).forEach(function (el) {
+      if (el) fn(el);
+    });
+  });
+}
+
+function countTokenOthers(pages, token, exceptId) {
+  let n = 0;
+  if (!token) return 0;
+  eachAnnotationEl(pages, function (el) {
+    if (el.id === exceptId) return;
+    if (!String(el.name || "").trim()) return;
+    if (mentionTokenLocal(el.name) === token) n += 1;
+  });
+  return n;
+}
+
+function lookupTagDefaultDescription(pages, token, exceptId) {
+  let stamped = "";
+  let fallback = "";
+  if (!token) return "";
+  eachAnnotationEl(pages, function (el) {
+    if (exceptId && el.id === exceptId) return;
+    if (!String(el.name || "").trim()) return;
+    if (mentionTokenLocal(el.name) !== token) return;
+    const dd = String(el.defaultDescription || "").trim();
+    if (dd && !stamped) stamped = dd;
+    const d = String(el.description || "").trim();
+    if (d && !fallback) fallback = d;
+  });
+  return stamped || fallback;
+}
+
+function fillEmptyDescriptionFromTagDefault(el, pages) {
+  if (!el || String(el.description || "").trim()) return false;
+  const name = String(el.name || "").trim();
+  if (!name) return false;
+  const def = lookupTagDefaultDescription(pages, mentionTokenLocal(name), el.id);
+  if (!def) return false;
+  el.description = def;
+  if (!String(el.defaultDescription || "").trim()) el.defaultDescription = def;
+  return true;
+}
+
+function syncTagDefaultOnCommit(el, pages) {
+  const name = String(el && el.name || "").trim();
+  if (!name) return;
+  const token = mentionTokenLocal(name);
+  if (countTokenOthers(pages, token, el.id) === 0) {
+    el.defaultDescription = String(el.description || "");
+    return;
+  }
+  const def = lookupTagDefaultDescription(pages, token, el.id);
+  if (!String(el.defaultDescription || "").trim() && def) {
+    el.defaultDescription = def;
+  }
+}
+
 function isBboxInTop15(el) {
   if (!el || el.type !== "bbox" || !el.coords || el.coords.length < 4) return false;
   const y1 = Number(el.coords[1]);
@@ -802,10 +862,15 @@ export function createPageGuidanceController(bridge) {
       return item.id === state.selectedId;
     });
     if (!el) return;
+    const prevName = String(el.name || "");
     const typed = String(nameInput.value || "");
     // F-002: empty trim stays empty — do not call defaultNameFor / rewrite nameInput with bboxN.
     el.name = typed.trim() ? typed : "";
     el.description = String(descInput.value || "");
+    if (el.name !== prevName && el.name && fillEmptyDescriptionFromTagDefault(el, state.pages)) {
+      descInput.value = el.description || "";
+    }
+    if (el.name) syncTagDefaultOnCommit(el, state.pages);
     redraw(false);
     notifyAnnotationsChange();
   }
@@ -875,22 +940,9 @@ export function createPageGuidanceController(bridge) {
     }
     el.name = name;
     nameInput.value = name;
-    if (!String(el.description || "").trim()) {
-      const tokenKey = mentionTokenLocal(name);
-      Object.keys(state.pages).some(function (pageKey) {
-        return (state.pages[pageKey] || []).some(function (other) {
-          if (!other || other.id === el.id) return false;
-          const otherToken = mentionTokenLocal(other.name);
-          if (otherToken !== tokenKey) return false;
-          if (!String(other.description || "").trim()) return false;
-          el.description = other.description;
-          descInput.value = el.description;
-          return true;
-        });
-      });
-    } else {
-      descInput.value = el.description || "";
-    }
+    fillEmptyDescriptionFromTagDefault(el, state.pages);
+    syncTagDefaultOnCommit(el, state.pages);
+    descInput.value = el.description || "";
     chromeLayer.classList.remove("hidden");
     autosizeNameEditor();
     layoutChromeAround(el);

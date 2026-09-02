@@ -175,13 +175,17 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
     return page >= 1 ? page : null;
   }
 
-  function formatPagesMeta(pages) {
+  function formatPagesMeta(pages, maxVisible) {
     const sorted = Array.from(new Set((pages || []).map(Number).filter(function (p) { return p >= 1; }))).sort(function (a, b) {
       return a - b;
     });
     if (!sorted.length) return "";
-    if (sorted.length === 1) return "p." + sorted[0];
-    return "p." + sorted[0] + "-" + sorted[sorted.length - 1];
+    const limit = Number(maxVisible);
+    const shown = limit >= 1 && sorted.length > limit ? sorted.slice(0, limit) : sorted;
+    let out = "p." + shown.join("-");
+    const extra = sorted.length - shown.length;
+    if (extra > 0) out += " … +" + extra + " altre";
+    return out;
   }
 
   function itemsForSection(section) {
@@ -216,14 +220,19 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
             token: token,
             name: nameTrim,
             type: el.type,
-            description: String(el.description || "").trim(),
+            description: "",
+            hasDefault: false,
             pages: [],
             refs: [],
             singleMetas: [],
           };
         }
         const group = byToken[token];
-        if (!group.description && String(el.description || "").trim()) {
+        const stamped = String(el.defaultDescription || "").trim();
+        if (stamped) {
+          group.description = stamped;
+          group.hasDefault = true;
+        } else if (!group.hasDefault && !group.description && String(el.description || "").trim()) {
           group.description = String(el.description || "").trim();
         }
         group.pages.push(pageItem.page);
@@ -249,7 +258,8 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
         id: group.refs[0] && group.refs[0].id,
         shared: shared,
         current: !!group.current,
-        meta: shared ? formatPagesMeta(pages) : (group.singleMetas[0] || formatPagesMeta(pages)),
+        meta: shared ? formatPagesMeta(pages, 3) : (group.singleMetas[0] || formatPagesMeta(pages)),
+        metaFull: shared ? formatPagesMeta(pages) : (group.singleMetas[0] || formatPagesMeta(pages)),
       };
     });
     out.sort(function (a, b) {
@@ -304,7 +314,7 @@ export function bootPageGuidanceMentions(bridge, getAnnotations, removeAnnotatio
         chip.setAttribute("data-token", item.token || "");
         chip.setAttribute("data-page", String(item.page));
         chip.setAttribute("data-id", String(item.id || ""));
-        chip.title = item.meta + " · " + (item.type || "") +
+        chip.title = (item.metaFull || item.meta) + " · " + (item.type || "") +
           (item.description ? " — " + item.description : "");
 
         const label = document.createElement("button");

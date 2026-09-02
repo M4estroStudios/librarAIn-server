@@ -1,0 +1,86 @@
+# RE E IMPERATORI
+
+## DI ROMA ANTICA
+
+## I SETTE RE DI ROMA
+
+Riguardo alla storia e alla cronologia dei re di Roma siamo a metà fra storia e leggenda.  
+Ai sette sovrani vengono attribuiti complessivamente 244 anni di regno, circa 35 per ciascuno, dal 753 al 509 a.C., nascita della Repubblica. Le date che seguono sono dunque da considerarsi meramente orientative.
+
+Romolo (753-717) Tarquinio Prisco (616-579)  
+Numa Pompilio (715-673) Servio Tullio (578-535)  
+Tullo Ostilio (672-641) Tarquinio il Superbo (534-510).  
+Anco Marcio (639-616)
+
+## GLI IMPERATORI
+
+La cronologia degli imperatori romane che segue si riferisce all'Impero Romano d'Occidente, dall'inizio del principato di Augusto (27 a.C.).
+
+Augusto (27 a.C.-14 d.C.)  
+Gordiano I (238)  
+Tiberio (14-37)  
+Gordiano II (238)  
+Caligola (37-41)  
+Pupieno (238)  
+Claudio (41-54)  
+Balbino (238)  
+Nerone (54-68)  
+Giordano III (238-244)  
+Galba (68-69)  
+Filippo l'Arabo (245-249)  
+Ottone (69)  
+Decio (249-251)  
+Vitellio (69)  
+Treboniano Gallo (251-253)  
+Vespasiano (69-79)  
+Emiliano (253)  
+Tito (79-81)  
+Valeriano e Gallieno (253-260)  
+Domiziano (81-96)  
+Gallieno (260-268)  
+Nerva (96-98)  
+Claudio II (268-270)  
+Traiano (98-117)  
+Aureliano (270-275)  
+Adriano (117-138)  
+Tacito (275-276)  
+Antonino Pio (138-161)  
+Marco Aurelio e Lucio Vero (161-169)  
+Marco Aurelio (169-180)  
+Commodo (180-192)  
+Pertinace (193)  
+Didio Giuliano (193)  
+Settimio Severo (193-211)  
+Caracalla (211-217)  
+Macrino (217-218)  
+Eliogabalo (218-222)  
+Alessandro Severo (222-235)  
+Massimino il Trace (235-238)
+
+## GLI IMPERATORI
+
+Gordiano I (238)  
+Gordiano II (238)  
+Pupieno (238)  
+Balbino (238)  
+Giordano III (238-244)  
+Filippo l'Arabo (245-249)  
+Decio (249-251)  
+Treboniano Gallo (251-253)  
+Emiliano (253)  
+Valeriano e Gallieno (253-260)  
+Gallieno (260-268)  
+Claudio II (268-270)  
+Aureliano (270-275)  
+Tacito (275-276)  
+Floriano (276)  
+Probo (276-282)  
+Caro (282-283)  
+Numeriano (283-284)  
+Carino (283-285)  
+Diocleziano (284-305)  
+Massimiano (286-310)  
+Costanzo Cloro (305-306)  
+Galerio (305-311)  
+Massenzio (306-312)  
+Costantino (306-337).

@@ -2546,6 +2546,51 @@ if (document.readyState === "loading") {
     if (activeBulkRepairUI) activeBulkRepairUI.update(ev);
   }
 
+  function sseNamedPayload(event) {
+    var raw = event && event.data;
+    if (typeof raw !== "string" || !raw) return null;
+    try { return JSON.parse(raw); } catch (_) { return null; }
+  }
+
+  function jobFailureText(payload) {
+    if (!payload || typeof payload !== "object") return "";
+    if (payload.message) return String(payload.message);
+    if (typeof payload.error === "string" && payload.error) return payload.error;
+    var events = payload.events;
+    if (!Array.isArray(events)) return "";
+    for (var i = events.length - 1; i >= 0; i--) {
+      var ev = events[i];
+      if (ev && (ev.status === "error" || ev.status === "failed") && ev.message) {
+        return String(ev.message);
+      }
+    }
+    return "";
+  }
+
+  function ingestStatusUrlFromEvents(eventsUrl, statusUrl) {
+    if (statusUrl) return statusUrl;
+    var match = String(eventsUrl || "").match(/\/api\/ingest\/([^/?#]+)\/events/);
+    return match ? "/api/ingest/" + match[1] + "/status" : "";
+  }
+
+  function lookupClosedSseJobFailure(statusUrl) {
+    if (!statusUrl) return Promise.resolve("");
+    var left = 8;
+    function tick() {
+      return fetch(statusUrl).then(function (res) { return res.json(); }).then(function (body) {
+        var msg = jobFailureText(body);
+        if (msg) return msg;
+        if (body && (body.status === "done" || body.status === "succeeded")) return "";
+        left -= 1;
+        if (left <= 0) return "";
+        return new Promise(function (resolve) {
+          setTimeout(function () { resolve(tick()); }, 120);
+        });
+      }).catch(function () { return ""; });
+    }
+    return tick();
+  }
+
   function watchRepairJobViaSSE(eventsUrl) {
     if (window.__librarainMock && window.__librarainMock.isEnabled() && String(eventsUrl || "").indexOf("mock://") === 0) {
       return window.__librarainMock.watchRepairSse(eventsUrl, updateRepairProgress);
@@ -2553,6 +2598,7 @@ if (document.readyState === "loading") {
     return new Promise(function (resolve, reject) {
       var es = new EventSource(eventsUrl);
       var settled = false;
+      var statusUrl = ingestStatusUrlFromEvents(eventsUrl);
       function finish(fn, value) {
         if (settled) return;
         settled = true;
@@ -2560,12 +2606,8 @@ if (document.readyState === "loading") {
         fn(value);
       }
       function handleMessage(event) {
-        var data;
-        try {
-          data = JSON.parse(event.data);
-        } catch (e) {
-          return;
-        }
+        var data = sseNamedPayload(event);
+        if (!data) return;
         updateRepairProgress(data);
         if (data.status === "done") finish(resolve, data);
         if (data.status === "error") {
@@ -2574,6 +2616,17 @@ if (document.readyState === "loading") {
           finish(reject, err);
         }
       }
+      function onSseError(event) {
+        if (settled) return;
+        if (sseNamedPayload(event)) {
+          handleMessage(event);
+          return;
+        }
+        es.close();
+        lookupClosedSseJobFailure(statusUrl).then(function (msg) {
+          finish(reject, new Error(msg || "Connessione SSE interrotta"));
+        });
+      }
       [
         "started", "progress", "page_progress", "page_skipped",
         "completed", "failed", "pipeline_total", "page_repair",
@@ -2581,8 +2634,7 @@ if (document.readyState === "loading") {
         es.addEventListener(name, handleMessage);
       });
       es.addEventListener("done", handleMessage);
-      es.addEventListener("error", handleMessage);
-      es.onerror = function () { finish(reject, new Error("Connessione SSE interrotta")); };
+      es.addEventListener("error", onSseError);
     });
   }
 
@@ -3661,19 +3713,26 @@ if (document.readyState === "loading") {
     return ingestPagesState.jobId || ev.job_id || "";
   }
 
-  function connectSSE(eventsUrl) {
+  function connectSSE(eventsUrl, statusUrl) {
     var es = new EventSource(eventsUrl);
-    var TERMINAL = new Set(["done", "error"]);
+    var settled = false;
+    var jobStatusUrl = ingestStatusUrlFromEvents(eventsUrl, statusUrl);
+
+    function closeUi() {
+      if (settled) return;
+      settled = true;
+      es.close();
+      btn.disabled = false;
+    }
 
     function onMessage(e) {
-      var ev;
-      try { ev = JSON.parse(e.data); } catch (_) { return; }
+      var ev = sseNamedPayload(e);
+      if (!ev) return;
       handleEvent(ev);
     }
 
     function onDone(e) {
-      var ev;
-      try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+      var ev = sseNamedPayload(e) || {};
       applyTimingFields(ev);
       var result = ev.result;
       if (result && typeof result === "object" && result.timing) applyTimingFields({ timing: result.timing });
@@ -3682,31 +3741,33 @@ if (document.readyState === "loading") {
       show("ok", ingestDoneDisplay(ev) || result || ev);
       if (globalTotal > 0) globalStep = globalTotal;
       renderAllProgress();
-      es.close();
-      btn.disabled = false;
+      closeUi();
     }
 
-    function onError(e) {
-      var ev;
-      try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
-      showProgressAlert(ev.message || String(ev));
+    function failJob(msg) {
+      showProgressAlert(msg);
       markIngestJobComplete();
-      es.close();
-      btn.disabled = false;
+      closeUi();
     }
 
-    function onSSEError() {
-      showProgressAlert("Connessione SSE interrotta inaspettatamente.");
+    function onAnyError(e) {
+      if (settled) return;
+      var ev = sseNamedPayload(e);
+      if (ev) {
+        failJob(jobFailureText(ev) || "Ingest fallito");
+        return;
+      }
       es.close();
-      btn.disabled = false;
+      lookupClosedSseJobFailure(jobStatusUrl).then(function (msg) {
+        failJob(msg || "Connessione SSE interrotta inaspettatamente.");
+      });
     }
 
     var eventTypes = ["started", "progress", "page_progress", "page_skipped",
                       "page_failed", "completed", "failed", "pipeline_total"];
     eventTypes.forEach(function (t) { es.addEventListener(t, onMessage); });
     es.addEventListener("done", onDone);
-    es.addEventListener("error", onError);
-    es.onerror = onSSEError;
+    es.addEventListener("error", onAnyError);
   }
 
   form.addEventListener("submit", async function (event) {
@@ -3750,7 +3811,7 @@ if (document.readyState === "loading") {
         return;
       }
 
-      connectSSE(data.events_url);
+      connectSSE(data.events_url, data.status_url);
       ingestPagesState.jobId = data.job_id || "";
       if (window.parent !== window) {
         try {

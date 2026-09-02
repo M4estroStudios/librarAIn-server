@@ -1113,7 +1113,7 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
   </div>
 </div>
 
-<form id="ingest-form">
+<form id="ingest-form" novalidate>
   <div id="ingest-upload-banner" class="ingest-upload-banner hidden">
     <button type="button" id="ingest-upload-back-btn" class="secondary">← Bozze</button>
     <p id="ingest-upload-hint" class="ingest-upload-hint hint">Carica un PDF per iniziare.</p>
@@ -1999,12 +1999,11 @@ function syncSubmitButton() {
   const submit = document.getElementById("submit-btn");
   const hint = document.getElementById("ingest-debug-mock-hint");
   if (!submit) return;
+  submit.disabled = false;
   if (mock.isEnabled()) {
-    submit.disabled = true;
-    submit.title = "Disabilitato in modalità mock — usa i comandi Lab";
+    submit.title = "Modalità mock: l'invio reale è bloccato — usa i comandi Lab";
     if (hint) hint.textContent = "Mock attivo: API finte e ingest reale disabilitato.";
   } else {
-    submit.disabled = false;
     submit.title = "";
     if (hint) hint.textContent = "I comandi Lab attivano mock automaticamente. Spunta mock solo per review/repair manuali.";
   }
@@ -6799,6 +6798,15 @@ if (document.readyState === "loading") {
     syncSaveDraftButton();
   }
 
+  function syncPdfFileInput(file) {
+    if (!pdfFileInput || !file) return;
+    try {
+      var dt = new DataTransfer();
+      dt.items.add(file);
+      pdfFileInput.files = dt.files;
+    } catch (_) {}
+  }
+
   async function loadPagePickerFromFile(file) {
     if (!file || !file.size) return;
     var expectedDraftSha = String(pendingOpenDraftSha || "").trim().toLowerCase();
@@ -6808,6 +6816,7 @@ if (document.readyState === "loading") {
     applyIngestNotesState(emptyIngestNotesState());
     resetPagePickerState();
     pagePickerState.pdfFile = file;
+    syncPdfFileInput(file);
     var loadGen = pagePickerState.loadGen;
     try {
       var buf = await file.arrayBuffer();
@@ -7510,6 +7519,51 @@ if (document.readyState === "loading") {
     if (activeBulkRepairUI) activeBulkRepairUI.update(ev);
   }
 
+  function sseNamedPayload(event) {
+    var raw = event && event.data;
+    if (typeof raw !== "string" || !raw) return null;
+    try { return JSON.parse(raw); } catch (_) { return null; }
+  }
+
+  function jobFailureText(payload) {
+    if (!payload || typeof payload !== "object") return "";
+    if (payload.message) return String(payload.message);
+    if (typeof payload.error === "string" && payload.error) return payload.error;
+    var events = payload.events;
+    if (!Array.isArray(events)) return "";
+    for (var i = events.length - 1; i >= 0; i--) {
+      var ev = events[i];
+      if (ev && (ev.status === "error" || ev.status === "failed") && ev.message) {
+        return String(ev.message);
+      }
+    }
+    return "";
+  }
+
+  function ingestStatusUrlFromEvents(eventsUrl, statusUrl) {
+    if (statusUrl) return statusUrl;
+    var match = String(eventsUrl || "").match(/\/api\/ingest\/([^/?#]+)\/events/);
+    return match ? "/api/ingest/" + match[1] + "/status" : "";
+  }
+
+  function lookupClosedSseJobFailure(statusUrl) {
+    if (!statusUrl) return Promise.resolve("");
+    var left = 8;
+    function tick() {
+      return fetch(statusUrl).then(function (res) { return res.json(); }).then(function (body) {
+        var msg = jobFailureText(body);
+        if (msg) return msg;
+        if (body && (body.status === "done" || body.status === "succeeded")) return "";
+        left -= 1;
+        if (left <= 0) return "";
+        return new Promise(function (resolve) {
+          setTimeout(function () { resolve(tick()); }, 120);
+        });
+      }).catch(function () { return ""; });
+    }
+    return tick();
+  }
+
   function watchRepairJobViaSSE(eventsUrl) {
     if (window.__librarainMock && window.__librarainMock.isEnabled() && String(eventsUrl || "").indexOf("mock://") === 0) {
       return window.__librarainMock.watchRepairSse(eventsUrl, updateRepairProgress);
@@ -7517,6 +7571,7 @@ if (document.readyState === "loading") {
     return new Promise(function (resolve, reject) {
       var es = new EventSource(eventsUrl);
       var settled = false;
+      var statusUrl = ingestStatusUrlFromEvents(eventsUrl);
       function finish(fn, value) {
         if (settled) return;
         settled = true;
@@ -7524,12 +7579,8 @@ if (document.readyState === "loading") {
         fn(value);
       }
       function handleMessage(event) {
-        var data;
-        try {
-          data = JSON.parse(event.data);
-        } catch (e) {
-          return;
-        }
+        var data = sseNamedPayload(event);
+        if (!data) return;
         updateRepairProgress(data);
         if (data.status === "done") finish(resolve, data);
         if (data.status === "error") {
@@ -7538,6 +7589,17 @@ if (document.readyState === "loading") {
           finish(reject, err);
         }
       }
+      function onSseError(event) {
+        if (settled) return;
+        if (sseNamedPayload(event)) {
+          handleMessage(event);
+          return;
+        }
+        es.close();
+        lookupClosedSseJobFailure(statusUrl).then(function (msg) {
+          finish(reject, new Error(msg || "Connessione SSE interrotta"));
+        });
+      }
       [
         "started", "progress", "page_progress", "page_skipped",
         "completed", "failed", "pipeline_total", "page_repair",
@@ -7545,8 +7607,7 @@ if (document.readyState === "loading") {
         es.addEventListener(name, handleMessage);
       });
       es.addEventListener("done", handleMessage);
-      es.addEventListener("error", handleMessage);
-      es.onerror = function () { finish(reject, new Error("Connessione SSE interrotta")); };
+      es.addEventListener("error", onSseError);
     });
   }
 
@@ -8921,10 +8982,11 @@ if (document.readyState === "loading") {
     renderQueueBar();
   }
 
-  function connectSSE(eventsUrl) {
+  function connectSSE(eventsUrl, statusUrl) {
     return new Promise(function (resolve, reject) {
       var es = new EventSource(eventsUrl);
       var settled = false;
+      var jobStatusUrl = ingestStatusUrlFromEvents(eventsUrl, statusUrl);
 
       function finish(err, result) {
         if (settled) return;
@@ -8934,15 +8996,22 @@ if (document.readyState === "loading") {
         else resolve(result);
       }
 
+      function failJob(msg) {
+        showProgressAlert(msg);
+        markIngestJobComplete();
+        markQueueItemFromJob("error");
+        releaseSubmitButton();
+        finish(new Error(msg));
+      }
+
       function onMessage(e) {
-        var ev;
-        try { ev = JSON.parse(e.data); } catch (_) { return; }
+        var ev = sseNamedPayload(e);
+        if (!ev) return;
         handleEvent(ev);
       }
 
       function onDone(e) {
-        var ev;
-        try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
+        var ev = sseNamedPayload(e) || {};
         applyTimingFields(ev);
         var result = ev.result;
         if (result && typeof result === "object" && result.timing) applyTimingFields({ timing: result.timing });
@@ -8956,31 +9025,24 @@ if (document.readyState === "loading") {
         finish(null, ev);
       }
 
-      function onError(e) {
-        var ev;
-        try { ev = JSON.parse(e.data); } catch (_) { ev = {}; }
-        var msg = ev.message || String(ev);
-        showProgressAlert(msg);
-        markIngestJobComplete();
-        markQueueItemFromJob("error");
-        releaseSubmitButton();
-        finish(new Error(msg));
-      }
-
-      function onSSEError() {
-        var msg = "Connessione SSE interrotta inaspettatamente.";
-        showProgressAlert(msg);
-        markQueueItemFromJob("error");
-        releaseSubmitButton();
-        finish(new Error(msg));
+      function onAnyError(e) {
+        if (settled) return;
+        var ev = sseNamedPayload(e);
+        if (ev) {
+          failJob(jobFailureText(ev) || "Ingest fallito");
+          return;
+        }
+        es.close();
+        lookupClosedSseJobFailure(jobStatusUrl).then(function (msg) {
+          failJob(msg || "Connessione SSE interrotta inaspettatamente.");
+        });
       }
 
       var eventTypes = ["started", "progress", "page_progress", "page_skipped",
                         "page_failed", "completed", "failed", "pipeline_total"];
       eventTypes.forEach(function (t) { es.addEventListener(t, onMessage); });
       es.addEventListener("done", onDone);
-      es.addEventListener("error", onError);
-      es.onerror = onSSEError;
+      es.addEventListener("error", onAnyError);
     });
   }
 
@@ -8991,6 +9053,10 @@ if (document.readyState === "loading") {
     var mergeSources = activeItem && isMergedQueueItem(activeItem) ? activeItem.mergeSources : null;
     var fileInput = form.querySelector('[name="pdf_file"]');
     var file = fileInput && fileInput.files && fileInput.files.length ? fileInput.files[0] : null;
+    if ((!file || !file.size) && pagePickerState.pdfFile && pagePickerState.pdfFile.size) {
+      file = pagePickerState.pdfFile;
+      syncPdfFileInput(file);
+    }
     if (!file || !file.size) throw new Error("Seleziona un file PDF.");
 
     var titoloRaw = (form.querySelector('[name="titolo"]') || {}).value || "";
@@ -9074,7 +9140,7 @@ if (document.readyState === "loading") {
       } catch (_) {}
     }
 
-    await connectSSE(data.events_url);
+    await connectSSE(data.events_url, data.status_url);
   }
 
   form.addEventListener("submit", async function (event) {
