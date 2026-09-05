@@ -8,6 +8,7 @@ from typing import Any, Literal, Protocol, runtime_checkable
 from src.core.errors import ShutdownRequested, raise_if_shutdown
 from src.core.log import (
     INFO_LOG_LEVEL,
+    WARNING_LOG_LEVEL,
     Log,
     bind_log_context,
     log_stage_block_async,
@@ -142,6 +143,8 @@ class PipelineContext:
     prompt_notes: str | None
     page_prompt_notes: str | None
     index_prompt_notes: str | None
+    toc_prompt_notes: str | None
+    annotations_by_original: dict[int, list[dict[str, Any]]]
     md_formatting_block: str
     render_page_total: int
     polyindex_dir: Path
@@ -256,10 +259,31 @@ def _build_pipeline_context(
     counters: dict[str, int],
     compute_plan: IngestComputePlan | None = None,
 ) -> PipelineContext:
-    raw_guidance = getattr(enriched.request, "ai_page_guidance", None)
+    from src.ingestion.annotation_rules import (
+        annotations_by_original_page,
+        compose_index_prompt_notes,
+        compose_page_prompt_notes,
+        compose_toc_prompt_notes,
+    )
+
+    req = enriched.request
+    raw_guidance = getattr(req, "ai_page_guidance", None)
     guidance = raw_guidance.strip() if isinstance(raw_guidance, str) else None
     if not guidance:
         guidance = None
+    page_notes = compose_page_prompt_notes(page_notes=req.page_notes, guidance=guidance)
+    index_notes = compose_index_prompt_notes(index_notes=req.index_notes)
+    toc_notes = compose_toc_prompt_notes(notes=req.notes)
+    by_original = annotations_by_original_page(getattr(req, "annotations", None))
+    removed = set(req.pages_to_remove)
+    ignored = [page for page in by_original if page in removed]
+    if ignored:
+        Log(
+            WARNING_LOG_LEVEL,
+            "annotations on removed pages ignored",
+            {"request_id": request_id, "pages": ignored},
+        )
+        by_original = {page: els for page, els in by_original.items() if page not in removed}
     return PipelineContext(
         enriched=enriched,
         alignment=alignment,
@@ -274,9 +298,11 @@ def _build_pipeline_context(
         skip_vision_editor=skip_vision_editor,
         counters=counters,
         source_sha256=enriched.source_sha256,
-        prompt_notes=guidance,
-        page_prompt_notes=guidance,
-        index_prompt_notes=guidance,
+        prompt_notes=page_notes,
+        page_prompt_notes=page_notes,
+        index_prompt_notes=index_notes,
+        toc_prompt_notes=toc_notes,
+        annotations_by_original=by_original,
         md_formatting_block=build_md_formatting_block(enriched.request.md_formatting),
         render_page_total=len(useful_pages.useful_original_pages),
         polyindex_dir=data_root / "polyindex",
@@ -402,6 +428,7 @@ async def _run_glm_ocr_phase(
             progress=ctx.progress,
             prompt_notes=ctx.page_prompt_notes,
             md_formatting=ctx.md_formatting_block,
+            annotations_by_original=ctx.annotations_by_original,
         )
     _sync_page_jobs_from_stage1(page_jobs, combined.stage1)
     for job in page_jobs:
@@ -580,6 +607,7 @@ async def _run_vision_editor_phases(
                 progress=ctx.progress,
                 prompt_notes=ctx.page_prompt_notes,
                 md_formatting=ctx.md_formatting_block,
+                annotations_by_original=ctx.annotations_by_original,
             )
         except ShutdownRequested:
             raise
@@ -621,6 +649,7 @@ async def _run_vision_editor_phases(
                 progress=ctx.progress,
                 prompt_notes=ctx.page_prompt_notes,
                 md_formatting=ctx.md_formatting_block,
+                annotations_by_original=ctx.annotations_by_original,
             )
         except ShutdownRequested:
             raise
@@ -735,7 +764,7 @@ async def _run_toc_refine_phase(ctx: PipelineContext, toc_md_path: Path) -> Path
                 source_sha256=ctx.source_sha256,
                 request_id=ctx.request_id,
                 cache_dir=toc_refine_cache,
-                prompt_notes=ctx.prompt_notes,
+                prompt_notes=ctx.toc_prompt_notes,
                 stats=toc_refine_stats,
             )
     except Exception as exc:
@@ -813,9 +842,23 @@ async def _run_book_artifact_phases(
 ) -> tuple[Path, Path]:
     _run_book_md_builder(ctx, book_output)
     toc_md_path = _run_toc_md_builder(ctx, book_output)
-    toc_md_path = await _run_toc_refine_phase(ctx, toc_md_path)
+    try:
+        toc_md_path = await _run_toc_refine_phase(ctx, toc_md_path)
+    except OrchestratorStageError as exc:
+        Log(
+            WARNING_LOG_LEVEL,
+            "toc refine failed keeping unrefined toc",
+            {"request_id": ctx.request_id, "error": str(exc)},
+        )
     index_md_path = _run_index_md_builder(ctx, book_output)
-    index_md_path = await _run_index_refine_phase(ctx, index_md_path)
+    try:
+        index_md_path = await _run_index_refine_phase(ctx, index_md_path)
+    except OrchestratorStageError as exc:
+        Log(
+            WARNING_LOG_LEVEL,
+            "index refine failed keeping unrefined index",
+            {"request_id": ctx.request_id, "error": str(exc)},
+        )
     # INDEX_{slug}.json + hyperlink e TIME_INDEX restano alla pagina Indice.
     _run_page_metadata_phase(ctx, book_output, toc_md_path)
     return toc_md_path, index_md_path

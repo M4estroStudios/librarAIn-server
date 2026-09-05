@@ -9,6 +9,7 @@ from unittest.mock import MagicMock
 from src.core.rate_limit import AsyncTokenBucket
 from src.core.openai_client import _ClientState, _client_states, build_system_prompt
 from src.ingestion.pipeline.stage2 import Stage2PageResult, Stage2Result
+from src.ingestion.annotation_rules import notes_cache_hash
 from src.ingestion.pipeline.stage2 import _read_stage_md
 from src.ingestion.pipeline.stage3 import (
     Stage3Result,
@@ -249,7 +250,11 @@ class TestRunStage3Editor(unittest.TestCase):
             )
         )
         page = next(p for p in result.pages if p.aligned_page == 1)
-        body = _read_stage_md(Path(page.md_path), "editor-model-v1")
+        body = _read_stage_md(
+            Path(page.md_path),
+            "editor-model-v1",
+            notes_hash=notes_cache_hash(notes),
+        )
         self.assertIn("md text page 1", body)
         self.assertNotIn("Operator notes", body)
 

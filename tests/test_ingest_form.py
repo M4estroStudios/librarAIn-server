@@ -229,6 +229,12 @@ class TestBuildIngestPayload(unittest.TestCase):
             build_ingest_payload_from_form(fields)
         self.assertEqual(ctx.exception.field, "index_range")
 
+    def test_annotations_json_propagated(self) -> None:
+        fields = dict(_BASE_FIELDS)
+        fields["annotations_json"] = '[{"page": 2, "elements": []}]'
+        payload = build_ingest_payload_from_form(fields)
+        self.assertEqual(payload["annotations"], [{"page": 2, "elements": []}])
+
     def test_pages_to_remove_parsed(self) -> None:
         fields = dict(_BASE_FIELDS)
         fields["pages_to_remove"] = "1-3, 10"

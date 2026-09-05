@@ -24,6 +24,12 @@ from src.ingestion.progress import (
     ProgressReporter,
     make_event,
 )
+from src.ingestion.annotation_rules import (
+    OVERLAY_USER_INSTRUCTION,
+    compile_page_annotation_block,
+    element_display_names,
+    notes_cache_hash,
+)
 from src.ingestion.pipeline.md_cache import read_stage_md, write_stage_md
 from src.models.settings import Settings
 from src.ingestion.markdown_artifacts import finalize_vision_page_output
@@ -38,6 +44,33 @@ _write_stage_md = write_stage_md
 
 def _load_vision_prompt() -> str:
     return VISION_PROMPT_FILE.read_text(encoding="utf-8").strip()
+
+
+def _write_overlay_png(
+    page_image_path: Path,
+    elements: list[dict[str, Any]],
+    dest: Path,
+) -> Path | None:
+    if not elements or not page_image_path.is_file():
+        return None
+    from PIL import Image
+
+    from src.api.page_guidance_suggest import flatten_annotations_on_image
+
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    with Image.open(page_image_path) as image:
+        flattened = flatten_annotations_on_image(image, elements)
+        flattened.save(dest, format="PNG")
+    return dest
+
+
+def page_stage_notes_hash(
+    prompt_notes: str | None,
+    page_block: str | None,
+    *,
+    overlay: bool,
+) -> str:
+    return notes_cache_hash(prompt_notes or "", page_block or "", "overlay" if overlay else "")
 
 
 class Stage2PageResult(BaseModel):
@@ -66,6 +99,8 @@ async def refine_with_vision(
     temperature: float = 0.1,
     prompt_notes: str | None = None,
     md_formatting: str | None = None,
+    overlay_image_path: Path | None = None,
+    page_annotation_block: str | None = None,
 ) -> str:
     Log(INFO_LOG_LEVEL, "stage2 refine_with_vision load prompt file begin", {"request_id": request_id})
     formatting = md_formatting if md_formatting is not None else build_md_formatting_block()
@@ -94,18 +129,28 @@ async def refine_with_vision(
         {"request_id": request_id, "b64_chars": len(b64)},
     )
     Log(INFO_LOG_LEVEL, "stage2 refine_with_vision build messages begin", {"request_id": request_id, "page": page})
+    user_content: list[dict[str, Any]] = [{"type": "text", "text": raw_ocr_text}]
+    block = (page_annotation_block or "").strip()
+    if block:
+        user_content.append({"type": "text", "text": block})
+    user_content.append(
+        {
+            "type": "image_url",
+            "image_url": {"url": f"data:image/png;base64,{b64}"},
+        }
+    )
+    if overlay_image_path is not None and overlay_image_path.is_file():
+        overlay_b64 = base64.b64encode(overlay_image_path.read_bytes()).decode("ascii")
+        user_content.append({"type": "text", "text": OVERLAY_USER_INSTRUCTION})
+        user_content.append(
+            {
+                "type": "image_url",
+                "image_url": {"url": f"data:image/png;base64,{overlay_b64}"},
+            }
+        )
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": system_text},
-        {
-            "role": "user",
-            "content": [
-                {"type": "text", "text": raw_ocr_text},
-                {
-                    "type": "image_url",
-                    "image_url": {"url": f"data:image/png;base64,{b64}"},
-                },
-            ],
-        },
+        {"role": "user", "content": user_content},
     ]
     Log(INFO_LOG_LEVEL, "stage2 refine_with_vision build messages done", {"request_id": request_id, "page": page})
     Log(
@@ -144,6 +189,7 @@ async def run_stage2_vision(
     progress: ProgressReporter | None = None,
     prompt_notes: str | None = None,
     md_formatting: str | None = None,
+    annotations_by_original: dict[int, list[dict[str, Any]]] | None = None,
 ) -> Stage2Result:
     data_root = Path(settings.data_root)
     stage2_dir = data_root / "tmp" / source_sha256 / "stage2Vision"
@@ -185,9 +231,15 @@ async def run_stage2_vision(
             )
             stem = Path(s1_page.txt_path).stem
             md_path = stage2_dir / f"{stem}.md"
+            elements = (annotations_by_original or {}).get(s1_page.original_page) or []
+            page_block = compile_page_annotation_block(elements) if elements else ""
+            overlay_enabled = bool(getattr(settings, "annotation_overlay_enabled", True))
+            page_hash = page_stage_notes_hash(
+                prompt_notes, page_block, overlay=bool(elements and overlay_enabled)
+            )
 
             if not force_recompute:
-                cached = _read_stage_md(md_path, model)
+                cached = _read_stage_md(md_path, model, notes_hash=page_hash)
                 if cached is not None:
                     Log(
                         INFO_LOG_LEVEL,
@@ -223,6 +275,23 @@ async def run_stage2_vision(
 
             png_path = render_dir / f"p.{s1_page.aligned_page:04d}.png"
             raw_ocr_text = Path(s1_page.txt_path).read_text(encoding="utf-8")
+            overlay_path = None
+            if elements and overlay_enabled:
+                overlay_path = _write_overlay_png(
+                    png_path,
+                    elements,
+                    render_dir / "annotated" / f"p.{s1_page.aligned_page:04d}.png",
+                )
+                if overlay_path is None:
+                    Log(
+                        WARNING_LOG_LEVEL,
+                        "stage2 overlay skipped missing render",
+                        {
+                            "request_id": request_id,
+                            "aligned_page": s1_page.aligned_page,
+                            "original_page": s1_page.original_page,
+                        },
+                    )
 
             try:
                 refined = await refine_with_vision(
@@ -235,6 +304,8 @@ async def run_stage2_vision(
                     settings=settings,
                     prompt_notes=prompt_notes,
                     md_formatting=md_formatting,
+                    overlay_image_path=overlay_path,
+                    page_annotation_block=page_block or None,
                 )
             except ShutdownRequested:
                 raise
@@ -263,9 +334,13 @@ async def run_stage2_vision(
                     ))
                 return None, False
 
-            finalized = finalize_vision_page_output(refined, prompt_notes)
+            finalized = finalize_vision_page_output(
+                refined,
+                prompt_notes,
+                annotation_names=element_display_names(elements),
+            )
             raise_if_shutdown()
-            _write_stage_md(md_path, model, finalized)
+            _write_stage_md(md_path, model, finalized, notes_hash=page_hash)
             if progress is not None:
                 progress(make_event(
                     PHASE_STAGE2_VISION,

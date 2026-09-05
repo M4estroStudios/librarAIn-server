@@ -19,5 +19,8 @@ Rules:
 - Keep Italian spelling and accents unless fixing an obvious OCR typo without changing meaning.
 - Lines that are only a place name with no pages (e.g. `Flavio; Colosseo`) may stay as a single line if pages are absent in the source; do not invent pages.
 - Do not output markdown tables, bullets, or HTML.
+- Preserve italics on place names (`*Lemma*, 12, 15`). Person names stay regular.
+- A line that is only page numbers (`12, 15, 22` or `12-15`) belongs to the lemma on the line above; keep it as its own line.
+- Do not reorder entries across columns. Column-by-column reading order is already decided by the page model; this refine must not re-flow rows left-to-right.
 
 If a line cannot be interpreted, keep the closest faithful text on one line rather than deleting it.

@@ -12,8 +12,10 @@ from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.core.openai_client import build_system_prompt, chat_completion_with_retry
 from src.models.request import build_md_formatting_block
 from src.core.parallel import gather_cancellable
+from src.ingestion.annotation_rules import notes_cache_hash
 from src.ingestion.pipeline.md_cache import (
     read_stage_md as _read_stage_md,
+    strip_stage_md_marker,
     write_stage_md as _write_stage_md,
 )
 from src.ingestion.pipeline.stage2 import Stage2PageResult, Stage2Result
@@ -40,10 +42,11 @@ def _load_editor_prompt() -> str:
 
 
 def _stage2_body(s2_page: Stage2PageResult, vision_model: str) -> str:
-    cached = _read_stage_md(Path(s2_page.md_path), vision_model)
-    if cached is not None:
-        return cached
-    return Path(s2_page.md_path).read_text(encoding="utf-8")
+    path = Path(s2_page.md_path)
+    if path.is_file():
+        return strip_stage_md_marker(path.read_text(encoding="utf-8"))
+    del vision_model
+    return ""
 
 
 def _finalize_stage3_output(
@@ -217,8 +220,9 @@ async def run_stage3_editor(
             stem = Path(s2_page.md_path).stem
             md_path = stage3_dir / f"{stem}.md"
 
+            page_hash = notes_cache_hash(prompt_notes or "")
             if not force_recompute:
-                cached = _read_stage_md(md_path, model)
+                cached = _read_stage_md(md_path, model, notes_hash=page_hash)
                 if cached is not None:
                     stage2_md = _stage2_body(s2_page, settings.vision_model or "")
                     stage2_char_count = len(stage2_md)
@@ -230,7 +234,7 @@ async def run_stage3_editor(
                         aligned_page=s2_page.aligned_page,
                     )
                     if finalized != cached:
-                        _write_stage_md(md_path, model, finalized)
+                        _write_stage_md(md_path, model, finalized, notes_hash=page_hash)
                     Log(
                         INFO_LOG_LEVEL,
                         "stage3 page skip editor using existing md",
@@ -312,7 +316,7 @@ async def run_stage3_editor(
                 aligned_page=s2_page.aligned_page,
             )
             raise_if_shutdown()
-            _write_stage_md(md_path, model, finalized)
+            _write_stage_md(md_path, model, finalized, notes_hash=page_hash)
             if progress is not None:
                 progress(make_event(
                     PHASE_STAGE3_EDITOR,

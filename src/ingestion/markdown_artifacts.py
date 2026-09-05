@@ -65,19 +65,39 @@ def _split_model_prefix(text: str) -> tuple[str, str]:
 
 
 def _note_signatures(prompt_notes: str) -> list[str]:
+    from src.ingestion.annotation_rules import leak_detection_notes
+
+    source = leak_detection_notes(prompt_notes) or prompt_notes
     signatures: list[str] = []
     seen: set[str] = set()
-    for chunk in prompt_notes.split("\n\n"):
+    for chunk in source.split("\n\n"):
         normalized = " ".join(chunk.split())
         if len(normalized) >= 25 and normalized not in seen:
             signatures.append(normalized)
             seen.add(normalized)
-    for line in prompt_notes.splitlines():
+    for line in source.splitlines():
         normalized = line.strip()
         if len(normalized) >= 25 and normalized not in seen:
             signatures.append(normalized)
             seen.add(normalized)
     return signatures
+
+
+def strip_annotation_label_leak(text: str, names: list[str] | None) -> str:
+    if not names:
+        return text
+    blocked = {name.strip() for name in names if name and name.strip()}
+    if not blocked:
+        return text
+    kept: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip().strip("`").strip("*").strip("_")
+        if stripped in blocked:
+            continue
+        if stripped.startswith("[") and stripped.endswith("]") and stripped[1:-1] in blocked:
+            continue
+        kept.append(line)
+    return "\n".join(kept)
 
 
 def _remove_note_signatures(text: str, prompt_notes: str | None) -> str:
@@ -164,9 +184,14 @@ def meaningful_text_length(text: str) -> int:
     return len("\n".join(parts))
 
 
-def finalize_vision_page_output(content: str, prompt_notes: str | None = None) -> str:
+def finalize_vision_page_output(
+    content: str,
+    prompt_notes: str | None = None,
+    annotation_names: list[str] | None = None,
+) -> str:
     cleaned = clean_markdown_channel_artifacts(content)
-    return strip_operator_notes_leak(cleaned, prompt_notes)
+    cleaned = strip_operator_notes_leak(cleaned, prompt_notes)
+    return strip_annotation_label_leak(cleaned, annotation_names)
 
 
 def finalize_editor_page_output(

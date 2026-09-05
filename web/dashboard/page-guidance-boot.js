@@ -43,7 +43,10 @@ function wireCounsel(bridge, getAnnotations) {
       if (guidanceField) guidanceField.value = data.guidance || "";
       if (counselStatus) {
         const samples = (data.sample_pages || []).join(", ") || "—";
-        counselStatus.textContent = "Consiglio generato (sample: " + samples + ").";
+        const missing = (data.missing_sections || []).join(", ");
+        counselStatus.textContent = missing
+          ? "Consiglio generato (sample: " + samples + "). Attenzione: sezioni note non coperte: " + missing + "."
+          : "Consiglio generato (sample: " + samples + ").";
       }
     } catch (err) {
       if (counselStatus) counselStatus.textContent = String(err && err.message ? err.message : err);

@@ -512,6 +512,15 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
         ingest_payload["page_notes"] = page_notes_raw
     if ai_page_guidance_raw:
         ingest_payload["ai_page_guidance"] = ai_page_guidance_raw
+    annotations_raw = fields.get("annotations_json", "").strip()
+    if annotations_raw:
+        try:
+            parsed_annotations = json.loads(annotations_raw)
+        except json.JSONDecodeError as exc:
+            raise ValueError("annotations_json must be valid JSON") from exc
+        if not isinstance(parsed_annotations, list):
+            raise ValueError("annotations_json must be a JSON array")
+        ingest_payload["annotations"] = parsed_annotations
     if md_formatting_payload:
         ingest_payload["md_formatting"] = md_formatting_payload
     return ingest_payload

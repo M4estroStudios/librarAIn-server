@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Literal
+from typing import Any, Literal
 from uuid import uuid4
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -187,6 +187,7 @@ class IngestRequest(BaseModel):
     index_notes: str | None = None
     page_notes: str | None = None
     ai_page_guidance: str | None = None
+    annotations: list[dict[str, Any]] = Field(default_factory=list)
     md_formatting: MdFormattingRules = Field(default_factory=MdFormattingRules)
     pages_to_remove: list[int]
     toc_range: PageRange
@@ -210,6 +211,10 @@ class IngestRequest(BaseModel):
             self.page_notes = self.page_notes.strip() or None
         if self.ai_page_guidance is not None:
             self.ai_page_guidance = self.ai_page_guidance.strip() or None
+        if not isinstance(self.annotations, list):
+            self.annotations = []
+        else:
+            self.annotations = [item for item in self.annotations if isinstance(item, dict)]
 
         normalized_pages = sorted(set(self.pages_to_remove))
         if any(page < 1 for page in normalized_pages):

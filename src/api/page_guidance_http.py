@@ -357,6 +357,7 @@ def persist_ingest_notes_for_pdf(
     try:
         digest = compute_file_sha256(pdf_path)
         state = build_ingest_notes_state(text_fields, ingest_payload)
+        ingest_payload["annotations"] = state.get("annotations") or []
         # Submit riuscito: state resta, bozza esce dalla lista attiva.
         save_ingest_notes_state(sqlite_path, digest, state, is_draft=False)
         aliases: list[str] = []

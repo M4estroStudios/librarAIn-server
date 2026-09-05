@@ -17,7 +17,14 @@ from src.models.request import build_md_formatting_block
 from src.core.parallel import gather_cancellable
 from src.core.retry import retry_async
 from src.core.text import slugify
+from src.ingestion.annotation_rules import (
+    OVERLAY_USER_INSTRUCTION,
+    compile_page_annotation_block,
+    element_display_names,
+    notes_cache_hash,
+)
 from src.ingestion.markdown_artifacts import finalize_vision_page_output
+from src.ingestion.pipeline.stage2 import _write_overlay_png
 from src.ingestion.pdf_alignment import resolve_aligned_pdf_path_for_stage1
 from src.ingestion.pipeline.md_cache import read_stage_md, write_stage_md
 from src.ingestion.pipeline.stage1 import (
@@ -60,6 +67,9 @@ class _GlmOcrWork:
     txt_path: Path
     md_path: Path
     png_path: Path
+    page_block: str = ""
+    notes_hash: str = ""
+    elements: list[dict[str, Any]] | None = None
 
 @dataclass
 class _GlmOcrOutcome:
@@ -96,22 +106,35 @@ async def transcribe_with_glm_ocr(
     settings: Settings,
     prompt_notes: str | None = None,
     md_formatting: str | None = None,
+    overlay_image_path: Path | None = None,
+    page_annotation_block: str | None = None,
 ) -> str:
     formatting = md_formatting if md_formatting is not None else build_md_formatting_block()
     system_text = build_system_prompt(_load_glm_ocr_prompt(), prompt_notes, md_formatting=formatting)
     image_bytes = Path(page_image_path).read_bytes()
     b64 = base64.b64encode(image_bytes).decode("ascii")
+    user_content: list[dict[str, Any]] = []
+    block = (page_annotation_block or "").strip()
+    if block:
+        user_content.append({"type": "text", "text": block})
+    user_content.append(
+        {
+            "type": "image_url",
+            "image_url": {"url": f"data:image/png;base64,{b64}"},
+        }
+    )
+    if overlay_image_path is not None and overlay_image_path.is_file():
+        overlay_b64 = base64.b64encode(overlay_image_path.read_bytes()).decode("ascii")
+        user_content.append({"type": "text", "text": OVERLAY_USER_INSTRUCTION})
+        user_content.append(
+            {
+                "type": "image_url",
+                "image_url": {"url": f"data:image/png;base64,{overlay_b64}"},
+            }
+        )
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": system_text},
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "image_url",
-                    "image_url": {"url": f"data:image/png;base64,{b64}"},
-                },
-            ],
-        },
+        {"role": "user", "content": user_content},
     ]
     return await chat_completion_with_retry(
         client,
@@ -139,6 +162,9 @@ def _resolve_glm_pages(
     request_id: str,
     page_total: int,
     emit_progress,
+    prompt_notes: str | None = None,
+    annotations_by_original: dict[int, list[dict[str, Any]]] | None = None,
+    overlay_enabled: bool = True,
 ) -> tuple[list[_GlmOcrOutcome], list[_GlmOcrWork]]:
     settled: list[_GlmOcrOutcome] = []
     work: list[_GlmOcrWork] = []
@@ -152,8 +178,13 @@ def _resolve_glm_pages(
         stem = f"p.{aligned:04d}.{slug}"
         txt_path = ocr_dir / f"{stem}.txt"
         md_path = stage2_dir / f"{stem}.md"
+        elements = (annotations_by_original or {}).get(orig) or []
+        page_block = compile_page_annotation_block(elements) if elements else ""
+        page_hash = notes_cache_hash(
+            prompt_notes or "", page_block, "overlay" if elements and overlay_enabled else ""
+        )
         if not force_recompute:
-            cached = read_stage_md(md_path, model)
+            cached = read_stage_md(md_path, model, notes_hash=page_hash)
             if cached is not None:
                 if not txt_path.is_file() or txt_path.stat().st_size == 0:
                     txt_path.write_text(cached, encoding="utf-8")
@@ -171,6 +202,7 @@ def _resolve_glm_pages(
         work.append(_GlmOcrWork(
             page_index=page_index, orig=orig, aligned=aligned,
             txt_path=txt_path, md_path=md_path, png_path=render_dir / f"p.{aligned:04d}.png",
+            page_block=page_block, notes_hash=page_hash, elements=elements,
         ))
     return settled, work
 
@@ -199,6 +231,13 @@ async def _glm_ocr_pages_parallel(
             async def _call_model() -> str:
                 raise_if_shutdown()
                 try:
+                    overlay_path = None
+                    if item.elements and getattr(settings, "annotation_overlay_enabled", True):
+                        overlay_path = _write_overlay_png(
+                            item.png_path,
+                            item.elements,
+                            item.png_path.parent / "annotated" / item.png_path.name,
+                        )
                     return await transcribe_with_glm_ocr(
                         client,
                         model=model,
@@ -208,6 +247,8 @@ async def _glm_ocr_pages_parallel(
                         settings=settings,
                         prompt_notes=prompt_notes,
                         md_formatting=md_formatting,
+                        overlay_image_path=overlay_path,
+                        page_annotation_block=item.page_block or None,
                     )
                 except PermanentError:
                     raise
@@ -254,9 +295,13 @@ async def _glm_ocr_pages_parallel(
                     error=str(exc),
                 )
 
-            finalized = finalize_vision_page_output(raw, prompt_notes)
+            finalized = finalize_vision_page_output(
+                raw,
+                prompt_notes,
+                annotation_names=element_display_names(item.elements or []),
+            )
             raise_if_shutdown()
-            write_stage_md(item.md_path, model, finalized)
+            write_stage_md(item.md_path, model, finalized, notes_hash=item.notes_hash)
             item.txt_path.write_text(finalized, encoding="utf-8")
             emit_progress(make_event(
                 PHASE_STAGE1_GLM_OCR,
@@ -336,6 +381,7 @@ async def run_glm_ocr_combined_stage(
     progress: ProgressReporter | None = None,
     prompt_notes: str | None = None,
     md_formatting: str | None = None,
+    annotations_by_original: dict[int, list[dict[str, Any]]] | None = None,
 ) -> GlmOcrCombinedResult:
     aligned_path = resolve_aligned_pdf_path_for_stage1(
         enriched,
@@ -385,6 +431,9 @@ async def run_glm_ocr_combined_stage(
         request_id=request_id,
         page_total=page_total,
         emit_progress=defer_ocr_progress,
+        prompt_notes=prompt_notes,
+        annotations_by_original=annotations_by_original,
+        overlay_enabled=bool(getattr(settings, "annotation_overlay_enabled", True)),
     )
     from src.ingestion.pipeline.stage1 import _Stage1OcrWork
 

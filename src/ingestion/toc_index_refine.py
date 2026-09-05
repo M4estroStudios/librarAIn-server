@@ -17,6 +17,7 @@ from src.ingestion.markdown_artifacts import (
 )
 from src.ingestion.output_writer import _atomic_write_bytes
 from src.ingestion.polyindex.index_md_parser import sort_index_md_body
+from src.ingestion.annotation_rules import notes_cache_hash
 from src.ingestion.pipeline.md_cache import (
     read_stage_md as _read_stage_md,
     write_stage_md as _write_stage_md,
@@ -148,8 +149,9 @@ async def refine_aggregate_markdown_file(
 
     async def _process_section(section_index: int, section_text: str) -> str:
         cache_file = _cache_path(work_cache, kind, section_index)
+        section_hash = notes_cache_hash(prompt_notes or "")
         if not force_recompute:
-            cached = _read_stage_md(cache_file, model)
+            cached = _read_stage_md(cache_file, model, notes_hash=section_hash)
             if cached is not None:
                 Log(
                     INFO_LOG_LEVEL,
@@ -208,7 +210,7 @@ async def refine_aggregate_markdown_file(
                     stats["fallback_sections"] = stats.get("fallback_sections", 0) + 1
                 return strip_operator_notes_leak(cleaned_input, prompt_notes)
 
-        _write_stage_md(cache_file, model, refined)
+        _write_stage_md(cache_file, model, refined, notes_hash=section_hash)
         return refined
 
     refined_sections = await asyncio.gather(

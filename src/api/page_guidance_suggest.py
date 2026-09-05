@@ -11,6 +11,13 @@ from PIL import Image, ImageDraw, ImageFont
 from src.core.openai_client import build_openai_client, chat_completion_with_retry
 from src.ingestion.pipeline.gpu_vram import require_gpu_vram
 from src.ingestion.pipeline.render import render_pdf_page_to_png
+from src.core.log import WARNING_LOG_LEVEL, Log
+from src.ingestion.annotation_rules import (
+    GUIDANCE_MAX_ANNOTATED_IMAGES,
+    choose_representative_annotated_pages,
+    guidance_looks_truncated,
+    guidance_missing_sections,
+)
 from src.models.settings import Settings
 
 _PROMPTS_DIR = Path(__file__).resolve().parents[1] / "ingestion" / "pipeline" / "prompts"
@@ -213,17 +220,23 @@ def prepare_guidance_images(
     sample_pages: list[int],
     *,
     work_dir: Path,
+    annotated_pages: list[int] | None = None,
+    include_originals: bool = False,
 ) -> tuple[list[tuple[int, Image.Image]], list[tuple[int, Image.Image]], list[tuple[int, Image.Image]]]:
     by_page = {item["page"]: item.get("elements") or [] for item in annotations}
-    annotated_pages = sorted(page for page, els in by_page.items() if els)
+    if annotated_pages is None:
+        selected = sorted(page for page, els in by_page.items() if els)
+    else:
+        selected = [page for page in annotated_pages if by_page.get(page)]
     annotated_images: list[tuple[int, Image.Image]] = []
     original_images: list[tuple[int, Image.Image]] = []
-    for page in annotated_pages:
+    for page in selected:
         png_path = work_dir / f"annotated_src_{page}.png"
         render_pdf_page_to_png(pdf_path, page - 1, png_path, dpi=120)
         original = Image.open(png_path)
         original.load()
-        original_images.append((page, original.copy()))
+        if include_originals:
+            original_images.append((page, original.copy()))
         flattened = flatten_annotations_on_image(original, by_page.get(page) or [])
         annotated_images.append((page, flattened))
     sample_images: list[tuple[int, Image.Image]] = []
@@ -257,6 +270,9 @@ async def suggest_page_guidance_async(
 
     annotations = normalize_annotations(annotations or [])
     annotated_page_nums = [item["page"] for item in annotations if item.get("elements")]
+    representative_pages = choose_representative_annotated_pages(
+        annotations, limit=GUIDANCE_MAX_ANNOTATED_IMAGES
+    )
     total_pages = page_count if isinstance(page_count, int) and page_count > 0 else count_pdf_pages(pdf_path)
     resolved_samples = list(sample_pages or [])
     if not resolved_samples:
@@ -265,6 +281,7 @@ async def suggest_page_guidance_async(
     if not annotated_page_nums and not resolved_samples:
         raise ValueError("no pages available for page guidance suggestion")
 
+    max_tokens = int(getattr(settings, "page_guidance_max_tokens", 8192) or 8192)
     require_gpu_vram(settings, "llm")
     with tempfile.TemporaryDirectory(prefix="page_guidance_") as tmp:
         annotated_images, original_images, sample_images = prepare_guidance_images(
@@ -272,34 +289,86 @@ async def suggest_page_guidance_async(
             annotations,
             resolved_samples,
             work_dir=Path(tmp),
+            annotated_pages=representative_pages,
+            include_originals=False,
         )
         client = build_openai_client(settings)
+        user_parts = build_user_parts(
+            notes=notes,
+            index_notes=index_notes,
+            page_notes=page_notes,
+            annotations=annotations,
+            annotated_images=annotated_images,
+            original_images=original_images,
+            sample_images=sample_images,
+        )
         content = await chat_completion_with_retry(
             client,
             model=model,
             messages=[
                 {"role": "system", "content": _load_prompt()},
-                {
-                    "role": "user",
-                    "content": build_user_parts(
-                        notes=notes,
-                        index_notes=index_notes,
-                        page_notes=page_notes,
-                        annotations=annotations,
-                        annotated_images=annotated_images,
-                        original_images=original_images,
-                        sample_images=sample_images,
-                    ),
-                },
+                {"role": "user", "content": user_parts},
             ],
             temperature=0.2,
-            max_tokens=2048,
+            max_tokens=max_tokens,
             request_id="page-guidance-suggest",
             stage="page_guidance_vision",
             page=0,
             reasoning_effort=settings.reasoning_effort_vision,
             reasoning_enable_thinking=settings.reasoning_enable_thinking_vision,
         )
+        guidance = _strip_guidance_fences(content)
+        if guidance_looks_truncated(guidance):
+            Log(
+                WARNING_LOG_LEVEL,
+                "page guidance looks truncated retrying",
+                {"chars": len(guidance)},
+            )
+            retry_parts = list(user_parts)
+            retry_parts.append(
+                {
+                    "type": "text",
+                    "text": (
+                        "The previous draft was cut off. Rewrite the full system-prompt append. "
+                        "Cover every operator note section (page, TOC, index) without dropping rules."
+                    ),
+                }
+            )
+            content = await chat_completion_with_retry(
+                client,
+                model=model,
+                messages=[
+                    {"role": "system", "content": _load_prompt()},
+                    {"role": "user", "content": retry_parts},
+                ],
+                temperature=0.2,
+                max_tokens=max_tokens,
+                request_id="page-guidance-suggest-retry",
+                stage="page_guidance_vision",
+                page=0,
+                reasoning_effort=settings.reasoning_effort_vision,
+                reasoning_enable_thinking=settings.reasoning_enable_thinking_vision,
+            )
+            guidance = _strip_guidance_fences(content)
+    missing = guidance_missing_sections(
+        guidance, notes=notes, index_notes=index_notes, page_notes=page_notes
+    )
+    if missing:
+        Log(
+            WARNING_LOG_LEVEL,
+            "page guidance missing note sections",
+            {"missing": missing, "chars": len(guidance)},
+        )
+    return {
+        "guidance": guidance,
+        "sample_pages": resolved_samples,
+        "annotated_pages": annotated_page_nums,
+        "representative_pages": representative_pages,
+        "missing_sections": missing,
+    }
+
+
+def _strip_guidance_fences(content: str | None) -> str:
     guidance = (content or "").strip()
     if guidance.startswith("```"):
         lines = guidance.splitlines()
@@ -308,11 +377,7 @@ async def suggest_page_guidance_async(
         if lines and lines[-1].strip() == "```":
             lines = lines[:-1]
         guidance = "\n".join(lines).strip()
-    return {
-        "guidance": guidance,
-        "sample_pages": resolved_samples,
-        "annotated_pages": annotated_page_nums,
-    }
+    return guidance
 
 
 def suggest_page_guidance(pdf_path: Path, settings: Settings, **kwargs: Any) -> dict[str, Any]:

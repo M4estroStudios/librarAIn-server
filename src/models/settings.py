@@ -168,11 +168,23 @@ class Settings(BaseModel):
         default=None, alias="REASONING_ENABLE_THINKING_RESEARCH"
     )
     tmp_keep_after_success: bool = Field(default=True, alias="TMP_KEEP_AFTER_SUCCESS")
+    page_guidance_max_tokens: int = Field(
+        default=8192, ge=512, alias="PAGE_GUIDANCE_MAX_TOKENS"
+    )
+    annotation_overlay_enabled: bool = Field(
+        default=True, alias="ANNOTATION_OVERLAY_ENABLED"
+    )
 
     @field_validator("tmp_keep_after_success", mode="before")
     @classmethod
     def parse_tmp_keep_after_success(cls, v: object) -> bool:
         parsed = _parse_reasoning_enable_thinking(v, "TMP_KEEP_AFTER_SUCCESS")
+        return True if parsed is None else parsed
+
+    @field_validator("annotation_overlay_enabled", mode="before")
+    @classmethod
+    def parse_annotation_overlay_enabled(cls, v: object) -> bool:
+        parsed = _parse_reasoning_enable_thinking(v, "ANNOTATION_OVERLAY_ENABLED")
         return True if parsed is None else parsed
 
     @field_validator("time_index_use_llm", mode="before")
