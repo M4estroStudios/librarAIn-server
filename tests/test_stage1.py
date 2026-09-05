@@ -388,6 +388,9 @@ class Stage1OcrTests(unittest.TestCase):
         self.assertEqual(statuses.count("page_progress"), 3)
         self.assertEqual(statuses[-1], "completed")
         self.assertTrue(all(e.get("counts_as_step") for e in render_events if e["status"] == "page_progress"))
+        page_events = [e for e in render_events if e["status"] == "page_progress"]
+        self.assertTrue(all(isinstance(e.get("duration_ms"), int) for e in page_events))
+        self.assertTrue(all(e["duration_ms"] >= 0 for e in page_events))
 
 
 class RunStage1IngestStepTests(unittest.TestCase):

@@ -878,9 +878,15 @@ async def chat_completion_with_retry(
             reasoning_enable_thinking=reasoning_enable_thinking,
         )
         if token_bucket is not None:
+            limiter_started = time.perf_counter()
             Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait begin", {"attempt": attempt})
             await token_bucket.acquire()
-            Log(INFO_LOG_LEVEL, "chat_completion rate limiter wait done", {"attempt": attempt})
+            wait_ms = max(0, int((time.perf_counter() - limiter_started) * 1000))
+            Log(
+                INFO_LOG_LEVEL,
+                "chat_completion rate limiter wait done",
+                {"attempt": attempt, "wait_ms": wait_ms},
+            )
         raise_if_shutdown()
         try:
             Log(

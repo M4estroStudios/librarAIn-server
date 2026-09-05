@@ -286,6 +286,28 @@ class TestRunStage2Vision(unittest.TestCase):
         for page in result.pages:
             self.assertEqual(page.char_count, len("hello"))
 
+    def test_page_progress_includes_duration_ms(self) -> None:
+        events: list[dict] = []
+        settings = _settings(self.data_root)
+        client = _fake_client()
+        asyncio.run(
+            run_stage2_vision(
+                self.stage1_result,
+                SHA,
+                settings,
+                client,
+                progress=events.append,
+            )
+        )
+        page_events = [
+            event
+            for event in events
+            if event.get("status") in {"page_progress", "page_skipped"}
+        ]
+        self.assertGreaterEqual(len(page_events), 2)
+        self.assertTrue(all(isinstance(event.get("duration_ms"), int) for event in page_events))
+        self.assertTrue(all(event["duration_ms"] >= 0 for event in page_events))
+
     def test_parallel_respects_max_in_flight(self) -> None:
         settings = _settings(self.data_root)
         settings.max_parallel_request = 2

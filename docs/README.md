@@ -14,6 +14,7 @@ Questa cartella è la fonte di verità aggiornata al codice. I PRD in root (`PRD
 | [configuration.md](configuration.md) | Variabili `.env` e settings |
 | [data-layout.md](data-layout.md) | Albero `data/`, artefatti per libro e globali |
 | [ingestion.md](ingestion.md) | Pipeline PDF → Markdown (EasyOCR e GLM) |
+| [perf-ingest-analysis.md](perf-ingest-analysis.md) | Diagnosi prestazioni Ingest (colli di bottiglia, knob, esperimenti) |
 | [polyindex.md](polyindex.md) | `TOC.json`, `INDEX.json`, `TIME_INDEX.json` |
 | [research.md](research.md) | Ricerca, articoli POH, batch, chat |
 | [api.md](api.md) | Catalogo endpoint HTTP |

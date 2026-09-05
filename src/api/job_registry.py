@@ -423,6 +423,8 @@ _INGEST_PHASE_ORDER = [
     "stage1_ocr",
     "stage2_vision",
     "stage3_editor",
+    "toc_refine",
+    "index_refine",
     "polyindex_toc",
     "polyindex_biblio",
 ]
@@ -434,6 +436,8 @@ _GLM_INGEST_PHASE_ORDER = [
     "render",
     "stage1_glm_ocr",
     "stage3_editor",
+    "toc_refine",
+    "index_refine",
     "polyindex_toc",
     "polyindex_biblio",
 ]
@@ -489,6 +493,8 @@ _PHASE_LABELS = {
     "stage1_glm_ocr": "Stage 1+2 — GLM OCR",
     "stage2_vision": "Stage 2 — Vision",
     "stage3_editor": "Stage 3 — Editor",
+    "toc_refine": "Refine TOC",
+    "index_refine": "Refine INDEX",
     "polyindex_toc": "Polyindex TOC",
     "polyindex_index": "Indice BOOKs",
     "library_index": "Indice LIBRARY",

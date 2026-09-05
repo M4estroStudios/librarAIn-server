@@ -38,7 +38,7 @@ Se `OPENAI_PROVIDER=remote` diventano obbligatori anche `OPENAI_BASE_URL` e `OPE
 | `MATCHER_LLM_MODEL` | — | Dirimitore subject matching POH |
 | `MATCHER_EMBEDDING_MODEL` | `text-embedding-3-small` | Embedding soggetti |
 | `TIME_INDEX_LLM_MODEL` | — | Estrazione anni/date (fallback: matcher → editor) |
-| `TIME_INDEX_USE_LLM` | `true` | `false` = solo regex |
+| `TIME_INDEX_USE_LLM` | `false` (codice; `example.env`) | `false` = solo regex. `docs` precedenti indicavano `true`: il default reale in `Settings` è `false`. |
 
 ## Parallelismo, timeout, retry
 

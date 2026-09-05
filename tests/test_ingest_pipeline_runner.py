@@ -663,6 +663,16 @@ class TestPipelineTiming(unittest.TestCase):
         self.assertIn("total_seconds", summary)
         self.assertIn(PHASE_VALIDATION, summary["phases"])
 
+    def test_elapsed_ms_is_non_negative(self) -> None:
+        import time
+
+        from src.ingestion.progress import elapsed_ms
+
+        started = time.perf_counter()
+        time.sleep(0.01)
+        self.assertGreaterEqual(elapsed_ms(started), 10)
+        self.assertEqual(elapsed_ms(time.perf_counter() + 1), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

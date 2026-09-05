@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import base64
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -43,6 +44,7 @@ from src.ingestion.progress import (
     STATUS_STARTED,
     ProgressReporter,
     defer_phase_progress,
+    elapsed_ms,
     make_event,
 )
 from src.models.request import (
@@ -227,6 +229,7 @@ async def _glm_ocr_pages_parallel(
     async def _process_one(item: _GlmOcrWork) -> _GlmOcrOutcome:
         async with sem:
             raise_if_shutdown()
+            page_started = time.perf_counter()
 
             async def _call_model() -> str:
                 raise_if_shutdown()
@@ -287,6 +290,7 @@ async def _glm_ocr_pages_parallel(
                     original_page=item.orig,
                     error=str(exc),
                     failure="glm_ocr_failed",
+                    duration_ms=elapsed_ms(page_started),
                 ))
                 return _GlmOcrOutcome(
                     page_index=item.page_index,
@@ -312,6 +316,7 @@ async def _glm_ocr_pages_parallel(
                 aligned_page=item.aligned,
                 original_page=item.orig,
                 char_count=len(finalized),
+                duration_ms=elapsed_ms(page_started),
             ))
             return _GlmOcrOutcome(
                 page_index=item.page_index,

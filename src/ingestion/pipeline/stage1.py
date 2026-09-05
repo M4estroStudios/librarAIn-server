@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import time
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -21,6 +22,7 @@ from src.ingestion.progress import (
     STATUS_STARTED,
     ProgressReporter,
     defer_phase_progress,
+    elapsed_ms,
     make_event,
 )
 from src.models.request import (
@@ -187,6 +189,7 @@ async def _render_stage1_pages_sequential(
         {"request_id": request_id, "pages_to_render": render_total},
     )
     for work in ocr_work:
+        page_started = time.perf_counter()
         try:
             await asyncio.to_thread(
                 _render_pdf_page_to_png,
@@ -204,6 +207,7 @@ async def _render_stage1_pages_sequential(
                 page_total=render_total,
                 aligned_page=work.aligned,
                 original_page=work.orig,
+                duration_ms=elapsed_ms(page_started),
             ))
         except Exception as exc:
             Log(
@@ -226,6 +230,7 @@ async def _render_stage1_pages_sequential(
                 original_page=work.orig,
                 error=str(exc),
                 failure="render_failed",
+                duration_ms=elapsed_ms(page_started),
             ))
             render_failures[work.page_index] = _Stage1PageOutcome(
                 page_index=work.page_index,
@@ -274,6 +279,7 @@ async def _ocr_stage1_pages_parallel(
     async def _ocr_one(work: _Stage1OcrWork) -> _Stage1PageOutcome:
         async with sem:
             raise_if_shutdown()
+            page_started = time.perf_counter()
             Log(
                 INFO_LOG_LEVEL,
                 "stage1 page OCR begin",
@@ -325,6 +331,7 @@ async def _ocr_stage1_pages_parallel(
                     original_page=work.orig,
                     error=str(exc),
                     failure="ocr_failed",
+                    duration_ms=elapsed_ms(page_started),
                 ))
                 return _Stage1PageOutcome(
                     page_index=work.page_index,
@@ -343,11 +350,17 @@ async def _ocr_stage1_pages_parallel(
                 aligned_page=work.aligned,
                 original_page=work.orig,
                 char_count=len(text),
+                duration_ms=elapsed_ms(page_started),
             ))
             Log(
                 INFO_LOG_LEVEL,
                 "stage1 page OCR complete",
-                {"request_id": request_id, "original_page": work.orig, "aligned_page": work.aligned},
+                {
+                    "request_id": request_id,
+                    "original_page": work.orig,
+                    "aligned_page": work.aligned,
+                    "duration_ms": elapsed_ms(page_started),
+                },
             )
             return _Stage1PageOutcome(
                 page_index=work.page_index,

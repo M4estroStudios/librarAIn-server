@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import time
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +28,7 @@ from src.ingestion.progress import (
     STATUS_PAGE_SKIPPED,
     STATUS_STARTED,
     ProgressReporter,
+    elapsed_ms,
     make_event,
 )
 from src.ingestion.markdown_artifacts import finalize_editor_page_output
@@ -208,6 +210,7 @@ async def run_stage3_editor(
         nonlocal last_error
         async with sem:
             raise_if_shutdown()
+            page_started = time.perf_counter()
             Log(
                 INFO_LOG_LEVEL,
                 "stage3 page iteration begin",
@@ -256,6 +259,7 @@ async def run_stage3_editor(
                             aligned_page=s2_page.aligned_page,
                             original_page=s2_page.original_page,
                             char_count=len(finalized),
+                            duration_ms=elapsed_ms(page_started),
                         ))
                     return (
                         _page_result(
@@ -305,6 +309,7 @@ async def run_stage3_editor(
                         aligned_page=s2_page.aligned_page,
                         original_page=s2_page.original_page,
                         error=str(exc),
+                        duration_ms=elapsed_ms(page_started),
                     ))
                 return None, False
 
@@ -327,6 +332,7 @@ async def run_stage3_editor(
                     aligned_page=s2_page.aligned_page,
                     original_page=s2_page.original_page,
                     char_count=len(finalized),
+                    duration_ms=elapsed_ms(page_started),
                 ))
             return (
                 _page_result(
