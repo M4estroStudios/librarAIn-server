@@ -30,10 +30,18 @@ def _safe_sha(source_sha256: str) -> str:
 
 def get_aligned_pdf_path(data_root: Path, source_sha256: str) -> Path:
     sha = _safe_sha(source_sha256)
-    candidate = data_root / "input" / "processed" / f"{sha}.pdf"
-    if not candidate.is_file():
-        raise PagePreviewError(f"aligned pdf not found for book {sha[:16]}…")
-    return candidate
+    processed = data_root / "input" / "processed" / f"{sha}.pdf"
+    if processed.is_file():
+        return processed
+    draft = data_root / "input" / "drafts" / f"{sha}.pdf"
+    if draft.is_file():
+        return draft
+    from src.api.pdf_upload_storage import find_raw_pdf_by_sha256
+
+    raw = find_raw_pdf_by_sha256(data_root, sha)
+    if raw is not None:
+        return raw
+    raise PagePreviewError(f"aligned pdf not found for book {sha[:16]}…")
 
 
 def _aligned_pdf_path(data_root: Path, source_sha256: str) -> Path:

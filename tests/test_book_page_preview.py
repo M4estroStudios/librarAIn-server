@@ -13,6 +13,7 @@ from src.persistence.book_page_preview import (
     clear_page_pending_review,
     confirm_page_transcript,
     ensure_page_render_png,
+    get_aligned_pdf_path,
     list_pending_review_pages,
     load_page_transcript,
     mark_page_pending_review,
@@ -66,6 +67,26 @@ class TestBookPagePreview(unittest.TestCase):
         sha = "e" * 64
         with self.assertRaises(PagePreviewError):
             ensure_page_render_png(self.data_root, sha, 1)
+
+    def test_renders_from_draft_pdf_when_processed_missing(self) -> None:
+        sha = "ab" * 32
+        drafts = self.data_root / "input" / "drafts"
+        drafts.mkdir(parents=True, exist_ok=True)
+        (drafts / f"{sha}.pdf").write_bytes(_minimal_pdf_bytes(1))
+        result = ensure_page_render_png(self.data_root, sha, 1, dpi=72)
+        self.assertTrue(result.is_file())
+        self.assertEqual(result.read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
+
+    def test_prefers_processed_pdf_over_draft(self) -> None:
+        sha = "cd" * 32
+        processed = self.data_root / "input" / "processed"
+        drafts = self.data_root / "input" / "drafts"
+        processed.mkdir(parents=True, exist_ok=True)
+        drafts.mkdir(parents=True, exist_ok=True)
+        processed_pdf = processed / f"{sha}.pdf"
+        processed_pdf.write_bytes(_minimal_pdf_bytes(2))
+        (drafts / f"{sha}.pdf").write_bytes(_minimal_pdf_bytes(1))
+        self.assertEqual(get_aligned_pdf_path(self.data_root, sha), processed_pdf)
 
     def test_resolve_aligned_page_from_original_uses_manifest_pages(self) -> None:
         manifest = {

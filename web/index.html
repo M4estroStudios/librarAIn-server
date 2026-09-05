@@ -113,7 +113,11 @@ body { margin: 0; padding: 0; }
 .ingest-drafts-status { margin: 0 0 0.65rem; min-height: 1.2em; }
 .ingest-drafts-status.is-error { color: #f48771; }
 .ingest-drafts-list { display: grid; gap: 0.45rem; }
-.ingest-drafts-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.75rem; padding: 0.65rem 0.75rem; border-radius: 8px; border: 1px solid #3e3e3e; background: #1e1e1e; }
+.ingest-drafts-row { display: flex; flex-wrap: nowrap; align-items: stretch; gap: 0.65rem; padding: 0.4rem 0.7rem 0.4rem 0.4rem; border-radius: 8px; border: 1px solid #3e3e3e; background: #1e1e1e; overflow: hidden; }
+.ingest-drafts-row-cover { flex: 0 0 3.25rem; width: 3.25rem; min-height: 4.35rem; align-self: stretch; border-radius: 4px; overflow: hidden; background: #141414; border: 1px solid #333; }
+.ingest-drafts-row-cover img { display: block; width: 100%; height: 100%; object-fit: contain; background: #111; }
+.ingest-drafts-row-cover.is-placeholder { background: repeating-linear-gradient(135deg, #1a1a1a 0 6px, #222 6px 12px); }
+.ingest-drafts-row-body { flex: 1 1 auto; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.75rem; }
 .ingest-drafts-row-main { flex: 1 1 12rem; min-width: 0; display: grid; gap: 0.15rem; }
 .ingest-drafts-row-title { font-size: 0.92rem; font-weight: 600; color: #e8e8e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ingest-drafts-row-meta { font-size: 0.76rem; color: #9d9d9d; font-family: ui-monospace, monospace; }
@@ -3533,6 +3537,28 @@ if (document.readyState === "loading") {
     return s.length > 12 ? s.slice(0, 12) + "…" : s;
   }
 
+  function createBookCoverEl(sourceSha256, hasPdf) {
+    var wrap = document.createElement("div");
+    wrap.className = "ingest-drafts-row-cover";
+    wrap.setAttribute("aria-hidden", "true");
+    var sha = String(sourceSha256 || "").trim().toLowerCase();
+    if (!sha || hasPdf === false) {
+      wrap.classList.add("is-placeholder");
+      return wrap;
+    }
+    var img = document.createElement("img");
+    img.alt = "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.src = pagePreviewUrl(sha, 1);
+    img.addEventListener("error", function () {
+      img.remove();
+      wrap.classList.add("is-placeholder");
+    });
+    wrap.appendChild(img);
+    return wrap;
+  }
+
   function isKnownActiveDraftSha(sha) {
     var s = String(sha || "").trim().toLowerCase();
     if (!s) return false;
@@ -3993,8 +4019,12 @@ if (document.readyState === "loading") {
       deleteBtn.title = "Rimuovi la bozza dalla lista attiva";
       actions.appendChild(deleteBtn);
 
-      row.appendChild(main);
-      row.appendChild(actions);
+      var body = document.createElement("div");
+      body.className = "ingest-drafts-row-body";
+      body.appendChild(main);
+      body.appendChild(actions);
+      row.appendChild(createBookCoverEl(sha, draft.has_pdf));
+      row.appendChild(body);
       ingestDraftsList.appendChild(row);
     });
   }
@@ -4090,8 +4120,12 @@ if (document.readyState === "loading") {
       reingestBtn.title = "Cancella output/cache e riapri per un ingest completo da zero";
       actions.appendChild(reingestBtn);
 
-      row.appendChild(main);
-      row.appendChild(actions);
+      var body = document.createElement("div");
+      body.className = "ingest-drafts-row-body";
+      body.appendChild(main);
+      body.appendChild(actions);
+      row.appendChild(createBookCoverEl(sha, book.has_pdf));
+      row.appendChild(body);
       ingestIngestedList.appendChild(row);
     });
   }

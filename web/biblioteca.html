@@ -51,6 +51,34 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
 }
 .card { padding: 0.85rem; border: 1px solid #3e3e3e; border-radius: 10px; background: #252526; margin-bottom: 0.65rem; }
 .card h3 { margin: 0 0 0.35rem; font-size: 0.95rem; color: #e8e8e8; }
+#candidates-list .card {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem 0.55rem 0.55rem;
+  overflow: hidden;
+}
+#candidates-list .book-list-cover {
+  flex: 0 0 3.6rem;
+  width: 3.6rem;
+  min-height: 4.8rem;
+  align-self: stretch;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #141414;
+  border: 1px solid #333;
+}
+#candidates-list .book-list-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #111;
+}
+#candidates-list .book-list-cover.is-placeholder {
+  background: repeating-linear-gradient(135deg, #1a1a1a 0 6px, #222 6px 12px);
+}
+#candidates-list .book-list-card-body { flex: 1 1 auto; min-width: 0; }
 .meta { font-size: 0.78rem; color: #9d9d9d; word-break: break-all; }
 .related { margin-top: 0.45rem; font-size: 0.85rem; }
 #graph-wrap { position: relative; height: min(70vh, 640px); border: 1px solid #3e3e3e; border-radius: 12px; background: #141414; overflow: hidden; }
@@ -3197,6 +3225,13 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
     return "/api/admin/book-pages/render?" + biblioPageQueryParams(alignedPage).toString();
   }
 
+  function bookListCoverUrl(sourceSha256) {
+    return "/api/admin/book-pages/render?" + new URLSearchParams({
+      source_sha256: String(sourceSha256 || ""),
+      aligned_page: "1"
+    }).toString();
+  }
+
   function syncBiblioPreviewNav() {
     var pages = biblioActivePageList();
     var has = selectedCandidate && biblioPreviewPage != null;
@@ -3572,6 +3607,9 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
       if (actionBtns) actionBtns = "<div class='row' style='margin-top:0.45rem;gap:0.4rem'>" + actionBtns + "</div>";
       return "<div class='card' data-sha='" + esc(book.source_sha256) + "' style='" +
         (selected ? "border-color:#4ec9b0;" : "") + "cursor:pointer'>" +
+        "<div class='book-list-cover' aria-hidden='true'><img alt='' loading='lazy' decoding='async' src='" +
+        esc(bookListCoverUrl(book.source_sha256)) + "'></div>" +
+        "<div class='book-list-card-body'>" +
         "<h3>" + esc(book.title) + "</h3>" +
         "<div class='meta'>" + esc(book.authors || "—") +
         (book.year != null ? " · " + esc(book.year) : "") +
@@ -3579,8 +3617,14 @@ body.indice-index-mode .biblio-overview-stages > h3::after {
         (book.complete ? " · completo" : " · con lacune") + "</div>" +
         "<div class='hint'>" + esc(status) + "</div>" +
         "<div class='meta'>" + esc(book.source_sha256) + "</div>" +
-        actionBtns + "</div>";
+        actionBtns + "</div></div>";
     }).join("");
+    list.querySelectorAll(".book-list-cover img").forEach(function (img) {
+      img.addEventListener("error", function () {
+        if (img.parentElement) img.parentElement.classList.add("is-placeholder");
+        img.remove();
+      });
+    });
     list.querySelectorAll(".card").forEach(function (card) {
       card.addEventListener("click", function () {
         var sha = card.getAttribute("data-sha");
