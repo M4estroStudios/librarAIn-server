@@ -258,6 +258,31 @@ class IngestNotesStatePersistenceTests(unittest.TestCase):
         self.assertIsNotNone(resolved)
         assert resolved is not None
         self.assertEqual(resolved["titolo"], "La Grande Guida")
+        self.assertEqual(loaded["book_id_hint"], "")
+        self.assertEqual(loaded["md_h1"], "")
+
+    def test_save_and_load_preserves_slug_and_md_formatting(self) -> None:
+        sha = "a" * 64
+        state = {
+            "titolo": "Storia di Roma Antica",
+            "book_id_hint": "storia-roma-antica",
+            "md_h1": "usa # solo per capitoli numerati",
+            "md_h2_h3": "usa ## per sezioni interne",
+            "md_captions": "didascalie in italics",
+            "notes": "keep",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "biblioteca.db"
+            save_ingest_notes_state(str(db), sha, state)
+            loaded = load_ingest_notes_state(str(db), sha)
+        self.assertIsNotNone(loaded)
+        assert loaded is not None
+        self.assertEqual(loaded["book_id_hint"], "storia-roma-antica")
+        self.assertEqual(loaded["md_h1"], "usa # solo per capitoli numerati")
+        self.assertEqual(loaded["md_h2_h3"], "usa ## per sezioni interne")
+        self.assertEqual(loaded["md_captions"], "didascalie in italics")
+        self.assertEqual(loaded["md_asides"], "")
+        self.assertEqual(loaded["notes"], "keep")
 
     def test_missing_returns_none(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -280,9 +305,14 @@ class IngestNotesStatePersistenceTests(unittest.TestCase):
                     "autore": "Tester",
                     "toc_range": "2-3",
                     "index_range": "4-5",
+                    "book_id_hint": "alias-book",
+                    "md_h1": "custom h1 at submit",
                     "annotations_json": "[]",
                 },
-                {"ai_page_guidance": "tip"},
+                {
+                    "ai_page_guidance": "tip",
+                    "md_formatting": {"md_h2_h3": "custom h2 from payload"},
+                },
                 alias_shas=[alias],
             )
             self.assertIsNotNone(digest)
@@ -293,6 +323,9 @@ class IngestNotesStatePersistenceTests(unittest.TestCase):
         assert loaded_alias is not None
         self.assertEqual(loaded_alias["titolo"], "Alias Book")
         self.assertEqual(loaded_alias["ai_page_guidance"], "tip")
+        self.assertEqual(loaded_alias["book_id_hint"], "alias-book")
+        self.assertEqual(loaded_alias["md_h1"], "custom h1 at submit")
+        self.assertEqual(loaded_alias["md_h2_h3"], "custom h2 from payload")
 
 
 class IngestDraftsPersistenceTests(unittest.TestCase):

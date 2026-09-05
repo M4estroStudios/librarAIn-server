@@ -2571,58 +2571,25 @@ if (document.readyState === "loading") {
     if (!state || typeof state !== "object") return;
     var formEl = document.getElementById("ingest-form");
     if (!formEl) return;
-    var noteFields = ["notes", "index_notes", "page_notes", "ai_page_guidance"];
-    var rangeFields = [
-      "pages_to_remove",
-      "toc_range",
-      "index_range",
-      "biblio_range",
-      "reicat_pages",
-      "appendix_pages",
-      "appendix_sections_json",
-    ];
-    var reicatFields = [
-      "titolo",
-      "sottotitolo",
-      "complementi_del_titolo",
-      "autore",
-      "curatore",
-      "traduttore",
-      "numero_edizione",
-      "anno_di_pubblicazione",
-      "tipo_di_pubblicazione",
-      "luogo_di_pubblicazione",
-      "editore",
-      "numero_pagine",
-      "titolo_collana",
-      "numero_nella_collana",
-      "isbn",
-    ];
     var i;
-    var computePlanEl = formEl.elements.compute_plan;
-    if (computePlanEl) {
-      computePlanEl.value = state.compute_plan == null ? "" : String(state.compute_plan);
-    }
-    for (i = 0; i < noteFields.length; i++) {
-      var name = noteFields[i];
+    for (i = 0; i < INGEST_NOTES_FIELD_NAMES.length; i++) {
+      var name = INGEST_NOTES_FIELD_NAMES[i];
       var el = formEl.elements[name];
       if (!el) continue;
-      var val = state[name];
-      el.value = val == null ? "" : String(val);
-    }
-    for (i = 0; i < rangeFields.length; i++) {
-      var rangeName = rangeFields[i];
-      var rangeEl = formEl.elements[rangeName];
-      if (!rangeEl) continue;
-      var rangeVal = state[rangeName];
-      rangeEl.value = rangeVal == null ? "" : String(rangeVal);
-    }
-    for (i = 0; i < reicatFields.length; i++) {
-      var reicatName = reicatFields[i];
-      var reicatEl = formEl.elements[reicatName];
-      if (!reicatEl) continue;
-      var reicatVal = Object.prototype.hasOwnProperty.call(state, reicatName) ? state[reicatName] : "";
-      reicatEl.value = reicatVal == null ? "" : String(reicatVal);
+      var val;
+      if (MD_FORMATTING_FIELD_NAMES.indexOf(name) >= 0) {
+        var rawMd = Object.prototype.hasOwnProperty.call(state, name) ? state[name] : "";
+        val = String(rawMd == null ? "" : rawMd).trim()
+          ? String(rawMd)
+          : (MD_FORMATTING_DEFAULTS[name] || "");
+      } else if (name === "compute_plan") {
+        val = state.compute_plan == null ? "" : String(state.compute_plan);
+      } else if (Object.prototype.hasOwnProperty.call(state, name)) {
+        val = state[name] == null ? "" : String(state[name]);
+      } else {
+        val = "";
+      }
+      el.value = val;
     }
     if (typeof syncTocPagePickerSelectionFromField === "function") syncTocPagePickerSelectionFromField();
     if (typeof syncIndexPagePickerSelectionFromField === "function") syncIndexPagePickerSelectionFromField();
@@ -2646,12 +2613,31 @@ if (document.readyState === "loading") {
   var ingestNotesDraftTimer = null;
   var ingestNotesRestoring = false;
   var INGEST_NOTES_DRAFT_PREFIX = "librarain.ingestNotes.draft.";
+  var MD_FORMATTING_FIELD_NAMES = [
+    "md_h1", "md_h2_h3", "md_max_heading", "md_captions",
+    "md_asides", "md_work_titles", "md_no_invent", "md_line_breaks",
+  ];
+  function readMdFormattingDefaults() {
+    var formEl = document.getElementById("ingest-form");
+    var defaults = {};
+    var i;
+    for (i = 0; i < MD_FORMATTING_FIELD_NAMES.length; i++) {
+      var name = MD_FORMATTING_FIELD_NAMES[i];
+      var el = formEl && formEl.elements[name];
+      defaults[name] = el && el.value != null ? String(el.value) : "";
+    }
+    return defaults;
+  }
+  var MD_FORMATTING_DEFAULTS = readMdFormattingDefaults();
   var INGEST_NOTES_FIELD_NAMES = [
     "notes", "index_notes", "page_notes", "ai_page_guidance",
     "pages_to_remove", "toc_range", "index_range", "biblio_range", "reicat_pages", "appendix_pages", "appendix_sections_json",
     "titolo", "sottotitolo", "complementi_del_titolo", "autore", "curatore", "traduttore",
     "numero_edizione", "anno_di_pubblicazione", "tipo_di_pubblicazione", "luogo_di_pubblicazione",
     "editore", "numero_pagine", "titolo_collana", "numero_nella_collana", "isbn",
+    "book_id_hint",
+    "md_h1", "md_h2_h3", "md_max_heading", "md_captions",
+    "md_asides", "md_work_titles", "md_no_invent", "md_line_breaks",
     "compute_plan",
   ];
   function clearLegacyIngestNotesDrafts() {
@@ -2667,36 +2653,18 @@ if (document.readyState === "loading") {
   }
   clearLegacyIngestNotesDrafts();
   function emptyIngestNotesState() {
-    return {
-      notes: "",
-      index_notes: "",
-      page_notes: "",
-      ai_page_guidance: "",
-      annotations: [],
-      pages_to_remove: "",
-      toc_range: "",
-      index_range: "",
-      biblio_range: "",
-      reicat_pages: "",
-      appendix_pages: "",
-      appendix_sections_json: JSON.stringify({ sections: [], splits: {} }),
-      titolo: "",
-      sottotitolo: "",
-      complementi_del_titolo: "",
-      autore: "",
-      curatore: "",
-      traduttore: "",
-      numero_edizione: "",
-      anno_di_pubblicazione: "",
-      tipo_di_pubblicazione: "",
-      luogo_di_pubblicazione: "",
-      editore: "",
-      numero_pagine: "",
-      titolo_collana: "",
-      numero_nella_collana: "",
-      isbn: "",
-      compute_plan: "",
-    };
+    var state = { annotations: [] };
+    var i;
+    for (i = 0; i < INGEST_NOTES_FIELD_NAMES.length; i++) {
+      var name = INGEST_NOTES_FIELD_NAMES[i];
+      if (MD_FORMATTING_FIELD_NAMES.indexOf(name) >= 0) {
+        state[name] = MD_FORMATTING_DEFAULTS[name] || "";
+      } else {
+        state[name] = "";
+      }
+    }
+    state.appendix_sections_json = JSON.stringify({ sections: [], splits: {} });
+    return state;
   }
   function collectIngestNotesState() {
     var formEl = document.getElementById("ingest-form");
@@ -2739,6 +2707,12 @@ if (document.readyState === "loading") {
       var name = INGEST_NOTES_FIELD_NAMES[i];
       if (name === "compute_plan") {
         if (computePlanHasOverride(state.compute_plan)) return true;
+        continue;
+      }
+      if (MD_FORMATTING_FIELD_NAMES.indexOf(name) >= 0) {
+        var mdVal = String(state[name] || "").trim();
+        var mdDef = String(MD_FORMATTING_DEFAULTS[name] || "").trim();
+        if (mdVal && mdVal !== mdDef) return true;
         continue;
       }
       if (String(state[name] || "").trim()) return true;
@@ -3003,7 +2977,7 @@ if (document.readyState === "loading") {
     var fields = snap.fields || {};
     for (var name in fields) {
       if (!Object.prototype.hasOwnProperty.call(fields, name)) continue;
-      if (name === "book_id_hint") continue;
+      if (name === "pdf_file") continue;
       var el = form.elements[name];
       if (!el) continue;
       if (el.type === "checkbox") el.checked = !!fields[name];
@@ -3081,9 +3055,11 @@ if (document.readyState === "loading") {
     var elements = form.elements;
     for (var i = 0; i < elements.length; i++) {
       var el = elements[i];
-      if (!el.name || el.name === "pdf_file" || el.name === "book_id_hint" || el.name === "compute_mode" || el.name === "compute_plan") continue;
+      if (!el.name || el.name === "pdf_file" || el.name === "compute_mode" || el.name === "compute_plan") continue;
       if (el.type === "checkbox") {
         el.checked = el.name === "force_metadata_update_on_duplicate_hash" && el.value === "true";
+      } else if (MD_FORMATTING_FIELD_NAMES.indexOf(el.name) >= 0) {
+        el.value = MD_FORMATTING_DEFAULTS[el.name] || "";
       } else {
         el.value = "";
       }

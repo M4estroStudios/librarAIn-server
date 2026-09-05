@@ -81,7 +81,11 @@ function isBboxInTop15(el) {
   const y1 = Number(el.coords[1]);
   const y2 = Number(el.coords[3]);
   if (!Number.isFinite(y1) || !Number.isFinite(y2)) return false;
-  return Math.min(y1, y2) / 999 <= TOP_EDGE_FRAC;
+  // Entire bbox must sit in the top 15%: both top and bottom edges.
+  // If only the top edge is in-band (bottom spills below), use body COPILOT.
+  const top = Math.min(y1, y2) / 999;
+  const bottom = Math.max(y1, y2) / 999;
+  return top <= TOP_EDGE_FRAC && bottom <= TOP_EDGE_FRAC;
 }
 
 function isTestataToken(token) {
@@ -699,7 +703,7 @@ export function createPageGuidanceController(bridge) {
   }
 
   function syncCopilotFor(el) {
-    // F-003: top 15% → Testata Pari/Dispari. F-004: below → top-5 frequent non-testata tags.
+    // F-003: bbox fully in top 15% → Testata Pari/Dispari. F-004: otherwise → top-5 frequent non-testata tags.
     // US-4: never seed testate into chip dock.
     if (isBboxInTop15(el)) {
       renderCopilotButtons([TESTATA_PARI, TESTATA_DISPARI], { testata: true });

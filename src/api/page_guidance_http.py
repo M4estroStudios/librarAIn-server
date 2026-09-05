@@ -28,6 +28,7 @@ from src.search.article_catalog import list_ingested_books
 from src.core.log import ERROR_LOG_LEVEL, INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.ingestion.pdf_alignment import merge_pdf_paths
 from src.models.settings import Settings
+from src.models.request import MD_FORMATTING_FIELD_DEFAULTS
 from src.models.ingest_compute import (
     apply_step_compute,
     missing_cloud_config_for_plan,
@@ -89,6 +90,8 @@ _REICAT_FIELD_NAMES = (
     "isbn",
 )
 
+_MD_FORMATTING_FIELD_NAMES = tuple(MD_FORMATTING_FIELD_DEFAULTS)
+
 
 def _str_fields_from_mapping(src: dict[str, Any], names: tuple[str, ...]) -> dict[str, str]:
     return {name: str(src.get(name) or "").strip() for name in names}
@@ -100,6 +103,20 @@ def _range_fields_from_mapping(src: dict[str, Any]) -> dict[str, str]:
 
 def _reicat_fields_from_mapping(src: dict[str, Any]) -> dict[str, str]:
     return _str_fields_from_mapping(src, _REICAT_FIELD_NAMES)
+
+
+def _md_formatting_fields_from_mapping(src: dict[str, Any]) -> dict[str, str]:
+    merged = dict(src)
+    nested = src.get("md_formatting")
+    if isinstance(nested, dict):
+        for name in _MD_FORMATTING_FIELD_NAMES:
+            if not str(merged.get(name) or "").strip() and nested.get(name):
+                merged[name] = nested[name]
+    return _str_fields_from_mapping(merged, _MD_FORMATTING_FIELD_NAMES)
+
+
+def _book_id_hint_from_mapping(src: dict[str, Any]) -> str:
+    return str(src.get("book_id_hint") or "").strip()
 
 
 def _json_list_to_csv(raw: Any) -> str:
@@ -194,6 +211,8 @@ def _normalize_ingest_notes_payload(state: dict[str, Any]) -> dict[str, Any]:
     }
     payload.update(_range_fields_from_mapping(state))
     payload.update(_reicat_fields_from_mapping(state))
+    payload.update(_md_formatting_fields_from_mapping(state))
+    payload["book_id_hint"] = _book_id_hint_from_mapping(state)
     compute_plan = state.get("compute_plan")
     if isinstance(compute_plan, dict):
         payload["compute_plan"] = json.dumps(compute_plan, ensure_ascii=False, sort_keys=True)
@@ -230,6 +249,14 @@ def build_ingest_notes_state(
     }
     state.update(_range_fields_from_mapping(text_fields))
     state.update(_reicat_fields_from_mapping(text_fields))
+    merged_fields = dict(text_fields)
+    nested_md = ingest_payload.get("md_formatting")
+    if isinstance(nested_md, dict):
+        merged_fields["md_formatting"] = nested_md
+    if ingest_payload.get("book_id_hint"):
+        merged_fields["book_id_hint"] = ingest_payload["book_id_hint"]
+    state.update(_md_formatting_fields_from_mapping(merged_fields))
+    state["book_id_hint"] = _book_id_hint_from_mapping(merged_fields)
     compute_plan = ingest_payload.get("compute_plan")
     if compute_plan is None:
         compute_plan = text_fields.get("compute_plan")
@@ -311,8 +338,10 @@ def resolve_ingest_ui_state(
         "ai_page_guidance": "",
         "annotations": [],
         "file_name": "",
+        "book_id_hint": "",
         **{name: "" for name in _RANGE_FIELD_NAMES},
         **{name: "" for name in _REICAT_FIELD_NAMES},
+        **{name: "" for name in _MD_FORMATTING_FIELD_NAMES},
     }
     return _merge_reicat_defaults(dict(state), reicat_fields)
 
