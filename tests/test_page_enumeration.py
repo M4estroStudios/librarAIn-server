@@ -92,6 +92,27 @@ class PageEnumerationTests(unittest.TestCase):
         self.assertEqual(enumerated.index_range_aligned.start, 13)
         self.assertEqual(enumerated.index_range_aligned.end, 16)
 
+    def test_index_only_processes_range_but_keeps_complete_page_maps(self) -> None:
+        pdf_body = _minimal_pdf_bytes(20)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            raw_path = Path(tmp_dir) / "book.pdf"
+            raw_path.write_bytes(pdf_body)
+            payload = {
+                "schema_version": "1.0",
+                "source_pdf_path": str(raw_path),
+                "pages_to_remove": [1, 2],
+                "index_only": True,
+                "index_range": {"start": 15, "end": 18},
+                "reicat": {"titolo": "Indice", "autore": ["A"]},
+            }
+            enriched = validate_and_enrich_request(payload)
+            enumerated = build_useful_pages_enumeration(enriched, None)
+
+        self.assertEqual(enumerated.pages_for_processing(), [15, 16, 17, 18])
+        self.assertEqual(enumerated.useful_original_pages, list(range(3, 21)))
+        self.assertEqual(len(enumerated.aligned_page_to_original_page), 18)
+        self.assertEqual(enumerated.index_range_aligned.model_dump(), {"start": 13, "end": 16})
+
     def test_enumeration_rejects_alignment_forward_drift(self) -> None:
         pdf_body = _minimal_pdf_bytes(8)
         with tempfile.TemporaryDirectory() as tmp_dir:

@@ -27,6 +27,7 @@ _P_OUTPUT = "src.ingestion.orchestrator.materialize_book_pages"
 _P_BUILD_BOOK = "src.ingestion.orchestrator.build_book_md"
 _P_BUILD_TOC = "src.ingestion.orchestrator.build_toc_md"
 _P_BUILD_INDEX = "src.ingestion.orchestrator.build_index_md"
+_P_APPLY_INDEX_LINKS = "src.ingestion.orchestrator.apply_index_cross_links"
 _P_SYNC_POLYINDEX_TOC = "src.ingestion.orchestrator.sync_polyindex_toc_from_book"
 _P_WRITE_GALLERY_INDEX = "src.ingestion.orchestrator.write_gallery_index"
 _P_SYNC_POLYINDEX_BIBLIO = "src.ingestion.orchestrator.sync_polyindex_biblio_from_book"
@@ -131,6 +132,7 @@ def _enriched() -> MagicMock:
         {"titolo": "Test Book", "autore": ["Author One"]}
     )
     enriched.request.schema_version = "1.0"
+    enriched.request.index_only = False
     return enriched
 
 
@@ -482,6 +484,86 @@ class TestOrchestratorBuildsTocMd(unittest.TestCase):
             Path(str(output_events[0].payload.get("gallery_index_path"))),
             Path("/tmp/GALLERY_INDEX_demo.json"),
         )
+
+    @_patch_page_metadata_phase()
+    @_patch_polyindex_biblio()
+    @_patch_gallery_index()
+    @patch(_P_SYNC_POLYINDEX_TOC)
+    @patch(_P_APPLY_INDEX_LINKS, new_callable=AsyncMock)
+    @patch(_P_REFINE_INDEX, new_callable=AsyncMock)
+    @patch(_P_REFINE_TOC, new_callable=AsyncMock)
+    @patch(_P_BUILD_INDEX)
+    @patch(_P_BUILD_TOC)
+    @patch(_P_BUILD_BOOK)
+    @patch(_P_CLIENT)
+    @patch(_P_SWAP)
+    @patch(_P_OUTPUT)
+    @patch(_P_STAGE3, new_callable=AsyncMock)
+    @patch(_P_STAGE2, new_callable=AsyncMock)
+    @patch(_P_STAGE1, new_callable=AsyncMock)
+    def test_run_pipeline_index_only_skips_toc_and_polyindex(
+        self,
+        mock_stage1: AsyncMock,
+        mock_stage2: AsyncMock,
+        mock_stage3: AsyncMock,
+        mock_output: MagicMock,
+        mock_swap: MagicMock,
+        mock_client: MagicMock,
+        mock_build_book: MagicMock,
+        mock_build_toc: MagicMock,
+        mock_build_index: MagicMock,
+        mock_refine_toc: AsyncMock,
+        mock_refine_index: AsyncMock,
+        mock_apply_index_links: AsyncMock,
+        mock_sync_polyindex_toc: MagicMock,
+    ) -> None:
+        mock_stage1.return_value = _stage1_result(1)
+        mock_stage2.return_value = MagicMock(pages=[])
+        mock_stage3.return_value = MagicMock(pages=[MagicMock(aligned_page=1)])
+        book_output = MagicMock(
+            pages=[MagicMock()],
+            manifest_path=Path(self.tmp / "manifest.json"),
+        )
+        mock_output.return_value = book_output
+        mock_client.return_value = MagicMock()
+        mock_build_index.side_effect = self._index_md_side_effect
+
+        async def _refine_passthrough(path: Path, *args: object, **kwargs: object) -> Path:
+            del args, kwargs
+            return path
+
+        mock_refine_index.side_effect = _refine_passthrough
+
+        useful_pages = _enumeration(page_count=1)
+        enriched = _enriched()
+        enriched.request.index_only = True
+
+        asyncio.run(
+            run_pipeline(
+                enriched,
+                None,
+                useful_pages,
+                self.settings,
+                Path(self.data_root) / "db" / "biblioteca.db",
+                self.registry,
+                REQUEST_ID,
+            )
+        )
+
+        mock_build_index.assert_called_once_with(book_output, useful_pages)
+        mock_refine_index.assert_awaited_once()
+        mock_apply_index_links.assert_awaited_once()
+        mock_build_book.assert_not_called()
+        mock_build_toc.assert_not_called()
+        mock_refine_toc.assert_not_awaited()
+        mock_sync_polyindex_toc.assert_not_called()
+        self.assertEqual(self.builder_call_order, ["index_md"])
+        index_events = [event for event in self.registry.events if event.stage == "index_builder"]
+        self.assertEqual(len(index_events), 1)
+        polyindex_toc_events = [
+            event for event in self.registry.events if event.stage == "polyindex_toc"
+        ]
+        self.assertEqual(polyindex_toc_events, [])
 
 
 class TestOrchestratorWritesPolyindexTocJson(unittest.TestCase):

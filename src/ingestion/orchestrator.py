@@ -33,7 +33,7 @@ from src.ingestion.pipeline.stage1 import Stage1Result, run_stage1_ingest_step
 from src.ingestion.pipeline.stage2 import Stage2Result, run_stage2_vision
 from src.ingestion.book_md_builder import build_book_md
 from src.ingestion.index_builder import build_index_md
-from src.ingestion.index_cross_links import book_index_json_path
+from src.ingestion.index_cross_links import apply_index_cross_links, book_index_json_path
 from src.ingestion.polyindex.biblio_json import sync_polyindex_biblio_from_book
 from src.ingestion.polyindex.gallery_index import write_gallery_index
 from src.ingestion.polyindex.toc_json import parse_chapters_from_toc_md, sync_polyindex_toc_from_book
@@ -195,7 +195,7 @@ def _build_page_jobs(
     slug: str,
 ) -> list[PageJob]:
     jobs: list[PageJob] = []
-    for original_page in sorted(useful_pages.useful_original_pages):
+    for original_page in sorted(useful_pages.pages_for_processing()):
         aligned_page = useful_pages.original_page_to_aligned_page.get(original_page)
         if aligned_page is None:
             continue
@@ -304,7 +304,7 @@ def _build_pipeline_context(
         toc_prompt_notes=toc_notes,
         annotations_by_original=by_original,
         md_formatting_block=build_md_formatting_block(enriched.request.md_formatting),
-        render_page_total=len(useful_pages.useful_original_pages),
+        render_page_total=len(useful_pages.pages_for_processing()),
         polyindex_dir=data_root / "polyindex",
         compute_plan=compute_plan,
     )
@@ -836,6 +836,40 @@ def _run_page_metadata_phase(
     )
 
 
+async def _run_index_only_artifact_phases(
+    ctx: PipelineContext,
+    book_output: BookOutput,
+) -> Path:
+    """Ingest "solo indice": produce INDEX.md e i JSON per-libro.
+
+    Salta book_md, TOC, page_metadata e il merge globale. Le mappe complete
+    restano disponibili per interpretare i riferimenti di pagina dell'indice,
+    anche se OCR/editor elaborano soltanto il range INDEX.
+    """
+    index_md_path = _run_index_md_builder(ctx, book_output)
+    try:
+        index_md_path = await _run_index_refine_phase(ctx, index_md_path)
+    except OrchestratorStageError as exc:
+        Log(
+            WARNING_LOG_LEVEL,
+            "index refine failed keeping unrefined index",
+            {"request_id": ctx.request_id, "error": str(exc)},
+        )
+    await apply_index_cross_links(
+        index_md_path,
+        book_output,
+        ctx.useful_pages,
+        client=ctx.openai_client,
+        settings=ctx.settings,
+        request_id=ctx.request_id,
+        # This lightweight per-book build is part of INDEX-only finalization;
+        # it must not add dynamic steps beyond the ingest progress total.
+        progress=None,
+        parallel_pages=True,
+    )
+    return index_md_path
+
+
 async def _run_book_artifact_phases(
     ctx: PipelineContext,
     book_output: BookOutput,
@@ -987,7 +1021,7 @@ async def run_pipeline(
         request_id=request_id,
         source_sha256=source_sha256,
         pipeline_version=enriched.request.schema_version,
-        total_pages=len(useful_pages.useful_original_pages),
+        total_pages=len(useful_pages.pages_for_processing()),
         compute_mode=(
             compute_plan.summary_mode() if compute_plan is not None else get_compute_mode()
         ),
@@ -1128,8 +1162,11 @@ async def _run_pipeline_body(
             )
         stage3_result = await _run_editor_phase_only(ctx, stage2_result, page_jobs)
         book_output = _run_output_writer_phase(ctx, stage3_result)
-        toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
-        await _run_polyindex_phases(ctx, book_output, toc_md_path)
+        if ctx.enriched.request.index_only:
+            await _run_index_only_artifact_phases(ctx, book_output)
+        else:
+            toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
+            await _run_polyindex_phases(ctx, book_output, toc_md_path)
         _unload_last_local_llm(ctx)
         return _finalize_pipeline_result(
             ctx,
@@ -1150,8 +1187,11 @@ async def _run_pipeline_body(
         page_jobs,
     )
     book_output = _run_output_writer_phase(ctx, stage3_result)
-    toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
-    await _run_polyindex_phases(ctx, book_output, toc_md_path)
+    if ctx.enriched.request.index_only:
+        await _run_index_only_artifact_phases(ctx, book_output)
+    else:
+        toc_md_path, _index_md_path = await _run_book_artifact_phases(ctx, book_output)
+        await _run_polyindex_phases(ctx, book_output, toc_md_path)
     _unload_last_local_llm(ctx)
     return _finalize_pipeline_result(
         ctx,

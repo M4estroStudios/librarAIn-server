@@ -222,6 +222,31 @@ class TestBuildIngestPayload(unittest.TestCase):
             build_ingest_payload_from_form(fields)
         self.assertEqual(ctx.exception.field, "toc_range")
 
+    def test_index_only_allows_missing_toc_range(self) -> None:
+        fields = dict(_BASE_FIELDS)
+        fields["toc_range"] = ""
+        fields["index_only"] = "1"
+        payload = build_ingest_payload_from_form(fields)
+        self.assertTrue(payload["index_only"])
+        self.assertNotIn("toc_range", payload)
+        self.assertEqual(payload["index_range"], {"start": 200, "end": 210})
+
+    def test_index_only_keeps_toc_range_when_provided(self) -> None:
+        fields = dict(_BASE_FIELDS)
+        fields["index_only"] = "1"
+        payload = build_ingest_payload_from_form(fields)
+        self.assertTrue(payload["index_only"])
+        self.assertEqual(payload["toc_range"], {"start": 5, "end": 8})
+
+    def test_index_only_still_requires_index_range(self) -> None:
+        fields = dict(_BASE_FIELDS)
+        fields["toc_range"] = ""
+        fields["index_range"] = ""
+        fields["index_only"] = "1"
+        with self.assertRaises(InvalidRangeField) as ctx:
+            build_ingest_payload_from_form(fields)
+        self.assertEqual(ctx.exception.field, "index_range")
+
     def test_non_contiguous_index_range_raises(self) -> None:
         fields = dict(_BASE_FIELDS)
         fields["index_range"] = "1,5"

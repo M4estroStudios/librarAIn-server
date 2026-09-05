@@ -12,11 +12,11 @@ from src.ingestion.index_cross_links import (
     apply_index_cross_links,
     audit_index_cross_links_readiness,
     book_index_json_path,
+    canonical_book_index_json_path,
     link_subject_mentions_in_page,
 )
 from src.ingestion.index_md_links import (
     POLYINDEX_REF_PLACEHOLDER,
-    repair_placeholder_subject_links,
     rewrite_index_md_with_page_links,
 )
 from src.ingestion.output_writer import BookOutput, BookPageOutput
@@ -360,6 +360,8 @@ class IndexCrossLinksTests(unittest.TestCase):
             data = json.loads(index_json.read_text(encoding="utf-8"))
             self.assertEqual(data["subjects"]["acqua-claudia"]["source_index_page"], 100)
             self.assertEqual(data["page_subjects"]["39"], ["acqua-claudia"])
+            canonical_json = canonical_book_index_json_path(root)
+            self.assertEqual(canonical_json.read_bytes(), index_json.read_bytes())
 
     def test_llm_fallback_when_regex_misses(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

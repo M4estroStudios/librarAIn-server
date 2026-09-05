@@ -396,12 +396,20 @@ def _optional_trimmed(fields: dict[str, str], key: str) -> str | None:
     return raw or None
 
 
+def _truthy_flag(raw: str | None) -> bool:
+    return str(raw or "").strip().lower() in ("1", "true", "on", "yes")
+
+
 def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
     pages_raw = fields.get("pages_to_remove", "").strip()
     toc_spec = fields.get("toc_range", "").strip()
     index_spec = fields.get("index_range", "").strip()
     biblio_spec = fields.get("biblio_range", "").strip()
-    toc_start, toc_end = _parse_contiguous_range_field(toc_spec, "toc_range")
+    index_only = _truthy_flag(fields.get("index_only"))
+    toc_range_payload = None
+    if toc_spec or not index_only:
+        toc_start, toc_end = _parse_contiguous_range_field(toc_spec, "toc_range")
+        toc_range_payload = {"start": toc_start, "end": toc_end}
     index_start, index_end = _parse_contiguous_range_field(index_spec, "index_range")
     biblio_range_payload = None
     if biblio_spec:
@@ -483,11 +491,14 @@ def build_ingest_payload_from_form(fields: dict[str, str]) -> dict[str, Any]:
     ingest_payload: dict[str, Any] = {
         "schema_version": "1.0",
         "pages_to_remove": _parse_pages_spec(pages_raw) if pages_raw else [],
-        "toc_range": {"start": toc_start, "end": toc_end},
         "index_range": {"start": index_start, "end": index_end},
         "reicat": reicat_payload,
         "options": {"force_metadata_update_on_duplicate_hash": force_flag},
     }
+    if index_only:
+        ingest_payload["index_only"] = True
+    if toc_range_payload is not None:
+        ingest_payload["toc_range"] = toc_range_payload
     compute_mode_raw = fields.get("compute_mode", "").strip()
     if compute_mode_raw:
         ingest_payload["compute_mode"] = compute_mode_raw

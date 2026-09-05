@@ -126,6 +126,39 @@ class RequestValidationTests(unittest.TestCase):
         finally:
             tmp_path.unlink(missing_ok=True)
 
+    def test_validate_and_enrich_request_index_only_keeps_page_map_inputs(self) -> None:
+        pdf_body = _minimal_pdf_bytes(30)
+        with tempfile.NamedTemporaryFile("wb", delete=False) as tmp_file:
+            tmp_file.write(pdf_body)
+            tmp_path = Path(tmp_file.name)
+        try:
+            payload = _valid_payload(str(tmp_path), pdf_pages=30)
+            payload.pop("toc_range")
+            payload["index_only"] = True
+            payload["pages_to_remove"] = []
+            payload["index_range"] = {"start": 10, "end": 12}
+            result = validate_and_enrich_request(payload)
+            self.assertTrue(result.request.index_only)
+            self.assertIsNone(result.request.toc_range)
+            self.assertEqual(result.request.pages_to_remove, [])
+        finally:
+            tmp_path.unlink(missing_ok=True)
+
+    def test_validate_and_enrich_request_missing_toc_without_index_only(self) -> None:
+        pdf_body = _minimal_pdf_bytes(30)
+        with tempfile.NamedTemporaryFile("wb", delete=False) as tmp_file:
+            tmp_file.write(pdf_body)
+            tmp_path = Path(tmp_file.name)
+        try:
+            payload = _valid_payload(str(tmp_path), pdf_pages=30)
+            payload.pop("toc_range")
+            with self.assertRaises(ValueError) as ctx:
+                validate_and_enrich_request(payload)
+            error_payload = json.loads(str(ctx.exception))
+            self.assertEqual(error_payload["code"], "INPUT_SCHEMA_INVALID")
+        finally:
+            tmp_path.unlink(missing_ok=True)
+
     def test_validate_and_enrich_request_invalid_payload(self) -> None:
         payload = _valid_payload("dummy.pdf", pdf_pages=130)
         payload["toc_range"] = {"start": 20, "end": 10}

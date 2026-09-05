@@ -1051,13 +1051,26 @@ body.embed-mode .pdf-dropzone { min-height: 11rem; }
 body.embed-mode .pdf-workspace-bar { background: transparent; border: 0; padding: 0; }
 body.embed-mode .pdf-workspace-hint-card { background: transparent; border: 0; border-top: 1px solid #3e3e3e; border-radius: 0; padding: 0.75rem 0; }
 body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
+/* Modalità "solo indice" (?index_only=1, usata dalla pagina Indice):
+   restano Rimuovi (allineamento), Indice, REICAT e Annota. */
+body.index-only-mode .pdf-viewer-tool[data-viewer-mode="toc"],
+body.index-only-mode .pdf-viewer-tool[data-viewer-mode="biblio"],
+body.index-only-mode .pdf-viewer-tool[data-viewer-mode="appendix"] { display: none !important; }
+body.index-only-mode .pdf-viewer-mode-panel[data-viewer-mode-panel="toc"],
+body.index-only-mode .pdf-viewer-mode-panel[data-viewer-mode-panel="biblio"],
+body.index-only-mode .pdf-viewer-mode-panel[data-viewer-mode-panel="appendix"] { display: none !important; }
+body.index-only-mode #ingest-ingested-home { display: none !important; }
 </style>
 </head>
 <body>
 <script>
 (function () {
-  if (new URLSearchParams(location.search).get("embed") === "1") {
+  var params = new URLSearchParams(location.search);
+  if (params.get("embed") === "1") {
     document.body.classList.add("embed-mode");
+  }
+  if (params.get("index_only") === "1") {
+    document.body.classList.add("index-only-mode");
   }
 })();
 </script>
@@ -1088,7 +1101,10 @@ body.embed-mode #pdf-viewer-panel { border: 0; background: transparent; }
 <div id="ingest-drafts-home" class="ingest-drafts-home" aria-label="Bozze attive">
   <div class="ingest-drafts-header">
     <h2 class="ingest-drafts-title">Bozze attive</h2>
-    <button type="button" id="ingest-drafts-new-btn">Nuova bozza</button>
+    <div class="ingest-drafts-row-actions">
+      <button type="button" id="ingest-drafts-ingest-all-btn" class="secondary hidden">Ingestisci tutte le bozze</button>
+      <button type="button" id="ingest-drafts-new-btn">Nuova bozza</button>
+    </div>
   </div>
   <p id="ingest-drafts-status" class="ingest-drafts-status hint" aria-live="polite"></p>
   <p class="hint" style="margin:0 0 0.65rem;font-size:0.78rem;line-height:1.35">
@@ -2228,6 +2244,7 @@ if (document.readyState === "loading") {
   var ingestDraftsEmpty = document.getElementById("ingest-drafts-empty");
   var ingestDraftsStatus = document.getElementById("ingest-drafts-status");
   var ingestDraftsNewBtn = document.getElementById("ingest-drafts-new-btn");
+  var ingestDraftsIngestAllBtn = document.getElementById("ingest-drafts-ingest-all-btn");
   var ingestIngestedList = document.getElementById("ingest-ingested-list");
   var ingestIngestedEmpty = document.getElementById("ingest-ingested-empty");
   var ingestIngestedStatus = document.getElementById("ingest-ingested-status");
@@ -2244,7 +2261,15 @@ if (document.readyState === "loading") {
   var ingestSessionMode = "drafts"; // drafts | upload | workspace
   var saveDraftBusy = false;
   var pdfViewerMeta = document.getElementById("pdf-viewer-meta");
-  var viewerMode = "exclude";
+  // Modalità "solo indice" (pagina Indice): TOC facoltativo, si elabora solo il range INDEX.
+  var INDEX_ONLY_MODE = document.body.classList.contains("index-only-mode");
+  var indexDraftBatchRunning = false;
+  if (INDEX_ONLY_MODE) {
+    var draftsTitle = ingestDraftsHome && ingestDraftsHome.querySelector(".ingest-drafts-title");
+    if (draftsTitle) draftsTitle.textContent = "Bozze INDEX";
+    if (ingestDraftsIngestAllBtn) ingestDraftsIngestAllBtn.classList.remove("hidden");
+  }
+  var viewerMode = INDEX_ONLY_MODE ? "index" : "exclude";
   var viewerModeButtons = document.querySelectorAll(".pdf-viewer-tool[data-viewer-mode]");
   var viewerModePanels = document.querySelectorAll("[data-viewer-mode-panel]");
   var pagesToRemoveInput = document.getElementById("pages-to-remove-input");
@@ -2674,6 +2699,7 @@ if (document.readyState === "loading") {
     var formEl = document.getElementById("ingest-form");
     var state = emptyIngestNotesState();
     if (!formEl) return state;
+    state.index_only = INDEX_ONLY_MODE;
     var i;
     for (i = 0; i < INGEST_NOTES_FIELD_NAMES.length; i++) {
       var name = INGEST_NOTES_FIELD_NAMES[i];
@@ -3034,7 +3060,7 @@ if (document.readyState === "loading") {
     if (biblioRangeInput) biblioRangeInput.value = pagesToSpec(biblioSelectedPagesList());
     reicatPagesInput.value = pagesToSpec(reicatSelectedPagesList());
     if (appendixPagesInput) appendixPagesInput.value = pagesToSpec(appendixSelectedPagesList());
-    setViewerMode(snap.viewerMode || "exclude");
+    setViewerMode(snap.viewerMode || (INDEX_ONLY_MODE ? "index" : "exclude"));
     if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.setAnnotations === "function") {
       window.__librarainPageGuidance.setAnnotations(snap.annotations || []);
     }
@@ -3206,7 +3232,7 @@ if (document.readyState === "loading") {
     if (!String(fields.autore || "").trim()) {
       throw new Error("Libro " + label + ": autore obbligatorio mancante.");
     }
-    if (!String(fields.toc_range || "").trim()) {
+    if (!INDEX_ONLY_MODE && !String(fields.toc_range || "").trim()) {
       throw new Error("Libro " + label + ": intervallo TOC obbligatorio mancante.");
     }
     if (!String(fields.index_range || "").trim()) {
@@ -3818,12 +3844,14 @@ if (document.readyState === "loading") {
         file_name: fileName || (existing && existing.file_name) || "",
         updated_at: new Date().toISOString(),
         has_pdf: true,
+        index_only: INDEX_ONLY_MODE,
       };
       if (existing) {
         existing.title = entry.title;
         existing.file_name = entry.file_name;
         existing.updated_at = entry.updated_at;
         existing.has_pdf = true;
+        existing.index_only = entry.index_only;
       } else if (sha) {
         activeDraftsCache.unshift(entry);
       }
@@ -3976,7 +4004,19 @@ if (document.readyState === "loading") {
   }
 
   function renderIngestDraftsList(drafts) {
-    activeDraftsCache = Array.isArray(drafts) ? drafts.slice() : [];
+    var allDrafts = Array.isArray(drafts) ? drafts.slice() : [];
+    activeDraftsCache = allDrafts.filter(function (draft) {
+      return INDEX_ONLY_MODE ? !!draft.index_only : !draft.index_only;
+    });
+    if (ingestDraftsIngestAllBtn) {
+      ingestDraftsIngestAllBtn.disabled =
+        indexDraftBatchRunning || !activeDraftsCache.length ||
+        activeDraftsCache.some(function (draft) { return !draft.has_pdf; });
+      ingestDraftsIngestAllBtn.title = activeDraftsCache.some(function (draft) { return !draft.has_pdf; })
+        ? "Una o più bozze non hanno il PDF salvato"
+        : "Avvia in sequenza tutte le bozze INDEX, un job separato per libro";
+    }
+    if (ingestDraftsNewBtn) ingestDraftsNewBtn.disabled = indexDraftBatchRunning;
     if (!ingestDraftsList) return;
     ingestDraftsList.innerHTML = "";
     var empty = !activeDraftsCache.length;
@@ -4010,6 +4050,7 @@ if (document.readyState === "loading") {
       openBtn.title = draft.has_pdf ? "Riapri bozza (PDF salvato)" : "Ri-carica il PDF per aprire la bozza";
       openBtn.dataset.hasPdf = draft.has_pdf ? "1" : "0";
       openBtn.dataset.fileName = String(draft.file_name || "");
+      openBtn.disabled = indexDraftBatchRunning;
       actions.appendChild(openBtn);
       var deleteBtn = document.createElement("button");
       deleteBtn.type = "button";
@@ -4017,6 +4058,7 @@ if (document.readyState === "loading") {
       deleteBtn.textContent = "Elimina";
       deleteBtn.dataset.sourceSha256 = sha;
       deleteBtn.title = "Rimuovi la bozza dalla lista attiva";
+      deleteBtn.disabled = indexDraftBatchRunning;
       actions.appendChild(deleteBtn);
 
       var body = document.createElement("div");
@@ -4054,6 +4096,133 @@ if (document.readyState === "loading") {
       );
       return [];
     }
+  }
+
+  function appendIndexDraftState(fd, state) {
+    for (var i = 0; i < INGEST_NOTES_FIELD_NAMES.length; i++) {
+      var name = INGEST_NOTES_FIELD_NAMES[i];
+      var value = state[name];
+      if (value == null || value === "") continue;
+      fd.set(name, String(value));
+    }
+    fd.set("index_only", "1");
+    fd.set("annotations_json", JSON.stringify(
+      Array.isArray(state.annotations) ? state.annotations : []
+    ));
+    if (!fd.get("compute_mode")) {
+      var computeMode = document.getElementById("compute-mode");
+      fd.set("compute_mode", computeMode && computeMode.value === "cloud" ? "cloud" : "local");
+    }
+  }
+
+  async function submitSavedIndexDraft(draft, position, total) {
+    var sha = String(draft.source_sha256 || "").trim().toLowerCase();
+    if (!sha) throw new Error("SHA bozza mancante");
+    setIngestDraftsStatus(
+      "Bozza " + position + "/" + total + " · caricamento «" + draftDisplayTitle(draft) + "»…",
+      false
+    );
+    var state = await fetchServerIngestNotesState(sha);
+    if (!state) throw new Error("stato della bozza non disponibile");
+    if (!String(state.titolo || "").trim()) throw new Error("titolo mancante");
+    if (!String(state.autore || "").trim()) throw new Error("autore mancante");
+    if (!String(state.index_range || "").trim()) throw new Error("range INDEX mancante");
+
+    var pdfResponse = await fetch(
+      "/api/ingest/drafts/pdf?source_sha256=" + encodeURIComponent(sha)
+    );
+    if (!pdfResponse.ok) {
+      var pdfError = await pdfResponse.json().catch(function () { return {}; });
+      throw new Error(pdfError.error || ("PDF bozza: HTTP " + pdfResponse.status));
+    }
+    var blob = await pdfResponse.blob();
+    var fileName = String(draft.file_name || state.file_name || "index-draft.pdf");
+    var fd = new FormData();
+    appendIndexDraftState(fd, state);
+    fd.set("file_name", fileName);
+    fd.set("pdf_file", blob, fileName);
+
+    startProgress();
+    setIngestDraftsStatus(
+      "Bozza " + position + "/" + total + " · avvio ingest «" + draftDisplayTitle(draft) + "»…",
+      false
+    );
+    var response = await fetch("/api/ingest2/submit", { method: "POST", body: fd });
+    var data = await response.json().catch(function () { return {}; });
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || (data.errors && data.errors.message) || ("HTTP " + response.status));
+    }
+
+    ingestPagesState.jobId = data.job_id || "";
+    ingestPagesState.sourceSha256 = String(data.source_sha256 || sha).toLowerCase();
+    clearActiveDraftAfterSubmit(sha);
+    if (window.parent !== window) {
+      try {
+        window.parent.postMessage(
+          {
+            type: "librarain-ingest-started",
+            job_id: data.job_id || "",
+            events_url: data.events_url || "",
+            status_url: data.status_url || "",
+            source_sha256: ingestPagesState.sourceSha256,
+          },
+          "*"
+        );
+      } catch (_) {}
+    }
+    await connectSSE(data.events_url, data.status_url);
+  }
+
+  async function ingestAllSavedIndexDrafts() {
+    if (!INDEX_ONLY_MODE || indexDraftBatchRunning) return;
+    var drafts = activeDraftsCache.slice();
+    if (!drafts.length) return;
+    if (drafts.some(function (draft) { return !draft.has_pdf; })) {
+      setIngestDraftsStatus("Ogni bozza deve avere il PDF salvato.", true);
+      return;
+    }
+    if (!window.confirm(
+      "Avviare " + drafts.length + " ingest INDEX separati?\n\n" +
+      "Ogni bozza produrrà il proprio INDEX.md e INDEX_BOOK.json."
+    )) return;
+
+    indexDraftBatchRunning = true;
+    renderIngestDraftsList(activeDraftsCache);
+    var completed = 0;
+    var failures = [];
+    for (var i = 0; i < drafts.length; i++) {
+      try {
+        await submitSavedIndexDraft(drafts[i], i + 1, drafts.length);
+        completed += 1;
+      } catch (err) {
+        failures.push(
+          draftDisplayTitle(drafts[i]) + ": " + String(err && err.message ? err.message : err)
+        );
+      }
+    }
+    indexDraftBatchRunning = false;
+    await fetchIngestDrafts();
+    if (failures.length) {
+      setIngestDraftsStatus(
+        completed + "/" + drafts.length + " completati. Errori: " + failures.join(" · "),
+        true
+      );
+    } else {
+      setIngestDraftsStatus(
+        completed + " ingest INDEX completati: un INDEX.md e INDEX_BOOK.json per libro.",
+        false
+      );
+    }
+  }
+
+  if (ingestDraftsIngestAllBtn) {
+    ingestDraftsIngestAllBtn.addEventListener("click", function () {
+      ingestAllSavedIndexDrafts().catch(function (err) {
+        indexDraftBatchRunning = false;
+        renderIngestDraftsList(activeDraftsCache);
+        setIngestDraftsStatus(String(err && err.message ? err.message : err), true);
+      });
+    });
   }
 
   function ingestedDisplayMeta(book) {
@@ -4440,6 +4609,7 @@ if (document.readyState === "loading") {
 
   function setViewerMode(mode) {
     if (mode !== "exclude" && mode !== "toc" && mode !== "index" && mode !== "biblio" && mode !== "reicat" && mode !== "appendix") return;
+    if (INDEX_ONLY_MODE && mode !== "exclude" && mode !== "index" && mode !== "reicat") mode = "index";
     if (window.__librarainPageGuidance && typeof window.__librarainPageGuidance.setActive === "function") {
       window.__librarainPageGuidance.setActive(false);
     }
@@ -4469,6 +4639,7 @@ if (document.readyState === "loading") {
       setViewerMode(this.dataset.viewerMode);
     });
   }
+  if (INDEX_ONLY_MODE) setViewerMode("index");
 
   pagePickerDetailPrev.addEventListener("click", function () {
     navigatePagePickerDetail(-1);
@@ -4636,6 +4807,7 @@ if (document.readyState === "loading") {
   }
 
   var tocRangeInput = document.getElementById("toc-range-input");
+  if (INDEX_ONLY_MODE) tocRangeInput.removeAttribute("required");
   var tocPagePickerState = {
     selected: {},
     lastSelected: null,
@@ -7062,13 +7234,16 @@ if (document.readyState === "loading") {
 
   function validateClientPdfPages(refs) {
     var removedExpanded = refs.removedExpanded;
-    var toc = contiguousBounds(parsePagesSpec(refs.tocRaw));
+    var tocRaw = String(refs.tocRaw || "").trim();
     var idx = contiguousBounds(parsePagesSpec(refs.indexRaw));
     assertPagesWithin(refs.numPages, removedExpanded, "Pagine da escludere");
-    assertPagesWithin(refs.numPages, [toc.start, toc.end], "Table of Content");
+    if (!INDEX_ONLY_MODE || tocRaw) {
+      var toc = contiguousBounds(parsePagesSpec(tocRaw));
+      assertPagesWithin(refs.numPages, [toc.start, toc.end], "Table of Content");
+      if (overlapsRange(removedExpanded, toc.start, toc.end))
+        throw new Error("le pagine da escludere non possono ricadere nell'intervallo del Table of Content");
+    }
     assertPagesWithin(refs.numPages, [idx.start, idx.end], "Indice analitico");
-    if (overlapsRange(removedExpanded, toc.start, toc.end))
-      throw new Error("le pagine da escludere non possono ricadere nell'intervallo del Table of Content");
     if (overlapsRange(removedExpanded, idx.start, idx.end))
       throw new Error("le pagine da escludere non possono ricadere nell'indice analitico");
     var biblioRaw = (refs.biblioRaw || "").trim();
@@ -8042,6 +8217,8 @@ if (document.readyState === "loading") {
     var aligned = 0;
     for (var p = 1; p <= pagePickerState.numPages; p++) {
       if (excluded[p]) continue;
+      // Solo indice: il server escluderà tutte le pagine fuori dal range INDEX.
+      if (INDEX_ONLY_MODE && !indexPagePickerState.selected[p]) continue;
       aligned += 1;
       entries.push({
         original: p,
@@ -9103,6 +9280,7 @@ if (document.readyState === "loading") {
     }
 
     var fd = new FormData(form);
+    if (INDEX_ONLY_MODE) fd.set("index_only", "1");
     if (window.LibrarAInIngestCompute && typeof window.LibrarAInIngestCompute.getPlanJson === "function") {
       fd.set("compute_plan", window.LibrarAInIngestCompute.getPlanJson());
     }

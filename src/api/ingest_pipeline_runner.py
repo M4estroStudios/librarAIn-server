@@ -198,10 +198,11 @@ def run_full_pipeline(
                     code=err_detail.get("code"), field=err_detail.get("field"))
         raise
 
-    n_pages = len(useful_pages_enumeration.useful_original_pages)
+    processing_pages = useful_pages_enumeration.pages_for_processing()
+    n_pages = len(processing_pages)
     aligned_useful_pages = sorted(
         useful_pages_enumeration.original_page_to_aligned_page[p]
-        for p in useful_pages_enumeration.useful_original_pages
+        for p in processing_pages
     )
     Log(INFO_LOG_LEVEL, "pipeline build_useful_pages_enumeration done", {"n_pages": n_pages})
     _emit(reporter, make_event(
@@ -420,7 +421,7 @@ def run_resume_pipeline_from_sha(
             field=err_detail.get("field"),
         )
         raise
-    n_pages = len(useful_pages_enumeration.useful_original_pages)
+    n_pages = len(useful_pages_enumeration.pages_for_processing())
     _emit(reporter, make_event(PHASE_PAGE_ENUMERATION, STATUS_COMPLETED, n_pages=n_pages))
     if set_global_total is not None:
         set_global_total(1 + n_pages * page_stages)

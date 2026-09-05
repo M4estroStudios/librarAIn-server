@@ -208,6 +208,7 @@ def _normalize_ingest_notes_payload(state: dict[str, Any]) -> dict[str, Any]:
         "ai_page_guidance": str(state.get("ai_page_guidance") or "").strip(),
         "annotations": normalize_annotations(state.get("annotations") or []),
         "file_name": str(state.get("file_name") or "").strip(),
+        "index_only": bool(state.get("index_only")),
     }
     payload.update(_range_fields_from_mapping(state))
     payload.update(_reicat_fields_from_mapping(state))
@@ -246,6 +247,7 @@ def build_ingest_notes_state(
         "ai_page_guidance": str(ingest_payload.get("ai_page_guidance") or "").strip(),
         "annotations": normalize_annotations(annotations),
         "file_name": str(text_fields.get("file_name") or "").strip(),
+        "index_only": bool(ingest_payload.get("index_only")),
     }
     state.update(_range_fields_from_mapping(text_fields))
     state.update(_reicat_fields_from_mapping(text_fields))
@@ -404,6 +406,7 @@ def list_ingest_drafts(
     for row in rows:
         title = ""
         file_name = ""
+        index_only = False
         try:
             parsed = json.loads(str(row[1] or ""))
         except json.JSONDecodeError:
@@ -411,6 +414,13 @@ def list_ingest_drafts(
         if isinstance(parsed, dict):
             title = str(parsed.get("titolo") or "").strip()
             file_name = str(parsed.get("file_name") or "").strip()
+            if "index_only" in parsed:
+                index_only = bool(parsed.get("index_only"))
+            else:
+                index_only = bool(
+                    str(parsed.get("index_range") or "").strip()
+                    and not str(parsed.get("toc_range") or "").strip()
+                )
         digest = str(row[0])
         has_pdf = bool(root and find_draft_pdf_by_sha256(root, digest) is not None)
         drafts.append(
@@ -420,6 +430,7 @@ def list_ingest_drafts(
                 "file_name": file_name,
                 "updated_at": str(row[2] or ""),
                 "has_pdf": has_pdf,
+                "index_only": index_only,
             }
         )
     return drafts

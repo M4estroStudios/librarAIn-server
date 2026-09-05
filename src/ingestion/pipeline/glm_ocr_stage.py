@@ -407,7 +407,7 @@ async def run_glm_ocr_combined_stage(
             )
         )
 
-    sorted_pages = sorted(useful_pages_enumeration.useful_original_pages)
+    sorted_pages = sorted(useful_pages_enumeration.pages_for_processing())
     page_total = len(sorted_pages)
     sem = asyncio.Semaphore(settings.max_parallel_request)
 
@@ -489,7 +489,7 @@ async def run_glm_ocr_combined_stage(
 
     expected_aligned = {
         useful_pages_enumeration.original_page_to_aligned_page[orig]
-        for orig in useful_pages_enumeration.useful_original_pages
+        for orig in useful_pages_enumeration.pages_for_processing()
         if orig in useful_pages_enumeration.original_page_to_aligned_page
     }
     missing_aligned = sorted(

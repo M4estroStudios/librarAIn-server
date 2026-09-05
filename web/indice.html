@@ -149,6 +149,7 @@ table.book-table {
   background: #252526;
   min-height: 28rem;
 }
+.library-iframe-wrap.hidden { display: none; }
 .library-iframe-wrap iframe {
   display: block;
   width: 100%;
@@ -172,7 +173,7 @@ table.book-table {
 <p class="app-nav"><a href="/">Admin</a> · <a href="/biblioteca">Biblioteca</a> · Indice · <a href="/ingest">Ingestione</a> · <a href="/ricerca">Ricerca</a> · <a href="/jobs">Job</a> | <a href="/etaly-export">e-taly</a></p>
 <div class="wrap">
   <h1>Indice</h1>
-  <p class="lead">Hyperlink libro, merge in <code>INDEX.json</code> e TIME_INDEX — fuori dall’ingestione automatica.</p>
+  <p class="lead">Indici analitici per libro, ciascuno separato; il merge globale in <code>INDEX.json</code> resta uno step successivo.</p>
 
   <div class="tabs" role="tablist" aria-label="Sottopagine Indice">
     <button type="button" role="tab" data-tab="books" class="is-active" aria-selected="true">BOOKs</button>
@@ -182,8 +183,19 @@ table.book-table {
 
   <section class="tab-panel" id="tab-books" data-tab-panel="books" role="tabpanel">
     <div class="panel">
+      <h2>Nuovo volume — ingest solo INDEX</h2>
+      <p class="hint">Carica un PDF, seleziona il <strong>range dell’indice analitico</strong>, annota e salva la bozza. Se il numero pagina PDF non coincide con quello stampato, usa prima <em>Rimuovi</em> per le pagine preliminari. Puoi prepararne quante vuoi e poi usare <em>Ingestisci tutte le bozze</em>. Ogni PDF avvia un job separato e produce il proprio <code>INDEX.md</code> e <code>INDEX_BOOK.json</code>, senza merge nel globale.</p>
+      <div class="toolbar">
+        <button type="button" class="primary" id="index-ingest-toggle" aria-expanded="false" aria-controls="index-ingest-wrap">➕ Aggiungi nuovo volume</button>
+      </div>
+      <p class="status-line" id="index-ingest-status"></p>
+      <div class="library-iframe-wrap hidden" id="index-ingest-wrap">
+        <iframe id="index-ingest-frame" title="Ingest solo INDEX" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="panel">
       <h2>Indice per libro</h2>
-      <p class="hint">Clicca un libro: si apre la <strong>review INDEX</strong> (solo pagine del range indice, side-by-side PNG|MD + annotazioni). Poi <em>Avvia INDEX libro</em>. Flusso: algo → modello con le tue note → hyperlink + <code>INDEX_&lt;slug&gt;.json</code>.</p>
+      <p class="hint">Ogni riga è un libro separato. L’ingest solo INDEX genera già <code>INDEX.md</code>, <code>INDEX_BOOK.json</code> e il file legacy <code>INDEX_&lt;slug&gt;.json</code>. Apri il libro per review e correzioni.</p>
       <div class="toolbar">
         <label>Filtro
           <input type="search" id="books-filter" placeholder="Titolo o SHA…" autocomplete="off">
@@ -197,7 +209,7 @@ table.book-table {
             <tr>
               <th>Libro</th>
               <th>INDEX.md</th>
-              <th>INDEX_*.json</th>
+              <th>INDEX_BOOK.json</th>
               <th>Soggetti</th>
               <th></th>
             </tr>
@@ -466,9 +478,12 @@ table.book-table {
     }
     tbody.innerHTML = rows.map(function (book) {
       var sha = book.source_sha256 || "";
+      var indexOnlyBadge = book.index_only
+        ? ' <span class="pill ok" title="Ingest solo range INDEX (da pagina Indice)">solo INDEX</span>'
+        : "";
       return "<tr class=\"is-clickable\" data-open-book=\"" + escapeHtml(sha) + "\">" +
         "<td><a class=\"book-open\" href=\"/biblioteca?sha=" + encodeURIComponent(sha) +
-        "&from=indice&focus=index\">" + escapeHtml(bookTitle(book)) + "</a>" +
+        "&from=indice&focus=index\">" + escapeHtml(bookTitle(book)) + "</a>" + indexOnlyBadge +
         "<div class=\"sha\">" + escapeHtml(sha.slice(0, 16)) + "</div></td>" +
         "<td>" + pill(!!book.has_index_md, "sì", "no") + "</td>" +
         "<td>" + pill(!!book.has_book_index_json, "sì", "no") + "</td>" +
@@ -605,12 +620,45 @@ table.book-table {
     if (el) el.addEventListener("click", function () { loadBooks(false); });
   });
 
+  var ingestToggle = $("index-ingest-toggle");
+  var ingestWrap = $("index-ingest-wrap");
+  var ingestFrame = $("index-ingest-frame");
+  var ingestStatusEl = $("index-ingest-status");
+
+  function setIngestPanelOpen(open) {
+    if (!ingestWrap || !ingestToggle) return;
+    if (open && ingestFrame && !ingestFrame.getAttribute("src")) {
+      ingestFrame.setAttribute("src", "/ingest?embed=1&index_only=1");
+    }
+    ingestWrap.classList.toggle("hidden", !open);
+    ingestToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    ingestToggle.textContent = open ? "− Chiudi inserimento volume" : "➕ Aggiungi nuovo volume";
+  }
+
+  if (ingestToggle) {
+    ingestToggle.addEventListener("click", function () {
+      setIngestPanelOpen(ingestWrap.classList.contains("hidden"));
+    });
+  }
+
   window.addEventListener("message", function (ev) {
-    if (!ev.data || ev.data.type !== "librarain-embed-height") return;
-    var frame = $("library-poh-frame");
-    if (!frame) return;
-    var h = Number(ev.data.height) || 0;
-    if (h > 200) frame.style.minHeight = Math.min(h + 24, 2400) + "px";
+    var data = ev.data;
+    if (!data || typeof data !== "object") return;
+    if (data.type === "librarain-embed-height") {
+      var h = Number(data.height) || 0;
+      var frame = data.source === "ingest" ? ingestFrame : $("library-poh-frame");
+      if (frame && h > 200) frame.style.minHeight = Math.min(h + 24, 2400) + "px";
+      return;
+    }
+    if (data.type === "librarain-ingest-started") {
+      setStatus(ingestStatusEl, "Ingest solo INDEX avviato · job " + (data.job_id || "—"));
+      return;
+    }
+    if (data.type === "librarain-ingest-done") {
+      setStatus(ingestStatusEl, "Ingest completato — il libro compare nella lista qui sotto.", "ok");
+      loadBooks(true);
+      return;
+    }
   });
 
   setTab((location.hash || "").replace(/^#/, "") || "books");

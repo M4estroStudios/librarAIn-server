@@ -471,7 +471,7 @@ async def run_stage1_ocr(
         {"request_id": request_id, "render_dir": str(render_dir), "ocr_dir": str(ocr_dir)},
     )
 
-    sorted_pages = sorted(useful_pages_enumeration.useful_original_pages)
+    sorted_pages = sorted(useful_pages_enumeration.pages_for_processing())
     page_total = len(sorted_pages)
     sem = asyncio.Semaphore(settings.max_parallel_request)
 

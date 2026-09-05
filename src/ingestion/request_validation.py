@@ -56,26 +56,27 @@ def _validate_page_refs_within_pdf(request: IngestRequest, pdf_page_count: int) 
                 ).model_dump_json()
             )
     toc = request.toc_range
-    if toc.start > pdf_page_count:
-        raise ValueError(
-            IngestInputValidationError(
-                code=IngestInputErrorCode.PAGES_INVALID,
-                message=(
-                    f"toc_range start {toc.start} exceeds pdf page count ({pdf_page_count})"
-                ),
-                field="toc_range",
-            ).model_dump_json()
-        )
-    if toc.end > pdf_page_count:
-        raise ValueError(
-            IngestInputValidationError(
-                code=IngestInputErrorCode.PAGES_INVALID,
-                message=(
-                    f"toc_range end {toc.end} exceeds pdf page count ({pdf_page_count})"
-                ),
-                field="toc_range",
-            ).model_dump_json()
-        )
+    if toc is not None:
+        if toc.start > pdf_page_count:
+            raise ValueError(
+                IngestInputValidationError(
+                    code=IngestInputErrorCode.PAGES_INVALID,
+                    message=(
+                        f"toc_range start {toc.start} exceeds pdf page count ({pdf_page_count})"
+                    ),
+                    field="toc_range",
+                ).model_dump_json()
+            )
+        if toc.end > pdf_page_count:
+            raise ValueError(
+                IngestInputValidationError(
+                    code=IngestInputErrorCode.PAGES_INVALID,
+                    message=(
+                        f"toc_range end {toc.end} exceeds pdf page count ({pdf_page_count})"
+                    ),
+                    field="toc_range",
+                ).model_dump_json()
+            )
     ir = request.index_range
     if ir.start > pdf_page_count:
         raise ValueError(

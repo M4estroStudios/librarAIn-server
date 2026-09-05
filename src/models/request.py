@@ -190,7 +190,10 @@ class IngestRequest(BaseModel):
     annotations: list[dict[str, Any]] = Field(default_factory=list)
     md_formatting: MdFormattingRules = Field(default_factory=MdFormattingRules)
     pages_to_remove: list[int]
-    toc_range: PageRange
+    # Ingest "solo indice" (pagina Indice): processa solo il range INDEX,
+    # senza TOC/biblio/polyindex. toc_range diventa facoltativo.
+    index_only: bool = False
+    toc_range: PageRange | None = None
     index_range: PageRange
     biblio_range: PageRange | None = None
     reicat: ReicatMetadata
@@ -221,10 +224,14 @@ class IngestRequest(BaseModel):
             raise ValueError("pages_to_remove must contain only positive 1-based pages")
         self.pages_to_remove = normalized_pages
 
+        if self.toc_range is None and not self.index_only:
+            raise ValueError("toc_range is required unless index_only is set")
+
         removed_pages = set(self.pages_to_remove)
-        toc_overlap = removed_pages.intersection(self.toc_range.as_set())
-        if toc_overlap:
-            raise ValueError("pages_to_remove intersects toc_range")
+        if self.toc_range is not None:
+            toc_overlap = removed_pages.intersection(self.toc_range.as_set())
+            if toc_overlap:
+                raise ValueError("pages_to_remove intersects toc_range")
         index_overlap = removed_pages.intersection(self.index_range.as_set())
         if index_overlap:
             raise ValueError("pages_to_remove intersects index_range")
@@ -275,8 +282,17 @@ class UsefulPagesEnumeration(BaseModel):
     original_page_count: int
     aligned_page_count: int
     useful_original_pages: list[int]
+    # Subset actually sent through OCR/editor. ``None`` keeps the historical
+    # behavior (all useful pages). INDEX-only ingest uses the analytic-index
+    # range while retaining the complete page maps for page references.
+    processing_original_pages: list[int] | None = None
     original_page_to_aligned_page: dict[int, int]
     aligned_page_to_original_page: dict[int, int]
-    toc_range_aligned: PageRange
+    toc_range_aligned: PageRange | None = None
     index_range_aligned: PageRange
     biblio_range_aligned: PageRange | None = None
+
+    def pages_for_processing(self) -> list[int]:
+        if self.processing_original_pages is None:
+            return self.useful_original_pages
+        return self.processing_original_pages

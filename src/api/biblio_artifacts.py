@@ -43,6 +43,7 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
         original_page_count = None
         aligned_page_count = None
         pages_to_remove: list[int] = []
+        index_only = False
         slug = book.get("slug")
         if manifest_path.is_file():
             try:
@@ -50,6 +51,7 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
             except (json.JSONDecodeError, OSError):
                 manifest = {}
             if isinstance(manifest, dict):
+                index_only = bool(manifest.get("index_only"))
                 if not slug and manifest.get("slug"):
                     slug = str(manifest["slug"])
                 opc = manifest.get("original_page_count")
@@ -79,8 +81,10 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
                     if isinstance(autores, list):
                         authors = ", ".join(str(a) for a in autores if str(a).strip())
                     year = reicat.get("anno_di_pubblicazione") or reicat.get("publication_year")
-        book_index_json = None
-        if slug:
+        book_index_json = output_dir / "INDEX_BOOK.json"
+        if not book_index_json.is_file():
+            book_index_json = None
+        if book_index_json is None and slug:
             candidate = output_dir / f"INDEX_{slug}.json"
             if candidate.is_file():
                 book_index_json = candidate
@@ -134,6 +138,7 @@ def list_biblio_candidates(data_root: Path) -> dict[str, Any]:
                 "has_biblio": biblio_path.is_file(),
                 "biblio_entry_count": entry_count,
                 "biblio_range": biblio_range,
+                "index_only": index_only,
                 "has_index_md": index_md_path.is_file(),
                 "has_book_index_json": book_index_json is not None,
                 "book_index_subject_count": book_index_subject_count,

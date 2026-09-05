@@ -7,7 +7,6 @@ from typing import Any
 
 from src.core.log import INFO_LOG_LEVEL, Log, WARNING_LOG_LEVEL
 from src.ingestion.index_md_links import (
-    POLYINDEX_REF_PLACEHOLDER,
     build_first_index_source_page_by_label,
     clean_match_label,
     page_href,
@@ -22,7 +21,6 @@ from src.ingestion.index_page_subject_links import (
 from src.ingestion.output_writer import (
     BookOutput,
     BookPageOutput,
-    IndexConnectionReport,
     _atomic_write_bytes,
     load_book_index_document,
     merge_page_index_connections,
@@ -47,6 +45,11 @@ _EXISTING_PAGE_LINK_PATTERN = re.compile(r"\[(\d+)\]\([^)]+\)")
 
 def book_index_json_path(output_dir: Path, slug: str) -> Path:
     return output_dir / f"INDEX_{slug}.json"
+
+
+def canonical_book_index_json_path(output_dir: Path) -> Path:
+    """Stable per-book artifact name, alongside the legacy slugged filename."""
+    return output_dir / "INDEX_BOOK.json"
 
 
 def allocate_subject_keys(subjects: list[RawSubject]) -> list[tuple[RawSubject, str]]:
@@ -273,7 +276,9 @@ async def apply_index_cross_links(
             page_total=1,
             message="Regex INDEX: nessun soggetto",
         )
-        BookIndexDocument().write_atomic(index_json_path)
+        empty_document = BookIndexDocument()
+        empty_document.write_atomic(index_json_path)
+        empty_document.write_atomic(canonical_book_index_json_path(book_output.output_dir))
         stats["index_json_path"] = str(index_json_path)
         return stats
 
@@ -421,6 +426,7 @@ async def apply_index_cross_links(
                 document,
             )
     document.write_atomic(index_json_path)
+    document.write_atomic(canonical_book_index_json_path(book_output.output_dir))
     stats["index_json_path"] = str(index_json_path)
 
     Log(

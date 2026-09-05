@@ -108,11 +108,13 @@ def build_useful_pages_enumeration(
     else:
         Log(INFO_LOG_LEVEL, "useful pages no PdfAlignmentResult skip alignment checks")
 
-    Log(INFO_LOG_LEVEL, "useful pages project toc_range to aligned begin")
-    toc_aligned = _project_interval_to_aligned(
-        enriched.request.toc_range, analytic_o2a
-    )
-    Log(INFO_LOG_LEVEL, "useful pages project toc_range to aligned done")
+    toc_aligned = None
+    if enriched.request.toc_range is not None:
+        Log(INFO_LOG_LEVEL, "useful pages project toc_range to aligned begin")
+        toc_aligned = _project_interval_to_aligned(
+            enriched.request.toc_range, analytic_o2a
+        )
+        Log(INFO_LOG_LEVEL, "useful pages project toc_range to aligned done")
     Log(INFO_LOG_LEVEL, "useful pages project index_range to aligned begin")
     index_aligned = _project_interval_to_aligned(
         enriched.request.index_range, analytic_o2a
@@ -127,12 +129,16 @@ def build_useful_pages_enumeration(
         Log(INFO_LOG_LEVEL, "useful pages project biblio_range to aligned done")
 
     useful_original_sorted = sorted(analytic_o2a.keys())
+    processing_original_pages = None
+    if enriched.request.index_only:
+        processing_original_pages = sorted(enriched.request.index_range.as_set())
 
     result = UsefulPagesEnumeration(
         source_sha256=normalized_digest,
         original_page_count=original_total,
         aligned_page_count=aligned_total,
         useful_original_pages=useful_original_sorted,
+        processing_original_pages=processing_original_pages,
         original_page_to_aligned_page=analytic_o2a,
         aligned_page_to_original_page=analytic_a2o,
         toc_range_aligned=toc_aligned,
@@ -145,6 +151,7 @@ def build_useful_pages_enumeration(
         {
             "source_sha256": normalized_digest[:16],
             "useful_pages": len(useful_original_sorted),
+            "processing_pages": len(result.pages_for_processing()),
             "aligned_total": aligned_total,
         },
     )

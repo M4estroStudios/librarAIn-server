@@ -364,7 +364,7 @@ def materialize_book_pages(
     sorted_pages = sorted(stage3_result.pages, key=lambda page: page.aligned_page)
     expected_aligned = sorted(
         useful_pages.original_page_to_aligned_page[orig]
-        for orig in useful_pages.useful_original_pages
+        for orig in useful_pages.pages_for_processing()
         if orig in useful_pages.original_page_to_aligned_page
     )
     got_aligned = {page.aligned_page for page in sorted_pages}
@@ -436,9 +436,7 @@ def materialize_book_pages(
         "original_page_count": useful_pages.original_page_count,
         "aligned_page_count": useful_pages.aligned_page_count,
         "pages_to_remove": list(enriched.request.pages_to_remove),
-        "toc_range": enriched.request.toc_range.model_dump(),
         "index_range": enriched.request.index_range.model_dump(),
-        "toc_range_aligned": useful_pages.toc_range_aligned.model_dump(),
         "index_range_aligned": useful_pages.index_range_aligned.model_dump(),
         "pages": manifest_page_entries,
         "reicat": enriched.request.reicat.model_dump(by_alias=True),
@@ -447,6 +445,14 @@ def materialize_book_pages(
         "prompts_used": prompts_used,
         "generated_at": _utc_now_iso(),
     }
+    if enriched.request.index_only:
+        manifest_data["index_only"] = True
+    toc_range = _range_dump(enriched.request.toc_range)
+    if toc_range is not None:
+        manifest_data["toc_range"] = toc_range
+    toc_range_aligned = _range_dump(useful_pages.toc_range_aligned)
+    if toc_range_aligned is not None:
+        manifest_data["toc_range_aligned"] = toc_range_aligned
     biblio_range = _range_dump(enriched.request.biblio_range)
     if biblio_range is not None:
         manifest_data["biblio_range"] = biblio_range
