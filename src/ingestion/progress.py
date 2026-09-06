@@ -14,6 +14,8 @@ PHASE_STAGE1_OCR = "stage1_ocr"
 PHASE_STAGE1_GLM_OCR = "stage1_glm_ocr"
 PHASE_STAGE2_VISION = "stage2_vision"
 PHASE_STAGE3_EDITOR = "stage3_editor"
+PHASE_TOC_REFINE = "toc_refine"
+PHASE_INDEX_REFINE = "index_refine"
 PHASE_POLYINDEX_TOC = "polyindex_toc"
 PHASE_POLYINDEX_INDEX = "polyindex_index"
 PHASE_TIME_INDEX = "time_index"
@@ -113,6 +115,11 @@ class PipelineTiming:
             "total_seconds": round(self.elapsed_total(), 2),
             "phases": {phase: round(sec, 2) for phase, sec in self.phase_seconds.items()},
         }
+
+
+def elapsed_ms(started: float) -> int:
+    """Wall time since ``started`` (``time.perf_counter()``) in whole milliseconds."""
+    return max(0, int((time.perf_counter() - started) * 1000))
 
 
 def timed_progress_reporter(

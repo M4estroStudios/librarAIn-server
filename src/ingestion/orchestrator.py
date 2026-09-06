@@ -48,8 +48,10 @@ from src.ingestion.output_writer import (
 )
 from src.ingestion.pipeline.stage3 import Stage3Result, run_stage3_editor
 from src.ingestion.progress import (
+    PHASE_INDEX_REFINE,
     PHASE_POLYINDEX_BIBLIO,
     PHASE_POLYINDEX_TOC,
+    PHASE_TOC_REFINE,
     STATUS_COMPLETED,
     STATUS_STARTED,
     ProgressReporter,
@@ -755,6 +757,7 @@ def _run_index_md_builder(ctx: PipelineContext, book_output: BookOutput) -> Path
 async def _run_toc_refine_phase(ctx: PipelineContext, toc_md_path: Path) -> Path:
     toc_refine_cache = ctx.tmp_root / "stage4TocIndexRefine"
     toc_refine_stats: dict[str, int] = {}
+    _progress_started(ctx, PHASE_TOC_REFINE)
     try:
         with _LlmStep(ctx, "toc_refine") as step_settings:
             toc_md_path = await refine_toc_md(
@@ -769,6 +772,12 @@ async def _run_toc_refine_phase(ctx: PipelineContext, toc_md_path: Path) -> Path
             )
     except Exception as exc:
         raise OrchestratorStageError("toc_refine", exc) from exc
+    _progress_completed(
+        ctx,
+        PHASE_TOC_REFINE,
+        toc_md_path=str(toc_md_path),
+        fallback_sections=toc_refine_stats.get("fallback_sections", 0),
+    )
     _publish_event(
         ctx.registry,
         ctx.request_id,
@@ -785,6 +794,7 @@ async def _run_toc_refine_phase(ctx: PipelineContext, toc_md_path: Path) -> Path
 async def _run_index_refine_phase(ctx: PipelineContext, index_md_path: Path) -> Path:
     toc_refine_cache = ctx.tmp_root / "stage4TocIndexRefine"
     index_refine_stats: dict[str, int] = {}
+    _progress_started(ctx, PHASE_INDEX_REFINE)
     try:
         with _LlmStep(ctx, "index_refine") as step_settings:
             index_md_path = await refine_index_md(
@@ -799,6 +809,12 @@ async def _run_index_refine_phase(ctx: PipelineContext, index_md_path: Path) -> 
             )
     except Exception as exc:
         raise OrchestratorStageError("index_refine", exc) from exc
+    _progress_completed(
+        ctx,
+        PHASE_INDEX_REFINE,
+        index_md_path=str(index_md_path),
+        fallback_sections=index_refine_stats.get("fallback_sections", 0),
+    )
     _publish_event(
         ctx.registry,
         ctx.request_id,

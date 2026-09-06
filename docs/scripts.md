@@ -16,6 +16,16 @@ Crea uno ZIP di `data/` (di default esclude `tmp/`) in `backup/`, oppure riprist
 
 **Attenzione:** `restore` fa `rmtree` di `data_root` senza conferma interattiva.
 
+### `summarize_ingest_perf`
+
+Stampa da SQLite i `pipeline_runs.timing` più recenti e gli aggregati `llm_call_metrics`, più una stima statica di chiamate LLM per N pagine. Solo lettura.
+
+```bash
+python -m scripts.summarize_ingest_perf [--data-root data] [--limit 8]
+```
+
+Vedi [perf-ingest-analysis.md](perf-ingest-analysis.md).
+
 ### `backfill_time_index`
 
 Rigenera `TIME_INDEX.json` per tutti i libri con manifest in `output/`, usando le stesse regole LLM/regex dell'ingest.
